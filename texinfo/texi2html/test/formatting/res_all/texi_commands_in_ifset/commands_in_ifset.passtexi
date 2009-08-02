@@ -68,6 +68,484 @@ commands_in_ifset.texi(,651)
 commands_in_ifset.texi(,658) 
 commands_in_ifset.texi(,659) @c define a macro and call it within a @ifset
 commands_in_ifset.texi(,660) 
+commands_in_ifset.texi(,661) @macro mymacro
+commands_in_ifset.texi(,662) 
+commands_in_ifset.texi(,663) <
+commands_in_ifset.texi(,664) >
+commands_in_ifset.texi(,665) "
+commands_in_ifset.texi(,666) &
+commands_in_ifset.texi(,667) 
+commands_in_ifset.texi(,668) ``simple-double--three---four----''@*
+commands_in_ifset.texi(,669) code: @code{``simple-double--three---four----''} @*
+commands_in_ifset.texi(,670) asis: @asis{``simple-double--three---four----''} @*
+commands_in_ifset.texi(,671) strong: @strong{``simple-double--three---four----''} @*
+commands_in_ifset.texi(,672) kbd: @kbd{``simple-double--three---four----''} @*
+commands_in_ifset.texi(,673) 
+commands_in_ifset.texi(,674) @cindex --option
+commands_in_ifset.texi(,675) @cindex ``
+commands_in_ifset.texi(,676) @findex ``
+commands_in_ifset.texi(,677) @findex --foption
+commands_in_ifset.texi(,678) 
+commands_in_ifset.texi(,679) @@"u @"u 
+commands_in_ifset.texi(,680) @@"@{U@} @"{U} 
+commands_in_ifset.texi(,681) @@~n @~n
+commands_in_ifset.texi(,682) @@^a @^a
+commands_in_ifset.texi(,683) @@'e @'e
+commands_in_ifset.texi(,684) @@=o @=o
+commands_in_ifset.texi(,685) @@`i @`i
+commands_in_ifset.texi(,686) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
+commands_in_ifset.texi(,687) @@dotless@{i@} @dotless{i}
+commands_in_ifset.texi(,688) @@dotless@{ij@} @dotless{ij}
+commands_in_ifset.texi(,689) 
+commands_in_ifset.texi(,690) @@dotless@{truc@} @dotless{truc}
+commands_in_ifset.texi(,691) 
+commands_in_ifset.texi(,692) @@* @*
+commands_in_ifset.texi(,693) @@ followed by a space
+commands_in_ifset.texi(,694) @ 
+commands_in_ifset.texi(,695) @@ followed by a tab
+commands_in_ifset.texi(,696) @	
+commands_in_ifset.texi(,697) @@ followed by a new line
+commands_in_ifset.texi(,698) @
+commands_in_ifset.texi(,699) @code{@@-} @-
+commands_in_ifset.texi(,700) @code{@@|} @|
+commands_in_ifset.texi(,701) @code{@@:} @:
+commands_in_ifset.texi(,702) @code{@@!} @!
+commands_in_ifset.texi(,703) @code{@@?} @?
+commands_in_ifset.texi(,704) @code{@@.} @.
+commands_in_ifset.texi(,705) @code{@@@@} @@
+commands_in_ifset.texi(,706) @code{@@@}} @}
+commands_in_ifset.texi(,707) @code{@@@{} @{
+commands_in_ifset.texi(,708) @code{@@/} @/
+commands_in_ifset.texi(,709) @code{@@#} @#
+commands_in_ifset.texi(,710) 
+commands_in_ifset.texi(,711) @@TeX @TeX{}
+commands_in_ifset.texi(,712) @@LaTeX @LaTeX{}
+commands_in_ifset.texi(,713) @c @br{}
+commands_in_ifset.texi(,714) @@bullet @bullet{}
+commands_in_ifset.texi(,715) @@copyright @copyright{}
+commands_in_ifset.texi(,716) @@dots @dots{}
+commands_in_ifset.texi(,717) @@enddots @enddots{}
+commands_in_ifset.texi(,718) @@equiv @equiv{}
+commands_in_ifset.texi(,719) @@error @error{}
+commands_in_ifset.texi(,720) @@expansion @expansion{}
+commands_in_ifset.texi(,721) @@minus @minus{}
+commands_in_ifset.texi(,722) @@point @point{}
+commands_in_ifset.texi(,723) @@print @print{}
+commands_in_ifset.texi(,724) @@result @result{}
+commands_in_ifset.texi(,725) @@today @today{}
+commands_in_ifset.texi(,726) @@aa @aa{}
+commands_in_ifset.texi(,727) @@AA @AA{}
+commands_in_ifset.texi(,728) @@ae @ae{}
+commands_in_ifset.texi(,729) @@oe @oe{}
+commands_in_ifset.texi(,730) @@AE @AE{}
+commands_in_ifset.texi(,731) @@OE @OE{}
+commands_in_ifset.texi(,732) @@o @o{}
+commands_in_ifset.texi(,733) @@O @O{}
+commands_in_ifset.texi(,734) @@ss @ss{}
+commands_in_ifset.texi(,735) @@l @l{}
+commands_in_ifset.texi(,736) @@L @L{}
+commands_in_ifset.texi(,737) @@exclamdown @exclamdown{}
+commands_in_ifset.texi(,738) @@questiondown @questiondown{}
+commands_in_ifset.texi(,739) @@pounds @pounds{}
+commands_in_ifset.texi(,740) @@registeredsymbol @registeredsymbol{}
+commands_in_ifset.texi(,741) @@ordf @ordf{}
+commands_in_ifset.texi(,742) @@ordm @ordm{}
+commands_in_ifset.texi(,743) @@comma @comma{}
+commands_in_ifset.texi(,744) 
+commands_in_ifset.texi(,745) @code{@@acronym@{--a,an accronym @@comma@{@} @@enddots@{@}@}} @acronym{--a,an accronym @comma{} @enddots{}}
+commands_in_ifset.texi(,746) @code{@@acronym@{--a@}} @acronym{--a}
+commands_in_ifset.texi(,747) @code{@@asis@{--a@}} @asis{--a}
+commands_in_ifset.texi(,748) @code{@@b@{--a@}} @b{--a}
+commands_in_ifset.texi(,749) @code{@@cite@{--a@}} @cite{--a}
+commands_in_ifset.texi(,750) @code{@@code@{--a@}} @code{--a}
+commands_in_ifset.texi(,751) @code{@@command@{--a@}} @command{--a}
+commands_in_ifset.texi(,752) @code{@@ctrl@{--a@}} @ctrl{--a}
+commands_in_ifset.texi(,753) @code{@@dfn@{--a@}} @dfn{--a}
+commands_in_ifset.texi(,754) @code{@@dmn@{--a@}} @dmn{--a}
+commands_in_ifset.texi(,755) @code{@@email@{--a,--b@}} @email{--a,--b}
+commands_in_ifset.texi(,756) @code{@@email@{,--b@}} @email{,--b}
+commands_in_ifset.texi(,757) @code{@@email@{--a@}} @email{--a}
+commands_in_ifset.texi(,758) @code{@@emph@{--a@}} @emph{--a}
+commands_in_ifset.texi(,759) @code{@@env@{--a@}} @env{--a}
+commands_in_ifset.texi(,760) @code{@@file@{--a@}} @file{--a}
+commands_in_ifset.texi(,761) @code{@@i@{--a@}} @i{--a}
+commands_in_ifset.texi(,762) @code{@@kbd@{--a@}} @kbd{--a}
+commands_in_ifset.texi(,763) @code{@@key@{--a@}} @key{--a}
+commands_in_ifset.texi(,764) @code{@@math@{--a@}} @math{--a}
+commands_in_ifset.texi(,765) @code{@@option@{--a@}} @option{--a}
+commands_in_ifset.texi(,766) @code{@@r@{--a@}} @r{--a}
+commands_in_ifset.texi(,767) @code{@@samp@{--a@}} @samp{--a}
+commands_in_ifset.texi(,768) @code{@@sc@{--a@}} @sc{--a}
+commands_in_ifset.texi(,769) @code{@@strong@{--a@}} @strong{--a}
+commands_in_ifset.texi(,770) @code{@@t@{--a@}} @t{--a}
+commands_in_ifset.texi(,771) @code{@@titlefont@{--a@}} @titlefont{--a}
+commands_in_ifset.texi(,772) @code{@@indicateurl@{--a@}} @indicateurl{--a}
+commands_in_ifset.texi(,773) @code{@@uref@{--a,--b@}} @uref{--a,--b}
+commands_in_ifset.texi(,774) @code{@@uref@{--a@}} @uref{--a}
+commands_in_ifset.texi(,775) @code{@@uref@{,--b@}} @uref{,--b}
+commands_in_ifset.texi(,776) @code{@@url@{--a,--b@}} @url{--a,--b}
+commands_in_ifset.texi(,777) @code{@@url@{--a,@}} @url{--a,}
+commands_in_ifset.texi(,778) @code{@@url@{,--b@}} @url{,--b}
+commands_in_ifset.texi(,779) @code{@@var@{--a@}} @var{--a}
+commands_in_ifset.texi(,780) @code{@@verb@{:--a:@}} @verb{:--a:}
+commands_in_ifset.texi(,781) @code{@@w@{--a@}} @w{--a}
+commands_in_ifset.texi(,782) @code{@@H@{a@}} @H{a}
+commands_in_ifset.texi(,783) @code{@@H@{--a@}} @H{--a}
+commands_in_ifset.texi(,784) @code{@@dotaccent@{a@}} @dotaccent{a}
+commands_in_ifset.texi(,785) @code{@@dotaccent@{--a@}} @dotaccent{--a}
+commands_in_ifset.texi(,786) @code{@@ringaccent@{a@}} @ringaccent{a}
+commands_in_ifset.texi(,787) @code{@@ringaccent@{--a@}} @ringaccent{--a}
+commands_in_ifset.texi(,788) @code{@@tieaccent@{a@}} @tieaccent{a}
+commands_in_ifset.texi(,789) @code{@@tieaccent@{--a@}} @tieaccent{--a}
+commands_in_ifset.texi(,790) @code{@@u@{a@}} @u{a}
+commands_in_ifset.texi(,791) @code{@@u@{--a@}} @u{--a}
+commands_in_ifset.texi(,792) @code{@@ubaraccent@{a@}} @ubaraccent{a}
+commands_in_ifset.texi(,793) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
+commands_in_ifset.texi(,794) @code{@@udotaccent@{a@}} @udotaccent{a}
+commands_in_ifset.texi(,795) @code{@@udotaccent@{--a@}} @udotaccent{--a}
+commands_in_ifset.texi(,796) @code{@@v@{a@}} @v{a}
+commands_in_ifset.texi(,797) @code{@@v@{--a@}} @v{--a}
+commands_in_ifset.texi(,798) @code{@@,@{c@}} @,{c}
+commands_in_ifset.texi(,799) @code{@@,@{--c@}} @,{--c}
+commands_in_ifset.texi(,800) @code{@@dotless@{--a@}} @dotless{--a}
+commands_in_ifset.texi(,801) @code{@@dotless@{a@}} @dotless{a}
+commands_in_ifset.texi(,802) @code{@@footnote@{in footnote@}} @footnote{in footnote}
+commands_in_ifset.texi(,803) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
+commands_in_ifset.texi(,804) 
+commands_in_ifset.texi(,805) @code{@@image@{f--ile,,e--xt@}} @image{f--ile,,e--xt}
+commands_in_ifset.texi(,806) @code{@@image@{f--ile,,,,e--xt@}} @image{f--ile,,,,e--xt}
+commands_in_ifset.texi(,807) @code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
+commands_in_ifset.texi(,808) @code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
+commands_in_ifset.texi(,809) @code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
+commands_in_ifset.texi(,810) @code{@@image@{f--ile@}} @image{f--ile}
+commands_in_ifset.texi(,811) @code{@@image@{,,e--xt@}} @image{,,e--xt}
+commands_in_ifset.texi(,812) @code{@@image@{,,,e--xt@}} @image{,,,e--xt}
+commands_in_ifset.texi(,813) @code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
+commands_in_ifset.texi(,814) @code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
+commands_in_ifset.texi(,815) 
+commands_in_ifset.texi(,816) @sp
+commands_in_ifset.texi(,817) @sp 2
+commands_in_ifset.texi(,818) 
+commands_in_ifset.texi(,819) @quotation
+commands_in_ifset.texi(,820) a q--uotation
+commands_in_ifset.texi(,821) @end quotation
+commands_in_ifset.texi(,822) 
+commands_in_ifset.texi(,823) @itemize
+commands_in_ifset.texi(,824) @item i--temize
+commands_in_ifset.texi(,825) @end itemize
+commands_in_ifset.texi(,826) 
+commands_in_ifset.texi(,827) @itemize +
+commands_in_ifset.texi(,828) @item i--tem +
+commands_in_ifset.texi(,829) @end itemize
+commands_in_ifset.texi(,830) 
+commands_in_ifset.texi(,831) @itemize @bullet
+commands_in_ifset.texi(,832) @item b--ullet
+commands_in_ifset.texi(,833) @end itemize
+commands_in_ifset.texi(,834) 
+commands_in_ifset.texi(,835) @itemize @minus
+commands_in_ifset.texi(,836) @item minu--s
+commands_in_ifset.texi(,837) @end itemize
+commands_in_ifset.texi(,838) 
+commands_in_ifset.texi(,839) @itemize @emph
+commands_in_ifset.texi(,840) @item e--mph item
+commands_in_ifset.texi(,841) @end itemize
+commands_in_ifset.texi(,842) 
+commands_in_ifset.texi(,843) @itemize @emph after emph
+commands_in_ifset.texi(,844) @item e--mph item
+commands_in_ifset.texi(,845) @end itemize
+commands_in_ifset.texi(,846) 
+commands_in_ifset.texi(,847) @itemize @bullet a--n itemize line
+commands_in_ifset.texi(,848) @item i--tem 1
+commands_in_ifset.texi(,849) @item i--tem 2
+commands_in_ifset.texi(,850) @end itemize
+commands_in_ifset.texi(,851) 
+commands_in_ifset.texi(,852) @enumerate
+commands_in_ifset.texi(,853) @item e--numerate
+commands_in_ifset.texi(,854) @end enumerate
+commands_in_ifset.texi(,855) 
+commands_in_ifset.texi(,856) @multitable @columnfractions 6 7
+commands_in_ifset.texi(,857) @headitem mu--ltitable headitem @tab another tab
+commands_in_ifset.texi(,858) @item mu--ltitable item @tab multitable tab
+commands_in_ifset.texi(,859) @end multitable
+commands_in_ifset.texi(,860) 
+commands_in_ifset.texi(,861) @example
+commands_in_ifset.texi(,862) e--xample  some
+commands_in_ifset.texi(,863)    text
+commands_in_ifset.texi(,864) @end example
+commands_in_ifset.texi(,865) 
+commands_in_ifset.texi(,866) @smallexample
+commands_in_ifset.texi(,867) s--mallexample
+commands_in_ifset.texi(,868) @end smallexample
+commands_in_ifset.texi(,869) 
+commands_in_ifset.texi(,870) @display 
+commands_in_ifset.texi(,871) d--isplay
+commands_in_ifset.texi(,872) @end display
+commands_in_ifset.texi(,873) 
+commands_in_ifset.texi(,874) @smalldisplay
+commands_in_ifset.texi(,875) s--malldisplay
+commands_in_ifset.texi(,876) @end smalldisplay
+commands_in_ifset.texi(,877) 
+commands_in_ifset.texi(,878) @lisp
+commands_in_ifset.texi(,879) l--isp
+commands_in_ifset.texi(,880) @end lisp
+commands_in_ifset.texi(,881) 
+commands_in_ifset.texi(,882) @smalllisp
+commands_in_ifset.texi(,883) s--malllisp
+commands_in_ifset.texi(,884) @end smalllisp
+commands_in_ifset.texi(,885) 
+commands_in_ifset.texi(,886) @format
+commands_in_ifset.texi(,887) f--ormat
+commands_in_ifset.texi(,888) @end format
+commands_in_ifset.texi(,889) 
+commands_in_ifset.texi(,890) @smallformat
+commands_in_ifset.texi(,891) s--mallformat
+commands_in_ifset.texi(,892) @end smallformat
+commands_in_ifset.texi(,893) 
+commands_in_ifset.texi(,894) @deffn c--ategory d--effn_name a--rguments...
+commands_in_ifset.texi(,895) d--effn
+commands_in_ifset.texi(,896) @end deffn
+commands_in_ifset.texi(,897) 
+commands_in_ifset.texi(,898) @deffn cate--gory de--ffn_name ar--guments @
+commands_in_ifset.texi(,899)    more args @* even more so
+commands_in_ifset.texi(,900) def--fn
+commands_in_ifset.texi(,901) @end deffn
+commands_in_ifset.texi(,902)  
+commands_in_ifset.texi(,903) @deffn fset @var{i} a g
+commands_in_ifset.texi(,904) @deffnx {cmde} truc {}
+commands_in_ifset.texi(,905) @deffnx Command {log trap} {}
+commands_in_ifset.texi(,906) @deffnx Command { log trap1} {}  
+commands_in_ifset.texi(,907) @deffnx Command {log trap2 } {}
+commands_in_ifset.texi(,908) @deffnx cmde @b{id ule} truc
+commands_in_ifset.texi(,909) @deffnx cmde2 @b{id @samp{i} ule} truc
+commands_in_ifset.texi(,910) @deffnx @b{id @samp{i} ule}    
+commands_in_ifset.texi(,911) @deffnx 
+commands_in_ifset.texi(,912) @deffnx aaa
+commands_in_ifset.texi(,913) @deffnx {} {}
+commands_in_ifset.texi(,914) @deffnx{}
+commands_in_ifset.texi(,915) @deffnx{} machin
+commands_in_ifset.texi(,916) @deffnx{} {bidule machin}
+commands_in_ifset.texi(,917) @deffnx{truc} machin
+commands_in_ifset.texi(,918) @deffnx{truc} { }
+commands_in_ifset.texi(,919) @deffnx{truc}
+commands_in_ifset.texi(,920) @deffnx{} {}
+commands_in_ifset.texi(,921) @deffnx {truc} followed by a comment
+commands_in_ifset.texi(,922) @c comment
+commands_in_ifset.texi(,923) @deffnx truc machin bidule chose and }
+commands_in_ifset.texi(,924) @deffnx truc machin bidule chose and } after
+commands_in_ifset.texi(,925) @deffnx truc machin bidule chose and {
+commands_in_ifset.texi(,926) @deffnx truc machin bidule chose and { and after
+commands_in_ifset.texi(,927) Various deff lines
+commands_in_ifset.texi(,928) @deffnx {truc} after a deff item
+commands_in_ifset.texi(,929) @c comment
+commands_in_ifset.texi(,930) text in def item for second def item
+commands_in_ifset.texi(,931) @deffnx {truc} deffnx before end deffn
+commands_in_ifset.texi(,932) @end deffn
+commands_in_ifset.texi(,933) 
+commands_in_ifset.texi(,934) 
+commands_in_ifset.texi(,935) 
+commands_in_ifset.texi(,936) @defvr c--ategory d--efvr_name
+commands_in_ifset.texi(,937) d--efvr
+commands_in_ifset.texi(,938) @end defvr
+commands_in_ifset.texi(,939) 
+commands_in_ifset.texi(,940) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+commands_in_ifset.texi(,941) d--eftypefn
+commands_in_ifset.texi(,942) @end deftypefn
+commands_in_ifset.texi(,943) 
+commands_in_ifset.texi(,944) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+commands_in_ifset.texi(,945) d--eftypeop
+commands_in_ifset.texi(,946) @end deftypeop
+commands_in_ifset.texi(,947) 
+commands_in_ifset.texi(,948) @deftypevr c--ategory t--ype d--eftypevr_name
+commands_in_ifset.texi(,949) d--eftypevr
+commands_in_ifset.texi(,950) @end deftypevr
+commands_in_ifset.texi(,951) 
+commands_in_ifset.texi(,952) @defcv c--ategory c--lass d--efcv_name
+commands_in_ifset.texi(,953) d--efcv
+commands_in_ifset.texi(,954) @end defcv
+commands_in_ifset.texi(,955) 
+commands_in_ifset.texi(,956) @defop c--ategory c--lass d--efop_name a--rguments...
+commands_in_ifset.texi(,957) d--efop
+commands_in_ifset.texi(,958) @end defop
+commands_in_ifset.texi(,959) 
+commands_in_ifset.texi(,960) @deftp c--ategory d--eftp_name a--ttributes...
+commands_in_ifset.texi(,961) d--eftp
+commands_in_ifset.texi(,962) @end deftp
+commands_in_ifset.texi(,963) 
+commands_in_ifset.texi(,964) @defun d--efun_name a--rguments...
+commands_in_ifset.texi(,965) d--efun
+commands_in_ifset.texi(,966) @end defun
+commands_in_ifset.texi(,967) 
+commands_in_ifset.texi(,968) @defmac d--efmac_name a--rguments...
+commands_in_ifset.texi(,969) d--efmac
+commands_in_ifset.texi(,970) @end defmac
+commands_in_ifset.texi(,971) 
+commands_in_ifset.texi(,972) @defspec d--efspec_name a--rguments...
+commands_in_ifset.texi(,973) d--efspec
+commands_in_ifset.texi(,974) @end defspec
+commands_in_ifset.texi(,975) 
+commands_in_ifset.texi(,976) @defvar d--efvar_name
+commands_in_ifset.texi(,977) d--efvar
+commands_in_ifset.texi(,978) @end defvar
+commands_in_ifset.texi(,979) 
+commands_in_ifset.texi(,980) @defopt d--efopt_name
+commands_in_ifset.texi(,981) d--efopt
+commands_in_ifset.texi(,982) @end defopt
+commands_in_ifset.texi(,983) 
+commands_in_ifset.texi(,984) @deftypefun t--ype d--eftypefun_name a--rguments...
+commands_in_ifset.texi(,985) d--eftypefun
+commands_in_ifset.texi(,986) @end deftypefun
+commands_in_ifset.texi(,987) 
+commands_in_ifset.texi(,988) @deftypevar t--ype d--eftypevar_name
+commands_in_ifset.texi(,989) d--eftypevar
+commands_in_ifset.texi(,990) @end deftypevar
+commands_in_ifset.texi(,991) 
+commands_in_ifset.texi(,992) @defivar c--lass d--efivar_name
+commands_in_ifset.texi(,993) d--efivar
+commands_in_ifset.texi(,994) @end defivar
+commands_in_ifset.texi(,995) 
+commands_in_ifset.texi(,996) @deftypeivar c--lass t--ype d--eftypeivar_name
+commands_in_ifset.texi(,997) d--eftypeivar
+commands_in_ifset.texi(,998) @end deftypeivar
+commands_in_ifset.texi(,999) 
+commands_in_ifset.texi(,1000) @defmethod c--lass d--efmethod_name a--rguments...
+commands_in_ifset.texi(,1001) d--efmethod
+commands_in_ifset.texi(,1002) @end defmethod
+commands_in_ifset.texi(,1003) 
+commands_in_ifset.texi(,1004) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+commands_in_ifset.texi(,1005) d--eftypemethod
+commands_in_ifset.texi(,1006) @end deftypemethod
+commands_in_ifset.texi(,1007) 
+commands_in_ifset.texi(,1008) @code{@@xref@{chapter, cross ref name, title, file name, manual@}} @xref{chapter, cross ref name, title, file name, manual}
+commands_in_ifset.texi(,1009) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
+commands_in_ifset.texi(,1010) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
+commands_in_ifset.texi(,1011) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+commands_in_ifset.texi(,1012) 
+commands_in_ifset.texi(,1013) @code{@@ref@{chapter@}} @ref{chapter}
+commands_in_ifset.texi(,1014) @code{@@ref@{node@}} @ref{node}
+commands_in_ifset.texi(,1015) @code{@@ref@{,cross ref name@}} @ref{,cross ref name}
+commands_in_ifset.texi(,1016) @code{@@ref@{,,title@}} @ref{,,title}
+commands_in_ifset.texi(,1017) @code{@@ref@{,,,file name@}} @ref{,,,file name}
+commands_in_ifset.texi(,1018) @code{@@ref@{,,,,manual@}} @ref{,,,,manual}
+commands_in_ifset.texi(,1019) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
+commands_in_ifset.texi(,1020) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
+commands_in_ifset.texi(,1021) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
+commands_in_ifset.texi(,1022) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
+commands_in_ifset.texi(,1023) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
+commands_in_ifset.texi(,1024) @code{@@ref@{node,,title@}} @ref{node,,title}
+commands_in_ifset.texi(,1025) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
+commands_in_ifset.texi(,1026) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
+commands_in_ifset.texi(,1027) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
+commands_in_ifset.texi(,1028) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
+commands_in_ifset.texi(,1029) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
+commands_in_ifset.texi(,1030) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
+commands_in_ifset.texi(,1031) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
+commands_in_ifset.texi(,1032) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
+commands_in_ifset.texi(,1033) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
+commands_in_ifset.texi(,1034) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
+commands_in_ifset.texi(,1035) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
+commands_in_ifset.texi(,1036) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
+commands_in_ifset.texi(,1037) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
+commands_in_ifset.texi(,1038) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
+commands_in_ifset.texi(,1039) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
+commands_in_ifset.texi(,1040) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
+commands_in_ifset.texi(,1041) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
+commands_in_ifset.texi(,1042) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
+commands_in_ifset.texi(,1043) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
+commands_in_ifset.texi(,1044) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
+commands_in_ifset.texi(,1045) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
+commands_in_ifset.texi(,1046) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
+commands_in_ifset.texi(,1047) @code{@@ref@{,cross ref name,title,@}} @ref{,cross ref name,title,}
+commands_in_ifset.texi(,1048) @code{@@ref@{,cross ref name,,file name@}} @ref{,cross ref name,,file name}
+commands_in_ifset.texi(,1049) @code{@@ref@{,cross ref name,,,manual@}} @ref{,cross ref name,,,manual}
+commands_in_ifset.texi(,1050) @code{@@ref@{,cross ref name,title,file name@}} @ref{,cross ref name,title,file name}
+commands_in_ifset.texi(,1051) @code{@@ref@{,cross ref name,title,,manual@}} @ref{,cross ref name,title,,manual}
+commands_in_ifset.texi(,1052) @code{@@ref@{,cross ref name,title, file name, manual@}} @ref{,cross ref name,title, file name, manual}
+commands_in_ifset.texi(,1053) @code{@@ref@{,,title,file name@}} @ref{,,title,file name}
+commands_in_ifset.texi(,1054) @code{@@ref@{,,title,,manual@}} @ref{,,title,,manual}
+commands_in_ifset.texi(,1055) @code{@@ref@{,,title, file name, manual@}} @ref{,,title, file name, manual}
+commands_in_ifset.texi(,1056) @code{@@ref@{,,,file name,manual@}} @ref{,,,file name,manual}
+commands_in_ifset.texi(,1057) 
+commands_in_ifset.texi(,1058) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+commands_in_ifset.texi(,1059) @code{@@inforef@{chapter@}} @inforef{chapter}
+commands_in_ifset.texi(,1060) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
+commands_in_ifset.texi(,1061) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
+commands_in_ifset.texi(,1062) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
+commands_in_ifset.texi(,1063) @code{@@inforef@{node@}} @inforef{node}
+commands_in_ifset.texi(,1064) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
+commands_in_ifset.texi(,1065) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
+commands_in_ifset.texi(,1066) @code{@@inforef@{,cross ref name @}} @inforef{,cross ref name }
+commands_in_ifset.texi(,1067) @code{@@inforef@{,,file name@}} @inforef{,,file name}
+commands_in_ifset.texi(,1068) @code{@@inforef@{,cross ref name, file name@}} @inforef{,cross ref name, file name}
+commands_in_ifset.texi(,1069) 
+commands_in_ifset.texi(,1070) @code{@@ref@{s--ect@@comma@{@}ion, a @@comma@{@} in cross
+commands_in_ifset.texi(,1071) ref, a comma@@comma@{@} in title, a comma@@comma@{@} in file, a @@comma@{@} in manual name @}}
+commands_in_ifset.texi(,1072) @ref{s--ect@comma{}ion, a @comma{} in cross
+commands_in_ifset.texi(,1073) ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
+commands_in_ifset.texi(,1074) 
+commands_in_ifset.texi(,1075) @code{@@ref@{s--ect@@comma@{@}ion@}} @ref{s--ect@comma{}ion}
+commands_in_ifset.texi(,1076) 
+commands_in_ifset.texi(,1077) @table @bullet
+commands_in_ifset.texi(,1078) @item a
+commands_in_ifset.texi(,1079) l--ine
+commands_in_ifset.texi(,1080) @end table
+commands_in_ifset.texi(,1081) 
+commands_in_ifset.texi(,1082) @vtable @asis
+commands_in_ifset.texi(,1083) @item a
+commands_in_ifset.texi(,1084) l--ine
+commands_in_ifset.texi(,1085) @end vtable
+commands_in_ifset.texi(,1086) 
+commands_in_ifset.texi(,1087) @ftable @minus
+commands_in_ifset.texi(,1088) @item a
+commands_in_ifset.texi(,1089) l--ine
+commands_in_ifset.texi(,1090) @end ftable
+commands_in_ifset.texi(,1091) 
+commands_in_ifset.texi(,1092) @flushleft
+commands_in_ifset.texi(,1093) flushleft
+commands_in_ifset.texi(,1094) @end flushleft
+commands_in_ifset.texi(,1095) 
+commands_in_ifset.texi(,1096) @flushright
+commands_in_ifset.texi(,1097) flushright
+commands_in_ifset.texi(,1098) @end flushright
+commands_in_ifset.texi(,1099) 
+commands_in_ifset.texi(,1100) @center centered line
+commands_in_ifset.texi(,1101) 
+commands_in_ifset.texi(,1102) @verbatiminclude simplest.texi
+commands_in_ifset.texi(,1103) 
+commands_in_ifset.texi(,1104) 
+commands_in_ifset.texi(,1105) @cindex t--ruc
+commands_in_ifset.texi(,1106) @cindex T--ruc
+commands_in_ifset.texi(,1107) @cindex .
+commands_in_ifset.texi(,1108) @cindex ?
+commands_in_ifset.texi(,1109) @cindex a
+commands_in_ifset.texi(,1110) @findex t--ruc
+commands_in_ifset.texi(,1111) @findex T--ruc
+commands_in_ifset.texi(,1112) @findex .
+commands_in_ifset.texi(,1113) @findex ?
+commands_in_ifset.texi(,1114) @findex a
+commands_in_ifset.texi(,1115) 
+commands_in_ifset.texi(,1116) 
+commands_in_ifset.texi(,1117) cp
+commands_in_ifset.texi(,1118) @printindex cp
+commands_in_ifset.texi(,1119) 
+commands_in_ifset.texi(,1120) fn
+commands_in_ifset.texi(,1121) @printindex fn
+commands_in_ifset.texi(,1122) 
+commands_in_ifset.texi(,1123) vr
+commands_in_ifset.texi(,1124) @printindex vr
+commands_in_ifset.texi(,1125) 
+commands_in_ifset.texi(,1126) ky
+commands_in_ifset.texi(,1127) @printindex ky
+commands_in_ifset.texi(,1128) 
+commands_in_ifset.texi(,1129) pg
+commands_in_ifset.texi(,1130) @printindex pg
+commands_in_ifset.texi(,1131) 
+commands_in_ifset.texi(,1132) tp
+commands_in_ifset.texi(,1133) @printindex tp
+commands_in_ifset.texi(,1134) 
+commands_in_ifset.texi(,1135) @contents
+commands_in_ifset.texi(,1136) @shortcontents
+commands_in_ifset.texi(,1137) @bye
+commands_in_ifset.texi(,1138) @end macro
 commands_in_ifset.texi(,1139) 
 commands_in_ifset.texi(,1140) @c now call the macro within @ifset
 commands_in_ifset.texi(,1141) 

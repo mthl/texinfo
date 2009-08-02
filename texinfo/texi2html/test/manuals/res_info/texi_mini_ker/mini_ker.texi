@@ -10,6 +10,9 @@
 
 @set myurl @url{http://www.environnement.ens.fr/@/perso/@/dumas/@/mini_ker/@/software.html}
 
+@macro Minik{}
+Miniker
+@end macro
 
 @settitle Miniker 102 manual
 

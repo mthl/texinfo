@@ -22,12 +22,12 @@ And end para.
 
 @example
 Example
-@mymacro
+@mymacro{}
 @end example
 
 @quotation
 Quotation
-@mymacro
+@mymacro{}
 @end quotation
 
 @bye

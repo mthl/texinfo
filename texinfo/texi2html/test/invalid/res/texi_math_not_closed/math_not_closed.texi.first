@@ -1,0 +1,10 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename math_no_closed.info
+
+@node Top
+
+@special_math_1{}
+@chapter Chapter 
+
+@special_math_2{}

@@ -1,0 +1,46 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top,First node,(dir)
+@top pass0 macro
+@menu
+* First node::    node 1
+@end menu
+
+@node First node,,Top,Top
+@chapter first node chapter
+
+before syncodeindex @syncodeindex cp fn
+
+syncodeindex on its line
+@syncodeindex cp fn
+line following syncodeindex
+
+One more thing following syncodeindex
+@syncodeindex cp fn    truc
+line following syncodeindex cp fn   truc
+
+documentlanguage @documentlanguage  en  
+
+documentlanguage on its line
+@documentlanguage  en  
+line following documentlanguage
+
+double documentlanguage on its line
+@documentlanguage  en @documentlanguage  en  
+line following documentlanguage
+
+@documentlanguage  en  after documentlanguage
+
+definedx truc
+@defindex truc
+after
+
+definedx chose   machin
+@defindex chose    machin 
+after
+
+@trucindex index truc
+@c @choseindex index
+@c @machinindex machin
+
+Before bye @bye

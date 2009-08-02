@@ -1,0 +1,15 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename node_in_copying.info
+
+@node Top
+@top Top section
+
+
+This is an unterminatted copyright notice
+
+
+
+This is a manual testing @@node appearing within an unterminated @@copying.
+
+@bye

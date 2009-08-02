@@ -59,12 +59,12 @@ Second para.
 @top Test for definition commands
 
 in text
-@mymacro
+@mymacro{}
 
 
 @example
 In example
-@mymacro
+@mymacro{}
 @end example
 
 @bye

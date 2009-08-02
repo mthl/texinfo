@@ -35,18 +35,18 @@ After table.
 
 Quotation
 @quotation
-@myvtable
+@myvtable{}
 @end quotation
 
 Example
 @example
-@myvtable
+@myvtable{}
 @end example
 
 Double quotation
 @quotation
 @quotation
-@myvtable
+@myvtable{}
 @end quotation
 @end quotation
 

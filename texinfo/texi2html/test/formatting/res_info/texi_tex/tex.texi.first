@@ -1,0 +1,33 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top Tests
+
+
+Now tex on the following line, valid fot tex (with @@end tex on a line).
+@tex some
+
+tex \TeX 
+@end tex
+
+Same that @@html (but empty following line not ignored).
+
+Test of @@math
+Here some @math{{x^i}\over{\tan y}}.
+
+Maths with protected \:
+@math{a @\ b}.
+
+Maths with code @@-command:
+
+@math{@code{math code}}
+
+Maths with code @@-command and braces:
+
+@math{ \underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}}
+
+@@\ outside of math
+
+@\
+
+@bye

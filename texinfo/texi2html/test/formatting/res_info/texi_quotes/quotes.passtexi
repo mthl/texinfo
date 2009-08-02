@@ -3,7 +3,34 @@ quotes.texi(,3) @setfilename quotes.info
 quotes.texi(,4) 
 quotes.texi(,9) 
 quotes.texi(,22) 
+quotes.texi(,23) @macro quotes
+quotes.texi(,24) ``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{} @*
+quotes.texi(,25) code: @code{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
+quotes.texi(,26) asis: @asis{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
+quotes.texi(,27) strong: @strong{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
+quotes.texi(,28) kbd: @kbd{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
+quotes.texi(,29) samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{}} @*
+quotes.texi(,30) @end macro
 quotes.texi(,31) 
+quotes.texi(,32) @macro allquotes
+quotes.texi(,33) @quotes{}
+quotes.texi(,34) 
+quotes.texi(,35) @example
+quotes.texi(,36) @@set txicodequoteundirected
+quotes.texi(,37) @@set txicodequotebacktick
+quotes.texi(,38) @end example
+quotes.texi(,39) @set txicodequoteundirected
+quotes.texi(,40) @set txicodequotebacktick
+quotes.texi(,41) @quotes{}
+quotes.texi(,42) 
+quotes.texi(,43) @example
+quotes.texi(,44) @@clear txicodequoteundirected
+quotes.texi(,45) @@clear txicodequotebacktick
+quotes.texi(,46) @end example
+quotes.texi(,47) @clear txicodequoteundirected
+quotes.texi(,48) @clear txicodequotebacktick
+quotes.texi(,49) @quotes{}
+quotes.texi(,50) @end macro
 quotes.texi(,51) 
 quotes.texi(,52) @copying
 quotes.texi(allquotes,53) ``simple-double--three---four----'' `simple' quotedblleft: @quotedblleft{} @*

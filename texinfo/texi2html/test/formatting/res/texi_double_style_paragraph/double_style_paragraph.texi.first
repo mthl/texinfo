@@ -1,0 +1,15 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename double_style_paragraph.info
+
+@node Top
+@top 2 style commands enclosing 2 paragraphs
+
+@emph{@strong{
+First para.
+
+Second para.
+}
+}
+
+@bye

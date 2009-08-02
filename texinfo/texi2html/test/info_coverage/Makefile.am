@@ -16,6 +16,7 @@ headings_in_footnote.texi noindent_in_paragraph.texi table_long_item.texi \
 html_expanded.texi paragraphindent.texi test_setfilename.texi \
 images_eol.texi simple_2nodes.texi thing_in_menu.texi \
 empty_multitable_in_itemize.texi code.texi kbd.texi \
+note_in_strong.texi \
  f--ile""\.png f--ile""\.txt this_is_a_long_unknown_file.png \
  verb.txt tests.txt res res_all res_info
 

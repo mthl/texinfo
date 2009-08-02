@@ -30,7 +30,7 @@ samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedbl
 @end macro
 
 @macro allquotes
-@quotes
+@quotes{}
 
 @example
 @@set txicodequoteundirected
@@ -38,7 +38,7 @@ samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedbl
 @end example
 @set txicodequoteundirected
 @set txicodequotebacktick
-@quotes
+@quotes{}
 
 @example
 @@clear txicodequoteundirected
@@ -46,11 +46,11 @@ samp: @samp{``simple-double--three---four----'' `simple' quotedblleft: @quotedbl
 @end example
 @clear txicodequoteundirected
 @clear txicodequotebacktick
-@quotes
+@quotes{}
 @end macro
 
 @copying
-@allquotes
+@allquotes{}
 @end copying
 @titlepage
 Titlepage
@@ -63,10 +63,10 @@ Titlepage
 
 @value{print_utf8}
 
-@allquotes
+@allquotes{}
 
 @example
-@allquotes
+@allquotes{}
 @end example
 
 @bye

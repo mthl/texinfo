@@ -6,13 +6,10 @@ pass0 macro
 ********************
 
 before syncodeindex 
-
 syncodeindex on its line
-
 line following syncodeindex
 
 One more thing following syncodeindex
-    truc
 line following syncodeindex cp fn   truc
 
 documentlanguage 

@@ -1,0 +1,32 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename multitables.info
+
+@node Top
+@top Test multitables
+
+@multitable {AAA}  {BBB}
+@item truc @tab bidule
+@item begin item
+
+new paragraph in item.
+
+@tab begin tab
+
+new paragraph in tab.
+@end multitable
+
+@example
+@multitable {AAA}  {BBB}
+@item truc @tab bidule example
+@item begin item example
+
+new paragraph in item. example
+
+@tab begin tab example
+
+new paragraph in tab. example
+@end multitable
+@end example
+
+@bye

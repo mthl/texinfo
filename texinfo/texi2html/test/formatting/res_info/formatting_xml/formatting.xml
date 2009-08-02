@@ -525,7 +525,7 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 </para>
 <para>f&ndash;lushright
 </para>
-<center><para> ce&ndash;ntered line
+<center><para>ce&ndash;ntered line
 </para></center>
 <verbatim xml:space="preserve">\input texinfo @c -*-texinfo-*-
 
@@ -1063,7 +1063,7 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 </para>
 <para>f&ndash;lushright
 </para>
-<center><para> ce&ndash;ntered line
+<center><para>ce&ndash;ntered line
 </para></center>
 <verbatim xml:space="preserve">\input texinfo @c -*-texinfo-*-
 
@@ -1596,7 +1596,7 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 </para>
 <para>f&ndash;lushright
 </para>
-<center><para> ce&ndash;ntered line
+<center><para>ce&ndash;ntered line
 </para></center>
 <verbatim xml:space="preserve">\input texinfo @c -*-texinfo-*-
 
@@ -2130,7 +2130,7 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 </para>
 <para>f&ndash;lushright
 </para>
-<center><para> ce&ndash;ntered line
+<center><para>ce&ndash;ntered line
 </para></center>
 <verbatim xml:space="preserve">\input texinfo @c -*-texinfo-*-
 
@@ -2662,7 +2662,7 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 </para>
 <para>f&ndash;lushright
 </para>
-<center><para> ce&ndash;ntered line
+<center><para>ce&ndash;ntered line
 </para></center>
 <verbatim xml:space="preserve">\input texinfo @c -*-texinfo-*-
 

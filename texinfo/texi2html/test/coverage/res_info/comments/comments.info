@@ -71,12 +71,10 @@ command removed
 ---------------
 
 And now finalout: Text line followed by finalout on the same line and
-another below
+another below Text line after the finalout followed by a fianlout Text
+line after the text line followed by the finalout.
 
-    Text line after the finalout followed by a fianlout  Text line after
-the text line followed by the finalout.
-
-    Test text after finalout  a word after finalout Line after finalout
+    Test text after finalout Line after finalout
 
     @page
     @noindent @refill  something
@@ -168,10 +166,10 @@ File: comments.info,  Node: bidule2,  Prev: bidule,  Up: Top
 
 Tag Table:
 Node: Top78
-Node: node2952
-Node: truc3065
-Node: bidule3303
-Node: bidule23489
+Node: node2923
+Node: truc3036
+Node: bidule3274
+Node: bidule23460
 
 End Tag Table
 

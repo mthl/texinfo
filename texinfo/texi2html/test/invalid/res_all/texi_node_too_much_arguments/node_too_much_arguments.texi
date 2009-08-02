@@ -1,0 +1,14 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename node_too_much_arguments.info
+
+@node Top
+@top Top
+
+@menu
+* node::
+@end menu
+
+@node node,,,,too much arg
+
+@bye

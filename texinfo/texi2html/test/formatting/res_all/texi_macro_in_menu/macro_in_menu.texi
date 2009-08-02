@@ -1,5 +1,10 @@
 \input texinfo @c -*-texinfo-*-
 
+@macro themacro
+@html
+bidule
+@end html
+@end macro
 
 @node Top
 

@@ -108,7 +108,7 @@ multitable beginning with @tab
  new line
 
 A flushright
- some text flushed right
+some text flushed right
 
 A center Centered line
 And a center after empty line
@@ -164,7 +164,7 @@ See no verb.
 ========
 
 A node with gggggggg
-before example  after example
+before example after example
 
 the example
 before end example  

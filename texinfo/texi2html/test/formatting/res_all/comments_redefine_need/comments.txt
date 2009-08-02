@@ -61,13 +61,9 @@ command removed
 ---------------
 
 And now finalout:
-Text line followed by finalout on the same line and another below 
-
-Text line after the finalout followed by a fianlout 
-Text line after the text line followed by the finalout.
+Text line followed by finalout on the same line and another below Text line after the finalout followed by a fianlout Text line after the text line followed by the finalout.
 
 Test text after finalout
- a word after finalout
 Line after finalout
 
 @page  @noindent @refill  something

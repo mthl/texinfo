@@ -1,0 +1,27 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename tex_in_copying.info
+
+
+
+@node Top
+@top Top node
+
+@insertcopying
+
+@menu
+* chapter::
+@end menu
+
+@insertcopying
+
+@node chapter
+@chapter chapter
+
+The fundamental equation is
+@special_tex_2{}
+
+@insertcopying
+
+
+@bye

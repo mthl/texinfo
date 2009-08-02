@@ -1,0 +1,202 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename testkb.info
+@documentlanguage de
+@documentencoding ASCII
+@setchapternewpage on
+@footnotestyle separate
+@c
+@c ----------------------------------------------------------------------------
+@node Top,Overview,,(dir)
+@chapter Test 1
+Hier kann eine Erkl@"arung zum Thema stehen oder auch nicht.
+Noch mehr erkl@"arungen zu dem Thema.
+@menu
+* Overview::.       Methode four.
+@end menu
+@c ----------------------------------------------------------------------------
+@node Overview,,Top,Top
+@chapter Class
+Here you can read many things I need for this documentation.
+But more and more of this exploration can be done here.
+@section Overview
+Das ist ein Test @r{Roman Text in einer Umgebung}
+
+Hier ist normaler Text. Hier sollte keine Einr@"uckung stattfinden.
+Sondern eher ein normaler umbruch. Somit kann es hier wieder
+weitergehen. Oder sehe ich da was falsch.
+Hier ist normaler Text. Hier sollte keine Einr@"uckung stattfinden.
+Sondern eher ein normaler umbruch. Somit kann es hier wieder
+weitergehen. Oder sehe ich da was falsch.
+Hier ist normaler Text. Hier sollte keine Einr@"uckung stattfinden.
+Sondern eher ein normaler umbruch. Somit kann es hier wieder
+weitergehen. Oder sehe ich da was falsch.
+Hier ist normaler Text. Hier sollte keine Einr@"uckung stattfinden.
+Sondern eher ein normaler umbruch. Somit kann es hier wieder
+weitergehen. Oder sehe ich da was falsch.
+
+@defcv dcvKat dcvClass dcvName
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu defcv. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu defcv.
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu defcv. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu defcv.
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu defcv. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu defcv.
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu defcv. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu defcv.
+@end defcv
+
+@deffn {dfnKat} dfnName (dfnArgumente)
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu deffn. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu deffn.
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu deffn. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu deffn.
+@itemize
+@item Erstens
+@item Zweitens
+@item Drittens
+@end itemize
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu deffn. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu deffn.
+@sp 2
+@example
+Das ist ein Beispiel in HTML
+Das ist ein Beispiel in HTML
+Das ist ein Beispiel in HTML
+Das ist ein Beispiel in HTML
+@end example
+@*
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu deffn. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu deffn.
+@end deffn
+
+@deffn {dfnKat1} dfnName1 (dfnArgumente11)
+@deffnx {dfnKat2} dfnName2 (dfnArgumente12)
+@deffnx {dfnKat3} dfnName3 (dfnArgumente13)
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu deffn. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu deffn.
+@end deffn
+
+@defivar {divClass} {divExemplarVar}
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu defivar. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu defivar.
+@end defivar
+
+@defmac dmcName (dmcArgumente)
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu defmac. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu defmac.
+@end defmac
+
+@defmethod {dmeClass} dmName (dmArguments)
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu defmethod. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu defmethod.
+@end defmethod
+
+@defop {dopKat} {dopClass} dopName (dopArgumente)
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu defop. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu defop.
+@end defop
+
+@defopt {dptName}
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu defopt. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu defopt.
+@end defopt
+
+@defspec dspName (dspArgument)
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu defspec. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu defspec.
+@end defspec
+
+@deftp {dtpKat} dtpType (dtpA1 dtpA2)
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu deftp. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu deftp.
+@end deftp
+
+@deftypefn {PUBLIC} int EditLine (int col, int row)
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu deftypefn. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu deftypefn.
+@end deftypefn
+
+@deftypefun int FunktionEins (int col, int row)
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu deftypefun. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu deftypefun.
+@end deftypefun
+
+@deftypemethod {dtmClass} int dtmName (int col, int row)
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu deftypemethod. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu deftypemethod.
+@end deftypemethod
+
+@deftypevar DataType VarName
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu deftypevar. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu deftypevar.
+@end deftypevar
+
+@deftypeivar {dtiv} DataType VarName
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu deftypeivar. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu deftypeivar.
+@end deftypeivar
+
+@deftypevr {dtv} DataType VarName
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu deftypevr. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu deftypevr.
+@end deftypevr
+
+@defun FuntionName (Argumente)
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu defun. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu defun.
+@end defun
+
+@defvar VariablenName
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu defvar. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu defvar.
+@end defvar
+
+@defvr {dvrKat} dvrName
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu defvr. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu defvr.
+@end defvr
+
+@deftypeop {dtypeopCat} deftypeopClass deftypeopType deftypeopName deftypeopArgs
+Hier mu@ss{} in HTML eine Tabelle erzeugt werden. Hier ist das ok.
+Beschreibung zu deftypeop. Hier mu@ss{} in HTML eine Tabelle erzeugt
+werden. Hier ist das ok. Beschreibung zu deftypeop.
+@end deftypeop
+
+@appendix Indizes
+@appendixsec Konzept Index
+@printindex cp
+@appendixsec Funktionen Index
+@printindex fn
+@appendixsec Programme Index
+@printindex pg
+@appendixsec Tasten Index
+@printindex ky
+@appendixsec Var Index
+@printindex vr
+@contents
+@bye

@@ -1,0 +1,747 @@
+\input texinfo   @c -*- mode: texinfo; coding: iso-8859-1-unix -*-
+@c %**start of header
+@setfilename templates.info
+@documentencoding iso-8859-1
+@documentlanguage en
+@settitle  Emacs template package documentation, version 3.1c
+@c %**end of header
+@alias kbdmenu = kbd
+@alias codetpl = samp
+@alias codevar = code
+
+@copying
+This is the Emacs template package documentation, version 3.1c
+Copyright @copyright{} 2008 Christoph Wedler, Vincent Belaïche.
+
+@quotation
+Permission is granted to ...
+@end quotation
+@end copying
+
+@dircategory Emacs
+@direntry
+* Templates: (templates). Creating templates for files creation.
+@end direntry
+
+
+@titlepage
+@title Emacs template package manual
+@subtitle Details of Package Template
+@author Christoph Wedler
+
+@c  The following two commands
+@c  start the copyright page.
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+
+Published by ...
+@end titlepage
+
+@node Top,,,(dir)top
+@top Top node.
+
+This is the manual of Emacs template package
+
+@menu
+* Overview:: Overview.
+* Installation:: how to install the template package.
+* Basics:: How to make and use templates.
+* Advanced:: Templates for advanced users.
+* Indexes:: Indexes for commands, keyword, and variable.
+* News:: News for Package Template.
+* Acknowledgements:: Acknowledgements.
+@end menu
+
+@node Overview,,,Top
+@chapter Overview
+
+When you create a new file with Emacs, package Template supplies an initial
+buffer content via a template: a file with normal text and expansion forms.
+There is a menu to easily create such templates.  You can also use new commands
+to decorate comments and update the buffer contents.
+
+
+The main difference between Template and @ref{Related,other similar
+packages} is that you can define very flexible templates without having
+to learn Lisp or changing your Emacs init file.  This package does not
+help Lisp programmers to define complex macros.
+
+@itemize
+@item
+The template mechanism is hooked into the normal find/open file command.  There
+are also new commands for creating a new file using a template and inserting &amp;
+expanding a template.
+@item
+You do not have to enter the file name of the template file.  This package uses
+a sophisticated search to find the most appropritate template (supporting
+project- and subproject specific template files).  You can change the
+suggestion, of course.
+@item
+A template file can be easily created.  Most of the file usually contains
+simple text; only @dfn{expansion forms} which look like
+@samp{(>>>@var{Key}<<<)} will get replaced.
+@item
+There are various useful predefined expansions: set point (the cursor
+position), mark and registers to the current position; insert various parts of
+the filename, the user/system name, the current date/time in various formats,
+and some text to be entered by the user.
+@item
+Template-specific expansions can be defined at the end of the template file.
+There are commands to create these definitions; only complex expansions would
+require some knowledge of Lisp.
+@end itemize
+
+There is a menu to support the creation of template files.  Additionally, this
+package provides the following features:
+
+@itemize
+@item
+When saving a buffer, some parts of the buffer contents (header and time
+stamps) are automatically updated if necessary.
+@item
+There are commands to decorate comments with dashes and alike.  Works for
+languages with any comment style, even languages having mixed comments like C++
+and Java.
+@end itemize
+
+
+@node Related,,,Overview
+@section Packages Related to Template
+
+
+There are template packages of two different categories, which are determined
+by one question:
+
+@emph{What do you want to do with templates?} Do you want to use templates
+when creating new files, or do you want to insert some stuff during editing
+(but you are not satisfied with the standard macro mechanism)?
+
+Well, templates could be seen as both new-file templates and macro-like
+template, but the main application of templates determines the answers for the
+following questions:
+      
+@itemize
+@item
+@emph{How do you define a template?} You can define it by one file per
+template or by customizing some Emacs variables.  The first solution (which is
+used by package Template) avoids Emacs hacking but might not be optimal if you
+just want to define complex macros or if you want to use templates to program a
+new Emacs major-mode.
+@item
+@emph{How is an appropriate template selected?} If you want to use complex
+macro during editing, the answer is clear: the user have to provide the name of
+the template.  For new files, the appropriate template should be automatically
+selected.  But of course, you don't want to loose any flexibility and you don't
+want to customize your Emacs for every project you start.
+@item
+@emph{How do you do "clever" things in the template?} The aims are to have
+many predefined expansions (e.g., the current date) and to define some
+non-trivial things without learning Lisp.  Any functionality here is the
+overlapping point of both template categories.
+@end itemize
+
+
+
+Here is a little list of related files, collected around 1998, some discarded
+later (no @abbr{URL}s, no active updating, but you can send me a mail):
+
+@itemize
+@item
+Package @cite{autoinsert.el} uses templates when creating new files.
+These templates are defined via files or by customizing Emacs.  For each new
+template you want to introduce, you must customize your Emacs, the selection is
+restricted to one template per major-mode or regexp match.  No predefined
+expansions; clever things are provided by usual Lisp expressions or the
+macro-like templates of package @cite{skeleton}.
+@item
+Package @cite{skeleton.el} is a Lisp language extension for
+writing statement skeletons, i.e., you get macro-like Lisp commands.
+@item
+Package @cite{tempo.el} helps you defining and using named macro-like
+templates.  Its predefined macros are similar to some predefined expansions of
+package Template.  A specific template is used by
+<code class="lisp">html-helper-mode</code> when creating a new html file.
+(This is turned off with the default installation of package Template.)
+@item
+Package @cite{hm--html-menus} provides a command to insert templates
+editing.  These templates are defined via files.  There are no predefined
+expansions (except setting point), non-trivial expansions are defined via Lisp.
+@end itemize
+
+
+
+
+@node Installation,,,Top
+@chapter Installation
+
+@section Installation Instructions
+
+@enumerate
+@item
+Copy file @file{template/lisp/template.el} into your
+load-path and byte-compile it.
+@item
+Insert the following code into your Emacs init file
+(@file{~/.emacs}):
+
+@lisp
+(require 'template)
+(template-initialize)
+@end lisp
+
+@item
+If you want to customize package Template, use @kbd{M-x
+customize-group @key{RET} template
+@key{RET}} or the customize entry in menu
+@kbd{Options}.
+@item
+You might want to copy the template files from directory
+@file{template/templates/} to
+@file{~/.templates/} and change them according to your
+preferences.
+@end enumerate
+
+
+Installation instructions with further explanations can be found in file
+@file{template/INSTALL} of the distribution.
+
+ 
+
+@node Basics,,,Top
+@chapter Basics
+
+Emacs, template, file template, comment decoration, auto-updating, time stamp, details
+
+@menu
+* menus:: Menus and Key-Bindings.
+* using:: Using a Template.
+* finding:: Finding a Template.
+* creating:: Creating a Template.
+* decorating:: Decorating a Comment.
+* updating:: Updating a Buffer.
+@end menu
+
+@node menus,,,Basics
+@section  Menus and Key-Bindings
+@c --------------------------------------------------------------------------------
+For Emacs-21.1+ and XEmacs, this package defines the following menu entries and
+key-bindings: 
+
+@itemize
+@item
+In menu @kbd{File} , there is a new menu item @kbd{New File
+Using Template...}  .  The corresponding command is also bound to the
+key sequence @kbd{C-x t}.
+@item
+At the end of menu @kbd{Cmds} (in XEmacs if it exists) or menu
+ @kbd{Edit} , there is a new submenu @kbd{Template Creation}.
+@item
+Enter @kbd{C-x C-=} (command @command{template-single-comment}) to
+insert dashes and alike into the current line and end the comment.
+@item
+Enter @kbd{C-x C-;} (command @command{template-single-comment}) to
+insert dashes and alike around the current comment block.
+@item
+At the end of menu @kbd{Edit} , there is a new submenu
+@kbd{Comment}.  It also contains the two commands just mentioned.
+@end itemize
+
+@c --------------------------------------------------------------------------------
+@node using,,,Basics
+@section  Using a Template
+@c --------------------------------------------------------------------------------
+Package Template offers various ways how to use template files:
+
+In Emacs, the usual way to create a new file is by typing @kbd{C-x C-f},
+using the menu or the toolbar (running command @command{find-file} or
+@command{ffap}) and entering a non-existent file name.  In this case,
+you will be asked whether to use a template for the new file.  You can
+turn off this feature.
+
+@itemize
+@item
+Here a first undefined xref @xref{EExpansion}.
+There is a new command @command{template-new-file} @footnote{for the
+menu entry and its key-binding type @kbd{C-h f template-new-file},
+@xref{EExpansion}} to create a new file using a template.  Here, you have
+the chance to edit the name of the template file.  This command also
+supports file name refinement which is useful to create a file in a
+series of files like @file{exercise2.tex} etc.
+@item
+There is also a command (@kbd{M-x template-expand-template})
+to insert a template file into the current buffer and expand its expansion
+forms.
+@end itemize
+
+
+For more @command{template-new-file} and @code{template-auto-insert},
+ @xref{Expansion}.
+
+@c --------------------------------------------------------------------------------
+
+@node finding,,,Basics
+@section  Finding a Template
+@c --------------------------------------------------------------------------------
+The algorithm for finding the most appropriate template can be best explained
+with a little example:
+
+@itemize
+@item
+You have a project @file{~/proj/} with subprojects @file{foo/} and
+@file{bar/} containing @file{.java} files.
+@item
+You want to define a general template for the @file{.java} in your
+project files, although @file{.java} files in subproject @file{foo/}
+should use their own template.  You also want to define a special
+template for all files @file{proj.java} in the project.
+@item
+Since you do not want to clutter the project directory with template
+files, you first create a directory @file{~/proj/Templates/}.  In this
+directory, you create new files @file{TEMPLATE.java.tpl} and
+@file{proj.java.tpl}.  In directory @file{~/proj/foo/}, you create a new
+file @file{TEMPLATE.java.tpl}.
+@end itemize
+
+The creation of the template files in the right directory is already enough for
+packages Template to find the most appropriate template for a new file:
+
+@itemize
+@item
+If you create a new file @file{~/proj/foo/abc.java}, this package tries
+to find a template based on the file extension of the new file.  The
+generic base file name for a template is @file{TEMPLATE} and the
+additional extension is @file{.tpl}, a file @file{TEMPLATE.java.tpl}
+exists in @file{~/proj/foo/}, so that file is used as the template.
+@item
+If you create a new file @file{~/proj/bar/abc.java}, this package again
+tries to find @file{TEMPLATE.java.tpl}.  Since this file doesn't exist
+in @file{~/proj/bar/}, it first inspects the subdirectory
+@file{Templates/} which doesn't exist.  The search continues with the
+parent directory @file{~/proj/} and then its subdirectory
+@file{Templates/}.  Thus @file{~/proj/Templates/TEMPLATE.java.tpl} will
+be used.
+@item
+If you create a new file @file{~/proj/foo/proj.java}, this package finds
+a template file with the same base name: it uses
+@file{~/proj/Templates/proj.java.tpl}.  You might argue that
+@file{~/proj/foo/TEMPLATE.java.tpl} resides in a more specific
+directory, but having the same base name is considered to be more
+important (remember that some file like Makefiles do not have file
+extensions).
+@item
+If you create a new file @file{~/other_proj/foo/proj.java}, i.e., a
+project where you have defined no template files, this package uses one
+of the default templates, in this case
+@file{~/.templates/TEMPLATE.java.tpl}.
+@end itemize
+
+For more on derivation @xref{Derivation}.
+
+@c --------------------------------------------------------------------------------
+
+@node creating,,,Basics
+@section  Creating a Template
+@c --------------------------------------------------------------------------------
+
+There are various predefined expansions which are probably enough for
+most templates.  A corresponding expansion forms can be easily inserted
+by selecting the appropriate entry in the new submenu  @kbd{Template
+Creation}
+:
+
+@itemize
+@item
+Remember positions: use @samp{(>>>POINT<<<)} to set point (the cursor
+position), @samp{(>>>MARK<<<)} to set mark (e.g., the opposite position
+when a region is highlighted), and @samp{(>>>1<<<)} to @samp{(>>>0<<<)}
+to registers to the current position.  Remember that @kbd{C-x r j
+@var{Key}} jumps to the position stored in register @var{Key}.
+@item
+
+Insert parts of the file name, e.g., when creating the new file
+@file{~/proj/foo/abc1.java}: @samp{(>>>DIR<<<)} is replaced by
+@file{/home/user/proj/foo/}, @samp{(>>>FILE<<<)} by @file{abc1.java},
+@samp{(>>>FILE_SANS<<<)} by @file{abc1} , @samp{(>>>FILE_UPCASE<<<)} by
+@file{ABC1} , @samp{(>>>FILE_RAW<<<)} by @file{abc},
+@samp{(>>>FILE_NUM<<<)} by @file{1} , and @samp{(>>>FILE_EXT<<<)} by
+@file{java}.
+@item
+Insert the current date/time in two customizable and three fixed
+formats: use @samp{(>>>DATE<<<)} for @samp{20 Feb 2002},
+@samp{(>>>TIME<<<)} for @samp{20:01:13} , @samp{(>>>YEAR<<<)} for
+@samp{2002} , @samp{(>>>ISO_DATE<<<)} for @samp{2002-02-20} , and
+@samp{(>>>VC_DATE<<<)} for @samp{2002/02/20 19:01:13}
+@item
+Insert the user/system name in various formats: use
+@samp{(>>>AUTHOR<<<)} for @email{Christoph Wedler
+<wedler@@fmi.uni-passau.de>}, @samp{(>>>USER_NAME<<<)} for
+@samp{Christoph Wedler} , @samp{(>>>LOGIN_NAME<<<)} for @samp{wedler} ,
+and @samp{(>>>HOST_ADDR<<<)} for @samp{fmi.uni-passau.de} .
+@item
+Ask the user for some initial comment.  If this expansion is used, the buffer
+for the new file will be marked as modified.  For each undefined expansion, the
+user is also asked.
+@item
+Disabling the search for expansion forms:
+@samp{(>>>ZERO_FORM<<<)} can be inserted into a string which
+will be otherwise regarded as an expansion form, the region between
+@samp{(>>>LITERAL<<<)} and the first
+@samp{(>>>/LITERAL<<<)} after it will be skipped.
+@end itemize
+    
+You can define your own expansions in your Emacs init file and at the end of a
+template file.  A corresponding definition can be easily inserted by selecting
+the appropriate entry in the new submenu  @kbd{Template
+Creation}:
+    
+@itemize
+
+@item
+@kbd{Define User Input}
+.  Ask the user to insert some text
+using some specific prompt.  Optionally, ask for a text with completion, or for
+a sequence of user input (exit with empty input).
+@item
+@kbd{Define Text Register} 
+.  Define a text for
+register @var{Reg} which can be inserted with @kbd{C-x r i @var{Reg}}.
+Optionally, provide a comment for it which will be temporarily shown at
+point.
+@item
+@kbd{Define Message}
+.  Define a message which will be
+temporarily shown at point or before/after the expansion in a special buffer.
+There is also a computed message in the echo area.
+@item
+
+Execute some Lisp coding defined at the end of the template.  By default, you
+have to confirm it first, since it is insecure to execute unchecked coding.
+(You do not have menu support to define this kind of expansion.)
+@end itemize
+
+@defopt template-default-expansion-alist
+@end defopt
+@defopt template-definition-start
+@end defopt
+
+    
+@c --------------------------------------------------------------------------------
+
+@node decorating,,,Basics
+@section  Decorating a Comment
+@c --------------------------------------------------------------------------------
+
+There are commands to decorate comments with dashes and alike (@samp{-},
+@samp{=} and @samp{#} by default).  Both commands are included in the
+new submenu @kbd{Comments} 
+and bound to keys:
+
+@itemize
+@item
+Use command @code{template-single-comment} to jump to the
+end of the current line and insert the dashes and the final
+comment end-string up-to the fill position.  This command works with any
+comment style, including for languages having mixed comments like C++ and Java.
+It also works in major modes without a defined comment syntax.
+@item
+Use command @code{template-block-comment} to surround the
+current comment block (i.e., contiguous comment lines) with extra lines
+containing dashes and alike and to put the correct number of newlines around
+the block.  This command only works with comments which are terminated with the
+end of the line (like Java's @code{//}@c code class=text
+ comment).
+@end itemize
+
+The comment decoration style is highly customizable and can be controlled by
+
+@itemize
+@item
+The prefix argument given to the two commands.
+@item
+The existing comment decoration style when present.
+@item
+Determined by the indentation or the repetition of a single-character comment
+start (like Emacs-Lisp's @code{;}@c code class=text
+).
+@end itemize
+
+For more on comments @xref{Comments}.
+
+@c --------------------------------------------------------------------------------
+
+@node updating,,,Basics
+@section  Updating a Buffer
+@c --------------------------------------------------------------------------------
+A buffer is automatically updated according to some rules when saving
+the file.  This updating can be invoked explicitly by selecting the menu
+entry @kbd{Update Buffer} in the new submenu @kbd{Comments} .
+
+@itemize
+@item
+Update the file name in the first three lines of the buffer if the file name is
+indicated by @code{@@(#) @var{FileName}}@c code class=text
+ or
+@code{;;; @var{FileName} --}@c code class=text
+ where
+@code{;;;}@c code class=text
+ stands for any comment start (with optional
+repetition of a single-character comment start).
+@item
+Update the date if it is the last text inside the
+@code{address}@c code class=html
+ element of a HTML buffer.
+@item
+Automatic updating is optional, as is user confirmation for it.  Automatic
+updating can be disabled for buffers whose file name matches a regular
+expression.
+@item
+If nothing will be changed by the updating, there will be no user confirmation
+and the buffer will not be marked as modified.
+@end itemize
+
+@defopt template-update-buffer
+@end defopt
+@defopt template-auto-update
+@end defopt
+@defopt template-update-buffer-alist
+@end defopt
+@defopt template-header-regexp-alist
+@end defopt
+
+@node Advanced,,,Top  
+@chapter Templates for advanced users
+
+@menu
+* Customization:: Templates customization.
+@end menu
+
+@node Customization,,,Advanced
+@section Templates customization
+
+@menu
+* Expansion:: Customization of keyword expansion rules.
+* Derivation:: Customization of how templates are derived.
+* Comments:: Customization of comments.
+@end menu
+
+@node Expansion,,,Customization
+@subsection Customization of keyword expansion rules
+
+@deffn {Interactive Command} template-new-file {file template with-undo}
+Open a new file @var{file} by using a @var{template}.
+Using a template for creating a new file consists of, steps 1 to 3 are
+only executed when called interactively:
+@enumerate
+@item
+Prompt for the name of the new file.
+@item
+Template derivation: suggest a reasonable template file to the user see
+@code{template-derivation-alist}.
+@item
+File name refinement: e.g., if the given file name is @file{exercise}
+and there are two files @file{exercise1.tex} and @file{exercise2.tex} in
+the same directory and if we have a template @file{exercise.tex.tpl},
+the file name is refined to @file{exercise3.tex}.  This is turned off
+when @kbd{C-x t} is called with a prefix argument.
+@item
+Template insertion: insert the template file into the empty buffer.
+@item
+Read per-template expansion definition section starting at
+@code{template-definition-start} and delete it.
+@item
+Display: before message in @code{template-message-buffer}.
+@item
+Execute pre-expansion commands defined in the definition section.
+@item
+Set local variables defined in the definition section.
+@item
+Expansion: expand the expansion forms (text matched by
+@code{template-expansion-regexp}) They are defined in the definition
+section, in @code{template-expansion-alist}, or provided by default,
+see @code{template-expansion-regexp} and
+@code{template-register-regexp}.
+@item
+Execute post-expansion commands defined in the definition section.
+@item
+Run @code{normal-mode} and functions in @code{find-file-hooks}.
+@item
+Update header according to @command{template-update-header} with
+@c Vincent: What is this if-exists argument ?
+argument @code{if-exists}.
+@item
+Display: after message in @code{template-message-buffer}.
+@item
+Report: display a temporary message at point defined in the definition
+section and an automatically generated message in the minibuffer area,
+see @code{template-message-timeout}.
+@end enumerate
+If optional @var{with-undo} is non-nil, store corresponding changes in
+@code{buffer-undo-list}.  If @var{file} is nil, the buffer for @var{file} has
+already been created and the accessible part will be replaced by the
+expanded template.  If @var{template} is nil (empty input when called
+interactively), do not use a template.
+@end deffn
+
+@defopt template-auto-insert
+@end defopt
+
+@node Derivation,,,Customization
+@subsection Customization of how templates are derived
+
+@defopt template-derivation-alist
+@end defopt
+
+@node Comments,,,Customization
+@subsection Customization of comments
+
+@defopt template-single-comment
+@end defopt
+
+@deffn {Interactive command} template-block-comment arg
+It is bound to @kbd{C-x C-;}, and @kbd{<menu-bar> <edit> <Comment> <Decorate Comment Block>}.
+
+Decorate the current block of comment-only lines with dashes and alike.
+That is, surround the the contiguous comment-only lines around point
+with extra lines containing dashes and alike and to put the correct
+number of newlines around the block.
+
+Barf if the comment syntax at point has a non-empty @code{comment-end} or if
+point is not in a comment-only line.
+
+A block comment consists of all neighboring lines which start with
+spaces and @code{comment-start}.  If @code{comment-start} is a string of length 1,
+the number of repetitions of @code{comment-start} must be the same or larger
+than in the line where the command is invoked from, too.
+
+Prefix argument @var{arg} and @code{template-comment-specification} determines the
+comment style to use.  The length of the separator line is determined by
+@code{template-max-column}.
+
+This command can also be used with point in an empty line after a block
+comment.  A second invocation of this command directly after a
+successful invocation deletes the remaining empty lines from the current
+line on.
+@end deffn
+
+@defopt template-comment-specification-alist
+List of specifications for comment functions.  Each specification at
+@var{level}, starting at 1, is a list @code{(@var{separator}
+@var{before-block} @var{after-block} @var{DELETE-LINES})}
+
+@var{separator} is the string which is inserted repeatedly by commands
+@kbd{C-x C-=} and @kbd{C-x C-;} up to @code{template-max-column}.
+
+After that, @kbd{C-x C-;} deletes @var{DELETE-LINES} after the comment block
+and inserts string @var{after-block} at the end of the block and
+@var{before-block} at the front of the block.
+
+The specification @var{level} to use is determined by:
+@enumerate
+@item
+If the prefix argument is non-nil and its numeric value is > 0, this
+value is the @var{level}.
+@item
+If the prefix argument is nil, and there is an old comment style, use
+old comment style.
+@item
+If @code{template-comment-specification-special} is a function or the
+current major mode has a property with this name and its value is a
+function, this function returns the specification.
+@item
+If @code{comment-end} is empty and @code{comment-start} is a string of
+length 1: @var{level} is number of repetitions of @code{comment-start}
+at the beginning of the line.  Otherwise, if the correctly indented line
+starts at the beginning of the line, @var{level}=3, else @var{level}=2.
+@end enumerate
+@end defopt
+
+
+@node Indexes,,,Top  
+@chapter Indexes for commands, keyword, and variable
+
+@menu
+* Keyword Index:: Keyword Index.
+* Command Index:: Command Index.
+* Variable Index:: Customizable Variable Index.
+@end menu
+
+@node Keyword Index,,,Indexes
+@section Keyword Index
+
+@node Command Index,,,Indexes
+@section Keyword Index
+
+@printindex fn
+
+@node Variable Index,,,Indexes
+@section Variable Index
+
+@printindex vr
+
+@node News,,,Top  
+@chapter News for Package Template
+
+@table @asis
+@item Latest Version:
+@strong{3.1c} (21 Aug 2003).
+@item Requirements:
+@cite{Emacs-20.2}, @cite{XEmacs-20.2}, or higher.  
+
+No menu support for Emacs before Version 21.1.
+@item Licence: 
+@cite{GNU General Public License}.
+@end table
+
+@section Changes with Release 3.1c
+
+@itemize
+@item
+Bug fix: on XEmacs, initialization would fail without menus "File" and "Edit" in menubar.
+@item
+Allow messages to be displayed in a separate buffer "*Template Messages*"
+instead at point.
+@item
+Correct and improve header updating.
+@item
+Extend use of @code{M-x template-single-comment}.
+@item
+Minor bug fixes.  Miscellaneous.
+@end itemize
+
+    
+@section Changes with Release 3.1
+
+@itemize
+@item
+Moved to SourceForge.net.  Less technical description on web page.
+@item
+Remove examples from distribution, they were more confusing than helpful.
+@item
+Bug fix: would sometimes indent the current line when using the menubar.
+@item
+Menus work with Emacs-21, too.  Rename some menu entries.
+@item
+Don't search further for remote templates.  Nuke this home/base directory
+stuff, stop search at root.
+@item
+Don't rely on command @command{ffap} to always add an entry to
+@code{command-history} if the filename is read from terminal.  Special
+setup for @code{ffap} and @code{html-helper}.
+@item
+Make date/time formats work as names suggest.
+@item
+Command to insert & expand a template file.
+@item
+Allow user to define a choice in the definition section to be answered
+via @code{y-or-n-p}.
+@item
+Various miscellaneous improvements.  Minor bug fixes.
+@end itemize
+    
+@node Acknowledgements,,,Top  
+
+Christoph Wedler @uref{http://sourceforge.net/users/wedler/}, 21 Aug 2003
+
+
+@bye

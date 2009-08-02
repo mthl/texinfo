@@ -1,0 +1,14 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename bad_style_nesting.info
+
+@node Top
+@top Test for bad style @@-command nestings
+
+
+@code{
+@quotation
+in quotation}
+@end quotation
+
+@bye

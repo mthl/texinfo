@@ -1,0 +1,117 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename inter_item_commands.info
+
+@node Top 
+@top Test inter item ignored commands
+
+
+@itemize @code
+@c comment in itemize
+@cindex also a cindex in itemize
+@item e--mph item
+@end itemize
+
+@itemize @bullet
+@cindex index entry within itemize
+@item i--tem 1
+@item @cindex index entry right after @@item
+i--tem 2
+@end itemize
+
+@itemize
+@c comment in itemize
+T--ext before items.
+@cindex also a cindex in itemize
+@item bullet item
+@end itemize
+
+@enumerate
+
+@comment comment before first item in enumerate
+@item e--numerate
+@end enumerate
+
+@multitable {truc}
+@c comment before first item
+
+@item truc
+
+@cindex index entry between empty lines
+
+@item trouc
+@c last comment
+@end multitable
+
+@multitable @columnfractions 6 7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@c comment in multitable
+@item mu--ltitable item 2 @tab multitable tab 2
+@cindex index entry within multitable
+@item lone mu--ltitable item
+@end multitable
+
+@deffn fset @var{i} a g
+@c comment before first deffnx
+
+@deffnx Command { log trap1} {}  
+@cindex between deffnx
+@deffnx cmde2 @b{id @samp{i} ule} truc
+@cindex cindex in deff item
+
+In deff item.
+@end deffn
+
+@vtable @code
+@c comment in table
+@item a
+l--ine
+@end vtable
+
+@vtable @asis
+@item a
+@c comment between item and itemx
+@itemx b
+l--ine
+@end vtable
+
+@ftable @var
+@item a
+@cindex index entry between item and itemx
+@c and a comment
+@comment and another comment
+@itemx b
+l--ine
+@item c
+
+@c comment between lines
+
+@itemx d
+
+@c comment at end
+@end ftable
+
+@table @code
+@cindex cindex in table 
+@c comment in table
+@item abb
+l--ine
+@end table
+
+@table @code
+@cindex cindex in table 
+Texte before first item.
+@item abb
+@end table
+
+cp
+@printindex cp
+
+fn
+@printindex fn
+
+vr
+@printindex vr
+
+@bye

@@ -1,0 +1,14 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename bad_tab_nesting.info
+
+@node Top
+@top Test for bad @@tab  nesting with style @@-command
+
+
+@multitable {truc} {bidule}
+@item truc
+@code{@tab bidule}
+@end multitable
+
+@bye

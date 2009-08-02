@@ -1,0 +1,95 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename punctuation.info
+
+@node Top
+@top Element
+
+
+Dot. Exclam! Question? Dot.  Exclam!  Question?  GAAA.
+
+End of lines Dot.
+Exclam!
+Question?
+End.
+
+End of lines and spaces
+Dot.   
+Exclam!   
+Question?   
+End.
+
+With paren.) paren.)  Symb.)"'] Symb.)"']  End.
+
+End of lines paren.)
+Symb.)"']
+End.
+
+End of lines and spaces paren.)   
+Symb.)"']   
+End.
+
+
+
+@heading End of sentences
+
+Dot@. Exclam@! Question@? Dot@.  Exclam@!  Question@?  GAAA.
+
+Enddots@enddots{} Enddots@enddots{}  GBBB.
+
+End of lines Dot@.
+Exclam@!
+Question@?
+Enddots@enddots{}
+End.
+
+End of lines and spaces
+Dot@.   
+Exclam@!   
+Question@?   
+Enddots@enddots{}   
+End.
+
+With paren@.) paren@.)  Symb@.)"'] Symb@.)"']  End.
+
+End of lines paren@.)
+Symb@.)"']
+End.
+
+End of lines and spaces paren@.)   
+Symb@.)"']   
+End.
+
+@heading Not end of line
+
+Dot.@: Exclam!@: Question?@: Dot.@:  Exclam!@:  Question?@:  GAAA.
+
+End of lines Dot.@:
+Exclam!@:
+Question?@:
+End.
+
+End of lines and spaces
+Dot.@:   
+Exclam!@:   
+Question?@:   
+End.
+
+With paren.@:) paren.@:)  Symb.@:)"'] Symb.@:)"']  End.
+
+End of lines paren.@:)
+Symb.@:)"']
+End.
+
+End of lines and spaces paren.@:)   
+Symb.@:)"']   
+End.
+
+@heading Accent leading to a dot
+
+@dotaccent{o} in sentence.
+
+At the end of line @dotaccent{o}
+text following.
+
+@bye

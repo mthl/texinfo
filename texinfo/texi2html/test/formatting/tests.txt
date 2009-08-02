@@ -107,6 +107,8 @@ empty_item empty_item.texi
 direntry_dircategory direntry_dircategory.texi
 nested_table nested_table.texi 
 paragraph_in_samp paragraph_in_samp.texi
+simple_images simple_images.texi
+html-extrali_plain html-extrali.texi
 
 at_command_glued_info at_command_glued.texi -init info.init
 test_sp_info test_sp.texi -init info.init

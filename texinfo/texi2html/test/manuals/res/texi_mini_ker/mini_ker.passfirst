@@ -9,6 +9,9 @@ mini_ker.texi(,16) @set myversion 102
 mini_ker.texi(,17) 
 mini_ker.texi(,18) @set myurl @url{http://www.environnement.ens.fr/@/perso/@/dumas/@/mini_ker/@/software.html}
 mini_ker.texi(,19) 
+mini_ker.texi(,20) @macro Minik{}
+mini_ker.texi(,21) Miniker
+mini_ker.texi(,22) @end macro
 mini_ker.texi(,23) 
 mini_ker.texi(Minik,24) @settitle Miniker 102 manual
 mini_ker.texi(,25) 

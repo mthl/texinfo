@@ -4,6 +4,7 @@ texi pass0_macros.texi
 texi float.texi
 texi imbrications.texi
 texi formats_titles.texi
+texi delcomment.texi
 comments comments.texi
 formatting formatting.texi --internal-links=@OUT_DIR@internal_links_formatting.txt
 pass0_macros pass0_macros.texi
@@ -12,3 +13,4 @@ imbrications imbrications.texi
 formats_titles formats_titles.texi
 # -debug 255
 comments_info comments.texi -init info.init -U texi2html
+delcomment delcomment.texi

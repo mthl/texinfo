@@ -4,6 +4,18 @@ kbdinputstyle.texi(,4)
 kbdinputstyle.texi(,5) @node Top
 kbdinputstyle.texi(,6) @top Test kbdinputstyle
 kbdinputstyle.texi(,7) 
+kbdinputstyle.texi(,8) @macro codekbdmacro
+kbdinputstyle.texi(,9) @code{in code out of example @code{in nested code}}.
+kbdinputstyle.texi(,10) @kbd{kbd out of example}.
+kbdinputstyle.texi(,11) @code{kbd @kbd{in code}}.
+kbdinputstyle.texi(,12) 
+kbdinputstyle.texi(,13) in example
+kbdinputstyle.texi(,14) @example
+kbdinputstyle.texi(,15) @code{in code in example @code{in nested code}}.
+kbdinputstyle.texi(,16) @kbd{kbd in example}.
+kbdinputstyle.texi(,17) @code{kbd @kbd{in code} in example}.
+kbdinputstyle.texi(,18) @end example
+kbdinputstyle.texi(,19) @end macro
 kbdinputstyle.texi(,20) 
 kbdinputstyle.texi(,21) @@kbdinputstyle code
 kbdinputstyle.texi(,22) 

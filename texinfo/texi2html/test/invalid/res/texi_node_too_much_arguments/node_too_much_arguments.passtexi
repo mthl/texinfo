@@ -1,0 +1,13 @@
+node_too_much_arguments.texi(,2) 
+node_too_much_arguments.texi(,3) @setfilename node_too_much_arguments.info
+node_too_much_arguments.texi(,4) 
+node_too_much_arguments.texi(,5) @node Top
+node_too_much_arguments.texi(,6) @top Top
+node_too_much_arguments.texi(,7) 
+node_too_much_arguments.texi(,8) @menu
+node_too_much_arguments.texi(,9) * node::
+node_too_much_arguments.texi(,10) @end menu
+node_too_much_arguments.texi(,11) 
+node_too_much_arguments.texi(,12) @node node,,,,too much arg
+node_too_much_arguments.texi(,13) 
+node_too_much_arguments.texi(,14) @bye

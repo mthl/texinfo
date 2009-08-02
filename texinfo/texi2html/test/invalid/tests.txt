@@ -33,6 +33,7 @@ texi multitable_begin_with_tab.texi
 texi ref_to_unknown_node.texi
 texi def_bad_defx_command.texi
 texi direntry_dircategory_after_first_node.texi
+texi node_too_much_arguments.texi
 brace_not_closed brace_not_closed.texi
 recursive_copying recursive_copying.texi
 bad_nesting bad_nesting.texi
@@ -69,3 +70,4 @@ multitable_begin_with_tab multitable_begin_with_tab.texi
 ref_to_unknown_node ref_to_unknown_node.texi
 def_bad_defx_command def_bad_defx_command.texi
 direntry_dircategory_after_first_node direntry_dircategory_after_first_node.texi
+node_too_much_arguments node_too_much_arguments.texi

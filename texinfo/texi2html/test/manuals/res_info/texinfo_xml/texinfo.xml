@@ -16,9 +16,6 @@
 <!-- Put everything except function (command, in this case) names in one -->
 <!-- index (arbitrarily chosen to be the concept index). -->
 
-
-
-
 <footnotestyle></footnotestyle><!-- finalout -->
 
 <!-- %**end of header -->
@@ -19528,7 +19525,7 @@ Electronic mail: <code>gnu@gnu.org</code>
 <appendixsec>
 <title>GNU Free Documentation License</title>
 
-<para><indexterm index="cp">FDL, GNU Free Documentation License</indexterm></para><center><para> Version 1.1, March 2000
+<para><indexterm index="cp">FDL, GNU Free Documentation License</indexterm></para><center><para>Version 1.1, March 2000
 </para></center>
 <display xml:space="preserve">Copyright &copyright; 2000 Free Software Foundation, Inc.
 59 Temple Place, Suite 330, Boston, MA  02111-1307, USA

@@ -1,5 +1,39 @@
 cvs.texi(,2) @comment Documentation for CVS.
 cvs.texi(,3) @setfilename cvs.info
+cvs.texi(,4) @macro copyleftnotice
+cvs.texi(,5) @noindent
+cvs.texi(,6) Copyright @copyright{} 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
+cvs.texi(,7)                        2001, 2002, 2003 Free Software Foundation, Inc.
+cvs.texi(,8) 
+cvs.texi(,9) @multitable @columnfractions .12 .88
+cvs.texi(,10) @item Portions
+cvs.texi(,11) @item @tab Copyright @copyright{} 1999, 2000, 2001, 2002, 2003 Derek R. Price,
+cvs.texi(,12) @item @tab Copyright @copyright{} 2002, 2003 Ximbiot <http://ximbiot.com>,
+cvs.texi(,13) @item @tab Copyright @copyright{} 1992, 1993, 1999 Signum Support AB,
+cvs.texi(,14) @item @tab and Copyright @copyright{} others.
+cvs.texi(,15) @end multitable
+cvs.texi(,16) 
+cvs.texi(,17) @ignore
+cvs.texi(,18) Permission is granted to process this file through Tex and print the
+cvs.texi(,19) results, provided the printed document carries copying permission
+cvs.texi(,20) notice identical to this one except for the removal of this paragraph
+cvs.texi(,21) (this paragraph not being relevant to the printed manual).
+cvs.texi(,22) 
+cvs.texi(,23) @end ignore
+cvs.texi(,24) Permission is granted to make and distribute verbatim copies of
+cvs.texi(,25) this manual provided the copyright notice and this permission notice
+cvs.texi(,26) are preserved on all copies.
+cvs.texi(,27) 
+cvs.texi(,28) Permission is granted to copy and distribute modified versions of this
+cvs.texi(,29) manual under the conditions for verbatim copying, provided also that the
+cvs.texi(,30) entire resulting derived work is distributed under the terms of a
+cvs.texi(,31) permission notice identical to this one.
+cvs.texi(,32) 
+cvs.texi(,33) Permission is granted to copy and distribute translations of this manual
+cvs.texi(,34) into another language, under the above conditions for modified versions,
+cvs.texi(,35) except that this permission notice may be stated in a translation
+cvs.texi(,36) approved by the Free Software Foundation.
+cvs.texi(,37) @end macro
 cvs.texi(,38) 
 cvs.texi(,39) @comment This file is part of the CVS distribution.
 cvs.texi(,40) 
@@ -51,8 +85,14 @@ cvs.texi(,82) @c @splitrcskeyword{} is used to avoid keyword expansion.  It is r
 cvs.texi(,83) @c @asis when generating info and dvi, and by <i></i> in the generated html,
 cvs.texi(,84) @c such that keywords are not expanded in the generated html. 
 cvs.texi(,85) 
+cvs.texi(,86) @macro splitrcskeyword {arg}
+cvs.texi(,87)  \arg\
+cvs.texi(,88) @end macro
 cvs.texi(,89) 
 cvs.texi(,95) 
+cvs.texi(,97) @macro splitrcskeyword {arg}
+cvs.texi(,98) @i{}\arg\
+cvs.texi(,99) @end macro
 cvs.texi(,101) 
 cvs.texi(,107) 
 cvs.texi(,108) @dircategory GNU Packages

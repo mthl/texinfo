@@ -1,6 +1,7 @@
 texi testkb.texi
 texi verbatim_html.texi
 texi viper.texi -ifinfo
+texi templates.texi
 testkb testkb.texi
 verbatim_html verbatim_html.texi
 viper_unsplit viper.texi -ifinfo

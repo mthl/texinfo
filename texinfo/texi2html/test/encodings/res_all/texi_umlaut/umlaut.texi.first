@@ -1,0 +1,124 @@
+\input texinfo @c -*-texinfo-*-
+@c
+@c
+@c
+@setfilename umlaut.info
+@documentlanguage de
+@c @documentlanguage zv
+@settitle Test for Umlaute, accent etc.
+@setchapternewpage on
+@footnotestyle separate
+@page
+@chapter This is what you get
+Copright Sign: @copyright{} @*
+Pound Sign: @pounds{} @*
+Minus Zeichen: @minus{} @*
+TeX Logo: @TeX{}@*
+dots@{@}: @dots{}@*
+bullet@{@}:@bullet{}@*
+Vertical Bar:@*
+|
+
+valid umlaut
+@"a @"e @"i @"o @"u @"y
+@"A @"E @"I @"O @"U
+
+
+Non valid umlaut:@*
+@"X @"x @"Q @"Y
+
+
+Special characters in HTML:@*
+ < > &
+
+
+acute accent:@*
+@'a @'e @'i @'o @'u @'y
+@'A @'E @'I @'O @'U @'Y
+
+invalid acute accent:@*
+@'z @'q @'r
+@'Z @'Q @'R
+
+valid Cedilla:@*
+@,{c} @,{C}
+
+
+non valid Cedilla:@*
+@,{H} @,{h}
+
+macron:@*
+@=o
+
+I don't know any invalid macron:@*
+
+
+valid circumflex:@*
+@^a @^e @^i @^o @^u
+@^A @^E @^I @^O @^U 
+
+
+invalid circumflex:@*
+@^z @^r @^t @^k
+@^Z @^R @^T @^K
+
+
+grave accent:@*
+@`a @`e @`i @`o @`u
+@`A @`E @`I @`O @`U
+
+
+invalid grave accent:@*
+@`z @`m @`p
+
+
+
+tilde accent:@*
+@~a @~n @~o
+@~A @~O
+
+invalid tilde accent:@*
+@~Z @~s
+
+
+
+@dotaccent{o}
+@H{o}
+@ringaccent{o}
+@tieaccent{oo}
+@u{o}
+@ubaraccent{o}
+@udotaccent{o}
+@v{o}
+@exclamdown{}
+@questiondown{}
+@aa{} @AA{}
+@ae{} @AE{}
+@dotless{i}
+@dotless{j}
+@l{} @L{}
+@o{} @O{}
+@oe{} @OE{}
+@ss{}
+
+What about @@url and @@uref
+
+@url{http://www.fido.de/~kama}
+
+Referenz:@*
+@uref{http://www.fido.de/~kama}
+
+Referenz mit Display Text:@*
+@uref{http://www.fido.de/~kama, Second Argument of uref}
+
+Referenz mit Display Text and special:@*
+@uref{http://www.fido.de/~kama, Second Argument of uref, Third Argument of uref}
+
+Email:@*
+@email{kama@@hippo.fido.de}
+
+Email mit display:@*
+@email{kama@@hippo.fido.de, Anzeige der email Adrese}
+@c I don't need any contents.
+@contents
+@bye

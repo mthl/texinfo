@@ -1,4 +1,7 @@
 macro_call_not_closed.texi(,2) 
+macro_call_not_closed.texi(,3) @macro macro1 { arg1 , arg2 }
+macro_call_not_closed.texi(,4) result: @emph{\arg1\} protected \\ -> \\arg1\\ @emph{\arg2\}
+macro_call_not_closed.texi(,5) @end macro 
 macro_call_not_closed.texi(,6) 
 macro_call_not_closed.texi(,7) @node Top
 macro_call_not_closed.texi(,8) 

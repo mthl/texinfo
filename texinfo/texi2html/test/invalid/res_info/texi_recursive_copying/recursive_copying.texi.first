@@ -1,0 +1,18 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename recursive_copying.info
+
+
+@node Top
+@top Test recursive copying
+
+Test recursive copying.
+
+
+In copying.
+
+
+In copying.
+
+
+@bye

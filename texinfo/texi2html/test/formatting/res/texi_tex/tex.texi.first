@@ -1,0 +1,32 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top Tests
+
+Now tex on the same line @special_tex_1{} bidule
+Some text one the line following @@end tex
+
+Now tex on the following line, valid fot tex (with @@end tex on a line).
+@special_tex_2{}
+
+Same that @@html (but empty following line not ignored).
+
+Test of @@math
+Here some @special_math_1{}.
+
+Maths with protected \:
+@special_math_2{}.
+
+Maths with code @@-command:
+
+@special_math_3{}
+
+Maths with code @@-command and braces:
+
+@special_math_4{}
+
+@@\ outside of math
+
+@\
+
+@bye

@@ -25,7 +25,7 @@ In copying
 @author author1 --a with accents in name T@'e@,ca
 @author author2 --a
 In titlepage
-@mymacro
+@mymacro{}
 
 Insercopying in titlepage
 @insertcopying

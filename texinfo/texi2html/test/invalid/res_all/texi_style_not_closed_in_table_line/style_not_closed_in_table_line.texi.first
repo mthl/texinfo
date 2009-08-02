@@ -1,0 +1,14 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename style_not_closed_in_table_line.info
+
+@node Top
+@top Test command not closed on table line
+
+@table @asis
+@item first item
+line
+line @code{in code @item in item
+@end table
+
+@bye

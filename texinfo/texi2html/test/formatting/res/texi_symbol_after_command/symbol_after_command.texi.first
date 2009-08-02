@@ -1,0 +1,20 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename symbol_after_command.info
+
+@node Top
+@top Command after block
+
+@table @asis
+@item. dot
+@item, comma
+@item@@ @@
+@item@{ @{
+@item! exclam
+@item'' quotes
+@item: colon
+@end table
+
+@@. @{, @@@@ @?, @!: @@@{ @@'' @@:
+
+@bye

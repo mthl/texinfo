@@ -22,18 +22,18 @@ in example
 
 @kbdinputstyle code
 
-@codekbdmacro
+@codekbdmacro{}
 
 @@kbdinputstyle example
 
 @kbdinputstyle example
 
-@codekbdmacro
+@codekbdmacro{}
 
 @@kbdinputstyle distinct
 
 @kbdinputstyle distinct
 
-@codekbdmacro
+@codekbdmacro{}
 
 @bye

@@ -1,0 +1,1366 @@
+\input texinfo @c -*-texinfo-*-
+@c
+@c This is the ``Texinfo to HTML Converter'' manual which
+@c which is part of the ``texi2html'' distribution.
+@c
+@c License:
+@c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+@c
+@c    This program is free software; you can redistribute it
+@c    and/or modify it under the terms of the GNU General Public
+@c    License as published by the Free Software Foundation;
+@c    either version 2 of the License, or (at your option) any
+@c    later version.
+@c
+@c    This program is distributed in the hope that it will be
+@c    useful, but WITHOUT ANY WARRANTY; without even the implied
+@c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+@c    PURPOSE.  See the GNU General Public License for more
+@c    details.
+@c
+@c    You should have received a copy of the GNU General
+@c    Public License along with this program; if not, write to
+@c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+@c    330, Boston, MA  02111-1307  USA
+@c
+@c
+@c Revisions:
+@c 
+@c
+@c Author:
+@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+@c
+@c --------------------------------------------------------
+@c
+@c Currently most of the material is copied out of
+@c texi2html.init file. It's just a start point.
+@c In other words this is a draft manual ;-)
+@c
+@setfilename texi2html.info
+@c --------------------------------------------------------
+@c Edition and last update date of the manual which might
+@c differ to the scripts last update date etc.
+@set MANUAL_UPD 14. August 2000
+@set MANUAL_ED 0.21
+@c
+@set MANUAL_AUTHOR Karl Heinz Marbaise
+@set MANUAL_AUTHOR_EMAIL khmarbaise@@gmx.de
+@c
+@c Get the version of the script itself through
+@c configure/autoconf etc.
+@c version.texi is automatically generated through
+@c configure/autoconf.
+@set UPDATED 15 September 2001
+@set UPDATED-MONTH September 2001
+@set EDITION 1.67
+@set VERSION 1.67
+@c --------------------------------------------------------
+@c Index for command line options
+@defcodeindex op
+@c --------------------------------------------------------
+@settitle Texinfo to HTML
+@c @setchapternewpage on
+@setchapternewpage odd
+@footnotestyle separate
+@c --------------------------------------------------------
+@c support old style Info Dir entries.
+@c --------------------------------------------------------
+@c Informations for install-info.
+@c I think the conversion script should be found
+@c where the documentation system lives.
+@c What do you think?
+@dircategory Texinfo documentation system
+@direntry
+* Texi2html: (texi2html).  Texinfo to HTML Converter.
+@end direntry
+@c --------------------------------------------------------
+@c --------------------------------------------------------
+@c ========================================================
+@summarycontents
+@contents
+@c
+@node Top, Overview, (dir), (dir)
+@top Texi2html
+@c @page
+@c ========================================================
+@c @node Top, Overview, (dir), (dir)
+@c @top
+@c @chapter About
+
+This Manual (Edition 0.21, last updated at
+14. August 2000) describes the @command{texi2html} Perl
+script which converters
+@c The following construct allows me to get
+@c real URL link in HTML and working refs in
+@c info.
+Texinfo (@pxref{Top,,Texinfo,Texinfo})
+into @acronym{HTML}.
+
+@c @inforef{Top, Top, Texinfo} does not work yet ;-)
+@c here we should paste a @inforef or @xref on the
+@c Texinfo manual.
+
+Please send bug reports about this manual to Karl Heinz
+Marbaise @email{khmarbaise@@gmx.de}. Please state exact
+version/edition of the manual (can be found at start of
+Texinfo source file; use the entry Id under Revisions).
+
+Please note:
+@example
+This manual is currently under
+construction and of course incomplete ;-)
+@end example
+
+@c The following line within a menu does not work!
+@c * Why texi2html and not Makeinfo?:whytexi2html.      Why texi2html and not makeinfo?.
+@c ========================================================
+@node Overview, HowToGetHTML, Top, Top
+@chapter Overview about @command{texi2html}
+@uref{http://www.texinfo.org,Texinfo} is the official
+documentation format of the @uref{http://www.gnu.org,GNU}
+project. It uses a single source file to produce both
+online information and printed output.
+
+@c much thinking about ...
+It is often proposed to have a way to produce
+@acronym{HTML} from Texinfo sources, like the GNU-Info
+format. It is much simpler to create one converter instead
+of writing all documentation new in @acronym{HTML}, cause
+there is so much documentation in Texinfo all over
+the world.
+
+A few time ago @command{makeinfo} wasn't able to produce
+@acronym{HTML} output format, but there are needth to have
+@acronym{HTML}. This was the borning hour for
+@command{texi2html}. The basic purpose of @file{texi2html}
+is to convert Texinfo documents into HTML.
+
+
+@menu
+* HowToGetHTML::       Ways to get HTML files.
+* whytexi2html::       Why texi2html and not makeinfo?.
+@end menu
+@c --------------------------------------------------------
+@node HowToGetHTML, whytexi2html, Overview, Overview
+@section Ways to get HTML
+You would like to @acronym{HTML} files out of your Texinfo
+files? There exist two ways which you can go.
+This first is to use @command{makeinfo} itself to produce
+@acronym{HTML} output. The second is to use
+@command{texi2html}.
+
+@c --------------------------------------------------------
+@node whytexi2html, Installation, HowToGetHTML, Overview
+@section Why @file{texi2html} and not @file{makeinfo}?
+The basic idea of @command{makeinfo}'s @acronym{HTML}
+output was to get an readable @acronym{HTML} output.
+Nothing sophisticated nor good styling just readable.
+
+The current development of texi2html is going into
+different direction.
+
+The main purpose is to get better styling, better design
+etc. of the created @acronym{HTML} pages. This way is
+supported using differnt command line options and of course
+possible changings of the initialization file to fit your
+own needs.
+
+The main disadvantage of @acronym{makeinfo}'s
+@acronym{HTML} output is your getting only one big file.
+This is of course readable but not very usable. The problem
+of this is, while you like to have splitted chapters or
+nodes the Texinfo source has to be read at minimum twice
+times. This makes it impossible to implement this in
+@command{makeinfo}. This would result in complete new
+implementation of @command{makeinfo}'s source.
+
+@c think more about this????
+In contrast to the HTML produced by @command{makeinfo
+--html} (the @command{makeinfo} program is part of the
+Texinfo distribution), the HTML output of @file{texi2html}
+is highly configurable. Among other differences, with
+@command{texi2html} allows you to customize your entire
+page layout (like headers, footers, style sheets, etc),
+split documents at various levels, and use
+@command{latex2html} to convert @code{@@tex} sections.
+
+@command{texi2html} should reasonably convert all Texinfo
+4.0 constructs. If not, please send a bug report to
+@email{texi2html@@mathematik.uni-kl.de}.
+
+@c ========================================================
+@node Installation, Customizing, whytexi2html, Top
+@chapter Installation of @command{texi2html}
+@cindex Installation
+description of the installation process.
+What do you need?
+How?
+
+@c ========================================================
+@node Customizing, CustomizingExpand, Installation, Top
+@chapter Customizing files
+@cindex Installation
+@opindex frames
+@c 4.) Customizing files to output
+@c   ==> -out_file, -prefix, -subdir, -split, -frames etc
+Result based on using @option{-frames}
+
+@example
+texi2html -V -frames texi2html.texi
+@end example
+Explanation of the output differences against default,
+whatever this is ;-)
+
+
+@c ========================================================
+@node CustomizingExpand, CustomizingPage, Customizing, Top
+@chapter Customizing what gets expanded
+@c 5.) Customizing what gets expanded
+@c   ==> -expand, and latex2html
+Test starting.
+
+@option{-expand info}
+@option{-expand tex}
+Take a look at optionexpand.
+
+@c ========================================================
+@node CustomizingPage, CustHTML, CustomizingExpand, Top
+@c
+@c This file is part of the ``Texinfo to HTML Converter'' manual
+@c which is part of the ``texi2html'' distribution.
+@c
+@c License:
+@c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+@c
+@c    This program is free software; you can redistribute it
+@c    and/or modify it under the terms of the GNU General Public
+@c    License as published by the Free Software Foundation;
+@c    either version 2 of the License, or (at your option) any
+@c    later version.
+@c
+@c    This program is distributed in the hope that it will be
+@c    useful, but WITHOUT ANY WARRANTY; without even the implied
+@c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+@c    PURPOSE.  See the GNU General Public License for more
+@c    details.
+@c
+@c    You should have received a copy of the GNU General
+@c    Public License along with this program; if not, write to
+@c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+@c    330, Boston, MA  02111-1307  USA
+@c
+@c
+@c Revisions:
+@c 
+@c
+@c Author:
+@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+@c
+@c Description:
+@c   Here are the informations about customizing page
+@c   layout.
+@c
+@c ========================================================
+@chapter Customizing page layout
+This chapter is designed to help you to change the
+complete layout of the @acronym{HTML} output if you like to
+do so.
+
+
+a) General: Philosophy, and how it works@*
+aa) Navigation panels@*
+b) Top page@*
+c) Section pages@*
+
+
+
+
+@menu
+* TipsNewDesign::           .
+* CustPagePhil::            .
+* CustPagePhilNav::         .
+* CustPageTopPage::         .
+* CustPageSectionPages::    .
+* CustPageMiscPage::        .
+@end menu
+@c --------------------------------------------------------
+@node TipsNewDesign,CustPagePhil,CustomizingPage,CustomizingPage
+@section Tips how to create a new site design
+
+Here you can find information how you should work to pick
+up a new design with @command{texi2html}.
+
+
+@c --------------------------------------------------------
+@node CustPagePhil,CustPagePhilNav,TipsNewDesign,CustomizingPage
+@section Page Layout and the philosophy
+
+@menu
+* CustPagePhilNav:: Navigation panels.
+@end menu
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node CustPagePhilNav,CustPageTopPage,CustPagePhil,CustomizingPage
+@subsection Navigation panels
+
+Head and foot Navigation panels.
+
+@c --------------------------------------------------------
+@node CustPageTopPage,CustPageSectionPages,CustPagePhilNav,CustomizingPage
+@section Top Page
+@c --------------------------------------------------------
+@node CustPageSectionPages,CustPageMiscPage,CustPageTopPage,CustomizingPage
+@section Section Pages
+@c --------------------------------------------------------
+@node CustPageMiscPage,CustPagePageHeadToc,CustPageSectionPages,CustomizingPage
+@section Misc pages
+Here you can find information about the creation of the
+@dfn{ToC} (@i{Table Of content}), About---Page
+etc. and specialy how to change them to get your own
+design.
+
+@acronym{ToC} @code{T2H_DEFAULT_print_toc_frame} in
+@file{texi2html.init}
+
+@menu
+* CustPagePageHeadToc:: .
+* CustPagePageHead::    .
+* CustPagePageFoot::    .
+@end menu
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node CustPagePageHeadToc,CustPagePageHead,CustPageMiscPage,CustPageMiscPage
+@subsection Table Of Contents
+
+The following code is the original code out of the
+initialization file (@pxref{InitFile,Initialization file}).
+
+@example
+sub T2H_DEFAULT_print_toc_frame
+@{
+  my $fh = shift;
+  &$T2H_print_page_head($fh);
+  print $fh <<EOT;
+<H2>Content</H2>
+EOT
+  print $fh map @{s/HREF=/target=\"main\" HREF=/; $_;@} @@stoc_lines;
+  print $fh "</BODY></HTML>\n";
+@}
+@end example
+
+As you can see it is very simple Perl Code, which can
+be changed more or less simple to fit you requirements
+(@pxref{CustPagePageHead,,T2H_DEFAULT_print_page_head}).
+
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node CustPagePageHead,CustPagePageFoot,CustPagePageHeadToc,CustPageMiscPage
+@subsection Page header
+Page Head @code{T2H_DEFAULT_print_page_head}
+
+@c references on T2H_DOCTYPE
+@c               T2H_AUTHORS
+@example
+sub T2H_DEFAULT_print_page_head
+@{
+  my $fh = shift; 
+  my $longtitle = "$T2H_THISDOC@{title@}: $T2H_NAME@{This@}";
+  print $fh <<EOT;
+<HTML>
+$T2H_DOCTYPE
+<!-- Created on $T2H_TODAY by $THISPROG -->
+<!-- 
+$T2H_AUTHORS 
+-->
+<HEAD>
+<TITLE>$longtitle</TITLE>
+
+<META NAME="description" CONTENT="$longtitle">
+<META NAME="keywords" CONTENT="$longtitle">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="$THISPROG">
+$T2H_EXTRA_HEAD
+</HEAD>
+
+<BODY $T2H_BODYTEXT>
+$T2H_AFTER_BODY_OPEN
+EOT
+@}
+@end example
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node CustPagePageFoot, ,CustPagePageHead,CustPageMiscPage
+@subsection Page footer
+
+Page Foot @code{T2H_DEFAULT_print_page_foot}
+@c ========================================================
+@node CustHTML, InitFile, CustomizingPage, Top
+@c
+@c This file is part of the ``Texinfo to HTML Converter'' manual
+@c which is part of the ``texi2html'' distribution.
+@c
+@c License:
+@c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+@c
+@c    This program is free software; you can redistribute it
+@c    and/or modify it under the terms of the GNU General Public
+@c    License as published by the Free Software Foundation;
+@c    either version 2 of the License, or (at your option) any
+@c    later version.
+@c
+@c    This program is distributed in the hope that it will be
+@c    useful, but WITHOUT ANY WARRANTY; without even the implied
+@c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+@c    PURPOSE.  See the GNU General Public License for more
+@c    details.
+@c
+@c    You should have received a copy of the GNU General
+@c    Public License along with this program; if not, write to
+@c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+@c    330, Boston, MA  02111-1307  USA
+@c
+@c
+@c Revisions:
+@c 
+@c
+@c Author:
+@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+@c
+@c Description:
+@c   Here are the informations about customizing HTML
+@c   BODY, PRE- and AFTER Body.
+@c
+@c ========================================================
+@chapter Customizing HTML
+If you like to read the following section, it is assumed
+you are famillar with @acronym{HTML}. If not, you shouldn't
+read this, cause you don't know what we are talking about.
+
+Here you can find information how to change the
+@acronym{HTML} parts of a document. These are the
+header, body etc.
+
+These are the defaults which are
+part of the distribution as @file{texi2html.init}.
+
+
+How to do changes of the customization...
+needed steps.
+@c examples.
+
+@menu
+* CustHTMLBody::        Customizing BODY Text.
+* CustHTMLHead::        Customizing Head.
+* CustHTMLBodyText::    Customizing Head.
+* CustHTMLPreBodyText:: Customizing Head.
+* CustHTMLAfterBody::   Customizing Head.
+@end menu
+@c --------------------------------------------------------
+@node CustHTMLBody,CustHTMLBodyText,,CustHTML
+@section Body
+
+@menu
+* CustHTMLBodyText::    Body Text.
+* CustHTMLPreBodyText:: PRE Body Text.
+* CustHTMLAfterBody::   After Body Text.
+@end menu
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node CustHTMLBodyText,CustHTMLPreBodyText,CustHTMLBody,CustHTML
+@subsection Body Text
+
+
+@vindex T2H_BODYTEXT
+
+@example
+$T2H_BODYTEXT =
+    . 'LANG="' . $T2H_LANG . '" BGCOLOR="#FFFFFF" '
+    . 'TEXT="#000000" LINK="#0000FF" '
+    . 'VLINK="#800080" ALINK="#FF0000"';
+@end example
+
+If you like to change the basic color combination, you can
+change the entry @var{T2H_BODYTEXT}.
+
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node CustHTMLPreBodyText,CustHTMLAfterBody,CustHTMLBodyText,CustHTML
+@subsection Body Text
+@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@node CustHTMLAfterBody,CustHTMLHead,CustHTMLPreBodyText,CustHTML
+@subsection After Body Text
+
+@vindex T2H_AFTER_BODY_OPEN
+@vindex T2H_PRE_BODY_CLOSE
+
+@vindex T2H_EXTRA_HEAD
+
+@example
+# text inserted after <BODY ...>
+$T2H_AFTER_BODY_OPEN = '';
+
+#text inserted before </BODY>
+$T2H_PRE_BODY_CLOSE = '';
+
+# this is used in footer
+$T2H_ADDRESS = "by <I>$T2H_USER</I> " if $T2H_USER;
+$T2H_ADDRESS .= "on <I>$T2H_TODAY</I>";
+
+# this is added inside <HEAD></HEAD> after <TITLE> and some META NAME stuff
+# can be used for <style> <script>, <meta> tags
+$T2H_EXTRA_HEAD = '';
+@end example
+
+The default output into the @acronym{HTML} file.
+@xref{OptionDocType}.
+
+
+The following code is produced by
+@code{T2H_DEFAULT_print_page_head}.
+
+Detailed information can be found at
+@ref{CustPagePageHead}.
+
+@example
+<HTML>
+$T2H_DOCTYPE
+<!-- Created on $T2H_TODAY by $THISPROG -->
+<!-- 
+$T2H_AUTHORS
+-->
+<HEAD>
+<TITLE>$longtitle</TITLE>
+
+<META NAME="description" CONTENT="$longtitle">
+<META NAME="keywords" CONTENT="$longtitle">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="$THISPROG">
+$T2H_EXTRA_HEAD
+</HEAD>
+
+<BODY $T2H_BODYTEXT>
+$T2H_AFTER_BODY_OPEN
+@end example
+
+@c --------------------------------------------------------
+@node CustHTMLHead,,CustHTMLAfterBody,CustHTML
+@section Head
+@c ========================================================
+@node InitFile, IFOs, CustHTML, Top
+@c
+@c This file is part of the ``Texinfo to HTML Converter'' manual
+@c which is part of the ``texi2html'' distribution.
+@c
+@c License:
+@c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+@c
+@c    This program is free software; you can redistribute it
+@c    and/or modify it under the terms of the GNU General Public
+@c    License as published by the Free Software Foundation;
+@c    either version 2 of the License, or (at your option) any
+@c    later version.
+@c
+@c    This program is distributed in the hope that it will be
+@c    useful, but WITHOUT ANY WARRANTY; without even the implied
+@c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+@c    PURPOSE.  See the GNU General Public License for more
+@c    details.
+@c
+@c    You should have received a copy of the GNU General
+@c    Public License along with this program; if not, write to
+@c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+@c    330, Boston, MA  02111-1307  USA
+@c
+@c
+@c Revisions:
+@c 
+@c
+@c Author:
+@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+@c
+@c Description:
+@c   Here you can find the description on the
+@c   initialization files.
+@c
+@c ========================================================
+@chapter Initialization file
+@c
+@cindex configure
+@cindex texi2html.init
+@cindex texi2htmlrc, global initialization
+@cindex .texi2htmlrc, user initialization
+@c
+@opindex sysconfdir
+@opindex init_file
+@file{texi2html.init}
+
+
+@menu
+* InitFileBasics::     The basics about
+                         initialization files.
+* InitFileGlobal::     Global initialization file.
+* InitFileUser::       User initialization file.
+* InitFileLoad::       Loadable initialization file.
+@end menu
+
+@c --------------------------------------------------------
+@node InitFileBasics,InitFileGlobal,InitFile,InitFile
+@section The basics about init files
+
+Initialization options are read first from
+@file{/usr/local/etc/texi2htmlrc} (the exact location being
+changeable with the @option{--sysconfdir=dir} option to the
+@command{configure} script), then from
+@file{$HOME/.texi2htmlrc}, then any command-line options
+including @option{-init_file} option; with later settings
+overriding earlier ones.
+
+The default initialization options are defined in the
+@file{texi2html.init} file contained in the @b{Texi2html}
+distribution (which gets included near the beginning of the
+@command{texi2html} script that gets installed).
+
+To customize @file{texi2html} it is best if you copy the
+appropriate sections from the @file{texi2html.init}
+contents into an appropriate local initialization file,
+make the necessary changes there, and then have
+@command{texi2html} read this initialization file by one of
+the means described above.
+
+For an example on what you can produces with
+@command{texi2html} have a look at the following sites:
+@uref{http://www.singular.uni-kl.de/Manual/html/}
+
+
+@c --------------------------------------------------------
+@node InitFileGlobal,InitFileUser,InitFileBasics,InitFile
+@section Global initialization file
+@c --------------------------------------------------------
+@node InitFileUser,InitFileLoad,InitFileGlobal,InitFile
+@section User initialization file
+@c --------------------------------------------------------
+@node InitFileLoad,,InitFileUser,InitFile
+@section Loadable initialization file
+@opindex init_file
+@option{-init_file}
+
+@c @ref{InitFile}
+
+@c --------------------------------------------------------
+@node IFOs, Options, InitFile, Top
+@c
+@c This file is part of the ``Texinfo to HTML Converter'' manual
+@c which is part of the ``texi2html'' distribution.
+@c
+@c License:
+@c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+@c
+@c    This program is free software; you can redistribute it
+@c    and/or modify it under the terms of the GNU General Public
+@c    License as published by the Free Software Foundation;
+@c    either version 2 of the License, or (at your option) any
+@c    later version.
+@c
+@c    This program is distributed in the hope that it will be
+@c    useful, but WITHOUT ANY WARRANTY; without even the implied
+@c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+@c    PURPOSE.  See the GNU General Public License for more
+@c    details.
+@c
+@c    You should have received a copy of the GNU General
+@c    Public License along with this program; if not, write to
+@c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+@c    330, Boston, MA  02111-1307  USA
+@c
+@c
+@c Revisions:
+@c 
+@c
+@c Author:
+@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+@c
+@c Description:
+@c   Here you can find the description on the
+@c   initialization files options.
+@c
+@c --------------------------------------------------------
+@section Initialization file options
+This section describes in detail all options that can be used
+only in the initialization file (@file{texi2html.init}),
+and cannot be specified on the command line.
+This means the only way to change those
+options is first to copy the original @file{texi2html.init}
+to e.g.@: @file{texi2html.init.myown} and make changes to fit
+your needs.
+
+@menu
+* IFOnumber::             Number sectioning.
+* IFOmenu::               Avoid menu redundancy.
+* IFOCenterImage::        Center Image.
+* IFOExampleIndentCell::  Example Indent Cell.
+* IFOSampleIndentCell::   Sample Indent Cell.
+* IFOSmallFontSize::      Small Font Size.
+* IFOTopHeading::         Top Heading.
+* IFOIndexChapter::       Index Chapter.
+* IFOSplitIndex::         Split Index.
+* IFOhrefDirInsteadFile:: HREF Dir Instead file.
+@end menu
+
+@c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+@node IFOnumber, IFOmenu, IFOs, IFOs
+@subsection Number sections.
+@vindex T2H_NUMBER_SECTIONS
+@vindex T2H_NODE_NAME_IN_MENU
+if set, and @var{$T2H_NUMBER_SECTIONS} is set, then use node
+names in menu entries, instead of section names
+
+@var{$T2H_NODE_NAME_IN_MENU} = 0;
+
+@c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+@node IFOmenu, IFOCenterImage, IFOnumber, IFOs
+@subsection Avoid menu redundancy
+@c not sure if correct?
+@cindex menu, redundancy
+@vindex T2H_AVOID_MENU_REDUNDANCY
+If set, and menu entry equals menu description, then do not print
+menu description.  Likewise, if node name equals entry name, do
+not print entry name.
+@var{$T2H_AVOID_MENU_REDUNDANCY} = 1;
+
+@c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+@node IFOCenterImage, IFOExampleIndentCell, IFOmenu, IFOs
+@subsection Center Image
+@cindex images, center
+@vindex T2H_CENTER_IMAGE
+if set, center @@image by default
+otherwise, do not center by default
+@var{$T2H_CENTER_IMAGE} = 1;
+
+@c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+@node IFOExampleIndentCell, IFOSampleIndentCell, IFOCenterImage, IFOs
+@subsection Example Indent Cell
+@cindex example, indentation
+@vindex T2H_EXAMPLE_INDENT_CELL
+used as indentation for block enclosing command
+@code{@@example}, etc If not empty, must be enclosed in
+@code{<td></td>}
+@var{$T2H_EXAMPLE_INDENT_CELL} = '<td>&nbsp;</td>';
+
+@c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+@node IFOSampleIndentCell, IFOSmallFontSize, IFOExampleIndentCell, IFOs
+@subsection Small Example Indent
+@cindex example, small indent
+@vindex T2H_SMALL_EXAMPLE_INDENT_CELL
+same as above, only for @code{@@small}
+$T2H_SMALL_EXAMPLE_INDENT_CELL = "<td>&nbsp;</td>";
+
+@c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+@node IFOSmallFontSize, IFOTopHeading, IFOSampleIndentCell, IFOs
+@subsection Small Font Size
+@cindex Font Size, small
+@vindex T2H_SMALL_FONT_SIZE
+# font size for @@small
+$T2H_SMALL_FONT_SIZE = "-1";
+
+@c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+@node IFOTopHeading, IFOIndexChapter, IFOSmallFontSize, IFOs
+@subsection Top Heading
+@vindex T2H_TOP_HEADING
+if non-empty, and no @code{@@..heading} appeared in Top
+@c here should be a reference to Texinfo Manual
+@c @@heading ??
+node, then use this as header for top node/section,
+otherwise use value of  @code{@@settitle} or
+@code{@@shorttitle} (in that order)
+$T2H_TOP_HEADING = "";
+
+@c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+@node IFOIndexChapter, IFOSplitIndex, IFOTopHeading, IFOs
+@subsection Index Chapter
+@cindex Chapter, Index
+@vindex T2H_INDEX_CHAPTER
+if set, use this chapter for @strong{Index} button, else
+use first chapter whose name matches @strong{index} (case insensitive)
+$T2H_INDEX_CHAPTER = "";
+
+@c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+@node IFOSplitIndex, IFOhrefDirInsteadFile, IFOIndexChapter, IFOs
+@subsection Split Index
+@cindex Index, split
+@vindex T2H_SPLIT_INDEX
+if set and @var{$T2H_SPLIT} is set, then split index pages
+at the next letter after they have more than that many
+entries
+
+$T2H_SPLIT_INDEX = 100;
+
+@c +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+@node IFOhrefDirInsteadFile, , IFOSplitIndex, IFOs
+@subsection HREF Dir Instead File.
+@c Not very good? :-/
+@cindex HREF Dir instead file
+@vindex T2H_HREF_DIR_INSTEAD_FILE
+if set (e.g., to @file{index.html}) replace @strong{HREF}'s
+to this file  (i.e., to @file{index.html}) by @file{./}
+
+$T2H_HREF_DIR_INSTEAD_FILE = "";
+@c ========================================================
+@c @include extfile.texi obsolete now, is not documented!
+@c ========================================================
+@node Options, Reference, IFOs, Top
+@c
+@c This file is part of the ``Texinfo to HTML Converter'' manual
+@c which is part of the ``texi2html'' distribution.
+@c
+@c License:
+@c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+@c
+@c    This program is free software; you can redistribute it
+@c    and/or modify it under the terms of the GNU General Public
+@c    License as published by the Free Software Foundation;
+@c    either version 2 of the License, or (at your option) any
+@c    later version.
+@c
+@c    This program is distributed in the hope that it will be
+@c    useful, but WITHOUT ANY WARRANTY; without even the implied
+@c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+@c    PURPOSE.  See the GNU General Public License for more
+@c    details.
+@c
+@c    You should have received a copy of the GNU General
+@c    Public License along with this program; if not, write to
+@c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+@c    330, Boston, MA  02111-1307  USA
+@c
+@c
+@c Revisions:
+@c 
+@c
+@c Author:
+@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+@c
+@c Description:
+@c   Here you can find the description on the
+@c   command line options.
+@c
+@c ========================================================
+@chapter Command Line Options
+
+@menu
+* OptionDebug::               Debugging.
+* OptionDocType::             DocType (HTML)
+* OptionCheck::               Checking files.
+* OptionExpand::              Expanding info, tex areas etc.
+* OptionGlossary::            Glossary.
+* OptionInvisible::           Invisible.
+* OptionIso::                 Iso.
+* OptionInclude::             Include directories.
+* OptionTopFile::             Top File.
+* OptionTocFile::             Table of content File.
+* OptionFrames::              Frames.
+* OptionMenu::                Menus.
+* OptionNumber::              Number sections.
+* OptionSplit::               Splitting.
+* OptionSectionNavigation::   Navigation.
+* OptionSubDir::              Subdirectory.
+* OptionShortExt::            Short extension.
+* OptionPrefix::              Prefix.
+* OptionOutput::              Output.
+* OptionShortRef::            Short Ref.
+* OptionIndexSummary::        Index Summary.
+* OptionVerbose::             Verbose.
+* OptionLanguage::            Language.
+* OptionL2H::                 La@TeX{}2HTML.
+@end menu
+
+
+@c --------------------------------------------------------
+@node OptionDebug, OptionDocType, Options, Options
+@section Debugging
+@cindex Debugging
+@vindex DEBUG_TOC
+@vindex DEBUG_INDEX
+@vindex DEBUG_BIB
+@vindex DEBUG_GLOSS
+@vindex DEBUG_DEF
+@vindex DEBUG_HTML
+@vindex DEBUG_USER
+@vindex DEBUG_L2H
+@opindex debug
+
+@option{-debug}
+
+debugging: 0 --- no debugging; other values; see beginning
+of texi2html
+
+@var{$DEBUG_TOC}   =  1;
+@var{$DEBUG_INDEX} =  2;
+@var{$DEBUG_BIB}   =  4;
+@var{$DEBUG_GLOSS} =  8;
+@var{$DEBUG_DEF}   = 16;
+@var{$DEBUG_HTML}  = 32;
+@var{$DEBUG_USER}  = 64;
+@var{$DEBUG_L2H}   = 128;
+
+@c --------------------------------------------------------
+@node OptionDocType, OptionCheck, OptionDebug, Options
+@section DocType
+@cindex HTML, Doc Type
+@opindex doctype
+@vindex T2H_DOCTYPE
+@option{-doctype}
+
+@example
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+@end example
+
+@c --------------------------------------------------------
+@node OptionCheck, OptionExpand, OptionDocType, Options
+@section Check
+@cindex Texinfo, checking
+@opindex check
+@vindex T2H_CHECK
+@option{-check}
+if set, only check files and give the list of all things
+that look like untranslated Texinfo commands
+
+@c --------------------------------------------------------
+@node OptionExpand, OptionGlossary, OptionCheck, Options
+@section Expand
+@opindex expand
+@vindex T2H_EXPAND
+@option{-expand}
+if set to @strong{tex} (or, @strong{info}) expand
+@code{@@iftex} and @code{@@tex} (or, @code{@@ifinfo})
+sections else, neither expand @code{@@iftex}, @code{@@tex},
+nor @code{@@ifinfo} sections
+
+@c $T2H_EXPAND = "info";
+
+@c --------------------------------------------------------
+@node OptionGlossary, OptionInvisible, OptionExpand, Options
+@section Glossary
+@cindex HTML, Glossary
+@cindex Texinfo, Glossary
+@opindex glossary
+@vindex T2H_USE_GLOSSARY
+@option{-glossary}
+if set, uses section named @strong{Footnotes} for glossary
+
+@c --------------------------------------------------------
+@node OptionInvisible, OptionIso, OptionGlossary, Options
+@section Invisible
+@cindex Mark, invisible
+@cindex invisible, Mark
+@opindex invisible
+@vindex T2H_INVISIBLE_MARK
+@option{-invisible}
+@var{$T2H_INVISIBLE_MARK} is the text used to create
+invisible destination anchors for index links (you can for
+instance use the @file{invisible.xbm} file shipped with
+this program). This is a workaround for a known bug of many
+@acronym{WWW} browsers, including Netscape. For me, it
+works fine without it --- on the contrary: if there, it
+inserts space between headers and start of text (obachman
+3/99)
+
+@example
+$T2H_INVISIBLE_MARK = "";
+# $T2H_INVISIBLE_MARK = '&#160;';
+@end example
+
+@c --------------------------------------------------------
+@node OptionIso, OptionInclude, OptionInvisible, Options
+@section Iso
+@cindex ISO8859
+@cindex Copyright
+@opindex iso
+@vindex T2H_USE_ISO
+@option{-iso}
+
+if set, ISO8859 characters are used for special symbols
+(like Copyright @code{@copyright{}}, etc)
+
+$T2H_USE_ISO = 0;
+
+@c --------------------------------------------------------
+@node OptionInclude, OptionTopFile, OptionIso, Options
+@section Include Directory
+@vindex Include directories
+@opindex I
+@vindex T2H_INCLUDE_DIRS
+@option{-I}
+
+list directories where @code{@@include} files are searched for
+(besides the directory of the doc file) additional
+@option{-I} args are add to this list.
+
+@@T2H_INCLUDE_DIRS = (".");
+
+@c --------------------------------------------------------
+@node OptionTopFile, OptionTocFile, OptionInclude, Options
+@section Top File
+@cindex Top Level file
+@cindex HTML, index.html
+@opindex top_file
+@vindex T2H_TOP_FILE
+@option{-top_file}
+uses file of this name for top-level file
+extension is manipulated appropriately, if necessary.
+If empty, @file{<basename of document>.html} is used.
+Typically, you would set this to @file{index.html}.
+
+$T2H_TOP_FILE = "";
+
+@c --------------------------------------------------------
+@node OptionTocFile, OptionFrames, OptionTopFile, Options
+@section Table Of content File
+@cindex Table of content file
+@opindex toc_file
+@vindex T2H_TOC_FILE
+@option{-toc_file}
+uses file of this name for table of contents.  File extension
+is manipulated appropriately, if necessary. If empty,
+@file{<basename of document>_toc.html} is used.
+
+$T2H_TOC_FILE = "";
+
+@c --------------------------------------------------------
+@node OptionFrames, OptionMenu, OptionTocFile, Options
+@section Frames
+@vindex HTML, frames
+@vindex HTML 4.0, frames
+@opindex frames
+@vindex T2H_FRAMES
+@option{-frames}
+if set, output two additional files which use HTML 4.0
+@b{frames}.
+
+$T2H_FRAMES = 0;
+
+@c --------------------------------------------------------
+@node OptionMenu, OptionNumber, OptionFrames, Options
+@section Menus
+@cindex HTML, menu
+@cindex Texinfo, menu
+@opindex menu
+@opindex nomenu
+@vindex T2H_SHOW_MENU
+@option{-menu} or @option{-nomenu} if set, show the Texinfo
+menus
+
+$T2H_SHOW_MENU = 1;
+
+@c --------------------------------------------------------
+@node OptionNumber, OptionSplit, OptionMenu, Options
+@section Number sections
+@cindex Section numbering
+@opindex number
+@opindex nonumber
+@vindex T2H_NUMBER_SECTIONS
+@option{-number} @option{-nonumber}
+if set, number sections and show section names and numbers
+in references and menus
+
+@c Just think about it?
+@c @defvar $T2H_NUMBER_SECTIONS
+@c @c = 1;
+@c @end defvar
+
+@c --------------------------------------------------------
+@node OptionSplit, OptionSectionNavigation, OptionNumber, Options
+@section Split
+@cindex HTML, split
+@cindex File, split
+@opindex split
+@vindex T2H_SPLIT
+@option{-split section|chapter|none}
+if set to @strong{section} (resp. @strong{chapter}) create one
+@acronym{HTML} file per (sub)section (resp. chapter) and
+separate pages for Top, ToC, Overview, Index, Glossary,
+About.  Otherwise, create a monolithic @acronym{HTML} file that
+contains the whole document.
+
+#$T2H_SPLIT = 'section';
+$T2H_SPLIT = undef;
+
+@c --------------------------------------------------------
+@node OptionSectionNavigation, OptionSubDir, OptionSplit, Options
+@section Section navigation
+@cindex HTML, Navigation
+@opindex section_navigation
+@opindex no-section_navigation
+@vindex T2H_SECTION_NAVIGATION
+@option{-section_navigation}|
+@option{-no-section_navigation}
+
+if set, then navigation panels are printed at the beginning
+of each section and, possibly at the end (depending on
+whether or not there were more than 
+@var{$T2H_WORDS_IN_PAGE} words on page). This is most useful
+if you do not want to have section navigation on
+@option{-split chapter}
+
+@c @vindex T2H_SECTION_NAVIGATION
+@c @defvar $T2H_SECTION_NAVIGATION
+@c = 1;
+@c @end defvar
+
+@c --------------------------------------------------------
+@node OptionSubDir, OptionShortExt, OptionSectionNavigation, Options
+@section Subdirectory
+@cindex Subdirectory
+@vindex T2H_SUBDIR
+@option{-subdir}
+If set, then put result files in the specified directory.
+If not set, then result files are put into the current directory.
+
+@c #$T2H_SUBDIR = 'html';
+@var{$T2H_SUBDIR} = undef;
+
+@c --------------------------------------------------------
+@node OptionShortExt, OptionPrefix, OptionSubDir, Options
+@section Short extension
+@cindex HTML, .htm extension
+@cindex HTML, .html extension
+@cindex extension, .html
+@cindex extension, .htm
+@vindex T2H_SHORTEXTN
+@opindex short_extn
+@option{-short_extn}
+If this is set, then all @acronym{HTML} files will have extension
+@file{.htm} instead of @file{.html}. This is helpful when
+shipping the document to DOS-based systems.
+@var{$T2H_SHORTEXTN} = 0;
+
+@c --------------------------------------------------------
+@node OptionPrefix, OptionOutput, OptionShortExt, Options
+@section Prefix
+@cindex Prefix
+@vindex T2H_PREFIX
+@opindex prefix
+@option{-prefix}
+Set the output file prefix, prepended to all @file{.html},
+@file{.gif} and @file{.pl} files.
+By default, this is the basename of the document
+
+@var{$T2H_PREFIX} = "";
+
+@c --------------------------------------------------------
+@node OptionOutput, OptionShortRef, OptionPrefix, Options
+@section Output filename
+@cindex Output filename
+@cindex Filename, output
+@vindex T2H_OUT
+@opindex o
+@opindex out_file
+
+@option{-o filename}|@option{-out_file}
+If set, generate monolithic document output @acronym{HTML}
+into @file{filename}.
+
+@c --------------------------------------------------------
+@node OptionShortRef, OptionIndexSummary, OptionOutput, Options
+@section Short Cross References
+@cindex References, short
+@cindex sections without numbers
+@vindex T2H_SHORT_REF
+@opindex short_ref
+@option{-short_ref}
+if set cross-references are given without section numbers
+
+@c --------------------------------------------------------
+@node OptionIndexSummary, OptionVerbose, OptionShortRef, Options
+@section Index Summary
+@cindex Index, Summary
+@cindex Summary Index
+@cindex HTML, Index
+@vindex T2H_IDX_SUMMARY
+@opindex idx_sum
+@option{-idx_sum}
+If value is set, then for each @code{@@prinindex $what}
+@file{$docu_name_$what.idx} is created which contains lines of the
+form @strong{$key\t$ref} sorted alphabetically (case
+matters).
+
+@c --------------------------------------------------------
+@node OptionVerbose, OptionLanguage, OptionIndexSummary, Options
+@section Verbose output
+@cindex Output, verbose
+@cindex Verbose output
+@cindex Debugging, verbose output
+@vindex T2H_VERBOSE
+@opindex verbose
+@option{-verbose}
+if set, chatter about what we are doing.
+
+@c --------------------------------------------------------
+@node OptionLanguage, OptionL2H, OptionVerbose, Options
+@section Language Support
+@cindex Language Support
+@cindex Support different languages
+@vindex $T2H_LANG
+@vindex $T2H_WORDS
+@opindex lang
+@option{-lang}
+For page titles, use
+@code{$T2H_WORDS->@{$T2H_LANG@}->@{...@}} as title. To add
+a new language, supply list of titles (see @var{$T2H_WORDS}),
+and use ISO 639 language codes (see e.g.@: perl module
+@file{Locale-Codes-1.02.tar.gz} for definitions).
+
+If you don't give a @option{-lang} then we got it from the
+Texinfo source file (@@documentlanguage
+@c Put a table with the language codes here!
+@c Or better put a reference into the Texinfo
+@c Manual, which has a table of ISO 639-Codes.
+@c
+@c Currently the @xref etc. does not work with
+@c external documents, cause we don't know
+@c reference (anchor) value or there is no way
+@c to get it.
+@c The following reference does only work correctly
+@c in Info!!!
+@pxref{documentlanguage,,,Texinfo}). If there is no
+@code{@@documentlanguage} we use the default @code{en} for
+the language.
+@c
+@c put some information about Month names etc. here
+@c $MONTH_NAMES !!
+@c Supplemental should be a naming scheme for variables in
+@c different languages (MONTH_NAMES_DE etc.)
+@c --------------------------------------------------------
+@node OptionL2H, , OptionLanguage, Options
+@section La@TeX{}2HTML for @code{@@math} and @code{@@tex}
+@cindex La@TeX{}2HTML
+@cindex Conversion of @@math and @@tex
+@cindex @@tex
+@cindex @@math
+@vindex T2H_L2H
+@opindex l2h
+@option{-l2h}
+if set, uses @command{latex2html} for generation of math
+content.
+
+@menu
+* OptionL2HL2H::    Where to find La@TeX{}2HTML.
+* OptionL2HSkip::   Skip calling La@TeX{}2HTML.
+* OptionL2Htmp::    Temporary files for La@TeX{}2HTML.
+@end menu
+
+@c --------------------------------------------------------
+@node OptionL2HL2H, OptionL2HSkip, OptionL2H, OptionL2H
+@subsection Where to find @command{latex2html}
+@cindex location, La@TeX{}2HTML
+@cindex La@TeX{}2HTML, location
+@vindex T2H_L2H_L2H
+@opindex l2h_l2h
+@option{-l2h_l2h}
+name/location of @command{latex2html} program.
+
+@c --------------------------------------------------------
+@node OptionL2HSkip, OptionL2Htmp, OptionL2HL2H, OptionL2H
+@subsection Skip calling La@TeX{}2HTML
+@cindex La@TeX{}2HTML, skip calling
+@vindex T2H_L2H_SKIP
+@opindex l2h_skip
+@option{-l2h_skip}
+If set, skips actual call to @command{latex2html}: tries to
+reuse previously generated content, instead.
+
+@c --------------------------------------------------------
+@node OptionL2Htmp, , OptionL2HSkip, OptionL2H
+@subsection Temporary files for La@TeX{}2HTML
+@cindex Temporary, La@TeX{}2HTML
+@cindex La@TeX{}2HTML, Temporary files
+@vindex T2H_L2H_TMP
+@opindex l2h_tmp
+@option{-l2h_tmp}
+If set, l2h uses this directory for temporary files.  The
+path leading to this directory may not contain a dot (i.e.,
+a @samp{.}); otherwise, l2h will fail.
+@c ========================================================
+@node Reference, Indexop, Options, Top
+@c
+@c This file is part of the ``Texinfo to HTML Converter'' manual
+@c which is part of the ``texi2html'' distribution.
+@c
+@c License:
+@c    Copyright (C) 1999, 2000  Free Software Foundation, Inc.
+@c
+@c    This program is free software; you can redistribute it
+@c    and/or modify it under the terms of the GNU General Public
+@c    License as published by the Free Software Foundation;
+@c    either version 2 of the License, or (at your option) any
+@c    later version.
+@c
+@c    This program is distributed in the hope that it will be
+@c    useful, but WITHOUT ANY WARRANTY; without even the implied
+@c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+@c    PURPOSE.  See the GNU General Public License for more
+@c    details.
+@c
+@c    You should have received a copy of the GNU General
+@c    Public License along with this program; if not, write to
+@c    the Free Software Foundation, Inc., 59 Temple Place, Suite
+@c    330, Boston, MA  02111-1307  USA
+@c
+@c
+@c Revisions:
+@c 
+@c
+@c Author:
+@c   Karl Heinz Marbaise <khmarbaise@gmx.de>
+@c
+@c Description:
+@c   Here you can find the description on all
+@c   subs in the original Perl file.
+@c
+@c ========================================================
+@appendix Function Reference
+
+@menu
+* Refptocframe::           Print ToC Frame.
+* Refpphead::              Print page head.
+@end menu
+
+@c Global variables:
+@c T2H_USER which is created throught main part
+@c (texi2html.pl)
+@c You can use it. (On Windows? On Unix ?)
+@c --------------------------------------------------------
+@node Refptocframe,Refpphead,,Reference
+@appendixsec Print ToC Frame
+
+
+@defun T2H_DEFAULT_print_toc_frame (FileName)
+@sp 1
+Description of the subroutine.
+What does it do? Which parameters it needs etc.
+@end defun
+
+
+@c --------------------------------------------------------
+@node Refpphead,,Refptocframe,Reference
+@appendixsec Print Page Head
+@defun T2H_DEFAULT_print_page_head (FileName)
+@sp 1
+Description of the subroutine.
+What does it do? Which parameters it needs etc.
+@end defun
+@c ========================================================
+@c commandline option index.
+@node Indexop, Indexvr, Reference, Top
+@appendix Indices
+@appendixsec Command Line Option Index
+@printindex op
+@c --------------------------------------------------------
+@node Indexvr, Indexcp, Indexop, Top
+@appendixsec Variable Index
+@printindex vr
+@c --------------------------------------------------------
+@node Indexcp, , Indexvr, Top
+@appendixsec Concept Index
+@printindex cp
+@c printindex init file options dito.
+@c concept index.
+@bye

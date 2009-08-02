@@ -1,0 +1,12 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename node_in_copying.info
+
+@node Top
+@top Top section
+
+@insertcopying
+
+This is a manual testing @@node appearing within an unterminated @@copying.
+
+@bye

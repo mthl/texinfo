@@ -1,0 +1,31 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename tex_in_copying.info
+
+
+
+@node Top
+@top Top node
+
+@insertcopying
+
+@menu
+* chapter::
+@end menu
+
+@insertcopying
+
+@node chapter
+@chapter chapter
+
+The fundamental equation is
+@tex 
+$$
+2 a = \dot{\phi}
+$$
+@end tex
+
+@insertcopying
+
+
+@bye

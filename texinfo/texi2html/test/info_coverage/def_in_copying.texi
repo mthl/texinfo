@@ -14,11 +14,11 @@ deffnx lines
 
 @copying
 In copying
-@mymacro
+@mymacro{}
 @end copying
 
 In text
-@mymacro
+@mymacro{}
 
 @printindex fn
 

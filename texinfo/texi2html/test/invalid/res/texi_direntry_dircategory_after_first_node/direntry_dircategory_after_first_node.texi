@@ -1,0 +1,13 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename direntry_dircategory_after_first_node.info
+
+@node Top
+@top direntry direcategory after first node
+
+@dircategory Cat
+@direntry
+* in text: (in_text). in text
+@end direntry
+
+@bye

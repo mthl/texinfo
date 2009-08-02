@@ -1,0 +1,122 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename quotation.info
+
+@node Top
+@top Quotations
+
+@quotation 
+A quot---ation
+@end quotation
+
+@quotation Note
+A Note
+@end quotation
+
+@quotation note
+A note
+@end quotation
+
+@quotation Caution
+Caution
+@end quotation
+
+@quotation Important
+Important
+@end quotation
+
+@quotation Tip
+a Tip
+@end quotation
+
+@quotation Warning
+a Warning.
+@end quotation
+
+@quotation something @'e @TeX{}
+The something @'e @TeX{} is here.
+@end quotation
+
+@quotation @@ at the end of line @
+A @@ at the end of the @@quotation line.
+@end quotation
+
+@quotation something, other thing
+something, other thing
+@end quotation
+
+@quotation Note, the note
+Note, the note
+@end quotation
+
+@quotation
+@end quotation
+
+@quotation Empty
+@end quotation
+
+@quotation @asis{}
+@end quotation
+
+@quotation @*
+@end quotation
+
+@example
+@quotation 
+A quot---ation
+@end quotation
+
+@quotation Note
+A Note
+@end quotation
+
+@quotation note
+A note
+@end quotation
+
+@quotation Caution
+Caution
+@end quotation
+
+@quotation Important
+Important
+@end quotation
+
+@quotation Tip
+a Tip
+@end quotation
+
+@quotation Warning
+a Warning.
+@end quotation
+
+@quotation something @'e @TeX{}
+The something @'e @TeX{} is here.
+@end quotation
+
+@quotation @@ at the end of line @
+A @@ at the end of the @@quotation line.
+@end quotation
+
+@quotation something, other thing
+something, other thing
+@end quotation
+
+@quotation Note, the note
+Note, the note
+@end quotation
+
+@quotation
+@end quotation
+
+@quotation Empty
+@end quotation
+
+@quotation @asis{}
+@end quotation
+
+@quotation @*
+@end quotation
+@end example
+
+@bye

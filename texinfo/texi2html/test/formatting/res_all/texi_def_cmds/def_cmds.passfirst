@@ -2,6 +2,141 @@ def_cmds.texi(,2) @setfilename def_cmds.info
 def_cmds.texi(,3) @node Top
 def_cmds.texi(,4) @top Test for definition commands
 def_cmds.texi(,5) 
+def_cmds.texi(,6) @macro mymacro
+def_cmds.texi(,7) @deffn c--ategory d--effn_name a--rguments...
+def_cmds.texi(,8) d--effn
+def_cmds.texi(,9) @end deffn
+def_cmds.texi(,10) 
+def_cmds.texi(,11) @deffn cate--gory de--ffn_name ar--guments @
+def_cmds.texi(,12)    more args @* even more so
+def_cmds.texi(,13) def--fn
+def_cmds.texi(,14) @end deffn
+def_cmds.texi(,15) 
+def_cmds.texi(,16) @deffn fset @var{i} a g
+def_cmds.texi(,17) @deffnx {cmde} truc {}
+def_cmds.texi(,18) @deffnx Command {log trap} {}
+def_cmds.texi(,19) @deffnx Command { log trap1} {}  
+def_cmds.texi(,20) @deffnx Command {log trap2 } {}
+def_cmds.texi(,21) @deffnx cmde @b{id ule} truc
+def_cmds.texi(,22) @deffnx cmde2 @b{id @samp{i} ule} truc
+def_cmds.texi(,23) @deffnx @b{id @samp{i} ule}    
+def_cmds.texi(,24) @deffnx 
+def_cmds.texi(,25) @deffnx aaa
+def_cmds.texi(,26) @deffnx {} {}
+def_cmds.texi(,27) @deffnx{}
+def_cmds.texi(,28) @deffnx{} machin
+def_cmds.texi(,29) @deffnx{} {bidule machin}
+def_cmds.texi(,30) @deffnx{truc} machin
+def_cmds.texi(,31) @deffnx{truc} { }
+def_cmds.texi(,32) @deffnx{truc}
+def_cmds.texi(,33) @deffnx{} {}
+def_cmds.texi(,34) @deffnx {truc} followed by a comment
+def_cmds.texi(,35) @c comment
+def_cmds.texi(,36) @ifset texi2html
+def_cmds.texi(,37) @deffnx truc machin bidule chose and }
+def_cmds.texi(,38) @deffnx truc machin bidule chose and } after
+def_cmds.texi(,39) @deffnx truc machin bidule chose and {
+def_cmds.texi(,40) @deffnx truc machin bidule chose and { and after
+def_cmds.texi(,41) @end ifset
+def_cmds.texi(,42) Various deff lines
+def_cmds.texi(,43) @deffnx {truc} after a deff item
+def_cmds.texi(,44) @c comment
+def_cmds.texi(,45) text in def item for second def item
+def_cmds.texi(,46) @deffnx {truc} deffnx before end deffn
+def_cmds.texi(,47) @end deffn
+def_cmds.texi(,48) 
+def_cmds.texi(,49) @deffn empty deffn
+def_cmds.texi(,50) @end deffn
+def_cmds.texi(,51) 
+def_cmds.texi(,52) @deffn empty deffn with deffnx
+def_cmds.texi(,53) @deffnx empty deffnx
+def_cmds.texi(,54) @end deffn
+def_cmds.texi(,55) 
+def_cmds.texi(,56) @defvr c--ategory d--efvr_name
+def_cmds.texi(,57) d--efvr
+def_cmds.texi(,58) @end defvr
+def_cmds.texi(,59) 
+def_cmds.texi(,60) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+def_cmds.texi(,61) d--eftypefn
+def_cmds.texi(,62) @end deftypefn
+def_cmds.texi(,63) 
+def_cmds.texi(,64) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+def_cmds.texi(,65) d--eftypeop
+def_cmds.texi(,66) @end deftypeop
+def_cmds.texi(,67) 
+def_cmds.texi(,68) @deftypevr c--ategory t--ype d--eftypevr_name
+def_cmds.texi(,69) d--eftypevr
+def_cmds.texi(,70) @end deftypevr
+def_cmds.texi(,71) 
+def_cmds.texi(,72) @defcv c--ategory c--lass d--efcv_name
+def_cmds.texi(,73) d--efcv
+def_cmds.texi(,74) @end defcv
+def_cmds.texi(,75) 
+def_cmds.texi(,76) @defop c--ategory c--lass d--efop_name a--rguments...
+def_cmds.texi(,77) d--efop
+def_cmds.texi(,78) @end defop
+def_cmds.texi(,79) 
+def_cmds.texi(,80) @deftp c--ategory d--eftp_name a--ttributes...
+def_cmds.texi(,81) d--eftp
+def_cmds.texi(,82) @end deftp
+def_cmds.texi(,83) 
+def_cmds.texi(,84) @defun d--efun_name a--rguments...
+def_cmds.texi(,85) d--efun
+def_cmds.texi(,86) @end defun
+def_cmds.texi(,87) 
+def_cmds.texi(,88) @defmac d--efmac_name a--rguments...
+def_cmds.texi(,89) d--efmac
+def_cmds.texi(,90) @end defmac
+def_cmds.texi(,91) 
+def_cmds.texi(,92) @defspec d--efspec_name a--rguments...
+def_cmds.texi(,93) d--efspec
+def_cmds.texi(,94) @end defspec
+def_cmds.texi(,95) 
+def_cmds.texi(,96) @defvar d--efvar_name
+def_cmds.texi(,97) d--efvar
+def_cmds.texi(,98) @end defvar
+def_cmds.texi(,99) 
+def_cmds.texi(,100) @defopt d--efopt_name
+def_cmds.texi(,101) d--efopt
+def_cmds.texi(,102) @end defopt
+def_cmds.texi(,103) 
+def_cmds.texi(,104) @deftypefun t--ype d--eftypefun_name a--rguments...
+def_cmds.texi(,105) d--eftypefun
+def_cmds.texi(,106) @end deftypefun
+def_cmds.texi(,107) 
+def_cmds.texi(,108) @deftypevar t--ype d--eftypevar_name
+def_cmds.texi(,109) d--eftypevar
+def_cmds.texi(,110) @end deftypevar
+def_cmds.texi(,111) 
+def_cmds.texi(,112) @defivar c--lass d--efivar_name
+def_cmds.texi(,113) d--efivar
+def_cmds.texi(,114) @end defivar
+def_cmds.texi(,115) 
+def_cmds.texi(,116) @deftypeivar c--lass t--ype d--eftypeivar_name
+def_cmds.texi(,117) d--eftypeivar
+def_cmds.texi(,118) @end deftypeivar
+def_cmds.texi(,119) 
+def_cmds.texi(,120) @defmethod c--lass d--efmethod_name a--rguments...
+def_cmds.texi(,121) d--efmethod
+def_cmds.texi(,122) @end defmethod
+def_cmds.texi(,123) 
+def_cmds.texi(,124) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+def_cmds.texi(,125) d--eftypemethod
+def_cmds.texi(,126) @end deftypemethod
+def_cmds.texi(,127) 
+def_cmds.texi(,128) @ifset texi2html
+def_cmds.texi(,129) @deffn category name args { @
+def_cmds.texi(,130)   more args
+def_cmds.texi(,131) deffn with @{
+def_cmds.texi(,132) @end deffn 
+def_cmds.texi(,133) 
+def_cmds.texi(,134) @deffn category name args } @
+def_cmds.texi(,135)   more args
+def_cmds.texi(,136) deffn with @}
+def_cmds.texi(,137) @end deffn 
+def_cmds.texi(,138) @end ifset
+def_cmds.texi(,139) 
+def_cmds.texi(,140) @end macro
 def_cmds.texi(,141) 
 def_cmds.texi(,145) 
 def_cmds.texi(mymacro,146) @deffn c--ategory d--effn_name a--rguments...

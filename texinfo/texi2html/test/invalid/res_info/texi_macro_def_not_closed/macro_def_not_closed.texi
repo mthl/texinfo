@@ -4,3 +4,8 @@
 
 texte
 
+@macro the_macro {arg1, arg2}
+
+Macro body
+
+@end macro

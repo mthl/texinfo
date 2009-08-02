@@ -1,0 +1,16 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename unknown_language.info
+
+@documentlanguage unknown
+
+@node Top
+@top unknkown language
+
+Unknown language. @xref{Top}.
+
+@documentlanguage another_UNKNOWN
+
+Another unknown language. @xref{Top}.
+
+@bye

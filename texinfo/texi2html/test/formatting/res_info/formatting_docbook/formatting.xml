@@ -247,25 +247,25 @@ After clickstyle &rArr;
 <warning><para>a Warning.
 </para></warning>
 
-<blockquote><para><emphasis role="bold"> something &eacute; &tex;:</emphasis> The something &eacute; &tex; is here.
+<blockquote><para><emphasis role="bold">something &eacute; &tex;:</emphasis> The something &eacute; &tex; is here.
 </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> @ at the end of line </emphasis> A @ at the end of the @quotation line.
+<blockquote><para><emphasis role="bold">@ at the end of line </emphasis> A @ at the end of the @quotation line.
 </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> something, other thing:</emphasis> something, other thing
+<blockquote><para><emphasis role="bold">something, other thing:</emphasis> something, other thing
 </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> Note, the note:</emphasis> Note, the note
+<blockquote><para><emphasis role="bold">Note, the note:</emphasis> Note, the note
 </para></blockquote>
 
 <blockquote></blockquote>
 
-<blockquote><para><emphasis role="bold"> Empty:</emphasis> </para></blockquote>
+<blockquote><para><emphasis role="bold">Empty:</emphasis> </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> :</emphasis> </para></blockquote>
+<blockquote><para><emphasis role="bold">:</emphasis> </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> 
+<blockquote><para><emphasis role="bold">
 :</emphasis> </para></blockquote>
 
 
@@ -499,7 +499,7 @@ b</term>
 </para>
 <para>f&ndash;lushright
 </para>
-<para> ce&ndash;ntered line
+<para>ce&ndash;ntered line
 </para>
 <screen>\input texinfo @c -*-texinfo-*-
 
@@ -773,25 +773,25 @@ After clickstyle &rArr;
 <warning><para>a Warning.
 </para></warning>
 
-<blockquote><para><emphasis role="bold"> something &eacute; &tex;:</emphasis> The something &eacute; &tex; is here.
+<blockquote><para><emphasis role="bold">something &eacute; &tex;:</emphasis> The something &eacute; &tex; is here.
 </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> @ at the end of line </emphasis> A @ at the end of the @quotation line.
+<blockquote><para><emphasis role="bold">@ at the end of line </emphasis> A @ at the end of the @quotation line.
 </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> something, other thing:</emphasis> something, other thing
+<blockquote><para><emphasis role="bold">something, other thing:</emphasis> something, other thing
 </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> Note, the note:</emphasis> Note, the note
+<blockquote><para><emphasis role="bold">Note, the note:</emphasis> Note, the note
 </para></blockquote>
 
 <blockquote></blockquote>
 
-<blockquote><para><emphasis role="bold"> Empty:</emphasis> </para></blockquote>
+<blockquote><para><emphasis role="bold">Empty:</emphasis> </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> :</emphasis> </para></blockquote>
+<blockquote><para><emphasis role="bold">:</emphasis> </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> 
+<blockquote><para><emphasis role="bold">
 :</emphasis> </para></blockquote>
 
 
@@ -1025,7 +1025,7 @@ b</term>
 </para>
 <para>f&ndash;lushright
 </para>
-<para> ce&ndash;ntered line
+<para>ce&ndash;ntered line
 </para>
 <screen>\input texinfo @c -*-texinfo-*-
 
@@ -1295,25 +1295,25 @@ After clickstyle &rArr;
 <warning><para>a Warning.
 </para></warning>
 
-<blockquote><para><emphasis role="bold"> something &eacute; &tex;:</emphasis> The something &eacute; &tex; is here.
+<blockquote><para><emphasis role="bold">something &eacute; &tex;:</emphasis> The something &eacute; &tex; is here.
 </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> @ at the end of line </emphasis> A @ at the end of the @quotation line.
+<blockquote><para><emphasis role="bold">@ at the end of line </emphasis> A @ at the end of the @quotation line.
 </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> something, other thing:</emphasis> something, other thing
+<blockquote><para><emphasis role="bold">something, other thing:</emphasis> something, other thing
 </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> Note, the note:</emphasis> Note, the note
+<blockquote><para><emphasis role="bold">Note, the note:</emphasis> Note, the note
 </para></blockquote>
 
 <blockquote></blockquote>
 
-<blockquote><para><emphasis role="bold"> Empty:</emphasis> </para></blockquote>
+<blockquote><para><emphasis role="bold">Empty:</emphasis> </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> :</emphasis> </para></blockquote>
+<blockquote><para><emphasis role="bold">:</emphasis> </para></blockquote>
 
-<blockquote><para><emphasis role="bold"> 
+<blockquote><para><emphasis role="bold">
 :</emphasis> </para></blockquote>
 
 
@@ -1547,7 +1547,7 @@ b</term>
 </para>
 <para>f&ndash;lushright
 </para>
-<para> ce&ndash;ntered line
+<para>ce&ndash;ntered line
 </para>
 <screen>\input texinfo @c -*-texinfo-*-
 
@@ -1817,25 +1817,25 @@ After clickstyle &rArr;
 <warning>a Warning.
 </warning>
 
-<blockquote><lineannotation> something &eacute; &tex;:</lineannotation> The something &eacute; &tex; is here.
+<blockquote><lineannotation>something &eacute; &tex;:</lineannotation> The something &eacute; &tex; is here.
 </blockquote>
 
-<blockquote><lineannotation> @ at the end of line </lineannotation> A @ at the end of the @quotation line.
+<blockquote><lineannotation>@ at the end of line </lineannotation> A @ at the end of the @quotation line.
 </blockquote>
 
-<blockquote><lineannotation> something, other thing:</lineannotation> something, other thing
+<blockquote><lineannotation>something, other thing:</lineannotation> something, other thing
 </blockquote>
 
-<blockquote><lineannotation> Note, the note:</lineannotation> Note, the note
+<blockquote><lineannotation>Note, the note:</lineannotation> Note, the note
 </blockquote>
 
 <blockquote></blockquote>
 
-<blockquote><lineannotation> Empty:</lineannotation> </blockquote>
+<blockquote><lineannotation>Empty:</lineannotation> </blockquote>
 
-<blockquote><lineannotation> :</lineannotation> </blockquote>
+<blockquote><lineannotation>:</lineannotation> </blockquote>
 
-<blockquote><lineannotation> 
+<blockquote><lineannotation>
 :</lineannotation> </blockquote>
 
 

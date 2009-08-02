@@ -4,6 +4,33 @@ nested_table.texi(,4)
 nested_table.texi(,5) @node Top
 nested_table.texi(,6) @top Element
 nested_table.texi(,7) 
+nested_table.texi(,8) @macro myvtable
+nested_table.texi(,9) @vtable @asis
+nested_table.texi(,10) @item first item
+nested_table.texi(,11) @itemx second itemx
+nested_table.texi(,12) 
+nested_table.texi(,13) Text.
+nested_table.texi(,14) 
+nested_table.texi(,15) @item second item
+nested_table.texi(,16) 
+nested_table.texi(,17) Text 2
+nested_table.texi(,18) 
+nested_table.texi(,19) @item before empty itemx
+nested_table.texi(,20) @itemx
+nested_table.texi(,21) @itemx after an empty itemx, before an empty item
+nested_table.texi(,22) @item 
+nested_table.texi(,23) @item in item before end table
+nested_table.texi(,24) @end vtable
+nested_table.texi(,25) 
+nested_table.texi(,26) Something.
+nested_table.texi(,27) @table @emph
+nested_table.texi(,28) @item in item
+nested_table.texi(,29) Text without blank line
+nested_table.texi(,30) @item second item
+nested_table.texi(,31) Text without blank line 2
+nested_table.texi(,32) @end table
+nested_table.texi(,33) After table.
+nested_table.texi(,34) @end macro
 nested_table.texi(,35) 
 nested_table.texi(,36) Quotation
 nested_table.texi(,37) @quotation

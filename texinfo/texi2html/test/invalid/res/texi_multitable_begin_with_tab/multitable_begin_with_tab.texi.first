@@ -1,0 +1,17 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename multitable_begin_with_tab.info
+
+@node Top
+@top Test for tab beginning a multitable
+
+@multitable {a} {b}
+@tab t
+@end multitable
+
+@multitable {c} {d}
+@tab t2
+@item it
+@end multitable
+
+@bye

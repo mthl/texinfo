@@ -1,0 +1,117 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename images.info
+
+@macro files_char
+File with @@-commands and special characters:
+
+@c cannot test a file with newline, since perl says
+@c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+@c with a noon reproducible path
+@c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+
+And also in alt, and with dimensions:
+
+@c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+@end macro
+
+@copying
+In copying.
+@image{f--ile}.
+
+Text in copying.
+File with @@-commands and special characters:
+
+@c cannot test a file with newline, since perl says
+@c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+@c with a noon reproducible path
+@c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+
+And also in alt, and with dimensions:
+
+@c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+@end copying
+
+@node Top
+@top top
+
+
+Insertcopying
+In copying.
+@image{f--ile}.
+
+Text in copying.
+File with @@-commands and special characters:
+
+@c cannot test a file with newline, since perl says
+@c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+@c with a noon reproducible path
+@c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+
+And also in alt, and with dimensions:
+
+@c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+
+In normal context
+@image{f--ile}.
+
+On the same line, @code{f---ile}, @code{gr--a} extension @image{f---ile,,,,gr--a}.
+
+Image sparated from text:
+
+@image{f--ile}
+
+And the same, followed by a dot:
+
+@image{f--ile}.
+
+In example:
+
+@example
+Text. @code{f---ile} with jpeg extension.
+@image{f---ile,,,,jpeg}.
+
+@image{f--ile}.
+
+
+File with @@-commands and special characters:
+
+@c cannot test a file with newline, since perl says
+@c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+@c with a noon reproducible path
+@c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+
+And also in alt, and with dimensions:
+
+@c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+@end example
+
+@float
+In float.
+@image{f--ile}.
+
+@image{f--ile}.
+@end float
+
+File with @@-commands and special characters:
+
+@c cannot test a file with newline, since perl says
+@c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+@c with a noon reproducible path
+@c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+
+And also in alt, and with dimensions:
+
+@c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+
+@bye

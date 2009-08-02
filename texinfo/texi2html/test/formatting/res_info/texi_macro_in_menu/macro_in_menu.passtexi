@@ -1,4 +1,9 @@
 macro_in_menu.texi(,2) 
+macro_in_menu.texi(,3) @macro themacro
+macro_in_menu.texi(,4) @html
+macro_in_menu.texi(,5) bidule
+macro_in_menu.texi(,6) @end html
+macro_in_menu.texi(,7) @end macro
 macro_in_menu.texi(,8) 
 macro_in_menu.texi(,9) @node Top
 macro_in_menu.texi(,10) 

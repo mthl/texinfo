@@ -1,0 +1,725 @@
+templates.texi(,2) @c %**start of header
+templates.texi(,3) @setfilename templates.info
+templates.texi(,4) @documentencoding iso-8859-1
+templates.texi(,5) @documentlanguage en
+templates.texi(,6) @settitle  Emacs template package documentation, version 3.1c
+templates.texi(,7) @c %**end of header
+templates.texi(,8) @alias kbdmenu = kbd
+templates.texi(,9) @alias codetpl = samp
+templates.texi(,10) @alias codevar = code
+templates.texi(,11) 
+templates.texi(,20) 
+templates.texi(,21) @dircategory Emacs
+templates.texi(,22) @direntry
+templates.texi(,23) * Templates: (templates). Creating templates for files creation.
+templates.texi(,24) @end direntry
+templates.texi(,25) 
+templates.texi(,26) 
+templates.texi(,40) 
+templates.texi(,42) @node Top,,,(dir)top
+templates.texi(,43) @top Top node.
+templates.texi(,44) 
+templates.texi(,45) This is the manual of Emacs template package
+templates.texi(,47) 
+templates.texi(,48) @menu
+templates.texi(,49) * Overview:: Overview.
+templates.texi(,50) * Installation:: how to install the template package.
+templates.texi(,51) * Basics:: How to make and use templates.
+templates.texi(,52) * Advanced:: Templates for advanced users.
+templates.texi(,53) * Indexes:: Indexes for commands, keyword, and variable.
+templates.texi(,54) * News:: News for Package Template.
+templates.texi(,55) * Acknowledgements:: Acknowledgements.
+templates.texi(,56) @end menu
+templates.texi(,57) 
+templates.texi(,58) @node Overview,,,Top
+templates.texi(,59) @chapter Overview
+templates.texi(,60) 
+templates.texi(,61) When you create a new file with Emacs, package Template supplies an initial
+templates.texi(,62) buffer content via a template: a file with normal text and expansion forms.
+templates.texi(,63) There is a menu to easily create such templates.  You can also use new commands
+templates.texi(,64) to decorate comments and update the buffer contents.
+templates.texi(,65) 
+templates.texi(,66) 
+templates.texi(,67) The main difference between Template and @ref{Related,other similar
+templates.texi(,68) packages} is that you can define very flexible templates without having
+templates.texi(,69) to learn Lisp or changing your Emacs init file.  This package does not
+templates.texi(,70) help Lisp programmers to define complex macros.
+templates.texi(,71) 
+templates.texi(,72) @itemize
+templates.texi(,73) @item
+templates.texi(,74) The template mechanism is hooked into the normal find/open file command.  There
+templates.texi(,75) are also new commands for creating a new file using a template and inserting &amp;
+templates.texi(,76) expanding a template.
+templates.texi(,77) @item
+templates.texi(,78) You do not have to enter the file name of the template file.  This package uses
+templates.texi(,79) a sophisticated search to find the most appropritate template (supporting
+templates.texi(,80) project- and subproject specific template files).  You can change the
+templates.texi(,81) suggestion, of course.
+templates.texi(,82) @item
+templates.texi(,83) A template file can be easily created.  Most of the file usually contains
+templates.texi(,84) simple text; only @dfn{expansion forms} which look like
+templates.texi(,85) @samp{(>>>@var{Key}<<<)} will get replaced.
+templates.texi(,86) @item
+templates.texi(,87) There are various useful predefined expansions: set point (the cursor
+templates.texi(,88) position), mark and registers to the current position; insert various parts of
+templates.texi(,89) the filename, the user/system name, the current date/time in various formats,
+templates.texi(,90) and some text to be entered by the user.
+templates.texi(,91) @item
+templates.texi(,92) Template-specific expansions can be defined at the end of the template file.
+templates.texi(,93) There are commands to create these definitions; only complex expansions would
+templates.texi(,94) require some knowledge of Lisp.
+templates.texi(,95) @end itemize
+templates.texi(,96) 
+templates.texi(,97) There is a menu to support the creation of template files.  Additionally, this
+templates.texi(,98) package provides the following features:
+templates.texi(,99) 
+templates.texi(,100) @itemize
+templates.texi(,101) @item
+templates.texi(,102) When saving a buffer, some parts of the buffer contents (header and time
+templates.texi(,103) stamps) are automatically updated if necessary.
+templates.texi(,104) @item
+templates.texi(,105) There are commands to decorate comments with dashes and alike.  Works for
+templates.texi(,106) languages with any comment style, even languages having mixed comments like C++
+templates.texi(,107) and Java.
+templates.texi(,108) @end itemize
+templates.texi(,109) 
+templates.texi(,110) 
+templates.texi(,111) @node Related,,,Overview
+templates.texi(,112) @section Packages Related to Template
+templates.texi(,113) 
+templates.texi(,114) 
+templates.texi(,115) There are template packages of two different categories, which are determined
+templates.texi(,116) by one question:
+templates.texi(,117) 
+templates.texi(,118) @emph{What do you want to do with templates?} Do you want to use templates
+templates.texi(,119) when creating new files, or do you want to insert some stuff during editing
+templates.texi(,120) (but you are not satisfied with the standard macro mechanism)?
+templates.texi(,121) 
+templates.texi(,122) Well, templates could be seen as both new-file templates and macro-like
+templates.texi(,123) template, but the main application of templates determines the answers for the
+templates.texi(,124) following questions:
+templates.texi(,125)       
+templates.texi(,126) @itemize
+templates.texi(,127) @item
+templates.texi(,128) @emph{How do you define a template?} You can define it by one file per
+templates.texi(,129) template or by customizing some Emacs variables.  The first solution (which is
+templates.texi(,130) used by package Template) avoids Emacs hacking but might not be optimal if you
+templates.texi(,131) just want to define complex macros or if you want to use templates to program a
+templates.texi(,132) new Emacs major-mode.
+templates.texi(,133) @item
+templates.texi(,134) @emph{How is an appropriate template selected?} If you want to use complex
+templates.texi(,135) macro during editing, the answer is clear: the user have to provide the name of
+templates.texi(,136) the template.  For new files, the appropriate template should be automatically
+templates.texi(,137) selected.  But of course, you don't want to loose any flexibility and you don't
+templates.texi(,138) want to customize your Emacs for every project you start.
+templates.texi(,139) @item
+templates.texi(,140) @emph{How do you do "clever" things in the template?} The aims are to have
+templates.texi(,141) many predefined expansions (e.g., the current date) and to define some
+templates.texi(,142) non-trivial things without learning Lisp.  Any functionality here is the
+templates.texi(,143) overlapping point of both template categories.
+templates.texi(,144) @end itemize
+templates.texi(,145) 
+templates.texi(,146) 
+templates.texi(,147) 
+templates.texi(,148) Here is a little list of related files, collected around 1998, some discarded
+templates.texi(,149) later (no @abbr{URL}s, no active updating, but you can send me a mail):
+templates.texi(,150) 
+templates.texi(,151) @itemize
+templates.texi(,152) @item
+templates.texi(,153) Package @cite{autoinsert.el} uses templates when creating new files.
+templates.texi(,154) These templates are defined via files or by customizing Emacs.  For each new
+templates.texi(,155) template you want to introduce, you must customize your Emacs, the selection is
+templates.texi(,156) restricted to one template per major-mode or regexp match.  No predefined
+templates.texi(,157) expansions; clever things are provided by usual Lisp expressions or the
+templates.texi(,158) macro-like templates of package @cite{skeleton}.
+templates.texi(,159) @item
+templates.texi(,160) Package @cite{skeleton.el} is a Lisp language extension for
+templates.texi(,161) writing statement skeletons, i.e., you get macro-like Lisp commands.
+templates.texi(,162) @item
+templates.texi(,163) Package @cite{tempo.el} helps you defining and using named macro-like
+templates.texi(,164) templates.  Its predefined macros are similar to some predefined expansions of
+templates.texi(,165) package Template.  A specific template is used by
+templates.texi(,166) <code class="lisp">html-helper-mode</code> when creating a new html file.
+templates.texi(,167) (This is turned off with the default installation of package Template.)
+templates.texi(,168) @item
+templates.texi(,169) Package @cite{hm--html-menus} provides a command to insert templates
+templates.texi(,170) editing.  These templates are defined via files.  There are no predefined
+templates.texi(,171) expansions (except setting point), non-trivial expansions are defined via Lisp.
+templates.texi(,172) @end itemize
+templates.texi(,173) 
+templates.texi(,174) 
+templates.texi(,175) 
+templates.texi(,176) 
+templates.texi(,177) @node Installation,,,Top
+templates.texi(,178) @chapter Installation
+templates.texi(,179) 
+templates.texi(,180) @section Installation Instructions
+templates.texi(,181) 
+templates.texi(,182) @enumerate
+templates.texi(,183) @item
+templates.texi(,184) Copy file @file{template/lisp/template.el} into your
+templates.texi(,185) load-path and byte-compile it.
+templates.texi(,186) @item
+templates.texi(,187) Insert the following code into your Emacs init file
+templates.texi(,188) (@file{~/.emacs}):
+templates.texi(,189) 
+templates.texi(,190) @lisp
+templates.texi(,191) (require 'template)
+templates.texi(,192) (template-initialize)
+templates.texi(,193) @end lisp
+templates.texi(,194) 
+templates.texi(,195) @item
+templates.texi(,196) If you want to customize package Template, use @kbd{M-x
+templates.texi(,197) customize-group @key{RET} template
+templates.texi(,198) @key{RET}} or the customize entry in menu
+templates.texi(,199) @kbd{Options}.
+templates.texi(,200) @item
+templates.texi(,201) You might want to copy the template files from directory
+templates.texi(,202) @file{template/templates/} to
+templates.texi(,203) @file{~/.templates/} and change them according to your
+templates.texi(,204) preferences.
+templates.texi(,205) @end enumerate
+templates.texi(,206) 
+templates.texi(,207) 
+templates.texi(,208) Installation instructions with further explanations can be found in file
+templates.texi(,209) @file{template/INSTALL} of the distribution.
+templates.texi(,210) 
+templates.texi(,211)  
+templates.texi(,212) 
+templates.texi(,213) @node Basics,,,Top
+templates.texi(,214) @chapter Basics
+templates.texi(,215) 
+templates.texi(,216) Emacs, template, file template, comment decoration, auto-updating, time stamp, details
+templates.texi(,217) 
+templates.texi(,218) @menu
+templates.texi(,219) * menus:: Menus and Key-Bindings.
+templates.texi(,220) * using:: Using a Template.
+templates.texi(,221) * finding:: Finding a Template.
+templates.texi(,222) * creating:: Creating a Template.
+templates.texi(,223) * decorating:: Decorating a Comment.
+templates.texi(,224) * updating:: Updating a Buffer.
+templates.texi(,225) @end menu
+templates.texi(,226) 
+templates.texi(,227) @node menus,,,Basics
+templates.texi(,228) @section  Menus and Key-Bindings
+templates.texi(,229) @c --------------------------------------------------------------------------------
+templates.texi(,230) For Emacs-21.1+ and XEmacs, this package defines the following menu entries and
+templates.texi(,231) key-bindings: 
+templates.texi(,232) 
+templates.texi(,233) @itemize
+templates.texi(,234) @item
+templates.texi(,235) In menu @kbd{File} , there is a new menu item @kbd{New File
+templates.texi(,236) Using Template...}  .  The corresponding command is also bound to the
+templates.texi(,237) key sequence @kbd{C-x t}.
+templates.texi(,238) @item
+templates.texi(,239) At the end of menu @kbd{Cmds} (in XEmacs if it exists) or menu
+templates.texi(,240)  @kbd{Edit} , there is a new submenu @kbd{Template Creation}.
+templates.texi(,241) @item
+templates.texi(,242) Enter @kbd{C-x C-=} (command @command{template-single-comment}) to
+templates.texi(,243) insert dashes and alike into the current line and end the comment.
+templates.texi(,244) @item
+templates.texi(,245) Enter @kbd{C-x C-;} (command @command{template-single-comment}) to
+templates.texi(,246) insert dashes and alike around the current comment block.
+templates.texi(,247) @item
+templates.texi(,248) At the end of menu @kbd{Edit} , there is a new submenu
+templates.texi(,249) @kbd{Comment}.  It also contains the two commands just mentioned.
+templates.texi(,250) @end itemize
+templates.texi(,251) 
+templates.texi(,252) @c --------------------------------------------------------------------------------
+templates.texi(,253) @node using,,,Basics
+templates.texi(,254) @section  Using a Template
+templates.texi(,255) @c --------------------------------------------------------------------------------
+templates.texi(,256) Package Template offers various ways how to use template files:
+templates.texi(,257) 
+templates.texi(,258) In Emacs, the usual way to create a new file is by typing @kbd{C-x C-f},
+templates.texi(,259) using the menu or the toolbar (running command @command{find-file} or
+templates.texi(,260) @command{ffap}) and entering a non-existent file name.  In this case,
+templates.texi(,261) you will be asked whether to use a template for the new file.  You can
+templates.texi(,262) turn off this feature.
+templates.texi(,263) 
+templates.texi(,264) @itemize
+templates.texi(,265) @item
+templates.texi(,266) Here a first undefined xref @xref{EExpansion}.
+templates.texi(,267) There is a new command @command{template-new-file} @footnote{for the
+templates.texi(,268) menu entry and its key-binding type @kbd{C-h f template-new-file},
+templates.texi(,269) @xref{EExpansion}} to create a new file using a template.  Here, you have
+templates.texi(,270) the chance to edit the name of the template file.  This command also
+templates.texi(,271) supports file name refinement which is useful to create a file in a
+templates.texi(,272) series of files like @file{exercise2.tex} etc.
+templates.texi(,273) @item
+templates.texi(,274) There is also a command (@kbd{M-x template-expand-template})
+templates.texi(,275) to insert a template file into the current buffer and expand its expansion
+templates.texi(,276) forms.
+templates.texi(,277) @end itemize
+templates.texi(,278) 
+templates.texi(,279) 
+templates.texi(,280) For more @command{template-new-file} and @code{template-auto-insert},
+templates.texi(,281)  @xref{Expansion}.
+templates.texi(,282) 
+templates.texi(,283) @c --------------------------------------------------------------------------------
+templates.texi(,284) 
+templates.texi(,285) @node finding,,,Basics
+templates.texi(,286) @section  Finding a Template
+templates.texi(,287) @c --------------------------------------------------------------------------------
+templates.texi(,288) The algorithm for finding the most appropriate template can be best explained
+templates.texi(,289) with a little example:
+templates.texi(,290) 
+templates.texi(,291) @itemize
+templates.texi(,292) @item
+templates.texi(,293) You have a project @file{~/proj/} with subprojects @file{foo/} and
+templates.texi(,294) @file{bar/} containing @file{.java} files.
+templates.texi(,295) @item
+templates.texi(,296) You want to define a general template for the @file{.java} in your
+templates.texi(,297) project files, although @file{.java} files in subproject @file{foo/}
+templates.texi(,298) should use their own template.  You also want to define a special
+templates.texi(,299) template for all files @file{proj.java} in the project.
+templates.texi(,300) @item
+templates.texi(,301) Since you do not want to clutter the project directory with template
+templates.texi(,302) files, you first create a directory @file{~/proj/Templates/}.  In this
+templates.texi(,303) directory, you create new files @file{TEMPLATE.java.tpl} and
+templates.texi(,304) @file{proj.java.tpl}.  In directory @file{~/proj/foo/}, you create a new
+templates.texi(,305) file @file{TEMPLATE.java.tpl}.
+templates.texi(,306) @end itemize
+templates.texi(,307) 
+templates.texi(,308) The creation of the template files in the right directory is already enough for
+templates.texi(,309) packages Template to find the most appropriate template for a new file:
+templates.texi(,310) 
+templates.texi(,311) @itemize
+templates.texi(,312) @item
+templates.texi(,313) If you create a new file @file{~/proj/foo/abc.java}, this package tries
+templates.texi(,314) to find a template based on the file extension of the new file.  The
+templates.texi(,315) generic base file name for a template is @file{TEMPLATE} and the
+templates.texi(,316) additional extension is @file{.tpl}, a file @file{TEMPLATE.java.tpl}
+templates.texi(,317) exists in @file{~/proj/foo/}, so that file is used as the template.
+templates.texi(,318) @item
+templates.texi(,319) If you create a new file @file{~/proj/bar/abc.java}, this package again
+templates.texi(,320) tries to find @file{TEMPLATE.java.tpl}.  Since this file doesn't exist
+templates.texi(,321) in @file{~/proj/bar/}, it first inspects the subdirectory
+templates.texi(,322) @file{Templates/} which doesn't exist.  The search continues with the
+templates.texi(,323) parent directory @file{~/proj/} and then its subdirectory
+templates.texi(,324) @file{Templates/}.  Thus @file{~/proj/Templates/TEMPLATE.java.tpl} will
+templates.texi(,325) be used.
+templates.texi(,326) @item
+templates.texi(,327) If you create a new file @file{~/proj/foo/proj.java}, this package finds
+templates.texi(,328) a template file with the same base name: it uses
+templates.texi(,329) @file{~/proj/Templates/proj.java.tpl}.  You might argue that
+templates.texi(,330) @file{~/proj/foo/TEMPLATE.java.tpl} resides in a more specific
+templates.texi(,331) directory, but having the same base name is considered to be more
+templates.texi(,332) important (remember that some file like Makefiles do not have file
+templates.texi(,333) extensions).
+templates.texi(,334) @item
+templates.texi(,335) If you create a new file @file{~/other_proj/foo/proj.java}, i.e., a
+templates.texi(,336) project where you have defined no template files, this package uses one
+templates.texi(,337) of the default templates, in this case
+templates.texi(,338) @file{~/.templates/TEMPLATE.java.tpl}.
+templates.texi(,339) @end itemize
+templates.texi(,340) 
+templates.texi(,341) For more on derivation @xref{Derivation}.
+templates.texi(,342) 
+templates.texi(,343) @c --------------------------------------------------------------------------------
+templates.texi(,344) 
+templates.texi(,345) @node creating,,,Basics
+templates.texi(,346) @section  Creating a Template
+templates.texi(,347) @c --------------------------------------------------------------------------------
+templates.texi(,348) 
+templates.texi(,349) There are various predefined expansions which are probably enough for
+templates.texi(,350) most templates.  A corresponding expansion forms can be easily inserted
+templates.texi(,351) by selecting the appropriate entry in the new submenu  @kbd{Template
+templates.texi(,352) Creation}
+templates.texi(,353) :
+templates.texi(,354) 
+templates.texi(,355) @itemize
+templates.texi(,356) @item
+templates.texi(,357) Remember positions: use @samp{(>>>POINT<<<)} to set point (the cursor
+templates.texi(,358) position), @samp{(>>>MARK<<<)} to set mark (e.g., the opposite position
+templates.texi(,359) when a region is highlighted), and @samp{(>>>1<<<)} to @samp{(>>>0<<<)}
+templates.texi(,360) to registers to the current position.  Remember that @kbd{C-x r j
+templates.texi(,361) @var{Key}} jumps to the position stored in register @var{Key}.
+templates.texi(,362) @item
+templates.texi(,363) 
+templates.texi(,364) Insert parts of the file name, e.g., when creating the new file
+templates.texi(,365) @file{~/proj/foo/abc1.java}: @samp{(>>>DIR<<<)} is replaced by
+templates.texi(,366) @file{/home/user/proj/foo/}, @samp{(>>>FILE<<<)} by @file{abc1.java},
+templates.texi(,367) @samp{(>>>FILE_SANS<<<)} by @file{abc1} , @samp{(>>>FILE_UPCASE<<<)} by
+templates.texi(,368) @file{ABC1} , @samp{(>>>FILE_RAW<<<)} by @file{abc},
+templates.texi(,369) @samp{(>>>FILE_NUM<<<)} by @file{1} , and @samp{(>>>FILE_EXT<<<)} by
+templates.texi(,370) @file{java}.
+templates.texi(,371) @item
+templates.texi(,372) Insert the current date/time in two customizable and three fixed
+templates.texi(,373) formats: use @samp{(>>>DATE<<<)} for @samp{20 Feb 2002},
+templates.texi(,374) @samp{(>>>TIME<<<)} for @samp{20:01:13} , @samp{(>>>YEAR<<<)} for
+templates.texi(,375) @samp{2002} , @samp{(>>>ISO_DATE<<<)} for @samp{2002-02-20} , and
+templates.texi(,376) @samp{(>>>VC_DATE<<<)} for @samp{2002/02/20 19:01:13}
+templates.texi(,377) @item
+templates.texi(,378) Insert the user/system name in various formats: use
+templates.texi(,379) @samp{(>>>AUTHOR<<<)} for @email{Christoph Wedler
+templates.texi(,380) <wedler@@fmi.uni-passau.de>}, @samp{(>>>USER_NAME<<<)} for
+templates.texi(,381) @samp{Christoph Wedler} , @samp{(>>>LOGIN_NAME<<<)} for @samp{wedler} ,
+templates.texi(,382) and @samp{(>>>HOST_ADDR<<<)} for @samp{fmi.uni-passau.de} .
+templates.texi(,383) @item
+templates.texi(,384) Ask the user for some initial comment.  If this expansion is used, the buffer
+templates.texi(,385) for the new file will be marked as modified.  For each undefined expansion, the
+templates.texi(,386) user is also asked.
+templates.texi(,387) @item
+templates.texi(,388) Disabling the search for expansion forms:
+templates.texi(,389) @samp{(>>>ZERO_FORM<<<)} can be inserted into a string which
+templates.texi(,390) will be otherwise regarded as an expansion form, the region between
+templates.texi(,391) @samp{(>>>LITERAL<<<)} and the first
+templates.texi(,392) @samp{(>>>/LITERAL<<<)} after it will be skipped.
+templates.texi(,393) @end itemize
+templates.texi(,394)     
+templates.texi(,395) You can define your own expansions in your Emacs init file and at the end of a
+templates.texi(,396) template file.  A corresponding definition can be easily inserted by selecting
+templates.texi(,397) the appropriate entry in the new submenu  @kbd{Template
+templates.texi(,398) Creation}:
+templates.texi(,399)     
+templates.texi(,400) @itemize
+templates.texi(,401) 
+templates.texi(,402) @item
+templates.texi(,403) @kbd{Define User Input}
+templates.texi(,404) .  Ask the user to insert some text
+templates.texi(,405) using some specific prompt.  Optionally, ask for a text with completion, or for
+templates.texi(,406) a sequence of user input (exit with empty input).
+templates.texi(,407) @item
+templates.texi(,408) @kbd{Define Text Register} 
+templates.texi(,409) .  Define a text for
+templates.texi(,410) register @var{Reg} which can be inserted with @kbd{C-x r i @var{Reg}}.
+templates.texi(,411) Optionally, provide a comment for it which will be temporarily shown at
+templates.texi(,412) point.
+templates.texi(,413) @item
+templates.texi(,414) @kbd{Define Message}
+templates.texi(,415) .  Define a message which will be
+templates.texi(,416) temporarily shown at point or before/after the expansion in a special buffer.
+templates.texi(,417) There is also a computed message in the echo area.
+templates.texi(,418) @item
+templates.texi(,419) 
+templates.texi(,420) Execute some Lisp coding defined at the end of the template.  By default, you
+templates.texi(,421) have to confirm it first, since it is insecure to execute unchecked coding.
+templates.texi(,422) (You do not have menu support to define this kind of expansion.)
+templates.texi(,423) @end itemize
+templates.texi(,424) 
+templates.texi(,425) @defopt template-default-expansion-alist
+templates.texi(,426) @end defopt
+templates.texi(,427) @defopt template-definition-start
+templates.texi(,428) @end defopt
+templates.texi(,429) 
+templates.texi(,430)     
+templates.texi(,431) @c --------------------------------------------------------------------------------
+templates.texi(,432) 
+templates.texi(,433) @node decorating,,,Basics
+templates.texi(,434) @section  Decorating a Comment
+templates.texi(,435) @c --------------------------------------------------------------------------------
+templates.texi(,436) 
+templates.texi(,437) There are commands to decorate comments with dashes and alike (@samp{-},
+templates.texi(,438) @samp{=} and @samp{#} by default).  Both commands are included in the
+templates.texi(,439) new submenu @kbd{Comments} 
+templates.texi(,440) and bound to keys:
+templates.texi(,441) 
+templates.texi(,442) @itemize
+templates.texi(,443) @item
+templates.texi(,444) Use command @code{template-single-comment} to jump to the
+templates.texi(,445) end of the current line and insert the dashes and the final
+templates.texi(,446) comment end-string up-to the fill position.  This command works with any
+templates.texi(,447) comment style, including for languages having mixed comments like C++ and Java.
+templates.texi(,448) It also works in major modes without a defined comment syntax.
+templates.texi(,449) @item
+templates.texi(,450) Use command @code{template-block-comment} to surround the
+templates.texi(,451) current comment block (i.e., contiguous comment lines) with extra lines
+templates.texi(,452) containing dashes and alike and to put the correct number of newlines around
+templates.texi(,453) the block.  This command only works with comments which are terminated with the
+templates.texi(,454) end of the line (like Java's @code{//}@c code class=text
+templates.texi(,455)  comment).
+templates.texi(,456) @end itemize
+templates.texi(,457) 
+templates.texi(,458) The comment decoration style is highly customizable and can be controlled by
+templates.texi(,459) 
+templates.texi(,460) @itemize
+templates.texi(,461) @item
+templates.texi(,462) The prefix argument given to the two commands.
+templates.texi(,463) @item
+templates.texi(,464) The existing comment decoration style when present.
+templates.texi(,465) @item
+templates.texi(,466) Determined by the indentation or the repetition of a single-character comment
+templates.texi(,467) start (like Emacs-Lisp's @code{;}@c code class=text
+templates.texi(,468) ).
+templates.texi(,469) @end itemize
+templates.texi(,470) 
+templates.texi(,471) For more on comments @xref{Comments}.
+templates.texi(,472) 
+templates.texi(,473) @c --------------------------------------------------------------------------------
+templates.texi(,474) 
+templates.texi(,475) @node updating,,,Basics
+templates.texi(,476) @section  Updating a Buffer
+templates.texi(,477) @c --------------------------------------------------------------------------------
+templates.texi(,478) A buffer is automatically updated according to some rules when saving
+templates.texi(,479) the file.  This updating can be invoked explicitly by selecting the menu
+templates.texi(,480) entry @kbd{Update Buffer} in the new submenu @kbd{Comments} .
+templates.texi(,481) 
+templates.texi(,482) @itemize
+templates.texi(,483) @item
+templates.texi(,484) Update the file name in the first three lines of the buffer if the file name is
+templates.texi(,485) indicated by @code{@@(#) @var{FileName}}@c code class=text
+templates.texi(,486)  or
+templates.texi(,487) @code{;;; @var{FileName} --}@c code class=text
+templates.texi(,488)  where
+templates.texi(,489) @code{;;;}@c code class=text
+templates.texi(,490)  stands for any comment start (with optional
+templates.texi(,491) repetition of a single-character comment start).
+templates.texi(,492) @item
+templates.texi(,493) Update the date if it is the last text inside the
+templates.texi(,494) @code{address}@c code class=html
+templates.texi(,495)  element of a HTML buffer.
+templates.texi(,496) @item
+templates.texi(,497) Automatic updating is optional, as is user confirmation for it.  Automatic
+templates.texi(,498) updating can be disabled for buffers whose file name matches a regular
+templates.texi(,499) expression.
+templates.texi(,500) @item
+templates.texi(,501) If nothing will be changed by the updating, there will be no user confirmation
+templates.texi(,502) and the buffer will not be marked as modified.
+templates.texi(,503) @end itemize
+templates.texi(,504) 
+templates.texi(,505) @defopt template-update-buffer
+templates.texi(,506) @end defopt
+templates.texi(,507) @defopt template-auto-update
+templates.texi(,508) @end defopt
+templates.texi(,509) @defopt template-update-buffer-alist
+templates.texi(,510) @end defopt
+templates.texi(,511) @defopt template-header-regexp-alist
+templates.texi(,512) @end defopt
+templates.texi(,513) 
+templates.texi(,514) @node Advanced,,,Top  
+templates.texi(,515) @chapter Templates for advanced users
+templates.texi(,516) 
+templates.texi(,517) @menu
+templates.texi(,518) * Customization:: Templates customization.
+templates.texi(,519) @end menu
+templates.texi(,520) 
+templates.texi(,521) @node Customization,,,Advanced
+templates.texi(,522) @section Templates customization
+templates.texi(,523) 
+templates.texi(,524) @menu
+templates.texi(,525) * Expansion:: Customization of keyword expansion rules.
+templates.texi(,526) * Derivation:: Customization of how templates are derived.
+templates.texi(,527) * Comments:: Customization of comments.
+templates.texi(,528) @end menu
+templates.texi(,529) 
+templates.texi(,530) @node Expansion,,,Customization
+templates.texi(,531) @subsection Customization of keyword expansion rules
+templates.texi(,532) 
+templates.texi(,533) @deffn {Interactive Command} template-new-file {file template with-undo}
+templates.texi(,534) Open a new file @var{file} by using a @var{template}.
+templates.texi(,535) Using a template for creating a new file consists of, steps 1 to 3 are
+templates.texi(,536) only executed when called interactively:
+templates.texi(,537) @enumerate
+templates.texi(,538) @item
+templates.texi(,539) Prompt for the name of the new file.
+templates.texi(,540) @item
+templates.texi(,541) Template derivation: suggest a reasonable template file to the user see
+templates.texi(,542) @code{template-derivation-alist}.
+templates.texi(,543) @item
+templates.texi(,544) File name refinement: e.g., if the given file name is @file{exercise}
+templates.texi(,545) and there are two files @file{exercise1.tex} and @file{exercise2.tex} in
+templates.texi(,546) the same directory and if we have a template @file{exercise.tex.tpl},
+templates.texi(,547) the file name is refined to @file{exercise3.tex}.  This is turned off
+templates.texi(,548) when @kbd{C-x t} is called with a prefix argument.
+templates.texi(,549) @item
+templates.texi(,550) Template insertion: insert the template file into the empty buffer.
+templates.texi(,551) @item
+templates.texi(,552) Read per-template expansion definition section starting at
+templates.texi(,553) @code{template-definition-start} and delete it.
+templates.texi(,554) @item
+templates.texi(,555) Display: before message in @code{template-message-buffer}.
+templates.texi(,556) @item
+templates.texi(,557) Execute pre-expansion commands defined in the definition section.
+templates.texi(,558) @item
+templates.texi(,559) Set local variables defined in the definition section.
+templates.texi(,560) @item
+templates.texi(,561) Expansion: expand the expansion forms (text matched by
+templates.texi(,562) @code{template-expansion-regexp}) They are defined in the definition
+templates.texi(,563) section, in @code{template-expansion-alist}, or provided by default,
+templates.texi(,564) see @code{template-expansion-regexp} and
+templates.texi(,565) @code{template-register-regexp}.
+templates.texi(,566) @item
+templates.texi(,567) Execute post-expansion commands defined in the definition section.
+templates.texi(,568) @item
+templates.texi(,569) Run @code{normal-mode} and functions in @code{find-file-hooks}.
+templates.texi(,570) @item
+templates.texi(,571) Update header according to @command{template-update-header} with
+templates.texi(,572) @c Vincent: What is this if-exists argument ?
+templates.texi(,573) argument @code{if-exists}.
+templates.texi(,574) @item
+templates.texi(,575) Display: after message in @code{template-message-buffer}.
+templates.texi(,576) @item
+templates.texi(,577) Report: display a temporary message at point defined in the definition
+templates.texi(,578) section and an automatically generated message in the minibuffer area,
+templates.texi(,579) see @code{template-message-timeout}.
+templates.texi(,580) @end enumerate
+templates.texi(,581) If optional @var{with-undo} is non-nil, store corresponding changes in
+templates.texi(,582) @code{buffer-undo-list}.  If @var{file} is nil, the buffer for @var{file} has
+templates.texi(,583) already been created and the accessible part will be replaced by the
+templates.texi(,584) expanded template.  If @var{template} is nil (empty input when called
+templates.texi(,585) interactively), do not use a template.
+templates.texi(,586) @end deffn
+templates.texi(,587) 
+templates.texi(,588) @defopt template-auto-insert
+templates.texi(,589) @end defopt
+templates.texi(,590) 
+templates.texi(,591) @node Derivation,,,Customization
+templates.texi(,592) @subsection Customization of how templates are derived
+templates.texi(,593) 
+templates.texi(,594) @defopt template-derivation-alist
+templates.texi(,595) @end defopt
+templates.texi(,596) 
+templates.texi(,597) @node Comments,,,Customization
+templates.texi(,598) @subsection Customization of comments
+templates.texi(,599) 
+templates.texi(,600) @defopt template-single-comment
+templates.texi(,601) @end defopt
+templates.texi(,602) 
+templates.texi(,603) @deffn {Interactive command} template-block-comment arg
+templates.texi(,604) It is bound to @kbd{C-x C-;}, and @kbd{<menu-bar> <edit> <Comment> <Decorate Comment Block>}.
+templates.texi(,605) 
+templates.texi(,606) Decorate the current block of comment-only lines with dashes and alike.
+templates.texi(,607) That is, surround the the contiguous comment-only lines around point
+templates.texi(,608) with extra lines containing dashes and alike and to put the correct
+templates.texi(,609) number of newlines around the block.
+templates.texi(,610) 
+templates.texi(,611) Barf if the comment syntax at point has a non-empty @code{comment-end} or if
+templates.texi(,612) point is not in a comment-only line.
+templates.texi(,613) 
+templates.texi(,614) A block comment consists of all neighboring lines which start with
+templates.texi(,615) spaces and @code{comment-start}.  If @code{comment-start} is a string of length 1,
+templates.texi(,616) the number of repetitions of @code{comment-start} must be the same or larger
+templates.texi(,617) than in the line where the command is invoked from, too.
+templates.texi(,618) 
+templates.texi(,619) Prefix argument @var{arg} and @code{template-comment-specification} determines the
+templates.texi(,620) comment style to use.  The length of the separator line is determined by
+templates.texi(,621) @code{template-max-column}.
+templates.texi(,622) 
+templates.texi(,623) This command can also be used with point in an empty line after a block
+templates.texi(,624) comment.  A second invocation of this command directly after a
+templates.texi(,625) successful invocation deletes the remaining empty lines from the current
+templates.texi(,626) line on.
+templates.texi(,627) @end deffn
+templates.texi(,628) 
+templates.texi(,629) @defopt template-comment-specification-alist
+templates.texi(,630) List of specifications for comment functions.  Each specification at
+templates.texi(,631) @var{level}, starting at 1, is a list @code{(@var{separator}
+templates.texi(,632) @var{before-block} @var{after-block} @var{DELETE-LINES})}
+templates.texi(,633) 
+templates.texi(,634) @var{separator} is the string which is inserted repeatedly by commands
+templates.texi(,635) @kbd{C-x C-=} and @kbd{C-x C-;} up to @code{template-max-column}.
+templates.texi(,636) 
+templates.texi(,637) After that, @kbd{C-x C-;} deletes @var{DELETE-LINES} after the comment block
+templates.texi(,638) and inserts string @var{after-block} at the end of the block and
+templates.texi(,639) @var{before-block} at the front of the block.
+templates.texi(,640) 
+templates.texi(,641) The specification @var{level} to use is determined by:
+templates.texi(,642) @enumerate
+templates.texi(,643) @item
+templates.texi(,644) If the prefix argument is non-nil and its numeric value is > 0, this
+templates.texi(,645) value is the @var{level}.
+templates.texi(,646) @item
+templates.texi(,647) If the prefix argument is nil, and there is an old comment style, use
+templates.texi(,648) old comment style.
+templates.texi(,649) @item
+templates.texi(,650) If @code{template-comment-specification-special} is a function or the
+templates.texi(,651) current major mode has a property with this name and its value is a
+templates.texi(,652) function, this function returns the specification.
+templates.texi(,653) @item
+templates.texi(,654) If @code{comment-end} is empty and @code{comment-start} is a string of
+templates.texi(,655) length 1: @var{level} is number of repetitions of @code{comment-start}
+templates.texi(,656) at the beginning of the line.  Otherwise, if the correctly indented line
+templates.texi(,657) starts at the beginning of the line, @var{level}=3, else @var{level}=2.
+templates.texi(,658) @end enumerate
+templates.texi(,659) @end defopt
+templates.texi(,660) 
+templates.texi(,661) 
+templates.texi(,662) @node Indexes,,,Top  
+templates.texi(,663) @chapter Indexes for commands, keyword, and variable
+templates.texi(,664) 
+templates.texi(,665) @menu
+templates.texi(,666) * Keyword Index:: Keyword Index.
+templates.texi(,667) * Command Index:: Command Index.
+templates.texi(,668) * Variable Index:: Customizable Variable Index.
+templates.texi(,669) @end menu
+templates.texi(,670) 
+templates.texi(,671) @node Keyword Index,,,Indexes
+templates.texi(,672) @section Keyword Index
+templates.texi(,673) 
+templates.texi(,674) @node Command Index,,,Indexes
+templates.texi(,675) @section Keyword Index
+templates.texi(,676) 
+templates.texi(,677) @printindex fn
+templates.texi(,678) 
+templates.texi(,679) @node Variable Index,,,Indexes
+templates.texi(,680) @section Variable Index
+templates.texi(,681) 
+templates.texi(,682) @printindex vr
+templates.texi(,683) 
+templates.texi(,684) @node News,,,Top  
+templates.texi(,685) @chapter News for Package Template
+templates.texi(,686) 
+templates.texi(,687) @table @asis
+templates.texi(,688) @item Latest Version:
+templates.texi(,689) @strong{3.1c} (21 Aug 2003).
+templates.texi(,690) @item Requirements:
+templates.texi(,691) @cite{Emacs-20.2}, @cite{XEmacs-20.2}, or higher.  
+templates.texi(,692) 
+templates.texi(,693) No menu support for Emacs before Version 21.1.
+templates.texi(,694) @item Licence: 
+templates.texi(,695) @cite{GNU General Public License}.
+templates.texi(,696) @end table
+templates.texi(,697) 
+templates.texi(,698) @section Changes with Release 3.1c
+templates.texi(,699) 
+templates.texi(,700) @itemize
+templates.texi(,701) @item
+templates.texi(,702) Bug fix: on XEmacs, initialization would fail without menus "File" and "Edit" in menubar.
+templates.texi(,703) @item
+templates.texi(,704) Allow messages to be displayed in a separate buffer "*Template Messages*"
+templates.texi(,705) instead at point.
+templates.texi(,706) @item
+templates.texi(,707) Correct and improve header updating.
+templates.texi(,708) @item
+templates.texi(,709) Extend use of @code{M-x template-single-comment}.
+templates.texi(,710) @item
+templates.texi(,711) Minor bug fixes.  Miscellaneous.
+templates.texi(,712) @end itemize
+templates.texi(,713) 
+templates.texi(,714)     
+templates.texi(,715) @section Changes with Release 3.1
+templates.texi(,716) 
+templates.texi(,717) @itemize
+templates.texi(,718) @item
+templates.texi(,719) Moved to SourceForge.net.  Less technical description on web page.
+templates.texi(,720) @item
+templates.texi(,721) Remove examples from distribution, they were more confusing than helpful.
+templates.texi(,722) @item
+templates.texi(,723) Bug fix: would sometimes indent the current line when using the menubar.
+templates.texi(,724) @item
+templates.texi(,725) Menus work with Emacs-21, too.  Rename some menu entries.
+templates.texi(,726) @item
+templates.texi(,727) Don't search further for remote templates.  Nuke this home/base directory
+templates.texi(,728) stuff, stop search at root.
+templates.texi(,729) @item
+templates.texi(,730) Don't rely on command @command{ffap} to always add an entry to
+templates.texi(,731) @code{command-history} if the filename is read from terminal.  Special
+templates.texi(,732) setup for @code{ffap} and @code{html-helper}.
+templates.texi(,733) @item
+templates.texi(,734) Make date/time formats work as names suggest.
+templates.texi(,735) @item
+templates.texi(,736) Command to insert & expand a template file.
+templates.texi(,737) @item
+templates.texi(,738) Allow user to define a choice in the definition section to be answered
+templates.texi(,739) via @code{y-or-n-p}.
+templates.texi(,740) @item
+templates.texi(,741) Various miscellaneous improvements.  Minor bug fixes.
+templates.texi(,742) @end itemize
+templates.texi(,743)     
+templates.texi(,744) @node Acknowledgements,,,Top  
+templates.texi(,745) 
+templates.texi(,746) Christoph Wedler @uref{http://sourceforge.net/users/wedler/}, 21 Aug 2003
+templates.texi(,747) 
+templates.texi(,748) 
+templates.texi(,749) @bye

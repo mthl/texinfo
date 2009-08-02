@@ -1,0 +1,4311 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename mini_ker.info
+@set UPDATED 28 March 2002
+@set UPDATED-MONTH March 2002
+@set EDITION 4.2
+@set VERSION 4.2
+
+@c @set myversion @value{VERSION}
+@set myversion 102
+
+@set myurl @url{http://www.environnement.ens.fr/@/perso/@/dumas/@/mini_ker/@/software.html}
+
+@macro Minik{}
+Miniker
+@end macro
+
+@settitle Miniker 102 manual
+
+@syncodeindex fn vr
+
+@dircategory Miscellaneous
+@direntry
+* Miniker: (mini_ker).            The mini_ker modeling tool.
+@end direntry
+
+
+
+
+@node Top
+@top Miniker 102 manual
+
+
+@c @insertcopying
+
+@top Miniker 102 manual
+
+@strong{By: The TEF Collaboration}
+
+@noindent Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec@*
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas@*
+Copyright (C) 2004, St@'ephane Hallegatte
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled ``GNU Free 
+Documentation License.''
+@end quotation
+
+
+@menu
+* Introduction::
+* TEF overview::
+* A model with Miniker::
+* Advanced programming::
+* Dynamic system analysis::
+* Advanced use of Miniker with make::
+
+Indices
+
+* Concepts index::
+* Variables macros and functions index::
+
+Appendices
+
+* Installation::
+* Cmz directives reference::
+* Copying This Manual::           The GNU Free Documentation License.
+@end menu
+
+@contents
+
+@node Introduction
+@unnumbered Introduction
+
+@cindex TEF
+@cindex cells
+@cindex transfers
+@cindex ZOOM
+@cindex mortran 
+
+   Miniker is a modeling tool, built especially in order to implement
+models written following the @acronym{TEF,Transfer Evolution Formalism} 
+formalism, a mathematical framework for system analysis and
+simulation. Miniker allows for timewise simulation, system analysis,
+adjoint computation, Kalman filtering and more.
+
+Miniker uses a fortran preprocessor, @command{mortran}, designed in the 
+1970's, to ease model writing using dedicated specific languages.
+For example partial derivatives are
+symbolicaly determined by @command{mortran} macros in Miniker. 
+For the selection of 
+another compile-time features, another set of preprocessor directives,
+the @dfn{cmz directives}, are used. In most cases the user does not need to
+know anything about that preprocessing that occurs behind the scene,
+he simply writes down the equations of his model and he is done.
+
+@c All partial derivatives needed to solve the TEF system are automatically
+@c determined during the pre-compilation stage.
+@c Once all models written down and initial conditions
+@c given using a pseudo-Fortran type of language, the model is ready to run.
+
+@c The language developed to get automatic symbolic partial derivatives
+@c uses the Fortran pre-compiler @command{mortran}, designed in the 1970's.
+
+A comprehensive description
+of the @acronym{TEF} formalism in available on 
+@url{http://www.lmd.jussieu.fr/ZOOM/doc/tef-GB-partA5.pdf}).
+The Miniker software is a reduced version of 
+@uref{http://www.lmd.jussieu.fr@//zoom,@strong{ZOOM}}, 
+that can only handle a hundreds of variables, but is much easier to use.
+
+@menu 
+* Intended audience::
+* Reading guide::
+* Other Manuals and documentation::
+@end menu 
+
+@node Intended audience
+@unnumberedsec Intended audience
+
+The reader should have notions in system dynamics.
+@c and understand the basis of the TEF. 
+Moreover a minimal knowledge of programmation and fortran is 
+required. What is required is a basic understanding of variable types, 
+affectation and fortran expressions.
+
+@node Reading guide
+@unnumberedsec Reading guide
+
+The first chapter is a brief overview of the @acronym{TEF}.
+The following describes how to write, compile and run a model in Miniker 
+in its basic and comprehensive syntax.
+@c Reading the sections of this chapter up to the section 
+@c @emph{Symbolic model description} is required to know the
+@c syntax of model description in @Minik{}.
+Reading up to the section
+@emph{Controlling the run} is required to be able to use Miniker. 
+In this section it is assumed that Miniker is properly setup. The
+installation instructions are in the appendix at
+@ref{Installation}.
+
+@c 2 programming environment to compile the model are available, with cmz 
+@c and make, you can skip the method description you are not interested in. 
+@c A reference for the usefull cmz directives is also in the appendix
+@c (@pxref{Cmz directives reference}).
+
+@c You should also
+@c read the following section, @emph{Symbolic model description} which presents an
+@c alternate syntax for model description, such that you can choose what you
+@c prefer.
+
+The next chapter describes advanced features, first a general introduction to
+features settings and then a description of other model description related
+features.
+
+The next chapter describes system analysis tools available with Miniker. The
+sections are independant and each describes how to use a specific feature. If
+you plan on using these features, you should also read 
+@ref{Selecting features, , Overview of feature setting}.
+
+A final chapter describes advanced features in a development environment
+using make,
+
+In the appendix the instructions for the installation are described
+(@pxref{Installation}). 
+
+@node Other Manuals and documentation
+@unnumberedsec  Other Manuals and documentation
+
+A programmers'Manual is available (in French), and can be asked for to 
+any member of the collabration. See additional documents in 
+ @url{http://www.lmd.jussieu.fr/Zoom/doc} or ask for Research 
+texts and articles to members.
+
+@node TEF overview
+@chapter An overview of the @acronym{TEF} formalism
+
+The @acronym{TEF, Transfer Evolution Formalism} is based on partitionning
+and recoupling of model subsystems. It allows the study of the coupling 
+between subsystems by the means of linearization and time discretization.
+
+@menu 
+* Cell and Transfer::
+* Linearization and discretization::
+@end menu
+
+@node Cell and Transfer
+@section Cell and Transfer equations
+
+In the @acronym{TEF}, a model is
+mathematically represented by a set of equations corresponding
+to two kinds objects:
+
+@enumerate
+@item Cells which are elementary models and correspond to evolution equations
+such as:
+@tex
+$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$
+@end tex
+
+@noindent @math{d eta(t)/d t = g(eta(t),phi(t))}
+
+
+Vector @math{\eta} represent the state variables of cells and
+the vector @math{\varphi} represent the dependent
+boundary conditions, @i{i.e.} the
+variables considered as boundary conditions by a cell, but depending upon
+the complete model state. This dependent boundary conditions are
+required to make the cells correspond to well-posed problems.
+@c FIXME acceptable?
+These variables are often called state variables, and prognostic 
+variables in meteorology.
+
+
+@item Transfers which are determined by constraint equations such as:
+@tex
+$$
+\varphi(t) = f(\eta(t),\varphi(t))
+$$
+@end tex
+
+@noindent @math{phi(t) = f(eta(t),phi(t))}
+
+These equations are often called algebraic equations, and in meteorology
+diagnostic equations.
+@end enumerate
+
+@node Linearization and discretization
+@section Linearization and discretization in the @acronym{TEF}
+
+The relations between sub-systems is excessively difficult to exhibit when
+having to cope with non-linear system. In the @acronym{TEF}, the 
+@acronym{TLS, Tangent Linear System} is constructed along the trajectory.
+One considers the system over a small portion along the trajectory, say
+between @math{t} and @math{t + \delta t}. The variation @math{\delta \eta}
+of @math{\eta} and @math{\delta \varphi} of @math{\varphi} is obtained 
+through a Pad@'e approximation of the state-transition matrix. The final
+form of the algebraic system is closed to the classical Crank-Nicolson scheme:
+
+@c FIXME PAd'e? od Taylor?
+@c through a Taylor expansion followed by time integration.
+@c A time scheme is then applied to the @acronym{TLS} (a Crank-Nicholson scheme),
+@c to obtain an algebraic system describing the relationships between 
+@c variations of transfers and cells variables:
+
+
+
+@tex
+$$\pmatrix{A & B\cr
+-C^+ & I-D\cr} \pmatrix{\delta \eta\cr
+\delta \varphi\cr} = \pmatrix{\Gamma\cr
+\Omega\cr}$$
+@end tex
+
+The blocks appearing in the Jacobian matrix are constructed with partial derivative
+of @math{f} and @math{g}, and with @math{\delta t}. From this system the
+elimination of @math{\delta \eta} leads to another formulation giving
+the coupling between transfers, and allows for the @math{\delta \varphi}
+computation. The @math{\delta \varphi} value is then substitued in 
+@math{\delta \eta} to complete the time-step solving process.
+
+@node A model with Miniker
+@chapter Miniker model programming
+
+@cindex sequences
+
+Miniker works by combining the model specification code given by 
+the user and other source files provided in the package. The code is
+assembled, preprocessed, compiled, linked and the resulting program 
+can be run to produce the model trajectory and dynamic analysis.
+
+The code provided in the package contains a principal program, some usefull
+subroutines and pieces of code called @dfn{sequences} combined with the
+different codes. Among these sequences some hold the code describing the model
+and are to be written by the user (sequences are similar to
+Fortran include files).
+
+@menu
+* Structure of the code::
+* A model description::
+* Setting and running a model::
+* Controlling the run::
+@end menu
+
+@node Structure of the code
+@section General structure of the code
+
+@cindex sequence
+@cindex zinit, general
+
+The sequences used to enter model description hold the @c vector dimensions, 
+mathematical formulae for each cell and transfer component, dedicated
+derived computations, and time-step 
+steering. During the code generation stage, 
+cmz directives are preprocessed, then the user pseudo-Fortran
+instructions are translated by @command{mortran} using macros designed to 
+generate in particular all Fortran instructions that compute the Jacobian 
+matrices used in @acronym{TEF} modelling.
+
+@c A first users' sequence to program is: @file{dimetaphi} where the model 
+@c dimensions are given, for the two vector-array @code{eta(.)} for cells 
+@c and @code{ff(.)} for transfers (@pxref{Model size,,Entering model size}).
+ 
+The sequence @file{zinit} contains the mathematical formulation of the model
+(@pxref{Model equation and parameters, Entering model equation and parameters}). 
+Another sequence, @file{zsteer}, is merged at
+the end of the time step advance of the simulation, where the user can 
+monitor the time step values and printing levels, and perform particular 
+computations etc.
+(@pxref{End of time step, ,Executing code at the end of each time step}).
+
+@node A model description
+@section Miniker programming illustrated
+
+@cindex TEF
+
+The general @acronym{TEF} system writes:
+@tex
+$$\eqalign{\partial_t \eta (t) &= g(\eta(t),\varphi(t))\cr
+\varphi(t) &= f(\eta(t),\varphi(t))\cr
+}$$
+@end tex
+
+@noindent @math{d eta(t)/d t = g(eta(t),phi(t))@*
+phi(t) = f(eta(t),phi(t))}
+
+
+To illustrate the model description in Miniker a simple predator-prey
+model of Lotka-Volterra is used.
+This model can be written in the following @acronym{TEF} form:
+
+@tex
+$$\left\{\eqalign{\partial_t \eta _{prey} &=  a \eta _{prey} - a \varphi _{meet} \cr
+\partial_t \eta _{pred} &=  -c \eta _{pred} + c \varphi _{meet}\cr}\right.$$
+@end tex
+@tex
+$$\varphi _{meet} = \eta _{prey}\eta _{pred}$$
+@end tex
+@noindent @math{d eta_prey(t)/d t = a * eta_prey - a * phi_meet@*
+d eta_pred(t)/d t = -c * eta_pred +c * phi_meet}
+
+@noindent @math{phi_meet = eta_prey * eta_pred}
+
+with two cell equations, @i{i.e}. state evolution of the prey and predator 
+groups, and one transfer accounting for the meeting of individuals of 
+different group.
+
+@menu
+* A note about mortran and cmz directives::
+* Model equation and parameters::
+@end menu
+
+@node A note about mortran and cmz directives
+@subsection All you need to know about mortran and cmz directives
+
+@cindex mortran 
+
+The first stage of code generation consists in cmz directives preprocessing.
+Cmz directives are used for conditional selection of features, and sequence 
+inclusion. At that point you don't need to know anything about these
+directives. They are only usefull if you want to take advantage of advanced 
+features 
+(@pxref{Programming with cmz directives}).
+
+The code in sequences is written in Mortran and the second stage of code
+generation consists in mortran macro expansion. The mortran language is 
+described
+in its own manual, here we only explain the very basics which is all you need
+to know to use Miniker. Mortran basic instructions are almost Fortran,
+the differences are the following:
+
+@itemize @bullet
+@item The code is free-form, and each statement should end with a semi-colon 
+@code{;}.
+@item Comments may be introduced by an exclamation mark @code{!} at the 
+beginning of a line, or appear within double quotes @code{"} in a single line.
+@item It is possible to use blocs, for @code{do} or @code{if} statement 
+for example, and they are enclosed within brackets @samp{<} and @samp{>}.
+To be in the safe side, a semi-colon @code{;} should be added after a 
+closng bracket @code{>}.
+@end itemize
+
+The following fictious code is legal mortran:
+
+@example
+real 
+  param;
+param = 3.; ff(1) = ff(3)**eta(1);       "a comment"                 
+! a line comment
+do inode=1,n_node <eta_move(inode)=0.01; eta_speed(inode)=0.0;>;
+@end example
+
+Thanks to mortran the model code is very simply specified, as you'll 
+see next.
+
+
+@node Model equation and parameters
+@subsection Entering model equation and parameters
+
+@cindex @file{zinit}
+@vindex dt
+@vindex time
+@vindex nstep
+@vindex modzprint
+
+The model equation and parameters and some Miniker parameters are entered in
+the @file{zinit} sequence. The whole layout of the model is given
+before detailing the keywords.
+
+@example
+!%%%%%%%%%%%%%%%%%%%%%%
+! Parameters           
+!%%%%%%%%%%%%%%%%%%%%%%
+  real apar,bpar;        "optional Fortran type declaration"
+
+! required parameters
+     dt=.01;             "initial time-step"
+     nstep=10 000;       "number of iterations along the trajectory"
+     time=0.;            "time initialisation "
+
+! model parameters            
+     apar = 1.5;             
+     cpar = 0.7;          
+                                                  
+! misceallaneous parameters
+     modzprint = 1000;    "printouts frequency" 
+
+print*,'***************************************';
+print*,'Lotka-Volterra model with parameters as:';
+z_pr: apar,bpar;
+print*,'***************************************';
+
+!%%%%%%%%%%%%%%%%%%%%%%
+! Transfer definition
+!%%%%%%%%%%%%%%%%%%%%%%
+! rencontre (meeting)
+set_Phi
+< var: ff_interact, fun: f_interact = eta_prey*eta_pred;
+>;
+
+!%%%%%%%%%%%%%%%%%%%%%%
+! Cell definition
+!%%%%%%%%%%%%%%%%%%%%%%
+
+set_eta
+< var: eta_prey, fun: deta_prey =   apar*eta_prey - apar*ff_interact;
+  var: eta_pred, fun: deta_pred = - cpar*eta_pred + cpar*ff_interact;
+>;
+
+
+!%%%%%%%%%%%%%%%%%%%%%%
+! Initial states
+!%%%%%%%%%%%%%%%%%%%%%%
+     eta_prey = 1.;
+     eta_pred = 1.;
+;
+    OPEN(50,FILE='title.tex',STATUS='UNKNOWN');   "title file"
+    write(50,5000) apar,cpar;                     
+5000;format('Lotka-Volterra par:',2F4.1);
+@end example
+
+@subsubheading Variables and model parameters
+
+The following variables are mandatory:
+
+@table @code
+@item dt
+The time step.
+@item time
+Model time initialisation.
+@item nstep
+Number of iterations along the trajectory.
+@end table
+
+There are no other mandatory variables. Some optional variables are used
+to monitor the printout and ouput of results of the code.
+As an example, the variable @code{modzprint} is used to set
+the frequency of the printout of the model matrix and vectors during the
+run (@pxref{Controlling the printout and data output}).
+
+User's defined variable and Fortran or Mortran instructions can always be
+added for intermediate calculus. To avoid conflict with the variables of the
+Miniker code, the rule is that a users symbol must not have characters 
+@samp{o} 
+in the first two symbol characters.
+
+In the predator-prey example there are two model parameters. The fortran
+variables are called here @code{apar} for @math{a} and @code{cpar} for @math{c}.
+If a Fortan type definition is needed, it should be set at the very beginning
+of @file{zinit}. The predator-prey code variable initializations finally reads
+
+@example
+@group
+!%%%%%%%%%%%%%%%%%%%%%%
+! Parameters         
+!%%%%%%%%%%%%%%%%%%%%%%
+  real apar,bpar;        "optional Fortran type declaration"
+
+     dt=.01;           
+     nstep=10 000;    
+     time=0.;            
+
+! model parameters
+     apar = 1.5;           
+     cpar = 0.7;                                                            
+
+     modzprint = 1000;  
+@end group
+@end example
+
+@subsubheading Model equations
+@anchor{Model equations}
+
+@findex set_Phi
+@findex set_eta
+@vindex var:
+@vindex fun:
+@vindex eqn:
+
+The model equations for cells and model equations for transferts are 
+entered in two mortran blocks, one for the transferts, the other for the
+cell components.  The model equations for cells are entered into a 
+@code{set_eta} block, and the transfer equations are entered into a
+@code{set_phi} block.
+
+In each block the couples variable-function are specified. For
+transfers the function defines the transfer itself while for cells
+the function describes the cell evolution. The variable is specified
+with @code{var:}, the function is defined with @code{fun:}.
+
+In the case of the predator-prey model, the transfer variable
+associated with @math{\varphi_{meet}} could be called @code{ff_interact}
+and the transfer definition would be given by:
+@example
+set_Phi
+< var: ff_interact, fun: f_interact = eta_prey*eta_pred;
+>;
+@end example
+
+The two cell equations of the predator-prey model, with name
+@code{eta_prey} for the prey (@math{\eta_{prey}}) and @code{eta_pred} 
+for the predator (@math{\eta_{pred}}) are:
+
+@example
+set_eta
+< var: eta_prey, fun: deta_prey =   apar*eta_prey - apar*ff_interact;
+  var: eta_pred, fun: deta_pred = - cpar*eta_pred + cpar*ff_interact;
+>;
+@end example
+
+The @samp{;} at the end of the mortran block is important.
+
+@page
+The whole model equations are setup with:
+
+@example
+@group
+!%%%%%%%%%%%%%%%%%%%%%%
+! Transfer definition
+!%%%%%%%%%%%%%%%%%%%%%%
+! rencontre (meeting)
+set_Phi
+< var: ff_interact, fun: f_interact = eta_prey*eta_pred;
+>;
+
+!%%%%%%%%%%%%%%%%%%%%%%
+! Cell definition
+!%%%%%%%%%%%%%%%%%%%%%%
+
+set_eta
+< var: eta_prey, fun: deta_prey =   apar*eta_prey - apar*ff_interact;
+  var: eta_pred, fun: deta_pred = - cpar*eta_pred + cpar*ff_interact;
+>;
+@end group
+@end example
+
+Whenever the user is not concerned with giving a specific name to a
+function, it is possible to specify the equation only with
+@code{eqn:}. Therefore the user may replace an instruction as:
+@example
+  var: ff_dump,
+  fun: f_dump  = - rd*(eta_speed - eta_speed_limiting);
+@end example
+with:
+@example
+   eqn: ff_dump = - rd*(eta_speed - eta_speed_limiting);
+@end example
+
+In that case, the unnamed function will take the name of the defined
+variable preceded by the @samp{$} sign: @code{$ff_dump}.
+
+@subsubheading Starting points
+
+@cindex starting point
+
+The cells equations require state initial conditions. In some case, the 
+transfers may also need starting points although they are determined from 
+the cell values.
+
+In the predator-prey model the starting points for cells are:
+@example
+!     initial state
+!     -------------
+     eta_prey = 1.;
+     eta_pred = 1.;
+@end example
+
+When there is a non trivial implicit relationship between the transfers
+in the model, it may be usefull or even necessary to set some
+transfers to non-zero values. This difficulty is only relevant for the very
+first step of the simulation and will be used as a 
+first guess of @math{\varphi}. The uninitialized transfers having 
+a default compiler-dependant (often zero) value, an initialization
+to another value may help avoiding singular functions or matrix and
+ensure convergence in the Newton algorithm used to solve the transfer implicit
+equation. 
+
+
+@subsubheading The cell and transfer arrays
+
+@vindex eta(.)
+@vindex ff(.)
+@vindex mp
+@vindex np
+
+Sometime it is easier to iterate over an array than to use the 
+cell or transfer variable name. This is possible because there is a
+correspondence between the variable names 
+and the fortran array @code{eta(.)} for the cell variables and
+the fortran array @code{ff(.)} for the transfer variables@footnote{In fact
+the variables names are transformed into fortran array elements
+by mortran generated macros, so the symbolic names defined in the
+mortran blocks never appears in the generated fortran code, they are
+replaced by the fortran arrays.}.
+
+The index of the variable is determined by the order of appearance in 
+the variable definition blocks. It is reminded in the output, as
+explained later (@pxref{Simulation and output}). 
+
+The number of cells is in the integer @code{np} variable, and the
+number of transfer is in the integer @code{mp} variable.
+
+@subsubheading title file
+
+@anchor{Title file}
+@cindex title file
+@cindex @file{title.tex}
+
+For some graphics generation, a file with name @file{title.tex} is required
+which sets the title. The following instructions take care of that:
+
+@example
+    OPEN(50,FILE='title.tex',STATUS='UNKNOWN');
+    write(50,5000) apar,cpar;                 
+5000;format('Lotka-Volterra par:',2F4.1);
+
+    close(50);
+@end example
+
+In that case the parameter values are written down, to differenciate between
+different runs. This step is in general not needed.
+
+@c The correspondence with basic components are printed out at execution
+@c time as explained in @ref{Simulation and output,,
+@c Running a simulation and using the output}. Also, a @file{Model.hlp} is
+@c generated that recalls the basic names and equations of the model.
+@c It may be noted that whenever 
+@c the order of variable-functions is the same between indexed declaration and 
+@c symbolic, the two generated Fortran code are almost identical.
+
+@node  Setting and running a model
+@section Setting and running a model
+
+In this section it is assumed that a programming environment has been
+properly setup. This environment may use either cmz or make to drive
+the preprocessing and compilation. 
+You can skip the part related with the environment you don't intend to use.
+
+For instructions regarding the 
+installation, see @ref{Installation}. 
+
+
+@menu
+* Setting up a model with cmz::
+* Setting up a model with make::
+* Simulation and output::
+* Graphics::
+@end menu
+
+@node Setting up a model with cmz
+@subsection Setup a model and compile with cmz
+
+@cindex @command{mod}
+@cindex @file{$zinit}
+@cindex @file{$dimetaphi}
+
+The user defined sequences are @samp{KEEP} in the
+cmz world. The most common organization is to have a cmz file in a
+subdirectory of the directory containing the @file{mini_ker.cmz} 
+cmz file. In this
+cmz file there should be a @samp{PATCH} called @samp{zinproc}
+with the KEEPs within the patch. The KEEP must be called @file{$zinit}.
+@c and @file{$dimetaphi}.
+
+From within cmz in the directory of your model the source extraction, 
+compilation and linking will be triggered by a @command{mod} command. This macro 
+uses the @file{selseq.kumac} information to find the @file{mini_ker.cmz} 
+cmz file.
+@command{mod} 
+shall create a directory with the same name than the cmz file, 
+@file{mymodel/} in our example. In this directory there is another 
+directory @file{cfs/} containing the sources extracted from the cmz file.
+
+The file @file{mymodel_o.tmp} contains all the mortran code generated 
+by cmz with the sequences substituted, including the @file{$zinit}. @c and 
+@c @file{$dimetaphi} sequences (assembled code). 
+The fortran produced by the preprocessing and
+splitting of this file is in files with the traditional @samp{.f} suffix.
+The principal program is in @file{principal.f}. An efficient way of getting 
+familiar with mini_ker methods is looking at the @file{mymodel_o.tmp} where 
+all sequences and main Mortran instructions are gathered. Symbolic derivation 
+@c FIXME pas ici la symbolic derivation
+is noted as @code{F_D(expression)(/variable)}, and the resulting Fortran code 
+is in @file{principal.f}.
+
+@command{mod} also triggers compilation and linking. The object files are in
+the same @file{cfs/} directory and the executable is in the @file{mymodel/}
+directory, with name @file{mymodel.exe}.
+
+@node Setting up a model with make
+@subsection Setup a model and compile with make
+
+@cindex compilation
+@c @cindex @file{dimetaphi.mti}
+@cindex @file{zinit.mti}
+@vindex model_file_name
+
+With make, the sequences are files ending with @samp{.mti} (for
+mortran include files),
+called, for example, @file{zinit.mti}.
+@c  and @file{dimetaphi.mti}. 
+They are included by 
+@command{mortran} in other source files. You also need a @file{Makefile}
+to drive the compilation of the model.
+
+If you don't need additional code or libraries to be linked with your 
+model you have two alternatives. 
+
+@enumerate
+@item
+The simplest alternative is to run
+the @command{start_miniker} script with the model file name as argument.
+It should copy a @file{zinit.mti} file
+ready to be edited and a Makefile ready to compile the model. For
+the predator prey model, for example, you could run
+
+@example
+$ start_miniker predator
+@end example
+
+@item
+Otherwise you can copy the Makefile from @file{template/Makefile}
+in the directory containing the sequences. You should then change the compiled
+model file name, by changing  the value of the
+@code{model_file_name} variable to the name of your choice
+in the Makefile. It is set to @file{mymodel} in the template. For the 
+predator-prey model, it could be set like
+
+@example
+model_file_name = predator
+@end example
+
+If you want the executable model file to be built in another directory, you could
+set
+
+@example
+model_file_name = some_dir/predator
+@end example
+
+The other items set in the default Makefile should be right. 
+@end enumerate
+
+The preprocessing and the compilation are launched with
+
+@example
+make all
+@end example
+
+The mortran files are generated by the cmz directive preprocessor 
+from files found in the package source directories. The mortran files 
+end with @samp{.mtn} for the main files and  @samp{.mti} for 
+include files. They are output in the current directory.
+The mortran preprocessor then preprocess these mortran files and includes
+the sequences. The resulting fortran code is also in the current directory, 
+in files with a @samp{.f} suffix.
+Some fortran files ending with @samp{.F} may also be
+created by the cmz directive preprocessor.
+The object files resulting from the compilation of all the
+fortran files (generated from mortran or directly from fortran files) are
+there too. 
+
+In case you want to override the default sequences or a subroutine file 
+you just have to create it in your working directory along with the
+@file{zinit.mti}. @c and @file{dimetaphi.mti}. 
+For example you could want to 
+create or modify a @file{zsteer.mti} file (@pxref{End of time step,,
+Executing code at the end of each time step}), a @file{zcmd_law.mti} file 
+(@pxref{Control laws}), a @file{monitor.f} file 
+(@pxref{Turning the model into a subroutine}) to take advantage of 
+features presented later in this manual.
+
+More in-depth discussion of using make to run Miniker is covered in 
+@ref{Advanced use of Miniker with make}.
+For example it is also possible to create files that are to be 
+preprocessed by the cmz directive
+preprocessor and separate source files and generated files.
+This advanced use is more precisely covered in 
+@ref{Programming with cmz directives}.
+
+@page
+@node Simulation and output
+@subsection Running a simulation and using the output
+
+@cindex running model
+
+Once compiled the model is ready to run, it only has to be executed. On 
+standard output informations about the states, transfers, tangent linear
+system and other jacobian matrices are printed. 
+For example the predator-prey model could be executed with:
+
+@example
+./predator > result.lis
+@end example
+
+@cindex output file
+@vindex dEta(.)
+@cindex @file{res.data}
+@cindex @file{dres.data}
+@cindex @file{tr.data}
+@cindex @file{aspha.data}
+@cindex @file{Model.hlp}
+
+@c In case of a model entered symbolically 
+@c (@pxref{Symbolic model description})
+The  correspondance
+between the symbolic variables and the basic vectors and functions
+are printed at run time:
+
+@example
+  ---------------- Informing on Phi definition -----------------
+    Var-name,           Function-name,       index in ff vector
+             ff_interact              f_interact  1
+  ----------------------------------------------------
+
+  --------------- Informing on Eta definition ------------------
+   Var-name,           Function-name,       index in eta vector
+                eta_prey               deta_prey  1
+                eta_pred               deta_pred  2
+@end example
+
+A summary of the model equations are in @file{Model.hlp} file.  For
+the same example:
+
+@example
+======================= set_Phi                                                                
+                                                                                         
+    1 ff_interact f_interact           eta_pray*eta_pred
+======================= set_Eta                                                                
+                                                                                         
+    1 eta_pray    deta_pray            apar*eta_pray-apar*ff_interact
+    2 eta_pred    deta_pred            -cpar*eta_pred+cpar*ff_interact
+@end example
+@c FIXME never talked about that. Certainly not here
+when other general functions are specified with @code{f_set}, it can appear
+also in the same help file when replaced by @code{fun_set}.
+
+As far as possible, all data printed in the listing are associated
+with a name related to a variable. Here is an extract:
+
+@example
+ Gamma :-8.19100E-02-1.42151E-01 3.87150E-02
+         eta_courant eta_T_czcx  eta_T_sz   
+       ------------------------------------------------
+ Omega : 0.00000E+00 0.00000E+00 0.00000E+00 0.00000E+00
+         courant_L   T_czcx      Psi_Tczc    Psi_Tsz 
+       ------------------------------------------------
+@end example
+for the two known vectors of the system, and:
+@example
+ >ker : Matrice de couplage       4 4 4 4
+courant_L Raw(1,j=1,4):   1.000     -9.9010E-03  0.000       0.000    
+T_czcx    Raw(2,j=1,4): -2.7972E-02   1.000      0.000      9.9900E-04
+Psi_Tczcx Raw(3,j=1,4):  0.1605      9.7359E-02  1.000     -5.7321E-03
+Psi_Tsz   Raw(4,j=1,4):   0.000     -0.1376     5.7225E-03   1.000    
+          Var-Name      courant_L   T_czcx      Psi_Tczc    Psi_Tsz 
+          ----------------------------------------------------------
+@end example
+
+where the @code{couplage} (coupling matrix) is given that corresponds 
+to the matrix coupling the four transfer components after @math{\delta\eta} 
+has been eliminated from system. It is computed in the subprogram 
+@file{oker} (for kernel) which solves the system.
+
+Basic results are output in a set of @samp{.data} files. 
+The first line (or two lines) describes the column with a @samp{#}
+character used to mark the lines as comments (for @command{gnuplot} 
+for example).
+In the @samp{.data} files, the data are simply separated with spaces.
+Each data file has the @code{time} variable values as first column.
+@footnote{@file{dres.data} has another time related variable as second column:
+@cindex @file{dres.data}
+@vindex dt
+@code{dt}, the time step that can vary in the course of a simulation.}.
+Following columns give the values of @code{eta(.)} in @file{res.data}, 
+@code{dEta(.)} in @file{dres.data} -- the step by step variation of 
+@code{eta(.)} -- and @code{ff(.)} in @file{tr.data}.
+
+Along the simulation the @acronym{TEF} Jacobian matrices are computed. 
+A transfer variables elimination process also leads to the definition 
+of the classical state advance matrix of the system 
+(the corresponding array is @code{aspha(.,.)} in the code).
+This matrix is output in the file @file{aspha.data} that is used to
+post-run dynamics analyses. The matrix columns are written column wise on each
+record.
+@xref{Stability of fastest modes,,Stability analysis of fastest modes}. 
+@xref{Generalized TLS,,Generalized 
+tangent linear system analysis}. It is not used in the solving process.
+
+Other @samp{.data} files will be described later.
+
+@c FIXME already said
+@c At the begining of a run, the help file @file{Model.hlp} is generated for
+@c global checkiing of the model. In the example, it is:
+
+@c @example
+@c ======================= set_Phi                                                                                                                                              
+@c     1 ff_interact      f_interact   eta_pray*eta_pred
+@c ======================= set_Eta                                           
+@c     1 eta_pray         deta_pray    apar*eta_pray-apar*ff_interact
+@c     2 eta_pred         deta_pred    -cpar*eta_pred+cpar*ff_interact
+@c @end example
+
+
+@node Graphics
+@subsection Doing graphics
+
+@cindex graphics
+@cindex graphics with @command{gnuplot}
+@cindex graphics with @command{PAW}
+
+@c The format of the @samp{.data} files are coherent with GNU graphics, that is
+@c the data are simply separated with spaces. 
+Since the data are simply separated with spaces, and comment lines 
+begin with @samp{#}, the 
+files can be vizualised with many programs. 
+With @command{gnuplot}, for example, to plot @code{eta(@var{n})}, 
+the @command{gnuplot} statement could be:
+
+@example
+plot "res.data" using 1:(@var{n}+1)
+@end example
+
+The similar one for @code{ff(@var{n})}:
+@example
+plot "tr.data" using 1:(@var{n}+1)
+@end example
+
+For people using @command{PAW}, the CERN graphical computer code, 
+Miniker prepares
+kumacs that allow to read process the @samp{.data} files in the form of 
+@emph{n-tuples} (see the @cite{PAW manual} for more information). 
+In that cas, the flag @code{sel paw} has to be gievn in the @file{selsequ.kumac}.
+The generated  n-tuples are ready to use only
+for vector dimension of at most 10 (including the variable @code{time}).
+These kumacs are overwritten each time the model is run. Usaually, gnuplot has
+to be preferred, but when using surfaces and histograms, PAW is better.
+The @file{gains.f} (and @file{go.xqt}  is provided as an example in the 
+Miniker files.
+
+@node Controlling the run
+@section Controlling the run
+
+@cindex controlling the run
+
+It is possible to add code that will be executed at the end of each time
+step. It is also possible to specify which time step leads to a printout on
+standard output. For maximal control, the code running te model may be 
+turned into a subroutine to be called from another fortran (or C) 
+program, this possibility is covered in @ref{Calling the model code}.
+
+@menu
+* End of time step::
+* Controlling the printout and data output::
+@end menu
+
+@node End of time step
+@subsection Executing code at the end of each time step
+
+@cindex @file{zsteer}
+@cindex @file{zsteer.inc}
+
+The code in the sequence @file{zsteer} is executed at the end of each time
+step. It is possible to change the time step length (variable @code{dt})
+verify that the non linearity are not too big, or perform 
+discontinuous modifications of the states. One available variable @code{res}
+might be usefull for time step monitoring. At the end of the time step,
+as soon as @math{\varphi} has been computed, a numerical test is applied
+on a pseudo relative quadratic residual between 
+@math{\varphi=f(\eta(t-dt)+d\varphi} (@code{ ffl}), where @math{d\varphi}
+is given by the system resolution in @code{ker},and
+@math{\varphi=f(\eta),\varphi)},  Fortran variable (@code{ff}):
+
+@verbatim
+! ========================================================
+! test linearite ffl - ff
+! ========================================================
+if (istep.gt.1)
+< res=0.; <io=1,m; res = res +(ffl(io)-ff(io))**2/max(one,ff(io)*ff(io)); >;
+  if (res .gt. TOL_FFL)
+  < print*,'*** pb linearite : res > TOL_FFL a istep',istep,res,' > ',TOL_FFL;
+    do io=1,m < z_pr: io,ff(io),ff(io)-ffl(io); >;
+  >;
+>;
+@end verbatim
+
+This test hence applies only for non linearities in tranfer models. Nevertheless,
+@code{res} might be usefull to monitor the time step @code{dt} in @code{ZSTEER}
+and eventually go backward one step (@code{goto :ReDoStep:}).
+This can more appropriatly be coded in the (empty in default case) 
+sequence @code{zstep}, inserted just before time-advancing
+states and @code{time} variables in @file{principal}.
+@vindex ffl(.)
+@cindex @code{ffl} (linearity test)
+@cindex linearity test
+
+It is also possible to fix the value of the criterium @code{TOL_FFL} in
+@file{zinit} different from its default value of @math{10^{-3}} --
+independent of the Fortran precision.
+
+
+Many other variables are available, including
+@vtable @code
+@item istep
+The step number;
+@item couplage(.)
+The @acronym{TEF} coupling matrix between transfers;
+@item H
+The Jacobian matrix corresponding with:
+@c \varphi(t) &= f(\eta(t),\varphi(t))\cr
+@c \frac{\partial g(\eta(t),\varphi(t))}{\partial \eta(t)}
+@tex
+$$\partial_{\eta} g(\eta(t),\varphi(t));
+$$
+@end tex
+g_1(eta,phi);
+@item Bb
+The Jacobian matrix corresponding with:
+@tex
+$$\partial_{\varphi} g(\eta(t),\varphi(t));
+$$
+@end tex
+g_2(eta,phi);
+@item Bt
+The Jacobian matrix corresponding with:
+@tex
+$$\partial_{\eta} f(\eta(t),\varphi(t));
+$$
+@end tex
+f_1(eta,phi);
+@item D
+The Jacobian matrix corresponding with:
+@tex
+$$\partial_{\varphi} f(\eta(t),\varphi(t));
+$$
+@end tex
+f_2(eta,phi);
+
+@item aspha
+The state advance matrix;
+@item dneta
+@itemx dphi
+the variable increments;
+@end vtable
+One should be aware of that the linearity test concerns the preceding step. 
+We have yet no example of managing the time-step.
+
+@page
+@node Controlling the printout and data output
+@subsection Controlling the printout and data output
+
+@cindex printing
+@vindex zprint
+@vindex modzprint
+
+The printout on standard output is performed if the variable @code{zprint} 
+of type @code{logical} is true. Therefore it is possible to control this
+printout by setting @code{zprint} false or true. For example the following 
+code, in sequence @file{zsteer}, triggers printing for every 
+@code{modzprint} time step and the two following time steps:
+
+@example
+ZPRINT = mod(istep+1,modzprint).eq.0;
+Zprint = zprint .or. mod(istep+1,modzprint).eq.1;
+Zprint = zprint .or. mod(istep+1,modzprint).eq.2;
+@end example
+
+The data output to @file{.data} files described in @ref{Simulation and output,,
+Running a simulation and using the output} is performed if the
+@code{logical} variable @code{zout} is true. For example the following
+code, in @file{zsteer}, triggers output to @file{.data} files every 
+@code{modzout} step.
+
+@example
+Zout = mod(istep,modzout).eq.0;
+@end example
+
+@node Advanced programming
+@chapter Advanced Miniker programming
+
+@menu
+* Selecting features::
+* Calling the model code::
+* 1D gridded model::
+* Double precision::
+* Partial Derivatives::
+* Rule of programming non continuous models::
+* Parameters::
+* Observations and data::
+* Explicit model size::
+* Programming with cmz directives::
+@end menu
+
+@node Selecting features
+@section Overview of additional features setting
+
+@cindex feature setting
+@cindex select flag
+@cindex logical flags
+@cindex @file{selseq.kumac}
+
+It is possible to enable some features by selecting which code should 
+be part of the principal program. Each of these optionnal features are 
+associated with a @dfn{select flag}. 
+For example 
+@c the optimisation with minuit is associated with the select
+@c flag @samp{minuik}, 
+double precision is used instead of simple precision with 
+the @samp{double} select flag,
+the model is a subroutine with the select flag @samp{monitor},
+the Kalman filter code is set with @samp{kalman} and the 1D gridded
+model capabilities are associated with @samp{grid1d}. 
+@c Currently it is only possible 
+@c to select features in cmz. 
+To select a given feature the cmz statement @code{sel @var{select_flag}} should
+be written down in the @file{selseq.kumac} found in the model directory.
+With make either the corresponding variable should be set to 1 or it
+should be added to the @code{SEL} make variable, depending on the feature.
+
+Other features don't need different or additional code to be used. 
+Most of the features are enabled by setting specific logical variables to
+@samp{.true.}. This is the case for
+@code{zback} for the adjoint model, @code{zcommand} if the command is in a file
+and @code{zlaw} if it is a function and @code{zkalman} for the Kalman filter.
+These select and logical flags are described in the corresponding sections.
+
+In cmz an alternative of writing select flags to @file{selseq.kumac} is to
+drive the compilation with @code{smod @var{sel_flag}}. In that case the
+@var{sel_flag} is selected and the files and executable goes to a directory
+named @file{sel_flag}. 
+
+The select flags are taken into account during cmz directives preprocessing.
+Therefore you have the possibility to use these flags to conditionnaly 
+include pieces of code. In most cases you don't need to include code conditionally 
+yourself though, but if you want to, this is covered in 
+@ref{Programming with cmz directives}.
+
+@node Calling the model code
+@section Calling the model code
+
+When the model code is a subroutine, it can be called from another fortran
+program unit (or another program), and the model will be 
+run each time the subroutine is called.
+This technique could be used, for example to perform optimization 
+(@pxref{Adjoint model and optimisation,,Adjoint model and optimisation 
+with Miniker}), or to run the model with different parameters.
+
+@menu
+* Turning the model into a subroutine::
+* The model subroutine::
+@end menu
+
+@node Turning the model into a subroutine
+@subsection Turning the model into a subroutine
+
+@c This feature is allready enabled with @command{make}, and to 
+@c override the default program a file called @file{monitor.f} has to be created 
+@c in the working directory. The default program simple calls the model
+@c subroutine.
+
+With cmz, one has to do a 
+@example
+sel monitor
+@end example
+in the @file{selseq.kumac} file and create the KEEP that call the 
+model code. @xref{Selecting features, Overview of additional features 
+setting}.
+
+With make @samp{monitor} should be added to the @code{SEL} variable in
+the @file{Makefile}, for example:
+
+@example
+SEL = monitor
+@end example
+
+A file that call the principal subroutine should also be written, using
+the prefered language of the user. The additional object files should
+then be linked with the Miniker objects. To that aim they may be added
+to the @code{miniker_user_objects} variable.
+
+@node The model subroutine
+@subsection Calling the model subroutine
+
+The model subroutine is called @samp{principal} and is called with the 
+following arguments:
+
+@deffn Subroutine principal (Cost, ncall, integer_flag, file_suffix, info, idxerror)
+Where @var{Cost} is a real number, @code{real} or @code{double precision}, 
+and is set by the @code{principal}
+subroutine. It holds the value of the cost function if such function has been
+defined (the use and setting of a cost function is covered later, 
+see @ref{Cost function coding and adjoint modeling}). 
+@var{ncall} is an integer which corresponds with the number of 
+call to @code{principal} done so far, it should be initialized to 0 and 
+its value should not be changed, as it is changed in the @code{principal}
+subroutine.
+@var{integer_flag} is an integer that can be set by the user to be accessed 
+in the @code{principal} subroutine. For example its value could be used to
+set some flags in the @file{zinit} sequence.
+@var{file_suffix} is a character string, that is suffixed to the output files
+names instead of @samp{.data}. If the first character is the null character 
+@samp{char(0)}, the default suffix, @samp{.data} is appended.
+@var{info} and @var{idxerror} are integer used for error reporting.
+@var{idxerror} value is 0 if there was no error. It is negative for
+an alert, positive for a very serious error. The precise value determines
+where the error occured.
+@var{info} is an integer holding more precise information about the
+error. It is usually the information value from lapack.
+The precise meaning of these error codes is in @ref{tab:error_codes}.
+@end deffn
+
+@float table, tab:error_codes 
+@multitable {kalman analysis state matrix advance in phase space, @math{(I-D)} inversion} {inversion} {@code{idxerror}}
+@headitem Source of error or warning @tab @code{info} @tab @code{idxerror}
+@c @item @code{} @tab @file{.data} @tab  @tab
+@item state matrix inversion in ker @tab inversion @tab 1
+@item time advance system resolution in ker  @tab system @tab 2
+@item transfer propagator, @math{(I-D)} inversion @tab inversion @tab 3
+@item kalman analysis state matrix advance in phase space, @math{(I-D)} inversion @tab inversion @tab 21
+@item kalman analysis variance covariance matrix non positive @tab Choleski @tab 22
+@item kalman analysis error matrix inversion @tab inversion @tab 23
+@item kalman error matrix advance @tab system @tab 24
+@item transfers determination linearity problem for transfers @tab  @tab -1
+@item transerts determination Newton D_loop does not converge @tab  @tab -2
+@end multitable
+@caption{Meaning of error codes returned by principal.}
+@end float
+
+In general more information than the provided arguments has to be passed 
+to the @code{principal} subroutine, in that case a @code{common} block,
+to be written in the @file{zinit} sequence can be used.
+
+@page
+@node 1D gridded model
+@section Describing 1D gridded model
+
+Specific macros have been built that allow generic description of 1D gridded models.
+Because of the necessity of defining left and right limiting conditions, the models
+are partitionned in three groups for cell and transfer components. In the following example,
+a chain of masselottes linked by springs and dumps is bounded to a wall on the left,
+and open at right. The @acronym{TEF} formulation of the problem is written in the phase space (position-shift, velocity)
+for node @math{k}, with bounding conditions:
+@tex
+$$\left\{\eqalign{\partial_t \eta _{k} ^{pos}  &=  \eta _{k} ^{vel} \cr
+\partial_t \eta _{k} ^{vel}  &= ( \varphi_k ^{spr} -\varphi _{k+1} ^{spr} + \varphi _{k} ^{dmp}-\varphi _{k+1} ^{dmp})\,/m_k  \cr}\right.$$
+$$\left\{\eqalign{
+\varphi_k ^{spr} &= -k_k (\eta _{k} ^{pos}- \eta _{k-1} ^{pos})\cr
+\varphi_k ^{spr} &= -d_k (\eta _{k} ^{vel}- \eta _{k-1} ^{vel})
+\cr}\right.$$
+$$\left\{\eqalign{\eta ^{pos}_{0} &= 0\cr
+\eta ^{vel}_{0} &= 0\cr
+\varphi  ^{spr}_{N+1} &= 0\cr
+\varphi ^{dmp}_{N+1} &= 0\cr}\right.$$
+@end tex
+
+States:@*
+@noindent @math{d position(t,k)/d t = velocity(t,k)@* 
+d velocity (t,k)/d t =(spring(t,k) - spring(t,k+1)+ dump(t,k)- dump(t,k+1))/m_k}
+
+Transfers:@*
+@noindent @math{spring(t,k) = -k_k (position(t,k)- position(t,k-1))@*
+dump(k,t) &= -d_k (velocity(t,k)- velocity(t,k-1))}
+
+Bounding conditions:@*
+@noindent @math{position(t,0) = 0@*
+velocity(t,0) = 0@*
+spring(t,N+1) = 0@*
+dump(t,N+1) =0}
+
+
+@cindex down node
+@cindex up node
+
+where @math{m_k} is the mass of node @math{k}, @math{r_k} and @math{d_k} 
+the rigidity of springs and dumping coefficients. There are @math{N} nodes
+in the grid, from 1 to @math{N}, and two nodes outside of the grid,
+a limiting node 0, and a limiting node @math{N+1}. The limiting node
+corresponding with node 0 is called the @dfn{down} node, while the limiting 
+node corresponding with node @math{N+1} is called the @dfn{up} node.
+Other models not part of the 1D grid may be added if any.
+
+To enable 1D gridded models, one should set the select flag @samp{grid1d}.
+In cmz it is achieved setting the select flag in
+@file{selseq.kumac}, like
+
+@example
+sel grid1d
+@end example
+
+With make, the @code{SEL} variable should contain @code{grid1d}. For example
+to select @code{grid1d} and @code{monitor}, it could be
+@example
+SEL = grid1d,monitor
+@end example
+
+
+@menu
+* 1D gridded Model size::
+* 1D gridded model code::
+@end menu
+
+@node 1D gridded Model size
+@subsection Setting dimensions for 1D gridded model
+
+@c FIXME grid1d sans dimetaphi?
+In that case the number of nodes, the number of states and tranferts 
+per node, and the number of limiting transfers and states are required.
+These dimensions has to be entered in the
+@file{DimEtaPhi} sequence. The parameters for cells are
+@vtable @code
+@item n_node
+Number of cell nodes in the 1D grid.
+@item n_dwn
+Number of limiting cells with index -1, @i{i.e.} number of cells in the
+limiting down node.
+@item n_up
+Number of limiting cells with index +1, @i{i.e.} number of cells in the
+limiting up node.
+@item n_mult
+Number of cells in each node (multiplicity).
+@end vtable
+
+@vindex m_node
+@vindex m_dwn
+@vindex m_up
+@vindex m_mult
+The parameters for transfers, are similarly 
+@code{m_node}, @code{m_dwn}, @code{m_up}, @code{m_mult}.
+The layout of their declaration should be respected as 
+the precompiler matches the line. Also this procedure is tedious, it
+should be selected for debuging processes (use the flag @code{sel dimetaphi}
+in ``selsequ.kumac''. Otherwise, the dimensioning sequence will be automaticaly
+generated, which is smart but can lead to diffculty in interpreting syntax errors.
+Once a model is correctly entred, turn off the sel flag and further modifications
+will automatically generate the proper dimensions. The correctness of dimensionning
+should nevertheless always be checked in @code{principal.f}, where you can also
+check that null valued parameters as @code{lp, mobs, nxp} will suppress parts
+of the code - this is signaled as Fortran comment cards.
+
+In our example, there are three grids of cell and
+transfer variables (@code{n_node=m_node=3}). 
+There are two cells and two transfers in each node 
+(@code{n_mult=2} and @code{m_mult=2}). There is no limiting condition 
+for the states in the down node therefore @code{n_up=0}. 
+There is no transfer for the first limiting node, and 
+therefore @code{m_dwn=0}.
+There are two states in the limiting node 0, the down node, 
+@code{n_dwn=2}, and two transfers in the limiting last node the node up, 
+and @code{m_up=2}:
+
+@example 
+! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+! nodes parameters, and Limiting Conditions (Low and High)
+! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      parameter (n_node=3,n_dwn=2,n_up=0,n_mult=2);
+      parameter (m_node=3,m_dwn=0,m_up=2,m_mult=2);
+! ________________________________________________________
+@end example
+
+
+@node 1D gridded model code
+@subsection 1D gridded Model coding
+
+The model code and parameters go in the @file{zinit} sequence.
+
+@subsubheading Parameters
+
+A value for the Miniker parameters and the model parameters should be given in
+@file{zinit}, in our example we have
+
+@example
+!%%%%%%%%%%%%%%%%%%%%%%
+! Parameters
+!%%%%%%%%%%%%%%%%%%%%%%
+real rk(n_node),rd(n_node),rmassm1(n_node);
+
+data rk/n_node*1./;
+data rd/n_node*0.1/;
+data rmassm1/n_node*1./;
+     dt=.01;
+     nstep=5 000;
+     modzprint = 1000;
+     time=0.;
+@end example
+
+@subsubheading Limiting conditions
+
+@cindex limiting conditions
+
+@c The limiting states and transfer variables and the corresponding equations are
+@c declared using
+@c the symbolic model description 
+@c (@pxref{Symbolic model description}).
+There are four mortran blocks for @code{node} and @code{up} and @code{down}, both
+for states and transfers:
+
+@findex set_dwn_eta
+@findex set_dwn_phi
+@findex set_up_eta
+@findex set_up_phi
+
+@table @code
+@item set_dwn_eta
+down node cells
+@item set_up_eta
+up node cells
+@item set_dwn_phi
+down node transfers
+@item set_up_phi
+up node transfers
+@end table
+
+The following scheme illustrates the example:
+@smallexample
+!%%%%%%%%%%%%%%%%%%%%%%%%%%================================================
+! Maillage convention inode
+!%%%%%%%%%%%%%%%%%%%%%%%%%%                                 Open ended
+!(2 Down    Phi    Eta                         (n_node)
+! Eta)  \|       .-----.       .-----.          .-----.        /
+! wall  \|-\/\/\-|     |-\/\/\-|     |  . . .  -|     |-\/\/\- |dummy
+!  pos  \|--***--|  1  |--***--|  2  |  . . .  -|  n  |--***-- |Phis
+! speed \|   1   |_____|   2   |_____|      n   |_____|  n+1   \(2 Up Phi)
+!
+@end smallexample
+
+Two states are associated with the down node, they correspond to the position
+and speed of the wall. As the wall don't move these states are initialized to
+be 0, and the cells are stationnary cells, therefore these values remain 0.
+
+@example
+! Down cells (wall)
+! -----------------
+eta_pos_wall = 0; eta_speed_wall = 0.;
+
+set_dwn_eta
+< var: eta_pos_wall,  fun: deta_pos_wall  = 0.;
+  var: eta_speed_wall, fun: deta_speed_wall= 0.;
+>;
+@end example
+
+There are 2 limiting transfers in the up node. They correspond with an open
+end and are therefore set to 0.
+
+@example
+! limiting Transfers : dummy ones
+! -------------------------------
+set_Up_Phi
+< var:ff_dummy_1, fun: f_dummy_1=0.;
+  var:ff_dummy_2, fun: f_dummy_2=0.;
+>;
+@end example
+
+@subsubheading Starting points
+
+The cell node state values are initialized. They are in an array 
+indexed by the @code{inode} variable. In the example the variable 
+corresponding with position is @code{eta_move} and the variable corresponding
+with speed is @code{eta_speed}. Their initial values are set with the 
+following mortran code
+
+@example
+!---------------
+! Initialisation
+!---------------
+;
+do inode=1,n_node <eta_move(inode)=0.01; eta_speed(inode)=0.0;>;
+@end example
+
+If any transfer needs to be given a first-guess value, this is also done 
+using @code{inode} as the node index.
+
+@subsubheading Grid node equations
+
+@findex set_node_Phi
+@findex set_node_eta
+@cindex equations, grid
+
+Each node is associated with an index @code{inode}. It allows to refer to the 
+preceding node, with @code{inode-1} and the following node @code{inode+1}.
+The node states are declared in @code{set_node_Eta} block and the transfers are
+in @code{set_node_Phi} blocks.
+
+In the example, the cells are declared with
+
+@example
+! node cells
+! ----------
+;
+set_node_Eta
+< var: eta_move(inode),  fun: deta_move(inode) = eta_speed(inode);
+  var: eta_speed(inode),
+  fun: deta_speed(inode) = rmassm1(inode)
+                             *( - ff_spring(inode+1) + ff_spring(inode)
+                               - ff_dump(inode+1)  + ff_dump(inode)
+                              );
+>;
+@end example
+Note that the @code{inode} is dummy in the @code{var:} definition and can as
+well be written as: @code{var: eta_move(.)}.
+
+
+The transfers are (@code{ff_spring} corresponds with springs and 
+@code{ff_dump} with dumps):
+
+@example
+!%%%%%%%%%%%%%%%%%%%%%%
+! Transfer definition
+!%%%%%%%%%%%%%%%%%%%%%%
+! node transfers
+! --------------
+! convention de signe spring : comprime:= +
+set_node_Phi
+< var: ff_spring(.),
+  fun:
+   f_spring(inode)= -rk(inode)*(eta_move(inode) - eta_move(inode-1));
+  var: ff_dump(.),
+  fun:
+   f_dump(inode)  = -rd(inode)*(eta_speed(inode) - eta_speed(inode-1));
+>;
+@end example
+
+The limiting states and transfers are associated with the states or transfers
+with index @code{inode+1} or @code{inode-1} appearing in node cell and 
+transfer equations (@code{inode-1} for down limiting conditions and 
+@code{inode+1} for up limiting conditions) in their order of appearance.
+In our example, in the @code{eta_speed} state node equation
+@code{ff_spring(inode+1)} appears before @code{ff_dump(inode+1)} and is
+therefore associated with @code{ff_dummy_1} while @code{ff_dump(inode+1)} is
+associated with the @code{ff_dummy_2} limiting transfer, as @code{ff_dummy_1}
+appears before @code{ff_dummy_2} in the limiting up transfers definitions.
+Verification of the grid index coherence should be eased with the following
+help printed in the listing header:
+
+@example
+
+
+
+
+  --------------- Informing on Dwn Eta definition ---------------
+ Var-name,            Function-name, index in eta vector
+         eta_pos_wall        deta_pos_wall  1 [
+       eta_speed_wall      deta_speed_wall  2 [
+
+  -------------- Informing on Eta Nodes definition --------------
+ Var-name,     Function, k2index of (inode: 0 [ 1,...n_node ] n_node+1)
+            eta_move           deta_move    1 [   3 ...   7 ]   9
+           eta_speed          deta_speed    2 [   4 ...   8 ]  10
+
+  ---------------- Informing on Up  Phi  definition -------------
+ Var-name,             Function-name, index in ff vector
+          ff_dummy_1           f_dummy_1 ]    7
+          ff_dummy_2           f_dummy_2 ]    8
+         ff_move_sum          f_move_sum ]    9
+        ff_speed_sum         f_speed_sum ]   10
+  ----------------------------------------------------
+
+ -------------- Informing on Phi Nodes definition ---------------
+ Var-name,     Function, k2index of (inode: 0 [ 1,...m_node ] m_node+1)
+           ff_spring            f_spring   -1 [   1 ...   5 ]   7
+             ff_dump              f_dump    0 [   2 ...   6 ]   8
+  ----------------------------------------------------
+@end example
+
+All variable names and functions are free but has to be
+different.
+Any particular node-attached variable @math{k} is referred to as: @samp{(inode:k)},
+where @math{k} has to be a Fortran expression allowed in arguments. The symbol 
+@samp{inode} is
+reserved. As usual other Fortran instructions can be written within the
+Mortran block @samp{< >} of each @code{set_} block.
+
+@node Double precision
+@section Double precision
+
+The default for real variables is the @code{real} Fortran type. It is possible to
+use double precision instead. In that case all the occurences of @samp{real@ }
+in mortran code is substituted with @samp{double precision@ } at 
+precompilation stage,
+and the Lapack subroutine names are replaced by the double precision names.
+Eventual users'declaration of @code{complex@ } Fortran variables is also 
+changed to @code{double complex@ }.
+
+This feature is turned on by @code{sel double} in @file{selseq.kumac} with cmz
+and @code{double = 1} in the @file{Makefile} with make.
+
+In order for the model to run as well in double as in simple precision, 
+some care should be taken to use the generic intrinsic functions, like 
+@code{sin} and not @code{dsin}. No numerical constant should be passed directly 
+to subroutines or functions, but instead a variable with the right type should
+be used to hold the constant value, taking advantage of the implicit casts 
+to the variable type.
+
+@node Partial Derivatives
+@section  Partial Derivatives
+
+The partial derivative rules are included in a @code{Mortran} macro series
+in @file{Derive_mac} of Miniker files. When using an anusual function,
+one should verify that the corersponding rules are in that file.
+It is easy to understand and add new rules in analogy with the already existing ones.
+
+For instance, suppose one wants to use the intrinsic Fortran function @code{ abs()}.
+Its derivatives uses the other function @code{sign()} this way:
+
+@example
+ &'(ABS(#))(/#)' = '((#1)(/#2)*SIGN(1.,#1))'
+@end example
+
+In such cases when one is adding a new rule, it is important to use the generic function names
+only (i.e. @code{sin} not @code{dsin}), because when compilating Miniker in the double precision
+version, or complex version, the generic names will correctly handle the different variable
+types - which is not the case when coding with specific function names.
+
+@menu
+* Derivating a power function::
+@end menu
+
+@node Derivating a power function
+@subsection Derivating a power function
+
+Partial derivative of a function in exponent is not secure in its Fortran form
+@code{g(x,y)**(f(y))}. It should be replaced by @code{power(g,f)} of 
+the Miniker @file{mathlib},
+or by the explicit form @code{exp(f(y)*log(g(x,y)))}.
+
+Its derivative will have the following form:
+
+
+@tex
+$$\eqalign{\partial_x f^g &= g f^{g-1}\partial_x f +  f^g \log f\partial_x g\cr
+ &= f^{g-1}(g\partial_x f + f\partial_x g)\cr}$$
+@end tex
+
+and is in the macros list already defined in: @file{DERIVE_MAC}.
+
+@node Rule of programming non continuous  models
+@section  Rule of programming non continuous  models
+
+Some models may originally be non continuous, as the ones using a Fortran instruction @code{IF}.
+Some may use implicitly a step function on a variable. In such cases, the model has to be
+set in a derivable form, and use a ``smooth step'' instead.
+ One should be aware of that this apparently mathematical treatment currently
+indeed leads to a physical question about the macroscopic form of a physical law.
+At a macroscipic level, a step function is usually a nonsense.
+@cindex Heaviside function
+Taking
+the example of phase-change, a fluid volume does not change phase at once, and a ``smooth
+change of state'' is a correct macroscopic model.
+
+Miniker provides with the smooth step function 
+@emph{Heavyside}@footnote{This naming is a joke
+for ``Inert'' Heaviside function.} in the Miniker @file{mathlib}:
+
+@example
+        Delta = -1."K";
+        A_Ice =  heavyside("in:" (T_K-Tf), Delta, "out:" dAIce_dT);
+@end example
+
+in this example, @code{Tf} is the ice fusion-temperature, @code{A_ice} 
+gives the ice-fraction
+of the mesh-volume of water at temperature @code{T_k}. 
+The smooth-step function is a quasi
+hyperbolic tangent function of @math{x/\Delta}, 
+normalised from 0 to 1, with a maximum slope
+of 2.5, see figure @ref{heavy}.
+
+@float Figure, heavy
+@image{heavyside}
+@caption{Heaviside function and derivative}
+@end float
+
+For @code{Mortran} to be able to symbolicaly compute the partial derivarives, the rule
+is in the table of macros as:
+
+@example
+&'(HEAVYSIDE(#,#,#))(/#)' = '((#1)(/#4)*HEAVYDELTA(#1,#2,#3))'
+@end example
+
+which uses the Foratn entry point @code{HeavyDelta} in the Fortrsan function @code{heavyside}.
+
+Another type of problem arises when coding a  
+@code{var=min(f(x),g(x))} Fortran instruction.
+In such a case one does not want a derivative and one will code:
+
+@example
+var = HeavySide(f(x)-g(x),Delta,dum)*g(x) + (1.-HeavySide(f(x)-g(x),Delta,dum)*f(x);
+@end example
+
+or equivalently:
+
+@example
+var = HeavySide(f(x)-g(x),Delta,dum)*g(x) + HeavySide(g(x)-f(x),-Delta,dum)*f(x);
+@end example
+
+@strong{Warning}: the value of the argument @var{Delta} is important because 
+it will fix the maximum
+slope of the function that will appear as a coefficient in the 
+Jacbian matrices.
+
+@node Parameters
+@section Parameters
+
+It is possible to specify some Fortran variables as specific model parameters.
+Model parameters
+may be used in sensitivity studies (@pxref{Sensitivity to a parameter})
+and in the adjoint model (@pxref{Sensitivity of cost function to parameters}). 
+Nothing special is done with parameters with Kalman filtering.
+
+
+@findex Free_parameter
+
+The parameters are fortran variables that should be initialized somewhere 
+in @file{zinit}. For a variable to be considered as a parameter, it should 
+be passed as an
+argument to the @code{Free_parameters} macro. For example if 
+@code{apar} and @code{cpar} (from the predator example) are to be considered
+as parameters, @code{Free_parameters} should be called with:
+
+@example
+Free_parameter: apar, cpar;
+@end example
+
+@c Forward sensitivities are explained later (@pxref{Sensitivity to a parameter}), 
+@c the syntax only is described here.
+
+
+When used with grid1d models (@pxref{1D gridded model,,
+Describing 1D gridded model}) the @code{inode} number may appear in 
+parenthesis:
+
+@example
+Free_parameter: rd(1), rk(2);
+@end example
+
+@node Observations and data
+@section Observations and data
+
+Some support for observations and interactions with data is available.
+The observations are functions of the model variables. They don't have 
+any action on the model result, but they may (in theory) be observed 
+and measured. The natural use of these observations is to be compared
+with data that correspond with the values from real measurements.
+They are used in the Kalman filter (@pxref{Kalman filter}).
+
+The (model) observation vector is noted @math{\omega}
+@c FIXME is seems untrue?
+@c in this section ($\mu$ elsewhere,
+and the observation function is noted @math{h}:
+
+@tex
+$$
+\omega = h ( \eta , \varphi) 
+$$
+@end tex
+
+@noindent @math{omega(t) = h(eta(t), phi(t))}
+
+
+@menu
+* Observations::
+* Data::
+@end menu
+
+@node Observations
+@subsection Observations
+
+@vindex mobs
+
+The observation functions are set in a @code{set_probe} block in 
+the @file{zinit} sequence.
+
+@cindex observation function
+
+@c FIXME doesn't exist anymore
+@c @defmac eqn: Obs_tef(@var{i}) = f(eta(.),ff(.))
+@c This macro defines the observation equation as usual in a @code{set_block<}.
+@c @code{f} is a fortran 
+@c expression which may be function of cell state variables, 
+@c @samp{eta(1)}@dots{}@samp{eta(np)} and transfers 
+@c @samp{ff(1)}@dots{}@samp{ff(mp)}, or of course their symbolic names.
+@c @end defmac
+
+For example suppose that, in the predator-prey model, we only 
+have access to the total population of preys and predators, we would have:
+
+@example
+set_probe
+< eqn: pop = eta_pred + eta_pray;
+>;
+@end example
+
+@c it is always turned on, now
+@c The corresponding code is used with @code{sel obs} in @file{selseq.kumac} 
+@c with cmz and @code{obs = 1} in @file{Makefile} with make. And the feature
+@c is turned on and off at run time with the logical flag @code{zobs} corresponding
+@c to an available data from measurement
+
+@c @vindex etaobs(.)
+@cindex @file{obs.data}
+
+The number of observations is put in the integer variable @code{mobs}.
+The observation vector corresponds with the part of the @code{ff(.)} 
+array situated past the regular transferts, @code{ff(mp+.)}, and is output
+in the file @file{obs.data}.
+
+@c @vindex obetad(.,.)
+@c @vindex obephid(.,.)
+@c @vindex obspha(.,.)
+
+@node Data
+@subsection Data
+
+@vindex zgetobs
+@vindex vobs(.)
+@cindex @file{data.data}
+
+Currently this code is only used if the Kalman code is activated. This
+may be changed in the future.
+
+The convention for data is that whenever some data are available, the 
+logical variable @code{zgetobs} should be set to @samp{.true.}. And the
+@code{vobs(.)} vector should be filled with the data values. This 
+vector has the same dimension than the observation
+vector and each coordinate is meant to correspond with one
+coordinate of the observation vector.
+
+This feature is turned on by setting the logical variable @code{zdata}
+to @samp{.true.}, and the @code{zgetobs} flag is typically set in the
+@file{zsteer} sequence (@pxref{End of time step,,Executing code at
+the end of each time step}).
+Every instant data are available (@code{zgetobs} is true) the observations
+are written to the file @file{data.data}. With the Kalman filter more 
+informations are output to the @file{data.data} file, 
+see @ref{Kalman filter results}.
+
+
+@node Explicit model size
+@section Entering model size explicitely
+
+It is possible to enter the model dimensions explicitely, instead of 
+generating them automatically, as it was done previously.
+This feature is turned on by @code{sel dimetaphi} 
+in @file{selseq.kumac} with cmz
+and @code{dimetaphi} added to the @code{SEL} variable in 
+the @file{Makefile} with make.
+
+@menu
+* Size sequence::
+* Model with explicit size::
+@end menu
+
+@node Size sequence
+@subsection The explicit size sequence
+
+@cindex dimetaphi
+@cindex model size
+@vindex np
+@vindex mp
+@vindex maxstep
+@cindex @file{dimetaphi}
+
+The dimension of the model is entered in the sequence @file{dimetaphi},
+using the fortran @code{parameter np} for @code{eta(.)} and
+@code{mp} for @code{ff(.)}.
+For the Lotka-Volterra model, we have two cell components and only one transfer.
+
+@example
+parameter (np=2,mp=1);
+@end example
+
+You should not change the layout of the parameter statement as the 
+mortran preprocessor matches the line.
+
+You also have to provide other parameters even if you don't have any 
+use for them. If you don't it will trigger fortran errors.
+It includes the @code{maxstep} parameter that can have any value but 0,
+@code{lp} and @code{mobs} that should be 0 in the example, and  @code{nxp},
+@code{nyp} and @code{nzp} that should also be 0.
+The layout is the following:
+
+@example
+parameter (np=2,mp=1);
+parameter (mobs=0);
+
+parameter (nxp=0,nyp=0,nzp=0);
+parameter (lp=0);
+parameter (maxstep=1);
+@end example
+
+If there are observations, (@pxref{Observations}), the
+size of the observation vector is set in the @file{dimetaphi} sequence
+by the @code{mobs} parameter. For example if there is one observation:
+
+@example
+parameter (mobs=1);
+@end example
+
+To specify parameters (@pxref{Parameters}), the number of such parameters 
+has to be declared in @file{dimetaphi} with the parameter @code{lp}. 
+Then, if there are two parameters, they are first declared with
+
+@example
+parameter (lp=2);
+@end example
+
+@node Model with explicit size
+@subsection Entering the model equations, with explicit sizes
+
+@cindex model equations
+@findex Phi_tef(.)
+@findex deta_tef(.)
+@vindex eta(.), explicit sizes
+@vindex ff(.), explicit sizes
+
+When sizes are explicit, another possibility exists for entering
+the model equations. The use of symbolic names, as described in
+@ref{Model equations} is still possible, and it also becomes possible to
+set directly the equations associated with the @code{eta(.)}
+and @code{ff(.)} vectors.
+
+In case the symbolic names are not used, 
+the model equations for cells and transfers are entered using a mortran macro,
+@code{f_set}@footnote{@code{fun_set}, or equivalently @code{f_set}, is a 
+general mortran macro associating a symbol with a fortran expression. 
+Here, it is the name of the symbol (@code{eta}) that has a particular meaning
+for the building of the model.}, setting the @code{eta(.)} evolution with 
+@code{deta_tef(.)}
+and the transfer definitions @code{ff(.)} with @code{Phi_tef(.)}.
+
+@defmac f_set Phi_tef(@var{i}) = f(eta(.),ff(.))
+This macro defines the transfer @var{i} static equation.
+@code{f} is a fortran 
+expression which may be function of cell state variables, 
+@samp{eta(1)}@dots{}@samp{eta(np)} and transfers 
+@samp{ff(1)}@dots{}@samp{ff(mp)}.
+@end defmac
+
+In the case of the predator-prey model, the transfer definition for 
+@math{\varphi_{meet}} is:
+@example
+f_set Phi_tef(1) = eta(1)*eta(2);  
+@end example
+
+@defmac f_set deta_tef(@var{i}) = g(eta(@var{i}),ff(.))
+This macro defines the cell state component @var{i} time evolution model. 
+@code{g} is a expression which may be function of cell state variables, 
+@samp{eta(1)}@dots{}@samp{eta(np)} and transfers 
+@samp{ff(1)}@dots{}@samp{ff(mp)}.
+@end defmac
+
+The two cell equations of the predator-prey model are, with index 1 for the
+prey (@math{\eta_{prey}}) and index 2 for the predator (@math{\eta_{pred}}):
+
+@example
+f_set  deta_tef(1) = apar*eta(1)-apar*ff(1);
+f_set  deta_tef(2) = - cpar*eta(2) + cpar*ff(1);
+@end example
+
+The whole model is:
+
+@example
+!%%%%%%%%%%%%%%%%%%%%%%
+! Transfer definition
+!%%%%%%%%%%%%%%%%%%%%%%
+! rencontres (meeting)
+    f_set Phi_tef(1) = eta(1)*eta(2); 
+
+!%%%%%%%%%%%%%%%%%%%%%%
+! Cell definition
+!%%%%%%%%%%%%%%%%%%%%%%
+! eta(1) : prey
+! eta(2) : predator      
+
+    f_set  deta_tef(1) = apar*eta(1)-apar*ff(1);
+    f_set  deta_tef(2) = - cpar*eta(2) + cpar*ff(1);
+@end example
+
+The starting points for cells are entered like:
+@example
+!     initial state
+!     -------------
+     eta(1) = 1.;
+     eta(2) = 1.;
+@end example
+
+If there are observations, they are entered as special transferts with
+index above @code{mp}, for example:
+
+@example
+f_set Phi_tef(mp+1) = ff(1) ;
+@end example
+
+@node Programming with cmz directives
+@section Programming with cmz directives
+
+@menu
+* Cmz directives used with Miniker::
+* Using cmz directives in Miniker::
+@end menu
+
+@node Cmz directives used with Miniker
+@subsection Cmz directives used with Miniker
+
+The main feature of cmz directive is to use code conditionnaly for a given
+select flag. For example when the double precision is selected
+(@pxref{Double precision}) the use of the conditionnal 
+@code{double} flag may be required in case there is a different subroutine 
+name for different types. If, for example, the user use the subroutine
+@code{smysub} for simple precision and @code{dmysub} for double
+precision the following code is an example of what could appear in the
+user code:
+
+@verbatim
++IF,double
+ call dmysub(eta);
++ELSE
+ call smysub(eta);
++ENDIF
+@end verbatim
+
+For a complete reference on cmz directives see the appendix
+@ref{Cmz directives reference}.
+
+@node Using cmz directives in Miniker
+@subsection Using cmz directives in Miniker
+
+In cmz the KEEP and DECK have their cmz directives preprocessed as part
+of the source files extraction. And the +KEEP and +DECK 
+directives are automatically
+set when creating the KEEP or DECK. With make, files with these directives 
+has to be created within the files that are to be preprocessed by the
+cmz directives preprocessor.
+
+To be processed by make, a file that contains cmz directives 
+should have a file suffix corresponding
+with the language of the resulting file and with the normal file suffix of
+that language. More precisely @samp{cm} should be added before the normal
+file suffix and after the @samp{.}. Therefore if the resulting file language
+is associated with a suffix @samp{.@var{suf}}, the file with cmz directives
+should have a @samp{.cm@var{suf}} suffix. The tradition is to have
+a different suffix for main files and include files. 
+To add directories searched for @dfn{cmfiles} (files with cmz directives) 
+they should be added to the @code{CMFDIRS} makefile variable, separated 
+by @samp{:}.
+
+Rules for preprocessing of the files are defined in the file 
+@file{Makefile.miniker} for the file types described in 
+@ref{tab:cmfile_suffix}:
+
+@float table, tab:cmfile_suffix
+@multitable {fortran preprocessed} {include/keep} {cmfile suffix} {suffix} {language}
+@headitem language  @tab file type @tab cmfile suffix @tab suffix @tab language
+@item fortran @tab main/deck @tab .cmf @tab .f @tab ftn
+@item fortran preprocessed @tab main/deck @tab .cmF @tab .F @tab f77
+@item fortran preprocessed @tab include/keep @tab .cminc @tab .inc @tab f77
+@item mortran @tab main/deck @tab .cmmtn @tab .mtn @tab mtn
+@item mortran @tab include/keep @tab .cmmti @tab .mti @tab mtn
+@end multitable
+@caption{Association between file language, file type, file suffixes and 
+language identifier in cmz directives. A main file is called a @dfn{deck}
+in cmz and an include file is called a @dfn{keep}.}
+@end float
+
+@node Dynamic system analysis
+@chapter Dynamic analysis of systems in Miniker
+
+@menu
+* Sensitivities::
+* Adjoint model and optimisation::
+* Kalman filter::
+* Feedback gain::
+* Stability of fastest modes::
+* Generalized TLS::
+@end menu
+
+@node Sensitivities
+@section Automatic sensitivity computation
+
+@cindex sensitivities
+
+An obvious advantage of having acces to the Jacobian matrices along the
+system trajectory concerns automatic sensitivity analyses, as either:
+@itemize @bullet
+@item the sensitivity of all variables to perturbation in the initial condition
+      of one state variable;
+@item the same sensitivities to an initial pulse (or step) on a transfer;
+@item the same sensitivities to a series of pulses (or steps) on a transfer;
+@item the same for a change in a parameter, eventually during the run;
+@item the sensitivity of the matrix of advance in state space to a change
+ in a parameter.
+@end itemize
+
+This is declared in Zinit as:
+
+@example
+! -------------
+! Sensitivities
+! -------------
+Sensy_to_var
+< var: eta_pray, pert: INIT;
+  var: eta_pred, pert: INIT;
+>;
+@end example
+
+Each variable at origin of a perturbation is declared as @code{var:},
+and the type of perturbation in @code{pert:}. Here, INIT conditions are
+only allowed because the two variables are states variables. For transfers,
+@code{pert: pulse} corresponds to an initial pulse, @code{pert: step_resp}
+and  @code{pert: step_eff} to initial steps, the difference between 
+@code{_resp} (response form)
+and @code{_eff} (effect form) concerns the 
+diagonal only of the sensitivity matrix
+(see Feedback gains in non-linear models).
+
+Non initial perturbation can also be asked for:
+
+@example
+  Sensy_to_var
+  <
+!*     var: eta_courant_L, pert: init at 100;
+!*     var: ff_T_czcx,     pert: pulse at 100 every 20;
+!*     var: ff_Psi_Tczcx,  pert: step_eff;
+!*     var: ff_Psi_Tczcx,  pert: step_Resp at 10 every 100;
+! *** premiers tests identiques a lorhcl.ref
+    var: ff_courant_L , pert: step_eff;
+    var: ff_T_czcx    , pert: step_eff;
+    var: ff_Psi_Tczcx , pert: step_eff;
+    var: ff_Psi_Tsz   , pert: pulse at 100 every 50;
+  >;
+@end example
+
+In this example taken from @file{lorhcl}, a sensitivity can increase so as to
+trespass the Fortran capacity, so that each  sensitivity vector (matrix column)
+can be reset at some time-increment @code{at III every JJJ;}
+
+It is noteworthy that these sensitivity analyses are not based
+on difference between two runs with different initial states or
+parameter values, but on the formal derivatives of the model. This method 
+is not only numerically robust, but is also rigorously funded as based on 
+the TLS of the model@footnote{For a short introduction to automatic 
+sensitivity analysis, see the document:@*
+@url{http://lmd.jussieu.fr/zoom/doc/sensibilite.ps}, in French,
+or ask for the more complete research document to a member of the TEF-ZOOM
+collaboration}.
+
+If the @code{dimetaphi} sequence is built by the users, he should declare
+the number of perturbing variables as @code{nxp=}:
+
+@example
+      parameter (nxp=np,nyp=0,nzp=0);
+@end example
+here, all state variables are considered as perturbing variables.
+
+@cindex sensitivity, output
+@cindex output, sensitivity
+@cindex @file{sens.data}
+@cindex @file{sigma.data}
+
+The sensitivity vectors are output in the result files @file{sens.data} for 
+cells and @file{sigma.data} for transfers. In those files the first column
+corresponds again with time, and the other columns are relative sensitivities of the cell
+states (in @file{sens.data}) and transfers (in @file{sigma.data})
+with respect to the initial value of the perturbed state. 
+
+In our predator-prey example, the second column of  @file{sens.data} will contain
+the derivative of @math{\eta_1(t)} with respect to @math{\eta_1(t=0)}.
+Drawing the
+second column of @file{sens.data} against the first one
+gives the time evolution of the sensitivity of @code{eta-pred}
+to a change in the initial value of @code{eta-pray}. One can check
+in that it is set to 1 at @math{t=0}:
+
+@example
+#    Sensy_to: eta_pray         3        eta_pred         5       
+# time \\  of: eta_pray     eta_pred     eta_pray     eta_pred    
+  0.00000E+00  1.00000E+00  0.00000E+00  0.00000E+00  1.00000E+00
+  1.00000E-02  9.90868E-01  1.11905E-02 -1.26414E-02  9.98859E-01
+@end example
+The two last columns are the state sensitivity to a change in initial conditions
+of the number of predators.
+
+In the same way, the @var{j+1}th column of @file{sigma.data} will be the
+derivative of @math{\phi_{j}(t)} with respect to @math{\eta_i(t=0)}. Here:
+@example
+#    Sensy_to: eta_pray     eta_pred    
+# time \\  of: ff_interact  ff_interact 
+  0.00000E+00  1.60683E+00  8.47076E-01
+  1.00000E-02  1.59980E+00  8.18164E-01
+@end example
+
+the unique transfer variable gives rise to two sensitivity columns. 
+
+Sensitivity studies are usefull to assess the
+predictability properties of the corresponding system.
+
+@menu
+@c * Initial state sensitivity::
+@c * Sensitivity to a pulse or a step on transfer::
+@c * Extended Sensitivity studies::
+* Sensitivity to a parameter::
+* Advance matrix sensitivity::
+@end menu
+
+
+
+@node Sensitivity to a parameter
+@subsection Sensitivity to a parameter
+
+A forward sensitivity to a parameter will be computed when specified as
+described in @ref{Parameters}. For example, suppose that
+the sensitivity to an initial change in the @code{apar} parameter of
+the predator model is of interest. 
+@c In that case the number of
+@c parameters should be set to 1 in @file{dimetaphi}:
+@c 
+@c @example
+@c parameter (lp=2);
+@c @end example
+
+The sensitivity calculs is turned on as a forward
+parameter specified on the @code{Free_parameter} list:
+
+@example
+Free_parameter: [fwd: apar, cpar];
+@end example
+
+The result are in @file{sensp.data} for cells and @file{sigmap.data}
+for transfers.
+
+@example
+#    Sensy_to: pi_prandtl       3            4        pi_rayleigh_     6
+# time \\  of: eta_courant_ eta_T_czcx   eta_T_sz     eta_courant_ eta_T
+  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.000
+  2.00000E-03 -4.77172E-03 -3.99170E-05  3.55971E-05 -9.94770E-05 -1.004
+@end example
+In the above example from @file{lorhcl} sensitivity of the three states with respect
+to an initial change in two parameters are independantly given (first line also numbers
+the column to easy gnuplot using).
+
+@node Advance matrix sensitivity
+@subsection Advance matrix sensitivity
+
+
+It is possible to look at the sensitivity of the matrix of advance in 
+states space (the matrix @code{aspha}) with regard to a parameter. 
+The parameter must be accounted for in the parameter number and be in the 
+parameter list, flagged as the matrix @code{mx} parameter, like in
+@example
+Free_parameter: [mx: apar], cpar;
+@end example
+
+@vindex d_pi_aspha(.,.)
+
+This feature is associated with a selecting flag, @samp{dPi_aspha}. One gets
+the result in the matrix @code{d_pi_aspha(.,.)} of dimension 
+(@code{np},@code{np}).
+
+This matrix may be used to compute other quantities, for example
+it may be used to compute the sensitivity of the eigenvalues of
+the state-advance matrix with regard to the @code{[fwd]} parameter.
+These additional computations have to be programmed by the user in 
+@file{zsteer} with matrices declared and initialized in 
+@file{zinit}. An example is given in the example @file{lorhcl}
+provided with the Miniker installation files, following a method proposed
+by Stephane Blanco.
+
+@node Adjoint model and optimisation
+@section Adjoint model and optimisation with Miniker
+
+In the following a possible use of Miniker for optimisation is discussed.
+More precisely the use of adjoint and control laws in Miniker are presented.
+Optimisation isn't the only application of these tools, but it is the most
+common one. In that case the adjoint may be used to determine the gradient of a
+functional to perturbations in the control laws, and an optimisation process
+can use this
+information to search for the optimum.
+Another application of the adjoint is to compute the sensitivity of a
+cost function to parameters (the ones declared in the @code{free_parameters:}' list.
+Note that the cost function can be sensitive to probe's variables, even if these are
+uncoupled with standard variables in the forward calculations; this is the case
+when minimizing a quadratic distance function between probes (from the  model)
+and the corresponding measurements.
+
+The code is close transcription of the mathematical calculus described
+in@* @url{http://www.lmd.jussieu.fr/ZOOM/doc/Adjoint.pdf} . It essentialy reverse time and
+transpose the four Jacobian matrices: states and transfers are saved in array dimensionned
+with @code{maxstep} Fortran parameter.
+@menu
+* Overview of optimisation with Miniker::
+* Control laws::
+* Cost function coding and adjoint modeling::
+* Sensitivity of cost function to parameters::
+@end menu
+
+@node Overview of optimisation with Miniker
+@subsection Overview of optimisation with Miniker
+
+@cindex adjoint
+@cindex optimisation
+
+In the proposed method, Miniker is run twice, one time forward and then
+backward to determine the trajectory and the adjoint model. After that the 
+control laws are modified by a program external to Miniker. The same steps
+are repeated until convergence. More pecisely,
+
+@table @strong
+@item forward
+The command law @math{h(t)} is given (by an explicit law or taken from a file).
+The trajectory is computed in a classical way, with the additionnal computation
+of the functional to be optimised, @math{J}, prescribed with specific 
+@code{f_set} macros. The states, transfers and control laws are stored.  
+@item backward
+The adjoint variable is computed from the last time @math{T} backward. The
+time increment is re-read as it could have changed during the forward 
+simulation. The system is solved by using the same technics as in the forward 
+simulation, but with a negative time step.
+@item external phase
+Now the command should be corrected. This step isn't covered here, but, for
+example, minuit the optimisation tool from the CERN could be used. 
+In order to ease such a use of Miniker, the principal program has to be 
+compiled as a subroutine to be driven by an external program 
+(@pxref{Calling the model code}).
+@end table
+
+The functionnal @math{J} to be optimised is defined as
+
+@tex
+$$
+J = \psi[\eta(T),\varphi(T) ,h(T)] + \int_0 ^T {l[\eta(\tau),\varphi(\tau),h(\tau)]}\, d\tau
+$$
+@end tex
+@noindent @math{J = psi(eta(T),phi(T),h(T)) + int_0^T l(eta(tau),phi(tau),h(tau)) d tau}
+
+@cindex final cost
+@cindex integrand cost
+
+Where @math{\psi} is the final cost function, @math{l} is the integrand
+cost function and @math{h} represents the control laws variations.
+
+The general use of the adjoint model of a system is the determination of the 
+gradient of this @math{J} functional to be optimised, with respect to perturbations
+of the original conditions of the reference trajectory, that is, along its 
+GTLS@footnote{General Tangent Linear System, i.e. the TLS circulating along a trajectory.
+See the explanation in the document
+@url{http://www.lmd.jussieu.fr/Zoom/doc/Adjoint.pdf} (in French).}.
+
+@node Control laws
+@subsection Control laws
+
+@vindex zcommand
+@cindex command law
+
+Each control law is associated with one cell or transfer equation, meaning that a command
+associated with an equation does not appear in any other equation.
+It is still possible
+to add commands acting anywhere by defining a transfer equal to that command.
+
+
+The control laws associated with states are in the @code{ux_com(.)} array, 
+control laws associated with transfers are in the @code{uy_com(.)} array.
+The control laws may be prescribed even when there is no adjoint computed, 
+nor any optimisation, and they are used during simulation, in which case they will
+act as external sources. To enable
+the use of commands, the logical flag @code{Zcommand} should be @code{.true.}.
+
+@cindex @file{uxcom.data}
+@cindex @file{uycom.data}
+
+The command can be given either as: 
+@enumerate 
+@item a table of numerical
+values in the files @file{uxcom.data} and @file{uycom.data}.
+@item a function
+@vindex zlaw
+@cindex @file{zcmd_law}
+@cindex @file{zcmd_law.inc}
+of the problem variables. To turn that feature on the logical flag 
+@code{Zlaw} should be set to @code{.true.} in @file{zinit}. The sequence 
+@file{zcmd_law} should hold
+the code filling the @code{ux_com(.)} and @code{uy_com(.)} arrays, as the code
+from that sequence is used whenever the control laws are needed.
+In that case the files  @file{uxcom.data} and @file{uycom.data} will 
+be filled by the command values generated by the function along the trajectory.
+@end enumerate
+
+For example in the Lotka-Volterra model, the parameter @code{apar} could 
+be a control variable.
+In that case, @code{apar} would be defined as the variable @code{ux_com(1)}, 
+and either entered as a law
+in the sequence @file{zcmd_law} , either written in the file @file{uxcom.data} 
+step by step. In that case, there must be a perfect corresponodence between time
+of the commands and time of the run.
+
+@node Cost function coding and adjoint modeling
+@subsection Cost function coding and adjoint modeling
+
+@vindex zback
+@findex cout_Psi
+@findex cout_l
+
+First of all the flag @code{zback} should be set to @code{.true.} in order to
+allow adjoint model computation:
+
+@example
+Zback=.true.;
+@end example
+
+The two functions @code{cout_Psi} corresponding with the final cost and 
+@code{cout_l} corresponding with the integrand cost are set up with the
+@code{f_set} macros.
+
+@defmac f_set cout_Psi = f(eta(.),ff(.),ux_com(.),uy_com(.))
+This macro defines the final cost function.
+@code{f} is a fortran 
+expression which may be function of cell state variables, 
+@samp{eta(1)}@dots{}@samp{eta(np)}, transfers 
+@samp{ff(1)}@dots{}@samp{ff(mp)}, 
+state control laws
+@samp{ux_com(1)}@dots{}@samp{ux_com(np)}, and transfer control laws
+@samp{uy_com(1)}@dots{}@samp{uy_com(mp)}.
+@end defmac
+
+@defmac f_set cout_l = f(eta(.),ff(.),ux_com(.),uy_com(.))
+This macro defines the integrand cost function.
+@code{f} is a fortran 
+expression which may be function of cell state variables, 
+@samp{eta(1)}@dots{}@samp{eta(np)}, transfers 
+@samp{ff(1)}@dots{}@samp{ff(mp)},
+state control laws
+@samp{ux_com(1)}@dots{}@samp{ux_com(np)}, and transfer control laws
+@samp{uy_com(1)}@dots{}@samp{uy_com(mp)}.
+@end defmac
+
+For example, the following code sets a cost function for the masselottes
+model:
+
+@example
+! Initialisation 
+  F_set cout_Psi = eta_move(inode:1);
+!and f_set cout_l integrand in the functionnal    
+  F_set cout_l = 0.;
+@end example
+
+In that example the functional is reduced to the final value
+of the first state component.
+Here, the adjoint vector will correspond to the final sensitivity 
+(at @math{t=0}) of 
+that component (here the first masselotte position) to a perturbation in 
+all initial conditions@footnote{For detailed explanation of the adjoint model,
+see the document in 
+@uref{http://www.lmd.jussieu.fr/@/ZOOM/doc/Adjoint.pdf,pdf}
+or @uref{http://www.lmd.jussieu.fr/@/ZOOM/doc/Adjoint.pdf,.ps.gz}}. 
+
+@c In the code, the variables @code{v_adj(.)} and @code{w_adj(.)}
+@c are respectively adjoint to @code{eta(.)} and @code{ff(.)}. They are written in the
+@c two files: @file{vadj.data} and @file{wadj.data}.
+The following variables are set during the backward phase, and output
+in the associated files:
+
+
+@multitable {@code{gradufj(.)}} {@file{hamilton.data}} {time increment, hamiltonian, cost function increment}
+@headitem var @tab file @tab explanation
+@c @item @code{} @tab @file{.data} @tab  @tab
+@item @code{v_adj(.)} @tab @file{vadj.data} @tab adjoint to @code{eta(.)}
+@item @code{w_adj(.)} @tab @file{wadj.data} @tab adjoint to @code{ff(.)}
+@item @code{wadj(mp+.)} @tab @file{gradmuj.data} @tab adjoint to @code{ff(mp+.)}
+@item @code{graduej(.)} @tab @file{gradxj.data} @tab adjoint to @code{ux_com(.)}
+@item @code{gradufj(.)} @tab @file{gradyj.data} @tab adjoint to @code{uy_com(.)}
+@item @code{hamilton} @tab @file{hamilton.data} @tab time increment, hamiltonian, cost function increment
+@end multitable
+
+@node Sensitivity of cost function to parameters
+@subsection Sensitivity of cost function to parameters
+
+@cindex @file{gradpj.data}
+
+The sensitivity of the cost function to all the parameters given as
+arguments of @code{Free_parameters} is computed. For the
+predator model the sensitivity of a cost function consisting in 
+the integral of the predator population with respect with
+@code{apar} an @code{cpar} is obtained with a number of parameters
+set to 2 in @file{dimetaphi}:
+
+@example
+parameter (lp=2);
+@end example
+
+And the cost function and @code{Free_parameters} list in @file{zinit}:
+
+@example
+f_set cout_Psi = eta(2);
+f_set cout_l = eta(2);
+Free_parameters: apar,cpar;
+@end example
+
+@code{apar} and @code{cpar} also have to be given a value.
+The result is output in @file{gradpj.data}.
+
+@node Kalman filter
+@section Kalman filter
+
+@cindex Kalman filter
+@cindex variance-covariance matrices, general
+@cindex observations, general
+
+The Kalman filter allows for data assimilation along the model run. In 
+that case it is assumed that there is a real-world model with stochastic
+perturbations on the states, and that noisy observations are available. 
+The situation implemented in Miniker corresponds to a continuous 
+stochastic perturbation on the state, and discrete noisy observations.
+In the @acronym{TEF} this leads to:
+
+@tex
+$$\eqalign{
+\partial_t \eta (t) &=  g(\eta(t),\varphi(t)) + W(t) \mu\cr
+\varphi(t) &= f(\eta(t),\varphi(t))\cr
+\omega(t) &= h ( \eta(t) , \varphi(t)) + \nu\cr
+}$$
+@end tex
+
+@noindent @math{d eta(t)/d t = g(eta(t),phi(t)) + W(t) mu@*
+phi(i) = f(eta(t),phi(t))@*
+omega(t) = h(eta(t), phi(t)) + nu }
+
+
+@c FIXME partout omega
+@c (notice that in this paragraph, $\omega$ stands for the probe vector $\mu$ elsewhere,
+@c and $\mu$ is here a noise source.
+
+The observations @math{\omega} are available at discrete time steps @math{t=s_i}. The
+stochastic perturbation on state, @math{\mu} is characterized by a 
+variance-covariance matrix @math{Q} and the noise on the observation,
+@math{\nu} has a variance-covariance matrix @math{R}. @math{W} relates states
+with stochastic perturbations. At each time step the Kalman filter recomputes 
+an estimation of the state and the variance-covariance matrix of the state.
+
+In the following we use the example of a linear model with perturbation 
+on state and observation of state. The model has 3 states and 3 corresponding
+transfers (equal to the states), but the error on the state is of dimension 
+2. The 3 states are observed. The corresponding equations read:
+
+@tex
+$$\left\{\eqalign{
+\partial_t \eta_1 &= a_{11} \eta_1 + a_{12} \varphi_2 + a_{13} \varphi_3 + W_{11} \mu_1 + W_{12} \mu_2\cr
+\partial_t \eta_2 &= a_{21} \varphi_1 + a_{22} \eta_2 + a_{23} \varphi_3 + W_{21} \mu_1 + W_{22} \mu_2\cr
+\partial_t \eta_3 &= a_{31} \varphi_1 + a_{32} \varphi_2 + a_{33} \eta_3 + W_{31} \mu_1 + W_{32} \mu_2
+}\right.$$
+$$\left\{\eqalign{
+\varphi _1 &= \eta _1\cr
+\varphi _2 &= \eta _2\cr
+\varphi _3 &= \eta _3
+}\right.$$
+$$\left\{\eqalign{
+\omega _1 &= \varphi _1 + \nu_1\cr
+\omega _2 &= \eta _2 + \nu_2 \cr
+\omega _3 &= \eta _3 + \nu_3
+}\right.$$
+@end tex
+
+
+Cells:@*
+@noindent @math{d eta_1/dt = a_11 eta_1 + a_12 phi_2 + a_13 phi_3 + W_11 mu_1 + W_12 mu_2@*
+d eta_2/dt = a_21 phi_1 + a_22 eta_2 + a_23 phi_3 + W_21 mu_1 + W_22 mu_2@*
+d eta_3/dt = a_31 phi_1 + a_32 phi_2 + a_33 eta_3 + W_31 mu_1 + W_32 mu_2}
+
+Transfers:@*
+@noindent @math{phi_1 = eta_1@*
+phi_2 = eta_2@*
+phi_3 = eta_3}
+
+Observations:@*
+@noindent @math{omega_1 = phi_1 + nu_1@*
+omega_2 = eta_2 + nu_2@*
+omega_3 = eta_3 + nu_3}
+
+
+@menu 
+* Coding the Kalman filter::
+* Kalman filter run and output::
+* Executing code after the analysis::
+@end menu
+
+@node Coding the Kalman filter
+@subsection Coding the Kalman filter
+
+@vindex zkalman
+
+First of all the Kalman filter code should be activated. The observations
+code is also required (@pxref{Observations}).
+If cmz is used the code
+should be selected with the select flag kalman 
+in the @file{selseq.kumac}:
+
+@example
+sel kalman
+@end example
+
+With make the @code{kalman} variable should be set to 1:
+
+@example
+kalman = 1
+@end example
+
+The kalman code is actually used by setting the flag
+@code{zkalman} to @code{.true.}, for example in the @file{zinit}:
+
+@example
+zkalman = .True.;
+@end example
+
+@c This will set the @code{zobs} and @code{zdata} flags to @code{.true.} 
+@c (@pxref{Observations and data}).
+
+With the Kalman filter the dimension of estimated states, of the error 
+on the state and of the
+observation, the @math{W} matrix, the observation function,
+the initial
+variance-covariance matrices on the state and the variance-covariance matrices 
+of errors have to be given.
+
+@menu 
+* Kalman filter vectors dimensions::
+* Error and observation matrices::
+@end menu
+
+@node Kalman filter vectors dimensions
+@subsubsection Kalman filter vectors dimensions
+
+@cindex error vector dimension
+@cindex @file{dimetaphi}, Kalman filter
+
+These dimensions should be set in the @file{zinit} sequence.
+The size of the estimated states is given by the parameter @code{nkp}. 
+You can set this to @code{np} if all the states are estimated, but in case
+there are some deterministic state variables, @code{nkp} may be less than
+@code{np}. In that case the first @code{nkp} elements of @code{eta(.)}
+will be estimated using the Kalman filter.
+
+The error on state dimension is associated with the parameter @code{nerrp}
+and the size of the observations vector is @code{mobs} 
+(@pxref{Observations}). In our example the dimensions are set with:
+
+@example
+parameter (nkp=np);
+parameter (mobs=3);
+parameter (nerrp=2);
+@end example
+
+All the states are estimated,
+there are 3 observation functions and the error on the state vector is of
+dimension 2.
+
+If the sizes are set explicitely, the parameters should be set in
+@file{dimetaphi}.
+
+@node Error and observation matrices
+@subsubsection Error and observation matrices
+
+@cindex variance-covariance matrices
+@cindex observations
+@cindex @file{zinit}, Kalman filter
+
+@subsubheading Initial variance-covariance matrix on the state
+
+@cindex initial variance-covariance on states
+@vindex covfor(.,.)
+
+The variance-covariance on the state matrix is @code{covfor(.,.)}. The initial
+values have to be given for this matrix, as in our example:
+
+@example
+covfor(1,1) = 1000.; covfor(1,2) = 10.; covfor(1,3) = 10.;
+covfor(2,1) = 10.; covfor(2,2) = 5000.; covfor(2,3) = 5.;
+covfor(3,1) = 10.; covfor(3,2) = 5.; covfor(3,3) = 2000.;
+@end example
+
+This matrix is updated by the filter at each time step because the states
+are pertubated by some noise, and when assimilation takes place as new
+information reduce the error.
+
+@subsubheading Observations and error on state matrix
+
+@cindex variance-covariance matrix on state
+@vindex mereta(.,.)
+
+The matrix that relates errors on states vector components to states,
+corresponding with @math{W} is @code{mereta(.,.)}. In our example it is 
+set by:
+
+@example
+mereta(1,1) = 1.;  mereta(1,2) = 0.;
+mereta(2,1) = 0.;  mereta(2,2) = 1.;
+mereta(3,1) = 0.5;  mereta(3,2) = 0.5;
+@end example
+
+The observation functions are set by a @code{f_set} macro with 
+@code{Obs_tef(.)} as described in @ref{Observations}.
+In our example the observation functions are set by:
+
+@example
+f_set Obs_tef(1) = ff(1) ;
+f_set Obs_tef(2) = eta(2);
+f_set Obs_tef(3) = eta(3);
+@end example
+
+@subsubheading Error variance-covariance matrices
+
+@cindex variance-covariance error
+@vindex covobs(.,.)
+
+The variance-covariance matrix on observation noise is @code{covobs(.,.)}
+set, in our example, by:
+
+@example
+covobs(1,1) = 0.3; covobs(1,2) = 0.; covobs(1,3) = 0.;
+covobs(2,1) = 0.; covobs(2,2) = 0.1; covobs(2,3) = 0.;
+covobs(3,1) = 0.; covobs(3,2) = 0.; covobs(3,3) = 0.2;
+@end example
+
+@vindex coveta(.,.)
+The variance-covariance matrix on state noise is @code{coveta(.,.)}
+set, in our example, by:
+
+@example
+coveta(1,1) = 0.2; coveta(1,2) = 0.001;
+coveta(2,1) = 0.001; coveta(2,2) = 0.1;
+@end example
+
+These matrices are not changed during the run of the model as part
+of the filtering process. They may be changed by the user in @file{zsteer}.
+
+@node Kalman filter run and output
+@subsection Kalman filter run and output
+
+@menu
+* Feeding the observations::
+* Kalman filter results::
+@end menu
+
+@node Feeding the observations
+@subsubsection Feeding the observations to the model
+
+@vindex vobs(.)
+@vindex zgetobs
+@cindex @file{zsteer}, Kalman filter
+
+The observations must be made available to the model during the run. These
+observations are set in the @code{vobs(.)} array, and the assimilation 
+(also called the analysis step of the filter) takes
+place if the logical variable @code{zgetobs} is @code{.true.} 
+(@pxref{Data}). 
+
+These steps are
+typically performed in the @file{zsteer} sequence. In this sequence there should
+be some code such that when there are data ready to
+be assimilated, @code{zgetobs} is set to @code{.true.} and the data is
+stored in @code{vobs(.)}, ready for the next step processing.
+
+@node Kalman filter results
+@subsubsection Kalman filter results
+
+@cindex results, Kalman filter
+@cindex Kalman filter results
+@cindex output, Kalman filter
+@cindex Kalman filter output
+@cindex @file{data.data}
+
+The estimated states and transfers are still in the same @samp{.data} files, 
+@file{res.data} and @file{tr.data} and there is the additional file with
+observations, called @file{obs.data} (@pxref{Observations}). 
+Each time @code{zgetobs} is @code{.true.} the data, and the optimally 
+weighted innovations are output 
+in the file associated with data, @file{data.data} (@pxref{Data}).
+
+@node Executing code after the analysis
+@subsection Executing code after the analysis
+
+The analysis takes place before the time step advance when @code{zgetobs}
+is @code{.true.}. It may be usefull to add some code after the analysis
+and before the time step advance. For example the analysis may lead to 
+absurd values for some states or parameters, it could be usefull to correct
+them in that case. The sequence included after the analysis is called
+@file{kalsteer}. At this point, in addition to the usual variables 
+the following variables could be usefull:
+
+@vtable @code
+@item etafor(.)
+The state before the analysis.
+@item kgain(.)
+The Kalman gain.
+@item innobs(.)
+The innovation vector (observations coherent with the states minus data
+values).
+@item covana(.,.)
+The variance-covariance error matrix after the analysis.
+@end vtable
+
+At each time step the derivative of the observation function with respect
+to transfer and cells variables are recomputed. The elimination of
+transfers is also performed to get the partial derivative of the observation
+function of the equivalent model, with states only, with respect to the 
+states. In other words, the Kalman filter does not follow the TEF formalism, because
+the advance of the var-covar matrix could not yet be set in the TEF form.
+@c There is a corresponding additional matrix:
+
+@vtable @code
+@c @item obetad(.,.)
+@c derivative of observation function with respect to transfers.
+@c @item obphid(.,.)
+@c derivative of observation function with respect to cell variables.
+@item obspha(.,.)
+derivative of observation function in state space with respect to
+cell variables.
+@end vtable
+
+
+@node Feedback gain
+@section Feedback gain
+
+
+@cindex Borel sweep
+@cindex Feedback gain
+
+The feedback dynamic gain associated with a feedback loop
+can be expressed as the inverse Borel 
+transform of the coefficient of the reduced scalar 
+coupling matrix, @math{g(\tau)},
+associated with a transfer. 
+A Borel sweep provides this @math{g(\tau)}. Therefore it is
+an interesting tool for the characterization of the feedback loop@footnote{
+More generally, the Borel sweep allows 
+the numerical study of the dependency in @math{\tau} of the Borel transform 
+of various coefficients in the system coupling  matrix.}. 
+
+As explained in the 
+ZOOM web page document 
+@url{http://www.lmd.jussieu.fr/@/ZOOM/doc/@/Feedback_Gain.pdf},
+this allows for the calculation of the
+dynamic gain and factor of any feedback that goes through a unique
+transfer variable. An example of the conclusions that can be drawn from such
+an analysis is provided in the same document.
+
+
+
+For linear systems -- whose GTLS are autonomous along the whole trajectory -- 
+the @math{\tau} function of the
+feedback gain is independent of the position on the system trajectory. 
+But in general it is dependant, and one can analyse the function 
+@math{g(\tau;t)} defined on a segment @math{t} of the trajectory.
+
+The document introducing the TEF-ZOOM technique explains how a Crank-Nicolson
+scheme for the time discretisation
+symbolically gives the solution of the Borel transform of the system. One can
+identify the @code{dt} variable with the Borel @math{\tau} within a 
+factor @math{2}. Hence, to numerically study the @math{\tau} dependency of 
+the transform of various coefficients in the system coupling  matrix at one 
+point in time, one can calculate the Borel transform of the TLS solutions 
+by making a time-step sweep.
+
+The function @math{g(\tau;t)} is simply output for the feedback gain 
+attached to a unique @code{ff(k)} transfer variable. 
+All the relevant informations should be entered in the @file{zinit} sequence.
+
+@menu
+* Specifying the Borel sweep::
+* Borel sweep results::
+@end menu
+
+@node Specifying the Borel sweep
+@subsection Specifying the Borel sweep
+
+@vindex ZBorel
+
+First of all the logical flag @code{ZBorel} should be raised:
+
+@example
+ZBorel=.true.;
+@end example
+
+@vindex index_ff_gain
+The index of the studied transfer is given in the @code{index_ff_gain}
+variable
+@example
+index_ff_gain=7;
+@end example
+
+At each time step a Borel sweep may be performed. The time steps of interest 
+are
+specified with three variables, one for the first step, one for the last step
+and one for the number of steps between two Borel sweeps:
+
+@vtable @code
+@item istep_B_deb
+First time step for the Borel sweep.
+@item  istep_B_fin
+Last time step for the Borel sweep.
+@item istep_B_inc
+Number of time steps between Borel sweeps.
+@end vtable
+
+In the following examples Borel sweeps are performed from the 
+time step 1000 up to the time step 1200, with a sweep at each time step:
+@example
+istep_B_deb=1000;   
+istep_B_fin=1200;  
+istep_B_inc=1;      
+@end example
+
+
+For each Borel sweep, the range of the @math{\tau} variable should be 
+set. As this is a multiplicative variable the initial value, a multiplicative
+factor and the number of values are to be given.
+
+@vtable @code
+@item tau_B_ini
+Initial value for @math{\tau}.
+@item tau_B_mult
+Multiplicative factor for sweep in @math{tau}.
+@item itau_max
+Number of @math{\tau} values.
+@end vtable
+
+For example, in the following, at each time step, the Borel
+transform will be computed for @math{\tau} values
+starting at @math{0.2} and then multiplied a hundred times by @math{\sqrt{\sqrt{2}}}
+
+@example
+tau_B_ini=0.2;    
+tau_B_mult=sqrt(sqrt(2.)); 
+itau_max=100;             
+@end example
+
+When the initial value of @math{\tau} is set to a negative value 
+(@i{i.e.} @code{tau_B_ini=-0.2;}),
+the Borel sweep will first be applied with @code{itau_max} negative values 
+for @code{-0.2}, @code{tau_B_mult*(-0.2)},..., then for the zero value, 
+and finally for the symetric positive values, resulting in @code{2*itau_max+1} 
+values for @math{\tau}.
+
+The whole example reads
+
+@example
+! -------------------
+! Feedback gain
+! Borel
+! -------------------
+ZBorel=.true.;
+if ZBorel           
+<  istep_B_deb=1000; 
+   istep_B_fin=1200;
+   istep_B_inc=1;  
+;
+   index_ff_gain=7; 
+   tau_B_ini=0.2;    
+   tau_B_mult=sqrt(sqrt(2.)); 
+   itau_max=100;             
+   z_pr/Borel/:tau_B_mult,tau_B_ini*(tau_B_mult)**itau_max;
+>;
+@end example
+
+@findex zborel for
+
+Instead of using the index of the transfer in @code{index_ff_gain} it is 
+possible to specify the name of the transfer.@c , whenever 
+@c the symbolic model description is used (@pxref{Symbolic model description}). 
+In that case the transfer is specified
+by the @code{zborel for} macro. For example if the transfer selected for the
+feedback gain computation is @var{b_transfer}, it can be selected
+with:
+
+@example
+zborel for: @var{b_transfer};
+@end example
+
+@node Borel sweep results
+@subsection Borel sweep results
+
+@cindex Borel sweep results
+@cindex results, Borel sweep
+@cindex Borel sweep graphics
+@cindex graphics, Borel sweep
+
+The file @file{tau_Borel.data} gives the @math{\tau} values of the @var{tau} sweep, 
+and the file @file{gains.data} records the feedback gain function values of 
+@math{g(\tau)}, with 
+one line for each sweep along the trajectory. In the 1.01 version, a new
+feature is also provided giving the poles and residuals of the Borel
+transform in the file @file{vpgains.data}. Consult the subroutine 
+@code{Boreleig}
+for (not definitive) output description.
+
+One can easily obtain the surface contours of @math{g(t,\tau)} using
+the Fortran program provided as @file{gains.f} and its compilation shell 
+@file{gains.xqt},
+that builds 2D histograms for PAW, in which one uses the
+@file{borels.kumac} provided kumac.
+
+@node Stability of fastest modes
+@section Stability analysis of fastest modes
+
+@cindex SVD
+@cindex Singular Value Decomposition
+@cindex state matrix
+@cindex @file{sltc.exe}
+
+The preceding analyses are done along with a simulation. One has also the
+possibility of using in a more classical fashion the state advance matrix
+@math{A_{st}}, after the end of the simulation. Code to perform the 
+@acronym{SVD, Singular Value Decomposition} of the state matrix @math{A_{st}}
+and also of @math{A_{st} + A_{st}^\dagger} is provided with Miniker.
+The singular elements of these two matrices correspond to the most
+rapid modes of instability of the perturbed system.
+
+The Singular value decomposition of a matrix is noted
+
+@tex
+$$
+ U w V^\dagger
+$$
+@end tex
+
+@noindent @math{U w V^t}
+
+
+An executable file, @file{sltc.exe} is generated and running this file will
+produce the corresponding results.
+
+@menu
+* SVD with cmz::
+* SVD with make::
+* SVD run and output::
+@end menu
+
+@node SVD with cmz
+@subsection Singular Value Decomposition with cmz
+
+@cindex @command{smod}
+
+The cmz macro @code{smod SLTC} prepares a main program
+(@file{circul} of +PATCH SLTC), provided as a base for user's own analysis,
+in the directory @file{sltc/}.
+
+@node SVD with make
+@subsection Singular Value Decomposition with make
+
+@cindex @file{Makefile.sltc}
+
+To compile the singular value decomposition executable with @command{make} you 
+can do
+@example
+make sltc.exe
+@end example
+
+If you want to have a separate directory for the SVD, you should copy 
+the sequence @file{dimetaphi.inc} (or make a link to that file) to the
+directory. You should also copy the file @file{Makefile.sltc} from the 
+@file{template/} directory in this directory, rename it @file{Makefile}
+and set the Miniker directory path in the 
+@code{miniker_dir} variable. For
+example, if the Miniker directory is in @file{/u/src/mini_ker}:
+
+@example
+miniker_dir = /u/src/mini_ker
+@end example
+
+@node SVD run and output
+@subsection Singular Value Decomposition run and output
+
+@cindex SVD run
+@cindex run, SVD
+@cindex SVD output
+@cindex output, SVD
+@cindex @file{sltc.exe}
+@cindex @file{title.tex}, SVD
+@cindex @file{aspha.data}, SVD
+
+As it is, the @file{sltc.exe} executable generated by the compilation 
+determines the SVD. This program requires @file{title.tex} (@pxref{Title file}) to
+transmit a title for output and graphics, and @file{aspha.data} 
+(@pxref{Simulation and output,,Running a simulation and using the output})
+to access the
+state matrix. To get access to these files (in case they are not in the current
+directory) it is possible to make a link to 
+the corresponding files in the model directory. Once it is done 
+the program may be run:
+
+@example
+./sltc.exe
+@end example
+
+The files @file{u.data}, @file{w.data}, and @file{v.data} holds the singular elements 
+for @math{A_{st}} (@math{U}, @math{w} and @math{V}), 
+and @file{us.data}, @file{ws.data}, and @file{vs.data}
+holds the singular elements of @math{A_{st} + A_{st}^\dagger}.
+The corresponding macros @samp{.kumac} for PAW@footnote{Explanation in
+the research paper about SLTC (Al1 2003) available on request.} 
+are also generated.
+
+@node Generalized TLS
+@section Generalized linear tangent system analysis
+
+@cindex Generalized linear tangent system
+@cindex GTLS
+@cindex propagator
+@cindex Lyapunov exponents
+@cindex @file{sltcirc.exe}
+
+The state matrix @math{A_{st}} may also be used to compute the
+GTLS propagator (or state transition matrix applied to perturbation), after the simulation.
+The algorithm is a finite product of 
+5th order development of
+@math{\Phi(t+\delta t,t)=\exp{A_{st} \delta t}}.
+Numerous element of analysis are given, in particular the determination
+of the Lyapunov exponents of the system.
+
+An executable file, @file{sltcirc.exe} is generated and running this file will
+produce the corresponding results.
+
+@menu
+* GTLS with cmz::
+* GTLS with make::
+* GTLS run and output::
+@end menu
+
+@node GTLS with cmz
+@subsection Generalized tangent linear system with cmz
+
+@cindex @command{smod}
+
+The cmz macro @code{smod SLTCIRC} prepares a main program
+(@file{circule} of +PATCH SLTCIRC), in the directory @file{sltcirc/}.
+
+@node GTLS with make
+@subsection Generalized tangent linear system with make
+
+@cindex @file{Makefile.sltcirc}
+
+To compile the GTLS analysis executable with @command{make} you 
+can do
+@example
+make sltcirc.exe
+@end example
+
+If you want to have a separate directory for the GTLS analysis, you should copy 
+the sequence @file{dimetaphi.inc} (or make a link to that file) to the
+directory. You should also copy the file @file{Makefile.sltcirc} from the 
+@file{template/} directory in this directory and  rename it @file{Makefile}
+and set the Miniker directory path in the @code{miniker_dir} variable.
+
+@node GTLS run and output
+@subsection Generalized tangent linear system analysis run and output
+
+@cindex GTLS run
+@cindex run, GTLS
+@cindex GTLS output
+@cindex output, GTLS
+@cindex @file{sltcirc.exe}
+@cindex @file{title.tex}, GTLS
+@cindex @file{dres.data}, GTLS
+@cindex @file{aspha.data}, GTLS
+
+The @file{sltcirc.exe} executable generated by the compilation 
+computes the elements of analysis of the system. This program requires 
+@file{title.tex} to
+transmit a title for output and graphics (@pxref{Title file}), 
+@file{aspha.data} to access the
+state matrix and @file{dres.data}, because time-step can be changed along the 
+simulation 
+(@pxref{Simulation and output,,Running a simulation and using the output})
+@footnote{cf our research texts about propagator analyses in
+SLTC, and ``les Gains sur champs (Al1 2003-2004)''}. To get access to these files 
+(in case they are not in the current
+directory) it is possible to make a link to 
+the corresponding files in the model directory. Once it is done 
+the program may be run:
+
+@example
+./sltcirc.exe
+@end example
+
+The following table gives the correspondence between variable name, 
+result file and ntuple number, with a short explanation:
+
+@multitable {@code{lwr(.,.)}} {@file{wlphit.data}} {ntuple} {eigen factors of @math{w} in the SVD of @math{\Phi}}
+@headitem var @tab file @tab ntuple @tab explanation
+@item @code{p(.,.)} @tab @file{phit.data} @tab 55 @tab propagator from 0 to @math{t}, @math{\Phi(t,0)}
+@item @code{up(.,.)} @tab @file{uphit.data} @tab 50 @tab Left singular vectors @math{U} in the SVD of @math{\Phi}
+@item @code{wp(.)} @tab @file{wphit.data} @tab 51 @tab singulat values @math{w} in the SVD of @math{\Phi}
+@item @code{vp(.,.)} @tab @file{vphit.data} @tab 52 @tab Right Singular Vectors @math{V} in the SVD of @math{\Phi}
+@item @code{wr(.)} @tab @file{wr.data} @tab 53  @tab real part of eigen values of @math{\Phi(t,0)}
+@item @code{wi(.)} @tab @file{wi.data} @tab 54  @tab imaginary part of eigen values of @math{\Phi(t,0)}
+@item @code{lwp(.)} @tab @file{lwphit.data} @tab 67  @tab Lyapunov exponents
+@c @item @code{lwr(.,.)} @tab @file{lwr.data} @tab 68  @tab
+@c @item @code{lwi(.,.)} @tab @file{lwi.data} @tab 69  @tab 
+@c @item @code{} @tab @file{.data} @tab  @tab
+@end multitable
+
+
+@node  Advanced use of Miniker with make
+@chapter Advanced use of Miniker with make
+
+@menu
+* Make variables::
+* Rules::
+* Linking rule::
+@end menu
+
+@node Make variables
+@section Make variables
+
+@cindex @file{Makefile.miniker}
+
+The @file{Makefile.miniker} Makefile provided in the
+distribution should be included as it defines a lot of important 
+variables and rules. 
+
+The following make variables can be set by the user:
+
+@table @code
+@item miniker_dir
+that variable should hold the Miniker sources directory. If you installed
+Miniker that variable should be set to @file{$(includedir)/mini_ker}. 
+If you use the sources right from the sources directory it should be set to 
+the sources package directory.
+@item MTNDIRS
+This variable can hold a @samp{:} delimited list of directories that will
+be searched for mortran include files.
+@item CMFDIRS
+This variable can hold a @samp{:} delimited list of directories that will
+be searched for cmz directive include files.
+@item SEL
+This variable holds a @samp{,} delimited list of select flags, for example
+@code{monitor}, @code{grid1d}, @code{debug}.
+@item LDADD
+This variable can be used to add libraries flags and files. It is used in 
+the default linking command/rule.
+@item miniker_user_objects
+This variable should hold a space separated list of additional object files
+to be linked with the model and helper object files.
+@item CAR2TXTFLAGS
+cmz directives preprocessor flag.
+@item kalman
+This variable should be set to 1 if you want to use the kalman filter
+(@pxref{Kalman filter}).
+@item double
+This variable should be set to 1 if you want to have a double precision
+code (@pxref{Double precision}).
+@end table
+
+The following variables are allready set and may be used
+(some are set by ./configure see @ref{Configuration}):
+
+@table @code
+@item miniker_principal_objects
+The list of object files needed for the model build, together with some 
+helper object files often used but not strictly required for the linking.
+@item DEPDIR
+The name of a hidden directory containing the dependencies computed
+for the main mortran files.
+@itemx F77
+@itemx FC
+@itemx FFLAGS
+@item LDFLAGS
+Compiler and linker related variables set by ./configure.
+@item LIBS
+This variable should hold the link flags and files required to build 
+Miniker, set by ./configure.
+@item CAR2TXT
+@itemx MORTRAN
+@itemx MTNFLAGS
+@itemx MTNDEPEND
+Preprocessor and preprocessor flags, set by ./configure.
+@end table
+
+@node Rules
+@section Rules
+
+The following rules are defined in the @file{Makefile.miniker} file.
+@table @code
+@item miniker-clean
+remove the fortran files generated from the mortran files. Remove 
+the object files.
+@item miniker-mtn-clean
+remove the mortran files generated from the files with cmz directives.
+@item 
+Various rules to preprocess files with cmz directives and mortran files and
+to compile fortran files.
+@end table
+
+If the user needs a mortran main file, he may take advantage of the rule
+used to compute the dependencies of a mortran file. If the file is called,
+say, @file{mtnfile.mtn} leading to @file{mtnfile.f}, the following include
+should lead to the automatic creation, updating and inclusion of a 
+file describing the dependencies of @file{mtnfile.mtn} in the 
+@file{Makefile}:
+
+@example
+include $(DEPDIR)/mtnfile.Pf
+@end example
+
+@node Linking rule
+@section Linking rule
+
+The rule used for the linking of the model file is not in the 
+@file{Makefile.miniker} file but 
+should be provided in the user @file{Makefile} for more flexibility. 
+The default rule 
+uses the variables @code{miniker_user_objects} for additional object files
+and @code{LDADD} for additionnal linking flags and files, those 
+variables are there to be changed by the user.
+
+The object files required by the Miniker code are in the make variable
+@code{miniker_principal_objects}, this variable is also used. 
+The value of the variables @code{FC}
+for the Fortran compiler, @code{FFLAGS} for the Fortran compiler
+flags and @code{LDFLAGS} for the linker flags should be set to right
+values; @code{LIBS} should also be right and hold the link flags and link
+files required to compile the Miniker model. These variables are 
+set by by @command{./configure} during configuration (@pxref{Configuration}) 
+and used in the default rule: 
+
+@verbatim
+$(model_file): $(miniker_user_objects) $(miniker_principal_objects)
+	$(FC) $(FFLAGS) $(LDFLAGS) $^ $(LDADD) $(LIBS) -o $@
+@end verbatim
+
+In case this isn't right it may be freely changed. You should certainly 
+refer to the @ref{Top,,Top,make,GNU Make Manual} manual to understand what
+that rule exactly means and make your own.
+
+
+@node Concepts index
+@unnumbered Concepts index
+
+@printindex cp
+
+@node Variables macros and functions index
+@unnumbered Variables, macros and functions index
+
+@printindex vr
+
+@node Installation
+@appendix Installation
+
+@menu
+* Programming environments::
+* Common requisites::
+* Miniker with cmz::
+* Miniker with make::
+@end menu
+
+@node Programming environments
+@appendixsec Programming environments
+@cindex Programming environments
+
+Miniker is not a traditionnal software in that it isn't a library
+or an interpreter but rather a set of source and macro file that 
+combines with the user model code and enable
+to build a binary program corresponding with the model. It
+requires a build environment with a preprocessor, a compiler
+and facilities that automate these steps.
+
+Two different environment are proposed. One use
+@command{cmz} (@url{http://wwwcmz.web.cern.ch/@/wwwcmz/index.html}),
+while the other is based on @command{make}. Other libraries
+are needed, the CERN Program Library (cernlib) and lapack.
+
+@node Common requisites
+@appendixsec Common requisites
+
+@cindex cernlib
+@cindex lapack
+
+Whatever method is used a fortran 77 compiler is required. The compilers
+that have been used so far are g77, gfortran and the sun solaris compiler.
+
+When usng CMZ, the CERN Program Library, available at
+@url{http://wwwasd.web.cern.ch/@/wwwasd/cernlib/}, has to be installed.
+With make, internal source files copied from the cernlib may be used instead
+but then some examples won't be available, since they rely on some
+mathematical functions provided by the CERN library.
+On windows, in case you want to use the compiler from the GNU compiler 
+collection with cygwin or MINGW/MSYS you can use the binaries provided at
+@url{http://zyao.home.cern.ch/@/zyao/cernlib.html}.
+On Mac OS X, the cernlib provided by fink (package @code{cernlib-devel})
+can be used.
+
+You should also have LAPACK, available at @url{http://www.netlib.org/@/lapack/}.
+LAPACK can also be installed as part of the CERN Library or as part of
+the @uref{ATLAS,http://math-atlas.sourceforge.net/} implementation.
+On most linux distributions a lapack package is available.
+On Mac OS X, the ATLAS implementation provided by fink or the frameworks
+from Xcode can be used.
+
+
+@node Miniker with cmz
+@appendixsec Miniker with cmz
+
+@cindex @file{mini_ker.cmz}
+@cindex @file{selseq.kumac}
+
+First of all you have to get the cmz file @file{mini_ker.cmz} and put it
+in a directory. In that same directory you should create a directory for
+each of your models. In the model directory you should copy the file 
+@file{selseq.kumac} available with Miniker, and create your own cmz 
+file for your model, called for example @file{mymodel.cmz}. You should also 
+have installed the kumac macro files
+handling mortan compilation, the associated shell scripts and the mortran
+preprocessor.
+
+@node Miniker with make
+@appendixsec Miniker with make
+
+@menu
+* Additional requirements::
+* Configuration::
+* Installation with make::
+@end menu
+
+@node Additional requirements
+@appendixsubsec Additional requirements for Miniker with make
+
+@cindex @command{mortran}, with make
+@cindex requirements, with make
+
+The package has been tested with GNU @command{make} and solaris
+@command{make}. 
+
+Suitable preprocessors should also be installed. Two preprocessors are 
+required, one that preprocess the cmz directives, and a mortran 
+preprocessor. A cmz directives processor written in @command{perl},
+is distributed in the @command{car2txt} package available at
+@url{http://www.environnement.ens.fr/@/perso/@/dumas/@/mini_ker/@/software.html}. A @command{mortran}
+package with a command able to preprocess a mortran file given on
+the command line with a syntax similar with the @command{cpp} command line 
+syntax is also required.
+Such a mortran is available at @url{http://www.environnement.ens.fr/@/perso/@/dumas/@/mini_ker/@/software.html}.
+
+@c All the @command{make} commands are not suitable, for example the distribution
+@c doesn't work with solaris @command{make}. GNU @command{make} works, however,
+@c and should be available on most platforms, often called @command{gmake}.
+
+
+@node Configuration
+@appendixsubsec Configuration
+
+@cindex configuration of source
+
+The package is available at @url{http://www.environnement.ens.fr/@/perso/@/dumas/@/mini_ker/@/software.html}. It is 
+available as a compresssed tar archive. On UNIX, with GNU @command{tar} it 
+may be unpacked using 
+
+@example
+$ tar xzvf mini_ker-4.2.tar.gz
+@end example
+
+The detection of the compiler, the preprocessors (car2txt and mortran), 
+and the libraries are performed by the configure script. This script
+sets the
+apropriate variables in makefiles. It can be run with:
+
+@example
+$ cd mini_ker-4.2
+$ ./configure
+@end example
+
+If the output of @command{./configure} doesn't show any error it means that
+all the components are here. It is possible to give @command{./configure}
+switches and also specify environment variables (see also 
+@command{./configure --help}):
+
+@table @code
+@item --disable-cernlib
+Use the internal cernlib source files, even if a cernlib is detected.
+@item --with-static-cernlib
+This command line switch forces a static linking with the cernlib (or a dynamic linking 
+if set to no).
+@item --with-cernlib
+This command line switch can be used to specify the cernlib location
+(if not detected or you want to use a specific cernlib).
+@item --with-blas
+@itemx --with-lapack
+With this command switch, you can specify the location of the blas and lapack
+libraries.
+
+For example, on mac OS X this can be used to specify the blas and lapack from 
+the Apple frameworks:
+
+@example
+./configure \
+--with-blas=/System/Library/Frameworks/vecLib.framework/versions/A/vecLib \
+--with-lapack=/System/Library/Frameworks/vecLib.framework/versions/A/vecLib
+@end example
+
+@item F77
+@itemx FC
+@itemx FFLAGS
+@itemx LDFLAGS 
+Classical compiler, compiler flags and linker flags.
+@item MORTRAN
+This environment variable holds the mortran preprocessor command
+(default is @command{mortran}).
+@item MTNFLAGS
+This environment variable holds command line arguments for the mortran
+preprocessor. It is empty in the default case.
+@item MTN
+This environment variable may be used to specify the mortran executable
+name and/or path, it should be used by the @command{mortran} commmand.
+(default is empty, which leads to a mortran executable called @command{mtn}).
+@item MTNDEPEND
+This environment variable may be used to specify the mortran dependencies
+checker executable. It should be used by the @command{mortran} commmand.
+(default is empty, which leads to a mortran dependencies checker 
+called @command{mtndepend}).
+@end table
+
+After a proper configuration, if @command{make} is run then the example 
+models should be build. You have to perform the configuration only once.
+
+@node Installation with make
+@appendixsubsec Installation with make
+@cindex installation with make
+
+Miniker can be installed by running 
+@example
+make install
+@end example
+
+
+It should copy the sources 
+and the @file{Makefile.miniker} file in 
+a @file{mini_ker} directory in the @code{$(includedir)} directory, and
+copy the templates in @file{$(datadir)/mini_ker}. The default for
+@code{$(includedir)} is @file{/usr/local/include} and the default for
+@code{$(datadir)} is @file{/usr/local/share}, these defaults may be 
+changed by @command{./configure} switches @samp{--prefix},
+@samp{--includedir}  and @samp{--datadir}. See @command{./configure --help}
+and the @file{INSTALL} file for more informations. The helper script
+@file{start_miniker} should also be installed.
+
+
+ 
+The installation is not required to use comfortably Miniker. Indeed
+the only thing that changes with the sources and the @file{Makefile.miniker}
+directory location is the @code{miniker_dir} variable in a 
+project @code{Makefile}.
+
+
+@node Cmz directives reference
+@appendix Cmz directives reference
+
+The cmz directives are described together with the other 
+features of cmz in the cmz manual at
+@url{http://wwwcmz.web.cern.ch/wwwcmz/}, the important ones are 
+nevertheless recalled here,
+especially for those that use make and don't need the whole
+features of cmz.
+
+After the description of the generic features, we turn
+to the cmz directive of interest.
+There are three kinds of cmz directives that are of use
+within Miniker: one kind
+that introduce files, the other for conditionnal compilation and
+the third for sequence inclusion. 
+
+
+@menu
+* Cmz directives general syntax::
+* Conditional expressions::
+* File introduction directives::
+* Conditional directives::
+* File inclusion directive::
+* The self directive::
+@end menu
+
+@node Cmz directives general syntax
+@appendixsec Cmz directives general syntax
+
+The cmz directives always begin with a @samp{+} in the first column,
+optionnaly followed by any number of @samp{_} that may be used for 
+indentation, then the directive label, case insensitive, followed
+by the directive arguments separated by @samp{,}. The arguments
+are also case insensitive.
+Optional spaces may be around directive arguments. 
+An optionnal @samp{.} ends the directive
+arguments and begin a comment, everything that follows that @samp{.} is 
+ignored.
+
+@node Conditional expressions
+@appendixsec Conditional expressions
+
+A directive argument common to all the directives is the conditionnal
+expression. A conditionnal expression may be true or false, it is a 
+combination of select flags. the select flags are combined with 
+logical operators. A
+select flag itself is true if it was selected. A select flag @var{selflag} 
+is selected by using the @code{sel @var{selflag}} instruction in cmz. It is
+selected by passing the @code{-D @var{selflag}} command line switch to
+the call of the cmz directives preprocessor when using make.
+
+
+A @samp{-} negates
+the expression that follows. Parenthesis @samp{(} and @samp{)} are used 
+for the grouping of subexpressions. @samp{|} and @samp{,} are for the 
+boolean or: an expression with a or is true
+if the expression on the left or the expression on the right of the or
+is true. 
+@samp{&} is for the boolean and: an expression with an and is true if
+the expression on the left and the expression on the right are true.
+
+The grouping is left to right when there is no parenthesis, with or and
+@samp{&} having the same precedence. Therefore
+
+@example
+a&b|c    @equiv{}    (a&b)|c
+a|b&c    @equiv{}    (a|b)&c
+a|b&c  is not  a|(b&c)
+a&b|c  is not  a&(b|c)
+@end example 
+
+@node File introduction directives
+@appendixsec File introduction directives
+
+A file (or sequence) introduction directive appears at the beginning
+of the file. There are two different directives, one is @code{DECK}
+for normal files, the other is @code{KEEP} for include files (sequences).
+The first argument is the name of the file. The file name may not be larger
+than 32 characters and is converted to lower case in the general case.
+The optionnal following arguments may be
+of 2 type (and may be mixed, separated by @samp{,}):
+
+@table @asis
+@item conditional
+A conditionnal is introduced by @code{IF=} followed by a conditionnal 
+expression described in 
+@ref{Conditional expressions}. The 
+file is preprocessed if the conditionnal expression is true.
+@item language specification
+A language specification is introduced by a @code{T=}. The most
+common languages are @samp{mtn} for the mortran, @samp{ftn} for
+fortran not preprocessed, @samp{f77} for preprocessed fortran,
+@samp{c} for the c language and @samp{txt} for text files.
+In general the language of the file determines the name of files 
+the preprocessed file is extracted to, the comment style and
+the command for inclusions.
+@end table
+
+It is a common practice to have wrong language type in @code{KEEP} 
+as the language may be determined from the @code{DECK} that include
+them with cmz, or from their file name with make. This is not recommended
+and considered a bad practice.
+
+Such a directive will always appear in cmz, as it is built-in. It
+is recommended to have one when using make too, even though it is not 
+required in most cases. Indeed make uses the file name directly
+and finds the language and file type by looking at the file extension.
+make should then pass the language type with a 
+@code{--lang @var{lang}} command
+line switch when calling the cmz directives preprocessor.
+With make, the convention is to have @samp{cm} added before the normal
+file suffix and after the @samp{.}. The table @ref{tab:cmfile_suffix}
+shows the matching between suffixes, file type and file language.
+
+For example, a file beginning with
+
+@verbatim
++Deck, subroutine_foo, If=monitor&-simple, T=f77. 
+@end verbatim
+
+is a main preprocessed fortran file that will only be generated if
+@samp{monitor} is selected and @samp{simple} is not selected. The 
+file to be preprocessed by make should have the @samp{.cmF} suffix,
+and be called @file{subroutine_foo.cmF}.
+
+A file beginning with
+
+@verbatim
++KEEP,inc_common,If=monitor|interface,T=mtn
+@end verbatim
+
+is an mortran include file that should be processed only if @samp{monitor}
+or @samp{interface} is selected. The file to be preprocessed by make
+should have the @samp{cmmti} suffix and be called @file{inc_common.cmmti}.
+The resulting file when make is used will be called @file{inc_common.mti}.
+
+@node Conditional directives
+@appendixsec Conditional directives
+
+Conditional directives may be used to conditionnaly skip blocks of
+code. There are 4 conditional directives: @code{if}, @code{elseif},
+@code{else} and @code{endif}. @code{+if} begins a conditional directives
+sequence, with argument a conditional expression. If the expression is
+true the block of code following the @code{+if} is output in the
+resulting file, up to another conditional directive, if it is false
+the code block is skipped. If the 
+expression is false and the following conditional directive is 
+@code{+elseif}, the same procedure is followed with the argument of 
+@code{+elseif} 
+which is also a conditionnal expression. More than one @code{+elseif}
+may follow a @code{+if}. If a @code{+if} or @code{+elseif} expression 
+is true the following
+code block is output and all
+the following @code{+elseif} code blocks are skipped. If all the @code{+if}
+and @code{+elseif} expressions are false and
+the following coditionnal 
+directive is @code{+else} then the block following the 
+@code{+else} is output. If a previous expression was true the 
+code block following the @code{+else} is skipped. The last code block
+is closed by @code{+endif}.
+
+Conditionnal directives may be nested, a @code{+if} begins a deeper 
+conditionnal sequences directives that is ended by the corresponding 
+@code{+endif}.
+
+The simplest example is:
+
+@verbatim
+     some code;
++IF,monitor
+     code output only if monitor is true;
++ENDIF
+@end verbatim
+
+If @samp{monitor} is selected, the @code{+if} block is output, it leads to
+
+@verbatim
+     some code;
+     code output only if monitor is true;
+@end verbatim
+
+If @samp{monitor} isn't selected the @code{+if} block is skipped, it leads to
+
+@verbatim
+     some code;
+@end verbatim
+
+An example with  @code{+else} may be:
+
+@verbatim
++IF,double
+ call dmysub(eta);
++ELSE
+ call smysub(eta);
++ENDIF
+@end verbatim
+
+If @samp{double} is selected the code output is @code{call dmysub(eta);},
+if @samp{double} isn't selected the code output is @code{call dmysub(eta);}.
+
+Here is a self explanatory example of use of @code{+elseif}:
+
+@verbatim
++IF,monitor
+  code used if monitor is selected;
++ELSEIF,kalman
+  code used if kalman is selected and monitor is not;
++ELSE
+  code used if kalman and monitor are not selected;
++ENDIF
+@end verbatim
+
+And last an example of nested conditional directives:
+
+@verbatim
++IF,monitor
+  code used if monitor is selected;
++_IF,kalman. deep if
+    code used if monitor and kalman are selected;
++_ELSE. deep else
+    code used if monitor is selected and kalman is not;
++_ENDIF. end the deep conditionnals sequence
++ELSE
+  code used if monitor is not selected;
++_IF,kalman
+    code used if monitor is not selected but kalman is;
++_ELSE
+    code used if monitor and kalman are not selected;
++_ENDIF
+  other code used if monitor is not selected;
++ENDIF
+@end verbatim
+
+@node File inclusion directive
+@appendixsec File inclusion directive
+
+The file (sequence) inclusion directive is @code{seq}. The argument of
+@code{seq} is an include files @samp{,} separated list. The include 
+files are @code{Keep} in cmz. The following optional arguments may be
+mixed:
+
+@table @asis
+@item conditional
+A conditionnal is introduced by @code{IF=} followed by a conditionnal 
+expression described in 
+@ref{Conditional expressions}. The 
+directive is ignored if the conditionnal expression is false.
+@item T=noinclude
+When this argument is present the text of the sequence will 
+always be included in the file where the @code{+seq} appears.
+@end table
+
+When there is no @code{T=noinclude} argument, the @code{+seq} 
+directive may be replaced with an inclusion command suitable 
+for the language of the file being processed, if such 
+command has been specified.
+
+For example if we have the following sequence
+@verbatim
++KEEP,inc,lang=C
+typedef struct incstr {char* msg};
+@end verbatim
+
+And the following code in the file being processed:
+
+@verbatim
++DECK,mainf,lang=C
++SEQ,inc
+int main (int argc, char* argv) { exit(0); }
+@end verbatim
+
+the processing of @file{mainf} should lead to the file 
+@file{mainf.c}, containing
+an include command for @file{inc}:
+
+@verbatim
+#include "inc.h"
+int main (int argc, char* argv) { exit(0); }
+@end verbatim
+
+In case the @code{+seq} has the @code{T=noinclude}:
+
+@verbatim
++DECK,mainf,lang=C
++SEQ,inc,T=noinclude
+int main (int argc, char* argv) { exit(0); }
+@end verbatim
+
+The processing of @file{mainf} should lead to the file @file{mainf.c} 
+containing the text of @file{inc}:
+
+@verbatim
+typedef struct incstr {char* msg};
+int main (int argc, char* argv) { exit(0); }
+@end verbatim
+
+@node The self directive
+@appendixsec The @samp{self} directive
+
+The @code{self} directive is an obsolete directive that may be used for
+conditionnal skipping of code. For a better approach see 
+@ref{Conditional directives}. 
+The optionnal argument of @code{+SELF} is @code{If=} followed by
+a conditionnal expression. If the conditionnal expression is true the 
+code following the directive is output, if it is false the code 
+is skipped up to any directive (including another @code{+SELF})
+except @code{+seq}.
+
+
+@node Copying This Manual
+@appendix Copying This Manual
+
+@menu
+* GNU Free Documentation License::  License for copying this manual.
+@end menu
+
+
+@node GNU Free Documentation License
+@appendixsec GNU Free Documentation License
+
+@cindex FDL, GNU Free Documentation License
+@center Version 1.1, March 2000
+
+@display
+Copyright @copyright{} 2000 Free Software Foundation, Inc.
+59 Temple Place, Suite 330, Boston, MA  02111-1307, USA
+
+Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
+@end display
+
+@enumerate 0
+@item
+PREAMBLE
+
+The purpose of this License is to make a manual, textbook, or other
+written document @dfn{free} in the sense of freedom: to assure everyone
+the effective freedom to copy and redistribute it, with or without
+modifying it, either commercially or noncommercially.  Secondarily,
+this License preserves for the author and publisher a way to get
+credit for their work, while not being considered responsible for
+modifications made by others.
+
+This License is a kind of ``copyleft'', which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the GNU General Public License, which is a copyleft
+license designed for free software.
+
+We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.
+
+@item
+APPLICABILITY AND DEFINITIONS
+
+This License applies to any manual or other work that contains a
+notice placed by the copyright holder saying it can be distributed
+under the terms of this License.  The ``Document'', below, refers to any
+such manual or work.  Any member of the public is a licensee, and is
+addressed as ``you''.
+
+A ``Modified Version'' of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.
+
+A ``Secondary Section'' is a named appendix or a front-matter section of
+the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document's overall subject
+(or to related matters) and contains nothing that could fall directly
+within that overall subject.  (For example, if the Document is in part a
+textbook of mathematics, a Secondary Section may not explain any
+mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+
+The ``Invariant Sections'' are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.
+
+The ``Cover Texts'' are certain short passages of text that are listed,
+as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+the Document is released under this License.
+
+A ``Transparent'' copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, whose contents can be viewed and edited directly and
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup has been designed to thwart or discourage
+subsequent modification by readers is not Transparent.  A copy that is
+not ``Transparent'' is called ``Opaque''.
+
+Examples of suitable formats for Transparent copies include plain
+@sc{ascii} without markup, Texinfo input format, La@TeX{} input format,
+@acronym{SGML} or @acronym{XML} using a publicly available
+@acronym{DTD}, and standard-conforming simple @acronym{HTML} designed
+for human modification.  Opaque formats include PostScript,
+@acronym{PDF}, proprietary formats that can be read and edited only by
+proprietary word processors, @acronym{SGML} or @acronym{XML} for which
+the @acronym{DTD} and/or processing tools are not generally available,
+and the machine-generated @acronym{HTML} produced by some word
+processors for output purposes only.
+
+The ``Title Page'' means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, ``Title Page'' means
+the text near the most prominent appearance of the work's title,
+preceding the beginning of the body of the text.
+
+@item
+VERBATIM COPYING
+
+You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no other
+conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.
+
+You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.
+
+@item
+COPYING IN QUANTITY
+
+If you publish printed copies of the Document numbering more than 100,
+and the Document's license notice requires Cover Texts, you must enclose
+the copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition.
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.
+
+If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.
+
+If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a publicly-accessible computer-network location containing a complete
+Transparent copy of the Document, free of added material, which the
+general network-using public has access to download anonymously at no
+charge using public-standard network protocols.  If you use the latter
+option, you must take reasonably prudent steps, when you begin
+distribution of Opaque copies in quantity, to ensure that this
+Transparent copy will remain thus accessible at the stated location
+until at least one year after the last time you distribute an Opaque
+copy (directly or through your agents or retailers) of that edition to
+the public.
+
+It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to give
+them a chance to provide you with an updated version of the Document.
+
+@item
+MODIFICATIONS
+
+You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:
+
+@enumerate A
+@item
+Use in the Title Page (and on the covers, if any) a title distinct
+from that of the Document, and from those of previous versions
+(which should, if there were any, be listed in the History section
+of the Document).  You may use the same title as a previous version
+if the original publisher of that version gives permission.
+
+@item
+List on the Title Page, as authors, one or more persons or entities
+responsible for authorship of the modifications in the Modified
+Version, together with at least five of the principal authors of the
+Document (all of its principal authors, if it has less than five).
+
+@item
+State on the Title page the name of the publisher of the
+Modified Version, as the publisher.
+
+@item
+Preserve all the copyright notices of the Document.
+
+@item
+Add an appropriate copyright notice for your modifications
+adjacent to the other copyright notices.
+
+@item
+Include, immediately after the copyright notices, a license notice
+giving the public permission to use the Modified Version under the
+terms of this License, in the form shown in the Addendum below.
+
+@item
+Preserve in that license notice the full lists of Invariant Sections
+and required Cover Texts given in the Document's license notice.
+
+@item
+Include an unaltered copy of this License.
+
+@item
+Preserve the section entitled ``History'', and its title, and add to
+it an item stating at least the title, year, new authors, and
+publisher of the Modified Version as given on the Title Page.  If
+there is no section entitled ``History'' in the Document, create one
+stating the title, year, authors, and publisher of the Document as
+given on its Title Page, then add an item describing the Modified
+Version as stated in the previous sentence.
+
+@item
+Preserve the network location, if any, given in the Document for
+public access to a Transparent copy of the Document, and likewise
+the network locations given in the Document for previous versions
+it was based on.  These may be placed in the ``History'' section.
+You may omit a network location for a work that was published at
+least four years before the Document itself, or if the original
+publisher of the version it refers to gives permission.
+
+@item
+In any section entitled ``Acknowledgments'' or ``Dedications'',
+preserve the section's title, and preserve in the section all the
+substance and tone of each of the contributor acknowledgments
+and/or dedications given therein.
+
+@item
+Preserve all the Invariant Sections of the Document,
+unaltered in their text and in their titles.  Section numbers
+or the equivalent are not considered part of the section titles.
+
+@item
+Delete any section entitled ``Endorsements''.  Such a section
+may not be included in the Modified Version.
+
+@item
+Do not retitle any existing section as ``Endorsements''
+or to conflict in title with any Invariant Section.
+@end enumerate
+
+If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version's license notice.
+These titles must be distinct from any other section titles.
+
+You may add a section entitled ``Endorsements'', provided it contains
+nothing but endorsements of your Modified Version by various
+parties---for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.
+
+You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.
+
+The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.
+
+@item
+COMBINING DOCUMENTS
+
+You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice.
+
+The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number.
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.
+
+In the combination, you must combine any sections entitled ``History''
+in the various original documents, forming one section entitled
+``History''; likewise combine any sections entitled ``Acknowledgments'',
+and any sections entitled ``Dedications''.  You must delete all sections
+entitled ``Endorsements.''
+
+@item
+COLLECTIONS OF DOCUMENTS
+
+You may make a collection consisting of the Document and other documents
+released under this License, and replace the individual copies of this
+License in the various documents with a single copy that is included in
+the collection, provided that you follow the rules of this License for
+verbatim copying of each of the documents in all other respects.
+
+You may extract a single document from such a collection, and distribute
+it individually under this License, provided you insert a copy of this
+License into the extracted document, and follow this License in all
+other respects regarding verbatim copying of that document.
+
+@item
+AGGREGATION WITH INDEPENDENT WORKS
+
+A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, does not as a whole count as a Modified Version
+of the Document, provided no compilation copyright is claimed for the
+compilation.  Such a compilation is called an ``aggregate'', and this
+License does not apply to the other self-contained works thus compiled
+with the Document, on account of their being thus compiled, if they
+are not themselves derivative works of the Document.
+
+If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one quarter
+of the entire aggregate, the Document's Cover Texts may be placed on
+covers that surround only the Document within the aggregate.
+Otherwise they must appear on covers around the whole aggregate.
+
+@item
+TRANSLATION
+
+Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4.
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License provided that you also include the
+original English version of this License.  In case of a disagreement
+between the translation and the original English version of this
+License, the original English version will prevail.
+
+@item
+TERMINATION
+
+You may not copy, modify, sublicense, or distribute the Document except
+as expressly provided for under this License.  Any other attempt to
+copy, modify, sublicense or distribute the Document is void, and will
+automatically terminate your rights under this License.  However,
+parties who have received copies, or rights, from you under this
+License will not have their licenses terminated so long as such
+parties remain in full compliance.
+
+@item
+FUTURE REVISIONS OF THIS LICENSE
+
+The Free Software Foundation may publish new, revised versions
+of the GNU Free Documentation License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.  See
+@uref{http://www.gnu.org/copyleft/}.
+
+Each version of the License is given a distinguishing version number.
+If the Document specifies that a particular numbered version of this
+License ``or any later version'' applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.
+@end enumerate
+
+@page
+@appendixsubsec ADDENDUM: How to use this License for your documents
+
+To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and
+license notices just after the title page:
+
+@smallexample
+@group
+  Copyright (C)  @var{year}  @var{your name}.
+  Permission is granted to copy, distribute and/or modify this document
+  under the terms of the GNU Free Documentation License, Version 1.1
+  or any later version published by the Free Software Foundation;
+  with the Invariant Sections being @var{list their titles}, with the
+  Front-Cover Texts being @var{list}, and with the Back-Cover Texts being @var{list}.
+  A copy of the license is included in the section entitled ``GNU
+  Free Documentation License''.
+@end group
+@end smallexample
+
+If you have no Invariant Sections, write ``with no Invariant Sections''
+instead of saying which ones are invariant.  If you have no
+Front-Cover Texts, write ``no Front-Cover Texts'' instead of
+``Front-Cover Texts being @var{list}''; likewise for Back-Cover Texts.
+
+If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License,
+to permit their use in free software.
+
+@c Local Variables:
+@c ispell-local-pdict: "ispell-dict"
+@c End:
+
+
+@bye

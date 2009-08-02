@@ -1,0 +1,86 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename symbol_after_block.info
+
+@node Top
+@top Symbol after block
+
+Html:
+
+@html
+In html
+@end html. On the line.
+
+@html
+In html
+@end html@@ On the line.
+
+Verbatim:
+
+@verbatim
+In verbatim
+@end verbatim;
+
+@verbatim
+In verbatim
+@end verbatim@@
+
+Table:
+
+@table @bullet
+@item a
+l--ine
+@end table+
+
+@table @bullet
+@item a
+l--ine
+@end table@@
+
+Itemize:
+
+@itemize @emph
+@item e--mph item
+@end itemize''
+
+@itemize @emph
+@item e--mph item
+@end itemize@@
+
+Multitable:
+
+@multitable @columnfractions 6 7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@end multitable^
+
+@multitable @columnfractions 6 7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@end multitable@{
+
+Flushleft:
+
+@flushleft
+flushleft
+@end flushleft!
+
+@flushleft
+flushleft
+@end flushleft@@
+
+Copying:
+
+*
+
+@@
+
+Copying
+Copying
+
+An html, all on one line:
+
+Hi, my name is @html
+Graham@end html.
+
+@bye

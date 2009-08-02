@@ -1,0 +1,18 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename note_in_strong.info
+
+@node Top
+@top Element
+
+One @strong{Note}. 
+
+3 @strong{Note a}. 
+
+
+
+2 @strong{note}. 
+
+4 @strong{note b}.
+
+@bye
