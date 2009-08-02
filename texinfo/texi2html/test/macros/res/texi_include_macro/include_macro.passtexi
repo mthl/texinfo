@@ -2,6 +2,9 @@ include_macro.texi(,2)
 include_macro.texi(,3) @node Top
 include_macro.texi(,4) @top test inclusion of a file defining a macro
 include_macro.texi(,5) 
+macro_included.texi(,1) @macro themacro
+macro_included.texi(,2) in themacro
+macro_included.texi(,3) @end macro
 include_macro.texi(,7) 
 include_macro.texi(,8) Call macro
 include_macro.texi(themacro,9) in themacro

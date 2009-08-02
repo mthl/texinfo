@@ -183,26 +183,75 @@ my-bib-macros.texi(,158)
 my-bib-macros.texi(,159) @c %% @mybibsetrefnode : Defines the name of the node to contain
 my-bib-macros.texi(,160) @c %% references.
 my-bib-macros.texi(,161) 
+my-bib-macros.texi(,162) @macro mybibsetrefnode{node}
+my-bib-macros.texi(,163) @set mybibrefnode \node\
+my-bib-macros.texi(,164) @end macro
 my-bib-macros.texi(,165) 
 my-bib-macros.texi(,166) @c %% @mybibnode{} : Macro to be placed at node containing references
 my-bib-macros.texi(,167) @c %% and calls to @mybibcite{}
 my-bib-macros.texi(,168) 
+my-bib-macros.texi(,169) @macro mybibnode{}
+my-bib-macros.texi(,170) @value{mybibrefnode}
+my-bib-macros.texi(,171) @end macro
 my-bib-macros.texi(,172) 
 my-bib-macros.texi(,173) @c %% @mybibusetable : Whether each @mybibitem will be put in a
 my-bib-macros.texi(,174) @c %% table.
 my-bib-macros.texi(,175) 
+my-bib-macros.texi(,176) @macro mybibusetable{node}
+my-bib-macros.texi(,177) @set mybibtable true
+my-bib-macros.texi(,178) @ifset mybiblist
+my-bib-macros.texi(,179) @clear mybiblist
+my-bib-macros.texi(,180) @end ifset
+my-bib-macros.texi(,181) @mybibsetrefnode{\node\}
+my-bib-macros.texi(,182) @end macro
 my-bib-macros.texi(,183) 
 my-bib-macros.texi(,184) @c %% @mybibuselist : Whether each @mybibitem will be put in a
 my-bib-macros.texi(,185) @c %% list.
 my-bib-macros.texi(,186) 
+my-bib-macros.texi(,187) @macro mybibuselist{node}
+my-bib-macros.texi(,188) @set mybiblist true
+my-bib-macros.texi(,189) @ifset mybibtable
+my-bib-macros.texi(,190) @clear mybibtable
+my-bib-macros.texi(,191) @end ifset
+my-bib-macros.texi(,192) @mybibsetrefnode{\node\}
+my-bib-macros.texi(,193) @end macro
 my-bib-macros.texi(,194) 
 my-bib-macros.texi(,195) 
 my-bib-macros.texi(,196) @c %% @mybibcite{REF} : Cites the cross reference REF.
 my-bib-macros.texi(,197) 
+my-bib-macros.texi(,198) @macro mybibcite{ref}
+my-bib-macros.texi(,199) @ifclear mybibrefnode
+my-bib-macros.texi(,200) @mybibmakeref{mybibsetrefnode was not used, \ref\}
+my-bib-macros.texi(,201) @end ifclear
+my-bib-macros.texi(,202) @c %**else if
+my-bib-macros.texi(,203) @ifset mybibrefnode
+my-bib-macros.texi(,204) @mybibmakeref{@mybibnode{}, \ref\}
+my-bib-macros.texi(,205) @end ifset
+my-bib-macros.texi(,206) 
+my-bib-macros.texi(,207) @end macro
 my-bib-macros.texi(,208) 
+my-bib-macros.texi(,209) @macro mybibmakeref{node, ref}
+my-bib-macros.texi(,210) (See item [\ref\] in @ref{\node\, \ref\}.)
+my-bib-macros.texi(,211) @end macro
 my-bib-macros.texi(,212) 
 my-bib-macros.texi(,213) @c %% @mybibcite{REF} : Creates a cross referenced citation REF.
 my-bib-macros.texi(,214) 
+my-bib-macros.texi(,215) @macro mybibitem{ref}
+my-bib-macros.texi(,216) @ifclear mybiblist
+my-bib-macros.texi(,217) @ifclear mybibtable
+my-bib-macros.texi(,218) @set mybiblist true
+my-bib-macros.texi(,219) @end ifclear
+my-bib-macros.texi(,220) @end ifclear
+my-bib-macros.texi(,221) @ifset mybiblist
+my-bib-macros.texi(,222) @item
+my-bib-macros.texi(,223) @anchor{\ref\}[\ref\]
+my-bib-macros.texi(,224) @end ifset
+my-bib-macros.texi(,225) @c %**else if
+my-bib-macros.texi(,226) @ifset mybibtable
+my-bib-macros.texi(,227) @item @anchor{\ref\}[\ref\]
+my-bib-macros.texi(,228) @end ifset
+my-bib-macros.texi(,229) 
+my-bib-macros.texi(,230) @end macro
 my-bib-macros.texi(,231) 
 my-bib-macros.texi(,232) @c %% my-bib-macros.texi ends here
 bib-example.texi(mybibuselist,27) @set mybiblist true

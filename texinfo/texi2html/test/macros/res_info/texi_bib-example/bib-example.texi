@@ -184,26 +184,75 @@
 @c %% @mybibsetrefnode : Defines the name of the node to contain
 @c %% references.
 
+@macro mybibsetrefnode{node}
+@set mybibrefnode \node\
+@end macro
 
 @c %% @mybibnode{} : Macro to be placed at node containing references
 @c %% and calls to @mybibcite{}
 
+@macro mybibnode{}
+@value{mybibrefnode}
+@end macro
 
 @c %% @mybibusetable : Whether each @mybibitem will be put in a
 @c %% table.
 
+@macro mybibusetable{node}
+@set mybibtable true
+@ifset mybiblist
+@clear mybiblist
+@end ifset
+@mybibsetrefnode{\node\}
+@end macro
 
 @c %% @mybibuselist : Whether each @mybibitem will be put in a
 @c %% list.
 
+@macro mybibuselist{node}
+@set mybiblist true
+@ifset mybibtable
+@clear mybibtable
+@end ifset
+@mybibsetrefnode{\node\}
+@end macro
 
 
 @c %% @mybibcite{REF} : Cites the cross reference REF.
 
+@macro mybibcite{ref}
+@ifclear mybibrefnode
+@mybibmakeref{mybibsetrefnode was not used, \ref\}
+@end ifclear
+@c %**else if
+@ifset mybibrefnode
+@mybibmakeref{@mybibnode{}, \ref\}
+@end ifset
 
+@end macro
+
+@macro mybibmakeref{node, ref}
+(See item [\ref\] in @ref{\node\, \ref\}.)
+@end macro
 
 @c %% @mybibcite{REF} : Creates a cross referenced citation REF.
 
+@macro mybibitem{ref}
+@ifclear mybiblist
+@ifclear mybibtable
+@set mybiblist true
+@end ifclear
+@end ifclear
+@ifset mybiblist
+@item
+@anchor{\ref\}[\ref\]
+@end ifset
+@c %**else if
+@ifset mybibtable
+@item @anchor{\ref\}[\ref\]
+@end ifset
+
+@end macro
 
 @c %% my-bib-macros.texi ends here
 @set mybiblist true

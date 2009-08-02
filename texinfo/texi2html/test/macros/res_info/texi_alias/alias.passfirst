@@ -2,22 +2,27 @@ alias.texi(,2) @setfilename alias.info
 alias.texi(,3) 
 alias.texi(,4) @top test alias
 alias.texi(,5) 
-alias.texi(,6) 
+alias.texi(,6) @alias myalias = code
 alias.texi(,7) 
 alias.texi(,11) 
-alias.texi(,15) before 
-alias.texi(mymacro,22)  after arg
+alias.texi(,12) @macro mymacro{arg}
+alias.texi(,13) before \arg\ after arg
+alias.texi(,14) @end macro
+alias.texi(,15) 
+alias.texi(mymacro,22) before @alias inmymacro = verb
 alias.texi(mymacro,22) 
-alias.texi(mymacro,22) Should be code: @code{code}
+alias.texi(mymacro,22)  after arg
 alias.texi(,23) 
-alias.texi(,24) Should be verb: @verb{!verb!}
+alias.texi(,24) Should be code: @code{code}
 alias.texi(,25) 
-alias.texi(,26) Should not be defined: @ignored{ignored}
+alias.texi(,26) Should be verb: @verb{!verb!}
 alias.texi(,27) 
-alias.texi(,28) Should not be defined: @ignoredinmymacro{ignoredinmymacro}
+alias.texi(,28) Should not be defined: @ignored{ignored}
 alias.texi(,29) 
-alias.texi(,30) @table @code
-alias.texi(,31) @item table item (code)
-alias.texi(,32) @end table
-alias.texi(,33) 
-alias.texi(,34) @bye
+alias.texi(,30) Should not be defined: @ignoredinmymacro{ignoredinmymacro}
+alias.texi(,31) 
+alias.texi(,32) @table @code
+alias.texi(,33) @item table item (code)
+alias.texi(,34) @end table
+alias.texi(,35) 
+alias.texi(,36) @bye

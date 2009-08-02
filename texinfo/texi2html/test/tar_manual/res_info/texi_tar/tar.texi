@@ -52,12 +52,53 @@
 
 @c Output marks for nodes needing revision, but not in PUBLISH rendition.
 
+@macro UNREVISED
+@ifclear PUBLISH
+@quotation
+@emph{(This message will disappear, once this node revised.)}
+@end quotation
+@end ifclear
+@end macro
 
 @c Output various FIXME information only in PROOF rendition.
 
+@macro FIXME{string}
+@allow-recursion
+@quote-arg
+@ifset PROOF
+@ifset PROOF_FOOTNOTED
+@footnote{@strong{FIXME:} \string\}
+@end ifset
+@ifclear PROOF_FOOTNOTED
+@cartouche
+@strong{<FIXME>} \string\ @strong{</>}
+@end cartouche
+@end ifclear
+@end ifset
 
+@end macro
 
+@macro FIXME-ref{string}
+@quote-arg
+@ifset PROOF
+@strong{<REF>} \string\ @strong{</>}
+@end ifset
+@end macro
 
+@macro FIXME-pxref{string}
+@quote-arg
+@ifset PROOF
+@strong{<PXREF>} \string\ @strong{</>}
+@end ifset
+
+@end macro
+
+@macro FIXME-xref{string}
+@quote-arg
+@ifset PROOF
+@strong{<XREF>} \string\ @strong{</>}
+@end ifset
+@end macro
 
 @c End of rendition.texi
 @c This is part of GNU tar manual.
@@ -65,8 +106,21 @@
 @c 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
 @c See file tar.texi for copying conditions.
 
+@macro GNUTAR
+@acronym{GNU} @command{tar}
+@end macro
 
+@macro xopindex{option,text}
+@opindex \option\@r{, \text\}
+@end macro
 
+@macro opsummary{option}
+@ifclear ANCHOR--\option\
+@set ANCHOR--\option\ 1
+@anchor{--\option\}
+@end ifclear
+@xopindex{\option\, summary}
+@end macro
 
 
 

@@ -10,7 +10,9 @@ result: @@emph@{\arg1\@} protected \\ -> \\arg1\\  @@emp@{\arg2\@}
 @@end macro
 @end example
 
-before macro after end macro
+before macro @macro macro1 { arg1 , arg2 }
+result: @emph{\arg1\} protected \\ -> \\arg1\\ @emph{\arg2\}
+@end macro after end macro
 
 Calling (normal)
 @example
@@ -65,6 +67,12 @@ and a last in another paragraph
 @@end macro
 @end example
 
+@macro macro2 { arg }
+we get \arg\ and another \arg\
+and another one on another line \arg\
+
+and a last in another paragraph
+@end macro
 
 Calling
 @example
@@ -107,6 +115,11 @@ and a last in another paragraph
 ==================================
 
 
+@macro ab
+a
+
+b
+@end macro
 
 now @@set comma ,  
 @set comma ,
@@ -168,6 +181,9 @@ result: @@emph@{\@@value@{bodyarg@}\  @}
 @@end macro
 @end example
 
+@macro testvaluebody { arg }
+result: @emph{\@value{bodyarg}\  }
+@end macro
 
 ==================================
 
@@ -189,6 +205,9 @@ result: @@emph@{\arg\@} the \the\ thearg \thearg\ with value \the@@value@{argume
 @@end macro
 @end example
 
+@macro testvalue { arg , the@value{argument} }
+result: @emph{\arg\} the \the\ thearg \thearg\ with value \the@value{argument}\
+@end macro
 
 ==================================
 
@@ -209,6 +228,9 @@ test1
 @@end macro
 @end example
 
+@macro test1
+test1
+@end macro
 
 Call with @{@}:
 

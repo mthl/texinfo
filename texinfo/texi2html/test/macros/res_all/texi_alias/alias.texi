@@ -3,10 +3,15 @@
 
 @top test alias
 
+@alias myalias = code
 
 
+@macro mymacro{arg}
+before \arg\ after arg
+@end macro
 
-before 
+before @alias inmymacro = verb
+
  after arg
 
 Should be code: @code{code}

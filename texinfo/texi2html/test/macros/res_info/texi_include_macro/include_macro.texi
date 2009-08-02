@@ -3,6 +3,9 @@
 @node Top
 @top test inclusion of a file defining a macro
 
+@macro themacro
+in themacro
+@end macro
 
 Call macro
 in themacro

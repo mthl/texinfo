@@ -3,7 +3,13 @@
 @setfilename quote-args.info
 @settitle Quote-args facility in macros
 
+@rmacro cat{a,b}
+\a\\b\
+@end rmacro
 
+@macro FIXME{a}
+@strong{FIXME: \a\}
+@end macro
 
 @node Top, , (dir), (dir)
 

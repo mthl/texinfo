@@ -13,6 +13,11 @@ macros.texi(,13) The file included:
 file.texi(,1) content of included file with arg2: \arg2\
 macros.texi(,15) File has been included.
 macros.texi(,16) 
+macros.texi(,17) @macro macro1 {arg1, arg2 }
+macros.texi(,18) result of a macro with \arg1\ and 
+macros.texi(,19) @include file.texi
+macros.texi(,20) \arg2\
+macros.texi(,21) @end macro
 macros.texi(,22) 
 macros.texi(macro1,25) Right. result of a macro with @samp{first arg
 macros.texi(macro1,25) 
@@ -20,6 +25,10 @@ macros.texi(macro1,25) no ?} and
 file.texi(,1) content of included file with arg2: \arg2\
 macros.texi(macro1,25) second arg
 macros.texi(,26) Now define macro2
+macros.texi(,27) @macro macro2 { arg }
+macros.texi(,28) With a doubles arg \arg\ and re \arg\
+macros.texi(,29) 
+macros.texi(,30) @end macro
 macros.texi(,31) Call macro2
 macros.texi(macro2,34) With a doubles arg a simple @code{
 macros.texi(macro2,34) arg}
@@ -31,6 +40,14 @@ macros.texi(,35) Call macro2 with 2 args
 macros.texi(macro2,36) With a doubles arg arg with comma , here  and re arg with comma , here 
 macros.texi(macro2,36) 
 macros.texi(,37) Define macro3
+macros.texi(,38) @macro macro3 { arg }
+macros.texi(,39) @example 
+macros.texi(,40) /arg/
+macros.texi(,41) 
+macros.texi(,42) 
+macros.texi(,43) /arg/
+macros.texi(,44) @end example
+macros.texi(,45) @end macro
 macros.texi(,46) Call macro3
 macros.texi(macro3,47) @example 
 macros.texi(macro3,47) /arg/

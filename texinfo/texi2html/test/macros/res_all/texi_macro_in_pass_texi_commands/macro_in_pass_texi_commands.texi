@@ -1,18 +1,40 @@
 \input texinfo @c -*-texinfo-*-
 
+@macro begin_file
+macro_in_pass
+@end macro
+@macro end_file_name {ext}
+texi_commands.\ext\
+@end macro
 
 @setfilename macro_in_passtexi_commands.info
 
+@macro definfoenclose_name 
+phi
+@end macro
 
+@macro latin1 
+ISO-8859-1
+@end macro
 
+@macro documentencoding_command
+@documentencoding
+@end macro
 
 @documentencoding ISO-8859-1
 
 
+@macro multiinclude
+macro_included.texi
+@include inc_file.texi
+@end macro
 
 @node Top
 @top top
 
+@macro themacro
+in themacro
+@end macro
 In included file.
 
 in themacro

@@ -1,5 +1,10 @@
 ifset_in_macro.texi(,2) 
 ifset_in_macro.texi(,3) @setfilename ifset_in_macro.info
+ifset_in_macro.texi(,4) @macro note {arg}
+ifset_in_macro.texi(,5) @ifset notes 
+ifset_in_macro.texi(,6) \arg\
+ifset_in_macro.texi(,7) @end ifset
+ifset_in_macro.texi(,8) @end macro
 ifset_in_macro.texi(,9) 
 ifset_in_macro.texi(,10) @node Top
 ifset_in_macro.texi(,11) 

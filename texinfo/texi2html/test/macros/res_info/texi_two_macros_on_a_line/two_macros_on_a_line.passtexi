@@ -4,7 +4,15 @@ two_macros_on_a_line.texi(,4)
 two_macros_on_a_line.texi(,5) @node Top
 two_macros_on_a_line.texi(,6) @top top
 two_macros_on_a_line.texi(,7) 
+two_macros_on_a_line.texi(,8) @macro mymacro
+two_macros_on_a_line.texi(,9) in mymacro
+two_macros_on_a_line.texi(,10) @end macro
 two_macros_on_a_line.texi(,11) 
+two_macros_on_a_line.texi(,12) @macro mymacro_with_args{arg}
+two_macros_on_a_line.texi(,13) in with args
+two_macros_on_a_line.texi(,14) now the arg \arg\
+two_macros_on_a_line.texi(,15) after
+two_macros_on_a_line.texi(,16) @end macro
 two_macros_on_a_line.texi(,17) 
 two_macros_on_a_line.texi(,18) 
 two_macros_on_a_line.texi(,19) @@mymacro@{@} @@mymacro@{@}

@@ -6,6 +6,9 @@ be-low
   may-be to-morow 
  }
 
+@macro text 
+atext
+@end macro
 
 @node Top
 @top top atext
@@ -14,7 +17,13 @@ be-low
 Text line followed by a comment on the same line and another below @c comment @text{}
 @c comment @text{}
 
+@macro pagesizes_arg
+200mm,150mm
+@end macro
 
+@macro afourpaper_macro 
+@afourpaper
+@end macro
 
 @pagesizes 200mm,150mm
 @afourpaper
@@ -22,21 +31,39 @@ Text line followed by a comment on the same line and another below @c comment @t
 @oddfooting some text ignored atext
 @everyheading on line following everyheading atext
 
+@macro need_arg
+0.1
+@end macro
 
 @need 0.1
 
+@macro raisesections_macro 
 @raisesections
+@end macro
+@raisesections
+@macro lowersections_macro 
+@lowersections
+@end macro
 @lowersections
 
 @c tex error: Use of \ doesn't match its definition.
 @@definfoenclose phoo,//,\\  
 //bar\\
 
+@macro definfoenclose_name 
+phi
+@end macro
 
 @c this is required
 
 :bar:
 
+@macro strong_macro 
+@strong
+@end macro
+@macro strong_name 
+strong
+@end macro
 
 @strong{very strong}
 
@@ -45,6 +72,9 @@ Text line followed by a comment on the same line and another below @c comment @t
 
 @kbd{something before kbdinputstyle}
 
+@macro kbdinputstyle_arg 
+code
+@end macro
 @kbdinputstyle code
 
 @kbd{truc}
@@ -53,6 +83,21 @@ Text line followed by a comment on the same line and another below @c comment @t
 @kbd{example}
 @end example
 
+@macro asis_arg 
+asis
+@end macro
+@macro zero 
+0
+@end macro
+@macro none_arg 
+none
+@end macro
+@macro four 
+4
+@end macro
+@macro six 
+6
+@end macro
 
 @paragraphindent asis
 @paragraphindent 0
@@ -61,18 +106,42 @@ Text line followed by a comment on the same line and another below @c comment @t
 @firstparagraphindent none
 @exampleindent 6
 
+@macro end_arg 
+end
+@end macro
+@macro separate_arg 
+separate 
+@end macro
 @footnotestyle end
 @footnotestyle separate 
 
+@macro latin1 
+ISO-8859-1
+@end macro
 @documentencoding ISO-8859-1
 
+@macro on_arg 
+on
+@end macro
+@macro off_arg 
+off
+@end macro
 @frenchspacing on
 @frenchspacing off
 
 @c accepts 10 or 11
+@macro ten 
+10
+@end macro
 @fonttextsize 10
 @c accept false or true
 @c makeinfo don't care about the arg and remove the remainiing of the line
+@macro false_arg 
+false
+@end macro
+@macro true_arg
+true
+@end macro
 @allowcodebreaks false
 @code{false aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
 
@@ -83,6 +152,15 @@ Text line followed by a comment on the same line and another below @c comment @t
 
 @finalout
 
+@macro page_macro 
+@page
+@end macro
+@macro noindent_macro 
+@noindent
+@end macro
+@macro refill_macro 
+@refill
+@end macro
 
 @@page @page @@noindent @noindent @@refill @refill something
 
@@ -96,6 +174,9 @@ After page on it's own line.
 
 @@page @page   @@noindent @noindent    @@refill @refill
 
+@macro contents_macro 
+@contents
+@end macro
 @contents
 
 @subheading special
@@ -105,12 +186,21 @@ Only valid between iftex:
 Unknown ???
 @c @@fillbreak  @fillbreak eol
 
+@macro exdent_macro 
+@exdent
+@end macro
 @exdent line after exdent
 
 And now sp:
 
+@macro two 
+2
+@end macro
 @sp 2
 
+@macro result_macro 
+@result
+@end macro
 
 @clickstyle @result
 
@@ -135,6 +225,9 @@ And now sp:
 @node bidule
 @chapter bidule
 
+@macro shortcontents_macro 
+@shortcontents
+@end macro
 @shortcontents
 
 @node bidule2

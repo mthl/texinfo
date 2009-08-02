@@ -2,7 +2,13 @@ quote-args.texi(,2) @smallbook
 quote-args.texi(,3) @setfilename quote-args.info
 quote-args.texi(,4) @settitle Quote-args facility in macros
 quote-args.texi(,5) 
+quote-args.texi(,6) @rmacro cat{a,b}
+quote-args.texi(,7) \a\\b\
+quote-args.texi(,8) @end rmacro
 quote-args.texi(,9) 
+quote-args.texi(,10) @macro FIXME{a}
+quote-args.texi(,11) @strong{FIXME: \a\}
+quote-args.texi(,12) @end macro
 quote-args.texi(,13) 
 quote-args.texi(,14) @node Top, , (dir), (dir)
 quote-args.texi(,15) 

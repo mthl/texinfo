@@ -1,0 +1,42 @@
+Expansion in Node Names
+***********************
+
+
+* Node 1  ::
+* @node `2'::
+* ``node'' with---tricks::
+
+See @node `2'.
+
+1 Chapter 1
+***********
+
+This is chapter 1.
+See @node `2'.
+
+
+* Section 1.1::
+
+Section 1.1
+-----------
+
+This is section 1.1.
+
+2 Node 2
+********
+
+This is chapter 2.
+See Node 1.  See Node 1.
+See Node with some tricks.
+
+``node'' with---tricks
+----------------------
+
+Another node.
+
+* Index:
+* entry for chapter 1: 1. Chapter 1.
+* entry for chapter 2: 2. Node 2.
+* entry for section 1.1: Section 1.1.
+* tricks: ``node'' with---tricks.
+

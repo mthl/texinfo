@@ -1,0 +1,57 @@
+value in index commands
+***********************
+
+
+
+
+documentlanguage 
+documentlanguage on its line
+line following documentlanguage
+
+
+definedx truc
+after
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pg
+* Index:
+* abc index entry: value in index commands.
+* defg index entry: value in index commands.
+* pindex codeidx: value in index commands.
+* truc kindex: value in index commands.
+
+ky
+
+truc
+* Index:
+* index truc: value in index commands.
+
+value truc
+* Index:
+* index truc: value in index commands.
+
+cp
+
+value cp
+
+defg
+
+abc
+
+fn
+* Index:
+* cindex entry: value in index commands.
+

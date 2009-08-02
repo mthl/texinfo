@@ -1,8 +1,35 @@
 glossary.texi(,2) 
 glossary.texi(,3) @setfilename glossary
 glossary.texi(,4) 
+glossary.texi(,5) @macro glossarytext
+glossary.texi(,6) @table @asis
+glossary.texi(,7) @end macro
 glossary.texi(,8) 
+glossary.texi(,9) @macro glossary
+glossary.texi(,10) @glossarytext
+glossary.texi(,11) @end table
+glossary.texi(,12) 
+glossary.texi(,13) @end macro
 glossary.texi(,14) 
+glossary.texi(,15) @macro gentry {id, name, text}
+glossary.texi(,16) @ifhtml
+glossary.texi(,17) @ref{\id\,\name\}
+glossary.texi(,18) @end ifhtml
+glossary.texi(,19) @ifnothtml
+glossary.texi(,20) \name\ (@pxref{\id\})
+glossary.texi(,21) @end ifnothtml
+glossary.texi(,22) @unmacro expandglossary
+glossary.texi(,23) @macro expandglossary{glossary}
+glossary.texi(,24) @unmacro glossarytext
+glossary.texi(,25) @macro glossarytext
+glossary.texi(,26) \\glossary\\
+glossary.texi(,27) @item \name\ @anchor{\id\}
+glossary.texi(,28) \text\
+glossary.texi(,29) @end macro
+glossary.texi(,30) @end macro
+glossary.texi(,31) @expandglossary {@glossarytext}
+glossary.texi(,32) 
+glossary.texi(,33) @end macro
 glossary.texi(,34) 
 glossary.texi(,35) @node Top
 glossary.texi(,36) @top Top
@@ -12,8 +39,36 @@ glossary.texi(,39) * glossary::
 glossary.texi(,40) @end menu
 glossary.texi(,41) 
 glossary.texi(gentry,42) The name1 (@pxref{id1})
+glossary.texi(gentry,42) @macro expandglossary{glossary}
+glossary.texi(gentry,42) @unmacro glossarytext
+glossary.texi(gentry,42) @macro glossarytext
+glossary.texi(gentry,42) \glossary\
+glossary.texi(gentry,42) @item name1 @anchor{id1}
+glossary.texi(gentry,42) text1, arg1 
+glossary.texi(gentry,42) @end macro
+glossary.texi(gentry,42) @end macro
+glossary.texi(gentry,42) @macro glossarytext
+glossary.texi(gentry,42) @table @asis
+glossary.texi(gentry,42) @item name1 @anchor{id1}
+glossary.texi(gentry,42) text1, arg1 
+glossary.texi(gentry,42) @end macro
 glossary.texi(gentry,42)  is used in many cases while
 glossary.texi(gentry,43) name2 (@pxref{id2})
+glossary.texi(gentry,43) @macro expandglossary{glossary}
+glossary.texi(gentry,43) @unmacro glossarytext
+glossary.texi(gentry,43) @macro glossarytext
+glossary.texi(gentry,43) \glossary\
+glossary.texi(gentry,43) @item name2 @anchor{id2}
+glossary.texi(gentry,43) text2
+glossary.texi(gentry,43) @end macro
+glossary.texi(gentry,43) @end macro
+glossary.texi(gentry,43) @macro glossarytext
+glossary.texi(gentry,43) @table @asis
+glossary.texi(gentry,43) @item name1 @anchor{id1}
+glossary.texi(gentry,43) text1, arg1 
+glossary.texi(gentry,43) @item name2 @anchor{id2}
+glossary.texi(gentry,43) text2
+glossary.texi(gentry,43) @end macro
 glossary.texi(gentry,43)  is quite specific
 glossary.texi(,44) 
 glossary.texi(,45) @node glossary

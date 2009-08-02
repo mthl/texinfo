@@ -1,6 +1,9 @@
 macro_call_in_ifset.texi(,2) @comment %**start of header
 macro_call_in_ifset.texi(,3) @setfilename macro_in_ifset.info
 macro_call_in_ifset.texi(,4) 
+macro_call_in_ifset.texi(,5) @macro macro1 {arg}
+macro_call_in_ifset.texi(,6) @end ifset
+macro_call_in_ifset.texi(,7) @end macro
 macro_call_in_ifset.texi(,8) 
 macro_call_in_ifset.texi(,9) @node Top
 macro_call_in_ifset.texi(,10) @top Top

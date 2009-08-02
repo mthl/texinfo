@@ -2,6 +2,9 @@
 @comment %**start of header
 @setfilename macro_in_ifset.info
 
+@macro macro1 {arg}
+@end ifset
+@end macro
 
 @node Top
 @top Top

@@ -14,6 +14,11 @@ The file included:
 content of included file with arg2: \arg2\
 File has been included.
 
+@macro macro1 {arg1, arg2 }
+result of a macro with \arg1\ and 
+@include file.texi
+\arg2\
+@end macro
 
 Right. result of a macro with @samp{first arg
 
@@ -21,6 +26,10 @@ no ?} and
 content of included file with arg2: \arg2\
 second arg
 Now define macro2
+@macro macro2 { arg }
+With a doubles arg \arg\ and re \arg\
+
+@end macro
 Call macro2
 With a doubles arg a simple @code{
 arg}
@@ -32,6 +41,14 @@ Call macro2 with 2 args
 With a doubles arg arg with comma , here  and re arg with comma , here 
 
 Define macro3
+@macro macro3 { arg }
+@example 
+/arg/
+
+
+/arg/
+@end example
+@end macro
 Call macro3
 @example 
 /arg/

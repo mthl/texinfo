@@ -1,5 +1,10 @@
 ifclear_in_macro.texi(,2) 
 ifclear_in_macro.texi(,3) @setfilename ifclear_in_macro.info
+ifclear_in_macro.texi(,4) @macro note {arg}
+ifclear_in_macro.texi(,5) @ifclear notes 
+ifclear_in_macro.texi(,6) \arg\
+ifclear_in_macro.texi(,7) @end ifclear
+ifclear_in_macro.texi(,8) @end macro
 ifclear_in_macro.texi(,9) 
 ifclear_in_macro.texi(,10) @node Top
 ifclear_in_macro.texi(,11) 

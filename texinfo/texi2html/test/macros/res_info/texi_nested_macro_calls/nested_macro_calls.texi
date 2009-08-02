@@ -4,7 +4,14 @@
 
 @node Top
 
+@macro machin{}
+(machin)
+@end macro
 
+@macro truc{}
+@machin
+
+@end macro
 
 Before (machin)
  after truc. 

@@ -3,9 +3,28 @@ imbricated_macros.texi(,3) @setfilename imbricated_macros
 imbricated_macros.texi(,4) 
 imbricated_macros.texi(,5) @node Top
 imbricated_macros.texi(,6) 
+imbricated_macros.texi(,7) @macro macro1
+imbricated_macros.texi(,8) a, @macro2
+imbricated_macros.texi(,9) @end macro
+imbricated_macros.texi(,10) @macro macro11
+imbricated_macros.texi(,11) a, macro2
+imbricated_macros.texi(,12) @end macro
 imbricated_macros.texi(,13) 
+imbricated_macros.texi(,14) @macro macro2{arg}
+imbricated_macros.texi(,15) coucou \arg\ after arg
+imbricated_macros.texi(,16) @end macro
 imbricated_macros.texi(,17) 
+imbricated_macros.texi(,18) @macro macro3{text, arg}
+imbricated_macros.texi(,19) \text\
+imbricated_macros.texi(,20) &&&& \arg\
+imbricated_macros.texi(,21) @end macro
 imbricated_macros.texi(,22) 
+imbricated_macros.texi(,23) @macro macro4 {}
+imbricated_macros.texi(,24) 1
+imbricated_macros.texi(,25) 2
+imbricated_macros.texi(,26) 3
+imbricated_macros.texi(,27) 4
+imbricated_macros.texi(,28) @end macro
 imbricated_macros.texi(,29) 
 imbricated_macros.texi(,30) @c the arguments are broken at , before macro expansion 
 imbricated_macros.texi(,31) @c @ protect the following @.
@@ -33,6 +52,9 @@ imbricated_macros.texi(macro3,61) 4
 imbricated_macros.texi(macro3,61) @verbatim
 imbricated_macros.texi(macro3,61) @macro2
 imbricated_macros.texi(macro3,61) @end verbatim
+imbricated_macros.texi(macro3,61) @macro macro7 {truc}
+imbricated_macros.texi(macro3,61) @emph{\truc\}
+imbricated_macros.texi(macro3,61) @end macro
 imbricated_macros.texi(macro3,61) macro7 defined
 imbricated_macros.texi(macro3,61) 1
 imbricated_macros.texi(macro3,61) 2

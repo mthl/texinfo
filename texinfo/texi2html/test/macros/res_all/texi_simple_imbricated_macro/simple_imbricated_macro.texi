@@ -1,0 +1,22 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename simple_imbricated_macro.info
+
+@node Top
+@top element
+
+@macro truc {}
+truc.
+@macro bidule {}
+bidule.
+@end macro
+@end macro
+
+truc.
+@macro bidule {}
+bidule.
+@end macro
+
+bidule.
+
+@bye

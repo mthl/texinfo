@@ -4,6 +4,8 @@
 
 @node Top
 
+@macro texnl{}
+@end macro
 
   This is a more low-level API.  The word break property is a property defined
   in Unicode Standard Annex #29, section ``Word Boundaries'', see
@@ -11,6 +13,8 @@
   for determining the word breaks in a string.
 
 
+@macro texnl2
+@end macro
 
   This is a more low-level API.  The word break property is a property defined
   in Unicode Standard Annex #29, section ``Word Boundaries'', see

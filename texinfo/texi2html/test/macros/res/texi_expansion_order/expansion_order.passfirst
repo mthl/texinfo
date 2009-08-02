@@ -1,4 +1,11 @@
+expansion_order.texi(,2) @macro bidule{arg}
+expansion_order.texi(,3) @machin
+expansion_order.texi(,4) @end macro
 expansion_order.texi(,5) 
+expansion_order.texi(,6) @macro machin
+expansion_order.texi(,7) \\arg\\
+expansion_order.texi(,8) 
+expansion_order.texi(,9) @end macro
 expansion_order.texi(,10) 
 expansion_order.texi(bidule,11) \arg\
 expansion_order.texi(bidule,11) 

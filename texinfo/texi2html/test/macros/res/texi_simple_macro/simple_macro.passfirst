@@ -9,7 +9,9 @@ simple_macro.texi(,9) result: @@emph@{\arg1\@} protected \\ -> \\arg1\\  @@emp@{
 simple_macro.texi(,10) @@end macro
 simple_macro.texi(,11) @end example
 simple_macro.texi(,12) 
-simple_macro.texi(,15) before macro after end macro
+simple_macro.texi(,13) before macro @macro macro1 { arg1 , arg2 }
+simple_macro.texi(,14) result: @emph{\arg1\} protected \\ -> \\arg1\\ @emph{\arg2\}
+simple_macro.texi(,15) @end macro after end macro
 simple_macro.texi(,16) 
 simple_macro.texi(,17) Calling (normal)
 simple_macro.texi(,18) @example
@@ -77,6 +79,12 @@ simple_macro.texi(,81) and a last in another paragraph
 simple_macro.texi(,82) @@end macro
 simple_macro.texi(,83) @end example
 simple_macro.texi(,84) 
+simple_macro.texi(,85) @macro macro2 { arg }
+simple_macro.texi(,86) we get \arg\ and another \arg\
+simple_macro.texi(,87) and another one on another line \arg\
+simple_macro.texi(,88) 
+simple_macro.texi(,89) and a last in another paragraph
+simple_macro.texi(,90) @end macro
 simple_macro.texi(,91) 
 simple_macro.texi(,92) Calling
 simple_macro.texi(,93) @example
@@ -119,6 +127,11 @@ simple_macro.texi(,123)
 simple_macro.texi(,124) ==================================
 simple_macro.texi(,125) 
 simple_macro.texi(,126) 
+simple_macro.texi(,127) @macro ab
+simple_macro.texi(,128) a
+simple_macro.texi(,129) 
+simple_macro.texi(,130) b
+simple_macro.texi(,131) @end macro
 simple_macro.texi(,132) 
 simple_macro.texi(,133) now @@set comma ,  
 simple_macro.texi(,134) @set comma ,
@@ -180,6 +193,9 @@ simple_macro.texi(,187) result: @@emph@{\@@value@{bodyarg@}\  @}
 simple_macro.texi(,188) @@end macro
 simple_macro.texi(,189) @end example
 simple_macro.texi(,190) 
+simple_macro.texi(,191) @macro testvaluebody { arg }
+simple_macro.texi(,192) result: @emph{\@value{bodyarg}\  }
+simple_macro.texi(,193) @end macro
 simple_macro.texi(,194) 
 simple_macro.texi(,195) ==================================
 simple_macro.texi(,196) 
@@ -201,6 +217,9 @@ simple_macro.texi(,211) result: @@emph@{\arg\@} the \the\ thearg \thearg\ with v
 simple_macro.texi(,212) @@end macro
 simple_macro.texi(,213) @end example
 simple_macro.texi(,214) 
+simple_macro.texi(,215) @macro testvalue { arg , the@value{argument} }
+simple_macro.texi(,216) result: @emph{\arg\} the \the\ thearg \thearg\ with value \the@value{argument}\
+simple_macro.texi(,217) @end macro
 simple_macro.texi(,218) 
 simple_macro.texi(,219) ==================================
 simple_macro.texi(,220) 
@@ -221,6 +240,9 @@ simple_macro.texi(,234) test1
 simple_macro.texi(,235) @@end macro
 simple_macro.texi(,236) @end example
 simple_macro.texi(,237) 
+simple_macro.texi(,238) @macro test1
+simple_macro.texi(,239) test1
+simple_macro.texi(,240) @end macro
 simple_macro.texi(,241) 
 simple_macro.texi(,242) Call with @{@}:
 simple_macro.texi(,243) 

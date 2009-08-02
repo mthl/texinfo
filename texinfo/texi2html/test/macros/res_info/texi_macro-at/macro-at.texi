@@ -2,7 +2,13 @@
 @setfilename macro-at.info
 @settitle AUTHORS -- who did what on GNU LilyPond
 
+@macro foo
+foo-expansion
+@end macro
 
+@macro bar
+bar-expansion
+@end macro
 
 @node Top, , AUTHORS -- who did what on GNU LilyPond, (dir)
 @top

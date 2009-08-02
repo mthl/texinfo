@@ -1,5 +1,12 @@
 
+@macro bidule{arg}
+@machin
+@end macro
 
+@macro machin
+\\arg\\
+
+@end macro
 
 \arg\
 

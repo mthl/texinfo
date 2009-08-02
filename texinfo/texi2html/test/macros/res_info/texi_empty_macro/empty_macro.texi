@@ -4,6 +4,8 @@
 @node Top
 @top test empty macro
 
+@macro foo
+@end macro
 
 
 

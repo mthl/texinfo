@@ -5,6 +5,9 @@ macro_zero.texi(,5) @top top macro/value is a zero
 macro_zero.texi(,6) 
 macro_zero.texi(,7) @set zero 0
 macro_zero.texi(,8) 
+macro_zero.texi(,9) @macro zero
+macro_zero.texi(,10) 0
+macro_zero.texi(,11) @end macro
 macro_zero.texi(,12) 
 macro_zero.texi(,13) Macro
 macro_zero.texi(zero,14) 0

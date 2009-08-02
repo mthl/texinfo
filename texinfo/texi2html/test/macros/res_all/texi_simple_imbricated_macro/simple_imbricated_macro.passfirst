@@ -1,0 +1,21 @@
+simple_imbricated_macro.texi(,2) 
+simple_imbricated_macro.texi(,3) @setfilename simple_imbricated_macro.info
+simple_imbricated_macro.texi(,4) 
+simple_imbricated_macro.texi(,5) @node Top
+simple_imbricated_macro.texi(,6) @top element
+simple_imbricated_macro.texi(,7) 
+simple_imbricated_macro.texi(,8) @macro truc {}
+simple_imbricated_macro.texi(,9) truc.
+simple_imbricated_macro.texi(,10) @macro bidule {}
+simple_imbricated_macro.texi(,11) bidule.
+simple_imbricated_macro.texi(,12) @end macro
+simple_imbricated_macro.texi(,13) @end macro
+simple_imbricated_macro.texi(,14) 
+simple_imbricated_macro.texi(truc,15) truc.
+simple_imbricated_macro.texi(truc,15) @macro bidule {}
+simple_imbricated_macro.texi(truc,15) bidule.
+simple_imbricated_macro.texi(truc,15) @end macro
+simple_imbricated_macro.texi(,16) 
+simple_imbricated_macro.texi(bidule,17) bidule.
+simple_imbricated_macro.texi(,18) 
+simple_imbricated_macro.texi(,19) @bye

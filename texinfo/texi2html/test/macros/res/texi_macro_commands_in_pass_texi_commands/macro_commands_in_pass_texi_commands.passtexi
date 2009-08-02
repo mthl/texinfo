@@ -1,17 +1,39 @@
 macro_commands_in_pass_texi_commands.texi(,2) 
+macro_commands_in_pass_texi_commands.texi(,3) @macro begin_file
+macro_commands_in_pass_texi_commands.texi(,4) macro_i--n_pass@@
+macro_commands_in_pass_texi_commands.texi(,5) @end macro
+macro_commands_in_pass_texi_commands.texi(,6) @macro end_file_name {ext}
+macro_commands_in_pass_texi_commands.texi(,7) texi_commands.\ext\
+macro_commands_in_pass_texi_commands.texi(,8) @end macro
 macro_commands_in_pass_texi_commands.texi(,9) 
 macro_commands_in_pass_texi_commands.texi(begin_file,10) @setfilename macro_i--n_pass@@texi_commands.info
 macro_commands_in_pass_texi_commands.texi(,11) 
+macro_commands_in_pass_texi_commands.texi(,12) @macro definfoenclose_name 
+macro_commands_in_pass_texi_commands.texi(,13) phi
+macro_commands_in_pass_texi_commands.texi(,14) @end macro
 macro_commands_in_pass_texi_commands.texi(,16) 
+macro_commands_in_pass_texi_commands.texi(,17) @macro latin1 
+macro_commands_in_pass_texi_commands.texi(,18) ISO-8859-1@@
+macro_commands_in_pass_texi_commands.texi(,19) @end macro
 macro_commands_in_pass_texi_commands.texi(,20) 
+macro_commands_in_pass_texi_commands.texi(,21) @macro documentencoding_command
+macro_commands_in_pass_texi_commands.texi(,22) @documentencoding
+macro_commands_in_pass_texi_commands.texi(,23) @end macro
 macro_commands_in_pass_texi_commands.texi(,24) 
 macro_commands_in_pass_texi_commands.texi(documentencoding_command,25) @documentencoding ISO-8859-1@@
 macro_commands_in_pass_texi_commands.texi(,26) 
 macro_commands_in_pass_texi_commands.texi(,27) 
+macro_commands_in_pass_texi_commands.texi(,28) @macro multiinclude
+macro_commands_in_pass_texi_commands.texi(,29) macro_included.texi
+macro_commands_in_pass_texi_commands.texi(,30) @include inc_@@f--ile.texi
+macro_commands_in_pass_texi_commands.texi(,31) @end macro
 macro_commands_in_pass_texi_commands.texi(,32) 
 macro_commands_in_pass_texi_commands.texi(,33) @node Top
 macro_commands_in_pass_texi_commands.texi(,34) @top top
 macro_commands_in_pass_texi_commands.texi(,35) 
+macro_included.texi(,1) @macro themacro
+macro_included.texi(,2) in themacro
+macro_included.texi(,3) @end macro
 inc_@f--ile.texi(,1) In included file.
 macro_commands_in_pass_texi_commands.texi(,37) 
 macro_commands_in_pass_texi_commands.texi(themacro,38) in themacro

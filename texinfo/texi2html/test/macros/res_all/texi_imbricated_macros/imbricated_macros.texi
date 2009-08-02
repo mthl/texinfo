@@ -4,9 +4,28 @@
 
 @node Top
 
+@macro macro1
+a, @macro2
+@end macro
+@macro macro11
+a, macro2
+@end macro
 
+@macro macro2{arg}
+coucou \arg\ after arg
+@end macro
 
+@macro macro3{text, arg}
+\text\
+&&&& \arg\
+@end macro
 
+@macro macro4 {}
+1
+2
+3
+4
+@end macro
 
 @c the arguments are broken at , before macro expansion 
 @c @ protect the following @.
@@ -34,6 +53,9 @@ a, macro2text for macro2
 @verbatim
 @macro2
 @end verbatim
+@macro macro7 {truc}
+@emph{\truc\}
+@end macro
 macro7 defined
 1
 2

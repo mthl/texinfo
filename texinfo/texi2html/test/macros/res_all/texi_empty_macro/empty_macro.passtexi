@@ -3,6 +3,8 @@ empty_macro.texi(,3)
 empty_macro.texi(,4) @node Top
 empty_macro.texi(,5) @top test empty macro
 empty_macro.texi(,6) 
+empty_macro.texi(,7) @macro foo
+empty_macro.texi(,8) @end macro
 empty_macro.texi(,9) 
 empty_macro.texi(foo,10) 
 empty_macro.texi(,11) 

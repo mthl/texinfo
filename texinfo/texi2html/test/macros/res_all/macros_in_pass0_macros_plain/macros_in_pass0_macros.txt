@@ -1,0 +1,57 @@
+macro in index commands
+***********************
+
+
+
+
+documentlanguage 
+documentlanguage on its line
+line following documentlanguage
+
+
+definedx truc
+after
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pg
+* Index:
+* abc index entry: macro in index commands.
+* defg index entry: macro in index commands.
+* pindex codeidx: macro in index commands.
+* truc kindex: macro in index commands.
+
+ky
+
+truc
+* Index:
+* index truc: macro in index commands.
+
+value truc
+* Index:
+* index truc: macro in index commands.
+
+cp
+
+value cp
+
+defg
+
+abc
+
+fn
+* Index:
+* cindex entry: macro in index commands.
+

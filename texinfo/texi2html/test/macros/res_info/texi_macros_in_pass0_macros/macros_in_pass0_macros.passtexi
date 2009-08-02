@@ -4,10 +4,25 @@ macros_in_pass0_macros.texi(,4)
 macros_in_pass0_macros.texi(,5) @node Top
 macros_in_pass0_macros.texi(,6) @top macro in index commands
 macros_in_pass0_macros.texi(,7) 
+macros_in_pass0_macros.texi(,8) @macro cp
+macros_in_pass0_macros.texi(,9) cp
+macros_in_pass0_macros.texi(,10) @end macro
+macros_in_pass0_macros.texi(,11) @macro fn 
+macros_in_pass0_macros.texi(,12) fn
+macros_in_pass0_macros.texi(,13) @end macro
+macros_in_pass0_macros.texi(,14) @macro syncodeindex_command 
+macros_in_pass0_macros.texi(,15) @syncodeindex
+macros_in_pass0_macros.texi(,16) @end macro
 macros_in_pass0_macros.texi(,17) 
 macros_in_pass0_macros.texi(cp,18) @syncodeindex macros_in_pass0_macros.texi(cp,18) cp macros_in_pass0_macros.texi(cp,18) fn
 macros_in_pass0_macros.texi(syncodeindex_command,19) @syncodeindex cp fn
 macros_in_pass0_macros.texi(,20) 
+macros_in_pass0_macros.texi(,21) @macro en 
+macros_in_pass0_macros.texi(,22) en
+macros_in_pass0_macros.texi(,23) @end macro
+macros_in_pass0_macros.texi(,24) @macro documentlanguage_command 
+macros_in_pass0_macros.texi(,25) @documentlanguage
+macros_in_pass0_macros.texi(,26) @end macro
 macros_in_pass0_macros.texi(,27) 
 macros_in_pass0_macros.texi(en,28) documentlanguage @documentlanguage  macros_in_pass0_macros.texi(en,28) en   
 macros_in_pass0_macros.texi(,29) 
@@ -15,17 +30,29 @@ macros_in_pass0_macros.texi(,30) documentlanguage on its line
 macros_in_pass0_macros.texi(documentlanguage_command,31) @documentlanguage  en  
 macros_in_pass0_macros.texi(,32) line following documentlanguage
 macros_in_pass0_macros.texi(,33) 
+macros_in_pass0_macros.texi(,34) @macro truc 
+macros_in_pass0_macros.texi(,35) truc
+macros_in_pass0_macros.texi(,36) @end macro
 macros_in_pass0_macros.texi(,37) 
 macros_in_pass0_macros.texi(,38) definedx truc
 macros_in_pass0_macros.texi(truc,39) @defindex macros_in_pass0_macros.texi(truc,39) truc
 macros_in_pass0_macros.texi(,40) after
 macros_in_pass0_macros.texi(,41) 
+macros_in_pass0_macros.texi(,42) @macro trucindex_command 
+macros_in_pass0_macros.texi(,43) @trucindex
+macros_in_pass0_macros.texi(,44) @end macro
 macros_in_pass0_macros.texi(,45) 
 macros_in_pass0_macros.texi(trucindex_command,46) @trucindex index truc
 macros_in_pass0_macros.texi(,47) 
+macros_in_pass0_macros.texi(,48) @macro codeidx 
+macros_in_pass0_macros.texi(,49) codeidx
+macros_in_pass0_macros.texi(,50) @end macro
 macros_in_pass0_macros.texi(,51) 
 macros_in_pass0_macros.texi(codeidx,52) @defcodeindex macros_in_pass0_macros.texi(codeidx,52) codeidx
 macros_in_pass0_macros.texi(,53) 
+macros_in_pass0_macros.texi(,54) @macro defcodeindex_entry 
+macros_in_pass0_macros.texi(,55) a @var{index entry} t@'e @^{@dotless{i}}
+macros_in_pass0_macros.texi(,56) @end macro
 macros_in_pass0_macros.texi(,57) 
 macros_in_pass0_macros.texi(defcodeindex_entry,58) @codeidxindex macros_in_pass0_macros.texi(defcodeindex_entry,58) a @var{index entry} t@'e @^{@dotless{i}}
 macros_in_pass0_macros.texi(,59) 

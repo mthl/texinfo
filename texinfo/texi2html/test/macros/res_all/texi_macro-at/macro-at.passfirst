@@ -1,7 +1,13 @@
 macro-at.texi(,2) @setfilename macro-at.info
 macro-at.texi(,3) @settitle AUTHORS -- who did what on GNU LilyPond
 macro-at.texi(,4) 
+macro-at.texi(,5) @macro foo
+macro-at.texi(,6) foo-expansion
+macro-at.texi(,7) @end macro
 macro-at.texi(,8) 
+macro-at.texi(,9) @macro bar
+macro-at.texi(,10) bar-expansion
+macro-at.texi(,11) @end macro
 macro-at.texi(,12) 
 macro-at.texi(,13) @node Top, , AUTHORS -- who did what on GNU LilyPond, (dir)
 macro-at.texi(,14) @top

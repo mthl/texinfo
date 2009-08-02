@@ -51,12 +51,53 @@ rendition.texi(,40)
 rendition.texi(,44) 
 rendition.texi(,45) @c Output marks for nodes needing revision, but not in PUBLISH rendition.
 rendition.texi(,46) 
+rendition.texi(,47) @macro UNREVISED
+rendition.texi(,48) @ifclear PUBLISH
+rendition.texi(,49) @quotation
+rendition.texi(,50) @emph{(This message will disappear, once this node revised.)}
+rendition.texi(,51) @end quotation
+rendition.texi(,52) @end ifclear
+rendition.texi(,53) @end macro
 rendition.texi(,54) 
 rendition.texi(,55) @c Output various FIXME information only in PROOF rendition.
 rendition.texi(,56) 
+rendition.texi(,57) @macro FIXME{string}
+rendition.texi(,58) @allow-recursion
+rendition.texi(,59) @quote-arg
+rendition.texi(,60) @ifset PROOF
+rendition.texi(,61) @ifset PROOF_FOOTNOTED
+rendition.texi(,62) @footnote{@strong{FIXME:} \string\}
+rendition.texi(,63) @end ifset
+rendition.texi(,64) @ifclear PROOF_FOOTNOTED
+rendition.texi(,65) @cartouche
+rendition.texi(,66) @strong{<FIXME>} \string\ @strong{</>}
+rendition.texi(,67) @end cartouche
+rendition.texi(,68) @end ifclear
+rendition.texi(,69) @end ifset
+rendition.texi(,70) 
+rendition.texi(,71) @end macro
 rendition.texi(,72) 
+rendition.texi(,73) @macro FIXME-ref{string}
+rendition.texi(,74) @quote-arg
+rendition.texi(,75) @ifset PROOF
+rendition.texi(,76) @strong{<REF>} \string\ @strong{</>}
+rendition.texi(,77) @end ifset
+rendition.texi(,78) @end macro
 rendition.texi(,79) 
+rendition.texi(,80) @macro FIXME-pxref{string}
+rendition.texi(,81) @quote-arg
+rendition.texi(,82) @ifset PROOF
+rendition.texi(,83) @strong{<PXREF>} \string\ @strong{</>}
+rendition.texi(,84) @end ifset
+rendition.texi(,85) 
+rendition.texi(,86) @end macro
 rendition.texi(,87) 
+rendition.texi(,88) @macro FIXME-xref{string}
+rendition.texi(,89) @quote-arg
+rendition.texi(,90) @ifset PROOF
+rendition.texi(,91) @strong{<XREF>} \string\ @strong{</>}
+rendition.texi(,92) @end ifset
+rendition.texi(,93) @end macro
 rendition.texi(,94) 
 rendition.texi(,95) @c End of rendition.texi
 value.texi(,1) @c This is part of GNU tar manual.
@@ -64,8 +105,21 @@ value.texi(,2) @c Copyright (C) 1992, 1994, 1995, 1996, 1997, 1999, 2000, 2001,
 value.texi(,3) @c 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
 value.texi(,4) @c See file tar.texi for copying conditions.
 value.texi(,5) 
+value.texi(,6) @macro GNUTAR
+value.texi(,7) @acronym{GNU} @command{tar}
+value.texi(,8) @end macro
 value.texi(,9) 
+value.texi(,10) @macro xopindex{option,text}
+value.texi(,11) @opindex \option\@r{, \text\}
+value.texi(,12) @end macro
 value.texi(,13) 
+value.texi(,14) @macro opsummary{option}
+value.texi(,15) @ifclear ANCHOR--\option\
+value.texi(,16) @set ANCHOR--\option\ 1
+value.texi(,17) @anchor{--\option\}
+value.texi(,18) @end ifclear
+value.texi(,19) @xopindex{\option\, summary}
+value.texi(,20) @end macro
 value.texi(,21) 
 value.texi(,22) 
 tar.texi(,22) 

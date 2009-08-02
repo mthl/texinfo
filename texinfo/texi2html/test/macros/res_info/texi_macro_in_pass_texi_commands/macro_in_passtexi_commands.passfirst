@@ -1,17 +1,39 @@
 macro_in_pass_texi_commands.texi(,2) 
+macro_in_pass_texi_commands.texi(,3) @macro begin_file
+macro_in_pass_texi_commands.texi(,4) macro_in_pass
+macro_in_pass_texi_commands.texi(,5) @end macro
+macro_in_pass_texi_commands.texi(,6) @macro end_file_name {ext}
+macro_in_pass_texi_commands.texi(,7) texi_commands.\ext\
+macro_in_pass_texi_commands.texi(,8) @end macro
 macro_in_pass_texi_commands.texi(,9) 
 macro_in_pass_texi_commands.texi(begin_file,10) @setfilename macro_in_passtexi_commands.info
 macro_in_pass_texi_commands.texi(,11) 
+macro_in_pass_texi_commands.texi(,12) @macro definfoenclose_name 
+macro_in_pass_texi_commands.texi(,13) phi
+macro_in_pass_texi_commands.texi(,14) @end macro
 macro_in_pass_texi_commands.texi(,16) 
+macro_in_pass_texi_commands.texi(,17) @macro latin1 
+macro_in_pass_texi_commands.texi(,18) ISO-8859-1
+macro_in_pass_texi_commands.texi(,19) @end macro
 macro_in_pass_texi_commands.texi(,20) 
+macro_in_pass_texi_commands.texi(,21) @macro documentencoding_command
+macro_in_pass_texi_commands.texi(,22) @documentencoding
+macro_in_pass_texi_commands.texi(,23) @end macro
 macro_in_pass_texi_commands.texi(,24) 
 macro_in_pass_texi_commands.texi(documentencoding_command,25) @documentencoding ISO-8859-1
 macro_in_pass_texi_commands.texi(,26) 
 macro_in_pass_texi_commands.texi(,27) 
+macro_in_pass_texi_commands.texi(,28) @macro multiinclude
+macro_in_pass_texi_commands.texi(,29) macro_included.texi
+macro_in_pass_texi_commands.texi(,30) @include inc_file.texi
+macro_in_pass_texi_commands.texi(,31) @end macro
 macro_in_pass_texi_commands.texi(,32) 
 macro_in_pass_texi_commands.texi(,33) @node Top
 macro_in_pass_texi_commands.texi(,34) @top top
 macro_in_pass_texi_commands.texi(,35) 
+macro_included.texi(,1) @macro themacro
+macro_included.texi(,2) in themacro
+macro_included.texi(,3) @end macro
 inc_file.texi(,1) In included file.
 macro_in_pass_texi_commands.texi(,37) 
 macro_in_pass_texi_commands.texi(themacro,38) in themacro

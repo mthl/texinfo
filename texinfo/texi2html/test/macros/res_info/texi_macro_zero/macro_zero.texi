@@ -6,6 +6,9 @@
 
 @set zero 0
 
+@macro zero
+0
+@end macro
 
 Macro
 0

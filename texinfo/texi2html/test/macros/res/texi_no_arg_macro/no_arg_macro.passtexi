@@ -3,6 +3,8 @@ no_arg_macro.texi(,3) @setfilename no_arg_macro.info
 no_arg_macro.texi(,4) 
 no_arg_macro.texi(,5) @node Top
 no_arg_macro.texi(,6) 
+no_arg_macro.texi(,7) @macro texnl{}
+no_arg_macro.texi(,8) @end macro
 no_arg_macro.texi(,9) 
 no_arg_macro.texi(,10)   This is a more low-level API.  The word break property is a property defined
 no_arg_macro.texi(,11)   in Unicode Standard Annex #29, section ``Word Boundaries'', see
@@ -10,6 +12,8 @@ no_arg_macro.texi(texnl,12)   @url{http://www.unicode.org/reports/tr29/#Word_Bou
 no_arg_macro.texi(,13)   for determining the word breaks in a string.
 no_arg_macro.texi(,14) 
 no_arg_macro.texi(,15) 
+no_arg_macro.texi(,16) @macro texnl2
+no_arg_macro.texi(,17) @end macro
 no_arg_macro.texi(,18) 
 no_arg_macro.texi(,19)   This is a more low-level API.  The word break property is a property defined
 no_arg_macro.texi(,20)   in Unicode Standard Annex #29, section ``Word Boundaries'', see
