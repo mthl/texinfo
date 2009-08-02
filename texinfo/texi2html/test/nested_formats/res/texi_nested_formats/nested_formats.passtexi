@@ -21,6 +21,166 @@ nested_formats.texi(,67)
 nested_formats.texi(,68) @node Top
 nested_formats.texi(,69) @top Test nested group
 nested_formats.texi(,70) 
+nested_formats.texi(,71) @macro mymacro
+nested_formats.texi(,72) in macro
+nested_formats.texi(,73) 
+nested_formats.texi(,74) @value{format_command_begin}
+nested_formats.texi(,75) @end @value{format_command}
+nested_formats.texi(,76) 
+nested_formats.texi(,77) @value{format_command_begin}
+nested_formats.texi(,78) in format_command
+nested_formats.texi(,79) @end @value{format_command}
+nested_formats.texi(,80) 
+nested_formats.texi(,81) Something
+nested_formats.texi(,82) @value{format_command_begin}
+nested_formats.texi(,83) @end @value{format_command}
+nested_formats.texi(,84) 
+nested_formats.texi(,85) Something
+nested_formats.texi(,86) @value{format_command_begin}
+nested_formats.texi(,87) in group
+nested_formats.texi(,88) @end @value{format_command}
+nested_formats.texi(,89) 
+nested_formats.texi(,90) Something2
+nested_formats.texi(,91) @value{format_command_begin}
+nested_formats.texi(,92) @end @value{format_command}
+nested_formats.texi(,93) After
+nested_formats.texi(,94) 
+nested_formats.texi(,95) Something2
+nested_formats.texi(,96) @value{format_command_begin}
+nested_formats.texi(,97) in group
+nested_formats.texi(,98) @end @value{format_command}
+nested_formats.texi(,99) After
+nested_formats.texi(,100) 
+nested_formats.texi(,101) 
+nested_formats.texi(,102) @sp 2
+nested_formats.texi(,103) @value{format_command_begin}
+nested_formats.texi(,104) in group
+nested_formats.texi(,105) @end @value{format_command}
+nested_formats.texi(,106) 
+nested_formats.texi(,107) @value{format_command_begin}
+nested_formats.texi(,108) @quotation 
+nested_formats.texi(,109) A quot---ation
+nested_formats.texi(,110) @end quotation
+nested_formats.texi(,111) @end @value{format_command}
+nested_formats.texi(,112) 
+nested_formats.texi(,113) @subheading subheading
+nested_formats.texi(,114) 
+nested_formats.texi(,115) @verbatim
+nested_formats.texi(,116) in verbatim
+nested_formats.texi(,117) @end verbatim
+nested_formats.texi(,118) 
+nested_formats.texi(,119) @xml
+nested_formats.texi(,120) <para> xml para </xml>
+nested_formats.texi(,121) @end xml
+nested_formats.texi(,122) 
+nested_formats.texi(,123) @html
+nested_formats.texi(,124) html
+nested_formats.texi(,125) @end html
+nested_formats.texi(,126) 
+nested_formats.texi(,127) @tex
+nested_formats.texi(,128) $$\\partial_t \\eta (t) = g(\\eta(t),\\varphi(t))$$
+nested_formats.texi(,129) @end tex
+nested_formats.texi(,130) 
+nested_formats.texi(,131) @itemize @bullet{}
+nested_formats.texi(,132) @item i--tem 1
+nested_formats.texi(,133) @item i--tem 2
+nested_formats.texi(,134) @end itemize
+nested_formats.texi(,135) 
+nested_formats.texi(,136) @enumerate
+nested_formats.texi(,137) @item e--numerate
+nested_formats.texi(,138) @end enumerate
+nested_formats.texi(,139) 
+nested_formats.texi(,140) @multitable @columnfractions 0.6 0.7
+nested_formats.texi(,141) @headitem mu--ltitable headitem @tab another tab
+nested_formats.texi(,142) @item mu--ltitable item @tab multitable tab
+nested_formats.texi(,143) @item mu--ltitable item 2 @tab multitable tab 2
+nested_formats.texi(,144) @item lone mu--ltitable item
+nested_formats.texi(,145) @end multitable
+nested_formats.texi(,146) 
+nested_formats.texi(,147) @example
+nested_formats.texi(,148) e--xample  some
+nested_formats.texi(,149)    text
+nested_formats.texi(,150) @end example
+nested_formats.texi(,151) 
+nested_formats.texi(,152) @smallexample
+nested_formats.texi(,153) s--mallexample
+nested_formats.texi(,154) @end smallexample
+nested_formats.texi(,155) 
+nested_formats.texi(,156) @deffn c--ategory d--effn_name a--rguments...
+nested_formats.texi(,157) d--effn
+nested_formats.texi(,158) @end deffn
+nested_formats.texi(,159) 
+nested_formats.texi(,160) @table @bullet
+nested_formats.texi(,161) @item a
+nested_formats.texi(,162) l--ine
+nested_formats.texi(,163) @end table
+nested_formats.texi(,164) 
+nested_formats.texi(,165) @cartouche
+nested_formats.texi(,166) c--artouche
+nested_formats.texi(,167) @end cartouche
+nested_formats.texi(,168) 
+nested_formats.texi(,169) @flushleft
+nested_formats.texi(,170) f--lushleft
+nested_formats.texi(,171) @end flushleft
+nested_formats.texi(,172) 
+nested_formats.texi(,173) @flushright
+nested_formats.texi(,174) f--lushright
+nested_formats.texi(,175) @end flushright
+nested_formats.texi(,176) 
+nested_formats.texi(,177) @center ce--ntered line
+nested_formats.texi(,178) 
+nested_formats.texi(,179) @value{format_command_begin}
+nested_formats.texi(,180) in macro, a format_command containing some other commands.
+nested_formats.texi(,181) @itemize @bullet{}
+nested_formats.texi(,182) @item i--tem 1
+nested_formats.texi(,183) @item i--tem 2
+nested_formats.texi(,184) @end itemize
+nested_formats.texi(,185) 
+nested_formats.texi(,186) @enumerate
+nested_formats.texi(,187) @item e--numerate
+nested_formats.texi(,188) @end enumerate
+nested_formats.texi(,189) 
+nested_formats.texi(,190) @multitable @columnfractions 0.6 0.7
+nested_formats.texi(,191) @headitem mu--ltitable headitem @tab another tab
+nested_formats.texi(,192) @item mu--ltitable item @tab multitable tab
+nested_formats.texi(,193) @item mu--ltitable item 2 @tab multitable tab 2
+nested_formats.texi(,194) @item lone mu--ltitable item
+nested_formats.texi(,195) @end multitable
+nested_formats.texi(,196) 
+nested_formats.texi(,197) @example
+nested_formats.texi(,198) e--xample  some
+nested_formats.texi(,199)    text
+nested_formats.texi(,200) @end example
+nested_formats.texi(,201) 
+nested_formats.texi(,202) @smallexample
+nested_formats.texi(,203) s--mallexample
+nested_formats.texi(,204) @end smallexample
+nested_formats.texi(,205) 
+nested_formats.texi(,206) @deffn c--ategory d--effn_name a--rguments...
+nested_formats.texi(,207) d--effn
+nested_formats.texi(,208) @end deffn
+nested_formats.texi(,209) 
+nested_formats.texi(,210) @table @bullet
+nested_formats.texi(,211) @item a
+nested_formats.texi(,212) l--ine
+nested_formats.texi(,213) @end table
+nested_formats.texi(,214) 
+nested_formats.texi(,215) @cartouche
+nested_formats.texi(,216) c--artouche
+nested_formats.texi(,217) @end cartouche
+nested_formats.texi(,218) 
+nested_formats.texi(,219) @flushleft
+nested_formats.texi(,220) f--lushleft
+nested_formats.texi(,221) @end flushleft
+nested_formats.texi(,222) 
+nested_formats.texi(,223) @flushright
+nested_formats.texi(,224) f--lushright
+nested_formats.texi(,225) @end flushright
+nested_formats.texi(,226) 
+nested_formats.texi(,227) @center ce--ntered line
+nested_formats.texi(,228) @end @value{format_command}
+nested_formats.texi(,229) 
+nested_formats.texi(,230) @end macro
 nested_formats.texi(,231) 
 nested_formats.texi(,232) Call macro
 nested_formats.texi(mymacro,233) in macro

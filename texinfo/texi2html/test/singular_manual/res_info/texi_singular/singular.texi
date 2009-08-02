@@ -5048,7 +5048,7 @@ defines the version number for the library. It is displayed when the
 library is loaded.
 @item @strong{Example:}
 @smallexample
-version="$I@i{}@comment
+version="$ I@i{}@comment
 @comment !! Do not erase the @comment at the end of the previous line !!
 @comment !! It prevents cvs to substitute the id string                !!
 d: sample.lib,v 1.2 1998/05/07 singular Exp $";
@@ -5056,7 +5056,7 @@ version="some version string";
 @end smallexample
 @item @strong{Note:}
 It is common practice to simply define the version string to be
-@code{"$I}@comment
+@code{"$ I}@comment
 @comment !! Do not erase the @comment at the end of the previous line !!
 @comment !! It prevents cvs to substitute the id string                !!
 @code{d:$"} and let a version control system expand it.
@@ -52681,6 +52681,9 @@ See also:
 @majorheading NEWS in SINGULAR 2-0-4
 
 
+@macro nref{what}
+@ref{\what\}
+@end macro
 
 The current version 2-0-4 is an update to the 
 release series version 2-0. 

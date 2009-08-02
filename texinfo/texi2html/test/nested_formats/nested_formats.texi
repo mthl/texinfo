@@ -230,36 +230,36 @@ f--lushright
 @end macro
 
 Call macro
-@mymacro
+@mymacro{}
 
 Call macro in format_command
 @value{format_command_begin}
-@mymacro
+@mymacro{}
 @end @value{format_command}
 
 Call macro in itemize at the beginning of an item
 @itemize a--n itemize line
-@item @mymacro
+@item @mymacro{}
 @item item 1
 Call macro in itemize
-@mymacro
+@mymacro{}
 @item item 2
 Call macro in itemize in format_command
 @value{format_command_begin}
-@mymacro
+@mymacro{}
 @end @value{format_command}
 @end itemize
 
 Call macro in enumerate at the beginning of enumerate
 @enumerate
-@item @mymacro
+@item @mymacro{}
 @item enumerate
 Call macro in enumerate
-@mymacro
+@mymacro{}
 @item enumerate2
 Call macro in enumerate in format_command
 @value{format_command_begin}
-@mymacro
+@mymacro{}
 @end @value{format_command}
 @end enumerate
 
@@ -267,29 +267,29 @@ Call macro in enumerate in format_command
 @headitem mu--ltitable headitem @tab another tab
 @item multitable item @tab multitable tab. And after Call macro in mutitable
 after item
-@item @mymacro
+@item @mymacro{}
 @item multitable item 2 @tab multitable tab 2
 Call macro in mutitable
-@mymacro
+@mymacro{}
 @item lone multitable item
 Call macro in mutitable in format_command
 @value{format_command_begin}
-@mymacro
+@mymacro{}
 @end @value{format_command}
 @end multitable
 
 call macro at the example beginning
 @example
-@mymacro
+@mymacro{}
 example  some
    text
 call macro in example
-@mymacro
+@mymacro{}
 
 more example text
 call macro in example in format_command
 @value{format_command_begin}
-@mymacro
+@mymacro{}
 @end @value{format_command}
 @end example
 
@@ -300,60 +300,60 @@ s--mallexample
 @deffn c--ategory d--effn_name a--rguments...
 deffn
 call macro in deffn 
-@mymacro
+@mymacro{}
 deffn continues
 call macro in deffn in format_command
 @value{format_command_begin}
-@mymacro
+@mymacro{}
 @end @value{format_command}
 @end deffn
 
 call macro in deffn at the beginning
 @deffn c--ategory2 d--effn_name2 a--rguments2...
-@mymacro
+@mymacro{}
 @end deffn
 
 @table @bullet
 @item a line
 call macro in table
-@mymacro
+@mymacro{}
 call macro in table at an item beginning
 @item a line
-@mymacro
+@mymacro{}
 @item a line2
 call macro in table in format_command
 @value{format_command_begin}
-@mymacro
+@mymacro{}
 @end @value{format_command}
 @end table
 
 call macro at cartouche begin
 @cartouche
-@mymacro
+@mymacro{}
 cartouche
 call macro in cartouche
-@mymacro
+@mymacro{}
 call macro in cartouche in format_command
 @value{format_command_begin}
-@mymacro
+@mymacro{}
 @end @value{format_command}
 @end cartouche
 
 @flushleft
 call macro in flushleft
-@mymacro
+@mymacro{}
 flushleft
 call macro in flushleft in format_command
 @value{format_command_begin}
-@mymacro
+@mymacro{}
 @end @value{format_command}
 @end flushleft
 
 @flushright
-@mymacro
+@mymacro{}
 flushright
 @value{format_command_begin}
-@mymacro
+@mymacro{}
 @end @value{format_command}
 @end flushright
 

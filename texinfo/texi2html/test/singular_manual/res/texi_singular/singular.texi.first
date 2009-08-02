@@ -38,29 +38,6 @@
 
 
 @c --------------------- tex titlepage --------------------
-@titlepage
-@sp 2
-@center @titlefont{Singular}
-@sp 2
-@center A Computer Algebra System for Polynomial Computations
-@sp 5
-@center @titlefont{Manual}
-@center Version 2-0-4
-@sp 2
-@center Singular is created and its development is directed and coordinated by
-@center G.-M. Greuel, G. Pfister, and H. Sch@"onemann
-@sp 2
-@center with contributions by
-@center O. Bachmann, W. Decker, S. Endra@ss{}, I. Farran, A. Fr@"uhbis-Kr@"uger, C. Gorzel,
-@center H. Grassmann, A. Heydtmann, D. Hillebrand, T. Keilen, U. Klein, K. Kr@"uger, M. Lamm,
-@center C. Lossen, B. Martin, M. Me@ss{}ollen, W. Neumann, T. N@"u@ss{}ler, W. Pohl, T. Siebert,
-@center J. Schmidt, M. Schulze, R. Stobbe, M. Wenk, T. Wichmann
-@sp 2
-@author Fachbereich Mathematik
-@author Zentrum f@"ur Computeralgebra
-@author Universit@"at Kaiserslautern
-@author D-67653 Kaiserslautern
-@end titlepage
 
 @c print short table of contents in tex right after titlepage
 @c Detailed ToC is printed at the end of the manual

@@ -2820,11 +2820,11 @@ Purpose:
 defines the version number for the library. It is displayed when the
 library is loaded.
 Example:
-version="$Id$";
+version="$ Id: sample.lib,v 1.2 1998/05/07 singular Exp $";
 version="some version string";
 Note:
 It is common practice to simply define the version string to be
-"$Id$" and let a version control system expand it.
+"$ Id:$" and let a version control system expand it.
 
 Syntax:
 category = string_constant ;

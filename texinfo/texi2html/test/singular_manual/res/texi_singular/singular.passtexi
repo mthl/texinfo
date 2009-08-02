@@ -4956,7 +4956,7 @@ general.tex(,3870) defines the version number for the library. It is displayed w
 general.tex(,3871) library is loaded.
 general.tex(,3872) @item @strong{Example:}
 general.tex(,3873) @smallexample
-general.tex(,3874) version="$I@i{}@comment
+general.tex(,3874) version="$ I@i{}@comment
 general.tex(,3875) @comment !! Do not erase the @comment at the end of the previous line !!
 general.tex(,3876) @comment !! It prevents cvs to substitute the id string                !!
 general.tex(,3877) d: sample.lib,v 1.2 1998/05/07 singular Exp $";
@@ -4964,7 +4964,7 @@ general.tex(,3878) version="some version string";
 general.tex(,3879) @end smallexample
 general.tex(,3880) @item @strong{Note:}
 general.tex(,3881) It is common practice to simply define the version string to be
-general.tex(,3882) @code{"$I}@comment
+general.tex(,3882) @code{"$ I}@comment
 general.tex(,3883) @comment !! Do not erase the @comment at the end of the previous line !!
 general.tex(,3884) @comment !! It prevents cvs to substitute the id string                !!
 general.tex(,3885) @code{d:$"} and let a version control system expand it.
@@ -50198,6 +50198,9 @@ NEWS.texi(,8)
 NEWS.texi(,9) @majorheading NEWS in SINGULAR 2-0-4
 NEWS.texi(,10) 
 NEWS.texi(,16) 
+NEWS.texi(,18) @macro nref{what}
+NEWS.texi(,19) @ref{\what\}
+NEWS.texi(,20) @end macro
 NEWS.texi(,22) 
 NEWS.texi(,23) The current version 2-0-4 is an update to the 
 NEWS.texi(,24) release series version 2-0. 

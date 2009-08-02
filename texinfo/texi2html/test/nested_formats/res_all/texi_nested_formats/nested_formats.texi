@@ -22,6 +22,166 @@
 @node Top
 @top Test nested group
 
+@macro mymacro
+in macro
+
+@value{format_command_begin}
+@end @value{format_command}
+
+@value{format_command_begin}
+in format_command
+@end @value{format_command}
+
+Something
+@value{format_command_begin}
+@end @value{format_command}
+
+Something
+@value{format_command_begin}
+in group
+@end @value{format_command}
+
+Something2
+@value{format_command_begin}
+@end @value{format_command}
+After
+
+Something2
+@value{format_command_begin}
+in group
+@end @value{format_command}
+After
+
+
+@sp 2
+@value{format_command_begin}
+in group
+@end @value{format_command}
+
+@value{format_command_begin}
+@quotation 
+A quot---ation
+@end quotation
+@end @value{format_command}
+
+@subheading subheading
+
+@verbatim
+in verbatim
+@end verbatim
+
+@xml
+<para> xml para </xml>
+@end xml
+
+@html
+html
+@end html
+
+@tex
+$$\\partial_t \\eta (t) = g(\\eta(t),\\varphi(t))$$
+@end tex
+
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+
+@value{format_command_begin}
+in macro, a format_command containing some other commands.
+@itemize @bullet{}
+@item i--tem 1
+@item i--tem 2
+@end itemize
+
+@enumerate
+@item e--numerate
+@end enumerate
+
+@multitable @columnfractions 0.6 0.7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@item mu--ltitable item 2 @tab multitable tab 2
+@item lone mu--ltitable item
+@end multitable
+
+@example
+e--xample  some
+   text
+@end example
+
+@smallexample
+s--mallexample
+@end smallexample
+
+@deffn c--ategory d--effn_name a--rguments...
+d--effn
+@end deffn
+
+@table @bullet
+@item a
+l--ine
+@end table
+
+@cartouche
+c--artouche
+@end cartouche
+
+@flushleft
+f--lushleft
+@end flushleft
+
+@flushright
+f--lushright
+@end flushright
+
+@center ce--ntered line
+@end @value{format_command}
+
+@end macro
 
 Call macro
 in macro
