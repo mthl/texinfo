@@ -7,11 +7,6 @@ recursive_synindex
 
 
 
-
-
-
-
-
 bbb
 * Index:
 * a entry: recursive_synindex.
