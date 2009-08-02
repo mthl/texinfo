@@ -19,6 +19,727 @@ formatting_regions.texi(,20)
 formatting_regions.texi(,22) @node constructs
 formatting_regions.texi(,23) @chapter constructs
 formatting_regions.texi(,24) 
+coverage_macro.texi(,1) @macro mymacro
+coverage_macro.texi(,2) 
+coverage_macro.texi(,3) <
+coverage_macro.texi(,4) >
+coverage_macro.texi(,5) "
+coverage_macro.texi(,6) &
+coverage_macro.texi(,7) '
+coverage_macro.texi(,8) `
+coverage_macro.texi(,9) 
+coverage_macro.texi(,10) ``simple-double--three---four----''@*
+coverage_macro.texi(,11) code: @code{``simple-double--three---four----''} @*
+coverage_macro.texi(,12) asis: @asis{``simple-double--three---four----''} @*
+coverage_macro.texi(,13) strong: @strong{``simple-double--three---four----''} @*
+coverage_macro.texi(,14) kbd: @kbd{``simple-double--three---four----''} @*
+coverage_macro.texi(,15) 
+coverage_macro.texi(,16) `@w{}`simple-double-@w{}-three---four----'@w{}'@*
+coverage_macro.texi(,17) 
+coverage_macro.texi(,18) @cindex --option
+coverage_macro.texi(,19) @cindex ``
+coverage_macro.texi(,20) @findex ``
+coverage_macro.texi(,21) @findex --foption
+coverage_macro.texi(,22) 
+coverage_macro.texi(,23) @@"u @"u 
+coverage_macro.texi(,24) @@"@{U@} @"{U} 
+coverage_macro.texi(,25) @@~n @~n
+coverage_macro.texi(,26) @@^a @^a
+coverage_macro.texi(,27) @@'e @'e
+coverage_macro.texi(,28) @@=o @=o
+coverage_macro.texi(,29) @@`i @`i
+coverage_macro.texi(,30) @@'@{e@} @'{e}
+coverage_macro.texi(,31) @@'@{@@dotless@{i@}@} @'{@dotless{i}} 
+coverage_macro.texi(,32) @@dotless@{i@} @dotless{i}
+coverage_macro.texi(,33) @@dotless@{j@} @dotless{j}
+coverage_macro.texi(,34) @@`@{@@=E@} @`{@=E} 
+coverage_macro.texi(,35) @@l@{@} @l{}
+coverage_macro.texi(,36) @@,@{@@'C@} @,{@'C}
+coverage_macro.texi(,37) @@,c @,c
+coverage_macro.texi(,38) @@,c@@"u @,c@"u @*
+coverage_macro.texi(,39) 
+coverage_macro.texi(,40) @@* @*
+coverage_macro.texi(,41) @@ followed by a space
+coverage_macro.texi(,42) @ 
+coverage_macro.texi(,43) @@ followed by a tab
+coverage_macro.texi(,44) @	
+coverage_macro.texi(,45) @@ followed by a new line
+coverage_macro.texi(,46) @
+coverage_macro.texi(,47) @code{@@-} @-
+coverage_macro.texi(,48) @code{@@|} @|
+coverage_macro.texi(,49) @code{@@:} @:
+coverage_macro.texi(,50) @code{@@!} @!
+coverage_macro.texi(,51) @code{@@?} @?
+coverage_macro.texi(,52) @code{@@.} @.
+coverage_macro.texi(,53) @code{@@@@} @@
+coverage_macro.texi(,54) @code{@@@}} @}
+coverage_macro.texi(,55) @code{@@@{} @{
+coverage_macro.texi(,56) @code{@@/} @/
+coverage_macro.texi(,57) 
+coverage_macro.texi(,58) foo vs.@: bar. 
+coverage_macro.texi(,59) colon :@:And something else.
+coverage_macro.texi(,60) semi colon ;@:.
+coverage_macro.texi(,61) And ? ?@:.
+coverage_macro.texi(,62) Now ! !@:@@
+coverage_macro.texi(,63) but , ,@:
+coverage_macro.texi(,64) 
+coverage_macro.texi(,65) @@TeX @TeX{}
+coverage_macro.texi(,66) @@LaTeX @LaTeX{}
+coverage_macro.texi(,67) @@bullet @bullet{}
+coverage_macro.texi(,68) @@copyright @copyright{}
+coverage_macro.texi(,69) @@dots @dots{}
+coverage_macro.texi(,70) @@enddots @enddots{}
+coverage_macro.texi(,71) @@equiv @equiv{}
+coverage_macro.texi(,72) @@error @error{}
+coverage_macro.texi(,73) @@expansion @expansion{}
+coverage_macro.texi(,74) @@minus @minus{}
+coverage_macro.texi(,75) @@point @point{}
+coverage_macro.texi(,76) @@print @print{}
+coverage_macro.texi(,77) @@result @result{}
+coverage_macro.texi(,78) @@today @today{}
+coverage_macro.texi(,79) @@aa @aa{}
+coverage_macro.texi(,80) @@AA @AA{}
+coverage_macro.texi(,81) @@ae @ae{}
+coverage_macro.texi(,82) @@oe @oe{}
+coverage_macro.texi(,83) @@AE @AE{}
+coverage_macro.texi(,84) @@OE @OE{}
+coverage_macro.texi(,85) @@o @o{}
+coverage_macro.texi(,86) @@O @O{}
+coverage_macro.texi(,87) @@ss @ss{}
+coverage_macro.texi(,88) @@l @l{}
+coverage_macro.texi(,89) @@L @L{}
+coverage_macro.texi(,90) @@DH @DH{}
+coverage_macro.texi(,91) @@TH @TH{}
+coverage_macro.texi(,92) @@dh @dh{}
+coverage_macro.texi(,93) @@th @th{}
+coverage_macro.texi(,94) @@exclamdown @exclamdown{}
+coverage_macro.texi(,95) @@questiondown @questiondown{}
+coverage_macro.texi(,96) @@pounds @pounds{}
+coverage_macro.texi(,97) @@registeredsymbol @registeredsymbol{}
+coverage_macro.texi(,98) @@ordf @ordf{}
+coverage_macro.texi(,99) @@ordm @ordm{}
+coverage_macro.texi(,100) @@comma @comma{}
+coverage_macro.texi(,101) @@quotedblleft @quotedblleft{}
+coverage_macro.texi(,102) @@quotedblright @quotedblright{}
+coverage_macro.texi(,103) @@quoteleft @quoteleft{}
+coverage_macro.texi(,104) @@quoteright @quoteright{}
+coverage_macro.texi(,105) @@quotedblbase @quotedblbase{}
+coverage_macro.texi(,106) @@quotesinglbase @quotesinglbase{}
+coverage_macro.texi(,107) @@guillemetleft @guillemetleft{}
+coverage_macro.texi(,108) @@guillemetright @guillemetright{}
+coverage_macro.texi(,109) @@guillemotleft @guillemotleft{}
+coverage_macro.texi(,110) @@guillemotright @guillemotright{}
+coverage_macro.texi(,111) @@guilsinglleft @guilsinglleft{}
+coverage_macro.texi(,112) @@guilsinglright @guilsinglright{}
+coverage_macro.texi(,113) @@textdegree @textdegree{}
+coverage_macro.texi(,114) @@euro @euro{}
+coverage_macro.texi(,115) @@arrow @arrow{}
+coverage_macro.texi(,116) @@leq @leq{}
+coverage_macro.texi(,117) @@geq @geq{}
+coverage_macro.texi(,118) 
+coverage_macro.texi(,119) @code{@@acronym@{--a,an accronym@}} @acronym{--a,an accronym}
+coverage_macro.texi(,120) @code{@@acronym@{--a@}} @acronym{--a}
+coverage_macro.texi(,121) @code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude Autonome @}} @abbr{@'E--. @comma{}A., @'Etude Autonome }
+coverage_macro.texi(,122) @code{@@abbr@{@@'E--. @@comma@{@}A.@}} @abbr{@'E--. @comma{}A.}
+coverage_macro.texi(,123) @code{@@asis@{--a@}} @asis{--a}
+coverage_macro.texi(,124) @code{@@b@{--a@}} @b{--a}
+coverage_macro.texi(,125) @code{@@cite@{--a@}} @cite{--a}
+coverage_macro.texi(,126) @code{@@code@{--a@}} @code{--a}
+coverage_macro.texi(,127) @code{@@command@{--a@}} @command{--a}
+coverage_macro.texi(,128) @code{@@ctrl@{--a@}} @ctrl{--a}
+coverage_macro.texi(,129) @code{@@dfn@{--a@}} @dfn{--a}
+coverage_macro.texi(,130) @code{@@dmn@{--a@}} @dmn{--a}
+coverage_macro.texi(,131) @code{@@email@{--a,--b@}} @email{--a,--b}
+coverage_macro.texi(,132) @code{@@email@{,--b@}} @email{,--b}
+coverage_macro.texi(,133) @code{@@email@{--a@}} @email{--a}
+coverage_macro.texi(,134) @code{@@emph@{--a@}} @emph{--a}
+coverage_macro.texi(,135) @code{@@env@{--a@}} @env{--a}
+coverage_macro.texi(,136) @code{@@file@{--a@}} @file{--a}
+coverage_macro.texi(,137) @code{@@i@{--a@}} @i{--a}
+coverage_macro.texi(,138) @code{@@kbd@{--a@}} @kbd{--a}
+coverage_macro.texi(,139) @code{@@key@{--a@}} @key{--a}
+coverage_macro.texi(,140) @code{@@math@{--a @{\\frac@{1@}@{2@}@} @@minus@{@}@}} @math{--a {\\frac{1}{2}} @minus{}}
+coverage_macro.texi(,141) @code{@@option@{--a@}} @option{--a}
+coverage_macro.texi(,142) @code{@@r@{--a@}} @r{--a}
+coverage_macro.texi(,143) @code{@@samp@{--a@}} @samp{--a}
+coverage_macro.texi(,144) @code{@@sc@{--a@}} @sc{--a}
+coverage_macro.texi(,145) @code{@@strong@{--a@}} @strong{--a}
+coverage_macro.texi(,146) @code{@@t@{--a@}} @t{--a}
+coverage_macro.texi(,147) @code{@@sansserif@{--a@}} @sansserif{--a}
+coverage_macro.texi(,148) @code{@@titlefont@{--a@}} @titlefont{--a}
+coverage_macro.texi(,149) @code{@@indicateurl@{--a@}} @indicateurl{--a}
+coverage_macro.texi(,150) @code{@@uref@{--a,--b@}} @uref{--a,--b}
+coverage_macro.texi(,151) @code{@@uref@{--a@}} @uref{--a}
+coverage_macro.texi(,152) @code{@@uref@{,--b@}} @uref{,--b}
+coverage_macro.texi(,153) @code{@@uref@{--a,--b,--c@}} @uref{--a,--b,--c}
+coverage_macro.texi(,154) @code{@@uref@{,--b,--c@}} @uref{,--b,--c}
+coverage_macro.texi(,155) @code{@@uref@{--a,,--c@}} @uref{--a,,--c}
+coverage_macro.texi(,156) @code{@@uref@{,,--c@}} @uref{,,--c}
+coverage_macro.texi(,157) @code{@@url@{--a,--b@}} @url{--a,--b}
+coverage_macro.texi(,158) @code{@@url@{--a,@}} @url{--a,}
+coverage_macro.texi(,159) @code{@@url@{,--b@}} @url{,--b}
+coverage_macro.texi(,160) @code{@@var@{--a@}} @var{--a}
+coverage_macro.texi(,161) @code{@@verb@{:--a:@}} @verb{:--a:}
+coverage_macro.texi(,162) @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
+coverage_macro.texi(,163) @code{@@w@{@}} @w{}
+coverage_macro.texi(,164) @code{@@H@{a@}} @H{a}
+coverage_macro.texi(,165) @code{@@H@{--a@}} @H{--a}
+coverage_macro.texi(,166) @code{@@dotaccent@{a@}} @dotaccent{a}
+coverage_macro.texi(,167) @code{@@dotaccent@{--a@}} @dotaccent{--a}
+coverage_macro.texi(,168) @code{@@ringaccent@{a@}} @ringaccent{a}
+coverage_macro.texi(,169) @code{@@ringaccent@{--a@}} @ringaccent{--a}
+coverage_macro.texi(,170) @code{@@tieaccent@{a@}} @tieaccent{a}
+coverage_macro.texi(,171) @code{@@tieaccent@{--a@}} @tieaccent{--a}
+coverage_macro.texi(,172) @code{@@u@{a@}} @u{a}
+coverage_macro.texi(,173) @code{@@u@{--a@}} @u{--a}
+coverage_macro.texi(,174) @code{@@ubaraccent@{a@}} @ubaraccent{a}
+coverage_macro.texi(,175) @code{@@ubaraccent@{--a@}} @ubaraccent{--a}
+coverage_macro.texi(,176) @code{@@udotaccent@{a@}} @udotaccent{a}
+coverage_macro.texi(,177) @code{@@udotaccent@{--a@}} @udotaccent{--a}
+coverage_macro.texi(,178) @code{@@v@{a@}} @v{a}
+coverage_macro.texi(,179) @code{@@v@{--a@}} @v{--a}
+coverage_macro.texi(,180) @code{@@,@{c@}} @,{c}
+coverage_macro.texi(,181) @code{@@,@{--c@}} @,{--c}
+coverage_macro.texi(,182) @ifset texi2html
+coverage_macro.texi(,183) @code{@@ogonek@{a@}} @ogonek{a}
+coverage_macro.texi(,184) @code{@@ogonek@{--a@}} @ogonek{--a}
+coverage_macro.texi(,185) @end ifset
+coverage_macro.texi(,186) @code{@@footnote@{in footnote@}} @footnote{in footnote}
+coverage_macro.texi(,187) @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
+coverage_macro.texi(,188) 
+coverage_macro.texi(,189) @code{@@image@{f--ile@}} @image{f--ile}
+coverage_macro.texi(,190) @code{@@image@{f--ile,l--i@}} @image{f--ile,l--i}
+coverage_macro.texi(,191) @code{@@image@{f--ile,,l--e@}} @image{f--ile,,l--e}
+coverage_macro.texi(,192) @code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
+coverage_macro.texi(,193) @code{@@image@{f--ile,,,,e-d-xt@}} @image{f--ile,,,,e--xt}
+coverage_macro.texi(,194) @code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
+coverage_macro.texi(,195) @code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
+coverage_macro.texi(,196) @code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
+coverage_macro.texi(,197) 
+coverage_macro.texi(,198) @sp 2
+coverage_macro.texi(,199) 
+coverage_macro.texi(,200) @code{@@clicksequence@{click @@click@{@} A@}} @clicksequence{click @click{} A}
+coverage_macro.texi(,201) @clickstyle @result
+coverage_macro.texi(,202) After clickstyle @result{}
+coverage_macro.texi(,203) @code{@@clicksequence@{click @@click@{@} A@}} @clicksequence{click @click{} A}
+coverage_macro.texi(,204) @clickstyle @arrow
+coverage_macro.texi(,205) 
+coverage_macro.texi(,206) @quotation 
+coverage_macro.texi(,207) A quot---ation
+coverage_macro.texi(,208) @end quotation
+coverage_macro.texi(,209) 
+coverage_macro.texi(,210) @quotation Note
+coverage_macro.texi(,211) A Note
+coverage_macro.texi(,212) @end quotation
+coverage_macro.texi(,213) 
+coverage_macro.texi(,214) @quotation note
+coverage_macro.texi(,215) A note
+coverage_macro.texi(,216) @end quotation
+coverage_macro.texi(,217) 
+coverage_macro.texi(,218) @quotation Caution
+coverage_macro.texi(,219) Caution
+coverage_macro.texi(,220) @end quotation
+coverage_macro.texi(,221) 
+coverage_macro.texi(,222) @quotation Important
+coverage_macro.texi(,223) Important
+coverage_macro.texi(,224) @end quotation
+coverage_macro.texi(,225) 
+coverage_macro.texi(,226) @quotation Tip
+coverage_macro.texi(,227) a Tip
+coverage_macro.texi(,228) @end quotation
+coverage_macro.texi(,229) 
+coverage_macro.texi(,230) @quotation Warning
+coverage_macro.texi(,231) a Warning.
+coverage_macro.texi(,232) @end quotation
+coverage_macro.texi(,233) 
+coverage_macro.texi(,234) @quotation something @'e @TeX{}
+coverage_macro.texi(,235) The something @'e @TeX{} is here.
+coverage_macro.texi(,236) @end quotation
+coverage_macro.texi(,237) 
+coverage_macro.texi(,238) @quotation @@ at the end of line @
+coverage_macro.texi(,239) A @@ at the end of the @@quotation line.
+coverage_macro.texi(,240) @end quotation
+coverage_macro.texi(,241) 
+coverage_macro.texi(,242) @quotation something, other thing
+coverage_macro.texi(,243) something, other thing
+coverage_macro.texi(,244) @end quotation
+coverage_macro.texi(,245) 
+coverage_macro.texi(,246) @quotation Note, the note
+coverage_macro.texi(,247) Note, the note
+coverage_macro.texi(,248) @end quotation
+coverage_macro.texi(,249) 
+coverage_macro.texi(,250) @quotation
+coverage_macro.texi(,251) @end quotation
+coverage_macro.texi(,252) 
+coverage_macro.texi(,253) @quotation Empty
+coverage_macro.texi(,254) @end quotation
+coverage_macro.texi(,255) 
+coverage_macro.texi(,256) @quotation @asis{}
+coverage_macro.texi(,257) @end quotation
+coverage_macro.texi(,258) 
+coverage_macro.texi(,259) @quotation @*
+coverage_macro.texi(,260) @end quotation
+coverage_macro.texi(,261) 
+coverage_macro.texi(,262) @ifset texi2html
+coverage_macro.texi(,263) @smallquotation 
+coverage_macro.texi(,264) A small quot---ation
+coverage_macro.texi(,265) @end smallquotation
+coverage_macro.texi(,266) 
+coverage_macro.texi(,267) @smallquotation Note
+coverage_macro.texi(,268) A small Note
+coverage_macro.texi(,269) @end smallquotation
+coverage_macro.texi(,270) 
+coverage_macro.texi(,271) @smallquotation something, other thing
+coverage_macro.texi(,272) something, other thing
+coverage_macro.texi(,273) @end smallquotation
+coverage_macro.texi(,274) @end ifset
+coverage_macro.texi(,275) 
+coverage_macro.texi(,276) @itemize
+coverage_macro.texi(,277) @item i--temize
+coverage_macro.texi(,278) @end itemize
+coverage_macro.texi(,279) 
+coverage_macro.texi(,280) @itemize +
+coverage_macro.texi(,281) @item i--tem +
+coverage_macro.texi(,282) @end itemize
+coverage_macro.texi(,283) 
+coverage_macro.texi(,284) @itemize @bullet
+coverage_macro.texi(,285) @item b--ullet
+coverage_macro.texi(,286) @end itemize
+coverage_macro.texi(,287) 
+coverage_macro.texi(,288) @itemize @minus
+coverage_macro.texi(,289) @item minu--s
+coverage_macro.texi(,290) @end itemize
+coverage_macro.texi(,291) 
+coverage_macro.texi(,292) @itemize @emph
+coverage_macro.texi(,293) @item e--mph item
+coverage_macro.texi(,294) @end itemize
+coverage_macro.texi(,295) 
+coverage_macro.texi(,296) @itemize @emph{after emph}
+coverage_macro.texi(,297) @c comment in itemize
+coverage_macro.texi(,298) @item e--mph item
+coverage_macro.texi(,299) @end itemize
+coverage_macro.texi(,300) 
+coverage_macro.texi(,301) @itemize @bullet{} a--n itemize line
+coverage_macro.texi(,302) @cindex index entry within itemize
+coverage_macro.texi(,303) @item i--tem 1
+coverage_macro.texi(,304) @item i--tem 2
+coverage_macro.texi(,305) @end itemize
+coverage_macro.texi(,306) 
+coverage_macro.texi(,307) @enumerate
+coverage_macro.texi(,308) @item e--numerate
+coverage_macro.texi(,309) @end enumerate
+coverage_macro.texi(,310) 
+coverage_macro.texi(,311) @multitable @columnfractions 6 7
+coverage_macro.texi(,312) @headitem mu--ltitable headitem @tab another tab
+coverage_macro.texi(,313) @item mu--ltitable item @tab multitable tab
+coverage_macro.texi(,314) @c comment in multitable
+coverage_macro.texi(,315) @item mu--ltitable item 2 @tab multitable tab 2
+coverage_macro.texi(,316) @cindex index entry within multitable
+coverage_macro.texi(,317) @item lone mu--ltitable item
+coverage_macro.texi(,318) @end multitable
+coverage_macro.texi(,319) 
+coverage_macro.texi(,320) @multitable {truc} {bidule}
+coverage_macro.texi(,321) @item truc @tab bidule
+coverage_macro.texi(,322) @end multitable
+coverage_macro.texi(,323) 
+coverage_macro.texi(,324) @example
+coverage_macro.texi(,325) e--xample  some
+coverage_macro.texi(,326)    text
+coverage_macro.texi(,327) @end example
+coverage_macro.texi(,328) 
+coverage_macro.texi(,329) @smallexample
+coverage_macro.texi(,330) s--mallexample
+coverage_macro.texi(,331) @end smallexample
+coverage_macro.texi(,332) 
+coverage_macro.texi(,333) @display 
+coverage_macro.texi(,334) d--isplay
+coverage_macro.texi(,335) @end display
+coverage_macro.texi(,336) 
+coverage_macro.texi(,337) @smalldisplay
+coverage_macro.texi(,338) s--malldisplay
+coverage_macro.texi(,339) @end smalldisplay
+coverage_macro.texi(,340) 
+coverage_macro.texi(,341) @lisp
+coverage_macro.texi(,342) l--isp
+coverage_macro.texi(,343) @end lisp
+coverage_macro.texi(,344) 
+coverage_macro.texi(,345) @smalllisp
+coverage_macro.texi(,346) s--malllisp
+coverage_macro.texi(,347) @end smalllisp
+coverage_macro.texi(,348) 
+coverage_macro.texi(,349) @format
+coverage_macro.texi(,350) f--ormat
+coverage_macro.texi(,351) @end format
+coverage_macro.texi(,352) 
+coverage_macro.texi(,353) @smallformat
+coverage_macro.texi(,354) s--mallformat
+coverage_macro.texi(,355) @end smallformat
+coverage_macro.texi(,356) 
+coverage_macro.texi(,357) @deffn c--ategory d--effn_name a--rguments...
+coverage_macro.texi(,358) d--effn
+coverage_macro.texi(,359) @end deffn
+coverage_macro.texi(,360) 
+coverage_macro.texi(,361) @deffn cate--gory de--ffn_name ar--guments @
+coverage_macro.texi(,362)    more args @* even more so
+coverage_macro.texi(,363) def--fn
+coverage_macro.texi(,364) @end deffn
+coverage_macro.texi(,365)  
+coverage_macro.texi(,366) @deffn fset @var{i} a g
+coverage_macro.texi(,367) @cindex index entry within deffn
+coverage_macro.texi(,368) @deffnx {cmde} truc {}
+coverage_macro.texi(,369) @deffnx Command {log trap} {}
+coverage_macro.texi(,370) @deffnx Command { log trap1} {}  
+coverage_macro.texi(,371) @deffnx Command {log trap2 } {}
+coverage_macro.texi(,372) @deffnx cmde @b{id ule} truc
+coverage_macro.texi(,373) @deffnx cmde2 @b{id @samp{i} ule} truc
+coverage_macro.texi(,374) @deffnx @b{id @samp{i} ule}    
+coverage_macro.texi(,375) @deffnx 
+coverage_macro.texi(,376) @deffnx aaa
+coverage_macro.texi(,377) @deffnx {} {}
+coverage_macro.texi(,378) @deffnx{}
+coverage_macro.texi(,379) @deffnx{} machin
+coverage_macro.texi(,380) @deffnx{} {bidule machin}
+coverage_macro.texi(,381) @deffnx{truc} machin
+coverage_macro.texi(,382) @deffnx{truc} { }
+coverage_macro.texi(,383) @deffnx{truc} followed by a comment
+coverage_macro.texi(,384) @c comment
+coverage_macro.texi(,385) @deffnx{truc}
+coverage_macro.texi(,386) @deffnx{} {}
+coverage_macro.texi(,387) @deffnx {truc} a b c d e @b{f g} {h i}
+coverage_macro.texi(,388) @deffnx {truc} deffnx before end deffn
+coverage_macro.texi(,389) @end deffn
+coverage_macro.texi(,390) 
+coverage_macro.texi(,391) @deffn empty deffn
+coverage_macro.texi(,392) @end deffn
+coverage_macro.texi(,393) 
+coverage_macro.texi(,394) @deffn empty deffn with deffnx
+coverage_macro.texi(,395) @c comment between deffn and deffnx
+coverage_macro.texi(,396) @deffnx empty deffnx
+coverage_macro.texi(,397) @end deffn
+coverage_macro.texi(,398) 
+coverage_macro.texi(,399) @deffn fset @var{i} a g
+coverage_macro.texi(,400) @deffnx {cmde} truc {}
+coverage_macro.texi(,401) @c comment
+coverage_macro.texi(,402) text in def item for second def item
+coverage_macro.texi(,403) @end deffn
+coverage_macro.texi(,404) 
+coverage_macro.texi(,405) @defvr c--ategory d--efvr_name
+coverage_macro.texi(,406) d--efvr
+coverage_macro.texi(,407) @end defvr
+coverage_macro.texi(,408) 
+coverage_macro.texi(,409) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+coverage_macro.texi(,410) d--eftypefn
+coverage_macro.texi(,411) @end deftypefn
+coverage_macro.texi(,412) 
+coverage_macro.texi(,413) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+coverage_macro.texi(,414) d--eftypeop
+coverage_macro.texi(,415) @end deftypeop
+coverage_macro.texi(,416) 
+coverage_macro.texi(,417) @deftypevr c--ategory t--ype d--eftypevr_name
+coverage_macro.texi(,418) d--eftypevr
+coverage_macro.texi(,419) @end deftypevr
+coverage_macro.texi(,420) 
+coverage_macro.texi(,421) @defcv c--ategory c--lass d--efcv_name
+coverage_macro.texi(,422) d--efcv
+coverage_macro.texi(,423) @end defcv
+coverage_macro.texi(,424) 
+coverage_macro.texi(,425) @defop c--ategory c--lass d--efop_name a--rguments...
+coverage_macro.texi(,426) d--efop
+coverage_macro.texi(,427) @end defop
+coverage_macro.texi(,428) 
+coverage_macro.texi(,429) @deftp c--ategory d--eftp_name a--ttributes...
+coverage_macro.texi(,430) d--eftp
+coverage_macro.texi(,431) @end deftp
+coverage_macro.texi(,432) 
+coverage_macro.texi(,433) @defun d--efun_name a--rguments...
+coverage_macro.texi(,434) d--efun
+coverage_macro.texi(,435) @end defun
+coverage_macro.texi(,436) 
+coverage_macro.texi(,437) @defmac d--efmac_name a--rguments...
+coverage_macro.texi(,438) d--efmac
+coverage_macro.texi(,439) @end defmac
+coverage_macro.texi(,440) 
+coverage_macro.texi(,441) @defspec d--efspec_name a--rguments...
+coverage_macro.texi(,442) d--efspec
+coverage_macro.texi(,443) @end defspec
+coverage_macro.texi(,444) 
+coverage_macro.texi(,445) @defvar d--efvar_name argvar argvar1
+coverage_macro.texi(,446) d--efvar
+coverage_macro.texi(,447) @end defvar
+coverage_macro.texi(,448) 
+coverage_macro.texi(,449) @defopt d--efopt_name
+coverage_macro.texi(,450) d--efopt
+coverage_macro.texi(,451) @end defopt
+coverage_macro.texi(,452) 
+coverage_macro.texi(,453) @deftypefun t--ype d--eftypefun_name a--rguments...
+coverage_macro.texi(,454) d--eftypefun
+coverage_macro.texi(,455) @end deftypefun
+coverage_macro.texi(,456) 
+coverage_macro.texi(,457) @deftypevar t--ype d--eftypevar_name
+coverage_macro.texi(,458) d--eftypevar
+coverage_macro.texi(,459) @end deftypevar
+coverage_macro.texi(,460) 
+coverage_macro.texi(,461) @defivar c--lass d--efivar_name
+coverage_macro.texi(,462) d--efivar
+coverage_macro.texi(,463) @end defivar
+coverage_macro.texi(,464) 
+coverage_macro.texi(,465) @deftypeivar c--lass t--ype d--eftypeivar_name
+coverage_macro.texi(,466) d--eftypeivar
+coverage_macro.texi(,467) @end deftypeivar
+coverage_macro.texi(,468) 
+coverage_macro.texi(,469) @defmethod c--lass d--efmethod_name a--rguments...
+coverage_macro.texi(,470) d--efmethod
+coverage_macro.texi(,471) @end defmethod
+coverage_macro.texi(,472) 
+coverage_macro.texi(,473) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+coverage_macro.texi(,474) d--eftypemethod
+coverage_macro.texi(,475) @end deftypemethod
+coverage_macro.texi(,476) 
+coverage_macro.texi(,477) @code{@@xref@{c---hapter@@@@, cross r---ef name@@@@, t---itle@@@@, file n---ame@@@@, ma---nual@@@@@}} @xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}.
+coverage_macro.texi(,478) @code{@@ref@{chapter, cross ref name, title, file name, manual@}} @ref{chapter, cross ref name, title, file name, manual}
+coverage_macro.texi(,479) @code{@@pxref@{chapter, cross ref name, title, file name, manual@}} @pxref{chapter, cross ref name, title, file name, manual}
+coverage_macro.texi(,480) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+coverage_macro.texi(,481) 
+coverage_macro.texi(,482) @code{@@ref@{chapter@}} @ref{chapter}
+coverage_macro.texi(,483) @code{@@xref@{chapter@}} @xref{chapter}.
+coverage_macro.texi(,484) @code{@@pxref@{chapter@}} @pxref{chapter}
+coverage_macro.texi(,485) @code{@@ref@{s--ect@@comma@{@}ion@}} @ref{s--ect@comma{}ion}
+coverage_macro.texi(,486) 
+coverage_macro.texi(,487) @code{@@ref@{s--ect@@comma@{@}ion, a @@comma@{@} in cross
+coverage_macro.texi(,488) ref, a comma@@comma@{@} in title, a comma@@comma@{@} in file, a @@comma@{@} in manual name @}}
+coverage_macro.texi(,489) @ref{s--ect@comma{}ion, a @comma{} in cross
+coverage_macro.texi(,490) ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
+coverage_macro.texi(,491) 
+coverage_macro.texi(,492) @code{@@ref@{chapter,cross ref name@}} @ref{chapter,cross ref name}
+coverage_macro.texi(,493) @code{@@ref@{chapter,,title@}} @ref{chapter,,title}
+coverage_macro.texi(,494) @code{@@ref@{chapter,,,file name@}} @ref{chapter,,,file name}
+coverage_macro.texi(,495) @code{@@ref@{chapter,,,,manual@}} @ref{chapter,,,,manual}
+coverage_macro.texi(,496) @code{@@ref@{chapter,cross ref name,title,@}} @ref{chapter,cross ref name,title,}
+coverage_macro.texi(,497) @code{@@ref@{chapter,cross ref name,,file name@}} @ref{chapter,cross ref name,,file name}
+coverage_macro.texi(,498) @code{@@ref@{chapter,cross ref name,,,manual@}} @ref{chapter,cross ref name,,,manual}
+coverage_macro.texi(,499) @code{@@ref@{chapter,cross ref name,title,file name@}} @ref{chapter,cross ref name,title,file name}
+coverage_macro.texi(,500) @code{@@ref@{chapter,cross ref name,title,,manual@}} @ref{chapter,cross ref name,title,,manual}
+coverage_macro.texi(,501) @code{@@ref@{chapter,cross ref name,title, file name, manual@}} @ref{chapter,cross ref name,title, file name, manual}
+coverage_macro.texi(,502) @code{@@ref@{chapter,,title,file name@}} @ref{chapter,,title,file name}
+coverage_macro.texi(,503) @code{@@ref@{chapter,,title,,manual@}} @ref{chapter,,title,,manual}
+coverage_macro.texi(,504) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
+coverage_macro.texi(,505) @code{@@ref@{chapter,,,file name,manual@}} @ref{chapter,,,file name,manual}
+coverage_macro.texi(,506) 
+coverage_macro.texi(,507) 
+coverage_macro.texi(,508) @code{@@ref@{(pman)anode,cross ref name@}} @ref{(pman)anode,cross ref name}
+coverage_macro.texi(,509) @code{@@ref@{(pman)anode,,title@}} @ref{(pman)anode,,title}
+coverage_macro.texi(,510) @code{@@ref@{(pman)anode,,,file name@}} @ref{(pman)anode,,,file name}
+coverage_macro.texi(,511) @code{@@ref@{(pman)anode,,,,manual@}} @ref{(pman)anode,,,,manual}
+coverage_macro.texi(,512) @code{@@ref@{(pman)anode,cross ref name,title,@}} @ref{(pman)anode,cross ref name,title,}
+coverage_macro.texi(,513) @code{@@ref@{(pman)anode,cross ref name,,file name@}} @ref{(pman)anode,cross ref name,,file name}
+coverage_macro.texi(,514) @code{@@ref@{(pman)anode,cross ref name,,,manual@}} @ref{(pman)anode,cross ref name,,,manual}
+coverage_macro.texi(,515) @code{@@ref@{(pman)anode,cross ref name,title,file name@}} @ref{(pman)anode,cross ref name,title,file name}
+coverage_macro.texi(,516) @code{@@ref@{(pman)anode,cross ref name,title,,manual@}} @ref{(pman)anode,cross ref name,title,,manual}
+coverage_macro.texi(,517) @code{@@ref@{(pman)anode,cross ref name,title, file name, manual@}} @ref{(pman)anode,cross ref name,title, file name, manual}
+coverage_macro.texi(,518) @code{@@ref@{(pman)anode,,title,file name@}} @ref{(pman)anode,,title,file name}
+coverage_macro.texi(,519) @code{@@ref@{(pman)anode,,title,,manual@}} @ref{(pman)anode,,title,,manual}
+coverage_macro.texi(,520) @code{@@ref@{(pman)anode,,title, file name, manual@}} @ref{(pman)anode,,title, file name, manual}
+coverage_macro.texi(,521) @code{@@ref@{(pman)anode,,,file name,manual@}} @ref{(pman)anode,,,file name,manual}
+coverage_macro.texi(,522) 
+coverage_macro.texi(,523) 
+coverage_macro.texi(,524) @code{@@inforef@{chapter, cross ref name, file name@}} @inforef{chapter, cross ref name, file name}
+coverage_macro.texi(,525) @code{@@inforef@{chapter@}} @inforef{chapter}
+coverage_macro.texi(,526) @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
+coverage_macro.texi(,527) @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
+coverage_macro.texi(,528) @code{@@inforef@{node, cross ref name, file name@}} @inforef{node, cross ref name, file name}
+coverage_macro.texi(,529) @code{@@inforef@{node@}} @inforef{node}
+coverage_macro.texi(,530) @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
+coverage_macro.texi(,531) @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
+coverage_macro.texi(,532) @code{@@inforef@{chapter, cross ref name, file name, spurious arg@}} @inforef{chapter, cross ref name, file name, spurious arg}
+coverage_macro.texi(,533) 
+coverage_macro.texi(,534) @code{@@inforef@{s--ect@@comma@{@}ion, a @@comma@{@} in cross
+coverage_macro.texi(,535) ref, a comma@@comma@{@} in file@}}
+coverage_macro.texi(,536) @inforef{s--ect@comma{}ion, a @comma{} in cross
+coverage_macro.texi(,537) ref, a comma@comma{} in file}
+coverage_macro.texi(,538) 
+coverage_macro.texi(,539) 
+coverage_macro.texi(,540) @table @bullet
+coverage_macro.texi(,541) @c comment in table
+coverage_macro.texi(,542) @item a
+coverage_macro.texi(,543) l--ine
+coverage_macro.texi(,544) @end table
+coverage_macro.texi(,545) 
+coverage_macro.texi(,546) @vtable @asis
+coverage_macro.texi(,547) @item a
+coverage_macro.texi(,548) @c comment between item and itemx
+coverage_macro.texi(,549) @itemx b
+coverage_macro.texi(,550) l--ine
+coverage_macro.texi(,551) @end vtable
+coverage_macro.texi(,552) 
+coverage_macro.texi(,553) @ftable @minus
+coverage_macro.texi(,554) @item a
+coverage_macro.texi(,555) @cindex index entry between item and itemx
+coverage_macro.texi(,556) @itemx b
+coverage_macro.texi(,557) l--ine
+coverage_macro.texi(,558) @end ftable
+coverage_macro.texi(,559) 
+coverage_macro.texi(,560) @cartouche
+coverage_macro.texi(,561) c--artouche
+coverage_macro.texi(,562) @end cartouche
+coverage_macro.texi(,563) 
+coverage_macro.texi(,564) @flushleft
+coverage_macro.texi(,565) f--lushleft
+coverage_macro.texi(,566) @end flushleft
+coverage_macro.texi(,567) 
+coverage_macro.texi(,568) @flushright
+coverage_macro.texi(,569) f--lushright
+coverage_macro.texi(,570) @end flushright
+coverage_macro.texi(,571) 
+coverage_macro.texi(,572) @center ce--ntered line
+coverage_macro.texi(,573) 
+coverage_macro.texi(,574) @verbatiminclude simplest.texi
+coverage_macro.texi(,575) 
+coverage_macro.texi(,576) @verbatim
+coverage_macro.texi(,577) in verbatim ''
+coverage_macro.texi(,578) @end verbatim
+coverage_macro.texi(,579) 
+coverage_macro.texi(,580) @xml
+coverage_macro.texi(,581) <para> xml para </para> ''
+coverage_macro.texi(,582) @end xml
+coverage_macro.texi(,583) 
+coverage_macro.texi(,584) @html
+coverage_macro.texi(,585) html ''
+coverage_macro.texi(,586) @end html
+coverage_macro.texi(,587) 
+coverage_macro.texi(,588) @tex
+coverage_macro.texi(,589) $$\\partial_t \\eta (t) = g(\\eta(t),\\varphi(t))$$ ''
+coverage_macro.texi(,590) @end tex
+coverage_macro.texi(,591) 
+coverage_macro.texi(,592) @docbook
+coverage_macro.texi(,593) docbook ''
+coverage_macro.texi(,594) @end docbook
+coverage_macro.texi(,595) 
+coverage_macro.texi(,596) @majorheading majorheading
+coverage_macro.texi(,597) 
+coverage_macro.texi(,598) @chapheading chapheading
+coverage_macro.texi(,599) 
+coverage_macro.texi(,600) @heading heading
+coverage_macro.texi(,601) 
+coverage_macro.texi(,602) @subheading subheading
+coverage_macro.texi(,603) 
+coverage_macro.texi(,604) @subsubheading subsubheading
+coverage_macro.texi(,605) 
+coverage_macro.texi(,606) @c makeinfo cannot handle that
+coverage_macro.texi(,607) @ifset texi2html
+coverage_macro.texi(,608) 
+coverage_macro.texi(,609) @code{@@acronym@{--a,an accronym @@comma@{@} @@enddots@{@}@}} @acronym{--a,an accronym @comma{} @enddots{}}
+coverage_macro.texi(,610) @code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude--@@comma@{@} @@b@{Autonome@} @}} @abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }
+coverage_macro.texi(,611) @code{@@abbr@{@@'E--. @@comma@{@}A.@}} @abbr{@'E--. @comma{}A.}
+coverage_macro.texi(,612) 
+coverage_macro.texi(,613) @code{@@math@{--a@@minus@{@} @{\\frac@{1@}@{2@}@}@}} @math{--a@minus{} {\\frac{1}{2}}}
+coverage_macro.texi(,614) 
+coverage_macro.texi(,615) @code{@@image@{f-ile,,,alt@@verb@{:jk _" %@:@}@}} @image{f-ile,,,alt@verb{:jk _" %@:}}
+coverage_macro.texi(,616) @code{@@image@{f--ile,aze,az,@@verb@{:jk _" %@@:@} @@b@{in b "@},e--xt@}} @image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt}
+coverage_macro.texi(,617) @code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
+coverage_macro.texi(,618) 
+coverage_macro.texi(,619) @set invalid
+coverage_macro.texi(,620) @end ifset
+coverage_macro.texi(,621) 
+coverage_macro.texi(,622) 
+coverage_macro.texi(,623) @c invalid texinfo
+coverage_macro.texi(,624) @ifset invalid
+coverage_macro.texi(,625) 
+coverage_macro.texi(,626) Somehow invalid use of @@,:@*
+coverage_macro.texi(,627) @@, @,
+coverage_macro.texi(,628) @*
+coverage_macro.texi(,629) @@,@@"u @,@"u
+coverage_macro.texi(,630) 
+coverage_macro.texi(,631) Invalid use of @@':@*
+coverage_macro.texi(,632) @@' @'
+coverage_macro.texi(,633) @*
+coverage_macro.texi(,634) @@'@@"u @'@"u
+coverage_macro.texi(,635) 
+coverage_macro.texi(,636) @c only i or j as arg
+coverage_macro.texi(,637) @@dotless@{truc@} @dotless{truc}
+coverage_macro.texi(,638) @@dotless@{ij@} @dotless{ij}
+coverage_macro.texi(,639) @code{@@dotless@{--a@}} @dotless{--a}
+coverage_macro.texi(,640) @code{@@dotless@{a@}} @dotless{a}
+coverage_macro.texi(,641) 
+coverage_macro.texi(,642) @c braces missing
+coverage_macro.texi(,643) @@TeX, but without brace @TeX
+coverage_macro.texi(,644) 
+coverage_macro.texi(,645) @c unknown command
+coverage_macro.texi(,646) @code{@@#} @#
+coverage_macro.texi(,647) 
+coverage_macro.texi(,648) @c no arg
+coverage_macro.texi(,649) @code{@@w@{--a@}} @w{--a}
+coverage_macro.texi(,650) 
+coverage_macro.texi(,651) @c no file
+coverage_macro.texi(,652) @code{@@image@{,1--xt@}} @image{,1--xt}
+coverage_macro.texi(,653) @code{@@image@{,,2--xt@}} @image{,,2--xt}
+coverage_macro.texi(,654) @code{@@image@{,,,3--xt@}} @image{,,,3--xt}
+coverage_macro.texi(,655) 
+coverage_macro.texi(,656) @sp
+coverage_macro.texi(,657) 
+coverage_macro.texi(,658) @c braces missing
+coverage_macro.texi(,659) @itemize @emph after emph
+coverage_macro.texi(,660) @item e--mph item
+coverage_macro.texi(,661) @end itemize
+coverage_macro.texi(,662) 
+coverage_macro.texi(,663) @c braces missing
+coverage_macro.texi(,664) @itemize @bullet a--n itemize line
+coverage_macro.texi(,665) @item i--tem 1
+coverage_macro.texi(,666) @item i--tem 2
+coverage_macro.texi(,667) @end itemize
+coverage_macro.texi(,668) 
+coverage_macro.texi(,669) @c deffnx after deff lines
+coverage_macro.texi(,670) @deffn fun
+coverage_macro.texi(,671) @deffnx truc machin bidule chose and }
+coverage_macro.texi(,672) @deffnx truc machin bidule chose and } after
+coverage_macro.texi(,673) @deffnx truc machin bidule chose and {
+coverage_macro.texi(,674) @deffnx truc machin bidule chose and { and after
+coverage_macro.texi(,675) @deffnx {truc} followed by a comment
+coverage_macro.texi(,676) @c comment
+coverage_macro.texi(,677) Various deff lines
+coverage_macro.texi(,678) @deffnx {truc} after a deff item
+coverage_macro.texi(,679) @end deffn
+coverage_macro.texi(,680) 
+coverage_macro.texi(,681) @c node is non existent, or missing first arg
+coverage_macro.texi(,682) @code{@@ref@{node@}} @ref{node}
+coverage_macro.texi(,683) 
+coverage_macro.texi(,684) @code{@@ref@{,cross ref name@}} @ref{,cross ref name}
+coverage_macro.texi(,685) @code{@@ref@{,,title@}} @ref{,,title}
+coverage_macro.texi(,686) @code{@@ref@{,,,file name@}} @ref{,,,file name}
+coverage_macro.texi(,687) @code{@@ref@{,,,,manual@}} @ref{,,,,manual}
+coverage_macro.texi(,688) @code{@@ref@{node,cross ref name@}} @ref{node,cross ref name}
+coverage_macro.texi(,689) @code{@@ref@{node,,title@}} @ref{node,,title}
+coverage_macro.texi(,690) @code{@@ref@{node,,,file name@}} @ref{node,,,file name}
+coverage_macro.texi(,691) @code{@@ref@{node,,,,manual@}} @ref{node,,,,manual}
+coverage_macro.texi(,692) @code{@@ref@{node,cross ref name,title,@}} @ref{node,cross ref name,title,}
+coverage_macro.texi(,693) @code{@@ref@{node,cross ref name,,file name@}} @ref{node,cross ref name,,file name}
+coverage_macro.texi(,694) @code{@@ref@{node,cross ref name,,,manual@}} @ref{node,cross ref name,,,manual}
+coverage_macro.texi(,695) @code{@@ref@{node,cross ref name,title,file name@}} @ref{node,cross ref name,title,file name}
+coverage_macro.texi(,696) @code{@@ref@{node,cross ref name,title,,manual@}} @ref{node,cross ref name,title,,manual}
+coverage_macro.texi(,697) @code{@@ref@{node,cross ref name,title, file name, manual@}} @ref{node,cross ref name,title, file name, manual}
+coverage_macro.texi(,698) @code{@@ref@{node,,title,file name@}} @ref{node,,title,file name}
+coverage_macro.texi(,699) @code{@@ref@{node,,title,,manual@}} @ref{node,,title,,manual}
+coverage_macro.texi(,700) @code{@@ref@{chapter,,title, file name, manual@}} @ref{chapter,,title, file name, manual}
+coverage_macro.texi(,701) @code{@@ref@{node,,title, file name, manual@}} @ref{node,,title, file name, manual}
+coverage_macro.texi(,702) @code{@@ref@{node,,,file name,manual@}} @ref{node,,,file name,manual}
+coverage_macro.texi(,703) @code{@@ref@{,cross ref name,title,@}} @ref{,cross ref name,title,}
+coverage_macro.texi(,704) @code{@@ref@{,cross ref name,,file name@}} @ref{,cross ref name,,file name}
+coverage_macro.texi(,705) @code{@@ref@{,cross ref name,,,manual@}} @ref{,cross ref name,,,manual}
+coverage_macro.texi(,706) @code{@@ref@{,cross ref name,title,file name@}} @ref{,cross ref name,title,file name}
+coverage_macro.texi(,707) @code{@@ref@{,cross ref name,title,,manual@}} @ref{,cross ref name,title,,manual}
+coverage_macro.texi(,708) @code{@@ref@{,cross ref name,title, file name, manual@}} @ref{,cross ref name,title, file name, manual}
+coverage_macro.texi(,709) @code{@@ref@{,,title,file name@}} @ref{,,title,file name}
+coverage_macro.texi(,710) @code{@@ref@{,,title,,manual@}} @ref{,,title,,manual}
+coverage_macro.texi(,711) @code{@@ref@{,,title, file name, manual@}} @ref{,,title, file name, manual}
+coverage_macro.texi(,712) @code{@@ref@{,,,file name,manual@}} @ref{,,,file name,manual}
+coverage_macro.texi(,713) 
+coverage_macro.texi(,714) @code{@@inforef@{,cross ref name @}} @inforef{,cross ref name }
+coverage_macro.texi(,715) @code{@@inforef@{,,file name@}} @inforef{,,file name}
+coverage_macro.texi(,716) @code{@@inforef@{,cross ref name, file name@}} @inforef{,cross ref name, file name}
+coverage_macro.texi(,717) @code{@@inforef@{@}} @inforef{}
+coverage_macro.texi(,718) 
+coverage_macro.texi(,719) @end ifset
+coverage_macro.texi(,720) 
+coverage_macro.texi(,721) @end macro
 formatting_regions.texi(,26) 
 formatting_regions.texi(,27) @copying
 formatting_regions.texi(mymacro,28) 
