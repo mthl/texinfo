@@ -959,7 +959,7 @@ sub docbook_image($$$$$$$$$$$$$$$$;$)
 #            $file = "$base.jpg";
 #            $extension = 'jpg';
 #        }
-#        main::echo_warn ("no image file for $base, (using $file)");
+#        main::line_warn ("no image file for $base, (using $file)");
 #    }
     my $txt_path;
     my @files = ();
@@ -1012,12 +1012,12 @@ sub docbook_image($$$$$$$$$$$$$$$$;$)
        } 
        else
        {
-          main::echo_warn ("\@image file `$txt_path' unreadable: $!", $line_nr);
+          main::line_warn ("\@image file `$txt_path' unreadable: $!", $line_nr);
        }
     }
     else
     {
-        main::echo_warn ("Cannot find \@image file `$base.txt'", $line_nr);
+        main::line_warn ("Cannot find \@image file `$base.txt'", $line_nr);
     }
 
     return "$result$end";
@@ -1473,7 +1473,7 @@ sub docbook_raw($$$)
     }
     else
     {
-        main::echo_warn ("Raw style $style not handled", $line_nr);
+        main::line_warn ("Raw style $style not handled", $line_nr);
         return &$protect_text($text);
     }
 }

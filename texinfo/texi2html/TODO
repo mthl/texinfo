@@ -1,5 +1,27 @@
 This file contains a list of things yet to be done (see also in doc/TODO):
 
+Before next release
+-------------------
+
+* there is also undocumented features @hsep and @vsep to insert
+  horizontal and vertical rules.
+
+* makeinfo has a lot of other short command line switches, but implement
+  only those that are documented, in --help or info makeinfo.
+
+* A lone node without associated sectionning command nor directions leads
+  to an error message in makeinfo. Since there is no way to go out of the 
+  node, it should certainly be noticed. Another possibility would be to
+  have automatic directions set in that case too, and use the @menu stuff
+  to determine the directions
+../../node_footnote.texi:14: Node `@'a' requires a sectioning command (e.g., @top).
+
+* indices/index_special_region: line numbers in last pass are not correct
+  as shown on the error messages.
+
+Later
+-----
+
 * Create detailed texinfo documentation (see in doc)
 
 * add sample init files for different layouts
@@ -234,9 +256,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   information that there is only one section to the functions formatting
   the page header and page footer.
 
-* makeinfo has a lot of other short command line switches, but implement
-  only those that are documented, in --help or info makeinfo.
-
 * does --document-language cmd line apply to first or all files? 
   ask on bug-texinfo.
 
@@ -305,9 +324,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   like that? (and in makeinfo compatibility mode, a normal processing
   will be done with -E).
 
-* there is also undocumented features @hsep and @vsep to insert
-  horizontal and vertical rules.
-
 * @anchor{} should always ignore following whitespace (including newlines)
 
 * in info, @. @! and @? should always be followed by at least 2 spaces
@@ -332,13 +348,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * makeinfo: multiple index entries have <1>... appended.
   or they are removed. Ask on the list.
-
-* A lone node without associated sectionning command nor directions leads
-  to an error message in makeinfo. Since there is no way to go out of the 
-  node, it should certainly be noticed. Another possibility would be to
-  have automatic directions set in that case too, and use the @menu stuff
-  to determine the directions
-../../node_footnote.texi:14: Node `@'a' requires a sectioning command (e.g., @top).
 
 * ../../sectionning.texi:4: warning: Must specify a title with least one of @settitle or @top.
 
@@ -378,32 +387,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   directory or both?
 
 * error messages
-  ** `second node' doesn't appear in menus
-  warning: unreferenced node `second node'.
-
-  ** node_prev `nonexistant node in prev for @@top' for `lop' not found (l. 13)
-  Prev reference to nonexistent node `nonexistant node in prev for @@top' (perhaps incorrect sectioning?).
-
-  ** `node1' is up for `node below node1', but has no menu entry for this node
-  Node `node1' lacks menu item for `node below node1' despite being its Up target.
-
-  *** Unknown node in menu entry `node inexistant in menu' (l. 19)
-  Menu reference to nonexistent node `node inexistant in menu' (perhaps incorrect sectioning?).
-
-  ** macro `splitrcskeyword' already defined (l. 86) redefined (l. 103)
-  ../../cvs.texi:106: warning: macro `splitrcskeyword' previously defined.
-  ../../cvs.texi:86: warning: here is the previous definition of `splitrcskeyword'.
-
-
-  ** Bad index name: bidule (l. 11)
-  ../../index_no_node.texi:11: Unknown index `bidule' in @printindex.
-
-  *** '}' without opening '{' before:  (l. 8)
-  ../../brace_not_closed.texi:8: Unmatched }.
-
-  *** '{' without macro. Before: truc@} @anchor{truc}. (l. 10)
-  ../../brace_not_closed.texi:10: Misplaced {.
-
   *** waiting for end of quotation, found @end cartouche (l. 12)
   ../../bad_nesting.texi:13: `@end' expected `quotation', but saw `cartouche'.
 
@@ -418,19 +401,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
   *** closing `quotation' (l. 24)
   ../../footnote_not_closed.texi:54: No matching `@end quotation'.
-
-  ** 2 @titlepage not closed (l. 16)
-  ../../titlepage_not_closed.texi:17: Expected `
-@end titlepage'.
-  
-  ** Unknown float style Text (l. 19)
-  ../../caption_not_closed.texi:20: warning: Requested float type `Text' not previously used.
-
-  not done in texi2html:
-  ../../invalid_command_in_table.texi:8: table requires an argument: the formatter for @item.
-
-  *** Undefined node `EExpansion' in @xref (l. 263)
-  ../../templates.texi:287: Cross reference to nonexistent node `EExpansion' (perhaps incorrect sectioning?).
 
 * in formatting/table_in_table_item.texi, some lines maybe have too much 
   leading spaces (precisely in @code in @table in @table @item, line
@@ -455,3 +425,5 @@ _tab_
 * formatting/float_copying index entries in insertcopying are not right.
   Maybe it is because they are in footnotes. Or maybe because they are
   in a caption.
+
+* in examples/chm.init use main::open_out to open files.

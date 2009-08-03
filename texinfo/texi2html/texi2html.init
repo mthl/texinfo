@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.210 2009-08-02 14:12:10 pertusus Exp $
+# $Id: texi2html.init,v 1.211 2009-08-03 09:35:06 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -135,6 +135,9 @@ $PARAGRAPHINDENT = 3;
 
 # --enable-encoding
 $ENABLE_ENCODING = 0;
+
+# --force
+$FORCE = 0;
 
 ##################################################################
 # option specific of texi2html
@@ -723,6 +726,7 @@ sub t2h_default_set_variables_texi2html()
   $USE_SETFILENAME_EXTENSION = 0;
   $FOOTNOTESTYLE = 'separate';
   $INLINE_CONTENTS = 0;
+  $FORCE = 1;
   $AVOID_MENU_REDUNDANCY = 1;
   $TOP_HEADING_AT_BEGINNING = 1;
   $TOP_FILE = '';
@@ -1077,7 +1081,7 @@ sub t2h_default_load_format($;$)
   }
   else
   {
-     warn "Unkown output format $format\n";
+     main::document_warn ("Unkown output format $format");
   }
 }
 
@@ -5920,7 +5924,7 @@ sub t2h_default_raw($$;$)
     }
     elsif ($expanded)
     {
-        main::echo_warn ("Raw $style not handled especially, but expanded", $line_nr);
+        main::line_warn ("Raw $style not handled especially, but expanded", $line_nr);
         return $text;
     }
     else
@@ -6197,6 +6201,7 @@ sub t2h_default_cartouche($$)
     return '';
 } 
 
+my $IDXFILE;
 # key:          
 # origin_href:  
 # entry:        
@@ -6216,7 +6221,7 @@ sub t2h_default_index_summary_file_entry ($$$$$$$$$)
     my $manual_name = shift;
 
     $element_text = 'UNDEF' if (!defined($element_text));
-    print IDXFILE "key: $key\n  origin_href: $origin_href\n  entry: $entry\n"
+    print $IDXFILE "key: $key\n  origin_href: $origin_href\n  entry: $entry\n"
       . "  texi_entry: $texi_entry\n"
       . "  element_href: $element_href\n  element_text: $element_text\n";
 }
@@ -6227,8 +6232,9 @@ sub t2h_default_index_summary_file_begin($$$)
     my $is_printed = shift;
     my $manual_name = shift;
 
-    open(IDXFILE, ">$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx")
-       || die "Can't open >$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx for writing: $!\n";
+    $IDXFILE = main::open_out("$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx");
+    #open(IDXFILE, ">$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx")
+    #   || die "Can't open >$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx for writing: $!\n";
 }
 
 sub t2h_default_index_summary_file_end($$$)
@@ -6237,7 +6243,7 @@ sub t2h_default_index_summary_file_end($$$)
     my $is_printed = shift;
     my $manual_name = shift;
 
-    close (IDXFILE);
+    close ($IDXFILE);
 }
 
 sub t2h_default_sp($$)

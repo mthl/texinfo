@@ -1009,7 +1009,7 @@ sub t2h_roff_raw($$)
     }
     elsif ($expanded)
     {
-        warn "$WARN (bug) unknown style $style\n";
+        main::msg_debug ("(bug) unknown style $style");
         return &$protect_text($text);
     }
     return '';

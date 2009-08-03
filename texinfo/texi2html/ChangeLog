@@ -1,3 +1,13 @@
+2009-08-03   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: use makeinfo error messages.
+	Have all error messages consistently go through error message
+	functions, and rename those functions to be more consistent.
+	Warn when a table hasn't a format comand for @item.
+	* texi2html.pl, texi2html.init: handle --force. 
+	Die like makeinfo if FORCE is not set, remove all generated 
+	files in that case.
+
 2009-08-02   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* formats/info.init: put float text and caption in the right order

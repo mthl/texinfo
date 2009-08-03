@@ -152,7 +152,7 @@ sub init()
     {
         unless (open(L2H_LATEX, ">$l2h_latex_file"))
         {
-            warn "$ERROR l2h: Can't open latex file '$l2h_latex_file' for writing: $!\n";
+            main::document_error ("l2h: Can't open latex file '$l2h_latex_file' for writing: $!");
             $status = 0;
             return;
         }
@@ -264,7 +264,7 @@ sub to_html()
     {
         if ($Texi2HTML::Config::L2H_TMP =~ /\./)
         {
-            warn "$ERROR Warning l2h: l2h_tmp dir contains a dot. Use /tmp, instead\n";
+            main::document_warn ("l2h: l2h_tmp dir contains a dot.");
             $dotbug = 1;
         }
     }
@@ -272,12 +272,13 @@ sub to_html()
     {
         if (cwd() =~ /\./)
         {
-            warn "$ERROR Warning l2h: current dir contains a dot. Use /tmp as l2h_tmp dir \n";
+            main::document_warn ("l2h: current dir contains a dot.");
             $dotbug = 1;
         }
     }
     # fix it, if necessary and hope that it works
-    $Texi2HTML::Config::L2H_TMP = "/tmp" if ($dotbug);
+    #$Texi2HTML::Config::L2H_TMP = "/tmp" if ($dotbug);
+    return 0 if ($dotbug);
 
     $call = $Texi2HTML::Config::L2H_L2H;
     # use init file, if specified
@@ -298,7 +299,7 @@ sub to_html()
     warn "# l2h: executing '$call'\n" if ($verbose);
     if (system($call))
     {
-        warn "$ERROR l2h: '${call}' did not succeed\n";
+        main::document_error ("l2h: '${call}' did not succeed");
         return 0;
     }
     else
@@ -340,7 +341,7 @@ sub change_image_file_names($)
             }
             else
             { # FIXME what is that check about?
-                warn "$ERROR: L2h image $src has invalid extension\n";
+                main::document_warn ("L2h image $src has invalid extension");
                 next;
             }
             while (-e "$docu_rdir${docu_name}_${image_count}$ext")
@@ -371,7 +372,7 @@ sub init_from_html()
 
     if (! open(L2H_HTML, "<$l2h_html_file"))
     {
-        warn "$ERROR l2h: Can't open $l2h_html_file for reading\n";
+        main::document_warn ("l2h: Can't open $l2h_html_file for reading");
         return 0;
     }
     warn "# l2h: use $l2h_html_file as html file\n" if ($verbose);
@@ -407,7 +408,7 @@ sub init_from_html()
             }
             unless ($h_end_found)
             { # couldn't found the closing comment. Certainly  a bug.
-                warn "$ERROR l2h(BUG): l2h_end $l2h_name $count not found\n";
+                main::msg_debug ("l2h: l2h_end $l2h_name $count not found");
                 close(L2H_HTML);
                 return 0;
             }
@@ -417,7 +418,7 @@ sub init_from_html()
     # Not the same number of converted elements and retrieved elements
     if ($latex_converted_count != $html_converted_count)
     {
-        warn "$ERROR l2h(BUG): waiting for $latex_converted_count elements found $html_converted_count\n";
+        main::msg_debug ("l2h: waiting for $latex_converted_count elements found $html_converted_count");
     }
 
     warn "# l2h: Got $html_converted_count of $latex_count html contents\n"
@@ -443,7 +444,7 @@ sub do_tex($$$$)
     {
          # counter is undefined
          $invalid_counter_count++;
-         warn "$ERROR l2h(BUG): undefined count for ${style}_$counter\n";
+         main::msg_debug ("l2h: undefined count for ${style}_$counter");
          return ("<!-- l2h: ". __LINE__ . " undef count for ${style}_$counter -->")
                 if ($debug);
          return '';
@@ -452,7 +453,7 @@ sub do_tex($$$$)
     {
         # counter out of range
         $invalid_counter_count++;
-        warn "$ERROR l2h(BUG): Request of $count content which is out of valide range [0,$latex_count)\n";
+        main::msg_debug ("l2h: Request of $count content which is out of valide range [0,$latex_count)");
          return ("<!-- l2h: ". __LINE__ . " out of range count $count -->") 
                 if ($debug);
          return '';
@@ -481,7 +482,7 @@ sub do_tex($$$$)
     {
     # if the result is not in @l2h_from_html, there is an error somewhere.
         $extract_error_count++;
-        warn "$ERROR l2h(BUG): can't extract content $count from html\n";
+        main::msg_debug ("l2h: can't extract content $count from html");
         # try simple (ordinary) substitution (without l2h)
         $result .= "<!-- l2h: ". __LINE__ . " use texi2html -->" if ($debug);
         $result .= main::substitute_text({}, undef, $l2h_to_latex[$count]);
@@ -549,7 +550,7 @@ sub init_cache
     if (-r "$l2h_cache_file")
     {
         my $rdo = do "$l2h_cache_file";
-        warn("$ERROR l2h Error: could not load $docu_rdir$l2h_cache_file: $@\n")
+        main::document_error ("l2h: could not load $docu_rdir$l2h_cache_file: $@")
             unless ($rdo);
     }
 }
@@ -561,7 +562,7 @@ sub store_cache
     my ($key, $value);
     unless (open(FH, ">$l2h_cache_file"))
     { 
-        warn "$ERROR l2h Error: could not open $docu_rdir$l2h_cache_file for writing: $!\n";
+        main::document_error ("l2h: could not open $docu_rdir$l2h_cache_file for writing: $!");
         return;
     }
     while (($key, $value) = each %l2h_cache)

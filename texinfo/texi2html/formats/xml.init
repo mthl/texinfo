@@ -1224,7 +1224,7 @@ sub xml_raw($$)
     }
     else
     {
-        main::echo_warn ("Raw style $style not handled");
+        main::msg_warn ("Raw style $style not handled", $Texi2HTML::THISDOC{'line_nr'});
         return &$protect_text($text);
     }
 }

@@ -149,12 +149,12 @@ sub plaintext_default_image($$$$$$$$$$$$$$$$$)
        }
        else
        {
-          main::echo_warn ("\@image file `$txt_path' unreadable: $!", $line_nr);
+          main::line_warn ("\@image file `$txt_path' unreadable: $!", $line_nr);
        }
     }
     elsif (!defined($found_file))
     {
-        main::echo_warn ("Cannot find \@image file `$base.txt'", $line_nr);
+        main::line_warn ("Cannot find \@image file `$base.txt'", $line_nr);
     }
     return $text;
 }

@@ -139,12 +139,12 @@ do
     dir="texi_${basename}"
     [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"
     mkdir "$out_dir/$dir"
-    remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
+    remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}/$dir/"',g'`
     # -I $testdir/$srcdir_test/ is useful when file name is found using 
     # @setfilename
     echo "$dir" >> $logfile
-    echo "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -dump-texi --macro-expand=$out_dir/$dir/$basename.texi $remaining_out_dir $src_file 2>$out_dir/$dir/$basename.2" >> $logfile
-    eval "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -dump-texi --macro-expand=$out_dir/$dir/$basename.texi $remaining_out_dir $src_file 2>$out_dir/$dir/$basename.2"
+    echo "perl -w -x $testdir/$srcdir_test/../../$command --force -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -dump-texi --macro-expand=$out_dir/$dir/$basename.texi $remaining_out_dir $src_file 2>$out_dir/$dir/$basename.2" >> $logfile
+    eval "perl -w -x $testdir/$srcdir_test/../../$command --force -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -test --out $out_dir/$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -dump-texi --macro-expand=$out_dir/$dir/$basename.texi $remaining_out_dir $src_file 2>$out_dir/$dir/$basename.2"
     ret=$?
   else
     use_latex2html=no
@@ -170,10 +170,10 @@ do
     one_test_done=yes
     [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"
     mkdir "$out_dir/$dir"
-    remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
+    remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}/$dir/"',g'`
     echo "$dir" >> $logfile
-    echo "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out $out_dir/$dir/ $remaining_out_dir $src_file > $out_dir/$dir/$basename.1 2>$out_dir/$dir/$basename.2" >> $logfile
-    eval "perl -w -x $testdir/$srcdir_test/../../$command -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out $out_dir/$dir/ $remaining_out_dir $src_file > $out_dir/$dir/$basename.1 2>$out_dir/$dir/$basename.2"
+    echo "perl -w -x $testdir/$srcdir_test/../../$command --force -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out $out_dir/$dir/ $remaining_out_dir $src_file > $out_dir/$dir/$basename.1 2>$out_dir/$dir/$basename.2" >> $logfile
+    eval "perl -w -x $testdir/$srcdir_test/../../$command --force -conf-dir $testdir/$srcdir_test/../../examples -conf-dir $testdir/$srcdir_test/../../formats -conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ -test --out $out_dir/$dir/ $remaining_out_dir $src_file > $out_dir/$dir/$basename.1 2>$out_dir/$dir/$basename.2"
     ret=$?
     rm -f $out_dir/$dir/*_l2h_images.log $out_dir/$dir/*_tex4ht_*.log \
       $out_dir/$dir/*_tex4ht_*.idv $out_dir/$dir/*_tex4ht_*.dvi \

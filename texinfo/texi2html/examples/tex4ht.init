@@ -110,7 +110,7 @@ sub tex4ht_init
     local *TEX4HT_TEXFILE;
     unless (open (*TEX4HT_TEXFILE, ">$rfile"))  
     {
-       warn "* t2h_tex4ht error opening $rfile: $!\n";
+       main::document_warn ("t2h_tex4ht error opening $rfile: $!");
        $tex4ht_latex_failed = 1;
        return;
     }
@@ -192,7 +192,7 @@ sub tex4ht_process
   }
   unless (chdir $tex4ht_out_dir)
   {
-     warn "* t2h_tex4ht chdir to $tex4ht_out_dir failed\n";
+     main::document_warn ("t2h_tex4ht chdir to $tex4ht_out_dir failed");
      $tex4ht_latex_failed = 1;
      return;
   }
@@ -233,7 +233,7 @@ sub tex4ht_process_command
 {
   my $command = shift;
   return unless ($commands{$command}->{'counter'});
-  warn "* t2h_tex4ht $commands{$command}->{'basefile'} missing" unless (-f $commands{$command}->{'basefile'});
+  main::document_warn ("t2h_tex4ht $commands{$command}->{'basefile'} missing") unless (-f $commands{$command}->{'basefile'});
   my $style = $commands{$command}->{'style'};
   # now run tex4ht
   my $options = '';
@@ -243,7 +243,7 @@ sub tex4ht_process_command
   print STDERR "tex4ht command: $cmd\n" if ($Texi2HTML::Config::VERBOSE);
   if (system($cmd))
   {
-     warn "* t2h_tex4ht command: $cmd failed";
+     main::document_warn ("t2h_tex4ht command: $cmd failed");
      tex4ht_return_to_dir();
      $tex4ht_latex_failed = 1;
      return;
@@ -253,7 +253,7 @@ sub tex4ht_process_command
   my $html_basefile = $commands{$command}->{'html_file'};
   unless (open (TEX4HT_HTMLFILE, $html_basefile))
   {
-     warn "* t2h_tex4ht error opening $html_basefile: $!\n";
+     main::document_warn ("t2h_tex4ht error opening $html_basefile: $!");
      tex4ht_return_to_dir();
      $tex4ht_latex_failed = 1;
      return;
@@ -287,13 +287,13 @@ sub tex4ht_process_command
         }
         unless ($end_found)
         {
-           warn "* t2h_tex4ht: end of $command $count not found\n";
+           main::document_warn ("t2h_tex4ht: end of $command $count not found");
         }
      }
   }
   if ($got_count != $commands{$command}->{'counter'} and ($Texi2HTML::Config::VERBOSE))
   {
-     warn "* t2h_tex4ht: got $got_count for $commands{$command}->{'counter'} items entered\n";
+     main::document_warn ("t2h_tex4ht: got $got_count for $commands{$command}->{'counter'} items entered");
   }
   close (TEX4HT_HTMLFILE);
 
@@ -323,7 +323,7 @@ sub tex4ht_do_tex
   }
   else
   {
-    warn "* t2h_tex4ht: cannot find text to output for $command number $counter\n";
+    main::document_warn ("t2h_tex4ht: cannot find text to output for $command number $counter");
     return '';
   }
 }
@@ -337,7 +337,7 @@ sub tex4ht_finish
   }
   if (($tex4ht_output_counter != $tex4ht_in_counter) and ($Texi2HTML::Config::VERBOSE))
   {
-     warn "* t2h_tex4ht: output $tex4ht_output_counter for $tex4ht_in_counter items entered\n";
+     main::document_warn ("t2h_tex4ht: output $tex4ht_output_counter for $tex4ht_in_counter items entered");
   }
 }
 
