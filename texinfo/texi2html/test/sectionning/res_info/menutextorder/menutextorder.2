@@ -1,11 +1,11 @@
-** @menu seen before first @node (l. 4)
-** perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo? (l. 4)
-** No node following `bar' in menu, but `foo' follows in sectionning
-** `onesub1' doesn't appear in menus
-** `bar' is up for `onesub1', but has no menu entry for this node (l. 9)
-** No node following `onesub1' in menu, but `onesub2' follows in sectionning
-** `foo' doesn't appear in menus
-** Node following `sub1' in menu `sub3' and in sectionning `sub2' differ
-** No node following `sub2' in menu, but `sub3' follows in sectionning
-** @menu before first node (l. 7)
+menutextorder.texi:4: warning: @menu seen before first @node
+menutextorder.texi:4: warning: perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?
+menutextorder.texi:9: warning: No node following `bar' in menu, but `foo' follows in sectionning
+menutextorder.texi:16: warning: unreferenced node `onesub1'
+menutextorder.texi:9: warning: Node `bar' lacks menu item for `onesub1' despite being its Up target.
+menutextorder.texi:16: warning: No node following `onesub1' in menu, but `onesub2' follows in sectionning
+menutextorder.texi:23: warning: unreferenced node `foo'
+menutextorder.texi:32: warning: Node following `sub1' in menu `sub3' and in sectionning `sub2' differ
+menutextorder.texi:35: warning: No node following `sub2' in menu, but `sub3' follows in sectionning
+menutextorder.texi:7: warning: @menu before first node
 Document without Top node.

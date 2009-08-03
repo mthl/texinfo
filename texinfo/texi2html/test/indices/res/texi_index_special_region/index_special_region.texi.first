@@ -1,0 +1,54 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename index_special_region.info
+
+
+
+@node Top
+@top Top
+@chapter Chapter
+
+@insertcopying
+
+This test demonstrates @@anchor and indices in @@copying
+and titlepage, and various wrong index entries.
+
+@findex findex entry
+
+@cindex
+@deffn{truc} { }
+@deffnx{truc}
+@deffnx{} {}
+@end deffn
+
+@ftable
+@item
+@item fun
+@end ftable
+
+@menu
+* Copying and indices::
+@end menu
+
+@node Copying and indices
+@appendix Copying and indices
+
+In the appendix, we print the indices and references.
+
+@findex another fun
+
+@cindex Copying appendix
+
+@ref{Copying information} for the copying information.
+@ref{Public domain reference} for reference on the licence.
+
+@ref{Titlepage anchor} for the titlepage.
+@ref{Titlepage footnote anchor} for reference on the titlepage.
+
+@insertcopying
+
+@printindex cp
+@printindex fn
+
+@contents
+@bye

@@ -1,3 +1,4 @@
+texi index_special_region.texi
 index_table index_table.texi
 index_table_chapter index_table.texi -split chapter -init index_test.init
 split_chapter_index split_chapter_index.texi -split chapter -init index_test.init
