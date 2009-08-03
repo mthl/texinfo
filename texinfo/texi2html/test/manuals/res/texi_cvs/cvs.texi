@@ -7187,7 +7187,7 @@ recognized.
 
 @c - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 @node Log keyword
-@section Problems with the $@i{}Log$ keyword.
+@section Problems with the $ @i{}Log$ keyword.
 
 The @code{$@i{}Log$} keyword is somewhat
 controversial.  As long as you are working on your

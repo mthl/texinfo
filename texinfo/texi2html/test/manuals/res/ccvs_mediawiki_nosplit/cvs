@@ -7441,7 +7441,7 @@ Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the
 The <code>$Log</code> keyword is useful for
 accumulating a complete change log in a source file,
 but for several reasons it can be problematic.
-See section [[#Log-keyword|Problems with the $<i></i>Log$ keyword.]].
+See section [[#Log-keyword|Problems with the $ <i></i>Log$ keyword.]].
 </p>
 <div id="index-RCSfile-keyword"></div>
 </dd>
@@ -7853,8 +7853,8 @@ recognized.
 <td valign="middle" align="left">|[[#Index|Index]]|</td>
 <td valign="middle" align="left">|[[#SEC_About| ? ]]|</td>
 </tr></table>
-<div id="Problems-with-the-_0024Log_0024-keyword_002e"></div>
-=== Problems with the $<i></i>Log$ keyword. ===
+<div id="Problems-with-the-_0024-Log_0024-keyword_002e"></div>
+=== Problems with the $ <i></i>Log$ keyword. ===
 
 <p>The <code>$<i></i>Log$</code> keyword is somewhat
 controversial.  As long as you are working on your
@@ -17246,7 +17246,7 @@ comprehensive, detailed list of known bugs.
     <li><div id="toc-Avoiding-substitution-1"></div>[[#Avoiding-substitution|Avoiding substitution]]</li>
     <li><div id="toc-Substitution-modes-1"></div>[[#Substitution-modes|Substitution modes]]</li>
     <li><div id="toc-Configuring-Keyord-Expansion"></div>[[#Configuring-keyword-expansion|Configuring Keyord Expansion]]</li>
-    <li><div id="toc-Problems-with-the-_0024Log_0024-keyword_002e"></div>[[#Log-keyword|Problems with the $<i></i>Log$ keyword.]]</li>
+    <li><div id="toc-Problems-with-the-_0024-Log_0024-keyword_002e"></div>[[#Log-keyword|Problems with the $ <i></i>Log$ keyword.]]</li>
   </ul></li>
   <li><div id="toc-Tracking-third_002dparty-sources"></div>[[#Tracking-sources|Tracking third-party sources]]
   <ul>

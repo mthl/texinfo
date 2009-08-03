@@ -1,6 +1,6 @@
 <div id="Tracking-sources"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Problems with the $Log: not supported by cvs2svn $ keyword.#Log-keyword  &lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Problems with the $ Log$ keyword.#Log-keyword  &lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Importing for the first time#First-import  &gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &lt;&lt; ]|</td>
@@ -57,7 +57,7 @@ revision.
 </nowiki></pre>
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Problems with the $Log: not supported by cvs2svn $ keyword.#Log-keyword  &lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Problems with the $ Log$ keyword.#Log-keyword  &lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Importing for the first time#First-import  &gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &lt;&lt; ]|</td>

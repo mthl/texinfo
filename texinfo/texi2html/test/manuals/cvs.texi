@@ -7363,7 +7363,7 @@ recognized.
 
 @c - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 @node Log keyword
-@section Problems with the $@splitrcskeyword{}Log$ keyword.
+@section Problems with the $ @splitrcskeyword{}Log$ keyword.
 
 The @code{$@splitrcskeyword{}Log$} keyword is somewhat
 controversial.  As long as you are working on your

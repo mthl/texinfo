@@ -1,7 +1,7 @@
 <div id="Configuring-keyword-expansion"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Substitution modes#Substitution-modes  &lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Problems with the $Log: not supported by cvs2svn $ keyword.#Log-keyword  &gt; ]|</td>
+<td valign="middle" align="left">|[cvs: Problems with the $ Log$ keyword.#Log-keyword  &gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  Up ]|</td>
@@ -107,7 +107,7 @@ recognized.
 <hr size="1">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Substitution modes#Substitution-modes  &lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Problems with the $Log: not supported by cvs2svn $ keyword.#Log-keyword  &gt; ]|</td>
+<td valign="middle" align="left">|[cvs: Problems with the $ Log$ keyword.#Log-keyword  &gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  Up ]|</td>

@@ -974,7 +974,7 @@
     <li><div id="toc-Avoiding-substitution-1"></div>[cvs: Keyword substitution#Avoiding-substitution Avoiding substitution]</li>
     <li><div id="toc-Substitution-modes-1"></div>[cvs: Keyword substitution#Substitution-modes Substitution modes]</li>
     <li><div id="toc-Configuring-Keyord-Expansion"></div>[cvs: Keyword substitution#Configuring-keyword-expansion Configuring Keyord Expansion]</li>
-    <li><div id="toc-Problems-with-the-_0024Log_0024-keyword_002e"></div>[cvs: Keyword substitution#Log-keyword Problems with the $<i></i>Log$ keyword.]</li>
+    <li><div id="toc-Problems-with-the-_0024-Log_0024-keyword_002e"></div>[cvs: Keyword substitution#Log-keyword Problems with the $ <i></i>Log$ keyword.]</li>
   </ul></li>
   <li><div id="toc-Tracking-third_002dparty-sources"></div>[cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources]
   <ul>

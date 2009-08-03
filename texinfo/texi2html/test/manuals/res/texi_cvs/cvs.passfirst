@@ -7142,7 +7142,7 @@ cvs.texi(,7362) recognized.
 cvs.texi(,7363) 
 cvs.texi(,7364) @c - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 cvs.texi(,7365) @node Log keyword
-cvs.texi(splitrcskeyword,7366) @section Problems with the $@i{}Log$ keyword.
+cvs.texi(splitrcskeyword,7366) @section Problems with the $ @i{}Log$ keyword.
 cvs.texi(,7367) 
 cvs.texi(splitrcskeyword,7368) The @code{$@i{}Log$} keyword is somewhat
 cvs.texi(,7369) controversial.  As long as you are working on your

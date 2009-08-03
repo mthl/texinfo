@@ -156,7 +156,7 @@ Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the
 The <code>$Log</code> keyword is useful for
 accumulating a complete change log in a source file,
 but for several reasons it can be problematic.
-See section [[#Log-keyword|Problems with the $<i></i>Log$ keyword.]].
+See section [[#Log-keyword|Problems with the $ <i></i>Log$ keyword.]].
 </p>
 <div id="index-RCSfile-keyword"></div>
 </dd>
@@ -568,8 +568,8 @@ recognized.
 <td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
-<div id="Problems-with-the-_0024Log_0024-keyword_002e"></div>
-=== Problems with the $<i></i>Log$ keyword. ===
+<div id="Problems-with-the-_0024-Log_0024-keyword_002e"></div>
+=== Problems with the $ <i></i>Log$ keyword. ===
 
 <p>The <code>$<i></i>Log$</code> keyword is somewhat
 controversial.  As long as you are working on your

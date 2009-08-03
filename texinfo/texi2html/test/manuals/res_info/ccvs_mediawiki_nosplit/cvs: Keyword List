@@ -109,7 +109,7 @@ Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the
 The <code>$Log</code> keyword is useful for
 accumulating a complete change log in a source file,
 but for several reasons it can be problematic.
-See section [cvs: Problems with the $Log: not supported by cvs2svn $ keyword.#Log-keyword Problems with the $<i></i>Log$ keyword.].
+See section [cvs: Problems with the $ Log$ keyword.#Log-keyword Problems with the $ <i></i>Log$ keyword.].
 </p>
 <div id="index-RCSfile-keyword"></div>
 </dd>

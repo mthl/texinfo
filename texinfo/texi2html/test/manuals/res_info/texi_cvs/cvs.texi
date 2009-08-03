@@ -7212,7 +7212,7 @@ recognized.
 
 @c - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 @node Log keyword
-@section Problems with the $ Log$ keyword.
+@section Problems with the $  Log$ keyword.
 
 The @code{$ Log$} keyword is somewhat
 controversial.  As long as you are working on your
