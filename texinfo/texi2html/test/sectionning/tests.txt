@@ -1,24 +1,25 @@
 texi html-top.texi
 top top.texi
 sectionning sectionning.texi
-sectionning_directions sectionning.texi -init test_directions.init
+sectionning_directions sectionning.texi --init test_directions.init
 novalidate novalidate.texi
-makeinfo_novalidate_split novalidate.texi -init makeinfo.init -no-node-file
-makeinfo_novalidate_unsplit novalidate.texi -init makeinfo.init -split no -no-node-file
+makeinfo_novalidate_split novalidate.texi --init makeinfo.init --no-node-file
+makeinfo_novalidate_unsplit novalidate.texi --init makeinfo.init --split no --no-node-file
+makeinfo_novalidate_unsplit_node_file novalidate.texi --init makeinfo.init --split no
 first_section_no_node first_section_no_node.texi
 nodes_before_top nodes_before_top.texi
 nodes_after_top nodes_after_top.texi --use-nodes
 nodes_after_top_no_node nodes_after_top.texi
 section_nodes_before_top section_nodes_before_top.texi
-nodes_after_top_before_section nodes_after_top_before_section.texi -split chapter
+nodes_after_top_before_section nodes_after_top_before_section.texi --split chapter
 nodes_test nodes_test.texi
 no_section_no_node no_section.texi
 no_section no_section.texi --use-nodes
-no_section_directions no_section.texi -init test_directions.init --use-nodes
-no_section_directions_no_node no_section.texi -init test_directions.init
+no_section_directions no_section.texi --init test_directions.init --use-nodes
+no_section_directions_no_node no_section.texi --init test_directions.init
 no_node no_node.texi
-no_node_directions no_node.texi -init test_directions.init
-no_node_chapter_split no_node.texi -split chapter
+no_node_directions no_node.texi --init test_directions.init
+no_node_chapter_split no_node.texi --split chapter
 no_node_no_top no_node_no_top.texi
 no_section_no_top no_section_no_top.texi --use-nodes
 no_section_no_top_no_node no_section_no_top.texi
@@ -30,32 +31,32 @@ first_section_and_nodes first_section_and_nodes.texi
 double_top double_top.texi
 rec_nodes rec_nodes.texi --use-nodes
 rec_nodes_no_node rec_nodes.texi
-makeinfo_rec_nodes rec_nodes.texi -init makeinfo.init -no-node-files
+makeinfo_rec_nodes rec_nodes.texi --init makeinfo.init --no-node-files
 lower_subsub lower_subsub.texi
 raiselowersections raiselowersections.texi
 top_without_node top_without_node.texi
 before_node_and_section before_node_and_section.texi
 section_before_chapter section_before_chapter.texi
-node_footnote_end node_footnote.texi --no-separated-footnotes
-node_footnote_use_node node_footnote.texi -use-node -node-files --footnote-style=end -split node
+node_footnote_end node_footnote.texi --footnote-style=end
+node_footnote_use_node node_footnote.texi --use-node --node-files --footnote-style=end --split node
 test_refs test_refs.texi
-test_refs_chapter test_refs.texi -split chapter
-test_refs_nodes test_refs.texi -split node -node-files -use-nodes
+test_refs_chapter test_refs.texi --split chapter
+test_refs_nodes test_refs.texi --split node --node-files --use-nodes
 at_commands_in_refs at_commands_in_refs.texi
 equivalent_nodes equivalent_nodes.texi --use-nodes
 equivalent_nodes_no_node equivalent_nodes.texi
 html-top_no_Top_node html-top.texi
 menu-whitespace_plain menu-whitespace.texi
-menu-whitespace menu-whitespace.texi -init makeinfo.init
-menu-whitespace_xml menu-whitespace.texi -init xml.init
+menu-whitespace menu-whitespace.texi --init makeinfo.init
+menu-whitespace_xml menu-whitespace.texi --init xml.init
 node-whitespace_plain node-whitespace.texi
-node-whitespace node-whitespace.texi -init makeinfo.init
+node-whitespace node-whitespace.texi --init makeinfo.init
 #nodename_parentheses nodename_parentheses.texi
 nodes_id_docbook nodes_id.texi --init docbook.init
 two_footnotes_in_nodes_plain two_footnotes_in_nodes.texi
-two_footnotes_in_nodes two_footnotes_in_nodes.texi -init makeinfo.init
+two_footnotes_in_nodes two_footnotes_in_nodes.texi --init makeinfo.init
 section_in_unnumbered section_in_unnumbered.texi
-more_nodes_than_sections more_nodes_than_sections.texi -init makeinfo.init
+more_nodes_than_sections more_nodes_than_sections.texi --init makeinfo.init
 no_element no_element.texi
 placed_things_before_element placed_things_before_element.texi
 menutextorder menutextorder.texi
@@ -63,12 +64,12 @@ semi_auto semi_auto.texi
 anchor_in_footnote anchor_in_footnote.texi
 
 test_refs_docbook test_refs.texi --docbook
-at_commands_in_refs_info at_commands_in_refs.texi -init info.init
-two_footnotes_in_nodes_info two_footnotes_in_nodes.texi -init info.init
-two_footnotes_in_nodes_separated_info two_footnotes_in_nodes.texi -init info.init --separated-footnotes
-node_footnote_info node_footnote.texi -init info.init
-node_footnote_separated_info node_footnote.texi -init info.init --footnote-style=separate
-anchor_in_footnote_info anchor_in_footnote.texi -init info.init
-anchor_in_footnote_separated_info anchor_in_footnote.texi -init info.init --footnote-style=separate
-novalidate_info novalidate.texi -init info.init
+at_commands_in_refs_info at_commands_in_refs.texi --init info.init
+two_footnotes_in_nodes_info two_footnotes_in_nodes.texi --init info.init
+two_footnotes_in_nodes_separated_info two_footnotes_in_nodes.texi --init info.init --footnote-style=separate
+node_footnote_info node_footnote.texi --init info.init
+node_footnote_separated_info node_footnote.texi --init info.init --footnote-style=separate
+anchor_in_footnote_info anchor_in_footnote.texi --init info.init
+anchor_in_footnote_separated_info anchor_in_footnote.texi --init info.init --footnote-style=separate
+novalidate_info novalidate.texi --init info.init
 test_two_include test_two_include.texi -I .@PATH_SEPARATOR@../manuals@PATH_SEPARATOR@../macros

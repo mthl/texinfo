@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: 2.4 Controlling the run</title>
+
+<meta name="description" content="Miniker 102 manual: 2.4 Controlling the run">
+<meta name="keywords" content="Miniker 102 manual: 2.4 Controlling the run">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="mini_ker_top.html#Top" rel="start" title="Miniker 102 manual">
+<link href="mini_ker_U.4.html#Concepts-index" rel="index" title="Concepts index">
+<link href="mini_ker_top.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="mini_ker_2.html#A-model-with-Miniker" rel="up" title="2. Miniker model programming">
+<link href="mini_ker_C.1.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
+<link href="mini_ker_2.3.html#Setting-and-running-a-model" rel="previous" title="2.3 Setting and running a model">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Controlling-the-run"></a>
+<ul class="toc"><li><a href="mini_ker_top.html#Top">Miniker 102 manual</a> </li>
+<li><ul class="toc"><li><a href="mini_ker_2.html#A-model-with-Miniker">2. Miniker model programming</a> </li>
+</ul></li>
+</ul>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker_2.3.html#Graphics" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#End-of-time-step" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Controlling-the-run-1"></a>
+<h2 class="section"> 2.4 Controlling the run </h2>
+<ul class="toc">
+<li> <a href="#End-of-time-step">2.4.1 Executing code at the end of each time step</a> </li>
+<li> <a href="#Controlling-the-printout-and-data-output">2.4.2 Controlling the printout and data output</a> </li>
+</ul>
+
+<a name="index-controlling-the-run"></a>
+
+<p>It is possible to add code that will be executed at the end of each time
+step. It is also possible to specify which time step leads to a printout on
+standard output. For maximal control, the code running te model may be 
+turned into a subroutine to be called from another fortran (or C) 
+program, this possibility is covered in <a href="mini_ker_3.2.html#Calling-the-model-code">Calling the model code</a>.
+</p>
+
+<hr size="2">
+<a name="End-of-time-step"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Controlling-the-run" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Controlling-the-printout-and-data-output" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Executing-code-at-the-end-of-each-time-step"></a>
+<h3 class="subsection"> 2.4.1 Executing code at the end of each time step </h3>
+
+<a name="index-zsteer"></a>
+<a name="index-zsteer_002einc"></a>
+
+<p>The code in the sequence &lsquo;<tt>zsteer</tt>&rsquo; is executed at the end of each time
+step. It is possible to change the time step length (variable <code>dt</code>)
+verify that the non linearity are not too big, or perform 
+discontinuous modifications of the states. One available variable <code>res</code>
+might be usefull for time step monitoring. At the end of the time step,
+as soon as       &#x03C6; has been computed, a numerical test is applied
+on a pseudo relative quadratic residual between 
+      &#x03C6; = f(&#x03B7;(t - dt) + d&#x03C6; (<code> ffl</code>), where       d&#x03C6;
+is given by the system resolution in <code>ker</code>,and
+      &#x03C6; = f(&#x03B7;),&#x03C6;)
+,  Fortran variable (<code>ff</code>):
+</p>
+<pre class="verbatim">! ========================================================
+! test linearite ffl - ff
+! ========================================================
+if (istep.gt.1)
+&lt; res=0.; &lt;io=1,m; res = res +(ffl(io)-ff(io))**2/max(one,ff(io)*ff(io)); &gt;;
+  if (res .gt. TOL_FFL)
+  &lt; print*,'*** pb linearite : res &gt; TOL_FFL a istep',istep,res,' &gt; ',TOL_FFL;
+    do io=1,m &lt; z_pr: io,ff(io),ff(io)-ffl(io); &gt;;
+  &gt;;
+&gt;;
+</pre>
+<p>This test hence applies only for non linearities in tranfer models. Nevertheless,
+<code>res</code> might be usefull to monitor the time step <code>dt</code> in <code>ZSTEER</code>
+and eventually go backward one step (<code>goto :ReDoStep:</code>).
+This can more appropriatly be coded in the (empty in default case) 
+sequence <code>zstep</code>, inserted just before time-advancing
+states and <code>time</code> variables in &lsquo;<tt>principal</tt>&rsquo;.
+<a name="index-ffl_0028_002e_0029"></a>
+<a name="index-ffl-_0028linearity-test_0029"></a>
+<a name="index-linearity-test"></a>
+</p>
+<p>It is also possible to fix the value of the criterium <code>TOL_FFL</code> in
+&lsquo;<tt>zinit</tt>&rsquo; different from its default value of       10-3 &ndash;
+independent of the Fortran precision.
+</p>
+
+<p>Many other variables are available, including
+</p><dl compact="compact">
+<dt><code>istep</code>
+<a name="index-istep"></a>
+</dt>
+<dd><p>The step number;
+</p></dd>
+<dt><code>couplage(.)</code>
+<a name="index-couplage_0028_002e_0029"></a>
+</dt>
+<dd><p>The <acronym title="Transfer Evolution Formalism">TEF</acronym> coupling matrix between transfers;
+</p></dd>
+<dt><code>H</code>
+<a name="index-H"></a>
+</dt>
+<dd><p>The Jacobian matrix corresponding with:
+
+    <center class="math-display" >
+<img 
+src="mini_ker_tex4ht_tex6x.png" alt="&#x2202;&#x03B7;g(&#x03B7;(t),&#x03C6;(t));  " class="math-display" ></center>  
+</p></dd>
+<dt><code>Bb</code>
+<a name="index-Bb"></a>
+</dt>
+<dd><p>The Jacobian matrix corresponding with:
+
+    <center class="math-display" >
+<img 
+src="mini_ker_tex4ht_tex7x.png" alt="&#x2202;&#x03C6;g(&#x03B7;(t),&#x03C6;(t));  " class="math-display" ></center>  
+</p></dd>
+<dt><code>Bt</code>
+<a name="index-Bt"></a>
+</dt>
+<dd><p>The Jacobian matrix corresponding with:
+
+    <center class="math-display" >
+<img 
+src="mini_ker_tex4ht_tex8x.png" alt="&#x2202;&#x03B7;f(&#x03B7;(t),&#x03C6;(t));  " class="math-display" ></center>  
+</p></dd>
+<dt><code>D</code>
+<a name="index-D"></a>
+</dt>
+<dd><p>The Jacobian matrix corresponding with:
+
+
+    <center class="math-display" >
+<img 
+src="mini_ker_tex4ht_tex9x.png" alt="&#x2202;&#x03C6;f(&#x03B7;(t),&#x03C6;(t));  " class="math-display" ></center>  
+</p>
+</dd>
+<dt><code>aspha</code>
+<a name="index-aspha"></a>
+</dt>
+<dd><p>The state advance matrix;
+</p></dd>
+<dt><code>dneta</code>
+<a name="index-dneta"></a>
+</dt>
+<dt><code>dphi</code>
+<a name="index-dphi"></a>
+</dt>
+<dd><p>the variable increments;
+</p></dd>
+</dl>
+<p>One should be aware of that the linearity test concerns the preceding step. 
+We have yet no example of managing the time-step.
+</p>
+
+<hr size="2">
+<a name="Controlling-the-printout-and-data-output"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#End-of-time-step" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_3.html#Advanced-programming" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Controlling-the-printout-and-data-output-1"></a>
+<h3 class="subsection"> 2.4.2 Controlling the printout and data output </h3>
+
+<a name="index-printing"></a>
+<a name="index-zprint"></a>
+<a name="index-modzprint-1"></a>
+
+<p>The printout on standard output is performed if the variable <code>zprint</code> 
+of type <code>logical</code> is true. Therefore it is possible to control this
+printout by setting <code>zprint</code> false or true. For example the following 
+code, in sequence &lsquo;<tt>zsteer</tt>&rsquo;, triggers printing for every 
+<code>modzprint</code> time step and the two following time steps:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">ZPRINT = mod(istep+1,modzprint).eq.0;
+Zprint = zprint .or. mod(istep+1,modzprint).eq.1;
+Zprint = zprint .or. mod(istep+1,modzprint).eq.2;
+</pre></td></tr></table>
+
+<p>The data output to &lsquo;<tt>.data</tt>&rsquo; files described in <a href="mini_ker_2.3.html#Simulation-and-output">Running a simulation and using the output</a> is performed if the
+<code>logical</code> variable <code>zout</code> is true. For example the following
+code, in &lsquo;<tt>zsteer</tt>&rsquo;, triggers output to &lsquo;<tt>.data</tt>&rsquo; files every 
+<code>modzout</code> step.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Zout = mod(istep,modzout).eq.0;
+</pre></td></tr></table>
+
+<hr size="2">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

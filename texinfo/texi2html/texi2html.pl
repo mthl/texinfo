@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.303 2009-08-03 09:35:06 pertusus Exp $
+# $Id: texi2html.pl,v 1.304 2009-08-04 07:58:27 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -277,6 +277,7 @@ $TOC_FILE
 $FRAMES
 $SHOW_MENU
 $NUMBER_SECTIONS
+$NUMBER_FOOTNOTES
 $USE_NODES
 $USE_SECTIONS
 $USE_NODE_TARGET
@@ -288,6 +289,7 @@ $NODE_FILENAMES
 $NODE_NAME_IN_MENU
 $AVOID_MENU_REDUNDANCY
 $HEADERS
+$NO_WARN
 $FORCE
 $MONOLITHIC
 $SHORTEXTN 
@@ -366,6 +368,7 @@ $USE_REL_REV
 $USE_LINKS
 $OPEN_QUOTE_SYMBOL
 $CLOSE_QUOTE_SYMBOL
+$NO_NUMBER_FOOTNOTE_SYMBOL
 $NO_BULLET_LIST_STYLE
 $NO_BULLET_LIST_ATTRIBUTE
 $TOP_NODE_FILE
@@ -2221,14 +2224,18 @@ sub encoding_alias($;$)
     return $encoding if (!defined($encoding) or $encoding eq '');
     if ($Texi2HTML::Config::USE_UNICODE)
     {
-         if (! Encode::resolve_alias($encoding))
+         my $result_encoding = Encode::resolve_alias($encoding);
+         if (! $result_encoding)
          {
               msg_warn("Encoding name unknown: $encoding", $line_nr);
               return undef;
          }
-         print STDERR "# Using encoding " . Encode::resolve_alias($encoding) . "\n"
-             if ($T2H_VERBOSE);
-         return Encode::resolve_alias($encoding); 
+         if (defined($Texi2HTML::Config::t2h_encoding_aliases{$result_encoding}))
+         {
+             $result_encoding = $Texi2HTML::Config::t2h_encoding_aliases{$result_encoding};
+         }
+         print STDERR "# Using encoding $result_encoding\n" if ($T2H_VERBOSE);
+         return $result_encoding; 
     }
     else
     {
@@ -2443,42 +2450,11 @@ $T2H_OPTIONS -> {'dump-texi'} =
  noHelp => 1
 };
 
-$T2H_OPTIONS -> {'E'} =
+$T2H_OPTIONS -> {'macro-expand|E'} =
 {
  type => '=s',
  linkage => \$Texi2HTML::Config::MACRO_EXPAND,
  verbose => 'output macro expanded source in <file>',
- noHelp => 2
-};
-
-$T2H_OPTIONS -> {'macro-expand'} =
-{
- type => '=s',
- linkage => \$Texi2HTML::Config::MACRO_EXPAND,
- verbose => 'output macro expanded source in <file>',
-};
-
-$T2H_OPTIONS -> {'expand'} =
-{
- type => '=s',
- linkage => sub {Texi2HTML::Config::set_expansion($_[1], 1);},
- verbose => 'Expand info|tex|none section of texinfo source',
- noHelp => 1,
-};
-
-$T2H_OPTIONS -> {'no-expand'} =
-{
- type => '=s',
- linkage => sub {Texi2HTML::Config::set_expansion ($_[1], 0);},
- verbose => 'Don\'t expand the given section of texinfo source',
-};
-
-$T2H_OPTIONS -> {'noexpand'} = 
-{
- type => '=s',
- linkage => $T2H_OPTIONS->{'no-expand'}->{'linkage'},
- verbose => $T2H_OPTIONS->{'no-expand'}->{'verbose'},
- noHelp  => 1,
 };
 
 $T2H_OPTIONS -> {'ifhtml'} =
@@ -2594,7 +2570,14 @@ $T2H_OPTIONS -> {'number-sections'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::NUMBER_SECTIONS,
- verbose => 'use numbered sections',
+ verbose => 'output chapter and sectioning numbers.',
+};
+
+$T2H_OPTIONS -> {'number-footnotes'} =
+{
+ type => '!',
+ linkage => \$Texi2HTML::Config::NUMBER_FOOTNOTES,
+ verbose => 'output footnote numbers.',
 };
 
 $T2H_OPTIONS -> {'use-nodes'} =
@@ -2611,7 +2594,7 @@ $T2H_OPTIONS -> {'node-files'} =
  verbose => 'produce one file per node for cross references'
 };
 
-$T2H_OPTIONS -> {'footnote-style'} =
+$T2H_OPTIONS -> {'footnote-style|s'} =
 {
  type => '=s',
  linkage => sub {set_footnote_style ($_[1], 1);},
@@ -2646,7 +2629,7 @@ $T2H_OPTIONS -> {'headers'} =
  linkage => sub {
     Texi2HTML::Config::set_conf('headers', $_[1], 1);
     Texi2HTML::Config::t2h_default_load_format('plaintext', 1)
-        if (defined($Texi2HTML::Config::OUTPUT_FORMAT) and $Texi2HTML::Config::OUTPUT_FORMAT eq 'info');
+        if (!$_[1] and defined($Texi2HTML::Config::OUTPUT_FORMAT) and $Texi2HTML::Config::OUTPUT_FORMAT eq 'info');
  },
  verbose => 'output navigation headers for each section',
 };
@@ -2673,26 +2656,25 @@ $T2H_OPTIONS -> {'prefix'} =
  verbose => 'use as prefix for output files, instead of <docname>',
 };
 
-$T2H_OPTIONS -> {'o'} =
-{
- type => '=s',
- linkage => \$Texi2HTML::Config::OUT,
- verbose => 'output goes to $s (directory if split)',
- noHelp => 2,
-};
-
-$T2H_OPTIONS -> {'output'} =
+$T2H_OPTIONS -> {'output|out|o'} =
 {
  type => '=s',
  linkage => \$Texi2HTML::Config::OUT,
  verbose => 'output goes to $s (directory if split)',
 };
 
-$T2H_OPTIONS -> {'no-validate'} = 
+$T2H_OPTIONS -> {'no-validate|no-pointer-validate'} = 
 {
- type => '!',
+ type => '',
  linkage => sub {Texi2HTML::Config::set_conf('novalidate',$_[1],1)},
  verbose => 'suppress node cross-reference validation',
+};
+
+$T2H_OPTIONS -> {'no-warn'} =
+{
+ type => '',
+ linkage => \$Texi2HTML::Config::NO_WARN,
+ verbose => 'suppress warnings (but not errors).'
 };
 
 $T2H_OPTIONS -> {'short-ref'} =
@@ -2718,16 +2700,8 @@ $T2H_OPTIONS -> {'def-table'} =
  noHelp  => 1,
 };
 
-# disambiguate verbose and version, like makeinfo does
-$T2H_OPTIONS -> {'v'} =
-{
- type => '!',
- linkage=> \$Texi2HTML::Config::VERBOSE,
- verbose => 'print progress info to stdout',
- noHelp  => 2,
-};
-
-$T2H_OPTIONS -> {'verbose'} =
+$T2H_OPTIONS -> {'verbose'} = 0;
+$T2H_OPTIONS -> {'verbose|v'} =
 {
  type => '!',
  linkage=> \$Texi2HTML::Config::VERBOSE,
@@ -2849,7 +2823,7 @@ $T2H_OPTIONS -> {'transliterate-file-names'} =
  verbose => 'produce file names in ASCII transliteration',
 };
 
-$T2H_OPTIONS -> {'error-limit'} =
+$T2H_OPTIONS -> {'error-limit|e'} =
 {
  type => '=i',
  linkage => \$Texi2HTML::Config::ERROR_LIMIT,
@@ -2863,7 +2837,7 @@ $T2H_OPTIONS -> {'split-size'} =
  verbose => 'split Info files at size s (default 300000).',
 };
 
-$T2H_OPTIONS -> {'paragraph-indent'} =
+$T2H_OPTIONS -> {'paragraph-indent|p'} =
 {
  type => '=s',
  linkage => sub {set_paragraph_indent($_[1], 1);},
@@ -2872,7 +2846,7 @@ $T2H_OPTIONS -> {'paragraph-indent'} =
                                 `asis', preserve existing indentation.",
 };
 
-$T2H_OPTIONS -> {'fill-column'} =
+$T2H_OPTIONS -> {'fill-column|f'} =
 {
  type => '=i',
  linkage => sub {Texi2HTML::Config::set_conf('fillcolumn',$_[1], 1);},
@@ -2901,7 +2875,7 @@ $T2H_OPTIONS -> {'internal-links'} =
  verbose => 'produce list of internal links in FILE.'
 };
 
-$T2H_OPTIONS -> {'force'} = 
+$T2H_OPTIONS -> {'force|F'} = 
 { type => '!',
  linkage => \$Texi2HTML::Config::FORCE,
  verbose => 'preserve output even if errors.'
@@ -2913,6 +2887,19 @@ $T2H_OPTIONS -> {'monolithic'} =
  linkage => \$Texi2HTML::Config::MONOLITHIC,
  verbose => 'output only one file including ToC, About...',
  noHelp => 1
+};
+
+$T2H_OPTIONS -> {'commands-in-node-names'} =
+{
+ type => '!',
+ verbose => 'Always set',
+ noHelp => 1
+};
+
+$T2H_OPTIONS -> {'output-indent'} = 
+{
+ type => '=i',
+ verbose => 'This option used to indent XML, it is ignored'
 };
 
 my %output_format_names = (
@@ -2952,6 +2939,29 @@ if (defined($default_output_format))
 ##
 my $T2H_OBSOLETE_OPTIONS;
 
+$T2H_OBSOLETE_OPTIONS -> {'expand'} =
+{
+ type => '=s',
+ linkage => sub {Texi2HTML::Config::set_expansion($_[1], 1);},
+ verbose => 'Expand <s> section of texinfo source',
+ noHelp => 1,
+};
+
+$T2H_OBSOLETE_OPTIONS -> {'no-expand'} =
+{
+ type => '=s',
+ linkage => sub {Texi2HTML::Config::set_expansion ($_[1], 0);},
+ verbose => 'Don\'t expand the given section of texinfo source',
+};
+
+$T2H_OBSOLETE_OPTIONS -> {'noexpand'} = 
+{
+ type => '=s',
+ linkage => $T2H_OBSOLETE_OPTIONS->{'no-expand'}->{'linkage'},
+ verbose => $T2H_OBSOLETE_OPTIONS->{'no-expand'}->{'verbose'},
+ noHelp  => 1,
+};
+
 $T2H_OBSOLETE_OPTIONS -> {'out-file'} =
 {
  type => '=s',
@@ -2968,13 +2978,14 @@ $T2H_OBSOLETE_OPTIONS -> {'lang'} =
  noHelp => 2
 };
 
-$T2H_OBSOLETE_OPTIONS -> {'number'} =
-{
- type => '!',
- linkage => \$Texi2HTML::Config::NUMBER_SECTIONS,
- verbose => 'obsolete, use "--number-sections" instead',
- noHelp => 2
-};
+# this should be picked up as a number-sections variant
+#$T2H_OBSOLETE_OPTIONS -> {'number'} =
+#{
+# type => '!',
+# linkage => \$Texi2HTML::Config::NUMBER_SECTIONS,
+# verbose => 'obsolete, use "--number-sections" instead',
+# noHelp => 2
+#};
 
 
 $T2H_OBSOLETE_OPTIONS -> {'separated-footnotes'} =
@@ -3157,14 +3168,14 @@ $T2H_OBSOLETE_OPTIONS -> {expandinfo} =
 {
  type => '!',
  linkage => sub {push @Texi2HTML::Config::EXPAND, 'info';},
- verbose => 'obsolete, use "-expand info" instead',
+ verbose => 'obsolete, use "--ifinfo" instead',
  noHelp => 2,
 };
 $T2H_OBSOLETE_OPTIONS -> {expandtex} =
 {
  type => '!',
  linkage => sub {push @Texi2HTML::Config::EXPAND, 'tex';},
- verbose => 'obsolete, use "-expand tex" instead',
+ verbose => 'obsolete, use "--iftex" instead',
  noHelp => 2,
 };
 $T2H_OBSOLETE_OPTIONS -> {split_node} =
@@ -3204,14 +3215,6 @@ $T2H_OBSOLETE_OPTIONS -> {section_navigation} =
  noHelp => 2,
 };
 
-$T2H_OBSOLETE_OPTIONS -> {verbose} =
-{
- type => '!',
- linkage=> \$Texi2HTML::Config::VERBOSE,
- verbose => 'obsolete, use -Verbose instead',
- noHelp => 2
-};
-
 # read initialzation from $sysconfdir/texi2htmlrc or $HOME/.texi2htmlrc
 # (this is obsolete)
 my @rc_files = ();
@@ -3242,6 +3245,128 @@ foreach my $file (locate_init_file($conf_file_name, 1))
 #                                                                              #
 #---############################################################################
 
+# options known by makeinfo (+version and if*)
+my @makeinfo_options = ('error-limit', 'error-limit', 'document-language',
+'force', 'help', 'no-validate', 'no-warn', 'verbose', 'docbook', 'html', 
+'xml', 'plaintext', 'macro-expand', 'headers', 'no-split', 
+'number-sections', 'output', 'disable-encoding', 'enable-encoding', 
+'fill-column', 'footnote-style', 'paragraph-indent', 'split-size', 
+'css-include', 'css-ref', 'internal-links', 'transliterate-file-names', 
+'output-indent', 'number-footnotes', 'D', 'I', 'P', 'U');
+
+my @basic_options = ('dump-texi', 'debug', 'test', 'conf-dir', 'init-file',
+'split');
+
+my $makeinfo_help =
+"Usage: $my_command_name [OPTION]... TEXINFO-FILE...
+
+".
+'Translate Texinfo source documentation to various other formats, by default
+Info files suitable for reading online with Emacs or standalone GNU Info.
+
+General options:
+      --error-limit=NUM       quit after NUM errors (default 100).
+      --document-language=STR locale to use in translating Texinfo keywords
+                                for the output document (default C).
+      --force                 preserve output even if errors.
+      --help                  display this help and exit.
+      --no-validate           suppress node cross-reference validation.
+      --no-warn               suppress warnings (but not errors).
+  -v, --verbose               explain what is being done.
+      --version               display version information and exit.
+
+Output format selection (default is to produce Info):
+      --docbook               output Docbook XML rather than Info.
+      --html                  output HTML rather than Info.
+      --xml                   output Texinfo XML rather than Info.
+      --plaintext             output plain text rather than Info.
+
+General output options:
+  -E, --macro-expand=FILE     output macro-expanded source to FILE,
+                                ignoring any @setfilename.
+      --no-headers            suppress node separators, Node: lines, and menus
+                                from Info output (thus producing plain text)
+                                or from HTML (thus producing shorter output);
+                                also, write to standard output by default.
+      --no-split              suppress the splitting of Info or HTML output,
+                                generate only one output file.
+      --number-sections       output chapter and sectioning numbers.
+  -o, --output=FILE           output to FILE (or directory if split HTML).
+
+Options for Info and plain text:
+      --disable-encoding      do not output accented and special characters
+                                in Info output based on @documentencoding.
+      --enable-encoding       override --disable-encoding (default).
+      --fill-column=NUM       break Info lines at NUM characters (default 72).
+      --footnote-style=STYLE  output footnotes in Info according to STYLE:
+                                `separate\' to put them in their own node;
+                                `end\' to put them at the end of the node, in
+                                which they are defined (this is the default).
+      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default 3).
+                                If VAL is `none\', do not indent; if VAL is
+                                `asis\', preserve existing indentation.
+      --split-size=NUM        split Info files at size NUM (default 300000).
+
+Options for HTML:
+      --css-include=FILE      include FILE in HTML <style> output;
+                                read stdin if FILE is -.
+      --css-ref=URL           generate reference to a CSS file.
+      --internal-links=FILE   produce list of internal links in FILE.
+      --transliterate-file-names
+                              produce file names in ASCII transliteration.
+
+Options for XML and Docbook:
+      --output-indent=VAL     indent XML elements by VAL spaces (default 2).
+                                If VAL is 0, ignorable whitespace is dropped.
+
+Input file options:
+      --commands-in-node-names  allow @ commands in node names.
+  -D VAR                        define the variable VAR, as with @set.
+  -I DIR                        append DIR to the @include search path.
+  -P DIR                        prepend DIR to the @include search path.
+  -U VAR                        undefine the variable VAR, as with @clear.
+
+Conditional processing in input:
+  --ifdocbook       process @ifdocbook and @docbook even if
+                      not generating Docbook.
+  --ifhtml          process @ifhtml and @html even if not generating HTML.
+  --ifinfo          process @ifinfo even if not generating Info.
+  --ifplaintext     process @ifplaintext even if not generating plain text.
+  --iftex           process @iftex and @tex; implies --no-split.
+  --ifxml           process @ifxml and @xml.
+  --no-ifdocbook    do not process @ifdocbook and @docbook text.
+  --no-ifhtml       do not process @ifhtml and @html text.
+  --no-ifinfo       do not process @ifinfo text.
+  --no-ifplaintext  do not process @ifplaintext text.
+  --no-iftex        do not process @iftex and @tex text.
+  --no-ifxml        do not process @ifxml and @xml text.
+
+  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.
+
+  The defaults for the @if... conditionals depend on the output format:
+  if generating HTML, --ifhtml is on and the others are off;
+  if generating Info, --ifinfo is on and the others are off;
+  if generating plain text, --ifplaintext is on and the others are off;
+  if generating XML, --ifxml is on and the others are off.
+
+Examples:
+  makeinfo foo.texi                      write Info to foo\'s @setfilename
+  makeinfo --html foo.texi               write HTML to @setfilename
+  makeinfo --xml foo.texi                write Texinfo XML to @setfilename
+  makeinfo --docbook foo.texi            write DocBook XML to @setfilename
+  makeinfo --no-headers foo.texi         write plain text to standard output
+
+  makeinfo --html --no-headers foo.texi  write html without node lines, menus
+  makeinfo --number-sections foo.texi    write Info with numbered sections
+  makeinfo --no-split foo.texi           write one Info file however big
+
+Email bug reports to bug-texinfo@gnu.org,
+general questions and discussion to help-texinfo@gnu.org.
+Texinfo home page: http://www.gnu.org/software/texinfo/
+';
+
+# parsing like texi2html:
+
 
 my $T2H_USAGE_TEXT = <<EOT;
 Usage: texi2html  [OPTIONS] TEXINFO-FILE
@@ -3253,7 +3378,8 @@ EOT
 
 my $options = new Getopt::MySimple;
 
-$T2H_OPTIONS -> {'help'} = 
+$T2H_OPTIONS -> {'help'} = 0;
+$T2H_OPTIONS -> {'help|h'} = 
 { 
  type => ':i', 
  default => '',
@@ -3272,28 +3398,69 @@ $T2H_OBSOLETE_OPTIONS->{'verbose'} = 0;
 # are parsed, for example -init file.init dodesn't work anymore.
 #Getopt::Long::Configure ("gnu_getopt");
 
-# some older version of GetOpt::Long don't have
-# Getopt::Long::Configure("pass_through")
-eval {Getopt::Long::Configure("pass_through");};
-my $Configure_failed = $@ && <<EOT;
+if ($my_command_name eq 'texi2html')
+{
+  # some older version of GetOpt::Long don't have
+  # Getopt::Long::Configure("pass_through")
+  eval {Getopt::Long::Configure("pass_through");};
+  my $Configure_failed = $@ && <<EOT;
 **WARNING: Parsing of obsolete command-line options could have failed.
            Consider to use only documented command-line options (run
            'texi2html --help 2' for a complete list) or upgrade to perl
            version 5.005 or higher.
 EOT
-if (! $options->getOptions($T2H_OPTIONS, $T2H_USAGE_TEXT, "$THISVERSION\n"))
-{
-    print STDERR "$Configure_failed" if $Configure_failed;
-    die $T2H_FAILURE_TEXT;
-}
-if (@ARGV > 1)
-{
-    eval {Getopt::Long::Configure("no_pass_through");};
-    if (! $options->getOptions($T2H_OBSOLETE_OPTIONS, $T2H_USAGE_TEXT, "$THISVERSION\n"))
-    {
+  if (! $options->getOptions($T2H_OPTIONS, $T2H_USAGE_TEXT, "$THISVERSION\n"))
+  {
+     print STDERR "$Configure_failed" if $Configure_failed;
+     die $T2H_FAILURE_TEXT;
+  }
+  if (@ARGV > 1)
+  {
+     eval {Getopt::Long::Configure("no_pass_through");};
+     if (! $options->getOptions($T2H_OBSOLETE_OPTIONS, $T2H_USAGE_TEXT, "$THISVERSION\n"))
+     {
         print STDERR "$Configure_failed" if $Configure_failed;
         die $T2H_FAILURE_TEXT;
-    }
+      }
+  }
+}
+else
+{
+   Getopt::Long::Configure("gnu_getopt");
+   my $opts;
+   my @types;
+   foreach my $key (keys(%$T2H_OPTIONS))
+   {
+      next unless ($T2H_OPTIONS->{$key});
+      my $primary = $key;
+      $primary =~ s/\|.*//;
+      next if ($primary eq 'version' or $primary eq 'help');
+      next if ($my_command_name eq 'makeinfo' and ! grep {$primary eq $_} (@makeinfo_options, @basic_options) and $primary !~ /^if/);
+      #$opts{"$key$T2H_OPTIONS->{$key}->{'type'}"} = $T2H_OPTIONS->{$key}->{'linkage'};
+      $opts->{$primary} = $T2H_OPTIONS->{$key}->{'linkage'} if defined($T2H_OPTIONS->{$key}->{'linkage'});
+      push @types, "$key$T2H_OPTIONS->{$key}->{'type'}";
+   }
+   #$opts{'version|V'} = sub {
+   $opts->{'version'} = sub {
+      print "makeinfo (GNU texinfo) 4.13
+
+Copyright (C) 2008 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.";
+      exit 0;
+   };
+   #$opts{'help|h'} = sub {
+   $opts->{'help'} = sub {
+      print "$makeinfo_help";
+      exit 0;
+   };
+   push @types, ('version|V', 'help|h');
+   #foreach my $key (keys(%opts))
+   #{
+   #   print STDERR "$key, $opts{$key}\n";
+   #}
+   my $result_options = Getopt::Long::GetOptions ($opts, @types);
 }
 
 if (! $Texi2HTML::THISDOC{'format_from_command_line'} and defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) and $ENV{'TEXINFO_OUTPUT_FORMAT'} ne '')
@@ -3646,7 +3813,7 @@ if ($Texi2HTML::Config::ENABLE_ENCODING)
    }
 }
 
-# FIXME encoding for first file or all files?
+# for all files
 if (defined($Texi2HTML::Config::IN_ENCODING))
 {
    $Texi2HTML::GLOBAL{'IN_ENCODING'} = $Texi2HTML::Config::IN_ENCODING;
@@ -8173,7 +8340,19 @@ sub do_node_files()
         $Texi2HTML::NO_TEXI{'This'} = $node->{'no_texi'};
         $Texi2HTML::SIMPLE_TEXT{'This'} = $node->{'simple_format'};
         $Texi2HTML::NAME{'This'} = $node->{'text'};
-        $Texi2HTML::HREF{'This'} = "$node->{'file'}#$node->{'id'}";
+        my $href_file = $node->{'file'};
+        if (!defined($href_file))
+        {
+           if (Texi2HTML::Config::get_conf('novalidate'))
+           {
+               $href_file = '';
+           }
+           else
+           {
+               msg_debug ("Undefined file for `$node->{'texi'}' in do_node_files");
+           }
+        }
+        $Texi2HTML::HREF{'This'} = "$href_file#$node->{'id'}";
         my $NODEFILE = open_out ($file);
         &$Texi2HTML::Config::print_redirection_page ($NODEFILE);
         close $NODEFILE || document_error ("Can't close $file: $!", 1);
@@ -8350,6 +8529,7 @@ sub check_die(;$)
 
 sub file_line_warn($$;$)
 {
+   return if ($Texi2HTML::Config::NO_WARN);
    my $text = shift;
    chomp($text);
    my $file = shift;
@@ -8367,6 +8547,7 @@ sub file_line_warn($$;$)
 
 sub document_warn ($)
 {
+   return if ($Texi2HTML::Config::NO_WARN);
    my $text = shift;
    chomp ($text);
    #warn "$WARN $text\n";
@@ -8447,6 +8628,7 @@ sub msg_warn($;$)
 # echo a warning associated with a line in the document
 sub line_warn($$)
 {
+    return if ($Texi2HTML::Config::NO_WARN);
     my $text = shift;
     chomp ($text);
     my $line_number = shift;

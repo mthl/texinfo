@@ -51,3 +51,5 @@ headings_in_footnote headings_in_footnote.texi
 code code.texi
 kbd kbd.texi
 note_in_strong note_in_strong.texi
+simple_footnotes_no_number simple_footnotes.texi --no-number-footnotes
+simple_footnotes_no_number_separate simple_footnotes.texi --footnote-style=separate --no-number-footnotes

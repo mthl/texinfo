@@ -1,5 +1,16 @@
 2009-08-03   Patrice Dumas  <dumas@centre-cired.fr>
 
+	* MySimple.pm: handle correctly aliases.
+	* texi2html.pl, tests/*: add makeinfo short command aliases.
+	Implement --no-warn and --no-number-footnotes.
+	Also add --output-indent and --commands-in-node-names though they
+	don't do anything.
+	Parse command-line like makeinfo does when not called as texi2html.
+	* texi2html.init, formats/*: implement @raggedright.
+	* formats/info.init: alias encoding names.
+
+2009-08-03   Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl: use makeinfo error messages.
 	Have all error messages consistently go through error message
 	functions, and rename those functions to be more consistent.

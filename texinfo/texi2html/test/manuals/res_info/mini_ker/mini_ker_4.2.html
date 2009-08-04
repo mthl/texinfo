@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: 4.2 Adjoint model and optimisation with Miniker</title>
+
+<meta name="description" content="Miniker 102 manual: 4.2 Adjoint model and optimisation with Miniker">
+<meta name="keywords" content="Miniker 102 manual: 4.2 Adjoint model and optimisation with Miniker">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="mini_ker_top.html#Top" rel="start" title="Miniker 102 manual">
+<link href="mini_ker_U.4.html#Concepts-index" rel="index" title="Concepts index">
+<link href="mini_ker_top.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="mini_ker_4.html#Dynamic-system-analysis" rel="up" title="4. Dynamic analysis of systems in Miniker">
+<link href="mini_ker_C.1.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
+<link href="mini_ker_4.1.html#Sensitivities" rel="previous" title="4.1 Automatic sensitivity computation">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Adjoint-model-and-optimisation"></a>
+<ul class="toc"><li><a href="mini_ker_top.html#Top">Miniker 102 manual</a> </li>
+<li><ul class="toc"><li><a href="mini_ker_4.html#Dynamic-system-analysis">4. Dynamic analysis of systems in Miniker</a> </li>
+</ul></li>
+</ul>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker_4.1.html#Advance-matrix-sensitivity" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Overview-of-optimisation-with-Miniker" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Adjoint-model-and-optimisation-with-Miniker"></a>
+<h2 class="section"> 4.2 Adjoint model and optimisation with Miniker </h2>
+<ul class="toc">
+<li> <a href="#Overview-of-optimisation-with-Miniker">4.2.1 Overview of optimisation with Miniker</a> </li>
+<li> <a href="#Control-laws">4.2.2 Control laws</a> </li>
+<li> <a href="#Cost-function-coding-and-adjoint-modeling">4.2.3 Cost function coding and adjoint modeling</a> </li>
+<li> <a href="#Sensitivity-of-cost-function-to-parameters">4.2.4 Sensitivity of cost function to parameters</a> </li>
+</ul>
+
+<p>In the following a possible use of Miniker for optimisation is discussed.
+More precisely the use of adjoint and control laws in Miniker are presented.
+Optimisation isn&rsquo;t the only application of these tools, but it is the most
+common one. In that case the adjoint may be used to determine the gradient of a
+functional to perturbations in the control laws, and an optimisation process
+can use this
+information to search for the optimum.
+Another application of the adjoint is to compute the sensitivity of a
+cost function to parameters (the ones declared in the <code>free_parameters:</code>&rsquo; list.
+Note that the cost function can be sensitive to probe&rsquo;s variables, even if these are
+uncoupled with standard variables in the forward calculations; this is the case
+when minimizing a quadratic distance function between probes (from the  model)
+and the corresponding measurements.
+</p>
+<p>The code is close transcription of the mathematical calculus described
+in<br> <a href="http://www.lmd.jussieu.fr/ZOOM/doc/Adjoint.pdf">http://www.lmd.jussieu.fr/ZOOM/doc/Adjoint.pdf</a> . It essentialy reverse time and
+transpose the four Jacobian matrices: states and transfers are saved in array dimensionned
+with <code>maxstep</code> Fortran parameter.
+</p>
+<hr size="2">
+<a name="Overview-of-optimisation-with-Miniker"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Adjoint-model-and-optimisation" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Control-laws" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Overview-of-optimisation-with-Miniker-1"></a>
+<h3 class="subsection"> 4.2.1 Overview of optimisation with Miniker </h3>
+
+<a name="index-adjoint"></a>
+<a name="index-optimisation"></a>
+
+<p>In the proposed method, Miniker is run twice, one time forward and then
+backward to determine the trajectory and the adjoint model. After that the 
+control laws are modified by a program external to Miniker. The same steps
+are repeated until convergence. More pecisely,
+</p>
+<dl compact="compact">
+<dt><strong>forward</strong></dt>
+<dd><p>The command law       h(t) is given (by an explicit law or taken from a file).
+The trajectory is computed in a classical way, with the additionnal computation
+of the functional to be optimised,       J, prescribed with specific 
+<code>f_set</code> macros. The states, transfers and control laws are stored.  
+</p></dd>
+<dt><strong>backward</strong></dt>
+<dd><p>The adjoint variable is computed from the last time       T backward. The
+time increment is re-read as it could have changed during the forward 
+simulation. The system is solved by using the same technics as in the forward 
+simulation, but with a negative time step.
+</p></dd>
+<dt><strong>external phase</strong></dt>
+<dd><p>Now the command should be corrected. This step isn&rsquo;t covered here, but, for
+example, minuit the optimisation tool from the CERN could be used. 
+In order to ease such a use of Miniker, the principal program has to be 
+compiled as a subroutine to be driven by an external program 
+(see section <a href="mini_ker_3.2.html#Calling-the-model-code">Calling the model code</a>).
+</p></dd>
+</dl>
+
+<p>The functionnal       J to be optimised is defined as
+</p>
+<p>
+    <center class="math-display" >
+<img 
+src="mini_ker_tex4ht_tex15x.png" alt="                       &#x222B; T
+J = &#x03C8; [&#x03B7;(T),&#x03C6;(T),h(T)]+    l[&#x03B7;(&#x03C4;),&#x03C6; (&#x03C4; ),h(&#x03C4;)]d&#x03C4;
+                        0  " class="math-display" ></center>  
+</p>
+<a name="index-final-cost"></a>
+<a name="index-integrand-cost"></a>
+
+<p>Where       &#x03C8; is the final cost function,       l is the integrand
+cost function and       h represents the control laws variations.
+</p>
+<p>The general use of the adjoint model of a system is the determination of the 
+gradient of this       J functional to be optimised, with respect to perturbations
+of the original conditions of the reference trajectory, that is, along its 
+GTLS<a name="DOCF6" href="#FOOT6">(6)</a>.
+</p>
+<hr size="2">
+<a name="Control-laws"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Overview-of-optimisation-with-Miniker" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Cost-function-coding-and-adjoint-modeling" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Control-laws-1"></a>
+<h3 class="subsection"> 4.2.2 Control laws </h3>
+
+<a name="index-zcommand"></a>
+<a name="index-command-law"></a>
+
+<p>Each control law is associated with one cell or transfer equation, meaning that a command
+associated with an equation does not appear in any other equation.
+It is still possible
+to add commands acting anywhere by defining a transfer equal to that command.
+</p>
+
+<p>The control laws associated with states are in the <code>ux_com(.)</code> array, 
+control laws associated with transfers are in the <code>uy_com(.)</code> array.
+The control laws may be prescribed even when there is no adjoint computed, 
+nor any optimisation, and they are used during simulation, in which case they will
+act as external sources. To enable
+the use of commands, the logical flag <code>Zcommand</code> should be <code>.true.</code>.
+</p>
+<a name="index-uxcom_002edata"></a>
+<a name="index-uycom_002edata"></a>
+
+<p>The command can be given either as: 
+</p><ol>
+<li> a table of numerical
+values in the files &lsquo;<tt>uxcom.data</tt>&rsquo; and &lsquo;<tt>uycom.data</tt>&rsquo;.
+</li><li> a function
+<a name="index-zlaw"></a>
+<a name="index-zcmd_005flaw"></a>
+<a name="index-zcmd_005flaw_002einc"></a>
+of the problem variables. To turn that feature on the logical flag 
+<code>Zlaw</code> should be set to <code>.true.</code> in &lsquo;<tt>zinit</tt>&rsquo;. The sequence 
+&lsquo;<tt>zcmd_law</tt>&rsquo; should hold
+the code filling the <code>ux_com(.)</code> and <code>uy_com(.)</code> arrays, as the code
+from that sequence is used whenever the control laws are needed.
+In that case the files  &lsquo;<tt>uxcom.data</tt>&rsquo; and &lsquo;<tt>uycom.data</tt>&rsquo; will 
+be filled by the command values generated by the function along the trajectory.
+</li></ol>
+
+<p>For example in the Lotka-Volterra model, the parameter <code>apar</code> could 
+be a control variable.
+In that case, <code>apar</code> would be defined as the variable <code>ux_com(1)</code>, 
+and either entered as a law
+in the sequence &lsquo;<tt>zcmd_law</tt>&rsquo; , either written in the file &lsquo;<tt>uxcom.data</tt>&rsquo; 
+step by step. In that case, there must be a perfect corresponodence between time
+of the commands and time of the run.
+</p>
+<hr size="2">
+<a name="Cost-function-coding-and-adjoint-modeling"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Control-laws" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Sensitivity-of-cost-function-to-parameters" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Cost-function-coding-and-adjoint-modeling-1"></a>
+<h3 class="subsection"> 4.2.3 Cost function coding and adjoint modeling </h3>
+
+<a name="index-zback"></a>
+<a name="index-cout_005fPsi"></a>
+<a name="index-cout_005fl"></a>
+
+<p>First of all the flag <code>zback</code> should be set to <code>.true.</code> in order to
+allow adjoint model computation:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Zback=.true.;
+</pre></td></tr></table>
+
+<p>The two functions <code>cout_Psi</code> corresponding with the final cost and 
+<code>cout_l</code> corresponding with the integrand cost are set up with the
+<code>f_set</code> macros.
+</p>
+<dl>
+<dt><a name="index-f_005fset-2"></a><u>Macro:</u> <b>f_set</b><i> cout_Psi = f(eta(.),ff(.),ux_com(.),uy_com(.))</i></dt>
+<dd><p>This macro defines the final cost function.
+<code>f</code> is a fortran 
+expression which may be function of cell state variables, 
+&lsquo;<samp>eta(1)</samp>&rsquo;&hellip;&lsquo;<samp>eta(np)</samp>&rsquo;, transfers 
+&lsquo;<samp>ff(1)</samp>&rsquo;&hellip;&lsquo;<samp>ff(mp)</samp>&rsquo;, 
+state control laws
+&lsquo;<samp>ux_com(1)</samp>&rsquo;&hellip;&lsquo;<samp>ux_com(np)</samp>&rsquo;, and transfer control laws
+&lsquo;<samp>uy_com(1)</samp>&rsquo;&hellip;&lsquo;<samp>uy_com(mp)</samp>&rsquo;.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-f_005fset-3"></a><u>Macro:</u> <b>f_set</b><i> cout_l = f(eta(.),ff(.),ux_com(.),uy_com(.))</i></dt>
+<dd><p>This macro defines the integrand cost function.
+<code>f</code> is a fortran 
+expression which may be function of cell state variables, 
+&lsquo;<samp>eta(1)</samp>&rsquo;&hellip;&lsquo;<samp>eta(np)</samp>&rsquo;, transfers 
+&lsquo;<samp>ff(1)</samp>&rsquo;&hellip;&lsquo;<samp>ff(mp)</samp>&rsquo;,
+state control laws
+&lsquo;<samp>ux_com(1)</samp>&rsquo;&hellip;&lsquo;<samp>ux_com(np)</samp>&rsquo;, and transfer control laws
+&lsquo;<samp>uy_com(1)</samp>&rsquo;&hellip;&lsquo;<samp>uy_com(mp)</samp>&rsquo;.
+</p></dd></dl>
+
+<p>For example, the following code sets a cost function for the masselottes
+model:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">! Initialisation 
+  F_set cout_Psi = eta_move(inode:1);
+!and f_set cout_l integrand in the functionnal    
+  F_set cout_l = 0.;
+</pre></td></tr></table>
+
+<p>In that example the functional is reduced to the final value
+of the first state component.
+Here, the adjoint vector will correspond to the final sensitivity 
+(at       t = 0) of 
+that component (here the first masselotte position) to a perturbation in 
+all initial conditions<a name="DOCF7" href="#FOOT7">(7)</a>. 
+</p>
+<p>The following variables are set during the backward phase, and output
+in the associated files:
+</p>
+
+<table>
+<thead><tr><th>var</th><th>file</th><th>explanation</th></tr></thead>
+<tr><td><code>v_adj(.)</code></td><td>&lsquo;<tt>vadj.data</tt>&rsquo;</td><td>adjoint to <code>eta(.)</code></td></tr>
+<tr><td><code>w_adj(.)</code></td><td>&lsquo;<tt>wadj.data</tt>&rsquo;</td><td>adjoint to <code>ff(.)</code></td></tr>
+<tr><td><code>wadj(mp+.)</code></td><td>&lsquo;<tt>gradmuj.data</tt>&rsquo;</td><td>adjoint to <code>ff(mp+.)</code></td></tr>
+<tr><td><code>graduej(.)</code></td><td>&lsquo;<tt>gradxj.data</tt>&rsquo;</td><td>adjoint to <code>ux_com(.)</code></td></tr>
+<tr><td><code>gradufj(.)</code></td><td>&lsquo;<tt>gradyj.data</tt>&rsquo;</td><td>adjoint to <code>uy_com(.)</code></td></tr>
+<tr><td><code>hamilton</code></td><td>&lsquo;<tt>hamilton.data</tt>&rsquo;</td><td>time increment, hamiltonian, cost function increment</td></tr>
+</table>
+
+<hr size="2">
+<a name="Sensitivity-of-cost-function-to-parameters"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Cost-function-coding-and-adjoint-modeling" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_4.3.html#Kalman-filter" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Sensitivity-of-cost-function-to-parameters-1"></a>
+<h3 class="subsection"> 4.2.4 Sensitivity of cost function to parameters </h3>
+
+<a name="index-gradpj_002edata"></a>
+
+<p>The sensitivity of the cost function to all the parameters given as
+arguments of <code>Free_parameters</code> is computed. For the
+predator model the sensitivity of a cost function consisting in 
+the integral of the predator population with respect with
+<code>apar</code> an <code>cpar</code> is obtained with a number of parameters
+set to 2 in &lsquo;<tt>dimetaphi</tt>&rsquo;:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">parameter (lp=2);
+</pre></td></tr></table>
+
+<p>And the cost function and <code>Free_parameters</code> list in &lsquo;<tt>zinit</tt>&rsquo;:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">f_set cout_Psi = eta(2);
+f_set cout_l = eta(2);
+Free_parameters: apar,cpar;
+</pre></td></tr></table>
+
+<p><code>apar</code> and <code>cpar</code> also have to be given a value.
+The result is output in &lsquo;<tt>gradpj.data</tt>&rsquo;.
+</p>
+<div class="footnote">
+<hr>
+<h3>Footnotes</h3>
+<h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
+<p>General Tangent Linear System, i.e. the TLS circulating along a trajectory.
+See the explanation in the document
+<a href="http://www.lmd.jussieu.fr/Zoom/doc/Adjoint.pdf">http://www.lmd.jussieu.fr/Zoom/doc/Adjoint.pdf</a> (in French).
+</p><h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
+<p>For detailed explanation of the adjoint model,
+see the document in 
+<a href="http://www.lmd.jussieu.fr/ZOOM/doc/Adjoint.pdf">pdf</a>
+or <a href="http://www.lmd.jussieu.fr/ZOOM/doc/Adjoint.pdf">.ps.gz</a>
+</p></div>
+<hr size="2">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

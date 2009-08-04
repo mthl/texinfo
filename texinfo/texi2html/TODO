@@ -6,9 +6,6 @@ Before next release
 * there is also undocumented features @hsep and @vsep to insert
   horizontal and vertical rules.
 
-* makeinfo has a lot of other short command line switches, but implement
-  only those that are documented, in --help or info makeinfo.
-
 * A lone node without associated sectionning command nor directions leads
   to an error message in makeinfo. Since there is no way to go out of the 
   node, it should certainly be noticed. Another possibility would be to
@@ -18,6 +15,17 @@ Before next release
 
 * indices/index_special_region: line numbers in last pass are not correct
   as shown on the error messages.
+
+* implement @headitemfont{}. It should be substituted to what is used to
+  format @headitem.
+
+* when in a macro, error/warning should be like:
+reflinebug.texinfo:12: undefined node `bar' in @ref (via invocation of macro @myref)
+
+* include files and images should always be searched for in 
+  current directory and input manual directory.
+
+* call tex2any instead of texi2all the program
 
 Later
 -----

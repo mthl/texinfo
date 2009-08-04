@@ -175,7 +175,7 @@ $special_list_commands{'itemize'} = {};
    'itemize');
 
 %format_map = ();
-foreach my $format (@info_default_normal_formats, 'group', 'cartouche')
+foreach my $format (@info_default_normal_formats, 'group', 'raggedright', 'cartouche')
 {
     $format_map{$format} = '';
 }
@@ -2403,13 +2403,14 @@ sub info_default_print_page_foot($)
       main::document_warn ("Document without Top node.");
    }
    print $fh "\x{1F}\nEnd Tag Table\n";
-   if (defined($Texi2HTML::THISDOC{'DOCUMENT_ENCODING'}))
+   #if (defined($Texi2HTML::THISDOC{'DOCUMENT_ENCODING'}))
+   if (defined($Texi2HTML::THISDOC{'IN_ENCODING'}))
    {
-      my $coding = $Texi2HTML::THISDOC{'DOCUMENT_ENCODING'};
-      if ($coding =~ /^iso-/i)
-      {
-          $coding = lc($coding);
-      }
+      my $coding = $Texi2HTML::THISDOC{'IN_ENCODING'};
+      #if ($coding =~ /^iso-/i)
+      #{
+      #    $coding = lc($coding);
+      #}
       print $fh "\n\x{1F}\nLocal Variables:\ncoding: $coding\nEnd:\n";
    }
 }
@@ -2435,7 +2436,9 @@ sub info_default_footnote_texi($$$)
     unless ($state->{'outside_document'} or $state->{'multiple_pass'})
     {
        $info_default_footnote_index++;
-       return "($info_default_footnote_index) $text";
+       my $footnote_number = $info_default_footnote_index;
+       $footnote_number = $NO_NUMBER_FOOTNOTE_SYMBOL if (!$NUMBER_FOOTNOTES);
+       return "($footnote_number) $text";
     }
 }
 
@@ -3014,6 +3017,7 @@ sub info_default_foot_line_and_ref($$$$$$$$)
     my $footnote_info_state = info_default_get_state ($footnote_state);
 
     my $footnote_text = "($info_default_footnote_index)";
+    $footnote_text = "($NO_NUMBER_FOOTNOTE_SYMBOL)" if (!$NUMBER_FOOTNOTES);
     my $node_name;
     $node_name = '';
     if (defined($info_default_current_node))

@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: 3. Advanced Miniker programming</title>
+
+<meta name="description" content="Miniker 102 manual: 3. Advanced Miniker programming">
+<meta name="keywords" content="Miniker 102 manual: 3. Advanced Miniker programming">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="mini_ker_top.html#Top" rel="start" title="Miniker 102 manual">
+<link href="mini_ker_U.4.html#Concepts-index" rel="index" title="Concepts index">
+<link href="mini_ker_top.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="mini_ker_top.html#Top" rel="up" title="Miniker 102 manual">
+<link href="mini_ker_C.1.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
+<link href="mini_ker_2.4.html#Controlling-the-run" rel="previous" title="2.4 Controlling the run">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Advanced-programming"></a>
+<ul class="toc"><li><a href="mini_ker_top.html#Top">Miniker 102 manual</a> </li>
+</ul>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker_2.4.html#Controlling-the-printout-and-data-output" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_3.1.html#Selecting-features" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Advanced-Miniker-programming"></a>
+<h1 class="chapter"> 3. Advanced Miniker programming </h1>
+<ul class="toc">
+<li> <a href="mini_ker_3.1.html#Selecting-features">3.1 Overview of additional features setting</a> </li>
+<li> <a href="mini_ker_3.2.html#Calling-the-model-code">3.2 Calling the model code</a> </li>
+<li><ul class="toc">
+<li> <a href="mini_ker_3.2.html#Turning-the-model-into-a-subroutine">3.2.1 Turning the model into a subroutine</a> </li>
+<li> <a href="mini_ker_3.2.html#The-model-subroutine">3.2.2 Calling the model subroutine</a> </li>
+</ul></li>
+<li> <a href="mini_ker_3.3.html#g_t1D-gridded-model">3.3 Describing 1D gridded model</a> </li>
+<li><ul class="toc">
+<li> <a href="mini_ker_3.3.html#g_t1D-gridded-Model-size">3.3.1 Setting dimensions for 1D gridded model</a> </li>
+<li> <a href="mini_ker_3.3.html#g_t1D-gridded-model-code">3.3.2 1D gridded Model coding</a> </li>
+</ul></li>
+<li> <a href="mini_ker_3.4.html#Double-precision">3.4 Double precision</a> </li>
+<li> <a href="mini_ker_3.5.html#Partial-Derivatives">3.5 Partial Derivatives</a> </li>
+<li><ul class="toc">
+<li> <a href="mini_ker_3.5.html#Derivating-a-power-function">3.5.1 Derivating a power function</a> </li>
+</ul></li>
+<li> <a href="mini_ker_3.6.html#Rule-of-programming-non-continuous-models">3.6 Rule of programming non continuous models</a> </li>
+<li> <a href="mini_ker_3.7.html#Parameters">3.7 Parameters</a> </li>
+<li> <a href="mini_ker_3.8.html#Observations-and-data">3.8 Observations and data</a> </li>
+<li><ul class="toc">
+<li> <a href="mini_ker_3.8.html#Observations">3.8.1 Observations</a> </li>
+<li> <a href="mini_ker_3.8.html#Data">3.8.2 Data</a> </li>
+</ul></li>
+<li> <a href="mini_ker_3.9.html#Explicit-model-size">3.9 Entering model size explicitely</a> </li>
+<li><ul class="toc">
+<li> <a href="mini_ker_3.9.html#Size-sequence">3.9.1 The explicit size sequence</a> </li>
+<li> <a href="mini_ker_3.9.html#Model-with-explicit-size">3.9.2 Entering the model equations, with explicit sizes</a> </li>
+</ul></li>
+<li> <a href="mini_ker_3.10.html#Programming-with-cmz-directives">3.10 Programming with cmz directives</a> </li>
+<li><ul class="toc">
+<li> <a href="mini_ker_3.10.html#Cmz-directives-used-with-Miniker">3.10.1 Cmz directives used with Miniker</a> </li>
+<li> <a href="mini_ker_3.10.html#Using-cmz-directives-in-Miniker">3.10.2 Using cmz directives in Miniker</a> </li>
+</ul></li>
+</ul>
+
+
+<hr size="2">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

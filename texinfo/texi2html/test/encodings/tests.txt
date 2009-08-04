@@ -11,55 +11,55 @@ texi ogolat2.texi
 texi ogoutf.texi
 texi documentlanguage_set.texi
 nodetest nodetest.texi
-nodetest_chapter nodetest.texi -split chapter
-nodetest_use_nodes_no_unicode nodetest.texi -init no_unicode.init -node-files -use-nodes -split node
-nodetest_use_nodes_no_unidecode nodetest.texi -init no_unidecode.init -node-files -use-nodes -split node
-nodetest_use_nodes nodetest.texi -node-files -use-nodes -split node
-nodetest_no_unicode nodetest.texi -init no_unicode.init
+nodetest_chapter nodetest.texi --split chapter
+nodetest_use_nodes_no_unicode nodetest.texi --init no_unicode.init --node-files --use-nodes --split node
+nodetest_use_nodes_no_unidecode nodetest.texi --init no_unidecode.init --node-files --use-nodes --split node
+nodetest_use_nodes nodetest.texi --node-files --use-nodes --split node
+nodetest_no_unicode nodetest.texi --init no_unicode.init
 nodetest_utf8 nodetest_utf8.texi
 # the following is not perfect, since there is no map for  @,{@'C}
 # it isn't rightly transformed in _1e14 but in _0112_0300
-nodetest_utf8_no_unicode nodetest_utf8.texi -init no_unicode.init
-nodetest_utf8_use_nodes nodetest_utf8.texi -node-files -use-nodes -split node
-nodetest_utf8_use_nodes_no_unidecode nodetest_utf8.texi -init no_unidecode.init -node-files -use-nodes -split node
-nodetest_to_utf8_latin1 nodetest_latin1.texi -init utf8.init
+nodetest_utf8_no_unicode nodetest_utf8.texi --init no_unicode.init
+nodetest_utf8_use_nodes nodetest_utf8.texi --node-files --use-nodes --split node
+nodetest_utf8_use_nodes_no_unidecode nodetest_utf8.texi --init no_unidecode.init --node-files --use-nodes --split node
+nodetest_to_utf8_latin1 nodetest_latin1.texi --init utf8.init
 nodetest_latin1 nodetest_latin1.texi
-nodetest_latin1_no_unicode nodetest_latin1.texi -init no_unicode.init
-nodetest_latin1_use_nodes_no_unicode nodetest_latin1.texi -init no_unicode.init -node-files -split node
-nodetest_latin1_use_nodes nodetest_latin1.texi -node-files -split node
-at_commands_in_refs_no_unicode ../sectionning/at_commands_in_refs.texi -init no_unicode.init
-at_commands_in_refs_no_unidecode ../sectionning/at_commands_in_refs.texi -init no_unidecode.init
-at_commands_in_refs_latin1_use_nodes at_commands_in_refs_latin1.texi -node-files -split node
-at_commands_in_refs_latin1_use_nodes_no_unidecode at_commands_in_refs_latin1.texi -init no_unidecode.init -node-files -split node
-at_commands_in_refs_latin1_use_nodes_no_unicode at_commands_in_refs_latin1.texi -init no_unicode.init -node-files -split node
-at_commands_in_refs_utf8_use_nodes at_commands_in_refs_utf8.texi -node-files -split node
-at_commands_in_refs_utf8_use_nodes_no_unidecode at_commands_in_refs_utf8.texi -init no_unidecode.init -node-files -split node
-at_commands_in_refs_utf8_use_nodes_no_unicode at_commands_in_refs_utf8.texi -init no_unicode.init -node-files -split node
+nodetest_latin1_no_unicode nodetest_latin1.texi --init no_unicode.init
+nodetest_latin1_use_nodes_no_unicode nodetest_latin1.texi --init no_unicode.init --node-files --split node
+nodetest_latin1_use_nodes nodetest_latin1.texi --node-files --split node
+at_commands_in_refs_no_unicode ../sectionning/at_commands_in_refs.texi --init no_unicode.init
+at_commands_in_refs_no_unidecode ../sectionning/at_commands_in_refs.texi --init no_unidecode.init
+at_commands_in_refs_latin1_use_nodes at_commands_in_refs_latin1.texi --node-files --split node
+at_commands_in_refs_latin1_use_nodes_no_unidecode at_commands_in_refs_latin1.texi --init no_unidecode.init --node-files --split node
+at_commands_in_refs_latin1_use_nodes_no_unicode at_commands_in_refs_latin1.texi --init no_unicode.init --node-files --split node
+at_commands_in_refs_utf8_use_nodes at_commands_in_refs_utf8.texi --node-files --split node
+at_commands_in_refs_utf8_use_nodes_no_unidecode at_commands_in_refs_utf8.texi --init no_unidecode.init --node-files --split node
+at_commands_in_refs_utf8_use_nodes_no_unicode at_commands_in_refs_utf8.texi --init no_unicode.init --node-files --split node
 multi_lang multi_lang.texi
 unknown_language unknown_language.texi
 umlaut umlaut.texi
-formatting_fr ../coverage/formatting.texi -document-language fr
-formatting_fr_icons ../coverage/formatting.texi -document-language fr -init icons.init
-formatting_converted_to_utf8 ../coverage/formatting.texi -init utf8.init
+formatting_fr ../coverage/formatting.texi --document-language fr
+formatting_fr_icons ../coverage/formatting.texi --document-language fr --init icons.init
+formatting_converted_to_utf8 ../coverage/formatting.texi --init utf8.init
 accentenc accentenc.texi
-#accentenc_encoding accentenc.texi -init enable_encoding.init
-accentenc_encoding accentenc.texi --enable-encoding -init enable_encoding_no_use_entity.init
+#accentenc_encoding accentenc.texi --init enable_encoding.init
+accentenc_encoding accentenc.texi --enable-encoding --init enable_encoding_no_use_entity.init
 accentenc_encoding_use_entity accentenc.texi --enable-encoding
 accent accent.texi
 weird_accents weird_accents.texi
-weird_accents_encoding weird_accents.texi -init enable_encoding.init
+weird_accents_encoding weird_accents.texi --init enable_encoding.init
 ogolat2 ogolat2.texi
 ogoutf ogoutf.texi
-nodetest_info nodetest.texi -init info.init
+nodetest_info nodetest.texi --init info.init
 japanese japanese.texi
 documentlanguage_set documentlanguage_set.texi
-documentlanguage_set_option documentlanguage_set.texi -document-language fr
-documentlanguage_set_unknown documentlanguage_set.texi -document-language unknown
+documentlanguage_set_option documentlanguage_set.texi --document-language fr
+documentlanguage_set_unknown documentlanguage_set.texi --document-language unknown
 # iconv < encoding_index-utf8.texi -t latin1 |sed 's/utf8/latin1/' > encoding_index-latin1.texi
 encoding_index encoding_index.texi
-encoding_index_toutf8 encoding_index.texi -init utf8.init
+encoding_index_toutf8 encoding_index.texi --init utf8.init
 encoding_index-utf8 encoding_index-utf8.texi
-encoding_index-utf8_toutf8 encoding_index-utf8.texi -init utf8.init
+encoding_index-utf8_toutf8 encoding_index-utf8.texi --init utf8.init
 encoding_index-latin1 encoding_index-latin1.texi
-encoding_index-latin1_toutf8 encoding_index-latin1.texi -init utf8.init
-accentenc_info accentenc.texi -init info.init
+encoding_index-latin1_toutf8 encoding_index-latin1.texi --init utf8.init
+accentenc_info accentenc.texi --init info.init

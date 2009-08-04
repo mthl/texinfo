@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: 5.1 Make variables</title>
+
+<meta name="description" content="Miniker 102 manual: 5.1 Make variables">
+<meta name="keywords" content="Miniker 102 manual: 5.1 Make variables">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="mini_ker_top.html#Top" rel="start" title="Miniker 102 manual">
+<link href="mini_ker_U.4.html#Concepts-index" rel="index" title="Concepts index">
+<link href="mini_ker_top.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="mini_ker_5.html#Advanced-use-of-Miniker-with-make" rel="up" title="5. Advanced use of Miniker with make">
+<link href="mini_ker_C.1.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
+<link href="mini_ker_5.html#Advanced-use-of-Miniker-with-make" rel="previous" title="5. Advanced use of Miniker with make">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Make-variables"></a>
+<ul class="toc"><li><a href="mini_ker_top.html#Top">Miniker 102 manual</a> </li>
+<li><ul class="toc"><li><a href="mini_ker_5.html#Advanced-use-of-Miniker-with-make">5. Advanced use of Miniker with make</a> </li>
+</ul></li>
+</ul>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker_5.html#Advanced-use-of-Miniker-with-make" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_5.2.html#Rules" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Make-variables-1"></a>
+<h2 class="section"> 5.1 Make variables </h2>
+
+<a name="index-Makefile_002eminiker"></a>
+
+<p>The &lsquo;<tt>Makefile.miniker</tt>&rsquo; Makefile provided in the
+distribution should be included as it defines a lot of important 
+variables and rules. 
+</p>
+<p>The following make variables can be set by the user:
+</p>
+<dl compact="compact">
+<dt><code>miniker_dir</code></dt>
+<dd><p>that variable should hold the Miniker sources directory. If you installed
+Miniker that variable should be set to &lsquo;<tt>$(includedir)/mini_ker</tt>&rsquo;. 
+If you use the sources right from the sources directory it should be set to 
+the sources package directory.
+</p></dd>
+<dt><code>MTNDIRS</code></dt>
+<dd><p>This variable can hold a &lsquo;<samp>:</samp>&rsquo; delimited list of directories that will
+be searched for mortran include files.
+</p></dd>
+<dt><code>CMFDIRS</code></dt>
+<dd><p>This variable can hold a &lsquo;<samp>:</samp>&rsquo; delimited list of directories that will
+be searched for cmz directive include files.
+</p></dd>
+<dt><code>SEL</code></dt>
+<dd><p>This variable holds a &lsquo;<samp>,</samp>&rsquo; delimited list of select flags, for example
+<code>monitor</code>, <code>grid1d</code>, <code>debug</code>.
+</p></dd>
+<dt><code>LDADD</code></dt>
+<dd><p>This variable can be used to add libraries flags and files. It is used in 
+the default linking command/rule.
+</p></dd>
+<dt><code>miniker_user_objects</code></dt>
+<dd><p>This variable should hold a space separated list of additional object files
+to be linked with the model and helper object files.
+</p></dd>
+<dt><code>CAR2TXTFLAGS</code></dt>
+<dd><p>cmz directives preprocessor flag.
+</p></dd>
+<dt><code>kalman</code></dt>
+<dd><p>This variable should be set to 1 if you want to use the kalman filter
+(see section <a href="mini_ker_4.3.html#Kalman-filter">Kalman filter</a>).
+</p></dd>
+<dt><code>double</code></dt>
+<dd><p>This variable should be set to 1 if you want to have a double precision
+code (see section <a href="mini_ker_3.4.html#Double-precision">Double precision</a>).
+</p></dd>
+</dl>
+
+<p>The following variables are allready set and may be used
+(some are set by ./configure see <a href="mini_ker_A.4.html#Configuration">Configuration</a>):
+</p>
+<dl compact="compact">
+<dt><code>miniker_principal_objects</code></dt>
+<dd><p>The list of object files needed for the model build, together with some 
+helper object files often used but not strictly required for the linking.
+</p></dd>
+<dt><code>DEPDIR</code></dt>
+<dd><p>The name of a hidden directory containing the dependencies computed
+for the main mortran files.
+</p></dd>
+<dt><code>F77</code></dt>
+<dt><code>FC</code></dt>
+<dt><code>FFLAGS</code></dt>
+<dt><code>LDFLAGS</code></dt>
+<dd><p>Compiler and linker related variables set by ./configure.
+</p></dd>
+<dt><code>LIBS</code></dt>
+<dd><p>This variable should hold the link flags and files required to build 
+Miniker, set by ./configure.
+</p></dd>
+<dt><code>CAR2TXT</code></dt>
+<dt><code>MORTRAN</code></dt>
+<dt><code>MTNFLAGS</code></dt>
+<dt><code>MTNDEPEND</code></dt>
+<dd><p>Preprocessor and preprocessor flags, set by ./configure.
+</p></dd>
+</dl>
+
+<hr size="2">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

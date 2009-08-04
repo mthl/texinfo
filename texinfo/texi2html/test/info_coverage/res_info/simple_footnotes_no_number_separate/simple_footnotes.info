@@ -1,0 +1,82 @@
+This is simple_footnotes.info, produced by makeinfo version 4.13 from
+simple_footnotes.texi.
+
+
+File: simple_footnotes.info,  Node: Top,  Next: name,  Up: (dir)
+
+Element
+*******
+
+before menu(*) (*note Top-Footnote-1::).
+
+* Menu:
+
+* name::            description(*) (*note Top-Footnote-2::)
+* name1::
+
+
+File: simple_footnotes.info,  Node: Top-Footnotes,  Up: Top
+
+   (*) first footnote
+
+   (*) in menu description
+
+
+File: simple_footnotes.info,  Node: name,  Next: name1,  Prev: Top,  Up: Top
+
+1 name
+******
+
+First para(*) (*note name-Footnote-1::)
+
+   Text(*) (*note name-Footnote-2::).
+
+
+File: simple_footnotes.info,  Node: name-Footnotes,  Up: name
+
+   (*) First para in footnote.
+
+   Second para in footnote.
+
+   Third one.
+
+   (*) Footnot long
+
+     Quotation in a footnote
+
+
+File: simple_footnotes.info,  Node: name1,  Prev: name,  Up: Top
+
+2 name1
+*******
+
+Texte(*) (*note name1-Footnote-1::).
+
+   Last text (*) (*note name1-Footnote-2::)
+
+
+File: simple_footnotes.info,  Node: name1-Footnotes,  Up: name1
+
+   (*)
+     in quotation on the first footnote line
+
+   (*)
+     in example
+
+
+
+Tag Table:
+Node: Top94
+Node: Top-Footnotes301
+Ref: Top-Footnote-1364
+Ref: Top-Footnote-2387
+Node: name415
+Node: name-Footnotes590
+Ref: name-Footnote-1655
+Ref: name-Footnote-2731
+Node: name1782
+Node: name1-Footnotes950
+Ref: name1-Footnote-11017
+Ref: name1-Footnote-21070
+
+End Tag Table

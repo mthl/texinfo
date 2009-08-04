@@ -5,7 +5,7 @@ texi float_with_at_commands.texi
 texi float_copying.texi
 texi macro_in_menu.texi
 texi ref_in_anchor.texi
-texi tex.texi -l2h -expand tex
+texi tex.texi --l2h --iftex
 texi block_EOL.texi
 texi detailmenus.texi
 texi commands_in_ifset.texi
@@ -26,7 +26,7 @@ texi symbol_after_command.texi
 texi html-extrali.texi
 texi html-para.texi
 texi html-title.texi
-texi images.texi -init docbook.init
+texi images.texi --init docbook.init
 texi index_in_item_line_table.texi
 texi index_in_item_line_vtable.texi
 texi index_in_item_line_table_in_code.texi
@@ -46,22 +46,22 @@ texi paragraph_in_samp.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
-def_cmds_info def_cmds.texi -init info.init
+def_cmds_info def_cmds.texi --init info.init
 menus menus.texi
-menus_simple menus.texi -init simple_menu.init
+menus_simple menus.texi --init simple_menu.init
 quotation quotation.texi
 float_with_at_commands float_with_at_commands.texi
-float_copying float_copying.texi -split chapter
+float_copying float_copying.texi --split chapter
 macro_in_menu macro_in_menu.texi
 ref_in_anchor ref_in_anchor.texi
-tex tex.texi -l2h -expand tex -init l2h_tmp_dir.init
+tex tex.texi --l2h --iftex --init l2h_tmp_dir.init
 tex_notex tex.texi
-tex_httex tex.texi -init tex4ht.init --iftex
+tex_httex tex.texi --init tex4ht.init --iftex
 block_EOL block_EOL.texi
 detailmenus detailmenus.texi
-detailmenus_simple detailmenus.texi -init simple_menu.init
+detailmenus_simple detailmenus.texi --init simple_menu.init
 commands_in_ifset commands_in_ifset.texi
-simplest_test_css simplest.texi -css-include file.css
+simplest_test_css simplest.texi --css-include file.css
 punctuation punctuation.texi
 simple_punctuation simple_punctuation.texi
 def_end_of_line def_end_of_line.texi
@@ -75,29 +75,29 @@ indicateurl_paragraph indicateurl_paragraph.texi
 complex_command_in_simple_command complex_command_in_simple_command.texi
 symbol_after_block symbol_after_block.texi
 symbol_after_command symbol_after_command.texi
-formatting_weird_quotes ../coverage/formatting.texi -init weird_quotes.init
-comments_redefine_need ../coverage/comments.texi -init redefine_need.init
-simplest_httex simplest.texi -init tex4ht.init --iftex
-html-extrali html-extrali.texi -init makeinfo.init
+formatting_weird_quotes ../coverage/formatting.texi --init weird_quotes.init
+comments_redefine_need ../coverage/comments.texi --init redefine_need.init
+simplest_httex simplest.texi --init tex4ht.init --iftex
+html-extrali html-extrali.texi --init makeinfo.init
 html-para html-para.texi
 html-title html-title.texi
 images images.texi
-images_docbook images.texi -init docbook.init
-float_docbook ../coverage/float.texi -init docbook.init -U texi2html
-formatting_docbook ../coverage/formatting.texi -init docbook.init -U texi2html
-formatting_xml ../coverage/formatting.texi -init xml.init -U texi2html
+images_docbook images.texi --init docbook.init
+float_docbook ../coverage/float.texi --init docbook.init -U texi2html
+formatting_docbook ../coverage/formatting.texi --init docbook.init -U texi2html
+formatting_xml ../coverage/formatting.texi --init xml.init -U texi2html
 index_in_item_line_table index_in_item_line_table.texi 
 index_in_item_line_vtable index_in_item_line_vtable.texi
 index_in_item_line_table_in_code index_in_item_line_table_in_code.texi
 index_in_item_line_vtable_printindex index_in_item_line_vtable_printindex.texi
 table_in_table_item table_in_table_item.texi
-menus_xml menus.texi -init xml.init
-menus_xml_makeinfo menus.texi -init xml.init -U texi2html
-float_xml ../coverage/float.texi -init xml.init
+menus_xml menus.texi --init xml.init
+menus_xml_makeinfo menus.texi --init xml.init -U texi2html
+float_xml ../coverage/float.texi --init xml.init
 nested_formats nested_formats.texi
 inter_item_commands inter_item_commands.texi
-inter_item_commands_xml inter_item_commands.texi -init xml.init
-inter_item_commands_docbook inter_item_commands.texi -init docbook.init
+inter_item_commands_xml inter_item_commands.texi --init xml.init
+inter_item_commands_docbook inter_item_commands.texi --init docbook.init
 double_style_paragraph double_style_paragraph.texi
 at_command_glued at_command_glued.texi
 test_sp test_sp.texi
@@ -110,16 +110,16 @@ paragraph_in_samp paragraph_in_samp.texi
 simple_images simple_images.texi
 html-extrali_plain html-extrali.texi
 
-at_command_glued_info at_command_glued.texi -init info.init
-test_sp_info test_sp.texi -init info.init
-kbdinputstyle_info kbdinputstyle.texi -init info.init
-simple_images_info simple_images.texi -init info.init
-nested_formats_info nested_formats.texi -init info.init
-formatting_info ../coverage/formatting.texi -init info.init -U texi2html
+at_command_glued_info at_command_glued.texi --init info.init
+test_sp_info test_sp.texi --init info.init
+kbdinputstyle_info kbdinputstyle.texi --init info.init
+simple_images_info simple_images.texi --init info.init
+nested_formats_info nested_formats.texi --init info.init
+formatting_info ../coverage/formatting.texi --init info.init -U texi2html
 formatting_plaintext ../coverage/formatting.texi --plaintext -U texi2html
-direntry_dircategory_info direntry_dircategory.texi -init info.init
-direntry_dircategory_info_split direntry_dircategory.texi -init info.init -split-size 1
-direntry_dircategory_xml direntry_dircategory.texi -init xml.init
-heading_info heading.texi -init info.init
-nested_table_info nested_table.texi -init info.init
-simple_table_info simple_table.texi -init info.init
+direntry_dircategory_info direntry_dircategory.texi --init info.init
+direntry_dircategory_info_split direntry_dircategory.texi --init info.init --split-size 1
+direntry_dircategory_xml direntry_dircategory.texi --init xml.init
+heading_info heading.texi --init info.init
+nested_table_info nested_table.texi --init info.init
+simple_table_info simple_table.texi --init info.init

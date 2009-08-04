@@ -20,7 +20,7 @@ package Getopt::MySimple;
 
 # --------------------------------------------------------------------------
 # Locally modified by obachman (Display type instead of env, order by cmp)
-# $Id: MySimple.pm,v 1.6 2008-11-26 19:09:01 pertusus Exp $
+# $Id: MySimple.pm,v 1.7 2009-08-04 07:58:27 pertusus Exp $
 
 # use strict;
 # no strict 'refs';
@@ -115,7 +115,10 @@ sub getOptions
 	  next unless (ref(${$self -> {'default'} }{$_}) eq 'HASH');
 	  my $type = ${$self -> {'default'} }{$_}{'type'};
 	  push(@{$self -> {'type'} }, "$_$type");
-	  $self->{'opt'}->{$_} =  ${$self -> {'default'} }{$_}{'linkage'}
+	  my $key = $_;
+	  # get rid of aliases, if any
+	  $key =~ s/\|.*//;
+	  $self->{'opt'}->{$key} =  ${$self -> {'default'} }{$_}{'linkage'}
             if ${$self -> {'default'} }{$_}{'linkage'};
 	}
 

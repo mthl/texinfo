@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: 3.2 Calling the model code</title>
+
+<meta name="description" content="Miniker 102 manual: 3.2 Calling the model code">
+<meta name="keywords" content="Miniker 102 manual: 3.2 Calling the model code">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="mini_ker_top.html#Top" rel="start" title="Miniker 102 manual">
+<link href="mini_ker_U.4.html#Concepts-index" rel="index" title="Concepts index">
+<link href="mini_ker_top.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="mini_ker_3.html#Advanced-programming" rel="up" title="3. Advanced Miniker programming">
+<link href="mini_ker_C.1.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
+<link href="mini_ker_3.1.html#Selecting-features" rel="previous" title="3.1 Overview of additional features setting">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Calling-the-model-code"></a>
+<ul class="toc"><li><a href="mini_ker_top.html#Top">Miniker 102 manual</a> </li>
+<li><ul class="toc"><li><a href="mini_ker_3.html#Advanced-programming">3. Advanced Miniker programming</a> </li>
+</ul></li>
+</ul>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker_3.1.html#Selecting-features" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Turning-the-model-into-a-subroutine" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Calling-the-model-code-1"></a>
+<h2 class="section"> 3.2 Calling the model code </h2>
+<ul class="toc">
+<li> <a href="#Turning-the-model-into-a-subroutine">3.2.1 Turning the model into a subroutine</a> </li>
+<li> <a href="#The-model-subroutine">3.2.2 Calling the model subroutine</a> </li>
+</ul>
+
+<p>When the model code is a subroutine, it can be called from another fortran
+program unit (or another program), and the model will be 
+run each time the subroutine is called.
+This technique could be used, for example to perform optimization 
+(see section <a href="mini_ker_4.2.html#Adjoint-model-and-optimisation">Adjoint model and optimisation with Miniker</a>), or to run the model with different parameters.
+</p>
+
+<hr size="2">
+<a name="Turning-the-model-into-a-subroutine"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Calling-the-model-code" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#The-model-subroutine" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Turning-the-model-into-a-subroutine-1"></a>
+<h3 class="subsection"> 3.2.1 Turning the model into a subroutine </h3>
+
+
+<p>With cmz, one has to do a 
+</p><table><tr><td>&nbsp;</td><td><pre class="example">sel monitor
+</pre></td></tr></table>
+<p>in the &lsquo;<tt>selseq.kumac</tt>&rsquo; file and create the KEEP that call the 
+model code. See section <a href="mini_ker_3.1.html#Selecting-features">Overview of additional features setting</a>.
+</p>
+<p>With make &lsquo;<samp>monitor</samp>&rsquo; should be added to the <code>SEL</code> variable in
+the &lsquo;<tt>Makefile</tt>&rsquo;, for example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">SEL = monitor
+</pre></td></tr></table>
+
+<p>A file that call the principal subroutine should also be written, using
+the prefered language of the user. The additional object files should
+then be linked with the Miniker objects. To that aim they may be added
+to the <code>miniker_user_objects</code> variable.
+</p>
+<hr size="2">
+<a name="The-model-subroutine"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Turning-the-model-into-a-subroutine" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_3.3.html#g_t1D-gridded-model" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<a name="Calling-the-model-subroutine"></a>
+<h3 class="subsection"> 3.2.2 Calling the model subroutine </h3>
+
+<p>The model subroutine is called &lsquo;<samp>principal</samp>&rsquo; and is called with the 
+following arguments:
+</p>
+<dl>
+<dt><a name="index-principal"></a><u>Subroutine:</u> <b>principal</b><i> (Cost, ncall, integer_flag, file_suffix, info, idxerror)</i></dt>
+<dd><p>Where <var>Cost</var> is a real number, <code>real</code> or <code>double precision</code>, 
+and is set by the <code>principal</code>
+subroutine. It holds the value of the cost function if such function has been
+defined (the use and setting of a cost function is covered later, 
+see <a href="mini_ker_4.2.html#Cost-function-coding-and-adjoint-modeling">Cost function coding and adjoint modeling</a>). 
+<var>ncall</var> is an integer which corresponds with the number of 
+call to <code>principal</code> done so far, it should be initialized to 0 and 
+its value should not be changed, as it is changed in the <code>principal</code>
+subroutine.
+<var>integer_flag</var> is an integer that can be set by the user to be accessed 
+in the <code>principal</code> subroutine. For example its value could be used to
+set some flags in the &lsquo;<tt>zinit</tt>&rsquo; sequence.
+<var>file_suffix</var> is a character string, that is suffixed to the output files
+names instead of &lsquo;<samp>.data</samp>&rsquo;. If the first character is the null character 
+&lsquo;<samp>char(0)</samp>&rsquo;, the default suffix, &lsquo;<samp>.data</samp>&rsquo; is appended.
+<var>info</var> and <var>idxerror</var> are integer used for error reporting.
+<var>idxerror</var> value is 0 if there was no error. It is negative for
+an alert, positive for a very serious error. The precise value determines
+where the error occured.
+<var>info</var> is an integer holding more precise information about the
+error. It is usually the information value from lapack.
+The precise meaning of these error codes is in <a href="#tab_003aerror_005fcodes">table 3.1</a>.
+</p></dd></dl>
+
+<div class="float"><a name="tab_003aerror_005fcodes"></a>
+<table>
+<thead><tr><th>Source of error or warning</th><th><code>info</code></th><th><code>idxerror</code></th></tr></thead>
+<tr><td>state matrix inversion in ker</td><td>inversion</td><td>1</td></tr>
+<tr><td>time advance system resolution in ker</td><td>system</td><td>2</td></tr>
+<tr><td>transfer propagator,       (I - D) inversion</td><td>inversion</td><td>3</td></tr>
+<tr><td>kalman analysis state matrix advance in phase space,       (I - D) inversion</td><td>inversion</td><td>21</td></tr>
+<tr><td>kalman analysis variance covariance matrix non positive</td><td>Choleski</td><td>22</td></tr>
+<tr><td>kalman analysis error matrix inversion</td><td>inversion</td><td>23</td></tr>
+<tr><td>kalman error matrix advance</td><td>system</td><td>24</td></tr>
+<tr><td>transfers determination linearity problem for transfers</td><td></td><td>-1</td></tr>
+<tr><td>transerts determination Newton D_loop does not converge</td><td></td><td>-2</td></tr>
+</table>
+
+</div><p><strong>table 3.1: Meaning of error codes returned by principal.
+</strong>
+</p>
+<p>In general more information than the provided arguments has to be passed 
+to the <code>principal</code> subroutine, in that case a <code>common</code> block,
+to be written in the &lsquo;<tt>zinit</tt>&rsquo; sequence can be used.
+</p>
+
+<hr size="2">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
