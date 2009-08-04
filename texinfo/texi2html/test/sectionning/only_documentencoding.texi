@@ -1,0 +1,4 @@
+\input texinfo
+@setfilename only_documentencoding.info
+
+@documentencoding ISO-8859-1
