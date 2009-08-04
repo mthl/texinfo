@@ -594,7 +594,7 @@ all-checks: check long-check
 # this is in order to have the files in .texinfo in the build dir
 all-local:
 	for dir in $(htmlxref_cnf_tests); do \
-		$(MKDIR_P) $$dir/.texinfo/ ; \
+		$(mkdir_p) $$dir/.texinfo/ ; \
 		if [ -f $$dir/.texinfo/htmlxref.cnf ]; then : ; \
 		else cp $(srcdir)/$$dir/htmlxref.cnf $$dir/.texinfo/ ; \
 		fi ; \
