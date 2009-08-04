@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.305 2009-08-04 14:30:44 pertusus Exp $
+# $Id: texi2html.pl,v 1.306 2009-08-04 14:55:34 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2132,8 +2132,8 @@ sub set_date($)
     $::texi_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
 }
 
-#
-# called on -lang, and when a @documentlanguage appears
+# Called on --document-language, at the beginning of each pass and
+# when a @documentlanguage appears
 sub set_document_language ($$;$)
 {
     my $lang = shift;
@@ -2166,6 +2166,7 @@ sub set_document_language ($$;$)
             msg_warn("$region_code is not a valid region code.", $line_nr);
         }
     }
+
     my @files = locate_init_file("$i18n_dir/$lang", 1);
     if (! scalar(@files) and defined($main_lang))
     {
@@ -2183,6 +2184,8 @@ sub set_document_language ($$;$)
             print STDERR "# using '$language' as document language\n" if ($T2H_VERBOSE);
             # since it may be different from get_conf('documentlanguage'),
             # we record it.
+            # Currently this is not used anywhere, not sure what the value
+            # really corresponds with.
             $Texi2HTML::THISDOC{'current_language'} = $language;
             set_date($language);
             return 1;
@@ -4331,13 +4334,14 @@ sub texinfo_initialization($)
 {
     my $pass = shift;
 
-    # set the translations now. This means at the beginning of each phase.
+    # set the translations now. This means at the beginning of each pass.
+    # Do it silently, except during the last pass.
     my $lang = Texi2HTML::Config::get_conf('documentlanguage');
-#print STDERR "$pass $lang\n";
-    if (!set_document_language($lang, 1))
+    my $silent_lang = 1 if ($pass != 2);
+    if (!set_document_language($lang, $silent_lang))
     {
-       document_warn ("Translations for '$lang' not found. Using 'en'.") if ($pass == 2);
-       set_document_language('en', 1);
+       document_warn ("Translations for '$lang' not found. Using 'en'.") unless ($silent_lang);
+       set_document_language('en', $silent_lang);
     }
     # All the initialization used the informations still there at the 
     # end of the previous pass.
@@ -4971,23 +4975,24 @@ sub do_documentlanguage($$$$)
     my $line = shift;
     my $silent = shift;
     my $line_nr = shift;
-    my $return_value = 0;
+    my $language_change_succes = 0;
     if ($line =~ s/\s+(\w+)\s*//)
     {
         my $lang = $1;
         my $prev_lang = Texi2HTML::Config::get_conf('documentlanguage');
-        if ($lang and Texi2HTML::Config::set_conf('documentlanguage', $lang))
+        # This won't be done if the documentlanguage was set on the command line
+        if (Texi2HTML::Config::set_conf('documentlanguage', $lang))
         {
-            $return_value = set_document_language($lang, $silent, $line_nr);
-            if (!$return_value)
-            {
+            $language_change_succes = set_document_language($lang, $silent, $line_nr);
+            if (!$language_change_succes)
+            { # reset previous documentlanguage
                 Texi2HTML::Config::set_conf('documentlanguage', $prev_lang);
                 line_error ("Translations for '$lang' not found. Reverting to '$prev_lang'.", $line_nr) unless ($silent);
             }
         }
         # FIXME warn about stuff remaining on the line?
     }
-    return $return_value;
+    return $language_change_succes;
 }
 
 # actions that should be done in more than one pass. In fact most are not 
