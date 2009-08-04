@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.304 2009-08-04 07:58:27 pertusus Exp $
+# $Id: texi2html.pl,v 1.305 2009-08-04 14:30:44 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4039,7 +4039,10 @@ sub set_docu_names($$)
    }
 
    @Texi2HTML::Config::INCLUDE_DIRS = @include_dirs_orig;
-   unshift(@Texi2HTML::Config::INCLUDE_DIRS, $docu_dir);
+   my @prependended_include_directories = ('.');
+   push @prependended_include_directories, $Texi2HTML::THISDOC{'input_directory'} if ($Texi2HTML::THISDOC{'input_directory'} ne '.');
+   push @prependended_include_directories, $docu_dir if ($docu_dir ne '.' and $docu_dir ne $Texi2HTML::THISDOC{'input_directory'});
+   unshift(@Texi2HTML::Config::INCLUDE_DIRS, @prependended_include_directories);
    unshift(@Texi2HTML::Config::INCLUDE_DIRS, @Texi2HTML::Config::PREPEND_DIRS);
 # AAAA
    if ($Texi2HTML::Config::PREFIX and ($file_nr == 0))
@@ -5667,11 +5670,6 @@ sub menu_entry_texi($$$)
         $node_menu_ref->{'menu_up'} = $state->{'node_ref'};
         $node_menu_ref->{'menu_up_hash'}->{$state->{'node_ref'}->{'texi'}} = 1;
     }
-    #there is a warning for the menu as a whole
-#    else
-#    {
-#        line_warn ("menu entry without previous node: $node", $line_nr) unless ($node =~ /\(.+\)/);
-#    }
     if ($state->{'prev_menu_node'})
     {
         $node_menu_ref->{'menu_prev'} = $state->{'prev_menu_node'};
@@ -6349,25 +6347,33 @@ sub rearrange_elements()
                     $node->{'nodeup'} = $node_ref;
                 }
             }
-            elsif ($node->{'automatic_directions'} and $node->{'with_section'})
+            elsif ($node->{'automatic_directions'}) 
             {
-                if (defined($node->{'with_section'}->{'sectionup'}))
+                if ($node->{'with_section'})
                 {
-                    $node->{'nodeup'} = get_node($node->{'with_section'}->{'sectionup'});
+                    if (defined($node->{'with_section'}->{'sectionup'}))
+                    {
+                        $node->{'nodeup'} = get_node($node->{'with_section'}->{'sectionup'});
+                    }
+                    elsif ($node->{'with_section'}->{'toplevel'} and defined($section_top) and ($node->{'with_section'} ne $section_top))
+                    {
+                        $node->{'nodeup'} = get_node($section_top);
+                    }
+                    print STDERR "# Deducing from section node_up $node->{'nodeup'}->{'texi'} for $node->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS and defined($node->{'nodeup'}));
                 }
-                elsif ($node->{'with_section'}->{'toplevel'} and defined($section_top) and ($node->{'with_section'} ne $section_top))
+                elsif ($node->{'menu_up'})
                 {
-                    $node->{'nodeup'} = get_node($section_top);
+                    $node->{'nodeup'} = $node->{'menu_up'};
+                    print STDERR "# Deducing from menu node_up $node->{'menu_up'}->{'texi'} for $node->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                 }
             }
-            print STDERR "# Deducing from section node_up $node->{'nodeup'}->{'texi'} for $node->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS and defined($node->{'nodeup'}));
         }
 
-        if (!$node->{'nodeup'} and $node->{'menu_up'} and $Texi2HTML::Config::USE_MENU_DIRECTIONS)
-        { # makeinfo don't do that
-            $node->{'nodeup'} = $node->{'menu_up'};
-            print STDERR "# Deducing from menu node_up $node->{'menu_up'}->{'texi'} for $node->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-        }
+#        if (!$node->{'nodeup'} and $node->{'menu_up'} and $Texi2HTML::Config::USE_MENU_DIRECTIONS)
+#        { # makeinfo don't do that
+#            $node->{'nodeup'} = $node->{'menu_up'};
+#            print STDERR "# Deducing from menu node_up $node->{'menu_up'}->{'texi'} for $node->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+#        }
 
         if ($node->{'nodeup'} and !$node->{'nodeup'}->{'external_node'})
         {
@@ -6413,39 +6419,47 @@ sub rearrange_elements()
                 $node->{'menu_child'}->{'nodeprev'} = $node;
             }
         }
-        elsif ($node->{'automatic_directions'} and defined($node->{'with_section'}))
-        {
-            my $next;
-            my $section = $node->{'with_section'};
-            if (defined($section->{'sectionnext'}))
+        elsif ($node->{'automatic_directions'})
+        { 
+            if (defined($node->{'with_section'}))
             {
-                $next = get_node($section->{'sectionnext'});
-                if (defined($next) and $Texi2HTML::Config::SHOW_MENU)
-                {
-                    line_warn ("No node following `$node->{'texi'}' in menu, but `$next->{'texi'}' follows in sectionning", $node->{'line_nr'}) if (!defined($node->{'menu_next'}));
-                    line_warn ("Node following `$node->{'texi'}' in menu `$node->{'menu_next'}->{'texi'}' and in sectionning `$next->{'texi'}' differ", $node->{'line_nr'}) 
-                       if (defined($node->{'menu_next'}) and $next ne $node->{'menu_next'});
-                }
-            }
-            elsif ($Texi2HTML::Config::USE_UP_FOR_ADJACENT_NODES) 
-            { # makeinfo don't do that
-                while (defined($section->{'sectionup'}) and !defined($section->{'sectionnext'}))
-                {
-                    $section = $section->{'sectionup'};
-                }
+                my $next;
+                my $section = $node->{'with_section'};
                 if (defined($section->{'sectionnext'}))
                 {
                     $next = get_node($section->{'sectionnext'});
+                    if (defined($next) and $Texi2HTML::Config::SHOW_MENU)
+                    {
+                        line_warn ("No node following `$node->{'texi'}' in menu, but `$next->{'texi'}' follows in sectionning", $node->{'line_nr'}) if (!defined($node->{'menu_next'}));
+                        line_warn ("Node following `$node->{'texi'}' in menu `$node->{'menu_next'}->{'texi'}' and in sectionning `$next->{'texi'}' differ", $node->{'line_nr'}) 
+                           if (defined($node->{'menu_next'}) and $next ne $node->{'menu_next'});
+                    }
                 }
+                elsif ($Texi2HTML::Config::USE_UP_FOR_ADJACENT_NODES) 
+                { # makeinfo don't do that
+                    while (defined($section->{'sectionup'}) and !defined($section->{'sectionnext'}))
+                    {
+                        $section = $section->{'sectionup'};
+                    }
+                    if (defined($section->{'sectionnext'}))
+                    {
+                        $next = get_node($section->{'sectionnext'});
+                    }
+                }
+                $node->{'nodenext'} = $next;
             }
-            $node->{'nodenext'} = $next;
+            elsif ($node->{'menu_next'})
+            {
+                $node->{'nodenext'} = $node->{'menu_next'};
+            }
         }
         # next we try menus. makeinfo don't do that
-        if (!defined($node->{'nodenext'}) and $node->{'menu_next'} 
-            and $Texi2HTML::Config::USE_MENU_DIRECTIONS)
-        {
-            $node->{'nodenext'} = $node->{'menu_next'};
-        }
+        #if (!defined($node->{'nodenext'}) and $node->{'menu_next'} 
+        #    and $Texi2HTML::Config::USE_MENU_DIRECTIONS)
+        #{
+        #    $node->{'nodenext'} = $node->{'menu_next'};
+        #}
+
         # Find prev node
         if ($node->{'nodeprev'})
         {
@@ -6466,17 +6480,27 @@ sub rearrange_elements()
                     $node->{'nodeprev'} = get_node($section->{'sectionup'});
                 }
             }
+            elsif ($node->{'menu_prev'}) 
+            {
+                $node->{'nodeprev'} = $node->{'menu_prev'};
+            }
+            # the prev node is the parent node
+            elsif ($node->{'menu_up'} and ($node->{'menu_up'}->{'menu_child'} eq $node) and $Texi2HTML::Config::USE_UP_FOR_ADJACENT_NODES)
+            {
+                $node->{'nodeprev'} = $node->{'menu_up'};
+            }
         }
-        # next we try menus. makeinfo don't do that
-        if (!defined($node->{'nodeprev'}) and $node->{'menu_prev'} and $Texi2HTML::Config::USE_MENU_DIRECTIONS) 
-        {
-            $node->{'nodeprev'} = $node->{'menu_prev'};
-        }
-        # the prev node is the parent node
-        elsif (!defined($node->{'nodeprev'}) and $node->{'menu_up'} and ($node->{'menu_up'}->{'menu_child'} eq $node) and $Texi2HTML::Config::USE_MENU_DIRECTIONS)
-        {
-            $node->{'nodeprev'} = $node->{'menu_up'};
-        }
+    
+#        # next we try menus. makeinfo don't do that
+#        if (!defined($node->{'nodeprev'}) and $node->{'menu_prev'} and $Texi2HTML::Config::USE_MENU_DIRECTIONS) 
+#        {
+#            $node->{'nodeprev'} = $node->{'menu_prev'};
+#        }
+#        # the prev node is the parent node
+#        elsif (!defined($node->{'nodeprev'}) and $node->{'menu_up'} and ($node->{'menu_up'}->{'menu_child'} eq $node) and $Texi2HTML::Config::USE_MENU_DIRECTIONS)
+#        {
+#            $node->{'nodeprev'} = $node->{'menu_up'};
+#        }
     
         # the following node is the node following in node reading order
         # it is thus first the child, else the next, else the next following
@@ -15426,11 +15450,16 @@ while(@input_files)
    {
       $input_file_name = $input_file_arg.$suffix if (-e $input_file_arg.$suffix);
    }
-   # in case no file was found, stil set the file name
+   # in case no file was found, still set the file name
    $input_file_name = $input_file_arg if (!defined($input_file_name));
 
    $Texi2HTML::THISDOC{'input_file_name'} = $input_file_name;
    $Texi2HTML::THISDOC{'input_file_number'} = $file_number;
+   $Texi2HTML::THISDOC{'input_directory'} = '.';
+   if ($input_file_name =~ /(.*\/)/)
+   {
+      $Texi2HTML::THISDOC{'input_directory'} = $1;
+   }
 
    my $input_file_base = $input_file_name;
    $input_file_base =~ s/\.te?x(i|info)?$//;

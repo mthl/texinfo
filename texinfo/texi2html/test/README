@@ -34,7 +34,7 @@ The test results are in the out directories; the reference results are
 in res directories; there are 3 out and res directories, out/ and res/
 for the html results in the texi2html style, out_info and res_info
 for the info output a la makeinfo and out_all and res_all 
-for the texi2all output. diffs are put in diffs. 
+for the texi2any output. diffs are put in diffs. 
 
 If a test failed,
  F: a_test_directory 

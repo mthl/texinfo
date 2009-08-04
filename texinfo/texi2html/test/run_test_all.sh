@@ -14,7 +14,7 @@ diffs_dir=diffs
 
 logfile=tests.log
 
-commands='texi2html.pl: makeinfo.pl:_info texi2all.pl:_all'
+commands='texi2html.pl: makeinfo.pl:_info texi2any.pl:_all'
 
 clean=no
 if [ z"$1" = 'z-clean' ]; then

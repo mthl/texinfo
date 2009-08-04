@@ -6,7 +6,7 @@ Garbage
 Titlefont before top node
 
 
-File: no_section,  Node: Top,  Next: second node,  Up: (dir)
+File: no_section,  Node: Top,  Next: second node,  Prev: second node,  Up: (dir)
 
    Top node
 
@@ -33,7 +33,7 @@ File: no_section,  Node: other node,  Up: second node
 
 Tag Table:
 Node: Top113
-Node: second node231
-Node: other node364
+Node: second node251
+Node: other node384
 
 End Tag Table

@@ -12,7 +12,7 @@ File: node_footnote.info,  Node: Top,  Next: a',  Up: (dir)
 * a`::
 
 
-File: node_footnote.info,  Node: a',  Prev: Top
+File: node_footnote.info,  Node: a',  Next: a^,  Prev: Top,  Up: Top
 
    node a', Footnote 1(1).
 
@@ -21,7 +21,7 @@ File: node_footnote.info,  Node: a',  Prev: Top
    (1) foot 1 a'
 
 
-File: node_footnote.info,  Node: a^
+File: node_footnote.info,  Node: a^,  Next: chapter,  Prev: a',  Up: Top
 
    node a^, Footnote 2(1).
 
@@ -40,7 +40,7 @@ File: node_footnote.info,  Node: chapter
 * a`::
 
 
-File: node_footnote.info,  Node: a`
+File: node_footnote.info,  Node: a`,  Prev: chapter,  Up: chapter
 
    node a`, Footnote 3(1).
 
@@ -53,11 +53,11 @@ File: node_footnote.info,  Node: a`
 Tag Table:
 Node: Top88
 Node: a'194
-Ref: a'-Footnote-1309
-Node: a^327
-Ref: a^-Footnote-1430
-Node: chapter448
-Node: a`530
-Ref: a`-Footnote-1633
+Ref: a'-Footnote-1330
+Node: a^348
+Ref: a^-Footnote-1488
+Node: chapter506
+Node: a`588
+Ref: a`-Footnote-1721
 
 End Tag Table

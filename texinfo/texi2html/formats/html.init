@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.10 2009-08-04 07:58:28 pertusus Exp $
+# $Id: html.init,v 1.11 2009-08-04 14:30:45 pertusus Exp $
 
 use strict;
 
@@ -507,6 +507,8 @@ my %style_map_html = (
       'emph',       {'attribute' => 'em'}, 
       'env',        {'attribute' => 'code'},
       'file',       {'attribute' => 'tt', 'quote' => '"'},
+      'headitemfont', {'attribute' => 'b'}, # not really that, in fact it is 
+                                           # in <th> rather than <td>
       'i',          {'attribute' => 'i'},
       'slanted',    {'attribute' => 'i'},
       'sansserif',  {'attribute' => 'span class="sansserif"'},

@@ -1,3 +1,13 @@
+2009-08-04   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: always use menu directions to
+	find node directions, but only for nodes using automatic directions
+	that are also not associated with a sectionning command.
+	$USE_MENU_DIRECTIONS is not used anymore.
+	Handle @headitemfont.
+	* texi2html.pl: always search for include files and images 
+	in working directory and manual directory.
+
 2009-08-03   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* MySimple.pm: handle correctly aliases.

@@ -12,7 +12,7 @@ File: node_footnote.info,  Node: Top,  Next: a',  Up: (dir)
 * a`::
 
 
-File: node_footnote.info,  Node: a',  Prev: Top
+File: node_footnote.info,  Node: a',  Next: a^,  Prev: Top,  Up: Top
 
    node a', Footnote 1(1) (*note a'-Footnote-1::).
 
@@ -22,7 +22,7 @@ File: node_footnote.info,  Node: a'-Footnotes,  Up: a'
    (1) foot 1 a'
 
 
-File: node_footnote.info,  Node: a^
+File: node_footnote.info,  Node: a^,  Next: chapter,  Prev: a',  Up: Top
 
    node a^, Footnote 2(1) (*note a^-Footnote-1::).
 
@@ -42,7 +42,7 @@ File: node_footnote.info,  Node: chapter
 * a`::
 
 
-File: node_footnote.info,  Node: a`
+File: node_footnote.info,  Node: a`,  Prev: chapter,  Up: chapter
 
    node a`, Footnote 3(1) (*note a`-Footnote-1::).
 
@@ -56,14 +56,14 @@ File: node_footnote.info,  Node: a`-Footnotes,  Up: a`
 Tag Table:
 Node: Top88
 Node: a'194
-Node: a'-Footnotes297
-Ref: a'-Footnote-1355
-Node: a^373
-Node: a^-Footnotes464
-Ref: a^-Footnote-1522
-Node: chapter540
-Node: a`622
-Node: a`-Footnotes713
-Ref: a`-Footnote-1771
+Node: a'-Footnotes318
+Ref: a'-Footnote-1376
+Node: a^394
+Node: a^-Footnotes522
+Ref: a^-Footnote-1580
+Node: chapter598
+Node: a`680
+Node: a`-Footnotes801
+Ref: a`-Footnote-1859
 
 End Tag Table

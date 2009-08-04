@@ -854,9 +854,9 @@ $(i18n_files): i18n/en
 translations.pl: $(dist_i18n_DATA) 
 	$(PERL) $(top_builddir)/manage_i18n.pl -d i18n -o $@ -I . -I $(srcdir) merge
 
-all-local: makeinfo.pl texi2all.pl
+all-local: makeinfo.pl texi2any.pl
 
-makeinfo.pl texi2all.pl:
+makeinfo.pl texi2any.pl:
 	-$(LN_S) $(srcdir)/texi2html.pl $@
 
 html-local: texi2html

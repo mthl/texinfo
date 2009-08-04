@@ -206,8 +206,8 @@ but , ,
 @image{f--ile,l--i} [ f--ile.png ]
 @image{f--ile,,l--e} [ f--ile.png ]
 @image{f--ile,,,alt} [ f--ile.png: alt ]
-@image{f--ile,,,,e-d-xt} [ f--ile.png ]
-@image{f--ile,aze,az,alt,e--xt} [ f--ile.png: alt ]
+@image{f--ile,,,,e-d-xt} [ f--ile.e--xt ]
+@image{f--ile,aze,az,alt,e--xt} [ f--ile.e--xt: alt ]
 @image{f-ile,aze,,a--lt} [ f-ile.txt: a-lt ]
 @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@} [ f--ile@..file ext e--xt}: alt ]
 
@@ -507,7 +507,7 @@ subsubheading
 @math{--a@minus{} {\frac{1}{2}}} -a- {\frac{1}{2}}
 
 @image{f-ile,,,alt@verb{:jk _" %}} [ f-ile.txt: altjk _" %@ ]
-@image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} [ f--ile.png: jk _" %@ in b " ]
+@image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} [ f--ile.e--xt: jk _" %@ in b " ]
 @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}} [ filejk _" %@.txt: altjk _" %@ ]
 
 
@@ -792,8 +792,8 @@ but , ,
 @image{f--ile,l--i} [ f--ile.png ]
 @image{f--ile,,l--e} [ f--ile.png ]
 @image{f--ile,,,alt} [ f--ile.png: alt ]
-@image{f--ile,,,,e-d-xt} [ f--ile.png ]
-@image{f--ile,aze,az,alt,e--xt} [ f--ile.png: alt ]
+@image{f--ile,,,,e-d-xt} [ f--ile.e--xt ]
+@image{f--ile,aze,az,alt,e--xt} [ f--ile.e--xt: alt ]
 @image{f-ile,aze,,a--lt} [ f-ile.txt: a-lt ]
 @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@} [ f--ile@..file ext e--xt}: alt ]
 
@@ -1093,7 +1093,7 @@ subsubheading
 @math{--a@minus{} {\frac{1}{2}}} -a- {\frac{1}{2}}
 
 @image{f-ile,,,alt@verb{:jk _" %}} [ f-ile.txt: altjk _" %@ ]
-@image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} [ f--ile.png: jk _" %@ in b " ]
+@image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} [ f--ile.e--xt: jk _" %@ in b " ]
 @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}} [ filejk _" %@.txt: altjk _" %@ ]
 
 
@@ -1376,8 +1376,8 @@ but , ,
 @image{f--ile,l--i} [ f--ile.png ]
 @image{f--ile,,l--e} [ f--ile.png ]
 @image{f--ile,,,alt} [ f--ile.png: alt ]
-@image{f--ile,,,,e-d-xt} [ f--ile.png ]
-@image{f--ile,aze,az,alt,e--xt} [ f--ile.png: alt ]
+@image{f--ile,,,,e-d-xt} [ f--ile.e--xt ]
+@image{f--ile,aze,az,alt,e--xt} [ f--ile.e--xt: alt ]
 @image{f-ile,aze,,a--lt} [ f-ile.txt: a-lt ]
 @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@} [ f--ile@..file ext e--xt}: alt ]
 
@@ -1677,7 +1677,7 @@ subsubheading
 @math{--a@minus{} {\frac{1}{2}}} --a- {\frac{1}{2}}
 
 @image{f-ile,,,alt@verb{:jk _" %}} [ f-ile.txt: altjk _" %@ ]
-@image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} [ f--ile.png: jk _" %@ in b " ]
+@image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} [ f--ile.e--xt: jk _" %@ in b " ]
 @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}} [ filejk _" %@.txt: altjk _" %@ ]
 
 

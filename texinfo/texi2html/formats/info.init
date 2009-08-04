@@ -95,7 +95,7 @@ $no_paragraph_commands{'anchor'} = 1;
   'option', 'samp');
 # slanted? 
 @asis_commands = ('asis', 'b', 'ctrl', 'dmn', 'i', 'math', 'sc', 't', 'r', 
-  'slanted', 'var', 'titlefont', 'verb', 'clickstyle');
+  'slanted', 'var', 'titlefont', 'verb', 'clickstyle', 'headitemfont');
 @chevron_commands = ('key', 'indicateurl');
 
 %info_default_accent_commands = ();

@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option -init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.212 2009-08-04 07:58:27 pertusus Exp $
+# $Id: texi2html.init,v 1.213 2009-08-04 14:30:44 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -521,9 +521,6 @@ sub t2h_default_set_variables_default()
 # preformatted environment
   $SEPARATE_DESCRIPTION = 0;
 
-# use the information given by menus to complete the node directions
-  $USE_MENU_DIRECTIONS = 0;
-
 # try up sections to complete the node directions
   $USE_UP_FOR_ADJACENT_NODES = 0;
 
@@ -741,7 +738,6 @@ sub t2h_default_set_variables_texi2html()
   $USE_ACCESSKEY = 0;
   $NODE_NAME_IN_MENU = 0;
   $OVERVIEW_LINK_TO_TOC = 0;
-  $USE_MENU_DIRECTIONS = 1;
   $USE_UP_FOR_ADJACENT_NODES = 1;
   $USE_ACCESSKEY = 0;
   $USE_REL_REV = 0;
@@ -2995,6 +2991,7 @@ sub t2h_default_copy_style_map ($$;$)
       'emph',       {}, 
       'env',        {'args' => ['code']},
       'file',       {'args' => ['code'], 'quote' => '"'},
+      'headitemfont', {},
       'i',          {},
       'slanted',    {},
       'sansserif',  {},
