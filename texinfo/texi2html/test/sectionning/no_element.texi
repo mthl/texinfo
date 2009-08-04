@@ -1,6 +1,7 @@
 \input texinfo
 @setfilename no_element.info
 @settitle no_element test
+@documentencoding ISO-8859-1
 
 
 @anchor{An anchor}

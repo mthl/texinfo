@@ -73,3 +73,4 @@ anchor_in_footnote_info anchor_in_footnote.texi --init info.init
 anchor_in_footnote_separated_info anchor_in_footnote.texi --init info.init --footnote-style=separate
 novalidate_info novalidate.texi --init info.init
 test_two_include test_two_include.texi -I .@PATH_SEPARATOR@../manuals@PATH_SEPARATOR@../macros
+only_documentencoding only_documentencoding.texi

@@ -2358,51 +2358,53 @@ sub info_default_print_page_foot($)
    if (!defined ($info_state->{'pending_tags'}))
    { # i18n
       main::document_warn ("Document without nodes.");
-      return;
    }
-   $indirect = 1 if ($info_default_out_file_nr > 1);
-   if ($indirect)
+   else
    {
-       close ($Texi2HTML::THISDOC{'FH'});
-       unless (rename ("$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}", "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}-1"))
+       $indirect = 1 if ($info_default_out_file_nr > 1);
+       if ($indirect)
        {
-           main::document_warn ("Rename $Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'} failed: $!");
-       }
-       
-       my $INDIRECT = main::open_out("$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}");
-       #unless (open (INDIRECT, ">$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}"))
-       #{
-       #    main::document_warn ("Open $Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'} failed: $!");
-       #}
-       print $INDIRECT "".info_default_header();
-       print $INDIRECT "\x{1F}\nIndirect:";
-       foreach my $indirect (@info_default_pending_indirect)
-       {
-           print $INDIRECT "\n$indirect->{'file'}: $indirect->{'offset'}";
-       }
-       $fh = $INDIRECT;
+          close ($Texi2HTML::THISDOC{'FH'});
+          unless (rename ("$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}", "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}-1"))
+          {
+              main::document_warn ("Rename $Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'} failed: $!");
+          }
+          
+          my $INDIRECT = main::open_out("$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}");
+          #unless (open (INDIRECT, ">$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}"))
+          #{
+          #    main::document_warn ("Open $Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'} failed: $!");
+          #}
+          print $INDIRECT "".info_default_header();
+          print $INDIRECT "\x{1F}\nIndirect:";
+          foreach my $indirect (@info_default_pending_indirect)
+          {
+              print $INDIRECT "\n$indirect->{'file'}: $indirect->{'offset'}";
+          }
+          $fh = $INDIRECT;
+      }
+      # makeinfo seems to add systematically an additional \n, done just below
+      print $fh "\n\x{1F}\nTag Table:\n";
+      
+      if ($indirect)
+      {
+          print $fh "(Indirect)\n";
+      }
+      my $Top_seen;
+      foreach my $element (@{$info_state->{'pending_tags'}})
+      {
+         my $prefix;
+         $prefix = 'Node' if ($element->{'node'});
+         $prefix = 'Ref' if ($element->{'anchor'} or $element->{'float'});
+         print $fh "$prefix: $element->{'text'}\x{7F}$element->{'info_offset'}\n";
+         $Top_seen = 1 if ($element->{'text'} =~ /^top$/i);
+      }
+      if (!$Top_seen)
+      {# i18n
+         main::document_warn ("Document without Top node.");
+      }
+      print $fh "\x{1F}\nEnd Tag Table\n";
    }
-   # makeinfo seems to add systematically an additional \n, done just below
-   print $fh "\n\x{1F}\nTag Table:\n";
-   
-   if ($indirect)
-   {
-       print $fh "(Indirect)\n";
-   }
-   my $Top_seen;
-   foreach my $element (@{$info_state->{'pending_tags'}})
-   {
-      my $prefix;
-      $prefix = 'Node' if ($element->{'node'});
-      $prefix = 'Ref' if ($element->{'anchor'} or $element->{'float'});
-      print $fh "$prefix: $element->{'text'}\x{7F}$element->{'info_offset'}\n";
-      $Top_seen = 1 if ($element->{'text'} =~ /^top$/i);
-   }
-   if (!$Top_seen)
-   {# i18n
-      main::document_warn ("Document without Top node.");
-   }
-   print $fh "\x{1F}\nEnd Tag Table\n";
    #if (defined($Texi2HTML::THISDOC{'DOCUMENT_ENCODING'}))
    if (defined($Texi2HTML::THISDOC{'IN_ENCODING'}))
    {

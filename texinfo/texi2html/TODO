@@ -369,13 +369,7 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * @insertcopying in @copying doesn't lead to error message with 
   INLINE_INSERTCOPYING. See invalid/recursive_copying
 
-* encodings/accentenc.texi.
-../..//accent-text.txi:45: warning: invalid encoded character `oelig'.
-../..//accent-text.txi:45: warning: invalid encoded character `OElig'.
-  Also OE is associated with both '00D8' and '0152'?
-
-* should include files be searched in current directory, input manual
-  directory or both?
+* '00D8' which is Oslash is transliterated on OE?
 
 * error messages
   *** waiting for end of quotation, found @end cartouche (l. 12)
@@ -396,20 +390,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * in formatting/table_in_table_item.texi, some lines maybe have too much 
   leading spaces (precisely in @code in @table in @table @item, line
 in nested table line
-
-* in coverage/formats_titles.texi, a construct like
-
-@table @emph
-before first table
-@item tab
-@end table
-
-  leads to
-
-    before first table
-_tab_
-
-  without an empty line added after the title. Maybe there should be one.
 
 * In japanese.texi lines are not cut right.
 

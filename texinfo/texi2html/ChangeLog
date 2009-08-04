@@ -7,6 +7,8 @@
 	Handle @headitemfont.
 	* texi2html.pl: always search for include files and images 
 	in working directory and manual directory.
+	* formats/info.init: always output encoding as a local var if set,
+	even if there are no nodes.
 
 2009-08-03   Patrice Dumas  <dumas@centre-cired.fr>
 

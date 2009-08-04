@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.306 2009-08-04 14:55:34 pertusus Exp $
+# $Id: texi2html.pl,v 1.307 2009-08-04 16:23:35 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4345,8 +4345,8 @@ sub texinfo_initialization($)
     }
     # All the initialization used the informations still there at the 
     # end of the previous pass.
-    # Now we reset everything, such that things are used when they happen
-    # reset the @set/@clear values
+    # Now we reset everything, such that things are used when they happen.
+    # also reset the @set/@clear values.
     %value = %value_initial;
     foreach my $init_mac ('everyheading', 'everyfooting', 'evenheading', 
         'evenfooting', 'oddheading', 'oddfooting', 'headings', 
