@@ -15,6 +15,7 @@ AC_SUBST([PACKAGE_DATE])
 
 dnl Checks for programs.
 AC_PROG_LN_S
+AC_PROG_MKDIR_P
 AC_ARG_VAR([PERL], [The path to the `perl' executable.])
 AC_PATH_PROG([PERL], [perl], [/usr/bin/env perl], [/opt/perl5/bin:"$PATH"])
 
