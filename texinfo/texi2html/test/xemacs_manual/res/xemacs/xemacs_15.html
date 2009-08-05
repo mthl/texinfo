@@ -92,7 +92,7 @@ which occurrences to replace.
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Incremental-Search"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Search" title="Previous section in reading order"> &lt; </a>]</td>
@@ -317,7 +317,7 @@ isearch (<code>isearch-abort</code>).
 <p>Any other character which is normally inserted into a buffer when typed
 is automatically added to the search string in isearch-mode.
 </p>
-<hr size="6">
+<hr>
 <a name="Slow-Terminal-Incremental-Search"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Incremental-Search" title="Previous section in reading order"> &lt; </a>]</td>
@@ -360,7 +360,7 @@ initially 1200.
 <p>  The number of lines to use in slow terminal search display is controlled
 by the variable <code>search-slow-window-lines</code>.  Its normal value is 1.
 </p>
-<hr size="6">
+<hr>
 <a name="Non_002dIncremental-Search"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Slow-Terminal-Incremental-Search" title="Previous section in reading order"> &lt; </a>]</td>
@@ -418,7 +418,7 @@ not call <code>search-forward</code> right away.  They first check
 if the next character is <kbd>C-w</kbd>, which requests a word search.
 See section <a href="#Word-Search">Word Search</a>.
 </p>
-<hr size="6">
+<hr>
 <a name="Word-Search"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Non_002dIncremental-Search" title="Previous section in reading order"> &lt; </a>]</td>
@@ -475,7 +475,7 @@ bind these commands to keys.  The reason that incremental
 search is programmed to invoke them as well is that <kbd>C-s &lt;RET&gt; C-w</kbd>
 is the traditional Emacs sequence of keys for word search.
 </p>
-<hr size="6">
+<hr>
 <a name="Regexp-Search"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Word-Search" title="Previous section in reading order"> &lt; </a>]</td>
@@ -548,7 +548,7 @@ them with <kbd>M-x</kbd> or bind them to keys.  You can also call
 <kbd>M-C-s &lt;RET&gt;</kbd>; similarly for <code>re-search-backward</code> with
 <kbd>M-C-r &lt;RET&gt;</kbd>.
 </p>
-<hr size="6">
+<hr>
 <a name="Regexps"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Regexp-Search" title="Previous section in reading order"> &lt; </a>]</td>
@@ -968,7 +968,7 @@ backslash-parentheses that matches end-of-line, a tab or two spaces; and
 a character set matching whitespace characters, repeated any number of
 times.
 </p>
-<hr size="6">
+<hr>
 <a name="Search-Case"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Regexps" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1004,7 +1004,7 @@ there is a default value which you can change as well.  See section <a href="xem
 You can also use <b>Case Sensitive Search</b> from the <b>Options</b> menu 
 on your screen.
 </p>
-<hr size="6">
+<hr>
 <a name="Replace"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Search-Case" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1049,7 +1049,7 @@ parallel using the command <code>expand-region-abbrevs</code>.  See section <a h
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Unconditional-Replace"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Replace" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1097,7 +1097,7 @@ there.
 <p>  A numeric argument restricts replacement to matches that are surrounded
 by word boundaries.
 </p>
-<hr size="6">
+<hr>
 <a name="Regexp-Replace"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Unconditional-Replace" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1141,7 +1141,7 @@ with &lsquo;<samp>cddr-safe</samp>&rsquo;.
 <p>would perform exactly the opposite replacements.  To include a &lsquo;<samp>\</samp>&rsquo;
 in the text to replace with, you must give &lsquo;<samp>\\</samp>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <a name="Replacement-and-Case"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Regexp-Replace" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1181,7 +1181,7 @@ to <code>nil</code>, replacement is done without case conversion.  If
 matching occurrences of &lsquo;<samp>foo</samp>&rsquo; to replace; also, case conversion of the
 replacement string is not done.
 </p>
-<hr size="6">
+<hr>
 <a name="Query-Replace"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Replacement-and-Case" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1311,7 +1311,7 @@ executes the character as a command.  To restart the <code>query-replace</code>,
 use <kbd>C-x &lt;ESC&gt; &lt;ESC&gt;</kbd>, which repeats the <code>query-replace</code> because it
 used the minibuffer to read its arguments.  See section <a href="xemacs_9.html#Repetition">C-x ESC ESC</a>.
 </p>
-<hr size="6">
+<hr>
 <a name="Other-Repeating-Search"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Query-Replace" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1374,7 +1374,7 @@ specified regexp.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Search" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_16.html#Fixit" title="Next chapter"> &gt;&gt; </a>]</td>

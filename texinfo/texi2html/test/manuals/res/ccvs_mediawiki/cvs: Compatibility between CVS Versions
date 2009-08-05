@@ -41,7 +41,7 @@ cases you need to upgrade both the client and the server to take
 advantage of new features and bugfixes, however.
 </p>
 
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Troubleshooting#Troubleshooting  &gt;&gt; ]|</td>

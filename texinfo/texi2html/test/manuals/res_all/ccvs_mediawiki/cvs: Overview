@@ -1,20 +1,8 @@
 <div id="Overview"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[cvs#Top| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#What-is-CVS_003f| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [cvs: The Repository#Repository Repository], Previous: [[cvs#Top|Top]], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Overview-1"></div>
 == Overview ==
 <div id="index-Overview"></div>
@@ -31,24 +19,12 @@ certain command, you can probably skip everything here.
 </nowiki>&bull;[[#What-is-CVS-not_003f| What is CVS not?]]::<nowiki>            Problems CVS doesn&rsquo;t try to solve
 </nowiki>&bull;[[#A-sample-session| A sample session]]::<nowiki>            A tour of basic CVS usage
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="What-is-CVS_003f"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Overview| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#What-is-CVS-not_003f| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Overview| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#What-is-CVS-not_003f|What is CVS not?]], Up: [[#Overview|Overview]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="What-is-CVS_003f-1"></div>
 === What is CVS? ===
 <div id="index-What-is-CVS_003f"></div>
@@ -130,24 +106,12 @@ if there is sufficient <small>CVS</small> traffic on
 described in more detail in [cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual].  To subscribe
 send mail to <code>bug-cvs-request@gnu.org</code>.
 </p>
-<hr size="6">
+<hr>
 <div id="What-is-CVS-not_003f"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#What-is-CVS_003f| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#A-sample-session| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Overview| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#A-sample-session|A sample session]], Previous: [[#What-is-CVS_003f|What is CVS?]], Up: [[#Overview|Overview]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="What-is-CVS-not_003f-1"></div>
 === What is CVS not? ===
 <div id="index-What-is-CVS-not_003f"></div>
@@ -297,24 +261,12 @@ only once they have been proven.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="A-sample-session"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#What-is-CVS-not_003f| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Getting-the-source| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Overview| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#What-is-CVS-not_003f|What is CVS not?]], Up: [[#Overview|Overview]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="A-sample-session-1"></div>
 === A sample session ===
 <div id="index-Example-of-a-work_002dsession"></div>
@@ -341,24 +293,12 @@ called &lsquo;<samp>tc</samp>&rsquo;.
 </nowiki>&bull;[[#Cleaning-up| Cleaning up]]::<nowiki>                 Cleaning up
 </nowiki>&bull;[[#Viewing-differences| Viewing differences]]::<nowiki>         Viewing differences
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Getting-the-source"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#A-sample-session| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Committing-your-changes| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Committing-your-changes|Committing your changes]], Up: [[#A-sample-session|A sample session]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Getting-the-source-1"></div>
 ==== Getting the source ====
 <div id="index-Getting-the-source"></div>
@@ -390,24 +330,12 @@ of hours later you have added an optimization pass to the compiler.
 A note to <small>RCS</small> and <small>SCCS</small> users: There is no need to lock the files that
 you want to edit.  See section [cvs: Multiple developers#Multiple-developers Multiple developers], for an explanation.
 </p>
-<hr size="6">
+<hr>
 <div id="Committing-your-changes"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Getting-the-source| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Cleaning-up| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Cleaning-up|Cleaning up]], Previous: [[#Getting-the-source|Getting the source]], Up: [[#A-sample-session|A sample session]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Committing-your-changes-1"></div>
 ==== Committing your changes ====
 <div id="index-Committing-changes-to-files"></div>
@@ -468,24 +396,12 @@ this:
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -m &quot;Added an optimization pass&quot; backend.c
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Cleaning-up"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Committing-your-changes| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Viewing-differences| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Viewing-differences|Viewing differences]], Previous: [[#Committing-your-changes|Committing your changes]], Up: [[#A-sample-session|A sample session]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Cleaning-up-1"></div>
 ==== Cleaning up ====
 <div id="index-Cleaning-up"></div>
@@ -539,24 +455,12 @@ history file.
 <p>You decide to play it safe and answer <kbd>n &lt;RET&gt;</kbd>
 when <code>release</code> asks for confirmation.
 </p>
-<hr size="6">
+<hr>
 <div id="Viewing-differences"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Cleaning-up| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Cleaning-up|Cleaning up]], Up: [[#A-sample-session|A sample session]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Viewing-differences-1"></div>
 ==== Viewing differences ====
 <div id="index-Viewing-differences"></div>
@@ -586,18 +490,9 @@ You have [0] altered files in this repository.
 Are you sure you want to release (and delete) directory `tc': y
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<hr>
+<div class="node">
+<p>
+Previous: [[#Cleaning-up|Cleaning up]], Up: [[#A-sample-session|A sample session]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

@@ -8,31 +8,14 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.16 2009-07-31 10:16:45 pertusus Exp $
-
-######################################################################
-# The following variables can also be set by command-line options
-#
-#
-# The default values are set in this file, texi2html.init and the content
-# of this file is included at the beginning of the texi2html script file. 
-# Those values may be overrided by values set in $sysconfdir/texi2htmlrc 
-# and then by values set in $HOME/texi2htmlrc.
-#
-# command line switches may override these values, and values set in files
-# specified by -init-file are also taken into account.
-# values set in these files overwrite values set by the command-line
-# options appearing before -init-file and might still be overwritten by
-# command-line arguments following the -init-file option.
+# $Id: mediawiki.init,v 1.17 2009-08-05 23:20:27 pertusus Exp $
 
 html_default_load();
 
-# -number | -nonumber
 # if this is set the sections are numbered, and section names and numbers 
 # are used in references and menus (instead of node names).
 $NUMBER_SECTIONS = 0;
 
-# -separated-footnotes
 # if this is set footnotes are on a separated page. Otherwise they are at
 # the end of each file (if the document is split).
 $FOOTNOTESTYLE = 'separate';
@@ -44,7 +27,7 @@ $EXTENSION = undef;
 $NODE_FILE_EXTENSION = "";	    
 
 # Use "title: section" name as the file name.
-$SECTION_AS_FILE_NAME = 1;
+#$SECTION_AS_FILE_NAME = 1;
 
 # if set and $SPLIT is set, then split index pages at the next letter
 # after they have more than that many entries
@@ -236,26 +219,6 @@ sub mediawiki_titlepage($$$$)
     my $titlepage_no_texi = shift;
     my $titlepage_simple_text = shift;
 
-#    my $result = '';
-#    if (@{$Texi2HTML::THISDOC{'titles'}} 
-#        or @{$Texi2HTML::THISDOC{'subtitles'}} 
-#        or @{$Texi2HTML::THISDOC{'authors'}})
-#    {     
-#        foreach my $title (@{$Texi2HTML::THISDOC{'titles'}})
-#        {
-#            $result .= '== ' . $title . " ==\n";
-#        }    
-#        foreach my $subtitle (@{$Texi2HTML::THISDOC{'subtitles'}})
-#        {
-#            $result .= '=== ' . $subtitle . " ===\n";
-#        }
-#        foreach my $author (@{$Texi2HTML::THISDOC{'authors'}})
-#        {
-#            $result .= '<strong> ' . $author . " </strong><br>\n";
-#        }
-#        $result .= "$DEFAULT_RULE\n" if $DEFAULT_RULE;
-#    }
-
     $Texi2HTML::TITLEPAGE = $titlepage_text;
         $Texi2HTML::TITLEPAGE = $titlepage_text;
     if ($titlepage_text eq '')
@@ -397,8 +360,23 @@ sub mediawiki_heading($$$$$;$$)
 }
 
 
+$button_formatting	      = \&mediawiki_button_formatting;
 
-$print_navigation	      = \&mediawiki_print_navigation;
+sub mediawiki_button_formatting
+{
+   my $button = shift;
+   my $vertical = shift;
+   my ($active, $passive) = HTML_DEFAULT_button_formatting($button, $vertical);
+   if (defined($active) and !ref($button))
+   {
+      $active =~ s/^\[/\|/;
+      $active =~ s/\]$/\|/;
+   }
+   return ($active, $passive);
+}
+
+# It is easier to redefine only button_formatting
+#$print_navigation	      = \&mediawiki_print_navigation;
 sub mediawiki_print_navigation
 {
     my $buttons = shift;

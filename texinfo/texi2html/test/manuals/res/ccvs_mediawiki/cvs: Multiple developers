@@ -71,7 +71,7 @@ choosing between them.
 </nowiki>&bull;[[#Watches| Watches]]::<nowiki>                     Mechanisms to track who is editing files
 </nowiki>&bull;[[#Choosing-a-model| Choosing a model]]::<nowiki>            Reserved or unreserved checkouts?
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="File-status"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt; ]]|</td>
@@ -203,7 +203,7 @@ option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
 these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].
 </p>
-<hr size="6">
+<hr>
 <div id="Updating-a-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#File-status| &lt; ]]|</td>
@@ -255,7 +255,7 @@ special markers.
 See section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in sync with repository], for a complete description of the
 <code>update</code> command.
 </p>
-<hr size="6">
+<hr>
 <div id="Conflicts-example"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Updating-a-file| &lt; ]]|</td>
@@ -439,7 +439,7 @@ Emacs front-end for <small>CVS</small>) you can use an Emacs
 package called emerge to help you resolve conflicts.
 See the documentation for pcl-cvs.
 </p>
-<hr size="6">
+<hr>
 <div id="Informing-others"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Conflicts-example| &lt; ]]|</td>
@@ -472,7 +472,7 @@ to, for instance, instruct <small>CVS</small> to mail a
 message to all developers, or post a message to a local
 newsgroup.
 </p>
-<hr size="6">
+<hr>
 <div id="Concurrency"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Informing-others| &lt; ]]|</td>
@@ -552,7 +552,7 @@ time, the person running <code>update</code> might get only
 the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 &lsquo;<tt>a/two.c</tt>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <div id="Watches"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Concurrency| &lt; ]]|</td>
@@ -600,7 +600,7 @@ but <small>CVS</small> is not able to enforce this behavior.
 </nowiki>&bull;[[#Watch-information| Watch information]]::<nowiki>           Information about who is watching and editing
 </nowiki>&bull;[[#Watches-Compatibility| Watches Compatibility]]::<nowiki>       Watches interact poorly with CVS 1.6 or earlier
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Setting-a-watch"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Watches| &lt; ]]|</td>
@@ -662,7 +662,7 @@ watch on</code>.
 </p>
 </dd></dl>
 
-<hr size="6">
+<hr>
 <div id="Getting-Notified"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Setting-a-watch| &lt; ]]|</td>
@@ -801,7 +801,7 @@ would be more useful if watches tracked each working
 directory separately, so this behavior might be worth
 changing.
 </p>
-<hr size="6">
+<hr>
 <div id="Editing-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Getting-Notified| &lt; ]]|</td>
@@ -889,7 +889,7 @@ repository since the last time you updated.
 server; the notifications will be sent upon the next
 successful <small>CVS</small> command.
 </p>
-<hr size="6">
+<hr>
 <div id="Watch-information"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Editing-files| &lt; ]]|</td>
@@ -937,7 +937,7 @@ containing the file.
 </p>
 </dd></dl>
 
-<hr size="6">
+<hr>
 <div id="Watches-Compatibility"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Watch-information| &lt; ]]|</td>
@@ -978,7 +978,7 @@ you cannot upgrade, use the <code>watch off</code> and
 that will restore the repository to a state which
 <small>CVS</small> 1.6 can cope with.
 </p>
-<hr size="6">
+<hr>
 <div id="Choosing-a-model"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Watches-Compatibility| &lt; ]]|</td>
@@ -1053,7 +1053,7 @@ Therefore, for some groups it can be considered the
 best of both the reserved checkout and unreserved
 checkout worlds.
 </p>
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>

@@ -82,7 +82,7 @@ user-defined modules.
 </nowiki>&bull;[[#Read_002donly-access| Read-only access]]::<nowiki>            Granting read-only access to the repository
 </nowiki>&bull;[[#Server-temporary-directory| Server temporary directory]]::<nowiki>  The server creates temporary directories
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Specifying-a-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt; ]]|</td>
@@ -148,7 +148,7 @@ override the <code>$CVSROOT</code> environment variable.  If
 former is used.  Of course, for proper operation they
 should be two ways of referring to the same repository.
 </p>
-<hr size="6">
+<hr>
 <div id="Repository-storage"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Specifying-a-repository| &lt; ]]|</td>
@@ -191,7 +191,7 @@ the file permissions appropriate for the repository.
 </nowiki>&bull;[[#Locks| Locks]]::<nowiki>                       CVS locks control concurrent accesses
 </nowiki>&bull;[[#CVSROOT-storage| CVSROOT storage]]::<nowiki>             A few things about CVSROOT are different
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Repository-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository-storage| &lt; ]]|</td>
@@ -303,7 +303,7 @@ is magic branches; for more information see [cvs: Branching and merging#Magic-br
 are a subset of what <small>RCS</small> accepts; for <small>CVS</small>&rsquo;s
 rules see [cvs: Revisions#Tags Tags&ndash;Symbolic revisions].
 </p>
-<hr size="6">
+<hr>
 <div id="File-permissions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository-files| &lt; ]]|</td>
@@ -416,7 +416,7 @@ fix, so read the documentation on pserver security
 carefully if you are considering this option
 ([[#Password-authentication-security|Security considerations with password authentication]]).
 </p>
-<hr size="6">
+<hr>
 <div id="Windows-permissions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#File-permissions| &lt; ]]|</td>
@@ -458,7 +458,7 @@ differently in order to avoid the problem.  If you find
 something out, please let us know as described in
 [cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual].
 </p>
-<hr size="6">
+<hr>
 <div id="Attic"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Windows-permissions| &lt; ]]|</td>
@@ -508,7 +508,7 @@ add a file on a branch, it will have a trunk revision
 in <code>dead</code> state, and a branch revision in a
 non-<code>dead</code> state.
 </p>
-<hr size="6">
+<hr>
 <div id="CVS-in-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Attic| &lt; ]]|</td>
@@ -618,7 +618,7 @@ this example here, we have shown a space after
 &lsquo;<samp>D</samp>&rsquo;, &lsquo;<samp>Ffile1</samp>&rsquo;, and &lsquo;<samp>Ffile2</samp>&rsquo;, but in fact
 there must be a single tab character there and no spaces.
 </p>
-<hr size="6">
+<hr>
 <div id="Locks"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-in-repository| &lt; ]]|</td>
@@ -712,7 +712,7 @@ but <small>CVS</small> does not implement it and so taking out a
 rcs_internal_lockfile in the <small>CVS</small> source code for
 further discussion/rationale.
 </p>
-<hr size="6">
+<hr>
 <div id="CVSROOT-storage"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Locks| &lt; ]]|</td>
@@ -779,7 +779,7 @@ database will be stored in the files &lsquo;<tt>modules.db</tt>&rsquo;,
 <p>For information on the meaning of the various
 administrative files, see [cvs: Reference manual for Administrative files#Administrative-files Reference manual for Administrative files].
 </p>
-<hr size="6">
+<hr>
 <div id="Working-directory-storage"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVSROOT-storage| &lt; ]]|</td>
@@ -1087,7 +1087,7 @@ by the client; the non-client/server <small>CVS</small> consults
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="Intro-administrative-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Working-directory-storage| &lt; ]]|</td>
@@ -1144,7 +1144,7 @@ uses features that are not explained here.
 See section [cvs: Reference manual for Administrative files#modules The modules file], for a full explanation of all the
 available features.
 </p>
-<hr size="6">
+<hr>
 <div id="Editing-administrative-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Intro-administrative-files| &lt; ]]|</td>
@@ -1176,7 +1176,7 @@ revision, but sometimes a particularly bad error in the
 administrative file makes it impossible to commit new
 revisions.
 </p>
-<hr size="6">
+<hr>
 <div id="Multiple-repositories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Editing-administrative-files| &lt; ]]|</td>
@@ -1238,7 +1238,7 @@ contact server2, to update the dir1/sdir subdirectory,
 and server1, to update everything else.
 </p>
 
-<hr size="6">
+<hr>
 <div id="Creating-a-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-repositories| &lt; ]]|</td>
@@ -1310,7 +1310,7 @@ repository.
 don&rsquo;t want that, remove the history file after running
 <code>cvs init</code>.  See section [cvs: Reference manual for Administrative files#history-file The history file].
 </p>
-<hr size="6">
+<hr>
 <div id="Backing-up"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Creating-a-repository| &lt; ]]|</td>
@@ -1382,7 +1382,7 @@ what has changed, and then when you are ready, commit
 the changes into the repository.
 </li></ul>
 
-<hr size="6">
+<hr>
 <div id="Moving-a-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Backing-up| &lt; ]]|</td>
@@ -1427,7 +1427,7 @@ the &lsquo;<tt>CVS/Repository</tt>&rsquo; and &lsquo;<tt>CVS/Root</tt>&rsquo; fi
 unless you are sure you want to bother, it probably
 isn&rsquo;t worth it.
 </p>
-<hr size="6">
+<hr>
 <div id="Remote-repositories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Moving-a-repository| &lt; ]]|</td>
@@ -1493,7 +1493,7 @@ described in [[#Connecting-via-rsh|Connecting with rsh]].
 </nowiki>&bull;[[#Kerberos-authenticated| Kerberos authenticated]]::<nowiki>      Direct connections with kerberos
 </nowiki>&bull;[[#Connecting-via-fork| Connecting via fork]]::<nowiki>         Using a forked <code>cvs server</code> to connect
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Server-requirements"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Remote-repositories| &lt; ]]|</td>
@@ -1568,7 +1568,7 @@ trouble.
 <p>For information on disk space requirements, see
 [[#Creating-a-repository|Creating a repository]].
 </p>
-<hr size="6">
+<hr>
 <div id="Connecting-via-rsh"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Server-requirements| &lt; ]]|</td>
@@ -1666,7 +1666,7 @@ the module &lsquo;<tt>foo</tt>&rsquo; in the repository
 the same on both the local and remote hosts.)
 </p>
 
-<hr size="6">
+<hr>
 <div id="Password-authenticated"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Connecting-via-rsh| &lt; ]]|</td>
@@ -1700,7 +1700,7 @@ some adjustments on both the server and client sides.
 </nowiki>&bull;[[#Password-authentication-client| Password authentication client]]::<nowiki>     Using the client
 </nowiki>&bull;[[#Password-authentication-security| Password authentication security]]::<nowiki>   What this method does and does not do
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Password-authentication-server"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Password-authenticated| &lt; ]]|</td>
@@ -2009,7 +2009,7 @@ want to include the &lsquo;<tt>passwd</tt>&rsquo; file in checkouts of
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;, see [cvs: Reference manual for Administrative files#checkoutlist The checkoutlist file].
 </p>
 
-<hr size="6">
+<hr>
 <div id="Password-authentication-client"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Password-authentication-server| &lt; ]]|</td>
@@ -2118,7 +2118,7 @@ from the working copy&rsquo;s &lsquo;<tt>CVS</tt>&rsquo; subdirectory.
 removed from the <code>CVS_PASSFILE</code> by using the
 <code>cvs logout</code> command.
 </p>
-<hr size="6">
+<hr>
 <div id="Password-authentication-security"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Password-authentication-client| &lt; ]]|</td>
@@ -2177,7 +2177,7 @@ who can sniff network packets or read a protected
 (i.e., user read-only) file.  If you want real
 security, get Kerberos.
 </p>
-<hr size="6">
+<hr>
 <div id="GSSAPI-authenticated"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Password-authentication-security| &lt; ]]|</td>
@@ -2247,7 +2247,7 @@ example,
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :gserver:faun.example.org:/usr/local/cvsroot checkout foo
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Kerberos-authenticated"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#GSSAPI-authenticated| &lt; ]]|</td>
@@ -2316,7 +2316,7 @@ you are ready to go:
 <p>Previous versions of <small>CVS</small> would fall back to a
 connection via rsh; this version will not do so.
 </p>
-<hr size="6">
+<hr>
 <div id="Connecting-via-fork"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Kerberos-authenticated| &lt; ]]|</td>
@@ -2368,7 +2368,7 @@ repository.  For example:
 by default, or the value of the <code>CVS_SERVER</code>
 environment variable.
 </p>
-<hr size="6">
+<hr>
 <div id="Read_002donly-access"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Connecting-via-fork| &lt; ]]|</td>
@@ -2471,7 +2471,7 @@ conservative way, it being better to protect the
 repository too much than too little: such a user gets
 read-only access.
 </p>
-<hr size="6">
+<hr>
 <div id="Server-temporary-directory"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Read_002donly-access| &lt; ]]|</td>
@@ -2532,7 +2532,7 @@ the &lsquo;<tt>cvs-serv<var>pid</var></tt>&rsquo; directories.  As long as
 there is no server running with process identification
 number <var>pid</var>, it is safe to do so.
 </p>
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>

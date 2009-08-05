@@ -1,20 +1,8 @@
 <div id="Keyword-substitution"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Revision management#When-to-commit  &lt; ]|</td>
-<td valign="middle" align="left">|[[#Keyword-list| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [cvs: Tracking third-party sources#Tracking-sources Tracking sources], Previous: [cvs: Revision management#Revision-management Revision management], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Keyword-substitution-1"></div>
 == Keyword substitution ==
 <div id="index-Keyword-substitution"></div>
@@ -45,24 +33,12 @@ a new revision of the file.
 </nowiki>&bull;[[#Configuring-keyword-expansion| Configuring keyword expansion]]::<nowiki>  Configuring keyword expansion
 </nowiki>&bull;[[#Log-keyword| Log keyword]]::<nowiki>                    Problems with the $<i></i>Log$ keyword.
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Keyword-list"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Using-keywords| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Using-keywords|Using keywords]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Keyword-List"></div>
 === Keyword List ===
 <div id="index-Keyword-List"></div>
@@ -230,24 +206,12 @@ the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see
 </dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="Using-keywords"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Keyword-list| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Avoiding-substitution| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Avoiding-substitution|Avoiding substitution]], Previous: [[#Keyword-list|Keyword list]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Using-keywords-1"></div>
 === Using keywords ===
 
@@ -296,24 +260,12 @@ magic <small>SCCS</small> phrase, like this:
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>static char *id=&quot;@(#) $<i></i>Id: ab.c,v 1.5 1993/10/19 14:57:32 ceder Exp $&quot;;
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Avoiding-substitution"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Using-keywords| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Substitution-modes| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Substitution-modes|Substitution modes]], Previous: [[#Using-keywords|Using keywords]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Avoiding-substitution-1"></div>
 === Avoiding substitution ===
 
@@ -344,24 +296,12 @@ for more details. This feature is intended primarily
 for use with the <code>LocalKeyword</code> option&ndash;see
 [[#Keyword-list|Keyword List]].
 </p>
-<hr size="6">
+<hr>
 <div id="Substitution-modes"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Avoiding-substitution| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Configuring-keyword-expansion| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Configuring-keyword-expansion|Configuring keyword expansion]], Previous: [[#Avoiding-substitution|Avoiding substitution]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Substitution-modes-1"></div>
 === Substitution modes ===
 <div id="index-Keyword-substitution_002c-changing-modes"></div>
@@ -444,24 +384,12 @@ handle an export containing binary files correctly.
 </dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="Configuring-keyword-expansion"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Substitution-modes| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Log-keyword| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Log-keyword|Log keyword]], Previous: [[#Substitution-modes|Substitution modes]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Configuring-Keyord-Expansion"></div>
 === Configuring Keyord Expansion ===
 <div id="index-Configuring-keyword-expansion"></div>
@@ -550,24 +478,12 @@ implemented these features using <code>tag=</code> and
 <code>tagexpand=</code> keywords and those keywords are NOT
 recognized.
 </p>
-<hr size="6">
+<hr>
 <div id="Log-keyword"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Configuring-keyword-expansion| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Configuring-keyword-expansion|Configuring keyword expansion]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Problems-with-the-_0024-Log_0024-keyword_002e"></div>
 === Problems with the $ <i></i>Log$ keyword. ===
 
@@ -597,18 +513,9 @@ not in the files header, if it is to be used at all.
 That way the long list of change messages will not
 interfere with everyday source file browsing.
 </p>
-<hr size="6">
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<hr>
+<div class="node">
+<p>
+Previous: [[#Configuring-keyword-expansion|Configuring keyword expansion]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

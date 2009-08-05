@@ -32,7 +32,7 @@ than one person is working in a repository.
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#When-to-commit| When to commit]]::<nowiki>              Some discussion on the subject
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="When-to-commit"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revision-management| &lt; ]]|</td>
@@ -79,7 +79,7 @@ development environment too controlled it might become
 too regimented and thus counter-productive to the real
 goal, which is to get software written.
 </p>
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revision-management| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &gt;&gt; ]|</td>

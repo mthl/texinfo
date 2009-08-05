@@ -128,7 +128,7 @@ on the screen.
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Program-Modes"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Programs" title="Previous section in reading order"> &lt; </a>]</td>
@@ -200,7 +200,7 @@ programming language modes include <code>lisp-mode-hook</code>,
 <code>scheme-mode-hook</code>, and <code>muddle-mode-hook</code>.  The mode hook
 function receives no arguments.
 </p>
-<hr size="6">
+<hr>
 <a name="Lists"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Program-Modes" title="Previous section in reading order"> &lt; </a>]</td>
@@ -376,7 +376,7 @@ controlled by the syntax table.  Any character can, for example, be
 declared to be an opening delimiter and act like an open parenthesis.
 See section <a href="xemacs_30.html#Syntax">The Syntax Table</a>.
 </p>
-<hr size="6">
+<hr>
 <a name="Defuns"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Lists" title="Previous section in reading order"> &lt; </a>]</td>
@@ -460,7 +460,7 @@ opening-delimiter) at the left margin is the start of a defun.  This
 heuristic is nearly always right; however, it mandates the convention 
 described above.
 </p>
-<hr size="6">
+<hr>
 <a name="Grinding"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Defuns" title="Previous section in reading order"> &lt; </a>]</td>
@@ -499,7 +499,7 @@ all of the lines inside a single parenthetical grouping.
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Basic-Indent"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Grinding" title="Previous section in reading order"> &lt; </a>]</td>
@@ -567,7 +567,7 @@ function, not even inside a string.  This restriction is vital for
 making the indentation commands fast. See section <a href="#Defuns">Defuns</a>, for more
 information on this behavior.
 </p>
-<hr size="6">
+<hr>
 <a name="Multi_002dline-Indent"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Basic-Indent" title="Previous section in reading order"> &lt; </a>]</td>
@@ -632,7 +632,7 @@ preprocessor lines when in C mode.
 mark.  The command <kbd>C-M-\</kbd> (<code>indent-region</code>) applies &lt;TAB&gt;
 to every line whose first character is between point and mark.
 </p>
-<hr size="6">
+<hr>
 <a name="Lisp-Indent"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Multi_002dline-Indent" title="Previous section in reading order"> &lt; </a>]</td>
@@ -729,7 +729,7 @@ until the end of the list.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <a name="C-Indent"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Lisp-Indent" title="Previous section in reading order"> &lt; </a>]</td>
@@ -915,7 +915,7 @@ variables just discussed and putting open braces on separate lines
 produces clear and readable files.  For an example, look at any of the C
 source files of XEmacs.
 </p>
-<hr size="6">
+<hr>
 <a name="Matching"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#C-Indent" title="Previous section in reading order"> &lt; </a>]</td>
@@ -966,7 +966,7 @@ not found in the specified region, scanning stops, and nothing is
 displayed.  This prevents wasting lots of time scanning when there is no
 match.  The default is 4000.
 </p>
-<hr size="6">
+<hr>
 <a name="Comments"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Matching" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1060,7 +1060,7 @@ argument.  That command is programmed to call <code>kill-comment</code> when
 called with a negative argument.  However, <code>kill-comment</code> is a
 valid command which you could bind directly to a key if you wanted to.
 </p>
-<hr size="6">
+<hr>
 <a name="Multiple-Lines-of-Comments"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Comments" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1093,7 +1093,7 @@ comment is continued in just this fashion.  If point is
 not at the end of the line when you type <kbd>M-&lt;LFD&gt;</kbd>, the text on
 the rest of the line becomes part of the new comment line.
 </p>
-<hr size="6">
+<hr>
 <a name="Options-Controlling-Comments"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Multiple-Lines-of-Comments" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1170,7 +1170,7 @@ ought to start.  For example, in Lisp mode, the indent hook function
 bases its decision on the number of semicolons that begin an existing
 comment and on the code in the preceding lines.
 </p>
-<hr size="6">
+<hr>
 <a name="Balanced-Editing"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Options-Controlling-Comments" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1216,7 +1216,7 @@ close parenthesis.  You can then type <kbd>M-)</kbd>, which moves past the
 close parenthesis, deletes any indentation preceding it (in this example
 there is none), and indents with &lt;LFD&gt; after it.
 </p>
-<hr size="6">
+<hr>
 <a name="Lisp-Completion"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Balanced-Editing" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1258,7 +1258,7 @@ as completions.
 and they have no additional characters in common, a list of all possible
 completions is displayed in another window.
 </p>
-<hr size="6">
+<hr>
 <a name="Documentation"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Lisp-Completion" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1305,7 +1305,7 @@ the topic &lsquo;<samp>termcap</samp>&rsquo; finds the description of the termca
 from section 3, followed by the description of the termcap data base
 from section 5.
 </p>
-<hr size="6">
+<hr>
 <a name="Change-Log"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Documentation" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1378,7 +1378,7 @@ Tue Jun 25 05:25:33 1985  Richard M. Stallman  (rms at mit-prep)
         not displayed), set it again in final compute_motion.
 </pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <a name="Tags"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Change-Log" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1445,7 +1445,7 @@ class browser.  See <a href="../ebrowse/index.html#Top">(ebrowse)Top</a> section
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Tag-Syntax"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Tags" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1614,7 +1614,7 @@ generate a tag.
 
 <p>  You can also generate tags based on regexp matching (see section <a href="#Etags-Regexps">Etags Regexps</a>) to handle other formats and languages.
 </p>
-<hr size="6">
+<hr>
 <a name="Create-Tags-Table"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Tag-Syntax" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1717,7 +1717,7 @@ knows, and the file name rules for guessing the language. It also prints
 a list of all the available <code>etags</code> options, together with a short
 explanation.
 </p>
-<hr size="6">
+<hr>
 <a name="Etags-Regexps"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Create-Tags-Table" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1860,7 +1860,7 @@ Tag VHDL files:
 </pre></td></tr></table>
 </li></ul>
 
-<hr size="6">
+<hr>
 <a name="Select-Tags-Table"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Etags-Regexps" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1967,7 +1967,7 @@ instead of using <code>visit-tags-table</code>.  The value of the variable
 This is for backward compatibility, and is largely supplanted by the
 variable <code>tag-table-alist</code>.
 </p> 
-<hr size="6">
+<hr>
 <a name="Find-Tag"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Select-Tags-Table" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2077,7 +2077,7 @@ the C sources of Emacs.  By specifying this file with <code>visit-tags-table</co
 and then using <kbd>M-.</kbd> you can quickly look at the source of any Emacs
 function.
 </p>
-<hr size="6">
+<hr>
 <a name="Tags-Search"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Find-Tag" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2179,7 +2179,7 @@ file in the tags table and prepare to advance sequentially by files.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <a name="List-Tags"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Tags-Search" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2224,7 +2224,7 @@ name recorded in the tags table contains that directory.
 then finds all the tags in the selected tags table whose entries match that
 regexp, and displays the tag names found.
 </p>
-<hr size="6">
+<hr>
 <a name="Fortran"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#List-Tags" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2275,7 +2275,7 @@ that variable has a non-<code>nil</code> value.
 
 <p>  Fortran mode was contributed by Michael Prange.
 </p>
-<hr size="6">
+<hr>
 <a name="Fortran-Motion"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Fortran" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2333,7 +2333,7 @@ region around one subprogram, which is convenient for killing it or moving it.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <a name="Fortran-Indent"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Fortran-Motion" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2370,7 +2370,7 @@ required for standard Fortran.
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="ForIndent-Commands"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Fortran-Indent" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2424,7 +2424,7 @@ non-comment line, the second half becomes a continuation line and is
 indented accordingly.  In a comment line, both halves become separate
 comment lines.
 </p>
-<hr size="6">
+<hr>
 <a name="ForIndent-Num"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#ForIndent-Commands" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2467,7 +2467,7 @@ rules.  As each digit is inserted, the indentation is recomputed.  To turn
 off this feature, set the variable <code>fortran-electric-line-number</code> to
 <code>nil</code>.  Then inserting line numbers is like inserting anything else.
 </p>
-<hr size="6">
+<hr>
 <a name="ForIndent-Conv"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#ForIndent-Num" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2508,7 +2508,7 @@ indent some lines unaesthetically.  However, a correct Fortran program will
 retain its meaning when reindented even if the conventions are not
 followed.
 </p>
-<hr size="6">
+<hr>
 <a name="ForIndent-Vars"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#ForIndent-Conv" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2564,7 +2564,7 @@ this is 6.  Statement bodies are always indented at least this much.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <a name="Fortran-Comments"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#ForIndent-Vars" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2676,7 +2676,7 @@ command and a variable with the same name; the two uses of the name never
 conflict because in Lisp and in Emacs it is always clear from the context
 which one is referred to.
 </p>
-<hr size="6">
+<hr>
 <a name="Fortran-Columns"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Fortran-Comments" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2732,7 +2732,7 @@ command which splits the current window horizontally, resulting in a window 72
 columns wide.  When you edit in this window, you can immediately see
 when a line gets too wide to be correct Fortran.
 </p>
-<hr size="6">
+<hr>
 <a name="Fortran-Abbrev"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Fortran-Columns" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2770,7 +2770,7 @@ automatically to &lsquo;<samp>continue</samp>&rsquo;, provided Abbrev mode is en
 <p>  Type &lsquo;<samp>;?</samp>&rsquo; or &lsquo;<samp>;C-h</samp>&rsquo; to display a list of all built-in
 Fortran abbrevs and what they stand for.
 </p>
-<hr size="6">
+<hr>
 <a name="Asm-Mode"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Fortran-Abbrev" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2814,7 +2814,7 @@ preceding colon.  Then do <code>tab-to-tab-stop</code>.
 <p>  The variable <code>asm-comment-char</code> specifies which character
 starts comments in assembler syntax.
 </p>
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Programs" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_25.html#Running" title="Next chapter"> &gt;&gt; </a>]</td>

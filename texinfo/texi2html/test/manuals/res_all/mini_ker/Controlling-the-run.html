@@ -70,14 +70,10 @@ ul.toc {list-style: none}
 <li><ul class="toc"><li><a href="A-model-with-Miniker.html#A-model-with-Miniker">2. Miniker model programming</a> </li>
 </ul></li>
 </ul>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="Setting-and-running-a-model.html#Graphics" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#End-of-time-step" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
-</tr></table>
+<div class="node">
+<p>
+[<a href="Setting-and-running-a-model.html#Graphics" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="#End-of-time-step" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
+</div>
 <a name="Controlling-the-run-1"></a>
 <h2 class="section"> 2.4 Controlling the run </h2>
 <ul class="toc">
@@ -94,16 +90,12 @@ turned into a subroutine to be called from another fortran (or C)
 program, this possibility is covered in <a href="Calling-the-model-code.html#Calling-the-model-code">Calling the model code</a>.
 </p>
 
-<hr size="2">
+<hr>
 <a name="End-of-time-step"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Controlling-the-run" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Controlling-the-printout-and-data-output" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
-</tr></table>
+<div class="node">
+<p>
+[<a href="#Controlling-the-run" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="#Controlling-the-printout-and-data-output" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
+</div>
 <a name="Executing-code-at-the-end-of-each-time-step"></a>
 <h3 class="subsection"> 2.4.1 Executing code at the end of each time step </h3>
 
@@ -216,16 +208,12 @@ src="mini_ker_tex4ht_tex9x.png" alt="&#x2202;&#x03C6;f(&#x03B7;(t),&#x03C6;(t));
 We have yet no example of managing the time-step.
 </p>
 
-<hr size="2">
+<hr>
 <a name="Controlling-the-printout-and-data-output"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#End-of-time-step" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="Advanced-programming.html#Advanced-programming" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
-</tr></table>
+<div class="node">
+<p>
+[<a href="#End-of-time-step" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="Advanced-programming.html#Advanced-programming" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
+</div>
 <a name="Controlling-the-printout-and-data-output-1"></a>
 <h3 class="subsection"> 2.4.2 Controlling the printout and data output </h3>
 
@@ -252,17 +240,13 @@ code, in &lsquo;<tt>zsteer</tt>&rsquo;, triggers output to &lsquo;<tt>.data</tt>
 <table><tr><td>&nbsp;</td><td><pre class="example">Zout = mod(istep,modzout).eq.0;
 </pre></td></tr></table>
 
-<hr size="2">
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</td>
-</tr></table>
+<hr>
+<div class="node">
 <p>
- <font size="-1">
-  This document was generated by <em>a tester</em> on <em>a sunny day</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>.
- </font>
- <br>
+[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
+</div>
+<p>
+
 
 </p>
 </body>

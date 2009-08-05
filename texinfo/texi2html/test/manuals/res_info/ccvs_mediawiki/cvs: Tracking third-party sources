@@ -1,20 +1,8 @@
 <div id="Tracking-sources"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Keyword substitution#Log-keyword  &lt; ]|</td>
-<td valign="middle" align="left">|[[#First-import| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [cvs: How your build system interacts with CVS#Builds Builds], Previous: [cvs: Keyword substitution#Keyword-substitution Keyword substitution], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Tracking-third_002dparty-sources"></div>
 == Tracking third-party sources ==
 <div id="index-Third_002dparty-sources"></div>
@@ -54,24 +42,12 @@ revision.
 </nowiki>&bull;[[#Keywords-in-imports| Keywords in imports]]::<nowiki>         Keyword substitution might be undesirable
 </nowiki>&bull;[[#Multiple-vendor-branches| Multiple vendor branches]]::<nowiki>    What if you get sources from several places?
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="First-import"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Tracking-sources| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Update-imports| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Update-imports|Update imports]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Importing-for-the-first-time"></div>
 === Importing for the first time ===
 <div id="index-Importing-modules"></div>
@@ -109,24 +85,12 @@ $ cvs import -m &quot;Import of FSF v. 0.04&quot; fsf/wdiff FSF_DIST WDIFF_0_04
 example, and the only release tag assigned is
 &lsquo;<samp>WDIFF_0_04</samp>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <div id="Update-imports"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#First-import| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Reverting-local-changes| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Reverting-local-changes|Reverting local changes]], Previous: [[#First-import|First import]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Updating-with-the-import-command"></div>
 === Updating with the import command ===
 
@@ -167,24 +131,12 @@ that were removed between the two vendor releases and mark them for
 removal.  Since <code>import</code> has no way to detect removed files, you
 should do a merge like this even if <code>import</code> doesn&rsquo;t tell you to.
 </p>
-<hr size="6">
+<hr>
 <div id="Reverting-local-changes"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Update-imports| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Binary-files-in-imports| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Binary-files-in-imports|Binary files in imports]], Previous: [[#Update-imports|Update imports]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Reverting-to-the-latest-vendor-release"></div>
 === Reverting to the latest vendor release ===
 
@@ -203,48 +155,24 @@ $ cvs admin -bWDIFF .
 <p>You must specify the &lsquo;<samp>-bWDIFF</samp>&rsquo; without any space
 after the &lsquo;<samp>-b</samp>&rsquo;.  See section [cvs: Guide to CVS commands#admin-options admin options].
 </p>
-<hr size="6">
+<hr>
 <div id="Binary-files-in-imports"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Reverting-local-changes| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Keywords-in-imports| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Keywords-in-imports|Keywords in imports]], Previous: [[#Reverting-local-changes|Reverting local changes]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="How-to-handle-binary-files-with-cvs-import"></div>
 === How to handle binary files with cvs import ===
 
 <p>Use the &lsquo;<samp>-k</samp>&rsquo; wrapper option to tell import which
 files are binary.  See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
 </p>
-<hr size="6">
+<hr>
 <div id="Keywords-in-imports"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Binary-files-in-imports| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Multiple-vendor-branches| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Multiple-vendor-branches|Multiple vendor branches]], Previous: [[#Binary-files-in-imports|Binary files in imports]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="How-to-handle-keyword-substitution-with-cvs-import"></div>
 === How to handle keyword substitution with cvs import ===
 
@@ -269,24 +197,12 @@ selective you&rsquo;ll have to think about what you want
 and use the &lsquo;<samp>-k</samp>&rsquo; option to <code>cvs update</code> or
 <code>cvs admin</code> as appropriate.
 </p>
-<hr size="6">
+<hr>
 <div id="Multiple-vendor-branches"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Keywords-in-imports| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Keywords-in-imports|Keywords in imports]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Multiple-vendor-branches-1"></div>
 === Multiple vendor branches ===
 
@@ -331,18 +247,9 @@ discover such a use, don&rsquo;t.  <small>CVS</small> is likely to make this
 an error in some future release.
 </p>
 
-<hr size="6">
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<hr>
+<div class="node">
+<p>
+Previous: [[#Keywords-in-imports|Keywords in imports]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

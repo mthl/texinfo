@@ -33,7 +33,7 @@ this in <small>CVS</small> vary depending on the situation.
 </nowiki>&bull;[[#Moving-files| Moving files]]::<nowiki>                Moving and renaming files
 </nowiki>&bull;[[#Moving-directories| Moving directories]]::<nowiki>          Moving and renaming directories
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Adding-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt; ]]|</td>
@@ -133,7 +133,7 @@ which you are working on (see section [cvs: Branching and merging#Branching-and-
 later merge the additions to another branch if you want
 (see section [cvs: Branching and merging#Merging-adds-and-removals Merging can add or remove files]).
 </p>
-<hr size="6">
+<hr>
 <div id="Removing-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-files| &lt; ]]|</td>
@@ -266,7 +266,7 @@ which you are working on (see section [cvs: Branching and merging#Branching-and-
 later merge the removals to another branch if you want
 (see section [cvs: Branching and merging#Merging-adds-and-removals Merging can add or remove files]).
 </p>
-<hr size="6">
+<hr>
 <div id="Removing-directories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Removing-files| &lt; ]]|</td>
@@ -315,7 +315,7 @@ options of <code>checkout</code>.  This way
 or not depending on whether the particular version you
 are checking out contains any files in that directory.
 </p>
-<hr size="6">
+<hr>
 <div id="Moving-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Removing-directories| &lt; ]]|</td>
@@ -351,7 +351,7 @@ directory is even harder.  See section [[#Moving-directories|Moving and renaming
 </nowiki>&bull;[[#Inside| Inside]]::<nowiki>                      A tricky, alternative way
 </nowiki>&bull;[[#Rename-by-copying| Rename by copying]]::<nowiki>           Another tricky, alternative way
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Outside"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Moving-files| &lt; ]]|</td>
@@ -397,7 +397,7 @@ start again, usually at 1.1, so if that bothers you,
 use the &lsquo;<samp>-r rev</samp>&rsquo; option to commit.  For more
 information see [cvs: Revisions#Assigning-revisions Assigning revisions].
 </p>
-<hr size="6">
+<hr>
 <div id="Inside"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Outside| &lt; ]]|</td>
@@ -453,7 +453,7 @@ while you are moving it.  Make sure no one else runs any of the <small>CVS</smal
 commands while you move it.
 </li></ul>
 
-<hr size="6">
+<hr>
 <div id="Rename-by-copying"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Inside| &lt; ]]|</td>
@@ -519,7 +519,7 @@ You cannot easily see the history of the file across the rename.
 
 </li></ul>
 
-<hr size="6">
+<hr>
 <div id="Moving-directories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Rename-by-copying| &lt; ]]|</td>
@@ -586,7 +586,7 @@ directory you are unlikely to be able to retrieve old
 releases correctly, since they probably depend on the
 name of the directories.
 </p>
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>

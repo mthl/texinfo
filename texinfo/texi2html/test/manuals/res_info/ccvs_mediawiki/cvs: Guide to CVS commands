@@ -1,20 +1,8 @@
 <div id="CVS-commands"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Special Files#Special-Files  &lt; ]|</td>
-<td valign="middle" align="left">|[[#Structure| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Special Files#Special-Files  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS], Previous: [cvs: Special Files#Special-Files Special Files], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Guide-to-CVS-commands"></div>
 == Guide to CVS commands ==
 
@@ -40,24 +28,12 @@ reference to <small>CVS</small> commands, see section [cvs: Quick reference to C
 </nowiki>&bull;[[#release| release]]::<nowiki>                     Indicate that a directory is no longer in use
 </nowiki>&bull;[[#update| update]]::<nowiki>                      Bring work tree in sync with repository
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Structure"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Exit-status| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Exit-status|Exit status]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Overall-structure-of-CVS-commands"></div>
 === Overall structure of CVS commands ===
 <div id="index-Structure"></div>
@@ -107,24 +83,12 @@ is accepted by more commands.  In other words, do not
 take the above categorization too seriously.  Look at
 the documentation instead.
 </p>
-<hr size="6">
+<hr>
 <div id="Exit-status"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Structure| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#g_t_007e_002f_002ecvsrc| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#g_t_007e_002f_002ecvsrc|~/.cvsrc]], Previous: [[#Structure|Structure]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="CVS_0027s-exit-status"></div>
 === CVS&rsquo;s exit status ===
 <div id="index-Exit-status_002c-of-CVS"></div>
@@ -148,24 +112,12 @@ way to detect errors, in the future it is possible that
 <code>cvs diff</code> will be changed to behave like the
 other <small>CVS</small> commands.
 </p>
-<hr size="6">
+<hr>
 <div id="g_t_007e_002f_002ecvsrc"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Exit-status| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Global-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Global-options|Global options]], Previous: [[#Exit-status|Exit status]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Default-options-and-the-_007e_002f_002ecvsrc-file"></div>
 === Default options and the ~/.cvsrc file ===
 <div id="index-_002ecvsrc-file"></div>
@@ -227,24 +179,12 @@ example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 
 <p>causes <small>CVS</small> to use compression level 6.
 </p>
-<hr size="6">
+<hr>
 <div id="Global-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#g_t_007e_002f_002ecvsrc| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Common-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Common-options|Common options]], Previous: [[#g_t_007e_002f_002ecvsrc|~/.cvsrc]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Global-options-1"></div>
 === Global options ===
 <div id="index-Options_002c-global"></div>
@@ -430,24 +370,12 @@ Only has an effect on the <small>CVS</small> client.
 </dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="Common-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Global-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#admin| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#admin|admin]], Previous: [[#Global-options|Global options]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Common-command-options"></div>
 === Common command options ===
 <div id="index-Common-options"></div>
@@ -688,24 +616,12 @@ and <code>update</code>.
 </dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="admin"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Common-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#admin-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#checkout|checkout]], Previous: [[#Common-options|Common options]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="admin_002d_002d_002dAdministration"></div>
 === admin&mdash;Administration ===
 <div id="index-Admin-_0028subcommand_0029"></div>
@@ -746,24 +662,12 @@ can run <code>cvs admin</code>.
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#admin-options| admin options]]::<nowiki>               admin options
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="admin-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#admin| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#checkout| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#admin| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Up: [[#admin|admin]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="admin-options-1"></div>
 ==== admin options ====
 
@@ -1097,24 +1001,12 @@ this option has never done anything useful.
 </dl>
 
 
-<hr size="6">
+<hr>
 <div id="checkout"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#admin-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#checkout-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#commit|commit]], Previous: [[#admin|admin]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="checkout_002d_002d_002dCheck-out-sources-for-editing"></div>
 === checkout&mdash;Check out sources for editing ===
 <div id="index-checkout-_0028subcommand_0029"></div>
@@ -1192,24 +1084,12 @@ see [[#update-output|update output]].
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#checkout-options| checkout options]]::<nowiki>            checkout options
 </nowiki>&bull;[[#checkout-examples| checkout examples]]::<nowiki>           checkout examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="checkout-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#checkout| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#checkout-examples| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#checkout| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#checkout-examples|checkout examples]], Up: [[#checkout|checkout]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="checkout-options-1"></div>
 ==== checkout options ====
 
@@ -1354,24 +1234,12 @@ modules file to set the module status.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="checkout-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#checkout-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#checkout| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#checkout-options|checkout options]], Up: [[#checkout|checkout]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="checkout-examples-1"></div>
 ==== checkout examples ====
 
@@ -1386,24 +1254,12 @@ ago:
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -D yesterday tc
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="commit"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#checkout-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#diff|diff]], Previous: [[#checkout|checkout]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="commit_002d_002d_002dCheck-files-into-the-repository"></div>
 === commit&mdash;Check files into the repository ===
 <div id="index-commit-_0028subcommand_0029"></div>
@@ -1457,24 +1313,12 @@ that the argument file contains the log message.
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#commit-options| commit options]]::<nowiki>              commit options
 </nowiki>&bull;[[#commit-examples| commit examples]]::<nowiki>             commit examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="commit-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#commit| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-examples| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#commit-examples|commit examples]], Up: [[#commit|commit]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="commit-options-1"></div>
 ==== commit options ====
 
@@ -1533,46 +1377,22 @@ invoking an editor.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="commit-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#commit-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Committing-to-a-branch| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#commit-options|commit options]], Up: [[#commit|commit]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="commit-examples-1"></div>
 ==== commit examples ====
 
 
-<hr size="6">
+<hr>
 <div id="Committing-to-a-branch"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#commit-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Creating-the-branch-after-editing| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-examples| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Up: [[#commit-examples|commit examples]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 ===== Committing to a branch =====
 
 <p>You can commit to a branch revision (one that has an
@@ -1599,24 +1419,12 @@ $ cvs commit
 <p>This works automatically since the &lsquo;<samp>-r</samp>&rsquo; option is
 sticky.
 </p>
-<hr size="6">
+<hr>
 <div id="Creating-the-branch-after-editing"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Committing-to-a-branch| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-examples| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Up: [[#commit-examples|commit examples]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 ===== Creating the branch after editing =====
 
 <p>Say you have been working on some extremely
@@ -1659,24 +1467,12 @@ would simply do
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -r EXPR1 whatever_module
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="diff"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Creating-the-branch-after-editing| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#export|export]], Previous: [[#commit|commit]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="diff_002d_002d_002dShow-differences-between-revisions"></div>
 === diff&mdash;Show differences between revisions ===
 <div id="index-diff-_0028subcommand_0029"></div>
@@ -1705,24 +1501,12 @@ under them will be compared.
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#diff-options| diff options]]::<nowiki>                diff options
 </nowiki>&bull;[[#diff-examples| diff examples]]::<nowiki>               diff examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="diff-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#diff| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Line-group-formats| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#diff-examples|diff examples]], Up: [[#diff|diff]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="diff-options-1"></div>
 ==== diff options ====
 
@@ -2045,24 +1829,12 @@ context.
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Line-group-formats| Line group formats]]::<nowiki>          Line group formats
 </nowiki>&bull;[[#Line-formats| Line formats]]::<nowiki>                Line formats
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Line-group-formats"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#diff-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Line-formats| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff-options| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Line-formats|Line formats]], Up: [[#diff-options|diff options]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Line-group-formats-1"></div>
 ===== Line group formats =====
 
@@ -2248,24 +2020,12 @@ otherwise.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="Line-formats"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Line-group-formats| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff-examples| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff-options| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Line-group-formats|Line group formats]], Up: [[#diff-options|diff options]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Line-formats-1"></div>
 ===== Line formats =====
 
@@ -2380,24 +2140,12 @@ to get fine control over <code>diff</code>&rsquo;s output.
    myfile
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="diff-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Line-formats| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#export| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#diff-options|diff options]], Up: [[#diff|diff]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="diff-examples-1"></div>
 ==== diff examples ====
 
@@ -2431,24 +2179,12 @@ not yet been committed will be printed.
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs diff -u | less
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="export"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#diff-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#export-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#history|history]], Previous: [[#diff|diff]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="export_002d_002d_002dExport-sources-from-CVS_002c-similar-to-checkout"></div>
 === export&mdash;Export sources from CVS, similar to checkout ===
 <div id="index-export-_0028subcommand_0029"></div>
@@ -2485,24 +2221,12 @@ use &lsquo;<samp>-kv</samp>&rsquo;.
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#export-options| export options]]::<nowiki>              export options
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="export-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#export| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#history| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#export| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Up: [[#export|export]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="export-options-1"></div>
 ==== export options ====
 
@@ -2560,24 +2284,12 @@ See section [[#checkout-options|checkout options]], for complete details on how
 </dl>
 
 
-<hr size="6">
+<hr>
 <div id="history"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#export-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#history-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#import|import]], Previous: [[#export|export]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="history_002d_002d_002dShow-status-of-files-and-users"></div>
 === history&mdash;Show status of files and users ===
 <div id="index-history-_0028subcommand_0029"></div>
@@ -2606,24 +2318,12 @@ normal use inside <small>CVS</small> (see section [[#Common-options|Common comma
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#history-options| history options]]::<nowiki>             history options
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="history-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#history| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#import| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#history| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Up: [[#history|history]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="history-options-1"></div>
 ==== history options ====
 
@@ -2793,24 +2493,12 @@ time zone instead of UTC.
 </dl>
 
 
-<hr size="6">
+<hr>
 <div id="import"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#history-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#import-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#log|log]], Previous: [[#history|history]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="import_002d_002d_002dImport-sources-into-CVS_002c-using-vendor-branches"></div>
 === import&mdash;Import sources into CVS, using vendor branches ===
 <div id="index-import-_0028subcommand_0029"></div>
@@ -2881,24 +2569,12 @@ directory (see section [cvs: Overview#Getting-the-source Getting the source]).
 </nowiki>&bull;[[#import-output| import output]]::<nowiki>               import output
 </nowiki>&bull;[[#import-examples| import examples]]::<nowiki>             import examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="import-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#import| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#import-output| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#import| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#import-output|import output]], Up: [[#import|import]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="import-options-1"></div>
 ==== import options ====
 
@@ -2948,24 +2624,12 @@ file. See section [cvs: Reference manual for Administrative files#Wrappers The c
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="import-output"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#import-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#import-examples| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#import| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#import-examples|import examples]], Previous: [[#import-options|import options]], Up: [[#import|import]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="import-output-1"></div>
 ==== import output ====
 
@@ -3004,47 +2668,23 @@ see section [cvs: Reference manual for Administrative files#modules The modules 
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="import-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#import-output| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#log| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#import| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#import-output|import output]], Up: [[#import|import]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="import-examples-1"></div>
 ==== import examples ====
 
 <p>See [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources], and [cvs: Starting a project with CVS#From-files Creating a directory tree from a number of files].
 </p>
-<hr size="6">
+<hr>
 <div id="log"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#import-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#log-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#rdiff|rdiff]], Previous: [[#import|import]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="log_002d_002d_002dPrint-out-log-information-for-files"></div>
 === log&mdash;Print out log information for files ===
 <div id="index-log-_0028subcommand_0029"></div>
@@ -3082,24 +2722,12 @@ with the normal use inside <small>CVS</small> (see section [[#Common-options|Com
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#log-options| log options]]::<nowiki>                 log options
 </nowiki>&bull;[[#log-examples| log examples]]::<nowiki>                log examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="log-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#log| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#log-examples| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#log| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#log-examples|log examples]], Up: [[#log|log]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="log-options-1"></div>
 ==== log options ====
 
@@ -3256,47 +2884,23 @@ selected with the options &lsquo;<samp>-d</samp>&rsquo;, &lsquo;<samp>-s</samp>&
 &lsquo;<samp>-w</samp>&rsquo;, intersected with the union of the revisions
 selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <div id="log-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#log-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#rdiff| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#log| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#log-options|log options]], Up: [[#log|log]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="log-examples-1"></div>
 ==== log examples ====
 
 <p>Contributed examples are gratefully accepted.
 </p>
-<hr size="6">
+<hr>
 <div id="rdiff"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#log-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#rdiff-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#release|release]], Previous: [[#log|log]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="rdiff_002d_002d_002d_0027patch_0027-format-diffs-between-releases"></div>
 === rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases ===
 <div id="index-rdiff-_0028subcommand_0029"></div>
@@ -3336,24 +2940,12 @@ the files that are located in other directories.
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#rdiff-options| rdiff options]]::<nowiki>               rdiff options
 </nowiki>&bull;[[#rdiff-examples| rdiff examples]]::<nowiki>              rdiff examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="rdiff-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#rdiff| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#rdiff-examples| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#rdiff| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#rdiff-examples|rdiff examples]], Up: [[#rdiff|rdiff]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="rdiff-options-1"></div>
 ==== rdiff options ====
 
@@ -3423,24 +3015,12 @@ way that <small>RCS</small> version 5 does.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="rdiff-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#rdiff-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#release| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#rdiff| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#rdiff-options|rdiff options]], Up: [[#rdiff|rdiff]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="rdiff-examples-1"></div>
 ==== rdiff examples ====
 
@@ -3466,24 +3046,12 @@ File foo.c,v changed from revision 1.52.2.3 to 1.52.2.4
 File bar.h,v changed from revision 1.29.2.1 to 1.2
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="release"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#rdiff-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#release-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#update|update]], Previous: [[#rdiff|rdiff]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="release_002d_002d_002dIndicate-that-a-Module-is-no-longer-in-use"></div>
 === release&mdash;Indicate that a Module is no longer in use ===
 <div id="index-release-_0028subcommand_0029"></div>
@@ -3522,24 +3090,12 @@ history log.
 </nowiki>&bull;[[#release-output| release output]]::<nowiki>              release output
 </nowiki>&bull;[[#release-examples| release examples]]::<nowiki>            release examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="release-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#release| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#release-output| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#release| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#release-output|release output]], Up: [[#release|release]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="release-options-1"></div>
 ==== release options ====
 
@@ -3561,24 +3117,12 @@ if it is non-empty!</strong>
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="release-output"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#release-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#release-examples| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#release| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#release-examples|release examples]], Previous: [[#release-options|release options]], Up: [[#release|release]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="release-output-1"></div>
 ==== release output ====
 
@@ -3623,24 +3167,12 @@ sources, this file will be lost.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="release-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#release-output| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#update| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#release| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#release-output|release output]], Up: [[#release|release]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="release-examples-1"></div>
 ==== release examples ====
 
@@ -3655,24 +3187,12 @@ Are you sure you want to release (and delete) directory `tc': y
 $
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="update"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#release-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#update-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#release|release]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="update_002d_002d_002dBring-work-tree-in-sync-with-repository"></div>
 === update&mdash;Bring work tree in sync with repository ===
 <div id="index-update-_0028subcommand_0029"></div>
@@ -3702,24 +3222,12 @@ into any destination revisions specified with <code>-r</code>,
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#update-options| update options]]::<nowiki>              update options
 </nowiki>&bull;[[#update-output| update output]]::<nowiki>               update output
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="update-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#update| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#update-output| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#update| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#update-output|update output]], Up: [[#update|update]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="update-options-1"></div>
 ==== update options ====
 
@@ -3854,24 +3362,12 @@ date.  An optional date is specified by adding a colon
 </dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="update-output"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#update-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#update| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#update-options|update options]], Up: [[#update|update]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="update-output-1"></div>
 ==== update output ====
 
@@ -3954,18 +3450,9 @@ see section [cvs: Reference manual for Administrative files#cvsignore Ignoring f
 </p></dd>
 </dl>
 
-<hr size="6">
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<hr>
+<div class="node">
+<p>
+Previous: [[#update-options|update options]], Up: [[#update|update]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

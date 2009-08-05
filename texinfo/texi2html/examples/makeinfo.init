@@ -70,10 +70,13 @@ $INLINE_CONTENTS = 1;
 
 $OVERVIEW_LINK_TO_TOC = 1;
 
-@SECTION_BUTTONS =
+if (!$SIMPLE_HEADERS)
+{
+    @SECTION_BUTTONS =
     (
      \"node: ", \$Texi2HTML::NODE{This}, [ 'NodeNext', \$Texi2HTML::NODE{NodeNext} ] , \",", [ 'NodePrev', \$Texi2HTML::NODE{NodePrev} ], \",", [ 'NodeUp', \$Texi2HTML::NODE{NodeUp} ], 'Following'
     );
+}
 
 push @command_handler_process, \&makeinfo_like_initialize_variables;
 

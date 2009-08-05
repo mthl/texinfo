@@ -54,7 +54,7 @@ revision.
 </nowiki>&bull;[[#Keywords-in-imports| Keywords in imports]]::<nowiki>         Keyword substitution might be undesirable
 </nowiki>&bull;[[#Multiple-vendor-branches| Multiple vendor branches]]::<nowiki>    What if you get sources from several places?
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="First-import"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt; ]]|</td>
@@ -109,7 +109,7 @@ $ cvs import -m &quot;Import of FSF v. 0.04&quot; fsf/wdiff FSF_DIST WDIFF_0_04
 example, and the only release tag assigned is
 &lsquo;<samp>WDIFF_0_04</samp>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <div id="Update-imports"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#First-import| &lt; ]]|</td>
@@ -167,7 +167,7 @@ that were removed between the two vendor releases and mark them for
 removal.  Since <code>import</code> has no way to detect removed files, you
 should do a merge like this even if <code>import</code> doesn&rsquo;t tell you to.
 </p>
-<hr size="6">
+<hr>
 <div id="Reverting-local-changes"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Update-imports| &lt; ]]|</td>
@@ -203,7 +203,7 @@ $ cvs admin -bWDIFF .
 <p>You must specify the &lsquo;<samp>-bWDIFF</samp>&rsquo; without any space
 after the &lsquo;<samp>-b</samp>&rsquo;.  See section [cvs: Guide to CVS commands#admin-options admin options].
 </p>
-<hr size="6">
+<hr>
 <div id="Binary-files-in-imports"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Reverting-local-changes| &lt; ]]|</td>
@@ -227,7 +227,7 @@ after the &lsquo;<samp>-b</samp>&rsquo;.  See section [cvs: Guide to CVS command
 <p>Use the &lsquo;<samp>-k</samp>&rsquo; wrapper option to tell import which
 files are binary.  See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
 </p>
-<hr size="6">
+<hr>
 <div id="Keywords-in-imports"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files-in-imports| &lt; ]]|</td>
@@ -269,7 +269,7 @@ selective you&rsquo;ll have to think about what you want
 and use the &lsquo;<samp>-k</samp>&rsquo; option to <code>cvs update</code> or
 <code>cvs admin</code> as appropriate.
 </p>
-<hr size="6">
+<hr>
 <div id="Multiple-vendor-branches"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keywords-in-imports| &lt; ]]|</td>
@@ -331,7 +331,7 @@ discover such a use, don&rsquo;t.  <small>CVS</small> is likely to make this
 an error in some future release.
 </p>
 
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>

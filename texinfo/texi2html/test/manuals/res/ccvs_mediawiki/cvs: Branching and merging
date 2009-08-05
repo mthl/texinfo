@@ -49,7 +49,7 @@ copy the changes onto another branch.
 </nowiki>&bull;[[#Merging-adds-and-removals| Merging adds and removals]]::<nowiki>   What if files are added or removed?
 </nowiki>&bull;[[#Merging-and-keywords| Merging and keywords]]::<nowiki>        Avoiding conflicts due to keyword substitution
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Branches-motivation"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt; ]]|</td>
@@ -89,7 +89,7 @@ modifications to the branch without disturbing the main trunk.  When the
 modifications are finished you can elect to either incorporate them on
 the main trunk, or leave them on the branch.
 </p>
-<hr size="6">
+<hr>
 <div id="Creating-a-branch"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branches-motivation| &lt; ]]|</td>
@@ -157,7 +157,7 @@ branch &ndash; named &lsquo;<samp>rel-1-0-patches</samp>&rsquo; &ndash; in modul
 &lsquo;<samp>tc</samp>&rsquo;, rooted in the revision tree at the point tagged
 by &lsquo;<samp>rel-1-0</samp>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <div id="Accessing-branches"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Creating-a-branch| &lt; ]]|</td>
@@ -272,7 +272,7 @@ that &lsquo;<samp>driver.c</samp>&rsquo; had been through more changes than
 <p>See [[#Branches-and-revisions|Branches and revisions]] for details about how
 branch numbers are constructed.
 </p>
-<hr size="6">
+<hr>
 <div id="Branches-and-revisions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Accessing-branches| &lt; ]]|</td>
@@ -356,7 +356,7 @@ numbered 6.4.2.  All branch numbers ending in a zero
 (see section [[#Magic-branch-numbers|Magic branch numbers]]).  The branch 1.1.1 has a
 special meaning.  See section [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources].
 </p>
-<hr size="6">
+<hr>
 <div id="Magic-branch-numbers"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branches-and-revisions| &lt; ]]|</td>
@@ -421,7 +421,7 @@ committed on the branch.  Be very careful so that you
 do not assign the tag to the wrong number.  (There is
 no way to see how the tag was assigned yesterday).
 </p>
-<hr size="6">
+<hr>
 <div id="Merging-a-branch"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Magic-branch-numbers| &lt; ]]|</td>
@@ -501,7 +501,7 @@ $ cvs commit -m &quot;Included R1fix&quot;
 <p>It should be noted that <code>update -j <var>tagname</var></code> will also work but may
 not produce the desired result.  See section [[#Merging-adds-and-removals|Merging can add or remove files]], for more.
 </p>
-<hr size="6">
+<hr>
 <div id="Merging-more-than-once"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Merging-a-branch| &lt; ]]|</td>
@@ -582,7 +582,7 @@ the trunk, and then use that tag for subsequent merges:
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Merging-two-revisions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Merging-more-than-once| &lt; ]]|</td>
@@ -645,7 +645,7 @@ done
 $
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Merging-adds-and-removals"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Merging-two-revisions| &lt; ]]|</td>
@@ -695,7 +695,7 @@ a static tag has been attached to a dead revision manually.  Use the branch tag
 to merge all changes from the branch or use two static tags as merge endpoints
 to be sure that all intended changes are propagated in the merge.
 </p>
-<hr size="6">
+<hr>
 <div id="Merging-and-keywords"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Merging-adds-and-removals| &lt; ]]|</td>
@@ -815,7 +815,7 @@ modes.  You can now safely merge using &lsquo;<samp>-kk</samp>&rsquo; to avoid s
 on lines containing RCS keywords, even when your repository contains
 binary files.
 </p>
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>

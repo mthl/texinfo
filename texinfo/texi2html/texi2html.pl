@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.308 2009-08-05 09:36:57 pertusus Exp $
+# $Id: texi2html.pl,v 1.309 2009-08-05 23:20:27 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -400,6 +400,7 @@ $DATE
 %BUTTONS_EXAMPLE
 %BUTTONS_ACCESSKEY
 %BUTTONS_REL
+%BUTTONS_TEXT
 @T2H_FORMAT_EXPAND
 @CHAPTER_BUTTONS
 @MISC_BUTTONS
@@ -410,6 +411,8 @@ $DATE
 @IMAGE_EXTENSIONS
 @INPUT_FILE_SUFFIXES
 $ENABLE_ENCODING_USE_ENTITY
+$PROGRAM_NAME_IN_FOOTER
+$SIMPLE_HEADERS
 );
 
 # customization variables which may be guessed in the script
@@ -452,6 +455,7 @@ $print_page_foot
 $print_head_navigation
 $print_foot_navigation
 $button_icon_img
+$button_formatting
 $print_navigation
 $about_body
 $print_frame
@@ -700,6 +704,8 @@ my %config_map = (
    'shortcontents' => \$SHORTCONTENTS,
    'doctype' => \$DOCTYPE,
    'headers' => \$HEADERS,
+   'DOCUMENT_ENCODING' => \$DOCUMENT_ENCODING,
+   'IN_ENCODING' => \$IN_ENCODING,
 );
 
 sub get_conf($)
@@ -1514,7 +1520,7 @@ sub t2h_no_unicode_cross_manual_normal_text($$)
     my $transliterate = shift;
     my $result = '';
     
-    my $encoding = $Texi2HTML::THISDOC{'DOCUMENT_ENCODING'};
+    my $encoding = get_conf('DOCUMENT_ENCODING');
     if (defined($encoding) and exists($t2h_encoding_aliases{$encoding}))
     {
         $encoding = $t2h_encoding_aliases{$encoding};
@@ -3817,15 +3823,8 @@ if ($Texi2HTML::Config::ENABLE_ENCODING)
 }
 
 # for all files
-if (defined($Texi2HTML::Config::IN_ENCODING))
-{
-   $Texi2HTML::GLOBAL{'IN_ENCODING'} = $Texi2HTML::Config::IN_ENCODING;
-}
-
-if (defined($Texi2HTML::Config::DOCUMENT_ENCODING))
-{
-   $Texi2HTML::GLOBAL{'DOCUMENT_ENCODING'} = $Texi2HTML::Config::DOCUMENT_ENCODING;
-}
+Texi2HTML::Config::set_conf('IN_ENCODING', $Texi2HTML::Config::IN_ENCODING, 1);
+Texi2HTML::Config::set_conf('DOCUMENT_ENCODING', $Texi2HTML::Config::DOCUMENT_ENCODING, 1);
 
 # Backward compatibility for deprecated $Texi2HTML::Config::ENCODING
 $Texi2HTML::Config::ENCODING_NAME = $Texi2HTML::Config::ENCODING 
@@ -5174,27 +5173,25 @@ sub misc_command_texi($$$$)
    {
       if ($macro eq 'documentencoding')
       {
-         #my $encoding = '';
          if ($line =~ /(\s+)([0-9\w\-]+)/)
          {
             my $encoding = $2;
-            #$Texi2HTML::Config::DOCUMENT_ENCODING = $encoding;
             $Texi2HTML::THISDOC{'documentencoding'} = $encoding;
-            $Texi2HTML::THISDOC{'DOCUMENT_ENCODING'} = $Texi2HTML::THISDOC{'documentencoding'} unless (defined($Texi2HTML::Config::DOCUMENT_ENCODING));
-            my $from_encoding;
-            if (!defined($Texi2HTML::Config::IN_ENCODING))
+            if (Texi2HTML::Config::set_conf('DOCUMENT_ENCODING', $Texi2HTML::THISDOC{'documentencoding'}))
             {
-               $from_encoding = encoding_alias($encoding, $line_nr);
-               $Texi2HTML::THISDOC{'IN_ENCODING'} = $from_encoding
-                 if (defined($from_encoding));
-            }
-            #$Texi2HTML::Config::IN_ENCODING = $from_encoding if
-            #   defined($from_encoding);
-            if (defined($from_encoding) and $Texi2HTML::Config::USE_UNICODE)
-            {
-               foreach my $file (@fhs)
+               my $from_encoding;
+               if (!defined($Texi2HTML::Config::IN_ENCODING))
                {
-                  binmode($file->{'fh'}, ":encoding($from_encoding)");
+                  $from_encoding = encoding_alias($encoding, $line_nr);
+                  Texi2HTML::Config::set_conf('IN_ENCODING', $from_encoding) 
+                     if (defined($from_encoding));
+               }
+               if (defined($from_encoding) and $Texi2HTML::Config::USE_UNICODE)
+               {
+                  foreach my $file (@fhs)
+                  {
+                     binmode($file->{'fh'}, ":encoding($from_encoding)");
+                  }
                }
             }
          }
@@ -8139,7 +8136,7 @@ sub pass_text($$)
         $Texi2HTML::THIS_ELEMENT = undef;
     }
     my $about_body;
-    $about_body = &$Texi2HTML::Config::about_body();
+    $about_body = &$Texi2HTML::Config::about_body() if (defined($Texi2HTML::Config::about_body));
     # @foot_lines is emptied in finish_element if footnotestyle separate
     my %misc_page_infos = (
        'Footnotes' => { 'file' => $docu_foot_file, 
@@ -8281,7 +8278,7 @@ sub finish_element($$$$)
         my $end_page = 0;
         if (Texi2HTML::Config::get_conf('SPLIT'))
         {
-            if (!$files{$element->{'file'}}->{'counter'})
+            if ($files{$element->{'file'}}->{'counter'} == 0)
             {
                 $end_page = 1;
             }
@@ -8321,7 +8318,7 @@ sub finish_element($$$$)
         }
         elsif (!defined($new_element))
         {
-            print STDERR "# End of last section\n"
+            print STDERR "# End of last section ($files{$element->{'file'}}->{'counter'})\n"
                  if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             if (Texi2HTML::Config::get_conf('SPLIT'))
             { # end of last splitted section
@@ -8337,13 +8334,13 @@ sub finish_element($$$$)
         }
         elsif ($new_element->{'top'})
         {
-            print STDERR "# Section followed by Top\n"
+            print STDERR "# Section followed by Top ($files{$element->{'file'}}->{'counter'})\n"
                      if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             &$Texi2HTML::Config::end_section($FH, 1, $element);
         }
         else
         { # end of section followed by another one
-            print STDERR "# Section followed by another one\n"
+            print STDERR "# Section followed by another one ($files{$element->{'file'}}->{'counter'})\n"
                      if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             &$Texi2HTML::Config::end_section($FH, 0, $element);
         }
@@ -8419,10 +8416,11 @@ sub open_file($$)
     
     local *FH;
     if (open(*FH, "<$name"))
-    { 
-        if (defined($Texi2HTML::THISDOC{'IN_ENCODING'}) and $Texi2HTML::Config::USE_UNICODE)
+    {
+        my $in_encoding = Texi2HTML::Config::get_conf('IN_ENCODING');
+        if (defined($in_encoding) and $Texi2HTML::Config::USE_UNICODE)
         {
-            binmode(*FH, ":encoding($Texi2HTML::THISDOC{'IN_ENCODING'})");
+            binmode(*FH, ":encoding($in_encoding)");
         }
         my $file = { 'fh' => *FH, 
            'input_spool' => { 'spool' => [], 

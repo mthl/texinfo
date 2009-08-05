@@ -25,7 +25,7 @@ $INLINE_CONTENTS = 1;
 $WORDS_IN_PAGE = undef;
 $SHOW_MENU = 0;
 
-$BIG_RULE = '<hr size="2">';
+$BIG_RULE = '<hr>';
 
 push @command_handler_init, \&book_initialize_variables;
 

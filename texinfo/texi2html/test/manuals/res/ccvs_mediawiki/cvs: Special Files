@@ -37,7 +37,7 @@ handle it.  Files also lose their ownerships and
 permissions during repository transactions.
 </p>
 
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &gt;&gt; ]|</td>

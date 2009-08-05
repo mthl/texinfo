@@ -31,7 +31,7 @@ including both text files and binary images.
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Binary-why| Binary why]]::<nowiki>     More details on issues with binary files
 </nowiki>&bull;[[#Binary-howto| Binary howto]]::<nowiki>   How to store them
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Binary-why"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files| &lt; ]]|</td>
@@ -100,7 +100,7 @@ discussion of reserved checkouts (file locking) in
 [cvs: Multiple developers#Multiple-developers Multiple developers].  To avoid the merges
 resulting from branches, restrict use of branches.
 </p>
-<hr size="6">
+<hr>
 <div id="Binary-howto"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-why| &lt; ]]|</td>
@@ -196,7 +196,7 @@ it is not clear how to distinguish between binary and
 non-binary files, and the rules to apply would vary
 considerably with the operating system.
 </p>
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt;&gt; ]|</td>

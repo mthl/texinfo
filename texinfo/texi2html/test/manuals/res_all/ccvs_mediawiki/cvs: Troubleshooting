@@ -1,20 +1,8 @@
 <div id="Troubleshooting"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &lt; ]|</td>
-<td valign="middle" align="left">|[[#Error-messages| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Credits#Credits  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [cvs: Credits#Credits Credits], Previous: [cvs: Compatibility between CVS Versions#Compatibility Compatibility], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Troubleshooting-1"></div>
 == Troubleshooting ==
 
@@ -30,24 +18,12 @@ mentioned there.
 </nowiki>&bull;[[#Other-problems| Other problems]]::<nowiki>              Problems not readily listed by error message
 </nowiki></pre>
 
-<hr size="6">
+<hr>
 <div id="Error-messages"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Troubleshooting| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Connection| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Troubleshooting| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Credits#Credits  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Connection|Connection]], Up: [[#Troubleshooting|Troubleshooting]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Partial-list-of-error-messages"></div>
 === Partial list of error messages ===
 
@@ -443,24 +419,12 @@ exit 0
 </dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="Connection"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Error-messages| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Other-problems| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Troubleshooting| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Credits#Credits  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Other-problems|Other problems]], Previous: [[#Error-messages|Error messages]], Up: [[#Troubleshooting|Troubleshooting]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Trouble-making-a-connection-to-a-CVS-server"></div>
 === Trouble making a connection to a CVS server ===
 
@@ -592,24 +556,12 @@ others allow you to set the limit for each service separately.)
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="Other-problems"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Connection| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Credits#Credits  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Troubleshooting| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Credits#Credits  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Connection|Connection]], Up: [[#Troubleshooting|Troubleshooting]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Other-common-problems"></div>
 === Other common problems ===
 
@@ -637,18 +589,9 @@ probably is to upgrade to a current version of
 programs.
 </li></ul>
 
-<hr size="6">
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Credits#Credits  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<hr>
+<div class="node">
+<p>
+Previous: [[#Connection|Connection]], Up: [[#Troubleshooting|Troubleshooting]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

@@ -1,20 +1,8 @@
 <div id="Repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Overview#Viewing-differences  &lt; ]|</td>
-<td valign="middle" align="left">|[[#Specifying-a-repository| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Overview#Overview  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [cvs: Starting a project with CVS#Starting-a-new-project Starting a new project], Previous: [cvs: Overview#Overview Overview], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="The-Repository"></div>
 == The Repository ==
 <div id="index-Repository-_0028intro_0029"></div>
@@ -82,24 +70,12 @@ user-defined modules.
 </nowiki>&bull;[[#Read_002donly-access| Read-only access]]::<nowiki>            Granting read-only access to the repository
 </nowiki>&bull;[[#Server-temporary-directory| Server temporary directory]]::<nowiki>  The server creates temporary directories
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Specifying-a-repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Repository| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository-storage| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Repository-storage|Repository storage]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Telling-CVS-where-your-repository-is"></div>
 === Telling CVS where your repository is ===
 
@@ -148,24 +124,12 @@ override the <code>$CVSROOT</code> environment variable.  If
 former is used.  Of course, for proper operation they
 should be two ways of referring to the same repository.
 </p>
-<hr size="6">
+<hr>
 <div id="Repository-storage"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Specifying-a-repository| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Working-directory-storage|Working directory storage]], Previous: [[#Specifying-a-repository|Specifying a repository]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="How-data-is-stored-in-the-repository"></div>
 === How data is stored in the repository ===
 <div id="index-Repository_002c-how-data-is-stored"></div>
@@ -191,24 +155,12 @@ the file permissions appropriate for the repository.
 </nowiki>&bull;[[#Locks| Locks]]::<nowiki>                       CVS locks control concurrent accesses
 </nowiki>&bull;[[#CVSROOT-storage| CVSROOT storage]]::<nowiki>             A few things about CVSROOT are different
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Repository-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Repository-storage| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#File-permissions| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#File-permissions|File permissions]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Where-files-are-stored-within-the-repository"></div>
 ==== Where files are stored within the repository ====
 
@@ -303,24 +255,12 @@ is magic branches; for more information see [cvs: Branching and merging#Magic-br
 are a subset of what <small>RCS</small> accepts; for <small>CVS</small>&rsquo;s
 rules see [cvs: Revisions#Tags Tags&ndash;Symbolic revisions].
 </p>
-<hr size="6">
+<hr>
 <div id="File-permissions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Repository-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Windows-permissions| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Windows-permissions|Windows permissions]], Previous: [[#Repository-files|Repository files]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="File-permissions-1"></div>
 ==== File permissions ====
 <div id="index-Security_002c-file-permissions-in-repository"></div>
@@ -416,24 +356,12 @@ fix, so read the documentation on pserver security
 carefully if you are considering this option
 ([[#Password-authentication-security|Security considerations with password authentication]]).
 </p>
-<hr size="6">
+<hr>
 <div id="Windows-permissions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#File-permissions| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Attic| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Attic|Attic]], Previous: [[#File-permissions|File permissions]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="File-Permission-issues-specific-to-Windows"></div>
 ==== File Permission issues specific to Windows ====
 <div id="index-Windows_002c-and-permissions"></div>
@@ -458,24 +386,12 @@ differently in order to avoid the problem.  If you find
 something out, please let us know as described in
 [cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual].
 </p>
-<hr size="6">
+<hr>
 <div id="Attic"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Windows-permissions| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-in-repository| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#CVS-in-repository|CVS in repository]], Previous: [[#Windows-permissions|Windows permissions]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="The-attic"></div>
 ==== The attic ====
 <div id="index-Attic"></div>
@@ -508,24 +424,12 @@ add a file on a branch, it will have a trunk revision
 in <code>dead</code> state, and a branch revision in a
 non-<code>dead</code> state.
 </p>
-<hr size="6">
+<hr>
 <div id="CVS-in-repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Attic| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Locks| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Locks|Locks]], Previous: [[#Attic|Attic]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="The-CVS-directory-in-the-repository"></div>
 ==== The CVS directory in the repository ====
 <div id="index-CVS-directory_002c-in-repository"></div>
@@ -618,24 +522,12 @@ this example here, we have shown a space after
 &lsquo;<samp>D</samp>&rsquo;, &lsquo;<samp>Ffile1</samp>&rsquo;, and &lsquo;<samp>Ffile2</samp>&rsquo;, but in fact
 there must be a single tab character there and no spaces.
 </p>
-<hr size="6">
+<hr>
 <div id="Locks"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-in-repository| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVSROOT-storage| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#CVSROOT-storage|CVSROOT storage]], Previous: [[#CVS-in-repository|CVS in repository]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="CVS-locks-in-the-repository"></div>
 ==== CVS locks in the repository ====
 
@@ -712,24 +604,12 @@ but <small>CVS</small> does not implement it and so taking out a
 rcs_internal_lockfile in the <small>CVS</small> source code for
 further discussion/rationale.
 </p>
-<hr size="6">
+<hr>
 <div id="CVSROOT-storage"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Locks| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Working-directory-storage| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Locks|Locks]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="How-files-are-stored-in-the-CVSROOT-directory"></div>
 ==== How files are stored in the CVSROOT directory ====
 <div id="index-CVSROOT_002c-storage-of-files"></div>
@@ -779,24 +659,12 @@ database will be stored in the files &lsquo;<tt>modules.db</tt>&rsquo;,
 <p>For information on the meaning of the various
 administrative files, see [cvs: Reference manual for Administrative files#Administrative-files Reference manual for Administrative files].
 </p>
-<hr size="6">
+<hr>
 <div id="Working-directory-storage"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVSROOT-storage| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Intro-administrative-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Intro-administrative-files|Intro administrative files]], Previous: [[#Repository-storage|Repository storage]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="How-data-is-stored-in-the-working-directory"></div>
 === How data is stored in the working directory ===
 
@@ -1087,24 +955,12 @@ by the client; the non-client/server <small>CVS</small> consults
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="Intro-administrative-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Working-directory-storage| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Editing-administrative-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Multiple-repositories|Multiple repositories]], Previous: [[#Working-directory-storage|Working directory storage]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="The-administrative-files"></div>
 === The administrative files ===
 <div id="index-Administrative-files-_0028intro_0029"></div>
@@ -1144,24 +1000,12 @@ uses features that are not explained here.
 See section [cvs: Reference manual for Administrative files#modules The modules file], for a full explanation of all the
 available features.
 </p>
-<hr size="6">
+<hr>
 <div id="Editing-administrative-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Intro-administrative-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Multiple-repositories| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Intro-administrative-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Up: [[#Intro-administrative-files|Intro administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 ==== Editing administrative files ====
 <div id="index-Editing-administrative-files"></div>
 <div id="index-Administrative-files_002c-editing-them"></div>
@@ -1176,24 +1020,12 @@ revision, but sometimes a particularly bad error in the
 administrative file makes it impossible to commit new
 revisions.
 </p>
-<hr size="6">
+<hr>
 <div id="Multiple-repositories"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Editing-administrative-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Creating-a-repository| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Creating-a-repository|Creating a repository]], Previous: [[#Intro-administrative-files|Intro administrative files]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Multiple-repositories-1"></div>
 === Multiple repositories ===
 <div id="index-Multiple-repositories"></div>
@@ -1238,24 +1070,12 @@ contact server2, to update the dir1/sdir subdirectory,
 and server1, to update everything else.
 </p>
 
-<hr size="6">
+<hr>
 <div id="Creating-a-repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Multiple-repositories| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Backing-up| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Backing-up|Backing up]], Previous: [[#Multiple-repositories|Multiple repositories]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Creating-a-repository-1"></div>
 === Creating a repository ===
 
@@ -1310,24 +1130,12 @@ repository.
 don&rsquo;t want that, remove the history file after running
 <code>cvs init</code>.  See section [cvs: Reference manual for Administrative files#history-file The history file].
 </p>
-<hr size="6">
+<hr>
 <div id="Backing-up"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Creating-a-repository| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Moving-a-repository| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Moving-a-repository|Moving a repository]], Previous: [[#Creating-a-repository|Creating a repository]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Backing-up-a-repository"></div>
 === Backing up a repository ===
 <div id="index-Repository_002c-backing-up"></div>
@@ -1382,24 +1190,12 @@ what has changed, and then when you are ready, commit
 the changes into the repository.
 </li></ul>
 
-<hr size="6">
+<hr>
 <div id="Moving-a-repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Backing-up| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Remote-repositories| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Remote-repositories|Remote repositories]], Previous: [[#Backing-up|Backing up]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Moving-a-repository-1"></div>
 === Moving a repository ===
 <div id="index-Repository_002c-moving"></div>
@@ -1427,24 +1223,12 @@ the &lsquo;<tt>CVS/Repository</tt>&rsquo; and &lsquo;<tt>CVS/Root</tt>&rsquo; fi
 unless you are sure you want to bother, it probably
 isn&rsquo;t worth it.
 </p>
-<hr size="6">
+<hr>
 <div id="Remote-repositories"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Moving-a-repository| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Server-requirements| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Read_002donly-access|Read-only access]], Previous: [[#Moving-a-repository|Moving a repository]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Remote-repositories-1"></div>
 === Remote repositories ===
 <div id="index-Repositories_002c-remote"></div>
@@ -1493,24 +1277,12 @@ described in [[#Connecting-via-rsh|Connecting with rsh]].
 </nowiki>&bull;[[#Kerberos-authenticated| Kerberos authenticated]]::<nowiki>      Direct connections with kerberos
 </nowiki>&bull;[[#Connecting-via-fork| Connecting via fork]]::<nowiki>         Using a forked <code>cvs server</code> to connect
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Server-requirements"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Remote-repositories| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Connecting-via-rsh| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Connecting-via-rsh|Connecting via rsh]], Up: [[#Remote-repositories|Remote repositories]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Server-requirements-1"></div>
 ==== Server requirements ====
 
@@ -1568,24 +1340,12 @@ trouble.
 <p>For information on disk space requirements, see
 [[#Creating-a-repository|Creating a repository]].
 </p>
-<hr size="6">
+<hr>
 <div id="Connecting-via-rsh"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Server-requirements| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Password-authenticated| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Password-authenticated|Password authenticated]], Previous: [[#Server-requirements|Server requirements]], Up: [[#Remote-repositories|Remote repositories]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Connecting-with-rsh"></div>
 ==== Connecting with rsh ====
 
@@ -1666,24 +1426,12 @@ the module &lsquo;<tt>foo</tt>&rsquo; in the repository
 the same on both the local and remote hosts.)
 </p>
 
-<hr size="6">
+<hr>
 <div id="Password-authenticated"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Connecting-via-rsh| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Password-authentication-server| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#GSSAPI-authenticated|GSSAPI authenticated]], Previous: [[#Connecting-via-rsh|Connecting via rsh]], Up: [[#Remote-repositories|Remote repositories]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Direct-connection-with-password-authentication"></div>
 ==== Direct connection with password authentication ====
 
@@ -1700,24 +1448,12 @@ some adjustments on both the server and client sides.
 </nowiki>&bull;[[#Password-authentication-client| Password authentication client]]::<nowiki>     Using the client
 </nowiki>&bull;[[#Password-authentication-security| Password authentication security]]::<nowiki>   What this method does and does not do
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Password-authentication-server"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Password-authenticated| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Password-authentication-client| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Password-authentication-client|Password authentication client]], Up: [[#Password-authenticated|Password authenticated]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Setting-up-the-server-for-password-authentication"></div>
 ===== Setting up the server for password authentication =====
 
@@ -2009,24 +1745,12 @@ want to include the &lsquo;<tt>passwd</tt>&rsquo; file in checkouts of
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;, see [cvs: Reference manual for Administrative files#checkoutlist The checkoutlist file].
 </p>
 
-<hr size="6">
+<hr>
 <div id="Password-authentication-client"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Password-authentication-server| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Password-authentication-security| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Password-authentication-security|Password authentication security]], Previous: [[#Password-authentication-server|Password authentication server]], Up: [[#Password-authenticated|Password authenticated]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Using-the-client-with-password-authentication"></div>
 ===== Using the client with password authentication =====
 <div id="index-Login-_0028subcommand_0029"></div>
@@ -2118,24 +1842,12 @@ from the working copy&rsquo;s &lsquo;<tt>CVS</tt>&rsquo; subdirectory.
 removed from the <code>CVS_PASSFILE</code> by using the
 <code>cvs logout</code> command.
 </p>
-<hr size="6">
+<hr>
 <div id="Password-authentication-security"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Password-authentication-client| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#GSSAPI-authenticated| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Password-authentication-client|Password authentication client]], Up: [[#Password-authenticated|Password authenticated]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Security-considerations-with-password-authentication"></div>
 ===== Security considerations with password authentication =====
 
@@ -2177,24 +1889,12 @@ who can sniff network packets or read a protected
 (i.e., user read-only) file.  If you want real
 security, get Kerberos.
 </p>
-<hr size="6">
+<hr>
 <div id="GSSAPI-authenticated"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Password-authentication-security| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Kerberos-authenticated| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Kerberos-authenticated|Kerberos authenticated]], Previous: [[#Password-authenticated|Password authenticated]], Up: [[#Remote-repositories|Remote repositories]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Direct-connection-with-GSSAPI"></div>
 ==== Direct connection with GSSAPI ====
 
@@ -2247,24 +1947,12 @@ example,
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :gserver:faun.example.org:/usr/local/cvsroot checkout foo
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Kerberos-authenticated"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#GSSAPI-authenticated| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Connecting-via-fork| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Connecting-via-fork|Connecting via fork]], Previous: [[#GSSAPI-authenticated|GSSAPI authenticated]], Up: [[#Remote-repositories|Remote repositories]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Direct-connection-with-kerberos"></div>
 ==== Direct connection with kerberos ====
 
@@ -2316,24 +2004,12 @@ you are ready to go:
 <p>Previous versions of <small>CVS</small> would fall back to a
 connection via rsh; this version will not do so.
 </p>
-<hr size="6">
+<hr>
 <div id="Connecting-via-fork"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Kerberos-authenticated| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Read_002donly-access| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Kerberos-authenticated|Kerberos authenticated]], Up: [[#Remote-repositories|Remote repositories]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Connecting-with-fork"></div>
 ==== Connecting with fork ====
 
@@ -2368,24 +2044,12 @@ repository.  For example:
 by default, or the value of the <code>CVS_SERVER</code>
 environment variable.
 </p>
-<hr size="6">
+<hr>
 <div id="Read_002donly-access"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Connecting-via-fork| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Server-temporary-directory| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Server-temporary-directory|Server temporary directory]], Previous: [[#Remote-repositories|Remote repositories]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Read_002donly-repository-access"></div>
 === Read-only repository access ===
 <div id="index-Read_002donly-repository-access"></div>
@@ -2471,24 +2135,12 @@ conservative way, it being better to protect the
 repository too much than too little: such a user gets
 read-only access.
 </p>
-<hr size="6">
+<hr>
 <div id="Server-temporary-directory"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Read_002donly-access| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Read_002donly-access|Read-only access]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Temporary-directories-for-the-server"></div>
 === Temporary directories for the server ===
 <div id="index-Temporary-directories_002c-and-server"></div>
@@ -2532,18 +2184,9 @@ the &lsquo;<tt>cvs-serv<var>pid</var></tt>&rsquo; directories.  As long as
 there is no server running with process identification
 number <var>pid</var>, it is safe to do so.
 </p>
-<hr size="6">
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<hr>
+<div class="node">
+<p>
+Previous: [[#Read_002donly-access|Read-only access]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.12 2009-08-04 16:23:36 pertusus Exp $
+# $Id: html.init,v 1.13 2009-08-05 23:20:28 pertusus Exp $
 
 use strict;
 
@@ -117,9 +117,12 @@ $SMALL_EXAMPLE_INDENT_CELL = '<td>&nbsp;</td>';
 $SMALL_FONT_SIZE = '-1';
 
 # horizontal rules
+# Not used
 $SMALL_RULE = '<hr size="1">';
-$DEFAULT_RULE = '<hr>';
 $MIDDLE_RULE = '<hr size="2">';
+# used almost everywhere
+$DEFAULT_RULE = '<hr>';
+# used for top element and before misc elements
 $BIG_RULE = '<hr size="6">';
 
 # symbol put at the beginning of nodes entry in menu (and optionnaly of 
@@ -226,6 +229,17 @@ $L2H_HTML_VERSION = "4.0";
     (
       'Top', 'Index', 'Contents', 'About', 'Up', 'NextFile', 'PrevFile'
     );
+
+if ($SIMPLE_HEADERS)
+{
+   @SECTION_BUTTONS = ([ 'NodeNext', \&html_default_node_direction ],
+         [ 'NodePrev', \&html_default_node_direction ],
+         [ 'NodeUp', \&html_default_node_direction ], ' ',
+         'Contents', 'Index');
+   @CHAPTER_BUTTONS = @SECTION_FOOTER_BUTTONS = @NODE_FOOTER_BUTTONS =
+    @MISC_BUTTONS = @SECTION_BUTTONS;
+   $BIG_RULE = $DEFAULT_RULE;
+}
 
 $ICONS = 0;
 
@@ -430,8 +444,15 @@ $print_page_foot	      = \&HTML_DEFAULT_print_page_foot;
 $print_head_navigation    = \&HTML_DEFAULT_print_head_navigation;
 $print_foot_navigation    = \&HTML_DEFAULT_print_foot_navigation;
 $button_icon_img	      = \&HTML_DEFAULT_button_icon_img;
+$button_formatting	      = \&HTML_DEFAULT_button_formatting;
+
 $print_navigation	      = \&HTML_DEFAULT_print_navigation;
-$about_body		      = \&HTML_DEFAULT_about_body;
+$print_navigation             = \&HTML_DEFAULT_table_print_navigation if (!$SIMPLE_HEADERS);
+#$print_navigation	      = \&HTML_DEFAULT_table_print_navigation;
+
+$about_body                   = undef;
+$about_body		      = \&HTML_DEFAULT_about_body if (!$SIMPLE_HEADERS);
+
 $print_frame              = \&HTML_DEFAULT_print_frame;
 $print_toc_frame          = \&HTML_DEFAULT_print_toc_frame;
 $contents                 = \&HTML_DEFAULT_contents;
@@ -794,12 +815,9 @@ sub HTML_DEFAULT_print_section
     if ((get_conf('SPLIT') eq 'node') && get_conf('headers'))
     {
         my $buttons = \@NODE_FOOTER_BUTTONS;
-        &$print_foot_navigation($fh, $buttons, $SMALL_RULE,
+        &$print_foot_navigation($fh, $buttons, $DEFAULT_RULE,
           (!defined($WORDS_IN_PAGE) or (defined ($nw) and $nw >= $WORDS_IN_PAGE)),
           $element);
-#        print $fh "$SMALL_RULE\n";
-#        &$print_navigation($buttons) if (!defined($WORDS_IN_PAGE) or (defined ($nw)
-#                                    and $nw >= $WORDS_IN_PAGE));
     }
 }
 
@@ -808,7 +826,7 @@ sub HTML_DEFAULT_one_section($$)
     my $fh = shift;
     my $element = shift;
     main::print_lines($fh);
-    print $fh "$SMALL_RULE\n";
+    print $fh "$DEFAULT_RULE\n";
     &$print_page_foot($fh);
 }
 
@@ -833,13 +851,13 @@ sub HTML_DEFAULT_print_Top_footer($$$)
     my $end_page = shift;
     my $element = shift;
     my $buttons = \@MISC_BUTTONS;
-    &$print_foot_navigation($fh, $buttons, $SMALL_RULE, 
+    my $rule = $DEFAULT_RULE;
+    $rule = $BIG_RULE if (!$end_page);
+    #print STDERR "end_page: $end_page\n";
+    &$print_foot_navigation($fh, $buttons, $rule, 
        ($end_page and (get_conf('headers') or (get_conf('SPLIT') and get_conf('SPLIT') ne 'node'))), $element);
-#    &$print_foot_navigation($fh);
-#    print $fh "$SMALL_RULE\n";
     if ($end_page)
     {
-#        &$print_navigation($fh, $buttons);
         &$print_page_foot($fh);
     }
 }
@@ -922,9 +940,8 @@ sub HTML_DEFAULT_print_misc_footer
     my $fh = shift;
     my $buttons = shift;
     my $new_file = shift;
-    &$print_foot_navigation($fh, $buttons, $SMALL_RULE, 
+    &$print_foot_navigation($fh, $buttons, $DEFAULT_RULE, 
         ($new_file and (get_conf('headers') or (get_conf('SPLIT') and get_conf('SPLIT') ne 'node'))), undef);
-#    print $fh "$SMALL_RULE\n";
     if ($new_file)
     {
         &$print_page_foot($fh);
@@ -952,9 +969,7 @@ sub HTML_DEFAULT_print_section_footer
     my $fh = shift;
     my $element = shift;
     my $buttons = \@SECTION_FOOTER_BUTTONS;
-    &$print_foot_navigation($fh, $buttons, $BIG_RULE, 1, $element);
-#    &$end_section ($fh, 1, $element);
-#    &$print_navigation($fh, $buttons);
+    &$print_foot_navigation($fh, $buttons, $DEFAULT_RULE, 1, $element);
 }
 
 ###################################################################
@@ -976,7 +991,7 @@ sub HTML_DEFAULT_print_chapter_header
     { # in this case print_navigation is called here. 
         my $buttons = \@CHAPTER_BUTTONS;
         &$print_head_navigation($fh, $buttons);
-        print $fh "\n$MIDDLE_RULE\n" unless ($VERTICAL_HEAD_NAVIGATION);
+        print $fh "\n$DEFAULT_RULE\n" unless ($VERTICAL_HEAD_NAVIGATION);
     }
 }
 
@@ -985,9 +1000,7 @@ sub HTML_DEFAULT_print_chapter_footer
     my $fh = shift;
     my $element = shift;
     my $buttons = \@CHAPTER_BUTTONS;
-    &$print_foot_navigation($fh, $buttons, $BIG_RULE, 1, $element);
-#    print $fh "$BIG_RULE\n";
-#    &$print_navigation($fh, $buttons);
+    &$print_foot_navigation($fh, $buttons, $DEFAULT_RULE, 1, $element);
 }
 
 sub HTML_DEFAULT_print_section_header
@@ -1061,30 +1074,36 @@ EOT
 sub HTML_DEFAULT_end_section($$$)
 {
     my $fh = shift;
-    my $misc_and_section_separation = shift;
+    my $misc_or_top_and_section_separation = shift;
     my $element = shift;
-    #&$print_foot_navigation($fh) if ($end_foot_navigation);
-    #print $fh "$BIG_RULE\n";
-    if ($misc_and_section_separation)
+    if ($misc_or_top_and_section_separation)
     {
-        &$print_foot_navigation($fh, undef, $BIG_RULE, 0, $element);
+        my $rule = $BIG_RULE;
+        # in that case we are almost surely at the end of the document
+        $rule = $DEFAULT_RULE if (! $MONOLITHIC);
+        &$print_foot_navigation($fh, undef, $rule, 0, $element, 1);
     }
     else
     {
-        print $fh "$BIG_RULE\n";
+        print $fh "$DEFAULT_RULE\n";
     }
 }
 
 sub HTML_DEFAULT_print_page_foot($)
 {
     my $fh = shift;
-    my $program_string = &$program_string();
-    print $fh <<EOT;
-<p>
- <font size="-1">
+    my $program_text = '';
+    if ($PROGRAM_NAME_IN_FOOTER)
+    {
+        my $program_string = &$program_string();
+        $program_text = " <font size=\"-1\">
   $program_string
  </font>
- <br>
+ <br>";
+    }
+    print $fh <<EOT;
+<p>
+$program_text
 $PRE_BODY_CLOSE
 </p>
 </body>
@@ -1119,7 +1138,7 @@ EOT
     }
     elsif (get_conf('SPLIT') eq 'node')
     {
-        $result .= "$SMALL_RULE\n";
+        $result .= "$DEFAULT_RULE\n";
     }
  
     print $fh $result if (defined($fh));
@@ -1133,10 +1152,16 @@ sub HTML_DEFAULT_print_foot_navigation
     my $rule = shift;
     my $print_navigation_panel = shift;
     my $element = shift;
+    # set if called between sections and top or between sections and misc. 
+    # could also be the last element
+    my $maybe_in_page = shift;
 
     $rule = '' if (!defined($rule));
     $print_navigation_panel = 1 if (!defined($print_navigation_panel)
              and defined($buttons));
+
+    # avoid the rule if at the end of a page and there is nothing below
+    $rule = '' if (!$PROGRAM_NAME_IN_FOOTER and !$print_navigation_panel and !$maybe_in_page);
 
     if ($VERTICAL_HEAD_NAVIGATION)
     {
@@ -1181,7 +1206,113 @@ sub HTML_DEFAULT_button_icon_img
     return qq{<img src="$icon" border="0" alt="$alt" align="middle">};
 }
 
-sub HTML_DEFAULT_print_navigation
+sub HTML_DEFAULT_button_formatting($$)
+{
+   my $button = shift;
+   my $vertical = shift;
+
+   my ($active, $passive);
+   if (ref($button) eq 'CODE')
+   {
+       $active = &$button($vertical);
+   }
+   elsif (ref($button) eq 'SCALAR')
+   {
+       $active = "$$button" if defined($$button);
+   }
+   elsif (ref($button) eq 'ARRAY')
+   {
+       my $text = $button->[1];
+       my $button_href = $button->[0];
+       # verify that $button_href is simple text and text is a reference
+       if (defined($button_href) and !ref($button_href) 
+          and defined($text) and (ref($text) eq 'SCALAR') and defined($$text))
+       {             # use given text
+           if ($Texi2HTML::HREF{$button_href})
+           {
+               my $anchor_attributes = '';
+               if ($USE_ACCESSKEY and (defined($BUTTONS_ACCESSKEY{$button_href})) and ($BUTTONS_ACCESSKEY{$button_href} ne ''))
+               {
+                   $anchor_attributes = "accesskey=\"$BUTTONS_ACCESSKEY{$button_href}\"";
+               }
+               if ($USE_REL_REV and (defined($BUTTONS_REL{$button_href})) and ($BUTTONS_REL{$button_href} ne ''))
+               {
+                    $anchor_attributes .= " rel=\"$BUTTONS_REL{$button_href}\"";
+               }
+               $active =  "" .
+                    &$anchor('',
+                               $Texi2HTML::HREF{$button_href},
+                               $$text,
+                               $anchor_attributes
+                             );
+           }
+           else
+           {
+               $passive = $$text;
+           }
+       }
+       elsif (defined($button_href) and !ref($button_href)
+          and defined($text) and (ref($text) eq 'CODE'))
+       {
+           $active = &$text($button_href);
+       }
+    }
+    elsif ($button eq ' ')
+    {                       # handle space button
+        $active = 
+            ($ICONS && $ACTIVE_ICONS{' '}) ?
+               &$button_icon_img($BUTTONS_NAME{$button}, $ACTIVE_ICONS{' '}) :
+                   $NAVIGATION_TEXT{' '};
+            #next;
+    }
+    elsif ($Texi2HTML::HREF{$button})
+    {                       # button is active
+        my $btitle = $BUTTONS_GOTO{$button} ?
+           'title="' . $BUTTONS_GOTO{$button} . '"' : '';
+        if ($USE_ACCESSKEY and (defined($BUTTONS_ACCESSKEY{$button})) and ($BUTTONS_ACCESSKEY{$button} ne ''))
+        {
+            $btitle .= " accesskey=\"$BUTTONS_ACCESSKEY{$button}\"";
+        }
+        if ($USE_REL_REV and (defined($BUTTONS_REL{$button})) and ($BUTTONS_REL{$button} ne ''))
+        {
+            $btitle .= " rel=\"$BUTTONS_REL{$button}\"";
+        }
+        if ($ICONS && $ACTIVE_ICONS{$button})
+        {                   # use icon
+            $active = '' .
+              &$anchor('',
+                   $Texi2HTML::HREF{$button},
+                   &$button_icon_img($BUTTONS_NAME{$button},
+                              $ACTIVE_ICONS{$button},
+                              $Texi2HTML::SIMPLE_TEXT{$button}),
+                   $btitle
+              );
+        }
+        else
+        {                   # use text
+            $active = 
+               '[' .
+                  &$anchor('',
+                        $Texi2HTML::HREF{$button},
+                        $NAVIGATION_TEXT{$button},
+                        $btitle
+                     ) .
+                ']';
+        }
+    }
+    else
+    {                       # button is passive
+        $passive = 
+          $ICONS && $PASSIVE_ICONS{$button} ?
+               &$button_icon_img($BUTTONS_NAME{$button},
+                                 $PASSIVE_ICONS{$button},
+                                 $Texi2HTML::SIMPLE_TEXT{$button}) :
+               "[" . $NAVIGATION_TEXT{$button} . "]";
+    }
+    return ($active, $passive);
+}
+
+sub HTML_DEFAULT_table_print_navigation
 {
     my $buttons = shift;
     my $vertical = shift;
@@ -1193,106 +1324,89 @@ sub HTML_DEFAULT_print_navigation
     {
         $result .= qq{<tr valign="top" align="left">\n} if $vertical;
         $result .=  qq{<td valign="middle" align="left">};
-
-        if (ref($button) eq 'CODE')
+        
+        my ($active, $passive) = &$button_formatting($button, $vertical);
+        if (defined($active))
         {
-            $result .= &$button($vertical);
+            $result .= $active;
         }
-        elsif (ref($button) eq 'SCALAR')
+        elsif (defined($passive))
         {
-            $result .= "$$button" if defined($$button);
-        }
-        elsif (ref($button) eq 'ARRAY')
-        {
-            my $text = $button->[1];
-            my $button_href = $button->[0];
-            # verify that $button_href is simple text and text is a reference
-            if (defined($button_href) and !ref($button_href) 
-               and defined($text) and (ref($text) eq 'SCALAR') and defined($$text))
-            {             # use given text
-                if ($Texi2HTML::HREF{$button_href})
-                {
-                  my $anchor_attributes = '';
-                  if ($USE_ACCESSKEY and (defined($BUTTONS_ACCESSKEY{$button_href})) and ($BUTTONS_ACCESSKEY{$button_href} ne ''))
-                  {
-                      $anchor_attributes = "accesskey=\"$BUTTONS_ACCESSKEY{$button_href}\"";
-                  }
-                  if ($USE_REL_REV and (defined($BUTTONS_REL{$button_href})) and ($BUTTONS_REL{$button_href} ne ''))
-                  {
-                      $anchor_attributes .= " rel=\"$BUTTONS_REL{$button_href}\"";
-                  }
-                  $result .=  "" .
-                        &$anchor('',
-                                    $Texi2HTML::HREF{$button_href},
-                                    $$text,
-                                    $anchor_attributes
-                                   ) 
-                                    ;
-                }
-                else
-                {
-                  $result .=  $$text;
-                }
-            }
-        }
-        elsif ($button eq ' ')
-        {                       # handle space button
-            $result .= 
-                ($ICONS && $ACTIVE_ICONS{' '}) ?
-                    &$button_icon_img($BUTTONS_NAME{$button}, $ACTIVE_ICONS{' '}) :
-                        $NAVIGATION_TEXT{' '};
-            #next;
-        }
-        elsif ($Texi2HTML::HREF{$button})
-        {                       # button is active
-            my $btitle = $BUTTONS_GOTO{$button} ?
-                'title="' . $BUTTONS_GOTO{$button} . '"' : '';
-            if ($USE_ACCESSKEY and (defined($BUTTONS_ACCESSKEY{$button})) and ($BUTTONS_ACCESSKEY{$button} ne ''))
-            {
-                $btitle .= " accesskey=\"$BUTTONS_ACCESSKEY{$button}\"";
-            }
-            if ($USE_REL_REV and (defined($BUTTONS_REL{$button})) and ($BUTTONS_REL{$button} ne ''))
-            {
-                $btitle .= " rel=\"$BUTTONS_REL{$button}\"";
-            }
-            if ($ICONS && $ACTIVE_ICONS{$button})
-            {                   # use icon
-                $result .= '' .
-                    &$anchor('',
-                        $Texi2HTML::HREF{$button},
-                        &$button_icon_img($BUTTONS_NAME{$button},
-                                   $ACTIVE_ICONS{$button},
-                                   $Texi2HTML::SIMPLE_TEXT{$button}),
-                        $btitle
-                      );
-            }
-            else
-            {                   # use text
-                $result .= 
-                    '[' .
-                        &$anchor('',
-                                    $Texi2HTML::HREF{$button},
-                                    $NAVIGATION_TEXT{$button},
-                                    $btitle
-                                   ) .
-                                       ']';
-            }
-        }
-        else
-        {                       # button is passive
-            $result .= 
-                $ICONS && $PASSIVE_ICONS{$button} ?
-                    &$button_icon_img($BUTTONS_NAME{$button},
-                                          $PASSIVE_ICONS{$button},
-                                          $Texi2HTML::SIMPLE_TEXT{$button}) :
-
-                                              "[" . $NAVIGATION_TEXT{$button} . "]";
+            $result .= $passive;
         }
         $result .= "</td>\n";
         $result .= "</tr>\n" if $vertical;
     }
     $result .= "</tr>" unless $vertical;
     $result .= "</table>\n";
+    return $result;
+}
+
+sub html_default_node_direction($)
+{
+    my $direction = shift;
+    my $result = undef;
+    if ($Texi2HTML::HREF{$direction} and $Texi2HTML::NODE{$direction})
+    {
+         my $anchor_attributes = '';
+         if ($USE_ACCESSKEY and (defined($BUTTONS_ACCESSKEY{$direction})) and ($BUTTONS_ACCESSKEY{$direction} ne ''))
+         {
+              $anchor_attributes = "accesskey=\"$BUTTONS_ACCESSKEY{$direction}\"";
+         }
+         if ($USE_REL_REV and (defined($BUTTONS_REL{$direction})) and ($BUTTONS_REL{$direction} ne ''))
+         {
+              $anchor_attributes .= " rel=\"$BUTTONS_REL{$direction}\"";
+         }
+         my $anchor = &$anchor('',
+                            $Texi2HTML::HREF{$direction},
+                            $Texi2HTML::NODE{$direction},
+                            $anchor_attributes
+                          ) 
+                        ;
+         # i18n
+         $result = "$BUTTONS_TEXT{$direction}: $anchor";
+    }
+    return $result;
+}
+
+my %html_default_node_directions;
+foreach my $node_directions ('NodeNext', 'NodePrev', 'NodeUp')
+{
+   $html_default_node_directions{$node_directions} = 1;
+}
+
+sub HTML_DEFAULT_print_navigation
+{
+    my $buttons = shift;
+    my $vertical = shift;
+
+    my $first_button = 1;
+    my $result = '<div class="node">'."\n<p>\n";
+    for my $button (@$buttons)
+    {
+        my $button_text = '';
+        my $direction;
+        if (ref($button) eq 'ARRAY' and defined($button->[0]) and !ref($button->[0]))
+        {
+           $direction = $button->[0];
+        }
+        elsif (defined($button) and !ref($button))
+        {
+           $direction = $button;
+        }
+        my ($active, $passive) = &$button_formatting($button, $vertical);
+
+        if (defined($active))
+        {
+            if (defined($direction) and $html_default_node_directions{$direction} and !$first_button)
+            {
+                $active = ', ' .$active;
+            }
+            $result .= $active;
+            $first_button = 0 if ($first_button);
+        }
+    }
+    $result .= "</p>\n</div>\n";
     return $result;
 }
 

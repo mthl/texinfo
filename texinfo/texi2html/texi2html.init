@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.215 2009-08-05 09:36:56 pertusus Exp $
+# $Id: texi2html.init,v 1.216 2009-08-05 23:20:27 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -329,6 +329,9 @@ $FIRSTPARAGRAPHINDENT = 'none';
 
 @T2H_FORMAT_EXPAND = ('plaintext');
 
+# simple headers formatting, not in a table and using node names.
+$SIMPLE_HEADERS = 1;
+
 # if set, node names are used to construct file names
 # if undef, it is set if split at node, or $NODE_FILES is set.
 $NODE_FILENAMES = undef;
@@ -375,10 +378,15 @@ $SMALL_EXAMPLE_INDENT_CELL = '';
 $SMALL_FONT_SIZE = '-1';
 
 # horizontal rules
+# not used
 $SMALL_RULE = '';
-$DEFAULT_RULE = '';
 $MIDDLE_RULE = '';
+# used in html
+$DEFAULT_RULE = '';
 $BIG_RULE = '';
+
+# output the program name in the footer
+$PROGRAM_NAME_IN_FOOTER = 0;
 
 # if non-empty, and no @..heading appeared in Top node, then
 # use this as header for top node/section, otherwise use value of
@@ -747,6 +755,8 @@ sub t2h_default_set_variables_texi2html()
   $USE_NUMERIC_ENTITY = 1;
   $SPLIT = '';
   $SPLIT_INDEX = 100;
+  $PROGRAM_NAME_IN_FOOTER = 1;
+  $SIMPLE_HEADERS = 0;
 
   $ENABLE_ENCODING_USE_ENTITY = 1;
   $USE_ISO = 1;
@@ -880,16 +890,16 @@ sub t2h_default_translate_names()
      'Overview',    &$I('Overview'),
      'Index',       &$I('Index'),
      ' ',           ' ',
-     'This',        &$I('current'),
+     'This',        &$I('Current'),
      'Back',        ' < ',
      'FastBack',    ' << ',
-     'Prev',        &$I('Prev'),
-     'Up',          &$I(' Up '),
+     'Prev',        &$I('Previous'),
+     'Up',          &$I('Up'),
      'Next',        &$I('Next'),
-     'NodeUp',      &$I('Node up'),
-     'NodeNext',    &$I('Next node'),
-     'NodePrev',    &$I('Previous node'),
-     'Following',   &$I('Following node'),
+     'NodeUp',      &$I('Up'),
+     'NodeNext',    &$I('Next'),
+     'NodePrev',    &$I('Previous'),
+     'Following',   &$I('Following'),
      'Forward',     ' > ',
      'FastForward', ' >> ',
      'About',       ' ? ',
@@ -898,6 +908,7 @@ sub t2h_default_translate_names()
      'NextFile',    &$I('Next file'),
      'PrevFile',    &$I('Previous file'),
     );
+    %BUTTONS_TEXT = %NAVIGATION_TEXT;
 
     %BUTTONS_GOTO =
     (
@@ -959,14 +970,15 @@ sub t2h_default_set_out_encoding()
     # $Texi2HTML::THISDOC{'*_ENCODING'} to keep code shorter
     my ($out_encoding, $encoding_name, $document_encoding);
 
-    if (defined($DOCUMENT_ENCODING))
-    {
-        $document_encoding = $DOCUMENT_ENCODING;
-    }
-    elsif (defined($Texi2HTML::THISDOC{'documentencoding'}))
-    {
-        $document_encoding = $Texi2HTML::THISDOC{'documentencoding'};
-    }
+#    if (defined($DOCUMENT_ENCODING))
+#    {
+#        $document_encoding = $DOCUMENT_ENCODING;
+#    }
+#    elsif (defined($Texi2HTML::THISDOC{'documentencoding'}))
+#    {
+#        $document_encoding = $Texi2HTML::THISDOC{'documentencoding'};
+#    }
+    $document_encoding = get_conf('DOCUMENT_ENCODING');
 
     if (defined($OUT_ENCODING))
     {
@@ -983,9 +995,9 @@ sub t2h_default_set_out_encoding()
         $out_encoding = main::encoding_alias ($encoding_name);
         $out_encoding = $encoding_name if (!defined($out_encoding));
     }
-    if (!defined($out_encoding) and (defined($Texi2HTML::THISDOC{'IN_ENCODING'})))
+    if (!defined($out_encoding) and (defined(get_conf('IN_ENCODING'))))
     {
-        $out_encoding = $Texi2HTML::THISDOC{'IN_ENCODING'};
+        $out_encoding = get_conf('IN_ENCODING');
     }
     if (!defined($out_encoding) and (defined($document_encoding)))
     {
@@ -999,9 +1011,9 @@ sub t2h_default_set_out_encoding()
          {
              $encoding_name = $perl_charset_to_html{$out_encoding};
          }
-         elsif (defined($Texi2HTML::THISDOC{'IN_ENCODING'}) and defined($perl_charset_to_html{$Texi2HTML::THISDOC{'IN_ENCODING'}}))
+         elsif (defined(get_conf('IN_ENCODING')) and defined($perl_charset_to_html{get_conf('IN_ENCODING')}))
          {
-             $encoding_name = $perl_charset_to_html{$Texi2HTML::THISDOC{'IN_ENCODING'}};
+             $encoding_name = $perl_charset_to_html{get_conf('IN_ENCODING')};
          }
          elsif (defined($document_encoding) and defined($perl_charset_to_html{$document_encoding}))
          {
@@ -1011,9 +1023,9 @@ sub t2h_default_set_out_encoding()
          {
              $encoding_name = $out_encoding;
          }
-         elsif (defined($Texi2HTML::THISDOC{'IN_ENCODING'}))
+         elsif (defined(get_conf('IN_ENCODING')))
          {
-             $encoding_name = $Texi2HTML::THISDOC{'IN_ENCODING'};
+             $encoding_name = get_conf('IN_ENCODING');
          }
          elsif (defined($document_encoding))
          {
@@ -1031,10 +1043,10 @@ sub t2h_default_set_out_encoding()
 
     $Texi2HTML::THISDOC{'OUT_ENCODING'} = $out_encoding;
     $Texi2HTML::THISDOC{'ENCODING_NAME'} = $encoding_name;
-    $Texi2HTML::THISDOC{'DOCUMENT_ENCODING'} = $document_encoding;
+    #$Texi2HTML::THISDOC{'DOCUMENT_ENCODING'} = $document_encoding;
 
     $out_encoding = 'UNDEF' if (!defined($out_encoding));
-    my $in_encoding = $Texi2HTML::THISDOC{'IN_ENCODING'};
+    my $in_encoding = get_conf('IN_ENCODING');
     $in_encoding = 'UNDEF' if (!defined($in_encoding));
     $document_encoding = 'UNDEF' if (!defined($document_encoding));
     print STDERR "# Encodings: doc $document_encoding, in $in_encoding out $out_encoding, name $encoding_name\n" if ($VERBOSE);
@@ -1430,7 +1442,6 @@ sub T2H_DEFAULT_print_misc_footer
     my $fh = shift;
     my $buttons = shift;
     my $new_file = shift;
-#    print $fh "$SMALL_RULE\n";
     if ($new_file)
     {
         &$print_page_foot($fh);
@@ -1538,7 +1549,7 @@ sub T2H_DEFAULT_program_string()
 sub T2H_DEFAULT_end_section($$$)
 {
     my $fh = shift;
-    my $misc_and_section_separation = shift;
+    my $misc_or_top_and_section_separation = shift;
     my $element = shift;
 }
 
@@ -1852,7 +1863,8 @@ sub T2H_DEFAULT_titlepage($$$$)
         {
             $Texi2HTML::TITLEPAGE .= $line;
         }
-        $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
+        #$Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
+        $Texi2HTML::TITLEPAGE .= "\n";
     }
     if ($Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'} and (defined($Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'})) and @{$Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'}})
     {
@@ -1860,7 +1872,8 @@ sub T2H_DEFAULT_titlepage($$$$)
         {
             $Texi2HTML::TITLEPAGE .= $line;
         }
-        $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
+        #$Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
+        $Texi2HTML::TITLEPAGE .= "\n";
     }
     return $Texi2HTML::TITLEPAGE;
 }

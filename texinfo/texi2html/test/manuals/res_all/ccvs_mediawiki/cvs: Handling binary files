@@ -1,20 +1,8 @@
 <div id="Binary-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: History browsing#annotate  &lt; ]|</td>
-<td valign="middle" align="left">|[[#Binary-why| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [cvs: Multiple developers#Multiple-developers Multiple developers], Previous: [cvs: History browsing#History-browsing History browsing], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Handling-binary-files"></div>
 == Handling binary files ==
 <div id="index-Binary-files"></div>
@@ -31,24 +19,12 @@ including both text files and binary images.
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Binary-why| Binary why]]::<nowiki>     More details on issues with binary files
 </nowiki>&bull;[[#Binary-howto| Binary howto]]::<nowiki>   How to store them
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Binary-why"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Binary-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Binary-howto| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Binary-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Binary-howto|Binary howto]], Up: [[#Binary-files|Binary files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="The-issues-with-binary-files"></div>
 === The issues with binary files ===
 
@@ -100,24 +76,12 @@ discussion of reserved checkouts (file locking) in
 [cvs: Multiple developers#Multiple-developers Multiple developers].  To avoid the merges
 resulting from branches, restrict use of branches.
 </p>
-<hr size="6">
+<hr>
 <div id="Binary-howto"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Binary-why| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Binary-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Binary-why|Binary why]], Up: [[#Binary-files|Binary files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="How-to-store-binary-files"></div>
 === How to store binary files ===
 
@@ -196,18 +160,9 @@ it is not clear how to distinguish between binary and
 non-binary files, and the rules to apply would vary
 considerably with the operating system.
 </p>
-<hr size="6">
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<hr>
+<div class="node">
+<p>
+Previous: [[#Binary-why|Binary why]], Up: [[#Binary-files|Binary files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

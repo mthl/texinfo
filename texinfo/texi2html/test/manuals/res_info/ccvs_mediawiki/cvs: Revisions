@@ -1,20 +1,8 @@
 <div id="Revisions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Starting a project with CVS#Defining-the-module  &lt; ]|</td>
-<td valign="middle" align="left">|[[#Revision-numbers| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [cvs: Branching and merging#Branching-and-merging Branching and merging], Previous: [cvs: Starting a project with CVS#Starting-a-new-project Starting a new project], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Revisions-1"></div>
 == Revisions ==
 
@@ -41,24 +29,12 @@ numeric revision in each file.
 </nowiki>&bull;[[#Tagging-add_002fremove| Tagging add/remove]]::<nowiki>          Tags with adding and removing files
 </nowiki>&bull;[[#Sticky-tags| Sticky tags]]::<nowiki>                 Certain tags are persistent
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Revision-numbers"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Revisions| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Versions-revisions-releases| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Versions-revisions-releases|Versions revisions releases]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Revision-numbers-1"></div>
 === Revision numbers ===
 <div id="index-Revision-numbers"></div>
@@ -90,24 +66,12 @@ revisions represent revisions on branches
 (see section [cvs: Branching and merging#Branching-and-merging Branching and merging]); such revision numbers
 are explained in detail in [cvs: Branching and merging#Branches-and-revisions Branches and revisions].
 </p>
-<hr size="6">
+<hr>
 <div id="Versions-revisions-releases"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Revision-numbers| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Assigning-revisions| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Assigning-revisions|Assigning revisions]], Previous: [[#Revision-numbers|Revision numbers]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Versions_002c-revisions-and-releases"></div>
 === Versions, revisions and releases ===
 <div id="index-Revisions_002c-versions-and-releases"></div>
@@ -124,24 +88,12 @@ in this document, and versions in the second sense are
 called <em>releases</em>.  To avoid confusion, the word
 <em>version</em> is almost never used in this document.
 </p>
-<hr size="6">
+<hr>
 <div id="Assigning-revisions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Versions-revisions-releases| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Tags| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Tags|Tags]], Previous: [[#Versions-revisions-releases|Versions revisions releases]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Assigning-revisions-1"></div>
 === Assigning revisions ===
 
@@ -182,24 +134,12 @@ revision 3.0 exists, you cannot &lsquo;<samp>cvs commit
 -r 1.3</samp>&rsquo;.  If you want to maintain several releases in
 parallel, you need to use a branch (see section [cvs: Branching and merging#Branching-and-merging Branching and merging]).
 </p>
-<hr size="6">
+<hr>
 <div id="Tags"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Assigning-revisions| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Tagging-the-working-directory| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Tagging-the-working-directory|Tagging the working directory]], Previous: [[#Assigning-revisions|Assigning revisions]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Tags_002d_002dSymbolic-revisions"></div>
 === Tags&ndash;Symbolic revisions ===
 <div id="index-Tags"></div>
@@ -358,24 +298,12 @@ like this:
                                 1.5
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Tagging-the-working-directory"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Tags| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Tagging-by-date_002ftag| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Tagging-by-date_002ftag|Tagging by date/tag]], Previous: [[#Tags|Tags]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Specifying-what-to-tag-from-the-working-directory"></div>
 === Specifying what to tag from the working directory ===
 
@@ -408,24 +336,12 @@ cvs tag: backend.c is locally modified
 cvs [tag aborted]: correct the above errors first!
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Tagging-by-date_002ftag"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Tagging-the-working-directory| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Modifying-tags| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Modifying-tags|Modifying tags]], Previous: [[#Tagging-the-working-directory|Tagging the working directory]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Specifying-what-to-tag-by-date-or-revision"></div>
 === Specifying what to tag by date or revision ===
 <div id="index-rtag-_0028subcommand_0029"></div>
@@ -469,24 +385,12 @@ rtag</code>.  The exceptions might be cases like:
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs tag -r 1.4 stable backend.c
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Modifying-tags"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Tagging-by-date_002ftag| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Tagging-add_002fremove| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Tagging-add_002fremove|Tagging add/remove]], Previous: [[#Tagging-by-date_002ftag|Tagging by date/tag]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Deleting_002c-moving_002c-and-renaming-tags"></div>
 === Deleting, moving, and renaming tags ===
 
@@ -578,24 +482,12 @@ same files as the old tag.  For example:
 cvs rtag -d old-name-0-4 tc
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Tagging-add_002fremove"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Modifying-tags| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Sticky-tags| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Sticky-tags|Sticky tags]], Previous: [[#Modifying-tags|Modifying tags]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Tagging-and-adding-and-removing-files"></div>
 === Tagging and adding and removing files ===
 
@@ -631,24 +523,12 @@ the old revision, rather than reflecting the fact that
 the file had been removed.  I don&rsquo;t think this is
 necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 </p>
-<hr size="6">
+<hr>
 <div id="Sticky-tags"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Tagging-add_002fremove| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Tagging-add_002fremove|Tagging add/remove]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Sticky-tags-1"></div>
 === Sticky tags ===
 <div id="index-Sticky-tags"></div>
@@ -735,18 +615,9 @@ how to undo a previous checkin (in this example, put
 &lsquo;<samp>-j</samp>&rsquo; option to <code>update</code>; for further
 discussion see [cvs: Branching and merging#Merging-two-revisions Merging differences between any two revisions].
 </p>
-<hr size="6">
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<hr>
+<div class="node">
+<p>
+Previous: [[#Tagging-add_002fremove|Tagging add/remove]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

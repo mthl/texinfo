@@ -34,7 +34,7 @@ directories.  See section [cvs: Adding, removing, and renaming files and directo
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Setting-up-the-files| Setting up the files]]::<nowiki>        Getting the files into the repository
 </nowiki>&bull;[[#Defining-the-module| Defining the module]]::<nowiki>         How to make a module of the files
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Setting-up-the-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt; ]]|</td>
@@ -64,7 +64,7 @@ be done in a couple of different ways.
                                         preserve history from another system.
 </nowiki>&bull;[[#From-scratch| From scratch]]::<nowiki>                Creating a directory tree from scratch.
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="From-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Setting-up-the-files| &lt; ]]|</td>
@@ -134,7 +134,7 @@ groups.  See section [cvs: The Repository#File-permissions File permissions].
 may want to use the wrappers features to specify which
 files are binary and which are not.  See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
 </p>
-<hr size="6">
+<hr>
 <div id="From-other-version-control-systems"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#From-files| &lt; ]]|</td>
@@ -224,7 +224,7 @@ vary).  See the comments in the script for details.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="From-scratch"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#From-other-version-control-systems| &lt; ]]|</td>
@@ -267,7 +267,7 @@ as they appear.
 <p>Check that the permissions <small>CVS</small> sets on the
 directories inside <code>$CVSROOT</code> are reasonable.
 </p>
-<hr size="6">
+<hr>
 <div id="Defining-the-module"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#From-scratch| &lt; ]]|</td>
@@ -329,7 +329,7 @@ $ cvs release -d CVSROOT
 </nowiki></pre></td></tr></table>
 </li></ol>
 
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>

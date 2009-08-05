@@ -2371,10 +2371,6 @@ sub info_default_print_page_foot($)
           }
           
           my $INDIRECT = main::open_out("$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}");
-          #unless (open (INDIRECT, ">$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'}"))
-          #{
-          #    main::document_warn ("Open $Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'filename'}->{'top'} failed: $!");
-          #}
           print $INDIRECT "".info_default_header();
           print $INDIRECT "\x{1F}\nIndirect:";
           foreach my $indirect (@info_default_pending_indirect)
@@ -2405,14 +2401,11 @@ sub info_default_print_page_foot($)
       }
       print $fh "\x{1F}\nEnd Tag Table\n";
    }
-   #if (defined($Texi2HTML::THISDOC{'DOCUMENT_ENCODING'}))
-   if (defined($Texi2HTML::THISDOC{'IN_ENCODING'}))
+
+   my $coding = get_conf('IN_ENCODING');
+   $coding = get_conf('DOCUMENT_ENCODING') if (!defined($coding));
+   if (defined($coding))
    {
-      my $coding = $Texi2HTML::THISDOC{'IN_ENCODING'};
-      #if ($coding =~ /^iso-/i)
-      #{
-      #    $coding = lc($coding);
-      #}
       print $fh "\n\x{1F}\nLocal Variables:\ncoding: $coding\nEnd:\n";
    }
 }

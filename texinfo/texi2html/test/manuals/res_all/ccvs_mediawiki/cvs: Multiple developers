@@ -1,20 +1,8 @@
 <div id="Multiple-developers"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Handling binary files#Binary-howto  &lt; ]|</td>
-<td valign="middle" align="left">|[[#File-status| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [cvs: Revision management#Revision-management Revision management], Previous: [cvs: Handling binary files#Binary-files Binary files], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Multiple-developers-1"></div>
 == Multiple developers ==
 <div id="index-Multiple-developers"></div>
@@ -71,24 +59,12 @@ choosing between them.
 </nowiki>&bull;[[#Watches| Watches]]::<nowiki>                     Mechanisms to track who is editing files
 </nowiki>&bull;[[#Choosing-a-model| Choosing a model]]::<nowiki>            Reserved or unreserved checkouts?
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="File-status"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Updating-a-file| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Updating-a-file|Updating a file]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="File-status-1"></div>
 === File status ===
 <div id="index-File-status"></div>
@@ -203,24 +179,12 @@ option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
 these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].
 </p>
-<hr size="6">
+<hr>
 <div id="Updating-a-file"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#File-status| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Conflicts-example| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Conflicts-example|Conflicts example]], Previous: [[#File-status|File status]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Bringing-a-file-up-to-date"></div>
 === Bringing a file up to date ===
 <div id="index-Bringing-a-file-up-to-date"></div>
@@ -255,24 +219,12 @@ special markers.
 See section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in sync with repository], for a complete description of the
 <code>update</code> command.
 </p>
-<hr size="6">
+<hr>
 <div id="Conflicts-example"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Updating-a-file| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Informing-others| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Informing-others|Informing others]], Previous: [[#Updating-a-file|Updating a file]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Conflicts-example-1"></div>
 === Conflicts example ===
 <div id="index-Merge_002c-an-example"></div>
@@ -439,24 +391,12 @@ Emacs front-end for <small>CVS</small>) you can use an Emacs
 package called emerge to help you resolve conflicts.
 See the documentation for pcl-cvs.
 </p>
-<hr size="6">
+<hr>
 <div id="Informing-others"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Conflicts-example| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Concurrency| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Concurrency|Concurrency]], Previous: [[#Conflicts-example|Conflicts example]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Informing-others-about-commits"></div>
 === Informing others about commits ===
 <div id="index-Informing-others"></div>
@@ -472,24 +412,12 @@ to, for instance, instruct <small>CVS</small> to mail a
 message to all developers, or post a message to a local
 newsgroup.
 </p>
-<hr size="6">
+<hr>
 <div id="Concurrency"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Informing-others| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Watches| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Watches|Watches]], Previous: [[#Informing-others|Informing others]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Several-developers-simultaneously-attempting-to-run-CVS"></div>
 === Several developers simultaneously attempting to run CVS ===
 
@@ -552,24 +480,12 @@ time, the person running <code>update</code> might get only
 the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 &lsquo;<tt>a/two.c</tt>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <div id="Watches"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Concurrency| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Setting-a-watch| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Choosing-a-model|Choosing a model]], Previous: [[#Concurrency|Concurrency]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Mechanisms-to-track-who-is-editing-files"></div>
 === Mechanisms to track who is editing files ===
 <div id="index-Watches"></div>
@@ -600,24 +516,12 @@ but <small>CVS</small> is not able to enforce this behavior.
 </nowiki>&bull;[[#Watch-information| Watch information]]::<nowiki>           Information about who is watching and editing
 </nowiki>&bull;[[#Watches-Compatibility| Watches Compatibility]]::<nowiki>       Watches interact poorly with CVS 1.6 or earlier
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Setting-a-watch"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Watches| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Getting-Notified| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Getting-Notified|Getting Notified]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Telling-CVS-to-watch-certain-files"></div>
 ==== Telling CVS to watch certain files ====
 
@@ -662,24 +566,12 @@ watch on</code>.
 </p>
 </dd></dl>
 
-<hr size="6">
+<hr>
 <div id="Getting-Notified"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Setting-a-watch| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Editing-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Editing-files|Editing files]], Previous: [[#Setting-a-watch|Setting a watch]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Telling-CVS-to-notify-you"></div>
 ==== Telling CVS to notify you ====
 
@@ -801,24 +693,12 @@ would be more useful if watches tracked each working
 directory separately, so this behavior might be worth
 changing.
 </p>
-<hr size="6">
+<hr>
 <div id="Editing-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Getting-Notified| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Watch-information| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Watch-information|Watch information]], Previous: [[#Getting-Notified|Getting Notified]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="How-to-edit-a-file-which-is-being-watched"></div>
 ==== How to edit a file which is being watched ====
 
@@ -889,24 +769,12 @@ repository since the last time you updated.
 server; the notifications will be sent upon the next
 successful <small>CVS</small> command.
 </p>
-<hr size="6">
+<hr>
 <div id="Watch-information"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Editing-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Watches-Compatibility| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Watches-Compatibility|Watches Compatibility]], Previous: [[#Editing-files|Editing files]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Information-about-who-is-watching-and-editing"></div>
 ==== Information about who is watching and editing ====
 
@@ -937,24 +805,12 @@ containing the file.
 </p>
 </dd></dl>
 
-<hr size="6">
+<hr>
 <div id="Watches-Compatibility"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Watch-information| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Choosing-a-model| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Watches| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Watch-information|Watch information]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Using-watches-with-old-versions-of-CVS"></div>
 ==== Using watches with old versions of CVS ====
 
@@ -978,24 +834,12 @@ you cannot upgrade, use the <code>watch off</code> and
 that will restore the repository to a state which
 <small>CVS</small> 1.6 can cope with.
 </p>
-<hr size="6">
+<hr>
 <div id="Choosing-a-model"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Watches-Compatibility| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Watches|Watches]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Choosing-between-reserved-or-unreserved-checkouts"></div>
 === Choosing between reserved or unreserved checkouts ===
 <div id="index-Choosing_002c-reserved-or-unreserved-checkouts"></div>
@@ -1053,18 +897,9 @@ Therefore, for some groups it can be considered the
 best of both the reserved checkout and unreserved
 checkout worlds.
 </p>
-<hr size="6">
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<hr>
+<div class="node">
+<p>
+Previous: [[#Watches|Watches]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

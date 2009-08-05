@@ -1,3 +1,17 @@
+2009-08-05   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, formats/html.init, texi2html.init, examples/*:
+	Simplify rules use, by using only the default and big rule.
+	New header formatting function, when $SIMPLE_HEADERS is set.
+	Also, when $SIMPLE_HEADERS is set the buttons are like makeinfo
+	directions in info, with Contents and Index, no about is output.
+	$button_formatting formats a button in the two print_navigation
+	implementations (and in mediawiki).
+	Don't add the program string in footer if $PROGRAM_NAME_IN_FOOTER 
+	is not set (the default when not called as texi2html).
+	* texi2html.pl, formats/info.init, texi2html.init: use get_conf and
+	set_conf doe DOCUMENT_ENCODING and IN_ENCODING.
+
 2009-08-04   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: always use menu directions to

@@ -79,7 +79,7 @@ sub T2H_SING_print_Top_footer
 	    "</blockquote>";
   
     &$print_foot_navigation($fh);
-    print $fh "$SMALL_RULE\n";
+    print $fh "$DEFAULT_RULE\n";
     #if ($SPLIT)
     if ($end_page)
     {

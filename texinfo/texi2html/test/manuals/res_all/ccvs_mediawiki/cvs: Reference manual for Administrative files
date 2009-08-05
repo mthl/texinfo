@@ -1,20 +1,8 @@
 <div id="Administrative-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &lt; ]|</td>
-<td valign="middle" align="left">|[[#modules| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [cvs: All environment variables which affect CVS#Environment-variables Environment variables], Previous: [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Reference-manual-for-Administrative-files"></div>
 == Reference manual for Administrative files ==
 <div id="index-Administrative-files-_0028reference_0029"></div>
@@ -43,24 +31,12 @@ file, which defines the modules inside the repository.
 </nowiki>&bull;[[#Variables| Variables]]::<nowiki>                   Various variables are expanded
 </nowiki>&bull;[[#config| config]]::<nowiki>                      Miscellaneous CVS configuration
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="modules"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Administrative-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Alias-modules| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Wrappers|Wrappers]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="The-modules-file"></div>
 === The modules file ===
 <div id="index-Modules-_0028admin-file_0029"></div>
@@ -97,24 +73,12 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
 </nowiki>&bull;[[#Module-program-options| Module program options]]::<nowiki>    How the modules &ldquo;program options&rdquo; programs
                               are run. 
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Alias-modules"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#modules| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Regular-modules| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#modules| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Regular-modules|Regular modules]], Up: [[#modules|modules]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Alias-modules-1"></div>
 ==== Alias modules ====
 <div id="index-Alias-modules"></div>
@@ -157,24 +121,12 @@ cvs checkout: Updating first-dir/sdir
 U first-dir/sdir/sfile
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Regular-modules"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Alias-modules| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Ampersand-modules| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#modules| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Ampersand-modules|Ampersand modules]], Previous: [[#Alias-modules|Alias modules]], Up: [[#modules|modules]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Regular-modules-1"></div>
 ==== Regular modules ====
 <div id="index-Regular-modules"></div>
@@ -229,24 +181,12 @@ U regfiles/sfile
 $
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Ampersand-modules"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Regular-modules| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Excluding-directories| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#modules| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Excluding-directories|Excluding directories]], Previous: [[#Regular-modules|Regular modules]], Up: [[#modules|modules]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Ampersand-modules-1"></div>
 ==== Ampersand modules ====
 <div id="index-Ampersand-modules"></div>
@@ -297,24 +237,12 @@ $
 a future release of <small>CVS</small>.
 </p>
 
-<hr size="6">
+<hr>
 <div id="Excluding-directories"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Ampersand-modules| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Module-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#modules| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Module-options|Module options]], Previous: [[#Ampersand-modules|Ampersand modules]], Up: [[#modules|modules]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Excluding-directories-1"></div>
 ==== Excluding directories ====
 <div id="index-Excluding-directories_002c-in-modules-file"></div>
@@ -333,24 +261,12 @@ before the name of each directory to be excluded.
 out everything in &lsquo;<samp>first-dir</samp>&rsquo; except any files in
 the subdirectory &lsquo;<samp>first-dir/sdir</samp>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <div id="Module-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Excluding-directories| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Module-program-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#modules| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Module-program-options|Module program options]], Previous: [[#Excluding-directories|Excluding directories]], Up: [[#modules|modules]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Module-options-1"></div>
 ==== Module options ====
 <div id="index-Options_002c-in-modules-file"></div>
@@ -413,24 +329,12 @@ that taginfo is a better solution (see section [cvs: History browsing#user_002dd
 &ldquo;program options&rdquo; programs are run.
 </p>
 
-<hr size="6">
+<hr>
 <div id="Module-program-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Module-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Wrappers| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#modules| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Module-options|Module options]], Up: [[#modules|modules]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="How-the-modules-file-_0060_0060program-options_0027_0027-programs-are-run"></div>
 ==== How the modules file &ldquo;program options&rdquo; programs are run ====
 <div id="index-Modules-file-program-options"></div>
@@ -454,24 +358,12 @@ found there, or alternatively searched for in the path if not.
 completed.
 </p>
 
-<hr size="6">
+<hr>
 <div id="Wrappers"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Module-program-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#commit-files|commit files]], Previous: [[#modules|modules]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="The-cvswrappers-file"></div>
 === The cvswrappers file ===
 <div id="index-cvswrappers-_0028admin-file_0029"></div>
@@ -527,24 +419,12 @@ directory, treating files whose name ends in
 </nowiki></pre></td></tr></table>
 
 
-<hr size="6">
+<hr>
 <div id="commit-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Wrappers| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#syntax| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#rcsinfo|rcsinfo]], Previous: [[#Wrappers|Wrappers]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="The-commit-support-files"></div>
 === The commit support files ===
 <div id="index-Committing_002c-administrative-support-files"></div>
@@ -601,24 +481,12 @@ imagination is the limit!
                                 (obsolete)
 </nowiki>&bull;[[#loginfo| loginfo]]::<nowiki>                     Where should log messages be sent?
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="syntax"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#commit-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#commitinfo| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#commitinfo|commitinfo]], Up: [[#commit-files|commit files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="The-common-syntax"></div>
 ==== The common syntax ====
 <div id="index-Info-files-_0028syntax_0029"></div>
@@ -656,24 +524,12 @@ directory name in the repository is used.  The rest of the line
 is used as a file name or command-line as appropriate.
 </p>
 
-<hr size="6">
+<hr>
 <div id="commitinfo"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#syntax| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#verifymsg| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#verifymsg|verifymsg]], Previous: [[#syntax|syntax]], Up: [[#commit-files|commit files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Commitinfo"></div>
 ==== Commitinfo ====
 <div id="index-commitinfo"></div>
@@ -733,24 +589,12 @@ message, and command line options specified, is not available
 to the command.
 </p>
 
-<hr size="6">
+<hr>
 <div id="verifymsg"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#commitinfo| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#editinfo| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#editinfo|editinfo]], Previous: [[#commitinfo|commitinfo]], Up: [[#commit-files|commit files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Verifying-log-messages"></div>
 ==== Verifying log messages ====
 <div id="index-verifymsg-_0028admin-file_0029"></div>
@@ -888,24 +732,12 @@ fi
 
 
 
-<hr size="6">
+<hr>
 <div id="editinfo"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#verifymsg| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#editinfo-example| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#loginfo|loginfo]], Previous: [[#verifymsg|verifymsg]], Up: [[#commit-files|commit files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Editinfo"></div>
 ==== Editinfo ====
 <div id="index-editinfo-_0028admin-file_0029"></div>
@@ -968,24 +800,12 @@ There is no good workaround for this; use
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#editinfo-example| editinfo example]]::<nowiki>            Editinfo example
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="editinfo-example"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#editinfo| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#loginfo| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#editinfo| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Up: [[#editinfo|editinfo]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Editinfo-example"></div>
 ===== Editinfo example =====
 
@@ -1034,24 +854,12 @@ done
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>^tc     /usr/cvssupport/tc.template
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="loginfo"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#editinfo-example| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#loginfo-example| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#editinfo|editinfo]], Up: [[#commit-files|commit files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Loginfo"></div>
 ==== Loginfo ====
 <div id="index-loginfo-_0028admin-file_0029"></div>
@@ -1135,24 +943,12 @@ name of the repository will be generated.
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#loginfo-example| loginfo example]]::<nowiki>             Loginfo example
 </nowiki>&bull;[[#Keeping-a-checked-out-copy| Keeping a checked out copy]]::<nowiki>  Updating a tree on every checkin
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="loginfo-example"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#loginfo| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#loginfo| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Keeping-a-checked-out-copy|Keeping a checked out copy]], Up: [[#loginfo|loginfo]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Loginfo-example"></div>
 ===== Loginfo example =====
 
@@ -1180,24 +976,12 @@ like this:
  cat) &gt;&gt; $1
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Keeping-a-checked-out-copy"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#loginfo-example| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#rcsinfo| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#loginfo| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#loginfo-example|loginfo example]], Up: [[#loginfo|loginfo]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Keeping-a-checked-out-copy-1"></div>
 ===== Keeping a checked out copy =====
 
@@ -1227,24 +1011,12 @@ Here is an example for unix (this should all be on one line):
 starting with <code>cyclic-pages</code> to update the checked
 out tree in &lsquo;<tt>/u/www/local-docs</tt>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <div id="rcsinfo"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#cvsignore| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#cvsignore|cvsignore]], Previous: [[#commit-files|commit files]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Rcsinfo"></div>
 === Rcsinfo ===
 <div id="index-rcsinfo-_0028admin-file_0029"></div>
@@ -1290,24 +1062,12 @@ In versions of <small>CVS</small> prior to version 1.12, the
 client may be used and the &lsquo;<tt>CVS/Template</tt>&rsquo; will
 be updated from the server.
 </p>
-<hr size="6">
+<hr>
 <div id="cvsignore"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#rcsinfo| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#checkoutlist| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#checkoutlist|checkoutlist]], Previous: [[#rcsinfo|rcsinfo]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Ignoring-files-via-cvsignore"></div>
 === Ignoring files via cvsignore ===
 <div id="index-cvsignore-_0028admin-file_0029_002c-global"></div>
@@ -1403,24 +1163,12 @@ named &lsquo;<tt>foo bar</tt>&rsquo; (it also matches &lsquo;<tt>fooxbar</tt>&rs
 and the like).  Also note that there is currently no
 way to specify comments.
 </p>
-<hr size="6">
+<hr>
 <div id="checkoutlist"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#cvsignore| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#history-file| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#history-file|history file]], Previous: [[#cvsignore|cvsignore]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="The-checkoutlist-file"></div>
 === The checkoutlist file ===
 <div id="index-checkoutlist"></div>
@@ -1464,24 +1212,12 @@ recommended for security reasons.
 more general context than the one provided by
 &lsquo;<tt>checkoutlist</tt>&rsquo;, see [[#Keeping-a-checked-out-copy|Keeping a checked out copy]].
 </p>
-<hr size="6">
+<hr>
 <div id="history-file"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#checkoutlist| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Variables| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Variables|Variables]], Previous: [[#checkoutlist|checkoutlist]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="The-history-file"></div>
 === The history file ===
 <div id="index-History-file"></div>
@@ -1500,24 +1236,12 @@ code, but generally programs should use the <code>cvs
 history</code> command to access it anyway, in case the
 format changes with future releases of <small>CVS</small>.
 </p>
-<hr size="6">
+<hr>
 <div id="Variables"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#history-file| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#config| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#config|config]], Previous: [[#history-file|history file]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Expansions-in-administrative-files"></div>
 === Expansions in administrative files ===
 <div id="index-Internal-variables"></div>
@@ -1648,24 +1372,12 @@ Do not confuse this with the internal variable of the same name.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="config"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Variables| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Variables|Variables]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="The-CVSROOT_002fconfig-configuration-file"></div>
 === The CVSROOT/config configuration file ===
 
@@ -1806,18 +1518,9 @@ replace the log message, use &lsquo;<samp>UserAdminOptions=klum</samp>&rsquo;.
 </p></dd>
 </dl>
 
-<hr size="6">
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<hr>
+<div class="node">
+<p>
+Previous: [[#Variables|Variables]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

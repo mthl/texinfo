@@ -58,7 +58,7 @@ complete list of who has contributed to this manual see
 the file &lsquo;<tt>doc/ChangeLog</tt>&rsquo; in the <small>CVS</small> source
 distribution.
 </p>
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Troubleshooting#Troubleshooting  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Dealing with bugs in CVS or this manual#BUGS  &gt;&gt; ]|</td>

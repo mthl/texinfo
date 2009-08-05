@@ -62,7 +62,7 @@ sub T2H_NOHEAD_one_section($$)
     my $fh = shift;
     my $element = shift;
     main::print_lines($fh);
-    print $fh "$SMALL_RULE\n" if ($SMALL_RULE ne '');
+    print $fh "$DEFAULT_RULE\n" if ($DEFAULT_RULE ne '');
     &$print_page_foot($fh);
 }
 
@@ -78,7 +78,7 @@ sub T2H_NOHEAD_one_section($$)
 sub T2H_NOHEAD_print_Top_footer($$)
 {
     my $fh = shift;
-    print $fh "$SMALL_RULE\n" if ($SMALL_RULE ne '');
+    print $fh "$DEFAULT_RULE\n" if ($DEFAULT_RULE ne '');
 }
 
 ###################################################################
@@ -94,7 +94,7 @@ sub T2H_NOHEAD_print_misc_header
 sub T2H_NOHEAD_print_misc_footer
 {
     my $fh = shift;
-    print $fh "$SMALL_RULE\n" if ($SMALL_RULE ne '');
+    print $fh "$DEFAULT_RULE\n" if ($DEFAULT_RULE ne '');
     if (get_conf('SPLIT'))
     {
         &$print_page_foot($fh);
@@ -113,7 +113,7 @@ sub T2H_NOHEAD_print_misc
 sub T2H_NOHEAD_end_section($)
 {
     my $fh = shift;
-    print $fh "$BIG_RULE\n" if ($BIG_RULE ne '');
+    print $fh "$DEFAULT_RULE\n" if ($DEFAULT_RULE ne '');
 }
 
 ###################################################################

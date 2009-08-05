@@ -40,7 +40,7 @@ reference to <small>CVS</small> commands, see section [cvs: Quick reference to C
 </nowiki>&bull;[[#release| release]]::<nowiki>                     Indicate that a directory is no longer in use
 </nowiki>&bull;[[#update| update]]::<nowiki>                      Bring work tree in sync with repository
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Structure"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt; ]]|</td>
@@ -107,7 +107,7 @@ is accepted by more commands.  In other words, do not
 take the above categorization too seriously.  Look at
 the documentation instead.
 </p>
-<hr size="6">
+<hr>
 <div id="Exit-status"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Structure| &lt; ]]|</td>
@@ -148,7 +148,7 @@ way to detect errors, in the future it is possible that
 <code>cvs diff</code> will be changed to behave like the
 other <small>CVS</small> commands.
 </p>
-<hr size="6">
+<hr>
 <div id="g_t_007e_002f_002ecvsrc"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Exit-status| &lt; ]]|</td>
@@ -227,7 +227,7 @@ example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 
 <p>causes <small>CVS</small> to use compression level 6.
 </p>
-<hr size="6">
+<hr>
 <div id="Global-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#g_t_007e_002f_002ecvsrc| &lt; ]]|</td>
@@ -430,7 +430,7 @@ Only has an effect on the <small>CVS</small> client.
 </dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="Common-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Global-options| &lt; ]]|</td>
@@ -688,7 +688,7 @@ and <code>update</code>.
 </dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="admin"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Common-options| &lt; ]]|</td>
@@ -746,7 +746,7 @@ can run <code>cvs admin</code>.
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#admin-options| admin options]]::<nowiki>               admin options
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="admin-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#admin| &lt; ]]|</td>
@@ -1097,7 +1097,7 @@ this option has never done anything useful.
 </dl>
 
 
-<hr size="6">
+<hr>
 <div id="checkout"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#admin-options| &lt; ]]|</td>
@@ -1192,7 +1192,7 @@ see [[#update-output|update output]].
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#checkout-options| checkout options]]::<nowiki>            checkout options
 </nowiki>&bull;[[#checkout-examples| checkout examples]]::<nowiki>           checkout examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="checkout-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkout| &lt; ]]|</td>
@@ -1354,7 +1354,7 @@ modules file to set the module status.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="checkout-examples"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkout-options| &lt; ]]|</td>
@@ -1386,7 +1386,7 @@ ago:
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -D yesterday tc
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="commit"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkout-examples| &lt; ]]|</td>
@@ -1457,7 +1457,7 @@ that the argument file contains the log message.
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#commit-options| commit options]]::<nowiki>              commit options
 </nowiki>&bull;[[#commit-examples| commit examples]]::<nowiki>             commit examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="commit-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit| &lt; ]]|</td>
@@ -1533,7 +1533,7 @@ invoking an editor.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="commit-examples"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit-options| &lt; ]]|</td>
@@ -1555,7 +1555,7 @@ invoking an editor.
 ==== commit examples ====
 
 
-<hr size="6">
+<hr>
 <div id="Committing-to-a-branch"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit-examples| &lt; ]]|</td>
@@ -1599,7 +1599,7 @@ $ cvs commit
 <p>This works automatically since the &lsquo;<samp>-r</samp>&rsquo; option is
 sticky.
 </p>
-<hr size="6">
+<hr>
 <div id="Creating-the-branch-after-editing"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Committing-to-a-branch| &lt; ]]|</td>
@@ -1659,7 +1659,7 @@ would simply do
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -r EXPR1 whatever_module
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="diff"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Creating-the-branch-after-editing| &lt; ]]|</td>
@@ -1705,7 +1705,7 @@ under them will be compared.
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#diff-options| diff options]]::<nowiki>                diff options
 </nowiki>&bull;[[#diff-examples| diff examples]]::<nowiki>               diff examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="diff-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#diff| &lt; ]]|</td>
@@ -2045,7 +2045,7 @@ context.
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Line-group-formats| Line group formats]]::<nowiki>          Line group formats
 </nowiki>&bull;[[#Line-formats| Line formats]]::<nowiki>                Line formats
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Line-group-formats"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#diff-options| &lt; ]]|</td>
@@ -2248,7 +2248,7 @@ otherwise.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="Line-formats"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Line-group-formats| &lt; ]]|</td>
@@ -2380,7 +2380,7 @@ to get fine control over <code>diff</code>&rsquo;s output.
    myfile
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="diff-examples"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Line-formats| &lt; ]]|</td>
@@ -2431,7 +2431,7 @@ not yet been committed will be printed.
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs diff -u | less
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="export"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#diff-examples| &lt; ]]|</td>
@@ -2485,7 +2485,7 @@ use &lsquo;<samp>-kv</samp>&rsquo;.
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#export-options| export options]]::<nowiki>              export options
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="export-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#export| &lt; ]]|</td>
@@ -2560,7 +2560,7 @@ See section [[#checkout-options|checkout options]], for complete details on how
 </dl>
 
 
-<hr size="6">
+<hr>
 <div id="history"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#export-options| &lt; ]]|</td>
@@ -2606,7 +2606,7 @@ normal use inside <small>CVS</small> (see section [[#Common-options|Common comma
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#history-options| history options]]::<nowiki>             history options
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="history-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#history| &lt; ]]|</td>
@@ -2793,7 +2793,7 @@ time zone instead of UTC.
 </dl>
 
 
-<hr size="6">
+<hr>
 <div id="import"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#history-options| &lt; ]]|</td>
@@ -2881,7 +2881,7 @@ directory (see section [cvs: Overview#Getting-the-source Getting the source]).
 </nowiki>&bull;[[#import-output| import output]]::<nowiki>               import output
 </nowiki>&bull;[[#import-examples| import examples]]::<nowiki>             import examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="import-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import| &lt; ]]|</td>
@@ -2948,7 +2948,7 @@ file. See section [cvs: Reference manual for Administrative files#Wrappers The c
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="import-output"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import-options| &lt; ]]|</td>
@@ -3004,7 +3004,7 @@ see section [cvs: Reference manual for Administrative files#modules The modules 
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="import-examples"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import-output| &lt; ]]|</td>
@@ -3027,7 +3027,7 @@ see section [cvs: Reference manual for Administrative files#modules The modules 
 
 <p>See [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources], and [cvs: Starting a project with CVS#From-files Creating a directory tree from a number of files].
 </p>
-<hr size="6">
+<hr>
 <div id="log"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#import-examples| &lt; ]]|</td>
@@ -3082,7 +3082,7 @@ with the normal use inside <small>CVS</small> (see section [[#Common-options|Com
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#log-options| log options]]::<nowiki>                 log options
 </nowiki>&bull;[[#log-examples| log examples]]::<nowiki>                log examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="log-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log| &lt; ]]|</td>
@@ -3256,7 +3256,7 @@ selected with the options &lsquo;<samp>-d</samp>&rsquo;, &lsquo;<samp>-s</samp>&
 &lsquo;<samp>-w</samp>&rsquo;, intersected with the union of the revisions
 selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <div id="log-examples"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log-options| &lt; ]]|</td>
@@ -3279,7 +3279,7 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 
 <p>Contributed examples are gratefully accepted.
 </p>
-<hr size="6">
+<hr>
 <div id="rdiff"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#log-examples| &lt; ]]|</td>
@@ -3336,7 +3336,7 @@ the files that are located in other directories.
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#rdiff-options| rdiff options]]::<nowiki>               rdiff options
 </nowiki>&bull;[[#rdiff-examples| rdiff examples]]::<nowiki>              rdiff examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="rdiff-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rdiff| &lt; ]]|</td>
@@ -3423,7 +3423,7 @@ way that <small>RCS</small> version 5 does.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="rdiff-examples"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rdiff-options| &lt; ]]|</td>
@@ -3466,7 +3466,7 @@ File foo.c,v changed from revision 1.52.2.3 to 1.52.2.4
 File bar.h,v changed from revision 1.29.2.1 to 1.2
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="release"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rdiff-examples| &lt; ]]|</td>
@@ -3522,7 +3522,7 @@ history log.
 </nowiki>&bull;[[#release-output| release output]]::<nowiki>              release output
 </nowiki>&bull;[[#release-examples| release examples]]::<nowiki>            release examples
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="release-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release| &lt; ]]|</td>
@@ -3561,7 +3561,7 @@ if it is non-empty!</strong>
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="release-output"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release-options| &lt; ]]|</td>
@@ -3623,7 +3623,7 @@ sources, this file will be lost.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="release-examples"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release-output| &lt; ]]|</td>
@@ -3655,7 +3655,7 @@ Are you sure you want to release (and delete) directory `tc': y
 $
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="update"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#release-examples| &lt; ]]|</td>
@@ -3702,7 +3702,7 @@ into any destination revisions specified with <code>-r</code>,
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#update-options| update options]]::<nowiki>              update options
 </nowiki>&bull;[[#update-output| update output]]::<nowiki>               update output
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="update-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#update| &lt; ]]|</td>
@@ -3854,7 +3854,7 @@ date.  An optional date is specified by adding a colon
 </dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="update-output"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#update-options| &lt; ]]|</td>
@@ -3954,7 +3954,7 @@ see section [cvs: Reference manual for Administrative files#cvsignore Ignoring f
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>

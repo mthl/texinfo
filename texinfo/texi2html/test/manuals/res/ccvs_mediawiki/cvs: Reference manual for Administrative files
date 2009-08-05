@@ -43,7 +43,7 @@ file, which defines the modules inside the repository.
 </nowiki>&bull;[[#Variables| Variables]]::<nowiki>                   Various variables are expanded
 </nowiki>&bull;[[#config| config]]::<nowiki>                      Miscellaneous CVS configuration
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="modules"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt; ]]|</td>
@@ -97,7 +97,7 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
 </nowiki>&bull;[[#Module-program-options| Module program options]]::<nowiki>    How the modules &ldquo;program options&rdquo; programs
                               are run. 
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Alias-modules"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#modules| &lt; ]]|</td>
@@ -157,7 +157,7 @@ cvs checkout: Updating first-dir/sdir
 U first-dir/sdir/sfile
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Regular-modules"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Alias-modules| &lt; ]]|</td>
@@ -229,7 +229,7 @@ U regfiles/sfile
 $
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Ampersand-modules"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Regular-modules| &lt; ]]|</td>
@@ -297,7 +297,7 @@ $
 a future release of <small>CVS</small>.
 </p>
 
-<hr size="6">
+<hr>
 <div id="Excluding-directories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Ampersand-modules| &lt; ]]|</td>
@@ -333,7 +333,7 @@ before the name of each directory to be excluded.
 out everything in &lsquo;<samp>first-dir</samp>&rsquo; except any files in
 the subdirectory &lsquo;<samp>first-dir/sdir</samp>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <div id="Module-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Excluding-directories| &lt; ]]|</td>
@@ -413,7 +413,7 @@ that taginfo is a better solution (see section [cvs: History browsing#user_002dd
 &ldquo;program options&rdquo; programs are run.
 </p>
 
-<hr size="6">
+<hr>
 <div id="Module-program-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Module-options| &lt; ]]|</td>
@@ -454,7 +454,7 @@ found there, or alternatively searched for in the path if not.
 completed.
 </p>
 
-<hr size="6">
+<hr>
 <div id="Wrappers"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Module-program-options| &lt; ]]|</td>
@@ -527,7 +527,7 @@ directory, treating files whose name ends in
 </nowiki></pre></td></tr></table>
 
 
-<hr size="6">
+<hr>
 <div id="commit-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Wrappers| &lt; ]]|</td>
@@ -601,7 +601,7 @@ imagination is the limit!
                                 (obsolete)
 </nowiki>&bull;[[#loginfo| loginfo]]::<nowiki>                     Where should log messages be sent?
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="syntax"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commit-files| &lt; ]]|</td>
@@ -656,7 +656,7 @@ directory name in the repository is used.  The rest of the line
 is used as a file name or command-line as appropriate.
 </p>
 
-<hr size="6">
+<hr>
 <div id="commitinfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#syntax| &lt; ]]|</td>
@@ -733,7 +733,7 @@ message, and command line options specified, is not available
 to the command.
 </p>
 
-<hr size="6">
+<hr>
 <div id="verifymsg"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#commitinfo| &lt; ]]|</td>
@@ -888,7 +888,7 @@ fi
 
 
 
-<hr size="6">
+<hr>
 <div id="editinfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#verifymsg| &lt; ]]|</td>
@@ -968,7 +968,7 @@ There is no good workaround for this; use
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#editinfo-example| editinfo example]]::<nowiki>            Editinfo example
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="editinfo-example"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#editinfo| &lt; ]]|</td>
@@ -1034,7 +1034,7 @@ done
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>^tc     /usr/cvssupport/tc.template
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="loginfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#editinfo-example| &lt; ]]|</td>
@@ -1135,7 +1135,7 @@ name of the repository will be generated.
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#loginfo-example| loginfo example]]::<nowiki>             Loginfo example
 </nowiki>&bull;[[#Keeping-a-checked-out-copy| Keeping a checked out copy]]::<nowiki>  Updating a tree on every checkin
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="loginfo-example"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#loginfo| &lt; ]]|</td>
@@ -1180,7 +1180,7 @@ like this:
  cat) &gt;&gt; $1
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Keeping-a-checked-out-copy"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#loginfo-example| &lt; ]]|</td>
@@ -1227,7 +1227,7 @@ Here is an example for unix (this should all be on one line):
 starting with <code>cyclic-pages</code> to update the checked
 out tree in &lsquo;<tt>/u/www/local-docs</tt>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <div id="rcsinfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &lt; ]]|</td>
@@ -1290,7 +1290,7 @@ In versions of <small>CVS</small> prior to version 1.12, the
 client may be used and the &lsquo;<tt>CVS/Template</tt>&rsquo; will
 be updated from the server.
 </p>
-<hr size="6">
+<hr>
 <div id="cvsignore"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#rcsinfo| &lt; ]]|</td>
@@ -1403,7 +1403,7 @@ named &lsquo;<tt>foo bar</tt>&rsquo; (it also matches &lsquo;<tt>fooxbar</tt>&rs
 and the like).  Also note that there is currently no
 way to specify comments.
 </p>
-<hr size="6">
+<hr>
 <div id="checkoutlist"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#cvsignore| &lt; ]]|</td>
@@ -1464,7 +1464,7 @@ recommended for security reasons.
 more general context than the one provided by
 &lsquo;<tt>checkoutlist</tt>&rsquo;, see [[#Keeping-a-checked-out-copy|Keeping a checked out copy]].
 </p>
-<hr size="6">
+<hr>
 <div id="history-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#checkoutlist| &lt; ]]|</td>
@@ -1500,7 +1500,7 @@ code, but generally programs should use the <code>cvs
 history</code> command to access it anyway, in case the
 format changes with future releases of <small>CVS</small>.
 </p>
-<hr size="6">
+<hr>
 <div id="Variables"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#history-file| &lt; ]]|</td>
@@ -1648,7 +1648,7 @@ Do not confuse this with the internal variable of the same name.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <div id="config"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Variables| &lt; ]]|</td>
@@ -1806,7 +1806,7 @@ replace the log message, use &lsquo;<samp>UserAdminOptions=klum</samp>&rsquo;.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>

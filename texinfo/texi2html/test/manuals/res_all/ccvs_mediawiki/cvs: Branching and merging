@@ -1,20 +1,8 @@
 <div id="Branching-and-merging"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Revisions#Sticky-tags  &lt; ]|</td>
-<td valign="middle" align="left">|[[#Branches-motivation| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Revisions#Revisions  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [cvs: Recursive behavior#Recursive-behavior Recursive behavior], Previous: [cvs: Revisions#Revisions Revisions], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Branching-and-merging-1"></div>
 == Branching and merging ==
 <div id="index-Branching"></div>
@@ -49,24 +37,12 @@ copy the changes onto another branch.
 </nowiki>&bull;[[#Merging-adds-and-removals| Merging adds and removals]]::<nowiki>   What if files are added or removed?
 </nowiki>&bull;[[#Merging-and-keywords| Merging and keywords]]::<nowiki>        Avoiding conflicts due to keyword substitution
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="Branches-motivation"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Creating-a-branch| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Creating-a-branch|Creating a branch]], Up: [[#Branching-and-merging|Branching and merging]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="What-branches-are-good-for"></div>
 === What branches are good for ===
 <div id="index-Branches-motivation"></div>
@@ -89,24 +65,12 @@ modifications to the branch without disturbing the main trunk.  When the
 modifications are finished you can elect to either incorporate them on
 the main trunk, or leave them on the branch.
 </p>
-<hr size="6">
+<hr>
 <div id="Creating-a-branch"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Branches-motivation| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Accessing-branches| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Accessing-branches|Accessing branches]], Previous: [[#Branches-motivation|Branches motivation]], Up: [[#Branching-and-merging|Branching and merging]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Creating-a-branch-1"></div>
 === Creating a branch ===
 <div id="index-Creating-a-branch"></div>
@@ -157,24 +121,12 @@ branch &ndash; named &lsquo;<samp>rel-1-0-patches</samp>&rsquo; &ndash; in modul
 &lsquo;<samp>tc</samp>&rsquo;, rooted in the revision tree at the point tagged
 by &lsquo;<samp>rel-1-0</samp>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <div id="Accessing-branches"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Creating-a-branch| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Branches-and-revisions| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Branches-and-revisions|Branches and revisions]], Previous: [[#Creating-a-branch|Creating a branch]], Up: [[#Branching-and-merging|Branching and merging]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Accessing-branches-1"></div>
 === Accessing branches ===
 <div id="index-Check-out-a-branch"></div>
@@ -272,24 +224,12 @@ that &lsquo;<samp>driver.c</samp>&rsquo; had been through more changes than
 <p>See [[#Branches-and-revisions|Branches and revisions]] for details about how
 branch numbers are constructed.
 </p>
-<hr size="6">
+<hr>
 <div id="Branches-and-revisions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Accessing-branches| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Magic-branch-numbers| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Magic-branch-numbers|Magic branch numbers]], Previous: [[#Accessing-branches|Accessing branches]], Up: [[#Branching-and-merging|Branching and merging]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Branches-and-revisions-1"></div>
 === Branches and revisions ===
 <div id="index-Branch-number-1"></div>
@@ -356,24 +296,12 @@ numbered 6.4.2.  All branch numbers ending in a zero
 (see section [[#Magic-branch-numbers|Magic branch numbers]]).  The branch 1.1.1 has a
 special meaning.  See section [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources].
 </p>
-<hr size="6">
+<hr>
 <div id="Magic-branch-numbers"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Branches-and-revisions| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Merging-a-branch| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Merging-a-branch|Merging a branch]], Previous: [[#Branches-and-revisions|Branches and revisions]], Up: [[#Branching-and-merging|Branching and merging]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Magic-branch-numbers-1"></div>
 === Magic branch numbers ===
 
@@ -421,24 +349,12 @@ committed on the branch.  Be very careful so that you
 do not assign the tag to the wrong number.  (There is
 no way to see how the tag was assigned yesterday).
 </p>
-<hr size="6">
+<hr>
 <div id="Merging-a-branch"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Magic-branch-numbers| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Merging-more-than-once| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Merging-more-than-once|Merging more than once]], Previous: [[#Magic-branch-numbers|Magic branch numbers]], Up: [[#Branching-and-merging|Branching and merging]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Merging-an-entire-branch"></div>
 === Merging an entire branch ===
 <div id="index-Merging-a-branch"></div>
@@ -501,24 +417,12 @@ $ cvs commit -m &quot;Included R1fix&quot;
 <p>It should be noted that <code>update -j <var>tagname</var></code> will also work but may
 not produce the desired result.  See section [[#Merging-adds-and-removals|Merging can add or remove files]], for more.
 </p>
-<hr size="6">
+<hr>
 <div id="Merging-more-than-once"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Merging-a-branch| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Merging-two-revisions| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Merging-two-revisions|Merging two revisions]], Previous: [[#Merging-a-branch|Merging a branch]], Up: [[#Branching-and-merging|Branching and merging]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Merging-from-a-branch-several-times"></div>
 === Merging from a branch several times ===
 
@@ -582,24 +486,12 @@ the trunk, and then use that tag for subsequent merges:
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Merging-two-revisions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Merging-more-than-once| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Merging-adds-and-removals| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Merging-adds-and-removals|Merging adds and removals]], Previous: [[#Merging-more-than-once|Merging more than once]], Up: [[#Branching-and-merging|Branching and merging]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Merging-differences-between-any-two-revisions"></div>
 === Merging differences between any two revisions ===
 <div id="index-Merging-two-revisions"></div>
@@ -645,24 +537,12 @@ done
 $
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="Merging-adds-and-removals"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Merging-two-revisions| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Merging-and-keywords| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#Merging-and-keywords|Merging and keywords]], Previous: [[#Merging-two-revisions|Merging two revisions]], Up: [[#Branching-and-merging|Branching and merging]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Merging-can-add-or-remove-files"></div>
 === Merging can add or remove files ===
 
@@ -695,24 +575,12 @@ a static tag has been attached to a dead revision manually.  Use the branch tag
 to merge all changes from the branch or use two static tags as merge endpoints
 to be sure that all intended changes are propagated in the merge.
 </p>
-<hr size="6">
+<hr>
 <div id="Merging-and-keywords"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Merging-adds-and-removals| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#Merging-adds-and-removals|Merging adds and removals]], Up: [[#Branching-and-merging|Branching and merging]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Merging-and-keywords-1"></div>
 === Merging and keywords ===
 <div id="index-Merging_002c-and-keyword-substitution"></div>
@@ -815,18 +683,9 @@ modes.  You can now safely merge using &lsquo;<samp>-kk</samp>&rsquo; to avoid s
 on lines containing RCS keywords, even when your repository contains
 binary files.
 </p>
-<hr size="6">
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<hr>
+<div class="node">
+<p>
+Previous: [[#Merging-adds-and-removals|Merging adds and removals]], Up: [[#Branching-and-merging|Branching and merging]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

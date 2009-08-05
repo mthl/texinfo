@@ -1,20 +1,8 @@
 <div id="History-browsing"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Moving-directories  &lt; ]|</td>
-<td valign="middle" align="left">|[[#log-messages| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [cvs: Handling binary files#Binary-files Binary files], Previous: [cvs: Adding, removing, and renaming files and directories#Adding-and-removing Adding and removing], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="History-browsing-1"></div>
 == History browsing ==
 <div id="index-History-browsing"></div>
@@ -32,24 +20,12 @@ through the history.
 </nowiki>&bull;[[#user_002ddefined-logging| user-defined logging]]::<nowiki>        User-defined logging
 </nowiki>&bull;[[#annotate| annotate]]::<nowiki>                    What revision modified each line of a file?
 </nowiki></pre>
-<hr size="6">
+<hr>
 <div id="log-messages"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#History-browsing| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#history-database| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#history-database|history database]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Log-messages"></div>
 === Log messages ===
 
@@ -59,24 +35,12 @@ through the history.
 specified for every revision which has been committed,
 use the <code>cvs log</code> command (see section [cvs: Guide to CVS commands#log log&mdash;Print out log information for files]).
 </p>
-<hr size="6">
+<hr>
 <div id="history-database"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#log-messages| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#user_002ddefined-logging| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#user_002ddefined-logging|user-defined logging]], Previous: [[#log-messages|log messages]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="The-history-database"></div>
 === The history database ===
 
@@ -90,24 +54,12 @@ history</code> command (see section [cvs: Guide to CVS commands#history history&
 (see section [cvs: Reference manual for Administrative files#config The CVSROOT/config configuration file]).
 </p>
 
-<hr size="6">
+<hr>
 <div id="user_002ddefined-logging"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#history-database| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#annotate| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Next: [[#annotate|annotate]], Previous: [[#history-database|history database]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="User_002ddefined-logging"></div>
 === User-defined logging ===
 
@@ -156,24 +108,12 @@ following script:
 echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 </nowiki></pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <div id="annotate"></div>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#user_002ddefined-logging| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<div class="node">
+<p>
+Previous: [[#user_002ddefined-logging|user-defined logging]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 <div id="Annotate-command"></div>
 === Annotate command ===
 <div id="index-annotate-_0028subcommand_0029"></div>
@@ -209,18 +149,9 @@ and revisions to annotate.  The options are described
 in more detail there and in [cvs: Guide to CVS commands#Common-options Common command options].
 </p>
 
-<hr size="6">
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Index#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
-</tr></table>
+<hr>
+<div class="node">
+<p>
+Previous: [[#user_002ddefined-logging|user-defined logging]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+</div>
 This document was generated by <em>a tester</em> on <em>a sunny day</em> using [http://www.nongnu.org/texi2html/ <em>texi2html</em>].

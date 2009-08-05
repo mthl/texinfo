@@ -84,7 +84,7 @@ in the larger process of developing and maintaining programs.
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Compilation"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Running" title="Previous section in reading order"> &lt; </a>]</td>
@@ -213,7 +213,7 @@ a prompt.  Here&rsquo;s how to do it in <code>csh</code>:
 <table><tr><td>&nbsp;</td><td><pre class="example">if ($?prompt) set prompt = ...
 </pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <a name="Lisp-Modes"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Compilation" title="Previous section in reading order"> &lt; </a>]</td>
@@ -267,7 +267,7 @@ This mode combines the special features of Lisp mode and Shell mode
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <a name="Lisp-Libraries"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Lisp-Modes" title="Previous section in reading order"> &lt; </a>]</td>
@@ -303,7 +303,7 @@ Emacs-Lisp mode (see section <a href="#Lisp-Modes">Major Modes for Lisp</a>).
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Loading"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Lisp-Libraries" title="Previous section in reading order"> &lt; </a>]</td>
@@ -420,7 +420,7 @@ name of a library, with no directory specified, since that is how load
 is normally called.  An error in <code>forms</code> does not undo the load, but
 it does prevent execution of the rest of the <code>forms</code>.
 </p>
-<hr size="6">
+<hr>
 <a name="Compiling-Libraries"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Loading" title="Previous section in reading order"> &lt; </a>]</td>
@@ -515,7 +515,7 @@ argument is a function name.  It displays the byte-compiled code in a help
 window in symbolic form, one instruction per line.  If the instruction
 refers to a variable or constant, that is shown, too.
 </p>
-<hr size="6">
+<hr>
 <a name="Mocklisp"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Compiling-Libraries" title="Previous section in reading order"> &lt; </a>]</td>
@@ -548,7 +548,7 @@ The reason is that converted Mocklisp code uses some special Lisp features
 to deal with Mocklisp&rsquo;s incompatible ideas of how arguments are evaluated
 and which values signify &ldquo;true&rdquo; or &ldquo;false&rdquo;.
 </p>
-<hr size="6">
+<hr>
 <a name="Lisp-Eval"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Mocklisp" title="Previous section in reading order"> &lt; </a>]</td>
@@ -646,7 +646,7 @@ Lisp code that you are just ready to test.  After finding and fixing a
 bug, use <kbd>C-M-x</kbd> on each function that you change, to keep the Lisp
 world in step with the source file.
 </p>
-<hr size="6">
+<hr>
 <a name="Lisp-Debug"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Lisp-Eval" title="Previous section in reading order"> &lt; </a>]</td>
@@ -779,7 +779,7 @@ the debugger&rsquo;s return value is returned as the value of <code>signal</code
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <a name="Lisp-Interaction"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Lisp-Debug" title="Previous section in reading order"> &lt; </a>]</td>
@@ -824,7 +824,7 @@ typescript is the most useful thing I can think of for the initial buffer
 to do.  <kbd>M-x lisp-interaction-mode</kbd> will put any buffer in Lisp
 Interaction mode.
 </p>
-<hr size="6">
+<hr>
 <a name="External-Lisp"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Lisp-Interaction" title="Previous section in reading order"> &lt; </a>]</td>
@@ -883,7 +883,7 @@ programs to be run in Emacs): in both modes it has the effect of installing
 the function definition that point is in, but the way of doing so is
 different according to where the relevant Lisp environment is found.
 See section <a href="#Lisp-Modes">Major Modes for Lisp</a>.
-</p><hr size="6">
+</p><hr>
 <a name="Packages"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#External-Lisp" title="Previous section in reading order"> &lt; </a>]</td>
@@ -929,7 +929,7 @@ local needs with safe removal of unnecessary code.
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Package-Terminology"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Packages" title="Previous section in reading order"> &lt; </a>]</td>
@@ -971,7 +971,7 @@ will without any loss of functionality.  However, we would recommend
 that you follow this rule of thumb: &quot;When in doubt, don&rsquo;t delete&quot;.
 </li></ul>
 
-<hr size="6">
+<hr>
 <a name="Package-Distributions"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Package-Terminology" title="Previous section in reading order"> &lt; </a>]</td>
@@ -997,7 +997,7 @@ be installed directly into an XEmacs package directory.  Source Packages
 are for developers and include all files necessary for rebuilding
 bytecompiled lisp and creating tarballs for distribution.
 </p>
-<hr size="6">
+<hr>
 <a name="Binary-Packages"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Package-Distributions" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1020,7 +1020,7 @@ bytecompiled lisp and creating tarballs for distribution.
 <p>Binary packages may be installed directly into an XEmacs package
 hierarchy.
 </p>
-<hr size="6">
+<hr>
 <a name="Source-Packages"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Binary-Packages" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1047,7 +1047,7 @@ savings).
 </p>
 <p>Currently, source packages are only available via CVS.  See
 <a href="http://cvs.xemacs.org/">http://cvs.xemacs.org/</a> for details.
-</p><hr size="6">
+</p><hr>
 <a name="Installing-Packages"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Source-Packages" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1083,7 +1083,7 @@ minimal set of Emacs Lisp files, which are in the subdirectory named
 distributed with XEmacs.  Now, to conserve disk space, most
 non-essential packages were made optional.
 </p>
-<hr size="6">
+<hr>
 <a name="Choosing-the-Packages-You-Need"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Installing-Packages" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1141,7 +1141,7 @@ that you need <code>thingatpt</code>, type:
 <p>which will return something like (fsf-compat &quot;1.08&quot;). You can the use
 one of the methods above for installing the package you want.
 </p>
-<hr size="6">
+<hr>
 <a name="XEmacs-and-Installing-Packages"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Choosing-the-Packages-You-Need" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1423,7 +1423,7 @@ to the package.
 <p>Note that the interactive package tools included with XEmacs already do
 this for you.
 </p>
-<hr size="6">
+<hr>
 <a name="Building-Packages"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#XEmacs-and-Installing-Packages" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1475,7 +1475,7 @@ this for you.
 </dl>
 <p>And of course, XEmacs 21.0 or higher.
 </p>
-<hr size="6">
+<hr>
 <a name="What-You-Can-Do-With-Source-Packages"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Building-Packages" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1753,7 +1753,7 @@ and are normally installed in &lsquo;<tt>etc/<var>PACKAGE_NAME</var></tt>&rsquo;
 packages have needs beyond the basic templates.  See &lsquo;<tt>XEmacs.rules</tt>&rsquo;
 or a future revision of this manual for details.
 </p>
-<hr size="6">
+<hr>
 <a name="Available-Packages"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#What-You-Can-Do-With-Source-Packages" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2209,7 +2209,7 @@ buffer.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <a name="Mule-Support-_0028mule_0029"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Available-Packages" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2279,7 +2279,7 @@ separate process running as a dictionary server.
 </dl>
 
 
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_26.html#Abbrevs" title="Next chapter"> &gt;&gt; </a>]</td>

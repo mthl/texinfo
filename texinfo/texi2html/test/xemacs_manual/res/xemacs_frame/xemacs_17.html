@@ -109,7 +109,7 @@ and append to files, and operate on file directories.
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="File-Names"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Files" title="Previous section in reading order"> &lt; </a>]</td>
@@ -230,7 +230,7 @@ is performed for single &lsquo;<samp>$</samp>&rsquo;.  The Lisp function that pe
 substitution is called <code>substitute-in-file-name</code>.  The substitution
 is performed only on filenames read as such using the minibuffer.
 </p>
-<hr size="6">
+<hr>
 <a name="Visiting"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#File-Names" title="Previous section in reading order"> &lt; </a>]</td>
@@ -410,7 +410,7 @@ contain list of functions and calls them all, one by one.  In both cases
 the functions receive no arguments.  Visiting a nonexistent file
 runs the <code>find-file-not-found-hooks</code> first.
 </p>
-<hr size="6">
+<hr>
 <a name="Saving"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Visiting" title="Previous section in reading order"> &lt; </a>]</td>
@@ -552,7 +552,7 @@ all the functions to be called after writing out a buffer to a file.
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Backup"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Saving" title="Previous section in reading order"> &lt; </a>]</td>
@@ -603,7 +603,7 @@ the file again, a new backup file is made by the next save.
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Backup-Names"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Backup" title="Previous section in reading order"> &lt; </a>]</td>
@@ -662,7 +662,7 @@ control the making of backups for that buffer&rsquo;s file.  For example,
 Rmail mode locally sets <code>version-control</code> to <code>never</code> to make sure
 that there is only one backup for an Rmail file.  See section <a href="xemacs_30.html#Locals">Local Variables</a>.
 </p>
-<hr size="6">
+<hr>
 <a name="Backup-Deletion"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Backup-Names" title="Previous section in reading order"> &lt; </a>]</td>
@@ -705,7 +705,7 @@ really be deleted.
 <p>  You can also use Dired&rsquo;s <kbd>.</kbd> (Period) command to delete old versions.
 See section <a href="#Dired">Dired, the Directory Editor</a>.
 </p>
-<hr size="6">
+<hr>
 <a name="Backup-Copying"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Backup-Deletion" title="Previous section in reading order"> &lt; </a>]</td>
@@ -757,7 +757,7 @@ the file being edited has only one name.  If the variable
 <code>backup-by-copying-when-mismatch</code> is non-<code>nil</code>, copying is
 done if renaming would cause the file&rsquo;s owner or group to change.  
 </p>
-<hr size="6">
+<hr>
 <a name="Interlocking"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Backup-Copying" title="Previous section in reading order"> &lt; </a>]</td>
@@ -860,7 +860,7 @@ executable permissions for the file. Use the function
 <var>nmask</var> argument. The <code>umask</code> value is the default protection
 mode for new files.
 </p>
-<hr size="6">
+<hr>
 <a name="Reverting"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Interlocking" title="Previous section in reading order"> &lt; </a>]</td>
@@ -919,7 +919,7 @@ refreshing their contents from the appropriate data.  Buffers created
 randomly with <kbd>C-x b</kbd> cannot be reverted; <code>revert-buffer</code>
 reports an error when asked to do so.
 </p>
-<hr size="6">
+<hr>
 <a name="Auto-Save"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Reverting" title="Previous section in reading order"> &lt; </a>]</td>
@@ -964,7 +964,7 @@ typing.
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Auto-Save-Files"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Auto-Save" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1018,7 +1018,7 @@ buffer.  To inhibit the deletion, set the variable
 name with <kbd>C-x C-w</kbd> or <code>set-visited-file-name</code> renames any
 auto-save file to correspond to the new visited name.
 </p>
-<hr size="6">
+<hr>
 <a name="Auto-Save-Control"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Auto-Save-Files" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1076,7 +1076,7 @@ buffer.
 </p>
 <p>For this variable to have any effect, you must do <code>(require 'timer)</code>.
 </p>
-<hr size="6">
+<hr>
 <a name="Recover"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Auto-Save-Control" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1121,7 +1121,7 @@ from a past session.  If you save the data in the visited file and
 then go on to make new changes, turn auto-saving back on
 with <kbd>M-x auto-save-mode</kbd>.
 </p>
-<hr size="6">
+<hr>
 <a name="Version-Control"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Recover" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1188,7 +1188,7 @@ using.
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Concepts-of-VC"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Version-Control" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1246,7 +1246,7 @@ can do both of them with a single Emacs command: <kbd>C-x C-q</kbd>
 <p>  A <em>snapshot</em> is a coherent collection of versions of the various
 files that make up a program.  See section <a href="#Snapshots">Snapshots</a>.
 </p>
-<hr size="6">
+<hr>
 <a name="Editing-with-VC"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Concepts-of-VC" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1396,7 +1396,7 @@ command that <kbd>C-x C-q</kbd> uses to do the &ldquo;real work&rdquo; when the 
 file uses version control.  When used for checkin, and given a prefix
 argument, it reads the version number with the minibuffer.
 </p>
-<hr size="6">
+<hr>
 <a name="Variables-for-Check_002din_002fout"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Editing-with-VC" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1455,7 +1455,7 @@ programs by setting the variable <code>vc-path</code>.  These directories
 are searched before the usual search path.  The proper result usually
 happens automatically.
 </p>
-<hr size="6">
+<hr>
 <a name="Log-Entries"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Variables-for-Check_002din_002fout" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1504,7 +1504,7 @@ the minibuffer).
 mode, which involves running two hooks: <code>text-mode-hook</code> and
 <code>vc-log-mode-hook</code>.
 </p>
-<hr size="6">
+<hr>
 <a name="Change-Logs-and-VC"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Log-Entries" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1618,7 +1618,7 @@ For &lsquo;<tt>vc-hooks.el</tt>&rsquo;:
 comments, you can log the change with an entry beginning with &lsquo;<samp>#</samp>&rsquo;
 to avoid putting such trivia into &lsquo;<tt>ChangeLog</tt>&rsquo;.
 </p>
-<hr size="6">
+<hr>
 <a name="Old-Versions"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Change-Logs-and-VC" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1690,7 +1690,7 @@ new versions.  This is because one or both versions normally do not
 exist as files.  They exist only in the records of the master file.
 See section <a href="#Comparing-Files">Comparing Files</a>, for more information about <kbd>M-x diff</kbd>.
 </p>
-<hr size="6">
+<hr>
 <a name="VC-Status"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Old-Versions" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1744,7 +1744,7 @@ text for all the files being checked in.  This can be convenient for
 registering or checking in several files at once, as part of the same
 change.
 </p>
-<hr size="6">
+<hr>
 <a name="Renaming-and-VC"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#VC-Status" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1776,7 +1776,7 @@ snapshot thus modified may not completely work (see section <a href="#Snapshot-C
 <p>  You cannot use <code>vc-rename-file</code> on a file that is locked by
 someone else.
 </p>
-<hr size="6">
+<hr>
 <a name="Snapshots"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Renaming-and-VC" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1810,7 +1810,7 @@ system that is ready for distribution to users.
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Making-Snapshots"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Snapshots" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1866,7 +1866,7 @@ you need not hesitate to create snapshots whenever they are useful.
 snapshot against the current files, or two snapshots against each other,
 or a snapshot against a named version.
 </p>
-<hr size="6">
+<hr>
 <a name="Snapshot-Caveats"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Making-Snapshots" title="Previous section in reading order"> &lt; </a>]</td>
@@ -1920,7 +1920,7 @@ retrieve an old snapshot, the renamed file is retrieved under its new
 name, which is not the name that the makefile expects.  So the program
 won&rsquo;t really work as retrieved.
 </p>
-<hr size="6">
+<hr>
 <a name="Version-Headers"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Snapshot-Caveats" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2009,7 +2009,7 @@ static char vcid[] = &quot;<var>string</var>&quot;;
 #endif /* lint */
 </pre></td></tr></table>
 
-<hr size="6">
+<hr>
 <a name="ListDir"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Version-Headers" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2086,7 +2086,7 @@ string should start with &lsquo;&lsquo;<samp>^</samp>&rsquo;&rsquo;.
 via absolute symbolic links.  Make <code>TO</code> the name of the link, and
 <code>FROM</code> the name it is linked to.
 </p>
-<hr size="6">
+<hr>
 <a name="Comparing-Files"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#ListDir" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2143,7 +2143,7 @@ the command is finished.  For more information about windows in Emacs,
 whitespace.  If the variable <code>compare-ignore-case</code> is
 non-<code>nil</code>, it ignores differences in case as well.
 </p>
-<hr size="6">
+<hr>
 <a name="Dired"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Comparing-Files" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2182,7 +2182,7 @@ buffer and special Dired commands to operate on the files.
 </td></tr>
 </table>
 
-<hr size="6">
+<hr>
 <a name="Dired-Enter"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Dired" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2221,7 +2221,7 @@ used as an argument to <code>ls</code> in making the directory; this string
 <p>  To display the Dired buffer in another window rather than in the selected
 window, use <kbd>C-x 4 d</kbd> (<code>dired-other-window)</code> instead of <kbd>C-x d</kbd>.
 </p>
-<hr size="6">
+<hr>
 <a name="Dired-Edit"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Dired-Enter" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2272,7 +2272,7 @@ the buffer from the actual disk directory and show any changes made in the
 directory by programs other than Dired.  All deletion flags in the Dired
 buffer are lost when this is done.
 </p>
-<hr size="6">
+<hr>
 <a name="Dired-Deletion"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Dired-Edit" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2367,7 +2367,7 @@ A negative numeric argument overrides <code>kept-old-versions</code>, using minu
 the value of the argument to specify the number of oldest versions of each
 file to keep.
 </p>
-<hr size="6">
+<hr>
 <a name="Dired-Immed"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Dired-Deletion" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2419,7 +2419,7 @@ directory.
 </p></dd>
 </dl>
 
-<hr size="6">
+<hr>
 <a name="Misc-File-Ops"></a>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Dired-Immed" title="Previous section in reading order"> &lt; </a>]</td>
@@ -2499,7 +2499,7 @@ moving around in the file, but none for changing it; type <kbd>C-h</kbd> while
 viewing a file for a list of them.  Most commands are the default Emacs
 cursor motion commands.  To exit from viewing, type <kbd>C-c</kbd>.
 </p>
-<hr size="6">
+<hr>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_18.html#Buffers" title="Next chapter"> &gt;&gt; </a>]</td>
