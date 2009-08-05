@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.307 2009-08-04 16:23:35 pertusus Exp $
+# $Id: texi2html.pl,v 1.308 2009-08-05 09:36:57 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4044,7 +4044,8 @@ sub set_docu_names($$)
    @Texi2HTML::Config::INCLUDE_DIRS = @include_dirs_orig;
    my @prependended_include_directories = ('.');
    push @prependended_include_directories, $Texi2HTML::THISDOC{'input_directory'} if ($Texi2HTML::THISDOC{'input_directory'} ne '.');
-   push @prependended_include_directories, $docu_dir if ($docu_dir ne '.' and $docu_dir ne $Texi2HTML::THISDOC{'input_directory'});
+   # as Karl said, adding the destination directory is confusing.
+   #push @prependended_include_directories, $docu_dir if ($docu_dir ne '.' and $docu_dir ne $Texi2HTML::THISDOC{'input_directory'});
    unshift(@Texi2HTML::Config::INCLUDE_DIRS, @prependended_include_directories);
    unshift(@Texi2HTML::Config::INCLUDE_DIRS, @Texi2HTML::Config::PREPEND_DIRS);
 # AAAA
@@ -8666,7 +8667,9 @@ sub line_warn($$)
     my $file = $line_number->{'file_name'};
     # otherwise out of source build fail since the file names are different
     $file =~ s/^.*\/// if ($Texi2HTML::Config::TEST);
-    warn "$file:$line_number->{'line_nr'}: warning: $text\n";
+    my $macro_text = '';
+    $macro_text = " (via \@$line_number->{'macro'})" if ($line_number->{'macro'} ne '');
+    warn "$file:$line_number->{'line_nr'}: warning: $text$macro_text\n";
 }
 
 sub line_error($$)
@@ -8679,7 +8682,9 @@ sub line_error($$)
        #warn "$ERROR $text " . format_line_number($line_number) . "\n";
        my $file = $line_number->{'file_name'};
        $file =~ s/^.*\/// if ($Texi2HTML::Config::TEST);
-       warn "$file:$line_number->{'line_nr'}: $text\n";
+       my $macro_text = '';
+       $macro_text = " (via \@$line_number->{'macro'})" if ($line_number->{'macro'} ne '');
+       warn "$file:$line_number->{'line_nr'}: $text$macro_text\n";
        check_die();
     }
     check_errors();

@@ -6,7 +6,9 @@
 	$USE_MENU_DIRECTIONS is not used anymore.
 	Handle @headitemfont.
 	* texi2html.pl: always search for include files and images 
-	in working directory and manual directory.
+	in working directory and manual directory, but not in result
+	directory.
+	Add user defined @-macro information in error messages.
 	* formats/info.init: always output encoding as a local var if set,
 	even if there are no nodes.
 

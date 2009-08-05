@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.214 2009-08-04 16:23:35 pertusus Exp $
+# $Id: texi2html.init,v 1.215 2009-08-05 09:36:56 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1918,7 +1918,7 @@ sub T2H_DEFAULT_node_file_name($$)
 
 %deprecated_commands = (
   'ctrl' => '',
-  'allow-recursion' => 'please use @macro instead.',
+  'allow-recursion' => 'recursion is always allowed.',
   'quote-arg' => 'arguments are quoted by default.',
 );
 

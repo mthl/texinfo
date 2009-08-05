@@ -115,6 +115,8 @@ test_sp_info test_sp.texi --init info.init
 kbdinputstyle_info kbdinputstyle.texi --init info.init
 simple_images_info simple_images.texi --init info.init
 nested_formats_info nested_formats.texi --init info.init
+formatting_html ../coverage/formatting.texi --html --no-split
+formatting_html_nodes ../coverage/formatting.texi --html --split node --node-files --top-file=index.html
 formatting_info ../coverage/formatting.texi --init info.init -U texi2html
 formatting_plaintext ../coverage/formatting.texi --plaintext -U texi2html
 direntry_dircategory_info direntry_dircategory.texi --init info.init

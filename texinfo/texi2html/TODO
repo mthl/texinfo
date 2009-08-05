@@ -6,9 +6,6 @@ Before next release
 * there is also undocumented features @hsep and @vsep to insert
   horizontal and vertical rules.
 
-* when in a macro, error/warning should be like:
-reflinebug.texinfo:12: undefined node `bar' in @ref (via invocation of macro @myref)
-
 Later
 -----
 
@@ -166,7 +163,7 @@ function clean_antispam() {
 @math{{\frac{1}{2}} @minus{}}
   is error free.
 
-* formatting/nodename_parentheses.texi gives wrong output.
+* sectionning/nodename_parentheses.texi gives wrong output.
 
 * add @detailmenu in coverage, and @group
 
