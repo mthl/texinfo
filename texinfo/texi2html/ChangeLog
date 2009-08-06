@@ -1,6 +1,13 @@
 2009-08-05   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, formats/html.init, texi2html.init, examples/*:
+	replace SIMPLE_HEADERS with HEADER_IN_TABLE (as a negation).
+	merge the 2 print_navigation and use HEADER_IN_TABLE dynamically.
+	Add buttons specifically for top.
+
+2009-08-05   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, formats/html.init, texi2html.init, examples/*:
 	Simplify rules use, by using only the default and big rule.
 	New header formatting function, when $SIMPLE_HEADERS is set.
 	Also, when $SIMPLE_HEADERS is set the buttons are like makeinfo

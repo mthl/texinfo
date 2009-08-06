@@ -14,5 +14,6 @@ foreach my $direction (('Up', 'Forward', 'Back', 'Next',
 }
 
 @MISC_BUTTONS = @SECTION_BUTTONS;
+@TOP_BUTTONS = @SECTION_BUTTONS;
 
 1;

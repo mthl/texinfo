@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.13 2009-08-05 23:20:28 pertusus Exp $
+# $Id: html.init,v 1.14 2009-08-06 08:51:37 pertusus Exp $
 
 use strict;
 
@@ -202,6 +202,9 @@ $L2H_HTML_VERSION = "4.0";
 # buttons for misc stuff
 @MISC_BUTTONS = ('Top', 'Contents', 'Index', 'About');
 
+#@TOP_BUTTONS = ( 'Back', 'Forward', ' ','Contents', 'Index', 'About');
+@TOP_BUTTONS = ('Top', 'Contents', 'Index', 'About');
+
 # buttons for chapter file footers
 # (and headers but only if HEADERS is false)
 @CHAPTER_BUTTONS =
@@ -230,14 +233,15 @@ $L2H_HTML_VERSION = "4.0";
       'Top', 'Index', 'Contents', 'About', 'Up', 'NextFile', 'PrevFile'
     );
 
-if ($SIMPLE_HEADERS)
+# this is not set dynamically
+if (!$HEADER_IN_TABLE)
 {
    @SECTION_BUTTONS = ([ 'NodeNext', \&html_default_node_direction ],
          [ 'NodePrev', \&html_default_node_direction ],
          [ 'NodeUp', \&html_default_node_direction ], ' ',
          'Contents', 'Index');
    @CHAPTER_BUTTONS = @SECTION_FOOTER_BUTTONS = @NODE_FOOTER_BUTTONS =
-    @MISC_BUTTONS = @SECTION_BUTTONS;
+    @MISC_BUTTONS = @TOP_BUTTONS = @SECTION_BUTTONS;
    $BIG_RULE = $DEFAULT_RULE;
 }
 
@@ -447,11 +451,7 @@ $button_icon_img	      = \&HTML_DEFAULT_button_icon_img;
 $button_formatting	      = \&HTML_DEFAULT_button_formatting;
 
 $print_navigation	      = \&HTML_DEFAULT_print_navigation;
-$print_navigation             = \&HTML_DEFAULT_table_print_navigation if (!$SIMPLE_HEADERS);
-#$print_navigation	      = \&HTML_DEFAULT_table_print_navigation;
-
-$about_body                   = undef;
-$about_body		      = \&HTML_DEFAULT_about_body if (!$SIMPLE_HEADERS);
+$about_body		      = \&HTML_DEFAULT_about_body;
 
 $print_frame              = \&HTML_DEFAULT_print_frame;
 $print_toc_frame          = \&HTML_DEFAULT_print_toc_frame;
@@ -850,7 +850,7 @@ sub HTML_DEFAULT_print_Top_footer($$$)
     my $fh = shift;
     my $end_page = shift;
     my $element = shift;
-    my $buttons = \@MISC_BUTTONS;
+    my $buttons = \@TOP_BUTTONS;
     my $rule = $DEFAULT_RULE;
     $rule = $BIG_RULE if (!$end_page);
     #print STDERR "end_page: $end_page\n";
@@ -1312,33 +1312,80 @@ sub HTML_DEFAULT_button_formatting($$)
     return ($active, $passive);
 }
 
-sub HTML_DEFAULT_table_print_navigation
+my %html_default_node_directions;
+foreach my $node_directions ('NodeNext', 'NodePrev', 'NodeUp')
+{
+   $html_default_node_directions{$node_directions} = 1;
+}
+
+sub HTML_DEFAULT_print_navigation
 {
     my $buttons = shift;
     my $vertical = shift;
 
+    my $first_button = 1;
     my $result = '';
-    $result .= '<table cellpadding="1" cellspacing="1" border="0">'."\n";
-    $result .= "<tr>" unless $vertical;
+    if ($HEADER_IN_TABLE)
+    {
+        $result .= '<table cellpadding="1" cellspacing="1" border="0">'."\n";
+        $result .= "<tr>" unless $vertical;
+    }
+    else
+    {
+        $result .= '<div class="node">'."\n<p>\n";
+    }
     for my $button (@$buttons)
     {
-        $result .= qq{<tr valign="top" align="left">\n} if $vertical;
-        $result .=  qq{<td valign="middle" align="left">};
+        if ($HEADER_IN_TABLE)
+        {
+            $result .= qq{<tr valign="top" align="left">\n} if $vertical;
+            $result .=  qq{<td valign="middle" align="left">};
+        }
+        my $direction;
+        if (ref($button) eq 'ARRAY' and defined($button->[0]) and !ref($button->[0]))
+        {
+           $direction = $button->[0];
+        }
+        elsif (defined($button) and !ref($button))
+        {
+           $direction = $button;
+        }
         
         my ($active, $passive) = &$button_formatting($button, $vertical);
-        if (defined($active))
+        if ($HEADER_IN_TABLE)
         {
+            if (defined($active))
+            {
+                $first_button = 0 if ($first_button);
+                $result .= $active;
+            }
+            elsif (defined($passive))
+            {
+                $first_button = 0 if ($first_button);
+                $result .= $passive;
+            }
+            $result .= "</td>\n";
+            $result .= "</tr>\n" if $vertical;
+        }
+        elsif (defined($active))
+        {
+            if (defined($direction) and $html_default_node_directions{$direction} and !$first_button)
+            {
+                $active = ', ' .$active;
+            }
             $result .= $active;
+            $first_button = 0 if ($first_button);
         }
-        elsif (defined($passive))
-        {
-            $result .= $passive;
-        }
-        $result .= "</td>\n";
-        $result .= "</tr>\n" if $vertical;
     }
-    $result .= "</tr>" unless $vertical;
-    $result .= "</table>\n";
+    if ($HEADER_IN_TABLE)
+    {
+        $result .= "</tr>" unless $vertical;
+        $result .= "</table>\n";
+    }
+    else
+    {
+        $result .= "</p>\n</div>\n";
+    }
     return $result;
 }
 
@@ -1366,47 +1413,6 @@ sub html_default_node_direction($)
          # i18n
          $result = "$BUTTONS_TEXT{$direction}: $anchor";
     }
-    return $result;
-}
-
-my %html_default_node_directions;
-foreach my $node_directions ('NodeNext', 'NodePrev', 'NodeUp')
-{
-   $html_default_node_directions{$node_directions} = 1;
-}
-
-sub HTML_DEFAULT_print_navigation
-{
-    my $buttons = shift;
-    my $vertical = shift;
-
-    my $first_button = 1;
-    my $result = '<div class="node">'."\n<p>\n";
-    for my $button (@$buttons)
-    {
-        my $button_text = '';
-        my $direction;
-        if (ref($button) eq 'ARRAY' and defined($button->[0]) and !ref($button->[0]))
-        {
-           $direction = $button->[0];
-        }
-        elsif (defined($button) and !ref($button))
-        {
-           $direction = $button;
-        }
-        my ($active, $passive) = &$button_formatting($button, $vertical);
-
-        if (defined($active))
-        {
-            if (defined($direction) and $html_default_node_directions{$direction} and !$first_button)
-            {
-                $active = ', ' .$active;
-            }
-            $result .= $active;
-            $first_button = 0 if ($first_button);
-        }
-    }
-    $result .= "</p>\n</div>\n";
     return $result;
 }
 
@@ -1490,6 +1496,7 @@ sub HTML_DEFAULT_inline_contents($$$$)
 
 sub HTML_DEFAULT_about_body
 {
+    return undef if (!$HEADER_IN_TABLE);
     my $about = "<p>\n";
     if (ref($PRE_ABOUT) eq 'CODE')
     {

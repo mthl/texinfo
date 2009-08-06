@@ -18,6 +18,8 @@ $INLINE_CONTENTS = 1;
 
 @MISC_BUTTONS = ('Contents', 'Index', 'About');
 
+@TOP_BUTTONS = ('Contents', 'Index', 'About');
+
 @SECTION_FOOTER_BUTTONS = ('Contents', 'Index', 'About');
 
 @NODE_FOOTER_BUTTONS = ('Back', 'Forward');

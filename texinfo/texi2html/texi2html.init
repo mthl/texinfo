@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.216 2009-08-05 23:20:27 pertusus Exp $
+# $Id: texi2html.init,v 1.217 2009-08-06 08:51:36 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -330,7 +330,7 @@ $FIRSTPARAGRAPHINDENT = 'none';
 @T2H_FORMAT_EXPAND = ('plaintext');
 
 # simple headers formatting, not in a table and using node names.
-$SIMPLE_HEADERS = 1;
+$HEADER_IN_TABLE = 0;
 
 # if set, node names are used to construct file names
 # if undef, it is set if split at node, or $NODE_FILES is set.
@@ -756,7 +756,7 @@ sub t2h_default_set_variables_texi2html()
   $SPLIT = '';
   $SPLIT_INDEX = 100;
   $PROGRAM_NAME_IN_FOOTER = 1;
-  $SIMPLE_HEADERS = 0;
+  $HEADER_IN_TABLE = 1;
 
   $ENABLE_ENCODING_USE_ENTITY = 1;
   $USE_ISO = 1;
@@ -773,6 +773,10 @@ sub t2h_default_set_variables_texi2html()
 
 # buttons for misc stuff
 @MISC_BUTTONS = ('Top', 'Contents', 'Index', 'About');
+
+#@TOP_BUTTONS = ( 'Back', 'Forward', ' ','Contents', 'Index', 'About');
+@TOP_BUTTONS = ('Top', 'Contents', 'Index', 'About');
+
 
 # buttons for chapter file footers
 # (and headers but only if HEADERS is false)
@@ -5861,7 +5865,7 @@ sub xml_default_element_heading($$$$$$$$$$$$)
        }
        else
        {
-           $result .= &$print_head_navigation(undef, \@MISC_BUTTONS) if (get_conf('SPLIT') or get_conf('headers'));
+           $result .= &$print_head_navigation(undef, \@TOP_BUTTONS) if (get_conf('SPLIT') or get_conf('headers'));
        }
     }
 

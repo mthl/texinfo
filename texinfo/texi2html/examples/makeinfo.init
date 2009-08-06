@@ -70,12 +70,15 @@ $INLINE_CONTENTS = 1;
 
 $OVERVIEW_LINK_TO_TOC = 1;
 
-if (!$SIMPLE_HEADERS)
+if ($HEADER_IN_TABLE)
 {
     @SECTION_BUTTONS =
     (
      \"node: ", \$Texi2HTML::NODE{This}, [ 'NodeNext', \$Texi2HTML::NODE{NodeNext} ] , \",", [ 'NodePrev', \$Texi2HTML::NODE{NodePrev} ], \",", [ 'NodeUp', \$Texi2HTML::NODE{NodeUp} ], 'Following'
     );
+
+    @TOP_BUTTONS = @SECTION_BUTTONS;
+    @MISC_BUTTONS = @SECTION_BUTTONS;
 }
 
 push @command_handler_process, \&makeinfo_like_initialize_variables;
@@ -100,7 +103,6 @@ sub makeinfo_like_init_out()
 
 # FIXME: images not in paragraphs are in <div class="block-image">
 
-@MISC_BUTTONS = @SECTION_BUTTONS;
 
 $foot_line_and_ref  = \&makeinfo_like_foot_line_and_ref;
 $foot_section       = \&makeinfo_like_foot_lines;

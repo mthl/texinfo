@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.309 2009-08-05 23:20:27 pertusus Exp $
+# $Id: texi2html.pl,v 1.310 2009-08-06 08:51:37 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -407,12 +407,13 @@ $DATE
 @SECTION_BUTTONS
 @SECTION_FOOTER_BUTTONS
 @NODE_FOOTER_BUTTONS
+@TOP_BUTTONS
 @LINKS_BUTTONS
 @IMAGE_EXTENSIONS
 @INPUT_FILE_SUFFIXES
 $ENABLE_ENCODING_USE_ENTITY
 $PROGRAM_NAME_IN_FOOTER
-$SIMPLE_HEADERS
+$HEADER_IN_TABLE
 );
 
 # customization variables which may be guessed in the script
