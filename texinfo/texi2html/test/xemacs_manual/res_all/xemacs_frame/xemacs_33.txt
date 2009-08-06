@@ -93,18 +93,18 @@ Key (Character) Index
 * C-END: 4.2 Changing the Location of Point.
 * C-f: 4.2 Changing the Location of Point.
 * C-f (Calendar mode): 26.1.1.1 Motion by Integral Days, Weeks, Months, Years.
-* C-g: 6. The Minibuffer.
+* C-g: 6 The Minibuffer.
 * C-g: 27.11 Quitting and Aborting.
 * C-g (isearch-mode): 12.1 Incremental Search.
 * C-h: 2.1.2 Representing Key Sequences.
-* C-h: 8. Help.
+* C-h: 8 Help.
 * C-h A: 8.4 Apropos.
 * C-h b: 8.7 Other Help Commands.
 * C-h c: 8.2 Documentation for a Key.
 * C-h C-c: 8.7 Other Help Commands.
 * C-h C-d: 8.7 Other Help Commands.
 * C-h C-f: 8.7 Other Help Commands.
-* C-h C-h: 8. Help.
+* C-h C-h: 8 Help.
 * C-h C-k: 8.7 Other Help Commands.
 * C-h C-w: 8.7 Other Help Commands.
 * C-h C-\: 17.4 Selecting an Input Method.
@@ -121,7 +121,7 @@ Key (Character) Index
 * C-h n: 8.7 Other Help Commands.
 * C-h p: 8.5 Keyword Search for Lisp Libraries.
 * C-h s: 27.5.2 Altering Syntax Information.
-* C-h t: 4. Basic Editing Commands.
+* C-h t: 4 Basic Editing Commands.
 * C-h t: 8.7 Other Help Commands.
 * C-h v: 8.3 Help by Command or Variable Name.
 * C-h v: 21.9 Documentation Commands.
@@ -206,7 +206,7 @@ Key (Character) Index
 * C-x 4 b: 15.1 Creating and Selecting Buffers.
 * C-x 4 d: 14.9.1 Entering Dired.
 * C-x 4 f: 14.2 Visiting Files.
-* C-x 4 m: 25. Sending Mail.
+* C-x 4 m: 25 Sending Mail.
 * C-x 5 b: 15.1 Creating and Selecting Buffers.
 * C-x 5 C-f: 14.2 Visiting Files.
 * C-x 5 C-f: 14.2 Visiting Files.
@@ -249,7 +249,7 @@ Key (Character) Index
 * C-x h: 9.1.3 Commands to Mark Textual Objects.
 * C-x k: 15.4 Killing Buffers.
 * C-x l: 20.5 Pages.
-* C-x m: 25. Sending Mail.
+* C-x m: 25 Sending Mail.
 * C-x n n: 26.8 Narrowing.
 * C-x n w: 26.8 Narrowing.
 * C-x o: 16.3 Using Other Windows.
@@ -276,7 +276,7 @@ Key (Character) Index
 * C-x RET t: 17.8 Specifying a Coding System.
 * C-x s: 14.3 Saving Files.
 * C-x TAB: 19.1 Indentation Commands and Techniques.
-* C-x u: 5. Undoing Changes.
+* C-x u: 5 Undoing Changes.
 * C-x v =: 14.6.6 Examining And Comparing Old Versions.
 * C-x v a: 14.6.5 Change Logs and VC.
 * C-x v c: 14.6.2 Editing with Version Control.
@@ -301,12 +301,12 @@ Key (Character) Index
 * C-\: 17.4 Selecting an Input Method.
 * C-]: 26.10 Recursive Editing Levels.
 * C-]: 27.11 Quitting and Aborting.
-* C-_: 5. Undoing Changes.
+* C-_: 5 Undoing Changes.
 * control key: 2.1 Keystrokes as Building Blocks of Key Sequences.
 * d (Calendar mode): 26.5.3 Commands Displaying Diary Entries.
 * DEL: 9.4 Deletion and Killing.
 * DEL: 13.1 Killing Your Mistakes.
-* DEL: 18. Major Modes.
+* DEL: 18 Major Modes.
 * DEL: 21.1 Major Modes for Programming Languages.
 * DEL (isearch-mode): 12.1 Incremental Search.
 * DEL (query-replace): 12.7.4 Query Replace.
@@ -316,12 +316,12 @@ Key (Character) Index
 * ESC: 2.1.2 Representing Key Sequences.
 * ESC: 2.1.4 Assignment of the <META> Key.
 * ESC (query-replace): 12.7.4 Query Replace.
-* F1: 8. Help.
+* F1: 8 Help.
 * g char (Calendar mode): 26.5 Converting From Other Calendars.
 * g d (Calendar mode): 26.1.1.3 Particular Dates.
 * g m l (Calendar mode): 26.5.1 Converting from the Mayan Calendar.
 * h (Calendar mode): 26.2.1 Holidays.
-* Help: 8. Help.
+* Help: 8 Help.
 * HOME: 4.2 Changing the Location of Point.
 * hyper key: 2.1 Keystrokes as Building Blocks of Key Sequences.
 * hyper key: 2.1.1 Representing Keystrokes.
@@ -336,7 +336,7 @@ Key (Character) Index
 * LEFT: 4.2 Changing the Location of Point.
 * LEFT: 4.2 Changing the Location of Point.
 * LFD: 2.1.3 String Key Sequences.
-* LFD: 18. Major Modes.
+* LFD: 18 Major Modes.
 * LFD: 21.4.1 Basic Program Indentation Commands.
 * LFD (TeX mode): 20.1.2.1 TeX Editing Commands.
 * m (Calendar mode): 26.5.3 Commands Displaying Diary Entries.
@@ -417,7 +417,7 @@ Key (Character) Index
 * M-v: 11.1 Scrolling.
 * M-v (Calendar mode): 26.1.2 Scrolling the Calendar through Time.
 * M-w: 9.5.1 The Kill Ring.
-* M-x: 7. Running Commands by Name.
+* M-x: 7 Running Commands by Name.
 * M-y: 9.5.3 Yanking Earlier Kills.
 * M-z: 9.4.3 Other Kill Commands.
 * M-\: 9.4.1 Deletion.
@@ -461,9 +461,9 @@ Key (Character) Index
 * t (Calendar mode): 26.2 LaTeX Calendar.
 * TAB: 2.1.3 String Key Sequences.
 * TAB: 6.3.1 Completion Example.
-* TAB: 18. Major Modes.
-* TAB: 19. Indentation.
-* TAB: 19. Indentation.
+* TAB: 18 Major Modes.
+* TAB: 19 Indentation.
+* TAB: 19 Indentation.
 * TAB: 20.1 Text Mode.
 * TAB: 21.4.1 Basic Program Indentation Commands.
 * TAB (customization buffer): 27.2.2.2 Changing an Option.

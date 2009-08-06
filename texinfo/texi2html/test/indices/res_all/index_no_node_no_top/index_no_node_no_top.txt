@@ -1,7 +1,7 @@
 Garbage
 * Index:
-* chapter: 1. Chapter.
-* Chapter2: 1. Chapter.
+* chapter: 1 Chapter.
+* Chapter2: 1 Chapter.
 * second: 0.1 second.
 * second: 0.1 second.
 * top section: top (chapter) section.
@@ -22,8 +22,8 @@ unnumbered
 in unnumbered
 
 * Index:
-* chapter: 1. Chapter.
-* Chapter2: 1. Chapter.
+* chapter: 1 Chapter.
+* Chapter2: 1 Chapter.
 * second: 0.1 second.
 * second: 0.1 second.
 * top section: top (chapter) section.
@@ -43,8 +43,8 @@ top (chapter) section
 Top node
 
 * Index:
-* chapter: 1. Chapter.
-* Chapter2: 1. Chapter.
+* chapter: 1 Chapter.
+* Chapter2: 1 Chapter.
 * second: 0.1 second.
 * second: 0.1 second.
 * top section: top (chapter) section.
@@ -64,8 +64,8 @@ Top node
 ==========
 
 * Index:
-* chapter: 1. Chapter.
-* Chapter2: 1. Chapter.
+* chapter: 1 Chapter.
+* Chapter2: 1 Chapter.
 * second: 0.1 second.
 * second: 0.1 second.
 * top section: top (chapter) section.
@@ -81,8 +81,8 @@ Top node
 second node
 
 * Index:
-* chapter: 1. Chapter.
-* Chapter2: 1. Chapter.
+* chapter: 1 Chapter.
+* Chapter2: 1 Chapter.
 * second: 0.1 second.
 * second: 0.1 second.
 * top section: top (chapter) section.
@@ -99,8 +99,8 @@ second node
 *********
 
 * Index:
-* chapter: 1. Chapter.
-* Chapter2: 1. Chapter.
+* chapter: 1 Chapter.
+* Chapter2: 1 Chapter.
 * second: 0.1 second.
 * second: 0.1 second.
 * top section: top (chapter) section.

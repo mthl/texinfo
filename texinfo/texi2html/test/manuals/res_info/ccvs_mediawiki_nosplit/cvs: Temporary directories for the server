@@ -18,8 +18,8 @@ directories.  They are named
 <p>where <var>pid</var> is the process identification number of
 the server.
 They are located in the directory specified by 
-the &lsquo;<samp>-T</samp>&rsquo; global option (see section [cvs: Global options#Global-options Global options]), 
-the <code>TMPDIR</code> environment variable (see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]), 
+the &lsquo;<samp>-T</samp>&rsquo; global option (see [cvs: Global options#Global-options Global options]), 
+the <code>TMPDIR</code> environment variable (see [cvs: All environment variables which affect CVS#Environment-variables Environment variables]), 
 or, failing that, &lsquo;<tt>/tmp</tt>&rsquo;.
 </p>
 <p>In most cases the server will remove the temporary

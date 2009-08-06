@@ -82,7 +82,7 @@ if there is sufficient <small>CVS</small> traffic on
 <code>comp.software.config-mgmt</code>.
 </p>
 <p>You can also subscribe to the <code>bug-cvs</code> mailing list,
-described in more detail in [cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual].  To subscribe
+described in more detail in [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS].  To subscribe
 send mail to <code>bug-cvs-request@gnu.org</code>.
 </p>
 <hr>

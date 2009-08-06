@@ -1,5 +1,5 @@
-Annexe A Copying and indices
-****************************
+Appendix A Copying and indices
+******************************
 
 In the appendix, we print the indices and references.
 
@@ -17,20 +17,20 @@ This is a test manual, trivially and explicitly in the public
 domain(1).
 
 * Index:
-* Copying appendix: A. Copying and indices.
+* Copying appendix: Appendix A Copying and indices.
 
 
 * Index:
-* Copying appendix: A. Copying and indices.
+* Copying appendix: Appendix A Copying and indices.
 * Index:
-* another fun: A. Copying and indices.
-* findex entry: 1. Chapter.
-* fun: 1. Chapter.
+* another fun: Appendix A Copying and indices.
+* findex entry: 1 Chapter.
+* fun: 1 Chapter.
 
 Table of Contents
 *****************
 
 Top
-1. Chapter
-A. Copying and indices
+1 Chapter
+Appendix A Copying and indices
 

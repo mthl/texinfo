@@ -1,10 +1,9 @@
 <div id="Adding-and-removing"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &lt; ]|</td>
-<td valign="middle" align="left">|[[#Adding-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[[#Adding-files| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -36,11 +35,10 @@ this in <small>CVS</small> vary depending on the situation.
 <hr>
 <div id="Adding-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Removing-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Adding-and-removing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[[#Removing-files| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -89,7 +87,7 @@ $ cvs add bar
 
 <div id="index-add-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-add"></div><u>Command:</u> <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i></dt>
+<dt><div id="index-cvs-add"></div>Command: <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i></dt>
 <dd>
 <p>Schedule <var>files</var> to be added to the repository.
 The files or directories specified with <code>add</code> must
@@ -136,11 +134,10 @@ later merge the additions to another branch if you want
 <hr>
 <div id="Removing-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Adding-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Removing-directories| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Adding-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[[#Removing-directories| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -196,7 +193,7 @@ specified to <code>checkout</code> or <code>update</code>.
 </p>
 <div id="index-Remove-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-remove"></div><u>Command:</u> <b>cvs remove</b><i> [options] files &hellip;</i></dt>
+<dt><div id="index-cvs-remove"></div>Command: <b>cvs remove</b><i> [options] files &hellip;</i></dt>
 <dd>
 <p>Schedule file(s) to be removed from the repository
 (files which have not already been removed from the
@@ -269,11 +266,10 @@ later merge the removals to another branch if you want
 <hr>
 <div id="Removing-directories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Removing-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Moving-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Removing-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[[#Moving-files| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -318,11 +314,10 @@ are checking out contains any files in that directory.
 <hr>
 <div id="Moving-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Removing-directories| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Outside| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Removing-directories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[[#Outside| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -354,11 +349,10 @@ directory is even harder.  See section [[#Moving-directories|Moving and renaming
 <hr>
 <div id="Outside"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Moving-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Inside| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Moving-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#Inside| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -400,11 +394,10 @@ information see [cvs: Revisions#Assigning-revisions Assigning revisions].
 <hr>
 <div id="Inside"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Outside| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Rename-by-copying| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Outside| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#Rename-by-copying| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -456,11 +449,10 @@ commands while you move it.
 <hr>
 <div id="Rename-by-copying"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Inside| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Moving-directories| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Inside| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#Moving-directories| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -522,11 +514,10 @@ You cannot easily see the history of the file across the rename.
 <hr>
 <div id="Moving-directories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Rename-by-copying| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Rename-by-copying| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

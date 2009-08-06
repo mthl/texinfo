@@ -41,7 +41,7 @@ such systems either.
 <dl compact="compact">
 <dt>&lsquo;<tt>Root</tt>&rsquo;</dt>
 <dd><p>This file contains the current <small>CVS</small> root, as
-described in [cvs: Telling CVS where your repository is#Specifying-a-repository Telling CVS where your repository is].
+described in [cvs: Telling CVS where your repository is#Specifying-a-repository Specifying a repository].
 </p>
 <div id="index-Repository-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fRepository-file"></div>
@@ -118,7 +118,7 @@ modified a program should take the timestamp of the file
 and simply do a string compare with <var>timestamp</var>.
 If there was a conflict, <var>conflict</var> can be set to
 the modification time of the file after the file has been
-written with conflict markers (see section [cvs: Conflicts example#Conflicts-example Conflicts example]).
+written with conflict markers (see [cvs: Conflicts example#Conflicts-example Conflicts example]).
 Thus if <var>conflict</var> is subsequently the same as the actual
 modification time of the file it means that the user
 has obviously not resolved the conflict.  <var>options</var>
@@ -288,7 +288,7 @@ then (atomically where possible), rename it to
 </dd>
 <dt>&lsquo;<tt>Template</tt>&rsquo;</dt>
 <dd><p>This file contains the template specified by the
-&lsquo;<tt>rcsinfo</tt>&rsquo; file (see section [cvs: Rcsinfo#rcsinfo Rcsinfo]).  It is only used
+&lsquo;<tt>rcsinfo</tt>&rsquo; file (see [cvs: Rcsinfo#rcsinfo rcsinfo]).  It is only used
 by the client; the non-client/server <small>CVS</small> consults
 &lsquo;<tt>rcsinfo</tt>&rsquo; directly.
 </p></dd>

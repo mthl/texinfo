@@ -6,17 +6,6 @@ Before next release
 * there is also undocumented features @hsep and @vsep to insert
   horizontal and vertical rules.
 
-* changes to html:
- - add a row with an invisible space between index entry and url
- - << < Up > >>.
- - don't underline the defun. Just output as-is
-
-* verify that there is no dot in numbers (in appendix?) and add 
-  Appendix to top-level appendix (in 'number').
-
-* href to sections in xrefs -> texi2dvi does that too.
-
-
 Later
 -----
 
@@ -88,8 +77,9 @@ h1 titlefont (@titlefont),
   language_codes
   region_codes
   $PROGRAM_NAME_IN_FOOTER
-  $SIMPLE_HEADERS
+  $HEADER_IN_TABLE
   button_formatting
+  TOP_BUTTONS
   
 
 * document the 'math' in 'args', in style_map, and simple_*math*. It

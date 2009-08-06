@@ -17,13 +17,13 @@ that affect <small>CVS</small>.
 </dd>
 <dt><code>$CVSIGNORE</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
-<small>CVS</small> should ignore. See section [cvs: Ignoring files via cvsignore#cvsignore Ignoring files via cvsignore].
+<small>CVS</small> should ignore. See [cvs: Ignoring files via cvsignore#cvsignore cvsignore].
 </p>
 <div id="index-CVSWRAPPERS_002c-environment-variable-1"></div>
 </dd>
 <dt><code>$CVSWRAPPERS</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
-<small>CVS</small> should treat as wrappers. See section [cvs: The cvswrappers file#Wrappers The cvswrappers file].
+<small>CVS</small> should treat as wrappers. See [cvs: The cvswrappers file#Wrappers Wrappers].
 </p>
 <div id="index-CVSREAD_002c-environment-variable"></div>
 <div id="index-Read_002donly-files_002c-and-CVSREAD"></div>
@@ -108,7 +108,7 @@ probably need to set <code>HOMEDRIVE</code> and <code>HOMEPATH</code> yourself.
 <dt><code>$CVS_RSH</code></dt>
 <dd><p>Specifies the external program which <small>CVS</small> connects with,
 when <code>:ext:</code> access method is specified.
-see section [cvs: Connecting with rsh#Connecting-via-rsh Connecting with rsh].
+see [cvs: Connecting with rsh#Connecting-via-rsh Connecting via rsh].
 </p>
 </dd>
 <dt><code>$CVS_SERVER</code></dt>
@@ -119,20 +119,20 @@ necessary arguments) when accessing a remote repository
 using the <code>:ext:</code>, <code>:fork:</code>, or <code>:server:</code> access methods.
 The default value for <code>:ext:</code> and <code>:server:</code> is <code>cvs</code>;
 the default value for <code>:fork:</code> is the name used to run the client.
-see section [cvs: Connecting with rsh#Connecting-via-rsh Connecting with rsh]
+see [cvs: Connecting with rsh#Connecting-via-rsh Connecting via rsh]
 </p>
 </dd>
 <dt><code>$CVS_PASSFILE</code></dt>
 <dd><p>Used in client-server mode when accessing the <code>cvs
 login server</code>.  Default value is &lsquo;<tt>$HOME/.cvspass</tt>&rsquo;.
-see section [cvs: Using the client with password authentication#Password-authentication-client Using the client with password authentication]
+see [cvs: Using the client with password authentication#Password-authentication-client Password authentication client]
 </p>
 </dd>
 <dt><code>$CVS_CLIENT_PORT</code></dt>
 <dd><p>Used in client-server mode to set the port to use when accessing the server
 via Kerberos, GSSAPI, or <small>CVS</small>&rsquo;s password authentication protocol
 if the port is not specified in the CVSROOT.
-see section [cvs: Remote repositories#Remote-repositories Remote repositories]
+see [cvs: Remote repositories#Remote-repositories Remote repositories]
 </p>
 <div id="index-CVS_005fRCMD_005fPORT_002c-environment-variable"></div>
 </dd>
@@ -197,7 +197,7 @@ command interpreter and defaults to <small>CMD.EXE</small>.
 <dd><div id="index-Temporary-files_002c-location-of"></div>
 <p>Directory in which temporary files are located.
 The <small>CVS</small> server uses
-<code>TMPDIR</code>.  See section [cvs: Global options#Global-options Global options], for a
+<code>TMPDIR</code>.  See [cvs: Global options#Global-options Global options], for a
 description of how to specify this.
 Some parts of <small>CVS</small> will always use &lsquo;<tt>/tmp</tt>&rsquo; (via
 the <code>tmpnam</code> function provided by the system).

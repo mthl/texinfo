@@ -1,5 +1,5 @@
-Annexe D SINGULAR libraries
-***************************
+Appendix D SINGULAR libraries
+*****************************
 
 SINGULAR comes with a set of standard libraries. Their content is
 described in the following subsections.

@@ -3,7 +3,7 @@ Variable Index
 * Index:
 * abbrev-all-caps: 23.2 Controlling Abbrev Expansion.
 * abbrev-file-name: 23.4 Saving Abbrevs.
-* abbrev-mode: 23. Abbrevs.
+* abbrev-mode: 23 Abbrevs.
 * after-load-alist: 22.3.1 Loading Libraries.
 * after-save-hook: 14.3 Saving Files.
 * all-christian-calendar-holidays: 26.5.8.2 Customizing the Holidays.
@@ -160,7 +160,7 @@ Variable Index
 * Info-directory-list: 3.3.3 Directories and Paths.
 * INFOPATH: 3.3.3 Directories and Paths.
 * initial-calendar-window-hook: 26.5.8.1 Customizing the Calendar.
-* initial-major-mode: 3. Entering and Exiting Emacs.
+* initial-major-mode: 3 Entering and Exiting Emacs.
 * input-method-highlight-flag: 17.3 Input Methods.
 * input-method-verbose-flag: 17.3 Input Methods.
 * input-ring-size: 26.7.2 Interactive Inferior Shell.
@@ -225,7 +225,7 @@ Variable Index
 * paragraph-start: 20.4 Paragraphs.
 * parse-sexp-ignore-comments: 27.5.1 Information About Each Character.
 * PATH: 3.3.3 Directories and Paths.
-* picture-mode-hook: 24. Editing Pictures.
+* picture-mode-hook: 24 Editing Pictures.
 * picture-tab-chars: 24.3 Picture Mode Tabs.
 * plain-TeX-mode-hook: 20.1.2.2 TeX Printing Commands.
 * print-diary-entries-hook: 26.5.8.6 Customizing the Diary.

@@ -16,7 +16,7 @@ through your file organization.  It is not impossible
 to rename or move files, but it does increase the
 potential for confusion and <small>CVS</small> does have some
 quirks particularly in the area of renaming
-directories.  See section [cvs: Moving and renaming files#Moving-files Moving and renaming files].
+directories.  See [cvs: Moving and renaming files#Moving-files Moving files].
 </p>
 <p>What to do next depends on the situation at hand.
 </p>

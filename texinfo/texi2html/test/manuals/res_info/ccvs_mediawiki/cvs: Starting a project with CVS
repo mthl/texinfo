@@ -15,7 +15,7 @@ through your file organization.  It is not impossible
 to rename or move files, but it does increase the
 potential for confusion and <small>CVS</small> does have some
 quirks particularly in the area of renaming
-directories.  See section [cvs: Adding, removing, and renaming files and directories#Moving-files Moving and renaming files].
+directories.  See [cvs: Adding, removing, and renaming files and directories#Moving-files Moving files].
 </p>
 <p>What to do next depends on the situation at hand.
 </p>
@@ -67,7 +67,7 @@ flag, <small>CVS</small> starts an editor and prompts for a
 message.  The string &lsquo;<samp>yoyo</samp>&rsquo; is a <em>vendor tag</em>,
 and &lsquo;<samp>start</samp>&rsquo; is a <em>release tag</em>.  They may fill
 no purpose in this context, but since <small>CVS</small> requires
-them they must be present.  See section [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources], for
+them they must be present.  See [cvs: Tracking third-party sources#Tracking-sources Tracking sources], for
 more information about them.
 </p>
 <p>You can now verify that it worked, and remove your
@@ -92,11 +92,11 @@ as it did in the example above.
 <p>It is a good idea to check that the permissions
 <small>CVS</small> sets on the directories inside <code>$CVSROOT</code>
 are reasonable, and that they belong to the proper
-groups.  See section [cvs: The Repository#File-permissions File permissions].
+groups.  See [cvs: The Repository#File-permissions File permissions].
 </p>
 <p>If some of the files you want to import are binary, you
 may want to use the wrappers features to specify which
-files are binary and which are not.  See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
+files are binary and which are not.  See [cvs: Reference manual for Administrative files#Wrappers Wrappers].
 </p>
 <hr>
 <div id="From-other-version-control-systems"></div>
@@ -236,7 +236,7 @@ $ cd CVSROOT
 </nowiki></pre></td></tr></table>
 
 </li><li>
-Edit the file and insert a line that defines the module.  See section [cvs: The Repository#Intro-administrative-files The administrative files], for an introduction.  See section [cvs: Reference manual for Administrative files#modules The modules file], for a full
+Edit the file and insert a line that defines the module.  See [cvs: The Repository#Intro-administrative-files Intro administrative files], for an introduction.  See [cvs: Reference manual for Administrative files#modules modules], for a full
 description of the modules file.  You can use the
 following line to define the module &lsquo;<samp>tc</samp>&rsquo;:
 

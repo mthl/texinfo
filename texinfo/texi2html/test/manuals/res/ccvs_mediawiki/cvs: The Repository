@@ -1,10 +1,9 @@
 <div id="Repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Overview#Viewing-differences  &lt; ]|</td>
-<td valign="middle" align="left">|[[#Specifying-a-repository| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Overview#Overview  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Overview#Overview  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Overview#Viewing-differences  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[[#Specifying-a-repository| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -85,11 +84,10 @@ user-defined modules.
 <hr>
 <div id="Specifying-a-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Repository| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository-storage| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[[#Repository-storage| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -151,11 +149,10 @@ should be two ways of referring to the same repository.
 <hr>
 <div id="Repository-storage"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Specifying-a-repository| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Repository-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Specifying-a-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[[#Repository-files| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -194,11 +191,10 @@ the file permissions appropriate for the repository.
 <hr>
 <div id="Repository-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Repository-storage| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#File-permissions| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository-storage| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[[#File-permissions| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -306,11 +302,10 @@ rules see [cvs: Revisions#Tags Tags&ndash;Symbolic revisions].
 <hr>
 <div id="File-permissions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Repository-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Windows-permissions| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Repository-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[[#Windows-permissions| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -419,11 +414,10 @@ carefully if you are considering this option
 <hr>
 <div id="Windows-permissions"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#File-permissions| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Attic| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#File-permissions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[[#Attic| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -461,11 +455,10 @@ something out, please let us know as described in
 <hr>
 <div id="Attic"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Windows-permissions| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-in-repository| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Windows-permissions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[[#CVS-in-repository| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -511,11 +504,10 @@ non-<code>dead</code> state.
 <hr>
 <div id="CVS-in-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Attic| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Locks| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Attic| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[[#Locks| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -621,11 +613,10 @@ there must be a single tab character there and no spaces.
 <hr>
 <div id="Locks"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-in-repository| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVSROOT-storage| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#CVS-in-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[[#CVSROOT-storage| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -715,11 +706,10 @@ further discussion/rationale.
 <hr>
 <div id="CVSROOT-storage"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Locks| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Working-directory-storage| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Locks| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
+<td valign="middle" align="left">|[[#Working-directory-storage| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -782,11 +772,10 @@ administrative files, see [cvs: Reference manual for Administrative files#Admini
 <hr>
 <div id="Working-directory-storage"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVSROOT-storage| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Intro-administrative-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#CVSROOT-storage| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[[#Intro-administrative-files| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1090,11 +1079,10 @@ by the client; the non-client/server <small>CVS</small> consults
 <hr>
 <div id="Intro-administrative-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Working-directory-storage| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Editing-administrative-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Working-directory-storage| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[[#Editing-administrative-files| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1147,11 +1135,10 @@ available features.
 <hr>
 <div id="Editing-administrative-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Intro-administrative-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Multiple-repositories| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Intro-administrative-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Intro-administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-repositories| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1179,11 +1166,10 @@ revisions.
 <hr>
 <div id="Multiple-repositories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Editing-administrative-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Creating-a-repository| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Editing-administrative-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[[#Creating-a-repository| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1241,11 +1227,10 @@ and server1, to update everything else.
 <hr>
 <div id="Creating-a-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Multiple-repositories| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Backing-up| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-repositories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[[#Backing-up| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1313,11 +1298,10 @@ don&rsquo;t want that, remove the history file after running
 <hr>
 <div id="Backing-up"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Creating-a-repository| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Moving-a-repository| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Creating-a-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[[#Moving-a-repository| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1385,11 +1369,10 @@ the changes into the repository.
 <hr>
 <div id="Moving-a-repository"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Backing-up| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Remote-repositories| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Backing-up| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[[#Remote-repositories| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1430,11 +1413,10 @@ isn&rsquo;t worth it.
 <hr>
 <div id="Remote-repositories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Moving-a-repository| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Server-requirements| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Moving-a-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[[#Server-requirements| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1496,11 +1478,10 @@ described in [[#Connecting-via-rsh|Connecting with rsh]].
 <hr>
 <div id="Server-requirements"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Remote-repositories| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Connecting-via-rsh| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Remote-repositories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
+<td valign="middle" align="left">|[[#Connecting-via-rsh| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1571,11 +1552,10 @@ trouble.
 <hr>
 <div id="Connecting-via-rsh"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Server-requirements| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Password-authenticated| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Server-requirements| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
+<td valign="middle" align="left">|[[#Password-authenticated| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1669,11 +1649,10 @@ the same on both the local and remote hosts.)
 <hr>
 <div id="Password-authenticated"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Connecting-via-rsh| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Password-authentication-server| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Connecting-via-rsh| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
+<td valign="middle" align="left">|[[#Password-authentication-server| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1703,11 +1682,10 @@ some adjustments on both the server and client sides.
 <hr>
 <div id="Password-authentication-server"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Password-authenticated| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Password-authentication-client| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Password-authenticated| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
+<td valign="middle" align="left">|[[#Password-authentication-client| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -2012,11 +1990,10 @@ want to include the &lsquo;<tt>passwd</tt>&rsquo; file in checkouts of
 <hr>
 <div id="Password-authentication-client"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Password-authentication-server| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Password-authentication-security| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Password-authentication-server| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
+<td valign="middle" align="left">|[[#Password-authentication-security| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -2121,11 +2098,10 @@ removed from the <code>CVS_PASSFILE</code> by using the
 <hr>
 <div id="Password-authentication-security"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Password-authentication-client| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#GSSAPI-authenticated| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Password-authentication-client| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
+<td valign="middle" align="left">|[[#GSSAPI-authenticated| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -2180,11 +2156,10 @@ security, get Kerberos.
 <hr>
 <div id="GSSAPI-authenticated"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Password-authentication-security| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Kerberos-authenticated| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Password-authentication-security| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
+<td valign="middle" align="left">|[[#Kerberos-authenticated| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -2250,11 +2225,10 @@ example,
 <hr>
 <div id="Kerberos-authenticated"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#GSSAPI-authenticated| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Connecting-via-fork| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#GSSAPI-authenticated| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
+<td valign="middle" align="left">|[[#Connecting-via-fork| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -2319,11 +2293,10 @@ connection via rsh; this version will not do so.
 <hr>
 <div id="Connecting-via-fork"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Kerberos-authenticated| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Read_002donly-access| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Kerberos-authenticated| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
+<td valign="middle" align="left">|[[#Read_002donly-access| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -2371,11 +2344,10 @@ environment variable.
 <hr>
 <div id="Read_002donly-access"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Connecting-via-fork| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Server-temporary-directory| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Connecting-via-fork| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[[#Server-temporary-directory| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -2474,11 +2446,10 @@ read-only access.
 <hr>
 <div id="Server-temporary-directory"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Read_002donly-access| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Read_002donly-access| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

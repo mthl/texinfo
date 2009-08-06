@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 3.6.1 @documentdescription: Summary text</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 3.6.1 @documentdescription: Summary text">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.6.1 @documentdescription: Summary text">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Global-Document-Commands.html#Global-Document-Commands" rel="up" title="3.6 Global Document Commands">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Global-Document-Commands.html#Global-Document-Commands" rel="previous" title="3.6 Global Document Commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="documentdescription"></a>
+<div class="node">
+<p>
+Next: <a href="setchapternewpage.html#setchapternewpage" accesskey="n" rel="next">setchapternewpage</a>, Up: <a href="Global-Document-Commands.html#Global-Document-Commands" accesskey="u" rel="up">Global Document Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="g_t_0040documentdescription_003a-Summary-text"></a>
+<h3 class="subsection">3.6.1 <code>@documentdescription</code>: Summary text</h3>
+<a name="index-Document-description"></a>
+<a name="index-Description-of-document"></a>
+<a name="index-Summary-of-document"></a>
+<a name="index-Abstract-of-document"></a>
+<a name="index-_003cmeta_003e-HTML-tag_002c-and-document-description"></a>
+<a name="index-documentdescription"></a>
+
+<p>When producing HTML output for a document, <code>makeinfo</code> writes a
+&lsquo;<samp>&lt;meta&gt;</samp>&rsquo; element in the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; to give some idea of the
+content of the document.  By default, this <em>description</em> is the title
+of the document, taken from the <code>@settitle</code> command
+(see <a href="settitle.html#settitle">settitle</a>).  To change this, use the <code>@documentdescription</code>
+environment, as in:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@documentdescription
+descriptive text.
+@end documentdescription
+</pre></td></tr></table>
+
+<p>This will produce the following output in the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; of the HTML:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">&lt;meta name=description content=&quot;descriptive text.&quot;&gt;
+</pre></td></tr></table>
+
+<p><code>@documentdescription</code> must be specified before the first node of
+the document.
+</p>
+
+<p>
+
+
+</p>
+</body>
+</html>

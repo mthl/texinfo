@@ -675,7 +675,7 @@ key: Commands
   entry: Commands
   texi_entry: Commands
   element_href: Functions-and-system-variables.txt#Functions-and-system-variables
-  element_text: 5. Functions and system variables
+  element_text: 5 Functions and system variables
 key: Commutative algebra
   origin_href: Commutative-algebra.txt#index-Commutative-algebra
   entry: Commutative algebra
@@ -741,7 +741,7 @@ key: Data types
   entry: Data types
   texi_entry: Data types
   element_href: Data-types.txt#Data-types
-  element_text: 4. Data types
+  element_text: 4 Data types
 key: Debugging tools
   origin_href: Debugging-tools.txt#index-Debugging-tools
   entry: Debugging tools
@@ -903,7 +903,7 @@ key: Examples
   entry: Examples
   texi_entry: Examples
   element_href: Examples.txt#Examples
-  element_text: A. Examples
+  element_text: Appendix A Examples
 key: Examples of ring declarations
   origin_href: Examples-of-ring-declarations.txt#index-Examples-of-ring-declarations
   entry: Examples of ring declarations
@@ -1011,7 +1011,7 @@ key: GMP
   entry: GMP
   texi_entry: GMP
   element_href: Preface.txt#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: GTZmod
   origin_href: GTZmod.txt#index-GTZmod
   entry: GTZmod
@@ -1131,7 +1131,7 @@ key: General concepts
   entry: General concepts
   texi_entry: General concepts
   element_href: General-concepts.txt#General-concepts
-  element_text: 3. General concepts
+  element_text: 3 General concepts
 key: General purpose
   origin_href: General-purpose.txt#index-General-purpose
   entry: General purpose
@@ -1317,7 +1317,7 @@ key: Index
   entry: Index
   texi_entry: Index
   element_href: Index.txt#Index
-  element_text: F. Index
+  element_text: F Index
 key: Interactive use
   origin_href: Interactive-use.txt#index-Interactive-use
   entry: Interactive use
@@ -1335,7 +1335,7 @@ key: Introduction
   entry: Introduction
   texi_entry: Introduction
   element_href: Introduction.txt#Introduction
-  element_text: 2. Introduction
+  element_text: 2 Introduction
 key: Invariant theory
   origin_href: Invariant-theory.txt#index-Invariant-theory
   entry: Invariant theory
@@ -1407,7 +1407,7 @@ key: LIBs
   entry: LIBs
   texi_entry: LIBs
   element_href: SINGULAR-libraries.txt#SINGULAR-libraries
-  element_text: D. SINGULAR libraries
+  element_text: Appendix D SINGULAR libraries
 key: Levandovskyy, Viktor
   origin_href: Preface.txt#index-Levandovskyy_002c-Viktor
   entry: Levandovskyy, Viktor
@@ -1485,7 +1485,7 @@ key: MP
   entry: MP
   texi_entry: MP
   element_href: Preface.txt#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: MP links
   origin_href: MP-links.txt#index-MP-links
   entry: MP links
@@ -1527,7 +1527,7 @@ key: Mathematical background
   entry: Mathematical background
   texi_entry: Mathematical background
   element_href: Mathematical-background.txt#Mathematical-background
-  element_text: C. Mathematical background
+  element_text: Appendix C Mathematical background
 key: Matrix orderings
   origin_href: Matrix-orderings.txt#index-Matrix-orderings
   entry: Matrix orderings
@@ -1713,7 +1713,7 @@ key: Polynomial data
   entry: Polynomial data
   texi_entry: Polynomial data
   element_href: Polynomial-data.txt#Polynomial-data
-  element_text: B. Polynomial data
+  element_text: Appendix B Polynomial data
 key: Pottier algorithm
   origin_href: Pottier.txt#index-Pottier-algorithm
   entry: Pottier algorithm
@@ -1725,7 +1725,7 @@ key: Preface
   entry: Preface
   texi_entry: Preface
   element_href: Preface.txt#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: Primary decomposition
   origin_href: Primary-decomposition.txt#index-Primary-decomposition
   entry: Primary decomposition
@@ -1839,7 +1839,7 @@ key: Release Notes
   entry: Release Notes
   texi_entry: Release Notes
   element_href: Release-Notes.txt#Release-Notes
-  element_text: E. Release Notes
+  element_text: E Release Notes
 key: Remainder
   origin_href: Remainder.txt#index-Remainder
   entry: Remainder
@@ -1923,7 +1923,7 @@ key: SINGULAR libraries
   entry: SINGULAR libraries
   texi_entry: SINGULAR libraries
   element_href: SINGULAR-libraries.txt#SINGULAR-libraries
-  element_text: D. SINGULAR libraries
+  element_text: Appendix D SINGULAR libraries
 key: SINGULARHIST
   origin_href: Editing-input.txt#index-SINGULARHIST
   entry: SINGULARHIST
@@ -2223,7 +2223,7 @@ key: Tricks and pitfalls
   entry: Tricks and pitfalls
   texi_entry: Tricks and pitfalls
   element_href: Tricks-and-pitfalls.txt#Tricks-and-pitfalls
-  element_text: 6. Tricks and pitfalls
+  element_text: 6 Tricks and pitfalls
 key: Type casting
   origin_href: Type-conversion-and-casting.txt#index-Type-casting
   entry: Type casting
@@ -2973,7 +2973,7 @@ key: copyright
   entry: copyright
   texi_entry: copyright
   element_href: Preface.txt#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: corank
   origin_href: corank.txt#index-corank
   entry: corank
@@ -3549,7 +3549,7 @@ key: expression list
   entry: expression list
   texi_entry: expression list
   element_href: Data-types.txt#Data-types
-  element_text: 4. Data types
+  element_text: 4 Data types
 key: extcurve
   origin_href: extcurve.txt#index-extcurve
   entry: extcurve
@@ -3609,7 +3609,7 @@ key: factory
   entry: factory
   texi_entry: factory
   element_href: Preface.txt#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: fastHC, option
   origin_href: option.txt#index-fastHC_002c-option
   entry: fastHC, option
@@ -4923,7 +4923,7 @@ key: libfac
   entry: libfac
   texi_entry: libfac
   element_href: Preface.txt#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: libparse
   origin_href: libparse.txt#index-libparse
   entry: libparse
@@ -6819,7 +6819,7 @@ key: readline
   entry: readline
   texi_entry: readline
   element_href: Preface.txt#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: real
   origin_href: Rings-and-orderings.txt#index-real
   entry: real

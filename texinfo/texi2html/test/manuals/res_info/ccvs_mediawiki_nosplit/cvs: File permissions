@@ -31,10 +31,10 @@ a per-directory basis.
 </p>
 <p>Note that users must also have write access to check
 out files, because <small>CVS</small> needs to create lock files
-(see section [cvs: Several developers simultaneously attempting to run CVS#Concurrency Several developers simultaneously attempting to run CVS]).  You can use LockDir in CVSROOT/config
+(see [cvs: Several developers simultaneously attempting to run CVS#Concurrency Concurrency]).  You can use LockDir in CVSROOT/config
 to put the lock files somewhere other than in the repository
 if you want to allow read-only access to some directories
-(see section [cvs: The CVSROOT%47config configuration file#config The CVSROOT/config configuration file]).
+(see [cvs: The CVSROOT%47config configuration file#config config]).
 </p>
 <p>Also note that users must have write access to the
 &lsquo;<tt>CVSROOT/val-tags</tt>&rsquo; file.  <small>CVS</small> uses it to keep
@@ -60,10 +60,10 @@ not affect the file permissions in the working
 directory; such files have the permissions which are
 typical for newly created files, except that sometimes
 <small>CVS</small> creates them read-only (see the sections on
-watches, [cvs: Telling CVS to watch certain files#Setting-a-watch Telling CVS to watch certain files]; -r, [cvs: Global options#Global-options Global options]; or <code>CVSREAD</code>, [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]).
+watches, [cvs: Telling CVS to watch certain files#Setting-a-watch Setting a watch]; -r, [cvs: Global options#Global-options Global options]; or <code>CVSREAD</code>, [cvs: All environment variables which affect CVS#Environment-variables Environment variables]).
 </p>
 <p>Note that using the client/server <small>CVS</small>
-(see section [cvs: Remote repositories#Remote-repositories Remote repositories]), there is no good way to
+(see [cvs: Remote repositories#Remote-repositories Remote repositories]), there is no good way to
 set <code>CVSUMASK</code>; the setting on the client machine
 has no effect.  If you are connecting with <code>rsh</code>, you
 can set <code>CVSUMASK</code> in &lsquo;<tt>.bashrc</tt>&rsquo; or &lsquo;<tt>.cshrc</tt>&rsquo;, as
@@ -74,7 +74,7 @@ of <small>CVS</small>; do not rely on the setting of
 </p>
 <p>Using pserver, you will generally need stricter
 permissions on the <small>CVSROOT</small> directory and
-directories above it in the tree; see [cvs: Security considerations with password authentication#Password-authentication-security Security considerations with password authentication].
+directories above it in the tree; see [cvs: Security considerations with password authentication#Password-authentication-security Password authentication security].
 </p>
 <div id="index-Setuid"></div>
 <div id="index-Setgid"></div>
@@ -97,7 +97,7 @@ possibly providing a false sense of security or opening
 security holes wider than the ones you are trying to
 fix, so read the documentation on pserver security
 carefully if you are considering this option
-([cvs: Security considerations with password authentication#Password-authentication-security Security considerations with password authentication]).
+([cvs: Security considerations with password authentication#Password-authentication-security Password authentication security]).
 </p>
 <hr>
 <div class="node">

@@ -144,7 +144,7 @@ changes need not be disruptive.
 <p>However, in some cases it may be necessary to
 understand how <small>CVS</small> stores data in the repository,
 for example you might need to track down <small>CVS</small> locks
-(see section [cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS]) or you might need to deal with
+(see [cvs: Multiple developers#Concurrency Concurrency]) or you might need to deal with
 the file permissions appropriate for the repository.
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Repository-files| Repository files]]::<nowiki>            What files are stored in the repository
@@ -253,7 +253,7 @@ files in this format.
 ways from the standard format.  The biggest difference
 is magic branches; for more information see [cvs: Branching and merging#Magic-branch-numbers Magic branch numbers].  Also in <small>CVS</small> the valid tag names
 are a subset of what <small>RCS</small> accepts; for <small>CVS</small>&rsquo;s
-rules see [cvs: Revisions#Tags Tags&ndash;Symbolic revisions].
+rules see [cvs: Revisions#Tags Tags].
 </p>
 <hr>
 <div id="File-permissions"></div>
@@ -288,10 +288,10 @@ a per-directory basis.
 </p>
 <p>Note that users must also have write access to check
 out files, because <small>CVS</small> needs to create lock files
-(see section [cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS]).  You can use LockDir in CVSROOT/config
+(see [cvs: Multiple developers#Concurrency Concurrency]).  You can use LockDir in CVSROOT/config
 to put the lock files somewhere other than in the repository
 if you want to allow read-only access to some directories
-(see section [cvs: Reference manual for Administrative files#config The CVSROOT/config configuration file]).
+(see [cvs: Reference manual for Administrative files#config config]).
 </p>
 <p>Also note that users must have write access to the
 &lsquo;<tt>CVSROOT/val-tags</tt>&rsquo; file.  <small>CVS</small> uses it to keep
@@ -317,10 +317,10 @@ not affect the file permissions in the working
 directory; such files have the permissions which are
 typical for newly created files, except that sometimes
 <small>CVS</small> creates them read-only (see the sections on
-watches, [cvs: Multiple developers#Setting-a-watch Telling CVS to watch certain files]; -r, [cvs: Guide to CVS commands#Global-options Global options]; or <code>CVSREAD</code>, [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]).
+watches, [cvs: Multiple developers#Setting-a-watch Setting a watch]; -r, [cvs: Guide to CVS commands#Global-options Global options]; or <code>CVSREAD</code>, [cvs: All environment variables which affect CVS#Environment-variables Environment variables]).
 </p>
 <p>Note that using the client/server <small>CVS</small>
-(see section [[#Remote-repositories|Remote repositories]]), there is no good way to
+(see [[#Remote-repositories|Remote repositories]]), there is no good way to
 set <code>CVSUMASK</code>; the setting on the client machine
 has no effect.  If you are connecting with <code>rsh</code>, you
 can set <code>CVSUMASK</code> in &lsquo;<tt>.bashrc</tt>&rsquo; or &lsquo;<tt>.cshrc</tt>&rsquo;, as
@@ -331,7 +331,7 @@ of <small>CVS</small>; do not rely on the setting of
 </p>
 <p>Using pserver, you will generally need stricter
 permissions on the <small>CVSROOT</small> directory and
-directories above it in the tree; see [[#Password-authentication-security|Security considerations with password authentication]].
+directories above it in the tree; see [[#Password-authentication-security|Password authentication security]].
 </p>
 <div id="index-Setuid"></div>
 <div id="index-Setgid"></div>
@@ -354,7 +354,7 @@ possibly providing a false sense of security or opening
 security holes wider than the ones you are trying to
 fix, so read the documentation on pserver security
 carefully if you are considering this option
-([[#Password-authentication-security|Security considerations with password authentication]]).
+([[#Password-authentication-security|Password authentication security]]).
 </p>
 <hr>
 <div id="Windows-permissions"></div>
@@ -384,7 +384,7 @@ implications of enabling that option, nor do I know
 whether there is something which <small>CVS</small> could be doing
 differently in order to avoid the problem.  If you find
 something out, please let us know as described in
-[cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual].
+[cvs: Dealing with bugs in CVS or this manual#BUGS BUGS].
 </p>
 <hr>
 <div id="Attic"></div>
@@ -442,7 +442,7 @@ so implementations should silently ignore additional
 files.
 </p>
 <p>This behavior is implemented only by <small>CVS</small> 1.7 and
-later; for details see [cvs: Multiple developers#Watches-Compatibility Using watches with old versions of CVS].
+later; for details see [cvs: Multiple developers#Watches-Compatibility Watches Compatibility].
 </p>
 <p>The format of the fileattr file is a series of entries
 of the following form (where &lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo;
@@ -536,7 +536,7 @@ Next: [[#CVSROOT-storage|CVSROOT storage]], Previous: [[#CVS-in-repository|CVS i
 <div id="index-_0023cvs_002elock_002c-technical-details"></div>
 <div id="index-Locks_002c-cvs_002c-technical-details"></div>
 <p>For an introduction to <small>CVS</small> locks focusing on
-user-visible behavior, see [cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS].  The
+user-visible behavior, see [cvs: Multiple developers#Concurrency Concurrency].  The
 following section is aimed at people who are writing
 tools which want to access a <small>CVS</small> repository without
 interfering with other tools accessing the same
@@ -635,10 +635,10 @@ file, <small>CVS</small> should print
 
 <p>and update the checked out copy in
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;.  If it does not, there is
-something wrong (see section [cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual]).  To add your own files
+something wrong (see [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS]).  To add your own files
 to the files to be updated in this fashion, you can add
 them to the &lsquo;<tt>checkoutlist</tt>&rsquo; administrative file
-(see section [cvs: Reference manual for Administrative files#checkoutlist The checkoutlist file]).
+(see [cvs: Reference manual for Administrative files#checkoutlist checkoutlist]).
 </p>
 <div id="index-modules_002edb"></div>
 <div id="index-modules_002epag"></div>
@@ -657,7 +657,7 @@ database will be stored in the files &lsquo;<tt>modules.db</tt>&rsquo;,
 &lsquo;<tt>modules.pag</tt>&rsquo;, and/or &lsquo;<tt>modules.dir</tt>&rsquo;.
 </p>
 <p>For information on the meaning of the various
-administrative files, see [cvs: Reference manual for Administrative files#Administrative-files Reference manual for Administrative files].
+administrative files, see [cvs: Reference manual for Administrative files#Administrative-files Administrative files].
 </p>
 <hr>
 <div id="Working-directory-storage"></div>
@@ -702,7 +702,7 @@ such systems either.
 <dl compact="compact">
 <dt>&lsquo;<tt>Root</tt>&rsquo;</dt>
 <dd><p>This file contains the current <small>CVS</small> root, as
-described in [[#Specifying-a-repository|Telling CVS where your repository is]].
+described in [[#Specifying-a-repository|Specifying a repository]].
 </p>
 <div id="index-Repository-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fRepository-file"></div>
@@ -779,7 +779,7 @@ modified a program should take the timestamp of the file
 and simply do a string compare with <var>timestamp</var>.
 If there was a conflict, <var>conflict</var> can be set to
 the modification time of the file after the file has been
-written with conflict markers (see section [cvs: Multiple developers#Conflicts-example Conflicts example]).
+written with conflict markers (see [cvs: Multiple developers#Conflicts-example Conflicts example]).
 Thus if <var>conflict</var> is subsequently the same as the actual
 modification time of the file it means that the user
 has obviously not resolved the conflict.  <var>options</var>
@@ -949,7 +949,7 @@ then (atomically where possible), rename it to
 </dd>
 <dt>&lsquo;<tt>Template</tt>&rsquo;</dt>
 <dd><p>This file contains the template specified by the
-&lsquo;<tt>rcsinfo</tt>&rsquo; file (see section [cvs: Reference manual for Administrative files#rcsinfo Rcsinfo]).  It is only used
+&lsquo;<tt>rcsinfo</tt>&rsquo; file (see [cvs: Reference manual for Administrative files#rcsinfo rcsinfo]).  It is only used
 by the client; the non-client/server <small>CVS</small> consults
 &lsquo;<tt>rcsinfo</tt>&rsquo; directly.
 </p></dd>
@@ -970,7 +970,7 @@ Next: [[#Multiple-repositories|Multiple repositories]], Previous: [[#Working-dir
 
 
 <p>The directory &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; contains some <em>administrative
-files</em>.  See section [cvs: Reference manual for Administrative files#Administrative-files Reference manual for Administrative files], for a complete description.
+files</em>.  See [cvs: Reference manual for Administrative files#Administrative-files Administrative files], for a complete description.
 You can use <small>CVS</small> without any of these files, but
 some commands work better when at least the
 &lsquo;<tt>modules</tt>&rsquo; file is properly set up.
@@ -997,7 +997,7 @@ above are examples of such lines.
 
 <p>The line that defines the module called &lsquo;<samp>modules</samp>&rsquo;
 uses features that are not explained here.
-See section [cvs: Reference manual for Administrative files#modules The modules file], for a full explanation of all the
+See [cvs: Reference manual for Administrative files#modules modules], for a full explanation of all the
 available features.
 </p>
 <hr>
@@ -1045,7 +1045,7 @@ variable, the &lsquo;<samp>-d</samp>&rsquo; option to <small>CVS</small>, or (on
 you have checked out a working directory) by simply
 allowing <small>CVS</small> to use the repository that was used
 to check out the working directory
-(see section [[#Specifying-a-repository|Telling CVS where your repository is]]).
+(see [[#Specifying-a-repository|Specifying a repository]]).
 </p>
 <p>The big advantage of having multiple repositories is
 that they can reside on different servers.  With <small>CVS</small>
@@ -1110,13 +1110,13 @@ mode; the client machines need not have any access to
 it other than via the <small>CVS</small> protocol.  It is not
 possible to use <small>CVS</small> to read from a repository
 which one only has read access to; <small>CVS</small> needs to be
-able to create lock files (see section [cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS]).
+able to create lock files (see [cvs: Multiple developers#Concurrency Concurrency]).
 </p>
 <div id="index-init-_0028subcommand_0029"></div>
 <p>To create a repository, run the <code>cvs init</code>
 command.  It will set up an empty repository in the
 <small>CVS</small> root specified in the usual way
-(see section [[#Repository|The Repository]]).  For example,
+(see [[#Repository|Repository]]).  For example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d /usr/local/cvsroot init
 </nowiki></pre></td></tr></table>
@@ -1128,7 +1128,7 @@ repository.
 </p>
 <p><code>cvs init</code> will enable history logging; if you
 don&rsquo;t want that, remove the history file after running
-<code>cvs init</code>.  See section [cvs: Reference manual for Administrative files#history-file The history file].
+<code>cvs init</code>.  See [cvs: Reference manual for Administrative files#history-file history file].
 </p>
 <hr>
 <div id="Backing-up"></div>
@@ -1157,7 +1157,7 @@ server, or similar mechanisms.  The details would
 depend on your operating system and how you have
 <small>CVS</small> set up.  To lock <small>CVS</small>, you would create
 &lsquo;<tt>#cvs.rfl</tt>&rsquo; locks in each repository directory.
-See [cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS], for more on <small>CVS</small> locks.
+See [cvs: Multiple developers#Concurrency Concurrency], for more on <small>CVS</small> locks.
 Having said all this, if you just back up without any
 of these precautions, the results are unlikely to be
 particularly dire.  Restoring from backup, the
@@ -1218,7 +1218,7 @@ other way to make sure that you don&rsquo;t lose any
 changes.  If you really do want to reuse the existing
 working directory, it should be possible with manual
 surgery on the &lsquo;<tt>CVS/Repository</tt>&rsquo; files.  You can
-see [[#Working-directory-storage|How data is stored in the working directory]], for information on
+see [[#Working-directory-storage|Working directory storage]], for information on
 the &lsquo;<tt>CVS/Repository</tt>&rsquo; and &lsquo;<tt>CVS/Root</tt>&rsquo; files, but
 unless you are sure you want to bother, it probably
 isn&rsquo;t worth it.
@@ -1260,7 +1260,7 @@ the format of the repository name is:
 <p>Specifying a password in the repository name is not recommended during
 checkout, since this will cause <small>CVS</small> to store a cleartext copy of the
 password in each created directory.  <code>cvs login</code> first instead
-(see section [[#Password-authentication-client|Using the client with password authentication]]).
+(see [[#Password-authentication-client|Password authentication client]]).
 </p>
 <p>The details of exactly what needs to be set up depend
 on how you are connecting to the server.
@@ -1268,7 +1268,7 @@ on how you are connecting to the server.
 <p>If <var>method</var> is not specified, and the repository
 name contains &lsquo;<samp>:</samp>&rsquo;, then the default is <code>ext</code>
 or <code>server</code>, depending on your platform; both are
-described in [[#Connecting-via-rsh|Connecting with rsh]].
+described in [[#Connecting-via-rsh|Connecting via rsh]].
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Server-requirements| Server requirements]]::<nowiki>         Memory and other resources for servers
 </nowiki>&bull;[[#Connecting-via-rsh| Connecting via rsh]]::<nowiki>          Using the <code>rsh</code> program to connect
@@ -1297,7 +1297,7 @@ should be sufficient to estimate memory requirements.
 There are two such areas documented here; other memory
 consumption should be small by comparison (if you find
 that is not the case, let us know, as described in
-[cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual], so we can update this documentation).
+[cvs: Dealing with bugs in CVS or this manual#BUGS BUGS], so we can update this documentation).
 </p>
 <p>The first area of big memory consumption is large
 checkouts, when using the <small>CVS</small> server.  The server
@@ -1459,7 +1459,7 @@ Next: [[#Password-authentication-client|Password authentication client]], Up: [[
 
 <p>First of all, you probably want to tighten the
 permissions on the &lsquo;<tt>$CVSROOT</tt>&rsquo; and
-&lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; directories.  See [[#Password-authentication-security|Security considerations with password authentication]], for more details.
+&lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; directories.  See [[#Password-authentication-security|Password authentication security]], for more details.
 </p>
 <div id="index-pserver-_0028subcommand_0029"></div>
 <div id="index-Remote-repositories_002c-port-specification-1"></div>
@@ -1480,8 +1480,8 @@ connection on the right port.  By default, the port
 number is 2401; it would be different if your client
 were compiled with <code>CVS_AUTH_PORT</code> defined to
 something else, though.  This can also be specified in the CVSROOT variable
-(see section [[#Remote-repositories|Remote repositories]]) or overridden with the CVS_CLIENT_PORT
-environment variable (see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]).
+(see [[#Remote-repositories|Remote repositories]]) or overridden with the CVS_CLIENT_PORT
+environment variable (see [cvs: All environment variables which affect CVS#Environment-variables Environment variables]).
 </p>
 <p>        If your <code>inetd</code> allows raw port numbers in
 &lsquo;<tt>/etc/inetd.conf</tt>&rsquo;, then the following (all on a
@@ -1539,16 +1539,16 @@ the <code>port</code> line.)
 to reread its initialization files.
 </p>
 <p>If you are having trouble setting this up, see
-[cvs: Troubleshooting#Connection Trouble making a connection to a CVS server].
+[cvs: Troubleshooting#Connection Connection].
 </p>
 <div id="index-CVS-passwd-file"></div>
 <div id="index-passwd-_0028admin-file_0029"></div>
 <p>Because the client stores and transmits passwords in
-cleartext (almost&mdash;see [[#Password-authentication-security|Security considerations with password authentication]], for details), a separate <small>CVS</small> password
+cleartext (almost&mdash;see [[#Password-authentication-security|Password authentication security]], for details), a separate <small>CVS</small> password
 file is generally used, so people don&rsquo;t compromise
 their regular passwords when they access the
 repository.  This file is
-&lsquo;<tt>$CVSROOT/CVSROOT/passwd</tt>&rsquo; (see section [[#Intro-administrative-files|The administrative files]]).  It uses a colon-separated
+&lsquo;<tt>$CVSROOT/CVSROOT/passwd</tt>&rsquo; (see [[#Intro-administrative-files|Intro administrative files]]).  It uses a colon-separated
 format, similar to &lsquo;<tt>/etc/passwd</tt>&rsquo; on Unix systems,
 except that it has fewer fields: <small>CVS</small> username,
 optional password, and an optional system username for
@@ -1573,7 +1573,7 @@ paste in passwords directly from regular Unix
 including an empty password.  (This is typical for
 sites granting anonymous read-only access; for
 information on how to do the &quot;read-only&quot; part, see
-[[#Read_002donly-access|Read-only repository access]].)
+[[#Read_002donly-access|Read-only access]].)
 </p>
 <p>The second and third lines will grant access to
 <code>bach</code> and <code>spwang</code> if they supply their
@@ -1641,7 +1641,7 @@ does not exist, then the server can try to authenticate
 the username and password using the operating system&rsquo;s
 user-lookup routines (this &quot;fallback&quot; behavior can be
 disabled by setting <code>SystemAuth=no</code> in the
-<small>CVS</small> &lsquo;<tt>config</tt>&rsquo; file, see section [cvs: Reference manual for Administrative files#config The CVSROOT/config configuration file]).
+<small>CVS</small> &lsquo;<tt>config</tt>&rsquo; file, see [cvs: Reference manual for Administrative files#config config]).
 </p>
 <p>The default fallback behaviour is to look in 
 &lsquo;<tt>/etc/passwd</tt>&rsquo; for this system password unless your
@@ -1701,7 +1701,7 @@ feature should not be used if you may not have control of the name
 authentication might be a security risk: <small>CVS</small>
 operations would then be authenticated with that user&rsquo;s
 regular login password, and the password flies across
-the network in plaintext.  See [[#Password-authentication-security|Security considerations with password authentication]] for more on this.
+the network in plaintext.  See [[#Password-authentication-security|Password authentication security]] for more on this.
 This may be more of a problem with PAM authentication
 because it is likely that the source of the system 
 password is some central authentication service like
@@ -1729,7 +1729,7 @@ necessary.
 one-time-passwords (OTP) for <small>CVS</small> authentication/authorization.  If
 OTPs are desired, the administrator may wish to encourage the use of
 one of the other Client/Server access methods.  See the section on
-see section [[#Remote-repositories|Remote repositories]] for a list of other methods.
+see [[#Remote-repositories|Remote repositories]] for a list of other methods.
 </p>
 <p>Right now, the only way to put a password in the
 <small>CVS</small> &lsquo;<tt>passwd</tt>&rsquo; file is to paste it there from
@@ -1742,7 +1742,7 @@ rather than via <small>CVS</small>.  This is because of the
 possible security risks of having the &lsquo;<tt>passwd</tt>&rsquo;
 file checked out to people&rsquo;s working copies.  If you do
 want to include the &lsquo;<tt>passwd</tt>&rsquo; file in checkouts of
-&lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;, see [cvs: Reference manual for Administrative files#checkoutlist The checkoutlist file].
+&lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;, see [cvs: Reference manual for Administrative files#checkoutlist checkoutlist].
 </p>
 
 <hr>
@@ -1829,7 +1829,7 @@ server side, in which case you&rsquo;ll have to re-run
 <p>Note that if the &lsquo;<samp>:pserver:</samp>&rsquo; were not present in
 the repository specification, <small>CVS</small> would assume it
 should use <code>rsh</code> to connect with the server
-instead (see section [[#Connecting-via-rsh|Connecting with rsh]]).
+instead (see [[#Connecting-via-rsh|Connecting via rsh]]).
 </p>
 <p>Of course, once you have a working copy checked out and
 are running <small>CVS</small> commands from within it, there is
@@ -1860,7 +1860,7 @@ system administrator accidentally looking at the file),
 and will not prevent even a naive attacker from gaining
 the password.
 </p>
-<p>The separate <small>CVS</small> password file (see section [[#Password-authentication-server|Setting up the server for password authentication]]) allows people
+<p>The separate <small>CVS</small> password file (see [[#Password-authentication-server|Password authentication server]]) allows people
 to use a different password for repository access than
 for login access.  On the other hand, once a user has
 non-read-only
@@ -1928,13 +1928,13 @@ request encryption.
 </p>
 <p>GSSAPI connections are handled on the server side by
 the same server which handles the password
-authentication server; see [[#Password-authentication-server|Setting up the server for password authentication]].  If you are using a GSSAPI mechanism such as
+authentication server; see [[#Password-authentication-server|Password authentication server]].  If you are using a GSSAPI mechanism such as
 Kerberos which provides for strong authentication, you
 will probably want to disable the ability to
 authenticate via cleartext passwords.  To do so, create
 an empty &lsquo;<tt>CVSROOT/passwd</tt>&rsquo; password file, and set
 <code>SystemAuth=no</code> in the config file
-(see section [cvs: Reference manual for Administrative files#config The CVSROOT/config configuration file]).
+(see [cvs: Reference manual for Administrative files#config config]).
 </p>
 <p>The GSSAPI server uses a principal name of
 cvs/<var>hostname</var>, where <var>hostname</var> is the
@@ -1960,7 +1960,7 @@ Next: [[#Connecting-via-fork|Connecting via fork]], Previous: [[#GSSAPI-authenti
 <div id="index-Security_002c-kerberos"></div>
 <div id="index-_003akserver_003a_002c-setting-up"></div>
 <p>The easiest way to use kerberos is to use the kerberos
-<code>rsh</code>, as described in [[#Connecting-via-rsh|Connecting with rsh]].
+<code>rsh</code>, as described in [[#Connecting-via-rsh|Connecting via rsh]].
 The main disadvantage of using rsh is that all the data
 needs to pass through additional programs, so it may be
 slower.  So if you have kerberos installed you can
@@ -1988,9 +1988,9 @@ request encryption.
 <p>You need to edit &lsquo;<tt>inetd.conf</tt>&rsquo; on the server
 machine to run <code>cvs kserver</code>.  The client uses
 port 1999 by default; if you want to use another port
-specify it in the <code>CVSROOT</code> (see section [[#Remote-repositories|Remote repositories]])
+specify it in the <code>CVSROOT</code> (see [[#Remote-repositories|Remote repositories]])
 or the <code>CVS_CLIENT_PORT</code> environment variable
-(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]) on the client.
+(see [cvs: All environment variables which affect CVS#Environment-variables Environment variables]) on the client.
 </p>
 <div id="index-kinit"></div>
 <p>When you want to use <small>CVS</small>, get a ticket in the
@@ -2058,7 +2058,7 @@ Next: [[#Server-temporary-directory|Server temporary directory]], Previous: [[#R
 
 <p>        It is possible to grant read-only repository
 access to people using the password-authenticated
-server (see section [[#Password-authenticated|Direct connection with password authentication]]).  (The
+server (see [[#Password-authenticated|Password authenticated]]).  (The
 other access methods do not have explicit support for
 read-only users because those methods all assume login
 access to the repository machine anyway, and therefore
@@ -2070,7 +2070,7 @@ those <small>CVS</small> operations which do not modify the
 repository, except for certain &ldquo;administrative&rdquo; files
 (such as lock files and the history file).  It may be
 desirable to use this feature in conjunction with
-user-aliasing (see section [[#Password-authentication-server|Setting up the server for password authentication]]).
+user-aliasing (see [[#Password-authentication-server|Password authentication server]]).
 </p>
 <p>Unlike with previous versions of <small>CVS</small>, read-only
 users should be able merely to read the repository, and
@@ -2112,7 +2112,7 @@ read-only users still need to be listed in the
 &lsquo;<tt>readers</tt>&rsquo; file.
 </p>
 <p>        Note: if your <small>CVS</small> &lsquo;<tt>passwd</tt>&rsquo;
-file maps cvs users onto system users (see section [[#Password-authentication-server|Setting up the server for password authentication]]), make sure you deny or grant
+file maps cvs users onto system users (see [[#Password-authentication-server|Password authentication server]]), make sure you deny or grant
 read-only access using the <em>cvs</em> usernames, not
 the system usernames.  That is, the &lsquo;<tt>readers</tt>&rsquo; and
 &lsquo;<tt>writers</tt>&rsquo; files contain cvs usernames, which may
@@ -2155,8 +2155,8 @@ directories.  They are named
 <p>where <var>pid</var> is the process identification number of
 the server.
 They are located in the directory specified by 
-the &lsquo;<samp>-T</samp>&rsquo; global option (see section [cvs: Guide to CVS commands#Global-options Global options]), 
-the <code>TMPDIR</code> environment variable (see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]), 
+the &lsquo;<samp>-T</samp>&rsquo; global option (see [cvs: Guide to CVS commands#Global-options Global options]), 
+the <code>TMPDIR</code> environment variable (see [cvs: All environment variables which affect CVS#Environment-variables Environment variables]), 
 or, failing that, &lsquo;<tt>/tmp</tt>&rsquo;.
 </p>
 <p>In most cases the server will remove the temporary

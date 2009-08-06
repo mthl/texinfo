@@ -1,10 +1,9 @@
 <div id="Invoking-CVS"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Guide to CVS commands#update-output  &lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Guide to CVS commands#update-output  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

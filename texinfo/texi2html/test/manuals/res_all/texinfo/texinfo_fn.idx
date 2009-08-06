@@ -279,7 +279,7 @@ key: bye
   entry: bye
   texi_entry: @code{bye}
   element_href: texinfo_5.txt#Ending-a-File
-  element_text: 4. Ending a Texinfo File
+  element_text: 4 Ending a Texinfo File
 key: bye 
   origin_href: texinfo_5.txt#index-bye-1
   entry: bye
@@ -609,7 +609,7 @@ key: end
   entry: end
   texi_entry: @code{end}
   element_href: texinfo_11.txt#Quotations-and-Examples
-  element_text: 10. Quotations and Examples
+  element_text: 10 Quotations and Examples
 key: end 
   origin_href: texinfo_12.txt#index-end-1
   entry: end
@@ -1053,7 +1053,7 @@ key: menu
   entry: menu
   texi_entry: @code{menu}
   element_href: texinfo_8.txt#Menus
-  element_text: 7. Menus
+  element_text: 7 Menus
 key: minus
   origin_href: texinfo_14.txt#index-minus
   entry: minus
@@ -1239,7 +1239,7 @@ key: refill
   entry: refill
   texi_entry: @code{refill}
   element_href: texinfo_28.txt#Refilling-Paragraphs
-  element_text: G. Refilling Paragraphs
+  element_text: Appendix G Refilling Paragraphs
 key: result
   origin_href: texinfo_14.txt#index-result
   entry: result

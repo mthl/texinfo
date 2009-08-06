@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 15.3 Two or More `First' Lines</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 15.3 Two or More `First' Lines">
+<meta name="keywords" content="GNU Texinfo 4.2: 15.3 Two or More `First' Lines">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Definition-Commands.html#Definition-Commands" rel="up" title="15 Definition Commands">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Optional-Arguments.html#Optional-Arguments" rel="previous" title="15.2 Optional and Repeated Arguments">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="deffnx"></a>
+<div class="node">
+<p>
+Next: <a href="Def-Cmds-in-Detail.html#Def-Cmds-in-Detail" accesskey="n" rel="next">Def Cmds in Detail</a>, Previous: <a href="Optional-Arguments.html#Optional-Arguments" accesskey="p" rel="previous">Optional Arguments</a>, Up: <a href="Definition-Commands.html#Definition-Commands" accesskey="u" rel="up">Definition Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Two-or-More-_0060First_0027-Lines"></a>
+<h2 class="section">15.3 Two or More &lsquo;First&rsquo; Lines</h2>
+<a name="index-Two-_0060First_0027-Lines-for-_0040deffn"></a>
+<a name="index-Grouping-two-definitions-together"></a>
+<a name="index-Definitions-grouped-together"></a>
+<a name="index-deffnx"></a>
+
+<p>To create two or more &lsquo;first&rsquo; or header lines for a definition, follow
+the first <code>@deffn</code> line by a line beginning with <code>@deffnx</code>.
+The <code>@deffnx</code> command works exactly like <code>@deffn</code>
+except that it does not generate extra vertical white space between it
+and the preceding line.
+</p>
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@deffn {Interactive Command} isearch-forward
+@deffnx {Interactive Command} isearch-backward
+These two search commands are similar except &hellip;
+@end deffn
+</pre></td></tr></table>
+
+<p>produces
+</p>
+<dl>
+<dt><a name="index-isearch_002dforward"></a>Interactive Command: <b>isearch-forward</b></dt>
+<dt><a name="index-isearch_002dbackward"></a>Interactive Command: <b>isearch-backward</b></dt>
+<dd><p>These two search commands are similar except &hellip;
+</p></dd></dl>
+
+<p>Each definition command has an &lsquo;x&rsquo; form: <code>@defunx</code>,
+<code>@defvrx</code>, <code>@deftypefunx</code>, etc.
+</p>
+<p>The &lsquo;x&rsquo; forms work just like <code>@itemx</code>; see <a href="itemx.html#itemx"><code>@itemx</code></a>.
+</p>
+<p>
+
+
+</p>
+</body>
+</html>

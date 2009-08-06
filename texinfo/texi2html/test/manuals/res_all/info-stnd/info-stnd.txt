@@ -2,29 +2,29 @@ Table of Contents
 *****************
 
 GNU Info
-1. What is Info?
-2. Invoking Info
-3. Moving the Cursor
-4. Moving Text Within a Window
-5. Selecting a Node
-6. Searching an Info File
-7. Selecting Cross References
+1 What is Info?
+2 Invoking Info
+3 Moving the Cursor
+4 Moving Text Within a Window
+5 Selecting a Node
+6 Searching an Info File
+7 Selecting Cross References
  7.1 Parts of an Xref
  7.2 Selecting Xrefs
-8. Manipulating Multiple Windows
+8 Manipulating Multiple Windows
  8.1 The Mode Line
  8.2 Window Commands
  8.3 The Echo Area
-9. Printing Nodes
-10. Miscellaneous Commands
-11. Manipulating Variables
-12. Customizing Key Bindings and Variables
+9 Printing Nodes
+10 Miscellaneous Commands
+11 Manipulating Variables
+12 Customizing Key Bindings and Variables
  12.1 Invoking infokey
  12.2 infokey source format
-A. Copying This Manual
+Appendix A Copying This Manual
  A.1 GNU Free Documentation License
   A.1.1 ADDENDUM: How to use this License for your documents
-B. Index
+Appendix B Index
 
 
 GNU Info

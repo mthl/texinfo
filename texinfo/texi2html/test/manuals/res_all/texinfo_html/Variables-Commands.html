@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 15.4.2 Variables and Similar Entities</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 15.4.2 Variables and Similar Entities">
+<meta name="keywords" content="GNU Texinfo 4.2: 15.4.2 Variables and Similar Entities">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Def-Cmds-in-Detail.html#Def-Cmds-in-Detail" rel="up" title="15.4 The Definition Commands">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Functions-Commands.html#Functions-Commands" rel="previous" title="15.4.1 Functions and Similar Entities">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Variables-Commands"></a>
+<div class="node">
+<p>
+Next: <a href="Typed-Functions.html#Typed-Functions" accesskey="n" rel="next">Typed Functions</a>, Previous: <a href="Functions-Commands.html#Functions-Commands" accesskey="p" rel="previous">Functions Commands</a>, Up: <a href="Def-Cmds-in-Detail.html#Def-Cmds-in-Detail" accesskey="u" rel="up">Def Cmds in Detail</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Variables-and-Similar-Entities"></a>
+<h3 class="subsection">15.4.2 Variables and Similar Entities</h3>
+
+<p>Here are the commands for defining variables and similar
+entities:
+</p>
+<dl compact="compact">
+<dd><a name="index-defvr"></a>
+</dd>
+<dt><code>@defvr <var>category</var> <var>name</var></code></dt>
+<dd><p>The <code>@defvr</code> command is a general definition command for
+something like a variable&mdash;an entity that records a value.  You must
+choose a term to describe the category of entity being defined; for
+example, &ldquo;Variable&rdquo; could be used if the entity is a variable.
+Write the <code>@defvr</code> command at the beginning of a line and
+follow it on the same line by the category of the entity and the
+name of the entity.
+</p>
+<p>Capitalize the category name like a title.  If the name of the category
+contains spaces, as in the name &ldquo;User Option&rdquo;, enclose it in braces.
+Otherwise, the second word will be mistaken for the name of the entity.
+For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defvr {User Option} fill-column
+This buffer-local variable specifies
+the maximum width of filled lines.
+&hellip;
+@end defvr
+</pre></td></tr></table>
+
+<p>Terminate the definition with <code>@end defvr</code> on a line of its
+own.
+</p>
+<p>The template is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defvr <var>category</var> <var>name</var>
+<var>body-of-definition</var>
+@end defvr
+</pre></td></tr></table>
+
+<p><code>@defvr</code> creates an entry in the index of variables for <var>name</var>.
+</p>
+<a name="index-defvar"></a>
+</dd>
+<dt><code>@defvar <var>name</var></code></dt>
+<dd><p>The <code>@defvar</code> command is the definition command for variables.
+<code>@defvar</code> is equivalent to &lsquo;<samp>@defvr Variable
+&hellip;</samp>&rsquo;.
+</p>
+<p>For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defvar kill-ring
+&hellip;
+@end defvar
+</pre></td></tr></table>
+
+<p>The template is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defvar <var>name</var>
+<var>body-of-definition</var>
+@end defvar
+</pre></td></tr></table>
+
+<p><code>@defvar</code> creates an entry in the index of variables for
+<var>name</var>.
+</p>
+<a name="index-defopt"></a>
+</dd>
+<dt><code>@defopt <var>name</var></code></dt>
+<dd><a name="index-User-options_002c-marking"></a>
+<p>The <code>@defopt</code> command is the definition command for <em>user
+options</em>, i.e., variables intended for users to change according to
+taste; Emacs has many such (see <a href="../emacs/Variables.html#Variables">(emacs)Variables</a> section &lsquo;Variables&rsquo; in <cite>The GNU Emacs Manual</cite>).  <code>@defopt</code> is equivalent to &lsquo;<samp>@defvr {User
+Option} &hellip;</samp>&rsquo; and works like <code>@defvar</code>.
+</p></dd>
+</dl>
+
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="Typed-Functions.html#Typed-Functions" accesskey="n" rel="next">Typed Functions</a>, Previous: <a href="Functions-Commands.html#Functions-Commands" accesskey="p" rel="previous">Functions Commands</a>, Up: <a href="Def-Cmds-in-Detail.html#Def-Cmds-in-Detail" accesskey="u" rel="up">Def Cmds in Detail</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

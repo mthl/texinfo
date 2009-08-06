@@ -27,7 +27,7 @@ compared.  If any directories are given, all files
 under them will be compared.
 </p>
 <p>The exit status for diff is different than for other
-<small>CVS</small> commands; for details [cvs: CVS's exit status#Exit-status CVS&rsquo;s exit status].
+<small>CVS</small> commands; for details [cvs: CVS's exit status#Exit-status Exit status].
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: diff options#diff-options  diff options]::<nowiki>                diff options
 </nowiki>&bull;[cvs: diff examples#diff-examples  diff examples]::<nowiki>               diff examples

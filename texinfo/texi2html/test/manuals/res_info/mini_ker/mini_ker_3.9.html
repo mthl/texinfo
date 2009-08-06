@@ -36,7 +36,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <link href="mini_ker_U.4.html#Concepts-index" rel="index" title="Concepts index">
 <link href="mini_ker_top.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
-<link href="mini_ker_3.html#Advanced-programming" rel="up" title="3. Advanced Miniker programming">
+<link href="mini_ker_3.html#Advanced-programming" rel="up" title="3 Advanced Miniker programming">
 <link href="mini_ker_C.1.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
 <link href="mini_ker_3.8.html#Observations-and-data" rel="previous" title="3.8 Observations and data">
 <style type="text/css">
@@ -67,7 +67,7 @@ ul.toc {list-style: none}
 
 <a name="Explicit-model-size"></a>
 <ul class="toc"><li><a href="mini_ker_top.html#Top">Miniker 102 manual</a> </li>
-<li><ul class="toc"><li><a href="mini_ker_3.html#Advanced-programming">3. Advanced Miniker programming</a> </li>
+<li><ul class="toc"><li><a href="mini_ker_3.html#Advanced-programming">3 Advanced Miniker programming</a> </li>
 </ul></li>
 </ul>
 <div class="node">
@@ -131,14 +131,14 @@ parameter (lp=0);
 parameter (maxstep=1);
 </pre></td></tr></table>
 
-<p>If there are observations, (see section <a href="mini_ker_3.8.html#Observations">Observations</a>), the
+<p>If there are observations, (see <a href="mini_ker_3.8.html#Observations">Observations</a>), the
 size of the observation vector is set in the &lsquo;<tt>dimetaphi</tt>&rsquo; sequence
 by the <code>mobs</code> parameter. For example if there is one observation:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">parameter (mobs=1);
 </pre></td></tr></table>
 
-<p>To specify parameters (see section <a href="mini_ker_3.7.html#Parameters">Parameters</a>), the number of such parameters 
+<p>To specify parameters (see <a href="mini_ker_3.7.html#Parameters">Parameters</a>), the number of such parameters 
 has to be declared in &lsquo;<tt>dimetaphi</tt>&rsquo; with the parameter <code>lp</code>. 
 Then, if there are two parameters, they are first declared with
 </p>
@@ -173,7 +173,7 @@ the model equations for cells and transfers are entered using a mortran macro,
 and the transfer definitions <code>ff(.)</code> with <code>Phi_tef(.)</code>.
 </p>
 <dl>
-<dt><a name="index-f_005fset"></a><u>Macro:</u> <b>f_set</b><i> Phi_tef(<var>i</var>) = f(eta(.),ff(.))</i></dt>
+<dt><a name="index-f_005fset"></a>Macro: <b>f_set</b><i> Phi_tef(<var>i</var>) = f(eta(.),ff(.))</i></dt>
 <dd><p>This macro defines the transfer <var>i</var> static equation.
 <code>f</code> is a fortran 
 expression which may be function of cell state variables, 
@@ -187,7 +187,7 @@ expression which may be function of cell state variables,
 </pre></td></tr></table>
 
 <dl>
-<dt><a name="index-f_005fset-1"></a><u>Macro:</u> <b>f_set</b><i> deta_tef(<var>i</var>) = g(eta(<var>i</var>),ff(.))</i></dt>
+<dt><a name="index-f_005fset-1"></a>Macro: <b>f_set</b><i> deta_tef(<var>i</var>) = g(eta(<var>i</var>),ff(.))</i></dt>
 <dd><p>This macro defines the cell state component <var>i</var> time evolution model. 
 <code>g</code> is a expression which may be function of cell state variables, 
 &lsquo;<samp>eta(1)</samp>&rsquo;&hellip;&lsquo;<samp>eta(np)</samp>&rsquo; and transfers 

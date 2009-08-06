@@ -155,8 +155,8 @@ Hier muss in HTML eine Tabelle erzeugt werden. Hier ist das ok.
 Beschreibung zu deftypeop. Hier muss in HTML eine Tabelle erzeugt
 werden. Hier ist das ok. Beschreibung zu deftypeop.
 
-Annexe A Indizes
-****************
+Appendix A Indizes
+******************
 A.1 Konzept Index
 =================
 A.2 Funktionen Index
@@ -193,10 +193,10 @@ A.5 Var Index
 Inhaltsverzeichnis
 ******************
 
-1. Test 1
-2. Class
+1 Test 1
+2 Class
  2.1 Overview
-A. Indizes
+Appendix A Indizes
  A.1 Konzept Index
  A.2 Funktionen Index
  A.3 Programme Index

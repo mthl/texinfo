@@ -60,21 +60,21 @@ Table of Contents
 *****************
 
 Top
-1. chapter
+1 chapter
  1.1 A section
   1.1.1 subsection "simple-double-three--four---"
    1.1.1.1 subsubsection
-2. chapter 2
-3. chapter 3
-4. chapter 4
+2 chapter 2
+3 chapter 3
+4 chapter 4
 
 Short Table of Contents
 ***********************
 
 Top
-1. chapter
-2. chapter 2
-3. chapter 3
-4. chapter 4
+1 chapter
+2 chapter 2
+3 chapter 3
+4 chapter 4
 
 

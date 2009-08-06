@@ -15,7 +15,7 @@ repository contents (it requires no prior checkout and
 does not look for a working directory).
 </p>
 <p>The following options specify which date or revision to
-tag.  See [cvs: Common command options#Common-options Common command options], for a complete
+tag.  See [cvs: Common command options#Common-options Common options], for a complete
 description of them.
 </p>
 <dl compact="compact">

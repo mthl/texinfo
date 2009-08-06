@@ -19,7 +19,7 @@ but remain able to retrieve old revisions:
 <ul>
 <li>
 Make sure that you have not made any uncommitted
-modifications to the file.  See section [cvs: Viewing differences#Viewing-differences Viewing differences],
+modifications to the file.  See [cvs: Viewing differences#Viewing-differences Viewing differences],
 for one way to do that.  You can also use the
 <code>status</code> or <code>update</code> command.  If you remove
 the file without committing your changes, you will of
@@ -49,14 +49,14 @@ specified to <code>checkout</code> or <code>update</code>.
 </p>
 <div id="index-Remove-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-remove"></div><u>Command:</u> <b>cvs remove</b><i> [options] files &hellip;</i></dt>
+<dt><div id="index-cvs-remove"></div>Command: <b>cvs remove</b><i> [options] files &hellip;</i></dt>
 <dd>
 <p>Schedule file(s) to be removed from the repository
 (files which have not already been removed from the
 working directory are not processed).  This command
 does not actually remove the file from the repository
 until you commit the removal.  For a full list of
-options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].
+options, see [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS].
 </p></dd></dl>
 
 <p>Here is an example of removing several files:
@@ -115,9 +115,9 @@ U oj.c
 </nowiki></pre></td></tr></table>
 
 <p>When you remove a file it is removed only on the branch
-which you are working on (see section [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
+which you are working on (see [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
 later merge the removals to another branch if you want
-(see section [cvs: Merging can add or remove files#Merging-adds-and-removals Merging can add or remove files]).
+(see [cvs: Merging can add or remove files#Merging-adds-and-removals Merging adds and removals]).
 </p>
 <hr>
 <div class="node">

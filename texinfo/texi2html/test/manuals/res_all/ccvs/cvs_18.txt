@@ -1,5 +1,5 @@
-Annexe C Reference manual for Administrative files
-**************************************************
+Appendix C Reference manual for Administrative files
+****************************************************
 
 Inside the repository, in the directory
 `$CVSROOT/CVSROOT', there are a number of

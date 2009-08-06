@@ -40,7 +40,7 @@ for users in the system&rsquo;s user database if not found in
 &lsquo;<tt>CVSROOT/passwd</tt>&rsquo;.  If it is &lsquo;<samp>no</samp>&rsquo;, then all
 pserver users must exist in &lsquo;<tt>CVSROOT/passwd</tt>&rsquo;.
 The default is &lsquo;<samp>yes</samp>&rsquo;.  For more on pserver, see
-[cvs: Direct connection with password authentication#Password-authenticated Direct connection with password authentication].
+[cvs: Direct connection with password authentication#Password-authenticated Password authenticated].
 </p>
 
 <div id="index-TopLevelAdmin_002c-in-CVSROOT_002fconfig"></div>
@@ -58,7 +58,7 @@ directory, rather than in one of the checked out
 subdirectories.  The &lsquo;<tt>CVS</tt>&rsquo; directory created there
 will mean you don&rsquo;t have to specify <code>CVSROOT</code> for
 each command.  It also provides a place for the
-&lsquo;<tt>CVS/Template</tt>&rsquo; file (see section [cvs: How data is stored in the working directory#Working-directory-storage How data is stored in the working directory]).
+&lsquo;<tt>CVS/Template</tt>&rsquo; file (see [cvs: How data is stored in the working directory#Working-directory-storage Working directory storage]).
 </p>
 <div id="index-LockDir_002c-in-CVSROOT_002fconfig"></div>
 </dd>
@@ -74,7 +74,7 @@ the repository.
 You need to create <var>directory</var>, but
 <small>CVS</small> will create subdirectories of <var>directory</var> as it
 needs them.  For information on <small>CVS</small> locks, see
-[cvs: Several developers simultaneously attempting to run CVS#Concurrency Several developers simultaneously attempting to run CVS].
+[cvs: Several developers simultaneously attempting to run CVS#Concurrency Concurrency].
 </p>
 <p>Before enabling the LockDir option, make sure that you
 have tracked down and removed any copies of <small>CVS</small> 1.9 or
@@ -90,7 +90,7 @@ repository with LockDir enabled.
 <div id="index-LogHistory_002c-in-CVSROOT_002fconfig"></div>
 </dd>
 <dt><code>LogHistory=<var>value</var></code></dt>
-<dd><p>Control what is logged to the &lsquo;<tt>CVSROOT/history</tt>&rsquo; file (see section [cvs: history--Show status of files and users#history history&mdash;Show status of files and users]).
+<dd><p>Control what is logged to the &lsquo;<tt>CVSROOT/history</tt>&rsquo; file (see [cvs: history--Show status of files and users#history history]).
 Default of &lsquo;<samp>TOEFWUCGMAR</samp>&rsquo; (or simply &lsquo;<samp>all</samp>&rsquo;) will log
 all transactions.  Any subset of the default is
 legal.  (For example, to only log transactions that modify the
@@ -114,14 +114,14 @@ before rereading.  The default value is &lsquo;<samp>always</samp>&rsquo;.
 one extra second per directory committed.  This can be less IO and
 CPU intensive but is not recommended for use with large repositories</strong>
 </p>
-<p>See section [cvs: Verifying log messages#verifymsg Verifying log messages], for more information on how verifymsg
+<p>See [cvs: Verifying log messages#verifymsg verifymsg], for more information on how verifymsg
 may be used.
 </p>
 <div id="index-UserAdminOptions_002c-in-CVSROOT_002fconfig-1"></div>
 </dd>
 <dt><code>UserAdminOptions=<var>value</var></code></dt>
 <dd><p>Control what options will be allowed with the <code>cvs admin</code>
-command (see section [cvs: admin--Administration#admin admin&mdash;Administration]) for users not in the <code>cvsadmin</code> group.
+command (see [cvs: admin--Administration#admin admin]) for users not in the <code>cvsadmin</code> group.
 The <var>value</var> string is a list of single character options
 which should be allowed.  If a user who is not a member of the
 <code>cvsadmin</code> group tries to execute any <code>cvs admin</code>
@@ -129,7 +129,7 @@ option which is not listed they will will receive an error message
 reporting that the option is restricted.
 </p>
 <p>If no <code>cvsadmin</code> group exists on the server, <small>CVS</small> will
-ignore the <code>UserAdminOptions</code> keyword (see section [cvs: admin--Administration#admin admin&mdash;Administration]).
+ignore the <code>UserAdminOptions</code> keyword (see [cvs: admin--Administration#admin admin]).
 </p>
 <p>When not specified, <code>UserAdminOptions</code> defaults to
 &lsquo;<samp>k</samp>&rsquo;.  In other words, it defaults to allowing

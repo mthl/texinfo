@@ -1,10 +1,9 @@
 <div id="Compatibility"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Troubleshooting#Troubleshooting  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Troubleshooting#Troubleshooting  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: Troubleshooting#Troubleshooting  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

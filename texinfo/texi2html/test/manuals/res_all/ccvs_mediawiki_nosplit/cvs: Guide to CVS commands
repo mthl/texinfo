@@ -10,7 +10,7 @@ Next: [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS], Previous
 <p>This appendix describes the overall structure of
 <small>CVS</small> commands, and describes some commands in
 detail (others are described elsewhere; for a quick
-reference to <small>CVS</small> commands, see section [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands]).
+reference to <small>CVS</small> commands, see [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS]).
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Overall structure of CVS commands#Structure  Structure]::<nowiki>                   Overall structure of CVS commands
 </nowiki>&bull;[cvs: CVS's exit status#Exit-status  Exit status]::<nowiki>                 Indicating CVS's success or failure

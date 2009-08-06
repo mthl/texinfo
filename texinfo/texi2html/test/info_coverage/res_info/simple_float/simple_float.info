@@ -41,15 +41,15 @@ Float label no type no cap
 
 * Menu:
 
-* Text 1: Label.                         Shortcaption Label:
-* Text 2: Label no sc.                   Caption Label no sc:
+* Text 1: Label.                         Shortcaption Label
+* Text 2: Label no sc.                   Caption Label no sc
 * Text 3: Label no cap.                  
 
    Listoffloats
 
 * Menu:
 
-* 1: label no type.                      label no type:
+* 1: label no type.                      label no type
 * 2: label no type no cap.               
 
 

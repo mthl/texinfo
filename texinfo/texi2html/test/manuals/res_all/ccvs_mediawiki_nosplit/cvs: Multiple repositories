@@ -23,7 +23,7 @@ variable, the &lsquo;<samp>-d</samp>&rsquo; option to <small>CVS</small>, or (on
 you have checked out a working directory) by simply
 allowing <small>CVS</small> to use the repository that was used
 to check out the working directory
-(see section [cvs: Telling CVS where your repository is#Specifying-a-repository Telling CVS where your repository is]).
+(see [cvs: Telling CVS where your repository is#Specifying-a-repository Specifying a repository]).
 </p>
 <p>The big advantage of having multiple repositories is
 that they can reside on different servers.  With <small>CVS</small>

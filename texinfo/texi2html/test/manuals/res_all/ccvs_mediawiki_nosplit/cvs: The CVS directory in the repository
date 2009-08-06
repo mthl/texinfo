@@ -16,7 +16,7 @@ so implementations should silently ignore additional
 files.
 </p>
 <p>This behavior is implemented only by <small>CVS</small> 1.7 and
-later; for details see [cvs: Using watches with old versions of CVS#Watches-Compatibility Using watches with old versions of CVS].
+later; for details see [cvs: Using watches with old versions of CVS#Watches-Compatibility Watches Compatibility].
 </p>
 <p>The format of the fileattr file is a series of entries
 of the following form (where &lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo;

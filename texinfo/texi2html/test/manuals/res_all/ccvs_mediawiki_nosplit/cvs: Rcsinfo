@@ -15,7 +15,7 @@ Next: [cvs: Ignoring files via cvsignore#cvsignore cvsignore], Previous: [cvs: T
 edit when filling out the commit log.  The
 &lsquo;<tt>rcsinfo</tt>&rsquo; file has a syntax similar to the
 &lsquo;<tt>verifymsg</tt>&rsquo;, &lsquo;<tt>commitinfo</tt>&rsquo; and &lsquo;<tt>loginfo</tt>&rsquo;
-files.  See section [cvs: The common syntax#syntax The common syntax].  Unlike the other files the second
+files.  See [cvs: The common syntax#syntax syntax].  Unlike the other files the second
 part is <em>not</em> a command-line template.  Instead,
 the part after the regular expression should be a full pathname to
 a file containing the log message template.
@@ -34,7 +34,7 @@ commit -m <var>message</var></samp>&rsquo; or &lsquo;<samp>cvs commit -f
 <var>file</var></samp>&rsquo; that log message will override the
 template.
 </p>
-<p>See section [cvs: Verifying log messages#verifymsg Verifying log messages], for an example &lsquo;<tt>rcsinfo</tt>&rsquo;
+<p>See [cvs: Verifying log messages#verifymsg verifymsg], for an example &lsquo;<tt>rcsinfo</tt>&rsquo;
 file.
 </p>
 <p>When <small>CVS</small> is accessing a remote repository,

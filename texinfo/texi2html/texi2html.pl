@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.310 2009-08-06 08:51:37 pertusus Exp $
+# $Id: texi2html.pl,v 1.311 2009-08-06 16:26:53 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -6154,8 +6154,22 @@ sub rearrange_elements()
             }
             my $toplevel_number = $previous_numbers[$toplevel];
             $toplevel_number = 0 if (!defined($toplevel_number));
-            $section->{'number'} = "$toplevel_number.$section->{'number'}";
+            
+            if ($section->{'number'})
+            { # not toplevel
+                $section->{'number'} = "$toplevel_number.$section->{'number'}";
+            }
+            else
+            { # toplevel
+                $section->{'number'} = $toplevel_number;
+                if ($section->{'tag'} =~ /appendix/)
+                {# i18n
+                    $section->{'plain_number'} = $section->{'number'};
+                    $section->{'number'} = "Appendix $section->{'number'}";
+                }
+            }
         }
+        $section->{'plain_number'} = $section->{'number'} if (!defined($section->{'plain_number'}));
         # find the previous section
         if (defined($previous_sections[$section->{'level'}]))
         {
@@ -6881,8 +6895,8 @@ sub rearrange_elements()
         }
         if (defined($up) and $up->{'number'} ne '')
         {
-            $float->{'chapter_nr'} = $up->{'number'};
-            $float->{'nr'} = $float->{'chapter_nr'} . $float_style->{'nr_in_chapter'};
+            $float->{'chapter_nr'} = $up->{'plain_number'};
+            $float->{'nr'} = $float->{'chapter_nr'} . "." . $float_style->{'nr_in_chapter'};
         }
         else
         {

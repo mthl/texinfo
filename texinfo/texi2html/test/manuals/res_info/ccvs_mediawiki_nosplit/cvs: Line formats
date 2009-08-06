@@ -83,7 +83,7 @@ For example, &lsquo;<samp>%c'\0'</samp>&rsquo; stands for a null character.
 <dd><p>where <var>F</var> is a <code>printf</code> conversion specification,
 stands for the line number formatted with <var>F</var>.
 For example, &lsquo;<samp>%.5dn</samp>&rsquo; prints the line number using the
-<code>printf</code> format <code>&quot;%.5d&quot;</code>.  See section [cvs: Line group formats#Line-group-formats Line group formats], for
+<code>printf</code> format <code>&quot;%.5d&quot;</code>.  See [cvs: Line group formats#Line-group-formats Line group formats], for
 more about printf conversion specifications.
 </p>
 </dd>

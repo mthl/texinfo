@@ -1,5 +1,5 @@
-Annexe H Dealing with bugs in CVS or this manual
-************************************************
+Appendix H Dealing with bugs in CVS or this manual
+**************************************************
 
 Neither CVS nor this manual is perfect, and they
 probably never will be.  If you are having trouble

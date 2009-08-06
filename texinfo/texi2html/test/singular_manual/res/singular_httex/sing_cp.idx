@@ -675,7 +675,7 @@ key: Commands
   entry: Commands
   texi_entry: Commands
   element_href: sing_154.htm#Functions-and-system-variables
-  element_text: 5. Functions and system variables
+  element_text: 5 Functions and system variables
 key: Commutative algebra
   origin_href: sing_529.htm#index-Commutative-algebra
   entry: Commutative algebra
@@ -741,7 +741,7 @@ key: Data types
   entry: Data types
   texi_entry: Data types
   element_href: sing_66.htm#Data-types
-  element_text: 4. Data types
+  element_text: 4 Data types
 key: Debugging tools
   origin_href: sing_60.htm#index-Debugging-tools
   entry: Debugging tools
@@ -903,7 +903,7 @@ key: Examples
   entry: Examples
   texi_entry: Examples
   element_href: sing_331.htm#Examples
-  element_text: A. Examples
+  element_text: Appendix A Examples
 key: Examples of ring declarations
   origin_href: sing_29.htm#index-Examples-of-ring-declarations
   entry: Examples of ring declarations
@@ -1011,7 +1011,7 @@ key: GMP
   entry: GMP
   texi_entry: GMP
   element_href: sing_1.htm#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: GTZmod
   origin_href: sing_576.htm#index-GTZmod
   entry: GTZmod
@@ -1131,7 +1131,7 @@ key: General concepts
   entry: General concepts
   texi_entry: General concepts
   element_href: sing_12.htm#General-concepts
-  element_text: 3. General concepts
+  element_text: 3 General concepts
 key: General purpose
   origin_href: sing_391.htm#index-General-purpose
   entry: General purpose
@@ -1317,7 +1317,7 @@ key: Index
   entry: Index
   texi_entry: Index
   element_href: sing_915.htm#Index
-  element_text: F. Index
+  element_text: F Index
 key: Interactive use
   origin_href: sing_13.htm#index-Interactive-use
   entry: Interactive use
@@ -1335,7 +1335,7 @@ key: Introduction
   entry: Introduction
   texi_entry: Introduction
   element_href: sing_2.htm#Introduction
-  element_text: 2. Introduction
+  element_text: 2 Introduction
 key: Invariant theory
   origin_href: sing_752.htm#index-Invariant-theory
   entry: Invariant theory
@@ -1407,7 +1407,7 @@ key: LIBs
   entry: LIBs
   texi_entry: LIBs
   element_href: sing_389.htm#SINGULAR-libraries
-  element_text: D. SINGULAR libraries
+  element_text: Appendix D SINGULAR libraries
 key: Levandovskyy, Viktor
   origin_href: sing_1.htm#index-Levandovskyy_002c-Viktor
   entry: Levandovskyy, Viktor
@@ -1485,7 +1485,7 @@ key: MP
   entry: MP
   texi_entry: MP
   element_href: sing_1.htm#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: MP links
   origin_href: sing_97.htm#index-MP-links
   entry: MP links
@@ -1527,7 +1527,7 @@ key: Mathematical background
   entry: Mathematical background
   texi_entry: Mathematical background
   element_href: sing_371.htm#Mathematical-background
-  element_text: C. Mathematical background
+  element_text: Appendix C Mathematical background
 key: Matrix orderings
   origin_href: sing_368.htm#index-Matrix-orderings
   entry: Matrix orderings
@@ -1713,7 +1713,7 @@ key: Polynomial data
   entry: Polynomial data
   texi_entry: Polynomial data
   element_href: sing_360.htm#Polynomial-data
-  element_text: B. Polynomial data
+  element_text: Appendix B Polynomial data
 key: Pottier algorithm
   origin_href: sing_381.htm#index-Pottier-algorithm
   entry: Pottier algorithm
@@ -1725,7 +1725,7 @@ key: Preface
   entry: Preface
   texi_entry: Preface
   element_href: sing_1.htm#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: Primary decomposition
   origin_href: sing_352.htm#index-Primary-decomposition
   entry: Primary decomposition
@@ -1839,7 +1839,7 @@ key: Release Notes
   entry: Release Notes
   texi_entry: Release Notes
   element_href: sing_909.htm#Release-Notes
-  element_text: E. Release Notes
+  element_text: E Release Notes
 key: Remainder
   origin_href: sing_856.htm#index-Remainder
   entry: Remainder
@@ -1923,7 +1923,7 @@ key: SINGULAR libraries
   entry: SINGULAR libraries
   texi_entry: SINGULAR libraries
   element_href: sing_389.htm#SINGULAR-libraries
-  element_text: D. SINGULAR libraries
+  element_text: Appendix D SINGULAR libraries
 key: SINGULARHIST
   origin_href: sing_18.htm#index-SINGULARHIST
   entry: SINGULARHIST
@@ -2223,7 +2223,7 @@ key: Tricks and pitfalls
   entry: Tricks and pitfalls
   texi_entry: Tricks and pitfalls
   element_href: sing_319.htm#Tricks-and-pitfalls
-  element_text: 6. Tricks and pitfalls
+  element_text: 6 Tricks and pitfalls
 key: Type casting
   origin_href: sing_38.htm#index-Type-casting
   entry: Type casting
@@ -2973,7 +2973,7 @@ key: copyright
   entry: copyright
   texi_entry: copyright
   element_href: sing_1.htm#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: corank
   origin_href: sing_634.htm#index-corank
   entry: corank
@@ -3549,7 +3549,7 @@ key: expression list
   entry: expression list
   texi_entry: expression list
   element_href: sing_66.htm#Data-types
-  element_text: 4. Data types
+  element_text: 4 Data types
 key: extcurve
   origin_href: sing_900.htm#index-extcurve
   entry: extcurve
@@ -3609,7 +3609,7 @@ key: factory
   entry: factory
   texi_entry: factory
   element_href: sing_1.htm#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: fastHC, option
   origin_href: sing_244.htm#index-fastHC_002c-option
   entry: fastHC, option
@@ -4923,7 +4923,7 @@ key: libfac
   entry: libfac
   texi_entry: libfac
   element_href: sing_1.htm#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: libparse
   origin_href: sing_65.htm#index-libparse
   entry: libparse
@@ -6819,7 +6819,7 @@ key: readline
   entry: readline
   texi_entry: readline
   element_href: sing_1.htm#Preface
-  element_text: 1. Preface
+  element_text: 1 Preface
 key: real
   origin_href: sing_28.htm#index-real
   entry: real

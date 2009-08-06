@@ -4,6 +4,16 @@
 	replace SIMPLE_HEADERS with HEADER_IN_TABLE (as a negation).
 	merge the 2 print_navigation and use HEADER_IN_TABLE dynamically.
 	Add buttons specifically for top.
+	Set the default to SHORT_REF = 1, when not called as texi2html.
+	* texi2html.pl: prepend Appendix to appendix letters and remove
+	dot at the end of top-level section numbers (Karl report).
+	* formats/html.init: in @def* don't underline the category,
+	but italicize the type (Karl suggestion).
+	better buttons for top.
+	Put buttons in the more common order << < Up > >> (Karl suggestion).
+	Add a space in indices between entry and reference (Karl suggestion).
+	* formats/info.init: remove a spurious : in float captions in 
+	@listoffloats.
 
 2009-08-05   Patrice Dumas  <dumas@centre-cired.fr>
 
@@ -59,7 +69,7 @@
 	* formats/info.init: put float text and caption in the right order
 	in listoffloats such that it is a menu entry that can be followed
 	in info.
-	Use the basenames in the Info preamble.
+	Use the basenames in the Info preamble (Karl suggestion).
 
 2009-08-02   Patrice Dumas  <dumas@centre-cired.fr>
 
@@ -74,7 +84,7 @@
 	* texi2html.pl: add 0x7F as a comment character.
 	Still provide the default output with --macro-expand.
 	warning if macro with an argument number different than 1 
-	is called without a {}.
+	is called without a {} (Karl suggestion).
 	Read TEXINFO_OUTPUT_FORMAT in env to determine the output format, 
 	if not overridden by a command line option.
 	More error and warning messages, especially for info.

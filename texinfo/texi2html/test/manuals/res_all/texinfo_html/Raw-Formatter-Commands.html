@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 16.3 Raw Formatter Commands</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 16.3 Raw Formatter Commands">
+<meta name="keywords" content="GNU Texinfo 4.2: 16.3 Raw Formatter Commands">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Conditionals.html#Conditionals" rel="up" title="16 Conditionally Visible Text">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Conditional-Not-Commands.html#Conditional-Not-Commands" rel="previous" title="16.2 Conditional Not Commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Raw-Formatter-Commands"></a>
+<div class="node">
+<p>
+Next: <a href="set-clear-value.html#set-clear-value" accesskey="n" rel="next">set clear value</a>, Previous: <a href="Conditional-Not-Commands.html#Conditional-Not-Commands" accesskey="p" rel="previous">Conditional Not Commands</a>, Up: <a href="Conditionals.html#Conditionals" accesskey="u" rel="up">Conditionals</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Raw-Formatter-Commands-1"></a>
+<h2 class="section">16.3 Raw Formatter Commands</h2>
+<a name="index-TeX-commands_002c-using-ordinary"></a>
+<a name="index-HTML-commands_002c-using-ordinary"></a>
+<a name="index-Raw-formatter-commands"></a>
+<a name="index-Ordinary-TeX-commands_002c-using"></a>
+<a name="index-Ordinary-HTML-commands_002c-using"></a>
+<a name="index-Commands-using-raw-TeX"></a>
+<a name="index-Commands-using-raw-HTML"></a>
+<a name="index-plain-TeX"></a>
+
+<p>Inside a region delineated by <code>@iftex</code> and <code>@end iftex</code>, you
+can embed some raw TeX commands.  Info will ignore these commands
+since they are only in that part of the file which is seen by TeX.
+You can write the TeX commands as you would write them in a normal
+TeX file, except that you must replace the &lsquo;<samp>\</samp>&rsquo; used by TeX
+with an &lsquo;<samp>@</samp>&rsquo;.  For example, in the <code>@titlepage</code> section of a
+Texinfo file, you can use the TeX command <code>@vskip</code> to format
+the copyright page.  (The <code>@titlepage</code> command causes Info to
+ignore the region automatically, as it does with the <code>@iftex</code>
+command.)
+</p>
+<p>However, many features of plain TeX will not work, as they are
+overridden by Texinfo features.
+</p>
+<a name="index-tex"></a>
+<p>You can enter plain TeX completely, and use &lsquo;<samp>\</samp>&rsquo; in the TeX
+commands, by delineating a region with the <code>@tex</code> and <code>@end
+tex</code> commands.  (The <code>@tex</code> command also causes Info to ignore the
+region, like the <code>@iftex</code> command.)  The sole exception is that the
+<code>@</code> character still introduces a command, so that <code>@end tex</code>
+can be recognized properly.
+</p>
+<a name="index-Mathematical-expressions-1"></a>
+<p>For example, here is a mathematical expression written in
+plain TeX:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@tex
+$$ \chi^2 = \sum_{i=1}^N
+          \left (y_i - (a + b x_i)
+          \over \sigma_i\right)^2 $$
+@end tex
+</pre></td></tr></table>
+
+<p>The output of this example will appear only in a printed manual.  If
+you are reading this in Info, you will not see the equation that appears
+in the printed manual.
+</p>
+
+<a name="index-ifhtml-1"></a>
+<a name="index-html"></a>
+<p>Analogously, you can use <code>@ifhtml &hellip; @end ifhtml</code> to delimit
+a region to be included in HTML output only, and <code>@html &hellip;
+@end html</code> for a region of raw HTML (again, except that <code>@</code> is
+still the escape character, so the <code>@end</code> command can be
+recognized.)
+</p>
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="set-clear-value.html#set-clear-value" accesskey="n" rel="next">set clear value</a>, Previous: <a href="Conditional-Not-Commands.html#Conditional-Not-Commands" accesskey="p" rel="previous">Conditional Not Commands</a>, Up: <a href="Conditionals.html#Conditionals" accesskey="u" rel="up">Conditionals</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

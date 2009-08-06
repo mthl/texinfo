@@ -16,7 +16,7 @@ in use on the client (for example, carriage return
 followed by line feed for Windows NT).
 </p>
 <p>The second is that a binary file might happen to
-contain data which looks like a keyword (see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]), so keyword expansion must be turned
+contain data which looks like a keyword (see [cvs: Keyword substitution#Keyword-substitution Keyword substitution]), so keyword expansion must be turned
 off.
 </p>
 
@@ -74,7 +74,7 @@ problem.
 <p>You can also set a default for whether <code>cvs add</code>
 and <code>cvs import</code> treat a file as binary based on
 its name; for example you could say that files who
-names end in &lsquo;<samp>.exe</samp>&rsquo; are binary.  See section [cvs: The cvswrappers file#Wrappers The cvswrappers file].
+names end in &lsquo;<samp>.exe</samp>&rsquo; are binary.  See [cvs: The cvswrappers file#Wrappers Wrappers].
 There is currently no way to have <small>CVS</small> detect
 whether a file is binary based on its contents.  The
 main difficulty with designing such a feature is that

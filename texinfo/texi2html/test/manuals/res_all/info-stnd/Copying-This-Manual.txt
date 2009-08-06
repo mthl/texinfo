@@ -1,5 +1,5 @@
-Annexe A Copying This Manual
-****************************
+Appendix A Copying This Manual
+******************************
 
 * GNU Free Documentation License::  License for copying this manual.
 

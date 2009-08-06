@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 12.4.1 @syncodeindex</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 12.4.1 @syncodeindex">
+<meta name="keywords" content="GNU Texinfo 4.2: 12.4.1 @syncodeindex">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Combining-Indices.html#Combining-Indices" rel="up" title="12.4 Combining Indices">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Combining-Indices.html#Combining-Indices" rel="previous" title="12.4 Combining Indices">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="syncodeindex"></a>
+<div class="node">
+<p>
+Next: <a href="synindex.html#synindex" accesskey="n" rel="next">synindex</a>, Up: <a href="Combining-Indices.html#Combining-Indices" accesskey="u" rel="up">Combining Indices</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="g_t_0040syncodeindex"></a>
+<h3 class="subsection">12.4.1 <code>@syncodeindex</code></h3>
+<a name="index-syncodeindex"></a>
+
+<p>When you want to combine functions and concepts into one index, you
+should index the functions with <code>@findex</code> and index the concepts
+with <code>@cindex</code>, and use the <code>@syncodeindex</code> command to
+redirect the function index entries into the concept index.
+<a name="index-syncodeindex-1"></a>
+</p>
+<p>The <code>@syncodeindex</code> command takes two arguments; they are the name
+of the index to redirect, and the name of the index to redirect it to.
+The template looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@syncodeindex <var>from</var> <var>to</var>
+</pre></td></tr></table>
+
+<a name="index-Predefined-names-for-indices"></a>
+<a name="index-Two-letter-names-for-indices"></a>
+<a name="index-Indices_002c-two-letter-names"></a>
+<a name="index-Names-for-indices"></a>
+<p>For this purpose, the indices are given two-letter names:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>cp</samp>&rsquo;</dt>
+<dd><p>concept index
+</p></dd>
+<dt>&lsquo;<samp>fn</samp>&rsquo;</dt>
+<dd><p>function index
+</p></dd>
+<dt>&lsquo;<samp>vr</samp>&rsquo;</dt>
+<dd><p>variable index
+</p></dd>
+<dt>&lsquo;<samp>ky</samp>&rsquo;</dt>
+<dd><p>key index
+</p></dd>
+<dt>&lsquo;<samp>pg</samp>&rsquo;</dt>
+<dd><p>program index
+</p></dd>
+<dt>&lsquo;<samp>tp</samp>&rsquo;</dt>
+<dd><p>data type index
+</p></dd>
+</dl>
+
+<p>Write an <code>@syncodeindex</code> command before or shortly after the
+end-of-header line at the beginning of a Texinfo file.  For example,
+to merge a function index with a concept index, write the
+following:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@syncodeindex fn cp
+</pre></td></tr></table>
+
+<p>This will cause all entries designated for the function index to merge
+in with the concept index instead.
+</p>
+<p>To merge both a variables index and a function index into a concept
+index, write the following:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@syncodeindex vr cp
+@syncodeindex fn cp
+</pre></td></tr></table>
+
+<a name="index-Fonts-for-indices"></a>
+<p>The <code>@syncodeindex</code> command puts all the entries from the &lsquo;from&rsquo;
+index (the redirected index) into the <code>@code</code> font, overriding
+whatever default font is used by the index to which the entries are
+now directed.  This way, if you direct function names from a function
+index into a concept index, all the function names are printed in the
+<code>@code</code> font as you would expect.
+</p>
+<hr>
+<div class="node">
+<p>
+Next: <a href="synindex.html#synindex" accesskey="n" rel="next">synindex</a>, Up: <a href="Combining-Indices.html#Combining-Indices" accesskey="u" rel="up">Combining Indices</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

@@ -16,7 +16,7 @@ circumstances, so it may be useful to have some idea of
 how it works.
 </p>
 <p>Externally, branch numbers consist of an odd number of
-dot-separated decimal integers.  See section [cvs: Revision numbers#Revision-numbers Revision numbers].  That is not the whole truth, however.  For
+dot-separated decimal integers.  See [cvs: Revision numbers#Revision-numbers Revision numbers].  That is not the whole truth, however.  For
 efficiency reasons <small>CVS</small> sometimes inserts an extra 0
 in the second rightmost position (1.2.4 becomes
 1.2.0.4, 8.9.10.11.12 becomes 8.9.10.11.0.12 and so

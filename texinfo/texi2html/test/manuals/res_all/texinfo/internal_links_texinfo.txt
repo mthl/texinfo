@@ -260,23 +260,23 @@ texinfo_21.txt#Listing-a-New-Info-File	toc	20.2.2 Listing a New Info File
 texinfo_21.txt#Info-Files-in-Other-Directories	toc	20.2.3 Info Files in Other Directories
 texinfo_21.txt#Installing-Info-Directory-Files	toc	20.2.4 Installing Info Directory Files
 texinfo_21.txt#Invoking-install_002dinfo-1	toc	20.2.5 Invoking install-info
-texinfo_22.txt#g_t_0040_002dCommand-List	toc	Annexe A @-Command List
-texinfo_23.txt#Tips-and-Hints	toc	Annexe B Tips and Hints
-texinfo_24.txt#Sample-Texinfo-Files-1	toc	Annexe C Sample Texinfo Files
+texinfo_22.txt#g_t_0040_002dCommand-List	toc	Appendix A @-Command List
+texinfo_23.txt#Tips-and-Hints	toc	Appendix B Tips and Hints
+texinfo_24.txt#Sample-Texinfo-Files-1	toc	Appendix C Sample Texinfo Files
 texinfo_24.txt#Short-Sample-1	toc	C.1 Short Sample
 texinfo_24.txt#GNU-Sample-Texts-1	toc	C.2 GNU Sample Texts
-texinfo_25.txt#Include-Files-1	toc	Annexe D Include Files
+texinfo_25.txt#Include-Files-1	toc	Appendix D Include Files
 texinfo_25.txt#How-to-Use-Include-Files	toc	D.1 How to Use Include Files
 texinfo_25.txt#texinfo_002dmultiple_002dfiles_002dupdate-1	toc	D.2 texinfo-multiple-files-update
 texinfo_25.txt#Include-File-Requirements-1	toc	D.3 Include File Requirements
 texinfo_25.txt#Sample-File-with-_0040include	toc	D.4 Sample File with @include
 texinfo_25.txt#Evolution-of-Include-Files	toc	D.5 Evolution of Include Files
-texinfo_26.txt#Page-Headings	toc	Annexe E Page Headings
+texinfo_26.txt#Page-Headings	toc	Appendix E Page Headings
 texinfo_26.txt#Headings-Introduced	toc	Headings Introduced
 texinfo_26.txt#Standard-Heading-Formats	toc	E.1 Standard Heading Formats
 texinfo_26.txt#Specifying-the-Type-of-Heading	toc	E.2 Specifying the Type of Heading
 texinfo_26.txt#How-to-Make-Your-Own-Headings	toc	E.3 How to Make Your Own Headings
-texinfo_27.txt#Formatting-Mistakes	toc	Annexe F Formatting Mistakes
+texinfo_27.txt#Formatting-Mistakes	toc	Appendix F Formatting Mistakes
 texinfo_27.txt#makeinfo-Preferred	toc	makeinfo Preferred
 texinfo_27.txt#Catching-Errors-with-Info-Formatting	toc	F.1 Catching Errors with Info Formatting
 texinfo_27.txt#Catching-Errors-with-TeX-Formatting	toc	F.2 Catching Errors with TeX Formatting
@@ -287,12 +287,12 @@ texinfo_27.txt#Running-Info_002dvalidate	toc	F.5.1 Running Info-validate
 texinfo_27.txt#Creating-an-Unsplit-File	toc	F.5.2 Creating an Unsplit File
 texinfo_27.txt#Tagifying-a-File	toc	F.5.3 Tagifying a File
 texinfo_27.txt#Splitting-a-File-Manually	toc	F.5.4 Splitting a File Manually
-texinfo_28.txt#Refilling-Paragraphs-1	toc	Annexe G Refilling Paragraphs
-texinfo_29.txt#g_t_0040_002dCommand-Syntax	toc	Annexe H @-Command Syntax
-texinfo_30.txt#How-to-Obtain-TeX	toc	Annexe I How to Obtain TeX
-texinfo_31.txt#Copying-This-Manual-1	toc	Annexe J Copying This Manual
-texinfo_31.txt#GNU-Free-Documentation-License-1	toc	Annexe J.1 GNU Free Documentation License
-texinfo_31.txt#ADDENDUM_003a-How-to-use-this-License-for-your-documents	toc	Annexe J.1.1 ADDENDUM: How to use this License for your documents
+texinfo_28.txt#Refilling-Paragraphs-1	toc	Appendix G Refilling Paragraphs
+texinfo_29.txt#g_t_0040_002dCommand-Syntax	toc	Appendix H @-Command Syntax
+texinfo_30.txt#How-to-Obtain-TeX	toc	Appendix I How to Obtain TeX
+texinfo_31.txt#Copying-This-Manual-1	toc	Appendix J Copying This Manual
+texinfo_31.txt#GNU-Free-Documentation-License-1	toc	J.1 GNU Free Documentation License
+texinfo_31.txt#ADDENDUM_003a-How-to-use-this-License-for-your-documents	toc	J.1.1 ADDENDUM: How to use this License for your documents
 texinfo_32.txt#Command-and-Variable-Index-1	toc	Command and Variable Index
 texinfo_33.txt#Concept-Index-1	toc	Concept Index
 texinfo_14.txt#index-_00a1	cp	!

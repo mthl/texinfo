@@ -53,7 +53,7 @@ either always be reread after the verification script
 is run or reread only if the log message file status
 has changed.
 </p>
-<p>See section [cvs: The CVSROOT%47config configuration file#config The CVSROOT/config configuration file], for more on CVSROOT/config options.
+<p>See [cvs: The CVSROOT%47config configuration file#config config], for more on CVSROOT/config options.
 </p>
 <p>It is NOT a good idea for a &lsquo;<tt>verifymsg</tt>&rsquo; script to
 interact directly with the user in the various

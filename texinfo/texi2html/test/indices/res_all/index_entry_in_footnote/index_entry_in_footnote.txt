@@ -5,8 +5,8 @@ Top node(1)
 
 * Index::
 
-Annexe A index
-**************
+Appendix A index
+****************
 
 * Index:
 * index entry in footnote: index_entry_in_footnote.

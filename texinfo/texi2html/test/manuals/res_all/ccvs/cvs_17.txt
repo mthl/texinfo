@@ -1,5 +1,5 @@
-Annexe B Quick reference to CVS commands
-****************************************
+Appendix B Quick reference to CVS commands
+******************************************
 
 This appendix describes how to invoke CVS, with
 references to where each command or feature is

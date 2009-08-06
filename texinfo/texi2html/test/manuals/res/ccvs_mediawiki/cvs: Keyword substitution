@@ -1,10 +1,9 @@
 <div id="Keyword-substitution"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Revision management#When-to-commit  &lt; ]|</td>
-<td valign="middle" align="left">|[[#Keyword-list| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Revision management#Revision-management  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#When-to-commit  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[[#Keyword-list| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -48,11 +47,10 @@ a new revision of the file.
 <hr>
 <div id="Keyword-list"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Using-keywords| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Keyword-substitution| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
+<td valign="middle" align="left">|[[#Using-keywords| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -233,11 +231,10 @@ the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see
 <hr>
 <div id="Using-keywords"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Keyword-list| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Avoiding-substitution| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Keyword-list| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
+<td valign="middle" align="left">|[[#Avoiding-substitution| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -299,11 +296,10 @@ magic <small>SCCS</small> phrase, like this:
 <hr>
 <div id="Avoiding-substitution"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Using-keywords| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Substitution-modes| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Using-keywords| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
+<td valign="middle" align="left">|[[#Substitution-modes| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -347,11 +343,10 @@ for use with the <code>LocalKeyword</code> option&ndash;see
 <hr>
 <div id="Substitution-modes"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Avoiding-substitution| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Configuring-keyword-expansion| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Avoiding-substitution| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
+<td valign="middle" align="left">|[[#Configuring-keyword-expansion| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -447,11 +442,10 @@ handle an export containing binary files correctly.
 <hr>
 <div id="Configuring-keyword-expansion"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Substitution-modes| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Log-keyword| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Substitution-modes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
+<td valign="middle" align="left">|[[#Log-keyword| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -553,11 +547,10 @@ recognized.
 <hr>
 <div id="Log-keyword"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Configuring-keyword-expansion| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Configuring-keyword-expansion| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

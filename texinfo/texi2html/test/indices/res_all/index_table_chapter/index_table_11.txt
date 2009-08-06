@@ -1,10 +1,10 @@
 3 Indices refs: J - P
 *********************
 * Index:
-* joncept: 3. Indices refs.
-* koncept: 3. Indices refs.
-* loncept: 3. Indices refs.
-* moncept: 3. Indices refs.
-* noncept: 3. Indices refs.
-* ooncept: 3. Indices refs.
-* poncept: 3. Indices refs.
+* joncept: 3 Indices refs.
+* koncept: 3 Indices refs.
+* loncept: 3 Indices refs.
+* moncept: 3 Indices refs.
+* noncept: 3 Indices refs.
+* ooncept: 3 Indices refs.
+* poncept: 3 Indices refs.

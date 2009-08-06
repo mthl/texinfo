@@ -16,7 +16,7 @@ command.
 </p>
 <div id="index-watch-add-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-watch-add"></div><u>Command:</u> <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-add"></div>Command: <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Add the current user to the list of people to receive notification of
 work done on <var>files</var>.
@@ -43,7 +43,7 @@ They can do this in several ways, by:
 applying the <code>cvs unedit</code> command (described below) to the file
 
 </li><li>
-applying the <code>cvs release</code> command (see section [cvs: release--Indicate that a Module is no longer in use#release release&mdash;Indicate that a Module is no longer in use]) to the file&rsquo;s parent directory
+applying the <code>cvs release</code> command (see [cvs: release--Indicate that a Module is no longer in use#release release]) to the file&rsquo;s parent directory
 (or recursively to a directory more than one level up)
 
 </li><li>
@@ -74,7 +74,7 @@ omitted, the action defaults to <code>all</code>.
 
 <div id="index-watch-remove-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-watch-remove"></div><u>Command:</u> <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-remove"></div>Command: <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Remove a notification request established using <code>cvs watch add</code>;
 the arguments are the same.  If the <code>-a</code> option is present, only
@@ -86,9 +86,9 @@ watches for the specified actions are removed.
 <p>When the conditions exist for notification, <small>CVS</small>
 calls the &lsquo;<tt>notify</tt>&rsquo; administrative file.  Edit
 &lsquo;<tt>notify</tt>&rsquo; as one edits the other administrative
-files (see section [cvs: The administrative files#Intro-administrative-files The administrative files]).  This
+files (see [cvs: The administrative files#Intro-administrative-files Intro administrative files]).  This
 file follows the usual conventions for administrative
-files (see section [cvs: The common syntax#syntax The common syntax]), where each line is a regular
+files (see [cvs: The common syntax#syntax syntax]), where each line is a regular
 expression followed by a command to execute.  The
 command should contain a single occurrence of &lsquo;<samp>%s</samp>&rsquo;
 which will be replaced by the user to notify; the rest

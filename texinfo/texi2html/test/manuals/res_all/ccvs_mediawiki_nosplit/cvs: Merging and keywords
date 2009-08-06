@@ -11,13 +11,13 @@ Previous: [cvs: Merging can add or remove files#Merging-adds-and-removals Mergin
 <div id="index-_002dj-_0028merging-branches_0029_002c-and-keyword-substitution"></div>
 <div id="index-_002dkk_002c-to-avoid-conflicts-during-a-merge"></div>
 
-<p>If you merge files containing keywords (see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]), you will normally get numerous
+<p>If you merge files containing keywords (see [cvs: Keyword substitution#Keyword-substitution Keyword substitution]), you will normally get numerous
 conflicts during the merge, because the keywords are
 expanded differently in the revisions which you are
 merging.
 </p>
 <p>Therefore, you will often want to specify the
-&lsquo;<samp>-kk</samp>&rsquo; (see section [cvs: Substitution modes#Substitution-modes Substitution modes]) switch to the
+&lsquo;<samp>-kk</samp>&rsquo; (see [cvs: Substitution modes#Substitution-modes Substitution modes]) switch to the
 merge command line.  By substituting just the name of
 the keyword, not the expanded value of that keyword,
 this option ensures that the revisions which you are

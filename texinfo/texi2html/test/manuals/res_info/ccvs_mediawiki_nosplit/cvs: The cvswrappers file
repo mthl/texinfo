@@ -36,7 +36,7 @@ copy one version of your file over the other, wiping
 out the previous contents.</strong>
 The &lsquo;<samp>-m</samp>&rsquo; wrapper option only affects behavior when
 merging is done on update; it does not affect how files
-are stored.  See [cvs: Handling binary files#Binary-files Handling binary files], for more on
+are stored.  See [cvs: Handling binary files#Binary-files Binary files], for more on
 binary files.
 </p>
 <p>The basic format of the file &lsquo;<tt>cvswrappers</tt>&rsquo; is:

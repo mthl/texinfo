@@ -61,7 +61,7 @@ followed by the version number with &lsquo;<samp>.</samp>&rsquo; changed to
 then you won&rsquo;t constantly be guessing whether a tag is
 <code>cvs-1-9</code> or <code>cvs1_9</code> or what.  You might
 even want to consider enforcing your convention in the
-taginfo file (see section [cvs: User-defined logging#user_002ddefined-logging User-defined logging]).
+taginfo file (see [cvs: User-defined logging#user_002ddefined-logging user-defined logging]).
 </p>
 <div id="index-Adding-a-tag"></div>
 <div id="index-Tags_002c-example"></div>
@@ -89,7 +89,7 @@ File: backend.c         Status: Up-to-date
 </nowiki></pre></td></tr></table>
 
 <p>For a complete summary of the syntax of <code>cvs tag</code>,
-including the various options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].
+including the various options, see [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS].
 </p>
 <p>There is seldom reason to tag a file in isolation.  A more common use is
 to tag all the files that constitute a module with the same tag at
@@ -107,7 +107,7 @@ T parser.c
 
 <p>(When you give <small>CVS</small> a directory as argument, it generally applies the
 operation to all the files in that directory, and (recursively), to any
-subdirectories that it may contain.  See section [cvs: Recursive behavior#Recursive-behavior Recursive behavior].)
+subdirectories that it may contain.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].)
 </p>
 <div id="index-Retrieving-an-old-revision-using-tags"></div>
 <div id="index-Tags_002c-retrieving-old-revisions"></div>
@@ -123,7 +123,7 @@ any time in the future:
 that release, but you cannot find the bug in the current working copy.
 </p>
 <p>You can also check out a module as it was at any given date.
-See section [cvs: checkout options#checkout-options checkout options].  When specifying &lsquo;<samp>-r</samp>&rsquo; to
+See [cvs: checkout options#checkout-options checkout options].  When specifying &lsquo;<samp>-r</samp>&rsquo; to
 any of these commands, you will need beware of sticky
 tags; see [cvs: Sticky tags#Sticky-tags Sticky tags].
 </p>

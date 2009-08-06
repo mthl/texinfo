@@ -10,7 +10,7 @@ Up: [cvs: commit examples#commit-examples commit examples] &nbsp; |[cvs: Index#S
 even number of dots) with the &lsquo;<samp>-r</samp>&rsquo; option.  To
 create a branch revision, use the &lsquo;<samp>-b</samp>&rsquo; option
 of the <code>rtag</code> or <code>tag</code> commands
-(see section [cvs: Branching and merging#Branching-and-merging Branching and merging]).  Then, either <code>checkout</code> or
+(see [cvs: Branching and merging#Branching-and-merging Branching and merging]).  Then, either <code>checkout</code> or
 <code>update</code> can be used to base your sources on the
 newly created branch.  From that point on, all
 <code>commit</code> changes made within these working sources

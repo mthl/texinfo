@@ -30,10 +30,10 @@ Introduction
  Intended audience
  Reading guide
  Other Manuals and documentation
-1. An overview of the TEF formalism
+1 An overview of the TEF formalism
  1.1 Cell and Transfer equations
  1.2 Linearization and discretization in the TEF
-2. Miniker model programming
+2 Miniker model programming
  2.1 General structure of the code
  2.2 Miniker programming illustrated
   2.2.1 All you need to know about mortran and cmz directives
@@ -46,7 +46,7 @@ Introduction
  2.4 Controlling the run
   2.4.1 Executing code at the end of each time step
   2.4.2 Controlling the printout and data output
-3. Advanced Miniker programming
+3 Advanced Miniker programming
  3.1 Overview of additional features setting
  3.2 Calling the model code
   3.2.1 Turning the model into a subroutine
@@ -68,7 +68,7 @@ Introduction
  3.10 Programming with cmz directives
   3.10.1 Cmz directives used with Miniker
   3.10.2 Using cmz directives in Miniker
-4. Dynamic analysis of systems in Miniker
+4 Dynamic analysis of systems in Miniker
  4.1 Automatic sensitivity computation
   4.1.1 Sensitivity to a parameter
   4.1.2 Advance matrix sensitivity
@@ -96,13 +96,13 @@ Introduction
   4.6.1 Generalized tangent linear system with cmz
   4.6.2 Generalized tangent linear system with make
   4.6.3 Generalized tangent linear system analysis run and output
-5. Advanced use of Miniker with make
+5 Advanced use of Miniker with make
  5.1 Make variables
  5.2 Rules
  5.3 Linking rule
 Concepts index
 Variables, macros and functions index
-A. Installation
+Appendix A Installation
  A.1 Programming environments
  A.2 Common requisites
  A.3 Miniker with cmz
@@ -110,14 +110,14 @@ A. Installation
   A.4.1 Additional requirements for Miniker with make
   A.4.2 Configuration
   A.4.3 Installation with make
-B. Cmz directives reference
+Appendix B Cmz directives reference
  B.1 Cmz directives general syntax
  B.2 Conditional expressions
  B.3 File introduction directives
  B.4 Conditional directives
  B.5 File inclusion directive
  B.6 The `self' directive
-C. Copying This Manual
+Appendix C Copying This Manual
  C.1 GNU Free Documentation License
   C.1.1 ADDENDUM: How to use this License for your documents
 
@@ -2830,7 +2830,7 @@ Concepts index
 * sensitivities: 4.1 Automatic sensitivity computation.
 * sensitivity, output: 4.1 Automatic sensitivity computation.
 * sequence: 2.1 General structure of the code.
-* sequences: 2. Miniker model programming.
+* sequences: 2 Miniker model programming.
 * `sigma.data': 4.1 Automatic sensitivity computation.
 * Singular Value Decomposition: 4.5 Stability analysis of fastest modes.
 * `sltc.exe': 4.5 Stability analysis of fastest modes.
@@ -2960,8 +2960,8 @@ Variables, macros and functions index
 * zlaw: 4.2.2 Control laws.
 * zprint: 2.4.2 Controlling the printout and data output.
 
-Annexe A Installation
-*********************
+Appendix A Installation
+***********************
 
 * Programming environments::
 * Common requisites::
@@ -3141,8 +3141,8 @@ directory location is the miniker_dir variable in a
 project Makefile.
 
 
-Annexe B Cmz directives reference
-*********************************
+Appendix B Cmz directives reference
+***********************************
 
 The cmz directives are described together with the other 
 features of cmz in the cmz manual at
@@ -3418,8 +3418,8 @@ is skipped up to any directive (including another +SELF)
 except +seq.
 
 
-Annexe C Copying This Manual
-****************************
+Appendix C Copying This Manual
+******************************
 
 * GNU Free Documentation License::  License for copying this manual.
 

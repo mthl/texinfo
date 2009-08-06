@@ -10,7 +10,7 @@ Next: [cvs: Troubleshooting#Troubleshooting Troubleshooting], Previous: [cvs: Al
 <div id="index-Versions_002c-of-CVS"></div>
 <div id="index-Compatibility_002c-between-CVS-versions"></div>
 <p>The repository format is compatible going back to
-<small>CVS</small> 1.3.  But see [cvs: Multiple developers#Watches-Compatibility Using watches with old versions of CVS], if
+<small>CVS</small> 1.3.  But see [cvs: Multiple developers#Watches-Compatibility Watches Compatibility], if
 you have copies of <small>CVS</small> 1.6 or older and you want
 to use the optional developer communication features.
 </p>

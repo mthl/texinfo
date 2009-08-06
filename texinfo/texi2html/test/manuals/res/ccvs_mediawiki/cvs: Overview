@@ -1,10 +1,9 @@
 <div id="Overview"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[cvs#Top| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#What-is-CVS_003f| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[cvs#Top| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[cvs#Top| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs#Top| &lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[[#What-is-CVS_003f| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -34,11 +33,10 @@ certain command, you can probably skip everything here.
 <hr>
 <div id="What-is-CVS_003f"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Overview| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#What-is-CVS-not_003f| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Overview| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| Up ]]|</td>
+<td valign="middle" align="left">|[[#What-is-CVS-not_003f| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -133,11 +131,10 @@ send mail to <code>bug-cvs-request@gnu.org</code>.
 <hr>
 <div id="What-is-CVS-not_003f"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#What-is-CVS_003f| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#A-sample-session| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#What-is-CVS_003f| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| Up ]]|</td>
+<td valign="middle" align="left">|[[#A-sample-session| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -300,11 +297,10 @@ only once they have been proven.
 <hr>
 <div id="A-sample-session"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#What-is-CVS-not_003f| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Getting-the-source| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#What-is-CVS-not_003f| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| Up ]]|</td>
+<td valign="middle" align="left">|[[#Getting-the-source| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -344,11 +340,10 @@ called &lsquo;<samp>tc</samp>&rsquo;.
 <hr>
 <div id="Getting-the-source"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#A-sample-session| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Committing-your-changes| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#A-sample-session| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
+<td valign="middle" align="left">|[[#Committing-your-changes| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -393,11 +388,10 @@ you want to edit.  See section [cvs: Multiple developers#Multiple-developers Mul
 <hr>
 <div id="Committing-your-changes"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Getting-the-source| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Cleaning-up| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Getting-the-source| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
+<td valign="middle" align="left">|[[#Cleaning-up| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -471,11 +465,10 @@ this:
 <hr>
 <div id="Cleaning-up"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Committing-your-changes| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Viewing-differences| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Committing-your-changes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
+<td valign="middle" align="left">|[[#Viewing-differences| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -542,11 +535,10 @@ when <code>release</code> asks for confirmation.
 <hr>
 <div id="Viewing-differences"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Cleaning-up| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Cleaning-up| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

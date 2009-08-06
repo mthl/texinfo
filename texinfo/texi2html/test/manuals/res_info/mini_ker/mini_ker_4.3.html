@@ -36,7 +36,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <link href="mini_ker_U.4.html#Concepts-index" rel="index" title="Concepts index">
 <link href="mini_ker_top.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
-<link href="mini_ker_4.html#Dynamic-system-analysis" rel="up" title="4. Dynamic analysis of systems in Miniker">
+<link href="mini_ker_4.html#Dynamic-system-analysis" rel="up" title="4 Dynamic analysis of systems in Miniker">
 <link href="mini_ker_C.1.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
 <link href="mini_ker_4.2.html#Adjoint-model-and-optimisation" rel="previous" title="4.2 Adjoint model and optimisation with Miniker">
 <style type="text/css">
@@ -67,7 +67,7 @@ ul.toc {list-style: none}
 
 <a name="Kalman-filter"></a>
 <ul class="toc"><li><a href="mini_ker_top.html#Top">Miniker 102 manual</a> </li>
-<li><ul class="toc"><li><a href="mini_ker_4.html#Dynamic-system-analysis">4. Dynamic analysis of systems in Miniker</a> </li>
+<li><ul class="toc"><li><a href="mini_ker_4.html#Dynamic-system-analysis">4 Dynamic analysis of systems in Miniker</a> </li>
 </ul></li>
 </ul>
 <div class="node">
@@ -165,7 +165,7 @@ src="mini_ker_tex4ht_tex19x.png" alt="(
 <a name="index-zkalman"></a>
 
 <p>First of all the Kalman filter code should be activated. The observations
-code is also required (see section <a href="mini_ker_3.8.html#Observations">Observations</a>).
+code is also required (see <a href="mini_ker_3.8.html#Observations">Observations</a>).
 If cmz is used the code
 should be selected with the select flag kalman 
 in the &lsquo;<tt>selseq.kumac</tt>&rsquo;:
@@ -214,7 +214,7 @@ will be estimated using the Kalman filter.
 </p>
 <p>The error on state dimension is associated with the parameter <code>nerrp</code>
 and the size of the observations vector is <code>mobs</code> 
-(see section <a href="mini_ker_3.8.html#Observations">Observations</a>). In our example the dimensions are set with:
+(see <a href="mini_ker_3.8.html#Observations">Observations</a>). In our example the dimensions are set with:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">parameter (nkp=np);
 parameter (mobs=3);
@@ -339,7 +339,7 @@ of the filtering process. They may be changed by the user in &lsquo;<tt>zsteer</
 observations are set in the <code>vobs(.)</code> array, and the assimilation 
 (also called the analysis step of the filter) takes
 place if the logical variable <code>zgetobs</code> is <code>.true.</code> 
-(see section <a href="mini_ker_3.8.html#Data">Data</a>). 
+(see <a href="mini_ker_3.8.html#Data">Data</a>). 
 </p>
 <p>These steps are
 typically performed in the &lsquo;<tt>zsteer</tt>&rsquo; sequence. In this sequence there should
@@ -364,10 +364,10 @@ stored in <code>vobs(.)</code>, ready for the next step processing.
 
 <p>The estimated states and transfers are still in the same &lsquo;<samp>.data</samp>&rsquo; files, 
 &lsquo;<tt>res.data</tt>&rsquo; and &lsquo;<tt>tr.data</tt>&rsquo; and there is the additional file with
-observations, called &lsquo;<tt>obs.data</tt>&rsquo; (see section <a href="mini_ker_3.8.html#Observations">Observations</a>). 
+observations, called &lsquo;<tt>obs.data</tt>&rsquo; (see <a href="mini_ker_3.8.html#Observations">Observations</a>). 
 Each time <code>zgetobs</code> is <code>.true.</code> the data, and the optimally 
 weighted innovations are output 
-in the file associated with data, &lsquo;<tt>data.data</tt>&rsquo; (see section <a href="mini_ker_3.8.html#Data">Data</a>).
+in the file associated with data, &lsquo;<tt>data.data</tt>&rsquo; (see <a href="mini_ker_3.8.html#Data">Data</a>).
 </p>
 <hr>
 <a name="Executing-code-after-the-analysis"></a>

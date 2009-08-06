@@ -22,7 +22,7 @@ to allow only one person to edit each file at a time.
 This is the only solution with some version control
 systems, including <small>RCS</small> and <small>SCCS</small>.  Currently
 the usual way to get reserved checkouts with <small>CVS</small>
-is the <code>cvs admin -l</code> command (see section [cvs: Guide to CVS commands#admin-options admin options]).  This is not as nicely integrated into
+is the <code>cvs admin -l</code> command (see [cvs: Guide to CVS commands#admin-options admin options]).  This is not as nicely integrated into
 <small>CVS</small> as the watch features, described below, but it
 seems that most people with a need for reserved
 checkouts find it adequate.
@@ -154,7 +154,7 @@ latest revision in the repository for the branch in
 use.
 </p>
 <p>The options to <code>status</code> are listed in
-[cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].  For information on its <code>Sticky tag</code>
+[cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS].  For information on its <code>Sticky tag</code>
 and <code>Sticky date</code> output, see [cvs: Revisions#Sticky-tags Sticky tags].
 For information on its <code>Sticky options</code> output,
 see the &lsquo;<samp>-k</samp>&rsquo; option in [cvs: Guide to CVS commands#update-options update options].
@@ -177,7 +177,7 @@ displayed by the <code>status</code> command, you can invoke
 update, but merely to display statuses; the &lsquo;<samp>-q</samp>&rsquo;
 option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
-these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].
+these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS].
 </p>
 <hr>
 <div id="Updating-a-file"></div>
@@ -216,7 +216,7 @@ close to any of the changes you have made, an
 printed, and the resulting file includes both
 versions of the lines that overlap, delimited by
 special markers.
-See section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in sync with repository], for a complete description of the
+See [cvs: Guide to CVS commands#update update], for a complete description of the
 <code>update</code> command.
 </p>
 <hr>
@@ -406,8 +406,8 @@ Next: [[#Concurrency|Concurrency]], Previous: [[#Conflicts-example|Conflicts exa
 <p>It is often useful to inform others when you commit a
 new revision of a file.  The &lsquo;<samp>-i</samp>&rsquo; option of the
 &lsquo;<tt>modules</tt>&rsquo; file, or the &lsquo;<tt>loginfo</tt>&rsquo; file, can be
-used to automate this process.  See section [cvs: Reference manual for Administrative files#modules The modules file].
-See section [cvs: Reference manual for Administrative files#loginfo Loginfo].  You can use these features of <small>CVS</small>
+used to automate this process.  See [cvs: Reference manual for Administrative files#modules modules].
+See [cvs: Reference manual for Administrative files#loginfo loginfo].  You can use these features of <small>CVS</small>
 to, for instance, instruct <small>CVS</small> to mail a
 message to all developers, or post a message to a local
 newsgroup.
@@ -446,7 +446,7 @@ start with &lsquo;<tt>#cvs.rfl</tt>&rsquo;,
 internal data structures and have no relationship to
 the word <em>lock</em> in the sense used by
 <small>RCS</small>&mdash;which refers to reserved checkouts
-(see section [[#Multiple-developers|Multiple developers]]).
+(see [[#Multiple-developers|Multiple developers]]).
 </p>
 <p>Any number of people can be reading from a given
 repository at a time; only when someone is writing do
@@ -530,7 +530,7 @@ certain files are to be watched.
 </p>
 <div id="index-watch-on-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-watch-on"></div><u>Command:</u> <b>cvs watch on</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-on"></div>Command: <b>cvs watch on</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <div id="index-Read_002donly-files_002c-and-watches"></div>
 <p>Specify that developers should run <code>cvs edit</code>
@@ -547,7 +547,7 @@ notification policies on a per-directory basis.  The
 contents of the directory are processed recursively,
 unless the <code>-l</code> option is given.
 The <code>-R</code> option can be used to force recursion if the <code>-l</code>
-option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section [cvs: Guide to CVS commands#g_t_007e_002f_002ecvsrc Default options and the ~/.cvsrc file]).
+option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see [cvs: Guide to CVS commands#g_t_007e_002f_002ecvsrc ~/.cvsrc]).
 </p>
 <p>If <var>files</var> is omitted, it defaults to the current directory.
 </p>
@@ -555,7 +555,7 @@ option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section [cvs: Guide to CVS
 </dd></dl>
 
 <dl>
-<dt><div id="index-cvs-watch-off"></div><u>Command:</u> <b>cvs watch off</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-off"></div>Command: <b>cvs watch off</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Do not create <var>files</var> read-only on checkout; thus,
 developers will not be reminded to use <code>cvs edit</code>
@@ -584,7 +584,7 @@ command.
 </p>
 <div id="index-watch-add-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-watch-add"></div><u>Command:</u> <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-add"></div>Command: <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Add the current user to the list of people to receive notification of
 work done on <var>files</var>.
@@ -611,7 +611,7 @@ They can do this in several ways, by:
 applying the <code>cvs unedit</code> command (described below) to the file
 
 </li><li>
-applying the <code>cvs release</code> command (see section [cvs: Guide to CVS commands#release release&mdash;Indicate that a Module is no longer in use]) to the file&rsquo;s parent directory
+applying the <code>cvs release</code> command (see [cvs: Guide to CVS commands#release release]) to the file&rsquo;s parent directory
 (or recursively to a directory more than one level up)
 
 </li><li>
@@ -642,7 +642,7 @@ omitted, the action defaults to <code>all</code>.
 
 <div id="index-watch-remove-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-watch-remove"></div><u>Command:</u> <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-remove"></div>Command: <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Remove a notification request established using <code>cvs watch add</code>;
 the arguments are the same.  If the <code>-a</code> option is present, only
@@ -654,9 +654,9 @@ watches for the specified actions are removed.
 <p>When the conditions exist for notification, <small>CVS</small>
 calls the &lsquo;<tt>notify</tt>&rsquo; administrative file.  Edit
 &lsquo;<tt>notify</tt>&rsquo; as one edits the other administrative
-files (see section [cvs: The Repository#Intro-administrative-files The administrative files]).  This
+files (see [cvs: The Repository#Intro-administrative-files Intro administrative files]).  This
 file follows the usual conventions for administrative
-files (see section [cvs: Reference manual for Administrative files#syntax The common syntax]), where each line is a regular
+files (see [cvs: Reference manual for Administrative files#syntax syntax]), where each line is a regular
 expression followed by a command to execute.  The
 command should contain a single occurrence of &lsquo;<samp>%s</samp>&rsquo;
 which will be replaced by the user to notify; the rest
@@ -708,12 +708,12 @@ read-only, you cannot simply edit it.  To make it
 read-write, and inform others that you are planning to
 edit it, use the <code>cvs edit</code> command.  Some systems
 call this a <em>checkout</em>, but <small>CVS</small> uses that term
-for obtaining a copy of the sources (see section [cvs: Overview#Getting-the-source Getting the source]), an operation which those systems call a
+for obtaining a copy of the sources (see [cvs: Overview#Getting-the-source Getting the source]), an operation which those systems call a
 <em>get</em> or a <em>fetch</em>.
 </p>
 <div id="index-edit-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-edit"></div><u>Command:</u> <b>cvs edit</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-edit"></div>Command: <b>cvs edit</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Prepare to edit the working files <var>files</var>.  <small>CVS</small> makes the
 <var>files</var> read-write, and notifies users who have requested
@@ -742,7 +742,7 @@ the <code>cvs unedit</code> command.
 <div id="index-Abandoning-work"></div>
 <div id="index-Reverting-to-repository-version"></div>
 <dl>
-<dt><div id="index-cvs-unedit"></div><u>Command:</u> <b>cvs unedit</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-unedit"></div>Command: <b>cvs unedit</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Abandon work on the working files <var>files</var>, and revert them to the
 repository versions on which they are based.  <small>CVS</small> makes those
@@ -756,7 +756,7 @@ notification for any of <var>files</var>.
 <p>If watches are not in use, the <code>unedit</code> command
 probably does not work, and the way to revert to the
 repository version is with the command <code>cvs update -C file</code>
-(see section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in sync with repository]).
+(see [cvs: Guide to CVS commands#update update]).
 The meaning is
 not precisely the same; the latter may also
 bring in some changes which have been made in the
@@ -780,7 +780,7 @@ Next: [[#Watches-Compatibility|Watches Compatibility]], Previous: [[#Editing-fil
 
 <div id="index-watchers-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-watchers"></div><u>Command:</u> <b>cvs watchers</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watchers"></div>Command: <b>cvs watchers</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>List the users currently watching changes to <var>files</var>.  The report
 includes the files being watched, and the mail address of each watcher.
@@ -793,7 +793,7 @@ includes the files being watched, and the mail address of each watcher.
 
 <div id="index-editors-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-editors"></div><u>Command:</u> <b>cvs editors</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-editors"></div>Command: <b>cvs editors</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>List the users currently working on <var>files</var>.  The report
 includes the mail address of each user, the time when the user began
@@ -885,7 +885,7 @@ going to be unpleasant enough that you generally will
 be better off to simply avoid the conflicts instead, by
 using reserved checkouts.
 </p>
-<p>The watches features described above in [[#Watches|Mechanisms to track who is editing files]]
+<p>The watches features described above in [[#Watches|Watches]]
 can be considered to be an intermediate model between
 reserved checkouts and unreserved checkouts.  When you
 go to edit a file, it is possible to find out who else

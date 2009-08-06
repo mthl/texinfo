@@ -121,7 +121,7 @@ F Index
 * attrib: 5.1.1 attrib.
 * A_L: D.5.1.12 A_L.
 * A_Z: D.2.2.1 A_Z.
-* Bachmann, Olaf: 1. Preface.
+* Bachmann, Olaf: 1 Preface.
 * Background: 2.1 Background.
 * bareiss: 5.1.2 bareiss.
 * basicinvariants: D.5.1.1 basicinvariants.
@@ -205,7 +205,7 @@ F Index
 * command-line option, value of: 5.1.125 system.
 * command-line options, print all values of: 5.1.125 system.
 * command-line options, short help: 3.1.6 Command line options.
-* Commands: 5. Functions and system variables.
+* Commands: 5 Functions and system variables.
 * Commutative algebra: D.4 Commutative algebra.
 * completeReduction: D.6.2.5 completeReduction.
 * complex: 3.3 Rings and orderings.
@@ -222,7 +222,7 @@ F Index
 * contributors: 5.1.125 system.
 * Control structures: 5.2 Control structures.
 * control_Matrix: D.5.3.5 control_Matrix.
-* copyright: 1. Preface.
+* copyright: 1 Preface.
 * corank: D.5.1.3 corank.
 * Critical points: A.3 Critical points.
 * cup: D.4.3.1 cup.
@@ -233,7 +233,7 @@ F Index
 * cyclic: D.2.4.1 cyclic.
 * Cyclic roots: A.16 Cyclic roots.
 * cyclotomic: D.6.1.5 cyclotomic.
-* Data types: 4. Data types.
+* Data types: 4 Data types.
 * DBM links: 4.6.6 DBM links.
 * dbprint: 5.1.12 dbprint.
 * debugger: 3.10.2 Source code debugger.
@@ -346,13 +346,13 @@ F Index
 * Evaluation of logical expressions: 6.2.2 Evaluation of logical expressions.
 * evnf: D.3.2.18 evnf.
 * example: 5.1.25 example.
-* Examples: A. Examples.
+* Examples: Appendix A Examples.
 * Examples of ring declarations: 3.3.1 Examples of ring declarations.
 * execute: 5.1.26 execute.
 * exit: 5.1.27 exit.
 * exit: 5.2.9 quit.
 * export: 5.2.5 export.
-* expression list: 4. Data types.
+* expression list: 4 Data types.
 * Ext: A.12 Computation of Ext.
 * Ext: D.4.3.5 Ext.
 * extcurve: D.9.1.5 extcurve.
@@ -369,7 +369,7 @@ F Index
 * Factorization: A.19 Factorization.
 * factorize: 5.1.30 factorize.
 * FactorMain: D.7.5.9 FactorMain.
-* factory: 1. Preface.
+* factory: 1 Preface.
 * Fast lexicographical GB: A.27 Fast lexicographical GB.
 * fastelim: D.7.1.5 fastelim.
 * fastHC, option: 5.1.89 option.
@@ -403,7 +403,7 @@ F Index
 * Free resolution: A.11 Free resolution.
 * freemodule: 5.1.38 freemodule.
 * freerank: D.2.4.3 freerank.
-* Fru"bis-Kru"ger, Anne: 1. Preface.
+* Fru"bis-Kru"ger, Anne: 1 Preface.
 * Functions: 5.1 Functions.
 * furtherInvar: D.6.2.7 furtherInvar.
 * further_hn_proc: D.5.5.21 further_hn_proc.
@@ -433,7 +433,7 @@ F Index
 * gcd: 5.1.39 gcd.
 * gen: 5.1.40 gen.
 * General command syntax: 3.5.1 General command syntax.
-* General concepts: 3. General concepts.
+* General concepts: 3 General concepts.
 * General purpose: D.2 General purpose.
 * General syntax of a ring declaration: 3.3.2 General syntax of a ring declaration.
 * general weighted lexicographical ordering: B.2.4 Local orderings.
@@ -449,14 +449,14 @@ F Index
 * getenv: 5.1.125 system.
 * Getting started: 2.3 Getting started.
 * Global orderings: B.2.3 Global orderings.
-* GMP: 1. Preface.
+* GMP: 1 Preface.
 * gmscoeffs: D.5.4.3 gmscoeffs.
 * gmsnf: D.5.4.2 gmsnf.
 * gmsring: D.5.4.1 gmsring.
 * graphics.lib: D.8.1 graphics_lib.
 * graphics_lib: D.8.1 graphics_lib.
-* Grassmann, Hubert: 1. Preface.
-* Greuel, Gert-Martin: 1. Preface.
+* Grassmann, Hubert: 1 Preface.
+* Greuel, Gert-Martin: 1 Preface.
 * groebner: 5.1.42 groebner.
 * ground field: 4.11 number.
 * group_reynolds: D.6.1.6 group_reynolds.
@@ -541,7 +541,7 @@ F Index
 * Implemented algorithms: 3.4 Implemented algorithms.
 * IN: 5.1.61 lead.
 * indepSet: 5.1.50 indepSet.
-* Index: F. Index.
+* Index: F Index.
 * indexed names: 3.5.2 Special characters.
 * indSet: D.4.4.12 indSet.
 * info: 3.1.3 The online help system.
@@ -583,7 +583,7 @@ F Index
 * intmat type cast: 4.4.3 intmat type cast.
 * intprog.lib: D.4.10 intprog_lib.
 * intprog_lib: D.4.10 intprog_lib.
-* Introduction: 2. Introduction.
+* Introduction: 2 Introduction.
 * intStrategy, option: 5.1.89 option.
 * intvec: 4.5 intvec.
 * intvec declarations: 4.5.1 intvec declarations.
@@ -635,7 +635,7 @@ F Index
 * katsura: D.2.4.2 katsura.
 * kbase: 5.1.56 kbase.
 * keepring: 5.2.8 keepring.
-* Keilen, Thomas: 1. Preface.
+* Keilen, Thomas: 1 Preface.
 * kernel: 5.1.95 preimage.
 * kernel: D.4.3.14 kernel.
 * Kernel of module homomorphisms: A.24 Kernel of module homomorphisms.
@@ -648,7 +648,7 @@ F Index
 * kontrahom: D.4.3.16 kontrahom.
 * koszul: 5.1.59 koszul.
 * KoszulHomology: D.4.3.17 KoszulHomology.
-* Kru"ger, Kai: 1. Preface.
+* Kru"ger, Kai: 1 Preface.
 * KSpencerKernel: D.5.9.9 KSpencerKernel.
 * laguerre: 5.1.60 laguerre.
 * laguerre_solve: D.7.2.1 laguerre_solve.
@@ -659,12 +659,12 @@ F Index
 * leadcoef: 5.1.62 leadcoef.
 * leadexp: 5.1.63 leadexp.
 * leadmonom: 5.1.64 leadmonom.
-* Levandovskyy, Viktor: 1. Preface.
+* Levandovskyy, Viktor: 1 Preface.
 * lexicographical ordering: B.2.3 Global orderings.
 * lex_solve: D.7.2.7 lex_solve.
 * LIB: 5.1.65 LIB.
 * lib2doc: 3.9.2.1 lib2doc.
-* libfac: 1. Preface.
+* libfac: 1 Preface.
 * libparse: 3.10.5 libparse.
 * Libraries: 3.8 Libraries.
 * library, documentation: 3.9.2 Documentation of a library.
@@ -676,7 +676,7 @@ F Index
 * library, template: 3.9.6 template_lib.
 * library, template.lib: 3.9.6 template_lib.
 * library, typesetting of help strings: 3.9.3 Typesetting of help strings.
-* LIBs: D. SINGULAR libraries.
+* LIBs: Appendix D SINGULAR libraries.
 * lift: 5.1.66 lift.
 * liftstd: 5.1.67 liftstd.
 * lift_kbase: D.5.2.3 lift_kbase.
@@ -712,7 +712,7 @@ F Index
 * localInvar: D.6.2.6 localInvar.
 * locstd: D.5.8.8 locstd.
 * Long coefficients: A.5 Long coefficients.
-* Lossen, Christoph: 1. Preface.
+* Lossen, Christoph: 1 Preface.
 * lp, global ordering: B.2.3 Global orderings.
 * lprint: D.2.3.2 lprint.
 * lres: 5.1.69 lres.
@@ -725,7 +725,7 @@ F Index
 * map operations: 4.8.3 map operations.
 * mapall: D.2.6.10 mapall.
 * mapIsFinite: D.4.1.10 mapIsFinite.
-* Mathematical background: C. Mathematical background.
+* Mathematical background: Appendix C Mathematical background.
 * mathematical objects: B.1 Representation of mathematical objects.
 * mathinit: D.8.1.2 mathinit.
 * matrix: 4.9 matrix.
@@ -805,7 +805,7 @@ F Index
 * Monomial orderings, Term orderings: 3.3.3 Term orderings.
 * monomials and precedence: 6.3 Miscellaneous oddities.
 * morsesplit: D.5.1.8 morsesplit.
-* MP: 1. Preface.
+* MP: 1 Preface.
 * MP links: 4.6.5 MP links.
 * MP, groebner basis computations: 5.1.42 groebner.
 * MPfile links: 4.6.5.1 MPfile links.
@@ -842,7 +842,7 @@ F Index
 * net access: 3.1.6 Command line options.
 * netscape: 3.1.3 The online help system.
 * NETSCAPE environment variable: 3.1.3 The online help system.
-* Neumann, Wolfgang: 1. Preface.
+* Neumann, Wolfgang: 1 Preface.
 * newline: 4.17 string.
 * news: E.1 News and changes.
 * Newton non-degenerate: D.5.5.16 is_NND.
@@ -934,11 +934,11 @@ F Index
 * permcol: D.3.1.21 permcol.
 * permrow: D.3.1.22 permrow.
 * permute_L: D.9.1.13 permute_L.
-* Pfister, Gerhard: 1. Preface.
+* Pfister, Gerhard: 1 Preface.
 * pid: 5.1.125 system.
 * plot: D.8.4.1 plot.
 * pmat: D.2.3.3 pmat.
-* Pohl, Wilfred: 1. Preface.
+* Pohl, Wilfred: 1 Preface.
 * Polar curves: A.13 Polar curves.
 * poly: 4.12 poly.
 * poly declarations: 4.12.1 poly declarations.
@@ -946,7 +946,7 @@ F Index
 * poly operations: 4.12.3 poly operations.
 * poly related functions: 4.12.4 poly related functions.
 * poly.lib: D.2.4 poly_lib.
-* Polynomial data: B. Polynomial data.
+* Polynomial data: Appendix B Polynomial data.
 * poly_lib: D.2.4 poly_lib.
 * posweight: D.5.9.8 posweight.
 * pos_def: D.3.2.16 pos_def.
@@ -954,7 +954,7 @@ F Index
 * power: D.3.1.9 power.
 * power_products: D.6.1.23 power_products.
 * preComp: D.4.4.11 preComp.
-* Preface: 1. Preface.
+* Preface: 1 Preface.
 * preimage: 5.1.95 preimage.
 * prepareAss: D.4.7.10 prepareAss.
 * prepMat: D.6.4.1 prepMat.
@@ -1048,7 +1048,7 @@ F Index
 * random_lib: D.2.5 random_lib.
 * read: 5.1.105 read.
 * reading, option: 5.1.89 option.
-* readline: 1. Preface.
+* readline: 1 Preface.
 * real: 3.3 Rings and orderings.
 * redefine, option: 5.1.89 option.
 * redSB, option: 5.1.89 option.
@@ -1067,7 +1067,7 @@ F Index
 * reg_curve: D.4.5.2 reg_curve.
 * reg_moncurve: D.4.5.3 reg_moncurve.
 * relative_orbit_variety: D.6.1.30 relative_orbit_variety.
-* Release Notes: E. Release Notes.
+* Release Notes: E Release Notes.
 * relweight: D.5.9.7 relweight.
 * Remainder: D.7.5.4 Remainder.
 * RemainderMain: D.7.5.12 RemainderMain.
@@ -1118,9 +1118,9 @@ F Index
 * SameQ: D.7.5.16 SameQ.
 * sat: D.4.2.5 sat.
 * Saturation: A.4 Saturation.
-* Schmidt, Jens: 1. Preface.
-* Scho"nemann, Hans: 1. Preface.
-* Schulze, Mathias: 1. Preface.
+* Schmidt, Jens: 1 Preface.
+* Scho"nemann, Hans: 1 Preface.
+* Schulze, Mathias: 1 Preface.
 * SDB breakpoint: 3.10.2 Source code debugger.
 * SDB debugger: 3.10.2 Source code debugger.
 * sdb, source code debugger: 3.10.2 Source code debugger.
@@ -1150,7 +1150,7 @@ F Index
 * SimplifyIdeal: D.6.3.14 SimplifyIdeal.
 * sing.lib: D.5.8 sing_lib.
 * Singular: 5.1.125 system.
-* SINGULAR libraries: D. SINGULAR libraries.
+* SINGULAR libraries: Appendix D SINGULAR libraries.
 * Singular, customization of Emacs user interface: 3.2.4 Customization of the Emacs interface.
 * Singular, demo mode: 3.2.3 Demo mode.
 * Singular, editing input files with Emacs: 3.2.5 Editing SINGULAR input files with Emacs.
@@ -1250,7 +1250,7 @@ F Index
 * stdfglm: 5.1.122 stdfglm.
 * stdhilb: 5.1.123 stdhilb.
 * stdModulesEqual: D.4.4.18 stdModulesEqual.
-* Stobbe, Ru"diger: 1. Preface.
+* Stobbe, Ru"diger: 1 Preface.
 * stratify: D.6.4.2 stratify.
 * stratify.lib: D.6.4 stratify_lib.
 * stratify_lib: D.6.4 stratify_lib.
@@ -1362,7 +1362,7 @@ F Index
 * triangM_solve: D.7.2.10 triangM_solve.
 * triang_lib: D.7.3 triang_lib.
 * triang_solve: D.7.2.12 triang_solve.
-* Tricks and pitfalls: 6. Tricks and pitfalls.
+* Tricks and pitfalls: 6 Tricks and pitfalls.
 * triMNewton: D.7.4.2 triMNewton.
 * tty: 5.1.125 system.
 * type: 5.1.129 type.
@@ -1418,10 +1418,10 @@ F Index
 * weighted lexicographical ordering: B.2.3 Global orderings.
 * weighted reverse lexicographical ordering: B.2.3 Global orderings.
 * weightM, option: 5.1.89 option.
-* Westenberger, Eric: 1. Preface.
+* Westenberger, Eric: 1 Preface.
 * which: D.2.2.17 which.
 * while: 5.2.11 while.
-* Wichmann, Tim: 1. Preface.
+* Wichmann, Tim: 1 Preface.
 * Windows installation: E.4 Windows installation instructions.
 * Windows installation, components: E.4 Windows installation instructions.
 * wp, global ordering: B.2.3 Global orderings.
@@ -1445,8 +1445,8 @@ Table of Contents
 *****************
 
 Top
-1. Preface
-2. Introduction
+1 Preface
+2 Introduction
  2.1 Background
  2.2 How to use this manual
  2.3 Getting started
@@ -1456,7 +1456,7 @@ Top
   2.3.4 Change of rings
   2.3.5 Modules and their annihilator
   2.3.6 Resolution
-3. General concepts
+3 General concepts
  3.1 Interactive use
   3.1.1 How to enter and exit
   3.1.2 The SINGULAR prompt
@@ -1510,7 +1510,7 @@ Top
   3.10.3 Break points
   3.10.4 Printing of data
   3.10.5 libparse
-4. Data types
+4 Data types
  4.1 def
   4.1.1 def declarations
  4.2 ideal
@@ -1598,7 +1598,7 @@ Top
   4.18.2 vector expressions
   4.18.3 vector operations
   4.18.4 vector related functions
-5. Functions and system variables
+5 Functions and system variables
  5.1 Functions
   5.1.1 attrib
   5.1.2 bareiss
@@ -1763,7 +1763,7 @@ Top
   5.3.9 TRACE
   5.3.10 rtimer
   5.3.11 voice
-6. Tricks and pitfalls
+6 Tricks and pitfalls
  6.1 Limitations
  6.2 Major differences to the C programming language
   6.2.1 No rvalue of increments and assignments
@@ -1775,7 +1775,7 @@ Top
   6.2.7 Return type of procedures
  6.3 Miscellaneous oddities
  6.4 Identifier resolution
-A. Examples
+Appendix A Examples
  A.1 Milnor and Tjurina
  A.2 Procedures and LIB
  A.3 Critical points
@@ -1804,7 +1804,7 @@ A. Examples
  A.26 Classification
  A.27 Fast lexicographical GB
  A.28 Parallelization with MPtcp links
-B. Polynomial data
+Appendix B Polynomial data
  B.1 Representation of mathematical objects
  B.2 Monomial orderings
   B.2.1 Introduction to orderings
@@ -1815,7 +1815,7 @@ B. Polynomial data
   B.2.6 Matrix orderings
   B.2.7 Product orderings
   B.2.8 Extra weight vector
-C. Mathematical background
+Appendix C Mathematical background
  C.1 Standard bases
  C.2 Hilbert function
  C.3 Syzygies and resolutions
@@ -1833,7 +1833,7 @@ C. Mathematical background
   C.6.4 Integer programming
   C.6.5 Relevant References
  C.7 References
-D. SINGULAR libraries
+Appendix D SINGULAR libraries
  D.1 standard_lib
  D.2 General purpose
   D.2.1 all_lib
@@ -2353,13 +2353,13 @@ D. SINGULAR libraries
    D.9.1.11 dual_code
    D.9.1.12 sys_code
    D.9.1.13 permute_L
-E. Release Notes
+E Release Notes
  E.1 News and changes
  E.2 Downloading instructions
  E.3 Unix installation instructions
  E.4 Windows installation instructions
  E.5 Macintosh installation instructions
-F. Index
+F Index
 
 <font size="-1">
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,

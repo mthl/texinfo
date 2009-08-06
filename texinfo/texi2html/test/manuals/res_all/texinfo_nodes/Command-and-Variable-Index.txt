@@ -50,7 +50,7 @@ commands are listed without their preceding `@'.
 * b (bold font): 9.2.3 Fonts for Printing, Not Info.
 * buffer-end: 15.1 The Template for a Definition.
 * bullet: 13.4.2 @bullet{} (*).
-* bye: 4. Ending a Texinfo File.
+* bye: 4 Ending a Texinfo File.
 * bye: 4.3 @bye File Ending.
 * c (comment): 1.7 Comments.
 * cartouche: 10.13 @cartouche: Rounded Rectangles Around Examples.
@@ -105,7 +105,7 @@ commands are listed without their preceding `@'.
 * dots: 13.4.1 @dots{} (...) and @enddots{} (...).
 * email: 9.1.15 @email{email-address[, displayed-text]}.
 * emph: 9.2.1 @emph{text} and @strong{text}.
-* end: 10. Quotations and Examples.
+* end: 10 Quotations and Examples.
 * end: Introducing Lists.
 * end titlepage: 3.4.5 Heading Generation.
 * enddots: 13.4.1 @dots{} (...) and @enddots{} (...).
@@ -182,7 +182,7 @@ commands are listed without their preceding `@'.
 * makeinfo-recenter-output-buffer: 20.1.5 Running makeinfo inside Emacs.
 * makeinfo-region: 20.1.5 Running makeinfo inside Emacs.
 * math: 13.8 @math: Inserting Mathematical Expressions.
-* menu: 7. Menus.
+* menu: 7 Menus.
 * minus: 13.7 @minus{} (-): Inserting a Minus Sign.
 * multitable: 11.4 Multi-column Tables.
 * need: 14.7 @need mils: Prevent Page Breaks.
@@ -215,7 +215,7 @@ commands are listed without their preceding `@'.
 * r (Roman font): 9.2.3 Fonts for Printing, Not Info.
 * raisesections: 5.12 @raisesections and @lowersections.
 * ref: 8.5 @ref.
-* refill: G. Refilling Paragraphs.
+* refill: Appendix G Refilling Paragraphs.
 * result: 13.9.2 @result{} (=>): Indicating Evaluation.
 * ringaccent: 13.3 Inserting Accents.
 * rmacro: 18.1 Defining Macros.

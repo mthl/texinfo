@@ -40,7 +40,7 @@ message such as:
 <p>and the checked out copy in the &lsquo;<tt>CVSROOT</tt>&rsquo;
 directory should be updated.
 </p>
-<p>Note that listing &lsquo;<tt>passwd</tt>&rsquo; (see section [cvs: Setting up the server for password authentication#Password-authentication-server Setting up the server for password authentication]) in &lsquo;<tt>checkoutlist</tt>&rsquo; is not
+<p>Note that listing &lsquo;<tt>passwd</tt>&rsquo; (see [cvs: Setting up the server for password authentication#Password-authentication-server Password authentication server]) in &lsquo;<tt>checkoutlist</tt>&rsquo; is not
 recommended for security reasons.
 </p>
 <p>For information about keeping a checkout out copy in a

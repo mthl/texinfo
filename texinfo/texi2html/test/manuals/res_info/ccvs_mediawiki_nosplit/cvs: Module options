@@ -33,7 +33,7 @@ argument, the module name.
 <dt><code>-o <var>prog</var></code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
 module are checked out.  <var>prog</var> runs with a single
-argument, the module name.  See [cvs: How the modules file "program options" programs are run#Module-program-options How the modules file &ldquo;program options&rdquo; programs are run] for
+argument, the module name.  See [cvs: How the modules file "program options" programs are run#Module-program-options Module program options] for
 information on how <var>prog</var> is called.
 </p>
 <div id="index-Status-of-a-module"></div>
@@ -58,11 +58,11 @@ module are tagged with <code>rtag</code>.  <var>prog</var> runs
 with two arguments: the module name and the symbolic
 tag specified to <code>rtag</code>.  It is not run
 when <code>tag</code> is executed.  Generally you will find
-that taginfo is a better solution (see section [cvs: User-defined logging#user_002ddefined-logging User-defined logging]).
+that taginfo is a better solution (see [cvs: User-defined logging#user_002ddefined-logging user-defined logging]).
 </p></dd>
 </dl>
 
-<p>You should also see see section [cvs: How the modules file "program options" programs are run#Module-program-options How the modules file &ldquo;program options&rdquo; programs are run] about how the
+<p>You should also see see [cvs: How the modules file "program options" programs are run#Module-program-options Module program options] about how the
 &ldquo;program options&rdquo; programs are run.
 </p>
 

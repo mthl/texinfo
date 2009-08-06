@@ -1,10 +1,9 @@
 <div id="Revision-management"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Multiple developers#Choosing-a-model  &lt; ]|</td>
-<td valign="middle" align="left">|[[#When-to-commit| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Multiple developers#Choosing-a-model  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[[#When-to-commit| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -35,11 +34,10 @@ than one person is working in a repository.
 <hr>
 <div id="When-to-commit"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Revision-management| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Revision-management| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Revision-management| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Revision-management| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revision-management| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

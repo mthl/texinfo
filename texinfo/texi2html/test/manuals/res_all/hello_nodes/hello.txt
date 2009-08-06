@@ -2,11 +2,11 @@ Table of Contents
 *****************
 
 GNU Hello
-1. Overview
-2. Sample output
-3. Invoking hello
-4. Reporting bugs
-A. GNU Free Documentation License
+1 Overview
+2 Sample output
+3 Invoking hello
+4 Reporting bugs
+Appendix A GNU Free Documentation License
 Concept index
 
 

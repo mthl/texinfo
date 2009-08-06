@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 3.6.2 @setchapternewpage:</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 3.6.2 @setchapternewpage:">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.6.2 @setchapternewpage:">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Global-Document-Commands.html#Global-Document-Commands" rel="up" title="3.6 Global Document Commands">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="documentdescription.html#documentdescription" rel="previous" title="3.6.1 @documentdescription: Summary text">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="setchapternewpage"></a>
+<div class="node">
+<p>
+Next: <a href="paragraphindent.html#paragraphindent" accesskey="n" rel="next">paragraphindent</a>, Previous: <a href="documentdescription.html#documentdescription" accesskey="p" rel="previous">documentdescription</a>, Up: <a href="Global-Document-Commands.html#Global-Document-Commands" accesskey="u" rel="up">Global Document Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="g_t_0040setchapternewpage_003a"></a>
+<h3 class="subsection">3.6.2 <code>@setchapternewpage</code>:</h3>
+<a name="index-Starting-chapters"></a>
+<a name="index-Pages_002c-starting-odd"></a>
+<a name="index-setchapternewpage"></a>
+
+<p>In an officially bound book, text is usually printed on both sides of
+the paper, chapters start on right-hand pages, and right-hand pages have
+odd numbers.  But in short reports, text often is printed only on one
+side of the paper.  Also in short reports, chapters sometimes do not
+start on new pages, but are printed on the same page as the end of the
+preceding chapter, after a small amount of vertical whitespace.
+</p>
+<p>You can use the <code>@setchapternewpage</code> command with various
+arguments to specify how TeX should start chapters and whether it
+should format headers for printing on one or both sides of the paper
+(single-sided or double-sided printing).
+</p>
+<p>Write the <code>@setchapternewpage</code> command at the beginning of a
+line followed by its argument.
+</p>
+<p>For example, you would write the following to cause each chapter to
+start on a fresh odd-numbered page:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@setchapternewpage odd
+</pre></td></tr></table>
+
+<p>You can specify one of three alternatives with the
+<code>@setchapternewpage</code> command:
+</p>
+<dl compact="compact">
+<dt><code>@setchapternewpage off</code></dt>
+<dd><p>Cause TeX to typeset a new chapter on the same page as the last
+chapter, after skipping some vertical whitespace.  Also, cause TeX to
+format page headers for single-sided printing.
+</p>
+</dd>
+<dt><code>@setchapternewpage on</code></dt>
+<dd><p>Cause TeX to start new chapters on new pages and to format page
+headers for single-sided printing.  This is the form most often used for
+short reports or personal printing. This is the default.
+</p>
+</dd>
+<dt><code>@setchapternewpage odd</code></dt>
+<dd><p>Cause TeX to start new chapters on new, odd-numbered pages
+(right-handed pages) and to typeset for double-sided printing.  This is
+the form most often used for books and manuals.
+</p></dd>
+</dl>
+
+<p>Texinfo does not have an <code>@setchapternewpage even</code> command,
+because there is no printing tradition of starting chapters or books on
+an even-numbered page.
+</p>
+<p>If you don&rsquo;t like the default headers that <code>@setchapternewpage</code>
+sets, you can explicit control them with the <code>@headings</code> command.
+See <a href="headings-on-off.html#headings-on-off">The <code>@headings</code> Command</a>.
+</p>
+<p>At the beginning of a manual or book, pages are not numbered&mdash;for
+example, the title and copyright pages of a book are not numbered.  By
+convention, table of contents and frontmatter pages are numbered with
+roman numerals and not in sequence with the rest of the document.
+</p>
+<p>Since an Info file does not have pages, the <code>@setchapternewpage</code>
+command has no effect on it.
+</p>
+<p>We recommend not including any <code>@setchapternewpage</code> command in
+your manual sources at all, since the desired output is not intrinsic to
+the document.  For a particular hard copy run, if you don&rsquo;t want the
+default option (no blank pages, same headers on all pages) use the
+&lsquo;<samp>--texinfo</samp>&rsquo; option to <code>texi2dvi</code> to specify the output
+you want.
+</p>
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="paragraphindent.html#paragraphindent" accesskey="n" rel="next">paragraphindent</a>, Previous: <a href="documentdescription.html#documentdescription" accesskey="p" rel="previous">documentdescription</a>, Up: <a href="Global-Document-Commands.html#Global-Document-Commands" accesskey="u" rel="up">Global Document Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

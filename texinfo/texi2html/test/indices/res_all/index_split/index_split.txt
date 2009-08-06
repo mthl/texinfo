@@ -2,15 +2,15 @@ split indices
 *************
 
 * Index:
-* ! entry in node: 1. First chapter.
-* a concept in first: 1. First chapter: N - S.
+* ! entry in node: 1 First chapter.
+* a concept in first: 1 First chapter: N - S.
 * after second printindex node in section 3: node 2 in section 3.
 * another: 1.1 Section 1.
 * between printindex node in section 3: node 2 in section 3.
 * entry a: split indices.
-* entry after printindex: 1. First chapter.
-* entry in node: 1. First chapter.
-* entry in node: 1. First chapter.
+* entry after printindex: 1 First chapter.
+* entry in node: 1 First chapter.
+* entry in node: 1 First chapter.
 * node 2 in section 3: node 2 in section 3.
 * node 3 in section 3: node 3 in section 3.
 * node in section 3: node in section 3.
@@ -20,22 +20,22 @@ split indices
 * subsection 2: 1.1.2 Subsection 2.
 
 * Index:
-* a function: 1. First chapter: N - S.
-* fun in node: 1. First chapter.
-* somewhere: 1. First chapter: N - S.
+* a function: 1 First chapter: N - S.
+* fun in node: 1 First chapter.
+* somewhere: 1 First chapter: N - S.
 
 And one one more index
 
 * Index:
-* ! entry in node: 1. First chapter.
-* a concept in first: 1. First chapter: N - S.
+* ! entry in node: 1 First chapter.
+* a concept in first: 1 First chapter: N - S.
 * after second printindex node in section 3: node 2 in section 3.
 * another: 1.1 Section 1.
 * between printindex node in section 3: node 2 in section 3.
 * entry a: split indices.
-* entry after printindex: 1. First chapter.
-* entry in node: 1. First chapter.
-* entry in node: 1. First chapter.
+* entry after printindex: 1 First chapter.
+* entry in node: 1 First chapter.
+* entry in node: 1 First chapter.
 * node 2 in section 3: node 2 in section 3.
 * node 3 in section 3: node 3 in section 3.
 * node in section 3: node in section 3.

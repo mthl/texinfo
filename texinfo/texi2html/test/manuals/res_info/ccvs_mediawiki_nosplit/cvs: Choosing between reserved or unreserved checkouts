@@ -49,7 +49,7 @@ going to be unpleasant enough that you generally will
 be better off to simply avoid the conflicts instead, by
 using reserved checkouts.
 </p>
-<p>The watches features described above in [cvs: Mechanisms to track who is editing files#Watches Mechanisms to track who is editing files]
+<p>The watches features described above in [cvs: Mechanisms to track who is editing files#Watches Watches]
 can be considered to be an intermediate model between
 reserved checkouts and unreserved checkouts.  When you
 go to edit a file, it is possible to find out who else

@@ -1,5 +1,5 @@
-Annexe J Copying This Manual
-****************************
+Appendix J Copying This Manual
+******************************
 
 * GNU Free Documentation License::  License for copying this manual.
 

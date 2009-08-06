@@ -127,10 +127,10 @@ Table of Contents
 *****************
 
 
-1. chapter
+1 chapter
  1.1 section
-2. bidule
-3. last
+2 bidule
+3 last
 
 Line following contents
 

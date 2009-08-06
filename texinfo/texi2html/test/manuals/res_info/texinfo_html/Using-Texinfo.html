@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 1.2 Using Texinfo</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 1.2 Using Texinfo">
+<meta name="keywords" content="GNU Texinfo 4.2: 1.2 Using Texinfo">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Overview.html#Overview" rel="up" title="1 Overview of Texinfo">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Reporting-Bugs.html#Reporting-Bugs" rel="previous" title="1.1 Reporting Bugs">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Using-Texinfo"></a>
+<div class="node">
+<p>
+Next: <a href="Info-Files.html#Info-Files" accesskey="n" rel="next">Info Files</a>, Previous: <a href="Reporting-Bugs.html#Reporting-Bugs" accesskey="p" rel="previous">Reporting Bugs</a>, Up: <a href="Overview.html#Overview" accesskey="u" rel="up">Overview</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Using-Texinfo-1"></a>
+<h2 class="section">1.2 Using Texinfo</h2>
+
+<a name="index-Using-Texinfo-in-general"></a>
+<a name="index-Texinfo_002c-introduction-to"></a>
+<a name="index-Introduction-to-Texinfo"></a>
+
+<p>Using Texinfo, you can create a printed document with the normal
+features of a book, including chapters, sections, cross references, and
+indices.  From the same Texinfo source file, you can create a
+menu-driven, online Info file with nodes, menus, cross references, and
+indices.  You can also create from that same source file an HTML output
+file suitable for use with a web browser, or an XML file.  <cite>The GNU
+Emacs Manual</cite> is a good example of a Texinfo file, as is this manual.
+</p>
+<p>To make a printed document, you process a Texinfo source file with the
+TeX typesetting program (but the Texinfo language is very different
+and much stricter than TeX&rsquo;s usual language, plain TeX).  This
+creates a DVI file that you can typeset and print as a book or report
+(see <a href="Hardcopy.html#Hardcopy">Hardcopy</a>).
+</p>
+<a name="index-makeinfo"></a>
+<p>To output an Info file, process your Texinfo source with the
+<code>makeinfo</code> utility or Emacs&rsquo;s <code>texinfo-format-buffer</code> command.
+You can install the result in your Info tree (see <a href="Installing-an-Info-File.html#Installing-an-Info-File">Installing an Info File</a>).
+</p>
+<p>To output an HTML file, run <code>makeinfo --html</code> on your Texinfo
+source.  You can (for example) install the result on your web site.
+</p>
+<a name="index-Docbook_002c-converting-to-Texinfo"></a>
+<a name="index-Conversion_002c-from-Docbook-to-Texinfo"></a>
+<p>To output an XML file, run <code>makeinfo --xml</code> on your Texinfo source.
+To output DocBook (a particular form of XML), run <code>makeinfo
+--docbook</code>.  If you want to convert from Docbook <em>to</em> Texinfo,
+please see <a href="http://docbook2X.sourceforge.net/">http://docbook2X.sourceforge.net/</a>.
+</p>
+<a name="index-Output-formats_002c-supporting-more"></a>
+<a name="index-SGML_002dtools-output-format"></a>
+<p>If you are a programmer and would like to contribute to the GNU project
+by implementing additional output formats for Texinfo, that would be
+excellent.  But please do not write a separate translator texi2foo for
+your favorite format foo!  That is the hard way to do the job, and makes
+extra work in subsequent maintenance, since the Texinfo language is
+continually being enhanced and updated.  Instead, the best approach is
+modify <code>makeinfo</code> to generate the new format, as it does now for
+Info, plain text, HTML, XML, and DocBook.
+</p>
+<p>TeX works with virtually all printers; Info works with virtually all
+computer terminals; the HTML output works with virtually all web
+browsers.  Thus Texinfo can be used by almost any computer user.
+</p>
+<a name="index-Source-file"></a>
+<p>A Texinfo source file is a plain <small>ASCII</small> file containing text and
+<em>@-commands</em> (words preceded by an &lsquo;<samp>@</samp>&rsquo;) that tell the
+typesetting and formatting programs what to do.  You may edit a Texinfo
+file with any text editor; but it is especially convenient to use GNU
+Emacs since that editor has a special mode, called Texinfo mode, that
+provides various Texinfo-related features.  (See <a href="Texinfo-Mode.html#Texinfo-Mode">Texinfo Mode</a>.)
+</p>
+<p>Before writing a Texinfo source file, you should learn about nodes,
+menus, cross references, and the rest, for example by reading this
+manual.
+</p>
+<p>You can use Texinfo to create both online help and printed manuals;
+moreover, Texinfo is freely redistributable.  For these reasons, Texinfo
+is the official documentation format of the GNU project.  More
+information is available at the <a href="http://www.gnu.org/doc/">GNU documentation web page</a>.
+</p>
+<a name="index-Man-page-output_002c-not-supported"></a>
+<p>From time to time, proposals are made to generate traditional Unix man
+pages from Texinfo source.  This is not likely to ever be supported,
+because man pages have a very strict conventional format.  Merely
+enhancing <code>makeinfo</code> to output troff format would be
+insufficient.  Generating a good man page therefore requires a
+completely different source than the typical Texinfo applications of
+writing a good user tutorial or a good reference manual.  This makes
+generating man pages incompatible with the Texinfo design goal of not
+having to document the same information in different ways for different
+output formats.  You might as well just write the man page directly.
+</p>
+<a name="index-help2man"></a>
+<a name="index-O_0027Dea_002c-Brendan"></a>
+<p>Man pages still have their place, and if you wish to support them, the
+program <code>help2man</code> may be useful; it generates a traditional man
+page from the &lsquo;<samp>--help</samp>&rsquo; output of a program.  In fact, this is
+currently used to generate man pages for the Texinfo programs
+themselves.  It is GNU software written by Brendan O&rsquo;Dea, available from
+<a href="ftp://ftp.gnu.org/gnu/help2man/">ftp://ftp.gnu.org/gnu/help2man/</a>.
+</p>
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="Info-Files.html#Info-Files" accesskey="n" rel="next">Info Files</a>, Previous: <a href="Reporting-Bugs.html#Reporting-Bugs" accesskey="p" rel="previous">Reporting Bugs</a>, Up: <a href="Overview.html#Overview" accesskey="u" rel="up">Overview</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

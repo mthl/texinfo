@@ -14,3 +14,5 @@ ccvs_mediawiki_nosplit cvs.texi --init mediawiki.init --init cvs.init
 ccvs_info cvs.texi --init info.init
 mini_ker mini_ker.texi --init book.init --split section --node-files --use-nodes --iftex --init mini_ker_t2h.init --init tex4ht.init
 texinfo_xml texinfo.texi --init xml.init
+texinfo_html texinfo.texi --html
+hello_html hello.texi --html

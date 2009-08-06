@@ -100,7 +100,7 @@ following forms.
 <dl compact="compact">
 <dt>&lsquo;<samp>%&lt;</samp>&rsquo;</dt>
 <dd><p>stands for the lines from the first file, including the trailing newline.
-Each line is formatted according to the old line format (see section [cvs: Line formats#Line-formats Line formats]).
+Each line is formatted according to the old line format (see [cvs: Line formats#Line-formats Line formats]).
 </p>
 </dd>
 <dt>&lsquo;<samp>%&gt;</samp>&rsquo;</dt>

@@ -36,7 +36,7 @@ Coordinated Universal Time (UTC).  (Other parts of
 <small>CVS</small> print times in the local timezone).
 </p>
 <p><strong>Note: <code>log</code> uses &lsquo;<samp>-R</samp>&rsquo; in a way that conflicts
-with the normal use inside <small>CVS</small> (see section [cvs: Common command options#Common-options Common command options]).</strong>
+with the normal use inside <small>CVS</small> (see [cvs: Common command options#Common-options Common options]).</strong>
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: log options#log-options  log options]::<nowiki>                 log options
 </nowiki>&bull;[cvs: log examples#log-examples  log examples]::<nowiki>                log examples

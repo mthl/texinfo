@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 20.2.1 The Directory File dir</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 20.2.1 The Directory File dir">
+<meta name="keywords" content="GNU Texinfo 4.2: 20.2.1 The Directory File dir">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Installing-an-Info-File.html#Installing-an-Info-File" rel="up" title="20.2 Installing an Info File">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Installing-an-Info-File.html#Installing-an-Info-File" rel="previous" title="20.2 Installing an Info File">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Directory-File"></a>
+<div class="node">
+<p>
+Next: <a href="New-Info-File.html#New-Info-File" accesskey="n" rel="next">New Info File</a>, Up: <a href="Installing-an-Info-File.html#Installing-an-Info-File" accesskey="u" rel="up">Installing an Info File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-Directory-File-dir"></a>
+<h3 class="subsection">20.2.1 The Directory File &lsquo;<tt>dir</tt>&rsquo;</h3>
+
+<p>For Info to work, the &lsquo;<tt>info</tt>&rsquo; directory must contain a file that
+serves as a top level directory for the Info system.  By convention,
+this file is called &lsquo;<tt>dir</tt>&rsquo;.  (You can find the location of this file
+within Emacs by typing <kbd>C-h i</kbd> to enter Info and then typing
+<kbd>C-x C-f</kbd> to see the pathname to the &lsquo;<tt>info</tt>&rsquo; directory.)
+</p>
+<p>The &lsquo;<tt>dir</tt>&rsquo; file is itself an Info file.  It contains the top level
+menu for all the Info files in the system.  The menu looks like
+this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">* Menu:
+* Info:    (info).     Documentation browsing system.
+* Emacs:   (emacs).    The extensible, self-documenting
+                       text editor.
+* Texinfo: (texinfo).  With one source file, make
+                       either a printed manual using
+                       @TeX{} or an Info file.
+&hellip;
+</pre></td></tr></table>
+
+<p>Each of these menu entries points to the &lsquo;Top&rsquo; node of the Info file
+that is named in parentheses.  (The menu entry does not need to
+specify the &lsquo;Top&rsquo; node, since Info goes to the &lsquo;Top&rsquo; node if no node
+name is mentioned.  See <a href="Other-Info-Files.html#Other-Info-Files">Nodes in Other Info Files</a>.)
+</p>
+<p>Thus, the &lsquo;<samp>Info</samp>&rsquo; entry points to the &lsquo;Top&rsquo; node of the
+&lsquo;<tt>info</tt>&rsquo; file and the &lsquo;<samp>Emacs</samp>&rsquo; entry points to the &lsquo;Top&rsquo; node
+of the &lsquo;<tt>emacs</tt>&rsquo; file.
+</p>
+<p>In each of the Info files, the &lsquo;Up&rsquo; pointer of the &lsquo;Top&rsquo; node refers
+back to the <code>dir</code> file.  For example, the line for the &lsquo;Top&rsquo;
+node of the Emacs manual looks like this in Info:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">File: emacs  Node: Top, Up: (DIR), Next: Distrib
+</pre></td></tr></table>
+
+<p>In this case, the &lsquo;<tt>dir</tt>&rsquo; file name is written in upper case
+letters&mdash;it can be written in either upper or lower case.  This is not
+true in general, it is a special case for &lsquo;<tt>dir</tt>&rsquo;.
+</p>
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="New-Info-File.html#New-Info-File" accesskey="n" rel="next">New Info File</a>, Up: <a href="Installing-an-Info-File.html#Installing-an-Info-File" accesskey="u" rel="up">Installing an Info File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

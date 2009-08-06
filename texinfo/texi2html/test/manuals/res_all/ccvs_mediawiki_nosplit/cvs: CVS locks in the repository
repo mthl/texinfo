@@ -12,7 +12,7 @@ Next: [cvs: How files are stored in the CVSROOT directory#CVSROOT-storage CVSROO
 <div id="index-_0023cvs_002elock_002c-technical-details"></div>
 <div id="index-Locks_002c-cvs_002c-technical-details"></div>
 <p>For an introduction to <small>CVS</small> locks focusing on
-user-visible behavior, see [cvs: Several developers simultaneously attempting to run CVS#Concurrency Several developers simultaneously attempting to run CVS].  The
+user-visible behavior, see [cvs: Several developers simultaneously attempting to run CVS#Concurrency Concurrency].  The
 following section is aimed at people who are writing
 tools which want to access a <small>CVS</small> repository without
 interfering with other tools accessing the same

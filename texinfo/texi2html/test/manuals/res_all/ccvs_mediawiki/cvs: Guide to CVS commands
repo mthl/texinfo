@@ -9,7 +9,7 @@ Next: [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS], Previous
 <p>This appendix describes the overall structure of
 <small>CVS</small> commands, and describes some commands in
 detail (others are described elsewhere; for a quick
-reference to <small>CVS</small> commands, see section [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands]).
+reference to <small>CVS</small> commands, see [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS]).
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Structure| Structure]]::<nowiki>                   Overall structure of CVS commands
 </nowiki>&bull;[[#Exit-status| Exit status]]::<nowiki>                 Indicating CVS&rsquo;s success or failure
@@ -171,7 +171,7 @@ to specify use of the &quot;old&quot; format, so you would need
 &lsquo;<samp>cvs -f diff foobar</samp>&rsquo;.
 </p>
 <p>In place of the command name you can use <code>cvs</code> to
-specify global options (see section [[#Global-options|Global options]]).  For
+specify global options (see [[#Global-options|Global options]]).  For
 example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -z6
@@ -197,7 +197,7 @@ left of &lsquo;<samp>cvs_command</samp>&rsquo;) are:
 <dl compact="compact">
 <dt><code>--allow-root=<var>rootdir</var></code></dt>
 <dd><p>Specify legal <small>CVSROOT</small> directory.  See
-[cvs: The Repository#Password-authentication-server Setting up the server for password authentication].
+[cvs: The Repository#Password-authentication-server Password authentication server].
 </p>
 <div id="index-Authentication_002c-stream"></div>
 <div id="index-Stream-authentication"></div>
@@ -206,7 +206,7 @@ left of &lsquo;<samp>cvs_command</samp>&rsquo;) are:
 <dd><p>Authenticate all communication between the client and
 the server.  Only has an effect on the <small>CVS</small> client.
 As of this writing, this is only implemented when using
-a GSSAPI connection (see section [cvs: The Repository#GSSAPI-authenticated Direct connection with GSSAPI]).
+a GSSAPI connection (see [cvs: The Repository#GSSAPI-authenticated GSSAPI authenticated]).
 Authentication prevents certain sorts of attacks
 involving hijacking the active <small>TCP</small> connection.
 Enabling authentication does not enable encryption.
@@ -239,7 +239,7 @@ vice versa.)
 <dt><code>-d <var>cvs_root_directory</var></code></dt>
 <dd><p>Use <var>cvs_root_directory</var> as the root directory
 pathname of the repository.  Overrides the setting of
-the <code>$CVSROOT</code> environment variable.  See section [cvs: The Repository#Repository The Repository].
+the <code>$CVSROOT</code> environment variable.  See [cvs: The Repository#Repository Repository].
 </p>
 <div id="index-EDITOR_002c-overriding"></div>
 <div id="index-Overriding-EDITOR"></div>
@@ -272,7 +272,7 @@ a command name, &lsquo;<samp>cvs -H</samp>&rsquo; displays overall help for
 </dd>
 <dt><code>-l</code></dt>
 <dd><p>Do not log the &lsquo;<samp>cvs_command</samp>&rsquo; in the command history (but execute it
-anyway).  See section [[#history|history&mdash;Show status of files and users]], for information on command history.
+anyway).  See [[#history|history]], for information on command history.
 </p>
 <div id="index-Read_002donly-repository-mode"></div>
 </dd>
@@ -314,13 +314,13 @@ suppressed.
 <dt><code>-r</code></dt>
 <dd><p>Make new working files read-only.  Same effect
 as if the <code>$CVSREAD</code> environment variable is set
-(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]).  The default is to
+(see [cvs: All environment variables which affect CVS#Environment-variables Environment variables]).  The default is to
 make working files writable, unless watches are on
-(see section [cvs: Multiple developers#Watches Mechanisms to track who is editing files]).
+(see [cvs: Multiple developers#Watches Watches]).
 </p>
 </dd>
 <dt><code>-s <var>variable</var>=<var>value</var></code></dt>
-<dd><p>Set a user variable (see section [cvs: Reference manual for Administrative files#Variables Expansions in administrative files]).
+<dd><p>Set a user variable (see [cvs: Reference manual for Administrative files#Variables Variables]).
 </p>
 <div id="index-Trace"></div>
 </dd>
@@ -349,8 +349,8 @@ set or &lsquo;<samp>-r</samp>&rsquo; is given.
 <p>Encrypt all communication between the client and the
 server.  Only has an effect on the <small>CVS</small> client.  As
 of this writing, this is only implemented when using a
-GSSAPI connection (see section [cvs: The Repository#GSSAPI-authenticated Direct connection with GSSAPI]) or a
-Kerberos connection (see section [cvs: The Repository#Kerberos-authenticated Direct connection with kerberos]).
+GSSAPI connection (see [cvs: The Repository#GSSAPI-authenticated GSSAPI authenticated]) or a
+Kerberos connection (see [cvs: The Repository#Kerberos-authenticated Kerberos authenticated]).
 Enabling encryption implies that message traffic is
 also authenticated.  Encryption support is not
 available by default; it must be enabled using a
@@ -410,13 +410,13 @@ specifying a date in the past.
 private copy of a source file; that is, when you get a working
 file using &lsquo;<samp>-D</samp>&rsquo;, <small>CVS</small> records the date you specified, so that
 further updates in the same directory will use the same date
-(for more information on sticky tags/dates, see section [cvs: Revisions#Sticky-tags Sticky tags]).
+(for more information on sticky tags/dates, see [cvs: Revisions#Sticky-tags Sticky tags]).
 </p>
 <p>&lsquo;<samp>-D</samp>&rsquo; is available with the <code>annotate</code>, <code>checkout</code>,
 <code>diff</code>, <code>export</code>, <code>history</code>,
 <code>rdiff</code>, <code>rtag</code>, <code>tag</code>, and <code>update</code> commands.
 (The <code>history</code> command uses this option in a
-slightly different way; see section [[#history-options|history options]]).
+slightly different way; see [[#history-options|history options]]).
 </p>
 
 <div id="index-Timezone_002c-in-input"></div>
@@ -499,7 +499,7 @@ those commands.  See [[#commit-options|commit options]], and
 </dd>
 <dt><code>-k <var>kflag</var></code></dt>
 <dd><p>Override the default processing of RCS keywords other than
-&lsquo;<samp>-kb</samp>&rsquo;.  See section [cvs: Keyword substitution#Keyword-substitution Keyword substitution], for the meaning of
+&lsquo;<samp>-kb</samp>&rsquo;.  See [cvs: Keyword substitution#Keyword-substitution Keyword substitution], for the meaning of
 <var>kflag</var>.  Used with the <code>checkout</code> and <code>update</code>
 commands, your <var>kflag</var> specification is
 <em>sticky</em>; that is, when you use this option
@@ -514,7 +514,7 @@ commands on the same files until you specify otherwise.
 </p>
 <p><strong>WARNING: Prior to CVS version 1.12.2, the &lsquo;<samp>-k</samp>&rsquo; flag
 overrode the &lsquo;<samp>-kb</samp>&rsquo; indication for a binary file.  This could
-sometimes corrupt binary files.  See section [cvs: Branching and merging#Merging-and-keywords Merging and keywords], for
+sometimes corrupt binary files.  See [cvs: Branching and merging#Merging-and-keywords Merging and keywords], for
 more.</strong>
 </p>
 </dd>
@@ -542,7 +542,7 @@ invoking an editor.
 <dt><code>-n</code></dt>
 <dd><p>Do not run any tag program.  (A program can be
 specified to run in the modules
-database (see section [cvs: Reference manual for Administrative files#modules The modules file]); this option bypasses it).
+database (see [cvs: Reference manual for Administrative files#modules modules]); this option bypasses it).
 </p>
 <p><strong>Note: this is not the same as the &lsquo;<samp>cvs -n</samp>&rsquo;
 program option, which you can specify to the left of a cvs command!</strong>
@@ -586,10 +586,10 @@ revision you last checked out into the current working directory.
 with <code>checkout</code> or <code>update</code> to make your own
 copy of a file: <small>CVS</small> remembers the tag and continues to use it on
 future update commands, until you specify otherwise (for more information
-on sticky tags/dates, see section [cvs: Revisions#Sticky-tags Sticky tags]).
+on sticky tags/dates, see [cvs: Revisions#Sticky-tags Sticky tags]).
 </p>
 <p>The tag can be either a symbolic or numeric tag, as
-described in [cvs: Revisions#Tags Tags&ndash;Symbolic revisions], or the name of a branch, as
+described in [cvs: Revisions#Tags Tags], or the name of a branch, as
 described in [cvs: Branching and merging#Branching-and-merging Branching and merging].
 </p>
 <p>Specifying the &lsquo;<samp>-q</samp>&rsquo; global option along with the
@@ -651,7 +651,7 @@ commands, except for those specified using the
 <code>UserAdminOptions</code> configuration option in the
 &lsquo;<tt>CVSROOT/config</tt>&rsquo; file.  Options specified using
 <code>UserAdminOptions</code> can be run by any user.  See
-[cvs: Reference manual for Administrative files#config The CVSROOT/config configuration file] for more on <code>UserAdminOptions</code>.
+[cvs: Reference manual for Administrative files#config config] for more on <code>UserAdminOptions</code>.
 </p>
 <p>The <code>cvsadmin</code> group should exist on the server,
 or any system running the non-client/server <small>CVS</small>.
@@ -692,10 +692,10 @@ login names appearing in the comma-separated list
 <dt><code>-b[<var>rev</var>]</code></dt>
 <dd><p>Set the default branch to <var>rev</var>.  In <small>CVS</small>, you
 normally do not manipulate default branches; sticky
-tags (see section [cvs: Revisions#Sticky-tags Sticky tags]) are a better way to decide
+tags (see [cvs: Revisions#Sticky-tags Sticky tags]) are a better way to decide
 which branch you want to work on.  There is one reason
 to run <code>cvs admin -b</code>: to revert to the vendor&rsquo;s
-version when using vendor branches (see section [cvs: Tracking third-party sources#Reverting-local-changes Reverting to the latest vendor release]).
+version when using vendor branches (see [cvs: Tracking third-party sources#Reverting-local-changes Reverting local changes]).
 There can be no space between &lsquo;<samp>-b</samp>&rsquo; and its argument.
 </p>
 <div id="index-Comment-leader"></div>
@@ -704,7 +704,7 @@ There can be no space between &lsquo;<samp>-b</samp>&rsquo; and its argument.
 <dd><p>Sets the comment leader to <var>string</var>.  The comment
 leader is not used by current versions of <small>CVS</small> or
 <small>RCS</small> 5.7.  Therefore, you can almost surely not
-worry about it.  See section [cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+worry about it.  See [cvs: Keyword substitution#Keyword-substitution Keyword substitution].
 </p>
 </dd>
 <dt><code>-e[<var>logins</var>]</code></dt>
@@ -726,12 +726,12 @@ a future release of <small>CVS</small>.
 <dd><p>Useless with <small>CVS</small>.  This creates and initializes a
 new <small>RCS</small> file, without depositing a revision.  With
 <small>CVS</small>, add files with the <code>cvs add</code> command
-(see section [cvs: Adding, removing, and renaming files and directories#Adding-files Adding files to a directory]).
+(see [cvs: Adding, removing, and renaming files and directories#Adding-files Adding files]).
 </p>
 </dd>
 <dt><code>-k<var>subst</var></code></dt>
 <dd><p>Set the default keyword
-substitution to <var>subst</var>.  See section [cvs: Keyword substitution#Keyword-substitution Keyword substitution].  Giving an explicit &lsquo;<samp>-k</samp>&rsquo; option to
+substitution to <var>subst</var>.  See [cvs: Keyword substitution#Keyword-substitution Keyword substitution].  Giving an explicit &lsquo;<samp>-k</samp>&rsquo; option to
 <code>cvs update</code>, <code>cvs export</code>, or <code>cvs
 checkout</code> overrides this default.
 </p>
@@ -905,14 +905,14 @@ change to be like the &lsquo;<samp>::</samp>&rsquo; case.
 </p>
 <p>Due to the way <small>CVS</small> handles branches <var>rev</var>
 cannot be specified symbolically if it is a branch.
-See section [cvs: Branching and merging#Magic-branch-numbers Magic branch numbers], for an explanation.
+See [cvs: Branching and merging#Magic-branch-numbers Magic branch numbers], for an explanation.
 </p>
 <p>Make sure that no-one has checked out a copy of the
 revision you outdate.  Strange things will happen if he
 starts to edit it and tries to check it back in.  For
 this reason, this option is not a good way to take back
 a bogus commit; commit a new revision undoing the bogus
-change instead (see section [cvs: Branching and merging#Merging-two-revisions Merging differences between any two revisions]).
+change instead (see [cvs: Branching and merging#Merging-two-revisions Merging two revisions]).
 </p>
 </dd>
 <dt><code>-q</code></dt>
@@ -930,9 +930,9 @@ acceptable for <var>state</var>.  A useful set of states is
 stable), and &lsquo;<samp>Rel</samp>&rsquo; (for released).  By default,
 the state of a new revision is set to &lsquo;<samp>Exp</samp>&rsquo; when
 it is created.  The state is visible in the output from
-<var>cvs log</var> (see section [[#log|log&mdash;Print out log information for files]]), and in the
+<var>cvs log</var> (see [[#log|log]]), and in the
 &lsquo;<samp>$<i></i>Log$</samp>&rsquo; and &lsquo;<samp>$<i></i>State$</samp>&rsquo; keywords
-(see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]).  Note that <small>CVS</small>
+(see [cvs: Keyword substitution#Keyword-substitution Keyword substitution]).  Note that <small>CVS</small>
 uses the <code>dead</code> state for its own purposes; to
 take a file to or from the <code>dead</code> state use
 commands like <code>cvs remove</code> and <code>cvs add</code>, not
@@ -944,7 +944,7 @@ commands like <code>cvs remove</code> and <code>cvs add</code>, not
 contents of the named <var>file</var> into the RCS file,
 deleting the existing text.  The <var>file</var> pathname
 may not begin with &lsquo;<samp>-</samp>&rsquo;.  The descriptive text can be seen in the
-output from &lsquo;<samp>cvs log</samp>&rsquo; (see section [[#log|log&mdash;Print out log information for files]]).
+output from &lsquo;<samp>cvs log</samp>&rsquo; (see [[#log|log]]).
 There can be no space between &lsquo;<samp>-t</samp>&rsquo; and its argument.
 </p>
 <p>If <var>file</var> is omitted,
@@ -979,7 +979,7 @@ omitted, remove the latest lock held by the caller.
 Normally, only the locker of a revision may unlock it;
 somebody else unlocking a revision breaks the lock.
 This causes the original locker to be sent a <code>commit</code>
-notification (see section [cvs: Multiple developers#Getting-Notified Telling CVS to notify you]).
+notification (see [cvs: Multiple developers#Getting-Notified Getting Notified]).
 There can be no space between &lsquo;<samp>-u</samp>&rsquo; and its argument.
 </p>
 </dd>
@@ -1034,7 +1034,7 @@ symbolic names for some
 collection of source directories and files, or paths to
 directories or files in the repository.  The symbolic
 names are defined in the &lsquo;<samp>modules</samp>&rsquo; file.
-See section [cvs: Reference manual for Administrative files#modules The modules file].
+See [cvs: Reference manual for Administrative files#modules modules].
 </p>
 <p>Depending on the modules you specify, <code>checkout</code> may
 recursively create directories and populate them with
@@ -1058,10 +1058,10 @@ area (unless you specify the &lsquo;<samp>-Q</samp>&rsquo; global option).
 </p>
 <p>The files created by <code>checkout</code> are created
 read-write, unless the &lsquo;<samp>-r</samp>&rsquo; option to <small>CVS</small>
-(see section [[#Global-options|Global options]]) is specified, the
+(see [[#Global-options|Global options]]) is specified, the
 <code>CVSREAD</code> environment variable is specified
-(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]), or a watch is in
-effect for that file (see section [cvs: Multiple developers#Watches Mechanisms to track who is editing files]).
+(see [cvs: All environment variables which affect CVS#Environment-variables Environment variables]), or a watch is in
+effect for that file (see [cvs: Multiple developers#Watches Watches]).
 </p>
 <p>Note that running <code>checkout</code> on a directory that was already
 built by a prior <code>checkout</code> is also permitted.
@@ -1094,7 +1094,7 @@ Next: [[#checkout-examples|checkout examples]], Up: [[#checkout|checkout]] &nbsp
 ==== checkout options ====
 
 <p>These standard options are supported by <code>checkout</code>
-(see section [[#Common-options|Common command options]], for a complete description of
+(see [[#Common-options|Common options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
@@ -1117,7 +1117,7 @@ the file).
 This option is sticky; future updates of
 this file in this working directory will use the same
 <var>kflag</var>.  The <code>status</code> command can be viewed
-to see the sticky options.  See [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands], for
+to see the sticky options.  See [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS], for
 more information on the <code>status</code> command.
 </p>
 </dd>
@@ -1128,11 +1128,11 @@ more information on the <code>status</code> command.
 <dt><code>-n</code></dt>
 <dd><p>Do not run any checkout program (as specified
 with the &lsquo;<samp>-o</samp>&rsquo; option in the modules file;
-see section [cvs: Reference manual for Administrative files#modules The modules file]).
+see [cvs: Reference manual for Administrative files#modules modules]).
 </p>
 </dd>
 <dt><code>-P</code></dt>
-<dd><p>Prune empty directories.  See [cvs: Adding, removing, and renaming files and directories#Moving-directories Moving and renaming directories].
+<dd><p>Prune empty directories.  See [cvs: Adding, removing, and renaming files and directories#Moving-directories Moving directories].
 </p>
 </dd>
 <dt><code>-p</code></dt>
@@ -1215,7 +1215,7 @@ date.  An optional date is specified by adding a colon
 (:) to the tag:
 &lsquo;<samp>-j<var>Symbolic_Tag</var>:<var>Date_Specifier</var></samp>&rsquo;.
 </p>
-<p>See section [cvs: Branching and merging#Branching-and-merging Branching and merging].
+<p>See [cvs: Branching and merging#Branching-and-merging Branching and merging].
 </p>
 </dd>
 <dt><code>-N</code></dt>
@@ -1228,7 +1228,7 @@ discussion.
 </dd>
 <dt><code>-s</code></dt>
 <dd><p>Like &lsquo;<samp>-c</samp>&rsquo;, but include the status of all modules,
-and sort it by the status string.  See section [cvs: Reference manual for Administrative files#modules The modules file], for
+and sort it by the status string.  See [cvs: Reference manual for Administrative files#modules modules], for
 info about the &lsquo;<samp>-s</samp>&rsquo; option that is used inside the
 modules file to set the module status.
 </p></dd>
@@ -1294,17 +1294,17 @@ current directory only.
 to date with the current revisions in the source
 repository; it will notify you, and exit without
 committing, if any of the specified files must be made
-current first with <code>update</code> (see section [[#update|update&mdash;Bring work tree in sync with repository]]).
+current first with <code>update</code> (see [[#update|update]]).
 <code>commit</code> does not call the <code>update</code> command
 for you, but rather leaves that for you to do when the
 time is right.
 </p>
 <p>When all is well, an editor is invoked to allow you to
 enter a log message that will be written to one or more
-logging programs (see section [cvs: Reference manual for Administrative files#modules The modules file], and see section [cvs: Reference manual for Administrative files#loginfo Loginfo])
+logging programs (see [cvs: Reference manual for Administrative files#modules modules], and see [cvs: Reference manual for Administrative files#loginfo loginfo])
 and placed in the <small>RCS</small> file inside the
 repository.  This log message can be retrieved with the
-<code>log</code> command; see [[#log|log&mdash;Print out log information for files]].  You can specify the
+<code>log</code> command; see [[#log|log]].  You can specify the
 log message on the command line with the &lsquo;<samp>-m
 <var>message</var></samp>&rsquo; option, and thus avoid the editor invocation,
 or use the &lsquo;<samp>-F <var>file</var></samp>&rsquo; option to specify
@@ -1323,7 +1323,7 @@ Next: [[#commit-examples|commit examples]], Up: [[#commit|commit]] &nbsp; |[cvs:
 ==== commit options ====
 
 <p>These standard options are supported by <code>commit</code>
-(see section [[#Common-options|Common command options]], for a complete description of
+(see [[#Common-options|Common options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
@@ -1339,7 +1339,7 @@ them):
 <dd><p>Commit to <var>revision</var>.  <var>revision</var> must be
 either a branch, or a revision on the main trunk that
 is higher than any existing revision number
-(see section [cvs: Revisions#Assigning-revisions Assigning revisions]).  You
+(see [cvs: Revisions#Assigning-revisions Assigning revisions]).  You
 cannot commit to a specific revision on a branch.
 </p></dd>
 </dl>
@@ -1354,7 +1354,7 @@ of invoking an editor.
 </dd>
 <dt><code>-f</code></dt>
 <dd><p>Note that this is not the standard behavior of
-the &lsquo;<samp>-f</samp>&rsquo; option as defined in [[#Common-options|Common command options]].
+the &lsquo;<samp>-f</samp>&rsquo; option as defined in [[#Common-options|Common options]].
 </p>
 <p>Force <small>CVS</small> to commit a new revision even if you haven&rsquo;t
 made any changes to the file.  If the current revision
@@ -1399,7 +1399,7 @@ Up: [[#commit-examples|commit examples]] &nbsp; |[cvs: Index#SEC_Contents Conten
 even number of dots) with the &lsquo;<samp>-r</samp>&rsquo; option.  To
 create a branch revision, use the &lsquo;<samp>-b</samp>&rsquo; option
 of the <code>rtag</code> or <code>tag</code> commands
-(see section [cvs: Branching and merging#Branching-and-merging Branching and merging]).  Then, either <code>checkout</code> or
+(see [cvs: Branching and merging#Branching-and-merging Branching and merging]).  Then, either <code>checkout</code> or
 <code>update</code> can be used to base your sources on the
 newly created branch.  From that point on, all
 <code>commit</code> changes made within these working sources
@@ -1496,7 +1496,7 @@ compared.  If any directories are given, all files
 under them will be compared.
 </p>
 <p>The exit status for diff is different than for other
-<small>CVS</small> commands; for details [[#Exit-status|CVS&rsquo;s exit status]].
+<small>CVS</small> commands; for details [[#Exit-status|Exit status]].
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#diff-options| diff options]]::<nowiki>                diff options
 </nowiki>&bull;[[#diff-examples| diff examples]]::<nowiki>               diff examples
@@ -1511,7 +1511,7 @@ Next: [[#diff-examples|diff examples]], Up: [[#diff|diff]] &nbsp; |[cvs: Index#S
 ==== diff options ====
 
 <p>These standard options are supported by <code>diff</code>
-(see section [[#Common-options|Common command options]], for a complete description of
+(see [[#Common-options|Common options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
@@ -1600,7 +1600,7 @@ context.
 </dd>
 <dt>&lsquo;<samp>--changed-group-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a line group containing differing lines from
-both files in if-then-else format.  See section [[#Line-group-formats|Line group formats]].
+both files in if-then-else format.  See [[#Line-group-formats|Line group formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>-d</samp>&rsquo;</dt>
@@ -1699,7 +1699,7 @@ and unified format headers.
 </dd>
 <dt>&lsquo;<samp>--line-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output all input lines in if-then-else format.
-See section [[#Line-formats|Line formats]].
+See [[#Line-formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--minimal</samp>&rsquo;</dt>
@@ -1720,22 +1720,22 @@ treat it as present but empty in the other directory.
 </dd>
 <dt>&lsquo;<samp>--new-group-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a group of lines taken from just the second
-file in if-then-else format.  See section [[#Line-group-formats|Line group formats]].
+file in if-then-else format.  See [[#Line-group-formats|Line group formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--new-line-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a line taken from just the second file in
-if-then-else format.  See section [[#Line-formats|Line formats]].
+if-then-else format.  See [[#Line-formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--old-group-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a group of lines taken from just the first
-file in if-then-else format.  See section [[#Line-group-formats|Line group formats]].
+file in if-then-else format.  See [[#Line-group-formats|Line group formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--old-line-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a line taken from just the first file in
-if-then-else format.  See section [[#Line-formats|Line formats]].
+if-then-else format.  See [[#Line-formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>-p</samp>&rsquo;</dt>
@@ -1796,12 +1796,12 @@ do not appear to be text.
 </dd>
 <dt>&lsquo;<samp>--unchanged-group-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a group of common lines taken from both files
-in if-then-else format.  See section [[#Line-group-formats|Line group formats]].
+in if-then-else format.  See [[#Line-group-formats|Line group formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--unchanged-line-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a line common to both files in if-then-else
-format.  See section [[#Line-formats|Line formats]].
+format.  See [[#Line-formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>-U <var>lines</var></samp>&rsquo;</dt>
@@ -1931,7 +1931,7 @@ following forms.
 <dl compact="compact">
 <dt>&lsquo;<samp>%&lt;</samp>&rsquo;</dt>
 <dd><p>stands for the lines from the first file, including the trailing newline.
-Each line is formatted according to the old line format (see section [[#Line-formats|Line formats]]).
+Each line is formatted according to the old line format (see [[#Line-formats|Line formats]]).
 </p>
 </dd>
 <dt>&lsquo;<samp>%&gt;</samp>&rsquo;</dt>
@@ -2105,7 +2105,7 @@ For example, &lsquo;<samp>%c'\0'</samp>&rsquo; stands for a null character.
 <dd><p>where <var>F</var> is a <code>printf</code> conversion specification,
 stands for the line number formatted with <var>F</var>.
 For example, &lsquo;<samp>%.5dn</samp>&rsquo; prints the line number using the
-<code>printf</code> format <code>&quot;%.5d&quot;</code>.  See section [[#Line-group-formats|Line group formats]], for
+<code>printf</code> format <code>&quot;%.5d&quot;</code>.  See [[#Line-group-formats|Line group formats]], for
 more about printf conversion specifications.
 </p>
 </dd>
@@ -2231,7 +2231,7 @@ Up: [[#export|export]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#I
 ==== export options ====
 
 <p>These standard options are supported by <code>export</code>
-(see section [[#Common-options|Common command options]], for a complete description of
+(see [[#Common-options|Common options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
@@ -2268,17 +2268,17 @@ recent revision (instead of ignoring the file).
 <dt><code>-d <var>dir</var></code></dt>
 <dd><p>Create a directory called <var>dir</var> for the working
 files, instead of using the module name.
-See section [[#checkout-options|checkout options]], for complete details on how
+See [[#checkout-options|checkout options]], for complete details on how
 <small>CVS</small> handles this flag.
 </p>
 </dd>
 <dt><code>-k <var>subst</var></code></dt>
-<dd><p>Set keyword expansion mode (see section [cvs: Keyword substitution#Substitution-modes Substitution modes]).
+<dd><p>Set keyword expansion mode (see [cvs: Keyword substitution#Substitution-modes Substitution modes]).
 </p>
 </dd>
 <dt><code>-N</code></dt>
 <dd><p>Only useful together with &lsquo;<samp>-d <var>dir</var></samp>&rsquo;.
-See section [[#checkout-options|checkout options]], for complete details on how
+See [[#checkout-options|checkout options]], for complete details on how
 <small>CVS</small> handles this flag.
 </p></dd>
 </dl>
@@ -2314,7 +2314,7 @@ various formats.
 </p>
 <p><strong>Note: <code>history</code> uses &lsquo;<samp>-f</samp>&rsquo;, &lsquo;<samp>-l</samp>&rsquo;,
 &lsquo;<samp>-n</samp>&rsquo;, and &lsquo;<samp>-p</samp>&rsquo; in ways that conflict with the
-normal use inside <small>CVS</small> (see section [[#Common-options|Common command options]]).</strong>
+normal use inside <small>CVS</small> (see [[#Common-options|Common options]]).</strong>
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#history-options| history options]]::<nowiki>             history options
 </nowiki></pre>
@@ -2518,7 +2518,7 @@ distribution from an outside source (e.g., a source
 vendor) into your source repository directory.  You can
 use this command both for initial creation of a
 repository, and for wholesale updates to the module
-from the outside source.  See section [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources], for
+from the outside source.  See [cvs: Tracking third-party sources#Tracking-sources Tracking sources], for
 a discussion on this subject.
 </p>
 <p>The <var>repository</var> argument gives a directory name
@@ -2534,15 +2534,15 @@ in the two branches of development; use &lsquo;<samp>checkout
 you to do.
 </p>
 <p>If <small>CVS</small> decides a file should be ignored
-(see section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore]), it does not import it and prints
-&lsquo;<samp>I </samp>&rsquo; followed by the filename (see section [[#import-output|import output]], for a
+(see [cvs: Reference manual for Administrative files#cvsignore cvsignore]), it does not import it and prints
+&lsquo;<samp>I </samp>&rsquo; followed by the filename (see [[#import-output|import output]], for a
 complete description of the output).
 </p>
 <p>If the file &lsquo;<tt>$CVSROOT/CVSROOT/cvswrappers</tt>&rsquo; exists,
 any file whose names match the specifications in that
 file will be treated as packages and the appropriate
 filtering will be performed on the file/directory
-before being imported.  See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
+before being imported.  See [cvs: Reference manual for Administrative files#Wrappers Wrappers].
 </p>
 <p>The outside source is saved in a first-level
 branch, by default 1.1.1.  Updates are leaves of this
@@ -2563,7 +2563,7 @@ directory in which you invoke it.  In particular, it
 does not set up that directory as a <small>CVS</small> working
 directory; if you want to work with the sources import
 them first and then check them out into a different
-directory (see section [cvs: Overview#Getting-the-source Getting the source]).
+directory (see [cvs: Overview#Getting-the-source Getting the source]).
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#import-options| import options]]::<nowiki>              import options
 </nowiki>&bull;[[#import-output| import output]]::<nowiki>               import output
@@ -2579,7 +2579,7 @@ Next: [[#import-output|import output]], Up: [[#import|import]] &nbsp; |[cvs: Ind
 ==== import options ====
 
 <p>This standard option is supported by <code>import</code>
-(see section [[#Common-options|Common command options]], for a complete description):
+(see [[#Common-options|Common options]], for a complete description):
 </p>
 <dl compact="compact">
 <dt><code>-m <var>message</var></code></dt>
@@ -2611,7 +2611,7 @@ default), specify &lsquo;-I !&rsquo;.
 </p>
 <p><var>name</var> can be a file name pattern of the same type
 that you can specify in the &lsquo;<tt>.cvsignore</tt>&rsquo; file.
-See section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore].
+See [cvs: Reference manual for Administrative files#cvsignore cvsignore].
 </p>
 </dd>
 <dt><code>-W <var>spec</var></code></dt>
@@ -2620,7 +2620,7 @@ import.  You can use this option repeatedly.
 </p>
 <p><var>spec</var> can be a file name pattern of the same type
 that you can specify in the &lsquo;<tt>.cvswrappers</tt>&rsquo;
-file. See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
+file. See [cvs: Reference manual for Administrative files#Wrappers Wrappers].
 </p></dd>
 </dl>
 
@@ -2652,7 +2652,7 @@ you will have to merge the changes.
 </p>
 </dd>
 <dt><code>I <var>file</var></code></dt>
-<dd><p>The file is being ignored (see section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore]).
+<dd><p>The file is being ignored (see [cvs: Reference manual for Administrative files#cvsignore cvsignore]).
 </p>
 <div id="index-Symbolic-link_002c-importing"></div>
 <div id="index-Link_002c-symbolic_002c-importing"></div>
@@ -2664,7 +2664,7 @@ be changed, but if there is a consensus on what it
 should be changed to, it is not apparent.
 (Various options in the &lsquo;<tt>modules</tt>&rsquo; file can be used
 to recreate symbolic links on checkout, update, etc.;
-see section [cvs: Reference manual for Administrative files#modules The modules file].)
+see [cvs: Reference manual for Administrative files#modules modules].)
 </p></dd>
 </dl>
 
@@ -2677,7 +2677,7 @@ Previous: [[#import-output|import output]], Up: [[#import|import]] &nbsp; |[cvs:
 <div id="import-examples-1"></div>
 ==== import examples ====
 
-<p>See [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources], and [cvs: Starting a project with CVS#From-files Creating a directory tree from a number of files].
+<p>See [cvs: Tracking third-party sources#Tracking-sources Tracking sources], and [cvs: Starting a project with CVS#From-files From files].
 </p>
 <hr>
 <div id="log"></div>
@@ -2717,7 +2717,7 @@ Coordinated Universal Time (UTC).  (Other parts of
 <small>CVS</small> print times in the local timezone).
 </p>
 <p><strong>Note: <code>log</code> uses &lsquo;<samp>-R</samp>&rsquo; in a way that conflicts
-with the normal use inside <small>CVS</small> (see section [[#Common-options|Common command options]]).</strong>
+with the normal use inside <small>CVS</small> (see [[#Common-options|Common options]]).</strong>
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#log-options| log options]]::<nowiki>                 log options
 </nowiki>&bull;[[#log-examples| log examples]]::<nowiki>                log examples
@@ -2745,7 +2745,7 @@ branch, normally the highest branch on the trunk.
 date/time in the range given by the
 semicolon-separated list of dates.  The date formats
 accepted are those accepted by the &lsquo;<samp>-D</samp>&rsquo; option to
-many other <small>CVS</small> commands (see section [[#Common-options|Common command options]]).
+many other <small>CVS</small> commands (see [[#Common-options|Common options]]).
 Dates can be combined into ranges as follows:
 </p>
 <dl compact="compact">
@@ -2950,7 +2950,7 @@ Next: [[#rdiff-examples|rdiff examples]], Up: [[#rdiff|rdiff]] &nbsp; |[cvs: Ind
 ==== rdiff options ====
 
 <p>These standard options are supported by <code>rdiff</code>
-(see section [[#Common-options|Common command options]], for a complete description of
+(see [[#Common-options|Common options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
@@ -3071,7 +3071,7 @@ isn&rsquo;t strictly necessary to use this command.  You can
 always simply delete your working directory, if you
 like; but you risk losing changes you may have
 forgotten, and you leave no trace in the <small>CVS</small> history
-file (see section [cvs: Reference manual for Administrative files#history-file The history file]) that you&rsquo;ve abandoned your
+file (see [cvs: Reference manual for Administrative files#history-file history file]) that you&rsquo;ve abandoned your
 checkout.
 </p>
 <p>Use &lsquo;<samp>cvs release</samp>&rsquo; to avoid these problems.  This
@@ -3112,7 +3112,7 @@ all directories and files recursively.  This
 has the very serious side-effect that any directory
 that you have created inside your checked-out sources,
 and not added to the repository (using the <code>add</code>
-command; see section [cvs: Adding, removing, and renaming files and directories#Adding-files Adding files to a directory]) will be silently deleted&mdash;even
+command; see [cvs: Adding, removing, and renaming files and directories#Adding-files Adding files]) will be silently deleted&mdash;even
 if it is non-empty!</strong>
 </p></dd>
 </dl>
@@ -3149,7 +3149,7 @@ this file will be lost.
 <dd><p>The file has been removed from your private copy of the
 sources, but has not yet been removed from the
 repository, since you have not yet committed the
-removal.  See section [[#commit|commit&mdash;Check files into the repository]].
+removal.  See [[#commit|commit]].
 </p>
 </dd>
 <dt><code>M <var>file</var></code></dt>
@@ -3162,7 +3162,7 @@ might also be a newer revision inside the repository.
 correspond to anything in the source repository, and is
 not in the list of files for <small>CVS</small> to ignore (see the
 description of the &lsquo;<samp>-I</samp>&rsquo; option, and
-see section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore]).  If you remove your working
+see [cvs: Reference manual for Administrative files#cvsignore cvsignore]).  If you remove your working
 sources, this file will be lost.
 </p></dd>
 </dl>
@@ -3232,7 +3232,7 @@ Next: [[#update-output|update output]], Up: [[#update|update]] &nbsp; |[cvs: Ind
 ==== update options ====
 
 <p>These standard options are available with <code>update</code>
-(see section [[#Common-options|Common command options]], for a complete description of
+(see [[#Common-options|Common options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
@@ -3255,16 +3255,16 @@ the file).
 This option is sticky; future updates of
 this file in this working directory will use the same
 <var>kflag</var>.  The <code>status</code> command can be viewed
-to see the sticky options.  See [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands], for
+to see the sticky options.  See [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS], for
 more information on the <code>status</code> command.
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See section [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
 </p>
 </dd>
 <dt><code>-P</code></dt>
-<dd><p>Prune empty directories.  See [cvs: Adding, removing, and renaming files and directories#Moving-directories Moving and renaming directories].
+<dd><p>Prune empty directories.  See [cvs: Adding, removing, and renaming files and directories#Moving-directories Moving directories].
 </p>
 </dd>
 <dt><code>-p</code></dt>
@@ -3272,7 +3272,7 @@ more information on the <code>status</code> command.
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Update directories recursively (default).  See section [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Update directories recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
 </p>
 </dd>
 <dt><code>-r rev</code></dt>
@@ -3319,7 +3319,7 @@ those directories, which may not be what you want.
 working directory) during the update.  You can specify
 &lsquo;<samp>-I</samp>&rsquo; more than once on the command line to specify
 several files to ignore.  Use &lsquo;<samp>-I !</samp>&rsquo; to avoid
-ignoring any files at all.  See section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore], for other
+ignoring any files at all.  See [cvs: Reference manual for Administrative files#cvsignore cvsignore], for other
 ways to make <small>CVS</small> ignore some files.
 </p>
 </dd>
@@ -3329,7 +3329,7 @@ update.  You can use this option repeatedly.
 </p>
 <p><var>spec</var> can be a file name pattern of the same type
 that you can specify in the &lsquo;<tt>.cvswrappers</tt>&rsquo;
-file. See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
+file. See [cvs: Reference manual for Administrative files#Wrappers Wrappers].
 </p>
 </dd>
 <dt><code>-j<var>revision</var></code></dt>
@@ -3348,7 +3348,7 @@ the revision specified in the &lsquo;<samp>-j</samp>&rsquo; option.
 <p>Note that using a single &lsquo;<samp>-j <var>tagname</var></samp>&rsquo; option rather than
 &lsquo;<samp>-j <var>branchname</var></samp>&rsquo; to merge changes from a branch will
 often not remove files which were removed on the branch.
-See section [cvs: Branching and merging#Merging-adds-and-removals Merging can add or remove files], for more.
+See [cvs: Branching and merging#Merging-adds-and-removals Merging adds and removals], for more.
 </p>
 <p>In addition, each &lsquo;<samp>-j</samp>&rsquo; option can contain an optional
 date specification which, when used with branches, can
@@ -3357,7 +3357,7 @@ date.  An optional date is specified by adding a colon
 (:) to the tag:
 &lsquo;<samp>-j<var>Symbolic_Tag</var>:<var>Date_Specifier</var></samp>&rsquo;.
 </p>
-<p>See section [cvs: Branching and merging#Branching-and-merging Branching and merging].
+<p>See [cvs: Branching and merging#Branching-and-merging Branching and merging].
 </p>
 </dd>
 </dl>
@@ -3446,7 +3446,7 @@ it.)  Under <small>VMS</small>, the file name starts with
 correspond to anything in the source repository, and is
 not in the list of files for <small>CVS</small> to ignore (see the
 description of the &lsquo;<samp>-I</samp>&rsquo; option, and
-see section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore]).
+see [cvs: Reference manual for Administrative files#cvsignore cvsignore]).
 </p></dd>
 </dl>
 

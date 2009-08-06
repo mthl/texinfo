@@ -1,5 +1,5 @@
-Annexe F Troubleshooting
-************************
+Appendix F Troubleshooting
+**************************
 
 If you are having trouble with CVS, this appendix
 may help.  If there is a particular error message which

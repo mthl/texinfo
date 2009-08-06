@@ -38,17 +38,17 @@ current directory only.
 to date with the current revisions in the source
 repository; it will notify you, and exit without
 committing, if any of the specified files must be made
-current first with <code>update</code> (see section [cvs: update--Bring work tree in sync with repository#update update&mdash;Bring work tree in sync with repository]).
+current first with <code>update</code> (see [cvs: update--Bring work tree in sync with repository#update update]).
 <code>commit</code> does not call the <code>update</code> command
 for you, but rather leaves that for you to do when the
 time is right.
 </p>
 <p>When all is well, an editor is invoked to allow you to
 enter a log message that will be written to one or more
-logging programs (see section [cvs: The modules file#modules The modules file], and see section [cvs: Loginfo#loginfo Loginfo])
+logging programs (see [cvs: The modules file#modules modules], and see [cvs: Loginfo#loginfo loginfo])
 and placed in the <small>RCS</small> file inside the
 repository.  This log message can be retrieved with the
-<code>log</code> command; see [cvs: log--Print out log information for files#log log&mdash;Print out log information for files].  You can specify the
+<code>log</code> command; see [cvs: log--Print out log information for files#log log].  You can specify the
 log message on the command line with the &lsquo;<samp>-m
 <var>message</var></samp>&rsquo; option, and thus avoid the editor invocation,
 or use the &lsquo;<samp>-F <var>file</var></samp>&rsquo; option to specify

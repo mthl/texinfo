@@ -7,5 +7,5 @@ Top node
 
 second node (@node top,,ToP,Top).
 anchor{TOP} .
-ref to TOP: Top.
+ref to TOP: TOP.
 

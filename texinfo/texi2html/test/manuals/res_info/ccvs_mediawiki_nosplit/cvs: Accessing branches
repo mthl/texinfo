@@ -21,7 +21,7 @@ switching an existing working copy over to the branch.
 </p>
 <p>To check out a branch from the repository, invoke
 &lsquo;<samp>checkout</samp>&rsquo; with the &lsquo;<samp>-r</samp>&rsquo; flag, followed by
-the tag name of the branch (see section [cvs: Creating a branch#Creating-a-branch Creating a branch]):
+the tag name of the branch (see [cvs: Creating a branch#Creating-a-branch Creating a branch]):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -r rel-1-0-patches tc
 </nowiki></pre></td></tr></table>
@@ -54,7 +54,7 @@ leaving the main trunk and other branches unaffected.
 <div id="index-Branches_002c-sticky"></div>
 <p>To find out what branch a working copy is on, you can
 use the &lsquo;<samp>status</samp>&rsquo; command.  In its output, look for
-the field named &lsquo;<samp>Sticky tag</samp>&rsquo; (see section [cvs: Sticky tags#Sticky-tags Sticky tags])
+the field named &lsquo;<samp>Sticky tag</samp>&rsquo; (see [cvs: Sticky tags#Sticky-tags Sticky tags])
 &ndash; that&rsquo;s <small>CVS</small>&rsquo;s way of telling you the branch, if
 any, of the current working files:
 </p>

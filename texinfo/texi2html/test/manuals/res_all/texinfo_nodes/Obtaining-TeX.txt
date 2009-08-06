@@ -1,5 +1,5 @@
-Annexe I How to Obtain TeX
-**************************
+Appendix I How to Obtain TeX
+****************************
 
 TeX is freely redistributable.  You can obtain TeX for Unix
 systems via anonymous ftp or on physical media.  The core material

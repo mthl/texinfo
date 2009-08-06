@@ -29,10 +29,10 @@ file, <small>CVS</small> should print
 
 <p>and update the checked out copy in
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;.  If it does not, there is
-something wrong (see section [cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual]).  To add your own files
+something wrong (see [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS]).  To add your own files
 to the files to be updated in this fashion, you can add
 them to the &lsquo;<tt>checkoutlist</tt>&rsquo; administrative file
-(see section [cvs: The checkoutlist file#checkoutlist The checkoutlist file]).
+(see [cvs: The checkoutlist file#checkoutlist checkoutlist]).
 </p>
 <div id="index-modules_002edb"></div>
 <div id="index-modules_002epag"></div>
@@ -51,7 +51,7 @@ database will be stored in the files &lsquo;<tt>modules.db</tt>&rsquo;,
 &lsquo;<tt>modules.pag</tt>&rsquo;, and/or &lsquo;<tt>modules.dir</tt>&rsquo;.
 </p>
 <p>For information on the meaning of the various
-administrative files, see [cvs: Reference manual for Administrative files#Administrative-files Reference manual for Administrative files].
+administrative files, see [cvs: Reference manual for Administrative files#Administrative-files Administrative files].
 </p>
 <hr>
 <div class="node">

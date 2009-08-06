@@ -71,7 +71,7 @@ sub T2H_SING_print_Top_footer
     #my $buttons = shift;
     #my $nwords = shift;
     my $end_page = shift;
-    my $buttons = \@MISC_BUTTONS;
+    my $buttons = \@TOP_BUTTONS;
     print  $fh "<blockquote>\n" .
       &$anchor('', $Texi2HTML::HREF{Contents}, "Table of Contents") .
         "\n<br>\n" .
@@ -131,6 +131,7 @@ $VERTICAL_HEAD_NAVIGATION = 1;
 
 # buttons for misc stuff
 @MISC_BUTTONS = (\&singular_banner, 'Top', 'Contents', 'Index', 'About');
+@TOP_BUTTONS = (\&singular_banner, 'Top', 'Contents', 'Index', 'About');
 
 $ICONS = 1;
 

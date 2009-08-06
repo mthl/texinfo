@@ -23,7 +23,7 @@ dangerous; they permanently discard historical
 information and it can be difficult or impossible to
 recover from errors.  If you are a <small>CVS</small>
 administrator, you may consider restricting these
-commands with taginfo (see section [cvs: User-defined logging#user_002ddefined-logging User-defined logging]).</strong>
+commands with taginfo (see [cvs: User-defined logging#user_002ddefined-logging user-defined logging]).</strong>
 </p>
 <div id="index-Deleting-tags"></div>
 <div id="index-Deleting-branch-tags"></div>

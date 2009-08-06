@@ -1,10 +1,9 @@
 <div id="History-browsing"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Moving-directories  &lt; ]|</td>
-<td valign="middle" align="left">|[[#log-messages| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Moving-directories  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[[#log-messages| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -35,11 +34,10 @@ through the history.
 <hr>
 <div id="log-messages"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#History-browsing| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#history-database| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#History-browsing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
+<td valign="middle" align="left">|[[#history-database| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -62,11 +60,10 @@ use the <code>cvs log</code> command (see section [cvs: Guide to CVS commands#lo
 <hr>
 <div id="history-database"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#log-messages| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#user_002ddefined-logging| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#log-messages| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
+<td valign="middle" align="left">|[[#user_002ddefined-logging| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -93,11 +90,10 @@ history</code> command (see section [cvs: Guide to CVS commands#history history&
 <hr>
 <div id="user_002ddefined-logging"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#history-database| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#annotate| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#history-database| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
+<td valign="middle" align="left">|[[#annotate| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -159,11 +155,10 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 <hr>
 <div id="annotate"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#user_002ddefined-logging| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#user_002ddefined-logging| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -179,7 +174,7 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 <div id="index-annotate-_0028subcommand_0029"></div>
 
 <dl>
-<dt><div id="index-cvs-annotate"></div><u>Command:</u> <b>cvs annotate</b><i> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files &hellip;</i></dt>
+<dt><div id="index-cvs-annotate"></div>Command: <b>cvs annotate</b><i> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files &hellip;</i></dt>
 <dd>
 <p>For each file in <var>files</var>, print the head revision
 of the trunk, together with information on the last

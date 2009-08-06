@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 3.3.1 @copying: Declare copying permissions</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 3.3.1 @copying: Declare copying permissions">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.3.1 @copying: Declare copying permissions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Document-Permissions.html#Document-Permissions" rel="up" title="3.3 Document Permissions">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Document-Permissions.html#Document-Permissions" rel="previous" title="3.3 Document Permissions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="copying"></a>
+<div class="node">
+<p>
+Next: <a href="insertcopying.html#insertcopying" accesskey="n" rel="next">insertcopying</a>, Up: <a href="Document-Permissions.html#Document-Permissions" accesskey="u" rel="up">Document Permissions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="g_t_0040copying_003a-Declare-copying-permissions"></a>
+<h3 class="subsection">3.3.1 <code>@copying</code>: Declare copying permissions</h3>
+<a name="index-copying"></a>
+
+<p>The <code>@copying</code> command should be given very early in the document;
+right after the header material (see <a href="Texinfo-File-Header.html#Texinfo-File-Header">Texinfo File Header</a>) is the
+recommended location.  It conventionally consists of a sentence or two
+about what the program is, the legal copyright line, and the copying
+permissions.  Here is a skeletal example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@copying
+This manual is for <var>program</var> (version <var>version</var>),
+which &hellip;
+
+Copyright @copyright{} <var>years</var> <var>copyright-owner</var>.
+
+@quotation
+Permission is granted to &hellip;
+@end quotation
+@end copying
+</pre></td></tr></table>
+
+<p>The <code>@quotation</code> has no legal significance; it&rsquo;s there to improve
+readability in some contexts.
+</p>
+<p>See <a href="GNU-Sample-Texts.html#GNU-Sample-Texts">GNU Sample Texts</a>, for the full text to be used in GNU manuals.
+See <a href="GNU-Free-Documentation-License.html#GNU-Free-Documentation-License">GNU Free Documentation License</a>, for the license itself under
+which GNU and other free manuals are distributed.
+</p>
+<p>The text of <code>@copying</code> is output as a comment at the beginning of
+Info, HTML, and XML output files.  It is <em>not</em> output implicitly in
+plain text or TeX; it&rsquo;s up to you to use <code>@insertcopying</code> to
+emit the copying information.  See the next section for details.
+</p>
+<a name="index-copyright"></a>
+<p>In output formats that support it (print and HTML), the
+<code>@copyright{}</code> command generates a &lsquo;<samp>c</samp>&rsquo; inside a circle.  In
+Info and plain text, it generates &lsquo;<samp>(C)</samp>&rsquo;.  The copyright notice
+itself has the following legally defined sequence:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">Copyright &copy; <var>years</var> <var>copyright-owner</var>.
+</pre></td></tr></table>
+
+<a name="index-Copyright-word_002c-always-in-English"></a>
+<p>The word &lsquo;Copyright&rsquo; must always be written in English, even if the
+manual is otherwise in another language.  This is due to international
+law.
+</p>
+<a name="index-Years_002c-in-copyright-line"></a>
+<p>The list of years should include all years in which a version was
+completed (even if it was released in a subsequent year).  Ranges are
+not allowed, each year must be written out individually, separated by
+commas.
+</p>
+<a name="index-Copyright-owner-for-FSF-works"></a>
+<p>The copyright owner (or owners) is whoever holds legal copyright on the
+work.  In the case of works assigned to the FSF, the owner is &lsquo;Free
+Software Foundation, Inc.&rsquo;.
+</p>
+<p>See <a href="../maintain/Copyright-Notices.html#Copyright-Notices">(maintain)Copyright Notices</a> section &lsquo;Copyright Notices&rsquo; in <cite>GNU Maintenance Instructions</cite>, for
+additional information.
+</p>
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="insertcopying.html#insertcopying" accesskey="n" rel="next">insertcopying</a>, Up: <a href="Document-Permissions.html#Document-Permissions" accesskey="u" rel="up">Document Permissions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 2 Using Texinfo Mode</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 2 Using Texinfo Mode">
+<meta name="keywords" content="GNU Texinfo 4.2: 2 Using Texinfo Mode">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="index.html#Top" rel="up" title="Texinfo">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="History.html#History" rel="previous" title="1.11 History">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Texinfo-Mode"></a>
+<div class="node">
+<p>
+Next: <a href="Beginning-a-File.html#Beginning-a-File" accesskey="n" rel="next">Beginning a File</a>, Previous: <a href="Overview.html#Overview" accesskey="p" rel="previous">Overview</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Using-Texinfo-Mode"></a>
+<h1 class="chapter">2 Using Texinfo Mode</h1>
+<a name="index-Texinfo-mode"></a>
+<a name="index-Mode_002c-using-Texinfo"></a>
+<a name="index-GNU-Emacs"></a>
+<a name="index-Emacs"></a>
+
+<p>You may edit a Texinfo file with any text editor you choose.  A Texinfo
+file is no different from any other <small>ASCII</small> file.  However, GNU Emacs
+comes with a special mode, called Texinfo mode, that provides Emacs
+commands and tools to help ease your work.
+</p>
+<p>This chapter describes features of GNU Emacs&rsquo; Texinfo mode but not any
+features of the Texinfo formatting language.  So if you are reading this
+manual straight through from the beginning, you may want to skim through
+this chapter briefly and come back to it after reading succeeding
+chapters which describe the Texinfo formatting language in detail.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Texinfo-Mode-Overview" accesskey="1">&bull; Texinfo Mode Overview</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How Texinfo mode can help you.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Emacs-Editing.html#Emacs-Editing" accesskey="2">&bull; Emacs Editing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Texinfo mode adds to GNU Emacs&rsquo; general
+                                  purpose editing features.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Inserting.html#Inserting" accesskey="3">&bull; Inserting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   How to insert frequently used @-commands.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Showing-the-Structure.html#Showing-the-Structure" accesskey="4">&bull; Showing the Structure</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to show the structure of a file.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Updating-Nodes-and-Menus.html#Updating-Nodes-and-Menus" accesskey="5">&bull; Updating Nodes and Menus</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    How to update or create new nodes and menus.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Info-Formatting.html#Info-Formatting" accesskey="6">&bull; Info Formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             How to format for Info.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Printing.html#Printing" accesskey="7">&bull; Printing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    How to format and print part or all of a file.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Texinfo-Mode-Summary.html#Texinfo-Mode-Summary" accesskey="8">&bull; Texinfo Mode Summary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Summary of all the Texinfo mode commands.
+</td></tr>
+</table>
+
+<a name="Texinfo-Mode-Overview"></a>
+
+<p>Texinfo mode provides special features for working with Texinfo
+files.
+You can:
+</p>
+<ul>
+<li>
+Insert frequently used @-commands. 
+
+</li><li>
+Automatically create <code>@node</code> lines.
+
+</li><li>
+Show the structure of a Texinfo source file.
+
+</li><li>
+Automatically create or update the &lsquo;Next&rsquo;,
+&lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers of a node.
+
+</li><li>
+Automatically create or update menus.
+
+</li><li>
+Automatically create a master menu.
+
+</li><li>
+Format a part or all of a file for Info.
+
+</li><li>
+Typeset and print part or all of a file.
+</li></ul>
+
+<p>Perhaps the two most helpful features are those for inserting frequently
+used @-commands and for creating node pointers and menus.
+</p>
+<hr>
+<div class="node">
+<p>
+Next: <a href="Beginning-a-File.html#Beginning-a-File" accesskey="n" rel="next">Beginning a File</a>, Previous: <a href="Overview.html#Overview" accesskey="p" rel="previous">Overview</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

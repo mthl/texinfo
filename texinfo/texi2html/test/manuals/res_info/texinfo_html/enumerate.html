@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 11.2 @enumerate: Making a Numbered or Lettered List</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 11.2 @enumerate: Making a Numbered or Lettered List">
+<meta name="keywords" content="GNU Texinfo 4.2: 11.2 @enumerate: Making a Numbered or Lettered List">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Lists-and-Tables.html#Lists-and-Tables" rel="up" title="11 Lists and Tables">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="itemize.html#itemize" rel="previous" title="11.1 @itemize: Making an Itemized List">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="enumerate"></a>
+<div class="node">
+<p>
+Next: <a href="Two_002dcolumn-Tables.html#Two_002dcolumn-Tables" accesskey="n" rel="next">Two-column Tables</a>, Previous: <a href="itemize.html#itemize" accesskey="p" rel="previous">itemize</a>, Up: <a href="Lists-and-Tables.html#Lists-and-Tables" accesskey="u" rel="up">Lists and Tables</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="g_t_0040enumerate_003a-Making-a-Numbered-or-Lettered-List"></a>
+<h2 class="section">11.2 <code>@enumerate</code>: Making a Numbered or Lettered List</h2>
+<a name="index-Enumeration"></a>
+<a name="index-enumerate"></a>
+
+<p><code>@enumerate</code> is like <code>@itemize</code> (see <a href="itemize.html#itemize"><code>@itemize</code></a>), except that the labels on the items are
+successive integers or letters instead of bullets.
+</p>
+<p>Write the <code>@enumerate</code> command at the beginning of a line.  The
+command does not require an argument, but accepts either a number or a
+letter as an option.  Without an argument, <code>@enumerate</code> starts the
+list with the number &lsquo;<samp>1</samp>&rsquo;.  With a numeric argument, such as
+&lsquo;<samp>3</samp>&rsquo;, the command starts the list with that number.  With an upper
+or lower case letter, such as &lsquo;<samp>a</samp>&rsquo; or &lsquo;<samp>A</samp>&rsquo;, the command starts
+the list with that letter.
+</p>
+<p>Write the text of the enumerated list in the same way you write an
+itemized list: put <code>@item</code> on a line of its own before the start
+of each paragraph that you want enumerated.  Do not write any other text
+on the line beginning with <code>@item</code>.
+</p>
+<p>You should put a blank line between entries in the list.
+This generally makes it easier to read the Info file.
+</p>
+<p>Here is an example of <code>@enumerate</code> without an argument:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@enumerate
+@item
+Underlying causes.
+
+@item
+Proximate causes.
+@end enumerate
+</pre></td></tr></table>
+
+<p>This produces:
+</p>
+<ol>
+<li>
+Underlying causes.
+
+</li><li>
+Proximate causes.
+</li></ol>
+<br>
+<p>Here is an example with an argument of <kbd>3</kbd>:
+</p><br>
+<table><tr><td>&nbsp;</td><td><pre class="example">@enumerate 3
+@item
+Predisposing causes.
+
+@item
+Precipitating causes.
+
+@item
+Perpetuating causes.
+@end enumerate
+</pre></td></tr></table>
+
+<p>This produces:
+</p>
+<ol>
+<li>
+Predisposing causes.
+
+</li><li>
+Precipitating causes.
+
+</li><li>
+Perpetuating causes.
+</li></ol>
+<br>
+<p>Here is a brief summary of the alternatives.  The summary is constructed
+using <code>@enumerate</code> with an argument of <kbd>a</kbd>.
+</p><br>
+<ol>
+<li>
+<code>@enumerate</code>
+
+<p>Without an argument, produce a numbered list, starting with the number
+1.
+</p>
+</li><li>
+<code>@enumerate <var>positive-integer</var></code>
+
+<p>With a (positive) numeric argument, start a numbered list with that
+number.  You can use this to continue a list that you interrupted with
+other text.
+</p>
+</li><li>
+<code>@enumerate <var>upper-case-letter</var></code>
+
+<p>With an upper case letter as argument, start a list
+in which each item is marked
+by a letter, beginning with that upper case letter.
+</p>
+</li><li>
+<code>@enumerate <var>lower-case-letter</var></code>
+
+<p>With a lower case letter as argument, start a list
+in which each item is marked by
+a letter, beginning with that lower case letter.
+</p></li></ol>
+
+<p>You can also nest enumerated lists, as in an outline.
+</p>
+<hr>
+<div class="node">
+<p>
+Next: <a href="Two_002dcolumn-Tables.html#Two_002dcolumn-Tables" accesskey="n" rel="next">Two-column Tables</a>, Previous: <a href="itemize.html#itemize" accesskey="p" rel="previous">itemize</a>, Up: <a href="Lists-and-Tables.html#Lists-and-Tables" accesskey="u" rel="up">Lists and Tables</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

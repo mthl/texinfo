@@ -32,6 +32,11 @@
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
+<menunode> Appendix for float</menunode>
+<menutitle> Appendix for float</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
 <menunode> list of floats</menunode>
 <menutitle> list of floats</menutitle>
 <menucomment>
@@ -365,7 +370,7 @@ A footnote 2.
 </node>
 <node>
 <nodename>Chapter with unnumbsubsec</nodename>
-<nodenext>list of floats</nodenext>
+<nodenext>Appendix for float</nodenext>
 <nodeprev>Unnumbered</nodeprev>
 <nodeup>Top</nodeup>
 <chapter>
@@ -420,8 +425,28 @@ A footnote 2.
 </unnumberedsec>
 </node>
 <node>
-<nodename>list of floats</nodename>
+<nodename>Appendix for float</nodename>
+<nodenext>list of floats</nodenext>
 <nodeprev>Chapter with unnumbsubsec</nodeprev>
+<nodeup>Top</nodeup>
+<appendix>
+<title>Appendix for float</title>
+
+<float name="appendix sec float">
+<floattype>Text</floattype>
+<floatpos></floatpos>
+<para>Appendix
+</para><shortcaption>appendix sec float
+</shortcaption>
+<caption>appendix sec float
+</caption>
+</float>
+
+</appendix>
+</node>
+<node>
+<nodename>list of floats</nodename>
+<nodeprev>Appendix for float</nodeprev>
 <nodeup>Top</nodeup>
 <unnumbered>
 <title>list of floats</title>

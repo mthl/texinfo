@@ -28,7 +28,7 @@ into the main trunk, and tell you to use &lsquo;<samp>checkout -j</samp>&rsquo; 
 <p>The above command will check out the latest revision of
 &lsquo;<samp>wdiff</samp>&rsquo;, merging the changes made on the vendor branch &lsquo;<samp>FSF_DIST</samp>&rsquo;
 since yesterday into the working copy.  If any conflicts arise during
-the merge they should be resolved in the normal way (see section [cvs: Conflicts example#Conflicts-example Conflicts example]).  Then, the modified files may be committed.
+the merge they should be resolved in the normal way (see [cvs: Conflicts example#Conflicts-example Conflicts example]).  Then, the modified files may be committed.
 </p>
 <p>However, it is much better to use the two release tags rather than using
 a date on the branch as suggested above:

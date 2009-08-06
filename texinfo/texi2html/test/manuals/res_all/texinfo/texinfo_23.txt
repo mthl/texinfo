@@ -1,5 +1,5 @@
-Annexe B Tips and Hints
-***********************
+Appendix B Tips and Hints
+*************************
 
 Here are some tips for writing Texinfo documentation:
 

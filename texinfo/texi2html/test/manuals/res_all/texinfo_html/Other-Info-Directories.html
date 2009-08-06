@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 20.2.3 Info Files in Other Directories</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 20.2.3 Info Files in Other Directories">
+<meta name="keywords" content="GNU Texinfo 4.2: 20.2.3 Info Files in Other Directories">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Installing-an-Info-File.html#Installing-an-Info-File" rel="up" title="20.2 Installing an Info File">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="New-Info-File.html#New-Info-File" rel="previous" title="20.2.2 Listing a New Info File">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Other-Info-Directories"></a>
+<div class="node">
+<p>
+Next: <a href="Installing-Dir-Entries.html#Installing-Dir-Entries" accesskey="n" rel="next">Installing Dir Entries</a>, Previous: <a href="New-Info-File.html#New-Info-File" accesskey="p" rel="previous">New Info File</a>, Up: <a href="Installing-an-Info-File.html#Installing-an-Info-File" accesskey="u" rel="up">Installing an Info File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Info-Files-in-Other-Directories"></a>
+<h3 class="subsection">20.2.3 Info Files in Other Directories</h3>
+<a name="index-Installing-Info-in-another-directory"></a>
+<a name="index-Info-installed-in-another-directory"></a>
+<a name="index-Another-Info-directory"></a>
+<a name="index-dir-files-and-Info-directories"></a>
+
+<p>If an Info file is not in the &lsquo;<tt>info</tt>&rsquo; directory, there are three
+ways to specify its location:
+</p>
+<ol>
+<li>
+Write the pathname in the &lsquo;<tt>dir</tt>&rsquo; file as the second part of the menu.
+
+</li><li>
+If you are using Emacs, list the name of the file in a second &lsquo;<tt>dir</tt>&rsquo;
+file, in its directory; and then add the name of that directory to the
+<code>Info-directory-list</code> variable in your personal or site
+initialization file.
+
+<p>This variable tells Emacs where to look for &lsquo;<tt>dir</tt>&rsquo; files (the files
+must be named &lsquo;<tt>dir</tt>&rsquo;).  Emacs merges the files named &lsquo;<tt>dir</tt>&rsquo; from
+each of the listed directories.  (In Emacs version 18, you can set the
+<code>Info-directory</code> variable to the name of only one
+directory.)
+</p>
+</li><li>
+Specify the Info directory name in the <code>INFOPATH</code> environment
+variable in your &lsquo;<tt>.profile</tt>&rsquo; or &lsquo;<tt>.cshrc</tt>&rsquo; initialization file.
+(Only you and others who set this environment variable will be able to
+find Info files whose location is specified this way.)
+</li></ol>
+
+<p>For example, to reach a test file in the &lsquo;<tt>/home/bob/info</tt>&rsquo;
+directory, you could add an entry like this to the menu in the
+standard &lsquo;<tt>dir</tt>&rsquo; file:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">* Test: (/home/bob/info/info-test).  Bob's own test file.
+</pre></td></tr></table>
+
+<p>In this case, the absolute file name of the &lsquo;<tt>info-test</tt>&rsquo; file is
+written as the second part of the menu entry.
+</p>
+<p>Alternatively, you could write the following in your &lsquo;<tt>.emacs</tt>&rsquo; file:
+</p>
+<a name="index-Info_002ddirectory_002dlist"></a>
+<table><tr><td>&nbsp;</td><td><pre class="example">(require 'info)
+(setq Info-directory-list
+  (cons (expand-file-name &quot;/home/bob/info&quot;)
+        Info-directory-list))
+</pre></td></tr></table>
+
+<p>This tells Emacs to merge the system &lsquo;<tt>dir</tt>&rsquo; file with the &lsquo;<tt>dir</tt>&rsquo;
+file in &lsquo;<tt>/home/bob/info</tt>&rsquo;.  Thus, Info will list the
+&lsquo;<tt>/home/bob/info/info-test</tt>&rsquo; file as a menu entry in the
+&lsquo;<tt>/home/bob/info/dir</tt>&rsquo; file.  Emacs does the merging only when
+<kbd>M-x info</kbd> is first run, so if you want to set
+<code>Info-directory-list</code> in an Emacs session where you&rsquo;ve already run
+<code>info</code>, you must <code>(setq Info-dir-contents nil)</code> to force Emacs
+to recompose the &lsquo;<tt>dir</tt>&rsquo; file.
+</p>
+<a name="index-INFOPATH"></a>
+<p>Finally, you can tell Info where to look by setting the <code>INFOPATH</code>
+environment variable in your shell startup file, such as &lsquo;<tt>.cshrc</tt>&rsquo;,
+&lsquo;<tt>.profile</tt>&rsquo; or &lsquo;<tt>autoexec.bat</tt>&rsquo;.  If you use a Bourne-compatible
+shell such as <code>sh</code> or <code>bash</code> for your shell command
+interpreter, you set the <code>INFOPATH</code> environment variable in the
+&lsquo;<tt>.profile</tt>&rsquo; initialization file; but if you use <code>csh</code> or
+<code>tcsh</code>, you set the variable in the &lsquo;<tt>.cshrc</tt>&rsquo; initialization
+file.  On MS-DOS/MS-Windows systems, you must set <code>INFOPATH</code> in
+your &lsquo;<tt>autoexec.bat</tt>&rsquo; file or in the Registry.  Each type of shell
+uses a different syntax.
+</p>
+<ul>
+<li>
+In a &lsquo;<tt>.cshrc</tt>&rsquo; file, you could set the <code>INFOPATH</code>
+variable as follows:
+
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">setenv INFOPATH .:~/info:/usr/local/emacs/info
+</pre></td></tr></table>
+
+</li><li>
+In a &lsquo;<tt>.profile</tt>&rsquo; file, you would achieve the same effect by
+writing:
+
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">INFOPATH=.:$HOME/info:/usr/local/emacs/info
+export INFOPATH
+</pre></td></tr></table>
+
+</li><li>
+<a name="index-autoexec_002ebat"></a>
+In a &lsquo;<tt>autoexec.bat</tt>&rsquo; file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
+
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
+</pre></td></tr></table>
+</li></ul>
+
+<p>The &lsquo;<samp>.</samp>&rsquo; indicates the current directory as usual.  Emacs uses the
+<code>INFOPATH</code> environment variable to initialize the value of Emacs&rsquo;s
+own <code>Info-directory-list</code> variable.  The stand-alone Info reader
+merges any files named &lsquo;<tt>dir</tt>&rsquo; in any directory listed in the
+<code>INFOPATH</code> variable into a single menu presented to you in the node
+called &lsquo;<samp>(dir)Top</samp>&rsquo;.
+</p>
+<a name="index-colon_002c-last-in-INFOPATH"></a>
+<p>However you set <code>INFOPATH</code>, if its last character is a
+colon<a name="DOCF13" href="texinfo_fot.html#FOOT13">(13)</a>, this
+is replaced by the default (compiled-in) path.  This gives you a way to
+augment the default path with new directories without having to list all
+the standard places.  For example (using <code>sh</code> syntax):
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">INFOPATH=/local/info:
+export INFOPATH
+</pre></td></tr></table>
+
+<p>will search &lsquo;<tt>/local/info</tt>&rsquo; first, then the standard directories.
+Leading or doubled colons are not treated specially.
+</p>
+<a name="index-dir-file_002c-creating-your-own"></a>
+<p>When you create your own &lsquo;<tt>dir</tt>&rsquo; file for use with
+<code>Info-directory-list</code> or <code>INFOPATH</code>, it&rsquo;s easiest to start by
+copying an existing &lsquo;<tt>dir</tt>&rsquo; file and replace all the text after the
+&lsquo;<samp>* Menu:</samp>&rsquo; with your desired entries.  That way, the punctuation and
+special CTRL-_ characters that Info needs will be present.
+</p>
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="Installing-Dir-Entries.html#Installing-Dir-Entries" accesskey="n" rel="next">Installing Dir Entries</a>, Previous: <a href="New-Info-File.html#New-Info-File" accesskey="p" rel="previous">New Info File</a>, Up: <a href="Installing-an-Info-File.html#Installing-an-Info-File" accesskey="u" rel="up">Installing an Info File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

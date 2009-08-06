@@ -1,5 +1,5 @@
-Annexe A @-Command List
-***********************
+Appendix A @-Command List
+*************************
 
 Here is an alphabetical list of the @-commands in Texinfo.  Square
 brackets, [ ], indicate optional arguments; an ellipsis,

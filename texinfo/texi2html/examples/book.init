@@ -11,16 +11,11 @@ $INLINE_CONTENTS = 1;
      'Back', 'Forward', ' ', 'Contents', 'Index', 'About'
     );
 
-@CHAPTER_BUTTONS =
-    (
-     'Back', 'Forward', ' ', 'Contents', 'Index', 'About'
-    );
-
-@MISC_BUTTONS = ('Contents', 'Index', 'About');
-
-@TOP_BUTTONS = ('Contents', 'Index', 'About');
+@CHAPTER_BUTTONS = @SECTION_BUTTONS;
+@TOP_BUTTONS = @SECTION_BUTTONS;
 
 @SECTION_FOOTER_BUTTONS = ('Contents', 'Index', 'About');
+@MISC_BUTTONS = @SECTION_FOOTER_BUTTONS;
 
 @NODE_FOOTER_BUTTONS = ('Back', 'Forward');
 
@@ -161,9 +156,9 @@ sub book_element_file_name($$$)
     {
         $previous_file_name = "${prefix}_top.html";
     }
-    elsif (defined($element->{'number'}) and ($element->{'number'} ne ''))
+    elsif (defined($element->{'plain_number'}) and ($element->{'plain_number'} ne ''))
     {
-         my $number = $element->{'number'};
+         my $number = $element->{'plain_number'};
          $number .= '.' unless ($number =~ /\.$/);
          $previous_file_name = "${prefix}_$number" . 'html';
     }

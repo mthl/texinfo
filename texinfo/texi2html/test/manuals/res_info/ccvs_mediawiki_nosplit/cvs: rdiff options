@@ -8,7 +8,7 @@ Next: [cvs: rdiff examples#rdiff-examples rdiff examples], Up: [cvs: rdiff--'pat
 ==== rdiff options ====
 
 <p>These standard options are supported by <code>rdiff</code>
-(see section [cvs: Common command options#Common-options Common command options], for a complete description of
+(see [cvs: Common command options#Common-options Common options], for a complete description of
 them):
 </p>
 <dl compact="compact">

@@ -1,10 +1,9 @@
 <div id="Tracking-sources"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Keyword substitution#Log-keyword  &lt; ]|</td>
-<td valign="middle" align="left">|[[#First-import| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Keyword substitution#Log-keyword  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[[#First-import| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -57,11 +56,10 @@ revision.
 <hr>
 <div id="First-import"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Tracking-sources| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Update-imports| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Tracking-sources| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
+<td valign="middle" align="left">|[[#Update-imports| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -112,11 +110,10 @@ example, and the only release tag assigned is
 <hr>
 <div id="Update-imports"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#First-import| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Reverting-local-changes| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#First-import| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
+<td valign="middle" align="left">|[[#Reverting-local-changes| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -170,11 +167,10 @@ should do a merge like this even if <code>import</code> doesn&rsquo;t tell you t
 <hr>
 <div id="Reverting-local-changes"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Update-imports| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Binary-files-in-imports| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Update-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
+<td valign="middle" align="left">|[[#Binary-files-in-imports| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -206,11 +202,10 @@ after the &lsquo;<samp>-b</samp>&rsquo;.  See section [cvs: Guide to CVS command
 <hr>
 <div id="Binary-files-in-imports"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Reverting-local-changes| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Keywords-in-imports| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Reverting-local-changes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
+<td valign="middle" align="left">|[[#Keywords-in-imports| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -230,11 +225,10 @@ files are binary.  See section [cvs: Reference manual for Administrative files#W
 <hr>
 <div id="Keywords-in-imports"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Binary-files-in-imports| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Multiple-vendor-branches| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Binary-files-in-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-vendor-branches| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -272,11 +266,10 @@ and use the &lsquo;<samp>-k</samp>&rsquo; option to <code>cvs update</code> or
 <hr>
 <div id="Multiple-vendor-branches"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Keywords-in-imports| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Keywords-in-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

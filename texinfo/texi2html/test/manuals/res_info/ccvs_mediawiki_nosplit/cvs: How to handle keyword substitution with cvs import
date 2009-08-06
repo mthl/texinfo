@@ -8,7 +8,7 @@ Next: [cvs: Multiple vendor branches#Multiple-vendor-branches Multiple vendor br
 === How to handle keyword substitution with cvs import ===
 
 <p>The sources which you are importing may contain
-keywords (see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]).  For example,
+keywords (see [cvs: Keyword substitution#Keyword-substitution Keyword substitution]).  For example,
 the vendor may use <small>CVS</small> or some other system
 which uses similar keyword expansion syntax.  If you
 just import the files in the default fashion, then

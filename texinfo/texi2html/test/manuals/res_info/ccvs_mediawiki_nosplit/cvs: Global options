@@ -16,7 +16,7 @@ left of &lsquo;<samp>cvs_command</samp>&rsquo;) are:
 <dl compact="compact">
 <dt><code>--allow-root=<var>rootdir</var></code></dt>
 <dd><p>Specify legal <small>CVSROOT</small> directory.  See
-[cvs: Setting up the server for password authentication#Password-authentication-server Setting up the server for password authentication].
+[cvs: Setting up the server for password authentication#Password-authentication-server Password authentication server].
 </p>
 <div id="index-Authentication_002c-stream"></div>
 <div id="index-Stream-authentication"></div>
@@ -25,7 +25,7 @@ left of &lsquo;<samp>cvs_command</samp>&rsquo;) are:
 <dd><p>Authenticate all communication between the client and
 the server.  Only has an effect on the <small>CVS</small> client.
 As of this writing, this is only implemented when using
-a GSSAPI connection (see section [cvs: Direct connection with GSSAPI#GSSAPI-authenticated Direct connection with GSSAPI]).
+a GSSAPI connection (see [cvs: Direct connection with GSSAPI#GSSAPI-authenticated GSSAPI authenticated]).
 Authentication prevents certain sorts of attacks
 involving hijacking the active <small>TCP</small> connection.
 Enabling authentication does not enable encryption.
@@ -58,7 +58,7 @@ vice versa.)
 <dt><code>-d <var>cvs_root_directory</var></code></dt>
 <dd><p>Use <var>cvs_root_directory</var> as the root directory
 pathname of the repository.  Overrides the setting of
-the <code>$CVSROOT</code> environment variable.  See section [cvs: The Repository#Repository The Repository].
+the <code>$CVSROOT</code> environment variable.  See [cvs: The Repository#Repository Repository].
 </p>
 <div id="index-EDITOR_002c-overriding"></div>
 <div id="index-Overriding-EDITOR"></div>
@@ -91,7 +91,7 @@ a command name, &lsquo;<samp>cvs -H</samp>&rsquo; displays overall help for
 </dd>
 <dt><code>-l</code></dt>
 <dd><p>Do not log the &lsquo;<samp>cvs_command</samp>&rsquo; in the command history (but execute it
-anyway).  See section [cvs: history--Show status of files and users#history history&mdash;Show status of files and users], for information on command history.
+anyway).  See [cvs: history--Show status of files and users#history history], for information on command history.
 </p>
 <div id="index-Read_002donly-repository-mode"></div>
 </dd>
@@ -133,13 +133,13 @@ suppressed.
 <dt><code>-r</code></dt>
 <dd><p>Make new working files read-only.  Same effect
 as if the <code>$CVSREAD</code> environment variable is set
-(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]).  The default is to
+(see [cvs: All environment variables which affect CVS#Environment-variables Environment variables]).  The default is to
 make working files writable, unless watches are on
-(see section [cvs: Mechanisms to track who is editing files#Watches Mechanisms to track who is editing files]).
+(see [cvs: Mechanisms to track who is editing files#Watches Watches]).
 </p>
 </dd>
 <dt><code>-s <var>variable</var>=<var>value</var></code></dt>
-<dd><p>Set a user variable (see section [cvs: Expansions in administrative files#Variables Expansions in administrative files]).
+<dd><p>Set a user variable (see [cvs: Expansions in administrative files#Variables Variables]).
 </p>
 <div id="index-Trace"></div>
 </dd>
@@ -168,8 +168,8 @@ set or &lsquo;<samp>-r</samp>&rsquo; is given.
 <p>Encrypt all communication between the client and the
 server.  Only has an effect on the <small>CVS</small> client.  As
 of this writing, this is only implemented when using a
-GSSAPI connection (see section [cvs: Direct connection with GSSAPI#GSSAPI-authenticated Direct connection with GSSAPI]) or a
-Kerberos connection (see section [cvs: Direct connection with kerberos#Kerberos-authenticated Direct connection with kerberos]).
+GSSAPI connection (see [cvs: Direct connection with GSSAPI#GSSAPI-authenticated GSSAPI authenticated]) or a
+Kerberos connection (see [cvs: Direct connection with kerberos#Kerberos-authenticated Kerberos authenticated]).
 Enabling encryption implies that message traffic is
 also authenticated.  Encryption support is not
 available by default; it must be enabled using a

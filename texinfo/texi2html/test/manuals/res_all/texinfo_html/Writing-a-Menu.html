@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 7.1 Writing a Menu</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 7.1 Writing a Menu">
+<meta name="keywords" content="GNU Texinfo 4.2: 7.1 Writing a Menu">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Menus.html#Menus" rel="up" title="7 Menus">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Menus.html#Menus" rel="previous" title="7 Menus">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Writing-a-Menu"></a>
+<div class="node">
+<p>
+Next: <a href="Menu-Parts.html#Menu-Parts" accesskey="n" rel="next">Menu Parts</a>, Previous: <a href="Menus.html#Menu-Location" accesskey="p" rel="previous">Menu Location</a>, Up: <a href="Menus.html#Menus" accesskey="u" rel="up">Menus</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Writing-a-Menu-1"></a>
+<h2 class="section">7.1 Writing a Menu</h2>
+<a name="index-Writing-a-menu"></a>
+<a name="index-Menu-writing"></a>
+
+<p>A menu consists of an <code>@menu</code> command on a line by
+itself followed by menu entry lines or menu comment lines
+and then by an <code>@end menu</code> command on a line by
+itself.
+</p>
+<p>A menu looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@menu
+Larger Units of Text
+
+* Files::                       All about handling files.
+* Multiples: Buffers.           Multiple buffers; editing
+                                  several files at once.
+@end menu
+</pre></td></tr></table>
+
+<p>In a menu, every line that begins with an &lsquo;<samp>* </samp>&rsquo; is a <em>menu
+entry</em>.  (Note the space after the asterisk.)  A line that does not
+start with an &lsquo;<samp>* </samp>&rsquo; may also appear in a menu.  Such a line is
+not a menu entry but is a menu comment line that appears in the Info
+file.  In the example above, the line &lsquo;<samp>Larger Units of Text</samp>&rsquo; is a
+menu comment line; the two lines starting with &lsquo;<samp>* </samp>&rsquo; are menu
+<a name="index-Spaces_002c-in-menus"></a>
+entries.  Space characters in a menu are preserved as-is; this allows
+you to format the menu as you wish.
+</p>
+
+<p>
+
+
+</p>
+</body>
+</html>

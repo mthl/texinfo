@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 18.5 definfoenclose: Customized Highlighting</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 18.5 definfoenclose: Customized Highlighting">
+<meta name="keywords" content="GNU Texinfo 4.2: 18.5 definfoenclose: Customized Highlighting">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Defining-New-Texinfo-Commands.html#Defining-New-Texinfo-Commands" rel="up" title="18 Defining New Texinfo Commands">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="alias.html#alias" rel="previous" title="18.4 @alias new=existing">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="definfoenclose"></a>
+<div class="node">
+<p>
+Previous: <a href="alias.html#alias" accesskey="p" rel="previous">alias</a>, Up: <a href="Defining-New-Texinfo-Commands.html#Defining-New-Texinfo-Commands" accesskey="u" rel="up">Defining New Texinfo Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="definfoenclose_003a-Customized-Highlighting"></a>
+<h2 class="section">18.5 &lsquo;<samp>definfoenclose</samp>&rsquo;: Customized Highlighting</h2>
+<a name="index-Highlighting_002c-customized"></a>
+<a name="index-Customized-highlighting"></a>
+<a name="index-definfoenclose"></a>
+
+<p>A <code>@definfoenclose</code> command may be used to define a highlighting
+command for Info, but not for TeX.  A command defined using
+<code>@definfoenclose</code> marks text by enclosing it in strings that
+precede and follow the text.  You can use this to get closer control of
+your Info output.
+</p> 
+<p>Presumably, if you define a command with <code>@definfoenclose</code> for Info,
+you will create a corresponding command for TeX, either in
+&lsquo;<tt>texinfo.tex</tt>&rsquo;, &lsquo;<tt>texinfo.cnf</tt>&rsquo;, or within an &lsquo;<samp>@iftex</samp>&rsquo; in
+your document.
+</p>
+<p>Write a <code>@definfoenclose</code> command on a line and follow it with
+three arguments separated by commas.  The first argument to
+<code>@definfoenclose</code> is the @-command name (without the <code>@</code>);
+the second argument is the Info start delimiter string; and the third
+argument is the Info end delimiter string.  The latter two arguments
+enclose the highlighted text in the Info file.  A delimiter string may
+contain spaces.  Neither the start nor end delimiter is required.  If
+you do not want a start delimiter but do want an end delimiter, you must
+follow the command name with two commas in a row; otherwise, the Info
+formatting commands will naturally misinterpret the end delimiter string
+you intended as the start delimiter string.
+</p>
+<p>If you do a <code>@definfoenclose</code> on the name of a pre-defined macro
+(such as <code>@emph</code>, <code>@strong</code>, <code>@t</code>, or <code>@i</code>), the
+enclosure definition will override the built-in definition.
+</p> 
+<p>An enclosure command defined this way takes one argument in braces; this
+is intended for new markup commands (see <a href="Marking-Text.html#Marking-Text">Marking Text</a>).
+</p>
+<a name="index-phoo"></a>
+<p>For example, you can write:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@definfoenclose phoo,//,\\
+</pre></td></tr></table>
+
+<p>near the beginning of a Texinfo file to define <code>@phoo</code> as an Info
+formatting command that inserts &lsquo;//&rsquo; before and &lsquo;\\&rsquo; after the argument
+to <code>@phoo</code>.  You can then write <code>@phoo{bar}</code> wherever you
+want &lsquo;//bar\\&rsquo; highlighted in Info.
+</p>
+<p>Also, for TeX formatting, you could write 
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@iftex
+@global@let@phoo=@i
+@end iftex
+</pre></td></tr></table>
+
+<p>to define <code>@phoo</code> as a command that causes TeX to typeset the
+argument to <code>@phoo</code> in italics.
+</p>
+<p>Each definition applies to its own formatter: one for TeX, the other
+for <code>texinfo-format-buffer</code> or <code>texinfo-format-region</code>.  The
+<code>@definfoenclose</code> command need not be within &lsquo;<samp>@ifinfo</samp>&rsquo;, but
+the raw TeX commands do need to be in &lsquo;<samp>@iftex</samp>&rsquo;.
+</p>
+<a name="index-headword"></a>
+<p>Here is another example: write
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@definfoenclose headword, , :
+</pre></td></tr></table>
+
+<p>near the beginning of the file, to define <code>@headword</code> as an Info
+formatting command that inserts nothing before and a colon after the
+argument to <code>@headword</code>.
+</p>
+<p>&lsquo;<samp>@definfoenclose</samp>&rsquo; definitions must not be recursive, directly or
+indirectly.
+</p>
+
+<hr>
+<div class="node">
+<p>
+Previous: <a href="alias.html#alias" accesskey="p" rel="previous">alias</a>, Up: <a href="Defining-New-Texinfo-Commands.html#Defining-New-Texinfo-Commands" accesskey="u" rel="up">Defining New Texinfo Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

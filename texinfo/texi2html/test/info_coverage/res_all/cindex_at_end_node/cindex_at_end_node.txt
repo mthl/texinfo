@@ -11,9 +11,9 @@ Element
 
 
 
-Annexe A indices
-****************
+Appendix A indices
+******************
 
 * Index:
-* index entry: 1. Chapter.
+* index entry: 1 Chapter.
 

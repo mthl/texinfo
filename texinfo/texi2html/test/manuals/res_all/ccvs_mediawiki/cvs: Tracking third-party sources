@@ -67,7 +67,7 @@ directory in which you invoke it.  In particular, it
 does not set up that directory as a <small>CVS</small> working
 directory; if you want to work with the sources import
 them first and then check them out into a different
-directory (see section [cvs: Overview#Getting-the-source Getting the source]).
+directory (see [cvs: Overview#Getting-the-source Getting the source]).
 </p>
 <div id="index-wdiff-_0028import-example_0029"></div>
 <p>Suppose you have the sources to a program called
@@ -115,7 +115,7 @@ into the main trunk, and tell you to use &lsquo;<samp>checkout -j</samp>&rsquo; 
 <p>The above command will check out the latest revision of
 &lsquo;<samp>wdiff</samp>&rsquo;, merging the changes made on the vendor branch &lsquo;<samp>FSF_DIST</samp>&rsquo;
 since yesterday into the working copy.  If any conflicts arise during
-the merge they should be resolved in the normal way (see section [cvs: Multiple developers#Conflicts-example Conflicts example]).  Then, the modified files may be committed.
+the merge they should be resolved in the normal way (see [cvs: Multiple developers#Conflicts-example Conflicts example]).  Then, the modified files may be committed.
 </p>
 <p>However, it is much better to use the two release tags rather than using
 a date on the branch as suggested above:
@@ -153,7 +153,7 @@ $ cvs admin -bWDIFF .
 </nowiki></pre></td></tr></table>
 
 <p>You must specify the &lsquo;<samp>-bWDIFF</samp>&rsquo; without any space
-after the &lsquo;<samp>-b</samp>&rsquo;.  See section [cvs: Guide to CVS commands#admin-options admin options].
+after the &lsquo;<samp>-b</samp>&rsquo;.  See [cvs: Guide to CVS commands#admin-options admin options].
 </p>
 <hr>
 <div id="Binary-files-in-imports"></div>
@@ -165,7 +165,7 @@ Next: [[#Keywords-in-imports|Keywords in imports]], Previous: [[#Reverting-local
 === How to handle binary files with cvs import ===
 
 <p>Use the &lsquo;<samp>-k</samp>&rsquo; wrapper option to tell import which
-files are binary.  See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
+files are binary.  See [cvs: Reference manual for Administrative files#Wrappers Wrappers].
 </p>
 <hr>
 <div id="Keywords-in-imports"></div>
@@ -177,7 +177,7 @@ Next: [[#Multiple-vendor-branches|Multiple vendor branches]], Previous: [[#Binar
 === How to handle keyword substitution with cvs import ===
 
 <p>The sources which you are importing may contain
-keywords (see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]).  For example,
+keywords (see [cvs: Keyword substitution#Keyword-substitution Keyword substitution]).  For example,
 the vendor may use <small>CVS</small> or some other system
 which uses similar keyword expansion syntax.  If you
 just import the files in the default fashion, then

@@ -1,10 +1,9 @@
 <div id="BUGS"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Credits#Credits  &lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Credits#Credits  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Credits#Credits  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Credits#Credits  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Index#Index  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: Index#Index  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

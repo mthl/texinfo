@@ -14,16 +14,16 @@ Top
 * after index::
 * after index node::
 
-Annexe A Concept index
-**********************
+Appendix A Concept index
+************************
 
 * Index:
-* after index: B. second appendix.
+* after index: Appendix B second appendix.
 * after index node: after index node.
 * first before top: first before top.
 
-Annexe B second appendix
-************************
+Appendix B second appendix
+**************************
 
 
 after index node

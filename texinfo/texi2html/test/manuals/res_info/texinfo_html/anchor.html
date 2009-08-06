@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 6.5 @anchor: Defining Arbitrary Cross-reference Targets</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 6.5 @anchor: Defining Arbitrary Cross-reference Targets">
+<meta name="keywords" content="GNU Texinfo 4.2: 6.5 @anchor: Defining Arbitrary Cross-reference Targets">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Nodes.html#Nodes" rel="up" title="6 Nodes">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="makeinfo-Pointer-Creation.html#makeinfo-Pointer-Creation" rel="previous" title="6.4 Creating Pointers with makeinfo">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="anchor"></a>
+<div class="node">
+<p>
+Previous: <a href="makeinfo-Pointer-Creation.html#makeinfo-Pointer-Creation" accesskey="p" rel="previous">makeinfo Pointer Creation</a>, Up: <a href="Nodes.html#Nodes" accesskey="u" rel="up">Nodes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="g_t_0040anchor_003a-Defining-Arbitrary-Cross_002dreference-Targets"></a>
+<h2 class="section">6.5 <code>@anchor</code>: Defining Arbitrary Cross-reference Targets</h2>
+
+<a name="index-anchor"></a>
+<a name="index-Anchors"></a>
+<a name="index-Cross_002dreference-targets_002c-arbitrary"></a>
+<a name="index-Targets-for-cross_002dreferences_002c-arbitrary"></a>
+
+<p>An <em>anchor</em> is a position in your document, labeled so that
+cross-references can refer to it, just as they can to nodes.  You create
+an anchor with the <code>@anchor</code> command, and give the label as a
+normal brace-delimited argument.  For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This marks the @anchor{x-spot}spot.
+&hellip;
+@xref{x-spot,,the spot}.
+</pre></td></tr></table>
+
+<p>produces:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">This marks the spot.
+&hellip;
+See [the spot], page 1.
+</pre></td></tr></table>
+
+<p>As you can see, the <code>@anchor</code> command itself produces no output.
+This example defines an anchor &lsquo;x-spot&rsquo; just before the word &lsquo;spot&rsquo;.
+You can refer to it later with an <code>@xref</code> or other cross-reference
+command, as shown.  See <a href="Cross-References.html#Cross-References">Cross References</a>, for details on the
+cross-reference commands.
+</p>
+<p>It is best to put <code>@anchor</code> commands just before the position you
+wish to refer to; that way, the reader&rsquo;s eye is led on to the correct
+text when they jump to the anchor.  You can put the <code>@anchor</code>
+command on a line by itself if that helps readability of the source.
+Spaces are always ignored after <code>@anchor</code>.
+</p>
+<p>Anchor names and node names may not conflict.  Anchors and nodes are
+given similar treatment in some ways; for example, the <code>goto-node</code>
+command in standalone Info takes either an anchor name or a node name as
+an argument.  (See <a href="../info-stnd/goto_002dnode.html#goto_002dnode">(info-stnd)goto-node</a> section &lsquo;goto-node&rsquo; in <cite>GNU Info</cite>.)
+</p>
+
+<p>
+
+
+</p>
+</body>
+</html>

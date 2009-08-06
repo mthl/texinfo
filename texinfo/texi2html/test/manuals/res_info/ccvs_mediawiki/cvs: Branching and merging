@@ -52,7 +52,7 @@ Next: [[#Creating-a-branch|Creating a branch]], Up: [[#Branching-and-merging|Bra
 <p>Suppose that release 1.0 of tc has been made.  You are continuing to
 develop tc, planning to create release 1.1 in a couple of months.  After a
 while your customers start to complain about a fatal bug.  You check
-out release 1.0 (see section [cvs: Revisions#Tags Tags&ndash;Symbolic revisions]) and find the bug
+out release 1.0 (see [cvs: Revisions#Tags Tags]) and find the bug
 (which turns out to have a trivial fix).  However, the current revision
 of the sources are in a state of flux and are not expected to be stable
 for at least another month.  There is no way to make a
@@ -144,7 +144,7 @@ switching an existing working copy over to the branch.
 </p>
 <p>To check out a branch from the repository, invoke
 &lsquo;<samp>checkout</samp>&rsquo; with the &lsquo;<samp>-r</samp>&rsquo; flag, followed by
-the tag name of the branch (see section [[#Creating-a-branch|Creating a branch]]):
+the tag name of the branch (see [[#Creating-a-branch|Creating a branch]]):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -r rel-1-0-patches tc
 </nowiki></pre></td></tr></table>
@@ -177,7 +177,7 @@ leaving the main trunk and other branches unaffected.
 <div id="index-Branches_002c-sticky"></div>
 <p>To find out what branch a working copy is on, you can
 use the &lsquo;<samp>status</samp>&rsquo; command.  In its output, look for
-the field named &lsquo;<samp>Sticky tag</samp>&rsquo; (see section [cvs: Revisions#Sticky-tags Sticky tags])
+the field named &lsquo;<samp>Sticky tag</samp>&rsquo; (see [cvs: Revisions#Sticky-tags Sticky tags])
 &ndash; that&rsquo;s <small>CVS</small>&rsquo;s way of telling you the branch, if
 any, of the current working files:
 </p>
@@ -237,7 +237,7 @@ Next: [[#Magic-branch-numbers|Magic branch numbers]], Previous: [[#Accessing-bra
 <div id="index-Revision-numbers-_0028branches_0029"></div>
 
 <p>Ordinarily, a file&rsquo;s revision history is a linear
-series of increments (see section [cvs: Revisions#Revision-numbers Revision numbers]):
+series of increments (see [cvs: Revisions#Revision-numbers Revision numbers]):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>       +-----+    +-----+    +-----+    +-----+    +-----+
        ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
@@ -293,8 +293,8 @@ unused even integer, starting with 2.  So when you want
 to create a branch from revision 6.4 it will be
 numbered 6.4.2.  All branch numbers ending in a zero
 (such as 6.4.0) are used internally by <small>CVS</small>
-(see section [[#Magic-branch-numbers|Magic branch numbers]]).  The branch 1.1.1 has a
-special meaning.  See section [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources].
+(see [[#Magic-branch-numbers|Magic branch numbers]]).  The branch 1.1.1 has a
+special meaning.  See [cvs: Tracking third-party sources#Tracking-sources Tracking sources].
 </p>
 <hr>
 <div id="Magic-branch-numbers"></div>
@@ -314,7 +314,7 @@ circumstances, so it may be useful to have some idea of
 how it works.
 </p>
 <p>Externally, branch numbers consist of an odd number of
-dot-separated decimal integers.  See section [cvs: Revisions#Revision-numbers Revision numbers].  That is not the whole truth, however.  For
+dot-separated decimal integers.  See [cvs: Revisions#Revision-numbers Revision numbers].  That is not the whole truth, however.  For
 efficiency reasons <small>CVS</small> sometimes inserts an extra 0
 in the second rightmost position (1.2.4 becomes
 1.2.0.4, 8.9.10.11.12 becomes 8.9.10.11.0.12 and so
@@ -401,9 +401,9 @@ $ cvs commit -m &quot;Included R1fix&quot; # <span class="roman">Create revision
 
 <p>A conflict can result from a merge operation.  If that
 happens, you should resolve it before committing the
-new revision.  See section [cvs: Multiple developers#Conflicts-example Conflicts example].
+new revision.  See [cvs: Multiple developers#Conflicts-example Conflicts example].
 </p>
-<p>If your source files contain keywords (see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]),
+<p>If your source files contain keywords (see [cvs: Keyword substitution#Keyword-substitution Keyword substitution]),
 you might be getting more conflicts than strictly necessary.  See
 [[#Merging-and-keywords|Merging and keywords]], for information on how to avoid this.
 </p>
@@ -415,7 +415,7 @@ $ cvs commit -m &quot;Included R1fix&quot;
 </nowiki></pre></td></tr></table>
 
 <p>It should be noted that <code>update -j <var>tagname</var></code> will also work but may
-not produce the desired result.  See section [[#Merging-adds-and-removals|Merging can add or remove files]], for more.
+not produce the desired result.  See [[#Merging-adds-and-removals|Merging adds and removals]], for more.
 </p>
 <hr>
 <div id="Merging-more-than-once"></div>
@@ -588,13 +588,13 @@ Previous: [[#Merging-adds-and-removals|Merging adds and removals]], Up: [[#Branc
 <div id="index-_002dj-_0028merging-branches_0029_002c-and-keyword-substitution"></div>
 <div id="index-_002dkk_002c-to-avoid-conflicts-during-a-merge"></div>
 
-<p>If you merge files containing keywords (see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]), you will normally get numerous
+<p>If you merge files containing keywords (see [cvs: Keyword substitution#Keyword-substitution Keyword substitution]), you will normally get numerous
 conflicts during the merge, because the keywords are
 expanded differently in the revisions which you are
 merging.
 </p>
 <p>Therefore, you will often want to specify the
-&lsquo;<samp>-kk</samp>&rsquo; (see section [cvs: Keyword substitution#Substitution-modes Substitution modes]) switch to the
+&lsquo;<samp>-kk</samp>&rsquo; (see [cvs: Keyword substitution#Substitution-modes Substitution modes]) switch to the
 merge command line.  By substituting just the name of
 the keyword, not the expanded value of that keyword,
 this option ensures that the revisions which you are

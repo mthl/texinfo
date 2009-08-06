@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 15.4.5 Object-Oriented Programming</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 15.4.5 Object-Oriented Programming">
+<meta name="keywords" content="GNU Texinfo 4.2: 15.4.5 Object-Oriented Programming">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Def-Cmds-in-Detail.html#Def-Cmds-in-Detail" rel="up" title="15.4 The Definition Commands">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Typed-Variables.html#Typed-Variables" rel="previous" title="15.4.4 Variables in Typed Languages">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Abstract-Objects"></a>
+<div class="node">
+<p>
+Next: <a href="Data-Types.html#Data-Types" accesskey="n" rel="next">Data Types</a>, Previous: <a href="Typed-Variables.html#Typed-Variables" accesskey="p" rel="previous">Typed Variables</a>, Up: <a href="Def-Cmds-in-Detail.html#Def-Cmds-in-Detail" accesskey="u" rel="up">Def Cmds in Detail</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Object_002dOriented-Programming"></a>
+<h3 class="subsection">15.4.5 Object-Oriented Programming</h3>
+
+<p>Here are the commands for formatting descriptions about abstract
+objects, such as are used in object-oriented programming.  A class is
+a defined type of abstract object.  An instance of a class is a
+particular object that has the type of the class.  An instance
+variable is a variable that belongs to the class but for which each
+instance has its own value.
+</p>
+<p>In a definition, if the name of a class is truly a name defined in the
+programming system for a class, then you should write an <code>@code</code>
+around it.  Otherwise, it is printed in the usual text font.
+</p>
+<dl compact="compact">
+<dd><a name="index-defcv"></a>
+</dd>
+<dt><code>@defcv <var>category</var> <var>class</var> <var>name</var></code></dt>
+<dd><p>The <code>@defcv</code> command is the general definition command for
+variables associated with classes in object-oriented programming.  The
+<code>@defcv</code> command is followed by three arguments: the category of
+thing being defined, the class to which it belongs, and its
+name.  Thus,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defcv {Class Option} Window border-pattern
+&hellip;
+@end defcv
+</pre></td></tr></table>
+
+<p>illustrates how you would write the first line of a definition of the
+<code>border-pattern</code> class option of the class <code>Window</code>.
+</p>
+<p>The template is:
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@defcv <var>category</var> <var>class</var> <var>name</var>
+&hellip;
+@end defcv
+</pre></td></tr></table>
+
+<p><code>@defcv</code> creates an entry in the index of variables.
+</p>
+<a name="index-defivar"></a>
+</dd>
+<dt><code>@defivar <var>class</var> <var>name</var></code></dt>
+<dd><p>The <code>@defivar</code> command is the definition command for instance
+variables in object-oriented programming.  <code>@defivar</code> is
+equivalent to &lsquo;<samp>@defcv {Instance Variable} &hellip;</samp>&rsquo;
+</p>
+<p>The template is:
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@defivar <var>class</var> <var>instance-variable-name</var>
+<var>body-of-definition</var>
+@end defivar
+</pre></td></tr></table>
+
+<p><code>@defivar</code> creates an entry in the index of variables.
+</p>
+<a name="index-deftypeivar"></a>
+</dd>
+<dt><code>@deftypeivar <var>class</var> <var>data-type</var> <var>name</var></code></dt>
+<dd><p>The <code>@deftypeivar</code> command is the definition command for typed
+instance variables in object-oriented programming.  It is similar to
+<code>@defivar</code> with the addition of the <var>data-type</var> parameter to
+specify the type of the instance variable.  <code>@deftypeivar</code> creates an
+entry in the index of variables.
+</p>
+<a name="index-defop"></a>
+</dd>
+<dt><code>@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><p>The <code>@defop</code> command is the general definition command for
+entities that may resemble methods in object-oriented programming.
+These entities take arguments, as functions do, but are associated with
+particular classes of objects.
+</p>
+<p>For example, some systems have constructs called <em>wrappers</em> that
+are associated with classes as methods are, but that act more like
+macros than like functions.  You could use <code>@defop Wrapper</code> to
+describe one of these.
+</p>
+<p>Sometimes it is useful to distinguish methods and <em>operations</em>.
+You can think of an operation as the specification for a method.
+Thus, a window system might specify that all window classes have a
+method named <code>expose</code>; we would say that this window system
+defines an <code>expose</code> operation on windows in general.  Typically,
+the operation has a name and also specifies the pattern of arguments;
+all methods that implement the operation must accept the same
+arguments, since applications that use the operation do so without
+knowing which method will implement it.
+</p>
+<p>Often it makes more sense to document operations than methods.  For
+example, window application developers need to know about the
+<code>expose</code> operation, but need not be concerned with whether a
+given class of windows has its own method to implement this operation.
+To describe this operation, you would write:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defop Operation windows expose
+</pre></td></tr></table>
+
+<p>The <code>@defop</code> command is written at the beginning of a line and
+is followed on the same line by the overall name of the category of
+operation, the name of the class of the operation, the name of the
+operation, and its arguments, if any.
+</p>
+<p>The template is:
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;
+<var>body-of-definition</var>
+@end defop
+</pre></td></tr></table>
+
+<p><code>@defop</code> creates an entry, such as &lsquo;<code>expose</code> on
+<code>windows</code>&rsquo;, in the index of functions.
+</p>
+<a name="index-deftypeop"></a>
+</dd>
+<dt><code>@deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><p>The <code>@deftypeop</code> command is the definition command for typed
+operations in object-oriented programming.  It is similar to
+<code>@defop</code> with the addition of the <var>data-type</var> parameter to
+specify the return type of the method.  <code>@deftypeop</code> creates an
+entry in the index of functions.
+</p>
+</dd>
+<dt><code>@defmethod <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><a name="index-defmethod"></a>
+<p>The <code>@defmethod</code> command is the definition command for methods
+in object-oriented programming.  A method is a kind of function that
+implements an operation for a particular class of objects and its
+subclasses.
+</p>
+<p><code>@defmethod</code> is equivalent to &lsquo;<samp>@defop Method &hellip;</samp>&rsquo;.
+The command is written at the beginning of a line and is followed by
+the name of the class of the method, the name of the method, and its
+arguments, if any.
+</p>
+<p>For example:
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@defmethod <code>bar-class</code> bar-method argument
+&hellip;
+@end defmethod
+</pre></td></tr></table>
+
+<p>illustrates the definition for a method called <code>bar-method</code> of
+the class <code>bar-class</code>.  The method takes an argument.
+</p>
+<p>The template is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@defmethod <var>class</var> <var>method-name</var> <var>arguments</var>&hellip;
+<var>body-of-definition</var>
+@end defmethod
+</pre></td></tr></table>
+
+<p><code>@defmethod</code> creates an entry, such as &lsquo;<code>bar-method</code> on
+<code>bar-class</code>&rsquo;, in the index of functions.
+</p>
+
+</dd>
+<dt><code>@deftypemethod <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><a name="index-defmethod-1"></a>
+<p>The <code>@deftypemethod</code> command is the definition command for methods
+in object-oriented typed languages, such as C++ and Java.  It is similar
+to the <code>@defmethod</code> command with the addition of the
+<var>data-type</var> parameter to specify the return type of the method.
+</p>
+</dd>
+</dl>
+
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="Data-Types.html#Data-Types" accesskey="n" rel="next">Data Types</a>, Previous: <a href="Typed-Variables.html#Typed-Variables" accesskey="p" rel="previous">Typed Variables</a>, Up: <a href="Def-Cmds-in-Detail.html#Def-Cmds-in-Detail" accesskey="u" rel="up">Def Cmds in Detail</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

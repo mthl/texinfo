@@ -31,7 +31,7 @@ symbolic names for some
 collection of source directories and files, or paths to
 directories or files in the repository.  The symbolic
 names are defined in the &lsquo;<samp>modules</samp>&rsquo; file.
-See section [cvs: The modules file#modules The modules file].
+See [cvs: The modules file#modules modules].
 </p>
 <p>Depending on the modules you specify, <code>checkout</code> may
 recursively create directories and populate them with
@@ -55,10 +55,10 @@ area (unless you specify the &lsquo;<samp>-Q</samp>&rsquo; global option).
 </p>
 <p>The files created by <code>checkout</code> are created
 read-write, unless the &lsquo;<samp>-r</samp>&rsquo; option to <small>CVS</small>
-(see section [cvs: Global options#Global-options Global options]) is specified, the
+(see [cvs: Global options#Global-options Global options]) is specified, the
 <code>CVSREAD</code> environment variable is specified
-(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]), or a watch is in
-effect for that file (see section [cvs: Mechanisms to track who is editing files#Watches Mechanisms to track who is editing files]).
+(see [cvs: All environment variables which affect CVS#Environment-variables Environment variables]), or a watch is in
+effect for that file (see [cvs: Mechanisms to track who is editing files#Watches Watches]).
 </p>
 <p>Note that running <code>checkout</code> on a directory that was already
 built by a prior <code>checkout</code> is also permitted.

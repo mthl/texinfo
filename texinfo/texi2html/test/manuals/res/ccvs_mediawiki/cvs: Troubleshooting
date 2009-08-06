@@ -1,10 +1,9 @@
 <div id="Troubleshooting"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &lt; ]|</td>
-<td valign="middle" align="left">|[[#Error-messages| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[[#Error-messages| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Credits#Credits  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -33,11 +32,10 @@ mentioned there.
 <hr>
 <div id="Error-messages"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Troubleshooting| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Connection| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Troubleshooting| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Troubleshooting| Up ]]|</td>
+<td valign="middle" align="left">|[[#Connection| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Credits#Credits  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -446,11 +444,10 @@ exit 0
 <hr>
 <div id="Connection"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Error-messages| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Other-problems| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Error-messages| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Troubleshooting| Up ]]|</td>
+<td valign="middle" align="left">|[[#Other-problems| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Credits#Credits  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -595,11 +592,10 @@ others allow you to set the limit for each service separately.)
 <hr>
 <div id="Other-problems"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Connection| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Credits#Credits  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Connection| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Troubleshooting| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Credits#Credits  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: Credits#Credits  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

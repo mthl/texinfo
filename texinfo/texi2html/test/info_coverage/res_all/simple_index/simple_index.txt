@@ -186,8 +186,8 @@ b
 b
 
 
-Annexe A Index
-**************
+Appendix A Index
+****************
 
 Para.
 
@@ -197,22 +197,22 @@ Concept index
 * ": Element top.
 * @: Element top.
 * in Top: Element top.
-* index entry in appendix before para: A. Index.
-* index entry looooooooooooooooooooooooooooooooooooooooooooooooooooooooong: 1. A chapter.
-* index in chapter end: B. chapter end.
+* index entry in appendix before para: Appendix A Index.
+* index entry looooooooooooooooooooooooooooooooooooooooooooooooooooooooong: 1 A chapter.
+* index in chapter end: B chapter end.
 
 
 Functions index
 * Index:
 * a fun: Element top.
-* after lines.: 1. A chapter.
-* after more than 100 lines: 1. A chapter.
-* function index entry: 1. A chapter.
+* after lines.: 1 A chapter.
+* after more than 100 lines: 1 A chapter.
+* function index entry: 1 A chapter.
 * i: Element top.
-* index entry between indices: A. Index.
+* index entry between indices: Appendix A Index.
 * itemx fun: Element top.
 * machin: Element top.
-* other function: 1. A chapter.
+* other function: 1 A chapter.
 * second fun: Element top.
 
 A.1 appendixsec

@@ -31,9 +31,9 @@ changes that they intended to make.
 ability to merge two revisions.  For <small>CVS</small> this
 happens in two contexts.  The first is when users make
 changes in separate working directories
-(see section [cvs: Multiple developers#Multiple-developers Multiple developers]).  The second is when one
+(see [cvs: Multiple developers#Multiple-developers Multiple developers]).  The second is when one
 merges explicitly with the &lsquo;<samp>update -j</samp>&rsquo; command
-(see section [cvs: Branching and merging#Branching-and-merging Branching and merging]).
+(see [cvs: Branching and merging#Branching-and-merging Branching and merging]).
 </p>
 <p>In the case of text
 files, <small>CVS</small> can merge changes made independently,

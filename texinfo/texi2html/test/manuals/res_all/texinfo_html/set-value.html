@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 16.4.1 @set and @value</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 16.4.1 @set and @value">
+<meta name="keywords" content="GNU Texinfo 4.2: 16.4.1 @set and @value">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="set-clear-value.html#set-clear-value" rel="up" title="16.4 @set, @clear, and @value">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="set-clear-value.html#set-clear-value" rel="previous" title="16.4 @set, @clear, and @value">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="set-value"></a>
+<div class="node">
+<p>
+Next: <a href="ifset-ifclear.html#ifset-ifclear" accesskey="n" rel="next">ifset ifclear</a>, Up: <a href="set-clear-value.html#set-clear-value" accesskey="u" rel="up">set clear value</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="g_t_0040set-and-_0040value"></a>
+<h3 class="subsection">16.4.1 <code>@set</code> and <code>@value</code></h3>
+<a name="index-value"></a>
+
+<p>You use the <code>@set</code> command to specify a value for a flag, which is
+later expanded by the <code>@value</code> command.
+</p>
+<p>A <em>flag</em> is an identifier.  In general, it is best to use only
+letters and numerals in a flag name, not &lsquo;<samp>-</samp>&rsquo; or &lsquo;<samp>_</samp>&rsquo;&mdash;they
+will work in some contexts, but not all, due to limitations in TeX.
+</p>
+<p>The value is the remainder of the input line, and can contain anything.
+</p>
+<p>Write the <code>@set</code> command like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@set foo This is a string.
+</pre></td></tr></table>
+
+<p>This sets the value of the flag <code>foo</code> to &ldquo;This is a string.&rdquo;.
+</p>
+<p>The Texinfo formatters then replace an <code>@value{<var>flag</var>}</code>
+command with the string to which <var>flag</var> is set.  Thus, when
+<code>foo</code> is set as shown above, the Texinfo formatters convert this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@value{foo}
+<span class="roman">to this:</span>
+This is a string.
+</pre></td></tr></table>
+
+<p>You can write an <code>@value</code> command within a paragraph; but you
+must write an <code>@set</code> command on a line of its own.
+</p>
+<p>If you write the <code>@set</code> command like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@set foo
+</pre></td></tr></table>
+
+<p>without specifying a string, the value of <code>foo</code> is the empty string.
+</p>
+<p>If you clear a previously set flag with <code>@clear <var>flag</var></code>, a
+subsequent <code>@value{flag}</code> command will report an error.
+</p>
+<p>For example, if you set <code>foo</code> as follows:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@set how-much very, very, very
+</pre></td></tr></table>
+
+<p>then the formatters transform
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">It is a @value{how-much} wet day.
+<span class="roman">into</span>
+It is a very, very, very wet day.
+</pre></td></tr></table>
+
+<p>If you write
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@clear how-much
+</pre></td></tr></table>
+
+<p>then the formatters transform
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">It is a @value{how-much} wet day.
+<span class="roman">into</span>
+It is a {No value for &quot;how-much&quot;} wet day.
+</pre></td></tr></table>
+
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="ifset-ifclear.html#ifset-ifclear" accesskey="n" rel="next">ifset ifclear</a>, Up: <a href="set-clear-value.html#set-clear-value" accesskey="u" rel="up">set clear value</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

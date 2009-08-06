@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 5 Chapter Structuring</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 5 Chapter Structuring">
+<meta name="keywords" content="GNU Texinfo 4.2: 5 Chapter Structuring">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="index.html#Top" rel="up" title="Texinfo">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="File-End.html#File-End" rel="previous" title="4.3 @bye File Ending">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Structuring"></a>
+<div class="node">
+<p>
+Next: <a href="Nodes.html#Nodes" accesskey="n" rel="next">Nodes</a>, Previous: <a href="Ending-a-File.html#Ending-a-File" accesskey="p" rel="previous">Ending a File</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Chapter-Structuring"></a>
+<h1 class="chapter">5 Chapter Structuring</h1>
+<a name="index-Chapter-structuring"></a>
+<a name="index-Structuring-of-chapters"></a>
+
+<p>The <em>chapter structuring</em> commands divide a document into a hierarchy of
+chapters, sections, subsections, and subsubsections.  These commands
+generate large headings; they also provide information for the table
+of contents of a printed manual (see <a href="Contents.html#Contents">Generating a Table of Contents</a>).
+</p>
+<p>The chapter structuring commands do not create an Info node structure,
+so normally you should put an <code>@node</code> command immediately before
+each chapter structuring command (see <a href="Nodes.html#Nodes">Nodes</a>).  The only time you
+are likely to use the chapter structuring commands without using the
+node structuring commands is if you are writing a document that
+contains no cross references and will never be transformed into Info
+format.
+</p>
+<p>It is unlikely that you will ever write a Texinfo file that is
+intended only as an Info file and not as a printable document.  If you
+do, you might still use chapter structuring commands to create a
+heading at the top of each node&mdash;but you don&rsquo;t need to.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="Tree-Structuring.html#Tree-Structuring" accesskey="1">&bull; Tree Structuring</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            A manual is like an upside down tree &hellip;
+</td></tr>
+<tr><td align="left" valign="top"><a href="Structuring-Command-Types.html#Structuring-Command-Types" accesskey="2">&bull; Structuring Command Types</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   How to divide a manual into parts.
+</td></tr>
+<tr><td align="left" valign="top"><a href="makeinfo-top.html#makeinfo-top" accesskey="3">&bull; makeinfo top</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                The <code>@top</code> command, part of the &lsquo;Top&rsquo; node.
+</td></tr>
+<tr><td align="left" valign="top"><a href="chapter.html#chapter" accesskey="4">&bull; chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     
+</td></tr>
+<tr><td align="left" valign="top"><a href="unnumbered-_0026-appendix.html#unnumbered-_0026-appendix" accesskey="5">&bull; unnumbered &amp; appendix</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       
+</td></tr>
+<tr><td align="left" valign="top"><a href="majorheading-_0026-chapheading.html#majorheading-_0026-chapheading" accesskey="6">&bull; majorheading &amp; chapheading</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+</td></tr>
+<tr><td align="left" valign="top"><a href="section.html#section" accesskey="7">&bull; section</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     
+</td></tr>
+<tr><td align="left" valign="top"><a href="unnumberedsec-appendixsec-heading.html#unnumberedsec-appendixsec-heading" accesskey="8">&bull; unnumberedsec appendixsec heading</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+</td></tr>
+<tr><td align="left" valign="top"><a href="subsection.html#subsection" accesskey="9">&bull; subsection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  
+</td></tr>
+<tr><td align="left" valign="top"><a href="unnumberedsubsec-appendixsubsec-subheading.html#unnumberedsubsec-appendixsubsec-subheading">&bull; unnumberedsubsec appendixsubsec subheading</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+</td></tr>
+<tr><td align="left" valign="top"><a href="subsubsection.html#subsubsection">&bull; subsubsection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Commands for the lowest level sections.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Raise_002flower-sections.html#Raise_002flower-sections">&bull; Raise/lower sections</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        How to change commands&rsquo; hierarchical level.
+</td></tr>
+</table>
+
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="Nodes.html#Nodes" accesskey="n" rel="next">Nodes</a>, Previous: <a href="Ending-a-File.html#Ending-a-File" accesskey="p" rel="previous">Ending a File</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

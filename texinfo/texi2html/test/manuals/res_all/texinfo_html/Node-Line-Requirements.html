@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 6.3.4 @node Line Requirements</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 6.3.4 @node Line Requirements">
+<meta name="keywords" content="GNU Texinfo 4.2: 6.3.4 @node Line Requirements">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="node.html#node" rel="up" title="6.3 The @node Command">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Node-Line-Tips.html#Node-Line-Tips" rel="previous" title="6.3.3 @node Line Tips">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Node-Line-Requirements"></a>
+<div class="node">
+<p>
+Next: <a href="First-Node.html#First-Node" accesskey="n" rel="next">First Node</a>, Previous: <a href="Node-Line-Tips.html#Node-Line-Tips" accesskey="p" rel="previous">Node Line Tips</a>, Up: <a href="node.html#node" accesskey="u" rel="up">node</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="g_t_0040node-Line-Requirements"></a>
+<h3 class="subsection">6.3.4 <code>@node</code> Line Requirements</h3>
+
+<a name="index-Node-line-requirements"></a>
+<a name="index-Restrictions-on-node-names"></a>
+<p>Here are several requirements for <code>@node</code> lines:
+</p>
+<ul>
+<li><a name="index-Unique-nodename-requirement"></a>
+<a name="index-Node-name-must-be-unique"></a>
+</li><li>
+All the node names for a single Info file must be unique.
+
+<p>Duplicates confuse the Info movement commands.  This means, for
+example, that if you end every chapter with a summary, you must name
+each summary node differently.  You cannot just call each one
+&ldquo;Summary&rdquo;.  You may, however, duplicate the titles of chapters, sections,
+and the like.  Thus you can end each chapter in a book with a section
+called &ldquo;Summary&rdquo;, so long as the node names for those sections are all
+different.
+</p>
+</li><li>
+A pointer name must be the name of a node.
+
+<p>The node to which a pointer points may come before or after the
+node containing the pointer.
+</p>
+<a name="index-_0040_002dcommands-in-nodename"></a>
+<a name="index-Node-name_002c-should-not-contain-_0040_002dcommands"></a>
+</li><li>
+@-commands used in node names generally confuse Info, so you
+should avoid them.  This includes punctuation characters that are
+escaped with a &lsquo;<samp>@</samp>&rsquo;, such as <code>@</code> and <code>{</code>.  For a few
+rare cases when this is useful, Texinfo has limited support for using
+@-commands in node names; see <a href="Pointer-Validation.html#Pointer-Validation">Pointer Validation</a>.
+
+<p>Thus, the beginning of the section called <code>@chapter</code> looks like
+this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">@node  chapter, unnumbered &amp; appendix, makeinfo top, Structuring
+@comment  node-name,  next,  previous,  up
+@section @code{@@chapter}
+@findex chapter
+</pre></td></tr></table>
+
+</li><li>
+<a name="index-Parentheses-in-nodename"></a>
+You cannot use parentheses in node names, because a node name such as
+&lsquo;<samp>(foo)bar</samp>&rsquo; is interpreted by the Info readers as a node
+&lsquo;<samp>bar</samp>&rsquo; in an Info file &lsquo;<tt>foo</tt>&rsquo;.
+
+</li><li>
+<a name="index-Apostrophe-in-nodename"></a>
+<a name="index-Colon-in-nodename"></a>
+<a name="index-Comma-in-nodename"></a>
+<a name="index-Period-in-nodename"></a>
+<a name="index-Characters_002c-invalid-in-node-name"></a>
+<a name="index-Invalid-characters-in-node-names"></a>
+Unfortunately, you cannot use periods, commas, colons or apostrophes
+within a node name; these confuse TeX or the Info formatters.
+
+<p>For example, the following is a section title:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">@code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
+</pre></td></tr></table>
+
+<p>The corresponding node name is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">unnumberedsec appendixsec heading
+</pre></td></tr></table>
+
+<a name="index-Case-in-node-name"></a>
+</li><li>
+Case is significant.
+</li></ul>
+
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="First-Node.html#First-Node" accesskey="n" rel="next">First Node</a>, Previous: <a href="Node-Line-Tips.html#Node-Line-Tips" accesskey="p" rel="previous">Node Line Tips</a>, Up: <a href="node.html#node" accesskey="u" rel="up">node</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

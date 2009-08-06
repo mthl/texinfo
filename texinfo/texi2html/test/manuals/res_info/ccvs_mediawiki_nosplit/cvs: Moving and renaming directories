@@ -12,7 +12,7 @@ Previous: [cvs: Moving and renaming files#Moving-files Moving files], Up: [cvs: 
 
 <p>The normal way to rename or move a directory is to
 rename or move each file within it as described in
-[cvs: The Normal way to Rename#Outside The Normal way to Rename].  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
+[cvs: The Normal way to Rename#Outside Outside].  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
 option, as described in [cvs: Removing directories#Removing-directories Removing directories].
 </p>
 <p>If you really want to hack the repository to rename or

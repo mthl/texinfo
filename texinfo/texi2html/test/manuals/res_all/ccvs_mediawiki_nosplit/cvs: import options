@@ -8,7 +8,7 @@ Next: [cvs: import output#import-output import output], Up: [cvs: import--Import
 ==== import options ====
 
 <p>This standard option is supported by <code>import</code>
-(see section [cvs: Common command options#Common-options Common command options], for a complete description):
+(see [cvs: Common command options#Common-options Common options], for a complete description):
 </p>
 <dl compact="compact">
 <dt><code>-m <var>message</var></code></dt>
@@ -40,7 +40,7 @@ default), specify &lsquo;-I !&rsquo;.
 </p>
 <p><var>name</var> can be a file name pattern of the same type
 that you can specify in the &lsquo;<tt>.cvsignore</tt>&rsquo; file.
-See section [cvs: Ignoring files via cvsignore#cvsignore Ignoring files via cvsignore].
+See [cvs: Ignoring files via cvsignore#cvsignore cvsignore].
 </p>
 </dd>
 <dt><code>-W <var>spec</var></code></dt>
@@ -49,7 +49,7 @@ import.  You can use this option repeatedly.
 </p>
 <p><var>spec</var> can be a file name pattern of the same type
 that you can specify in the &lsquo;<tt>.cvswrappers</tt>&rsquo;
-file. See section [cvs: The cvswrappers file#Wrappers The cvswrappers file].
+file. See [cvs: The cvswrappers file#Wrappers Wrappers].
 </p></dd>
 </dl>
 

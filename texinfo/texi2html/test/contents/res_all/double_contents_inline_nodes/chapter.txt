@@ -5,7 +5,7 @@ Table of Contents
 *****************
 
 Double contents
-1. Chapter 1
+1 Chapter 1
  1.1 section with contents
 
 The chapter

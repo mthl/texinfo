@@ -1,10 +1,9 @@
 <div id="Binary-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: History browsing#annotate  &lt; ]|</td>
-<td valign="middle" align="left">|[[#Binary-why| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: History browsing#History-browsing  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: History browsing#History-browsing  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: History browsing#annotate  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[[#Binary-why| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -34,11 +33,10 @@ including both text files and binary images.
 <hr>
 <div id="Binary-why"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Binary-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Binary-howto| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Binary-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#Binary-howto| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -103,11 +101,10 @@ resulting from branches, restrict use of branches.
 <hr>
 <div id="Binary-howto"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Binary-why| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Binary-why| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

@@ -138,5 +138,5 @@ Anzeige der email Adrese <mailto:kama@hippo.fido.de>
 Inhaltsverzeichnis
 ******************
 
-1. This is what you get
+1 This is what you get
 

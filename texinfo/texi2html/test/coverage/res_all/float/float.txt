@@ -11,6 +11,7 @@ A list of floats at the begining.
 * Text 6: Section within unnumbered
 * Text 2.1: Chapter with subsec
 * Text 2.2: unnumbered sec float
+* Text A.1: appendix sec float
 
 
 After the listoffloats.
@@ -18,6 +19,7 @@ After the listoffloats.
 * chapter::
 * Unnumbered::
 * Chapter with unnumbsubsec::
+* Appendix for float::
 * list of floats::
 
 An example of float ...
@@ -266,6 +268,16 @@ float with no type.
 2.1: No type in unnumbered subsec in chapter
 
 
+Appendix A Appendix for float
+*****************************
+
+Appendix
+
+
+
+Text A.1: appendix sec float
+
+
 list of floats
 **************
 
@@ -293,6 +305,7 @@ A ref to float without type 1.
 * Text 6: Section within unnumbered
 * Text 2.1: Chapter with subsec
 * Text 2.2: unnumbered sec float
+* Text A.1: appendix sec float
 
 * List of the'ore`me:
 * the'ore`me 1.1: A the'ore`me
@@ -301,7 +314,7 @@ A ref to float without type 1.
 * Index:
 * float example: Test floats.
 * float example in caption: Test floats.
-* float example in caption 2: 1. A chapter.
+* float example in caption 2: 1 A chapter.
 
 Footnotes
 *********

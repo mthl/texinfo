@@ -43,7 +43,9 @@ ul.toc {list-style: none}
 
 <a name="Top"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<tr><td valign="middle" align="left">[ &lt; ]</td>
+<td valign="middle" align="left">[<a href="#chapter" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[<a href="#list-of-floats" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
@@ -99,16 +101,20 @@ A footnote 2.
 </p></dd>
 <dt><a href="#unnumbered-sec-float">Text 2.2</a></dt><dd><p>unnumbered sec float
 </p></dd>
+<dt><a href="#appendix-sec-float">Text A.1</a></dt><dd><p>appendix sec float
+</p></dd>
 </dl>
 
 <p>After the listoffloats.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#chapter">1. A chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#chapter">1 A chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top"><a href="#Unnumbered">Unnumbered</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Chapter-with-unnumbsubsec">2. Chapter with unnumbsubsec</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Chapter-with-unnumbsubsec">2 Chapter with unnumbsubsec</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Appendix-for-float">Appendix A Appendix for float</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top"><a href="#list-of-floats">list of floats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -239,11 +245,10 @@ A footnote.
 <hr size="6">
 <a name="chapter"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#section" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#section" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Unnumbered" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -255,7 +260,7 @@ A footnote.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="A-chapter"></a>
-<h1 class="chapter">1. A chapter</h1>
+<h1 class="chapter">1 A chapter</h1>
 
 <div class="float"><a name="text-in-chapter"></a>
 <p>Text in chapter
@@ -339,11 +344,10 @@ A footnote 2.
 <hr>
 <a name="section"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#chapter" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Unnumbered" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#chapter" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#chapter" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#chapter" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#chapter" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Unnumbered" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Unnumbered" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -366,11 +370,10 @@ A footnote 2.
 <hr>
 <a name="Unnumbered"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#section" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Section-within-unnumbered" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#chapter" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#chapter" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#section" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Section-within-unnumbered" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Chapter-with-unnumbsubsec" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -407,11 +410,10 @@ A footnote 2.
 <hr>
 <a name="Section-within-unnumbered"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Unnumbered" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Chapter-with-unnumbsubsec" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Unnumbered" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Unnumbered" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Unnumbered" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Unnumbered" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Chapter-with-unnumbsubsec" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Chapter-with-unnumbsubsec" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -436,12 +438,11 @@ A footnote 2.
 <hr>
 <a name="Chapter-with-unnumbsubsec"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Section-within-unnumbered" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#unnumbered-sec" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Unnumbered" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Unnumbered" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Section-within-unnumbered" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#list-of-floats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#unnumbered-sec" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Appendix-for-float" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -452,7 +453,7 @@ A footnote 2.
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Chapter-with-unnumbsubsec-1"></a>
-<h1 class="chapter">2. Chapter with unnumbsubsec</h1>
+<h1 class="chapter">2 Chapter with unnumbsubsec</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#unnumbered-sec">unnumbered sec</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -468,12 +469,11 @@ A footnote 2.
 <hr>
 <a name="unnumbered-sec"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Chapter-with-unnumbsubsec" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#list-of-floats" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Chapter-with-unnumbsubsec" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Chapter-with-unnumbsubsec" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Chapter-with-unnumbsubsec" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Chapter-with-unnumbsubsec" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#list-of-floats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Appendix-for-float" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Appendix-for-float" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -502,13 +502,39 @@ A footnote 2.
 </strong>
 </p>
 <hr>
+<a name="Appendix-for-float"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Chapter-with-unnumbsubsec" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#unnumbered-sec" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#list-of-floats" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#list-of-floats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="#list-of-floats" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Appendix-for-float-1"></a>
+<h1 class="appendix">Appendix A Appendix for float</h1>
+
+<div class="float"><a name="appendix-sec-float"></a>
+<p>Appendix
+
+
+</p></div><p><strong>Text A.1: appendix sec float
+</strong>
+</p>
+<hr>
 <a name="list-of-floats"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#unnumbered-sec" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[ &gt; ]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Chapter-with-unnumbsubsec" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Appendix-for-float" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Appendix-for-float" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[ &gt; ]</td>
 <td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -584,6 +610,8 @@ A footnote 2.
 </p></dd>
 <dt><a href="#unnumbered-sec-float">Text 2.2</a></dt><dd><p>unnumbered sec float
 </p></dd>
+<dt><a href="#appendix-sec-float">Text A.1</a></dt><dd><p>appendix sec float
+</p></dd>
 </dl>
 <dl class="listoffloats">
 <dt><a href="#theoreme">th&eacute;or&egrave;me 1.1</a></dt><dd><p>A th&eacute;or&egrave;me
@@ -594,13 +622,13 @@ A footnote 2.
  &nbsp; 
 </td></tr></table>
 <table border="0" class="index-cp">
-<tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
-<tr><td colspan="3"> <hr></td></tr>
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="list-of-floats-1_cp_letter-F">F</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-float-example">float example</a></td><td valign="top"><a href="#Top">Test floats</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-float-example-in-caption">float example in caption</a></td><td valign="top"><a href="#Top">Test floats</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-float-example-in-caption-2">float example in caption 2</a></td><td valign="top"><a href="#chapter">1. A chapter</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
+<tr><td></td><td valign="top"><a href="#index-float-example">float example</a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Test floats</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-float-example-in-caption">float example in caption</a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Test floats</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-float-example-in-caption-2">float example in caption 2</a></td><td>&nbsp;</td><td valign="top"><a href="#chapter">1 A chapter</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#list-of-floats-1_cp_letter-F" class="summary-letter"><b>F</b></a>
  &nbsp; 
@@ -644,28 +672,28 @@ A footnote 2.
     <th> From 1.2.3 go to</th>
   </tr>
   <tr>
-    <td align="center"> [ &lt; ] </td>
-    <td align="center">Back</td>
-    <td>Previous section in reading order</td>
-    <td>1.2.2</td>
-  </tr>
-  <tr>
-    <td align="center"> [ &gt; ] </td>
-    <td align="center">Forward</td>
-    <td>Next section in reading order</td>
-    <td>1.2.4</td>
-  </tr>
-  <tr>
     <td align="center"> [ &lt;&lt; ] </td>
     <td align="center">FastBack</td>
     <td>Beginning of this chapter or previous chapter</td>
     <td>1</td>
   </tr>
   <tr>
+    <td align="center"> [ &lt; ] </td>
+    <td align="center">Back</td>
+    <td>Previous section in reading order</td>
+    <td>1.2.2</td>
+  </tr>
+  <tr>
     <td align="center"> [ Up ] </td>
     <td align="center">Up</td>
     <td>Up section</td>
     <td>1.2</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &gt; ] </td>
+    <td align="center">Forward</td>
+    <td>Next section in reading order</td>
+    <td>1.2.4</td>
   </tr>
   <tr>
     <td align="center"> [ &gt;&gt; ] </td>

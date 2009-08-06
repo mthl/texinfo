@@ -82,7 +82,7 @@ it.)  Under <small>VMS</small>, the file name starts with
 correspond to anything in the source repository, and is
 not in the list of files for <small>CVS</small> to ignore (see the
 description of the &lsquo;<samp>-I</samp>&rsquo; option, and
-see section [cvs: Ignoring files via cvsignore#cvsignore Ignoring files via cvsignore]).
+see [cvs: Ignoring files via cvsignore#cvsignore cvsignore]).
 </p></dd>
 </dl>
 

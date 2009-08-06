@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 4.1 Printing Indices and Menus</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 4.1 Printing Indices and Menus">
+<meta name="keywords" content="GNU Texinfo 4.2: 4.1 Printing Indices and Menus">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Ending-a-File.html#Ending-a-File" rel="up" title="4 Ending a Texinfo File">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Ending-a-File.html#Ending-a-File" rel="previous" title="4 Ending a Texinfo File">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Printing-Indices-_0026-Menus"></a>
+<div class="node">
+<p>
+Next: <a href="Contents.html#Contents" accesskey="n" rel="next">Contents</a>, Up: <a href="Ending-a-File.html#Ending-a-File" accesskey="u" rel="up">Ending a File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Printing-Indices-and-Menus"></a>
+<h2 class="section">4.1 Printing Indices and Menus</h2>
+<a name="index-printindex"></a>
+<a name="index-Printing-an-index"></a>
+<a name="index-Indices_002c-printing-and-menus"></a>
+<a name="index-Generating-menus-with-indices"></a>
+<a name="index-Menus-generated-with-indices"></a>
+
+<p>To print an index means to include it as part of a manual or Info file.
+This does not happen automatically just because you use <code>@cindex</code>
+or other index-entry generating commands in the Texinfo file; those just
+cause the raw data for the index to be accumulated.  To generate an
+index, you must include the <code>@printindex</code> command at the place in
+the document where you want the index to appear.  Also, as part of the
+process of creating a printed manual, you must run a program called
+<code>texindex</code> (see <a href="Hardcopy.html#Hardcopy">Hardcopy</a>) to sort the raw data to produce a
+sorted index file.  The sorted index file is what is actually used to
+print the index.
+</p>
+<p>Texinfo offers six separate types of predefined index, each with a
+two-letter abbreviation, as illustrated in the following table.
+However, you may merge indices (see <a href="Combining-Indices.html#Combining-Indices">Combining Indices</a>) or define
+your own indices (see <a href="New-Indices.html#New-Indices">New Indices</a>).
+</p>
+<p>Here are the predefined indices, their abbreviations, and the
+corresponding index entry commands:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>cp</samp>&rsquo;</dt>
+<dd><p>concept index (<code>@cindex</code>)
+</p></dd>
+<dt>&lsquo;<samp>fn</samp>&rsquo;</dt>
+<dd><p>function index (<code>@findex</code>)
+</p></dd>
+<dt>&lsquo;<samp>vr</samp>&rsquo;</dt>
+<dd><p>variable index (<code>@index</code>)
+</p></dd>
+<dt>&lsquo;<samp>ky</samp>&rsquo;</dt>
+<dd><p>key index (<code>@kindex</code>)
+</p></dd>
+<dt>&lsquo;<samp>pg</samp>&rsquo;</dt>
+<dd><p>program index (<code>@pindex</code>)
+</p></dd>
+<dt>&lsquo;<samp>tp</samp>&rsquo;</dt>
+<dd><p>data type index (<code>@tindex</code>)
+</p></dd>
+</dl>
+
+<p>The <code>@printindex</code> command takes a two-letter index abbreviation,
+reads the corresponding sorted index file and formats it appropriately
+into an index.
+</p>
+<p>The <code>@printindex</code> command does not generate a chapter heading for
+the index.  Consequently, you should precede the <code>@printindex</code>
+command with a suitable section or chapter command (usually
+<code>@appendix</code> or <code>@unnumbered</code>) to supply the chapter heading
+and put the index into the table of contents.  Precede the
+<code>@unnumbered</code> command with an <code>@node</code> line.
+</p>
+<p>For example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">@node Variable Index
+@unnumbered Variable Index
+
+@printindex vr
+</pre><pre class="smallexample">
+</pre><pre class="smallexample">@node Concept Index
+@unnumbered Concept Index
+
+@printindex cp
+</pre></td></tr></table>
+
+
+<p>We recommend placing the concept index last, since that makes it easiest
+to find.  We also recommend having a single index whenever possible,
+since then readers have only one place to look (see <a href="Combining-Indices.html#Combining-Indices">Combining Indices</a>).
+</p>
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="Contents.html#Contents" accesskey="n" rel="next">Contents</a>, Up: <a href="Ending-a-File.html#Ending-a-File" accesskey="u" rel="up">Ending a File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

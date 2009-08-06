@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 2.1 The Usual GNU Emacs Editing Commands</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 2.1 The Usual GNU Emacs Editing Commands">
+<meta name="keywords" content="GNU Texinfo 4.2: 2.1 The Usual GNU Emacs Editing Commands">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Texinfo-Mode.html#Texinfo-Mode" rel="up" title="2 Using Texinfo Mode">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Texinfo-Mode.html#Texinfo-Mode" rel="previous" title="2 Using Texinfo Mode">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Emacs-Editing"></a>
+<div class="node">
+<p>
+Next: <a href="Inserting.html#Inserting" accesskey="n" rel="next">Inserting</a>, Previous: <a href="Texinfo-Mode.html#Texinfo-Mode-Overview" accesskey="p" rel="previous">Texinfo Mode Overview</a>, Up: <a href="Texinfo-Mode.html#Texinfo-Mode" accesskey="u" rel="up">Texinfo Mode</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-Usual-GNU-Emacs-Editing-Commands"></a>
+<h2 class="section">2.1 The Usual GNU Emacs Editing Commands</h2>
+
+<p>In most cases, the usual Text mode commands work the same in Texinfo
+mode as they do in Text mode.  Texinfo mode adds new editing commands
+and tools to GNU Emacs&rsquo; general purpose editing features.  The major
+difference concerns filling.  In Texinfo mode, the paragraph
+separation variable and syntax table are redefined so that Texinfo
+commands that should be on lines of their own are not inadvertently
+included in paragraphs.  Thus, the <kbd>M-q</kbd> (<code>fill-paragraph</code>)
+command will refill a paragraph but not mix an indexing command on a
+line adjacent to it into the paragraph.
+</p>
+<p>In addition, Texinfo mode sets the <code>page-delimiter</code> variable to
+the value of <code>texinfo-chapter-level-regexp</code>; by default, this is
+a regular expression matching the commands for chapters and their
+equivalents, such as appendices.  With this value for the page
+delimiter, you can jump from chapter title to chapter title with the
+<kbd>C-x ]</kbd> (<code>forward-page</code>) and <kbd>C-x [</kbd>
+(<code>backward-page</code>) commands and narrow to a chapter with the
+<kbd>C-x p</kbd> (<code>narrow-to-page</code>) command.  (See <a href="../emacs/Pages.html#Pages">(emacs)Pages</a> section &lsquo;Pages&rsquo; in <cite>The GNU Emacs Manual</cite>, for details about the page commands.)
+</p>
+<p>You may name a Texinfo file however you wish, but the convention is to
+end a Texinfo file name with one of the extensions
+&lsquo;<tt>.texinfo</tt>&rsquo;, &lsquo;<tt>.texi</tt>&rsquo;, &lsquo;<tt>.txi</tt>&rsquo;, or &lsquo;<tt>.tex</tt>&rsquo;.  A longer
+extension is preferred, since it is explicit, but a shorter extension
+may be necessary for operating systems that limit the length of file
+names.  GNU Emacs automatically enters Texinfo mode when you visit a
+file with a &lsquo;<tt>.texinfo</tt>&rsquo;, &lsquo;<tt>.texi</tt>&rsquo; or &lsquo;<tt>.txi</tt>&rsquo;
+extension.  Also, Emacs switches to Texinfo mode
+when you visit a
+file that has &lsquo;<samp>-*-texinfo-*-</samp>&rsquo; in its first line.  If ever you are
+in another mode and wish to switch to Texinfo mode, type <code>M-x
+texinfo-mode</code>.
+</p>
+<p>Like all other Emacs features, you can customize or enhance Texinfo
+mode as you wish.  In particular, the keybindings are very easy to
+change.  The keybindings described here are the default or standard
+ones.
+</p>
+<hr>
+<div class="node">
+<p>
+Next: <a href="Inserting.html#Inserting" accesskey="n" rel="next">Inserting</a>, Previous: <a href="Texinfo-Mode.html#Texinfo-Mode-Overview" accesskey="p" rel="previous">Texinfo Mode Overview</a>, Up: <a href="Texinfo-Mode.html#Texinfo-Mode" accesskey="u" rel="up">Texinfo Mode</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

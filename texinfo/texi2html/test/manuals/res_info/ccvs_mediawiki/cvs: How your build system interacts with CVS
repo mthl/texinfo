@@ -41,7 +41,7 @@ of functionality is sometimes called <em>bill of
 materials</em> or something similar.  The best way to do
 this with <small>CVS</small> is to use the <code>tag</code> command to
 record which versions went into a given build
-(see section [cvs: Revisions#Tags Tags&ndash;Symbolic revisions]).
+(see [cvs: Revisions#Tags Tags]).
 </p>
 <p>Using <small>CVS</small> in the most straightforward manner
 possible, each developer will have a copy of the entire

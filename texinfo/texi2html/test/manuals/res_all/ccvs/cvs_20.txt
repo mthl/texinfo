@@ -1,5 +1,5 @@
-Annexe E Compatibility between CVS Versions
-*******************************************
+Appendix E Compatibility between CVS Versions
+*********************************************
 
 The repository format is compatible going back to
 CVS 1.3.  But see Watches Compatibility, if

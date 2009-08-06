@@ -37,7 +37,7 @@ second in copying @ subheading
 *******
 
 * Index:
-* heading in footnote: 1. A chapter.
+* heading in footnote: 1 A chapter.
 * index entry after heading in top: Test headings.
 
 

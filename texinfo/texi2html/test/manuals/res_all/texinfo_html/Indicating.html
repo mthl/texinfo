@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 9.1 Indicating Definitions, Commands, etc.</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 9.1 Indicating Definitions, Commands, etc.">
+<meta name="keywords" content="GNU Texinfo 4.2: 9.1 Indicating Definitions, Commands, etc.">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Marking-Text.html#Marking-Text" rel="up" title="9 Marking Words and Phrases">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Marking-Text.html#Marking-Text" rel="previous" title="9 Marking Words and Phrases">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Indicating"></a>
+<div class="node">
+<p>
+Next: <a href="Emphasis.html#Emphasis" accesskey="n" rel="next">Emphasis</a>, Previous: <a href="Marking-Text.html#Marking-Text" accesskey="p" rel="previous">Marking Text</a>, Up: <a href="Marking-Text.html#Marking-Text" accesskey="u" rel="up">Marking Text</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Indicating-Definitions_002c-Commands_002c-etc_002e"></a>
+<h2 class="section">9.1 Indicating Definitions, Commands, etc.</h2>
+<a name="index-Highlighting-text"></a>
+<a name="index-Indicating-commands_002c-definitions_002c-etc_002e"></a>
+
+<p>Texinfo has commands for indicating just what kind of object a piece of
+text refers to.  For example, metasyntactic variables are marked by
+<code>@var</code>, and code by <code>@code</code>.  Since the pieces of text are
+labelled by commands that tell what kind of object they are, it is easy
+to change the way the Texinfo formatters prepare such text.  (Texinfo is
+an <em>intentional</em> formatting language rather than a <em>typesetting</em>
+formatting language.)
+</p>
+<p>For example, in a printed manual,
+code is usually illustrated in a typewriter font;
+<code>@code</code> tells TeX to typeset this text in this font.  But it
+would be easy to change the way TeX highlights code to use another
+font, and this change would not affect how keystroke examples are
+highlighted.  If straight typesetting commands were used in the body
+of the file and you wanted to make a change, you would need to check
+every single occurrence to make sure that you were changing code and
+not something else that should not be changed.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Useful-Highlighting" accesskey="1">&bull; Useful Highlighting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Highlighting provides useful information.
+</td></tr>
+<tr><td align="left" valign="top"><a href="code.html#code" accesskey="2">&bull; code</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        Indicating program code.
+</td></tr>
+<tr><td align="left" valign="top"><a href="kbd.html#kbd" accesskey="3">&bull; kbd</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                         Showing keyboard input.
+</td></tr>
+<tr><td align="left" valign="top"><a href="key.html#key" accesskey="4">&bull; key</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                         Specifying keys.
+</td></tr>
+<tr><td align="left" valign="top"><a href="samp.html#samp" accesskey="5">&bull; samp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        A literal sequence of characters.
+</td></tr>
+<tr><td align="left" valign="top"><a href="verb.html#verb" accesskey="6">&bull; verb</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        A verbatim sequence of characters.
+</td></tr>
+<tr><td align="left" valign="top"><a href="var.html#var" accesskey="7">&bull; var</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                         Indicating metasyntactic variables.
+</td></tr>
+<tr><td align="left" valign="top"><a href="env.html#env" accesskey="8">&bull; env</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                         Indicating environment variables.
+</td></tr>
+<tr><td align="left" valign="top"><a href="file.html#file" accesskey="9">&bull; file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        Indicating file names.
+</td></tr>
+<tr><td align="left" valign="top"><a href="command.html#command">&bull; command</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     Indicating command names.
+</td></tr>
+<tr><td align="left" valign="top"><a href="option.html#option">&bull; option</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      Indicating option names.
+</td></tr>
+<tr><td align="left" valign="top"><a href="dfn.html#dfn">&bull; dfn</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                         Specifying definitions.
+</td></tr>
+<tr><td align="left" valign="top"><a href="cite.html#cite">&bull; cite</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        Referring to books not in the  Info system.
+</td></tr>
+<tr><td align="left" valign="top"><a href="acronym.html#acronym">&bull; acronym</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     Indicating acronyms.
+</td></tr>
+<tr><td align="left" valign="top"><a href="url.html#url">&bull; url</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                         Indicating a World Wide Web reference.
+</td></tr>
+<tr><td align="left" valign="top"><a href="email.html#email">&bull; email</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       Indicating an electronic mail address.
+</td></tr>
+</table>
+
+
+<a name="Useful-Highlighting"></a>
+
+<p>The highlighting commands can be used to extract useful information
+from the file, such as lists of functions or file names.  It is
+possible, for example, to write a program in Emacs Lisp (or a keyboard
+macro) to insert an index entry after every paragraph that contains
+words or phrases marked by a specified command.  You could do this to
+construct an index of functions if you had not already made the
+entries.
+</p>
+<p>The commands serve a variety of purposes:
+</p>
+<dl compact="compact">
+<dt><code>@code{<var>sample-code</var>}</code></dt>
+<dd><p>Indicate text that is a literal example of a piece of a program.
+</p>
+</dd>
+<dt><code>@kbd{<var>keyboard-characters</var>}</code></dt>
+<dd><p>Indicate keyboard input.
+</p>
+</dd>
+<dt><code>@key{<var>key-name</var>}</code></dt>
+<dd><p>Indicate the conventional name for a key on a keyboard.
+</p>
+</dd>
+<dt><code>@samp{<var>text</var>}</code></dt>
+<dd><p>Indicate text that is a literal example of a sequence of characters.
+</p>
+</dd>
+<dt><code>@var{<var>metasyntactic-variable</var>}</code></dt>
+<dd><p>Indicate a metasyntactic variable.
+</p>
+</dd>
+<dt><code>@env{<var>environment-variable</var>}</code></dt>
+<dd><p>Indicate an environment variable.
+</p>
+</dd>
+<dt><code>@file{<var>file-name</var>}</code></dt>
+<dd><p>Indicate the name of a file.
+</p>
+</dd>
+<dt><code>@command{<var>command-name</var>}</code></dt>
+<dd><p>Indicate the name of a command.
+</p>
+</dd>
+<dt><code>@option{<var>option</var>}</code></dt>
+<dd><p>Indicate a command-line option.
+</p>
+</dd>
+<dt><code>@dfn{<var>term</var>}</code></dt>
+<dd><p>Indicate the introductory or defining use of a term.
+</p>
+</dd>
+<dt><code>@cite{<var>reference</var>}</code></dt>
+<dd><p>Indicate the name of a book.
+</p>
+</dd>
+<dt><code>@acronym{<var>acronym</var>}</code></dt>
+<dd><p>Indicate an acronym.
+</p>
+</dd>
+<dt><code>@url{<var>uniform-resource-locator</var>}</code></dt>
+<dd><p>Indicate a uniform resource locator for the World Wide Web.
+</p>
+</dd>
+<dt><code>@email{<var>email-address</var>[, <var>displayed-text</var>]}</code></dt>
+<dd><p>Indicate an electronic mail address.
+</p>
+</dd>
+</dl>
+
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="Emphasis.html#Emphasis" accesskey="n" rel="next">Emphasis</a>, Previous: <a href="Marking-Text.html#Marking-Text" accesskey="p" rel="previous">Marking Text</a>, Up: <a href="Marking-Text.html#Marking-Text" accesskey="u" rel="up">Marking Text</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

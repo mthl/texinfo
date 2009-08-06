@@ -1,5 +1,5 @@
-Annexe A Copying and floats
-***************************
+Appendix A Copying and floats
+*****************************
 
 In the appendix, we print the references and the copying once more
 and the list of coyright notices (listoffloats).
@@ -37,6 +37,6 @@ listoffloats
 printindex
 ----------
 * Index:
-* listofloats: A. Copying and floats.
+* listofloats: Appendix A Copying and floats.
 * Top: Top.
 

@@ -103,7 +103,7 @@ if there is sufficient <small>CVS</small> traffic on
 <code>comp.software.config-mgmt</code>.
 </p>
 <p>You can also subscribe to the <code>bug-cvs</code> mailing list,
-described in more detail in [cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual].  To subscribe
+described in more detail in [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS].  To subscribe
 send mail to <code>bug-cvs-request@gnu.org</code>.
 </p>
 <hr>
@@ -158,7 +158,7 @@ approach is to use <code>make</code> for building, and use
 some automated tool for generating the dependencies which
 <code>make</code> uses.
 </p>
-<p>See [cvs: How your build system interacts with CVS#Builds How your build system interacts with CVS], for more information on doing builds
+<p>See [cvs: How your build system interacts with CVS#Builds Builds], for more information on doing builds
 in conjunction with <small>CVS</small>.
 </p>
 </dd>
@@ -212,7 +212,7 @@ each one (is it fixed?  in what release?  has the bug
 submitter agreed that it is fixed?).  For interfacing
 <small>CVS</small> to an external bug-tracking system, see the
 &lsquo;<tt>rcsinfo</tt>&rsquo; and &lsquo;<tt>verifymsg</tt>&rsquo; files
-(see section [cvs: Reference manual for Administrative files#Administrative-files Reference manual for Administrative files]).
+(see [cvs: Reference manual for Administrative files#Administrative-files Administrative files]).
 </p>
 <p>Another aspect of change control is keeping track of
 the fact that changes to several files were in fact
@@ -279,7 +279,7 @@ Previous: [[#What-is-CVS-not_003f|What is CVS not?]], Up: [[#Overview|Overview]]
 <p>As a way of introducing <small>CVS</small>, we&rsquo;ll go through a
 typical work-session using <small>CVS</small>.  The first thing
 to understand is that <small>CVS</small> stores all files in a
-centralized <em>repository</em> (see section [cvs: The Repository#Repository The Repository]); this
+centralized <em>repository</em> (see [cvs: The Repository#Repository Repository]); this
 section assumes that a repository is set up.
 </p>
 <p>Suppose you are working on a simple compiler.  The source
@@ -328,7 +328,7 @@ any of the files in it.
 <p>You start your favorite editor, hack away at &lsquo;<tt>backend.c</tt>&rsquo;, and a couple
 of hours later you have added an optimization pass to the compiler.
 A note to <small>RCS</small> and <small>SCCS</small> users: There is no need to lock the files that
-you want to edit.  See section [cvs: Multiple developers#Multiple-developers Multiple developers], for an explanation.
+you want to edit.  See [cvs: Multiple developers#Multiple-developers Multiple developers], for an explanation.
 </p>
 <hr>
 <div id="Committing-your-changes"></div>
@@ -416,7 +416,7 @@ tc.  One acceptable way to do that is of course
 $ rm -r tc
 </nowiki></pre></td></tr></table>
 
-<p>but a better way is to use the <code>release</code> command (see section [cvs: Guide to CVS commands#release release&mdash;Indicate that a Module is no longer in use]):
+<p>but a better way is to use the <code>release</code> command (see [cvs: Guide to CVS commands#release release]):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
 $ cvs release -d tc
@@ -429,7 +429,7 @@ Are you sure you want to release (and delete) directory `tc': n
 
 <p>The <code>release</code> command checks that all your modifications have been
 committed.  If history logging is enabled it also makes a note in the
-history file.  See section [cvs: Reference manual for Administrative files#history-file The history file].
+history file.  See [cvs: Reference manual for Administrative files#history-file history file].
 </p>
 <p>When you use the &lsquo;<samp>-d</samp>&rsquo; flag with <code>release</code>, it
 also removes your working copy.
@@ -437,9 +437,9 @@ also removes your working copy.
 <p>In the example above, the <code>release</code> command wrote a couple of lines
 of output.  &lsquo;<samp>? tc</samp>&rsquo; means that the file &lsquo;<tt>tc</tt>&rsquo; is unknown to <small>CVS</small>.
 That is nothing to worry about: &lsquo;<tt>tc</tt>&rsquo; is the executable compiler,
-and it should not be stored in the repository.  See section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore],
+and it should not be stored in the repository.  See [cvs: Reference manual for Administrative files#cvsignore cvsignore],
 for information about how to make that warning go away.
-See section [cvs: Guide to CVS commands#release-output release output], for a complete explanation of
+See [cvs: Guide to CVS commands#release-output release output], for a complete explanation of
 all possible output from <code>release</code>.
 </p>
 <p>&lsquo;<samp>M driver.c</samp>&rsquo; is more serious.  It means that the

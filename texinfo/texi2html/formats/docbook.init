@@ -456,7 +456,7 @@ sub docbook_heading($$$$$)
         if ($element->{'number'})
         {
             my $label_nr = $element->{'number'};
-            $label_nr =~ s/\.$//;
+            #$label_nr =~ s/\.$//;
             $label = $label_nr;
         }
         else

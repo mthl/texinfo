@@ -2045,7 +2045,7 @@ Table of Contents
 *****************
 
 Top section
-1. chapter
+1 chapter
  1.1 A section
   1.1.1 subsection
    1.1.1.1 subsubsection "simple-double-three--four---"
@@ -2055,7 +2055,7 @@ Short Table of Contents
 ***********************
 
 Top section
-1. chapter
+1 chapter
 chapter 2
 
 Footnotes

@@ -36,7 +36,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <link href="mini_ker_U.4.html#Concepts-index" rel="index" title="Concepts index">
 <link href="mini_ker_top.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
-<link href="mini_ker_3.html#Advanced-programming" rel="up" title="3. Advanced Miniker programming">
+<link href="mini_ker_3.html#Advanced-programming" rel="up" title="3 Advanced Miniker programming">
 <link href="mini_ker_C.1.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
 <link href="mini_ker_3.7.html#Parameters" rel="previous" title="3.7 Parameters">
 <style type="text/css">
@@ -67,7 +67,7 @@ ul.toc {list-style: none}
 
 <a name="Observations-and-data"></a>
 <ul class="toc"><li><a href="mini_ker_top.html#Top">Miniker 102 manual</a> </li>
-<li><ul class="toc"><li><a href="mini_ker_3.html#Advanced-programming">3. Advanced Miniker programming</a> </li>
+<li><ul class="toc"><li><a href="mini_ker_3.html#Advanced-programming">3 Advanced Miniker programming</a> </li>
 </ul></li>
 </ul>
 <div class="node">
@@ -86,7 +86,7 @@ The observations are functions of the model variables. They don&rsquo;t have
 any action on the model result, but they may (in theory) be observed 
 and measured. The natural use of these observations is to be compared
 with data that correspond with the values from real measurements.
-They are used in the Kalman filter (see section <a href="mini_ker_4.3.html#Kalman-filter">Kalman filter</a>).
+They are used in the Kalman filter (see <a href="mini_ker_4.3.html#Kalman-filter">Kalman filter</a>).
 </p>
 <p>The (model) observation vector is noted       &#x03C9;
 and the observation function is noted       h:
@@ -156,7 +156,7 @@ coordinate of the observation vector.
 </p>
 <p>This feature is turned on by setting the logical variable <code>zdata</code>
 to &lsquo;<samp>.true.</samp>&rsquo;, and the <code>zgetobs</code> flag is typically set in the
-&lsquo;<tt>zsteer</tt>&rsquo; sequence (see section <a href="mini_ker_2.4.html#End-of-time-step">Executing code at the end of each time step</a>).
+&lsquo;<tt>zsteer</tt>&rsquo; sequence (see <a href="mini_ker_2.4.html#End-of-time-step">Executing code at the end of each time step</a>).
 Every instant data are available (<code>zgetobs</code> is true) the observations
 are written to the file &lsquo;<tt>data.data</tt>&rsquo;. With the Kalman filter more 
 informations are output to the &lsquo;<tt>data.data</tt>&rsquo; file, 

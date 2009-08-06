@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 3.4 Title and Copyright Pages</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 3.4 Title and Copyright Pages">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.4 Title and Copyright Pages">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Beginning-a-File.html#Beginning-a-File" rel="up" title="3 Beginning a Texinfo File">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="insertcopying.html#insertcopying" rel="previous" title="3.3.2 @insertcopying: Include permissions text">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Titlepage-_0026-Copyright-Page"></a>
+<div class="node">
+<p>
+Next: <a href="The-Top-Node.html#The-Top-Node" accesskey="n" rel="next">The Top Node</a>, Previous: <a href="Document-Permissions.html#Document-Permissions" accesskey="p" rel="previous">Document Permissions</a>, Up: <a href="Beginning-a-File.html#Beginning-a-File" accesskey="u" rel="up">Beginning a File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Title-and-Copyright-Pages"></a>
+<h2 class="section">3.4 Title and Copyright Pages</h2>
+
+<p>In hard copy output, the manual&rsquo;s name and author are usually printed on
+a title page.  Copyright information is usually printed on the back of
+the title page.
+</p>
+<p>The title and copyright pages appear in the printed manual, but not in
+the Info file.  Because of this, it is possible to use several slightly
+obscure TeX typesetting commands that cannot be used in an Info file.
+In addition, this part of the beginning of a Texinfo file contains the
+text of the copying permissions that appears in the printed manual.
+</p>
+<a name="index-Title-page_002c-for-plain-text"></a>
+<a name="index-Copyright-page_002c-for-plain-text"></a>
+<p>You may wish to include titlepage-like information for plain text
+output.  Simply place any such leading material between
+<code>@ifplaintext</code> and <code>@end ifplaintext</code>; <code>makeinfo</code>
+includes this when writing plain text (&lsquo;<samp>--no-headers</samp>&rsquo;), along with
+an <code>@insertcopying</code>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="titlepage.html#titlepage" accesskey="1">&bull; titlepage</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   Create a title for the printed document.
+</td></tr>
+<tr><td align="left" valign="top"><a href="titlefont-center-sp.html#titlefont-center-sp" accesskey="2">&bull; titlefont center sp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         The <code>@titlefont</code>, <code>@center</code>,
+                                  and <code>@sp</code> commands.
+</td></tr>
+<tr><td align="left" valign="top"><a href="title-subtitle-author.html#title-subtitle-author" accesskey="3">&bull; title subtitle author</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       The <code>@title</code>, <code>@subtitle</code>,
+                                  and <code>@author</code> commands.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Copyright.html#Copyright" accesskey="4">&bull; Copyright</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   How to write the copyright notice and
+                                  include copying permissions.
+</td></tr>
+<tr><td align="left" valign="top"><a href="end-titlepage.html#end-titlepage" accesskey="5">&bull; end titlepage</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Turn on page headings after the title and
+                                  copyright pages.
+</td></tr>
+<tr><td align="left" valign="top"><a href="headings-on-off.html#headings-on-off" accesskey="6">&bull; headings on off</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             An option for turning headings on and off
+                                  and double or single sided printing.
+</td></tr>
+</table>
+
+
+<p>
+
+
+</p>
+</body>
+</html>

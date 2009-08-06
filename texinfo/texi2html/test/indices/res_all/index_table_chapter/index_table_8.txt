@@ -3,10 +3,10 @@
 * node::       node 
 
 * Index:
-* !oncept: 3. Indices refs.
-* ,oncept: 3. Indices refs.
-* /oncept: 3. Indices refs.
-* ;oncept: 3. Indices refs.
-* ?oncept: 3. Indices refs.
-* an second index entry in node: 1. first node chapter, with ftable and vtable.
-* aoncept: 3. Indices refs.
+* !oncept: 3 Indices refs.
+* ,oncept: 3 Indices refs.
+* /oncept: 3 Indices refs.
+* ;oncept: 3 Indices refs.
+* ?oncept: 3 Indices refs.
+* an second index entry in node: 1 first node chapter, with ftable and vtable.
+* aoncept: 3 Indices refs.

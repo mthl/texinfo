@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 8.4 Naming a `Top' Node</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 8.4 Naming a `Top' Node">
+<meta name="keywords" content="GNU Texinfo 4.2: 8.4 Naming a `Top' Node">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Cross-References.html#Cross-References" rel="up" title="8 Cross References">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Four-and-Five-Arguments.html#Four-and-Five-Arguments" rel="previous" title="8.3.4 @xref with Four and Five Arguments">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Top-Node-Naming"></a>
+<div class="node">
+<p>
+Next: <a href="ref.html#ref" accesskey="n" rel="next">ref</a>, Previous: <a href="xref.html#xref" accesskey="p" rel="previous">xref</a>, Up: <a href="Cross-References.html#Cross-References" accesskey="u" rel="up">Cross References</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Naming-a-_0060Top_0027-Node"></a>
+<h2 class="section">8.4 Naming a &lsquo;Top&rsquo; Node</h2>
+<a name="index-Naming-a-_0060Top_0027-Node-in-references"></a>
+<a name="index-Top-node-naming-for-references"></a>
+
+<p>In a cross reference, you must always name a node.  This means that in
+order to refer to a whole manual, you must identify the &lsquo;Top&rsquo; node by
+writing it as the first argument to the <code>@xref</code> command.  (This
+is different from the way you write a menu entry; see <a href="Other-Info-Files.html#Other-Info-Files">Referring to Other Info Files</a>.)  At the same time, to
+provide a meaningful section topic or title in the printed cross
+reference (instead of the word &lsquo;Top&rsquo;), you must write an appropriate
+entry for the third argument to the <code>@xref</code> command.
+</p>
+
+<p>Thus, to make a cross reference to <cite>The GNU Make Manual</cite>,
+write:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@xref{Top, , Overview, make, The GNU Make Manual}.
+</pre></td></tr></table>
+
+<p>which produces
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">*Note Overview: (make)Top.
+</pre></td></tr></table>
+
+<p>and
+</p>
+<blockquote><p>See section &ldquo;Overview&rdquo; in <i>The GNU Make Manual</i>.
+</p></blockquote>
+
+<p>In this example, &lsquo;<samp>Top</samp>&rsquo; is the name of the first node, and
+&lsquo;<samp>Overview</samp>&rsquo; is the name of the first section of the manual.
+</p><p>
+
+
+</p>
+</body>
+</html>

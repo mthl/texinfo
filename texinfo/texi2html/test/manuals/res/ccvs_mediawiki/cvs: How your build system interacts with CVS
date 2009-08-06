@@ -1,10 +1,9 @@
 <div id="Builds"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Tracking third-party sources#Multiple-vendor-branches  &lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Special Files#Special-Files  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Tracking third-party sources#Multiple-vendor-branches  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Special Files#Special-Files  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: Special Files#Special-Files  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

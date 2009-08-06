@@ -37,9 +37,9 @@ Table of Contents
 *****************
 
 
-1. Chapter
+1 Chapter
  1.1 Chapter in included file
   1.1.1 Section
    1.1.1.1 Subsection
-2. Second chapter
+2 Second chapter
 

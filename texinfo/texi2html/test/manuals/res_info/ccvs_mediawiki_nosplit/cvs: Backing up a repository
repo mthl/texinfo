@@ -25,7 +25,7 @@ server, or similar mechanisms.  The details would
 depend on your operating system and how you have
 <small>CVS</small> set up.  To lock <small>CVS</small>, you would create
 &lsquo;<tt>#cvs.rfl</tt>&rsquo; locks in each repository directory.
-See [cvs: Several developers simultaneously attempting to run CVS#Concurrency Several developers simultaneously attempting to run CVS], for more on <small>CVS</small> locks.
+See [cvs: Several developers simultaneously attempting to run CVS#Concurrency Concurrency], for more on <small>CVS</small> locks.
 Having said all this, if you just back up without any
 of these precautions, the results are unlikely to be
 particularly dire.  Restoring from backup, the

@@ -369,13 +369,13 @@ key: @-command list
   entry: @-command list
   texi_entry: @@-command list
   element_href: texinfo_22.txt#Command-List
-  element_text: A. @-Command List
+  element_text: Appendix A @-Command List
 key: @-command syntax
   origin_href: texinfo_29.txt#index-_0040_002dcommand-syntax
   entry: @-command syntax
   texi_entry: @@-command syntax
   element_href: texinfo_29.txt#Command-Syntax
-  element_text: H. @-Command Syntax
+  element_text: Appendix H @-Command Syntax
 key: @-commands
   origin_href: texinfo_2.txt#index-_0040_002dcommands
   entry: @-commands
@@ -507,7 +507,7 @@ key: Alphabetical @-command list
   entry: Alphabetical @-command list
   texi_entry: Alphabetical @@-command list
   element_href: texinfo_22.txt#Command-List
-  element_text: A. @-Command List
+  element_text: Appendix A @-Command List
 key: Anchors
   origin_href: texinfo_7.txt#index-Anchors
   entry: Anchors
@@ -597,7 +597,7 @@ key: Beginning a Texinfo file
   entry: Beginning a Texinfo file
   texi_entry: Beginning a Texinfo file
   element_href: texinfo_4.txt#Beginning-a-File
-  element_text: 3. Beginning a Texinfo File
+  element_text: 3 Beginning a Texinfo File
 key: Beginning line of a Texinfo file
   origin_href: texinfo_4.txt#index-Beginning-line-of-a-Texinfo-file
   entry: Beginning line of a Texinfo file
@@ -675,7 +675,7 @@ key: Braces and argument syntax
   entry: Braces and argument syntax
   texi_entry: Braces and argument syntax
   element_href: texinfo_29.txt#Command-Syntax
-  element_text: H. @-Command Syntax
+  element_text: Appendix H @-Command Syntax
 key: Braces, in macro arguments
   origin_href: texinfo_19.txt#index-Braces_002c-in-macro-arguments
   entry: Braces, in macro arguments
@@ -759,7 +759,7 @@ key: Catching mistakes
   entry: Catching mistakes
   texi_entry: Catching mistakes
   element_href: texinfo_27.txt#Catching-Mistakes
-  element_text: F. Formatting Mistakes
+  element_text: Appendix F Formatting Mistakes
 key: Cedilla accent
   origin_href: texinfo_14.txt#index-Cedilla-accent
   entry: Cedilla accent
@@ -777,7 +777,7 @@ key: Chapter structuring
   entry: Chapter structuring
   texi_entry: Chapter structuring
   element_href: texinfo_6.txt#Structuring
-  element_text: 5. Chapter Structuring
+  element_text: 5 Chapter Structuring
 key: Chapters, formatting one at a time
   origin_href: texinfo_20.txt#index-Chapters_002c-formatting-one-at-a-time
   entry: Chapters, formatting one at a time
@@ -885,7 +885,7 @@ key: Command syntax
   entry: Command syntax
   texi_entry: Command syntax
   element_href: texinfo_29.txt#Command-Syntax
-  element_text: H. @-Command Syntax
+  element_text: Appendix H @-Command Syntax
 key: Commands to insert special characters
   origin_href: texinfo_14.txt#index-Commands-to-insert-special-characters
   entry: Commands to insert special characters
@@ -933,7 +933,7 @@ key: Conditionally visible text
   entry: Conditionally visible text
   texi_entry: Conditionally visible text
   element_href: texinfo_17.txt#Conditionals
-  element_text: 16. Conditionally Visible Text
+  element_text: 16 Conditionally Visible Text
 key: Conditions for copying Texinfo
   origin_href: texinfo_1.txt#index-Conditions-for-copying-Texinfo
   entry: Conditions for copying Texinfo
@@ -1029,7 +1029,7 @@ key: Correcting mistakes
   entry: Correcting mistakes
   texi_entry: Correcting mistakes
   element_href: texinfo_27.txt#Catching-Mistakes
-  element_text: F. Formatting Mistakes
+  element_text: Appendix F Formatting Mistakes
 key: Create nodes, menus automatically
   origin_href: texinfo_3.txt#index-Create-nodes_002c-menus-automatically
   entry: Create nodes, menus automatically
@@ -1077,7 +1077,7 @@ key: Cross references
   entry: Cross references
   texi_entry: Cross references
   element_href: texinfo_9.txt#Cross-References
-  element_text: 8. Cross References
+  element_text: 8 Cross References
 key: Cross references using @inforef
   origin_href: texinfo_9.txt#index-Cross-references-using-_0040inforef
   entry: Cross references using @inforef
@@ -1143,7 +1143,7 @@ key: Debugging the Texinfo structure
   entry: Debugging the Texinfo structure
   texi_entry: Debugging the Texinfo structure
   element_href: texinfo_27.txt#Catching-Mistakes
-  element_text: F. Formatting Mistakes
+  element_text: Appendix F Formatting Mistakes
 key: Debugging with Info formatting
   origin_href: texinfo_27.txt#index-Debugging-with-Info-formatting
   entry: Debugging with Info formatting
@@ -1173,7 +1173,7 @@ key: Defining new Texinfo commands
   entry: Defining new Texinfo commands
   texi_entry: Defining new Texinfo commands
   element_href: texinfo_19.txt#Defining-New-Texinfo-Commands
-  element_text: 18. Defining New Texinfo Commands
+  element_text: 18 Defining New Texinfo Commands
 key: Defining new indices
   origin_href: texinfo_13.txt#index-Defining-new-indices
   entry: Defining new indices
@@ -1185,7 +1185,7 @@ key: Definition commands
   entry: Definition commands
   texi_entry: Definition commands
   element_href: texinfo_16.txt#Definition-Commands
-  element_text: 15. Definition Commands
+  element_text: 15 Definition Commands
 key: Definition conventions
   origin_href: texinfo_16.txt#index-Definition-conventions
   entry: Definition conventions
@@ -1365,7 +1365,7 @@ key: Emacs
   entry: Emacs
   texi_entry: Emacs
   element_href: texinfo_3.txt#Texinfo-Mode
-  element_text: 2. Using Texinfo Mode
+  element_text: 2 Using Texinfo Mode
 key: Emacs shell, format, print from
   origin_href: texinfo_20.txt#index-Emacs-shell_002c-format_002c-print-from
   entry: Emacs shell, format, print from
@@ -1419,7 +1419,7 @@ key: Ending a Texinfo file
   entry: Ending a Texinfo file
   texi_entry: Ending a Texinfo file
   element_href: texinfo_5.txt#Ending-a-File
-  element_text: 4. Ending a Texinfo File
+  element_text: 4 Ending a Texinfo File
 key: Entries for an index
   origin_href: texinfo_13.txt#index-Entries-for-an-index
   entry: Entries for an index
@@ -1557,13 +1557,13 @@ key: File beginning
   entry: File beginning
   texi_entry: File beginning
   element_href: texinfo_4.txt#Beginning-a-File
-  element_text: 3. Beginning a Texinfo File
+  element_text: 3 Beginning a Texinfo File
 key: File ending
   origin_href: texinfo_5.txt#index-File-ending
   entry: File ending
   texi_entry: File ending
   element_href: texinfo_5.txt#Ending-a-File
-  element_text: 4. Ending a Texinfo File
+  element_text: 4 Ending a Texinfo File
 key: File name collision
   origin_href: texinfo_4.txt#index-File-name-collision
   entry: File name collision
@@ -1581,7 +1581,7 @@ key: Filling paragraphs
   entry: Filling paragraphs
   texi_entry: Filling paragraphs
   element_href: texinfo_28.txt#Refilling-Paragraphs
-  element_text: G. Refilling Paragraphs
+  element_text: Appendix G Refilling Paragraphs
 key: Final output
   origin_href: texinfo_20.txt#index-Final-output
   entry: Final output
@@ -1641,7 +1641,7 @@ key: Footings
   entry: Footings
   texi_entry: Footings
   element_href: texinfo_26.txt#Headings
-  element_text: E. Page Headings
+  element_text: Appendix E Page Headings
 key: Footnotes
   origin_href: texinfo_14.txt#index-Footnotes
   entry: Footnotes
@@ -1659,7 +1659,7 @@ key: Format and print hardcopy
   entry: Format and print hardcopy
   texi_entry: Format and print hardcopy
   element_href: texinfo_20.txt#Hardcopy
-  element_text: 19. Formatting and Printing Hardcopy
+  element_text: 19 Formatting and Printing Hardcopy
 key: Format and print in Texinfo mode
   origin_href: texinfo_20.txt#index-Format-and-print-in-Texinfo-mode
   entry: Format and print in Texinfo mode
@@ -1725,7 +1725,7 @@ key: Formatting headings and footings
   entry: Formatting headings and footings
   texi_entry: Formatting headings and footings
   element_href: texinfo_26.txt#Headings
-  element_text: E. Page Headings
+  element_text: Appendix E Page Headings
 key: Formatting requirements
   origin_href: texinfo_20.txt#index-Formatting-requirements
   entry: Formatting requirements
@@ -1779,7 +1779,7 @@ key: GNU Emacs
   entry: GNU Emacs
   texi_entry: GNU Emacs
   element_href: texinfo_3.txt#Texinfo-Mode
-  element_text: 2. Using Texinfo Mode
+  element_text: 2 Using Texinfo Mode
 key: GNU Emacs shell, format, print from
   origin_href: texinfo_20.txt#index-GNU-Emacs-shell_002c-format_002c-print-from
   entry: GNU Emacs shell, format, print from
@@ -1875,7 +1875,7 @@ key: Hardcopy, printing it
   entry: Hardcopy, printing it
   texi_entry: Hardcopy, printing it
   element_href: texinfo_20.txt#Hardcopy
-  element_text: 19. Formatting and Printing Hardcopy
+  element_text: 19 Formatting and Printing Hardcopy
 key: Header for Texinfo files
   origin_href: texinfo_4.txt#index-Header-for-Texinfo-files
   entry: Header for Texinfo files
@@ -1893,7 +1893,7 @@ key: Headings
   entry: Headings
   texi_entry: Headings
   element_href: texinfo_26.txt#Headings
-  element_text: E. Page Headings
+  element_text: Appendix E Page Headings
 key: Headings, page, begin to appear
   origin_href: texinfo_4.txt#index-Headings_002c-page_002c-begin-to-appear
   entry: Headings, page, begin to appear
@@ -1929,7 +1929,7 @@ key: Hints
   entry: Hints
   texi_entry: Hints
   element_href: texinfo_23.txt#Tips
-  element_text: B. Tips and Hints
+  element_text: Appendix B Tips and Hints
 key: History of Texinfo
   origin_href: texinfo_2.txt#index-History-of-Texinfo
   entry: History of Texinfo
@@ -1995,7 +1995,7 @@ key: If text conditionally visible
   entry: If text conditionally visible
   texi_entry: If text conditionally visible
   element_href: texinfo_17.txt#Conditionals
-  element_text: 16. Conditionally Visible Text
+  element_text: 16 Conditionally Visible Text
 key: Ignored before @setfilename
   origin_href: texinfo_4.txt#index-Ignored-before-_0040setfilename
   entry: Ignored before @setfilename
@@ -2043,7 +2043,7 @@ key: Include files
   entry: Include files
   texi_entry: Include files
   element_href: texinfo_25.txt#Include-Files
-  element_text: D. Include Files
+  element_text: Appendix D Include Files
 key: Include files, and section levels
   origin_href: texinfo_6.txt#index-Include-files_002c-and-section-levels
   entry: Include files, and section levels
@@ -2139,7 +2139,7 @@ key: Indices
   entry: Indices
   texi_entry: Indices
   element_href: texinfo_13.txt#Indices
-  element_text: 12. Indices
+  element_text: 12 Indices
 key: Indices, combining them
   origin_href: texinfo_13.txt#index-Indices_002c-combining-them
   entry: Indices, combining them
@@ -2163,7 +2163,7 @@ key: Indices, sorting
   entry: Indices, sorting
   texi_entry: Indices, sorting
   element_href: texinfo_20.txt#Hardcopy
-  element_text: 19. Formatting and Printing Hardcopy
+  element_text: 19 Formatting and Printing Hardcopy
 key: Indices, two letter names
   origin_href: texinfo_13.txt#index-Indices_002c-two-letter-names
   entry: Indices, two letter names
@@ -2313,7 +2313,7 @@ key: Inserting special characters and symbols
   entry: Inserting special characters and symbols
   texi_entry: Inserting special characters and symbols
   element_href: texinfo_14.txt#Insertions
-  element_text: 13. Special Insertions
+  element_text: 13 Special Insertions
 key: Installing Info in another directory
   origin_href: texinfo_21.txt#index-Installing-Info-in-another-directory
   entry: Installing Info in another directory
@@ -2331,7 +2331,7 @@ key: Internationalization
   entry: Internationalization
   texi_entry: Internationalization
   element_href: texinfo_18.txt#Internationalization
-  element_text: 17. Internationalization
+  element_text: 17 Internationalization
 key: Introduction to Texinfo
   origin_href: texinfo_2.txt#index-Introduction-to-Texinfo
   entry: Introduction to Texinfo
@@ -2445,7 +2445,7 @@ key: Line breaks
   entry: Line breaks
   texi_entry: Line breaks
   element_href: texinfo_15.txt#Breaks
-  element_text: 14. Making and Preventing Breaks
+  element_text: 14 Making and Preventing Breaks
 key: Line breaks 
   origin_href: texinfo_15.txt#index-Line-breaks-1
   entry: Line breaks
@@ -2487,7 +2487,7 @@ key: List of  @-commands
   entry: List of  @-commands
   texi_entry: List of  @@-commands
   element_href: texinfo_22.txt#Command-List
-  element_text: A. @-Command List
+  element_text: Appendix A @-Command List
 key: Listing a new Info file
   origin_href: texinfo_21.txt#index-Listing-a-new-Info-file
   entry: Listing a new Info file
@@ -2499,7 +2499,7 @@ key: Lists and tables, making
   entry: Lists and tables, making
   texi_entry: Lists and tables, making
   element_href: texinfo_12.txt#Lists-and-Tables
-  element_text: 11. Lists and Tables
+  element_text: 11 Lists and Tables
 key: Local variables
   origin_href: texinfo_20.txt#index-Local-variables
   entry: Local variables
@@ -2559,7 +2559,7 @@ key: Macros
   entry: Macros
   texi_entry: Macros
   element_href: texinfo_19.txt#Defining-New-Texinfo-Commands
-  element_text: 18. Defining New Texinfo Commands
+  element_text: 18 Defining New Texinfo Commands
 key: Macros in definition commands
   origin_href: texinfo_16.txt#index-Macros-in-definition-commands
   entry: Macros in definition commands
@@ -2583,7 +2583,7 @@ key: Making a printed manual
   entry: Making a printed manual
   texi_entry: Making a printed manual
   element_href: texinfo_20.txt#Hardcopy
-  element_text: 19. Formatting and Printing Hardcopy
+  element_text: 19 Formatting and Printing Hardcopy
 key: Making a tag table automatically
   origin_href: texinfo_21.txt#index-Making-a-tag-table-automatically
   entry: Making a tag table automatically
@@ -2601,19 +2601,19 @@ key: Making cross references
   entry: Making cross references
   texi_entry: Making cross references
   element_href: texinfo_9.txt#Cross-References
-  element_text: 8. Cross References
+  element_text: 8 Cross References
 key: Making line and page breaks
   origin_href: texinfo_15.txt#index-Making-line-and-page-breaks
   entry: Making line and page breaks
   texi_entry: Making line and page breaks
   element_href: texinfo_15.txt#Breaks
-  element_text: 14. Making and Preventing Breaks
+  element_text: 14 Making and Preventing Breaks
 key: Making lists and tables
   origin_href: texinfo_12.txt#index-Making-lists-and-tables
   entry: Making lists and tables
   texi_entry: Making lists and tables
   element_href: texinfo_12.txt#Lists-and-Tables
-  element_text: 11. Lists and Tables
+  element_text: 11 Lists and Tables
 key: Man page output, not supported
   origin_href: texinfo_2.txt#index-Man-page-output_002c-not-supported
   entry: Man page output, not supported
@@ -2643,13 +2643,13 @@ key: Marking text within a paragraph
   entry: Marking text within a paragraph
   texi_entry: Marking text within a paragraph
   element_href: texinfo_10.txt#Marking-Text
-  element_text: 9. Marking Words and Phrases
+  element_text: 9 Marking Words and Phrases
 key: Marking words and phrases
   origin_href: texinfo_10.txt#index-Marking-words-and-phrases
   entry: Marking words and phrases
   texi_entry: Marking words and phrases
   element_href: texinfo_10.txt#Marking-Text
-  element_text: 9. Marking Words and Phrases
+  element_text: 9 Marking Words and Phrases
 key: Master menu
   origin_href: texinfo_4.txt#index-Master-menu
   entry: Master menu
@@ -2715,7 +2715,7 @@ key: Menus
   entry: Menus
   texi_entry: Menus
   element_href: texinfo_8.txt#Menus
-  element_text: 7. Menus
+  element_text: 7 Menus
 key: Menus generated with indices
   origin_href: texinfo_5.txt#index-Menus-generated-with-indices
   entry: Menus generated with indices
@@ -2757,13 +2757,13 @@ key: Mistakes, catching
   entry: Mistakes, catching
   texi_entry: Mistakes, catching
   element_href: texinfo_27.txt#Catching-Mistakes
-  element_text: F. Formatting Mistakes
+  element_text: Appendix F Formatting Mistakes
 key: Mode, using Texinfo
   origin_href: texinfo_3.txt#index-Mode_002c-using-Texinfo
   entry: Mode, using Texinfo
   texi_entry: Mode, using Texinfo
   element_href: texinfo_3.txt#Texinfo-Mode
-  element_text: 2. Using Texinfo Mode
+  element_text: 2 Using Texinfo Mode
 key: Multiple spaces
   origin_href: texinfo_14.txt#index-Multiple-spaces
   entry: Multiple spaces
@@ -2847,7 +2847,7 @@ key: New Texinfo commands, defining
   entry: New Texinfo commands, defining
   texi_entry: New Texinfo commands, defining
   element_href: texinfo_19.txt#Defining-New-Texinfo-Commands
-  element_text: 18. Defining New Texinfo Commands
+  element_text: 18 Defining New Texinfo Commands
 key: New index defining
   origin_href: texinfo_13.txt#index-New-index-defining
   entry: New index defining
@@ -2925,7 +2925,7 @@ key: Nodes, catching mistakes
   entry: Nodes, catching mistakes
   texi_entry: Nodes, catching mistakes
   element_href: texinfo_27.txt#Catching-Mistakes
-  element_text: F. Formatting Mistakes
+  element_text: Appendix F Formatting Mistakes
 key: Nodes, checking for badly referenced
   origin_href: texinfo_27.txt#index-Nodes_002c-checking-for-badly-referenced
   entry: Nodes, checking for badly referenced
@@ -2967,7 +2967,7 @@ key: Obtaining TeX
   entry: Obtaining TeX
   texi_entry: Obtaining @TeX{}
   element_href: texinfo_30.txt#Obtaining-TeX
-  element_text: I. How to Obtain TeX
+  element_text: Appendix I How to Obtain TeX
 key: Occurrences, listing with @occur
   origin_href: texinfo_27.txt#index-Occurrences_002c-listing-with-_0040occur
   entry: Occurrences, listing with @occur
@@ -3033,7 +3033,7 @@ key: Overview of Texinfo
   entry: Overview of Texinfo
   texi_entry: Overview of Texinfo
   element_href: texinfo_2.txt#Overview
-  element_text: 1. Overview of Texinfo
+  element_text: 1 Overview of Texinfo
 key: PDF output
   origin_href: texinfo_20.txt#index-PDF-output
   entry: PDF output
@@ -3051,7 +3051,7 @@ key: Page breaks
   entry: Page breaks
   texi_entry: Page breaks
   element_href: texinfo_15.txt#Breaks
-  element_text: 14. Making and Preventing Breaks
+  element_text: 14 Making and Preventing Breaks
 key: Page breaks 
   origin_href: texinfo_15.txt#index-Page-breaks-1
   entry: Page breaks
@@ -3069,13 +3069,13 @@ key: Page headings
   entry: Page headings
   texi_entry: Page headings
   element_href: texinfo_26.txt#Headings
-  element_text: E. Page Headings
+  element_text: Appendix E Page Headings
 key: Page numbering
   origin_href: texinfo_26.txt#index-Page-numbering
   entry: Page numbering
   texi_entry: Page numbering
   element_href: texinfo_26.txt#Headings
-  element_text: E. Page Headings
+  element_text: Appendix E Page Headings
 key: Page sizes for books
   origin_href: texinfo_20.txt#index-Page-sizes-for-books
   entry: Page sizes for books
@@ -3111,13 +3111,13 @@ key: Paragraph, marking text within
   entry: Paragraph, marking text within
   texi_entry: Paragraph, marking text within
   element_href: texinfo_10.txt#Marking-Text
-  element_text: 9. Marking Words and Phrases
+  element_text: 9 Marking Words and Phrases
 key: Paragraphs, filling
   origin_href: texinfo_28.txt#index-Paragraphs_002c-filling
   entry: Paragraphs, filling
   texi_entry: Paragraphs, filling
   element_href: texinfo_28.txt#Refilling-Paragraphs
-  element_text: G. Refilling Paragraphs
+  element_text: Appendix G Refilling Paragraphs
 key: Parameters to macros
   origin_href: texinfo_19.txt#index-Parameters-to-macros
   entry: Parameters to macros
@@ -3273,7 +3273,7 @@ key: Preventing line and page breaks
   entry: Preventing line and page breaks
   texi_entry: Preventing line and page breaks
   element_href: texinfo_15.txt#Breaks
-  element_text: 14. Making and Preventing Breaks
+  element_text: 14 Making and Preventing Breaks
 key: Previous node of Top node
   origin_href: texinfo_7.txt#index-Previous-node-of-Top-node
   entry: Previous node of Top node
@@ -3339,13 +3339,13 @@ key: Printing hardcopy
   entry: Printing hardcopy
   texi_entry: Printing hardcopy
   element_href: texinfo_20.txt#Hardcopy
-  element_text: 19. Formatting and Printing Hardcopy
+  element_text: 19 Formatting and Printing Hardcopy
 key: Problems, catching
   origin_href: texinfo_27.txt#index-Problems_002c-catching
   entry: Problems, catching
   texi_entry: Problems, catching
   element_href: texinfo_27.txt#Catching-Mistakes
-  element_text: F. Formatting Mistakes
+  element_text: Appendix F Formatting Mistakes
 key: Program names, indicating
   origin_href: texinfo_10.txt#index-Program-names_002c-indicating
   entry: Program names, indicating
@@ -3411,13 +3411,13 @@ key: Reference to @-commands
   entry: Reference to @-commands
   texi_entry: Reference to @@-commands
   element_href: texinfo_22.txt#Command-List
-  element_text: A. @-Command List
+  element_text: Appendix A @-Command List
 key: References
   origin_href: texinfo_9.txt#index-References
   entry: References
   texi_entry: References
   element_href: texinfo_9.txt#Cross-References
-  element_text: 8. Cross References
+  element_text: 8 Cross References
 key: References using @inforef
   origin_href: texinfo_9.txt#index-References-using-_0040inforef
   entry: References using @inforef
@@ -3453,7 +3453,7 @@ key: Refilling paragraphs
   entry: Refilling paragraphs
   texi_entry: Refilling paragraphs
   element_href: texinfo_28.txt#Refilling-Paragraphs
-  element_text: G. Refilling Paragraphs
+  element_text: Appendix G Refilling Paragraphs
 key: Region formatting and printing
   origin_href: texinfo_3.txt#index-Region-formatting-and-printing
   entry: Region formatting and printing
@@ -3597,7 +3597,7 @@ key: Sample Texinfo files
   entry: Sample Texinfo files
   texi_entry: Sample Texinfo files
   element_href: texinfo_24.txt#Sample-Texinfo-Files
-  element_text: C. Sample Texinfo Files
+  element_text: Appendix C Sample Texinfo Files
 key: Sample function definition
   origin_href: texinfo_16.txt#index-Sample-function-definition
   entry: Sample function definition
@@ -3759,7 +3759,7 @@ key: Sorting indices
   entry: Sorting indices
   texi_entry: Sorting indices
   element_href: texinfo_20.txt#Hardcopy
-  element_text: 19. Formatting and Printing Hardcopy
+  element_text: 19 Formatting and Printing Hardcopy
 key: Source file
   origin_href: texinfo_2.txt#index-Source-file
   entry: Source file
@@ -3807,7 +3807,7 @@ key: Special insertions
   entry: Special insertions
   texi_entry: Special insertions
   element_href: texinfo_14.txt#Insertions
-  element_text: 13. Special Insertions
+  element_text: 13 Special Insertions
 key: Special typesetting commands
   origin_href: texinfo_14.txt#index-Special-typesetting-commands
   entry: Special typesetting commands
@@ -3861,13 +3861,13 @@ key: Structure, catching mistakes in
   entry: Structure, catching mistakes in
   texi_entry: Structure, catching mistakes in
   element_href: texinfo_27.txt#Catching-Mistakes
-  element_text: F. Formatting Mistakes
+  element_text: Appendix F Formatting Mistakes
 key: Structuring of chapters
   origin_href: texinfo_6.txt#index-Structuring-of-chapters
   entry: Structuring of chapters
   texi_entry: Structuring of chapters
   element_href: texinfo_6.txt#Structuring
-  element_text: 5. Chapter Structuring
+  element_text: 5 Chapter Structuring
 key: Subsection-like commands
   origin_href: texinfo_6.txt#index-Subsection_002dlike-commands
   entry: Subsection-like commands
@@ -3909,7 +3909,7 @@ key: Syntax, of @-commands
   entry: Syntax, of @-commands
   texi_entry: Syntax, of @@-commands
   element_href: texinfo_29.txt#Command-Syntax
-  element_text: H. @-Command Syntax
+  element_text: Appendix H @-Command Syntax
 key: Syntax, optional & repeated arguments
   origin_href: texinfo_16.txt#index-Syntax_002c-optional-_0026-repeated-arguments
   entry: Syntax, optional & repeated arguments
@@ -3951,7 +3951,7 @@ key: Tables and lists, making
   entry: Tables and lists, making
   texi_entry: Tables and lists, making
   element_href: texinfo_12.txt#Lists-and-Tables
-  element_text: 11. Lists and Tables
+  element_text: 11 Lists and Tables
 key: Tables with indexes
   origin_href: texinfo_12.txt#index-Tables-with-indexes
   entry: Tables with indexes
@@ -4005,7 +4005,7 @@ key: TeX index sorting
   entry: TeX index sorting
   texi_entry: @TeX{} index sorting
   element_href: texinfo_20.txt#Hardcopy
-  element_text: 19. Formatting and Printing Hardcopy
+  element_text: 19 Formatting and Printing Hardcopy
 key: TeX input initialization
   origin_href: texinfo_20.txt#index-TeX-input-initialization
   entry: TeX input initialization
@@ -4017,7 +4017,7 @@ key: TeX, how to obtain
   entry: TeX, how to obtain
   texi_entry: @TeX{}, how to obtain
   element_href: texinfo_30.txt#Obtaining-TeX
-  element_text: I. How to Obtain TeX
+  element_text: Appendix I How to Obtain TeX
 key: Template for a definition
   origin_href: texinfo_16.txt#index-Template-for-a-definition
   entry: Template for a definition
@@ -4029,19 +4029,19 @@ key: Texinfo commands, defining new
   entry: Texinfo commands, defining new
   texi_entry: Texinfo commands, defining new
   element_href: texinfo_19.txt#Defining-New-Texinfo-Commands
-  element_text: 18. Defining New Texinfo Commands
+  element_text: 18 Defining New Texinfo Commands
 key: Texinfo file beginning
   origin_href: texinfo_4.txt#index-Texinfo-file-beginning
   entry: Texinfo file beginning
   texi_entry: Texinfo file beginning
   element_href: texinfo_4.txt#Beginning-a-File
-  element_text: 3. Beginning a Texinfo File
+  element_text: 3 Beginning a Texinfo File
 key: Texinfo file ending
   origin_href: texinfo_5.txt#index-Texinfo-file-ending
   entry: Texinfo file ending
   texi_entry: Texinfo file ending
   element_href: texinfo_5.txt#Ending-a-File
-  element_text: 4. Ending a Texinfo File
+  element_text: 4 Ending a Texinfo File
 key: Texinfo file header
   origin_href: texinfo_4.txt#index-Texinfo-file-header
   entry: Texinfo file header
@@ -4071,13 +4071,13 @@ key: Texinfo mode
   entry: Texinfo mode
   texi_entry: Texinfo mode
   element_href: texinfo_3.txt#Texinfo-Mode
-  element_text: 2. Using Texinfo Mode
+  element_text: 2 Using Texinfo Mode
 key: Texinfo overview
   origin_href: texinfo_2.txt#index-Texinfo-overview
   entry: Texinfo overview
   texi_entry: Texinfo overview
   element_href: texinfo_2.txt#Overview
-  element_text: 1. Overview of Texinfo
+  element_text: 1 Overview of Texinfo
 key: Texinfo printed book characteristics
   origin_href: texinfo_2.txt#index-Texinfo-printed-book-characteristics
   entry: Texinfo printed book characteristics
@@ -4107,13 +4107,13 @@ key: Text, conditionally visible
   entry: Text, conditionally visible
   texi_entry: Text, conditionally visible
   element_href: texinfo_17.txt#Conditionals
-  element_text: 16. Conditionally Visible Text
+  element_text: 16 Conditionally Visible Text
 key: Text, marking up
   origin_href: texinfo_10.txt#index-Text_002c-marking-up
   entry: Text, marking up
   texi_entry: Text, marking up
   element_href: texinfo_10.txt#Marking-Text
-  element_text: 9. Marking Words and Phrases
+  element_text: 9 Marking Words and Phrases
 key: Thin space between number, dimension
   origin_href: texinfo_14.txt#index-Thin-space-between-number_002c-dimension
   entry: Thin space between number, dimension
@@ -4143,7 +4143,7 @@ key: Tips
   entry: Tips
   texi_entry: Tips
   element_href: texinfo_23.txt#Tips
-  element_text: B. Tips and Hints
+  element_text: Appendix B Tips and Hints
 key: Title page
   origin_href: texinfo_4.txt#index-Title-page
   entry: Title page
@@ -4341,7 +4341,7 @@ key: Usage tips
   entry: Usage tips
   texi_entry: Usage tips
   element_href: texinfo_23.txt#Tips
-  element_text: B. Tips and Hints
+  element_text: Appendix B Tips and Hints
 key: User options, marking
   origin_href: texinfo_16.txt#index-User-options_002c-marking
   entry: User options, marking
@@ -4353,7 +4353,7 @@ key: User-defined Texinfo commands
   entry: User-defined Texinfo commands
   texi_entry: User-defined Texinfo commands
   element_href: texinfo_19.txt#Defining-New-Texinfo-Commands
-  element_text: 18. Defining New Texinfo Commands
+  element_text: 18 Defining New Texinfo Commands
 key: Using Texinfo in general
   origin_href: texinfo_2.txt#index-Using-Texinfo-in-general
   entry: Using Texinfo in general
@@ -4407,7 +4407,7 @@ key: Visibility of conditional text
   entry: Visibility of conditional text
   texi_entry: Visibility of conditional text
   element_href: texinfo_17.txt#Conditionals
-  element_text: 16. Conditionally Visible Text
+  element_text: 16 Conditionally Visible Text
 key: Weinberg, Zack
   origin_href: texinfo_2.txt#index-Weinberg_002c-Zack
   entry: Weinberg, Zack
@@ -4425,7 +4425,7 @@ key: White space, excessive
   entry: White space, excessive
   texi_entry: White space, excessive
   element_href: texinfo_15.txt#Breaks
-  element_text: 14. Making and Preventing Breaks
+  element_text: 14 Making and Preventing Breaks
 key: Whitespace in macros
   origin_href: texinfo_19.txt#index-Whitespace-in-macros
   entry: Whitespace in macros
@@ -4467,7 +4467,7 @@ key: Words and phrases, marking them
   entry: Words and phrases, marking them
   texi_entry: Words and phrases, marking them
   element_href: texinfo_10.txt#Marking-Text
-  element_text: 9. Marking Words and Phrases
+  element_text: 9 Marking Words and Phrases
 key: Writing a menu
   origin_href: texinfo_8.txt#index-Writing-a-menu
   entry: Writing a menu
@@ -4821,7 +4821,7 @@ key: texindex
   entry: texindex
   texi_entry: @code{texindex}
   element_href: texinfo_20.txt#Hardcopy
-  element_text: 19. Formatting and Printing Hardcopy
+  element_text: 19 Formatting and Printing Hardcopy
 key: texindex 
   origin_href: texinfo_20.txt#index-texindex-1
   entry: texindex

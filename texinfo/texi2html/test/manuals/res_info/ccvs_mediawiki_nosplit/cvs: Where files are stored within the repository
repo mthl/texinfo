@@ -96,7 +96,7 @@ files in this format.
 ways from the standard format.  The biggest difference
 is magic branches; for more information see [cvs: Magic branch numbers#Magic-branch-numbers Magic branch numbers].  Also in <small>CVS</small> the valid tag names
 are a subset of what <small>RCS</small> accepts; for <small>CVS</small>&rsquo;s
-rules see [cvs: Tags-Symbolic revisions#Tags Tags&ndash;Symbolic revisions].
+rules see [cvs: Tags-Symbolic revisions#Tags Tags].
 </p>
 <hr>
 <div class="node">

@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 19.6 Formatting and Printing in Texinfo Mode</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 19.6 Formatting and Printing in Texinfo Mode">
+<meta name="keywords" content="GNU Texinfo 4.2: 19.6 Formatting and Printing in Texinfo Mode">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Hardcopy.html#Hardcopy" rel="up" title="19 Formatting and Printing Hardcopy">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Within-Emacs.html#Within-Emacs" rel="previous" title="19.5 From an Emacs Shell">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Texinfo-Mode-Printing"></a>
+<div class="node">
+<p>
+Next: <a href="Compile_002dCommand.html#Compile_002dCommand" accesskey="n" rel="next">Compile-Command</a>, Previous: <a href="Within-Emacs.html#Within-Emacs" accesskey="p" rel="previous">Within Emacs</a>, Up: <a href="Hardcopy.html#Hardcopy" accesskey="u" rel="up">Hardcopy</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Formatting-and-Printing-in-Texinfo-Mode"></a>
+<h2 class="section">19.6 Formatting and Printing in Texinfo Mode</h2>
+<a name="index-Region-printing-in-Texinfo-mode"></a>
+<a name="index-Format-and-print-in-Texinfo-mode"></a>
+<a name="index-Print-and-format-in-Texinfo-mode"></a>
+
+<p>Texinfo mode provides several predefined key commands for TeX
+formatting and printing.  These include commands for sorting indices,
+looking at the printer queue, killing the formatting job, and
+recentering the display of the buffer in which the operations
+occur.
+</p>
+<dl compact="compact">
+<dt><kbd>C-c C-t C-b</kbd></dt>
+<dt><kbd>M-x texinfo-tex-buffer</kbd></dt>
+<dd><p>Run <code>texi2dvi</code> on the current buffer.
+</p>
+</dd>
+<dt><kbd>C-c C-t C-r</kbd></dt>
+<dt><kbd>M-x texinfo-tex-region</kbd></dt>
+<dd><p>Run TeX on the current region.
+</p>
+</dd>
+<dt><kbd>C-c C-t C-i</kbd></dt>
+<dt><kbd>M-x texinfo-texindex</kbd></dt>
+<dd><p>Sort the indices of a Texinfo file formatted with
+<code>texinfo-tex-region</code>.
+</p>
+</dd>
+<dt><kbd>C-c C-t C-p</kbd></dt>
+<dt><kbd>M-x texinfo-tex-print</kbd></dt>
+<dd><p>Print a DVI file that was made with <code>texinfo-tex-region</code> or
+<code>texinfo-tex-buffer</code>.
+</p>
+</dd>
+<dt><kbd>C-c C-t C-q</kbd></dt>
+<dt><kbd>M-x tex-show-print-queue</kbd></dt>
+<dd><p>Show the print queue.
+</p>
+</dd>
+<dt><kbd>C-c C-t C-d</kbd></dt>
+<dt><kbd>M-x texinfo-delete-from-print-queue</kbd></dt>
+<dd><p>Delete a job from the print queue; you will be prompted for the job
+number shown by a preceding <kbd>C-c C-t C-q</kbd> command
+(<code>texinfo-show-tex-print-queue</code>).
+</p>
+</dd>
+<dt><kbd>C-c C-t C-k</kbd></dt>
+<dt><kbd>M-x tex-kill-job</kbd></dt>
+<dd><p>Kill the currently running TeX job started by either
+<code>texinfo-tex-region</code> or <code>texinfo-tex-buffer</code>, or any other
+process running in the Texinfo shell buffer.
+</p>
+</dd>
+<dt><kbd>C-c C-t C-x</kbd></dt>
+<dt><kbd>M-x texinfo-quit-job</kbd></dt>
+<dd><p>Quit a TeX formatting job that has stopped because of an error by
+sending an &lt;x&gt; to it.  When you do this, TeX preserves a record
+of what it did in a &lsquo;<tt>.log</tt>&rsquo; file.
+</p>
+</dd>
+<dt><kbd>C-c C-t C-l</kbd></dt>
+<dt><kbd>M-x tex-recenter-output-buffer</kbd></dt>
+<dd><p>Redisplay the shell buffer in which the TeX printing and formatting
+commands are run to show its most recent output.
+</p></dd>
+</dl>
+
+<p>Thus, the usual sequence of commands for formatting a buffer is as
+follows (with comments to the right):
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-t C-b             <span class="roman">Run <code>texi2dvi</code> on the buffer.</span>
+C-c C-t C-p             <span class="roman">Print the DVI file.</span>
+C-c C-t C-q             <span class="roman">Display the printer queue.</span>
+</pre></td></tr></table>
+
+<p>The Texinfo mode TeX formatting commands start a subshell in Emacs
+called the &lsquo;<tt>*tex-shell*</tt>&rsquo;.  The <code>texinfo-tex-command</code>,
+<code>texinfo-texindex-command</code>, and <code>tex-dvi-print-command</code>
+commands are all run in this shell.
+</p>
+<p>You can watch the commands operate in the &lsquo;<samp>*tex-shell*</samp>&rsquo; buffer,
+and you can switch to and from and use the &lsquo;<samp>*tex-shell*</samp>&rsquo; buffer
+as you would any other shell buffer.
+</p>
+<p>The formatting and print commands depend on the values of several variables.
+The default values are:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">     <span class="roman">Variable</span>                              <span class="roman">Default value</span>
+
+texinfo-texi2dvi-command                  &quot;texi2dvi&quot;
+texinfo-tex-command                       &quot;tex&quot;
+texinfo-texindex-command                  &quot;texindex&quot;
+texinfo-delete-from-print-queue-command   &quot;lprm&quot;
+texinfo-tex-trailer                       &quot;@bye&quot;
+tex-start-of-header                       &quot;%**start&quot;
+tex-end-of-header                         &quot;%**end&quot;
+tex-dvi-print-command                     &quot;lpr -d&quot;
+tex-show-queue-command                    &quot;lpq&quot;
+</pre></td></tr></table>
+
+<p>You can change the values of these variables with the <kbd>M-x
+edit-options</kbd> command (see <a href="../emacs/Edit-Options.html#Edit-Options">(emacs)Edit Options</a> section &lsquo;Editing Variable Values&rsquo; in <cite>The GNU Emacs Manual</cite>), with the <kbd>M-x set-variable</kbd> command
+(see <a href="../emacs/Examining.html#Examining">(emacs)Examining</a> section &lsquo;Examining and Setting Variables&rsquo; in <cite>The GNU Emacs Manual</cite>), or with your &lsquo;<tt>.emacs</tt>&rsquo; initialization file
+(see <a href="../emacs/Init-File.html#Init-File">(emacs)Init File</a> section &lsquo;Init File&rsquo; in <cite>The GNU Emacs Manual</cite>).
+</p>
+<a name="index-Customize-Emacs-package-_0028Development_002fDocs_002fTexinfo_0029"></a>
+<p>Beginning with version 20, GNU Emacs offers a user-friendly interface,
+called <em>Customize</em>, for changing values of user-definable variables.
+See <a href="../emacs/Easy-Customization.html#Easy-Customization">(emacs)Easy Customization</a> section &lsquo;Easy Customization Interface&rsquo; in <cite>The GNU Emacs Manual</cite>, for more details about this.  The Texinfo variables can
+be found in the &lsquo;<samp>Development/Docs/Texinfo</samp>&rsquo; group, once you invoke
+the <kbd>M-x customize</kbd> command.
+</p>
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="Compile_002dCommand.html#Compile_002dCommand" accesskey="n" rel="next">Compile-Command</a>, Previous: <a href="Within-Emacs.html#Within-Emacs" accesskey="p" rel="previous">Within Emacs</a>, Up: <a href="Hardcopy.html#Hardcopy" accesskey="u" rel="up">Hardcopy</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

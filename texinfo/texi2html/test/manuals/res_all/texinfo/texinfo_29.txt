@@ -1,5 +1,5 @@
-Annexe H @-Command Syntax
-*************************
+Appendix H @-Command Syntax
+***************************
 
 The character `@' is used to start special Texinfo commands.
 (It has the same meaning that `\' has in plain TeX.)  Texinfo

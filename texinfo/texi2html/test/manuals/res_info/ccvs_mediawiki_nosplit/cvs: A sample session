@@ -16,7 +16,7 @@ Previous: [cvs: What is CVS not?#What-is-CVS-not_003f What is CVS not?], Up: [cv
 <p>As a way of introducing <small>CVS</small>, we&rsquo;ll go through a
 typical work-session using <small>CVS</small>.  The first thing
 to understand is that <small>CVS</small> stores all files in a
-centralized <em>repository</em> (see section [cvs: The Repository#Repository The Repository]); this
+centralized <em>repository</em> (see [cvs: The Repository#Repository Repository]); this
 section assumes that a repository is set up.
 </p>
 <p>Suppose you are working on a simple compiler.  The source

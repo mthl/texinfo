@@ -1,5 +1,5 @@
-Annexe C Sample Texinfo Files
-*****************************
+Appendix C Sample Texinfo Files
+*******************************
 
 The first example is from the first chapter (see Short Sample),
 given here in its entirety, without commentary.  The second sample

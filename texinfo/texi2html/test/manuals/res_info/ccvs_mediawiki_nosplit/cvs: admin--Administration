@@ -33,7 +33,7 @@ commands, except for those specified using the
 <code>UserAdminOptions</code> configuration option in the
 &lsquo;<tt>CVSROOT/config</tt>&rsquo; file.  Options specified using
 <code>UserAdminOptions</code> can be run by any user.  See
-[cvs: The CVSROOT%47config configuration file#config The CVSROOT/config configuration file] for more on <code>UserAdminOptions</code>.
+[cvs: The CVSROOT%47config configuration file#config config] for more on <code>UserAdminOptions</code>.
 </p>
 <p>The <code>cvsadmin</code> group should exist on the server,
 or any system running the non-client/server <small>CVS</small>.

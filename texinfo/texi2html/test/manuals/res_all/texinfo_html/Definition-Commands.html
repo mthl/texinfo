@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 15 Definition Commands</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 15 Definition Commands">
+<meta name="keywords" content="GNU Texinfo 4.2: 15 Definition Commands">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="index.html#Top" rel="up" title="Texinfo">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="need.html#need" rel="previous" title="14.7 @need mils: Prevent Page Breaks">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Definition-Commands"></a>
+<div class="node">
+<p>
+Next: <a href="Conditionals.html#Conditionals" accesskey="n" rel="next">Conditionals</a>, Previous: <a href="Breaks.html#Breaks" accesskey="p" rel="previous">Breaks</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Definition-Commands-1"></a>
+<h1 class="chapter">15 Definition Commands</h1>
+<a name="index-Definition-commands"></a>
+
+<p>The <code>@deffn</code> command and the other <em>definition commands</em>
+enable you to describe functions, variables, macros, commands, user
+options, special forms and other such artifacts in a uniform
+format.
+</p>
+<p>In the Info file, a definition causes the entity
+category&mdash;&lsquo;Function&rsquo;, &lsquo;Variable&rsquo;, or whatever&mdash;to appear at the
+beginning of the first line of the definition, followed by the
+entity&rsquo;s name and arguments.  In the printed manual, the command
+causes TeX to print the entity&rsquo;s name and its arguments on the left
+margin and print the category next to the right margin.  In both
+output formats, the body of the definition is indented.  Also, the
+name of the entity is entered into the appropriate index:
+<code>@deffn</code> enters the name into the index of functions,
+<code>@defvr</code> enters it into the index of variables, and so
+on.
+</p>
+<p>A manual need not and should not contain more than one definition for
+a given name.  An appendix containing a summary should use
+<code>@table</code> rather than the definition commands.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="Def-Cmd-Template.html#Def-Cmd-Template" accesskey="1">&bull; Def Cmd Template</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            How to structure a description using a
+                                  definition command.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Optional-Arguments.html#Optional-Arguments" accesskey="2">&bull; Optional Arguments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          How to handle optional and repeated arguments.
+</td></tr>
+<tr><td align="left" valign="top"><a href="deffnx.html#deffnx" accesskey="3">&bull; deffnx</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      How to group two or more &lsquo;first&rsquo; lines.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Def-Cmds-in-Detail.html#Def-Cmds-in-Detail" accesskey="4">&bull; Def Cmds in Detail</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          All the definition commands.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Def-Cmd-Conventions.html#Def-Cmd-Conventions" accesskey="5">&bull; Def Cmd Conventions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Conventions for writing definitions.
+</td></tr>
+<tr><td align="left" valign="top"><a href="Sample-Function-Definition.html#Sample-Function-Definition" accesskey="6">&bull; Sample Function Definition</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+</td></tr>
+</table>
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="Conditionals.html#Conditionals" accesskey="n" rel="next">Conditionals</a>, Previous: <a href="Breaks.html#Breaks" accesskey="p" rel="previous">Breaks</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

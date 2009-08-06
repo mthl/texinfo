@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 8.3.4 @xref with Four and Five Arguments</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 8.3.4 @xref with Four and Five Arguments">
+<meta name="keywords" content="GNU Texinfo 4.2: 8.3.4 @xref with Four and Five Arguments">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="xref.html#xref" rel="up" title="8.3 @xref">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Three-Arguments.html#Three-Arguments" rel="previous" title="8.3.3 @xref with Three Arguments">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Four-and-Five-Arguments"></a>
+<div class="node">
+<p>
+Previous: <a href="Three-Arguments.html#Three-Arguments" accesskey="p" rel="previous">Three Arguments</a>, Up: <a href="xref.html#xref" accesskey="u" rel="up">xref</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="g_t_0040xref-with-Four-and-Five-Arguments"></a>
+<h3 class="subsection">8.3.4 <code>@xref</code> with Four and Five Arguments</h3>
+
+<p>In a cross reference, a fourth argument specifies the name of another
+Info file, different from the file in which the reference appears, and
+a fifth argument specifies its title as a printed manual.
+</p>
+<p>Remember that a comma or period must follow the closing brace of an
+<code>@xref</code> command to terminate the cross reference.  In the
+following examples, a clause follows a terminating comma.
+</p>
+<p>The template is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>,
+<var>info-file-name</var>, <var>printed-manual-title</var>}.
+</pre></td></tr></table>
+
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@xref{Electrical Effects, Lightning, Thunder and Lightning,
+weather, An Introduction to Meteorology}, for details.
+</pre></td></tr></table>
+
+<p>produces
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">*Note Lightning: (weather)Electrical Effects, for details.
+</pre></td></tr></table>
+
+<p>The name of the Info file is enclosed in parentheses and precedes
+the name of the node.
+</p>
+<p>In a printed manual, the reference looks like this:
+</p>
+<blockquote><p>See section &ldquo;Thunder and Lightning&rdquo; in <i>An Introduction to
+Meteorology</i>, for details.
+</p></blockquote>
+
+<p>The title of the printed manual is typeset in italics; and the
+reference lacks a page number since TeX cannot know to which page a
+reference refers when that reference is to another manual.
+</p>
+<p>Often, you will leave out the second argument when you use the long
+version of <code>@xref</code>.  In this case, the third argument, the topic
+description, will be used as the cross reference name in Info.
+</p>
+<p>The template looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, , <var>title-or-topic</var>, <var>info-file-name</var>,
+<var>printed-manual-title</var>}, for details.
+</pre></td></tr></table>
+
+<p>which produces
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">*Note <var>title-or-topic</var>: (<var>info-file-name</var>)<var>node-name</var>, for details.
+</pre></td></tr></table>
+
+<p>and
+</p>
+<blockquote><p>See section <var>title-or-topic</var> in <var>printed-manual-title</var>, for details.
+</p></blockquote>
+
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@xref{Electrical Effects, , Thunder and Lightning,
+weather, An Introduction to Meteorology}, for details.
+</pre></td></tr></table>
+
+<p>produces
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">*Note Thunder and Lightning: (weather)Electrical Effects,
+for details.
+</pre></td></tr></table>
+
+<p>and
+</p>
+<blockquote><p>See section &ldquo;Thunder and Lightning&rdquo; in <i>An Introduction to
+Meteorology</i>, for details.
+</p></blockquote>
+
+<p>On rare occasions, you may want to refer to another Info file that
+is within a single printed manual&mdash;when multiple Texinfo files are
+incorporated into the same TeX run but make separate Info files.
+In this case, you need to specify only the fourth argument, and not
+the fifth.
+</p>
+<hr>
+<div class="node">
+<p>
+Previous: <a href="Three-Arguments.html#Three-Arguments" accesskey="p" rel="previous">Three Arguments</a>, Up: <a href="xref.html#xref" accesskey="u" rel="up">xref</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

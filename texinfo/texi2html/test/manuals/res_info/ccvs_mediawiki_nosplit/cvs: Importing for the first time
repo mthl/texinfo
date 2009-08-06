@@ -23,7 +23,7 @@ directory in which you invoke it.  In particular, it
 does not set up that directory as a <small>CVS</small> working
 directory; if you want to work with the sources import
 them first and then check them out into a different
-directory (see section [cvs: Getting the source#Getting-the-source Getting the source]).
+directory (see [cvs: Getting the source#Getting-the-source Getting the source]).
 </p>
 <div id="index-wdiff-_0028import-example_0029"></div>
 <p>Suppose you have the sources to a program called

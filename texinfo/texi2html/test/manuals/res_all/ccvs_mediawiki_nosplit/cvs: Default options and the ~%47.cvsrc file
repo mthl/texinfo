@@ -57,7 +57,7 @@ to specify use of the &quot;old&quot; format, so you would need
 &lsquo;<samp>cvs -f diff foobar</samp>&rsquo;.
 </p>
 <p>In place of the command name you can use <code>cvs</code> to
-specify global options (see section [cvs: Global options#Global-options Global options]).  For
+specify global options (see [cvs: Global options#Global-options Global options]).  For
 example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -z6

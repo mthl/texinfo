@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 13.11 Inserting Images</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 13.11 Inserting Images">
+<meta name="keywords" content="GNU Texinfo 4.2: 13.11 Inserting Images">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Insertions.html#Insertions" rel="up" title="13 Special Insertions">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Footnote-Styles.html#Footnote-Styles" rel="previous" title="13.10.2 Footnote Styles">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Images"></a>
+<div class="node">
+<p>
+Previous: <a href="Footnotes.html#Footnotes" accesskey="p" rel="previous">Footnotes</a>, Up: <a href="Insertions.html#Insertions" accesskey="u" rel="up">Insertions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Inserting-Images"></a>
+<h2 class="section">13.11 Inserting Images</h2>
+
+<a name="index-Images_002c-inserting"></a>
+<a name="index-Pictures_002c-inserting"></a>
+<a name="index-image"></a>
+
+<p>You can insert an image given in an external file with the
+<code>@image</code> command:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@image{<var>filename</var>, <span class="roman">[</span><var>width</var><span class="roman">]</span>, <span class="roman">[</span><var>height</var><span class="roman">]</span>, <span class="roman">[</span><var>alttext</var><span class="roman">]</span>, <span class="roman">[</span><var>extension</var><span class="roman">]</span>}
+</pre></td></tr></table>
+
+<a name="index-Formats-for-images"></a>
+<a name="index-Image-formats"></a>
+<p>The <var>filename</var> argument is mandatory, and must not have an
+extension, because the different processors support different formats:
+</p><ul>
+<li>
+TeX reads the file &lsquo;<tt><var>filename</var>.eps</tt>&rsquo; (Encapsulated PostScript
+format).
+</li><li>
+<a name="index-pdftex_002c-and-images"></a>
+PDFTeX reads &lsquo;<tt><var>filename</var>.pdf</tt>&rsquo; (Adobe&rsquo;s Portable Document Format).
+</li><li>
+<code>makeinfo</code> uses &lsquo;<tt><var>filename</var>.txt</tt>&rsquo; verbatim for
+Info output (more or less as if it was an <code>@example</code>).
+</li><li>
+<code>makeinfo</code>
+uses the optional fifth argument to <code>@image</code> for the extension if
+you supply it.  For example:
+
+<a name="index-XPM-image-format"></a>
+<table><tr><td>&nbsp;</td><td><pre class="example">@image{foo,,,,xpm}
+</pre></td></tr></table>
+
+<p>will cause &lsquo;<samp>makeinfo --html</samp>&rsquo; to try &lsquo;<tt>foo.xpm</tt>&rsquo;.
+</p>
+<a name="index-GIF_002c-unsupported-due-to-patents"></a>
+<a name="index-PNG-image-format"></a>
+<a name="index-JPG-image-format"></a>
+<p>If you do not supply the optional fifth argument, &lsquo;<samp>makeinfo
+---html</samp>&rsquo; first tries &lsquo;<tt><var>filename</var>.png</tt>&rsquo;; if that does not exist,
+it tries &lsquo;<tt><var>filename</var>.jpg</tt>&rsquo;.  If that does not exist either, it
+complains.  (We cannot support GIF format directly due to software
+patents.)
+</p></li></ul>
+
+<a name="index-Width-of-images"></a>
+<a name="index-Height-of-images"></a>
+<a name="index-Aspect-ratio-of-images"></a>
+<a name="index-Distorting-images"></a>
+<p>The optional <var>width</var> and <var>height</var> arguments specify the size to
+scale the image to (they are ignored for Info output).  If neither is
+specified, the image is presented in its natural size (given in the
+file); if only one is specified, the other is scaled proportionately;
+and if both are specified, both are respected, thus possibly distorting
+the original image by changing its aspect ratio.
+</p>
+<a name="index-Dimensions-and-image-sizes"></a>
+<p>The <var>width</var> and <var>height</var> may be specified using any valid TeX
+dimension, namely:
+</p>
+<dl compact="compact">
+<dt>pt</dt>
+<dd><a name="index-Points-_0028dimension_0029"></a>
+<p>point (72.27pt = 1in)
+</p></dd>
+<dt>pc</dt>
+<dd><a name="index-Picas"></a>
+<p>pica (1pc = 12pt)
+</p></dd>
+<dt>bp</dt>
+<dd><a name="index-Big-points"></a>
+<p>big point (72bp = 1in)
+</p></dd>
+<dt>in</dt>
+<dd><a name="index-Inches"></a>
+<p>inch
+</p></dd>
+<dt>cm</dt>
+<dd><a name="index-Centimeters"></a>
+<p>centimeter (2.54cm = 1in)
+</p></dd>
+<dt>mm</dt>
+<dd><a name="index-Millimeters"></a>
+<p>millimeter (10mm = 1cm)
+</p></dd>
+<dt>dd</dt>
+<dd><a name="index-Didot-points"></a>
+<p>did&ocirc;t point (1157dd = 1238pt)
+</p></dd>
+<dt>cc</dt>
+<dd><a name="index-Ciceros"></a>
+<p>cicero (1cc = 12dd)
+</p></dd>
+<dt>sp</dt>
+<dd><a name="index-Scaled-points"></a>
+<p>scaled point (65536sp = 1pt)
+</p></dd>
+</dl>
+
+<a name="index-ridt_002eeps"></a>
+<p>For example, the following will scale a file &lsquo;<tt>ridt.eps</tt>&rsquo; to one
+inch vertically, with the width scaled proportionately:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@image{ridt,,1in}
+</pre></td></tr></table>
+
+<a name="index-epsf_002etex"></a>
+<p>For <code>@image</code> to work with TeX, the file &lsquo;<tt>epsf.tex</tt>&rsquo; must be
+installed somewhere that TeX can find it.  (The standard location is
+&lsquo;<tt><var>texmf</var>/tex/generic/dvips/epsf.tex</tt>&rsquo;, where <var>texmf</var> is a
+root of your TeX directory tree.)  This file is included in the
+Texinfo distribution and is also available from
+<a href="ftp://tug.org/tex/epsf.tex">ftp://tug.org/tex/epsf.tex</a>, among other places.
+</p>
+<p><code>@image</code> can be used within a line as well as for displayed
+figures.  Therefore, if you intend it to be displayed, be sure to leave
+a blank line before the command, or the output will run into the
+preceding text.
+</p>
+<a name="index-alt-attribute-for-images"></a>
+<a name="index-alternate-text-for-images"></a>
+<p>When producing html, <code>makeinfo</code> sets the <em>alt attribute</em> for
+inline images to the optional fourth argument to <code>@image</code>, if
+supplied.  If not supplied, <code>makeinfo</code> uses the full file name of
+the image being displayed.
+</p>
+
+<hr>
+<div class="node">
+<p>
+Previous: <a href="Footnotes.html#Footnotes" accesskey="p" rel="previous">Footnotes</a>, Up: <a href="Insertions.html#Insertions" accesskey="u" rel="up">Insertions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

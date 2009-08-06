@@ -30,7 +30,7 @@ matching regular expression or &lsquo;<samp>DEFAULT</samp>&rsquo;.
 </p>
 <p>The first matching regular expression is used.
 </p>
-<p>See section [cvs: The commit support files#commit-files The commit support files], for a description of the syntax of
+<p>See [cvs: The commit support files#commit-files commit files], for a description of the syntax of
 the &lsquo;<tt>loginfo</tt>&rsquo; file.
 </p>
 <p>The user may specify a format string as
@@ -82,7 +82,7 @@ name of the repository will be generated.
 </p>
 <p>Note: when <small>CVS</small> is accessing a remote repository,
 &lsquo;<tt>loginfo</tt>&rsquo; will be run on the <em>remote</em>
-(i.e., server) side, not the client side (see section [cvs: Remote repositories#Remote-repositories Remote repositories]).
+(i.e., server) side, not the client side (see [cvs: Remote repositories#Remote-repositories Remote repositories]).
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Loginfo example#loginfo-example  loginfo example]::<nowiki>             Loginfo example
 </nowiki>&bull;[cvs: Keeping a checked out copy#Keeping-a-checked-out-copy  Keeping a checked out copy]::<nowiki>  Updating a tree on every checkin

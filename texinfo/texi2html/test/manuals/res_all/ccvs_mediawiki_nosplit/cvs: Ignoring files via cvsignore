@@ -16,7 +16,7 @@ put under <small>CVS</small> control.  Examples are all the object
 files that you get while you compile your sources.
 Normally, when you run &lsquo;<samp>cvs update</samp>&rsquo;, it prints a
 line for each file it encounters that it doesn&rsquo;t know
-about (see section [cvs: update output#update-output update output]).
+about (see [cvs: update output#update-output update output]).
 </p>
 <p><small>CVS</small> has a list of files (or sh(1) file name patterns)
 that it should ignore while running <code>update</code>,

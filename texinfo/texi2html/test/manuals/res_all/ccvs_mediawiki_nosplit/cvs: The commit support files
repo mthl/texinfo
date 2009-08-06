@@ -10,7 +10,7 @@ Next: [cvs: Rcsinfo#rcsinfo rcsinfo], Previous: [cvs: The cvswrappers file#Wrapp
 
 <p>The &lsquo;<samp>-i</samp>&rsquo; flag in the &lsquo;<tt>modules</tt>&rsquo; file can be
 used to run a certain program whenever files are
-committed (see section [cvs: The modules file#modules The modules file]).  The files described in
+committed (see [cvs: The modules file#modules modules]).  The files described in
 this section provide other, more flexible, ways to run
 programs whenever something is committed.
 </p>
@@ -32,7 +32,7 @@ the commit will be aborted.
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
 &lsquo;<tt>rcsinfo</tt>&rsquo; file, which can hold a log message
-template (see section [cvs: Rcsinfo#rcsinfo Rcsinfo]).
+template (see [cvs: Rcsinfo#rcsinfo rcsinfo]).
 </p>
 </dd>
 <dt>&lsquo;<tt>editinfo</tt>&rsquo;</dt>
@@ -40,7 +40,7 @@ template (see section [cvs: Rcsinfo#rcsinfo Rcsinfo]).
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
 &lsquo;<tt>rcsinfo</tt>&rsquo; file, which can hold a log message
-template (see section [cvs: Rcsinfo#rcsinfo Rcsinfo]).  (obsolete)
+template (see [cvs: Rcsinfo#rcsinfo rcsinfo]).  (obsolete)
 </p>
 </dd>
 <dt>&lsquo;<tt>loginfo</tt>&rsquo;</dt>

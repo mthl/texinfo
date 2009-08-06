@@ -1,5 +1,5 @@
-Annexe F Formatting Mistakes
-****************************
+Appendix F Formatting Mistakes
+******************************
 
 Besides mistakes in the content of your documentation, there are two
 kinds of mistake you can make with Texinfo: you can make mistakes with

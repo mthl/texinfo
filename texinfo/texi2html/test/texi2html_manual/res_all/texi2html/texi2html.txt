@@ -2,28 +2,28 @@ Short Table of Contents
 ***********************
 
 Texi2html
-1. Overview about texi2html
-2. Installation of texi2html
-3. Customizing files
-4. Customizing what gets expanded
-5. Customizing page layout
-6. Customizing HTML
-7. Initialization file
-8. Command Line Options
-A. Function Reference
-B. Indices
+1 Overview about texi2html
+2 Installation of texi2html
+3 Customizing files
+4 Customizing what gets expanded
+5 Customizing page layout
+6 Customizing HTML
+7 Initialization file
+8 Command Line Options
+Appendix A Function Reference
+Appendix B Indices
 
 Table of Contents
 *****************
 
 Texi2html
-1. Overview about texi2html
+1 Overview about texi2html
  1.1 Ways to get HTML
  1.2 Why `texi2html' and not `makeinfo'?
-2. Installation of texi2html
-3. Customizing files
-4. Customizing what gets expanded
-5. Customizing page layout
+2 Installation of texi2html
+3 Customizing files
+4 Customizing what gets expanded
+5 Customizing page layout
  5.1 Tips how to create a new site design
  5.2 Page Layout and the philosophy
   5.2.1 Navigation panels
@@ -33,13 +33,13 @@ Texi2html
   5.5.1 Table Of Contents
   5.5.2 Page header
   5.5.3 Page footer
-6. Customizing HTML
+6 Customizing HTML
  6.1 Body
   6.1.1 Body Text
   6.1.2 Body Text
   6.1.3 After Body Text
  6.2 Head
-7. Initialization file
+7 Initialization file
  7.1 The basics about init files
  7.2 Global initialization file
  7.3 User initialization file
@@ -55,7 +55,7 @@ Texi2html
   7.5.8 Index Chapter
   7.5.9 Split Index
   7.5.10 HREF Dir Instead File.
-8. Command Line Options
+8 Command Line Options
  8.1 Debugging
  8.2 DocType
  8.3 Check
@@ -83,10 +83,10 @@ Texi2html
   8.24.1 Where to find latex2html
   8.24.2 Skip calling LaTeX2HTML
   8.24.3 Temporary files for LaTeX2HTML
-A. Function Reference
+Appendix A Function Reference
  A.1 Print ToC Frame
  A.2 Print Page Head
-B. Indices
+Appendix B Indices
  B.1 Command Line Option Index
  B.2 Variable Index
  B.3 Concept Index
@@ -808,8 +808,8 @@ reuse previously generated content, instead.
 If set, l2h uses this directory for temporary files.  The
 path leading to this directory may not contain a dot (i.e.,
 a `.'); otherwise, l2h will fail.
-Annexe A Function Reference
-***************************
+Appendix A Function Reference
+*****************************
 
 * Refptocframe::           Print ToC Frame.
 * Refpphead::              Print page head.
@@ -830,8 +830,8 @@ A.2 Print Page Head
 
 Description of the subroutine.
 What does it do? Which parameters it needs etc.
-Annexe B Indices
-****************
+Appendix B Indices
+******************
 B.1 Command Line Option Index
 =============================
 * Index:
@@ -839,12 +839,12 @@ B.1 Command Line Option Index
 * debug: 8.1 Debugging.
 * doctype: 8.2 DocType.
 * expand: 8.4 Expand.
-* frames: 3. Customizing files.
+* frames: 3 Customizing files.
 * frames: 8.11 Frames.
 * glossary: 8.5 Glossary.
 * I: 8.8 Include Directory.
 * idx_sum: 8.21 Index Summary.
-* init_file: 7. Initialization file.
+* init_file: 7 Initialization file.
 * init_file: 7.4 Loadable initialization file.
 * invisible: 8.6 Invisible.
 * iso: 8.7 Iso.
@@ -865,7 +865,7 @@ B.1 Command Line Option Index
 * short_extn: 8.17 Short extension.
 * short_ref: 8.20 Short Cross References.
 * split: 8.14 Split.
-* sysconfdir: 7. Initialization file.
+* sysconfdir: 7 Initialization file.
 * toc_file: 8.10 Table Of content File.
 * top_file: 8.9 Top File.
 * verbose: 8.22 Verbose output.
@@ -928,11 +928,11 @@ B.2 Variable Index
 B.3 Concept Index
 =================
 * Index:
-* .texi2htmlrc, user initialization: 7. Initialization file.
+* .texi2htmlrc, user initialization: 7 Initialization file.
 * @math: 8.24 LaTeX2HTML for @math and @tex.
 * @tex: 8.24 LaTeX2HTML for @math and @tex.
 * Chapter, Index: 7.5.8 Index Chapter.
-* configure: 7. Initialization file.
+* configure: 7 Initialization file.
 * Conversion of @math and @tex: 8.24 LaTeX2HTML for @math and @tex.
 * Copyright: 8.7 Iso.
 * Debugging: 8.1 Debugging.
@@ -957,8 +957,8 @@ B.3 Concept Index
 * images, center: 7.5.3 Center Image.
 * Index, split: 7.5.9 Split Index.
 * Index, Summary: 8.21 Index Summary.
-* Installation: 2. Installation of texi2html.
-* Installation: 3. Customizing files.
+* Installation: 2 Installation of texi2html.
+* Installation: 3 Customizing files.
 * invisible, Mark: 8.6 Invisible.
 * ISO8859: 8.7 Iso.
 * Language Support: 8.23 Language Support.
@@ -980,8 +980,8 @@ B.3 Concept Index
 * Support different languages: 8.23 Language Support.
 * Table of content file: 8.10 Table Of content File.
 * Temporary, LaTeX2HTML: 8.24.3 Temporary files for LaTeX2HTML.
-* texi2html.init: 7. Initialization file.
-* texi2htmlrc, global initialization: 7. Initialization file.
+* texi2html.init: 7 Initialization file.
+* texi2htmlrc, global initialization: 7 Initialization file.
 * Texinfo, checking: 8.3 Check.
 * Texinfo, Glossary: 8.5 Glossary.
 * Texinfo, menu: 8.12 Menus.

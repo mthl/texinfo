@@ -82,15 +82,15 @@ Table of Contents
 *****************
 
 
-1. first node chapter
-2. second
+1 first node chapter
+2 second
  2.1 the node is within menu
   
   
 
 
 * Index:
-* elem: 1. first node chapter.
+* elem: 1 first node chapter.
 * index in example: 2.1 the node is within menu.
 * other entry: 2.1 the node is within menu.
 printindex  works but cannot be followed in info, in TeX
@@ -198,8 +198,8 @@ Table of Contents
 *****************
 
 
-1. first node chapter
-2. second
+1 first node chapter
+2 second
  2.1 the node is within menu
   
   

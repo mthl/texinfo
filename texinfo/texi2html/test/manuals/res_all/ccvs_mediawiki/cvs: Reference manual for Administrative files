@@ -15,7 +15,7 @@ Next: [cvs: All environment variables which affect CVS#Environment-variables Env
 supportive files for <small>CVS</small>.  You can use <small>CVS</small> in a limited
 fashion without any of them, but if they are set up
 properly they can help make life easier.  For a
-discussion of how to edit them, see [cvs: The Repository#Intro-administrative-files The administrative files].
+discussion of how to edit them, see [cvs: The Repository#Intro-administrative-files Intro administrative files].
 </p>
 <p>The most important of these files is the &lsquo;<tt>modules</tt>&rsquo;
 file, which defines the modules inside the repository.
@@ -296,7 +296,7 @@ argument, the module name.
 <dt><code>-o <var>prog</var></code></dt>
 <dd><p>Specify a program <var>prog</var> to run whenever files in a
 module are checked out.  <var>prog</var> runs with a single
-argument, the module name.  See [[#Module-program-options|How the modules file &ldquo;program options&rdquo; programs are run]] for
+argument, the module name.  See [[#Module-program-options|Module program options]] for
 information on how <var>prog</var> is called.
 </p>
 <div id="index-Status-of-a-module"></div>
@@ -321,11 +321,11 @@ module are tagged with <code>rtag</code>.  <var>prog</var> runs
 with two arguments: the module name and the symbolic
 tag specified to <code>rtag</code>.  It is not run
 when <code>tag</code> is executed.  Generally you will find
-that taginfo is a better solution (see section [cvs: History browsing#user_002ddefined-logging User-defined logging]).
+that taginfo is a better solution (see [cvs: History browsing#user_002ddefined-logging user-defined logging]).
 </p></dd>
 </dl>
 
-<p>You should also see see section [[#Module-program-options|How the modules file &ldquo;program options&rdquo; programs are run]] about how the
+<p>You should also see see [[#Module-program-options|Module program options]] about how the
 &ldquo;program options&rdquo; programs are run.
 </p>
 
@@ -396,7 +396,7 @@ copy one version of your file over the other, wiping
 out the previous contents.</strong>
 The &lsquo;<samp>-m</samp>&rsquo; wrapper option only affects behavior when
 merging is done on update; it does not affect how files
-are stored.  See [cvs: Handling binary files#Binary-files Handling binary files], for more on
+are stored.  See [cvs: Handling binary files#Binary-files Binary files], for more on
 binary files.
 </p>
 <p>The basic format of the file &lsquo;<tt>cvswrappers</tt>&rsquo; is:
@@ -431,7 +431,7 @@ Next: [[#rcsinfo|rcsinfo]], Previous: [[#Wrappers|Wrappers]], Up: [[#Administrat
 
 <p>The &lsquo;<samp>-i</samp>&rsquo; flag in the &lsquo;<tt>modules</tt>&rsquo; file can be
 used to run a certain program whenever files are
-committed (see section [[#modules|The modules file]]).  The files described in
+committed (see [[#modules|modules]]).  The files described in
 this section provide other, more flexible, ways to run
 programs whenever something is committed.
 </p>
@@ -453,7 +453,7 @@ the commit will be aborted.
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
 &lsquo;<tt>rcsinfo</tt>&rsquo; file, which can hold a log message
-template (see section [[#rcsinfo|Rcsinfo]]).
+template (see [[#rcsinfo|rcsinfo]]).
 </p>
 </dd>
 <dt>&lsquo;<tt>editinfo</tt>&rsquo;</dt>
@@ -461,7 +461,7 @@ template (see section [[#rcsinfo|Rcsinfo]]).
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
 &lsquo;<tt>rcsinfo</tt>&rsquo; file, which can hold a log message
-template (see section [[#rcsinfo|Rcsinfo]]).  (obsolete)
+template (see [[#rcsinfo|rcsinfo]]).  (obsolete)
 </p>
 </dd>
 <dt>&lsquo;<tt>loginfo</tt>&rsquo;</dt>
@@ -574,14 +574,14 @@ matching regular expression or the name &lsquo;<samp>DEFAULT</samp>&rsquo;.
 <p>The command will be run in the root of the workspace
 containing the new versions of any files the user would like
 to modify (commit), <em>or in a copy of the workspace on
-the server (see section [cvs: The Repository#Remote-repositories Remote repositories])</em>.  If a file is
+the server (see [cvs: The Repository#Remote-repositories Remote repositories])</em>.  If a file is
 being removed, there will be no copy of the file under the
 current directory.  If a file is being added, there will be
 no corresponding archive file in the repository unless the
 file is being resurrected.
 </p>
 <p>Note that both the repository directory and the corresponding
-Attic (see section [cvs: The Repository#Attic The attic]) directory may need to be checked to
+Attic (see [cvs: The Repository#Attic Attic]) directory may need to be checked to
 locate the archive file corresponding to any given file being
 committed.  Much of the information about the specific commit
 request being made, including the destination branch, commit
@@ -644,7 +644,7 @@ either always be reread after the verification script
 is run or reread only if the log message file status
 has changed.
 </p>
-<p>See section [[#config|The CVSROOT/config configuration file]], for more on CVSROOT/config options.
+<p>See [[#config|config]], for more on CVSROOT/config options.
 </p>
 <p>It is NOT a good idea for a &lsquo;<tt>verifymsg</tt>&rsquo; script to
 interact directly with the user in the various
@@ -748,8 +748,8 @@ Next: [[#loginfo|loginfo]], Previous: [[#verifymsg|verifymsg]], Up: [[#commit-fi
 <p><strong>Note: The &lsquo;<tt>editinfo</tt>&rsquo; feature has been
 rendered obsolete.  To set a default editor for log
 messages use the <code>CVSEDITOR</code>, <code>EDITOR</code> environment variables
-(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]) or the &lsquo;<samp>-e</samp>&rsquo; global
-option (see section [cvs: Guide to CVS commands#Global-options Global options]).  See [[#verifymsg|Verifying log messages]],
+(see [cvs: All environment variables which affect CVS#Environment-variables Environment variables]) or the &lsquo;<samp>-e</samp>&rsquo; global
+option (see [cvs: Guide to CVS commands#Global-options Global options]).  See [[#verifymsg|verifymsg]],
 for information on the use of the &lsquo;<tt>verifymsg</tt>&rsquo;
 feature for evaluating log messages.</strong>
 </p>
@@ -886,7 +886,7 @@ matching regular expression or &lsquo;<samp>DEFAULT</samp>&rsquo;.
 </p>
 <p>The first matching regular expression is used.
 </p>
-<p>See section [[#commit-files|The commit support files]], for a description of the syntax of
+<p>See [[#commit-files|commit files]], for a description of the syntax of
 the &lsquo;<tt>loginfo</tt>&rsquo; file.
 </p>
 <p>The user may specify a format string as
@@ -938,7 +938,7 @@ name of the repository will be generated.
 </p>
 <p>Note: when <small>CVS</small> is accessing a remote repository,
 &lsquo;<tt>loginfo</tt>&rsquo; will be run on the <em>remote</em>
-(i.e., server) side, not the client side (see section [cvs: The Repository#Remote-repositories Remote repositories]).
+(i.e., server) side, not the client side (see [cvs: The Repository#Remote-repositories Remote repositories]).
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#loginfo-example| loginfo example]]::<nowiki>             Loginfo example
 </nowiki>&bull;[[#Keeping-a-checked-out-copy| Keeping a checked out copy]]::<nowiki>  Updating a tree on every checkin
@@ -1028,7 +1028,7 @@ Next: [[#cvsignore|cvsignore]], Previous: [[#commit-files|commit files]], Up: [[
 edit when filling out the commit log.  The
 &lsquo;<tt>rcsinfo</tt>&rsquo; file has a syntax similar to the
 &lsquo;<tt>verifymsg</tt>&rsquo;, &lsquo;<tt>commitinfo</tt>&rsquo; and &lsquo;<tt>loginfo</tt>&rsquo;
-files.  See section [[#syntax|The common syntax]].  Unlike the other files the second
+files.  See [[#syntax|syntax]].  Unlike the other files the second
 part is <em>not</em> a command-line template.  Instead,
 the part after the regular expression should be a full pathname to
 a file containing the log message template.
@@ -1047,7 +1047,7 @@ commit -m <var>message</var></samp>&rsquo; or &lsquo;<samp>cvs commit -f
 <var>file</var></samp>&rsquo; that log message will override the
 template.
 </p>
-<p>See section [[#verifymsg|Verifying log messages]], for an example &lsquo;<tt>rcsinfo</tt>&rsquo;
+<p>See [[#verifymsg|verifymsg]], for an example &lsquo;<tt>rcsinfo</tt>&rsquo;
 file.
 </p>
 <p>When <small>CVS</small> is accessing a remote repository,
@@ -1080,7 +1080,7 @@ put under <small>CVS</small> control.  Examples are all the object
 files that you get while you compile your sources.
 Normally, when you run &lsquo;<samp>cvs update</samp>&rsquo;, it prints a
 line for each file it encounters that it doesn&rsquo;t know
-about (see section [cvs: Guide to CVS commands#update-output update output]).
+about (see [cvs: Guide to CVS commands#update-output update output]).
 </p>
 <p><small>CVS</small> has a list of files (or sh(1) file name patterns)
 that it should ignore while running <code>update</code>,
@@ -1205,7 +1205,7 @@ message such as:
 <p>and the checked out copy in the &lsquo;<tt>CVSROOT</tt>&rsquo;
 directory should be updated.
 </p>
-<p>Note that listing &lsquo;<tt>passwd</tt>&rsquo; (see section [cvs: The Repository#Password-authentication-server Setting up the server for password authentication]) in &lsquo;<tt>checkoutlist</tt>&rsquo; is not
+<p>Note that listing &lsquo;<tt>passwd</tt>&rsquo; (see [cvs: The Repository#Password-authentication-server Password authentication server]) in &lsquo;<tt>checkoutlist</tt>&rsquo; is not
 recommended for security reasons.
 </p>
 <p>For information about keeping a checkout out copy in a
@@ -1225,10 +1225,10 @@ Next: [[#Variables|Variables]], Previous: [[#checkoutlist|checkoutlist]], Up: [[
 
 <p>The file &lsquo;<tt>$CVSROOT/CVSROOT/history</tt>&rsquo; is used
 to log information for the <code>history</code> command
-(see section [cvs: Guide to CVS commands#history history&mdash;Show status of files and users]).  This file must be created to turn
+(see [cvs: Guide to CVS commands#history history]).  This file must be created to turn
 on logging.  This is done automatically if the
 <code>cvs init</code> command is used to set up the
-repository (see section [cvs: The Repository#Creating-a-repository Creating a repository]).
+repository (see [cvs: The Repository#Creating-a-repository Creating a repository]).
 </p>
 <p>The file format of the &lsquo;<tt>history</tt>&rsquo; file is
 documented only in comments in the <small>CVS</small> source
@@ -1258,7 +1258,7 @@ several mechanisms to do that.
 Likewise for the home directory of <var>user</var>, use
 &lsquo;<samp>~<var>user</var></samp>&rsquo;.  These variables are expanded on
 the server machine, and don&rsquo;t get any reasonable
-expansion if pserver (see section [cvs: The Repository#Password-authenticated Direct connection with password authentication])
+expansion if pserver (see [cvs: The Repository#Password-authenticated Password authenticated])
 is in use; therefore user variables (see below) may be
 a better choice to customize behavior based on the user
 running <small>CVS</small>.
@@ -1277,7 +1277,7 @@ internal variables are:
 <dt><code>CVSROOT</code></dt>
 <dd><div id="index-CVSROOT_002c-internal-variable"></div>
 <p>This is the absolute path to the current <small>CVS</small> root directory.
-See section [cvs: The Repository#Repository The Repository], for a description of the various
+See [cvs: The Repository#Repository Repository], for a description of the various
 ways to specify this, but note that the internal
 variable contains just the directory and not any
 of the access method information.
@@ -1301,7 +1301,7 @@ error.
 <dt><code>VISUAL</code></dt>
 <dd><div id="index-VISUAL_002c-internal-variable"></div>
 <p>These all expand to the same value, which is the editor
-that <small>CVS</small> is using.  See section [cvs: Guide to CVS commands#Global-options Global options], for how
+that <small>CVS</small> is using.  See [cvs: Guide to CVS commands#Global-options Global options], for how
 to specify this.
 </p>
 </dd>
@@ -1311,7 +1311,7 @@ to specify this.
 server machine).
 When using pserver, this is the user specified in the repository
 specification which need not be the same as the username the
-server is running as (see section [cvs: The Repository#Password-authentication-server Setting up the server for password authentication]).
+server is running as (see [cvs: The Repository#Password-authentication-server Password authentication server]).
 Do not confuse this with the environment variable of the same name.
 </p></dd>
 </dl>
@@ -1326,7 +1326,7 @@ administrative file contains
 specify the global option &lsquo;<samp>-s</samp>&rsquo; to <small>CVS</small>, with
 argument <code><var>variable</var>=<var>value</var></code>.  It may be
 particularly useful to specify this option via
-&lsquo;<tt>.cvsrc</tt>&rsquo; (see section [cvs: Guide to CVS commands#g_t_007e_002f_002ecvsrc Default options and the ~/.cvsrc file]).
+&lsquo;<tt>.cvsrc</tt>&rsquo; (see [cvs: Guide to CVS commands#g_t_007e_002f_002ecvsrc ~/.cvsrc]).
 </p>
 <p>For example, if you want the administrative file to
 refer to a test directory you might create a user
@@ -1414,7 +1414,7 @@ for users in the system&rsquo;s user database if not found in
 &lsquo;<tt>CVSROOT/passwd</tt>&rsquo;.  If it is &lsquo;<samp>no</samp>&rsquo;, then all
 pserver users must exist in &lsquo;<tt>CVSROOT/passwd</tt>&rsquo;.
 The default is &lsquo;<samp>yes</samp>&rsquo;.  For more on pserver, see
-[cvs: The Repository#Password-authenticated Direct connection with password authentication].
+[cvs: The Repository#Password-authenticated Password authenticated].
 </p>
 
 <div id="index-TopLevelAdmin_002c-in-CVSROOT_002fconfig"></div>
@@ -1432,7 +1432,7 @@ directory, rather than in one of the checked out
 subdirectories.  The &lsquo;<tt>CVS</tt>&rsquo; directory created there
 will mean you don&rsquo;t have to specify <code>CVSROOT</code> for
 each command.  It also provides a place for the
-&lsquo;<tt>CVS/Template</tt>&rsquo; file (see section [cvs: The Repository#Working-directory-storage How data is stored in the working directory]).
+&lsquo;<tt>CVS/Template</tt>&rsquo; file (see [cvs: The Repository#Working-directory-storage Working directory storage]).
 </p>
 <div id="index-LockDir_002c-in-CVSROOT_002fconfig"></div>
 </dd>
@@ -1448,7 +1448,7 @@ the repository.
 You need to create <var>directory</var>, but
 <small>CVS</small> will create subdirectories of <var>directory</var> as it
 needs them.  For information on <small>CVS</small> locks, see
-[cvs: Multiple developers#Concurrency Several developers simultaneously attempting to run CVS].
+[cvs: Multiple developers#Concurrency Concurrency].
 </p>
 <p>Before enabling the LockDir option, make sure that you
 have tracked down and removed any copies of <small>CVS</small> 1.9 or
@@ -1464,7 +1464,7 @@ repository with LockDir enabled.
 <div id="index-LogHistory_002c-in-CVSROOT_002fconfig"></div>
 </dd>
 <dt><code>LogHistory=<var>value</var></code></dt>
-<dd><p>Control what is logged to the &lsquo;<tt>CVSROOT/history</tt>&rsquo; file (see section [cvs: Guide to CVS commands#history history&mdash;Show status of files and users]).
+<dd><p>Control what is logged to the &lsquo;<tt>CVSROOT/history</tt>&rsquo; file (see [cvs: Guide to CVS commands#history history]).
 Default of &lsquo;<samp>TOEFWUCGMAR</samp>&rsquo; (or simply &lsquo;<samp>all</samp>&rsquo;) will log
 all transactions.  Any subset of the default is
 legal.  (For example, to only log transactions that modify the
@@ -1488,14 +1488,14 @@ before rereading.  The default value is &lsquo;<samp>always</samp>&rsquo;.
 one extra second per directory committed.  This can be less IO and
 CPU intensive but is not recommended for use with large repositories</strong>
 </p>
-<p>See section [[#verifymsg|Verifying log messages]], for more information on how verifymsg
+<p>See [[#verifymsg|verifymsg]], for more information on how verifymsg
 may be used.
 </p>
 <div id="index-UserAdminOptions_002c-in-CVSROOT_002fconfig-1"></div>
 </dd>
 <dt><code>UserAdminOptions=<var>value</var></code></dt>
 <dd><p>Control what options will be allowed with the <code>cvs admin</code>
-command (see section [cvs: Guide to CVS commands#admin admin&mdash;Administration]) for users not in the <code>cvsadmin</code> group.
+command (see [cvs: Guide to CVS commands#admin admin]) for users not in the <code>cvsadmin</code> group.
 The <var>value</var> string is a list of single character options
 which should be allowed.  If a user who is not a member of the
 <code>cvsadmin</code> group tries to execute any <code>cvs admin</code>
@@ -1503,7 +1503,7 @@ option which is not listed they will will receive an error message
 reporting that the option is restricted.
 </p>
 <p>If no <code>cvsadmin</code> group exists on the server, <small>CVS</small> will
-ignore the <code>UserAdminOptions</code> keyword (see section [cvs: Guide to CVS commands#admin admin&mdash;Administration]).
+ignore the <code>UserAdminOptions</code> keyword (see [cvs: Guide to CVS commands#admin admin]).
 </p>
 <p>When not specified, <code>UserAdminOptions</code> defaults to
 &lsquo;<samp>k</samp>&rsquo;.  In other words, it defaults to allowing

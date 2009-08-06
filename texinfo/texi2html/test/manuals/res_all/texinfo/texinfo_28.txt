@@ -1,5 +1,5 @@
-Annexe G Refilling Paragraphs
-*****************************
+Appendix G Refilling Paragraphs
+*******************************
 
 The @refill command refills and, optionally, indents the first
 line of a paragraph.(14) The

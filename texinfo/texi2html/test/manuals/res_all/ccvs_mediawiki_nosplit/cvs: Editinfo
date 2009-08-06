@@ -14,8 +14,8 @@ Next: [cvs: Loginfo#loginfo loginfo], Previous: [cvs: Verifying log messages#ver
 <p><strong>Note: The &lsquo;<tt>editinfo</tt>&rsquo; feature has been
 rendered obsolete.  To set a default editor for log
 messages use the <code>CVSEDITOR</code>, <code>EDITOR</code> environment variables
-(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]) or the &lsquo;<samp>-e</samp>&rsquo; global
-option (see section [cvs: Global options#Global-options Global options]).  See [cvs: Verifying log messages#verifymsg Verifying log messages],
+(see [cvs: All environment variables which affect CVS#Environment-variables Environment variables]) or the &lsquo;<samp>-e</samp>&rsquo; global
+option (see [cvs: Global options#Global-options Global options]).  See [cvs: Verifying log messages#verifymsg verifymsg],
 for information on the use of the &lsquo;<tt>verifymsg</tt>&rsquo;
 feature for evaluating log messages.</strong>
 </p>

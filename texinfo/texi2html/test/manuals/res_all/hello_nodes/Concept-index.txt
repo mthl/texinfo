@@ -2,52 +2,52 @@ Concept index
 *************
 
 * Index:
-* -g: 3. Invoking hello.
-* -greeting: 3. Invoking hello.
-* -h: 3. Invoking hello.
-* -help: 1. Overview.
-* -help: 3. Invoking hello.
-* -n: 3. Invoking hello.
-* -next-generation: 3. Invoking hello.
-* -t: 3. Invoking hello.
-* -traditional: 3. Invoking hello.
-* -v: 3. Invoking hello.
-* -version: 3. Invoking hello.
-* authors: 1. Overview.
-* Autoconf: 1. Overview.
-* Automake: 1. Overview.
-* Berry, Karl: 1. Overview.
-* Brittenson, Jan: 1. Overview.
-* bug reporting: 4. Reporting bugs.
-* checklist for bug reports: 4. Reporting bugs.
-* Eichwalder, Karl: 1. Overview.
-* environment variables, help for: 3. Invoking hello.
-* examples: 2. Sample output.
-* Friedman, Noah: 1. Overview.
-* Gettext: 1. Overview.
-* GNU coding standards: 1. Overview.
-* GNU maintainer standards: 1. Overview.
-* Gnulib: 1. Overview.
-* greetings: 1. Overview.
-* Haertel, Mike: 1. Overview.
-* Hannum, Charles: 1. Overview.
-* help: 3. Invoking hello.
-* Help2man: 1. Overview.
-* invoking: 3. Invoking hello.
-* joke, not: 1. Overview.
-* King, The: 1. Overview.
-* MacKenzie, David: 1. Overview.
-* McGrath, Roland: 1. Overview.
-* modern: 3. Invoking hello.
-* options: 3. Invoking hello.
-* overview: 1. Overview.
-* patches, contributing: 4. Reporting bugs.
-* problems: 4. Reporting bugs.
-* reporting bugs: 4. Reporting bugs.
-* sample output: 2. Sample output.
-* standards, GNU coding: 1. Overview.
-* standards, GNU maintainer: 1. Overview.
-* Texinfo: 1. Overview.
-* traditional: 3. Invoking hello.
-* usage: 3. Invoking hello.
+* -g: 3 Invoking hello.
+* -greeting: 3 Invoking hello.
+* -h: 3 Invoking hello.
+* -help: 1 Overview.
+* -help: 3 Invoking hello.
+* -n: 3 Invoking hello.
+* -next-generation: 3 Invoking hello.
+* -t: 3 Invoking hello.
+* -traditional: 3 Invoking hello.
+* -v: 3 Invoking hello.
+* -version: 3 Invoking hello.
+* authors: 1 Overview.
+* Autoconf: 1 Overview.
+* Automake: 1 Overview.
+* Berry, Karl: 1 Overview.
+* Brittenson, Jan: 1 Overview.
+* bug reporting: 4 Reporting bugs.
+* checklist for bug reports: 4 Reporting bugs.
+* Eichwalder, Karl: 1 Overview.
+* environment variables, help for: 3 Invoking hello.
+* examples: 2 Sample output.
+* Friedman, Noah: 1 Overview.
+* Gettext: 1 Overview.
+* GNU coding standards: 1 Overview.
+* GNU maintainer standards: 1 Overview.
+* Gnulib: 1 Overview.
+* greetings: 1 Overview.
+* Haertel, Mike: 1 Overview.
+* Hannum, Charles: 1 Overview.
+* help: 3 Invoking hello.
+* Help2man: 1 Overview.
+* invoking: 3 Invoking hello.
+* joke, not: 1 Overview.
+* King, The: 1 Overview.
+* MacKenzie, David: 1 Overview.
+* McGrath, Roland: 1 Overview.
+* modern: 3 Invoking hello.
+* options: 3 Invoking hello.
+* overview: 1 Overview.
+* patches, contributing: 4 Reporting bugs.
+* problems: 4 Reporting bugs.
+* reporting bugs: 4 Reporting bugs.
+* sample output: 2 Sample output.
+* standards, GNU coding: 1 Overview.
+* standards, GNU maintainer: 1 Overview.
+* Texinfo: 1 Overview.
+* traditional: 3 Invoking hello.
+* usage: 3 Invoking hello.
 

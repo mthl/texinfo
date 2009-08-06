@@ -1,5 +1,5 @@
-Annexe E Page Headings
-**********************
+Appendix E Page Headings
+************************
 
 Most printed manuals contain headings along the top of every page
 except the title and copyright pages.  Some manuals also contain

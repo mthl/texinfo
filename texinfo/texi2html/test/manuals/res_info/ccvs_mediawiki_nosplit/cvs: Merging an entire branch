@@ -50,9 +50,9 @@ $ cvs commit -m &quot;Included R1fix&quot; # <span class="roman">Create revision
 
 <p>A conflict can result from a merge operation.  If that
 happens, you should resolve it before committing the
-new revision.  See section [cvs: Conflicts example#Conflicts-example Conflicts example].
+new revision.  See [cvs: Conflicts example#Conflicts-example Conflicts example].
 </p>
-<p>If your source files contain keywords (see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]),
+<p>If your source files contain keywords (see [cvs: Keyword substitution#Keyword-substitution Keyword substitution]),
 you might be getting more conflicts than strictly necessary.  See
 [cvs: Merging and keywords#Merging-and-keywords Merging and keywords], for information on how to avoid this.
 </p>
@@ -64,7 +64,7 @@ $ cvs commit -m &quot;Included R1fix&quot;
 </nowiki></pre></td></tr></table>
 
 <p>It should be noted that <code>update -j <var>tagname</var></code> will also work but may
-not produce the desired result.  See section [cvs: Merging can add or remove files#Merging-adds-and-removals Merging can add or remove files], for more.
+not produce the desired result.  See [cvs: Merging can add or remove files#Merging-adds-and-removals Merging adds and removals], for more.
 </p>
 <hr>
 <div class="node">

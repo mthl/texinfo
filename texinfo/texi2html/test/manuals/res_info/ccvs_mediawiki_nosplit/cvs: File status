@@ -93,7 +93,7 @@ latest revision in the repository for the branch in
 use.
 </p>
 <p>The options to <code>status</code> are listed in
-[cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].  For information on its <code>Sticky tag</code>
+[cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS].  For information on its <code>Sticky tag</code>
 and <code>Sticky date</code> output, see [cvs: Sticky tags#Sticky-tags Sticky tags].
 For information on its <code>Sticky options</code> output,
 see the &lsquo;<samp>-k</samp>&rsquo; option in [cvs: update options#update-options update options].
@@ -116,7 +116,7 @@ displayed by the <code>status</code> command, you can invoke
 update, but merely to display statuses; the &lsquo;<samp>-q</samp>&rsquo;
 option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
-these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].
+these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS].
 </p>
 <hr>
 <div class="node">

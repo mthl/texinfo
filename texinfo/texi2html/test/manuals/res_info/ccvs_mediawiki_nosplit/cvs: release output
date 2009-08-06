@@ -30,7 +30,7 @@ this file will be lost.
 <dd><p>The file has been removed from your private copy of the
 sources, but has not yet been removed from the
 repository, since you have not yet committed the
-removal.  See section [cvs: commit--Check files into the repository#commit commit&mdash;Check files into the repository].
+removal.  See [cvs: commit--Check files into the repository#commit commit].
 </p>
 </dd>
 <dt><code>M <var>file</var></code></dt>
@@ -43,7 +43,7 @@ might also be a newer revision inside the repository.
 correspond to anything in the source repository, and is
 not in the list of files for <small>CVS</small> to ignore (see the
 description of the &lsquo;<samp>-I</samp>&rsquo; option, and
-see section [cvs: Ignoring files via cvsignore#cvsignore Ignoring files via cvsignore]).  If you remove your working
+see [cvs: Ignoring files via cvsignore#cvsignore cvsignore]).  If you remove your working
 sources, this file will be lost.
 </p></dd>
 </dl>

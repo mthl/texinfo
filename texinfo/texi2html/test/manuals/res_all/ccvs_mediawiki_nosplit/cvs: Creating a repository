@@ -38,13 +38,13 @@ mode; the client machines need not have any access to
 it other than via the <small>CVS</small> protocol.  It is not
 possible to use <small>CVS</small> to read from a repository
 which one only has read access to; <small>CVS</small> needs to be
-able to create lock files (see section [cvs: Several developers simultaneously attempting to run CVS#Concurrency Several developers simultaneously attempting to run CVS]).
+able to create lock files (see [cvs: Several developers simultaneously attempting to run CVS#Concurrency Concurrency]).
 </p>
 <div id="index-init-_0028subcommand_0029"></div>
 <p>To create a repository, run the <code>cvs init</code>
 command.  It will set up an empty repository in the
 <small>CVS</small> root specified in the usual way
-(see section [cvs: The Repository#Repository The Repository]).  For example,
+(see [cvs: The Repository#Repository Repository]).  For example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d /usr/local/cvsroot init
 </nowiki></pre></td></tr></table>
@@ -56,7 +56,7 @@ repository.
 </p>
 <p><code>cvs init</code> will enable history logging; if you
 don&rsquo;t want that, remove the history file after running
-<code>cvs init</code>.  See section [cvs: The history file#history-file The history file].
+<code>cvs init</code>.  See [cvs: The history file#history-file history file].
 </p>
 <hr>
 <div class="node">

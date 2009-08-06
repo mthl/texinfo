@@ -32,7 +32,7 @@ start with &lsquo;<tt>#cvs.rfl</tt>&rsquo;,
 internal data structures and have no relationship to
 the word <em>lock</em> in the sense used by
 <small>RCS</small>&mdash;which refers to reserved checkouts
-(see section [cvs: Multiple developers#Multiple-developers Multiple developers]).
+(see [cvs: Multiple developers#Multiple-developers Multiple developers]).
 </p>
 <p>Any number of people can be reading from a given
 repository at a time; only when someone is writing do

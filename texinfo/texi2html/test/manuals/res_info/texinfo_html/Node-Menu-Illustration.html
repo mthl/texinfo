@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 6.2 Node and Menu Illustration</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 6.2 Node and Menu Illustration">
+<meta name="keywords" content="GNU Texinfo 4.2: 6.2 Node and Menu Illustration">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Nodes.html#Nodes" rel="up" title="6 Nodes">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Two-Paths.html#Two-Paths" rel="previous" title="6.1 Two Paths">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Node-Menu-Illustration"></a>
+<div class="node">
+<p>
+Next: <a href="node.html#node" accesskey="n" rel="next">node</a>, Previous: <a href="Two-Paths.html#Two-Paths" accesskey="p" rel="previous">Two Paths</a>, Up: <a href="Nodes.html#Nodes" accesskey="u" rel="up">Nodes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Node-and-Menu-Illustration"></a>
+<h2 class="section">6.2 Node and Menu Illustration</h2>
+
+<p>Here is a copy of the diagram shown earlier that illustrates a Texinfo
+file with three chapters, each of which contains two sections.
+</p>
+<p>The &ldquo;root&rdquo; is at the top of the diagram and the &ldquo;leaves&rdquo; are at the
+bottom.  This is how such a diagram is drawn conventionally; it
+illustrates an upside-down tree.  For this reason, the root node is
+called the &lsquo;Top&rsquo; node, and &lsquo;Up&rsquo; node pointers carry you closer to the
+root.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">                          Top
+                           |
+         -------------------------------------
+        |                  |                  |
+     Chapter 1          Chapter 2          Chapter 3
+        |                  |                  |
+     --------           --------           --------
+    |        |         |        |         |        |
+ Section  Section   Section  Section   Section  Section
+   1.1      1.2       2.1      2.2       3.1      3.2
+</pre></td></tr></table>
+
+<p>The fully-written command to start Chapter 2 would be this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node     Chapter 2,  Chapter 3, Chapter 1, Top
+@comment  node-name,  next,      previous,  up
+</pre></td></tr></table>
+
+<p>This <code>@node</code> line says that the name of this node is &ldquo;Chapter
+2&rdquo;, the name of the &lsquo;Next&rsquo; node is &ldquo;Chapter 3&rdquo;, the name of the
+&lsquo;Previous&rsquo; node is &ldquo;Chapter 1&rdquo;, and the name of the &lsquo;Up&rsquo; node is
+&ldquo;Top&rdquo;.  You can omit writing out these node names if your document is
+hierarchically organized (see <a href="makeinfo-Pointer-Creation.html#makeinfo-Pointer-Creation">makeinfo Pointer Creation</a>), but the
+pointer relationships still obtain.
+</p>
+<blockquote><p><strong>Please Note:</strong> &lsquo;Next&rsquo; refers to the next node at the same
+hierarchical level in the manual, not necessarily to the next node
+within the Texinfo file.  In the Texinfo file, the subsequent node may
+be at a lower level&mdash;a section-level node most often follows a
+chapter-level node, for example.  &lsquo;Next&rsquo; and &lsquo;Previous&rsquo; refer to nodes
+at the <em>same</em> hierarchical level.  (The &lsquo;Top&rsquo; node contains the
+exception to this rule.  Since the &lsquo;Top&rsquo; node is the only node at that
+level, &lsquo;Next&rsquo; refers to the first following node, which is almost always
+a chapter or chapter-level node.)
+</p></blockquote>
+
+<p>To go to Sections 2.1 and 2.2 using Info, you need a menu inside Chapter
+2.  (See <a href="Menus.html#Menus">Menus</a>.)  You would write the menu just
+before the beginning of Section 2.1, like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">    @menu
+    * Sect. 2.1::    Description of this section.
+    * Sect. 2.2::
+    @end menu
+</pre></td></tr></table>
+
+<p>Write the node for Sect. 2.1 like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">    @node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
+    @comment  node-name, next,      previous,  up
+</pre></td></tr></table>
+
+<p>In Info format, the &lsquo;Next&rsquo; and &lsquo;Previous&rsquo; pointers of a node usually
+lead to other nodes at the same level&mdash;from chapter to chapter or from
+section to section (sometimes, as shown, the &lsquo;Previous&rsquo; pointer points
+up); an &lsquo;Up&rsquo; pointer usually leads to a node at the level above (closer
+to the &lsquo;Top&rsquo; node); and a &lsquo;Menu&rsquo; leads to nodes at a level below (closer
+to &lsquo;leaves&rsquo;).  (A cross reference can point to a node at any level;
+see <a href="Cross-References.html#Cross-References">Cross References</a>.)
+</p>
+<p>Usually, an <code>@node</code> command and a chapter structuring command are
+used in sequence, along with indexing commands.  (You may follow the
+<code>@node</code> line with a comment line that reminds you which pointer is
+which.)
+</p>
+<p>Here is the beginning of the chapter in this manual called &ldquo;Ending a
+Texinfo File&rdquo;.  This shows an <code>@node</code> line followed by a comment
+line, an <code>@chapter</code> line, and then by indexing lines.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node    Ending a File, Structuring, Beginning a File, Top
+@comment node-name,     next,        previous,         up
+@chapter Ending a Texinfo File
+@cindex Ending a Texinfo file
+@cindex Texinfo file ending
+@cindex File ending
+</pre></td></tr></table>
+
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="node.html#node" accesskey="n" rel="next">node</a>, Previous: <a href="Two-Paths.html#Two-Paths" accesskey="p" rel="previous">Two Paths</a>, Up: <a href="Nodes.html#Nodes" accesskey="u" rel="up">Nodes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

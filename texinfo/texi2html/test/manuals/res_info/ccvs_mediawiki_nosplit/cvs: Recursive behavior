@@ -70,7 +70,7 @@ for most of the <small>CVS</small> subcommands, not only the
 <p>The recursive behavior of the <small>CVS</small> subcommands can be
 turned off with the &lsquo;<samp>-l</samp>&rsquo; option.
 Conversely, the &lsquo;<samp>-R</samp>&rsquo; option can be used to force recursion if
-&lsquo;<samp>-l</samp>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section [cvs: Default options and the ~%47.cvsrc file#g_t_007e_002f_002ecvsrc Default options and the ~/.cvsrc file]).
+&lsquo;<samp>-l</samp>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see [cvs: Default options and the ~%47.cvsrc file#g_t_007e_002f_002ecvsrc ~/.cvsrc]).
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -l         # <span class="roman">Don't update files in subdirectories</span>
 </nowiki></pre></td></tr></table>

@@ -18,7 +18,7 @@ should be sufficient to estimate memory requirements.
 There are two such areas documented here; other memory
 consumption should be small by comparison (if you find
 that is not the case, let us know, as described in
-[cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual], so we can update this documentation).
+[cvs: Dealing with bugs in CVS or this manual#BUGS BUGS], so we can update this documentation).
 </p>
 <p>The first area of big memory consumption is large
 checkouts, when using the <small>CVS</small> server.  The server

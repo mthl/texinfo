@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 3.2.2 Start of Header</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 3.2.2 Start of Header">
+<meta name="keywords" content="GNU Texinfo 4.2: 3.2.2 Start of Header">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Texinfo-File-Header.html#Texinfo-File-Header" rel="up" title="3.2 Texinfo File Header">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="First-Line.html#First-Line" rel="previous" title="3.2.1 The First Line of a Texinfo File">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Start-of-Header"></a>
+<div class="node">
+<p>
+Next: <a href="setfilename.html#setfilename" accesskey="n" rel="next">setfilename</a>, Previous: <a href="First-Line.html#First-Line" accesskey="p" rel="previous">First Line</a>, Up: <a href="Texinfo-File-Header.html#Texinfo-File-Header" accesskey="u" rel="up">Texinfo File Header</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Start-of-Header-1"></a>
+<h3 class="subsection">3.2.2 Start of Header</h3>
+<a name="index-Start-of-header-line"></a>
+
+<p>A start-of-header line is a Texinfo comment that looks like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@c %**start of header
+</pre></td></tr></table>
+
+<p>Write the start-of-header line on the second line of a Texinfo file.
+Follow the start-of-header line with <code>@setfilename</code> and
+<code>@settitle</code> lines and, optionally, with other commands that
+globally affect the document formatting, such as <code>@synindex</code> or
+<code>@footnotestyle</code>; and then by an end-of-header line (see <a href="End-of-Header.html#End-of-Header">End of Header</a>).
+</p>
+<p>The start- and end-of-header lines allow you to format only part of a
+Texinfo file for Info or printing.  See <a href="texinfo_002dformat-commands.html#texinfo_002dformat-commands">texinfo-format commands</a>.
+</p>
+<p>The odd string of characters, &lsquo;<samp>%**</samp>&rsquo;, is to ensure that no other
+comment is accidentally taken for a start-of-header line.  You can
+change it if you wish by setting the <code>tex-start-of-header</code> and/or
+<code>tex-end-of-header</code> Emacs variables.  See <a href="Texinfo-Mode-Printing.html#Texinfo-Mode-Printing">Texinfo Mode Printing</a>.
+</p>
+
+<p>
+
+
+</p>
+</body>
+</html>

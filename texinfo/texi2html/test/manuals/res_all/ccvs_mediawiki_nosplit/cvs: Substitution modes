@@ -17,7 +17,7 @@ option to <code>cvs add</code> and <code>cvs admin</code>; the
 latter is set by the &lsquo;<samp>-k</samp>&rsquo; or &lsquo;<samp>-A</samp>&rsquo; options to <code>cvs
 checkout</code> or <code>cvs update</code>.  <code>cvs diff</code> also
 has a &lsquo;<samp>-k</samp>&rsquo; option.  For some examples,
-see [cvs: Handling binary files#Binary-files Handling binary files], and [cvs: Merging and keywords#Merging-and-keywords Merging and keywords].
+see [cvs: Handling binary files#Binary-files Binary files], and [cvs: Merging and keywords#Merging-and-keywords Merging and keywords].
 </p>
 <p>The modes available are:
 </p>
@@ -42,7 +42,7 @@ keyword, generate the string <code>$<i></i>Revision$</code>
 instead of <code>$<i></i>Revision: 5.7 $</code>.  This option
 is useful to ignore differences due to keyword
 substitution when comparing different revisions of a
-file (see section [cvs: Merging and keywords#Merging-and-keywords Merging and keywords]).
+file (see [cvs: Merging and keywords#Merging-and-keywords Merging and keywords]).
 </p>
 </dd>
 <dt>&lsquo;<samp>-ko</samp>&rsquo;</dt>
@@ -62,7 +62,7 @@ appropriate to the operating system in use on the
 client.  For systems, like unix, which use linefeed
 only to terminate lines, this is very similar to
 &lsquo;<samp>-ko</samp>&rsquo;.  For more information on binary files, see
-[cvs: Handling binary files#Binary-files Handling binary files].  In <small>CVS</small> version 1.12.2 and later
+[cvs: Handling binary files#Binary-files Binary files].  In <small>CVS</small> version 1.12.2 and later
 &lsquo;<samp>-kb</samp>&rsquo;, as set by <code>cvs add</code>, <code>cvs admin</code>, or
 <code>cvs import</code> may not be overridden by a &lsquo;<samp>-k</samp>&rsquo; option
 specified on the command line.
@@ -80,7 +80,7 @@ the keyword names are removed, so this option should be
 used with care.
 </p>
 <p>One often would like to use &lsquo;<samp>-kv</samp>&rsquo; with <code>cvs
-export</code>&mdash;see section [cvs: export--Export sources from CVS, similar to checkout#export export&mdash;Export sources from CVS, similar to checkout].  But be aware that doesn&rsquo;t
+export</code>&mdash;see [cvs: export--Export sources from CVS, similar to checkout#export export].  But be aware that doesn&rsquo;t
 handle an export containing binary files correctly.
 </p>
 </dd>

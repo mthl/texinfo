@@ -13,7 +13,7 @@ Next: [cvs: Moving and renaming directories#Moving-directories Moving directorie
 <p>Moving files to a different directory or renaming them
 is not difficult, but some of the ways in which this
 works may be non-obvious.  (Moving or renaming a
-directory is even harder.  See section [cvs: Moving and renaming directories#Moving-directories Moving and renaming directories].).
+directory is even harder.  See [cvs: Moving and renaming directories#Moving-directories Moving directories].).
 </p>
 <p>The examples below assume that the file <var>old</var> is renamed to
 <var>new</var>.

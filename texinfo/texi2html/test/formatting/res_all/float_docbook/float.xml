@@ -158,6 +158,14 @@ A footnote.
 
 </sect1>
 </chapter>
+<appendix label="Appendix A" id="Appendix-for-float">
+<title>Appendix for float</title>
+
+<anchor id="appendix sec float"></anchor><para>Appendix
+
+
+</para>
+</appendix>
 <chapter label="" xreflabel="list of floats" id="list-of-floats">
 <title>list of floats</title>
 

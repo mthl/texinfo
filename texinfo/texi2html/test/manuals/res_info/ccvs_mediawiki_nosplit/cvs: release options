@@ -20,7 +20,7 @@ all directories and files recursively.  This
 has the very serious side-effect that any directory
 that you have created inside your checked-out sources,
 and not added to the repository (using the <code>add</code>
-command; see section [cvs: Adding files to a directory#Adding-files Adding files to a directory]) will be silently deleted&mdash;even
+command; see [cvs: Adding files to a directory#Adding-files Adding files]) will be silently deleted&mdash;even
 if it is non-empty!</strong>
 </p></dd>
 </dl>

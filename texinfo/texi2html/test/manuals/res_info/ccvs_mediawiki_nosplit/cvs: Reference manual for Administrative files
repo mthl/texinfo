@@ -16,7 +16,7 @@ Next: [cvs: All environment variables which affect CVS#Environment-variables Env
 supportive files for <small>CVS</small>.  You can use <small>CVS</small> in a limited
 fashion without any of them, but if they are set up
 properly they can help make life easier.  For a
-discussion of how to edit them, see [cvs: The administrative files#Intro-administrative-files The administrative files].
+discussion of how to edit them, see [cvs: The administrative files#Intro-administrative-files Intro administrative files].
 </p>
 <p>The most important of these files is the &lsquo;<tt>modules</tt>&rsquo;
 file, which defines the modules inside the repository.

@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 1.8 What a Texinfo File Must Have</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 1.8 What a Texinfo File Must Have">
+<meta name="keywords" content="GNU Texinfo 4.2: 1.8 What a Texinfo File Must Have">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Overview.html#Overview" rel="up" title="1 Overview of Texinfo">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Comments.html#Comments" rel="previous" title="1.7 Comments">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Minimum"></a>
+<div class="node">
+<p>
+Next: <a href="Six-Parts.html#Six-Parts" accesskey="n" rel="next">Six Parts</a>, Previous: <a href="Comments.html#Comments" accesskey="p" rel="previous">Comments</a>, Up: <a href="Overview.html#Overview" accesskey="u" rel="up">Overview</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="What-a-Texinfo-File-Must-Have"></a>
+<h2 class="section">1.8 What a Texinfo File Must Have</h2>
+<a name="index-Minimal-Texinfo-file-_0028requirements_0029"></a>
+<a name="index-Must-have-in-Texinfo-file"></a>
+<a name="index-Required-in-Texinfo-file"></a>
+<a name="index-Texinfo-file-minimum"></a>
+
+<p>By convention, the namea of a Texinfo file ends with (in order of
+preference) one of the extensions &lsquo;<tt>.texinfo</tt>&rsquo;, &lsquo;<tt>.texi</tt>&rsquo;,
+&lsquo;<tt>.txi</tt>&rsquo;, or &lsquo;<tt>.tex</tt>&rsquo;.  The longer extensions are preferred since
+they describe more clearly to a human reader the nature of the file.
+The shorter extensions are for operating systems that cannot handle long
+file names.
+</p>
+<p>In order to be made into a printed manual and an Info file, a Texinfo
+file <strong>must</strong> begin with lines like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+@setfilename <var>info-file-name</var>
+@settitle <var>name-of-manual</var>
+</pre></td></tr></table>
+
+<p>The contents of the file follow this beginning, and then you
+<strong>must</strong> end a Texinfo file with a line like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@bye
+</pre></td></tr></table>
+
+<a name="index-_005cinput-_0028raw-TeX-startup_0029"></a>
+<p>Here&rsquo;s an explanation:
+</p>
+<ul>
+<li>
+The &lsquo;<samp>\input texinfo</samp>&rsquo; line tells TeX to use the
+&lsquo;<tt>texinfo.tex</tt>&rsquo; file, which tells TeX how to translate the Texinfo
+@-commands into TeX typesetting commands.  (Note the use of the
+backslash, &lsquo;<samp>\</samp>&rsquo;; this is correct for TeX.)
+
+</li><li>
+The <code>@setfilename</code> line provides a name for the Info file and
+tells TeX to open auxiliary files.  <strong>All text before
+<code>@setfilename</code> is ignored!</strong>
+
+</li><li>
+The <code>@settitle</code> line specifies a title for the page headers (or
+footers) of the printed manual, and the default document description for
+the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; in HTML format.  Strictly speaking, <code>@settitle</code>
+is optional&mdash;if you don&rsquo;t mind your document being titled &lsquo;Untitled&rsquo;.
+
+</li><li>
+The <code>@bye</code> line at the end of the file on a line of its own tells
+the formatters that the file is ended and to stop formatting.
+
+</li></ul>
+
+<p>Typically, you will not use quite such a spare format, but will include
+mode setting and start-of-header and end-of-header lines at the
+beginning of a Texinfo file, like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename <var>info-file-name</var>
+@settitle <var>name-of-manual</var>
+@c %**end of header
+</pre></td></tr></table>
+
+<p>In the first line, &lsquo;<samp>-*-texinfo-*-</samp>&rsquo; causes Emacs to switch into
+Texinfo mode when you edit the file.
+</p>
+<p>The <code>@c</code> lines which surround the <code>@setfilename</code> and
+<code>@settitle</code> lines are optional, but you need them in order to
+run TeX or Info on just part of the file.  (See <a href="Start-of-Header.html#Start-of-Header">Start of Header</a>.)
+</p>
+<p>Furthermore, you will usually provide a Texinfo file with a title page,
+indices, and the like, all of which are explained in this manual.  But
+the minimum, which can be useful for short documents, is just the three
+lines at the beginning and the one line at the end.
+</p>
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="Six-Parts.html#Six-Parts" accesskey="n" rel="next">Six Parts</a>, Previous: <a href="Comments.html#Comments" accesskey="p" rel="previous">Comments</a>, Up: <a href="Overview.html#Overview" accesskey="u" rel="up">Overview</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

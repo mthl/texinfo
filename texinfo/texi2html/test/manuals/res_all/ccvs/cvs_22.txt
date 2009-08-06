@@ -1,5 +1,5 @@
-Annexe G Credits
-****************
+Appendix G Credits
+******************
 
 Roland Pesch, then of Cygnus Support <roland@wrs.com>
 wrote the manual pages which were distributed with

@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 13.10.2 Footnote Styles</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 13.10.2 Footnote Styles">
+<meta name="keywords" content="GNU Texinfo 4.2: 13.10.2 Footnote Styles">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Footnotes.html#Footnotes" rel="up" title="13.10 Footnotes">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Footnote-Commands.html#Footnote-Commands" rel="previous" title="13.10.1 Footnote Commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Footnote-Styles"></a>
+<div class="node">
+<p>
+Previous: <a href="Footnote-Commands.html#Footnote-Commands" accesskey="p" rel="previous">Footnote Commands</a>, Up: <a href="Footnotes.html#Footnotes" accesskey="u" rel="up">Footnotes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Footnote-Styles-1"></a>
+<h3 class="subsection">13.10.2 Footnote Styles</h3>
+
+<p>Info has two footnote styles, which determine where the text of the
+footnote is located:
+</p>
+<ul>
+<li><a name="index-End-node-footnote-style"></a>
+</li><li>
+In the &lsquo;End&rsquo; node style, all the footnotes for a single node
+are placed at the end of that node.  The footnotes are separated from
+the rest of the node by a line of dashes with the word
+&lsquo;<samp>Footnotes</samp>&rsquo; within it.  Each footnote begins with an
+&lsquo;<samp>(<var>n</var>)</samp>&rsquo; reference mark.
+
+<p>Here is an example of a single footnote in the end of node style:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example"> --------- Footnotes ---------
+
+(1)  Here is a sample footnote.
+</pre></td></tr></table>
+
+<a name="index-Separate-footnote-style"></a>
+</li><li>
+In the &lsquo;Separate&rsquo; node style, all the footnotes for a single
+node are placed in an automatically constructed node of
+their own.  In this style, a &ldquo;footnote reference&rdquo; follows
+each &lsquo;<samp>(<var>n</var>)</samp>&rsquo; reference mark in the body of the
+node.  The footnote reference is actually a cross reference
+which you use to reach the footnote node.
+
+<p>The name of the node with the footnotes is constructed
+by appending &lsquo;<samp>-Footnotes</samp>&rsquo; to the name of the node
+that contains the footnotes. (Consequently, the footnotes&rsquo;
+node for the &lsquo;<tt>Footnotes</tt>&rsquo; node is
+&lsquo;<tt>Footnotes-Footnotes</tt>&rsquo;!)  The footnotes&rsquo; node has an
+&lsquo;Up&rsquo; node pointer that leads back to its parent node.
+</p>
+<p>Here is how the first footnote in this manual looks after being
+formatted for Info in the separate node style:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">File: texinfo.info  Node: Overview-Footnotes, Up: Overview
+
+(1) The first syllable of &quot;Texinfo&quot; is pronounced like &quot;speck&quot;, not
+&quot;hex&quot;. &hellip;
+</pre></td></tr></table>
+</li></ul>
+
+<p>A Texinfo file may be formatted into an Info file with either footnote
+style.
+</p>
+<a name="index-footnotestyle"></a>
+<p>Use the <code>@footnotestyle</code> command to specify an Info file&rsquo;s
+footnote style.  Write this command at the beginning of a line followed
+by an argument, either &lsquo;<samp>end</samp>&rsquo; for the end node style or
+&lsquo;<samp>separate</samp>&rsquo; for the separate node style.
+</p>
+<p>For example,
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle end
+</pre></td></tr></table>
+<p>or
+</p><table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle separate
+</pre></td></tr></table>
+
+<p>Write an <code>@footnotestyle</code> command before or shortly after the
+end-of-header line at the beginning of a Texinfo file.  (If you
+include the <code>@footnotestyle</code> command between the start-of-header
+and end-of-header lines, the region formatting commands will format
+footnotes as specified.)
+</p>
+<p>If you do not specify a footnote style, the formatting commands use
+their default style.  Currently, <code>texinfo-format-buffer</code> and
+<code>texinfo-format-region</code> use the &lsquo;separate&rsquo; style and
+<code>makeinfo</code> uses the &lsquo;end&rsquo; style.
+</p>
+
+
+<hr>
+<div class="node">
+<p>
+Previous: <a href="Footnote-Commands.html#Footnote-Commands" accesskey="p" rel="previous">Footnote Commands</a>, Up: <a href="Footnotes.html#Footnotes" accesskey="u" rel="up">Footnotes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

@@ -2,8 +2,8 @@
 ==========
 
 * Index:
-* chapter: 1. Chapter.
-* Chapter2: 1. Chapter.
+* chapter: 1 Chapter.
+* Chapter2: 1 Chapter.
 * second: 0.1 second.
 * second: 0.1 second.
 * top section: top section.
@@ -19,8 +19,8 @@
 second node
 
 * Index:
-* chapter: 1. Chapter.
-* Chapter2: 1. Chapter.
+* chapter: 1 Chapter.
+* Chapter2: 1 Chapter.
 * second: 0.1 second.
 * second: 0.1 second.
 * top section: top section.

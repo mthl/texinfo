@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 5.3 @top</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 5.3 @top">
+<meta name="keywords" content="GNU Texinfo 4.2: 5.3 @top">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Structuring.html#Structuring" rel="up" title="5 Chapter Structuring">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Structuring-Command-Types.html#Structuring-Command-Types" rel="previous" title="5.2 Structuring Command Types">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="makeinfo-top"></a>
+<div class="node">
+<p>
+Next: <a href="chapter.html#chapter" accesskey="n" rel="next">chapter</a>, Previous: <a href="Structuring-Command-Types.html#Structuring-Command-Types" accesskey="p" rel="previous">Structuring Command Types</a>, Up: <a href="Structuring.html#Structuring" accesskey="u" rel="up">Structuring</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="g_t_0040top"></a>
+<h2 class="section">5.3 <code>@top</code></h2>
+
+<p>The <code>@top</code> command is a special sectioning command that you use
+only after an &lsquo;<samp>@node Top</samp>&rsquo; line at the beginning of a Texinfo file.
+The <code>@top</code> command tells the <code>makeinfo</code> formatter which node
+is the &lsquo;Top&rsquo; node, so it can use it as the root of the node tree if your
+manual uses implicit pointers.  It has the same typesetting effect as
+<code>@unnumbered</code> (see <a href="unnumbered-_0026-appendix.html#unnumbered-_0026-appendix"><code>@unnumbered</code> and <code>@appendix</code></a>).  For detailed information, see <a href="makeinfo-top-command.html#makeinfo-top-command">The <code>@top</code> Command</a>.
+</p>
+<p>The <code>@top</code> node and its menu (if any) is conventionally wrapped in
+an <code>@ifnottex</code> conditional so that it will appear only in Info and
+HTML output, not TeX.
+</p>
+
+<p>
+
+
+</p>
+</body>
+</html>

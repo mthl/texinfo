@@ -36,7 +36,7 @@ Next: [[#Removing-files|Removing files]], Up: [[#Adding-and-removing|Adding and 
 <ul>
 <li>
 You must have a working copy of the directory.
-See section [cvs: Overview#Getting-the-source Getting the source].
+See [cvs: Overview#Getting-the-source Getting the source].
 
 </li><li>
 Create the new file inside your working copy of the directory.
@@ -44,7 +44,7 @@ Create the new file inside your working copy of the directory.
 </li><li>
 Use &lsquo;<samp>cvs add <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that you
 want to version control the file.  If the file contains
-binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see section [cvs: Handling binary files#Binary-files Handling binary files]).
+binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see [cvs: Handling binary files#Binary-files Binary files]).
 
 </li><li>
 Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually check
@@ -65,21 +65,21 @@ $ cvs add bar
 
 <div id="index-add-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-add"></div><u>Command:</u> <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i></dt>
+<dt><div id="index-cvs-add"></div>Command: <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i></dt>
 <dd>
 <p>Schedule <var>files</var> to be added to the repository.
 The files or directories specified with <code>add</code> must
 already exist in the current directory.  To add a whole
 new directory hierarchy to the source repository (for
 example, files received from a third-party vendor), use
-the <code>import</code> command instead.  See section [cvs: Guide to CVS commands#import import&mdash;Import sources into CVS, using vendor branches].
+the <code>import</code> command instead.  See [cvs: Guide to CVS commands#import import].
 </p>
 <p>The added files are not placed in the source repository
 until you use <code>commit</code> to make the change
 permanent.  Doing an <code>add</code> on a file that was
 removed with the <code>remove</code> command will undo the
 effect of the <code>remove</code>, unless a <code>commit</code>
-command intervened.  See section [[#Removing-files|Removing files]], for an
+command intervened.  See [[#Removing-files|Removing files]], for an
 example.
 </p>
 <p>The &lsquo;<samp>-k</samp>&rsquo; option specifies the default way that
@@ -88,11 +88,11 @@ this file will be checked out; for more information see
 </p>
 <p>The &lsquo;<samp>-m</samp>&rsquo; option specifies a description for the
 file.  This description appears in the history log (if
-it is enabled, see section [cvs: Reference manual for Administrative files#history-file The history file]).  It will also be
+it is enabled, see [cvs: Reference manual for Administrative files#history-file history file]).  It will also be
 saved in the version history inside the repository when
 the file is committed.  The <code>log</code> command displays
 this description.  The description can be changed using
-&lsquo;<samp>admin -t</samp>&rsquo;.  See section [cvs: Guide to CVS commands#admin admin&mdash;Administration].  If you omit the
+&lsquo;<samp>admin -t</samp>&rsquo;.  See [cvs: Guide to CVS commands#admin admin].  If you omit the
 &lsquo;<samp>-m <var>description</var></samp>&rsquo; flag, an empty string will
 be used.  You will not be prompted for a description.
 </p></dd></dl>
@@ -105,9 +105,9 @@ $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
 </nowiki></pre></td></tr></table>
 
 <p>When you add a file it is added only on the branch
-which you are working on (see section [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
+which you are working on (see [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
 later merge the additions to another branch if you want
-(see section [cvs: Branching and merging#Merging-adds-and-removals Merging can add or remove files]).
+(see [cvs: Branching and merging#Merging-adds-and-removals Merging adds and removals]).
 </p>
 <hr>
 <div id="Removing-files"></div>
@@ -130,7 +130,7 @@ but remain able to retrieve old revisions:
 <ul>
 <li>
 Make sure that you have not made any uncommitted
-modifications to the file.  See section [cvs: Overview#Viewing-differences Viewing differences],
+modifications to the file.  See [cvs: Overview#Viewing-differences Viewing differences],
 for one way to do that.  You can also use the
 <code>status</code> or <code>update</code> command.  If you remove
 the file without committing your changes, you will of
@@ -160,14 +160,14 @@ specified to <code>checkout</code> or <code>update</code>.
 </p>
 <div id="index-Remove-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-remove"></div><u>Command:</u> <b>cvs remove</b><i> [options] files &hellip;</i></dt>
+<dt><div id="index-cvs-remove"></div>Command: <b>cvs remove</b><i> [options] files &hellip;</i></dt>
 <dd>
 <p>Schedule file(s) to be removed from the repository
 (files which have not already been removed from the
 working directory are not processed).  This command
 does not actually remove the file from the repository
 until you commit the removal.  For a full list of
-options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands].
+options, see [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS].
 </p></dd></dl>
 
 <p>Here is an example of removing several files:
@@ -226,9 +226,9 @@ U oj.c
 </nowiki></pre></td></tr></table>
 
 <p>When you remove a file it is removed only on the branch
-which you are working on (see section [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
+which you are working on (see [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
 later merge the removals to another branch if you want
-(see section [cvs: Branching and merging#Merging-adds-and-removals Merging can add or remove files]).
+(see [cvs: Branching and merging#Merging-adds-and-removals Merging adds and removals]).
 </p>
 <hr>
 <div id="Removing-directories"></div>
@@ -282,7 +282,7 @@ Next: [[#Moving-directories|Moving directories]], Previous: [[#Removing-director
 <p>Moving files to a different directory or renaming them
 is not difficult, but some of the ways in which this
 works may be non-obvious.  (Moving or renaming a
-directory is even harder.  See section [[#Moving-directories|Moving and renaming directories]].).
+directory is even harder.  See [[#Moving-directories|Moving directories]].).
 </p>
 <p>The examples below assume that the file <var>old</var> is renamed to
 <var>new</var>.
@@ -437,7 +437,7 @@ Previous: [[#Moving-files|Moving files]], Up: [[#Adding-and-removing|Adding and 
 
 <p>The normal way to rename or move a directory is to
 rename or move each file within it as described in
-[[#Outside|The Normal way to Rename]].  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
+[[#Outside|Outside]].  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
 option, as described in [[#Removing-directories|Removing directories]].
 </p>
 <p>If you really want to hack the repository to rename or

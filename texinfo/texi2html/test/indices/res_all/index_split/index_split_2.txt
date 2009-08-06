@@ -10,9 +10,9 @@
 * subsection 2: 1.1.2 Subsection 2.
 
 * Index:
-* a function: 1. First chapter: N - S.
-* fun in node: 1. First chapter.
-* somewhere: 1. First chapter: N - S.
+* a function: 1 First chapter: N - S.
+* fun in node: 1 First chapter.
+* somewhere: 1 First chapter: N - S.
 
 
 1 First chapter
@@ -34,15 +34,15 @@
 The index once more
 
 * Index:
-* ! entry in node: 1. First chapter.
-* a concept in first: 1. First chapter: N - S.
+* ! entry in node: 1 First chapter.
+* a concept in first: 1 First chapter: N - S.
 * after second printindex node in section 3: node 2 in section 3.
 * another: 1.1 Section 1.
 * between printindex node in section 3: node 2 in section 3.
 * entry a: split indices.
-* entry after printindex: 1. First chapter.
-* entry in node: 1. First chapter.
-* entry in node: 1. First chapter.
+* entry after printindex: 1 First chapter.
+* entry in node: 1 First chapter.
+* entry in node: 1 First chapter.
 * node 2 in section 3: node 2 in section 3.
 * node 3 in section 3: node 3 in section 3.
 * node in section 3: node in section 3.
@@ -64,15 +64,15 @@ index in subsction 2
 
 
 * Index:
-* ! entry in node: 1. First chapter.
-* a concept in first: 1. First chapter: N - S.
+* ! entry in node: 1 First chapter.
+* a concept in first: 1 First chapter: N - S.
 * after second printindex node in section 3: node 2 in section 3.
 * another: 1.1 Section 1.
 * between printindex node in section 3: node 2 in section 3.
 * entry a: split indices.
-* entry after printindex: 1. First chapter.
-* entry in node: 1. First chapter.
-* entry in node: 1. First chapter.
+* entry after printindex: 1 First chapter.
+* entry in node: 1 First chapter.
+* entry in node: 1 First chapter.
 * node 2 in section 3: node 2 in section 3.
 * node 3 in section 3: node 3 in section 3.
 * node in section 3: node in section 3.
@@ -92,15 +92,15 @@ Section 2
 
 
 * Index:
-* ! entry in node: 1. First chapter.
-* a concept in first: 1. First chapter: N - S.
+* ! entry in node: 1 First chapter.
+* a concept in first: 1 First chapter: N - S.
 * after second printindex node in section 3: node 2 in section 3.
 * another: 1.1 Section 1.
 * between printindex node in section 3: node 2 in section 3.
 * entry a: split indices.
-* entry after printindex: 1. First chapter.
-* entry in node: 1. First chapter.
-* entry in node: 1. First chapter.
+* entry after printindex: 1 First chapter.
+* entry in node: 1 First chapter.
+* entry in node: 1 First chapter.
 * node 2 in section 3: node 2 in section 3.
 * node 3 in section 3: node 3 in section 3.
 * node in section 3: node in section 3.
@@ -120,15 +120,15 @@ node 2 in section 3
 Text for the node 2 in section 3
 
 * Index:
-* ! entry in node: 1. First chapter.
-* a concept in first: 1. First chapter: N - S.
+* ! entry in node: 1 First chapter.
+* a concept in first: 1 First chapter: N - S.
 * after second printindex node in section 3: node 2 in section 3.
 * another: 1.1 Section 1.
 * between printindex node in section 3: node 2 in section 3.
 * entry a: split indices.
-* entry after printindex: 1. First chapter.
-* entry in node: 1. First chapter.
-* entry in node: 1. First chapter.
+* entry after printindex: 1 First chapter.
+* entry in node: 1 First chapter.
+* entry in node: 1 First chapter.
 * node 2 in section 3: node 2 in section 3.
 * node 3 in section 3: node 3 in section 3.
 * node in section 3: node in section 3.
@@ -139,15 +139,15 @@ Text for the node 2 in section 3
 
 
 * Index:
-* ! entry in node: 1. First chapter.
-* a concept in first: 1. First chapter: N - S.
+* ! entry in node: 1 First chapter.
+* a concept in first: 1 First chapter: N - S.
 * after second printindex node in section 3: node 2 in section 3.
 * another: 1.1 Section 1.
 * between printindex node in section 3: node 2 in section 3.
 * entry a: split indices.
-* entry after printindex: 1. First chapter.
-* entry in node: 1. First chapter.
-* entry in node: 1. First chapter.
+* entry after printindex: 1 First chapter.
+* entry in node: 1 First chapter.
+* entry in node: 1 First chapter.
 * node 2 in section 3: node 2 in section 3.
 * node 3 in section 3: node 3 in section 3.
 * node in section 3: node in section 3.

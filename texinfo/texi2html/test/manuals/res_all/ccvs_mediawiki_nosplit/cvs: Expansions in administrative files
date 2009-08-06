@@ -20,7 +20,7 @@ several mechanisms to do that.
 Likewise for the home directory of <var>user</var>, use
 &lsquo;<samp>~<var>user</var></samp>&rsquo;.  These variables are expanded on
 the server machine, and don&rsquo;t get any reasonable
-expansion if pserver (see section [cvs: Direct connection with password authentication#Password-authenticated Direct connection with password authentication])
+expansion if pserver (see [cvs: Direct connection with password authentication#Password-authenticated Password authenticated])
 is in use; therefore user variables (see below) may be
 a better choice to customize behavior based on the user
 running <small>CVS</small>.
@@ -39,7 +39,7 @@ internal variables are:
 <dt><code>CVSROOT</code></dt>
 <dd><div id="index-CVSROOT_002c-internal-variable"></div>
 <p>This is the absolute path to the current <small>CVS</small> root directory.
-See section [cvs: The Repository#Repository The Repository], for a description of the various
+See [cvs: The Repository#Repository Repository], for a description of the various
 ways to specify this, but note that the internal
 variable contains just the directory and not any
 of the access method information.
@@ -63,7 +63,7 @@ error.
 <dt><code>VISUAL</code></dt>
 <dd><div id="index-VISUAL_002c-internal-variable"></div>
 <p>These all expand to the same value, which is the editor
-that <small>CVS</small> is using.  See section [cvs: Global options#Global-options Global options], for how
+that <small>CVS</small> is using.  See [cvs: Global options#Global-options Global options], for how
 to specify this.
 </p>
 </dd>
@@ -73,7 +73,7 @@ to specify this.
 server machine).
 When using pserver, this is the user specified in the repository
 specification which need not be the same as the username the
-server is running as (see section [cvs: Setting up the server for password authentication#Password-authentication-server Setting up the server for password authentication]).
+server is running as (see [cvs: Setting up the server for password authentication#Password-authentication-server Password authentication server]).
 Do not confuse this with the environment variable of the same name.
 </p></dd>
 </dl>
@@ -88,7 +88,7 @@ administrative file contains
 specify the global option &lsquo;<samp>-s</samp>&rsquo; to <small>CVS</small>, with
 argument <code><var>variable</var>=<var>value</var></code>.  It may be
 particularly useful to specify this option via
-&lsquo;<tt>.cvsrc</tt>&rsquo; (see section [cvs: Default options and the ~%47.cvsrc file#g_t_007e_002f_002ecvsrc Default options and the ~/.cvsrc file]).
+&lsquo;<tt>.cvsrc</tt>&rsquo; (see [cvs: Default options and the ~%47.cvsrc file#g_t_007e_002f_002ecvsrc ~/.cvsrc]).
 </p>
 <p>For example, if you want the administrative file to
 refer to a test directory you might create a user

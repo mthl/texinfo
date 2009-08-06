@@ -43,7 +43,9 @@ ul.toc {list-style: none}
 
 <a name="Top"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<tr><td valign="middle" align="left">[ &lt; ]</td>
+<td valign="middle" align="left">[<a href="#chapter" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[Contents]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
@@ -54,11 +56,10 @@ ul.toc {list-style: none}
 <p>texte<a name="DOCF1" href="#FOOT1">(1)</a></p><hr size="6">
 <a name="chapter"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#chapter2" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#chapter2" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left">[<a href="#chapter2" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -70,16 +71,15 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Chapter"></a>
-<h1 class="chapter">1. Chapter</h1>
+<h1 class="chapter">1 Chapter</h1>
 
 <p>In chapter<a name="DOCF2" href="#FOOT2">(2)</a></p><hr>
 <a name="chapter2"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#chapter" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[ &gt; ]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#chapter" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#chapter" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#chapter" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[ &gt; ]</td>
 <td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -91,7 +91,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Chapter2"></a>
-<h1 class="chapter">2. Chapter2</h1>
+<h1 class="chapter">2 Chapter2</h1>
 
 
 <hr size="6">
@@ -109,9 +109,9 @@ ul.toc {list-style: none}
 <p>This is an important footnote.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#chapter">1. Chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           the chapter
+<tr><td align="left" valign="top"><a href="#chapter">1 Chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           the chapter
 </td></tr>
-<tr><td align="left" valign="top"><a href="#chapter2">2. Chapter2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           the second chapter
+<tr><td align="left" valign="top"><a href="#chapter2">2 Chapter2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           the second chapter
 </td></tr>
 </table>
 <h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
@@ -142,28 +142,28 @@ ul.toc {list-style: none}
     <th> From 1.2.3 go to</th>
   </tr>
   <tr>
-    <td align="center"> [ &lt; ] </td>
-    <td align="center">Back</td>
-    <td>Previous section in reading order</td>
-    <td>1.2.2</td>
-  </tr>
-  <tr>
-    <td align="center"> [ &gt; ] </td>
-    <td align="center">Forward</td>
-    <td>Next section in reading order</td>
-    <td>1.2.4</td>
-  </tr>
-  <tr>
     <td align="center"> [ &lt;&lt; ] </td>
     <td align="center">FastBack</td>
     <td>Beginning of this chapter or previous chapter</td>
     <td>1</td>
   </tr>
   <tr>
+    <td align="center"> [ &lt; ] </td>
+    <td align="center">Back</td>
+    <td>Previous section in reading order</td>
+    <td>1.2.2</td>
+  </tr>
+  <tr>
     <td align="center"> [ Up ] </td>
     <td align="center">Up</td>
     <td>Up section</td>
     <td>1.2</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &gt; ] </td>
+    <td align="center">Forward</td>
+    <td>Next section in reading order</td>
+    <td>1.2.4</td>
   </tr>
   <tr>
     <td align="center"> [ &gt;&gt; ] </td>

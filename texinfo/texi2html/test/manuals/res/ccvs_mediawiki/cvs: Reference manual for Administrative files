@@ -1,10 +1,9 @@
 <div id="Administrative-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &lt; ]|</td>
-<td valign="middle" align="left">|[[#modules| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[[#modules| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -46,11 +45,10 @@ file, which defines the modules inside the repository.
 <hr>
 <div id="modules"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Administrative-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Alias-modules| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Administrative-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#Alias-modules| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -100,11 +98,10 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
 <hr>
 <div id="Alias-modules"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#modules| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Regular-modules| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| Up ]]|</td>
+<td valign="middle" align="left">|[[#Regular-modules| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -160,11 +157,10 @@ U first-dir/sdir/sfile
 <hr>
 <div id="Regular-modules"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Alias-modules| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Ampersand-modules| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Alias-modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| Up ]]|</td>
+<td valign="middle" align="left">|[[#Ampersand-modules| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -232,11 +228,10 @@ $
 <hr>
 <div id="Ampersand-modules"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Regular-modules| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Excluding-directories| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Regular-modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| Up ]]|</td>
+<td valign="middle" align="left">|[[#Excluding-directories| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -300,11 +295,10 @@ a future release of <small>CVS</small>.
 <hr>
 <div id="Excluding-directories"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Ampersand-modules| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Module-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Ampersand-modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| Up ]]|</td>
+<td valign="middle" align="left">|[[#Module-options| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -336,11 +330,10 @@ the subdirectory &lsquo;<samp>first-dir/sdir</samp>&rsquo;.
 <hr>
 <div id="Module-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Excluding-directories| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Module-program-options| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Excluding-directories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| Up ]]|</td>
+<td valign="middle" align="left">|[[#Module-program-options| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -416,11 +409,10 @@ that taginfo is a better solution (see section [cvs: History browsing#user_002dd
 <hr>
 <div id="Module-program-options"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Module-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Wrappers| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Module-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| Up ]]|</td>
+<td valign="middle" align="left">|[[#Wrappers| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -457,11 +449,10 @@ completed.
 <hr>
 <div id="Wrappers"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Module-program-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Module-program-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#commit-files| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -530,11 +521,10 @@ directory, treating files whose name ends in
 <hr>
 <div id="commit-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Wrappers| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#syntax| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Wrappers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#syntax| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -604,11 +594,10 @@ imagination is the limit!
 <hr>
 <div id="syntax"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#commit-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#commitinfo| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#commitinfo| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -659,11 +648,10 @@ is used as a file name or command-line as appropriate.
 <hr>
 <div id="commitinfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#syntax| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#verifymsg| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#syntax| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#verifymsg| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -736,11 +724,10 @@ to the command.
 <hr>
 <div id="verifymsg"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#commitinfo| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#editinfo| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#commitinfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#editinfo| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -891,11 +878,10 @@ fi
 <hr>
 <div id="editinfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#verifymsg| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#editinfo-example| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#verifymsg| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#editinfo-example| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -971,11 +957,10 @@ There is no good workaround for this; use
 <hr>
 <div id="editinfo-example"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#editinfo| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#loginfo| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#editinfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#editinfo| Up ]]|</td>
+<td valign="middle" align="left">|[[#loginfo| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1037,11 +1022,10 @@ done
 <hr>
 <div id="loginfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#editinfo-example| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#loginfo-example| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#editinfo-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#loginfo-example| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1138,11 +1122,10 @@ name of the repository will be generated.
 <hr>
 <div id="loginfo-example"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#loginfo| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#loginfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#loginfo| Up ]]|</td>
+<td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1183,11 +1166,10 @@ like this:
 <hr>
 <div id="Keeping-a-checked-out-copy"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#loginfo-example| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#rcsinfo| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#loginfo-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#loginfo| Up ]]|</td>
+<td valign="middle" align="left">|[[#rcsinfo| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1230,11 +1212,10 @@ out tree in &lsquo;<tt>/u/www/local-docs</tt>&rsquo;.
 <hr>
 <div id="rcsinfo"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#cvsignore| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#cvsignore| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1293,11 +1274,10 @@ be updated from the server.
 <hr>
 <div id="cvsignore"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#rcsinfo| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#checkoutlist| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#rcsinfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#checkoutlist| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1406,11 +1386,10 @@ way to specify comments.
 <hr>
 <div id="checkoutlist"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#cvsignore| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#history-file| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#cvsignore| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#history-file| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1467,11 +1446,10 @@ more general context than the one provided by
 <hr>
 <div id="history-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#checkoutlist| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Variables| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#checkoutlist| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#Variables| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1503,11 +1481,10 @@ format changes with future releases of <small>CVS</small>.
 <hr>
 <div id="Variables"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#history-file| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#config| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#history-file| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#config| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1651,11 +1628,10 @@ Do not confuse this with the internal variable of the same name.
 <hr>
 <div id="config"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Variables| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Variables| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

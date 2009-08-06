@@ -1,5 +1,5 @@
-Annexe D Include Files
-**********************
+Appendix D Include Files
+************************
 
 When TeX or an Info formatting command sees an @include
 command in a Texinfo file, it processes the contents of the file named

@@ -31,13 +31,13 @@ Index
 * .cvsrc file: A.3 Default options and the ~/.cvsrc file.
 * .profile, setting CVSROOT in: 2.1 Telling CVS where your repository is.
 * .tcshrc, setting CVSROOT in: 2.1 Telling CVS where your repository is.
-* /usr/local/cvsroot, as example repository: 2. The Repository.
+* /usr/local/cvsroot, as example repository: 2 The Repository.
 * :ext:, setting up: 2.9.2 Connecting with rsh.
 * :ext:, troubleshooting: F.2 Trouble making a connection to a CVS server.
 * :fork:, setting up: 2.9.6 Connecting with fork.
 * :gserver:, setting up: 2.9.4 Direct connection with GSSAPI.
 * :kserver:, setting up: 2.9.5 Direct connection with kerberos.
-* :local:, setting up: 2. The Repository.
+* :local:, setting up: 2 The Repository.
 * :pserver:, setting up: 2.9.3.2 Using the client with password authentication.
 * :pserver:, troubleshooting: F.2 Trouble making a connection to a CVS server.
 * :server:, setting up: 2.9.2 Connecting with rsh.
@@ -53,7 +53,7 @@ Index
 * Adding files: 7.1 Adding files to a directory.
 * Admin (subcommand): A.6 admin--Administration.
 * Administrative files (intro): 2.4 The administrative files.
-* Administrative files (reference): C. Reference manual for Administrative files.
+* Administrative files (reference): Appendix C Reference manual for Administrative files.
 * Administrative files, editing them: 2.4.1 Editing administrative files.
 * Alias modules: C.1.1 Alias modules.
 * ALL in commitinfo: C.3.2 Commitinfo.
@@ -73,8 +73,8 @@ Index
 * BASE, special tag: A.5 Common command options.
 * Baserev file, in CVS directory: 2.3 How data is stored in the working directory.
 * Baserev.tmp file, in CVS directory: 2.3 How data is stored in the working directory.
-* Bill of materials: 14. How your build system interacts with CVS.
-* Binary files: 9. Handling binary files.
+* Bill of materials: 14 How your build system interacts with CVS.
+* Binary files: 9 Handling binary files.
 * Branch merge example: 5.6 Merging an entire branch.
 * Branch number: 4.1 Revision numbers.
 * Branch number: 5.4 Branches and revisions.
@@ -85,16 +85,16 @@ Index
 * Branch, creating a: 5.2 Creating a branch.
 * Branch, identifying: 5.3 Accessing branches.
 * Branch, retrieving: 5.3 Accessing branches.
-* Branch, vendor-: 13. Tracking third-party sources.
+* Branch, vendor-: 13 Tracking third-party sources.
 * Branches motivation: 5.1 What branches are good for.
-* Branches, copying changes between: 5. Branching and merging.
+* Branches, copying changes between: 5 Branching and merging.
 * Branches, sticky: 5.3 Accessing branches.
-* Branching: 5. Branching and merging.
+* Branching: 5 Branching and merging.
 * Bringing a file up to date: 10.2 Bringing a file up to date.
-* Bugs in this manual or CVS: H. Dealing with bugs in CVS or this manual.
-* Bugs, reporting: H. Dealing with bugs in CVS or this manual.
-* Builds: 14. How your build system interacts with CVS.
-* Changes, copying between branches: 5. Branching and merging.
+* Bugs in this manual or CVS: Appendix H Dealing with bugs in CVS or this manual.
+* Bugs, reporting: Appendix H Dealing with bugs in CVS or this manual.
+* Builds: 14 How your build system interacts with CVS.
+* Changes, copying between branches: 5 Branching and merging.
 * Changing a log message: A.6.1 admin options.
 * Check out a branch: 5.3 Accessing branches.
 * Checked out copy, keeping: C.3.5.2 Keeping a checked out copy.
@@ -110,7 +110,7 @@ Index
 * Client/Server Operation, port specification: 2.9 Remote repositories.
 * Client/Server Operation, port specification: 2.9.3.1 Setting up the server for password authentication.
 * co (subcommand): A.7 checkout--Check out sources for editing.
-* Command reference: B. Quick reference to CVS commands.
+* Command reference: Appendix B Quick reference to CVS commands.
 * Command structure: A.1 Overall structure of CVS commands.
 * Comment leader: A.6.1 admin options.
 * commit (subcommand): A.8 commit--Check files into the repository.
@@ -123,25 +123,25 @@ Index
 * Committing, when to: 11.1 When to commit?.
 * Common options: A.5 Common command options.
 * Common syntax of info files: C.3.1 The common syntax.
-* Compatibility, between CVS versions: E. Compatibility between CVS Versions.
+* Compatibility, between CVS versions: Appendix E Compatibility between CVS Versions.
 * Compression: A.4 Global options.
-* Compression: B. Quick reference to CVS commands.
-* COMSPEC, environment variable: D. All environment variables which affect CVS.
+* Compression: Appendix B Quick reference to CVS commands.
+* COMSPEC, environment variable: Appendix D All environment variables which affect CVS.
 * config, in CVSROOT: C.9 The CVSROOT/config configuration file.
 * Configuring keyword expansion: 12.5 Configuring Keyord Expansion.
 * Conflict markers: 10.3 Conflicts example.
 * Conflict resolution: 10.3 Conflicts example.
 * Conflicts (merge example): 10.3 Conflicts example.
 * Contributors (CVS program): 1.1 What is CVS?.
-* Contributors (manual): G. Credits.
+* Contributors (manual): Appendix G Credits.
 * Copying a repository: 2.8 Moving a repository.
-* Copying changes: 5. Branching and merging.
+* Copying changes: 5 Branching and merging.
 * Correcting a log message: A.6.1 admin options.
 * Creating a branch: 5.2 Creating a branch.
-* Creating a project: 3. Starting a project with CVS.
+* Creating a project: 3 Starting a project with CVS.
 * Creating a repository: 2.6 Creating a repository.
 * Credits (CVS program): 1.1 What is CVS?.
-* Credits (manual): G. Credits.
+* Credits (manual): Appendix G Credits.
 * CVS 1.6, and watches: 10.6.5 Using watches with old versions of CVS.
 * CVS command structure: A.1 Overall structure of CVS commands.
 * CVS directory, in repository: 2.2.5 The CVS directory in the repository.
@@ -149,7 +149,7 @@ Index
 * CVS passwd file: 2.9.3.1 Setting up the server for password authentication.
 * CVS, history of: 1.1 What is CVS?.
 * CVS, introduction to: 1.1 What is CVS?.
-* CVS, versions of: E. Compatibility between CVS Versions.
+* CVS, versions of: Appendix E Compatibility between CVS Versions.
 * CVS/Base directory: 2.3 How data is stored in the working directory.
 * CVS/Baserev file: 2.3 How data is stored in the working directory.
 * CVS/Baserev.tmp file: 2.3 How data is stored in the working directory.
@@ -165,16 +165,16 @@ Index
 * CVS/Template file: 2.3 How data is stored in the working directory.
 * cvsadmin: A.6 admin--Administration.
 * CVSEDITOR, environment variable: 1.3.2 Committing your changes.
-* CVSEDITOR, environment variable: D. All environment variables which affect CVS.
+* CVSEDITOR, environment variable: Appendix D All environment variables which affect CVS.
 * CVSEDITOR, internal variable: C.8 Expansions in administrative files.
 * CVSHeader keyword: 12.1 Keyword List.
 * cvsignore (admin file), global: C.5 Ignoring files via cvsignore.
-* CVSIGNORE, environment variable: D. All environment variables which affect CVS.
-* CVSREAD, environment variable: D. All environment variables which affect CVS.
+* CVSIGNORE, environment variable: Appendix D All environment variables which affect CVS.
+* CVSREAD, environment variable: Appendix D All environment variables which affect CVS.
 * CVSREAD, overriding: A.4 Global options.
-* CVSREADONLYFS, environment variable: D. All environment variables which affect CVS.
-* cvsroot: 2. The Repository.
-* CVSROOT (file): C. Reference manual for Administrative files.
+* CVSREADONLYFS, environment variable: Appendix D All environment variables which affect CVS.
+* cvsroot: 2 The Repository.
+* CVSROOT (file): Appendix C Reference manual for Administrative files.
 * CVSROOT, environment variable: 2.1 Telling CVS where your repository is.
 * CVSROOT, internal variable: C.8 Expansions in administrative files.
 * CVSROOT, module name: 2.4 The administrative files.
@@ -186,18 +186,18 @@ Index
 * CVSUMASK, environment variable: 2.2.2 File permissions.
 * cvswrappers (admin file): C.2 The cvswrappers file.
 * CVSWRAPPERS, environment variable: C.2 The cvswrappers file.
-* CVSWRAPPERS, environment variable: D. All environment variables which affect CVS.
-* CVS_CLIENT_LOG, environment variable: D. All environment variables which affect CVS.
+* CVSWRAPPERS, environment variable: Appendix D All environment variables which affect CVS.
+* CVS_CLIENT_LOG, environment variable: Appendix D All environment variables which affect CVS.
 * CVS_CLIENT_PORT: 2.9.5 Direct connection with kerberos.
-* CVS_IGNORE_REMOTE_ROOT, environment variable: D. All environment variables which affect CVS.
-* CVS_LOCAL_BRANCH_NUM, environment variable: D. All environment variables which affect CVS.
+* CVS_IGNORE_REMOTE_ROOT, environment variable: Appendix D All environment variables which affect CVS.
+* CVS_LOCAL_BRANCH_NUM, environment variable: Appendix D All environment variables which affect CVS.
 * CVS_PASSFILE, environment variable: 2.9.3.2 Using the client with password authentication.
-* CVS_PID, environment variable: D. All environment variables which affect CVS.
-* CVS_RCMD_PORT, environment variable: D. All environment variables which affect CVS.
-* CVS_RSH, environment variable: D. All environment variables which affect CVS.
+* CVS_PID, environment variable: Appendix D All environment variables which affect CVS.
+* CVS_RCMD_PORT, environment variable: Appendix D All environment variables which affect CVS.
+* CVS_RSH, environment variable: Appendix D All environment variables which affect CVS.
 * CVS_SERVER, and :fork:: 2.9.6 Connecting with fork.
 * CVS_SERVER, environment variable: 2.9.2 Connecting with rsh.
-* CVS_SERVER_SLEEP, environment variable: D. All environment variables which affect CVS.
+* CVS_SERVER_SLEEP, environment variable: Appendix D All environment variables which affect CVS.
 * CVS_USER, environment variable: C.8 Expansions in administrative files.
 * Date keyword: 12.1 Keyword List.
 * Dates: A.5 Common command options.
@@ -214,14 +214,14 @@ Index
 * Deleting revisions: A.6.1 admin options.
 * Deleting sticky tags: 4.9 Sticky tags.
 * Deleting tags: 4.7 Deleting, moving, and renaming tags.
-* Descending directories: 6. Recursive behavior.
-* Device nodes: 15. Special Files.
+* Descending directories: 6 Recursive behavior.
+* Device nodes: 15 Special Files.
 * Diff: 1.3.4 Viewing differences.
 * diff (subcommand): A.9 diff--Show differences between revisions.
 * Differences, merging: 5.8 Merging differences between any two revisions.
 * Directories, moving: 7.5 Moving and renaming directories.
 * Directories, removing: 7.3 Removing directories.
-* Directory, descending: 6. Recursive behavior.
+* Directory, descending: 6 Recursive behavior.
 * Disjoint repositories: 2.5 Multiple repositories.
 * Distributing log messages: C.3.5 Loginfo.
 * driver.c (merge example): 10.3 Conflicts example.
@@ -231,7 +231,7 @@ Index
 * Editing the modules file: 3.2 Defining the module.
 * Editor, avoiding invocation of: A.5 Common command options.
 * EDITOR, environment variable: 1.3.2 Committing your changes.
-* EDITOR, environment variable: D. All environment variables which affect CVS.
+* EDITOR, environment variable: Appendix D All environment variables which affect CVS.
 * EDITOR, internal variable: C.8 Expansions in administrative files.
 * EDITOR, overriding: A.4 Global options.
 * Editor, specifying per module: C.3.4 Editinfo.
@@ -243,9 +243,9 @@ Index
 * Entries.Backup file, in CVS directory: 2.3 How data is stored in the working directory.
 * Entries.Log file, in CVS directory: 2.3 How data is stored in the working directory.
 * Entries.Static file, in CVS directory: 2.3 How data is stored in the working directory.
-* Environment variables: D. All environment variables which affect CVS.
+* Environment variables: Appendix D All environment variables which affect CVS.
 * environment variables, passed to administrative files: C.8 Expansions in administrative files.
-* Errors, reporting: H. Dealing with bugs in CVS or this manual.
+* Errors, reporting: Appendix H Dealing with bugs in CVS or this manual.
 * Example of a work-session: 1.3 A sample session.
 * Example of merge: 10.3 Conflicts example.
 * Example, branch merge: 5.6 Merging an entire branch.
@@ -259,12 +259,12 @@ Index
 * Export program: C.1.5 Module options.
 * Fetching source: 1.3.1 Getting the source.
 * File had conflicts on merge: 10.1 File status.
-* File locking: 10. Multiple developers.
+* File locking: 10 Multiple developers.
 * File permissions, general: 2.2.2 File permissions.
 * File permissions, Windows-specific: 2.2.3 File Permission issues specific to Windows.
 * File status: 10.1 File status.
 * Files, moving: 7.4 Moving and renaming files.
-* Files, reference manual: C. Reference manual for Administrative files.
+* Files, reference manual: Appendix C Reference manual for Administrative files.
 * Fixing a log message: A.6.1 admin options.
 * Forcing a tag match: A.5 Common command options.
 * fork, access method: 2.9.6 Connecting with fork.
@@ -279,23 +279,23 @@ Index
 * gserver (client/server connection method), port specification: 2.9.3.1 Setting up the server for password authentication.
 * GSSAPI: 2.9.4 Direct connection with GSSAPI.
 * Gzip: A.4 Global options.
-* Gzip: B. Quick reference to CVS commands.
-* Hard links: 15. Special Files.
+* Gzip: Appendix B Quick reference to CVS commands.
+* Hard links: 15 Special Files.
 * HEAD, as reserved tag name: 4.4 Tags-Symbolic revisions.
 * HEAD, special tag: A.5 Common command options.
 * Header keyword: 12.1 Keyword List.
 * history (subcommand): A.11 history--Show status of files and users.
-* History browsing: 8. History browsing.
+* History browsing: 8 History browsing.
 * History file: C.7 The history file.
 * History files: 2.2.1 Where files are stored within the repository.
 * History of CVS: 1.1 What is CVS?.
-* HOME, environment variable: D. All environment variables which affect CVS.
-* HOMEDRIVE, environment variable: D. All environment variables which affect CVS.
-* HOMEPATH, environment variable: D. All environment variables which affect CVS.
+* HOME, environment variable: Appendix D All environment variables which affect CVS.
+* HOMEDRIVE, environment variable: Appendix D All environment variables which affect CVS.
+* HOMEPATH, environment variable: Appendix D All environment variables which affect CVS.
 * Id keyword: 12.1 Keyword List.
 * Ident (shell command): 12.2 Using keywords.
 * Identifying a branch: 5.3 Accessing branches.
-* Identifying files: 12. Keyword substitution.
+* Identifying files: 12 Keyword substitution.
 * Ignored files: C.5 Ignoring files via cvsignore.
 * Ignoring files: C.5 Ignoring files via cvsignore.
 * import (subcommand): A.12 import--Import sources into CVS, using vendor branches.
@@ -310,24 +310,24 @@ Index
 * Installed images (VMS): 2.2.2 File permissions.
 * Internal variables: C.8 Expansions in administrative files.
 * Introduction to CVS: 1.1 What is CVS?.
-* Invoking CVS: B. Quick reference to CVS commands.
-* Isolation: 8. History browsing.
+* Invoking CVS: Appendix B Quick reference to CVS commands.
+* Isolation: 8 History browsing.
 * Join: 5.6 Merging an entire branch.
 * Keeping a checked out copy: C.3.5.2 Keeping a checked out copy.
 * Kerberos, using :gserver:: 2.9.4 Direct connection with GSSAPI.
 * Kerberos, using :kserver:: 2.9.5 Direct connection with kerberos.
 * Kerberos, using kerberized rsh: 2.9.2 Connecting with rsh.
-* Keyword expansion: 12. Keyword substitution.
+* Keyword expansion: 12 Keyword substitution.
 * Keyword List: 12.1 Keyword List.
-* Keyword substitution: 12. Keyword substitution.
+* Keyword substitution: 12 Keyword substitution.
 * Keyword substitution, and merging: 5.10 Merging and keywords.
 * Keyword substitution, changing modes: 12.4 Substitution modes.
 * Kflag: 12.4 Substitution modes.
 * kinit: 2.9.5 Direct connection with kerberos.
-* Known bugs in this manual or CVS: H. Dealing with bugs in CVS or this manual.
+* Known bugs in this manual or CVS: Appendix H Dealing with bugs in CVS or this manual.
 * kserver (client/server connection method), port specification: 2.9 Remote repositories.
 * kserver (client/server connection method), port specification: 2.9.3.1 Setting up the server for password authentication.
-* Layout of repository: 2. The Repository.
+* Layout of repository: 2 The Repository.
 * Left-hand options: A.4 Global options.
 * Linear development: 4.1 Revision numbers.
 * Link, symbolic, importing: A.12.2 import output.
@@ -338,7 +338,7 @@ Index
 * Locally Removed: 10.1 File status.
 * LockDir, in CVSROOT/config: C.9 The CVSROOT/config configuration file.
 * Locker keyword: 12.1 Keyword List.
-* Locking files: 10. Multiple developers.
+* Locking files: 10 Multiple developers.
 * Locks, cvs, and backups: 2.7 Backing up a repository.
 * Locks, cvs, introduction: 10.5 Several developers simultaneously attempting to run CVS.
 * Locks, cvs, technical details: 2.2.6 CVS locks in the repository.
@@ -359,19 +359,19 @@ Index
 * Mail, automatic mail on commit: 10.4 Informing others about commits.
 * Mailing list: 1.1 What is CVS?.
 * Mailing log messages: C.3.5 Loginfo.
-* Main trunk and branches: 5. Branching and merging.
-* make: 14. How your build system interacts with CVS.
+* Main trunk and branches: 5 Branching and merging.
+* make: 14 How your build system interacts with CVS.
 * Many repositories: 2.5 Multiple repositories.
 * Markers, conflict: 10.3 Conflicts example.
 * Merge, an example: 10.3 Conflicts example.
 * Merge, branch example: 5.6 Merging an entire branch.
-* Merging: 5. Branching and merging.
+* Merging: 5 Branching and merging.
 * Merging a branch: 5.6 Merging an entire branch.
 * Merging a file: 10.2 Bringing a file up to date.
 * Merging two revisions: 5.8 Merging differences between any two revisions.
 * Merging, and keyword substitution: 5.10 Merging and keywords.
 * mkmodules: F.1 Partial list of error messages.
-* Modifications, copying between branches: 5. Branching and merging.
+* Modifications, copying between branches: 5 Branching and merging.
 * Module status: C.1.5 Module options.
 * Module, defining: 3.2 Defining the module.
 * Modules (admin file): C.1 The modules file.
@@ -387,7 +387,7 @@ Index
 * Moving directories: 7.5 Moving and renaming directories.
 * Moving files: 7.4 Moving and renaming files.
 * Moving tags: 4.7 Deleting, moving, and renaming tags.
-* Multiple developers: 10. Multiple developers.
+* Multiple developers: 10 Multiple developers.
 * Multiple repositories: 2.5 Multiple repositories.
 * Name keyword: 12.1 Keyword List.
 * Name, symbolic (tag): 4.4 Tags-Symbolic revisions.
@@ -411,17 +411,17 @@ Index
 * Overriding EDITOR: A.4 Global options.
 * Overriding RCSBIN: A.4 Global options.
 * Overriding TMPDIR: A.4 Global options.
-* Overview: 1. Overview.
-* Ownership, saving in CVS: 15. Special Files.
+* Overview: 1 Overview.
+* Ownership, saving in CVS: 15 Special Files.
 * Parallel repositories: 2.5 Multiple repositories.
 * passwd (admin file): 2.9.3.1 Setting up the server for password authentication.
 * Password client, using: 2.9.3.2 Using the client with password authentication.
 * Password server, setting up: 2.9.3.1 Setting up the server for password authentication.
-* PATH, environment variable: D. All environment variables which affect CVS.
+* PATH, environment variable: Appendix D All environment variables which affect CVS.
 * Per-directory sticky tags/dates: 2.3 How data is stored in the working directory.
 * Per-module editor: C.3.4 Editinfo.
 * Permissions, general: 2.2.2 File permissions.
-* Permissions, saving in CVS: 15. Special Files.
+* Permissions, saving in CVS: 15 Special Files.
 * Permissions, Windows-specific: 2.2.3 File Permission issues specific to Windows.
 * Policy: 11.1 When to commit?.
 * port, specifying for remote repositories: 2.9 Remote repositories.
@@ -434,7 +434,7 @@ Index
 * RCS history files: 2.2.1 Where files are stored within the repository.
 * RCS revision numbers: 4.4 Tags-Symbolic revisions.
 * RCS, importing files from: 3.1.2 Creating Files From Other Version Control Systems.
-* RCS-style locking: 10. Multiple developers.
+* RCS-style locking: 10 Multiple developers.
 * RCSBIN, in CVSROOT/config: C.9 The CVSROOT/config configuration file.
 * RCSBIN, internal variable: C.8 Expansions in administrative files.
 * RCSBIN, overriding: A.4 Global options.
@@ -442,17 +442,17 @@ Index
 * rcsinfo (admin file): C.4 Rcsinfo.
 * rdiff (subcommand): A.14 rdiff--'patch' format diffs between releases.
 * Read-only files, and -r: A.4 Global options.
-* Read-only files, and CVSREAD: D. All environment variables which affect CVS.
+* Read-only files, and CVSREAD: Appendix D All environment variables which affect CVS.
 * Read-only files, and watches: 10.6.1 Telling CVS to watch certain files.
 * Read-only files, in repository: 2.2.2 File permissions.
 * Read-only mode: A.4 Global options.
 * Read-only repository access: 2.10 Read-only repository access.
 * Read-only repository mode: A.4 Global options.
 * readers (admin file): 2.10 Read-only repository access.
-* Recursive (directory descending): 6. Recursive behavior.
-* Reference manual (files): C. Reference manual for Administrative files.
-* Reference manual for variables: D. All environment variables which affect CVS.
-* Reference, commands: B. Quick reference to CVS commands.
+* Recursive (directory descending): 6 Recursive behavior.
+* Reference manual (files): Appendix C Reference manual for Administrative files.
+* Reference manual for variables: Appendix D All environment variables which affect CVS.
+* Reference, commands: Appendix B Quick reference to CVS commands.
 * Regular expression syntax: C.3.1 The common syntax.
 * Regular modules: C.1.2 Regular modules.
 * release (subcommand): A.15 release--Indicate that a Module is no longer in use.
@@ -472,20 +472,20 @@ Index
 * Renaming files: 7.4 Moving and renaming files.
 * Renaming tags: 4.7 Deleting, moving, and renaming tags.
 * Replacing a log message: A.6.1 admin options.
-* Reporting bugs: H. Dealing with bugs in CVS or this manual.
+* Reporting bugs: Appendix H Dealing with bugs in CVS or this manual.
 * Repositories, multiple: 2.5 Multiple repositories.
 * Repositories, remote: 2.9 Remote repositories.
 * Repositories, remote, port specification: 2.9 Remote repositories.
 * Repositories, remote, port specification: 2.9.3.1 Setting up the server for password authentication.
-* Repository (intro): 2. The Repository.
+* Repository (intro): 2 The Repository.
 * Repository file, in CVS directory: 2.3 How data is stored in the working directory.
 * Repository, backing up: 2.7 Backing up a repository.
-* Repository, example: 2. The Repository.
+* Repository, example: 2 The Repository.
 * Repository, how data is stored: 2.2 How data is stored in the repository.
 * Repository, moving: 2.8 Moving a repository.
 * Repository, setting up: 2.6 Creating a repository.
 * RereadLogAfterVerify, in CVSROOT/config: C.9 The CVSROOT/config configuration file.
-* Reserved checkouts: 10. Multiple developers.
+* Reserved checkouts: 10 Multiple developers.
 * Resetting sticky tags: 4.9 Sticky tags.
 * Resolving a conflict: 10.3 Conflicts example.
 * Restoring old version of removed file: 5.8 Merging differences between any two revisions.
@@ -494,11 +494,11 @@ Index
 * Retrieving an old revision using tags: 4.4 Tags-Symbolic revisions.
 * Reverting to repository version: 10.6.3 How to edit a file which is being watched.
 * Revision keyword: 12.1 Keyword List.
-* Revision management: 11. Revision management.
+* Revision management: 11 Revision management.
 * Revision numbers: 4.1 Revision numbers.
 * Revision numbers (branches): 5.4 Branches and revisions.
 * Revision tree: 4.1 Revision numbers.
-* Revision tree, making branches: 5. Branching and merging.
+* Revision tree, making branches: 5 Branching and merging.
 * Revisions, merging differences between: 5.8 Merging differences between any two revisions.
 * Revisions, versions and releases: 4.2 Versions, revisions and releases.
 * Right-hand options: A.5 Common command options.
@@ -522,11 +522,11 @@ Index
 * Source keyword: 12.1 Keyword List.
 * Source, getting CVS source: 1.1 What is CVS?.
 * Source, getting from CVS: 1.3.1 Getting the source.
-* Special files: 15. Special Files.
+* Special files: 15 Special Files.
 * Specifying dates: A.5 Common command options.
 * Spreading information: 10.4 Informing others about commits.
 * SSH (rsh replacement): 2.9.2 Connecting with rsh.
-* Starting a project with CVS: 3. Starting a project with CVS.
+* Starting a project with CVS: 3 Starting a project with CVS.
 * State keyword: 12.1 Keyword List.
 * Status of a file: 10.1 File status.
 * Status of a module: C.1.5 Module options.
@@ -537,10 +537,10 @@ Index
 * Storing log messages: C.3.5 Loginfo.
 * Stream authentication: A.4 Global options.
 * Structure: A.1 Overall structure of CVS commands.
-* Subdirectories: 6. Recursive behavior.
-* Support, getting CVS support: H. Dealing with bugs in CVS or this manual.
+* Subdirectories: 6 Recursive behavior.
+* Support, getting CVS support: Appendix H Dealing with bugs in CVS or this manual.
 * Symbolic link, importing: A.12.2 import output.
-* Symbolic links: 15. Special Files.
+* Symbolic links: 15 Special Files.
 * Symbolic name (tag): 4.4 Tags-Symbolic revisions.
 * Syntax of info files: C.3.1 The common syntax.
 * SystemAuth, in CVSROOT/config: C.9 The CVSROOT/config configuration file.
@@ -559,31 +559,31 @@ Index
 * Tags, sticky: 4.9 Sticky tags.
 * Tags, symbolic name: 4.4 Tags-Symbolic revisions.
 * tc, Trivial Compiler (example): 1.3 A sample session.
-* Team of developers: 10. Multiple developers.
-* TEMP, environment variable: D. All environment variables which affect CVS.
+* Team of developers: 10 Multiple developers.
+* TEMP, environment variable: Appendix D All environment variables which affect CVS.
 * Template file, in CVS directory: 2.3 How data is stored in the working directory.
 * Template for log message: C.4 Rcsinfo.
 * Temporary directories, and server: 2.11 Temporary directories for the server.
-* Temporary files, location of: D. All environment variables which affect CVS.
-* Third-party sources: 13. Tracking third-party sources.
+* Temporary files, location of: Appendix D All environment variables which affect CVS.
+* Third-party sources: 13 Tracking third-party sources.
 * Time: A.5 Common command options.
 * Timezone, in input: A.5 Common command options.
 * Timezone, in output: A.13 log--Print out log information for files.
-* TMP, environment variable: D. All environment variables which affect CVS.
-* TMPDIR, environment variable: D. All environment variables which affect CVS.
+* TMP, environment variable: Appendix D All environment variables which affect CVS.
+* TMPDIR, environment variable: Appendix D All environment variables which affect CVS.
 * TMPDIR, overriding: A.4 Global options.
 * TopLevelAdmin, in CVSROOT/config: C.9 The CVSROOT/config configuration file.
 * Trace: A.4 Global options.
-* Traceability: 8. History browsing.
-* Tracking sources: 13. Tracking third-party sources.
+* Traceability: 8 History browsing.
+* Tracking sources: 13 Tracking third-party sources.
 * Transactions, atomic, lack of: 10.5 Several developers simultaneously attempting to run CVS.
 * Trivial Compiler (example): 1.3 A sample session.
-* Typical repository: 2. The Repository.
+* Typical repository: 2 The Repository.
 * Umask, for repository files: 2.2.2 File permissions.
 * Undoing a change: 5.8 Merging differences between any two revisions.
 * unedit (subcommand): 10.6.3 How to edit a file which is being watched.
 * Unknown: 10.1 File status.
-* Unreserved checkouts: 10. Multiple developers.
+* Unreserved checkouts: 10 Multiple developers.
 * Unresolved Conflict: 10.1 File status.
 * Up-to-date: 10.1 File status.
 * update (subcommand): A.16 update--Bring work tree in sync with repository.
@@ -598,17 +598,17 @@ Index
 * UserAdminOptions, in CVSROOT/config: C.9 The CVSROOT/config configuration file.
 * users (admin file): 10.6.2 Telling CVS to notify you.
 * Variables: C.8 Expansions in administrative files.
-* Vendor: 13. Tracking third-party sources.
-* Vendor branch: 13. Tracking third-party sources.
+* Vendor: 13 Tracking third-party sources.
+* Vendor branch: 13 Tracking third-party sources.
 * `verifymsg' (admin file): C.3.3 Verifying log messages.
 * `verifymsg', changing the log message: C.3.3 Verifying log messages.
 * `verifymsg', changing the log message: C.9 The CVSROOT/config configuration file.
-* version (subcommand): B. Quick reference to CVS commands.
-* Versions, of CVS: E. Compatibility between CVS Versions.
+* version (subcommand): Appendix B Quick reference to CVS commands.
+* Versions, of CVS: Appendix E Compatibility between CVS Versions.
 * Versions, revisions and releases: 4.2 Versions, revisions and releases.
 * Viewing differences: 1.3.4 Viewing differences.
 * VISUAL, environment variable: 1.3.2 Committing your changes.
-* VISUAL, environment variable: D. All environment variables which affect CVS.
+* VISUAL, environment variable: Appendix D All environment variables which affect CVS.
 * VISUAL, internal variable: C.8 Expansions in administrative files.
 * watch add (subcommand): 10.6.2 Telling CVS to notify you.
 * watch off (subcommand): 10.6.1 Telling CVS to watch certain files.
@@ -625,11 +625,11 @@ Index
 * When to commit: 11.1 When to commit?.
 * Windows, and permissions: 2.2.3 File Permission issues specific to Windows.
 * Work-session, example of: 1.3 A sample session.
-* Working copy: 10. Multiple developers.
+* Working copy: 10 Multiple developers.
 * Working copy, removing: 1.3.3 Cleaning up.
 * Wrappers: C.2 The cvswrappers file.
 * writers (admin file): 2.10 Read-only repository access.
-* Ximbiot: H. Dealing with bugs in CVS or this manual.
+* Ximbiot: Appendix H Dealing with bugs in CVS or this manual.
 * xinetd, configuring for pserver: 2.9.3.1 Setting up the server for password authentication.
 * Zone, time, in input: A.5 Common command options.
 * Zone, time, in output: A.13 log--Print out log information for files.
@@ -638,29 +638,29 @@ Short Table of Contents
 ***********************
 
 
-1. Overview
-2. The Repository
-3. Starting a project with CVS
-4. Revisions
-5. Branching and merging
-6. Recursive behavior
-7. Adding, removing, and renaming files and directories
-8. History browsing
-9. Handling binary files
-10. Multiple developers
-11. Revision management
-12. Keyword substitution
-13. Tracking third-party sources
-14. How your build system interacts with CVS
-15. Special Files
-A. Guide to CVS commands
-B. Quick reference to CVS commands
-C. Reference manual for Administrative files
-D. All environment variables which affect CVS
-E. Compatibility between CVS Versions
-F. Troubleshooting
-G. Credits
-H. Dealing with bugs in CVS or this manual
+1 Overview
+2 The Repository
+3 Starting a project with CVS
+4 Revisions
+5 Branching and merging
+6 Recursive behavior
+7 Adding, removing, and renaming files and directories
+8 History browsing
+9 Handling binary files
+10 Multiple developers
+11 Revision management
+12 Keyword substitution
+13 Tracking third-party sources
+14 How your build system interacts with CVS
+15 Special Files
+Appendix A Guide to CVS commands
+Appendix B Quick reference to CVS commands
+Appendix C Reference manual for Administrative files
+Appendix D All environment variables which affect CVS
+Appendix E Compatibility between CVS Versions
+Appendix F Troubleshooting
+Appendix G Credits
+Appendix H Dealing with bugs in CVS or this manual
 Index
 
 
@@ -668,7 +668,7 @@ Table of Contents
 *****************
 
 
-1. Overview
+1 Overview
  1.1 What is CVS?
  1.2 What is CVS not?
  1.3 A sample session
@@ -676,7 +676,7 @@ Table of Contents
   1.3.2 Committing your changes
   1.3.3 Cleaning up
   1.3.4 Viewing differences
-2. The Repository
+2 The Repository
  2.1 Telling CVS where your repository is
  2.2 How data is stored in the repository
   2.2.1 Where files are stored within the repository
@@ -705,13 +705,13 @@ Table of Contents
   2.9.6 Connecting with fork
  2.10 Read-only repository access
  2.11 Temporary directories for the server
-3. Starting a project with CVS
+3 Starting a project with CVS
  3.1 Setting up the files
   3.1.1 Creating a directory tree from a number of files
   3.1.2 Creating Files From Other Version Control Systems
   3.1.3 Creating a directory tree from scratch
  3.2 Defining the module
-4. Revisions
+4 Revisions
  4.1 Revision numbers
  4.2 Versions, revisions and releases
  4.3 Assigning revisions
@@ -721,7 +721,7 @@ Table of Contents
  4.7 Deleting, moving, and renaming tags
  4.8 Tagging and adding and removing files
  4.9 Sticky tags
-5. Branching and merging
+5 Branching and merging
  5.1 What branches are good for
  5.2 Creating a branch
  5.3 Accessing branches
@@ -732,8 +732,8 @@ Table of Contents
  5.8 Merging differences between any two revisions
  5.9 Merging can add or remove files
  5.10 Merging and keywords
-6. Recursive behavior
-7. Adding, removing, and renaming files and directories
+6 Recursive behavior
+7 Adding, removing, and renaming files and directories
  7.1 Adding files to a directory
  7.2 Removing files
  7.3 Removing directories
@@ -742,15 +742,15 @@ Table of Contents
   7.4.2 Moving the history file
   7.4.3 Copying the history file
  7.5 Moving and renaming directories
-8. History browsing
+8 History browsing
  8.1 Log messages
  8.2 The history database
  8.3 User-defined logging
  8.4 Annotate command
-9. Handling binary files
+9 Handling binary files
  9.1 The issues with binary files
  9.2 How to store binary files
-10. Multiple developers
+10 Multiple developers
  10.1 File status
  10.2 Bringing a file up to date
  10.3 Conflicts example
@@ -763,25 +763,25 @@ Table of Contents
   10.6.4 Information about who is watching and editing
   10.6.5 Using watches with old versions of CVS
  10.7 Choosing between reserved or unreserved checkouts
-11. Revision management
+11 Revision management
  11.1 When to commit?
-12. Keyword substitution
+12 Keyword substitution
  12.1 Keyword List
  12.2 Using keywords
  12.3 Avoiding substitution
  12.4 Substitution modes
  12.5 Configuring Keyord Expansion
  12.6 Problems with the $ Log$ keyword.
-13. Tracking third-party sources
+13 Tracking third-party sources
  13.1 Importing for the first time
  13.2 Updating with the import command
  13.3 Reverting to the latest vendor release
  13.4 How to handle binary files with cvs import
  13.5 How to handle keyword substitution with cvs import
  13.6 Multiple vendor branches
-14. How your build system interacts with CVS
-15. Special Files
-A. Guide to CVS commands
+14 How your build system interacts with CVS
+15 Special Files
+Appendix A Guide to CVS commands
  A.1 Overall structure of CVS commands
  A.2 CVS's exit status
  A.3 Default options and the ~/.cvsrc file
@@ -823,8 +823,8 @@ A. Guide to CVS commands
  A.16 update--Bring work tree in sync with repository
   A.16.1 update options
   A.16.2 update output
-B. Quick reference to CVS commands
-C. Reference manual for Administrative files
+Appendix B Quick reference to CVS commands
+Appendix C Reference manual for Administrative files
  C.1 The modules file
   C.1.1 Alias modules
   C.1.2 Regular modules
@@ -848,14 +848,14 @@ C. Reference manual for Administrative files
  C.7 The history file
  C.8 Expansions in administrative files
  C.9 The CVSROOT/config configuration file
-D. All environment variables which affect CVS
-E. Compatibility between CVS Versions
-F. Troubleshooting
+Appendix D All environment variables which affect CVS
+Appendix E Compatibility between CVS Versions
+Appendix F Troubleshooting
  F.1 Partial list of error messages
  F.2 Trouble making a connection to a CVS server
  F.3 Other common problems
-G. Credits
-H. Dealing with bugs in CVS or this manual
+Appendix G Credits
+Appendix H Dealing with bugs in CVS or this manual
 Index
 
 

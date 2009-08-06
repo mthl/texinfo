@@ -50,7 +50,7 @@ approach is to use <code>make</code> for building, and use
 some automated tool for generating the dependencies which
 <code>make</code> uses.
 </p>
-<p>See [cvs: How your build system interacts with CVS#Builds How your build system interacts with CVS], for more information on doing builds
+<p>See [cvs: How your build system interacts with CVS#Builds Builds], for more information on doing builds
 in conjunction with <small>CVS</small>.
 </p>
 </dd>
@@ -104,7 +104,7 @@ each one (is it fixed?  in what release?  has the bug
 submitter agreed that it is fixed?).  For interfacing
 <small>CVS</small> to an external bug-tracking system, see the
 &lsquo;<tt>rcsinfo</tt>&rsquo; and &lsquo;<tt>verifymsg</tt>&rsquo; files
-(see section [cvs: Reference manual for Administrative files#Administrative-files Reference manual for Administrative files]).
+(see [cvs: Reference manual for Administrative files#Administrative-files Administrative files]).
 </p>
 <p>Another aspect of change control is keeping track of
 the fact that changes to several files were in fact

@@ -2,17 +2,17 @@
 **********************
 
 * Index:
-* fun1: 1. first node chapter, with ftable and vtable.
-* fun2: 1. first node chapter, with ftable and vtable.
-* more fun: 1. first node chapter, with ftable and vtable.
+* fun1: 1 first node chapter, with ftable and vtable.
+* fun2: 1 first node chapter, with ftable and vtable.
+* more fun: 1 first node chapter, with ftable and vtable.
 * Index:
-* var1: 1. first node chapter, with ftable and vtable.
-* var2: 1. first node chapter, with ftable and vtable.
+* var1: 1 first node chapter, with ftable and vtable.
+* var2: 1 first node chapter, with ftable and vtable.
 * Index:
-* !oncept: 3. Indices refs.
-* ,oncept: 3. Indices refs.
-* /oncept: 3. Indices refs.
-* ;oncept: 3. Indices refs.
-* ?oncept: 3. Indices refs.
-* an second index entry in node: 1. first node chapter, with ftable and vtable.
-* aoncept: 3. Indices refs.
+* !oncept: 3 Indices refs.
+* ,oncept: 3 Indices refs.
+* /oncept: 3 Indices refs.
+* ;oncept: 3 Indices refs.
+* ?oncept: 3 Indices refs.
+* an second index entry in node: 1 first node chapter, with ftable and vtable.
+* aoncept: 3 Indices refs.

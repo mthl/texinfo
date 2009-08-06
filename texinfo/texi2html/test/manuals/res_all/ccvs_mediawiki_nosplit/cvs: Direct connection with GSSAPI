@@ -37,13 +37,13 @@ request encryption.
 </p>
 <p>GSSAPI connections are handled on the server side by
 the same server which handles the password
-authentication server; see [cvs: Setting up the server for password authentication#Password-authentication-server Setting up the server for password authentication].  If you are using a GSSAPI mechanism such as
+authentication server; see [cvs: Setting up the server for password authentication#Password-authentication-server Password authentication server].  If you are using a GSSAPI mechanism such as
 Kerberos which provides for strong authentication, you
 will probably want to disable the ability to
 authenticate via cleartext passwords.  To do so, create
 an empty &lsquo;<tt>CVSROOT/passwd</tt>&rsquo; password file, and set
 <code>SystemAuth=no</code> in the config file
-(see section [cvs: The CVSROOT%47config configuration file#config The CVSROOT/config configuration file]).
+(see [cvs: The CVSROOT%47config configuration file#config config]).
 </p>
 <p>The GSSAPI server uses a principal name of
 cvs/<var>hostname</var>, where <var>hostname</var> is the

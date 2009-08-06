@@ -1,10 +1,9 @@
 <div id="Multiple-developers"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Handling binary files#Binary-howto  &lt; ]|</td>
-<td valign="middle" align="left">|[[#File-status| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: Handling binary files#Binary-howto  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[[#File-status| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -74,11 +73,10 @@ choosing between them.
 <hr>
 <div id="File-status"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Updating-a-file| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Multiple-developers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[[#Updating-a-file| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -206,11 +204,10 @@ these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick refe
 <hr>
 <div id="Updating-a-file"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#File-status| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Conflicts-example| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#File-status| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[[#Conflicts-example| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -258,11 +255,10 @@ See section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in s
 <hr>
 <div id="Conflicts-example"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Updating-a-file| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Informing-others| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Updating-a-file| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[[#Informing-others| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -442,11 +438,10 @@ See the documentation for pcl-cvs.
 <hr>
 <div id="Informing-others"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Conflicts-example| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Concurrency| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Conflicts-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[[#Concurrency| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -475,11 +470,10 @@ newsgroup.
 <hr>
 <div id="Concurrency"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Informing-others| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Watches| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Informing-others| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[[#Watches| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -555,11 +549,10 @@ the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 <hr>
 <div id="Watches"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Concurrency| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Setting-a-watch| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Concurrency| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[[#Setting-a-watch| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -603,11 +596,10 @@ but <small>CVS</small> is not able to enforce this behavior.
 <hr>
 <div id="Setting-a-watch"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Watches| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Getting-Notified| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[[#Getting-Notified| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -626,7 +618,7 @@ certain files are to be watched.
 </p>
 <div id="index-watch-on-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-watch-on"></div><u>Command:</u> <b>cvs watch on</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-on"></div>Command: <b>cvs watch on</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <div id="index-Read_002donly-files_002c-and-watches"></div>
 <p>Specify that developers should run <code>cvs edit</code>
@@ -651,7 +643,7 @@ option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section [cvs: Guide to CVS
 </dd></dl>
 
 <dl>
-<dt><div id="index-cvs-watch-off"></div><u>Command:</u> <b>cvs watch off</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-off"></div>Command: <b>cvs watch off</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Do not create <var>files</var> read-only on checkout; thus,
 developers will not be reminded to use <code>cvs edit</code>
@@ -665,11 +657,10 @@ watch on</code>.
 <hr>
 <div id="Getting-Notified"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Setting-a-watch| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Editing-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Setting-a-watch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[[#Editing-files| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -692,7 +683,7 @@ command.
 </p>
 <div id="index-watch-add-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-watch-add"></div><u>Command:</u> <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-add"></div>Command: <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Add the current user to the list of people to receive notification of
 work done on <var>files</var>.
@@ -750,7 +741,7 @@ omitted, the action defaults to <code>all</code>.
 
 <div id="index-watch-remove-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-watch-remove"></div><u>Command:</u> <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-remove"></div>Command: <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Remove a notification request established using <code>cvs watch add</code>;
 the arguments are the same.  If the <code>-a</code> option is present, only
@@ -804,11 +795,10 @@ changing.
 <hr>
 <div id="Editing-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Getting-Notified| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Watch-information| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Getting-Notified| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[[#Watch-information| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -833,7 +823,7 @@ for obtaining a copy of the sources (see section [cvs: Overview#Getting-the-sour
 </p>
 <div id="index-edit-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-edit"></div><u>Command:</u> <b>cvs edit</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-edit"></div>Command: <b>cvs edit</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Prepare to edit the working files <var>files</var>.  <small>CVS</small> makes the
 <var>files</var> read-write, and notifies users who have requested
@@ -862,7 +852,7 @@ the <code>cvs unedit</code> command.
 <div id="index-Abandoning-work"></div>
 <div id="index-Reverting-to-repository-version"></div>
 <dl>
-<dt><div id="index-cvs-unedit"></div><u>Command:</u> <b>cvs unedit</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-unedit"></div>Command: <b>cvs unedit</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>Abandon work on the working files <var>files</var>, and revert them to the
 repository versions on which they are based.  <small>CVS</small> makes those
@@ -892,11 +882,10 @@ successful <small>CVS</small> command.
 <hr>
 <div id="Watch-information"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Editing-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Watches-Compatibility| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Editing-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[[#Watches-Compatibility| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -912,7 +901,7 @@ successful <small>CVS</small> command.
 
 <div id="index-watchers-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-watchers"></div><u>Command:</u> <b>cvs watchers</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watchers"></div>Command: <b>cvs watchers</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>List the users currently watching changes to <var>files</var>.  The report
 includes the files being watched, and the mail address of each watcher.
@@ -925,7 +914,7 @@ includes the files being watched, and the mail address of each watcher.
 
 <div id="index-editors-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-editors"></div><u>Command:</u> <b>cvs editors</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-editors"></div>Command: <b>cvs editors</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
 <dd>
 <p>List the users currently working on <var>files</var>.  The report
 includes the mail address of each user, the time when the user began
@@ -940,11 +929,10 @@ containing the file.
 <hr>
 <div id="Watches-Compatibility"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Watch-information| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Choosing-a-model| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watch-information| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
+<td valign="middle" align="left">|[[#Choosing-a-model| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -981,11 +969,10 @@ that will restore the repository to a state which
 <hr>
 <div id="Choosing-a-model"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Watches-Compatibility| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Watches-Compatibility| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>

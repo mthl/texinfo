@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 6.3.5 The First Node</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 6.3.5 The First Node">
+<meta name="keywords" content="GNU Texinfo 4.2: 6.3.5 The First Node">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Texinfo">
+<link href="Command-and-Variable-Index.html#Command-and-Variable-Index" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="node.html#node" rel="up" title="6.3 The @node Command">
+<link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
+<link href="Node-Line-Requirements.html#Node-Line-Requirements" rel="previous" title="6.3.4 @node Line Requirements">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="First-Node"></a>
+<div class="node">
+<p>
+Next: <a href="makeinfo-top-command.html#makeinfo-top-command" accesskey="n" rel="next">makeinfo top command</a>, Previous: <a href="Node-Line-Requirements.html#Node-Line-Requirements" accesskey="p" rel="previous">Node Line Requirements</a>, Up: <a href="node.html#node" accesskey="u" rel="up">node</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-First-Node"></a>
+<h3 class="subsection">6.3.5 The First Node</h3>
+<a name="index-Top-node-is-first"></a>
+<a name="index-First-node"></a>
+
+<p>The first node of a Texinfo file is the <em>Top</em> node, except in an
+included file (see <a href="Include-Files.html#Include-Files">Include Files</a>).  The Top node should contain a
+short summary, copying permissions, and a master menu.  See <a href="The-Top-Node.html#The-Top-Node">The Top Node</a>, for more information on the Top node contents and examples.
+</p>
+<p>Here is a description of the node pointers to be used in the Top node:
+</p>
+<ul>
+<li>
+<a name="index-Up-node-of-Top-node"></a>
+<a name="index-_0028dir_0029-as-Up-node-of-Top-node"></a>
+The Top node (which must be named &lsquo;<samp>top</samp>&rsquo; or &lsquo;<samp>Top</samp>&rsquo;) should have
+as its &lsquo;Up&rsquo; node the name of a node in another file, where there is a
+menu that leads to this file.  Specify the file name in parentheses.
+
+<p>Usually, all Info files are installed in the same Info directory tree;
+in this case, use &lsquo;<samp>(dir)</samp>&rsquo; as the parent of the Top node; this is
+short for &lsquo;<samp>(dir)top</samp>&rsquo;, and specifies the Top node in the &lsquo;<tt>dir</tt>&rsquo;
+file, which contains the main menu for the Info system as a whole. 
+</p>
+</li><li>
+<a name="index-Previous-node-of-Top-node"></a>
+On the other hand, do not define the &lsquo;Previous&rsquo; node of the Top node to
+be &lsquo;<samp>(dir)</samp>&rsquo;, as it causes confusing behavior for users: if you are
+in the Top node and hits &lt;DEL&gt; to go backwards, you wind up in the
+middle of the some other entry in the &lsquo;<tt>dir</tt>&rsquo; file, which has nothing
+to do with what you were reading.
+
+</li><li>
+<a name="index-Next-node-of-Top-node"></a>
+The &lsquo;Next&rsquo; node of the Top node should be the first chapter in your
+document.
+
+</li></ul>
+
+<p>See <a href="Installing-an-Info-File.html#Installing-an-Info-File">Installing an Info File</a>, for more information about installing
+an Info file in the &lsquo;<tt>info</tt>&rsquo; directory.
+</p>
+<p>For concreteness, here is an example with explicit pointers (which you
+can maintain automatically with the texinfo mode commands):
+</p>
+<p>Or you can leave the pointers off entirely and let the tools implicitly
+define them.  This is recommended.  Thus:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@node Top
+</pre></td></tr></table>
+
+
+<hr>
+<div class="node">
+<p>
+Next: <a href="makeinfo-top-command.html#makeinfo-top-command" accesskey="n" rel="next">makeinfo top command</a>, Previous: <a href="Node-Line-Requirements.html#Node-Line-Requirements" accesskey="p" rel="previous">Node Line Requirements</a>, Up: <a href="node.html#node" accesskey="u" rel="up">node</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

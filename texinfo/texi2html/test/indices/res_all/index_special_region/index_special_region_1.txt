@@ -7,7 +7,7 @@ This is a test manual, trivially and explicitly in the public
 domain(1).
 
 * Index:
-* Copying appendix: A. Copying and indices.
+* Copying appendix: Appendix A Copying and indices.
 
 
 This test demonstrates @anchor and indices in @copying

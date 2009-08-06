@@ -23,7 +23,7 @@ to allow only one person to edit each file at a time.
 This is the only solution with some version control
 systems, including <small>RCS</small> and <small>SCCS</small>.  Currently
 the usual way to get reserved checkouts with <small>CVS</small>
-is the <code>cvs admin -l</code> command (see section [cvs: admin options#admin-options admin options]).  This is not as nicely integrated into
+is the <code>cvs admin -l</code> command (see [cvs: admin options#admin-options admin options]).  This is not as nicely integrated into
 <small>CVS</small> as the watch features, described below, but it
 seems that most people with a need for reserved
 checkouts find it adequate.

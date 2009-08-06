@@ -14,6 +14,7 @@ After the listoffloats.
 * chapter::
 * Unnumbered::
 * Chapter with unnumbsubsec::
+* Appendix for float::
 * list of floats::
 @end menu
 
@@ -283,6 +284,15 @@ float with no type.
 
 @caption{No type in unnumbered subsec in chapter}
 @shortcaption{No type in unnumbered subsec in chapter}
+@end float
+
+@node Appendix for float
+@appendix Appendix for float
+
+@float Text, appendix sec float
+Appendix
+@shortcaption{appendix sec float}
+@caption{appendix sec float}
 @end float
 
 @node list of floats

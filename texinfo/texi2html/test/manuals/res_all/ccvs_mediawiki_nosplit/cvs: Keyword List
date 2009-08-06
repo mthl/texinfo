@@ -33,7 +33,7 @@ existing installations if $<i></i>CVSHeader$ is already
 in the files for a different purpose. This keyword may
 be excluded using the <code>KeywordExpansion=eCVSHeader</code>
 in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file. 
-See [cvs: Configuring Keyord Expansion#Configuring-keyword-expansion Configuring Keyord Expansion] for more details.
+See [cvs: Configuring Keyord Expansion#Configuring-keyword-expansion Configuring keyword expansion] for more details.
 </p>
 <div id="index-Date-keyword"></div>
 </dd>
@@ -97,7 +97,7 @@ Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the
 The <code>$Log</code> keyword is useful for
 accumulating a complete change log in a source file,
 but for several reasons it can be problematic.
-See section [cvs: Problems with the $ Log$ keyword.#Log-keyword Problems with the $ <i></i>Log$ keyword.].
+See [cvs: Problems with the $ Log$ keyword.#Log-keyword Log keyword].
 </p>
 <div id="index-RCSfile-keyword"></div>
 </dd>
@@ -146,7 +146,7 @@ tag&rdquo; feature. It was used in conjunction with the
 what they called the <code>tagexpand=</code> option. In
 <small>CVS</small> this other option is known as the
 <code>KeywordExpand</code> option. 
-See [cvs: Configuring Keyord Expansion#Configuring-keyword-expansion Configuring Keyord Expansion] for more
+See [cvs: Configuring Keyord Expansion#Configuring-keyword-expansion Configuring keyword expansion] for more
 details.
 </p>
 <p>Examples from popular projects include:
@@ -166,7 +166,7 @@ conflicts that arise during an import of a new version.
 <p>All keyword expansion except the local keyword may be
 disabled using the <code>KeywordExpansion</code> option in
 the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see 
-[cvs: Configuring Keyord Expansion#Configuring-keyword-expansion Configuring Keyord Expansion] for more details.
+[cvs: Configuring Keyord Expansion#Configuring-keyword-expansion Configuring keyword expansion] for more details.
 </p>
 </dd>
 </dl>

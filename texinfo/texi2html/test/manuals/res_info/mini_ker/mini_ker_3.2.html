@@ -36,7 +36,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <link href="mini_ker_U.4.html#Concepts-index" rel="index" title="Concepts index">
 <link href="mini_ker_top.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
-<link href="mini_ker_3.html#Advanced-programming" rel="up" title="3. Advanced Miniker programming">
+<link href="mini_ker_3.html#Advanced-programming" rel="up" title="3 Advanced Miniker programming">
 <link href="mini_ker_C.1.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
 <link href="mini_ker_3.1.html#Selecting-features" rel="previous" title="3.1 Overview of additional features setting">
 <style type="text/css">
@@ -67,7 +67,7 @@ ul.toc {list-style: none}
 
 <a name="Calling-the-model-code"></a>
 <ul class="toc"><li><a href="mini_ker_top.html#Top">Miniker 102 manual</a> </li>
-<li><ul class="toc"><li><a href="mini_ker_3.html#Advanced-programming">3. Advanced Miniker programming</a> </li>
+<li><ul class="toc"><li><a href="mini_ker_3.html#Advanced-programming">3 Advanced Miniker programming</a> </li>
 </ul></li>
 </ul>
 <div class="node">
@@ -85,7 +85,7 @@ ul.toc {list-style: none}
 program unit (or another program), and the model will be 
 run each time the subroutine is called.
 This technique could be used, for example to perform optimization 
-(see section <a href="mini_ker_4.2.html#Adjoint-model-and-optimisation">Adjoint model and optimisation with Miniker</a>), or to run the model with different parameters.
+(see <a href="mini_ker_4.2.html#Adjoint-model-and-optimisation">Adjoint model and optimisation with Miniker</a>), or to run the model with different parameters.
 </p>
 
 <hr>
@@ -102,7 +102,7 @@ This technique could be used, for example to perform optimization
 </p><table><tr><td>&nbsp;</td><td><pre class="example">sel monitor
 </pre></td></tr></table>
 <p>in the &lsquo;<tt>selseq.kumac</tt>&rsquo; file and create the KEEP that call the 
-model code. See section <a href="mini_ker_3.1.html#Selecting-features">Overview of additional features setting</a>.
+model code. See <a href="mini_ker_3.1.html#Selecting-features">Overview of additional features setting</a>.
 </p>
 <p>With make &lsquo;<samp>monitor</samp>&rsquo; should be added to the <code>SEL</code> variable in
 the &lsquo;<tt>Makefile</tt>&rsquo;, for example:
@@ -128,7 +128,7 @@ to the <code>miniker_user_objects</code> variable.
 following arguments:
 </p>
 <dl>
-<dt><a name="index-principal"></a><u>Subroutine:</u> <b>principal</b><i> (Cost, ncall, integer_flag, file_suffix, info, idxerror)</i></dt>
+<dt><a name="index-principal"></a>Subroutine: <b>principal</b><i> (Cost, ncall, integer_flag, file_suffix, info, idxerror)</i></dt>
 <dd><p>Where <var>Cost</var> is a real number, <code>real</code> or <code>double precision</code>, 
 and is set by the <code>principal</code>
 subroutine. It holds the value of the cost function if such function has been

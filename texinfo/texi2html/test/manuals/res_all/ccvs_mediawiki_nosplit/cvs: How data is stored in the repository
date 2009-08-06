@@ -18,7 +18,7 @@ changes need not be disruptive.
 <p>However, in some cases it may be necessary to
 understand how <small>CVS</small> stores data in the repository,
 for example you might need to track down <small>CVS</small> locks
-(see section [cvs: Several developers simultaneously attempting to run CVS#Concurrency Several developers simultaneously attempting to run CVS]) or you might need to deal with
+(see [cvs: Several developers simultaneously attempting to run CVS#Concurrency Concurrency]) or you might need to deal with
 the file permissions appropriate for the repository.
 </p>
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Where files are stored within the repository#Repository-files  Repository files]::<nowiki>            What files are stored in the repository

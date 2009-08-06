@@ -21,7 +21,7 @@ branch, normally the highest branch on the trunk.
 date/time in the range given by the
 semicolon-separated list of dates.  The date formats
 accepted are those accepted by the &lsquo;<samp>-D</samp>&rsquo; option to
-many other <small>CVS</small> commands (see section [cvs: Common command options#Common-options Common command options]).
+many other <small>CVS</small> commands (see [cvs: Common command options#Common-options Common options]).
 Dates can be combined into ranges as follows:
 </p>
 <dl compact="compact">

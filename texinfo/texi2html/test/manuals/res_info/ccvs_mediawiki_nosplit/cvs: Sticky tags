@@ -12,7 +12,7 @@ Previous: [cvs: Tagging and adding and removing files#Tagging-add_002fremove Tag
 
 <p>Sometimes a working copy&rsquo;s revision has extra data
 associated with it, for example it might be on a branch
-(see section [cvs: Branching and merging#Branching-and-merging Branching and merging]), or restricted to
+(see [cvs: Branching and merging#Branching-and-merging Branching and merging]), or restricted to
 versions prior to a certain date by &lsquo;<samp>checkout -D</samp>&rsquo;
 or &lsquo;<samp>update -D</samp>&rsquo;.  Because this data persists &ndash;
 that is, it applies to subsequent commands in the
@@ -46,7 +46,7 @@ File: driver.c          Status: Up-to-date
 you delete them with &lsquo;<samp>cvs update -A</samp>&rsquo;.  The
 &lsquo;<samp>-A</samp>&rsquo; option merges local changes into the version of the
 file from the head of the trunk, removing any sticky tags,
-dates, or options.  See [cvs: update--Bring work tree in sync with repository#update update&mdash;Bring work tree in sync with repository] for more on the operation
+dates, or options.  See [cvs: update--Bring work tree in sync with repository#update update] for more on the operation
 of <code>cvs update</code>.
 </p>
 <div id="index-Sticky-date"></div>
@@ -88,7 +88,7 @@ how to undo a previous checkin (in this example, put
 &lsquo;<tt>file1</tt>&rsquo; back to the way it was as of revision
 1.1).  In that case you are better off using the
 &lsquo;<samp>-j</samp>&rsquo; option to <code>update</code>; for further
-discussion see [cvs: Merging differences between any two revisions#Merging-two-revisions Merging differences between any two revisions].
+discussion see [cvs: Merging differences between any two revisions#Merging-two-revisions Merging two revisions].
 </p>
 <hr>
 <div class="node">

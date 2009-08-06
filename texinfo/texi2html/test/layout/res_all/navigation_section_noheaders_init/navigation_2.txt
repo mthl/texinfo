@@ -37,7 +37,7 @@ Table of Contents
 *****************
 
 File used for navigation testing
-1. First chapter
+1 First chapter
  1.1 Section in chapter
   1.1.1 Sub section in section
 

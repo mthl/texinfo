@@ -2240,11 +2240,11 @@ sub info_default_heading($$$$$;$$)
     $info_state->{'paragraph_in_element_nr'} = 0;
     my $text = "$element->{'text'}";
     # to do the same than makeinfo a trailing dot in section number is removed
-    $text =~ s/^(\w+)\. /$1 /;
+    #$text =~ s/^(\w+)\. /$1 /;
     # when @top is empty, use settitle
     $text = $Texi2HTML::THISDOC{'settitle'} if (!length($text) and $element->{'tag'} eq 'top' and defined ($Texi2HTML::THISDOC{'settitle'}) and length($Texi2HTML::THISDOC{'settitle'}));
     # FIXME i18n
-    $text = "Appendix $text" if ($element->{'tag'} =~ /appendix/ and $element->{'level'} <= 1);
+    #$text = "Appendix $text" if ($element->{'tag'} =~ /appendix/ and $element->{'level'} <= 1);
     my $result = $text . "\n" . 
        ($t2h_default_underline_symbol{$element->{'level'}} x length($text)) . "\n";
 
@@ -3394,7 +3394,7 @@ sub info_default_listoffloats_entry($$$$)
     chomp ($caption);
 
     my $result = '';
-    $caption .= ':' if ($caption ne '');
+    #$caption .= ':' if ($caption ne '');
     my $caption_entry = "* $float_style: $float->{'text'}.";
     if (length($caption_entry) > $info_default_listoffloat_caption_entry_length)
     {
@@ -3419,23 +3419,6 @@ sub info_default_listoffloats_entry($$$$)
            $length += length($new_word);
         }
     }
-    #while ($caption_entry =~ s/^(\S+\s*)//)
-    #{
-    #   my $new_word = $1;
-    #   if (length($new_word) + $length > ($info_default_listoffloat_caption_entry_length - 3) or (length($new_word) + $length + length($info_default_listoffloat_append) >  $info_default_listoffloat_caption_entry_length and $caption_entry ne ''))
-    #   {
-    #       $result .= $info_default_listoffloat_append;
-    #       last;
-    #   }
-    #   else
-    #   {
-    #       $result .= $new_word;
-    #       $length += length($new_word);
-    #   }
-    #}
-    #$result .= ' ' x ($info_default_listoffloat_caption_entry_length - length($result));
-    
-    #return "${result}$float->{'text'}.\n";
     return $caption_entry. "\n";
 }
 

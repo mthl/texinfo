@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.14 2009-08-06 08:51:37 pertusus Exp $
+# $Id: html.init,v 1.15 2009-08-06 16:26:53 pertusus Exp $
 
 use strict;
 
@@ -54,12 +54,10 @@ $USE_ISO = 1;
 # if the value is true the Texinfo menus are shown.
 $SHOW_MENU = 1;
 
-# if this is set the nodes are used as sectionning elements. 
-# Otherwise the nodes are incorporated in sections.
-#$USE_NODES = 0;
 $USE_NODES = undef;
 
 $USE_SECTIONS = 1;
+
 
 $TOP_FILE = 'index.html';
 
@@ -189,49 +187,6 @@ $WORDS_IN_PAGE = 300;
 
 # html version for latex2html
 $L2H_HTML_VERSION = "4.0";
-
-# specify in this array which "buttons" should appear in which order
-# in the navigation panel for sections; use ' ' for empty buttons (space)
-@SECTION_BUTTONS =
-    (
-     'Back', 'Forward', ' ', 'FastBack', 'Up', 'FastForward',
-     ' ', ' ', ' ', ' ',
-     'Top', 'Contents', 'Index', 'About',
-    );
-
-# buttons for misc stuff
-@MISC_BUTTONS = ('Top', 'Contents', 'Index', 'About');
-
-#@TOP_BUTTONS = ( 'Back', 'Forward', ' ','Contents', 'Index', 'About');
-@TOP_BUTTONS = ('Top', 'Contents', 'Index', 'About');
-
-# buttons for chapter file footers
-# (and headers but only if HEADERS is false)
-@CHAPTER_BUTTONS =
-    (
-     'FastBack', 'FastForward', ' ',
-     ' ', ' ', ' ', ' ',
-     'Top', 'Contents', 'Index', 'About',
-    );
-
-# buttons for section file footers
-@SECTION_FOOTER_BUTTONS =
-    (
-     'Back', 'Forward', ' ', 'FastBack', 'Up', 'FastForward'
-    );
-
-@NODE_FOOTER_BUTTONS =
-    (
-     'Back', 'Forward', ' ', 'FastBack', 'Up', 'FastForward',
-     ' ', ' ', ' ', ' ',
-     'Top', 'Contents', 'Index', 'About',
-#     'Back', 'Forward', ' ', 'FastBack', 'Up', 'FastForward'
-    );
-
-@LINKS_BUTTONS =
-    (
-      'Top', 'Index', 'Contents', 'About', 'Up', 'NextFile', 'PrevFile'
-    );
 
 # this is not set dynamically
 if (!$HEADER_IN_TABLE)
@@ -2883,12 +2838,12 @@ sub html_default_def_line($$$$$$$$$$$$$$$$)
        $arguments = '<i>' . $arguments . '</i>';
    }
    my $type_name = '';
-   $type_name = " $type" if ($type ne '');
+   $type_name = " <i>$type</i>" if ($type ne '');
    $type_name .= ' <b>' . $name . '</b>' if ($name ne '');
    $type_name .= $arguments;
    if (! $DEF_TABLE)
    {
-       return '<dt>'. $index_label. '<u>' . $category_prepared . ':</u>' . $type_name . "</dt>\n";
+       return '<dt>'. $index_label. $category_prepared . ':' . $type_name . "</dt>\n";
    }
    else
    {
@@ -2965,8 +2920,8 @@ sub html_default_print_index($$)
     my $name = shift;
     return '' if (!defined($text));
     return "<table border=\"0\" class=\"index-$name\">\n" .
-    "<tr><td></td><th align=\"left\">" . &$I('Index Entry') . "</th><th align=\"left\"> " . &$I('Section') . "</th></tr>\n"
-    . "<tr><td colspan=\"3\"> $DEFAULT_RULE</td></tr>\n" . $text .
+    "<tr><td></td><th align=\"left\">" . &$I('Index Entry') . "</th><td>&nbsp;</td><th align=\"left\"> " . &$I('Section') . "</th></tr>\n"
+    . "<tr><td colspan=\"4\"> $DEFAULT_RULE</td></tr>\n" . $text .
     "</table>\n";
 }
 
@@ -2986,7 +2941,7 @@ sub html_default_index_letter($$$)
      my $text = shift;
      return '<tr><th>' . &$anchor($id,'',&$protect_text($letter)) . 
      "</th><td></td><td></td></tr>\n" . $text . 
-     "<tr><td colspan=\"3\"> $DEFAULT_RULE</td></tr>\n";
+     "<tr><td colspan=\"4\"> $DEFAULT_RULE</td></tr>\n";
 }
 
 # format an index entry (in a letter entry).
@@ -3010,7 +2965,7 @@ sub html_default_index_entry($$$$$$$$$)
     my $index_entry_ref = shift;
     
     return '<tr><td></td><td valign="top">' . &$anchor('', $text_href, $entry)
-    . '</td><td valign="top">' .  &$anchor('', $element_href, $element_text)
+    . '</td><td>&nbsp;</td><td valign="top">' .  &$anchor('', $element_href, $element_text)
     . "</td></tr>\n";
 }
 

@@ -27,7 +27,7 @@ $ cd CVSROOT
 </nowiki></pre></td></tr></table>
 
 </li><li>
-Edit the file and insert a line that defines the module.  See section [cvs: The administrative files#Intro-administrative-files The administrative files], for an introduction.  See section [cvs: The modules file#modules The modules file], for a full
+Edit the file and insert a line that defines the module.  See [cvs: The administrative files#Intro-administrative-files Intro administrative files], for an introduction.  See [cvs: The modules file#modules modules], for a full
 description of the modules file.  You can use the
 following line to define the module &lsquo;<samp>tc</samp>&rsquo;:
 

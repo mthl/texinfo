@@ -1,10 +1,9 @@
 <div id="Starting-a-new-project"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: The Repository#Server-temporary-directory  &lt; ]|</td>
-<td valign="middle" align="left">|[[#Setting-up-the-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &lt;&lt; ]|</td>
+<tr><td valign="middle" align="left">|[cvs: The Repository#Repository  &lt;&lt; ]|</td>
+<td valign="middle" align="left">|[cvs: The Repository#Server-temporary-directory  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
+<td valign="middle" align="left">|[[#Setting-up-the-files| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -37,11 +36,10 @@ directories.  See section [cvs: Adding, removing, and renaming files and directo
 <hr>
 <div id="Setting-up-the-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#From-files| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Starting-a-new-project| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Starting-a-new-project| Up ]]|</td>
+<td valign="middle" align="left">|[[#From-files| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -67,11 +65,10 @@ be done in a couple of different ways.
 <hr>
 <div id="From-files"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Setting-up-the-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#From-other-version-control-systems| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Setting-up-the-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Setting-up-the-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#From-other-version-control-systems| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -137,11 +134,10 @@ files are binary and which are not.  See section [cvs: Reference manual for Admi
 <hr>
 <div id="From-other-version-control-systems"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#From-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#From-scratch| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#From-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Setting-up-the-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#From-scratch| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -227,11 +223,10 @@ vary).  See the comments in the script for details.
 <hr>
 <div id="From-scratch"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#From-other-version-control-systems| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Defining-the-module| &gt; ]]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#From-other-version-control-systems| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Setting-up-the-files| Up ]]|</td>
+<td valign="middle" align="left">|[[#Defining-the-module| &gt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -270,11 +265,10 @@ directories inside <code>$CVSROOT</code> are reasonable.
 <hr>
 <div id="Defining-the-module"></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#From-scratch| &lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt; ]|</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#From-scratch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Starting-a-new-project| Up ]]|</td>
+<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt; ]|</td>
 <td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
