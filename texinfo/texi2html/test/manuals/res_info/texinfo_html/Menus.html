@@ -29,10 +29,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>GNU Texinfo 4.2: 7 Menus</title>
+<title>GNU Texinfo 4.2: Menus</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 7 Menus">
-<meta name="keywords" content="GNU Texinfo 4.2: 7 Menus">
+<meta name="description" content="GNU Texinfo 4.2: Menus">
+<meta name="keywords" content="GNU Texinfo 4.2: Menus">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
 <link href="index.html#Top" rel="up" title="Texinfo">
 <link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
-<link href="anchor.html#anchor" rel="previous" title="6.5 @anchor: Defining Arbitrary Cross-reference Targets">
+<link href="anchor.html#anchor" rel="previous" title="anchor">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -92,7 +92,7 @@ you should locate a menu within 20 lines of the beginning of the
 node.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Menu-Location" accesskey="1">&bull; Menu Location</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Put a menu in a short node.
+<tr><td align="left" valign="top"><a href="Menu-Location.html#Menu-Location" accesskey="1">&bull; Menu Location</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Put a menu in a short node.
 </td></tr>
 <tr><td align="left" valign="top"><a href="Writing-a-Menu.html#Writing-a-Menu" accesskey="2">&bull; Writing a Menu</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              What is a menu?
 </td></tr>
@@ -107,47 +107,6 @@ node.
 </table>
 
 
-<a name="Menu-Location"></a>
-<a name="index-Menu-location"></a>
-<a name="index-Location-of-menus"></a>
-<a name="index-Nodes-for-menus-are-short"></a>
-<a name="index-Short-nodes-for-menus"></a>
-
-<p>The short text before a menu may look awkward in a printed manual.  To
-avoid this, you can write a menu near the beginning of its node and
-follow the menu by an <code>@node</code> line, and then an <code>@heading</code>
-line located within <code>@ifinfo</code> and <code>@end ifinfo</code>.  This way,
-the menu, <code>@node</code> line, and title appear only in the Info file,
-not the printed document.
-</p>
-<p>For example, the preceding two paragraphs follow an Info-only menu,
-<code>@node</code> line, and heading, and look like this:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@menu
-* Menu Location::             Put a menu in a short node.
-* Writing a Menu::            What is a menu?
-* Menu Parts::                A menu entry has three parts.
-* Less Cluttered Menu Entry:: Two part menu entry.
-* Menu Example::              Two and three part entries.
-* Other Info Files::          How to refer to a different
-                                Info file.
-@end menu
-
-@node Menu Location, Writing a Menu, , Menus
-@ifinfo
-@heading Menus Need Short Nodes
-@end ifinfo
-</pre></td></tr></table>
-
-<p>The Texinfo file for this document contains a number of
-examples of this procedure; one is at the beginning of this chapter.
-</p>
-
-<hr>
-<div class="node">
-<p>
-Next: <a href="Cross-References.html#Cross-References" accesskey="n" rel="next">Cross References</a>, Previous: <a href="Nodes.html#Nodes" accesskey="p" rel="previous">Nodes</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
-</div>
 <p>
 
 

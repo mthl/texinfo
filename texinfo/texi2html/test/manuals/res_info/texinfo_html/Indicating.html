@@ -29,10 +29,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>GNU Texinfo 4.2: 9.1 Indicating Definitions, Commands, etc.</title>
+<title>GNU Texinfo 4.2: Indicating</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 9.1 Indicating Definitions, Commands, etc.">
-<meta name="keywords" content="GNU Texinfo 4.2: 9.1 Indicating Definitions, Commands, etc.">
+<meta name="description" content="GNU Texinfo 4.2: Indicating">
+<meta name="keywords" content="GNU Texinfo 4.2: Indicating">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
 <link href="Marking-Text.html#Marking-Text" rel="up" title="9 Marking Words and Phrases">
 <link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
-<link href="Marking-Text.html#Marking-Text" rel="previous" title="9 Marking Words and Phrases">
+<link href="Marking-Text.html#Marking-Text" rel="previous" title="Marking Text">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -97,7 +97,7 @@ every single occurrence to make sure that you were changing code and
 not something else that should not be changed.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Useful-Highlighting" accesskey="1">&bull; Useful Highlighting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Highlighting provides useful information.
+<tr><td align="left" valign="top"><a href="Useful-Highlighting.html#Useful-Highlighting" accesskey="1">&bull; Useful Highlighting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Highlighting provides useful information.
 </td></tr>
 <tr><td align="left" valign="top"><a href="code.html#code" accesskey="2">&bull; code</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        Indicating program code.
 </td></tr>
@@ -130,78 +130,6 @@ not something else that should not be changed.
 <tr><td align="left" valign="top"><a href="email.html#email">&bull; email</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       Indicating an electronic mail address.
 </td></tr>
 </table>
-
-
-<a name="Useful-Highlighting"></a>
-
-<p>The highlighting commands can be used to extract useful information
-from the file, such as lists of functions or file names.  It is
-possible, for example, to write a program in Emacs Lisp (or a keyboard
-macro) to insert an index entry after every paragraph that contains
-words or phrases marked by a specified command.  You could do this to
-construct an index of functions if you had not already made the
-entries.
-</p>
-<p>The commands serve a variety of purposes:
-</p>
-<dl compact="compact">
-<dt><code>@code{<var>sample-code</var>}</code></dt>
-<dd><p>Indicate text that is a literal example of a piece of a program.
-</p>
-</dd>
-<dt><code>@kbd{<var>keyboard-characters</var>}</code></dt>
-<dd><p>Indicate keyboard input.
-</p>
-</dd>
-<dt><code>@key{<var>key-name</var>}</code></dt>
-<dd><p>Indicate the conventional name for a key on a keyboard.
-</p>
-</dd>
-<dt><code>@samp{<var>text</var>}</code></dt>
-<dd><p>Indicate text that is a literal example of a sequence of characters.
-</p>
-</dd>
-<dt><code>@var{<var>metasyntactic-variable</var>}</code></dt>
-<dd><p>Indicate a metasyntactic variable.
-</p>
-</dd>
-<dt><code>@env{<var>environment-variable</var>}</code></dt>
-<dd><p>Indicate an environment variable.
-</p>
-</dd>
-<dt><code>@file{<var>file-name</var>}</code></dt>
-<dd><p>Indicate the name of a file.
-</p>
-</dd>
-<dt><code>@command{<var>command-name</var>}</code></dt>
-<dd><p>Indicate the name of a command.
-</p>
-</dd>
-<dt><code>@option{<var>option</var>}</code></dt>
-<dd><p>Indicate a command-line option.
-</p>
-</dd>
-<dt><code>@dfn{<var>term</var>}</code></dt>
-<dd><p>Indicate the introductory or defining use of a term.
-</p>
-</dd>
-<dt><code>@cite{<var>reference</var>}</code></dt>
-<dd><p>Indicate the name of a book.
-</p>
-</dd>
-<dt><code>@acronym{<var>acronym</var>}</code></dt>
-<dd><p>Indicate an acronym.
-</p>
-</dd>
-<dt><code>@url{<var>uniform-resource-locator</var>}</code></dt>
-<dd><p>Indicate a uniform resource locator for the World Wide Web.
-</p>
-</dd>
-<dt><code>@email{<var>email-address</var>[, <var>displayed-text</var>]}</code></dt>
-<dd><p>Indicate an electronic mail address.
-</p>
-</dd>
-</dl>
 
 
 <hr>

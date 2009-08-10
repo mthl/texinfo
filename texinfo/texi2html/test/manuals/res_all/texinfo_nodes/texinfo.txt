@@ -5,23 +5,18 @@ Texinfo
 Texinfo Copying Conditions
 1 Overview of Texinfo
 2 Using Texinfo Mode
-Texinfo Mode Overview
 3 Beginning a Texinfo File
 4 Ending a Texinfo File
 5 Chapter Structuring
 6 Nodes
 7 Menus
-Menu Location
 8 Cross References
-References
 9 Marking Words and Phrases
 10 Quotations and Examples
 11 Lists and Tables
-Introducing Lists
 12 Indices
 13 Special Insertions
 14 Making and Preventing Breaks
-Break Commands
 15 Definition Commands
 16 Conditionally Visible Text
 17 Internationalization
@@ -33,9 +28,7 @@ Appendix B Tips and Hints
 Appendix C Sample Texinfo Files
 Appendix D Include Files
 Appendix E Page Headings
-Headings Introduced
 Appendix F Formatting Mistakes
-makeinfo Preferred
 Appendix G Refilling Paragraphs
 Appendix H @-Command Syntax
 Appendix I How to Obtain TeX
@@ -61,12 +54,10 @@ Texinfo Copying Conditions
  1.10 A Short Sample Texinfo File
  1.11 History
 2 Using Texinfo Mode
-Texinfo Mode Overview
  2.1 The Usual GNU Emacs Editing Commands
  2.2 Inserting Frequently Used Commands
  2.3 Showing the Section Structure of a File
  2.4 Updating Nodes and Menus
- Updating Commands
   2.4.1 Updating Requirements
   2.4.2 Other Updating Commands
  2.5 Formatting for Info
@@ -129,18 +120,15 @@ Texinfo Mode Overview
  6.4 Creating Pointers with makeinfo
  6.5 @anchor: Defining Arbitrary Cross-reference Targets
 7 Menus
-Menu Location
  7.1 Writing a Menu
  7.2 The Parts of a Menu
  7.3 Less Cluttered Menu Entry
  7.4 A Menu Example
  7.5 Referring to Other Info Files
 8 Cross References
-References
  8.1 Different Cross Reference Commands
  8.2 Parts of a Cross Reference
  8.3 @xref
- Reference Syntax
   8.3.1 @xref with One Argument
   8.3.2 @xref with Two Arguments
   8.3.3 @xref with Three Arguments
@@ -152,7 +140,6 @@ References
  8.8 @uref{url[, text][, replacement]}
 9 Marking Words and Phrases
  9.1 Indicating Definitions, Commands, etc.
- Useful Highlighting
   9.1.1 @code{sample-code}
   9.1.2 @kbd{keyboard-characters}
   9.1.3 @key{key-name}
@@ -187,11 +174,9 @@ References
  10.12 @noindent: Omitting Indentation
  10.13 @cartouche: Rounded Rectangles Around Examples
 11 Lists and Tables
-Introducing Lists
  11.1 @itemize: Making an Itemized List
  11.2 @enumerate: Making a Numbered or Lettered List
  11.3 Making a Two-column Table
- table
   11.3.1 @ftable and @vtable
   11.3.2 @itemx
  11.4 Multi-column Tables
@@ -237,7 +222,6 @@ Introducing Lists
   13.10.2 Footnote Styles
  13.11 Inserting Images
 14 Making and Preventing Breaks
-Break Commands
  14.1 @*: Generate Line Breaks
  14.2 @- and @hyphenation: Helping TeX hyphenate
  14.3 @w{text}: Prevent Line Breaks
@@ -320,12 +304,10 @@ Appendix D Include Files
  D.4 Sample File with @include
  D.5 Evolution of Include Files
 Appendix E Page Headings
-Headings Introduced
  E.1 Standard Heading Formats
  E.2 Specifying the Type of Heading
  E.3 How to Make Your Own Headings
 Appendix F Formatting Mistakes
-makeinfo Preferred
  F.1 Catching Errors with Info Formatting
  F.2 Catching Errors with TeX Formatting
  F.3 Using texinfo-show-structure

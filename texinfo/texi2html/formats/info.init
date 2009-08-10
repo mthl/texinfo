@@ -58,6 +58,7 @@ $OUTPUT_FORMAT = 'info';
 
 t2h_default_set_variables_default();
 $USE_SECTIONS = 0;
+$USE_NODES = 1;
 #set_conf('SPLIT', 0, 1);
 $SPLIT = '';
 @T2H_FORMAT_EXPAND = ('info', 'direntry');
@@ -248,7 +249,7 @@ $end_special_region    = \&info_default_end_special_region;
 $anchor_label          = \&info_default_anchor_label;
 $element_label         = \&info_default_noop;
 $menu_link             = \&info_default_menu_link;
-$menu_command          = \&info_default_menu_command;
+#$menu_command          = \&info_default_menu_command;
 $complex_format        = \&info_default_complex_format;
 $quotation             = \&info_default_quotation;
 $misc_command_line     = \&info_default_misc_commands;

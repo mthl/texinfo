@@ -1,0 +1,77 @@
+This is more_sections_than_nodes.info, produced by makeinfo version 4.13
+from more_sections_than_nodes.texi.
+
+
+File: more_sections_than_nodes.info,  Node: Top,  Next: n c2,  Up: (dir)
+
+top
+***
+
+* Menu:
+
+* n c2::
+* n c3::
+* n c3 s1 s2::
+
+1 c1
+****
+
+
+File: more_sections_than_nodes.info,  Node: n c2,  Next: n c3,  Prev: Top,  Up: Top
+
+2 c2
+****
+
+2.1 s1
+======
+
+
+File: more_sections_than_nodes.info,  Node: n c3,  Next: n c3 s1 s2,  Prev: n c2,  Up: Top
+
+3 c3
+****
+
+* Menu:
+
+* n c3 s 2::
+
+3.1 C3 s1
+=========
+
+
+File: more_sections_than_nodes.info,  Node: n c3 s 2,  Up: n c3
+
+3.2 c3 s2
+=========
+
+3.3 c3 s3
+=========
+
+4 c4
+****
+
+4.1 c3 s1
+=========
+
+4.1.1 c3 s1 s1
+--------------
+
+
+File: more_sections_than_nodes.info,  Node: n c3 s1 s2,  Prev: n c3,  Up: Top
+
+4.1.2 c3 s1 s2
+--------------
+
+Appendix A appendix
+*******************
+
+
+
+Tag Table:
+Node: Top110
+Node: n c2249
+Node: n c3362
+Node: n c3 s 2511
+Node: n c3 s1 s2683
+
+End Tag Table

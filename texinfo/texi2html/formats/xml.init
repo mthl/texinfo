@@ -23,6 +23,11 @@ $USE_ISO = 0;
 $HEADERS = 0;
 $INLINE_INSERTCOPYING = 0;
 $SHOW_MENU = 1;
+$NUMBER_SECTIONS = 0;
+# Tags are closed at the end of elements so this is important. But is 
+# it right?
+$USE_NODES = 1;
+$USE_SECTIONS = 1;
 
 push @command_handler_init, \&xml_init_variables;
 
@@ -161,7 +166,7 @@ $menu_description = \&xml_menu_description;
 $menu_link = \&xml_menu_link;
 $element_heading = \&xml_heading;
 $heading = \&xml_heading;
-$heading_texi = \&xml_heading_texi;
+#$heading_texi = \&xml_heading_texi;
 $paragraph = \&xml_paragraph;
 $preformatted = \&xml_preformatted;
 $misc_element_label = \&xml_noop;
@@ -436,7 +441,7 @@ sub xml_footing($)
         $class = 'unnumbered' if ($class eq 'top' or $class eq 'centerchap');
         $result .= "</${class}>\n";
     }
-    if ($element->{'node'} or defined($element->{'node_ref'}))
+    if ($element->{'node'} or (defined($element->{'with_node'})))
     {
         $result .= "</node>\n";
     }

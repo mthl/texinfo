@@ -1,7 +1,6 @@
 Short Table of Contents
 ***********************
 
-Top
 1 Preface
 2 Introduction
 3 General concepts

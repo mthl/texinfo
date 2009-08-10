@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.15 2009-08-06 16:26:53 pertusus Exp $
+# $Id: html.init,v 1.16 2009-08-10 10:00:27 pertusus Exp $
 
 use strict;
 
@@ -54,10 +54,14 @@ $USE_ISO = 1;
 # if the value is true the Texinfo menus are shown.
 $SHOW_MENU = 1;
 
-$USE_NODES = undef;
+#$USE_NODES = undef;
 
-$USE_SECTIONS = 1;
+#$USE_SECTIONS = 1;
 
+#$USE_NODES = 1;
+#$USE_SECTIONS = undef;
+
+$USE_SECTIONS = undef;
 
 $TOP_FILE = 'index.html';
 
@@ -407,6 +411,7 @@ $button_formatting	      = \&HTML_DEFAULT_button_formatting;
 
 $print_navigation	      = \&HTML_DEFAULT_print_navigation;
 $about_body		      = \&HTML_DEFAULT_about_body;
+$element_heading              = \&HTML_DEFAULT_element_heading;
 
 $print_frame              = \&HTML_DEFAULT_print_frame;
 $print_toc_frame          = \&HTML_DEFAULT_print_toc_frame;
@@ -757,6 +762,42 @@ sub HTML_DEFAULT_print_element_header
         return &$print_navigation($buttons) if (get_conf('headers') or get_conf('SPLIT') eq 'node');
     }
 }
+
+sub HTML_DEFAULT_element_heading($$$$$$$$$$$$)
+{
+    my $element = shift;
+    my $command = shift;
+    my $texi_line = shift;
+    my $line = shift;
+    my $in_preformatted = shift;
+    my $one_section = shift;
+    my $element_heading = shift;
+    my $first_in_page = shift;
+    my $is_top = shift;
+    my $previous_is_top = shift;
+    my $command_line = shift;
+    my $element_id = shift;
+    my $new_element = shift;
+#print STDERR ":::::::: $element $command i_p $in_preformatted o_s $one_section e_h $element_heading f_p $first_in_page i_t $is_top p_i_t $previous_is_top id $element_id new $new_element\n";
+
+    my $result = &$element_label($element_id, $element, $command, $command_line);
+    if ($new_element and !$one_section)
+    {
+       if (!$element->{'element_ref'}->{'top'})
+       {
+    #return $result if (defined($command) and $command eq 'node' and !$element_heading);
+           $result .= &$print_element_header($first_in_page, $previous_is_top);
+       }
+       else
+       {
+           $result .= &$print_head_navigation(undef, \@TOP_BUTTONS) if (get_conf('SPLIT') or get_conf('headers'));
+       }
+    }
+
+    #return $result if (!$element_heading);
+    return $result. &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading);
+}
+
 
 sub HTML_DEFAULT_print_section
 {
@@ -1273,7 +1314,7 @@ foreach my $node_directions ('NodeNext', 'NodePrev', 'NodeUp')
    $html_default_node_directions{$node_directions} = 1;
 }
 
-sub HTML_DEFAULT_print_navigation
+sub HTML_DEFAULT_print_navigation($;$)
 {
     my $buttons = shift;
     my $vertical = shift;
@@ -1323,7 +1364,7 @@ sub HTML_DEFAULT_print_navigation
             $result .= "</tr>\n" if $vertical;
         }
         elsif (defined($active))
-        {
+        { # only active buttons are print out when not in table
             if (defined($direction) and $html_default_node_directions{$direction} and !$first_button)
             {
                 $active = ', ' .$active;
@@ -2560,6 +2601,10 @@ sub html_default_heading($$$$$;$$)
     {
         $level = $element->{'level'};
     }
+    else
+    {
+        return '' unless ($element->{'this'} and !$element->{'with_section'});
+    }
     my $text = $element->{'text'};
     my $class = $element->{'tag_level'};
     $class = 'unnumbered' if ($class eq 'top' or $class eq 'centerchap');
@@ -2963,6 +3008,42 @@ sub html_default_index_entry($$$$$$$$$)
     my $entry_target = shift;
     my $entry_element_target = shift;
     my $index_entry_ref = shift;
+
+    my $element = $index_entry_ref->{'real_element'};
+    if (defined($element))
+    {
+       my $element_set = 0;
+       if ($NODE_NAME_IN_INDEX)
+       {
+           if ($element->{'node'})
+           {
+               $element_set = 1;
+           }
+           elsif ($element->{'with_node'})
+           {
+               $element = $element->{'with_node'};
+               $element_set = 1;
+           }
+       }
+       elsif (defined($NODE_NAME_IN_INDEX))
+       {
+           if (!$element->{'node'})
+           {
+               $element_set = 1;
+           }
+           elsif ($element->{'with_section'})
+           {
+               $element = $element->{'with_section'};
+               $element_set = 1;
+           }
+       }
+       if ($element_set)
+       {
+           $element_href = main::href($element, $Texi2HTML::THIS_ELEMENT->{'file'},
+                 $Texi2HTML::THISDOC{'line_nr'});
+           $element_text = $element->{'text'};
+       }
+    }
     
     return '<tr><td></td><td valign="top">' . &$anchor('', $text_href, $entry)
     . '</td><td>&nbsp;</td><td valign="top">' .  &$anchor('', $element_href, $element_text)

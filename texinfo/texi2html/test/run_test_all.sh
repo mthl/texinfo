@@ -13,6 +13,7 @@ command=texi2html.pl
 diffs_dir=diffs
 
 logfile=tests.log
+main_command='texi2any.pl'
 
 commands='texi2html.pl: makeinfo.pl:_info texi2any.pl:_all'
 
@@ -69,6 +70,12 @@ if [ -f "$driving_file" ]; then
 else
   echo "Cannot find test driving file $driving_file" 1>&2
   exit 1
+fi
+
+first_line=`head -1 "$driving_file"`
+if echo $first_line |grep -qs '^# formats'; then
+  formats=`echo $first_line |sed 's/^# formats //'`
+  commands="$commands $formats"
 fi
 
 if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
@@ -147,8 +154,14 @@ do
     continue
   fi
   for command_dir in $commands; do
+    format_option=
     command=`echo $command_dir | cut -d':' -f1`
     dir_suffix=`echo $command_dir | cut -d':' -f2`
+    format=`echo $dir_suffix |sed 's/^_//'`
+    if [ z"$command" = 'z' ]; then 
+      command=$main_command
+      format_option="--$format"
+    fi
     for command_location_dir in "$testdir/$srcdir_test/../../" ../../; do
       if [ -f "$command_location_dir/$command" ]; then
         command_run="$command_location_dir/$command"
@@ -172,8 +185,8 @@ do
       # -I $testdir/$srcdir_test/ is useful when file name is found using 
       # @setfilename
       echo "$command $dir" >> $logfile
-      echo "perl -w -x $command_run --force --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ --test --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --dump-texi --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2" >> $logfile
-      eval "perl -w -x $command_run --force --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ --test --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --dump-texi --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2"
+      echo "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ --test --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --dump-texi --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2" >> $logfile
+      eval "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ --test --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --dump-texi --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2"
       ret=$?
     else
       use_latex2html=no
@@ -197,8 +210,8 @@ do
       mkdir "${outdir}$dir"
       remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
       echo "$command $dir" >> $logfile
-      echo "perl -w -x $command_run --force --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --test --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
-      eval "perl -w -x $command_run --force --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --test --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
+      echo "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --test --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
+      eval "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --test --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
       ret=$?
       rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
         ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
@@ -239,7 +252,7 @@ do
           rm "$diffs_dir/$diff_base.diff"
         fi
       else
-        echo "no res($command): $dir"
+        echo "no res($format): $dir"
       fi
     else
       echo "F: ${outdir}$dir/$basename.2"

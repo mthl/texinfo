@@ -24,7 +24,6 @@ Table of Contents
  1.10 Ö
  1.11 Ü
  1.12 ss
- no section
 2 acute accent
  2.1 a'
  2.2 é

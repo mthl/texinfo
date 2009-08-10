@@ -1,3 +1,4 @@
+## formats :_docbook :_xml :_html
 texi html-top.texi
 top top.texi
 sectionning sectionning.texi
@@ -6,6 +7,9 @@ novalidate novalidate.texi
 makeinfo_novalidate_split novalidate.texi --init makeinfo.init --no-node-file
 makeinfo_novalidate_unsplit novalidate.texi --init makeinfo.init --split no --no-node-file
 makeinfo_novalidate_unsplit_node_file novalidate.texi --init makeinfo.init --split no
+# in docbook, the @top 'chapter' is closed before the section, makeinfo
+# closes it after the section. 
+# laso text before first chapter is not allowed in docbook.
 first_section_no_node first_section_no_node.texi
 nodes_before_top nodes_before_top.texi
 nodes_after_top nodes_after_top.texi --use-nodes
@@ -57,6 +61,7 @@ two_footnotes_in_nodes_plain two_footnotes_in_nodes.texi
 two_footnotes_in_nodes two_footnotes_in_nodes.texi --init makeinfo.init
 section_in_unnumbered section_in_unnumbered.texi
 more_nodes_than_sections more_nodes_than_sections.texi --init makeinfo.init
+more_sections_than_nodes more_sections_than_nodes.texi
 no_element no_element.texi
 placed_things_before_element placed_things_before_element.texi
 menutextorder menutextorder.texi

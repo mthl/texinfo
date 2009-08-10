@@ -30,18 +30,13 @@ $SHOW_MENU = 1;
 
 $USE_NODES = 1;
 
-# to be like makeinfo
-#$ONLY_NODES = 1;
-
 $SPLIT = 'node';
 
 $NODE_FILES = 1;
 
 $USE_SETFILENAME = 1;
 
-# to mimic makeinfo the 2 following have to be set 1.
-#$USE_MENU_DIRECTIONS = 0;
-
+# to mimic makeinfo the following have to be set 1.
 #$USE_UP_FOR_ADJACENT_NODES = 0;
 
 $HEADERS = 1;
@@ -49,6 +44,8 @@ $HEADERS = 1;
 $SHORT_REF = 1;
 
 $NODE_NAME_IN_MENU = 1;
+
+$NODE_NAME_IN_INDEX = 0;
 
 $AVOID_MENU_REDUNDANCY = 0;
 
@@ -257,6 +254,49 @@ sub makeinfo_like_index_entry($$$$)
     my $entry = shift;
     my $element_href = shift;
     my $element_text = shift;
+    my $entry_file = shift;
+    my $current_element_file = shift;
+    my $entry_target = shift;
+    my $entry_element_target = shift;
+    my $index_entry_ref = shift;
+
+    my $element = $index_entry_ref->{'real_element'};
+    if (defined($element))
+    {
+       my $element_set = 0;
+       if ($NODE_NAME_IN_INDEX)
+       {
+           if ($element->{'node'})
+           {
+               $element_set = 1;
+           }
+           elsif ($element->{'with_node'})
+           {
+               $element = $element->{'with_node'};
+               $element_set = 1;
+           }
+       }
+       elsif (defined($NODE_NAME_IN_INDEX))
+       {
+
+           if (!$element->{'node'})
+           {
+               $element_set = 1;
+           }
+           elsif ($element->{'with_section'})
+           {
+               $element = $element->{'with_section'};
+               $element_set = 1;
+           }
+       }
+       if ($element_set)
+       {
+           $element_href = main::href($element, $Texi2HTML::THIS_ELEMENT->{'file'},
+                 $Texi2HTML::THISDOC{'line_nr'});
+           $element_text = $element->{'text'};
+       }
+    }
+
     
     return '<li>' . $entry . ': ' .  &$anchor('', $element_href, $element_text)
     . "</li>\n";

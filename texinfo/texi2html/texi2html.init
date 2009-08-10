@@ -12,7 +12,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.218 2009-08-06 16:26:52 pertusus Exp $
+# $Id: texi2html.init,v 1.219 2009-08-10 10:00:22 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -226,7 +226,7 @@ $SHOW_MENU = 1;
 # Otherwise the nodes are incorporated in sections.
 $USE_NODES = 1;
 
-$USE_SECTIONS = 1;
+#$USE_SECTIONS = 1;
 
 # --node-files
 # if this is set one file per node is generated, which can be a target for 
@@ -524,6 +524,10 @@ sub t2h_default_set_variables_default()
 
 # if set, then use node names in menu entries, instead of section names
   $NODE_NAME_IN_MENU = 1;
+
+# if set use the node names in index entry, instead of section names
+# if not set, it is set to the same value than NODE_NAME_IN_MENU
+  $NODE_NAME_IN_INDEX = undef;
 
 # if set always separate description and menu link, even in 
 # preformatted environment
@@ -5135,7 +5139,8 @@ sub t2h_default_menu_link($$$$$$$$)
 
     $title = '' unless ($has_title);
     $title .= ':' if ($title ne '');
-    return "$MENU_SYMBOL$title$node$ending";
+    return "$MENU_SYMBOL$title$node$ending" if ($NODE_NAME_IN_MENU);
+    return "$MENU_SYMBOL$title$entry$ending";
 }
 
 # formats a menu entry description, ie the text appearing after the node
@@ -5828,7 +5833,7 @@ sub t2h_default_element_heading($$$$$$$$$$$$)
        $result .= &$print_element_header($first_in_page, $previous_is_top);
     }
 
-    return $result if (!$element_heading);
+    #return $result if (!$element_heading);
     return $result. &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading);
 }
 
@@ -5903,14 +5908,11 @@ sub t2h_default_heading($$$$$;$$)
         {
           $level = 3;
         }
+        return '' if ((!$element->{'top'} and !$element->{'this'}) or $element->{'with_section'})
     }
     my $text = "$element->{'text'}";
-    # to do the same than makeinfo a trailing dot in section number is removed
-    #$text =~ s/^(\w+)\. /$1 /;
     # when @top is empty, use settitle
     $text = $Texi2HTML::THISDOC{'settitle'} if (!length($text) and $element->{'tag'} eq 'top' and defined ($Texi2HTML::THISDOC{'settitle'}) and length($Texi2HTML::THISDOC{'settitle'}));
-    # FIXME i18n
-    #$text = "Annexe $text" if ($element->{'tag'} =~ /appendix/ and $level <= 1);
     # as seen in encodings/nodetest_utf8_no_unicode, the length can be in
     # bytes (certainly) when there hasn't been a require Encode
     my $result = $text . "\n" .
@@ -6395,7 +6397,32 @@ sub t2h_default_index_entry($$$$$$$$$)
     # before anything else
     if (defined($element->{'text'}))
     {
-       $element = $element->{'element_ref'} if ($element->{'element_ref'});
+       my $element_set = 0;
+       if ($NODE_NAME_IN_INDEX)
+       {
+           if ($element->{'node'})
+           {
+               $element_set = 1;
+           }
+           elsif ($element->{'with_node'})
+           {
+               $element = $element->{'with_node'};
+               $element_set = 1;
+           }
+       }
+       elsif (defined($NODE_NAME_IN_INDEX))
+       {
+           if (!$element->{'node'})
+           {
+               $element_set = 1;
+           }
+           elsif ($element->{'with_section'})
+           {
+               $element = $element->{'with_section'};
+               $element_set = 1;
+           }
+       }
+       $element = $element->{'element_ref'} if ($element->{'element_ref'} and !$element_set);
        $real_element_text = $element->{'text'};
     }
     else

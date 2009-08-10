@@ -21,6 +21,12 @@
 #
 #-##############################################################################
 
+
+# regarding sections and nodes, in docbook we don't care at all about the
+# splitting done in the main program. When there is a node, it is recorded as
+# being pending. When there is a section it is opened, and closed when 
+# there is the next section or end of file.
+
 use strict;
 
 my %docbook_complex_format;
@@ -31,9 +37,11 @@ my %def_format_docbook;
 my %def_argument_types_docbook;
 
 my $docbook_pending_node_id;
+my $docbook_current_section;
 my @docbook_multitable_stack = ();
 my @docbook_table_stack = ();
 my @docbook_special_quotation;
+my %docbook_closed_sections;
 
 
 sub docbook_default_load(;$)
@@ -49,7 +57,10 @@ $DOCTYPE = '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://w
 @T2H_FORMAT_EXPAND = ('docbook');
 @IMAGE_EXTENSIONS = ('eps', 'gif', 'jpg', 'jpeg', 'pdf', 'png', 'svg', 'txt');
 $INLINE_INSERTCOPYING = 1;
-$USE_NODES = undef;
+# this should lead to end_section being only called at the end of 
+# sectionning
+$USE_NODES = 0;
+$USE_SECTIONS = 1;
 
 $SHOW_MENU = 0;
 $HEADERS = 0;
@@ -240,6 +251,7 @@ $foot_line_and_ref     = \&docbook_foot_line_and_ref;
 $format                = \&docbook_format;
 $format_list_item_texi = \&docbook_format_list_item_texi;
 $heading               = \&docbook_heading;
+$element_heading       = \&docbook_element_heading;
 $image                 = \&docbook_image;
 $image_files           = \&docbook_image_files;
 $index_entry_command   = \&docbook_index_entry_command;
@@ -355,6 +367,7 @@ EOT
 sub docbook_print_page_foot($)
 {
     my $fh = shift;
+    print $fh "". docbook_close_section();
     print $fh <<EOT;
 </book><!-- Keep this comment at the end of the file
 Local variables:
@@ -371,7 +384,6 @@ sub docbook_print_Top($$$)
     my $fh = shift;
     my $has_top_heading = shift;
     my $element = shift;
-    #print $fh "".docbook_heading($element);
     main::print_lines($fh, $Texi2HTML::THIS_SECTION);
 }
 
@@ -386,7 +398,7 @@ sub docbook_element_tag($)
 sub docbook_node_id($)
 {
    my $node_texi = shift;
-   my $node = main::remove_texi($node_texi);
+   my $node = main::substitute_line($node_texi, 'docbook node id', {'code_style' => 1, 'remove_texi' => 1});
    $node =~ s/[\s\"]/-/g;
    return &$protect_text($node);
 }
@@ -394,8 +406,10 @@ sub docbook_node_id($)
 sub docbook_initialize_variables()
 {
    $docbook_pending_node_id = undef;
+   $docbook_current_section = undef;
    @docbook_multitable_stack = ();
    @docbook_table_stack = ();
+   %docbook_closed_sections = ();
    $Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'docbook');
 }
 
@@ -432,24 +446,13 @@ sub docbook_heading($$$$$)
         return docbook_add_id('bridgehead')." renderas=\"$docbook_sections{$command}\">$text</bridgehead>\n";
     }
 
-#    my $node_element = $element;
-#    if (defined($element->{'node_ref'}))
-#    {
-#        $node_element = $element->{'node_ref'};
-#    }
-
     my $result = '';
 
 # FIXME verify xreflabel 
-    if (!$element->{'node'})
+    if ($command ne 'node')
     {
-        my $id_text = '';
-        if ($element->{'with_node'})
-        {
-            my $id = $element->{'with_node'}->{'text_nonumber'};
-            $id =~ s/ /-/g;
-            $id_text = " id=\"$id\"";
-        }
+        # close previous section
+        $result .= docbook_close_section(($command eq 'top'));
         my $title = $element->{'text_nonumber'};
         my $label = '';
         my $xreflabel = '';
@@ -464,7 +467,9 @@ sub docbook_heading($$$$$)
             my $xreftitle = $title;
             $xreflabel = " xreflabel=\"$xreftitle\"";
         }
-        $result .= '<' . docbook_element_tag($element) . " label=\"${label}\"${xreflabel}${id_text}>\n<title>$title</title>\n";
+        $result .= docbook_add_id(docbook_element_tag($element) . " label=\"${label}\"${xreflabel}");
+        $result .= ">\n<title>$title</title>\n";
+        $docbook_current_section = $element;
     }
     return $result;
 }
@@ -476,16 +481,34 @@ sub docbook_element_label($$$$)
     my $command = shift;
     my $line = shift;
 
-    if ($element->{'node'} and !$element->{'with_section'})
+    if ($command eq 'node')
     {
         $docbook_pending_node_id = docbook_node_id($element->{'texi'});
     }
-    elsif ($command !~ /heading/)
-    {
-        $docbook_pending_node_id = undef;
-    }
     return '';
 }
+
+sub docbook_element_heading($$$$$$$$$$$$)
+{
+    my $element = shift;
+    my $command = shift;
+    my $texi_line = shift;
+    my $line = shift;
+    my $in_preformatted = shift;
+    my $one_section = shift;
+    my $element_heading = shift;
+    my $first_in_page = shift;
+    my $is_top = shift;
+    my $previous_is_top = shift;
+    my $command_line = shift;
+    my $element_id = shift;
+    my $new_element = shift;
+#print STDERR ":::::::: $element $command i_p $in_preformatted o_s $one_section e_h $element_heading f_p $first_in_page i_t $is_top p_i_t $previous_is_top id $element_id new $new_element\n";
+
+    my $result = &$element_label($element_id, $element, $command, $command_line);
+    return $result. &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading);
+}
+
 
 sub docbook_paragraph($$$$$$$$$$$$)
 {
@@ -834,23 +857,50 @@ sub docbook_index_entry_label($$$$$)
     return "<indexterm role=\"${index_name}\"><primary>${formatted_entry}</primary></indexterm>";
 }
 
-sub docbook_footing($)
+sub docbook_close_section(;$)
 {
-    my $element = shift;
+    my $before_top = shift;
+    my $element = $docbook_current_section;
 
+    if (!defined($element))
+    {
+        # this doesn't work
+        #my $empty = 1;
+        #foreach my $line (@{$Texi2HTML::THIS_SECTION})
+        #{
+        #    if ($line =~ /\S/)
+        #    {
+        #        $empty = 0;
+        #        last;
+        #    }
+        #}
+        #unless ($empty)
+        #{ # FIXME is info in docbook 5.0
+        #     unshift @{$Texi2HTML::THIS_SECTION}, "<bookinfo>\n";
+        #     push @{$Texi2HTML::THIS_SECTION}, "</bookinfo>\n";
+        #}
+        return '';
+    }
     my $result = '';
 
-    return '' if ($element->{'node'});
+    #return '' if ($element->{'node'});
+    # @top is always closed
     return '</'.docbook_element_tag($element).">\n" if ($element->{'level'} == 0);
-    return '' if ($element->{'child'});
+    
+    return '' if ($element->{'child'} and !$before_top);
+    # this is useful in case there is a section before @top, in this case
+    # the element is closed although it has more children
+    $docbook_closed_sections{$element} = 1;
     $result .= '</'.docbook_element_tag($element).">\n";
 
-    return $result if ($element->{'sectionnext'} or $element->{'level'} == 1);
+    return $result if (($element->{'sectionnext'} and !$before_top) or $element->{'level'} == 1);
     my $current = $element;
-    while ($current->{'level'} != 1 and $current->{'sectionup'} and (!$current->{'sectionup'}->{'sectionnext'} or $current->{'sectionup'}->{'level'} == 1))
+    while ($current->{'level'} != 1 and $current->{'sectionup'} and (!$current->{'sectionnext'} or $before_top) and ($current->{'sectionup'}->{'level'} > 0))
     {
         $current = $current->{'sectionup'};
+        next if ($docbook_closed_sections{$current});
         $result .= '</'.docbook_element_tag($current).">\n";
+        $docbook_closed_sections{$current} = 1;
     }
     return $result;
 }
@@ -860,7 +910,6 @@ sub docbook_end_section($$$)
     my $fh = shift;
     my $end_foot_navigation = shift;
     my $element = shift;
-    print $fh "". docbook_footing($element);
 }
 
 sub docbook_print_Top_footer($$)
@@ -868,8 +917,6 @@ sub docbook_print_Top_footer($$)
     my $fh = shift;
     my $end_page = shift;
     my $element = shift;
-
-    print $fh "". docbook_footing($element);
 }
 
 sub docbook_one_section($$)
@@ -877,8 +924,6 @@ sub docbook_one_section($$)
     my $fh = shift;
     my $element = shift;
     main::print_lines($fh);
-    print $fh "". docbook_footing($element);
-    &$print_foot_navigation($fh);
     &$print_page_foot($fh);
 }
 
@@ -1483,7 +1528,7 @@ sub docbook_cartouche($$)
 {
     my $text = shift;
 
-    return "$text";
+    return $text;
 }
 
 sub docbook_anchor_label($$)

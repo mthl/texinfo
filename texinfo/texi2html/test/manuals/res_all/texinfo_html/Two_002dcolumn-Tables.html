@@ -29,10 +29,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>GNU Texinfo 4.2: 11.3 Making a Two-column Table</title>
+<title>GNU Texinfo 4.2: Two-column Tables</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 11.3 Making a Two-column Table">
-<meta name="keywords" content="GNU Texinfo 4.2: 11.3 Making a Two-column Table">
+<meta name="description" content="GNU Texinfo 4.2: Two-column Tables">
+<meta name="keywords" content="GNU Texinfo 4.2: Two-column Tables">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
 <link href="Lists-and-Tables.html#Lists-and-Tables" rel="up" title="11 Lists and Tables">
 <link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
-<link href="enumerate.html#enumerate" rel="previous" title="11.2 @enumerate: Making a Numbered or Lettered List">
+<link href="enumerate.html#enumerate" rel="previous" title="enumerate">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -84,7 +84,7 @@ tables, and is especially useful for glossaries, explanatory
 exhibits, and command-line option summaries.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#table" accesskey="1">&bull; table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       How to construct a two-column table.
+<tr><td align="left" valign="top"><a href="table.html#table" accesskey="1">&bull; table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       How to construct a two-column table.
 </td></tr>
 <tr><td align="left" valign="top"><a href="ftable-vtable.html#ftable-vtable" accesskey="2">&bull; ftable vtable</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Automatic indexing for two-column tables.
 </td></tr>
@@ -92,79 +92,6 @@ exhibits, and command-line option summaries.
 </td></tr>
 </table>
 
-<a name="table"></a>
-
-<p>Write the <code>@table</code> command at the beginning of a line and follow
-it on the same line with an argument that is a Texinfo &ldquo;indicating&rdquo;
-command such as <code>@code</code>, <code>@samp</code>, <code>@var</code>, or
-<code>@kbd</code> (see <a href="Indicating.html#Indicating">Indicating</a>).  Although these commands are usually
-followed by arguments in braces, in this case you use the command name
-without an argument because <code>@item</code> will supply the argument.
-This command will be applied to the text that goes into the first column
-of each item and determines how it will be highlighted.  For example,
-<code>@code</code> will cause the text in the first column to be highlighted
-with an <code>@code</code> command.  (We recommend <code>@code</code> for
-<code>@table</code>&rsquo;s of command-line options.)
-</p>
-<a name="index-asis"></a>
-<p>You may also choose to use the <code>@asis</code> command as an argument to
-<code>@table</code>.  <code>@asis</code> is a command that does nothing; if you
-use this command after <code>@table</code>, TeX and the Info formatting
-commands output the first column entries without added highlighting
-(&ldquo;as is&rdquo;).
-</p>
-<p>(The <code>@table</code> command may work with other commands besides those
-listed here.  However, you can only use commands that normally take
-arguments in braces.)
-</p>
-<a name="index-item-1"></a>
-<p>Begin each table entry with an <code>@item</code> command at the beginning
-of a line.  Write the first column text on the same line as the
-<code>@item</code> command.  Write the second column text on the line
-following the <code>@item</code> line and on subsequent lines.  (You do not
-need to type anything for an empty second column entry.)  You may
-write as many lines of supporting text as you wish, even several
-paragraphs.  But only text on the same line as the <code>@item</code> will
-be placed in the first column, including any footnote.
-</p>
-<p>Normally, you should put a blank line before an <code>@item</code> line.
-This puts a blank like in the Info file.  Except when the entries are
-very brief, a blank line looks better.
-</p>
-<p>The following table, for example, highlights the text in the first
-column with an <code>@samp</code> command:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@table @samp
-@item foo
-This is the text for
-@samp{foo}.
-
-@item bar
-Text for @samp{bar}.
-@end table
-</pre></td></tr></table>
-
-<p>This produces:
-</p>
-<dl compact="compact">
-<dt>&lsquo;<samp>foo</samp>&rsquo;</dt>
-<dd><p>This is the text for
-&lsquo;<samp>foo</samp>&rsquo;.
-</p></dd>
-<dt>&lsquo;<samp>bar</samp>&rsquo;</dt>
-<dd><p>Text for &lsquo;<samp>bar</samp>&rsquo;.
-</p></dd>
-</dl>
-
-<p>If you want to list two or more named items with a single block of
-text, use the <code>@itemx</code> command.  (See <a href="itemx.html#itemx"><code>@itemx</code></a>.)
-</p>
-
-<hr>
-<div class="node">
-<p>
-Next: <a href="Multi_002dcolumn-Tables.html#Multi_002dcolumn-Tables" accesskey="n" rel="next">Multi-column Tables</a>, Previous: <a href="enumerate.html#enumerate" accesskey="p" rel="previous">enumerate</a>, Up: <a href="Lists-and-Tables.html#Lists-and-Tables" accesskey="u" rel="up">Lists and Tables</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
-</div>
 <p>
 
 

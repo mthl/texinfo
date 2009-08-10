@@ -197,25 +197,49 @@ sub t2h_html32_heading($)
     my $one_section = shift;
     my $element_heading = shift;
 
-    return '' if (defined($command) and $command eq 'node' and !$element_heading);
-
     my $level = 3;
     if (!$element->{'node'})
     {
         $level = $element->{'level'};
     }
-    $level = 1 if ($level == 0);
-    my $text = $element->{'text'};
-    if (!$element->{'node'} and (!$NUMBER_SECTIONS))
+    else
     {
-        $text = $element->{'name'};
+        return '' unless ($element->{'this'} and !$element->{'with_section'});
     }
-    return '' if ($text !~ /\S/);
-    if (defined($element->{'tocid'}) and $TOC_LINKS)
+    my $text = $element->{'text'};
+    if ($element->{'top'})
+    {
+       return '' if ($element->{'titlefont'});
+       $level = 1;
+       $text = $Texi2HTML::NAME{'Top'};
+    }
+    # when it is a heading, the element is irrelevant, so the command and the
+    # line are used...
+    if (defined($command) and $command =~ /heading/)
+    {
+        $level = $main::sec2level{$command} if (defined($main::sec2level{$command}));
+        if (defined($line))
+        {
+            $text = $line;
+            # this isn't done in main program in that case...
+            chomp ($text);
+            $text =~ s/^\s*//;
+        }
+    }
+    elsif (defined($element->{'tocid'}) and $TOC_LINKS)
     {
          $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
     }
-    return "<h$level> $text </h$level>\n";
+    $level = 1 if ($level == 0);
+    return '' if ($text !~ /\S/);
+    if (!$in_preformatted)
+    {
+       return "<h$level> $text </h$level>\n";
+    }
+    else
+    {
+       return "<strong>$text</strong>\n";
+    }
 }
 
 # formatting of raw regions

@@ -45,6 +45,9 @@ $BIG_RULE = '';
 $DOCUMENT_DESCRIPTION = '';
 $FOOTNOTESTYLE = 'end';
 
+#FIXME remove that later
+$USE_SECTIONS = 1;
+
 push @command_handler_process, \&chm_initialize_variables;
 
 $index_summary_file_entry = \&chm_index_summary_file_entry;

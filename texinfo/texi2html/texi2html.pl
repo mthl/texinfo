@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.311 2009-08-06 16:26:53 pertusus Exp $
+# $Id: texi2html.pl,v 1.312 2009-08-10 10:00:22 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -287,6 +287,7 @@ $TRANSLITERATE_FILE_NAMES
 $NODE_FILES
 $NODE_FILENAMES
 $NODE_NAME_IN_MENU
+$NODE_NAME_IN_INDEX
 $AVOID_MENU_REDUNDANCY
 $HEADERS
 $NO_WARN
@@ -825,7 +826,6 @@ sub HTML_DEFAULT_contents($$)
         my $dest_target_for_stoc = $element->{'target'};
         $dest_for_toc = '' if ($dest_for_toc eq $toc_file);
         my $text = $element->{'text'};
-        #$text = $element->{'name'} unless ($NUMBER_SECTIONS);
         my $toc_entry = "<li>" . &$anchor ($element->{'tocid'}, "$dest_for_toc#$element->{'target'}",$text);
         push (@result, $ind . $toc_entry);
     }
@@ -1248,6 +1248,7 @@ sub t2h_default_index_rearrange_directions()
         {
           $new_element->{$key} = $element->{$key} if (defined($element->{$key}));
         }
+        $new_element->{'this'} = $new_element;
         $current_element = $new_element;
       }
     }
@@ -6387,12 +6388,6 @@ sub rearrange_elements()
             }
         }
 
-#        if (!$node->{'nodeup'} and $node->{'menu_up'} and $Texi2HTML::Config::USE_MENU_DIRECTIONS)
-#        { # makeinfo don't do that
-#            $node->{'nodeup'} = $node->{'menu_up'};
-#            print STDERR "# Deducing from menu node_up $node->{'menu_up'}->{'texi'} for $node->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-#        }
-
         if ($node->{'nodeup'} and !$node->{'nodeup'}->{'external_node'})
         {
             # We detect when the up node has no menu entry for that node, as
@@ -6471,12 +6466,6 @@ sub rearrange_elements()
                 $node->{'nodenext'} = $node->{'menu_next'};
             }
         }
-        # next we try menus. makeinfo don't do that
-        #if (!defined($node->{'nodenext'}) and $node->{'menu_next'} 
-        #    and $Texi2HTML::Config::USE_MENU_DIRECTIONS)
-        #{
-        #    $node->{'nodenext'} = $node->{'menu_next'};
-        #}
 
         # Find prev node
         if ($node->{'nodeprev'})
@@ -6508,17 +6497,6 @@ sub rearrange_elements()
                 $node->{'nodeprev'} = $node->{'menu_up'};
             }
         }
-    
-#        # next we try menus. makeinfo don't do that
-#        if (!defined($node->{'nodeprev'}) and $node->{'menu_prev'} and $Texi2HTML::Config::USE_MENU_DIRECTIONS) 
-#        {
-#            $node->{'nodeprev'} = $node->{'menu_prev'};
-#        }
-#        # the prev node is the parent node
-#        elsif (!defined($node->{'nodeprev'}) and $node->{'menu_up'} and ($node->{'menu_up'}->{'menu_child'} eq $node) and $Texi2HTML::Config::USE_MENU_DIRECTIONS)
-#        {
-#            $node->{'nodeprev'} = $node->{'menu_up'};
-#        }
     
         # the following node is the node following in node reading order
         # it is thus first the child, else the next, else the next following
@@ -6697,7 +6675,7 @@ sub rearrange_elements()
       or ($use_nodes and !$use_sections)
     );
     $only_sections = 1 if (!$only_nodes and !$use_nodes and ($use_sections or !defined($use_sections)));
-    #print STDERR "only_nodes: $only_nodes, only_sections $only_sections\n";
+    #print STDERR "USE_NODES $use_nodes, USE_SECTIONS $use_sections. only_nodes: $only_nodes, only_sections $only_sections\n";
 
     my $prev_element;
     print STDERR "# Build the elements list only_nodes: $only_nodes, only_sections $only_sections\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
@@ -6811,10 +6789,16 @@ sub rearrange_elements()
     print STDERR "# find fastback and fastforward\n" 
        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $element (@elements_list)
-    {
-        my $up = get_top($element);
-        # this is a node not associated with a section
-        $up = get_top($element->{'section_ref'}) if (!defined($up) and $element->{'node'} and $element->{'section_ref'});
+    { # nodes are ignored here
+        my $up;
+        if ($element->{'node'})
+        {
+           $up = get_top($element->{'section_ref'});
+        }
+        else
+        {
+           $up = get_top($element);
+        }
         next unless (defined($up));
         # take the opportunity to set the first chapter with index 
         $element_chapter_index = $up if ($element_index and ($element_index eq $element));
@@ -7917,7 +7901,7 @@ sub pass_text($$)
     foreach my $command ('contents', 'shortcontents')
     {
         next if (!defined($content_element{$command}));
-        my $toc_lines = &$Texi2HTML::Config::inline_contents(undef, $command, $content_element{$command}, \@elements_list);
+        my $toc_lines = &$Texi2HTML::Config::inline_contents(undef, $command, $content_element{$command}, \@sections_list);
         @{$Texi2HTML::THISDOC{'inline_contents'}->{$command}} = @$toc_lines if (defined($toc_lines));
     }
     
@@ -12864,8 +12848,7 @@ sub scan_line($$$$;$)
                 if ($Texi2HTML::Config::INLINE_CONTENTS and !$aftertitlepage_command{$element_tag})
                 {
                     my $content_element = shift (@{$all_content_elements{$element_tag}});
-                    #my $toc_lines = &$Texi2HTML::Config::inline_contents($Texi2HTML::THISDOC{'FH'}, $next_command, $content_element{$element_tag});
-                    my $toc_lines = &$Texi2HTML::Config::inline_contents($Texi2HTML::THISDOC{'FH'}, $element_tag, $content_element, \@elements_list);
+                    my $toc_lines = &$Texi2HTML::Config::inline_contents($Texi2HTML::THISDOC{'FH'}, $element_tag, $content_element, \@sections_list);
                     add_prev ($text, $stack, join('',@$toc_lines)) if (defined($toc_lines));
                 }
                 return '' unless (exists($Texi2HTML::Config::misc_command{$next_command}) and $Texi2HTML::Config::misc_command{$next_command}->{'keep'});
@@ -15711,7 +15694,7 @@ while(@input_files)
    }
 
 # maybe do that later to have more elements ready?
-   &$Texi2HTML::Config::toc_body(\@elements_list);
+   &$Texi2HTML::Config::toc_body(\@sections_list);
 
    &$Texi2HTML::Config::css_lines($Texi2HTML::THISDOC{'css_import_lines'}, 
         $Texi2HTML::THISDOC{'css_lines'});

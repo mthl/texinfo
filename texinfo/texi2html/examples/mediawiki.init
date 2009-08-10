@@ -8,9 +8,12 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.17 2009-08-05 23:20:27 pertusus Exp $
+# $Id: mediawiki.init,v 1.18 2009-08-10 10:00:25 pertusus Exp $
 
 html_default_load();
+
+$USE_SECTIONS = 1;
+$USE_NODES = undef;
 
 # if this is set the sections are numbered, and section names and numbers 
 # are used in references and menus (instead of node names).
@@ -335,6 +338,10 @@ sub mediawiki_heading($$$$$;$$)
     if (!$element->{'node'})
     {
         $level = $element->{'level'};
+    }
+    else
+    {
+        return '' unless ($element->{'this'} and !$element->{'with_section'});
     }
     $level = 1 if ($level == 0);
     my $text = $element->{'text'};

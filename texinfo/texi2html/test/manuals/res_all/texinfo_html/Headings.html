@@ -29,10 +29,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>GNU Texinfo 4.2: Appendix E Page Headings</title>
+<title>GNU Texinfo 4.2: Headings</title>
 
-<meta name="description" content="GNU Texinfo 4.2: Appendix E Page Headings">
-<meta name="keywords" content="GNU Texinfo 4.2: Appendix E Page Headings">
+<meta name="description" content="GNU Texinfo 4.2: Headings">
+<meta name="keywords" content="GNU Texinfo 4.2: Headings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
 <link href="index.html#Top" rel="up" title="Texinfo">
 <link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
-<link href="Include-Files-Evolution.html#Include-Files-Evolution" rel="previous" title="D.5 Evolution of Include Files">
+<link href="Include-Files-Evolution.html#Include-Files-Evolution" rel="previous" title="Include Files Evolution">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -87,7 +87,7 @@ footings.  (Headings and footings have no meaning to Info, which is
 not paginated.)
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Headings-Introduced" accesskey="1">&bull; Headings Introduced</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Conventions for using page headings.
+<tr><td align="left" valign="top"><a href="Headings-Introduced.html#Headings-Introduced" accesskey="1">&bull; Headings Introduced</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Conventions for using page headings.
 </td></tr>
 <tr><td align="left" valign="top"><a href="Heading-Format.html#Heading-Format" accesskey="2">&bull; Heading Format</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Standard page heading formats.
 </td></tr>
@@ -97,45 +97,6 @@ not paginated.)
 </td></tr>
 </table>
 
-<a name="Headings-Introduced"></a>
-
-<p>Texinfo provides standard page heading formats for manuals that are
-printed on one side of each sheet of paper and for manuals that are
-printed on both sides of the paper.  Typically, you will use these
-formats, but you can specify your own format if you wish.
-</p>
-<p>In addition, you can specify whether chapters should begin on a new
-page, or merely continue the same page as the previous chapter; and if
-chapters begin on new pages, you can specify whether they must be
-odd-numbered pages.
-</p>
-<p>By convention, a book is printed on both sides of each sheet of paper.
-When you open a book, the right-hand page is odd-numbered, and
-chapters begin on right-hand pages&mdash;a preceding left-hand page is
-left blank if necessary.  Reports, however, are often printed on just
-one side of paper, and chapters begin on a fresh page immediately
-following the end of the preceding chapter.  In short or informal
-reports, chapters often do not begin on a new page at all, but are
-separated from the preceding text by a small amount of whitespace.
-</p>
-<p>The <code>@setchapternewpage</code> command controls whether chapters begin
-on new pages, and whether one of the standard heading formats is used.
-In addition, Texinfo has several heading and footing commands that you
-can use to generate your own heading and footing formats.
-</p>
-<p>In Texinfo, headings and footings are single lines at the tops and
-bottoms of pages; you cannot create multiline headings or footings.
-Each header or footer line is divided into three parts: a left part, a
-middle part, and a right part.  Any part, or a whole line, may be left
-blank.  Text for the left part of a header or footer line is set
-flushleft; text for the middle part is centered; and, text for the
-right part is set flushright.
-</p>
-<hr>
-<div class="node">
-<p>
-Next: <a href="Catching-Mistakes.html#Catching-Mistakes" accesskey="n" rel="next">Catching Mistakes</a>, Previous: <a href="Include-Files.html#Include-Files" accesskey="p" rel="previous">Include Files</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
-</div>
 <p>
 
 

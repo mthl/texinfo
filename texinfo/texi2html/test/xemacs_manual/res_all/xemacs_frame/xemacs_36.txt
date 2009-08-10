@@ -858,15 +858,8 @@ Introduction
   22.8.5 Getting Started
   22.8.6 Choosing the Packages You Need
   22.8.7 XEmacs and Installing Packages
-  Sumo
-  Manually
-  Automatically
-  Which Packages
-  Removing Packages
   22.8.8 Prerequisites for Building Source Packages
   22.8.9 What You Can Do With Source Packages
-  Local.rules File
-  Creating Packages
   22.8.10 Normal Packages
   22.8.11 Mule Support (mule)
 23 Abbrevs

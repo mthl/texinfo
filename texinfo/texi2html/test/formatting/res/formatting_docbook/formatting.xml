@@ -424,7 +424,7 @@ After clickstyle &rArr;
 <para><literal>@ref{chapter}</literal> <xref linkend="chapter"></xref>
 <literal>@xref{chapter}</literal> See <xref linkend="chapter"></xref>.
 <literal>@pxref{chapter}</literal> see <xref linkend="chapter"></xref>
-<literal>@ref{s--ect@comma{}ion}</literal> <xref linkend="s-ect,ion"></xref>
+<literal>@ref{s--ect@comma{}ion}</literal> <xref linkend="s--ect,ion"></xref>
 </para>
 <para><literal>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</literal>
@@ -950,7 +950,7 @@ After clickstyle &rArr;
 <para><literal>@ref{chapter}</literal> <xref linkend="chapter"></xref>
 <literal>@xref{chapter}</literal> See <xref linkend="chapter"></xref>.
 <literal>@pxref{chapter}</literal> see <xref linkend="chapter"></xref>
-<literal>@ref{s--ect@comma{}ion}</literal> <xref linkend="s-ect,ion"></xref>
+<literal>@ref{s--ect@comma{}ion}</literal> <xref linkend="s--ect,ion"></xref>
 </para>
 <para><literal>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</literal>
@@ -1472,7 +1472,7 @@ After clickstyle &rArr;
 <para><literal>@ref{chapter}</literal> <xref linkend="chapter"></xref>
 <literal>@xref{chapter}</literal> See <xref linkend="chapter"></xref>.
 <literal>@pxref{chapter}</literal> see <xref linkend="chapter"></xref>
-<literal>@ref{s--ect@comma{}ion}</literal> <xref linkend="s-ect,ion"></xref>
+<literal>@ref{s--ect@comma{}ion}</literal> <xref linkend="s--ect,ion"></xref>
 </para>
 <para><literal>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</literal>
@@ -1994,7 +1994,7 @@ text in def item for second def item
 <literal>@ref{chapter}</literal> <xref linkend="chapter"></xref>
 <literal>@xref{chapter}</literal> See <xref linkend="chapter"></xref>.
 <literal>@pxref{chapter}</literal> see <xref linkend="chapter"></xref>
-<literal>@ref{s--ect@comma{}ion}</literal> <xref linkend="s-ect,ion"></xref>
+<literal>@ref{s--ect@comma{}ion}</literal> <xref linkend="s--ect,ion"></xref>
 
 <literal>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</literal>

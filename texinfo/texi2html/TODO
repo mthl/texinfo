@@ -240,6 +240,8 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
   also use informaltable or table, for multitable?
 
+  What is before the first sectionning command is put in <bookinfo><abstract>.
+
 * to solve above issue (first issue), the definition arg formatted with 
   simple_format should alo be passed down
 
@@ -369,6 +371,10 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
 * @insertcopying in @copying doesn't lead to error message with 
   INLINE_INSERTCOPYING. See invalid/recursive_copying
+
+* In indices/makeinfo_index_nodes there is no elements, and thus no 
+  [Index] link since it uses the index chapter (or @top), and there is 
+  no chapter not @top.
 
 * '00D8' which is Oslash is transliterated on OE?
 

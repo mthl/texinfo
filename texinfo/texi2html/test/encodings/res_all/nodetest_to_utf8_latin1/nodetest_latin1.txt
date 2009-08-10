@@ -320,7 +320,6 @@ Table of Contents
  1.10 Ö
  1.11 Ü
  1.12 ß
- no section
 2 acute accent
  2.1 á
  2.2 é

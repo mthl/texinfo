@@ -1444,7 +1444,6 @@ F Index
 Table of Contents
 *****************
 
-Top
 1 Preface
 2 Introduction
  2.1 Background

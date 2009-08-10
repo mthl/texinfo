@@ -24,6 +24,10 @@ $SHOW_MENU = 0;
 
 $BIG_RULE = '<hr>';
 
+#FIXME lift that constraint once it is better supported
+$USE_SECTIONS = 1;
+$USE_NODES = undef;
+
 push @command_handler_init, \&book_initialize_variables;
 
 sub book_print_sub_toc($$);
@@ -189,6 +193,10 @@ sub book_heading($$$$$$;$$)
     if (!$element->{'node'})
     {
         $level = $element->{'level'};
+    }
+    else
+    {
+        return '' unless ($element->{'this'} and !$element->{'with_section'});
     }
     $level = 1 if ($level == 0);
     my $text = $element->{'text'};

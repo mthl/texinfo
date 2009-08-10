@@ -98,8 +98,6 @@ Table of Contents
  unnumbered section2
   1.0.3 numbered subsection3
  1.1 numbered section
- between node
 2 second node chapter
 unnumbered chapter
-Last node no description
 

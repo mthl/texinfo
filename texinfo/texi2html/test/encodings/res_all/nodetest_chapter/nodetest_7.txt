@@ -101,7 +101,6 @@ Table of Contents
  1.12 O"
  1.13 U"
  1.14 ss
- no section
 2 acute accent
  2.1 a'
  2.2 e'

@@ -29,10 +29,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>GNU Texinfo 4.2: 8 Cross References</title>
+<title>GNU Texinfo 4.2: Cross References</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 8 Cross References">
-<meta name="keywords" content="GNU Texinfo 4.2: 8 Cross References">
+<meta name="description" content="GNU Texinfo 4.2: Cross References">
+<meta name="keywords" content="GNU Texinfo 4.2: Cross References">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
 <link href="index.html#Top" rel="up" title="Texinfo">
 <link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
-<link href="Other-Info-Files.html#Other-Info-Files" rel="previous" title="7.5 Referring to Other Info Files">
+<link href="Other-Info-Files.html#Other-Info-Files" rel="previous" title="Other Info Files">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -84,7 +84,7 @@ same or different Texinfo files.  In Texinfo, nodes and anchors are the
 places to which cross references can refer.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#References" accesskey="1">&bull; References</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  What cross references are for.
+<tr><td align="left" valign="top"><a href="References.html#References" accesskey="1">&bull; References</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  What cross references are for.
 </td></tr>
 <tr><td align="left" valign="top"><a href="Cross-Reference-Commands.html#Cross-Reference-Commands" accesskey="2">&bull; Cross Reference Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    A summary of the different commands.
 </td></tr>
@@ -104,45 +104,6 @@ places to which cross references can refer.
 </td></tr>
 </table>
 
-<a name="References"></a>
-
-<p>Often, but not always, a printed document should be designed so that
-it can be read sequentially.  People tire of flipping back and forth
-to find information that should be presented to them as they need
-it.
-</p>
-<p>However, in any document, some information will be too detailed for
-the current context, or incidental to it; use cross references to
-provide access to such information.  Also, an online help system or a
-reference manual is not like a novel; few read such documents in
-sequence from beginning to end.  Instead, people look up what they
-need.  For this reason, such creations should contain many cross
-references to help readers find other information that they may not
-have read.
-</p>
-<p>In a printed manual, a cross reference results in a page reference,
-unless it is to another manual altogether, in which case the cross
-reference names that manual.
-</p>
-<p>In Info, a cross reference results in an entry that you can follow using
-the Info &lsquo;<samp>f</samp>&rsquo; command.  (See <a href="../info/Help_002dAdv.html#Help_002dAdv">Some advanced Info commands: (info)Help-Adv</a>.)
-</p>
-<p>The various cross reference commands use nodes (or anchors,
-see <a href="anchor.html#anchor"><code>@anchor</code></a>) to define cross reference locations.
-This is evident in Info, in which a cross reference takes you to the
-specified location.  TeX also uses nodes to define cross reference
-locations, but the action is less obvious.  When TeX generates a DVI
-file, it records each node&rsquo;s page number and uses the page numbers in making
-references.  Thus, if you are writing a manual that will only be
-printed, and will not be used online, you must nonetheless write
-<code>@node</code> lines to name the places to which you make cross
-references.
-</p>
-<hr>
-<div class="node">
-<p>
-Next: <a href="Marking-Text.html#Marking-Text" accesskey="n" rel="next">Marking Text</a>, Previous: <a href="Menus.html#Menus" accesskey="p" rel="previous">Menus</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
-</div>
 <p>
 
 

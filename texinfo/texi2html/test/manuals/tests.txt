@@ -15,4 +15,6 @@ ccvs_info cvs.texi --init info.init
 mini_ker mini_ker.texi --init book.init --split section --node-files --use-nodes --iftex --init mini_ker_t2h.init --init tex4ht.init
 texinfo_xml texinfo.texi --init xml.init
 texinfo_html texinfo.texi --html
+texinfo_html_nosplit texinfo.texi --html --no-split
 hello_html hello.texi --html
+hello_html_nosplit hello.texi --html --no-split

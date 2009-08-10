@@ -1,3 +1,18 @@
+2009-08-07   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: do the contents on the sections.
+	Use exclusively sections to find fastback, fastforward and 
+	element_chapter_index.
+	* texi2html.pl, texi2html.init, examples/* formats/*: 
+	add NODE_NAME_IN_INDEX.
+	Always call the heading formatting even if not an element.
+	* formats/docbook.init: don't take into account the splitting
+	from the main program, take only into account @-commands.
+	* formats/html.init: use only nodes as elements unless called
+	as texi2html.
+	* tests/sectionning/*, tests/run_test_all.sh: specify
+	additional formats to test for on a per-directory basis.
+
 2009-08-05   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, formats/html.init, texi2html.init, examples/*:

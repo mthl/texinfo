@@ -29,10 +29,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>GNU Texinfo 4.2: 11 Lists and Tables</title>
+<title>GNU Texinfo 4.2: Lists and Tables</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 11 Lists and Tables">
-<meta name="keywords" content="GNU Texinfo 4.2: 11 Lists and Tables">
+<meta name="description" content="GNU Texinfo 4.2: Lists and Tables">
+<meta name="keywords" content="GNU Texinfo 4.2: Lists and Tables">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <link href="texinfo_abt.html#SEC_About" rel="help" title="About This Document">
 <link href="index.html#Top" rel="up" title="Texinfo">
 <link href="Concept-Index.html#Concept-Index" rel="next" title="Concept Index">
-<link href="cartouche.html#cartouche" rel="previous" title="10.13 @cartouche: Rounded Rectangles Around Examples">
+<link href="cartouche.html#cartouche" rel="previous" title="cartouche">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -84,7 +84,7 @@ bulleted or numbered; two-column tables can highlight the items in
 the first column; multi-column tables are also supported.
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Introducing-Lists" accesskey="1">&bull; Introducing Lists</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Texinfo formats lists for you.
+<tr><td align="left" valign="top"><a href="Introducing-Lists.html#Introducing-Lists" accesskey="1">&bull; Introducing Lists</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Texinfo formats lists for you.
 </td></tr>
 <tr><td align="left" valign="top"><a href="itemize.html#itemize" accesskey="2">&bull; itemize</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     How to construct a simple list.
 </td></tr>
@@ -96,82 +96,6 @@ the first column; multi-column tables are also supported.
 </td></tr>
 </table>
 
-<a name="Introducing-Lists"></a>
-
-<p>Texinfo automatically indents the text in lists or tables, and numbers
-an enumerated list.  This last feature is useful if you modify the
-list, since you do not need to renumber it yourself.
-</p>
-<p>Numbered lists and tables begin with the appropriate @-command at the
-beginning of a line, and end with the corresponding <code>@end</code>
-command on a line by itself.  The table and itemized-list commands
-also require that you write formatting information on the same line as
-the beginning @-command.
-</p>
-<p>Begin an enumerated list, for example, with an <code>@enumerate</code>
-command and end the list with an <code>@end enumerate</code> command.
-Begin an itemized list with an <code>@itemize</code> command, followed on
-the same line by a formatting command such as <code>@bullet</code>, and end
-the list with an <code>@end itemize</code> command.
-<a name="index-end-1"></a>
-</p>
-<p>Precede each element of a list with an <code>@item</code> or <code>@itemx</code>
-command.
-</p>
-<br>
-<p>Here is an itemized list of the different kinds of table and lists:
-</p>
-<ul>
-<li>
-Itemized lists with and without bullets.
-
-</li><li>
-Enumerated lists, using numbers or letters.
-
-</li><li>
-Two-column tables with highlighting.
-</li></ul>
-
-<br>
-<p>Here is an enumerated list with the same items:
-</p>
-<ol>
-<li>
-Itemized lists with and without bullets.
-
-</li><li>
-Enumerated lists, using numbers or letters.
-
-</li><li>
-Two-column tables with highlighting.
-</li></ol>
-
-<br>
-<p>And here is a two-column table with the same items and their
-@-commands:
-</p>
-<dl compact="compact">
-<dt><code>@itemize</code></dt>
-<dd><p>Itemized lists with and without bullets.
-</p>
-</dd>
-<dt><code>@enumerate</code></dt>
-<dd><p>Enumerated lists, using numbers or letters.
-</p>
-</dd>
-<dt><code>@table</code></dt>
-<dt><code>@ftable</code></dt>
-<dt><code>@vtable</code></dt>
-<dd><p>Two-column tables, optionally with indexing.
-</p></dd>
-</dl>
-
-
-<hr>
-<div class="node">
-<p>
-Next: <a href="Indices.html#Indices" accesskey="n" rel="next">Indices</a>, Previous: <a href="Quotations-and-Examples.html#Quotations-and-Examples" accesskey="p" rel="previous">Quotations and Examples</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index" rel="index">Index</a>]</p>
-</div>
 <p>
 
 
