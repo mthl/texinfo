@@ -1,3 +1,9 @@
+2009-08-14  Karl Berry  <karl@gnu.org>
+
+	* (\rgbDarkRed, \rgbBlack): new macros, replacing \cmykDarkRed and
+	\cmykBlack.  Change uses.  Said to print considerably better.
+	From: Andrew Hawryluk, 12 Aug 2009 21:22:06.`,
+
 2009-07-25  Oleg Katsitadze <olegkat@gmail.com>
 
 	* doc/texinfo.tex (\commondummiesnofonts): Added \email.
