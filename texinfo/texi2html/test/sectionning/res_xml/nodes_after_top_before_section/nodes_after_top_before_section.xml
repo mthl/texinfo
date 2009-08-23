@@ -9,40 +9,40 @@
 <nodename>Top</nodename>
 <nodenext>second node</nodenext>
 <nodeup>(dir)</nodeup>
+</node>
 <para>Top node
 </para><menu>
 <menuentry>
-<menunode> second node</menunode>
-<menutitle> second node</menutitle>
+<menunode>second node</menunode>
+<menutitle>second node</menutitle>
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
-<menunode> third node</menunode>
-<menutitle> third node</menutitle>
+<menunode>third node</menunode>
+<menutitle>third node</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
 
-</node>
 <node>
 <nodename>second node</nodename>
 <nodenext>third node</nodenext>
 <nodeprev>Top</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 
 <para>second node
 </para>
-</node>
 <node>
 <nodename>third node</nodename>
 <nodeprev>second node</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 <subsection>
 <title>subsection</title>
 
 
 </subsection>
-</node>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:

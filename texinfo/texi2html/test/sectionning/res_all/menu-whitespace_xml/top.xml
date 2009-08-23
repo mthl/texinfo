@@ -8,44 +8,44 @@
 <nodename>Top</nodename>
 <nodenext>first</nodenext>
 <nodeup>(dir)</nodeup>
+</node>
 <unnumbered>
 <title>Top</title>
 
 <menu>
 <menuentry>
-<menunode> first</menunode>
-<menutitle> first</menutitle>
+<menunode>first</menunode>
+<menutitle>first</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
 
 </unnumbered>
-</node>
 <node>
 <nodename>first</nodename>
 <nodeprev>Top</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 <chapter>
 <title>first</title>
 
 <menu>
 <!--  -->
 <menuentry>
-<menunode> second</menunode>
-<menutitle> second</menutitle>
+<menunode>second</menunode>
+<menutitle>second</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
 
-</chapter>
-</node>
 <node>
 <nodename>second</nodename>
 <nodeup>first</nodeup>
+</node>
 <section>
 <title>second</title>
 </section>
-</node>
+</chapter>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:

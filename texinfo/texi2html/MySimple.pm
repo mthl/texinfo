@@ -20,7 +20,7 @@ package Getopt::MySimple;
 
 # --------------------------------------------------------------------------
 # Locally modified by obachman (Display type instead of env, order by cmp)
-# $Id: MySimple.pm,v 1.7 2009-08-04 07:58:27 pertusus Exp $
+# $Id: MySimple.pm,v 1.8 2009-08-23 21:50:15 pertusus Exp $
 
 # use strict;
 # no strict 'refs';
@@ -158,7 +158,7 @@ sub helpOptions
 	{
 	  my($line, $help, $option, $val);
 	  $option = $_;
-	  next if ${$self->{'default'} }{$_}{'noHelp'} && ${$self->{'default'} }{$_}{'noHelp'} > $noHelp;
+	  next if (ref(${$self -> {'default'} }{$_}) ne 'HASH' or (${$self->{'default'} }{$_}{'noHelp'} && ${$self->{'default'} }{$_}{'noHelp'} > $noHelp));
           #$line = " -$_" . ' ' x ($optwidth - (2 + length) ) .
           #      	"${$self->{'default'} }{$_}{'type'} ".
           #      	' ' x ($typewidth - (1+length(${$self -> {'default'} }{$_}{'type'}) ));

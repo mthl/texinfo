@@ -8,6 +8,7 @@
 <nodename>Top</nodename>
 <nodenext>chapter</nodenext>
 <nodeup>(dir)</nodeup>
+</node>
 <unnumbered>
 <title>Test floats</title>
 
@@ -17,28 +18,28 @@
 </para>
 <menu>
 <menuentry>
-<menunode> chapter</menunode>
-<menutitle> chapter</menutitle>
+<menunode>chapter</menunode>
+<menutitle>chapter</menutitle>
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
-<menunode> Unnumbered</menunode>
-<menutitle> Unnumbered</menutitle>
+<menunode>Unnumbered</menunode>
+<menutitle>Unnumbered</menutitle>
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
-<menunode> Chapter with unnumbsubsec</menunode>
-<menutitle> Chapter with unnumbsubsec</menutitle>
+<menunode>Chapter with unnumbsubsec</menunode>
+<menutitle>Chapter with unnumbsubsec</menutitle>
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
-<menunode> Appendix for float</menunode>
-<menutitle> Appendix for float</menutitle>
+<menunode>Appendix for float</menunode>
+<menutitle>Appendix for float</menutitle>
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
-<menunode> list of floats</menunode>
-<menutitle> list of floats</menutitle>
+<menunode>list of floats</menunode>
+<menutitle>list of floats</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
@@ -193,12 +194,12 @@ A footnote.
 </float>
 
 </unnumbered>
-</node>
 <node>
 <nodename>chapter</nodename>
 <nodenext>Unnumbered</nodenext>
 <nodeprev>Top</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 <chapter>
 <title>A chapter</title>
 
@@ -286,17 +287,16 @@ A footnote 2.
 
 <menu>
 <menuentry>
-<menunode> section</menunode>
-<menutitle> section</menutitle>
+<menunode>section</menunode>
+<menutitle>section</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
 
-</chapter>
-</node>
 <node>
 <nodename>section</nodename>
 <nodeup>chapter</nodeup>
+</node>
 <section>
 <title>A section</title>
 
@@ -309,19 +309,20 @@ A footnote 2.
 </float>
 
 </section>
-</node>
+</chapter>
 <node>
 <nodename>Unnumbered</nodename>
 <nodenext>Chapter with unnumbsubsec</nodenext>
 <nodeprev>chapter</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 <unnumbered>
 <title>Unnumbered</title>
 
 <menu>
 <menuentry>
-<menunode> Section within unnumbered</menunode>
-<menutitle> Section within unnumbered</menutitle>
+<menunode>Section within unnumbered</menunode>
+<menutitle>Section within unnumbered</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
@@ -347,11 +348,10 @@ A footnote 2.
 </float>
 
 
-</unnumbered>
-</node>
 <node>
 <nodename>Section within unnumbered</nodename>
 <nodeup>Unnumbered</nodeup>
+</node>
 <section>
 <title>Section within unnumbered</title>
 
@@ -367,19 +367,20 @@ A footnote 2.
 </float>
 
 </section>
-</node>
+</unnumbered>
 <node>
 <nodename>Chapter with unnumbsubsec</nodename>
 <nodenext>Appendix for float</nodenext>
 <nodeprev>Unnumbered</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 <chapter>
 <title>Chapter with unnumbsubsec</title>
 
 <menu>
 <menuentry>
-<menunode> unnumbered sec</menunode>
-<menutitle> unnumbered sec</menutitle>
+<menunode>unnumbered sec</menunode>
+<menutitle>unnumbered sec</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
@@ -393,11 +394,10 @@ A footnote 2.
 </caption>
 </float>
 
-</chapter>
-</node>
 <node>
 <nodename>unnumbered sec</nodename>
 <nodeup>Chapter with unnumbsubsec</nodeup>
+</node>
 <unnumberedsec>
 <title>unnumbered sec</title>
 
@@ -423,12 +423,13 @@ A footnote 2.
 </float>
 
 </unnumberedsec>
-</node>
+</chapter>
 <node>
 <nodename>Appendix for float</nodename>
 <nodenext>list of floats</nodenext>
 <nodeprev>Chapter with unnumbsubsec</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 <appendix>
 <title>Appendix for float</title>
 
@@ -443,11 +444,11 @@ A footnote 2.
 </float>
 
 </appendix>
-</node>
 <node>
 <nodename>list of floats</nodename>
 <nodeprev>Appendix for float</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 <unnumbered>
 <title>list of floats</title>
 
@@ -470,7 +471,6 @@ See <xref><xrefnodename>text with a lot of features</xrefnodename></xref>.
 <printindex>cp</printindex>
 
 </unnumbered>
-</node>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:

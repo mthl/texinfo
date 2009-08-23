@@ -334,11 +334,11 @@ such as:
 <P></P>
 
 <p>Vector <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_2.png"
  ALT="$\eta$"></SPAN> represent the state variables of cells and
 the vector <SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="13" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_3.png"
  ALT="$\varphi$"></SPAN> represent the dependent
 boundary conditions, <i>i.e.</i> the
@@ -399,23 +399,23 @@ between <SPAN CLASS="MATH"><IMG
  WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_5.png"
  ALT="$t$"></SPAN> and <SPAN CLASS="MATH"><IMG
- WIDTH="40" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="39" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_6.png"
  ALT="$t + \delta t$"></SPAN>. The variation <SPAN CLASS="MATH"><IMG
- WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_7.png"
  ALT="$\delta \eta$"></SPAN>
 of <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_2.png"
  ALT="$\eta$"></SPAN> and <!-- MATH
  $\delta \varphi$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_8.png"
  ALT="$\delta \varphi$"></SPAN> of <SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="13" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_3.png"
  ALT="$\varphi$"></SPAN> is obtained 
 through a Pad&eacute; approximation of the state-transition matrix. The final
@@ -448,35 +448,35 @@ form of the algebraic system is closed to the classical Crank-Nicolson scheme:
 </p>
 <p>The blocks appearing in the Jacobian matrix are constructed with partial derivative
 of <SPAN CLASS="MATH"><IMG
- WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_10.png"
  ALT="$f$"></SPAN> and <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_11.png"
  ALT="$g$"></SPAN>, and with <SPAN CLASS="MATH"><IMG
- WIDTH="17" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_12.png"
  ALT="$\delta t$"></SPAN>. From this system the
 elimination of <SPAN CLASS="MATH"><IMG
- WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_7.png"
  ALT="$\delta \eta$"></SPAN> leads to another formulation giving
 the coupling between transfers, and allows for the <!-- MATH
  $\delta \varphi$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_8.png"
  ALT="$\delta \varphi$"></SPAN>
 computation. The <!-- MATH
  $\delta \varphi$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_8.png"
  ALT="$\delta \varphi$"></SPAN> value is then substitued in 
 <SPAN CLASS="MATH"><IMG
- WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_7.png"
  ALT="$\delta \eta$"></SPAN> to complete the time-step solving process.
 </p>
@@ -827,10 +827,10 @@ in the first two symbol characters.
 </p>
 <p>In the predator-prey example there are two model parameters. The fortran
 variables are called here <code>apar</code> for <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_16.png"
  ALT="$a$"></SPAN> and <code>cpar</code> for <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="10" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_17.png"
  ALT="$c$"></SPAN>.
 If a Fortan type definition is needed, it should be set at the very beginning
@@ -878,7 +878,7 @@ associated with <!-- MATH
  $\varphi_{meet}$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="41" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="40" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_18.png"
  ALT="$\varphi_{meet}$"></SPAN> could be called <code>ff_interact</code>
 and the transfer definition would be given by:
@@ -889,11 +889,11 @@ and the transfer definition would be given by:
 
 <p>The two cell equations of the predator-prey model, with name
 <code>eta_prey</code> for the prey (<SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="35" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_19.png"
  ALT="$\eta_{prey}$"></SPAN>) and <code>eta_pred</code> 
 for the predator (<SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="35" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_20.png"
  ALT="$\eta_{pred}$"></SPAN>) are:
 </p>
@@ -960,7 +960,7 @@ in the model, it may be usefull or even necessary to set some
 transfers to non-zero values. This difficulty is only relevant for the very
 first step of the simulation and will be used as a 
 first guess of <SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="13" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_3.png"
  ALT="$\varphi$"></SPAN>. The uninitialized transfers having 
 a default compiler-dependant (often zero) value, an initialization
@@ -1293,7 +1293,7 @@ Psi_Tsz   Raw(4,j=1,4):   0.000     -0.1376     5.7225E-03   1.000
 
 <p>where the <code>couplage</code> (coupling matrix) is given that corresponds 
 to the matrix coupling the four transfer components after <SPAN CLASS="MATH"><IMG
- WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_7.png"
  ALT="$\delta \eta$"></SPAN> 
 has been eliminated from system. It is computed in the subprogram 
@@ -1438,7 +1438,7 @@ verify that the non linearity are not too big, or perform
 discontinuous modifications of the states. One available variable <code>res</code>
 might be usefull for time step monitoring. At the end of the time step,
 as soon as <SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="13" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_3.png"
  ALT="$\varphi$"></SPAN> has been computed, a numerical test is applied
 on a pseudo relative quadratic residual between 
@@ -1446,10 +1446,10 @@ on a pseudo relative quadratic residual between
  $\varphi=f(\eta(t-dt)+d\varphi$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="141" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="140" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_21.png"
  ALT="$\varphi=f(\eta(t-dt)+d\varphi$"></SPAN> (<code> ffl</code>), where <SPAN CLASS="MATH"><IMG
- WIDTH="22" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_22.png"
  ALT="$d\varphi$"></SPAN>
 is given by the system resolution in <code>ker</code>,and
@@ -1457,7 +1457,7 @@ is given by the system resolution in <code>ker</code>,and
  $\varphi=f(\eta),\varphi)$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="85" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="84" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_23.png"
  ALT="$\varphi=f(\eta),\varphi)$"></SPAN>,  Fortran variable (<code>ff</code>):
 </p>
@@ -1484,7 +1484,7 @@ states and <code>time</code> variables in &lsquo;<tt>principal</tt>&rsquo;.
 </p>
 <p>It is also possible to fix the value of the criterium <code>TOL_FFL</code> in
 &lsquo;<tt>zinit</tt>&rsquo; different from its default value of <SPAN CLASS="MATH"><IMG
- WIDTH="35" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="34" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_24.png"
  ALT="$10^{-3}$"></SPAN> &ndash;
 independent of the Fortran precision.
@@ -1922,7 +1922,7 @@ are partitionned in three groups for cell and transfer components. In the follow
 a chain of masselottes linked by springs and dumps is bounded to a wall on the left,
 and open at right. The <acronym title="Transfer Evolution Formalism">TEF</acronym> formulation of the problem is written in the phase space (position-shift, velocity)
 for node <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_30.png"
  ALT="$k$"></SPAN>, with bounding conditions:
 <BR><P></P>
@@ -1989,33 +1989,33 @@ for node <SPAN CLASS="MATH"><IMG
 <a name="index-up-node"></a>
 
 <p>where <SPAN CLASS="MATH"><IMG
- WIDTH="25" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="24" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_34.png"
  ALT="$m_k$"></SPAN> is the mass of node <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_30.png"
  ALT="$k$"></SPAN>, <SPAN CLASS="MATH"><IMG
- WIDTH="18" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="17" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_35.png"
  ALT="$r_k$"></SPAN> and <SPAN CLASS="MATH"><IMG
- WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_36.png"
  ALT="$d_k$"></SPAN> 
 the rigidity of springs and dumping coefficients. There are <SPAN CLASS="MATH"><IMG
- WIDTH="18" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="17" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_37.png"
  ALT="$N$"></SPAN> nodes
 in the grid, from 1 to <SPAN CLASS="MATH"><IMG
- WIDTH="18" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="17" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_37.png"
  ALT="$N$"></SPAN>, and two nodes outside of the grid,
 a limiting node 0, and a limiting node <SPAN CLASS="MATH"><IMG
- WIDTH="43" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="42" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_38.png"
  ALT="$N+1$"></SPAN>. The limiting node
 corresponding with node 0 is called the <em>down</em> node, while the limiting 
 node corresponding with node <SPAN CLASS="MATH"><IMG
- WIDTH="43" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="42" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_38.png"
  ALT="$N+1$"></SPAN> is called the <em>up</em> node.
 Other models not part of the 1D grid may be added if any.
@@ -2345,11 +2345,11 @@ help printed in the listing header:
 <p>All variable names and functions are free but has to be
 different.
 Any particular node-attached variable <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_30.png"
  ALT="$k$"></SPAN> is referred to as: &lsquo;<samp>(inode:k)</samp>&rsquo;,
 where <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_30.png"
  ALT="$k$"></SPAN> has to be a Fortran expression allowed in arguments. The symbol 
 &lsquo;<samp>inode</samp>&rsquo; is
@@ -2526,7 +2526,7 @@ gives the ice-fraction
 of the mesh-volume of water at temperature <code>T_k</code>. 
 The smooth-step function is a quasi
 hyperbolic tangent function of <SPAN CLASS="MATH"><IMG
- WIDTH="33" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="32" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_40.png"
  ALT="$x/\Delta$"></SPAN>, 
 normalised from 0 to 1, with a maximum slope
@@ -2638,11 +2638,11 @@ with data that correspond with the values from real measurements.
 They are used in the Kalman filter (see section <a href="#Kalman-filter">Kalman filter</a>).
 </p>
 <p>The (model) observation vector is noted <SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="13" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_41.png"
  ALT="$\omega$"></SPAN>
 and the observation function is noted <SPAN CLASS="MATH"><IMG
- WIDTH="13" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_42.png"
  ALT="$h$"></SPAN>:
 </p>
@@ -2912,7 +2912,7 @@ expression which may be function of cell state variables,
  $\varphi_{meet}$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="41" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="40" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_18.png"
  ALT="$\varphi_{meet}$"></SPAN> is:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">f_set Phi_tef(1) = eta(1)*eta(2);  
@@ -2928,10 +2928,10 @@ expression which may be function of cell state variables,
 
 <p>The two cell equations of the predator-prey model are, with index 1 for the
 prey (<SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="35" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_19.png"
  ALT="$\eta_{prey}$"></SPAN>) and index 2 for the predator (<SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="35" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_20.png"
  ALT="$\eta_{pred}$"></SPAN>):
 </p>
@@ -3229,10 +3229,10 @@ with respect to the initial value of the perturbed state.
 </p>
 <p>In our predator-prey example, the second column of  &lsquo;<tt>sens.data</tt>&rsquo; will contain
 the derivative of <SPAN CLASS="MATH"><IMG
- WIDTH="35" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="34" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_44.png"
  ALT="$\eta_1(t)$"></SPAN> with respect to <SPAN CLASS="MATH"><IMG
- WIDTH="63" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="62" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_45.png"
  ALT="$\eta_1(t=0)$"></SPAN>.
 Drawing the
@@ -3240,7 +3240,7 @@ second column of &lsquo;<tt>sens.data</tt>&rsquo; against the first one
 gives the time evolution of the sensitivity of <code>eta-pred</code>
 to a change in the initial value of <code>eta-pray</code>. One can check
 in that it is set to 1 at <SPAN CLASS="MATH"><IMG
- WIDTH="37" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="36" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_46.png"
  ALT="$t=0$"></SPAN>:
 </p>
@@ -3254,10 +3254,10 @@ of the number of predators.
 </p>
 <p>In the same way, the <var>j+1</var>th column of &lsquo;<tt>sigma.data</tt>&rsquo; will be the
 derivative of <SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="35" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_47.png"
  ALT="$\phi_{j}(t)$"></SPAN> with respect to <SPAN CLASS="MATH"><IMG
- WIDTH="61" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="60" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_48.png"
  ALT="$\eta_i(t=0)$"></SPAN>. Here:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">#    Sensy_to: eta_pray     eta_pred    
@@ -3446,19 +3446,19 @@ are repeated until convergence. More pecisely,
 <dl compact="compact">
 <dt><strong>forward</strong></dt>
 <dd><p>The command law <SPAN CLASS="MATH"><IMG
- WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="29" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_49.png"
  ALT="$h(t)$"></SPAN> is given (by an explicit law or taken from a file).
 The trajectory is computed in a classical way, with the additionnal computation
 of the functional to be optimised, <SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_50.png"
  ALT="$J$"></SPAN>, prescribed with specific 
 <code>f_set</code> macros. The states, transfers and control laws are stored.  
 </p></dd>
 <dt><strong>backward</strong></dt>
 <dd><p>The adjoint variable is computed from the last time <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_51.png"
  ALT="$T$"></SPAN> backward. The
 time increment is re-read as it could have changed during the forward 
@@ -3475,7 +3475,7 @@ compiled as a subroutine to be driven by an external program
 </dl>
 
 <p>The functionnal <SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_50.png"
  ALT="$J$"></SPAN> to be optimised is defined as
 </p>
@@ -3501,20 +3501,20 @@ J = \psi[\eta(T),\varphi(T) ,h(T)] + \int_0 ^T {l[\eta(\tau),\varphi(\tau),h(\ta
 <a name="index-integrand-cost"></a>
 
 <p>Where <SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_53.png"
  ALT="$\psi$"></SPAN> is the final cost function, <SPAN CLASS="MATH"><IMG
- WIDTH="9" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="8" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_54.png"
  ALT="$l$"></SPAN> is the integrand
 cost function and <SPAN CLASS="MATH"><IMG
- WIDTH="13" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_42.png"
  ALT="$h$"></SPAN> represents the control laws variations.
 </p>
 <p>The general use of the adjoint model of a system is the determination of the 
 gradient of this <SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_50.png"
  ALT="$J$"></SPAN> functional to be optimised, with respect to perturbations
 of the original conditions of the reference trajectory, that is, along its 
@@ -3655,7 +3655,7 @@ model:
 of the first state component.
 Here, the adjoint vector will correspond to the final sensitivity 
 (at <SPAN CLASS="MATH"><IMG
- WIDTH="37" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="36" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_46.png"
  ALT="$t=0$"></SPAN>) of 
 that component (here the first masselotte position) to a perturbation in 
@@ -3774,28 +3774,28 @@ In the <acronym title="Transfer Evolution Formalism">TEF</acronym> this leads to
 </p>
 
 <p>The observations <SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="13" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_41.png"
  ALT="$\omega$"></SPAN> are available at discrete time steps <SPAN CLASS="MATH"><IMG
- WIDTH="41" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="40" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_56.png"
  ALT="$t=s_i$"></SPAN>. The
 stochastic perturbation on state, <SPAN CLASS="MATH"><IMG
- WIDTH="13" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="12" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_57.png"
  ALT="$\mu$"></SPAN> is characterized by a 
 variance-covariance matrix <SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_58.png"
  ALT="$Q$"></SPAN> and the noise on the observation,
 <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_59.png"
  ALT="$\nu$"></SPAN> has a variance-covariance matrix <SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_60.png"
  ALT="$R$"></SPAN>. <SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_61.png"
  ALT="$W$"></SPAN> relates states
 with stochastic perturbations. At each time step the Kalman filter recomputes 
@@ -3931,7 +3931,7 @@ in the &lsquo;<tt>selseq.kumac</tt>&rsquo;:
 <p>With the Kalman filter the dimension of estimated states, of the error 
 on the state and of the
 observation, the <SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_61.png"
  ALT="$W$"></SPAN> matrix, the observation function,
 the initial
@@ -4041,7 +4041,7 @@ information reduce the error.
 
 <p>The matrix that relates errors on states vector components to states,
 corresponding with <SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_61.png"
  ALT="$W$"></SPAN> is <code>mereta(.,.)</code>. In our example it is 
 set by:
@@ -4278,12 +4278,12 @@ cell variables.
 can be expressed as the inverse Borel 
 transform of the coefficient of the reduced scalar 
 coupling matrix, <SPAN CLASS="MATH"><IMG
- WIDTH="32" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="31" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_65.png"
  ALT="$g(\tau)$"></SPAN>,
 associated with a transfer. 
 A Borel sweep provides this <SPAN CLASS="MATH"><IMG
- WIDTH="32" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="31" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_65.png"
  ALT="$g(\tau)$"></SPAN>. Therefore it is
 an interesting tool for the characterization of the feedback loop<a name="DOCF8" href="#FOOT8">(8)</a>. 
@@ -4300,13 +4300,13 @@ an analysis is provided in the same document.
 
 <p>For linear systems &ndash; whose GTLS are autonomous along the whole trajectory &ndash; 
 the <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN> function of the
 feedback gain is independent of the position on the system trajectory. 
 But in general it is dependant, and one can analyse the function 
 <SPAN CLASS="MATH"><IMG
- WIDTH="44" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="43" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_67.png"
  ALT="$g(\tau;t)$"></SPAN> defined on a segment <SPAN CLASS="MATH"><IMG
  WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
@@ -4317,14 +4317,14 @@ But in general it is dependant, and one can analyse the function
 scheme for the time discretisation
 symbolically gives the solution of the Borel transform of the system. One can
 identify the <code>dt</code> variable with the Borel <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN> within a 
 factor <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_68.png"
  ALT="$2$"></SPAN>. Hence, to numerically study the <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN> dependency of 
 the transform of various coefficients in the system coupling  matrix at one 
@@ -4332,7 +4332,7 @@ point in time, one can calculate the Borel transform of the TLS solutions
 by making a time-step sweep.
 </p>
 <p>The function <SPAN CLASS="MATH"><IMG
- WIDTH="44" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="43" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_67.png"
  ALT="$g(\tau;t)$"></SPAN> is simply output for the feedback gain 
 attached to a unique <code>ff(k)</code> transfer variable. 
@@ -4410,7 +4410,7 @@ istep_B_inc=1;
 
 
 <p>For each Borel sweep, the range of the <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN> variable should be 
 set. As this is a multiplicative variable the initial value, a multiplicative
@@ -4421,7 +4421,7 @@ factor and the number of values are to be given.
 <a name="index-tau_005fB_005fini"></a>
 </dt>
 <dd><p>Initial value for <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN>.
 </p></dd>
@@ -4429,7 +4429,7 @@ factor and the number of values are to be given.
 <a name="index-tau_005fB_005fmult"></a>
 </dt>
 <dd><p>Multiplicative factor for sweep in <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN>.
 </p></dd>
@@ -4437,7 +4437,7 @@ factor and the number of values are to be given.
 <a name="index-itau_005fmax"></a>
 </dt>
 <dd><p>Number of <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN> values.
 </p></dd>
@@ -4445,17 +4445,17 @@ factor and the number of values are to be given.
 
 <p>For example, in the following, at each time step, the Borel
 transform will be computed for <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN> values
 starting at <SPAN CLASS="MATH"><IMG
- WIDTH="23" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="22" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_69.png"
  ALT="$0.2$"></SPAN> and then multiplied a hundred times by <!-- MATH
  $\sqrt{\sqrt{2}}$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="39" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="38" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_70.png"
  ALT="$\sqrt{\sqrt{2}}$"></SPAN>
 </p>
@@ -4465,7 +4465,7 @@ itau_max=100;
 </pre></td></tr></table>
 
 <p>When the initial value of <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN> is set to a negative value 
 (<i>i.e.</i> <code>tau_B_ini=-0.2;</code>),
@@ -4473,7 +4473,7 @@ the Borel sweep will first be applied with <code>itau_max</code> negative values
 for <code>-0.2</code>, <code>tau_B_mult*(-0.2)</code>,..., then for the zero value, 
 and finally for the symetric positive values, resulting in <code>2*itau_max+1</code> 
 values for <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN>.
 </p>
@@ -4534,12 +4534,12 @@ with:
 <a name="index-graphics_002c-Borel-sweep"></a>
 
 <p>The file &lsquo;<tt>tau_Borel.data</tt>&rsquo; gives the <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN> values of the <var>tau</var> sweep, 
 and the file &lsquo;<tt>gains.data</tt>&rsquo; records the feedback gain function values of 
 <SPAN CLASS="MATH"><IMG
- WIDTH="32" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="31" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_65.png"
  ALT="$g(\tau)$"></SPAN>, with 
 one line for each sweep along the trajectory. In the 1.01 version, a new
@@ -4549,7 +4549,7 @@ transform in the file &lsquo;<tt>vpgains.data</tt>&rsquo;. Consult the subroutin
 for (not definitive) output description.
 </p>
 <p>One can easily obtain the surface contours of <SPAN CLASS="MATH"><IMG
- WIDTH="44" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="43" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_71.png"
  ALT="$g(t,\tau)$"></SPAN> using
 the Fortran program provided as &lsquo;<tt>gains.f</tt>&rsquo; and its compilation shell 
@@ -4585,18 +4585,18 @@ that builds 2D histograms for PAW, in which one uses the
 <p>The preceding analyses are done along with a simulation. One has also the
 possibility of using in a more classical fashion the state advance matrix
 <SPAN CLASS="MATH"><IMG
- WIDTH="26" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_72.png"
  ALT="$A_{st}$"></SPAN>, after the end of the simulation. Code to perform the 
 <acronym title="Singular Value Decomposition">SVD</acronym> (Singular Value Decomposition) of the state matrix <SPAN CLASS="MATH"><IMG
- WIDTH="26" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_72.png"
  ALT="$A_{st}$"></SPAN>
 and also of <!-- MATH
  $A_{st} + A_{st}^\dagger$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="67" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="66" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_73.png"
  ALT="$A_{st} + A_{st}^\dagger$"></SPAN> is provided with Miniker.
 The singular elements of these two matrices correspond to the most
@@ -4741,16 +4741,16 @@ the program may be run:
 
 <p>The files &lsquo;<tt>u.data</tt>&rsquo;, &lsquo;<tt>w.data</tt>&rsquo;, and &lsquo;<tt>v.data</tt>&rsquo; holds the singular elements 
 for <SPAN CLASS="MATH"><IMG
- WIDTH="26" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_72.png"
  ALT="$A_{st}$"></SPAN> (<SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_75.png"
  ALT="$U$"></SPAN>, <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="14" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_76.png"
  ALT="$w$"></SPAN> and <SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_77.png"
  ALT="$V$"></SPAN>), 
 and &lsquo;<tt>us.data</tt>&rsquo;, &lsquo;<tt>ws.data</tt>&rsquo;, and &lsquo;<tt>vs.data</tt>&rsquo;
@@ -4758,7 +4758,7 @@ holds the singular elements of <!-- MATH
  $A_{st} + A_{st}^\dagger$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="67" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="66" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_73.png"
  ALT="$A_{st} + A_{st}^\dagger$"></SPAN>.
 The corresponding macros &lsquo;<samp>.kumac</samp>&rsquo; for PAW<a name="DOCF9" href="#FOOT9">(9)</a> 
@@ -4791,7 +4791,7 @@ are also generated.
 <a name="index-sltcirc_002eexe"></a>
 
 <p>The state matrix <SPAN CLASS="MATH"><IMG
- WIDTH="26" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_72.png"
  ALT="$A_{st}$"></SPAN> may also be used to compute the
 GTLS propagator (or state transition matrix applied to perturbation), after the simulation.
@@ -4801,7 +4801,7 @@ The algorithm is a finite product of
  $\Phi(t+\delta t,t)=\exp{A_{st} \delta t}$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="155" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="154" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_78.png"
  ALT="$\Phi(t+\delta t,t)=\exp{A_{st} \delta t}$"></SPAN>.
 Numerous element of analysis are given, in particular the determination
@@ -4932,36 +4932,36 @@ result file and ntuple number, with a short explanation:
  WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_5.png"
  ALT="$t$"></SPAN>, <SPAN CLASS="MATH"><IMG
- WIDTH="46" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="45" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_80.png"
  ALT="$\Phi(t,0)$"></SPAN></td></tr>
 <tr><td><code>up(.,.)</code></td><td>&lsquo;<tt>uphit.data</tt>&rsquo;</td><td>50</td><td>Left singular vectors <SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_75.png"
  ALT="$U$"></SPAN> in the SVD of <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_79.png"
  ALT="$\Phi$"></SPAN></td></tr>
 <tr><td><code>wp(.)</code></td><td>&lsquo;<tt>wphit.data</tt>&rsquo;</td><td>51</td><td>singulat values <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="14" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_76.png"
  ALT="$w$"></SPAN> in the SVD of <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_79.png"
  ALT="$\Phi$"></SPAN></td></tr>
 <tr><td><code>vp(.,.)</code></td><td>&lsquo;<tt>vphit.data</tt>&rsquo;</td><td>52</td><td>Right Singular Vectors <SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_77.png"
  ALT="$V$"></SPAN> in the SVD of <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_79.png"
  ALT="$\Phi$"></SPAN></td></tr>
 <tr><td><code>wr(.)</code></td><td>&lsquo;<tt>wr.data</tt>&rsquo;</td><td>53</td><td>real part of eigen values of <SPAN CLASS="MATH"><IMG
- WIDTH="46" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="45" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_80.png"
  ALT="$\Phi(t,0)$"></SPAN></td></tr>
 <tr><td><code>wi(.)</code></td><td>&lsquo;<tt>wi.data</tt>&rsquo;</td><td>54</td><td>imaginary part of eigen values of <SPAN CLASS="MATH"><IMG
- WIDTH="46" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="45" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_80.png"
  ALT="$\Phi(t,0)$"></SPAN></td></tr>
 <tr><td><code>lwp(.)</code></td><td>&lsquo;<tt>lwphit.data</tt>&rsquo;</td><td>67</td><td>Lyapunov exponents</td></tr>
@@ -6952,7 +6952,7 @@ or <a href="http://www.lmd.jussieu.fr/ZOOM/doc/Adjoint.pdf">.ps.gz</a>
 
 <p>More generally, the Borel sweep allows 
 the numerical study of the dependency in <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN> of the Borel transform 
 of various coefficients in the system coupling  matrix.

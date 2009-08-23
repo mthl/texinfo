@@ -10,66 +10,66 @@
 <nodename>first</nodename>
 <nodenext>Top</nodenext>
 <nodeup>(dir)</nodeup>
+</node>
 
 <para>See <xref><xrefnodename>it doesn't exists</xrefnodename></xref>
 in first node
 </para><menu>
 <menuentry>
-<menunode> node in menu before top</menunode>
-<menutitle> node in menu before top</menutitle>
+<menunode>node in menu before top</menunode>
+<menutitle>node in menu before top</menutitle>
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
-<menunode> other node in menu before top</menunode>
-<menutitle> other node in menu before top</menutitle>
+<menunode>other node in menu before top</menunode>
+<menutitle>other node in menu before top</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
 
-</node>
 <node>
 <nodename>node in menu before top</nodename>
 <nodeup>first</nodeup>
+</node>
 
 <para>node in menu before top text
 </para>
-</node>
 <node>
 <nodename>other node in menu before top</nodename>
 <nodenext>node not existing</nodenext>
-
 </node>
+
 <node>
 <nodename>Top</nodename>
 <nodeprev>first</nodeprev>
+</node>
 <unnumbered>
 <title>top section</title>
 <para>Top node
 </para><menu>
 <menuentry>
-<menunode> second node</menunode>
-<menutitle> second node</menutitle>
+<menunode>second node</menunode>
+<menutitle>second node</menutitle>
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
-<menunode> other node not existing</menunode>
-<menutitle> other node not existing</menutitle>
+<menunode>other node not existing</menunode>
+<menutitle>other node not existing</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
 
 </unnumbered>
-</node>
 <node>
 <nodename>second node</nodename>
 <nodeup>Top</nodeup>
+</node>
 <chapter>
 <title>a chapter</title>
 
 <para>second node
 </para>
 </chapter>
-</node>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:

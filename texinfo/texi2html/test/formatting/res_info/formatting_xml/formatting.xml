@@ -7,13 +7,14 @@
 <nodename>Top</nodename>
 <nodenext>chapter</nodenext>
 <nodeup>(dir)</nodeup>
+</node>
 <unnumbered>
 <title>Top section</title>
 
 <menu>
 <menuentry>
-<menunode> chapter</menunode>
-<menutitle> chapter</menutitle>
+<menunode>chapter</menunode>
+<menutitle>chapter</menutitle>
 <menucomment>               chapter
 </menucomment>
 </menuentry>
@@ -3251,12 +3252,12 @@ This is a very simple texi manual @  &lt;&gt;.
 
 
 </unnumbered>
-</node>
 <node>
 <nodename>chapter</nodename>
 <nodenext>chapter2</nodenext>
 <nodeprev>Top</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 <chapter>
 <title>chapter</title>
 
@@ -3265,8 +3266,8 @@ This is a very simple texi manual @  &lt;&gt;.
 </para>
 <format xml:space="preserve"><menu>
 <menuentry>
-<menunode> s--ect,ion</menunode>
-<menutitle> s&ndash;ect,ion</menutitle>
+<menunode>s--ect,ion</menunode>
+<menutitle>s&ndash;ect,ion</menutitle>
 <menucomment> s&ndash;ect,ion
 </menucomment>
 </menuentry>
@@ -3275,54 +3276,54 @@ Menu comment
 
 </menu>
 </format>
-</chapter>
-</node>
 <node>
 <nodename>s--ect,ion</nodename>
 <nodeup>chapter</nodeup>
+</node>
 <section>
 <title>A section</title>
 
 <menu>
 <menuentry>
-<menunode> subsection</menunode>
-<menutitle> subsection</menutitle>
+<menunode>subsection</menunode>
+<menutitle>subsection</menutitle>
 <menucomment> 
 </menucomment>
 </menuentry></menu>
 
-</section>
-</node>
 <node>
 <nodename>subsection</nodename>
 <nodeup>s--ect,ion</nodeup>
+</node>
 <subsection>
 <title>subsection</title>
 
 <menu>
 <menuentry>
-<menunode> subsubsection ``simple-double--three---four----''</menunode>
-<menutitle> subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</menutitle>
+<menunode>subsubsection ``simple-double--three---four----''</menunode>
+<menutitle>subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
 
 <para><anchor name="anchor"></anchor>
 </para>
-</subsection>
-</node>
 <node>
 <nodename>subsubsection ``simple-double--three---four----''</nodename>
 <nodeup>subsection</nodeup>
+</node>
 <subsubsection>
 <title>subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</title>
 
 </subsubsection>
-</node>
+</subsection>
+</section>
+</chapter>
 <node>
 <nodename>chapter2</nodename>
 <nodeprev>chapter</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 <unnumbered>
 <title>chapter 2</title>
 
@@ -3332,7 +3333,6 @@ Menu comment
 <contents></contents>
 <shortcontents></shortcontents>
 </unnumbered>
-</node>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -15,23 +15,23 @@
 <node>
 <nodename>Top</nodename>
 <nodeup>(dir)</nodeup>
+</node>
 <unnumbered>
 <title>top section</title>
 <para>Top node
 </para>
 
-</unnumbered>
-</node>
 <node>
 <nodename>second node</nodename>
 <nodeup>(dir)</nodeup>
+</node>
 <section>
 <title>second</title>
 
 <para>second node
 </para>
 </section>
-</node>
+</unnumbered>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:

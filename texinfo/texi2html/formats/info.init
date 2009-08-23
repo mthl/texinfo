@@ -1,3 +1,5 @@
+# vim: set filetype=perl: 
+#
 #+##############################################################################
 #
 # info.init: convert to info
@@ -181,12 +183,17 @@ foreach my $format (@info_default_normal_formats, 'group', 'raggedright', 'carto
     $format_map{$format} = '';
 }
 
+foreach my $menu_command('menu', 'detailmenu', 'direntry', 'menu_comment')
+{
+  $complex_format_map->{$menu_command} = {'begin' => q{''} , 'end' => q{''}};
+}
+
 foreach my $command (keys (%{$complex_format_map}), @info_default_normal_formats, 'quotation', 'smallquotation', 'deff_item', 'deff_itemx')
 {
     $info_default_indented_commands{$command} = 1;
 }
 
-foreach my $command (keys(%info_default_indented_commands), 'multitable', 'float', 'menu', 'flushright', 'flushleft', 'center')
+foreach my $command (keys(%info_default_indented_commands), 'multitable', 'float', 'flushright', 'flushleft', 'center')
 {
     $info_default_format{$command} = 1;
 } 

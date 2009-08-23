@@ -17,13 +17,13 @@
 <para>Top node
 </para>
 
-</chapter>
 <sect1 label="0.1" id="second-node">
 <title>second</title>
 
 <para>second node
 </para>
 </sect1>
+</chapter>
 </book><!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

@@ -7,7 +7,7 @@
 <dircategory>&ldquo;category&mdash;<var>th  ere</var>?&rdquo;</dircategory>
 <direntry>
 <menuentry>
-<menunode> (foo)</menunode>
+<menunode>(foo)</menunode>
 <menutitle> foo</menutitle>
 <menucomment>   &ldquo;hello&mdash;<var>there</var>?&rdquo;
 </menucomment>
@@ -16,8 +16,8 @@
 <dircategory>cat2</dircategory>
 <direntry>
 <menuentry>
-<menunode> aaa </menunode>
-<menutitle> aaa </menutitle>
+<menunode>aaa</menunode>
+<menutitle>aaa </menutitle>
 <menucomment>               aaaa
                    bbbbb
 </menucomment>
@@ -30,6 +30,7 @@
 <nodename>Top</nodename>
 <nodenext>chapter</nodenext>
 <nodeup>(dir)</nodeup>
+</node>
 <unnumbered>
 <title>Test dircategory and direntry</title>
 
@@ -37,7 +38,7 @@
 <dircategory>in text</dircategory>
 </para><direntry>
 <menuentry>
-<menunode> (in_text)</menunode>
+<menunode>(in_text)</menunode>
 <menutitle> in text</menutitle>
 <menucomment> in text
 </menucomment>
@@ -45,25 +46,24 @@
 
 <menu>
 <menuentry>
-<menunode> chapter</menunode>
-<menutitle> chapter</menutitle>
+<menunode>chapter</menunode>
+<menutitle>chapter</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
 
 </unnumbered>
-</node>
 <node>
 <nodename>chapter</nodename>
 <nodeprev>Top</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 <chapter>
 <title>chapter</title>
 
 <para>In chapter
 </para>
 </chapter>
-</node>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:

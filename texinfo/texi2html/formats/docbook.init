@@ -41,7 +41,6 @@ my $docbook_current_section;
 my @docbook_multitable_stack = ();
 my @docbook_table_stack = ();
 my @docbook_special_quotation;
-my %docbook_closed_sections;
 
 
 sub docbook_default_load(;$)
@@ -409,7 +408,6 @@ sub docbook_initialize_variables()
    $docbook_current_section = undef;
    @docbook_multitable_stack = ();
    @docbook_table_stack = ();
-   %docbook_closed_sections = ();
    $Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'docbook');
 }
 
@@ -452,7 +450,7 @@ sub docbook_heading($$$$$)
     if ($command ne 'node')
     {
         # close previous section
-        $result .= docbook_close_section(($command eq 'top'));
+        $result .= docbook_close_section();
         my $title = $element->{'text_nonumber'};
         my $label = '';
         my $xreflabel = '';
@@ -737,6 +735,7 @@ sub docbook_any_ref($$$)
     my $args = shift;
     my $unformatted_args = shift;
 
+    # FIXME?
     if ($type eq 'inforef')
     {
         my $node_file = "($args->[2])$args->[0]";
@@ -857,9 +856,8 @@ sub docbook_index_entry_label($$$$$)
     return "<indexterm role=\"${index_name}\"><primary>${formatted_entry}</primary></indexterm>";
 }
 
-sub docbook_close_section(;$)
+sub docbook_close_section()
 {
-    my $before_top = shift;
     my $element = $docbook_current_section;
 
     if (!defined($element))
@@ -884,23 +882,18 @@ sub docbook_close_section(;$)
     my $result = '';
 
     #return '' if ($element->{'node'});
-    # @top is always closed
-    return '</'.docbook_element_tag($element).">\n" if ($element->{'level'} == 0);
-    
-    return '' if ($element->{'child'} and !$before_top);
-    # this is useful in case there is a section before @top, in this case
-    # the element is closed although it has more children
-    $docbook_closed_sections{$element} = 1;
+
+    # there is a special case for a @chapter that is a child of @top
+    # but should not be considered as is, since it is also toplevel.
+    return '' if ($element->{'child'} and !$element->{'child'}->{'toplevel'});
     $result .= '</'.docbook_element_tag($element).">\n";
 
-    return $result if (($element->{'sectionnext'} and !$before_top) or $element->{'level'} == 1);
+    return $result if ($element->{'sectionnext'} or $element->{'level'} <= 1);
     my $current = $element;
-    while ($current->{'level'} != 1 and $current->{'sectionup'} and (!$current->{'sectionnext'} or $before_top) and ($current->{'sectionup'}->{'level'} > 0))
+    while ($current->{'level'} != 1 and $current->{'sectionup'} and !$current->{'sectionnext'})
     {
         $current = $current->{'sectionup'};
-        next if ($docbook_closed_sections{$current});
         $result .= '</'.docbook_element_tag($current).">\n";
-        $docbook_closed_sections{$current} = 1;
     }
     return $result;
 }
@@ -1535,6 +1528,7 @@ sub docbook_anchor_label($$)
 {
     my $id = shift;
     my $anchor_text = shift;
+    # FIXME use docbook_node_id
     return '<anchor id="'. &$protect_text($anchor_text) . '"></anchor>';
 }
 

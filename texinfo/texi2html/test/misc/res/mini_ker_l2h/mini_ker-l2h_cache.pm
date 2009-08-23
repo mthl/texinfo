@@ -1,13 +1,13 @@
 
 $l2h_cache_key = q/$A_{st}$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="26" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_72.png"
  ALT="$A_{st}$"></SPAN>|;
 
 $l2h_cache_key = q/$g(t,\tau)$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="44" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="43" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_71.png"
  ALT="$g(t,\tau)$"></SPAN>|;
 
@@ -33,7 +33,7 @@ $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
 
 $l2h_cache_key = q/$\delta\eta$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_7.png"
  ALT="$\delta \eta$"></SPAN>|;
 
@@ -42,19 +42,19 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  $A_{st} + A_{st}^\dagger$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="67" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="66" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_73.png"
  ALT="$A_{st} + A_{st}^\dagger$"></SPAN>|;
 
 $l2h_cache_key = q/$\tau$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN>|;
 
 $l2h_cache_key = q/$10^{-3}$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="35" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="34" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_24.png"
  ALT="$10^{-3}$"></SPAN>|;
 
@@ -81,7 +81,7 @@ $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
 
 $l2h_cache_key = q/$Q$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_58.png"
  ALT="$Q$"></SPAN>|;
 
@@ -90,13 +90,13 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  $\varphi=f(\eta(t-dt)+d\varphi$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="141" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="140" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_21.png"
  ALT="$\varphi=f(\eta(t-dt)+d\varphi$"></SPAN>|;
 
 $l2h_cache_key = q/$m_k$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="25" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="24" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_34.png"
  ALT="$m_k$"></SPAN>|;
 
@@ -128,49 +128,49 @@ $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
 
 $l2h_cache_key = q/$\eta_1(t)$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="35" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="34" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_44.png"
  ALT="$\eta_1(t)$"></SPAN>|;
 
 $l2h_cache_key = q/$\omega$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="13" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_41.png"
  ALT="$\omega$"></SPAN>|;
 
 $l2h_cache_key = q/$\eta_{pred}$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="35" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_20.png"
  ALT="$\eta_{pred}$"></SPAN>|;
 
 $l2h_cache_key = q/$h(t)$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="29" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_49.png"
  ALT="$h(t)$"></SPAN>|;
 
 $l2h_cache_key = q/$T$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_51.png"
  ALT="$T$"></SPAN>|;
 
 $l2h_cache_key = q/$\varphi$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="13" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_3.png"
  ALT="$\varphi$"></SPAN>|;
 
 $l2h_cache_key = q/$c$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="10" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_17.png"
  ALT="$c$"></SPAN>|;
 
 $l2h_cache_key = q/$f$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_10.png"
  ALT="$f$"></SPAN>|;
 
@@ -179,7 +179,7 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  $\Phi(t+\delta t,t)=\exp{A_{st} \delta t}$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="155" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="154" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_78.png"
  ALT="$\Phi(t+\delta t,t)=\exp{A_{st} \delta t}$"></SPAN>|;
 
@@ -204,19 +204,19 @@ $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
 
 $l2h_cache_key = q/$U$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_75.png"
  ALT="$U$"></SPAN>|;
 
 $l2h_cache_key = q/$W$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_61.png"
  ALT="$W$"></SPAN>|;
 
 $l2h_cache_key = q/$\delta \eta$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_7.png"
  ALT="$\delta \eta$"></SPAN>|;
 
@@ -241,37 +241,37 @@ $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
 
 $l2h_cache_key = q/$J$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="13" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_50.png"
  ALT="$J$"></SPAN>|;
 
 $l2h_cache_key = q/$N$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="18" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="17" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_37.png"
  ALT="$N$"></SPAN>|;
 
 $l2h_cache_key = q/$r_k$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="18" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="17" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_35.png"
  ALT="$r_k$"></SPAN>|;
 
 $l2h_cache_key = q/$\mu$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="13" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="12" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_57.png"
  ALT="$\mu$"></SPAN>|;
 
 $l2h_cache_key = q/$tau$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_66.png"
  ALT="$\tau$"></SPAN>|;
 
 $l2h_cache_key = q/$t + \delta t$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="40" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="39" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_6.png"
  ALT="$t + \delta t$"></SPAN>|;
 
@@ -294,37 +294,37 @@ $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
 
 $l2h_cache_key = q/$\eta_1(t=0)$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="63" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="62" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_45.png"
  ALT="$\eta_1(t=0)$"></SPAN>|;
 
 $l2h_cache_key = q/$t=0$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="37" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="36" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_46.png"
  ALT="$t=0$"></SPAN>|;
 
 $l2h_cache_key = q/$R$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_60.png"
  ALT="$R$"></SPAN>|;
 
 $l2h_cache_key = q/$N+1$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="43" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="42" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_38.png"
  ALT="$N+1$"></SPAN>|;
 
 $l2h_cache_key = q/$\Phi(t,0)$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="46" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="45" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_80.png"
  ALT="$\Phi(t,0)$"></SPAN>|;
 
 $l2h_cache_key = q/$g(\tau;t)$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="44" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="43" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_67.png"
  ALT="$g(\tau;t)$"></SPAN>|;
 
@@ -366,25 +366,25 @@ $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
 
 $l2h_cache_key = q/$\Phi$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_79.png"
  ALT="$\Phi$"></SPAN>|;
 
 $l2h_cache_key = q/$V$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_77.png"
  ALT="$V$"></SPAN>|;
 
 $l2h_cache_key = q/$h$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="13" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_42.png"
  ALT="$h$"></SPAN>|;
 
 $l2h_cache_key = q/$g$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_11.png"
  ALT="$g$"></SPAN>|;
 
@@ -393,7 +393,7 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  $\varphi_{meet}$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="41" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="40" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_18.png"
  ALT="$\varphi_{meet}$"></SPAN>|;
 
@@ -420,13 +420,13 @@ J = \psi[\eta(T),\varphi(T) ,h(T)] + \int_0 ^T {l[\eta(\tau),\varphi(\tau),h(\ta
 
 $l2h_cache_key = q/$x\/\Delta$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="33" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="32" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_40.png"
  ALT="$x/\Delta$"></SPAN>|;
 
 $l2h_cache_key = q/$\eta_{prey}$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="35" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_19.png"
  ALT="$\eta_{prey}$"></SPAN>|;
 
@@ -479,7 +479,7 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  $\varphi=f(\eta),\varphi)$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="85" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="84" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_23.png"
  ALT="$\varphi=f(\eta),\varphi)$"></SPAN>|;
 
@@ -513,13 +513,13 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  $\sqrt{\sqrt{2}}$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="39" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="38" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_70.png"
  ALT="$\sqrt{\sqrt{2}}$"></SPAN>|;
 
 $l2h_cache_key = q/$t=s_i$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="41" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="40" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_56.png"
  ALT="$t=s_i$"></SPAN>|;
 
@@ -528,13 +528,13 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  $\delta \varphi$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_8.png"
  ALT="$\delta \varphi$"></SPAN>|;
 
 $l2h_cache_key = q/$0.2$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="23" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="22" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_69.png"
  ALT="$0.2$"></SPAN>|;
 
@@ -610,25 +610,25 @@ $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
 
 $l2h_cache_key = q/$a$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_16.png"
  ALT="$a$"></SPAN>|;
 
 $l2h_cache_key = q/$l$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="9" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="8" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_54.png"
  ALT="$l$"></SPAN>|;
 
 $l2h_cache_key = q/$\eta$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_2.png"
  ALT="$\eta$"></SPAN>|;
 
 $l2h_cache_key = q/$d\varphi$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="22" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_22.png"
  ALT="$d\varphi$"></SPAN>|;
 
@@ -684,25 +684,25 @@ U w V^\dagger
 
 $l2h_cache_key = q/$\eta_i(t=0)$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="61" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="60" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_48.png"
  ALT="$\eta_i(t=0)$"></SPAN>|;
 
 $l2h_cache_key = q/$\nu$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_59.png"
  ALT="$\nu$"></SPAN>|;
 
 $l2h_cache_key = q/$k$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_30.png"
  ALT="$k$"></SPAN>|;
 
 $l2h_cache_key = q/$d_k$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_36.png"
  ALT="$d_k$"></SPAN>|;
 
@@ -728,31 +728,31 @@ $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
 
 $l2h_cache_key = q/$\delta t$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="17" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_12.png"
  ALT="$\delta t$"></SPAN>|;
 
 $l2h_cache_key = q/$g(\tau)$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="32" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="31" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_65.png"
  ALT="$g(\tau)$"></SPAN>|;
 
 $l2h_cache_key = q/$\psi$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_53.png"
  ALT="$\psi$"></SPAN>|;
 
 $l2h_cache_key = q/$\phi_{j}(t)$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="35" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_47.png"
  ALT="$\phi_{j}(t)$"></SPAN>|;
 
 $l2h_cache_key = q/$w$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="14" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_76.png"
  ALT="$w$"></SPAN>|;
 
@@ -842,7 +842,7 @@ $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
 
 $l2h_cache_key = q/$2$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="mini_ker_68.png"
  ALT="$2$"></SPAN>|;
 

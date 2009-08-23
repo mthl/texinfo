@@ -59,7 +59,8 @@ h1 titlefont (@titlefont),
   $empty_preformatted
   $copying_comment, $titlepage better and $documentdescription
   $program_string, $footnote_texi
-  $heading arguments $begin_paragraph_texi $tab_item_texi $begin_style_texi
+  $heading arguments and the whole heading and heading_element relationship
+  $begin_paragraph_texi $tab_item_texi $begin_style_texi
   $begin_special_region $end_special_region $simple_command $thing_command
   Also element formatting documentation, especially print_foot_navigation
   is not up to date.
@@ -80,6 +81,8 @@ h1 titlefont (@titlefont),
   $HEADER_IN_TABLE
   button_formatting
   TOP_BUTTONS
+  print_redirection_page?
+  new argument of menu_link
   
 
 * document the 'math' in 'args', in style_map, and simple_*math*. It
@@ -178,8 +181,6 @@ function clean_antispam() {
 in texi2tml there is no warning, and also the title is constructed
 differently.
 
-* makeinfo don't warn for empty deffn, but texi2dvi cannot process them
-
 * enable_encoding.init is certainly dependent on USE_UNICODE through
 the use of non 8 bit representation of characters.
 
@@ -211,19 +212,6 @@ texi2html all the style commands are removed without extra formatting.
 
 * decide @documentencoding @. And maybe change regexp. (?)
 
-* html32 
-For headings. In normal it is strong.
-Error at line 2616, character 4:  element "H1" not allowed here; check
-        which elements this element may be contained within
-Error at line 2619, character 4:  element "H1" not allowed here; check
-        which elements this element may be contained within
-Error at line 2622, character 4:  element "H2" not allowed here; check
-        which elements this element may be contained within
-Error at line 2625, character 4:  element "H3" not allowed here; check
-        which elements this element may be contained within
-Error at line 2628, character 4:  element "H4" not allowed here; check
-        which elements this element may be contained within
-
 * verify that code_style is used for code_style style @-commands 
   in remove_texi.
 
@@ -250,9 +238,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   information that there is only one section to the functions formatting
   the page header and page footer.
 
-* does --document-language cmd line apply to first or all files? 
-  ask on bug-texinfo.
-
 * now config variables are read-only after command line switches
   expansion. If defined, they set $Texi2HTML::THISDOC{'VAR'}
   and if not defined, $Texi2HTML::THISDOC{'VAR'} is autodetected.
@@ -265,15 +250,6 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 
   All that is now more or less encapsulated in get_conf, but the 
   problem remains.
-
-* makeinfo.init not uptodate with makeinfo --html. Index entries link back
-  now. And also look at floats?
-  menu name is used instead of node in menu links url text.
-  see Karl post on mailing list.
-
-* change LINK_BUTTONS for makeinfo.init to have next, up... nodes.
-  Or have a config variable for the header style (like makeinfo, or
-  like texi2html) and have the LINK_BUTTONS match.
 
 * ignore spaces after @ command, before {, like texi2dvi does?
 
@@ -348,10 +324,7 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * Perhaps we should also make an option -Werror which turns all warnings
   into errors.
 
-* only texi2html warns about:
-** Empty index entry for @vtable (l. 26)
-
-* What are the encodings known by info/makeinfo? 
+* What are the encodings known by info? 
   unrecognized encoding name `ascii'.
 
 * invalid/node_in_copying there is no error message
@@ -360,14 +333,14 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
   it would be logical to treat the space after the itemize mark as 
   a tie instead of a breakpoint.
 
+* sectionning/res_html/no_node the file is called no_node.html and not 
+  index.html.
+
 * certainly not a big deal, but in invalid/verb_not_closed @verb content
   is not output
 
 * certainly not a big deal, but in invalid/bad_tab_nesting, the @code quotes
   are not surrounding the @tab, although there is no error message
-
-* Should there be an error message with node only in @detailmenu? Asked
-  on bug-texinfo. See info output of texi2html_manual.
 
 * @insertcopying in @copying doesn't lead to error message with 
   INLINE_INSERTCOPYING. See invalid/recursive_copying
@@ -375,6 +348,10 @@ Error at line 2628, character 4:  element "H4" not allowed here; check
 * In indices/makeinfo_index_nodes there is no elements, and thus no 
   [Index] link since it uses the index chapter (or @top), and there is 
   no chapter not @top.
+
+* in sectionning/first_section_no_node in _html, the @unnumbered is included
+  in the first node, while makeinfo outputs it before the first node, and 
+  the header is only output whan there is a @node.
 
 * '00D8' which is Oslash is transliterated on OE?
 
@@ -405,3 +382,24 @@ in nested table line
   in a caption.
 
 * in examples/chm.init use main::open_out to open files.
+
+* examples/mediwiki.init: images are like
+[[Image:New-medium.png|Nouveau medium disponible]]
+
+* @titlefont in docbook?
+
+* in xml have documentencoding have an argument.
+
+* sectionning/nodes_test html style, the @top and the @node Top, 
+  although distinct nodes end up in the same element. I think that 
+  there is a FIXME in the code covering that issue.
+
+* in sectionning, test of nodes_after_top_before_section not split
+  at chapter. It is split at a node because top node is always considered
+  as an element. there is a FIXME in the code. Maybe linked with the 
+  previous item.
+
+* sectionning/top_without_node/out_html index.html is the name of the second
+  node file
+
+

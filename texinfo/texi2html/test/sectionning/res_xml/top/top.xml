@@ -12,21 +12,21 @@
 
 <menu>
 <menuentry>
-<menunode> Subnode</menunode>
-<menutitle> Subnode</menutitle>
+<menunode>Subnode</menunode>
+<menutitle>Subnode</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
 
 <node>
 <nodename>Subnode</nodename>
+</node>
 <chapter>
 <title>Subnode</title>
 
 <para>Subnode.
 </para>
 </chapter>
-</node>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:

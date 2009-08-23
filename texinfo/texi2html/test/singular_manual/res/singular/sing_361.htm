@@ -108,16 +108,16 @@ which generate the ideal, resp. which are the entries of the matrix.
 basering. It is given as a list of polynomials in one of the following
 formats
 <SPAN CLASS="MATH"><IMG
- WIDTH="68" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="67" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_237.png"
  ALT="$[f_1,...,f_n]$"></SPAN> or <!-- MATH
  $f_1*gen(1)+...+f_n*gen(n)$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="198" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="197" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_238.png"
  ALT="$f_1*gen(1)+...+f_n*gen(n)$"></SPAN>, where <SPAN CLASS="MATH"><IMG
- WIDTH="44" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="43" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_239.png"
  ALT="$gen(i)$"></SPAN>
 denotes the i-th canonical generator of a free module (with 1 at place i and
@@ -125,13 +125,13 @@ denotes the i-th canonical generator of a free module (with 1 at place i and
 Both forms are equivalent. A vector is internally represented in
 the second form with the
 <SPAN CLASS="MATH"><IMG
- WIDTH="44" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="43" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_239.png"
  ALT="$gen(i)$"></SPAN>
 being &quot;special&quot; ring variables, ordered accordingly to the monomial ordering.
 Therefore, the form
 <SPAN CLASS="MATH"><IMG
- WIDTH="68" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="67" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_237.png"
  ALT="$[f_1,...,f_n]$"></SPAN>
 is given as output only if the monomial ordering gives priority to the
@@ -143,48 +143,48 @@ library <code>inout.lib</code> displays the bracket format.
  $v=[f_1,...,f_n]$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="95" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="94" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_240.png"
  ALT="$v=[f_1,...,f_n]$"></SPAN>
 should always be considered as a column vector in a free module
 of rank equal to
 nrows(<SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_241.png"
  ALT="$v$"></SPAN>)
 where 
 nrows(<SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_241.png"
  ALT="$v$"></SPAN>)
 is equal to the maximal index 
 <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="10" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_242.png"
  ALT="$r$"></SPAN>
 such that
 <SPAN CLASS="MATH"><IMG
- WIDTH="45" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="44" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_243.png"
  ALT="$f_r \not= 0$"></SPAN>.
 This is due to the fact, that internally 
 <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_241.png"
  ALT="$v$"></SPAN>
 is a polynomial in a sparse representation, i.e.,
 <SPAN CLASS="MATH"><IMG
- WIDTH="71" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="70" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_244.png"
  ALT="$f_i*gen(i)$"></SPAN>
 is not stored if
 <SPAN CLASS="MATH"><IMG
- WIDTH="44" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="43" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_245.png"
  ALT="$f_i=0$"></SPAN>
 (for reasons of efficiency), hence the last 0-entries of 
 <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_241.png"
  ALT="$v$"></SPAN>
 are lost.
@@ -192,23 +192,23 @@ Only more complex structures are able to keep the rank.
 </p>
 <p>A module 
 <SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_13.png"
  ALT="$M$"></SPAN>
 in <small>SINGULAR</small> is given by a list of vectors
 <SPAN CLASS="MATH"><IMG
- WIDTH="58" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="57" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_246.png"
  ALT="$v_1,...,v_k$"></SPAN>
 which generate the module as a submodule of the free module of rank
 equal to 
 nrows(<SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_13.png"
  ALT="$M$"></SPAN>)
 which is the maximum of
 nrows(<SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="15" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_247.png"
  ALT="$v_i$"></SPAN>).
 </p>
@@ -226,110 +226,110 @@ number of rows and columns.
 submodules of a free module. However, this is not true. <small>SINGULAR</small>
 can compute with any finitely generated module over the basering 
 <SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_49.png"
  ALT="$R$"></SPAN>. 
 Such a module, say 
 <SPAN CLASS="MATH"><IMG
- WIDTH="18" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="17" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_248.png"
  ALT="$N$"></SPAN>,
 is not represented by its generators but by its
 (generators and) relations. This means that
 <SPAN CLASS="MATH"><IMG
- WIDTH="80" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="79" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_249.png"
  ALT="$N = R^n/M$"></SPAN> where <SPAN CLASS="MATH"><IMG
- WIDTH="13" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_17.png"
  ALT="$n$"></SPAN>
 is the number of generators of 
 <SPAN CLASS="MATH"><IMG
- WIDTH="18" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="17" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_248.png"
  ALT="$N$"></SPAN> and <!-- MATH
  $M \subseteq R^n$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="60" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="59" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_250.png"
  ALT="$M \subseteq R^n$"></SPAN>
 is the module of relations.
 In other words, defining  a module 
 <SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_13.png"
  ALT="$M$"></SPAN>
 as a submodule of a free module
 <SPAN CLASS="MATH"><IMG
- WIDTH="24" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="23" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_77.png"
  ALT="$R^n$"></SPAN>
 can also be considered as the definition of
 <SPAN CLASS="MATH"><IMG
- WIDTH="80" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="79" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_249.png"
  ALT="$N = R^n/M$"></SPAN>.
 </p>
 <p>Note that most functions, when applied to a module 
 <SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_13.png"
  ALT="$M$"></SPAN>,
 really deal with
 <SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_13.png"
  ALT="$M$"></SPAN>.
 However, there are some functions which deal with 
 <SPAN CLASS="MATH"><IMG
- WIDTH="80" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="79" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_249.png"
  ALT="$N = R^n/M$"></SPAN> instead of <SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_13.png"
  ALT="$M$"></SPAN>.
 </p>
 <p>For example, <code>std(M)</code> computes a standard basis of 
 <SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_13.png"
  ALT="$M$"></SPAN>
 (and thus gives another representation of 
 <SPAN CLASS="MATH"><IMG
- WIDTH="18" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="17" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_248.png"
  ALT="$N$"></SPAN> as <SPAN CLASS="MATH"><IMG
- WIDTH="65" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="64" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_251.png"
  ALT="$N = R^n/$"></SPAN>std(<SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_13.png"
  ALT="$M$"></SPAN>)).
 However, <code>dim(M)</code>, resp. <code>vdim(M)</code>, returns
 dim<SPAN CLASS="MATH"><IMG
- WIDTH="58" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="57" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_252.png"
  ALT="$(R^n/M)$"></SPAN>, resp.@: dim<SPAN CLASS="MATH"><IMG
- WIDTH="65" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="64" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_253.png"
  ALT="$_k(R^n/M)$"></SPAN>
 (if M is given by a standard basis).
 </p>
 <p>The function <code>syz(M)</code>  returns the first syzygy module of 
 <SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_13.png"
  ALT="$M$"></SPAN>,
 i.e., the module 
 of relations of the given generators of 
 <SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_13.png"
  ALT="$M$"></SPAN>
 which is equal to the second syzygy module of 
 <SPAN CLASS="MATH"><IMG
- WIDTH="18" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="17" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_248.png"
  ALT="$N$"></SPAN>.
 Refer to the description of each function in
@@ -338,7 +338,7 @@ Refer to the description of each function in
 <p>The numbering in <code>res</code> and other commands for computing resolutions
 refers to a resolution of
 <SPAN CLASS="MATH"><IMG
- WIDTH="80" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="79" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_249.png"
  ALT="$N = R^n/M$"></SPAN>
 (see <a href="sing_264.htm#res">res</a>; <a href="sing_374.htm#Syzygies-and-resolutions">Syzygies and resolutions</a>).

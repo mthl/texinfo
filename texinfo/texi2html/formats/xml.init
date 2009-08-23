@@ -1,3 +1,5 @@
+# vim: set filetype=perl: 
+
 use strict;
 
 my @xml_multitable_stack = ();
@@ -8,6 +10,7 @@ my %xml_misc_command_output;
 my %xml_misc_elements_with_arg_map;
 my @xml_misc_elements_with_arg;
 my %def_format_xml; 
+my $xml_current_section;
 
 sub xml_default_load(;$)
 {
@@ -308,7 +311,7 @@ sub xml_menu_description($$$)
     return "<menucomment>$text</menucomment>\n</menuentry>";
 }
 
-sub xml_menu_link($$$$$$$)
+sub xml_menu_link($$$$$$$$$$)
 {
     my $entry = shift;
     my $state = shift;
@@ -317,8 +320,11 @@ sub xml_menu_link($$$$$$$)
     my $menutitle = shift;
     my $ending = shift;
     my $has_title = shift;
+    my $command_stack = shift;
+    my $in_preformatted = shift;
+    my $menunode_normalized = shift;
 
-    return "<menuentry>\n<menunode>$menunode</menunode>\n<menutitle>$menutitle</menutitle>\n";
+    return "<menuentry>\n<menunode>$menunode_normalized</menunode>\n<menutitle>$menutitle</menutitle>\n";
 }
 
 sub xml_print_page_head($)
@@ -340,6 +346,7 @@ EOT
 sub xml_print_page_foot($)
 {
     my $fh = shift;
+    print $fh "". xml_close_section();
     print $fh <<EOT;
 </texinfo>
 <!-- Keep this comment at the end of the file
@@ -367,7 +374,7 @@ sub xml_one_section($$)
     my $fh = shift;
     my $element = shift;
     main::print_lines($fh);
-    print $fh "". xml_footing($element);
+    #print $fh "". xml_footing($element);
     &$print_foot_navigation($fh);
     &$print_page_foot($fh);
 }
@@ -393,57 +400,82 @@ sub xml_heading($$$$$)
         }
         return "<${command}>$text</${command}>\n";
     }
-
-    my $node_element;
-    if ($element->{'node'})
-    {
-        $node_element = $element;
-    }
-    elsif (defined($element->{'node_ref'}))
-    {
-        $node_element = $element->{'node_ref'};
-    }
-
-    my $result = '';
-    if (defined($node_element) and $command eq 'node')
+    elsif (defined($command) and $command eq 'node')
     {
 #print STDERR "node $command $node_element->{'texi'}\n";
+        my $result = '';
+        $result .= xml_close_section();
         $result .= "<node>\n";
-        $result .= "<nodename>$node_element->{'text'}</nodename>\n";
+        $result .= "<nodename>$element->{'text'}</nodename>\n";
         foreach my $direction('nodenext', 'nodeprev', 'nodeup')
         {
-            if ($node_element->{$direction})
+            if ($element->{$direction})
             {
-                $result .= "<${direction}>$node_element->{$direction}->{'text'}</${direction}>\n";
+                $result .= "<${direction}>$element->{$direction}->{'text'}</${direction}>\n";
             }
         }
+        $result .= "</node>\n";
+        return $result;
+        
     }
-
-    if (!$element->{'node'})
+    else
     {
-        my $class = $element->{'tag_level'};
-        # FIXME wrong?
-        $class = 'unnumbered' if ($class eq 'top' or $class eq 'centerchap');
-        $result .= "<${class}>\n<title>$element->{'text'}</title>\n";
+        my $result = '';
+        $result .= xml_close_section();
+        $result .= "<".xml_element_tag($element).">\n<title>$element->{'text'}</title>\n";
+        $xml_current_section = $element;
+        return $result;
     }
-    return $result;
 }
 
-sub xml_footing($)
+sub xml_element_tag($)
 {
     my $element = shift;
+    my $class = $element->{'tag_level'};
+    # FIXME wrong?
+    $class = 'unnumbered' if ($class eq 'top' or $class eq 'centerchap');
+    return $class;
+}
 
-    my $result = '';
-    if (!$element->{'node'})
+sub xml_close_section()
+{
+    my $element = $xml_current_section;
+
+    if (!defined($element))
     {
-        my $class = $element->{'tag_level'};
-        # FIXME wrong?
-        $class = 'unnumbered' if ($class eq 'top' or $class eq 'centerchap');
-        $result .= "</${class}>\n";
+        # this doesn't work
+        #my $empty = 1;
+        #foreach my $line (@{$Texi2HTML::THIS_SECTION})
+        #{
+        #    if ($line =~ /\S/)
+        #    {
+        #        $empty = 0;
+        #        last;
+        #    }
+        #}
+        #unless ($empty)
+        #{ # FIXME is info in docbook 5.0
+        #     unshift @{$Texi2HTML::THIS_SECTION}, "<bookinfo>\n";
+        #     push @{$Texi2HTML::THIS_SECTION}, "</bookinfo>\n";
+        #}
+        return '';
     }
-    if ($element->{'node'} or (defined($element->{'with_node'})))
+    my $result = '';
+
+    #return '' if ($element->{'node'});
+    $xml_current_section = undef;
+
+    # there is a special case for a @chapter that is a child of @top
+    # but should not be considered as is, since it is also toplevel.
+    return '' if ($element->{'child'} and !$element->{'child'}->{'toplevel'});
+    $result .= '</'.xml_element_tag($element).">\n";
+
+    return $result if ($element->{'sectionnext'} or $element->{'level'} <= 1);
+    my $current = $element;
+    while ($current->{'level'} != 1 and $current->{'sectionup'} and !$current->{'sectionnext'})
     {
-        $result .= "</node>\n";
+        $current = $current->{'sectionup'};
+        $result .= '</'.xml_element_tag($current).">\n";
     }
     return $result;
 }
@@ -453,7 +485,7 @@ sub xml_end_section($$$)
     my $fh = shift;
     my $end_foot_navigation = shift;
     my $element = shift;
-    print $fh "". xml_footing($element);
+    #print $fh "". xml_footing($element);
 }
 
 sub xml_print_Top($$$)
@@ -471,7 +503,7 @@ sub xml_print_Top_footer($$)
     my $end_page = shift;
     my $element = shift;
 
-    print $fh "". xml_footing($element);
+    #print $fh "". xml_footing($element);
 }
 
 # FIXME warning:
@@ -786,6 +818,7 @@ sub xml_init_variables()
 {
    @xml_multitable_stack = ();
    @xml_table_stack = ();
+   $xml_current_section = undef;
    $Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'xml');
 }
 
@@ -1173,6 +1206,7 @@ sub xml_float($$$$$)
     my $caption = shift;
     my $shortcaption = shift;
 
+    # FIXME don't use the texi, but a normalized node name
     my $label_texi = $float->{'texi'};
     $label_texi = '' if (!defined($label_texi));
     my $result = "<float name=\"$label_texi\">\n";

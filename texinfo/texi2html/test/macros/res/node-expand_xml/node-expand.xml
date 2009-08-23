@@ -19,24 +19,25 @@
 <nodenext>(dir)</nodenext>
 <nodeprev>(dir)</nodeprev>
 <nodeup>(dir)</nodeup>
+</node>
 <unnumbered>
 <title>Expansion in Node Names</title>
 
 
 <menu>
 <menuentry>
-<menunode> Node 1  </menunode>
-<menutitle> Node 1  </menutitle>
+<menunode>Node 1</menunode>
+<menutitle>Node 1  </menutitle>
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
-<menunode> @node `2'</menunode>
-<menutitle> @node `2'</menutitle>
+<menunode>@node `2'</menunode>
+<menutitle>@node `2'</menutitle>
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
-<menunode> ``node'' with---tricks</menunode>
-<menutitle> &ldquo;node&rdquo; with&mdash;tricks</menutitle>
+<menunode>``node'' with---tricks</menunode>
+<menutitle>&ldquo;node&rdquo; with&mdash;tricks</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
@@ -44,12 +45,12 @@
 <para>See <xref><xrefnodename>@node `2'</xrefnodename></xref>.
 </para>
 </unnumbered>
-</node>
 <node>
 <nodename>Node 1</nodename>
 <nodenext>@node `2'</nodenext>
 <nodeprev>Top</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 <chapter>
 <title>Chapter 1</title>
 
@@ -60,28 +61,28 @@ See <xref><xrefnodename>@node `2'</xrefnodename></xref>.
 
 <menu>
 <menuentry>
-<menunode> Section 1.1</menunode>
-<menutitle> Section 1.1</menutitle>
+<menunode>Section 1.1</menunode>
+<menutitle>Section 1.1</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
 
 </chapter>
-</node>
 <node>
 <nodename>Section 1.1</nodename>
 <nodeprev>Node 1</nodeprev>
 <nodeup>Node 1</nodeup>
+</node>
 <!--  node-name,  next,  previous,  up -->
 
 <para><indexterm index="cp">entry for section 1.1</indexterm>This is section 1.1.
 </para>
-</node>
 <node>
 <nodename>@node `2'</nodename>
 <nodenext>``node'' with---tricks</nodenext>
 <nodeprev>Node 1</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 <!--  node-name,  next,  previous,  up -->
 <chapter>
 <title>Node 2</title>
@@ -91,17 +92,16 @@ See <xref><xrefnodename>Node 1</xrefnodename></xref>.  See <xref><xrefnodename>N
 See <xref><xrefnodename>``node'' with---tricks</xrefnodename><xrefinfoname>Node with some tricks</xrefinfoname></xref>.
 </para>
 </chapter>
-</node>
 <node>
 <nodename>``node'' with---tricks</nodename>
 <nodeprev>@node `2'</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 
 <para><indexterm index="cp">tricks</indexterm>Another node.
 </para>
 <printindex>cp</printindex>
 
-</node>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:

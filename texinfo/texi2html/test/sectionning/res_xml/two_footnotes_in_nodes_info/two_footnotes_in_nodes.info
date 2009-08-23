@@ -1,0 +1,58 @@
+This is two_footnotes_in_nodes.info, produced by makeinfo version 4.13
+from two_footnotes_in_nodes.texi.
+
+
+File: two_footnotes_in_nodes.info,  Node: Top,  Next: chapter,  Up: (dir)
+
+2 footnotes in 2 nodes
+**********************
+
+A(1)
+
+   B(2)
+
+* Menu:
+
+* chapter::
+
+   ---------- Footnotes ----------
+
+   (1) Footnote Top/1
+
+   para2
+
+   (2) Footnote Top/2
+
+   para2
+
+
+File: two_footnotes_in_nodes.info,  Node: chapter,  Prev: Top,  Up: Top
+
+1 chapter
+*********
+
+C(1)
+
+   D(2)
+
+   ---------- Footnotes ----------
+
+   (1) Footnote chapter/1
+
+   para2
+
+   (2) Footnote chapter/2
+
+   para2
+
+
+
+Tag Table:
+Node: Top106
+Ref: Top-Footnote-1303
+Ref: Top-Footnote-2336
+Node: chapter369
+Ref: chapter-Footnote-1516
+Ref: chapter-Footnote-2553
+
+End Tag Table

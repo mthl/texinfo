@@ -1,0 +1,63 @@
+This is node_footnote.info, produced by makeinfo version 4.13 from
+node_footnote.texi.
+
+
+File: node_footnote.info,  Node: Top,  Next: a',  Up: (dir)
+
+* Menu:
+
+* a'::
+* a^::
+* chapter::
+* a`::
+
+
+File: node_footnote.info,  Node: a',  Next: a^,  Prev: Top,  Up: Top
+
+   node a', Footnote 1(1).
+
+   ---------- Footnotes ----------
+
+   (1) foot 1 a'
+
+
+File: node_footnote.info,  Node: a^,  Next: chapter,  Prev: a',  Up: Top
+
+   node a^, Footnote 2(1).
+
+   ---------- Footnotes ----------
+
+   (1) foot 2 a^
+
+
+File: node_footnote.info,  Node: chapter
+
+1 chapter
+*********
+
+* Menu:
+
+* a`::
+
+
+File: node_footnote.info,  Node: a`,  Prev: chapter,  Up: chapter
+
+   node a`, Footnote 3(1).
+
+   ---------- Footnotes ----------
+
+   (1) foot 3 a`
+
+
+
+Tag Table:
+Node: Top88
+Node: a'194
+Ref: a'-Footnote-1330
+Node: a^348
+Ref: a^-Footnote-1488
+Node: chapter506
+Node: a`588
+Ref: a`-Footnote-1721
+
+End Tag Table

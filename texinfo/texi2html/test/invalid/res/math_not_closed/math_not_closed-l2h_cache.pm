@@ -7,7 +7,7 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
 @bye$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="77" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="76" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="math_not_closed_2.png"
  ALT="$3\delta + 2
 @bye
@@ -16,7 +16,7 @@ $"></SPAN>|;
 $l2h_cache_key = q/$\delta + 2
 $/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="37" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="36" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="math_not_closed_1.png"
  ALT="$\delta + 2
 $"></SPAN>|;

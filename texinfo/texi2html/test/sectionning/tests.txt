@@ -1,4 +1,4 @@
-## formats :_docbook :_xml :_html
+# formats :_docbook :_xml :_html
 texi html-top.texi
 top top.texi
 sectionning sectionning.texi
@@ -9,7 +9,7 @@ makeinfo_novalidate_unsplit novalidate.texi --init makeinfo.init --split no --no
 makeinfo_novalidate_unsplit_node_file novalidate.texi --init makeinfo.init --split no
 # in docbook, the @top 'chapter' is closed before the section, makeinfo
 # closes it after the section. 
-# laso text before first chapter is not allowed in docbook.
+# also text before first chapter is not allowed in docbook.
 first_section_no_node first_section_no_node.texi
 nodes_before_top nodes_before_top.texi
 nodes_after_top nodes_after_top.texi --use-nodes
@@ -62,11 +62,14 @@ two_footnotes_in_nodes two_footnotes_in_nodes.texi --init makeinfo.init
 section_in_unnumbered section_in_unnumbered.texi
 more_nodes_than_sections more_nodes_than_sections.texi --init makeinfo.init
 more_sections_than_nodes more_sections_than_nodes.texi
-no_element no_element.texi
+no_element no_element.texi 
+#--debug 255
 placed_things_before_element placed_things_before_element.texi
 menutextorder menutextorder.texi
 semi_auto semi_auto.texi
 anchor_in_footnote anchor_in_footnote.texi
+test_two_include test_two_include.texi -I .@PATH_SEPARATOR@../manuals@PATH_SEPARATOR@../macros
+only_documentencoding only_documentencoding.texi
 
 test_refs_docbook test_refs.texi --docbook
 at_commands_in_refs_info at_commands_in_refs.texi --init info.init
@@ -77,5 +80,3 @@ node_footnote_separated_info node_footnote.texi --init info.init --footnote-styl
 anchor_in_footnote_info anchor_in_footnote.texi --init info.init
 anchor_in_footnote_separated_info anchor_in_footnote.texi --init info.init --footnote-style=separate
 novalidate_info novalidate.texi --init info.init
-test_two_include test_two_include.texi -I .@PATH_SEPARATOR@../manuals@PATH_SEPARATOR@../macros
-only_documentencoding only_documentencoding.texi

@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.312 2009-08-10 10:00:22 pertusus Exp $
+# $Id: texi2html.pl,v 1.313 2009-08-23 21:50:15 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4196,6 +4196,17 @@ sub set_docu_names($$)
    $Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
 
    $docu_doc = $docu_name . (defined($docu_ext) ? ".$docu_ext" : ""); # document's contents
+   if (Texi2HTML::Config::get_conf('SPLIT') and $Texi2HTML::Config::NODE_FILENAMES)
+   {
+      if (defined($Texi2HTML::Config::TOP_NODE_FILE))
+      {
+         $docu_doc = $Texi2HTML::Config::TOP_NODE_FILE;
+         if (defined($Texi2HTML::Config::NODE_FILE_EXTENSION) and $Texi2HTML::Config::NODE_FILE_EXTENSION ne '')
+         {
+            $docu_doc .= ".$Texi2HTML::Config::NODE_FILE_EXTENSION";
+         }
+      }
+   }
    if (Texi2HTML::Config::get_conf('SPLIT'))
    {
 # AAAA
@@ -6078,11 +6089,12 @@ sub rearrange_elements()
         ########################### debug
         print STDERR "BUG: node or section_ref defined for section $section->{'texi'}\n"
             if (exists($section->{'node'}) or exists($section->{'section_ref'}));
+        print STDERR "Bug level undef for ($section) $section->{'texi'}\n" if (!defined($section->{'level'}));
         ########################### end debug
+
         # associate with first node if it is a section appearing before
         # the first node
         $section->{'node_ref'} = $nodes_list[0] if ($nodes_list[0] and !$section->{'node_ref'});
-        print STDERR "Bug level undef for ($section) $section->{'texi'}\n" if (!defined($section->{'level'}));
         # we track the toplevel next and previous because there is no
         # strict child parent relationship between chapters and top. Indeed
         # a chapter may appear before @top, it may be better to consider them
@@ -6103,8 +6115,6 @@ sub rearrange_elements()
         }
         # undef things under that section level
         my $section_level = $section->{'level'};
-        # if it is the top element, the previous chapter is not wiped out
-        $section_level++ if ($section->{'tag'} eq 'top');
         for (my $level = $section_level + 1; $level < $MAX_LEVEL + 1 ; $level++)
         {
             $previous_numbers[$level] = undef unless ($section->{'tag'} =~ /unnumbered/ or $section->{'tag'} eq 'centerchap');
@@ -6184,11 +6194,14 @@ sub rearrange_elements()
         {
             $level--;
         }
-        if ($level >= 0)
+        if (defined($previous_sections[$level]))
         {
             $section->{'sectionup'} = $previous_sections[$level];
-            # 'child' is the first child
-            $section->{'sectionup'}->{'child'} = $section unless ($section->{'sectionprev'});
+            # 'child' is the first child. 
+            # the condition or $section->{'sectionup'}->{'child'} is for 
+            # the @top since it may already one child
+            # and no sectionprev 
+            $section->{'sectionup'}->{'child'} = $section unless ($section->{'sectionprev'} or $section->{'sectionup'}->{'child'});
             push @{$section->{'sectionup'}->{'section_childs'}}, $section;
         }
         $previous_sections[$section->{'level'}] = $section;
@@ -7095,20 +7108,27 @@ sub rearrange_elements()
     {
         if (@all_elements)
         {
+            # in fact this happens only if there is no top element, but still
+            # sections, so only if USE_SECTIONS = 0 and there is no node.
+            #document_warn ("No elements available for splitting") if (Texi2HTML::Config::get_conf('SPLIT'));
             foreach my $element (@all_elements)
             {
                 #print STDERR "# no \@elements_list. Processing $element->{'texi'}\n";
                 $element->{'file'} = $docu_doc;
                 $element->{'doc_nr'} = 0;
                 push @{$element->{'place'}}, @{$element->{'current_place'}};
-                do_element_targets($element);
+                do_element_targets($element,$Texi2HTML::Config::NODE_FILENAMES);
+                print STDERR "# no \@elements_list, setting $element->{'file'} for $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             }
+            add_file($docu_doc);
         }
         else
         {
+            #document_warn ("No elements at all") if (Texi2HTML::Config::get_conf('SPLIT'));
             $element_before_anything->{'file'} = $docu_doc;
             $element_before_anything->{'doc_nr'} = 0;
-            do_element_targets($element_before_anything);
+            do_element_targets($element_before_anything,$Texi2HTML::Config::NODE_FILENAMES);
+            print STDERR "# no element at all, setting $element_before_anything->{'file'} for $element_before_anything->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
         }
     }
     # prepare printindices that are not in elements
@@ -7634,6 +7654,7 @@ sub fill_state($)
     {
         $state->{'element'} = $elements_list[0];
     }
+    # this is consistent with what is done in rearrange_elements
     $state->{'element'} = {'file' => $docu_doc, 'texi' => 'VIRTUAL ELEMENT'} if (!$state->{'element'});
         #$state->{'element'} = $elements_list[0] unless ((!@elements_list) or (exists($state->{'element'}) and !$state->{'element'}->{'before_anything'}));
 }
@@ -8379,9 +8400,13 @@ sub do_node_files()
            }
         }
         $Texi2HTML::HREF{'This'} = "$href_file#$node->{'id'}";
-        my $NODEFILE = open_out ($file);
-        &$Texi2HTML::Config::print_redirection_page ($NODEFILE);
-        close $NODEFILE || document_error ("Can't close $file: $!", 1);
+        my $redirect = &$Texi2HTML::Config::print_redirection_page ();
+        if (defined($redirect))
+        {
+           my $NODEFILE = open_out ($file);
+           print $NODEFILE "$redirect";
+           close $NODEFILE || document_error ("Can't close $file: $!", 1);
+        }
     }
 }
 
@@ -10317,13 +10342,17 @@ sub do_menu_link($$$)
     # It is not passed down to the function reference.
     my $name = normalise_node($menu_entry->{'name'});
 
+    # there is one substitution with spaces kept, and one with spaces
+    # normalized. In every cases nodes are in code_style
     my $node_substitution_state = duplicate_formatting_state($state);
     my $name_substitution_state = duplicate_formatting_state($state);
-    # normalise_node is not used, so that spaces are kept, like makeinfo.
-    # also code_style is used, like makeinfo.
+    my $node_normalized_substitution_state = duplicate_formatting_state($state);
     $node_substitution_state->{'code_style'} = 1;
+    $node_normalized_substitution_state->{'code_style'} = 1;
     $name_substitution_state->{'code_style'} = 1 if ($Texi2HTML::Config::format_code_style{'menu_name'});
     my $node_formatted = substitute_line($menu_entry->{'node'}, "node name in menu", $node_substitution_state, $line_nr);
+    my $node_normalized_formatted = substitute_line($node_name, "normalized node name in menu", $node_normalized_substitution_state, $line_nr);
+
     my $name_formatted;
     my $has_name = 0;
     if (defined($name) and $name ne '')
@@ -10333,7 +10362,9 @@ sub do_menu_link($$$)
     }
     else
     {
-        $name_formatted = substitute_line($menu_entry->{'node'}, "node name in menu", $name_substitution_state);
+        my $node_as_name = $menu_entry->{'node'};
+        $node_as_name =~ s/^\s*//;
+        $name_formatted = substitute_line($node_as_name, "node name in menu", $name_substitution_state);
     }
 
     my $entry = '';
@@ -10400,7 +10431,7 @@ sub do_menu_link($$$)
     # save the element used for the href for the description
     $menu_entry->{'menu_reference_element'} = $element;
 
-    return &$Texi2HTML::Config::menu_link($entry, $state, $href, $node_formatted, $name_formatted, $menu_entry->{'ending'}, $has_name, $state->{'command_stack'}, $state->{'preformatted'});
+    return &$Texi2HTML::Config::menu_link($entry, $state, $href, $node_formatted, $name_formatted, $menu_entry->{'ending'}, $has_name, $state->{'command_stack'}, $state->{'preformatted'}, $node_normalized_formatted);
 }
 
 sub do_menu_description($$)

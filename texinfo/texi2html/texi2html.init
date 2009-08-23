@@ -1,4 +1,5 @@
 # -*-perl-*-
+# vim: set filetype=perl:
 ######################################################################
 # File: texi2html.init
 #
@@ -12,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.219 2009-08-10 10:00:22 pertusus Exp $
+# $Id: texi2html.init,v 1.220 2009-08-23 21:50:15 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1881,11 +1882,10 @@ sub T2H_DEFAULT_titlepage($$$$)
     return $Texi2HTML::TITLEPAGE;
 }
 
-# FIXME Honor DOCUMENT_DESCRIPTION? 
-sub T2H_DEFAULT_print_redirection_page($)
+sub T2H_DEFAULT_print_redirection_page()
 {
-    my $fh = shift;
-    print $fh "Redirection files are not of use for the current format.\n";
+    #return "Redirection files are not of use for the current format.\n";
+    return undef;
 }
 
 sub T2H_DEFAULT_node_file_name($$)

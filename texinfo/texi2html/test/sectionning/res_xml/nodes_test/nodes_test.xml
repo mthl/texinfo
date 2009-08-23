@@ -13,31 +13,32 @@
 <nodenext>node1</nodenext>
 <nodeprev>lop</nodeprev>
 <nodeup>lop</nodeup>
+</node>
 <!-- @subsection s1 -->
 <para>node in first but not the first...
 </para>
-</node>
 <node>
 <nodename>lop</nodename>
 <nodenext>first</nodenext>
 <nodeup>(texinfo) Copying</nodeup>
+</node>
 <unnumbered>
 <title></title>
 
 <menu>
 <menuentry>
-<menunode> first</menunode>
-<menutitle> first</menutitle>
+<menunode>first</menunode>
+<menutitle>first</menutitle>
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
-<menunode> node1</menunode>
-<menutitle> node1</menutitle>
+<menunode>node1</menunode>
+<menutitle>node1</menutitle>
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
-<menunode> node inexistant in menu</menunode>
-<menutitle> node inexistant in menu</menutitle>
+<menunode>node inexistant in menu</menunode>
+<menutitle>node inexistant in menu</menutitle>
 <menucomment> non existing
 </menucomment>
 </menuentry><menuentry>
@@ -51,23 +52,23 @@
 <menucomment>  Right description and node
 </menucomment>
 </menuentry><menuentry>
-<menunode> (info)</menunode>
-<menutitle> (info)</menutitle>
+<menunode>(info)</menunode>
+<menutitle>(info)</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
 
 </unnumbered>
-</node>
 <node>
 <nodename>Top</nodename>
 <nodeup>(dir)</nodeup>
+</node>
 <para>This is the top node...
 </para>
-</node>
 <node>
 <nodename>node1</nodename>
 <nodeup>lop</nodeup>
+</node>
 
 <!-- Some text -->
 
@@ -76,15 +77,14 @@
 <para>node1 text
 </para>
 </unnumbered>
-</node>
 <node>
 <nodename>node below node1</nodename>
 <nodeup>node1</nodeup>
+</node>
 
 <para>Should be a warning for not being in menus and not having a menu entry in
 node1
 </para>
-</node>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -13,45 +13,45 @@
 <nodenext>second node</nodenext>
 <nodeprev>second node</nodeprev>
 <nodeup>(dir)</nodeup>
+</node>
 <para>Top node
 </para>
 <menu>
 <menuentry>
-<menunode> second node</menunode>
-<menutitle> second node</menutitle>
+<menunode>second node</menunode>
+<menutitle>second node</menutitle>
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
-<menunode> TOP</menunode>
-<menutitle> TOP</menutitle>
+<menunode>Top</menunode>
+<menutitle>TOP</menutitle>
 <menucomment> myself
 </menucomment>
 </menuentry></menu>
 
-</node>
 <node>
 <nodename>second node</nodename>
 <nodeprev>Top</nodeprev>
 <nodeup>Top</nodeup>
+</node>
 <para>second node (@node second node,,top,TOP).
 <!-- anchor TOP: @anchor{TOP}. -->
 </para>
 <menu>
 <menuentry>
-<menunode> other node</menunode>
-<menutitle> other node</menutitle>
+<menunode>other node</menunode>
+<menutitle>other node</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
 
-</node>
 <node>
 <nodename>other node</nodename>
 <nodeup>second node</nodeup>
+</node>
 <!-- anchor top @anchor{top}. -->
 <para>ref to TOP <xref><xrefnodename>TOP</xrefnodename></xref>.
 </para>
-</node>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:
