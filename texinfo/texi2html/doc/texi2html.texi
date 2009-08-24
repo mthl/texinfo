@@ -1593,8 +1593,6 @@ the short table of contents, including a heading and a reference.
 @end table
 @item today
 The date. May be overriden by @code{$DATE}.
-@item user
-The user running @command{texi2html}. Maybe overriden by @code{$USER}.
 @item css_import_lines
 reference on an array containing the @code{@@import} lines of 
 @acronym{CSS} files.
@@ -1865,15 +1863,18 @@ information about who created the document and how.
 If you want to define that variable
 dynamically, you could redefine the following function reference:
 
-@deftypefn {Function Reference} $address_text address $user $date
-This function should return the address. @var{$user} is the user name
-of the user running @command{texi2html}, @var{$date} is the date of the day.
+@deftypefn {Function Reference} $address_text address $date
+This function should return the address. @var{$date} is the date of the 
+day.
 @end deftypefn
 @end ignore
 
-A user name and  a date are collected to be output in the footer.
-You can change them by defining @variable{$USER} and @variable{$DATE}
-in the initialization file.
+@c A user name and  a date are collected to be output in the footer.
+@c You can change them by defining @variable{$USER} and @variable{$DATE}
+@c in the initialization file.
+
+A date is collected to be output in the footer. You can change it by 
+defining @variable{$DATE} in the initialization file.
 
 The default functions call the function associated with 
 @variable{$print_foot_navigation} to format the navigation panel for the 
@@ -4583,6 +4584,8 @@ version 1.68. API changed also a lot between 1.78 and 1.80.
 @item @@direntry is formatted like a menu and passed down to $menu_command.
 @item add $NODE_FILENAMES to use node names for files associated with nodes, 
   such that $NODE_FILES is only means creating redirection files.
+@item Remove the user from footer, and the corresponding USER variable and
+  $Texi2HTML::THISDOC@{user@}.
 @end itemize
 @item API changes between 1.78 and 1.80: 
 @itemize @bullet

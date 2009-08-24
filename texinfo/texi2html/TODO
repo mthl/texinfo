@@ -212,8 +212,7 @@ texi2html all the style commands are removed without extra formatting.
 
 * decide @documentencoding @. And maybe change regexp. (?)
 
-* verify that code_style is used for code_style style @-commands 
-  in remove_texi.
+* code_style is not used for code_style style @-commands in remove_texi.
 
 * test for something along:
 @setfilename ../../info/xemacs.info

@@ -66,6 +66,9 @@ This file records noteworthy changes.
 * add $NODE_FILENAMES to use node names for files associated with nodes, 
   such that $NODE_FILES is only means creating redirection files.
 
+* Remove the user from footer, and the corresponding USER variable and
+  $Texi2HTML::THISDOC{user}.
+
 1.82 (2009-01-05)
 
 * NEW FEATURES

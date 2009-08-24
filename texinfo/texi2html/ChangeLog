@@ -1,3 +1,9 @@
+2009-08-24   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, mediawiki.init: remove the user 
+	from footer, and the corresponding USER variable and 
+	$Texi2HTML::THISDOC{user}. This is a useless information leaking.
+
 2009-08-23   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, formats/docbook.init: consider @top more as a 

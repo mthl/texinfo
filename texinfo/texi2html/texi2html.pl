@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.313 2009-08-23 21:50:15 pertusus Exp $
+# $Id: texi2html.pl,v 1.314 2009-08-24 10:26:28 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -384,7 +384,6 @@ $BEFORE_TOC_LINES
 $AFTER_TOC_LINES
 $NEW_CROSSREF_STYLE
 $TOP_HEADING_AT_BEGINNING
-$USER
 $USE_NUMERIC_ENTITY
 $USE_SETFILENAME
 $USE_SETFILENAME_EXTENSION
@@ -2047,8 +2046,6 @@ foreach my $complex_format (keys(%$Texi2HTML::Config::complex_format_map))
 # Argument parsing, initialisation                                             #
 #                                                                              #
 #---############################################################################
-
-my $T2H_USER; # user running the script
 
 # shorthand for Texi2HTML::Config::VERBOSE
 my $T2H_VERBOSE;
@@ -3837,21 +3834,9 @@ if ($Texi2HTML::Config::TEST)
 {
     # to generate files similar to reference ones to be able to check for
     # real changes we use these dummy values if -test is given
-    $T2H_USER = 'a tester';
     $THISPROG = 'texi2html';
     setlocale( LC_ALL, "C" );
 } 
-else
-{ 
-    # the eval prevents this from breaking on system which do not have
-    # a proper getpwuid implemented
-    eval { ($T2H_USER = (getpwuid ($<))[6]) =~ s/,.*//;}; # Who am i
-    # APA: Provide Windows NT workaround until getpwuid gets
-    # implemented there.
-    $T2H_USER = $ENV{'USERNAME'} unless (defined($T2H_USER));
-}
-$T2H_USER = &$I('unknown') unless (defined($T2H_USER));
-
 
 $Texi2HTML::GLOBAL{'debug_l2h'} = 1 if ($T2H_DEBUG & $DEBUG_L2H);
 
@@ -7870,8 +7855,6 @@ sub pass_text($$)
     $Texi2HTML::THISDOC{'program'} = $THISPROG;
     $Texi2HTML::THISDOC{'program_homepage'} = $T2H_HOMEPAGE;
     $Texi2HTML::THISDOC{'program_authors'} = $T2H_AUTHORS;
-    $Texi2HTML::THISDOC{'user'} = $T2H_USER;
-    $Texi2HTML::THISDOC{'user'} = $Texi2HTML::Config::USER if (defined($Texi2HTML::Config::USER));
     $Texi2HTML::THISDOC{'authors'} = [] if (!defined($Texi2HTML::THISDOC{'authors'}));
     $Texi2HTML::THISDOC{'subtitles'} = [] if (!defined($Texi2HTML::THISDOC{'subtitles'}));
     # backward compatibility, titles should go away
