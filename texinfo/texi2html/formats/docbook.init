@@ -840,10 +840,10 @@ sub docbook_index_entry_command($$$$$)
    my $entry_formatted = shift;
 
    return $label if (defined($label) and $label ne '');
-   return docbook_index_entry_label('','','',$main::index_prefix_to_name{$index_name}, '', '', $entry_formatted);
+   return docbook_index_entry_label('','','',$main::index_prefix_to_name{$index_name}, '', '', $entry_formatted, {});
 }
 
-sub docbook_index_entry_label($$$$$)
+sub docbook_index_entry_label($$$$$$$$)
 {   
     my $identifier = shift;
     my $preformatted = shift;
@@ -852,6 +852,7 @@ sub docbook_index_entry_label($$$$$)
     my $index_command = shift;
     my $texi_entry = shift;
     my $formatted_entry = shift;
+    my $index_entry = shift;
 
     return "<indexterm role=\"${index_name}\"><primary>${formatted_entry}</primary></indexterm>";
 }

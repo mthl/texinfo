@@ -658,7 +658,7 @@ sub xml_index_entry_command($$$$$)
    my $entry_formatted = shift;
 
    return $label if (defined($label) and $label ne '');
-   return xml_index_entry_label('','','',$main::index_prefix_to_name{$index_name}, '', '', $entry_formatted);
+   return xml_index_entry_label('','','',$main::index_prefix_to_name{$index_name}, '', '', $entry_formatted, {});
 }
 
 sub xml_index_entry_label($$$$$$$$)

@@ -1,4 +1,4 @@
-2 node with printindex: J - P
+2 node with printindex: J - O
 *****************************
 * Index:
 * joncept: 3 Indices refs.
@@ -7,4 +7,3 @@
 * moncept: 3 Indices refs.
 * noncept: 3 Indices refs.
 * ooncept: 3 Indices refs.
-* poncept: 3 Indices refs.

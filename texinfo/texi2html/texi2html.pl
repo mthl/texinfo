@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.314 2009-08-24 10:26:28 pertusus Exp $
+# $Id: texi2html.pl,v 1.315 2009-08-25 13:15:44 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -224,28 +224,6 @@ sub default_command_name()
 package Texi2HTML::Config;
 
 use Config;
-
-sub load($) 
-{
-    my $file = shift;
-    # FIXME temporary ugly hack. Otherwise the info related functions are
-    # redefined
-    foreach my $format('info', 'html', 'docbook', 'plaintext', 'xml')
-    {
-      if ($file =~ /\/$format\.init$/)
-      {
-         t2h_default_load_format($format, 1);
-         return 1;
-      }
-    }
-    eval { require($file) ;};
-    if ($@ ne '')
-    {
-        print STDERR "error loading $file: $@\n";
-        return 0;
-    }
-    return 1;
-}
 
 # customization options variables
 
@@ -648,6 +626,7 @@ $after_punctuation_characters
 %language_codes
 %region_codes
 %deprecated_commands
+%output_format_names
 );
 
 # subject to change
@@ -657,6 +636,40 @@ use vars qw(
 %eight_bit_to_unicode
 %t2h_encoding_aliases
 );
+
+%output_format_names = (
+  'info' => 'Info',
+  'html' => 'HTML',
+  'docbook' => 'Docbook XML',
+  'xml' => 'Texinfo XML',
+  'plaintext' => 'plain text',
+);
+
+sub load($) 
+{
+    my $file = shift;
+    # If required like other init files, the functions would be redefined
+    # and the format dependent stuff wouldn't be loaded. Having the 
+    # formats loaded could be worked around, for example there could be
+    # a vaariable that , if defined and a function reference, should be 
+    # called right after the require. There is no real workaround for 
+    # having the function redefined, though.
+    foreach my $output_format (keys(%output_format_names))
+    {
+      if ($file =~ /\/$output_format\.init$/)
+      {
+         t2h_default_load_format($output_format, 1);
+         return 1;
+      }
+    }
+    eval { require($file) ;};
+    if ($@ ne '')
+    {
+        print STDERR "error loading $file: $@\n";
+        return 0;
+    }
+    return 1;
+}
 
 $DEFAULT_OUTPUT_FORMAT = main::default_output_format();
 $OUTPUT_FORMAT = $DEFAULT_OUTPUT_FORMAT;
@@ -719,7 +732,7 @@ sub get_conf($)
     #print STDERR "Unknown conf string: $name\n";
 }
 
-# used to manage expanded sections
+# manage expanded sections
 sub set_expansion($$)
 {
     my $region = shift;
@@ -1001,7 +1014,7 @@ sub t2h_default_init_split_indices ()
             ($a !~ /^[[:alpha:]]/ and $b !~ /^[[:alpha:]]/)) && $a cmp $b)
              || ($a =~ /^[[:alpha:]]/ && 1) || -1 } (keys(%{$t2h_default_index_letters_hash{$index_name}})))
         {
-          my $letter_entry = {'letter' => $letter };
+          my $letter_entry = {'letter' => $letter};
           # FIXME sort without uc?
           # This sorts the entries for a given letter
           foreach my $key (sort {uc($a) cmp uc($b)} (keys(%{$t2h_default_index_letters_hash{$index_name}->{$letter}})))
@@ -1010,10 +1023,8 @@ sub t2h_default_init_split_indices ()
           }
           push @letters, $letter_entry;
           $entries_count += scalar(@{$letter_entry->{'entries'}});
-          #if ($SPLIT and $SPLIT_INDEX and $entries_count >= $SPLIT_INDEX)
-          # FIXME this is not right, above is right
           # Don't split if document is not split
-          if (get_conf('SPLIT') and $SPLIT_INDEX and $entries_count > $SPLIT_INDEX)
+          if (get_conf('SPLIT') and $SPLIT_INDEX and $entries_count >= $SPLIT_INDEX)
           {
             push @{$t2h_default_index_letters_array{$index_name}}, [ @letters ];
             @letters = ();
@@ -1401,7 +1412,8 @@ sub t2h_GPL_default_printindex($$)
     $current_page = shift @split_letters;
     last if (!defined($current_page));
 
-    # FIXME begin first element if not already done
+    # there is no need to begin first element if not already done, since
+    # the index is not split if not already in an element.
     # end the previous element
     main::finish_element ($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT, $Texi2HTML::THIS_ELEMENT->{'Forward'}, 0);
 
@@ -2910,24 +2922,16 @@ $T2H_OPTIONS -> {'output-indent'} =
  verbose => 'This option used to indent XML, it is ignored'
 };
 
-my %output_format_names = (
-  'info' => 'Info',
-  'html' => 'HTML',
-  'docbook' => 'Docbook XML',
-  'xml' => 'Texinfo XML',
-  'plaintext' => 'plain text',
-);
-
-foreach my $output_format (keys(%output_format_names))
+foreach my $output_format (keys(%Texi2HTML::Config::output_format_names))
 {
   next if (defined($default_output_format) and $output_format eq $default_output_format);
   my $text_default_output_format = 'raw text';
-  $text_default_output_format = $output_format_names{$default_output_format} if (defined($default_output_format) and defined($output_format_names{$default_output_format}));
+  $text_default_output_format = $Texi2HTML::Config::output_format_names{$default_output_format} if (defined($default_output_format) and defined($Texi2HTML::Config::output_format_names{$default_output_format}));
   $T2H_OPTIONS -> {$output_format} =
   {
     type => '',
     linkage => sub {Texi2HTML::Config::t2h_default_load_format($_[0], 1);},
-    verbose => "output $output_format_names{$output_format} rather than $text_default_output_format.",
+    verbose => "output $Texi2HTML::Config::output_format_names{$output_format} rather than $text_default_output_format.",
   }
 }
 

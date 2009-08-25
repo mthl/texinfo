@@ -1,10 +1,9 @@
-3 Indices refs: Q - U
+3 Indices refs: J - O
 *********************
 * Index:
-* qoncept: 3 Indices refs.
-* roncept: 3 Indices refs.
-* roncept: 3 Indices refs.
-* rsconcept: 3 Indices refs.
-* soncept: 3 Indices refs.
-* toncept: 3 Indices refs.
-* uoncept: 3 Indices refs.
+* joncept: 3 Indices refs.
+* koncept: 3 Indices refs.
+* loncept: 3 Indices refs.
+* moncept: 3 Indices refs.
+* noncept: 3 Indices refs.
+* ooncept: 3 Indices refs.

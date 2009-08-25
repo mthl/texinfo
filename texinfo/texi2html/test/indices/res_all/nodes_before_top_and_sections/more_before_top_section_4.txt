@@ -1,6 +1,7 @@
-1 A chapter: N - T
+1 A chapter: F - T
 ******************
 * Index:
+* first before top: first before top.
 * node in chapter: node in chapter.
 * node in menu before top: node in menu before top.
 * printindex node in menu before top: node in menu before top.

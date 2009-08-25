@@ -1,5 +1,5 @@
-2 node with printindex: T - Y
-*****************************
+3 Indices refs: T - Y
+*********************
 * Index:
 * toncept: 3 Indices refs.
 * uoncept: 3 Indices refs.

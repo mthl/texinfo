@@ -8,4 +8,3 @@
 * entry a: top section.
 * entry after printindex: a node.
 * entry in node: first.
-* first before top: first before top.

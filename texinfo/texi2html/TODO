@@ -296,7 +296,10 @@ texi2html all the style commands are removed without extra formatting.
 * @anchor{} should always ignore following whitespace (including newlines)
 
 * in info, @. @! and @? should always be followed by at least 2 spaces
-  even in text, not only on end of lines.
+  even in text, not only on end of lines. Also the number of spaces after
+  a . in the text may be adjusted to 2. It is not sure, though, whether
+  we should do it or leave it  to the user. There is a bug:
+  https://savannah.gnu.org/bugs/?20444
 
 * add tests for -o - and input coming from stdin, including check of 
   out file names.
@@ -401,4 +404,16 @@ in nested table line
 * sectionning/top_without_node/out_html index.html is the name of the second
   node file
 
+* texi2html is immune to https://savannah.gnu.org/bugs/?25822
 
+* for https://savannah.gnu.org/bugs/?25820 it is unclear whether &amp;
+  is correct for & or not
+
+* from https://savannah.gnu.org/bugs/?22696, encodings/chinese_mixed_with_en
+  the info output is not good with Chinese texts only, not aligned in source
+  and a mix of English and Chinese texts.
+
+* https://savannah.gnu.org/bugs/?8432 warn if multiple menus. I (pertusus)
+  think that what is more important is that the menu happens at the end of 
+  the node. This should caugth both double menus and all the other incorrect
+  cases. Also this should be an info specific message.

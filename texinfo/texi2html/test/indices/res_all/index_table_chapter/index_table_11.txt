@@ -1,10 +1,10 @@
-3 Indices refs: J - P
+3 Indices refs: D - I
 *********************
 * Index:
-* joncept: 3 Indices refs.
-* koncept: 3 Indices refs.
-* loncept: 3 Indices refs.
-* moncept: 3 Indices refs.
-* noncept: 3 Indices refs.
-* ooncept: 3 Indices refs.
-* poncept: 3 Indices refs.
+* doncept: 3 Indices refs.
+* eoncept: 3 Indices refs.
+* foncept: 3 Indices refs.
+* goncept: 3 Indices refs.
+* honcept: 3 Indices refs.
+* index entry in node: 1 first node chapter, with ftable and vtable.
+* ioncept: 3 Indices refs.

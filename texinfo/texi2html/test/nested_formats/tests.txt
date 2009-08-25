@@ -1,5 +1,5 @@
 texi nested_formats.texi
-# no macros
+# no macros, generated in all_texi by generate_all_texi.pl
 #multitable-nested_formats multitable-nested_formats.texi
 # macros
 nested_group nested_formats.texi
