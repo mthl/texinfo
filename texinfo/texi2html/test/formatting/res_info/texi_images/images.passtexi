@@ -55,47 +55,54 @@ images.texi(,44) And the same, followed by a dot:
 images.texi(,45) 
 images.texi(,46) @image{f--ile}.
 images.texi(,47) 
-images.texi(,48) In example:
-images.texi(,49) 
-images.texi(,50) @example
-images.texi(,51) Text. @code{f---ile} with jpeg extension.
-images.texi(,52) @image{f---ile,,,,jpeg}.
-images.texi(,53) 
-images.texi(,54) @image{f--ile}.
-images.texi(,55) 
+images.texi(,48) An image with a @@ followed by a space or : from 
+images.texi(,49) @url{https://savannah.gnu.org/bugs/?8218}:
+images.texi(,50) @image{,,,@ }.
+images.texi(,51) @image{f--ile,,,@ }.
+images.texi(,52) @image{,,,@:}.
+images.texi(,53) @image{f--ile,,,@:}.
+images.texi(,54) 
+images.texi(,55) In example:
 images.texi(,56) 
-images.texi(files_char,57) File with @@-commands and special characters:
-images.texi(files_char,57) 
-images.texi(files_char,57) @c cannot test a file with newline, since perl says
-images.texi(files_char,57) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
-images.texi(files_char,57) @c with a noon reproducible path
-images.texi(files_char,57) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,57) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,57) 
-images.texi(files_char,57) And also in alt, and with dimensions:
-images.texi(files_char,57) 
-images.texi(files_char,57) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,57) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
-images.texi(,58) @end example
-images.texi(,59) 
-images.texi(,60) @float
-images.texi(,61) In float.
-images.texi(,62) @image{f--ile}.
+images.texi(,57) @example
+images.texi(,58) Text. @code{f---ile} with jpeg extension.
+images.texi(,59) @image{f---ile,,,,jpeg}.
+images.texi(,60) 
+images.texi(,61) @image{f--ile}.
+images.texi(,62) 
 images.texi(,63) 
-images.texi(,64) @image{f--ile}.
-images.texi(,65) @end float
+images.texi(files_char,64) File with @@-commands and special characters:
+images.texi(files_char,64) 
+images.texi(files_char,64) @c cannot test a file with newline, since perl says
+images.texi(files_char,64) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+images.texi(files_char,64) @c with a noon reproducible path
+images.texi(files_char,64) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,64) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,64) 
+images.texi(files_char,64) And also in alt, and with dimensions:
+images.texi(files_char,64) 
+images.texi(files_char,64) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,64) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(,65) @end example
 images.texi(,66) 
-images.texi(files_char,67) File with @@-commands and special characters:
-images.texi(files_char,67) 
-images.texi(files_char,67) @c cannot test a file with newline, since perl says
-images.texi(files_char,67) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
-images.texi(files_char,67) @c with a noon reproducible path
-images.texi(files_char,67) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,67) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,67) 
-images.texi(files_char,67) And also in alt, and with dimensions:
-images.texi(files_char,67) 
-images.texi(files_char,67) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,67) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
-images.texi(,68) 
-images.texi(,69) @bye
+images.texi(,67) @float
+images.texi(,68) In float.
+images.texi(,69) @image{f--ile}.
+images.texi(,70) 
+images.texi(,71) @image{f--ile}.
+images.texi(,72) @end float
+images.texi(,73) 
+images.texi(files_char,74) File with @@-commands and special characters:
+images.texi(files_char,74) 
+images.texi(files_char,74) @c cannot test a file with newline, since perl says
+images.texi(files_char,74) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+images.texi(files_char,74) @c with a noon reproducible path
+images.texi(files_char,74) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,74) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,74) 
+images.texi(files_char,74) And also in alt, and with dimensions:
+images.texi(files_char,74) 
+images.texi(files_char,74) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files_char,74) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(,75) 
+images.texi(,76) @bye

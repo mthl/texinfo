@@ -29,6 +29,13 @@ And the same, followed by a dot:
 
 [ f--ile.png ].
 
+An image with a @ followed by a space or : from 
+<https://savannah.gnu.org/bugs/?8218>:
+.
+[ f--ile.png: @ ].
+.
+[ f--ile.png ].
+
 In example:
 
 Text. f---ile with jpeg extension.

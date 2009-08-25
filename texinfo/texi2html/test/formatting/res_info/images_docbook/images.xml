@@ -70,6 +70,17 @@ aaa
 aaa
 </literallayout></textobject></mediaobject></informalfigure><para>.
 </para>
+<para>An image with a @ followed by a space or : from 
+<ulink url="https://savannah.gnu.org/bugs/?8218">https://savannah.gnu.org/bugs/?8218</ulink>:
+.
+<inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+aaa
+</literallayout></textobject></inlinemediaobject>.
+.
+<inlinemediaobject><imageobject><imagedata fileref="f--ile.gif" format="GIF"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.jpeg" format="JPEG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+aaa
+</literallayout></textobject></inlinemediaobject>.
+</para>
 <para>In example:
 </para>
 <screen>Text. <literal>f---ile</literal> with jpeg extension.

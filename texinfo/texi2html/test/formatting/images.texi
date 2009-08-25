@@ -45,6 +45,13 @@ And the same, followed by a dot:
 
 @image{f--ile}.
 
+An image with a @@ followed by a space or : from 
+@url{https://savannah.gnu.org/bugs/?8218}:
+@image{,,,@ }.
+@image{f--ile,,,@ }.
+@image{,,,@:}.
+@image{f--ile,,,@:}.
+
 In example:
 
 @example

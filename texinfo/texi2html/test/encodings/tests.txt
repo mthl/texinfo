@@ -52,6 +52,7 @@ ogolat2 ogolat2.texi
 ogoutf ogoutf.texi
 nodetest_info nodetest.texi --init info.init
 japanese japanese.texi
+chinese_mixed_with_en chinese_mixed_with_en.texi
 documentlanguage_set documentlanguage_set.texi
 documentlanguage_set_option documentlanguage_set.texi --document-language fr
 documentlanguage_set_unknown documentlanguage_set.texi --document-language unknown

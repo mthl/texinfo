@@ -417,3 +417,5 @@ in nested table line
   think that what is more important is that the menu happens at the end of 
   the node. This should caugth both double menus and all the other incorrect
   cases. Also this should be an info specific message.
+
+* images.texi should be tested in xml too.
