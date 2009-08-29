@@ -11,8 +11,56 @@ Before next release
 * bug #15513 should be a warning when there is text before an item
   but otherwise an empty format.
 
+* sectionning/nodes_test html style, the @top and the @node Top, 
+  although distinct nodes end up in the same element. I think that 
+  there is a FIXME in the code covering that issue.
+
+* in sectionning, test of nodes_after_top_before_section not split
+  at chapter. It is split at a node because top node is always considered
+  as an element. there is a FIXME in the code. Maybe linked with the 
+  previous item.
+
+* something like (ask Karl)
+@math{@minus{} {\frac{1}{2}}} 
+  leads to errors in makeinfo about misplaced { } because it seems that
+  @minus turns on texinfo mode or the like, while
+@math{{\frac{1}{2}} @minus{}}
+  is error free.
+
+Asked on bug-texinfo:
+
+* for makeinfo, the following are not the same, looks like -I is not taken
+  into account with a leading ./:
+@include ./d2t_singular/surf_lib_noEx.tex
+@include d2t_singular/surf_lib_noEx.tex
+  for texi2html they are the same.
+
+* the code of xml.c in makeinfo shows specific treatement of & in 
+  definition arguments. I don't know what it corresponds with. The
+  formal definition argument parsing stuff is certainly worth asking
+  on the texinfo list.
+
+* makeinfo warn when there is no @settitle nor @top where it finds its title
+in texi2tml there is no warning, and also the title is constructed
+differently.
+ ../../sectionning.texi:4: warning: Must specify a title with least one of @settitle or @top.
+
+* makeinfo in title, for @code{something} leads to `something'. In 
+texi2html all the style commands are removed without extra formatting.
+
+
+* What are the encodings known by info? 
+  unrecognized encoding name `ascii'.
+
+* '00D8' which is Oslash is transliterated on OE?
+
+* makeinfo: multiple index entries have <1>... appended.
+  or they are removed. Ask on the list.
+
 Later
 -----
+
+* many FIXME in the code
 
 * Create detailed texinfo documentation (see in doc)
 
@@ -97,31 +145,6 @@ h1 titlefont (@titlefont),
 
 * document the new $image arguments/API
 
-* the following is erroneous, but maybe it could be better handled anyway
--> error with @item on same line than @table
-@xref{node,
-@table @emph
-@item line
-text
-@end table
-}
-
-* test @printindex in diverse contexts and handle right, or complain about
-  things like
-@code{
-@printindex cp
-}
-
-* @macro definition in @ifset is parsed but ignored. So in the following, the
-@end ifset appearing in the macro is ignored if 'a' is not set, and the 
-macro isn't defined.
-
-@ifset a
-@macro bidule
-@end ifset
-@end macro
-@end ifset
-
 * in chm.init (Jose Fonseca)
 
 [WINDOWS]
@@ -133,11 +156,6 @@ IMO a good default. In the future you may also add that as an
 option, as the Docbook XSL stylesheets do (see in
 http://docbook.sourceforge.net/release/xsl/snapshot/doc/html/rn20.html
 all the CHM related parameters one can change).
-
-* many FIXME in the code
-
-* in index_split the section associated with indices is the numbered section
-  not the associated node where the @cindex are. Good or bad?
 
 * antispam @email
 <script type="text/javascript">
@@ -155,37 +173,10 @@ function clean_antispam() {
 <tt>&lt;bug-gnulib<span id="span1" style="display:none;">-nospam</span>&#64;<span id="span2" style="display:none;">nospam.</span>gnu.org&gt;</tt>
 </body>
 
-* menu_description is menucomment in xml. 
-  menuentry is the menunode+menutitle+menucomment
-  menu_comment in makeinfo --xml treated as normal text.
-  the documentation, however uses the same words than in texi2html.
-
 * roff is not uptodate. At least the @quote* and @guillem* and many 
   others.
 
-* the code of xml.c in makeinfo shows specific treatement of & in 
-  definition arguments. I don't know what it corresponds with. The
-  formal definition argument parsing stuff is certainly worth asking
-  on the texinfo list.
-
-* something like
-@math{@minus{} {\frac{1}{2}}} 
-  leads to errors in makeinfo about misplaced { } because it seems that
-  @minus turns on texinfo mode or the like, while
-@math{{\frac{1}{2}} @minus{}}
-  is error free.
-
 * add @detailmenu in coverage, and @group
-
-* makeinfo warn when there is no @settitle nor @top where it finds its title
-in texi2tml there is no warning, and also the title is constructed
-differently.
-
-* enable_encoding.init is certainly dependent on USE_UNICODE through
-the use of non 8 bit representation of characters.
-
-* makeinfo in title, for @code{something} leads to `something'. In 
-texi2html all the style commands are removed without extra formatting.
 
 * test for @deffn with end of line protected in @footnote (to test 
   end of line protection in keep_texi).
@@ -246,8 +237,6 @@ texi2html all the style commands are removed without extra formatting.
   All that is now more or less encapsulated in get_conf, but the 
   problem remains.
 
-* ignore spaces after @ command, before {, like texi2dvi does?
-
 * failures with split index between node and section in indices/
   makeinfo_index_split first.html is missing
   makeinfo_nodes_before_top_and_sections needs to be checkedd (first 
@@ -257,15 +246,6 @@ texi2html all the style commands are removed without extra formatting.
 
 * @ogonek has 2 test files, and is in coverage. Maybe add it to encoding/*
   where other accents are used too. Or maybe tests should be more focused?
-
-* for makeinfo, the following are not the same, looks like -I is not taken
-  into account with a leading ./:
-@include ./d2t_singular/surf_lib_noEx.tex
-@include d2t_singular/surf_lib_noEx.tex
-  for texi2html they are the same.
-
-* @chapter following a @appendix still uses a number for numbering, and
-  is not affected by the @appendix number. Karl is ok with that.
 
 * @kbdinputstyle should be taken into account in html output, which
   means distinguish between preformatted, code_style and normal text 
@@ -289,7 +269,11 @@ texi2html all the style commands are removed without extra formatting.
   like that? (and in makeinfo compatibility mode, a normal processing
   will be done with -E).
 
-* @anchor{} should always ignore following whitespace (including newlines)
+* @anchor{} should always ignore following whitespace (including newlines).
+  Karl insists on that for backward compatibility.
+
+* ignore spaces after @ command, before {, like texi2dvi does? Karl 
+  insists on that because TeX has to do it like that.
 
 * in info, @. @! and @? should always be followed by at least 2 spaces
   even in text, not only on end of lines. Also the number of spaces after
@@ -303,6 +287,9 @@ texi2html all the style commands are removed without extra formatting.
   There is also a check in layout/formatting_exotic with 
   --internal-links=/dev/null which is not portable
 
+* Perhaps we should also make an option -Werror which turns all warnings
+  into errors.
+
 * when determining the different letters and later sorting them, there 
   should not be transliteration, but instead perl sorting and i18n stuff
   should be used. Cf testcases in encoding/encoding_index*.
@@ -312,46 +299,15 @@ texi2html all the style commands are removed without extra formatting.
 * formatting/indicateurl_paragraph.texi there should be a warning that
   a simple_style was cut by a paragraph.
 
-* utf8.init doesn't work with info.init (see encodings/nodetest_to_utf8_latin1)
-
-* makeinfo: multiple index entries have <1>... appended.
-  or they are removed. Ask on the list.
-
-* ../../sectionning.texi:4: warning: Must specify a title with least one of @settitle or @top.
-
-* Perhaps we should also make an option -Werror which turns all warnings
-  into errors.
-
-* What are the encodings known by info? 
-  unrecognized encoding name `ascii'.
-
 * invalid/node_in_copying there is no error message
 
 * info/long_uref_after_item.texi report from Kevin Ryde,
   it would be logical to treat the space after the itemize mark as 
   a tie instead of a breakpoint.
 
-* sectionning/res_html/no_node the file is called no_node.html and not 
-  index.html.
-
-* certainly not a big deal, but in invalid/verb_not_closed @verb content
-  is not output
-
-* certainly not a big deal, but in invalid/bad_tab_nesting, the @code quotes
-  are not surrounding the @tab, although there is no error message
-
-* @insertcopying in @copying doesn't lead to error message with 
-  INLINE_INSERTCOPYING. See invalid/recursive_copying
-
-* In indices/makeinfo_index_nodes there is no elements, and thus no 
-  [Index] link since it uses the index chapter (or @top), and there is 
-  no chapter not @top.
-
 * in sectionning/first_section_no_node in _html, the @unnumbered is included
   in the first node, while makeinfo outputs it before the first node, and 
-  the header is only output whan there is a @node.
-
-* '00D8' which is Oslash is transliterated on OE?
+  the header is only output when there is a @node.
 
 * error messages
   *** waiting for end of quotation, found @end cartouche (l. 12)
@@ -383,22 +339,12 @@ in nested table line
 
 * examples/mediwiki.init: images are like
 [[Image:New-medium.png|Nouveau medium disponible]]
+  Many constructs should be mediawikified
 
 * in xml have documentencoding have an argument.
 
-* sectionning/nodes_test html style, the @top and the @node Top, 
-  although distinct nodes end up in the same element. I think that 
-  there is a FIXME in the code covering that issue.
-
-* in sectionning, test of nodes_after_top_before_section not split
-  at chapter. It is split at a node because top node is always considered
-  as an element. there is a FIXME in the code. Maybe linked with the 
-  previous item.
-
 * sectionning/top_without_node/out_html index.html is the name of the second
   node file
-
-* texi2html is immune to https://savannah.gnu.org/bugs/?25822
 
 * for https://savannah.gnu.org/bugs/?25820 it is unclear whether &amp;
   is correct for & or not
@@ -413,3 +359,64 @@ in nested table line
   cases. Also this should be an info specific message.
 
 * images.texi should be tested in xml too.
+
+
+Misc info and boring stuff
+--------------------------
+
+* texi2html is immune to https://savannah.gnu.org/bugs/?25822
+
+* the following is erroneous, but maybe it could be better handled anyway
+-> error with @item on same line than @table
+@xref{node,
+@table @emph
+@item line
+text
+@end table
+}
+
+* test @printindex in diverse contexts and handle right, or complain about
+  things like
+@code{
+@printindex cp
+}
+
+* @macro definition in @ifset is parsed but ignored. So in the following, the
+@end ifset appearing in the macro is ignored if 'a' is not set, and the 
+macro isn't defined.
+
+@ifset a
+@macro bidule
+@end ifset
+@end macro
+@end ifset
+
+* certainly not a big deal, but in invalid/verb_not_closed @verb content
+  is not output
+
+* certainly not a big deal, but in invalid/bad_tab_nesting, the @code quotes
+  are not surrounding the @tab, although there is no error message
+
+* @insertcopying in @copying doesn't lead to error message with 
+  INLINE_INSERTCOPYING. See invalid/recursive_copying
+
+* In indices/makeinfo_index_nodes there is no elements, and thus no 
+  [Index] link since it uses the index chapter (or @top), and there is 
+  no chapter not @top.
+
+* in index_split the section associated with indices is the numbered section
+  not the associated node where the @cindex are. Good or bad?
+
+* @chapter following a @appendix still uses a number for numbering, and
+  is not affected by the @appendix number. Karl is ok with that.
+
+* utf8.init doesn't work with info.init (see encodings/nodetest_to_utf8_latin1)
+
+* menu_description is menucomment in xml. 
+  menuentry is the menunode+menutitle+menucomment
+  menu_comment in makeinfo --xml treated as normal text.
+  the documentation, however uses the same words than in texi2html.
+
+* enable_encoding.init is certainly dependent on USE_UNICODE through
+the use of non 8 bit representation of characters.
+
