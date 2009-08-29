@@ -6,11 +6,6 @@ Before next release
 * there is also undocumented features @hsep and @vsep to insert
   horizontal and vertical rules.
 
-* code_style is not used for code_style style @-commands in remove_texi.
-
-* bug #15513 should be a warning when there is text before an item
-  but otherwise an empty format.
-
 * sectionning/nodes_test html style, the @top and the @node Top, 
   although distinct nodes end up in the same element. I think that 
   there is a FIXME in the code covering that issue.
@@ -48,7 +43,6 @@ differently.
 * makeinfo in title, for @code{something} leads to `something'. In 
 texi2html all the style commands are removed without extra formatting.
 
-
 * What are the encodings known by info? 
   unrecognized encoding name `ascii'.
 
@@ -56,6 +50,7 @@ texi2html all the style commands are removed without extra formatting.
 
 * makeinfo: multiple index entries have <1>... appended.
   or they are removed. Ask on the list.
+
 
 Later
 -----
@@ -419,4 +414,8 @@ macro isn't defined.
 
 * enable_encoding.init is certainly dependent on USE_UNICODE through
 the use of non 8 bit representation of characters.
+
+* code_style is used for code_style style @-commands in remove_texi.
+  However since -- is removed to have strict html comments, it looks like
+  it isn't.
 

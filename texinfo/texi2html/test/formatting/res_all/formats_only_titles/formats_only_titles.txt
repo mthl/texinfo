@@ -1,0 +1,13 @@
+Test formats with text before first item and no item
+****************************************************
+
+before first itemize
+
+before first enumerate
+
+before first table
+
+before first vtable
+
+ before first multitable
+

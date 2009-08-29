@@ -3,6 +3,8 @@
 	* texi2html.pl, test/sectionning/nodename_parentheses: 
 	ignore nodes having a name alike references to
 	external nodes in menu, line (manual)node.
+	* texi2html.pl, formats/info.init: warn for non empty format without 
+	@item. https://savannah.gnu.org/bugs/?15513
 
 2009-08-25   Patrice Dumas  <dumas@centre-cired.fr>
 

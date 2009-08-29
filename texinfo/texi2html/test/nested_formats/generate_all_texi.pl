@@ -12,7 +12,7 @@ mkdir ("all_texi");
 while (<TXT>)
 {
    next if /^\s*\#/;
-   if (/^(\w+) nested_formats.texi -D (\w+)$/)
+   if (/^(\w+) nested_formats.texi -D (\w+) *$/)
    {
       my $dir = $1;
       my $def = $2;

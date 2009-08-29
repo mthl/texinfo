@@ -1,0 +1,27 @@
+formats_only_titles.texi(,2) 
+formats_only_titles.texi(,3) @setfilename formats_only_titles.info
+formats_only_titles.texi(,4) 
+formats_only_titles.texi(,5) @node Top
+formats_only_titles.texi(,6) @top Test formats with text before first item and no item
+formats_only_titles.texi(,7) 
+formats_only_titles.texi(,8) @itemize
+formats_only_titles.texi(,9) before first itemize
+formats_only_titles.texi(,10) @end itemize
+formats_only_titles.texi(,11) 
+formats_only_titles.texi(,12) @enumerate
+formats_only_titles.texi(,13) before first enumerate
+formats_only_titles.texi(,14) @end enumerate
+formats_only_titles.texi(,15) 
+formats_only_titles.texi(,16) @table @emph
+formats_only_titles.texi(,17) before first table
+formats_only_titles.texi(,18) @end table
+formats_only_titles.texi(,19) 
+formats_only_titles.texi(,20) @vtable @asis
+formats_only_titles.texi(,21) before first vtable
+formats_only_titles.texi(,22) @end vtable
+formats_only_titles.texi(,23) 
+formats_only_titles.texi(,24) @multitable @columnfractions 0.5 0.5
+formats_only_titles.texi(,25) before first multitable
+formats_only_titles.texi(,26) @end multitable
+formats_only_titles.texi(,27) 
+formats_only_titles.texi(,28) @bye

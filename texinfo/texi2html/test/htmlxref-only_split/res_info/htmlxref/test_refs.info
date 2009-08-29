@@ -26,6 +26,10 @@ Testing distant nodes
      mono : manual.html#Top
      split: ../manual/index.html#Top
 
+   (texinfo)Cross References *note (texinfo)Cross References::
+     mono: texinfo.html#Cross-References
+     split: ../texinfo/Cross-References.html#Cross-References
+
 Testing manual name
 -------------------
 
@@ -75,8 +79,8 @@ File: test_refs.info,  Node: local node,  Prev: !_"#$%&'()*+-./;<=>?[\]^_`|~,  U
 
 Tag Table:
 Node: Top80
-Node: other nodes1067
-Node: !_"#$%&'()*+-./;<=>?[\]^_`|~1331
-Node: local node1600
+Node: other nodes1234
+Node: !_"#$%&'()*+-./;<=>?[\]^_`|~1498
+Node: local node1767
 
 End Tag Table

@@ -39,7 +39,6 @@ my @asis_commands;
 my @chevron_commands;
 my %info_default_accent_commands = ();
 my %info_default_leaf_command = ();
-my @info_default_normal_formats;
 my $info_default_end_sentence_character;
 my $info_default_after_punctuation_characters;
 my $info_default_indent_length;
@@ -174,11 +173,17 @@ t2h_default_copy_style_map (\%style_map, \%style_map_pre);
 t2h_default_copy_style_map (\%style_map, \%style_map_texi);
 
 $special_list_commands{'itemize'} = {};
-@info_default_normal_formats = ('table', 'vtable', 'ftable', 'enumerate',
-   'itemize');
+
+%info_default_indent_format_length = ('enumerate' => 2,
+    'itemize' => 3,
+    'table' => 0,
+    'vtable' => 0,
+    'ftable' => 0,
+ );
+
 
 %format_map = ();
-foreach my $format (@info_default_normal_formats, 'group', 'raggedright', 'cartouche')
+foreach my $format ('group', 'raggedright', 'cartouche')
 {
     $format_map{$format} = '';
 }
@@ -188,7 +193,7 @@ foreach my $menu_command('menu', 'detailmenu', 'direntry', 'menu_comment')
   $complex_format_map->{$menu_command} = {'begin' => q{''} , 'end' => q{''}};
 }
 
-foreach my $command (keys (%{$complex_format_map}), @info_default_normal_formats, 'quotation', 'smallquotation', 'deff_item', 'deff_itemx')
+foreach my $command (keys (%{$complex_format_map}), keys(%info_default_indent_format_length), 'quotation', 'smallquotation', 'deff_item', 'deff_itemx')
 {
     $info_default_indented_commands{$command} = 1;
 }
@@ -196,7 +201,7 @@ foreach my $command (keys (%{$complex_format_map}), @info_default_normal_formats
 foreach my $command (keys(%info_default_indented_commands), 'multitable', 'float', 'flushright', 'flushleft', 'center')
 {
     $info_default_format{$command} = 1;
-} 
+}
 
 # it doesn't change anything for multitable
 foreach my $non_indented_command('format', 'smallformat', 'menu', 
@@ -208,13 +213,6 @@ foreach my $non_indented_command('format', 'smallformat', 'menu',
 $info_default_end_sentence_character = quotemeta($punctuation_characters);
 $info_default_after_punctuation_characters = quotemeta($after_punctuation_characters);
 $info_default_indent_length = 5;
-
-%info_default_indent_format_length = ('enumerate' => 2,
-    'itemize' => 3,
-    'table' => 0,
-    'vtable' => 0,
-    'ftable' => 0,
- );
 
 $info_default_index_length_to_node = 41;
 
@@ -871,6 +869,12 @@ sub info_default_process_content($$)
           {
               $preformatted_format--;
           }
+          # the format is always empty in the main program so the warning 
+          # has to be done here
+          if (defined($content->{'total_item_nr'}) and !$content->{'total_item_nr'} and $content->{'content'})
+          {
+              main::line_warn ("\@$content->{'command'} has text but no \@item", $content->{'line_nr'});
+          }
           # check whether there is a blank line following, to avoid adding
           # one when closing a format.
           # This is not a required check if not in preformatted since doubled
@@ -1319,7 +1323,7 @@ sub info_default_process_content($$)
                   
                   goto new_text;
               }
-              elsif (($content->{'command'} eq 'item' or $content->{'command'} eq 'itemx') and exists $format_map{$content->{'format_name'}})
+              elsif (($content->{'command'} eq 'item' or $content->{'command'} eq 'itemx') and exists $info_default_indent_format_length{$content->{'format_name'}})
               {
                   $item_pending = $content->{'format_name'};
                   #if (!$info_state->{'blank_line'} and $content->{'command'} eq 'item')
@@ -3281,7 +3285,9 @@ sub info_default_table_list($$$$$$$$$)
     my $prototype_lengths = shift;
     my $column_number = shift;
 
-    return info_default_close_command(undef, $command) if ($format_command ne 'multitable');
+    die "BUG: $format_command item_nr undef\n" if (!defined($item_nr));
+
+    return info_default_close_command(undef, $format_command, undef, undef, {'total_item_nr' => $item_nr}) if ($format_command ne 'multitable');
 
     my $columnsize = [];
     if (defined($prototype_lengths) and @$prototype_lengths)
@@ -3300,7 +3306,7 @@ sub info_default_table_list($$$$$$$$$)
        #print STDERR "Empty multitable?\n";
     }
 
-    return info_default_close_command(undef, $format_command, undef, undef, {'columns_size' => $columnsize});
+    return info_default_close_command(undef, $format_command, undef, undef, {'columns_size' => $columnsize, 'total_item_nr' => $item_nr});
 }
 
 sub info_default_def_item($$$)

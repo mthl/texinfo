@@ -1,0 +1,25 @@
+This is formats_only_titles.info, produced by makeinfo version 4.13 from
+formats_only_titles.texi.
+
+
+File: formats_only_titles.info,  Node: Top,  Up: (dir)
+
+Test formats with text before first item and no item
+****************************************************
+
+     before first itemize
+
+     before first enumerate
+
+     before first table
+
+     before first vtable
+
+before first multitable
+
+
+
+Tag Table:
+Node: Top100
+
+End Tag Table

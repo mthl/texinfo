@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.316 2009-08-29 10:23:51 pertusus Exp $
+# $Id: texi2html.pl,v 1.317 2009-08-29 23:02:12 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -9715,6 +9715,21 @@ sub end_format($$$$$)
             close_region($state);
         }
     }
+
+    if ($format_type{$format} eq 'table' or $format_type{$format} eq 'list' or $format eq 'multitable')
+    {
+        if ($format_ref->{'format'} ne $format)
+        { # for example vtable closing a table. Cannot be known 
+          # before if in a cell
+             $format_mismatch = 1;
+             line_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format  ", $line_nr);
+        }
+        if (!$format_ref->{'empty_first'} and $format_ref->{'item_nr'} == 0)
+        {
+             line_warn ("\@$format_ref->{'format'} has text but no \@item", $line_nr);
+        }
+    }
+
     if (defined($Texi2HTML::Config::def_map{$format}))
     {
         close_stack($text, $stack, $state, $line_nr, 'deff_item')
@@ -9782,14 +9797,6 @@ sub end_format($$$$$)
     }
     elsif ($format_type{$format} eq 'table' or $format_type{$format} eq 'list' or $format eq 'multitable')
     {
-	    #print STDERR "CLOSE $format ($format_ref->{'format'})\n$format_ref->{'text'}\n";
-	#dump_stack($text, $stack, $state); 
-        if ($format_ref->{'format'} ne $format)
-        { # for example vtable closing a table. Cannot be known 
-          # before if in a cell
-             $format_mismatch = 1;
-             line_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format  ", $line_nr);
-        }
         if (exists ($Texi2HTML::Config::format_map{$format}))
         { # table or list has a simple format
             add_prev($text, $stack, end_simple_format($format_ref->{'format'}, $format_ref->{'text'}, $state));
@@ -10070,6 +10077,7 @@ sub begin_format($$$$$$)
             $arg_nr++;
             my $type = shift @types;
             my $substitution_state = duplicate_formatting_state($state);
+            # all @def* arguments are in code_style
             $substitution_state->{'code_style'}++;
             push @formatted_args, substitute_line($arg, "\@$macro (arg $arg_nr)", $substitution_state, $line_nr);
             if (grep {$_ eq $type} ('param', 'paramtype', 'delimiter'))
@@ -10154,7 +10162,7 @@ sub begin_format($$$$$$)
             my $spec;
             ($line, $spec) = parse_enumerate ($line);
             $spec = 1 if (!defined($spec)); 
-            $format = { 'format' => $macro, 'text' => '', 'spec' => $spec, 'item_nr' => 0 };
+            $format = { 'format' => $macro, 'text' => '', 'spec' => $spec };
         }
         elsif ($macro eq 'multitable')
         {
@@ -10177,6 +10185,7 @@ sub begin_format($$$$$$)
             $format = { 'format' => $macro, 'text' => '', 'max_columns' => $max_columns, 'columnfractions' => $fractions, 'prototype_row' => $prototype_row, 'prototype_lengths' => \@prototype_lengths, 'cell' => 1 };
         }
         $format->{'first'} = 1;
+        $format->{'item_nr'} = 0;
         $format->{'paragraph_number'} = 0;
         push @$stack, $format;
         if ($format_type{$macro} eq 'table')
@@ -13078,23 +13087,22 @@ sub scan_line($$$$;$)
 
         # We handle now the end tags 
         # macro_regexp
-        if ($state->{'keep_texi'} and $cline =~ s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
+        if ($cline =~ s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
         {
             my $end_tag = $2;
-            add_prev($text, $stack, $1 . "\@end $end_tag");
-            next;
-        }
-        # macro_regexp
-        elsif ($state->{'remove_texi'} and $cline =~ s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
-        {
-            add_prev($text, $stack, $1);
-            next;
-        }
-	# macro_regexp
-        if ($cline =~ s/^([^{}@,]*)\@end\s+([a-zA-Z][\w-]*)//o)
-        {
-            add_prev($text, $stack, do_text($1, $state));
-            my $end_tag = $2;
+            my $prev_text = $1;
+            if ($state->{'keep_texi'})
+            {
+                add_prev($text, $stack, $prev_text . "\@end $end_tag");
+                next;
+            }
+            elsif ($state->{'remove_texi'})
+            {
+                add_prev($text, $stack, $prev_text);
+                next;
+            }
+
+            add_prev($text, $stack, do_text($prev_text, $state));
 	    #print STDERR "END_MACRO $end_tag\n";
 	    #dump_stack ($text, $stack, $state);
 
@@ -14051,13 +14059,15 @@ sub add_row($$$$)
     my $cell = $top_format;
     my $format = $stack->[-3];
     print STDERR "Bug under row cell row not a multitable\n" if (!defined($format->{'format'}) or $format->{'format'} ne 'multitable'); 
-    # print STDERR "ADD_ROW\n";
+    #print STDERR "ADD_ROW $format->{'item_nr'} first: $format->{'first'}\n";
     # dump_stack($text, $stack, $state);
 
+    $format->{'item_nr'}++ unless ($format->{'first'});
     my $empty_first;
     if ($format->{'first'} and $format->{'cell'} == 1 and $stack->[-1]->{'text'} =~ /^\s*$/)
     {
        $empty_first = 1;
+       $format->{'empty_first'} = 1;
     }
     if ($format->{'cell'} > $format->{'max_columns'} or $empty_first)
     {
@@ -14144,10 +14154,19 @@ sub add_line($$$$)
         # we must have <dd> or <dt> following <dl> thus we do a 
         # &$Texi2HTML::Config::table_line here too, although it could have
         # been a normal paragraph.
-        add_prev($text, $stack, &$Texi2HTML::Config::table_line($line->{'text'}, $line->{'only_inter_commands'}, 1)) if ($line->{'text'} =~ /\S/o);
+        if ($line->{'text'} =~ /\S/o)
+        {
+           add_prev($text, $stack, &$Texi2HTML::Config::table_line($line->{'text'}, $line->{'only_inter_commands'}, 1));
+           $format->{'empty_first'} = 1 if ($line->{'only_inter_commands'});
+        }
+        else
+        {
+           $format->{'empty_first'} = 1;
+        }
     }
     else
     {
+        $format->{'item_nr'}++;
         add_prev($text, $stack, &$Texi2HTML::Config::table_line($line->{'text'}, $line->{'only_inter_commands'}, 0));
     }
     return $format;
@@ -14191,25 +14210,33 @@ sub add_item($$$$)
 	#chomp($item->{'text'});
         add_prev($text, $stack, &$Texi2HTML::Config::list_item($item->{'text'},$format->{'format'},$format->{'command'}, $formatted_command, $format->{'item_nr'}, $format->{'spec'}, $format->{'number'}, $format->{'prepended'}, $format->{'prepended_formatted'}, $item->{'only_inter_commands'}, $format->{'first'},$item_command));
     } 
+    else
+    {
+        $format->{'empty_first'} = 1;
+    }
     if ($format->{'first'})
     {
         $format->{'first'} = 0;
     }
+    else
+    {
+        $format->{'item_nr'}++;
+    }
+
     if ($format->{'format'} eq 'enumerate')
     {
         $format->{'number'} = '';
         my $spec = $format->{'spec'};
-        $format->{'item_nr'}++;
         if ($spec =~ /^[0-9]$/)
         {
-            $format->{'number'} = $spec + $format->{'item_nr'} - 1;
+            $format->{'number'} = $spec + $format->{'item_nr'};
         }
         else
         {
             my $base_letter = ord('a');
             $base_letter = ord('A') if (ucfirst($spec) eq $spec);
 
-            my @letter_ords = decompose(ord($spec) - $base_letter + $format->{'item_nr'} - 1, 26);
+            my @letter_ords = decompose(ord($spec) - $base_letter + $format->{'item_nr'}, 26);
             foreach my $ord (@letter_ords)
             {# FIXME we go directly to 'ba' after 'z', and not 'aa'
              #because 'ba' is 1,0 and 'aa' is 0,0.
