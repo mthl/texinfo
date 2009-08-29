@@ -33,6 +33,10 @@ split: ../manual/_003a.html#_003a
 </para><example xml:space="preserve">mono : manual.html#Top
 split: ../manual/index.html#Top
 </example>
+<para>(texinfo)Cross References <xref><xrefnodename>(texinfo)Cross References</xrefnodename></xref>
+</para><example xml:space="preserve">mono: texinfo.html#Cross-References
+split: ../texinfo/Cross-References.html#Cross-References
+</example>
 <subheading>Testing manual name</subheading>
 
 <para>../manual/doc.texi <xref><xrefnodename>node</xrefnodename><xrefinfofile>../manual/doc.texi</xrefinfofile></xref>&linebreak;

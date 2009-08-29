@@ -1,3 +1,9 @@
+2009-08-29   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, test/sectionning/nodename_parentheses: 
+	ignore nodes having a name alike references to
+	external nodes in menu, line (manual)node.
+
 2009-08-25   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: fix the number of entry per index page in case of 

@@ -20,6 +20,10 @@ Top (manual)Top
 mono : manual.html#Top
 split: ../manual/index.html#Top
 
+(texinfo)Cross References (texinfo)Cross References
+mono: texinfo.html#Cross-References
+split: ../texinfo/Cross-References.html#Cross-References
+
 Testing manual name
 -------------------
 

@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.315 2009-08-25 13:15:44 pertusus Exp $
+# $Id: texi2html.pl,v 1.316 2009-08-29 10:23:51 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4731,6 +4731,11 @@ sub pass_structure($$)
                              and $nodes{$node}->{'seen'})
                         {
                             line_error ("Duplicate node found: $node", $line_nr);
+                            next;
+                        }
+                        elsif ($node =~ /^\(.+\)/)
+                        {
+                            line_error ("Syntax for an external node used for `$node'", $line_nr);
                             next;
                         }
                         else

@@ -1,0 +1,46 @@
+This is nodename_parentheses.info, produced by makeinfo version 4.13
+from nodename_parentheses.texi.
+
+
+File: nodename_parentheses.info,  Node: Top,  Next: Node (with parentheses),  Up: (dir)
+
+The top node
+************
+
+* Menu:
+
+* Node (with parentheses)::
+* Other node::
+* (manual)node::
+
+
+File: nodename_parentheses.info,  Node: Node (with parentheses),  Next: Other node,  Prev: Top,  Up: Top
+
+1 Section (nodename with parentheses)
+*************************************
+
+Dummy section
+
+
+File: nodename_parentheses.info,  Node: Other node,  Prev: Node (with parentheses),  Up: Top
+
+2 Section (nodename without parentheses)
+****************************************
+
+Dummy link to *note Node (with parentheses)::.
+
+   Dummy link to *note (manual)node::.
+
+3 (manual)node
+**************
+
+Dummy section with (manual)node node syntax.
+
+
+
+Tag Table:
+Node: Top102
+Node: Node (with parentheses)290
+Node: Other node490
+
+End Tag Table

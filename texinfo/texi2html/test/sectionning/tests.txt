@@ -55,7 +55,7 @@ menu-whitespace menu-whitespace.texi --init makeinfo.init
 menu-whitespace_xml menu-whitespace.texi --init xml.init
 node-whitespace_plain node-whitespace.texi
 node-whitespace node-whitespace.texi --init makeinfo.init
-#nodename_parentheses nodename_parentheses.texi
+nodename_parentheses nodename_parentheses.texi
 nodes_id_docbook nodes_id.texi --init docbook.init
 two_footnotes_in_nodes_plain two_footnotes_in_nodes.texi
 two_footnotes_in_nodes two_footnotes_in_nodes.texi --init makeinfo.init

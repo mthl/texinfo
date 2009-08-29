@@ -24,6 +24,10 @@ split: ../manual/_003a.html#_003a
 </para><screen>mono : manual.html#Top
 split: ../manual/index.html#Top
 </screen>
+<para>(texinfo)Cross References <xref linkend="(texinfo)Cross-References"></xref>
+</para><screen>mono: texinfo.html#Cross-References
+split: ../texinfo/Cross-References.html#Cross-References
+</screen>
 <bridgehead renderas="sect2">Testing manual name</bridgehead>
 
 <para>../manual/doc.texi 

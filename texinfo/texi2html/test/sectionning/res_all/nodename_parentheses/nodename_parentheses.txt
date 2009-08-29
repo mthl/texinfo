@@ -1,0 +1,32 @@
+The top node
+************
+
+* Node (with parentheses)::
+* Other node::
+* (manual)node::
+
+1 Section (nodename with parentheses)
+*************************************
+
+Dummy section
+
+2 Section (nodename without parentheses)
+****************************************
+
+Dummy link to Node (with parentheses).
+
+Dummy link to (manual)node.
+
+3 (manual)node
+**************
+
+Dummy section with (manual)node node syntax.
+
+Table of Contents
+*****************
+
+The top node
+1 Section (nodename with parentheses)
+2 Section (nodename without parentheses)
+3 (manual)node
+

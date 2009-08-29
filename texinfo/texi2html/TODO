@@ -6,6 +6,11 @@ Before next release
 * there is also undocumented features @hsep and @vsep to insert
   horizontal and vertical rules.
 
+* code_style is not used for code_style style @-commands in remove_texi.
+
+* bug #15513 should be a warning when there is text before an item
+  but otherwise an empty format.
+
 Later
 -----
 
@@ -170,12 +175,7 @@ function clean_antispam() {
 @math{{\frac{1}{2}} @minus{}}
   is error free.
 
-* sectionning/nodename_parentheses.texi gives wrong output.
-
 * add @detailmenu in coverage, and @group
-
-* makeinfo doesn't warn for empty heading commands, like
-** unnumberedsubsec without name (l. 284)
 
 * makeinfo warn when there is no @settitle nor @top where it finds its title
 in texi2tml there is no warning, and also the title is constructed
@@ -196,10 +196,6 @@ texi2html all the style commands are removed without extra formatting.
   In any case, it may make sense to have @tex not starting paragraph,
   like @html, at least when expanding it.
 
-* texinfo expands @-commands normally in @documentdescription, but keeps --,
-  texi2html uses simple_format which removes most @commands but uses 
-  entities
-
 * texi2dvi doesn't accept @table in @format
 
 * warnings and errors are somewhat random at present. Also it would be nice
@@ -211,8 +207,6 @@ texi2html all the style commands are removed without extra formatting.
   small font property.
 
 * decide @documentencoding @. And maybe change regexp. (?)
-
-* code_style is not used for code_style style @-commands in remove_texi.
 
 * test for something along:
 @setfilename ../../info/xemacs.info
@@ -228,6 +222,8 @@ texi2html all the style commands are removed without extra formatting.
   also use informaltable or table, for multitable?
 
   What is before the first sectionning command is put in <bookinfo><abstract>.
+
+  what about @titlefont in docbook?
 
 * to solve above issue (first issue), the definition arg formatted with 
   simple_format should alo be passed down
@@ -387,8 +383,6 @@ in nested table line
 
 * examples/mediwiki.init: images are like
 [[Image:New-medium.png|Nouveau medium disponible]]
-
-* @titlefont in docbook?
 
 * in xml have documentencoding have an argument.
 
