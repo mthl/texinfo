@@ -1,3 +1,11 @@
+2009-08-30   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.*, examples/*: invert the meaning of the 3rd argument
+	of set_conf.
+	Uset set_conf to have the *contents output even if there is no
+	@c*contents.
+	Use set_conf/get_conf directly for set*contentsaftertitlepage.
+
 2009-08-29   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, test/sectionning/nodename_parentheses: 

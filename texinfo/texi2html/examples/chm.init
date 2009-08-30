@@ -33,7 +33,7 @@ $TOP_FILE = undef;
 #$SECTION_NAVIGATION = 0; # to avoid headers in normal elements
 $SHOW_MENU = 0;
 $SPLIT = 'node';
-$CONTENTS = 1;
+set_conf('contents', 1);
 $SPLIT_INDEX = undef;
 $IDX_SUMMARY = 1;
 

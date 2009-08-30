@@ -103,6 +103,8 @@ h1 titlefont (@titlefont),
   $Texi2HTML::THISDOC{'split_level'}
   $Texi2HTML::THISDOC{'line_nr'}
   $Texi2HTML::THISDOC{'input_directory'}
+  $Texi2HTML::THISDOC{'filename'}->{'toc_frame'}
+  $Texi2HTML::THISDOC{'filename'}->{'frame'}
 
   $empty_preformatted
   $copying_comment, $titlepage better and $documentdescription

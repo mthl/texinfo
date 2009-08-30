@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.317 2009-08-29 23:02:12 pertusus Exp $
+# $Id: texi2html.pl,v 1.318 2009-08-30 10:27:29 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -281,6 +281,8 @@ $CONTENTS
 $SHORTCONTENTS
 $FOOTNOTESTYLE
 $FILLCOLUMN
+$SETCONTENTSAFTERTITLEPAGE
+$SETSHORTCONTENTSAFTERTITLEPAGE
 $TOC_LINKS
 $L2H 
 $L2H_L2H 
@@ -679,9 +681,9 @@ sub set_conf($$;$)
 {
     my $name = shift;
     my $value = shift;
-    my $from_command_line = shift;
+    my $not_global = shift;
 
-    if ($from_command_line)
+    unless ($not_global)
     {
        if (defined($value))
        {
@@ -720,6 +722,8 @@ my %config_map = (
    'headers' => \$HEADERS,
    'DOCUMENT_ENCODING' => \$DOCUMENT_ENCODING,
    'IN_ENCODING' => \$IN_ENCODING,
+   'setcontentsaftertitlepage' => \$SETCONTENTSAFTERTITLEPAGE,
+   'setshortcontentsaftertitlepage'  => \$SETSHORTCONTENTSAFTERTITLEPAGE,
 );
 
 sub get_conf($)
@@ -2222,7 +2226,7 @@ sub set_footnote_style($$;$)
     my $command = 'footnotestyle';
     if ($value eq 'end' or $value eq 'separate')
     {
-         Texi2HTML::Config::set_conf($command, $value, $from_command_line);
+         Texi2HTML::Config::set_conf($command, $value, !$from_command_line);
     }
     elsif ($from_command_line)
     {
@@ -2411,7 +2415,7 @@ sub set_paragraphindent($$;$$)
 
    if ($value =~ /^([0-9]+)$/ or $value eq 'none' or $value eq 'asis')
    {
-       Texi2HTML::Config::set_conf($command, $value, $from_command_line);
+       Texi2HTML::Config::set_conf($command, $value, !$from_command_line);
    }
    elsif ($from_command_line)
    {
@@ -2441,7 +2445,7 @@ $T2H_OPTIONS -> {'debug'} =
 $T2H_OPTIONS -> {'doctype'} =
 {
  type => '=s',
- linkage => sub {Texi2HTML::Config::set_conf('doctype', $_[1], 1);},
+ linkage => sub {Texi2HTML::Config::set_conf('doctype', $_[1]);},
  verbose => 'document type which is output in header of HTML files',
  noHelp => 1
 };
@@ -2647,7 +2651,7 @@ $T2H_OPTIONS -> {'headers'} =
 {
  type => '!',
  linkage => sub {
-    Texi2HTML::Config::set_conf('headers', $_[1], 1);
+    Texi2HTML::Config::set_conf('headers', $_[1]);
     Texi2HTML::Config::t2h_default_load_format('plaintext', 1)
         if (!$_[1] and defined($Texi2HTML::Config::OUTPUT_FORMAT) and $Texi2HTML::Config::OUTPUT_FORMAT eq 'info');
  },
@@ -2686,7 +2690,7 @@ $T2H_OPTIONS -> {'output|out|o'} =
 $T2H_OPTIONS -> {'no-validate|no-pointer-validate'} = 
 {
  type => '',
- linkage => sub {Texi2HTML::Config::set_conf('novalidate',$_[1],1)},
+ linkage => sub {Texi2HTML::Config::set_conf('novalidate',$_[1])},
  verbose => 'suppress node cross-reference validation',
 };
 
@@ -2731,7 +2735,7 @@ $T2H_OPTIONS -> {'verbose|v'} =
 $T2H_OPTIONS -> {'document-language'} =
 {
  type => '=s',
- linkage => sub {Texi2HTML::Config::set_conf('documentlanguage', $_[1], 1)},
+ linkage => sub {Texi2HTML::Config::set_conf('documentlanguage', $_[1])},
  verbose => 'use $s as document language',
 };
 
@@ -2869,7 +2873,7 @@ $T2H_OPTIONS -> {'paragraph-indent|p'} =
 $T2H_OPTIONS -> {'fill-column|f'} =
 {
  type => '=i',
- linkage => sub {Texi2HTML::Config::set_conf('fillcolumn',$_[1], 1);},
+ linkage => sub {Texi2HTML::Config::set_conf('fillcolumn',$_[1]);},
  'verbose' => "break Info lines at NUM characters (default 72).",
 };
 
@@ -2985,7 +2989,7 @@ $T2H_OBSOLETE_OPTIONS -> {'out-file'} =
 $T2H_OBSOLETE_OPTIONS -> {'lang'} =
 {
  type => '=s',
- linkage => sub {Texi2HTML::Config::set_conf('documentlanguage', $_[1], 1)},
+ linkage => sub {Texi2HTML::Config::set_conf('documentlanguage', $_[1])},
  verbose => 'obsolete, use "--document-language" instead',
  noHelp => 2
 };
@@ -3100,7 +3104,7 @@ $T2H_OBSOLETE_OPTIONS -> {short_ext} =
 $T2H_OBSOLETE_OPTIONS -> {sec_nav} =
 {
  type => '!',
- linkage => sub {Texi2HTML::Config::set_conf('headers', $_[1], 1);},
+ linkage => sub {Texi2HTML::Config::set_conf('headers', $_[1]);},
  verbose => 'obsolete, use "-headers" instead',
  noHelp  => 2
 };
@@ -3108,7 +3112,7 @@ $T2H_OBSOLETE_OPTIONS -> {sec_nav} =
 $T2H_OBSOLETE_OPTIONS -> {'sec-nav'} =
 {
  type => '!',
- linkage => sub {Texi2HTML::Config::set_conf('headers', $_[1], 1);},
+ linkage => sub {Texi2HTML::Config::set_conf('headers', $_[1]);},
  verbose => 'obsolete, use "--header" instead',
  noHelp  => 2
 };
@@ -3164,7 +3168,7 @@ $T2H_OBSOLETE_OPTIONS -> {frameset_doctype} =
 $T2H_OBSOLETE_OPTIONS -> {'no-section_navigation'} =
 {
  type => '!',
- linkage => sub {Texi2HTML::Config::set_conf('headers', 0, 1);},
+ linkage => sub {Texi2HTML::Config::set_conf('headers', 0);},
  verbose => 'obsolete, use -nosec_nav',
  noHelp => 2,
 };
@@ -3222,7 +3226,7 @@ $T2H_OBSOLETE_OPTIONS -> {output_file} =
 $T2H_OBSOLETE_OPTIONS -> {section_navigation} =
 {
  type => '!',
- linkage => sub {Texi2HTML::Config::set_conf('headers', $_[1], 1);},
+ linkage => sub {Texi2HTML::Config::set_conf('headers', $_[1]);},
  verbose => 'obsolete, use --sec-nav instead',
  noHelp => 2,
 };
@@ -3826,8 +3830,8 @@ if ($Texi2HTML::Config::ENABLE_ENCODING)
 }
 
 # for all files
-Texi2HTML::Config::set_conf('IN_ENCODING', $Texi2HTML::Config::IN_ENCODING, 1);
-Texi2HTML::Config::set_conf('DOCUMENT_ENCODING', $Texi2HTML::Config::DOCUMENT_ENCODING, 1);
+Texi2HTML::Config::set_conf('IN_ENCODING', $Texi2HTML::Config::IN_ENCODING);
+Texi2HTML::Config::set_conf('DOCUMENT_ENCODING', $Texi2HTML::Config::DOCUMENT_ENCODING);
 
 # Backward compatibility for deprecated $Texi2HTML::Config::ENCODING
 $Texi2HTML::Config::ENCODING_NAME = $Texi2HTML::Config::ENCODING 
@@ -3941,7 +3945,6 @@ else
     $Texi2HTML::Config::SPLIT = '';
 }
 
-# FIXME
 $Texi2HTML::Config::SPLIT_INDEX = 0 unless $Texi2HTML::Config::SPLIT;
 $Texi2HTML::Config::NODE_FILENAMES = 1 if ((!defined($Texi2HTML::Config::NODE_FILENAMES) and $Texi2HTML::Config::SPLIT eq 'node') or $Texi2HTML::Config::NODE_FILES);
 
@@ -3959,18 +3962,6 @@ die "output to STDOUT and split or frames incompatible\n"
 if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT eq '.'))
 {# This is to avoid trouble with latex2html
     $Texi2HTML::Config::OUT = '';
-}
-
-# FIXME
-# if the global configuration variable is set, this overrides what 
-# could be set in the manual. This may be wrong for 'contents' and 
-# 'shortcontents' since it is inconsistent with how @-commands in
-# documents override variables in config files. It is only relevant
-# if the variables are set to 0, however, since the @-command is a 
-# no-op if already set to 1.
-foreach my $global_conf_vars('contents','shortcontents')
-{
-    Texi2HTML::Config::set_conf($global_conf_vars,Texi2HTML::Config::get_conf($global_conf_vars),1);
 }
 
 @Texi2HTML::Config::INCLUDE_DIRS = split(/$quoted_path_separator/,join($path_separator,@Texi2HTML::Config::INCLUDE_DIRS));
@@ -4323,7 +4314,6 @@ sub set_docu_names($$)
    $Texi2HTML::THISDOC{'filename'}->{'stoc'} = $docu_stoc;
    $Texi2HTML::THISDOC{'filename'}->{'about'} = $docu_about;
    $Texi2HTML::THISDOC{'filename'}->{'toc'} = $docu_toc;
-# FIXME document that
    $Texi2HTML::THISDOC{'filename'}->{'toc_frame'} = $docu_toc_frame;
    $Texi2HTML::THISDOC{'filename'}->{'frame'} = $docu_frame;
 }
@@ -4356,7 +4346,7 @@ sub texinfo_initialization($)
         'firstparagraphindent', 'paragraphindent', 'clickstyle', 
         'novalidate', 'documentlanguage')
     {
-        Texi2HTML::Config::set_conf($init_mac, undef);
+        Texi2HTML::Config::set_conf($init_mac, undef, 1);
     }
 }
 
@@ -4453,9 +4443,8 @@ sub pass_texi($)
         $cline = $text;
         $text = '';
         if (!defined($cline))
-        {# FIXME: remove the error message if it is reported too often
-            print STDERR "# \$cline undefined after scan_texi. This may be a bug, or not.\n";
-            print STDERR "# Report (with texinfo file) if you want, otherwise ignore that message.\n";
+        {
+            msg_debug ("\$cline undefined after scan_texi", $texi_line_number);
             next unless ($state->{'bye'});
         }
         push @lines, split_lines($cline);
@@ -4554,9 +4543,6 @@ my %reference_content_element =
 
 # holds content elements located with @*contents commands
 my %all_content_elements;
-# FIXME use directly the @-commands and get_conf setcontentsaftertitlepage
-my %aftertitlepage_command;
-
 
 # common code for headings and sections
 sub new_section_heading($$$)
@@ -4988,12 +4974,12 @@ sub do_documentlanguage($$$$)
         my $lang = $1;
         my $prev_lang = Texi2HTML::Config::get_conf('documentlanguage');
         # This won't be done if the documentlanguage was set on the command line
-        if (Texi2HTML::Config::set_conf('documentlanguage', $lang))
+        if (Texi2HTML::Config::set_conf('documentlanguage', $lang, 1))
         {
             $language_change_succes = set_document_language($lang, $silent, $line_nr);
             if (!$language_change_succes)
             { # reset previous documentlanguage
-                Texi2HTML::Config::set_conf('documentlanguage', $prev_lang);
+                Texi2HTML::Config::set_conf('documentlanguage', $prev_lang, 1);
                 line_error ("Translations for '$lang' not found. Reverting to '$prev_lang'.", $line_nr) unless ($silent);
             }
         }
@@ -5049,7 +5035,7 @@ sub common_misc_commands($$$$)
     }
     elsif ($macro eq 'novalidate')
     {
-        Texi2HTML::Config::set_conf($macro, 1);
+        Texi2HTML::Config::set_conf($macro, 1, 1);
     }
     if ($pass)
     { # these commands are only taken into account here in pass_structure 1 
@@ -5082,7 +5068,7 @@ sub common_misc_commands($$$$)
         {
             if (($line =~ /\s+(none)[^\w\-]/) or ($line =~ /\s+(insert)[^\w\-]/))
             {
-                Texi2HTML::Config::set_conf($macro,$1);
+                Texi2HTML::Config::set_conf($macro, $1, 1);
             }
             else
             {
@@ -5122,7 +5108,7 @@ sub common_misc_commands($$$$)
           # an array for user consumption? This should be done for each new
           # chapter, section, and page. What is a page is not necessarily 
           # well defined in html, however...
-          # @thisfile is the @include file. Shoule be in $line_nr.
+          # @thisfile is the @include file. Should be in $line_nr.
             my $arg = $line;
             $arg =~ s/^\s+//;
             $Texi2HTML::THISDOC{$macro} = $arg;
@@ -5184,13 +5170,13 @@ sub misc_command_texi($$$$)
          {
             my $encoding = $2;
             $Texi2HTML::THISDOC{'documentencoding'} = $encoding;
-            if (Texi2HTML::Config::set_conf('DOCUMENT_ENCODING', $Texi2HTML::THISDOC{'documentencoding'}))
+            if (Texi2HTML::Config::set_conf('DOCUMENT_ENCODING', $Texi2HTML::THISDOC{'documentencoding'}, 1))
             {
                my $from_encoding;
                if (!defined($Texi2HTML::Config::IN_ENCODING))
                {
                   $from_encoding = encoding_alias($encoding, $line_nr);
-                  Texi2HTML::Config::set_conf('IN_ENCODING', $from_encoding) 
+                  Texi2HTML::Config::set_conf('IN_ENCODING', $from_encoding, 1) 
                      if (defined($from_encoding));
                }
                if (defined($from_encoding) and $Texi2HTML::Config::USE_UNICODE)
@@ -5287,7 +5273,7 @@ sub misc_command_structure($$$$)
         {
             $macro = 'shortcontents';
         }
-        Texi2HTML::Config::set_conf($macro, 1);
+        Texi2HTML::Config::set_conf($macro, 1, 1);
         my $new_content_element = new_content_element($macro);
         push @{$state->{'place'}}, $new_content_element;
         push @{$all_content_elements{$macro}}, $new_content_element;
@@ -5471,11 +5457,7 @@ sub misc_command_structure($$$$)
     }
     elsif ($macro eq 'setcontentsaftertitlepage' or $macro eq 'setshortcontentsaftertitlepage')
     {
-        $Texi2HTML::THISDOC{$macro} = 1;
-        my $tag = 'contents';
-        $tag = 'shortcontents' if ($macro ne 'setcontentsaftertitlepage');
-        #$content_element{$tag}->{'aftertitlepage'} = 1;
-        $aftertitlepage_command{$tag} = 1;
+        Texi2HTML::Config::set_conf($macro, 1, 1);
     }
     elsif ($macro eq 'need')
     { # only a warning
@@ -7170,7 +7152,7 @@ sub rearrange_elements()
                 $content_element{$content_type} = undef;
             }
         }
-        elsif ($Texi2HTML::Config::INLINE_CONTENTS and !$aftertitlepage_command{$content_type})
+        elsif ($Texi2HTML::Config::INLINE_CONTENTS and !Texi2HTML::Config::get_conf('set' . $content_type .'aftertitlepage'))
         {
             $content_element{$content_type} = $all_content_elements{$content_type}->[-1];
         }
@@ -12877,7 +12859,7 @@ sub scan_line($$$$;$)
                 $element_tag = 'shortcontents' if ($element_tag ne 'contents');
                 # at that point the content_element is defined for sure since
                 # we already saw the tag
-                if ($Texi2HTML::Config::INLINE_CONTENTS and !$aftertitlepage_command{$element_tag})
+                if ($Texi2HTML::Config::INLINE_CONTENTS and !Texi2HTML::Config::get_conf('set' . $element_tag . 'aftertitlepage'))
                 {
                     my $content_element = shift (@{$all_content_elements{$element_tag}});
                     my $toc_lines = &$Texi2HTML::Config::inline_contents($Texi2HTML::THISDOC{'FH'}, $element_tag, $content_element, \@sections_list);
@@ -15619,8 +15601,6 @@ while(@input_files)
            $content_element{$command}->{$key} = $reference_content_element{$command}->{$key};
        }
    }
-
-   %aftertitlepage_command = ();
 
    %sec2level = %reference_sec2level;
 

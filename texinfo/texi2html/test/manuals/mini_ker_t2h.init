@@ -1,4 +1,4 @@
-$SHORTCONTENTS = 1;
+set_conf('shortcontents', 1);
 
 $print_Top		      = \&mini_ker_print_Top;
 

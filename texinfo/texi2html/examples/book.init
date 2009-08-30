@@ -2,7 +2,7 @@
 
 html_default_load();
 
-$CONTENTS = 1;
+set_conf('contents', 1);
 
 $INLINE_CONTENTS = 1;
 

@@ -1,1 +1,1 @@
-$CONTENTS = 1;
+set_conf('contents', 1);
