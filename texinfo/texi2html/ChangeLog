@@ -1,3 +1,8 @@
+2009-08-31   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.*: handle better @kbdinputstyle.
+	More error messages are the same than makeinfo in C.
+
 2009-08-30   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.*, examples/*: invert the meaning of the 3rd argument

@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.223 2009-08-30 18:59:47 pertusus Exp $
+# $Id: texi2html.init,v 1.224 2009-08-30 23:11:29 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -346,6 +346,9 @@ $SHORTCONTENTS = undef;
 # set by @setcontentsaftertitlepage/@setshortcontentsaftertitlepage
 $SETCONTENTSAFTERTITLEPAGE = undef;
 $SETSHORTCONTENTSAFTERTITLEPAGE = undef;
+
+# corresponds with @kbdinputstyle
+$KBDINPUTSTYLE = 'distinct';
 
 # if set, the image files are completed to be relative from the
 # document directory, to the source manual directory and then to

@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.318 2009-08-30 10:27:29 pertusus Exp $
+# $Id: texi2html.pl,v 1.319 2009-08-30 23:11:29 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -283,6 +283,7 @@ $FOOTNOTESTYLE
 $FILLCOLUMN
 $SETCONTENTSAFTERTITLEPAGE
 $SETSHORTCONTENTSAFTERTITLEPAGE
+$KBDINPUTSTYLE
 $TOC_LINKS
 $L2H 
 $L2H_L2H 
@@ -724,6 +725,7 @@ my %config_map = (
    'IN_ENCODING' => \$IN_ENCODING,
    'setcontentsaftertitlepage' => \$SETCONTENTSAFTERTITLEPAGE,
    'setshortcontentsaftertitlepage'  => \$SETSHORTCONTENTSAFTERTITLEPAGE,
+   'kbdinputstyle' => \$KBDINPUTSTYLE
 );
 
 sub get_conf($)
@@ -731,8 +733,7 @@ sub get_conf($)
     my $name = shift;
     return $Texi2HTML::THISDOC{$name} if (defined($Texi2HTML::THISDOC{$name}));
     return ${$config_map{$name}} if (defined($config_map{$name}));
-    # there is no default value for many @-commmands, like kbdinputstyle,
-    # headings....
+    # there is no default value for many @-commmands, like headings....
     #print STDERR "Unknown conf string: $name\n";
 }
 
@@ -5101,6 +5102,17 @@ sub common_misc_commands($$$$)
                 line_error ("Bad \@$macro", $line_nr) if ($pass == 1);
             }
         }
+        elsif ($macro eq 'kbdinputstyle')
+        {
+            if ($line =~ /\s+([a-z]+)/ and ($1 eq 'code' or $1 eq 'example' or $1 eq 'distinct'))
+            {
+                Texi2HTML::Config::set_conf($macro, $1, 1);
+            }
+            else
+            {
+                line_error ("Bad \@$macro", $line_nr) if ($pass == 1);
+            }
+        }
         elsif (grep {$macro eq $_} ('everyheading', 'everyfooting',
               'evenheading', 'evenfooting', 'oddheading', 'oddfooting'))
         { # FIXME have a _texi and without texi, and without texi, 
@@ -5366,40 +5378,6 @@ sub misc_command_structure($$$$)
          # and index with numbers only. I reported it on the mailing list
          # this should be fixed in future makeinfo versions.
             line_error ("Bad $macro line: $line", $line_nr);
-        }
-    }
-    elsif ($macro eq 'kbdinputstyle')
-    {# makeinfo ignores that with --html. I reported it and it should be 
-     # fixed in future makeinfo releases
-
-     # FIXME it should be dynamically defined in pass 2
-        if ($line =~ /\s+([a-z]+)/)
-        {
-            if ($1 eq 'code')
-            {
-                $::style_map_ref->{'kbd'} = $::style_map_ref->{'code'};
-                $::style_map_pre_ref->{'kbd'} = $::style_map_pre_ref->{'code'};
-                $Texi2HTML::THISDOC{$macro} = $1;
-            }
-            elsif ($1 eq 'example')
-            {
-                $::style_map_pre_ref->{'kbd'} = $::style_map_pre_ref->{'code'};
-                $Texi2HTML::THISDOC{$macro} = $1;
-            }
-            elsif ($1 eq 'distinct')
-            {
-                $Texi2HTML::THISDOC{$macro} = $1;
-                $::style_map_ref->{'kbd'} = $kept_kdb_style;
-                $::style_map_pre_ref->{'kbd'} = $kept_kdb_pre_style;
-            }
-            else
-            {
-                line_error ("Unknown argument for \@$macro: $1", $line_nr);
-            }
-        }
-        else
-        {
-            line_error ("Bad \@$macro", $line_nr);
         }
     }
     elsif (grep {$_ eq $macro} ('everyheadingmarks','everyfootingmarks',
@@ -13168,7 +13146,7 @@ sub scan_line($$$$;$)
                 }
                 my $waited_format = $top_stack->{'format'};
                 $waited_format = $fake_format{$top_stack->{'format'}} if ($format_type{$top_stack->{'format'}} eq 'fake');
-                line_error ("waiting for end of $waited_format, found \@end $end_tag", $line_nr);
+                line_error ("`\@end'  expected `$waited_format', but saw `$end_tag'", $line_nr);
                 #dump_stack ($text, $stack, $state);
                 close_stack($text, $stack, $state, $line_nr, $end_tag);
                 # FIXME this is too complex
@@ -14303,11 +14281,26 @@ sub do_simple($$$;$$$$)
             }
             elsif ($state->{'preformatted'})
             {
-                $style = $::style_map_pre_ref->{$macro};
+                if ($macro eq 'kbd' and (Texi2HTML::Config::get_conf('kbdinputstyle') ne 'distinct'))
+                {
+                    $style = $::style_map_pre_ref->{'code'};
+                }
+                else
+                {
+                    $style = $::style_map_pre_ref->{$macro};
+                }
             }
             else
             {
-                $style = $::style_map_ref->{$macro};
+                # kbd is in code_style, so it is 'code_style' > 1
+                if ($macro eq 'kbd' and ((Texi2HTML::Config::get_conf('kbdinputstyle') eq 'code') or ($state->{'code_style'} > 1 and Texi2HTML::Config::get_conf('kbdinputstyle') eq 'example')))
+                {
+                    $style = $::style_map_ref->{'code'};
+                }
+                else
+                {
+                    $style = $::style_map_ref->{$macro};
+                }
             }
             if (defined($style))
             {                           # known style
@@ -14477,7 +14470,7 @@ sub close_stack_texi($$$$)
 
     if ($state->{'ignored'})
     {
-        line_warn ("closing $state->{'ignored'}", $line_nr); 
+        line_error ("No matching `\@end $state->{'ignored'}'", $line_nr); 
         close_ignored($state, $stack);
     }
 
@@ -14485,7 +14478,7 @@ sub close_stack_texi($$$$)
     {
        my ($no_remaining, $result) = end_macro($state, '@end macro', "\n");
        add_prev ($text, $stack, $result) if (defined($result));
-       line_warn ("closing macro", $line_nr); 
+       line_error ("No matching `\@end macro'", $line_nr); 
     }
     elsif ($state->{'macro_name'})
     {
@@ -14498,7 +14491,7 @@ sub close_stack_texi($$$$)
     elsif ($state->{'verb'})
     {
         # warning in next pass
-        line_warn ("closing \@verb", $line_nr);
+        #line_warn ("closing \@verb", $line_nr);
         $stack->[-1]->{'text'} = $state->{'verb'} . $stack->[-1]->{'text'};
         delete $state->{'verb'};
     }
@@ -14650,7 +14643,7 @@ sub close_stack($$$$;$)
                 }
                 elsif ($stack_format ne 'center')
                 { # we don't warn for center
-                    line_error ("closing `$stack_format'", $line_nr); 
+                    line_error ("No matching `\@end $stack_format'", $line_nr); 
                     #dump_stack ($text, $stack, $state);
                 }
                 if ($state->{'keep_texi'})
@@ -14674,7 +14667,7 @@ sub close_stack($$$$;$)
                 dump_stack ($text, $stack, $state); # bug
             }
             ########################## end debug
-            line_warn ("closing \@-command $style", $line_nr) if ($style); 
+            line_error ("\@$style missing close brace", $line_nr) if ($style); 
             my ($result, $command) = close_style_command($text, $stack, $state, $line_nr, '');
 
             add_prev($text, $stack, $result) if (defined($result));
@@ -15685,10 +15678,6 @@ while(@input_files)
                                    # put labels in pass_text
    %indices = ();                  # hash of indices names containing 
                                    # raw index entries
-
-   # original kdb styles used if @kbdinputstyle distinct
-   $kept_kdb_style = $::style_map_ref->{'kbd'};
-   $kept_kdb_pre_style = $::style_map_pre_ref->{'kbd'};
 
    my ($doc_lines, $doc_numbers) = pass_structure($texi_lines, $lines_numbers);
    if ($T2H_DEBUG & $DEBUG_TEXI)

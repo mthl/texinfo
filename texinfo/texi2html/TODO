@@ -17,6 +17,8 @@ Before next release
 
 * add --command command line that gives inserted lines.
 
+* handle right @  everywhere, including before , and }.
+
 * something like (ask Karl)
 @math{@minus{} {\frac{1}{2}}} 
   leads to errors in makeinfo about misplaced { } because it seems that
@@ -234,12 +236,6 @@ function clean_antispam() {
   makeinfo_nodes_before_top_and_sections needs to be checkedd (first 
                               should be in first.html?).
 
-* @kbdinputstyle should be taken into account in html output, which
-  means distinguish between preformatted, code_style and normal text 
-  when formatting @kbd. Should this distinction hold for every command?
-  Also it should be dynamical, ie in pass 2 too (FIXME in the code).
-  In info it is right to have it always in quotes.
-
 * have a special debug mode where text processing is traced. It means
   that PASS_TEXT/SCAN_TEXT is shown and substitute_line (and maybe 
   other like substitute_text) and shown, now that there is a nice 
@@ -295,19 +291,6 @@ function clean_antispam() {
 * in sectionning/first_section_no_node in _html, the @unnumbered is included
   in the first node, while makeinfo outputs it before the first node, and 
   the header is only output when there is a @node.
-
-* error messages
-  *** waiting for end of quotation, found @end cartouche (l. 12)
-  ../../bad_nesting.texi:13: `@end' expected `quotation', but saw `cartouche'.
-
-  *** closing `group' (l. 36)
-  ../../bad_nesting.texi:34: No matching `@end group'.
-
-  closing @-command code (l. 18)
-  ../../code_not_closed.texi:16: @code missing close brace.
-
-  ** closing @-command footnote (l. 17)
-  ../../footnote_not_closed.texi:30: No closing brace for footnote `'.
 
 * in formatting/table_in_table_item.texi, some lines maybe have too much 
   leading spaces (precisely in @code in @table in @table @item, line
