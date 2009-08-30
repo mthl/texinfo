@@ -522,6 +522,10 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 
 <cartouche><para>c&ndash;artouche
 </para></cartouche>
+<group>
+<para>g&ndash;roupe
+</para></group>
+
 <para>f&ndash;lushleft
 </para>
 <para>f&ndash;lushright
@@ -1060,6 +1064,10 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 
 <cartouche><para>c&ndash;artouche
 </para></cartouche>
+<group>
+<para>g&ndash;roupe
+</para></group>
+
 <para>f&ndash;lushleft
 </para>
 <para>f&ndash;lushright
@@ -1593,6 +1601,10 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 
 <cartouche><para>c&ndash;artouche
 </para></cartouche>
+<group>
+<para>g&ndash;roupe
+</para></group>
+
 <para>f&ndash;lushleft
 </para>
 <para>f&ndash;lushright
@@ -2127,6 +2139,10 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 
 <cartouche><para>c&ndash;artouche
 </para></cartouche>
+<group>
+<para>g&ndash;roupe
+</para></group>
+
 <para>f&ndash;lushleft
 </para>
 <para>f&ndash;lushright
@@ -2659,6 +2675,10 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 
 <cartouche><para>c&ndash;artouche
 </para></cartouche>
+<group>
+<para>g&ndash;roupe
+</para></group>
+
 <para>f&ndash;lushleft
 </para>
 <para>f&ndash;lushright
@@ -3191,6 +3211,10 @@ See <inforef><inforefnodename>s--ect,ion</inforefnodename><inforefrefname>a , in
 
 <cartouche>c--artouche
 </cartouche>
+<group>
+g--roupe
+</group>
+
 f--lushleft
 
 f--lushright
@@ -3289,7 +3313,16 @@ Menu comment
 <menutitle>subsection</menutitle>
 <menucomment> 
 </menucomment>
-</menuentry></menu>
+</menuentry><detailmenu>
+<para>In detailmenu
+</para>
+<menuentry>
+<menunode>subsubsection ``simple-double--three---four----''</menunode>
+<menutitle>subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></detailmenu>
+</menu>
 
 <node>
 <nodename>subsection</nodename>

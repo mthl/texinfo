@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.222 2009-08-30 10:27:29 pertusus Exp $
+# $Id: texi2html.init,v 1.223 2009-08-30 18:59:47 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -6006,6 +6006,9 @@ sub t2h_default_foot_line_and_ref($$$$$$$$$)
 sub t2h_default_foot_section($)
 {
     my $lines = shift;
+    my $header = &$I('Footnotes');
+    my $underline = ($t2h_default_underline_symbol{1} x length($header));
+    unshift (@$lines, "$header\n$underline\n\n");
     return $lines; 
 }
 

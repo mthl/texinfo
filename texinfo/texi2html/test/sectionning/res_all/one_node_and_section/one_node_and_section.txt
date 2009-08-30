@@ -14,6 +14,9 @@ ref to ref ref.
 
 Some text(1).
 
+Footnotes
+*********
+
 (1)
 A footnote
 

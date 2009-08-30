@@ -63,6 +63,7 @@ section_in_unnumbered section_in_unnumbered.texi
 more_nodes_than_sections more_nodes_than_sections.texi --init makeinfo.init
 more_sections_than_nodes more_sections_than_nodes.texi
 no_element no_element.texi 
+one_element one_element.texi
 #--debug 255
 placed_things_before_element placed_things_before_element.texi
 menutextorder menutextorder.texi

@@ -1,0 +1,16 @@
+def_end_of_line_footnote.texi(,2) @setfilename def_end_of_line_footnote.info
+def_end_of_line_footnote.texi(,3) 
+def_end_of_line_footnote.texi(,4) @node Top
+def_end_of_line_footnote.texi(,5) @top Test for end of line protected in definition commands in footnote
+def_end_of_line_footnote.texi(,6) 
+def_end_of_line_footnote.texi(,7) 
+def_end_of_line_footnote.texi(,8) @footnote{
+def_end_of_line_footnote.texi(,9) @deffn category deffn_name arguments arg2 @
+def_end_of_line_footnote.texi(,10)    more {args @
+def_end_of_line_footnote.texi(,11)   with end of line within} with 3 @@ @@@
+def_end_of_line_footnote.texi(,12)  {one last arg}
+def_end_of_line_footnote.texi(,13) deffn
+def_end_of_line_footnote.texi(,14) @end deffn
+def_end_of_line_footnote.texi(,15) }
+def_end_of_line_footnote.texi(,16) 
+def_end_of_line_footnote.texi(,17) @bye

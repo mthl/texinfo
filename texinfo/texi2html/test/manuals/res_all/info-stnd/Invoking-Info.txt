@@ -180,6 +180,9 @@ following all the menu items given on the command line.  This is so
 
 
 
+Footnotes
+*********
+
 (1)
 
 `.info', `-info', `/index', and `.inf'.

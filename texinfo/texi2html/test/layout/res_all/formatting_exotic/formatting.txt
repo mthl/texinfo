@@ -462,6 +462,8 @@ l-ine
 
 c-artouche
 
+g-roupe
+
 f-lushleft
 
 f-lushright
@@ -1048,6 +1050,8 @@ l-ine
 
 c-artouche
 
+g-roupe
+
 f-lushleft
 
 f-lushright
@@ -1632,6 +1636,8 @@ l--ine
 
 c--artouche
 
+g--roupe
+
 f--lushleft
 
 f--lushright
@@ -1908,6 +1914,9 @@ tp
 * d-eftp_name: Top section.
 
 
+
+Footnotes
+*********
 
 (1)
 in footnote

@@ -72,6 +72,9 @@ center of the window.  With a numeric argument of n, M-r
 moves the cursor to the start of the nth line in the window.
 
 
+Footnotes
+*********
+
 (4)
 
 Here's a short summary.  C-x means press the CTRL key

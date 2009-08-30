@@ -94,6 +94,12 @@ Menu comment
 
 @menu
 * subsection:: 
+
+@detailmenu
+In detailmenu
+
+* subsubsection ``simple-double--three---four----''::
+@end detailmenu
 @end menu
 
 @node subsection

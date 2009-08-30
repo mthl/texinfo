@@ -3,6 +3,10 @@ A section
 
 * subsection:: 
 
+In detailmenu
+
+* subsubsection ``simple-double--three---four----''::
+
 subsection
 ----------
 

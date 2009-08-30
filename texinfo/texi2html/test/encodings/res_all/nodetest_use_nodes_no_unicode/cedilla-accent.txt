@@ -1,4 +1,4 @@
-6 cedilla accent
+7 cedilla accent
 ****************
 * c,::    c,.
 * C,::    C,.

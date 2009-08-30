@@ -7,3 +7,5 @@ Another ref to an anchor (see x-spot).
 ======
 4.7 u^
 ======
+6.5 u;
+======

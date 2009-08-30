@@ -39,7 +39,10 @@ sp
 anchoranchor
 index
 
-bye(1)
+byeFootnotes
+*********
+
+(1)
 in footnote
 
 (2)

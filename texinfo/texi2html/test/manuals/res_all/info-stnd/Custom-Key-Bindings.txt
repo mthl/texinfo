@@ -175,6 +175,9 @@ is bound to each command.
 
 
 
+Footnotes
+*********
+
 (7)
 Due to the limitations of
 DOS filesystems, the MS-DOS version of Info looks for a file

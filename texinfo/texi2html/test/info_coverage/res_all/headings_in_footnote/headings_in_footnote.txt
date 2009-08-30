@@ -8,6 +8,9 @@ BBB
 
 T(1)
 
+Footnotes
+*********
+
 (1)
 
 AAA

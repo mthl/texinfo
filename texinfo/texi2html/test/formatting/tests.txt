@@ -13,6 +13,7 @@ texi simplest.texi
 texi punctuation.texi
 texi simple_punctuation.texi
 texi def_end_of_line.texi
+texi def_end_of_line_footnote.texi
 texi center.texi
 texi tables.texi
 texi multitables.texi
@@ -66,6 +67,7 @@ simplest_test_css simplest.texi --css-include file.css
 punctuation punctuation.texi
 simple_punctuation simple_punctuation.texi
 def_end_of_line def_end_of_line.texi
+def_end_of_line_footnote def_end_of_line_footnote.texi
 center center.texi
 tables tables.texi
 multitables multitables.texi

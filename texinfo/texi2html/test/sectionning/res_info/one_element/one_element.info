@@ -1,0 +1,46 @@
+This is one_element.info, produced by makeinfo version 4.13 from
+one_element.texi.
+
+
+File: one_element.info,  Node: Top,  Next: An anchor,  Up: (dir)
+
+top section
+***********
+
+Ref to the anchor: *note An anchor::
+
+   Ref to the anchor in footnote: *note Anchor in footnote::.
+
+   (1)
+
+In float
+
+1
+
+   Ref to float *note 1: float anchor.
+
+* Menu:
+
+* An anchor::                menu entry pointing to the anchor.
+
+   ---------- Footnotes ----------
+
+   (1) In footnote.
+
+   Ref to main text anchor *note An anchor::
+
+
+
+Tag Table:
+Node: Top84
+Ref: An anchor177
+Ref: float anchor286
+Ref: Top-Footnote-1449
+Ref: Anchor in footnote470
+
+End Tag Table
+
+
+Local Variables:
+coding: iso-8859-1
+End:

@@ -5,6 +5,7 @@
 	Uset set_conf to have the *contents output even if there is no
 	@c*contents.
 	Use set_conf/get_conf directly for set*contentsaftertitlepage.
+	* texi2html.init: Add a header for the footnotes.
 
 2009-08-29   Patrice Dumas  <dumas@centre-cired.fr>
 

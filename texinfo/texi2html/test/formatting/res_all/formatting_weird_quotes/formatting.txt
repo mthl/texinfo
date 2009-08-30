@@ -462,6 +462,8 @@ l-ine
 
 c-artouche
 
+g-roupe
+
 f-lushleft
 
 f-lushright
@@ -1048,6 +1050,8 @@ l-ine
 
 c-artouche
 
+g-roupe
+
 f-lushleft
 
 f-lushright
@@ -1632,6 +1636,8 @@ l--ine
 
 c--artouche
 
+g--roupe
+
 f--lushleft
 
 f--lushright
@@ -1925,6 +1931,10 @@ Menu comment
 =============
 
 * subsection:: 
+
+In detailmenu
+
+* subsubsection ``simple-double--three---four----''::
 
 1.1.1 subsection
 ----------------

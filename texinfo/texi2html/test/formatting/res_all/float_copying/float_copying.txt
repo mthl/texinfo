@@ -18,6 +18,9 @@ Copyright notice 1: The Public Domain notice(1)
 
 * Copying and floats::
 
+Footnotes
+*********
+
 (1)
 
 The caption copying footnote

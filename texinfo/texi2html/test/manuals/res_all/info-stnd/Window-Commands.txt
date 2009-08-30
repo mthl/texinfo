@@ -266,6 +266,9 @@ Scroll the completions window, if that is visible, or the "other"
 window if not.
 
 
+Footnotes
+*********
+
 (6)
 
 Some people are used to calling these operations cut and

@@ -573,6 +573,10 @@ l--ine
 c--artouche
 @end cartouche
 
+@group
+g--roupe
+@end group
+
 @flushleft
 f--lushleft
 @end flushleft
@@ -1290,6 +1294,10 @@ l--ine
 @cartouche
 c--artouche
 @end cartouche
+
+@group
+g--roupe
+@end group
 
 @flushleft
 f--lushleft
@@ -2012,6 +2020,10 @@ l--ine
 c--artouche
 @end cartouche
 
+@group
+g--roupe
+@end group
+
 @flushleft
 f--lushleft
 @end flushleft
@@ -2729,6 +2741,10 @@ l--ine
 c--artouche
 @end cartouche
 
+@group
+g--roupe
+@end group
+
 @flushleft
 f--lushleft
 @end flushleft
@@ -3441,6 +3457,10 @@ l--ine
 @cartouche
 c--artouche
 @end cartouche
+
+@group
+g--roupe
+@end group
 
 @flushleft
 f--lushleft

@@ -495,6 +495,8 @@ b</term>
 
 <para>c&ndash;artouche
 </para>
+<para>g&ndash;roupe
+</para>
 <para>f&ndash;lushleft
 </para>
 <para>f&ndash;lushright
@@ -1021,6 +1023,8 @@ b</term>
 
 <para>c&ndash;artouche
 </para>
+<para>g&ndash;roupe
+</para>
 <para>f&ndash;lushleft
 </para>
 <para>f&ndash;lushright
@@ -1543,6 +1547,8 @@ b</term>
 
 <para>c&ndash;artouche
 </para>
+<para>g&ndash;roupe
+</para>
 <para>f&ndash;lushleft
 </para>
 <para>f&ndash;lushright
@@ -2064,6 +2070,8 @@ b</term>
 </listitem></varlistentry></variablelist>
 
 c--artouche
+
+g--roupe
 
 f--lushleft
 

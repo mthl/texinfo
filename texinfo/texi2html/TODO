@@ -15,6 +15,8 @@ Before next release
   as an element. there is a FIXME in the code. Maybe linked with the 
   previous item.
 
+* add --command command line that gives inserted lines.
+
 * something like (ask Karl)
 @math{@minus{} {\frac{1}{2}}} 
   leads to errors in makeinfo about misplaced { } because it seems that
@@ -173,13 +175,6 @@ function clean_antispam() {
 * roff is not uptodate. At least the @quote* and @guillem* and many 
   others.
 
-* add @detailmenu in coverage, and @group
-
-* test for @deffn with end of line protected in @footnote (to test 
-  end of line protection in keep_texi).
-
-* empty lines in @hyphenation are not valid for texi2dvi
-
 * manuals/mini_ker result is not valid, but it looks like a validate bug?
   In any case, it may make sense to have @tex not starting paragraph,
   like @html, at least when expanding it.
@@ -238,11 +233,6 @@ function clean_antispam() {
   makeinfo_index_split first.html is missing
   makeinfo_nodes_before_top_and_sections needs to be checkedd (first 
                               should be in first.html?).
-
-* add --command command line that gives inserted lines.
-
-* @ogonek has 2 test files, and is in coverage. Maybe add it to encoding/*
-  where other accents are used too. Or maybe tests should be more focused?
 
 * @kbdinputstyle should be taken into account in html output, which
   means distinguish between preformatted, code_style and normal text 
@@ -318,9 +308,6 @@ function clean_antispam() {
 
   ** closing @-command footnote (l. 17)
   ../../footnote_not_closed.texi:30: No closing brace for footnote `'.
-
-  *** closing `quotation' (l. 24)
-  ../../footnote_not_closed.texi:54: No matching `@end quotation'.
 
 * in formatting/table_in_table_item.texi, some lines maybe have too much 
   leading spaces (precisely in @code in @table in @table @item, line
@@ -420,4 +407,6 @@ the use of non 8 bit representation of characters.
 * code_style is used for code_style style @-commands in remove_texi.
   However since -- is removed to have strict html comments, it looks like
   it isn't.
+
+* empty lines in @hyphenation are not valid for texi2dvi
 

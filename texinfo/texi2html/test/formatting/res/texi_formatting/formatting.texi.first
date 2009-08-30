@@ -574,6 +574,10 @@ l--ine
 c--artouche
 @end cartouche
 
+@group
+g--roupe
+@end group
+
 @flushleft
 f--lushleft
 @end flushleft
@@ -1283,6 +1287,10 @@ l--ine
 c--artouche
 @end cartouche
 
+@group
+g--roupe
+@end group
+
 @flushleft
 f--lushleft
 @end flushleft
@@ -1877,6 +1885,10 @@ l--ine
 c--artouche
 @end cartouche
 
+@group
+g--roupe
+@end group
+
 @flushleft
 f--lushleft
 @end flushleft
@@ -1978,6 +1990,12 @@ Menu comment
 
 @menu
 * subsection:: 
+
+@detailmenu
+In detailmenu
+
+* subsubsection ``simple-double--three---four----''::
+@end detailmenu
 @end menu
 
 @node subsection

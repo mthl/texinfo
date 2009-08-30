@@ -25,6 +25,9 @@ An anchor
 Ref to footnote anchor
 Anchor in footnote
 
+Footnotes
+*********
+
 (1)
 In footnote.
 

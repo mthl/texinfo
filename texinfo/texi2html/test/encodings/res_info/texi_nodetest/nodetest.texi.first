@@ -19,6 +19,7 @@ Another Heading
 * grave accent::         grave accent.
 * circumflex accent::    circumflex accent.
 * tilde accent::         tilde accent.
+* ogonek accent::        ogonek accent.
 * cedilla accent::       cedilla accent.
 * rest::                 rest @@aa@{@} etc.
 @end menu
@@ -247,6 +248,41 @@ Test @@^@{@@dotless@{i@}@}.
 @section @~O
 This marks the @anchor{x-spot}spot.
 A second one with accented char @anchor{@'e-o}.
+@c
+@node ogonek accent,,Top,Top
+@chapter ogonek accent
+@menu
+* @ogonek{a}::    @ogonek{a}.
+* @ogonek{e}::    @ogonek{e}.
+* @ogonek{i}::    @ogonek{i}.
+* @ogonek{o}::    @ogonek{o}.
+* @ogonek{u}::    @ogonek{u}.
+* @ogonek{A}::    @ogonek{A}.
+* @ogonek{E}::    @ogonek{E}.
+* @ogonek{I}::    @ogonek{I}.
+* @ogonek{O}::    @ogonek{O}.
+* @ogonek{U}::    @ogonek{U}.
+@end menu
+@node @ogonek{a},,,ogonek accent
+@section @ogonek{a}
+@node @ogonek{e},,,ogonek accent
+@section @ogonek{e}
+@node @ogonek{i},,,ogonek accent
+@section @ogonek{i}
+@node @ogonek{o},,,ogonek accent
+@section @ogonek{o}
+@node @ogonek{u},,,ogonek accent
+@section @ogonek{u}
+@node @ogonek{A},,,ogonek accent
+@section @ogonek{A}
+@node @ogonek{E},,,ogonek accent
+@section @ogonek{E}
+@node @ogonek{I},,,ogonek accent
+@section @ogonek{I}
+@node @ogonek{O},,,ogonek accent
+@section @ogonek{O}
+@node @ogonek{U},,,ogonek accent
+@section @ogonek{U}
 @c
 @node cedilla accent,,Top,Top
 @chapter cedilla accent

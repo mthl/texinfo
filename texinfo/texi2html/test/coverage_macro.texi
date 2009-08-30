@@ -561,6 +561,10 @@ l--ine
 c--artouche
 @end cartouche
 
+@group
+g--roupe
+@end group
+
 @flushleft
 f--lushleft
 @end flushleft

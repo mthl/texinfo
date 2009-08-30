@@ -1,0 +1,25 @@
+This is def_end_of_line_footnote.info, produced by makeinfo version 4.13
+from def_end_of_line_footnote.texi.
+
+
+File: def_end_of_line_footnote.info,  Node: Top,  Up: (dir)
+
+Test for end of line protected in definition commands in footnote
+*****************************************************************
+
+(1)
+
+   ---------- Footnotes ----------
+
+   (1)
+ -- category: deffn_name arguments arg2 more args   with end of line
+          within with 3 @ @ one last arg
+     deffn
+
+
+
+Tag Table:
+Node: Top110
+Ref: Top-Footnote-1347
+
+End Tag Table

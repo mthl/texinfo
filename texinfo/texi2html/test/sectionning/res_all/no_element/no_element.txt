@@ -19,6 +19,9 @@ Ref to float
 * An anchor::                menu entry pointing to the anchor.
 
 
+Footnotes
+*********
+
 (1)
 In footnote.
 

@@ -1,0 +1,14 @@
+Test for end of line protected in definition commands in footnote
+*****************************************************************
+
+
+(1)
+
+Footnotes
+*********
+
+(1)
+
+ -- category: deffn_name arguments arg2 more args   with end of line within with 3 @ @ one last arg
+deffn
+

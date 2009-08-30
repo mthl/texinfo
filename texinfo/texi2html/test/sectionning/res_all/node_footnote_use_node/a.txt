@@ -16,6 +16,9 @@ a`
 node a`,
 Footnote 3(3).
 
+Footnotes
+*********
+
 (1)
 foot 1 a'
 

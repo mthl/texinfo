@@ -23,6 +23,9 @@ fun
 
 * Copying and indices::
 
+Footnotes
+*********
+
 (1)
  The public
 domain is something you should allready know

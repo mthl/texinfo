@@ -1,0 +1,32 @@
+top section
+***********
+
+
+Ref to the anchor:
+An anchor
+
+Ref to the anchor in footnote:
+Anchor in footnote.
+
+(1)
+
+In float
+
+1
+
+Ref to float
+1.
+
+* An anchor::                menu entry pointing to the anchor.
+
+
+Footnotes
+*********
+
+(1)
+In footnote.
+
+
+Ref to main text anchor
+An anchor
+
