@@ -1,3 +1,11 @@
+2009-09-02   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: take into account @  when 
+	removing spaces at the end of texinfo strings.
+	Improve node name parsing and parse node name in menu taking into
+	account @-commands that may protect some separator characters.
+	Fixes http://savannah.gnu.org/bugs/?8218.
+
 2009-08-31   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.*: handle better @kbdinputstyle.

@@ -3,9 +3,6 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
-* there is also undocumented features @hsep and @vsep to insert
-  horizontal and vertical rules.
-
 * sectionning/nodes_test html style, the @top and the @node Top, 
   although distinct nodes end up in the same element. I think that 
   there is a FIXME in the code covering that issue.
@@ -17,43 +14,47 @@ Before next release
 
 * add --command command line that gives inserted lines.
 
-* handle right @  everywhere, including before , and }.
+* there is also undocumented features @hsep and @vsep to insert
+  horizontal and vertical rules. Is there an example of manual using
+  those, and in which format are they supported right now, to see what
+  they do?
 
-* something like (ask Karl)
+* something like
 @math{@minus{} {\frac{1}{2}}} 
   leads to errors in makeinfo about misplaced { } because it seems that
   @minus turns on texinfo mode or the like, while
 @math{{\frac{1}{2}} @minus{}}
-  is error free.
-
-Asked on bug-texinfo:
+  is error free. Is it simply a bug in makeinfo or is there some language
+  issues with @-command in @math?
 
 * for makeinfo, the following are not the same, looks like -I is not taken
   into account with a leading ./:
 @include ./d2t_singular/surf_lib_noEx.tex
 @include d2t_singular/surf_lib_noEx.tex
-  for texi2html they are the same.
+  for texi2html they are the same. What is right?
 
 * the code of xml.c in makeinfo shows specific treatement of & in 
-  definition arguments. I don't know what it corresponds with. The
-  formal definition argument parsing stuff is certainly worth asking
-  on the texinfo list.
+  definition arguments. I don't know what it corresponds with. 
+  What is the rules for definition argument parsing regarding &, and
+  are there general rules?
 
-* makeinfo warn when there is no @settitle nor @top where it finds its title
-in texi2tml there is no warning, and also the title is constructed
-differently.
- ../../sectionning.texi:4: warning: Must specify a title with least one of @settitle or @top.
+*  ../../sectionning.texi:4: warning: Must specify a title with least one of @settitle or @top.
+  There should be a warning in texi2html when no title was found
+  texi2html uses
+     @settitle @title @shorttitlepage @titlefont.
+  makeinfo also uses @top. Is it right?
 
-* makeinfo in title, for @code{something} leads to `something'. In 
-texi2html all the style commands are removed without extra formatting.
+* in html produced by makeinfo, in title and in comments (for example from
+  @copying), @code{something} leads to `something'. In texi2html all the 
+  style commands are removed without extra formatting.
 
 * What are the encodings known by info? 
-  unrecognized encoding name `ascii'.
+  (makeinfo says unrecognized encoding name `ascii').
 
 * '00D8' which is Oslash is transliterated on OE?
 
 * makeinfo: multiple index entries have <1>... appended.
-  or they are removed. Ask on the list.
+  or they are removed. ?
 
 
 Later
@@ -327,6 +328,12 @@ in nested table line
 
 * images.texi should be tested in xml too.
 
+* Tests for 
+@node @ 
+@node @:
+@node @asis{ }
+@node @.
+and other weirdness, and corresponding error messages.
 
 Misc info and boring stuff
 --------------------------

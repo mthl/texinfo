@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.319 2009-08-30 23:11:29 pertusus Exp $
+# $Id: texi2html.pl,v 1.320 2009-09-02 15:32:09 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -180,7 +180,6 @@ my $ERROR = "***";                 # prefix for errors
 my $WARN  = "**";                  # prefix for warnings
 
 my $VARRE = '[\w\-]+';          # RE for a variable name
-my $NODERE = '[^:]+';             # RE for node names
 
 my $MAX_LEVEL = 4;
 my $MIN_LEVEL = 1;
@@ -725,7 +724,7 @@ my %config_map = (
    'IN_ENCODING' => \$IN_ENCODING,
    'setcontentsaftertitlepage' => \$SETCONTENTSAFTERTITLEPAGE,
    'setshortcontentsaftertitlepage'  => \$SETSHORTCONTENTSAFTERTITLEPAGE,
-   'kbdinputstyle' => \$KBDINPUTSTYLE
+   'kbdinputstyle' => \$KBDINPUTSTYLE,
 );
 
 sub get_conf($)
@@ -4565,19 +4564,20 @@ sub new_section_heading($$$)
     return $section_ref;
 }
 
-sub scan_node_line($)
+sub scan_line_separators($$)
 {
     my $node_line = shift;
-    $node_line =~ s/^\@node\s+//;
-    $node_line =~ s/\s*$//;
+    my $separators = shift;
 
     my @command_stack;
     my @results;
     my $node_arg = '';
+#print STDERR "scan_line_separators($node_line , $separators)\n";
     while (1)
     {
+#print STDERR "$separators|| $node_line || $node_arg || @command_stack\n";
         # macro_regexp
-        if ($node_line =~ s/^([^{},@]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $node_line =~ s/^([^{}@,]*)\@([a-zA-Z][\w-]*)([\s\{\}\@])/$3/o or $node_line =~ s/^([^{},@]*)\@([a-zA-Z][\w-]*)$//o)
+        if ($node_line =~ s/^([^{}\@$separators]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])// or $node_line =~ s/^([^{}\@$separators]*)\@([a-zA-Z][\w-]*)//)
         {
             $node_arg .= $1;
             my $macro = $2;
@@ -4588,35 +4588,58 @@ sub scan_node_line($)
                 push @command_stack, $macro;
                 $node_arg .= '{';
             }
-            
+            if ($macro eq 'verb')
+            {
+               if ($node_line =~ s/(.)//)
+               {
+                  my $verb_char = quotemeta($1);
+                  if ($node_line =~ s/(.*?${verb_char}\})//)
+                  {
+                     $node_arg .= $1;
+                  }
+                  else
+                  {
+                     return (undef, $node_line, undef);
+                  }
+               }
+               else
+               {
+                  return (undef, $node_line, undef);
+               }
+               pop @command_stack;
+            }
         }
-        elsif ($node_line =~ s/^([^{},]*)([{}])//o)
+        elsif ($node_line =~ s/^([^\{\}$separators]*)([{}])//)
         {
             $node_arg .= $1 . $2;
             my $brace = $2;
-            if (@command_stack)
+            if (@command_stack and $brace eq '}')
             {
                 pop @command_stack;
             }
         }
-        elsif ($node_line =~ s/^([^,]*)[,]//o)
+        elsif ($node_line =~ s/^([^${separators}]*)([$separators])//)
         {
             $node_arg .= $1;
+            my $separator = $2;
             if (@command_stack)
             { 
-                $node_arg .= ',';
+                $node_arg .= $separator;
             }
             else
             {
-                push @results, normalise_node($node_arg);
-                $node_arg = '';
+                #push @results, normalise_node($node_arg);
+                return ($node_arg, $node_line, $separator);
+                #$node_arg = '';
             }
         }
         else 
         {
             $node_arg .= $node_line;
-            push @results, normalise_node($node_arg);
-            return @results;
+            $node_line = '';
+            return ($node_arg, $node_line, undef);
+            #push @results, normalise_node($node_arg);
+            #return @results;
         }
     }
 }
@@ -4705,7 +4728,25 @@ sub pass_structure($$)
                 {
                     my $node_ref;
                     my $auto_directions;
-                    my @node_res = scan_node_line($cline);
+                    my $node_line = $cline;
+                    $node_line =~ s/^\@node\s+//;
+                    $node_line = trim_around_spaces($node_line);
+                    my @node_res;
+                    while ($node_line =~ /\S/)
+                    {
+                       my ($next_node, $separator);
+                       ($next_node, $node_line, $separator) = scan_line_separators($node_line, ',');
+                       if (defined($next_node))
+                       {
+                          $next_node = normalise_node($next_node);
+                          push @node_res, $next_node;
+                       }
+                       else
+                       {
+                          line_error ("Error scanning $cline", $line_nr);
+                          last;
+                       }
+                    }
                     $auto_directions = 1 if (scalar(@node_res) == 1);
                     if (@node_res > 4)
                     {
@@ -5043,9 +5084,7 @@ sub common_misc_commands($$$$)
       # and pass_text 2
         if ($macro eq 'setfilename')
         {
-            my $filename = $line;
-            $filename =~ s/^\s*//;
-            $filename =~ s/\s*$//;
+            my $filename = trim_around_spaces($line);
             if ($filename ne '')
             {
                 $filename = substitute_line($filename, "\@$macro",{'code_style' => 1, 'remove_texi' => 1});
@@ -5216,9 +5255,7 @@ sub misc_command_texi($$$$)
       {
           if ($macro eq 'setfilename' and $Texi2HTML::Config::USE_SETFILENAME)
           {
-             my $filename = $line;
-             $filename =~ s/^\s*//;
-             $filename =~ s/\s*$//;
+             my $filename = trim_around_spaces($line);
              $filename = substitute_line($filename, "\@$macro",{'code_style' => 1, 'remove_texi' => 1});
              $Texi2HTML::THISDOC{$macro} = $filename;
              # remove extension
@@ -8809,7 +8846,7 @@ sub next_bracketed($$;$)
             if ($line =~ s/^([^\{\}]+?)(\s+)/$2/ or $line =~ s/^([^\{\}]+?)$//)
             {
                 $result = $1;
-                $result =~ s/\s*$//;
+                $result = trim_around_spaces($result);
                 return ($result, $line, $spaces);
             }
             elsif ($line =~ s/^([^\{\}]+?)([\{\}])/$2/)
@@ -8917,13 +8954,34 @@ sub file_target_href($$$)
     return $href;
 }
 
+sub trim_around_spaces($)
+{
+   my $text = shift;
+   $text =~ s/^\s*//;
+   $text =~ s/(\s)\s*$/$1/;
+   if ($text =~ /(\@+)\s$/)
+   {
+      my $arobases = $1;
+      if ((length($arobases) % 2) == 0)
+      {
+          $text =~ s/\s$//;
+      }
+   }
+   else
+   {
+      $text =~ s/\s$//;
+   }
+   return $text;
+}
+
 sub normalise_space($)
 {
    return undef unless (defined ($_[0]));
    my $text = shift;
+   $text = trim_around_spaces($text);
    $text =~ s/\s+/ /go;
-   $text =~ s/ $//;
-   $text =~ s/^ //;
+   #$text =~ s/ $//;
+   #$text =~ s/^ //;
    return $text;
 }
 
@@ -10639,12 +10697,10 @@ sub do_acronym_like($$$$$)
 
     if (defined($explanation))
     {
-        $explanation =~ s/^\s*//;
-        $explanation =~ s/\s*$//;
+        $explanation = trim_around_spaces($explanation);
         $explanation = undef if ($explanation eq '');
     }
-    $acronym_texi =~ s/^\s*//;
-    $acronym_texi =~ s/\s*$//;
+    $acronym_texi = trim_around_spaces($acronym_texi);
     
     return '' if ($acronym_texi eq '');
     
@@ -10750,11 +10806,12 @@ sub do_quotation_line($$$$$)
     my $line_nr = shift;
     my $text;
 
-    $text_texi = undef if (defined($text_texi) and $text_texi=~/^\s*$/);
+    $text_texi = undef if (defined($text_texi) and $text_texi=~ /^\s*$/);
     if (defined($text_texi))
     {
+         $text_texi = trim_around_spaces($text_texi);
          $text = substitute_line($text_texi, "\@$command line", duplicate_formatting_state($state), $line_nr);
-         $text =~ s/\s*$//;
+         #$text =~ s/\s*$//;
     }
     my $quotation_args = { 'text' => $text, 'text_texi' => $text_texi };
     push @{$state->{'quotation_stack'}}, $quotation_args;
@@ -10853,8 +10910,7 @@ sub do_image($$$$$)
     my @args;
     foreach my $arg (@$args)
     {
-       $arg =~ s/^\s*//;
-       $arg =~ s/\s*$//;
+       $arg = trim_around_spaces($arg);
        push @args, $arg;
     }
     #my $base = substitute_line($args[0], {'code_style' => 1});
@@ -11944,7 +12000,7 @@ sub scan_texi($$$$;$)
                        if ($command->{'text'} =~ s/^(\s+)(.*)//o)
                        {
                            my $file_name = $2;
-                           $file_name =~ s/\s*$//;
+                           $file_name = trim_around_spaces($file_name);
                            #$file_name = substitute_line($file_name, {'code_style' => 1});
                            $file_name = substitute_line($file_name, "\@$macro", {'code_style' => 1, 'remove_texi' => 1});
                            my $file = locate_include_file($file_name);
@@ -12110,6 +12166,44 @@ sub end_format_structure($$$$$$)
     return 0;
 }
 
+sub parse_menu_entry($)
+{
+   my $menu_line = shift;
+   my ($node, $name, $ending, $remaining);
+
+   return ($node, $name, $ending, $remaining) unless $menu_line =~ s/^\*//;
+
+   my ($before_colon, $separator);
+   ($before_colon, $remaining, $separator) = scan_line_separators($menu_line, ':');
+   if (defined($before_colon) and defined($separator))
+   {
+      if ($remaining =~ s/^://)
+      {
+          $node = $before_colon;
+          $ending = '::';
+      }
+      elsif ($remaining =~ /\S/)
+      {
+          my $after_colon;
+          $node = '';
+          $ending = "\n";
+          ($after_colon, $remaining, $separator) = scan_line_separators($remaining, '\t,\.');
+          return (undef, $name, $ending, $remaining) if (!defined($after_colon));
+          $node .= $after_colon;
+
+          while ($separator eq '.' and (defined($remaining) and $remaining !~ /^\s/))
+          {
+              ($after_colon, $remaining, $separator) = scan_line_separators($remaining, '\t,\.');
+              return (undef, $name, $ending, $remaining) if (!defined($after_colon));
+              $node .= $separator.$after_colon;
+          }
+          $name = $before_colon;
+          $ending = $separator if (defined($separator));
+      }
+   }
+   # remaining may be defined even if $node isn't.
+   return ($node, $name, $ending, $remaining);
+}
 
 sub scan_structure($$$$;$)
 {
@@ -12125,21 +12219,12 @@ sub scan_structure($$$$;$)
     #dump_stack ($text, $stack, $state); 
     if (!$state->{'raw'} and (!exists($state->{'region_lines'})))
     { 
-        if (!$state->{'verb'} and $state->{'menu'} and $cline =~ /^\*/o)
+        #if (!$state->{'verb'} and $state->{'menu'} and $cline =~ /^\*\s+/o)
+        if (!$state->{'verb'} and $state->{'menu'})
         {
         # new menu entry
-            my $menu_line = $cline;
-            my $node;
-            if ($cline =~ /^\*\s+($NODERE)::/)
-            {
-                $node = $1;
-            }
-            elsif ($cline =~ /^\*\s+([^:]+):\s*([^\t,\n]*?)([\t,\n]|\.\s)/)
-            {
-                #$name = $1;
-                $node = $2;
-            }
-            if ($node)
+            my ($node, $name, $ending, $remaining) = parse_menu_entry($cline);
+            if (defined($node))
             {
                 menu_entry_texi(normalise_node($node), $state, $line_nr);
             }
@@ -12741,22 +12826,10 @@ sub scan_line($$$$;$)
     { 
         if (!$state->{'raw'} and !$state->{'verb'} and ($state->{'menu'} or $state->{'direntry'}))
         { # new menu entry
-            my ($node, $name, $ending);
-            if ($cline =~ s/^\*(\s+$NODERE)(::)//o)
+            my ($node, $name, $ending, $remaining) = parse_menu_entry($cline);
+            if (defined($node))
             {
-                $node = $1;
-                $ending = $2;
-            }
-            elsif ($cline =~ s/^\*(\s+[^:]+):(\s*[^\t,\n]*?)(([\t,\n])|((\.)(\s)))//o)
-            {
-                $name = $1;
-                $node = $2;
-                $ending = $4;
-                $ending = $6 if (!$ending);
-                $cline = $7.$cline if (defined($7));
-            }
-            if ($node)
-            {
+                $cline = $remaining;
                 print STDERR "# Potential menu entry: $node\n" if ($T2H_DEBUG & $DEBUG_MENU);
                 $new_menu_entry = 1;
                 my $menu_entry = { 'name' => $name, 'node' => $node, 'ending' => $ending };
@@ -12826,7 +12899,7 @@ sub scan_line($$$$;$)
                 close_paragraph($text, $stack, $state, "\@$next_command", $line_nr, 1) if (stop_paragraph_command($next_command));
                 my $arg_texi = $cline;
                 $arg_texi =~ s/^\s*\@$next_command\s*//;
-                $arg_texi =~ s/\s*$//;
+                $arg_texi = trim_around_spaces($arg_texi);
                 my $arg_line = substitute_line($arg_texi, "\@$next_command", duplicate_formatting_state($state));
                 add_prev ($text, $stack, &$Texi2HTML::Config::line_command($next_command, $arg_line, $arg_texi, $state));
                 return '';
@@ -13507,10 +13580,8 @@ sub scan_line($$$$;$)
             if (index_command_prefix($macro) ne '')
             {
                 my $index_name = index_command_prefix($macro);
-                $cline =~ s/^\s*//;
-                my $entry_texi = $cline;
+                my $entry_texi = trim_around_spaces($cline);
                 chomp($entry_texi);
-                $entry_texi =~ s/\s*$//;
                 # FIXME multiple_pass?
                 my $entry_text = substitute_line($entry_texi, "\@$macro", prepare_state_multiple_pass($macro, $state));
                 my ($index_entry, $formatted_index_entry, $index_label) = do_index_entry_label($macro,$state,$line_nr, $entry_texi);
@@ -15129,8 +15200,7 @@ sub do_index_entry_label($$$$;$)
     # reuse get_deff_index.
     my $line = shift;
 
-    $entry_texi =~ s/^\s*//;
-    $entry_texi =~ s/\s*$//;
+    $entry_texi = trim_around_spaces($entry_texi);
 
     # index entries are not entered in special regions
     my $region = 'document';

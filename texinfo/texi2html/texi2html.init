@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.224 2009-08-30 23:11:29 pertusus Exp $
+# $Id: texi2html.init,v 1.225 2009-09-02 15:32:09 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3911,8 +3911,9 @@ sub t2h_default_no_texi_image($$$$)
     #$text = main::normalise_space($text); 
     #my @args = split (/\s*,\s*/, $text);
     my $file = $args->[0];
-    $file =~ s/^\s*//;
-    $file =~ s/\s*$//;
+    #$file =~ s/^\s*//;
+    #$file =~ s/\s*$//;
+    $file = main::trim_around_spaces($file);
     return main::substitute_line($file, "\@$command", {'remove_texi' => 1, 'code_style' => 1});
 }
 
@@ -6487,8 +6488,7 @@ sub t2h_default_heading_texi($$$)
     my $tag = shift;
     my $texi = shift;
     my $number = shift;
-    $texi =~ s/\s*$//;
-    $texi =~ s/^\s*//;
+    $texi = main::trim_around_spaces($texi);
     return "$number $texi" if ($NUMBER_SECTIONS and defined($number) and ($number !~ /^\s*$/)) ;
     return $texi;
 }

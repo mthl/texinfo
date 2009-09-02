@@ -1,0 +1,17 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename weird_at_commands_in_nodes.info
+
+@node Top
+@top Top
+
+@menu
+* a@ ::
+* a@:::
+@end menu
+
+@node a@ 
+
+@node a@:
+
+@bye

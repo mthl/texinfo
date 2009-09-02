@@ -71,6 +71,7 @@ semi_auto semi_auto.texi
 anchor_in_footnote anchor_in_footnote.texi
 test_two_include test_two_include.texi -I .@PATH_SEPARATOR@../manuals@PATH_SEPARATOR@../macros
 only_documentencoding only_documentencoding.texi
+weird_at_commands_in_nodes weird_at_commands_in_nodes.texi
 
 test_refs_docbook test_refs.texi --docbook
 at_commands_in_refs_info at_commands_in_refs.texi --init info.init

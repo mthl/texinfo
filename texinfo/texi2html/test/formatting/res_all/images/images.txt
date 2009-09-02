@@ -32,7 +32,7 @@ And the same, followed by a dot:
 An image with a @ followed by a space or : from 
 <https://savannah.gnu.org/bugs/?8218>:
 .
-[ f--ile.png: @ ].
+[ f--ile.png ].
 .
 [ f--ile.png ].
 
