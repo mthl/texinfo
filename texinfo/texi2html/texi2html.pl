@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.320 2009-09-02 15:32:09 pertusus Exp $
+# $Id: texi2html.pl,v 1.321 2009-09-02 21:08:54 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4758,7 +4758,7 @@ sub pass_structure($$)
                         if (exists($nodes{$node}) and defined($nodes{$node})
                              and $nodes{$node}->{'seen'})
                         {
-                            line_error ("Duplicate node found: $node", $line_nr);
+                            line_error ("Node `$node' previously defined ".format_line_number($nodes{$node}->{'line_nr'}), $line_nr);
                             next;
                         }
                         elsif ($node =~ /^\(.+\)/)
@@ -6881,7 +6881,7 @@ sub rearrange_elements()
         {
             $float_style->{'nr_in_chapter'}++;
         }
-        if (defined($up) and $up->{'number'} ne '')
+        if (defined($up) and $up->{'toplevel'} and $up->{'number'} ne '')
         {
             $float->{'chapter_nr'} = $up->{'plain_number'};
             $float->{'nr'} = $float->{'chapter_nr'} . "." . $float_style->{'nr_in_chapter'};
@@ -7733,7 +7733,7 @@ sub pass_text($$)
     my %state;
     fill_state(\%state);
     my @stack;
-    my $text;
+    my $text = '';
     my $doc_nr;
     my $in_doc = 0;
     my @text =();
@@ -7990,6 +7990,7 @@ sub pass_text($$)
 			#print STDERR "close_stack before \@$tag\n";
 			#print STDERR "text!$text%" if (! @stack);
                 close_stack(\$text, \@stack, \%state, $line_nr);
+                msg_debug ("text undef", $line_nr) if (!defined($text));
                 push @{$Texi2HTML::THIS_SECTION}, $text if ($text ne '');
                 $text = '';
 
@@ -12051,11 +12052,16 @@ sub close_structure_command($$$$)
         $anchor = normalise_node($anchor);
         if ($nodes{$anchor})
         {
-            line_error ("Duplicate node for anchor found: $anchor", $line_nr);
+            line_error ("Anchor `$anchor' previously defined ".format_line_number($nodes{$anchor}->{'line_nr'}), $line_nr);
+            return '';
+        }
+        elsif ($anchor =~ /^\(.+\)/)
+        {
+            line_error ("Syntax for an external node used for `$anchor'", $line_nr);
             return '';
         }
         $document_anchor_num++;
-        $nodes{$anchor} = { 'anchor' => 1, 'seen' => 1, 'texi' => $anchor, 'id' => 'ANC' . $document_anchor_num};
+        $nodes{$anchor} = { 'anchor' => 1, 'seen' => 1, 'texi' => $anchor, 'id' => 'ANC' . $document_anchor_num, 'line_nr' => $line_nr};
         push @{$state->{'place'}}, $nodes{$anchor};
     }
     elsif ($cmd_ref->{'style'} eq 'footnote')
@@ -12525,19 +12531,20 @@ sub scan_structure($$$$;$)
                 $label_texi = undef if (defined($label_texi) and ($label_texi =~ /^\s*$/));
                 if (defined($label_texi))
                 { # The float may be a target for refs if it has a label
+                    my $error_with_label = 1;
                     $label_texi = normalise_node($label_texi);
                     if (exists($nodes{$label_texi}) and defined($nodes{$label_texi})
                          and $nodes{$label_texi}->{'seen'})
                     {
-                        line_error ("Duplicate label found: $label_texi", $line_nr);
-                        while ($cline =~ /,/)
-                        {
-                            $cline =~ s/,.*$//;
-                        }
-                        $label_texi = undef;
+                        line_error ("Float label `$label_texi' previously defined ".format_line_number($nodes{$label_texi}->{'line_nr'}), $line_nr);
+                    }
+                    elsif ($label_texi =~ /^\(.+\)/)
+                    {
+                        line_error ("Syntax for an external node used for `$label_texi'", $line_nr);
                     }
                     else
                     {
+                        $error_with_label = 0;
                         my $float = { };
                         if (exists($nodes{$label_texi}) and defined($nodes{$label_texi}))
                         { # float appeared in a menu
@@ -12559,7 +12566,16 @@ sub scan_structure($$$$;$)
                         $float->{'element'} = $state->{'heading_element'};
                         $state->{'float'} = $float;
                         $float->{'style_texi'} = $style_texi;
+                        $float->{'line_nr'} = $line_nr;
                         push @floats, $float;
+                    }
+
+                    if ($error_with_label)
+                    {
+                        while ($cline =~ /,/)
+                        {
+                            $cline =~ s/,.*$//;
+                        }
                     }
                 }
                 add_prev($text, $stack, "\@$macro" . $cline);

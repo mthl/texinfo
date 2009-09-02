@@ -7,9 +7,9 @@ novalidate novalidate.texi
 makeinfo_novalidate_split novalidate.texi --init makeinfo.init --no-node-file
 makeinfo_novalidate_unsplit novalidate.texi --init makeinfo.init --split no --no-node-file
 makeinfo_novalidate_unsplit_node_file novalidate.texi --init makeinfo.init --split no
-# in docbook, the @top 'chapter' is closed before the section, makeinfo
-# closes it after the section. 
-# also text before first chapter is not allowed in docbook.
+# in docbook, the @top 'chapter' is closed before the section, makeinfo
+# closes it after the section. 
+# also text before first chapter is not allowed in docbook.
 first_section_no_node first_section_no_node.texi
 nodes_before_top nodes_before_top.texi
 nodes_after_top nodes_after_top.texi --use-nodes
@@ -72,6 +72,7 @@ anchor_in_footnote anchor_in_footnote.texi
 test_two_include test_two_include.texi -I .@PATH_SEPARATOR@../manuals@PATH_SEPARATOR@../macros
 only_documentencoding only_documentencoding.texi
 weird_at_commands_in_nodes weird_at_commands_in_nodes.texi
+double_node_anchor_float double_node_anchor_float.texi
 
 test_refs_docbook test_refs.texi --docbook
 at_commands_in_refs_info at_commands_in_refs.texi --init info.init

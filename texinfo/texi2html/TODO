@@ -400,3 +400,7 @@ the use of non 8 bit representation of characters.
 
 * empty lines in @hyphenation are not valid for texi2dvi
 
+* in indices/index_special_region.texi, there is the error message
+index_special_region.texi:8: Anchor `Copying information' previously defined (l. 8)
+This is right since it is used in @insertcopying a lot, but it looks
+weird since the line of definition and redefinition are the same.

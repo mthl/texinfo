@@ -5,6 +5,9 @@
 	Improve node name parsing and parse node name in menu taking into
 	account @-commands that may protect some separator characters.
 	Fixes http://savannah.gnu.org/bugs/?8218.
+	* texi2html.pl: use makeinfo error messages for duplicated nodes
+	anchor and floats. Add line number information to anchor and 
+	floats.
 
 2009-08-31   Patrice Dumas  <dumas@centre-cired.fr>
 

@@ -146,7 +146,7 @@ EXTRA_DIST = sectionning.texi novalidate.texi first_section_no_node.texi \
  no_element.texi anchor_in_footnote.texi test_two_include.texi \
  only_documentencoding.texi more_sections_than_nodes.texi \
  nodename_parentheses.texi one_element.texi \
- weird_at_commands_in_nodes.texi \
+ weird_at_commands_in_nodes.texi double_node_anchor_float.texi \
  test_directions.init tests.txt res res_all res_info
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
