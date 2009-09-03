@@ -1427,11 +1427,8 @@ sub docbook_quotation_prepend_text($$)
     return undef if (!defined($argument_text) or $argument_text =~ /^$/);
 
     chomp($argument_text);
-    my $text = $argument_text;
-    $text =~ s/^\s*//;
-    $text =~ s/\s*$//;
 
-    return undef if (grep {lc($text) eq $_} @docbook_special_quotation);
+    return undef if (grep {lc($argument_text) eq $_} @docbook_special_quotation);
     return &$I('@b{%{quotation_arg}:} ', {'quotation_arg' => $argument_text}, {'keep_texi' => 1});
 }
 
@@ -1444,8 +1441,7 @@ sub docbook_quotation($$$$)
     my $argument_text_texi = shift;
 
     $argument_text_texi = '' if (!defined($argument_text_texi));
-    $argument_text_texi =~ s/^\s*//;
-    $argument_text_texi =~ s/\s*$//;
+    chomp($argument_text_texi);
     my $docbook_command = 'blockquote';
     if (grep {lc($argument_text_texi) eq $_} @docbook_special_quotation)
     {

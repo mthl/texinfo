@@ -48,14 +48,12 @@ Before next release
   @copying), @code{something} leads to `something'. In texi2html all the 
   style commands are removed without extra formatting.
 
-* What are the encodings known by info? 
-  (makeinfo says unrecognized encoding name `ascii').
-
 * '00D8' which is Oslash is transliterated on OE?
 
 * makeinfo: multiple index entries have <1>... appended.
   or they are removed. ?
 
+* warn when @documentencoding is not one proposed in the texinfo manual?
 
 Later
 -----
@@ -128,6 +126,7 @@ h1 titlefont (@titlefont),
   $misc_command_line
   new argument of printindex
   new arguments of $unknown_style
+  new arguments of index_entry_label
   NODE_FILENAMES
   $Texi2HTML::THISDOC{'format_from_command_line'}
   language_codes
@@ -218,6 +217,9 @@ function clean_antispam() {
   than book. Maybe the best way to do that would be passing the 
   information that there is only one section to the functions formatting
   the page header and page footer.
+
+* in docbook, if there are 2 nodes without anything to put an id on 
+  the first is forgotten. Also why no id on <para>?
 
 * now config variables are read-only after command line switches
   expansion. If defined, they set $Texi2HTML::THISDOC{'VAR'}
@@ -404,3 +406,22 @@ the use of non 8 bit representation of characters.
 index_special_region.texi:8: Anchor `Copying information' previously defined (l. 8)
 This is right since it is used in @insertcopying a lot, but it looks
 weird since the line of definition and redefinition are the same.
+
+* simple quotes and @set txicodequoteundirected and txicodequotebacktick
+info:
+ ' -> ' always
+
+html:
+ ' -> '             in code_style and preformatted
+ ' -> [lr]squo      otherwise
+
+tex, default:
+ ' -> [lr]squo      always
+
+tex + txicodequote*:
+ ' -> '             in code_style
+ ' -> [lr]squo      otherwise
+
+So things are right as is, but in formats that always set the quotes to 
+a special font should honor  txicodequote* like tex. There is an example
+of such code commented out in texi2html.init in normal_text.

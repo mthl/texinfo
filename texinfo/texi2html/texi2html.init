@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.225 2009-09-02 15:32:09 pertusus Exp $
+# $Id: texi2html.init,v 1.226 2009-09-03 15:06:07 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -981,14 +981,6 @@ sub t2h_default_set_out_encoding()
     # $Texi2HTML::THISDOC{'*_ENCODING'} to keep code shorter
     my ($out_encoding, $encoding_name, $document_encoding);
 
-#    if (defined($DOCUMENT_ENCODING))
-#    {
-#        $document_encoding = $DOCUMENT_ENCODING;
-#    }
-#    elsif (defined($Texi2HTML::THISDOC{'documentencoding'}))
-#    {
-#        $document_encoding = $Texi2HTML::THISDOC{'documentencoding'};
-#    }
     $document_encoding = get_conf('DOCUMENT_ENCODING');
 
     if (defined($OUT_ENCODING))
@@ -1054,7 +1046,6 @@ sub t2h_default_set_out_encoding()
 
     $Texi2HTML::THISDOC{'OUT_ENCODING'} = $out_encoding;
     $Texi2HTML::THISDOC{'ENCODING_NAME'} = $encoding_name;
-    #$Texi2HTML::THISDOC{'DOCUMENT_ENCODING'} = $document_encoding;
 
     $out_encoding = 'UNDEF' if (!defined($out_encoding));
     my $in_encoding = get_conf('IN_ENCODING');
@@ -4955,7 +4946,7 @@ sub t2h_default_normal_text($$$$$$;$)
    }
    else
    {
-       # to be like texinfo
+       # to be like tex. This would be wrong, however.
 #       my $special_code = 0;
 #       $special_code = 1 if (in_cmd($style_stack, 'code') or 
 #           in_cmd($style_stack, 'example') or in_cmd($style_stack, 'verbatim'));
@@ -6108,7 +6099,6 @@ sub t2h_default_address($)
 # arguments:
 # target identifier
 # boolean true if in preformatted format
-# FIXME document the remaining 
 sub t2h_default_index_entry_label($$$$$$$$)
 {
     my $identifier = shift;
@@ -6288,10 +6278,11 @@ sub t2h_default_quotation_prepend_text($$)
     my $command = shift;
     my $text = shift;
     return undef if (!defined($text) or $text =~ /^$/);
-    $text =~ s/^\s*//;
-# FIXME if there is a @ protecting the end of line the result is
-# @b{some text @:}
-# It is likely not to be what was intended
+    # If there is a @ protecting the end of line the result is, 
+    # after the chomp:
+    # @b{some text @:}
+    # It is likely not to be what was intended, but it is certainly right.
+    # this is tested in formatting/quotation.texi
     chomp($text);
     return &$I('@b{%{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1});
 }

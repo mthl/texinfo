@@ -41,6 +41,10 @@ The something @'e @TeX{} is here.
 A @@ at the end of the @@quotation line.
 @end quotation
 
+@quotation @@@  at the end of line @ 
+A @@@  at the end of the @@quotation line.
+@end quotation
+
 @quotation something, other thing
 something, other thing
 @end quotation
@@ -96,6 +100,10 @@ The something @'e @TeX{} is here.
 
 @quotation @@ at the end of line @
 A @@ at the end of the @@quotation line.
+@end quotation
+
+@quotation @@@  at the end of line @ 
+A @@@  at the end of the @@quotation line.
 @end quotation
 
 @quotation something, other thing

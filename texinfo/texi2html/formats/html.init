@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.17 2009-08-23 21:50:16 pertusus Exp $
+# $Id: html.init,v 1.18 2009-09-03 15:06:07 pertusus Exp $
 
 use strict;
 
@@ -185,8 +185,6 @@ $EXTRA_HEAD = '';
 
 # Specifies the minimum page length required before a navigation panel
 # is placed at the bottom of a page 
-# FIXME this is not true:
-# THIS_WORDS_IN_PAGE holds number of words of current page
 $WORDS_IN_PAGE = 300;
 
 # html version for latex2html
@@ -1623,13 +1621,13 @@ sub HTML_DEFAULT_titlepage($$$$)
     return $Texi2HTML::TITLEPAGE;
 }
 
-# FIXME Honor DOCUMENT_DESCRIPTION? 
 sub HTML_DEFAULT_print_redirection_page()
 {
     #my $fh = shift;
     my $longtitle = "$Texi2HTML::THISDOC{'fulltitle_simple_format'}";
-    $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if exists $Texi2HTML::SIMPLE_TEXT{'This'};
-    my $description = $longtitle;
+    $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if (defined ($Texi2HTML::SIMPLE_TEXT{'This'}) and ($Texi2HTML::SIMPLE_TEXT{'This'} !~ /^\s*$/) and ($Texi2HTML::THISDOC{'fulltitle_simple_format'} ne $Texi2HTML::SIMPLE_TEXT{'This'}));
+    my $description = $Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'};
+    $description = $longtitle if (!defined($description));
     my $encoding = '';
     $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$Texi2HTML::THISDOC{'ENCODING_NAME'}\">" if (defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} ne ''));
     my $href = &$anchor('', $Texi2HTML::HREF{'This'}, $Texi2HTML::NAME{'This'}); 
@@ -1972,22 +1970,11 @@ sub html_default_normal_text($$$$$$;$)
                 #$text =~ s/'/\&rsquo\;/g;
                 #$text =~ s/`/\&lsquo\;/g;
             }
-            # temporary reuse '' to store --- !....
-            # FIXME won't '---' be handled wrongly?
             # FIXME really do that in raw text?
-            $text =~ s/---/''/g; 
+            $text =~ s/---/\x{1F}/g;
             $text =~ s/--/-/g; 
-            $text =~ s/''/--/g;
+            $text =~ s/\x{1F}/--/g;
        }
-   }
-   else
-   {
-       # to be like texinfo
-#       my $special_code = 0;
-#       $special_code = 1 if (in_cmd($style_stack, 'code') or 
-#           in_cmd($style_stack, 'example') or in_cmd($style_stack, 'verbatim'));
-#       $text =~ s/'/\&rsquo\;/g unless ($special_code and exists($main::value{'txicodequoteundirected'}));
-#       $text =~ s/`/\&lsquo\;/g unless ($special_code and exists($main::value{'txicodequotebacktick'}));
    }
    return $text;
 }
@@ -2178,9 +2165,8 @@ sub html_default_menu_description($$$$)
 
     my $in_commands = 0;
     $in_commands = 1 if ($command_stack->[-1] and $command_stack->[-1] ne 'menu' and $command_stack->[-1] ne 'detailmenu' and $command_stack->[-1] ne 'direntry');
-    return $text if ($preformatted or $in_commands);
-    # FIXME: the following is better-looking.
-    #return $text."<br>" if ($in_commands and !$state->{'preformatted'});
+    return $text if ($preformatted);
+    return $text."<br>" if ($in_commands);
     if ($AVOID_MENU_REDUNDANCY)
     {
         $text = '' if (html_simplify_text($element_text) eq html_simplify_text($text));

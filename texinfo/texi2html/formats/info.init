@@ -2296,15 +2296,6 @@ sub info_default_normal_text($$$$$$;$)
          $text =~ s/``/"/g;
          $text =~ s/\'\'/"/g;
       }
-      else
-      {
-       # to be like texinfo
-#       my $special_code = 0;
-#       $special_code = 1 if (in_cmd($style_stack, 'code') or 
-#           in_cmd($style_stack, 'example') or in_cmd($style_stack, 'verbatim'));
-#       $text =~ s/'/\&rsquo\;/g unless ($special_code and exists($main::value{'txicodequoteundirected'}));
-#       $text =~ s/`/\&lsquo\;/g unless ($special_code and exists($main::value{'txicodequotebacktick'}));
-      }
    }
    # accented characters are not handled as normal text, but when the last 
    # accent command on the stack is closed.
@@ -2414,6 +2405,8 @@ sub info_default_print_page_foot($)
       print $fh "\x{1F}\nEnd Tag Table\n";
    }
 
+   # IN_ENCODING is the documentencoding transformed to the encoding names
+   # usually seen in html. This is what the info readers should understand.
    my $coding = get_conf('IN_ENCODING');
    $coding = get_conf('DOCUMENT_ENCODING') if (!defined($coding));
    if (defined($coding))

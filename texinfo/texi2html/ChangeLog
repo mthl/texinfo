@@ -1,3 +1,8 @@
+2009-09-03   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init, formats/*: don't remove spaces again in 
+	@quotation formatting.
+
 2009-09-02   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: take into account @  when 

@@ -40,82 +40,90 @@ quotation.texi(,40) @quotation @@ at the end of line @
 quotation.texi(,41) A @@ at the end of the @@quotation line.
 quotation.texi(,42) @end quotation
 quotation.texi(,43) 
-quotation.texi(,44) @quotation something, other thing
-quotation.texi(,45) something, other thing
+quotation.texi(,44) @quotation @@@  at the end of line @ 
+quotation.texi(,45) A @@@  at the end of the @@quotation line.
 quotation.texi(,46) @end quotation
 quotation.texi(,47) 
-quotation.texi(,48) @quotation Note, the note
-quotation.texi(,49) Note, the note
+quotation.texi(,48) @quotation something, other thing
+quotation.texi(,49) something, other thing
 quotation.texi(,50) @end quotation
 quotation.texi(,51) 
-quotation.texi(,52) @quotation
-quotation.texi(,53) @end quotation
-quotation.texi(,54) 
-quotation.texi(,55) @quotation Empty
-quotation.texi(,56) @end quotation
-quotation.texi(,57) 
-quotation.texi(,58) @quotation @asis{}
-quotation.texi(,59) @end quotation
-quotation.texi(,60) 
-quotation.texi(,61) @quotation @*
-quotation.texi(,62) @end quotation
-quotation.texi(,63) 
-quotation.texi(,64) @example
-quotation.texi(,65) @quotation 
-quotation.texi(,66) A quot---ation
-quotation.texi(,67) @end quotation
-quotation.texi(,68) 
-quotation.texi(,69) @quotation Note
-quotation.texi(,70) A Note
+quotation.texi(,52) @quotation Note, the note
+quotation.texi(,53) Note, the note
+quotation.texi(,54) @end quotation
+quotation.texi(,55) 
+quotation.texi(,56) @quotation
+quotation.texi(,57) @end quotation
+quotation.texi(,58) 
+quotation.texi(,59) @quotation Empty
+quotation.texi(,60) @end quotation
+quotation.texi(,61) 
+quotation.texi(,62) @quotation @asis{}
+quotation.texi(,63) @end quotation
+quotation.texi(,64) 
+quotation.texi(,65) @quotation @*
+quotation.texi(,66) @end quotation
+quotation.texi(,67) 
+quotation.texi(,68) @example
+quotation.texi(,69) @quotation 
+quotation.texi(,70) A quot---ation
 quotation.texi(,71) @end quotation
 quotation.texi(,72) 
-quotation.texi(,73) @quotation note
-quotation.texi(,74) A note
+quotation.texi(,73) @quotation Note
+quotation.texi(,74) A Note
 quotation.texi(,75) @end quotation
 quotation.texi(,76) 
-quotation.texi(,77) @quotation Caution
-quotation.texi(,78) Caution
+quotation.texi(,77) @quotation note
+quotation.texi(,78) A note
 quotation.texi(,79) @end quotation
 quotation.texi(,80) 
-quotation.texi(,81) @quotation Important
-quotation.texi(,82) Important
+quotation.texi(,81) @quotation Caution
+quotation.texi(,82) Caution
 quotation.texi(,83) @end quotation
 quotation.texi(,84) 
-quotation.texi(,85) @quotation Tip
-quotation.texi(,86) a Tip
+quotation.texi(,85) @quotation Important
+quotation.texi(,86) Important
 quotation.texi(,87) @end quotation
 quotation.texi(,88) 
-quotation.texi(,89) @quotation Warning
-quotation.texi(,90) a Warning.
+quotation.texi(,89) @quotation Tip
+quotation.texi(,90) a Tip
 quotation.texi(,91) @end quotation
 quotation.texi(,92) 
-quotation.texi(,93) @quotation something @'e @TeX{}
-quotation.texi(,94) The something @'e @TeX{} is here.
+quotation.texi(,93) @quotation Warning
+quotation.texi(,94) a Warning.
 quotation.texi(,95) @end quotation
 quotation.texi(,96) 
-quotation.texi(,97) @quotation @@ at the end of line @
-quotation.texi(,98) A @@ at the end of the @@quotation line.
+quotation.texi(,97) @quotation something @'e @TeX{}
+quotation.texi(,98) The something @'e @TeX{} is here.
 quotation.texi(,99) @end quotation
 quotation.texi(,100) 
-quotation.texi(,101) @quotation something, other thing
-quotation.texi(,102) something, other thing
+quotation.texi(,101) @quotation @@ at the end of line @
+quotation.texi(,102) A @@ at the end of the @@quotation line.
 quotation.texi(,103) @end quotation
 quotation.texi(,104) 
-quotation.texi(,105) @quotation Note, the note
-quotation.texi(,106) Note, the note
+quotation.texi(,105) @quotation @@@  at the end of line @ 
+quotation.texi(,106) A @@@  at the end of the @@quotation line.
 quotation.texi(,107) @end quotation
 quotation.texi(,108) 
-quotation.texi(,109) @quotation
-quotation.texi(,110) @end quotation
-quotation.texi(,111) 
-quotation.texi(,112) @quotation Empty
-quotation.texi(,113) @end quotation
-quotation.texi(,114) 
-quotation.texi(,115) @quotation @asis{}
-quotation.texi(,116) @end quotation
-quotation.texi(,117) 
-quotation.texi(,118) @quotation @*
-quotation.texi(,119) @end quotation
-quotation.texi(,120) @end example
-quotation.texi(,121) 
-quotation.texi(,122) @bye
+quotation.texi(,109) @quotation something, other thing
+quotation.texi(,110) something, other thing
+quotation.texi(,111) @end quotation
+quotation.texi(,112) 
+quotation.texi(,113) @quotation Note, the note
+quotation.texi(,114) Note, the note
+quotation.texi(,115) @end quotation
+quotation.texi(,116) 
+quotation.texi(,117) @quotation
+quotation.texi(,118) @end quotation
+quotation.texi(,119) 
+quotation.texi(,120) @quotation Empty
+quotation.texi(,121) @end quotation
+quotation.texi(,122) 
+quotation.texi(,123) @quotation @asis{}
+quotation.texi(,124) @end quotation
+quotation.texi(,125) 
+quotation.texi(,126) @quotation @*
+quotation.texi(,127) @end quotation
+quotation.texi(,128) @end example
+quotation.texi(,129) 
+quotation.texi(,130) @bye

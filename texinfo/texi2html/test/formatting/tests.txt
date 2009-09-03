@@ -114,6 +114,7 @@ simple_images simple_images.texi
 html-extrali_plain html-extrali.texi
 formats_only_titles formats_only_titles.texi
 
+quotation_docbook quotation.texi --docbook
 at_command_glued_info at_command_glued.texi --init info.init
 test_sp_info test_sp.texi --init info.init
 kbdinputstyle_info kbdinputstyle.texi --init info.init

@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.321 2009-09-02 21:08:54 pertusus Exp $
+# $Id: texi2html.pl,v 1.322 2009-09-03 15:06:07 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -6243,9 +6243,6 @@ sub rearrange_elements()
                     }
                     else
                     {
-                        # FIXME if {'seen'} this is a node appearing in the
-                        # document and a node like `(file)node'. What to 
-                        # do then ?
                         my $node_ref = { 'texi' => $node->{$direction} };
                         $node_ref->{'external_node'} = 1 if ($node->{$direction} =~ /^\(.*\)/);
                         $nodes{$node->{$direction}} = $node_ref;
@@ -7463,6 +7460,7 @@ sub do_names()
         $nodes{$node}->{'heading_texi'} = $texi;
         # FIXME : what to do if $nodes{$node}->{'external_node'} and
         # $nodes{$node}->{'seen'}
+        msg_debug ("$nodes{$node}->{'texi'} is external and was seen",  $nodes{$node}->{'line_nr'}) if ($nodes{$node}->{'seen'} and $nodes{$node}->{'external_node'});
     }
     foreach my $number (keys(%sections))
     {
@@ -9828,7 +9826,6 @@ sub end_format($$$$$)
     elsif ($format_type{$format} eq 'quotation')
     {
         my $quotation_args = pop @{$state->{'quotation_stack'}};
-        #add_prev($text, $stack, &$Texi2HTML::Config::quotation($format_ref->{'text'}, $quotation_args->{'text'}, $quotation_args->{'style_texi'}, $quotation_args->{'style_id'}));
         add_prev($text, $stack, &$Texi2HTML::Config::quotation($format, $format_ref->{'text'}, $quotation_args->{'text'}, $quotation_args->{'text_texi'}));
     }
     elsif ($Texi2HTML::Config::paragraph_style{$format})
@@ -11701,7 +11698,7 @@ sub scan_texi($$$$;$)
             { # special commands whose arguments will have @macro and
               # @value expanded, and that are processed in this pass
                 if ($state->{'ignored'} or ($line_nr->{'file_name'} ne $Texi2HTML::THISDOC{'input_file_name'} and $command eq 'setfilename'))
-                {
+                { # @setfilename is ignored in @include file as said in the manual
                     $cline = '';
                 }
                 elsif ($state->{'arg_expansion'})
@@ -11723,7 +11720,7 @@ sub scan_texi($$$$;$)
                         push @$stack, { 'line_command' => $command, 'text' => $space };
                     }
                     else
-                    {# FIXME warn/error? or just discard?
+                    {# FIXME already in a line_command. warn/error? or just discard?
                         add_prev($text, $stack, "\@$command" . $space);
                     }
                 }
@@ -11965,7 +11962,7 @@ sub scan_texi($$$$;$)
                if (!defined($command) or !defined($command->{'text'}) or 
                  !defined($command->{'line_command'}) or ($command->{'line_command'} ne $state->{'line_command'}))
                {
-                   print STDERR "BUG: messed $state->{'line_command'} stack\n";
+                   msg_debug ("BUG: messed $state->{'line_command'} stack", $line_nr);
                    delete $state->{'line_command'};
                    return;
                }
@@ -12002,7 +11999,6 @@ sub scan_texi($$$$;$)
                        {
                            my $file_name = $2;
                            $file_name = trim_around_spaces($file_name);
-                           #$file_name = substitute_line($file_name, {'code_style' => 1});
                            $file_name = substitute_line($file_name, "\@$macro", {'code_style' => 1, 'remove_texi' => 1});
                            my $file = locate_include_file($file_name);
                            if (defined($file))

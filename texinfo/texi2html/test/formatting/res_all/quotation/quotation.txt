@@ -19,6 +19,8 @@ something e' TeX: The something e' TeX is here.
 
 @ at the end of line  A @ at the end of the @quotation line.
 
+@  at the end of line  : A @  at the end of the @quotation line.
+
 something, other thing: something, other thing
 
 Note, the note: Note, the note
@@ -49,6 +51,8 @@ Warning: a Warning.
 something e' TeX: The something e' TeX is here.
 
 @ at the end of line  A @ at the end of the @quotation line.
+
+@  at the end of line  : A @  at the end of the @quotation line.
 
 something, other thing: something, other thing
 
