@@ -2,6 +2,8 @@
 
 	* texi2html.init, formats/*: don't remove spaces again in 
 	@quotation formatting.
+	* texi2html.pl: associate node directions with a section only
+	if there is an associated node.
 
 2009-09-02   Patrice Dumas  <dumas@centre-cired.fr>
 

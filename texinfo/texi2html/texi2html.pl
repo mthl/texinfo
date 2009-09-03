@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.322 2009-09-03 15:06:07 pertusus Exp $
+# $Id: texi2html.pl,v 1.323 2009-09-03 19:22:10 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -6594,8 +6594,7 @@ sub rearrange_elements()
         $node_nr++;
     }
     
-    # do node directions for sections
-    # FIXME: really do that?
+    # do node directions for sections.
     foreach my $section (@sections_list)
     {
         # If the element is not a node, then all the node directions are copied
@@ -6611,58 +6610,8 @@ sub rearrange_elements()
             $section->{'nodeup'} = $section->{'with_node'}->{'nodeup'};
             $section->{'following'} = $section->{'with_node'}->{'following'};
         }
-        else
-        { # the section has no node associated. Find the node directions using 
-          # sections
-            if (defined($section->{'toplevelnext'}))
-            {
-                 $section->{'nodenext'} = get_node($section->{'toplevelnext'});
-            }
-            elsif (defined($section->{'sectionnext'}))
-            {
-                 $section->{'nodenext'} = get_node($section->{'sectionnext'});
-            }
-            if (defined($section->{'toplevelprev'}))
-            {
-                 $section->{'nodeprev'} = get_node($section->{'toplevelprev'});
-            }
-            elsif (defined($section->{'sectionprev'}))
-            {
-                 $section->{'nodeprev'} = get_node($section->{'sectionprev'});
-            }
-            if (defined($section->{'sectionup'}))
-            {
-                 $section->{'nodeup'} = get_node($section->{'sectionup'});
-            }
-
-            if ($section->{'child'})
-            {
-                $section->{'following'} = get_node($section->{'child'});
-            }
-            elsif ($section->{'toplevelnext'})
-            {
-                $section->{'following'} = get_node($section->{'toplevelnext'});
-            }
-            elsif ($section->{'sectionnext'})
-            {
-                $section->{'following'} = get_node($section->{'sectionnext'});
-            }
-            elsif ($section->{'sectionup'})
-            {
-                my $up = $section;
-                while ($up->{'sectionup'} and !$section->{'following'})
-                {
-                    print STDERR "# Going up, searching next section from $up->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-                    die "BUG: $up->{'texi'} is up for itself\n" if ($up eq $up->{'sectionup'});
-                    $up = $up->{'sectionup'};
-                    if ($up->{'sectionnext'})
-                    {
-                        $section->{'following'} = get_node ($up->{'sectionnext'});
-                    }
-                }
-            }
-        }
     }
+
     my $only_nodes = 0;
     my $only_sections = 0;
 
