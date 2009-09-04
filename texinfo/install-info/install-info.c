@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.14 2009-03-14 17:57:42 karl Exp $
+   $Id: install-info.c,v 1.15 2009-09-04 17:45:07 karl Exp $
 
    Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -1778,7 +1778,7 @@ munge_old_style_debian_options (int argc, char **argv,
             err = argz_add (&argz, &argz_len, opt);
           free (opt); opt = NULL;
 
-          opt = xmalloc (strlen (regex) + sizeof ("--section="));
+          opt = xmalloc (strlen (title) + sizeof ("--section="));
           if (sprintf (opt, "--section=%s", title) == -1)
             err = 1;
           if (!err)

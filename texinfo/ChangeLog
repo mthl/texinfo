@@ -1,7 +1,14 @@
+2009-09-04  Karl Berry  <karl@gnu.org>
+
+	* install-info/install-info.c (munge_old_style_debian_options):
+	malloc what we sprintf.
+	From Matt McCutchen, http://savannah.gnu.org/bugs/?27376.
+
 2009-08-14  Karl Berry  <karl@gnu.org>
 
-	* (\rgbDarkRed, \rgbBlack): new macros, replacing \cmykDarkRed and
-	\cmykBlack.  Change uses.  Said to print considerably better.
+	* doc/texinfo.tex (\rgbDarkRed, \rgbBlack): new macros, replacing
+	\cmykDarkRed and \cmykBlack.  Change uses.  Said to print
+	considerably better.
 	From: Andrew Hawryluk, 12 Aug 2009 21:22:06.`,
 
 2009-07-25  Oleg Katsitadze <olegkat@gmail.com>
