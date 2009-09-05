@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.3.2 echo</title>
+<title>Singular 2-0-4 Manual: 5.3.3 minpoly</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.3.2 echo">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.3.2 echo">
+<meta name="description" content="Singular 2-0-4 Manual: 5.3.3 minpoly">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.3.3 minpoly">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="echo"></a>
+<a name="minpoly"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_308.htm#degBound" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.3.1 degBound" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_308.htm#echo" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.3.2 echo" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_310.htm#minpoly" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3.3 minpoly" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_310.htm#multBound" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3.4 multBound" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_307.htm#System-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.3 System variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_306.htm#System-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.3 System variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,28 +82,41 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="echo-1"></a>
-<h3 class="subsection">5.3.2 echo</h3>
-<a name="index-echo"></a>
+<a name="minpoly-1"></a>
+<h3 class="subsection">5.3.3 minpoly</h3>
+<a name="index-minpoly"></a>
 <dl compact="compact">
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>int
+<dd><p>number
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>input is echoed if <code>echo</code> &gt;= <code>voice</code>.
-<br><code>echo</code> is a local setting for a procedure and defaulted to 0.
-<br><code>echo</code> does not affect the output of commands.
+<dd><p>describes the coefficient field of the current basering as
+an algebraic extension with the minimal polynomial equal to <code>minpoly</code>.
+Setting the <code>minpoly</code> should be the first command after
+defining the ring.
+</p></dd>
+<dt><code><strong>Note:</strong></code></dt>
+<dd><p>The minimal polynomial has to be specified in the syntax of a polynomial.
+Its variable is not one of the ring variables, but the algebraic element
+which is being adjoined to the field.
+Algebraic extensions in <small>SINGULAR</small> are only possible over the rational
+numbers or over Z/p, p a prime number.
+<br><small>SINGULAR</small> does not check whether the given
+polynomial is irreducible! It can be checked in advance with the
+function <code>factorize</code> (see <a href="sing_184.htm#factorize">factorize</a>).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">echo = 1;
-int i = echo;
-&rarr; int i = echo;
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  //(Q[i]/(i^2+1))[x,y,z]:
+  ring Cxyz=(0,i),(x,y,z),dp;
+  minpoly=i^2+1;
+  i2;  //this is a number, not a poly
+&rarr; -1
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_74.htm#int">int</a>;
-<a href="sing_318.htm#voice">voice</a>.
+<a href="sing_184.htm#factorize">factorize</a>;
+<a href="sing_138.htm#ring">ring</a>.
 </p></td>
 </tr>
 </table>
@@ -113,14 +126,14 @@ int i = echo;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_308.htm#degBound" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.3.1 degBound" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_310.htm#minpoly" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3.3 minpoly" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_307.htm#System-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.3 System variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_308.htm#echo" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.3.2 echo" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_310.htm#multBound" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3.4 multBound" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_306.htm#System-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.3 System variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

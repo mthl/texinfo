@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.4.3.9 homology</title>
+<title>Singular 2-0-4 Manual: D.4.3.10 isCM</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.4.3.9 homology">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.4.3.9 homology">
+<meta name="description" content="Singular 2-0-4 Manual: D.4.3.10 isCM">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.3.10 isCM">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="homology"></a>
+<a name="isCM"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_558.htm#Hom" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.8 Hom" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_558.htm#homology" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.9 homology" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_560.htm#isCM" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.10 isCM" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_560.htm#isFlat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.11 isFlat" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_550.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_549.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,65 +82,35 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="homology-1"></a>
-<h4 class="subsubsection">D.4.3.9 homology</h4>
-<a name="index-homology"></a>
-<p>Procedure from library <code>homolog.lib</code> (see <a href="sing_550.htm#homolog_005flib">homolog_lib</a>).
+<a name="isCM-1"></a>
+<h4 class="subsubsection">D.4.3.10 isCM</h4>
+<a name="index-isCM"></a>
+<p>Procedure from library <code>homolog.lib</code> (see <a href="sing_549.htm#homolog_005flib">homolog_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>homology(A,B,M,N);
+<dd><p>isCM(M); M module
 </p>
-</dd>
-<dt><strong>Compute:</strong></dt>
-<dd><p>Let M and N be submodules of R^m and R^n presenting M&rsquo;=R^m/M, N&rsquo;=R^n/N
-(R=basering) and let A,B matrices inducing maps
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">    R^k --A--&gt; R^m --B--&gt; R^n.
-</pre></td></tr></table>
-<p>Compute a presentation of the module
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">    ker(B)/im(A) := ker(M'/im(A) --B--&gt; N'/im(BM)+im(BA)).
-</pre></td></tr></table>
-<p>If B induces a map M&rsquo;&ndash;&gt;N&rsquo; (i.e BM=0) and if im(A) is contained in
-ker(B) (that is, BA=0) then ker(B)/im(A) is the homology of the
-complex
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">    R^k--A--&gt;M'--B--&gt;N'. 
-</pre></td></tr></table>
-
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>module H, a presentation of ker(B)/im(A).
+<dd><p>1 if M&rsquo;=coker(M) is Cohen-Macaulay;<br>
+0 if this is not the case.
 </p>
 </dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>homology returns a free module of rank m if ker(B)=im(A).
+<dt><strong>Assume:</strong></dt>
+<dd><p>basering is local.
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
-ring r;
-ideal id=maxideal(4);
-qring qr=std(id);
-module N=maxideal(3)*freemodule(2);
-module M=maxideal(2)*freemodule(2);
-module B=[2x,0],[x,y],[z2,y];
-module A=M;
-module H=homology(A,B,M,N);
-H=std(H);
-// dimension of homology:
-dim(H);
+ring R=0,(x,y,z),ds;  // local ring R = Q[x,y,z]_&lt;x,y,z&gt;
+module M=xz,yz,z2;   
+isCM(M);             // test if R/&lt;xz,yz,z2&gt; is Cohen-Macaulay
 &rarr; 0
-// vector space dimension: 
-vdim(H);
-&rarr; 19
-ring s=0,x,ds;
-qring qs=std(x4);
-module A=[x];
-module B=A;
-module M=[x3];
-module N=M;
-homology(A,B,M,N);
-&rarr; _[1]=gen(1)
+M=x2+y2,z7;          // test if R/&lt;x2+y2,z7&gt; is Cohen-Macaulay
+isCM(M);
+&rarr; 1
 </pre></td></tr></table>
 
 </td>
@@ -152,14 +122,14 @@ homology(A,B,M,N);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_558.htm#Hom" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.8 Hom" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_560.htm#isCM" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.10 isCM" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_550.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_558.htm#homology" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.9 homology" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_560.htm#isFlat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.11 isFlat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_549.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

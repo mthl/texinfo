@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.5.4 extdevelop</title>
+<title>Singular 2-0-4 Manual: D.5.5.5 parametrisation</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.5.4 extdevelop">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.5.4 extdevelop">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.5.5 parametrisation">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.5.5 parametrisation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="extdevelop"></a>
+<a name="parametrisation"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_685.htm#develop" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.3 develop" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_685.htm#extdevelop" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.4 extdevelop" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_687.htm#parametrisation" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.5 parametrisation" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_687.htm#displayHNE" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.6 displayHNE" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_682.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_681.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,90 +84,108 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="extdevelop-1"></a>
-<h4 class="subsubsection">D.5.5.4 extdevelop</h4>
-<a name="index-extdevelop"></a>
-<p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_682.htm#hnoether_005flib">hnoether_lib</a>).
+<a name="parametrisation-1"></a>
+<h4 class="subsubsection">D.5.5.5 parametrisation</h4>
+<a name="index-parametrisation"></a>
+<p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_681.htm#hnoether_005flib">hnoether_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>extdevelop(L,N); list L, int N
+<dd><p>parametrisation(INPUT [,x]); INPUT list or poly, x int (optional)
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>L is the output of <code>develop(f)</code>, or of <code>extdevelop(l,n)</code>,
-or one entry in the list <code>hne</code> in the ring created by
-<code>hnexpansion(f[,&quot;ess&quot;])</code>.
+<dd><p>INPUT is either a bivariate polynomial f defining a plane curve
+singularity, or it is the output of <code>hnexpansion(f[,&quot;ess&quot;])</code>,
+or of <code>develop(f)</code>, or of <code>extdevelop(develop(f),n)</code>,
+or the list @{hne} in the ring created by <code>hnexpansion(f)</code>
+respectively one entry thereof.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>an extension of the Hamburger-Noether development of f as a list
-in the same format as L has (up to the last entry in the output
-of <code>develop(f)</code>).<br>
-Type <code>help develop;</code>, resp. <code>help hnexpansion;</code> for more
-details.
+<dd><p>a list L containing a parametrization L[i] for each branch f[i] of f
+in the following format: <br>
+- if only the list INPUT is given, L[i] is an ideal of two polynomials
+p[1],p[2]: if the HNE of was finite then f[i](p[1],p[2])=0; if not,
+the &quot;real&quot; parametrization will be two power series and p[1],p[2] are
+truncations of these series.<br>
+- if the optional parameter x is given, L[i] is itself a list:
+L[i][1] is the parametrization ideal as above and L[i][2] is an intvec
+with two entries indicating the highest degree up to which the
+coefficients of the monomials in L[i][1] are exact (entry -1 means that
+the corresponding parametrization is exact).
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>The new HN-matrix will have at least N columns (if the HNE is not
-finite). In particular, if f is irreducible then (in most cases)
-<code>extdevelop(develop(f),N)</code> will produce the same result as
-<code>develop(f,N)</code>.<br>
-If the matrix M of L has n columns then, compared with
-<code>parametrisation(L)</code>, <code>paramametrize(extdevelop(L,N))</code> will increase the
-exactness by at least (N-n) more significant monomials.
+<dd><p>If the basering has only 2 variables, the first variable is chosen
+as indefinite. Otherwise, the 3rd variable is chosen. <br>
+In case the Hamburger-Noether expansion of the curve f is needed
+for other purposes as well it is better to calculate this first
+with the aid of <code>hnexpansion</code> and use it as input instead of
+the polynomial itself.
 </p>
+<a name="index-parametrization"></a>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;hnoether.lib&quot;;
-if (defined(HNEring))
-{
-def save_r_i_n_g=HNEring;
-kill HNEring;
-}
-// ------ the example starts here -------
-ring exring=0,(x,y),dp;
-list hn=hnexpansion(x14-3y2x11-y3x10-y2x9+3y4x8+y5x7+3y4x6+x5*(-y6+y5)
--3y6x3-y7x2+y8);
-def HNEring=hn[1];
-setring HNEring;  
-export(HNEring);  
-&rarr; // ** `HNEring` is already global
-print(hne[1][1]);    // HNE of 1st branch is finite
-&rarr; 0,x,0,
-&rarr; 0,1,x 
-print(extdevelop(hne[1],5)[1]);
-&rarr;  No extension is possible
-&rarr; 0,x,0,
-&rarr; 0,1,x 
-print(hne[2][1]);    // HNE of 2nd branch can be extended
-&rarr; 0,x,0,
-&rarr; 0,1,x,
-&rarr; 0,1,-1
-list ehne=extdevelop(hne[2],5);
-print(ehne[1]);      // new HN-matrix has 5 columns
-&rarr; 0,x,0, 0,0,
-&rarr; 0,1,x, 0,0,
-&rarr; 0,1,-1,1,-1
-parametrisation(hne[2]);
+ring exring=0,(x,y,t),ds;
+// 1st Example: input is a polynomial
+poly g=(x2-y3)*(x3-y5);
+parametrisation(g);
 &rarr; [1]:
-&rarr;    _[1]=x4-x5-x6+x7
-&rarr;    _[2]=x6-2x7+2x9-x10
-parametrisation(ehne);
+&rarr;    _[1]=t3
+&rarr;    _[2]=t2
+&rarr; [2]:
+&rarr;    _[1]=t5
+&rarr;    _[2]=t3
+// 2nd Example: input is the ring of a Hamburger-Noether expansion
+poly h=x2-y2-y3;
+list hn=hnexpansion(h);
+parametrisation(h,1);
 &rarr; [1]:
-&rarr;    _[1]=x4-x5+x6-x7-x8+x9-x10+x11
-&rarr;    _[2]=x6-2x7+3x8-4x9+2x10-2x12+4x13-3x14+2x15-x16
-if (defined(save_r_i_n_g))
-{
-kill HNEring;
-def HNEring=save_r_i_n_g;
-}
+&rarr;    [1]:
+&rarr;       _[1]=t
+&rarr;       _[2]=t-1/2t2
+&rarr;    [2]:
+&rarr;       -1,2
+&rarr; [2]:
+&rarr;    [1]:
+&rarr;       _[1]=t
+&rarr;       _[2]=-t-1/2t2
+&rarr;    [2]:
+&rarr;       -1,2
+// 3rd Example: input is a Hamburger-Noether expansion
+poly f=x3+2xy2+y2;
+list hne=develop(f);
+list hne_extended=extdevelop(hne,10);
+//   compare the matrices ...
+print(hne[1]);
+&rarr; 0,x,
+&rarr; 0,-1
+print(hne_extended[1]);
+&rarr; 0,x, 0,0,0,0, 0,0,0,0, 
+&rarr; 0,-1,0,2,0,-4,0,8,0,-16
+// ... and the resulting parametrizations:
+parametrisation(hne);
+&rarr; [1]:
+&rarr;    _[1]=-t2
+&rarr;    _[2]=-t3
+parametrisation(hne_extended);
+&rarr; [1]:
+&rarr;    _[1]=-t2+2t4-4t6+8t8-16t10
+&rarr;    _[2]=-t3+2t5-4t7+8t9-16t11
+parametrisation(hne_extended,0);
+&rarr; [1]:
+&rarr;    [1]:
+&rarr;       _[1]=-t2+2t4-4t6+8t8-16t10
+&rarr;       _[2]=-t3+2t5-4t7+8t9-16t11
+&rarr;    [2]:
+&rarr;       10,11
 </pre></td></tr></table>
 <p><strong>See also:</strong>
-<a href="sing_685.htm#develop">develop</a>;
-<a href="sing_683.htm#hnexpansion">hnexpansion</a>;
-<a href="sing_687.htm#parametrisation">parametrisation</a>.
+<a href="sing_684.htm#develop">develop</a>;
+<a href="sing_685.htm#extdevelop">extdevelop</a>.
 </p>
 
 </td>
@@ -179,14 +197,14 @@ def HNEring=save_r_i_n_g;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_685.htm#develop" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.3 develop" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_687.htm#parametrisation" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.5 parametrisation" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_682.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_685.htm#extdevelop" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.4 extdevelop" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_687.htm#displayHNE" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.6 displayHNE" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_681.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

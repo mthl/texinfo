@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.5 hnoether_lib</title>
+<title>Singular 2-0-4 Manual: D.5.5.1 hnexpansion</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.5 hnoether_lib">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.5 hnoether_lib">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.5.1 hnexpansion">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.5.1 hnexpansion">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="hnoether_005flib"></a>
+<a name="hnexpansion"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_681.htm#spgamma" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.4.23 spgamma" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_681.htm#hnoether_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5 hnoether_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_683.htm#hnexpansion" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.1 hnexpansion" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_683.htm#sethnering" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.2 sethnering" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_630.htm#Singularities" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5 Singularities" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_681.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,82 +82,175 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="hnoether_005flib-1"></a>
-<h3 class="subsection">D.5.5 hnoether_lib</h3>
-<a name="index-hnoether_002elib"></a>
-<a name="index-hnoether_005flib"></a>
+<a name="hnexpansion-1"></a>
+<h4 class="subsubsection">D.5.5.1 hnexpansion</h4>
+<a name="index-hnexpansion"></a>
+<p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_681.htm#hnoether_005flib">hnoether_lib</a>).
+</p>
 <dl compact="compact">
-<dt><strong>Library:</strong></dt>
-<dd><p>hnoether.lib
-</p></dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>   Hamburger-Noether (Puiseux) Development
-</p></dd>
-<dt><strong>Author:</strong></dt>
-<dd><p>Martin Lamm, lamm@mathematik.uni-kl.de
+<dt><strong>Usage:</strong></dt>
+<dd><p>hnexpansion(f); or hnexpansion(f,&quot;ess&quot;); f poly
 </p>
 </dd>
-<dt><strong>Overview:</strong></dt>
-<dd><p>A library for computing the Hamburger-Noether, resp. Puiseux, development
-of a plane curve singularity following [Campillo, A.: Algebroid curves
-in positive characteristic, Springer LNM 813 (1980)]. <br>
-The library contains also procedures for computing the (topological)
-numerical invariants of plane curve singularities.
+<dt><strong>Usage:</strong></dt>
+<dd><p>hnexpansion(f); f poly
+</p>
+</dd>
+<dt><strong>Assume:</strong></dt>
+<dd><p>f is a bivariate polynomial (in the first 2 ring variables)
+</p>
+</dd>
+<dt><strong>Create:</strong></dt>
+<dd><p>ring with variables <code>x,y</code> and ordering <code>ls</code> over a
+field extension of the current basering&rsquo;s ground field, 
+since the Hamburger-Noether development usually does not exist
+in the originally given basering. The field extension is chosen
+minimally.<br>
+Moreover, in the ring a list <code>hne</code> of lists <code>hne[i]</code> is
+created (corresponding to the output of <code>develop(f[i])</code>,
+f[i] a branch of f, but the last entry being omitted).
+</p>
+<dl compact="compact">
+<dt><code>hne[i][1]</code>; matrix:</dt>
+<dd><p>         Each row contains the coefficients of the corresponding line of the
+         Hamburger-Noether expansion (HNE) for f[i]. The end of the line is
+         marked in the matrix by the first ring variable (usually x).
+</p></dd>
+<dt><code>hne[i][2]</code>; intvec:</dt>
+<dd><p>         indicating the length of lines of the HNE
+</p></dd>
+<dt><code>hne[i][3]</code>; int:</dt>
+<dd><p>         0  if the 1st ring variable was transversal (with respect to f[i]), <br>
+         1  if the variables were changed at the beginning of the
+            computation, <br>
+        -1  if an error has occurred.
+</p></dd>
+<dt><code>hne[i][4]</code>; poly:</dt>
+<dd><p>         the transformed polynomial of f[i] to make it possible to extend the
+         Hamburger-Noether development a posteriori without having to do
+         all the previous calculation once again (0 if not needed)
+</p></dd>
+</dl>
+
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>a list, say <code>hn</code>, containing the created ring
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>to use the ring type: <code>def HNEring=hn[i]; setring HNEring;</code>.
+<br>
+If f is known to be irreducible as a power series, <code>develop(f)</code>
+could be chosen instead to avoid the change of basering. <br>
+Increasing <code>printlevel</code> leads to more and more comments.
+</p>
+</dd>
+<dt><strong>Usage:</strong></dt>
+<dd><p>hnexpansion(f,&quot;ess&quot;); f poly
+</p>
+</dd>
+<dt><strong>Assume:</strong></dt>
+<dd><p>f is a bivariate polynomial (in the first 2 ring variables)
+</p>
+</dd>
+<dt><strong>Create:</strong></dt>
+<dd><p>ring with variables <code>x,y</code> and ordering <code>ls</code> over a
+field extension of the current basering&rsquo;s ground field, 
+since the Hamburger-Noether development usually does not exist
+in the originally given basering. The field extension is chosen
+minimally.
+<br>
+Moreover, in the ring a list <code>hne</code> of lists <code>hne[i]</code> is
+created (corresponding to the output of <code>develop(f[i])</code>, f[i] an
+&quot;essential&quot; branch of f, but the last entry being omitted). See
+<code>hnexpansion</code> above for more details.
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>a list, say <code>hn</code>, containing the created ring
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>to use the ring type: <code>def hnering=hn[i]; setring hnering;</code>.
+<br>
+Alternatively you may use the procedure sethnering and type:
+<code>sethnering(hn);</code>
+<br>
+If the HNE needs a field extension, some of the branches will be
+conjugate. In this case <code>hnexpansion(f,&quot;ess&quot;)</code> reduces the
+computation to one representative for each group of conjugate
+branches.<br>
+Note that the degree of each branch is in general less than the degree
+of the field extension in which all HNEs can be put.<br>
+Use <code>hnexpansion(f)</code> to compute a complete HNE, i.e., a HNE for
+all branches.<br>
+Increasing <code>printlevel</code> leads to more and more comments.
 </p>
 </dd>
 </dl>
-
-<p><strong>Main procedures:</strong>
-</p><blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_683.htm#hnexpansion">D.5.5.1 hnexpansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Hamburger-Noether (H-N) development of f
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_684.htm#sethnering">D.5.5.2 sethnering</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> changes to the hnering created by hnexpansion
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_685.htm#develop">D.5.5.3 develop</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> H-N development of irreducible curves
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_686.htm#extdevelop">D.5.5.4 extdevelop</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> extension of the H-N development hne of f
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_687.htm#parametrisation">D.5.5.5 parametrisation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> a parametrization of f
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_688.htm#displayHNE">D.5.5.6 displayHNE</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> display H-N development as an ideal
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_689.htm#invariants">D.5.5.7 invariants</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> invariants of f, e.g. the characteristic exponents
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_690.htm#displayInvariants">D.5.5.8 displayInvariants</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> display invariants of f
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_691.htm#multsequence">D.5.5.9 multsequence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> sequence of multiplicities
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_692.htm#displayMultsequence">D.5.5.10 displayMultsequence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> display sequence of multiplicities
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_693.htm#intersection">D.5.5.11 intersection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> intersection multiplicity of two curves
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_694.htm#stripHNE">D.5.5.12 stripHNE</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> reduce amount of memory consumed by hne
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_695.htm#is_005firred">D.5.5.13 is_irred</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test if f is irreducible
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_696.htm#delta">D.5.5.14 delta</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> delta invariant of f
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_697.htm#newtonpoly">D.5.5.15 newtonpoly</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> (local) Newton polygon of f
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_698.htm#is_005fNND">D.5.5.16 is_NND</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test if f is Newton non-degenerate
-</td></tr>
-</table></blockquote>
-<p><strong>Auxiliary procedures:</strong>
-</p><blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_699.htm#puiseux2generators">D.5.5.17 puiseux2generators</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> convert Puiseux pairs to generators of semigroup
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_700.htm#separateHNE">D.5.5.18 separateHNE</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> number of quadratic transf. needed for separation
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_701.htm#squarefree">D.5.5.19 squarefree</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> a squarefree divisor of the poly f
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_702.htm#allsquarefree">D.5.5.20 allsquarefree</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> the maximal squarefree divisor of the poly f
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_703.htm#further_005fhn_005fproc">D.5.5.21 further_hn_proc</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> show further procedures useful for interactive use
-</td></tr>
-</table></blockquote>
-<a name="index-Hamburger_002dNoether-expansion"></a>
-<a name="index-Puiseux-expansion"></a>
-<a name="index-curve-singularities"></a>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;hnoether.lib&quot;;
+ring r=0,(x,y),ls;
+list hn=hnexpansion(x4-y6);
+show(hn);
+&rarr; // list, 1 element(s):
+&rarr; [1]:
+&rarr;    // ring: (0),(x,y),(ls(2),C);
+&rarr;    // minpoly = 0
+&rarr; // objects belonging to this ring:
+&rarr; // hne                  [0]  list, size: 2
+def hnering=hn[1];
+setring hnering;
+size(hne);           // number of branches
+&rarr; 2
+print(hne[1][1]);    // HN-matrix of 1st branch
+&rarr; 0,x,0,
+&rarr; 0,1,x 
+parametrisation(hne);    // parametrization of the two branches
+&rarr; [1]:
+&rarr;    _[1]=x3
+&rarr;    _[2]=x2
+&rarr; [2]:
+&rarr;    _[1]=-x3
+&rarr;    _[2]=-x2
+/////////////////////////////////////////////////////////
+ring s=2,(x,y),ls;
+poly f=(x4+x2y+y2)*(x3+xy2+y3);
+// --------- compute all branches: ---------
+hn=hnexpansion(f);
+&rarr; // new minimal polynomial: a6+a5+a3+a2+1
+hnering=hn[1];
+setring hnering;
+displayHNE(hne[1]);   // HN-matrix of 1st branch
+&rarr; HNE[1]=y+(a^4+a+1)*z(0)
+&rarr; HNE[2]=x+z(0)
+displayHNE(hne[4]);   // HN-matrix of 4th branch
+&rarr; HNE[1]=y+(a^4+a^2+a+1)*z(0)^2
+&rarr; HNE[2]=x+z(0)
+setring s;
+// --- compute only one of conjugate branches: ---
+hn=hnexpansion(f,&quot;ess&quot;);
+&rarr; // new minimal polynomial: a6+a5+a3+a2+1
+hnering=hn[1];
+setring hnering;
+displayHNE(hne);
+&rarr; // Hamburger-Noether development of branch nr.1:
+&rarr; HNE[1]=y+(a^4+a^2)*z(0)
+&rarr; HNE[2]=x+z(0)
+&rarr; 
+&rarr; // Hamburger-Noether development of branch nr.2:
+&rarr; HNE[1]=y+(a^4+a^2+a)*z(0)^2
+&rarr; HNE[2]=x+z(0)
+&rarr; 
+// no. 1 of hnexpansion(f,&quot;ess&quot;) represents no. 1 - 3 of hnexpansion(f) and
+// no. 2 of hnexpansion(f,&quot;ess&quot;) represents no. 4 + 5 of hnexpansion(f)
+</pre></td></tr></table>
+<p><strong>See also:</strong>
+<a href="sing_684.htm#develop">develop</a>;
+<a href="sing_687.htm#displayHNE">displayHNE</a>;
+<a href="sing_685.htm#extdevelop">extdevelop</a>;
+<a href="sing_686.htm#parametrisation">parametrisation</a>.
+</p>
 
 </td>
 </tr>
@@ -168,14 +261,14 @@ numerical invariants of plane curve singularities.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_681.htm#spgamma" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.4.23 spgamma" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_683.htm#hnexpansion" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.1 hnexpansion" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_630.htm#Singularities" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5 Singularities" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_681.htm#hnoether_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5 hnoether_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_683.htm#sethnering" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.2 sethnering" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_681.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

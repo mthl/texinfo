@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.52 interred</title>
+<title>Singular 2-0-4 Manual: 5.1.53 intersect</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.52 interred">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.52 interred">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.53 intersect">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.53 intersect">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="interred"></a>
+<a name="intersect"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_206.htm#insert" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.51 insert" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_206.htm#interred" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.52 interred" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_208.htm#intersect" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.53 intersect" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_208.htm#jacob" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.54 jacob" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,123 +82,49 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="interred-1"></a>
-<h3 class="subsection">5.1.52 interred</h3>
-<a name="index-interred"></a>
+<a name="intersect-1"></a>
+<h3 class="subsection">5.1.53 intersect</h3>
+<a name="index-intersect"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>interred (</code> ideal_expression <code>)</code>
-<br><code>interred (</code> module_expression <code>)</code>
+<dd><p><code>intersect (</code> expression_list of ideal_expression <code>)</code>
+<br><code>intersect (</code> expression_list of module_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>the same as the input type
+<dd><p>ideal, resp. module
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>interreduces a set of polynomials/vectors.
-<br>
-input: <SPAN CLASS="MATH"><IMG
- WIDTH="66" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_106.png"
- ALT="$f_1,\dots,f_n$"></SPAN>
-<br>
-output: <SPAN CLASS="MATH"><IMG
- WIDTH="64" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_107.png"
- ALT="$g_1,\dots,g_s$"></SPAN> with <SPAN CLASS="MATH"><IMG
- WIDTH="39" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_108.png"
- ALT="$s \leq n$"></SPAN> and the properties
-</p><ul>
-<li>
-<!-- MATH
- $(f_1,\dots,f_n) = (g_1,\dots,g_s)$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="170" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_109.png"
- ALT="$(f_1,\dots,f_n) = (g_1,\dots,g_s)$"></SPAN>
-</li><li>
-<!-- MATH
- $L(g_i)\neq L(g_j)$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="92" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_110.png"
- ALT="$L(g_i)\neq L(g_j)$"></SPAN> for all <SPAN CLASS="MATH"><IMG
- WIDTH="35" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_111.png"
- ALT="$i\neq j$"></SPAN>
-</li><li>
-in the case of a global ordering (polynomial ring):
-<br>
-<SPAN CLASS="MATH"><IMG
- WIDTH="37" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_112.png"
- ALT="$L(g_i)$"></SPAN>
- does not divide m for all monomials m of
-<!-- MATH
- $\{g_1,\dots,g_{i-1},g_{i+1},\dots,g_s\}$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="173" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_113.png"
- ALT="$\{g_1,\dots,g_{i-1},g_{i+1},\dots,g_s\}$"></SPAN>
-</li><li>
-in the case of a local or mixed ordering (localization of polynomial ring):
-<br> if
-<!-- MATH
- $L(g_i) | L(g_j)$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="76" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_114.png"
- ALT="$L(g_i) \vert L(g_j)$"></SPAN> for any <SPAN CLASS="MATH"><IMG
- WIDTH="35" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_111.png"
- ALT="$i\neq j$"></SPAN>,
-then
-<!-- MATH
- $ecart(g_i) > ecart(g_j)$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="140" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_115.png"
- ALT="$ecart(g_i) &gt; ecart(g_j)$"></SPAN>
-</li></ul>
-<p>Here, <SPAN CLASS="MATH"><IMG
- WIDTH="33" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_116.png"
- ALT="$L(g)$"></SPAN> denotes the leading term of <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_117.png"
- ALT="$g$"></SPAN> and
-<!-- MATH
- $ecart(g):=deg(g)-deg(L(g))$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="204" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_118.png"
- ALT="$ecart(g):=deg(g)-deg(L(g))$"></SPAN>.
+<dd><p>computes the intersection of ideals, resp. modules.
+</p></dd>
+<dt><code><strong>Note:</strong></code></dt>
+<dd><p>If the option <code>returnSB</code> is enabled then the result is a standard basis.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
-  ideal i=x2+z,z,2z;
-  interred(i);
-&rarr; _[1]=z
-&rarr; _[2]=x2
-  ring R=0,(x,y,z),ds;
-  ideal i=zx+y3,z+y3,z+xy;
-  interred(i);
-&rarr; _[1]=z+xy
-&rarr; _[2]=xy-y3
-&rarr; _[3]=x2y-y3
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=0,(x,y),dp;
+  ideal i=x;
+  ideal j=y;
+  intersect(i,j);
+&rarr; _[1]=xy
+  ring r=181,(x,y,z),(c,ls);
+  ideal id1=maxideal(3);
+  ideal id2=x2+xyz,y2-z3y,z3+y5xz;
+  ideal id3=intersect(id1,id2,ideal(x,y));
+  id3;
+&rarr; id3[1]=yz3+xy6z
+&rarr; id3[2]=yz4-y2z
+&rarr; id3[3]=y2z3-y3
+&rarr; id3[4]=xz3+x2y5z
+&rarr; id3[5]=xyz2+x2z
+&rarr; id3[6]=xyz3-xy2
+&rarr; id3[7]=xy2z+x2y
+&rarr; id3[8]=x2yz+x3
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_69.htm#ideal">ideal</a>;
-<a href="sing_116.htm#module">module</a>;
-<a href="sing_276.htm#std">std</a>.
+<a href="sing_68.htm#ideal">ideal</a>;
+<a href="sing_115.htm#module">module</a>;
+<a href="sing_243.htm#option">option</a>.
 </p></td>
 </tr>
 </table>
@@ -208,14 +134,14 @@ then
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_206.htm#insert" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.51 insert" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_208.htm#intersect" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.53 intersect" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_206.htm#interred" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.52 interred" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_208.htm#jacob" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.54 jacob" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

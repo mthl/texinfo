@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 6.4 Identifier resolution</title>
+<title>Singular 2-0-4 Manual: Appendix A Examples</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 6.4 Identifier resolution">
-<meta name="keywords" content="Singular 2-0-4 Manual: 6.4 Identifier resolution">
+<meta name="description" content="Singular 2-0-4 Manual: Appendix A Examples">
+<meta name="keywords" content="Singular 2-0-4 Manual: Appendix A Examples">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Identifier-resolution"></a>
+<a name="Examples"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_329.htm#Miscellaneous-oddities" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.3 Miscellaneous oddities" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_329.htm#Identifier-resolution" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.4 Identifier resolution" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_331.htm#Milnor-and-Tjurina" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.1 Milnor and Tjurina" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,58 +82,76 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Identifier-resolution-1"></a>
-<h2 class="section">6.4 Identifier resolution</h2>
-<a name="index-identifier"></a>
+<a name="Examples-1"></a>
+<h1 class="appendix">Appendix A Examples</h1>
+<a name="index-Examples"></a>
 
-<p>In <small>SINGULAR</small>, an identifier (i.e., a &quot;word&quot;) is resolved in the
-following way and order: It is checked for
-</p><ol>
-<li>
-a reserved name (like <code>ring</code>, <code>std</code>, &hellip;),
-</li><li>
-a local  variable (w.r.t. a procedure),
-</li><li>
-a local ring variable (w.r.t. the current basering locally set in a procedure),
-</li><li>
-a global variable,
-</li><li>
-a global ring variable (w.r.t. the current basering)
-</li><li>
-a monomial consisting of local ring variables written without operators,
-</li><li>
-a monomial consisting of global ring variables written without operators.
-</li></ol>
 
-<p>Consequently, it is allowed to have general variables with the same name
-as ring  variables. However, the above identifier resolution order must
-be kept in mind. Otherwise, surprising results may come up.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x,y),dp;
-int x;
-x*y; // resolved product int*poly, i.e., 0*y
-&rarr; 0
-xy; // &quot;xy&quot; is one identifier and resolved to monomial xy
-&rarr; xy
-</pre></td></tr></table>
 
-<p>For these reasons, we strongly recommend not to use variables which
-have the same name(s) as ring variables.
-</p>
-<p>Moreover, we strongly recommend not to use ring variables whose name is
-fully contained in (i.e., is a substring of) another name of a ring
-variable. Otherwise, effects like the following might occur:
-</p>
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_331.htm#Milnor-and-Tjurina">A.1 Milnor and Tjurina</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_332.htm#Procedures-and-LIB">A.2 Procedures and LIB</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_333.htm#Critical-points">A.3 Critical points</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_334.htm#Saturation">A.4 Saturation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_335.htm#Long-coefficients">A.5 Long coefficients</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_336.htm#Parameters">A.6 Parameters</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_337.htm#T1-and-T2">A.7 T1 and T2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_338.htm#Deformations">A.8 Deformations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_339.htm#Finite-fields">A.9 Finite fields</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_340.htm#Elimination">A.10 Elimination</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_341.htm#Free-resolution">A.11 Free resolution</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_342.htm#Computation-of-Ext">A.12 Computation of Ext</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_343.htm#Polar-curves">A.13 Polar curves</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_344.htm#Depth">A.14 Depth</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_345.htm#Formatting-output">A.15 Formatting output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_346.htm#Cyclic-roots">A.16 Cyclic roots</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_347.htm#G_005fa-_002dInvariants">A.17 G_a -Invariants</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_348.htm#Invariants-of-a-finite-group">A.18 Invariants of a finite group</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_349.htm#Factorization">A.19 Factorization</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_350.htm#Puiseux-pairs">A.20 Puiseux pairs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_351.htm#Primary-decomposition">A.21 Primary decomposition</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_352.htm#Normalization">A.22 Normalization</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_353.htm#Branches-of-an-Isolated-Space-Curve-Singularity">A.23 Branches of an Isolated Space Curve Singularity</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_354.htm#Kernel-of-module-homomorphisms">A.24 Kernel of module homomorphisms</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_355.htm#Algebraic-dependence">A.25 Algebraic dependence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_356.htm#Classification">A.26 Classification</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_357.htm#Fast-lexicographical-GB">A.27 Fast lexicographical GB</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_358.htm#Parallelization-with-MPtcp-links">A.28 Parallelization with MPtcp links</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x, x1),dp; // name x is substring of name x1 !!!!!!!!!
-x;x1;   // resolved poly x
-&rarr; x
-&rarr; x1
-short=0; 2x1; // resolved to monomial 2*x^1 !!!!!!
-&rarr; 2*x
-2*x1; // resolved to product 2 times x1
-&rarr; 2*x1
-</pre></td></tr></table>
+
+
+
+
+
 
 </td>
 </tr>
@@ -144,14 +162,14 @@ short=0; 2x1; // resolved to monomial 2*x^1 !!!!!!
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_329.htm#Miscellaneous-oddities" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.3 Miscellaneous oddities" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_329.htm#Identifier-resolution" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.4 Identifier resolution" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_331.htm#Milnor-and-Tjurina" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.1 Milnor and Tjurina" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

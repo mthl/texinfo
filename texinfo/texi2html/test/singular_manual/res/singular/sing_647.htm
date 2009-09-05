@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.2.1 versal</title>
+<title>Singular 2-0-4 Manual: D.5.2.2 mod_versal</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.2.1 versal">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.2.1 versal">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.2.2 mod_versal">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.2.2 mod_versal">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="versal"></a>
+<a name="mod_005fversal"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_646.htm#deform_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.2 deform_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_646.htm#versal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.2.1 versal" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_648.htm#mod_005fversal" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.2.2 mod_versal" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_648.htm#lift_005fkbase" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.2.3 lift_kbase" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_646.htm#deform_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.2 deform_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_645.htm#deform_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.2 deform_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,86 +82,91 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="versal-1"></a>
-<h4 class="subsubsection">D.5.2.1 versal</h4>
-<a name="index-versal"></a>
-<p>Procedure from library <code>deform.lib</code> (see <a href="sing_646.htm#deform_005flib">deform_lib</a>).
+<a name="mod_005fversal-1"></a>
+<h4 class="subsubsection">D.5.2.2 mod_versal</h4>
+<a name="index-mod_005fversal"></a>
+<p>Procedure from library <code>deform.lib</code> (see <a href="sing_645.htm#deform_005flib">deform_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>versal(Fo[,d,any]); Fo=ideal, d=int, any=list
+<dd><p>mod_versal(Mo,I[,d,any]); I=ideal, M=module, d=int, any =list
 </p>
 </dd>
 <dt><strong>Compute:</strong></dt>
-<dd><p>miniversal deformation of Fo up to degree d (default d=100),
+<dd><p>miniversal deformation of coker(Mo) over Qo=Po/Io, Po=basering;
 </p>
 </dd>
 <dt><strong>Create:</strong></dt>
-<dd><p>Rings (exported):
-<br>&rsquo;my&rsquo;Px = extending the basering Po by new variables given by
-&quot;A,B,..&quot; (deformation parameters), returns as basering; the
-new variables precede the old ones, the ordering is the
-product between &quot;ls&quot; and &quot;ord(Po)&quot;
-<br>&rsquo;my&rsquo;Qx = Px/Fo extending Qo=Po/Fo,
-<br>&rsquo;my&rsquo;So = the embedding-ring of the versal base space,
-<br>&rsquo;my&rsquo;Ox = Px/Js extending So/Js. (default my=&quot;&quot;)
+<dd><p>Ringsr (exported):
+<br>&rsquo;my&rsquo;Px = extending the basering by new variables (deformation
+parameters), the new variables precede the old ones,
+<br>the ordering is the product between &quot;my_ord&quot;
+<br>and &quot;ord(Po)&quot;
+<br>&rsquo;my&rsquo;Qx = Px/Io extending Qo (returns as basering),
+<br>&rsquo;my&rsquo;Ox = Px/(Io+Js) ring of the versal deformation of coker(Ms),
+<br>&rsquo;my&rsquo;So = embedding-ring of the versal base space. (default &rsquo;my&rsquo;=&quot;&quot;)
 </p>
-<p>Matrices (in Px, exported):
+<p>Matrices (in Qx, exported):
 <br>Js = giving the versal base space (obstructions),
-<br>Fs = giving the versal family of Fo,
-<br>Rs = giving the lifting of Ro=syz(Fo).
+<br>Ms = giving the versal family of Mo,
+<br>Ls = giving the lifting of syzygies Lo=syz(Mo),
 </p>
 <p>If d is defined (!=0), it computes up to degree d.
 <br>If &rsquo;any&rsquo; is defined and any[1] is no string, interactive version.
-<br>Otherwise &rsquo;any&rsquo; gives predefined strings: &quot;my&quot;,&quot;param&quot;,&quot;order&quot;,&quot;out&quot;
+<br>Otherwise &rsquo;any&rsquo; gives predefined strings:&quot;my&quot;,&quot;param&quot;,&quot;order&quot;,&quot;out&quot;
 (&quot;my&quot; prefix-string, &quot;param&quot; is a letter (e.g. &quot;A&quot;) for the name of
-first parameter or (e.g. &quot;A(&quot;) for index parameter variables, &quot;order&quot;
+first parameter or (e.g. &quot;A(&quot;) for index parameter variables, &quot;ord&quot;
 ordering string for ring extension), &quot;out&quot; name of output-file).
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
 <dd><p>printlevel &lt; 0 no output at all,
-<br>printlevel &gt;=0,1,2,.. informs you, what is going on;
+<br>printlevel &gt;=0,1,2,.. informs you, what is going on,
 <br>this proc uses &rsquo;execute&rsquo;.
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;deform.lib&quot;;
-int p          = printlevel;
-printlevel     = 0;
-ring r1        = 0,(x,y,z,u,v),ds;
-matrix m[2][4] = x,y,z,u,y,z,u,v;
-ideal Fo       = minor(m,2);
-// cone over rational normal curve of degree 4
-versal(Fo);
-&rarr; // ready: T_1 and T_2
-&rarr; // start computation in degree 2.
-&rarr; 
-&rarr; // Result belongs to ring Px.
-&rarr; // Equations of total space of miniversal deformation are 
-&rarr; // given by Fs, equations of miniversal base space by Js.
-&rarr; // Make Px the basering and list objects defined in Px by typing:
-&rarr;    setring Px; show(Px);
-&rarr;    listvar(matrix);
-&rarr; // NOTE: rings Qx, Px, So are alive!
-&rarr; // (use 'kill_rings(&quot;&quot;);' to remove)
-setring Px;
-// ___ Equations of miniversal base space ___:
-Js;&quot;&quot;;
-&rarr; Js[1,1]=BD
-&rarr; Js[1,2]=-AD+D2
-&rarr; Js[1,3]=-CD
-&rarr; 
-// ___ Equations of miniversal total space ___:
-Fs;&quot;&quot;;
-&rarr; Fs[1,1]=-u2+zv+Bu+Dv
-&rarr; Fs[1,2]=-zu+yv-Au+Du
-&rarr; Fs[1,3]=-yu+xv+Cu+Dz
-&rarr; Fs[1,4]=z2-yu+Az+By
-&rarr; Fs[1,5]=yz-xu+Bx-Cz
-&rarr; Fs[1,6]=-y2+xz+Ax+Cy
-&rarr; 
+int p = printlevel;
+printlevel = 1;
+ring  Ro = 0,(x,y),wp(3,4);
+ideal Io = x4+y3;
+matrix Mo[2][2] = x2,y,-y2,x2;
+mod_versal(Mo,Io);
+&rarr; // vdim (Ext^2) = 4
+&rarr; // vdim (Ext^1) = 4
+&rarr; // ready: Ext1 and Ext2
+&rarr; // Ext1 is quasi-homogeneous represented: 3,6,1,4
+&rarr; // infinitesimal extension
+&rarr; x2-Ax-B,   y+Cx+D,
+&rarr; -y2+Cxy+Dy,x2+Ax+B
+&rarr; // start deg = 2
+&rarr; // start deg = 3
+&rarr; // start deg = 4
+&rarr; // start deg = 5
+&rarr; // finished in degree 
+&rarr; 5
+&rarr; // quasi-homogeneous weights of miniversal base
+&rarr; 3,6,1,4
+&rarr; // Result belongs to qring Qx
+&rarr; // Equations of total space of miniversal deformation are in Js
+&rarr; -2AB+A3+3CD2-BC3-3AC2D+A2C3,
+&rarr; -B2+A2B+D3-3BC2D+ABC3
+&rarr; // Matrix of the deformed module is Ms and lifted syzygies are Ls.
+&rarr; // Make Qx the basering and list objects defined in Qx by typing:
+&rarr;    listvar(ring);setring Qx; show(Qx);listvar(ideal);listvar(matrix);
+&rarr; // NOTE: rings Qx, Ox, So are still alive!
+&rarr; // (use: 'kill_rings();' to remove them)
+printlevel = p;
+if(system(&quot;with&quot;,&quot;Namespaces&quot;)) {
+if(nameof(Current) == &quot;Ring&quot; ) {
+kill Top::Px,Top::Qx,Top::So;
+} else {
+kill Ring::Px,Ring::So;
+}
+}
+kill Px,Qx,So;
 </pre></td></tr></table>
 
 </td>
@@ -173,14 +178,14 @@ Fs;&quot;&quot;;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_646.htm#deform_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.2 deform_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_648.htm#mod_005fversal" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.2.2 mod_versal" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_646.htm#deform_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.2 deform_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_646.htm#versal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.2.1 versal" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_648.htm#lift_005fkbase" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.2.3 lift_kbase" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_645.htm#deform_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.2 deform_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

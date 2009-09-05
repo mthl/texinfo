@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.6.4.2 stratify</title>
+<title>Singular 2-0-4 Manual: D.7 Symbolic-numerical solving</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.6.4.2 stratify">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.6.4.2 stratify">
+<meta name="description" content="Singular 2-0-4 Manual: D.7 Symbolic-numerical solving">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7 Symbolic-numerical solving">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="stratify"></a>
+<a name="Symbolic_002dnumerical-solving"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_811.htm#prepMat" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.4.1 prepMat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_811.htm#stratify" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.4.2 stratify" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_813.htm#Symbolic_002dnumerical-solving" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7 Symbolic-numerical solving" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_813.htm#presolve_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.1 presolve_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_810.htm#stratify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.4 stratify_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,86 +82,23 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="stratify-1"></a>
-<h4 class="subsubsection">D.6.4.2 stratify</h4>
-<a name="index-stratify"></a>
-<p>Procedure from library <code>stratify.lib</code> (see <a href="sing_810.htm#stratify_005flib">stratify_lib</a>).
-</p>
-<dl compact="compact">
-<dt><strong>Usage:</strong></dt>
-<dd><p>stratify(M,wr,ws,step);
-<br>where M is a matrix, wr is an intvec of size ncols(M),
-ws an intvec of size nrows(M) and step is an integer
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>list of lists, each entry of the big list corresponds to one
-locally closed set and has the following entries:
-<br>1) intvec giving the corresponding rs-vector
-<br>2) ideal determining the closed set
-<br>3) list d of polynomials determining the open set D(d[1])
-empty list if there is more than one open set
-<br>4-n) lists of polynomials determining open sets which all lead
-to the same rs-vector
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>* ring ordering should be global, i.e. the ring should be a
-polynomial ring
-<br>* the entries of the matrix M are M_ij=delta_i(x_j),
-<br>* wr is used to determine what subset of the set of all dx_i is
-generating AdF^l(A):
-<br>if (k-1)*step &lt; wr[i] &lt;= k*step, then dx_i is in the set of
-generators of AdF^l(A) for all l&gt;=k
-<br>* ws is used to determine what subset of the set of all delta_i
-is generating Z_l(L):
-<br>if (k-1)*step &lt;= ws[i] &lt; k*step, then delta_i is in the set
-of generators of Z_l(A) for l &lt; k
-<br>* the entries of wr and ws as well as step should be positive
-integers
-<br>* the filtrations have to be known, no sanity checks concerning
-the filtrations are performed !!!
-</p>
-</dd>
-</dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;stratify.lib&quot;;
-ring r=0,(t(1..3)),dp;
-matrix M[2][3]=0,t(1),3*t(2),0,0,t(1);
-intvec wr=1,3,5;
-intvec ws=2,4;
-int step=2;
-stratify(M,wr,ws,step);
-&rarr; [1]:
-&rarr;    [1]:
-&rarr;       0,0,0,0
-&rarr;    [2]:
-&rarr;       _[1]=t(2)
-&rarr;       _[2]=t(1)
-&rarr;    [3]:
-&rarr;       [1]:
-&rarr;          1
-&rarr; [2]:
-&rarr;    [1]:
-&rarr;       0,1,0,1
-&rarr;    [2]:
-&rarr;       _[1]=t(1)
-&rarr;    [3]:
-&rarr;       [1]:
-&rarr;          t(2)
-&rarr;       [2]:
-&rarr;          t(2)
-&rarr; [3]:
-&rarr;    [1]:
-&rarr;       1,2,1,2
-&rarr;    [2]:
-&rarr;       _[1]=0
-&rarr;    [3]:
-&rarr;       [1]:
-&rarr;          t(1)
-&rarr;       [2]:
-&rarr;          t(1)
-</pre></td></tr></table>
+<a name="Symbolic_002dnumerical-solving-1"></a>
+<h2 class="section">D.7 Symbolic-numerical solving</h2>
+<a name="index-Symbolic_002dnumerical-solving"></a>
+
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_813.htm#presolve_005flib">D.7.1 presolve_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for pre-solving polynomial equations
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_830.htm#solve_005flib">D.7.2 solve_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures to solve polynomial systems
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_843.htm#triang_005flib">D.7.3 triang_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for decomposing zero-dimensional ideals
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_848.htm#ntsolve_005flib">D.7.4 ntsolve_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> one real solution of polynomial systems (Newton iteration)
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_851.htm#zeroset_005flib">D.7.5 zeroset_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for roots and factorization
+</td></tr>
+</table></blockquote>
+
 </td>
 </tr>
 </table>
@@ -171,14 +108,14 @@ stratify(M,wr,ws,step);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_811.htm#prepMat" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.4.1 prepMat" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_813.htm#Symbolic_002dnumerical-solving" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7 Symbolic-numerical solving" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_810.htm#stratify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.4 stratify_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_811.htm#stratify" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.4.2 stratify" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_813.htm#presolve_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.1 presolve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.3.1.27 headStand</title>
+<title>Singular 2-0-4 Manual: D.3.2 linalg_lib</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.3.1.27 headStand">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.3.1.27 headStand">
+<meta name="description" content="Singular 2-0-4 Manual: D.3.2 linalg_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.3.2 linalg_lib">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="headStand"></a>
+<a name="linalg_005flib"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_502.htm#rm_005funitcol" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.1.26 rm_unitcol" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_502.htm#headStand" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.1.27 headStand" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_504.htm#linalg_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.2 linalg_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_504.htm#inverse" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.2.1 inverse" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_476.htm#matrix_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.1 matrix_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_474.htm#Linear-algebra" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3 Linear algebra" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,11 +82,76 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="headStand-1"></a>
-<h4 class="subsubsection">D.3.1.27 headStand</h4>
-<a name="index-headStand"></a>
-<p>Procedure from library <code>matrix.lib</code> (see <a href="sing_476.htm#matrix_005flib">matrix_lib</a>).
+<a name="linalg_005flib-1"></a>
+<h3 class="subsection">D.3.2 linalg_lib</h3>
+<a name="index-linalg_002elib"></a>
+<a name="index-linalg_005flib"></a>
+<dl compact="compact">
+<dt><strong>Library:</strong></dt>
+<dd><p>linalg.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>  Algorithmic Linear Algebra
+</p></dd>
+<dt><strong>Authors:</strong></dt>
+<dd><p>Ivor Saynisch (ivs@math.tu-cottbus.de)
+<br> Mathias Schulze (mschulze@mathematik.uni-kl.de)
 </p>
+</dd>
+</dl>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_504.htm#inverse">D.3.2.1 inverse</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> matrix, the inverse of A
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_505.htm#inverse_005fB">D.3.2.2 inverse_B</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> list(matrix Inv,poly p),Inv*A=p*En ( using busadj(A) )
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_506.htm#inverse_005fL">D.3.2.3 inverse_L</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> list(matrix Inv,poly p),Inv*A=p*En ( using lift )
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_507.htm#sym_005fgauss">D.3.2.4 sym_gauss</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> symmetric gaussian algorithm
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_508.htm#orthogonalize">D.3.2.5 orthogonalize</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Gram-Schmidt orthogonalization
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_509.htm#diag_005ftest">D.3.2.6 diag_test</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test whether A can be diagonalized
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_510.htm#busadj">D.3.2.7 busadj</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> coefficients of Adj(E*t-A) and coefficients of det(E*t-A)
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_511.htm#charpoly">D.3.2.8 charpoly</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> characteristic polynomial of A ( using busadj(A) )
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_512.htm#adjoint">D.3.2.9 adjoint</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> adjoint of A ( using busadj(A) )
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_513.htm#det_005fB">D.3.2.10 det_B</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> determinant of A ( using busadj(A) )
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_514.htm#gaussred">D.3.2.11 gaussred</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> gaussian reduction: P*A=U*S, S a row reduced form of A
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_515.htm#gaussred_005fpivot">D.3.2.12 gaussred_pivot</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> gaussian reduction: P*A=U*S, uses row pivoting
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_516.htm#gauss_005fnf">D.3.2.13 gauss_nf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> gaussian normal form of A
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_517.htm#mat_005frk">D.3.2.14 mat_rk</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> rank of constant matrix A
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_518.htm#U_005fD_005fO">D.3.2.15 U_D_O</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> P*A=U*D*O, P,D,U,O=permutation,diag,lower-,upper-triang
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_519.htm#pos_005fdef">D.3.2.16 pos_def</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test symmetric matrix for positive definiteness
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_520.htm#hessenberg">D.3.2.17 hessenberg</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Hessenberg form of M
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_521.htm#evnf">D.3.2.18 evnf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> eigenvalues normal form of (e[,m])
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_522.htm#eigenvals">D.3.2.19 eigenvals</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> eigenvalues with multiplicities of M
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_523.htm#minipoly">D.3.2.20 minipoly</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> minimal polynomial of M
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_524.htm#jordan">D.3.2.21 jordan</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Jordan data of M
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_525.htm#jordanbasis">D.3.2.22 jordanbasis</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Jordan basis and weight filtration of M
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_526.htm#jordanmatrix">D.3.2.23 jordanmatrix</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Jordan matrix with Jordan data (e,s,m)
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_527.htm#jordannf">D.3.2.24 jordannf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Jordan normal form of M
+</td></tr>
+</table></blockquote>
+
 </td>
 </tr>
 </table>
@@ -96,14 +161,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_502.htm#rm_005funitcol" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.1.26 rm_unitcol" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_504.htm#linalg_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.2 linalg_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_476.htm#matrix_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.1 matrix_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_502.htm#headStand" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.1.27 headStand" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_504.htm#inverse" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.2.1 inverse" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_474.htm#Linear-algebra" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3 Linear algebra" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

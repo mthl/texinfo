@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.6.5 H2basis</title>
+<title>Singular 2-0-4 Manual: D.5.7 qhmoduli_lib</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.6.5 H2basis">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.6.5 H2basis">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.7 qhmoduli_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.7 qhmoduli_lib">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="H2basis"></a>
+<a name="qhmoduli_005flib"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_708.htm#monodromyB" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.6.4 monodromyB" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_708.htm#H2basis" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.6.5 H2basis" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_710.htm#qhmoduli_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.7 qhmoduli_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_710.htm#ArnoldAction" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.7.1 ArnoldAction" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_704.htm#mondromy_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.6 mondromy_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_629.htm#Singularities" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5 Singularities" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,67 +84,47 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="H2basis-1"></a>
-<h4 class="subsubsection">D.5.6.5 H2basis</h4>
-<a name="index-H2basis"></a>
-<p>Procedure from library <code>mondromy.lib</code> (see <a href="sing_704.htm#mondromy_005flib">mondromy_lib</a>).
-</p>
+<a name="qhmoduli_005flib-1"></a>
+<h3 class="subsection">D.5.7 qhmoduli_lib</h3>
+<a name="index-qhmoduli_002elib"></a>
+<a name="index-qhmoduli_005flib"></a>
 <dl compact="compact">
-<dt><strong>Usage:</strong></dt>
-<dd><p>H2basis(f); f poly
-</p>
-</dd>
-<dt><strong>Assume:</strong></dt>
-<dd><p>The polynomial f in a series ring (local ordering) defines
-an isolated hypersurface singularity.
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>The procedure returns a list of representatives of a C{f}-basis of the
-Brieskorn lattice H&rdquo;=Omega^(n+1)/df^dOmega^(n-1).
-</p>
-</dd>
-<dt><strong>Theory:</strong></dt>
-<dd><p>H&rdquo; is a free C{f}-module of rank milnor(f).
-</p>
-</dd>
-<dt><strong>Display:</strong></dt>
-<dd><p>The procedure displays more comments for higher printlevel.
+<dt><strong>Library:</strong></dt>
+<dd><p>qhmoduli.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>    Moduli Spaces of Semi-Quasihomogeneous Singularities
+</p></dd>
+<dt><strong>Author:</strong></dt>
+<dd><p>Thomas Bayer, email: bayert@in.tum.de
 </p>
 </dd>
 </dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;mondromy.lib&quot;;
-ring R=0,(x,y),ds;
-poly f=x2y2+x6+y6;
-H2basis(f);
-&rarr; [1]:
-&rarr;    x4
-&rarr; [2]:
-&rarr;    x2y2
-&rarr; [3]:
-&rarr;    y4
-&rarr; [4]:
-&rarr;    x3
-&rarr; [5]:
-&rarr;    x2y
-&rarr; [6]:
-&rarr;    xy2
-&rarr; [7]:
-&rarr;    y3
-&rarr; [8]:
-&rarr;    x2
-&rarr; [9]:
-&rarr;    xy
-&rarr; [10]:
-&rarr;    y2
-&rarr; [11]:
-&rarr;    x
-&rarr; [12]:
-&rarr;    y
-&rarr; [13]:
-&rarr;    1
-</pre></td></tr></table>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_710.htm#ArnoldAction">D.5.7.1 ArnoldAction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Induced action of G_f on T_.
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_711.htm#ModEqn">D.5.7.2 ModEqn</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Equations of the moduli space for principal part f
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_712.htm#QuotientEquations">D.5.7.3 QuotientEquations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Equations of Variety(I)/G w.r.t. action &rsquo;A&rsquo;
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_713.htm#StabEqn">D.5.7.4 StabEqn</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Equations of the stabilizer of f.
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_714.htm#StabEqnId">D.5.7.5 StabEqnId</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Equations of the stabilizer of the qhom. ideal I.
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_715.htm#StabOrder">D.5.7.6 StabOrder</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Order of the stabilizer of f.
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_716.htm#UpperMonomials">D.5.7.7 UpperMonomials</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Upper basis of the Milnor algebra of f.
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_717.htm#Max">D.5.7.8 Max</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> maximal integer contained in &rsquo;data&rsquo;
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_718.htm#Min">D.5.7.9 Min</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> minimal integer contained in &rsquo;data&rsquo;
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_719.htm#Table">D.5.7.10 Table</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> list, i-th entry is cmd(i), lb &lt;= i &lt;= ub
+</td></tr>
+</table></blockquote>
+
 </td>
 </tr>
 </table>
@@ -154,14 +134,14 @@ H2basis(f);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_708.htm#monodromyB" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.6.4 monodromyB" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_710.htm#qhmoduli_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.7 qhmoduli_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_704.htm#mondromy_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.6 mondromy_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_708.htm#H2basis" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.6.5 H2basis" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_710.htm#ArnoldAction" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.7.1 ArnoldAction" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_629.htm#Singularities" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5 Singularities" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

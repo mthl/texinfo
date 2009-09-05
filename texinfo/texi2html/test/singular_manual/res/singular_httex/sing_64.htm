@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.10.4 Printing of data</title>
+<title>Singular 2-0-4 Manual: 3.10.5 libparse</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.10.4 Printing of data">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.10.4 Printing of data">
+<meta name="description" content="Singular 2-0-4 Manual: 3.10.5 libparse">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.10.5 libparse">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Printing-of-data"></a>
+<a name="libparse"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_63.htm#Break-points" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.10.3 Break points" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_63.htm#Printing-of-data" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.10.4 Printing of data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_65.htm#libparse" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.10.5 libparse" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_60.htm#Debugging-tools" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.10 Debugging tools" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_59.htm#Debugging-tools" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.10 Debugging tools" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,17 +84,85 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Printing-of-data-1"></a>
-<h3 class="subsection">3.10.4 Printing of data</h3>
-<p>The procedure <code>dbprint</code> is useful for optional output of data:
-it takes 2 arguments and prints the second argument, if the first
-argument is positive; it does nothing otherwise.
-</p><blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_167.htm#dbprint">5.1.12 dbprint</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_318.htm#voice">5.3.11 voice</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table></blockquote>
+<a name="libparse-1"></a>
+<h3 class="subsection">3.10.5 libparse</h3>
+<a name="index-libparse"></a>
+
+<p><code>libparse</code> is a stand-alone program contained in the <small>SINGULAR</small>
+distribution (at the place where the <small>SINGULAR</small> executable program
+resides), which cannot be called inside of <small>SINGULAR</small>. It is a
+debugging tool for libraries which performs exactly the same checks as
+the <code>LIB</code> command in <small>SINGULAR</small>, but generates more output during
+parsing.  <code>libparse</code> is useful if an error
+occurs while loading the library, but the whole block around the line
+specified seems to be correct. In these situations the real error might
+be hundreds of lines earlier in the library.
+</p>
+<p><strong>Usage:</strong>
+<br><code>libparse [options] singular-library</code>
+<br><strong>Options:</strong>
+</p><dl compact="compact">
+<dt><code>-d</code> Debuglevel</dt>
+<dd><p>increases the amount of output during parsing, where Debuglevel is an integer
+between 0 and 4. Default is 0.
+</p></dd>
+<dt><code>-s</code></dt>
+<dd><p>turns on reporting about violations of unenforced syntax rules
+</p></dd>
+</dl>
+
+<p>The following syntax checks are performed in any case:
+</p><ul>
+<li> counting of pairs of brackets {,} , [,] and (,)
+    (number of { has to match number of }, same for [,] and (,) ).
+</li><li> counting of &quot;
+    ( number of &quot; must be even ).
+</li><li> general library syntax
+    ( only LIB, static, proc (with parameters, help, body and example)
+and comments, i.e // and <code>/* ... */</code>, are allowed).
+</li></ul>
+<p>Its output lists all procedures that have been parsed successfully:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ libparse sample.lib
+Checking library 'sample.lib'
+  Library         function      line,start-eod line,body-eob  line,example-eoe
+Version:0.0.0;
+g Sample               tab line    9,  149-165   13,  271-298   14,  300-402
+l Sample      internal_tab line   24,  450-475   25,  476-496    0,    0-496
+</pre></td></tr></table>
+
+<p>where the following abbreviations are used:
+</p><ul>
+<li> g: global procedure (default)
+</li><li> l: static procedure, i.e., local to the library.
+</li></ul>
+
+<p>each of the following is the position of the byte in the library.
+</p><ul>
+<li> start: begin of &rsquo;proc&rsquo;
+</li><li> eod: end of parameters
+</li><li> body: start of procedure body &rsquo;{&rsquo;
+</li><li> eob:  end of procedure body &rsquo;}&rsquo;
+</li><li> example: position of &rsquo;example&rsquo;
+</li><li> eoe: end of example &rsquo;}&rsquo;
+</li></ul>
+
+<p>Hence in the above example, the first procedure of the library
+sample.lib is user-accessible and its name is tab. The procedure
+starts in line 9, at character 149. The head of the procedure
+ends at character 165, the body starts in line 13 at character 271
+and ends at character 298. The example section extends from line 14
+character 300 to character 402.
+</p>
+<p>The following example shows the result of a missing close-bracket } in
+line 26 of the library <code>sample.lib</code>.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;sample.lib&quot;;
+&rarr;    ? Library sample.lib: ERROR occurred: in line 26, 497.
+&rarr;    ? missing close bracket '}' at end of library in line 26.
+&rarr;    ? Cannot load library,... aborting.
+&rarr;    ? error occurred in STDIN line 1: `LIB &quot;sample.lib&quot;;`
+</pre></td></tr></table>
 
 </td>
 </tr>
@@ -105,14 +173,14 @@ argument is positive; it does nothing otherwise.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_63.htm#Break-points" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.10.3 Break points" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_65.htm#libparse" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.10.5 libparse" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_60.htm#Debugging-tools" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.10 Debugging tools" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_63.htm#Printing-of-data" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.10.4 Printing of data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_59.htm#Debugging-tools" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.10 Debugging tools" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.3.1.9 power</title>
+<title>Singular 2-0-4 Manual: D.3.1.10 skewmat</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.3.1.9 power">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.3.1.9 power">
+<meta name="description" content="Singular 2-0-4 Manual: D.3.1.10 skewmat">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.3.1.10 skewmat">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="power"></a>
+<a name="skewmat"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_484.htm#outer" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.1.8 outer" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_484.htm#power" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.1.9 power" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_486.htm#skewmat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.1.10 skewmat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_486.htm#submat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.1.11 submat" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_476.htm#matrix_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.1 matrix_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_475.htm#matrix_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.1 matrix_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,40 +84,50 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="power-1"></a>
-<h4 class="subsubsection">D.3.1.9 power</h4>
-<a name="index-power"></a>
-<p>Procedure from library <code>matrix.lib</code> (see <a href="sing_476.htm#matrix_005flib">matrix_lib</a>).
+<a name="skewmat-1"></a>
+<h4 class="subsubsection">D.3.1.10 skewmat</h4>
+<a name="index-skewmat"></a>
+<p>Procedure from library <code>matrix.lib</code> (see <a href="sing_475.htm#matrix_005flib">matrix_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>power(A,n); A a square-matrix of type intmat or matrix, n=integer
+<dd><p>skewmat(n[,id]); n integer, id ideal
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>intmat resp. matrix, the n-th power of A
+<dd><p>skew-symmetric nxn matrix, with entries from id
+<br>(default: id=maxideal(1))
+<br>skewmat(n); creates the generic skew-symmetric matrix
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>for A=intmat and big n the result may be wrong because of int overflow
+<dd><p>if id has less than n*(n-1)/2 elements, the matrix is
+<br>filled with 0&rsquo;s,
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;matrix.lib&quot;;
-intmat A[3][3]=1,2,3,4,5,6,7,8,9;
-print(power(A,3));&quot;&quot;;
-&rarr;    468   576   684
-&rarr;   1062  1305  1548
-&rarr;   1656  2034  2412
-&rarr; 
-ring r=0,(x,y,z),dp;
-matrix B[3][3]=0,x,y,z,0,0,y,z,0;
-print(power(B,3));&quot;&quot;;
-&rarr; yz2,    xy2+x2z,y3+xyz,
-&rarr; y2z+xz2,yz2,    0,     
-&rarr; y3+xyz, y2z+xz2,yz2    
-&rarr; 
+ring R=0,x(1..5),lp;
+print(skewmat(4));    // the generic skew-symmetric matrix
+&rarr; 0,    x(1), x(2),x(3),
+&rarr; -x(1),0,    x(4),x(5),
+&rarr; -x(2),-x(4),0,   0,   
+&rarr; -x(3),-x(5),0,   0    
+ring R1 = 0,(a,b,c),dp;
+matrix A=skewmat(4,maxideal(1)^2);
+print(A);
+&rarr; 0,  a2, ab, ac,
+&rarr; -a2,0,  b2, bc,
+&rarr; -ab,-b2,0,  c2,
+&rarr; -ac,-bc,-c2,0  
+int n=3;
+ideal i = ideal(randommat(1,n*(n-1) div 2,maxideal(1),9));
+print(skewmat(n,i));  // skew matrix of generic linear forms
+&rarr; 0,       4a+b-8c, -a+6b+c,  
+&rarr; -4a-b+8c,0,       -8a+2b-9c,
+&rarr; a-6b-c,  8a-2b+9c,0         
+kill R1;
 </pre></td></tr></table>
 
 </td>
@@ -129,14 +139,14 @@ print(power(B,3));&quot;&quot;;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_484.htm#outer" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.1.8 outer" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_486.htm#skewmat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.1.10 skewmat" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_476.htm#matrix_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.1 matrix_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_484.htm#power" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.1.9 power" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_486.htm#submat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.1.11 submat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_475.htm#matrix_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.1 matrix_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.13.1 proc declaration</title>
+<title>Singular 2-0-4 Manual: 4.14 qring</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.13.1 proc declaration">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.13.1 proc declaration">
+<meta name="description" content="Singular 2-0-4 Manual: 4.14 qring">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.14 qring">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="proc-declaration"></a>
+<a name="qring"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_131.htm#proc" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.13 proc" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_131.htm#proc-declaration" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.13.1 proc declaration" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_133.htm#qring" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.14 qring" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_133.htm#qring-declaration" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.14.1 qring declaration" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_131.htm#proc" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.13 proc" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,67 +84,19 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="proc-declaration-1"></a>
-<h3 class="subsection">4.13.1 proc declaration</h3>
-<a name="index-proc-declaration"></a>
+<a name="qring-1"></a>
+<h2 class="section">4.14 qring</h2>
+<a name="index-qring"></a>
 
-<dl compact="compact">
-<dt><strong>Syntax:</strong></dt>
-<dd><p>[<code>static</code>] <code>proc</code> proc_name [parameter_list]
-<br>[&quot;help_text&quot;]
-<br><code>{</code>
-<br>
-     
-   procedure_body
-<br><code>}</code>
-<br>[<code>example</code>
-<br><code>{</code>
-<br>
-     
-   sequence_of_commands;
-<br><code>}</code>]
-<br><code>proc</code> proc_name <code>=</code> proc_name <code>;</code>
-<br><code>proc</code> proc_name <code>=</code> string_expression <code>;</code>
-</p></dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>defines a new function, the <code>proc</code> proc_name, with the additional
-information help_text, which is copied to the screen by
-<code>help proc_name;</code> and the <code>example</code> section
-which is executed by <code>example proc_name;</code>.
-<br> The help_text, the parameter_list, and the example section are optional.
-The default for a parameter_list is <code>(list #)</code>, see <a href="sing_44.htm#Parameter-list">Parameter list</a>.
-The help and example sections are ignored if the procedure is defined
-interactively, i.e., if it was not loaded from a file by a <a href="sing_220.htm#LIB">LIB</a> command.
-<br> Specifying <code>static</code> in front of the proc-definition is only possible
-in a library file and makes this procedure local to the library,
-i.e., accessible only for the other procedures in the same library,
-but not for the users.
+<p><small>SINGULAR</small> offers the opportunity to calculate in quotient rings
+(factor rings), i.e., rings modulo an ideal.  The ideal has to be given
+as a standard basis.  For a detailed description of the concept
+of rings and quotient rings see <a href="sing_27.htm#Rings-and-orderings">Rings and orderings</a>.
 </p>
-</dd>
-<dt><strong>Example:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  proc milnor_number (poly p)
-  {
-    ideal i= std(jacob(p));
-    int m_nr=vdim(i);
-    if (m_nr&lt;0)
-    {
-      &quot;// not an isolated singularity&quot;;
-    }
-    return(m_nr);         // the value of m_nr is returned
-  }
-  ring r1=0,(x,y,z),ds;
-  poly p=x^2+y^2+z^5;
-  milnor_number(p);
-&rarr; 4
-</pre></td></tr></table>
-</dd>
-</dl>
-<p>See
-<a href="sing_220.htm#LIB">LIB</a>;
-<a href="sing_46.htm#Libraries">Libraries</a>;
-<a href="sing_41.htm#Procedures">Procedures</a>.
-</p>
-
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_133.htm#qring-declaration">4.14.1 qring declaration</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
 
 </td>
 </tr>
@@ -155,14 +107,14 @@ but not for the users.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_131.htm#proc" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.13 proc" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_133.htm#qring" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.14 qring" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_131.htm#proc" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.13 proc" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_131.htm#proc-declaration" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.13.1 proc declaration" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_133.htm#qring-declaration" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.14.1 qring declaration" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

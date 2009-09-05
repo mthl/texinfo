@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: B.1 Representation of mathematical objects</title>
+<title>Singular 2-0-4 Manual: B.2 Monomial orderings</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: B.1 Representation of mathematical objects">
-<meta name="keywords" content="Singular 2-0-4 Manual: B.1 Representation of mathematical objects">
+<meta name="description" content="Singular 2-0-4 Manual: B.2 Monomial orderings">
+<meta name="keywords" content="Singular 2-0-4 Manual: B.2 Monomial orderings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Representation-of-mathematical-objects"></a>
+<a name="Monomial-orderings"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_360.htm#Representation-of-mathematical-objects" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.1 Representation of mathematical objects" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_362.htm#Introduction-to-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.1 Introduction to orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,249 +84,29 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Representation-of-mathematical-objects-1"></a>
-<h2 class="section">B.1 Representation of mathematical objects</h2>
-<a name="index-mathematical-objects"></a>
-<a name="index-representation_002c-math-objects"></a>
+<a name="Monomial-orderings-1"></a>
+<h2 class="section">B.2 Monomial orderings</h2>
+<a name="index-Monomial-orderings"></a>
 
-<p><small>SINGULAR</small> distinguishes between objects which do not belong to a ring
-and those which belong to a specific ring (see <a href="sing_28.htm#Rings-and-orderings">Rings and orderings</a>).
-We comment only on the latter ones.
-</p>
-<p>Internally all ring-dependent objects are polynomials or structures built from
-polynomials (and some additional information).
-Note that <small>SINGULAR</small> stores (and hence prints) a polynomial automatically
-w.r.t. the monomial ordering.
-</p>
-<p>Hence, in order to define such an object in <small>SINGULAR</small>,
-one has to give a list of polynomials in a specific format.
-</p>
-<p>For ideals, resp. matrices, this is straight forward:
-The user gives a list of polynomials
-which generate the ideal, resp. which are the entries of the matrix.
-(The number of rows and columns has to be given when creating the matrix.)
-</p>
-<p>A vector  in <small>SINGULAR</small> is always an element of a free module over the
-basering. It is given as a list of polynomials in one of the following
-formats
- [<span 
-class="cmmi-10">f</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,...,f</span><sub><span 
-class="cmmi-7">n</span></sub>]
-or <span 
-class="cmmi-10">f</span><sub><span 
-class="cmr-7">1</span></sub> <span 
-class="cmsy-10">* </span><span 
-class="cmmi-10">gen</span>(1) + <span 
-class="cmmi-10">... </span>+ <span 
-class="cmmi-10">f</span><sub><span 
-class="cmmi-7">n</span></sub> <span 
-class="cmsy-10">* </span><span 
-class="cmmi-10">gen</span>(<span 
-class="cmmi-10">n</span>), where <span 
-class="cmmi-10">gen</span>(<span 
-class="cmmi-10">i</span>)  
-denotes the i-th canonical generator of a free module (with 1 at place i and
-0 everywhere else).
-Both forms are equivalent. A vector is internally represented in
-the second form with the
- <span 
-class="cmmi-10">gen</span>(<span 
-class="cmmi-10">i</span>)  
-being &quot;special&quot; ring variables, ordered accordingly to the monomial ordering.
-Therefore, the form
- [<span 
-class="cmmi-10">f</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,...,f</span><sub><span 
-class="cmmi-7">n</span></sub>]  
-is given as output only if the monomial ordering gives priority to the
-component, i.e., is of the form <code>(c,...)</code> (see <a href="sing_367.htm#Module-orderings">Module orderings</a>).  However, in any case the procedure <code>show</code> from the
-library <code>inout.lib</code> displays the bracket format.
-</p>
-<p>A vector
- <span 
-class="cmmi-10">v </span>= [<span 
-class="cmmi-10">f</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,...,f</span><sub><span 
-class="cmmi-7">n</span></sub>]  
-should always be considered as a column vector in a free module
-of rank equal to
- nrows(<span 
-class="cmmi-10">v</span>)  
-where 
- nrows(<span 
-class="cmmi-10">v</span>)  
-is equal to the maximal index 
- <span 
-class="cmmi-10">r </span> 
-such that
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_362.htm#Introduction-to-orderings">B.2.1 Introduction to orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_363.htm#General-definitions-for-orderings">B.2.2 General definitions for orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_364.htm#Global-orderings">B.2.3 Global orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_365.htm#Local-orderings">B.2.4 Local orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_366.htm#Module-orderings">B.2.5 Module orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_367.htm#Matrix-orderings">B.2.6 Matrix orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_368.htm#Product-orderings">B.2.7 Product orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_369.htm#Extra-weight-vector">B.2.8 Extra weight vector</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
 
-<span 
-class="cmmi-10">f</span><sub><span 
-class="cmmi-7">r</span></sub> <span 
-class="cmsy-10">&#x2044;</span>= 0.  
-This is due to the fact, that internally 
- <span 
-class="cmmi-10">v </span> 
-is a polynomial in a sparse representation, i.e.,
- <span 
-class="cmmi-10">f</span><sub><span 
-class="cmmi-7">i</span></sub> <span 
-class="cmsy-10">*</span><span 
-class="cmmi-10">gen</span>(<span 
-class="cmmi-10">i</span>)  
-is not stored if
- <span 
-class="cmmi-10">f</span><sub><span 
-class="cmmi-7">i</span></sub> = 0  
-(for reasons of efficiency), hence the last 0-entries of 
- <span 
-class="cmmi-10">v </span> 
-are lost.
-Only more complex structures are able to keep the rank.
-</p>
-<p>A module 
- <span 
-class="cmmi-10">M </span> 
-in <small>SINGULAR</small> is given by a list of vectors
- <span 
-class="cmmi-10">v</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,...,v</span><sub><span 
-class="cmmi-7">k</span></sub>  
-which generate the module as a submodule of the free module of rank
-equal to 
- nrows(<span 
-class="cmmi-10">M</span>)  
-which is the maximum of
- nrows(<span 
-class="cmmi-10">v</span><sub><span 
-class="cmmi-7">i</span></sub>).  
-</p>
-<p>If one wants to create a module with a larger rank than given by its
-generators, one has to use the command <code>attrib(M,&quot;rank&quot;,r)</code> (see
-<a href="sing_156.htm#attrib">attrib</a>, <a href="sing_241.htm#nrows">nrows</a>) or to define a matrix first, then converting it
-into a module.  Modules in <small>SINGULAR</small> are almost the same as
-matrices, they may be considered as sparse representations of matrices.
-A module of a matrix is generated by the columns of the matrix and a
-matrix of a module has as columns the generators of the module.  These
-conversions preserve the rank and the number of generators, resp. the
-number of rows and columns.
-</p>
-<p>By the above remarks it might appear that <small>SINGULAR</small> is only able to handle
-submodules of a free module. However, this is not true. <small>SINGULAR</small>
-can compute with any finitely generated module over the basering 
- <span 
-class="cmmi-10">R</span>.   
-Such a module, say 
- <span 
-class="cmmi-10">N</span>,  
-is not represented by its generators but by its
-(generators and) relations. This means that
- <span 
-class="cmmi-10">N </span>= <span 
-class="cmmi-10">R</span><sup><span 
-class="cmmi-7">n</span></sup><span 
-class="cmmi-10">&#x2215;M </span>where <span 
-class="cmmi-10">n </span> 
-is the number of generators of 
- <span 
-class="cmmi-10">N </span>and
-<span 
-class="cmmi-10">M </span><span 
-class="cmsy-10">&#x2286; </span><span 
-class="cmmi-10">R</span><sup><span 
-class="cmmi-7">n</span></sup>  
-is the module of relations.
-In other words, defining  a module 
- <span 
-class="cmmi-10">M </span> 
-as a submodule of a free module
- <span 
-class="cmmi-10">R</span><sup><span 
-class="cmmi-7">n</span></sup>  
-can also be considered as the definition of
- <span 
-class="cmmi-10">N </span>= <span 
-class="cmmi-10">R</span><sup><span 
-class="cmmi-7">n</span></sup><span 
-class="cmmi-10">&#x2215;M</span>.  
-</p>
-<p>Note that most functions, when applied to a module 
- <span 
-class="cmmi-10">M</span>,  
-really deal with
- <span 
-class="cmmi-10">M</span>.  
-However, there are some functions which deal with 
- <span 
-class="cmmi-10">N </span>= <span 
-class="cmmi-10">R</span><sup><span 
-class="cmmi-7">n</span></sup><span 
-class="cmmi-10">&#x2215;M </span>instead of <span 
-class="cmmi-10">M</span>.  
-</p>
-<p>For example, <code>std(M)</code> computes a standard basis of 
- <span 
-class="cmmi-10">M </span> 
-(and thus gives another representation of 
- <span 
-class="cmmi-10">N </span>as <span 
-class="cmmi-10">N </span>= <span 
-class="cmmi-10">R</span><sup><span 
-class="cmmi-7">n</span></sup><span 
-class="cmmi-10">&#x2215;</span>std(<span 
-class="cmmi-10">M</span>)).  
-However, <code>dim(M)</code>, resp. <code>vdim(M)</code>, returns
-
-dim(<span 
-class="cmmi-10">R</span><sup><span 
-class="cmmi-7">n</span></sup><span 
-class="cmmi-10">&#x2215;M</span>), resp.@: dim<sub><span 
-class="cmmi-7">k</span></sub>(<span 
-class="cmmi-10">R</span><sup><span 
-class="cmmi-7">n</span></sup><span 
-class="cmmi-10">&#x2215;M</span>)  
-(if M is given by a standard basis).
-</p>
-<p>The function <code>syz(M)</code>  returns the first syzygy module of 
- <span 
-class="cmmi-10">M</span>,  
-i.e., the module 
-of relations of the given generators of 
- <span 
-class="cmmi-10">M </span> 
-which is equal to the second syzygy module of 
- <span 
-class="cmmi-10">N</span>.  
-Refer to the description of each function in
-<a href="sing_155.htm#Functions">Functions</a> to get information which module the function deals with.
-</p>
-<p>The numbering in <code>res</code> and other commands for computing resolutions
-refers to a resolution of
- <span 
-class="cmmi-10">N </span>= <span 
-class="cmmi-10">R</span><sup><span 
-class="cmmi-7">n</span></sup><span 
-class="cmmi-10">&#x2215;M </span> 
-(see <a href="sing_264.htm#res">res</a>; <a href="sing_374.htm#Syzygies-and-resolutions">Syzygies and resolutions</a>).
-</p>
-<p>It is possible to compute in any field which is a valid ground field in
-<small>SINGULAR</small>.  For doing so, one has to define a ring with the desired
-ground field and at least one variable. The elements of the field are of
-type number, but may also be considered as polynomials (of degree
-0). Large computations should be faster if the elements of the field are
-defined as numbers.
-</p>
-<p>The above remarks do also apply to quotient rings. Polynomial data are
-stored internally in the same manner, the only difference is that this
-polynomial representation is in general not unique. <code>reduce(f,std(0))</code>
-computes a normal form of a polynomial f in a quotient ring (cf.
-<a href="sing_261.htm#reduce">reduce</a>).
-</p>
 </td>
 </tr>
 </table>
@@ -336,14 +116,14 @@ computes a normal form of a polynomial f in a quotient ring (cf.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2 Monomial orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_360.htm#Representation-of-mathematical-objects" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.1 Representation of mathematical objects" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_362.htm#Introduction-to-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.1 Introduction to orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

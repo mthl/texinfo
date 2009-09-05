@@ -1391,7 +1391,7 @@ Previous: [[#commit-options|commit options]], Up: [[#commit|commit]] &nbsp; |[cv
 <div id="Committing-to-a-branch"></div>
 <div class="node">
 <p>
-Up: [[#commit-examples|commit examples]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+ &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
 ===== Committing to a branch =====
 
@@ -1423,7 +1423,7 @@ sticky.
 <div id="Creating-the-branch-after-editing"></div>
 <div class="node">
 <p>
-Up: [[#commit-examples|commit examples]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+ &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
 ===== Creating the branch after editing =====
 

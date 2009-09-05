@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.6.3.11 NullCone</title>
+<title>Singular 2-0-4 Manual: D.6.3.12 ReynoldsImage</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.6.3.11 NullCone">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.6.3.11 NullCone">
+<meta name="description" content="Singular 2-0-4 Manual: D.6.3.12 ReynoldsImage">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6.3.12 ReynoldsImage">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="NullCone"></a>
+<a name="ReynoldsImage"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_804.htm#MinimalDecomposition" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.10 MinimalDecomposition" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_804.htm#NullCone" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.11 NullCone" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_806.htm#ReynoldsImage" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.12 ReynoldsImage" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_806.htm#ReynoldsOperator" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.13 ReynoldsOperator" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_794.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_793.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,49 +84,26 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="NullCone-1"></a>
-<h4 class="subsubsection">D.6.3.11 NullCone</h4>
-<a name="index-NullCone"></a>
-<p>Procedure from library <code>rinvar.lib</code> (see <a href="sing_794.htm#rinvar_005flib">rinvar_lib</a>).
+<a name="ReynoldsImage-1"></a>
+<h4 class="subsubsection">D.6.3.12 ReynoldsImage</h4>
+<a name="index-ReynoldsImage"></a>
+<p>Procedure from library <code>rinvar.lib</code> (see <a href="sing_793.htm#rinvar_005flib">rinvar_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>NullCone(G, action); ideal G, action
+<dd><p>ReynoldsImage(RO, f); list RO, poly f
 </p>
 </dd>
 <dt><strong>Purpose:</strong></dt>
-<dd><p>compute the ideal of the null cone of the linear action of G on K^n,
-given by &rsquo;action&rsquo;, by means of Derksen&rsquo;s algorithm
-</p>
-</dd>
-<dt><strong>Assume:</strong></dt>
-<dd><p>basering = K[s(1..r),t(1..n)], K = Q or K = Q(a) and minpoly != 0,
-G is an ideal of a reductive algebraic group in K[s(1..r)],
-&rsquo;action&rsquo; is a linear group action of G on K^n (n = ncols(action))
+<dd><p>compute the Reynolds image of the polynomial f where RO represents
+the Reynolds operator
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>ideal of the null cone of G.
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>the generators of the null cone are homogeneous, but i.g. not invariant
+<dd><p>poly
 </p>
 </dd>
 </dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;rinvar.lib&quot;;
-ring R = 0, (s(1..2), x, y), dp;
-ideal G = -s(1)+s(2)^3, s(1)^4-1;
-ideal action = s(1)*x, s(2)*y;
-ideal inv = NullCone(G, action);
-inv;
-&rarr; inv[1]=x^4
-&rarr; inv[2]=x^3*y^3
-&rarr; inv[3]=x^2*y^6
-&rarr; inv[4]=x*y^9
-&rarr; inv[5]=y^12
-</pre></td></tr></table>
 
 </td>
 </tr>
@@ -137,14 +114,14 @@ inv;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_804.htm#MinimalDecomposition" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.10 MinimalDecomposition" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_806.htm#ReynoldsImage" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.12 ReynoldsImage" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_794.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_804.htm#NullCone" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.11 NullCone" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_806.htm#ReynoldsOperator" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.13 ReynoldsOperator" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_793.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

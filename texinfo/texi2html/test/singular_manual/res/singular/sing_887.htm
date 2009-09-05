@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.8.2.13 xdvi</title>
+<title>Singular 2-0-4 Manual: D.8.3 paramet_lib</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.8.2.13 xdvi">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.8.2.13 xdvi">
+<meta name="description" content="Singular 2-0-4 Manual: D.8.3 paramet_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.8.3 paramet_lib">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="xdvi"></a>
+<a name="paramet_005flib"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_886.htm#rmx" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.12 rmx" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_886.htm#xdvi" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.13 xdvi" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_888.htm#paramet_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.3 paramet_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_888.htm#parametrize" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.3.1 parametrize" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_874.htm#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_868.htm#Visualization" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8 Visualization" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,62 +82,47 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="xdvi-1"></a>
-<h4 class="subsubsection">D.8.2.13 xdvi</h4>
-<a name="index-xdvi"></a>
-<p>Procedure from library <code>latex.lib</code> (see <a href="sing_874.htm#latex_005flib">latex_lib</a>).
-</p>
+<a name="paramet_005flib-1"></a>
+<h3 class="subsection">D.8.3 paramet_lib</h3>
+<a name="index-paramet_002elib"></a>
+<a name="index-paramet_005flib"></a>
 <dl compact="compact">
-<dt><strong>Usage:</strong></dt>
-<dd><p>xdvi(fname[,style]); fname,style = string
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>nothing; displays dvi-file fname.dvi with previewer xdvi
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>ending .dvi may miss in fname
-<br>style overwrites the default setting xdvi
+<dt><strong>Library:</strong></dt>
+<dd><p>paramet.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>   Parametrization of Varieties
+</p></dd>
+<dt><strong>Author:</strong></dt>
+<dd><p>Thomas Keilen, keilen@mathematik.uni-kl.de
 </p>
 </dd>
 </dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;latex.lib&quot;;
-intmat m[3][4] = 9,2,4,5,2,5,-2,4,-6,10,-1,2,7;
-opentex(&quot;exp001&quot;); 
-texobj(&quot;exp001&quot;,&quot;An intmat:  &quot;,m);
-closetex(&quot;exp001&quot;);
-tex(&quot;exp001&quot;);
-&rarr; calling  latex2e  for : exp001.tex 
-&rarr; 
-&rarr; This is TeX, Version 3.14159 (Web2C 7.3.1)
-&rarr; (exp001.tex
-&rarr; LaTeX2e &lt;1998/12/01&gt; patch level 1
-&rarr; Babel &lt;v3.6x&gt; and hyphenation patterns for american, french, german, nger\
-   man, i
-&rarr; talian, nohyphenation, loaded.
-&rarr; (/usr/share/texmf/tex/latex/base/article.cls
-&rarr; Document Class: article 1999/01/07 v1.4a Standard LaTeX document class
-&rarr; (/usr/share/texmf/tex/latex/base/size10.clo))
-&rarr; (/usr/share/texmf/tex/latex/amslatex/amsmath.sty
-&rarr; (/usr/share/texmf/tex/latex/amslatex/amstext.sty
-&rarr; (/usr/share/texmf/tex/latex/amslatex/amsgen.sty))
-&rarr; (/usr/share/texmf/tex/latex/amslatex/amsbsy.sty)
-&rarr; (/usr/share/texmf/tex/latex/amslatex/amsopn.sty))
-&rarr; (/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
-&rarr; (/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty))
-&rarr; No file exp001.aux.
-&rarr; (/usr/share/texmf/tex/latex/amsfonts/umsa.fd)
-&rarr; (/usr/share/texmf/tex/latex/amsfonts/umsb.fd) [1] (exp001.aux) )
-&rarr; Output written on exp001.dvi (1 page, 524 bytes).
-&rarr; Transcript written on exp001.log.
-xdvi(&quot;exp001&quot;);
-&rarr; calling  xdvi  for : exp001 
-&rarr; 
-system(&quot;sh&quot;,&quot;rm exp001.*&quot;);
-&rarr; 0
-</pre></td></tr></table>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_888.htm#parametrize">D.8.3.1 parametrize</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> parametrizes a prime ideal via the normalization
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_889.htm#parametrizepd">D.8.3.2 parametrizepd</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> calculates the prim.dec. and parametrizes the components
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_890.htm#parametrizesing">D.8.3.3 parametrizesing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> parametrizes an isolated plane curve singularity
+</td></tr>
+</table></blockquote>
+<dl compact="compact">
+<dt><strong>Overview:</strong></dt>
+<dd><p>A library to compute parametrizations of algebraic varieties (if possible)
+with the aid of a normalization, or a primary decomposition, resp. to compute
+a parametrization of a plane curve singularity with the aid of a
+Hamburger-Noether expansion.
+</p>
+</dd>
+</dl>
+<p><strong>See also:</strong>
+<a href="sing_681.htm#hnoether_005flib">hnoether_lib</a>;
+<a href="sing_594.htm#normal_005flib">normal_lib</a>;
+<a href="sing_599.htm#primdec_005flib">primdec_lib</a>.
+</p>
+
 </td>
 </tr>
 </table>
@@ -147,14 +132,14 @@ system(&quot;sh&quot;,&quot;rm exp001.*&quot;);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_886.htm#rmx" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.12 rmx" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_888.htm#paramet_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.3 paramet_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_874.htm#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_886.htm#xdvi" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.13 xdvi" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_888.htm#parametrize" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.3.1 parametrize" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_868.htm#Visualization" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8 Visualization" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

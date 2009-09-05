@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.2.3 absValue</title>
+<title>Singular 2-0-4 Manual: D.2.2.4 binomial</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.2.3 absValue">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.2.3 absValue">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.2.4 binomial">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.2.4 binomial">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="absValue"></a>
+<a name="binomial"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_395.htm#ASCII" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.2 ASCII" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_395.htm#absValue" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.3 absValue" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_397.htm#binomial" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.4 binomial" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_397.htm#deleteSublist" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.5 deleteSublist" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_392.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,38 +84,47 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="absValue-1"></a>
-<h4 class="subsubsection">D.2.2.3 absValue</h4>
-<a name="index-absValue"></a>
-<p>Procedure from library <code>general.lib</code> (see <a href="sing_393.htm#general_005flib">general_lib</a>).
+<a name="binomial-1"></a>
+<h4 class="subsubsection">D.2.2.4 binomial</h4>
+<a name="index-binomial"></a>
+<p>Procedure from library <code>general.lib</code> (see <a href="sing_392.htm#general_005flib">general_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>absValue(c); c int, number or poly
+<dd><p>binomial(n,k[,p]); n,k,p integers
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>absValue(c); the absolute value of c
+<dd><p>binomial(n,k); binomial coefficient n choose k
+<br> - of type string (computed in characteristic 0)
+<br> binomial(n,k,p); n choose k, computed in characteristic 0 or prime(p)
+<br> - of type number if a basering, say R, is present and p=0=char(R)
+or if prime(p)=char(R)
+<br> - of type string else
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>absValue(c)=c if c&gt;=0; absValue=-c if c&lt;=0.
-<br> So the function can be applied to any type, for which comparison
-<br> operators are defined.
+<dd><p>In any characteristic, binomial(n,k) = coefficient of x^k in (1+x)^n
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;general.lib&quot;;
-ring r1 = 0,x,dp;
-absValue(-2002);
-&rarr; 2002
-poly f=-4;
-absValue(f);
-&rarr; 4
+binomial(200,100);&quot;&quot;;                   //type string, computed in char 0
+&rarr; 90548514656103281165404177077484163874504589675413336841320
+&rarr; 
+binomial(200,100,3);&quot;&quot;;                 //type string, computed in char 3
+&rarr; 0
+&rarr; 
+int n,k = 200,100;
+ring r = 0,x,dp;
+number b1 = binomial(n,k,0);            //type number, computed in ring r
+poly b2 = coeffs((x+1)^n,x)[k+1,1];     //coefficient of x^k in (x+1)^n
+b1-b2;                                  //b1 and b2 should coincide
+&rarr; 0
 </pre></td></tr></table>
 <p><strong>See also:</strong>
-<a href="sing_79.htm#boolean-expressions">boolean expressions</a>.
+<a href="sing_250.htm#prime">prime</a>.
 </p>
 
 </td>
@@ -127,14 +136,14 @@ absValue(f);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_395.htm#ASCII" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.2 ASCII" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_397.htm#binomial" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.4 binomial" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_395.htm#absValue" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.3 absValue" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_397.htm#deleteSublist" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.5 deleteSublist" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_392.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

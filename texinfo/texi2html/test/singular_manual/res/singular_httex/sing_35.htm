@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.5.2 Special characters</title>
+<title>Singular 2-0-4 Manual: 3.5.3 Names</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.5.2 Special characters">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.5.2 Special characters">
+<meta name="description" content="Singular 2-0-4 Manual: 3.5.3 Names">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.5.3 Names">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Special-characters"></a>
+<a name="Names"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_34.htm#General-command-syntax" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5.1 General command syntax" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_34.htm#Special-characters" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5.2 Special characters" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_36.htm#Names" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.3 Names" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_36.htm#Objects" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.4 Objects" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_33.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_32.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,149 +84,87 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Special-characters-1"></a>
-<h3 class="subsection">3.5.2 Special characters</h3>
-<a name="index-Special-characters"></a>
-<p>The following characters and operators have special meaning:
-</p><dl compact="compact">
-<dt><code>=</code></dt>
-<dd><a name="index-_003d"></a>
-<p>assignment
-</p></dd>
-<dt><code>(</code>, <code>)</code></dt>
-<dd><a name="index-_0028"></a>
-<a name="index-_0029"></a>
-<a name="index-indexed-names"></a>
-<p>in expressions, for indexed names and for argument lists
-</p></dd>
-<dt><code>[</code>, <code>]</code></dt>
-<dd><a name="index-_005b"></a>
-<a name="index-_005d"></a>
-<p>access operator for strings, integer vectors, ideals, matrices,
-polynomials, resolutions, and lists.  Used to build vectors of
-polynomials.  Example: <code>s[3]</code>, <code>m[1,3]</code>, <code>i[1..3]</code>,
-<code>[f,g+x,0,0,1]</code>.
-</p></dd>
-<dt><code>+</code></dt>
-<dd><a name="index-_002b"></a>
-<p>addition operator
-</p></dd>
-<dt><code>-</code></dt>
-<dd><a name="index-_002d"></a>
-<p>subtraction operator
-</p></dd>
-<dt><code>*</code></dt>
-<dd><a name="index-_002a"></a>
-<p>multiplication operator
-</p></dd>
-<dt><code>/</code></dt>
-<dd><a name="index-_002f"></a>
-<p>division  operator.  See <a href="sing_329.htm#Miscellaneous-oddities">Miscellaneous oddities</a>, for the difference
-between the division operators <code>/</code> and <code>div</code>.
-</p></dd>
-<dt><code>%</code></dt>
-<dd><a name="index-_0025"></a>
-<p>modulo operator
-</p></dd>
-<dt><code>^</code> or <code>**</code></dt>
-<dd><a name="index-_005e"></a>
-<a name="index-_002a_002a"></a>
-<p>exponentiation operator
-</p></dd>
-<dt><code>==</code></dt>
-<dd><a name="index-_003d_003d"></a>
-<p>comparison operator equal
-</p></dd>
-<dt><code>!=</code> or <code>&lt;&gt;</code></dt>
-<dd><a name="index-_0021_003d"></a>
-<a name="index-_003c_003e"></a>
-<p>comparison operator not equal
-</p></dd>
-<dt><code>&gt;=</code></dt>
-<dd><a name="index-_003e_003d"></a>
-<p>comparison operator bigger or equal
-</p></dd>
-<dt><code>&gt;</code></dt>
-<dd><a name="index-_003e"></a>
-<p>comparison operator bigger
-</p></dd>
-<dt><code>&lt;=</code></dt>
-<dd><a name="index-_003c_003d"></a>
-<p>comparison operator smaller or equal
-</p></dd>
-<dt><code>&lt;</code></dt>
-<dd><a name="index-_003c"></a>
-<p>comparison operator smaller.  Also used for file input.  See <a href="sing_189.htm#filecmd">filecmd</a>.
-</p></dd>
-<dt><code>!</code></dt>
-<dd><a name="index-_0021"></a>
-<p>boolean operator not
-</p></dd>
-<dt><code>&amp;&amp;</code></dt>
-<dd><a name="index-_0026_0026"></a>
-<p>boolean operator and
-</p></dd>
-<dt><code>||</code></dt>
-<dd><a name="index-_007c_007c"></a>
-<p>boolean operator or
-</p></dd>
-<dt><code>&quot;</code></dt>
-<dd><a name="index-_0022"></a>
-<p>delimiter for string constants
-</p></dd>
-<dt><code>`</code></dt>
-<dd><a name="index-_0060"></a>
-<p>delimiter for name substitution
-</p></dd>
-<dt><code>?</code></dt>
-<dd><a name="index-_003f"></a>
-<p>synonym for <code>help</code>
-</p></dd>
-<dt><code>//</code></dt>
-<dd><a name="index-_002f_002f"></a>
-<p>comment delimiter.  Comment extends to end of line.
-</p></dd>
-<dt><code>/*</code></dt>
-<dd><a name="index-_002f_002f-1"></a>
-<p>comment delimiter.  Starts a comment which ends with <code>*/</code>.
-</p></dd>
-<dt><code>*/</code></dt>
-<dd><a name="index-_002f_002f-2"></a>
-<p>comment delimiter.  Ends a comment which starts with <code>/*</code>.
-</p></dd>
-<dt><code>;</code></dt>
-<dd><a name="index-_003b"></a>
-<p>statement separator
-</p></dd>
-<dt><code>,</code></dt>
-<dd><p>separator for expression lists and function arguments
-</p></dd>
-<dt><code>\</code></dt>
-<dd><a name="index-_005c"></a>
-<p>escape character for <code>&quot;</code> and <code>\</code> within strings
-</p></dd>
-<dt><code>..</code></dt>
-<dd><a name="index-_002e_002e"></a>
-<p>interval specifier returning intvec.
-E.g., <code>1..3</code> which is equivalent to the intvec <code>1, 2, 3</code>.
-</p></dd>
-<dt><code>_</code></dt>
-<dd><a name="index-_005f"></a>
-<p>value of expression last displayed
-</p></dd>
-<dt><code>~</code></dt>
-<dd><a name="index-_007e"></a>
-<p>breakpoint in procedures
-</p></dd>
-<dt><code>#</code></dt>
-<dd><a name="index-_0023"></a>
-<p>list of parameters in procedures without explicit parameter list
-</p></dd>
-<dt><code>$</code></dt>
-<dd><a name="index-_0024"></a>
-<p>terminates <small>SINGULAR</small>
-</p></dd>
-</dl>
+<a name="Names-1"></a>
+<h3 class="subsection">3.5.3 Names</h3>
+<a name="index-Names"></a>
+<a name="index-Identifiers_002c-syntax-of"></a>
+
+<p><small>SINGULAR</small> is a strongly typed language.  This means that all names
+(= identifiers) have to be declared prior to their use.  For the general
+syntax of a declaration, see the description of declaration commands
+(see <a href="sing_33.htm#General-command-syntax">General command syntax</a>).
+</p>
+<p>See <a href="sing_65.htm#Data-types">Data types</a>, for a description of <small>SINGULAR</small>&rsquo;s data types.
+See <a href="sing_284.htm#typeof">typeof</a>, for a short overview of possible types.  To get information
+on a name and the object named by it, the <code>type</code> command may be
+used (see <a href="sing_283.htm#type">type</a>).
+</p>
+<p>It is possible to redefine an already existing name if doing so does not
+change its type. A redefinition first sets the variable to the default
+value and then computes the expression. The difference between
+redefining and overwriting a variable is shown in the following example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  int i=3;
+  i=i+1;        // overwriting
+  i;
+&rarr; 4
+  int i=i+1;    // redefinition
+&rarr; // ** redefining i **
+  i;
+&rarr; 1
+</pre></td></tr></table>
+
+<p>User defined names should start with a letter and consist of letters and
+digits only.  As an exception to this rule, the characters <code>@</code>,
+and <code>_</code> may
+be used as part of a name, too.  Capital and small letters are
+distinguished.  Indexed names are built as a name followed by an
+int_expression in parentheses.  A list of indexed names can be built as
+a name followed by an intvec_expression in parentheses.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R;
+  int n=3;
+  ideal j(3);
+  ideal j(n);     // is equivalent to the above
+&rarr; // ** redefining j(3) **
+  ideal j(2)=x;
+  j(2..3);
+&rarr; j(2)[1]=x j(3)[1]=0
+</pre></td></tr></table>
+
+<p>Names may not coincide with reserved names (keywords).  Type
+<code>reservedName();</code> to get a list of the reserved names.
+See <a href="sing_264.htm#reservedName">reservedName</a>.  Names should not interfere with names of ring
+variables or, more generally, with monomials.  See <a href="sing_329.htm#Identifier-resolution">Identifier resolution</a>.
+<br> The command <code>listvar</code> provides a list of the names in use
+(see <a href="sing_222.htm#listvar">listvar</a>).
+</p>
+<p>The most recently printed expression is available
+under the special name <code>_</code>, e.g.,
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+  ideal i=x2+y3,y3+z4;
+  std(i);
+&rarr; _[1]=y3+x2
+&rarr; _[2]=z4-x2
+  ideal k=_;
+  k*k+x;
+&rarr; _[1]=y6+2x2y3+x4
+&rarr; _[2]=y3z4+x2z4-x2y3-x4
+&rarr; _[3]=z8-2x2z4+x4
+&rarr; _[4]=x
+  size(_[3]);
+&rarr; 3
+</pre></td></tr></table>
+
+<p>A string_expression enclosed in <code>`</code>&hellip;<code>`</code> (back ticks)
+evaluates to the value of the variable named by the string_expression.
+This feature is referred to as name substitution.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  int foo(1)=42;
+  string bar=&quot;foo&quot;;
+  `bar+&quot;(1)&quot;`;
+&rarr; 42
+</pre></td></tr></table>
 
 </td>
 </tr>
@@ -237,14 +175,14 @@ E.g., <code>1..3</code> which is equivalent to the intvec <code>1, 2, 3</code>.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_34.htm#General-command-syntax" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5.1 General command syntax" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_36.htm#Names" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.3 Names" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_33.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_34.htm#Special-characters" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5.2 Special characters" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_36.htm#Objects" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.4 Objects" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_32.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

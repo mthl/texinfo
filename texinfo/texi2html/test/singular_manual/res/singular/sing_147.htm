@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.17.4 string operations</title>
+<title>Singular 2-0-4 Manual: 4.17.5 string related functions</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.17.4 string operations">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.17.4 string operations">
+<meta name="description" content="Singular 2-0-4 Manual: 4.17.5 string related functions">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.17.5 string related functions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="string-operations"></a>
+<a name="string-related-functions"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_146.htm#string-type-cast" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.17.3 string type cast" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_146.htm#string-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.17.4 string operations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_148.htm#string-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.17.5 string related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_148.htm#vector" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.18 vector" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_143.htm#string" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.17 string" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_142.htm#string" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.17 string" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,50 +82,54 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="string-operations-1"></a>
-<h3 class="subsection">4.17.4 string operations</h3>
-<a name="index-string-operations"></a>
+<a name="string-related-functions-1"></a>
+<h3 class="subsection">4.17.5 string related functions</h3>
+<a name="index-string-related-functions"></a>
 
 <dl compact="compact">
-<dt><code>+</code></dt>
-<dd><p>concatenation
-</p>
-</dd>
-<dt><code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>&lt;&gt;</code></dt>
-<dd><p>comparison (lexicographical with respect to the ASCII encoding)
-</p>
-</dd>
-<dt>string_expression <code>[</code> int_expression <code>]</code></dt>
-<dd><p>is a character of the string; the index 1 gives the first character.
-</p>
-</dd>
-<dt>string_expression <code>[</code> int_expression<code>,</code> int_expression <code>]</code></dt>
-<dd><p>is a substring, where the first argument is the start index and the
-second is the length of the substring, filled up with blanks if the
-length exceeds the total size of the string
-</p>
-</dd>
-<dt>string_expression <code>[</code> intvec_expression <code>]</code></dt>
-<dd><p>is a expression list of characters from the string
+<dt><code>charstr</code></dt>
+<dd><p>description of the coefficient field of a ring (see <a href="sing_160.htm#charstr">charstr</a>)
+</p></dd>
+<dt><code>execute</code></dt>
+<dd><p>executing string as command (see <a href="sing_180.htm#execute">execute</a>)
+</p></dd>
+<dt><code>find</code></dt>
+<dd><p>position of a substring in a string (see <a href="sing_189.htm#find">find</a>)
+</p></dd>
+<dt><code>names</code></dt>
+<dd><p>list of strings of all user-defined variable names (see <a href="sing_236.htm#names">names</a>)
+</p></dd>
+<dt><code>nameof</code></dt>
+<dd><p>name of an object (see <a href="sing_235.htm#nameof">nameof</a>)
+</p></dd>
+<dt><code>option</code></dt>
+<dd><p>lists all defined options (see <a href="sing_243.htm#option">option</a>)
+</p></dd>
+<dt><code>ordstr</code></dt>
+<dd><p>monomial ordering of a ring (see <a href="sing_245.htm#ordstr">ordstr</a>)
+</p></dd>
+<dt><code>parstr</code></dt>
+<dd><p>names of all ring parameters or the
+name of the n-th ring parameter (see <a href="sing_248.htm#parstr">parstr</a>)
+</p></dd>
+<dt><code>read</code></dt>
+<dd><p>read a file (see <a href="sing_259.htm#read">read</a>)
+</p></dd>
+<dt><code>size</code></dt>
+<dd><p>length of a string (see <a href="sing_270.htm#size">size</a>)
+</p></dd>
+<dt><code>sprintf</code></dt>
+<dd><p>string formatting (see <a href="sing_272.htm#sprintf">sprintf</a>)
+</p></dd>
+<dt><code>typeof</code></dt>
+<dd><p>type of an object (see <a href="sing_284.htm#typeof">typeof</a>)
+</p></dd>
+<dt><code>varstr</code></dt>
+<dd><p>names of all ring variables or the
+name of the n-th ring variable (see <a href="sing_288.htm#varstr">varstr</a>)
 </p></dd>
 </dl>
 
-<br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  string s=&quot;abcde&quot;;
-  s[2];
-&rarr; b
-  s[3,2];
-&rarr; cd
-  &quot;&gt;&gt;&quot;+s[1,10]+&quot;&lt;&lt;&quot;;
-&rarr; &gt;&gt;abcde     &lt;&lt;
-  s[2]=&quot;BC&quot;; s;
-&rarr; aBcde
-  intvec v=1,3,5;
-  s=s[v]; s;
-&rarr; ace
-  s=&quot;123456&quot;; s=s[3..5]; s;
-&rarr; 345
-</pre></td></tr></table>
 
 </td>
 </tr>
@@ -136,14 +140,14 @@ length exceeds the total size of the string
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_146.htm#string-type-cast" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.17.3 string type cast" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_148.htm#string-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.17.5 string related functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_143.htm#string" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.17 string" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_146.htm#string-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.17.4 string operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_148.htm#vector" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.18 vector" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_142.htm#string" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.17 string" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

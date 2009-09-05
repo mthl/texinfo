@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.7.2 Names in procedures</title>
+<title>Singular 2-0-4 Manual: 3.7.3 Parameter list</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.7.2 Names in procedures">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.7.2 Names in procedures">
+<meta name="description" content="Singular 2-0-4 Manual: 3.7.3 Parameter list">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.7.3 Parameter list">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Names-in-procedures"></a>
+<a name="Parameter-list"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_42.htm#Procedure-definition" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.7.1 Procedure definition" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_42.htm#Names-in-procedures" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.7.2 Names in procedures" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_44.htm#Parameter-list" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.7.3 Parameter list" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_44.htm#Procedure-commands" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.7.4 Procedure commands" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_41.htm#Procedures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.7 Procedures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_40.htm#Procedures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.7 Procedures" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,44 +84,73 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Names-in-procedures-1"></a>
-<h3 class="subsection">3.7.2 Names in procedures</h3>
-<a name="index-Names-in-procedures"></a>
-<a name="index-local-names"></a>
-
-<p>All variables are local to the procedure they are defined in.
-Locally defined variables cannot interfere with names in other
-procedures and are automatically deleted after leaving
-the procedure.
-</p>
-<p>Internally, local variables are stored using the nesting level. A variable
-is said to have nesting level 1, if it is local to a procedure that was
-called interactively, nesting level 2, if it is local to a procedure that
-was called by a procedure of nesting level 1 etc. <code>listvar()</code> also
-displays the nesting level, nesting level 0 is used for global objects
-(see <a href="sing_223.htm#listvar">listvar</a>). A ring may be &rsquo;moved up&rsquo; by one nesting level
-with <code>keepring</code> (see <a href="sing_302.htm#keepring">keepring</a>). All variables living in that
-ring are moved together with that ring.
-</p>
-<p>To keep local variables after leaving the procedure, they have to be
-exported (i.e. made known) to some higher level by the <code>export</code>
-command (see <a href="sing_299.htm#export">export</a>).
-</p>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc xxx
+<a name="Parameter-list-1"></a>
+<h3 class="subsection">3.7.3 Parameter list</h3>
+<a name="index-Parameter-list"></a>
+<dl compact="compact">
+<dt><code><strong>Syntax:</strong></code></dt>
+<dd><p><code>( )</code>
+<br><code>(</code> parameter_definition <code>)</code>
+</p></dd>
+<dt><code><strong>Purpose:</strong></code></dt>
+<dd><p>defines the number, type and names of the
+arguments to a <code>proc</code>.
+<br>The parameter_list is optional.
+The default for a parameter_list is <code>(list #)</code>
+which means the arguments are referenced by <code>#[1], #[2]</code>, etc.
+</p></dd>
+<dt><code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc x0
 {
-  int k=4;        //defines a local variable k
-  int result=k+2;
-  export(result);  //defines the global variable &quot;result&quot;.
+    // can be called with
+... // any number of arguments of any type: #[1], #[2],...
+    // number of arguments: size(#)
 }
-xxx();
-listvar(all);
-&rarr; // result               [0]  int 6
-&rarr; // LIB                  [0]  string standard.lib
+
+proc x1 ()
+{
+... // can only be called without arguments
+}
+
+proc x2 (ideal i, int j)
+{
+... // can only be called with 2 arguments,
+    // which can be converted to ideal resp. int
+}
+
+proc x3 (i,j)
+{
+... // can only be called with 2 arguments
+    // of any type
+    // (i,j) is the same as (def i,def j)
+}
+
+proc x5 (i,list #)
+{
+... // can only be called with at least 1 argument
+    // number of arguments: size(#)+1
+}
+
 </pre></td></tr></table>
-<p>Note that the variable <code>result</code> became a global variable after the
-execution of <code>xxx</code>.
-</p>
+</dd>
+<dt><code><strong>Note:</strong></code></dt>
+<dd><br><p> The parameter_list may stretch across multiple lines.
+<br> A parameter may have any type (including the types <code>proc</code>
+   and <code>ring</code>). If a parameter is of type ring, then it
+   can only be specified by name, but not with a type, e.g.
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc x6 (r)
+{
+... // this is correct even if the parameter is a ring
+}
+
+proc x7 (ring r)
+{
+... // this is NOT CORRECT
+}
+</pre></td></tr></table>
+</dd>
+</dl>
+
 </td>
 </tr>
 </table>
@@ -131,14 +160,14 @@ execution of <code>xxx</code>.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_42.htm#Procedure-definition" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.7.1 Procedure definition" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_44.htm#Parameter-list" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.7.3 Parameter list" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_41.htm#Procedures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.7 Procedures" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_42.htm#Names-in-procedures" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.7.2 Names in procedures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_44.htm#Procedure-commands" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.7.4 Procedure commands" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_40.htm#Procedures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.7 Procedures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

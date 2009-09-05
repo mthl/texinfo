@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: A.17 G_a -Invariants</title>
+<title>Singular 2-0-4 Manual: A.18 Invariants of a finite group</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: A.17 G_a -Invariants">
-<meta name="keywords" content="Singular 2-0-4 Manual: A.17 G_a -Invariants">
+<meta name="description" content="Singular 2-0-4 Manual: A.18 Invariants of a finite group">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.18 Invariants of a finite group">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="G_005fa-_002dInvariants"></a>
+<a name="Invariants-of-a-finite-group"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_347.htm#Cyclic-roots" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.16 Cyclic roots" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_347.htm#G_005fa-_002dInvariants" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.17 G_a -Invariants" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_349.htm#Invariants-of-a-finite-group" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.18 Invariants of a finite group" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_349.htm#Factorization" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.19 Factorization" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,53 +82,65 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="G_005fa-_002dInvariants-1"></a>
-<h2 class="section">A.17 G_a -Invariants</h2>
-<a name="index-G_005fa-_002dInvariants"></a>
+<a name="Invariants-of-a-finite-group-1"></a>
+<h2 class="section">A.18 Invariants of a finite group</h2>
+<a name="index-Invariants-of-a-finite-group"></a>
 
-<p>We work in characteristic 0 and use the Lie algebra generated by one
-vector field of the form
-<!-- MATH
- $\sum x_i \partial /\partial x_{i+1}$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="89" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_217.png"
- ALT="$\sum x_i \partial /\partial x_{i+1}$"></SPAN>.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;ainvar.lib&quot;;
-  int n=5;
-  int i;
-  ring s=32003,(x(1..n)),wp(1,2,3,4,5);
-  // definition of the vector field m=sum m[i,1]*d/dx(i)
-  matrix m[n][1];
-  for (i=1;i&lt;=n-1;i=i+1)
-  {
-     m[i+1,1]=x(i);
-  }
-  // computation of the ring of invariants
-  ideal in=invariantRing(m,x(2),x(1),0);
-  in;   //invariant ring is generated by 5 invariants
-&rarr; in[1]=x(1)
-&rarr; in[2]=x(2)^2-2*x(1)*x(3)
-&rarr; in[3]=x(3)^2-2*x(2)*x(4)+2*x(1)*x(5)
-&rarr; in[4]=x(2)^3-3*x(1)*x(2)*x(3)+3*x(1)^2*x(4)
-&rarr; in[5]=x(3)^3-3*x(2)*x(3)*x(4)-15997*x(1)*x(4)^2+3*x(2)^2*x(5)-6*x(1)*x(3)\
-   *x(5)
-  ring q=32003,(x,y,z,u,v,w),dp;
-  matrix m[6][1];
-  m[2,1]=x;
-  m[3,1]=y;
-  m[5,1]=u;
-  m[6,1]=v;
-  // the vector field is: xd/dy+yd/dz+ud/dv+vd/dw
-  ideal in=invariantRing(m,y,x,0);
-  in; //invariant ring is generated by 6 invariants
-&rarr; in[1]=x
-&rarr; in[2]=u
-&rarr; in[3]=v2-2uw
-&rarr; in[4]=zu-yv+xw
-&rarr; in[5]=yu-xv
-&rarr; in[6]=y2-2xz
+<p>Two algorithms to compute the invariant ring are implemented in
+<small>SINGULAR</small>, <code>invariant_ring</code> and <code>invariant_ring_random</code>,
+both by Agnes E. Heydtmann (<code>agnes@math.uni-sb.de</code>).
+</p>
+<p>Bases of homogeneous invariants are generated successively and those are
+chosen as primary invariants that lower the dimension of the ideal
+generated by the previously found invariants (see paper &quot;Generating a
+Noetherian Normalization of the Invariant Ring of a Finite Group&quot; by
+Decker, Heydtmann, Schreyer (1997) to appear in JSC).  In the
+non-modular case secondary invariants are calculated by finding a basis
+(in terms of monomials) of the basering modulo the primary invariants,
+mapping to invariants with the Reynolds operator and using those or
+their power products such that they are linearly independent modulo the
+primary invariants (see paper &quot;Some Algorithms in Invariant Theory of
+Finite Groups&quot; by Kemper and Steel (1997)).  In the modular case they
+are generated according to &quot;Generating Invariant Rings of Finite Groups
+over Arbitrary Fields&quot; by Kemper (1996, to appear in JSC).
+</p>
+<p>We calculate now an example from Sturmfels: &quot;Algorithms in Invariant
+Theory 2.3.7&quot;:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;finvar.lib&quot;;
+  ring R=0,(x,y,z),dp;
+  matrix A[3][3]=0,1,0,-1,0,0,0,0,-1;
+  // the group G is generated by A in Gl(3,Q);
+  print(A);
+&rarr; 0, 1,0,
+&rarr; -1,0,0,
+&rarr; 0, 0,-1
+  print(A*A*A*A); // the fourth power of A is 1
+&rarr; 1,0,0,
+&rarr; 0,1,0,
+&rarr; 0,0,1 
+  // Use the first method to compute the invariants of G:
+  matrix B(1..3);
+  B(1..3)=invariant_ring(A);
+  // SINGULAR returns 2 matrices, the first containing
+  // primary invariants and the second secondary
+  // invariants, i.e., module generators over a Noetherian
+  // normalization
+  // the third result are the irreducible secondary invariants
+  // if the Molien series was available
+  print(B(1));
+&rarr; z2,x2+y2,x2y2
+  print(B(2));
+&rarr; 1,xyz,x2z-y2z,x3y-xy3
+  print(B(3));
+&rarr; xyz,x2z-y2z,x3y-xy3
+  // Use the second method,
+  // with random numbers between -1 and 1:
+  B(1..3)=invariant_ring_random(A,1);
+  print(B(1..3));
+&rarr; z2,x2+y2,x4+y4-z4
+&rarr; 1,xyz,x2z-y2z,x3y-xy3
+&rarr; xyz,x2z-y2z,x3y-xy3
 </pre></td></tr></table>
 </td>
 </tr>
@@ -139,14 +151,14 @@ vector field of the form
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_347.htm#Cyclic-roots" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.16 Cyclic roots" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_349.htm#Invariants-of-a-finite-group" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.18 Invariants of a finite group" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_347.htm#G_005fa-_002dInvariants" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.17 G_a -Invariants" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_349.htm#Factorization" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.19 Factorization" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

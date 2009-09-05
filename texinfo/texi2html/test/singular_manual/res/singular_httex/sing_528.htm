@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.3.2.24 jordannf</title>
+<title>Singular 2-0-4 Manual: D.4 Commutative algebra</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.3.2.24 jordannf">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.3.2.24 jordannf">
+<meta name="description" content="Singular 2-0-4 Manual: D.4 Commutative algebra">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4 Commutative algebra">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="jordannf"></a>
+<a name="Commutative-algebra"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_527.htm#jordanmatrix" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.2.23 jordanmatrix" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_527.htm#jordannf" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.2.24 jordannf" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_529.htm#Commutative-algebra" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4 Commutative algebra" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_529.htm#algebra_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.1 algebra_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_504.htm#linalg_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.2 linalg_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,32 +84,35 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="jordannf-1"></a>
-<h4 class="subsubsection">D.3.2.24 jordannf</h4>
-<a name="index-jordannf"></a>
-<p>Procedure from library <code>linalg.lib</code> (see <a href="sing_504.htm#linalg_005flib">linalg_lib</a>).
-</p>
-<dl compact="compact">
-<dt><strong>Usage:</strong></dt>
-<dd><p>jordannf(M); matrix M
-</p>
-</dd>
-<dt><strong>Assume:</strong></dt>
-<dd><p>eigenvalues of M in basefield
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>matrix J; Jordan normal form of M
-</p>
-</dd>
-</dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;linalg.lib&quot;;
-ring R=0,x,dp;
-matrix M[3][3]=3,2,1,0,2,1,0,0,3;
-print(M);
-print(jordannf(M));
-</pre></td></tr></table>
+<a name="Commutative-algebra-1"></a>
+<h2 class="section">D.4 Commutative algebra</h2>
+<a name="index-Commutative-algebra"></a>
+
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_529.htm#algebra_005flib">D.4.1 algebra_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for computing with algebras and maps
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_541.htm#elim_005flib">D.4.2 elim_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for elimination, saturation and blowing up
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_549.htm#homolog_005flib">D.4.3 homolog_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for homological algebra
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_569.htm#mprimdec_005flib">D.4.4 mprimdec_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for primary decomposition of modules
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_590.htm#mregular_005flib">D.4.5 mregular_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for Castelnuovo-Mumford regularity
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_594.htm#normal_005flib">D.4.6 normal_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedure for normalization
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_599.htm#primdec_005flib">D.4.7 primdec_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for primary decomposition
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_614.htm#primitiv_005flib">D.4.8 primitiv_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for finding a primitive element
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_618.htm#reesclos_005flib">D.4.9 reesclos_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Rees Algebra and integral closure of an ideal
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_624.htm#intprog_005flib">D.4.10 intprog_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Integer Programming
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_626.htm#toric_005flib">D.4.11 toric_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> toric ideals
+</td></tr>
+</table></blockquote>
+
 </td>
 </tr>
 </table>
@@ -119,14 +122,14 @@ print(jordannf(M));
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_527.htm#jordanmatrix" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.2.23 jordanmatrix" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_529.htm#Commutative-algebra" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4 Commutative algebra" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_504.htm#linalg_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.2 linalg_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_527.htm#jordannf" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.2.24 jordannf" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_529.htm#algebra_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.1 algebra_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

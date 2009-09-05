@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.6.6 DBM links</title>
+<title>Singular 2-0-4 Manual: 4.7 list</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.6.6 DBM links">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.6.6 DBM links">
+<meta name="description" content="Singular 2-0-4 Manual: 4.7 list">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.7 list">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="DBM-links"></a>
+<a name="list"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_99.htm#MPtcp-links" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.6.5.2 MPtcp links" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_99.htm#DBM-links" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.6.6 DBM links" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_101.htm#list" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.7 list" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_101.htm#list-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.7.1 list declarations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_92.htm#link" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.6 link" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,76 +82,34 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="DBM-links-1"></a>
-<h3 class="subsection">4.6.6 DBM links</h3>
-<a name="index-DBM-links"></a>
+<a name="list-1"></a>
+<h2 class="section">4.7 list</h2>
+<a name="index-list"></a>
 
-<p>DBM links provide access to data stored in a data base.
-Each entry in the data base consists of a (key_string,
-value_string) pair. Such a pair can be inserted with the command
-<code>write(</code>link<code>,</code> key_string<code>,</code> value_string<code>)</code>.  By
-calling <code>write(</code>link<code>,</code> key_string<code>)</code>, the entry with key
-key_string is deleted from the data base. The value of an entry is
-returned by the command <code>read(</code>link<code>,</code>
-key_string<code>)</code>. With only one argument, <code>read(</code>link<code>)</code>
-returns the next key in the data base. Using this feature a
-data base can be scanned in order to access all entries of the data base.
+<p>Lists are arrays whose elements can be of any type (including ring and
+qring). If one element belongs to a ring the whole list belongs to that
+ring. This applies also to the special list <code>#</code>. The expression
+<code>list()</code> is the empty list.
 </p>
-<p>If a data base with name <code>name</code> is opened for writing for the first
-time, two files (<code>name.pag</code> and <code>name.dir</code>), which contain the
-data base, are automatically created.
+<p>Note that a list stores the objects itself and not the names.  Hence, if
+<code>L</code> is a list, <code>L[1]</code> for example has no name.  A name, say
+<code>R</code>, can be created for <code>L[1]</code> by <code>def R=L[1];</code>. To store
+also the name of an object, say <code>r</code>, it can be added to the list
+with <code>nameof(r);</code>. Rings and qrings may be objects of a list.
 </p>
-<p>The DBM link describing string has to be one of the following:
+<p><strong>Note</strong>: Unlike other assignments a ring as an element of a list
+is not a copy but another reference to the same ring.
 </p>
-<ol>
-<li> <code>&quot;DBM: &quot;</code> + name
-<br>opens the data base for reading (default mode).
-
-</li><li> <code>&quot;DBM:r &quot;</code> + name
-<br>opens the data base for reading.
-
-</li><li> <code>&quot;DBM:rw &quot;</code> + name
-<br>opens the data base for reading and writing.
-</li></ol>
-
-<p>Note that <code>name</code> must be given without the suffix <code>.pag</code> or
-<code>.dir</code>. The name may contain an (absolute) path.
-</p>
-<br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  link l=&quot;DBM:rw example&quot;;
-  write(l,&quot;1&quot;,&quot;abc&quot;);
-  write(l,&quot;3&quot;,&quot;XYZ&quot;);
-  write(l,&quot;2&quot;,&quot;ABC&quot;);
-  l;
-&rarr; // type : DBM
-&rarr; // mode : rw
-&rarr; // name : example
-&rarr; // open : yes
-&rarr; // read : ready
-&rarr; // write: ready
-  close(l);
-  // read all keys (till empty string):
-  read(l);
-&rarr; 1
-  read(l);
-&rarr; 3
-  read(l);
-&rarr; 2
-  read(l);
-&rarr; 
-  // read data corresponding to key &quot;1&quot;
-  read(l,&quot;1&quot;);
-&rarr; abc
-  // read all data:
-  read(l,read(l));
-&rarr; abc
-  read(l,read(l));
-&rarr; XYZ
-  read(l,read(l));
-&rarr; ABC
-  // close
-  close(l);
-</pre></td></tr></table>
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_101.htm#list-declarations">4.7.1 list declarations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_102.htm#list-expressions">4.7.2 list expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_103.htm#list-operations">4.7.3 list operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_104.htm#list-related-functions">4.7.4 list related functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
 
 </td>
 </tr>
@@ -162,14 +120,14 @@ data base, are automatically created.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_99.htm#MPtcp-links" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.6.5.2 MPtcp links" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_101.htm#list" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.7 list" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_92.htm#link" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.6 link" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_99.htm#DBM-links" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.6.6 DBM links" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_101.htm#list-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.7.1 list declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

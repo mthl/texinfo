@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.9.3 matrix type cast</title>
+<title>Singular 2-0-4 Manual: 4.9.4 matrix operations</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.9.3 matrix type cast">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.9.3 matrix type cast">
+<meta name="description" content="Singular 2-0-4 Manual: 4.9.4 matrix operations">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.9.4 matrix operations">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="matrix-type-cast"></a>
+<a name="matrix-operations"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_112.htm#matrix-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.9.2 matrix expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_112.htm#matrix-type-cast" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.9.3 matrix type cast" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_114.htm#matrix-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.9.4 matrix operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_114.htm#matrix-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.9.5 matrix related functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_110.htm#matrix" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.9 matrix" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_109.htm#matrix" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.9 matrix" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,55 +84,77 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="matrix-type-cast-1"></a>
-<h3 class="subsection">4.9.3 matrix type cast</h3>
-<a name="index-matrix-type-cast"></a>
+<a name="matrix-operations-1"></a>
+<h3 class="subsection">4.9.4 matrix operations</h3>
+<a name="index-matrix-operations"></a>
+
 <dl compact="compact">
-<dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>matrix (</code> expression <code>)</code>
-<br><code>matrix (</code> expression, int_n, int_m  <code>)</code>
-</p></dd>
-<dt><code><strong>Type:</strong></code></dt>
-<dd><p>matrix
-</p></dd>
-<dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>Converts expression to a matrix, where expression must be of type int,
-intmat, intvec, number, poly, ideal, vector, module, or matrix. If
-int_n and int_m are supplied, then they specify the dimension of the
-matrix. Otherwise, the size (resp. dimensions) of the matrix
-are determined  by the size (resp. dimensions) of the
-expression.
-</p></dd>
-<dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
-  matrix(x);
-&rarr; _[1,1]=x
-  matrix(x, 1, 2);
-&rarr; _[1,1]=x
-&rarr; _[1,2]=0
-  matrix(intmat(intvec(1,2,3,4), 2, 2));
-&rarr; _[1,1]=1
-&rarr; _[1,2]=2
-&rarr; _[2,1]=3
-&rarr; _[2,2]=4
-  matrix(_, 2, 3);
-&rarr; _[1,1]=1
-&rarr; _[1,2]=2
-&rarr; _[1,3]=0
-&rarr; _[2,1]=3
-&rarr; _[2,2]=4
-&rarr; _[2,3]=0
-  matrix(_, 2, 1);
-&rarr; _[1,1]=1
-&rarr; _[2,1]=3
-</pre></td></tr></table>
+<dt><code>+</code></dt>
+<dd><p>addition with matrix or poly; the poly is converted into a diagonal
+matrix
+</p>
 </dd>
+<dt><code>-</code></dt>
+<dd><p>negation or subtraction with matrix or poly; the poly is converted into
+a diagonal matrix
+</p>
+</dd>
+<dt><code>*</code></dt>
+<dd><p>multiplication with matrix or poly; the poly is converted into a
+diagonal matrix
+</p>
+</dd>
+<dt><code>/</code></dt>
+<dd><p>division by poly
+</p>
+</dd>
+<dt><code>==</code>, <code>&lt;&gt;</code>, <code>!=</code></dt>
+<dd><p>comparison
+</p>
+</dd>
+<dt>matrix_expression <code>[</code> int_expression<code>,</code> int_expression <code>]</code></dt>
+<dd><p>is a matrix entry, where the first index indicates the row and the
+second the column
+</p></dd>
 </dl>
-<p>See
-<a href="sing_38.htm#Type-conversion-and-casting">Type conversion and casting</a>;
-<a href="sing_84.htm#intmat-type-cast">intmat type cast</a>;
-<a href="sing_110.htm#matrix">matrix</a>.
-</p></td>
+
+<br><p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,x,dp;
+  matrix A[3][3] = 1,3,2,5,0,3,2,4,5; // define a matrix
+  print(A); // nice printing of small matrices
+&rarr; 1,3,2,
+&rarr; 5,0,3,
+&rarr; 2,4,5 
+  A[2,3];   // matrix entry
+&rarr; 3
+  A[2,3] = A[2,3] + 1; // change entry
+  A[2,1..3] = 1,2,3;   // change 2nd row
+  print(A);
+&rarr; 1,3,2,
+&rarr; 1,2,3,
+&rarr; 2,4,5 
+  matrix E[3][3]; E = E + 1;  // the unit matrix
+  matrix B =x*E - A;
+  print(B);
+&rarr; x-1,-3, -2,
+&rarr; -1, x-2,-3,
+&rarr; -2, -4, x-5
+  det(B);        // the characteristic polynomial of A
+&rarr; x3-8x2-2x-1
+  A*A*A - 8 * A*A - 2*A == E;  // Cayley-Hamilton
+&rarr; 1
+  vector v =[x,-1,x2];
+  A*v; // multiplication of matrix and vector
+&rarr; _[1,1]=2x2+x-3
+&rarr; _[2,1]=3x2+x-2
+&rarr; _[3,1]=5x2+2x-4
+  matrix m[2][2]=1,2,3;
+  print(m-transpose(m));
+&rarr; 0,-1,
+&rarr; 1,0  
+</pre></td></tr></table>
+
+</td>
 </tr>
 </table>
 <hr>
@@ -141,14 +163,14 @@ expression.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_112.htm#matrix-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.9.2 matrix expressions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_114.htm#matrix-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.9.4 matrix operations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_110.htm#matrix" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.9 matrix" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_112.htm#matrix-type-cast" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.9.3 matrix type cast" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_114.htm#matrix-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.9.5 matrix related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_109.htm#matrix" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.9 matrix" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

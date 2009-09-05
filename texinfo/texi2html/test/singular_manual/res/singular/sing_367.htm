@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: B.2.5 Module orderings</title>
+<title>Singular 2-0-4 Manual: B.2.6 Matrix orderings</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: B.2.5 Module orderings">
-<meta name="keywords" content="Singular 2-0-4 Manual: B.2.5 Module orderings">
+<meta name="description" content="Singular 2-0-4 Manual: B.2.6 Matrix orderings">
+<meta name="keywords" content="Singular 2-0-4 Manual: B.2.6 Matrix orderings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Module-orderings"></a>
+<a name="Matrix-orderings"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_366.htm#Local-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.4 Local orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_366.htm#Module-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.5 Module orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_368.htm#Matrix-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.6 Matrix orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_368.htm#Product-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.7 Product orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_361.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,240 +82,409 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Module-orderings-1"></a>
-<h3 class="subsection">B.2.5 Module orderings</h3>
-<a name="index-Module-orderings"></a>
+<a name="Matrix-orderings-1"></a>
+<h3 class="subsection">B.2.6 Matrix orderings</h3>
+<a name="index-Matrix-orderings"></a>
+<a name="index-orderings_002c-M"></a>
+<a name="index-M_002c-ordering"></a>
 
-<p><small>SINGULAR</small> offers also orderings on the set of &ldquo;monomials&rdquo;
+<p>Let 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_13.png"
+ ALT="$M$"></SPAN>
+be an invertible 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="51" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_215.png"
+ ALT="$(n \times n)$"></SPAN>-matrix
+ with integer coefficients and
 <!-- MATH
- $\{ x^a e_i  \mid  a \in N^n, 1 \leq i \leq r \}$
+ $M_1, \ldots, M_n$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="172" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_290.png"
- ALT="$\{ x^a e_i \mid a \in N^n, 1 \leq i \leq r \}$"></SPAN> in Loc <SPAN CLASS="MATH"><IMG
- WIDTH="40" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_291.png"
- ALT="$K[x]^r$"></SPAN> = Loc
+ WIDTH="80" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_310.png"
+ ALT="$M_1, \ldots, M_n$"></SPAN> the rows of <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_13.png"
+ ALT="$M$"></SPAN>.
+</p>
+<p>The M-ordering &lt; is defined as follows:
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
+ $x^a < x^b \Leftrightarrow \exists\  1 \leq i \leq n :
+M_1 a = \; M_1 b, \ldots, M_{i-1} a = \; M_{i-1} b$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="386" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_311.png"
+ ALT="$x^a &lt; x^b \Leftrightarrow \exists\ 1 \leq i \leq n :
+M_1 a = \; M_1 b, \ldots, M_{i-1} a = \; M_{i-1} b$"></SPAN> and <!-- MATH
+ $M_i a < \; M_i b$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="80" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_312.png"
+ ALT="$M_i a &lt; \; M_i b$"></SPAN>.
+</p>
+<p>Thus,
+<SPAN CLASS="MATH"><IMG
+ WIDTH="53" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_313.png"
+ ALT="$x^a &lt; x^b$"></SPAN>
+if and only if <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_314.png"
+ ALT="$M a$"></SPAN> is smaller than <SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_315.png"
+ ALT="$M b$"></SPAN>
+with respect to the lexicographical ordering.
+</p>
+<p>The following matrices represent (for 3 variables) the global and
+local orderings defined above (note that the matrix is not uniquely determined
+by the ordering):
+</p>
+<p>
+<P>
+<SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_316.png"
+ ALT="$\quad$"></SPAN> lp:
 <!-- MATH
- $K[x]e_1 
-+ \ldots +$
+ $\left(\matrix{
+ 1 & 0 & 0 \cr
+ 0 & 1 & 0 \cr
+ 0 & 0 & 1 \cr
+ }\right)$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="97" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_292.png"
- ALT="$K[x]e_1
-+ \ldots +$"></SPAN>Loc <SPAN CLASS="MATH"><IMG
- WIDTH="47" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_293.png"
- ALT="$K[x]e_r$"></SPAN>, where <!-- MATH
- $e_1, \ldots, e_r$
+ WIDTH="87" HEIGHT="70" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_317.png"
+ ALT="$\left(\matrix{
+1 &amp; 0 &amp; 0 \cr
+0 &amp; 1 &amp; 0 \cr
+0 &amp; 0 &amp; 1 \cr
+}\right)$"></SPAN>
+&nbsp;&nbsp;&nbsp;&nbsp;dp:
+<!-- MATH
+ $\left(\matrix{
+ 1 & 1 & 1 \cr
+ 0 & 0 &-1 \cr
+ 0 &-1 & 0 \cr
+ }\right)$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="64" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_294.png"
- ALT="$e_1, \ldots, e_r$"></SPAN> denote the canonical
-generators of Loc <SPAN CLASS="MATH"><IMG
- WIDTH="40" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_291.png"
- ALT="$K[x]^r$"></SPAN>, the r-fold direct sum of Loc <SPAN CLASS="MATH"><IMG
- WIDTH="34" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_270.png"
- ALT="$K[x]$"></SPAN>.
-(The function <TT>gen(i)</TT> yields <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_295.png"
- ALT="$e_i$"></SPAN>).
+ WIDTH="110" HEIGHT="70" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_318.png"
+ ALT="$\left(\matrix{
+1 &amp; 1 &amp; 1 \cr
+0 &amp; 0 &amp;-1 \cr
+0 &amp;-1 &amp; 0 \cr
+}\right)$"></SPAN>
+&nbsp;&nbsp;&nbsp;&nbsp;Dp:
+<!-- MATH
+ $\left(\matrix{
+ 1 & 1 & 1 \cr
+ 1 & 0 & 0 \cr
+ 0 & 1 & 0 \cr
+ }\right)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="87" HEIGHT="70" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_319.png"
+ ALT="$\left(\matrix{
+1 &amp; 1 &amp; 1 \cr
+1 &amp; 0 &amp; 0 \cr
+0 &amp; 1 &amp; 0 \cr
+}\right)$"></SPAN>
+
+<P>
+<SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_316.png"
+ ALT="$\quad$"></SPAN> wp(1,2,3):
+<!-- MATH
+ $\left(\matrix{
+ 1 & 2 & 3 \cr
+ 0 & 0 &-1 \cr
+ 0 &-1 & 0 \cr
+ }\right)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="110" HEIGHT="70" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_320.png"
+ ALT="$\left(\matrix{
+1 &amp; 2 &amp; 3 \cr
+0 &amp; 0 &amp;-1 \cr
+0 &amp;-1 &amp; 0 \cr
+}\right)$"></SPAN>
+&nbsp;&nbsp;&nbsp;&nbsp;Wp(1,2,3):
+<!-- MATH
+ $\left(\matrix{
+ 1 & 2 & 3 \cr
+ 1 & 0 & 0 \cr
+ 0 & 1 & 0 \cr
+ }\right)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="87" HEIGHT="70" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_321.png"
+ ALT="$\left(\matrix{
+1 &amp; 2 &amp; 3 \cr
+1 &amp; 0 &amp; 0 \cr
+0 &amp; 1 &amp; 0 \cr
+}\right)$"></SPAN>
+
+<P>
+<SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_316.png"
+ ALT="$\quad$"></SPAN> ls:
+<!-- MATH
+ $\left(\matrix{
+-1 & 0 & 0 \cr
+ 0 &-1 & 0 \cr
+ 0 & 0 &-1 \cr
+ }\right)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="121" HEIGHT="70" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_322.png"
+ ALT="$\left(\matrix{
+-1 &amp; 0 &amp; 0 \cr
+0 &amp;-1 &amp; 0 \cr
+0 &amp; 0 &amp;-1 \cr
+}\right)$"></SPAN>
+&nbsp;&nbsp;&nbsp;&nbsp;ds:
+<!-- MATH
+ $\left(\matrix{
+-1 &-1 &-1 \cr
+ 0 & 0 &-1 \cr
+ 0 &-1 & 0 \cr
+ }\right)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="121" HEIGHT="70" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_323.png"
+ ALT="$\left(\matrix{
+-1 &amp;-1 &amp;-1 \cr
+0 &amp; 0 &amp;-1 \cr
+0 &amp;-1 &amp; 0 \cr
+}\right)$"></SPAN>
+&nbsp;&nbsp;&nbsp;&nbsp;Ds:
+<!-- MATH
+ $\left(\matrix{
+-1 &-1 &-1 \cr
+ 1 & 0 & 0 \cr
+ 0 & 1 & 0 \cr
+ }\right)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="121" HEIGHT="70" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_324.png"
+ ALT="$\left(\matrix{
+-1 &amp;-1 &amp;-1 \cr
+1 &amp; 0 &amp; 0 \cr
+0 &amp; 1 &amp; 0 \cr
+}\right)$"></SPAN>
+
+<P>
+<SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_316.png"
+ ALT="$\quad$"></SPAN> ws(1,2,3):
+<!-- MATH
+ $\left(\matrix{
+-1 &-2 &-3 \cr
+ 0 & 0 &-1 \cr
+ 0 &-1 & 0 \cr
+ }\right)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="121" HEIGHT="70" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_325.png"
+ ALT="$\left(\matrix{
+-1 &amp;-2 &amp;-3 \cr
+0 &amp; 0 &amp;-1 \cr
+0 &amp;-1 &amp; 0 \cr
+}\right)$"></SPAN>
+&nbsp;&nbsp;&nbsp;&nbsp;Ws(1,2,3):
+<!-- MATH
+ $\left(\matrix{
+-1 &-2 &-3 \cr
+ 1 & 0 & 0 \cr
+ 0 & 1 & 0 \cr
+ }\right)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="121" HEIGHT="70" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_326.png"
+ ALT="$\left(\matrix{
+-1 &amp;-2 &amp;-3 \cr
+1 &amp; 0 &amp; 0 \cr
+0 &amp; 1 &amp; 0 \cr
+}\right)$"></SPAN>
 </p>
-<p>We have two possibilities: either to give priority to the component of a
-vector in 
- Loc <SPAN CLASS="MATH"><IMG
- WIDTH="40" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_291.png"
- ALT="$K[x]^r$"></SPAN>
-or (which is the default in <small>SINGULAR</small>) to give priority
-to the coefficients.
-The orderings <code>(&lt;,c)</code> and <code>(&lt;,C)</code> give priority to the
-coefficients; whereas
-<code>(c,&lt;)</code> and <code>(C,&lt;)</code> give priority to the components.
-<br>Let &lt; be any of the monomial orderings of 
-Loc <SPAN CLASS="MATH"><IMG
- WIDTH="34" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_270.png"
- ALT="$K[x]$"></SPAN>
-as above.
+<p>Product orderings (see next section) represented by  a matrix:
 </p>
-<dl compact="compact">
-<dt>(&lt;,C):</dt>
-<dd><a name="index-C_002c-module-ordering"></a>
-<a name="index-module-ordering-C"></a>
 <p><SPAN CLASS="MATH"><IMG
- WIDTH="84" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_296.png"
- ALT="$&lt;_m = (&lt;,C)$"></SPAN> denotes the module ordering (giving priority to the coefficients):
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
- $x^\alpha e_i <_m x^\beta e_j \Leftrightarrow x^\alpha <
-x^\beta$
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_316.png"
+ ALT="$\quad$"></SPAN> (dp(3), wp(1,2,3)):
+<!-- MATH
+ $\left(\matrix{
+1&  1&  1&  0&  0&  0 \cr
+0&  0&  -1&  0&  0&  0 \cr
+0&  -1&  0&  0&  0&  0 \cr
+0&  0&  0&  1&  2&  3 \cr
+0&  0&  0&  0&  0&  -1 \cr
+0&  0&  0&  0&  -1&  0 \cr
+ }\right)$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="170" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_297.png"
- ALT="$x^\alpha e_i &lt;_m x^\beta e_j \Leftrightarrow x^\alpha &lt;
-x^\beta$"></SPAN> or (<!-- MATH
- $x^\alpha = x^\beta$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="57" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_298.png"
- ALT="$x^\alpha = x^\beta $"></SPAN> and <SPAN CLASS="MATH"><IMG
- WIDTH="35" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_299.png"
- ALT="$ i &lt; j$"></SPAN>).
-</p>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), ds;
-  // the same as ring r = 0, (x,y,z), (ds, C);
-  [x+y2,z3+xy];
-&rarr; x*gen(1)+xy*gen(2)+y2*gen(1)+z3*gen(2)
-  [x,x,x];
-&rarr; x*gen(3)+x*gen(2)+x*gen(1)
-</pre></td></tr></table>
+ WIDTH="200" HEIGHT="121" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_327.png"
+ ALT="$\left(\matrix{
+1&amp; 1&amp; 1&amp; 0&amp; 0&amp; 0 \cr
+0&amp; 0&amp; -1&amp; 0&amp; 0&amp; 0 \cr
+0&amp; -1&amp; 0&amp; 0&amp; 0&amp; 0 \cr
+0&amp; 0&amp; 0&amp; 1&amp; 2&amp; 3 \cr
+0&amp; 0&amp; 0&amp; 0&amp; 0&amp; -1 \cr
+0&amp; 0&amp; 0&amp; 0&amp; -1&amp; 0 \cr
+}\right)$"></SPAN>
 
-</dd>
-<dt>(C,&lt;):</dt>
-<dd><p><SPAN CLASS="MATH"><IMG
- WIDTH="83" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_300.png"
- ALT="$&lt;_m = (C, &lt;)$"></SPAN> denotes the module ordering (giving priority to the component):
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
- $x^\alpha e_i <_m x^\beta e_j \Leftrightarrow i < j$
+<P>
+<SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_316.png"
+ ALT="$\quad$"></SPAN> (Dp(3), ds(3)):
+<!-- MATH
+ $\left(\matrix{
+1&  1&  1&  0&  0&  0 \cr
+1&  0&  0&  0&  0&  0 \cr
+0&  1&  0&  0&  0&  0 \cr
+0&  0&  0&  -1&  -1&  -1 \cr
+0&  0&  0&  0&  0&  -1 \cr
+0&  0&  0&  0&  -1&  0 \cr
+ }\right)$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="149" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_301.png"
- ALT="$x^\alpha e_i &lt;_m x^\beta e_j \Leftrightarrow i &lt; j$"></SPAN> or (<SPAN CLASS="MATH"><IMG
- WIDTH="35" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_302.png"
- ALT="$
-i = j $"></SPAN> and <!-- MATH
- $x^\alpha < x^\beta$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="57" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_263.png"
- ALT="$x^\alpha &lt; x^\beta$"></SPAN>).
+ WIDTH="189" HEIGHT="121" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_328.png"
+ ALT="$\left(\matrix{
+1&amp; 1&amp; 1&amp; 0&amp; 0&amp; 0 \cr
+1&amp; 0&amp; 0&amp; 0&amp; 0&amp; 0 \cr
+0&amp; 1&amp; 0&amp; 0&amp; 0&amp; 0 \cr
+0&amp; 0&amp; 0&amp; -1&amp; -1&amp; -1 \cr
+0&amp; 0&amp; 0&amp; 0&amp; 0&amp; -1 \cr
+0&amp; 0&amp; 0&amp; 0&amp; -1&amp; 0 \cr
+}\right)$"></SPAN>
 </p>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (C,lp);
-  [x+y2,z3+xy];
-&rarr; xy*gen(2)+z3*gen(2)+x*gen(1)+y2*gen(1)
-  [x,x,x];
-&rarr; x*gen(3)+x*gen(2)+x*gen(1)
-</pre></td></tr></table>
-
-</dd>
-<dt>(&lt;,c):</dt>
-<dd><a name="index-c_002c-module-ordering"></a>
-<a name="index-module-ordering-c"></a>
+<p>Orderings with extra weight vector (see below) represented by  a matrix:
+</p>
 <p><SPAN CLASS="MATH"><IMG
- WIDTH="78" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_303.png"
- ALT="$&lt;_m = (&lt;,c)$"></SPAN> denotes the module ordering (giving priority to the coefficients):
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
- $x^\alpha e_i <_m x^\beta e_j \Leftrightarrow x^\alpha <
-x^\beta$
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_316.png"
+ ALT="$\quad$"></SPAN> (dp(3), a(1,2,3),dp(3)):
+<!-- MATH
+ $\left(\matrix{
+1&  1&  1&  0&  0&  0 \cr
+0&  0&  -1&  0&  0&  0 \cr
+0&  -1&  0&  0&  0&  0 \cr
+0&  0&  0&  1&  2&  3 \cr
+0&  0&  0&  1&  1&  1 \cr
+0&  0&  0&  0&  0&  -1 \cr
+0&  0&  0&  0&  -1&  0 \cr
+ }\right)$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="170" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_297.png"
- ALT="$x^\alpha e_i &lt;_m x^\beta e_j \Leftrightarrow x^\alpha &lt;
-x^\beta$"></SPAN> or (<!-- MATH
- $x^\alpha = x^\beta$
+ WIDTH="200" HEIGHT="139" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_329.png"
+ ALT="$\left(\matrix{
+1&amp; 1&amp; 1&amp; 0&amp; 0&amp; 0 \cr
+0&amp; 0&amp; -1&amp; 0&amp; 0&amp; 0 \cr
+0&amp; -1&amp; 0&amp; 0&amp; 0&amp; 0 \cr...
+... \cr
+0&amp; 0&amp; 0&amp; 1&amp; 1&amp; 1 \cr
+0&amp; 0&amp; 0&amp; 0&amp; 0&amp; -1 \cr
+0&amp; 0&amp; 0&amp; 0&amp; -1&amp; 0 \cr
+}\right)$"></SPAN>
+
+<P>
+<SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_316.png"
+ ALT="$\quad$"></SPAN> (a(1,2,3,4,5),Dp(3), ds(3)):
+<!-- MATH
+ $\left(\matrix{
+1&  2&  3&  4&  5&  0 \cr
+1&  1&  1&  0&  0&  0 \cr
+1&  0&  0&  0&  0&  0 \cr
+0&  1&  0&  0&  0&  0 \cr
+0&  0&  0&  -1&  -1&  -1 \cr
+0&  0&  0&  0&  0 & -1 \cr
+0&  0&  0&  0&  -1&  0 \cr
+ }\right)$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="57" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_298.png"
- ALT="$x^\alpha = x^\beta $"></SPAN> and <SPAN CLASS="MATH"><IMG
- WIDTH="35" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_304.png"
- ALT="$ i &gt; j$"></SPAN>).
+ WIDTH="189" HEIGHT="139" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_330.png"
+ ALT="$\left(\matrix{
+1&amp; 2&amp; 3&amp; 4&amp; 5&amp; 0 \cr
+1&amp; 1&amp; 1&amp; 0&amp; 0&amp; 0 \cr
+1&amp; 0&amp; 0&amp; 0&amp; 0&amp; 0 \cr
+0...
+...
+0&amp; 0&amp; 0&amp; -1&amp; -1&amp; -1 \cr
+0&amp; 0&amp; 0&amp; 0&amp; 0 &amp; -1 \cr
+0&amp; 0&amp; 0&amp; 0&amp; -1&amp; 0 \cr
+}\right)$"></SPAN>
 </p>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (lp,c);
-  [x+y2,z3+xy];
-&rarr; xy*gen(2)+x*gen(1)+y2*gen(1)+z3*gen(2)
-  [x,x,x];
-&rarr; x*gen(1)+x*gen(2)+x*gen(3)
+<br><p><strong>Example</strong>:
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), M(1, 0, 0,   0, 1, 0,   0, 0, 1);
+</pre></td></tr></table>
+<br><p>which may also be written as:
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  intmat m[3][3]=1, 0, 0, 0, 1, 0, 0, 0, 1;
+  m;
+&rarr; 1,0,0,
+&rarr; 0,1,0,
+&rarr; 0,0,1 
+  ring r = 0, (x,y,z), M(m);
+  r;
+&rarr; //   characteristic : 0
+&rarr; //   number of vars : 3
+&rarr; //        block   1 : ordering M
+&rarr; //                  : names    x y z 
+&rarr; //                  : weights  1 0 0 
+&rarr; //                  : weights  0 1 0 
+&rarr; //                  : weights  0 0 1 
+&rarr; //        block   2 : ordering C
 </pre></td></tr></table>
 
-</dd>
-<dt>(c,&lt;):</dt>
-<dd><p><SPAN CLASS="MATH"><IMG
- WIDTH="78" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_305.png"
- ALT="$&lt;_m = (c, &lt;)$"></SPAN> denotes the module ordering (giving priority to the component):
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
- $x^\alpha e_i <_m x^\beta e_j \Leftrightarrow i > j$
- -->
+<p>If the ring has 
 <SPAN CLASS="MATH"><IMG
- WIDTH="149" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_306.png"
- ALT="$x^\alpha e_i &lt;_m x^\beta e_j \Leftrightarrow i &gt; j$"></SPAN> or (<SPAN CLASS="MATH"><IMG
- WIDTH="35" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_302.png"
- ALT="$
-i = j $"></SPAN> and <!-- MATH
- $x^\alpha < x^\beta$
- -->
+ WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_17.png"
+ ALT="$n$"></SPAN>
+variables and the matrix contains less than 
 <SPAN CLASS="MATH"><IMG
- WIDTH="57" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_263.png"
- ALT="$x^\alpha &lt; x^\beta$"></SPAN>).
+ WIDTH="39" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_331.png"
+ ALT="$n \times n$"></SPAN>
+entries an error message is given, if there are more entries,
+the last ones are ignored.
 </p>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (c,lp);
-  [x+y2,z3+xy];
-&rarr; [x+y2,xy+z3]
-  [x,x,x];
-&rarr; [x,x,x]
-</pre></td></tr></table>
-</dd>
-</dl>
-
-<p>The output of a vector <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_241.png"
- ALT="$v$"></SPAN> in <SPAN CLASS="MATH"><IMG
- WIDTH="40" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_291.png"
- ALT="$K[x]^r$"></SPAN> with components <!-- MATH
- $v_1,
-\ldots, v_r$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="64" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_307.png"
- ALT="$v_1,
-\ldots, v_r$"></SPAN> has the format <!-- MATH
- $v_1 * gen(1) + \ldots + v_r * gen(r)$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="198" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_308.png"
- ALT="$v_1 * gen(1) + \ldots + v_r * gen(r)$"></SPAN>
-(up to permutation) unless the ordering starts with <code>c</code>.
-In this case a vector is written as <!-- MATH
- $[v_1, \ldots, v_r]$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="72" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_309.png"
- ALT="$[v_1, \ldots, v_r]$"></SPAN>.
-In all cases <small>SINGULAR</small> can read input in both formats.
+<p><strong>WARNING:</strong> <small>SINGULAR</small>
+does not check whether the matrix has full rank.   In such a case some
+computations might not terminate, others might give a nonsense result.
+</p>
+<p>Having these matrix orderings <small>SINGULAR</small> can compute standard bases for
+any monomial ordering which is compatible with the natural semigroup structure.
+In practice the global and local orderings together with block orderings should be
+sufficient in most cases. These orderings are faster than the corresponding
+matrix orderings, since evaluating a matrix product is time consuming.
 </p>
 </td>
 </tr>
@@ -326,14 +495,14 @@ In all cases <small>SINGULAR</small> can read input in both formats.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_366.htm#Local-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.4 Local orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_368.htm#Matrix-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.6 Matrix orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_366.htm#Module-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.5 Module orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_368.htm#Product-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.7 Product orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_361.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

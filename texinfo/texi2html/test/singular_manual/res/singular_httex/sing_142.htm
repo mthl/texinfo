@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.16.3 ring operations</title>
+<title>Singular 2-0-4 Manual: 4.17 string</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.16.3 ring operations">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.16.3 ring operations">
+<meta name="description" content="Singular 2-0-4 Manual: 4.17 string">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.17 string">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="ring-operations"></a>
+<a name="string"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_141.htm#ring-related-functions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.16.2 ring related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_141.htm#ring-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.16.3 ring operations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_143.htm#string" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.17 string" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_143.htm#string-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.17.1 string declarations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_139.htm#ring" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.16 ring" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,109 +84,58 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="ring-operations-1"></a>
-<h3 class="subsection">4.16.3 ring operations</h3>
-<a name="index-ring-operations"></a>
-<dl compact="compact">
-<dt><code>+</code></dt>
-<dd><p>construct a new ring 
- <span 
-class="cmmi-10">k</span>[<span 
-class="cmmi-10">X,Y </span>]  
- from 
- <span 
-class="cmmi-10">k</span><sub><span 
-class="cmr-7">1</span></sub>[<span 
-class="cmmi-10">X</span>]  
-  and 
- <span 
-class="cmmi-10">k</span><sub><span 
-class="cmr-7">2</span></sub>[<span 
-class="cmmi-10">Y </span>]  
-.
-</p></dd>
-</dl>
+<a name="string-1"></a>
+<h2 class="section">4.17 string</h2>
+<a name="index-string"></a>
+<a name="index-newline"></a>
 
-<p>Concerning the ground fields 
- <span 
-class="cmmi-10">k</span><sub><span 
-class="cmr-7">1</span></sub>  
- and 
- <span 
-class="cmmi-10">k</span><sub><span 
-class="cmr-7">2</span></sub>  
- take the
-following guide lines into consideration:
-</p><ul>
-<li> Neither 
-
-<span 
-class="cmmi-10">k</span><sub><span 
-class="cmr-7">1</span></sub>  
- nor 
- <span 
-class="cmmi-10">k</span><sub><span 
-class="cmr-7">2</span></sub>  
- may be 
- <span 
-class="cmmi-10">R </span> 
- or 
- <span 
-class="cmmi-10">C </span> 
-.
-</li><li> If the characteristic of 
- <span 
-class="cmmi-10">k</span><sub><span 
-class="cmr-7">1</span></sub>  
- and 
- <span 
-class="cmmi-10">k</span><sub><span 
-class="cmr-7">2</span></sub>  
- differs, then one of them must be 
- <span 
-class="cmmi-10">Q </span> 
-.
-</li><li> At most one of 
- <span 
-class="cmmi-10">k</span><sub><span 
-class="cmr-7">1</span></sub>  
- and 
- <span 
-class="cmmi-10">k</span><sub><span 
-class="cmr-7">2</span></sub>  
- may be have parameters.
-</li><li> If one of 
- <span 
-class="cmmi-10">k</span><sub><span 
-class="cmr-7">1</span></sub>  
- and 
- <span 
-class="cmmi-10">k</span><sub><span 
-class="cmr-7">2</span></sub>  
- is an algebraic extension of 
- <span 
-class="cmmi-10">Z&#x2215;p </span> 
- it may not be defined by a <code>charstr</code> of type <code>(p^n,a)</code>.
-</li></ul>
-
-
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R1=0,(x,y),dp;
-  ring R2=32003,(a,b),dp;
-  def R=R1+R2;
-  R;
-&rarr; //   characteristic : 32003
-&rarr; //   number of vars : 4
-&rarr; //        block   1 : ordering dp
-&rarr; //                  : names    x y 
-&rarr; //        block   2 : ordering dp
-&rarr; //                  : names    a b 
-&rarr; //        block   3 : ordering C
-</pre></td></tr></table>
-
-<p><strong>See also:</strong>
-<a href="sing_461.htm#ring_005flib">ring_lib</a>.
+<p>Variables of type <code>string</code> are used for output (almost every type
+can be &quot;converted&quot; to <code>string</code>) and for creating new
+commands at runtime see <a href="sing_180.htm#execute">execute</a>.  They are also return values of
+certain interpreter related functions (see <a href="sing_154.htm#Functions">Functions</a>).  String
+constants consist of a sequence of ANY characters (including newline!)
+between a starting <code>&quot;</code> and a closing <code>&quot;</code>.  There is also a
+string constant <code>newline</code>, which is the newline character.  The
+<code>+</code> sign &quot;adds&quot; strings, <code>&quot;&quot;</code> is the empty string (hence
+strings form a semigroup). Strings may be used to comment the output of
+a computation or to give it a nice format. Strings may also be used for
+intermediate conversion of one type into another.
 </p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  string s=&quot;Hi&quot;;
+  string s1=&quot;a string with new line at the end&quot;+newline;
+  string s2=&quot;another string with new line at the end
+  &quot;;
+  s;s1;s2;
+&rarr; Hi
+&rarr; a string with new line at the end
+&rarr; 
+&rarr; another string with new line at the end
+&rarr;   
+  ring r; ideal i=std(ideal(x,y^3));
+  &quot;dimension of i =&quot;,dim(i),&quot;, multiplicity of i =&quot;,mult(i);
+&rarr; dimension of i = 1 , multiplicity of i = 3
+  &quot;dimension of i = &quot;+string(dim(i))+&quot;, multiplicity of i = &quot;+string(mult(i));
+&rarr; dimension of i = 1, multiplicity of i = 3
+  &quot;a&quot;+&quot;b&quot;,&quot;c&quot;;
+&rarr; ab c
+</pre></td></tr></table>
+<p>A comma between two strings makes an expression list out of them
+(such a list is printed with a separating blank in between),
+while a <code>+</code> concatenates strings.
+</p>
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_143.htm#string-declarations">4.17.1 string declarations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_144.htm#string-expressions">4.17.2 string expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_145.htm#string-type-cast">4.17.3 string type cast</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_146.htm#string-operations">4.17.4 string operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_147.htm#string-related-functions">4.17.5 string related functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
+
 </td>
 </tr>
 </table>
@@ -196,14 +145,14 @@ class="cmmi-10">Z&#x2215;p </span>
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_141.htm#ring-related-functions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.16.2 ring related functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_143.htm#string" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.17 string" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_139.htm#ring" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.16 ring" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_141.htm#ring-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.16.3 ring operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_143.htm#string-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.17.1 string declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

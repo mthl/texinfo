@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: C.6.2.1 The algorithm of Conti and Traverso</title>
+<title>Singular 2-0-4 Manual: C.6.2.2 The algorithm of Pottier</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: C.6.2.1 The algorithm of Conti and Traverso">
-<meta name="keywords" content="Singular 2-0-4 Manual: C.6.2.1 The algorithm of Conti and Traverso">
+<meta name="description" content="Singular 2-0-4 Manual: C.6.2.2 The algorithm of Pottier">
+<meta name="keywords" content="Singular 2-0-4 Manual: C.6.2.2 The algorithm of Pottier">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Conti-and-Traverso"></a>
+<a name="Pottier"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_379.htm#Algorithms" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.6.2 Algorithms" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_379.htm#Conti-and-Traverso" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.6.2.1 The algorithm of Conti and Traverso" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_381.htm#Pottier" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6.2.2 The algorithm of Pottier" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_381.htm#Hosten-and-Sturmfels" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6.2.3 The algorithm of Hosten and Sturmfels" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_379.htm#Algorithms" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C.6.2 Algorithms" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_378.htm#Algorithms" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C.6.2 Algorithms" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -83,131 +83,71 @@ ul.toc {list-style: none}
 </td>
 <td align="left">
 
-<a name="The-algorithm-of-Conti-and-Traverso"></a>
-<h4 class="subsubsection">C.6.2.1 The algorithm of Conti and Traverso</h4>
-<a name="index-Conti_002dTraverso-algorithm"></a>
-<a name="index-algorithm-of-Conti-and-Traverso"></a>
+<a name="The-algorithm-of-Pottier"></a>
+<h4 class="subsubsection">C.6.2.2 The algorithm of Pottier</h4>
+<a name="index-Pottier-algorithm"></a>
+<a name="index-algorithm-of-Pottier"></a>
 
 
-<p>The algorithm of Conti and Traverso (see <a href="sing_387.htm#g_t_005bCoTr91_005d">[CoTr91]</a>)
-computes <SPAN CLASS="MATH"><IMG
- WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_480.png"
- ALT="$I_A$"></SPAN> via the
-extended matrix <SPAN CLASS="MATH"><IMG
- WIDTH="80" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_481.png"
- ALT="$B=(I_m\vert A)$"></SPAN>,
-where <SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_482.png"
- ALT="$I_m$"></SPAN> is the <SPAN CLASS="MATH"><IMG
- WIDTH="48" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_483.png"
- ALT="$m\times m$"></SPAN> unity matrix. A lattice basis of <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_220.png"
- ALT="$B$"></SPAN> is
-given by the set of vectors <!-- MATH
- $(a^j,-e_j)\in Z\!\!\! Z^{m+n}$
+<p>The algorithm of Pottier (see <a href="sing_386.htm#g_t_005bPot94_005d">[Pot94]</a>) starts by computing a lattice
+basis <!-- MATH
+ $v_1,\ldots,v_r$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="122" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_484.png"
- ALT="$(a^j,-e_j)\in Z\!\!\! Z^{m+n}$"></SPAN>, where <SPAN CLASS="MATH"><IMG
- WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_485.png"
- ALT="$a^j$"></SPAN>
-is the <SPAN CLASS="MATH"><IMG
- WIDTH="10" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_51.png"
- ALT="$j$"></SPAN>-th row of <SPAN CLASS="MATH"><IMG
+ WIDTH="64" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_307.png"
+ ALT="$v_1,
+\ldots, v_r$"></SPAN> for the integer kernel of <SPAN CLASS="MATH"><IMG
  WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_219.png"
- ALT="$A$"></SPAN> and <SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_486.png"
- ALT="$e_j$"></SPAN> the <SPAN CLASS="MATH"><IMG
- WIDTH="10" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_51.png"
- ALT="$j$"></SPAN>-th coordinate vector. We
-look at the ideal in <!-- MATH
- $K[y_1,\ldots,y_m,x_1,\ldots,x_n]$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="163" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_487.png"
- ALT="$K[y_1,\ldots,y_m,x_1,\ldots,x_n]$"></SPAN> corresponding to
-these vectors, namely
+ ALT="$A$"></SPAN> using the
+LLL-algorithm. The ideal corresponding to the lattice basis vectors
 <BR><P></P>
 <DIV ALIGN="CENTER" CLASS="mathdisplay">
 <!-- MATH
  \begin{displaymath}
-I_1=<y^{a_j^+}- x_j y^{a_j^-} | j=1,\ldots, n>.
+I_1=<x^{v_i^+}-x^{v_i^-}|i=1,\ldots,r>
 \end{displaymath}
  -->
 
 <IMG
- WIDTH="229" HEIGHT="27" BORDER="0"
- SRC="sing_488.png"
- ALT="\begin{displaymath}I_1=&lt;y^{a_j^+}- x_j y^{a_j^-} \vert j=1,\ldots, n&gt;.\end{displaymath}">
+ WIDTH="203" HEIGHT="26" BORDER="0"
+ SRC="sing_494.png"
+ ALT="\begin{displaymath}I_1=&lt;x^{v_i^+}-x^{v_i^-}\vert i=1,\ldots,r&gt; \end{displaymath}">
 </DIV>
 <BR CLEAR="ALL">
 <P></P>
-We introduce a further variable <SPAN CLASS="MATH"><IMG
+is saturated - as in the algorithm of Conti and Traverso - by
+inversion of all variables: One adds an auxiliary variable <SPAN CLASS="MATH"><IMG
  WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_207.png"
- ALT="$t$"></SPAN> and adjoin the binomial <!-- MATH
- $t\cdot
-y_1\cdot\ldots\cdot y_m -1$
+ ALT="$t$"></SPAN> and the
+generator <!-- MATH
+ $t\cdot x_1\cdot\ldots\cdot x_n -1$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="117" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_489.png"
- ALT="$t\cdot
-y_1\cdot\ldots\cdot y_m -1$"></SPAN> to the generating set of <SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_490.png"
- ALT="$I_1$"></SPAN>, obtaining
-an ideal <SPAN CLASS="MATH"><IMG
+ WIDTH="116" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_495.png"
+ ALT="$t\cdot x_1\cdot\ldots\cdot x_n -1$"></SPAN> to obtain an ideal <SPAN CLASS="MATH"><IMG
  WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_491.png"
- ALT="$I_2$"></SPAN> in the polynomial ring <!-- MATH
- $K[t,
-y_1,\ldots,y_m,x_1,\ldots,x_n]$
+ ALT="$I_2$"></SPAN>
+in <!-- MATH
+ $K[t,x_1,\ldots,x_n]$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="175" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_492.png"
- ALT="$K[t,
-y_1,\ldots,y_m,x_1,\ldots,x_n]$"></SPAN>. <SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_491.png"
- ALT="$I_2$"></SPAN> is saturated w.r.t. all
-variables because all variables are invertible modulo <SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_491.png"
- ALT="$I_2$"></SPAN>. Now <SPAN CLASS="MATH"><IMG
+ WIDTH="102" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_496.png"
+ ALT="$K[t,x_1,\ldots,x_n]$"></SPAN> from which one computes <SPAN CLASS="MATH"><IMG
  WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_480.png"
- ALT="$I_A$"></SPAN>
-can be computed from <SPAN CLASS="MATH"><IMG
- WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_491.png"
- ALT="$I_2$"></SPAN> by eliminating the variables
-<!-- MATH
- $t,y_1,\ldots,y_m$
- -->
+ ALT="$I_A$"></SPAN> by elimination of
 <SPAN CLASS="MATH"><IMG
- WIDTH="81" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_493.png"
- ALT="$t,y_1,\ldots,y_m$"></SPAN>.
+ WIDTH="9" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_207.png"
+ ALT="$t$"></SPAN>.
 </p>
-<p>Because of the big number of auxiliary variables needed to compute a
-toric ideal, this algorithm is rather slow in practice. However, it has
-a special importance in the application to integer programming
-(see <a href="sing_386.htm#Integer-programming">Integer programming</a>).
-</p>
+
 </td>
 </tr>
 </table>
@@ -217,14 +157,14 @@ a special importance in the application to integer programming
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_379.htm#Algorithms" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.6.2 Algorithms" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_381.htm#Pottier" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6.2.2 The algorithm of Pottier" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_379.htm#Algorithms" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C.6.2 Algorithms" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_379.htm#Conti-and-Traverso" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.6.2.1 The algorithm of Conti and Traverso" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_381.htm#Hosten-and-Sturmfels" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6.2.3 The algorithm of Hosten and Sturmfels" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_378.htm#Algorithms" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C.6.2 Algorithms" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

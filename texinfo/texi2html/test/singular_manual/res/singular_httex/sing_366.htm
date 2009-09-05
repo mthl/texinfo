@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: B.2.4 Local orderings</title>
+<title>Singular 2-0-4 Manual: B.2.5 Module orderings</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: B.2.4 Local orderings">
-<meta name="keywords" content="Singular 2-0-4 Manual: B.2.4 Local orderings">
+<meta name="description" content="Singular 2-0-4 Manual: B.2.5 Module orderings">
+<meta name="keywords" content="Singular 2-0-4 Manual: B.2.5 Module orderings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Local-orderings"></a>
+<a name="Module-orderings"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_365.htm#Global-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.3 Global orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_365.htm#Local-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.4 Local orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_367.htm#Module-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.5 Module orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_367.htm#Matrix-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.6 Matrix orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_361.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,268 +84,263 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Local-orderings-1"></a>
-<h3 class="subsection">B.2.4 Local orderings</h3>
-<a name="index-Local-orderings"></a>
-<a name="index-orderings_002c-local"></a>
+<a name="Module-orderings-1"></a>
+<h3 class="subsection">B.2.5 Module orderings</h3>
+<a name="index-Module-orderings"></a>
 
-<p>For ls, ds, Ds and, if the weights are positive integers, also for ws and
-Ws,  we have
+<p><small>SINGULAR</small> offers also orderings on the set of &ldquo;monomials&rdquo;
 
-Loc <span 
+<span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">a</span></sup><span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">i</span></sub><span 
+class="cmsy-10">&#x2223;</span><span 
+class="cmmi-10">a </span><span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">N</span><sup><span 
+class="cmmi-7">n</span></sup><span 
+class="cmmi-10">,</span>1 <span 
+class="cmsy-10">&#x2264; </span><span 
+class="cmmi-10">i </span><span 
+class="cmsy-10">&#x2264; </span><span 
+class="cmmi-10">r</span><span 
+class="cmsy-10">} </span>in Loc <span 
 class="cmmi-10">K</span>[<span 
-class="cmmi-10">x</span>] = <span 
+class="cmmi-10">x</span>]<sup><span 
+class="cmmi-7">r</span></sup> = Loc <span 
 class="cmmi-10">K</span>[<span 
-class="cmmi-10">x</span>]<sub><span 
-class="cmr-7">(</span><span 
-class="cmmi-7">x</span><span 
-class="cmr-7">)</span></sub>,  
- the localization of 
- <span 
+class="cmmi-10">x</span>]<span 
+class="cmmi-10">e</span><sub><span 
+class="cmr-7">1</span></sub> + <span 
+class="cmmi-10">&#x2026;</span>+Loc <span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span>]<span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">r</span></sub>, where <span 
+class="cmmi-10">e</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,e</span><sub><span 
+class="cmmi-7">r</span></sub> denote the canonical
+generators of Loc <span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span>]<sup><span 
+class="cmmi-7">r</span></sup>, the r-fold direct sum of Loc <span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span>]. (The function <span 
+class="cmtt-10">gen(i) </span>yields <span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">i</span></sub>).  
+</p>
+<p>We have two possibilities: either to give priority to the component of a
+vector in 
+ Loc <span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span>]<sup><span 
+class="cmmi-7">r</span></sup>  
+or (which is the default in <small>SINGULAR</small>) to give priority
+to the coefficients.
+The orderings <code>(&lt;,c)</code> and <code>(&lt;,C)</code> give priority to the
+coefficients; whereas
+<code>(c,&lt;)</code> and <code>(C,&lt;)</code> give priority to the components.
+<br>Let &lt; be any of the monomial orderings of 
+ Loc <span 
 class="cmmi-10">K</span>[<span 
 class="cmmi-10">x</span>]  
-at the maximal ideal
- &#x00A0;(<span 
-class="cmmi-10">x</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,...,x</span><sub><span 
-class="cmmi-7">n</span></sub>).  
+as above.
 </p>
 <dl compact="compact">
-<dt>ls:</dt>
-<dd><p>negative lexicographical ordering:
-<a name="index-negative-lexicographical-ordering"></a>
-<a name="index-ls_002c-local-ordering"></a>
-<br>
- <span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B1;</span></sup> <span 
-class="cmmi-10">&#x003C; x</span><sup><span 
-class="cmmi-7">&#x03B2;</span></sup> <span 
-class="cmsy-10">&#x21D4;&#x2203; </span>1 <span 
-class="cmsy-10">&#x2264; </span><span 
-class="cmmi-10">i </span><span 
-class="cmsy-10">&#x2264; </span><span 
-class="cmmi-10">n </span>: <span 
-class="cmmi-10">&#x03B1;</span><sub><span 
-class="cmr-7">1</span></sub> = <span 
-class="cmmi-10">&#x03B2;</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,</span><span 
-class="cmmi-10">&#x2026;</span><span 
-class="cmmi-10">,&#x03B1;</span><sub><span 
-class="cmmi-7">i</span><span 
-class="cmsy-7">-</span><span 
-class="cmr-7">1</span></sub> = <span 
-class="cmmi-10">&#x03B2;</span><sub><span 
-class="cmmi-7">i</span><span 
-class="cmsy-7">-</span><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,&#x03B1;</span><sub><span 
-class="cmmi-7">i</span></sub> <span 
-class="cmmi-10">&#x003E; &#x03B2;</span><sub><span 
-class="cmmi-7">i</span></sub>.  
-</p></dd>
-<dt>ds:</dt>
-<dd><p>negative degree reverse lexicographical ordering:
-<a name="index-negative-degree-reverse-lexicographical-ordering"></a>
-<a name="index-ds_002c-local-ordering"></a>
-<br>
- let
-deg(<span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B1;</span></sup>) = <span 
-class="cmmi-10">&#x03B1;</span><sub><span 
-class="cmr-7">1</span></sub> + <img 
-src="sing_tex4ht_tex28x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="cdots" > + <span 
-class="cmmi-10">&#x03B1;</span><sub><span 
-class="cmmi-7">n</span></sub><span 
-class="cmmi-10">, </span>then  
- <span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B1;</span></sup> <span 
-class="cmmi-10">&#x003C; x</span><sup><span 
-class="cmmi-7">&#x03B2;</span></sup> <span 
-class="cmsy-10">&#x21D4;</span> deg(<span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B1;</span></sup>) <span 
-class="cmmi-10">&#x003E;</span> deg(<span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B2;</span></sup>) or  
-<br>
-                 deg(<span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B1;</span></sup>) = deg(<span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B2;</span></sup>) and
+<dt>(&lt;,C):</dt>
+<dd><a name="index-C_002c-module-ordering"></a>
+<a name="index-module-ordering-C"></a>
+<p>
 <span 
-class="cmsy-10">&#x2203;</span><span 
-class="cmmi-10">&#x00A0;</span>1 <span 
-class="cmsy-10">&#x2264; </span><span 
-class="cmmi-10">i </span><span 
-class="cmsy-10">&#x2264; </span><span 
-class="cmmi-10">n </span>: <span 
-class="cmmi-10">&#x03B1;</span><sub><span 
-class="cmmi-7">n</span></sub> = <span 
-class="cmmi-10">&#x03B2;</span><sub><span 
-class="cmmi-7">n</span></sub><span 
-class="cmmi-10">,</span><span 
-class="cmmi-10">&#x2026;</span><span 
-class="cmmi-10">,&#x03B1;</span><sub><span 
-class="cmmi-7">i</span><span 
-class="cmr-7">+1</span></sub> = <span 
-class="cmmi-10">&#x03B2;</span><sub><span 
-class="cmmi-7">i</span><span 
-class="cmr-7">+1</span></sub><span 
-class="cmmi-10">,&#x03B1;</span><sub><span 
-class="cmmi-7">i</span></sub> <span 
-class="cmmi-10">&#x003E; &#x03B2;</span><sub><span 
-class="cmmi-7">i</span></sub><span 
-class="cmmi-10">. </span> 
-</p></dd>
-<dt>Ds:</dt>
-<dd><p>negative degree lexicographical ordering:
-<a name="index-negative-degree-lexicographical-ordering"></a>
-<a name="index-Ds_002c-local-ordering"></a>
+class="cmmi-10">&#x003C;</span> <sub><span 
+class="cmmi-7">m</span></sub> = (<span 
+class="cmmi-10">&#x003C;,C</span>) denotes the module ordering (giving priority to the coefficients):  
 <br>
- let deg(<span 
+       <span 
 class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B1;</span></sup>) = <span 
-class="cmmi-10">&#x03B1;</span><sub><span 
-class="cmr-7">1</span></sub> + <img 
-src="sing_tex4ht_tex29x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="cdots" > + <span 
-class="cmmi-10">&#x03B1;</span><sub><span 
-class="cmmi-7">n</span></sub><span 
-class="cmmi-10">, </span>then  
- <span 
+class="cmmi-7">&#x03B1;</span></sup><span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">i</span></sub> <span 
+class="cmmi-10">&#x003C;</span> <sub><span 
+class="cmmi-7">m</span></sub><span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup><span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">j</span></sub> <span 
+class="cmsy-10">&#x21D4; </span><span 
 class="cmmi-10">x</span><sup><span 
 class="cmmi-7">&#x03B1;</span></sup> <span 
 class="cmmi-10">&#x003C; x</span><sup><span 
-class="cmmi-7">&#x03B2;</span></sup> <span 
-class="cmsy-10">&#x21D4;</span> deg(<span 
+class="cmmi-7">&#x03B2;</span></sup> or
+(<span 
 class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B1;</span></sup>) <span 
-class="cmmi-10">&#x003E;</span> deg(<span 
+class="cmmi-7">&#x03B1;</span></sup> = <span 
 class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B2;</span></sup>)
-or  
+class="cmmi-7">&#x03B2;</span></sup> and <span 
+class="cmmi-10">i &#x003C; j</span>).  
+</p>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), ds;
+  // the same as ring r = 0, (x,y,z), (ds, C);
+  [x+y2,z3+xy];
+&rarr; x*gen(1)+xy*gen(2)+y2*gen(1)+z3*gen(2)
+  [x,x,x];
+&rarr; x*gen(3)+x*gen(2)+x*gen(1)
+</pre></td></tr></table>
+
+</dd>
+<dt>(C,&lt;):</dt>
+<dd><p> <span 
+class="cmmi-10">&#x003C;</span> <sub><span 
+class="cmmi-7">m</span></sub> = (<span 
+class="cmmi-10">C,&#x003C;</span>) denotes the module ordering (giving priority to the component):  
 <br>
-                 deg(<span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B1;</span></sup>) = deg(<span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B2;</span></sup>) and <span 
-class="cmsy-10">&#x2203;</span><span 
-class="cmmi-10">&#x00A0;</span>1 <span 
-class="cmsy-10">&#x2264; </span><span 
-class="cmmi-10">i </span><span 
-class="cmsy-10">&#x2264; </span><span 
-class="cmmi-10">n </span>: <span 
-class="cmmi-10">&#x03B1;</span><sub><span 
-class="cmr-7">1</span></sub> = <span 
-class="cmmi-10">&#x03B2;</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,</span><span 
-class="cmmi-10">&#x2026;</span><span 
-class="cmmi-10">,&#x03B1;</span><sub><span 
-class="cmmi-7">i</span><span 
-class="cmsy-7">-</span><span 
-class="cmr-7">1</span></sub> = <span 
-class="cmmi-10">&#x03B2;</span><sub><span 
-class="cmmi-7">i</span><span 
-class="cmsy-7">-</span><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,&#x03B1;</span><sub><span 
-class="cmmi-7">i</span></sub> <span 
-class="cmmi-10">&#x003C; &#x03B2;</span><sub><span 
-class="cmmi-7">i</span></sub><span 
-class="cmmi-10">. </span> 
-</p></dd>
-<dt>ws:</dt>
-<dd><p>(general) weighted reverse lexicographical ordering:
-<a name="index-general-weighted-reverse-lexicographical-ordering"></a>
-<a name="index-local-weighted-reverse-lexicographical-ordering"></a>
-<a name="index-ws_002c-local-ordering"></a>
-<br>
- <span 
-class="cmtt-10">ws</span>(<span 
-class="cmmi-10">w</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,</span><span 
-class="cmmi-10">&#x2026;</span><span 
-class="cmmi-10">,w</span><sub><span 
-class="cmmi-7">n</span></sub>)<span 
-class="cmmi-10">, w</span><sub><span 
-class="cmr-7">1</span></sub>  
- a nonzero integer,
 
 <span 
-class="cmmi-10">w</span><sub><span 
-class="cmr-7">2</span></sub><span 
-class="cmmi-10">,</span><span 
-class="cmmi-10">&#x2026;</span><span 
-class="cmmi-10">,w</span><sub><span 
-class="cmmi-7">n</span></sub>  
- any integer (including 0),
- is defined as <code>ds</code>
- but with
- deg(<span 
 class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B1;</span></sup>) = <span 
-class="cmmi-10">w</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">&#x03B1;</span><sub><span 
-class="cmr-7">1</span></sub> + <img 
-src="sing_tex4ht_tex30x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="cdots" > + <span 
-class="cmmi-10">w</span><sub><span 
-class="cmmi-7">n</span></sub><span 
-class="cmmi-10">&#x03B1;</span><sub><span 
-class="cmmi-7">n</span></sub><span 
-class="cmmi-10">. </span> 
-</p></dd>
-<dt>Ws:</dt>
-<dd><p>(general) weighted lexicographical ordering:
-<a name="index-general-weighted-lexicographical-ordering"></a>
-<a name="index-local-weighted-lexicographical-ordering"></a>
-<a name="index-Ws_002c-local-ordering"></a>
+class="cmmi-7">&#x03B1;</span></sup><span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">i</span></sub> <span 
+class="cmmi-10">&#x003C;</span> <sub><span 
+class="cmmi-7">m</span></sub><span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup><span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">j</span></sub> <span 
+class="cmsy-10">&#x21D4; </span><span 
+class="cmmi-10">i &#x003C; j </span>or (<span 
+class="cmmi-10">i </span>= <span 
+class="cmmi-10">j </span>and <span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup> <span 
+class="cmmi-10">&#x003C; x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup>).  
+</p>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (C,lp);
+  [x+y2,z3+xy];
+&rarr; xy*gen(2)+z3*gen(2)+x*gen(1)+y2*gen(1)
+  [x,x,x];
+&rarr; x*gen(3)+x*gen(2)+x*gen(1)
+</pre></td></tr></table>
+
+</dd>
+<dt>(&lt;,c):</dt>
+<dd><a name="index-c_002c-module-ordering"></a>
+<a name="index-module-ordering-c"></a>
+<p> <span 
+class="cmmi-10">&#x003C;</span> <sub><span 
+class="cmmi-7">m</span></sub> = (<span 
+class="cmmi-10">&#x003C;,c</span>) denotes the module ordering (giving priority to the
+coefficients):  
 <br>
- <span 
-class="cmtt-10">Ws</span>(<span 
-class="cmmi-10">w</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,</span><span 
-class="cmmi-10">&#x2026;</span><span 
-class="cmmi-10">,w</span><sub><span 
-class="cmmi-7">n</span></sub>)<span 
-class="cmmi-10">, w</span><sub><span 
-class="cmr-7">1</span></sub>  
- a nonzero integer,
- <span 
-class="cmmi-10">w</span><sub><span 
-class="cmr-7">2</span></sub><span 
-class="cmmi-10">,</span><span 
-class="cmmi-10">&#x2026;</span><span 
-class="cmmi-10">,w</span><sub><span 
-class="cmmi-7">n</span></sub>  
- any integer (including 0),
- is defined as <code>Ds</code>
- but with
- deg(<span 
+       <span 
 class="cmmi-10">x</span><sup><span 
-class="cmmi-7">&#x03B1;</span></sup>) = <span 
-class="cmmi-10">w</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">&#x03B1;</span><sub><span 
-class="cmr-7">1</span></sub> + <img 
-src="sing_tex4ht_tex31x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="cdots" > + <span 
-class="cmmi-10">w</span><sub><span 
-class="cmmi-7">n</span></sub><span 
-class="cmmi-10">&#x03B1;</span><sub><span 
-class="cmmi-7">n</span></sub><span 
-class="cmmi-10">. </span> 
-</p></dd>
+class="cmmi-7">&#x03B1;</span></sup><span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">i</span></sub> <span 
+class="cmmi-10">&#x003C;</span> <sub><span 
+class="cmmi-7">m</span></sub><span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup><span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">j</span></sub> <span 
+class="cmsy-10">&#x21D4; </span><span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup> <span 
+class="cmmi-10">&#x003C; x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup> or (<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup> = <span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup> and <span 
+class="cmmi-10">i &#x003E; j</span>).  
+</p>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (lp,c);
+  [x+y2,z3+xy];
+&rarr; xy*gen(2)+x*gen(1)+y2*gen(1)+z3*gen(2)
+  [x,x,x];
+&rarr; x*gen(1)+x*gen(2)+x*gen(3)
+</pre></td></tr></table>
+
+</dd>
+<dt>(c,&lt;):</dt>
+<dd><p> <span 
+class="cmmi-10">&#x003C;</span> <sub><span 
+class="cmmi-7">m</span></sub> = (<span 
+class="cmmi-10">c,&#x003C;</span>) denotes the module
+ordering (giving priority to the component):  
+<br>
+       <span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup><span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">i</span></sub> <span 
+class="cmmi-10">&#x003C;</span> <sub><span 
+class="cmmi-7">m</span></sub><span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup><span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">j</span></sub> <span 
+class="cmsy-10">&#x21D4; </span><span 
+class="cmmi-10">i &#x003E; j </span>or (<span 
+class="cmmi-10">i </span>= <span 
+class="cmmi-10">j </span>and <span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup> <span 
+class="cmmi-10">&#x003C; x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup>).  
+</p>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (c,lp);
+  [x+y2,z3+xy];
+&rarr; [x+y2,xy+z3]
+  [x,x,x];
+&rarr; [x,x,x]
+</pre></td></tr></table>
+</dd>
 </dl>
 
+<p> The
+output of a vector <span 
+class="cmmi-10">v </span>in <span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span>]<sup><span 
+class="cmmi-7">r</span></sup> with components <span 
+class="cmmi-10">v</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,v</span><sub><span 
+class="cmmi-7">r</span></sub> has the format <span 
+class="cmmi-10">v</span><sub><span 
+class="cmr-7">1</span></sub> <span 
+class="cmsy-10">* </span><span 
+class="cmmi-10">gen</span>(1) + <span 
+class="cmmi-10">&#x2026;</span> + <span 
+class="cmmi-10">v</span><sub><span 
+class="cmmi-7">r</span></sub> <span 
+class="cmsy-10">* </span><span 
+class="cmmi-10">gen</span>(<span 
+class="cmmi-10">r</span>)
+ 
+(up to permutation) unless the ordering starts with <code>c</code>.
+ In this case a vector is written as [<span 
+class="cmmi-10">v</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,v</span><sub><span 
+class="cmmi-7">r</span></sub>].  
+In all cases <small>SINGULAR</small> can read input in both formats.
+</p>
 </td>
 </tr>
 </table>
@@ -355,14 +350,14 @@ class="cmmi-10">. </span>
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_365.htm#Global-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.3 Global orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_367.htm#Module-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.5 Module orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_365.htm#Local-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.4 Local orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_367.htm#Matrix-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.6 Matrix orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_361.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

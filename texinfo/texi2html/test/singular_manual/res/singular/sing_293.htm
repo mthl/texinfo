@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.138 write</title>
+<title>Singular 2-0-4 Manual: 5.2 Control structures</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.138 write">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.138 write">
+<meta name="description" content="Singular 2-0-4 Manual: 5.2 Control structures">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.2 Control structures">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="write"></a>
+<a name="Control-structures"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_292.htm#weight" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.137 weight" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_292.htm#write" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.138 write" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_294.htm#Control-structures" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.2 Control structures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_294.htm#break" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.2.1 break" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,79 +82,61 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="write-1"></a>
-<h3 class="subsection">5.1.138 write</h3>
-<a name="index-write"></a>
-<dl compact="compact">
-<dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>write (</code> link_expression<code>,</code> expression_list <code>)</code>
-<br>for DBM links:
-<br><code>write (</code> link<code>,</code> string_expression<code>,</code> string_expression <code>)</code>
-<br><code>write (</code> link<code>,</code> string_expression <code>)</code>
-</p></dd>
-<dt><code><strong>Type:</strong></code></dt>
-<dd><p>none
-</p></dd>
-<dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>writes data to a link.
-<br>If the link is of type <code>ASCII</code>, all expressions are converted to
-strings  (and separated by a newline character) before they are
-written. As a consequence, only such values which can be converted to a
-string can be written to an  <code>ASCII</code> link.
-<br>For MP links,
-ring-dependent expressions are written together with a ring
-description. To prevent an evaluation of the expression before it is
-written, the <code>quote</code> command (possibly together with <code>eval</code>)
-can be used. A <code>write</code> blocks (i.e., does not return to the prompt),
-as long as a MPtcp link is not ready for writing.
-<br>For DBM links, <code>write</code> with three arguments inserts the first
-string as key and the second string as value into the dbm data
-base.
-<br>Called with two arguments, it deletes the entry with the key
-specified by the string from the data base.
-</p></dd>
-<dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">// write the values of the variables f and i as strings into
-// the file &quot;outfile&quot; (overwrite it, if it exists)
-write(&quot;:w outfile&quot;,f,i);
+<a name="Control-structures-1"></a>
+<h2 class="section">5.2 Control structures</h2>
+<a name="index-Control-structures"></a>
+<a name="index-block-1"></a>
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_294.htm#break">5.2.1 break</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_295.htm#breakpoint">5.2.2 breakpoint</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_296.htm#continue">5.2.3 continue</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_297.htm#else">5.2.4 else</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_298.htm#export">5.2.5 export</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_299.htm#for">5.2.6 for</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_300.htm#if">5.2.7 if</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_301.htm#keepring">5.2.8 keepring</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_302.htm#quit">5.2.9 quit</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_303.htm#return">5.2.10 return</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_304.htm#while">5.2.11 while</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_305.htm#g_t_007e">5.2.12 ~ (break point)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
 
-// now append the string &quot;that was f,i&quot; (without the quotes)
-// at the end of the file &quot;outfile&quot;
-write(&quot;:a outfile&quot;,&quot;that was f,i&quot;);
-// alternatively, links could be used:
-link l=&quot;:a outfile&quot;; l;
-// type : ASCII
-// mode : a
-// name : outfile
-// open : no
-// read : not ready
-// write: not ready
-write(l,&quot; that was f,i&quot;);
-// saving and retrieving data (ASCII format):
-ring r=32003,(x,y,z),dp;
-ideal i=x+y,z3+22y;
-write(&quot;:w save_i&quot;,i);// this writes x+y,z3+22y to the file save_i
-ring r=32003,(x,y,z),dp;
-string s=read(&quot;save_i&quot;);   //creates the string x+y,z3+22y
-execute(&quot;ideal k=&quot;+s+&quot;;&quot;); // this defines an ideal k which
-                           // is equal to i.
-// for large objects, the MP format and MPfile links are better:
-write(&quot;MPfile:w save_i.mp&quot;,i);
-def j=read(&quot;MPfile:r save_i.mp&quot;);
+<p>A sequence of commands surrounded by curly brackets (<code>{</code> and
+<code>}</code>) is a so called block. Blocks are used in <small>SINGULAR</small> in
+order to define procedures and to collect commands belonging to
+<code>if</code>, <code>else</code>, <code>for</code> and <code>while</code> statements and to the
+<code>example</code> part in libraries. Even if
+the sequence of statements consists of only a single command it has to be
+surrounded by curly brackets!
+Variables which are defined inside a block
+are not local to that block. Note that there is no ending semicolon at
+the end of the block.
+</p><dl compact="compact">
+<dt><code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">if ( i&gt;j )
+{
+  // This is the block
+  int temp;
+  temp=i;
+  i=j;
+  j=temp;
+  kill temp;
+}
 </pre></td></tr></table>
 </dd>
 </dl>
-<p>See
-<a href="sing_66.htm#Data-types">Data types</a>;
-<a href="sing_176.htm#dump">dump</a>;
-<a href="sing_178.htm#eval">eval</a>;
-<a href="sing_92.htm#link">link</a>;
-<a href="sing_252.htm#print">print</a>;
-<a href="sing_253.htm#printf">printf</a>;
-<a href="sing_257.htm#quote">quote</a>;
-<a href="sing_260.htm#read">read</a>;
-<a href="sing_314.htm#short">short</a>.
-</p>
 
 </td>
 </tr>
@@ -165,14 +147,14 @@ def j=read(&quot;MPfile:r save_i.mp&quot;);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_292.htm#weight" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.137 weight" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_294.htm#Control-structures" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.2 Control structures" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_292.htm#write" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.138 write" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_294.htm#break" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.2.1 break" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

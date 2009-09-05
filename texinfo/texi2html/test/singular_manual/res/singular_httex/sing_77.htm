@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.3.3 int operations</title>
+<title>Singular 2-0-4 Manual: 4.3.4 int related functions</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.3.3 int operations">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.3.3 int operations">
+<meta name="description" content="Singular 2-0-4 Manual: 4.3.4 int related functions">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.3.4 int related functions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="int-operations"></a>
+<a name="int-related-functions"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_76.htm#int-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.3.2 int expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_76.htm#int-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.3.3 int operations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_78.htm#int-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.3.4 int related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_78.htm#boolean-expressions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.3.5 boolean expressions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_74.htm#int" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.3 int" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_73.htm#int" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.3 int" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,75 +84,91 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="int-operations-1"></a>
-<h3 class="subsection">4.3.3 int operations</h3>
-<a name="index-int-operations"></a>
-<a name="index-mod"></a>
-<a name="index-div"></a>
+<a name="int-related-functions-1"></a>
+<h3 class="subsection">4.3.4 int related functions</h3>
+<a name="index-int-related-functions"></a>
 
 <dl compact="compact">
-<dt><code>++</code></dt>
-<dd><p>changes its operand to its successor, is itself no int expression
+<dt><code>char</code></dt>
+<dd><p>characteristic of the coefficient field of a ring (see <a href="sing_158.htm#char">char</a>)
 </p></dd>
-<dt><code>--</code></dt>
-<dd><p>changes its operand to its predecessor, is itself no int expression
+<dt><code>deg</code></dt>
+<dd><p>degree of a poly resp. vector (see <a href="sing_168.htm#deg">deg</a>)
 </p></dd>
-<dt><code>+</code></dt>
-<dd><p>addition
+<dt><code>det</code></dt>
+<dd><p>determinant (see <a href="sing_171.htm#det">det</a>)
 </p></dd>
-<dt><code>-</code></dt>
-<dd><p>negation or subtraction
+<dt><code>dim</code></dt>
+<dd><p>Krull dimension of basering modulo ideal of leading terms, resp.
+dimension of module of leading terms (see <a href="sing_173.htm#dim">dim</a>)
 </p></dd>
-<dt><code>*</code></dt>
-<dd><p>multiplication
+<dt><code>extgcd</code></dt>
+<dd><p>Bezout representation of gcd (see <a href="sing_182.htm#extgcd">extgcd</a>)
 </p></dd>
-<dt><code>/</code></dt>
-<dd><p>integer division (omitting the remainder), rounding toward 0
+<dt><code>find</code></dt>
+<dd><p>position of a substring in a string (see <a href="sing_189.htm#find">find</a>)
 </p></dd>
-<dt><code>div</code></dt>
-<dd><p>integer division (omitting the remainder &gt;= 0)
+<dt><code>gcd</code></dt>
+<dd><p>greatest common divisor (see <a href="sing_193.htm#gcd">gcd</a>)
 </p></dd>
-<dt><code>%</code></dt>
-<dd><p>integer modulo (the remainder of the division <code>/</code>)
+<dt><code>koszul</code></dt>
+<dd><p>Koszul matrix (see <a href="sing_213.htm#koszul">koszul</a>)
 </p></dd>
-<dt><code>mod</code></dt>
-<dd><p>integer modulo (the remainder of the division <code>div</code>), always non-negative
+<dt><code>memory</code></dt>
+<dd><p>memory usage (see <a href="sing_225.htm#memory">memory</a>)
 </p></dd>
-<dt><code>^</code>, <code>**</code></dt>
-<dd><p>exponentiation (exponent must be non-negative)
+<dt><code>mult</code></dt>
+<dd><p>multiplicity of an ideal, resp. module, of leading terms (see <a href="sing_234.htm#mult">mult</a>)
 </p></dd>
-<dt><code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>&lt;&gt;</code></dt>
-<dd><p>comparison
+<dt><code>ncols</code></dt>
+<dd><p>number of columns (see <a href="sing_237.htm#ncols">ncols</a>)
+</p></dd>
+<dt><code>npars</code></dt>
+<dd><p>number of ring parameters (see <a href="sing_238.htm#npars">npars</a>)
+</p></dd>
+<dt><code>nrows</code></dt>
+<dd><p>number of rows of a matrix, resp.
+the rank of the free module where the vector or module lives
+(see <a href="sing_240.htm#nrows">nrows</a>)
+</p></dd>
+<dt><code>nvars</code></dt>
+<dd><p>number of ring variables (see <a href="sing_241.htm#nvars">nvars</a>)
+</p></dd>
+<dt><code>ord</code></dt>
+<dd><p>degree of the leading term of a poly resp. vector (see <a href="sing_244.htm#ord">ord</a>)
+</p></dd>
+<dt><code>par</code></dt>
+<dd><p>n-th parameter of the basering (see <a href="sing_246.htm#par">par</a>)
+</p></dd>
+<dt><code>pardeg</code></dt>
+<dd><p>degree of a number considered as a polynomial in the ring parameters (see <a href="sing_247.htm#pardeg">pardeg</a>)
+</p></dd>
+<dt><code>prime</code></dt>
+<dd><p>the next lower prime (see <a href="sing_250.htm#prime">prime</a>)
+</p></dd>
+<dt><code>random</code></dt>
+<dd><p>a pseudo random integer between the given limits (see <a href="sing_258.htm#random">random</a>)
+</p></dd>
+<dt><code>regularity</code></dt>
+<dd><p>regularity of a resolution (see <a href="sing_261.htm#regularity">regularity</a>)
+</p></dd>
+<dt><code>rvar</code></dt>
+<dd><p>test, if the given expression or string is a ring variable (see <a href="sing_266.htm#rvar">rvar</a>)
+</p></dd>
+<dt><code>size</code></dt>
+<dd><p>number of elements in an object (see <a href="sing_270.htm#size">size</a>)
+</p></dd>
+<dt><code>trace</code></dt>
+<dd><p>trace of an integer matrix (see <a href="sing_281.htm#trace">trace</a>)
+</p></dd>
+<dt><code>var</code></dt>
+<dd><p>n-th ring variable of the basering (see <a href="sing_287.htm#var">var</a>)
+</p></dd>
+<dt><code>vdim</code></dt>
+<dd><p>vector space dimension of basering modulo ideal of leading terms,
+resp. of freemodule modulo module of leading terms (see <a href="sing_289.htm#vdim">vdim</a>)
 </p></dd>
 </dl>
-
-<p><strong>Note:</strong> An assignment <code>j=i++;</code> or <code>j=i--;</code> is not allowed,
-in particular it does not change
-the value of <code>j</code>, see <a href="sing_320.htm#Limitations">Limitations</a>.
-</p>
-
-<br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  int i=1;
-  int j;
-  i++; i;  i--; i;
-&rarr; 2
-&rarr; 1
-  // ++ and -- do not return a value as in C, can not assign
-  j = i++;
-&rarr; // ** right side is not a datum, assignment ignored
-  // the value of j is unchanged
-  j; i;
-&rarr; 0
-&rarr; 2
-  i+2, 2-i, 5^2;
-&rarr; 4 0 25
-  5 div 2, 8%3;
-&rarr; 2 2
-  -5 div 2, -5 / 2, -5 mod 2, -5 % 2;
-&rarr; -3 -2 1 -1
-  1&lt;2, 2&lt;=2;
-&rarr; 1 1
-</pre></td></tr></table>
 
 </td>
 </tr>
@@ -163,14 +179,14 @@ the value of <code>j</code>, see <a href="sing_320.htm#Limitations">Limitations<
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_76.htm#int-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.3.2 int expressions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_78.htm#int-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.3.4 int related functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_74.htm#int" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.3 int" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_76.htm#int-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.3.3 int operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_78.htm#boolean-expressions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.3.5 boolean expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_73.htm#int" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.3 int" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

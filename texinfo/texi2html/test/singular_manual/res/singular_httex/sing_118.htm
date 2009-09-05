@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.10.2 module expressions</title>
+<title>Singular 2-0-4 Manual: 4.10.3 module operations</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.10.2 module expressions">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.10.2 module expressions">
+<meta name="description" content="Singular 2-0-4 Manual: 4.10.3 module operations">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.10.3 module operations">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="module-expressions"></a>
+<a name="module-operations"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_117.htm#module-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.10.1 module declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_117.htm#module-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.10.2 module expressions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_119.htm#module-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.10.3 module operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_119.htm#module-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.10.4 module related functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_116.htm#module" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.10 module" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_115.htm#module" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.10 module" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,30 +84,37 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="module-expressions-1"></a>
-<h3 class="subsection">4.10.2 module expressions</h3>
-<a name="index-module-expressions"></a>
+<a name="module-operations-1"></a>
+<h3 class="subsection">4.10.3 module operations</h3>
+<a name="index-module-operations"></a>
 
-<p>A module expression is:
-</p><ol>
-<li>
-an identifier of type module
-</li><li>
-a function returning module
-</li><li>
-module expressions combined by the arithmetic operation <code>+</code>
-</li><li>
-multiplication of a module expression with an ideal or a poly expression: <code>*</code>
-</li><li>
-a type cast to module
-</li></ol>
-
-<p>See
-<a href="sing_38.htm#Type-conversion-and-casting">Type conversion and casting</a>;
-<a href="sing_69.htm#ideal">ideal</a>;
-<a href="sing_126.htm#poly">poly</a>;
-<a href="sing_149.htm#vector">vector</a>.
+<dl compact="compact">
+<dt><code>+</code></dt>
+<dd><p>addition (concatenation of the generators and simplification)
 </p>
+</dd>
+<dt><code>*</code></dt>
+<dd><p>multiplication with ideal or poly, but not &lsquo;module&lsquo; * &lsquo;module&lsquo;
+</p>
+</dd>
+<dt>module_expression <code>[</code> int_expression <code>,</code> int_expression <code>]</code></dt>
+<dd><p>is a module entry, where the first index indicates the row and
+the second the column
+</p>
+</dd>
+<dt>module_expressions <code>[</code> int_expression <code>]</code></dt>
+<dd><p>is a vector, where the index indicates the column
+</p></dd>
+</dl>
+
+<br><p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+  module m=[x,y],[0,0,z];
+  print(m*(x+y));
+&rarr; x2+xy,0,   
+&rarr; xy+y2,0,   
+&rarr; 0,    xz+yz
+</pre></td></tr></table>
 
 </td>
 </tr>
@@ -118,14 +125,14 @@ a type cast to module
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_117.htm#module-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.10.1 module declarations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_119.htm#module-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.10.3 module operations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_116.htm#module" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.10 module" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_117.htm#module-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.10.2 module expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_119.htm#module-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.10.4 module related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_115.htm#module" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.10 module" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

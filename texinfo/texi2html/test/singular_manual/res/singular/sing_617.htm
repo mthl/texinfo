@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.4.8.2 primitive_extra</title>
+<title>Singular 2-0-4 Manual: D.4.8.3 splitring</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.4.8.2 primitive_extra">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.4.8.2 primitive_extra">
+<meta name="description" content="Singular 2-0-4 Manual: D.4.8.3 splitring">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.8.3 splitring">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="primitive_005fextra"></a>
+<a name="splitring"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_616.htm#primitive" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.8.1 primitive" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_616.htm#primitive_005fextra" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.8.2 primitive_extra" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_618.htm#splitring" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.8.3 splitring" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_618.htm#reesclos_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.9 reesclos_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_615.htm#primitiv_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.8 primitiv_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_614.htm#primitiv_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.8 primitiv_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,73 +82,70 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="primitive_005fextra-1"></a>
-<h4 class="subsubsection">D.4.8.2 primitive_extra</h4>
-<a name="index-primitive_005fextra"></a>
-<p>Procedure from library <code>primitiv.lib</code> (see <a href="sing_615.htm#primitiv_005flib">primitiv_lib</a>).
+<a name="splitring-1"></a>
+<h4 class="subsubsection">D.4.8.3 splitring</h4>
+<a name="index-splitring"></a>
+<p>Procedure from library <code>primitiv.lib</code> (see <a href="sing_614.htm#primitiv_005flib">primitiv_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>primitive_extra(i); i ideal
+<dd><p>splitring(f,R[,L]); f poly, R string, L list of polys and/or ideals
+(optional)
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>The ground field of the basering is k=Q or k=Z/pZ and the ideal
-i is given by 2 generators f,g with the following properties:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">   f is the minimal polynomial of a in k[x], 
-   g is a polynomial in k[x,y] s.th. g(a,y) is the minpoly of b in k(a)[y].
-</pre></td></tr></table>
-<p>Here, x is the name of the first ring variable, y the name of the
-second.
+<dd><p>f is univariate and irreducible over the active basering. <br>
+The active ring must allow an algebraic extension (e.g., it cannot
+be a transcendent ring extension of Q or Z/p).
+</p>
+</dd>
+<dt><strong>Create:</strong></dt>
+<dd><p>a ring with name R, in which f is reducible, and CHANGE to it.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>ideal j in k[y] such that
-</p><table><tr><td>&nbsp;</td><td><pre class="format">   j[1] is the minimal polynomial for a primitive element c of k(a,b) over k,
-   j[2] is a polynomial s.th. j[2](c)=a.
-</pre></td></tr></table>
-
+<dd><p>list L mapped into the new ring R, if L is given; else nothing
+</p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>While <code>primitive(i)</code> may fail for finite fields,
-<code>primitive_extra(i)</code> tries all elements of k(a,b) and, hence,
-always finds a primitive element. <br>
-In order to do this (try all elements), field extensions like Z/pZ(a)
-are not allowed for the ground field k. <br>
-<code>primitive_extra(i)</code> assumes that the second generator, g, is
-monic as polynomial in (k[x])[y].
+<dd><p>If the old ring has no parameter, the name <code>a</code> is chosen for the
+parameter of R (if <code>a</code> is no ring variable; if it is, <code>b</code> is
+chosen, etc.; if <code>a,b,c,o</code> are ring variables,
+<code>splitring(f,R[,L])</code> produces an error message), otherwise the
+name of the parameter is kept and only the minimal polynomial is
+changed. <br>
+The names of the ring variables and the orderings are not affected. <br>
+It is also allowed to call <code>splitring</code> with R=&quot;&quot;.
+Then the old basering will be REPLACED by the new ring (with the
+same name as the old ring).
 </p>
+<a name="index-algebraic-field-extension"></a>
+<a name="index-extension-of-rings"></a>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;primitiv.lib&quot;;
-ring exring=3,(x,y),dp;
-ideal i=x2+1,y3+y2-1;
-primitive_extra(i);
-&rarr; _[1]=y6-y5+y4-y3-y-1
-&rarr; _[2]=y5+y4+y2+y+1
-ring extension=(3,y),x,dp;
-minpoly=y6-y5+y4-y3-y-1;
-number a=y5+y4+y2+y+1;
-a^2;
-&rarr; -1
-factorize(x2+1);
+ring r=0,(x,y),dp;
+splitring(x2-2,&quot;r1&quot;);   // change to Q(sqrt(2))
+// change to Q(sqrt(2),sqrt(sqrt(2)))=Q(a) and return the transformed 
+// old parameter:
+splitring(x2-a,&quot;r2&quot;,a); 
+&rarr; // new minimal polynomial: a4-2
 &rarr; [1]:
-&rarr;    _[1]=1
-&rarr;    _[2]=x+(-y5-y4-y2-y-1)
-&rarr;    _[3]=x+(y5+y4+y2+y+1)
-&rarr; [2]:
-&rarr;    1,1,1
-factorize(x3+x2-1);
-&rarr; [1]:
-&rarr;    _[1]=1
-&rarr;    _[2]=x+(-y5-y4-y3-y2-y-1)
-&rarr;    _[3]=x+(y5+y4+y2+1)
-&rarr;    _[4]=x+(y3+y+1)
-&rarr; [2]:
-&rarr;    1,1,1,1
+&rarr;    (a2)
+// the result is (a)^2 = (sqrt(sqrt(2)))^2
+nameof(basering);
+&rarr; r2
+r2;
+&rarr; //   characteristic : 0
+&rarr; //   1 parameter    : a 
+&rarr; //   minpoly        : (a4-2)
+&rarr; //   number of vars : 2
+&rarr; //        block   1 : ordering dp
+&rarr; //                  : names    x y 
+&rarr; //        block   2 : ordering C
+kill r1; kill r2;
 </pre></td></tr></table>
-
 </td>
 </tr>
 </table>
@@ -158,14 +155,14 @@ factorize(x3+x2-1);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_616.htm#primitive" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.8.1 primitive" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_618.htm#splitring" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.8.3 splitring" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_615.htm#primitiv_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.8 primitiv_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_616.htm#primitive_005fextra" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.8.2 primitive_extra" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_618.htm#reesclos_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.9 reesclos_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_614.htm#primitiv_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.8 primitiv_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

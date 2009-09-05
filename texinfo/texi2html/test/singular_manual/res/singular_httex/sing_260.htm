@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.105 read</title>
+<title>Singular 2-0-4 Manual: 5.1.106 reduce</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.105 read">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.105 read">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.106 reduce">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.106 reduce">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="read"></a>
+<a name="reduce"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_259.htm#random" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.104 random" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_259.htm#read" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.105 read" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_261.htm#reduce" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.106 reduce" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_261.htm#regularity" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.107 regularity" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,56 +84,63 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="read-1"></a>
-<h3 class="subsection">5.1.105 read</h3>
-<a name="index-read"></a>
+<a name="reduce-1"></a>
+<h3 class="subsection">5.1.106 reduce</h3>
+<a name="index-reduce"></a>
+<a name="index-NF"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>read (</code> link_expression <code>)</code>
-<br>for DBM links:
-<br><code>read (</code> link_expression <code>)</code>
-<br><code>read (</code> link_expression<code>,</code> string_expression <code>)</code>
+<dd><p><code>reduce (</code> poly_expression<code>,</code> ideal_expression <code>)</code>
+<br><code>reduce (</code> poly_expression<code>,</code> ideal_expression<code>,</code> int_expression <code>)</code>
+<br><code>reduce (</code> poly_expression<code>,</code> ideal_expression<code>,</code> poly_expression <code>)</code>
+<br><code>reduce (</code> vector_expression<code>,</code> ideal_expression <code>)</code>
+<br><code>reduce (</code> vector_expression<code>,</code> ideal_expression<code>,</code> int_expression <code>)</code>
+<br><code>reduce (</code> vector_expression<code>,</code> module_expression <code>)</code>
+<br><code>reduce (</code> vector_expression<code>,</code> module_expression<code>,</code> int_expression <code>)</code>
+<br><code>reduce (</code> vector_expression<code>,</code> module_expression<code>,</code> poly_expression <code>)</code>
+<br><code>reduce (</code> ideal_expression<code>,</code> ideal_expression <code>)</code>
+<br><code>reduce (</code> ideal_expression<code>,</code> ideal_expression<code>,</code> int_expression <code>)</code>
+<br><code>reduce (</code> ideal_expression<code>,</code> ideal_expression<code>,</code> matrix_expression <code>)</code>
+<br><code>reduce (</code> module_expression<code>,</code> ideal_expression <code>)</code>
+<br><code>reduce (</code> module_expression<code>,</code> ideal_expression<code>,</code> int_expression <code>)</code>
+<br><code>reduce (</code> module_expression<code>,</code> module_expression <code>)</code>
+<br><code>reduce (</code> module_expression<code>,</code> module_expression<code>,</code> int_expression <code>)</code>
+<br><code>reduce (</code> module_expression<code>,</code> module_expression<code>,</code> matrix_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>any
+<dd><p>the type of the first argument
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>reads data from a link.
-<br>For ASCII links, the content of the entire
-file is returned as one string. If the ASCII link is the empty string,
-<code>read</code> reads from standard input.
-<br>For MP links, one expression is read
-from the link and returned after evaluation.
-<br>For MPtcp links the <code>read</code> command blocks as long as there is no
-data to be read from the link. The <code>status</code> command can be used to
-check whether or not there is data to be read.
-<br>For DBM links, a <code>read</code> with one argument returns the value of
-the next entry in the data base, and a <code>read</code> with two arguments
-returns the value to the key given as the second argument from the data
-base.
+<dd><p>reduces a polynomial, vector, ideal  or module to its normal form with respect to an ideal or module represented by a standard basis.
+Returns 0 if and only if the polynomial (resp. vector, ideal, module)
+is an element (resp. subideal, submodule) of the ideal (resp. module).
+The result may have no meaning if the second argument is not a standard basis.
+<br>The third (optional) argument 1 of type int forces a reduction which considers only the leading term and does no tail reduction.
+<br>If a third argument <code>u</code> of type poly or matrix is given, the first argument <code>p</code> is replaced by <code>p/u</code>.
+This works only for zero dimensional ideals (resp. modules) in the second argument and gives, even in a local ring, a reduced normal form which is the projection to the quotient by the ideal (resp. module).
+</p></dd>
+<dt><code><strong>Note:</strong></code></dt>
+<dd><p>The commands <code>reduce</code> and <code>NF</code> are synonymous.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
-  ideal i=x+y,z3+22y;
-  // write the ideal i to the file save_i
-  write(&quot;:w save_i&quot;,i);
-  ring r0=0,(x,y,z),Dp;
-  // create an ideal k equal to the content
-  // of the file save_i
-  string s=&quot;ideal k=&quot;+read(&quot;save_i&quot;)+&quot;;&quot;;
-  execute(s);
-  k;
-&rarr; k[1]=x+y
-&rarr; k[2]=z3+22y
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1 = 0,(z,y,x),ds;
+  poly s1=2x5y+7x2y4+3x2yz3;
+  poly s2=1x2y2z2+3z8;
+  poly s3=4xy5+2x2y2z3+11x10;
+  ideal i=s1,s2,s3;
+  ideal j=std(i);
+  reduce(3z3yx2+7y4x2+yx5+z12y2x2,j);
+&rarr; -yx5+2401/81y14x2+2744/81y11x5+392/27y8x8+224/81y5x11+16/81y2x14
+  reduce(3z3yx2+7y4x2+yx5+z12y2x2,j,1);
+&rarr; -yx5+z12y2x2
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_181.htm#execute">execute</a>;
-<a href="sing_196.htm#getdump">getdump</a>;
-<a href="sing_92.htm#link">link</a>;
-<a href="sing_275.htm#status">status</a>;
-<a href="sing_293.htm#write">write</a>.
+<a href="sing_68.htm#ideal">ideal</a>;
+<a href="sing_115.htm#module">module</a>;
+<a href="sing_275.htm#std">std</a>;
+<a href="sing_148.htm#vector">vector</a>.
 </p></td>
 </tr>
 </table>
@@ -143,14 +150,14 @@ base.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_259.htm#random" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.104 random" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_261.htm#reduce" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.106 reduce" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_259.htm#read" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.105 read" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_261.htm#regularity" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.107 regularity" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

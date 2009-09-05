@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.5.17 puiseux2generators</title>
+<title>Singular 2-0-4 Manual: D.5.5.18 separateHNE</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.5.17 puiseux2generators">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.5.17 puiseux2generators">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.5.18 separateHNE">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.5.18 separateHNE">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="puiseux2generators"></a>
+<a name="separateHNE"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_698.htm#is_005fNND" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.16 is_NND" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_698.htm#puiseux2generators" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.17 puiseux2generators" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_700.htm#separateHNE" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.18 separateHNE" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_700.htm#squarefree" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.19 squarefree" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_682.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_681.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,34 +84,47 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="puiseux2generators-1"></a>
-<h4 class="subsubsection">D.5.5.17 puiseux2generators</h4>
-<a name="index-puiseux2generators"></a>
-<p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_682.htm#hnoether_005flib">hnoether_lib</a>).
+<a name="separateHNE-1"></a>
+<h4 class="subsubsection">D.5.5.18 separateHNE</h4>
+<a name="index-separateHNE"></a>
+<p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_681.htm#hnoether_005flib">hnoether_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>puiseux2generators(m,n); m,n intvec
+<dd><p>separateHNE(hne1,hne2); hne1, hne2 lists
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>m, resp. n, represent the 1st, resp. 2nd, components of Puiseux pairs
-(e.g., <code>m=invariants(L)[3]</code>, <code>n=invariants(L)[4]</code>).
+<dd><p>hne1, hne2 are HNEs (=output of
+<code>develop(f)</code>, <code>extdevelop(develop(f),n)</code>, or
+one entry in the list <code>hne</code> in the ring created by
+<code>hnexpansion(f[,&quot;ess&quot;])</code>.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>intvec of the generators of the semigroup of values.
+<dd><p>number of quadratic transformations needed to separate both curves
+(branches).
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;hnoether.lib&quot;;
-// take (3,2),(7,2),(15,2),(31,2),(63,2),(127,2) as Puiseux pairs:
-puiseux2generators(intvec(3,7,15,31,63,127),intvec(2,2,2,2,2,2));
-&rarr; 64,96,208,424,852,1706,3413
+int p=printlevel; printlevel=-1;
+ring r=0,(x,y),dp;
+list hne1=develop(x);
+list hne2=develop(x+y);
+list hne3=develop(x+y2);
+separateHNE(hne1,hne2);  // two transversal lines
+&rarr; 1
+separateHNE(hne1,hne3);  // one quadratic transform. gives 1st example
+&rarr; 2
+printlevel=p;
 </pre></td></tr></table>
 <p><strong>See also:</strong>
-<a href="sing_689.htm#invariants">invariants</a>.
+<a href="sing_684.htm#develop">develop</a>;
+<a href="sing_691.htm#displayMultsequence">displayMultsequence</a>;
+<a href="sing_682.htm#hnexpansion">hnexpansion</a>;
+<a href="sing_690.htm#multsequence">multsequence</a>.
 </p>
 
 </td>
@@ -123,14 +136,14 @@ puiseux2generators(intvec(3,7,15,31,63,127),intvec(2,2,2,2,2,2));
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_698.htm#is_005fNND" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.16 is_NND" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_700.htm#separateHNE" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.18 separateHNE" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_682.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_698.htm#puiseux2generators" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.17 puiseux2generators" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_700.htm#squarefree" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.19 squarefree" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_681.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

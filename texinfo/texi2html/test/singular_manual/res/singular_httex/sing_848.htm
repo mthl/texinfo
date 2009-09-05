@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.7.3.4 triangMH</title>
+<title>Singular 2-0-4 Manual: D.7.4 ntsolve_lib</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.7.3.4 triangMH">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.7.3.4 triangMH">
+<meta name="description" content="Singular 2-0-4 Manual: D.7.4 ntsolve_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7.4 ntsolve_lib">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="triangMH"></a>
+<a name="ntsolve_005flib"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_847.htm#triangM" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.3.3 triangM" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_847.htm#triangMH" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.3.4 triangMH" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_849.htm#ntsolve_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.4 ntsolve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_849.htm#nt_005fsolve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.4.1 nt_solve" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_844.htm#triang_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.3 triang_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_812.htm#Symbolic_002dnumerical-solving" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7 Symbolic-numerical solving" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,43 +84,32 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="triangMH-1"></a>
-<h4 class="subsubsection">D.7.3.4 triangMH</h4>
-<a name="index-triangMH"></a>
-<p>Procedure from library <code>triang.lib</code> (see <a href="sing_844.htm#triang_005flib">triang_lib</a>).
-</p>
+<a name="ntsolve_005flib-1"></a>
+<h3 class="subsection">D.7.4 ntsolve_lib</h3>
+<a name="index-ntsolve_002elib"></a>
+<a name="index-ntsolve_005flib"></a>
 <dl compact="compact">
-<dt><strong>Usage:</strong></dt>
-<dd><p>triangMH(G[,i]); G=ideal, i=integer
-</p>
-</dd>
-<dt><strong>Assume:</strong></dt>
-<dd><p>G is the reduced lexicographical Groebner bases of the
-zero-dimensional ideal (G), sorted by increasing leading terms.
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>a list of finitely many triangular systems, such that
-the disjoint union of their varieties equals the variety of (G).
-If i = 2, then each polynomial of the triangular systems is factorized.
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>Algorithm of Moeller and Hillebrand (see: Moeller, H.M.:
-On decomposing systems of polynomial equations with finitely many
-solutions, Appl. Algebra Eng. Commun. Comput. 4, 217 - 230, 1993 and
-Hillebrand, D.: Triangulierung nulldimensionaler Ideale -
-Implementierung und Vergleich zweier Algorithmen, master thesis,
-Universitaet Dortmund, Fachbereich Mathematik, Prof. Dr. H.M. Moeller,
-1999).
+<dt><strong>Library:</strong></dt>
+<dd><p>ntsolve.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>     Real Newton Solving of Polynomial Systems
+</p></dd>
+<dt><strong>Authors:</strong></dt>
+<dd><p>Wilfred Pohl, email: pohl@mathematik.uni-kl.de
+<br>Dietmar Hillebrand
 </p>
 </dd>
 </dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;triang.lib&quot;;
-ring rC5 = 0,(e,d,c,b,a),lp;
-triangMH(stdfglm(cyclic(5)));
-</pre></td></tr></table>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_849.htm#nt_005fsolve">D.7.4.1 nt_solve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> find one real root of 0-dimensional ideal G
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_850.htm#triMNewton">D.7.4.2 triMNewton</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> find one real root for 0-dim triangular system G
+</td></tr>
+</table></blockquote>
+
 </td>
 </tr>
 </table>
@@ -130,14 +119,14 @@ triangMH(stdfglm(cyclic(5)));
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_847.htm#triangM" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.3.3 triangM" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_849.htm#ntsolve_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.4 ntsolve_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_844.htm#triang_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.3 triang_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_847.htm#triangMH" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.3.4 triangMH" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_849.htm#nt_005fsolve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.4.1 nt_solve" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_812.htm#Symbolic_002dnumerical-solving" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7 Symbolic-numerical solving" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

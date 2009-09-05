@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.4.5 mregular_lib</title>
+<title>Singular 2-0-4 Manual: D.4.5.1 reg_CM</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.4.5 mregular_lib">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.4.5 mregular_lib">
+<meta name="description" content="Singular 2-0-4 Manual: D.4.5.1 reg_CM">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.5.1 reg_CM">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="mregular_005flib"></a>
+<a name="reg_005fCM"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_590.htm#getData" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.4.20 getData" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_590.htm#mregular_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.5 mregular_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_592.htm#reg_005fCM" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.5.1 reg_CM" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_592.htm#reg_005fcurve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.5.2 reg_curve" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_529.htm#Commutative-algebra" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4 Commutative algebra" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_590.htm#mregular_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.5 mregular_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,46 +82,55 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="mregular_005flib-1"></a>
-<h3 class="subsection">D.4.5 mregular_lib</h3>
-<a name="index-mregular_002elib"></a>
-<a name="index-mregular_005flib"></a>
+<a name="reg_005fCM-1"></a>
+<h4 class="subsubsection">D.4.5.1 reg_CM</h4>
+<a name="index-reg_005fCM"></a>
+<p>Procedure from library <code>mregular.lib</code> (see <a href="sing_590.htm#mregular_005flib">mregular_lib</a>).
+</p>
 <dl compact="compact">
-<dt><strong>Library:</strong></dt>
-<dd><p>mregular.lib
-</p></dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>   Castelnuovo-Mumford Regularity of CM-Schemes and Curves
-</p></dd>
-<dt><strong>Authors:</strong></dt>
-<dd><p>I.Bermejo, ibermejo@ull.es
-<br> Ph.Gimenez, pgimenez@agt.uva.es
-<br> G.-M.Greuel, greuel@mathematik.uni-kl.de
+<dt><strong>Usage:</strong></dt>
+<dd><p>reg_CM (i); i ideal
 </p>
 </dd>
-<dt><strong>Overview:</strong></dt>
-<dd><p>A library for computing the Castelnuovo-Mumford regularity of a subscheme of
-the projective n-space that DOES NOT require the computation of a minimal
-graded free resolution of the saturated ideal defining the subscheme.
-The procedures are based on two papers by Isabel Bermejo and Philippe Gimenez:
-&rsquo;On Castelnuovo-Mumford regularity of projective curves&rsquo; Proc.Amer.Math.Soc.
-128(5) (2000), and &rsquo;Computing the Castelnuovo-Mumford regularity of some
-subschemes of Pn using quotients of monomial ideals&rsquo;, Proceedings of
-MEGA-2000, J. Pure Appl. Algebra (to appear).
-<br>The algorithm assumes the variables to be in Noether position.
+<dt><strong>Return:</strong></dt>
+<dd><p>an integer, the Castelnuovo-Mumford regularity of i-sat.
+</p>
+</dd>
+<dt><strong>Assume:</strong></dt>
+<dd><p>i is a homogeneous ideal of the basering S=K[x(0)..x(n)] where
+the field K is infinite, and S/i-sat is Cohen-Macaulay.
+Assume that K[x(n-d),...,x(n)] is a Noether normalization of S/i-sat
+where d=dim S/i -1. If this is not the case, compute a Noether
+normalization e.g. by using the proc noetherNormal from algebra.lib.
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>The output is reg(X)=reg(i-sat) where X is the arithmetically
+Cohen-Macaulay subscheme of the projective n-space defined by i.
+If printlevel &gt; 0 (default = 0) additional information is displayed.
+In particular, the value of the regularity of the Hilbert function of
+S/i-sat is given.
 </p>
 </dd>
 </dl>
-
-<p><strong>Procedures:</strong>
-</p><blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_592.htm#reg_005fCM">D.4.5.1 reg_CM</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> regularity of arith. C-M subscheme V(id_sat) of Pn
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_593.htm#reg_005fcurve">D.4.5.2 reg_curve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> regularity of projective curve V(id_sat) in Pn
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_594.htm#reg_005fmoncurve">D.4.5.3 reg_moncurve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> regularity of projective monomial curve defined by li
-</td></tr>
-</table></blockquote>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;mregular.lib&quot;;
+ring s=0,x(0..5),dp;
+ideal i=x(2)^2-x(4)*x(5),x(1)*x(2)-x(0)*x(5),x(0)*x(2)-x(1)*x(4),
+x(1)^2-x(3)*x(5),x(0)*x(1)-x(2)*x(3),x(0)^2-x(3)*x(4);
+reg_CM(i);
+&rarr; 2
+// Additional information can be obtained as follows:
+printlevel = 1;
+reg_CM(i);
+&rarr; // Ideal i of S defining an arithm. Cohen-Macaulay subscheme X of P5:
+&rarr; //   - dimension of X: 2
+&rarr; //   - i is saturated: YES
+&rarr; //   - regularity of the Hilbert function of S/i-sat: -1
+&rarr; //   - time for computing reg(X): 0 sec.
+&rarr; // Castelnuovo-Mumford regularity of X:
+&rarr; 2
+</pre></td></tr></table>
 
 </td>
 </tr>
@@ -132,14 +141,14 @@ MEGA-2000, J. Pure Appl. Algebra (to appear).
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_590.htm#getData" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.4.20 getData" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_592.htm#reg_005fCM" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.5.1 reg_CM" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_529.htm#Commutative-algebra" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4 Commutative algebra" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_590.htm#mregular_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.5 mregular_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_592.htm#reg_005fcurve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.5.2 reg_curve" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_590.htm#mregular_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.5 mregular_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.3.5 show</title>
+<title>Singular 2-0-4 Manual: D.2.3.6 showrecursive</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.3.5 show">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.3.5 show">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.3.6 showrecursive">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.3.6 showrecursive">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="show"></a>
+<a name="showrecursive"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_420.htm#rMacaulay" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.4 rMacaulay" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_420.htm#show" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.5 show" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_422.htm#showrecursive" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.6 showrecursive" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_422.htm#split" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.7 split" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_416.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_415.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,83 +84,40 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="show-1"></a>
-<h4 class="subsubsection">D.2.3.5 show</h4>
-<a name="index-show"></a>
-<p>Procedure from library <code>inout.lib</code> (see <a href="sing_416.htm#inout_005flib">inout_lib</a>).
+<a name="showrecursive-1"></a>
+<h4 class="subsubsection">D.2.3.6 showrecursive</h4>
+<a name="index-showrecursive"></a>
+<p>Procedure from library <code>inout.lib</code> (see <a href="sing_415.htm#inout_005flib">inout_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>show(id); id any object of basering or of type ring/qring
-<br> show(R,s); R=ring, s=string (s = name of an object belonging to R)
+<dd><p>showrecursive(id,p[ord]); id= any object of basering, p= product of
+variables and ord=string (any allowed ordstr)
 </p>
 </dd>
 <dt><strong>Display:</strong></dt>
-<dd><p>display id/s in a compact format together with some information
+<dd><p>display &rsquo;id&rsquo; in a recursive format as a polynomial in the variables
+occurring in p with coefficients in the remaining variables. This is
+done by mapping to a ring with parameters [and ordering &rsquo;ord&rsquo;,
+if a 3rd argument is present (default: ord=&quot;dp&quot;)] and applying
+procedure &rsquo;show&rsquo;
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>no return value
 </p>
 </dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>objects of type string, int, intvec, intmat belong to any ring.
-id may be a ring or a qring. In this case the minimal polynomial is
-displayed, and, for a qring, also the defining ideal.
-<br>id may be of type list but the list must not contain a ring.
-<br> show(R,s) does not work inside a procedure!
-</p>
-</dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;inout.lib&quot;;
-ring r;
-show(r);
-&rarr; // ring: (32003),(x,y,z),(dp(3),C);
-&rarr; // minpoly = 0
-&rarr; // objects belonging to this ring:
-ideal i=x^3+y^5-6*z^3,xy,x3-y2;
-show(i,3);            // introduce 3 space tabs before information
-&rarr;    // ideal, 3 generator(s)
-&rarr; y5+x3-6z3,
-&rarr; xy,
-&rarr; x3-y2
-vector v=x*gen(1)+y*gen(3);
-module m=v,2*v+gen(4);
-list L = i,v,m;
-show(L);
-&rarr; // list, 3 element(s):
-&rarr; [1]:
-&rarr;    // ideal, 3 generator(s)
-&rarr; y5+x3-6z3,
-&rarr; xy,
-&rarr; x3-y2
-&rarr; [2]:
-&rarr;    // vector
-&rarr; [x,0,y]
-&rarr; [3]:
-&rarr;    // module, 2 generator(s)
-&rarr; [x,0,y]
-&rarr; [2x,0,2y,1]
-ring S=(0,T),(a,b,c,d),ws(1,2,3,4);
-minpoly = T^2+1;
-ideal i=a2+b,c2+T^2*d2; i=std(i);
-qring Q=i;
-show(Q);
-&rarr; // qring: (0,T),(a,b,c,d),(ws(1,2,3,4),C);
-&rarr; // minpoly = (T2+1)
-&rarr; // quotient ring from ideal:
-&rarr; _[1]=a2+b
-&rarr; _[2]=c2-d2
-map F=r,a2,b^2,3*c3;
-show(F);
-&rarr; // i-th variable of preimage ring is mapped to @map[i]
-&rarr; // @map                 [1]  map from r
-&rarr; @map[1]=a2
-&rarr; @map[2]=b2
-&rarr; @map[3]=3*c3
-// Apply 'show' to i (which does not belong to the basering) by typing
-// ring r; ideal i=xy,x3-y2; ring Q; show(r,&quot;i&quot;);
+ring r=2,(a,b,c,d,x,y),ds;
+poly f=y+ax2+bx3+cx2y2+dxy3;
+showrecursive(f,x);
+&rarr; // poly, 4 monomial(s)
+&rarr; (b)*x3+(a+cy2)*x2+(dy3)*x+(y)
+showrecursive(f,xy,&quot;lp&quot;);
+&rarr; // poly, 5 monomial(s)
+&rarr; (b)*x3+(c)*x2y2+(a)*x2+(d)*xy3+y
 </pre></td></tr></table>
 
 </td>
@@ -172,14 +129,14 @@ show(F);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_420.htm#rMacaulay" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.4 rMacaulay" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_422.htm#showrecursive" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.6 showrecursive" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_416.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_420.htm#show" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.5 show" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_422.htm#split" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.7 split" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_415.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

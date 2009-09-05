@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: A.12 Computation of Ext</title>
+<title>Singular 2-0-4 Manual: A.13 Polar curves</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: A.12 Computation of Ext">
-<meta name="keywords" content="Singular 2-0-4 Manual: A.12 Computation of Ext">
+<meta name="description" content="Singular 2-0-4 Manual: A.13 Polar curves">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.13 Polar curves">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Computation-of-Ext"></a>
+<a name="Polar-curves"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_342.htm#Free-resolution" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.11 Free resolution" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_342.htm#Computation-of-Ext" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.12 Computation of Ext" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_344.htm#Polar-curves" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.13 Polar curves" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_344.htm#Depth" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.14 Depth" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,256 +84,173 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Computation-of-Ext-1"></a>
-<h2 class="section">A.12 Computation of Ext</h2>
-<a name="index-Ext"></a>
+<a name="Polar-curves-1"></a>
+<h2 class="section">A.13 Polar curves</h2>
+<a name="index-Polar-curves"></a>
 
-<p>We start by showing how to calculate the 
- <span 
-class="cmmi-10">n </span> 
--th Ext group of an
-ideal. The ingredients to do this are by the definition of Ext the
-following: calculate a (minimal) resolution at least up to length
-</p>
-<p> <span 
-class="cmmi-10">n </span> 
-, apply the Hom-functor, and calculate the 
- <span 
-class="cmmi-10">n </span> 
--th homology
-group, that is form the quotient
- ker<span 
-class="cmmi-10">&#x2215;</span>Im  
-in the resolution sequence.
-</p>
-<p>The Hom functor is given simply by transposing (hence dualizing) the
-module or the corresponding matrix with the command <code>transpose</code>.
-The image of the 
- (<span 
-class="cmmi-10">n </span><span 
-class="cmsy-10">- </span>1)  
--st map is generated by the columns of the
-corresponding matrix. To calculate the kernel apply the command
-<code>syz</code> at the 
- (<span 
-class="cmmi-10">n </span><span 
-class="cmsy-10">- </span>1)  
--st transposed entry of the resolution.
-Finally, the quotient is obtained by the command <code>modulo</code>, which
-gives for two modules A = ker, B = Im the module of relations of
- <span 
-class="cmmi-10">A&#x2215;</span>(<span 
-class="cmmi-10">A </span><span 
-class="cmsy-10">&#x2229; </span><span 
-class="cmmi-10">B</span>)  
-in the usual way. As we have a chain complex this is obviously the same
-as ker/Im.
-</p>
-<p>We collect these statements in the following short procedure:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc ext(int n, ideal I)
-{
-  resolution rs = mres(I,n+1);
-  module tAn    = transpose(rs[n+1]);
-  module tAn_1  = transpose(rs[n]);
-  module ext_n  = modulo(syz(tAn),tAn_1);
-  return(ext_n);
-}
-</pre></td></tr></table>
-
-<p>Now consider the following example:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r5 = 32003,(a,b,c,d,e),dp;
-ideal I = a2b2+ab2c+b2cd, a2c2+ac2d+c2de,a2d2+ad2e+bd2e,a2e2+abe2+bce2;
-print(ext(2,I));
-&rarr; 1,0,0,0,0,0,0,
-&rarr; 0,1,0,0,0,0,0,
-&rarr; 0,0,1,0,0,0,0,
-&rarr; 0,0,0,1,0,0,0,
-&rarr; 0,0,0,0,1,0,0,
-&rarr; 0,0,0,0,0,1,0,
-&rarr; 0,0,0,0,0,0,1
-ext(3,I);   // too big to be displayed here
-</pre></td></tr></table>
-
-<p>The library <code>homolog.lib</code> contains several procedures for computing
-Ext-modules and related modules, which are much more general and
-sophisticated then the above one. They are used in the following
-example.
-</p>
-<p>If 
- <span 
-class="cmmi-10">M </span> 
- is a module, then
- Ext<sup><span 
-class="cmr-7">1</span></sup>(<span 
-class="cmmi-10">M,M</span>),
-resp.&#x00A0;Ext<sup><span 
-class="cmr-7">2</span></sup>(<span 
-class="cmmi-10">M,M</span>),  
-are the modules of infinitesimal deformations, resp. of obstructions, of
-</p>
-<p> <span 
-class="cmmi-10">M </span> 
- (like T1 and T2 for a singularity).  Similar to the treatment
-for singularities, the semiuniversal deformation of 
- <span 
-class="cmmi-10">M </span> 
- can be
-computed (if
- Ext<sup><span 
-class="cmr-7">1</span></sup>  
-is finite dimensional) with the help of
- Ext<sup><span 
-class="cmr-7">1</span></sup>, Ext<sup><span 
-class="cmr-7">2</span></sup>  
-and the cup product. There is an extra procedure for
- Ext<sup><span 
-class="cmmi-7">k</span></sup>(<span 
-class="cmmi-10">R&#x2215;J,R</span>)  
-if 
- <span 
-class="cmmi-10">J </span> 
- is an ideal in 
- <span 
-class="cmmi-10">R </span> 
- since this is faster than the
-general Ext.
-</p>
-<p>We compute
-</p><ul>
-<li>
-the infinitesimal deformations
- (= Ext<sup><span 
-class="cmr-7">1</span></sup>(<span 
-class="cmmi-10">K,K</span>))  
-and obstructions
- (= Ext<sup><span 
-class="cmr-7">2</span></sup>(<span 
-class="cmmi-10">K,K</span>))  
-of the residue field 
+<p>The polar curve of a hypersurface given by a polynomial
 
 <span 
-class="cmmi-10">K </span>= <span 
-class="cmmi-10">R&#x2215;m </span> 
- of an ordinary cusp,
+class="cmmi-10">f </span><span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">k</span>[<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub><span 
+class="cmmi-10">,t</span>]  
+with respect to 
  <span 
-class="cmmi-10">R </span>= <span 
-class="cmmi-10">Loc</span><sub><span 
-class="cmmi-7">m</span></sub><span 
-class="cmmi-10">K</span>[<span 
-class="cmmi-10">x,y</span>]<span 
-class="cmmi-10">&#x2215;</span>(<span 
-class="cmmi-10">x</span><sup><span 
-class="cmr-7">2</span></sup> <span 
-class="cmsy-10">- </span><span 
-class="cmmi-10">y</span><sup><span 
-class="cmr-7">3</span></sup>), <span 
-class="cmmi-10">m </span>= (<span 
-class="cmmi-10">x,y</span>).  
-To compute
- Ext<sup><span 
-class="cmr-7">1</span></sup>(<span 
-class="cmmi-10">m,m</span>)  
-we have to apply <code>Ext(1,syz(m),syz(m))</code> with
-<code>syz(m)</code> the first syzygy module of 
+class="cmmi-10">t </span> 
+ (we may consider 
  <span 
-class="cmmi-10">m </span> 
-, which is isomorphic to
- Ext<sup><span 
-class="cmr-7">2</span></sup>(<span 
-class="cmmi-10">K,K</span>).  
-</li><li>
- Ext<sup><span 
-class="cmmi-7">k</span></sup>(<span 
-class="cmmi-10">R&#x2215;i,R</span>)  
-for some ideal 
+class="cmmi-10">f </span>= 0  
+ as a family of
+hypersurfaces parametrized by 
  <span 
-class="cmmi-10">i </span> 
- and with an extra option.
-</li></ul>
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;homolog.lib&quot;;
-  ring R=0,(x,y),ds;
-  ideal i=x2-y3;
-  qring q = std(i);      // defines the quotient ring Loc_m k[x,y]/(x2-y3)
-  ideal m = maxideal(1);
-  module T1K = Ext(1,m,m);  // computes Ext^1(R/m,R/m)
-&rarr; // dimension of Ext^1:  0
-&rarr; // vdim of Ext^1:       2
-&rarr; 
-  print(T1K);
-&rarr; 0,  0,y,x,0,y,0,    x2-y3,
-&rarr; -y2,x,x,0,y,0,x2-y3,0,    
-&rarr; 1,  0,0,0,0,0,0,    0     
-  printlevel=2;             // gives more explanation
-  module T2K=Ext(2,m,m);    // computes Ext^2(R/m,R/m)
-&rarr; // Computing Ext^2 (help Ext; gives an explanation):
-&rarr; // Let 0&lt;--coker(M)&lt;--F0&lt;--F1&lt;--F2&lt;--... be a resolution of coker(M),
-&rarr; // and 0&lt;--coker(N)&lt;--G0&lt;--G1 a presentation of coker(N),
-&rarr; // then Hom(F2,G0)--&gt;Hom(F3,G0) is given by:
-&rarr; y2,x,
-&rarr; x, y 
-&rarr; // and Hom(F1,G0) + Hom(F2,G1)--&gt;Hom(F2,G0) is given by:
-&rarr; -y,x,  x,0,y,0,
-&rarr; x, -y2,0,x,0,y 
-&rarr; 
-&rarr; // dimension of Ext^2:  0
-&rarr; // vdim of Ext^2:       2
-&rarr; 
-  print(std(T2K));
-&rarr; -y2,0,x,0,y,
-&rarr; 0,  x,0,y,0,
-&rarr; 1,  0,0,0,0 
-  printlevel=0;
-  module E = Ext(1,syz(m),syz(m));
-&rarr; // dimension of Ext^1:  0
-&rarr; // vdim of Ext^1:       2
-&rarr; 
-  print(std(E));
-&rarr; -y,x, 0, 0,0,x,0,y,
-&rarr; 0, -y,-y,0,x,0,y,0,
-&rarr; 0, 0, 0, 1,0,0,0,0,
-&rarr; 0, 0, 1, 0,0,0,0,0,
-&rarr; 0, 1, 0, 0,0,0,0,0,
-&rarr; 1, 0, 0, 0,0,0,0,0 
-  //The matrices which we have just computed are presentation matrices
-  //of the modules T2K and E. Hence we may ignore those columns
-  //containing 1 as an entry and see that T2K and E are isomorphic
-  //as expected, but differently presented.
-  //-------------------------------------------
-  ring S=0,(x,y,z),dp;
-  ideal  i = x2y,y2z,z3x;
-  module E = Ext_R(2,i);
-&rarr; // dimension of Ext^2:  1
-&rarr; 
-  print(E);
-&rarr; 0,y,0,z2,
-&rarr; z,0,0,-x,
-&rarr; 0,0,x,-y 
-  // if a 3-rd argument is given (of any type)
-  // a list of Ext^k(R/i,R), a SB of Ext^k(R/i,R) and a vector space basis
-  // is returned:
-  list LE = Ext_R(3,i,&quot;&quot;);
-&rarr; // dimension of Ext^3:  0
-&rarr; // vdim of Ext^3:       2
-&rarr; 
-  LE;
-&rarr; [1]:
-&rarr;    _[1]=y*gen(1)
-&rarr;    _[2]=x*gen(1)
-&rarr;    _[3]=z2*gen(1)
-&rarr; [2]:
-&rarr;    _[1]=y*gen(1)
-&rarr;    _[2]=x*gen(1)
-&rarr;    _[3]=z2*gen(1)
-&rarr; [3]:
-&rarr;    _[1,1]=z
-&rarr;    _[1,2]=1
-  print(LE[2]);
-&rarr; y,x,z2
-  print(kbase(LE[2]));
-&rarr; z,1
+class="cmmi-10">t </span> 
+) is defined as the Zariski
+closure of
+ <span 
+class="cmmi-10">V </span>(<span 
+class="cmmi-10">&#x2202;f&#x2215;&#x2202;x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,&#x2202;f&#x2215;&#x2202;x</span><sub><span 
+class="cmmi-7">n</span></sub>) <span 
+class="cmsy-10">\ </span><span 
+class="cmmi-10">V </span>(<span 
+class="cmmi-10">f</span>)  
+if this happens to be a curve.  Some authors consider
+ <span 
+class="cmmi-10">V </span>(<span 
+class="cmmi-10">&#x2202;f&#x2215;&#x2202;x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,&#x2202;f&#x2215;&#x2202;x</span><sub><span 
+class="cmmi-7">n</span></sub>)  
+itself as polar curve.
+</p>
+<p>We may consider projective hypersurfaces
+ (in <span 
+class="cmmi-10">P</span><sup><span 
+class="cmmi-7">n</span></sup>),  
+affine hypersurfaces
+ (in <span 
+class="cmmi-10">k</span><sup><span 
+class="cmmi-7">n</span></sup>)  
+or germs of hypersurfaces
+ (in
+(<span 
+class="cmmi-10">k</span><sup><span 
+class="cmmi-7">n</span></sup><span 
+class="cmmi-10">,</span>0)),  
+getting in this way
+projective, affine or local polar curves.
+</p>
+<p>Now let us compute this for a family of curves.  We need the library
+<code>elim.lib</code> for saturation and <code>sing.lib</code> for the singular
+locus.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;elim.lib&quot;;
+  LIB &quot;sing.lib&quot;;
+  // Affine polar curve:
+  ring R = 0,(x,z,t),dp;              // global ordering dp
+  poly f = z5+xz3+x2-tz6;
+  dim_slocus(f);                      // dimension of singular locus
+&rarr; 1
+  ideal j = diff(f,x),diff(f,z);
+  dim(std(j));                        // dim V(j)
+&rarr; 1
+  dim(std(j+ideal(f)));               // V(j,f) also 1-dimensional
+&rarr; 1
+  // j defines a curve, but to get the polar curve we must remove the
+  // branches contained in f=0 (they exist since dim V(j,f) = 1). This
+  // gives the polar curve set theoretically. But for the structure we
+  // may take either j:f or j:f^k for k sufficiently large. The first is
+  // just the ideal quotient, the second the iterated ideal quotient
+  // or saturation. In our case both coincide.
+  ideal q = quotient(j,ideal(f));     // ideal quotient
+  ideal qsat = sat(j,f)[1];           // saturation, proc from elim.lib
+  ideal sq = std(q);
+  dim(sq);
+&rarr; 1
+  // 1-dimensional, hence q defines the affine polar curve
+  //
+  // to check that q and qsat are the same, we show both inclusions, i.e.,
+  // both reductions must give the 0-ideal
+  size(reduce(qsat,sq));
+&rarr; 0
+  size(reduce(q,std(qsat)));
+&rarr; 0
+  qsat;
+&rarr; qsat[1]=12zt+3z-10
+&rarr; qsat[2]=5z2+12xt+3x
+&rarr; qsat[3]=144xt2+72xt+9x+50z
+  // We see that the affine polar curve does not pass through the origin,
+  // hence we expect the local polar &quot;curve&quot; to be empty
+  // ------------------------------------------------
+  // Local polar curve:
+  ring r = 0,(x,z,t),ds;              // local ordering ds
+  poly f = z5+xz3+x2-tz6;
+  ideal j = diff(f,x),diff(f,z);
+  dim(std(j));                        // V(j) 1-dimensional
+&rarr; 1
+  dim(std(j+ideal(f)));               // V(j,f) also 1-dimensional
+&rarr; 1
+  ideal q = quotient(j,ideal(f));     // ideal quotient
+  q;
+&rarr; q[1]=1
+  // The local polar &quot;curve&quot; is empty, i.e., V(j) is contained in V(f)
+  // ------------------------------------------------
+  // Projective polar curve: (we need &quot;sing.lib&quot; and &quot;elim.lib&quot;)
+  ring P = 0,(x,z,t,y),dp;            // global ordering dp
+  poly f = z5y+xz3y2+x2y4-tz6;
+                                      // but consider t as parameter
+  dim_slocus(f);              // projective 1-dimensional singular locus
+&rarr; 2
+  ideal j = diff(f,x),diff(f,z);
+  dim(std(j));                        // V(j), projective 1-dimensional
+&rarr; 2
+  dim(std(j+ideal(f)));               // V(j,f) also projective 1-dimensional
+&rarr; 2
+  ideal q = quotient(j,ideal(f));
+  ideal qsat = sat(j,f)[1];           // saturation, proc from elim.lib
+  dim(std(qsat));
+&rarr; 2
+  // projective 1-dimensional, hence q and/or qsat define the projective
+  // polar curve. In this case, q and qsat are not the same, we needed
+  // 2 quotients.
+  // Let us check both reductions:
+  size(reduce(qsat,std(q)));
+&rarr; 4
+  size(reduce(q,std(qsat)));
+&rarr; 0
+  // Hence q is contained in qsat but not conversely
+  q;
+&rarr; q[1]=12zty+3zy-10y2
+&rarr; q[2]=60z2t-36xty-9xy-50zy
+  qsat;
+&rarr; qsat[1]=12zt+3z-10y
+&rarr; qsat[2]=12xty+5z2+3xy
+&rarr; qsat[3]=144xt2+72xt+9x+50z
+&rarr; qsat[4]=z3+2xy2
+  //
+  // Now consider again the affine polar curve,
+  // homogenize it with respect to y (deg t=0) and compare:
+  // affine polar curve:
+  ideal qa = 12zt+3z-10,5z2+12xt+3x,-144xt2-72xt-9x-50z;
+  // homogenized:
+  ideal qh = 12zt+3z-10y,5z2+12xyt+3xy,-144xt2-72xt-9x-50z;
+  size(reduce(qh,std(qsat)));
+&rarr; 0
+  size(reduce(qsat,std(qh)));
+&rarr; 0
+  // both ideals coincide
 </pre></td></tr></table>
 </td>
 </tr>
@@ -344,14 +261,14 @@ class="cmmi-10">i </span>
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_342.htm#Free-resolution" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.11 Free resolution" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_344.htm#Polar-curves" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.13 Polar curves" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_342.htm#Computation-of-Ext" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.12 Computation of Ext" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_344.htm#Depth" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.14 Depth" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

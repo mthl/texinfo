@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.4.2 intmat expressions</title>
+<title>Singular 2-0-4 Manual: 4.4.3 intmat type cast</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.4.2 intmat expressions">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.4.2 intmat expressions">
+<meta name="description" content="Singular 2-0-4 Manual: 4.4.3 intmat type cast">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.4.3 intmat type cast">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="intmat-expressions"></a>
+<a name="intmat-type-cast"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_82.htm#intmat-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.4.1 intmat declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_82.htm#intmat-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.4.2 intmat expressions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_84.htm#intmat-type-cast" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.4.3 intmat type cast" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_84.htm#intmat-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.4.4 intmat operations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_81.htm#intmat" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.4 intmat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_80.htm#intmat" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.4 intmat" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,54 +82,47 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="intmat-expressions-1"></a>
-<h3 class="subsection">4.4.2 intmat expressions</h3>
-<a name="index-intmat-expressions"></a>
-
-<p>An intmat expression is:
-</p><ol>
-<li>
-an identifier of type intmat
-</li><li>
-a function returning intmat
-</li><li>
-intmat operations with int (<code>+</code>, <code>-</code>, <code>*</code>, <code>div</code>, <code>%</code>)
-</li><li>
-intmat operations (<code>+</code>, <code>-</code>, <code>*</code>)
-</li><li>
-a type cast to intmat (see <a href="sing_84.htm#intmat-type-cast">intmat type cast</a>)
-</li></ol>
-
-<br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  intmat Idm[2][2];
-  Idm +1;          // add the unit intmat
-&rarr; 1,0,
-&rarr; 0,1 
-  intmat m1[3][2] = _,1,-2;  // take entries from the last result
-  m1;
-&rarr; 1,0,
-&rarr; 0,1,
-&rarr; 1,-2 
-  intmat m2[2][3]=1,0,2,4,5,1;
-  transpose(m2);
-&rarr; 1,4,
-&rarr; 0,5,
-&rarr; 2,1 
-  intvec v1=1,2,4;
-  intvec v2=5,7,8;
-  m1=v1,v2;         // fill m1 with v1 and v2
-  m1;
+<a name="intmat-type-cast-1"></a>
+<h3 class="subsection">4.4.3 intmat type cast</h3>
+<a name="index-intmat-type-cast"></a>
+<dl compact="compact">
+<dt><code><strong>Syntax:</strong></code></dt>
+<dd><p><code>intmat (</code> expression <code>)</code>
+<br><code>intmat (</code> expression, int_n, int_m  <code>)</code>
+</p></dd>
+<dt><code><strong>Type:</strong></code></dt>
+<dd><p>intmat
+</p></dd>
+<dt><code><strong>Purpose:</strong></code></dt>
+<dd><p>Converts expression to an intmat, where expression must be of type
+intvec, or intmat. If
+int_n and int_m are supplied, then they specify the dimension of the
+intmat. Otherwise, the size (resp. dimensions) of the intmat
+are determined  by the size (resp. dimensions) of the
+expression.
+</p></dd>
+<dt><code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  intmat(intvec(1));
+&rarr; 1 
+  intmat(intvec(1), 1, 2);
+&rarr; 1,0 
+  intmat(intvec(1,2,3,4), 2, 2);
 &rarr; 1,2,
-&rarr; 4,5,
-&rarr; 7,8 
-  trace(m1*m2);
-&rarr; 56
+&rarr; 3,4 
+  intmat(_, 2, 3);
+&rarr; 1,2,3,
+&rarr; 4,0,0 
+  intmat(_, 2, 1);
+&rarr; 1,
+&rarr; 2 
 </pre></td></tr></table>
+</dd>
+</dl>
 <p>See
-<a href="sing_38.htm#Type-conversion-and-casting">Type conversion and casting</a>;
-<a href="sing_121.htm#number">number</a>.
-</p>
-</td>
+<a href="sing_37.htm#Type-conversion-and-casting">Type conversion and casting</a>;
+<a href="sing_80.htm#intmat">intmat</a>;
+<a href="sing_112.htm#matrix-type-cast">matrix type cast</a>.
+</p></td>
 </tr>
 </table>
 <hr>
@@ -138,14 +131,14 @@ a type cast to intmat (see <a href="sing_84.htm#intmat-type-cast">intmat type ca
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_82.htm#intmat-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.4.1 intmat declarations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_84.htm#intmat-type-cast" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.4.3 intmat type cast" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_81.htm#intmat" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.4 intmat" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_82.htm#intmat-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.4.2 intmat expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_84.htm#intmat-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.4.4 intmat operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_80.htm#intmat" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.4 intmat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

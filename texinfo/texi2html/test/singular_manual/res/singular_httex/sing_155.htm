@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1 Functions</title>
+<title>Singular 2-0-4 Manual: 5.1.1 attrib</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1 Functions">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1 Functions">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.1 attrib">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.1 attrib">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Functions"></a>
+<a name="attrib"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_156.htm#attrib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.1 attrib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_156.htm#bareiss" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.2 bareiss" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,305 +84,115 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Functions-1"></a>
-<h2 class="section">5.1 Functions</h2>
-<a name="index-Functions"></a>
-
-<p>This section gives a complete reference of all functions, commands and
-special variables of the <small>SINGULAR</small> kernel (i.e., all built-in
-commands). See <a href="sing_390.htm#standard_005flib">standard_lib</a>, for those
-functions from the <code>standard.lib</code> (this library is automatically
-loaded at start-up time) which extend the functionality of the kernel
-and are written
-in the  <small>SINGULAR</small> programming language.
-</p>
-<p>The general syntax of a function is
-</p><table><tr><td>&nbsp;</td><td><pre class="format">                   [target =] function_name (&lt;arguments&gt;);
+<a name="attrib-1"></a>
+<h3 class="subsection">5.1.1 attrib</h3>
+<a name="index-attrib"></a>
+<dl compact="compact">
+<dt><code><strong>Syntax:</strong></code></dt>
+<dd><p><code>attrib (</code> name <code>)</code>
+</p></dd>
+<dt><code><strong>Type:</strong></code></dt>
+<dd><p>none
+</p></dd>
+<dt><code><strong>Purpose:</strong></code></dt>
+<dd><p>displays the attribute list of the object called name.
+</p></dd>
+<dt><code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+  ideal I=std(maxideal(2));
+  attrib(I);
+&rarr; attr:isSB, type int
 </pre></td></tr></table>
-<p>If no target is specified, the result is printed.
-In some cases (e.g., <code>export</code>, <code>keepring</code>, <code>kill</code>,
-<code>setring</code>, <code>type</code>) the brackets are optional. For the commands
-<code>help</code>, <code>break</code>, <code>quit</code>, <code>exit</code> and <code>LIB</code> no
-brackets are allowed.
-</p>
-<blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_156.htm#attrib">5.1.1 attrib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_157.htm#bareiss">5.1.2 bareiss</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_158.htm#betti">5.1.3 betti</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_159.htm#char">5.1.4 char</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_160.htm#char_005fseries">5.1.5 char_series</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_161.htm#charstr">5.1.6 charstr</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_162.htm#cleardenom">5.1.7 cleardenom</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_163.htm#close">5.1.8 close</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_164.htm#coef">5.1.9 coef</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_165.htm#coeffs">5.1.10 coeffs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_166.htm#contract">5.1.11 contract</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_167.htm#dbprint">5.1.12 dbprint</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_168.htm#defined">5.1.13 defined</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_169.htm#deg">5.1.14 deg</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_170.htm#degree">5.1.15 degree</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_171.htm#delete">5.1.16 delete</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_172.htm#det">5.1.17 det</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_173.htm#diff">5.1.18 diff</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_174.htm#dim">5.1.19 dim</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_175.htm#division">5.1.20 division</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_176.htm#dump">5.1.21 dump</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_177.htm#eliminate">5.1.22 eliminate</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_178.htm#eval">5.1.23 eval</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_179.htm#ERROR">5.1.24 ERROR</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_180.htm#example">5.1.25 example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_181.htm#execute">5.1.26 execute</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_182.htm#exit">5.1.27 exit</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_183.htm#extgcd">5.1.28 extgcd</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_184.htm#facstd">5.1.29 facstd</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_185.htm#factorize">5.1.30 factorize</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_186.htm#fetch">5.1.31 fetch</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_187.htm#fglm">5.1.32 fglm</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_188.htm#fglmquot">5.1.33 fglmquot</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_189.htm#filecmd">5.1.34 files, input from</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_190.htm#find">5.1.35 find</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_191.htm#finduni">5.1.36 finduni</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_192.htm#fprintf">5.1.37 fprintf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_193.htm#freemodule">5.1.38 freemodule</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_194.htm#gcd">5.1.39 gcd</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_195.htm#gen">5.1.40 gen</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_196.htm#getdump">5.1.41 getdump</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_197.htm#groebner">5.1.42 groebner</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_198.htm#help">5.1.43 help</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_199.htm#highcorner">5.1.44 highcorner</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_200.htm#hilb">5.1.45 hilb</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_201.htm#homog">5.1.46 homog</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_202.htm#hres">5.1.47 hres</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_203.htm#imap">5.1.48 imap</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_204.htm#impart">5.1.49 impart</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_205.htm#indepSet">5.1.50 indepSet</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_206.htm#insert">5.1.51 insert</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_207.htm#interred">5.1.52 interred</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_208.htm#intersect">5.1.53 intersect</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_209.htm#jacob">5.1.54 jacob</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_210.htm#jet">5.1.55 jet</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_211.htm#kbase">5.1.56 kbase</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_212.htm#kill">5.1.57 kill</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_213.htm#killattrib">5.1.58 killattrib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_214.htm#koszul">5.1.59 koszul</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_215.htm#laguerre">5.1.60 laguerre</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_216.htm#lead">5.1.61 lead</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_217.htm#leadcoef">5.1.62 leadcoef</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_218.htm#leadexp">5.1.63 leadexp</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_219.htm#leadmonom">5.1.64 leadmonom</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_220.htm#LIB">5.1.65 LIB</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_221.htm#lift">5.1.66 lift</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_222.htm#liftstd">5.1.67 liftstd</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_223.htm#listvar">5.1.68 listvar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_224.htm#lres">5.1.69 lres</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_225.htm#maxideal">5.1.70 maxideal</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_226.htm#memory">5.1.71 memory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_227.htm#minbase">5.1.72 minbase</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_228.htm#minor">5.1.73 minor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_229.htm#minres">5.1.74 minres</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_230.htm#modulo">5.1.75 modulo</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_231.htm#monitor">5.1.76 monitor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_232.htm#mpresmat">5.1.77 mpresmat</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_233.htm#mres">5.1.78 mres</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_234.htm#mstd">5.1.79 mstd</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_235.htm#mult">5.1.80 mult</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_236.htm#nameof">5.1.81 nameof</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_237.htm#names">5.1.82 names</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_238.htm#ncols">5.1.83 ncols</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_239.htm#npars">5.1.84 npars</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_240.htm#nres">5.1.85 nres</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_241.htm#nrows">5.1.86 nrows</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_242.htm#nvars">5.1.87 nvars</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_243.htm#open">5.1.88 open</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_244.htm#option">5.1.89 option</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_245.htm#ord">5.1.90 ord</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_246.htm#ordstr">5.1.91 ordstr</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_247.htm#par">5.1.92 par</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_248.htm#pardeg">5.1.93 pardeg</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_249.htm#parstr">5.1.94 parstr</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_250.htm#preimage">5.1.95 preimage</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_251.htm#prime">5.1.96 prime</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_252.htm#print">5.1.97 print</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_253.htm#printf">5.1.98 printf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_254.htm#prune">5.1.99 prune</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_255.htm#qhweight">5.1.100 qhweight</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_256.htm#quot">5.1.101 quot</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_257.htm#quote">5.1.102 quote</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_258.htm#quotient">5.1.103 quotient</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_259.htm#random">5.1.104 random</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_260.htm#read">5.1.105 read</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_261.htm#reduce">5.1.106 reduce</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_262.htm#regularity">5.1.107 regularity</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_263.htm#repart">5.1.108 repart</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_264.htm#res">5.1.109 res</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_265.htm#reservedName">5.1.110 reservedName</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_266.htm#resultant">5.1.111 resultant</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_267.htm#rvar">5.1.112 rvar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_268.htm#setring">5.1.113 setring</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_269.htm#simplex">5.1.114 simplex</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_270.htm#simplify">5.1.115 simplify</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_271.htm#size">5.1.116 size</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_272.htm#sortvec">5.1.117 sortvec</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_273.htm#sprintf">5.1.118 sprintf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_274.htm#sres">5.1.119 sres</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_275.htm#status">5.1.120 status</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_276.htm#std">5.1.121 std</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_277.htm#stdfglm">5.1.122 stdfglm</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_278.htm#stdhilb">5.1.123 stdhilb</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_279.htm#subst">5.1.124 subst</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_280.htm#system">5.1.125 system</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_281.htm#syz">5.1.126 syz</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_282.htm#trace">5.1.127 trace</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_283.htm#transpose">5.1.128 transpose</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_284.htm#type">5.1.129 type</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_285.htm#typeof">5.1.130 typeof</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_286.htm#uressolve">5.1.131 uressolve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_287.htm#vandermonde">5.1.132 vandermonde</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_288.htm#var">5.1.133 var</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_289.htm#varstr">5.1.134 varstr</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_290.htm#vdim">5.1.135 vdim</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_291.htm#wedge">5.1.136 wedge</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_292.htm#weight">5.1.137 weight</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_293.htm#write">5.1.138 write</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table></blockquote>
+</dd>
+<dt><code><strong>Syntax:</strong></code></dt>
+<dd><p><code>attrib (</code> name <code>,</code> string_expression <code>)</code>
+</p></dd>
+<dt><code><strong>Type:</strong></code></dt>
+<dd><p>any
+</p></dd>
+<dt><code><strong>Purpose:</strong></code></dt>
+<dd><p>returns the value of the attribute string_expression of the
+variable name. If the attribute is not defined for this variable,
+<code>attrib</code> returns the empty string.
+</p></dd>
+<dt><code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+  ideal I=std(maxideal(2));
+  attrib(I,&quot;isSB&quot;);
+&rarr; 1
+  // although maxideal(2) is a standard basis,
+  // SINGULAR does not know it:
+  attrib(maxideal(2), &quot;isSB&quot;);
+&rarr; 0
+</pre></td></tr></table>
+</dd>
+<dt><code><strong>Syntax:</strong></code></dt>
+<dd><p><code>attrib (</code> name<code>,</code> string_expression<code>,</code> expression <code>)</code>
+</p></dd>
+<dt><code><strong>Type:</strong></code></dt>
+<dd><p>none
+</p></dd>
+<dt><code><strong>Purpose:</strong></code></dt>
+<dd><p>sets the attribute string_expression of the variable name
+to the value expression.
+</p></dd>
+<dt><code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+  ideal I=maxideal(2); // the attribute &quot;isSB&quot; is not set
+  vdim(I);
+&rarr; // ** I is no standardbasis
+&rarr; 4
+  attrib(I,&quot;isSB&quot;,1);  // the standard basis attribute is set here
+  vdim(I);
+&rarr; 4
+</pre></td></tr></table>
+</dd>
+<dt><code><strong>Remark:</strong></code></dt>
+<dd><p>An attribute may be described by any string_expression. Some of these are
+used by the kernel of <small>SINGULAR</small> and referred to as reserved attributes.
+Non-reserved attributes may be used, however, in procedures and can
+considerably speed up computations.
+</p><br>
+</dd>
+<dt><code><strong>Reserved attributes:</strong></code></dt>
+<dd><p>(not all are in use at the moment)
+</p><dl compact="compact">
+<dt><code>isSB</code></dt>
+<dd><p>the standard basis property is set by all commands computing a standard
+basis like
+<code>groebner</code>, <code>std</code>, <code>stdhilb</code> etc.; used by <code>lift</code>, <code>dim</code>,
+<code>degree</code>, <code>mult</code>, <code>hilb</code>, <code>vdim</code>, <code>kbase</code>
+</p></dd>
+<dt><code>isHomog</code></dt>
+<dd><p>the weight vector for homogeneous or quasihomogeneous ideals/modules
+</p></dd>
+<dt><code>isCI</code></dt>
+<dd><p>complete intersection property
+</p></dd>
+<dt><code>isCM</code></dt>
+<dd><p>Cohen-Macaulay property
+</p></dd>
+<dt><code>rank</code></dt>
+<dd><p>set the rank of a module (see <a href="sing_240.htm#nrows">nrows</a>)
+</p></dd>
+<dt><code>withSB</code></dt>
+<dd><p>value of type ideal, resp. module, is std
+</p></dd>
+<dt><code>withHilb</code></dt>
+<dd><p>value of type intvec is hilb(_,1) (see <a href="sing_199.htm#hilb">hilb</a>)
+</p></dd>
+<dt><code>withRes</code></dt>
+<dd><p>value of type list is a free resolution
+</p></dd>
+<dt><code>withDim</code></dt>
+<dd><p>value of type int is the dimension (see <a href="sing_173.htm#dim">dim</a>)
+</p></dd>
+<dt><code>withMult</code></dt>
+<dd><p>value of type int is the multiplicity (see <a href="sing_234.htm#mult">mult</a>)
+</p></dd>
+</dl>
+</dd>
+</dl>
 </td>
 </tr>
 </table>
@@ -392,14 +202,14 @@ brackets are allowed.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_156.htm#attrib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.1 attrib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_156.htm#bareiss" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.2 bareiss" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

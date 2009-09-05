@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.4.21 hilbPoly</title>
+<title>Singular 2-0-4 Manual: D.2.5 random_lib</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.4.21 hilbPoly">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.4.21 hilbPoly">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.5 random_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.5 random_lib">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="hilbPoly"></a>
+<a name="random_005flib"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_447.htm#subrInterred" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.20 subrInterred" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_447.htm#hilbPoly" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.21 hilbPoly" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_449.htm#random_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.5 random_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_449.htm#genericid" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.5.1 genericid" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_427.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_390.htm#General-purpose" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2 General purpose" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,34 +82,46 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="hilbPoly-1"></a>
-<h4 class="subsubsection">D.2.4.21 hilbPoly</h4>
-<a name="index-hilbPoly"></a>
-<p>Procedure from library <code>poly.lib</code> (see <a href="sing_427.htm#poly_005flib">poly_lib</a>).
-</p>
+<a name="random_005flib-1"></a>
+<h3 class="subsection">D.2.5 random_lib</h3>
+<a name="index-random_002elib"></a>
+<a name="index-random_005flib"></a>
 <dl compact="compact">
-<dt><strong>Usage:</strong></dt>
-<dd><p>hilbPoly(I) I a homogeneous ideal
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>the Hilbert polynomial of basering/I as an intvec v=v_0,...,v_r
-such that the Hilbert polynomial is (v_0+v_1*t+...v_r*t^r)/r!
+<dt><strong>Library:</strong></dt>
+<dd><p>random.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>    Creating Random and Sparse Matrices, Ideals, Polys
 </p>
 </dd>
 </dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;poly.lib&quot;;
-ring r = 0,(b,c,t,h),dp;
-ideal I=
-bct-t2h+2th2+h3,
-bt3-ct3-t4+b2th+c2th-2bt2h+2ct2h+2t3h-bch2-2bth2+2cth2+2th3,
-b2c2+bt2h-ct2h-t3h+b2h2+2bch2+c2h2-2bth2+2cth2+t2h2-2bh3+2ch3+2th3+3h4,
-c2t3+ct4-c3th-2c2t2h-2ct3h-t4h+bc2h2-2c2th2-bt2h2+4t3h2+2bth3-2cth3-t2h3
-+bh4-6th4-2h5;
-hilbPoly(I);
-&rarr; -11,10
-</pre></td></tr></table>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_449.htm#genericid">D.2.5.1 genericid</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> generic sparse linear combinations of generators of i
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_450.htm#randomid">D.2.5.2 randomid</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> random linear combinations of generators of id
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_451.htm#randommat">D.2.5.3 randommat</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> nxm matrix of random linear combinations of id
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_452.htm#sparseid">D.2.5.4 sparseid</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> ideal of k random sparse poly&rsquo;s of degree d [u&lt;=d&lt;=o]
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_453.htm#sparsematrix">D.2.5.5 sparsematrix</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> nxm sparse matrix of polynomials of degree&lt;=o
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_454.htm#sparsemat">D.2.5.6 sparsemat</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> nxm sparse integer matrix with random coefficients
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_455.htm#sparsepoly">D.2.5.7 sparsepoly</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> random sparse polynomial with terms of degree in [u,o]
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_456.htm#sparsetriag">D.2.5.8 sparsetriag</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> nxm sparse lower-triag intmat with random coefficients
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_457.htm#triagmatrix">D.2.5.9 triagmatrix</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> nxm sparse lower-triag matrix of poly&rsquo;s of degree&lt;=o
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_458.htm#randomLast">D.2.5.10 randomLast</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> random transformation of the last variable
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_459.htm#randomBinomial">D.2.5.11 randomBinomial</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> binomial ideal, k random generators of degree &gt;=u
+</td></tr>
+</table></blockquote>
+
 </td>
 </tr>
 </table>
@@ -119,14 +131,14 @@ hilbPoly(I);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_447.htm#subrInterred" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.20 subrInterred" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_449.htm#random_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.5 random_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_427.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_447.htm#hilbPoly" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.21 hilbPoly" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_449.htm#genericid" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.5.1 genericid" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_390.htm#General-purpose" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2 General purpose" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

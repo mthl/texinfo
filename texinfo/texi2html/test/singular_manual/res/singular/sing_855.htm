@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.7.5.3 Quotient</title>
+<title>Singular 2-0-4 Manual: D.7.5.4 Remainder</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.7.5.3 Quotient">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.7.5.3 Quotient">
+<meta name="description" content="Singular 2-0-4 Manual: D.7.5.4 Remainder">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7.5.4 Remainder">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Quotient"></a>
+<a name="Remainder"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_854.htm#Factor" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.5.2 Factor" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_854.htm#Quotient" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.5.3 Quotient" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_856.htm#Remainder" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.4 Remainder" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_856.htm#Roots" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.5 Roots" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_852.htm#zeroset_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.5 zeroset_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_851.htm#zeroset_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.5 zeroset_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,26 +82,24 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Quotient-1"></a>
-<h4 class="subsubsection">D.7.5.3 Quotient</h4>
-<a name="index-Quotient"></a>
-<p>Procedure from library <code>zeroset.lib</code> (see <a href="sing_852.htm#zeroset_005flib">zeroset_lib</a>).
+<a name="Remainder-1"></a>
+<h4 class="subsubsection">D.7.5.4 Remainder</h4>
+<a name="index-Remainder"></a>
+<p>Procedure from library <code>zeroset.lib</code> (see <a href="sing_851.htm#zeroset_005flib">zeroset_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>Quotient(f, g); where f,g are polynomials;
+<dd><p>Remainder(f, g); where f,g are polynomials
 </p>
 </dd>
 <dt><strong>Purpose:</strong></dt>
-<dd><p>compute the quotient q and remainder r s.t. f = g*q + r, deg(r) &lt; deg(g)
+<dd><p>compute the remainder of the division of f by g, i.e. a polynomial r
+s.t. f = g*q + r, deg(r) &lt; deg(g).
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>list of polynomials
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  _[1] = quotient  q
-  _[2] = remainder r
-  </pre></td></tr></table>
-
+<dd><p>poly
+</p>
 </dd>
 <dt><strong>Assume:</strong></dt>
 <dd><p>basering = Q[x] or Q(a)[x]
@@ -112,16 +110,10 @@ ul.toc {list-style: none}
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;zeroset.lib&quot;;
 ring R = (0,a), x, lp;
 minpoly = a2+1;
-poly f =  x4 - 2;
-poly g = x - a;
-list qr = Quotient(f, g);
-qr;
-&rarr; [1]:
-&rarr;    x3+(a)*x2-x+(-a)
-&rarr; [2]:
-&rarr;    0
-qr[1]*g + qr[2] - f;
-&rarr; 1
+poly f =  x4 - 1;
+poly g = x3 - 1;
+Remainder(f, g);
+&rarr; x-1
 </pre></td></tr></table>
 
 </td>
@@ -133,14 +125,14 @@ qr[1]*g + qr[2] - f;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_854.htm#Factor" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.5.2 Factor" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_856.htm#Remainder" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.4 Remainder" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_852.htm#zeroset_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.5 zeroset_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_854.htm#Quotient" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.5.3 Quotient" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_856.htm#Roots" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.5 Roots" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_851.htm#zeroset_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.5 zeroset_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

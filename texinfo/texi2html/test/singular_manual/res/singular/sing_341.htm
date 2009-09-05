@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: A.10 Elimination</title>
+<title>Singular 2-0-4 Manual: A.11 Free resolution</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: A.10 Elimination">
-<meta name="keywords" content="Singular 2-0-4 Manual: A.10 Elimination">
+<meta name="description" content="Singular 2-0-4 Manual: A.11 Free resolution">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.11 Free resolution">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Elimination"></a>
+<a name="Free-resolution"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_340.htm#Finite-fields" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.9 Finite fields" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_340.htm#Elimination" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.10 Elimination" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_342.htm#Free-resolution" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.11 Free resolution" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_342.htm#Computation-of-Ext" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.12 Computation of Ext" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,230 +82,191 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Elimination-1"></a>
-<h2 class="section">A.10 Elimination</h2>
-<a name="index-Elimination"></a>
+<a name="Free-resolution-1"></a>
+<h2 class="section">A.11 Free resolution</h2>
+<a name="index-Free-resolution"></a>
 
-<p>Elimination is the algebraic counterpart of the geometric concept of
-projection. If
-<!-- MATH
- $f=(f_1,\ldots,f_n):k^r\rightarrow k^n$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="173" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_180.png"
- ALT="$f=(f_1,\ldots,f_n):k^r\rightarrow k^n$"></SPAN>
-is a polynomial map,
-the Zariski-closure of the image is the zero-set of the ideal
-<BR><P></P>
-<DIV ALIGN="CENTER" CLASS="mathdisplay">
-<!-- MATH
- \begin{displaymath}
-\displaylines{
-j=J \cap k[x_1,\ldots,x_n], \;\quad\hbox{\rm where}\cr
-J=(x_1-f_1(t_1,\ldots,t_r),\ldots,x_n-f_n(t_1,\ldots,t_r))\subseteq
-k[t_1,\ldots,t_r,x_1,\ldots,x_n]
-}
-\end{displaymath}
- -->
-
-<IMG
- WIDTH="473" HEIGHT="49" BORDER="0"
- SRC="sing_181.png"
- ALT="\begin{displaymath}
-\displaylines{
-j=J \cap k[x_1,\ldots,x_n], \;\quad\hbox{\rm ...
-...n(t_1,\ldots,t_r))\subseteq
-k[t_1,\ldots,t_r,x_1,\ldots,x_n]
-}
-\end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P>
-i.e, of the ideal j obtained from J by eliminating the variables
-<!-- MATH
- $t_1,\ldots,t_r$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="60" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_182.png"
- ALT="$t_1,\ldots,t_r$"></SPAN>.
-This can be done by computing a standard basis of J with respect to a product
-ordering where the block of t-variables precedes the block of
-x-variables and then selecting those polynomials which do not contain
-any t. In <small>SINGULAR</small> the most convenient way is to use the
-<code>eliminate</code> command.
-In contrast to the first method, with <code>eliminate</code> the result needs not be a
-standard basis in the given ordering.
-Hence, there may be cases where the first method is the preferred one.
+<p>In <small>SINGULAR</small> a free resolution of a module or ideal has its own type:
+<code>resolution</code>. It is a structure that stores all information related to
+free resolutions. This allows partial computations of resolutions via
+the command <code>res</code>. After applying <code>res</code>, only a pre-format of the
+resolution is computed which allows to determine invariants like
+Betti-numbers or homological dimension. To see the differentials
+of the complex, a resolution must be converted into the type list which
+yields a list of modules: the k-th module in this
+list is the first syzygy-module (module of relations) of the (k-1)st module.
+There are the following commands to compute a resolution:
+</p><dl compact="compact">
+<dt><code>res</code></dt>
+<dd><p><a href="sing_263.htm#res">res</a><br>
+computes a free resolution of an ideal or module using a heuristically
+chosen method.
+This is the preferred method to compute free resolutions of ideals or
+modules.
+</p></dd>
+<dt><code>lres</code></dt>
+<dd><p><a href="sing_223.htm#lres">lres</a><br>
+computes a free resolution of an ideal or module with La Scala&rsquo;s
+method. The input needs to be homogeneous.
+</p></dd>
+<dt><code>mres</code></dt>
+<dd><p><a href="sing_232.htm#mres">mres</a><br>
+computes a minimal free resolution of an ideal or module with the syzygy
+method.
+</p></dd>
+<dt><code>sres</code></dt>
+<dd><p><a href="sing_273.htm#sres">sres</a><br>
+computes a free resolution of an ideal or module with Schreyer&rsquo;s
+method. The input has to be a standard basis.
+</p></dd>
+<dt><code>nres</code></dt>
+<dd><p><a href="sing_239.htm#nres">nres</a><br>
+computes a free resolution of an ideal or module with the standard basis
+method.
+</p></dd>
+<dt><code>minres</code></dt>
+<dd><p><a href="sing_228.htm#minres">minres</a><br>
+minimizes a free resolution of an ideal or module.
+</p></dd>
+<dt><code>syz</code></dt>
+<dd><p><a href="sing_280.htm#syz">syz</a><br>
+computes the first syzygy module.
+</p></dd>
+</dl>
+<p><code>res(i,r)</code>, <code>lres(i,r)</code>, <code>sres(i,r)</code>, <code>mres(i,r)</code>,
+<code>nres(i,r)</code> compute the first r modules of the resolution
+of i, resp. the full resolution if r=0 and the basering is not a qring.
+See the manual for a precise description of these commands.
+<br>Note: The command <code>betti</code> does not require a minimal
+resolution for the minimal betti numbers.
 </p>
-<p><strong>WARNING:</strong> In the case of a local or a mixed ordering, elimination needs special
-care. f may be considered as a map of germs
-<!-- MATH
- $f:(k^r,0)\rightarrow(k^n,0)$
- -->
+<p>Now let&rsquo;s look at an example which uses resolutions: The Hilbert-Burch
+theorem says that the ideal i of a reduced curve in
 <SPAN CLASS="MATH"><IMG
- WIDTH="130" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_183.png"
- ALT="$f:(k^r,0)\rightarrow(k^n,0)$"></SPAN>,
-but even
-if this map germ is finite, we are in general not able to compute the image
-germ because for this we would need an implementation of the Weierstrass
-preparation theorem. What we can compute, and what <code>eliminate</code> actually does,
-is the following: let V(J) be the zero-set of J in
-<!-- MATH
- $k^r\times(k^n,0)$
- -->
+ WIDTH="24" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_188.png"
+ ALT="$K^3$"></SPAN>
+has a free resolution of length 2 and that i is given by the 2x2 minors
+of the 2nd matrix in the resolution.
+We test this for two transversal cusps in
 <SPAN CLASS="MATH"><IMG
- WIDTH="78" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_184.png"
- ALT="$k^r\times(k^n,0)$"></SPAN>,
-then the
-closure of the image of V(J) under the projection
-<BR><P></P>
-<DIV ALIGN="CENTER" CLASS="mathdisplay">
-<!-- MATH
- \begin{displaymath}
-\hbox{pr}:k^r\times(k^n,0)\rightarrow(k^n,0)
-\end{displaymath}
- -->
-
-<IMG
- WIDTH="166" HEIGHT="26" BORDER="0"
- SRC="sing_185.png"
- ALT="\begin{displaymath}\hbox{pr}:k^r\times(k^n,0)\rightarrow(k^n,0)\end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P>
-can be computed.
-Note that this germ contains also those components
-of V(J) which meet the fiber of pr outside the origin.
-This is achieved by an ordering with the block of t-variables having a
-global ordering (and preceding the x-variables) and the x-variables having
-a local ordering. In a local situation we propose <code>eliminate</code> with
-ordering ls.
-</p>
-<p>In any case, if the input is weighted homogeneous (=quasihomogeneous),
-the weights given to the variables should be chosen accordingly.
-<small>SINGULAR</small> offers a function <code>weight</code> which proposes,
-given an ideal or module, integer weights for the variables, such that
-the ideal, resp. module, is as homogeneous as possible with respect to these weights.
-The function finds correct weights, if the input is weighted homogeneous
-(but is rather slow for many variables). In order to check, whether the
-input is quasihomogeneous, use the function <code>qhweight</code>, which returns
-an intvec of correct weights if the input is quasihomogeneous and an intvec
-of zeros otherwise.
-</p>
-<p>Let us give two examples:
-</p><ol>
-<li>
-First we compute the equations of the simple space curve
-<!-- MATH
- $\hbox{T}[7]^\prime$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="34" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_186.png"
- ALT="$\hbox{T}[7]^\prime$"></SPAN>
-   consisting of two tangential cusps given in parametric form.
-</li><li>
-We compute weights for the equations such that the
-   equations are quasihomogeneous w.r.t. these weights.
-</li><li>
-Then we compute the tangent developable of the rational
-   normal curve in
+ WIDTH="24" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_188.png"
+ ALT="$K^3$"></SPAN>.
+Afterwards we compute the resolution of the ideal j of the tangent developable
+of the rational normal curve in
 <SPAN CLASS="MATH"><IMG
  WIDTH="21" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
  SRC="sing_187.png"
- ALT="$P^4$"></SPAN>.
-</li></ol>
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  // 1. Compute equations of curve given in parametric form:
-  // Two transversal cusps in (k^3,0):
-  ring r1 = 0,(t,x,y,z),ls;
-  ideal i1 = x-t2,y-t3,z;        // parametrization of the first branch
-  ideal i2 = y-t2,z-t3,x;        // parametrization of the second branch
-  ideal j1 = eliminate(i1,t);
-  j1;                            // equations of the first branch
-&rarr; j1[1]=z
-&rarr; j1[2]=y2-x3
-  ideal j2 = eliminate(i2,t);
-  j2;                            // equations of the second branch
-&rarr; j2[1]=x
-&rarr; j2[2]=z2-y3
-  // Now map to a ring with only x,y,z as variables and compute the
-  // intersection of j1 and j2 there:
-  ring r2 = 0,(x,y,z),ds;
-  ideal j1= imap(r1,j1);         // imap is a convenient ringmap for
-  ideal j2= imap(r1,j2);         // inclusions and projections of rings
-  ideal i = intersect(j1,j2);
-  i;                             // equations of both branches
-&rarr; i[1]=z2-y3+x3y
-&rarr; i[2]=xz
-&rarr; i[3]=xy2-x4
-&rarr; i[4]=x3z
-  //
-  // 2. Compute the weights:
-  intvec v= qhweight(i);         // compute weights
-  v;
-&rarr; 4,6,9
-  //
-  // 3. Compute the tangent developable
-  // The tangent developable of a projective variety given parametrically
-  // by F=(f1,...,fn) : P^r --&gt; P^n is the union of all tangent spaces
-  // of the image. The tangent space at a smooth point F(t1,...,tr)
-  // is given as the image of the tangent space at (t1,...,tr) under
-  // the tangent map (affine coordinates)
-  //   T(t1,...,tr): (y1,...,yr) --&gt; jacob(f)*transpose((y1,...,yr))
-  // where jacob(f) denotes the jacobian matrix of f with respect to the
-  // t's evaluated at the point (t1,...,tr).
-  // Hence we have to create the graph of this map and then to eliminate
-  // the t's and y's.
-  // The rational normal curve in P^4 is given as the image of
-  //        F(s,t) = (s4,s3t,s2t2,st3,t4)
-  // each component being homogeneous of degree 4.
-  ring P = 0,(s,t,x,y,a,b,c,d,e),dp;
-  ideal M = maxideal(1);
-  ideal F = M[1..2];     // take the 1st two generators of M
-  F=F^4;
-  // simplify(...,2); deletes 0-columns
-  matrix jac = simplify(jacob(F),2);
-  ideal T = x,y;
-  ideal J = jac*transpose(T);
-  ideal H = M[5..9];
-  ideal i = H-J;         // this is tricky: difference between two
-                         // ideals is not defined, but between two
-                         // matrices. By automatic type conversion
-                         // the ideals are converted to matrices,
-                         // subtracted and afterwards converted
-                         // to an ideal. Note that '+' is defined
-                         // and adds (concatenates) two ideals
-  i;
-&rarr; i[1]=-4s3x+a
-&rarr; i[2]=-3s2tx-s3y+b
-&rarr; i[3]=-2st2x-2s2ty+c
-&rarr; i[4]=-t3x-3st2y+d
-&rarr; i[5]=-4t3y+e
-  // Now we define a ring with product ordering and weights 4
-  // for the variables a,...,e.
-  // Then we map i from P to P1 and eliminate s,t,x,y from i.
-  ring P1 = 0,(s,t,x,y,a,b,c,d,e),(dp(4),wp(4,4,4,4,4));
-  ideal i = fetch(P,i);
-  ideal j= eliminate(i,stxy);    // equations of tangent developable
-  j;
-&rarr; j[1]=3c2-4bd+ae
-&rarr; j[2]=2bcd-3ad2-3b2e+4ace
-&rarr; j[3]=8b2d2-9acd2-9b2ce+12ac2e-2abde
-  // We can use the product ordering to eliminate s,t,x,y from i
-  // by a std-basis computation.
-  // We need proc 'nselect' from elim.lib.
-  LIB &quot;elim.lib&quot;;
-  j = std(i);                    // compute a std basis j
-  j = nselect(j,1,4);            // select generators from j not
-  j;                             // containing variable 1,...,4
-&rarr; j[1]=3c2-4bd+ae
-&rarr; j[2]=2bcd-3ad2-3b2e+4ace
-&rarr; j[3]=8b2d2-9acd2-9b2ce+12ac2e-2abde
+ ALT="$P^4$"></SPAN>
+from above.
+Finally we demonstrate the use of the type <code>resolution</code> in connection with
+the <code>lres</code> command.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  // Two transversal cusps in (k^3,0):
+  ring r2 =0,(x,y,z),ds;
+  ideal i =z2-1y3+x3y,xz,-1xy2+x4,x3z;
+  resolution rs=mres(i,0);   // computes a minimal resolution
+  rs;                        // the standard representation of complexes
+&rarr;   1       3       2       
+&rarr; r2 &lt;--  r2 &lt;--  r2
+&rarr; 
+&rarr; 0       1       2       
+&rarr; 
+    list resi=rs;            // convertion to a list
+  print(resi[1]);            // the 1st module is i minimized
+&rarr; xz,
+&rarr; z2-y3+x3y,
+&rarr; xy2-x4
+  print(resi[2]);            // the 1st syzygy module of i
+&rarr; -z,-y2+x3,
+&rarr; x, 0,     
+&rarr; y, z      
+  resi[3];                   // the 2nd syzygy module of i
+&rarr; _[1]=0
+  ideal j=minor(resi[2],2);
+  reduce(j,std(i));          // check whether j is contained in i
+&rarr; _[1]=0
+&rarr; _[2]=0
+&rarr; _[3]=0
+  size(reduce(i,std(j)));    // check whether i is contained in j
+&rarr; 0
+  // size(&lt;ideal&gt;) counts the non-zero generators
+  // ---------------------------------------------
+  // The tangent developable of the rational normal curve in P^4:
+  ring P = 0,(a,b,c,d,e),dp;
+  ideal j= 3c2-4bd+ae, -2bcd+3ad2+3b2e-4ace,
+           8b2d2-9acd2-9b2ce+9ac2e+2abde-1a2e2;
+  resolution rs=mres(j,0);
+  rs;
+&rarr;  1      2      1      
+&rarr; P &lt;--  P &lt;--  P
+&rarr; 
+&rarr; 0      1      2      
+&rarr; 
+  list L=rs;
+  print(L[2]);
+&rarr; 2bcd-3ad2-3b2e+4ace,
+&rarr; -3c2+4bd-ae         
+  // create an intmat with graded betti numbers
+  intmat B=betti(rs);
+  // this gives a nice output of betti numbers
+  print(B,&quot;betti&quot;);
+&rarr;            0     1     2
+&rarr; ------------------------
+&rarr;     0:     1     -     -
+&rarr;     1:     -     1     -
+&rarr;     2:     -     1     -
+&rarr;     3:     -     -     1
+&rarr; ------------------------
+&rarr; total:     1     2     1
+  // the user has access to all betti numbers
+  // the 2-nd column of B:
+  B[1..4,2];
+&rarr; 0 1 1 0
+  ring cyc5=32003,(a,b,c,d,e,h),dp;
+  ideal i=
+  a+b+c+d+e,
+  ab+bc+cd+de+ea,
+  abc+bcd+cde+dea+eab,
+  abcd+bcde+cdea+deab+eabc,
+  h5-abcde;
+  resolution rs=lres(i,0);   //computes the resolution according La Scala
+  rs;                        //the shape of the minimal resolution
+&rarr;     1         5         10         10         5         1         
+&rarr; cyc5 &lt;--  cyc5 &lt;--  cyc5 &lt;--   cyc5 &lt;--   cyc5 &lt;--  cyc5
+&rarr; 
+&rarr; 0         1         2          3          4         5         
+&rarr; resolution not minimized yet
+&rarr; 
+  print(betti(rs),&quot;betti&quot;);  //shows the Betti-numbers of cyclic 5
+&rarr;            0     1     2     3     4     5
+&rarr; ------------------------------------------
+&rarr;     0:     1     1     -     -     -     -
+&rarr;     1:     -     1     1     -     -     -
+&rarr;     2:     -     1     1     -     -     -
+&rarr;     3:     -     1     2     1     -     -
+&rarr;     4:     -     1     2     1     -     -
+&rarr;     5:     -     -     2     2     -     -
+&rarr;     6:     -     -     1     2     1     -
+&rarr;     7:     -     -     1     2     1     -
+&rarr;     8:     -     -     -     1     1     -
+&rarr;     9:     -     -     -     1     1     -
+&rarr;    10:     -     -     -     -     1     1
+&rarr; ------------------------------------------
+&rarr; total:     1     5    10    10     5     1
+  dim(rs);                   //the homological dimension
+&rarr; 4
+  size(list(rs));            //gets the full (non-reduced) resolution
+&rarr; 6
+  minres(rs);                //minimizes the resolution
+&rarr;     1         5         10         10         5         1         
+&rarr; cyc5 &lt;--  cyc5 &lt;--  cyc5 &lt;--   cyc5 &lt;--   cyc5 &lt;--  cyc5
+&rarr; 
+&rarr; 0         1         2          3          4         5         
+&rarr; 
+  size(list(rs));            //gets the minimized resolution
+&rarr; 6
 </pre></td></tr></table>
 
 
@@ -318,14 +279,14 @@ Then we compute the tangent developable of the rational
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_340.htm#Finite-fields" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.9 Finite fields" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_342.htm#Free-resolution" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.11 Free resolution" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_340.htm#Elimination" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.10 Elimination" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_342.htm#Computation-of-Ext" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.12 Computation of Ext" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

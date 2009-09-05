@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.4.12 tmatrix</title>
+<title>Singular 2-0-4 Manual: D.5.4.13 endvfilt</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.4.12 tmatrix">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.4.12 tmatrix">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.4.13 endvfilt">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.4.13 endvfilt">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="tmatrix"></a>
+<a name="endvfilt"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_669.htm#vwfilt" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.4.11 vwfilt" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_669.htm#tmatrix" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.4.12 tmatrix" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_671.htm#endvfilt" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.4.13 endvfilt" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_671.htm#spprint" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.4.14 spprint" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_658.htm#gaussman_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.4 gaussman_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_657.htm#gaussman_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.4 gaussman_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,89 +82,91 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="tmatrix-1"></a>
-<h4 class="subsubsection">D.5.4.12 tmatrix</h4>
-<a name="index-tmatrix"></a>
-<p>Procedure from library <code>gaussman.lib</code> (see <a href="sing_658.htm#gaussman_005flib">gaussman_lib</a>).
+<a name="endvfilt-1"></a>
+<h4 class="subsubsection">D.5.4.13 endvfilt</h4>
+<a name="index-endvfilt"></a>
+<p>Procedure from library <code>gaussman.lib</code> (see <a href="sing_657.htm#gaussman_005flib">gaussman_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>tmatrix(t); poly t
+<dd><p>endvfilt(v); list v
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>characteristic 0; local degree ordering;
-<br>isolated critical point 0 of t
+<dd><p>v returned by vfilt
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list l=A0,A1,T,M;
-  matrix A0,A1;  t=A0+s*A1+s^2*(d/ds) on H&rdquo; w.r.t. C[[s]]-basis M*T
-  module T;  C-basis of C^mu
-  ideal M;  monomial C-basis of H&rdquo;/sH&rdquo;
+<dd><table><tr><td>&nbsp;</td><td><pre class="format">list ev;  V-filtration on Jacobian algebra
+  ideal ev[1];
+    number ev[1][i];  i-th V-filtration index
+  intvec ev[2];
+    int ev[2][i];  i-th multiplicity
+  list ev[3];
+    module ev[3][i];  vector space of i-th graded part in terms of ev[4]
+  ideal ev[4];  monomial vector space basis of Jacobian algebra
+  ideal ev[5];  standard basis of Jacobian ideal
 </pre></td></tr></table>
 
-<a name="index-singularities-10"></a>
-<a name="index-Gauss_002dManin-connection-11"></a>
-<a name="index-Brieskorn-lattice-10"></a>
-<a name="index-mixed-Hodge-structure-5"></a>
-<a name="index-opposite-Hodge-filtration"></a>
-<a name="index-V_002dfiltration-5"></a>
+<a name="index-singularities-11"></a>
+<a name="index-Gauss_002dManin-connection-12"></a>
+<a name="index-Brieskorn-lattice-11"></a>
+<a name="index-mixed-Hodge-structure-6"></a>
+<a name="index-V_002dfiltration-6"></a>
+<a name="index-endomorphism-filtration"></a>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;gaussman.lib&quot;;
 ring R=0,(x,y),ds;
 poly t=x5+x2y2+y5;
-list A=tmatrix(t);
-print(A[1]);
-&rarr; 0,0,0,0,0,0,0,0,0,0,0,
-&rarr; 0,0,0,0,0,0,0,0,0,0,0,
-&rarr; 0,0,0,0,0,0,0,0,0,0,0,
-&rarr; 0,0,0,0,0,0,0,0,0,0,0,
-&rarr; 0,0,0,0,0,0,0,0,0,0,0,
-&rarr; 0,0,0,0,0,0,0,0,0,0,0,
-&rarr; 0,0,0,0,0,0,0,0,0,0,0,
-&rarr; 0,0,0,0,0,0,0,0,0,0,0,
-&rarr; 0,0,0,0,0,0,0,0,0,0,0,
-&rarr; 0,0,0,0,0,0,0,0,0,0,0,
-&rarr; 1,0,0,0,0,0,0,0,0,0,0 
-print(A[2]);
-&rarr; 1/2,0,   0,   0,   0,   0,0,    0,    0,    0,    0, 
-&rarr; 0,  7/10,0,   0,   0,   0,0,    0,    0,    0,    0, 
-&rarr; 0,  0,   7/10,0,   0,   0,0,    0,    0,    0,    0, 
-&rarr; 0,  0,   0,   9/10,0,   0,0,    0,    0,    0,    0, 
-&rarr; 0,  0,   0,   0,   9/10,0,0,    0,    0,    0,    0, 
-&rarr; 0,  0,   0,   0,   0,   1,0,    0,    0,    0,    0, 
-&rarr; 0,  0,   0,   0,   0,   0,11/10,0,    0,    0,    0, 
-&rarr; 0,  0,   0,   0,   0,   0,0,    11/10,0,    0,    0, 
-&rarr; 0,  0,   0,   0,   0,   0,0,    0,    13/10,0,    0, 
-&rarr; 0,  0,   0,   0,   0,   0,0,    0,    0,    13/10,0, 
-&rarr; 0,  0,   0,   0,   0,   0,0,    0,    0,    0,    3/2
-print(A[3]);
-&rarr; -1445/64,0,  0,  0,0,85/8,0,0,0,0,1/2,
-&rarr; 0,       125,0,  0,0,0,   0,0,1,0,0,  
-&rarr; 0,       0,  0,  5,0,0,   1,0,0,0,0,  
-&rarr; 0,       0,  0,  0,4,0,   0,0,0,0,0,  
-&rarr; 2,       0,  0,  0,0,1,   0,0,0,0,0,  
-&rarr; 0,       0,  16, 0,0,0,   0,0,0,0,0,  
-&rarr; 0,       0,  125,0,0,0,   0,0,0,1,0,  
-&rarr; 0,       0,  0,  0,5,0,   0,1,0,0,0,  
-&rarr; 0,       0,  0,  4,0,0,   0,0,0,0,0,  
-&rarr; 0,       16, 0,  0,0,0,   0,0,0,0,0,  
-&rarr; -1,      0,  0,  0,0,0,   0,0,0,0,0   
-print(A[4]);
-&rarr; y5,
-&rarr; y4,
-&rarr; y3,
-&rarr; y2,
-&rarr; xy,
-&rarr; y,
-&rarr; x4,
-&rarr; x3,
-&rarr; x2,
-&rarr; x,
-&rarr; 1
+endvfilt(vfilt(t));
+&rarr; [1]:
+&rarr;    _[1]=0
+&rarr;    _[2]=1/5
+&rarr;    _[3]=2/5
+&rarr;    _[4]=1/2
+&rarr;    _[5]=3/5
+&rarr;    _[6]=4/5
+&rarr;    _[7]=1
+&rarr; [2]:
+&rarr;    1,2,2,1,2,2,1
+&rarr; [3]:
+&rarr;    [1]:
+&rarr;       _[1]=gen(11)
+&rarr;    [2]:
+&rarr;       _[1]=gen(10)
+&rarr;       _[2]=gen(6)
+&rarr;    [3]:
+&rarr;       _[1]=gen(9)
+&rarr;       _[2]=gen(4)
+&rarr;    [4]:
+&rarr;       _[1]=gen(5)
+&rarr;    [5]:
+&rarr;       _[1]=gen(8)
+&rarr;       _[2]=gen(3)
+&rarr;    [6]:
+&rarr;       _[1]=gen(7)
+&rarr;       _[2]=gen(2)
+&rarr;    [7]:
+&rarr;       _[1]=gen(1)
+&rarr; [4]:
+&rarr;    _[1]=y5
+&rarr;    _[2]=y4
+&rarr;    _[3]=y3
+&rarr;    _[4]=y2
+&rarr;    _[5]=xy
+&rarr;    _[6]=y
+&rarr;    _[7]=x4
+&rarr;    _[8]=x3
+&rarr;    _[9]=x2
+&rarr;    _[10]=x
+&rarr;    _[11]=1
+&rarr; [5]:
+&rarr;    _[1]=2x2y+5y4
+&rarr;    _[2]=2xy2+5x4
+&rarr;    _[3]=5x5-5y5
+&rarr;    _[4]=10y6+25x3y4
 </pre></td></tr></table>
 
 </td>
@@ -176,14 +178,14 @@ print(A[4]);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_669.htm#vwfilt" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.4.11 vwfilt" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_671.htm#endvfilt" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.4.13 endvfilt" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_658.htm#gaussman_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.4 gaussman_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_669.htm#tmatrix" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.4.12 tmatrix" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_671.htm#spprint" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.4.14 spprint" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_657.htm#gaussman_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.4 gaussman_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

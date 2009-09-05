@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.12 dbprint</title>
+<title>Singular 2-0-4 Manual: 5.1.13 defined</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.12 dbprint">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.12 dbprint">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.13 defined">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.13 defined">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="dbprint"></a>
+<a name="defined"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_166.htm#contract" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.11 contract" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_166.htm#dbprint" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.12 dbprint" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_168.htm#defined" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.13 defined" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_168.htm#deg" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.14 deg" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,57 +84,52 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="dbprint-1"></a>
-<h3 class="subsection">5.1.12 dbprint</h3>
-<a name="index-dbprint"></a>
+<a name="defined-1"></a>
+<h3 class="subsection">5.1.13 defined</h3>
+<a name="index-defined"></a>
+
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>dbprint (</code> int_expression<code>,</code> expression_list <code>)</code>
+<dd><p><code>defined (</code> name <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>none
+<dd><p>int
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>applies the print command to each expression in the expression_list if
-int_expression is positive.
-<code>dbprint</code> may also be used in procedures
-in order to print results subject to certain
-conditions.
-</p></dd>
-<dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>dbprint (</code> expression <code>)</code>
-</p></dd>
-<dt><code><strong>Type:</strong></code></dt>
-<dd><p>none
-</p></dd>
-<dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>The print command is applied to the expression
-if <code>printlevel&gt;=voice</code>.
+<dd><p>returns a value &lt;&gt;0 (TRUE) if there is a user-defined object with this name,
+and 0 (FALSE) otherwise.
+<br>A non-zero return value is the level where the object is defined (level
+1 denotes the top level, level 2 the level of a first procedure, level 3
+the level of a procedure called by a first procedure, etc.). For ring
+variables, -1 is returned.
 </p></dd>
 <dt><code><strong>Note:</strong></code></dt>
-<dd><p>See <a href="sing_49.htm#Guidelines-for-writing-a-library">Guidelines for writing a library</a>, for an example how this is used
-for displaying comments while procedures are executed.
+<dd><p>A local object <code>m</code> may be identified by <code>if
+(defined(m)==voice)</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  int debug=0;
-  intvec i=1,2,3;
-  dbprint(debug,i);
-  debug=1;
-  dbprint(debug,i);
-&rarr; 1,2,3
-  voice;
-&rarr; 1
-  printlevel;
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=(0,t),(x,y),dp;
+  matrix m[5][6]=x,y,1,2,0,x+y;
+  defined(mm);
 &rarr; 0
-  dbprint(i);
+  defined(r) and defined(m);
+&rarr; 1
+  defined(m)==voice;   // m is defined in the current level
+&rarr; 1
+  defined(x);
+&rarr; -1
+  defined(z);
+&rarr; 0
+  defined(t);
+&rarr; -1
+  defined(42);
+&rarr; -1
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_60.htm#Debugging-tools">Debugging tools</a>;
-<a href="sing_252.htm#print">print</a>;
-<a href="sing_313.htm#printlevel">printlevel</a>;
-<a href="sing_318.htm#voice">voice</a>.
+<a href="sing_266.htm#rvar">rvar</a>;
+<a href="sing_317.htm#voice">voice</a>.
 </p></td>
 </tr>
 </table>
@@ -144,14 +139,14 @@ for displaying comments while procedures are executed.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_166.htm#contract" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.11 contract" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_168.htm#defined" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.13 defined" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_166.htm#dbprint" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.12 dbprint" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_168.htm#deg" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.14 deg" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

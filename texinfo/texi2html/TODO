@@ -3,14 +3,25 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
-* sectionning/nodes_test html style, the @top and the @node Top, 
-  although distinct nodes end up in the same element. I think that 
-  there is a FIXME in the code covering that issue.
+* out_html/nodes_test/lop.html there should not be a Top in the 
+  heading.
 
-* in sectionning, test of nodes_after_top_before_section not split
-  at chapter. It is split at a node because top node is always considered
-  as an element. there is a FIXME in the code. Maybe linked with the 
-  previous item.
+* in _html, the @top is always output, even if there is a @titlefont.
+  it is certainly right, the @titlefont should not take the place of 
+  a @top.
+
+* settitle is used in <link href="#Top" rel="start" title="title &ndash;a">
+  (formatting.texi), not the @top. Maybe it is right, maybe not.
+  It is because $top_simple_format is used for 
+  $Texi2HTML::SIMPLE_TEXT{'Top'}
+  it should be rechecked.
+
+* in sectionning, test nodes_after_top_before_section_use_nodes_chapter 
+  not split at chapter. It is split at nodes although top node is not 
+  always considered as an element. out_html is much better, since at least
+  one of the nodes is associated with the section, but the @node Top is
+  still considered as a separate element -- which could even be considered
+  to be right.
 
 * add --command command line that gives inserted lines.
 

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.6.1 changechar</title>
+<title>Singular 2-0-4 Manual: D.2.6.2 changeord</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.6.1 changechar">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.6.1 changechar">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.6.2 changeord">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.6.2 changeord">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="changechar"></a>
+<a name="changeord"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_461.htm#ring_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.6 ring_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_461.htm#changechar" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.6.1 changechar" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_463.htm#changeord" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.6.2 changeord" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_463.htm#changevar" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.6.3 changevar" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_461.htm#ring_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.6 ring_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_460.htm#ring_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.6 ring_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,22 +82,22 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="changechar-1"></a>
-<h4 class="subsubsection">D.2.6.1 changechar</h4>
-<a name="index-changechar"></a>
-<p>Procedure from library <code>ring.lib</code> (see <a href="sing_461.htm#ring_005flib">ring_lib</a>).
+<a name="changeord-1"></a>
+<h4 class="subsubsection">D.2.6.2 changeord</h4>
+<a name="index-changeord"></a>
+<p>Procedure from library <code>ring.lib</code> (see <a href="sing_460.htm#ring_005flib">ring_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>changechar(newr,c[,r]); newr,c=strings, r=ring
+<dd><p>changeord(newr,o[,r]); newr,o=strings, r=ring/qring
 </p>
 </dd>
 <dt><strong>Create:</strong></dt>
 <dd><p>create a new ring with name &lsquo;newr&lsquo; and make it the basering if r is
-an existing ring [default: r=basering].
-<br>The new ring differs from the old ring only in the characteristic.
-If, say, (newr,c) = (&quot;R&quot;,&quot;0,A&quot;) and the ring r exists, the new
-basering will have name R, characteristic 0 and one parameter A.
+an existing ring/qring [default: r=basering].
+<br>The new ring differs from the old ring only in the ordering. If, say,
+(newr,o) = (&quot;R&quot;,&quot;wp(2,3),dp&quot;) and the ring r exists and has &gt;=3
+variables, the new basering will have name R and ordering wp(2,3),dp.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
@@ -105,8 +105,7 @@ basering will have name R, characteristic 0 and one parameter A.
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>Works for qrings if map from old_char to new_char is implemented
-This proc uses &rsquo;execute&rsquo; or calls a procedure using &rsquo;execute&rsquo;.
+<dd><p>This proc uses &rsquo;execute&rsquo; or calls a procedure using &rsquo;execute&rsquo;.
 If you use it in your own proc, let the local names of your proc
 start with @.
 </p>
@@ -115,33 +114,36 @@ start with @.
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;ring.lib&quot;;
 ring r=0,(x,y,u,v),(dp(2),ds);
-changechar(&quot;R&quot;,&quot;2,A&quot;); R;&quot;&quot;;
+changeord(&quot;R&quot;,&quot;wp(2,3),dp&quot;); R; &quot;&quot;;
 &rarr; // basering is now R
-&rarr; //   characteristic : 2
-&rarr; //   1 parameter    : A 
-&rarr; //   minpoly        : 0
+&rarr; //   characteristic : 0
 &rarr; //   number of vars : 4
-&rarr; //        block   1 : ordering dp
+&rarr; //        block   1 : ordering wp
 &rarr; //                  : names    x y 
-&rarr; //        block   2 : ordering ds
+&rarr; //                  : weights  2 3 
+&rarr; //        block   2 : ordering dp
 &rarr; //                  : names    u v 
 &rarr; //        block   3 : ordering C
 &rarr; 
-changechar(&quot;R1&quot;,&quot;32003&quot;,R); R1;
-&rarr; // basering is now R1
-&rarr; //   characteristic : 32003
+ideal i = x^2,y^2-u^3,v;
+qring Q = std(i);
+changeord(&quot;Q'&quot;,&quot;lp&quot;,Q); Q';
+&rarr; // basering is now Q'
+&rarr; //   characteristic : 0
 &rarr; //   number of vars : 4
-&rarr; //        block   1 : ordering dp
-&rarr; //                  : names    x y 
-&rarr; //        block   2 : ordering ds
-&rarr; //                  : names    u v 
-&rarr; //        block   3 : ordering C
-kill R,R1;
+&rarr; //        block   1 : ordering lp
+&rarr; //                  : names    x y u v 
+&rarr; //        block   2 : ordering C
+&rarr; // quotient ring from ideal
+&rarr; _[1]=v
+&rarr; _[2]=x2
+&rarr; _[3]=y2-u3
+kill R,Q,Q';
 if(system(&quot;with&quot;,&quot;Namespaces&quot;)) {
 if( nameof(Current) == &quot;Ring&quot; ) {
-kill Top::R,Top::R1;
+kill Top::R,Top::Q';
 } else {
-kill Ring::R,Ring::R1;
+kill Ring::R,Ring::Q';
 }
 }
 </pre></td></tr></table>
@@ -155,14 +157,14 @@ kill Ring::R,Ring::R1;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_461.htm#ring_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.6 ring_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_463.htm#changeord" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.6.2 changeord" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_461.htm#ring_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.6 ring_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_461.htm#changechar" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.6.1 changechar" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_463.htm#changevar" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.6.3 changevar" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_460.htm#ring_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.6 ring_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

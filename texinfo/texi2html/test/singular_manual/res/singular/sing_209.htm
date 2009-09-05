@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.54 jacob</title>
+<title>Singular 2-0-4 Manual: 5.1.55 jet</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.54 jacob">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.54 jacob">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.55 jet">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.55 jet">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="jacob"></a>
+<a name="jet"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_208.htm#intersect" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.53 intersect" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_208.htm#jacob" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.54 jacob" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_210.htm#jet" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.55 jet" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_210.htm#kbase" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.56 kbase" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,42 +82,82 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="jacob-1"></a>
-<h3 class="subsection">5.1.54 jacob</h3>
-<a name="index-jacob"></a>
+<a name="jet-1"></a>
+<h3 class="subsection">5.1.55 jet</h3>
+<a name="index-jet"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>jacob (</code> poly_expression <code>)</code>
-<br><code>jacob (</code> ideal_expression <code>)</code>
+<dd><p><code>jet (</code> poly_expression<code>,</code> int_expression <code>)</code>
+<br><code>jet (</code> vector_expression<code>,</code> int_expression <code>)</code>
+<br><code>jet (</code> ideal_expression<code>,</code> int_expression <code>)</code>
+<br><code>jet (</code> module_expression<code>,</code> int_expression <code>)</code>
+<br><code>jet (</code> poly_expression<code>,</code> int_expression<code>,</code> intvec_expression <code>)</code>
+<br><code>jet (</code> vector_expression<code>,</code> int_expression<code>,</code> intvec_expression <code>)</code>
+<br><code>jet (</code> ideal_expression<code>,</code> int_expression<code>,</code> intvec_expression <code>)</code>
+<br><code>jet (</code> module_expression<code>,</code> int_expression<code>,</code> intvec_expression <code>)</code>
+<br><code>jet (</code> poly_expression<code>,</code> int_expression<code>,</code> poly_expression <code>)</code>
+<br><code>jet (</code> vector_expression<code>,</code> int_expression<code>,</code> poly_expression <code>)</code>
+<br><code>jet (</code> ideal_expression<code>,</code> int_expression<code>,</code> matrix_expression <code>)</code>
+<br><code>jet (</code> module_expression<code>,</code> int_expression<code>,</code> matrix_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>ideal, if the input is a polynomial
-<br> matrix, if the input is an ideal
+<dd><p>the same as the type of the first argument
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>computes the Jacobi ideal, resp. Jacobi matrix, generated by all
-partial derivatives of the input.
+<dd><p>deletes from the first argument all terms of degree bigger than the second argument.
+<br>If a third argument <code>w</code> of type intvec is given, the degree is replaced by the weighted degree defined by <code>w</code>.
+<br>If a third argument <code>u</code> of type poly or matrix is given, the first argument <code>p</code> is replaced by <code>p/u</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R;
-  poly f=x2+y3+z5;
-  jacob(f);
-&rarr; _[1]=2x
-&rarr; _[2]=3y2
-&rarr; _[3]=5z4
-  ideal i=jacob(f);
-  print(jacob(i));
-&rarr; 2,0, 0,  
-&rarr; 0,6y,0,  
-&rarr; 0,0, 20z3
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(c,dp);
+  jet(1+x+x2+x3+x4,3);
+&rarr; x3+x2+x+1
+  poly f=1+x+x2+xz+y2+x3+y3+x2y2+z4;
+  jet(f,3);
+&rarr; x3+y3+x2+y2+xz+x+1
+  intvec iv=2,1,1;
+  jet(f,3,iv);
+&rarr; y3+y2+xz+x+1
+  // the part of f with (total) degree &gt;3:
+  f-jet(f,3);
+&rarr; x2y2+z4
+  // the homogeneous part of f of degree 2:
+  jet(f,2)-jet(f,1);
+&rarr; x2+y2+xz
+  // the part of maximal degree:
+  jet(f,deg(f))-jet(f,deg(f)-1);
+&rarr; x2y2+z4
+  // the absolute term of f:
+  jet(f,0);
+&rarr; 1
+  // now for other types:
+  ideal i=f,x,f*f;
+  jet(i,2);
+&rarr; _[1]=x2+y2+xz+x+1
+&rarr; _[2]=x
+&rarr; _[3]=3x2+2y2+2xz+2x+1
+  vector v=[f,1,x];
+  jet(v,1);
+&rarr; [x+1,1,x]
+  jet(v,0);
+&rarr; [1,1]
+  v=[f,1,0];
+  module m=v,v,[1,x2,z3,0,1];
+  jet(m,2);
+&rarr; _[1]=[x2+y2+xz+x+1,1]
+&rarr; _[2]=[x2+y2+xz+x+1,1]
+&rarr; _[3]=[1,x2,0,0,1]
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_173.htm#diff">diff</a>;
-<a href="sing_69.htm#ideal">ideal</a>;
-<a href="sing_116.htm#module">module</a>;
-<a href="sing_242.htm#nvars">nvars</a>.
+<a href="sing_168.htm#deg">deg</a>;
+<a href="sing_68.htm#ideal">ideal</a>;
+<a href="sing_73.htm#int">int</a>;
+<a href="sing_86.htm#intvec">intvec</a>;
+<a href="sing_115.htm#module">module</a>;
+<a href="sing_125.htm#poly">poly</a>;
+<a href="sing_148.htm#vector">vector</a>.
 </p></td>
 </tr>
 </table>
@@ -127,14 +167,14 @@ partial derivatives of the input.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_208.htm#intersect" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.53 intersect" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_210.htm#jet" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.55 jet" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_208.htm#jacob" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.54 jacob" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_210.htm#kbase" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.56 kbase" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

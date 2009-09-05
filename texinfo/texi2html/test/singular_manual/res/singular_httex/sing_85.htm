@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.4.4 intmat operations</title>
+<title>Singular 2-0-4 Manual: 4.4.5 intmat related functions</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.4.4 intmat operations">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.4.4 intmat operations">
+<meta name="description" content="Singular 2-0-4 Manual: 4.4.5 intmat related functions">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.4.5 intmat related functions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="intmat-operations"></a>
+<a name="intmat-related-functions"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_84.htm#intmat-type-cast" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.4.3 intmat type cast" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_84.htm#intmat-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.4.4 intmat operations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_86.htm#intmat-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.4.5 intmat related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_86.htm#intvec" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.5 intvec" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_81.htm#intmat" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.4 intmat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_80.htm#intmat" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.4 intmat" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,79 +84,36 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="intmat-operations-1"></a>
-<h3 class="subsection">4.4.4 intmat operations</h3>
-<a name="index-intmat-operations"></a>
+<a name="intmat-related-functions-1"></a>
+<h3 class="subsection">4.4.5 intmat related functions</h3>
+<a name="index-intmat-related-functions"></a>
 
 <dl compact="compact">
-<dt><code>+</code></dt>
-<dd><p>addition with intmat or int; the int is converted into a diagonal intmat
-</p>
-</dd>
-<dt><code>-</code></dt>
-<dd><p>negation or subtraction with intmat or int; the int is converted into a
-diagonal intmat
-</p>
-</dd>
-<dt><code>*</code></dt>
-<dd><p>multiplication with intmat, intvec, or int; the int is converted into a
-diagonal intmat
-</p>
-</dd>
-<dt><code>div,/</code></dt>
-<dd><p>division of entries in the integers (omitting the remainder)
+<dt><code>betti</code></dt>
+<dd><p>Betti numbers of a free resolution (see <a href="sing_157.htm#betti">betti</a>)
 </p></dd>
-<dt><code>%, mod</code></dt>
-<dd><p>entries modulo int (remainder of the division)
+<dt><code>det</code></dt>
+<dd><p>determinant (see <a href="sing_171.htm#det">det</a>)
 </p></dd>
-<dt><code>&lt;&gt;</code>, <code>==</code></dt>
-<dd><p>comparison
-</p>
-</dd>
-<dt>intmat_expression <code>[</code> intvec_expression<code>,</code> intvec_expression <code>]</code></dt>
-<dd><p>is an intmat entry, where the first index indicates the row and the
-second the column
+<dt><code>ncols</code></dt>
+<dd><p>number of cols (see <a href="sing_237.htm#ncols">ncols</a>)
+</p></dd>
+<dt><code>nrows</code></dt>
+<dd><p>number of rows (see <a href="sing_240.htm#nrows">nrows</a>)
+</p></dd>
+<dt><code>random</code></dt>
+<dd><p>create a pseudo random intmat (see <a href="sing_258.htm#random">random</a>)
+</p></dd>
+<dt><code>size</code></dt>
+<dd><p>total number of entries (see <a href="sing_270.htm#size">size</a>)
+</p></dd>
+<dt><code>transpose</code></dt>
+<dd><p>transpose of an intmat (see <a href="sing_282.htm#transpose">transpose</a>)
+</p></dd>
+<dt><code>trace</code></dt>
+<dd><p>trace of an intmat (see <a href="sing_281.htm#trace">trace</a>)
 </p></dd>
 </dl>
-
-<br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  intmat m[2][4] = 1,0,2,4,0,1,-1,0,3,2,1,-2;
-  m;
-&rarr; 1,0,2,4,
-&rarr; 0,1,-1,0 
-  m[2,3];          // entry at row 2, col 3
-&rarr; -1
-  size(m);         // number of entries
-&rarr; 8
-  intvec v = 1,0,-1,2;
-  m * v;
-&rarr; 7,1
-  typeof(_);
-&rarr; intvec
-  intmat m1[4][3] = 0,1,2,3,v,1;
-  intmat m2 = m * m1;
-  m2;             //  2 x 3 intmat
-&rarr; -2,5,4,
-&rarr; 4,-1,-1 
-  m2*10;           // multiply each entry of m with 10;
-&rarr; -20,50,40,
-&rarr; 40,-10,-10 
-  -m2;
-&rarr; 2,-5,-4,
-&rarr; -4,1,1 
-  m2 % 2;
-&rarr; 0,1,0,
-&rarr; 0,1,1 
-  m2 div 2;
-&rarr; -1,2,2,
-&rarr; 2,-1,-1 
-  m2[2,1];          // entry at row 2, col 1
-&rarr; 4
-  m1[2..3,2..3];   // submatrix
-&rarr; 1 0 2 1
-  m2[nrows(m2),ncols(m2)];      // the last entry of intmat m2
-&rarr; -1
-</pre></td></tr></table>
 
 </td>
 </tr>
@@ -167,14 +124,14 @@ second the column
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_84.htm#intmat-type-cast" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.4.3 intmat type cast" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_86.htm#intmat-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.4.5 intmat related functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_81.htm#intmat" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.4 intmat" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_84.htm#intmat-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.4.4 intmat operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_86.htm#intvec" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.5 intvec" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_80.htm#intmat" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.4 intmat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

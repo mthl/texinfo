@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.3.10 rtimer</title>
+<title>Singular 2-0-4 Manual: 5.3.11 voice</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.3.10 rtimer">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.3.10 rtimer">
+<meta name="description" content="Singular 2-0-4 Manual: 5.3.11 voice">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.3.11 voice">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="rtimer"></a>
+<a name="voice"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_316.htm#TRACE-var" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.3.9 TRACE" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_316.htm#rtimer" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.3.10 rtimer" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_318.htm#voice" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3.11 voice" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_307.htm#System-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.3 System variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_306.htm#System-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.3 System variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,20 +84,38 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="rtimer-1"></a>
-<h3 class="subsection">5.3.10 rtimer</h3>
-<a name="index-timer-1"></a>
+<a name="voice-1"></a>
+<h3 class="subsection">5.3.11 voice</h3>
+<a name="index-voice"></a>
+
 <dl compact="compact">
 <dt><code><strong>Type:</strong></code></dt>
 <dd><p>int
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>identical to <code>timer</code> (see <a href="sing_315.htm#timer">timer</a>), except that real times (i.e.,
-wall-clock) times are reported, instead of CPU times. This can be
-trusted on all operating systems (including Windows95/98).
-</p>
+<dd><p>shows the nesting level of procedures.
+</p></dd>
+<dt><code><strong>Note:</strong></code></dt>
+<dd><p>See <a href="sing_48.htm#Guidelines-for-writing-a-library">Guidelines for writing a library</a>, for an small example how this is used
+for the display of comments while procedures are executed.
+</p></dd>
+<dt><code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  voice;
+&rarr; 1
+proc p
+{
+  voice;
+};
+p();
+&rarr; 2
+</pre></td></tr></table>
 </dd>
 </dl>
+<p>See
+<a href="sing_166.htm#dbprint">dbprint</a>;
+<a href="sing_222.htm#listvar">listvar</a>;
+<a href="sing_312.htm#printlevel">printlevel</a>.
+</p>
 </td>
 </tr>
 </table>
@@ -107,14 +125,14 @@ trusted on all operating systems (including Windows95/98).
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_316.htm#TRACE-var" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.3.9 TRACE" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_318.htm#voice" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3.11 voice" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_307.htm#System-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.3 System variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_316.htm#rtimer" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.3.10 rtimer" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_306.htm#System-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.3 System variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

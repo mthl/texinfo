@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.7.6 StabOrder</title>
+<title>Singular 2-0-4 Manual: D.5.7.7 UpperMonomials</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.7.6 StabOrder">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.7.6 StabOrder">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.7.7 UpperMonomials">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.7.7 UpperMonomials">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="StabOrder"></a>
+<a name="UpperMonomials"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_715.htm#StabEqnId" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.7.5 StabEqnId" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_715.htm#StabOrder" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.7.6 StabOrder" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_717.htm#UpperMonomials" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.7.7 UpperMonomials" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_717.htm#Max" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.7.8 Max" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_710.htm#qhmoduli_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.7 qhmoduli_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_709.htm#qhmoduli_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.7 qhmoduli_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,33 +84,38 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="StabOrder-1"></a>
-<h4 class="subsubsection">D.5.7.6 StabOrder</h4>
-<a name="index-StabOrder"></a>
-<p>Procedure from library <code>qhmoduli.lib</code> (see <a href="sing_710.htm#qhmoduli_005flib">qhmoduli_lib</a>).
+<a name="UpperMonomials-1"></a>
+<h4 class="subsubsection">D.5.7.7 UpperMonomials</h4>
+<a name="index-UpperMonomials"></a>
+<p>Procedure from library <code>qhmoduli.lib</code> (see <a href="sing_709.htm#qhmoduli_005flib">qhmoduli_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>StabOrder(f); poly f;
+<dd><p>UpperMonomials(poly f, [intvec w])
 </p>
 </dd>
 <dt><strong>Purpose:</strong></dt>
-<dd><p>compute the order of the stabilizer group of f.
+<dd><p>compute the upper monomials of the milnor algebra of f.
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>f quasihomogeneous polynomial with an isolated singularity at 0
+<dd><p>f is quasihomogeneous (w.r.t. w)
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>int
-</p>
-</dd>
-<dt><strong>Global:</strong></dt>
-<dd><p>varSubsList
+<dd><p>ideal
 </p>
 </dd>
 </dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;qhmoduli.lib&quot;;
+ring B   = 0,(x,y,z), ls;
+poly f = -z5+y5+x2z+x2y;
+UpperMonomials(f);
+&rarr; _[1]=y3z3
+&rarr; _[2]=x2y3
+&rarr; _[3]=x2y2
+</pre></td></tr></table>
 
 </td>
 </tr>
@@ -121,14 +126,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_715.htm#StabEqnId" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.7.5 StabEqnId" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_717.htm#UpperMonomials" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.7.7 UpperMonomials" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_710.htm#qhmoduli_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.7 qhmoduli_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_715.htm#StabOrder" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.7.6 StabOrder" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_717.htm#Max" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.7.8 Max" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_709.htm#qhmoduli_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.7 qhmoduli_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

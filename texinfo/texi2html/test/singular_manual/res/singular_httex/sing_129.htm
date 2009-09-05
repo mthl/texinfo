@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.12.3 poly operations</title>
+<title>Singular 2-0-4 Manual: 4.12.4 poly related functions</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.12.3 poly operations">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.12.3 poly operations">
+<meta name="description" content="Singular 2-0-4 Manual: 4.12.4 poly related functions">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.12.4 poly related functions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="poly-operations"></a>
+<a name="poly-related-functions"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_128.htm#poly-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.12.2 poly expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_128.htm#poly-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.12.3 poly operations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_130.htm#poly-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.12.4 poly related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_130.htm#proc" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.13 proc" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_126.htm#poly" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.12 poly" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_125.htm#poly" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.12 poly" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,76 +84,95 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="poly-operations-1"></a>
-<h3 class="subsection">4.12.3 poly operations</h3>
-<a name="index-poly-operations"></a>
+<a name="poly-related-functions-1"></a>
+<h3 class="subsection">4.12.4 poly related functions</h3>
+<a name="index-poly-related-functions"></a>
 
 <dl compact="compact">
-<dt><code>+</code></dt>
-<dd><p>addition
-</p>
-</dd>
-<dt><code>-</code></dt>
-<dd><p>negation or subtraction
-</p>
-</dd>
-<dt><code>*</code></dt>
-<dd><p>multiplication
-</p>
-</dd>
-<dt><code>/</code></dt>
-<dd><p>division by a polynomial, ignoring the rest
-</p>
-</dd>
-<dt><code>^</code>, <code>**</code></dt>
-<dd><p>power by an integer
-</p>
-</dd>
-<dt><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>&lt;&gt;</code></dt>
-<dd><p>comparison (w.r.t. monomial ordering)
-</p>
-</dd>
-<dt>poly_expression <code>[</code> intvec_expression <code>]</code></dt>
-<dd><p>the monomial at the indicated place w.r.t. the monomial ordering
+<dt><code>cleardenom</code></dt>
+<dd><p>cancel denominators of numbers in poly and divide it by its content
+(see <a href="sing_161.htm#cleardenom">cleardenom</a>)
+</p></dd>
+<dt><code>coef</code></dt>
+<dd><p>matrix of coefficients and monomials (see <a href="sing_163.htm#coef">coef</a>)
+</p></dd>
+<dt><code>coeffs</code></dt>
+<dd><p>matrix of coefficients (see <a href="sing_164.htm#coeffs">coeffs</a>)
+</p></dd>
+<dt><code>deg</code></dt>
+<dd><p>degree (see <a href="sing_168.htm#deg">deg</a>)
+</p></dd>
+<dt><code>det</code></dt>
+<dd><p>determinant (see <a href="sing_171.htm#det">det</a>)
+</p></dd>
+<dt><code>diff</code></dt>
+<dd><p>partial derivative (see <a href="sing_172.htm#diff">diff</a>)
+</p></dd>
+<dt><code>extgcd</code></dt>
+<dd><p>Bezout representation of gcd (see <a href="sing_182.htm#extgcd">extgcd</a>)
+</p></dd>
+<dt><code>factorize</code></dt>
+<dd><p>factorize polynomial (see <a href="sing_184.htm#factorize">factorize</a>)
+</p></dd>
+<dt><code>finduni</code></dt>
+<dd><p>find univariate polynomials in a zero-dimensional ideal (see <a href="sing_190.htm#finduni">finduni</a>)
+</p></dd>
+<dt><code>gcd</code></dt>
+<dd><p>greatest common divisor (see <a href="sing_193.htm#gcd">gcd</a>)
+</p></dd>
+<dt><code>homog</code></dt>
+<dd><p>homogenization (see <a href="sing_200.htm#homog">homog</a>)
+</p></dd>
+<dt><code>jacob</code></dt>
+<dd><p>ideal, resp. matrix, of all partial derivatives (see <a href="sing_208.htm#jacob">jacob</a>)
+</p></dd>
+<dt><code>lead</code></dt>
+<dd><p>leading term (see <a href="sing_215.htm#lead">lead</a>)
+</p></dd>
+<dt><code>leadcoef</code></dt>
+<dd><p>coefficient of the leading term (see <a href="sing_216.htm#leadcoef">leadcoef</a>)
+</p></dd>
+<dt><code>leadexp</code></dt>
+<dd><p>the exponent vector of the leading monomial (see <a href="sing_217.htm#leadexp">leadexp</a>)
+</p></dd>
+<dt><code>leadmonom</code></dt>
+<dd><p>leading monomial (see <a href="sing_218.htm#leadmonom">leadmonom</a>)
+</p></dd>
+<dt><code>jet</code></dt>
+<dd><p>monomials with degree smaller k+1 (see <a href="sing_209.htm#jet">jet</a>)
+</p></dd>
+<dt><code>ord</code></dt>
+<dd><p>degree of the leading monomial (see <a href="sing_244.htm#ord">ord</a>)
+</p></dd>
+<dt><code>qhweight</code></dt>
+<dd><p>quasihomogeneous weights (see <a href="sing_254.htm#qhweight">qhweight</a>)
+</p></dd>
+<dt><code>reduce</code></dt>
+<dd><p>normal form with respect to a standard base (see <a href="sing_260.htm#reduce">reduce</a>)
+</p></dd>
+<dt><code>rvar</code></dt>
+<dd><p>test for ring variable (see <a href="sing_266.htm#rvar">rvar</a>)
+</p></dd>
+<dt><code>simplify</code></dt>
+<dd><p>normalize a polynomial (see <a href="sing_269.htm#simplify">simplify</a>)
+</p></dd>
+<dt><code>size</code></dt>
+<dd><p>number of monomials (see <a href="sing_270.htm#size">size</a>)
+</p></dd>
+<dt><code>subst</code></dt>
+<dd><p>substitute a ring variable (see <a href="sing_278.htm#subst">subst</a>)
+</p></dd>
+<dt><code>trace</code></dt>
+<dd><p>trace of a matrix (see <a href="sing_281.htm#trace">trace</a>)
+</p></dd>
+<dt><code>var</code></dt>
+<dd><p>the indicated variable of the ring (see <a href="sing_287.htm#var">var</a>)
+</p></dd>
+<dt><code>varstr</code></dt>
+<dd><p>variable in string form (see <a href="sing_288.htm#varstr">varstr</a>)
 </p></dd>
 </dl>
 
-<br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=0,(x,y),dp;
-  poly f = x3y2 + 2x2y2 + xy - x + y + 1;
-  f;
-&rarr; x3y2+2x2y2+xy-x+y+1
-  f + x5 + 2;
-&rarr; x5+x3y2+2x2y2+xy-x+y+3
-  f * x2;
-&rarr; x5y2+2x4y2+x3y-x3+x2y+x2
-  (x+y)/x;
-&rarr; 1
-  f/3x2;
-&rarr; 1/3xy2+2/3y2
-  x5 &gt; f;
-&rarr; 1
-  x&lt;=y;
-&rarr; 0
-  x&gt;y;
-&rarr; 1
-  ring r=0,(x,y),ds;
-  poly f = fetch(R,f);
-  f;
-&rarr; 1-x+y+xy+2x2y2+x3y2
-  x5 &gt; f;
-&rarr; 0
-  f[2..4];
-&rarr; -x+y+xy
-  size(f);
-&rarr; 6
-  f[size(f)+1]; f[-1];    // monomials out of range are 0
-&rarr; 0
-&rarr; 0
-  intvec v = 6,1,3;
-  f[v];          // the polynom built from the 1st, 3rd and 6th monomial of f
-&rarr; 1+y+x3y2
-</pre></td></tr></table>
 
 </td>
 </tr>
@@ -164,14 +183,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_128.htm#poly-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.12.2 poly expressions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_130.htm#poly-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.12.4 poly related functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_126.htm#poly" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.12 poly" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_128.htm#poly-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.12.3 poly operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_130.htm#proc" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.13 proc" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_125.htm#poly" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.12 poly" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

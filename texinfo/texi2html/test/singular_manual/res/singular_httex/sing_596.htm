@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.4.6.1 normal</title>
+<title>Singular 2-0-4 Manual: D.4.6.2 HomJJ</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.4.6.1 normal">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.4.6.1 normal">
+<meta name="description" content="Singular 2-0-4 Manual: D.4.6.2 HomJJ">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.6.2 HomJJ">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="normal"></a>
+<a name="HomJJ"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_595.htm#normal_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.6 normal_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_595.htm#normal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.6.1 normal" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_597.htm#HomJJ" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.6.2 HomJJ" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_597.htm#genus" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.6.3 genus" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_595.htm#normal_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.6 normal_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_594.htm#normal_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.6 normal_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,93 +84,66 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="normal-1"></a>
-<h4 class="subsubsection">D.4.6.1 normal</h4>
-<a name="index-normal"></a>
-<p>Procedure from library <code>normal.lib</code> (see <a href="sing_595.htm#normal_005flib">normal_lib</a>).
+<a name="HomJJ-1"></a>
+<h4 class="subsubsection">D.4.6.2 HomJJ</h4>
+<a name="index-HomJJ"></a>
+<p>Procedure from library <code>normal.lib</code> (see <a href="sing_594.htm#normal_005flib">normal_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>normal(i [,choose]); i a radical ideal, choose empty, 1 or &quot;wd&quot;
-if choose=1 the normalization of the associated primes is computed
-(which is sometimes more efficient);
-if <code>choose=&quot;wd&quot;</code> the delta invariant is computed
-simultaneously; this may take much more time in the reducible case,
-since the factorizing standard basis algorithm cannot be used.
+<dd><p>HomJJ (Li); Li = list: ideal SBid, ideal id, ideal J, poly p
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>The ideal must be radical, for non-radical ideals the output may
-be wrong (i=radical(i); makes i radical)
+<dd><p>R = P/id, P = basering, a polynomial ring, id an ideal of P,
+<br> SBid = standard basis of id,
+<br> J = ideal of P containing the polynomial p,
+<br> p = nonzero divisor of R
+</p>
+</dd>
+<dt><strong>Compute:</strong></dt>
+<dd><p>Endomorphism ring End_R(J)=Hom_R(J,J) with its ring structure as
+affine ring, together with the canonical map R &ndash;&gt; Hom_R(J,J),
+where R is the quotient ring of P modulo the standard basis SBid.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>a list of rings, say nor and in case of <code>choose=&quot;wd&quot;</code> an
-integer at the end of the list.
-Each ring <code>nor[i]</code> contains two ideals with given names
-<code>norid</code> and <code>normap</code> such that<br>
-- the direct sum of the rings <code>nor[i]/norid</code> is the
-normalization of basering/id;<br>
-- <code>normap</code> gives the normalization map from basering/id to
-<code>nor[i]/norid</code> (for each i).
-</p>
+<dd><p>a list l of two objects
+</p><table><tr><td>&nbsp;</td><td><pre class="format">         l[1] : a polynomial ring, containing two ideals, &rsquo;endid&rsquo; and &rsquo;endphi&rsquo;
+               such that l[1]/endid = Hom_R(J,J) and
+               endphi describes the canonical map R -&gt; Hom_R(J,J)
+         l[2] : an integer which is 1 if phi is an isomorphism, 0 if not
+         l[3] : an integer, the contribution to delta
+</pre></td></tr></table>
+
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>to use the i-th ring type: <code>def R=nor[i]; setring R;</code>.
-<br> Increasing printlevel displays more comments (default: printlevel=0).
-<br> Not implemented for local or mixed orderings.
-<br> If the input ideal i is weighted homogeneous a weighted ordering may
-be used (qhweight(i); computes weights).
+<dd><p>printlevel &gt;=1: display comments (default: printlevel=0)
 </p>
-<a name="index-normalization"></a>
-<a name="index-delta-invariant_002e"></a>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;normal.lib&quot;;
-ring r=32003,(x,y,z),wp(2,1,2);
-ideal i=z3-xy4;
-list nor=normal(i);
-&rarr; 
-&rarr; // 'normal' created a list of 1 ring(s).
-&rarr; // nor[1+1] is the delta-invariant in case of choose=wd.
-&rarr; // To see the rings, type (if the name of your list is nor):
-&rarr;      show( nor);
-&rarr; // To access the 1-st ring and map (similar for the others), type:
-&rarr;      def R = nor[1]; setring R;  norid; normap;
-&rarr; // R/norid is the 1-st ring of the normalization and
-&rarr; // normap the map from the original basering to R/norid
-show(nor);
-&rarr; // list, 1 element(s):
-&rarr; [1]:
-&rarr;    // ring: (32003),(T(1),T(2),T(3)),(a(2,1,1),dp(3),C);
-&rarr;    // minpoly = 0
-&rarr; // objects belonging to this ring:
-&rarr; // normap               [0]  ideal, 3 generator(s)
-&rarr; // norid                [0]  ideal, 1 generator(s)
-def r1=nor[1];
-setring r1;
-norid;
-&rarr; norid[1]=T(3)3-T(1)T(2)
-normap;
-&rarr; normap[1]=T(1)
-&rarr; normap[2]=T(2)
-&rarr; normap[3]=T(2)T(3)
-ring s=0,(x,y),dp;
-ideal i=(x-y^2)^2 - y*x^3;
-nor=normal(i,&quot;wd&quot;);
-&rarr; 
-&rarr; // 'normal' created a list of 1 ring(s).
-&rarr; // nor[1+1] is the delta-invariant in case of choose=wd.
-&rarr; // To see the rings, type (if the name of your list is nor):
-&rarr;      show( nor);
-&rarr; // To access the 1-st ring and map (similar for the others), type:
-&rarr;      def R = nor[1]; setring R;  norid; normap;
-&rarr; // R/norid is the 1-st ring of the normalization and
-&rarr; // normap the map from the original basering to R/norid
-//the delta-invariant
-nor[size(nor)];
-&rarr; 3
+ring r   = 0,(x,y),wp(2,3);
+ideal id = y^2-x^3;
+ideal J  = x,y;
+poly p   = x;
+list Li = std(id),id,J,p;
+list L   = HomJJ(Li);
+def end = L[1];    // defines ring L[1], containing ideals endid, endphi
+setring end;       // makes end the basering
+end;
+&rarr; //   characteristic : 0
+&rarr; //   number of vars : 1
+&rarr; //        block   1 : ordering dp
+&rarr; //                  : names    T(1) 
+&rarr; //        block   2 : ordering C
+endid;             // end/endid is isomorphic to End(r/id) as ring
+&rarr; endid[1]=0
+map psi = r,endphi;// defines the canonical map r/id -&gt; End(r/id)
+psi;
+&rarr; psi[1]=T(1)^2
+&rarr; psi[2]=T(1)^3
 </pre></td></tr></table>
 
 </td>
@@ -182,14 +155,14 @@ nor[size(nor)];
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_595.htm#normal_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.6 normal_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_597.htm#HomJJ" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.6.2 HomJJ" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_595.htm#normal_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.6 normal_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_595.htm#normal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.6.1 normal" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_597.htm#genus" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.6.3 genus" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_594.htm#normal_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.6 normal_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

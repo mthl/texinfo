@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: A.16 Cyclic roots</title>
+<title>Singular 2-0-4 Manual: A.17 G_a -Invariants</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: A.16 Cyclic roots">
-<meta name="keywords" content="Singular 2-0-4 Manual: A.16 Cyclic roots">
+<meta name="description" content="Singular 2-0-4 Manual: A.17 G_a -Invariants">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.17 G_a -Invariants">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Cyclic-roots"></a>
+<a name="G_005fa-_002dInvariants"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_346.htm#Formatting-output" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.15 Formatting output" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_346.htm#Cyclic-roots" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.16 Cyclic roots" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_348.htm#G_005fa-_002dInvariants" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.17 G_a -Invariants" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_348.htm#Invariants-of-a-finite-group" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.18 Invariants of a finite group" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,69 +82,53 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Cyclic-roots-1"></a>
-<h2 class="section">A.16 Cyclic roots</h2>
-<a name="index-Cyclic-roots"></a>
+<a name="G_005fa-_002dInvariants-1"></a>
+<h2 class="section">A.17 G_a -Invariants</h2>
+<a name="index-G_005fa-_002dInvariants"></a>
 
-<p>We write a procedure returning a string that enables us to create
-automatically the ideal of cyclic roots over the basering with n
-variables. The procedure assumes that the variables consist of a single
-letter each (hence no indexed variables are allowed; the procedure
-<code>cyclic</code> in <code>poly.lib</code> does not have this restriction). Then
-we compute a standard basis of this ideal and some numerical
-information.  (This ideal is used as a classical benchmark for standard
-basis computations).
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">// We call the procedure 'cyclic':
-proc cyclic (int n)
-{
-   string vs = varstr(basering)+varstr(basering);
-   int c=find(vs,&quot;,&quot;);
-   while ( c!=0 )
-   {
-      vs=vs[1,c-1]+vs[c+1,size(vs)];
-      c=find(vs,&quot;,&quot;);
-   }
-   string t,s;
-   int i,j;
-   for ( j=1; j&lt;=n-1; j=j+1 )
-   {
-      t=&quot;&quot;;
-      for ( i=1; i &lt;=n; i=i+1 )
-      {
-         t = t + vs[i,j] + &quot;+&quot;;
-      }
-      t = t[1,size(t)-1] + &quot;,&quot;+newline;
-      s=s+t;
-   }
-   s=s+vs[1,n]+&quot;-1&quot;;
-   return (s);
-}
-
-ring r=0,(a,b,c,d,e),lp;         // basering, char 0, lex ordering
-string sc=cyclic(nvars(basering));
-sc;                              // the string of the ideal
-&rarr; a+b+c+d+e,
-&rarr; ab+bc+cd+de+ea,
-&rarr; abc+bcd+cde+dea+eab,
-&rarr; abcd+bcde+cdea+deab+eabc,
-&rarr; abcde-1
-execute(&quot;ideal i=&quot;+sc+&quot;;&quot;);      // this defines the ideal of cyclic roots
-i;
-&rarr; i[1]=a+b+c+d+e
-&rarr; i[2]=ab+bc+cd+ae+de
-&rarr; i[3]=abc+bcd+abe+ade+cde
-&rarr; i[4]=abcd+abce+abde+acde+bcde
-&rarr; i[5]=abcde-1
-timer=1;
-ideal j=std(i);
-&rarr; //used time: 7.5 sec
-size(j);                         // number of elements in the std basis
-&rarr; 11
-degree(j);
-&rarr; // codimension = 5
-&rarr; // dimension   = 0
-&rarr; // degree      = 70
+<p>We work in characteristic 0 and use the Lie algebra generated by one
+vector field of the form
+<!-- MATH
+ $\sum x_i \partial /\partial x_{i+1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="89" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_217.png"
+ ALT="$\sum x_i \partial /\partial x_{i+1}$"></SPAN>.
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;ainvar.lib&quot;;
+  int n=5;
+  int i;
+  ring s=32003,(x(1..n)),wp(1,2,3,4,5);
+  // definition of the vector field m=sum m[i,1]*d/dx(i)
+  matrix m[n][1];
+  for (i=1;i&lt;=n-1;i=i+1)
+  {
+     m[i+1,1]=x(i);
+  }
+  // computation of the ring of invariants
+  ideal in=invariantRing(m,x(2),x(1),0);
+  in;   //invariant ring is generated by 5 invariants
+&rarr; in[1]=x(1)
+&rarr; in[2]=x(2)^2-2*x(1)*x(3)
+&rarr; in[3]=x(3)^2-2*x(2)*x(4)+2*x(1)*x(5)
+&rarr; in[4]=x(2)^3-3*x(1)*x(2)*x(3)+3*x(1)^2*x(4)
+&rarr; in[5]=x(3)^3-3*x(2)*x(3)*x(4)-15997*x(1)*x(4)^2+3*x(2)^2*x(5)-6*x(1)*x(3)\
+   *x(5)
+  ring q=32003,(x,y,z,u,v,w),dp;
+  matrix m[6][1];
+  m[2,1]=x;
+  m[3,1]=y;
+  m[5,1]=u;
+  m[6,1]=v;
+  // the vector field is: xd/dy+yd/dz+ud/dv+vd/dw
+  ideal in=invariantRing(m,y,x,0);
+  in; //invariant ring is generated by 6 invariants
+&rarr; in[1]=x
+&rarr; in[2]=u
+&rarr; in[3]=v2-2uw
+&rarr; in[4]=zu-yv+xw
+&rarr; in[5]=yu-xv
+&rarr; in[6]=y2-2xz
 </pre></td></tr></table>
 </td>
 </tr>
@@ -155,14 +139,14 @@ degree(j);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_346.htm#Formatting-output" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.15 Formatting output" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_348.htm#G_005fa-_002dInvariants" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.17 G_a -Invariants" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_346.htm#Cyclic-roots" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.16 Cyclic roots" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_348.htm#Invariants-of-a-finite-group" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.18 Invariants of a finite group" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

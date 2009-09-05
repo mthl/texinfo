@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 6.2.2 Evaluation of logical expressions</title>
+<title>Singular 2-0-4 Manual: 6.2.3 No case or switch statement</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 6.2.2 Evaluation of logical expressions">
-<meta name="keywords" content="Singular 2-0-4 Manual: 6.2.2 Evaluation of logical expressions">
+<meta name="description" content="Singular 2-0-4 Manual: 6.2.3 No case or switch statement">
+<meta name="keywords" content="Singular 2-0-4 Manual: 6.2.3 No case or switch statement">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Evaluation-of-logical-expressions"></a>
+<a name="No-case-or-switch-statement"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_322.htm#No-rvalue-of-increments-and-assignments" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.2.1 No rvalue of increments and assignments" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_322.htm#Evaluation-of-logical-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.2.2 Evaluation of logical expressions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_324.htm#No-case-or-switch-statement" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 6.2.3 No case or switch statement" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_324.htm#Usage-of-commas" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 6.2.4 Usage of commas" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_321.htm#Major-differences-to-the-C-programming-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 6.2 Major differences to the C programming language" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_320.htm#Major-differences-to-the-C-programming-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 6.2 Major differences to the C programming language" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,67 +84,23 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Evaluation-of-logical-expressions-1"></a>
-<h3 class="subsection">6.2.2 Evaluation of logical expressions</h3>
-<a name="index-Evaluation-of-logical-expressions"></a>
-<a name="index-and-1"></a>
-<a name="index-or-1"></a>
+<a name="No-case-or-switch-statement-1"></a>
+<h3 class="subsection">6.2.3 No case or switch statement</h3>
+<a name="index-case"></a>
+<a name="index-switch"></a>
 
-<p><strong>All</strong> arguments of a logical expression are first evaluated and
-then the value of the logical expression is determined. For example, the
-logical expressions <code>(a || b)</code> is evaluated by first evaluating
-<code>a</code> <em>and</em> <code>b</code>, even though the value of <code>b</code> has no
-influence on the value of <code>(a || b)</code>, if <code>a</code> evaluates to
-true. 
+<p><small>SINGULAR</small> does not offer a <code>case</code> (or <code>switch</code>)
+statement. However, it can be imitated in the following way:
 </p>
-<p>Note, that this evaluation is different from the left-to-right,
-conditional evaluation of logical expressions (as found in most
-programming languages). For example, in these other languages, the value
-of <code>(1 || b)</code> is determined without ever evaluating <code>b</code>.  This
-causes some problems with boolean tests on variables, which might not be
-defined at evaluation time. For example, the following results in an
-error, if the variable <code>i</code> is undefined:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (defined(i) &amp;&amp; i &gt; 0) {} // WRONG!!!
-</pre></td></tr></table>
-
-<p>This must be written instead as:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (defined(i))
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">while (1)
 {
-  if (i &gt; 0) {}
+   if (choice == choice_1) { &hellip;; break;}
+   &hellip;
+   if (choice == choice_n) { &hellip;; break;}
+   // default case
+   &hellip;; break;
 }
 </pre></td></tr></table>
-
-<p>However, there are several short work-arounds for this problem:
-</p><ol>
-<li>
-If a variable (say, <code>i</code>) is only to be used as a boolean flag, then
-define (value is TRUE) and undefine (value is FALSE) <code>i</code> instead of
-assigning a value. Using this scheme, it is sufficient to simply write
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (defined(i))
-</pre></td></tr></table>
-
-<p>in order to check whether <code>i</code> is TRUE. Use the command <code>kill</code>
-to undefine a variable, i.e. to assign it a FALSE value (see <a href="sing_212.htm#kill">kill</a>).
-</p></li><li>
-If a variable  can have more than two values, then
-define it, if necessary, before it is used for the first time.
-For example, if the following is used within a procedure
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (! defined(DEBUG)) { int DEBUG = 1;}
-&hellip;
-if (DEBUG == 3)  {&hellip;}
-if (DEBUG == 2)  {&hellip;}
-&hellip;
-</pre></td></tr></table>
-
-<p>then a user of this procedure does not need to care about the existence
-of the <code>DEBUG</code> variable &ndash; this remains hidden from the
-user. However, if <code>DEBUG</code> exists globally, then its local default
-value is overwritten by its global one.
-</p></li></ol>
 
 </td>
 </tr>
@@ -155,14 +111,14 @@ value is overwritten by its global one.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_322.htm#No-rvalue-of-increments-and-assignments" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.2.1 No rvalue of increments and assignments" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_324.htm#No-case-or-switch-statement" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 6.2.3 No case or switch statement" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_321.htm#Major-differences-to-the-C-programming-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 6.2 Major differences to the C programming language" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_322.htm#Evaluation-of-logical-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.2.2 Evaluation of logical expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_324.htm#Usage-of-commas" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 6.2.4 Usage of commas" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_320.htm#Major-differences-to-the-C-programming-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 6.2 Major differences to the C programming language" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

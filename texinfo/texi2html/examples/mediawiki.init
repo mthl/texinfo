@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.19 2009-08-24 10:26:29 pertusus Exp $
+# $Id: mediawiki.init,v 1.20 2009-09-05 07:23:48 pertusus Exp $
 
 html_default_load();
 
@@ -354,108 +354,6 @@ sub mediawiki_button_formatting
    }
    return ($active, $passive);
 }
-
-# It is easier to redefine only button_formatting
-#$print_navigation	      = \&mediawiki_print_navigation;
-sub mediawiki_print_navigation
-{
-    my $buttons = shift;
-    my $vertical = shift;
-    my $spacing = 1;
-
-    my $result = '<table cellpadding="1" cellspacing="1" border="0">'."\n";
-
-    $result .= "<tr>" unless $vertical;
-    for my $button (@$buttons)
-    {
-        $result .= qq{<tr valign="top" align="left">\n} if $vertical;
-        $result .= qq{<td valign="middle" align="left">};
-
-        if (ref($button) eq 'CODE')
-        {
-            $result .= &$button($vertical);
-        }
-        elsif (ref($button) eq 'SCALAR')
-        {
-            $result .= "$$button" if defined($$button);
-        }
-        elsif (ref($button) eq 'ARRAY')
-        {
-            my $text = $button->[1];
-            my $button_href = $button->[0];
-            if (defined($button_href) and !ref($button_href) 
-               and defined($text) and (ref($text) eq 'SCALAR') and defined($$text))
-            {             # use given text
-                if ($Texi2HTML::HREF{$button_href})
-                {
-                  $result .= "" .
-                        &$anchor('',
-                                    $Texi2HTML::HREF{$button_href},
-                                    $$text
-                                   ) 
-                                    ;
-                }
-                else
-                {
-                  $result .= $$text;
-                }
-            }
-        }
-        elsif ($button eq ' ')
-        {                       # handle space button
-            $result .=
-                $ICONS && $ACTIVE_ICONS{' '} ?
-                    &$button_icon_img($button, $ACTIVE_ICONS{' '}) :
-                        $NAVIGATION_TEXT{' '};
-            #next;
-        }
-        elsif ($Texi2HTML::HREF{$button})
-        {                       # button is active
-            my $btitle = $BUTTONS_GOTO{$button} ?
-                'title="' . ucfirst($BUTTONS_GOTO{$button}) . '"' : '';
-            if ($ICONS && $ACTIVE_ICONS{$button})
-            {                   # use icon
-                $result .= '' .
-                    &$anchor('',
-                        $Texi2HTML::HREF{$button},
-                        &$button_icon_img($button,
-                                   $ACTIVE_ICONS{$button},
-                                   #$Texi2HTML::NAME{$button}),
-                                   $Texi2HTML::NO_TEXI{$button}),
-                        $btitle
-                      );
-            }
-            else
-            {                   # use text
-                $result .= '|' .
-                        &$anchor('',
-                                    $Texi2HTML::HREF{$button},
-                                    $NAVIGATION_TEXT{$button},
-                                    $btitle
-                                   ) .
-                                       '|';
-            }
-        }
-        else
-        {                       # button is passive
-            $result .=
-                $ICONS && $PASSIVE_ICONS{$button} ?
-                    &$button_icon_img($button,
-                                          $PASSIVE_ICONS{$button},
-                                          #$Texi2HTML::NAME{$button}) :
-                                          $Texi2HTML::NO_TEXI{$button}) :
-
-                                              "[" . $NAVIGATION_TEXT{$button} . "]";
-        }
-        $result .= "</td>\n";
-        $result .= "</tr>\n" if $vertical;
-    }
-    $result .= "</tr>" unless $vertical;
-    $result .= "</table>\n";
-    return $result;
-}
-
-
 
 $element_file_name = \&mediawiki_element_file_name;
 

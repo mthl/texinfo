@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.1.13 normalform</title>
+<title>Singular 2-0-4 Manual: D.5.1.14 debug_log</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.1.13 normalform">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.1.13 normalform">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.1.14 debug_log">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.1.14 debug_log">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="normalform"></a>
+<a name="debug_005flog"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_643.htm#A_005fL" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.12 A_L" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_643.htm#normalform" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.13 normalform" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_645.htm#debug_005flog" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.14 debug_log" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_645.htm#deform_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.2 deform_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_631.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_630.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,28 +82,44 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="normalform-1"></a>
-<h4 class="subsubsection">D.5.1.13 normalform</h4>
-<a name="index-normalform"></a>
-<p>Procedure from library <code>classify.lib</code> (see <a href="sing_631.htm#classify_005flib">classify_lib</a>).
+<a name="debug_005flog-1"></a>
+<h4 class="subsubsection">D.5.1.14 debug_log</h4>
+<a name="index-debug_005flog"></a>
+<p>Procedure from library <code>classify.lib</code> (see <a href="sing_630.htm#classify_005flib">classify_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>normalform(s); s=string
+<dd><p>debug_log(level,li); level=int, li=comma separated &quot;message&quot; list
 </p>
 </dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>Arnold&rsquo;s normal form of singularity with name s
+<dt><strong>Compute:</strong></dt>
+<dd><p>print &quot;messages&quot; if level&gt;=@DeBug.
+<br>useful for user-defined trace messages.
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;classify.lib&quot;;
-ring r=0,(a,b,c),ds;
-normalform(&quot;E[13]&quot;);
-&rarr; c2+a3+ab5+b8
+example init_debug;
+&rarr; // proc init_debug from lib classify.lib
+&rarr; EXAMPLE:
+&rarr;   init_debug();
+&rarr;   debug_log(1,&quot;no trace information printed&quot;);
+&rarr;   init_debug(1);
+&rarr; Debugging level change from  0  to  1
+&rarr;   debug_log(1,&quot;some trace information&quot;);
+&rarr; some trace information
+&rarr;   init_debug(2);
+&rarr; Debugging level change from  1  to  2
+&rarr;   debug_log(2,&quot;nice for debugging scripts&quot;);
+&rarr; Debug:(2):  nice for debugging scripts
+&rarr;   init_debug(0);
+&rarr; Debugging switched off.
+&rarr; 
 </pre></td></tr></table>
-
+<p><strong>See also:</strong>
+<a href="sing_635.htm#init_005fdebug">init_debug</a>.
+</p>
 </td>
 </tr>
 </table>
@@ -113,14 +129,14 @@ normalform(&quot;E[13]&quot;);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_643.htm#A_005fL" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.12 A_L" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_645.htm#debug_005flog" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.14 debug_log" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_631.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_643.htm#normalform" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.13 normalform" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_645.htm#deform_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.2 deform_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_630.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: C.3 Syzygies and resolutions</title>
+<title>Singular 2-0-4 Manual: C.4 Characteristic sets</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: C.3 Syzygies and resolutions">
-<meta name="keywords" content="Singular 2-0-4 Manual: C.3 Syzygies and resolutions">
+<meta name="description" content="Singular 2-0-4 Manual: C.4 Characteristic sets">
+<meta name="keywords" content="Singular 2-0-4 Manual: C.4 Characteristic sets">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Syzygies-and-resolutions"></a>
+<a name="Characteristic-sets"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_373.htm#Hilbert-function" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.2 Hilbert function" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_373.htm#Syzygies-and-resolutions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.3 Syzygies and resolutions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_375.htm#Characteristic-sets" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.4 Characteristic sets" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_375.htm#Gauss_002dManin-connection" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.5 Gauss-Manin connection" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,298 +82,258 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Syzygies-and-resolutions-1"></a>
-<h2 class="section">C.3 Syzygies and resolutions</h2>
-<a name="index-Syzygies-and-resolutions"></a>
+<a name="Characteristic-sets-1"></a>
+<h2 class="section">C.4 Characteristic sets</h2>
+<a name="index-Characteristic-sets"></a>
 
-<a name="Syzygies"></a>
-<h3 class="subheading">Syzygies</h3>
 <p>Let <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_49.png"
- ALT="$R$"></SPAN> be a quotient of <!-- MATH
- $\hbox{Loc}_< K[\underline{x}]$
+ WIDTH="15" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_261.png"
+ ALT="$&lt;$"></SPAN> be the lexicographical ordering on <!-- MATH
+ $R=K[x_1,...,x_n]$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="68" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_382.png"
- ALT="$\hbox{Loc}_&lt; K[\underline{x}]$"></SPAN> and let <!-- MATH
- $I=(g_1, ..., g_s)$
+ WIDTH="114" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_398.png"
+ ALT="$R=K[x_1,...,x_n]$"></SPAN> with <!-- MATH
+ $x_1
+< ... < x_n$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="95" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_383.png"
- ALT="$I=(g_1, ..., g_s)$"></SPAN> be a submodule of <SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_346.png"
- ALT="$R^r$"></SPAN>.
-Then the <B>module of syzygies</B> (or <B>1st syzygy module</B>, <B>module of relations</B>) of <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN>, syz(<SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN>), is defined to be the kernel of the map <!-- MATH
- $R^s \rightarrow R^r,\; \sum_{i=1}^s w_ie_i \mapsto \sum_{i=1}^s w_ig_i$
+ WIDTH="87" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_399.png"
+ ALT="$x_1
+&lt; ... &lt; x_n$"></SPAN>.
+For <SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_400.png"
+ ALT="$f \in R$"></SPAN> let lvar(<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_218.png"
+ ALT="$f$"></SPAN>) (the leading variable of <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_218.png"
+ ALT="$f$"></SPAN>) be the largest
+variable in <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_218.png"
+ ALT="$f$"></SPAN>,
+i.e., if <!-- MATH
+ $f=a_s(x_1,...,x_{k-1})x_k^s+...+a_0(x_1,...,x_{k-1})$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="228" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_384.png"
- ALT="$R^s \rightarrow R^r,\; \sum_{i=1}^s w_ie_i \mapsto \sum_{i=1}^s w_ig_i$"></SPAN>.
-</p>
-<p>The <strong>k-th syzygy module</strong> is defined inductively to be the module
-of syzygies of the
+ WIDTH="293" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_401.png"
+ ALT="$f=a_s(x_1,...,x_{k-1})x_k^s+...+a_0(x_1,...,x_{k-1})$"></SPAN> for some
 <SPAN CLASS="MATH"><IMG
- WIDTH="49" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_385.png"
- ALT="$(k-1)$"></SPAN>-st
- syzygy module.
-</p>
-<p>Note, that the syzygy modules of <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN> depend on a choice of generators <SPAN CLASS="MATH"><IMG
- WIDTH="56" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_386.png"
- ALT="$g_1, ..., g_s$"></SPAN>.
-But one can show that they depend on <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN> uniquely up to direct summands.
-</p>
-<dl compact="compact">
-<dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
-  ideal i=ux, vx, uy, vy;
-  print(syz(i));
-&rarr; -y,0, -v,0, 
-&rarr; 0, -y,u, 0, 
-&rarr; x, 0, 0, -v,
-&rarr; 0, x, 0, u  
-</pre></td></tr></table>
-</dd>
-</dl>
+ WIDTH="40" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_402.png"
+ ALT="$k \leq n$"></SPAN> then lvar<SPAN CLASS="MATH"><IMG
+ WIDTH="59" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_403.png"
+ ALT="$(f)=x_k$"></SPAN>.
 
-<a name="Free-resolutions"></a>
-<h3 class="subheading">Free resolutions</h3>
-<p>Let <!-- MATH
- $I=(g_1,...,g_s)\subseteq R^r$
+<P>
+Moreover, let
+ini<!-- MATH
+ $(f):=a_s(x_1,...,x_{k-1})$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="133" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_387.png"
- ALT="$I=(g_1,...,g_s)\subseteq R^r$"></SPAN> and <SPAN CLASS="MATH"><IMG
- WIDTH="72" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_388.png"
- ALT="$M= R^r/I$"></SPAN>.
-A <B>free resolution of <SPAN CLASS="MATH"><IMG
- WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_13.png"
- ALT="$M$"></SPAN></B> is a long exact sequence
-<BR><P></P>
-<DIV ALIGN="CENTER" CLASS="mathdisplay">
+ WIDTH="146" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_404.png"
+ ALT="$(f):=a_s(x_1,...,x_{k-1})$"></SPAN>. The pseudo remainder
 <!-- MATH
- \begin{displaymath}
-...\longrightarrow F_2 \buildrel{A_2}\over{\longrightarrow} F_1
-\buildrel{A_1}\over{\longrightarrow} F_0\longrightarrow M\longrightarrow
-0,
-\end{displaymath}
+ $r=\hbox{prem}(g,f)$
  -->
-
-<IMG
- WIDTH="249" HEIGHT="25" BORDER="0"
- SRC="sing_389.png"
- ALT="\begin{displaymath}...\longrightarrow F_2 \buildrel{A_2}\over{\longrightarrow} F...
-...1}\over{\longrightarrow} F_0\longrightarrow M\longrightarrow
-0,\end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P>
-<br>where the columns of the matrix
 <SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_131.png"
- ALT="$A_1$"></SPAN>
-generate 
+ WIDTH="98" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_405.png"
+ ALT="$r=\hbox{prem}(g,f)$"></SPAN> of <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_117.png"
+ ALT="$g$"></SPAN> with respect to <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_218.png"
+ ALT="$f$"></SPAN> is
+defined by the equality <!-- MATH
+ $\hbox{ini}(f)^a\cdot g = qf+r$
+ -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN>
-. Note, that resolutions need not to be finite (i.e., of
-finite length). The Hilbert Syzygy Theorem states, that for 
+ WIDTH="127" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_406.png"
+ ALT="$\hbox{ini}(f)^a\cdot g = qf+r$"></SPAN> with
 <!-- MATH
- $R=\hbox{Loc}_< K[\underline{x}]$
+ $\hbox{deg}_{lvar(f)}(r)<\hbox{deg}_{lvar(f)}(f)$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="99" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_345.png"
- ALT="$R = \hbox{Loc}_&lt; K[\underline{x}]$"></SPAN>
-there exists a (&quot;minimal&quot;) resolution of length not exceeding the number of
-variables.
-</p>
-<dl compact="compact">
-<dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
-  ideal I = ux, vx, uy, vy;
-  resolution resI = mres(I,0); resI;
-&rarr;  1      4      4      1      
-&rarr; R &lt;--  R &lt;--  R &lt;--  R
-&rarr; 
-&rarr; 0      1      2      3      
-&rarr; 
-  // The matrix A_1 is given by
-  print(matrix(resI[1]));
-&rarr; vy,uy,vx,ux
-  // We see that the columns of A_1 generate I.
-  // The matrix A_2 is given by
-  print(matrix(resI[3]));
-&rarr; u, 
-&rarr; -v,
-&rarr; -x,
-&rarr; y  
-</pre></td></tr></table>
-</dd>
-</dl>
-
-<a name="Betti-numbers-and-regularity"></a>
-<h3 class="subheading">Betti numbers and regularity</h3>
-<a name="index-Betti-number"></a>
-<a name="index-regularity-1"></a>
-<p>Let <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_49.png"
- ALT="$R$"></SPAN> be a graded ring (e.g., <!-- MATH
- $R = \hbox{Loc}_< K[\underline{x}]$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="99" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_345.png"
- ALT="$R = \hbox{Loc}_&lt; K[\underline{x}]$"></SPAN>) and
-let <SPAN CLASS="MATH"><IMG
- WIDTH="49" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_390.png"
- ALT="$I \subset R^r$"></SPAN> be a graded submodule. Let
-<BR><P></P>
-<DIV ALIGN="CENTER" CLASS="mathdisplay">
-<!-- MATH
- \begin{displaymath}
-R^r = \bigoplus_a R\cdot e_{a,0} \buildrel A_1 \over \longleftarrow
-        \bigoplus_a R\cdot e_{a,1} \longleftarrow \ldots \longleftarrow
-        \bigoplus_a R\cdot e_{a,n} \longleftarrow 0
-\end{displaymath}
- -->
-
-<IMG
- WIDTH="406" HEIGHT="41" BORDER="0"
- SRC="sing_391.png"
- ALT="\begin{displaymath}
-R^r = \bigoplus_a R\cdot e_{a,0} \buildrel A_1 \over \longl...
-...ts \longleftarrow
-\bigoplus_a R\cdot e_{a,n} \longleftarrow 0
-\end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P>
-be a minimal free resolution of <SPAN CLASS="MATH"><IMG
- WIDTH="38" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_392.png"
- ALT="$R^n/I$"></SPAN> considered with homogeneous maps
-of degree 0. Then the <B>graded Betti number</B> <SPAN CLASS="MATH"><IMG
- WIDTH="24" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_393.png"
- ALT="$b_{i,j}$"></SPAN> of <SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_394.png"
- ALT="$R^r/I$"></SPAN> is
-the minimal number of generators <SPAN CLASS="MATH"><IMG
- WIDTH="26" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_395.png"
- ALT="$e_{a,j}$"></SPAN> in degree <SPAN CLASS="MATH"><IMG
- WIDTH="34" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_136.png"
- ALT="$i+j$"></SPAN> of the <SPAN CLASS="MATH"><IMG
- WIDTH="10" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_51.png"
- ALT="$j$"></SPAN>-th
-syzygy module of <SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_394.png"
- ALT="$R^r/I$"></SPAN> (i.e., the <SPAN CLASS="MATH"><IMG
- WIDTH="47" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_396.png"
- ALT="$(j-1)$"></SPAN>-st syzygy module of
-<SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN>). Note, that by definition the <SPAN CLASS="MATH"><IMG
+ WIDTH="186" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_407.png"
+ ALT="$\hbox{deg}_{lvar(f)}(r)&lt;\hbox{deg}_{lvar(f)}(f)$"></SPAN> and <SPAN CLASS="MATH"><IMG
  WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_2.png"
- ALT="$0$"></SPAN>-th syzygy module of <SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_394.png"
- ALT="$R^r/I$"></SPAN> is <SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_346.png"
- ALT="$R^r$"></SPAN>
-and the 1st syzygy module of <SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_394.png"
- ALT="$R^r/I$"></SPAN> is <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN>.
-</p>
-<p>The <strong>regularity</strong> of 
+ SRC="sing_4.png"
+ ALT="$a$"></SPAN>
+minimal.
+
+<P>
+A set <!-- MATH
+ $T=\{f_1,...,f_r\} \subset R$
+ -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN>
- is the smallest integer 
+ WIDTH="134" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_408.png"
+ ALT="$T=\{f_1,...,f_r\} \subset R$"></SPAN> is called triangular if
+<!-- MATH
+ $\hbox{lvar}(f_1)<...<\hbox{lvar}(f_r)$
+ -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="10" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_141.png"
- ALT="$s$"></SPAN>
-</p>
-<p>such that
+ WIDTH="156" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_409.png"
+ ALT="$\hbox{lvar}(f_1)&lt;...&lt;\hbox{lvar}(f_r)$"></SPAN>. Moreover, let <SPAN CLASS="MATH"><IMG
+ WIDTH="46" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_410.png"
+ ALT="$ U \subset T $"></SPAN>,
+then <SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_411.png"
+ ALT="$(T,U)$"></SPAN> is called a triangular system, if <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_412.png"
+ ALT="$T$"></SPAN> is a triangular set
+such that <SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_413.png"
+ ALT="$\hbox{ini}(T)$"></SPAN> does not vanish on <!-- MATH
+ $V(T) \setminus V(U)
+(=:V(T\setminus U))$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="179" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_414.png"
+ ALT="$V(T) \setminus V(U)
+(=:V(T\setminus U))$"></SPAN>.
+
+<P>
+<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_412.png"
+ ALT="$T$"></SPAN> is called irreducible if for every <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_53.png"
+ ALT="$i$"></SPAN> there are no
+<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_415.png"
+ ALT="$d_i$"></SPAN>,<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_416.png"
+ ALT="$f_i'$"></SPAN>,<SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_417.png"
+ ALT="$f_i''$"></SPAN> such that
 <BR><P></P>
 <DIV ALIGN="CENTER" CLASS="mathdisplay">
 <!-- MATH
  \begin{displaymath}
-\hbox{deg}(e_{a,j}) \le s+j-1 \quad \hbox{for all $j$.}
+\hbox{lvar}(d_i)<\hbox{lvar}(f_i) =
+\hbox{lvar}(f_i')=\hbox{lvar}(f_i''),
 \end{displaymath}
  -->
 
 <IMG
- WIDTH="203" HEIGHT="27" BORDER="0"
- SRC="sing_397.png"
- ALT="\begin{displaymath}
-\hbox{deg}(e_{a,j}) \le s+j-1 \quad \hbox{for all $j$.}
-\end{displaymath}">
+ WIDTH="263" HEIGHT="26" BORDER="0"
+ SRC="sing_418.png"
+ ALT="\begin{displaymath}\hbox{lvar}(d_i)&lt;\hbox{lvar}(f_i) =
+\hbox{lvar}(f_i')=\hbox{lvar}(f_i''),\end{displaymath}">
 </DIV>
 <BR CLEAR="ALL">
 <P></P>
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+0 \not\in \hbox{prem}(\{ d_i, \hbox{ini}(f_i'),
+\hbox{ini}(f_i'')\},\{ f_1,...,f_{i-1}\}),
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="290" HEIGHT="26" BORDER="0"
+ SRC="sing_419.png"
+ ALT="\begin{displaymath}0 \not\in \hbox{prem}(\{ d_i, \hbox{ini}(f_i'),
+\hbox{ini}(f_i'')\},\{ f_1,...,f_{i-1}\}),\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+\hbox{prem}(d_if_i-f_i'f_i'',\{f_1,...,f_{i-1}\})=0.
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="237" HEIGHT="26" BORDER="0"
+ SRC="sing_420.png"
+ ALT="\begin{displaymath}\hbox{prem}(d_if_i-f_i'f_i'',\{f_1,...,f_{i-1}\})=0.\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+Furthermore, <SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_411.png"
+ ALT="$(T,U)$"></SPAN> is called irreducible if <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_412.png"
+ ALT="$T$"></SPAN> is irreducible.
+
+<P>
+The main result on triangular sets is the following:
+let <!-- MATH
+ $G=\{g_1,...,g_s\} \subset R$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="134" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_421.png"
+ ALT="$G=\{g_1,...,g_s\} \subset R$"></SPAN> then there are irreducible triangular sets <SPAN CLASS="MATH"><IMG
+ WIDTH="58" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_422.png"
+ ALT="$T_1,...,T_l$"></SPAN>
+such that <!-- MATH
+ $V(G)=\bigcup_{i=1}^{l}(V(T_i\setminus I_i))$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="166" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_423.png"
+ ALT="$V(G)=\bigcup_{i=1}^{l}(V(T_i\setminus I_i))$"></SPAN>
+where <!-- MATH
+ $I_i=\{\hbox{ini}(f) \mid f \in T_i \}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="140" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_424.png"
+ ALT="$I_i=\{\hbox{ini}(f) \mid f \in T_i \}$"></SPAN>. Such a set
+<!-- MATH
+ $\{T_1,...,T_l\}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="73" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_425.png"
+ ALT="$\{T_1,...,T_l\}$"></SPAN> is called an <B>irreducible characteristic series</B> of
+the ideal <SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_426.png"
+ ALT="$(G)$"></SPAN>.
 </p>
 <dl compact="compact">
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
-  ideal I = ux, vx, uy, vy;
-  resolution resI = mres(I,0); resI;
-&rarr;  1      4      4      1      
-&rarr; R &lt;--  R &lt;--  R &lt;--  R
-&rarr; 
-&rarr; 0      1      2      3      
-&rarr; 
-  // the betti number:
-  print(betti(resI), &quot;betti&quot;);
-&rarr;            0     1     2     3
-&rarr; ------------------------------
-&rarr;     0:     1     -     -     -
-&rarr;     1:     -     4     4     1
-&rarr; ------------------------------
-&rarr; total:     1     4     4     1
-  // the regularity:
-  regularity(resI);
-&rarr; 2
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(x,y,z,u),dp;
+  ideal i=-3zu+y2-2x+2,
+          -3x2u-4yz-6xz+2y2+3xy,
+          -3z2u-xu+y2z+y;
+  print(char_series(i));
+&rarr; _[1,1],3x2z-y2+2yz,3x2u-3xy-2y2+2yu,
+&rarr; x,     -y+2z,      -2y2+3yu-4       
 </pre></td></tr></table>
 </dd>
 </dl>
@@ -386,14 +346,14 @@ and the 1st syzygy module of <SPAN CLASS="MATH"><IMG
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_373.htm#Hilbert-function" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.2 Hilbert function" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_375.htm#Characteristic-sets" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.4 Characteristic sets" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_373.htm#Syzygies-and-resolutions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.3 Syzygies and resolutions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_375.htm#Gauss_002dManin-connection" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.5 Gauss-Manin connection" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

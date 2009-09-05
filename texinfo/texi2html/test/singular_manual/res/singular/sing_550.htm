@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.4.3 homolog_lib</title>
+<title>Singular 2-0-4 Manual: D.4.3.1 cup</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.4.3 homolog_lib">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.4.3 homolog_lib">
+<meta name="description" content="Singular 2-0-4 Manual: D.4.3.1 cup">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.3.1 cup">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="homolog_005flib"></a>
+<a name="cup"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_549.htm#select1" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.2.7 select1" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_549.htm#homolog_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3 homolog_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_551.htm#cup" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.1 cup" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_551.htm#cupproduct" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.2 cupproduct" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_529.htm#Commutative-algebra" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4 Commutative algebra" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_549.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,66 +82,115 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="homolog_005flib-1"></a>
-<h3 class="subsection">D.4.3 homolog_lib</h3>
-<a name="index-homolog_002elib"></a>
-<a name="index-homolog_005flib"></a>
+<a name="cup-1"></a>
+<h4 class="subsubsection">D.4.3.1 cup</h4>
+<a name="index-cup"></a>
+<p>Procedure from library <code>homolog.lib</code> (see <a href="sing_549.htm#homolog_005flib">homolog_lib</a>).
+</p>
 <dl compact="compact">
-<dt><strong>Library:</strong></dt>
-<dd><p>homolog.lib
-</p></dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>   Procedures for Homological Algebra
-</p></dd>
-<dt><strong>Authors:</strong></dt>
-<dd><p>Gert-Martin Greuel, greuel@mathematik.uni-kl.de,
-<br> Bernd Martin, martin@math.tu-cottbus.de
-<br> Christoph Lossen, lossen@mathematik.uni-kl.de
+<dt><strong>Usage:</strong></dt>
+<dd><p>cup(M,[,any,any]); M=module
+</p>
+</dd>
+<dt><strong>Compute:</strong></dt>
+<dd><p>cup-product Ext^1(M&rsquo;,M&rsquo;) x Ext^1(M&rsquo;,M&rsquo;) &mdash;&gt; Ext^2(M&rsquo;,M&rsquo;), where
+M&rsquo;:=R^m/M, if M in R^m, R basering (i.e. M&rsquo;:=coker(matrix(M))).
+<br> If called with &gt;= 2 arguments: compute symmetrized cup-product
+</p>
+</dd>
+<dt><strong>Assume:</strong></dt>
+<dd><p>all Ext&rsquo;s are finite dimensional
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>- if called with 1 argument: matrix, the columns of the output present
+the coordinates of b_i&amp;b_j with respect to a kbase of Ext^2, where
+b_1,b_2,... is a kbase of Ext^1 and &amp; denotes cup product;<br>
+- if called with 2 arguments: matrix, the columns of the output
+present the coordinates of (1/2)(b_i&amp;b_j + b_j&amp;b_i) with respect to
+a kbase of Ext^2;
+<br>- if called with 3 arguments: list,
+</p><table><tr><td>&nbsp;</td><td><pre class="format">      L[1] = matrix see above (symmetric case, for &gt;=2 arguments)
+      L[2] = matrix of kbase of Ext^1
+      L[3] = matrix of kbase of Ext^2
+</pre></td></tr></table>
+
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>printlevel &gt;=1; shows what is going on.
+<br>printlevel &gt;=2; shows result in another representation.
+<br> For computing cupproduct of M itself, apply proc to syz(M)!
 </p>
 </dd>
 </dl>
-
-<p><strong>Procedures:</strong>
-</p><blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_551.htm#cup">D.4.3.1 cup</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> cup: Ext^1(M&rsquo;,M&rsquo;) x Ext^1() &ndash;&gt; Ext^2()
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_552.htm#cupproduct">D.4.3.2 cupproduct</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> cup: Ext^p(M&rsquo;,N&rsquo;) x Ext^q(N&rsquo;,P&rsquo;) &ndash;&gt; Ext^p+q(M&rsquo;,P&rsquo;)
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_553.htm#depth">D.4.3.3 depth</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> depth(I,M&rsquo;), I ideal, M module, M&rsquo;=coker(M)
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_554.htm#Ext_005fR">D.4.3.4 Ext_R</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Ext^k(M&rsquo;,R), M module, R basering, M&rsquo;=coker(M)
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_555.htm#Ext">D.4.3.5 Ext</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Ext^k(M&rsquo;,N&rsquo;), M,N modules, M&rsquo;=coker(M), N&rsquo;=coker(N)
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_556.htm#fitting">D.4.3.6 fitting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> n-th Fitting ideal of M&rsquo;=coker(M), M module, n int
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_557.htm#flatteningStrat">D.4.3.7 flatteningStrat</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Flattening stratification of M&rsquo;=coker(M), M module
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_558.htm#Hom">D.4.3.8 Hom</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Hom(M&rsquo;,N&rsquo;), M,N modules, M&rsquo;=coker(M), N&rsquo;=coker(N)
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_559.htm#homology">D.4.3.9 homology</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> ker(B)/im(A), homology of complex R^k&ndash;A-&gt;M&rsquo;&ndash;B-&gt;N&rsquo;
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_560.htm#isCM">D.4.3.10 isCM</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test if coker(M) is Cohen-Macaulay, M module
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_561.htm#isFlat">D.4.3.11 isFlat</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test if coker(M) is flat, M module
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_562.htm#isLocallyFree">D.4.3.12 isLocallyFree</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test if coker(M) is locally free of constant rank r
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_563.htm#isReg">D.4.3.13 isReg</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test if I is coker(M)-sequence, I ideal, M module
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_564.htm#kernel">D.4.3.14 kernel</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> ker(M&rsquo;&ndash;A-&gt;N&rsquo;) M,N modules, A matrix
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_565.htm#kohom">D.4.3.15 kohom</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Hom(R^k,A), A matrix over basering R
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_566.htm#kontrahom">D.4.3.16 kontrahom</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Hom(A,R^k), A matrix over basering R
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_567.htm#KoszulHomology">D.4.3.17 KoszulHomology</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> n-th Koszul homology H_n(I,coker(M)), I=ideal
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_568.htm#tensorMod">D.4.3.18 tensorMod</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Tensor product of modules M&rsquo;=coker(M), N&rsquo;=coker(N)
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_569.htm#Tor">D.4.3.19 Tor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Tor_k(M&rsquo;,N&rsquo;), M,N modules, M&rsquo;=coker(M), N&rsquo;=coker(N)
-</td></tr>
-</table></blockquote>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
+int p      = printlevel;
+ring  rr   = 32003,(x,y,z),(dp,C);
+ideal  I   = x4+y3+z2;
+qring  o   = std(I);
+module M   = [x,y,0,z],[y2,-x3,z,0],[z,0,-y,-x3],[0,z,x,-y2];
+print(cup(M));
+&rarr; 0,1,0, 0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,
+&rarr; 0,0,-1,0, 0,1,0,0,0,0,0, 0,0,0,0,0,0,
+&rarr; 0,0,0, -1,0,0,0,0,0,1,0, 0,0,0,0,0,0,
+&rarr; 0,0,0, 0, 1,0,0,1,0,0,-1,0,0,1,0,0,0 
+print(cup(M,1));
+&rarr; 0,1,0,0,0,0,0,0,0,0,0,
+&rarr; 0,0,0,0,0,0,0,0,0,0,0,
+&rarr; 0,0,0,0,0,0,0,0,0,0,0,
+&rarr; 0,0,0,0,1,0,0,0,0,0,0 
+// 2nd EXAMPLE  (shows what is going on)
+printlevel = 3;
+ring   r   = 0,(x,y),(dp,C);
+ideal  i   = x2-y3;
+qring  q   = std(i);
+module M   = [-x,y],[-y2,x];
+print(cup(M));
+&rarr; // vdim (Ext^1) = 2
+&rarr; // kbase of Ext^1(M,M)
+&rarr; //  - the columns present the kbase elements in Hom(F(1),F(0))
+&rarr; //  - F(*) a free resolution of M
+&rarr; -1,0,
+&rarr; 0, y,
+&rarr; 0, 1,
+&rarr; -1,0 
+&rarr; // lift kbase of Ext^1:
+&rarr; //  - the columns present liftings of kbase elements into Hom(F(2),F(1))
+&rarr; //  - F(*) a free resolution of M 
+&rarr; 1,0,
+&rarr; 0,y,
+&rarr; 0,1,
+&rarr; 1,0 
+&rarr; // vdim (Ext^2) = 2
+&rarr; // kbase of Ext^2(M,M)
+&rarr; //  - the columns present the kbase elements in Hom(F(2),F(0))
+&rarr; //  - F(*) is a a free resolution of M 
+&rarr; -1,0,
+&rarr; 0, y,
+&rarr; 0, 1,
+&rarr; -1,0 
+&rarr; // matrix of cup-products (in Ext^2)
+&rarr; 0,-1,0, 0,y,
+&rarr; 0,0, -y,y,0,
+&rarr; 0,0, -1,1,0,
+&rarr; 0,-1,0, 0,y 
+&rarr; ////// end level 2 //////
+&rarr; // the associated matrices of the bilinear mapping 'cup' 
+&rarr; // corresponding to the kbase elements of Ext^2(M,M) are shown,
+&rarr; //  i.e. the rows of the final matrix are written as matrix of
+&rarr; //  a bilinear form on Ext^1 x Ext^1
+&rarr; //-----component 1:
+&rarr; 0,1,
+&rarr; 0,0 
+&rarr; //-----component 2:
+&rarr; 0, 0,
+&rarr; -1,1 
+&rarr; ////// end level 3 //////
+&rarr; 0,1,0, 0,0,
+&rarr; 0,0,-1,1,0 
+printlevel = p;
+</pre></td></tr></table>
 
 </td>
 </tr>
@@ -152,14 +201,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_549.htm#select1" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.2.7 select1" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_551.htm#cup" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.1 cup" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_529.htm#Commutative-algebra" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4 Commutative algebra" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_549.htm#homolog_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3 homolog_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_551.htm#cupproduct" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.2 cupproduct" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_549.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

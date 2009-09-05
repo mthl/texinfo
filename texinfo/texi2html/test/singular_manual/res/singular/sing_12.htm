@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3 General concepts</title>
+<title>Singular 2-0-4 Manual: 3.1 Interactive use</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3 General concepts">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3 General concepts">
+<meta name="description" content="Singular 2-0-4 Manual: 3.1 Interactive use">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.1 Interactive use">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="General-concepts"></a>
+<a name="Interactive-use"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_11.htm#Resolution" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3.6 Resolution" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_13.htm#Interactive-use" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.1 Interactive use" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_13.htm#How-to-enter-and-exit" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.1.1 How to enter and exit" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_2.htm#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2 Introduction" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Top" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,34 +82,39 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="General-concepts-1"></a>
-<h1 class="chapter">3 General concepts</h1>
-<a name="index-General-concepts"></a>
+<a name="Interactive-use-1"></a>
+<h2 class="section">3.1 Interactive use</h2>
+<a name="index-Interactive-use"></a>
 
+<p>In this section, aspects of interactive use are discussed.  This
+includes how to enter and exit <small>SINGULAR</small>, how to interpret its
+prompt, how to get the online help, and so on.
+</p>
+<p>There are a few important notes which one should not forget:
+</p><ul>
+<li>
+every command has to be terminated by a <code>;</code> (semicolon) followed
+by a &lt;RETURN&gt;
+</li><li>
+the online help is accessible by means of the <code>help</code> function
+</li></ul>
 
 <blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_13.htm#Interactive-use">3.1 Interactive use</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="sing_13.htm#How-to-enter-and-exit">3.1.1 How to enter and exit</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="sing_21.htm#Emacs-user-interface">3.2 Emacs user interface</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="sing_14.htm#The-SINGULAR-prompt">3.1.2 The SINGULAR prompt</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="sing_28.htm#Rings-and-orderings">3.3 Rings and orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="sing_15.htm#The-online-help-system">3.1.3 The online help system</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="sing_32.htm#Implemented-algorithms">3.4 Implemented algorithms</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="sing_16.htm#Interrupting-SINGULAR">3.1.4 Interrupting SINGULAR</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="sing_33.htm#The-SINGULAR-language">3.5 The SINGULAR language</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="sing_17.htm#Editing-input">3.1.5 Editing input</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="sing_40.htm#Input-and-output">3.6 Input and output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="sing_18.htm#Command-line-options">3.1.6 Command line options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="sing_41.htm#Procedures">3.7 Procedures</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_46.htm#Libraries">3.8 Libraries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_49.htm#Guidelines-for-writing-a-library">3.9 Guidelines for writing a library</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_60.htm#Debugging-tools">3.10 Debugging tools</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="sing_19.htm#Startup-sequence">3.1.7 Startup sequence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table></blockquote>
-
 
 </td>
 </tr>
@@ -120,14 +125,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_11.htm#Resolution" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3.6 Resolution" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_13.htm#Interactive-use" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.1 Interactive use" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_2.htm#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2 Introduction" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Top" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_13.htm#How-to-enter-and-exit" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.1.1 How to enter and exit" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

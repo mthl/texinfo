@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.7.4 list related functions</title>
+<title>Singular 2-0-4 Manual: 4.8 map</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.7.4 list related functions">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.7.4 list related functions">
+<meta name="description" content="Singular 2-0-4 Manual: 4.8 map">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.8 map">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="list-related-functions"></a>
+<a name="map"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_104.htm#list-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.7.3 list operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_104.htm#list-related-functions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.7.4 list related functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_106.htm#map" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.8 map" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_106.htm#map-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.8.1 map declarations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_101.htm#list" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.7 list" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,55 +82,182 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="list-related-functions-1"></a>
-<h3 class="subsection">4.7.4 list related functions</h3>
-<a name="index-list-related-functions"></a>
+<a name="map-1"></a>
+<h2 class="section">4.8 map</h2>
+<a name="index-map"></a>
 
-<dl compact="compact">
-<dt><code>bareiss</code></dt>
-<dd><p>returns a list of a matrix (lower triangular) and
-of an intvec (permutations of columns, see <a href="sing_157.htm#bareiss">bareiss</a>)
-</p></dd>
-<dt><code>betti</code></dt>
-<dd><p>Betti numbers of a resolution (see <a href="sing_158.htm#betti">betti</a>)
-</p></dd>
-<dt><code>delete</code></dt>
-<dd><p>deletes an element from a list (see <a href="sing_171.htm#delete">delete</a>)
-</p></dd>
-<dt><code>facstd</code></dt>
-<dd><p>factorizing Groebner basis algorithm (see <a href="sing_184.htm#facstd">facstd</a>)
-</p></dd>
-<dt><code>factorize</code></dt>
-<dd><p>list of factors of a polynomial (see <a href="sing_185.htm#factorize">factorize</a>)
-</p></dd>
-<dt><code>insert</code></dt>
-<dd><p>inserts or appends a new element to a list (see <a href="sing_206.htm#insert">insert</a>)
-</p></dd>
-<dt><code>lres</code></dt>
-<dd><p>free resolution (see <a href="sing_224.htm#lres">lres</a>)
-</p></dd>
-<dt><code>minres</code></dt>
-<dd><p>minimize a free resolution (see <a href="sing_229.htm#minres">minres</a>)
-</p></dd>
-<dt><code>mres</code></dt>
-<dd><p>minimal free resolution of an ideal, resp. module w.r.t.
-a minimal set of generators of the first module (see <a href="sing_233.htm#mres">mres</a>)
-</p></dd>
-<dt><code>names</code></dt>
-<dd><p>list of all user-defined variable names (see <a href="sing_237.htm#names">names</a>)
-</p></dd>
-<dt><code>res</code></dt>
-<dd><p>free resolution of an ideal, resp. module (see <a href="sing_264.htm#res">res</a>)
-</p></dd>
-<dt><code>size</code></dt>
-<dd><p>number of entries (see <a href="sing_271.htm#size">size</a>)
-</p></dd>
-<dt><code>sres</code></dt>
-<dd><p>free resolution of an ideal, resp. module, given by a standard base (see <a href="sing_274.htm#sres">sres</a>)
-</p></dd>
-</dl>
+<p>Maps are ring maps from a preimage ring into the basering.
+</p>
+<p><strong>Note:</strong>
+</p><ul>
+<li>
+the target of a map is <strong>ALWAYS</strong> the actual basering
+</li><li>
+the preimage ring is stored &quot;by name&quot;, that means, maps can only be
+used in such contexts, where the name of the preimage ring can be
+resolved (i.e., there might be problems for rings/maps defined in
+subprocedures). See also <a href="sing_329.htm#Identifier-resolution">Identifier resolution</a>, <a href="sing_42.htm#Names-in-procedures">Names in procedures</a>.
+</li></ul>
 
+<p>Maps between rings with different coefficient fields are
+possible and listed below.
+</p>
+<p>Canonically realized are
+</p><ul>
+<li>
+<!-- MATH
+ $Q \rightarrow  Q(a, \ldots)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="94" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_65.png"
+ ALT="$Q \rightarrow Q(a, \ldots)$"></SPAN>
 
+</li><li>
+<!-- MATH
+ $Q \rightarrow R$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_66.png"
+ ALT="$Q \rightarrow R$"></SPAN>
+
+</li><li>
+<!-- MATH
+ $Q \rightarrow  C$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_67.png"
+ ALT="$Q \rightarrow C$"></SPAN>
+
+</li><li>
+<!-- MATH
+ $Z/p \rightarrow  (Z/p)(a, \ldots)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="132" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_68.png"
+ ALT="$Z/p \rightarrow (Z/p)(a, \ldots)$"></SPAN>
+
+</li><li>
+<!-- MATH
+ $Z/p \rightarrow  GF(p^n)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="103" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_69.png"
+ ALT="$Z/p \rightarrow GF(p^n)$"></SPAN>
+
+</li><li>
+<!-- MATH
+ $Z/p \rightarrow  R$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="63" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_70.png"
+ ALT="$Z/p \rightarrow R$"></SPAN>
+
+</li><li>
+<!-- MATH
+ $R \rightarrow C$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_71.png"
+ ALT="$R \rightarrow C$"></SPAN>
+</li></ul>
+
+<p>Possible are furthermore
+</p><ul>
+<li>
+<!-- MATH
+ $Z/p \rightarrow Q,
+\quad
+[i]_p \mapsto i \in [-p/2, \, p/2]
+\subseteq Z$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="257" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_72.png"
+ ALT="$Z/p \rightarrow Q,
+\quad
+[i]_p \mapsto i \in [-p/2, \, p/2]
+\subseteq Z$"></SPAN>
+</li><li>
+<!-- MATH
+ $Z/p \rightarrow Z/p^\prime,
+\quad
+[i]_p \mapsto i \in [-p/2, \, p/2] \subseteq Z, \;
+i \mapsto [i]_{p^\prime} \in Z/p^\prime$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="386" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_73.png"
+ ALT="$Z/p \rightarrow Z/p^\prime,
+\quad
+[i]_p \mapsto i \in [-p/2, \, p/2] \subseteq Z, \;
+i \mapsto [i]_{p^\prime} \in Z/p^\prime$"></SPAN>
+</li><li>
+<!-- MATH
+ $C \rightarrow R, \quad$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="69" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_74.png"
+ ALT="$C \rightarrow R, \quad$"></SPAN> the real part
+</li></ul>
+
+<p>Finally, in Singular we allow the mapping from rings
+with coefficient field Q to rings whose ground fields
+have finite characteristic:
+</p>
+<ul>
+<li>
+<!-- MATH
+ $Q \rightarrow Z/p$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="64" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_75.png"
+ ALT="$Q \rightarrow Z/p$"></SPAN>
+
+</li><li>
+<!-- MATH
+ $Q \rightarrow (Z/p)(a, \ldots)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="119" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_76.png"
+ ALT="$Q \rightarrow (Z/p)(a, \ldots)$"></SPAN>
+</li></ul>
+<p>In these cases the denominator and the numerator
+of a number are mapped separately by the usual
+map from Z to Z/p, and the image of the number
+is built again afterwards by division. It is thus
+not allowed to map numbers whose denominator is
+divisible by the characteristic of the target
+ground field, or objects containing such numbers.
+We, therefore, strongly recommend using such
+maps only to map objects with integer coefficients.
+</p>
+
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_106.htm#map-declarations">4.8.1 map declarations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_107.htm#map-expressions">4.8.2 map expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_108.htm#map-operations">4.8.3 map operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_185.htm#fetch">5.1.31 fetch</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_202.htm#imap">5.1.48 imap</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_278.htm#subst">5.1.124 subst</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
+<p>See <a href="sing_202.htm#imap">imap</a>; <a href="sing_185.htm#fetch">fetch</a>; <a href="sing_278.htm#subst">subst</a>.
+</p>
 </td>
 </tr>
 </table>
@@ -140,14 +267,14 @@ a minimal set of generators of the first module (see <a href="sing_233.htm#mres"
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_104.htm#list-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.7.3 list operations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_106.htm#map" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.8 map" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_101.htm#list" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.7 list" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_104.htm#list-related-functions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.7.4 list related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_106.htm#map-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.8.1 map declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.3.5 noether</title>
+<title>Singular 2-0-4 Manual: 5.3.6 printlevel</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.3.5 noether">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.3.5 noether">
+<meta name="description" content="Singular 2-0-4 Manual: 5.3.6 printlevel">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.3.6 printlevel">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="noether"></a>
+<a name="printlevel"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_311.htm#multBound" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.3.4 multBound" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_311.htm#noether" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.3.5 noether" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_313.htm#printlevel" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3.6 printlevel" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_313.htm#short" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3.7 short" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_307.htm#System-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.3 System variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_306.htm#System-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.3 System variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,36 +84,37 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="noether-1"></a>
-<h3 class="subsection">5.3.5 noether</h3>
-<a name="index-noether"></a>
+<a name="printlevel-1"></a>
+<h3 class="subsection">5.3.6 printlevel</h3>
+<a name="index-printlevel"></a>
 <dl compact="compact">
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>poly
+<dd><p>int
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>The standard basis computation in local rings
-cuts off  all monomials above
-(in the sense of the monomial ordering)
-the monomial <code>noether</code> during the computation.
-<br>Reset <code>noether</code> by setting <code>noether</code> to 0.
+<dd><p>sets the debug level for <code>dbprint</code>.
+If <code>printlevel</code> &gt;= <code>voice</code> then <code>dbprint</code> is equivalent to
+<code>print</code>, otherwise nothing is printed.
+</p></dd>
+<dt><code><strong>Note:</strong></code></dt>
+<dd><p>See <a href="sing_49.htm#Procedures-in-a-library">Procedures in a library</a>, for a small example about how this
+is used for the display of comments while procedures are executed.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=32003,(x,y,z),ds;
-  ideal i=x2+y12,y13;
-  std(i);
-&rarr; _[1]=x2+y12
-&rarr; _[2]=y13
-  noether=x11;
-  std(i);
-&rarr; _[1]=x2
-  noether=0; //disables noether
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  voice;
+&rarr; 1
+  printlevel=0;
+  dbprint(1);
+  printlevel=voice;
+  dbprint(1);
+&rarr; 1
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_126.htm#poly">poly</a>;
-<a href="sing_276.htm#std">std</a>.
+<a href="sing_166.htm#dbprint">dbprint</a>;
+<a href="sing_73.htm#int">int</a>;
+<a href="sing_317.htm#voice">voice</a>.
 </p></td>
 </tr>
 </table>
@@ -123,14 +124,14 @@ the monomial <code>noether</code> during the computation.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_311.htm#multBound" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.3.4 multBound" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_313.htm#printlevel" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3.6 printlevel" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_307.htm#System-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.3 System variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_311.htm#noether" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.3.5 noether" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_313.htm#short" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3.7 short" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_306.htm#System-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.3 System variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

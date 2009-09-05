@@ -5,6 +5,7 @@
 ]>
 <book id="test_two_include.xml" lang="en">
 
+
 <para>Include version
 </para>
 <para>include inc_file

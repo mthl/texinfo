@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.46 homog</title>
+<title>Singular 2-0-4 Manual: 5.1.47 hres</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.46 homog">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.46 homog">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.47 hres">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.47 hres">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="homog"></a>
+<a name="hres"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_200.htm#hilb" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.45 hilb" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_200.htm#homog" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.46 homog" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_202.htm#hres" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.47 hres" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_202.htm#imap" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.48 imap" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,59 +84,80 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="homog-1"></a>
-<h3 class="subsection">5.1.46 homog</h3>
-<a name="index-homog"></a>
-
+<a name="hres-1"></a>
+<h3 class="subsection">5.1.47 hres</h3>
+<a name="index-hres"></a>
+<a name="index-resolution_002c-hilbert_002ddriven"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>homog (</code> ideal_expression <code>)</code>
-<br><code>homog (</code> module_expression <code>)</code>
+<dd><p><code>hres (</code> ideal_expression<code>,</code> int_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>int
+<dd><p>resolution
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>tests for homogeneity: returns 1 for homogeneous input, 0 otherwise.
+<dd><p>computes a free resolution of an ideal using the Hilbert-driven
+algorithm.
+</p>
+<p>More precisely, let R be the basering and I be the given ideal.
+Then <code>hres</code> computes a minimal free resolution of R/I
+
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex8x.png" alt="         A2    A1
+...-&#x2192;  F2- &#x2192; F1 -&#x2192; R -&#x2192;  R&#x2215;I -&#x2192; 0.  " class="math-display" ></center>  
+If the int_expression k is not zero then the computation stops after
+k steps and returns a list of modules
+
+<span 
+class="cmmi-10">M</span><sub><span 
+class="cmmi-7">i</span></sub> = <span 
+class="cmtt-10">module</span>(<span 
+class="cmmi-10">A</span><sub><span 
+class="cmmi-7">i</span></sub>), i=1..k.  
+</p>
+<p><code>list L=hres(I,0);</code> returns a list L of n modules (where n is the
+number of variables of the basering) such that
+ <span 
+class="cmtt-10">L</span>[<span 
+class="cmtt-10">i</span>] = <span 
+class="cmmi-10">M</span><sub><span 
+class="cmmi-7">i</span></sub>  
+in the above notation.
 </p></dd>
-<dt><code><strong>Syntax:</strong></code></dt>
-<dd><br><p><code>homog (</code> polynomial_expression<code>,</code> ring_variable <code>)</code>
-<br><code>homog (</code> vector_expression<code>,</code> ring_variable <code>)</code>
-<br><code>homog (</code> ideal_expression<code>,</code> ring_variable <code>)</code>
-<br><code>homog (</code> module_expression<code>,</code> ring_variable <code>)</code>
-</p></dd>
-<dt><code><strong>Type:</strong></code></dt>
-<dd><p>same as first argument
-</p></dd>
-<dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>homogenizes polynomials, vectors, ideals, or modules by multiplying
-each monomial with a suitable power of the given ring variable (which must have
-weight 1).
+<dt><code><strong>Note:</strong></code></dt>
+<dd><p>The ideal_expression has to be homogeneous.
+<br> Accessing single elements of a resolution may require that some partial
+computations have to be finished and may therefore take some time.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),ds;
-  poly s1=x3y2+x5y+3y9;
-  poly s2=x2y2z2+3z8;
-  poly s3=5x4y2+4xy5+2x2y2z3+y7+11x10;
-  ideal i=s1,s2,s3;
-  homog(s2,z);
-&rarr; x2y2z4+3z8
-  homog(i,z);
-&rarr; _[1]=3y9+x5yz3+x3y2z4
-&rarr; _[2]=x2y2z4+3z8
-&rarr; _[3]=11x10+y7z3+5x4y2z4+4xy5z4+2x2y2z6
-  homog(i);
-&rarr; 0
-  homog(homog(i,z));
-&rarr; 1
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+  ideal I=xz,yz,x3-y3;
+  def L=hres(I,0);
+  print(betti(L),&quot;betti&quot;);
+&rarr;            0     1     2
+&rarr; ------------------------
+&rarr;     0:     1     -     -
+&rarr;     1:     -     2     1
+&rarr;     2:     -     1     1
+&rarr; ------------------------
+&rarr; total:     1     3     2
+  L[2];     // the first syzygy module of r/I
+&rarr; _[1]=-x*gen(1)+y*gen(2)
+&rarr; _[2]=-x2*gen(2)+y2*gen(1)+z*gen(3)
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_69.htm#ideal">ideal</a>;
-<a href="sing_116.htm#module">module</a>;
-<a href="sing_126.htm#poly">poly</a>;
-<a href="sing_149.htm#vector">vector</a>.
+<a href="sing_157.htm#betti">betti</a>;
+<a href="sing_68.htm#ideal">ideal</a>;
+<a href="sing_73.htm#int">int</a>;
+<a href="sing_223.htm#lres">lres</a>;
+<a href="sing_228.htm#minres">minres</a>;
+<a href="sing_115.htm#module">module</a>;
+<a href="sing_232.htm#mres">mres</a>;
+<a href="sing_263.htm#res">res</a>;
+<a href="sing_273.htm#sres">sres</a>.
 </p></td>
 </tr>
 </table>
@@ -146,14 +167,14 @@ weight 1).
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_200.htm#hilb" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.45 hilb" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_202.htm#hres" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.47 hres" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_200.htm#homog" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.46 homog" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_202.htm#imap" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.48 imap" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.18.2 vector expressions</title>
+<title>Singular 2-0-4 Manual: 4.18.3 vector operations</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.18.2 vector expressions">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.18.2 vector expressions">
+<meta name="description" content="Singular 2-0-4 Manual: 4.18.3 vector operations">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.18.3 vector operations">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="vector-expressions"></a>
+<a name="vector-operations"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_150.htm#vector-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.18.1 vector declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_150.htm#vector-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.18.2 vector expressions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_152.htm#vector-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.18.3 vector operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_152.htm#vector-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.18.4 vector related functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_149.htm#vector" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.18 vector" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_148.htm#vector" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.18 vector" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,45 +82,41 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="vector-expressions-1"></a>
-<h3 class="subsection">4.18.2 vector expressions</h3>
-<a name="index-vector-expressions"></a>
+<a name="vector-operations-1"></a>
+<h3 class="subsection">4.18.3 vector operations</h3>
+<a name="index-vector-operations"></a>
 
-<p>A vector expression is:
-</p><ol>
-<li>
-an identifier of type vector
-</li><li>
-a function returning vector
-</li><li>
-a poly expression (via the canonical embedding <code>p</code> &rarr; <code>p*gen(1)</code>)
-</li><li>
-vector expressions combined by the arithmetic operations <code>+</code> or
-<code>-</code>
-</li><li>
-a poly expression and a vector expression combined by the arithmetic
-operation <code>*</code>
-</li><li>
-a type cast to vector using the brackets <code>[</code> , <code>]</code>
-</li></ol>
+<dl compact="compact">
+<dt><code>+</code></dt>
+<dd><p>addition
+</p>
+</dd>
+<dt><code>-</code></dt>
+<dd><p>negation or subtraction
+</p>
+</dd>
+<dt><code>/</code></dt>
+<dd><p>division by a monomial, not divisible terms yield 0
+</p>
+</dd>
+<dt><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>&lt;&gt;</code></dt>
+<dd><p>comparison of leading terms w.r.t. monomial ordering
+</p>
+</dd>
+<dt>vector_expression <code>[</code> int_expressions <code>]</code></dt>
+<dd><p>is a vector entry; the index 1 gives the first entry.
+</p></dd>
+</dl>
 
 <br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  // ordering gives priority to components:
-  ring rr=0,(x,y,z),(c,dp);
-  vector v=[x2+y3,2,0,x*y]+gen(6)*x6;
-  v;
-&rarr; [y3+x2,2,0,xy,0,x6]
-  vector w=[z3-x,3y];
-  v-w;
-&rarr; [y3-z3+x2+x,-3y+2,0,xy,0,x6]
-  v*(z+x);
-&rarr; [xy3+y3z+x3+x2z,2x+2z,0,x2y+xyz,0,x7+x6z]
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=0,(x,y),(c,dp);
+  [x,y]-[1,x];
+&rarr; [x-1,-x+y]
+  [1,2,x,4][3];
+&rarr; x
 </pre></td></tr></table>
 
-<p>See
-<a href="sing_38.htm#Type-conversion-and-casting">Type conversion and casting</a>;
-<a href="sing_139.htm#ring">ring</a>.
-</p>
+
 </td>
 </tr>
 </table>
@@ -130,14 +126,14 @@ a type cast to vector using the brackets <code>[</code> , <code>]</code>
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_150.htm#vector-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.18.1 vector declarations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_152.htm#vector-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.18.3 vector operations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_149.htm#vector" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.18 vector" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_150.htm#vector-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.18.2 vector expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_152.htm#vector-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.18.4 vector related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_148.htm#vector" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.18 vector" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

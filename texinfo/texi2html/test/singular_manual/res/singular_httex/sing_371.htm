@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: Appendix C Mathematical background</title>
+<title>Singular 2-0-4 Manual: C.1 Standard bases</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: Appendix C Mathematical background">
-<meta name="keywords" content="Singular 2-0-4 Manual: Appendix C Mathematical background">
+<meta name="description" content="Singular 2-0-4 Manual: C.1 Standard bases">
+<meta name="keywords" content="Singular 2-0-4 Manual: C.1 Standard bases">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Mathematical-background"></a>
+<a name="Standard-bases"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_370.htm#Extra-weight-vector" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.8 Extra weight vector" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_372.htm#Standard-bases" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.1 Standard bases" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_372.htm#Hilbert-function" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.2 Hilbert function" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Top" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,32 +84,145 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Mathematical-background-1"></a>
-<h1 class="appendix">Appendix C Mathematical background</h1>
-<a name="index-Mathematical-background"></a>
+<a name="Standard-bases-1"></a>
+<h2 class="section">C.1 Standard bases</h2>
+<a name="index-Standard-bases"></a>
 
-
-<p>This chapter introduces some of the mathematical notions and definitions used
-throughout the manual. It is mostly a collection of the
-most prominent definitions and properties. For details, please, refer to
-some articles or text books (see <a href="sing_388.htm#References">References</a>).
+<a name="Definition"></a>
+<h3 class="subheading">Definition</h3>
+<p>
+Let <span 
+class="cmmi-10">R </span>= Loc<sub><span 
+class="cmmi-7">&#x003C;</span></sub><span 
+class="cmmi-10">K</span>[<span class="underline"><span 
+class="cmmi-10">x</span></span>] and let <span 
+class="cmmi-10">I </span>be a submodule of <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup>. Note that for r=1 this means that <span 
+class="cmmi-10">I </span>is an ideal
+in <span 
+class="cmmi-10">R</span>. Denote by <span 
+class="cmmi-10">L</span>(<span 
+class="cmmi-10">I</span>) the submodule of <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup> generated by the leading terms of elements of <span 
+class="cmmi-10">I</span>, i.e. by
+<img 
+src="sing_tex4ht_tex49x.png" alt="{L(f) | f &#x2208; I}"  class="left" align="middle">. Then <span 
+class="cmmi-10">f</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,f</span><sub><span 
+class="cmmi-7">s</span></sub> <span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">I </span>is called a <span 
+class="cmbx-10">standard basis </span>of <span 
+class="cmmi-10">I </span>if <span 
+class="cmmi-10">L</span>(<span 
+class="cmmi-10">f</span><sub><span 
+class="cmr-7">1</span></sub>)<span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,L</span>(<span 
+class="cmmi-10">f</span><sub><span 
+class="cmmi-7">s</span></sub>) generate <span 
+class="cmmi-10">L</span>(<span 
+class="cmmi-10">I</span>).  
 </p>
-<blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_372.htm#Standard-bases">C.1 Standard bases</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_373.htm#Hilbert-function">C.2 Hilbert function</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_374.htm#Syzygies-and-resolutions">C.3 Syzygies and resolutions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_375.htm#Characteristic-sets">C.4 Characteristic sets</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_376.htm#Gauss_002dManin-connection">C.5 Gauss-Manin connection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_377.htm#Toric-ideals-and-integer-programming">C.6 Toric ideals and integer programming</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_388.htm#References">C.7 References</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table></blockquote>
+<a name="Properties"></a>
+<h3 class="subheading">Properties</h3>
+<dl compact="compact">
+<dt>normal form:</dt>
+<dd><a name="index-Normal-form"></a>
+<p> A function
+NF : <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup> <span 
+class="cmsy-10">&#x00D7;{</span><span 
+class="cmmi-10">G</span><span 
+class="cmsy-10">&#x2223;</span><span 
+class="cmmi-10">G</span><span 
+class="cmmi-10">&#x00A0;</span> a standard basis<span 
+class="cmsy-10">}&#x2192; </span><span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup><span 
+class="cmmi-10">,</span>(<span 
+class="cmmi-10">p,G</span>)<img 
+src="sing_tex4ht_tex50x.png" alt="&#x21A6;&#x2192;"  class="mapsto" >NF(<span 
+class="cmmi-10">p</span><span 
+class="cmsy-10">|</span><span 
+class="cmmi-10">G</span>), is called a <span 
+class="cmbx-10">normal form </span>if for any <span 
+class="cmmi-10">p </span><span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup> and any
+standard basis <span 
+class="cmmi-10">G </span>the following holds: if NF(<span 
+class="cmmi-10">p</span><span 
+class="cmsy-10">|</span><span 
+class="cmmi-10">G</span>) <span 
+class="cmsy-10">&#x2044;</span>= 0 then <span 
+class="cmmi-10">L</span>(<span 
+class="cmmi-10">g</span>) does not divide <span 
+class="cmmi-10">L</span>(NF(<span 
+class="cmmi-10">p</span><span 
+class="cmsy-10">|</span><span 
+class="cmmi-10">G</span>)) for all
+<span 
+class="cmmi-10">g </span><span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">G</span>.
+<!--l. 1456--><p class="noindent" >NF(<span 
+class="cmmi-10">p</span><span 
+class="cmsy-10">|</span><span 
+class="cmmi-10">G</span>) is called a <span 
+class="cmbx-10">normal form of </span><span 
+class="cmmi-10">p </span><span 
+class="cmbx-10">with respect to </span><span 
+class="cmmi-10">G </span>(note that such a function is not unique).  
+</p></dd>
+<dt>ideal membership:</dt>
+<dd><a name="index-Ideal-membership"></a>
+<p> For a
+standard basis <span 
+class="cmmi-10">G </span>of <span 
+class="cmmi-10">I </span>the following holds: <span 
+class="cmmi-10">f </span><span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">I </span>if and only if NF(<span 
+class="cmmi-10">f,G</span>) = 0.  
+</p></dd>
+<dt>Hilbert function:</dt>
+<dd><p> Let <span 
+class="cmmi-10">I </span><span 
+class="cmsy-10">&#x2286; </span><span 
+class="cmmi-10">K</span>[<span class="underline"><span 
+class="cmmi-10">x</span></span>]<sup><span 
+class="cmmi-7">r</span></sup> be a
+homogeneous module, then the Hilbert function <span 
+class="cmmi-10">H</span><sub><span 
+class="cmmi-7">I</span></sub> of <span 
+class="cmmi-10">I </span>(see below) and the Hilbert function <span 
+class="cmmi-10">H</span><sub><span 
+class="cmmi-7">L</span><span 
+class="cmr-7">(</span><span 
+class="cmmi-7">I</span><span 
+class="cmr-7">)</span></sub> of the
+leading module <span 
+class="cmmi-10">L</span>(<span 
+class="cmmi-10">I</span>) coincide, i.e., <span 
+class="cmmi-10">H</span><sub><span 
+class="cmmi-7">I</span></sub> = <span 
+class="cmmi-10">H</span><sub><span 
+class="cmmi-7">L</span><span 
+class="cmr-7">(</span><span 
+class="cmmi-7">I</span><span 
+class="cmr-7">)</span></sub>.  
+</p></dd>
+</dl>
+
 </td>
 </tr>
 </table>
@@ -119,14 +232,14 @@ some articles or text books (see <a href="sing_388.htm#References">References</a
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_370.htm#Extra-weight-vector" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.8 Extra weight vector" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_372.htm#Standard-bases" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.1 Standard bases" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Top" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_372.htm#Hilbert-function" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.2 Hilbert function" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

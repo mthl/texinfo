@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.45 hilb</title>
+<title>Singular 2-0-4 Manual: 5.1.46 homog</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.45 hilb">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.45 hilb">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.46 homog">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.46 homog">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="hilb"></a>
+<a name="homog"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_199.htm#highcorner" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.44 highcorner" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_199.htm#hilb" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.45 hilb" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_201.htm#homog" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.46 homog" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_201.htm#hres" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.47 hres" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,73 +82,59 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="hilb-1"></a>
-<h3 class="subsection">5.1.45 hilb</h3>
-<a name="index-hilb"></a>
+<a name="homog-1"></a>
+<h3 class="subsection">5.1.46 homog</h3>
+<a name="index-homog"></a>
+
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>hilb (</code> ideal_expression <code>)</code>
-<br><code>hilb (</code> module_expression <code>)</code>
-<br><code>hilb (</code> ideal_expression<code>,</code> int_expression <code>)</code>
-<br><code>hilb (</code> module_expression<code>,</code> int_expression <code>)</code>
-<br><code>hilb (</code> ideal_expression<code>,</code> int_expression <code>,</code> intvec_expression <code>)</code>
-<br><code>hilb (</code> module_expression<code>,</code> int_expression <code>,</code> intvec_expression <code>)</code>
+<dd><p><code>homog (</code> ideal_expression <code>)</code>
+<br><code>homog (</code> module_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>none (if called with one argument)
-<br>intvec (if called with two or three arguments)
+<dd><p>int
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>computes the (weighted) Hilbert series of the ideal, resp. module,
-defined by the leading terms of the generators of the given ideal, resp. module.<br>
-If <code>hilb</code> is called with one argument, then the 1st and 2nd Hilbert series
-together with some additional information are displayed.<br>
-If <code>hilb</code> is called with two arguments, then the n-th Hilbert series is returned
-as an intvec, where n=1,2 is the second argument.<br>
-If a weight vector w is a given as 3rd argument, then the Hilbert series is computed
-w.r.t. these weights w (by default all weights are set to 1).
+<dd><p>tests for homogeneity: returns 1 for homogeneous input, 0 otherwise.
 </p></dd>
-<dt><code><strong>Caution:</strong></code></dt>
-<dd><p>The last entry of the returned intvec is not part of the actual Hilbert series,
-but is used in the Hilbert driven standard basis computation (see <a href="sing_278.htm#stdhilb">stdhilb</a>).
+<dt><code><strong>Syntax:</strong></code></dt>
+<dd><br><p><code>homog (</code> polynomial_expression<code>,</code> ring_variable <code>)</code>
+<br><code>homog (</code> vector_expression<code>,</code> ring_variable <code>)</code>
+<br><code>homog (</code> ideal_expression<code>,</code> ring_variable <code>)</code>
+<br><code>homog (</code> module_expression<code>,</code> ring_variable <code>)</code>
 </p></dd>
-<dt><code><strong>Note:</strong></code></dt>
-<dd><p>If the input is homogeneous w.r.t. the weights and a standard basis, the result is
-the (weighted) Hilbert series of the original ideal, resp. module.<br>
+<dt><code><strong>Type:</strong></code></dt>
+<dd><p>same as first argument
+</p></dd>
+<dt><code><strong>Purpose:</strong></code></dt>
+<dd><p>homogenizes polynomials, vectors, ideals, or modules by multiplying
+each monomial with a suitable power of the given ring variable (which must have
+weight 1).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=32003,(x,y,z),dp;
-  ideal i=x2,y2,z2;
-  ideal s=std(i);
-  hilb(s);
-&rarr; //         1 t^0
-&rarr; //        -3 t^2
-&rarr; //         3 t^4
-&rarr; //        -1 t^6
-&rarr; 
-&rarr; //         1 t^0
-&rarr; //         3 t^1
-&rarr; //         3 t^2
-&rarr; //         1 t^3
-&rarr; // dimension (affine)  = 0
-&rarr; // degree      = 8
-  hilb(s,1);
-&rarr; 1,0,-3,0,3,0,-1,0
-  hilb(s,2);
-&rarr; 1,3,3,1,0
-  intvec w=2,2,2;
-  hilb(s,1,w);
-&rarr; 1,0,0,0,-3,0,0,0,3,0,0,0,-1,0
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),ds;
+  poly s1=x3y2+x5y+3y9;
+  poly s2=x2y2z2+3z8;
+  poly s3=5x4y2+4xy5+2x2y2z3+y7+11x10;
+  ideal i=s1,s2,s3;
+  homog(s2,z);
+&rarr; x2y2z4+3z8
+  homog(i,z);
+&rarr; _[1]=3y9+x5yz3+x3y2z4
+&rarr; _[2]=x2y2z4+3z8
+&rarr; _[3]=11x10+y7z3+5x4y2z4+4xy5z4+2x2y2z6
+  homog(i);
+&rarr; 0
+  homog(homog(i,z));
+&rarr; 1
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_373.htm#Hilbert-function">Hilbert function</a>;
-<a href="sing_69.htm#ideal">ideal</a>;
-<a href="sing_87.htm#intvec">intvec</a>;
-<a href="sing_116.htm#module">module</a>;
-<a href="sing_276.htm#std">std</a>;
-<a href="sing_278.htm#stdhilb">stdhilb</a>.
+<a href="sing_68.htm#ideal">ideal</a>;
+<a href="sing_115.htm#module">module</a>;
+<a href="sing_125.htm#poly">poly</a>;
+<a href="sing_148.htm#vector">vector</a>.
 </p></td>
 </tr>
 </table>
@@ -158,14 +144,14 @@ the (weighted) Hilbert series of the original ideal, resp. module.<br>
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_199.htm#highcorner" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.44 highcorner" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_201.htm#homog" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.46 homog" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_199.htm#hilb" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.45 hilb" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_201.htm#hres" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.47 hres" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.2.19 primefactors</title>
+<title>Singular 2-0-4 Manual: D.2.2.20 timeStd</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.2.19 primefactors">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.2.19 primefactors">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.2.20 timeStd">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.2.20 timeStd">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="primefactors"></a>
+<a name="timeStd"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_411.htm#primecoeffs" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.18 primecoeffs" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_411.htm#primefactors" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.19 primefactors" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_413.htm#timeStd" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.20 timeStd" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_413.htm#timeFactorize" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.21 timeFactorize" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_392.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,57 +82,39 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="primefactors-1"></a>
-<h4 class="subsubsection">D.2.2.19 primefactors</h4>
-<a name="index-primefactors"></a>
-<p>Procedure from library <code>general.lib</code> (see <a href="sing_393.htm#general_005flib">general_lib</a>).
+<a name="timeStd-1"></a>
+<h4 class="subsubsection">D.2.2.20 timeStd</h4>
+<a name="index-timeStd"></a>
+<p>Procedure from library <code>general.lib</code> (see <a href="sing_392.htm#general_005flib">general_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>primefactors(n [,p]); n = int or number, p = integer
-</p>
-</dd>
-<dt><strong>Compute:</strong></dt>
-<dd><p>primefactors &lt;= min(p,32003) of n (default p = 32003)
+<dd><p>timeStd(i,d), i ideal, d integer
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>a list, say l,
-<br>l[1] : primefactors &lt;= min(p,32003) of n
-<br>l[2] : l[2][i] = multiplicity of l[1][i]
-<br>l[3] : remaining factor ( n=product{ (l[1][i]^l[2][i])*l[3]} )
-type(l[3])=typeof(n)
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>If n is a long integer (of type number) then the procedure
-finds primefactors &lt;= min(p,32003) but n may be larger as
-2147483647 (max. integer representation)
-</p>
-</dd>
-<dt><strong>Warning:</strong></dt>
-<dd><p>the procedure works for small integers only, just by testing all
-primes (not to be considerd as serious prime factorization!)
+<dd><p>std(i) if the standard basis computation finished after
+d-1 seconds and i otherwise
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;general.lib&quot;;
-primefactors(7*8*121);
-&rarr; [1]:
-&rarr;    2,7,11
-&rarr; [2]:
-&rarr;    3,1,2
-&rarr; [3]:
-&rarr;    1
-ring r = 0,x,dp;
-primefactors(123456789100);
-&rarr; [1]:
-&rarr;    2,5
-&rarr; [2]:
-&rarr;    2,2
-&rarr; [3]:
-&rarr;    1234567891
+ring r=32003,(a,b,c,d,e),dp;
+int n=6;
+ideal i=
+a^n-b^n,
+b^n-c^n,
+c^n-d^n,
+d^n-e^n,
+a^(n-1)*b+b^(n-1)*c+c^(n-1)*d+d^(n-1)*e+e^(n-1)*a;
+ideal j=timeStd(i,2);
+j;
+&rarr; j[1]=a6-b6
+&rarr; j[2]=b6-c6
+&rarr; j[3]=c6-d6
+&rarr; j[4]=d6-e6
+&rarr; j[5]=a5b+b5c+c5d+d5e+ae5
 </pre></td></tr></table>
 
 </td>
@@ -144,14 +126,14 @@ primefactors(123456789100);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_411.htm#primecoeffs" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.18 primecoeffs" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_413.htm#timeStd" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.20 timeStd" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_411.htm#primefactors" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.19 primefactors" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_413.htm#timeFactorize" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.21 timeFactorize" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_392.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

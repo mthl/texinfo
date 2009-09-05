@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: A.14 Depth</title>
+<title>Singular 2-0-4 Manual: A.15 Formatting output</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: A.14 Depth">
-<meta name="keywords" content="Singular 2-0-4 Manual: A.14 Depth">
+<meta name="description" content="Singular 2-0-4 Manual: A.15 Formatting output">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.15 Formatting output">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Depth"></a>
+<a name="Formatting-output"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_344.htm#Polar-curves" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.13 Polar curves" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_344.htm#Depth" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.14 Depth" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_346.htm#Formatting-output" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.15 Formatting output" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_346.htm#Cyclic-roots" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.16 Cyclic roots" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,79 +84,44 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Depth-1"></a>
-<h2 class="section">A.14 Depth</h2>
-<a name="index-Depth"></a>
+<a name="Formatting-output-1"></a>
+<h2 class="section">A.15 Formatting output</h2>
+<a name="index-Formatting-output"></a>
 
-<p>We compute the depth of the module of Kaehler differentials
- D<sub><span 
-class="cmmi-7">k</span></sub>(R)  
-of the variety defined by the 
- (<span 
-class="cmmi-10">m </span>+ 1)  
--minors of a generic symmetric
- (<span 
-class="cmmi-10">n</span><span 
-class="cmsy-10">&#x00D7;</span><span 
-class="cmmi-10">n</span>)-matrix.  
-We do this by computing the resolution over the polynomial
-ring.  Then, by the Auslander-Buchsbaum formula, the depth is equal to
-the number of variables minus the length of a minimal resolution.  This
-example was suggested by U. Vetter in order to check whether his bound
- depth(D<sub><span 
-class="cmmi-7">k</span></sub>(<span 
-class="cmmi-10">R</span>)) <span 
-class="cmsy-10">&#x2265; </span><span 
-class="cmmi-10">m</span>(<span 
-class="cmmi-10">m </span>+ 1)<span 
-class="cmmi-10">&#x2215;</span>2 + <span 
-class="cmmi-10">m</span><span 
-class="cmsy-10">- </span>1  
-could be improved.
+<p>We show how to insert the result of a computation inside a text
+by using strings.
+First we compute the powers of 2 and comment the result with some text.
+Then we do the same and give the output a nice format by computing and
+adding appropriate space.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;matrix.lib&quot;; LIB &quot;sing.lib&quot;;
-  int n = 4;
-  int m = 3;
-  int N = n*(n+1)/2;           // will become number of variables
-  ring R = 32003,x(1..N),dp;
-  matrix X = symmat(n);        // proc from matrix.lib
-                               // creates the symmetric generic nxn matrix
-  print(X);
-&rarr; x(1),x(2),x(3),x(4),
-&rarr; x(2),x(5),x(6),x(7),
-&rarr; x(3),x(6),x(8),x(9),
-&rarr; x(4),x(7),x(9),x(10)
-  ideal J = minor(X,m);
-  J=std(J);
-  // Kaehler differentials D_k(R)
-  // of R=k[x1..xn]/J:
-  module D = J*freemodule(N)+transpose(jacob(J));
-  ncols(D);
-&rarr; 110
-  nrows(D);
-&rarr; 10
-  //
-  // Note: D is a submodule with 110 generators of a free module
-  // of rank 10 over a polynomial ring in 10 variables.
-  // Compute a full resolution of D with sres.
-  // This takes about 17 sec on a Mac PB 520c and 2 sec an a HP 735
-  int time = timer;
-  module sD = std(D);
-  list Dres = sres(sD,0);                // the full resolution
-  timer-time;                            // time used for std + sres
-&rarr; 0
-  intmat B = betti(Dres);
-  print(B,&quot;betti&quot;);
-&rarr;            0     1     2     3     4     5     6
-&rarr; ------------------------------------------------
-&rarr;     0:    10     -     -     -     -     -     -
-&rarr;     1:     -    10     -     -     -     -     -
-&rarr;     2:     -    84   144    60     -     -     -
-&rarr;     3:     -     -    35    80    60    16     1
-&rarr; ------------------------------------------------
-&rarr; total:    10    94   179   140    60    16     1
-  N-ncols(B)+1;                          // the desired depth
-&rarr; 4
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  // The powers of 2:
+  int  n;
+  for (n = 2; n &lt;= 128; n = n * 2)
+  {&quot;n = &quot; + string (n);}
+&rarr; n = 2
+&rarr; n = 4
+&rarr; n = 8
+&rarr; n = 16
+&rarr; n = 32
+&rarr; n = 64
+&rarr; n = 128
+  // The powers of 2 in a nice format
+  int j;
+  string space = &quot;&quot;;
+  for (n = 2; n &lt;= 128; n = n * 2)
+  {
+    space = &quot;&quot;;
+    for (j = 1; j &lt;= 5 - size (string (n)); j = j+1)
+    { space = space + &quot; &quot;; }
+    &quot;n =&quot; + space + string (n);
+  }
+&rarr; n =    2
+&rarr; n =    4
+&rarr; n =    8
+&rarr; n =   16
+&rarr; n =   32
+&rarr; n =   64
+&rarr; n =  128
 </pre></td></tr></table>
 
 </td>
@@ -168,14 +133,14 @@ could be improved.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_344.htm#Polar-curves" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.13 Polar curves" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_346.htm#Formatting-output" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.15 Formatting output" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_344.htm#Depth" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.14 Depth" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_346.htm#Cyclic-roots" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.16 Cyclic roots" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.2.12 ~ (break point)</title>
+<title>Singular 2-0-4 Manual: 5.3 System variables</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.2.12 ~ (break point)">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.2.12 ~ (break point)">
+<meta name="description" content="Singular 2-0-4 Manual: 5.3 System variables">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.3 System variables">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="g_t_007e"></a>
+<a name="System-variables"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_305.htm#while" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.2.11 while" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_305.htm#g_t_007e" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.2.12 ~ (break point)" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_307.htm#System-variables" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3 System variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_307.htm#degBound" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3.1 degBound" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_294.htm#Control-structures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.2 Control structures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,44 +84,33 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="g_t_007e-_0028break-point_0029"></a>
-<h3 class="subsection">5.2.12 ~ (break point)</h3>
-<a name="index-_007e-1"></a>
-<a name="index-break-point"></a>
-<dl compact="compact">
-<dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>~;</code>
-</p></dd>
-<dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>sets a break point. Whenever <small>SINGULAR</small> reaches the command <code>~;</code>
-in a sequence of commands it prompts for input. The user may now input
-lines of <small>SINGULAR</small> commands. The line length cannot exceed 80
-characters.
-<small>SINGULAR</small> proceeds with the execution of the command following <code>~;</code>
-as soon as it receives an empty line.
-</p></dd>
-<dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc t
-{
-  int i=2;
-  ~;
-  return(i+1);
-}
-t();
-&rarr; -- break point in t --
-&rarr; -- 0: called    from STDIN --
-// here local variables of the procedure can be accessed
-i;
-&rarr; 2
-&rarr; -- break point in t --
-
-&rarr; 3
-</pre></td></tr></table>
-</dd>
-</dl>
-<p>See
-<a href="sing_63.htm#Break-points">Break points</a>.
-</p>
+<a name="System-variables-1"></a>
+<h2 class="section">5.3 System variables</h2>
+<a name="index-System-variables"></a>
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_307.htm#degBound">5.3.1 degBound</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_308.htm#echo">5.3.2 echo</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_309.htm#minpoly">5.3.3 minpoly</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_310.htm#multBound">5.3.4 multBound</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_311.htm#noether">5.3.5 noether</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_312.htm#printlevel">5.3.6 printlevel</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_313.htm#short">5.3.7 short</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_314.htm#timer">5.3.8 timer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_315.htm#TRACE-var">5.3.9 TRACE</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_316.htm#rtimer">5.3.10 rtimer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_317.htm#voice">5.3.11 voice</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
 </td>
 </tr>
 </table>
@@ -131,14 +120,14 @@ i;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_305.htm#while" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.2.11 while" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_307.htm#System-variables" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3 System variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_294.htm#Control-structures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.2 Control structures" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_305.htm#g_t_007e" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.2.12 ~ (break point)" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_307.htm#degBound" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3.1 degBound" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

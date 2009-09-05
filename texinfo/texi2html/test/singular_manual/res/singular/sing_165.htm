@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.10 coeffs</title>
+<title>Singular 2-0-4 Manual: 5.1.11 contract</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.10 coeffs">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.10 coeffs">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.11 contract">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.11 contract">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="coeffs"></a>
+<a name="contract"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_164.htm#coef" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.9 coef" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_164.htm#coeffs" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.10 coeffs" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_166.htm#contract" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.11 contract" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_166.htm#dbprint" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.12 dbprint" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,146 +82,60 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="coeffs-1"></a>
-<h3 class="subsection">5.1.10 coeffs</h3>
-<a name="index-coeffs"></a>
+<a name="contract-1"></a>
+<h3 class="subsection">5.1.11 contract</h3>
+<a name="index-contract"></a>
 
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>coeffs (</code> poly_expression <code>,</code> ring_variable <code>)</code>
-<br><code>coeffs (</code> ideal_expression<code>,</code> ring_variable <code>)</code>
-<br><code>coeffs (</code> vector_expression<code>,</code> ring_variable <code>)</code>
-<br><code>coeffs (</code> module_expression<code>,</code> ring_variable <code>)</code>
-<br><code>coeffs (</code> poly_expression<code>,</code> ring_variable<code>,</code> matrix_name <code>)</code>
-<br><code>coeffs (</code> ideal_expression<code>,</code> ring_variable<code>,</code> matrix_name <code>)</code>
-<br><code>coeffs (</code> vector_expression<code>,</code> ring_variable<code>,</code> matrix_name <code>)</code>
-<br><code>coeffs (</code> module_expression<code>,</code> ring_variable<code>,</code> matrix_name <code>)</code>
+<dd><p><code>contract (</code> ideal_expression<code>,</code> ideal_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
 <dd><p>matrix
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>develops each polynomial of the first argument, say J,
-as a univariate polynomial in the given ring_variable,
-say z, and returns the coefficients as a k x d
-matrix M,
-where:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">    d-1 = maximum z-degree of all occurring polynomials
-      k = 1 if J is a polynomial,
-      k = number of generators  if J is an ideal.
-</pre></td></tr></table>
-<p>If J is a vector or a module this procedure is repeated for each
-component and the resulting matrices are appended.<br>
-The third argument is used to return the matrix T of coefficients
-such that <TT>matrix</TT>(J) = T*M.
-</p></dd>
-<dt><code><strong>Note:</strong></code></dt>
-<dd><p><code>coeffs</code> returns the coefficient 0 at the appropriate place if a monomial
-is not present, while <code>coef</code> considers only monomials which really occur
-in the given expression. <br>
-If
+<dd><p>contracts each of the n elements of the second ideal J
+by each of the m elements of the first ideal I,
+producing a m x n matrix.
+<br>Contraction is defined on monomials by:
+<br>
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+{\rm contract}(x^A ,  x^B) := \cases{ x^{(B-A)}, &if $B\ge A$
+componentwise\cr 0,&otherwise.\cr}
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="372" HEIGHT="42" BORDER="0"
+ SRC="sing_93.png"
+ ALT="\begin{displaymath}{\rm contract}(x^A , x^B) := \cases{ x^{(B-A)}, &amp;if $B\ge A$
+componentwise\cr 0,&amp;otherwise.\cr}\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where A and B are the multiexponents of the ring variables represented by
 <SPAN CLASS="MATH"><IMG
- WIDTH="74" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_90.png"
- ALT="$M=(m_{ij})$"></SPAN>
-then the j-th generator of an ideal J is equal to
-<BR><P></P>
-<DIV ALIGN="CENTER" CLASS="mathdisplay">
-<!-- MATH
- \begin{displaymath}
-J_j = z^0 \cdot m_{1j} + z^1 \cdot m_{2j} + ... + z^{d-1} \cdot m_{dj},
-\end{displaymath}
- -->
-
-<IMG
- WIDTH="270" HEIGHT="27" BORDER="0"
- SRC="sing_91.png"
- ALT="\begin{displaymath}J_j = z^0 \cdot m_{1j} + z^1 \cdot m_{2j} + ... + z^{d-1} \cdot m_{dj},\end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P>
-while for a module J the i-th component of the j-th generator is
-equal to the entry [i,j] of <TT>matrix</TT>(J), and we get
-<BR><P></P>
-<DIV ALIGN="CENTER" CLASS="mathdisplay">
-<!-- MATH
- \begin{displaymath}
-J_{i,j} = z^0 \cdot m_{(i-1)d+1,j} + z^1 \cdot m_{(i-1)d+2,j} + ... +
-z^{d-1} \cdot m_{id,j}.
-\end{displaymath}
- -->
-
-<IMG
- WIDTH="383" HEIGHT="28" BORDER="0"
- SRC="sing_92.png"
- ALT="\begin{displaymath}J_{i,j} = z^0 \cdot m_{(i-1)d+1,j} + z^1 \cdot m_{(i-1)d+2,j} + ... +
-z^{d-1} \cdot m_{id,j}.\end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P>
-</p>
-</dd>
-<dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
-  poly f=(x+y)^3;
-  matrix M=coeffs(f,y);
-  print(M);
-&rarr; x3, 
-&rarr; 3x2,
-&rarr; 3x, 
-&rarr; 1   
-  ideal i=f,xyz+z10y4;
-  print(coeffs(i,y));
-&rarr; x3, 0, 
-&rarr; 3x2,xz,
-&rarr; 3x, 0, 
-&rarr; 1,  0, 
-&rarr; 0,  z10
-</pre></td></tr></table>
-</dd>
-<dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>coeffs (</code> ideal_expression<code>,</code> ideal_expression <code>)</code>
-<br><code>coeffs (</code> module_expression<code>,</code> module_expression <code>)</code>
-<br><code>coeffs (</code> ideal_expression<code>,</code> ideal_expression<code>,</code> product_of_ringvars <code>)</code>
-<br><code>coeffs (</code> module_expression<code>,</code> module_expression<code>,</code> product_of_ringvars <code>)</code>
+ WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_36.png"
+ ALT="$x$"></SPAN>.
+<code>contract</code> is extended bilinearly to all polynomials.
 </p></dd>
-<dt><code><strong>Type:</strong></code></dt>
-<dd><p>matrix
-</p></dd>
-<dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>let the first argument be M,
-the second argument  be K (a set of monomials, resp. vectors with monomial
-entries, in the variables appearing in P),
-the third argument be the product P of variables to consider (if this
-argument is not given, then the product of all ring variables is taken
-as default argument).
-<br>M is supposed to consist of elements of (resp. have entries in)
-a finitely generated module
-over a ring in the variables not appearing in P. K should contain the
-generators of M over this smaller ring.
-Then <code>coeffs(M,K,P)</code> returns a matrix A of coefficients with K*A=M
-such that the entries of A do not contain any variable from P.
-<br>If K does not contain all generators that are necessary to express
-M, then K*A=M&rsquo; where M&rsquo; is the part of M that can be expressed.
-</p>
-</dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
-  ideal M=x2z+y3,xy;
-  print(coeffs(M,ideal(x2,xy,y2),xy));
-&rarr; z,0,
-&rarr; 0,1,
-&rarr; 0,0 
-  print(coeffs(M,ideal(x2,xy,y2)));
-&rarr; 0,0,
-&rarr; 0,1,
-&rarr; 0,0 
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(a,b,c,d),dp;
+  ideal I=a2,a2+bc,abc;
+  ideal J=a2-bc,abcd;
+  print(contract(I,J));
+&rarr; 1,0, 
+&rarr; 0,ad,
+&rarr; 0,d  
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_164.htm#coef">coef</a>;
-<a href="sing_211.htm#kbase">kbase</a>.
+<a href="sing_172.htm#diff">diff</a>.
 </p></td>
 </tr>
 </table>
@@ -231,14 +145,14 @@ M, then K*A=M&rsquo; where M&rsquo; is the part of M that can be expressed.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_164.htm#coef" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.9 coef" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_166.htm#contract" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.11 contract" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_164.htm#coeffs" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.10 coeffs" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_166.htm#dbprint" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.12 dbprint" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

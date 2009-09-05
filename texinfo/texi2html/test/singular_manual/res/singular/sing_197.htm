@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.42 groebner</title>
+<title>Singular 2-0-4 Manual: 5.1.43 help</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.42 groebner">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.42 groebner">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.43 help">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.43 help">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="groebner"></a>
+<a name="help"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_196.htm#getdump" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.41 getdump" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_196.htm#groebner" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.42 groebner" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_198.htm#help" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.43 help" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_198.htm#highcorner" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.44 highcorner" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,97 +82,82 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="groebner-1"></a>
-<h3 class="subsection">5.1.42 groebner</h3>
-<a name="index-groebner"></a>
-<p>Procedure from library <code>standard.lib</code> (see <a href="sing_390.htm#standard_005flib">standard_lib</a>).
-</p>
+<a name="help-1"></a>
+<h3 class="subsection">5.1.43 help</h3>
+<a name="index-help"></a>
 <dl compact="compact">
-<dt><strong>Syntax:</strong></dt>
-<dd><p><code>groebner (</code> ideal_expression <code>)</code> <br>
-<code>groebner (</code> module_expression <code>)</code> <br>
-<code>groebner (</code> ideal_expression<code>,</code> int_expression <code>)</code> <br>
-<code>groebner (</code> module_expression<code>,</code> int_expression <code>)</code>
+<dt><code><strong>Syntax:</strong></code></dt>
+<dd><p><code>help;</code>
+<br><code>help</code> topic <code>;</code>
+</p></dd>
+<dt><code><strong>Type:</strong></code></dt>
+<dd><p>none
+</p></dd>
+<dt><code><strong>Purpose:</strong></code></dt>
+<dd><p>displays online help information for <code>topic</code> using the currently
+set help browser. If no <code>topic</code> is given, the title page of the
+manual is displayed.
 </p>
 </dd>
-<dt><strong>Type:</strong></dt>
-<dd><p>type of the first argument
-</p>
+<dt><code><strong>Note:</strong></code></dt>
+<dd><ul>
+<li><a name="index-_003f-1"></a>
+</li><li>
+<code>?</code> may be used instead of <code>help</code>.
+
+</li><li>
+<code>topic</code> can be an index entry of the <small>SINGULAR</small> manual or the
+name of a (loaded) procedure which has a help section.
+</li><li>
+<code>topic</code> may contain wildcard characters (i.e.,
+<code>*</code> characters).
+</li><li>
+If a (possibly &quot;wildcarded&quot;) <code>topic</code> cannot be found (or
+uniquely matched) a warning is displayed and no help information is
+provided.
+</li><li>
+If <code>topic</code> is the name of a (loaded) procedure whose help
+section has changed w.r.t. the help available in the manual then,
+instead of displaying the respective help section of the manual in the
+help browser, the &quot;newer&quot; help section of the procedure is simply
+printed to the terminal.
+
+</li><li>
+The browser in which the help information is displayed can be either set
+with the command-line option <code>--browser=&lt;browser&gt;</code> (see <a href="sing_18.htm#Command-line-options">Command line options</a>), or with the command <code>system(&quot;--browser&quot;,
+&quot;&lt;browser&gt;&quot;)</code>. Use the command <code>system(&quot;browsers&quot;);</code> for a list of
+all available browsers. See <a href="sing_15.htm#The-online-help-system">The online help system</a>, for more details
+about help browsers.
+
+</li></ul>
+
 </dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>computes the standard basis of the first argument <code>I</code>
-(ideal or module), by a heuristically chosen method: if the
-ordering of the current ring is a local ordering, or if it is a
-non-block ordering and the current ring has no parameters, then
-<code>std(I)</code> is returned. Otherwise, <code>I</code> is mapped into a
-ring with no parameters and ordering dp, where its Hilbert series
-is computed. This is followed by a Hilbert-series based std
-computation in the original ring.
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>If a 2nd argument <code>wait</code> is given, then the computation proceeds
-at most <code>wait</code> seconds. That is, if no result could be computed in
-<code>wait</code> seconds, then the computation is interrupted, 0 is returned,
-a warning message is displayed, and the global variable
-<code>groebner_error</code> is defined.
-</p>
-<a name="index-time-limit-on-computations"></a>
-<a name="index-MP_002c-groebner-basis-computations"></a>
+<dt><code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">help;      // display title page of manual
+help ring; // display help for 'ring'
+?ringe;    // equivalent to 'help ringe;'
+&rarr; // ** No help for topic 'ringe' (not even for '*ringe*')
+&rarr; // ** Try '?;'       for general help
+&rarr; // ** or  '?Index;'  for all available help topics
+?ring*;
+&rarr; //  ** No unique help for 'ring*'
+&rarr; //  ** Try one of
+&rarr; ?Rings and orderings; ?Rings and standard bases; ?ring;
+&rarr; ?ring declarations; ?ring operations; ?ring related functions;
+&rarr; ?ring.lib; ?ring_lib; ?ringtensor; ?ringweights;
+help Rings and orderings;
+help standard.lib;  // displays help for library 'standard.lib'
+</pre></td></tr></table>
 </dd>
 </dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(a,b,c,d),lp;
-option(prot);
-ideal i=a+b+c+d,ab+ad+bc+cd,abc+abd+acd+bcd,abcd-1; // cyclic 4
-groebner(i);
-&rarr; std in (0),(a,b,c,d,@t),(dp,C)
-&rarr; [63:1]1(3)s2(2)s3s4-s5ss6-s7--
-&rarr; product criterion:8 chain criterion:5
-&rarr; std with hilb in  (0),(a,b,c,d,@t),(lp(4),C)
-&rarr; [63:1]1(3)s2(2)s3s4-s5ss6shhhh8shh
-&rarr; product criterion:9 chain criterion:8
-&rarr; hilbert series criterion:6
-&rarr; dehomogenization
-&rarr; imap to original ring
-&rarr; simplification
-&rarr; _[1]=c2d6-c2d2-d4+1
-&rarr; _[2]=c3d2+c2d3-c-d
-&rarr; _[3]=bd4-b+d5-d
-&rarr; _[4]=bc-bd5+c2d4+cd-d6-d2
-&rarr; _[5]=b2+2bd+d2
-&rarr; _[6]=a+b+c+d
-ring rp=(0,a,b),(c,d), lp;
-ideal i=imap(r,i);
-ideal j=groebner(i);
-&rarr; std in 0,(c,d,a,b,@t),(dp,C)
-&rarr; [63:1]1(3)s2(2)s3s4-s5ss6-s7--
-&rarr; product criterion:8 chain criterion:5
-&rarr; std with hilb in  (0),(c,d,a,b,@t),(lp(2),C, dp(3))
-&rarr; [63:3]1(3)s2(2)s3s4-s5ss6shhhh8shh
-&rarr; product criterion:9 chain criterion:8
-&rarr; hilbert series criterion:6
-&rarr; dehomogenization
-&rarr; imap to original ring
-&rarr; simplification
-option(noprot);
-j; simplify(j,1); std(i);
-&rarr; j[1]=(a3b2+a2b3-a-b)
-&rarr; _[1]=1
-&rarr; _[1]=1
-if (system(&quot;with&quot;,&quot;MP&quot;)) {groebner(i,0);}
-&rarr; // ** groebner did not finish
-&rarr; _[1]=0
-defined(groebner_error);
-&rarr; 1
-</pre></td></tr></table>
-<p><strong>See also:</strong>
-<a href="sing_276.htm#std">std</a>;
-<a href="sing_277.htm#stdfglm">stdfglm</a>;
-<a href="sing_278.htm#stdhilb">stdhilb</a>.
-</p>
 
-</td>
+<p>See
+<a href="sing_18.htm#Command-line-options">Command line options</a>;
+<a href="sing_47.htm#Format-of-a-library">Format of a library</a>;
+<a href="sing_41.htm#Procedure-definition">Procedure definition</a>;
+<a href="sing_15.htm#The-online-help-system">The online help system</a>;
+<a href="sing_279.htm#system">system</a>.
+</p></td>
 </tr>
 </table>
 <hr>
@@ -181,14 +166,14 @@ defined(groebner_error);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_196.htm#getdump" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.41 getdump" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_198.htm#help" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.43 help" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_196.htm#groebner" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.42 groebner" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_198.htm#highcorner" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.44 highcorner" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

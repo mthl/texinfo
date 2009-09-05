@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.7.1.8 linearpart</title>
+<title>Singular 2-0-4 Manual: D.7.1.9 tolessvars</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.7.1.8 linearpart">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.7.1.8 linearpart">
+<meta name="description" content="Singular 2-0-4 Manual: D.7.1.9 tolessvars">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7.1.9 tolessvars">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="linearpart"></a>
+<a name="tolessvars"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_821.htm#hilbvec" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.1.7 hilbvec" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_821.htm#linearpart" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.1.8 linearpart" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_823.htm#tolessvars" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.1.9 tolessvars" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_823.htm#solvelinearpart" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.1.10 solvelinearpart" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_814.htm#presolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.1 presolve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_813.htm#presolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.1 presolve_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,32 +82,68 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="linearpart-1"></a>
-<h4 class="subsubsection">D.7.1.8 linearpart</h4>
-<a name="index-linearpart"></a>
-<p>Procedure from library <code>presolve.lib</code> (see <a href="sing_814.htm#presolve_005flib">presolve_lib</a>).
+<a name="tolessvars-1"></a>
+<h4 class="subsubsection">D.7.1.9 tolessvars</h4>
+<a name="index-tolessvars"></a>
+<p>Procedure from library <code>presolve.lib</code> (see <a href="sing_813.htm#presolve_005flib">presolve_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>linearpart(id); id=ideal/module
+<dd><p>tolessvars(id [,s1,s2] ); id poly/ideal/vector/module/matrix,
+s1,s2=strings<br>
+s1: name of new ring,<br>
+s2: new ordering<br>
+(default: s1=&quot;R(n)&quot; where n is the # of vars in the new ring,
+s2=&quot;dp&quot; or &quot;ds&quot; depending whether the first block of the old
+ordering is a p- resp. an s-ordering)
+</p>
+</dd>
+<dt><strong>Create:</strong></dt>
+<dd><p>nothing, if id contains all vars of the basering.<br>
+Else, create a ring with same char as the basering, but possibly less
+variables (only those variables which actually occur in id) and map
+id to the new ring, which will be the basering after the proc has
+finished.
+</p>
+</dd>
+<dt><strong>Display:</strong></dt>
+<dd><p>If printlevel &gt;=0, display ideal of vars, which have been omitted from
+the old ring
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>generators of id of total degree &lt;= 1
+<dd><p>the original ideal id (see NOTE)
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>You must not type, say, &rsquo;ideal id=tolessvars(id);&rsquo; since the ring
+to which &rsquo;id&rsquo; would belong will only be defined by the r.h.s.. But you
+may type &rsquo;def id=tolessvars(id);&rsquo; or &rsquo;list id=tolessvars(id);&rsquo;
+since then &rsquo;id&rsquo; does not a priory belong to a ring, its type will
+be defined by the right hand side. Moreover, do not use a name which
+occurs in the old ring, for the same reason.
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;presolve.lib&quot;;
-ring r=0,(x,y,z),dp;
-ideal i=1+x+x2+x3,3,x+3y+5z;
-linearpart(i);
-&rarr; _[1]=3
-&rarr; _[2]=x+3y+5z
-module m=[x,y,z],x*[x3,y2,z],[1,x2,z3,0,1];
-show(linearpart(m));
-&rarr; // module, 1 generator(s)
-&rarr; [x,y,z]
+ring r  = 0,(x,y,z),dp;
+ideal i = y2-x3,x-3,y-2x;
+def j   = tolessvars(i,&quot;R_r&quot;,&quot;lp&quot;);
+&rarr; 
+&rarr; // variables which did not occur:
+&rarr; z
+&rarr; // basering is now R_r
+show(basering);
+&rarr; // ring: (0),(x,y),(lp(2),C);
+&rarr; // minpoly = 0
+&rarr; // objects belonging to this ring:
+&rarr; // j                    [0]  ideal, 3 generator(s)
+j;
+&rarr; j[1]=-x3+y2
+&rarr; j[2]=x-3
+&rarr; j[3]=-2x+y
+kill R_r;
 </pre></td></tr></table>
 
 </td>
@@ -119,14 +155,14 @@ show(linearpart(m));
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_821.htm#hilbvec" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.1.7 hilbvec" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_823.htm#tolessvars" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.1.9 tolessvars" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_814.htm#presolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.1 presolve_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_821.htm#linearpart" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.1.8 linearpart" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_823.htm#solvelinearpart" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.1.10 solvelinearpart" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_813.htm#presolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.1 presolve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

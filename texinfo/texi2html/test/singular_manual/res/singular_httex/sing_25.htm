@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.2.4 Customization of the Emacs interface</title>
+<title>Singular 2-0-4 Manual: 3.2.5 Editing SINGULAR input files with Emacs</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.2.4 Customization of the Emacs interface">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.2.4 Customization of the Emacs interface">
+<meta name="description" content="Singular 2-0-4 Manual: 3.2.5 Editing SINGULAR input files with Emacs">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.2.5 Editing SINGULAR input files with Emacs">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Customization-of-the-Emacs-interface"></a>
+<a name="Editing-SINGULAR-input-files-with-Emacs"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_24.htm#Demo-mode" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.3 Demo mode" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_24.htm#Customization-of-the-Emacs-interface" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.4 Customization of the Emacs interface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_26.htm#Editing-SINGULAR-input-files-with-Emacs" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.2.5 Editing SINGULAR input files with Emacs" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_26.htm#Top-20-Emacs-commands" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.2.6 Top 20 Emacs commands" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_21.htm#Emacs-user-interface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.2 Emacs user interface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_20.htm#Emacs-user-interface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.2 Emacs user interface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,73 +84,49 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Customization-of-the-Emacs-interface-1"></a>
-<h3 class="subsection">3.2.4 Customization of the Emacs interface</h3>
-<a name="index-Emacs_002c-customization-of-Singular-mode"></a>
-<a name="index-Singular_002c-customization-of-Emacs-user-interface"></a>
-<a name="index-Customization-of-the-Emacs-interface"></a>
+<a name="Editing-SINGULAR-input-files-with-Emacs-1"></a>
+<h3 class="subsection">3.2.5 Editing SINGULAR input files with Emacs</h3>
+<a name="index-Emacs_002c-editing-Singular-input-files"></a>
+<a name="index-Singular_002c-editing-input-files-with-Emacs"></a>
+<a name="index-Editing-SINGULAR-input-files-with-Emacs"></a>
 
-<p>Emacs provides a convenient interface to customize the behavior of
-Emacs and the SINGULAR Emacs interface for your own needs. You enter the
-customize environment by either calling <code>M-x customize</code> (on XEmacs
-you afterwards have to enter <code>emacs</code> in the minibuffer area) or by
-selecting the menu item <code>Options-&gt;Customize-&gt;Emacs...</code> for XEmacs,
-and the menu item <code>Help-&gt;Customize-&gt;Toplevel Customization Group</code>
-for Emacs, resp. A brief introduction to the customization mode comes up
-with the customization buffer. All customizable parameters are
-hierarchically grouped and you can browse through all these groups and
-change the values of the parameters using the mouse. At the end you can
-safe the settings to a special file making your changes permanent.
+<p>Since <small>SINGULAR</small>&rsquo;s programming language is similar to C, you
+should use the Emacs C/C++-mode to edit <small>SINGULAR</small> input files and
+<small>SINGULAR</small> libraries. Among others, this Emacs mode provides
+automatic indentation, line-breaking and keyword highlighting.
 </p>
-<p>To change the settings of the <small>SINGULAR</small> Emacs interface you can
-either select the item <code>Preferences</code> of the <code>Singular</code> menu,
-call <code>M-x customize-group</code> and give the argument
-<code>singular-interactive</code> in the minibuffer area, or browse from the
-top-level customization group through the path
-<code>External-&gt;Singular-&gt;Singular interactive</code>.
+<p>When running <code>ESingular</code>, the C/C++-mode is automatically turned on
+whenever a file with the suffix <code>.sing</code>, or <code>.lib</code> is loaded.
 </p>
-<p>The <small>SINGULAR</small> interface customization buffer is divided into four
-groups:
-</p>
-<ul>
-<li> Singular Faces
+<p>For Emacs sessions which were not started by <code>ESingular</code>,  you
+should add the following to your <code>.emacs</code> file:
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">;; turn on c++-mode for files ending in &quot;.sing&quot; and &quot;.lib&quot;
+(setq auto-mode-alist (cons '(&quot;\\.sing\\'&quot; . c++-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '(&quot;\\.lib\\'&quot; .  c++-mode) auto-mode-alist))
+;; turn-on fontification for c++-mode
+(add-hook 'c++-mode-hook
+         (function (lambda () (font-lock-mode 1))))
+;; turn on aut-new line and hungry-delete
+(add-hook 'c++-mode-hook
+          (function (lambda () (c-toggle-auto-hungry-state 1))))
+;; a handy function for customization
+(defun customize-face-at-point ()
+  &quot;Customize face which point is at.&quot;
+  (interactive)
+  (let ((face (get-text-property (point) 'face)))
+    (if face
+        (customize-face face)
+      (message &quot;No face defined at point&quot;))))
 
-<p>Here you can specify various faces used if font-lock-mode is enabled
-(which it is, by default).
+</pre></td></tr></table>
+
+<p>Notice that you can change the default settings for source-code
+highlighting (colors, fonts, etc.) by customizing the respective faces
+using the <code>Customize</code> feature of Emacs. For doing this, you might
+find handy the above given function <code>customize-face-at-point</code>,
+which lets you customize the face of the current position of point (this
+function is automatically defined if you run <code>ESingular</code>).
 </p>
-</li><li> Singular Sections And Foldings
-
-<p>Here you can specify special faces for <small>SINGULAR</small> input and output
-and change the text used as replacement for folded sections.
-</p>
-<p>For doing this, you also might
-find handy the function <code>customize-face-at-point</code>,
-which let&rsquo;s you customize the face at the current position of
-point. This function is automatically defined if you run
-<code>ESingular</code>). Otherwise, you should add its definition (see below)
-to your personal <code>.emacs</code> file.
-</p>
-</li><li> Singular Interactive Miscellaneous
-
-<p>Here you can specify various different things such as the behavior of
-the cursor keys, the name of the special <small>SINGULAR</small> startup file, the
-appearance of the help window, or the default values for the
-<code>singular</code> command.
-</p>
-
-</li><li> Singular Demo Mode
-
-<p>Here you can specify how chunks of the demo file are divided, or specify
-a default directory for demo files.
-</p></li></ul>
-
-<p>When you run <code>ESingular</code>, the settings of customized variables are
-saved in the file <code>$HOME/.emacs-singular-cust</code>. Otherwise, the
-settings are appended to your <code>.emacs</code> file. Among others, this
-means that the customized settings of <code>ESingular</code> are not
-automatically  taken over by a &quot;normal&quot; Emacs, and vice versa.
-</p>
-
 </td>
 </tr>
 </table>
@@ -160,14 +136,14 @@ automatically  taken over by a &quot;normal&quot; Emacs, and vice versa.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_24.htm#Demo-mode" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.3 Demo mode" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_26.htm#Editing-SINGULAR-input-files-with-Emacs" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.2.5 Editing SINGULAR input files with Emacs" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_21.htm#Emacs-user-interface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.2 Emacs user interface" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_24.htm#Customization-of-the-Emacs-interface" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.4 Customization of the Emacs interface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_26.htm#Top-20-Emacs-commands" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.2.6 Top 20 Emacs commands" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_20.htm#Emacs-user-interface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.2 Emacs user interface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

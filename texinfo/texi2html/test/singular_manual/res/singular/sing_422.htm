@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.3.6 showrecursive</title>
+<title>Singular 2-0-4 Manual: D.2.3.7 split</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.3.6 showrecursive">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.3.6 showrecursive">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.3.7 split">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.3.7 split">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="showrecursive"></a>
+<a name="split"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_421.htm#show" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.5 show" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_421.htm#showrecursive" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.6 showrecursive" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_423.htm#split" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.7 split" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_423.htm#tab" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.8 tab" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_416.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_415.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,40 +82,37 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="showrecursive-1"></a>
-<h4 class="subsubsection">D.2.3.6 showrecursive</h4>
-<a name="index-showrecursive"></a>
-<p>Procedure from library <code>inout.lib</code> (see <a href="sing_416.htm#inout_005flib">inout_lib</a>).
+<a name="split-1"></a>
+<h4 class="subsubsection">D.2.3.7 split</h4>
+<a name="index-split"></a>
+<p>Procedure from library <code>inout.lib</code> (see <a href="sing_415.htm#inout_005flib">inout_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>showrecursive(id,p[ord]); id= any object of basering, p= product of
-variables and ord=string (any allowed ordstr)
-</p>
-</dd>
-<dt><strong>Display:</strong></dt>
-<dd><p>display &rsquo;id&rsquo; in a recursive format as a polynomial in the variables
-occurring in p with coefficients in the remaining variables. This is
-done by mapping to a ring with parameters [and ordering &rsquo;ord&rsquo;,
-if a 3rd argument is present (default: ord=&quot;dp&quot;)] and applying
-procedure &rsquo;show&rsquo;
+<dd><p>split(s[,n]); s string, n integer
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>no return value
+<dd><p>same string, split into lines of length n separated by \
+(default: n=pagewidth)
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>may be used in connection with lprint
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;inout.lib&quot;;
-ring r=2,(a,b,c,d,x,y),ds;
-poly f=y+ax2+bx3+cx2y2+dxy3;
-showrecursive(f,x);
-&rarr; // poly, 4 monomial(s)
-&rarr; (b)*x3+(a+cy2)*x2+(dy3)*x+(y)
-showrecursive(f,xy,&quot;lp&quot;);
-&rarr; // poly, 5 monomial(s)
-&rarr; (b)*x3+(c)*x2y2+(a)*x2+(d)*xy3+y
+ring r= 0,(x,y,z),ds;
+poly f = (x+y+z)^4;
+split(string(f),50);
+&rarr; x4+4x3y+6x2y2+4xy3+y4+4x3z+12x2yz+12xy2z+4y3z+6x\
+&rarr; 2z2+12xyz2+6y2z2+4xz3+4yz3+z4
+split(lprint(f));
+&rarr;   x4+4x3y+6x2y2+4xy3+y4+4x3z+12x2yz+12xy2z+4y3z+6x2z2+12xyz2+6y2z2+4xz3+4\
+   yz3\
+&rarr; +z4
 </pre></td></tr></table>
 
 </td>
@@ -127,14 +124,14 @@ showrecursive(f,xy,&quot;lp&quot;);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_421.htm#show" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.5 show" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_423.htm#split" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.7 split" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_416.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_421.htm#showrecursive" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.6 showrecursive" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_423.htm#tab" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.8 tab" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_415.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.15 resolution</title>
+<title>Singular 2-0-4 Manual: 4.15.1 resolution declarations</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.15 resolution">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.15 resolution">
+<meta name="description" content="Singular 2-0-4 Manual: 4.15.1 resolution declarations">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.15.1 resolution declarations">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="resolution"></a>
+<a name="resolution-declarations"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_134.htm#qring-declaration" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.14.1 qring declaration" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_134.htm#resolution" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.15 resolution" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_136.htm#resolution-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.15.1 resolution declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_136.htm#resolution-expressions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.15.2 resolution expressions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_134.htm#resolution" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.15 resolution" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,30 +82,49 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="resolution-1"></a>
-<h2 class="section">4.15 resolution</h2>
-<a name="index-resolution"></a>
+<a name="resolution-declarations-1"></a>
+<h3 class="subsection">4.15.1 resolution declarations</h3>
+<a name="index-resolution-declarations"></a>
 
-<p>The resolution type is intended as an intermediate representation which
-internally retains additional information obtained during computation of
-resolutions. It furthermore enables the use of partial results to
-compute, for example, Betti numbers or minimal resolutions. Like ideals
-and modules, a resolution can only be defined w.r.t. a basering.
+<dl compact="compact">
+<dt><strong>Syntax:</strong></dt>
+<dd><p><code>resolution</code> name <code>=</code> resolution_expression <code>;</code>
 </p>
-<p><strong>Note:</strong>
-to access the elements of a resolution, it has to be assigned to a list,
-which also completes computations and may therefore take time,
-(resp. an access directly with the brackets <code>[ , ]</code> causes
-implicitly a cast to a list).
+</dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>defines a resolution.
 </p>
-<blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_136.htm#resolution-declarations">4.15.1 resolution declarations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_137.htm#resolution-expressions">4.15.2 resolution expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_138.htm#resolution-related-functions">4.15.3 resolution related functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table></blockquote>
+</dd>
+<dt><strong>Default:</strong></dt>
+<dd><p>none
+</p>
+</dd>
+<dt><strong>Example:</strong></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R;
+  ideal i=z2,x;
+  resolution re=res(i,0);
+  re;
+&rarr;  1      2      1      
+&rarr; R &lt;--  R &lt;--  R
+&rarr; 
+&rarr; 0      1      2      
+&rarr; resolution not minimized yet
+&rarr; 
+  betti(re);
+&rarr; 1,1,0,
+&rarr; 0,1,1 
+  list l = re;
+  l;
+&rarr; [1]:
+&rarr;    _[1]=x
+&rarr;    _[2]=z2
+&rarr; [2]:
+&rarr;    _[1]=-z2*gen(1)+x*gen(2)
+&rarr; [3]:
+&rarr;    _[1]=0
+</pre></td></tr></table>
+</dd>
+</dl>
 
 </td>
 </tr>
@@ -116,14 +135,14 @@ implicitly a cast to a list).
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_134.htm#qring-declaration" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.14.1 qring declaration" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_136.htm#resolution-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.15.1 resolution declarations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_134.htm#resolution" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.15 resolution" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_136.htm#resolution-expressions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.15.2 resolution expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_134.htm#resolution" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.15 resolution" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

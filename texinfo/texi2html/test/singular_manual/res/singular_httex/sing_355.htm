@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: A.24 Kernel of module homomorphisms</title>
+<title>Singular 2-0-4 Manual: A.25 Algebraic dependence</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: A.24 Kernel of module homomorphisms">
-<meta name="keywords" content="Singular 2-0-4 Manual: A.24 Kernel of module homomorphisms">
+<meta name="description" content="Singular 2-0-4 Manual: A.25 Algebraic dependence">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.25 Algebraic dependence">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Kernel-of-module-homomorphisms"></a>
+<a name="Algebraic-dependence"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_354.htm#Branches-of-an-Isolated-Space-Curve-Singularity" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.23 Branches of an Isolated Space Curve Singularity" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_354.htm#Kernel-of-module-homomorphisms" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.24 Kernel of module homomorphisms" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_356.htm#Algebraic-dependence" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.25 Algebraic dependence" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_356.htm#Classification" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.26 Classification" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,61 +84,212 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Kernel-of-module-homomorphisms-1"></a>
-<h2 class="section">A.24 Kernel of module homomorphisms</h2>
-<a name="index-Kernel-of-module-homomorphisms"></a>
-<p>Let 
+<a name="Algebraic-dependence-1"></a>
+<h2 class="section">A.25 Algebraic dependence</h2>
+<a name="index-Algebraic-dependence"></a>
+<p>Let
  <span 
-class="cmmi-10">A </span> 
-, 
- <span 
-class="cmmi-10">B </span> 
- be two matrices of size
- <span 
-class="cmmi-10">m </span><span 
-class="cmsy-10">&#x00D7; </span><span 
-class="cmmi-10">r </span>and <span 
-class="cmmi-10">m </span><span 
-class="cmsy-10">&#x00D7; </span><span 
-class="cmmi-10">s </span> 
-over the ring 
- <span 
-class="cmmi-10">R </span> 
- and consider the corresponding maps
-
-    <center class="math-display" >
-<img 
-src="sing_tex4ht_tex21x.png" alt="Rr -A&#x2192;  Rm &#x2190;B- Rs .  " class="math-display" ></center>  
-We want to compute the kernel of the map
-
+class="cmmi-10">g</span>,
 <span 
-class="cmmi-10">R</span><sup><span 
-class="cmmi-7">r</span></sup>  <span 
-class="cmmi-7">A</span>
-  <span 
-class="cmsy-10">-</span> <span 
-class="cmsy-10">&#x2192;</span> <span 
-class="cmmi-10">R</span><sup><span 
-class="cmmi-7">m</span></sup><span 
-class="cmsy-10">-</span> <span 
-class="cmsy-10">&#x2192;</span><span 
-class="cmmi-10">R</span><sup><span 
-class="cmmi-7">m</span></sup><span 
-class="cmmi-10">&#x2215;</span>Im(<span 
-class="cmmi-10">B</span>) <span 
-class="cmmi-10">. </span> 
-This can be done using the <code>modulo</code> command:
+class="cmmi-10">f</span><sub><span 
+class="cmr-7">1</span></sub>, <span 
+class="cmmi-10">&#x2026;</span>, <span 
+class="cmmi-10">f</span><sub><span 
+class="cmmi-7">r</span></sub> <span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>].  
+We want to check whether
+</p><ol>
+<li>
+ <span 
+class="cmmi-10">f</span><sub><span 
+class="cmr-7">1</span></sub>, <span 
+class="cmmi-10">&#x2026;</span>, <span 
+class="cmmi-10">f</span><sub><span 
+class="cmmi-7">r</span></sub>  
+are algebraically dependent.
 
-    <center class="math-display" >
-<img 
-src="sing_tex4ht_tex22x.png" alt="modulo(A,B ) = ker(Rr -A&#x2192; Rm &#x2215;Im (B)) .  " class="math-display" ></center>  
+<p>Let
+ <span 
+class="cmmi-10">I </span>= <span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmmi-10">Y</span> <sub><span 
+class="cmr-7">1</span></sub> <span 
+class="cmsy-10">-</span><span 
+class="cmmi-10">f</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,Y</span> <sub><span 
+class="cmmi-7">r</span></sub> <span 
+class="cmsy-10">-</span><span 
+class="cmmi-10">f</span><sub><span 
+class="cmmi-7">r</span></sub><span 
+class="cmsy-10">&#x27E9;&#x2286; </span><span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub><span 
+class="cmmi-10">,Y</span> <sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,Y</span> <sub><span 
+class="cmmi-7">r</span></sub>].  
+Then
+ <span 
+class="cmmi-10">I </span><span 
+class="cmsy-10">&#x2229;</span><span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">Y</span> <sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,Y</span> <sub><span 
+class="cmmi-7">r</span></sub>]  
+are the algebraic relations between
+ <span 
+class="cmmi-10">f</span><sub><span 
+class="cmr-7">1</span></sub>, <span 
+class="cmmi-10">&#x2026;</span>,
+<span 
+class="cmmi-10">f</span><sub><span 
+class="cmmi-7">r</span></sub>.  
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),(c,dp);
-  matrix A[2][2]=x,y,z,1;
-  matrix B[2][2]=x2,y2,z2,xz;
-  print(modulo(A,B));
-&rarr; yz2-x2, xyz-y2,  x2z-xy, x3-y2z,
-&rarr; x2z-xz2,-x2z+y2z,xyz-yz2,0      
+</li><li>
+ <span 
+class="cmmi-10">g </span><span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">f</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,f</span><sub><span 
+class="cmmi-7">r</span></sub>].  
+
+<p> <span 
+class="cmmi-10">g </span><span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">f</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,f</span><sub><span 
+class="cmmi-7">r</span></sub>]  
+if and only if the normal form of 
+ <span 
+class="cmmi-10">g </span> 
+ with respect to 
+ <span 
+class="cmmi-10">I </span> 
+ and a
+block ordering with respect to
+ <span 
+class="cmmi-10">X </span>= (<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>) and <span 
+class="cmmi-10">Y </span>= (<span 
+class="cmmi-10">Y</span> <sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,Y</span> <sub><span 
+class="cmmi-7">r</span></sub>) with <span 
+class="cmmi-10">X &#x003E; Y </span> 
+is in 
+ <span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">Y </span>]  
+.
+</p></li></ol>
+
+<p>Both questions can be answered using the following procedure. If the
+second argument is zero, it checks for algebraic dependence and returns
+the ideal of relations between the generators of the given ideal.
+Otherwise it checks for subring membership and returns the normal form
+of the second argument with respect to the ideal I.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  proc algebraicDep(ideal J, poly g)
+  {
+    def R=basering;         // give a name to the basering
+    int n=size(J);
+    int k=nvars(R);
+    int i;
+    intvec v;
+
+    // construction of the new ring:
+
+    // construct a weight vector
+    v[n+k]=0;         // gives a zero vector of length n+k
+    for(i=1;i&lt;=k;i++)
+    {
+      v[i]=1;
+    }
+    string orde=&quot;(a(&quot;+string(v)+&quot;),dp);&quot;;
+    string ri=&quot;ring Rhelp=(&quot;+charstr(R)+&quot;),
+                          (&quot;+varstr(R)+&quot;,Y(1..&quot;+string(n)+&quot;)),&quot;+orde;
+                            // ring definition as a string
+    execute(ri);            // execution of the string
+
+    // construction of the new ideal I=(J[1]-Y(1),...,J[n]-Y(n))
+    ideal I=imap(R,J);
+    for(i=1;i&lt;=n;i++)
+    {
+      I[i]=I[i]-var(k+i);
+    }
+    poly g=imap(R,g);
+    if(g==0)
+    {
+      // construction of the ideal of relations by elimination
+      poly el=var(1);
+      for(i=2;i&lt;=k;i++)
+      {
+        el=el*var(i);
+      }
+      ideal KK=eliminate(I,el);
+      keepring(Rhelp);
+      return(KK);
+    }
+    // reduction of g with respect to I
+    ideal KK=reduce(g,std(I));
+    keepring(Rhelp);
+    return(KK);
+  }
+
+  // applications of the procedure
+  ring r=0,(x,y,z),dp;
+  ideal i=xz,yz;
+  algebraicDep(i,0);
+&rarr; _[1]=0
+  // Note: after call of algebraicDep(), the basering is Rhelp.
+  setring r; kill Rhelp;
+  ideal j=xy+z2,z2+y2,x2y2-2xy3+y4;
+  algebraicDep(j,0);
+&rarr; _[1]=Y(1)^2-2*Y(1)*Y(2)+Y(2)^2-Y(3)
+  setring r; kill Rhelp;
+  poly g=y2z2-xz;
+  algebraicDep(i,g);
+&rarr; _[1]=Y(2)^2-Y(1)
+  // this shows that g is contained in i.
+  setring r; kill Rhelp;
+  algebraicDep(j,g);
+&rarr; _[1]=-z^4+z^2*Y(2)-x*z
+  // this shows that g is contained in j.
 </pre></td></tr></table>
 
 </td>
@@ -150,14 +301,14 @@ src="sing_tex4ht_tex22x.png" alt="modulo(A,B ) = ker(Rr -A&#x2192; Rm &#x2215;Im
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_354.htm#Branches-of-an-Isolated-Space-Curve-Singularity" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.23 Branches of an Isolated Space Curve Singularity" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_356.htm#Algebraic-dependence" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.25 Algebraic dependence" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_354.htm#Kernel-of-module-homomorphisms" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.24 Kernel of module homomorphisms" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_356.htm#Classification" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.26 Classification" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

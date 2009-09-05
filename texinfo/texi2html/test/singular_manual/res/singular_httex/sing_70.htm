@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.2.1 ideal declarations</title>
+<title>Singular 2-0-4 Manual: 4.2.2 ideal expressions</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.2.1 ideal declarations">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.2.1 ideal declarations">
+<meta name="description" content="Singular 2-0-4 Manual: 4.2.2 ideal expressions">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.2.2 ideal expressions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="ideal-declarations"></a>
+<a name="ideal-expressions"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_69.htm#ideal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.2 ideal" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_69.htm#ideal-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.2.1 ideal declarations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_71.htm#ideal-expressions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.2.2 ideal expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_71.htm#ideal-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.2.3 ideal operations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_69.htm#ideal" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.2 ideal" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_68.htm#ideal" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.2 ideal" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,43 +84,56 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="ideal-declarations-1"></a>
-<h3 class="subsection">4.2.1 ideal declarations</h3>
-<a name="index-ideal-declarations"></a>
+<a name="ideal-expressions-1"></a>
+<h3 class="subsection">4.2.2 ideal expressions</h3>
+<a name="index-ideal-expressions"></a>
 
-<dl compact="compact">
-<dt><strong>Syntax:</strong></dt>
-<dd><p><code>ideal</code> name <code>=</code> list_of_poly_and_ideal_expressions <code>;</code>
-<br><code>ideal</code> name <code>=</code> ideal_expression <code>;</code>
-</p>
-</dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>defines an ideal.
-</p>
-</dd>
-<dt><strong>Default:</strong></dt>
-<dd><p>0
-</p>
-</dd>
-<dt><strong>Example:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
-  poly s1 = x2;
-  poly s2 = y3;
-  poly s3 = z;
-  ideal i =  s1, s2-s1, 0,s2*s3, s3^4;
-  i;
-&rarr; i[1]=x2
-&rarr; i[2]=y3-x2
-&rarr; i[3]=0
-&rarr; i[4]=y3z
-&rarr; i[5]=z4
-  size(i);
-&rarr; 4
+<p>An ideal expression is:
+</p><ol>
+<li>
+an identifier of type ideal
+</li><li>
+a function returning ideal
+</li><li>
+ideal expressions combined by the arithmetic operations
+<code>+</code> or <code>*</code>
+</li><li>
+a power of an ideal expression (operator <code>^</code> or <code>**</code>)
+<br>Note that the computation of the product <code>i*i</code> involves
+all products of generators of <code>i</code> while <code>i^2</code> involves
+only the different ones, and is therefore faster.
+</li><li>
+a type cast to ideal
+</li></ol>
+
+<br><p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+  ideal m = maxideal(1);
+  m;
+&rarr; m[1]=x
+&rarr; m[2]=y
+&rarr; m[3]=z
+  poly f = x2;
+  poly g = y3;
+  ideal i = x*y*z , f-g, g*(x-y) + f^4 ,0, 2x-z2y;
+  ideal M = i + maxideal(10);
+  timer =0;
+  i = M*M;
+  timer;
+&rarr; 0
   ncols(i);
-&rarr; 5
+&rarr; 505
+  timer =0;
+  i = M^2;
+  ncols(i);
+&rarr; 505
+  timer;
+&rarr; 0
+  i[ncols(i)];
+&rarr; x20
+  vector v = [x,y-z,x2,y-x,x2yz2-y];
+  ideal j = ideal(v);
 </pre></td></tr></table>
-</dd>
-</dl>
 
 </td>
 </tr>
@@ -131,14 +144,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_69.htm#ideal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.2 ideal" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_71.htm#ideal-expressions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.2.2 ideal expressions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_69.htm#ideal" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.2 ideal" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_69.htm#ideal-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.2.1 ideal declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_71.htm#ideal-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.2.3 ideal operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_68.htm#ideal" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.2 ideal" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

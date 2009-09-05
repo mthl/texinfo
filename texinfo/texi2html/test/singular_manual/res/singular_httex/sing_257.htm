@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.102 quote</title>
+<title>Singular 2-0-4 Manual: 5.1.103 quotient</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.102 quote">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.102 quote">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.103 quotient">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.103 quotient">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="quote"></a>
+<a name="quotient"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_256.htm#quot" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.101 quot" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_256.htm#quote" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.102 quote" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_258.htm#quotient" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.103 quotient" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_258.htm#random" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.104 random" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,49 +84,87 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="quote-1"></a>
-<h3 class="subsection">5.1.102 quote</h3>
-<a name="index-quote"></a>
+<a name="quotient-1"></a>
+<h3 class="subsection">5.1.103 quotient</h3>
+<a name="index-quotient"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>quote (</code> expression <code>)</code>
+<dd><p><code>quotient (</code> ideal_expression<code>,</code> ideal_expression <code>)</code>
+<br><code>quotient (</code> module_expression<code>,</code> module_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>none
+<dd><p>ideal
+</p></dd>
+<dt><code><strong>Syntax:</strong></code></dt>
+<dd><p><code>quotient (</code> module_expression<code>,</code> ideal_expression <code>)</code>
+</p></dd>
+<dt><code><strong>Type:</strong></code></dt>
+<dd><p>module
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>prevents expressions from evaluation. Used only in connections with write to
-MPfile links, prevents evaluation of an expression before sending it to an other
-<small>SINGULAR</small> process.
-Within a quoted expression, the
-quote can be &quot;undone&quot; by an <code>eval</code> (i.e., each eval &quot;undoes&quot; the
-effect of exactly one quote).
-</p></dd>
+<dd><p>computes the ideal quotient, resp. module quotient. Let <code>R</code> be the
+basering, <code>I,J</code> ideals and <code>M</code> a module in
+ <span 
+class="cmtt-10">R</span><sup><span 
+class="cmmi-7">n</span></sup>.  
+Then
+</p><ul>
+<li>
+<code>quotient(I,J)</code>=
+ <span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">a </span><span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">R</span><span 
+class="cmsy-10">&#x2223;</span><span 
+class="cmmi-10">aJ </span><span 
+class="cmsy-10">&#x2282; </span><span 
+class="cmmi-10">I</span><span 
+class="cmsy-10">}</span>,  
+</li><li>
+<code>quotient(M,J)</code>=
+ <span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">b </span><span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">n</span></sup><span 
+class="cmsy-10">&#x2223;</span><span 
+class="cmmi-10">bJ </span><span 
+class="cmsy-10">&#x2282; </span><span 
+class="cmmi-10">M</span><span 
+class="cmsy-10">}</span>.  
+</li></ul>
+</dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  link l=&quot;MPfile:w example.mp&quot;;
-  ring r=0,(x,y,z),ds;
-  ideal i=maxideal(3);
-  ideal j=x7,x2,z;
-  option(prot);
-  // compute i+j before writing, but not std
-  write (l, quote(std(eval(i+j))));
-  close(l);
-  // now read it in again and evaluate:
-  read(l);
-&rarr; [1023:1]1(12)s2(11)s3(10)--s(7)s(6)-----7-
-&rarr; product criterion:4 chain criterion:0
-&rarr; _[1]=z
-&rarr; _[2]=x2
-&rarr; _[3]=xy2
-&rarr; _[4]=y3
-  close(l);
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=181,(x,y,z),(c,ls);
+ideal id1=maxideal(3);
+ideal id2=x2+xyz,y2-z3y,z3+y5xz;
+ideal id6=quotient(id1,id2);
+id6;
+&rarr; id6[1]=z
+&rarr; id6[2]=y
+&rarr; id6[3]=x
+quotient(id2,id1);
+&rarr; _[1]=z2
+&rarr; _[2]=yz
+&rarr; _[3]=y2
+&rarr; _[4]=xz
+&rarr; _[5]=xy
+&rarr; _[6]=x2
+module m=x*freemodule(3),y*freemodule(2);
+ideal id3=x,y;
+quotient(m,id3);
+&rarr; _[1]=[1]
+&rarr; _[2]=[0,1]
+&rarr; _[3]=[0,0,x]
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_98.htm#MPfile-links">MPfile links</a>;
-<a href="sing_178.htm#eval">eval</a>;
-<a href="sing_293.htm#write">write</a>.
+<a href="sing_187.htm#fglmquot">fglmquot</a>;
+<a href="sing_68.htm#ideal">ideal</a>;
+<a href="sing_115.htm#module">module</a>.
 </p></td>
 </tr>
 </table>
@@ -136,14 +174,14 @@ effect of exactly one quote).
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_256.htm#quot" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.101 quot" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_258.htm#quotient" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.103 quotient" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_256.htm#quote" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.102 quote" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_258.htm#random" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.104 random" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

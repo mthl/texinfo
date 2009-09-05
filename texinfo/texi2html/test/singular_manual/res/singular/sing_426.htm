@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.3.10 pause</title>
+<title>Singular 2-0-4 Manual: D.2.4 poly_lib</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.3.10 pause">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.3.10 pause">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.4 poly_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.4 poly_lib">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="pause"></a>
+<a name="poly_005flib"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_425.htm#writelist" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.9 writelist" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_425.htm#pause" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.10 pause" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_427.htm#poly_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4 poly_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_427.htm#cyclic" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.1 cyclic" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_416.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_390.htm#General-purpose" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2 General purpose" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,54 +82,69 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="pause-1"></a>
-<h4 class="subsubsection">D.2.3.10 pause</h4>
-<a name="index-pause"></a>
-<p>Procedure from library <code>inout.lib</code> (see <a href="sing_416.htm#inout_005flib">inout_lib</a>).
-</p>
+<a name="poly_005flib-1"></a>
+<h3 class="subsection">D.2.4 poly_lib</h3>
+<a name="index-poly_002elib"></a>
+<a name="index-poly_005flib"></a>
 <dl compact="compact">
-<dt><strong>Usage:</strong></dt>
-<dd><p>pause([ prompt ]) prompt string
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>none
-</p>
-</dd>
+<dt><strong>Library:</strong></dt>
+<dd><p>poly.lib
+</p></dd>
 <dt><strong>Purpose:</strong></dt>
-<dd><p>interrupt the execution of commands until user input
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>pause is useful in procedures in connection with printlevel to
-interrupt the computation and to display intermediate results.
+<dd><p>      Procedures for Manipulating Polys, Ideals, Modules
+</p></dd>
+<dt><strong>Authors:</strong></dt>
+<dd><p>O. Bachmann, G.-M: Greuel, A. Fruehbis
 </p>
 </dd>
 </dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;inout.lib&quot;;
-// can only be shown interactively, try the following commands:
-// pause(&quot;press &lt;return&gt; to continue&quot;);
-// pause();
-// In the following pocedure TTT, xxx is printed and the execution of
-// TTT is stopped until the return-key is pressed, if printlevel&gt;0.
-// xxx may be any result of a previous computation or a comment, etc:
-//
-// proc TTT
-// { int pp = printlevel-voice+2;  //pp=0 if printlevel=0 and if TTT is
-//    ....                         //not called from another procedure
-//    if( pp&gt;0 )
-//    {
-//       print( xxx );
-//       pause(&quot;press &lt;return&gt; to continue&quot;);
-//    }
-//     ....
-// }
-</pre></td></tr></table>
-<p><strong>See also:</strong>
-<a href="sing_313.htm#printlevel">printlevel</a>;
-<a href="sing_260.htm#read">read</a>.
-</p>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_427.htm#cyclic">D.2.4.1 cyclic</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> ideal of cyclic n-roots
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_428.htm#katsura">D.2.4.2 katsura</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> katsura [i] ideal
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_429.htm#freerank">D.2.4.3 freerank</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> rank of coker(input) if coker is free else -1
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_430.htm#is_005fhomog">D.2.4.4 is_homog</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> int, =1 resp. =0 if input is homogeneous resp. not
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_431.htm#is_005fzero">D.2.4.5 is_zero</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> int, =1 resp. =0 if coker(input) is 0 resp. not
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_432.htm#lcm">D.2.4.6 lcm</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> lcm of given generators of ideal
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_433.htm#maxcoef">D.2.4.7 maxcoef</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> maximal length of coefficient occurring in poly/...
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_434.htm#maxdeg">D.2.4.8 maxdeg</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> int/intmat = degree/s of terms of maximal order
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_435.htm#maxdeg1">D.2.4.9 maxdeg1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> int = [weighted] maximal degree of input
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_436.htm#mindeg">D.2.4.10 mindeg</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> int/intmat = degree/s of terms of minimal order
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_437.htm#mindeg1">D.2.4.11 mindeg1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> int = [weighted] minimal degree of input
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_438.htm#normalize">D.2.4.12 normalize</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> normalize poly/... such that leading coefficient is 1
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_439.htm#rad_005fcon">D.2.4.13 rad_con</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> check radical containment of poly p in ideal I
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_440.htm#content">D.2.4.14 content</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> content of polynomial/vector f
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_441.htm#numerator">D.2.4.15 numerator</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> numerator of number n
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_442.htm#denominator">D.2.4.16 denominator</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> denominator of number n
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_443.htm#mod2id">D.2.4.17 mod2id</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> conversion of a module M to an ideal
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_444.htm#id2mod">D.2.4.18 id2mod</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> conversion inverse to mod2id
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_445.htm#substitute">D.2.4.19 substitute</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> substitute in I variables by polynomials
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_446.htm#subrInterred">D.2.4.20 subrInterred</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> interred w.r.t. a subset of variables
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_447.htm#hilbPoly">D.2.4.21 hilbPoly</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Hilbert polynomial of basering/I
+</td></tr>
+</table></blockquote>
+
 </td>
 </tr>
 </table>
@@ -139,14 +154,14 @@ interrupt the computation and to display intermediate results.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_425.htm#writelist" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.9 writelist" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_427.htm#poly_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4 poly_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_416.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_425.htm#pause" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.10 pause" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_427.htm#cyclic" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.1 cyclic" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_390.htm#General-purpose" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2 General purpose" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

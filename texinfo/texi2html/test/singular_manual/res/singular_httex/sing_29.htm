@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.3.1 Examples of ring declarations</title>
+<title>Singular 2-0-4 Manual: 3.3.2 General syntax of a ring declaration</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.3.1 Examples of ring declarations">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.3.1 Examples of ring declarations">
+<meta name="description" content="Singular 2-0-4 Manual: 3.3.2 General syntax of a ring declaration">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.3.2 General syntax of a ring declaration">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Examples-of-ring-declarations"></a>
+<a name="General-syntax-of-a-ring-declaration"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_28.htm#Rings-and-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3 Rings and orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_28.htm#Examples-of-ring-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3.1 Examples of ring declarations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_30.htm#General-syntax-of-a-ring-declaration" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3.2 General syntax of a ring declaration" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_30.htm#Term-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3.3 Term orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_28.htm#Rings-and-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.3 Rings and orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_27.htm#Rings-and-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.3 Rings and orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,304 +84,159 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Examples-of-ring-declarations-1"></a>
-<h3 class="subsection">3.3.1 Examples of ring declarations</h3>
-<a name="index-Examples-of-ring-declarations"></a>
+<a name="General-syntax-of-a-ring-declaration-1"></a>
+<h3 class="subsection">3.3.2 General syntax of a ring declaration</h3>
+<a name="index-General-syntax-of-a-ring-declaration"></a>
 
-<p>The exact syntax of a ring declaration is given in the next two
-subsections; this subsection lists some examples first. Note that the
-ordering has to be chosen such that the unit-elements of the
-ring are precisely those elements with leading monomial 1.  For more
-information, see <a href="sing_362.htm#Monomial-orderings">Monomial orderings</a>.
-</p>
-<p>Every floating point number in a ring consists of two parts, which may be
-chosen from the user. The leading part represents the number and the rest
-is for the numerical stability. Two numbers with a difference only in the
-rest are equal.
-</p>
-<ul>
+<a name="Rings"></a>
+<h4 class="subsubheading">Rings</h4>
+<dl compact="compact">
+<dt><strong>Syntax:</strong></dt>
+<dd><p><code>ring</code> name <code>=</code> <code>(</code>coefficient_field<code>),</code>
+  <code>(</code> names_of_ring_variables <code>),</code>
+  <code>(</code> ordering <code>);</code>
+</p></dd>
+<dt><strong>Default:</strong></dt>
+<dd><p><code>32003,(x,y,z),(dp,C);</code>
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>declares a ring and sets it as the current basering.
+</p></dd>
+</dl>
+
+<p>The coefficient_field is given by one of the following:
+</p><ol>
 <li>
-the ring 
- <span 
-class="cmmi-10">Z&#x2215;</span>32003[<span 
-class="cmmi-10">x,y,z</span>]  
- with degree reverse lexicographical
-ordering.  The exact ring declaration may be omitted in the first
-example since this is the default ring:
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r;
-ring r = 32003,(x,y,z),dp;
-</pre></td></tr></table>
+a non-negative int_expression less or equal 32003.
+<br> The int_expression should either be 0, specifying the field of
+rational numbers Q, or a prime number p, specifying the finite field
+with p elements.  If it is not a prime number, int_expression is
+converted to the next lower prime number.
 
 </li><li>
-the ring 
- <span 
-class="cmmi-10">Q</span>[<span 
-class="cmmi-10">a,b,c,d</span>]  
- with lexicographical ordering:
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0,(a,b,c,d),lp;
-</pre></td></tr></table>
-
-</li><li>
-the ring 
- <span 
-class="cmmi-10">Z&#x2215;</span>7[<span 
-class="cmmi-10">x,y,z</span>]  
- with local degree reverse lexicographical
-ordering.  The non-prime 10 is converted to the next lower prime in the
-second example:
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 7,(x,y,z),ds;
-ring r = 10,(x,y,z),ds;
-</pre></td></tr></table>
+an expression_list of an int_expression and one or more names.
+<br> The int_expression specifies the characteristic of the coefficient
+field as described above. The names are used as parameters in
+transcendental or algebraic extensions of the coefficient
+field. Algebraic extensions are implemented for one parameter only. In
+this case, a minimal polynomial has to be defined by assignment to
+<code>minpoly</code>. See <a href="sing_309.htm#minpoly">minpoly</a>.
 
 </li><li>
-the ring
- <span 
-class="cmmi-10">Z&#x2215;</span>7[<span 
-class="cmmi-10">x</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,</span><span 
-class="cmmi-10">&#x2026;</span><span 
-class="cmmi-10">,x</span><sub><span 
-class="cmr-7">6</span></sub>]  
-with lexicographical ordering for
- <span 
-class="cmmi-10">x</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,x</span><sub><span 
-class="cmr-7">2</span></sub><span 
-class="cmmi-10">,x</span><sub><span 
-class="cmr-7">3</span></sub>  
-and degree reverse lexicographical ordering for
- <span 
-class="cmmi-10">x</span><sub><span 
-class="cmr-7">4</span></sub><span 
-class="cmmi-10">,x</span><sub><span 
-class="cmr-7">5</span></sub><span 
-class="cmmi-10">,x</span><sub><span 
-class="cmr-7">6</span></sub>:  
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 7,(x(1..6)),(lp(3),dp);
-</pre></td></tr></table>
+an expression_list of an int_expression and a name.
+<br> The int_expression has to be a prime number p to the power of a
+positive integer n. This defines the Galois field
+ GF(<span 
+class="cmmi-10">p</span><sup><span 
+class="cmmi-7">n</span></sup>) with <span 
+class="cmmi-10">p</span><sup><span 
+class="cmmi-7">n</span></sup> elements, where <span 
+class="cmmi-10">p</span><sup><span 
+class="cmmi-7">n</span></sup> has to be smaller or equal 2<sup><span 
+class="cmr-7">15</span></sup>.  
+The given name refers to a primitive element of
+ GF(<span 
+class="cmmi-10">p</span><sup><span 
+class="cmmi-7">n</span></sup>)  
+generating the multiplicative group.  Due to a different internal
+representation, the arithmetic operations in these coefficient fields
+are faster than arithmetic operations in algebraic extensions as
+described above.
 
 </li><li>
-the localization of 
- (<span 
-class="cmmi-10">Q</span>[<span 
-class="cmmi-10">a,b,c</span>])[<span 
-class="cmmi-10">x,y,z</span>]  
- at the maximal ideal
+an expression_list of the name <code>real</code> and two optional int_expression
+giving the precision in decimal digits and
+the size for the stabilizing rest. The default for the rest is the same size
+as for the representation.
+An exception is the name <code>real</code> without any integers.
+These numbers are implemented as machine floating point numbers
+of single precision.
+Note that computations over all these fields are not exact.
 
-<p> (<span 
-class="cmmi-10">x,y,z</span>)  
-:
+</li><li>
+an expression_list of the name <code>complex</code>,
+two optional int_expression and a name.
+This specifies the field of complex numbers represented with floating point
+numbers with a precision similar to <code>real</code>. An expression_list
+without int_expression defines a precision and rest with length 6.
+The name of the imaginary unit is given by the last parameter.
+Note that computations over these fields are not exact.
+</li></ol>
+
+<p>&rsquo;names_of_ring_variables&rsquo; is a list of names or indexed names.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0,(x,y,z,a,b,c),(ds(3), dp(3));
-</pre></td></tr></table>
-
-</li><li>
-the ring 
-
-<span 
-class="cmmi-10">Q</span>[<span 
-class="cmmi-10">x,y,z</span>]  
- with weighted reverse lexicographical ordering.
-The variables 
- <span 
-class="cmmi-10">x </span> 
-, 
- <span 
-class="cmmi-10">y </span> 
-, and 
- <span 
-class="cmmi-10">z </span> 
- have the weights 2, 1,
-and 3, respectively, and  vectors are first ordered by components (in
-descending order) and then by monomials:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0,(x,y,z),(c,wp(2,1,3));
-</pre></td></tr></table>
-<p>For ascending component order, the component ordering <code>C</code> has to be
-used.
+<p>&rsquo;ordering&rsquo; is a list of block orderings where each block ordering is either
 </p>
-</li><li>
-the ring 
- <span 
-class="cmmi-10">K</span>[<span 
-class="cmmi-10">x,y,z</span>]  
-, where 
- <span 
-class="cmmi-10">K </span>= <span 
-class="cmmi-10">Z&#x2215;</span>7(<span 
-class="cmmi-10">a,b,c</span>)  
- denotes the transcendental
-extension of 
- <span 
-class="cmmi-10">Z&#x2215;</span>7  
- by 
- <span 
-class="cmmi-10">a </span> 
-, 
- <span 
-class="cmmi-10">b </span> 
- and 
- <span 
-class="cmmi-10">c </span> 
- with degree
-lexicographical ordering:
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (7,a,b,c),(x,y,z),Dp;
-</pre></td></tr></table>
+<ol>
+<li>
+<code>lp</code>, <code>dp</code>, <code>Dp</code>, <code>ls</code>, <code>ds</code>, or <code>Ds</code>
+optionally followed by a size parameter in parentheses.
 
 </li><li>
-the ring 
- <span 
-class="cmmi-10">K</span>[<span 
-class="cmmi-10">x,y,z</span>]  
-, where 
- <span 
-class="cmmi-10">K </span>= <span 
-class="cmmi-10">Z&#x2215;</span>7[<span 
-class="cmmi-10">a</span>]  
- denotes the algebraic extension of
-degree 2 of 
- <span 
-class="cmmi-10">Z&#x2215;</span>7  
- by 
- <span 
-class="cmmi-10">a. </span> 
- In other words, 
- <span 
-class="cmmi-10">K </span> 
- is the finite field with
-49 elements.  In the first case, 
- <span 
-class="cmmi-10">a </span> 
- denotes an algebraic
-element over 
- <span 
-class="cmmi-10">Z&#x2215;</span>7  
- with minimal polynomial
+<code>wp</code>, <code>Wp</code>, <code>ws</code>, <code>Ws</code>, or <code>a</code> followed by a
+weight vector given as an intvec_expression in parentheses.
 
-<span 
-class="cmmi-10">&#x03BC;</span><sub><span 
-class="cmmi-7">a</span></sub> = <span 
-class="cmmi-10">a</span><sup><span 
-class="cmr-7">2</span></sup> + <span 
-class="cmmi-10">a </span>+ 3,  
-in the second case, 
- <span 
-class="cmmi-10">a </span> 
+</li><li>
+<code>M</code> followed by an intmat_expression in parentheses.
 
-<p>refers to some generator of the cyclic group of units of 
- <span 
-class="cmmi-10">K </span> 
-:
+</li><li>
+<code>c</code> or <code>C</code>.
+</li></ol>
+
+<p>For the definition of the orderings, see <a href="sing_361.htm#Monomial-orderings">Monomial orderings</a>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (7,a),(x,y,z),dp; minpoly = a^2+a+3;
-ring r = (7^2,a),(x,y,z),dp;
+<p>If one of coefficient_field, names_of_ring_variables, and ordering
+consists of only one entry, the parentheses around this entry may be
+omitted.
+</p>
+<a name="Quotient-rings"></a>
+<h4 class="subsubheading">Quotient rings</h4>
+<dl compact="compact">
+<dt><strong>Syntax:</strong></dt>
+<dd><p><code>qring</code> name <code>=</code> ideal_expression <code>;</code>
+</p></dd>
+<dt><strong>Default:</strong></dt>
+<dd><p>none
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>declares a quotient ring as the basering modulo ideal_expression.  Sets
+it as current basering.
+</p></dd>
+</dl>
+
+<p>ideal_expression has to be represented by a standard basis.
+</p>
+<p>The most convenient way to map objects from a ring to its quotient ring
+and vice versa is to use the <code>fetch</code> function (see <a href="sing_185.htm#fetch">fetch</a>).
+</p>
+<p><small>SINGULAR</small> computes in a quotient ring as long as possible with the
+given representative of a polynomial, say, <code>f</code>.  I.e., it usually
+does not reduce <code>f</code> w.r.t. the quotient ideal.  This is only done
+when necessary
+during standard bases computations or by an explicit reduction using
+the command <code>reduce(f, std(0))</code> (see <a href="sing_260.htm#reduce">reduce</a>).
+</p>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y),dp;
+  poly f=x3+yx2+3y+4;
+  qring q=std(maxideal(2));
+  basering;
+&rarr; //   characteristic : 32003
+&rarr; //   number of vars : 2
+&rarr; //        block   1 : ordering dp
+&rarr; //                  : names    x y 
+&rarr; //        block   2 : ordering C
+&rarr; // quotient ring from ideal
+&rarr; _[1]=y2
+&rarr; _[2]=xy
+&rarr; _[3]=x2
+  poly g=fetch(r, f);
+  g;
+&rarr; x3+x2y+3y+4
+  reduce(g,std(0));
+&rarr; 3y+4
 </pre></td></tr></table>
 
-</li><li>
-the ring 
- <span 
-class="cmmi-10">R</span>[<span 
-class="cmmi-10">x,y,z</span>]  
-, where 
- <span 
-class="cmmi-10">R </span> 
- denotes the field of real
-numbers represented by simple precision floating point numbers. This is
-a special case:
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = real,(x,y,z),dp;
-</pre></td></tr></table>
-
-</li><li>
-the ring 
- <span 
-class="cmmi-10">R</span>[<span 
-class="cmmi-10">x,y,z</span>]  
-, where 
- <span 
-class="cmmi-10">R </span> 
- denotes the field of real
-numbers represented by floating point numbers of 50 valid decimal digits
-and the same number of digits for the rest:
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (real,50),(x,y,z),dp;
-</pre></td></tr></table>
-
-</li><li>
-the ring 
- <span 
-class="cmmi-10">R</span>[<span 
-class="cmmi-10">x,y,z</span>]  
-, where 
- <span 
-class="cmmi-10">R </span> 
- denotes the field of real
-numbers represented by floating point numbers of 10 valid decimal digits
-and with 50 digits for the rest:
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (real,10,50),(x,y,z),dp;
-</pre></td></tr></table>
-
-</li><li>
-the ring 
- <span 
-class="cmmi-10">R</span>(<span 
-class="cmmi-10">j</span>)[<span 
-class="cmmi-10">x,y,z</span>]  
-, where 
- <span 
-class="cmmi-10">R </span> 
- denotes the field of real
-numbers represented by floating point numbers of 30 valid decimal digits
-and the same number for the rest. 
- <span 
-class="cmmi-10">j </span> 
- denotes the imaginary unit.
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (complex,30,j),(x,y,z),dp;
-</pre></td></tr></table>
-
-</li><li>
-the ring 
- <span 
-class="cmmi-10">R</span>(<span 
-class="cmmi-10">i</span>)[<span 
-class="cmmi-10">x,y,z</span>]  
-, where 
- <span 
-class="cmmi-10">R </span> 
- denotes the field of real
-numbers represented by floating point numbers of 6 valid decimal digits
-and the same number for the rest. 
- <span 
-class="cmmi-10">i </span> 
- is the default for the imaginary unit.
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = complex,(x,y,z),dp;
-</pre></td></tr></table>
-
-</li><li>
-the quotient ring 
-
-<span 
-class="cmmi-10">Z&#x2215;</span>7[<span 
-class="cmmi-10">x,y,z</span>]  
- modulo the square of the maximal
-ideal 
- (<span 
-class="cmmi-10">x,y,z</span>)  
-:
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring R = 7,(x,y,z), dp;
-qring r = std(maxideal(2));
-</pre></td></tr></table>
-</li></ul>
 
 </td>
 </tr>
@@ -392,14 +247,14 @@ qring r = std(maxideal(2));
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_28.htm#Rings-and-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3 Rings and orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_30.htm#General-syntax-of-a-ring-declaration" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3.2 General syntax of a ring declaration" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_28.htm#Rings-and-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.3 Rings and orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_28.htm#Examples-of-ring-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3.1 Examples of ring declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_30.htm#Term-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3.3 Term orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_27.htm#Rings-and-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.3 Rings and orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

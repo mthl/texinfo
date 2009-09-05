@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.3.2 lprint</title>
+<title>Singular 2-0-4 Manual: D.2.3.3 pmat</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.3.2 lprint">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.3.2 lprint">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.3.3 pmat">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.3.3 pmat">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="lprint"></a>
+<a name="pmat"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_417.htm#allprint" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.1 allprint" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_417.htm#lprint" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.2 lprint" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_419.htm#pmat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.3 pmat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_419.htm#rMacaulay" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.4 rMacaulay" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_416.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_415.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,51 +82,39 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="lprint-1"></a>
-<h4 class="subsubsection">D.2.3.2 lprint</h4>
-<a name="index-lprint"></a>
-<p>Procedure from library <code>inout.lib</code> (see <a href="sing_416.htm#inout_005flib">inout_lib</a>).
+<a name="pmat-1"></a>
+<h4 class="subsubsection">D.2.3.3 pmat</h4>
+<a name="index-pmat"></a>
+<p>Procedure from library <code>inout.lib</code> (see <a href="sing_415.htm#inout_005flib">inout_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>lprint(id[,n]); id poly/ideal/vector/module/matrix, n integer
+<dd><p>pmat(M,[n]); M matrix, n integer
+</p>
+</dd>
+<dt><strong>Display:</strong></dt>
+<dd><p>display M in array format if it fits into pagewidth; if n is given,
+only the first n characters of each column are shown
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>string of id in a format fitting into lines of size n, such that no
-monomial is destroyed, i.e. the new line starts with + or -;
-(default: n = pagewidth).
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>id is printed columnwise, each column separated by a blank line;
-hence lprint(transpose(id)); displays a matrix id in a format which
-can be used as input.
+<dd><p>no return value
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;inout.lib&quot;;
-ring r= 0,(x,y,z),ds;
-poly f=((x+y)*(x-y)*(x+z)*(y+z)^2);
-lprint(f,40);
-&rarr;   x3y2-xy4+2x3yz+x2y2z-2xy3z-y4z+x3z2
-&rarr; +2x2yz2-xy2z2-2y3z2+x2z3-y2z3
-module m = [f*(x-y)],[0,f*(x-y)];
-string s=lprint(m); s;&quot;&quot;;
-&rarr;   x4y2-x3y3-x2y4+xy5+2x4yz-x3y2z-3x2y3z+xy4z+y5z+x4z2+x3yz2-3x2y2z2-xy3z2
-&rarr; +2y4z2+x3z3-x2yz3-xy2z3+y3z3,
-&rarr;   0,
-&rarr; 
-&rarr;   0,
-&rarr;   x4y2-x3y3-x2y4+xy5+2x4yz-x3y2z-3x2y3z+xy4z+y5z+x4z2+x3yz2-3x2y2z2-xy3z2
-&rarr; +2y4z2+x3z3-x2yz3-xy2z3+y3z3
-&rarr; 
-execute(&quot;matrix M[2][2]=&quot;+s+&quot;;&quot;);      //use the string s as input
-module m1 = transpose(M);	          //should be the same as m
-print(m-m1);
-&rarr; 0,0,
-&rarr; 0,0 
+ring r=0,(x,y,z),ls;
+ideal i= x,z+3y,x+y,z;
+matrix m[3][3]=i^2;
+pmat(m);
+&rarr; x2,     xz+3xy,     xy+x2,         
+&rarr; xz,     z2+6yz+9y2, yz+3y2+xz+3xy, 
+&rarr; z2+3yz, y2+2xy+x2,  yz+xz
+pmat(m,3);
+&rarr; x2  xz+ xy+ 
+&rarr; xz  z2+ yz+ 
+&rarr; z2+ y2+ yz+ 
 </pre></td></tr></table>
 
 </td>
@@ -138,14 +126,14 @@ print(m-m1);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_417.htm#allprint" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.1 allprint" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_419.htm#pmat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.3 pmat" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_416.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_417.htm#lprint" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.3.2 lprint" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_419.htm#rMacaulay" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.4 rMacaulay" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_415.htm#inout_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.3 inout_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

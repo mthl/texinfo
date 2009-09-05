@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.12.4 poly related functions</title>
+<title>Singular 2-0-4 Manual: 4.13 proc</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.12.4 poly related functions">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.12.4 poly related functions">
+<meta name="description" content="Singular 2-0-4 Manual: 4.13 proc">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.13 proc">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="poly-related-functions"></a>
+<a name="proc"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_129.htm#poly-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.12.3 poly operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_129.htm#poly-related-functions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.12.4 poly related functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_131.htm#proc" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.13 proc" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_131.htm#proc-declaration" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.13.1 proc declaration" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_126.htm#poly" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.12 poly" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,95 +84,25 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="poly-related-functions-1"></a>
-<h3 class="subsection">4.12.4 poly related functions</h3>
-<a name="index-poly-related-functions"></a>
+<a name="proc-1"></a>
+<h2 class="section">4.13 proc</h2>
+<a name="index-proc"></a>
 
-<dl compact="compact">
-<dt><code>cleardenom</code></dt>
-<dd><p>cancel denominators of numbers in poly and divide it by its content
-(see <a href="sing_162.htm#cleardenom">cleardenom</a>)
-</p></dd>
-<dt><code>coef</code></dt>
-<dd><p>matrix of coefficients and monomials (see <a href="sing_164.htm#coef">coef</a>)
-</p></dd>
-<dt><code>coeffs</code></dt>
-<dd><p>matrix of coefficients (see <a href="sing_165.htm#coeffs">coeffs</a>)
-</p></dd>
-<dt><code>deg</code></dt>
-<dd><p>degree (see <a href="sing_169.htm#deg">deg</a>)
-</p></dd>
-<dt><code>det</code></dt>
-<dd><p>determinant (see <a href="sing_172.htm#det">det</a>)
-</p></dd>
-<dt><code>diff</code></dt>
-<dd><p>partial derivative (see <a href="sing_173.htm#diff">diff</a>)
-</p></dd>
-<dt><code>extgcd</code></dt>
-<dd><p>Bezout representation of gcd (see <a href="sing_183.htm#extgcd">extgcd</a>)
-</p></dd>
-<dt><code>factorize</code></dt>
-<dd><p>factorize polynomial (see <a href="sing_185.htm#factorize">factorize</a>)
-</p></dd>
-<dt><code>finduni</code></dt>
-<dd><p>find univariate polynomials in a zero-dimensional ideal (see <a href="sing_191.htm#finduni">finduni</a>)
-</p></dd>
-<dt><code>gcd</code></dt>
-<dd><p>greatest common divisor (see <a href="sing_194.htm#gcd">gcd</a>)
-</p></dd>
-<dt><code>homog</code></dt>
-<dd><p>homogenization (see <a href="sing_201.htm#homog">homog</a>)
-</p></dd>
-<dt><code>jacob</code></dt>
-<dd><p>ideal, resp. matrix, of all partial derivatives (see <a href="sing_209.htm#jacob">jacob</a>)
-</p></dd>
-<dt><code>lead</code></dt>
-<dd><p>leading term (see <a href="sing_216.htm#lead">lead</a>)
-</p></dd>
-<dt><code>leadcoef</code></dt>
-<dd><p>coefficient of the leading term (see <a href="sing_217.htm#leadcoef">leadcoef</a>)
-</p></dd>
-<dt><code>leadexp</code></dt>
-<dd><p>the exponent vector of the leading monomial (see <a href="sing_218.htm#leadexp">leadexp</a>)
-</p></dd>
-<dt><code>leadmonom</code></dt>
-<dd><p>leading monomial (see <a href="sing_219.htm#leadmonom">leadmonom</a>)
-</p></dd>
-<dt><code>jet</code></dt>
-<dd><p>monomials with degree smaller k+1 (see <a href="sing_210.htm#jet">jet</a>)
-</p></dd>
-<dt><code>ord</code></dt>
-<dd><p>degree of the leading monomial (see <a href="sing_245.htm#ord">ord</a>)
-</p></dd>
-<dt><code>qhweight</code></dt>
-<dd><p>quasihomogeneous weights (see <a href="sing_255.htm#qhweight">qhweight</a>)
-</p></dd>
-<dt><code>reduce</code></dt>
-<dd><p>normal form with respect to a standard base (see <a href="sing_261.htm#reduce">reduce</a>)
-</p></dd>
-<dt><code>rvar</code></dt>
-<dd><p>test for ring variable (see <a href="sing_267.htm#rvar">rvar</a>)
-</p></dd>
-<dt><code>simplify</code></dt>
-<dd><p>normalize a polynomial (see <a href="sing_270.htm#simplify">simplify</a>)
-</p></dd>
-<dt><code>size</code></dt>
-<dd><p>number of monomials (see <a href="sing_271.htm#size">size</a>)
-</p></dd>
-<dt><code>subst</code></dt>
-<dd><p>substitute a ring variable (see <a href="sing_279.htm#subst">subst</a>)
-</p></dd>
-<dt><code>trace</code></dt>
-<dd><p>trace of a matrix (see <a href="sing_282.htm#trace">trace</a>)
-</p></dd>
-<dt><code>var</code></dt>
-<dd><p>the indicated variable of the ring (see <a href="sing_288.htm#var">var</a>)
-</p></dd>
-<dt><code>varstr</code></dt>
-<dd><p>variable in string form (see <a href="sing_289.htm#varstr">varstr</a>)
-</p></dd>
-</dl>
-
+<p>Procedures are sequences of <small>SINGULAR</small> commands in a special
+format. They are used to extend the set of <small>SINGULAR</small> commands with
+user defined commands. Once a procedure is defined it can be used as
+any other <small>SINGULAR</small> command. Procedures may be defined by either
+typing them on the command line or by loading them from a file. For a
+detailed description on the concept of procedures in <small>SINGULAR</small> see
+<a href="sing_40.htm#Procedures">Procedures</a>. A file containing procedure definitions which comply with
+certain syntax rules is called a library. Such a file is loaded
+using the command <code>LIB</code>. For more information on libraries see
+<a href="sing_45.htm#Libraries">Libraries</a>.
+</p>
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_131.htm#proc-declaration">4.13.1 proc declaration</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
 
 </td>
 </tr>
@@ -183,14 +113,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_129.htm#poly-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.12.3 poly operations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_131.htm#proc" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.13 proc" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_126.htm#poly" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.12 poly" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_129.htm#poly-related-functions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.12.4 poly related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_131.htm#proc-declaration" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.13.1 proc declaration" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

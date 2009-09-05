@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.3 betti</title>
+<title>Singular 2-0-4 Manual: 5.1.4 char</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.3 betti">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.3 betti">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.4 char">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.4 char">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="betti"></a>
+<a name="char"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_157.htm#bareiss" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.2 bareiss" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_157.htm#betti" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.3 betti" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_159.htm#char" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.4 char" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_159.htm#char_005fseries" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.5 char_series" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,157 +82,43 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="betti-1"></a>
-<h3 class="subsection">5.1.3 betti</h3>
-<a name="index-betti"></a>
+<a name="char-1"></a>
+<h3 class="subsection">5.1.4 char</h3>
+<a name="index-char"></a>
+
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>betti (</code> list_expression <code>)</code>
-<br><code>betti (</code> resolution_expression <code>)</code>
-<br><code>betti (</code> list_expression <code>,</code> int_expression <code>)</code>
-<br><code>betti (</code> resolution_expression <code>,</code> int_expression <code>)</code>
+<dd><p><code>char (</code> ring_name <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>intmat
+<dd><p>int
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>with 1 argument: computes the graded Betti numbers of a minimal resolution of
-<SPAN CLASS="MATH"><IMG
- WIDTH="45" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_79.png"
- ALT="$R^n/M$"></SPAN>, if <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_49.png"
- ALT="$R$"></SPAN> denotes the basering and
-<SPAN CLASS="MATH"><IMG
- WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_13.png"
- ALT="$M$"></SPAN> a homogeneous submodule of <SPAN CLASS="MATH"><IMG
- WIDTH="23" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_77.png"
- ALT="$R^n$"></SPAN> and the argument represents a
-resolution of
-<SPAN CLASS="MATH"><IMG
- WIDTH="45" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_79.png"
- ALT="$R^n/M$"></SPAN>.
-<br>
-The entry d of the intmat at place (i,j) is the minimal number of
-generators in degree i+j of the j-th syzygy module (= module of
-relations) of <SPAN CLASS="MATH"><IMG
- WIDTH="45" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_79.png"
- ALT="$R^n/M$"></SPAN> (the 0th (resp. 1st) syzygy module of <SPAN CLASS="MATH"><IMG
- WIDTH="45" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_79.png"
- ALT="$R^n/M$"></SPAN> is
-<SPAN CLASS="MATH"><IMG
- WIDTH="23" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_77.png"
- ALT="$R^n$"></SPAN> (resp. <SPAN CLASS="MATH"><IMG
- WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_13.png"
- ALT="$M$"></SPAN>)).
-The argument is considered to be the result of a res/sres/mres/nres/lres
-command. This implies that a zero is only allowed (and counted) as a
-generator in the first module.
-<br>For the computation betti uses only the initial monomials. This could lead
-to confusing results for a non-homogeneous input.
-</p>
-<p>The optional second argument is a switch for the minimization of the Betti
-numbers. If it is 0 then the Betti numbers correspond exactly to the input -
-otherwise the command is identical to the one-argument form.
+<dd><p>returns the characteristic of the coefficient field of a ring.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(a,b,c,d),dp;
-  ideal j=bc-ad,b3-a2c,c3-bd2,ac2-b2d;
-  list T=mres(j,0); // 0 forces a full resolution
-  // a minimal set of generators for j:
-  print(T[1]);
-&rarr; bc-ad,
-&rarr; c3-bd2,
-&rarr; ac2-b2d,
-&rarr; b3-a2c
-  // second syzygy module of r/j which is the first
-  // syzygy module of j (minimal generating set):
-  print(T[2]);
-&rarr; bd,c2,ac,b2,
-&rarr; -a,-b,0, 0, 
-&rarr; c, d, -b,-a,
-&rarr; 0, 0, -d,-c 
-  // the second syzygy module (minimal generating set):
-  print(T[3]);
-&rarr; -b,
-&rarr; a, 
-&rarr; -c,
-&rarr; d  
-  print(T[4]);
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y),dp;
+  char(r);
+&rarr; 32003
+  ring s=0,(x,y),dp;
+  char(s);
 &rarr; 0
-  betti(T);
-&rarr; 1,0,0,0,
-&rarr; 0,1,0,0,
-&rarr; 0,3,4,1 
-  // most useful for reading off the graded Betti numbers:
-  print(betti(T),&quot;betti&quot;);
-&rarr;            0     1     2     3
-&rarr; ------------------------------
-&rarr;     0:     1     -     -     -
-&rarr;     1:     -     1     -     -
-&rarr;     2:     -     3     4     1
-&rarr; ------------------------------
-&rarr; total:     1     4     4     1
+  ring ra=(7,a),(x,y),dp;
+  minpoly=a^3+a+1;
+  char(ra);
+&rarr; 7
+  ring rp=(49,a),(x,y),dp;
+  char(rp);
+&rarr; 7
+  ring rr=real,x,dp;
+  char(rr);
+&rarr; 0
 </pre></td></tr></table>
 </dd>
 </dl>
-
-<p>Hence
-</p><ul>
-<li> the 0th syzygy module of r/j (which is r) has 1 generator in
-degree 0 (which is 1),
-</li><li> the 1st syzygy module <code>T[1]</code> (which is j) has 4
-generators (one in degree 2 and three in degree 3),
-</li><li> the 2nd syzygy
-module <code>T[2]</code> has 4 generators (all in degree 4),
-</li><li> the 3rd syzygy module <code>T[3]</code> has
-1 generator in degree 5,
-</li></ul>
-<p>where the generators are the columns of the
-displayed matrix and degrees are assigned such that the corresponding maps
-have degree 0:
-<BR><P></P>
-<DIV ALIGN="CENTER" CLASS="mathdisplay">
-<!-- MATH
- \begin{displaymath}
-0 \longleftarrow r/j \longleftarrow r(1)
-\buildrel{T[1]}\over{\longleftarrow} r(2) \oplus r^3(3)
-\buildrel{T[2]}\over{\longleftarrow} r^4(4)
-\buildrel{T[3]}\over{\longleftarrow} r(5)
-\longleftarrow 0 \quad .
-\end{displaymath}
- -->
-
-<IMG
- WIDTH="411" HEIGHT="29" BORDER="0"
- SRC="sing_89.png"
- ALT="\begin{displaymath}
-0 \longleftarrow r/j \longleftarrow r(1)
-\buildrel{T[1]}\ove...
-...ldrel{T[3]}\over{\longleftarrow} r(5)
-\longleftarrow 0 \quad .
-\end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P>
-</p>
 <p>See
-<a href="sing_374.htm#Syzygies-and-resolutions">Syzygies and resolutions</a>;
-<a href="sing_202.htm#hres">hres</a>;
-<a href="sing_224.htm#lres">lres</a>;
-<a href="sing_233.htm#mres">mres</a>;
-<a href="sing_252.htm#print">print</a>;
-<a href="sing_264.htm#res">res</a>;
-<a href="sing_135.htm#resolution">resolution</a>;
-<a href="sing_274.htm#sres">sres</a>.
+<a href="sing_160.htm#charstr">charstr</a>;
+<a href="sing_138.htm#ring">ring</a>.
 </p></td>
 </tr>
 </table>
@@ -242,14 +128,14 @@ have degree 0:
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_157.htm#bareiss" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.2 bareiss" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_159.htm#char" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.4 char" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_157.htm#betti" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.3 betti" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_159.htm#char_005fseries" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.5 char_series" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

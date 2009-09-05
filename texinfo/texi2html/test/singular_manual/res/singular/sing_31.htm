@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.3.3 Term orderings</title>
+<title>Singular 2-0-4 Manual: 3.4 Implemented algorithms</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.3.3 Term orderings">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.3.3 Term orderings">
+<meta name="description" content="Singular 2-0-4 Manual: 3.4 Implemented algorithms">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.4 Implemented algorithms">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Term-orderings"></a>
+<a name="Implemented-algorithms"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_30.htm#General-syntax-of-a-ring-declaration" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3.2 General syntax of a ring declaration" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_30.htm#Term-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3.3 Term orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_32.htm#Implemented-algorithms" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.4 Implemented algorithms" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_32.htm#The-SINGULAR-language" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5 The SINGULAR language" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_28.htm#Rings-and-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.3 Rings and orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,173 +82,293 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Term-orderings-1"></a>
-<h3 class="subsection">3.3.3 Term orderings</h3>
-<a name="index-Monomial-orderings_002c-Term-orderings"></a>
+<a name="Implemented-algorithms-1"></a>
+<h2 class="section">3.4 Implemented algorithms</h2>
+<a name="index-Implemented-algorithms"></a>
 
-<p>Any polynomial (resp. vector) in <small>SINGULAR</small> is ordered w.r.t. a
-term ordering (or, monomial ordering), which has to be specified
-together with the declaration of a ring. <small>SINGULAR</small> stores and
-displays a polynomial (resp. vector) w.r.t. this ordering, i.e., the
-greatest monomial (also called the leading monomial) is the first one
-appearing in the output polynomial, and the smallest monomial is the last one.
+<p>The basic algorithm in <small>SINGULAR</small> is a general standard basis algorithm for
+any monomial ordering which is compatible with the natural semi-group
+structure of the exponents. This includes well-orderings
+(Buchberger algorithm to compute a Groebner basis)
+and tangent cone orderings (Mora algorithm) as special cases.
 </p>
-<p><strong>Remark:</strong> The novice user should generally use the ordering
-<code>dp</code> for computations in the polynomial ring
-<!-- MATH
- $K[x_1,\ldots,x_n]$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="90" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_55.png"
- ALT="$K[x_1,\ldots,x_n]$"></SPAN>,
-resp.  <code>ds</code> for computations in the localization
-<!-- MATH
- $\hbox{Loc}_{(x)}K[x_1,\ldots,x_n])$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="137" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_56.png"
- ALT="$\hbox{Loc}_{(x)}K[x_1,\ldots,x_n])$"></SPAN>.
-For more details, see <a href="sing_360.htm#Polynomial-data">Polynomial data</a>.
-</p>
-<p>In a ring declaration, <small>SINGULAR</small> offers the following orderings:
-</p><ol>
-<li> Global orderings
+<p>Nonetheless, there are a lot of other important algorithms:
+</p><ul>
+<li>
+Algorithms to compute the standard operations on ideals and modules:
+intersection, ideal quotient, elimination, etc.
+
+</li><li>
+Different Syzygy algorithms and algorithms to compute free resolutions
+of modules.
+
+</li><li>
+Combinatorial algorithms to compute dimensions, Hilbert series,
+multiplicities, etc.
+
+</li><li>
+Algorithms for univariate and multivariate polynomial factorization,
+resultant and gcd computations.
+</li></ul>
+
+<a name="Commands-to-compute-standard-bases"></a>
+<h3 class="subheading">Commands to compute standard bases</h3>
 <dl compact="compact">
-<dt><code>lp</code></dt>
-<dd><p>lexicographical ordering
+<dt><code>facstd</code></dt>
+<dd><p><a href="sing_183.htm#facstd">facstd</a>
+<br>computes a list of Groebner bases via the Factorizing Groebner Basis
+Algorithm, i.e., their intersection has the same radical as the original ideal. It need not
+be a Groebner basis of the given ideal.
 </p>
-</dd>
-<dt><code>dp</code></dt>
-<dd><p>degree reverse lexicographical ordering
+<p>The intersection of the zero-sets is the zero-set of the given ideal.
+</p></dd>
+<dt><code>fglm</code></dt>
+<dd><p><a href="sing_186.htm#fglm">fglm</a>
+<br>computes a Groebner basis provided that a reduced Groebner basis
+w.r.t. another ordering is given.
 </p>
-</dd>
-<dt><code>Dp</code></dt>
-<dd><p>degree lexicographical ordering
+<p>Implements the so-called FGLM (Faugere, Gianni, Lazard, Mora) algorithm.
+The given ideal must be zero-dimensional.
+</p></dd>
+<dt><code>groebner</code></dt>
+<dd><p><a href="sing_196.htm#groebner">groebner</a><br>
+computes a standard resp. Groebner bases using a heuristically chosen
+method.
 </p>
-</dd>
-<dt><code>wp(</code> intvec_expression <code>)</code></dt>
-<dd><p>weighted reverse lexicographical ordering; the weight vector may
-consist of positive integers only.
+<p>This is the preferred method to compute a standard resp. Groebner
+bases.
+</p></dd>
+<dt><code>mstd</code></dt>
+<dd><p><a href="sing_233.htm#mstd">mstd</a>
+<br>computes a standard basis and a minimal set of generators.
+</p></dd>
+<dt><code>std</code></dt>
+<dd><p><a href="sing_275.htm#std">std</a>
+<br>computes a standard resp. Groebner basis.
+</p></dd>
+<dt><code>stdfglm</code></dt>
+<dd><p><a href="sing_276.htm#stdfglm">stdfglm</a>
+<br>computes a Groebner basis in a ring with a &ldquo;difficult&rdquo; ordering
+(e.g., lexicographical) via <code>std</code> w.r.t. a &ldquo;simple&rdquo; ordering and
+<code>fglm</code>.
 </p>
-</dd>
-<dt><code>Wp(</code> intvec_expression <code>)</code></dt>
-<dd><p>weighted lexicographical ordering; the weight vector may consist of
-positive integers only.
+<p>The given ideal must be zero-dimensional.
+</p></dd>
+<dt><code>stdhilb</code></dt>
+<dd><p><a href="sing_277.htm#stdhilb">stdhilb</a><br>
+computes a Groebner basis in a ring with a &ldquo;difficult&rdquo; ordering
+(e.g., lexicographical) via <code>std</code> w.r.t. a &ldquo;simple&rdquo; ordering
+and a <code>std</code> computation guided by the Hilbert series.
 </p></dd>
 </dl>
 
-<p>Global orderings are well-orderings, i.e., 
-<SPAN CLASS="MATH"><IMG
- WIDTH="39" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_57.png"
- ALT="$1 &lt; x$"></SPAN>
- for each ring
-variable 
-<SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_36.png"
- ALT="$x$"></SPAN>
-. They are denoted by a <code>p</code> as the second
-character in their name.
+<a name="Further-processing-of-standard-bases"></a>
+<h3 class="subheading">Further processing of standard bases</h3>
+<p>The next commands require the input to be a standard basis.
 </p>
-</li><li> Local orderings
 <dl compact="compact">
-<dt><code>ls</code></dt>
-<dd><p>negative lexicographical ordering
+<dt><code>degree</code></dt>
+<dd><p><a href="sing_169.htm#degree">degree</a>
+<br>computes the (Krull) dimension, codimension and the multiplicity.
 </p>
-</dd>
-<dt><code>ds</code></dt>
-<dd><p>negative degree reverse lexicographical ordering
+<p>The result is only displayed on the screen.
+</p></dd>
+<dt><code>dim</code></dt>
+<dd><p><a href="sing_173.htm#dim">dim</a><br>
+computes the dimension of the ideal resp. module.
+</p></dd>
+<dt><code>highcorner</code></dt>
+<dd><p><a href="sing_198.htm#highcorner">highcorner</a><br>
+computes the smallest monomial not contained in the ideal resp. module.
+The ideal resp. module has to be finite dimensional as a vector space
+over the ground field.
+</p></dd>
+<dt><code>hilb</code></dt>
+<dd><p><a href="sing_199.htm#hilb">hilb</a><br>
+computes the first, and resp. or, second Hilbert series of an ideal
+resp. module.
+</p></dd>
+<dt><code>kbase</code></dt>
+<dd><p><a href="sing_210.htm#kbase">kbase</a><br> computes a vector space basis (consisting of monomials) of
+the quotient of a ring by an ideal resp. of a free module by a
+submodule.
 </p>
-</dd>
-<dt><code>Ds</code></dt>
-<dd><p>negative degree lexicographical ordering
-</p>
-</dd>
-<dt><code>ws(</code> intvec_expression <code>)</code></dt>
-<dd><p>(general) weighted reverse lexicographical ordering; the first element
-of the weight vector has to be non-zero.
-</p>
-</dd>
-<dt><code>Ws(</code> intvec_expression <code>)</code></dt>
-<dd><p>(general) weighted lexicographical ordering; the first element
-of the weight vector has to be non-zero.
+<p>The ideal resp. module has to be finite dimensional as a vector space
+over the ground field and has to be represented by a standard basis w.r.t.
+the ring ordering.
+</p></dd>
+<dt><code>mult</code></dt>
+<dd><p><a href="sing_234.htm#mult">mult</a><br>
+computes the degree of the monomial ideal resp. module generated by
+the leading monomials of the input.
+</p></dd>
+<dt><code>reduce</code></dt>
+<dd><p><a href="sing_260.htm#reduce">reduce</a><br>
+reduces a polynomial, vector, ideal or module to its normal form with
+respect to an ideal or module represented by a standard basis.
+</p></dd>
+<dt><code>vdim</code></dt>
+<dd><p><a href="sing_289.htm#vdim">vdim</a><br>
+computes the vector space dimension of a ring (resp. free module)
+modulo an ideal (resp. module).
 </p></dd>
 </dl>
 
-<p>Local orderings are not well-orderings. They are denoted by an <code>s</code>
-as the second character in their name.
-</p>
-</li><li> Matrix orderings
+<a name="Commands-to-compute-resolutions"></a>
+<h3 class="subheading">Commands to compute resolutions</h3>
 <dl compact="compact">
-<dt><code>M(</code> intmat_expression <code>)</code></dt>
-<dd><p>intmat_expression has to be an invertible square matrix
+<dt><code>res</code></dt>
+<dd><p><a href="sing_263.htm#res">res</a><br>
+computes a free resolution of an ideal or module using a heuristically
+chosen method.
+This is the preferred method to compute free resolutions of ideals or
+modules.
+</p></dd>
+<dt><code>lres</code></dt>
+<dd><p><a href="sing_223.htm#lres">lres</a><br>
+computes a free resolution of an ideal or module with La Scala&rsquo;s
+method. The input needs to be homogeneous.
+</p></dd>
+<dt><code>mres</code></dt>
+<dd><p><a href="sing_232.htm#mres">mres</a><br>
+computes a minimal free resolution of an ideal or module with the Syzygy
+method.
+</p></dd>
+<dt><code>sres</code></dt>
+<dd><p><a href="sing_273.htm#sres">sres</a><br>
+computes a free resolution of an ideal or module with Schreyer&rsquo;s
+method. The input has to be a standard basis.
+</p></dd>
+<dt><code>nres</code></dt>
+<dd><p><a href="sing_239.htm#nres">nres</a><br>
+computes a free resolution of an ideal or module with the standard basis
+method.
+</p></dd>
+<dt><code>syz</code></dt>
+<dd><p><a href="sing_280.htm#syz">syz</a><br>
+computes the first Syzygy (i.e., the module of relations of the
+given generators).
 </p></dd>
 </dl>
 
-<p>Using matrix orderings, <small>SINGULAR</small> can compute standard bases
-w.r.t. any monomial ordering that is compatible with the natural
-semi-group structure on the monomials. In practice, the predefined global
-and local orderings together with the block orderings should be
-sufficient in most cases. These orderings are faster than their
-corresponding matrix orderings since evaluation of a matrix ordering is
-time consuming.
-</p>
-</li><li> Extra weight vector
+<a name="Further-processing-of-resolutions"></a>
+<h3 class="subheading">Further processing of resolutions</h3>
 <dl compact="compact">
-<dt><code>a(</code> intvec_expression <code>)</code></dt>
-<dd><p>an extra weight vector <code>a(</code> intvec_expression <code>)</code> may precede
-any monomial ordering
+<dt><code>betti</code></dt>
+<dd><p><a href="sing_157.htm#betti">betti</a><br>
+computes the graded Betti numbers of a module from a free resolution.
+</p></dd>
+<dt><code>minres</code></dt>
+<dd><p><a href="sing_228.htm#minres">minres</a><br>
+minimizes a free resolution of an ideal or module.
+</p></dd>
+<dt><code>regularity</code></dt>
+<dd><p><a href="sing_261.htm#regularity">regularity</a><br>
+computes the regularity of a homogeneous ideal resp. module from a given
+minimal free resolution.
 </p></dd>
 </dl>
 
-</li><li> Product ordering
+<a name="Processing-of-polynomials"></a>
+<h3 class="subheading">Processing of polynomials</h3>
 <dl compact="compact">
-<dt><code>(</code> ordering [ <code>(</code> int_expression <code>)</code> ]<code>,</code> &hellip; <code>)</code></dt>
-<dd><p>any of the above orderings and the extra weight vector may be combined
-to yield product or block orderings
+<dt><code>char_series</code></dt>
+<dd><p><a href="sing_159.htm#char_005fseries">char_series</a><br>
+computes characteristic sets of polynomial ideals.
+</p></dd>
+<dt><code>extgcd</code></dt>
+<dd><p><a href="sing_182.htm#extgcd">extgcd</a><br>
+computes the extended gcd of two polynomials.
+</p>
+<p>Implemented as extended Euclidean Algorithm.  Applicable for univariate
+polynomials only.
+</p></dd>
+<dt><code>factorize</code></dt>
+<dd><p><a href="sing_184.htm#factorize">factorize</a><br>
+computes factorization of univariate and multivariate polynomials into
+irreducible factors.
+</p>
+<p>The most basic algorithm is univariate factorization in prime
+characteristic.  The Cantor-Zassenhaus Algorithm is used in this case.
+For characteristic 0, a univariate Hensel-lifting is done to lift from
+prime characteristic to characteristic 0.  For multivariate
+factorization in any characteristic, the problem is reduced to the
+univariate case first, then a multivariate Hensel-lifting is used to
+lift the univariate factorization.
+</p>
+<p>Note that there is no factorization of polynomials over algebraic
+extensions of Q.
+</p></dd>
+<dt><code>gcd</code></dt>
+<dd><p><a href="sing_193.htm#gcd">gcd</a><br>
+computes greatest common divisors of univariate and multivariate polynomials.
+</p>
+<p>For prime characteristic, a subresultant gcd is used.  In characteristic 0, a
+modular algorithm is used for the univariate case.  For the multivariate case,
+the EZGCD is used.
+</p>
+<p>Note that there is no gcd calculation for polynomials over algebraic
+extensions of Q.
+</p></dd>
+<dt><code>resultant</code></dt>
+<dd><p><a href="sing_265.htm#resultant">resultant</a><br>
+computes the resultant of two univariate polynomials using the subresultant
+algorithm.
+</p>
+<p>Multivariate polynomials are considered as univariate polynomials in the
+main variable (which has to be specified by the user).
+</p></dd>
+<dt><code>vandermonde</code></dt>
+<dd><p><a href="sing_286.htm#vandermonde">vandermonde</a><br>
+interpolates a polynomial from its values at several points
 </p></dd>
 </dl>
 
-<p>The orderings <code>lp</code>, <code>dp</code>, <code>Dp</code>, <code>ls</code>, <code>ds</code>, and
-<code>Ds</code> may be followed by an int_expression in parentheses giving the
-size of the block. For the last block the size is calculated
-automatically. For the weighted orderings the size of the block is given
-by the size of the weight vector. The same holds analogously for matrix
-orderings.
-</p>
-</li><li> Module orderings
+<a name="Matrix-computations"></a>
+<h3 class="subheading">Matrix computations</h3>
 <dl compact="compact">
-<dt><code>(</code> ordering<code>,</code> &hellip;<code>, C )</code></dt>
-<dt><code>(</code> ordering<code>,</code> &hellip;<code>, c )</code></dt>
-<dd><p>sort polynomial vectors by the monomial ordering first, then by
-components
+<dt><code>bareiss</code></dt>
+<dd><p><a href="sing_156.htm#bareiss">bareiss</a><br>
+implements sparse Gauss-Bareiss method for elimination (matrix
+triangularization) in arbitrary integral domains.
+</p></dd>
+<dt><code>det</code></dt>
+<dd><p><a href="sing_171.htm#det">det</a><br>
+computes the determinant of a square matrix.
 </p>
-</dd>
-<dt><code>( C,</code> ordering<code>,</code> &hellip; <code>)</code></dt>
-<dt><code>( c,</code> ordering<code>,</code> &hellip; <code>)</code></dt>
-<dd><p>sort polynomial vectors by components first, then by the monomial
-ordering
+<p>For matrices with integer entries a modular algorithm is used.  For
+other domains the Gauss-Bareiss method is used.
+</p></dd>
+<dt><code>minor</code></dt>
+<dd><p><a href="sing_227.htm#minor">minor</a><br>
+computes all minors (=subdeterminants) of a given size for a matrix.
 </p></dd>
 </dl>
 
-<p>Here a capital <code>C</code> sorts generators in ascending order, i.e.,
-<code>gen(1)</code> &lt; <code>gen(2)</code> &lt; <small class="enddots">...</small> A small <code>c</code> sorts in
-descending order, i.e., <code>gen(1)</code> &gt; <code>gen(2)</code> &gt; <small class="enddots">...</small> It is
-not necessary to specify the module ordering explicitly since <code>(</code>
-ordering<code>,</code> &hellip;<code>, C )</code> is the default.
-</p>
-<p>In fact, <code>c</code> or <code>C</code> may be specified anywhere in a product
-ordering specification, not only at its beginning or end.  All monomial
-block orderings preceding the component ordering have higher precedence,
-all monomial block orderings following after it have lower precedence.
-</p></li></ol>
+<a name="Numeric-computations"></a>
+<h3 class="subheading">Numeric computations</h3>
+<dl compact="compact">
+<dt><code>laguerre</code></dt>
+<dd><p><a href="sing_214.htm#laguerre">laguerre</a><br>
+computes all (complex) roots of a univariate polynomial
+</p></dd>
+<dt><code>uressolve</code></dt>
+<dd><p><a href="sing_285.htm#uressolve">uressolve</a><br>
+find all roots of 0-dimensional ideal i with multivariate resultants
+</p></dd>
+</dl>
 
-<p>For a mathematical description of these orderings, see
-<a href="sing_360.htm#Polynomial-data">Polynomial data</a>.
-</p>
+<a name="Controlling-computations"></a>
+<h3 class="subheading">Controlling computations</h3>
+<dl compact="compact">
+<dt><code>option</code></dt>
+<dd><p><a href="sing_243.htm#option">option</a><br>
+allows setting of options for manipulating the behavior of computations
+(such as reduction strategies) and for showing protocol information indicating
+the progress of a computation.
+</p></dd>
+</dl>
+
 </td>
 </tr>
 </table>
@@ -258,14 +378,14 @@ all monomial block orderings following after it have lower precedence.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_30.htm#General-syntax-of-a-ring-declaration" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3.2 General syntax of a ring declaration" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_32.htm#Implemented-algorithms" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.4 Implemented algorithms" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_28.htm#Rings-and-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.3 Rings and orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_30.htm#Term-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3.3 Term orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_32.htm#The-SINGULAR-language" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5 The SINGULAR language" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

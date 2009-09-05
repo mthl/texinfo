@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.2.11 while</title>
+<title>Singular 2-0-4 Manual: 5.2.12 ~ (break point)</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.2.11 while">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.2.11 while">
+<meta name="description" content="Singular 2-0-4 Manual: 5.2.12 ~ (break point)">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.2.12 ~ (break point)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="while"></a>
+<a name="g_t_007e"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_304.htm#return" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.2.10 return" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_304.htm#while" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.2.11 while" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_306.htm#g_t_007e" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.2.12 ~ (break point)" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_306.htm#System-variables" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3 System variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_294.htm#Control-structures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.2 Control structures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_293.htm#Control-structures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.2 Control structures" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,42 +84,43 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="while-1"></a>
-<h3 class="subsection">5.2.11 while</h3>
-<a name="index-while"></a>
+<a name="g_t_007e-_0028break-point_0029"></a>
+<h3 class="subsection">5.2.12 ~ (break point)</h3>
+<a name="index-_007e-1"></a>
+<a name="index-break-point"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>while (</code>boolean_expression<code>)</code> block
+<dd><p><code>~;</code>
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>repetitive, conditional execution of block.
-<br>The boolean_expression is evaluated and if its value is TRUE, the
-block gets executed. This is repeated until boolean_expression evaluates
-to FALSE.  The command <code>break</code> leaves the innermost <code>while</code>
-construction.
+<dd><p>sets a break point. Whenever <small>SINGULAR</small> reaches the command <code>~;</code>
+in a sequence of commands it prompts for input. The user may now input
+lines of <small>SINGULAR</small> commands. The line length cannot exceed 80
+characters.
+<small>SINGULAR</small> proceeds with the execution of the command following <code>~;</code>
+as soon as it receives an empty line.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">int i = 9;
-while (i&gt;0)
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc t
 {
-   // &hellip; // do something for i=9, 8, ..., 1
-   i = i - 1;
+  int i=2;
+  ~;
+  return(i+1);
 }
-while (1)
-{
-   // &hellip;   // do something forever
-   if (i == -5) // but leave the loop if i is -5
-   {
-     break;
-   }
-}
+t();
+&rarr; -- break point in t --
+&rarr; -- 0: called    from STDIN --
+// here local variables of the procedure can be accessed
+i;
+&rarr; 2
+&rarr; -- break point in t --
+
+&rarr; 3
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_294.htm#Control-structures">Control structures</a>;
-<a href="sing_79.htm#boolean-expressions">boolean expressions</a>;
-<a href="sing_295.htm#break">break</a>.
+<a href="sing_62.htm#Break-points">Break points</a>.
 </p>
 </td>
 </tr>
@@ -130,14 +131,14 @@ while (1)
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_304.htm#return" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.2.10 return" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_306.htm#g_t_007e" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.2.12 ~ (break point)" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_294.htm#Control-structures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.2 Control structures" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_304.htm#while" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.2.11 while" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_306.htm#System-variables" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.3 System variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_293.htm#Control-structures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.2 Control structures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

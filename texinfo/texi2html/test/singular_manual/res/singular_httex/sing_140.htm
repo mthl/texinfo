@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.16.1 ring declarations</title>
+<title>Singular 2-0-4 Manual: 4.16.2 ring related functions</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.16.1 ring declarations">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.16.1 ring declarations">
+<meta name="description" content="Singular 2-0-4 Manual: 4.16.2 ring related functions">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.16.2 ring related functions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="ring-declarations"></a>
+<a name="ring-related-functions"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_139.htm#ring" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.16 ring" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_139.htm#ring-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.16.1 ring declarations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_141.htm#ring-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.16.2 ring related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_141.htm#ring-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.16.3 ring operations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_139.htm#ring" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.16 ring" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_138.htm#ring" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.16 ring" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,67 +84,42 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="ring-declarations-1"></a>
-<h3 class="subsection">4.16.1 ring declarations</h3>
-<a name="index-ring-declarations"></a>
+<a name="ring-related-functions-1"></a>
+<h3 class="subsection">4.16.2 ring related functions</h3>
+<a name="index-ring-related-functions"></a>
 
 <dl compact="compact">
-<dt><strong>Syntax:</strong></dt>
-<dd><p><code>ring</code> name <code>= (</code> coefficient_field <code>),</code>
-  <code>(</code> names_of_ring_variables <code>),</code>
-  <code>(</code> ordering <code>);</code>
+<dt><code>charstr</code></dt>
+<dd><p>description of the coefficient field of a ring (see <a href="sing_160.htm#charstr">charstr</a>)
 </p></dd>
-<dt><strong>Default:</strong></dt>
-<dd><p><code>32003,(x,y,z),(dp,C);</code>
+<dt><code>keepring</code></dt>
+<dd><p>move ring to next upper level (see <a href="sing_301.htm#keepring">keepring</a>)
 </p></dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>declares a ring and sets it as the actual basering.
+<dt><code>npars</code></dt>
+<dd><p>number of ring parameters (see <a href="sing_238.htm#npars">npars</a>)
+</p></dd>
+<dt><code>nvars</code></dt>
+<dd><p>number of ring variables (see <a href="sing_241.htm#nvars">nvars</a>)
+</p></dd>
+<dt><code>ordstr</code></dt>
+<dd><p>monomial ordering of a ring (see <a href="sing_245.htm#ordstr">ordstr</a>)
+</p></dd>
+<dt><code>parstr</code></dt>
+<dd><p>names of all ring parameters or the
+name of the n-th ring parameter (see <a href="sing_248.htm#parstr">parstr</a>)
+</p></dd>
+<dt><code>qring</code></dt>
+<dd><p>quotient ring (see <a href="sing_132.htm#qring">qring</a>)
+</p></dd>
+<dt><code>setring</code></dt>
+<dd><p>set a new basering (see <a href="sing_267.htm#setring">setring</a>)
+</p></dd>
+<dt><code>varstr</code></dt>
+<dd><p>names of all ring variables or the
+name of the n-th ring variable (see <a href="sing_288.htm#varstr">varstr</a>)
 </p></dd>
 </dl>
 
-<p>The coefficient_field is given by one of the following:
-</p><ol>
-<li>
-a non-negative int_expression less or equal 2147483629.
-</li><li>
-an expression_list of an int_expression and one or more names.
-</li><li>
-the name <code>real</code>
-</li><li>
-an expression_list of the name <code>real</code> and an  int_expression.
-</li><li>
-an expression_list of the name <code>complex</code>, an optional int_expression
-and a name.
-</li></ol>
-
-<p>For the definition of the &rsquo;coefficient_field&rsquo;, see <a href="sing_28.htm#Rings-and-orderings">Rings and orderings</a>.
-</p>
-<p>&rsquo;names_of_ring_variables&rsquo; must be a list of names or indexed names.
-</p>
-<p>&rsquo;ordering&rsquo; is a list of block orderings where each block ordering is either
-</p><ol>
-<li>
-<code>lp</code>, <code>dp</code>, <code>Dp</code>, <code>ls</code>, <code>ds</code>, or <code>Ds</code>
-optionally followed by a size parameter in parentheses.
-
-</li><li>
-<code>wp</code>, <code>Wp</code>, <code>ws</code>, <code>Ws</code>, or <code>a</code> followed by a
-weight vector given as an intvec_expression in parentheses.
-
-</li><li>
-<code>M</code> followed by an intmat_expression in parentheses.
-
-</li><li>
-<code>c</code> or <code>C</code>.
-</li></ol>
-
-<p>For the definition of the orderings, see <a href="sing_31.htm#Term-orderings">Term orderings</a>,
-<a href="sing_362.htm#Monomial-orderings">Monomial orderings</a>.
-</p>
-<p>If one of coefficient_field, names_of_ring_variables, and ordering
-consists of only one entry, the parentheses around this entry may be
-omitted.
-</p>
 </td>
 </tr>
 </table>
@@ -154,14 +129,14 @@ omitted.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_139.htm#ring" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.16 ring" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_141.htm#ring-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.16.2 ring related functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_139.htm#ring" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.16 ring" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_139.htm#ring-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.16.1 ring declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_141.htm#ring-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.16.3 ring operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_138.htm#ring" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.16 ring" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

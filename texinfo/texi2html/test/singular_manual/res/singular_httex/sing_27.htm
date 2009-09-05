@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.2.6 Top 20 Emacs commands</title>
+<title>Singular 2-0-4 Manual: 3.3 Rings and orderings</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.2.6 Top 20 Emacs commands">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.2.6 Top 20 Emacs commands">
+<meta name="description" content="Singular 2-0-4 Manual: 3.3 Rings and orderings">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.3 Rings and orderings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Top-20-Emacs-commands"></a>
+<a name="Rings-and-orderings"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_26.htm#Editing-SINGULAR-input-files-with-Emacs" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.5 Editing SINGULAR input files with Emacs" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_26.htm#Top-20-Emacs-commands" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.6 Top 20 Emacs commands" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_28.htm#Rings-and-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3 Rings and orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_28.htm#Examples-of-ring-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3.1 Examples of ring declarations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_21.htm#Emacs-user-interface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.2 Emacs user interface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,121 +84,104 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Top-20-Emacs-commands-1"></a>
-<h3 class="subsection">3.2.6 Top 20 Emacs commands</h3>
-<a name="index-Emacs_002c-important-commands"></a>
-<a name="index-Singular_002c-important-commands-of-Emacs-interface"></a>
-<a name="index-Top-20-Emacs-commands"></a>
+<a name="Rings-and-orderings-1"></a>
+<h2 class="section">3.3 Rings and orderings</h2>
+<a name="index-Rings-and-orderings"></a>
 
-<p>Here is a list of the 20 probably most useful commands when using the
-<small>SINGULAR</small> Emacs interface.
+<p>All non-trivial algorithms in <small>SINGULAR</small> require the prior definition of
+a ring. Such a ring can be
 </p>
-<p>Starting and stopping of <small>SINGULAR</small>:
+<ol>
+<li>
+a polynomial ring over a field,
+</li><li>
+a localization of a polynomial ring,
+</li><li>
+a quotient ring by an ideal of one of 1. or 2.,
+</li><li>
+a tensor product of one of 1. or 2.
+</li></ol>
+
+<p>Except for quotient rings, all of these rings are realized by choosing a
+coefficient field, ring variables, and an appropriate global or local
+monomial ordering on the ring variables.  See <a href="sing_30.htm#Term-orderings">Term orderings</a>,
+<a href="sing_370.htm#Mathematical-background">Mathematical background</a>.
 </p>
-<ul>
-<li> <code>singular</code> (menu <code>Singular-&gt;Start Default...</code>): starts
-<small>SINGULAR</small> using default arguments.
-
-</li><li> <code>singular-other</code> (menu <code>Singular-&gt;Start</code>): starts
-<small>SINGULAR</small> asking for several arguments in the minibuffer area.
-
-</li><li> <code>singular-exit</code> (key <code>C-c $</code> or menu
-<code>Singular-&gt;Exit</code>): kills the <small>SINGULAR</small> process running in the
-current buffer (but does not kill the buffer).
-
-</li><li> <code>singular-restart</code> (key <code>C-c C-r</code> or menu
-<code>Singular-&gt;Restart</code>): kills the <small>SINGULAR</small> process running in
-the current buffer and starts a new <small>SINGULAR</small> process with exactly
-the same arguments as before.
-
-</li></ul>
-
-<p>Editing input and output:
+<p>The coefficient field of the rings may be
 </p>
-<ul>
-<li> <code>singular-beginning-of-line</code> (key <code>C-a</code>): moves point to
-beginning of line, then skip past the <small>SINGULAR</small> prompt, if any.
+<a name="index-real"></a>
+<a name="index-complex"></a>
+<ol>
+<li>
+the field of rational numbers 
+ <span 
+class="cmmi-10">Q </span> 
+,
+</li><li>
 
-</li><li> <code>singular-toggle-truncate-lines</code> (key <code>C-c C-t</code> or menu
-<code>Commands-&gt;Truncate lines</code>): toggles whether long lines should be
-truncated or not. If lines are not truncated, the commands
-<code>singular-scroll-left</code> and <code>singular-scroll-right</code> are useful
-to scroll left and right, resp.
+finite fields <span 
+class="cmmi-10">Z&#x2215;p</span>, <span 
+class="cmmi-10">p </span>a prime <span 
+class="cmsy-10">&#x2264; </span>2147483629,  
+</li><li>
+ finite fields GF(<span 
+class="cmmi-10">p</span><sup><span 
+class="cmmi-7">n</span></sup>) with <span 
+class="cmmi-10">p</span><sup><span 
+class="cmmi-7">n</span></sup> elements, <span 
+class="cmmi-10">p </span>a prime, <span 
+class="cmmi-10">p</span><sup><span 
+class="cmmi-7">n</span></sup> <span 
+class="cmsy-10">&#x2264; </span>2<sup><span 
+class="cmr-7">15</span></sup>,  
+</li><li>
+transcendental extension of 
+ <span 
+class="cmmi-10">Q </span> 
+ or 
+ <span 
+class="cmmi-10">Z&#x2215;p </span> 
+,
+</li><li>
+simple algebraic extension of 
+ <span 
+class="cmmi-10">Q </span> 
+ or 
+ <span 
+class="cmmi-10">Z&#x2215;p </span> 
+,
+</li><li>
+the field of real numbers represented by floating point
+numbers of a user defined precision.
+</li><li>
+the field of complex numbers represented by (pairs of) floating point
+numbers of a user defined precision.
+</li></ol>
 
-</li><li> <code>singular-dynamic-complete</code> (key <code>TAB</code>): performs
-context specific completion. If point is inside a string, file name
-completion is done. If point is at the end of a help command (i.e.,
-<code>help</code> or <code>?</code>), completion on <small>SINGULAR</small> help topics is
-done. If point is at the end of an example command (i.e.,
-<code>example</code>), completion is done on <small>SINGULAR</small> examples. In all
-other cases, completion on <small>SINGULAR</small> commands is done.
-
-</li><li> <code>singular-folding-toggle-fold-latest-output</code> (key <code>C-c
-C-o</code> or menu <code>Commands-&gt;Fold/ Unfold Latest Output</code>): toggles
-folding of the latest output section. If your last <small>SINGULAR</small> command
-produced a huge output, simply type <code>C-c C-o</code> and it will be
-replaced by a single line.
-
-</li><li> <code>singular-folding-toggle-fold-at-point</code> (key <code>C-c C-f</code>
-or menu <code>Commands-&gt;Fold/Unfold At Point</code>): toggles folding of the
-section the point currently is in.
-
-</li><li> <code>singular-folding-fold-all-output</code> (menu <code>Commands-&gt;Fold
-All Output</code>): folds all <small>SINGULAR</small> output, replacing each output
-section by a single line.
-
-</li><li> <code>singular-folding-unfold-all-output</code> (menu
-<code>Commands-&gt;Unfold All Output</code>): unfolds all <small>SINGULAR</small> output
-sections showing their true contents.
-
-</li></ul>
-
-<p>Loading of files and <small>SINGULAR</small> demo mode:
+<p>Throughout this manual, the current active ring in <small>SINGULAR</small> is
+called basering.  The reserved name <code>basering</code> in <small>SINGULAR</small> is
+an alias for the current active ring.  The basering can be set by
+declaring a new ring as described in the following subsections or with
+the commands <code>setring</code> and <code>keepring</code>.  See <a href="sing_301.htm#keepring">keepring</a>,
+<a href="sing_267.htm#setring">setring</a>.
 </p>
-<ul>
-<li> <code>singular-load-library</code> (key <code>C-c C-l</code> or menu
-<code>Commands-&gt;Libraries-&gt;other...</code>): asks for a standard library name
-or a library file in the minibuffer (hit <code>TAB</code> for completion) and
-loads the library into <small>SINGULAR</small>. The submenu <code>Libraries</code> of
-the <code>Commands</code> menu also provides a separate menu item for each
-standard library.
-
-</li><li> <code>singular-load-file</code> (key <code>C-c &lt;</code> or menu
-<code>Commands-&gt;Load File...</code>): asks for a file name in the minibuffer
-(which is expanded using <code>expand-file-name</code> if given a prefix
-argument) and loads the file into <small>SINGULAR</small>.
-
-</li><li> <code>singular-demo-load</code> (key <code>C-c C-d</code> or menu
-<code>Commands-&gt;Load Demo...</code>): asks for a file name of a <small>SINGULAR</small>
-demo file in the minibuffer area (hit <code>SPACE</code> for completion) and
-enters the <small>SINGULAR</small> demo mode showing the first chunk of the demo.
-
-</li><li> <code>singular-demo-exit</code> (menu <code>Commands-&gt;Exit Demo</code>):
-exits from <small>SINGULAR</small> demo mode and cleans up everything that is
-left from the demo.
-
-</li></ul>
-
-<p>Help and Customization:
+<p>Objects of ring dependent types are local to a ring. To access them
+after a change of the basering they have to be mapped using <code>map</code> or by
+the functions <code>imap</code> or <code>fetch</code>.  See <a href="sing_36.htm#Objects">Objects</a>, <a href="sing_185.htm#fetch">fetch</a>,
+<a href="sing_202.htm#imap">imap</a>, <a href="sing_105.htm#map">map</a>.
 </p>
-<ul>
-<li> <code>singular-help</code> (key <code>C-h C-s</code> or menu
-<code>Singular-&gt;Singular Help</code>): asks for a <small>SINGULAR</small> help topic in
-the minibuffer (hit <code>TAB</code> for completion) and shows the help text
-in a separate buffer.
-
-</li><li> <code>singular-example</code> (key <code>C-c C-e</code> or menu
-<code>Singular-&gt;Singular Example</code>): asks for a <small>SINGULAR</small> command in
-the minibuffer (hit <code>TAB</code> for completion) and executes the example
-of this command in the current <small>SINGULAR</small> buffer.
-
-</li><li> <code>customize-group</code> (menu <code>Singular-&gt;Preferences</code>): enters
-the customization group of the <small>SINGULAR</small> Emacs interface. (If called
-via <code>M-x customize-group</code> give argument <code>singular-interactive</code>
-in the minibuffer area.)
-
-</li></ul>
-
+<p>All changes of the basering in a procedure are local to this procedure
+unless a <code>keepring</code> command is used as the last statement of the
+procedure.  See <a href="sing_40.htm#Procedures">Procedures</a>, <a href="sing_301.htm#keepring">keepring</a>.
+</p>
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_28.htm#Examples-of-ring-declarations">3.3.1 Examples of ring declarations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_29.htm#General-syntax-of-a-ring-declaration">3.3.2 General syntax of a ring declaration</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_30.htm#Term-orderings">3.3.3 Term orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
 
 </td>
 </tr>
@@ -209,14 +192,14 @@ in the minibuffer area.)
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_26.htm#Editing-SINGULAR-input-files-with-Emacs" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.5 Editing SINGULAR input files with Emacs" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_28.htm#Rings-and-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3 Rings and orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_21.htm#Emacs-user-interface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.2 Emacs user interface" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_26.htm#Top-20-Emacs-commands" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.6 Top 20 Emacs commands" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_28.htm#Examples-of-ring-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3.1 Examples of ring declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

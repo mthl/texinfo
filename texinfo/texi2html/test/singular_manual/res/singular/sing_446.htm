@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.4.19 substitute</title>
+<title>Singular 2-0-4 Manual: D.2.4.20 subrInterred</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.4.19 substitute">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.4.19 substitute">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.4.20 subrInterred">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.4.20 subrInterred">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="substitute"></a>
+<a name="subrInterred"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_445.htm#id2mod" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.18 id2mod" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_445.htm#substitute" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.19 substitute" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_447.htm#subrInterred" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.20 subrInterred" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_447.htm#hilbPoly" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.21 hilbPoly" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_427.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_426.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,47 +82,71 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="substitute-1"></a>
-<h4 class="subsubsection">D.2.4.19 substitute</h4>
-<a name="index-substitute"></a>
-<p>Procedure from library <code>poly.lib</code> (see <a href="sing_427.htm#poly_005flib">poly_lib</a>).
+<a name="subrInterred-1"></a>
+<h4 class="subsubsection">D.2.4.20 subrInterred</h4>
+<a name="index-subrInterred"></a>
+<p>Procedure from library <code>poly.lib</code> (see <a href="sing_426.htm#poly_005flib">poly_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>- case 1: typeof(#[1])==poly:
-<br>substitute (I,v,f[,v1,f1,v2,f2,...]); I object of basering which
-can be mapped, v,v1,v2,.. ring variables, f,f1,f2,... poly
-<br> - case 2: typeof(#[1])==ideal:
-substitute1 (I,v,f); I object of basering which can be mapped,
-v ideal of ring variables, f ideal
+<dd><p>subrInterred(mon,sm,iv);
+<br>sm: ideal in a ring r with n + s variables,
+<br>e.g. x_1,..,x_n and t_1,..,t_s
+<br>mon: ideal with monomial generators (not divisible by
+any of the t_i) such that sm is contained in the module
+k[t_1,..,t_s]*mon[1]+..+k[t_1,..,t_s]*mon[size(mon)]
+<br>iv: intvec listing the variables which are supposed to be used
+as x_i
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>object of same type as I,
-<br> - case 1: ring variable v,v1,v2,... substituted by polynomials
-f,f1,f2,..., in this order
-<br> - case 2: ring variables in v substituted by polynomials in f:
-v[i] is substituted by f[i], i=1,...,i=min(size(v),ncols(f))
+<dd><p>list l:
+<br>l[1]=the monomials from mon in the order used
+<br>l[2]=their coefficients after interreduction
+<br>l[3]=l[1]*l[2]
 </p>
 </dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>this procedure extends the built-in command subst which substitutes
-ring variables only by monomials
+<dt><strong>Purpose:</strong></dt>
+<dd><p>Do interred only w.r.t. a subset of variables.
+<br>The procedure returns an interreduced system of generators of
+sm considered as a k[t_1,..,t_s]-submodule of the free module
+k[t_1,..,t_s]*mon[1]+..+k[t_1,..,t_s]*mon[size(mon)]).
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;poly.lib&quot;;
-ring r = 0,(b,c,t),dp;
-ideal I = -bc+4b2c2t,bc2t-5b2c;
-substitute(I,c,b+c,t,0,b,b-1);
-&rarr; _[1]=-b2-bc+2b+c-1
-&rarr; _[2]=-5b3-5b2c+15b2+10bc-15b-5c+5
-ideal v = c,t,b;
-ideal f = b+c,0,b-1;
-substitute(I,v,f);
-&rarr; _[1]=-b2-bc+2b+c-1
-&rarr; _[2]=-5b3-5b2c+15b2+10bc-15b-5c+5
+ring r=0,(x,y,z),dp;
+ideal i=x^2+x*y^2,x*y+x^2*y,z;
+ideal j=x^2+x*y^2,x*y,z;
+ideal mon=x^2,z,x*y;
+intvec iv=1,3;
+subrInterred(mon,i,iv);
+&rarr; [1]:
+&rarr;    _[1,1]=z
+&rarr;    _[1,2]=xy
+&rarr;    _[1,3]=x2
+&rarr; [2]:
+&rarr;    _[1]=gen(1)
+&rarr;    _[2]=y2*gen(2)-gen(2)
+&rarr;    _[3]=y*gen(2)+gen(3)
+&rarr; [3]:
+&rarr;    _[1,1]=z
+&rarr;    _[1,2]=xy3-xy
+&rarr;    _[1,3]=xy2+x2
+subrInterred(mon,j,iv);
+&rarr; [1]:
+&rarr;    _[1,1]=z
+&rarr;    _[1,2]=xy
+&rarr;    _[1,3]=x2
+&rarr; [2]:
+&rarr;    _[1]=gen(1)
+&rarr;    _[2]=gen(2)
+&rarr;    _[3]=gen(3)
+&rarr; [3]:
+&rarr;    _[1,1]=z
+&rarr;    _[1,2]=xy
+&rarr;    _[1,3]=x2
 </pre></td></tr></table>
 
 </td>
@@ -134,14 +158,14 @@ substitute(I,v,f);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_445.htm#id2mod" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.18 id2mod" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_447.htm#subrInterred" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.20 subrInterred" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_427.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_445.htm#substitute" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.19 substitute" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_447.htm#hilbPoly" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.21 hilbPoly" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_426.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.323 2009-09-03 19:22:10 pertusus Exp $
+# $Id: texi2html.pl,v 1.324 2009-09-05 07:23:47 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -772,7 +772,7 @@ sub HTML_DEFAULT_shortcontents($$)
     my @result = ();
     foreach my $element (@$elements_list)
     {
-        next if ($element->{'top'} or $element->{'toc_level'} != 1);
+        next if ($element->{'tag'} eq 'top' or $element->{'toc_level'} != 1);
         my $dest_for_stoc = $element->{'file'};
         my $dest_target_for_stoc = $element->{'target'};
         if ($Texi2HTML::Config::OVERVIEW_LINK_TO_TOC)
@@ -808,7 +808,7 @@ sub HTML_DEFAULT_contents($$)
     my @result = ();
     foreach my $element (@$elements_list)
     {
-        next if ($element->{'top'});
+        next if ($element->{'tag'} eq 'top');
         my $ind = '  ' x $current_level;
         my $level = $element->{'toc_level'};
         print STDERR "Bug no toc_level for ($element) $element->{'texi'}\n" if (!defined ($level));
@@ -4774,10 +4774,7 @@ sub pass_structure($$)
                             }
                             else
                             {
-                                my $first;
-                                $first = 1 if (!defined($node_ref));
                                 $node_ref = {};
-                                $node_first = $node_ref if ($first);
                                 $nodes{$node} = $node_ref;
                             }
                             $node_ref->{'node'} = 1;
@@ -4814,7 +4811,7 @@ sub pass_structure($$)
                             }
                             unless (@nodes_list)
                             {
-                                $node_ref->{'first'} = 1;
+                                $node_first = $node_ref;
                             }
                             push (@nodes_list, $node_ref);
                             push @all_elements, $node_ref;
@@ -4858,7 +4855,7 @@ sub pass_structure($$)
 
                         if ($tag eq 'top')
                         {
-                            $section_ref->{'top'} = 1;
+                            #$section_ref->{'top'} = 1;
                             $section_ref->{'number'} = '';
                             $section_ref->{'id'} = "SEC_Top";
                             $section_ref->{'sec_num'} = 0;
@@ -4881,7 +4878,6 @@ sub pass_structure($$)
                             $section_ref->{'with_node'} = $node_ref;
                             $section_ref->{'titlefont'} = $node_ref->{'titlefont'};
                             $node_ref->{'with_section'} = $section_ref;
-                            $node_ref->{'top'} = 1 if ($tag eq 'top');
                         }
                         if (! $name and $section_ref->{'level'})
                         {
@@ -5950,7 +5946,7 @@ sub do_element_targets($;$)
    my $element = shift;
    my $use_node_file = shift;
    my $is_top = '';
-   $is_top = 'top' if ($element->{'top'} or (defined($element->{'with_node'}) and $element->{'with_node'} eq $element_top));
+   $is_top = 'top' if (defined($element_top) and ($element eq $element_top or (defined($element->{'with_node'}) and $element->{'with_node'} eq $element_top)));
    my $file_index_split = Texi2HTML::Config::t2h_default_associate_index_element($element, $is_top, $docu_name, $use_node_file);
    $element->{'file'} = $file_index_split if (defined($file_index_split));
    if (defined($Texi2HTML::Config::element_file_name))
@@ -6042,7 +6038,7 @@ sub rearrange_elements()
         {
              $section->{'level'} = $MAX_LEVEL;
         }
-        elsif ($level < $MIN_LEVEL and !$section->{'top'})
+        elsif ($level < $MIN_LEVEL and ($section->{'tag'} ne 'top'))
         {
              $section->{'level'} = $MIN_LEVEL;
         }
@@ -6330,13 +6326,14 @@ sub rearrange_elements()
     {
         # first a warning if the node and the equivalent nodes don't 
         # appear in menus
-        if (!$node->{'first'} and !$node->{'top'} and !$node->{'menu_up'} and ($node->{'texi'} !~ /^top$/i) and $Texi2HTML::Config::SHOW_MENU)
+        # FIXME check node_first only if there is no @node Top.
+        if (($node ne $node_first) and !$node->{'menu_up'} and ($node->{'texi'} !~ /^top$/i) and $Texi2HTML::Config::SHOW_MENU)
         {
             my @equivalent_nodes = equivalent_nodes($node->{'texi'});
             my $found = 0;
             foreach my $equivalent_node (@equivalent_nodes)
             {
-                if ($nodes{$equivalent_node}->{'first'} or $nodes{$equivalent_node}->{'menu_up'})
+                if (($nodes{$equivalent_node} eq $node_first) or $nodes{$equivalent_node}->{'menu_up'})
                 {
                    $found = 1;
                    last;
@@ -6633,16 +6630,7 @@ sub rearrange_elements()
     {
         if ($element->{'node'})
         {
-            if (!$only_nodes and $node_top and $element eq $node_top and !$section_top and !$node_top->{'with_section'})
-            { # special case for the top node if it isn't associated with 
-              # a section.
-              # FIXME Config variable
-                print STDERR "# Top not associated with a section\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-                $node_top->{'top_as_section'} = 1;
-                $node_top->{'section_ref'} = $node_top;
-                $prev_element = add_t2h_element($element, \@elements_list, $prev_element);
-            }
-            elsif ($element->{'section_ref'} and ($only_sections or (!$only_nodes and $element->{'with_section'})))
+            if ($element->{'section_ref'} and ($only_sections or (!$only_nodes and $element->{'with_section'})))
             {
                 add_t2h_dependent_element ($element, $element->{'section_ref'});
                 $element->{'toc_level'} = $element->{'section_ref'}->{'toc_level'};
@@ -6650,29 +6638,12 @@ sub rearrange_elements()
             elsif (!$only_sections)
             {
                 $prev_element = add_t2h_element($element, \@elements_list, $prev_element);
-                if ($element->{'section_ref'})
-                { # may happen if $only_nodes
-                    $element->{'toc_level'} = $element->{'section_ref'}->{'toc_level'};
-                }
             }
             else # $only_section and !$section_ref. This should only
                  # happen when there are no sections
-                 # in that case it is possible that the node_top is an
-                 # element, so it is associated with this one. Maybe it
-                 # may happen that the node_top is not an element, not sure 
-                 # what would be the consequence in that case.
             {
-                if ($node_top)
-                {
-                    add_t2h_dependent_element ($element, $node_top);
-                }
-                else
-                { # no section, not top, and $only_section
-                    #print STDERR "node $element->{'texi'} not associated with an element\n";
-                }
+                #print STDERR "node $element->{'texi'} not associated with an element\n";
             }
-            # FIXME use Texi2HTML::Config::NODE_TOC_LEVEL?
-            $element->{'toc_level'} = $MIN_LEVEL if (!defined($element->{'toc_level'}));
         }
         else
         {
@@ -6712,26 +6683,32 @@ sub rearrange_elements()
     }
     print STDERR "# top node: $node_top->{'texi'}\n" if (defined($node_top) and
         ($T2H_DEBUG & $DEBUG_ELEMENTS));
-    if (defined($section_top))
+    if (defined($section_top) and $section_top->{'this'})
     {
     # element top is the element with @top.
         $element_top = $section_top;
     }
-    elsif (defined($node_top))
+    elsif (defined($node_top) and $node_top->{'this'})
     {
-    # If the top node is associated with a section it is the top_element 
-    # otherwise element top may be the top node 
+    # otherwise top node may be the element_top
         $element_top = $node_top;
+    }
+    elsif (defined($node_top) and defined($node_top->{'with_section'}) and $node_top->{'with_section'}->{'this'})
+    {
+        # next, the element associated with the @node Top may be
+        # the $element_top. In that case $element_top->{'top'} won't be set
+        $element_top = $node_top->{'with_section'};
     }
     elsif (defined($element_first))
     {
-    # If there is no @top section no top node the first node is the top element
+    # If there is no @top section no top node associated with an element,
+    # first element is used
          $element_top = $element_first;
     }
 
     if (defined($element_top))
     {
-        $element_top->{'top'} = 1 if ($element_top->{'node'});
+        $element_top->{'top'} = 1 if ($element_top->{'node'} or $element_top->{'tag'} eq 'top');
         print STDERR "# element top: $element_top->{'texi'}\n" if ($element_top and
            ($T2H_DEBUG & $DEBUG_ELEMENTS));
     }
@@ -6799,6 +6776,7 @@ sub rearrange_elements()
             }
         }
     }
+    # end texi2html added directions
 
     # do human readable id
     print STDERR "# find float id\n" 
@@ -7001,7 +6979,7 @@ sub rearrange_elements()
             $element->{'file'} = "${docu_name}_$doc_nr"
                    . (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
             my $use_node_file = 0;
-            if ($element->{'top'} or (defined($element->{'with_node'}) and $element->{'with_node'} eq $element_top))
+            if ($element eq $element_top)
             { # the top elements
                 $is_top = "top";
                 $element->{'file'} = $docu_top;
@@ -7349,7 +7327,9 @@ sub get_top($)
 {
    my $element = shift;
    my $up = $element;
-   while (!$up->{'toplevel'} and !$up->{'top'})
+   #while (!$up->{'toplevel'} and !$up->{'top'})
+   # FIXME remove the defined($up->{'tag'})
+   while (!$up->{'toplevel'} and !(defined($up->{'tag'}) and $up->{'tag'} eq 'top'))
    {
        $up = $up->{'sectionup'};
        if (!defined($up))
@@ -7742,11 +7722,13 @@ sub pass_text($$)
     my $top_no_texi = '';
     my $top_simple_format = '';
     my $top_name;
+    # FIXME this is certainly to be modified now that either sections or nodes
+    # may be lements.
     if ($element_top and $element_top->{'text'} and (!$node_top or ($element_top ne $node_top)))
     {
         $element_top_text = $element_top->{'text'};
         $top_no_texi = $element_top->{'no_texi'};
-        $top_simple_format =  $element_top->{'simple_format'};
+        $top_simple_format = $element_top->{'simple_format'};
     }
     foreach my $possible_top_name ($Texi2HTML::Config::TOP_HEADING, 
          $element_top_text, $Texi2HTML::THISDOC{'fulltitle'},

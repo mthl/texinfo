@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.6.1.5 cyclotomic</title>
+<title>Singular 2-0-4 Manual: D.6.1.6 group_reynolds</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.6.1.5 cyclotomic">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.6.1.5 cyclotomic">
+<meta name="description" content="Singular 2-0-4 Manual: D.6.1.6 group_reynolds">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6.1.6 group_reynolds">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="cyclotomic"></a>
+<a name="group_005freynolds"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_757.htm#primary_005finvariants_005frandom" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.4 primary_invariants_random" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_757.htm#cyclotomic" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.5 cyclotomic" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_759.htm#group_005freynolds" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.6 group_reynolds" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_759.htm#molien" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.7 molien" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_753.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_752.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,32 +84,72 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="cyclotomic-1"></a>
-<h4 class="subsubsection">D.6.1.5 cyclotomic</h4>
-<a name="index-cyclotomic"></a>
-<p>Procedure from library <code>finvar.lib</code> (see <a href="sing_753.htm#finvar_005flib">finvar_lib</a>).
+<a name="group_005freynolds-1"></a>
+<h4 class="subsubsection">D.6.1.6 group_reynolds</h4>
+<a name="index-group_005freynolds"></a>
+<p>Procedure from library <code>finvar.lib</code> (see <a href="sing_752.htm#finvar_005flib">finvar_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>cyclotomic(i); i integer &gt; 0
+<dd><p>group_reynolds(G1,G2,...[,v]);
+<br>G1,G2,...: nxn &lt;matrices&gt; generating a finite matrix group, v: an
+optional &lt;int&gt;
 </p>
 </dd>
-<dt><strong>Returns:</strong></dt>
-<dd><p>the i-th cyclotomic polynomial (type &lt;poly&gt;) as one in the first ring
-variable
+<dt><strong>Assume:</strong></dt>
+<dd><p>n is the number of variables of the basering, g the number of group
+elements
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>a &lt;list&gt;, the first list element will be a gxn &lt;matrix&gt; representing
+the Reynolds operator if we are in the non-modular case; if the
+characteristic is &gt;0, minpoly==0 and the finite group non-cyclic the
+second list element is an &lt;int&gt; giving the lowest common multiple of
+the matrix group elements&rsquo; order (used in molien); in general all
+other list elements are nxn &lt;matrices&gt; listing all elements of the
+finite group
+</p>
+</dd>
+<dt><strong>Display:</strong></dt>
+<dd><p>information if v does not equal 0
 </p>
 </dd>
 <dt><strong>Theory:</strong></dt>
-<dd><p>x^i-1 is divided by the j-th cyclotomic polynomial where j takes on
-the value of proper divisors of i
+<dd><p>The entire matrix group is generated by getting all left products of
+generators with the new elements from the last run through the loop
+(or the generators themselves during the first run). All the ones that
+have been generated before are thrown out and the program terminates
+when no new elements found in one run. Additionally each time a new
+group element is found the corresponding ring mapping of which the
+Reynolds operator is made up is generated. They are stored in the rows
+of the first return value.
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;finvar.lib&quot;;
 ring R=0,(x,y,z),dp;
-print(cyclotomic(25));
-&rarr; x20+x15+x10+x5+1
+matrix A[3][3]=0,1,0,-1,0,0,0,0,-1;
+list L=group_reynolds(A);
+print(L[1]);
+&rarr; y, -x,-z,
+&rarr; -x,-y,z, 
+&rarr; -y,x, -z,
+&rarr; x, y, z  
+print(L[2..size(L)]);
+&rarr; 0, 1,0,
+&rarr; -1,0,0,
+&rarr; 0, 0,-1
+&rarr; -1,0, 0,
+&rarr; 0, -1,0,
+&rarr; 0, 0, 1 
+&rarr; 0,-1,0,
+&rarr; 1,0, 0,
+&rarr; 0,0, -1
+&rarr; 1,0,0,
+&rarr; 0,1,0,
+&rarr; 0,0,1 
 </pre></td></tr></table>
 
 </td>
@@ -121,14 +161,14 @@ print(cyclotomic(25));
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_757.htm#primary_005finvariants_005frandom" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.4 primary_invariants_random" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_759.htm#group_005freynolds" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.6 group_reynolds" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_753.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_757.htm#cyclotomic" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.5 cyclotomic" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_759.htm#molien" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.7 molien" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_752.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.3.2.8 charpoly</title>
+<title>Singular 2-0-4 Manual: D.3.2.9 adjoint</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.3.2.8 charpoly">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.3.2.8 charpoly">
+<meta name="description" content="Singular 2-0-4 Manual: D.3.2.9 adjoint">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.3.2.9 adjoint">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="charpoly"></a>
+<a name="adjoint"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_511.htm#busadj" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.2.7 busadj" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_511.htm#charpoly" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.2.8 charpoly" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_513.htm#adjoint" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.2.9 adjoint" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_513.htm#det_005fB" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.2.10 det_B" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_504.htm#linalg_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.2 linalg_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_503.htm#linalg_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.2 linalg_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,33 +84,33 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="charpoly-1"></a>
-<h4 class="subsubsection">D.3.2.8 charpoly</h4>
-<a name="index-charpoly"></a>
-<p>Procedure from library <code>linalg.lib</code> (see <a href="sing_504.htm#linalg_005flib">linalg_lib</a>).
+<a name="adjoint-1"></a>
+<h4 class="subsubsection">D.3.2.9 adjoint</h4>
+<a name="index-adjoint"></a>
+<p>Procedure from library <code>linalg.lib</code> (see <a href="sing_503.htm#linalg_005flib">linalg_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>charpoly(A[,v]); A square matrix, v string, name of a variable
+<dd><p>adjoint(A); A = square matrix
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>poly, the characteristic polynomial det(E*v-A)
-<br>(default: v=name of last variable)
+<dd><p>adjoint matrix of A, i.e. Adj*A=det(A)*E
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>A must be independent of the variable v. The computation uses det.
-If printlevel&gt;0, det(E*v-A) is diplayed recursively.
+<dd><p>computation uses busadj(A)
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;linalg.lib&quot;;
-ring r=0,(x,t),dp;
-matrix A[3][3]=1,x2,x,x2,6,4,x,4,1;
+ring r=0,(t,x),lp;
+matrix A[2][2]=1,x2,x,x2+3x;
 print(A);
-charpoly(A,&quot;t&quot;);
+matrix Adj[2][2]=adjoint(A);
+print(Adj);                    //Adj*A=det(A)*E
+print(Adj*A);
 </pre></td></tr></table>
 
 </td>
@@ -122,14 +122,14 @@ charpoly(A,&quot;t&quot;);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_511.htm#busadj" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.2.7 busadj" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_513.htm#adjoint" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.2.9 adjoint" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_504.htm#linalg_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.2 linalg_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_511.htm#charpoly" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.2.8 charpoly" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_513.htm#det_005fB" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.2.10 det_B" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_503.htm#linalg_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.2 linalg_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

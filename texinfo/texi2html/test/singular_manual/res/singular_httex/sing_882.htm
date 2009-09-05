@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.8.2.8 texobj</title>
+<title>Singular 2-0-4 Manual: D.8.2.9 texpoly</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.8.2.8 texobj">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.8.2.8 texobj">
+<meta name="description" content="Singular 2-0-4 Manual: D.8.2.9 texpoly">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.8.2.9 texpoly">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="texobj"></a>
+<a name="texpoly"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_881.htm#texname" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.7 texname" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_881.htm#texobj" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.8 texobj" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_883.htm#texpoly" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.9 texpoly" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_883.htm#texproc" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.10 texproc" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_874.htm#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_873.htm#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,18 +84,18 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="texobj-1"></a>
-<h4 class="subsubsection">D.8.2.8 texobj</h4>
-<a name="index-texobj"></a>
-<p>Procedure from library <code>latex.lib</code> (see <a href="sing_874.htm#latex_005flib">latex_lib</a>).
+<a name="texpoly-1"></a>
+<h4 class="subsubsection">D.8.2.9 texpoly</h4>
+<a name="index-texpoly"></a>
+<p>Procedure from library <code>latex.lib</code> (see <a href="sing_873.htm#latex_005flib">latex_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>texobj(fname,l); fname string, l list
+<dd><p>texpoly(fname,p); fname string, p poly
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>if <code>fname=&quot;&quot;</code>: string, the entries of l in LaTeX-typesetting;<br>
+<dd><p>if <code>fname=&quot;&quot;</code>: string, the poly p in LaTeX-typesetting;<br>
 otherwise: append this string to the file <code>&lt;fname&gt;</code>, and
 return nothing.
 </p>
@@ -108,70 +108,23 @@ return nothing.
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;latex.lib&quot;;
-// -------- prepare for example ---------
-if (defined(TeXaligned)) {int Teali=TeXaligned; kill TeXaligned;}
-if (defined(TeXbrack)){string Tebra=TeXbrack; kill TeXbrack;}
-//
-//  --------------  typesetting for polynomials ----------
-ring r = 0,(x,y),lp;
-poly f = x5y3 + 3xy4 + 2xy2 + y6;
+ring r0=0,(x,y,z),dp;
+poly f = -1x^2 + 2;
+texpoly(&quot;&quot;,f);
+&rarr; $-x^{2}+2$
+ring rr= real,(x,y,z),dp;
+texpoly(&quot;&quot;,2x2y23z);
+&rarr; $2.000x^{2}y^{23}z$
+ring r7= 7,(x,y,z),dp;
+poly f = 2x2y23z;
+texpoly(&quot;&quot;,f);
+&rarr; $2x^{2}y^{23}z$
+ring rab =(0,a,b),(x,y,z),dp;
+poly f = (-2a2 +b3 -2)/a * x2y4z5 + (a2+1)*x + a+1;
 f;
-&rarr; x5y3+3xy4+2xy2+y6
-texobj(&quot;&quot;,f);
-&rarr; $$\begin{array}{rl}
-&rarr; &amp; x^{5}y^{3}+3xy^{4}+2xy^{2}+y^{6}\\
-&rarr; \end{array}
-&rarr; $$
-&rarr; 
-//  --------------  typesetting for ideals ----------
-ideal G = jacob(f);
-G;
-&rarr; G[1]=5x4y3+3y4+2y2
-&rarr; G[2]=3x5y2+12xy3+4xy+6y5
-texobj(&quot;&quot;,G);
-&rarr; $$\left(
-&rarr; \begin{array}{c}
-&rarr; 5x^{4}y^{3}+3y^{4}+2y^{2}, \\
-&rarr; 3x^{5}y^{2}+12xy^{3}+4xy+6y^{5}
-&rarr; \end{array}
-&rarr; \right)$$
-&rarr; 
-//  --------------  variation of typesetting for ideals ----------
-int TeXaligned = 1; export TeXaligned;
-&rarr; // ** `TeXaligned` is already global
-string TeXbrack = &quot;&lt;&quot;; export TeXbrack;
-&rarr; // ** `TeXbrack` is already global
-texobj(&quot;&quot;,G);
-&rarr; $\left&lt;5x^{4}y^{3}+3y^{4}+2y^{2},3x^{5}y^{2}+12xy^{3}+4xy+6y^{5}\right&gt;$
-&rarr; 
-kill TeXaligned, TeXbrack;
-//  --------------  typesetting for matrices ----------
-matrix J = jacob(G);
-texobj(&quot;&quot;,J);
-&rarr; $$\left(
-&rarr; \begin{array}{*{2}{c}}
-&rarr; 20x^{3}y^{3} &amp; 15x^{4}y^{2}+12y^{3}+4y \\
-&rarr; 15x^{4}y^{2}+12y^{3}+4y &amp; 6x^{5}y+36xy^{2}+4x+30y^{4}
-&rarr; \end{array}
-&rarr; \right)
-&rarr; $$
-&rarr; 
-//  --------------  typesetting for intmats ----------
-intmat m[3][4] = 9,2,4,5,2,5,-2,4,-6,10,-1,2,7;
-texobj(&quot;&quot;,m);
-&rarr; $$\left(
-&rarr; \begin{array}{*{4}{r}}
-&rarr; 9 &amp; 2 &amp; 4 &amp; 5\\
-&rarr; 2 &amp; 5 &amp; -2 &amp; 4\\
-&rarr; -6 &amp; 10 &amp; -1 &amp; 2
-&rarr; \end{array}
-&rarr; \right)
-&rarr; $$
-&rarr; 
-//
-// --- restore global variables if previously defined ---
-if (defined(Teali)){int TeXaligned=Teali; export TeXaligned; kill Teali;}
-if (defined(Tebra)){string TeXbrack=Tebra; export TeXbrack; kill Tebra;}
+&rarr; (-2a2+b3-2)/(a)*x2y4z5+(a2+1)*x+(a+1)
+texpoly(&quot;&quot;,f);
+&rarr; $-\frac{2a^{2}-b^{3}+2}{a}x^{2}y^{4}z^{5}+(a^{2}+1)x+(a+1)$
 </pre></td></tr></table>
 
 </td>
@@ -183,14 +136,14 @@ if (defined(Tebra)){string TeXbrack=Tebra; export TeXbrack; kill Tebra;}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_881.htm#texname" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.7 texname" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_883.htm#texpoly" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.9 texpoly" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_874.htm#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_881.htm#texobj" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.8 texobj" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_883.htm#texproc" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.10 texproc" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_873.htm#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

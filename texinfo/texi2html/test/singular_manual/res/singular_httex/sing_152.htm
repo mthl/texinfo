@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.18.3 vector operations</title>
+<title>Singular 2-0-4 Manual: 4.18.4 vector related functions</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.18.3 vector operations">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.18.3 vector operations">
+<meta name="description" content="Singular 2-0-4 Manual: 4.18.4 vector related functions">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.18.4 vector related functions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="vector-operations"></a>
+<a name="vector-related-functions"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_151.htm#vector-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.18.2 vector expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_151.htm#vector-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.18.3 vector operations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_153.htm#vector-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.18.4 vector related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_149.htm#vector" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.18 vector" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_148.htm#vector" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.18 vector" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,39 +84,63 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="vector-operations-1"></a>
-<h3 class="subsection">4.18.3 vector operations</h3>
-<a name="index-vector-operations"></a>
+<a name="vector-related-functions-1"></a>
+<h3 class="subsection">4.18.4 vector related functions</h3>
+<a name="index-vector-related-functions"></a>
 
 <dl compact="compact">
-<dt><code>+</code></dt>
-<dd><p>addition
-</p>
-</dd>
-<dt><code>-</code></dt>
-<dd><p>negation or subtraction
-</p>
-</dd>
-<dt><code>/</code></dt>
-<dd><p>division by a monomial, not divisible terms yield 0
-</p>
-</dd>
-<dt><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>&lt;&gt;</code></dt>
-<dd><p>comparison of leading terms w.r.t. monomial ordering
-</p>
-</dd>
-<dt>vector_expression <code>[</code> int_expressions <code>]</code></dt>
-<dd><p>is a vector entry; the index 1 gives the first entry.
+<dt><code>cleardenom</code></dt>
+<dd><p>quotient of a vector by its content (see <a href="sing_161.htm#cleardenom">cleardenom</a>)
+</p></dd>
+<dt><code>coeffs</code></dt>
+<dd><p>matrix of coefficients (see <a href="sing_164.htm#coeffs">coeffs</a>)
+</p></dd>
+<dt><code>deg</code></dt>
+<dd><p>degree (see <a href="sing_168.htm#deg">deg</a>)
+</p></dd>
+<dt><code>diff</code></dt>
+<dd><p>partial derivative (see <a href="sing_172.htm#diff">diff</a>)
+</p></dd>
+<dt><code>gen</code></dt>
+<dd><p>i-th generator (see <a href="sing_194.htm#gen">gen</a>)
+</p></dd>
+<dt><code>homog</code></dt>
+<dd><p>homogenization (see <a href="sing_200.htm#homog">homog</a>)
+</p></dd>
+<dt><code>jet</code></dt>
+<dd><p>k-jet: monomials with degree smaller k+1 (see <a href="sing_209.htm#jet">jet</a>)
+</p></dd>
+<dt><code>lead</code></dt>
+<dd><p>leading term (see <a href="sing_215.htm#lead">lead</a>)
+</p></dd>
+<dt><code>leadcoef</code></dt>
+<dd><p>leading coefficient (see <a href="sing_216.htm#leadcoef">leadcoef</a>)
+</p></dd>
+<dt><code>leadexp</code></dt>
+<dd><p>the exponent vector of the leading monomial (see <a href="sing_217.htm#leadexp">leadexp</a>)
+</p></dd>
+<dt><code>leadmonom</code></dt>
+<dd><p>leading monomial (see <a href="sing_218.htm#leadmonom">leadmonom</a>)
+</p></dd>
+<dt><code>nrows</code></dt>
+<dd><p>number of rows (see <a href="sing_240.htm#nrows">nrows</a>)
+</p></dd>
+<dt><code>ord</code></dt>
+<dd><p>degree of the leading monomial (see <a href="sing_244.htm#ord">ord</a>)
+</p></dd>
+<dt><code>reduce</code></dt>
+<dd><p>normal form with respect to a standard base (see <a href="sing_260.htm#reduce">reduce</a>)
+</p></dd>
+<dt><code>simplify</code></dt>
+<dd><p>normalize a vector (see <a href="sing_269.htm#simplify">simplify</a>)
+</p></dd>
+<dt><code>size</code></dt>
+<dd><p>number of monomials (see <a href="sing_270.htm#size">size</a>)
+</p></dd>
+<dt><code>subst</code></dt>
+<dd><p>substitute a ring variable (see <a href="sing_278.htm#subst">subst</a>)
 </p></dd>
 </dl>
-
-<br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=0,(x,y),(c,dp);
-  [x,y]-[1,x];
-&rarr; [x-1,-x+y]
-  [1,2,x,4][3];
-&rarr; x
-</pre></td></tr></table>
 
 
 </td>
@@ -128,14 +152,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_151.htm#vector-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.18.2 vector expressions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_153.htm#vector-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.18.4 vector related functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_149.htm#vector" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.18 vector" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_151.htm#vector-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.18.3 vector operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_148.htm#vector" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.18 vector" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

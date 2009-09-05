@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.4.7 maxcoef</title>
+<title>Singular 2-0-4 Manual: D.2.4.8 maxdeg</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.4.7 maxcoef">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.4.7 maxcoef">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.4.8 maxdeg">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.4.8 maxdeg">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="maxcoef"></a>
+<a name="maxdeg"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_433.htm#lcm" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.6 lcm" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_433.htm#maxcoef" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.7 maxcoef" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_435.htm#maxdeg" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.8 maxdeg" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_435.htm#maxdeg1" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.9 maxdeg1" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_427.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_426.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,32 +84,41 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="maxcoef-1"></a>
-<h4 class="subsubsection">D.2.4.7 maxcoef</h4>
-<a name="index-maxcoef"></a>
-<p>Procedure from library <code>poly.lib</code> (see <a href="sing_427.htm#poly_005flib">poly_lib</a>).
+<a name="maxdeg-1"></a>
+<h4 class="subsubsection">D.2.4.8 maxdeg</h4>
+<a name="index-maxdeg"></a>
+<p>Procedure from library <code>poly.lib</code> (see <a href="sing_426.htm#poly_005flib">poly_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>maxcoef(f); f poly/ideal/vector/module/matrix
+<dd><p>maxdeg(id); id poly/ideal/vector/module/matrix
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>maximal length of coefficient of f of type int (by counting the
-length of the string of each coefficient)
+<dd><p>int/intmat, each component equals maximal degree of monomials in the
+corresponding component of id, independent of ring ordering
+(maxdeg of each var is 1).
+<br>Of type int if id is of type poly, of type intmat else
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>proc maxdeg1 returns 1 integer, the absolute maximum; moreover, it has
+an option for computing weighted degrees
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;poly.lib&quot;;
-ring r= 0,(x,y,z),ds;
-poly g = 345x2-1234567890y+7/4z;
-maxcoef(g);
-&rarr; 10
-ideal i = g,10/1234567890;
-maxcoef(i);
-&rarr; 11
-// since i[2]=1/123456789
+ring r = 0,(x,y,z),wp(1,2,3);
+poly f = x+y2+z3;
+deg(f);             //deg; returns weighted degree (in case of 1 block)!
+&rarr; 9
+maxdeg(f);
+&rarr; 3
+matrix m[2][2]=f+x10,1,0,f^2;
+maxdeg(m);
+&rarr; 10,0,
+&rarr; -1,6 
 </pre></td></tr></table>
 
 </td>
@@ -121,14 +130,14 @@ maxcoef(i);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_433.htm#lcm" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.6 lcm" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_435.htm#maxdeg" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.8 maxdeg" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_427.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_433.htm#maxcoef" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.7 maxcoef" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_435.htm#maxdeg1" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.9 maxdeg1" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_426.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.6.3.2 HilbertWeights</title>
+<title>Singular 2-0-4 Manual: D.6.3.3 ImageVariety</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.6.3.2 HilbertWeights">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.6.3.2 HilbertWeights">
+<meta name="description" content="Singular 2-0-4 Manual: D.6.3.3 ImageVariety">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6.3.3 ImageVariety">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="HilbertWeights"></a>
+<a name="ImageVariety"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_795.htm#HilbertSeries" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.1 HilbertSeries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_795.htm#HilbertWeights" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.2 HilbertWeights" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_797.htm#ImageVariety" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.3 ImageVariety" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_797.htm#ImageGroup" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.4 ImageGroup" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_794.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_793.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,28 +82,46 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="HilbertWeights-1"></a>
-<h4 class="subsubsection">D.6.3.2 HilbertWeights</h4>
-<a name="index-HilbertWeights"></a>
-<p>Procedure from library <code>rinvar.lib</code> (see <a href="sing_794.htm#rinvar_005flib">rinvar_lib</a>).
+<a name="ImageVariety-1"></a>
+<h4 class="subsubsection">D.6.3.3 ImageVariety</h4>
+<a name="index-ImageVariety"></a>
+<p>Procedure from library <code>rinvar.lib</code> (see <a href="sing_793.htm#rinvar_005flib">rinvar_lib</a>).
 </p>
 <dl compact="compact">
+<dt><strong>Usage:</strong></dt>
+<dd><p>ImageVariety(ideal I, F [, w]);ideal I; F is a list/ideal, intvec w.
+</p>
+</dd>
 <dt><strong>Purpose:</strong></dt>
-<dd><p>compute the weights of the &quot;slack&quot; variables needed for the
-computation of the algebraic relations of the generators of &rsquo;I&rsquo; s.t.
-the Hilbert driven &rsquo;std&rsquo; can be used.
+<dd><p>compute the Zariski closure of the image of the variety of I under
+the morphism F.
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>if &rsquo;I&rsquo; and &rsquo;F&rsquo; are quasihomogeneous w.r.t. &rsquo;w&rsquo; then the Hilbert-driven
+&rsquo;std&rsquo; is used.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>intvec
-</p>
-</dd>
-<dt><strong>Assume:</strong></dt>
-<dd><p>basering = K[t_1,...,t_m,...], &rsquo;I&rsquo; is quasihomogeneous w.r.t. &rsquo;w&rsquo; and
-contains only polynomials in t_1,...,t_m
+<dd><p>polynomial ring over the same ground field, containing the ideal
+&rsquo;imageid&rsquo;. The variables are Y(1),...,Y(k) where k = size(F)
+- &rsquo;imageid&rsquo; is the ideal of the Zariski closure of F(X) where
+X is the variety of I.
 </p>
 </dd>
 </dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;rinvar.lib&quot;;
+ring B   = 0,(x,y),dp;
+ideal I  = x4 - y4;
+ideal F  = x2, y2, x*y;
+def R = ImageVariety(I, F);
+setring R;
+imageid;
+&rarr; imageid[1]=Y(1)*Y(2)-Y(3)^2
+&rarr; imageid[2]=Y(1)^2-Y(2)^2
+&rarr; imageid[3]=Y(2)^3-Y(1)*Y(3)^2
+</pre></td></tr></table>
 
 </td>
 </tr>
@@ -114,14 +132,14 @@ contains only polynomials in t_1,...,t_m
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_795.htm#HilbertSeries" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.1 HilbertSeries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_797.htm#ImageVariety" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.3 ImageVariety" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_794.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_795.htm#HilbertWeights" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.2 HilbertWeights" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_797.htm#ImageGroup" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.4 ImageGroup" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_793.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

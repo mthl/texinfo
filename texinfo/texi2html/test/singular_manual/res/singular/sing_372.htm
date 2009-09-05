@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: C.1 Standard bases</title>
+<title>Singular 2-0-4 Manual: C.2 Hilbert function</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: C.1 Standard bases">
-<meta name="keywords" content="Singular 2-0-4 Manual: C.1 Standard bases">
+<meta name="description" content="Singular 2-0-4 Manual: C.2 Hilbert function">
+<meta name="keywords" content="Singular 2-0-4 Manual: C.2 Hilbert function">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Standard-bases"></a>
+<a name="Hilbert-function"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_371.htm#Standard-bases" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.1 Standard bases" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_373.htm#Hilbert-function" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.2 Hilbert function" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_373.htm#Syzygies-and-resolutions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.3 Syzygies and resolutions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,179 +82,168 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Standard-bases-1"></a>
-<h2 class="section">C.1 Standard bases</h2>
-<a name="index-Standard-bases"></a>
+<a name="Hilbert-function-1"></a>
+<h2 class="section">C.2 Hilbert function</h2>
+<a name="index-Hilbert-function-1"></a>
+<a name="index-Hilbert-series"></a>
+<p>Let M <!-- MATH
+ $=\bigoplus_i M_i$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="62" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_364.png"
+ ALT="$=\bigoplus_i M_i$"></SPAN> be a graded module over <SPAN CLASS="MATH"><IMG
+ WIDTH="79" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_365.png"
+ ALT="$K[x_1,..,x_n]$"></SPAN> with 
+respect to weights <SPAN CLASS="MATH"><IMG
+ WIDTH="66" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_366.png"
+ ALT="$(w_1,..w_n)$"></SPAN>.
+The <B>Hilbert function</B> of <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_13.png"
+ ALT="$M$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_367.png"
+ ALT="$H_M$"></SPAN>, is defined (on the integers) by
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+H_M(k) :=dim_K M_k.
+\end{displaymath}
+ -->
 
-<a name="Definition"></a>
-<h3 class="subheading">Definition</h3>
-<p>Let <!-- MATH
- $R = \hbox{Loc}_< K[\underline{x}]$
+<IMG
+ WIDTH="133" HEIGHT="26" BORDER="0"
+ SRC="sing_368.png"
+ ALT="\begin{displaymath}H_M(k) :=dim_K M_k.\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The <B>Hilbert-Poincare series</B>  of <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_13.png"
+ ALT="$M$"></SPAN> is the power series
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+\hbox{HP}_M(t) :=\sum_{i=-\infty}^\infty
+H_M(i)t^i=\sum_{i=-\infty}^\infty dim_K M_i \cdot t^i.
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="304" HEIGHT="51" BORDER="0"
+ SRC="sing_369.png"
+ ALT="\begin{displaymath}\hbox{HP}_M(t) :=\sum_{i=-\infty}^\infty
+H_M(i)t^i=\sum_{i=-\infty}^\infty dim_K M_i \cdot t^i.\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+It turns out that <!-- MATH
+ $\hbox{HP}_M(t)$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="99" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_345.png"
- ALT="$R = \hbox{Loc}_&lt; K[\underline{x}]$"></SPAN> and let <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN> be a submodule of <SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_346.png"
- ALT="$R^r$"></SPAN>.
-Note that for r=1 this means that <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN> is an ideal in <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_49.png"
- ALT="$R$"></SPAN>.
-Denote by <SPAN CLASS="MATH"><IMG
- WIDTH="33" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_347.png"
- ALT="$L(I)$"></SPAN> the submodule of <SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_346.png"
- ALT="$R^r$"></SPAN> generated by the leading terms 
-of elements of <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN>, i.e. by <!-- MATH
- $\left\{L(f) \mid f \in I\right\}$
+ WIDTH="55" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_370.png"
+ ALT="$\hbox{HP}_M(t)$"></SPAN> can be written in two useful ways
+for weights <SPAN CLASS="MATH"><IMG
+ WIDTH="51" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_371.png"
+ ALT="$(1,..,1)$"></SPAN>:
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+\hbox{HP}_M(t)={Q(t)\over (1-t)^n}={P(t)\over (1-t)^{dim(M)}}
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="235" HEIGHT="42" BORDER="0"
+ SRC="sing_372.png"
+ ALT="\begin{displaymath}\hbox{HP}_M(t)={Q(t)\over (1-t)^n}={P(t)\over (1-t)^{dim(M)}}\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_373.png"
+ ALT="$Q(t)$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_374.png"
+ ALT="$P(t)$"></SPAN> are polynomials in <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_375.png"
+ ALT="${\bf Z}[t]$"></SPAN>.
+<SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_373.png"
+ ALT="$Q(t)$"></SPAN> is called the <B>first Hilbert series</B>,
+and <SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_374.png"
+ ALT="$P(t)$"></SPAN> the <B>second Hilbert series</B>.
+If <!-- MATH
+ $P(t)=\sum_{k=0}^N a_k t^k$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="96" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_348.png"
- ALT="$\left\{L(f) \mid f \in I\right\}$"></SPAN>.
-Then <!-- MATH
- $f_1, \ldots, f_s \in I$
+ WIDTH="120" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_376.png"
+ ALT="$P(t)=\sum_{k=0}^N a_k t^k$"></SPAN>, and <SPAN CLASS="MATH"><IMG
+ WIDTH="85" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_377.png"
+ ALT="$d = dim(M)$"></SPAN>,
+then <!-- MATH
+ $H_M(s)=\sum_{k=0}^N a_k$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="90" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_349.png"
- ALT="$f_1, \ldots, f_s \in I$"></SPAN> is called a <B>standard basis</B> of <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN> 
-if <!-- MATH
- $L(f_1), \ldots, L(f_s)$
+ WIDTH="123" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_378.png"
+ ALT="$H_M(s)=\sum_{k=0}^N a_k$"></SPAN> <!-- MATH
+ ${d+s-k-1}\choose{d-1}$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="108" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_350.png"
- ALT="$L(f_1), \ldots, L(f_s)$"></SPAN> generate <SPAN CLASS="MATH"><IMG
- WIDTH="33" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_347.png"
- ALT="$L(I)$"></SPAN>.
+ WIDTH="69" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_379.png"
+ ALT="${d+s-k-1}\choose{d-1}$"></SPAN>
+(the <B>Hilbert polynomial</B>) for <SPAN CLASS="MATH"><IMG
+ WIDTH="44" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_380.png"
+ ALT="$s \ge N$"></SPAN>.
+<br>
+<br>
+Generalizing these to quasihomogeneous modules we get
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+\hbox{HP}_M(t)={Q(t)\over {\Pi_{i=1}^n(1-t^{w_i})}}
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="162" HEIGHT="42" BORDER="0"
+ SRC="sing_381.png"
+ ALT="\begin{displaymath}\hbox{HP}_M(t)={Q(t)\over {\Pi_{i=1}^n(1-t^{w_i})}}\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_373.png"
+ ALT="$Q(t)$"></SPAN> is a polynomial in <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_375.png"
+ ALT="${\bf Z}[t]$"></SPAN>.
+<SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_373.png"
+ ALT="$Q(t)$"></SPAN> is called the <B>first (weighted) Hilbert series</B> of M.
 </p>
-<a name="Properties"></a>
-<h3 class="subheading">Properties</h3>
-<dl compact="compact">
-<dt>normal form:</dt>
-<dd><a name="index-Normal-form"></a>
-<p>A function <!-- MATH
- $\hbox{NF} : R^r \times \{G \mid G\ \hbox{ a standard
-basis}\} \to R^r, (p,G) \mapsto \hbox{NF}(p|G)$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="405" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_351.png"
- ALT="$\hbox{NF} : R^r \times \{G \mid G\ \hbox{ a standard
-basis}\} \to R^r, (p,G) \mapsto \hbox{NF}(p\vert G)$"></SPAN>, is called a <B>normal
-form</B> if for any <SPAN CLASS="MATH"><IMG
- WIDTH="47" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_352.png"
- ALT="$p \in R^r$"></SPAN> and any standard basis <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_353.png"
- ALT="$G$"></SPAN> the following
-holds: if <!-- MATH
- $\hbox{NF}(p|G) \not= 0$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="87" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_354.png"
- ALT="$\hbox{NF}(p\vert G) \not= 0$"></SPAN> then <SPAN CLASS="MATH"><IMG
- WIDTH="33" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_116.png"
- ALT="$L(g)$"></SPAN> does not divide
-<!-- MATH
- $L(\hbox{NF}(p|G))$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="81" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_355.png"
- ALT="$L(\hbox{NF}(p\vert G))$"></SPAN> for all <SPAN CLASS="MATH"><IMG
- WIDTH="41" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_356.png"
- ALT="$g \in G$"></SPAN>.
-
-<P>
-
-<!-- MATH
- $\hbox{NF}(p|G)$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="59" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_357.png"
- ALT="$\hbox{NF}(p\vert G)$"></SPAN> is called a <B>normal form of</B> <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_23.png"
- ALT="$p$"></SPAN> <B>with
-respect to</B> <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_353.png"
- ALT="$G$"></SPAN> (note that such a function is not unique).
-</p></dd>
-<dt>ideal membership:</dt>
-<dd><a name="index-Ideal-membership"></a>
-<p>For a standard basis <SPAN CLASS="MATH"><IMG
- WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_353.png"
- ALT="$G$"></SPAN> of <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN> the following holds: 
-<SPAN CLASS="MATH"><IMG
- WIDTH="38" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_358.png"
- ALT="$f \in I$"></SPAN> if and only if <!-- MATH
- $\hbox{NF}(f,G) = 0$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="90" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_359.png"
- ALT="$\hbox{NF}(f,G) = 0$"></SPAN>.
-</p></dd>
-<dt>Hilbert function:</dt>
-<dd><p>Let <!-- MATH
- $I \subseteq K[\underline{x}]^r$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="68" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_360.png"
- ALT="$I \subseteq K[\underline{x}]^r$"></SPAN> be a homogeneous module, then the Hilbert function
-<SPAN CLASS="MATH"><IMG
- WIDTH="22" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_361.png"
- ALT="$H_I$"></SPAN> of <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_232.png"
- ALT="$I$"></SPAN> (see below)
-and the Hilbert function <SPAN CLASS="MATH"><IMG
- WIDTH="40" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_362.png"
- ALT="$H_{L(I)}$"></SPAN> of the leading module <SPAN CLASS="MATH"><IMG
- WIDTH="33" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_347.png"
- ALT="$L(I)$"></SPAN>
-coincide, i.e.,
-<SPAN CLASS="MATH"><IMG
- WIDTH="79" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_363.png"
- ALT="$H_I=H_{L(I)}$"></SPAN>.
-</p></dd>
-</dl>
-
 </td>
 </tr>
 </table>
@@ -264,14 +253,14 @@ coincide, i.e.,
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_373.htm#Hilbert-function" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.2 Hilbert function" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_371.htm#Standard-bases" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.1 Standard bases" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_373.htm#Syzygies-and-resolutions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.3 Syzygies and resolutions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.5.9 multsequence</title>
+<title>Singular 2-0-4 Manual: D.5.5.10 displayMultsequence</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.5.9 multsequence">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.5.9 multsequence">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.5.10 displayMultsequence">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.5.10 displayMultsequence">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="multsequence"></a>
+<a name="displayMultsequence"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_690.htm#displayInvariants" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.8 displayInvariants" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_690.htm#multsequence" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.9 multsequence" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_692.htm#displayMultsequence" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.10 displayMultsequence" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_692.htm#intersection" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.11 intersection" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_682.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_681.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,113 +82,71 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="multsequence-1"></a>
-<h4 class="subsubsection">D.5.5.9 multsequence</h4>
-<a name="index-multsequence"></a>
-<p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_682.htm#hnoether_005flib">hnoether_lib</a>).
+<a name="displayMultsequence-1"></a>
+<h4 class="subsubsection">D.5.5.10 displayMultsequence</h4>
+<a name="index-displayMultsequence"></a>
+<p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_681.htm#hnoether_005flib">hnoether_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>multsequence(INPUT); INPUT list or poly
+<dd><p>displayMultsequence(INPUT); INPUT list or poly
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>INPUT is the output of <code>develop(f)</code>, or of <code>extdevelop(develop(f),n)</code>,
-or one entry in the list <code>hne</code> of the ring created by <code>hnexpansion(f)</code>.
+<dd><p>INPUT is a bivariate polynomial, or the output of <code>develop(f)</code>,
+or of <code>extdevelop(develop(f),n)</code>, or of of <code>hnexpansion(f[,&quot;ess&quot;])</code>,
+or (one entry in) the list <code>hne</code> of the ring created by <code>hnexpansion(f[,&quot;ess &quot;])</code>.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>intvec corresponding to the multiplicity sequence of (a branch)
-of the curve (the same as <code>invariants(INPUT)[6]</code>).
+<dd><p>nothing
 </p>
 </dd>
-<dt><strong>Assume:</strong></dt>
-<dd><p>INPUT is a bivariate polynomial, or the output of <code>hnexpansion(f)</code>,
-or the list <code>hne</code> in the ring created by <code>hnexpansion(f)</code>.
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>list of two integer matrices:
-</p>
-<dl compact="compact">
-<dt><code>multsequence(INPUT)[1][i,*]</code></dt>
-<dd><p>   contains the multiplicities of the branches at their infinitely near point
-   of 0 in its (i-1) order neighbourhood (i.e., i=1: multiplicity of the
-   branches themselves, i=2: multiplicity of their 1st quadratic transformed,
-   etc., <br>
-   Hence, <code>multsequence(INPUT)[1][*,j]</code> is the multiplicity sequence
-   of branch j.
-</p></dd>
-<dt><code>multsequence(INPUT)[2][i,*]</code>:</dt>
-<dd><p>   contains the information which of these infinitely near points coincide.
-</p></dd>
-</dl>
+<dt><strong>Display:</strong></dt>
+<dd><p>the sequence of multiplicities:
+</p><table><tr><td>&nbsp;</td><td><pre class="format"> - if <code>INPUT=develop(f)</code> or <code>INPUT=extdevelop(develop(f),n)</code> or <code>INPUT=hne[i]</code>:
+                      <code>a , b , c , ....... , 1</code>
+ - if <code>INPUT=f</code> or <code>INPUT=hnexpansion(f[,&quot;ess&quot;])</code> or <code>INPUT=hne</code>:
+                      <code>[(a_1, .... , b_1 , .... , c_1)],</code>
+                      <code>[(a_2, ... ), ... , (... , c_2)],</code>
+                      <code> ........................................ ,</code>
+                      <code>[(a_n),(b_n), ....., (c_n)]</code>
+     with:
+       <code>a_1 , ... , a_n</code> the sequence of multiplicities of the 1st branch,
+       <code>[...]</code> the multiplicities of the j-th transformed of all branches,
+       <code>(...)</code> indicating branches meeting in an infinitely near point.
+</pre></td></tr></table>
 
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>The order of elements of the list <code>hne</code> obtained from <code>hnexpansion(f[,&quot;ess&quot;)</code>
-must not be changed (because then the coincident infinitely near points
-couldn&rsquo;t be grouped together, cf. meaning of 2nd intmat in example).
-Hence, it is not wise to compute the HNE of several polynomials
-separately, put them into a list INPUT and call <code>multsequence(INPUT)</code>. <br>
-Use <code>displayMultsequence</code> to produce a better readable output for
-reducible curves on the screen. <br>
+<dd><p>The same restrictions for INPUT as in <code>multsequence</code> apply.<br>
 In case the Hamburger-Noether expansion of the curve f is needed
 for other purposes as well it is better to calculate this first
 with the aid of <code>hnexpansion</code> and use it as input instead of
 the polynomial itself.
 </p>
-<a name="index-multiplicity-sequence"></a>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;hnoether.lib&quot;;
-// -------- prepare for example ---------
-if (nameof(basering)==&quot;HNEring&quot;) {
-def rettering=HNEring;
-kill HNEring;
-}
 // ------ the example starts here -------
 ring r=0,(x,y),dp;
-list hn=hnexpansion((x6-y10)*(x+y2-y3)*(x+y2+y3));   // 4 branches
-def HNEring=hn[1];
-setring HNEring;
-multsequence(hne[1]),&quot;  |  &quot;,multsequence(hne[2]),&quot;  |  &quot;,
-multsequence(hne[3]),&quot;  |  &quot;,multsequence(hne[4]);
-&rarr; 3,2,1,1   |   3,2,1,1   |   1   |   1
-multsequence(hne);
-&rarr; [1]:
-&rarr;    3,3,1,1,
-&rarr;    2,2,1,1,
-&rarr;    1,1,1,1,
-&rarr;    1,1,1,1,
-&rarr;    1,1,1,1 
-&rarr; [2]:
-&rarr;    4,0,0,0,
-&rarr;    4,0,0,0,
-&rarr;    2,2,0,0,
-&rarr;    2,1,1,0,
-&rarr;    1,1,1,1 
-// The meaning of the entries of the 2nd matrix is as follows:
-displayMultsequence(hne);
+//// Example 1: Input = output of develop
+displayMultsequence(develop(x3-y5));
+&rarr; The sequence of multiplicities is   3,2,1,1
+//// Example 2: Input = bivariate polynomial
+displayMultsequence((x6-y10)*(x+y2-y3)*(x+y2+y3));
 &rarr; [(3,3,1,1)],
 &rarr; [(2,2,1,1)],
 &rarr; [(1,1),(1,1)],
 &rarr; [(1,1),(1),(1)],
 &rarr; [(1),(1),(1),(1)]
-// --- restore HNEring if previously defined ---
-kill HNEring,r;
-if (defined(rettering)) {
-setring rettering;
-def HNEring=rettering;
-export HNEring;
-}
 </pre></td></tr></table>
 <p><strong>See also:</strong>
-<a href="sing_685.htm#develop">develop</a>;
-<a href="sing_692.htm#displayMultsequence">displayMultsequence</a>;
-<a href="sing_683.htm#hnexpansion">hnexpansion</a>;
-<a href="sing_700.htm#separateHNE">separateHNE</a>.
+<a href="sing_684.htm#develop">develop</a>;
+<a href="sing_682.htm#hnexpansion">hnexpansion</a>;
+<a href="sing_690.htm#multsequence">multsequence</a>;
+<a href="sing_699.htm#separateHNE">separateHNE</a>.
 </p>
 
 </td>
@@ -200,14 +158,14 @@ export HNEring;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_690.htm#displayInvariants" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.8 displayInvariants" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_692.htm#displayMultsequence" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.10 displayMultsequence" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_682.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_690.htm#multsequence" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.9 multsequence" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_692.htm#intersection" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.11 intersection" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_681.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

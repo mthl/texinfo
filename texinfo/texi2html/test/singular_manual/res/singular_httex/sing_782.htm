@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.6.1.29 orbit_variety</title>
+<title>Singular 2-0-4 Manual: D.6.1.30 relative_orbit_variety</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.6.1.29 orbit_variety">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.6.1.29 orbit_variety">
+<meta name="description" content="Singular 2-0-4 Manual: D.6.1.30 relative_orbit_variety">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6.1.30 relative_orbit_variety">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="orbit_005fvariety"></a>
+<a name="relative_005forbit_005fvariety"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_781.htm#secondary_005fnot_005fcohen_005fmacaulay" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.28 secondary_not_cohen_macaulay" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_781.htm#orbit_005fvariety" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.29 orbit_variety" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_783.htm#relative_005forbit_005fvariety" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.30 relative_orbit_variety" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_783.htm#image_005fof_005fvariety" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.31 image_of_variety" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_753.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_752.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,49 +84,49 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="orbit_005fvariety-1"></a>
-<h4 class="subsubsection">D.6.1.29 orbit_variety</h4>
-<a name="index-orbit_005fvariety"></a>
-<p>Procedure from library <code>finvar.lib</code> (see <a href="sing_753.htm#finvar_005flib">finvar_lib</a>).
+<a name="relative_005forbit_005fvariety-1"></a>
+<h4 class="subsubsection">D.6.1.30 relative_orbit_variety</h4>
+<a name="index-relative_005forbit_005fvariety"></a>
+<p>Procedure from library <code>finvar.lib</code> (see <a href="sing_752.htm#finvar_005flib">finvar_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>orbit_variety(F,s);
-<br>F: a 1xm &lt;matrix&gt; defining an invariant ring, s: a &lt;string&gt; giving the
-name for a new ring
+<dd><p>relative_orbit_variety(I,F,s);
+<br>I: an &lt;ideal&gt; invariant under the action of a group, F: a 1xm
+&lt;matrix&gt; defining the invariant ring of this group, s: a &lt;string&gt;
+giving a name for a new ring
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>a Groebner basis (type &lt;ideal&gt;, named G) for the ideal defining the
-orbit variety (i.e. the syzygy ideal) in the new ring (named &lsquo;s&lsquo;)
+relative orbit variety with respect to I in the new ring (named s)
 </p>
 </dd>
 <dt><strong>Theory:</strong></dt>
-<dd><p>The ideal of algebraic relations of the invariant ring generators is
-calculated, then the variables of the original ring are eliminated and
-the polynomials that are left over define the orbit variety
+<dd><p>A Groebner basis of the ideal of algebraic relations of the invariant
+ring generators is calculated, then one of the basis elements plus the
+ideal generators. The variables of the original ring are eliminated
+and the polynomials that are left define the relative orbit variety
+with respect to I.
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;finvar.lib&quot;;
 ring R=0,(x,y,z),dp;
-matrix F[1][7]=x2+y2,z2,x4+y4,1,x2z-1y2z,xyz,x3y-1xy3;
+matrix F[1][3]=x+y+z,xy+xz+yz,xyz;
+ideal I=x2+y2+z2-1,x2y+y2z+z2x-2x-2y-2z,xy2+yz2+zx2-2x-2y-2z;
 string newring=&quot;E&quot;;
-orbit_variety(F,newring);
+relative_orbit_variety(I,F,newring);
 print(G);
-&rarr; y(4)-1,
-&rarr; y(5)*y(6)-y(2)*y(7),
-&rarr; y(2)*y(3)-y(5)^2-2*y(6)^2,
-&rarr; y(1)^2*y(6)-2*y(3)*y(6)+y(5)*y(7),
-&rarr; y(1)^2*y(5)-y(3)*y(5)-2*y(6)*y(7),
-&rarr; y(1)^2*y(2)-y(2)*y(3)-2*y(6)^2,
-&rarr; y(1)^4-3*y(1)^2*y(3)+2*y(3)^2+2*y(7)^2
+&rarr; 27*y(3)^6-513*y(3)^4+33849*y(3)^2-784,
+&rarr; 1475*y(2)+9*y(3)^4-264*y(3)^2+736,
+&rarr; 8260*y(1)+9*y(3)^5-87*y(3)^3+5515*y(3)
 basering;
 &rarr; //   characteristic : 0
-&rarr; //   number of vars : 7
-&rarr; //        block   1 : ordering dp
-&rarr; //                  : names    y(1) y(2) y(3) y(4) y(5) y(6) y(7) 
+&rarr; //   number of vars : 3
+&rarr; //        block   1 : ordering lp
+&rarr; //                  : names    y(1) y(2) y(3) 
 &rarr; //        block   2 : ordering C
 </pre></td></tr></table>
 
@@ -139,14 +139,14 @@ basering;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_781.htm#secondary_005fnot_005fcohen_005fmacaulay" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.28 secondary_not_cohen_macaulay" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_783.htm#relative_005forbit_005fvariety" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.30 relative_orbit_variety" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_753.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_781.htm#orbit_005fvariety" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.29 orbit_variety" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_783.htm#image_005fof_005fvariety" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.31 image_of_variety" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_752.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

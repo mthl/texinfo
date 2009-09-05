@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.10.2 Source code debugger</title>
+<title>Singular 2-0-4 Manual: 3.10.3 Break points</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.10.2 Source code debugger">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.10.2 Source code debugger">
+<meta name="description" content="Singular 2-0-4 Manual: 3.10.3 Break points">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.10.3 Break points">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Source-code-debugger"></a>
+<a name="Break-points"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_61.htm#Tracing-of-procedures" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.10.1 Tracing of procedures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_61.htm#Source-code-debugger" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.10.2 Source code debugger" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_63.htm#Break-points" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.10.3 Break points" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_63.htm#Printing-of-data" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.10.4 Printing of data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_60.htm#Debugging-tools" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.10 Debugging tools" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_59.htm#Debugging-tools" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.10 Debugging tools" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,75 +84,33 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Source-code-debugger-1"></a>
-<h3 class="subsection">3.10.2 Source code debugger</h3>
-<a name="index-debugging-library-code"></a>
-<a name="index-source-code-debugger_002c-sdb"></a>
-<a name="index-debugger"></a>
-<a name="index-sdb_002c-source-code-debugger"></a>
-
-
-<p>The source code debugger (sdb) is an experimental feature, it&rsquo;s
-interface may change in future versions of Singular.  <br>To enable the
-use of the source code debugger <small>SINGULAR</small> has to be started with the
-option <code>-d</code> or <code>--sdb</code> (see <a href="sing_19.htm#Command-line-options">Command line options</a>).
+<a name="Break-points-1"></a>
+<h3 class="subsection">3.10.3 Break points</h3>
+<p>A break point can be put into a proc by inserting the command <code>~</code>.
+If <code>Singular</code> reaches a break point it asks for lines of commands
+(line-length must be less than 80 characters)
+from the user. It returns to normal execution if given an empty line.
+See <a href="sing_305.htm#g_t_007e">~</a>.
 </p>
 
-<a name="sdb-commands"></a>
-<h4 class="subsubheading">sdb commands</h4>
-<p>Each sdb command consist of one character which may be followed by
-a parameter.
-</p><dl compact="compact">
-<dt><code>b</code></dt>
-<dd><p>print backtrace of calling stack
-</p></dd>
-<dt><code>c</code></dt>
-<dd><p>continue
-</p></dd>
-<dt><code>e</code></dt>
-<dd><p>edit the current procedure and reload it (current call will be aborted)
-<br> only available on UNIX systems
-</p></dd>
-<dt><code>h</code>,<code>?</code></dt>
-<dd><p>display help screen
-</p></dd>
-<dt><code>n</code></dt>
-<dd><p>execute current line, sdb break at next line
-</p></dd>
-<dt><code>p</code> &lt;identifier&gt;</dt>
-<dd><p>display type and value of the variable given by &lt;identifier&gt;
-</p></dd>
-<dt><code>Q</code></dt>
-<dd><p>quit this Singular session
-</p></dd>
-<dt><code>q</code> &lt;flags&gt;</dt>
-<dd><p>quit debugger, set debugger flags(0,1,2)
-<br> 0: continue, disable the debugger
-<br> 1: continue
-<br> 2: throw an error, return to toplevel
-</p></dd>
-</dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc t
+{
+  int i=2;
+  ~;
+  return(i+1);
+}
+t();
+&rarr; -- break point in t --
+&rarr; -- 0: called    from STDIN --
+i;               // here local variables of the procedure can be accessed
+&rarr; 2
+&rarr; -- break point in t --
 
-
-<a name="Syntactical-errors-in-procedures"></a>
-<h4 class="subsubheading">Syntactical errors in procedures</h4>
-<p>If <small>SINGULAR</small> was started with the command line option <code>-d</code> or
-<code>--sdb</code> a syntactical error in a procedure will start the
-source code debugger instead of returning to the top level with an
-error message. The commands <code>q 1</code> and <code>q 2</code> are equivalent in this
-case.
-</p>
-<a name="SDB-breakpoints-in-procedures"></a>
-<h4 class="subsubheading">SDB breakpoints in procedures</h4>
-<a name="index-SDB-breakpoint"></a>
-<a name="index-SDB-debugger"></a>
-<p>Up to seven SDB breakpoints can be set.
-To set a breakpoint at a procedure use
-<code>breakpoint</code>. (See <a href="sing_296.htm#breakpoint">breakpoint</a>).
-<br>These breakpoints can be cleared with the command <code>d breakpoint_no</code>
-from within the debugger or with
-<code>breakpoint(</code> proc_name <code>,-1);</code>.
-</p>
+&rarr; 3
+</pre></td></tr></table>
+<br>
+<br>
 
 </td>
 </tr>
@@ -163,14 +121,14 @@ from within the debugger or with
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_61.htm#Tracing-of-procedures" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.10.1 Tracing of procedures" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_63.htm#Break-points" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.10.3 Break points" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_60.htm#Debugging-tools" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.10 Debugging tools" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_61.htm#Source-code-debugger" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.10.2 Source code debugger" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_63.htm#Printing-of-data" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.10.4 Printing of data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_59.htm#Debugging-tools" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.10 Debugging tools" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

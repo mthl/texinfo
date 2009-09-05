@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.29 facstd</title>
+<title>Singular 2-0-4 Manual: 5.1.30 factorize</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.29 facstd">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.29 facstd">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.30 factorize">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.30 factorize">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="facstd"></a>
+<a name="factorize"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_183.htm#extgcd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.28 extgcd" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_183.htm#facstd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.29 facstd" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_185.htm#factorize" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.30 factorize" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_185.htm#fetch" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.31 fetch" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,54 +82,63 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="facstd-1"></a>
-<h3 class="subsection">5.1.29 facstd</h3>
-<a name="index-facstd"></a>
+<a name="factorize-1"></a>
+<h3 class="subsection">5.1.30 factorize</h3>
+<a name="index-factorize"></a>
 
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>facstd (</code> ideal_expression <code>)</code>
-<br><code>facstd (</code> ideal_expression<code>,</code> ideal_expression <code>)</code>
+<dd><p><code>factorize (</code> poly_expression <code>)</code>
+<br><code>factorize (</code> poly_expression<code>, 0 )</code>
+<br><code>factorize (</code> poly_expression<code>, 2 )</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>list of ideals
+<dd><p>list of ideal and intvec
+<br>
+</p></dd>
+<dt><code><strong>Syntax:</strong></code></dt>
+<dd><p><code>factorize (</code> poly_expression<code>, 1 )</code>
+</p></dd>
+<dt><code><strong>Type:</strong></code></dt>
+<dd><p>ideal
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>returns a list of ideals computed by the factorizing Groebner basis algorithm.
-<br>The intersection of these ideals has the same zero-set as the input,
-i.e., the radical of the intersection coincides with the radical of the input
-ideal.
-In many (but not all!) cases this is already a decomposition of the radical
-of the ideal. (Note however, that, in general, no inclusion between the
-input and output ideals holds.)
-<br>The second, optional argument gives a list of polynomials which define
-non-zero constraints. Hence, the intersection of the output ideals
-has a zero-set which is the (closure of the) complement of the zero-set
-of the second argument in the zero-set of the first argument.
-</p></dd>
+<dd><p>computes the irreducible factors (as an ideal) of the polynomial
+together with or without
+the multiplicities (as an intvec) depending on the second argument:
+</p><table><tr><td>&nbsp;</td><td><pre class="format">    0: returns factors and multiplicities, first factor is a constant.
+       May also be written with only one argument.
+    1: returns non-constant factors (no multiplicities).
+    2: returns non-constant factors and multiplicities.
+</pre></td></tr></table>
+</dd>
 <dt><code><strong>Note:</strong></code></dt>
-<dd><p>Not implemented for baserings over real ground fields, galois fields and
-over algebraic extensions over the rational numbers (that is, only
-implemented for ground fields for which <a href="sing_185.htm#factorize">factorize</a> is implemented).
+<dd><p>Not implemented for the coefficient fields real and finite fields of
+type <code>(p^n,a)</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(c,dp);
-  ideal I=xyz,x2z;
-  facstd(I);
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+  factorize(9*(x-1)^2*(y+z));
 &rarr; [1]:
-&rarr;    _[1]=z
+&rarr;    _[1]=9
+&rarr;    _[2]=y+z
+&rarr;    _[3]=x-1
 &rarr; [2]:
-&rarr;    _[1]=x
-  facstd(I,x);
+&rarr;    1,1,2
+  factorize(9*(x-1)^2*(y+z),1);
+&rarr; _[1]=y+z
+&rarr; _[2]=x-1
+  factorize(9*(x-1)^2*(y+z),2);
 &rarr; [1]:
-&rarr;    _[1]=z
+&rarr;    _[1]=y+z
+&rarr;    _[2]=x-1
+&rarr; [2]:
+&rarr;    1,2
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_69.htm#ideal">ideal</a>;
-<a href="sing_139.htm#ring">ring</a>;
-<a href="sing_276.htm#std">std</a>.
+<a href="sing_125.htm#poly">poly</a>.
 </p></td>
 </tr>
 </table>
@@ -139,14 +148,14 @@ implemented for ground fields for which <a href="sing_185.htm#factorize">factori
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_183.htm#extgcd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.28 extgcd" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_185.htm#factorize" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.30 factorize" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_183.htm#facstd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.29 facstd" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_185.htm#fetch" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.31 fetch" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

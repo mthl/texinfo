@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.125 system</title>
+<title>Singular 2-0-4 Manual: 5.1.126 syz</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.125 system">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.125 system">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.126 syz">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.126 syz">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="system"></a>
+<a name="syz"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_279.htm#subst" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.124 subst" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_279.htm#system" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.125 system" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_281.htm#syz" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.126 syz" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_281.htm#trace" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.127 trace" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,182 +82,39 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="system-1"></a>
-<h3 class="subsection">5.1.125 system</h3>
-<a name="index-system"></a>
+<a name="syz-1"></a>
+<h3 class="subsection">5.1.126 syz</h3>
+<a name="index-syz"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>system (</code> string_expression <code>)</code>
-<br><code>system (</code> string_expression<code>,</code> expression <code>)</code>
+<dd><p><code>syz (</code> ideal_expression <code>)</code>
+<br><code>syz (</code> module_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>depends on the desired function, may be none
+<dd><p>module
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>interface to internal data and the operating system. The
-string_expression determines the command to execute. Some commands
-require an additional argument (second form) where the type of the
-argument depends on the command. See below for a list of all possible
-commands.
+<dd><p>computes the first syzygy (i.e., the module of relations of the given
+generators) of the ideal, resp. module.
 </p></dd>
-<dt><code><strong>Note:</strong></code></dt>
-<dd><p>Not all functions work on every platform.
-</p></dd>
-<dt><code><strong>Functions:</strong></code></dt>
-<dd><dl compact="compact">
-<dt><code>system(&quot;sh&quot;</code>, string_expression <code>)</code></dt>
-<dd><a name="index-sh"></a>
-<a name="index-system_002c-sh"></a>
-<p>shell escape, returns the return code of the shell as int. The string is
-sent literally to the shell.
-</p></dd>
-<dt><code>system(&quot;pid&quot;)</code></dt>
-<dd><a name="index-pid"></a>
-<a name="index-system_002c-pid"></a>
-<p>returns the process number as int (for creating unique names).
-</p></dd>
-<dt><code>system(&quot;uname&quot;)</code></dt>
-<dd><a name="index-uname"></a>
-<a name="index-system_002c-uname"></a>
-<a name="index-hardware-platform"></a>
-<p>returns a string identifying the architecture for which <small>SINGULAR</small>
-was compiled.
-</p></dd>
-<dt><code>system(&quot;getenv&quot;,</code> string_expression<code>)</code></dt>
-<dd><a name="index-getenv"></a>
-<a name="index-system_002c-getenv"></a>
-<p>returns the value of the shell environment variable given as the second
-argument. The return type is string.
-</p></dd>
-<dt><code>system(&quot;setenv&quot;,</code>string_expression, string_expression<code>)</code></dt>
-<dd><a name="index-setenv"></a>
-<a name="index-system_002c-setenv"></a>
-<p>sets the shell environment variable given as the second argument to the
-value given as the third argument. Returns the third argument. Might not
-be available on all platforms.
-</p></dd>
-<dt><code>system(&quot;tty&quot;)</code></dt>
-<dd><a name="index-tty"></a>
-<a name="index-system_002c-tty"></a>
-<p>resets the terminal.
-</p></dd>
-<dt><code>system(&quot;version&quot;)</code></dt>
-<dd><a name="index-version"></a>
-<a name="index-system_002c-version"></a>
-<p>returns the version number of  <small>SINGULAR</small> as int.
-</p></dd>
-<dt><code>system(&quot;contributors&quot;)</code></dt>
-<dd><a name="index-contributors"></a>
-<a name="index-system_002c-contributors"></a>
-<p>returns names of people who contributed to the <small>SINGULAR</small> kernel as string.
-</p></dd>
-<dt><code>system(&quot;gen&quot;)</code></dt>
-<dd><a name="index-system_002c-gen"></a>
-<p>returns the generating element of the multiplicative
-group of (Z/p)\{0} (as int) where p is the characteristic of the
-basering.
-</p></dd>
-<dt><code>system(&quot;nblocks&quot;)</code></dt>
-<dt><code>system(&quot;nblocks&quot;,</code> ring_name <code>)</code></dt>
-<dd><a name="index-nblocks"></a>
-<a name="index-system_002c-nblocks"></a>
-<p>returns the number of blocks of the given ring, or the number of parameters
-of the current basering, if no second argument is given. The return type
-is int.
-</p></dd>
-<dt><code>system(&quot;Singular&quot;)</code></dt>
-<dd><a name="index-Singular"></a>
-<a name="index-system_002c-Singular"></a>
-<p>returns the absolute (path) name of the running <small>SINGULAR</small> as string.
-</p></dd>
-<dt><code>system(&quot;</code>&ndash;<code>&quot;)</code></dt>
-<dd><a name="index-system_002c-_002d_002d"></a>
-<a name="index-command_002dline-options_002c-print-all-values-of"></a>
-<p>prints the values of all options.
-</p></dd>
-<dt><code>system(&quot;</code>&ndash;long_option_name<code>&quot;)</code></dt>
-<dd><a name="index-command_002dline-option_002c-value-of"></a>
-<a name="index-system_002c-_002d_002dlong_005foption_005fname"></a>
-<p>returns the value of the (command-line) option long_option_name. The
-type of the returned value is either string or int.
-See <a href="sing_19.htm#Command-line-options">Command line options</a>, for more info.
-</p></dd>
-<dt><code>system(&quot;</code>&ndash;long_option_name<code>&quot;,</code> expression<code>)</code></dt>
-<dd><a name="index-command_002dline-option_002c-setting-value-of"></a>
-<a name="index-system_002c-_002d_002dlong_005foption_005fname_003dvalue"></a>
-<a name="index-random-number-generator_002c-seed"></a>
-<a name="index-browsers_002c-setting-the"></a>
-<a name="index-browser_002c-setting-the"></a>
-<a name="index-help-browsers_002c-setting-the"></a>
-<a name="index-timer-resolution_002c-setting-the"></a>
-<a name="index-minimal-display-time_002c-setting-the"></a>
-<p>sets the value of the (command-line) option long_option_name to the
-value given by the expression. Type of the expression must be string, or
-int.  See <a href="sing_19.htm#Command-line-options">Command line options</a>, for more info. Among others,
-this can be used for setting the seed of the random number generator,
-the used help browser, the minimal display time, or the timer
-resolution.
-</p></dd>
-<dt><code>system(&quot;browsers&quot;);</code></dt>
-<dd><a name="index-system_002c-browsers"></a>
-<p>returns a string about available help browsers.
-See <a href="sing_16.htm#The-online-help-system">The online help system</a>.
-</p></dd>
-</dl>
-</dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">// a listing of the current directory:
-system(&quot;sh&quot;,&quot;ls&quot;);
-// execute a shell, return to SINGULAR with exit:
-system(&quot;sh&quot;,&quot;sh&quot;);
-string unique_name=&quot;/tmp/xx&quot;+string(system(&quot;pid&quot;));
-unique_name;
-&rarr; /tmp/xx4711
-system(&quot;uname&quot;)
-&rarr; ix86-Linux
-system(&quot;getenv&quot;,&quot;PATH&quot;);
-&rarr; /bin:/usr/bin:/usr/local/bin
-system(&quot;Singular&quot;);
-&rarr; /usr/local/bin/Singular
-// report value of all options
-system(&quot;--&quot;);
-&rarr; // --batch           0
-&rarr; // --execute
-&rarr; // --sdb             0
-&rarr; // --echo            0
-&rarr; // --help            0
-&rarr; // --quiet           0
-&rarr; // --random          937848971
-&rarr; // --no-tty          0
-&rarr; // --user-option
-&rarr; // --version         0
-&rarr; // --allow-net       0
-&rarr; // --browser
-&rarr; // --emacs           0
-&rarr; // --no-stdlib       0
-&rarr; // --no-rc           0
-&rarr; // --no-warn         0
-&rarr; // --no-out          0
-&rarr; // --min-time        &quot;0.5&quot;
-&rarr; // --mp-port
-&rarr; // --mp-host
-&rarr; // --ticks-per-sec   1
-&rarr; // --mp-transp
-&rarr; // --mp-mode
-// set minimal display time to 0.02 seconds
-system(&quot;--min-time&quot;, &quot;0.02&quot;);
-// set timer resolution to 0.01 seconds
-system(&quot;--ticks-per-sec&quot;, 100);
-// re-seed random number generator
-system(&quot;--random&quot;, 12345678);
-// allow netscape to access HTML pages from the net
-system(&quot;--allow-net&quot;, 1);
-// and set help browser to netscape
-system(&quot;--browser&quot;, &quot;netscape&quot;);
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=0,(x,y),(c,dp);
+  ideal i=x,y;
+  syz(i);
+&rarr; _[1]=[y,-x]
 </pre></td></tr></table>
 </dd>
 </dl>
-</td>
+<p>See
+<a href="sing_201.htm#hres">hres</a>;
+<a href="sing_68.htm#ideal">ideal</a>;
+<a href="sing_223.htm#lres">lres</a>;
+<a href="sing_115.htm#module">module</a>;
+<a href="sing_232.htm#mres">mres</a>;
+<a href="sing_239.htm#nres">nres</a>;
+<a href="sing_263.htm#res">res</a>;
+<a href="sing_273.htm#sres">sres</a>.
+</p></td>
 </tr>
 </table>
 <hr>
@@ -266,14 +123,14 @@ system(&quot;--browser&quot;, &quot;netscape&quot;);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_279.htm#subst" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.124 subst" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_281.htm#syz" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.126 syz" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_279.htm#system" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.125 system" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_281.htm#trace" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.127 trace" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

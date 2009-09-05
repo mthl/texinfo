@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.1.1 basicinvariants</title>
+<title>Singular 2-0-4 Manual: D.5.1.2 classify</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.1.1 basicinvariants">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.1.1 basicinvariants">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.1.2 classify">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.1.2 classify">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="basicinvariants"></a>
+<a name="classify"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_631.htm#classify_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1 classify_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_631.htm#basicinvariants" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.1 basicinvariants" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_633.htm#classify" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.2 classify" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_633.htm#corank" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.3 corank" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_631.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_630.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,31 +84,102 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="basicinvariants-1"></a>
-<h4 class="subsubsection">D.5.1.1 basicinvariants</h4>
-<a name="index-basicinvariants"></a>
-<p>Procedure from library <code>classify.lib</code> (see <a href="sing_631.htm#classify_005flib">classify_lib</a>).
+<a name="classify-1"></a>
+<h4 class="subsubsection">D.5.1.2 classify</h4>
+<a name="index-classify"></a>
+<p>Procedure from library <code>classify.lib</code> (see <a href="sing_630.htm#classify_005flib">classify_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>basicinvariants(f); f = poly
+<dd><p>classify(f); f=poly
 </p>
 </dd>
 <dt><strong>Compute:</strong></dt>
-<dd><p>Compute basic invariants of f: an upper bound d for the
-determinacy, the milnor number mu and the corank c of f
+<dd><p>normal form and singularity type of f with respect to right
+equivalence, as given in the book &quot;Singularities of differentiable
+maps, Volume I&quot; by V.I. Arnold, S.M. Gusein-Zade, A.N. Varchenko
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>intvec: d, mu, c
+<dd><p>normal form of f, of type poly
+</p>
+</dd>
+<dt><strong>Remark:</strong></dt>
+<dd><p>This version of classify is only beta. Please send bugs and
+comments to: &quot;Kai Krueger&quot; &lt;krueger@mathematik.uni-kl.de&gt; <br>
+Be sure to have at least Singular version 1.0.1. Updates can be
+found at: <br>
+URL=http://www.mathematik.uni-kl.de/~krueger/Singular/
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>type init_debug(n); (0 &lt;= n &lt;= 10) in order to get intermediate
+information, higher values of n give more information.
+<br>The proc creates several global objects with names all starting
+with @, hence there should be no name conflicts
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;classify.lib&quot;;
 ring r=0,(x,y,z),ds;
-basicinvariants((x2+3y-2z)^2+xyz-(x-y3+x2*z3)^3);
-&rarr; 5,4,2
+poly f=(x2+3y-2z)^2+xyz-(x-y3+x2*z3)^3;
+classify(f);
+&rarr; About the singularity :
+&rarr;           Milnor number(f)   = 4
+&rarr;           Corank(f)          = 2
+&rarr;           Determinacy       &lt;= 5
+&rarr; Guessing type via Milnorcode:   D[k]=D[4]
+&rarr; 
+&rarr; Computing normal form ...
+&rarr; I have to apply the splitting lemma. This will take some time....:-)
+&rarr;    Arnold step number 4
+&rarr; The singularity
+&rarr;    -x3+3/2xy2+1/2x3y-1/16x2y2+3x2y3
+&rarr; is R-equivalent to D[4].
+&rarr;    Milnor number = 4
+&rarr;    modality      = 0
+&rarr; 2z2+x2y+y3
+init_debug(3);
+&rarr; Debugging level change from  0  to  3
+classify(f);
+&rarr; Computing Basicinvariants of f ...
+&rarr; About the singularity :
+&rarr;           Milnor number(f)   = 4
+&rarr;           Corank(f)          = 2
+&rarr;           Determinacy       &lt;= 5
+&rarr; Hcode: 1,2,1,0,0
+&rarr; Milnor code :  1,1,1
+&rarr; Debug:(2):  entering HKclass3_teil_1 1,1,1
+&rarr; Debug:(2):  finishing HKclass3_teil_1
+&rarr; Guessing type via Milnorcode:   D[k]=D[4]
+&rarr; 
+&rarr; Computing normal form ...
+&rarr; I have to apply the splitting lemma. This will take some time....:-)
+&rarr; Debug:(3):  Split the polynomial below using determinacy:  5
+&rarr; Debug:(3):  9y2-12yz+4z2-x3+6x2y-4x2z+xyz+x4+3x2y3
+&rarr; Debug:(2):  Permutations: 3,2,1
+&rarr; Debug:(2):  Permutations: 3,2,1
+&rarr; Debug:(2):  rank determined with Morse rg= 1
+&rarr; Residual singularity f= -x3+3/2xy2+1/2x3y-1/16x2y2+3x2y3
+&rarr; Step 3
+&rarr;    Arnold step number 4
+&rarr; The singularity
+&rarr;    -x3+3/2xy2+1/2x3y-1/16x2y2+3x2y3
+&rarr; is R-equivalent to D[4].
+&rarr;    Milnor number = 4
+&rarr;    modality      = 0
+&rarr; Debug:(2):  Decode:
+&rarr; Debug:(2):  S_in= D[4]   s_in= D[4]                          
+&rarr; Debug:(2):  Looking for Normalform of  D[k] with (k,r,s) = ( 4 , 0 , 0 )
+&rarr; Debug:(2):  Opening Singalarity-database:  
+&rarr;  DBM: NFlist
+&rarr; Debug:(2):  DBMread( D[k] )= x2y+y^(k-1) .
+&rarr; Debug:(2):  S= f = x2y+y^(k-1);  Tp= x2y+y^(k-1) Key= I_D[k]
+&rarr; Polynom f= x2y+y3   crk= 2   Mu= 4  MlnCd= 1,1,1
+&rarr; Debug:(2):  Info= x2y+y3
+&rarr; Debug:(2):  Normal form NF(f)= 2*x(3)^2+x(1)^2*x(2)+x(2)^3
+&rarr; 2z2+x2y+y3
 </pre></td></tr></table>
 
 </td>
@@ -120,14 +191,14 @@ basicinvariants((x2+3y-2z)^2+xyz-(x-y3+x2*z3)^3);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_631.htm#classify_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1 classify_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_633.htm#classify" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.2 classify" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_631.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_631.htm#basicinvariants" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.1 basicinvariants" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_633.htm#corank" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.3 corank" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_630.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

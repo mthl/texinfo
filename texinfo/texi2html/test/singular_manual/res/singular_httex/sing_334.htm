@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: A.3 Critical points</title>
+<title>Singular 2-0-4 Manual: A.4 Saturation</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: A.3 Critical points">
-<meta name="keywords" content="Singular 2-0-4 Manual: A.3 Critical points">
+<meta name="description" content="Singular 2-0-4 Manual: A.4 Saturation">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.4 Saturation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Critical-points"></a>
+<a name="Saturation"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_333.htm#Procedures-and-LIB" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.2 Procedures and LIB" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_333.htm#Critical-points" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.3 Critical points" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_335.htm#Saturation" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.4 Saturation" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_335.htm#Long-coefficients" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.5 Long coefficients" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,124 +84,98 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Critical-points-1"></a>
-<h2 class="section">A.3 Critical points</h2>
-<a name="index-Critical-points"></a>
+<a name="Saturation-1"></a>
+<h2 class="section">A.4 Saturation</h2>
+<a name="index-Saturation"></a>
 
-<p>The same computation which computes the Milnor, resp. the Tjurina,
-number, but with ordering <code>dp</code> instead of <code>ds</code> (i.e., in
+<p>Since in the example above, the ideal 
  <span 
-class="cmmi-10">K</span>[<span 
-class="cmmi-10">x</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,</span><span 
-class="cmmi-10">&#x2026;</span><span 
-class="cmmi-10">,x</span><sub><span 
-class="cmmi-7">n</span></sub>]  
-instead of
- Loc<sub><span 
-class="cmr-7">(</span><span 
-class="cmmi-7">x</span><span 
-class="cmr-7">)</span></sub><span 
-class="cmmi-10">K</span>[<span 
-class="cmmi-10">x</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,</span><span 
-class="cmmi-10">&#x2026;</span><span 
-class="cmmi-10">,x</span><sub><span 
-class="cmmi-7">n</span></sub>])  
-gives:
-</p><ul>
-<li>
-the number of critical points of <code>f</code> in the affine plane
-(counted with multiplicities)
-</li><li>
-the number of singular points of <code>f</code> on the affine plane curve <code>f</code>=0
-(counted with multiplicities).
-</li></ul>
-
-<p>We start with the ring <code>r1</code> from section <a href="sing_332.htm#Milnor-and-Tjurina">Milnor and Tjurina</a> and its elements.
+class="cmmi-10">j </span>+ (<span 
+class="cmmi-10">f</span>)
+ 
+ has the same <code>vdim</code>
+in the polynomial ring and in the localization at 0 (each 195),
 </p>
-<p>The following will be realized below:
-</p><ul>
-<li>
-reset the protocol option and activate the timer
-</li><li>
-define the ring <code>r2</code> with char 32003, variables <code>x,y,z</code> and monomial
-  ordering <code>dp</code> (= degrevlex) (i.e., the polynomial ring = K[x,y,z]).
-</li><li>
-Note that polynomials, ideals, matrices (of polys), vectors,
-  modules belong to a ring, hence we have to define <code>f</code> and <code>jacob(f)</code>
-  again in <code>r2</code>. Since these objects are local to a ring, we may use
-  the same names.
-  Instead of defining <code>f</code> again we map it from ring <code>r1</code> to <code>r2</code>
-  by using the <code>imap</code> command
-  (<code>imap</code> is a convenient way to map variables
-  from some ring identically to variables with the same name in the
-  basering, even if the ground field is different. Compare with <code>fetch</code>
-  which works for almost identical rings,
-  e.g., if the rings differ only by the ordering or by the names of the
-  variables and which may be used to rename variables).
-  Integers and strings, however, do not belong to any ring. Once
-  defined they are globally known.
-</li><li>
-The result of the computation here (together with the previous one in
- <a href="sing_332.htm#Milnor-and-Tjurina">Milnor and Tjurina</a>) shows that (for <code>t</code>=0)
- dim<sub><span 
-class="cmmi-7">K</span></sub>(Loc<sub><span 
-class="cmr-7">(</span><span 
-class="cmmi-7">x,y,z</span><span 
-class="cmr-7">)</span></sub><span 
-class="cmmi-10">K</span>[<span 
-class="cmmi-10">x,y,z</span>]<span 
-class="cmmi-10">&#x2215;</span>jacob(<span 
-class="cmmi-10">f</span>))  
-= 250 (previously computed) while
+<p> <span 
+class="cmmi-10">f </span>= 0  
+ is smooth outside 0.
+Hence 
+ <span 
+class="cmmi-10">j </span>+ (<span 
+class="cmmi-10">f</span>)  
+ contains some power of the maximal ideal 
+ <span 
+class="cmmi-10">m </span> 
+. We shall
+check this in a different manner:
+For any two ideals 
+ <span 
+class="cmmi-10">i,j </span> 
+ in the basering 
+ <span 
+class="cmmi-10">R </span> 
+ let
 
-dim<sub><span 
-class="cmmi-7">K</span></sub>(<span 
-class="cmmi-10">K</span>[<span 
-class="cmmi-10">x,y,z</span>]<span 
-class="cmmi-10">&#x2215;</span>jacob(<span 
-class="cmmi-10">f</span>))  
-= 536. Hence <code>f</code> has 286 critical points,
-  counted with multiplicity, outside the origin.
-  Moreover, since
- dim<sub><span 
-class="cmmi-7">K</span></sub>(Loc<sub><span 
-class="cmr-7">(</span><span 
-class="cmmi-7">x,y,z</span><span 
-class="cmr-7">)</span></sub><span 
-class="cmmi-10">K</span>[<span 
-class="cmmi-10">x,y,z</span>]<span 
-class="cmmi-10">&#x2215;</span>(jacob(<span 
-class="cmmi-10">f</span>) + (<span 
-class="cmmi-10">f</span>)))  
-= 195 =
- dim<sub><span 
-class="cmmi-7">K</span></sub>(<span 
-class="cmmi-10">K</span>[<span 
-class="cmmi-10">x,y,z</span>]<span 
-class="cmmi-10">&#x2215;</span>(jacob(<span 
-class="cmmi-10">f</span>) + (<span 
-class="cmmi-10">f</span>))),  
-the affine surface <code>f</code>=0 is smooth outside the origin.
-</li></ul>
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1 = 32003,(x,y,z),ds;
-  int a,b,c,t=11,5,3,0;
-  poly f = x^a+y^b+z^(3*c)+x^(c+2)*y^(c-1)+x^(c-1)*y^(c-1)*z3+
-           x^(c-2)*y^c*(y^2+t*x)^2;
-  option(noprot);
-  timer=1;
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex18x.png" alt="                           n        &#x221E;&#x22C3;     n
+sat(i,j) = {x &#x2208; R | &#x2203; n s.t. x &#x22C5;(j ) &#x2286; i} = i : j
+                                    n=1  " class="math-display" ></center>  
+<br>denote the saturation of 
+ <span 
+class="cmmi-10">i </span> 
+ with respect to 
+ <span 
+class="cmmi-10">j </span> 
+. This defines,
+geometrically, the closure of the complement of V(
+ <span 
+class="cmmi-10">j </span> 
+) in V(
+ <span 
+class="cmmi-10">i </span> 
+)
+(V(
+ <span 
+class="cmmi-10">i </span> 
+) denotes the variety defined by 
+ <span 
+class="cmmi-10">i </span> 
+).
+In our case, 
+ <span 
+class="cmmi-10">sat</span>(<span 
+class="cmmi-10">j </span>+ (<span 
+class="cmmi-10">f</span>)<span 
+class="cmmi-10">,m</span>)  
+ must be the whole ring, hence
+generated by 1.
+</p>
+<p>The saturation is computed by the procedure <code>sat</code> in
+<code>elim.lib</code> by computing iterated ideal quotients with the maximal
+ideal.  <code>sat</code> returns a list of two elements: the saturated ideal
+and the number of iterations.  (Note that <code>maxideal(n)</code> denotes the
+n-th power of the maximal ideal).
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;elim.lib&quot;;         // loading library elim.lib
+  // you should get the information that elim.lib has been loaded
+  // together with some other libraries which are needed by it
+  option(noprot);         // no protocol
   ring r2 = 32003,(x,y,z),dp;
-  poly f=imap(r1,f);
+  poly f = x^11+y^5+z^(3*3)+x^(3+2)*y^(3-1)+x^(3-1)*y^(3-1)*z3+
+    x^(3-2)*y^3*(y^2)^2;
   ideal j=jacob(f);
-  vdim(std(j));
-&rarr; 536
-  vdim(std(j+f));
-&rarr; 195
-  timer=0;  // reset timer
+  sat(j+f,maxideal(1));
+&rarr; [1]:
+&rarr;    _[1]=1
+&rarr; [2]:
+&rarr;    17
+  // list the variables defined so far:
+  listvar();
+&rarr; // r2                   [0]  *ring
+&rarr; //      j                    [0]  ideal, 3 generator(s)
+&rarr; //      f                    [0]  poly
+&rarr; // LIB                  [0]  string standard.lib,elim.li..., 83 char(s)
 </pre></td></tr></table>
 
 </td>
@@ -213,14 +187,14 @@ the affine surface <code>f</code>=0 is smooth outside the origin.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_333.htm#Procedures-and-LIB" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.2 Procedures and LIB" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_335.htm#Saturation" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.4 Saturation" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_333.htm#Critical-points" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.3 Critical points" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_335.htm#Long-coefficients" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.5 Long coefficients" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

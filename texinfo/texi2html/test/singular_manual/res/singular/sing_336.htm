@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: A.5 Long coefficients</title>
+<title>Singular 2-0-4 Manual: A.6 Parameters</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: A.5 Long coefficients">
-<meta name="keywords" content="Singular 2-0-4 Manual: A.5 Long coefficients">
+<meta name="description" content="Singular 2-0-4 Manual: A.6 Parameters">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.6 Parameters">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Long-coefficients"></a>
+<a name="Parameters"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_335.htm#Saturation" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.4 Saturation" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_335.htm#Long-coefficients" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.5 Long coefficients" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_337.htm#Parameters" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.6 Parameters" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_337.htm#T1-and-T2" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.7 T1 and T2" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,99 +82,66 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Long-coefficients-1"></a>
-<h2 class="section">A.5 Long coefficients</h2>
-<a name="index-Long-coefficients"></a>
+<a name="Parameters-1"></a>
+<h2 class="section">A.6 Parameters</h2>
+<a name="index-Parameters"></a>
 
-<p>The following innocent example produces in its standard basis
-extremely long coefficients in char 0 for the lexicographical
-ordering.
-But a very small deformation does not (the undeformed
-example is degenerate with respect to the Newton boundary).
-This example demonstrates that it might be wise, for complicated
-examples, to do the calculation first in positive char (e.g., 32003).
-It has been shown, that in complicated examples, more than 95 percent of
-the time needed for a standard basis computation is used in the
-computation of the coefficients (in char 0).
-The representation of long integers with real is demonstrated.
+<p>Let us deform the above ideal now by introducing a parameter t
+and compute over the ground field Q(t).
+We compute the dimension at the generic point,
+i.e.,
+<!-- MATH
+ $dim_{Q(t)}Q(t)[x,y]/j$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="128" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_165.png"
+ ALT="$dim_{Q(t)}Q(t)[x,y]/j$"></SPAN>.
+(This gives the
+same result as for the deformed ideal above. Hence, the above small
+deformation was &quot;generic&quot;.)
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">timer = 1;                              // activate the timer
-option(prot);
-ring R0 = 0,(x,y),lp;
-poly f = x5+y11+xy9+x3y9;
-ideal i = jacob(f);
-ideal i1 = i,i[1]*i[2];                 // undeformed ideal
-ideal i2 = i,i[1]*i[2]+1/1000000*x5y8;  // deformation of i1
-i1; i2;
-&rarr; i1[1]=5x4+3x2y9+y9
-&rarr; i1[2]=9x3y8+9xy8+11y10
-&rarr; i1[3]=45x7y8+27x5y17+45x5y8+55x4y10+36x3y17+33x2y19+9xy17+11y19
-&rarr; i2[1]=5x4+3x2y9+y9
-&rarr; i2[2]=9x3y8+9xy8+11y10
-&rarr; i2[3]=45x7y8+27x5y17+45000001/1000000x5y8+55x4y10+36x3y17+33x2y19+9xy17+1\
-   1y19
-ideal j = std(i1);
-&rarr; [65535:1]11(2)ss19s20s21s22(3)-23-s27s28s29s30s31s32s33s34s35s36s37s38s39\
-   s40s70-
-&rarr; product criterion:1 chain criterion:30
-j;
-&rarr; j[1]=264627y39+26244y35-1323135y30-131220y26+1715175y21+164025y17+1830125\
-   y16
-&rarr; j[2]=12103947791971846719838321886393392913750065060875xy8-28639152114168\
-   3198701331939250003266767738632875y38-31954402206909026926764622877573565\
-   78554430672591y37+57436621420822663849721381265738895282846320y36+1657764\
-   214948799497573918210031067353932439400y35+213018481589308191195677223898\
-   98682697001205500y34+1822194158663066565585991976961565719648069806148y33\
-   -4701709279892816135156972313196394005220175y32-1351872269688192267600786\
-   97600850686824231975y31-3873063305929810816961516976025038053001141375y30\
-   +1325886675843874047990382005421144061861290080000y29+1597720195476063141\
-   9467945895542406089526966887310y28-26270181336309092660633348002625330426\
-   7126525y27-7586082690893335269027136248944859544727953125y26-867853074106\
-   49464602285843351672148965395945625y25-5545808143273594102173252331151835\
-   700278863924745y24+19075563013460437364679153779038394895638325y23+548562\
-   322715501761058348996776922561074021125y22+157465452677648386073957464715\
-   68100780933983125y21-1414279129721176222978654235817359505555191156250y20\
-   -20711190069445893615213399650035715378169943423125y19+272942733337472665\
-   573418092977905322984009750y18+789065115845334505801847294677413365720955\
-   3750y17+63554897038491686787729656061044724651089803125y16-22099251729923\
-   906699732244761028266074350255961625y14+147937139679655904353579489722585\
-   91339027857296625y10
-&rarr; j[3]=5x4+3x2y9+y9
-// Compute average coefficient length (=51) by
-//   - converting j[2] to a string in order to compute the number
-//   of characters
-//   - divide this by the number of monomials:
-size(string(j[2]))/size(j[2]);
-&rarr; 51
-vdim(j);
-&rarr; 63
-// For a better representation normalize the long coefficients
-// of the polynomial j[2] and map it  to real:
-poly p=(1/12103947791971846719838321886393392913750065060875)*j[2];
-ring R1=real,(x,y),lp;
-short=0; // force the long output format
-poly p=imap(R0,p);
-p;
-&rarr; x*y^8-2.366e-02*y^38-2.640e-01*y^37+4.745e-06*y^36+1.370e-04*y^35+1.760e-\
-   03*y^34+1.505e-01*y^33+3.884e-07*y^32-1.117e-05*y^31-3.200e-04*y^30+1.095\
-   e-01*y^29+1.320e+00*y^28-2.170e-05*y^27-6.267e-04*y^26-7.170e-03*y^25-4.5\
-   82e-01*y^24+1.576e-06*y^23+4.532e-05*y^22+1.301e-03*y^21-1.168e-01*y^20-1\
-   .711e+00*y^19+2.255e-05*y^18+6.519e-04*y^17+5.251e-03*y^16-1.826e+00*y^14\
-   +1.222e+00*y^10
-// Compute a standard basis for the deformed ideal:
-setring R0;
-j = std(i2);
-&rarr; [65535:1]11(2)ss19s20s21s22(3)-s23(2)s27.28.s29(3)s30.s31ss32sss33sss34ss\
-   35--38-
-&rarr; product criterion:11 chain criterion:21
-j;
-&rarr; j[1]=y16
-&rarr; j[2]=65610xy8+17393508y27+7223337y23+545292y19+6442040y18-119790y14+80190\
-   y10
-&rarr; j[3]=5x4+3x2y9+y9
-vdim(j);
+<p>For almost all
+<SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_166.png"
+ ALT="$a \in Q$"></SPAN>
+this is the same as
+<!-- MATH
+ $dim_Q Q[x,y]/j_0$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="103" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_167.png"
+ ALT="$dim_Q Q[x,y]/j_0$"></SPAN>,
+where
+<SPAN CLASS="MATH"><IMG
+ WIDTH="68" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_168.png"
+ ALT="$j_0=j\vert _{t=a}$"></SPAN>.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring Rt = (0,t),(x,y),lp;
+  Rt;
+&rarr; //   characteristic : 0
+&rarr; //   1 parameter    : t 
+&rarr; //   minpoly        : 0
+&rarr; //   number of vars : 2
+&rarr; //        block   1 : ordering lp
+&rarr; //                  : names    x y 
+&rarr; //        block   2 : ordering C
+  poly f = x5+y11+xy9+x3y9;
+  ideal i = jacob(f);
+  ideal j = i,i[1]*i[2]+t*x5y8;  // deformed ideal, parameter t
+  vdim(std(j));
+&rarr; 40
+  ring R=0,(x,y),lp;
+  ideal i=imap(Rt,i);
+  int a=random(1,30000);
+  ideal j=i,i[1]*i[2]+a*x5y8;  // deformed ideal, fixed integer a
+  vdim(std(j));
 &rarr; 40
 </pre></td></tr></table>
+
 </td>
 </tr>
 </table>
@@ -184,14 +151,14 @@ vdim(j);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_335.htm#Saturation" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.4 Saturation" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_337.htm#Parameters" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.6 Parameters" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_335.htm#Long-coefficients" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.5 Long coefficients" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_337.htm#T1-and-T2" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.7 T1 and T2" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

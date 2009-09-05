@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 2.3.1 First steps</title>
+<title>Singular 2-0-4 Manual: 2.3.2 Rings and standard bases</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 2.3.1 First steps">
-<meta name="keywords" content="Singular 2-0-4 Manual: 2.3.1 First steps">
+<meta name="description" content="Singular 2-0-4 Manual: 2.3.2 Rings and standard bases">
+<meta name="keywords" content="Singular 2-0-4 Manual: 2.3.2 Rings and standard bases">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="First-steps"></a>
+<a name="Rings-and-standard-bases"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_5.htm#Getting-started" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3 Getting started" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_5.htm#First-steps" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3.1 First steps" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_7.htm#Rings-and-standard-bases" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 2.3.2 Rings and standard bases" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_7.htm#Procedures-and-libraries" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 2.3.3 Procedures and libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_2.htm#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2 Introduction" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_1.htm#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2 Introduction" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_5.htm#Getting-started" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 2.3 Getting started" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_4.htm#Getting-started" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 2.3 Getting started" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,126 +84,238 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="First-steps-1"></a>
-<h3 class="subsection">2.3.1 First steps</h3>
-<a name="index-First-steps"></a>
+<a name="Rings-and-standard-bases-1"></a>
+<h3 class="subsection">2.3.2 Rings and standard bases</h3>
+<a name="index-Rings-and-standard-bases"></a>
 
-<p>Once <small>SINGULAR</small> is started, it awaits an input after the prompt
-<code>&gt;</code>.  Every statement has to be terminated by <code>;</code> .
+<p>To calculate with objects as ideals, matrices, modules, and polynomial
+vectors, a ring has to be defined first.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">37+5;
-&rarr; 42
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0,(x,y,z),dp;
 </pre></td></tr></table>
 
-<p>All objects have a type, e.g., integer variables are defined by
-the word <code>int</code>. An assignment is done by the symbol <code>=</code> .
+<p>The definition of a ring consists of three parts: the first part
+determines the ground field, the second part determines the names of the
+ring variables, and the third part determines the monomial ordering to
+be used. So the example above declares a polynomial ring called <code>r</code>
+with a ground field of characteristic 
+ 0  
+ (i.e., the rational
+numbers) and ring variables called <code>x</code>, <code>y</code>, and <code>z</code>. The
+<code>dp</code> at the end means that the degree reverse lexicographical
+ordering should be used.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">int k = 2;
+<p>Other ring declarations:
+</p>
+<dl compact="compact">
+<dt><code>ring r1=32003,(x,y,z),dp;</code></dt>
+<dd><p>characteristic 32003, variables <code>x</code>, <code>y</code>, and <code>z</code> and
+ordering <code>dp</code>.
+</p>
+</dd>
+<dt><code>ring r2=32003,(a,b,c,d),lp;</code></dt>
+<dd><p>characteristic 32003, variable names <code>a</code>, <code>b</code>, <code>c</code>,
+<code>d</code> and lexicographical ordering.
+</p>
+</dd>
+<dt><code>ring r3=7,(x(1..10)),ds;</code></dt>
+<dd><p>characteristic 7, variable names <code>x(1)</code>,&hellip;,<code>x(10)</code>, negative
+degree reverse lexicographical ordering (<code>ds</code>).
+</p>
+</dd>
+<dt><code>ring r4=(0,a),(mu,nu),lp;</code></dt>
+<dd><p>transcendental extension of 
+ <span 
+class="cmmi-10">Q </span> 
+ by 
+ <span 
+class="cmmi-10">a </span> 
+, variable names
+<code>mu</code> and <code>nu</code>.
+</p>
+</dd>
+<dt><code>ring r5=real,(a,b),lp;</code></dt>
+<dd><p>floating point numbers (single machine precision),
+variable names <code>a</code> and <code>b</code>.
+</p>
+</dd>
+<dt><code>ring r6=(real,50),(a,b),lp;</code></dt>
+<dd><p>floating point numbers with extended precision of 50 digits,
+variable names <code>a</code> and <code>b</code>.
+</p>
+</dd>
+<dt><code>ring r7=(complex,50,i),(a,b),lp;</code></dt>
+<dd><p>complex floating point numbers with extended precision of 50 digits
+and imaginary unit <code>i</code>,
+variable names <code>a</code> and <code>b</code>.
+</p></dd>
+</dl>
+
+<p>Typing the name of a ring prints its definition. The example below
+shows that the default ring in <small>SINGULAR</small> is 
+ <span 
+class="cmmi-10">Z&#x2215;</span>32003[<span 
+class="cmmi-10">x,y,z</span>]  
+</p>
+<p>with degree reverse lexicographical ordering:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r8;
+r8;
+&rarr; //   characteristic : 32003
+&rarr; //   number of vars : 3
+&rarr; //        block   1 : ordering dp
+&rarr; //                  : names    x y z 
+&rarr; //        block   2 : ordering C
 </pre></td></tr></table>
 
-<p>Test for equality resp. inequality is done using <code>==</code>
-resp. <code>!=</code> (or <code>&lt;&gt;</code>), where <code>0</code> represents the boolean
-value FALSE, any other value represents TRUE.
+<p>Defining a ring makes this ring the current active basering, so each
+ring definition above switches to a new basering. The concept of rings
+in <small>SINGULAR</small> is discussed in detail in
+<a href="sing_27.htm#Rings-and-orderings">Rings and orderings</a>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">k == 2;
-&rarr; 1
-k != 2;
+<p>The basering is now <code>r8</code>. Since we want to calculate in the ring
+<code>r</code>, which we defined first, we have to switch back to it. This can
+be done using the function <code>setring</code>:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">setring r;
+</pre></td></tr></table>
+
+<p>Once a ring is active, we can define polynomials. A monomial, say
+ <span 
+class="cmmi-10">x</span><sup><span 
+class="cmr-7">3</span></sup>  
+may be entered in two ways: either using the power operator <code>^</code>,
+saying <code>x^3</code>, or in short-hand notation without operator, saying
+<code>x3</code>. Note that the short-hand notation is forbidden if the name
+of the ring variable consists of more than one character. Note, that
+<small>SINGULAR</small> always expands brackets and automatically sorts the terms
+with respect to the monomial ordering of the basering.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">poly f =  x3+y3+(x-y)*x2y2+z2;
+f;
+&rarr; x3y2-x2y3+x3+y3+z2
+</pre></td></tr></table>
+
+<p>The command <code>size</code> determines in general the number of &rdquo;single
+entries&ldquo; in an object. In particular, for polynomials, <code>size</code>
+determines the number of monomials.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">size(f);
+&rarr; 5
+</pre></td></tr></table>
+
+<p>A natural question is to ask if a point, e.g., <code>(x,y,z)=(1,2,0)</code>, lies
+on the variety defined by the polynomials <code>f</code> and <code>g</code>. For
+this we define an ideal generated by both polynomials, substitute the
+coordinates of the point for the ring variables, and check if the result
+is zero:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">poly g =  f^2 *(2x-y);
+ideal I = f,g;
+ideal J = subst(I,var(1),1);
+J = subst(J,var(2),2);
+J = subst(J,var(3),0);
+J;
+&rarr; J[1]=5
+&rarr; J[2]=0
+</pre></td></tr></table>
+
+<p>Since the result is not zero, the point <code>(1,2,0)</code> does
+not lie on the variety <code>V(f,g)</code>.
+</p>
+<p>Another question is to decide whether some function vanishes on a
+variety, or in algebraic terms if a polynomial is contained in a given
+ideal. For this we calculate a standard basis using the command
+<code>groebner</code> and afterwards reduce the polynomial with respect to
+this standard basis.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ideal sI = groebner(f);
+reduce(g,sI);
 &rarr; 0
 </pre></td></tr></table>
 
-<p>The value of an object is displayed by simply typing its name.
+<p>As the result is <code>0</code> the polynomial <code>g</code> belongs to the
+ideal defined by <code>f</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">k;
-&rarr; 2
+<p>The function <code>groebner</code>, like many other functions in
+<small>SINGULAR</small>, prints a protocol during calculations, if desired. The
+command <code>option(prot);</code> enables protocolling whereas
+<code>option(noprot);</code> turns it off.
+<a href="sing_243.htm#option">option</a>, explains the meaning
+of the different symbols printed during calculations.
+</p>
+<p>The command <code>kbase</code> calculates a basis of the polynomial ring
+modulo an ideal, if the quotient ring is finite dimensional.
+As an example we calculate the Milnor number of a
+hypersurface singularity in the global and local case. This is the
+vector space dimension of the polynomial ring modulo the Jacobian ideal
+in the global case resp. of the power series ring modulo the Jacobian
+ideal in the local case. See <a href="sing_333.htm#Critical-points">Critical points</a>, for a detailed
+explanation.
+</p>
+<p>The Jacobian ideal is obtained with the command <code>jacob</code>.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ideal J = jacob(f);
+&rarr; // ** redefining J **
+J;
+&rarr; J[1]=3x2y2-2xy3+3x2
+&rarr; J[2]=2x3y-3x2y2+3y2
+&rarr; J[3]=2z
 </pre></td></tr></table>
 
-<p>On the other hand the output is suppressed if an assignment
-is made.
+<p><small>SINGULAR</small> prints the line <code>// ** redefining J
+**</code>. This indicates that we have previously defined a variable with name
+<code>J</code> of type ideal (see above).
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">int j;
-j = k+1;
+<p>To obtain a representing set of the quotient vector space we first
+calculate a standard basis, then we apply the function <code>kbase</code> to
+this standard basis.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">J = groebner(J);
+ideal K = kbase(J);
+K;
+&rarr; K[1]=y4
+&rarr; K[2]=xy3
+&rarr; K[3]=y3
+&rarr; K[4]=xy2
+&rarr; K[5]=y2
+&rarr; K[6]=x2y
+&rarr; K[7]=xy
+&rarr; K[8]=y
+&rarr; K[9]=x3
+&rarr; K[10]=x2
+&rarr; K[11]=x
+&rarr; K[12]=1
 </pre></td></tr></table>
 
-<p>The last displayed (!) result is always available
-with the special symbol <code>_</code> .
+<p>Then
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">2*_;   // the value from k displayed above
-&rarr; 4
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">size(K);
+&rarr; 12
 </pre></td></tr></table>
 
-<p>Text starting with <code>//</code> denotes a comment and is ignored in
-calculations, as seen in the previous example. Furthermore <small>SINGULAR</small>
-maintains a history of the previous lines of input, which may be accessed by
-<code>CTRL-P</code> (previous) and <code>CTRL-N</code> (next) or the arrows on the
-keyboard. Note that the history is not available on Macintosh systems.
+<p>gives the desired vector space dimension
+ <span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x,y,z</span>]<span 
+class="cmmi-10">&#x2215;</span>jacob(<span 
+class="cmmi-10">f</span>).  
+As in <small>SINGULAR</small> the functions may take the input directly from
+earlier calculations, the whole sequence of commands may be written
+in one single statement.
 </p>
-<p>The whole manual is available online by typing the command <code>help;</code> .
-Explanation on single topics, e.g., on <code>intmat</code>, which defines a
-matrix of integers, are obtained by
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">help intmat;
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">size(kbase(groebner(jacob(f))));
+&rarr; 12
 </pre></td></tr></table>
 
-<p>This shows the text of <a href="sing_81.htm#intmat">intmat</a>, in the printed manual.
+<p>When we are not interested in a basis of the quotient vector space, but
+only in the resulting dimension we may even use the command <code>vdim</code>
+and write:
 </p>
-<p>Next, we define a
- 3 <span 
-class="cmsy-10">&#x00D7; </span>3  
- matrix of integers and initialize it with some values, row by row
-from left to right:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">intmat m[3][3] = 1,2,3,4,5,6,7,8,9;
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">vdim(groebner(jacob(f)));
+&rarr; 12
 </pre></td></tr></table>
 
-<p>A single matrix entry may be selected and changed using
-square brackets <code>[</code> and <code>]</code>.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">m[1,2]=0;
-m;
-&rarr; 1,0,3,
-&rarr; 4,5,6,
-&rarr; 7,8,9
-</pre></td></tr></table>
-
-<p>To calculate the trace of this matrix, we use a <code>for</code> loop. The
-curly brackets <code>{</code> and <code>}</code> denote the beginning resp.
-end of a block. If you define a variable without giving an initial
-value, as the variable <code>tr</code> in the example below, <small>SINGULAR</small>
-assigns a default value for the specific type. In this case, the default
-value for integers is <code>0</code>. Note that the integer variable <code>j</code>
-has already been defined above.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">int tr;
-for ( j=1; j &lt;= 3; j++ ) { tr=tr + m[j,j]; }
-tr;
-&rarr; 15
-</pre></td></tr></table>
-
-<p>Variables of type string can also be defined and used without a ring
-being active. Strings are delimited by <code>&quot;</code> (double quotes). They
-may be used to comment the output of a computation or to give it a nice
-format. If a string contains valid <small>SINGULAR</small> commands, it can be
-executed using the function <code>execute</code>. The result is the same as if
-the commands would have been written on the command line. This feature
-is especially useful to define new rings inside procedures.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">&quot;example for strings:&quot;;
-&rarr; example for strings:
-string s=&quot;The element of m &quot;;
-s = s + &quot;at position [2,3] is:&quot;;  // concatenation of strings by +
-s , m[2,3] , &quot;.&quot;;
-&rarr; The element of m at position [2,3] is: 6 .
-s=&quot;m[2,1]=0; m;&quot;;
-execute(s);
-&rarr; 1,0,3,
-&rarr; 0,5,6,
-&rarr; 7,8,9
-</pre></td></tr></table>
-
-<p>This example shows that expressions can be separated by <code>,</code> (comma)
-giving a list of expressions. <small>SINGULAR</small> evaluates each expression in
-this list and prints all results separated by spaces.
-</p>
 </td>
 </tr>
 </table>
@@ -213,14 +325,14 @@ this list and prints all results separated by spaces.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_5.htm#Getting-started" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3 Getting started" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_7.htm#Rings-and-standard-bases" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 2.3.2 Rings and standard bases" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_2.htm#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2 Introduction" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_5.htm#Getting-started" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 2.3 Getting started" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_5.htm#First-steps" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3.1 First steps" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_7.htm#Procedures-and-libraries" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 2.3.3 Procedures and libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_1.htm#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2 Introduction" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_4.htm#Getting-started" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 2.3 Getting started" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

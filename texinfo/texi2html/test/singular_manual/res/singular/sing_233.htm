@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.78 mres</title>
+<title>Singular 2-0-4 Manual: 5.1.79 mstd</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.78 mres">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.78 mres">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.79 mstd">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.79 mstd">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="mres"></a>
+<a name="mstd"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_232.htm#mpresmat" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.77 mpresmat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_232.htm#mres" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.78 mres" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_234.htm#mstd" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.79 mstd" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_234.htm#mult" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.80 mult" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,108 +82,61 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="mres-1"></a>
-<h3 class="subsection">5.1.78 mres</h3>
-<a name="index-mres"></a>
+<a name="mstd-1"></a>
+<h3 class="subsection">5.1.79 mstd</h3>
+<a name="index-mstd"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>mres (</code> ideal_expression<code>,</code> int_expression <code>)</code>
-<br><code>mres (</code> module_expression<code>,</code> int_expression <code>)</code>
+<dd><p><code>mstd (</code> ideal_expression <code>)</code>
+<br><code>mstd (</code> module_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>resolution
+<dd><p>list
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>computes a minimal free resolution of an ideal or module M with the
-standard basis method. More precisely, let A=<code>matrix</code>(M), then <code>mres</code>
-computes a free resolution of
-<!-- MATH
- $coker(A)=F_0/M$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="121" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_129.png"
- ALT="$coker(A)=F_0/M$"></SPAN>
-<BR><P></P>
-<DIV ALIGN="CENTER" CLASS="mathdisplay">
-<!-- MATH
- \begin{displaymath}
-...\longrightarrow F_2 \buildrel{A_2}\over{\longrightarrow} F_1
-\buildrel{A_1}\over{\longrightarrow} F_0\longrightarrow F_0/M
-\longrightarrow 0,
-\end{displaymath}
- -->
-
-<IMG
- WIDTH="272" HEIGHT="26" BORDER="0"
- SRC="sing_130.png"
- ALT="\begin{displaymath}...\longrightarrow F_2 \buildrel{A_2}\over{\longrightarrow} F...
-...er{\longrightarrow} F_0\longrightarrow F_0/M
-\longrightarrow 0,\end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P>
-where the columns of the matrix
-<SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_131.png"
- ALT="$A_1$"></SPAN>
-are a minimal set of generators
-of M if the basering is local or if M is homogeneous.
-If the int expression k is not zero then the computation stops after k steps
-and returns a list of modules
-<!-- MATH
- $M_i={\tt module}(A_i)$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="117" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_103.png"
- ALT="$M_i={\tt module} (A_i)$"></SPAN>, i=1...k.
-<br><code>mres(M,0)</code> returns a resolution consisting of at most n+2 modules,
-where n is the number of variables of the basering.
-Let <code>list L=mres(M,0);</code>
- then <code>L[1]</code> consists of a minimal set of generators of the input, <code>L[2]</code>
-consists of a minimal set of generators for the first syzygy module of
-<code>L[1]</code>, etc., until <code>L[p+1]</code>, such that
-<!-- MATH
- ${\tt L[i]}\neq 0$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="55" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_132.png"
- ALT="${\tt L[i]}\neq 0$"></SPAN> for <SPAN CLASS="MATH"><IMG
- WIDTH="36" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_133.png"
- ALT="$i \le p$"></SPAN>,
- but <code>L[p+1]</code>, the first syzygy module of <code>L[p]</code>,
-is 0 (if the basering is not a qring).
-</p></dd>
-<dt><code><strong>Note:</strong></code></dt>
-<dd><p>Accessing single elements of a resolution may require that some partial
-computations have to be finished and may therefore take some time.
+<dd><p>returns a list whose first entry is a standard basis for the ideal, resp.
+module. If the monomial ordering is global, then the second entry is both
+a generating set for the
+ideal, resp. module, and a subset of the standard basis.
+If, additionally, the input is homogeneous then the second entry is a
+minimal generating set for the ideal, resp. module.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=31991,(t,x,y,z,w),ls;
-  ideal M=t2x2+tx2y+x2yz,t2y2+ty2z+y2zw,
-          t2z2+tz2w+xz2w,t2w2+txw2+xyw2;
-  resolution L=mres(M,0);
-  L;
-&rarr;  1      4      15      18      7      1      
-&rarr; r &lt;--  r &lt;--  r &lt;--   r &lt;--   r &lt;--  r
-&rarr; 
-&rarr; 0      1      2       3       4      5      
-&rarr; 
-  // projective dimension of M is 5
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z,t),dp;
+  poly f=x3+y4+z6+xyz;
+  ideal j=jacob(f),f;
+  j=homog(j,t);j;
+&rarr; j[1]=3x2+yz
+&rarr; j[2]=4y3+xzt
+&rarr; j[3]=6z5+xyt3
+&rarr; j[4]=0
+&rarr; j[5]=z6+y4t2+x3t3+xyzt3
+  mstd(j);
+&rarr; [1]:
+&rarr;    _[1]=3x2+yz
+&rarr;    _[2]=4y3+xzt
+&rarr;    _[3]=6z5+xyt3
+&rarr;    _[4]=xyzt3
+&rarr;    _[5]=y2z2t3
+&rarr;    _[6]=yz3t4
+&rarr;    _[7]=xz3t4
+&rarr;    _[8]=yz2t7
+&rarr;    _[9]=xz2t7
+&rarr;    _[10]=y2zt7
+&rarr;    _[11]=xy2t7
+&rarr; [2]:
+&rarr;    _[1]=3x2+yz
+&rarr;    _[2]=4y3+xzt
+&rarr;    _[3]=6z5+xyt3
+&rarr;    _[4]=xyzt3
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_202.htm#hres">hres</a>;
-<a href="sing_69.htm#ideal">ideal</a>;
-<a href="sing_224.htm#lres">lres</a>;
-<a href="sing_116.htm#module">module</a>;
-<a href="sing_264.htm#res">res</a>;
-<a href="sing_274.htm#sres">sres</a>.
+<a href="sing_68.htm#ideal">ideal</a>;
+<a href="sing_226.htm#minbase">minbase</a>;
+<a href="sing_115.htm#module">module</a>;
+<a href="sing_275.htm#std">std</a>.
 </p></td>
 </tr>
 </table>
@@ -193,14 +146,14 @@ computations have to be finished and may therefore take some time.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_232.htm#mpresmat" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.77 mpresmat" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_234.htm#mstd" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.79 mstd" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_232.htm#mres" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.78 mres" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_234.htm#mult" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.80 mult" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.3.2 General syntax of a ring declaration</title>
+<title>Singular 2-0-4 Manual: 3.3.3 Term orderings</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.3.2 General syntax of a ring declaration">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.3.2 General syntax of a ring declaration">
+<meta name="description" content="Singular 2-0-4 Manual: 3.3.3 Term orderings">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.3.3 Term orderings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="General-syntax-of-a-ring-declaration"></a>
+<a name="Term-orderings"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_29.htm#Examples-of-ring-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3.1 Examples of ring declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_29.htm#General-syntax-of-a-ring-declaration" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3.2 General syntax of a ring declaration" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_31.htm#Term-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3.3 Term orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_31.htm#Implemented-algorithms" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.4 Implemented algorithms" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_28.htm#Rings-and-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.3 Rings and orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_27.htm#Rings-and-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.3 Rings and orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,160 +84,175 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="General-syntax-of-a-ring-declaration-1"></a>
-<h3 class="subsection">3.3.2 General syntax of a ring declaration</h3>
-<a name="index-General-syntax-of-a-ring-declaration"></a>
+<a name="Term-orderings-1"></a>
+<h3 class="subsection">3.3.3 Term orderings</h3>
+<a name="index-Monomial-orderings_002c-Term-orderings"></a>
 
-<a name="Rings"></a>
-<h4 class="subsubheading">Rings</h4>
-<dl compact="compact">
-<dt><strong>Syntax:</strong></dt>
-<dd><p><code>ring</code> name <code>=</code> <code>(</code>coefficient_field<code>),</code>
-  <code>(</code> names_of_ring_variables <code>),</code>
-  <code>(</code> ordering <code>);</code>
-</p></dd>
-<dt><strong>Default:</strong></dt>
-<dd><p><code>32003,(x,y,z),(dp,C);</code>
-</p></dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>declares a ring and sets it as the current basering.
-</p></dd>
-</dl>
+<p>Any polynomial (resp. vector) in <small>SINGULAR</small> is ordered w.r.t. a
+term ordering (or, monomial ordering), which has to be specified
+together with the declaration of a ring. <small>SINGULAR</small> stores and
+displays a polynomial (resp. vector) w.r.t. this ordering, i.e., the
+greatest monomial (also called the leading monomial) is the first one
+appearing in the output polynomial, and the smallest monomial is the last one.
+</p>
+<p><strong>Remark:</strong> The novice user should generally use the ordering
+<code>dp</code> for computations in the polynomial ring
 
-<p>The coefficient_field is given by one of the following:
+<span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>],  
+resp.  <code>ds</code> for computations in the localization
+ Loc<sub><span 
+class="cmr-7">(</span><span 
+class="cmmi-7">x</span><span 
+class="cmr-7">)</span></sub><span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>]).  
+For more details, see <a href="sing_359.htm#Polynomial-data">Polynomial data</a>.
+</p>
+<p>In a ring declaration, <small>SINGULAR</small> offers the following orderings:
 </p><ol>
-<li>
-a non-negative int_expression less or equal 32003.
-<br> The int_expression should either be 0, specifying the field of
-rational numbers Q, or a prime number p, specifying the finite field
-with p elements.  If it is not a prime number, int_expression is
-converted to the next lower prime number.
-
-</li><li>
-an expression_list of an int_expression and one or more names.
-<br> The int_expression specifies the characteristic of the coefficient
-field as described above. The names are used as parameters in
-transcendental or algebraic extensions of the coefficient
-field. Algebraic extensions are implemented for one parameter only. In
-this case, a minimal polynomial has to be defined by assignment to
-<code>minpoly</code>. See <a href="sing_310.htm#minpoly">minpoly</a>.
-
-</li><li>
-an expression_list of an int_expression and a name.
-<br> The int_expression has to be a prime number p to the power of a
-positive integer n. This defines the Galois field
- GF(<span 
-class="cmmi-10">p</span><sup><span 
-class="cmmi-7">n</span></sup>) with <span 
-class="cmmi-10">p</span><sup><span 
-class="cmmi-7">n</span></sup> elements, where <span 
-class="cmmi-10">p</span><sup><span 
-class="cmmi-7">n</span></sup> has to be smaller or equal 2<sup><span 
-class="cmr-7">15</span></sup>.  
-The given name refers to a primitive element of
- GF(<span 
-class="cmmi-10">p</span><sup><span 
-class="cmmi-7">n</span></sup>)  
-generating the multiplicative group.  Due to a different internal
-representation, the arithmetic operations in these coefficient fields
-are faster than arithmetic operations in algebraic extensions as
-described above.
-
-</li><li>
-an expression_list of the name <code>real</code> and two optional int_expression
-giving the precision in decimal digits and
-the size for the stabilizing rest. The default for the rest is the same size
-as for the representation.
-An exception is the name <code>real</code> without any integers.
-These numbers are implemented as machine floating point numbers
-of single precision.
-Note that computations over all these fields are not exact.
-
-</li><li>
-an expression_list of the name <code>complex</code>,
-two optional int_expression and a name.
-This specifies the field of complex numbers represented with floating point
-numbers with a precision similar to <code>real</code>. An expression_list
-without int_expression defines a precision and rest with length 6.
-The name of the imaginary unit is given by the last parameter.
-Note that computations over these fields are not exact.
-</li></ol>
-
-<p>&rsquo;names_of_ring_variables&rsquo; is a list of names or indexed names.
-</p>
-<p>&rsquo;ordering&rsquo; is a list of block orderings where each block ordering is either
-</p>
-<ol>
-<li>
-<code>lp</code>, <code>dp</code>, <code>Dp</code>, <code>ls</code>, <code>ds</code>, or <code>Ds</code>
-optionally followed by a size parameter in parentheses.
-
-</li><li>
-<code>wp</code>, <code>Wp</code>, <code>ws</code>, <code>Ws</code>, or <code>a</code> followed by a
-weight vector given as an intvec_expression in parentheses.
-
-</li><li>
-<code>M</code> followed by an intmat_expression in parentheses.
-
-</li><li>
-<code>c</code> or <code>C</code>.
-</li></ol>
-
-<p>For the definition of the orderings, see <a href="sing_362.htm#Monomial-orderings">Monomial orderings</a>.
-</p>
-<p>If one of coefficient_field, names_of_ring_variables, and ordering
-consists of only one entry, the parentheses around this entry may be
-omitted.
-</p>
-<a name="Quotient-rings"></a>
-<h4 class="subsubheading">Quotient rings</h4>
+<li> Global orderings
 <dl compact="compact">
-<dt><strong>Syntax:</strong></dt>
-<dd><p><code>qring</code> name <code>=</code> ideal_expression <code>;</code>
-</p></dd>
-<dt><strong>Default:</strong></dt>
-<dd><p>none
-</p></dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>declares a quotient ring as the basering modulo ideal_expression.  Sets
-it as current basering.
+<dt><code>lp</code></dt>
+<dd><p>lexicographical ordering
+</p>
+</dd>
+<dt><code>dp</code></dt>
+<dd><p>degree reverse lexicographical ordering
+</p>
+</dd>
+<dt><code>Dp</code></dt>
+<dd><p>degree lexicographical ordering
+</p>
+</dd>
+<dt><code>wp(</code> intvec_expression <code>)</code></dt>
+<dd><p>weighted reverse lexicographical ordering; the weight vector may
+consist of positive integers only.
+</p>
+</dd>
+<dt><code>Wp(</code> intvec_expression <code>)</code></dt>
+<dd><p>weighted lexicographical ordering; the weight vector may consist of
+positive integers only.
 </p></dd>
 </dl>
 
-<p>ideal_expression has to be represented by a standard basis.
+<p>Global orderings are well-orderings, i.e., 
+ 1 <span 
+class="cmmi-10">&#x003C; x </span> 
+ for each ring
+variable 
+ <span 
+class="cmmi-10">x </span> 
+. They are denoted by a <code>p</code> as the second
+character in their name.
 </p>
-<p>The most convenient way to map objects from a ring to its quotient ring
-and vice versa is to use the <code>fetch</code> function (see <a href="sing_186.htm#fetch">fetch</a>).
+</li><li> Local orderings
+<dl compact="compact">
+<dt><code>ls</code></dt>
+<dd><p>negative lexicographical ordering
 </p>
-<p><small>SINGULAR</small> computes in a quotient ring as long as possible with the
-given representative of a polynomial, say, <code>f</code>.  I.e., it usually
-does not reduce <code>f</code> w.r.t. the quotient ideal.  This is only done
-when necessary
-during standard bases computations or by an explicit reduction using
-the command <code>reduce(f, std(0))</code> (see <a href="sing_261.htm#reduce">reduce</a>).
+</dd>
+<dt><code>ds</code></dt>
+<dd><p>negative degree reverse lexicographical ordering
 </p>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y),dp;
-  poly f=x3+yx2+3y+4;
-  qring q=std(maxideal(2));
-  basering;
-&rarr; //   characteristic : 32003
-&rarr; //   number of vars : 2
-&rarr; //        block   1 : ordering dp
-&rarr; //                  : names    x y 
-&rarr; //        block   2 : ordering C
-&rarr; // quotient ring from ideal
-&rarr; _[1]=y2
-&rarr; _[2]=xy
-&rarr; _[3]=x2
-  poly g=fetch(r, f);
-  g;
-&rarr; x3+x2y+3y+4
-  reduce(g,std(0));
-&rarr; 3y+4
-</pre></td></tr></table>
+</dd>
+<dt><code>Ds</code></dt>
+<dd><p>negative degree lexicographical ordering
+</p>
+</dd>
+<dt><code>ws(</code> intvec_expression <code>)</code></dt>
+<dd><p>(general) weighted reverse lexicographical ordering; the first element
+of the weight vector has to be non-zero.
+</p>
+</dd>
+<dt><code>Ws(</code> intvec_expression <code>)</code></dt>
+<dd><p>(general) weighted lexicographical ordering; the first element
+of the weight vector has to be non-zero.
+</p></dd>
+</dl>
 
+<p>Local orderings are not well-orderings. They are denoted by an <code>s</code>
+as the second character in their name.
+</p>
+</li><li> Matrix orderings
+<dl compact="compact">
+<dt><code>M(</code> intmat_expression <code>)</code></dt>
+<dd><p>intmat_expression has to be an invertible square matrix
+</p></dd>
+</dl>
 
+<p>Using matrix orderings, <small>SINGULAR</small> can compute standard bases
+w.r.t. any monomial ordering that is compatible with the natural
+semi-group structure on the monomials. In practice, the predefined global
+and local orderings together with the block orderings should be
+sufficient in most cases. These orderings are faster than their
+corresponding matrix orderings since evaluation of a matrix ordering is
+time consuming.
+</p>
+</li><li> Extra weight vector
+<dl compact="compact">
+<dt><code>a(</code> intvec_expression <code>)</code></dt>
+<dd><p>an extra weight vector <code>a(</code> intvec_expression <code>)</code> may precede
+any monomial ordering
+</p></dd>
+</dl>
+
+</li><li> Product ordering
+<dl compact="compact">
+<dt><code>(</code> ordering [ <code>(</code> int_expression <code>)</code> ]<code>,</code> &hellip; <code>)</code></dt>
+<dd><p>any of the above orderings and the extra weight vector may be combined
+to yield product or block orderings
+</p></dd>
+</dl>
+
+<p>The orderings <code>lp</code>, <code>dp</code>, <code>Dp</code>, <code>ls</code>, <code>ds</code>, and
+<code>Ds</code> may be followed by an int_expression in parentheses giving the
+size of the block. For the last block the size is calculated
+automatically. For the weighted orderings the size of the block is given
+by the size of the weight vector. The same holds analogously for matrix
+orderings.
+</p>
+</li><li> Module orderings
+<dl compact="compact">
+<dt><code>(</code> ordering<code>,</code> &hellip;<code>, C )</code></dt>
+<dt><code>(</code> ordering<code>,</code> &hellip;<code>, c )</code></dt>
+<dd><p>sort polynomial vectors by the monomial ordering first, then by
+components
+</p>
+</dd>
+<dt><code>( C,</code> ordering<code>,</code> &hellip; <code>)</code></dt>
+<dt><code>( c,</code> ordering<code>,</code> &hellip; <code>)</code></dt>
+<dd><p>sort polynomial vectors by components first, then by the monomial
+ordering
+</p></dd>
+</dl>
+
+<p>Here a capital <code>C</code> sorts generators in ascending order, i.e.,
+<code>gen(1)</code> &lt; <code>gen(2)</code> &lt; <small class="enddots">...</small> A small <code>c</code> sorts in
+descending order, i.e., <code>gen(1)</code> &gt; <code>gen(2)</code> &gt; <small class="enddots">...</small> It is
+not necessary to specify the module ordering explicitly since <code>(</code>
+ordering<code>,</code> &hellip;<code>, C )</code> is the default.
+</p>
+<p>In fact, <code>c</code> or <code>C</code> may be specified anywhere in a product
+ordering specification, not only at its beginning or end.  All monomial
+block orderings preceding the component ordering have higher precedence,
+all monomial block orderings following after it have lower precedence.
+</p></li></ol>
+
+<p>For a mathematical description of these orderings, see
+<a href="sing_359.htm#Polynomial-data">Polynomial data</a>.
+</p>
 </td>
 </tr>
 </table>
@@ -247,14 +262,14 @@ the command <code>reduce(f, std(0))</code> (see <a href="sing_261.htm#reduce">re
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_29.htm#Examples-of-ring-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3.1 Examples of ring declarations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_31.htm#Term-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.3.3 Term orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_28.htm#Rings-and-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.3 Rings and orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_29.htm#General-syntax-of-a-ring-declaration" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3.2 General syntax of a ring declaration" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_31.htm#Implemented-algorithms" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.4 Implemented algorithms" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_27.htm#Rings-and-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.3 Rings and orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

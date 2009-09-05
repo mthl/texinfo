@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 6.2.5 Usage of brackets</title>
+<title>Singular 2-0-4 Manual: 6.2.6 Behavior of continue</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 6.2.5 Usage of brackets">
-<meta name="keywords" content="Singular 2-0-4 Manual: 6.2.5 Usage of brackets">
+<meta name="description" content="Singular 2-0-4 Manual: 6.2.6 Behavior of continue">
+<meta name="keywords" content="Singular 2-0-4 Manual: 6.2.6 Behavior of continue">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Usage-of-brackets"></a>
+<a name="Behavior-of-continue"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_325.htm#Usage-of-commas" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.2.4 Usage of commas" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_325.htm#Usage-of-brackets" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.2.5 Usage of brackets" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_327.htm#Behavior-of-continue" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 6.2.6 Behavior of continue" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_327.htm#Return-type-of-procedures" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 6.2.7 Return type of procedures" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_321.htm#Major-differences-to-the-C-programming-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 6.2 Major differences to the C programming language" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_320.htm#Major-differences-to-the-C-programming-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 6.2 Major differences to the C programming language" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,27 +84,29 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Usage-of-brackets-1"></a>
-<h3 class="subsection">6.2.5 Usage of brackets</h3>
-<a name="index-bracket"></a>
-
-<p>In <small>SINGULAR</small>, curly brackets (<code>{</code> <code>}</code>) <strong>must
-always</strong> be used to enclose the statement body following such constructs
-like <code>if</code>, <code>else</code>, <code>for</code>, or <code>while</code>, even if this
-block consists of only a single statement. Similarly, in the return
-statement of a procedure, parentheses (<code>(</code> <code>)</code>) <strong>must
-always</strong> be used to enclose the return value.  Even if there is no value
-to return, parentheses have to be used after a return statement
-(i.e., <code>return();</code>).  For example,
+<a name="Behavior-of-continue-1"></a>
+<h3 class="subsection">6.2.6 Behavior of continue</h3>
+<a name="index-continue-1"></a>
+<p><small>SINGULAR</small>&rsquo;s <code>continue</code> construct is only valid inside the body
+of a <code>for</code> or <code>while</code> construct. It skips the rest of the
+loop-body and jumps to the beginning of the block. Unlike the
+C-construct <small>SINGULAR</small>&rsquo;s <code>continue</code> <strong>does not execute the
+increment statement</strong>. For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (i == 1) return i;    // WRONG!!!!!
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">for (int i = 1 ; i&lt;=10; i=i+1)
+{
+   &hellip;
+   if (i==3) { i=8;continue; }
+     // skip the rest if i is 3 and
+     // continue with the next i: 8
+   i;
+}
+&rarr; 1
+&rarr; 2
+&rarr; 8
+&rarr; 9
+&rarr; 10
 </pre></td></tr></table>
-
-<p>results in an error. Instead, it must be written as
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (i == 1) { return (i); }
-</pre></td></tr></table>
-
 </td>
 </tr>
 </table>
@@ -114,14 +116,14 @@ to return, parentheses have to be used after a return statement
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_325.htm#Usage-of-commas" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.2.4 Usage of commas" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_327.htm#Behavior-of-continue" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 6.2.6 Behavior of continue" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_321.htm#Major-differences-to-the-C-programming-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 6.2 Major differences to the C programming language" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_325.htm#Usage-of-brackets" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.2.5 Usage of brackets" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_327.htm#Return-type-of-procedures" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 6.2.7 Return type of procedures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_320.htm#Major-differences-to-the-C-programming-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 6.2 Major differences to the C programming language" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

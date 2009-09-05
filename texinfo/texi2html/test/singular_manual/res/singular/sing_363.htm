@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: B.2.1 Introduction to orderings</title>
+<title>Singular 2-0-4 Manual: B.2.2 General definitions for orderings</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: B.2.1 Introduction to orderings">
-<meta name="keywords" content="Singular 2-0-4 Manual: B.2.1 Introduction to orderings">
+<meta name="description" content="Singular 2-0-4 Manual: B.2.2 General definitions for orderings">
+<meta name="keywords" content="Singular 2-0-4 Manual: B.2.2 General definitions for orderings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Introduction-to-orderings"></a>
+<a name="General-definitions-for-orderings"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_362.htm#Introduction-to-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.1 Introduction to orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_364.htm#General-definitions-for-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.2 General definitions for orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_364.htm#Global-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.3 Global orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_361.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,76 +82,147 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Introduction-to-orderings-1"></a>
-<h3 class="subsection">B.2.1 Introduction to orderings</h3>
-<a name="index-orderings-introduction"></a>
-<a name="index-term-orderings-introduction"></a>
-<a name="index-monomial-orderings-introduction"></a>
+<a name="General-definitions-for-orderings-1"></a>
+<h3 class="subsection">B.2.2 General definitions for orderings</h3>
+<a name="index-orderings"></a>
+<a name="index-term-orderings"></a>
+<a name="index-monomial-orderings"></a>
 
-<p><small>SINGULAR</small> offers a great variety of monomial orderings which provide
-an enormous functionality, if used diligently. However, this
-flexibility might also be confusing for the novice user.  Therefore, we
-recommend to those not familiar with monomial orderings to generally use
-the ordering <code>dp</code> for computations in the polynomial ring
-<!-- MATH
- $K[x_1,\ldots,x_n]$
+<p>A monomial ordering (term ordering) on <!-- MATH
+ $K[x_1, \ldots, x_n]$
  -->
 <SPAN CLASS="MATH"><IMG
  WIDTH="90" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_55.png"
- ALT="$K[x_1,\ldots,x_n]$"></SPAN>,
-resp.  <code>ds</code> for computations in the localization 
-<!-- MATH
- $\hbox{Loc}_{(x)}K[x_1,\ldots,x_n]$
+ ALT="$K[x_1,\ldots,x_n]$"></SPAN> is
+a total ordering <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_261.png"
+ ALT="$&lt;$"></SPAN> on the
+set of monomials (power products) <!-- MATH
+ $\{x^\alpha \mid \alpha \in \bf {N}^n\}$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="131" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_153.png"
- ALT="$\hbox{Loc}_{(x)}K[x_1,\ldots,x_n]$"></SPAN>.
+ WIDTH="97" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_262.png"
+ ALT="$\{x^\alpha \mid \alpha \in \bf {N}^n\}$"></SPAN>
+which is compatible with the
+natural semigroup structure, i.e., <!-- MATH
+ $x^\alpha < x^\beta$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="57" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_263.png"
+ ALT="$x^\alpha &lt; x^\beta$"></SPAN> implies <!-- MATH
+ $x^\gamma
+x^\alpha < x^\gamma x^\beta$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="89" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_264.png"
+ ALT="$x^\gamma
+x^\alpha &lt; x^\gamma x^\beta$"></SPAN> for any <!-- MATH
+ $\gamma \in \bf {N}^n$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="52" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_265.png"
+ ALT="$\gamma \in \bf {N}^n$"></SPAN>.
+We do not require
+<SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_261.png"
+ ALT="$&lt;$"></SPAN> to be  a well ordering.
+ See the literature cited in <a href="sing_387.htm#References">References</a>.
 </p>
-<p>For inhomogeneous input ideals,  standard (resp. groebner) bases
-computations are generally faster 
-with the orderings 
-<!-- MATH
- $\hbox{Wp}(w_1, \ldots, w_n)$
+<p>It is known that any monomial ordering can be represented by a matrix 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_13.png"
+ ALT="$M$"></SPAN> in <SPAN CLASS="MATH"><IMG
+ WIDTH="64" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_266.png"
+ ALT="$GL(n,R)$"></SPAN>,
+but, of course, only integer coefficients are of relevance in
+practice.
+</p>
+<p>Global orderings are well orderings (i.e.,  <SPAN CLASS="MATH"><IMG
+ WIDTH="44" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_267.png"
+ ALT="$1 &lt; x_i$"></SPAN> for each variable
+<SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_94.png"
+ ALT="$x_i$"></SPAN>), local orderings satisfy <SPAN CLASS="MATH"><IMG
+ WIDTH="44" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_268.png"
+ ALT="$1 &gt; x_i$"></SPAN> for each variable.   If some variables are ordered globally and others locally we
+call it a mixed ordering.   Local or mixed orderings are not well orderings.
+
+<P>
+Let <SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_46.png"
+ ALT="$K$"></SPAN> be the ground field, <!-- MATH
+ $x = (x_1, \ldots, x_n)$
  -->
 <SPAN CLASS="MATH"><IMG
  WIDTH="108" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_254.png"
- ALT="$\hbox{Wp}(w_1, \ldots, w_n)$"></SPAN>
-(resp. 
+ SRC="sing_269.png"
+ ALT="$x = (x_1, \ldots, x_n)$"></SPAN> the
+variables and <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_261.png"
+ ALT="$&lt;$"></SPAN> a monomial ordering, then Loc <SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_270.png"
+ ALT="$K[x]$"></SPAN> denotes the
+localization of <SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_270.png"
+ ALT="$K[x]$"></SPAN> with respect to the multiplicatively closed set <BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
 <!-- MATH
- $\hbox{Ws}(w_1, \ldots, w_n)$
+ \begin{displaymath}
+\{1 +
+g \mid g = 0 \hbox{ or } g \in K[x]\backslash \{0\} \hbox{ and }L(g) <
+1\}.
+\end{displaymath}
  -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="105" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_255.png"
- ALT="$\hbox{Ws}(w_1, \ldots, w_n)$"></SPAN>)
-if the input is quasihomogeneous w.r.t. the weights 
-<SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_256.png"
- ALT="$w_1$"></SPAN>, <SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_257.png"
- ALT="$\ldots$"></SPAN>, <SPAN CLASS="MATH"><IMG
- WIDTH="22" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_258.png"
- ALT="$w_n$"></SPAN> of <SPAN CLASS="MATH"><IMG
- WIDTH="18" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_259.png"
- ALT="$x_1$"></SPAN>, <SPAN CLASS="MATH"><IMG
- WIDTH="21" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_257.png"
- ALT="$\ldots$"></SPAN>, <SPAN CLASS="MATH"><IMG
- WIDTH="20" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_260.png"
- ALT="$x_n$"></SPAN>.
+
+<IMG
+ WIDTH="299" HEIGHT="26" BORDER="0"
+ SRC="sing_271.png"
+ ALT="\begin{displaymath}\{1 +
+g \mid g = 0 \hbox{ or } g \in K[x]\backslash \{0\} \hbox{ and }L(g) &lt;
+1\}.\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+Here, <SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_116.png"
+ ALT="$L(g)$"></SPAN> 
+denotes the leading monomial of <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_117.png"
+ ALT="$g$"></SPAN>, i.e., the biggest monomial of <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_117.png"
+ ALT="$g$"></SPAN> with
+respect to <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_261.png"
+ ALT="$&lt;$"></SPAN>.   The result of any computation which uses standard basis
+computations has to be interpreted in Loc <SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_270.png"
+ ALT="$K[x]$"></SPAN>.
 </p>
-<p>If the output needs to be &quot;triangular&quot; (resp. &quot;block-triangular&quot;), the
-lexicographical ordering <code>lp</code> (resp. lexicographical
-block-orderings) need to be used. However, these orderings usually
-result in much less efficient computations.
+<p>Note that the definition of a ring includes the definition of its
+monomial ordering (see 
+<a href="sing_27.htm#Rings-and-orderings">Rings and orderings</a>). <small>SINGULAR</small> offers the monomial orderings
+described in the following sections. 
 </p>
 
 </td>
@@ -163,14 +234,14 @@ result in much less efficient computations.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2 Monomial orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_364.htm#General-definitions-for-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.2 General definitions for orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_362.htm#Introduction-to-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.1 Introduction to orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_364.htm#Global-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.3 Global orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_361.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

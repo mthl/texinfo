@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.4.10 intprog_lib</title>
+<title>Singular 2-0-4 Manual: D.4.10.1 solve_IP</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.4.10 intprog_lib">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.4.10 intprog_lib">
+<meta name="description" content="Singular 2-0-4 Manual: D.4.10.1 solve_IP">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.10.1 solve_IP">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="intprog_005flib"></a>
+<a name="solve_005fIP"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_624.htm#closureFrac" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.9.5 closureFrac" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_624.htm#intprog_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.10 intprog_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_626.htm#solve_005fIP" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.10.1 solve_IP" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_626.htm#toric_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.11 toric_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_529.htm#Commutative-algebra" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4 Commutative algebra" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_624.htm#intprog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.10 intprog_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,29 +84,134 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="intprog_005flib-1"></a>
-<h3 class="subsection">D.4.10 intprog_lib</h3>
-<a name="index-intprog_002elib"></a>
-<a name="index-intprog_005flib"></a>
+<a name="solve_005fIP-1"></a>
+<h4 class="subsubsection">D.4.10.1 solve_IP</h4>
+<a name="index-solve_005fIP"></a>
+<p>Procedure from library <code>intprog.lib</code> (see <a href="sing_624.htm#intprog_005flib">intprog_lib</a>).
+</p>
 <dl compact="compact">
-<dt><strong>Library:</strong></dt>
-<dd><p>intprog.lib
-</p></dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>      Integer Programming with Groebner Basis Methods
-</p></dd>
-<dt><strong>Author:</strong></dt>
-<dd><p>Christine Theis, email: ctheis@math.uni-sb.de
+<dt><strong>Usage:</strong></dt>
+<dd><p>solve_IP(A,bx,c,alg); A intmat, bx intvec, c intvec, alg string.
+solve_IP(A,bx,c,alg); A intmat, bx list of intvec, c intvec,
+alg string.
+<br>solve_IP(A,bx,c,alg,prsv); A intmat, bx intvec, c intvec,
+alg string, prsv intvec.
+<br>solve_IP(A,bx,c,alg,prsv); A intmat, bx list of intvec, c intvec,
+alg string, prsv intvec.
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>same type as bx: solution of the associated integer programming
+problem(s) as explained in
+</p>
+<p>   <a href="sing_376.htm#Toric-ideals-and-integer-programming">Toric ideals and integer programming</a>.
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>This procedure returns the solution(s) of the given IP-problem(s)
+or the message &lsquo;not solvable&rsquo;.
+<br>One may call the procedure with several different algorithms:
+<br>- the algorithm of Conti/Traverso (ct),
+<br>- the positive variant of the algorithm of Conti/Traverso (pct),
+<br>- the algorithm of Conti/Traverso using elimination (ect),
+<br>- the algorithm of Pottier (pt),
+<br>- an algorithm of Bigatti/La Scala/Robbiano (blr),
+<br>- the algorithm of Hosten/Sturmfels (hs),
+<br>- the algorithm of DiBiase/Urbanke (du).
+The argument &lsquo;alg&rsquo; should be the abbreviation for an algorithm as
+above: ct, pct, ect, pt, blr, hs or du.
+</p>
+<p>&lsquo;ct&rsquo; allows computation of an optimal solution of the IP-problem
+directly from the right-hand vector b.
+<br>The same is true for its &lsquo;positive&rsquo; variant &lsquo;pct&rsquo; which may only be
+applied if A and b have nonnegative entries.
+<br>All other algorithms need initial solutions of the IP-problem.
+</p>
+<p>If &lsquo;alg&rsquo; is chosen to be &lsquo;ct&rsquo; or &lsquo;pct&rsquo;, bx is read as the right hand
+vector b of the system Ax=b. b should then be an intvec of size m
+where m is the number of rows of A.
+<br>Furthermore, bx and A should be nonnegative if &lsquo;pct&rsquo; is used.
+If &lsquo;alg&rsquo; is chosen to be &lsquo;ect&rsquo;,&lsquo;pt&rsquo;,&lsquo;blr&rsquo;,&lsquo;hs&rsquo; or &lsquo;du&rsquo;,
+bx is read as an initial solution x of the system Ax=b.
+bx should then be a nonnegative intvec of size n where n is the
+number of columns of A.
+</p>
+<p>If &lsquo;alg&rsquo; is chosen to be &lsquo;blr&rsquo; or &lsquo;hs&rsquo;, the algorithm needs a vector
+with positive coefficients in the row space of A.
+<br>If no row of A contains only positive entries, one has to use the
+versions of solve_IP which take such a vector prsv as an argument.
+</p>
+<p>solve_IP may also be called with a list bx of intvecs instead of a
+single intvec.
 </p>
 </dd>
 </dl>
-
-<p><strong>Procedures:</strong>
-</p><blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_626.htm#solve_005fIP">D.4.10.1 solve_IP</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for solving Integer Programming problems
-</td></tr>
-</table></blockquote>
-
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;intprog.lib&quot;;
+// 1. call with single right-hand vector
+intmat A[2][3]=1,1,0,0,1,1;
+intvec b1=1,1;
+intvec c=2,2,1;
+intvec solution_vector=solve_IP(A,b1,c,&quot;pct&quot;);
+solution_vector;&quot;&quot;;
+&rarr; 0,1,0
+&rarr; 
+// 2. call with list of right-hand vectors
+intvec b2=-1,1;
+list l=b1,b2;
+l;
+&rarr; [1]:
+&rarr;    1,1
+&rarr; [2]:
+&rarr;    -1,1
+list solution_list=solve_IP(A,l,c,&quot;ct&quot;);
+solution_list;&quot;&quot;;
+&rarr; [1]:
+&rarr;    0,1,0
+&rarr; [2]:
+&rarr;    not solvable
+&rarr; 
+// 3. call with single initial solution vector
+A=2,1,-1,-1,1,2;
+b1=3,4,5;
+solve_IP(A,b1,c,&quot;du&quot;);&quot;&quot;;
+&rarr; 0,7,2
+&rarr; 
+// 4. call with single initial solution vector
+//    and algorithm needing a positive row space vector
+solution_vector=solve_IP(A,b1,c,&quot;hs&quot;);&quot;&quot;;
+&rarr; ERROR: The chosen algorithm needs a positive vector in the row space of t\
+   he matrix.
+&rarr; 0
+&rarr; 
+// 5. call with single initial solution vector
+//     and positive row space vector
+intvec prsv=1,2,1;
+solution_vector=solve_IP(A,b1,c,&quot;hs&quot;,prsv);
+solution_vector;&quot;&quot;;
+&rarr; 0,7,2
+&rarr; 
+// 6. call with list of initial solution vectors
+//    and positive row space vector
+b2=7,8,0;
+l=b1,b2;
+l;
+&rarr; [1]:
+&rarr;    3,4,5
+&rarr; [2]:
+&rarr;    7,8,0
+solution_list=solve_IP(A,l,c,&quot;blr&quot;,prsv);
+solution_list;
+&rarr; [1]:
+&rarr;    0,7,2
+&rarr; [2]:
+&rarr;    7,8,0
+</pre></td></tr></table>
+<p><strong>See also:</strong>
+<a href="sing_385.htm#Integer-programming">Integer programming</a>;
+<a href="sing_624.htm#intprog_005flib">intprog_lib</a>;
+<a href="sing_626.htm#toric_005flib">toric_lib</a>.
+</p>
 </td>
 </tr>
 </table>
@@ -116,14 +221,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_624.htm#closureFrac" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.9.5 closureFrac" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_626.htm#solve_005fIP" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.10.1 solve_IP" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_529.htm#Commutative-algebra" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4 Commutative algebra" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_624.htm#intprog_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.10 intprog_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_626.htm#toric_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.11 toric_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_624.htm#intprog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.10 intprog_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

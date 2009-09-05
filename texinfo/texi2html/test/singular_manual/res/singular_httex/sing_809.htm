@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.6.3.15 TransferIdeal</title>
+<title>Singular 2-0-4 Manual: D.6.4 stratify_lib</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.6.3.15 TransferIdeal">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.6.3.15 TransferIdeal">
+<meta name="description" content="Singular 2-0-4 Manual: D.6.4 stratify_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6.4 stratify_lib">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="TransferIdeal"></a>
+<a name="stratify_005flib"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_808.htm#SimplifyIdeal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.14 SimplifyIdeal" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_808.htm#TransferIdeal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.15 TransferIdeal" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_810.htm#stratify_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.4 stratify_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_810.htm#prepMat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.4.1 prepMat" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_794.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_751.htm#Invariant-theory" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6 Invariant theory" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,11 +84,37 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="TransferIdeal-1"></a>
-<h4 class="subsubsection">D.6.3.15 TransferIdeal</h4>
-<a name="index-TransferIdeal"></a>
-<p>Procedure from library <code>rinvar.lib</code> (see <a href="sing_794.htm#rinvar_005flib">rinvar_lib</a>).
+<a name="stratify_005flib-1"></a>
+<h3 class="subsection">D.6.4 stratify_lib</h3>
+<a name="index-stratify_002elib"></a>
+<a name="index-stratify_005flib"></a>
+<dl compact="compact">
+<dt><strong>Library:</strong></dt>
+<dd><p>stratify.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>   Algorithmic Stratification for Unipotent Group-Actions
+</p></dd>
+<dt><strong>Author:</strong></dt>
+<dd><p>Anne Fruehbis-Krueger, anne@mathematik.uni-kl.de
 </p>
+</dd>
+<dt><strong>Overview:</strong></dt>
+<dd><p>This library provides an implementation of the algorithm
+of Greuel and Pfister introduced in the article &lt;Geometric
+quotients of unipotent group actions&gt;.
+</p>
+</dd>
+</dl>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_810.htm#prepMat">D.6.4.1 prepMat</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> list of submatrices corresp. to given filtration
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_811.htm#stratify">D.6.4.2 stratify</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> algorithmic stratification (main procedure)
+</td></tr>
+</table></blockquote>
+
 </td>
 </tr>
 </table>
@@ -98,14 +124,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_808.htm#SimplifyIdeal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.14 SimplifyIdeal" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_810.htm#stratify_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.4 stratify_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_794.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_808.htm#TransferIdeal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.15 TransferIdeal" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_810.htm#prepMat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.4.1 prepMat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_751.htm#Invariant-theory" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6 Invariant theory" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

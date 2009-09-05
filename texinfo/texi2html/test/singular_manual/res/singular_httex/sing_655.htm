@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.3.3 esStratum</title>
+<title>Singular 2-0-4 Manual: D.5.3.4 isEquising</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.3.3 esStratum">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.3.3 esStratum">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.3.4 isEquising">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.3.4 isEquising">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="esStratum"></a>
+<a name="isEquising"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_654.htm#esIdeal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.2 esIdeal" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_654.htm#esStratum" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.3 esStratum" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_656.htm#isEquising" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.3.4 isEquising" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_656.htm#control_005fMatrix" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.3.5 control_Matrix" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_652.htm#equising_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.3 equising_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_651.htm#equising_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.3 equising_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,14 +84,14 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="esStratum-1"></a>
-<h4 class="subsubsection">D.5.3.3 esStratum</h4>
-<a name="index-esStratum"></a>
-<p>Procedure from library <code>equising.lib</code> (see <a href="sing_652.htm#equising_005flib">equising_lib</a>).
+<a name="isEquising-1"></a>
+<h4 class="subsubsection">D.5.3.4 isEquising</h4>
+<a name="index-isEquising"></a>
+<p>Procedure from library <code>equising.lib</code> (see <a href="sing_651.htm#equising_005flib">equising_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>esStratum(F[,m,L]); F poly, m int, L list
+<dd><p>isEquising(F[,m,L]); F poly, m int, L list
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -104,107 +104,43 @@ on the deformation parameters.
 </p>
 </dd>
 <dt><strong>Compute:</strong></dt>
-<dd><p>equations for the stratum of equisingular deformations with 
-fixed (trivial) section.
+<dd><p>tests if the given family is equisingular along the trivial
+section.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>list l: either consisting of an ideal and an integer, where
-</p><table><tr><td>&nbsp;</td><td><pre class="format">  l[1]=ideal defining the equisingular stratum
-  l[2]=1 if some error has occured,  l[2]=0 otherwise;
-</pre></td></tr></table>
-<p>or consisting of a ring and an integer, where
-</p><table><tr><td>&nbsp;</td><td><pre class="format">  l[1]=ESSring is a ring extension of basering containing the ideal ES 
-        (describing the ES-stratum) and the poly p_F=F,
-  l[2]=1 if some error has occured,  l[2]=0 otherwise.
-</pre></td></tr></table>
-
+<dd><p>int: 1 if the family is equisingular, 0 otherwise.
+</p>
 </dd>
 <dt><strong>Note:</strong></dt>
 <dd><p>L is supposed to be the output of reddevelop (with the given ordering
 of the variables appearing in f). <br>
-If m is given, the ES Stratum over A/maxideal(m) is computed. <br>
+If m is given, the family is considered over A/maxideal(m). <br>
 This procedure uses <code>execute</code> or calls a procedure using
 <code>execute</code>.
 printlevel&gt;=2 displays additional information.
 </p>
-<a name="index-equisingular-stratum"></a>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;equising.lib&quot;;
-int p=printlevel; 
-printlevel=1;
-ring r = 0,(a,b,c,d,e,f,g,x,y),ds;
-poly F = (x2+2xy+y2+x5)+ax+by+cx2+dxy+ey2+fx3+gx4;
-list M = esStratum(F);
-M[1];
-&rarr; _[1]=g
-&rarr; _[2]=f
-&rarr; _[3]=b
-&rarr; _[4]=a
-&rarr; _[5]=-4c+4d-4e+d2-4ce
-printlevel=3;    // displays additional information
-esStratum(F,2);  // es stratum over Q[a,b,c,d,e,f,g] / &lt;a,b,c,d,e,f,g&gt;^2
-&rarr; // 
-&rarr; // Compute HN development
-&rarr; // ----------------------
-&rarr; // finished
-&rarr; // 
-&rarr; // Blowup Step 1 completed
-&rarr; // Blowup Step 2 completed
-&rarr; // Blowup Step 3 completed
-&rarr; // 1 branch finished
-&rarr; // 
-&rarr; // Elimination starts:
-&rarr; // -------------------
-&rarr; // finished
-&rarr; // 
-&rarr; // output of 'esStratum' is list consisting of:
-&rarr; //    _[1] = ideal defining equisingular stratum
-&rarr; //    _[2] = 0
-&rarr; [1]:
-&rarr;    _[1]=b
-&rarr;    _[2]=a
-&rarr;    _[3]=c-d+e
-&rarr;    _[4]=g
-&rarr;    _[5]=f
-&rarr; [2]:
-&rarr;    0
-ideal I = f-fa,e+b;
+ring r = 0,(a,b,x,y),ds;
+poly F = (x2+2xy+y2+x5)+ay3+bx5;
+isEquising(F);
+&rarr; 0
+ideal I = ideal(a);
 qring q = std(I);
 poly F = imap(r,F);
-esStratum(F);
-&rarr; // 
-&rarr; // Compute HN development
-&rarr; // ----------------------
-&rarr; // finished
-&rarr; // 
-&rarr; // Blowup Step 1 completed
-&rarr; // Blowup Step 2 completed
-&rarr; // Blowup Step 3 completed
-&rarr; // 1 branch finished
-&rarr; // 
-&rarr; // Elimination starts:
-&rarr; // -------------------
-&rarr; // finished
-&rarr; // 
-&rarr; // output of 'esStratum' is list consisting of:
-&rarr; //    _[1] = ideal defining equisingular stratum
-&rarr; //    _[2] = 0
-&rarr; [1]:
-&rarr;    _[1]=e
-&rarr;    _[2]=a
-&rarr;    _[3]=-4c+4d+d2
-&rarr;    _[4]=g
-&rarr; [2]:
-&rarr;    0
-printlevel=p;
+isEquising(F);
+&rarr; 1
+ring rr=0,(A,B,C,x,y),ls;
+poly f=x7+y7+(x-y)^2*x2y2;
+poly F=f+A*y*diff(f,x)+B*x*diff(f,x);
+isEquising(F);  
+&rarr; 0
+isEquising(F,2);    // computation over  Q[a,b] / &lt;a,b&gt;^2
+&rarr; 1
 </pre></td></tr></table>
-<p><strong>See also:</strong>
-<a href="sing_654.htm#esIdeal">esIdeal</a>;
-<a href="sing_656.htm#isEquising">isEquising</a>.
-</p>
 
 </td>
 </tr>
@@ -215,14 +151,14 @@ printlevel=p;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_654.htm#esIdeal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.2 esIdeal" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_656.htm#isEquising" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.3.4 isEquising" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_652.htm#equising_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.3 equising_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_654.htm#esStratum" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.3 esStratum" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_656.htm#control_005fMatrix" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.3.5 control_Matrix" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_651.htm#equising_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.3 equising_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.5.3 randommat</title>
+<title>Singular 2-0-4 Manual: D.2.5.4 sparseid</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.5.3 randommat">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.5.3 randommat">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.5.4 sparseid">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.5.4 sparseid">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="randommat"></a>
+<a name="sparseid"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_451.htm#randomid" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.5.2 randomid" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_451.htm#randommat" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.5.3 randommat" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_453.htm#sparseid" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.5.4 sparseid" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_453.htm#sparsematrix" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.5.5 sparsematrix" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_449.htm#random_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.5 random_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_448.htm#random_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.5 random_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,39 +84,34 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="randommat-1"></a>
-<h4 class="subsubsection">D.2.5.3 randommat</h4>
-<a name="index-randommat"></a>
-<p>Procedure from library <code>random.lib</code> (see <a href="sing_449.htm#random_005flib">random_lib</a>).
+<a name="sparseid-1"></a>
+<h4 class="subsubsection">D.2.5.4 sparseid</h4>
+<a name="index-sparseid"></a>
+<p>Procedure from library <code>random.lib</code> (see <a href="sing_448.htm#random_005flib">random_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>randommat(n,m[,id,b]); n,m,b integers, id ideal
+<dd><p>sparseid(k,u[,o,p,b]); k,u,o,p,b integers
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>nxm matrix, entries are random linear combinations of elements
-of id and coefficients in [-b,b]
-<br>[default: (id,b) = (maxideal(1),30000)]
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>For performance reasons try small bound b in char 0
+<dd><p>ideal having k generators, each of degree d, u&lt;=d&lt;=o, p percent of
+terms in degree d are 0, the remaining have random coefficients
+in the interval [1,b], (default: o=u=d, p=75, b=30000)
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;random.lib&quot;;
-ring r=0,(x,y,z),dp;
-matrix A=randommat(3,3,maxideal(2),9);
-print(A);
-&rarr; 9x2-2xy-8y2-9xz+yz+4z2, 9x2-4xy+y2-5xz+6yz-z2,   8x2+xy-9y2+2yz-8z2,    
-&rarr; -x2+5xy-8y2-7xz+4yz-3z2,x2+xy-4y2-xz+5z2,        5x2-8xy+8y2+6xz+yz+7z2,
-&rarr; 4x2-5xy-6y2-4yz-5z2,    -4x2-6xy-4y2-8xz+3yz+5z2,2x2+3xy+y2+4xz-3yz+2z2 
-A=randommat(2,3);
-print(A);
-&rarr; 15276x+9897y+7526z,  6495x-24178y+11295z,-5745x-14754y+15979z,
-&rarr; 20788x-28366y-20283z,24911x-10978y+3341z,12412x+11216y+15344z 
+ring r = 0,(a,b,c,d),ds;
+sparseid(2,3);&quot;&quot;;
+&rarr; _[1]=12773a3+24263a2c+20030abc+17904b2c+26359c3
+&rarr; _[2]=24004a3+6204b2c+24170bc2+19505c2d+21962bd2
+&rarr; 
+sparseid(3,0,4,90,9);
+&rarr; _[1]=1+4a2+8b2c+3c3+4a3b+4a2b2+5abc2+3ac3
+&rarr; _[2]=a+a2+7ab2+6a2c+3c3+5a3b+9ab3+2c4+3c3d+8ad3
+&rarr; _[3]=5a+ab+2ac2+2b3c+8abcd
 </pre></td></tr></table>
 
 </td>
@@ -128,14 +123,14 @@ print(A);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_451.htm#randomid" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.5.2 randomid" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_453.htm#sparseid" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.5.4 sparseid" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_449.htm#random_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.5 random_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_451.htm#randommat" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.5.3 randommat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_453.htm#sparsematrix" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.5.5 sparsematrix" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_448.htm#random_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.5 random_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

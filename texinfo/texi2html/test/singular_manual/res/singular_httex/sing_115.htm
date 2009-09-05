@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.9.5 matrix related functions</title>
+<title>Singular 2-0-4 Manual: 4.10 module</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.9.5 matrix related functions">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.9.5 matrix related functions">
+<meta name="description" content="Singular 2-0-4 Manual: 4.10 module">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.10 module">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="matrix-related-functions"></a>
+<a name="module"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_114.htm#matrix-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.9.4 matrix operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_114.htm#matrix-related-functions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.9.5 matrix related functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_116.htm#module" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.10 module" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_116.htm#module-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.10.1 module declarations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_110.htm#matrix" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.9 matrix" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,70 +84,78 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="matrix-related-functions-1"></a>
-<h3 class="subsection">4.9.5 matrix related functions</h3>
-<a name="index-matrix-related-functions"></a>
+<a name="module-1"></a>
+<h2 class="section">4.10 module</h2>
+<a name="index-module"></a>
 
-<dl compact="compact">
-<dt><code>bareiss</code></dt>
-<dd><p>Gauss-Bareiss algorithm (see <a href="sing_157.htm#bareiss">bareiss</a>)
-</p></dd>
-<dt><code>coef</code></dt>
-<dd><p>matrix of coefficients and monomials (see <a href="sing_164.htm#coef">coef</a>)
-</p></dd>
-<dt><code>coeffs</code></dt>
-<dd><p>matrix of coefficients (see <a href="sing_165.htm#coeffs">coeffs</a>)
-</p></dd>
-<dt><code>det</code></dt>
-<dd><p>determinant (see <a href="sing_172.htm#det">det</a>)
-</p></dd>
-<dt><code>diff</code></dt>
-<dd><p>partial derivative (see <a href="sing_173.htm#diff">diff</a>)
-</p></dd>
-<dt><code>jacob</code></dt>
-<dd><p>Jacobi matrix (see <a href="sing_209.htm#jacob">jacob</a>)
-</p></dd>
-<dt><code>koszul</code></dt>
-<dd><p>Koszul matrix (see <a href="sing_214.htm#koszul">koszul</a>)
-</p></dd>
-<dt><code>lift</code></dt>
-<dd><p>lift-matrix (see <a href="sing_221.htm#lift">lift</a>)
-</p></dd>
-<dt><code>liftstd</code></dt>
-<dd><p>standard basis and transformation matrix computation (see <a href="sing_222.htm#liftstd">liftstd</a>)
-</p></dd>
-<dt><code>minor</code></dt>
-<dd><p>set of minors of a matrix (see <a href="sing_228.htm#minor">minor</a>)
-</p></dd>
-<dt><code>ncols</code></dt>
-<dd><p>number of columns (see <a href="sing_238.htm#ncols">ncols</a>)
-</p></dd>
-<dt><code>nrows</code></dt>
-<dd><p>number of rows (see <a href="sing_241.htm#nrows">nrows</a>)
-</p></dd>
-<dt><code>print</code></dt>
-<dd><p>nice print format (see <a href="sing_252.htm#print">print</a>)
-</p></dd>
-<dt><code>size</code></dt>
-<dd><p>number of matrix entries (see <a href="sing_271.htm#size">size</a>)
-</p></dd>
-<dt><code>subst</code></dt>
-<dd><p>substitute a ring variable (see <a href="sing_279.htm#subst">subst</a>)
-</p></dd>
-<dt><code>trace</code></dt>
-<dd><p>trace of a matrix (see <a href="sing_282.htm#trace">trace</a>)
-</p></dd>
-<dt><code>transpose</code></dt>
-<dd><p>transpose a matrix (see <a href="sing_283.htm#transpose">transpose</a>)
-</p></dd>
-<dt><code>wedge</code></dt>
-<dd><p>wedge product (see <a href="sing_291.htm#wedge">wedge</a>)
-</p></dd>
-</dl>
-
-<p>See also the library <a href="sing_476.htm#matrix_005flib">matrix_lib</a>, which contains more
-matrix-related functions.
+<p>Modules are submodules of a free module over the basering with basis
+<code>gen(1)</code>, <code>gen(2)</code>, &hellip; .
+They are represented by lists of vectors which generate the submodule.
+Like vectors they
+can only be defined or accessed with respect to a basering.
+If 
+ <span 
+class="cmmi-10">M </span> 
+ is a submodule of
+ <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">n</span></sup>,  
 </p>
+<p> <span 
+class="cmmi-10">R </span> 
+ the basering, generated by vectors
+ <span 
+class="cmmi-10">v</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,v</span><sub><span 
+class="cmmi-7">k</span></sub>, then <span 
+class="cmmi-10">v</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,v</span><sub><span 
+class="cmmi-7">k</span></sub>  
+may be considered as the generators of relations of
+ <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">n</span></sup><span 
+class="cmmi-10">&#x2215;M </span> 
+between the canonical generators <code>gen(1)</code>,&hellip;,<code>gen(n)</code>.
+Hence any finitely generated 
+ <span 
+class="cmmi-10">R </span> 
+-module can be represented in <small>SINGULAR</small>
+by its module of relations. The assignments
+<code>module M=v1,...,vk; matrix A=M;</code>
+create the presentation matrix of size
+
+n<span 
+class="cmsy-10">&#x00D7;</span>k  
+ for
+ R<sup><span 
+class="cmmi-7">n</span></sup>/M,  
+i.e., the columns of A are the vectors
+ <span 
+class="cmmi-10">v</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,v</span><sub><span 
+class="cmmi-7">k</span></sub>  
+which generate M (cf. <a href="sing_360.htm#Representation-of-mathematical-objects">Representation of mathematical objects</a>).
+</p>
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_116.htm#module-declarations">4.10.1 module declarations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_117.htm#module-expressions">4.10.2 module expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_118.htm#module-operations">4.10.3 module operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_119.htm#module-related-functions">4.10.4 module related functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
 
 </td>
 </tr>
@@ -158,14 +166,14 @@ matrix-related functions.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_114.htm#matrix-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.9.4 matrix operations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_116.htm#module" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.10 module" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_110.htm#matrix" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.9 matrix" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_114.htm#matrix-related-functions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.9.5 matrix related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_116.htm#module-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.10.1 module declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

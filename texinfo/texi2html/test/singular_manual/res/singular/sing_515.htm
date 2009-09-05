@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.3.2.11 gaussred</title>
+<title>Singular 2-0-4 Manual: D.3.2.12 gaussred_pivot</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.3.2.11 gaussred">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.3.2.11 gaussred">
+<meta name="description" content="Singular 2-0-4 Manual: D.3.2.12 gaussred_pivot">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.3.2.12 gaussred_pivot">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="gaussred"></a>
+<a name="gaussred_005fpivot"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_514.htm#det_005fB" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.2.10 det_B" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_514.htm#gaussred" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.2.11 gaussred" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_516.htm#gaussred_005fpivot" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.2.12 gaussred_pivot" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_516.htm#gauss_005fnf" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.2.13 gauss_nf" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_504.htm#linalg_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.2 linalg_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_503.htm#linalg_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.2 linalg_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,41 +82,42 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="gaussred-1"></a>
-<h4 class="subsubsection">D.3.2.11 gaussred</h4>
-<a name="index-gaussred"></a>
-<p>Procedure from library <code>linalg.lib</code> (see <a href="sing_504.htm#linalg_005flib">linalg_lib</a>).
+<a name="gaussred_005fpivot-1"></a>
+<h4 class="subsubsection">D.3.2.12 gaussred_pivot</h4>
+<a name="index-gaussred_005fpivot"></a>
+<p>Procedure from library <code>linalg.lib</code> (see <a href="sing_503.htm#linalg_005flib">linalg_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>gaussred(A); A any constant matrix
+<dd><p>gaussred_pivot(A); A any constant matrix
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list Z: Z[1]=P , Z[2]=U , Z[3]=S , Z[4]=rank(A)
-<br>gives a row reduced matrix S, a permutation matrix P and a
+<br>gives n row reduced matrix S, a permutation matrix P and a
 normalized lower triangular matrix U, with P*A=U*S
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>This procedure is designed for teaching purposes mainly.
-The straight forward implementation in the interpreted library
-is not very efficient (no standard basis computation).
+<dd><p>with row pivoting
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;linalg.lib&quot;;
 ring r=0,(x),dp;
-matrix A[5][4]=1,3,-1,4,2,5,-1,3,1,3,-1,4,0,4,-3,1,-3,1,-5,-2;
-print(A);
-list Z=gaussred(A);   //construct P,U,S s.t. P*A=U*S
-print(Z[1]);          //P
-print(Z[2]);          //U
-print(Z[3]);          //S
-print(Z[4]);          //rank
-print(Z[1]*A);        //P*A
-print(Z[2]*Z[3]);     //U*S
+matrix A[5][4] = 1, 3,-1,4,
+2, 5,-1,3,
+1, 3,-1,4,
+0, 4,-3,1,
+-3,1,-5,-2;
+list Z=gaussred_pivot(A);  //construct P,U,S s.t. P*A=U*S
+print(Z[1]);               //P
+print(Z[2]);               //U
+print(Z[3]);               //S
+print(Z[4]);               //rank
+print(Z[1]*A);             //P*A
+print(Z[2]*Z[3]);          //U*S
 </pre></td></tr></table>
 
 </td>
@@ -128,14 +129,14 @@ print(Z[2]*Z[3]);     //U*S
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_514.htm#det_005fB" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.2.10 det_B" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_516.htm#gaussred_005fpivot" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.2.12 gaussred_pivot" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_504.htm#linalg_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.2 linalg_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_514.htm#gaussred" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.2.11 gaussred" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_516.htm#gauss_005fnf" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.2.13 gauss_nf" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_503.htm#linalg_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.2 linalg_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.9.6.3 msum</title>
+<title>Singular 2-0-4 Manual: 3.10 Debugging tools</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.9.6.3 msum">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.9.6.3 msum">
+<meta name="description" content="Singular 2-0-4 Manual: 3.10 Debugging tools">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.10 Debugging tools">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="msum"></a>
+<a name="Debugging-tools"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_58.htm#mtripple" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.9.6.2 mtripple" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_58.htm#msum" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.9.6.3 msum" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_60.htm#Debugging-tools" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.10 Debugging tools" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_60.htm#Tracing-of-procedures" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.10.1 Tracing of procedures" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_56.htm#template_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.9.6 template_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,67 +84,27 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="msum-1"></a>
-<h4 class="subsubsection">3.9.6.3 msum</h4>
-<a name="index-msum"></a>
-<p>Procedure from library <code>template.lib</code> (see <a href="sing_56.htm#template_005flib">template_lib</a>).
-</p>
-<dl compact="compact">
-<dt><strong>Usage:</strong></dt>
-<dd><p>msum([i_1,..,i_n]); <code>i_1,..,i_n</code> def
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>Sum of int arguments
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>This help string is written in a mixture of ASCII and texinfo
-<br> Use a @ref constructs for references (like see <a href="sing_58.htm#mtripple">mtripple</a>)
-<br> Use @code for typewriter font (like <code>i_1</code>)
-<br> Use @math for simple math mode typesetting (like 
- <span 
-class="cmmi-10">i</span><sub><span 
-class="cmr-7">1</span></sub>  
-).
-<br> Note: No parenthesis like } are allowed inside @math and @code
-<br> Use @example for indented preformatted text typeset in typewriter
-font like
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">         this  --&gt; that
-</pre></td></tr></table>
-<p>Use @format for preformatted text typeset in normal font
-</p><table><tr><td>&nbsp;</td><td><pre class="format">         this &ndash;&gt; that
-</pre></td></tr></table>
-<p>Use @texinfo for text in pure texinfo
-</p>
-<p>&rarr;
- <span 
-class="cmmi-10">i</span><sub><span 
-class="cmr-7">1</span><span 
-class="cmmi-7">,</span><span 
-class="cmr-7">1</span></sub>  
-</p>
+<a name="Debugging-tools-1"></a>
+<h2 class="section">3.10 Debugging tools</h2>
+<a name="index-Debugging-tools"></a>
 
-<p>Notice that
-<br>automatic linebreaking is still in affect (like on this line).
+<p>If <small>SINGULAR</small> does not come back to the prompt while calling a user
+defined procedure, probably a bracket or a <code>&quot;</code> is missing.  The
+easiest way to leave the procedure is to type some brackets or <code>&quot;</code>
+and then &lt;RETURN&gt; .
 </p>
-<a name="index-procedure_002c-ASCII_002fTexinfo-help"></a>
-</dd>
-</dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;template.lib&quot;;
-msum();
-&rarr; 0
-msum(4);
-&rarr; 4
-msum(1,2,3,4);
-&rarr; 10
-</pre></td></tr></table>
-<p><strong>See also:</strong>
-<a href="sing_53.htm#Typesetting-of-help-strings">Typesetting of help strings</a>;
-<a href="sing_57.htm#mdouble">mdouble</a>;
-<a href="sing_58.htm#mtripple">mtripple</a>.
-</p>
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_60.htm#Tracing-of-procedures">3.10.1 Tracing of procedures</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_61.htm#Source-code-debugger">3.10.2 Source code debugger</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_62.htm#Break-points">3.10.3 Break points</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_63.htm#Printing-of-data">3.10.4 Printing of data</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_64.htm#libparse">3.10.5 libparse</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
 
 </td>
 </tr>
@@ -155,14 +115,14 @@ msum(1,2,3,4);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_58.htm#mtripple" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.9.6.2 mtripple" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_60.htm#Debugging-tools" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.10 Debugging tools" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_56.htm#template_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.9.6 template_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_58.htm#msum" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.9.6.3 msum" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_60.htm#Tracing-of-procedures" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.10.1 Tracing of procedures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.7.5 zeroset_lib</title>
+<title>Singular 2-0-4 Manual: D.7.5.1 EGCD</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.7.5 zeroset_lib">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.7.5 zeroset_lib">
+<meta name="description" content="Singular 2-0-4 Manual: D.7.5.1 EGCD">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7.5.1 EGCD">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="zeroset_005flib"></a>
+<a name="EGCD"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_851.htm#triMNewton" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.4.2 triMNewton" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_851.htm#zeroset_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.5 zeroset_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_853.htm#EGCD" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.1 EGCD" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_853.htm#Factor" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.2 Factor" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_813.htm#Symbolic_002dnumerical-solving" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7 Symbolic-numerical solving" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_851.htm#zeroset_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.5 zeroset_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,77 +84,39 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="zeroset_005flib-1"></a>
-<h3 class="subsection">D.7.5 zeroset_lib</h3>
-<a name="index-zeroset_002elib"></a>
-<a name="index-zeroset_005flib"></a>
+<a name="EGCD-1"></a>
+<h4 class="subsubsection">D.7.5.1 EGCD</h4>
+<a name="index-EGCD"></a>
+<p>Procedure from library <code>zeroset.lib</code> (see <a href="sing_851.htm#zeroset_005flib">zeroset_lib</a>).
+</p>
 <dl compact="compact">
-<dt><strong>Library:</strong></dt>
-<dd><p>zeroset.lib
-</p></dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>      Procedures For Roots and Factorization
-</p></dd>
-<dt><strong>Author:</strong></dt>
-<dd><p>Thomas Bayer, email: tbayer@mathematik.uni-kl.de
-<br>http://wwwmayr.informatik.tu-muenchen.de/personen/bayert/
-Current Adress: Institut fuer Informatik, TU Muenchen
+<dt><strong>Usage:</strong></dt>
+<dd><p>EGCD(f, g); where f,g are polynomials
 </p>
 </dd>
-<dt><strong>Overview:</strong></dt>
-<dd><p>Algorithms for finding the zero-set of a zero-dim. ideal in Q(a)[x_1,..,x_n],
-Roots and Factorization of univariate polynomials over Q(a)[t]
-where a is an algebraic number. Written in the frame of the
-diploma thesis (advisor: Prof. Gert-Martin Greuel) &rsquo;Computations of moduli
-spaces of semiquasihomogeneous singularities and an implementation in Singular&rsquo;.
-This library is meant as a preliminary extension of the functionality
-of Singular for univariate factorization of polynomials over simple algebraic
-extensions in characteristic 0.
-<br>Subprocedures with postfix &rsquo;Main&rsquo; require that the ring contains a variable
-&rsquo;a&rsquo; and no parameters, and the ideal &rsquo;mpoly&rsquo;, where &rsquo;minpoly&rsquo; from the
-basering is stored.
+<dt><strong>Purpose:</strong></dt>
+<dd><p>compute the polynomial gcd of f and g over Q(a)[x]
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>polynomial h s.t. h is a greatest common divisor of f and g (not nec.
+monic)
+</p>
+</dd>
+<dt><strong>Assume:</strong></dt>
+<dd><p>basering = Q(a)[t]
 </p>
 </dd>
 </dl>
-
-<p><strong>Procedures:</strong>
-</p><blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_853.htm#EGCD">D.7.5.1 EGCD</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> gcd over an algebraic extension field of Q
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_854.htm#Factor">D.7.5.2 Factor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> factorization of f over an algebraic extension field
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_855.htm#Quotient">D.7.5.3 Quotient</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> quotient q of f w.r.t. g (in f = q*g + remainder)
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_856.htm#Remainder">D.7.5.4 Remainder</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> remainder of the division of f by g
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_857.htm#Roots">D.7.5.5 Roots</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> computes all roots of f in an extension field of Q
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_858.htm#SQFRNorm">D.7.5.6 SQFRNorm</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> norm of f (f must be squarefree)
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_859.htm#ZeroSet">D.7.5.7 ZeroSet</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> zero-set of the 0-dim. ideal I
-</td></tr>
-</table></blockquote>
-<p><strong>Auxiliary procedures:</strong>
-</p><blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_860.htm#EGCDMain">D.7.5.8 EGCDMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> gcd over an algebraic extension field of Q
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_861.htm#FactorMain">D.7.5.9 FactorMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> factorization of f over an algebraic extension field
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_862.htm#InvertNumberMain">D.7.5.10 InvertNumberMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> inverts an element of an algebraic extension field
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_863.htm#QuotientMain">D.7.5.11 QuotientMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> quotient of f w.r.t. g
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_864.htm#RemainderMain">D.7.5.12 RemainderMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> remainder of the division of f by g
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_865.htm#RootsMain">D.7.5.13 RootsMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> computes all roots of f, might extend the ground field
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_866.htm#SQFRNormMain">D.7.5.14 SQFRNormMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> norm of f (f must be squarefree)
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_867.htm#ContainedQ">D.7.5.15 ContainedQ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> f in data ?
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_868.htm#SameQ">D.7.5.16 SameQ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> a == b (list a,b)
-</td></tr>
-</table></blockquote>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;zeroset.lib&quot;;
+ring R = (0,a), x, lp;
+minpoly = a2+1;
+poly f =  x4 - 1;
+poly g = x2 - 2*a*x - 1;
+EGCD(f, g);
+&rarr; (-4a)*x-4
+</pre></td></tr></table>
 
 </td>
 </tr>
@@ -165,14 +127,14 @@ basering is stored.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_851.htm#triMNewton" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.4.2 triMNewton" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_853.htm#EGCD" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.1 EGCD" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_813.htm#Symbolic_002dnumerical-solving" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7 Symbolic-numerical solving" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_851.htm#zeroset_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.5 zeroset_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_853.htm#Factor" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.2 Factor" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_851.htm#zeroset_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.5 zeroset_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

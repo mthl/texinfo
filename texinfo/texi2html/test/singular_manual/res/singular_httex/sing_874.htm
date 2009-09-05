@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.8.2 latex_lib</title>
+<title>Singular 2-0-4 Manual: D.8.2.1 closetex</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.8.2 latex_lib">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.8.2 latex_lib">
+<meta name="description" content="Singular 2-0-4 Manual: D.8.2.1 closetex">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.8.2.1 closetex">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="latex_005flib"></a>
+<a name="closetex"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_873.htm#mplot" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.1.3 mplot" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_873.htm#latex_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2 latex_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_875.htm#closetex" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.1 closetex" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_875.htm#opentex" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.2 opentex" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_869.htm#Visualization" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8 Visualization" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_873.htm#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,70 +84,32 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="latex_005flib-1"></a>
-<h3 class="subsection">D.8.2 latex_lib</h3>
-<a name="index-latex_002elib"></a>
-<a name="index-latex_005flib"></a>
+<a name="closetex-1"></a>
+<h4 class="subsubsection">D.8.2.1 closetex</h4>
+<a name="index-closetex"></a>
+<p>Procedure from library <code>latex.lib</code> (see <a href="sing_873.htm#latex_005flib">latex_lib</a>).
+</p>
 <dl compact="compact">
-<dt><strong>Library:</strong></dt>
-<dd><p>latex.lib
-</p></dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>    Typesetting of Singular-Objects in LaTeX2e
-</p></dd>
-<dt><strong>Author:</strong></dt>
-<dd><p>Christian Gorzel, gorzelc@math.uni-muenster.de
+<dt><strong>Usage:</strong></dt>
+<dd><p>closetex(fname); fname string
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>nothing; writes a LaTeX2e closing line into file <code>&lt;fname&gt;</code>.
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>preceding &quot;&gt;&gt;&quot; are deleted and suffix &quot;.tex&quot; (if not given)
+is added to <code>fname</code>.
 </p>
 </dd>
 </dl>
-
-<p><strong>Procedures:</strong>
-</p><blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_875.htm#closetex">D.8.2.1 closetex</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> writes closing line for LaTeX-document
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_876.htm#opentex">D.8.2.2 opentex</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> writes header for LaTeX-file fnm
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_877.htm#tex">D.8.2.3 tex</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> calls LaTeX2e for LaTeX-file fnm
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_878.htm#texdemo">D.8.2.4 texdemo</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> produces a file explaining the features of this lib
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_879.htm#texfactorize">D.8.2.5 texfactorize</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> creates string in LaTeX-format for factors of poly f
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_880.htm#texmap">D.8.2.6 texmap</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> creates string in LaTeX-format for map m:r1-&gt;r2
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_881.htm#texname">D.8.2.7 texname</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> creates string in LaTeX-format for identifier
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_882.htm#texobj">D.8.2.8 texobj</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> creates string in LaTeX-format for any (basic) type
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_883.htm#texpoly">D.8.2.9 texpoly</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> creates string in LaTeX-format for poly
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_884.htm#texproc">D.8.2.10 texproc</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> creates string in LaTeX-format of text from proc p
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_885.htm#texring">D.8.2.11 texring</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> creates string in LaTeX-format for ring/qring
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_886.htm#rmx">D.8.2.12 rmx</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> removes .aux and .log files of LaTeX-files
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_887.htm#xdvi">D.8.2.13 xdvi</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> calls xdvi for dvi-files
-</td></tr>
-</table></blockquote>
-<dl compact="compact">
-<dt><strong>Global variables:</strong></dt>
-<dd><p>TeXwidth, TeXnofrac, TeXbrack, TeXproj, TeXaligned, TeXreplace, NoDollars
-are used to control the typesetting.
-Call <code>texdemo();</code> to obtain a LaTeX2e file <code>texlibdemo.tex</code>
-explaining the features of <code>latex.lib</code> and its global variables.
-</p><table><tr><td>&nbsp;</td><td><pre class="format">  <code>TeXwidth</code> (int) -1, 0, 1..9, &gt;9:  controls breaking of long polynomials
-  <code>TeXnofrac</code> (int) flag:  write 1/2 instead of \frac{1}{2}
-  <code>TeXbrack</code> (string) &quot;{&quot;, &quot;(&quot;, &quot;&lt;&quot;, &quot;|&quot;, empty string: 
-                                   controls brackets around ideals and matrices
-  <code>TeXproj</code> (int) flag:  write &quot;:&quot; instead of &quot;,&quot; in vectors
-  <code>TeXaligned</code> (int) flag:  write maps (and ideals) aligned
-  <code>TeXreplace</code> (list) list entries = 2 strings:  replacing symbols
-  <code>NoDollars</code> (int) flag:  suppresses surrounding $ signs
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;latex.lib&quot;;
+opentex(&quot;exmpl&quot;);
+texobj(&quot;exmpl&quot;,&quot;{\\large \\bf hello}&quot;);
+closetex(&quot;exmpl&quot;);
 </pre></td></tr></table>
-
-</dd>
-</dl>
 
 </td>
 </tr>
@@ -158,14 +120,14 @@ explaining the features of <code>latex.lib</code> and its global variables.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_873.htm#mplot" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.1.3 mplot" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_875.htm#closetex" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.1 closetex" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_869.htm#Visualization" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8 Visualization" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_873.htm#latex_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2 latex_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_875.htm#opentex" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.2 opentex" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_873.htm#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

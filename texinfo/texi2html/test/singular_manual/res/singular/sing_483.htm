@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.3.1.7 is_complex</title>
+<title>Singular 2-0-4 Manual: D.3.1.8 outer</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.3.1.7 is_complex">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.3.1.7 is_complex">
+<meta name="description" content="Singular 2-0-4 Manual: D.3.1.8 outer">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.3.1.8 outer">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="is_005fcomplex"></a>
+<a name="outer"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_482.htm#genericmat" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.1.6 genericmat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_482.htm#is_005fcomplex" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.1.7 is_complex" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_484.htm#outer" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.1.8 outer" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_484.htm#power" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.1.9 power" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_476.htm#matrix_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.1 matrix_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_475.htm#matrix_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.1 matrix_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,37 +82,40 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="is_005fcomplex-1"></a>
-<h4 class="subsubsection">D.3.1.7 is_complex</h4>
-<a name="index-is_005fcomplex"></a>
-<p>Procedure from library <code>matrix.lib</code> (see <a href="sing_476.htm#matrix_005flib">matrix_lib</a>).
+<a name="outer-1"></a>
+<h4 class="subsubsection">D.3.1.8 outer</h4>
+<a name="index-outer"></a>
+<p>Procedure from library <code>matrix.lib</code> (see <a href="sing_475.htm#matrix_005flib">matrix_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>is_complex(c); c = list of size-compatible modules or matrices
+<dd><p>outer(A,B); A,B matrices
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>1 if c[i]*c[i+1]=0 for all i, 0 if not, hence checking whether the
-list of matrices forms a complex.
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>Ideals are treated internally as 1-line matrices.
-<br>If printlevel &gt; 0, the position where c is not a complex is shown.
+<dd><p>matrix, outer (tensor) product of A and B
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;matrix.lib&quot;;
-ring r  = 32003,(x,y,z),ds;
-ideal i = x4+y5+z6,xyz,yx2+xz2+zy7;
-list L  = nres(i,0);
-is_complex(L);
-&rarr; 1
-L[4]    = matrix(i);
-is_complex(L);
-&rarr; 0
+ring r=32003,(x,y,z),ds;
+matrix A[3][3]=1,2,3,4,5,6,7,8,9;
+matrix B[2][2]=x,y,0,z;
+print(A);
+&rarr; 1,2,3,
+&rarr; 4,5,6,
+&rarr; 7,8,9 
+print(B);
+&rarr; x,y,
+&rarr; 0,z 
+print(outer(A,B));
+&rarr; x, y, 2x,2y,3x,3y,
+&rarr; 0, z, 0, 2z,0, 3z,
+&rarr; 4x,4y,5x,5y,6x,6y,
+&rarr; 0, 4z,0, 5z,0, 6z,
+&rarr; 7x,7y,8x,8y,9x,9y,
+&rarr; 0, 7z,0, 8z,0, 9z 
 </pre></td></tr></table>
 
 </td>
@@ -124,14 +127,14 @@ is_complex(L);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_482.htm#genericmat" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.1.6 genericmat" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_484.htm#outer" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.1.8 outer" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_476.htm#matrix_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.1 matrix_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_482.htm#is_005fcomplex" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.3.1.7 is_complex" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_484.htm#power" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.3.1.9 power" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_475.htm#matrix_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.3.1 matrix_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

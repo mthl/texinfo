@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.1.7 milnorcode</title>
+<title>Singular 2-0-4 Manual: D.5.1.8 morsesplit</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.1.7 milnorcode">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.1.7 milnorcode">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.1.8 morsesplit">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.1.8 morsesplit">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="milnorcode"></a>
+<a name="morsesplit"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_637.htm#internalfunctions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.6 internalfunctions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_637.htm#milnorcode" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.7 milnorcode" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_639.htm#morsesplit" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.8 morsesplit" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_639.htm#quickclass" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.9 quickclass" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_631.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_630.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,31 +82,37 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="milnorcode-1"></a>
-<h4 class="subsubsection">D.5.1.7 milnorcode</h4>
-<a name="index-milnorcode"></a>
-<p>Procedure from library <code>classify.lib</code> (see <a href="sing_631.htm#classify_005flib">classify_lib</a>).
+<a name="morsesplit-1"></a>
+<h4 class="subsubsection">D.5.1.8 morsesplit</h4>
+<a name="index-morsesplit"></a>
+<p>Procedure from library <code>classify.lib</code> (see <a href="sing_630.htm#classify_005flib">classify_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>milnorcode(f[,e]); f=poly, e=int
+<dd><p>morsesplit(f); f=poly
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>intvec, coding the Hilbert function of the e-th Milnor algebra
-of f, i.e. of basering/(jacob(f)^e) (default e=1), according
-to proc Hcode
+<dd><p>Normal form of f in M^3 after application of the splitting lemma
+</p>
+</dd>
+<dt><strong>Compute:</strong></dt>
+<dd><p>apply the splitting lemma (generalized Morse lemma) to f
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;classify.lib&quot;;
 ring r=0,(x,y,z),ds;
-poly f=x2y+y3+z2;
-milnorcode(f);
-&rarr; 1,1,1
-milnorcode(f,2);  // a big second argument may result in memory overflow
-&rarr; 1,0,1,0,2,0,0,1,0
+export r;
+&rarr; // ** `r` is already global
+init_debug(1);
+&rarr; Debugging level is set to  1
+poly f=(x2+3y-2z)^2+xyz-(x-y3+x2*z3)^3;
+poly g=morsesplit(f);
+&rarr; Residual singularity f= -x3+3/2xy2+1/2x3y-1/16x2y2+3x2y3
+g;
+&rarr; -x3+3/2xy2+1/2x3y-1/16x2y2+3x2y3
 </pre></td></tr></table>
 
 </td>
@@ -118,14 +124,14 @@ milnorcode(f,2);  // a big second argument may result in memory overflow
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_637.htm#internalfunctions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.6 internalfunctions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_639.htm#morsesplit" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.8 morsesplit" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_631.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_637.htm#milnorcode" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.7 milnorcode" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_639.htm#quickclass" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.9 quickclass" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_630.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

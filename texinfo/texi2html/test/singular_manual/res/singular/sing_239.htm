@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.84 npars</title>
+<title>Singular 2-0-4 Manual: 5.1.85 nres</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.84 npars">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.84 npars">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.85 nres">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.85 nres">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="npars"></a>
+<a name="nres"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_238.htm#ncols" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.83 ncols" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_238.htm#npars" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.84 npars" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_240.htm#nres" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.85 nres" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_240.htm#nrows" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.86 nrows" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,31 +82,104 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="npars-1"></a>
-<h3 class="subsection">5.1.84 npars</h3>
-<a name="index-npars"></a>
+<a name="nres-1"></a>
+<h3 class="subsection">5.1.85 nres</h3>
+<a name="index-nres"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>npars (</code> ring_name <code>)</code>
+<dd><p><code>nres (</code> ideal_expression<code>,</code> int_expression <code>)</code>
+<br><code>nres (</code> module_expression<code>,</code> int_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>int
+<dd><p>resolution
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>returns the number of parameters of a ring.
+<dd><p>computes a free resolution of an ideal or module M which is minimized from
+the second module on (by the standard basis method).
+</p>
+<p>More precisely, let
+<SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_131.png"
+ ALT="$A_1$"></SPAN>=matrix(M),
+then <code>nres</code> computes a free resolution of
+<!-- MATH
+ $coker(A_1)=F_0/M$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="128" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_134.png"
+ ALT="$coker(A_1)=F_0/M$"></SPAN>
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+...\longrightarrow F_2 \buildrel{A_2}\over{\longrightarrow} F_1 \buildrel{A_1}\over{\longrightarrow} F_0\longrightarrow F_0/M\longrightarrow 0,
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="272" HEIGHT="26" BORDER="0"
+ SRC="sing_130.png"
+ ALT="\begin{displaymath}...\longrightarrow F_2 \buildrel{A_2}\over{\longrightarrow} F...
+...er{\longrightarrow} F_0\longrightarrow F_0/M
+\longrightarrow 0,\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<br>where the columns of the matrix
+<SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_131.png"
+ ALT="$A_1$"></SPAN>
+are the given set of generators of M.
+If the int expression k is not zero then the computation stops after k steps
+and returns a list of modules
+<!-- MATH
+ $M_i={\tt module}(A_i)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="117" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_103.png"
+ ALT="$M_i={\tt module} (A_i)$"></SPAN>, i=1..k.
+<br><code>nres(M,0)</code> returns a list of n modules where n is the number of
+variables of the basering.
+Let <code>list L=nres(M,0);</code> then <code>L[1]=M</code> is identical to the input,
+<code>L[2]</code> is a minimal set of generators for the first syzygy
+module of  <code>L[1]</code>, etc.
+(<!-- MATH
+ ${\tt L[i]}=M_i$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="67" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_104.png"
+ ALT="${\tt L[i]}=M_i$"></SPAN>
+in the notations from above).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=(23,t,v),(x,a(1..7)),lp;
-  // the parameters are t,v
-  npars(r);
-&rarr; 2
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=31991,(t,x,y,z,w),ls;
+  ideal M=t2x2+tx2y+x2yz,t2y2+ty2z+y2zw,
+          t2z2+tz2w+xz2w,t2w2+txw2+xyw2;
+  resolution L=nres(M,0);
+  L;
+&rarr;  1      4      15      18      7      1      
+&rarr; r &lt;--  r &lt;--  r &lt;--   r &lt;--   r &lt;--  r
+&rarr; 
+&rarr; 0      1      2       3       4      5      
+&rarr; resolution not minimized yet
+&rarr; 
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_247.htm#par">par</a>;
-<a href="sing_249.htm#parstr">parstr</a>;
-<a href="sing_139.htm#ring">ring</a>.
+<a href="sing_201.htm#hres">hres</a>;
+<a href="sing_68.htm#ideal">ideal</a>;
+<a href="sing_223.htm#lres">lres</a>;
+<a href="sing_115.htm#module">module</a>;
+<a href="sing_232.htm#mres">mres</a>;
+<a href="sing_263.htm#res">res</a>;
+<a href="sing_134.htm#resolution">resolution</a>;
+<a href="sing_273.htm#sres">sres</a>.
 </p></td>
 </tr>
 </table>
@@ -116,14 +189,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_238.htm#ncols" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.83 ncols" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_240.htm#nres" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.85 nres" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_238.htm#npars" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.84 npars" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_240.htm#nrows" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.86 nrows" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

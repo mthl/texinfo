@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.6.1.11 invariant_basis</title>
+<title>Singular 2-0-4 Manual: D.6.1.12 invariant_basis_reynolds</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.6.1.11 invariant_basis">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.6.1.11 invariant_basis">
+<meta name="description" content="Singular 2-0-4 Manual: D.6.1.12 invariant_basis_reynolds">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6.1.12 invariant_basis_reynolds">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="invariant_005fbasis"></a>
+<a name="invariant_005fbasis_005freynolds"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_763.htm#evaluate_005freynolds" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.10 evaluate_reynolds" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_763.htm#invariant_005fbasis" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.11 invariant_basis" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_765.htm#invariant_005fbasis_005freynolds" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.12 invariant_basis_reynolds" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_765.htm#primary_005fchar0" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.13 primary_char0" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_753.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_752.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,27 +84,38 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="invariant_005fbasis-1"></a>
-<h4 class="subsubsection">D.6.1.11 invariant_basis</h4>
-<a name="index-invariant_005fbasis"></a>
-<p>Procedure from library <code>finvar.lib</code> (see <a href="sing_753.htm#finvar_005flib">finvar_lib</a>).
+<a name="invariant_005fbasis_005freynolds-1"></a>
+<h4 class="subsubsection">D.6.1.12 invariant_basis_reynolds</h4>
+<a name="index-invariant_005fbasis_005freynolds"></a>
+<p>Procedure from library <code>finvar.lib</code> (see <a href="sing_752.htm#finvar_005flib">finvar_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>invariant_basis(g,G1,G2,...);
-<br>g: an &lt;int&gt; indicating of which degree (&gt;0) the homogeneous basis
-should be, G1,G2,...: &lt;matrices&gt; generating a finite matrix group
+<dd><p>invariant_basis_reynolds(REY,d[,flags]);
+<br>REY: a &lt;matrix&gt; representing the Reynolds operator, d: an &lt;int&gt;
+indicating of which degree (&gt;0) the homogeneous basis should be, flags:
+an optional &lt;intvec&gt; with two entries: its first component gives the
+dimension of the space (default &lt;0 meaning unknown) and its second
+component is used as the number of polynomials that should be mapped
+to invariants during one call of evaluate_reynolds if the dimension of
+the space is unknown or the number such that number x dimension
+polynomials are mapped to invariants during one call of
+evaluate_reynolds
 </p>
 </dd>
-<dt><strong>Returns:</strong></dt>
-<dd><p>the basis (type &lt;ideal&gt;) of the space of invariants of degree g
+<dt><strong>Assume:</strong></dt>
+<dd><p>REY is the first return value of group_reynolds() or reynolds_molien()
+and flags[1] given by partial_molien
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>the basis (type &lt;ideal&gt;) of the space of invariants of degree d
 </p>
 </dd>
 <dt><strong>Theory:</strong></dt>
-<dd><p>A general polynomial of degree g is generated and the generators of
-the matrix group applied. The difference ought to be 0 and this way a
-system of linear equations is created. It is solved by computing
-syzygies.
+<dd><p>Monomials of degree d are mapped to invariants with the Reynolds
+operator. A linearly independent set is generated with the help of
+minbase.
 </p>
 </dd>
 </dl>
@@ -112,9 +123,18 @@ syzygies.
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;finvar.lib&quot;;
 ring R=0,(x,y,z),dp;
 matrix A[3][3]=0,1,0,-1,0,0,0,0,-1;
-print(invariant_basis(2,A));
-&rarr; x2+y2,
-&rarr; z2
+intvec flags=0,1,0;
+matrix REY,M=reynolds_molien(A,flags);
+flags=8,6;
+print(invariant_basis_reynolds(REY,6,flags));
+&rarr; z6,
+&rarr; x2z4+y2z4,
+&rarr; x2y2z2,
+&rarr; x3yz2-xy3z2,
+&rarr; x4z2+y4z2,
+&rarr; x4y2+x2y4,
+&rarr; x5y-xy5,
+&rarr; x6+y6
 </pre></td></tr></table>
 
 </td>
@@ -126,14 +146,14 @@ print(invariant_basis(2,A));
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_763.htm#evaluate_005freynolds" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.10 evaluate_reynolds" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_765.htm#invariant_005fbasis_005freynolds" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.12 invariant_basis_reynolds" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_753.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_763.htm#invariant_005fbasis" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.11 invariant_basis" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_765.htm#primary_005fchar0" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.13 primary_char0" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_752.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

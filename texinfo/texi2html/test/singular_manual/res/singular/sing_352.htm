@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: A.21 Primary decomposition</title>
+<title>Singular 2-0-4 Manual: A.22 Normalization</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: A.21 Primary decomposition">
-<meta name="keywords" content="Singular 2-0-4 Manual: A.21 Primary decomposition">
+<meta name="description" content="Singular 2-0-4 Manual: A.22 Normalization">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.22 Normalization">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Primary-decomposition"></a>
+<a name="Normalization"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_351.htm#Puiseux-pairs" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.20 Puiseux pairs" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_351.htm#Primary-decomposition" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.21 Primary decomposition" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_353.htm#Normalization" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.22 Normalization" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_353.htm#Branches-of-an-Isolated-Space-Curve-Singularity" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.23 Branches of an Isolated Space Curve Singularity" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,120 +82,66 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Primary-decomposition-1"></a>
-<h2 class="section">A.21 Primary decomposition</h2>
-<a name="index-Primary-decomposition"></a>
-
-<p>There are two algorithms implemented in <small>SINGULAR</small> which provide
-primary decomposition: <code>primdecGTZ</code>, based on
-Gianni/Trager/Zacharias (written by Gerhard Pfister) and
-<code>primdecSY</code>, based on Shimoyama/Yokoyama (written by Wolfram Decker
-and Hans Schoenemann).
+<a name="Normalization-1"></a>
+<h2 class="section">A.22 Normalization</h2>
+<a name="index-Normalization"></a>
+<p>The normalization will be computed for a reduced ring 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_174.png"
+ ALT="$R/I$"></SPAN>
+. The
+result is a list of rings; ideals are always called <code>norid</code> in the
+rings of this list. The normalization of 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_174.png"
+ ALT="$R/I$"></SPAN>
+ is the product of
+the factor rings of the rings in the list divided out by the ideals
+<code>norid</code>.
 </p>
-<p>The result of <code>primdecGTZ</code> and <code>primdecSY</code> is returned as
-a list of pairs of ideals,
-where the second ideal form the prime ideal and the first
-ideal form the corresponding primary ideal.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;primdec.lib&quot;;
-  ring r = 0,(a,b,c,d,e,f),dp;
-  ideal i= f3, ef2, e2f, bcf-adf, de+cf, be+af, e3;
-  primdecGTZ(i);
-&rarr; [1]:
-&rarr;    [1]:
-&rarr;       _[1]=f
-&rarr;       _[2]=e
-&rarr;    [2]:
-&rarr;       _[1]=f
-&rarr;       _[2]=e
-&rarr; [2]:
-&rarr;    [1]:
-&rarr;       _[1]=f3
-&rarr;       _[2]=ef2
-&rarr;       _[3]=e2f
-&rarr;       _[4]=e3
-&rarr;       _[5]=de+cf
-&rarr;       _[6]=be+af
-&rarr;       _[7]=-bc+ad
-&rarr;    [2]:
-&rarr;       _[1]=f
-&rarr;       _[2]=e
-&rarr;       _[3]=-bc+ad
-  // We consider now the ideal J of the base space of the
-  // miniversal deformation of the cone over the rational
-  // normal curve computed in section *8* and compute
-  // its primary decomposition.
-  ring R = 0,(A,B,C,D),dp;
-  ideal J = CD, BD+D2, AD;
-  primdecGTZ(J);
-&rarr; [1]:
-&rarr;    [1]:
-&rarr;       _[1]=D
-&rarr;    [2]:
-&rarr;       _[1]=D
-&rarr; [2]:
-&rarr;    [1]:
-&rarr;       _[1]=C
-&rarr;       _[2]=B+D
-&rarr;       _[3]=A
-&rarr;    [2]:
-&rarr;       _[1]=C
-&rarr;       _[2]=B+D
-&rarr;       _[3]=A
-  // We see that there are two components which are both
-  // prime, even linear subspaces, one 3-dimensional,
-  // the other 1-dimensional.
-  // (This is Pinkhams example and was the first known
-  // surface singularity with two components of
-  // different dimensions)
-  //
-  // Let us now produce an embedded component in the last
-  // example, compute the minimal associated primes and
-  // the radical. We use the Characteristic set methods
-  // from prim_dec.lib.
-  J = intersect(J,maxideal(3));
-  // The following shows that the maximal ideal defines an embedded
-  // (prime) component.
-  primdecSY(J);
-&rarr; [1]:
-&rarr;    [1]:
-&rarr;       _[1]=D
-&rarr;    [2]:
-&rarr;       _[1]=D
-&rarr; [2]:
-&rarr;    [1]:
-&rarr;       _[1]=C
-&rarr;       _[2]=B+D
-&rarr;       _[3]=A
-&rarr;    [2]:
-&rarr;       _[1]=C
-&rarr;       _[2]=B+D
-&rarr;       _[3]=A
-&rarr; [3]:
-&rarr;    [1]:
-&rarr;       _[1]=D2
-&rarr;       _[2]=C2
-&rarr;       _[3]=B2
-&rarr;       _[4]=AB
-&rarr;       _[5]=A2
-&rarr;       _[6]=BCD
-&rarr;       _[7]=ACD
-&rarr;    [2]:
-&rarr;       _[1]=D
-&rarr;       _[2]=C
-&rarr;       _[3]=B
-&rarr;       _[4]=A
-  minAssChar(J);
-&rarr; [1]:
-&rarr;    _[1]=C
-&rarr;    _[2]=B+D
-&rarr;    _[3]=A
-&rarr; [2]:
-&rarr;    _[1]=D
-  radical(J);
-&rarr; _[1]=CD
-&rarr; _[2]=BD+D2
-&rarr; _[3]=AD
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;normal.lib&quot;;
+  // ----- first example: rational quadruple point -----
+  ring R=32003,(x,y,z),wp(3,5,15);
+  ideal I=z*(y3-x5)+x10;
+  list pr=normal(I);
+&rarr; 
+&rarr; // 'normal' created a list of 1 ring(s).
+&rarr; // nor[1+1] is the delta-invariant in case of choose=wd.
+&rarr; // To see the rings, type (if the name of your list is nor):
+&rarr;      show( nor);
+&rarr; // To access the 1-st ring and map (similar for the others), type:
+&rarr;      def R = nor[1]; setring R;  norid; normap;
+&rarr; // R/norid is the 1-st ring of the normalization and
+&rarr; // normap the map from the original basering to R/norid
+  def S=pr[1];
+  setring S;
+  norid;
+&rarr; norid[1]=T(2)*T(3)-T(1)*T(4)
+&rarr; norid[2]=T(1)^7-T(1)^2*T(3)+T(2)*T(5)
+&rarr; norid[3]=T(1)^2*T(5)-T(2)*T(4)
+&rarr; norid[4]=T(1)^5*T(4)-T(3)*T(4)+T(5)^2
+&rarr; norid[5]=T(1)^6*T(3)-T(1)*T(3)^2+T(4)*T(5)
+&rarr; norid[6]=T(1)*T(3)*T(5)-T(4)^2
+  // ----- second example: union of straight lines -----
+  ring R1=0,(x,y,z),dp;
+  ideal I=(x-y)*(x-z)*(y-z);
+  list qr=normal(I);
+&rarr; 
+&rarr; // 'normal' created a list of 3 ring(s).
+&rarr; // nor[3+1] is the delta-invariant in case of choose=wd.
+&rarr; // To see the rings, type (if the name of your list is nor):
+&rarr;      show( nor);
+&rarr; // To access the 1-st ring and map (similar for the others), type:
+&rarr;      def R = nor[1]; setring R;  norid; normap;
+&rarr; // R/norid is the 1-st ring of the normalization and
+&rarr; // normap the map from the original basering to R/norid
+  def S1=qr[1]; def S2=qr[2];
+  setring S1; norid;
+&rarr; norid[1]=0
+  setring S2; norid;
+&rarr; norid[1]=0
 </pre></td></tr></table>
 </td>
 </tr>
@@ -206,14 +152,14 @@ ideal form the corresponding primary ideal.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_351.htm#Puiseux-pairs" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.20 Puiseux pairs" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_353.htm#Normalization" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.22 Normalization" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_351.htm#Primary-decomposition" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.21 Primary decomposition" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_353.htm#Branches-of-an-Isolated-Space-Curve-Singularity" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.23 Branches of an Isolated Space Curve Singularity" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

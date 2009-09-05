@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.6.5 MP links</title>
+<title>Singular 2-0-4 Manual: 4.6.5.1 MPfile links</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.6.5 MP links">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.6.5 MP links">
+<meta name="description" content="Singular 2-0-4 Manual: 4.6.5.1 MPfile links">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.6.5.1 MPfile links">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="MP-links"></a>
+<a name="MPfile-links"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_96.htm#ASCII-links" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.6.4 ASCII links" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_96.htm#MP-links" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.6.5 MP links" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_98.htm#MPfile-links" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.6.5.1 MPfile links" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_98.htm#MPtcp-links" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.6.5.2 MPtcp links" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_92.htm#link" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.6 link" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_96.htm#MP-links" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.6.5 MP links" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,33 +84,86 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="MP-links-1"></a>
-<h3 class="subsection">4.6.5 MP links</h3>
-<a name="index-MP-links"></a>
+<a name="MPfile-links-1"></a>
+<h4 class="subsubsection">4.6.5.1 MPfile links</h4>
+<a name="index-MPfile-links"></a>
 
-<p>MP (Multi Protocol) links give the possibility to store and communicate
-data in the binary MP format: Read and write access is very fast
-compared to ASCII links. MP links can be established using files (link
-type is <code>MPfile</code>) or using TCP sockets (link type is
-<code>MPtcp</code>). All data (including such data that cannot be converted
-to a string) can be written to an MP link. For ring-dependent data, a
-ring description is written together with the data. Reading from an MP
-link returns an expression (not a string) which was evaluated after the
-read operation. If the expression read from an MP link is not from the
-same ring as the current ring, then a <code>read</code> changes the current
-ring.
+<p>MPfile links provide the possibility to store data in a file using the
+binary MP format. Read and write operations are very fast compared to
+ASCII links. Therefore, for storing large amounts of data, MPfile links
+should be used instead of ASCII links. Unlike ASCII links, data read
+from MPfile links is returned as expressions one at a time, and not as a
+string containing the entire content of the file. Furthermore, ring-dependent
+data is stored together with a ring description. Therefore,
+reading ring-dependent data might change the current ring.
 </p>
-<p>Currently, MP links are only available on Unix platforms and data is
-written without attributes (which is likely to change in future
-versions). For a general description of MP, see
-<code>http://symbolicnet.mcs.kent.edu/areas/mp.html</code>.
+<p>The MPfile link describing string has to be one of the following:
 </p>
-<blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_98.htm#MPfile-links">4.6.5.1 MPfile links</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_99.htm#MPtcp-links">4.6.5.2 MPtcp links</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table></blockquote>
+<ol>
+<li> <code>&quot;MPfile: &quot;</code> + filename
+<br>the mode (read or append) is set by the first <code>read</code> or
+<code>write</code> command.
+</li><li> <code>&quot;MPfile:r &quot;</code> + filename
+<br>opens the file for reading.
+</li><li> <code>&quot;MPfile:w &quot;</code> + filename
+<br>opens the file for overwriting.
+</li><li> <code>&quot;MPfile:a &quot;</code> + filename
+<br>opens the file for appending.
+</li></ol>
+
+<p>There are the following default values:
+</p><ul>
+<li> if none of <code>r</code>, <code>w</code>, or <code>a</code> is specified, the mode of
+the link is set by the first <code>read</code> or <code>write</code> command on the
+link. If the first command is <code>write</code>, the mode is set to <code>a</code>
+(append mode).
+</li></ul>
+
+<p>Note that the filename may contain a path. An MPfile link can be used
+either for reading or for writing, but not for both at the same time. A
+<code>close</code> command must be used before a change of I/O direction.
+</p>
+<br><p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+  link l=&quot;MPfile:w example.mp&quot;; // type=MPfile, mode=overwrite
+  l;
+&rarr; // type : MPfile
+&rarr; // mode : w
+&rarr; // name : example.mp
+&rarr; // open : no
+&rarr; // read : not ready
+&rarr; // write: not ready
+  ideal i=x2,y2,z2;
+  write (l,1, i, &quot;hello world&quot;);// write three expressions
+  write(l,4);                   // append one more expression
+  close(l);                     // link is closed
+  // open the file for reading now
+  read(l);                      // only first expression is read
+&rarr; 1
+  kill r;                       // no basering active now
+  def i = read(l);              // second expression
+  // notice that current ring was set, the name was assigned
+  // automatically
+  listvar(ring);
+&rarr; // mpsr_r0              [0]  *ring
+  def s = read(l);              // third expression
+  listvar();
+&rarr; // s                    [0]  string hello world
+&rarr; // mpsr_r0              [0]  *ring
+&rarr; //      i                    [0]  ideal, 3 generator(s)
+&rarr; // l                    [0]  link
+&rarr; // LIB                  [0]  string standard.lib
+  close(l);                     // link is closed
+  dump(&quot;MPfile:w example.mp&quot;);  // dump everything to example.mp
+  kill i, s;                    // kill i and s
+  getdump(&quot;MPfile: example.mp&quot;);// get previous dump
+  listvar();                    // got all variables and values back
+&rarr; // mpsr_r0              [0]  *ring
+&rarr; //      i                    [0]  ideal, 3 generator(s)
+&rarr; // s                    [0]  string hello world
+&rarr; // l                    [0]  link
+&rarr; // LIB                  [0]  string standard.lib
+</pre></td></tr></table>
 
 </td>
 </tr>
@@ -121,14 +174,14 @@ versions). For a general description of MP, see
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_96.htm#ASCII-links" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.6.4 ASCII links" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_98.htm#MPfile-links" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.6.5.1 MPfile links" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_92.htm#link" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.6 link" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_96.htm#MP-links" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.6.5 MP links" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_98.htm#MPtcp-links" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.6.5.2 MPtcp links" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_96.htm#MP-links" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.6.5 MP links" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

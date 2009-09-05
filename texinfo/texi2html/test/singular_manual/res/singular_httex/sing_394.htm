@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.2.1 A_Z</title>
+<title>Singular 2-0-4 Manual: D.2.2.2 ASCII</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.2.1 A_Z">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.2.1 A_Z">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.2.2 ASCII">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.2.2 ASCII">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="A_005fZ"></a>
+<a name="ASCII"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2 general_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_393.htm#A_005fZ" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.1 A_Z" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_395.htm#ASCII" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.2 ASCII" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_395.htm#absValue" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.3 absValue" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_392.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,41 +84,47 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="A_005fZ-1"></a>
-<h4 class="subsubsection">D.2.2.1 A_Z</h4>
-<a name="index-A_005fZ"></a>
-<p>Procedure from library <code>general.lib</code> (see <a href="sing_393.htm#general_005flib">general_lib</a>).
+<a name="ASCII-1"></a>
+<h4 class="subsubsection">D.2.2.2 ASCII</h4>
+<a name="index-ASCII"></a>
+<p>Procedure from library <code>general.lib</code> (see <a href="sing_392.htm#general_005flib">general_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>A_Z(&quot;a&quot;,n); a any letter, n integer (-26&lt;= n &lt;=26, !=0)
+<dd><p>ASCII([n,m]); n,m= integers (32 &lt;= n &lt;= m &lt;= 126)
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>string of n small (if a is small) or capital (if a is capital)
-letters, comma separated, beginning with a, in alphabetical
-order (or revers alphabetical order if n&lt;0)
+<dd><p>string of printable ASCII characters (no native language support)
+ASCII(): string of all ASCII characters with its numbers,
+ASCII(n): n-th ASCII character
+<br>ASCII(n,m): n-th up to m-th ASCII character (inclusive)
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;general.lib&quot;;
-A_Z(&quot;c&quot;,5);
-&rarr; c,d,e,f,g
-A_Z(&quot;Z&quot;,-5);
-&rarr; Z,Y,X,W,V
-string sR = &quot;ring R = (0,&quot;+A_Z(&quot;A&quot;,6)+&quot;),(&quot;+A_Z(&quot;a&quot;,10)+&quot;),dp;&quot;;
-sR;
-&rarr; ring R = (0,A,B,C,D,E,F),(a,b,c,d,e,f,g,h,i,j),dp;
-execute(sR);
-R;
-&rarr; //   characteristic : 0
-&rarr; //   6 parameter    : A B C D E F 
-&rarr; //   minpoly        : 0
-&rarr; //   number of vars : 10
-&rarr; //        block   1 : ordering dp
-&rarr; //                  : names    a b c d e f g h i j 
-&rarr; //        block   2 : ordering C
+ASCII();&quot;&quot;;
+&rarr;      !    &quot;    #    $    %    &amp;    '    (    )    *    +    ,    -    .
+&rarr; 32   33   34   35   36   37   38   39   40   41   42   43   44   45   46
+&rarr; /    0    1    2    3    4    5    6    7    8    9    :    ;    &lt;    =
+&rarr; 47   48   49   50   51   52   53   54   55   56   57   58   59   60   61
+&rarr; &gt;    ?    @    A    B    C    D    E    F    G    H    I    J    K    L
+&rarr; 62   63   64   65   66   67   68   69   70   71   72   73   74   75   76
+&rarr; M    N    O    P    Q    R    S    T    U    V    W    X    Y    Z    [
+&rarr; 77   78   79   80   81   82   83   84   85   86   87   88   89   90   91
+&rarr; \    ]    ^    _    `    a    b    c    d    e    f    g    h    i    j
+&rarr; 92   93   94   95   96   97   98   99  100  101  102  103  104  105  10
+&rarr; k    l    m    n    o    p    q    r    s    t    u    v    w    x    y
+&rarr; 107  108  109  110  111  112  113  114  115  116  117  118  119  120  121
+&rarr; z    {    |    }    ~
+&rarr; 122  123  124  125  126 
+&rarr; 
+ASCII(42);
+&rarr; *
+ASCII(32,126);
+&rarr;  !&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefgh\
+   ijklmnopqrstuvwxyz{|}~
 </pre></td></tr></table>
 
 </td>
@@ -130,14 +136,14 @@ R;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2 general_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_395.htm#ASCII" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.2 ASCII" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_393.htm#A_005fZ" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.1 A_Z" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_395.htm#absValue" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.3 absValue" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_392.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

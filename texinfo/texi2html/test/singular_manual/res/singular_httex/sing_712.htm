@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.7.2 ModEqn</title>
+<title>Singular 2-0-4 Manual: D.5.7.3 QuotientEquations</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.7.2 ModEqn">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.7.2 ModEqn">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.7.3 QuotientEquations">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.7.3 QuotientEquations">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="ModEqn"></a>
+<a name="QuotientEquations"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_711.htm#ArnoldAction" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.7.1 ArnoldAction" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_711.htm#ModEqn" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.7.2 ModEqn" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_713.htm#QuotientEquations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.7.3 QuotientEquations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_713.htm#StabEqn" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.7.4 StabEqn" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_710.htm#qhmoduli_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.7 qhmoduli_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_709.htm#qhmoduli_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.7 qhmoduli_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,58 +84,43 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="ModEqn-1"></a>
-<h4 class="subsubsection">D.5.7.2 ModEqn</h4>
-<a name="index-ModEqn"></a>
-<p>Procedure from library <code>qhmoduli.lib</code> (see <a href="sing_710.htm#qhmoduli_005flib">qhmoduli_lib</a>).
+<a name="QuotientEquations-1"></a>
+<h4 class="subsubsection">D.5.7.3 QuotientEquations</h4>
+<a name="index-QuotientEquations"></a>
+<p>Procedure from library <code>qhmoduli.lib</code> (see <a href="sing_709.htm#qhmoduli_005flib">qhmoduli_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>ModEqn(f [, opt]); poly f; int opt;
+<dd><p>QuotientEquations(G,action,emb [, opt]); ideal G,action,emb;int opt
 </p>
 </dd>
 <dt><strong>Purpose:</strong></dt>
-<dd><p>compute equations of the moduli space of semiquasihomogeneous hypersurface singularity with principal part f w.r.t. right equivalence
+<dd><p>compute the quotient of the variety given by the parameterization
+&rsquo;emb&rsquo; by the linear action &rsquo;action&rsquo; of the algebraic group G.
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>f quasihomogeneous polynomial with an isolated singularity at 0
+<dd><p>&rsquo;action&rsquo; is linear, G must be finite if the Reynolds operator is
+needed (i.e., NullCone(G,action) returns some non-invariant polys)
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>polynomial ring, possibly a simple extension of the ground field of
-the basering, containing the ideal &rsquo;modid&rsquo;
-<br>- &rsquo;modid&rsquo; is the ideal of the moduli space if opt is even (&gt; 0).
-otherwise it contains generators of the coordinate ring R of the
-moduli space (note : Spec(R) is the moduli space)
+<dd><p>polynomial ring over a simple extension of the ground field of the
+basering, containing the ideals &rsquo;id&rsquo; and &rsquo;embedid&rsquo;.
+<br>- &rsquo;id&rsquo; contains the equations of the quotient, if opt = 1;
+if opt = 0, 2, &rsquo;id&rsquo; contains generators of the coordinate ring R
+of the quotient (Spec(R) is the quotient)
+<br>- &rsquo;embedid&rsquo; = 0, if opt = 1;
+<br>if opt = 0, 2, it is the ideal defining the equivariant embedding
 </p>
 </dd>
 <dt><strong>Options:</strong></dt>
-<dd><p>1 compute equations of the mod. space,
-<br>2 use a primary decomposition
-<br>4 compute E_f0, i.e., the image of G_f0
-<br>To combine options, add their value, default: opt =7
+<dd><p>1 compute equations of the quotient,
+<br>2 use a primary decomposition when computing the Reynolds operator <br>
+To combine options, add their value, default: opt =3.
 </p>
 </dd>
 </dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;qhmoduli.lib&quot;;
-ring B   = 0,(x,y), ls;
-poly f = -x4 + xy5;
-def R = ModEqn(f);
-setring R;
-modid;
-&rarr; modid[1]=Y(5)^2-Y(4)*Y(6)
-&rarr; modid[2]=Y(4)*Y(5)-Y(3)*Y(6)
-&rarr; modid[3]=Y(3)*Y(5)-Y(2)*Y(6)
-&rarr; modid[4]=Y(2)*Y(5)-Y(1)*Y(6)
-&rarr; modid[5]=Y(4)^2-Y(2)*Y(6)
-&rarr; modid[6]=Y(3)*Y(4)-Y(1)*Y(6)
-&rarr; modid[7]=Y(2)*Y(4)-Y(1)*Y(5)
-&rarr; modid[8]=Y(3)^2-Y(1)*Y(5)
-&rarr; modid[9]=Y(2)*Y(3)-Y(1)*Y(4)
-&rarr; modid[10]=Y(2)^2-Y(1)*Y(3)
-</pre></td></tr></table>
 
 </td>
 </tr>
@@ -146,14 +131,14 @@ modid;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_711.htm#ArnoldAction" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.7.1 ArnoldAction" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_713.htm#QuotientEquations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.7.3 QuotientEquations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_710.htm#qhmoduli_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.7 qhmoduli_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_711.htm#ModEqn" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.7.2 ModEqn" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_713.htm#StabEqn" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.7.4 StabEqn" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_709.htm#qhmoduli_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.7 qhmoduli_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

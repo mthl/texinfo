@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.9.1.11 dual_code</title>
+<title>Singular 2-0-4 Manual: D.9.1.12 sys_code</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.9.1.11 dual_code">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.9.1.11 dual_code">
+<meta name="description" content="Singular 2-0-4 Manual: D.9.1.12 sys_code">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.9.1.12 sys_code">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="dual_005fcode"></a>
+<a name="sys_005fcode"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_905.htm#closed_005fpoints" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.10 closed_points" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_905.htm#dual_005fcode" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.11 dual_code" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_907.htm#sys_005fcode" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.9.1.12 sys_code" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_907.htm#permute_005fL" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.9.1.13 permute_L" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_895.htm#brnoeth_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.9.1 brnoeth_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_894.htm#brnoeth_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.9.1 brnoeth_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,43 +84,66 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="dual_005fcode-1"></a>
-<h4 class="subsubsection">D.9.1.11 dual_code</h4>
-<a name="index-dual_005fcode"></a>
-<p>Procedure from library <code>brnoeth.lib</code> (see <a href="sing_895.htm#brnoeth_005flib">brnoeth_lib</a>).
+<a name="sys_005fcode-1"></a>
+<h4 class="subsubsection">D.9.1.12 sys_code</h4>
+<a name="index-sys_005fcode"></a>
+<p>Procedure from library <code>brnoeth.lib</code> (see <a href="sing_894.htm#brnoeth_005flib">brnoeth_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>dual_code(G); G a matrix of numbers
+<dd><p>sys_code(C); C is a matrix of constants
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>a generator matrix of the dual code generated by G
-</p>
+<dd><p>list L with:
+   </p><table><tr><td>&nbsp;</td><td><pre class="format">   L[1] is the generator matrix in standard form of an equivalent code,
+   L[2] is the parity check matrix in standard form of such code,
+   L[3] is an intvec which represents the needed permutation.
+   </pre></td></tr></table>
+
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>The input should be a matrix G of numbers. <br>
-The output is also a parity check matrix for the code defined by G
+<dd><p>Computes a systematic code which is equivalent to the given one.<br>
+The input should be a matrix of numbers.<br>
+The output has to be interpreted as follows: if the input was
+the generator matrix of an AG code then one should apply the
+permutation L[3] to the divisor D of rational points by means
+of <code>permute_L(D,L[3]);</code> before continuing to work with the
+code (for instance, if you want to use the systematic encoding
+together with a decoding algorithm).
 </p>
-<a name="index-linear-code_002c-dual"></a>
+<a name="index-linear-code_002c-systematic"></a>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;brnoeth.lib&quot;;
-ring s=2,T,lp;
-// here is the Hamming code of length 7 and dimension 3
-matrix G[3][7]=1,0,1,0,1,0,1,0,1,1,0,0,1,1,0,0,0,1,1,1,1;
-print(G);
-&rarr; 1,0,1,0,1,0,1,
-&rarr; 0,1,1,0,0,1,1,
-&rarr; 0,0,0,1,1,1,1 
-matrix H=dual_code(G);
-print(H);
-&rarr; 1,1,1,0,0,0,0,
-&rarr; 1,0,0,1,1,0,0,
-&rarr; 0,1,0,1,0,1,0,
-&rarr; 1,1,0,1,0,0,1 
+ring s=3,T,lp;
+matrix C[2][5]=0,1,0,1,1,0,1,0,0,1;
+print(C);
+&rarr; 0,1,0,1,1,
+&rarr; 0,1,0,0,1 
+list L=sys_code(C);
+L[3];
+&rarr; 2,4,3,1,5
+// here is the generator matrix in standard form
+print(L[1]);
+&rarr; 1,0,0,0,1,
+&rarr; 0,1,0,0,0 
+// here is the control matrix in standard form
+print(L[2]);
+&rarr; 0, 0,1,0,0,
+&rarr; 0, 0,0,1,0,
+&rarr; -1,0,0,0,1 
+// we can check that both codes are dual to each other
+print(L[1]*transpose(L[2]));
+&rarr; 0,0,0,
+&rarr; 0,0,0 
 </pre></td></tr></table>
+<p><strong>See also:</strong>
+<a href="sing_901.htm#AGcode_005fOmega">AGcode_Omega</a>;
+<a href="sing_907.htm#permute_005fL">permute_L</a>;
+<a href="sing_902.htm#prepSV">prepSV</a>.
+</p>
 
 </td>
 </tr>
@@ -131,14 +154,14 @@ print(H);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_905.htm#closed_005fpoints" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.10 closed_points" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_907.htm#sys_005fcode" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.9.1.12 sys_code" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_895.htm#brnoeth_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.9.1 brnoeth_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_905.htm#dual_005fcode" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.11 dual_code" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_907.htm#permute_005fL" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.9.1.13 permute_L" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_894.htm#brnoeth_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.9.1 brnoeth_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

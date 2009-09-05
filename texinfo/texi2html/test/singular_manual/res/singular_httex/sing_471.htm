@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.6.10 mapall</title>
+<title>Singular 2-0-4 Manual: D.2.6.11 ord_test</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.6.10 mapall">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.6.10 mapall">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.6.11 ord_test">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.6.11 ord_test">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="mapall"></a>
+<a name="ord_005ftest"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_470.htm#imapall" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.6.9 imapall" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_470.htm#mapall" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.6.10 mapall" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_472.htm#ord_005ftest" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.6.11 ord_test" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_472.htm#ringtensor" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.6.12 ringtensor" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_461.htm#ring_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.6 ring_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_460.htm#ring_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.6 ring_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,65 +84,32 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="mapall-1"></a>
-<h4 class="subsubsection">D.2.6.10 mapall</h4>
-<a name="index-mapall"></a>
-<p>Procedure from library <code>ring.lib</code> (see <a href="sing_461.htm#ring_005flib">ring_lib</a>).
+<a name="ord_005ftest-1"></a>
+<h4 class="subsubsection">D.2.6.11 ord_test</h4>
+<a name="index-ord_005ftest"></a>
+<p>Procedure from library <code>ring.lib</code> (see <a href="sing_460.htm#ring_005flib">ring_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>mapall(R,i[,s]); R=ring/qring, i=ideal of basering, s=string
-</p>
-</dd>
-<dt><strong>Create:</strong></dt>
-<dd><p>map all objects of ring R (of type poly/ideal/vector/module/number/
-matrix, map) into the basering, by mapping the j-th variable of R to
-the j-th generator of the ideal i. If no 3rd argument is present, the
-names are the same as in R. If, say, f is a poly in R and the 3rd
-argument is the string &quot;R&quot;, then f is mapped to f_R etc.
+<dd><p>ord_test(r); r ring
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>no return value.
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>This procedure has the same effect as defining a map, say psi, by
-map psi=R,i; and then applying psi to all objects of R. In particular,
-maps from R to some ring S are composed with psi, creating thus a map
-from the basering to S.
-<br>mapall may be combined with copyring to change vars for all objects.
-The 3rd argument is useful in order to avoid conflicts of names, the
-empty string is allowed.
-</p>
-</dd>
-<dt><strong>Caution:</strong></dt>
-<dd><p>mapall does not work inside a procedure.
+<dd><p>int 1 (resp. -1, resp. 0) if ordering of r is global (resp. local,
+resp. mixed)
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;ring.lib&quot;;
-// The example is not shown since mapall does not work in a procedure
-// (and hence not in the example procedure). Try the following commands:
-//   ring R=0,(x,y,z),dp;
-//   ideal j=x,y,z;
-//   matrix M[2][3]=1,2,3,x,y,z;
-//   map phi=R,x2,y2,z2;
-//   ring S=0,(a,b,c),ds;
-//   ideal i=c,a,b;
-//   mapall(R,i);         //map from R to S: x-&gt;c, y-&gt;a, z-&gt;b
-//   names(S);
-//   j; print(M); phi;    //phi maps R to S: x-&gt;c2, y-&gt;a2, z-&gt;b2
-//   ideal i1=a2,a+b,1;
-//   mapall(R,i1,&quot;&quot;);   //map from R to S: x-&gt;a2, y-&gt;a+b, z-&gt;1
-//   names(S);
-//   j_; print(M_); phi_;
-//   changevar(&quot;T&quot;,&quot;x()&quot;,R);  //change vars in R and call result T
-//   mapall(R,maxideal(1));       //identity map from R to T
-//   names(T);
-//   j; print(M); phi;
-//   kill R,S,T;
+ring R = 0,(x,y),dp;
+ring S = 0,(u,v),ls;
+ord_test(R);
+&rarr; 1
+ord_test(S);
+&rarr; -1
+ord_test(R+S);
+&rarr; 0
 </pre></td></tr></table>
 
 </td>
@@ -154,14 +121,14 @@ empty string is allowed.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_470.htm#imapall" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.6.9 imapall" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_472.htm#ord_005ftest" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.6.11 ord_test" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_461.htm#ring_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.6 ring_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_470.htm#mapall" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.6.10 mapall" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_472.htm#ringtensor" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.6.12 ringtensor" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_460.htm#ring_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.6 ring_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

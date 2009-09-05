@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.3.5 control_Matrix</title>
+<title>Singular 2-0-4 Manual: D.5.4 gaussman_lib</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.3.5 control_Matrix">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.3.5 control_Matrix">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.4 gaussman_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.4 gaussman_lib">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="control_005fMatrix"></a>
+<a name="gaussman_005flib"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_656.htm#isEquising" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.4 isEquising" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_656.htm#control_005fMatrix" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.5 control_Matrix" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_658.htm#gaussman_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.4 gaussman_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_658.htm#gmsring" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.4.1 gmsring" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_652.htm#equising_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.3 equising_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_629.htm#Singularities" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5 Singularities" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,47 +82,92 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="control_005fMatrix-1"></a>
-<h4 class="subsubsection">D.5.3.5 control_Matrix</h4>
-<a name="index-control_005fMatrix"></a>
-<p>Procedure from library <code>equising.lib</code> (see <a href="sing_652.htm#equising_005flib">equising_lib</a>).
-</p>
+<a name="gaussman_005flib-1"></a>
+<h3 class="subsection">D.5.4 gaussman_lib</h3>
+<a name="index-gaussman_002elib"></a>
+<a name="index-gaussman_005flib"></a>
 <dl compact="compact">
-<dt><strong>Assume:</strong></dt>
-<dd><p>L is the output of multsequence(reddevelop(f)).
+<dt><strong>Library:</strong></dt>
+<dd><p>gaussman.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>  Algorithmic Gauss-Manin Connection
 </p>
 </dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>list M of 4 intmat&rsquo;s:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">  M[1] contains the multiplicities at the respective infinitely near points 
-       p[i,j] (i=step of blowup+1, j=branch) &ndash; if branches j=k,...,k+m pass 
-       through the same p[i,j] then the multiplicity is stored in M[1][k,j], 
-       while M[1][k+1]=...=M[1][k+m]=0.   
-  M[2] contains the number of branches meeting at p[i,j] (again, the information 
-       is stored according to the above rule)   
-  M[3] contains the information about the splitting of M[1][i,j] with respect to 
-       different tangents of branches at p[i,j] (information is stored only for 
-       minimal j&gt;=k corresponding to a new tangent direction). 
-       The entries are the sum of multiplicities of all branches with the 
-       respective tangent.
-  M[4] contains the maximal sum of higher multiplicities for a branch passing 
-       through p[i,j] ( = degree Bound for blowing up)  
-</pre></td></tr></table>
-
+<dt><strong>Author:</strong></dt>
+<dd><p>Mathias Schulze, email: mschulze@mathematik.uni-kl.de
+</p>
 </dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>the branches are ordered in such a way that only consecutive branches
-can meet at an infinitely near point. <br>
-the final rows of the matrices M[1],...,M[3] is (1,1,1,...,1), and
-correspond to infinitely near points such that the strict transforms
-of the branches are smooth and intersect the exceptional divisor
-transversally.
+<dt><strong>Overview:</strong></dt>
+<dd><p>A library to compute Hodge-theoretic invariants
+<br>of isolated hypersurface singularities
 </p>
 </dd>
 </dl>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_658.htm#gmsring">D.5.4.1 gmsring</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Gauss-Manin system of t with variable s
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_659.htm#gmsnf">D.5.4.2 gmsnf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Gauss-Manin normal form of p
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_660.htm#gmscoeffs">D.5.4.3 gmscoeffs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Gauss-Manin basis representation of p
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_661.htm#bernstein">D.5.4.4 bernstein</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> roots of the Bernstein polynomial of t
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_662.htm#monodromy">D.5.4.5 monodromy</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Jordan data of complex monodromy of t
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_663.htm#spectrum">D.5.4.6 spectrum</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> singularity spectrum of t
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_664.htm#sppairs">D.5.4.7 sppairs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> spectral pairs of t
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_665.htm#spnf">D.5.4.8 spnf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> spectrum normal form of (a,m,V)
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_666.htm#sppnf">D.5.4.9 sppnf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> spectral pairs normal form of (a,w,m,V)
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_667.htm#vfilt">D.5.4.10 vfilt</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> V-filtration of t on Brieskorn lattice
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_668.htm#vwfilt">D.5.4.11 vwfilt</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> weighted V-filtration of t on Brieskorn lattice
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_669.htm#tmatrix">D.5.4.12 tmatrix</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> C[[s]]-matrix of t on Brieskorn lattice
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_670.htm#endvfilt">D.5.4.13 endvfilt</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> endomorphism V-filtration on Jacobian algebra
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_671.htm#spprint">D.5.4.14 spprint</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> print spectrum sp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_672.htm#sppprint">D.5.4.15 sppprint</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> print spectral pairs spp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_673.htm#spadd">D.5.4.16 spadd</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> sum of spectra sp1 and sp2
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_674.htm#spsub">D.5.4.17 spsub</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> difference of spectra sp1 and sp2
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_675.htm#spmul">D.5.4.18 spmul</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> linear combination of spectra sp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_676.htm#spissemicont">D.5.4.19 spissemicont</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> semicontinuity test of spectrum sp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_677.htm#spsemicont">D.5.4.20 spsemicont</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> semicontinuous combinations of spectra sp0 in sp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_678.htm#spmilnor">D.5.4.21 spmilnor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Milnor number of spectrum sp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_679.htm#spgeomgenus">D.5.4.22 spgeomgenus</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> geometrical genus of spectrum sp
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_680.htm#spgamma">D.5.4.23 spgamma</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> gamma invariant of spectrum sp
+</td></tr>
+</table></blockquote>
+<a name="index-singularities"></a>
+<a name="index-Gauss_002dManin-connection-1"></a>
+<a name="index-Brieskorn-lattice"></a>
+<a name="index-monodromy"></a>
+<a name="index-spectrum"></a>
+<a name="index-spectral-pairs"></a>
+<a name="index-mixed-Hodge-structure"></a>
+<a name="index-V_002dfiltration"></a>
+<a name="index-weight-filtration"></a>
 <p><strong>See also:</strong>
-<a href="sing_691.htm#multsequence">multsequence</a>.
+<a href="sing_703.htm#mondromy_005flib">mondromy_lib</a>;
+<a href="sing_749.htm#spectrum_005flib">spectrum_lib</a>.
 </p>
+
 </td>
 </tr>
 </table>
@@ -132,14 +177,14 @@ transversally.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_656.htm#isEquising" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.4 isEquising" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_658.htm#gaussman_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.4 gaussman_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_652.htm#equising_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.3 equising_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_656.htm#control_005fMatrix" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.5 control_Matrix" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_658.htm#gmsring" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.4.1 gmsring" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_629.htm#Singularities" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5 Singularities" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

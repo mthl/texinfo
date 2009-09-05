@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: A.8 Deformations</title>
+<title>Singular 2-0-4 Manual: A.9 Finite fields</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: A.8 Deformations">
-<meta name="keywords" content="Singular 2-0-4 Manual: A.8 Deformations">
+<meta name="description" content="Singular 2-0-4 Manual: A.9 Finite fields">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.9 Finite fields">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Deformations"></a>
+<a name="Finite-fields"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_338.htm#T1-and-T2" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.7 T1 and T2" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_338.htm#Deformations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.8 Deformations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_340.htm#Finite-fields" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.9 Finite fields" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_340.htm#Elimination" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.10 Elimination" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,177 +82,199 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Deformations-1"></a>
-<h2 class="section">A.8 Deformations</h2>
-<a name="index-Deformations"></a>
+<a name="Finite-fields-1"></a>
+<h2 class="section">A.9 Finite fields</h2>
+<a name="index-Finite-fields"></a>
 
-<ul>
-<li>
-The libraries <code>sing.lib</code>, resp. <code>deform.lib</code>, contain procedures
-to compute total and base space of the
-miniversal (= semiuniversal) deformation of an
-isolated complete intersection singularity, resp. arbitrary isolated
-singularity.
-</li><li>
-The procedure <code>deform</code> in <code>sing.lib</code> returns a matrix whose columns
-<!-- MATH
- $h_1,\ldots,h_r$
- -->
+<p>We define a variety in 
 <SPAN CLASS="MATH"><IMG
- WIDTH="67" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_171.png"
- ALT="$h_1,\ldots,h_r$"></SPAN>
-represent all 1st order deformations. More precisely, if
+ WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_17.png"
+ ALT="$n$"></SPAN>
+-space of codimension 2 defined by
+polynomials of degree 
 <SPAN CLASS="MATH"><IMG
- WIDTH="42" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_172.png"
- ALT="$I \subset R$"></SPAN> is the ideal generated by <SPAN CLASS="MATH"><IMG
- WIDTH="57" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_173.png"
- ALT="$f_1,...,f_s$"></SPAN>, then any infinitesimal
-deformation of <SPAN CLASS="MATH"><IMG
- WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_174.png"
- ALT="$R/I$"></SPAN> over <!-- MATH
- $K[\varepsilon]/(\varepsilon^2)$
- -->
+ WIDTH="11" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_135.png"
+ ALT="$d$"></SPAN>
+ with generic coefficients over the prime
+field 
 <SPAN CLASS="MATH"><IMG
- WIDTH="65" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_175.png"
- ALT="$K[\varepsilon]/(\varepsilon^2)$"></SPAN> is given
-by <!-- MATH
- $f+\varepsilon g$
- -->
+ WIDTH="29" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_22.png"
+ ALT="$Z/p$"></SPAN>
+ and look for zeros on the torus. First over the prime
+field and then in the finite extension field with
 <SPAN CLASS="MATH"><IMG
- WIDTH="45" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_176.png"
- ALT="$f+\varepsilon g$"></SPAN>,
-where <!-- MATH
- $f=(f_1,...,f_s)$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="97" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_177.png"
- ALT="$f=(f_1,...,f_s)$"></SPAN>, <SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_117.png"
- ALT="$g$"></SPAN> a <SPAN CLASS="MATH"><IMG
- WIDTH="17" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_46.png"
- ALT="$K$"></SPAN>-linear combination of the <SPAN CLASS="MATH"><IMG
- WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_178.png"
- ALT="$h_i$"></SPAN>.
-
-</li><li>
-The procedure <code>versal</code> in <code>deform.lib</code> computes a formal
-miniversal deformation up to a certain order which can be
-prescribed by the user. For a complete intersection the 1st order
-part is already miniversal.
-</li><li>
-The procedure <code>versal</code> extends the basering to a new ring with
-additional deformation parameters which contains the equations for the
-miniversal base space and the miniversal total space.
-</li><li>
-There are default names for the objects created, but the user may also
-choose his own names.
-</li><li>
-If the user sets <code>printlevel=2;</code> before running <code>versal</code>, some
-intermediate results are shown. This is useful since <code>versal</code>
-is already complicated and might run for some time on more
-complicated examples. (type <code>help versal;</code>)
-</li></ul>
-
-<p>We compute for the same examples as in the preceding section
-the miniversal deformations:
+ WIDTH="18" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_179.png"
+ ALT="$p^k$"></SPAN>
+elements.
+In general there will be many more solutions in the second case.
+(Since the <small>SINGULAR</small> language is interpreted, the evaluation of many
+<code>for</code>-loops is not very fast):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;deform.lib&quot;;
-  ring R=32003,(x,y,z),ds;
-  //----------------------------------------------------
-  // hypersurface case (from series T[p,q,r]):
-  int p,q,r = 3,3,4;
-  poly f = x^p+y^q+z^r+xyz;
-  print(deform(f));
-&rarr; z3,z2,yz,xz,z,y,x,1
-  // the miniversal deformation of f=0 is the projection from the
-  // miniversal total space to the miniversal base space:
-  // { (A,B,C,D,E,F,G,H,x,y,z) | x3+y3+xyz+z4+A+Bx+Cxz+Dy+Eyz+Fz+Gz2+Hz3 =0 }
-  //  --&gt; { (A,B,C,D,E,F,G,H) }
-  //----------------------------------------------------
-  // complete intersection case (from series P[k,l]):
-  int k,l =3,2;
-  ideal j=xy,x^k+y^l+z2;
-  print(deform(j));
-&rarr; 0,0, 0,0,z,1,
-&rarr; y,x2,x,1,0,0 
-  versal(j);                  // using default names
-&rarr; // smooth base space
-&rarr; // ready: T_1 and T_2
-&rarr; 
-&rarr; // Result belongs to ring Px.
-&rarr; // Equations of total space of miniversal deformation are 
-&rarr; // given by Fs, equations of miniversal base space by Js.
-&rarr; // Make Px the basering and list objects defined in Px by typing:
-&rarr;    setring Px; show(Px);
-&rarr;    listvar(matrix);
-&rarr; // NOTE: rings Qx, Px, So are alive!
-&rarr; // (use 'kill_rings(&quot;&quot;);' to remove)
-  setring Px;
-  show(Px);                   // show is a procedure from inout.lib
-&rarr; // ring: (32003),(A,B,C,D,E,F,x,y,z),(ds(6),ds(3),C);
-&rarr; // minpoly = 0
-&rarr; // objects belonging to this ring:
-&rarr; // Rs                   [0]  matrix 2 x 1
-&rarr; // Fs                   [0]  matrix 1 x 2
-&rarr; // Js                   [0]  matrix 1 x 0
-  listvar(matrix);
-&rarr; // Rs                   [0]  matrix 2 x 1
-&rarr; // Fs                   [0]  matrix 1 x 2
-&rarr; // Js                   [0]  matrix 1 x 0
-  // ___ Equations of miniversal base space ___:
-  Js;
-&rarr; 
-  // ___ Equations of miniversal total space ___:
-  Fs;
-&rarr; Fs[1,1]=xy+Ez+F
-&rarr; Fs[1,2]=y2+z2+x3+Ay+Bx2+Cx+D
-  // the miniversal deformation of V(j) is the projection from the
-  // miniversal total space to the miniversal base space:
-  // { (A,B,C,D,E,F,x,y,z) | xy+F+Ez=0, y2+z2+x3+D+Cx+Bx2+Ay=0 }
-  //  --&gt; { (A,B,C,D,E,F) }
-  //----------------------------------------------------
-  // general case (cone over rational normal curve of degree 4):
-  ring r1=0,(x,y,z,u,v),ds;
-  matrix m[2][4]=x,y,z,u,y,z,u,v;
-  ideal i=minor(m,2);                 // 2x2 minors of matrix m
-  int time=timer;
-  // Def_r is the name of the miniversal base space with
-  // parameters A(1),...,A(4)
-  versal(i,0,&quot;Def_r&quot;,&quot;A(&quot;);
-&rarr; // ready: T_1 and T_2
-&rarr; 
-&rarr; // Result belongs to ring Def_rPx.
-&rarr; // Equations of total space of miniversal deformation are 
-&rarr; // given by Fs, equations of miniversal base space by Js.
-&rarr; // Make Def_rPx the basering and list objects defined in Def_rPx by typin\
-   g:
-&rarr;    setring Def_rPx; show(Def_rPx);
-&rarr;    listvar(matrix);
-&rarr; // NOTE: rings Def_rQx, Def_rPx, Def_rSo are alive!
-&rarr; // (use 'kill_rings(&quot;Def_r&quot;);' to remove)
-  &quot;// used time:&quot;,timer-time,&quot;sec&quot;;   // time of last command
-&rarr; // used time: 1 sec
-  // the miniversal deformation of V(i) is the projection from the
-  // miniversal total space to the miniversal base space:
-  // { (A(1..4),x,y,z,u,v) |
-  //         -y^2+x*z+A(2)*x-A(3)*y=0, -y*z+x*u-A(1)*x-A(3)*z=0,
-  //         -y*u+x*v-A(3)*u-A(4)*z=0, -z^2+y*u-A(1)*y-A(2)*z=0,
-  //         -z*u+y*v-A(2)*u-A(4)*u=0, -u^2+z*v+A(1)*u-A(4)*v=0 }
-  //  --&gt; { A(1..4) |
-  //         -A(1)*A(4) = A(3)*A(4) = -A(2)*A(4)-A(4)^2 = 0 }
-  //----------------------------------------------------
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  int p=3;  int n=3;  int d=5; int k=2;
+  ring rp = p,(x(1..n)),dp;
+  int s = size(maxideal(d));
+  s;
+&rarr; 21
+  // create a dense homogeneous ideal m, all generators of degree d, with
+  // generic (random) coefficients:
+  ideal m = maxideal(d)*random(p,s,n-2);
+  m;
+&rarr; m[1]=x(1)^3*x(2)^2-x(1)*x(2)^4+x(1)^4*x(3)-x(1)^3*x(2)*x(3)+x(1)*x(2)^3*x\
+   (3)+x(2)^4*x(3)+x(2)^3*x(3)^2+x(1)*x(2)*x(3)^3+x(1)*x(3)^4-x(3)^5
+  // look for zeros on the torus by checking all points (with no component 0)
+  // of the affine n-space over the field with p elements :
+  ideal mt;
+  int i(1..n);                    // initialize integers i(1),...,i(n)
+  int l;
+  s=0;
+  for (i(1)=1;i(1)&lt;p;i(1)=i(1)+1)
+  {
+    for (i(2)=1;i(2)&lt;p;i(2)=i(2)+1)
+    {
+      for (i(3)=1;i(3)&lt;p;i(3)=i(3)+1)
+      {
+        mt=m;
+        for (l=1;l&lt;=n;l=l+1)
+        {
+          mt=subst(mt,x(l),i(l));
+        }
+        if (size(mt)==0)
+        {
+          &quot;solution:&quot;,i(1..n);
+          s=s+1;
+        }
+      }
+    }
+  }
+&rarr; solution: 1 1 2
+&rarr; solution: 1 2 1
+&rarr; solution: 1 2 2
+&rarr; solution: 2 1 1
+&rarr; solution: 2 1 2
+&rarr; solution: 2 2 1
+  &quot;//&quot;,s,&quot;solutions over GF(&quot;+string(p)+&quot;)&quot;;
+&rarr; // 6 solutions over GF(3)
+  // Now go to the field with p^3 elements:
+  // As long as there is no map from Z/p to the field with p^3 elements
+  // implemented, use the following trick: convert the ideal to be mapped
+  // to the new ring to a string and then execute this string in the
+  // new ring
+  string ms=&quot;ideal m=&quot;+string(m)+&quot;;&quot;;
+  ms;
+&rarr; ideal m=x(1)^3*x(2)^2-x(1)*x(2)^4+x(1)^4*x(3)-x(1)^3*x(2)*x(3)+x(1)*x(2)^\
+   3*x(3)+x(2)^4*x(3)+x(2)^3*x(3)^2+x(1)*x(2)*x(3)^3+x(1)*x(3)^4-x(3)^5;
+  // define a ring rpk with p^k elements, call the primitive element z. Hence
+  // 'solution exponent: 0 1 5' means that (z^0,z^1,z^5) is a solution
+  ring rpk=(p^k,z),(x(1..n)),dp;
+  rpk;
+&rarr; //   # ground field : 9
+&rarr; //   primitive element : z
+&rarr; //   minpoly        : 1*z^2+1*z^1+2*z^0
+&rarr; //   number of vars : 3
+&rarr; //        block   1 : ordering dp
+&rarr; //                  : names    x(1) x(2) x(3) 
+&rarr; //        block   2 : ordering C
+  execute(ms);
+  s=0;
+  ideal mt;
+  for (i(1)=0;i(1)&lt;p^k-1;i(1)=i(1)+1)
+  {
+    for (i(2)=0;i(2)&lt;p^k-1;i(2)=i(2)+1)
+    {
+      for (i(3)=0;i(3)&lt;p^k-1;i(3)=i(3)+1)
+      {
+        mt=m;
+        for (l=1;l&lt;=n;l=l+1)
+        {
+          mt=subst(mt,x(l),z^i(l));
+        }
+        if (size(mt)==0)
+        {
+          &quot;solution exponent:&quot;,i(1..n);
+          s=s+1;
+        }
+      }
+    }
+  }
+&rarr; solution exponent: 0 0 2
+&rarr; solution exponent: 0 0 4
+&rarr; solution exponent: 0 0 6
+&rarr; solution exponent: 0 1 0
+&rarr; solution exponent: 0 3 0
+&rarr; solution exponent: 0 4 0
+&rarr; solution exponent: 0 4 4
+&rarr; solution exponent: 0 4 5
+&rarr; solution exponent: 0 4 7
+&rarr; solution exponent: 1 1 3
+&rarr; solution exponent: 1 1 5
+&rarr; solution exponent: 1 1 7
+&rarr; solution exponent: 1 2 1
+&rarr; solution exponent: 1 4 1
+&rarr; solution exponent: 1 5 0
+&rarr; solution exponent: 1 5 1
+&rarr; solution exponent: 1 5 5
+&rarr; solution exponent: 1 5 6
+&rarr; solution exponent: 2 2 0
+&rarr; solution exponent: 2 2 4
+&rarr; solution exponent: 2 2 6
+&rarr; solution exponent: 2 3 2
+&rarr; solution exponent: 2 5 2
+&rarr; solution exponent: 2 6 1
+&rarr; solution exponent: 2 6 2
+&rarr; solution exponent: 2 6 6
+&rarr; solution exponent: 2 6 7
+&rarr; solution exponent: 3 3 1
+&rarr; solution exponent: 3 3 5
+&rarr; solution exponent: 3 3 7
+&rarr; solution exponent: 3 4 3
+&rarr; solution exponent: 3 6 3
+&rarr; solution exponent: 3 7 0
+&rarr; solution exponent: 3 7 2
+&rarr; solution exponent: 3 7 3
+&rarr; solution exponent: 3 7 7
+&rarr; solution exponent: 4 0 0
+&rarr; solution exponent: 4 0 1
+&rarr; solution exponent: 4 0 3
+&rarr; solution exponent: 4 0 4
+&rarr; solution exponent: 4 4 0
+&rarr; solution exponent: 4 4 2
+&rarr; solution exponent: 4 4 6
+&rarr; solution exponent: 4 5 4
+&rarr; solution exponent: 4 7 4
+&rarr; solution exponent: 5 0 5
+&rarr; solution exponent: 5 1 1
+&rarr; solution exponent: 5 1 2
+&rarr; solution exponent: 5 1 4
+&rarr; solution exponent: 5 1 5
+&rarr; solution exponent: 5 5 1
+&rarr; solution exponent: 5 5 3
+&rarr; solution exponent: 5 5 7
+&rarr; solution exponent: 5 6 5
+&rarr; solution exponent: 6 1 6
+&rarr; solution exponent: 6 2 2
+&rarr; solution exponent: 6 2 3
+&rarr; solution exponent: 6 2 5
+&rarr; solution exponent: 6 2 6
+&rarr; solution exponent: 6 6 0
+&rarr; solution exponent: 6 6 2
+&rarr; solution exponent: 6 6 4
+&rarr; solution exponent: 6 7 6
+&rarr; solution exponent: 7 0 7
+&rarr; solution exponent: 7 2 7
+&rarr; solution exponent: 7 3 3
+&rarr; solution exponent: 7 3 4
+&rarr; solution exponent: 7 3 6
+&rarr; solution exponent: 7 3 7
+&rarr; solution exponent: 7 7 1
+&rarr; solution exponent: 7 7 3
+&rarr; solution exponent: 7 7 5
+  &quot;//&quot;,s,&quot;solutions over GF(&quot;+string(p^k)+&quot;)&quot;;
+&rarr; // 72 solutions over GF(9)
 </pre></td></tr></table>
-
 </td>
 </tr>
 </table>
@@ -262,14 +284,14 @@ the miniversal deformations:
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_338.htm#T1-and-T2" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.7 T1 and T2" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_340.htm#Finite-fields" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.9 Finite fields" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_338.htm#Deformations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.8 Deformations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_340.htm#Elimination" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.10 Elimination" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

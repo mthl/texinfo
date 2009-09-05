@@ -1,3 +1,9 @@
+2009-09-05   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: Consider the Top node as an element only 
+	if !$only_section.
+	Avoid setting and using the 'top' in element.
+
 2009-09-03   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init, formats/*: don't remove spaces again in 

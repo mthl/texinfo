@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.7.5.6 SQFRNorm</title>
+<title>Singular 2-0-4 Manual: D.7.5.7 ZeroSet</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.7.5.6 SQFRNorm">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.7.5.6 SQFRNorm">
+<meta name="description" content="Singular 2-0-4 Manual: D.7.5.7 ZeroSet">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7.5.7 ZeroSet">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="SQFRNorm"></a>
+<a name="ZeroSet"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_857.htm#Roots" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.5.5 Roots" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_857.htm#SQFRNorm" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.5.6 SQFRNorm" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_859.htm#ZeroSet" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.7 ZeroSet" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_859.htm#EGCDMain" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.8 EGCDMain" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_852.htm#zeroset_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.5 zeroset_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_851.htm#zeroset_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.5 zeroset_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,49 +82,86 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="SQFRNorm-1"></a>
-<h4 class="subsubsection">D.7.5.6 SQFRNorm</h4>
-<a name="index-SQFRNorm"></a>
-<p>Procedure from library <code>zeroset.lib</code> (see <a href="sing_852.htm#zeroset_005flib">zeroset_lib</a>).
+<a name="ZeroSet-1"></a>
+<h4 class="subsubsection">D.7.5.7 ZeroSet</h4>
+<a name="index-ZeroSet"></a>
+<p>Procedure from library <code>zeroset.lib</code> (see <a href="sing_851.htm#zeroset_005flib">zeroset_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>SQFRNorm(f); where f is a polynomial
+<dd><p>ZeroSet(I [,opt] ); I=ideal, opt=integer
 </p>
 </dd>
 <dt><strong>Purpose:</strong></dt>
-<dd><p>compute the norm of the squarefree polynomial f in Q(a)[x].
+<dd><p>compute the zero-set of the zero-dim. ideal I, in a finite extension
+of the ground field.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>list with 3 entries
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  _[1] = squarefree norm of g (poly)
-  _[2] = g (= f(x - s*a)) (poly)
-  _[3] = s (int)
+<dd><p>ring, a polynomial ring over an extension field of the ground field,
+containing a list &rsquo;zeroset&rsquo;, a polynomial &rsquo;newA&rsquo;, and an
+ideal &rsquo;id&rsquo;:
+  </p><table><tr><td>&nbsp;</td><td><pre class="format">  - &rsquo;zeroset&rsquo; is the list of the zeros of the ideal I, each zero is an ideal.
+  - if the ground field is Q(a&rsquo;) and the extension field is Q(a), then
+    &rsquo;newA&rsquo; is the representation of a&rsquo; in Q(a).
+    If the basering contains a parameter &rsquo;a&rsquo; and the minpoly remains unchanged
+    then &rsquo;newA&rsquo; = &rsquo;a&rsquo;.
+    If the basering does not contain a parameter then &rsquo;newA&rsquo; = &rsquo;a&rsquo; (default).    
+  - &rsquo;id&rsquo; is the ideal I in Q(a)[x_1,...] (a&rsquo; substituted by &rsquo;newA&rsquo;)
   </pre></td></tr></table>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>f must be squarefree, basering = Q(a)[x] and minpoly != 0.
+<dd><p>dim(I) = 0, and ground field to be Q or a simple extension of Q given
+by a minpoly.
+</p>
+</dd>
+<dt><strong>Options:</strong></dt>
+<dd><p>opt = 0 no primary decomposition (default)
+<br>opt &gt; 0 primary decomposition
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>the norm is an element of Q[x]
+<dd><p>If I contains an algebraic number (parameter) then &rsquo;I&rsquo; must be
+transformed w.r.t. &rsquo;newA&rsquo; in the new ring.
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;zeroset.lib&quot;;
-ring R = (0,a), x, lp;
-minpoly = a2+1;
-poly f =  x4 - 2*x + 1;
-SQFRNorm(f);
+ring R = (0,a), (x,y,z), lp;
+minpoly = a2 + 1;
+ideal I = x2 - 1/2, a*z - 1, y - 2;
+def T = ZeroSet(I);
+&rarr; 1
+setring T;
+minpoly;
+&rarr; (4a4+4a2+9)
+newA;
+&rarr; (1/3a3+5/6a)
+id;
+&rarr; id[1]=(1/3a3+5/6a)*z-1
+&rarr; id[2]=y-2
+&rarr; id[3]=2*x2-1
+zeroset;
 &rarr; [1]:
-&rarr;    x8+4*x6-4*x5+8*x4+8*x3-4*x2+8*x+8
+&rarr;    _[1]=(1/3a3-1/6a)
+&rarr;    _[2]=2
+&rarr;    _[3]=(-1/3a3-5/6a)
 &rarr; [2]:
-&rarr;    x4+(-4a)*x3-6*x2+(4a-2)*x+(2a+2)
-&rarr; [3]:
-&rarr;    1
+&rarr;    _[1]=(-1/3a3+1/6a)
+&rarr;    _[2]=2
+&rarr;    _[3]=(-1/3a3-5/6a)
+map F1 = basering, zeroset[1];
+map F2 = basering, zeroset[2];
+F1(id);
+&rarr; _[1]=0
+&rarr; _[2]=0
+&rarr; _[3]=0
+F2(id);
+&rarr; _[1]=0
+&rarr; _[2]=0
+&rarr; _[3]=0
 </pre></td></tr></table>
 
 </td>
@@ -136,14 +173,14 @@ SQFRNorm(f);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_857.htm#Roots" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.5.5 Roots" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_859.htm#ZeroSet" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.7 ZeroSet" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_852.htm#zeroset_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.5 zeroset_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_857.htm#SQFRNorm" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.5.6 SQFRNorm" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_859.htm#EGCDMain" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.8 EGCDMain" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_851.htm#zeroset_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.5 zeroset_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

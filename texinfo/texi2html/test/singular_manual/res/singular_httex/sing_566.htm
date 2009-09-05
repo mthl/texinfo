@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.4.3.16 kontrahom</title>
+<title>Singular 2-0-4 Manual: D.4.3.17 KoszulHomology</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.4.3.16 kontrahom">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.4.3.16 kontrahom">
+<meta name="description" content="Singular 2-0-4 Manual: D.4.3.17 KoszulHomology">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.3.17 KoszulHomology">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="kontrahom"></a>
+<a name="KoszulHomology"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_565.htm#kohom" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.15 kohom" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_565.htm#kontrahom" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.16 kontrahom" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_567.htm#KoszulHomology" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.17 KoszulHomology" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_567.htm#tensorMod" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.18 tensorMod" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_550.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_549.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,37 +84,49 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="kontrahom-1"></a>
-<h4 class="subsubsection">D.4.3.16 kontrahom</h4>
-<a name="index-kontrahom"></a>
-<p>Procedure from library <code>homolog.lib</code> (see <a href="sing_550.htm#homolog_005flib">homolog_lib</a>).
+<a name="KoszulHomology-1"></a>
+<h4 class="subsubsection">D.4.3.17 KoszulHomology</h4>
+<a name="index-KoszulHomology"></a>
+<p>Procedure from library <code>homolog.lib</code> (see <a href="sing_549.htm#homolog_005flib">homolog_lib</a>).
 </p>
 <dl compact="compact">
-<dt><strong>Usage:</strong></dt>
-<dd><p>kontrahom(A,k); A=matrix, k=integer
+<dt><strong>Compute:</strong></dt>
+<dd><p>A presentation of the p-th Koszul homology module H_p(f_1,...,f_k;M&rsquo;),
+where M&rsquo;=coker(M) and f_1,...,f_k are the given (ordered list
+of generators of the) ideal I. The computed presentation is minimized
+via prune. In particular, if H_p(f_1,...,f_k;M&rsquo;)=0 then the
+return value is 0.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>matrix Hom(A,R^k), i.e. let A be a matrix defining a map F1&ndash;&gt;F2 of
-free R-modules, then the matrix of Hom(F2,R^k)&ndash;&gt;Hom(F1,R^k) is
-computed (R=basering).
+<dd><p>module H, s.th. coker(H) = H_p(f_1,...,f_k;M&rsquo;).
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>size of input ideal has to be &lt;= 20.
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
-ring r;
-matrix n[2][3]=x,y,5,z,77,33;
-print(kontrahom(n,3));
-&rarr; x,z, 0,0, 0,0, 
-&rarr; y,77,0,0, 0,0, 
-&rarr; 5,33,0,0, 0,0, 
-&rarr; 0,0, x,z, 0,0, 
-&rarr; 0,0, y,77,0,0, 
-&rarr; 0,0, 5,33,0,0, 
-&rarr; 0,0, 0,0, x,z, 
-&rarr; 0,0, 0,0, y,77,
-&rarr; 0,0, 0,0, 5,33 
+ring R=0,x(1..3),dp;
+ideal x=maxideal(1);
+module M=0;
+KoszulHomology(x,M,0);  // H_0(x,R), x=(x_1,x_2,x_3)
+&rarr; _[1]=x(3)*gen(1)
+&rarr; _[2]=x(2)*gen(1)
+&rarr; _[3]=x(1)*gen(1)
+KoszulHomology(x,M,1);  // H_1(x,R), x=(x_1,x_2,x_3)
+&rarr; _[1]=0
+qring S=std(x(1)*x(2));
+module M=0;
+ideal x=maxideal(1);
+KoszulHomology(x,M,1);
+&rarr; _[1]=-x(3)*gen(1)
+&rarr; _[2]=-x(2)*gen(1)
+&rarr; _[3]=-x(1)*gen(1)
+KoszulHomology(x,M,2);
+&rarr; _[1]=0
 </pre></td></tr></table>
 
 </td>
@@ -126,14 +138,14 @@ print(kontrahom(n,3));
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_565.htm#kohom" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.15 kohom" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_567.htm#KoszulHomology" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.17 KoszulHomology" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_550.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_565.htm#kontrahom" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.16 kontrahom" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_567.htm#tensorMod" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.18 tensorMod" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_549.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

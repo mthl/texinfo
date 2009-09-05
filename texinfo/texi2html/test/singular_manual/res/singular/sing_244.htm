@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.89 option</title>
+<title>Singular 2-0-4 Manual: 5.1.90 ord</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.89 option">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.89 option">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.90 ord">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.90 ord">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="option"></a>
+<a name="ord"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_243.htm#open" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.88 open" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_243.htm#option" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.89 option" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_245.htm#ord" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.90 ord" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_245.htm#ordstr" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.91 ordstr" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,296 +82,46 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="option-1"></a>
-<h3 class="subsection">5.1.89 option</h3>
-<a name="index-option"></a>
+<a name="ord-1"></a>
+<h3 class="subsection">5.1.90 ord</h3>
+<a name="index-ord"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>option ()</code>
+<dd><p><code>ord (</code> poly_expression <code>)</code>
+<br><code>ord (</code> vector_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>string
+<dd><p>int
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>lists all defined options.
-<br>
-</p></dd>
-<dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>option (</code> option_name <code>)</code>
-</p></dd>
-<dt><code><strong>Type:</strong></code></dt>
-<dd><p>none
-</p></dd>
-<dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>sets an option.
+<dd><p>returns the (weighted) degree of
+the initial term of a polynomial or a vector;
+the weights are the weights used for the first block of the ring ordering.
 </p></dd>
 <dt><code><strong>Note:</strong></code></dt>
-<dd><p>To disable an option, use the prefix <code>no</code>.
-<br>
+<dd><p><code>ord(0)</code> is <code>-1</code>.
 </p></dd>
-<dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>option ( get )</code>
-</p></dd>
-<dt><code><strong>Type:</strong></code></dt>
-<dd><p>intvec
-</p></dd>
-<dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>dumps the state of all options to an intvec.
-<br>
-</p></dd>
-<dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>option ( set,</code> intvec_expression <code>)</code>
-</p></dd>
-<dt><code><strong>Type:</strong></code></dt>
-<dd><p>none
-</p></dd>
-<dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>restores the state of all options from an intvec (produced by
-<code>option(get)</code>).
-</p><br>
-</dd>
-<dt><code><strong>Values:</strong></code></dt>
-<dd><p>The following options are used to manipulate the behavior of
-computations and act like boolean switches. Use the prefix <code>no</code> to
-disable an option. Notice that some options are ring dependent and reset
-to their default values on a change of the current basering.
-</p><dl compact="compact">
-<dt><code>none</code></dt>
-<dd><a name="index-none_002c-option"></a>
-<p>turns off all options (including the <code>prompt</code> option).
-</p></dd>
-<dt><code>returnSB</code></dt>
-<dd><a name="index-returnSB_002c-option"></a>
-<p>the functions <code>syz</code>, <code>intersect</code>, <code>quotient</code>,
-<code>modulo</code> return a standard base instead of a generating set if
-<code>returnSB</code> is set. This option should not be used for <code>lift</code>.
-</p></dd>
-<dt><code>fastHC</code></dt>
-<dd><a name="index-fastHC_002c-option"></a>
-<p>tries to the find the highest corner of the staircase (HC) as fast as
-possible during a standard basis computation (only used for local
-orderings).
-</p></dd>
-<dt><code>intStrategy</code></dt>
-<dd><a name="index-intStrategy_002c-option"></a>
-<p>avoids division of coefficients during standard basis
-computations. This option is ring dependent. By default, it is set for
-rings with characteristic 0 and not set for all other rings.
-</p></dd>
-<dt><code>oldStd</code></dt>
-<dd><a name="index-oldStd_002c-option"></a>
-<p>uses a more lazy approach in std computations,
-which was used in Singular version before 2-0
-(and which may lead to faster or slower computations, depending on the example)
-</p></dd>
-<dt><code>minRes</code></dt>
-<dd><a name="index-minRes_002c-option"></a>
-<p>special (additional) minimizing during computations (<code>res</code>, <code>mres</code>),
-<br>assumes homogeneous case and degree-compatible ordering.
-</p></dd>
-<dt><code>notRegularity</code></dt>
-<dd><a name="index-notRegularity_002c-option"></a>
-<p>disables the regularity bound for <code>res</code> and <code>mres</code> (see
-<a href="sing_262.htm#regularity">regularity</a>).
-</p></dd>
-<dt><code>notSugar</code></dt>
-<dd><a name="index-notSugar_002c-option"></a>
-<p>disables the sugar strategy during standard basis computation.
-<a name="option_0028prot_0029"></a>
-</p></dd>
-<dt><code>notBuckets</code></dt>
-<dd><a name="index-notBuckets_002c-option"></a>
-<p>disables the bucket representation of polynomials during standard basis
-computations. This option usually decreases the memory usage but
-increases the computation time. It should only be set for
-memory-critical standard basis computations.
-</p></dd>
-<dt><code>prot</code></dt>
-<dd><a name="index-prot_002c-option"></a>
-<a name="index-protocoll-of-computations"></a>
-<a name="index-progress-watch"></a>
-<p>shows protocol information indicating the
-progress during the following computations:
-<code>facstd</code>,
-<code>fglm</code>,
-<code>groebner</code>,
-<code>lres</code>,
-<code>mres</code>,
-<code>minres</code>,
-<code>mstd</code>,
-<code>res</code>,
-<code>sres</code>,
-<code>std</code>,
-<code>stdfglm</code>,
-<code>stdhilb</code>,
-<code>syz</code>.
-See below for more details.
-</p></dd>
-<dt><code>redSB</code></dt>
-<dd><a name="index-redSB_002c-option"></a>
-<a name="index-reduced-standard-basis"></a>
-<p>computes a reduced standard basis in any standard basis computation.
-</p></dd>
-<dt><code>redTail</code></dt>
-<dd><a name="index-redTail_002c-option"></a>
-<p>reduction of the tails of polynomials during standard basis
-computations. This option is ring dependent. By default, it is set for
-rings with global degree orderings and not set for all other rings.
-</p></dd>
-<dt><code>redThrough</code></dt>
-<dd><a name="index-redThrough_002c-option"></a>
-<p>for inhomogeneous input, polynomial reductions during standard basis
-computations are never postponed, but always finished through. This option
-is ring   dependent. By default, it is set for rings with global degree
-orderings and not set for all other rings.
-</p></dd>
-<dt><code>sugarCrit</code></dt>
-<dd><a name="index-sugarCrit_002c-option"></a>
-<p>uses criteria similar to the homogeneous case to keep more useless pairs.
-</p></dd>
-<dt><code>weightM</code></dt>
-<dd><a name="index-weightM_002c-option"></a>
-<p>automatically computes suitable weights for the weighted ecart and the
-weighted sugar method.
-</p></dd>
-</dl>
-<br>
-<p>The following options, which also control computations, are special,
-since they are not manipulated by the <code>option</code> command but by a
-direct assignment of a value. Reset the option by assigning the value 0;
-the command <code>option(none)</code> will not reset them! If there is a
-non-zero value assigned, the command <code>option()</code> prints the option.
-</p><dl compact="compact">
-<dt><code>multBound</code></dt>
-<dd><p>a multiplicity bound is set (see <a href="sing_311.htm#multBound">multBound</a>).
-</p></dd>
-<dt><code>degBound</code></dt>
-<dd><p>a degree bound is set (see <a href="sing_308.htm#degBound">degBound</a>).
-</p></dd>
-</dl>
-<br>
-<p>The last set of options controls the output of <small>SINGULAR</small>:
-</p><dl compact="compact">
-<dt><code>Imap</code></dt>
-<dd><a name="index-Imap_002c-option"></a>
-<p>shows the mapping of variables with the fetch and imap commands.
-</p></dd>
-<dt><code>loadLib</code></dt>
-<dd><a name="index-loadLib_002c-option"></a>
-<p>shows loading of libraries (set by default).
-</p></dd>
-<dt><code>debugLib</code></dt>
-<dd><a name="index-debugLib_002c-option"></a>
-<p>warns about syntax errors during loading of libraries.
-</p></dd>
-<dt><code>loadProc</code></dt>
-<dd><a name="index-loadProc_002c-option"></a>
-<p>shows loading of procedures from libraries.
-</p></dd>
-<dt><code>mem</code></dt>
-<dd><a name="index-mem_002c-option"></a>
-<p>shows memory usage in square brackets (see <a href="sing_226.htm#memory">memory</a>).
-</p></dd>
-<dt><code>prompt</code></dt>
-<dd><a name="index-prompt_002c-option"></a>
-<p>shows prompt (<code>&gt;</code>, resp. <code>.</code>) if ready for input (default).
-</p></dd>
-<dt><code>reading</code></dt>
-<dd><a name="index-reading_002c-option"></a>
-<p>shows the number of characters read from a file.
-</p></dd>
-<dt><code>redefine</code></dt>
-<dd><a name="index-redefine_002c-option"></a>
-<p>warns about variable redefinitions (set by default).
-</p></dd>
-<dt><code>usage</code></dt>
-<dd><a name="index-usage_002c-option"></a>
-<p>shows correct usage in error messages (set by default).
-</p></dd>
-</dl>
-</dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  option(prot);
-  option();
-&rarr; //options: prot redefine usage prompt
-  option(notSugar);
-  option();
-&rarr; //options: prot notSugar redefine usage prompt
-  option(noprot);
-  option();
-&rarr; //options: notSugar redefine usage prompt
-  option(none);
-  option();
-&rarr; //options: none
-  ring r=0,x,dp;
-  degBound=22;
-  option();
-&rarr; //options: degBound redTail redThrough intStrategy
-  intvec i=option(get);
-  option(none);
-  option(set,i);
-  option();
-&rarr; //options: degBound redTail redThrough intStrategy
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=7,(x,y),wp(2,3);
+  ord(0);
+&rarr; -1
+  poly f=x2+y3;  // weight on y is 3
+  ord(f);
+&rarr; 9
+  ring R=7,(x,y),ws(2,3);
+  poly f=x2+y3;
+  ord(f);
+&rarr; 4
+  vector v=[x2,y];
+  ord(v);
+&rarr; 3
 </pre></td></tr></table>
 </dd>
 </dl>
-
-<br><p>The output reported on <code>option(prot)</code> has the following meaning:
-</p><table>
-<tr><td width="1%"></td><td width="14%"><code>facstd</code></td><td width="11%"><code>F</code></td><td width="65%">found a new factor</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%">all other characters: like the output of <code>std</code> and <code>reduce</code></td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
-<tr><td width="1%"></td><td width="14%"><code>fglm</code></td><td width="11%"><code>.</code></td><td width="65%">basis monomial found</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>+</code></td><td width="65%">edge monomial found</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>-</code></td><td width="65%">border monomial found</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
-<tr><td width="1%"></td><td width="14%"><code>groebner</code></td><td width="11%"></td><td width="65%">all characters: like the output of <code>std</code></td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
-<tr><td width="1%"></td><td width="14%"><code>lres</code></td><td width="11%"><code>.</code></td><td width="65%">minimal syzygy found</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>n</code></td><td width="65%">slanted degree, i.e., row of Betti matrix</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>(mn)</code></td><td width="65%">calculate in module n</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>g</code></td><td width="65%">pair found giving reductum and syzygy</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
-<tr><td width="1%"></td><td width="14%"><code>mres</code></td><td width="11%"><code>[d]</code></td><td width="65%">computations of the d-th syzygy module</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%">all other characters: like the output of <code>std</code></td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
-<tr><td width="1%"></td><td width="14%"><code>minres</code></td><td width="11%"><code>[d]</code></td><td width="65%">minimizing of the d-th syzygy module</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
-<tr><td width="1%"></td><td width="14%"><code>mstd</code></td><td width="11%"></td><td width="65%">all characters: like the output of <code>std</code></td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
-<tr><td width="1%"></td><td width="14%"><code>reduce</code></td><td width="11%"><code>r</code></td><td width="65%">reduced a leading term</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>t</code></td><td width="65%">reduced a non-leading term</td></tr>
-<tr><td width="1%"></td><td width="14%"><code>res</code></td><td width="11%"><code>[d]</code></td><td width="65%">computations of the d-th syzygy module</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%">all other characters: like the output of <code>std</code></td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
-<tr><td width="1%"></td><td width="14%"><code>sres</code></td><td width="11%"><code>.</code></td><td width="65%">syzygy found</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>(n)</code></td><td width="65%">n elements remaining</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>[n]</code></td><td width="65%">finished module n</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
-<tr><td width="1%"></td><td width="14%"><code>std</code></td><td width="11%"><code>[m:n]</code></td><td width="65%">internal ring change to poly representation with exponent bound
-m and n words in exponent vector</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>s</code></td><td width="65%">found a new element of the standard basis</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>-</code></td><td width="65%">reduced a pair/S-polynomial to 0</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>.</code></td><td width="65%">postponed a reduction of a pair/S-polynomial</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>h</code></td><td width="65%">used Hilbert series criterion</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>H(d)</code></td><td width="65%">found a &rsquo;highest corner&rsquo; of degree d, no need to consider higher degrees</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>(n)</code></td><td width="65%">n critical pairs are still to be reduced</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>(S:n)</code></td><td width="65%">doing complete reduction of n elements</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"><code>d</code></td><td width="65%">the degree of the leading terms is currently d</td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
-<tr><td width="1%"></td><td width="14%"><code>stdfglm</code></td><td width="11%"></td><td width="65%">all characters in first part: like the output of <code>std</code></td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%">all characters in second part: like the output of <code>fglm</code></td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
-<tr><td width="1%"></td><td width="14%"><code>stdhilb</code></td><td width="11%"></td><td width="65%">all characters: like the output of <code>std</code></td></tr>
-<tr><td width="1%"></td><td width="14%"></td><td width="11%"></td><td width="65%"></td></tr>
-<tr><td width="1%"></td><td width="14%"><code>syz</code></td><td width="11%"></td><td width="65%">all characters: like the output of <code>std</code></td></tr>
-</table>
-
-
 <p>See
-<a href="sing_308.htm#degBound">degBound</a>;
-<a href="sing_311.htm#multBound">multBound</a>;
-<a href="sing_276.htm#std">std</a>.
+<a href="sing_168.htm#deg">deg</a>;
+<a href="sing_125.htm#poly">poly</a>;
+<a href="sing_148.htm#vector">vector</a>.
 </p></td>
 </tr>
 </table>
@@ -381,14 +131,14 @@ m and n words in exponent vector</td></tr>
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_243.htm#open" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.88 open" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_245.htm#ord" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.90 ord" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_243.htm#option" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.89 option" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_245.htm#ordstr" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.91 ordstr" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

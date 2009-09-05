@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.6.1 detadj</title>
+<title>Singular 2-0-4 Manual: D.5.6.2 invunit</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.6.1 detadj">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.6.1 detadj">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.6.2 invunit">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.6.2 invunit">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="detadj"></a>
+<a name="invunit"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_704.htm#mondromy_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.6 mondromy_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_704.htm#detadj" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.6.1 detadj" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_706.htm#invunit" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.6.2 invunit" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_706.htm#jacoblift" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.6.3 jacoblift" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_704.htm#mondromy_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.6 mondromy_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_703.htm#mondromy_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.6 mondromy_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,26 +84,23 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="detadj-1"></a>
-<h4 class="subsubsection">D.5.6.1 detadj</h4>
-<a name="index-detadj"></a>
-<p>Procedure from library <code>mondromy.lib</code> (see <a href="sing_704.htm#mondromy_005flib">mondromy_lib</a>).
+<a name="invunit-1"></a>
+<h4 class="subsubsection">D.5.6.2 invunit</h4>
+<a name="index-invunit"></a>
+<p>Procedure from library <code>mondromy.lib</code> (see <a href="sing_703.htm#mondromy_005flib">mondromy_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>detadj(U); U matrix
+<dd><p>invunit(u,n); u poly, n int
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>U is a square matrix with non zero determinant.
+<dd><p>The polynomial u is a series unit.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>The procedure returns a list with at most 2 entries.
-<br>If U is not a square matrix, the list is empty.
-<br>If U is a square matrix, then the first entry is the determinant of U.
-If U is a square matrix and the determinant of U not zero,
-then the second entry is the adjoint matrix of U.
+<dd><p>The procedure returns the series inverse of u up to order n
+or a zero polynomial if u is no series unit.
 </p>
 </dd>
 <dt><strong>Display:</strong></dt>
@@ -113,14 +110,9 @@ then the second entry is the adjoint matrix of U.
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;mondromy.lib&quot;;
-ring R=0,x,dp;
-matrix U[2][2]=1,1+x,1+x2,1+x3;
-list daU=detadj(U);
-daU[1];
-&rarr; -x2-x
-print(daU[2]);
-&rarr; x3+1, -x-1,
-&rarr; -x2-1,1    
+ring R=0,(x,y),dp;
+invunit(2+x3+xy4,10);
+&rarr; 1/8x2y8-1/16x9+1/4x4y4+1/8x6-1/4xy4-1/4x3+1/2
 </pre></td></tr></table>
 
 </td>
@@ -132,14 +124,14 @@ print(daU[2]);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_704.htm#mondromy_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.6 mondromy_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_706.htm#invunit" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.6.2 invunit" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_704.htm#mondromy_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.6 mondromy_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_704.htm#detadj" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.6.1 detadj" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_706.htm#jacoblift" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.6.3 jacoblift" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_703.htm#mondromy_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.6 mondromy_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

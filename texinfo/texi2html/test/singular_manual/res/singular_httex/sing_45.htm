@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.7.4 Procedure commands</title>
+<title>Singular 2-0-4 Manual: 3.8 Libraries</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.7.4 Procedure commands">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.7.4 Procedure commands">
+<meta name="description" content="Singular 2-0-4 Manual: 3.8 Libraries">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.8 Libraries">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Procedure-commands"></a>
+<a name="Libraries"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_44.htm#Parameter-list" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.7.3 Parameter list" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_44.htm#Procedure-commands" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.7.4 Procedure commands" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_46.htm#Libraries" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.8 Libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_46.htm#Loading-of-a-library" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.8.1 Loading of a library" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_41.htm#Procedures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.7 Procedures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,19 +84,31 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Procedure-commands-1"></a>
-<h3 class="subsection">3.7.4 Procedure commands</h3>
-<a name="index-Procedure-commands"></a>
+<a name="Libraries-1"></a>
+<h2 class="section">3.8 Libraries</h2>
+<a name="index-Libraries"></a>
 
-<p>Some commands only make sense inside a procedure, since they make
-objects known to the nesting level from which the procedure was called
-or to all nesting levels.
+<p>A library is a collection of <small>SINGULAR</small>
+procedures in a file.
+<br><small>SINGULAR</small> reads a library with the command
+<code>LIB</code>. General information about the library is displayed by the command
+<code>help libname_lib</code>. After loading the library, its procedures can be used
+like the built-in <small>SINGULAR</small> functions.
 </p>
-<p>See
-<a href="sing_299.htm#export">export</a>;
-<a href="sing_302.htm#keepring">keepring</a>;
-<a href="sing_304.htm#return">return</a>.
+<p>To have the full functionality of a built-in function libraries have to
+comply with the few syntax rules described below.
 </p>
+<p>Furthermore, libraries which are to be included in the <small>SINGULAR</small>
+distribution, have to comply with certain rules as explained in
+<a href="sing_48.htm#Guidelines-for-writing-a-library">Guidelines for writing a library</a>.
+</p>
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_46.htm#Loading-of-a-library">3.8.1 Loading of a library</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_47.htm#Format-of-a-library">3.8.2 Format of a library</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
+
 </td>
 </tr>
 </table>
@@ -106,14 +118,14 @@ or to all nesting levels.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_44.htm#Parameter-list" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.7.3 Parameter list" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_46.htm#Libraries" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.8 Libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_41.htm#Procedures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.7 Procedures" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_44.htm#Procedure-commands" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.7.4 Procedure commands" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_46.htm#Loading-of-a-library" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.8.1 Loading of a library" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

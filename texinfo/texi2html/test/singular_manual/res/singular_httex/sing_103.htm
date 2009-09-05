@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.7.2 list expressions</title>
+<title>Singular 2-0-4 Manual: 4.7.3 list operations</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.7.2 list expressions">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.7.2 list expressions">
+<meta name="description" content="Singular 2-0-4 Manual: 4.7.3 list operations">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.7.3 list operations">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="list-expressions"></a>
+<a name="list-operations"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_102.htm#list-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.7.1 list declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_102.htm#list-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.7.2 list expressions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_104.htm#list-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.7.3 list operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_104.htm#list-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.7.4 list related functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_101.htm#list" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.7 list" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_100.htm#list" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.7 list" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,51 +84,63 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="list-expressions-1"></a>
-<h3 class="subsection">4.7.2 list expressions</h3>
-<a name="index-list-expressions"></a>
+<a name="list-operations-1"></a>
+<h3 class="subsection">4.7.3 list operations</h3>
+<a name="index-list-operations"></a>
 
-<p>A list expression is:
-</p><ol>
-<li>
-the empty list <code>list()</code>
-</li><li>
-an identifier of type list
-</li><li>
-a function returning list
-</li><li>
-list expressions combined by the arithmetic operation <code>+</code>
-</li><li>
-a type cast to list
-</li></ol>
+<dl compact="compact">
+<dt><code>+</code></dt>
+<dd><p>concatenation
+</p></dd>
+<dt><code>delete</code></dt>
+<dd><p>deletes one element from list, returns new list
+</p></dd>
+<dt><code>insert</code></dt>
+<dd><p>inserts or appends a new element to list, returns a new list
+</p></dd>
+<dt>list_expression <code>[</code> int_expression <code>]</code></dt>
+<dd><p>is a list entry; the index 1 gives the first element.
+</p></dd>
+</dl>
 
-<p>See 
-<a href="sing_38.htm#Type-conversion-and-casting">Type conversion and casting</a>.
-</p>
 <br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  list l = &quot;hello&quot;,1;
-  l;
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  list l1 = 1,&quot;hello&quot;,list(-1,1);
+  list l2 = list(1,2,3);
+  l1 + l2;          // one new list
 &rarr; [1]:
-&rarr;    hello
-&rarr; [2]:
 &rarr;    1
-  l = list();
-  l;
-&rarr; empty list
-  ring r =0,x,dp;
-  factorize((x+1)^2);
-&rarr; [1]:
-&rarr;    _[1]=1
-&rarr;    _[2]=x+1
 &rarr; [2]:
-&rarr;    1,2
-  list(1,2,3);
+&rarr;    hello
+&rarr; [3]:
+&rarr;    [1]:
+&rarr;       -1
+&rarr;    [2]:
+&rarr;       1
+&rarr; [4]:
+&rarr;    1
+&rarr; [5]:
+&rarr;    2
+&rarr; [6]:
+&rarr;    3
+  list l3 =_;
+  l1,l2;            // two lists
+&rarr; [1]:
+&rarr;    1
+&rarr; [2]:
+&rarr;    hello
+&rarr; [3]:
+&rarr;    [1]:
+&rarr;       -1
+&rarr;    [2]:
+&rarr;       1
 &rarr; [1]:
 &rarr;    1
 &rarr; [2]:
 &rarr;    2
 &rarr; [3]:
 &rarr;    3
+  l2[2];
+&rarr; 2
 </pre></td></tr></table>
 
 </td>
@@ -140,14 +152,14 @@ a type cast to list
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_102.htm#list-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.7.1 list declarations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_104.htm#list-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.7.3 list operations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_101.htm#list" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.7 list" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_102.htm#list-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.7.2 list expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_104.htm#list-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.7.4 list related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_100.htm#list" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.7 list" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

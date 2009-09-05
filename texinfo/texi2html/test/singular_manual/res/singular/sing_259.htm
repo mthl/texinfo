@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.104 random</title>
+<title>Singular 2-0-4 Manual: 5.1.105 read</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.104 random">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.104 random">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.105 read">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.105 read">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="random"></a>
+<a name="read"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_258.htm#quotient" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.103 quotient" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_258.htm#random" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.104 random" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_260.htm#read" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.105 read" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_260.htm#reduce" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.106 reduce" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,59 +82,56 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="random-1"></a>
-<h3 class="subsection">5.1.104 random</h3>
-<a name="index-random"></a>
+<a name="read-1"></a>
+<h3 class="subsection">5.1.105 read</h3>
+<a name="index-read"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>random (</code> int_expression<code>,</code> int_expression <code>)</code>
+<dd><p><code>read (</code> link_expression <code>)</code>
+<br>for DBM links:
+<br><code>read (</code> link_expression <code>)</code>
+<br><code>read (</code> link_expression<code>,</code> string_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>int
+<dd><p>any
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>returns a random integer between the integer given by the first
-int_expression and the one given by the second int_expression.
-<br>
-</p></dd>
-<dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>random (</code> int_expression<code>,</code> int_expression<code>,</code> int_expression <code>)</code>
-</p></dd>
-<dt><code><strong>Type:</strong></code></dt>
-<dd><p>intmat
-</p></dd>
-<dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>returns a random intmat where the size is given by the second (number of
-rows) and third argument (number of columns). The absolute value of the
-entries of the matrix is smaller than or equal to the integer given as
-the first argument.
-</p></dd>
-<dt><code><strong>Note:</strong></code></dt>
-<dd><p>The random generator can be set to a start value with
-the function <code>system</code>, resp. by a command line option.
+<dd><p>reads data from a link.
+<br>For ASCII links, the content of the entire
+file is returned as one string. If the ASCII link is the empty string,
+<code>read</code> reads from standard input.
+<br>For MP links, one expression is read
+from the link and returned after evaluation.
+<br>For MPtcp links the <code>read</code> command blocks as long as there is no
+data to be read from the link. The <code>status</code> command can be used to
+check whether or not there is data to be read.
+<br>For DBM links, a <code>read</code> with one argument returns the value of
+the next entry in the data base, and a <code>read</code> with two arguments
+returns the value to the key given as the second argument from the data
+base.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  random(1,1000);
-&rarr; 35
-  random(1,2,3);
-&rarr; 0,0,0,
-&rarr; 1,1,-1 
-  system(&quot;random&quot;,210);  // start random generator with 210
-  random(-1000,1000);
-&rarr; 707
-  random(-1000,1000);
-&rarr; 284
-  system(&quot;random&quot;,210);
-  random(-1000,1000);    // the same random values again
-&rarr; 707
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+  ideal i=x+y,z3+22y;
+  // write the ideal i to the file save_i
+  write(&quot;:w save_i&quot;,i);
+  ring r0=0,(x,y,z),Dp;
+  // create an ideal k equal to the content
+  // of the file save_i
+  string s=&quot;ideal k=&quot;+read(&quot;save_i&quot;)+&quot;;&quot;;
+  execute(s);
+  k;
+&rarr; k[1]=x+y
+&rarr; k[2]=z3+22y
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_19.htm#Command-line-options">Command line options</a>;
-<a href="sing_74.htm#int">int</a>;
-<a href="sing_81.htm#intmat">intmat</a>;
-<a href="sing_280.htm#system">system</a>.
+<a href="sing_180.htm#execute">execute</a>;
+<a href="sing_195.htm#getdump">getdump</a>;
+<a href="sing_91.htm#link">link</a>;
+<a href="sing_274.htm#status">status</a>;
+<a href="sing_292.htm#write">write</a>.
 </p></td>
 </tr>
 </table>
@@ -144,14 +141,14 @@ the function <code>system</code>, resp. by a command line option.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_258.htm#quotient" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.103 quotient" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_260.htm#read" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.105 read" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_258.htm#random" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.104 random" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_260.htm#reduce" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.106 reduce" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

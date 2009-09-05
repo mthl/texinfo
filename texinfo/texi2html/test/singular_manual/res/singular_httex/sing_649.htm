@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.2.3 lift_kbase</title>
+<title>Singular 2-0-4 Manual: D.5.2.4 lift_rel_kb</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.2.3 lift_kbase">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.2.3 lift_kbase">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.2.4 lift_rel_kb">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.2.4 lift_rel_kb">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="lift_005fkbase"></a>
+<a name="lift_005frel_005fkb"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_648.htm#mod_005fversal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.2.2 mod_versal" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_648.htm#lift_005fkbase" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.2.3 lift_kbase" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_650.htm#lift_005frel_005fkb" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.2.4 lift_rel_kb" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_650.htm#kill_005frings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.2.5 kill_rings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_646.htm#deform_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.2 deform_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_645.htm#deform_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.2 deform_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,59 +84,51 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="lift_005fkbase-1"></a>
-<h4 class="subsubsection">D.5.2.3 lift_kbase</h4>
-<a name="index-lift_005fkbase"></a>
-<p>Procedure from library <code>deform.lib</code> (see <a href="sing_646.htm#deform_005flib">deform_lib</a>).
+<a name="lift_005frel_005fkb-1"></a>
+<h4 class="subsubsection">D.5.2.4 lift_rel_kb</h4>
+<a name="index-lift_005frel_005fkb"></a>
+<p>Procedure from library <code>deform.lib</code> (see <a href="sing_645.htm#deform_005flib">deform_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>lift_kbase(N,M); N,M=poly/ideal/vector/module
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>matrix A, coefficient matrix expressing N as linear combination of
-k-basis of M. Let the k-basis have k elements and size(N)=c columns.
-Then A satisfies:
-<br>matrix(reduce(N,std(M)),k,c) = matrix(kbase(std(M)))*A
+<dd><p>lift_rel_kb(N,M[,kbaseM,p]);
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>dim(M)=0 and the monomial ordering is a well ordering or the last
-block of the ordering is c or C
+<dd><p>[p a monomial ] or the product of all variables
+<br>N, M modules of same rank, M depending only on variables not in p
+and vdim(M) is finite in this ring,
+<br>[ kbaseM the kbase of M in the subring given by variables not in p ] <br>
+warning: these assumptions are not checked by the procedure
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>matrix A, whose j-th columns present the coeff&rsquo;s of N[j] in kbaseM,
+i.e. kbaseM*A = reduce(N,std(M))
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;deform.lib&quot;;
-ring R=0,(x,y),ds;
-module M=[x2,xy],[y2,xy],[0,xx],[0,yy];
-module N=[x3+xy,x],[x,x+y2];
-print(M);
-&rarr; x2,y2,0, 0,
-&rarr; xy,xy,x2,y2
-module kb=kbase(std(M));
-print(kb);
-&rarr; y2,xy,y,x,1,0,0,0,
-&rarr; 0, 0, 0,0,0,y,x,1 
-print(N);
-&rarr; xy+x3,x,  
-&rarr; x,    x+y2
-matrix A=lift_kbase(N,M);
+ring r=0,(A,B,x,y),dp;
+module M      = [x2,xy],[xy,y3],[y2],[0,x];
+module kbaseM = [1],[x],[xy],[y],[0,1],[0,y],[0,y2];
+poly f=xy;
+module N = [AB,BBy],[A3xy+x4,AB*(1+y2)];
+matrix A = lift_rel_kb(N,M,kbaseM,f);
 print(A);
+&rarr; AB,0, 
+&rarr; 0, 0, 
+&rarr; 0, A3,
+&rarr; 0, 0, 
+&rarr; 0, AB,
+&rarr; B2,0, 
+&rarr; 0, AB 
+&quot;TEST:&quot;;
+&rarr; TEST:
+print(matrix(kbaseM)*A-matrix(reduce(N,std(M))));
 &rarr; 0,0,
-&rarr; 1,0,
-&rarr; 0,0,
-&rarr; 0,1,
-&rarr; 0,0,
-&rarr; 0,0,
-&rarr; 1,1,
 &rarr; 0,0 
-matrix(reduce(N,std(M)),nrows(kb),ncols(A)) - matrix(kbase(std(M)))*A;
-&rarr; _[1,1]=0
-&rarr; _[1,2]=0
-&rarr; _[2,1]=0
-&rarr; _[2,2]=0
 </pre></td></tr></table>
 
 </td>
@@ -148,14 +140,14 @@ matrix(reduce(N,std(M)),nrows(kb),ncols(A)) - matrix(kbase(std(M)))*A;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_648.htm#mod_005fversal" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.2.2 mod_versal" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_650.htm#lift_005frel_005fkb" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.2.4 lift_rel_kb" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_646.htm#deform_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.2 deform_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_648.htm#lift_005fkbase" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.2.3 lift_kbase" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_650.htm#kill_005frings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.2.5 kill_rings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_645.htm#deform_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.2 deform_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

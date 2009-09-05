@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: A.15 Formatting output</title>
+<title>Singular 2-0-4 Manual: A.16 Cyclic roots</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: A.15 Formatting output">
-<meta name="keywords" content="Singular 2-0-4 Manual: A.15 Formatting output">
+<meta name="description" content="Singular 2-0-4 Manual: A.16 Cyclic roots">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.16 Cyclic roots">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Formatting-output"></a>
+<a name="Cyclic-roots"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_345.htm#Depth" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.14 Depth" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_345.htm#Formatting-output" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.15 Formatting output" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_347.htm#Cyclic-roots" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.16 Cyclic roots" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_347.htm#G_005fa-_002dInvariants" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.17 G_a -Invariants" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,46 +82,70 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Formatting-output-1"></a>
-<h2 class="section">A.15 Formatting output</h2>
-<a name="index-Formatting-output"></a>
+<a name="Cyclic-roots-1"></a>
+<h2 class="section">A.16 Cyclic roots</h2>
+<a name="index-Cyclic-roots"></a>
 
-<p>We show how to insert the result of a computation inside a text
-by using strings.
-First we compute the powers of 2 and comment the result with some text.
-Then we do the same and give the output a nice format by computing and
-adding appropriate space.
+<p>We write a procedure returning a string that enables us to create
+automatically the ideal of cyclic roots over the basering with n
+variables. The procedure assumes that the variables consist of a single
+letter each (hence no indexed variables are allowed; the procedure
+<code>cyclic</code> in <code>poly.lib</code> does not have this restriction). Then
+we compute a standard basis of this ideal and some numerical
+information.  (This ideal is used as a classical benchmark for standard
+basis computations).
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  // The powers of 2:
-  int  n;
-  for (n = 2; n &lt;= 128; n = n * 2)
-  {&quot;n = &quot; + string (n);}
-&rarr; n = 2
-&rarr; n = 4
-&rarr; n = 8
-&rarr; n = 16
-&rarr; n = 32
-&rarr; n = 64
-&rarr; n = 128
-  // The powers of 2 in a nice format
-  int j;
-  string space = &quot;&quot;;
-  for (n = 2; n &lt;= 128; n = n * 2)
-  {
-    space = &quot;&quot;;
-    for (j = 1; j &lt;= 5 - size (string (n)); j = j+1)
-    { space = space + &quot; &quot;; }
-    &quot;n =&quot; + space + string (n);
-  }
-&rarr; n =    2
-&rarr; n =    4
-&rarr; n =    8
-&rarr; n =   16
-&rarr; n =   32
-&rarr; n =   64
-&rarr; n =  128
-</pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">// We call the procedure 'cyclic':
+proc cyclic (int n)
+{
+   string vs = varstr(basering)+varstr(basering);
+   int c=find(vs,&quot;,&quot;);
+   while ( c!=0 )
+   {
+      vs=vs[1,c-1]+vs[c+1,size(vs)];
+      c=find(vs,&quot;,&quot;);
+   }
+   string t,s;
+   int i,j;
+   for ( j=1; j&lt;=n-1; j=j+1 )
+   {
+      t=&quot;&quot;;
+      for ( i=1; i &lt;=n; i=i+1 )
+      {
+         t = t + vs[i,j] + &quot;+&quot;;
+      }
+      t = t[1,size(t)-1] + &quot;,&quot;+newline;
+      s=s+t;
+   }
+   s=s+vs[1,n]+&quot;-1&quot;;
+   return (s);
+}
 
+ring r=0,(a,b,c,d,e),lp;         // basering, char 0, lex ordering
+string sc=cyclic(nvars(basering));
+sc;                              // the string of the ideal
+&rarr; a+b+c+d+e,
+&rarr; ab+bc+cd+de+ea,
+&rarr; abc+bcd+cde+dea+eab,
+&rarr; abcd+bcde+cdea+deab+eabc,
+&rarr; abcde-1
+execute(&quot;ideal i=&quot;+sc+&quot;;&quot;);      // this defines the ideal of cyclic roots
+i;
+&rarr; i[1]=a+b+c+d+e
+&rarr; i[2]=ab+bc+cd+ae+de
+&rarr; i[3]=abc+bcd+abe+ade+cde
+&rarr; i[4]=abcd+abce+abde+acde+bcde
+&rarr; i[5]=abcde-1
+timer=1;
+ideal j=std(i);
+&rarr; //used time: 7.5 sec
+size(j);                         // number of elements in the std basis
+&rarr; 11
+degree(j);
+&rarr; // codimension = 5
+&rarr; // dimension   = 0
+&rarr; // degree      = 70
+</pre></td></tr></table>
 </td>
 </tr>
 </table>
@@ -131,14 +155,14 @@ adding appropriate space.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_345.htm#Depth" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.14 Depth" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_347.htm#Cyclic-roots" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.16 Cyclic roots" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_345.htm#Formatting-output" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.15 Formatting output" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_347.htm#G_005fa-_002dInvariants" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.17 G_a -Invariants" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

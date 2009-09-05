@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: A.11 Free resolution</title>
+<title>Singular 2-0-4 Manual: A.12 Computation of Ext</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: A.11 Free resolution">
-<meta name="keywords" content="Singular 2-0-4 Manual: A.11 Free resolution">
+<meta name="description" content="Singular 2-0-4 Manual: A.12 Computation of Ext">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.12 Computation of Ext">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Free-resolution"></a>
+<a name="Computation-of-Ext"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_341.htm#Elimination" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.10 Elimination" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_341.htm#Free-resolution" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.11 Free resolution" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_343.htm#Computation-of-Ext" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.12 Computation of Ext" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_343.htm#Polar-curves" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.13 Polar curves" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,191 +84,257 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Free-resolution-1"></a>
-<h2 class="section">A.11 Free resolution</h2>
-<a name="index-Free-resolution"></a>
+<a name="Computation-of-Ext-1"></a>
+<h2 class="section">A.12 Computation of Ext</h2>
+<a name="index-Ext"></a>
 
-<p>In <small>SINGULAR</small> a free resolution of a module or ideal has its own type:
-<code>resolution</code>. It is a structure that stores all information related to
-free resolutions. This allows partial computations of resolutions via
-the command <code>res</code>. After applying <code>res</code>, only a pre-format of the
-resolution is computed which allows to determine invariants like
-Betti-numbers or homological dimension. To see the differentials
-of the complex, a resolution must be converted into the type list which
-yields a list of modules: the k-th module in this
-list is the first syzygy-module (module of relations) of the (k-1)st module.
-There are the following commands to compute a resolution:
-</p><dl compact="compact">
-<dt><code>res</code></dt>
-<dd><p><a href="sing_264.htm#res">res</a><br>
-computes a free resolution of an ideal or module using a heuristically
-chosen method.
-This is the preferred method to compute free resolutions of ideals or
-modules.
-</p></dd>
-<dt><code>lres</code></dt>
-<dd><p><a href="sing_224.htm#lres">lres</a><br>
-computes a free resolution of an ideal or module with La Scala&rsquo;s
-method. The input needs to be homogeneous.
-</p></dd>
-<dt><code>mres</code></dt>
-<dd><p><a href="sing_233.htm#mres">mres</a><br>
-computes a minimal free resolution of an ideal or module with the syzygy
-method.
-</p></dd>
-<dt><code>sres</code></dt>
-<dd><p><a href="sing_274.htm#sres">sres</a><br>
-computes a free resolution of an ideal or module with Schreyer&rsquo;s
-method. The input has to be a standard basis.
-</p></dd>
-<dt><code>nres</code></dt>
-<dd><p><a href="sing_240.htm#nres">nres</a><br>
-computes a free resolution of an ideal or module with the standard basis
-method.
-</p></dd>
-<dt><code>minres</code></dt>
-<dd><p><a href="sing_229.htm#minres">minres</a><br>
-minimizes a free resolution of an ideal or module.
-</p></dd>
-<dt><code>syz</code></dt>
-<dd><p><a href="sing_281.htm#syz">syz</a><br>
-computes the first syzygy module.
-</p></dd>
-</dl>
-<p><code>res(i,r)</code>, <code>lres(i,r)</code>, <code>sres(i,r)</code>, <code>mres(i,r)</code>,
-<code>nres(i,r)</code> compute the first r modules of the resolution
-of i, resp. the full resolution if r=0 and the basering is not a qring.
-See the manual for a precise description of these commands.
-<br>Note: The command <code>betti</code> does not require a minimal
-resolution for the minimal betti numbers.
+<p>We start by showing how to calculate the 
+ <span 
+class="cmmi-10">n </span> 
+-th Ext group of an
+ideal. The ingredients to do this are by the definition of Ext the
+following: calculate a (minimal) resolution at least up to length
 </p>
-<p>Now let&rsquo;s look at an example which uses resolutions: The Hilbert-Burch
-theorem says that the ideal i of a reduced curve in
+<p> <span 
+class="cmmi-10">n </span> 
+, apply the Hom-functor, and calculate the 
  <span 
-class="cmmi-10">K</span><sup><span 
-class="cmr-7">3</span></sup>  
-has a free resolution of length 2 and that i is given by the 2x2 minors
-of the 2nd matrix in the resolution.
-We test this for two transversal cusps in
- <span 
-class="cmmi-10">K</span><sup><span 
-class="cmr-7">3</span></sup>.  
-Afterwards we compute the resolution of the ideal j of the tangent developable
-of the rational normal curve in
- <span 
-class="cmmi-10">P</span><sup><span 
-class="cmr-7">4</span></sup>  
-from above.
-Finally we demonstrate the use of the type <code>resolution</code> in connection with
-the <code>lres</code> command.
+class="cmmi-10">n </span> 
+-th homology
+group, that is form the quotient
+ ker<span 
+class="cmmi-10">&#x2215;</span>Im  
+in the resolution sequence.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  // Two transversal cusps in (k^3,0):
-  ring r2 =0,(x,y,z),ds;
-  ideal i =z2-1y3+x3y,xz,-1xy2+x4,x3z;
-  resolution rs=mres(i,0);   // computes a minimal resolution
-  rs;                        // the standard representation of complexes
-&rarr;   1       3       2       
-&rarr; r2 &lt;--  r2 &lt;--  r2
-&rarr; 
-&rarr; 0       1       2       
-&rarr; 
-    list resi=rs;            // convertion to a list
-  print(resi[1]);            // the 1st module is i minimized
-&rarr; xz,
-&rarr; z2-y3+x3y,
-&rarr; xy2-x4
-  print(resi[2]);            // the 1st syzygy module of i
-&rarr; -z,-y2+x3,
-&rarr; x, 0,     
-&rarr; y, z      
-  resi[3];                   // the 2nd syzygy module of i
-&rarr; _[1]=0
-  ideal j=minor(resi[2],2);
-  reduce(j,std(i));          // check whether j is contained in i
-&rarr; _[1]=0
-&rarr; _[2]=0
-&rarr; _[3]=0
-  size(reduce(i,std(j)));    // check whether i is contained in j
-&rarr; 0
-  // size(&lt;ideal&gt;) counts the non-zero generators
-  // ---------------------------------------------
-  // The tangent developable of the rational normal curve in P^4:
-  ring P = 0,(a,b,c,d,e),dp;
-  ideal j= 3c2-4bd+ae, -2bcd+3ad2+3b2e-4ace,
-           8b2d2-9acd2-9b2ce+9ac2e+2abde-1a2e2;
-  resolution rs=mres(j,0);
-  rs;
-&rarr;  1      2      1      
-&rarr; P &lt;--  P &lt;--  P
-&rarr; 
-&rarr; 0      1      2      
-&rarr; 
-  list L=rs;
-  print(L[2]);
-&rarr; 2bcd-3ad2-3b2e+4ace,
-&rarr; -3c2+4bd-ae         
-  // create an intmat with graded betti numbers
-  intmat B=betti(rs);
-  // this gives a nice output of betti numbers
-  print(B,&quot;betti&quot;);
-&rarr;            0     1     2
-&rarr; ------------------------
-&rarr;     0:     1     -     -
-&rarr;     1:     -     1     -
-&rarr;     2:     -     1     -
-&rarr;     3:     -     -     1
-&rarr; ------------------------
-&rarr; total:     1     2     1
-  // the user has access to all betti numbers
-  // the 2-nd column of B:
-  B[1..4,2];
-&rarr; 0 1 1 0
-  ring cyc5=32003,(a,b,c,d,e,h),dp;
-  ideal i=
-  a+b+c+d+e,
-  ab+bc+cd+de+ea,
-  abc+bcd+cde+dea+eab,
-  abcd+bcde+cdea+deab+eabc,
-  h5-abcde;
-  resolution rs=lres(i,0);   //computes the resolution according La Scala
-  rs;                        //the shape of the minimal resolution
-&rarr;     1         5         10         10         5         1         
-&rarr; cyc5 &lt;--  cyc5 &lt;--  cyc5 &lt;--   cyc5 &lt;--   cyc5 &lt;--  cyc5
-&rarr; 
-&rarr; 0         1         2          3          4         5         
-&rarr; resolution not minimized yet
-&rarr; 
-  print(betti(rs),&quot;betti&quot;);  //shows the Betti-numbers of cyclic 5
-&rarr;            0     1     2     3     4     5
-&rarr; ------------------------------------------
-&rarr;     0:     1     1     -     -     -     -
-&rarr;     1:     -     1     1     -     -     -
-&rarr;     2:     -     1     1     -     -     -
-&rarr;     3:     -     1     2     1     -     -
-&rarr;     4:     -     1     2     1     -     -
-&rarr;     5:     -     -     2     2     -     -
-&rarr;     6:     -     -     1     2     1     -
-&rarr;     7:     -     -     1     2     1     -
-&rarr;     8:     -     -     -     1     1     -
-&rarr;     9:     -     -     -     1     1     -
-&rarr;    10:     -     -     -     -     1     1
-&rarr; ------------------------------------------
-&rarr; total:     1     5    10    10     5     1
-  dim(rs);                   //the homological dimension
-&rarr; 4
-  size(list(rs));            //gets the full (non-reduced) resolution
-&rarr; 6
-  minres(rs);                //minimizes the resolution
-&rarr;     1         5         10         10         5         1         
-&rarr; cyc5 &lt;--  cyc5 &lt;--  cyc5 &lt;--   cyc5 &lt;--   cyc5 &lt;--  cyc5
-&rarr; 
-&rarr; 0         1         2          3          4         5         
-&rarr; 
-  size(list(rs));            //gets the minimized resolution
-&rarr; 6
+<p>The Hom functor is given simply by transposing (hence dualizing) the
+module or the corresponding matrix with the command <code>transpose</code>.
+The image of the 
+ (<span 
+class="cmmi-10">n </span><span 
+class="cmsy-10">- </span>1)  
+-st map is generated by the columns of the
+corresponding matrix. To calculate the kernel apply the command
+<code>syz</code> at the 
+ (<span 
+class="cmmi-10">n </span><span 
+class="cmsy-10">- </span>1)  
+-st transposed entry of the resolution.
+Finally, the quotient is obtained by the command <code>modulo</code>, which
+gives for two modules A = ker, B = Im the module of relations of
+ <span 
+class="cmmi-10">A&#x2215;</span>(<span 
+class="cmmi-10">A </span><span 
+class="cmsy-10">&#x2229; </span><span 
+class="cmmi-10">B</span>)  
+in the usual way. As we have a chain complex this is obviously the same
+as ker/Im.
+</p>
+<p>We collect these statements in the following short procedure:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc ext(int n, ideal I)
+{
+  resolution rs = mres(I,n+1);
+  module tAn    = transpose(rs[n+1]);
+  module tAn_1  = transpose(rs[n]);
+  module ext_n  = modulo(syz(tAn),tAn_1);
+  return(ext_n);
+}
 </pre></td></tr></table>
 
+<p>Now consider the following example:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r5 = 32003,(a,b,c,d,e),dp;
+ideal I = a2b2+ab2c+b2cd, a2c2+ac2d+c2de,a2d2+ad2e+bd2e,a2e2+abe2+bce2;
+print(ext(2,I));
+&rarr; 1,0,0,0,0,0,0,
+&rarr; 0,1,0,0,0,0,0,
+&rarr; 0,0,1,0,0,0,0,
+&rarr; 0,0,0,1,0,0,0,
+&rarr; 0,0,0,0,1,0,0,
+&rarr; 0,0,0,0,0,1,0,
+&rarr; 0,0,0,0,0,0,1
+ext(3,I);   // too big to be displayed here
+</pre></td></tr></table>
 
+<p>The library <code>homolog.lib</code> contains several procedures for computing
+Ext-modules and related modules, which are much more general and
+sophisticated then the above one. They are used in the following
+example.
+</p>
+<p>If 
+ <span 
+class="cmmi-10">M </span> 
+ is a module, then
+ Ext<sup><span 
+class="cmr-7">1</span></sup>(<span 
+class="cmmi-10">M,M</span>),
+resp.&#x00A0;Ext<sup><span 
+class="cmr-7">2</span></sup>(<span 
+class="cmmi-10">M,M</span>),  
+are the modules of infinitesimal deformations, resp. of obstructions, of
+</p>
+<p> <span 
+class="cmmi-10">M </span> 
+ (like T1 and T2 for a singularity).  Similar to the treatment
+for singularities, the semiuniversal deformation of 
+ <span 
+class="cmmi-10">M </span> 
+ can be
+computed (if
+ Ext<sup><span 
+class="cmr-7">1</span></sup>  
+is finite dimensional) with the help of
+ Ext<sup><span 
+class="cmr-7">1</span></sup>, Ext<sup><span 
+class="cmr-7">2</span></sup>  
+and the cup product. There is an extra procedure for
+ Ext<sup><span 
+class="cmmi-7">k</span></sup>(<span 
+class="cmmi-10">R&#x2215;J,R</span>)  
+if 
+ <span 
+class="cmmi-10">J </span> 
+ is an ideal in 
+ <span 
+class="cmmi-10">R </span> 
+ since this is faster than the
+general Ext.
+</p>
+<p>We compute
+</p><ul>
+<li>
+the infinitesimal deformations
+ (= Ext<sup><span 
+class="cmr-7">1</span></sup>(<span 
+class="cmmi-10">K,K</span>))  
+and obstructions
+ (= Ext<sup><span 
+class="cmr-7">2</span></sup>(<span 
+class="cmmi-10">K,K</span>))  
+of the residue field 
+
+<span 
+class="cmmi-10">K </span>= <span 
+class="cmmi-10">R&#x2215;m </span> 
+ of an ordinary cusp,
+ <span 
+class="cmmi-10">R </span>= <span 
+class="cmmi-10">Loc</span><sub><span 
+class="cmmi-7">m</span></sub><span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x,y</span>]<span 
+class="cmmi-10">&#x2215;</span>(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmr-7">2</span></sup> <span 
+class="cmsy-10">- </span><span 
+class="cmmi-10">y</span><sup><span 
+class="cmr-7">3</span></sup>), <span 
+class="cmmi-10">m </span>= (<span 
+class="cmmi-10">x,y</span>).  
+To compute
+ Ext<sup><span 
+class="cmr-7">1</span></sup>(<span 
+class="cmmi-10">m,m</span>)  
+we have to apply <code>Ext(1,syz(m),syz(m))</code> with
+<code>syz(m)</code> the first syzygy module of 
+ <span 
+class="cmmi-10">m </span> 
+, which is isomorphic to
+ Ext<sup><span 
+class="cmr-7">2</span></sup>(<span 
+class="cmmi-10">K,K</span>).  
+</li><li>
+ Ext<sup><span 
+class="cmmi-7">k</span></sup>(<span 
+class="cmmi-10">R&#x2215;i,R</span>)  
+for some ideal 
+ <span 
+class="cmmi-10">i </span> 
+ and with an extra option.
+</li></ul>
+
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;homolog.lib&quot;;
+  ring R=0,(x,y),ds;
+  ideal i=x2-y3;
+  qring q = std(i);      // defines the quotient ring Loc_m k[x,y]/(x2-y3)
+  ideal m = maxideal(1);
+  module T1K = Ext(1,m,m);  // computes Ext^1(R/m,R/m)
+&rarr; // dimension of Ext^1:  0
+&rarr; // vdim of Ext^1:       2
+&rarr; 
+  print(T1K);
+&rarr; 0,  0,y,x,0,y,0,    x2-y3,
+&rarr; -y2,x,x,0,y,0,x2-y3,0,    
+&rarr; 1,  0,0,0,0,0,0,    0     
+  printlevel=2;             // gives more explanation
+  module T2K=Ext(2,m,m);    // computes Ext^2(R/m,R/m)
+&rarr; // Computing Ext^2 (help Ext; gives an explanation):
+&rarr; // Let 0&lt;--coker(M)&lt;--F0&lt;--F1&lt;--F2&lt;--... be a resolution of coker(M),
+&rarr; // and 0&lt;--coker(N)&lt;--G0&lt;--G1 a presentation of coker(N),
+&rarr; // then Hom(F2,G0)--&gt;Hom(F3,G0) is given by:
+&rarr; y2,x,
+&rarr; x, y 
+&rarr; // and Hom(F1,G0) + Hom(F2,G1)--&gt;Hom(F2,G0) is given by:
+&rarr; -y,x,  x,0,y,0,
+&rarr; x, -y2,0,x,0,y 
+&rarr; 
+&rarr; // dimension of Ext^2:  0
+&rarr; // vdim of Ext^2:       2
+&rarr; 
+  print(std(T2K));
+&rarr; -y2,0,x,0,y,
+&rarr; 0,  x,0,y,0,
+&rarr; 1,  0,0,0,0 
+  printlevel=0;
+  module E = Ext(1,syz(m),syz(m));
+&rarr; // dimension of Ext^1:  0
+&rarr; // vdim of Ext^1:       2
+&rarr; 
+  print(std(E));
+&rarr; -y,x, 0, 0,0,x,0,y,
+&rarr; 0, -y,-y,0,x,0,y,0,
+&rarr; 0, 0, 0, 1,0,0,0,0,
+&rarr; 0, 0, 1, 0,0,0,0,0,
+&rarr; 0, 1, 0, 0,0,0,0,0,
+&rarr; 1, 0, 0, 0,0,0,0,0 
+  //The matrices which we have just computed are presentation matrices
+  //of the modules T2K and E. Hence we may ignore those columns
+  //containing 1 as an entry and see that T2K and E are isomorphic
+  //as expected, but differently presented.
+  //-------------------------------------------
+  ring S=0,(x,y,z),dp;
+  ideal  i = x2y,y2z,z3x;
+  module E = Ext_R(2,i);
+&rarr; // dimension of Ext^2:  1
+&rarr; 
+  print(E);
+&rarr; 0,y,0,z2,
+&rarr; z,0,0,-x,
+&rarr; 0,0,x,-y 
+  // if a 3-rd argument is given (of any type)
+  // a list of Ext^k(R/i,R), a SB of Ext^k(R/i,R) and a vector space basis
+  // is returned:
+  list LE = Ext_R(3,i,&quot;&quot;);
+&rarr; // dimension of Ext^3:  0
+&rarr; // vdim of Ext^3:       2
+&rarr; 
+  LE;
+&rarr; [1]:
+&rarr;    _[1]=y*gen(1)
+&rarr;    _[2]=x*gen(1)
+&rarr;    _[3]=z2*gen(1)
+&rarr; [2]:
+&rarr;    _[1]=y*gen(1)
+&rarr;    _[2]=x*gen(1)
+&rarr;    _[3]=z2*gen(1)
+&rarr; [3]:
+&rarr;    _[1,1]=z
+&rarr;    _[1,2]=1
+  print(LE[2]);
+&rarr; y,x,z2
+  print(kbase(LE[2]));
+&rarr; z,1
+</pre></td></tr></table>
 </td>
 </tr>
 </table>
@@ -278,14 +344,14 @@ the <code>lres</code> command.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_341.htm#Elimination" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.10 Elimination" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_343.htm#Computation-of-Ext" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.12 Computation of Ext" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_331.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_341.htm#Free-resolution" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.11 Free resolution" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_343.htm#Polar-curves" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.13 Polar curves" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_330.htm#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

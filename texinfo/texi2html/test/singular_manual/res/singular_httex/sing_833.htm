@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.7.2.2 solve</title>
+<title>Singular 2-0-4 Manual: D.7.2.3 ures_solve</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.7.2.2 solve">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.7.2.2 solve">
+<meta name="description" content="Singular 2-0-4 Manual: D.7.2.3 ures_solve">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7.2.3 ures_solve">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="solve"></a>
+<a name="ures_005fsolve"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_832.htm#laguerre_005fsolve" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.2.1 laguerre_solve" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_832.htm#solve" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.2.2 solve" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_834.htm#ures_005fsolve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.3 ures_solve" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_834.htm#mp_005fres_005fmat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.4 mp_res_mat" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_831.htm#solve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.2 solve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_830.htm#solve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.2 solve_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,125 +84,94 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="solve-1"></a>
-<h4 class="subsubsection">D.7.2.2 solve</h4>
-<a name="index-solve"></a>
-<p>Procedure from library <code>solve.lib</code> (see <a href="sing_831.htm#solve_005flib">solve_lib</a>).
+<a name="ures_005fsolve-1"></a>
+<h4 class="subsubsection">D.7.2.3 ures_solve</h4>
+<a name="index-ures_005fsolve"></a>
+<p>Procedure from library <code>solve.lib</code> (see <a href="sing_830.htm#solve_005flib">solve_lib</a>).
 </p>
 <dl compact="compact">
-<dt><strong>Assume:</strong></dt>
-<dd><p>the ideal is 0-dimensional;<br>
-basering has characteristic 0 and is either complex or
-without parameters;
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>list of solutions of the ideal G, depending on n; one solution is a
-list of complex numbers in the generated output ring (the new
-basering).
-</p><table><tr><td>&nbsp;</td><td><pre class="format"> The result is a list L
-    n  = 0: a list of all different solutions (L[i]),
-    n != 0: a list of two elements,
-            L[i][1] contains all different solutions with the same multiplicity
-            L[i][2] the multiplicity
- L is ordered w.r.t. multiplicity (the smallest first).
+<dt><strong>Usage:</strong></dt>
+<dd><p>ures_solve(i [, k, p] ); i = ideal, k, p = integers
+</p><table><tr><td>&nbsp;</td><td><pre class="format">   k=0: use sparse resultant matrix of Gelfand, Kapranov and Zelevinsky,
+   k=1: use resultant matrix of Macaulay which works only for
+          homogeneous ideals,
+   p&gt;0: defines precision of the long floats for internal computation
+          if the basering is not complex (in decimal digits),
+   (default: k=0, p=30)
 </pre></td></tr></table>
 
 </dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>If the problem is not 0-dim. the procedure stops with ERROR, if the
-ideal G is not a lex. standard basis, it is generated with internal
-computation (Hilbert driven), if the input-ring (with char 0) has
-the name &quot;&lt;A&gt;&quot;, the lexicographical and complex output-ring has the
-name &quot;&lt;A&gt;C&quot;.
+<dt><strong>Assume:</strong></dt>
+<dd><p>i is a zerodimensional ideal with
+<br>nvars(basering) = ncols(i) = number of vars
+<br>actually occurring in i,
 </p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>list of all (complex) roots of the polynomial system i = 0; the
+result is of type
+</p><table><tr><td>&nbsp;</td><td><pre class="format">   string: if the basering is not complex,
+   number: otherwise.
+</pre></td></tr></table>
+
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;solve.lib&quot;;
-// Find all roots of a multivariate ideal using triangular sets:
-int d=4;// with these 3 parameters you may construct
-int t=3;// very hard problems for 'solve'
-int s=2;
-int i;
-ring A=0,(x(1..d)),dp;
-poly p=-1;
-for(i=d;i&gt;0;i--){p=p+x(i)^s;}
-ideal I=x(d)^t-x(d)^s+p;
-for(i=d-1;i&gt;0;i--){I=x(i)^t-x(i)^s+p,I;}
-I;
-&rarr; I[1]=x(1)^3+x(2)^2+x(3)^2+x(4)^2-1
-&rarr; I[2]=x(2)^3+x(1)^2+x(3)^2+x(4)^2-1
-&rarr; I[3]=x(3)^3+x(1)^2+x(2)^2+x(4)^2-1
-&rarr; I[4]=x(4)^3+x(1)^2+x(2)^2+x(3)^2-1
-// the mutiplicity is
-vdim(std(I));
-&rarr; 81
-list l1=solve(I,6,0);
-&rarr; // name of new current ring: AC
-// the current ring is
-AC;
-&rarr; //   characteristic : 0 (complex:6 digits, additional 6 digits)
-&rarr; //   1 parameter    : i 
-&rarr; //   minpoly        : (i^2+1)
-&rarr; //   number of vars : 4
-&rarr; //        block   1 : ordering lp
-&rarr; //                  : names    x(1) x(2) x(3) x(4) 
-&rarr; //        block   2 : ordering C
-// you must start with char. 0
-setring A;
-list l2=solve(I,6,1);
-&rarr; // name of current ring: AC
-// the number of different solutions is
-size(l1);
-&rarr; 37
-// this is equal to
-size(l2[1][1])+size(l2[2][1]);
-&rarr; 37
-// the number of solutions with multiplicity is
-size(l2[1][1])*l2[1][2]+size(l2[2][1])*l2[2][2];
-&rarr; 81
-// the solutions with multiplicity
-l2[2][2];
-&rarr; 12
-// are
-l2[2][1];
+// compute the intersection points of two curves
+ring rsq = 0,(x,y),lp;
+ideal gls=  x2 + y2 - 10, x2 + xy + 2y2 - 16;
+ures_solve(gls,0,16);
 &rarr; [1]:
 &rarr;    [1]:
-&rarr;       0
-&rarr;    [2]:
-&rarr;       0
-&rarr;    [3]:
 &rarr;       1
-&rarr;    [4]:
-&rarr;       0
+&rarr;    [2]:
+&rarr;       -3
 &rarr; [2]:
 &rarr;    [1]:
-&rarr;       0
+&rarr;       -1
 &rarr;    [2]:
-&rarr;       1
-&rarr;    [3]:
-&rarr;       0
-&rarr;    [4]:
-&rarr;       0
+&rarr;       3
 &rarr; [3]:
 &rarr;    [1]:
-&rarr;       1
+&rarr;       2.82842712474619
 &rarr;    [2]:
-&rarr;       0
-&rarr;    [3]:
-&rarr;       0
-&rarr;    [4]:
-&rarr;       0
+&rarr;       1.414213562373095
 &rarr; [4]:
 &rarr;    [1]:
-&rarr;       0
+&rarr;       -2.82842712474619
 &rarr;    [2]:
-&rarr;       0
-&rarr;    [3]:
-&rarr;       0
-&rarr;    [4]:
-&rarr;       1
+&rarr;       -1.414213562373095
+// result is a list (x,y)-coordinates as strings
+// now with complex coefficient field, precision is 20 digits
+ring rsc= (real,20,I),(x,y),lp;
+ideal i = (2+3*I)*x2 + (0.35+I*45.0e-2)*y2 - 8, x2 + xy + (42.7)*y2;
+list l= ures_solve(i,0,10);
+// result is a list of (x,y)-coordinates of complex numbers
+l;
+&rarr; [1]:
+&rarr;    [1]:
+&rarr;       (-1.315392899374542198+I*0.70468233142752928117)
+&rarr;    [2]:
+&rarr;       (0.12292646536251281054+I*0.19245727404407015049)
+&rarr; [2]:
+&rarr;    [1]:
+&rarr;       (1.315392899374542198-I*0.70468233142752928117)
+&rarr;    [2]:
+&rarr;       (-0.12292646536251281054-I*0.19245727404407015049)
+&rarr; [3]:
+&rarr;    [1]:
+&rarr;       (1.31584587549391830705-I*0.70396753310002259573)
+&rarr;    [2]:
+&rarr;       (0.092006639590217681983+I*0.20902112035965287775)
+&rarr; [4]:
+&rarr;    [1]:
+&rarr;       (-1.31584587549391830705+I*0.70396753310002259573)
+&rarr;    [2]:
+&rarr;       (-0.092006639590217681983-I*0.20902112035965287775)
+// check the result
+subst(subst(i[1],x,l[1][1]),y,l[1][2]);
+&rarr; 0
 </pre></td></tr></table>
 
 </td>
@@ -214,14 +183,14 @@ l2[2][1];
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_832.htm#laguerre_005fsolve" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.2.1 laguerre_solve" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_834.htm#ures_005fsolve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.3 ures_solve" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_831.htm#solve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.2 solve_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_832.htm#solve" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.2.2 solve" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_834.htm#mp_005fres_005fmat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.4 mp_res_mat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_830.htm#solve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.2 solve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

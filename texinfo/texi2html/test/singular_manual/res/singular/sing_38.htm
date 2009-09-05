@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.5.5 Type conversion and casting</title>
+<title>Singular 2-0-4 Manual: 3.5.6 Flow control</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.5.5 Type conversion and casting">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.5.5 Type conversion and casting">
+<meta name="description" content="Singular 2-0-4 Manual: 3.5.6 Flow control">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.5.6 Flow control">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Type-conversion-and-casting"></a>
+<a name="Flow-control"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_37.htm#Objects" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5.4 Objects" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_37.htm#Type-conversion-and-casting" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5.5 Type conversion and casting" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_39.htm#Flow-control" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.6 Flow control" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_39.htm#Input-and-output" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.6 Input and output" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_33.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_32.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,109 +82,48 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Type-conversion-and-casting-1"></a>
-<h3 class="subsection">3.5.5 Type conversion and casting</h3>
+<a name="Flow-control-1"></a>
+<h3 class="subsection">3.5.6 Flow control</h3>
+<a name="index-Flow-control"></a>
+<a name="index-block"></a>
 
-<a name="Type-conversion"></a>
-<h4 class="subsubheading">Type conversion</h4>
-<a name="index-Type-conversion"></a>
-<p>Assignments convert the type of the right-hand side to the type of the
-left-hand side of the assignment, if possible.  Operators and functions
-which require certain types of operands can also implicitly convert the
-type of an expression.  It is, for example, possible to multiply a
-polynomial by an integer because the integer is automatically converted to
-a polynomial.  Type conversions do not act transitively.  Possible
-conversions are:
-</p>
-
-<table>
-<tr><td width="5%">&nbsp;  1.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>ideal</code></td></tr>
-<tr><td width="5%">&nbsp;  2.</td><td width="18%"><code>poly</code></td><td width="81%">&rarr; <code>ideal</code></td></tr>
-<tr><td width="5%">&nbsp;  3.</td><td width="18%"><code>intvec</code></td><td width="81%">&rarr; <code>intmat</code></td></tr>
-<tr><td width="5%">&nbsp;  4.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>intvec</code></td></tr>
-<tr><td width="5%">&nbsp;  5.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>intmat</code></td></tr>
-<tr><td width="5%">&nbsp;  6.</td><td width="18%"><code>string</code></td><td width="81%">&rarr; <code>link</code></td></tr>
-<tr><td width="5%">&nbsp;  7.</td><td width="18%"><code>resolution</code></td><td width="81%">&rarr; <code>list</code></td></tr>
-<tr><td width="5%">&nbsp;  8.</td><td width="18%"><code>ideal</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
-<tr><td width="5%">&nbsp;  9.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
-<tr><td width="5%">&nbsp; 10.</td><td width="18%"><code>intmat</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
-<tr><td width="5%">&nbsp; 11.</td><td width="18%"><code>intvec</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
-<tr><td width="5%">&nbsp; 12.</td><td width="18%"><code>module</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
-<tr><td width="5%">&nbsp; 13.</td><td width="18%"><code>number</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
-<tr><td width="5%">&nbsp; 14.</td><td width="18%"><code>poly</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
-<tr><td width="5%">&nbsp; 15.</td><td width="18%"><code>vector</code></td><td width="81%">&rarr; <code>matrix</code></td></tr>
-<tr><td width="5%">&nbsp; 16.</td><td width="18%"><code>ideal</code></td><td width="81%">&rarr; <code>module</code></td></tr>
-<tr><td width="5%">&nbsp; 17.</td><td width="18%"><code>matrix</code></td><td width="81%">&rarr; <code>module</code></td></tr>
-<tr><td width="5%">&nbsp; 18.</td><td width="18%"><code>vector</code></td><td width="81%">&rarr; <code>module</code></td></tr>
-<tr><td width="5%">&nbsp; 19.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>number</code></td></tr>
-<tr><td width="5%">&nbsp; 20.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>poly</code></td></tr>
-<tr><td width="5%">&nbsp; 21.</td><td width="18%"><code>number</code></td><td width="81%">&rarr; <code>poly</code></td></tr>
-<tr><td width="5%">&nbsp; 22.</td><td width="18%"><code>string</code></td><td width="81%">&rarr; <code>proc</code></td></tr>
-<tr><td width="5%">&nbsp; 23.</td><td width="18%"><code>list</code></td><td width="81%">&rarr; <code>resolution</code></td></tr>
-<tr><td width="5%">&nbsp; 24.</td><td width="18%"><code>int</code></td><td width="81%">&rarr; <code>vector</code>
-  (i &rarr; i*<code>gen(1)</code>)</td></tr>
-<tr><td width="5%">&nbsp; 25.</td><td width="18%"><code>poly</code></td><td width="81%">&rarr; <code>vector</code>
-  (p &rarr; p*<code>gen(1)</code>)</td></tr>
-</table>
-
-<a name="Type-casting"></a>
-<h4 class="subsubheading">Type casting</h4>
-<a name="index-Type-casting"></a>
-<p>An expression can be casted to another type by using a type cast
-expression:
-<br> type <code>(</code> expression <code>)</code>.
-</p>
-<p>Possible type casts are:
-</p>
-<table>
-<tr><td width="5%">&nbsp;</td><td width="15%">to</td><td width="83%">from</td></tr>
-<tr><td width="5%">&nbsp;</td><td width="15%"><code>ideal</code></td><td width="83%">expression lists of <code>int</code>, <code>number</code>, <code>poly</code></td></tr>
-<tr><td width="5%">&nbsp;</td><td width="15%"><code>ideal</code></td><td width="83%"><code>int</code>, <code>matrix</code>, <code>module</code>, <code>number</code>, <code>poly</code>, <code>vector</code></td></tr>
-<tr><td width="5%">&nbsp;</td><td width="15%"><code>int</code></td><td width="83%"><code>number</code>, <code>poly</code></td></tr>
-<tr><td width="5%">&nbsp;</td><td width="15%"><code>intvec</code></td><td width="83%">expression lists of <code>int</code>, <code>intmat</code></td></tr>
-<tr><td width="5%">&nbsp;</td><td width="15%"><code>intmat</code></td><td width="83%"><code>intvec</code> (see <a href="sing_84.htm#intmat-type-cast">intmat type cast</a>)</td></tr>
-<tr><td width="5%">&nbsp;</td><td width="15%"><code>list</code></td><td width="83%">expression lists of any type</td></tr>
-<tr><td width="5%">&nbsp;</td><td width="15%"><code>matrix</code></td><td width="83%"><code>module</code>, <code>ideal</code>,
-<code>vector</code>, <code>matrix</code>.
-<br> There are two forms to convert something to a matrix: if <code>matrix(</code>
-expression <code>)</code> is used then the size of the matrix is determined
-by the size of expression.
-<br> But <code>matrix(</code> expression <code>,</code> m <code>,</code> n <code>)</code> may also be
-used - the result is a
-<SPAN CLASS="MATH"><IMG
- WIDTH="43" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_58.png"
- ALT="$ m \times n $"></SPAN>
-matrix (see <a href="sing_113.htm#matrix-type-cast">matrix type cast</a>)</td></tr>
-<tr><td width="5%">&nbsp;</td><td width="15%"><code>module</code></td><td width="83%">expression lists of <code>int</code>, <code>number</code>,
-<code>poly</code>, <code>vector</code></td></tr>
-<tr><td width="5%">&nbsp;</td><td width="15%"><code>module</code></td><td width="83%"><code>ideal</code>, <code>matrix</code>, <code>vector</code></td></tr>
-<tr><td width="5%">&nbsp;</td><td width="15%"><code>number</code></td><td width="83%"><code>poly</code></td></tr>
-<tr><td width="5%">&nbsp;</td><td width="15%"><code>poly</code></td><td width="83%"><code>int</code>, <code>number</code></td></tr>
-<tr><td width="5%">&nbsp;</td><td width="15%"><code>string</code></td><td width="83%">any type (see <a href="sing_146.htm#string-type-cast">string type cast</a>)</td></tr>
-</table>
-
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,x,(c,dp);
-  number(3x);
-&rarr; 0
-  number(poly(3));
-&rarr; 3
-  ideal i=1,2,3,4,5,6;
-  print(matrix(i));
-&rarr; 1,2,3,4,5,6
-  print(matrix(i,3,2));
-&rarr; 1,2,
-&rarr; 3,4,
-&rarr; 5,6 
-  vector v=[1,2];
-  print(matrix(v));
-&rarr; 1,
-&rarr; 2 
-  module(matrix(i,3,2));
-&rarr; _[1]=[1,3,5]
-&rarr; _[2]=[2,4,6]
+<p>A block is a sequence of commands surrounded by { and }.
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">{
+   command;
+   &hellip;
+}
 </pre></td></tr></table>
+<p>Blocks are used whenever <small>SINGULAR</small> is used as a structured programming
+language. The <code>if</code> and <code>else</code> structures allow conditional
+execution of blocks (see <a href="sing_300.htm#if">if</a>, <a href="sing_297.htm#else">else</a>). <code>for</code> and <code>while</code>
+loops are available for repeated execution of blocks (see <a href="sing_299.htm#for">for</a>,
+<a href="sing_304.htm#while">while</a>).
+In procedure definitions the main part and the example section are blocks
+as well(see <a href="sing_130.htm#proc">proc</a>).
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_294.htm#break">5.2.1 break</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_302.htm#quit">5.2.9 quit</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_301.htm#keepring">5.2.8 keepring</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_298.htm#export">5.2.5 export</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_300.htm#if">5.2.7 if</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_297.htm#else">5.2.4 else</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_299.htm#for">5.2.6 for</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_304.htm#while">5.2.11 while</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_130.htm#proc">4.13 proc</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_303.htm#return">5.2.10 return</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_296.htm#continue">5.2.3 continue</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
 
 
 </td>
@@ -196,14 +135,14 @@ matrix (see <a href="sing_113.htm#matrix-type-cast">matrix type cast</a>)</td></
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_37.htm#Objects" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5.4 Objects" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_39.htm#Flow-control" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.6 Flow control" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_33.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_37.htm#Type-conversion-and-casting" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5.5 Type conversion and casting" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_39.htm#Input-and-output" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.6 Input and output" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_32.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

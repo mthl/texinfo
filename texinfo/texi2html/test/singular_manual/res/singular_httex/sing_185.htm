@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.30 factorize</title>
+<title>Singular 2-0-4 Manual: 5.1.31 fetch</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.30 factorize">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.30 factorize">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.31 fetch">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.31 fetch">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="factorize"></a>
+<a name="fetch"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_184.htm#facstd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.29 facstd" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_184.htm#factorize" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.30 factorize" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_186.htm#fetch" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.31 fetch" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_186.htm#fglm" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.32 fglm" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,63 +84,77 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="factorize-1"></a>
-<h3 class="subsection">5.1.30 factorize</h3>
-<a name="index-factorize"></a>
+<a name="fetch-1"></a>
+<h3 class="subsection">5.1.31 fetch</h3>
+<a name="index-fetch"></a>
 
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>factorize (</code> poly_expression <code>)</code>
-<br><code>factorize (</code> poly_expression<code>, 0 )</code>
-<br><code>factorize (</code> poly_expression<code>, 2 )</code>
+<dd><p><code>fetch (</code> ring_name<code>,</code> name <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>list of ideal and intvec
-<br>
-</p></dd>
-<dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>factorize (</code> poly_expression<code>, 1 )</code>
-</p></dd>
-<dt><code><strong>Type:</strong></code></dt>
-<dd><p>ideal
+<dd><p>number, poly, vector, ideal, module, matrix or list
+(the same type as the second argument)
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>computes the irreducible factors (as an ideal) of the polynomial
-together with or without
-the multiplicities (as an intvec) depending on the second argument:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">    0: returns factors and multiplicities, first factor is a constant.
-       May also be written with only one argument.
-    1: returns non-constant factors (no multiplicities).
-    2: returns non-constant factors and multiplicities.
-</pre></td></tr></table>
-</dd>
+<dd><p>maps objects between rings.
+<code>fetch</code> is the identity map between rings and qrings,
+the i-th variable of the source ring is mapped to the i-th
+variable of the basering.  The coefficient fields must be compatible.
+(See <a href="sing_105.htm#map">map</a> for a description of possible mapping between
+different ground fields).
+<br><code>fetch</code> offers a convenient way to change
+variable names or orderings, or to map objects from a ring to a quotient
+ring of that ring or vice versa.
+</p></dd>
 <dt><code><strong>Note:</strong></code></dt>
-<dd><p>Not implemented for the coefficient fields real and finite fields of
-type <code>(p^n,a)</code>.
+<dd><p>Compared with <code>imap</code>, <code>fetch</code> uses the position of the ring
+variables, not their names.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
-  factorize(9*(x-1)^2*(y+z));
-&rarr; [1]:
-&rarr;    _[1]=9
-&rarr;    _[2]=y+z
-&rarr;    _[3]=x-1
-&rarr; [2]:
-&rarr;    1,1,2
-  factorize(9*(x-1)^2*(y+z),1);
-&rarr; _[1]=y+z
-&rarr; _[2]=x-1
-  factorize(9*(x-1)^2*(y+z),2);
-&rarr; [1]:
-&rarr;    _[1]=y+z
-&rarr;    _[2]=x-1
-&rarr; [2]:
-&rarr;    1,2
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+  ideal i=maxideal(2);
+  ideal j=std(i);
+  poly f=x+y2+z3;
+  vector v=[f,1];
+  qring q=j;
+  poly f=fetch(r,f);
+  f;
+&rarr; z3+y2+x
+  vector v=fetch(r,v);
+  v;
+&rarr; z3*gen(1)+y2*gen(1)+x*gen(1)+gen(2)
+  ideal i=fetch(r,i);
+  i;
+&rarr; i[1]=z2
+&rarr; i[2]=yz
+&rarr; i[3]=y2
+&rarr; i[4]=xz
+&rarr; i[5]=xy
+&rarr; i[6]=x2
+  ring rr=0,(a,b,c),lp;
+  poly f=fetch(q,f);
+  f;
+&rarr; a+b2+c3
+  vector v=fetch(r,v);
+  v;
+&rarr; a*gen(1)+b2*gen(1)+c3*gen(1)+gen(2)
+  ideal k=fetch(q,i);
+  k;
+&rarr; k[1]=c2
+&rarr; k[2]=bc
+&rarr; k[3]=b2
+&rarr; k[4]=ac
+&rarr; k[5]=ab
+&rarr; k[6]=a2
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_126.htm#poly">poly</a>.
+<a href="sing_202.htm#imap">imap</a>;
+<a href="sing_105.htm#map">map</a>;
+<a href="sing_132.htm#qring">qring</a>;
+<a href="sing_138.htm#ring">ring</a>.
 </p></td>
 </tr>
 </table>
@@ -150,14 +164,14 @@ type <code>(p^n,a)</code>.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_184.htm#facstd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.29 facstd" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_186.htm#fetch" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.31 fetch" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_184.htm#factorize" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.30 factorize" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_186.htm#fglm" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.32 fglm" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

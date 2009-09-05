@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.9.1.13 permute_L</title>
+<title>Singular 2-0-4 Manual: E Release Notes</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.9.1.13 permute_L">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.9.1.13 permute_L">
+<meta name="description" content="Singular 2-0-4 Manual: E Release Notes">
+<meta name="keywords" content="Singular 2-0-4 Manual: E Release Notes">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="permute_005fL"></a>
+<a name="Release-Notes"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_907.htm#sys_005fcode" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.12 sys_code" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_907.htm#permute_005fL" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.13 permute_L" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#News-and-changes" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: E.1 News and changes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_895.htm#brnoeth_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.9.1 brnoeth_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,49 +82,24 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="permute_005fL-1"></a>
-<h4 class="subsubsection">D.9.1.13 permute_L</h4>
-<a name="index-permute_005fL"></a>
-<p>Procedure from library <code>brnoeth.lib</code> (see <a href="sing_895.htm#brnoeth_005flib">brnoeth_lib</a>).
-</p>
-<dl compact="compact">
-<dt><strong>Usage:</strong></dt>
-<dd><p>permute_L( L, P ); L,P either intvecs or lists
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>list obtained from L by applying the permutation given by P.
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>If P is a list, all entries must be integers.
-</p>
-</dd>
-</dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;brnoeth.lib&quot;;
-list L=list();
-L[1]=&quot;a&quot;;
-L[2]=&quot;b&quot;;
-L[3]=&quot;c&quot;;
-L[4]=&quot;d&quot;;
-intvec P=1,3,4,2;
-// the list L is permuted according to P :
-permute_L(L,P);
-&rarr; [1]:
-&rarr;    a
-&rarr; [2]:
-&rarr;    c
-&rarr; [3]:
-&rarr;    d
-&rarr; [4]:
-&rarr;    b
-</pre></td></tr></table>
-<p><strong>See also:</strong>
-<a href="sing_902.htm#AGcode_005fOmega">AGcode_Omega</a>;
-<a href="sing_903.htm#prepSV">prepSV</a>;
-<a href="sing_907.htm#sys_005fcode">sys_code</a>.
-</p>
+<a name="Release-Notes-1"></a>
+<h1 class="chapter">E Release Notes</h1>
+<a name="index-Release-Notes"></a>
+
+
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_909.htm#News-and-changes">E.1 News and changes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_910.htm#Downloading-instructions">E.2 Downloading instructions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_911.htm#Unix-installation-instructions">E.3 Unix installation instructions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_912.htm#Windows-installation-instructions">E.4 Windows installation instructions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_913.htm#Macintosh-installation-instructions">E.5 Macintosh installation instructions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
+
 </td>
 </tr>
 </table>
@@ -134,14 +109,14 @@ permute_L(L,P);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_907.htm#sys_005fcode" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.12 sys_code" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_895.htm#brnoeth_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.9.1 brnoeth_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_907.htm#permute_005fL" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.13 permute_L" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_909.htm#News-and-changes" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: E.1 News and changes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

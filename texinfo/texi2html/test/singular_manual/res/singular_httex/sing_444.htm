@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.4.17 mod2id</title>
+<title>Singular 2-0-4 Manual: D.2.4.18 id2mod</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.4.17 mod2id">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.4.17 mod2id">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.4.18 id2mod">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.4.18 id2mod">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="mod2id"></a>
+<a name="id2mod"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_443.htm#denominator" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.16 denominator" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_443.htm#mod2id" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.17 mod2id" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_445.htm#id2mod" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.18 id2mod" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_445.htm#substitute" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.19 substitute" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_427.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_426.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,48 +84,39 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="mod2id-1"></a>
-<h4 class="subsubsection">D.2.4.17 mod2id</h4>
-<a name="index-mod2id"></a>
-<p>Procedure from library <code>poly.lib</code> (see <a href="sing_427.htm#poly_005flib">poly_lib</a>).
+<a name="id2mod-1"></a>
+<h4 class="subsubsection">D.2.4.18 id2mod</h4>
+<a name="index-id2mod"></a>
+<p>Procedure from library <code>poly.lib</code> (see <a href="sing_426.htm#poly_005flib">poly_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>mod2id(M,vpos); M matrix, vpos intvec
-</p>
-</dd>
-<dt><strong>Assume:</strong></dt>
-<dd><p>vpos is an integer vector such that gen(i) corresponds
-to var(vpos[i]).
-<br>The basering contains variables var(vpos[i]) which do not occur
-in M.
+<dd><p>id2mod(I,vpos); I ideal, vpos intvec
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>ideal I in which each gen(i) from the module is replaced by
-var(vpos[i]) and all monomials var(vpos[i])*var(vpos[j]) have
-been added to the generating set of I.
+<dd><p>module corresponding to the ideal by replacing var(vpos[i]) by
+gen(i) and omitting all generators var(vpos[i])*var(vpos[j])
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>This procedure should be used in the following situation:
-one wants to pass to a ring with new variables, say e(1),..,e(s),
-which correspond to the components gen(1),..,gen(s) of the
-module M such that e(i)*e(j)=0 for all i,j.
-<br>The new ring should already exist and be the current ring
+<dd><p>* This procedure only makes sense if the ideal contains
+all var(vpos[i])*var(vpos[j]) as monomial generators and
+all other generators of I are linear combinations of the
+var(vpos[i]) over the ring in the other variables.
+<br>* This is the inverse procedure to mod2id and should be applied
+only to ideals created by mod2id using the same intvec vpos
+(possibly after a standard basis computation)
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;poly.lib&quot;;
 ring r=0,(e(1),e(2),x,y,z),(dp(2),ds(3));
-module mo=x*gen(1)+y*gen(2);
+ideal i=e(2)^2,e(1)*e(2),e(1)^2,e(1)*y+e(2)*x;
 intvec iv=2,1;
-mod2id(mo,iv);
-&rarr; _[1]=e(2)^2
-&rarr; _[2]=e(1)*e(2)
-&rarr; _[3]=e(1)^2
-&rarr; _[4]=e(1)*y+e(2)*x
+id2mod(i,iv);
+&rarr; _[1]=x*gen(1)+y*gen(2)
 </pre></td></tr></table>
 
 </td>
@@ -137,14 +128,14 @@ mod2id(mo,iv);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_443.htm#denominator" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.16 denominator" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_445.htm#id2mod" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.18 id2mod" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_427.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_443.htm#mod2id" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.17 mod2id" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_445.htm#substitute" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.19 substitute" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_426.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

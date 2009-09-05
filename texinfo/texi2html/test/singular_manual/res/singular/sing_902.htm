@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.9.1.7 AGcode_Omega</title>
+<title>Singular 2-0-4 Manual: D.9.1.8 prepSV</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.9.1.7 AGcode_Omega">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.9.1.7 AGcode_Omega">
+<meta name="description" content="Singular 2-0-4 Manual: D.9.1.8 prepSV">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.9.1.8 prepSV">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="AGcode_005fOmega"></a>
+<a name="prepSV"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_901.htm#AGcode_005fL" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.6 AGcode_L" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_901.htm#AGcode_005fOmega" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.7 AGcode_Omega" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_903.htm#prepSV" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.9.1.8 prepSV" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_903.htm#decodeSV" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.9.1.9 decodeSV" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_895.htm#brnoeth_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.9.1 brnoeth_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_894.htm#brnoeth_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.9.1 brnoeth_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,40 +82,82 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="AGcode_005fOmega-1"></a>
-<h4 class="subsubsection">D.9.1.7 AGcode_Omega</h4>
-<a name="index-AGcode_005fOmega"></a>
-<p>Procedure from library <code>brnoeth.lib</code> (see <a href="sing_895.htm#brnoeth_005flib">brnoeth_lib</a>).
+<a name="prepSV-1"></a>
+<h4 class="subsubsection">D.9.1.8 prepSV</h4>
+<a name="index-prepSV"></a>
+<p>Procedure from library <code>brnoeth.lib</code> (see <a href="sing_894.htm#brnoeth_005flib">brnoeth_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>AGcode_Omega( G, D, EC ); G,D intvec, EC a list
+<dd><p>prepSV( G, D, F, EC ); G,D,F intvecs and EC a list
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>a generator matrix for the residual AG code defined by the
-divisors G and D.
-</p>
+<dd><p>list E of size n+3, where n=size(D). All its entries but E[n+3]
+are matrices:
+   </p><table><tr><td>&nbsp;</td><td><pre class="format">   E[1]:  parity check matrix for the current AG code
+   E[2] ... E[n+2]:  matrices used in the procedure decodeSV
+   E[n+3]:  intvec with
+       E[n+3][1]: correction capacity 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="51" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_532.png"
+ ALT="$epsilon$"></SPAN>
+ of the algorithm
+       E[n+3][2]: designed Goppa distance 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_533.png"
+ ALT="$delta$"></SPAN>
+ of the current AG code
+   </pre></td></tr></table>
+
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>The procedure must be called within the ring EC[1][4],
-where EC is the output of <code>extcurve(d)</code> (or within
-the ring EC[1][2] if d=1). <br>
-The entry i in the intvec D refers to the i-th rational
-place in EC[1][5] (i.e., to POINTS[i], etc., see <a href="sing_900.htm#extcurve">extcurve</a>).<br>
-The intvec G represents a rational divisor (see <a href="sing_898.htm#BrillNoether">BrillNoether</a>
-for more details).<br>
-The code computes the residues of a vector space basis of
-</p>
-<p><SPAN CLASS="MATH"><IMG
- WIDTH="68" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_531.png"
- ALT="$\Omega(G-D)$"></SPAN>
- at the rational places given by D.
+<dd><p>Computes the preprocessing for the basic (Skorobogatov-Vladut)
+decoding algorithm.<br>
+The procedure must be called within the ring EC[1][4], where EC is
+the output of <code>extcurve(d)</code> (or in the ring EC[1][2] if d=1) <br>
+The intvec G and F represent rational divisors (see
+<a href="sing_897.htm#BrillNoether">BrillNoether</a> for more details).<br>
+The intvec D refers to rational places (see <a href="sing_901.htm#AGcode_005fOmega">AGcode_Omega</a>
+for more details.).
+The current AG code is <code>AGcode_Omega(G,D,EC)</code>.<br>
+If you know the exact minimum distance d and you want to use it in
+<code>decodeSV</code> instead of 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_533.png"
+ ALT="$delta$"></SPAN>
+, you can change the value
+of E[n+3][2] to d before applying decodeSV.
+<br>If you have a systematic encoding for the current code and want to
+keep it during the decoding, you must previously permute D (using
+<code>permute_L(D,P);</code>), e.g., according to the permutation
+P=L[3], L being the output of <code>sys_code</code>.
 </p>
 </dd>
 <dt><strong>Warnings:</strong></dt>
-<dd><p>G should satisfy 
+<dd><p>F must be a divisor with support disjoint from the support of D and
+with degree 
+<!-- MATH
+ $epsilon + genus$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="108" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_534.png"
+ ALT="$epsilon + genus$"></SPAN>
+, where
+</p>
+<p><!-- MATH
+ $epsilon:=[(deg(G)-3*genus+1)/2]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="260" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_535.png"
+ ALT="$epsilon:=[(deg(G)-3*genus+1)/2]$"></SPAN>
+.<br>
+G should satisfy 
 <!-- MATH
  $2*genus-2 < deg(G) < size(D)$
  -->
@@ -125,8 +167,10 @@ The code computes the residues of a vector space basis of
  ALT="$ 2*genus-2 &lt; deg(G) &lt; size(D) $"></SPAN>
 , which is
 not checked by the algorithm.
-<br>G and D should have disjoint supports (checked by the algorithm).
+<br>G and D should also have disjoint supports (checked by the
+algorithm).
 </p>
+<a name="index-SV_002ddecoding-algorithm_002c-preprocessing"></a>
 </dd>
 </dl>
 <p><strong>Example:</strong>
@@ -143,21 +187,36 @@ def ER=HC[1][4];
 setring ER;
 intvec G=5;      // the rational divisor G = 5*HC[3][1]
 intvec D=2..9;   // D = sum of the rational places no. 2..9 over F_4
-// let us construct the corresponding residual AG code :
+// construct the corresp. residual AG code of type [8,3,&gt;=5] over F_4:
 matrix C=AGcode_Omega(G,D,HC);
 &rarr; Vector basis successfully computed 
-// here is a linear code of type [8,3,&gt;=5] over F_4
-print(C);
-&rarr; 0,    (a),(a),(a),  (a+1),1,0,  0,
-&rarr; (a+1),1,  (a),0,    (a),  0,(a),0,
-&rarr; (a+1),0,  (a),(a+1),(a+1),0,0,  1 
+// we can correct 1 error and the genus is 1, thus F must have degree 2
+// and support disjoint from that of D;
+intvec F=2;
+list SV=prepSV(G,D,F,HC);
+&rarr; Vector basis successfully computed 
+&rarr; Vector basis successfully computed 
+&rarr; Vector basis successfully computed 
+// now everything is prepared to decode with the basic algorithm;
+// for example, here is a parity check matrix to compute the syndrome :
+print(SV[1]);
+&rarr; 0,0,(a),  (a+1),1,  1,    (a+1),(a),  
+&rarr; 1,0,(a),  (a+1),(a),(a+1),(a),  (a+1),
+&rarr; 1,1,1,    1,    1,  1,    1,    1,    
+&rarr; 0,0,(a+1),(a),  1,  1,    (a),  (a+1),
+&rarr; 0,0,(a+1),(a),  (a),(a+1),1,    1     
+// and here you have the correction capacity of the algorithm :
+int epsilon=SV[size(D)+3][1];
+epsilon;
+&rarr; 1
 printlevel=plevel;
 </pre></td></tr></table>
 <p><strong>See also:</strong>
-<a href="sing_901.htm#AGcode_005fL">AGcode_L</a>;
-<a href="sing_896.htm#Adj_005fdiv">Adj_div</a>;
-<a href="sing_898.htm#BrillNoether">BrillNoether</a>;
-<a href="sing_900.htm#extcurve">extcurve</a>.
+<a href="sing_901.htm#AGcode_005fOmega">AGcode_Omega</a>;
+<a href="sing_903.htm#decodeSV">decodeSV</a>;
+<a href="sing_899.htm#extcurve">extcurve</a>;
+<a href="sing_907.htm#permute_005fL">permute_L</a>;
+<a href="sing_906.htm#sys_005fcode">sys_code</a>.
 </p>
 
 </td>
@@ -169,14 +228,14 @@ printlevel=plevel;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_901.htm#AGcode_005fL" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.6 AGcode_L" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_903.htm#prepSV" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.9.1.8 prepSV" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_895.htm#brnoeth_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.9.1 brnoeth_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_901.htm#AGcode_005fOmega" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.9.1.7 AGcode_Omega" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_903.htm#decodeSV" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.9.1.9 decodeSV" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_894.htm#brnoeth_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.9.1 brnoeth_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.5 The SINGULAR language</title>
+<title>Singular 2-0-4 Manual: 3.5.1 General command syntax</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.5 The SINGULAR language">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.5 The SINGULAR language">
+<meta name="description" content="Singular 2-0-4 Manual: 3.5.1 General command syntax">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.5.1 General command syntax">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="The-SINGULAR-language"></a>
+<a name="General-command-syntax"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_32.htm#Implemented-algorithms" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.4 Implemented algorithms" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_32.htm#The-SINGULAR-language" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5 The SINGULAR language" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_34.htm#General-command-syntax" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.1 General command syntax" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_34.htm#Special-characters" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.2 Special characters" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_32.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,80 +82,114 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="The-SINGULAR-language-1"></a>
-<h2 class="section">3.5 The SINGULAR language</h2>
-<a name="index-The-SINGULAR-language"></a>
+<a name="General-command-syntax-1"></a>
+<h3 class="subsection">3.5.1 General command syntax</h3>
+<a name="index-General-command-syntax"></a>
 
-<p><small>SINGULAR</small> interprets commands given interactively on the command
-line as well as given in the context of user-defined procedures.  In
-fact, <small>SINGULAR</small> makes no distinction between these two cases.
-Thus, <small>SINGULAR</small> offers a powerful programming language as well as
-an easy-to-use command line interface without differences in syntax or
-semantics.
+<p>In <small>SINGULAR</small> a command is either a declaration, an assignment, a
+call to a function without return value, or a print command. The general
+form of a command is described in the following subsections.
 </p>
-<p>In the following, the basic language concepts such as commands,
-expressions, names, objects, etc., are discussed.  See <a href="sing_41.htm#Procedures">Procedures</a>,
-and <a href="sing_46.htm#Libraries">Libraries</a>,
-for the concepts of procedures
-and libraries.
-</p>
-<p>In many aspects, the <small>SINGULAR</small> language is similar to the C
-programming language.  For a description of some of the subtle
-differences, see <a href="sing_321.htm#Major-differences-to-the-C-programming-language">Major differences to the C programming language</a>.
-</p>
-<a name="Elements-of-the-language"></a>
-<h4 class="subsubheading">Elements of the language</h4>
+<a name="Declaration"></a>
+<h4 class="subsubheading">Declaration</h4>
+<ol>
+<li> type name <code>=</code> expression <code>;</code>
+<br> declares a variable with the given name of the given type and assigns
+the expression as initial value to it.  Expression is an expression of
+the specified type or one that can be converted to that type.
+See <a href="sing_37.htm#Type-conversion-and-casting">Type conversion and casting</a>.
 
-<p>The major building blocks of the <small>SINGULAR</small> language  are
-expressions, commands, and control structures.  The notion of expressions
-in the <small>SINGULAR</small> and the C programming language are identical,
-whereas the notion of commands and control structures only roughly
-corresponds to the C statements.
+</li><li> type name_list <code>=</code> expression_list <code>;</code>
+<br> declares variables with the given names and assigns successively each
+expression of expression_list to the corresponding name of
+name_list.  Both lists must be of the same length.  Each expression in
+expression_list is an expression of the specified type or one that can
+be converted to that type.  See <a href="sing_37.htm#Type-conversion-and-casting">Type conversion and casting</a>.
+
+</li><li> type name <code>;</code>
+<br> declares a variable with the given name of the given type and assigns
+the default value of the specific type to it.
+</li></ol>
+
+<p>See <a href="sing_35.htm#Names">Names</a>, for more information on declarations.  See <a href="sing_65.htm#Data-types">Data types</a>,
+for a description of all data types known to <small>SINGULAR</small>.
 </p>
-<ul>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r;                   // the default ring
+poly f,g = x^2+y^3,xy+z2; // the polynomials f=x^2+y^3 and g=x*y+z^2
+ideal I = f,g;            // the ideal generated by f and g
+matrix m[3][3];           // a 3 x 3 zero matrix
+int i=2;                  // the integer i=2
+</pre></td></tr></table>
+
+<a name="Assignment"></a>
+<h4 class="subsubheading">Assignment</h4>
+<ol>
 <li>
-An &ldquo;expression&rdquo; is a sequence of operators, functions, and operands
-that specifies a computation.  An expression always results in a
-value of a specific type.  See <a href="sing_66.htm#Data-types">Data types</a>, and its subsections (e.g.,
-<a href="sing_128.htm#poly-expressions">poly expressions</a>), for information on how to build expressions.
+name <code>=</code> expression <code>;</code>
+<br> assigns expression to name.
 
 </li><li>
-A &ldquo;command&rdquo; is either a declaration, an assignment, a call to a
-function without return value, or a print command.  For detailed
-information, see <a href="sing_34.htm#General-command-syntax">General command syntax</a>.
+name_list <code>=</code> expression_list <code>;</code>
+<br> assigns successively each expression of expression_list to the
+corresponding name of name_list. Both lists must be of the same
+length.  This is not a simultaneous assignment.  Thus, <code>f, g = g, f;</code> does
+not swap the values of <code>f</code> and <code>g</code>, but rather assigns
+<code>g</code> to both <code>f</code> and <code>g</code>.
+</li></ol>
 
-</li><li>
-&ldquo;Control structures&rdquo; determine the execution sequence of commands.
-<small>SINGULAR</small> provides control structures for conditional execution
-(<code>if</code> &hellip; <code>else</code>) and iteration (<code>for</code> and
-<code>while</code>).  Commands may be grouped in pairs of <code>{</code> <code>}</code>
-(curly brackets) to form blocks.  See <a href="sing_294.htm#Control-structures">Control structures</a>, for
-more information.
-</li></ul>
+<p>There must be a type conversion of the type of expression to the type of
+name. See <a href="sing_37.htm#Type-conversion-and-casting">Type conversion and casting</a>.
+</p>
+<p>An assignment itself does not yield a value. Hence, compound assignments
+like <code>i = j = k;</code> are not allowed and result in an error.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">f = x^2 + y^2 ;      // overwrites the old value of f
+I = jacob(f);
+f,g = I[1],x^2+y^2 ; // overwrites the old values of f and g
+</pre></td></tr></table>
 
-<a name="Other-notational-conventions"></a>
-<h4 class="subsubheading">Other notational conventions</h4>
-<p>For user-defined functions, the notion of &ldquo;procedure&rdquo; and
-&ldquo;function&rdquo; are synonymous.
+<a name="Function-without-return-value"></a>
+<h4 class="subsubheading">Function without return value</h4>
+<ol>
+<li>
+function_name [ <code>(</code> argument_list <code>)</code> ] <code>;</code>
+<br> calls function function_name with arguments argument_list.
+</li></ol>
+
+<p>The function may have output (not to be confused with a return value of
+type string). See <a href="sing_154.htm#Functions">Functions</a>. Functions without a return value are
+specified there to have a return type &rsquo;none&rsquo;.
 </p>
-<p>As already mentioned above, functions without return values are called
-commands.  Furthermore, whenever convenient, the term &ldquo;command&rdquo; is
-used for a function, even if it does return a value.
+<p>Some of these functions have to be called without parentheses, e.g.,
+<code>help</code>, <code>LIB</code>.
 </p>
-<blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_34.htm#General-command-syntax">3.5.1 General command syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_35.htm#Special-characters">3.5.2 Special characters</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_36.htm#Names">3.5.3 Names</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_37.htm#Objects">3.5.4 Objects</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_38.htm#Type-conversion-and-casting">3.5.5 Type conversion and casting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_39.htm#Flow-control">3.5.6 Flow control</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table></blockquote>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+  ideal i=x2+y2,x;
+  i=std(i);
+  degree(i);        // degree has no return value but prints output
+&rarr; 2
+</pre></td></tr></table>
+
+<a name="Print-command"></a>
+<h4 class="subsubheading">Print command</h4>
+<ol>
+<li>
+expression <code>;</code>
+<br> prints the value of an expression, for example, of a variable.
+</li></ol>
+
+<p>Use the function <code>print</code> (or the procedure show from inout.lib)
+to get a pretty output of various data
+types, e.g., matrix or intmat. See <a href="sing_251.htm#print">print</a>.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="smallexample">  int i=2;
+  i;
+&rarr; 2
+  intmat m[2][2]=1,7,10,0;
+  print(m);
+&rarr;      1     7
+&rarr;     10     0
+</pre></td></tr></table>
 
 </td>
 </tr>
@@ -166,14 +200,14 @@ used for a function, even if it does return a value.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_32.htm#Implemented-algorithms" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.4 Implemented algorithms" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_34.htm#General-command-syntax" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.1 General command syntax" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_32.htm#The-SINGULAR-language" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.5 The SINGULAR language" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_34.htm#Special-characters" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.5.2 Special characters" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_32.htm#The-SINGULAR-language" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.5 The SINGULAR language" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

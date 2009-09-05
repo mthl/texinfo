@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.6.1.7 molien</title>
+<title>Singular 2-0-4 Manual: D.6.1.8 reynolds_molien</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.6.1.7 molien">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.6.1.7 molien">
+<meta name="description" content="Singular 2-0-4 Manual: D.6.1.8 reynolds_molien">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6.1.8 reynolds_molien">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="molien"></a>
+<a name="reynolds_005fmolien"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_759.htm#group_005freynolds" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.6 group_reynolds" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_759.htm#molien" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.7 molien" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_761.htm#reynolds_005fmolien" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.8 reynolds_molien" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_761.htm#partial_005fmolien" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.9 partial_molien" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_753.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_752.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,42 +82,40 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="molien-1"></a>
-<h4 class="subsubsection">D.6.1.7 molien</h4>
-<a name="index-molien"></a>
-<p>Procedure from library <code>finvar.lib</code> (see <a href="sing_753.htm#finvar_005flib">finvar_lib</a>).
+<a name="reynolds_005fmolien-1"></a>
+<h4 class="subsubsection">D.6.1.8 reynolds_molien</h4>
+<a name="index-reynolds_005fmolien"></a>
+<p>Procedure from library <code>finvar.lib</code> (see <a href="sing_752.htm#finvar_005flib">finvar_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>molien(G1,G2,...[,ringname,lcm,flags]);
-<br>G1,G2,...: nxn &lt;matrices&gt;, all elements of a finite matrix group,
-ringname: a &lt;string&gt; giving a name for a new ring of characteristic 0
-for the Molien series in case of prime characteristic, lcm: an &lt;int&gt;
-giving the lowest common multiple of the elements&rsquo; orders in case of
-prime characteristic, minpoly==0 and a non-cyclic group, flags: an
-optional &lt;intvec&gt; with three components: if the first element is not
-equal to 0 characteristic 0 is simulated, i.e. the Molien series is
-computed as if the base field were characteristic 0 (the user must
-choose a field of large prime characteristic, e.g. 32003), the second
-component should give the size of intervals between canceling common
-factors in the expansion of the Molien series, 0 (the default) means
-only once after generating all terms, in prime characteristic also a
-negative number can be given to indicate that common factors should
-always be canceled when the expansion is simple (the root of the
-extension field does not occur among the coefficients)
+<dd><p>reynolds_molien(G1,G2,...[,ringname,flags]);
+<br>G1,G2,...: nxn &lt;matrices&gt; generating a finite matrix group, ringname:
+a &lt;string&gt; giving a name for a new ring of characteristic 0 for the
+Molien series in case of prime characteristic, flags: an optional
+&lt;intvec&gt; with three components: if the first element is not equal to 0
+characteristic 0 is simulated, i.e. the Molien series is computed as
+if the base field were characteristic 0 (the user must choose a field
+of large prime characteristic, e.g. 32003) the second component should
+give the size of intervals between canceling common factors in the
+expansion of the Molien series, 0 (the default) means only once after
+generating all terms, in prime characteristic also a negative number
+can be given to indicate that common factors should always be canceled
+when the expansion is simple (the root of the extension field does not
+occur among the coefficients)
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
 <dd><p>n is the number of variables of the basering, G1,G2... are the group
-elements generated by group_reynolds(), lcm is the second return value
-of group_reynolds()
+elements generated by group_reynolds(), g is the size of the group
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>in case of characteristic 0 a 1x2 &lt;matrix&gt; giving enumerator and
-denominator of Molien series; in case of prime characteristic a ring
-with the name &lsquo;ringname&lsquo; of characteristic 0 is created where the same
-Molien series (named M) is stored
+<dd><p>a gxn &lt;matrix&gt; representing the Reynolds operator is the first return
+value and in case of characteristic 0 a 1x2 &lt;matrix&gt; giving enumerator
+and denominator of Molien series is the second one; in case of prime
+characteristic a ring with the name &lsquo;ringname&lsquo; of characteristic 0 is
+created where the same Molien series (named M) is stored
 </p>
 </dd>
 <dt><strong>Display:</strong></dt>
@@ -125,11 +123,19 @@ Molien series (named M) is stored
 </p>
 </dd>
 <dt><strong>Theory:</strong></dt>
-<dd><p>In characteristic 0 the terms 1/det(1-xE) for all group elements of
-the Molien series are computed in a straight forward way. In prime
-characteristic a Brauer lift is involved. The returned matrix gives
-enumerator and denominator of the expanded version where common
-factors have been canceled.
+<dd><p>The entire matrix group is generated by getting all left products of
+the generators with new elements from the last run through the loop
+(or the generators themselves during the first run). All the ones that
+have been generated before are thrown out and the program terminates
+when are no new elements found in one run. Additionally each time a
+new group element is found the corresponding ring mapping of which the
+Reynolds operator is made up is generated. They are stored in the rows
+of the first return value. In characteristic 0 the terms 1/det(1-xE)
+is computed whenever a new element E is found. In prime characteristic
+a Brauer lift is involved and the terms are only computed after the
+entire matrix group is generated (to avoid the modular case). The
+returned matrix gives enumerator and denominator of the expanded
+version where common factors have been canceled.
 </p>
 </dd>
 </dl>
@@ -139,20 +145,28 @@ factors have been canceled.
 &rarr;          note the case of prime characteristic
 ring R=0,(x,y,z),dp;
 matrix A[3][3]=0,1,0,-1,0,0,0,0,-1;
-list L=group_reynolds(A);
-matrix M=molien(L[2..size(L)]);
+matrix REY,M=reynolds_molien(A);
+print(REY);
+&rarr; y, -x,-z,
+&rarr; -x,-y,z, 
+&rarr; -y,x, -z,
+&rarr; x, y, z  
 print(M);
 &rarr; x3+x2-x+1,-x7+x6+x5-x4+x3-x2-x+1
 ring S=3,(x,y,z),dp;
-string newring=&quot;alksdfjlaskdjf&quot;;
+string newring=&quot;Qadjoint&quot;;
 matrix A[3][3]=0,1,0,-1,0,0,0,0,-1;
-list L=group_reynolds(A);
-molien(L[2..size(L)],newring);
-setring alksdfjlaskdjf;
+matrix REY=reynolds_molien(A,newring);
+print(REY);
+&rarr; y, -x,-z,
+&rarr; -x,-y,z, 
+&rarr; -y,x, -z,
+&rarr; x, y, z  
+setring Qadjoint;
 print(M);
 &rarr; x3+x2-x+1,-x7+x6+x5-x4+x3-x2-x+1
 setring S;
-kill alksdfjlaskdjf;
+kill Qadjoint;
 </pre></td></tr></table>
 
 </td>
@@ -164,14 +178,14 @@ kill alksdfjlaskdjf;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_759.htm#group_005freynolds" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.6 group_reynolds" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_761.htm#reynolds_005fmolien" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.8 reynolds_molien" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_753.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_759.htm#molien" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.7 molien" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_761.htm#partial_005fmolien" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.9 partial_molien" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_752.htm#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

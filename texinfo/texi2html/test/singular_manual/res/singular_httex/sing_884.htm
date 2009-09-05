@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.8.2.10 texproc</title>
+<title>Singular 2-0-4 Manual: D.8.2.11 texring</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.8.2.10 texproc">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.8.2.10 texproc">
+<meta name="description" content="Singular 2-0-4 Manual: D.8.2.11 texring">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.8.2.11 texring">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="texproc"></a>
+<a name="texring"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_883.htm#texpoly" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.9 texpoly" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_883.htm#texproc" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.10 texproc" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_885.htm#texring" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.11 texring" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_885.htm#rmx" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.12 rmx" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_874.htm#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_873.htm#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,63 +84,84 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="texproc-1"></a>
-<h4 class="subsubsection">D.8.2.10 texproc</h4>
-<a name="index-texproc"></a>
-<p>Procedure from library <code>latex.lib</code> (see <a href="sing_874.htm#latex_005flib">latex_lib</a>).
+<a name="texring-1"></a>
+<h4 class="subsubsection">D.8.2.11 texring</h4>
+<a name="index-texring"></a>
+<p>Procedure from library <code>latex.lib</code> (see <a href="sing_873.htm#latex_005flib">latex_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>texproc(fname,pname); fname,pname strings
-</p>
-</dd>
-<dt><strong>Assume:</strong></dt>
-<dd><p><code>`pname`</code> is a procedure.
+<dd><p>texring(fname, r[,L]); fname string, r ring, L list
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>if <code>fname=&quot;&quot;</code>: string, the proc <code>`pname`</code> in a verbatim
-environment in LaTeX-typesetting;<br>
-otherwise: append this string to the file <code>&lt;fname&gt;</code>, and
+<dd><p>if <code>fname=&quot;&quot;</code>: string, the ring in TeX-typesetting;<br>
+otherwise: append this string to the file <code>&lt;fname&gt;</code> and
 return nothing.
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>preceding &quot;&gt;&gt;&quot; are deleted in <code>fname</code>, and suffix &quot;.tex&quot;
-(if not given) is added to <code>fname</code>.<br>
-<code>texproc</code> cannot be applied to itself correctly.
+<dd><p>preceding &quot;&gt;&gt;&quot; are deleted and suffix &quot;.tex&quot; (if not given)
+is added to <code>fname</code>.<br>
+The optional list L is assumed to be a list of strings which control,
+e.g., the symbol for the field of coefficients.<br>
+For more details call <code>texdemo();</code> (generates a LaTeX2e
+file called <code>texlibdemo.tex</code> which explains all features of
+<code>texring</code>).
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;latex.lib&quot;;
-proc exp(int i,int j,list #)
-{ string s;
-if (size(#))
-{
-for(i;i&lt;=j;i++)
-{ s = s + string(j) + string(#); }
-}
-return(s);
-}
-export exp;
-&rarr; // ** `exp` is already global
-texproc(&quot;&quot;,&quot;exp&quot;);
-&rarr; \begin{verbatim}
-&rarr; proc exp(int i,int j,list #)
-&rarr; { 
-&rarr;  string s;
-&rarr; if (size(#))
-&rarr; {
-&rarr; for(i;i&lt;=j;i++)
-&rarr; { s = s + string(j) + string(#); }
-&rarr; }
-&rarr; return(s);
-&rarr; 
-&rarr; }
-&rarr; \end{verbatim}
-&rarr; 
-kill exp;
+ring r0 = 0,(x,y),dp;                // char = 0, polynomial ordering
+texring(&quot;&quot;,r0);
+&rarr; $\Q[x,y]$
+//
+ring r7 =7,(x(0..2)),ds;             // char = 7, local ordering
+texring(&quot;&quot;,r7);
+&rarr; $\Z_{7}[[x_{0},x_{1},x_{2}]]$
+//
+ring r1 = 0,(x1,x2,y1,y2),wp(1,2,3,4);
+texring(&quot;&quot;,r1);
+&rarr; $\Q[x_{1},x_{2},y_{1},y_{2}]$
+//
+ring rr = real,(x),dp;               // real numbers
+texring(&quot;&quot;,rr);
+&rarr; $\R[x]$
+//
+ring rabc =(0,t1,t2,t3),(x,y),dp;    // ring with parameters
+texring(&quot;&quot;,rabc);
+&rarr; $\Q(t_{1},t_{2},t_{3})[x,y]$
+//
+ring ralg = (7,a),(x1,x2),ds;        // algebraic extension
+minpoly = a2-a+3;
+texring(&quot;&quot;,ralg);
+&rarr; $\Z_{7}(a)[[x_{1},x_{2}]]$
+texring(&quot;&quot;,ralg,&quot;mipo&quot;);
+&rarr; $\Z_{7}(a)/(a^{2}-a+3)[[x_{1},x_{2}]]$
+//
+ring r49=(49,a),x,dp;                // Galois field  
+texring(&quot;&quot;,r49);
+&rarr; $\F_{49}[x]$
+//
+setring r0;                          // quotient ring
+ideal i = x2-y3;
+qring q = std(i);
+texring(&quot;&quot;,q);
+&rarr; $\Q[x,y]/\left(y^{3}-x^{2}\right)
+&rarr; $
+//
+// ------------------ additional features -------------------
+ring r9 =0,(x(0..9)),ds;
+texring(&quot;&quot;,r9,1);
+&rarr; $\Q[[x_{0},\ldots,x_{9}]]$
+texring(&quot;&quot;,r9,&quot;C&quot;,&quot;{&quot;,&quot;^G&quot;);
+&rarr; $\C\{x_{0},x_{1},x_{2},x_{3},x_{4},x_{5},x_{6},x_{7},x_{8},x_{9}\}^G$
+//
+ring rxy = 0,(x(1..5),y(1..6)),ds;
+intvec v = 5,6;
+texring(&quot;&quot;,rxy,v);
+&rarr; $\Q[[x_{1},\ldots,x_{5},y_{1},\ldots,y_{6}]]$
 </pre></td></tr></table>
 
 </td>
@@ -152,14 +173,14 @@ kill exp;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_883.htm#texpoly" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.9 texpoly" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_885.htm#texring" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.11 texring" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_874.htm#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_883.htm#texproc" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.10 texproc" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_885.htm#rmx" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.12 rmx" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_873.htm#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

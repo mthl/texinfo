@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: Appendix A Examples</title>
+<title>Singular 2-0-4 Manual: Appendix B Polynomial data</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: Appendix A Examples">
-<meta name="keywords" content="Singular 2-0-4 Manual: Appendix A Examples">
+<meta name="description" content="Singular 2-0-4 Manual: Appendix B Polynomial data">
+<meta name="keywords" content="Singular 2-0-4 Manual: Appendix B Polynomial data">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,3172 +41,667 @@ ul.toc {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="Examples"></a>
+<a name="Polynomial-data"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="singular_6.html#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_6.html#Identifier-resolution" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Milnor-and-Tjurina" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="singular_6.html#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_6.html#Parallelization-with-MPtcp-links" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Preface" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Representation-of-mathematical-objects" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_8.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Preface" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_11.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Examples-1"></a>
-<h1 class="appendix">Appendix A Examples</h1>
-<a name="index-Examples"></a>
-
+<a name="Polynomial-data-1"></a>
+<h1 class="appendix">Appendix B Polynomial data</h1>
+<a name="index-Polynomial-data"></a>
 
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Milnor-and-Tjurina">A.1 Milnor and Tjurina</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Representation-of-mathematical-objects">B.1 Representation of mathematical objects</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="#Procedures-and-LIB">A.2 Procedures and LIB</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Critical-points">A.3 Critical points</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Saturation">A.4 Saturation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Long-coefficients">A.5 Long coefficients</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Parameters">A.6 Parameters</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#T1-and-T2">A.7 T1 and T2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Deformations">A.8 Deformations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Finite-fields">A.9 Finite fields</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Elimination">A.10 Elimination</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Free-resolution">A.11 Free resolution</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Computation-of-Ext">A.12 Computation of Ext</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Polar-curves">A.13 Polar curves</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Depth">A.14 Depth</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Formatting-output">A.15 Formatting output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Cyclic-roots">A.16 Cyclic roots</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#G_005fa-_002dInvariants">A.17 G_a -Invariants</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Invariants-of-a-finite-group">A.18 Invariants of a finite group</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Factorization">A.19 Factorization</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Puiseux-pairs">A.20 Puiseux pairs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Primary-decomposition">A.21 Primary decomposition</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Normalization">A.22 Normalization</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Branches-of-an-Isolated-Space-Curve-Singularity">A.23 Branches of an Isolated Space Curve Singularity</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Kernel-of-module-homomorphisms">A.24 Kernel of module homomorphisms</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Algebraic-dependence">A.25 Algebraic dependence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Classification">A.26 Classification</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Fast-lexicographical-GB">A.27 Fast lexicographical GB</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Parallelization-with-MPtcp-links">A.28 Parallelization with MPtcp links</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="#Monomial-orderings">B.2 Monomial orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
-
-
-
-
-
-
 <hr>
-<a name="Milnor-and-Tjurina"></a>
+<a name="Representation-of-mathematical-objects"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Procedures-and-LIB" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_8.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Preface" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_11.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Milnor-and-Tjurina-1"></a>
-<h2 class="section">A.1 Milnor and Tjurina</h2>
-<a name="index-Milnor"></a>
-<a name="index-Tjurina"></a>
+<a name="Representation-of-mathematical-objects-1"></a>
+<h2 class="section">B.1 Representation of mathematical objects</h2>
+<a name="index-mathematical-objects"></a>
+<a name="index-representation_002c-math-objects"></a>
 
-<p>The Milnor number, resp. the Tjurina number, of a power
-series f in
-is
-<code>jacob(f)</code> is the ideal generated by the partials
-of <code>f</code>. <code>tjurina(f)</code> is finite, if and only if <code>f</code> has an
-isolated singularity. The same holds for <code>milnor(f)</code> if
-K has characteristic 0.
-<small>SINGULAR</small> displays -1 if the dimension is infinite.
+<p><small>SINGULAR</small> distinguishes between objects which do not belong to a ring
+and those which belong to a specific ring (see <a href="singular_2.html#Rings-and-orderings">Rings and orderings</a>).
+We comment only on the latter ones.
 </p>
-<p><small>SINGULAR</small> cannot compute with infinite power series. But it can
-work in
-the localization of
-at the maximal ideal
-To do this one has to define an
-s-ordering like ds, Ds, ls, ws, Ws or an appropriate matrix
-ordering (look at the manual to get information about the possible
-monomial orderings in <small>SINGULAR</small>, or type <code>help Monomial orderings;</code>
-to get a menu of possible orderings. For further help type, e.g.,
-<code>help local orderings;</code>).
-See <a href="singular_8.html#Monomial-orderings">Monomial orderings</a>.
+<p>Internally all ring-dependent objects are polynomials or structures built from
+polynomials (and some additional information).
+Note that <small>SINGULAR</small> stores (and hence prints) a polynomial automatically
+w.r.t. the monomial ordering.
 </p>
-<p>We shall show in the example below how to realize the following:
-</p><ul>
-<li>
-set option <code>prot</code> to have a short protocol during standard basis
-computation
-</li><li>
-define the ring <code>r1</code> with char 32003, variables <code>x,y,z</code>, monomial
-  ordering <code>ds</code>, series ring (i.e., K[x,y,z] localized at (x,y,z))
-</li><li>
-list the information about <code>r1</code> by typing its name
-</li><li>
-define the integers <code>a,b,c,t</code>
-</li><li>
-define a polynomial <code>f</code> (depending on <code>a,b,c,t</code>) and display it
-</li><li>
-define the jacobian ideal <code>i</code> of <code>f</code>
-</li><li>
-compute a standard basis of <code>i</code>
-</li><li>
-compute the Milnor number (=250) with <code>vdim</code> and create and display
-  a string in order to comment the result
-  (text between quotes &quot;  &quot;; is a &rsquo;string&rsquo;)
-</li><li>
-compute a standard basis of <code>i+(f)</code>
-</li><li>
-compute the Tjurina number (=195) with <code>vdim</code>
-</li><li>
-then compute the Milnor number (=248) and the Tjurina number
-(=195) for <code>t</code>=1
-</li><li>
-reset the option to <code>noprot</code>
-</li></ul>
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  option(prot);
-  ring r1 = 32003,(x,y,z),ds;
-  r1;
-&rarr; //   characteristic : 32003
-&rarr; //   number of vars : 3
-&rarr; //        block   1 : ordering ds
-&rarr; //                  : names    x y z 
-&rarr; //        block   2 : ordering C
-  int a,b,c,t=11,5,3,0;
-  poly f = x^a+y^b+z^(3*c)+x^(c+2)*y^(c-1)+x^(c-1)*y^(c-1)*z3+
-           x^(c-2)*y^c*(y^2+t*x)^2;
-  f;
-&rarr; y5+x5y2+x2y2z3+xy7+z9+x11
-  ideal i=jacob(f);
-  i;
-&rarr; i[1]=5x4y2+2xy2z3+y7+11x10
-&rarr; i[2]=5y4+2x5y+2x2yz3+7xy6
-&rarr; i[3]=3x2y2z2+9z8
-  ideal j=std(i);
-&rarr; [1023:2]7(2)s8s10s11s12s(3)s13(4)s(5)s14(6)s(7)15--.s(6)-16.-.s(5)17.s(7)\
-   s--s18(6).--19-..sH(24)20(3)...21....22....23.--24-
-&rarr; product criterion:10 chain criterion:69
-  &quot;The Milnor number of f(11,5,3) for t=0 is&quot;, vdim(j);
-&rarr; The Milnor number of f(11,5,3) for t=0 is 250
-  j=i+f;    // overwrite j
-  j=std(j);
-&rarr; [1023:2]7(3)s8(2)s10s11(3)ss12(4)s(5)s13(6)s(8)s14(9).s(10).15--sH(23)(8)\
-   ...16......17.......sH(21)(9)sH(20)16(10).17...........18.......19..----.\
-   .sH(19)
-&rarr; product criterion:10 chain criterion:53
-  vdim(j);  // compute the Tjurina number for t=0
-&rarr; 195
-  t=1;
-  f=x^a+y^b+z^(3*c)+x^(c+2)*y^(c-1)+x^(c-1)*y^(c-1)*z3
-    +x^(c-2)*y^c*(y^2+t*x)^2;
-  ideal i1=jacob(f);
-  ideal j1=std(i1);
-&rarr; [1023:2]7(2)s8s10s11s12s13(3)ss(4)s14(5)s(6)s15(7).....s(8)16.s...s(9)..1\
-   7............s18(10).....s(11)..-.19.......sH(24)(10).....20...........21\
-   ..........22.............................23..............................\
-   .24.----------.25.26
-&rarr; product criterion:11 chain criterion:83
-  &quot;The Milnor number of f(11,5,3) for t=1:&quot;,vdim(j1);
-&rarr; The Milnor number of f(11,5,3) for t=1: 248
-  vdim(std(j1+f));   // compute the Tjurina number for t=1
-&rarr; [1023:2]7(16)s8(15)s10s11ss(16)-12.s-s13s(17)s(18)s(19)-s(18).-14-s(17)-s\
-   (16)ss(17)s15(18)..-s...--.16....-.......s(16).sH(23)s(18)...17..........\
-   18.........sH(20)17(17)....................18..........19..---....-.-....\
-   .....20.-----...s17(9).........18..............19..-.......20.-......21..\
-   .......sH(19)16(5).....18......19.-----
-&rarr; product criterion:15 chain criterion:174
-&rarr; 195
-  option(noprot);
-</pre></td></tr></table>
-
+<p>Hence, in order to define such an object in <small>SINGULAR</small>,
+one has to give a list of polynomials in a specific format.
+</p>
+<p>For ideals, resp. matrices, this is straight forward:
+The user gives a list of polynomials
+which generate the ideal, resp. which are the entries of the matrix.
+(The number of rows and columns has to be given when creating the matrix.)
+</p>
+<p>A vector  in <small>SINGULAR</small> is always an element of a free module over the
+basering. It is given as a list of polynomials in one of the following
+formats
+denotes the i-th canonical generator of a free module (with 1 at place i and
+0 everywhere else).
+Both forms are equivalent. A vector is internally represented in
+the second form with the
+being &quot;special&quot; ring variables, ordered accordingly to the monomial ordering.
+Therefore, the form
+is given as output only if the monomial ordering gives priority to the
+component, i.e., is of the form <code>(c,...)</code> (see <a href="#Module-orderings">Module orderings</a>).  However, in any case the procedure <code>show</code> from the
+library <code>inout.lib</code> displays the bracket format.
+</p>
+<p>A vector
+should always be considered as a column vector in a free module
+of rank equal to
+where 
+is equal to the maximal index 
+such that
+This is due to the fact, that internally 
+is a polynomial in a sparse representation, i.e.,
+is not stored if
+(for reasons of efficiency), hence the last 0-entries of 
+are lost.
+Only more complex structures are able to keep the rank.
+</p>
+<p>A module 
+in <small>SINGULAR</small> is given by a list of vectors
+which generate the module as a submodule of the free module of rank
+equal to 
+which is the maximum of
+</p>
+<p>If one wants to create a module with a larger rank than given by its
+generators, one has to use the command <code>attrib(M,&quot;rank&quot;,r)</code> (see
+<a href="singular_4.html#attrib">attrib</a>, <a href="singular_4.html#nrows">nrows</a>) or to define a matrix first, then converting it
+into a module.  Modules in <small>SINGULAR</small> are almost the same as
+matrices, they may be considered as sparse representations of matrices.
+A module of a matrix is generated by the columns of the matrix and a
+matrix of a module has as columns the generators of the module.  These
+conversions preserve the rank and the number of generators, resp. the
+number of rows and columns.
+</p>
+<p>By the above remarks it might appear that <small>SINGULAR</small> is only able to handle
+submodules of a free module. However, this is not true. <small>SINGULAR</small>
+can compute with any finitely generated module over the basering 
+Such a module, say 
+is not represented by its generators but by its
+(generators and) relations. This means that
+is the number of generators of 
+is the module of relations.
+In other words, defining  a module 
+as a submodule of a free module
+can also be considered as the definition of
+</p>
+<p>Note that most functions, when applied to a module 
+really deal with
+However, there are some functions which deal with 
+</p>
+<p>For example, <code>std(M)</code> computes a standard basis of 
+(and thus gives another representation of 
+However, <code>dim(M)</code>, resp. <code>vdim(M)</code>, returns
+(if M is given by a standard basis).
+</p>
+<p>The function <code>syz(M)</code>  returns the first syzygy module of 
+i.e., the module 
+of relations of the given generators of 
+which is equal to the second syzygy module of 
+Refer to the description of each function in
+<a href="singular_4.html#Functions">Functions</a> to get information which module the function deals with.
+</p>
+<p>The numbering in <code>res</code> and other commands for computing resolutions
+refers to a resolution of
+(see <a href="singular_4.html#res">res</a>; <a href="singular_8.html#Syzygies-and-resolutions">Syzygies and resolutions</a>).
+</p>
+<p>It is possible to compute in any field which is a valid ground field in
+<small>SINGULAR</small>.  For doing so, one has to define a ring with the desired
+ground field and at least one variable. The elements of the field are of
+type number, but may also be considered as polynomials (of degree
+0). Large computations should be faster if the elements of the field are
+defined as numbers.
+</p>
+<p>The above remarks do also apply to quotient rings. Polynomial data are
+stored internally in the same manner, the only difference is that this
+polynomial representation is in general not unique. <code>reduce(f,std(0))</code>
+computes a normal form of a polynomial f in a quotient ring (cf.
+<a href="singular_4.html#reduce">reduce</a>).
+</p>
 <hr>
-<a name="Procedures-and-LIB"></a>
+<a name="Monomial-orderings"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Milnor-and-Tjurina" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Critical-points" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Representation-of-mathematical-objects" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Polynomial-data" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction-to-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_8.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Preface" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_11.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Procedures-and-LIB-1"></a>
-<h2 class="section">A.2 Procedures and LIB</h2>
-<a name="index-Procedures-and-LIB"></a>
+<a name="Monomial-orderings-1"></a>
+<h2 class="section">B.2 Monomial orderings</h2>
+<a name="index-Monomial-orderings"></a>
 
-<p>The computation of the Milnor number (for an arbitrary isolated complete
-intersection singularity ICIS) and the Tjurina number (for an arbitrary
-isolated singularity) can be done by using procedures from the library
-<code>sing.lib</code>. For a hypersurface singularity it is very easy to write a
-procedure which computes the Milnor number and the Tjurina number.
-</p>
-<p>We shall demonstrate:
-</p><ul>
-<li>
-load the library <code>sing.lib</code>
-</li><li>
-define a local ring in 2 variables and characteristic 0
-</li><li>
-define a plane curve singularity
-</li><li>
-compute Milnor number and Tjurina number by using the procedures
-<code>milnor</code> and <code>tjurina</code>
-</li><li>
-write your own procedures:
-(A procedure has a list of input parameters and of return values, both
-lists may be empty.)
-  <ul class="toc">
-<li>-
-  the procedure <code>mil</code> which must be called with one parameter, a
-  polynomial.
-  The name g is local to the procedure and is killed automatically.
-  <code>mil</code> returns the Milnor number (and displays a comment).
-  </li><li>-
-  the procedure <code>tjur</code> where the parameters are not specified. They
-  are referred
-  to by <code>#[1]</code> for the 1st, <code>#[2]</code> for the 2nd parameter, etc.
-  <code>tjur</code> returns the Tjurina number (and displays a comment).
-  </li><li>-
-  the procedure <code>milrina</code> which returns a list consisting of two
-  integers,
-  the Milnor and the Tjurina number.
-  </li></ul>
-</li></ul>
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;sing.lib&quot;;
-// you should get the information that sing.lib has been loaded
-// together with some other libraries which are needed by sing.lib
-ring r = 0,(x,y),ds;
-poly f = x7+y7+(x-y)^2*x2y2;
-milnor(f);
-&rarr; 28
-tjurina(f);
-&rarr; 24
-
-proc mil (poly g)
-{
-   &quot;Milnor number:&quot;;
-   return(vdim(std(jacob(g))));
-}
-mil(f);
-&rarr; Milnor number:
-&rarr; 28
-
-proc tjur
-{
-   &quot;Tjurina number:&quot;;
-   return(vdim(std(jacob(#[1])+#[1])));
-}
-tjur(f);
-&rarr; Tjurina number:
-&rarr; 24
-
-proc milrina (poly f)
-{
-   ideal j=jacob(f);
-   list L=vdim(std(j)),vdim(std(j+f));
-   return(L);
-}
-milrina(f);     // a list containing Milnor and Tjurina number
-&rarr; [1]:
-&rarr;    28
-&rarr; [2]:
-&rarr;    24
-milrina(f)[2];  // the second element of the list
-&rarr; 24
-</pre></td></tr></table>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Introduction-to-orderings">B.2.1 Introduction to orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#General-definitions-for-orderings">B.2.2 General definitions for orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Global-orderings">B.2.3 Global orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Local-orderings">B.2.4 Local orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Module-orderings">B.2.5 Module orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Matrix-orderings">B.2.6 Matrix orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Product-orderings">B.2.7 Product orderings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Extra-weight-vector">B.2.8 Extra weight vector</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
-<a name="Critical-points"></a>
+<a name="Introduction-to-orderings"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Procedures-and-LIB" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Saturation" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#General-definitions-for-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_8.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Preface" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_11.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Critical-points-1"></a>
-<h2 class="section">A.3 Critical points</h2>
-<a name="index-Critical-points"></a>
+<a name="Introduction-to-orderings-1"></a>
+<h3 class="subsection">B.2.1 Introduction to orderings</h3>
+<a name="index-orderings-introduction"></a>
+<a name="index-term-orderings-introduction"></a>
+<a name="index-monomial-orderings-introduction"></a>
 
-<p>The same computation which computes the Milnor, resp. the Tjurina,
-number, but with ordering <code>dp</code> instead of <code>ds</code> (i.e., in
-instead of
-gives:
-</p><ul>
-<li>
-the number of critical points of <code>f</code> in the affine plane
-(counted with multiplicities)
-</li><li>
-the number of singular points of <code>f</code> on the affine plane curve <code>f</code>=0
-(counted with multiplicities).
-</li></ul>
-
-<p>We start with the ring <code>r1</code> from section <a href="#Milnor-and-Tjurina">Milnor and Tjurina</a> and its elements.
+<p><small>SINGULAR</small> offers a great variety of monomial orderings which provide
+an enormous functionality, if used diligently. However, this
+flexibility might also be confusing for the novice user.  Therefore, we
+recommend to those not familiar with monomial orderings to generally use
+the ordering <code>dp</code> for computations in the polynomial ring
+resp.  <code>ds</code> for computations in the localization 
 </p>
-<p>The following will be realized below:
-</p><ul>
-<li>
-reset the protocol option and activate the timer
-</li><li>
-define the ring <code>r2</code> with char 32003, variables <code>x,y,z</code> and monomial
-  ordering <code>dp</code> (= degrevlex) (i.e., the polynomial ring = K[x,y,z]).
-</li><li>
-Note that polynomials, ideals, matrices (of polys), vectors,
-  modules belong to a ring, hence we have to define <code>f</code> and <code>jacob(f)</code>
-  again in <code>r2</code>. Since these objects are local to a ring, we may use
-  the same names.
-  Instead of defining <code>f</code> again we map it from ring <code>r1</code> to <code>r2</code>
-  by using the <code>imap</code> command
-  (<code>imap</code> is a convenient way to map variables
-  from some ring identically to variables with the same name in the
-  basering, even if the ground field is different. Compare with <code>fetch</code>
-  which works for almost identical rings,
-  e.g., if the rings differ only by the ordering or by the names of the
-  variables and which may be used to rename variables).
-  Integers and strings, however, do not belong to any ring. Once
-  defined they are globally known.
-</li><li>
-The result of the computation here (together with the previous one in
- <a href="#Milnor-and-Tjurina">Milnor and Tjurina</a>) shows that (for <code>t</code>=0)
-= 250 (previously computed) while
-= 536. Hence <code>f</code> has 286 critical points,
-  counted with multiplicity, outside the origin.
-  Moreover, since
-= 195 =
-the affine surface <code>f</code>=0 is smooth outside the origin.
-</li></ul>
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1 = 32003,(x,y,z),ds;
-  int a,b,c,t=11,5,3,0;
-  poly f = x^a+y^b+z^(3*c)+x^(c+2)*y^(c-1)+x^(c-1)*y^(c-1)*z3+
-           x^(c-2)*y^c*(y^2+t*x)^2;
-  option(noprot);
-  timer=1;
-  ring r2 = 32003,(x,y,z),dp;
-  poly f=imap(r1,f);
-  ideal j=jacob(f);
-  vdim(std(j));
-&rarr; 536
-  vdim(std(j+f));
-&rarr; 195
-  timer=0;  // reset timer
-</pre></td></tr></table>
+<p>For inhomogeneous input ideals,  standard (resp. groebner) bases
+computations are generally faster 
+with the orderings 
+(resp. 
+if the input is quasihomogeneous w.r.t. the weights 
+</p>
+<p>If the output needs to be &quot;triangular&quot; (resp. &quot;block-triangular&quot;), the
+lexicographical ordering <code>lp</code> (resp. lexicographical
+block-orderings) need to be used. However, these orderings usually
+result in much less efficient computations.
+</p>
 
 <hr>
-<a name="Saturation"></a>
+<a name="General-definitions-for-orderings"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Critical-points" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Long-coefficients" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction-to-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Global-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_8.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Preface" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_11.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Saturation-1"></a>
-<h2 class="section">A.4 Saturation</h2>
-<a name="index-Saturation"></a>
+<a name="General-definitions-for-orderings-1"></a>
+<h3 class="subsection">B.2.2 General definitions for orderings</h3>
+<a name="index-orderings"></a>
+<a name="index-term-orderings"></a>
+<a name="index-monomial-orderings"></a>
 
-<p>Since in the example above, the ideal 
- has the same <code>vdim</code>
-in the polynomial ring and in the localization at 0 (each 195),
+<p> See the literature cited in <a href="singular_8.html#References">References</a>.
 </p>
-<p> is smooth outside 0.
-Hence 
- contains some power of the maximal ideal 
-. We shall
-check this in a different manner:
-For any two ideals 
- in the basering 
- let
-<br>denote the saturation of 
- with respect to 
-. This defines,
-geometrically, the closure of the complement of V(
-) in V(
-)
-(V(
-) denotes the variety defined by 
-).
-In our case, 
- must be the whole ring, hence
-generated by 1.
+<p>It is known that any monomial ordering can be represented by a matrix 
+but, of course, only integer coefficients are of relevance in
+practice.
 </p>
-<p>The saturation is computed by the procedure <code>sat</code> in
-<code>elim.lib</code> by computing iterated ideal quotients with the maximal
-ideal.  <code>sat</code> returns a list of two elements: the saturated ideal
-and the number of iterations.  (Note that <code>maxideal(n)</code> denotes the
-n-th power of the maximal ideal).
+
+<p>Note that the definition of a ring includes the definition of its
+monomial ordering (see 
+<a href="singular_2.html#Rings-and-orderings">Rings and orderings</a>). <small>SINGULAR</small> offers the monomial orderings
+described in the following sections. 
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;elim.lib&quot;;         // loading library elim.lib
-  // you should get the information that elim.lib has been loaded
-  // together with some other libraries which are needed by it
-  option(noprot);         // no protocol
-  ring r2 = 32003,(x,y,z),dp;
-  poly f = x^11+y^5+z^(3*3)+x^(3+2)*y^(3-1)+x^(3-1)*y^(3-1)*z3+
-    x^(3-2)*y^3*(y^2)^2;
-  ideal j=jacob(f);
-  sat(j+f,maxideal(1));
-&rarr; [1]:
-&rarr;    _[1]=1
-&rarr; [2]:
-&rarr;    17
-  // list the variables defined so far:
-  listvar();
-&rarr; // r2                   [0]  *ring
-&rarr; //      j                    [0]  ideal, 3 generator(s)
-&rarr; //      f                    [0]  poly
-&rarr; // LIB                  [0]  string standard.lib,elim.li..., 83 char(s)
-</pre></td></tr></table>
 
 <hr>
-<a name="Long-coefficients"></a>
+<a name="Global-orderings"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Saturation" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Parameters" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#General-definitions-for-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Local-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_8.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Preface" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_11.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Long-coefficients-1"></a>
-<h2 class="section">A.5 Long coefficients</h2>
-<a name="index-Long-coefficients"></a>
-
-<p>The following innocent example produces in its standard basis
-extremely long coefficients in char 0 for the lexicographical
-ordering.
-But a very small deformation does not (the undeformed
-example is degenerate with respect to the Newton boundary).
-This example demonstrates that it might be wise, for complicated
-examples, to do the calculation first in positive char (e.g., 32003).
-It has been shown, that in complicated examples, more than 95 percent of
-the time needed for a standard basis computation is used in the
-computation of the coefficients (in char 0).
-The representation of long integers with real is demonstrated.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">timer = 1;                              // activate the timer
-option(prot);
-ring R0 = 0,(x,y),lp;
-poly f = x5+y11+xy9+x3y9;
-ideal i = jacob(f);
-ideal i1 = i,i[1]*i[2];                 // undeformed ideal
-ideal i2 = i,i[1]*i[2]+1/1000000*x5y8;  // deformation of i1
-i1; i2;
-&rarr; i1[1]=5x4+3x2y9+y9
-&rarr; i1[2]=9x3y8+9xy8+11y10
-&rarr; i1[3]=45x7y8+27x5y17+45x5y8+55x4y10+36x3y17+33x2y19+9xy17+11y19
-&rarr; i2[1]=5x4+3x2y9+y9
-&rarr; i2[2]=9x3y8+9xy8+11y10
-&rarr; i2[3]=45x7y8+27x5y17+45000001/1000000x5y8+55x4y10+36x3y17+33x2y19+9xy17+1\
-   1y19
-ideal j = std(i1);
-&rarr; [65535:1]11(2)ss19s20s21s22(3)-23-s27s28s29s30s31s32s33s34s35s36s37s38s39\
-   s40s70-
-&rarr; product criterion:1 chain criterion:30
-j;
-&rarr; j[1]=264627y39+26244y35-1323135y30-131220y26+1715175y21+164025y17+1830125\
-   y16
-&rarr; j[2]=12103947791971846719838321886393392913750065060875xy8-28639152114168\
-   3198701331939250003266767738632875y38-31954402206909026926764622877573565\
-   78554430672591y37+57436621420822663849721381265738895282846320y36+1657764\
-   214948799497573918210031067353932439400y35+213018481589308191195677223898\
-   98682697001205500y34+1822194158663066565585991976961565719648069806148y33\
-   -4701709279892816135156972313196394005220175y32-1351872269688192267600786\
-   97600850686824231975y31-3873063305929810816961516976025038053001141375y30\
-   +1325886675843874047990382005421144061861290080000y29+1597720195476063141\
-   9467945895542406089526966887310y28-26270181336309092660633348002625330426\
-   7126525y27-7586082690893335269027136248944859544727953125y26-867853074106\
-   49464602285843351672148965395945625y25-5545808143273594102173252331151835\
-   700278863924745y24+19075563013460437364679153779038394895638325y23+548562\
-   322715501761058348996776922561074021125y22+157465452677648386073957464715\
-   68100780933983125y21-1414279129721176222978654235817359505555191156250y20\
-   -20711190069445893615213399650035715378169943423125y19+272942733337472665\
-   573418092977905322984009750y18+789065115845334505801847294677413365720955\
-   3750y17+63554897038491686787729656061044724651089803125y16-22099251729923\
-   906699732244761028266074350255961625y14+147937139679655904353579489722585\
-   91339027857296625y10
-&rarr; j[3]=5x4+3x2y9+y9
-// Compute average coefficient length (=51) by
-//   - converting j[2] to a string in order to compute the number
-//   of characters
-//   - divide this by the number of monomials:
-size(string(j[2]))/size(j[2]);
-&rarr; 51
-vdim(j);
-&rarr; 63
-// For a better representation normalize the long coefficients
-// of the polynomial j[2] and map it  to real:
-poly p=(1/12103947791971846719838321886393392913750065060875)*j[2];
-ring R1=real,(x,y),lp;
-short=0; // force the long output format
-poly p=imap(R0,p);
-p;
-&rarr; x*y^8-2.366e-02*y^38-2.640e-01*y^37+4.745e-06*y^36+1.370e-04*y^35+1.760e-\
-   03*y^34+1.505e-01*y^33+3.884e-07*y^32-1.117e-05*y^31-3.200e-04*y^30+1.095\
-   e-01*y^29+1.320e+00*y^28-2.170e-05*y^27-6.267e-04*y^26-7.170e-03*y^25-4.5\
-   82e-01*y^24+1.576e-06*y^23+4.532e-05*y^22+1.301e-03*y^21-1.168e-01*y^20-1\
-   .711e+00*y^19+2.255e-05*y^18+6.519e-04*y^17+5.251e-03*y^16-1.826e+00*y^14\
-   +1.222e+00*y^10
-// Compute a standard basis for the deformed ideal:
-setring R0;
-j = std(i2);
-&rarr; [65535:1]11(2)ss19s20s21s22(3)-s23(2)s27.28.s29(3)s30.s31ss32sss33sss34ss\
-   35--38-
-&rarr; product criterion:11 chain criterion:21
-j;
-&rarr; j[1]=y16
-&rarr; j[2]=65610xy8+17393508y27+7223337y23+545292y19+6442040y18-119790y14+80190\
-   y10
-&rarr; j[3]=5x4+3x2y9+y9
-vdim(j);
-&rarr; 40
-</pre></td></tr></table>
-<hr>
-<a name="Parameters"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Long-coefficients" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#T1-and-T2" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Parameters-1"></a>
-<h2 class="section">A.6 Parameters</h2>
-<a name="index-Parameters"></a>
-
-<p>Let us deform the above ideal now by introducing a parameter t
-and compute over the ground field Q(t).
-We compute the dimension at the generic point,
-i.e.,
-(This gives the
-same result as for the deformed ideal above. Hence, the above small
-deformation was &quot;generic&quot;.)
-</p>
-<p>For almost all
-this is the same as
-where
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring Rt = (0,t),(x,y),lp;
-  Rt;
-&rarr; //   characteristic : 0
-&rarr; //   1 parameter    : t 
-&rarr; //   minpoly        : 0
-&rarr; //   number of vars : 2
-&rarr; //        block   1 : ordering lp
-&rarr; //                  : names    x y 
-&rarr; //        block   2 : ordering C
-  poly f = x5+y11+xy9+x3y9;
-  ideal i = jacob(f);
-  ideal j = i,i[1]*i[2]+t*x5y8;  // deformed ideal, parameter t
-  vdim(std(j));
-&rarr; 40
-  ring R=0,(x,y),lp;
-  ideal i=imap(Rt,i);
-  int a=random(1,30000);
-  ideal j=i,i[1]*i[2]+a*x5y8;  // deformed ideal, fixed integer a
-  vdim(std(j));
-&rarr; 40
-</pre></td></tr></table>
-
-<hr>
-<a name="T1-and-T2"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Parameters" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Deformations" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="T1-and-T2-1"></a>
-<h2 class="section">A.7 T1 and T2</h2>
-<a name="index-T1"></a>
-<a name="index-T2"></a>
+<a name="Global-orderings-1"></a>
+<h3 class="subsection">B.2.3 Global orderings</h3>
+<a name="index-Global-orderings"></a>
+<a name="index-orderings_002c-global"></a>
 
 
-<p>, resp. 
-, of an ideal 
- usually denote the modules of
-infinitesimal deformations, resp. of obstructions.
-In <small>SINGULAR</small> there are procedures <code>T_1</code> and <code>T_2</code> in
-<code>sing.lib</code> such that
-<code>T_1(j)</code> and <code>T_2(j)</code> compute a standard basis of
-a presentation of these modules.
-If T_1 and T_2 are finite dimensional K-vector spaces (e.g., for isolated
-singularities), a basis can be computed by applying
-<code>kbase(T_1(j));</code>, resp. <code>kbase(T_2(j));</code>, the dimensions by
-applying <code>vdim</code>.
-For a complete intersection j the procedure <code>Tjurina</code> also
-computes T_1, but faster (T_2=0 in this case).
-For a non complete intersection, it is faster to use the procedure <code>T_12</code>
-instead of <code>T_1</code> and <code>T_2</code>.
-Type <code>help T_1;</code> (or <code>help T_2;</code> or <code>help T_12;</code>) to obtain
-more detailed information about these procedures.
-</p>
-<p>We give three examples, the first being a hypersurface, the second a complete
-intersection, the third no complete intersection:
-</p><ul>
-<li>
-load <code>sing.lib</code>
-</li><li>
-check whether the ideal j is a complete intersection. It is, if
-     number of variables = dimension + minimal number of generators
-</li><li>
-compute the Tjurina number
-</li><li>
-compute a vector space basis (kbase) of T_1
-</li><li>
-compute the Hilbert function of T_1
-</li><li>
-create a polynomial encoding the Hilbert series
-</li><li>
-compute the dimension of T_2
-</li></ul>
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;sing.lib&quot;;
-  ring R=32003,(x,y,z),ds;
-  // ---------------------------------------
-  // hypersurface case (from series T[p,q,r]):
-  int p,q,r = 3,3,4;
-  poly f = x^p+y^q+z^r+xyz;
-  tjurina(f);
-&rarr; 8
-  // Tjurina number = 8
-  kbase(Tjurina(f));
-&rarr; // Tjurina number = 8
-&rarr; _[1]=z3
-&rarr; _[2]=z2
-&rarr; _[3]=yz
-&rarr; _[4]=xz
-&rarr; _[5]=z
-&rarr; _[6]=y
-&rarr; _[7]=x
-&rarr; _[8]=1
-  // ---------------------------------------
-  // complete intersection case (from series P[k,l]):
-  int k,l =3,2;
-  ideal j=xy,x^k+y^l+z2;
-  dim(std(j));          // Krull dimension
-&rarr; 1
-  size(minbase(j));     // minimal number of generators
-&rarr; 2
-  tjurina(j);           // Tjurina number
-&rarr; 6
-  module T=Tjurina(j);
-&rarr; // Tjurina number = 6
-  kbase(T);             // a sparse output of the k-basis of T_1
-&rarr; _[1]=z*gen(1)
-&rarr; _[2]=gen(1)
-&rarr; _[3]=y*gen(2)
-&rarr; _[4]=x2*gen(2)
-&rarr; _[5]=x*gen(2)
-&rarr; _[6]=gen(2)
-  print(kbase(T));      // columns of matrix are a k-basis of T_1
-&rarr; z,1,0,0, 0,0,
-&rarr; 0,0,y,x2,x,1 
-  // ---------------------------------------
-  // general case (cone over rational normal curve of degree 4):
-  ring r1=0,(x,y,z,u,v),ds;
-  matrix m[2][4]=x,y,z,u,y,z,u,v;
-  ideal i=minor(m,2);   // 2x2 minors of matrix m
-  module M=T_1(i);       // a presentation matrix of T_1
-&rarr; // dim T_1 = 4
-  vdim(M);              // Tjurina number
-&rarr; 4
-  hilb(M);              // display of both Hilbert series
-&rarr; //         4 t^0
-&rarr; //       -20 t^1
-&rarr; //        40 t^2
-&rarr; //       -40 t^3
-&rarr; //        20 t^4
-&rarr; //        -4 t^5
-&rarr; 
-&rarr; //         4 t^0
-&rarr; // dimension (local)   = 0
-&rarr; // multiplicity = 4
-  intvec v1=hilb(M,1);  // first Hilbert series as intvec
-  intvec v2=hilb(M,2);  // second Hilbert series as intvec
-  v1;
-&rarr; 4,-20,40,-40,20,-4,0
-  v2;
-&rarr; 4,0
-  v1[3];                // 3rd coefficient of the 1st Hilbert series
-&rarr; 40
-  module N=T_2(i);
-&rarr; // dim T_2 = 3
-</pre></td></tr></table>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">// In some cases it might be useful to have a polynomial in some ring
-// encoding the Hilbert series. This polynomial can then be
-// differentiated, evaluated etc. It can be done as follows:
-ring H = 0,t,ls;
-poly h1;
-int ii;
-for (ii=1; ii&lt;=size(v1); ii=ii+1)
-{
-   h1=h1+v1[ii]*t^(ii-1);
-}
-h1;                   // 1st Hilbert series
-&rarr; 4-20t+40t2-40t3+20t4-4t5
-diff(h1,t);           // differentiate  h1
-&rarr; -20+80t-120t2+80t3-20t4
-subst(h1,t,1);        // substitute t by 1
-&rarr; 0
-
-// The procedures T_1, T_2, T_12 may be called with two arguments and then
-// they return a list with more information (type help T_1; etc.)
-// e.g., T_12(i,&lt;any&gt;); returns a list with 9 nonempty objects where
-// _[1] = std basis of T_1-module, _[2] = std basis of T_2-module,
-// _[3]= vdim of T_1, _[4]= vdim of T_2
-setring r1;           // make r1 again the basering
-list L = T_12(i,1);
-&rarr; // dim T_1  =  4
-&rarr; // dim T_2  =  3
-kbase(L[1]);          // kbase of T_1
-&rarr; _[1]=1*gen(2)
-&rarr; _[2]=1*gen(3)
-&rarr; _[3]=1*gen(6)
-&rarr; _[4]=1*gen(7)
-kbase(L[2]);          // kbase of T_2
-&rarr; _[1]=1*gen(6)
-&rarr; _[2]=1*gen(8)
-&rarr; _[3]=1*gen(9)
-L[3];                 // vdim of T_1
-&rarr; 4
-L[4];                 // vdim of T_2
-&rarr; 3
-</pre></td></tr></table>
-<hr>
-<a name="Deformations"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#T1-and-T2" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Finite-fields" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Deformations-1"></a>
-<h2 class="section">A.8 Deformations</h2>
-<a name="index-Deformations"></a>
-
-<ul>
-<li>
-The libraries <code>sing.lib</code>, resp. <code>deform.lib</code>, contain procedures
-to compute total and base space of the
-miniversal (= semiuniversal) deformation of an
-isolated complete intersection singularity, resp. arbitrary isolated
-singularity.
-</li><li>
-The procedure <code>deform</code> in <code>sing.lib</code> returns a matrix whose columns
-represent all 1st order deformations. More precisely, if
-
-</li><li>
-The procedure <code>versal</code> in <code>deform.lib</code> computes a formal
-miniversal deformation up to a certain order which can be
-prescribed by the user. For a complete intersection the 1st order
-part is already miniversal.
-</li><li>
-The procedure <code>versal</code> extends the basering to a new ring with
-additional deformation parameters which contains the equations for the
-miniversal base space and the miniversal total space.
-</li><li>
-There are default names for the objects created, but the user may also
-choose his own names.
-</li><li>
-If the user sets <code>printlevel=2;</code> before running <code>versal</code>, some
-intermediate results are shown. This is useful since <code>versal</code>
-is already complicated and might run for some time on more
-complicated examples. (type <code>help versal;</code>)
-</li></ul>
-
-<p>We compute for the same examples as in the preceding section
-the miniversal deformations:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;deform.lib&quot;;
-  ring R=32003,(x,y,z),ds;
-  //----------------------------------------------------
-  // hypersurface case (from series T[p,q,r]):
-  int p,q,r = 3,3,4;
-  poly f = x^p+y^q+z^r+xyz;
-  print(deform(f));
-&rarr; z3,z2,yz,xz,z,y,x,1
-  // the miniversal deformation of f=0 is the projection from the
-  // miniversal total space to the miniversal base space:
-  // { (A,B,C,D,E,F,G,H,x,y,z) | x3+y3+xyz+z4+A+Bx+Cxz+Dy+Eyz+Fz+Gz2+Hz3 =0 }
-  //  --&gt; { (A,B,C,D,E,F,G,H) }
-  //----------------------------------------------------
-  // complete intersection case (from series P[k,l]):
-  int k,l =3,2;
-  ideal j=xy,x^k+y^l+z2;
-  print(deform(j));
-&rarr; 0,0, 0,0,z,1,
-&rarr; y,x2,x,1,0,0 
-  versal(j);                  // using default names
-&rarr; // smooth base space
-&rarr; // ready: T_1 and T_2
-&rarr; 
-&rarr; // Result belongs to ring Px.
-&rarr; // Equations of total space of miniversal deformation are 
-&rarr; // given by Fs, equations of miniversal base space by Js.
-&rarr; // Make Px the basering and list objects defined in Px by typing:
-&rarr;    setring Px; show(Px);
-&rarr;    listvar(matrix);
-&rarr; // NOTE: rings Qx, Px, So are alive!
-&rarr; // (use 'kill_rings(&quot;&quot;);' to remove)
-  setring Px;
-  show(Px);                   // show is a procedure from inout.lib
-&rarr; // ring: (32003),(A,B,C,D,E,F,x,y,z),(ds(6),ds(3),C);
-&rarr; // minpoly = 0
-&rarr; // objects belonging to this ring:
-&rarr; // Rs                   [0]  matrix 2 x 1
-&rarr; // Fs                   [0]  matrix 1 x 2
-&rarr; // Js                   [0]  matrix 1 x 0
-  listvar(matrix);
-&rarr; // Rs                   [0]  matrix 2 x 1
-&rarr; // Fs                   [0]  matrix 1 x 2
-&rarr; // Js                   [0]  matrix 1 x 0
-  // ___ Equations of miniversal base space ___:
-  Js;
-&rarr; 
-  // ___ Equations of miniversal total space ___:
-  Fs;
-&rarr; Fs[1,1]=xy+Ez+F
-&rarr; Fs[1,2]=y2+z2+x3+Ay+Bx2+Cx+D
-  // the miniversal deformation of V(j) is the projection from the
-  // miniversal total space to the miniversal base space:
-  // { (A,B,C,D,E,F,x,y,z) | xy+F+Ez=0, y2+z2+x3+D+Cx+Bx2+Ay=0 }
-  //  --&gt; { (A,B,C,D,E,F) }
-  //----------------------------------------------------
-  // general case (cone over rational normal curve of degree 4):
-  ring r1=0,(x,y,z,u,v),ds;
-  matrix m[2][4]=x,y,z,u,y,z,u,v;
-  ideal i=minor(m,2);                 // 2x2 minors of matrix m
-  int time=timer;
-  // Def_r is the name of the miniversal base space with
-  // parameters A(1),...,A(4)
-  versal(i,0,&quot;Def_r&quot;,&quot;A(&quot;);
-&rarr; // ready: T_1 and T_2
-&rarr; 
-&rarr; // Result belongs to ring Def_rPx.
-&rarr; // Equations of total space of miniversal deformation are 
-&rarr; // given by Fs, equations of miniversal base space by Js.
-&rarr; // Make Def_rPx the basering and list objects defined in Def_rPx by typin\
-   g:
-&rarr;    setring Def_rPx; show(Def_rPx);
-&rarr;    listvar(matrix);
-&rarr; // NOTE: rings Def_rQx, Def_rPx, Def_rSo are alive!
-&rarr; // (use 'kill_rings(&quot;Def_r&quot;);' to remove)
-  &quot;// used time:&quot;,timer-time,&quot;sec&quot;;   // time of last command
-&rarr; // used time: 1 sec
-  // the miniversal deformation of V(i) is the projection from the
-  // miniversal total space to the miniversal base space:
-  // { (A(1..4),x,y,z,u,v) |
-  //         -y^2+x*z+A(2)*x-A(3)*y=0, -y*z+x*u-A(1)*x-A(3)*z=0,
-  //         -y*u+x*v-A(3)*u-A(4)*z=0, -z^2+y*u-A(1)*y-A(2)*z=0,
-  //         -z*u+y*v-A(2)*u-A(4)*u=0, -u^2+z*v+A(1)*u-A(4)*v=0 }
-  //  --&gt; { A(1..4) |
-  //         -A(1)*A(4) = A(3)*A(4) = -A(2)*A(4)-A(4)^2 = 0 }
-  //----------------------------------------------------
-</pre></td></tr></table>
-
-<hr>
-<a name="Finite-fields"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Deformations" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Elimination" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Finite-fields-1"></a>
-<h2 class="section">A.9 Finite fields</h2>
-<a name="index-Finite-fields"></a>
-
-<p>We define a variety in 
--space of codimension 2 defined by
-polynomials of degree 
- with generic coefficients over the prime
-field 
- and look for zeros on the torus. First over the prime
-field and then in the finite extension field with
-elements.
-In general there will be many more solutions in the second case.
-(Since the <small>SINGULAR</small> language is interpreted, the evaluation of many
-<code>for</code>-loops is not very fast):
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  int p=3;  int n=3;  int d=5; int k=2;
-  ring rp = p,(x(1..n)),dp;
-  int s = size(maxideal(d));
-  s;
-&rarr; 21
-  // create a dense homogeneous ideal m, all generators of degree d, with
-  // generic (random) coefficients:
-  ideal m = maxideal(d)*random(p,s,n-2);
-  m;
-&rarr; m[1]=x(1)^3*x(2)^2-x(1)*x(2)^4+x(1)^4*x(3)-x(1)^3*x(2)*x(3)+x(1)*x(2)^3*x\
-   (3)+x(2)^4*x(3)+x(2)^3*x(3)^2+x(1)*x(2)*x(3)^3+x(1)*x(3)^4-x(3)^5
-  // look for zeros on the torus by checking all points (with no component 0)
-  // of the affine n-space over the field with p elements :
-  ideal mt;
-  int i(1..n);                    // initialize integers i(1),...,i(n)
-  int l;
-  s=0;
-  for (i(1)=1;i(1)&lt;p;i(1)=i(1)+1)
-  {
-    for (i(2)=1;i(2)&lt;p;i(2)=i(2)+1)
-    {
-      for (i(3)=1;i(3)&lt;p;i(3)=i(3)+1)
-      {
-        mt=m;
-        for (l=1;l&lt;=n;l=l+1)
-        {
-          mt=subst(mt,x(l),i(l));
-        }
-        if (size(mt)==0)
-        {
-          &quot;solution:&quot;,i(1..n);
-          s=s+1;
-        }
-      }
-    }
-  }
-&rarr; solution: 1 1 2
-&rarr; solution: 1 2 1
-&rarr; solution: 1 2 2
-&rarr; solution: 2 1 1
-&rarr; solution: 2 1 2
-&rarr; solution: 2 2 1
-  &quot;//&quot;,s,&quot;solutions over GF(&quot;+string(p)+&quot;)&quot;;
-&rarr; // 6 solutions over GF(3)
-  // Now go to the field with p^3 elements:
-  // As long as there is no map from Z/p to the field with p^3 elements
-  // implemented, use the following trick: convert the ideal to be mapped
-  // to the new ring to a string and then execute this string in the
-  // new ring
-  string ms=&quot;ideal m=&quot;+string(m)+&quot;;&quot;;
-  ms;
-&rarr; ideal m=x(1)^3*x(2)^2-x(1)*x(2)^4+x(1)^4*x(3)-x(1)^3*x(2)*x(3)+x(1)*x(2)^\
-   3*x(3)+x(2)^4*x(3)+x(2)^3*x(3)^2+x(1)*x(2)*x(3)^3+x(1)*x(3)^4-x(3)^5;
-  // define a ring rpk with p^k elements, call the primitive element z. Hence
-  // 'solution exponent: 0 1 5' means that (z^0,z^1,z^5) is a solution
-  ring rpk=(p^k,z),(x(1..n)),dp;
-  rpk;
-&rarr; //   # ground field : 9
-&rarr; //   primitive element : z
-&rarr; //   minpoly        : 1*z^2+1*z^1+2*z^0
-&rarr; //   number of vars : 3
-&rarr; //        block   1 : ordering dp
-&rarr; //                  : names    x(1) x(2) x(3) 
-&rarr; //        block   2 : ordering C
-  execute(ms);
-  s=0;
-  ideal mt;
-  for (i(1)=0;i(1)&lt;p^k-1;i(1)=i(1)+1)
-  {
-    for (i(2)=0;i(2)&lt;p^k-1;i(2)=i(2)+1)
-    {
-      for (i(3)=0;i(3)&lt;p^k-1;i(3)=i(3)+1)
-      {
-        mt=m;
-        for (l=1;l&lt;=n;l=l+1)
-        {
-          mt=subst(mt,x(l),z^i(l));
-        }
-        if (size(mt)==0)
-        {
-          &quot;solution exponent:&quot;,i(1..n);
-          s=s+1;
-        }
-      }
-    }
-  }
-&rarr; solution exponent: 0 0 2
-&rarr; solution exponent: 0 0 4
-&rarr; solution exponent: 0 0 6
-&rarr; solution exponent: 0 1 0
-&rarr; solution exponent: 0 3 0
-&rarr; solution exponent: 0 4 0
-&rarr; solution exponent: 0 4 4
-&rarr; solution exponent: 0 4 5
-&rarr; solution exponent: 0 4 7
-&rarr; solution exponent: 1 1 3
-&rarr; solution exponent: 1 1 5
-&rarr; solution exponent: 1 1 7
-&rarr; solution exponent: 1 2 1
-&rarr; solution exponent: 1 4 1
-&rarr; solution exponent: 1 5 0
-&rarr; solution exponent: 1 5 1
-&rarr; solution exponent: 1 5 5
-&rarr; solution exponent: 1 5 6
-&rarr; solution exponent: 2 2 0
-&rarr; solution exponent: 2 2 4
-&rarr; solution exponent: 2 2 6
-&rarr; solution exponent: 2 3 2
-&rarr; solution exponent: 2 5 2
-&rarr; solution exponent: 2 6 1
-&rarr; solution exponent: 2 6 2
-&rarr; solution exponent: 2 6 6
-&rarr; solution exponent: 2 6 7
-&rarr; solution exponent: 3 3 1
-&rarr; solution exponent: 3 3 5
-&rarr; solution exponent: 3 3 7
-&rarr; solution exponent: 3 4 3
-&rarr; solution exponent: 3 6 3
-&rarr; solution exponent: 3 7 0
-&rarr; solution exponent: 3 7 2
-&rarr; solution exponent: 3 7 3
-&rarr; solution exponent: 3 7 7
-&rarr; solution exponent: 4 0 0
-&rarr; solution exponent: 4 0 1
-&rarr; solution exponent: 4 0 3
-&rarr; solution exponent: 4 0 4
-&rarr; solution exponent: 4 4 0
-&rarr; solution exponent: 4 4 2
-&rarr; solution exponent: 4 4 6
-&rarr; solution exponent: 4 5 4
-&rarr; solution exponent: 4 7 4
-&rarr; solution exponent: 5 0 5
-&rarr; solution exponent: 5 1 1
-&rarr; solution exponent: 5 1 2
-&rarr; solution exponent: 5 1 4
-&rarr; solution exponent: 5 1 5
-&rarr; solution exponent: 5 5 1
-&rarr; solution exponent: 5 5 3
-&rarr; solution exponent: 5 5 7
-&rarr; solution exponent: 5 6 5
-&rarr; solution exponent: 6 1 6
-&rarr; solution exponent: 6 2 2
-&rarr; solution exponent: 6 2 3
-&rarr; solution exponent: 6 2 5
-&rarr; solution exponent: 6 2 6
-&rarr; solution exponent: 6 6 0
-&rarr; solution exponent: 6 6 2
-&rarr; solution exponent: 6 6 4
-&rarr; solution exponent: 6 7 6
-&rarr; solution exponent: 7 0 7
-&rarr; solution exponent: 7 2 7
-&rarr; solution exponent: 7 3 3
-&rarr; solution exponent: 7 3 4
-&rarr; solution exponent: 7 3 6
-&rarr; solution exponent: 7 3 7
-&rarr; solution exponent: 7 7 1
-&rarr; solution exponent: 7 7 3
-&rarr; solution exponent: 7 7 5
-  &quot;//&quot;,s,&quot;solutions over GF(&quot;+string(p^k)+&quot;)&quot;;
-&rarr; // 72 solutions over GF(9)
-</pre></td></tr></table>
-<hr>
-<a name="Elimination"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Finite-fields" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Free-resolution" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Elimination-1"></a>
-<h2 class="section">A.10 Elimination</h2>
-<a name="index-Elimination"></a>
-
-<p>Elimination is the algebraic counterpart of the geometric concept of
-projection. If
-is a polynomial map,
-the Zariski-closure of the image is the zero-set of the ideal
-i.e, of the ideal j obtained from J by eliminating the variables
-This can be done by computing a standard basis of J with respect to a product
-ordering where the block of t-variables precedes the block of
-x-variables and then selecting those polynomials which do not contain
-any t. In <small>SINGULAR</small> the most convenient way is to use the
-<code>eliminate</code> command.
-In contrast to the first method, with <code>eliminate</code> the result needs not be a
-standard basis in the given ordering.
-Hence, there may be cases where the first method is the preferred one.
-</p>
-<p><strong>WARNING:</strong> In the case of a local or a mixed ordering, elimination needs special
-care. f may be considered as a map of germs
-but even
-if this map germ is finite, we are in general not able to compute the image
-germ because for this we would need an implementation of the Weierstrass
-preparation theorem. What we can compute, and what <code>eliminate</code> actually does,
-is the following: let V(J) be the zero-set of J in
-then the
-closure of the image of V(J) under the projection
-Note that this germ contains also those components
-of V(J) which meet the fiber of pr outside the origin.
-This is achieved by an ordering with the block of t-variables having a
-global ordering (and preceding the x-variables) and the x-variables having
-a local ordering. In a local situation we propose <code>eliminate</code> with
-ordering ls.
-</p>
-<p>In any case, if the input is weighted homogeneous (=quasihomogeneous),
-the weights given to the variables should be chosen accordingly.
-<small>SINGULAR</small> offers a function <code>weight</code> which proposes,
-given an ideal or module, integer weights for the variables, such that
-the ideal, resp. module, is as homogeneous as possible with respect to these weights.
-The function finds correct weights, if the input is weighted homogeneous
-(but is rather slow for many variables). In order to check, whether the
-input is quasihomogeneous, use the function <code>qhweight</code>, which returns
-an intvec of correct weights if the input is quasihomogeneous and an intvec
-of zeros otherwise.
-</p>
-<p>Let us give two examples:
-</p><ol>
-<li>
-First we compute the equations of the simple space curve
-   consisting of two tangential cusps given in parametric form.
-</li><li>
-We compute weights for the equations such that the
-   equations are quasihomogeneous w.r.t. these weights.
-</li><li>
-Then we compute the tangent developable of the rational
-   normal curve in
-</li></ol>
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  // 1. Compute equations of curve given in parametric form:
-  // Two transversal cusps in (k^3,0):
-  ring r1 = 0,(t,x,y,z),ls;
-  ideal i1 = x-t2,y-t3,z;        // parametrization of the first branch
-  ideal i2 = y-t2,z-t3,x;        // parametrization of the second branch
-  ideal j1 = eliminate(i1,t);
-  j1;                            // equations of the first branch
-&rarr; j1[1]=z
-&rarr; j1[2]=y2-x3
-  ideal j2 = eliminate(i2,t);
-  j2;                            // equations of the second branch
-&rarr; j2[1]=x
-&rarr; j2[2]=z2-y3
-  // Now map to a ring with only x,y,z as variables and compute the
-  // intersection of j1 and j2 there:
-  ring r2 = 0,(x,y,z),ds;
-  ideal j1= imap(r1,j1);         // imap is a convenient ringmap for
-  ideal j2= imap(r1,j2);         // inclusions and projections of rings
-  ideal i = intersect(j1,j2);
-  i;                             // equations of both branches
-&rarr; i[1]=z2-y3+x3y
-&rarr; i[2]=xz
-&rarr; i[3]=xy2-x4
-&rarr; i[4]=x3z
-  //
-  // 2. Compute the weights:
-  intvec v= qhweight(i);         // compute weights
-  v;
-&rarr; 4,6,9
-  //
-  // 3. Compute the tangent developable
-  // The tangent developable of a projective variety given parametrically
-  // by F=(f1,...,fn) : P^r --&gt; P^n is the union of all tangent spaces
-  // of the image. The tangent space at a smooth point F(t1,...,tr)
-  // is given as the image of the tangent space at (t1,...,tr) under
-  // the tangent map (affine coordinates)
-  //   T(t1,...,tr): (y1,...,yr) --&gt; jacob(f)*transpose((y1,...,yr))
-  // where jacob(f) denotes the jacobian matrix of f with respect to the
-  // t's evaluated at the point (t1,...,tr).
-  // Hence we have to create the graph of this map and then to eliminate
-  // the t's and y's.
-  // The rational normal curve in P^4 is given as the image of
-  //        F(s,t) = (s4,s3t,s2t2,st3,t4)
-  // each component being homogeneous of degree 4.
-  ring P = 0,(s,t,x,y,a,b,c,d,e),dp;
-  ideal M = maxideal(1);
-  ideal F = M[1..2];     // take the 1st two generators of M
-  F=F^4;
-  // simplify(...,2); deletes 0-columns
-  matrix jac = simplify(jacob(F),2);
-  ideal T = x,y;
-  ideal J = jac*transpose(T);
-  ideal H = M[5..9];
-  ideal i = H-J;         // this is tricky: difference between two
-                         // ideals is not defined, but between two
-                         // matrices. By automatic type conversion
-                         // the ideals are converted to matrices,
-                         // subtracted and afterwards converted
-                         // to an ideal. Note that '+' is defined
-                         // and adds (concatenates) two ideals
-  i;
-&rarr; i[1]=-4s3x+a
-&rarr; i[2]=-3s2tx-s3y+b
-&rarr; i[3]=-2st2x-2s2ty+c
-&rarr; i[4]=-t3x-3st2y+d
-&rarr; i[5]=-4t3y+e
-  // Now we define a ring with product ordering and weights 4
-  // for the variables a,...,e.
-  // Then we map i from P to P1 and eliminate s,t,x,y from i.
-  ring P1 = 0,(s,t,x,y,a,b,c,d,e),(dp(4),wp(4,4,4,4,4));
-  ideal i = fetch(P,i);
-  ideal j= eliminate(i,stxy);    // equations of tangent developable
-  j;
-&rarr; j[1]=3c2-4bd+ae
-&rarr; j[2]=2bcd-3ad2-3b2e+4ace
-&rarr; j[3]=8b2d2-9acd2-9b2ce+12ac2e-2abde
-  // We can use the product ordering to eliminate s,t,x,y from i
-  // by a std-basis computation.
-  // We need proc 'nselect' from elim.lib.
-  LIB &quot;elim.lib&quot;;
-  j = std(i);                    // compute a std basis j
-  j = nselect(j,1,4);            // select generators from j not
-  j;                             // containing variable 1,...,4
-&rarr; j[1]=3c2-4bd+ae
-&rarr; j[2]=2bcd-3ad2-3b2e+4ace
-&rarr; j[3]=8b2d2-9acd2-9b2ce+12ac2e-2abde
-</pre></td></tr></table>
-
-
-<hr>
-<a name="Free-resolution"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Elimination" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Computation-of-Ext" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Free-resolution-1"></a>
-<h2 class="section">A.11 Free resolution</h2>
-<a name="index-Free-resolution"></a>
-
-<p>In <small>SINGULAR</small> a free resolution of a module or ideal has its own type:
-<code>resolution</code>. It is a structure that stores all information related to
-free resolutions. This allows partial computations of resolutions via
-the command <code>res</code>. After applying <code>res</code>, only a pre-format of the
-resolution is computed which allows to determine invariants like
-Betti-numbers or homological dimension. To see the differentials
-of the complex, a resolution must be converted into the type list which
-yields a list of modules: the k-th module in this
-list is the first syzygy-module (module of relations) of the (k-1)st module.
-There are the following commands to compute a resolution:
-</p><dl compact="compact">
-<dt><code>res</code></dt>
-<dd><p><a href="singular_5.html#res">res</a><br>
-computes a free resolution of an ideal or module using a heuristically
-chosen method.
-This is the preferred method to compute free resolutions of ideals or
-modules.
+<dl compact="compact">
+<dt>lp:</dt>
+<dd><p>lexicographical ordering:
+<a name="index-lp_002c-global-ordering"></a>
+<a name="index-lexicographical-ordering"></a>
+<br>
 </p></dd>
-<dt><code>lres</code></dt>
-<dd><p><a href="singular_5.html#lres">lres</a><br>
-computes a free resolution of an ideal or module with La Scala&rsquo;s
-method. The input needs to be homogeneous.
+<dt>rp:</dt>
+<dd><p>reverse lexicographical ordering:
+<a name="index-rp_002c-global-ordering"></a>
+<a name="index-reverse-lexicographical-ordering"></a>
+<br>
 </p></dd>
-<dt><code>mres</code></dt>
-<dd><p><a href="singular_5.html#mres">mres</a><br>
-computes a minimal free resolution of an ideal or module with the syzygy
-method.
+<dt>dp:</dt>
+<dd><p>degree reverse lexicographical ordering:
+<a name="index-degree-reverse-lexicographical-ordering"></a>
+<a name="index-dp_002c-global-ordering"></a>
+<br>
 </p></dd>
-<dt><code>sres</code></dt>
-<dd><p><a href="singular_5.html#sres">sres</a><br>
-computes a free resolution of an ideal or module with Schreyer&rsquo;s
-method. The input has to be a standard basis.
+<dt>Dp:</dt>
+<dd><p>degree lexicographical ordering:
+<a name="index-degree-lexicographical-ordering"></a>
+<a name="index-Dp_002c-global-ordering"></a>
+<br>
 </p></dd>
-<dt><code>nres</code></dt>
-<dd><p><a href="singular_5.html#nres">nres</a><br>
-computes a free resolution of an ideal or module with the standard basis
-method.
+<dt>wp:</dt>
+<dd><p>weighted reverse lexicographical ordering:
+<a name="index-weighted-reverse-lexicographical-ordering"></a>
+<a name="index-wp_002c-global-ordering"></a>
+<br>
+ is defined as <code>dp</code>
+ but with
 </p></dd>
-<dt><code>minres</code></dt>
-<dd><p><a href="singular_5.html#minres">minres</a><br>
-minimizes a free resolution of an ideal or module.
-</p></dd>
-<dt><code>syz</code></dt>
-<dd><p><a href="singular_5.html#syz">syz</a><br>
-computes the first syzygy module.
+<dt>Wp:</dt>
+<dd><p>weighted lexicographical ordering:
+<a name="index-weighted-lexicographical-ordering"></a>
+<a name="index-WP_002c-global-ordering"></a>
+<br>
+ is defined as <code>Dp</code>
+ but with
 </p></dd>
 </dl>
-<p><code>res(i,r)</code>, <code>lres(i,r)</code>, <code>sres(i,r)</code>, <code>mres(i,r)</code>,
-<code>nres(i,r)</code> compute the first r modules of the resolution
-of i, resp. the full resolution if r=0 and the basering is not a qring.
-See the manual for a precise description of these commands.
-<br>Note: The command <code>betti</code> does not require a minimal
-resolution for the minimal betti numbers.
-</p>
-<p>Now let&rsquo;s look at an example which uses resolutions: The Hilbert-Burch
-theorem says that the ideal i of a reduced curve in
-has a free resolution of length 2 and that i is given by the 2x2 minors
-of the 2nd matrix in the resolution.
-We test this for two transversal cusps in
-Afterwards we compute the resolution of the ideal j of the tangent developable
-of the rational normal curve in
-from above.
-Finally we demonstrate the use of the type <code>resolution</code> in connection with
-the <code>lres</code> command.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  // Two transversal cusps in (k^3,0):
-  ring r2 =0,(x,y,z),ds;
-  ideal i =z2-1y3+x3y,xz,-1xy2+x4,x3z;
-  resolution rs=mres(i,0);   // computes a minimal resolution
-  rs;                        // the standard representation of complexes
-&rarr;   1       3       2       
-&rarr; r2 &lt;--  r2 &lt;--  r2
-&rarr; 
-&rarr; 0       1       2       
-&rarr; 
-    list resi=rs;            // convertion to a list
-  print(resi[1]);            // the 1st module is i minimized
-&rarr; xz,
-&rarr; z2-y3+x3y,
-&rarr; xy2-x4
-  print(resi[2]);            // the 1st syzygy module of i
-&rarr; -z,-y2+x3,
-&rarr; x, 0,     
-&rarr; y, z      
-  resi[3];                   // the 2nd syzygy module of i
-&rarr; _[1]=0
-  ideal j=minor(resi[2],2);
-  reduce(j,std(i));          // check whether j is contained in i
-&rarr; _[1]=0
-&rarr; _[2]=0
-&rarr; _[3]=0
-  size(reduce(i,std(j)));    // check whether i is contained in j
-&rarr; 0
-  // size(&lt;ideal&gt;) counts the non-zero generators
-  // ---------------------------------------------
-  // The tangent developable of the rational normal curve in P^4:
-  ring P = 0,(a,b,c,d,e),dp;
-  ideal j= 3c2-4bd+ae, -2bcd+3ad2+3b2e-4ace,
-           8b2d2-9acd2-9b2ce+9ac2e+2abde-1a2e2;
-  resolution rs=mres(j,0);
-  rs;
-&rarr;  1      2      1      
-&rarr; P &lt;--  P &lt;--  P
-&rarr; 
-&rarr; 0      1      2      
-&rarr; 
-  list L=rs;
-  print(L[2]);
-&rarr; 2bcd-3ad2-3b2e+4ace,
-&rarr; -3c2+4bd-ae         
-  // create an intmat with graded betti numbers
-  intmat B=betti(rs);
-  // this gives a nice output of betti numbers
-  print(B,&quot;betti&quot;);
-&rarr;            0     1     2
-&rarr; ------------------------
-&rarr;     0:     1     -     -
-&rarr;     1:     -     1     -
-&rarr;     2:     -     1     -
-&rarr;     3:     -     -     1
-&rarr; ------------------------
-&rarr; total:     1     2     1
-  // the user has access to all betti numbers
-  // the 2-nd column of B:
-  B[1..4,2];
-&rarr; 0 1 1 0
-  ring cyc5=32003,(a,b,c,d,e,h),dp;
-  ideal i=
-  a+b+c+d+e,
-  ab+bc+cd+de+ea,
-  abc+bcd+cde+dea+eab,
-  abcd+bcde+cdea+deab+eabc,
-  h5-abcde;
-  resolution rs=lres(i,0);   //computes the resolution according La Scala
-  rs;                        //the shape of the minimal resolution
-&rarr;     1         5         10         10         5         1         
-&rarr; cyc5 &lt;--  cyc5 &lt;--  cyc5 &lt;--   cyc5 &lt;--   cyc5 &lt;--  cyc5
-&rarr; 
-&rarr; 0         1         2          3          4         5         
-&rarr; resolution not minimized yet
-&rarr; 
-  print(betti(rs),&quot;betti&quot;);  //shows the Betti-numbers of cyclic 5
-&rarr;            0     1     2     3     4     5
-&rarr; ------------------------------------------
-&rarr;     0:     1     1     -     -     -     -
-&rarr;     1:     -     1     1     -     -     -
-&rarr;     2:     -     1     1     -     -     -
-&rarr;     3:     -     1     2     1     -     -
-&rarr;     4:     -     1     2     1     -     -
-&rarr;     5:     -     -     2     2     -     -
-&rarr;     6:     -     -     1     2     1     -
-&rarr;     7:     -     -     1     2     1     -
-&rarr;     8:     -     -     -     1     1     -
-&rarr;     9:     -     -     -     1     1     -
-&rarr;    10:     -     -     -     -     1     1
-&rarr; ------------------------------------------
-&rarr; total:     1     5    10    10     5     1
-  dim(rs);                   //the homological dimension
-&rarr; 4
-  size(list(rs));            //gets the full (non-reduced) resolution
-&rarr; 6
-  minres(rs);                //minimizes the resolution
-&rarr;     1         5         10         10         5         1         
-&rarr; cyc5 &lt;--  cyc5 &lt;--  cyc5 &lt;--   cyc5 &lt;--   cyc5 &lt;--  cyc5
-&rarr; 
-&rarr; 0         1         2          3          4         5         
-&rarr; 
-  size(list(rs));            //gets the minimized resolution
-&rarr; 6
-</pre></td></tr></table>
-
-
 <hr>
-<a name="Computation-of-Ext"></a>
+<a name="Local-orderings"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Free-resolution" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Polar-curves" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Global-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Module-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_8.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Preface" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_11.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Computation-of-Ext-1"></a>
-<h2 class="section">A.12 Computation of Ext</h2>
-<a name="index-Ext"></a>
+<a name="Local-orderings-1"></a>
+<h3 class="subsection">B.2.4 Local orderings</h3>
+<a name="index-Local-orderings"></a>
+<a name="index-orderings_002c-local"></a>
 
-<p>We start by showing how to calculate the 
--th Ext group of an
-ideal. The ingredients to do this are by the definition of Ext the
-following: calculate a (minimal) resolution at least up to length
+<p>For ls, ds, Ds and, if the weights are positive integers, also for ws and
+Ws,  we have
+ the localization of 
+at the maximal ideal
 </p>
-<p>, apply the Hom-functor, and calculate the 
--th homology
-group, that is form the quotient
-in the resolution sequence.
-</p>
-<p>The Hom functor is given simply by transposing (hence dualizing) the
-module or the corresponding matrix with the command <code>transpose</code>.
-The image of the 
--st map is generated by the columns of the
-corresponding matrix. To calculate the kernel apply the command
-<code>syz</code> at the 
--st transposed entry of the resolution.
-Finally, the quotient is obtained by the command <code>modulo</code>, which
-gives for two modules A = ker, B = Im the module of relations of
-in the usual way. As we have a chain complex this is obviously the same
-as ker/Im.
-</p>
-<p>We collect these statements in the following short procedure:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc ext(int n, ideal I)
-{
-  resolution rs = mres(I,n+1);
-  module tAn    = transpose(rs[n+1]);
-  module tAn_1  = transpose(rs[n]);
-  module ext_n  = modulo(syz(tAn),tAn_1);
-  return(ext_n);
-}
-</pre></td></tr></table>
-
-<p>Now consider the following example:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r5 = 32003,(a,b,c,d,e),dp;
-ideal I = a2b2+ab2c+b2cd, a2c2+ac2d+c2de,a2d2+ad2e+bd2e,a2e2+abe2+bce2;
-print(ext(2,I));
-&rarr; 1,0,0,0,0,0,0,
-&rarr; 0,1,0,0,0,0,0,
-&rarr; 0,0,1,0,0,0,0,
-&rarr; 0,0,0,1,0,0,0,
-&rarr; 0,0,0,0,1,0,0,
-&rarr; 0,0,0,0,0,1,0,
-&rarr; 0,0,0,0,0,0,1
-ext(3,I);   // too big to be displayed here
-</pre></td></tr></table>
-
-<p>The library <code>homolog.lib</code> contains several procedures for computing
-Ext-modules and related modules, which are much more general and
-sophisticated then the above one. They are used in the following
-example.
-</p>
-<p>If 
- is a module, then
-are the modules of infinitesimal deformations, resp. of obstructions, of
-</p>
-<p> (like T1 and T2 for a singularity).  Similar to the treatment
-for singularities, the semiuniversal deformation of 
- can be
-computed (if
-is finite dimensional) with the help of
-and the cup product. There is an extra procedure for
-if 
- is an ideal in 
- since this is faster than the
-general Ext.
-</p>
-<p>We compute
-</p><ul>
-<li>
-the infinitesimal deformations
-and obstructions
-of the residue field 
- of an ordinary cusp,
-To compute
-we have to apply <code>Ext(1,syz(m),syz(m))</code> with
-<code>syz(m)</code> the first syzygy module of 
-, which is isomorphic to
-</li><li>
-for some ideal 
- and with an extra option.
-</li></ul>
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;homolog.lib&quot;;
-  ring R=0,(x,y),ds;
-  ideal i=x2-y3;
-  qring q = std(i);      // defines the quotient ring Loc_m k[x,y]/(x2-y3)
-  ideal m = maxideal(1);
-  module T1K = Ext(1,m,m);  // computes Ext^1(R/m,R/m)
-&rarr; // dimension of Ext^1:  0
-&rarr; // vdim of Ext^1:       2
-&rarr; 
-  print(T1K);
-&rarr; 0,  0,y,x,0,y,0,    x2-y3,
-&rarr; -y2,x,x,0,y,0,x2-y3,0,    
-&rarr; 1,  0,0,0,0,0,0,    0     
-  printlevel=2;             // gives more explanation
-  module T2K=Ext(2,m,m);    // computes Ext^2(R/m,R/m)
-&rarr; // Computing Ext^2 (help Ext; gives an explanation):
-&rarr; // Let 0&lt;--coker(M)&lt;--F0&lt;--F1&lt;--F2&lt;--... be a resolution of coker(M),
-&rarr; // and 0&lt;--coker(N)&lt;--G0&lt;--G1 a presentation of coker(N),
-&rarr; // then Hom(F2,G0)--&gt;Hom(F3,G0) is given by:
-&rarr; y2,x,
-&rarr; x, y 
-&rarr; // and Hom(F1,G0) + Hom(F2,G1)--&gt;Hom(F2,G0) is given by:
-&rarr; -y,x,  x,0,y,0,
-&rarr; x, -y2,0,x,0,y 
-&rarr; 
-&rarr; // dimension of Ext^2:  0
-&rarr; // vdim of Ext^2:       2
-&rarr; 
-  print(std(T2K));
-&rarr; -y2,0,x,0,y,
-&rarr; 0,  x,0,y,0,
-&rarr; 1,  0,0,0,0 
-  printlevel=0;
-  module E = Ext(1,syz(m),syz(m));
-&rarr; // dimension of Ext^1:  0
-&rarr; // vdim of Ext^1:       2
-&rarr; 
-  print(std(E));
-&rarr; -y,x, 0, 0,0,x,0,y,
-&rarr; 0, -y,-y,0,x,0,y,0,
-&rarr; 0, 0, 0, 1,0,0,0,0,
-&rarr; 0, 0, 1, 0,0,0,0,0,
-&rarr; 0, 1, 0, 0,0,0,0,0,
-&rarr; 1, 0, 0, 0,0,0,0,0 
-  //The matrices which we have just computed are presentation matrices
-  //of the modules T2K and E. Hence we may ignore those columns
-  //containing 1 as an entry and see that T2K and E are isomorphic
-  //as expected, but differently presented.
-  //-------------------------------------------
-  ring S=0,(x,y,z),dp;
-  ideal  i = x2y,y2z,z3x;
-  module E = Ext_R(2,i);
-&rarr; // dimension of Ext^2:  1
-&rarr; 
-  print(E);
-&rarr; 0,y,0,z2,
-&rarr; z,0,0,-x,
-&rarr; 0,0,x,-y 
-  // if a 3-rd argument is given (of any type)
-  // a list of Ext^k(R/i,R), a SB of Ext^k(R/i,R) and a vector space basis
-  // is returned:
-  list LE = Ext_R(3,i,&quot;&quot;);
-&rarr; // dimension of Ext^3:  0
-&rarr; // vdim of Ext^3:       2
-&rarr; 
-  LE;
-&rarr; [1]:
-&rarr;    _[1]=y*gen(1)
-&rarr;    _[2]=x*gen(1)
-&rarr;    _[3]=z2*gen(1)
-&rarr; [2]:
-&rarr;    _[1]=y*gen(1)
-&rarr;    _[2]=x*gen(1)
-&rarr;    _[3]=z2*gen(1)
-&rarr; [3]:
-&rarr;    _[1,1]=z
-&rarr;    _[1,2]=1
-  print(LE[2]);
-&rarr; y,x,z2
-  print(kbase(LE[2]));
-&rarr; z,1
-</pre></td></tr></table>
-<hr>
-<a name="Polar-curves"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Computation-of-Ext" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Depth" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Polar-curves-1"></a>
-<h2 class="section">A.13 Polar curves</h2>
-<a name="index-Polar-curves"></a>
-
-<p>The polar curve of a hypersurface given by a polynomial
-with respect to 
- (we may consider 
- as a family of
-hypersurfaces parametrized by 
-) is defined as the Zariski
-closure of
-if this happens to be a curve.  Some authors consider
-itself as polar curve.
-</p>
-<p>We may consider projective hypersurfaces
-affine hypersurfaces
-or germs of hypersurfaces
-getting in this way
-projective, affine or local polar curves.
-</p>
-<p>Now let us compute this for a family of curves.  We need the library
-<code>elim.lib</code> for saturation and <code>sing.lib</code> for the singular
-locus.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;elim.lib&quot;;
-  LIB &quot;sing.lib&quot;;
-  // Affine polar curve:
-  ring R = 0,(x,z,t),dp;              // global ordering dp
-  poly f = z5+xz3+x2-tz6;
-  dim_slocus(f);                      // dimension of singular locus
-&rarr; 1
-  ideal j = diff(f,x),diff(f,z);
-  dim(std(j));                        // dim V(j)
-&rarr; 1
-  dim(std(j+ideal(f)));               // V(j,f) also 1-dimensional
-&rarr; 1
-  // j defines a curve, but to get the polar curve we must remove the
-  // branches contained in f=0 (they exist since dim V(j,f) = 1). This
-  // gives the polar curve set theoretically. But for the structure we
-  // may take either j:f or j:f^k for k sufficiently large. The first is
-  // just the ideal quotient, the second the iterated ideal quotient
-  // or saturation. In our case both coincide.
-  ideal q = quotient(j,ideal(f));     // ideal quotient
-  ideal qsat = sat(j,f)[1];           // saturation, proc from elim.lib
-  ideal sq = std(q);
-  dim(sq);
-&rarr; 1
-  // 1-dimensional, hence q defines the affine polar curve
-  //
-  // to check that q and qsat are the same, we show both inclusions, i.e.,
-  // both reductions must give the 0-ideal
-  size(reduce(qsat,sq));
-&rarr; 0
-  size(reduce(q,std(qsat)));
-&rarr; 0
-  qsat;
-&rarr; qsat[1]=12zt+3z-10
-&rarr; qsat[2]=5z2+12xt+3x
-&rarr; qsat[3]=144xt2+72xt+9x+50z
-  // We see that the affine polar curve does not pass through the origin,
-  // hence we expect the local polar &quot;curve&quot; to be empty
-  // ------------------------------------------------
-  // Local polar curve:
-  ring r = 0,(x,z,t),ds;              // local ordering ds
-  poly f = z5+xz3+x2-tz6;
-  ideal j = diff(f,x),diff(f,z);
-  dim(std(j));                        // V(j) 1-dimensional
-&rarr; 1
-  dim(std(j+ideal(f)));               // V(j,f) also 1-dimensional
-&rarr; 1
-  ideal q = quotient(j,ideal(f));     // ideal quotient
-  q;
-&rarr; q[1]=1
-  // The local polar &quot;curve&quot; is empty, i.e., V(j) is contained in V(f)
-  // ------------------------------------------------
-  // Projective polar curve: (we need &quot;sing.lib&quot; and &quot;elim.lib&quot;)
-  ring P = 0,(x,z,t,y),dp;            // global ordering dp
-  poly f = z5y+xz3y2+x2y4-tz6;
-                                      // but consider t as parameter
-  dim_slocus(f);              // projective 1-dimensional singular locus
-&rarr; 2
-  ideal j = diff(f,x),diff(f,z);
-  dim(std(j));                        // V(j), projective 1-dimensional
-&rarr; 2
-  dim(std(j+ideal(f)));               // V(j,f) also projective 1-dimensional
-&rarr; 2
-  ideal q = quotient(j,ideal(f));
-  ideal qsat = sat(j,f)[1];           // saturation, proc from elim.lib
-  dim(std(qsat));
-&rarr; 2
-  // projective 1-dimensional, hence q and/or qsat define the projective
-  // polar curve. In this case, q and qsat are not the same, we needed
-  // 2 quotients.
-  // Let us check both reductions:
-  size(reduce(qsat,std(q)));
-&rarr; 4
-  size(reduce(q,std(qsat)));
-&rarr; 0
-  // Hence q is contained in qsat but not conversely
-  q;
-&rarr; q[1]=12zty+3zy-10y2
-&rarr; q[2]=60z2t-36xty-9xy-50zy
-  qsat;
-&rarr; qsat[1]=12zt+3z-10y
-&rarr; qsat[2]=12xty+5z2+3xy
-&rarr; qsat[3]=144xt2+72xt+9x+50z
-&rarr; qsat[4]=z3+2xy2
-  //
-  // Now consider again the affine polar curve,
-  // homogenize it with respect to y (deg t=0) and compare:
-  // affine polar curve:
-  ideal qa = 12zt+3z-10,5z2+12xt+3x,-144xt2-72xt-9x-50z;
-  // homogenized:
-  ideal qh = 12zt+3z-10y,5z2+12xyt+3xy,-144xt2-72xt-9x-50z;
-  size(reduce(qh,std(qsat)));
-&rarr; 0
-  size(reduce(qsat,std(qh)));
-&rarr; 0
-  // both ideals coincide
-</pre></td></tr></table>
-<hr>
-<a name="Depth"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Polar-curves" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Formatting-output" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Depth-1"></a>
-<h2 class="section">A.14 Depth</h2>
-<a name="index-Depth"></a>
-
-<p>We compute the depth of the module of Kaehler differentials
-of the variety defined by the 
--minors of a generic symmetric
-We do this by computing the resolution over the polynomial
-ring.  Then, by the Auslander-Buchsbaum formula, the depth is equal to
-the number of variables minus the length of a minimal resolution.  This
-example was suggested by U. Vetter in order to check whether his bound
-could be improved.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;matrix.lib&quot;; LIB &quot;sing.lib&quot;;
-  int n = 4;
-  int m = 3;
-  int N = n*(n+1)/2;           // will become number of variables
-  ring R = 32003,x(1..N),dp;
-  matrix X = symmat(n);        // proc from matrix.lib
-                               // creates the symmetric generic nxn matrix
-  print(X);
-&rarr; x(1),x(2),x(3),x(4),
-&rarr; x(2),x(5),x(6),x(7),
-&rarr; x(3),x(6),x(8),x(9),
-&rarr; x(4),x(7),x(9),x(10)
-  ideal J = minor(X,m);
-  J=std(J);
-  // Kaehler differentials D_k(R)
-  // of R=k[x1..xn]/J:
-  module D = J*freemodule(N)+transpose(jacob(J));
-  ncols(D);
-&rarr; 110
-  nrows(D);
-&rarr; 10
-  //
-  // Note: D is a submodule with 110 generators of a free module
-  // of rank 10 over a polynomial ring in 10 variables.
-  // Compute a full resolution of D with sres.
-  // This takes about 17 sec on a Mac PB 520c and 2 sec an a HP 735
-  int time = timer;
-  module sD = std(D);
-  list Dres = sres(sD,0);                // the full resolution
-  timer-time;                            // time used for std + sres
-&rarr; 0
-  intmat B = betti(Dres);
-  print(B,&quot;betti&quot;);
-&rarr;            0     1     2     3     4     5     6
-&rarr; ------------------------------------------------
-&rarr;     0:    10     -     -     -     -     -     -
-&rarr;     1:     -    10     -     -     -     -     -
-&rarr;     2:     -    84   144    60     -     -     -
-&rarr;     3:     -     -    35    80    60    16     1
-&rarr; ------------------------------------------------
-&rarr; total:    10    94   179   140    60    16     1
-  N-ncols(B)+1;                          // the desired depth
-&rarr; 4
-</pre></td></tr></table>
+<dl compact="compact">
+<dt>ls:</dt>
+<dd><p>negative lexicographical ordering:
+<a name="index-negative-lexicographical-ordering"></a>
+<a name="index-ls_002c-local-ordering"></a>
+<br>
+</p></dd>
+<dt>ds:</dt>
+<dd><p>negative degree reverse lexicographical ordering:
+<a name="index-negative-degree-reverse-lexicographical-ordering"></a>
+<a name="index-ds_002c-local-ordering"></a>
+<br>
+</p></dd>
+<dt>Ds:</dt>
+<dd><p>negative degree lexicographical ordering:
+<a name="index-negative-degree-lexicographical-ordering"></a>
+<a name="index-Ds_002c-local-ordering"></a>
+<br>
+</p></dd>
+<dt>ws:</dt>
+<dd><p>(general) weighted reverse lexicographical ordering:
+<a name="index-general-weighted-reverse-lexicographical-ordering"></a>
+<a name="index-local-weighted-reverse-lexicographical-ordering"></a>
+<a name="index-ws_002c-local-ordering"></a>
+<br>
+ a nonzero integer,
+ any integer (including 0),
+ is defined as <code>ds</code>
+ but with
+</p></dd>
+<dt>Ws:</dt>
+<dd><p>(general) weighted lexicographical ordering:
+<a name="index-general-weighted-lexicographical-ordering"></a>
+<a name="index-local-weighted-lexicographical-ordering"></a>
+<a name="index-Ws_002c-local-ordering"></a>
+<br>
+ a nonzero integer,
+ any integer (including 0),
+ is defined as <code>Ds</code>
+ but with
+</p></dd>
+</dl>
 
 <hr>
-<a name="Formatting-output"></a>
+<a name="Module-orderings"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Depth" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Cyclic-roots" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Local-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Matrix-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_8.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Preface" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_11.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Formatting-output-1"></a>
-<h2 class="section">A.15 Formatting output</h2>
-<a name="index-Formatting-output"></a>
+<a name="Module-orderings-1"></a>
+<h3 class="subsection">B.2.5 Module orderings</h3>
+<a name="index-Module-orderings"></a>
 
-<p>We show how to insert the result of a computation inside a text
-by using strings.
-First we compute the powers of 2 and comment the result with some text.
-Then we do the same and give the output a nice format by computing and
-adding appropriate space.
+<p><small>SINGULAR</small> offers also orderings on the set of &ldquo;monomials&rdquo;
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  // The powers of 2:
-  int  n;
-  for (n = 2; n &lt;= 128; n = n * 2)
-  {&quot;n = &quot; + string (n);}
-&rarr; n = 2
-&rarr; n = 4
-&rarr; n = 8
-&rarr; n = 16
-&rarr; n = 32
-&rarr; n = 64
-&rarr; n = 128
-  // The powers of 2 in a nice format
-  int j;
-  string space = &quot;&quot;;
-  for (n = 2; n &lt;= 128; n = n * 2)
-  {
-    space = &quot;&quot;;
-    for (j = 1; j &lt;= 5 - size (string (n)); j = j+1)
-    { space = space + &quot; &quot;; }
-    &quot;n =&quot; + space + string (n);
-  }
-&rarr; n =    2
-&rarr; n =    4
-&rarr; n =    8
-&rarr; n =   16
-&rarr; n =   32
-&rarr; n =   64
-&rarr; n =  128
+<p>We have two possibilities: either to give priority to the component of a
+vector in 
+or (which is the default in <small>SINGULAR</small>) to give priority
+to the coefficients.
+The orderings <code>(&lt;,c)</code> and <code>(&lt;,C)</code> give priority to the
+coefficients; whereas
+<code>(c,&lt;)</code> and <code>(C,&lt;)</code> give priority to the components.
+<br>Let &lt; be any of the monomial orderings of 
+as above.
+</p>
+<dl compact="compact">
+<dt>(&lt;,C):</dt>
+<dd><a name="index-C_002c-module-ordering"></a>
+<a name="index-module-ordering-C"></a>
+<br>
+
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), ds;
+  // the same as ring r = 0, (x,y,z), (ds, C);
+  [x+y2,z3+xy];
+&rarr; x*gen(1)+xy*gen(2)+y2*gen(1)+z3*gen(2)
+  [x,x,x];
+&rarr; x*gen(3)+x*gen(2)+x*gen(1)
 </pre></td></tr></table>
 
-<hr>
-<a name="Cyclic-roots"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Formatting-output" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#G_005fa-_002dInvariants" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Cyclic-roots-1"></a>
-<h2 class="section">A.16 Cyclic roots</h2>
-<a name="index-Cyclic-roots"></a>
-
-<p>We write a procedure returning a string that enables us to create
-automatically the ideal of cyclic roots over the basering with n
-variables. The procedure assumes that the variables consist of a single
-letter each (hence no indexed variables are allowed; the procedure
-<code>cyclic</code> in <code>poly.lib</code> does not have this restriction). Then
-we compute a standard basis of this ideal and some numerical
-information.  (This ideal is used as a classical benchmark for standard
-basis computations).
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">// We call the procedure 'cyclic':
-proc cyclic (int n)
-{
-   string vs = varstr(basering)+varstr(basering);
-   int c=find(vs,&quot;,&quot;);
-   while ( c!=0 )
-   {
-      vs=vs[1,c-1]+vs[c+1,size(vs)];
-      c=find(vs,&quot;,&quot;);
-   }
-   string t,s;
-   int i,j;
-   for ( j=1; j&lt;=n-1; j=j+1 )
-   {
-      t=&quot;&quot;;
-      for ( i=1; i &lt;=n; i=i+1 )
-      {
-         t = t + vs[i,j] + &quot;+&quot;;
-      }
-      t = t[1,size(t)-1] + &quot;,&quot;+newline;
-      s=s+t;
-   }
-   s=s+vs[1,n]+&quot;-1&quot;;
-   return (s);
-}
-
-ring r=0,(a,b,c,d,e),lp;         // basering, char 0, lex ordering
-string sc=cyclic(nvars(basering));
-sc;                              // the string of the ideal
-&rarr; a+b+c+d+e,
-&rarr; ab+bc+cd+de+ea,
-&rarr; abc+bcd+cde+dea+eab,
-&rarr; abcd+bcde+cdea+deab+eabc,
-&rarr; abcde-1
-execute(&quot;ideal i=&quot;+sc+&quot;;&quot;);      // this defines the ideal of cyclic roots
-i;
-&rarr; i[1]=a+b+c+d+e
-&rarr; i[2]=ab+bc+cd+ae+de
-&rarr; i[3]=abc+bcd+abe+ade+cde
-&rarr; i[4]=abcd+abce+abde+acde+bcde
-&rarr; i[5]=abcde-1
-timer=1;
-ideal j=std(i);
-&rarr; //used time: 7.5 sec
-size(j);                         // number of elements in the std basis
-&rarr; 11
-degree(j);
-&rarr; // codimension = 5
-&rarr; // dimension   = 0
-&rarr; // degree      = 70
+</dd>
+<dt>(C,&lt;):</dt>
+<dd>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (C,lp);
+  [x+y2,z3+xy];
+&rarr; xy*gen(2)+z3*gen(2)+x*gen(1)+y2*gen(1)
+  [x,x,x];
+&rarr; x*gen(3)+x*gen(2)+x*gen(1)
 </pre></td></tr></table>
-<hr>
-<a name="G_005fa-_002dInvariants"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Cyclic-roots" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Invariants-of-a-finite-group" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="G_005fa-_002dInvariants-1"></a>
-<h2 class="section">A.17 G_a -Invariants</h2>
-<a name="index-G_005fa-_002dInvariants"></a>
 
-<p>We work in characteristic 0 and use the Lie algebra generated by one
-vector field of the form
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;ainvar.lib&quot;;
-  int n=5;
-  int i;
-  ring s=32003,(x(1..n)),wp(1,2,3,4,5);
-  // definition of the vector field m=sum m[i,1]*d/dx(i)
-  matrix m[n][1];
-  for (i=1;i&lt;=n-1;i=i+1)
-  {
-     m[i+1,1]=x(i);
-  }
-  // computation of the ring of invariants
-  ideal in=invariantRing(m,x(2),x(1),0);
-  in;   //invariant ring is generated by 5 invariants
-&rarr; in[1]=x(1)
-&rarr; in[2]=x(2)^2-2*x(1)*x(3)
-&rarr; in[3]=x(3)^2-2*x(2)*x(4)+2*x(1)*x(5)
-&rarr; in[4]=x(2)^3-3*x(1)*x(2)*x(3)+3*x(1)^2*x(4)
-&rarr; in[5]=x(3)^3-3*x(2)*x(3)*x(4)-15997*x(1)*x(4)^2+3*x(2)^2*x(5)-6*x(1)*x(3)\
-   *x(5)
-  ring q=32003,(x,y,z,u,v,w),dp;
-  matrix m[6][1];
-  m[2,1]=x;
-  m[3,1]=y;
-  m[5,1]=u;
-  m[6,1]=v;
-  // the vector field is: xd/dy+yd/dz+ud/dv+vd/dw
-  ideal in=invariantRing(m,y,x,0);
-  in; //invariant ring is generated by 6 invariants
-&rarr; in[1]=x
-&rarr; in[2]=u
-&rarr; in[3]=v2-2uw
-&rarr; in[4]=zu-yv+xw
-&rarr; in[5]=yu-xv
-&rarr; in[6]=y2-2xz
+</dd>
+<dt>(&lt;,c):</dt>
+<dd><a name="index-c_002c-module-ordering"></a>
+<a name="index-module-ordering-c"></a>
+
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (lp,c);
+  [x+y2,z3+xy];
+&rarr; xy*gen(2)+x*gen(1)+y2*gen(1)+z3*gen(2)
+  [x,x,x];
+&rarr; x*gen(1)+x*gen(2)+x*gen(3)
 </pre></td></tr></table>
+
+</dd>
+<dt>(c,&lt;):</dt>
+<dd>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (c,lp);
+  [x+y2,z3+xy];
+&rarr; [x+y2,xy+z3]
+  [x,x,x];
+&rarr; [x,x,x]
+</pre></td></tr></table>
+</dd>
+</dl>
+
+<p>(up to permutation) unless the ordering starts with <code>c</code>.
+In all cases <small>SINGULAR</small> can read input in both formats.
+</p>
 <hr>
-<a name="Invariants-of-a-finite-group"></a>
+<a name="Matrix-orderings"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#G_005fa-_002dInvariants" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Factorization" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Module-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Product-orderings" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_8.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Preface" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_11.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Invariants-of-a-finite-group-1"></a>
-<h2 class="section">A.18 Invariants of a finite group</h2>
-<a name="index-Invariants-of-a-finite-group"></a>
+<a name="Matrix-orderings-1"></a>
+<h3 class="subsection">B.2.6 Matrix orderings</h3>
+<a name="index-Matrix-orderings"></a>
+<a name="index-orderings_002c-M"></a>
+<a name="index-M_002c-ordering"></a>
 
-<p>Two algorithms to compute the invariant ring are implemented in
-<small>SINGULAR</small>, <code>invariant_ring</code> and <code>invariant_ring_random</code>,
-both by Agnes E. Heydtmann (<code>agnes@math.uni-sb.de</code>).
+<p>Let 
+be an invertible 
+ with integer coefficients and
 </p>
-<p>Bases of homogeneous invariants are generated successively and those are
-chosen as primary invariants that lower the dimension of the ideal
-generated by the previously found invariants (see paper &quot;Generating a
-Noetherian Normalization of the Invariant Ring of a Finite Group&quot; by
-Decker, Heydtmann, Schreyer (1997) to appear in JSC).  In the
-non-modular case secondary invariants are calculated by finding a basis
-(in terms of monomials) of the basering modulo the primary invariants,
-mapping to invariants with the Reynolds operator and using those or
-their power products such that they are linearly independent modulo the
-primary invariants (see paper &quot;Some Algorithms in Invariant Theory of
-Finite Groups&quot; by Kemper and Steel (1997)).  In the modular case they
-are generated according to &quot;Generating Invariant Rings of Finite Groups
-over Arbitrary Fields&quot; by Kemper (1996, to appear in JSC).
+<p>The M-ordering &lt; is defined as follows:
+<br>
 </p>
-<p>We calculate now an example from Sturmfels: &quot;Algorithms in Invariant
-Theory 2.3.7&quot;:
+<p>Thus,
+with respect to the lexicographical ordering.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;finvar.lib&quot;;
-  ring R=0,(x,y,z),dp;
-  matrix A[3][3]=0,1,0,-1,0,0,0,0,-1;
-  // the group G is generated by A in Gl(3,Q);
-  print(A);
-&rarr; 0, 1,0,
-&rarr; -1,0,0,
-&rarr; 0, 0,-1
-  print(A*A*A*A); // the fourth power of A is 1
+<p>The following matrices represent (for 3 variables) the global and
+local orderings defined above (note that the matrix is not uniquely determined
+by the ordering):
+</p>
+
+<p>Product orderings (see next section) represented by  a matrix:
+</p>
+
+<p>Orderings with extra weight vector (see below) represented by  a matrix:
+</p>
+
+<br><p><strong>Example</strong>:
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), M(1, 0, 0,   0, 1, 0,   0, 0, 1);
+</pre></td></tr></table>
+<br><p>which may also be written as:
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  intmat m[3][3]=1, 0, 0, 0, 1, 0, 0, 0, 1;
+  m;
 &rarr; 1,0,0,
 &rarr; 0,1,0,
 &rarr; 0,0,1 
-  // Use the first method to compute the invariants of G:
-  matrix B(1..3);
-  B(1..3)=invariant_ring(A);
-  // SINGULAR returns 2 matrices, the first containing
-  // primary invariants and the second secondary
-  // invariants, i.e., module generators over a Noetherian
-  // normalization
-  // the third result are the irreducible secondary invariants
-  // if the Molien series was available
-  print(B(1));
-&rarr; z2,x2+y2,x2y2
-  print(B(2));
-&rarr; 1,xyz,x2z-y2z,x3y-xy3
-  print(B(3));
-&rarr; xyz,x2z-y2z,x3y-xy3
-  // Use the second method,
-  // with random numbers between -1 and 1:
-  B(1..3)=invariant_ring_random(A,1);
-  print(B(1..3));
-&rarr; z2,x2+y2,x4+y4-z4
-&rarr; 1,xyz,x2z-y2z,x3y-xy3
-&rarr; xyz,x2z-y2z,x3y-xy3
-</pre></td></tr></table>
-<hr>
-<a name="Factorization"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Invariants-of-a-finite-group" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Puiseux-pairs" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Factorization-1"></a>
-<h2 class="section">A.19 Factorization</h2>
-<a name="index-Factorization"></a>
-
-<p>The factorization of polynomials is implemented in the C++ libraries
-Factory (written mainly by Ruediger Stobbe) and libfac (written by
-Michael Messollen) which are part of the <small>SINGULAR</small> system.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0,(x,y),dp;
-  poly f = 9x16-18x13y2-9x12y3+9x10y4-18x11y2+36x8y4
-         +18x7y5-18x5y6+9x6y4-18x3y6-9x2y7+9y8;
-  // = 9 * (x5-1y2)^2 * (x6-2x3y2-1x2y3+y4)
-  factorize(f);
-&rarr; [1]:
-&rarr;    _[1]=9
-&rarr;    _[2]=x6-2x3y2-x2y3+y4
-&rarr;    _[3]=-x5+y2
-&rarr; [2]:
-&rarr;    1,1,2
-  // returns factors and multiplicities,
-  // first factor is a constant.
-  poly g = (y4+x8)*(x2+y2);
-  factorize(g);
-&rarr; [1]:
-&rarr;    _[1]=1
-&rarr;    _[2]=x8+y4
-&rarr;    _[3]=x2+y2
-&rarr; [2]:
-&rarr;    1,1,1
-  // The same in characteristic 2:
-  ring s =2,(x,y),dp;
-  poly g = (y4+x8)*(x2+y2);
-  factorize(g);
-&rarr; [1]:
-&rarr;    _[1]=1
-&rarr;    _[2]=x+y
-&rarr;    _[3]=x2+y
-&rarr; [2]:
-&rarr;    1,2,4
-</pre></td></tr></table>
-
-<hr>
-<a name="Puiseux-pairs"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Factorization" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Primary-decomposition" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Puiseux-pairs-1"></a>
-<h2 class="section">A.20 Puiseux pairs</h2>
-<a name="index-Puiseux-pairs"></a>
-
-<p>The Puiseux pairs of an irreducible and reduced curve singularity are
-its most important invariants.  They can be computed from its
-Hamburger-Noether expansion.  The library <code>hnoether.lib</code> written by
-Martin Lamm uses the algorithm of Antonio Campillo &quot;Algebroid curves in
-positive characteristic&quot; SLN 813, 1980.  This algorithm has the
-advantage that it needs least possible field extensions and, moreover,
-works in any characteristic. This fact can be used to compute the
-invariants over a field of finite characteristic, say 32003, which will
-then most probably be the same in characteristic 0.
-</p>
-<p>We compute the Hamburger-Noether expansion of a plane curve
-singularity given by a polynomial 
- in two variables. This is a
-matrix which allows to compute the parametrization (up to a given order)
-and all numerical invariants like the
-</p><ul>
-<li>
-    characteristic exponents,
-</li><li>
-    Puiseux pairs (of a complex model),
-</li><li>
-    degree of the conductor,
-</li><li>
-    delta invariant,
-</li><li>
-    generators of the semigroup.
-</li></ul>
-<p>Besides this, the library contains procedures to compute the Newton
-polygon of 
-, the squarefree part of 
- and a procedure to
-convert one set of invariants to another.
-</p>
-
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;hnoether.lib&quot;;
-  // ======== The irreducible case ========
-  ring s = 0,(x,y),ds;
-  poly f = y4-2x3y2-4x5y+x6-x7;
-  list hn = develop(f);
-  show(hn[1]);     // Hamburger-Noether matrix
-&rarr; // matrix, 3x3
-&rarr; 0,x,  0,  
-&rarr; 0,1,  x,  
-&rarr; 0,1/4,-1/2
-  displayHNE(hn);  // Hamburger-Noether development
-&rarr; HNE[1]=-y+z(0)*z(1)
-&rarr; HNE[2]=-x+z(1)^2+z(1)^2*z(2)
-&rarr; HNE[3]=1/4*z(2)^2-1/2*z(2)^3
-  setring s;
-  displayInvariants(hn);
-&rarr;  characteristic exponents  : 4,6,7
-&rarr;  generators of semigroup   : 4,6,13
-&rarr;  Puiseux pairs             : (3,2)(7,2)
-&rarr;  degree of the conductor   : 16
-&rarr;  delta invariant           : 8
-&rarr;  sequence of multiplicities: 4,2,2,1,1
-  // invariants(hn);  returns the invariants as list
-  // partial parametrization of f: param takes the first variable
-  // as infinite except the ring has more than 2 variables. Then
-  // the 3rd variable is chosen.
-  param(hn);
-&rarr; // ** Warning: result is exact up to order 5 in x and 7 in y !
-&rarr; _[1]=1/16x4-3/16x5+1/4x7
-&rarr; _[2]=1/64x6-5/64x7+3/32x8+1/16x9-1/8x10
-  ring extring=0,(x,y,t),ds;
-  poly f=x3+2xy2+y2;
-  list hn=develop(f,-1);
-  param(hn);       // partial parametrization of f
-&rarr; // ** Warning: result is exact up to order 2 in x and 3 in y !
-&rarr; _[1]=-t2
-&rarr; _[2]=-t3
-  list hn1=develop(f,6);
-  param(hn1);     // a better parametrization
-&rarr; // ** Warning: result is exact up to order 6 in x and 7 in y !
-&rarr; _[1]=-t2+2t4-4t6
-&rarr; _[2]=-t3+2t5-4t7
-  // instead of recomputing you may extend the development:
-  list hn2=extdevelop(hn,12);
-  param(hn2);     // a still better parametrization
-&rarr; // ** Warning: result is exact up to order 12 in x and 13 in y !
-&rarr; _[1]=-t2+2t4-4t6+8t8-16t10+32t12
-&rarr; _[2]=-t3+2t5-4t7+8t9-16t11+32t13
-  //
-  // ======== The reducible case ========
-  ring r = 0,(x,y),dp;
-  poly f=x11-2y2x8-y3x7-y2x6+y4x5+2y4x3+y5x2-y6;
-  // = (x5-1y2) * (x6-2x3y2-1x2y3+y4)
-  list hn=reddevelop(f);
-  show(hn[1][1]);     // Hamburger-Noether matrix of 1st branch
-&rarr; // matrix, 3x3
-&rarr; 0,x,0,
-&rarr; 0,1,x,
-&rarr; 0,1,-1
-  displayInvariants(hn);
-&rarr;  --- invariants of branch number 1 : ---
-&rarr;  characteristic exponents  : 4,6,7
-&rarr;  generators of semigroup   : 4,6,13
-&rarr;  Puiseux pairs             : (3,2)(7,2)
-&rarr;  degree of the conductor   : 16
-&rarr;  delta invariant           : 8
-&rarr;  sequence of multiplicities: 4,2,2,1,1
-&rarr; 
-&rarr;  --- invariants of branch number 2 : ---
-&rarr;  characteristic exponents  : 2,5
-&rarr;  generators of semigroup   : 2,5
-&rarr;  Puiseux pairs             : (5,2)
-&rarr;  degree of the conductor   : 4
-&rarr;  delta invariant           : 2
-&rarr;  sequence of multiplicities: 2,2,1,1
-&rarr; 
-&rarr;  -------------- contact numbers : -------------- 
-&rarr; 
-&rarr; branch |    2    
-&rarr; -------+-----
-&rarr;     1  |    2
-&rarr; 
-&rarr;  -------------- intersection multiplicities : -------------- 
-&rarr; 
-&rarr; branch |    2    
-&rarr; -------+-----
-&rarr;     1  |   12
-&rarr; 
-&rarr;  -------------- delta invariant of the curve :  22
-  param(hn[2]);      // parametrization of 2nd branch
-&rarr; _[1]=x2
-&rarr; _[2]=x5
-</pre></td></tr></table>
-<hr>
-<a name="Primary-decomposition"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Puiseux-pairs" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Normalization" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Primary-decomposition-1"></a>
-<h2 class="section">A.21 Primary decomposition</h2>
-<a name="index-Primary-decomposition"></a>
-
-<p>There are two algorithms implemented in <small>SINGULAR</small> which provide
-primary decomposition: <code>primdecGTZ</code>, based on
-Gianni/Trager/Zacharias (written by Gerhard Pfister) and
-<code>primdecSY</code>, based on Shimoyama/Yokoyama (written by Wolfram Decker
-and Hans Schoenemann).
-</p>
-<p>The result of <code>primdecGTZ</code> and <code>primdecSY</code> is returned as
-a list of pairs of ideals,
-where the second ideal form the prime ideal and the first
-ideal form the corresponding primary ideal.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;primdec.lib&quot;;
-  ring r = 0,(a,b,c,d,e,f),dp;
-  ideal i= f3, ef2, e2f, bcf-adf, de+cf, be+af, e3;
-  primdecGTZ(i);
-&rarr; [1]:
-&rarr;    [1]:
-&rarr;       _[1]=f
-&rarr;       _[2]=e
-&rarr;    [2]:
-&rarr;       _[1]=f
-&rarr;       _[2]=e
-&rarr; [2]:
-&rarr;    [1]:
-&rarr;       _[1]=f3
-&rarr;       _[2]=ef2
-&rarr;       _[3]=e2f
-&rarr;       _[4]=e3
-&rarr;       _[5]=de+cf
-&rarr;       _[6]=be+af
-&rarr;       _[7]=-bc+ad
-&rarr;    [2]:
-&rarr;       _[1]=f
-&rarr;       _[2]=e
-&rarr;       _[3]=-bc+ad
-  // We consider now the ideal J of the base space of the
-  // miniversal deformation of the cone over the rational
-  // normal curve computed in section *8* and compute
-  // its primary decomposition.
-  ring R = 0,(A,B,C,D),dp;
-  ideal J = CD, BD+D2, AD;
-  primdecGTZ(J);
-&rarr; [1]:
-&rarr;    [1]:
-&rarr;       _[1]=D
-&rarr;    [2]:
-&rarr;       _[1]=D
-&rarr; [2]:
-&rarr;    [1]:
-&rarr;       _[1]=C
-&rarr;       _[2]=B+D
-&rarr;       _[3]=A
-&rarr;    [2]:
-&rarr;       _[1]=C
-&rarr;       _[2]=B+D
-&rarr;       _[3]=A
-  // We see that there are two components which are both
-  // prime, even linear subspaces, one 3-dimensional,
-  // the other 1-dimensional.
-  // (This is Pinkhams example and was the first known
-  // surface singularity with two components of
-  // different dimensions)
-  //
-  // Let us now produce an embedded component in the last
-  // example, compute the minimal associated primes and
-  // the radical. We use the Characteristic set methods
-  // from prim_dec.lib.
-  J = intersect(J,maxideal(3));
-  // The following shows that the maximal ideal defines an embedded
-  // (prime) component.
-  primdecSY(J);
-&rarr; [1]:
-&rarr;    [1]:
-&rarr;       _[1]=D
-&rarr;    [2]:
-&rarr;       _[1]=D
-&rarr; [2]:
-&rarr;    [1]:
-&rarr;       _[1]=C
-&rarr;       _[2]=B+D
-&rarr;       _[3]=A
-&rarr;    [2]:
-&rarr;       _[1]=C
-&rarr;       _[2]=B+D
-&rarr;       _[3]=A
-&rarr; [3]:
-&rarr;    [1]:
-&rarr;       _[1]=D2
-&rarr;       _[2]=C2
-&rarr;       _[3]=B2
-&rarr;       _[4]=AB
-&rarr;       _[5]=A2
-&rarr;       _[6]=BCD
-&rarr;       _[7]=ACD
-&rarr;    [2]:
-&rarr;       _[1]=D
-&rarr;       _[2]=C
-&rarr;       _[3]=B
-&rarr;       _[4]=A
-  minAssChar(J);
-&rarr; [1]:
-&rarr;    _[1]=C
-&rarr;    _[2]=B+D
-&rarr;    _[3]=A
-&rarr; [2]:
-&rarr;    _[1]=D
-  radical(J);
-&rarr; _[1]=CD
-&rarr; _[2]=BD+D2
-&rarr; _[3]=AD
-</pre></td></tr></table>
-<hr>
-<a name="Normalization"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Primary-decomposition" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Branches-of-an-Isolated-Space-Curve-Singularity" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Normalization-1"></a>
-<h2 class="section">A.22 Normalization</h2>
-<a name="index-Normalization"></a>
-<p>The normalization will be computed for a reduced ring 
-. The
-result is a list of rings; ideals are always called <code>norid</code> in the
-rings of this list. The normalization of 
- is the product of
-the factor rings of the rings in the list divided out by the ideals
-<code>norid</code>.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;normal.lib&quot;;
-  // ----- first example: rational quadruple point -----
-  ring R=32003,(x,y,z),wp(3,5,15);
-  ideal I=z*(y3-x5)+x10;
-  list pr=normal(I);
-&rarr; 
-&rarr; // 'normal' created a list of 1 ring(s).
-&rarr; // nor[1+1] is the delta-invariant in case of choose=wd.
-&rarr; // To see the rings, type (if the name of your list is nor):
-&rarr;      show( nor);
-&rarr; // To access the 1-st ring and map (similar for the others), type:
-&rarr;      def R = nor[1]; setring R;  norid; normap;
-&rarr; // R/norid is the 1-st ring of the normalization and
-&rarr; // normap the map from the original basering to R/norid
-  def S=pr[1];
-  setring S;
-  norid;
-&rarr; norid[1]=T(2)*T(3)-T(1)*T(4)
-&rarr; norid[2]=T(1)^7-T(1)^2*T(3)+T(2)*T(5)
-&rarr; norid[3]=T(1)^2*T(5)-T(2)*T(4)
-&rarr; norid[4]=T(1)^5*T(4)-T(3)*T(4)+T(5)^2
-&rarr; norid[5]=T(1)^6*T(3)-T(1)*T(3)^2+T(4)*T(5)
-&rarr; norid[6]=T(1)*T(3)*T(5)-T(4)^2
-  // ----- second example: union of straight lines -----
-  ring R1=0,(x,y,z),dp;
-  ideal I=(x-y)*(x-z)*(y-z);
-  list qr=normal(I);
-&rarr; 
-&rarr; // 'normal' created a list of 3 ring(s).
-&rarr; // nor[3+1] is the delta-invariant in case of choose=wd.
-&rarr; // To see the rings, type (if the name of your list is nor):
-&rarr;      show( nor);
-&rarr; // To access the 1-st ring and map (similar for the others), type:
-&rarr;      def R = nor[1]; setring R;  norid; normap;
-&rarr; // R/norid is the 1-st ring of the normalization and
-&rarr; // normap the map from the original basering to R/norid
-  def S1=qr[1]; def S2=qr[2];
-  setring S1; norid;
-&rarr; norid[1]=0
-  setring S2; norid;
-&rarr; norid[1]=0
-</pre></td></tr></table>
-<hr>
-<a name="Branches-of-an-Isolated-Space-Curve-Singularity"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Normalization" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Kernel-of-module-homomorphisms" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Branches-of-an-Isolated-Space-Curve-Singularity-1"></a>
-<h2 class="section">A.23 Branches of an Isolated Space Curve Singularity</h2>
-<a name="index-Branches-of-an-Isolated-Space-Curve-Singularity"></a>
-
-<p>In this example, the number of branches of a given quasihomogeneous isolated
-space curve singularity will be computed as an example of the pitfalls
-appearing in the use of primary decomposition. When dealing with singularities,
-two situations are possible in which the primary decomposition algorithm
-might not lead to a complete decomposition: first of all, one of the computed
-components could be globally irreducible, but analytically reducible
-(this is impossible for quasihomogeneous singularities) and,
-as a second possibility, a component might be irreducible over the rational
-numbers, but reducible over the complex numbers.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),ds;
-  ideal i=x^4-y*z^2,x*y-z^3,y^2-x^3*z;  // the space curve singularity
-  qhweight(i);
-&rarr; 1,2,1
-  // The given space curve singularity is quasihomogeneous. Hence we can pass
-  // to the polynomial ring.
-  ring rr=0,(x,y,z),dp;
-  ideal i=imap(r,i);
-  resolution ires=mres(i,0);
-  ires;
-&rarr;   1       3       2       
-&rarr; rr &lt;--  rr &lt;--  rr
-&rarr; 
-&rarr; 0       1       2       
-&rarr; 
-  // From the structure of the resolution, we see that the Cohen-Macaulay
-  // type of the given singularity is 2
-  //
-  // Let us now look for the branches using the primdec library.
-  LIB &quot;primdec.lib&quot;;
-  primdecSY(i);
-&rarr; [1]:
-&rarr;    [1]:
-&rarr;       _[1]=z3-xy
-&rarr;       _[2]=x3+x2z+xz2+xy+yz
-&rarr;       _[3]=x2z2+x2y+xyz+yz2+y2
-&rarr;    [2]:
-&rarr;       _[1]=z3-xy
-&rarr;       _[2]=x3+x2z+xz2+xy+yz
-&rarr;       _[3]=x2z2+x2y+xyz+yz2+y2
-&rarr; [2]:
-&rarr;    [1]:
-&rarr;       _[1]=x-z
-&rarr;       _[2]=z2-y
-&rarr;    [2]:
-&rarr;       _[1]=x-z
-&rarr;       _[2]=z2-y
-  def li=_[2];
-  ideal i2=li[2];       // call the second ideal i2
-  // The curve seems to have 2 branches by what we computed using the
-  // algorithm of Shimoyama-Yokoyama.
-  // Now the same computation by the Gianni-Trager-Zacharias algorithm:
-  primdecGTZ(i);
-&rarr; [1]:
-&rarr;    [1]:
-&rarr;       _[1]=z8+yz6+y2z4+y3z2+y4
-&rarr;       _[2]=xz5+z6+yz4+y2z2+y3
-&rarr;       _[3]=-z3+xy
-&rarr;       _[4]=x2z2+xz3+xyz+yz2+y2
-&rarr;       _[5]=x3+x2z+xz2+xy+yz
-&rarr;    [2]:
-&rarr;       _[1]=z8+yz6+y2z4+y3z2+y4
-&rarr;       _[2]=xz5+z6+yz4+y2z2+y3
-&rarr;       _[3]=-z3+xy
-&rarr;       _[4]=x2z2+xz3+xyz+yz2+y2
-&rarr;       _[5]=x3+x2z+xz2+xy+yz
-&rarr; [2]:
-&rarr;    [1]:
-&rarr;       _[1]=-z2+y
-&rarr;       _[2]=x-z
-&rarr;    [2]:
-&rarr;       _[1]=-z2+y
-&rarr;       _[2]=x-z
-  // Having computed the primary decomposition in 2 different ways and
-  // having obtained the same number of branches, we might expect that the
-  // number of branches is really 2, but we can check this by formulae
-  // for the invariants of space curve singularities:
-  //
-  // mu = tau - t + 1 (for quasihomogeneous curve singularities)
-  // where mu denotes the Milnor number, tau the Tjurina number and
-  // t the Cohen-Macaulay type
-  //
-  // mu = 2 delta - r + 1
-  // where delta denotes the delta-Invariant and r the number of branches
-  //
-  // tau can be computed by using the corresponding procedure T1 from
-  // sing.lib.
-  setring r;
-  LIB &quot;sing.lib&quot;;
-  T_1(i);
-&rarr; // dim T_1 = 13
-&rarr; _[1]=gen(6)+2z*gen(5)
-&rarr; _[2]=gen(4)+3x2*gen(2)
-&rarr; _[3]=gen(3)+gen(1)
-&rarr; _[4]=x*gen(5)-y*gen(2)-z*gen(1)
-&rarr; _[5]=x*gen(1)-z2*gen(2)
-&rarr; _[6]=y*gen(5)+3x2z*gen(2)
-&rarr; _[7]=y*gen(2)-z*gen(1)
-&rarr; _[8]=2y*gen(1)-z2*gen(5)
-&rarr; _[9]=z2*gen(5)
-&rarr; _[10]=z2*gen(1)
-&rarr; _[11]=x3*gen(2)
-&rarr; _[12]=x2z2*gen(2)
-&rarr; _[13]=xz3*gen(2)
-&rarr; _[14]=z4*gen(2)
-  setring rr;
-  // Hence tau is 13 and therefore mu is 12. But then it is impossible that
-  // the singularity has two branches, since mu is even and delta is an
-  // integer!
-  // So obviously, we did not decompose completely. Because the first branch
-  // is smooth, only the second ideal can be the one which can be decomposed
-  // further.
-  // Let us now consider the normalization of this second ideal i2.
-  LIB &quot;normal.lib&quot;;
-  normal(i2);
-&rarr; 
-&rarr; // 'normal' created a list of 1 ring(s).
-&rarr; // nor[1+1] is the delta-invariant in case of choose=wd.
-&rarr; // To see the rings, type (if the name of your list is nor):
-&rarr;      show( nor);
-&rarr; // To access the 1-st ring and map (similar for the others), type:
-&rarr;      def R = nor[1]; setring R;  norid; normap;
-&rarr; // R/norid is the 1-st ring of the normalization and
-&rarr; // normap the map from the original basering to R/norid
-&rarr; [1]:
-&rarr;    //   characteristic : 0
-&rarr; //   number of vars : 1
-&rarr; //        block   1 : ordering dp
-&rarr; //                  : names    T(1) 
+  ring r = 0, (x,y,z), M(m);
+  r;
+&rarr; //   characteristic : 0
+&rarr; //   number of vars : 3
+&rarr; //        block   1 : ordering M
+&rarr; //                  : names    x y z 
+&rarr; //                  : weights  1 0 0 
+&rarr; //                  : weights  0 1 0 
+&rarr; //                  : weights  0 0 1 
 &rarr; //        block   2 : ordering C
-  def rno=_[1];
-  setring rno;
-  norid;
-&rarr; norid[1]=0
-  // The ideal is generated by a polynomial in one variable of degree 4 which
-  // factors completely into 4 polynomials of type T(2)+a.
-  // From this, we know that the ring of the normalization is the direct sum of 
-  // 4 polynomial rings in one variable.
-  // Hence our original curve has these 4 branches plus a smooth one
-  // which we already determined by primary decomposition.
-  // Our final result is therefore: 5 branches.
-</pre></td></tr></table>
-<hr>
-<a name="Kernel-of-module-homomorphisms"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Branches-of-an-Isolated-Space-Curve-Singularity" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Algebraic-dependence" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Kernel-of-module-homomorphisms-1"></a>
-<h2 class="section">A.24 Kernel of module homomorphisms</h2>
-<a name="index-Kernel-of-module-homomorphisms"></a>
-<p>Let 
-, 
- be two matrices of size
-over the ring 
- and consider the corresponding maps
-We want to compute the kernel of the map
-This can be done using the <code>modulo</code> command:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),(c,dp);
-  matrix A[2][2]=x,y,z,1;
-  matrix B[2][2]=x2,y2,z2,xz;
-  print(modulo(A,B));
-&rarr; yz2-x2, xyz-y2,  x2z-xy, x3-y2z,
-&rarr; x2z-xz2,-x2z+y2z,xyz-yz2,0      
 </pre></td></tr></table>
 
+<p>If the ring has 
+variables and the matrix contains less than 
+entries an error message is given, if there are more entries,
+the last ones are ignored.
+</p>
+<p><strong>WARNING:</strong> <small>SINGULAR</small>
+does not check whether the matrix has full rank.   In such a case some
+computations might not terminate, others might give a nonsense result.
+</p>
+<p>Having these matrix orderings <small>SINGULAR</small> can compute standard bases for
+any monomial ordering which is compatible with the natural semigroup structure.
+In practice the global and local orderings together with block orderings should be
+sufficient in most cases. These orderings are faster than the corresponding
+matrix orderings, since evaluating a matrix product is time consuming.
+</p>
 <hr>
-<a name="Algebraic-dependence"></a>
+<a name="Product-orderings"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Kernel-of-module-homomorphisms" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Classification" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Matrix-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Extra-weight-vector" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_8.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Preface" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_11.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Algebraic-dependence-1"></a>
-<h2 class="section">A.25 Algebraic dependence</h2>
-<a name="index-Algebraic-dependence"></a>
-<p>Let
-We want to check whether
-</p><ol>
-<li>
-are algebraically dependent.
+<a name="Product-orderings-1"></a>
+<h3 class="subsection">B.2.7 Product orderings</h3>
+<a name="index-Product-orderings"></a>
+<a name="index-orderings_002c-product"></a>
 
 <p>Let
-Then
-are the algebraic relations between
+be two ordered sets of variables,
 </p>
-</li><li>
-
-if and only if the normal form of 
- with respect to 
- and a
-block ordering with respect to
-is in 
-.
-</li></ol>
-
-<p>Both questions can be answered using the following procedure. If the
-second argument is zero, it checks for algebraic dependence and returns
-the ideal of relations between the generators of the given ideal.
-Otherwise it checks for subring membership and returns the normal form
-of the second argument with respect to the ideal I.
+<p>Inductively one defines the product ordering of more than two monomial
+orderings.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  proc algebraicDep(ideal J, poly g)
-  {
-    def R=basering;         // give a name to the basering
-    int n=size(J);
-    int k=nvars(R);
-    int i;
-    intvec v;
-
-    // construction of the new ring:
-
-    // construct a weight vector
-    v[n+k]=0;         // gives a zero vector of length n+k
-    for(i=1;i&lt;=k;i++)
-    {
-      v[i]=1;
-    }
-    string orde=&quot;(a(&quot;+string(v)+&quot;),dp);&quot;;
-    string ri=&quot;ring Rhelp=(&quot;+charstr(R)+&quot;),
-                          (&quot;+varstr(R)+&quot;,Y(1..&quot;+string(n)+&quot;)),&quot;+orde;
-                            // ring definition as a string
-    execute(ri);            // execution of the string
-
-    // construction of the new ideal I=(J[1]-Y(1),...,J[n]-Y(n))
-    ideal I=imap(R,J);
-    for(i=1;i&lt;=n;i++)
-    {
-      I[i]=I[i]-var(k+i);
-    }
-    poly g=imap(R,g);
-    if(g==0)
-    {
-      // construction of the ideal of relations by elimination
-      poly el=var(1);
-      for(i=2;i&lt;=k;i++)
-      {
-        el=el*var(i);
-      }
-      ideal KK=eliminate(I,el);
-      keepring(Rhelp);
-      return(KK);
-    }
-    // reduction of g with respect to I
-    ideal KK=reduce(g,std(I));
-    keepring(Rhelp);
-    return(KK);
-  }
-
-  // applications of the procedure
-  ring r=0,(x,y,z),dp;
-  ideal i=xz,yz;
-  algebraicDep(i,0);
-&rarr; _[1]=0
-  // Note: after call of algebraicDep(), the basering is Rhelp.
-  setring r; kill Rhelp;
-  ideal j=xy+z2,z2+y2,x2y2-2xy3+y4;
-  algebraicDep(j,0);
-&rarr; _[1]=Y(1)^2-2*Y(1)*Y(2)+Y(2)^2-Y(3)
-  setring r; kill Rhelp;
-  poly g=y2z2-xz;
-  algebraicDep(i,g);
-&rarr; _[1]=Y(2)^2-Y(1)
-  // this shows that g is contained in i.
-  setring r; kill Rhelp;
-  algebraicDep(j,g);
-&rarr; _[1]=-z^4+z^2*Y(2)-x*z
-  // this shows that g is contained in j.
-</pre></td></tr></table>
-
+<p>In <small>SINGULAR</small>, any of the above global orderings, local orderings or matrix
+orderings may be combined (in an arbitrary manner and length) to a product
+ordering.   E.g., <code>(lp(3), M(1, 2, 3, 1, 1, 1, 1, 0, 0), ds(4),
+ws(1,2,3))</code> 
+defines: <code>lp</code> on the first 3 variables, the matrix ordering
+<code>M(1, 2, 3, 1, 1, 1, 1, 0, 0)</code> on the next 3 variables,
+<code>ds</code> on the next 4 variables and
+<code>ws(1,2,3)</code> on the last 3 variables.
+</p>
 <hr>
-<a name="Classification"></a>
+<a name="Extra-weight-vector"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Algebraic-dependence" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Fast-lexicographical-GB" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Product-orderings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Monomial-orderings" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="singular_8.html#Mathematical-background" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_8.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Preface" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_11.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Classification-1"></a>
-<h2 class="section">A.26 Classification</h2>
-<a name="index-Classification"></a>
+<a name="Extra-weight-vector-1"></a>
+<h3 class="subsection">B.2.8 Extra weight vector</h3>
+<a name="index-Extra-weight-vector"></a>
+<a name="index-a_002c-ordering"></a>
+<a name="index-orderings_002c-a"></a>
 
-<p>Classification of isolated hypersurface singularities with respect to
-right equivalence is provided by the command <code>classify</code> of the
-library <code>classify.lib</code>. The classification is done using the
-algorithm of Arnold. Before entering this algorithm, a first guess based
-on the Hilbert polynomial of the Milnor algebra is made.
+<p>any integers (including 0), defines
+and
+<br>
+<br>An extra weight vector does not define a monomial ordering by itself:
+it can only be used in combination with other orderings
+to insert an extra line of weights into the ordering
+matrix.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;classify.lib&quot;;
-  ring r=0,(x,y,z),ds;
-  poly p=singularity(&quot;E[6k+2]&quot;,2)[1];
-  p=p+z^2;
-  p;
-&rarr; z2+x3+xy6+y8
-  // We received an E_14 singularity in normal form
-  // from the database of normal forms. Since only the residual
-  // part is saved in the database, we added z^2 to get an E_14
-  // of embedding dimension 3.
-  //
-  // Now we apply a coordinate change in order to deal with a
-  // singularity which is not in normal form:
-  map phi=r,x+y,y+z,x;
-  poly q=phi(p);
-  // Yes, q really looks ugly, now:
-  q;
-&rarr; x2+x3+3x2y+3xy2+y3+xy6+y7+6xy5z+6y6z+15xy4z2+15y5z2+20xy3z3+20y4z3+15xy2z\
-   4+15y3z4+6xyz5+6y2z5+xz6+yz6+y8+8y7z+28y6z2+56y5z3+70y4z4+56y3z5+28y2z6+8\
-   yz7+z8
-  // Classification
-  classify(q);
-&rarr; About the singularity :
-&rarr;           Milnor number(f)   = 14
-&rarr;           Corank(f)          = 2
-&rarr;           Determinacy       &lt;= 12
-&rarr; Guessing type via Milnorcode:   E[6k+2]=E[14]
-&rarr; 
-&rarr; Computing normal form ...
-&rarr; I have to apply the splitting lemma. This will take some time....:-)
-&rarr;    Arnold step number 9
-&rarr; The singularity
-&rarr;    x3-9/4x4+27/4x5-189/8x6+737/8x7+6x6y+15x5y2+20x4y3+15x3y4+6x2y5+xy6-24\
-   089/64x8-x7y+11/2x6y2+26x5y3+95/2x4y4+47x3y5+53/2x2y6+8xy7+y8+104535/64x9\
-   +27x8y+135/2x7y2+90x6y3+135/2x5y4+27x4y5+9/2x3y6-940383/128x10-405/4x9y-2\
-   025/8x8y2-675/2x7y3-2025/8x6y4-405/4x5y5-135/8x4y6+4359015/128x11+1701/4x\
-   10y+8505/8x9y2+2835/2x8y3+8505/8x7y4+1701/4x6y5+567/8x5y6-82812341/512x12\
-   -15333/8x11y-76809/16x10y2-25735/4x9y3-78525/16x8y4-16893/8x7y5-8799/16x6\
-   y6-198x5y7-495/4x4y8-55x3y9-33/2x2y10-3xy11-1/4y12
-&rarr; is R-equivalent to E[14].
-&rarr;    Milnor number = 14
-&rarr;    modality      = 1
-&rarr; 2z2+x3+xy6+y8
-  // The library also provides routines to determine the corank of q
-  // and its residual part without going through the whole
-  // classification algorithm.
-  corank(q);
-&rarr; 2
-  morsesplit(q);
-&rarr; y3-9/4y4+27/4y5-189/8y6+737/8y7+6y6z+15y5z2+20y4z3+15y3z4+6y2z5+yz6-24089\
-   /64y8-y7z+11/2y6z2+26y5z3+95/2y4z4+47y3z5+53/2y2z6+8yz7+z8+104535/64y9+27\
-   y8z+135/2y7z2+90y6z3+135/2y5z4+27y4z5+9/2y3z6-940383/128y10-405/4y9z-2025\
-   /8y8z2-675/2y7z3-2025/8y6z4-405/4y5z5-135/8y4z6+4359015/128y11+1701/4y10z\
-   +8505/8y9z2+2835/2y8z3+8505/8y7z4+1701/4y6z5+567/8y5z6-82812341/512y12-15\
-   333/8y11z-76809/16y10z2-25735/4y9z3-78525/16y8z4-16893/8y7z5-8799/16y6z6-\
-   198y5z7-495/4y4z8-55y3z9-33/2y2z10-3yz11-1/4z12
+<br><p><strong>Example</strong>:
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0, (x,y,z),  (a(1,2,3),wp(4,5,2));
+ring s = 0, (x,y,z),  (a(1,2,3),dp);
+ring q = 0, (a,b,c,d),(lp(1),a(1,2,3),ds);
 </pre></td></tr></table>
-<hr>
-<a name="Fast-lexicographical-GB"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Classification" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Parallelization-with-MPtcp-links" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Fast-lexicographical-GB-1"></a>
-<h2 class="section">A.27 Fast lexicographical GB</h2>
-<a name="index-Fast-lexicographical-GB"></a>
-
-<p>Compute Groebner basis in lexicographical ordering
-by using the FGLM algorithm (<code>stdfglm</code>)
-and Hilbert driven Groebner (<code>stdhilb</code>).
-</p>
-<p>The command <code>stdfglm</code> applies only for zero-dimensional ideals and
-returns a reduced Groebner basis.
-</p>
-<p>For the ideal below, <code>stdfglm</code> is more than 100 times
-and <code>stdhilb</code> about 10 times faster than <code>std</code>.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r =32003,(a,b,c,d,e),lp;
-  ideal i=a+b+c+d, ab+bc+cd+ae+de, abc+bcd+abe+ade+cde,
-          abc+abce+abde+acde+bcde, abcde-1;
-  int t=timer;
-  ideal j1=stdfglm(i);
-  timer-t;
-&rarr; 0
-  size(j1);   // size (no. of polys) in computed GB
-&rarr; 5
-  t=timer;
-  ideal j2=stdhilb(i);
-  timer-t;
-&rarr; 0
-  size(j2);   // size (no. of polys) in computed GB
-&rarr; 158
-  // usual Groebner basis computation for lex ordering
-  t=timer;
-  ideal j0 =std(i);
-  timer-t;
-&rarr; 1
-</pre></td></tr></table>
-<hr>
-<a name="Parallelization-with-MPtcp-links"></a>
-<table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Fast-lexicographical-GB" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Examples" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Parallelization-with-MPtcp-links-1"></a>
-<h2 class="section">A.28 Parallelization with MPtcp links</h2>
-<a name="index-Parallelization"></a>
-<a name="index-MPtcp"></a>
-<a name="index-link-1"></a>
-<p>In this example, we demonstrate how MPtcp links can be used to
-parallelize computations.
-</p>
-<p>To compute a standard basis for a zero-dimensional ideal in the
-lexicographical ordering, one of the two powerful routines
-<code>stdhilb</code>
-(see <a href="singular_5.html#stdhilb">stdhilb</a>)
-and <code>stdfglm</code>
-(see <a href="singular_5.html#stdfglm">stdfglm</a>)
-should be used. However, a priory one can not predict
-which one of the two commands is faster. This very much depends on the
-(input) example. Therefore, we use MPtcp links to let both commands
-work on the problem independently and in parallel, so that the one which
-finishes first delivers the result.
-</p>
-<p>The example we use is the so-called &quot;omdi example&quot;. See <i>Tim
-Wichmann; Der FGLM-Algorithmus: verallgemeinert und implementiert in
-Singular; Diplomarbeit Fachbereich Mathematik, Universitaet
-Kaiserslautern; 1997</i> for more details.
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(a,b,c,u,v,w,x,y,z),lp;
-ideal i=a+c+v+2x-1, ab+cu+2vw+2xy+2xz-2/3,  ab2+cu2+2vw2+2xy2+2xz2-2/5,
-ab3+cu3+2vw3+2xy3+2xz3-2/7, ab4+cu4+2vw4+2xy4+2xz4-2/9, vw2+2xyz-1/9,
-vw4+2xy2z2-1/25, vw3+xyz2+xy2z-1/15, vw4+xyz3+xy3z-1/21;
-
-link l_hilb,l_fglm = &quot;MPtcp:fork&quot;,&quot;MPtcp:fork&quot;;         // 1.
-
-open(l_fglm); open(l_hilb);
-
-write(l_hilb, quote(system(&quot;pid&quot;)));                    // 2.
-write(l_fglm, quote(system(&quot;pid&quot;)));
-int pid_hilb,pid_fglm = read(l_hilb),read(l_fglm);
-
-write(l_hilb, quote(stdhilb(i)));                       // 3.
-write(l_fglm, quote(stdfglm(eval(i))));
-
-while ((! status(l_hilb, &quot;read&quot;, &quot;ready&quot;, 1)) &amp;&amp;        // 4.
-       (! status(l_fglm, &quot;read&quot;, &quot;ready&quot;, 1))) {}
-
-if (status(l_hilb, &quot;read&quot;, &quot;ready&quot;))
-{
-  &quot;stdhilb won !!!!&quot;; size(read(l_hilb));
-  close(l_hilb); pid_fglm = system(&quot;sh&quot;,&quot;kill &quot;+string(pid_fglm));
-}
-else                                                    // 5.
-{
-  &quot;stdfglm won !!!!&quot;; size(read(l_fglm));
-  close(l_fglm); pid_hilb = system(&quot;sh&quot;,&quot;kill &quot;+string(pid_hilb));
-}
-&rarr; stdfglm won !!!!
-&rarr; 9
-</pre></td></tr></table>
-<p>Some explanatory remarks are in order:
-</p><ol>
-<li>
-Instead of using links of the type <code>MPtcp:fork</code>, we alternatively
-could use <code>MPtcp:launch</code> links such that the two &quot;competing&quot;
-<small>SINGULAR</small> processes run on different machines. This has the
-advantage of &quot;true&quot; parallel computing since no resource sharing is
-involved (as it usually is with forked processes).
-
-</li><li>
-Unfortunately, MPtcp links do not offer means to (asynchronously)
-interrupt or kill an attached (i.e., launched or forked)
-process. Therefore, we explicitly need to get the process id numbers of
-the competing <small>SINGULAR</small> processes, so that we can &quot;kill&quot; the
-looser later.
-
-</li><li>
-Notice how quoting is used in order to prevent local evaluation
-(i.e., local computation of results). Since we &quot;forked&quot; the two
-competing processes, the identifier <code>i</code> is defined and has
-identical values in both child processes. Therefore, the innermost
-<code>eval</code> can be omitted (as is done for the <code>l_hilb</code> link),
-and only the identifier <code>i</code> needs to be communicated to the
-children. However, when <code>MPtcp:launch</code> links are used, the inner
-evaluation must be applied so that actual values, and not the
-identifiers are communicated (as is done for the <code>l_fglm</code> link).
-
-</li><li>
-We go into a &quot;sleepy&quot; loop and wait until one of the two children
-finished the computation. That is, the current process checks approximately
-once per second the status of one of the connecting links, and sleeps
-(i.e., suspends its execution) in the intermediate time.
-
-</li><li>
-The child which has won delivers the result and is terminated with the usual
-<code>close</code> command. The other child which is still computing needs to
-be terminated by an explicit (i.e., system) kill command, since it can
-not be terminated through the link while it is still computing.
-</li></ol>
-
 
 <hr>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Examples" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="singular_8.html#Polynomial-data" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="singular_8.html#Mathematical-background" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="singular.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular.html#Preface" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="singular_12.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_11.html#Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.6.2.4 reduction</title>
+<title>Singular 2-0-4 Manual: D.6.2.5 completeReduction</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.6.2.4 reduction">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.6.2.4 reduction">
+<meta name="description" content="Singular 2-0-4 Manual: D.6.2.5 completeReduction">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6.2.5 completeReduction">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="reduction"></a>
+<a name="completeReduction"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_788.htm#actionIsProper" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.2.3 actionIsProper" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_788.htm#reduction" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.2.4 reduction" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_790.htm#completeReduction" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.2.5 completeReduction" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_790.htm#localInvar" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.2.6 localInvar" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_785.htm#ainvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.2 ainvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_784.htm#ainvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.2 ainvar_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,30 +84,25 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="reduction-1"></a>
-<h4 class="subsubsection">D.6.2.4 reduction</h4>
-<a name="index-reduction"></a>
-<p>Procedure from library <code>ainvar.lib</code> (see <a href="sing_785.htm#ainvar_005flib">ainvar_lib</a>).
+<a name="completeReduction-1"></a>
+<h4 class="subsubsection">D.6.2.5 completeReduction</h4>
+<a name="index-completeReduction"></a>
+<p>Procedure from library <code>ainvar.lib</code> (see <a href="sing_784.htm#ainvar_005flib">ainvar_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>reduction(p,I[,q,n]); p poly, I ideal, [q monomial, n int (optional)]
+<dd><p>completeReduction(p,I[,q,n]); p poly, I ideal, [q monomial, n int]
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>a polynomial equal to p-H(f1,...,fr), in case the leading
-term LT(p) of p is of the form H(LT(f1),...,LT(fr)) for some
-polynomial H in r variables over the base field, I=f1,...,fr;
-if q is given, a maximal power a is computed such that q^a divides
-p-H(f1,...,fr), and then (p-H(f1,...,fr))/q^a is returned;
-return p if no H is found
+<dd><p>a polynomial, the SAGBI reduction of the polynomial p with I
+via the procedure &rsquo;reduction&rsquo; as long as possible
 <br>if n=1, a different algorithm is chosen which is sometimes faster
 (default: n=0; q and n can be given (or not) in any order)
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>this is a kind of SAGBI reduction in the subalgebra K[f1,...,fr] of
-the basering
+<dd><p>help reduction; shows an explanation of SAGBI reduction
 </p>
 </dd>
 </dl>
@@ -116,10 +111,10 @@ the basering
 ring q=0,(x,y,z,u,v,w),dp;
 poly p=x2yz-x2v;
 ideal dom =x-w,u2w+1,yz-v;
-reduction(p,dom);
+completeReduction(p,dom);
 &rarr; 2xyzw-yzw2-2xvw+vw2
-reduction(p,dom,w);
-&rarr; 2xyz-yzw-2xv+vw
+completeReduction(p,dom,w);
+&rarr; 0
 </pre></td></tr></table>
 
 </td>
@@ -131,14 +126,14 @@ reduction(p,dom,w);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_788.htm#actionIsProper" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.2.3 actionIsProper" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_790.htm#completeReduction" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.2.5 completeReduction" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_785.htm#ainvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.2 ainvar_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_788.htm#reduction" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.2.4 reduction" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_790.htm#localInvar" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.2.6 localInvar" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_784.htm#ainvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.2 ainvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.7.1.3 elimpart</title>
+<title>Singular 2-0-4 Manual: D.7.1.4 elimpartanyr</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.7.1.3 elimpart">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.7.1.3 elimpart">
+<meta name="description" content="Singular 2-0-4 Manual: D.7.1.4 elimpartanyr">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7.1.4 elimpartanyr">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="elimpart"></a>
+<a name="elimpartanyr"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_816.htm#elimlinearpart" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.1.2 elimlinearpart" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_816.htm#elimpart" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.1.3 elimpart" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_818.htm#elimpartanyr" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.1.4 elimpartanyr" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_818.htm#fastelim" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.1.5 fastelim" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_814.htm#presolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.1 presolve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_813.htm#presolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.1 presolve_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,30 +84,31 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="elimpart-1"></a>
-<h4 class="subsubsection">D.7.1.3 elimpart</h4>
-<a name="index-elimpart"></a>
-<p>Procedure from library <code>presolve.lib</code> (see <a href="sing_814.htm#presolve_005flib">presolve_lib</a>).
+<a name="elimpartanyr-1"></a>
+<h4 class="subsubsection">D.7.1.4 elimpartanyr</h4>
+<a name="index-elimpartanyr"></a>
+<p>Procedure from library <code>presolve.lib</code> (see <a href="sing_813.htm#presolve_005flib">presolve_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>elimpart(i [,n,e] ); i=ideal, n,e=integers
-<br>n : only the first n vars are considered for substitution,<br>
+<dd><p>elimpartanyr(i [,p,e] ); i=ideal, p=polynomial, e=integer<br>
+p: product of vars to be eliminated,<br>
 e =0: substitute from linear part of i (same as elimlinearpart)<br>
 e!=0: eliminate also by direct substitution<br>
-(default: n = nvars(basering), e = 1)
+(default: p=product of all vars, e=1)
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>list of 5 objects:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  [1]: ideal obtained by substituting from the first n variables those
-       from i, which appear in the linear part of i (or, if e!=0, which
-       can be expressed directly in the remaining vars)
+<dd><p>list of 6 objects:
+  </p><table><tr><td>&nbsp;</td><td><pre class="format">  [1]: (interreduced) ideal obtained by substituting from i those vars
+       appearing in p, which occur in the linear part of i (or which can
+       be expressed directly in the remaining variables, if e!=0)
   [2]: ideal, variables which have been substituted
   [3]: ideal, i-th element defines substitution of i-th var in [2]
   [4]: ideal of variables of basering, substituted ones are set to 0
   [5]: ideal, describing the map from the basering, say k[x(1..m)], to
        itself onto k[..variables fom [4]..] and [1] is the image of i
+  [6]: int, # of vars considered for substitution (= # of factors of p)
   </pre></td></tr></table>
 <p>The ideal i is generated by [1] and [3] in k[x(1..m)], the map [5]
 maps [3] to 0, hence induces an isomorphism
@@ -116,46 +117,33 @@ maps [3] to 0, hence induces an isomorphism
 
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>If the basering has ordering (c,dp), this is faster for big ideals,
-since it avoids internal ring change and mapping.
+<dd><p>the proc uses <code>execute</code> to create a ring with ordering dp and vars
+placed correctly and then applies <code>elimpart</code>.
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;presolve.lib&quot;;
 ring s=0,(x,y,z),dp;
-ideal i =x2+y2,x2+y+1;
-elimpart(i,3,0);
+ideal i = x3+y2+z,x2y2+z3,y+z+1;
+elimpartanyr(i,z);
 &rarr; [1]:
-&rarr;    _[1]=y2-y-1
-&rarr;    _[2]=x2+y+1
+&rarr;    _[1]=x3+y2-y-1
+&rarr;    _[2]=x2y2-y3-3y2-3y-1
 &rarr; [2]:
-&rarr;    _[1]=0
+&rarr;    _[1]=z
 &rarr; [3]:
+&rarr;    _[1]=y+z+1
+&rarr; [4]:
 &rarr;    _[1]=0
-&rarr; [4]:
-&rarr;    _[1]=x
-&rarr;    _[2]=y
-&rarr;    _[3]=z
+&rarr;    _[2]=x
+&rarr;    _[3]=y
 &rarr; [5]:
-&rarr;    _[1]=x
-&rarr;    _[2]=y
-&rarr;    _[3]=z
-elimpart(i,3,1);
-&rarr; [1]:
-&rarr;    _[1]=x4+3x2+1
-&rarr; [2]:
-&rarr;    _[1]=y
-&rarr; [3]:
-&rarr;    _[1]=x2+y+1
-&rarr; [4]:
-&rarr;    _[1]=x
-&rarr;    _[2]=0
-&rarr;    _[3]=z
-&rarr; [5]:
-&rarr;    _[1]=x
-&rarr;    _[2]=-x2-1
-&rarr;    _[3]=z
+&rarr;    _[1]=-y-1
+&rarr;    _[2]=x
+&rarr;    _[3]=y
+&rarr; [6]:
+&rarr;    1
 </pre></td></tr></table>
 
 </td>
@@ -167,14 +155,14 @@ elimpart(i,3,1);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_816.htm#elimlinearpart" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.1.2 elimlinearpart" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_818.htm#elimpartanyr" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.1.4 elimpartanyr" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_814.htm#presolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.1 presolve_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_816.htm#elimpart" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.1.3 elimpart" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_818.htm#fastelim" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.1.5 fastelim" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_813.htm#presolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.1 presolve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

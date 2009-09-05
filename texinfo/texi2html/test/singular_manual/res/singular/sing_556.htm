@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.4.3.6 fitting</title>
+<title>Singular 2-0-4 Manual: D.4.3.7 flatteningStrat</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.4.3.6 fitting">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.4.3.6 fitting">
+<meta name="description" content="Singular 2-0-4 Manual: D.4.3.7 flatteningStrat">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.3.7 flatteningStrat">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="fitting"></a>
+<a name="flatteningStrat"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_555.htm#Ext" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.5 Ext" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_555.htm#fitting" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.6 fitting" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_557.htm#flatteningStrat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.7 flatteningStrat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_557.htm#Hom" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.8 Hom" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_550.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_549.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,45 +82,50 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="fitting-1"></a>
-<h4 class="subsubsection">D.4.3.6 fitting</h4>
-<a name="index-fitting"></a>
-<p>Procedure from library <code>homolog.lib</code> (see <a href="sing_550.htm#homolog_005flib">homolog_lib</a>).
+<a name="flatteningStrat-1"></a>
+<h4 class="subsubsection">D.4.3.7 flatteningStrat</h4>
+<a name="index-flatteningStrat"></a>
+<p>Procedure from library <code>homolog.lib</code> (see <a href="sing_549.htm#homolog_005flib">homolog_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>fitting (M,n); M module, n int
+<dd><p>flatteningStrat(M); M module
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>ideal, (standard basis of) n-th Fitting ideal of M&rsquo;=coker(M).
+<dd><p>list of ideals.
+<br>The list entries L[1],...,L[r] describe the flattening stratification
+of M&rsquo;=coker(M): setting L[0]=0, L[r+1]=1, the flattening
+stratification is given by the open sets Spec(A/V(L[i-1])) \ V(L[i]),
+i=1,...,r+1 (A = basering).
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>for more information see the book &rsquo;A Singular Introduction to
+Commutative Algebra&rsquo; (by Greuel/Pfister, Springer 2002).
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
-ring R=0,x(0..4),dp;
-matrix M[2][4]=x(0),x(1),x(2),x(3),x(1),x(2),x(3),x(4);
-print(M);
-&rarr; x(0),x(1),x(2),x(3),
-&rarr; x(1),x(2),x(3),x(4) 
-fitting(M,-1);
-&rarr; _[1]=0
-fitting(M,0);
-&rarr; _[1]=x(3)^2-x(2)*x(4)
-&rarr; _[2]=x(2)*x(3)-x(1)*x(4)
-&rarr; _[3]=x(1)*x(3)-x(0)*x(4)
-&rarr; _[4]=x(2)^2-x(0)*x(4)
-&rarr; _[5]=x(1)*x(2)-x(0)*x(3)
-&rarr; _[6]=x(1)^2-x(0)*x(2)
-fitting(M,1);
-&rarr; _[1]=x(4)
-&rarr; _[2]=x(3)
-&rarr; _[3]=x(2)
-&rarr; _[4]=x(1)
-&rarr; _[5]=x(0)
-fitting(M,2);
-&rarr; _[1]=1
+ring A = 0,x(0..4),dp;
+// presentation matrix:
+matrix M[2][4] = x(0),x(1),x(2),x(3),x(1),x(2),x(3),x(4);
+list L = flatteningStrat(M);
+L;
+&rarr; [1]:
+&rarr;    _[1]=x(3)^2-x(2)*x(4)
+&rarr;    _[2]=x(2)*x(3)-x(1)*x(4)
+&rarr;    _[3]=x(1)*x(3)-x(0)*x(4)
+&rarr;    _[4]=x(2)^2-x(0)*x(4)
+&rarr;    _[5]=x(1)*x(2)-x(0)*x(3)
+&rarr;    _[6]=x(1)^2-x(0)*x(2)
+&rarr; [2]:
+&rarr;    _[1]=x(4)
+&rarr;    _[2]=x(3)
+&rarr;    _[3]=x(2)
+&rarr;    _[4]=x(1)
+&rarr;    _[5]=x(0)
 </pre></td></tr></table>
 
 </td>
@@ -132,14 +137,14 @@ fitting(M,2);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_555.htm#Ext" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.5 Ext" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_557.htm#flatteningStrat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.7 flatteningStrat" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_550.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_555.htm#fitting" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.6 fitting" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_557.htm#Hom" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.8 Hom" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_549.htm#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

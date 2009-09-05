@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.7.2 solve_lib</title>
+<title>Singular 2-0-4 Manual: D.7.2.1 laguerre_solve</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.7.2 solve_lib">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.7.2 solve_lib">
+<meta name="description" content="Singular 2-0-4 Manual: D.7.2.1 laguerre_solve">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7.2.1 laguerre_solve">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="solve_005flib"></a>
+<a name="laguerre_005fsolve"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_830.htm#idealSplit" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.1.16 idealSplit" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_830.htm#solve_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.2 solve_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_832.htm#laguerre_005fsolve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.1 laguerre_solve" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_832.htm#solve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.2 solve" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_813.htm#Symbolic_002dnumerical-solving" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7 Symbolic-numerical solving" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_830.htm#solve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.2 solve_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,51 +82,101 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="solve_005flib-1"></a>
-<h3 class="subsection">D.7.2 solve_lib</h3>
-<a name="index-solve_002elib"></a>
-<a name="index-solve_005flib"></a>
+<a name="laguerre_005fsolve-1"></a>
+<h4 class="subsubsection">D.7.2.1 laguerre_solve</h4>
+<a name="index-laguerre_005fsolve"></a>
+<p>Procedure from library <code>solve.lib</code> (see <a href="sing_830.htm#solve_005flib">solve_lib</a>).
+</p>
 <dl compact="compact">
-<dt><strong>Library:</strong></dt>
-<dd><p>solve.lib
-</p></dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>     Complex Solving of Polynomial Systems
-</p></dd>
-<dt><strong>Author:</strong></dt>
-<dd><p>Moritz Wenk, email: wenk@mathematik.uni-kl.de
-<br>Wilfred Pohl, email: pohl@mathematik.uni-kl.de
+<dt><strong>Usage:</strong></dt>
+<dd><p>laguerre_solve(f [, m, l, n, s] ); f = polynomial,<br>
+m, l, n, s = integers (control parameters of the method)
+</p><table><tr><td>&nbsp;</td><td><pre class="format"> m: precision of output in digits ( 4 &lt;= m), if basering is not ring of 
+      complex numbers;
+ l: precision of internal computation in decimal digits ( l &gt;=8 )
+      only if the basering is not complex or complex with smaller precision;
+ n: control of multiplicity of roots or of splitting of f into
+      squarefree factors
+      n &lt; 0, no split of f (good, if all roots are simple)
+      n &gt;= 0, try to split
+      n = 0, return only different roots
+      n &gt; 0, find all roots (with multiplicity)
+ s: s != 0, returns ERROR if  | f(root) | &gt; 0.1^m (when computing in the 
+      current ring)
+ ( default: m, l, n, s = 8, 30, 1, 0 )
+</pre></td></tr></table>
+
+</dd>
+<dt><strong>Assume:</strong></dt>
+<dd><p>f is a univariate polynomial;<br>
+basering has characteristic 0 and is either complex or without
+parameters.
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>list of (complex) roots of the polynomial f, depending on n. The
+result is of type
+</p><table><tr><td>&nbsp;</td><td><pre class="format"> string: if the basering is not complex,
+ number: otherwise.
+</pre></td></tr></table>
+
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>If printlevel &gt;0: displays comments ( default = 0 ).
+<br>If s != 0 and if the procedure stops with ERROR, try a higher
+internal precision m.
 </p>
 </dd>
 </dl>
-
-<p><strong>Procedures:</strong>
-</p><blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_832.htm#laguerre_005fsolve">D.7.2.1 laguerre_solve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> find all roots of univariate polynomial p
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_833.htm#solve">D.7.2.2 solve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> all roots of 0-dim. ideal i using triangular sets
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_834.htm#ures_005fsolve">D.7.2.3 ures_solve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> find all roots of 0-dimensional ideal i with resultants
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_835.htm#mp_005fres_005fmat">D.7.2.4 mp_res_mat</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> multipolynomial resultant matrix of ideal i
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_836.htm#interpolate">D.7.2.5 interpolate</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> interpolate poly from evaluation points i and results j
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_837.htm#fglm_005fsolve">D.7.2.6 fglm_solve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> find roots of 0-dim. ideal using FGLM and lex_solve
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_838.htm#lex_005fsolve">D.7.2.7 lex_solve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> find roots of reduced lexicographic standard basis
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_839.htm#simplexOut">D.7.2.8 simplexOut</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> prints solution of simplex in nice format
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_840.htm#triangLf_005fsolve">D.7.2.9 triangLf_solve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> find roots using triangular sys. (factorizing Lazard)
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_841.htm#triangM_005fsolve">D.7.2.10 triangM_solve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> find roots of given triangular system (Moeller)
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_842.htm#triangL_005fsolve">D.7.2.11 triangL_solve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> find roots using triangular system (Lazard)
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_843.htm#triang_005fsolve">D.7.2.12 triang_solve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> find roots of given triangular system
-</td></tr>
-</table></blockquote>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;solve.lib&quot;;
+// Find all roots of an univariate polynomial using Laguerre's method:
+ring rs1= 0,(x,y),lp;
+poly f = 15x5 + x3 + x2 - 10;
+// 10 digits precision
+laguerre_solve(f,10);
+&rarr; [1]:
+&rarr;    (0.2930464644-i*0.9003002396)
+&rarr; [2]:
+&rarr;    (0.2930464644+i*0.9003002396)
+&rarr; [3]:
+&rarr;    (-0.7392783383-i*0.5355190078)
+&rarr; [4]:
+&rarr;    (-0.7392783383+i*0.5355190078)
+&rarr; [5]:
+&rarr;    0.8924637479
+// Now with complex coefficients,
+// internal precision is 30 digits (default)
+printlevel=2;
+ring rsc= (real,10,i),x,lp;
+poly f = (15.4+i*5)*x^5 + (25.0e-2+i*2)*x^3 + x2 - 10*i;
+list l = laguerre_solve(f);
+&rarr; //BEGIN laguerre_solve
+&rarr; //control: complex ring with precision 30
+&rarr; //working in:  ring lagc=(complex,30,30),x,lp;
+&rarr; //         polynomial has complex coefficients
+&rarr; //split in working ring:
+&rarr; // split without result
+&rarr; //END laguerre_solve
+l;
+&rarr; [1]:
+&rarr;    (0.04588498039+i*0.9133296179)
+&rarr; [2]:
+&rarr;    (0.5037408279-i*0.8058051828)
+&rarr; [3]:
+&rarr;    (-0.5462895588-i*0.6796668873)
+&rarr; [4]:
+&rarr;    (0.8524014357+i*0.2163760334)
+&rarr; [5]:
+&rarr;    (-0.8557376852+i*0.3557664188)
+// check result, value of substituted poly should be near to zero
+// remember that l contains a list of strings
+// in the case of a different ring
+subst(f,x,l[1]);
+&rarr; 0
+subst(f,x,l[2]);
+&rarr; 0
+</pre></td></tr></table>
 
 </td>
 </tr>
@@ -137,14 +187,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_830.htm#idealSplit" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.1.16 idealSplit" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_832.htm#laguerre_005fsolve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.1 laguerre_solve" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_813.htm#Symbolic_002dnumerical-solving" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7 Symbolic-numerical solving" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_830.htm#solve_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.2 solve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_832.htm#solve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.2 solve" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_830.htm#solve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.2 solve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

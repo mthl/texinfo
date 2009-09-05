@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.1 standard_lib</title>
+<title>Singular 2-0-4 Manual: D.2 General purpose</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.1 standard_lib">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.1 standard_lib">
+<meta name="description" content="Singular 2-0-4 Manual: D.2 General purpose">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2 General purpose">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="standard_005flib"></a>
+<a name="General-purpose"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#standard_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.1 standard_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_391.htm#General-purpose" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2 General purpose" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_391.htm#all_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.1 all_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,44 +82,22 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="standard_005flib-1"></a>
-<h2 class="section">D.1 standard_lib</h2>
+<a name="General-purpose-1"></a>
+<h2 class="section">D.2 General purpose</h2>
+<a name="index-General-purpose"></a>
 
-<p>The library <code>standard.lib</code> provides extensions to the
-set of built-in commands and is automatically loaded
-during the start of <small>SINGULAR</small>, unless <small>SINGULAR</small> is started up
-with the <code>--no-stdlib</code> command line option (see
-<a href="sing_19.htm#Command-line-options">Command line options</a>).
-</p>
-<a name="index-standard_002elib"></a>
-<a name="index-standard_005flib"></a>
-<dl compact="compact">
-<dt><strong>Library:</strong></dt>
-<dd><p>standard.lib
-</p></dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>   Procedures which are always loaded at Start-up
-</p>
-</dd>
-</dl>
-
-<p><strong>Procedures:</strong>
-</p><blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_277.htm#stdfglm">5.1.122 stdfglm</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> standard basis of ideal via fglm [and ordering ord]
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_391.htm#all_005flib">D.2.1 all_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> load all other libraries
 </td></tr>
-<tr><td align="left" valign="top"><a href="sing_278.htm#stdhilb">5.1.123 stdhilb</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> standard basis of ideal using the Hilbert function
+<tr><td align="left" valign="top"><a href="sing_392.htm#general_005flib">D.2.2 general_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures of general type
 </td></tr>
-<tr><td align="left" valign="top"><a href="sing_197.htm#groebner">5.1.42 groebner</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> standard basis using a heuristically chosen method
+<tr><td align="left" valign="top"><a href="sing_415.htm#inout_005flib">D.2.3 inout_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for manipulating in- and output
 </td></tr>
-<tr><td align="left" valign="top"><a href="sing_256.htm#quot">5.1.101 quot</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> quotient using heuristically chosen method
+<tr><td align="left" valign="top"><a href="sing_426.htm#poly_005flib">D.2.4 poly_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for manipulating polynomials and ideals
 </td></tr>
-<tr><td align="left" valign="top"><a href="sing_264.htm#res">5.1.109 res</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> free resolution of ideal or module
+<tr><td align="left" valign="top"><a href="sing_448.htm#random_005flib">D.2.5 random_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures of random/sparse  matrix and poly operations
 </td></tr>
-<tr><td align="left" valign="top"><a href="sing_273.htm#sprintf">5.1.118 sprintf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> returns formatted string
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_192.htm#fprintf">5.1.37 fprintf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> writes formatted string to link
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_253.htm#printf">5.1.98 printf</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> displays formatted string
+<tr><td align="left" valign="top"><a href="sing_460.htm#ring_005flib">D.2.6 ring_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures for manipulating rings and maps
 </td></tr>
 </table></blockquote>
 
@@ -132,14 +110,14 @@ with the <code>--no-stdlib</code> command line option (see
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_391.htm#General-purpose" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2 General purpose" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_389.htm#standard_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.1 standard_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_391.htm#all_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.1 all_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

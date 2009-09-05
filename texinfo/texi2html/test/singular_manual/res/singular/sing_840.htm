@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.7.2.9 triangLf_solve</title>
+<title>Singular 2-0-4 Manual: D.7.2.10 triangM_solve</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.7.2.9 triangLf_solve">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.7.2.9 triangLf_solve">
+<meta name="description" content="Singular 2-0-4 Manual: D.7.2.10 triangM_solve">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7.2.10 triangM_solve">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="triangLf_005fsolve"></a>
+<a name="triangM_005fsolve"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_839.htm#simplexOut" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.2.8 simplexOut" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_839.htm#triangLf_005fsolve" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.2.9 triangLf_solve" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_841.htm#triangM_005fsolve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.10 triangM_solve" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_841.htm#triangL_005fsolve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.11 triangL_solve" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_831.htm#solve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.2 solve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_830.htm#solve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.2 solve_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,19 +82,20 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="triangLf_005fsolve-1"></a>
-<h4 class="subsubsection">D.7.2.9 triangLf_solve</h4>
-<a name="index-triangLf_005fsolve"></a>
-<p>Procedure from library <code>solve.lib</code> (see <a href="sing_831.htm#solve_005flib">solve_lib</a>).
+<a name="triangM_005fsolve-1"></a>
+<h4 class="subsubsection">D.7.2.10 triangM_solve</h4>
+<a name="index-triangM_005fsolve"></a>
+<p>Procedure from library <code>solve.lib</code> (see <a href="sing_830.htm#solve_005flib">solve_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>triangLf_solve(i [, p] ); i ideal, p integer,
+<dd><p>triangM_solve(i [, p ] ); i=ideal, p=integer,
 <br>p&gt;0: gives precision of complex numbers in digits (default: p=30).
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>the ground field has char 0; i is a zero-dimensional ideal
+<dd><p>the ground field has char 0;<br>
+i zero-dimensional ideal
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
@@ -106,9 +107,9 @@ ul.toc {list-style: none}
 with complex coefficients (and precision p).<br>
 In rC a list rlist of numbers is created, in which the complex
 roots of i are stored.<br>
-The proc uses a triangular system (Lazard&rsquo;s Algorithm with
-factorization) computed from a standard basis to determine recursively
-all complex roots with Laguerre&rsquo;s algorithm of input ideal i.
+The proc uses a triangular system (Moellers Algorithm) computed from a
+standard basis to determine recursively all complex roots with
+Laguerre&rsquo;s algorithm of input ideal i.
 </p>
 </dd>
 </dl>
@@ -117,30 +118,30 @@ all complex roots with Laguerre&rsquo;s algorithm of input ideal i.
 ring r = 0,(x,y),lp;
 // compute the intersection points of two curves
 ideal s=  x2 + y2 - 10, x2 + xy + 2y2 - 16;
-triangLf_solve(s,10);
+triangM_solve(s,10);
 &rarr; // name of new ring: rC
 &rarr; // list of roots: rlist
 rlist;
 &rarr; [1]:
 &rarr;    [1]:
-&rarr;       -1
-&rarr;    [2]:
-&rarr;       3
-&rarr; [2]:
-&rarr;    [1]:
-&rarr;       1
-&rarr;    [2]:
-&rarr;       -3
-&rarr; [3]:
-&rarr;    [1]:
 &rarr;       2.8284271247
 &rarr;    [2]:
 &rarr;       1.4142135624
-&rarr; [4]:
+&rarr; [2]:
 &rarr;    [1]:
 &rarr;       -2.8284271247
 &rarr;    [2]:
 &rarr;       -1.4142135624
+&rarr; [3]:
+&rarr;    [1]:
+&rarr;       1
+&rarr;    [2]:
+&rarr;       -3
+&rarr; [4]:
+&rarr;    [1]:
+&rarr;       -1
+&rarr;    [2]:
+&rarr;       3
 </pre></td></tr></table>
 
 </td>
@@ -152,14 +153,14 @@ rlist;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_839.htm#simplexOut" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.2.8 simplexOut" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_841.htm#triangM_005fsolve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.10 triangM_solve" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_831.htm#solve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.2 solve_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_839.htm#triangLf_005fsolve" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.2.9 triangLf_solve" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_841.htm#triangL_005fsolve" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.2.11 triangL_solve" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_830.htm#solve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.2 solve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

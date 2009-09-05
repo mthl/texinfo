@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 3.1.6 Command line options</title>
+<title>Singular 2-0-4 Manual: 3.1.7 Startup sequence</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 3.1.6 Command line options">
-<meta name="keywords" content="Singular 2-0-4 Manual: 3.1.6 Command line options">
+<meta name="description" content="Singular 2-0-4 Manual: 3.1.7 Startup sequence">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.1.7 Startup sequence">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Command-line-options"></a>
+<a name="Startup-sequence"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_18.htm#Editing-input" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.1.5 Editing input" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_18.htm#Command-line-options" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.1.6 Command line options" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_20.htm#Startup-sequence" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.1.7 Startup sequence" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_20.htm#Emacs-user-interface" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.2 Emacs user interface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_13.htm#Interactive-use" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.1 Interactive use" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_12.htm#Interactive-use" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.1 Interactive use" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,241 +82,69 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Command-line-options-1"></a>
-<h3 class="subsection">3.1.6 Command line options</h3>
-<a name="index-Command-line-options"></a>
+<a name="Startup-sequence-1"></a>
+<h3 class="subsection">3.1.7 Startup sequence</h3>
+<a name="index-Startup-sequence"></a>
 
-<p>The synopsis of <small>SINGULAR</small> is
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">Singular  [options] [file1 [file2 &hellip;]]
-ESingular  [options] [file1 [file2 &hellip;]]
+<p>On start-up, <small>SINGULAR</small>
+</p><ol>
+<li>
+loads the library <code>standard.lib</code> (provided the <code>--no-stdlib</code>
+option was not given),
+
+</li><li>
+<a name="index-file_002c-_002esingularrc"></a>
+<a name="index-_002esingularrc-file"></a>
+<a name="index-singularrc"></a>
+searches the current directory and then the
+home directory of the user, and then all directories contained in the
+library <code>SearchPath</code> (see <a href="sing_46.htm#Loading-of-a-library">Loading of a library</a> for more info
+on <code>SearchPath</code>) for a file named <code>.singularrc</code> and
+executes it, if found (provided the <code>--no-rc</code> option was not
+given),
+
+</li><li>
+executes the string specified with the <code>--execute</code> command line
+option,
+
+</li><li>
+executes the files <code>file1</code>, <code>file2</code> &hellip;  (given on the command
+line) in that order.
+</li></ol>
+
+<p><strong>Note:</strong> <code>.singularrc</code> file(s) are an appropriate place for
+setting some default values of (command-line) options.
+</p>
+<p>For example, a system administrator might remove the locally installed
+HTML version of the manual and put a <code>.singularrc</code> file
+with the following content
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">if (system(&quot;version&quot;) &gt;= 1306) // assure backwards-compatibility
+{
+  system(&quot;--allow-net&quot;, 1);
+}; // the last semicolon is important: otherwise no &quot;&gt;&quot;, but &quot;.&quot; prompt
 </pre></td></tr></table>
-<p>Options can be given in both, their long and short format. The following
-options control the general behavior of <small>SINGULAR</small>:
-</p><dl compact="compact">
-<dt><code>-d</code>, <code>--sdb</code></dt>
-<dd><a name="index-_002dd"></a>
-<a name="index-_002d_002dsdb"></a>
-<a name="index-Source-code-debugger_002c-invocation"></a>
-<p>Enable the use of the source code debugger.
-See <a href="sing_62.htm#Source-code-debugger">Source code debugger</a>.
+<p>in the directory containing the <small>SINGULAR</small> libraries, thereby
+allowing to fetch the HTML on-line help from the WWW home-site of
+<small>SINGULAR</small>.
 </p>
-</dd>
-<dt><code>-e</code>, <code>--echo[=VAL]</code></dt>
-<dd><a name="index-_002de"></a>
-<a name="index-_002d_002decho"></a>
-<p>Set value of variable <code>echo</code> to <code>VAL</code> (integer in the range
-0, &hellip;, 9). Without an argument, <code>echo</code> is set to 1, which echoes
-all input coming from a file. By default, the value of <code>echo</code> is
-0. See <a href="sing_309.htm#echo">echo</a>.
-</p>
-</dd>
-<dt><code>-h</code>, <code>--help</code></dt>
-<dd><a name="index-_002dh"></a>
-<a name="index-_002d_002dhelp"></a>
-<a name="index-command_002dline-options_002c-short-help"></a>
-<p>Print a one-line description of each command line option and exit.
-</p>
-</dd>
-<dt><code>--allow-net</code></dt>
-<dd><a name="index-_002d_002dallow_002dnet"></a>
-<a name="index-net-access"></a>
-<a name="index-allowing-net-access"></a>
-<a name="index-help_002c-accessing-over-the-net"></a>
-<p>Allow the <code>netscape</code> and <code>html</code> help browser to fetch HTML manual pages over
-the net from the WWW home-site of <small>SINGULAR</small>. See <a href="sing_16.htm#The-online-help-system">The online help system</a>, for more info.
-</p>
-</dd>
-<dt><code>--browser=VAL</code></dt>
-<dd><a name="index-_002d_002dbrowser"></a>
-<a name="index-browser_002c-command-line-option"></a>
-<p>Use <code>VAL</code> as browser for the <small>SINGULAR</small> online manual.
-<br><code>VAL</code> may be one of <code>html</code> (Windows only), <code>netscape</code>, <code>xinfo</code>,
-<code>tkinfo</code>, <code>info</code>, <code>builtin</code>, or <code>emacs</code>. Depending
-on your platform and local
-installation, only some browsers might be available. The default browser
-is <code>html</code> for Windows and <code>netscape</code> for Unix
-platforms. See <a href="sing_16.htm#The-online-help-system">The online help system</a>, for more info.
-</p>
-</dd>
-<dt><code>--no-rc</code></dt>
-<dd><a name="index-_002d_002dno_002drc"></a>
-<a name="index-_002esingularrc-file_002c-no-loading"></a>
-<p>Do not execute the <code>.singularrc</code> file on start-up.  By default,
-this file is executed on start-up.  See <a href="sing_20.htm#Startup-sequence">Startup sequence</a>.
-</p>
-</dd>
-<dt><code>--no-stdlib</code></dt>
-<dd><a name="index-_002d_002dno_002dstdlib"></a>
-<p>Do not load the library <code>standard.lib</code> on start-up. By default,
-this library is loaded on start-up.  See <a href="sing_20.htm#Startup-sequence">Startup sequence</a>.
-</p>
-</dd>
-<dt><code>--no-warn</code></dt>
-<dd><a name="index-_002d_002dno_002dwarn"></a>
-<p>Do not display warning messages.
-</p>
-</dd>
-<dt><code>--no-out</code></dt>
-<dd><a name="index-_002d_002dno_002dout"></a>
-<p>Suppress display of all output.
-</p>
-</dd>
-<dt><code>-t</code>, <code>--no-tty</code></dt>
-<dd><a name="index-_002d_002dno_002dtty"></a>
-<p>Do not redefine the terminal characteristics.  This option should be
-used for batch processes.
-</p>
-</dd>
-<dt><code>-q</code>, <code>--quiet</code></dt>
-<dd><a name="index-_002dq"></a>
-<a name="index-_002d_002dquiet"></a>
-<p>Do not print the start-up banner and messages when loading
-libraries. Furthermore, redirect <code>stderr</code>
-(all error messages) to <code>stdout</code> (normal output channel).  This
-option should be used if <small>SINGULAR</small>&rsquo;s output is redirected to a file.
-</p>
-</dd>
-<dt><code>-v</code>, <code>--verbose</code></dt>
-<dd><a name="index-_002d_002dverbose"></a>
-<a name="index-_002dv"></a>
-<p>Print extended information about the version and configuration of
-<small>SINGULAR</small>  (used optional parts, compilation date, start of random
-generator etc.). This information should be included if a user reports
-an error to the authors.
-</p></dd>
-</dl>
-
-<p>The following command line options allow manipulations of the timer and
-the pseudo random generator and enable the passing of commands and strings
-to <small>SINGULAR</small>:
-</p>
-<dl compact="compact">
-<dt><code>-c</code>, <code>--execute=STRING</code></dt>
-<dd><a name="index-_002dc"></a>
-<a name="index-_002d_002dexecute"></a>
-<p>Execute <code>STRING</code> as (a sequence of) <small>SINGULAR</small> commands on
-start-up after the <code>.singularrc</code> file is executed, but prior to
-executing the files given on the command line.  E.g., <code>Singular -c
-&quot;help all.lib; quit;&quot;</code> shows the help for the library <code>all.lib</code> and
-exits.
-</p>
-</dd>
-<dt><code>-u</code>, <code>--user-option=STRING</code></dt>
-<dd><a name="index-_002du"></a>
-<a name="index-_002d_002duser_002doption"></a>
-<p>Returns <code>STRING</code> on <code>system(&quot;--user-option&quot;)</code>. This is useful
-for passing arbitrary arguments from the command line to the
-<small>SINGULAR</small> interpreter.  E.g.,
-<br><code>Singular -u &quot;xxx.dump&quot; -c 'getdump(system(&quot;--user-option&quot;))'</code>
-reads the file <code>xxx.dump</code> at
-start-up and allows the user to start working with all the objects
-defined in a previous session.
-</p>
-</dd>
-<dt><code>-r</code>, <code>--random=SEED</code></dt>
-<dd><a name="index-_002dr"></a>
-<a name="index-_002d_002drandom"></a>
-<p>Seed (i.e., set the initial value of) the pseudo random generator with
-integer <code>SEED</code>.  If this option is not given, then the random
-generator is seeded with a time-based <code>SEED</code> (the number of
-seconds since January, 1, 1970, on Unix-like operating systems, to be
-precise).
-</p>
-</dd>
-<dt><code>--min-time=SECS</code></dt>
-<dd><a name="index-_002d_002dmin_002dtime"></a>
-<p>If the <code>timer</code> (see <a href="sing_315.htm#timer">timer</a>), resp.  <code>rtimer</code>
-(see <a href="sing_317.htm#rtimer">rtimer</a>) , variable is
-set, report only
-times larger than <code>SECS</code> seconds (<code>SECS</code> needs to be a
-floating point number greater than 0).  By default, this value is set to
-0.5 (i.e., half a second).  E.g., the option <code>--min-time=0.01</code>
-forces <small>SINGULAR</small> to report all times larger than 1/100 of a
-second.
-</p>
-</dd>
-<dt><code>--ticks-per-sec=TICKS</code></dt>
-<dd><a name="index-_002d_002dticks_002dper_002dsec"></a>
-<p>Set unit of timer to <code>TICKS</code> ticks per second (i.e., the value
-reported by the <code>timer</code> and <code>rtimer</code> variable divided by
-<code>TICKS</code> gives the time in seconds).  By default, this value is 1.
-</p>
-</dd>
-</dl>
-
-<p>The next three options are of interest for the use with MP links:
-</p><dl compact="compact">
-<dt><code>-b</code>, <code>--batch</code></dt>
-<dd><a name="index-_002db"></a>
-<a name="index-_002d_002dbatch"></a>
-<p>Run in MP batch mode. Opens a TCP/IP connection with host specified by
-<code>--MPhost</code> at the port specified by <code>--MPport</code>. Input is read
-from and output is written to this connection in the MP format.
-See <a href="sing_99.htm#MPtcp-links">MPtcp links</a>.
-</p>
-</dd>
-<dt><code>--MPport=PORT</code></dt>
-<dd><a name="index-_002d_002dMPport"></a>
-<p>Use <code>PORT</code> as default port number for MP connections (whenever not
-further specified). This option is mandatory when the <code>--batch</code>
-option is given.  See <a href="sing_99.htm#MPtcp-links">MPtcp links</a>.
-</p>
-</dd>
-<dt><code>--MPhost=HOST</code></dt>
-<dd><a name="index-_002d_002dMPhost"></a>
-<p>Use <code>HOST</code> as default host for MP connections (whenever not
-further specified).  This option is mandatory when the <code>--batch</code>
-option is given.  See <a href="sing_99.htm#MPtcp-links">MPtcp links</a>.
-</p></dd>
-</dl>
-
-<p>Finally, the following options are only available when running
-<code>ESingular</code> (see <a href="sing_23.htm#Running-SINGULAR-under-Emacs">Running SINGULAR under Emacs</a> for details).
-</p>
-<dl compact="compact">
-<dt><code>--emacs=EMACS</code></dt>
-<dd><a name="index-_002d_002demacs"></a>
-<p>Use <code>EMACS</code> as Emacs program to run the <small>SINGULAR</small> Emacs
-interface, where <code>EMACS</code> may e.g. be emacs ore xemacs.
-</p>
-</dd>
-<dt><code>--emacs-dir=DIR</code></dt>
-<dd><a name="index-_002d_002demacs_002ddir"></a>
-<p>Set the singular-emacs-home-directory, which is the directory where
-singular.el can be found, to <code>DIR</code>.
-</p>
-</dd>
-<dt><code>--emacs-load=FILE</code></dt>
-<dd><a name="index-_002d_002demacs_002dload"></a>
-<p>Load <code>FILE</code> on Emacs start-up, instead of the default load file.
-</p>
-</dd>
-<dt><code>--singular=PROG</code></dt>
-<dd><a name="index-_002d_002dsingular"></a>
-<p>Start <code>PROG</code> as <small>SINGULAR</small> program within Emacs
-</p></dd>
-</dl>
-
-<p>The value of options given to <small>SINGULAR</small> (resp. their default values,
-if an option was not given), can be checked with the command
-<code>system(&quot;--</code>long_option_name<code>&quot;)</code>.  See <a href="sing_280.htm#system">system</a>.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  system(&quot;--quiet&quot;);    // if ``quiet'' 1, otherwise 0
-&rarr; 1
-  system(&quot;--min-time&quot;); // minimal reported time
-&rarr; 0.5
-  system(&quot;--random&quot;);   // seed of the random generator
-&rarr; 12345678
+<p>On the other hand, a single user might put a <code>.singularrc</code> with the
+following content
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">if (system(&quot;version&quot;) &gt;= 1306) // assure backwards-compatibility
+{
+  if (! system(&quot;--emacs&quot;))
+  {
+    // set default browser to info, unless we run within emacs
+    system(&quot;--browser&quot;, &quot;info&quot;);
+  }
+}; // the last semicolon is important: otherwise no &quot;&gt;&quot;, but &quot;.&quot; prompt
 </pre></td></tr></table>
-
-<p>Furthermore, the value of options (e.g., <code>--browser</code>) can be
-re-set while <small>SINGULAR</small> is running with the command
-<code>system(&quot;--</code>long_option_name_string <code>&quot;,</code>expression<code>)</code>. See <a href="sing_280.htm#system">system</a>.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  system(&quot;--browser&quot;, &quot;builtin&quot;);  // sets browser to 'builtin'
-  system(&quot;--ticks-per-sec&quot;, 100);  // sets timer resolution to 100
-</pre></td></tr></table>
-
-
-
+<p>in his home directory, which sets the default help browser to
+<code>info</code> (unless <small>SINGULAR</small> is run within emacs) and thereby
+prevents the execution of the&quot;global&quot;
+<code>.singularrc</code> file installed by the system administrator (since the
+<code>.singularrc</code> file of the user is found before the &quot;global&quot;
+<code>.singularrc</code> file installed by the system administrator).
+</p>
 </td>
 </tr>
 </table>
@@ -326,14 +154,14 @@ re-set while <small>SINGULAR</small> is running with the command
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_18.htm#Editing-input" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.1.5 Editing input" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_20.htm#Startup-sequence" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.1.7 Startup sequence" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_12.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_13.htm#Interactive-use" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.1 Interactive use" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_18.htm#Command-line-options" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.1.6 Command line options" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_20.htm#Emacs-user-interface" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.2 Emacs user interface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_12.htm#Interactive-use" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.1 Interactive use" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

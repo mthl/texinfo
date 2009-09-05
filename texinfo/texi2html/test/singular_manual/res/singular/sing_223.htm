@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.68 listvar</title>
+<title>Singular 2-0-4 Manual: 5.1.69 lres</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.68 listvar">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.68 listvar">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.69 lres">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.69 lres">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="listvar"></a>
+<a name="lres"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_222.htm#liftstd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.67 liftstd" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_222.htm#listvar" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.68 listvar" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_224.htm#lres" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.69 lres" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_224.htm#maxideal" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.70 maxideal" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,93 +82,96 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="listvar-1"></a>
-<h3 class="subsection">5.1.68 listvar</h3>
-<a name="index-listvar"></a>
+<a name="lres-1"></a>
+<h3 class="subsection">5.1.69 lres</h3>
+<a name="index-lres"></a>
+<a name="index-resolution_002c-La-Scala_0027s-method"></a>
+
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>listvar (</code> [package] <code>)</code>
-<br><code>listvar (</code> [package<code>,</code>] type <code>)</code>
-<br><code>listvar (</code> [package<code>,</code>] ring_name <code>)</code>
-<br><code>listvar (</code> [package<code>,</code>] name <code>)</code>
-<br><code>listvar (</code> [package<code>,</code>] <code>all )</code>
+<dd><p><code>lres (</code> ideal_expression<code>,</code> int_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>none
+<dd><p>resolution
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>lists all (user-)defined names in the current namespace:
-</p><ul>
-<li> <code>listvar()</code>: all currently visible names except procedures,
-</li><li> <code>listvar(</code>type<code>)</code>: all currently visible names of the given
-type,
-</li><li> <code>listvar(</code>ring_name<code>)</code>: all names which belong to the given
-ring,
-</li><li> <code>listvar(</code>name<code>)</code>: the object with the given name,
-</li><li> <code>listvar(all)</code>: all names except procedures.
-</li></ul>
-<p>The current basering is marked with a <code>*</code>.  The nesting level of
-variables in procedures is shown in square brackets.
+<dd><p>computes a free resolution of an ideal using La Scala&rsquo;s algorithm.
 </p>
-</dd>
+<p>More precisely, let R be the basering and I be the given ideal.
+Then <code>lres</code> computes a minimal free resolution of R/I
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+...\longrightarrow F_2 \buildrel{A_2}\over{\longrightarrow} F_1
+\buildrel{A_1}\over{\longrightarrow} R\longrightarrow R/I
+\longrightarrow 0.
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="254" HEIGHT="26" BORDER="0"
+ SRC="sing_102.png"
+ ALT="\begin{displaymath}...\longrightarrow F_2 \buildrel{A_2}\over{\longrightarrow} F...
+...}\over{\longrightarrow} R\longrightarrow R/I
+\longrightarrow 0.\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+If the int_expression k is not zero then the computation stops after
+k steps and returns a list of modules
+<!-- MATH
+ $M_i={\tt module}(A_i)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="117" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_103.png"
+ ALT="$M_i={\tt module} (A_i)$"></SPAN>, i=1..k.
+</p>
+<p><code>list L=lres(I,0);</code> returns a list L of n modules (where n is the
+number of variables of the basering) such that
+<!-- MATH
+ ${\tt L[i]}=M_i$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="67" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_104.png"
+ ALT="${\tt L[i]}=M_i$"></SPAN>
+in the above notation.
+</p></dd>
+<dt><code><strong>Note:</strong></code></dt>
+<dd><p>The ideal_expression has to be homogeneous.
+<br>Accessing single elements of a resolution may require that some partial
+computations have to be finished and may therefore take some time.
+</p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  proc t1 { }
-  proc t2 { }
-  ring s;
-  poly ss;
-  ring r;
-  poly f=x+y+z;
-  int i=7;
-  ideal I=f,x,y;
-  listvar(all);
-&rarr; // i                    [0]  int 7
-&rarr; // r                    [0]  *ring
-&rarr; //      I                    [0]  ideal, 3 generator(s)
-&rarr; //      f                    [0]  poly
-&rarr; // s                    [0]  ring
-&rarr; //      ss                   [0]  poly
-&rarr; // LIB                  [0]  string standard.lib
-  listvar();
-&rarr; // i                    [0]  int 7
-&rarr; // r                    [0]  *ring
-&rarr; //      I                    [0]  ideal, 3 generator(s)
-&rarr; //      f                    [0]  poly
-&rarr; // s                    [0]  ring
-&rarr; // LIB                  [0]  string standard.lib
-  listvar(r);
-&rarr; // r                    [0]  *ring
-&rarr; // I                    [0]  ideal, 3 generator(s)
-&rarr; // f                    [0]  poly
-  listvar(t1);
-&rarr; // t1                   [0]  proc
-  listvar(proc);
-&rarr; // t2                   [0]  proc
-&rarr; // t1                   [0]  proc
-&rarr; // fprintf              [0]  proc from standard.lib
-&rarr; // printf               [0]  proc from standard.lib
-&rarr; // sprintf              [0]  proc from standard.lib
-&rarr; // intersect1           [0]  proc from standard.lib (static)
-&rarr; // quotient4            [0]  proc from standard.lib
-&rarr; // quotient5            [0]  proc from standard.lib
-&rarr; // quotient3            [0]  proc from standard.lib
-&rarr; // quotient2            [0]  proc from standard.lib
-&rarr; // quotient1            [0]  proc from standard.lib
-&rarr; // quotient0            [0]  proc from standard.lib (static)
-&rarr; // quot1                [0]  proc from standard.lib (static)
-&rarr; // quot                 [0]  proc from standard.lib
-&rarr; // res                  [0]  proc from standard.lib
-&rarr; // groebner             [0]  proc from standard.lib
-&rarr; // stdhilb              [0]  proc from standard.lib
-&rarr; // stdfglm              [0]  proc from standard.lib
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+  ideal I=xz,yz,x3-y3;
+  def L=lres(I,0);
+  print(betti(L),&quot;betti&quot;);
+&rarr;            0     1     2
+&rarr; ------------------------
+&rarr;     0:     1     -     -
+&rarr;     1:     -     2     1
+&rarr;     2:     -     1     1
+&rarr; ------------------------
+&rarr; total:     1     3     2
+  L[2];     // the first syzygy module of r/I
+&rarr; _[1]=-x*gen(1)+y*gen(2)
+&rarr; _[2]=-x2*gen(2)+y2*gen(1)+z*gen(3)
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_36.htm#Names">Names</a>;
-<a href="sing_43.htm#Names-in-procedures">Names in procedures</a>;
-<a href="sing_168.htm#defined">defined</a>;
-<a href="sing_237.htm#names">names</a>;
-<a href="sing_284.htm#type">type</a>.
+<a href="sing_157.htm#betti">betti</a>;
+<a href="sing_201.htm#hres">hres</a>;
+<a href="sing_68.htm#ideal">ideal</a>;
+<a href="sing_73.htm#int">int</a>;
+<a href="sing_228.htm#minres">minres</a>;
+<a href="sing_115.htm#module">module</a>;
+<a href="sing_232.htm#mres">mres</a>;
+<a href="sing_263.htm#res">res</a>;
+<a href="sing_273.htm#sres">sres</a>.
 </p></td>
 </tr>
 </table>
@@ -178,14 +181,14 @@ variables in procedures is shown in square brackets.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_222.htm#liftstd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.67 liftstd" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_224.htm#lres" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.69 lres" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_222.htm#listvar" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.68 listvar" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_224.htm#maxideal" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.70 maxideal" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

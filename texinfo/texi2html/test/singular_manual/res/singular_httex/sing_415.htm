@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.2.22 factorH</title>
+<title>Singular 2-0-4 Manual: D.2.3 inout_lib</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.2.22 factorH">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.2.22 factorH">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.3 inout_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.3 inout_lib">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="factorH"></a>
+<a name="inout_005flib"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_414.htm#timeFactorize" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.21 timeFactorize" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_414.htm#factorH" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.22 factorH" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_416.htm#inout_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3 inout_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_416.htm#allprint" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.1 allprint" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_390.htm#General-purpose" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2 General purpose" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,43 +84,44 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="factorH-1"></a>
-<h4 class="subsubsection">D.2.2.22 factorH</h4>
-<a name="index-factorH"></a>
-<p>Procedure from library <code>general.lib</code> (see <a href="sing_393.htm#general_005flib">general_lib</a>).
-</p>
+<a name="inout_005flib-1"></a>
+<h3 class="subsection">D.2.3 inout_lib</h3>
+<a name="index-inout_002elib"></a>
+<a name="index-inout_005flib"></a>
 <dl compact="compact">
-<dt><strong>Usage:</strong></dt>
-<dd><p>factorH(p) p poly
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><p>factorize(p)
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>changes variables to become the last variable the principal
-one in the multivariate factorization and factorizes then
-the polynomial
+<dt><strong>Library:</strong></dt>
+<dd><p>inout.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>     Printing and Manipulating In- and Output
 </p>
 </dd>
 </dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;general.lib&quot;;
-system(&quot;random&quot;,992851144);
-ring r=32003,(x,y,z,w,t),lp;
-poly p=y2w9+yz7t-yz5w4-z2w4t4-w8t3;
-//factorize(p);  //fast
-//system(&quot;random&quot;,992851262);
-//factorize(p);  //slow
-//system(&quot;random&quot;,992851262);
-factorH(p);
-&rarr; [1]:
-&rarr;    _[1]=1
-&rarr;    _[2]=y2w9+yz7t-yz5w4-z2w4t4-w8t3
-&rarr; [2]:
-&rarr;    1,1
-</pre></td></tr></table>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_416.htm#allprint">D.2.3.1 allprint</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> print list if ALLprint is defined, with pause if &gt;0
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_417.htm#lprint">D.2.3.2 lprint</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> display poly/... fitting to pagewidth [size n]
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_418.htm#pmat">D.2.3.3 pmat</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> print form-matrix [first n chars of each column]
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_419.htm#rMacaulay">D.2.3.4 rMacaulay</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> read Macaulay_1 output and return its Singular format
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_420.htm#show">D.2.3.5 show</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> display any object in a compact format
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_421.htm#showrecursive">D.2.3.6 showrecursive</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> display id recursively with respect to variables in p
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_422.htm#split">D.2.3.7 split</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> split given string into lines of length n
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_423.htm#tab">D.2.3.8 tab</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> string of n space tabs
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_424.htm#writelist">D.2.3.9 writelist</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> write a list into a file and keep the list structure
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_425.htm#pause">D.2.3.10 pause</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> stop the computation until user input
+</td></tr>
+</table></blockquote>
+
 </td>
 </tr>
 </table>
@@ -130,14 +131,14 @@ factorH(p);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_414.htm#timeFactorize" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.21 timeFactorize" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_416.htm#inout_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3 inout_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_414.htm#factorH" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.22 factorH" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_416.htm#allprint" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.3.1 allprint" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_390.htm#General-purpose" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2 General purpose" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

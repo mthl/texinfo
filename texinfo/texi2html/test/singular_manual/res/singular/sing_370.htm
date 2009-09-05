@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: B.2.8 Extra weight vector</title>
+<title>Singular 2-0-4 Manual: Appendix C Mathematical background</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: B.2.8 Extra weight vector">
-<meta name="keywords" content="Singular 2-0-4 Manual: B.2.8 Extra weight vector">
+<meta name="description" content="Singular 2-0-4 Manual: Appendix C Mathematical background">
+<meta name="keywords" content="Singular 2-0-4 Manual: Appendix C Mathematical background">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Extra-weight-vector"></a>
+<a name="Mathematical-background"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_369.htm#Product-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.7 Product orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_369.htm#Extra-weight-vector" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.8 Extra weight vector" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_371.htm#Standard-bases" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.1 Standard bases" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,77 +82,32 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Extra-weight-vector-1"></a>
-<h3 class="subsection">B.2.8 Extra weight vector</h3>
-<a name="index-Extra-weight-vector"></a>
-<a name="index-a_002c-ordering"></a>
-<a name="index-orderings_002c-a"></a>
+<a name="Mathematical-background-1"></a>
+<h1 class="appendix">Appendix C Mathematical background</h1>
+<a name="index-Mathematical-background"></a>
 
-<p><!-- MATH
- ${\tt a}(w_1, \ldots, w_n),\;$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_341.png"
- ALT="${\tt a}(w_1, \ldots, w_n),\; $"></SPAN>
-<!-- MATH
- $w_1,\ldots,w_n$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="73" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_279.png"
- ALT="$w_1, \ldots, w_n$"></SPAN>
-any integers (including 0), defines
-<!-- MATH
- $\deg(x^\alpha) = w_1 \alpha_1 + \cdots + w_n\alpha_n$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="199" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_342.png"
- ALT="$\deg(x^\alpha) = w_1 \alpha_1 + \cdots + w_n\alpha_n$"></SPAN>
-and
-<br>
-    <BR><P></P>
-<DIV ALIGN="CENTER" CLASS="mathdisplay">
-<!-- MATH
- \begin{displaymath}
-\deg(x^\alpha) < \deg(x^\beta) \Rightarrow x^\alpha < x^\beta,
-\end{displaymath}
- -->
 
-<IMG
- WIDTH="202" HEIGHT="26" BORDER="0"
- SRC="sing_343.png"
- ALT="\begin{displaymath}\deg(x^\alpha) &lt; \deg(x^\beta) \Rightarrow x^\alpha &lt; x^\beta,\end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P>
-    <BR><P></P>
-<DIV ALIGN="CENTER" CLASS="mathdisplay">
-<!-- MATH
- \begin{displaymath}
-\deg(x^\alpha) > \deg(x^\beta) \Rightarrow x^\alpha > x^\beta.
-\end{displaymath}
- -->
-
-<IMG
- WIDTH="201" HEIGHT="26" BORDER="0"
- SRC="sing_344.png"
- ALT="\begin{displaymath}\deg(x^\alpha) &gt; \deg(x^\beta) \Rightarrow x^\alpha &gt; x^\beta. \end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P>
-<br>An extra weight vector does not define a monomial ordering by itself:
-it can only be used in combination with other orderings
-to insert an extra line of weights into the ordering
-matrix.
+<p>This chapter introduces some of the mathematical notions and definitions used
+throughout the manual. It is mostly a collection of the
+most prominent definitions and properties. For details, please, refer to
+some articles or text books (see <a href="sing_387.htm#References">References</a>).
 </p>
-<br><p><strong>Example</strong>:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0, (x,y,z),  (a(1,2,3),wp(4,5,2));
-ring s = 0, (x,y,z),  (a(1,2,3),dp);
-ring q = 0, (a,b,c,d),(lp(1),a(1,2,3),ds);
-</pre></td></tr></table>
-
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_371.htm#Standard-bases">C.1 Standard bases</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_372.htm#Hilbert-function">C.2 Hilbert function</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_373.htm#Syzygies-and-resolutions">C.3 Syzygies and resolutions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_374.htm#Characteristic-sets">C.4 Characteristic sets</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_375.htm#Gauss_002dManin-connection">C.5 Gauss-Manin connection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_376.htm#Toric-ideals-and-integer-programming">C.6 Toric ideals and integer programming</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_387.htm#References">C.7 References</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table></blockquote>
 </td>
 </tr>
 </table>
@@ -162,14 +117,14 @@ ring q = 0, (a,b,c,d),(lp(1),a(1,2,3),ds);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_369.htm#Product-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.7 Product orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_369.htm#Extra-weight-vector" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.8 Extra weight vector" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_371.htm#Standard-bases" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.1 Standard bases" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

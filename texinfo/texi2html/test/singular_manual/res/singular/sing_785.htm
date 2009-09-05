@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.6.2 ainvar_lib</title>
+<title>Singular 2-0-4 Manual: D.6.2.1 invariantRing</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.6.2 ainvar_lib">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.6.2 ainvar_lib">
+<meta name="description" content="Singular 2-0-4 Manual: D.6.2.1 invariantRing">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6.2.1 invariantRing">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="ainvar_005flib"></a>
+<a name="invariantRing"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_784.htm#image_005fof_005fvariety" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.31 image_of_variety" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_784.htm#ainvar_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.2 ainvar_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_786.htm#invariantRing" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.2.1 invariantRing" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_786.htm#derivate" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.2.2 derivate" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_752.htm#Invariant-theory" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6 Invariant theory" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_784.htm#ainvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.2 ainvar_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,43 +82,86 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="ainvar_005flib-1"></a>
-<h3 class="subsection">D.6.2 ainvar_lib</h3>
-<a name="index-ainvar_002elib"></a>
-<a name="index-ainvar_005flib"></a>
+<a name="invariantRing-1"></a>
+<h4 class="subsubsection">D.6.2.1 invariantRing</h4>
+<a name="index-invariantRing"></a>
+<p>Procedure from library <code>ainvar.lib</code> (see <a href="sing_784.htm#ainvar_005flib">ainvar_lib</a>).
+</p>
 <dl compact="compact">
-<dt><strong>Library:</strong></dt>
-<dd><p>ainvar.lib
-</p></dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>    Invariant Rings of the Additive Group
-</p></dd>
-<dt><strong>Authors:</strong></dt>
-<dd><p>Gerhard Pfister (email: pfister@mathematik.uni-kl.de),
-Gert-Martin Greuel (email: greuel@mathematik.uni-kl.de)
+<dt><strong>Usage:</strong></dt>
+<dd><p>invariantRing(m,p,q,b[,r,pa]); m matrix, p,q poly, b,r int, pa string
+</p>
+</dd>
+<dt><strong>Assume:</strong></dt>
+<dd><p>p,q variables with m(p)=q and q invariant under m
+<br>i.e. if p=x(i) and q=x(j) then m[j,1]=0 and m[i,1]=x(j)
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>ideal, containing generators of the ring of invariants of the
+additive group (K,+) given by the vector field
+</p><table><tr><td>&nbsp;</td><td><pre class="format">         m = m[1,1]*d/dx(1) +...+ m[n,1]*d/dx(n).
+</pre></td></tr></table>
+<p>If b&gt;0 the computation stops after all invariants of degree &lt;= b
+(and at least one of higher degree) are found or when all invariants
+are computed.
+<br>If b&lt;=0, the computation continues until all generators
+of the ring of invariants are computed (should be used only if the
+ring of invariants is known to be finitely generated otherwise the
+algorithm might not stop).
+<br>If r=1 a different reduction is used which is sometimes faster
+(default r=0).
+</p>
+</dd>
+<dt><strong>Display:</strong></dt>
+<dd><p>if pa is given (any string as 5th or 6th argument), the computation
+pauses whenever new invariants are found and displays them
+</p>
+</dd>
+<dt><strong>Theory:</strong></dt>
+<dd><p>The algorithm to compute the ring of invariants works in char 0
+or big enough characteristic. (K,+) acts as the exponential of the
+vector field defined by the matrix m. For background see G.-M. Greuel,
+G. Pfister, Geometric quotients of unipotent group actions, Proc.
+London Math. Soc. (3) 67, 75-105 (1993).
 </p>
 </dd>
 </dl>
-
-<p><strong>Procedures:</strong>
-</p><blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_786.htm#invariantRing">D.6.2.1 invariantRing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> compute ring of invariants of (K,+)-action given by m
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_787.htm#derivate">D.6.2.2 derivate</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> derivation of f with respect to the vector field m
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_788.htm#actionIsProper">D.6.2.3 actionIsProper</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> tests whether action defined by m is proper
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_789.htm#reduction">D.6.2.4 reduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> SAGBI reduction of p in the subring generated by I
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_790.htm#completeReduction">D.6.2.5 completeReduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> complete SAGBI reduction
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_791.htm#localInvar">D.6.2.6 localInvar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> invariant polynomial under m computed from p,...
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_792.htm#furtherInvar">D.6.2.7 furtherInvar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> compute further invariants of m from the given ones
-</td></tr>
-<tr><td align="left" valign="top"><a href="sing_793.htm#sortier">D.6.2.8 sortier</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> sorts generators of id by increasing leading terms
-</td></tr>
-</table></blockquote>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;ainvar.lib&quot;;
+//Winkelmann: free action but Spec(k[x(1),...,x(5)]) --&gt; Spec(invariant ring)
+//is not surjective
+ring rw=0,(x(1..5)),dp;
+matrix m[5][1];
+m[3,1]=x(1);
+m[4,1]=x(2);
+m[5,1]=1+x(1)*x(4)+x(2)*x(3);
+ideal in=invariantRing(m,x(3),x(1),0);      //compute full invarint ring
+in;
+&rarr; in[1]=x(1)
+&rarr; in[2]=x(2)
+&rarr; in[3]=x(2)*x(3)*x(4)-x(2)*x(5)+x(4)
+&rarr; in[4]=x(1)*x(3)*x(4)-x(1)*x(5)+x(3)
+//Deveney/Finston: The ring of invariants is not finitely generated
+ring rf=0,(x(1..7)),dp;
+matrix m[7][1];
+m[4,1]=x(1)^3;
+m[5,1]=x(2)^3;
+m[6,1]=x(3)^3;
+m[7,1]=(x(1)*x(2)*x(3))^2;
+ideal in=invariantRing(m,x(4),x(1),6);      //all invariants up to degree 6
+in;
+&rarr; in[1]=x(1)
+&rarr; in[2]=x(3)
+&rarr; in[3]=x(2)
+&rarr; in[4]=x(3)^3*x(4)-x(1)^3*x(6)
+&rarr; in[5]=x(2)^3*x(4)-x(1)^3*x(5)
+&rarr; in[6]=x(2)^2*x(3)^2*x(4)-x(1)*x(7)
+&rarr; in[7]=x(1)^2*x(2)^2*x(6)-x(3)*x(7)
+&rarr; in[8]=x(1)^2*x(3)^2*x(5)-x(2)*x(7)
+&rarr; in[9]=x(1)^2*x(2)*x(3)^4*x(4)*x(5)+x(1)^2*x(2)^4*x(3)*x(4)*x(6)-x(1)^5*x(\
+   2)*x(3)*x(5)*x(6)-2*x(2)^2*x(3)^2*x(4)*x(7)+x(1)*x(7)^2
+</pre></td></tr></table>
 
 </td>
 </tr>
@@ -129,14 +172,14 @@ Gert-Martin Greuel (email: greuel@mathematik.uni-kl.de)
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_784.htm#image_005fof_005fvariety" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.31 image_of_variety" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_786.htm#invariantRing" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.2.1 invariantRing" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_752.htm#Invariant-theory" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6 Invariant theory" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_784.htm#ainvar_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.2 ainvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_786.htm#derivate" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.2.2 derivate" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_784.htm#ainvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.2 ainvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

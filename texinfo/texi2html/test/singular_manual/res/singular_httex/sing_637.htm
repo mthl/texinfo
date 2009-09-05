@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.1.6 internalfunctions</title>
+<title>Singular 2-0-4 Manual: D.5.1.7 milnorcode</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.1.6 internalfunctions">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.1.6 internalfunctions">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.1.7 milnorcode">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.1.7 milnorcode">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="internalfunctions"></a>
+<a name="milnorcode"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_636.htm#init_005fdebug" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.5 init_debug" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_636.htm#internalfunctions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.6 internalfunctions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_638.htm#milnorcode" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.7 milnorcode" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_638.htm#morsesplit" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.8 morsesplit" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_631.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_630.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,82 +84,31 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="internalfunctions-1"></a>
-<h4 class="subsubsection">D.5.1.6 internalfunctions</h4>
-<a name="index-internalfunctions"></a>
-<p>Procedure from library <code>classify.lib</code> (see <a href="sing_631.htm#classify_005flib">classify_lib</a>).
+<a name="milnorcode-1"></a>
+<h4 class="subsubsection">D.5.1.7 milnorcode</h4>
+<a name="index-milnorcode"></a>
+<p>Procedure from library <code>classify.lib</code> (see <a href="sing_630.htm#classify_005flib">classify_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>internalfunctions();
+<dd><p>milnorcode(f[,e]); f=poly, e=int
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>nothing, display names of internal procedures of classify.lib
+<dd><p>intvec, coding the Hilbert function of the e-th Milnor algebra
+of f, i.e. of basering/(jacob(f)^e) (default e=1), according
+to proc Hcode
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;classify.lib&quot;;
-internalfunctions();
-&rarr;    Internal functions for the classification using Arnold's method,
-&rarr;    the function numbers correspond to numbers in Arnold's classifier:
-&rarr; Klassifiziere(poly f);      //determine the type of the singularity f
-&rarr;   Funktion1bis (poly f, list cstn)
-&rarr;   Funktion3 (poly f, list cstn)
-&rarr;   Funktion6 (poly f, list cstn)
-&rarr;   Funktion13 (poly f, list cstn)
-&rarr;   Funktion17 (poly f, list cstn)
-&rarr;   Funktion25 (poly f, list cstn)
-&rarr;   Funktion40 (poly f, list cstn, int k)
-&rarr;   Funktion47 (poly f, list cstn)
-&rarr;   Funktion50 (poly f, list cstn)
-&rarr;   Funktion58 (poly fin, list cstn)
-&rarr;   Funktion59 (poly f, list cstn)
-&rarr;   Funktion66 (poly f, list cstn)
-&rarr;   Funktion82 (poly f, list cstn)
-&rarr;   Funktion83 (poly f, list cstn)
-&rarr;   Funktion91 (poly f, list cstn, int k)
-&rarr;   Funktion92 (poly f, list cstn, int k)
-&rarr;   Funktion93 (poly f, list cstn, int k)
-&rarr;   Funktion94 (poly f, list cstn, int k)
-&rarr;   Funktion95 (poly f, list cstn, int k)
-&rarr;   Funktion96 (poly f, list cstn, int k)
-&rarr;   Funktion97 (poly f, list cstn)
-&rarr;   Isomorphie_s82_x (poly f, poly fk, int k)
-&rarr;   Isomorphie_s82_z (poly f, poly fk, int k)
-&rarr;   Isomorphie_s17 (poly f, poly fk, int k, int ct)
-&rarr;   printresult (string f,string typ,int Mu,int m,int corank,int K)
-&rarr;   
-&rarr;    Internal functions for the classifcation by invariants:
-&rarr;   Cubic (poly f)
-&rarr;   parity (int e)             //return the parity of e
-&rarr;   HKclass (intvec i)
-&rarr;   HKclass3( intvec i, string SG_Typ, int cnt)
-&rarr;   HKclass3_teil_1 (intvec i, string SG_Typ, int cnt)
-&rarr;   HKclass5 (intvec i, string SG_Typ, int cnt)
-&rarr;   HKclass5_teil_1 (intvec i, string SG_Typ, int cnt)
-&rarr;   HKclass5_teil_2 (intvec i, string SG_Typ, int cnt)
-&rarr;   HKclass7 (intvec i, string SG_Typ, int cnt)
-&rarr;   HKclass7_teil_1 (intvec i, string SG_Typ, int cnt)
-&rarr;   
-&rarr;    Internal functions for the Morse-splitting lemma:
-&rarr;   Morse(poly fi, int K, int corank)  //splitting lemma itself
-&rarr;   Coeffs (list #)
-&rarr;   Coeff
-&rarr;   
-&rarr;    Internal functions providing tools:
-&rarr;   ReOrder(poly f)
-&rarr;   Singularitaet(string typ,int k,int r,int s,poly a,poly b,poly c,poly d)
-&rarr;   RandomPolyK
-&rarr;   Faktorisiere(poly f, poly g, int p, int k)   compute g = (ax+by^k)^p
-&rarr;   Teile(poly f, poly g);             //divides f by g
-&rarr;   GetRf(poly f, int n);
-&rarr;   Show(poly f);
-&rarr;   checkring();
-&rarr;   DecodeNormalFormString(string s);
-&rarr;   Setring(int n, string ringname);
-&rarr;   
+ring r=0,(x,y,z),ds;
+poly f=x2y+y3+z2;
+milnorcode(f);
+&rarr; 1,1,1
+milnorcode(f,2);  // a big second argument may result in memory overflow
+&rarr; 1,0,1,0,2,0,0,1,0
 </pre></td></tr></table>
 
 </td>
@@ -171,14 +120,14 @@ internalfunctions();
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_636.htm#init_005fdebug" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.5 init_debug" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_638.htm#milnorcode" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.7 milnorcode" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_631.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_636.htm#internalfunctions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.1.6 internalfunctions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_638.htm#morsesplit" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.1.8 morsesplit" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_630.htm#classify_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.1 classify_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

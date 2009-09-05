@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.2.11 number_pi</title>
+<title>Singular 2-0-4 Manual: D.2.2.12 primes</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.2.11 number_pi">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.2.11 number_pi">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.2.12 primes">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.2.12 primes">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="number_005fpi"></a>
+<a name="primes"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_403.htm#number_005fe" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.10 number_e" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_403.htm#number_005fpi" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.11 number_pi" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_405.htm#primes" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.12 primes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_405.htm#product" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.13 product" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_392.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,39 +84,34 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="number_005fpi-1"></a>
-<h4 class="subsubsection">D.2.2.11 number_pi</h4>
-<a name="index-number_005fpi"></a>
-<p>Procedure from library <code>general.lib</code> (see <a href="sing_393.htm#general_005flib">general_lib</a>).
+<a name="primes-1"></a>
+<h4 class="subsubsection">D.2.2.12 primes</h4>
+<a name="index-primes"></a>
+<p>Procedure from library <code>general.lib</code> (see <a href="sing_392.htm#general_005flib">general_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>number_pi(n); n positive integer
+<dd><p>primes(n,m); n,m integers
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>pi (area of unit circle) up to n decimal digits (no rounding)
-<br> - of type string if no basering of char 0 is defined,
-<br> - of type number, if a basering of char 0 is defined
-</p>
-</dd>
-<dt><strong>Display:</strong></dt>
-<dd><p>decimal format of pi if printlevel &gt; 0 (default:printlevel=0 )
+<dd><p>intvec, consisting of all primes p, prime(n)&lt;=p&lt;=m, in increasing
+order if n&lt;=m, resp. prime(m)&lt;=p&lt;=n, in decreasing order if m&lt;n.
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>procedure uses algorithm of S. Rabinowitz
+<dd><p>prime(n); returns the biggest prime number &lt;= min(n,32003)
+if n&gt;=2, else 2
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;general.lib&quot;;
-number_pi(11);&quot;&quot;;
-&rarr; 3.1415926535
+primes(50,100);&quot;&quot;;
+&rarr; 47,53,59,61,67,71,73,79,83,89,97
 &rarr; 
-ring r = (real,10),t,dp;
-number pi = number_pi(11); pi;
-&rarr; 3.1415926536
+intvec v = primes(37,1); v;
+&rarr; 37,31,29,23,19,17,13,11,7,5,3,2
 </pre></td></tr></table>
 
 </td>
@@ -128,14 +123,14 @@ number pi = number_pi(11); pi;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_403.htm#number_005fe" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.10 number_e" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_405.htm#primes" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.12 primes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_403.htm#number_005fpi" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.11 number_pi" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_405.htm#product" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.13 product" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_392.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

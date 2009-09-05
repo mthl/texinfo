@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: B.2.3 Global orderings</title>
+<title>Singular 2-0-4 Manual: B.2.4 Local orderings</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: B.2.3 Global orderings">
-<meta name="keywords" content="Singular 2-0-4 Manual: B.2.3 Global orderings">
+<meta name="description" content="Singular 2-0-4 Manual: B.2.4 Local orderings">
+<meta name="keywords" content="Singular 2-0-4 Manual: B.2.4 Local orderings">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Global-orderings"></a>
+<a name="Local-orderings"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_364.htm#General-definitions-for-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.2 General definitions for orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_364.htm#Global-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.3 Global orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_366.htm#Local-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.4 Local orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_366.htm#Module-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.5 Module orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_361.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,58 +82,56 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Global-orderings-1"></a>
-<h3 class="subsection">B.2.3 Global orderings</h3>
-<a name="index-Global-orderings"></a>
-<a name="index-orderings_002c-global"></a>
+<a name="Local-orderings-1"></a>
+<h3 class="subsection">B.2.4 Local orderings</h3>
+<a name="index-Local-orderings"></a>
+<a name="index-orderings_002c-local"></a>
 
-<p>For all these orderings: Loc <SPAN CLASS="MATH"><IMG
+<p>For ls, ds, Ds and, if the weights are positive integers, also for ws and
+Ws,  we have
+Loc <SPAN CLASS="MATH"><IMG
  WIDTH="34" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_270.png"
  ALT="$K[x]$"></SPAN> = <SPAN CLASS="MATH"><IMG
+ WIDTH="51" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_283.png"
+ ALT="$K[x]_{(x)}$"></SPAN>,
+ the localization of 
+<SPAN CLASS="MATH"><IMG
  WIDTH="34" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="sing_270.png"
  ALT="$K[x]$"></SPAN>
+at the maximal ideal
+ <!-- MATH
+ $(x_1, ..., x_n)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="72" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_284.png"
+ ALT="$(x_1, ..., x_n)$"></SPAN>.
 </p>
 <dl compact="compact">
-<dt>lp:</dt>
-<dd><p>lexicographical ordering:
-<a name="index-lp_002c-global-ordering"></a>
-<a name="index-lexicographical-ordering"></a>
+<dt>ls:</dt>
+<dd><p>negative lexicographical ordering:
+<a name="index-negative-lexicographical-ordering"></a>
+<a name="index-ls_002c-local-ordering"></a>
 <br>
 <!-- MATH
  $x^\alpha < x^\beta  \Leftrightarrow  \exists\; 1 \le i \le n :
-\alpha_1 = \beta_1, \ldots, \alpha_{i-1} = \beta_{i-1}, \alpha_i <
+\alpha_1 = \beta_1, \ldots, \alpha_{i-1} = \beta_{i-1}, \alpha_i >
 \beta_i$
  -->
 <SPAN CLASS="MATH"><IMG
  WIDTH="384" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_272.png"
+ SRC="sing_285.png"
  ALT="$x^\alpha &lt; x^\beta \Leftrightarrow \exists\; 1 \le i \le n :
-\alpha_1 = \beta_1, \ldots, \alpha_{i-1} = \beta_{i-1}, \alpha_i &lt;
+\alpha_1 = \beta_1, \ldots, \alpha_{i-1} = \beta_{i-1}, \alpha_i &gt;
 \beta_i$"></SPAN>.
 </p></dd>
-<dt>rp:</dt>
-<dd><p>reverse lexicographical ordering:
-<a name="index-rp_002c-global-ordering"></a>
-<a name="index-reverse-lexicographical-ordering"></a>
-<br>
-<!-- MATH
- $x^\alpha < x^\beta  \Leftrightarrow  \exists\; 1 \le i \le n :
-\alpha_n = \beta_n,
-    \ldots, \alpha_{i+1} = \beta_{i+1}, \alpha_i > \beta_i.$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="391" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_273.png"
- ALT="$x^\alpha &lt; x^\beta \Leftrightarrow \exists\; 1 \le i \le n :
-\alpha_n = \beta_n,
-\ldots, \alpha_{i+1} = \beta_{i+1}, \alpha_i &gt; \beta_i.$"></SPAN>
-</p></dd>
-<dt>dp:</dt>
-<dd><p>degree reverse lexicographical ordering:
-<a name="index-degree-reverse-lexicographical-ordering"></a>
-<a name="index-dp_002c-global-ordering"></a>
+<dt>ds:</dt>
+<dd><p>negative degree reverse lexicographical ordering:
+<a name="index-negative-degree-reverse-lexicographical-ordering"></a>
+<a name="index-ds_002c-local-ordering"></a>
 <br>
 let <!-- MATH
  $\deg(x^\alpha) = \alpha_1 + \cdots + \alpha_n,$
@@ -143,12 +141,12 @@ let <!-- MATH
  SRC="sing_274.png"
  ALT="$\deg(x^\alpha) = \alpha_1 + \cdots + \alpha_n,$"></SPAN> then
     <!-- MATH
- $x^\alpha < x^\beta \Leftrightarrow \deg(x^\alpha) < \deg(x^\beta)$
+ $x^\alpha < x^\beta \Leftrightarrow \deg(x^\alpha) > \deg(x^\beta)$
  -->
 <SPAN CLASS="MATH"><IMG
  WIDTH="202" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_275.png"
- ALT="$x^\alpha &lt; x^\beta \Leftrightarrow \deg(x^\alpha) &lt; \deg(x^\beta)$"></SPAN> or
+ SRC="sing_286.png"
+ ALT="$x^\alpha &lt; x^\beta \Leftrightarrow \deg(x^\alpha) &gt; \deg(x^\beta)$"></SPAN> or
 <br>
     <!-- MATH
  $\deg(x^\alpha) =
@@ -168,10 +166,10 @@ let <!-- MATH
  ALT="$\exists\ 1 \le i \le n: \alpha_n = \beta_n,
 \ldots, \alpha_{i+1} = \beta_{i+1}, \alpha_i &gt; \beta_i.$"></SPAN>
 </p></dd>
-<dt>Dp:</dt>
-<dd><p>degree lexicographical ordering:
-<a name="index-degree-lexicographical-ordering"></a>
-<a name="index-Dp_002c-global-ordering"></a>
+<dt>Ds:</dt>
+<dd><p>negative degree lexicographical ordering:
+<a name="index-negative-degree-lexicographical-ordering"></a>
+<a name="index-Ds_002c-local-ordering"></a>
 <br>
 let <!-- MATH
  $\deg(x^\alpha) = \alpha_1 + \cdots + \alpha_n,$
@@ -181,14 +179,14 @@ let <!-- MATH
  SRC="sing_274.png"
  ALT="$\deg(x^\alpha) = \alpha_1 + \cdots + \alpha_n,$"></SPAN> then
     <!-- MATH
- $x^\alpha < x^\beta \Leftrightarrow \deg(x^\alpha) < \deg(x^\beta)$
+ $x^\alpha < x^\beta \Leftrightarrow \deg(x^\alpha) > \deg(x^\beta)$
  -->
 <SPAN CLASS="MATH"><IMG
  WIDTH="202" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_275.png"
- ALT="$x^\alpha &lt; x^\beta \Leftrightarrow \deg(x^\alpha) &lt; \deg(x^\beta)$"></SPAN> or
+ SRC="sing_286.png"
+ ALT="$x^\alpha &lt; x^\beta \Leftrightarrow \deg(x^\alpha) &gt; \deg(x^\beta)$"></SPAN> or
 <br>
-     <!-- MATH
+    <!-- MATH
  $\deg(x^\alpha) =
     \deg(x^\beta)$
  -->
@@ -206,27 +204,29 @@ let <!-- MATH
  ALT="$\exists\ 1 \le i \le n:\alpha_1 = \beta_1,
 \ldots, \alpha_{i-1} = \beta_{i-1}, \alpha_i &lt; \beta_i.$"></SPAN>
 </p></dd>
-<dt>wp:</dt>
-<dd><p>weighted reverse lexicographical ordering:
-<a name="index-weighted-reverse-lexicographical-ordering"></a>
-<a name="index-wp_002c-global-ordering"></a>
+<dt>ws:</dt>
+<dd><p>(general) weighted reverse lexicographical ordering:
+<a name="index-general-weighted-reverse-lexicographical-ordering"></a>
+<a name="index-local-weighted-reverse-lexicographical-ordering"></a>
+<a name="index-ws_002c-local-ordering"></a>
 <br>
-let <!-- MATH
- $w_1, \ldots, w_n$
+<!-- MATH
+ ${\tt ws}(w_1, \ldots, w_n),\; w_1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="128" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_287.png"
+ ALT="${\tt ws}(w_1, \ldots, w_n),\; w_1$"></SPAN>
+ a nonzero integer,
+<!-- MATH
+ $w_2,\ldots,w_n$
  -->
 <SPAN CLASS="MATH"><IMG
  WIDTH="73" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_279.png"
- ALT="$w_1, \ldots, w_n$"></SPAN> be positive integers. Then <!-- MATH
- ${\tt wp}(w_1, \ldots,
-w_n)$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_280.png"
- ALT="${\tt wp}(w_1, \ldots,
-w_n)$"></SPAN>
- is defined as <code>dp</code>
+ SRC="sing_288.png"
+ ALT="$w_2,\ldots,w_n$"></SPAN>
+ any integer (including 0),
+ is defined as <code>ds</code>
  but with
 <!-- MATH
  $\deg(x^\alpha) = w_1 \alpha_1 + \cdots + w_n\alpha_n.$
@@ -236,27 +236,29 @@ w_n)$"></SPAN>
  SRC="sing_281.png"
  ALT="$\deg(x^\alpha) = w_1 \alpha_1 + \cdots + w_n\alpha_n.$"></SPAN>
 </p></dd>
-<dt>Wp:</dt>
-<dd><p>weighted lexicographical ordering:
-<a name="index-weighted-lexicographical-ordering"></a>
-<a name="index-WP_002c-global-ordering"></a>
+<dt>Ws:</dt>
+<dd><p>(general) weighted lexicographical ordering:
+<a name="index-general-weighted-lexicographical-ordering"></a>
+<a name="index-local-weighted-lexicographical-ordering"></a>
+<a name="index-Ws_002c-local-ordering"></a>
 <br>
-let <!-- MATH
- $w_1, \ldots, w_n$
+<!-- MATH
+ ${\tt Ws}(w_1, \ldots, w_n),\; w_1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="128" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_289.png"
+ ALT="${\tt Ws}(w_1, \ldots, w_n),\; w_1$"></SPAN>
+ a nonzero integer,
+<!-- MATH
+ $w_2,\ldots,w_n$
  -->
 <SPAN CLASS="MATH"><IMG
  WIDTH="73" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_279.png"
- ALT="$w_1, \ldots, w_n$"></SPAN> be positive integers. Then <!-- MATH
- ${\tt Wp}(w_1, \ldots,
-w_n)$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_282.png"
- ALT="${\tt Wp}(w_1, \ldots,
-w_n)$"></SPAN>
- is defined as <code>Dp</code>
+ SRC="sing_288.png"
+ ALT="$w_2,\ldots,w_n$"></SPAN>
+ any integer (including 0),
+ is defined as <code>Ds</code>
  but with
 <!-- MATH
  $\deg(x^\alpha) = w_1 \alpha_1 + \cdots + w_n\alpha_n.$
@@ -267,6 +269,7 @@ w_n)$"></SPAN>
  ALT="$\deg(x^\alpha) = w_1 \alpha_1 + \cdots + w_n\alpha_n.$"></SPAN>
 </p></dd>
 </dl>
+
 </td>
 </tr>
 </table>
@@ -276,14 +279,14 @@ w_n)$"></SPAN>
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_364.htm#General-definitions-for-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.2 General definitions for orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_366.htm#Local-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.4 Local orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_364.htm#Global-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.3 Global orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_366.htm#Module-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.5 Module orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_361.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

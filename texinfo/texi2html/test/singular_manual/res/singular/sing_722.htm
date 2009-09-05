@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.8.1 deform</title>
+<title>Singular 2-0-4 Manual: D.5.8.2 dim_slocus</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.8.1 deform">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.8.1 deform">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.8.2 dim_slocus">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.8.2 dim_slocus">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="deform"></a>
+<a name="dim_005fslocus"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_721.htm#sing_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.8 sing_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_721.htm#deform" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.8.1 deform" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_723.htm#dim_005fslocus" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.8.2 dim_slocus" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_723.htm#is_005factive" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.8.3 is_active" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_721.htm#sing_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.8 sing_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_720.htm#sing_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.8 sing_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,32 +82,27 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="deform-1"></a>
-<h4 class="subsubsection">D.5.8.1 deform</h4>
-<a name="index-deform"></a>
-<p>Procedure from library <code>sing.lib</code> (see <a href="sing_721.htm#sing_005flib">sing_lib</a>).
+<a name="dim_005fslocus-1"></a>
+<h4 class="subsubsection">D.5.8.2 dim_slocus</h4>
+<a name="index-dim_005fslocus"></a>
+<p>Procedure from library <code>sing.lib</code> (see <a href="sing_720.htm#sing_005flib">sing_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>deform(id); id=ideal or poly
+<dd><p>dim_slocus(i); i ideal or poly
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>matrix, columns are kbase of infinitesimal deformations
+<dd><p>dimension of singular locus of i
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;sing.lib&quot;;
-ring r   = 32003,(x,y,z),ds;
-ideal i  = xy,xz,yz;
-matrix T = deform(i);
-print(T);
-&rarr; x,0,0,
-&rarr; 0,0,z,
-&rarr; 0,y,0 
-print(deform(x3+y5+z2));
-&rarr; xy3,y3,xy2,y2,xy,y,x,1
+ring r  = 32003,(x,y,z),ds;
+ideal i = x5+y6+z6,x2+2y2+3z2;
+dim_slocus(i);
+&rarr; 0
 </pre></td></tr></table>
 
 </td>
@@ -119,14 +114,14 @@ print(deform(x3+y5+z2));
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_721.htm#sing_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.8 sing_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_723.htm#dim_005fslocus" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.8.2 dim_slocus" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_721.htm#sing_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.8 sing_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_721.htm#deform" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.8.1 deform" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_723.htm#is_005factive" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.8.3 is_active" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_720.htm#sing_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.8 sing_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

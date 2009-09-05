@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.4.4 is_homog</title>
+<title>Singular 2-0-4 Manual: D.2.4.5 is_zero</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.4.4 is_homog">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.4.4 is_homog">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.4.5 is_zero">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.4.5 is_zero">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="is_005fhomog"></a>
+<a name="is_005fzero"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_430.htm#freerank" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.3 freerank" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_430.htm#is_005fhomog" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.4 is_homog" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_432.htm#is_005fzero" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.5 is_zero" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_432.htm#lcm" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.6 lcm" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_427.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_426.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,45 +84,38 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="is_005fhomog-1"></a>
-<h4 class="subsubsection">D.2.4.4 is_homog</h4>
-<a name="index-is_005fhomog"></a>
-<p>Procedure from library <code>poly.lib</code> (see <a href="sing_427.htm#poly_005flib">poly_lib</a>).
+<a name="is_005fzero-1"></a>
+<h4 class="subsubsection">D.2.4.5 is_zero</h4>
+<a name="index-is_005fzero"></a>
+<p>Procedure from library <code>poly.lib</code> (see <a href="sing_426.htm#poly_005flib">poly_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>is_homog(id); id poly/ideal/vector/module/matrix
+<dd><p>is_zero(M[,any]); M=poly/ideal/vector/module/matrix
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>integer which is 1 if input is homogeneous (resp. weighted homogeneous
-if the monomial ordering consists of one block of type ws,Ws,wp or Wp,
-assuming that all weights are positive) and 0 otherwise
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>A vector is homogeneous, if the components are homogeneous of same
-degree, a module/matrix is homogeneous if all column vectors are
-homogeneous
-<br>//*** ergaenzen, wenn Matrizen-Spalten Gewichte haben
+<dd><p>integer, 1 if coker(M)=0 resp. 0 if coker(M)!=0, where M is
+considered as matrix.
+<br>If a second argument is given, return a list:
+<br>L[1] = 1 if coker(M)=0 resp. 0 if coker(M)!=0
+<br>L[2] = dim(M)
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;poly.lib&quot;;
-ring r = 0,(x,y,z),wp(1,2,3);
-is_homog(x5-yz+y3);
-&rarr; 0
-ideal i = x6+y3+z2, x9-z3;
-is_homog(i);
+ring r;
+module m = [x],[y],[1,z];
+is_zero(m,1);
+&rarr; [1]:
+&rarr;    0
+&rarr; [2]:
+&rarr;    2
+qring q = std(ideal(x2+y3+z2));
+ideal j = x2+y3+z2-37;
+is_zero(j);
 &rarr; 1
-ring s = 0,(a,b,c),ds;
-vector v = [a2,0,ac+bc];
-vector w = [a3,b3,c4];
-is_homog(v);
-&rarr; 1
-is_homog(w);
-&rarr; 0
 </pre></td></tr></table>
 
 </td>
@@ -134,14 +127,14 @@ is_homog(w);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_430.htm#freerank" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.3 freerank" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_432.htm#is_005fzero" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.5 is_zero" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_427.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_430.htm#is_005fhomog" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.4.4 is_homog" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_432.htm#lcm" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.4.6 lcm" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_426.htm#poly_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.4 poly_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

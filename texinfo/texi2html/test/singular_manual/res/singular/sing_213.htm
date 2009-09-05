@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.58 killattrib</title>
+<title>Singular 2-0-4 Manual: 5.1.59 koszul</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.58 killattrib">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.58 killattrib">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.59 koszul">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.59 koszul">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="killattrib"></a>
+<a name="koszul"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_212.htm#kill" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.57 kill" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_212.htm#killattrib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.58 killattrib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_214.htm#koszul" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.59 koszul" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_214.htm#laguerre" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.60 laguerre" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,34 +82,56 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="killattrib-1"></a>
-<h3 class="subsection">5.1.58 killattrib</h3>
-<a name="index-killattrib"></a>
+<a name="koszul-1"></a>
+<h3 class="subsection">5.1.59 koszul</h3>
+<a name="index-koszul"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>killattrib (</code> name<code>,</code> string_expression <code>)</code>
+<dd><p><code>koszul (</code> int_expression<code>,</code> int_expression <code>)</code>
+<br><code>koszul (</code> int_expression<code>,</code> ideal_expression <code>)</code>
+<br><code>koszul (</code> int_expression<code>,</code> int_expression<code>,</code> ideal_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>none
+<dd><p>matrix
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>deletes the attribute given as the second argument.
+<dd><p><code>koszul(d,n)</code> computes a matrix of the Koszul relations of degree d of
+the first n ring variables.
+</p>
+<p><code>koszul(d,id)</code> computes a matrix of the Koszul relations of degree d of
+the generators of the ideal <code>id</code>.
+</p>
+<p><code>koszul(d,n,id)</code> computes a matrix of the Koszul relations of degree d of
+the first n generators of the ideal <code>id</code>.
+</p>
+</dd>
+<dt><code><strong>Note:</strong></code></dt>
+<dd><p><code>koszul(1,id),koszul(2,id),...</code> form a complex, that is, the product
+of the matrices <code>koszul(i,id)</code> and <code>koszul(i+1,id)</code> equals zero.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y),lp;
-  ideal i=maxideal(1);
-  attrib(i,&quot;isSB&quot;,1);
-  attrib(i);
-&rarr; attr:isSB, type int
-  killattrib(i,&quot;isSB&quot;);
-  attrib(i);
-&rarr; no attributes
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+  print(koszul(2,3));
+&rarr; -y,-z,0, 
+&rarr; x, 0, -z,
+&rarr; 0, x, y  
+  ideal I=xz2+yz2+z3,xyz+y2z+yz2,xy2+y3+y2z;
+  print(koszul(1,I));
+&rarr; xz2+yz2+z3,xyz+y2z+yz2,xy2+y3+y2z
+  print(koszul(2,I));
+&rarr; -xyz-y2z-yz2,-xy2-y3-y2z,0,          
+&rarr; xz2+yz2+z3,  0,          -xy2-y3-y2z,
+&rarr; 0,           xz2+yz2+z3, xyz+y2z+yz2 
+  print(koszul(2,I)*koszul(3,I));
+&rarr; 0,
+&rarr; 0,
+&rarr; 0 
 </pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_156.htm#attrib">attrib</a>;
-<a href="sing_244.htm#option">option</a>.
+<a href="sing_73.htm#int">int</a>;
+<a href="sing_109.htm#matrix">matrix</a>.
 </p></td>
 </tr>
 </table>
@@ -119,14 +141,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_212.htm#kill" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.57 kill" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_214.htm#koszul" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.59 koszul" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_212.htm#killattrib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.58 killattrib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_214.htm#laguerre" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.60 laguerre" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

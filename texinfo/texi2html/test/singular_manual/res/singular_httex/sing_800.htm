@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.6.3.6 InvariantQ</title>
+<title>Singular 2-0-4 Manual: D.6.3.7 LinearizeAction</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.6.3.6 InvariantQ">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.6.3.6 InvariantQ">
+<meta name="description" content="Singular 2-0-4 Manual: D.6.3.7 LinearizeAction">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6.3.7 LinearizeAction">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="InvariantQ"></a>
+<a name="LinearizeAction"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_799.htm#InvariantRing" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.5 InvariantRing" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_799.htm#InvariantQ" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.6 InvariantQ" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_801.htm#LinearizeAction" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.7 LinearizeAction" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_801.htm#LinearActionQ" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.8 LinearActionQ" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_794.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_793.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,38 +84,76 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="InvariantQ-1"></a>
-<h4 class="subsubsection">D.6.3.6 InvariantQ</h4>
-<a name="index-InvariantQ"></a>
-<p>Procedure from library <code>rinvar.lib</code> (see <a href="sing_794.htm#rinvar_005flib">rinvar_lib</a>).
+<a name="LinearizeAction-1"></a>
+<h4 class="subsubsection">D.6.3.7 LinearizeAction</h4>
+<a name="index-LinearizeAction"></a>
+<p>Procedure from library <code>rinvar.lib</code> (see <a href="sing_793.htm#rinvar_005flib">rinvar_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>InvariantQ(f, G, action); poly f; ideal G, action
+<dd><p>LinearizeAction(G,action,r); ideal G, action; int r
 </p>
 </dd>
 <dt><strong>Purpose:</strong></dt>
-<dd><p>check if the polynomial f is invariant w.r.t. G where G acts via
-&rsquo;action&rsquo; on K^m.
+<dd><p>linearize the group action &rsquo;action&rsquo; and find an equivariant embedding
+of K^m where m = size(action).
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>basering = K[s_1,...,s_m,t_1,...,t_m] where K = Q of K = Q(a) and
-minpoly != 0, f contains only t_1,...,t_m, G is the ideal of an
-algebraic group and a standard basis.
+<dd><p>G contains only variables var(1..r) (r = nrs)
+<br>basering = K[s(1..r),t(1..m)], K = Q or K = Q(a) and minpoly != 0.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>int;
-<br>0 if f is not invariant,
-<br>1 if f is invariant
+<dd><p>polynomial ring containing the ideals &rsquo;actionid&rsquo;, &rsquo;embedid&rsquo;, &rsquo;groupid&rsquo;
+- &rsquo;actionid&rsquo; is the ideal defining the linearized action of G
+- &rsquo;embedid&rsquo; is a parameterization of an equivariant embedding (closed)
+- &rsquo;groupid&rsquo; is the ideal of G in the new ring
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>G need not be finite
+<dd><p>set printlevel &gt; 0 to see a trace
 </p>
 </dd>
 </dl>
+<p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;rinvar.lib&quot;;
+ring B   = 0,(s(1..5), t(1..3)),dp;
+ideal G =  s(3)-s(4), s(2)-s(5), s(4)*s(5), s(1)^2*s(4)+s(1)^2*s(5)-1, s(1)^2*s(5)^2-s(5), s(4)^4-s(5)^4+s(1)^2, s(1)^4+s(4)^3-s(5)^3, s(5)^5-s(1)^2*s(5);
+ideal action = -s(4)*t(1)+s(5)*t(1), -s(4)^2*t(2)+2*s(4)^2*t(3)^2+s(5)^2*t(2), s(4)*t(3)+s(5)*t(3);
+LinearActionQ(action, 5);
+&rarr; 0
+def R = LinearizeAction(G, action, 5);
+setring R;
+R;
+&rarr; //   characteristic : 0
+&rarr; //   number of vars : 9
+&rarr; //        block   1 : ordering dp
+&rarr; //                  : names    s(1) s(2) s(3) s(4) s(5) t(1) t(2) t(3) t(\
+   4) 
+&rarr; //        block   2 : ordering C
+actionid;
+&rarr; actionid[1]=-s(4)*t(1)+s(5)*t(1)
+&rarr; actionid[2]=-s(4)^2*t(2)+s(5)^2*t(2)+2*s(4)^2*t(4)
+&rarr; actionid[3]=s(4)*t(3)+s(5)*t(3)
+&rarr; actionid[4]=s(4)^2*t(4)+s(5)^2*t(4)
+embedid;
+&rarr; embedid[1]=t(1)
+&rarr; embedid[2]=t(2)
+&rarr; embedid[3]=t(3)
+&rarr; embedid[4]=t(3)^2
+groupid;
+&rarr; groupid[1]=s(3)-s(4)
+&rarr; groupid[2]=s(2)-s(5)
+&rarr; groupid[3]=s(4)*s(5)
+&rarr; groupid[4]=s(1)^2*s(4)+s(1)^2*s(5)-1
+&rarr; groupid[5]=s(1)^2*s(5)^2-s(5)
+&rarr; groupid[6]=s(4)^4-s(5)^4+s(1)^2
+&rarr; groupid[7]=s(1)^4+s(4)^3-s(5)^3
+&rarr; groupid[8]=s(5)^5-s(1)^2*s(5)
+LinearActionQ(actionid, 5);
+&rarr; 1
+</pre></td></tr></table>
 
 </td>
 </tr>
@@ -126,14 +164,14 @@ algebraic group and a standard basis.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_799.htm#InvariantRing" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.5 InvariantRing" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_801.htm#LinearizeAction" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.7 LinearizeAction" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_794.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_799.htm#InvariantQ" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.3.6 InvariantQ" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_801.htm#LinearActionQ" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.3.8 LinearActionQ" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_793.htm#rinvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.3 rinvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

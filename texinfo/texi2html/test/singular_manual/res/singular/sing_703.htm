@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.5.21 further_hn_proc</title>
+<title>Singular 2-0-4 Manual: D.5.6 mondromy_lib</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.5.21 further_hn_proc">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.5.21 further_hn_proc">
+<meta name="description" content="Singular 2-0-4 Manual: D.5.6 mondromy_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.6 mondromy_lib">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="further_005fhn_005fproc"></a>
+<a name="mondromy_005flib"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_702.htm#allsquarefree" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.20 allsquarefree" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_702.htm#further_005fhn_005fproc" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.21 further_hn_proc" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_704.htm#mondromy_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.6 mondromy_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_704.htm#detadj" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.6.1 detadj" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_682.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_629.htm#Singularities" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5 Singularities" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,48 +82,52 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="further_005fhn_005fproc-1"></a>
-<h4 class="subsubsection">D.5.5.21 further_hn_proc</h4>
-<a name="index-further_005fhn_005fproc"></a>
-<p>Procedure from library <code>hnoether.lib</code> (see <a href="sing_682.htm#hnoether_005flib">hnoether_lib</a>).
-</p>
+<a name="mondromy_005flib-1"></a>
+<h3 class="subsection">D.5.6 mondromy_lib</h3>
+<a name="index-mondromy_002elib"></a>
+<a name="index-mondromy_005flib"></a>
 <dl compact="compact">
-<dt><strong>Usage:</strong></dt>
-<dd><p>further_hn_proc();
+<dt><strong>Library:</strong></dt>
+<dd><p>mondromy.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>  Monodromy of an Isolated Hypersurface Singularity
+</p></dd>
+<dt><strong>Author:</strong></dt>
+<dd><p>Mathias Schulze, email: mschulze@mathematik.uni-kl.de
 </p>
 </dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>The library <code>hnoether.lib</code> contains some more procedures which
-are not shown when typing <code>help hnoether.lib;</code>. They may be useful
-for interactive use (e.g. if you want to do the calculation of an HN
-development &quot;by hand&quot; to see the intermediate results), and they
-can be enumerated by calling <code>further_hn_proc()</code>. <br>
-Use <code>help &lt;procedure&gt;;</code> for detailed information about each of
-them.
+<dt><strong>Overview:</strong></dt>
+<dd><p>A library to compute the monodromy of an isolated hypersurface singularity.
+It uses an algorithm by Brieskorn (manuscripta math. 2 (1970), 103-161) to
+compute a connection matrix of the meromorphic Gauss-Manin connection up to
+arbitrarily high order, and an algorithm of Gerard and Levelt (Ann. Inst.
+Fourier, Grenoble 23,1 (1973), pp. 157-195) to transform it to a simple pole.
 </p>
 </dd>
 </dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;hnoether.lib&quot;;
-further_hn_proc();
-&rarr; 
-&rarr;  The following procedures are also part of `hnoether.lib':
-&rarr; 
-&rarr;  getnm(f);           intersection pts. of Newton polygon with axes
-&rarr;  T_Transform(f,Q,N); returns f(y,xy^Q)/y^NQ (f: poly, Q,N: int)
-&rarr;  T1_Transform(f,d,M); returns f(x,y+d*x^M)  (f: poly,d:number,M:int)
-&rarr;  T2_Transform(f,d,M,N,ref);   a composition of T1 &amp; T
-&rarr;  koeff(f,I,J);       gets coefficient of indicated monomial of poly f
-&rarr;  redleit(f,S,E);     restriction of monomials of f to line (S-E)
-&rarr;  leit(f,n,m);        special case of redleit (for irred. polynomials)
-&rarr;  testreducible(f,n,m); tests whether f is reducible
-&rarr;  charPoly(f,M,N);    characteristic polynomial of f
-&rarr;  find_in_list(L,p);  find int p in list L
-&rarr;  get_last_divisor(M,N); last divisor in Euclid's algorithm
-&rarr;  factorfirst(f,M,N); try to factor f without `factorize'
-&rarr;  factorlist(L);      factorize a list L of polynomials
-&rarr;  referencepoly(D);   a polynomial f s.t. D is the Newton diagram of f
-</pre></td></tr></table>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_704.htm#detadj">D.5.6.1 detadj</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> determinant and adjoint matrix of square matrix U
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_705.htm#invunit">D.5.6.2 invunit</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> series inverse of polynomial u up to order n
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_706.htm#jacoblift">D.5.6.3 jacoblift</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> lifts f^kappa in jacob(f) with minimal kappa
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_707.htm#monodromyB">D.5.6.4 monodromyB</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> monodromy of isolated hypersurface singularity f
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_708.htm#H2basis">D.5.6.5 H2basis</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> basis of Brieskorn lattice H&rdquo;
+</td></tr>
+</table></blockquote>
+<a name="index-Monodromy"></a>
+<a name="index-hypersurface-singularity"></a>
+<a name="index-Gauss_002dManin-connection-13"></a>
+<a name="index-Brieskorn-lattice-12"></a>
+<p><strong>See also:</strong>
+<a href="sing_657.htm#gaussman_005flib">gaussman_lib</a>.
+</p>
+
 </td>
 </tr>
 </table>
@@ -133,14 +137,14 @@ further_hn_proc();
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_702.htm#allsquarefree" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.20 allsquarefree" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_704.htm#mondromy_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.6 mondromy_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_682.htm#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_702.htm#further_005fhn_005fproc" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.21 further_hn_proc" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_704.htm#detadj" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.6.1 detadj" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_629.htm#Singularities" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5 Singularities" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

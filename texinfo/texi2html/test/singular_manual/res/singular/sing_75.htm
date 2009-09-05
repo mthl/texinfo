@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.3.1 int declarations</title>
+<title>Singular 2-0-4 Manual: 4.3.2 int expressions</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.3.1 int declarations">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.3.1 int declarations">
+<meta name="description" content="Singular 2-0-4 Manual: 4.3.2 int expressions">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.3.2 int expressions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="int-declarations"></a>
+<a name="int-expressions"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_74.htm#int" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.3 int" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_74.htm#int-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.3.1 int declarations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_76.htm#int-expressions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.3.2 int expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_76.htm#int-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.3.3 int operations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_74.htm#int" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.3 int" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_73.htm#int" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.3 int" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,36 +82,98 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="int-declarations-1"></a>
-<h3 class="subsection">4.3.1 int declarations</h3>
-<a name="index-int-declarations"></a>
+<a name="int-expressions-1"></a>
+<h3 class="subsection">4.3.2 int expressions</h3>
+<a name="index-int-expressions"></a>
 
-<dl compact="compact">
-<dt><strong>Syntax:</strong></dt>
-<dd><p><code>int</code> name <code>=</code> int_expression <code>;</code>
+<p>An int expression is:
+</p><ol>
+<li>
+a sequence of digits (if the number represented by this sequence is too
+large to fit into the range of integers it is automatically
+converted to the type number, if a basering is defined)
+</li><li>
+an identifier of type int
+</li><li>
+a function returning int
+</li><li>
+int expressions combined by the arithmetic operations
+<code>+</code>, <code>-</code>, <code>*</code>, <code>div</code>, <code>/</code>,
+<code>%</code> (<code>mod</code>), or <code>^</code>
+</li><li> a boolean expression
+</li><li>
+a type cast to int
+</li></ol>
+
+<p><strong>Note:</strong>
+Variables of type int represent the compiler integers  and are, therefore,
+limited  in their range (see <a href="sing_319.htm#Limitations">Limitations</a>). If this range is too small
+the expression must be converted to the type number over a ring with
+characteristic 0.
 </p>
-</dd>
-<dt><strong>Purpose:</strong></dt>
-<dd><p>defines an integer variable.
-</p>
-</dd>
-<dt><strong>Default:</strong></dt>
-<dd><p>0
-</p>
-</dd>
-<dt><strong>Example:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  int i = 42;
-  int j = i + 3; j;
-&rarr; 45
-  i = i * 3 - j; i;
-&rarr; 81
-  int k;   // assigning the default value 0 to k
-  k;
+<br><p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">12345678901; // too large
+&rarr;    ? `12345678901` greater than 2147483647(max. integer representation)
+&rarr;    ? error occurred in line 1: `12345678901; // too large`
+typeof(_);
+&rarr; none
+ring r=0,x,dp;
+12345678901;
+&rarr; 12345678901
+typeof(_);
+&rarr; number
+// Note: 11*13*17*100*200*2000*503*1111*222222
+// returns a machine integer:
+11*13*17*100*200*2000*503*1111*222222;
+&rarr; // ** int overflow(*), result may be wrong
+&rarr; // ** int overflow(*), result may be wrong
+&rarr; // ** int overflow(*), result may be wrong
+&rarr; // ** int overflow(*), result may be wrong
+&rarr; -1875651584
+// using the type cast number for a greater allowed range
+number(11)*13*17*100*200*2000*503*1111*222222;
+&rarr; 12075748128684240000000
+ring rp=32003,x,dp;
+12345678901;
+&rarr; 9603
+typeof(_);
+&rarr; number
+intmat m[2][2] = 1,2,3,4;
+m;
+&rarr; 1,2,
+&rarr; 3,4 
+m[2,2];
+&rarr; 4
+typeof(_);
+&rarr; int
+det(m);
+&rarr; -2
+m[1,1] + m[2,1] == trace(m);
 &rarr; 0
+! 0;
+&rarr; 1
+1 and 2;
+&rarr; 1
+intvec v = 1,2,3;
+def d =transpose(v)*v;    // scalarproduct gives an 1x1 intvec
+typeof(d);
+&rarr; intvec
+int i = d[1];             // access the first (the only) entry in the intvec
+ring rr=31,(x,y,z),dp;
+poly f = 1;
+i = int(f);               // cast to int
+// Integers may be converted to constant  polynomials by an assignment,
+poly g=37;
+// define the constant polynomial g equal to the image of
+// the integer 37 in the actual coefficient field, here it equals 6
+g;
+&rarr; 6
 </pre></td></tr></table>
-</dd>
-</dl>
 
+<p>See
+<a href="sing_37.htm#Type-conversion-and-casting">Type conversion and casting</a>;
+<a href="sing_120.htm#number">number</a>.
+</p>
 </td>
 </tr>
 </table>
@@ -121,14 +183,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_74.htm#int" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.3 int" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_76.htm#int-expressions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.3.2 int expressions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_74.htm#int" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.3 int" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_74.htm#int-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.3.1 int declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_76.htm#int-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.3.3 int operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_73.htm#int" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.3 int" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

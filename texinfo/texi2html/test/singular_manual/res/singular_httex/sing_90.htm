@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.5.3 intvec operations</title>
+<title>Singular 2-0-4 Manual: 4.5.4 intvec related functions</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.5.3 intvec operations">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.5.3 intvec operations">
+<meta name="description" content="Singular 2-0-4 Manual: 4.5.4 intvec related functions">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.5.4 intvec related functions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="intvec-operations"></a>
+<a name="intvec-related-functions"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_89.htm#intvec-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.5.2 intvec expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_89.htm#intvec-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.5.3 intvec operations" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_91.htm#intvec-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.5.4 intvec related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_91.htm#link" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.6 link" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_87.htm#intvec" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.5 intvec" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_86.htm#intvec" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.5 intvec" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,72 +84,39 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="intvec-operations-1"></a>
-<h3 class="subsection">4.5.3 intvec operations</h3>
-<a name="index-intvec-operations"></a>
+<a name="intvec-related-functions-1"></a>
+<h3 class="subsection">4.5.4 intvec related functions</h3>
+<a name="index-intvec-related-functions"></a>
 
 <dl compact="compact">
-<dt><code>+</code></dt>
-<dd><p>addition with intvec or int (component-wise)
-</p>
-</dd>
-<dt><code>-</code></dt>
-<dd><p>negation or subtraction with intvec or int (component-wise)
-</p>
-</dd>
-<dt><code>*</code></dt>
-<dd><p>multiplication with int (component-wise)
-</p>
-</dd>
-<dt><code>/</code>, <code>div</code></dt>
-<dd><p>division by int (component-wise)
-</p>
-</dd>
-<dt><code>%, mod</code></dt>
-<dd><p>modulo (component-wise)
-</p>
-</dd>
-<dt><code>&lt;&gt;</code>, <code>==</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>&gt;</code>, <code>&lt;</code></dt>
-<dd><p>comparison (done lexicographically)
-</p>
-</dd>
-<dt>intvec_expression <code>[</code> int_expression <code>]</code></dt>
-<dd><p>is an element of the intvec; the first element has index one.
+<dt><code>hilb</code></dt>
+<dd><p>returns Hilbert series as intvec (see <a href="sing_199.htm#hilb">hilb</a>)
+</p></dd>
+<dt><code>indepSet</code></dt>
+<dd><p>sets of independent variables of an ideal (see <a href="sing_204.htm#indepSet">indepSet</a>)
+</p></dd>
+<dt><code>leadexp</code></dt>
+<dd><p>the exponent vector of the leading monomial (see <a href="sing_217.htm#leadexp">leadexp</a>)
+</p></dd>
+<dt><code>nrows</code></dt>
+<dd><p>number of rows (see <a href="sing_240.htm#nrows">nrows</a>)
+</p></dd>
+<dt><code>qhweight</code></dt>
+<dd><p>returns quasihomogeneous weights (see <a href="sing_254.htm#qhweight">qhweight</a>)
+</p></dd>
+<dt><code>size</code></dt>
+<dd><p>length of the intvec (see <a href="sing_270.htm#size">size</a>)
+</p></dd>
+<dt><code>sortvec</code></dt>
+<dd><p>permutation for sorting ideals/modules (see <a href="sing_271.htm#sortvec">sortvec</a>)
+</p></dd>
+<dt><code>transpose</code></dt>
+<dd><p>transpose of an intvec, returns an intmat (see <a href="sing_282.htm#transpose">transpose</a>)
+</p></dd>
+<dt><code>weight</code></dt>
+<dd><p>returns weights for the weighted ecart method (see <a href="sing_291.htm#weight">weight</a>)
 </p></dd>
 </dl>
-
-<br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  intvec iv =  1,3,5,7,8;
-  iv+1;               // add 1 to each entry
-&rarr; 2,4,6,8,9
-  iv*2;
-&rarr; 2,6,10,14,16
-  iv;
-&rarr; 1,3,5,7,8
-  iv-10;
-&rarr; -9,-7,-5,-3,-2
-  iv=iv,0;
-  iv;
-&rarr; 1,3,5,7,8,0
-  iv div 2;
-&rarr; 0,1,2,3,4,0
-  iv+iv;              // component-wise addition
-&rarr; 2,6,10,14,16,0
-  iv[size(iv)-1];     // last-1 entry
-&rarr; 8
-  intvec iw=2,3,4,0;
-  iv==iw;             // lexicographic comparison
-&rarr; 0
-  iv &lt; iw;
-&rarr; 1
-  iv != iw;
-&rarr; 1
-  iv[2];
-&rarr; 3
-  iw = 4,1,2;
-  iv[iw];
-&rarr; 7 1 3
-</pre></td></tr></table>
 
 </td>
 </tr>
@@ -160,14 +127,14 @@ ul.toc {list-style: none}
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_89.htm#intvec-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.5.2 intvec expressions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_91.htm#intvec-related-functions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.5.4 intvec related functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_87.htm#intvec" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.5 intvec" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_89.htm#intvec-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.5.3 intvec operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_91.htm#link" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.6 link" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_86.htm#intvec" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.5 intvec" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

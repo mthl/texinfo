@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.8.3.2 parametrizepd</title>
+<title>Singular 2-0-4 Manual: D.8.3.3 parametrizesing</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.8.3.2 parametrizepd">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.8.3.2 parametrizepd">
+<meta name="description" content="Singular 2-0-4 Manual: D.8.3.3 parametrizesing">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.8.3.3 parametrizesing">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="parametrizepd"></a>
+<a name="parametrizesing"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_889.htm#parametrize" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.3.1 parametrize" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_889.htm#parametrizepd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.3.2 parametrizepd" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_891.htm#parametrizesing" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.3.3 parametrizesing" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_891.htm#surf_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.4 surf_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_888.htm#paramet_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.3 paramet_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_887.htm#paramet_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.3 paramet_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,72 +82,49 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="parametrizepd-1"></a>
-<h4 class="subsubsection">D.8.3.2 parametrizepd</h4>
-<a name="index-parametrizepd"></a>
-<p>Procedure from library <code>paramet.lib</code> (see <a href="sing_888.htm#paramet_005flib">paramet_lib</a>).
+<a name="parametrizesing-1"></a>
+<h4 class="subsubsection">D.8.3.3 parametrizesing</h4>
+<a name="index-parametrizesing"></a>
+<p>Procedure from library <code>paramet.lib</code> (see <a href="sing_887.htm#paramet_005flib">paramet_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>parametrizepd(I); I ideal in a polynomial ring with global ordering
+<dd><p>parametrizesing(f); f a polynomial in two variables, ordering ls or ds
 </p>
 </dd>
 <dt><strong>Create:</strong></dt>
 <dd><p>If the parametrization is successful, the basering will be changed to
-the parametrization ring, that is to the ring PR=0,(s,t),dp;
-respectively PR=0,t(1..d),dp;, depending on the dimension of the
-parametrized variety.
+the parametrization ring, that is to the ring 0,(x,y),ls;
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>a list of lists, where each entry contains the parametrization
-of a primary component of I resp. 0, the number of variables
-resp. 0, and 1 resp. 0 depending on whether the parametrization
-of the component was successful or not
+<dd><p>a list containing the parametrizations of the different branches of the
+singularity at the origin resp. 0, if f was not of the desired kind
 </p>
-<a name="index-parametrization-2"></a>
-<a name="index-normalization-2"></a>
+<a name="index-parametrization-3"></a>
+<a name="index-curve-singularities-1"></a>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;paramet.lib&quot;;
-ring RING=0,(x,y,z),dp;
-ideal I=(x2-y2z2+z3)*(x2-z2-z3),(x2-y2z2+z3)*yz;
-parametrizepd(I);
+ring RING=0,(x,y),ls;
+poly f=(x^2-y^3)*(x^2-y^2-y^3);
+parametrizesing(f);
 &rarr; [1]:
-&rarr;    [1]:
-&rarr;       _[1]=s2t-t3
-&rarr;       _[2]=s
-&rarr;       _[3]=s2-t2
-&rarr;    [2]:
-&rarr;       2
-&rarr;    [3]:
-&rarr;       1
+&rarr;    _[1]=x
+&rarr;    _[2]=x-1/2x2
 &rarr; [2]:
-&rarr;    [1]:
-&rarr;       _[1]=0
-&rarr;       _[2]=s
-&rarr;       _[3]=0
-&rarr;    [2]:
-&rarr;       1
-&rarr;    [3]:
-&rarr;       1
+&rarr;    _[1]=x
+&rarr;    _[2]=-x-1/2x2
 &rarr; [3]:
-&rarr;    [1]:
-&rarr;       _[1]=s3-s
-&rarr;       _[2]=0
-&rarr;       _[3]=s2-1
-&rarr;    [2]:
-&rarr;       1
-&rarr;    [3]:
-&rarr;       1
+&rarr;    _[1]=x3
+&rarr;    _[2]=x2
 </pre></td></tr></table>
 <p><strong>See also:</strong>
-<a href="sing_596.htm#normal">normal</a>;
-<a href="sing_889.htm#parametrize">parametrize</a>;
-<a href="sing_602.htm#primdecGTZ">primdecGTZ</a>.
+<a href="sing_684.htm#develop">develop</a>;
+<a href="sing_682.htm#hnexpansion">hnexpansion</a>;
+<a href="sing_681.htm#hnoether_005flib">hnoether_lib</a>.
 </p>
-
 </td>
 </tr>
 </table>
@@ -157,14 +134,14 @@ parametrizepd(I);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_889.htm#parametrize" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.3.1 parametrize" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_891.htm#parametrizesing" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.3.3 parametrizesing" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_888.htm#paramet_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.3 paramet_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_889.htm#parametrizepd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.3.2 parametrizepd" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_891.htm#surf_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.4 surf_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_887.htm#paramet_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.3 paramet_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

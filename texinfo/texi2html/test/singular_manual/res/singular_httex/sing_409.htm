@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.2.2.16 watchdog</title>
+<title>Singular 2-0-4 Manual: D.2.2.17 which</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.2.2.16 watchdog">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.2.2.16 watchdog">
+<meta name="description" content="Singular 2-0-4 Manual: D.2.2.17 which">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.2.17 which">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="watchdog"></a>
+<a name="which"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_408.htm#sum" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.15 sum" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_408.htm#watchdog" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.16 watchdog" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_410.htm#which" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.17 which" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_410.htm#primecoeffs" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.18 primecoeffs" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_392.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,52 +84,30 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="watchdog-1"></a>
-<h4 class="subsubsection">D.2.2.16 watchdog</h4>
-<a name="index-watchdog"></a>
-<p>Procedure from library <code>general.lib</code> (see <a href="sing_393.htm#general_005flib">general_lib</a>).
+<a name="which-1"></a>
+<h4 class="subsubsection">D.2.2.17 which</h4>
+<a name="index-which"></a>
+<p>Procedure from library <code>general.lib</code> (see <a href="sing_392.htm#general_005flib">general_lib</a>).
 </p>
 <dl compact="compact">
+<dt><strong>Usage:</strong></dt>
+<dd><p>which(command); command = string expression
+</p>
+</dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>Result of cmd, if the result can be computed in i seconds.
-Otherwise the computation is interrupted after i seconds,
-the string &quot;Killed&quot; is returned and the global variable
-&rsquo;watchdog_interrupt&rsquo; is defined.
+<dd><p>Absolute pathname of command, if found in search path.
+Empty string, otherwise.
 </p>
 </dd>
 <dt><strong>Note:</strong></dt>
-<dd><p>* the MP package must be enabled
-<br>* the current basering should not be watchdog_rneu, since
-watchdog_rneu will be killed
-<br>* if there are variable names of the structure x(i) all
-polynomials have to be put into eval(...) in order to be
-interpreted correctly
-<br>* a second Singular process is started by this procedure
+<dd><p>Based on the Unix command &rsquo;which&rsquo;.
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;general.lib&quot;;
-ring r=0,(x,y,z),dp;
-poly f=x^30+y^30;
-watchdog(1,&quot;factorize(eval(&quot;+string(f)+&quot;))&quot;);
-&rarr; [1]:
-&rarr;    _[1]=1
-&rarr;    _[2]=x16+x14y2-x10y6-x8y8-x6y10+x2y14+y16
-&rarr;    _[3]=x8-x6y2+x4y4-x2y6+y8
-&rarr;    _[4]=x4-x2y2+y4
-&rarr;    _[5]=x2+y2
-&rarr; [2]:
-&rarr;    1,1,1,1,1
-watchdog(100,&quot;factorize(eval(&quot;+string(f)+&quot;))&quot;);
-&rarr; [1]:
-&rarr;    _[1]=1
-&rarr;    _[2]=x16+x14y2-x10y6-x8y8-x6y10+x2y14+y16
-&rarr;    _[3]=x8-x6y2+x4y4-x2y6+y8
-&rarr;    _[4]=x4-x2y2+y4
-&rarr;    _[5]=x2+y2
-&rarr; [2]:
-&rarr;    1,1,1,1,1
+which(&quot;sh&quot;);
+&rarr; /bin/sh
 </pre></td></tr></table>
 
 </td>
@@ -141,14 +119,14 @@ watchdog(100,&quot;factorize(eval(&quot;+string(f)+&quot;))&quot;);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_408.htm#sum" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.15 sum" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_410.htm#which" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.17 which" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_393.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_408.htm#watchdog" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.16 watchdog" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_410.htm#primecoeffs" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.18 primecoeffs" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_392.htm#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

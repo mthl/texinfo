@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.5.10.1 spectrumnd</title>
+<title>Singular 2-0-4 Manual: D.6 Invariant theory</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.5.10.1 spectrumnd">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.5.10.1 spectrumnd">
+<meta name="description" content="Singular 2-0-4 Manual: D.6 Invariant theory">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6 Invariant theory">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="spectrumnd"></a>
+<a name="Invariant-theory"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_750.htm#spectrum_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.10 spectrum_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_750.htm#spectrumnd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.10.1 spectrumnd" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_752.htm#Invariant-theory" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6 Invariant theory" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_752.htm#finvar_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1 finvar_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_750.htm#spectrum_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.10 spectrum_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,227 +82,21 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="spectrumnd-1"></a>
-<h4 class="subsubsection">D.5.10.1 spectrumnd</h4>
-<a name="index-spectrumnd"></a>
-<p>Procedure from library <code>spectrum.lib</code> (see <a href="sing_750.htm#spectrum_005flib">spectrum_lib</a>).
-</p>
-<dl compact="compact">
-<dt><strong>Usage:</strong></dt>
-<dd><p>spectrumnd(f[,1]); poly f
-</p>
-</dd>
-<dt><strong>Assume:</strong></dt>
-<dd><p>basering has characteristic 0 and local ordering,
-<br>f has isolated singularity at 0 and nondegenerate principal part
-</p>
-</dd>
-<dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list S:
-  ideal S[1]: spectral numbers in increasing order
-  intvec S[2]:
-    int S[2][i]: multiplicity of spectral number S[1][i]
-</pre></td></tr></table>
+<a name="Invariant-theory-1"></a>
+<h2 class="section">D.6 Invariant theory</h2>
+<a name="index-Invariant-theory"></a>
 
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>if a second argument 1 is given,
-<br>no test for a degenerate principal part will be done
-<br>SEE_ALSO: gaussman_lib
-</p>
-<a name="index-singularities-12"></a>
-<a name="index-Gauss_002dManin-connection-14"></a>
-<a name="index-spectrum-6"></a>
-</dd>
-</dl>
-<p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;spectrum.lib&quot;;
-ring R=0,(x,y),ds;
-poly f=x^31+x^6*y^7+x^2*y^12+x^13*y^2+y^29;
-spectrumnd(f);
-&rarr; [1]:
-&rarr;    _[1]=-67/79
-&rarr;    _[2]=-62/79
-&rarr;    _[3]=-45/58
-&rarr;    _[4]=-57/79
-&rarr;    _[5]=-41/58
-&rarr;    _[6]=-55/79
-&rarr;    _[7]=-52/79
-&rarr;    _[8]=-37/58
-&rarr;    _[9]=-50/79
-&rarr;    _[10]=-18/29
-&rarr;    _[11]=-47/79
-&rarr;    _[12]=-45/79
-&rarr;    _[13]=-33/58
-&rarr;    _[14]=-16/29
-&rarr;    _[15]=-43/79
-&rarr;    _[16]=-42/79
-&rarr;    _[17]=-40/79
-&rarr;    _[18]=-1/2
-&rarr;    _[19]=-15/31
-&rarr;    _[20]=-14/29
-&rarr;    _[21]=-38/79
-&rarr;    _[22]=-27/58
-&rarr;    _[23]=-14/31
-&rarr;    _[24]=-35/79
-&rarr;    _[25]=-25/58
-&rarr;    _[26]=-13/31
-&rarr;    _[27]=-33/79
-&rarr;    _[28]=-12/29
-&rarr;    _[29]=-23/58
-&rarr;    _[30]=-31/79
-&rarr;    _[31]=-12/31
-&rarr;    _[32]=-30/79
-&rarr;    _[33]=-21/58
-&rarr;    _[34]=-11/31
-&rarr;    _[35]=-28/79
-&rarr;    _[36]=-10/29
-&rarr;    _[37]=-26/79
-&rarr;    _[38]=-19/58
-&rarr;    _[39]=-10/31
-&rarr;    _[40]=-25/79
-&rarr;    _[41]=-9/29
-&rarr;    _[42]=-17/58
-&rarr;    _[43]=-23/79
-&rarr;    _[44]=-9/31
-&rarr;    _[45]=-8/29
-&rarr;    _[46]=-21/79
-&rarr;    _[47]=-15/58
-&rarr;    _[48]=-8/31
-&rarr;    _[49]=-20/79
-&rarr;    _[50]=-7/29
-&rarr;    _[51]=-19/79
-&rarr;    _[52]=-18/79
-&rarr;    _[53]=-7/31
-&rarr;    _[54]=-13/58
-&rarr;    _[55]=-6/29
-&rarr;    _[56]=-16/79
-&rarr;    _[57]=-6/31
-&rarr;    _[58]=-15/79
-&rarr;    _[59]=-11/58
-&rarr;    _[60]=-14/79
-&rarr;    _[61]=-5/29
-&rarr;    _[62]=-13/79
-&rarr;    _[63]=-5/31
-&rarr;    _[64]=-9/58
-&rarr;    _[65]=-11/79
-&rarr;    _[66]=-4/29
-&rarr;    _[67]=-4/31
-&rarr;    _[68]=-10/79
-&rarr;    _[69]=-7/58
-&rarr;    _[70]=-9/79
-&rarr;    _[71]=-3/29
-&rarr;    _[72]=-8/79
-&rarr;    _[73]=-3/31
-&rarr;    _[74]=-7/79
-&rarr;    _[75]=-5/58
-&rarr;    _[76]=-6/79
-&rarr;    _[77]=-2/29
-&rarr;    _[78]=-2/31
-&rarr;    _[79]=-5/79
-&rarr;    _[80]=-3/58
-&rarr;    _[81]=-4/79
-&rarr;    _[82]=-3/79
-&rarr;    _[83]=-1/29
-&rarr;    _[84]=-1/31
-&rarr;    _[85]=-2/79
-&rarr;    _[86]=-1/58
-&rarr;    _[87]=-1/79
-&rarr;    _[88]=0
-&rarr;    _[89]=1/79
-&rarr;    _[90]=1/58
-&rarr;    _[91]=2/79
-&rarr;    _[92]=1/31
-&rarr;    _[93]=1/29
-&rarr;    _[94]=3/79
-&rarr;    _[95]=4/79
-&rarr;    _[96]=3/58
-&rarr;    _[97]=5/79
-&rarr;    _[98]=2/31
-&rarr;    _[99]=2/29
-&rarr;    _[100]=6/79
-&rarr;    _[101]=5/58
-&rarr;    _[102]=7/79
-&rarr;    _[103]=3/31
-&rarr;    _[104]=8/79
-&rarr;    _[105]=3/29
-&rarr;    _[106]=9/79
-&rarr;    _[107]=7/58
-&rarr;    _[108]=10/79
-&rarr;    _[109]=4/31
-&rarr;    _[110]=4/29
-&rarr;    _[111]=11/79
-&rarr;    _[112]=9/58
-&rarr;    _[113]=5/31
-&rarr;    _[114]=13/79
-&rarr;    _[115]=5/29
-&rarr;    _[116]=14/79
-&rarr;    _[117]=11/58
-&rarr;    _[118]=15/79
-&rarr;    _[119]=6/31
-&rarr;    _[120]=16/79
-&rarr;    _[121]=6/29
-&rarr;    _[122]=13/58
-&rarr;    _[123]=7/31
-&rarr;    _[124]=18/79
-&rarr;    _[125]=19/79
-&rarr;    _[126]=7/29
-&rarr;    _[127]=20/79
-&rarr;    _[128]=8/31
-&rarr;    _[129]=15/58
-&rarr;    _[130]=21/79
-&rarr;    _[131]=8/29
-&rarr;    _[132]=9/31
-&rarr;    _[133]=23/79
-&rarr;    _[134]=17/58
-&rarr;    _[135]=9/29
-&rarr;    _[136]=25/79
-&rarr;    _[137]=10/31
-&rarr;    _[138]=19/58
-&rarr;    _[139]=26/79
-&rarr;    _[140]=10/29
-&rarr;    _[141]=28/79
-&rarr;    _[142]=11/31
-&rarr;    _[143]=21/58
-&rarr;    _[144]=30/79
-&rarr;    _[145]=12/31
-&rarr;    _[146]=31/79
-&rarr;    _[147]=23/58
-&rarr;    _[148]=12/29
-&rarr;    _[149]=33/79
-&rarr;    _[150]=13/31
-&rarr;    _[151]=25/58
-&rarr;    _[152]=35/79
-&rarr;    _[153]=14/31
-&rarr;    _[154]=27/58
-&rarr;    _[155]=38/79
-&rarr;    _[156]=14/29
-&rarr;    _[157]=15/31
-&rarr;    _[158]=1/2
-&rarr;    _[159]=40/79
-&rarr;    _[160]=42/79
-&rarr;    _[161]=43/79
-&rarr;    _[162]=16/29
-&rarr;    _[163]=33/58
-&rarr;    _[164]=45/79
-&rarr;    _[165]=47/79
-&rarr;    _[166]=18/29
-&rarr;    _[167]=50/79
-&rarr;    _[168]=37/58
-&rarr;    _[169]=52/79
-&rarr;    _[170]=55/79
-&rarr;    _[171]=41/58
-&rarr;    _[172]=57/79
-&rarr;    _[173]=45/58
-&rarr;    _[174]=62/79
-&rarr;    _[175]=67/79
-&rarr; [2]:
-&rarr;    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1,\
-   1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,2,1,1,1,1,2,1,1,1\
-   ,1,1,2,1,1,1,1,2,1,1,1,1,1,2,1,4,1,2,1,1,1,1,1,2,1,1,1,1,2,1,1,1,1,1,2,1,\
-   1,1,1,2,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1\
-   ,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
-</pre></td></tr></table>
+<blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="sing_752.htm#finvar_005flib">D.6.1 finvar_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures to compute invariant rings of finite groups
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_784.htm#ainvar_005flib">D.6.2 ainvar_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures to compute invariants rings of the additive group
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_793.htm#rinvar_005flib">D.6.3 rinvar_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> procedures to compute invariants ring of reductive groups
+</td></tr>
+<tr><td align="left" valign="top"><a href="sing_809.htm#stratify_005flib">D.6.4 stratify_lib</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> algorithmic stratification by the Greuel-Pfister algorithm
+</td></tr>
+</table></blockquote>
+
 </td>
 </tr>
 </table>
@@ -312,14 +106,14 @@ spectrumnd(f);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_750.htm#spectrum_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.10 spectrum_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_752.htm#Invariant-theory" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6 Invariant theory" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_750.htm#spectrum_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.10 spectrum_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_750.htm#spectrumnd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.10.1 spectrumnd" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_752.htm#finvar_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1 finvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

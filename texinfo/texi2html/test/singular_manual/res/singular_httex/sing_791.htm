@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.6.2.6 localInvar</title>
+<title>Singular 2-0-4 Manual: D.6.2.7 furtherInvar</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.6.2.6 localInvar">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.6.2.6 localInvar">
+<meta name="description" content="Singular 2-0-4 Manual: D.6.2.7 furtherInvar">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6.2.7 furtherInvar">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="localInvar"></a>
+<a name="furtherInvar"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_790.htm#completeReduction" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.2.5 completeReduction" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_790.htm#localInvar" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.2.6 localInvar" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_792.htm#furtherInvar" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.2.7 furtherInvar" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_792.htm#sortier" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.2.8 sortier" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_785.htm#ainvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.2 ainvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_784.htm#ainvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.2 ainvar_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,42 +84,51 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="localInvar-1"></a>
-<h4 class="subsubsection">D.6.2.6 localInvar</h4>
-<a name="index-localInvar"></a>
-<p>Procedure from library <code>ainvar.lib</code> (see <a href="sing_785.htm#ainvar_005flib">ainvar_lib</a>).
+<a name="furtherInvar-1"></a>
+<h4 class="subsubsection">D.6.2.7 furtherInvar</h4>
+<a name="index-furtherInvar"></a>
+<p>Procedure from library <code>ainvar.lib</code> (see <a href="sing_784.htm#ainvar_005flib">ainvar_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>localInvar(m,p,q,h); m matrix, p,q,h polynomials
+<dd><p>furtherInvar(m,id,karl,q); m matrix, id,karl ideals, q poly, n int
 </p>
 </dd>
 <dt><strong>Assume:</strong></dt>
-<dd><p>m(q) and h are invariant under the vector field m, i.e. m(m(q))=m(h)=0
-h must be a ring variable
+<dd><p>karl,id,q are invariant under the vector field m,
+<br>moreover, q must be a variable
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>a polynomial, the invariant polynomial of the vector field
-</p><table><tr><td>&nbsp;</td><td><pre class="format">         m = m[1,1]*d/dx(1) +...+ m[n,1]*d/dx(n)
+<dd><p>list of two ideals, the first ideal contains further invariants of
+the vector field
+</p><table><tr><td>&nbsp;</td><td><pre class="format">         m = sum m[i,1]*d/dx(i) with respect to id,p,q,
 </pre></td></tr></table>
-<p>with respect to p,q,h. It is defined as follows: set inv = p if p is
-invariant, and else as
-<br>inv = m(q)^N * sum_i=1..N-1{ (-1)^i*(1/i!)*m^i(p)*(q/m(q))^i }
-where m^N(p) = 0, m^(N-1)(p) != 0;
-<br>the result is inv divided by h as much as possible
+<p>i.e. we compute elements in the (invariant) subring generated by id
+which are divisible by q and divide them by q as much as possible
+the second ideal contains all invariants given before
+if n=1, a different algorithm is chosen which is sometimes faster
+(default: n=0)
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;ainvar.lib&quot;;
-ring q=0,(x,y,z),dp;
-matrix m[3][1];
+ring r=0,(x,y,z,u),dp;
+matrix m[4][1];
 m[2,1]=x;
 m[3,1]=y;
-poly in=localInvar(m,z,y,x);
+m[4,1]=z;
+ideal id=localInvar(m,z,y,x),localInvar(m,u,y,x);
+ideal karl=id,x;
+list in=furtherInvar(m,id,karl,x);
 in;
-&rarr; -1/2y2+xz
+&rarr; [1]:
+&rarr;    _[1]=y2z2-8/3xz3-2y3u+6xyzu-3x2u2
+&rarr; [2]:
+&rarr;    _[1]=-1/2y2+xz
+&rarr;    _[2]=1/3y3-xyz+x2u
+&rarr;    _[3]=x
 </pre></td></tr></table>
 
 </td>
@@ -131,14 +140,14 @@ in;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_790.htm#completeReduction" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.2.5 completeReduction" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_792.htm#furtherInvar" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.2.7 furtherInvar" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_785.htm#ainvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.2 ainvar_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_790.htm#localInvar" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.2.6 localInvar" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_792.htm#sortier" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.2.8 sortier" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_784.htm#ainvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.2 ainvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

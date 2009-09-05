@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.1 def</title>
+<title>Singular 2-0-4 Manual: 4.1.1 def declarations</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.1 def">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.1 def">
+<meta name="description" content="Singular 2-0-4 Manual: 4.1.1 def declarations">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.1.1 def declarations">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="def"></a>
+<a name="def-declarations"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_66.htm#def" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.1 def" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_68.htm#def-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.1.1 def declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_68.htm#ideal" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.2 ideal" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_66.htm#def" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.1 def" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,61 +84,41 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="def-1"></a>
-<h2 class="section">4.1 def</h2>
-<a name="index-def"></a>
-<a name="index-untyped-definitions"></a>
+<a name="def-declarations-1"></a>
+<h3 class="subsection">4.1.1 def declarations</h3>
+<a name="index-def-declarations"></a>
 
-<p>Objects may be defined without a specific type: they get their
-type from the first assignment to them.
-E.g., <code>ideal i=x,y,z; def j=i^2;</code> defines the ideal <code>i^2</code>
-with the name <code>j</code>.
+<dl compact="compact">
+<dt><strong>Syntax:</strong></dt>
+<dd><p><code>def</code> name <code>=</code> expression <code>;</code>
 </p>
-<p><strong>Note:</strong> Unlike other assignments a ring as an untyped object
-is not a copy but another reference to the same (possibly unnamed) ring.
-This means that entries in one of these rings appear also in the other ones.
-The following defines a ring <code>s</code> which is just another reference (or name)
-for the basering <code>r</code>.
+</dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>defines an object of the same type as the right-hand side.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
-  poly f = x;
-  def s=basering;
-  setring s;
-  nameof(basering);
-&rarr; s
-  listvar();
-&rarr; // s                    [0]  *ring
-&rarr; //      f                    [0]  poly
-&rarr; // r                    [0]  ring
-&rarr; // LIB                  [0]  string standard.lib
-  poly g = y;
-  kill f;
-  listvar(r);
-&rarr; // r                    [0]  ring
-&rarr; // g                    [0]  poly
-  ring t=32003,(u,w),dp;
-  def rt=r+t;
-  rt;
-&rarr; //   characteristic : 32003
-&rarr; //   number of vars : 5
-&rarr; //        block   1 : ordering dp
-&rarr; //                  : names    x y z 
-&rarr; //        block   2 : ordering dp
-&rarr; //                  : names    u w 
-&rarr; //        block   3 : ordering C
+</dd>
+<dt><strong>Default:</strong></dt>
+<dd><p>none
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>This is useful if the right-hand side may be of
+variable type as a consequence of a computation (e.g., ideal or module or
+matrix). It may also be used in procedures to give the basering a name which
+is local to the procedure.
+</p>
+</dd>
+<dt><strong>Example:</strong></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  def i=2;
+  typeof(i);
+&rarr; int
 </pre></td></tr></table>
+</dd>
+</dl>
 
-<p>This reference to a ring with def is useful if the basering
-is not local to the procedure (so it cannot be accessed by its name) but one
-needs a name for it (e.g., for a use with <code>setring</code> or <code>map</code>).
-<code>setring r;</code> does not work in this case, because
-<code>r</code> may not be local to the procedure.
+<p>See
+<a href="sing_284.htm#typeof">typeof</a>.
 </p>
-<blockquote><table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="sing_68.htm#def-declarations">4.1.1 def declarations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table></blockquote>
-
 </td>
 </tr>
 </table>
@@ -148,14 +128,14 @@ needs a name for it (e.g., for a use with <code>setring</code> or <code>map</cod
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_68.htm#def-declarations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.1.1 def declarations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_66.htm#def" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.1 def" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_68.htm#ideal" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.2 ideal" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_66.htm#def" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.1 def" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

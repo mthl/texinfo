@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 4.3.5 boolean expressions</title>
+<title>Singular 2-0-4 Manual: 4.3.6 boolean operations</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 4.3.5 boolean expressions">
-<meta name="keywords" content="Singular 2-0-4 Manual: 4.3.5 boolean expressions">
+<meta name="description" content="Singular 2-0-4 Manual: 4.3.6 boolean operations">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.3.6 boolean operations">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="boolean-expressions"></a>
+<a name="boolean-operations"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_78.htm#int-related-functions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.3.4 int related functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_78.htm#boolean-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.3.5 boolean expressions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_80.htm#boolean-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.3.6 boolean operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_80.htm#intmat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.4 intmat" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_74.htm#int" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.3 int" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_73.htm#int" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.3 int" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,94 +82,50 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="boolean-expressions-1"></a>
-<h3 class="subsection">4.3.5 boolean expressions</h3>
-<a name="index-boolean-expressions"></a>
-<a name="index-_003d_003d-1"></a>
-<a name="index-_0021_003d-1"></a>
-<a name="index-_003c_003e-1"></a>
-<a name="index-_003c_003d-1"></a>
-<a name="index-_003e_003d-1"></a>
+<a name="boolean-operations-1"></a>
+<h3 class="subsection">4.3.6 boolean operations</h3>
+<a name="index-boolean-operations"></a>
+<a name="index-and"></a>
+<a name="index-_0026_0026-1"></a>
+<a name="index-or"></a>
+<a name="index-_007c_007c-1"></a>
+<a name="index-not"></a>
 
-<p>A boolean expression is really an int expression used in a logical context:
+<dl compact="compact">
+<dt><code>and</code></dt>
+<dd><p>logical <code>and</code>, may also be written as <code>&amp;&amp;</code>
 </p>
-<br><p>An int expression (&lt;&gt; 0 evaluates to <em>TRUE</em> (represented by 1),
-0 represents <em>FALSE</em>).
+</dd>
+<dt><code>or</code></dt>
+<dd><p>logical <code>or</code>, may also be written as <code>||</code>
 </p>
-<p>The following is the list of available comparisons of objects of the same type.
-</p>
-<p><strong>Note:</strong> There are no comparisons for ideals and modules, resolution
-and maps.
+</dd>
+<dt><code>not</code></dt>
+<dd><p>logical <code>not</code>, may also be written as <code>!</code>
+</p></dd>
+</dl>
+
+<p>The precedence of the boolean operations is:
 </p>
 <ol>
-<li>
-an integer comparison:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  i == j
-  i != j    // or     i &lt;&gt; j
-  i &lt;= j
-  i &gt;= j
-  i &gt; j
-  i &lt; j
-</pre></td></tr></table>
-</li><li>
-a number comparison:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  m == n
-  m != n    // or     m &lt;&gt; n
-  m &lt; n
-  m &gt; n
-  m &lt;= n
-  m &gt;= n
-</pre></td></tr></table>
-<p>For numbers from Z/p or from field extensions not all operations are useful:
-<br> - 0 is always the smallest element,
-<br> - in Z/p the representatives in the range -(p-1)/2..(p-1)/2 when p&gt;2 resp.
-     0 and 1 for p=2 are used for comparisons,
-<br> - in field extensions the last two operations
-(<code>&gt;=,&lt;=</code>) yield always TRUE (1) and
-the <code>&lt;</code> and <code>&gt;</code> are equivalent to <code>!=</code>.
-</p></li><li>
-a polynomial or vector comparison:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  f == g
-  f != g    // or     f &lt;&gt; g
-  f &lt;= g    // comparing the leading term w.r.t. the monomial order
-  f &lt;  g
-  f &gt;= g
-  f &gt;  g
-</pre></td></tr></table>
-</li><li>
-an intmat or matrix comparison:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  v == w
-  v != w    // or     v &lt;&gt; w
-</pre></td></tr></table>
-</li><li>
-an intvec or  string comparison:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  f == g
-  f != g    // or     f &lt;&gt; g
-  f &lt;= g    // comparing lexicographically
-  f &gt;= g    // w.r.t. the order specified by ASCII
-  f &gt;  g
-  f &lt;  g
-</pre></td></tr></table>
-</li><li>
-boolean expressions combined by boolean operations (<code>and</code>,
-<code>or</code>, <code>not</code>)
+<li> parentheses
+</li><li> comparisons
+</li><li> not
+</li><li> and
+</li><li> or
 </li></ol>
 
-<p><strong>Note:</strong>
-All arguments of a logical expression are first evaluated and
-then the value of the logical expression is determined. For example, the
-logical expression <code>(a || b)</code> is evaluated by first evaluating
-<code>a</code> <em>and</em> <code>b</code>, even though the value of <code>b</code> has no
-influence on the value of <code>(a || b)</code>, if <code>a</code> evaluates to
-true.
-</p>
-<p>Note that this evaluation is different from the left-to-right, conditional
-evaluation of logical expressions (as found in most programming
-languages). For example, in these other languages, the value of <code>(1
-|| b)</code> is determined without ever evaluating <code>b</code>.
-</p>
-<p>See <a href="sing_321.htm#Major-differences-to-the-C-programming-language">Major differences to the C programming language</a>.
-</p>
+<br><p><strong>Example:</strong>
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  (1&gt;2) and 3;
+&rarr; 0
+  1 &gt; 2 and 3;
+&rarr; 0
+  ! 0 or 1;
+&rarr; 1
+  !(0 or 1);
+&rarr; 0
+</pre></td></tr></table>
+
 </td>
 </tr>
 </table>
@@ -179,14 +135,14 @@ languages). For example, in these other languages, the value of <code>(1
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_78.htm#int-related-functions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.3.4 int related functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_80.htm#boolean-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.3.6 boolean operations" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_66.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_74.htm#int" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.3 int" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_78.htm#boolean-expressions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.3.5 boolean expressions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_80.htm#intmat" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.4 intmat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_65.htm#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_73.htm#int" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.3 int" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

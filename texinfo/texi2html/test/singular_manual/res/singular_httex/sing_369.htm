@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: B.2.7 Product orderings</title>
+<title>Singular 2-0-4 Manual: B.2.8 Extra weight vector</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: B.2.7 Product orderings">
-<meta name="keywords" content="Singular 2-0-4 Manual: B.2.7 Product orderings">
+<meta name="description" content="Singular 2-0-4 Manual: B.2.8 Extra weight vector">
+<meta name="keywords" content="Singular 2-0-4 Manual: B.2.8 Extra weight vector">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Product-orderings"></a>
+<a name="Extra-weight-vector"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_368.htm#Matrix-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.6 Matrix orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_368.htm#Product-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.7 Product orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_370.htm#Extra-weight-vector" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.8 Extra weight vector" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_361.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,87 +84,63 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Product-orderings-1"></a>
-<h3 class="subsection">B.2.7 Product orderings</h3>
-<a name="index-Product-orderings"></a>
-<a name="index-orderings_002c-product"></a>
+<a name="Extra-weight-vector-1"></a>
+<h3 class="subsection">B.2.8 Extra weight vector</h3>
+<a name="index-Extra-weight-vector"></a>
+<a name="index-a_002c-ordering"></a>
+<a name="index-orderings_002c-a"></a>
 
-<p>Let
- <span 
-class="cmmi-10">x </span>= (<span 
-class="cmmi-10">x</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,</span><span 
-class="cmmi-10">&#x2026;</span><span 
-class="cmmi-10">,x</span><sub><span 
-class="cmmi-7">n</span></sub>) and <span 
-class="cmmi-10">y </span>= (<span 
-class="cmmi-10">y</span><sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">,</span><span 
-class="cmmi-10">&#x2026;</span><span 
-class="cmmi-10">,y</span><sub><span 
-class="cmmi-7">m</span></sub>)  
-be two ordered sets of variables,
- <span 
-class="cmmi-10">&#x003C;</span> <sub><span 
-class="cmr-7">1</span></sub>
-a monomial ordering on <span 
-class="cmmi-10">K</span>[<span 
-class="cmmi-10">x</span>] and <span 
-class="cmmi-10">&#x003C;</span> <sub><span 
-class="cmr-7">2</span></sub> a monomial ordering on <span 
-class="cmmi-10">K</span>[<span 
-class="cmmi-10">y</span>]. The product ordering (or block ordering)
+<p>
 <span 
-class="cmmi-10">&#x003C;</span> <span 
-class="cmmi-10">&#x00A0; </span>:= (<span 
-class="cmmi-10">&#x003C;</span> <sub><span 
+class="cmtt-10">a</span>(<span 
+class="cmmi-10">w</span><sub><span 
 class="cmr-7">1</span></sub><span 
-class="cmmi-10">,&#x003C;</span> <sub><span 
-class="cmr-7">2</span></sub>) on <span 
-class="cmmi-10">K</span>[<span 
-class="cmmi-10">x,y</span>] is the following:  
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,w</span><sub><span 
+class="cmmi-7">n</span></sub>)<span 
+class="cmmi-10">,  </span> 
+ <span 
+class="cmmi-10">w</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,w</span><sub><span 
+class="cmmi-7">n</span></sub>  
+any integers (including 0), defines
+ deg(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup>) = <span 
+class="cmmi-10">w</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmr-7">1</span></sub> + <img 
+src="sing_tex4ht_tex46x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="cdots" > + <span 
+class="cmmi-10">w</span><sub><span 
+class="cmmi-7">n</span></sub><span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmmi-7">n</span></sub>  
+and
 <br>
-       <span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">a</span></sup><span 
-class="cmmi-10">y</span><sup><span 
-class="cmmi-7">b</span></sup> <span 
-class="cmmi-10">&#x003C; x</span><sup><span 
-class="cmmi-7">A</span></sup><span 
-class="cmmi-10">y</span><sup><span 
-class="cmmi-7">B</span></sup> <span 
-class="cmsy-10">&#x21D4; </span><span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">a</span></sup> <span 
-class="cmmi-10">&#x003C;</span> <sub><span 
-class="cmr-7">1</span></sub><span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">A</span></sup> or (<span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">a</span></sup> = <span 
-class="cmmi-10">x</span><sup><span 
-class="cmmi-7">A</span></sup> and <span 
-class="cmmi-10">y</span><sup><span 
-class="cmmi-7">b</span></sup> <span 
-class="cmmi-10">&#x003C;</span> <sub><span 
-class="cmr-7">2</span></sub><span 
-class="cmmi-10">y</span><sup><span 
-class="cmmi-7">B</span></sup>).  
+
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex47x.png" alt="deg(x&#x03B1;) &#x003C; deg(x&#x03B2;) &#x21D2; x&#x03B1; &#x003C; x&#x03B2;,  " class="math-display" ></center>  
+
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex48x.png" alt="deg(x&#x03B1;) &#x003E; deg(x&#x03B2;) &#x21D2; x&#x03B1; &#x003E; x&#x03B2;.  " class="math-display" ></center>  
+<br>An extra weight vector does not define a monomial ordering by itself:
+it can only be used in combination with other orderings
+to insert an extra line of weights into the ordering
+matrix.
 </p>
-<p>Inductively one defines the product ordering of more than two monomial
-orderings.
-</p>
-<p>In <small>SINGULAR</small>, any of the above global orderings, local orderings or matrix
-orderings may be combined (in an arbitrary manner and length) to a product
-ordering.   E.g., <code>(lp(3), M(1, 2, 3, 1, 1, 1, 1, 0, 0), ds(4),
-ws(1,2,3))</code> 
-defines: <code>lp</code> on the first 3 variables, the matrix ordering
-<code>M(1, 2, 3, 1, 1, 1, 1, 0, 0)</code> on the next 3 variables,
-<code>ds</code> on the next 4 variables and
-<code>ws(1,2,3)</code> on the last 3 variables.
-</p>
+<br><p><strong>Example</strong>:
+</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0, (x,y,z),  (a(1,2,3),wp(4,5,2));
+ring s = 0, (x,y,z),  (a(1,2,3),dp);
+ring q = 0, (a,b,c,d),(lp(1),a(1,2,3),ds);
+</pre></td></tr></table>
+
 </td>
 </tr>
 </table>
@@ -174,14 +150,14 @@ defines: <code>lp</code> on the first 3 variables, the matrix ordering
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_368.htm#Matrix-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.6 Matrix orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_370.htm#Extra-weight-vector" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.8 Extra weight vector" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_360.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_371.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_362.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_368.htm#Product-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.7 Product orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_359.htm#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_370.htm#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_361.htm#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

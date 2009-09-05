@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.113 setring</title>
+<title>Singular 2-0-4 Manual: 5.1.114 simplex</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.113 setring">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.113 setring">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.114 simplex">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.114 simplex">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -43,7 +43,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="setring"></a>
+<a name="simplex"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -55,28 +55,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_267.htm#rvar" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.112 rvar" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_267.htm#setring" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.113 setring" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_269.htm#simplex" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.114 simplex" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_269.htm#simplify" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.115 simplify" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -84,46 +84,140 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="setring-1"></a>
-<h3 class="subsection">5.1.113 setring</h3>
-<a name="index-setring"></a>
+<a name="simplex-1"></a>
+<h3 class="subsection">5.1.114 simplex</h3>
+<a name="index-simplex"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>setring</code> ring_name
+<dd><p><code>simplex (</code> matrix_expression<code>,</code> int_expression<code>,</code> 
+int_expression<code>,</code> int_expression<code>,</code> int_expression<code>,</code> 
+int_expression<code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
-<dd><p>none
+<dd><p>list
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p>changes the basering to another (already defined) ring.
-</p></dd>
-<dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1=0,(x,y),lp;
-  // the basering is r1
-  ring r2=32003,(a(1..8)),ds;
-  // the basering is r2
-  setring r1;
-  // the basering is again r1
-  nameof(basering);
-&rarr; r1
-  listvar();
-&rarr; // r2                   [0]  ring
-&rarr; // r1                   [0]  *ring
-&rarr; // LIB                  [0]  string standard.lib
-</pre></td></tr></table>
-</dd>
-<dt><code><strong>Use in procedures:</strong></code></dt>
-<dd><p>All changes of the basering by a definition of a new ring or a
-<code>setring</code> command in a procedure are local to this procedure.  Use
-<code>keepring</code> to move a ring, which is local to a procedure, up by one
-nesting level.
+<dd><p>perform the simplex algorithm for the tableau given by the input, e.g.
+M,m,n,m1,m2,m3: 
 </p>
+<dl compact="compact">
+<dt>M matrix of numbers :</dt>
+<dd><p>     first row describing the objective function (maximize problem), 
+     the remaining rows describing constraints; 
+</p></dd>
+<dt>m,n,m1,m2,m3 int :</dt>
+<dd><p>     n = number of variables; 
+     m = total number of constraints; 
+     m1 = number of &lt;=constraints (rows 2 ... m1+1 of M); 
+     m2 = number of &gt;=constraints (rows m1+2 ... m1+m2+1 of M); 
+     m3 = number of == constraints.
+</p></dd>
+</dl>
+
+
+<p>The following assumptions are made: 
+</p><dl compact="compact">
+<dt>* ground field is of type <code>(real,N)</code>, N&gt;=4;</dt>
+<dt>* the matrix M is of size m x n;</dt>
+<dt>* m=m1+m2+m3;</dt>
+<dt>* the entries M[2,1] ,..., M[m+1,1] are non-negative;</dt>
+<dt>* the variables x(i) are non-negative;</dt>
+<dt>* a row  b, a(1) ,..., a(n)  corresponds to  b+a(1)x(1)+...+a(n)x(n);</dt>
+<dt>* for a &lt;=, &gt;=, or == constraint: add &quot;in mind&quot; &gt;=0, &lt;=0, or ==0.</dt>
+</dl>
+  
+
+<p>The output is a list L with 
+</p><dl compact="compact">
+<dt>* L[1] = matrix</dt>
+<dt>* L[2] = int:</dt>
+<dd><p>    0 = finite solution found;  1 = unbounded;  -1 = no solution;  
+   -2 = error occured;
+</p></dd>
+<dt>* L[3] = intvec :</dt>
+<dd><p>   L[3][k] = number of variable which corresponds to row k+1 of L[1];             
+</p></dd>
+<dt>* L[4] = intvec :</dt>
+<dd><p>   L[4][j] = number of variable which is represented by column j+1 of L[1] 
+   (&quot;non-basis variable&quot;);
+</p></dd>
+<dt>* L[5] = int :</dt>
+<dd><p>   number of constraints (= m);
+</p></dd>
+<dt>* L[6] = int :</dt>
+<dd><p>   number of variables (= n).
+</p></dd>
+</dl>
+
+<p>The solution can be read from the first column of L[1] as is done by the 
+procedure <a href="sing_838.htm#simplexOut">simplexOut</a> in <code>solve.lib</code>. 
+</p>
+</dd>
+<dt><code><strong>Example:</strong></code></dt>
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">    ring r = (real,10),(x),lp;
+
+    // consider the max. problem:
+    //
+    //    maximize  x(1) + x(2) + 3*x(3) - 0.5*x(4)
+    //
+    //  with constraints:   x(1) +          2*x(3)          &lt;= 740
+    //                             2*x(2)          - 7*x(4) &lt;=   0
+    //                               x(2) -   x(3) + 2*x(4) &gt;=   0.5
+    //                      x(1) +   x(2) +   x(3) +   x(4)  =   9
+    //
+    matrix sm[5][5]=(  0, 1, 1, 3,-0.5,
+                     740,-1, 0,-2, 0,
+                       0, 0,-2, 0, 7,
+                     0.5, 0,-1, 1,-2,
+                       9,-1,-1,-1,-1);
+
+    int n = 4;  // number of constraints
+    int m = 4;  // number of variables
+    int m1= 2;  // number of &lt;= constraints
+    int m2= 1;  // number of &gt;= constraints
+    int m3= 1;  // number of == constraints
+    simplex(sm, n, m, m1, m2, m3);
+&rarr; [1]:
+&rarr;    _[1,1]=17.025
+&rarr;    _[1,2]=-0.95
+&rarr;    _[1,3]=-0.05
+&rarr;    _[1,4]=1.95
+&rarr;    _[1,5]=-1.05
+&rarr;    _[2,1]=730.55
+&rarr;    _[2,2]=0.1
+&rarr;    _[2,3]=-0.1
+&rarr;    _[2,4]=-1.1
+&rarr;    _[2,5]=0.9
+&rarr;    _[3,1]=3.325
+&rarr;    _[3,2]=-0.35
+&rarr;    _[3,3]=-0.15
+&rarr;    _[3,4]=0.35
+&rarr;    _[3,5]=0.35
+&rarr;    _[4,1]=0.95
+&rarr;    _[4,2]=-0.1
+&rarr;    _[4,3]=0.1
+&rarr;    _[4,4]=0.1
+&rarr;    _[4,5]=0.1
+&rarr;    _[5,1]=4.725
+&rarr;    _[5,2]=-0.55
+&rarr;    _[5,3]=0.05
+&rarr;    _[5,4]=0.55
+&rarr;    _[5,5]=-0.45
+&rarr; [2]:
+&rarr;    0
+&rarr; [3]:
+&rarr;    5,2,4,3
+&rarr; [4]:
+&rarr;    1,6,8,7
+&rarr; [5]:
+&rarr;    4
+&rarr; [6]:
+&rarr;    4
+</pre></td></tr></table>
 </dd>
 </dl>
 <p>See
-<a href="sing_302.htm#keepring">keepring</a>;
-<a href="sing_133.htm#qring">qring</a>;
-<a href="sing_139.htm#ring">ring</a>.
+<a href="sing_838.htm#simplexOut">simplexOut</a>.
 </p></td>
 </tr>
 </table>
@@ -133,14 +227,14 @@ nesting level.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_267.htm#rvar" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.112 rvar" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_269.htm#simplex" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.114 simplex" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_267.htm#setring" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.113 setring" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_269.htm#simplify" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.115 simplify" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

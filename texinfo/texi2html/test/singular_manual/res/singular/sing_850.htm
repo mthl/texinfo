@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: D.7.4.1 nt_solve</title>
+<title>Singular 2-0-4 Manual: D.7.4.2 triMNewton</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: D.7.4.1 nt_solve">
-<meta name="keywords" content="Singular 2-0-4 Manual: D.7.4.1 nt_solve">
+<meta name="description" content="Singular 2-0-4 Manual: D.7.4.2 triMNewton">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7.4.2 triMNewton">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="nt_005fsolve"></a>
+<a name="triMNewton"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_849.htm#ntsolve_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.4 ntsolve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_849.htm#nt_005fsolve" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.4.1 nt_solve" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_851.htm#triMNewton" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.4.2 triMNewton" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_851.htm#zeroset_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5 zeroset_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_849.htm#ntsolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.4 ntsolve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_848.htm#ntsolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.4 ntsolve_lib" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,51 +82,45 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="nt_005fsolve-1"></a>
-<h4 class="subsubsection">D.7.4.1 nt_solve</h4>
-<a name="index-nt_005fsolve"></a>
-<p>Procedure from library <code>ntsolve.lib</code> (see <a href="sing_849.htm#ntsolve_005flib">ntsolve_lib</a>).
+<a name="triMNewton-1"></a>
+<h4 class="subsubsection">D.7.4.2 triMNewton</h4>
+<a name="index-triMNewton"></a>
+<p>Procedure from library <code>ntsolve.lib</code> (see <a href="sing_848.htm#ntsolve_005flib">ntsolve_lib</a>).
 </p>
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
-<dd><p>nt_solve(gls,ini[,ipar]); gls,ini= ideals, ipar=list/intvec,<br>
-gls: contains the equations, for which a solution will be computed
-ini: ideal of initial values (approximate solutions to start with),<br>
-ipar: control integers (default: ipar = 100,10)
-  </p><table><tr><td>&nbsp;</td><td><pre class="format"> ipar[1]: max. number of iterations
- ipar[2]: accuracy (we have the l_2-norm ||.||): accept solution <code>sol</code>
-          if ||gls(sol)|| &lt; eps0*(0.1^ipar[2])
-          where eps0 = ||gls(ini)|| is the initial error
+<dd><p>triMNewton(G,a[,ipar]); G,a= ideals, ipar=list/intvec
+</p>
+</dd>
+<dt><strong>Assume:</strong></dt>
+<dd><p>G: g1,..,gn, a triangular system of n equations in n vars, i.e.
+gi=gi(var(n-i+1),..,var(n)),<br>
+a: ideal of numbers, coordinates of an approximation of a common
+zero of G to start with (with a[i] to be substituted in var(i)),<br>
+ipar: control integer vector (default: ipar = 100,10)
+  </p><table><tr><td>&nbsp;</td><td><pre class="format">  ipar[1]: max. number of iterations
+  ipar[2]: accuracy (we have as norm |.| absolute value ):
+           accept solution <code>sol</code> if |G(sol)| &lt; |G(a)|*(0.1^ipar[2]).
   </pre></td></tr></table>
 
 </dd>
-<dt><strong>Assume:</strong></dt>
-<dd><p>gls is a zerodimensional ideal with nvars(basering) = size(gls) (&gt;1)
-</p>
-</dd>
 <dt><strong>Return:</strong></dt>
-<dd><p>ideal, coordinates of one solution (if found), 0 else
-</p>
-</dd>
-<dt><strong>Note:</strong></dt>
-<dd><p>if printlevel &gt;0: displays comments (default =0)
+<dd><p>an ideal, coordinates of a better approximation of a zero of G
 </p>
 </dd>
 </dl>
 <p><strong>Example:</strong>
 </p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;ntsolve.lib&quot;;
-ring rsq = (real,40),(x,y,z,w),lp;
-ideal gls =  x2+y2+z2-10, y2+z3+w-8, xy+yz+xz+w5 - 1,w3+y;
-ideal ini = 3.1,2.9,1.1,0.5;
-intvec ipar = 200,0;
-ideal sol = nt_solve(gls,ini,ipar);
-sol;
-&rarr; sol[1]=0.8698104581550055082008024750939710335537
-&rarr; sol[2]=2.8215774457503246008496262517717182369409
-&rarr; sol[3]=1.1323120084664179900060940157112668717318
-&rarr; sol[4]=-1.413071026406678849397999475590194239628
+ring r = (real,30),(z,y,x),(lp);
+ideal i = x^2-1,y^2+x4-3,z2-y4+x-1;
+ideal a = 2,3,4;
+intvec e = 20,10;
+ideal l = triMNewton(i,a,e);
+l;
+&rarr; l[1]=-2.000000000042265738880279143423
+&rarr; l[2]=1.41421356237309504880168872421
+&rarr; l[3]=1
 </pre></td></tr></table>
-
 </td>
 </tr>
 </table>
@@ -136,14 +130,14 @@ sol;
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_849.htm#ntsolve_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.4 ntsolve_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_851.htm#triMNewton" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.4.2 triMNewton" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_389.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_909.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_849.htm#ntsolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.4 ntsolve_lib" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_849.htm#nt_005fsolve" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.4.1 nt_solve" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_851.htm#zeroset_005flib" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5 zeroset_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_388.htm#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_908.htm#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_848.htm#ntsolve_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7.4 ntsolve_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

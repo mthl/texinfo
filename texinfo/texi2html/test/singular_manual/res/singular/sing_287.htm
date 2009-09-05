@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 5.1.132 vandermonde</title>
+<title>Singular 2-0-4 Manual: 5.1.133 var</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 5.1.132 vandermonde">
-<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.132 vandermonde">
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.133 var">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.133 var">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -41,7 +41,7 @@ ul.toc {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="vandermonde"></a>
+<a name="var"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -53,28 +53,28 @@ ul.toc {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_286.htm#uressolve" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.131 uressolve" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_286.htm#vandermonde" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.132 vandermonde" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_288.htm#var" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.133 var" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_288.htm#varstr" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.134 varstr" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -82,106 +82,32 @@ ul.toc {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="vandermonde-1"></a>
-<h3 class="subsection">5.1.132 vandermonde</h3>
-<a name="index-vandermonde"></a>
+<a name="var-1"></a>
+<h3 class="subsection">5.1.133 var</h3>
+<a name="index-var"></a>
 <dl compact="compact">
 <dt><code><strong>Syntax:</strong></code></dt>
-<dd><p><code>vandermonde (</code> ideal_expression<code>,</code> ideal_expression<code>,</code>
-int_expression <code>)</code>
+<dd><p><code>var (</code> int_expression <code>)</code>
 </p></dd>
 <dt><code><strong>Type:</strong></code></dt>
 <dd><p>poly
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
-<dd><p><TT>vandermonde(p,v,d)</TT> computes the (unique) polynomial of degree
-@coded with prescribed values <TT>v[1],...,v[N]</TT> at the points
-<TT>p</TT><SPAN CLASS="MATH"><IMG
- WIDTH="41" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_145.png"
- ALT="$^0,\dots,$"></SPAN> <TT>p</TT><SPAN CLASS="MATH"><IMG
- WIDTH="30" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_146.png"
- ALT="$^{N-1}$"></SPAN>, <TT>N=(d+1)</TT><SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_81.png"
- ALT="$^n$"></SPAN>, <SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_17.png"
- ALT="$n$"></SPAN> the
-number of ring variables.
-
-<P>
-The returned polynomial is <!-- MATH
- $\sum
-c_{\alpha_1\ldots\alpha_n}\cdot x_1^{\alpha_1} \cdot \dots \cdot
-x_n^{\alpha_n}$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="165" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_147.png"
- ALT="$\sum
-c_{\alpha_1\ldots\alpha_n}\cdot x_1^{\alpha_1} \cdot \dots \cdot
-x_n^{\alpha_n}$"></SPAN>, where the coefficients
-<!-- MATH
- $c_{\alpha_1\ldots\alpha_n}$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="50" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_148.png"
- ALT="$c_{\alpha_1\ldots\alpha_n}$"></SPAN> are the solution of the (transposed)
-Vandermonde system of linear equations
-<BR><P></P>
-<DIV ALIGN="CENTER" CLASS="mathdisplay">
-<!-- MATH
- \begin{displaymath}
-\sum_{\alpha_1+\ldots+\alpha_n\leq d} c_{\alpha_1\ldots\alpha_n} \cdot
-{\tt p}_1^{(k-1)\alpha_1}\cdot\dots\cdot {\tt p}_n^{(k-1)\alpha_n} =
-{\tt v}[k], \quad  k=1,\dots,{\tt N}.
-\end{displaymath}
- -->
-
-<IMG
- WIDTH="425" HEIGHT="44" BORDER="0"
- SRC="sing_149.png"
- ALT="\begin{displaymath}\sum_{\alpha_1+\ldots+\alpha_n\leq d} c_{\alpha_1\ldots\alpha...
-...\tt p}_n^{(k-1)\alpha_n} =
-{\tt v}[k], \quad k=1,\dots,{\tt N}.\end{displaymath}">
-</DIV>
-<BR CLEAR="ALL">
-<P></P>
-</p></dd>
-<dt><code><strong>Note:</strong></code></dt>
-<dd><p>the ground field has to be the field of rational
-numbers. Moreover, <TT>ncols(p)==</TT><SPAN CLASS="MATH"><IMG
- WIDTH="12" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_17.png"
- ALT="$n$"></SPAN>, the number of variables in the
-basering, and all the given generators have to be numbers different from
-0,1 or -1. Finally, <TT>ncols(v)==(d+1)<SPAN CLASS="MATH"><IMG
- WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
- SRC="sing_81.png"
- ALT="$^n$"></SPAN></TT>, and all given generators have
-to be numbers.
+<dd><p><code>var(n)</code> returns the n-th ring variable.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x,y),dp;
-// determine f with deg(f)=2 and with given values v of f
-// at 9 points: (2,3)^0=(1,1),...,(2,3)^8=(2^8,3^8)
-// valuation point: (2,3)
-ideal p=2,3;
-ideal v=1,2,3,4,5,6,7,8,9;
-poly ip=vandermonde(p,v,2);
-ip[1..5];  //  the 5 first terms of ip:
-&rarr; -1/9797760x2y2-595/85536x2y+55/396576xy2+935/384x2-1309/3240xy
-// compute value of ip at the point 2^8,3^8, result must be 9
-subst(subst(ip,x,2^8),y,3^8);
-&rarr; 9
+<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+  var(2);
+&rarr; y
 </pre></td></tr></table>
 </dd>
 </dl>
-
-</td>
+<p>See
+<a href="sing_73.htm#int">int</a>;
+<a href="sing_241.htm#nvars">nvars</a>;
+<a href="sing_138.htm#ring">ring</a>;
+<a href="sing_288.htm#varstr">varstr</a>.
+</p></td>
 </tr>
 </table>
 <hr>
@@ -190,14 +116,14 @@ subst(subst(ip,x,2^8),y,3^8);
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_286.htm#uressolve" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.131 uressolve" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_288.htm#var" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.133 var" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_154.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_319.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_155.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
-<td valign="middle" align="left"><a href="index.htm#Top" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: Singular 2-0-4 Manual" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_286.htm#vandermonde" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.132 vandermonde" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_288.htm#varstr" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.134 varstr" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_153.htm#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_318.htm#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_154.htm#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_915.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">
