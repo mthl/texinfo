@@ -630,6 +630,9 @@ deffn with @}
 @deftypeop Command@code{com} {Window@code{int}} expose@var{exp}
 @end deftypeop
 
+@defun apply function &rest arguments
+@end defun
+
 @c deffn
 @deffn
 @end deffn

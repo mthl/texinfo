@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.324 2009-09-05 07:23:47 pertusus Exp $
+# $Id: texi2html.pl,v 1.325 2009-09-06 12:52:38 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -621,6 +621,7 @@ $punctuation_characters
 $after_punctuation_characters
 @command_handler_init
 @command_handler_process
+@command_handler_output
 @command_handler_finish
 %command_handler
 %special_style
@@ -5571,6 +5572,7 @@ sub misc_command_text($$$$$$)
         if ($line =~ /\s+(.+)/)
         {
             my $arg = $1;
+            $arg = trim_around_spaces($arg);
             my $file = locate_include_file(substitute_line($arg, "\@$macro", {'code_style' => 1}));
             if (defined($file))
             {
@@ -7679,33 +7681,23 @@ sub pass_text($$)
     # prepare %Texi2HTML::THISDOC
     $Texi2HTML::THISDOC{'command_stack'} = $state{'command_stack'};
 
-#    $Texi2HTML::THISDOC{'settitle_texi'} = $value{'_settitle'};
-    $Texi2HTML::THISDOC{'fulltitle_texi'} = '';
-    $Texi2HTML::THISDOC{'title_texi'} = '';
-    foreach my $possible_fulltitle (('_settitle', '_title', '_shorttitlepage', '_titlefont'))
-    {
-        if ($value{$possible_fulltitle} ne '')
-        {
-            $Texi2HTML::THISDOC{'fulltitle_texi'} = $value{$possible_fulltitle};
-            last;
-        }
-    }
-#    foreach my $possible_title_texi ($value{'_settitle'}, $Texi2HTML::THISDOC{'fulltitle_texi'})
-#    {
-#        if ($possible_title_texi ne '')
-#        {
-#            $Texi2HTML::THISDOC{'title_texi'} = $possible_title_texi;
-#            last;
-#        }
-#    }
-
-#    $Texi2HTML::THISDOC{'fulltitle_texi'} = $value{'_title'} || $value{'_settitle'} || $value{'_shorttitlepage'} || $value{'_titlefont'};
-#    $Texi2HTML::THISDOC{'title_texi'} = $value{'_title'} || $value{'_settitle'} || $value{'_shorttitlepage'} || $value{'_titlefont'};
     foreach my $texi_cmd (('shorttitlepage', 'settitle', 'author', 'title',
            'titlefont', 'subtitle'))
     {
         $Texi2HTML::THISDOC{$texi_cmd . '_texi'} = $value{'_' . $texi_cmd};
     }
+    $Texi2HTML::THISDOC{'top_texi'} = $section_top->{'texi'} if (defined($section_top));
+
+    $Texi2HTML::THISDOC{'fulltitle_texi'} = '';
+    foreach my $possible_fulltitle('settitle', 'title', 'shorttitlepage', 'top', 'titlefont')
+    {
+        if (defined($Texi2HTML::THISDOC{$possible_fulltitle . '_texi'}) and $Texi2HTML::THISDOC{$possible_fulltitle . '_texi'} =~ /\S/)
+        {
+            $Texi2HTML::THISDOC{'fulltitle_texi'} = $Texi2HTML::THISDOC{$possible_fulltitle . '_texi'};
+            last;
+        }
+    }
+
     foreach my $doc_thing (('shorttitlepage', 'settitle', 'author',
            'titlefont', 'subtitle', 'title', 'fulltitle'))
     {
@@ -7732,7 +7724,6 @@ sub pass_text($$)
     }
     foreach my $possible_top_name ($Texi2HTML::Config::TOP_HEADING, 
          $element_top_text, $Texi2HTML::THISDOC{'fulltitle'},
-         #$Texi2HTML::THISDOC{'shorttitle'}, 
          &$I('Top'))
     {
          if (defined($possible_top_name) and $possible_top_name ne '')
@@ -7743,7 +7734,6 @@ sub pass_text($$)
     }
     foreach my $possible_top_no_texi ($Texi2HTML::Config::TOP_HEADING, 
          $top_no_texi, $Texi2HTML::THISDOC{'fulltitle_no_texi'},
-         #$Texi2HTML::THISDOC{'shorttitle_no_texi'}, 
          &$I('Top',{},{'remove_texi' => 1}))
     {
          if (defined($possible_top_no_texi) and $possible_top_no_texi ne '')
@@ -7755,7 +7745,6 @@ sub pass_text($$)
      
     foreach my $possible_top_simple_format ($top_simple_format,
          $Texi2HTML::THISDOC{'fulltitle_simple_format'},
-         #$Texi2HTML::THISDOC{'shorttitle_simple_format'},
          &$I('Top',{}, {'simple_format' => 1}))
     {
          if (defined($possible_top_simple_format) and $possible_top_simple_format ne '')
@@ -7765,28 +7754,6 @@ sub pass_text($$)
          }
     }
      
-     
-#    my $top_name = $Texi2HTML::Config::TOP_HEADING || $element_top_text || $Texi2HTML::THISDOC{'title'} || $Texi2HTML::THISDOC{'shorttitle'} || &$I('Top');
-
-    if ($Texi2HTML::THISDOC{'fulltitle_texi'} eq '')
-    {
-         $Texi2HTML::THISDOC{'fulltitle_texi'} = &$I('Untitled Document',{},
-           {'keep_texi' => 1});
-    }
-    #$Texi2HTML::THISDOC{'title_texi'} = $Texi2HTML::THISDOC{'settitle_texi'};
-    #$Texi2HTML::THISDOC{'title_texi'} = $Texi2HTML::THISDOC{'fulltitle_texi'} 
-    #        if ($Texi2HTML::THISDOC{'title_texi'} eq '');
-
-    foreach my $doc_thing (('fulltitle')) # title
-    {
-        my $thing_texi = $Texi2HTML::THISDOC{$doc_thing . '_texi'};
-        $Texi2HTML::THISDOC{$doc_thing} = substitute_line($thing_texi, "\@$doc_thing");
-        $Texi2HTML::THISDOC{$doc_thing . '_no_texi'} =
-           remove_texi($thing_texi);
-        $Texi2HTML::THISDOC{$doc_thing . '_simple_format'} =
-           simple_format(undef, undef, $thing_texi);
-    }
-
     $Texi2HTML::THISDOC{'program'} = $THISPROG;
     $Texi2HTML::THISDOC{'program_homepage'} = $T2H_HOMEPAGE;
     $Texi2HTML::THISDOC{'program_authors'} = $T2H_AUTHORS;
@@ -7850,6 +7817,13 @@ sub pass_text($$)
 
     &$Texi2HTML::Config::init_out();
 
+    texinfo_initialization(2);
+
+    foreach my $handler(@Texi2HTML::Config::command_handler_output)
+    {
+        &$handler;
+    }
+
     ############################################################################
     # print frame and frame toc file
     #
@@ -7866,7 +7840,6 @@ sub pass_text($$)
         close_out($FH, $docu_toc_frame_file);
     }
 
-    texinfo_initialization(2);
 
 
     ############################################################################
@@ -8522,7 +8495,7 @@ sub document_warn ($)
    my $text = shift;
    chomp ($text);
    #warn "$WARN $text\n";
-   warn "$text\n";
+   warn "warning: $text\n";
 }
 
 my $error_nrs = 0;

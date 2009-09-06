@@ -373,6 +373,8 @@ Test for definition commands
 
  -- Command on `com': Window`int' exposeEXP
 
+ -- Function: apply function &rest arguments
+
  -- :
 
  -- :
@@ -430,13 +432,13 @@ Test for definition commands
  [index ]
 * Menu:
 
-* `A2':                                  Top.                 (line 296)
-* `A3':                                  Top.                 (line 304)
-* `A4' of `A2':                          Top.                 (line 316)
-* A2:                                    Top.                 (line 294)
-* A3:                                    Top.                 (line 302)
-* A3:                                    Top.                 (line 310)
-* A4 of A2:                              Top.                 (line 314)
+* `A2':                                  Top.                 (line 298)
+* `A3':                                  Top.                 (line 306)
+* `A4' of `A2':                          Top.                 (line 318)
+* A2:                                    Top.                 (line 296)
+* A3:                                    Top.                 (line 304)
+* A3:                                    Top.                 (line 312)
+* A4 of A2:                              Top.                 (line 316)
 * border-pattern:                        Top.                 (line 232)
 * border-pattern of Window:              Top.                 (line 235)
 * d-efcv_name:                           Top.                 (line  58)
@@ -465,18 +467,19 @@ Test for definition commands
 * ,expose on ,Window:                    Top.                 (line 248)
 * ;expose on ;Window:                    Top.                 (line 264)
 * ;expose on ;Window:                    Top.                 (line 268)
-* `A2':                                  Top.                 (line 292)
-* `A3':                                  Top.                 (line 300)
-* `A3' on `A2':                          Top.                 (line 320)
-* `A4' on `A2':                          Top.                 (line 324)
+* `A2':                                  Top.                 (line 294)
+* `A3':                                  Top.                 (line 302)
+* `A3' on `A2':                          Top.                 (line 322)
+* `A4' on `A2':                          Top.                 (line 326)
 * `int' on ):                            Top.                 (line 260)
 * `int' on ,:                            Top.                 (line 252)
-* A2:                                    Top.                 (line 290)
-* A3:                                    Top.                 (line 298)
-* A3 on A2:                              Top.                 (line 318)
-* A4 on A2:                              Top.                 (line 322)
+* A2:                                    Top.                 (line 292)
+* A3:                                    Top.                 (line 300)
+* A3 on A2:                              Top.                 (line 320)
+* A4 on A2:                              Top.                 (line 324)
 * after:                                 Top.                 (line  37)
 * after:                                 Top.                 (line 137)
+* apply:                                 Top.                 (line 272)
 * bidule machin:                         Top.                 (line  26)
 * bidule machin:                         Top.                 (line 126)
 * d-effn_name:                           Top.                 (line   6)

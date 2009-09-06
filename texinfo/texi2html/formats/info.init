@@ -220,8 +220,8 @@ $info_default_listoffloat_caption_entry_length = 41;
 #$info_default_listoffloat_append = '...:    ';
 $info_default_listoffloat_append = '...';
 
-push @command_handler_init, \&info_default_init_accent_enable_encoding;
-push @command_handler_init, \&info_default_init_variables;
+t2h_default_push_handler(\&info_default_init_accent_enable_encoding, \@command_handler_init);
+t2h_default_push_handler(\&info_default_init_variables, \@command_handler_init);
 
 
 $style = \&info_default_style;

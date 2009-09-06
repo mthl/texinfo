@@ -66,7 +66,7 @@ $HEADERS = 0;
 # certainly irrelevant
 $SIMPLE_MENU = 0;
 
-push @command_handler_init, \&docbook_initialize_variables;
+t2h_default_push_handler(\&docbook_initialize_variables, \@command_handler_init);
 
 %style_map = ();
 t2h_default_copy_style_map (\%default_style_map, \%style_map);

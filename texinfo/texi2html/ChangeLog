@@ -1,3 +1,13 @@
+2009-09-06   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, formats/html.init: use @top for fulltitle. Don't
+	set fulltitle to 'Untitled Document' in main program.
+	Warn if there is no title available.
+	New handler @command_handler_output called right before document
+	output, after initializations.
+	* texi2html.pl, texi2html.init, formats/*: put the functions in 
+	the handlers only once.
+
 2009-09-05   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: Consider the Top node as an element only 

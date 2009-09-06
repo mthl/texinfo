@@ -241,6 +241,8 @@ d--eftypemethod
 
  -- Command on com: Windowint exposeexp
 
+ -- Function: apply function &rest arguments
+
  -- :
 
  -- :
@@ -338,6 +340,7 @@ d--eftypemethod
 * A4 on A2: Test for definition commands.
 * after: Test for definition commands.
 * after: Test for definition commands.
+* apply: Test for definition commands.
 * bidule machin: Test for definition commands.
 * bidule machin: Test for definition commands.
 * d-effn_name: Test for definition commands.

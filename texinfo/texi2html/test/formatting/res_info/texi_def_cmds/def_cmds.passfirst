@@ -482,106 +482,109 @@ def_cmds.texi(,245)
 def_cmds.texi(,246) @deftypeop Command@code{com} {Window@code{int}} expose@var{exp}
 def_cmds.texi(,247) @end deftypeop
 def_cmds.texi(,248) 
-def_cmds.texi(,249) @c deffn
-def_cmds.texi(,250) @deffn
-def_cmds.texi(,251) @end deffn
-def_cmds.texi(,252) 
-def_cmds.texi(,253) @c defvr
-def_cmds.texi(,254) @defvr
-def_cmds.texi(,255) @end defvr
-def_cmds.texi(,256) 
-def_cmds.texi(,257) @c deftypefn
-def_cmds.texi(,258) @deftypefn
-def_cmds.texi(,259) @end deftypefn
-def_cmds.texi(,260) 
-def_cmds.texi(,261) @c deftypeop
-def_cmds.texi(,262) @deftypeop
-def_cmds.texi(,263) @end deftypeop
-def_cmds.texi(,264) 
-def_cmds.texi(,265) @c deftypevr
-def_cmds.texi(,266) @deftypevr
-def_cmds.texi(,267) @end deftypevr
-def_cmds.texi(,268) 
-def_cmds.texi(,269) @c defcv
-def_cmds.texi(,270) @defcv
-def_cmds.texi(,271) @end defcv
-def_cmds.texi(,272) 
-def_cmds.texi(,273) @c deftypecv
-def_cmds.texi(,274) @deftypecv
-def_cmds.texi(,275) @end deftypecv
-def_cmds.texi(,276) 
-def_cmds.texi(,277) @c defop
-def_cmds.texi(,278) @defop
-def_cmds.texi(,279) @end defop
-def_cmds.texi(,280) 
-def_cmds.texi(,281) @c deftp
-def_cmds.texi(,282) @deftp
-def_cmds.texi(,283) @end deftp
-def_cmds.texi(,284) 
-def_cmds.texi(,285) @c deffn
-def_cmds.texi(,286) @deffn @var{A1} @var{A2} @var{A3} @var{A4}
-def_cmds.texi(,287) @end deffn
-def_cmds.texi(,288) 
-def_cmds.texi(,289) @deffn @code{A1} @code{A2} @code{A3} @code{A4}
+def_cmds.texi(,249) @defun apply function &rest arguments
+def_cmds.texi(,250) @end defun
+def_cmds.texi(,251) 
+def_cmds.texi(,252) @c deffn
+def_cmds.texi(,253) @deffn
+def_cmds.texi(,254) @end deffn
+def_cmds.texi(,255) 
+def_cmds.texi(,256) @c defvr
+def_cmds.texi(,257) @defvr
+def_cmds.texi(,258) @end defvr
+def_cmds.texi(,259) 
+def_cmds.texi(,260) @c deftypefn
+def_cmds.texi(,261) @deftypefn
+def_cmds.texi(,262) @end deftypefn
+def_cmds.texi(,263) 
+def_cmds.texi(,264) @c deftypeop
+def_cmds.texi(,265) @deftypeop
+def_cmds.texi(,266) @end deftypeop
+def_cmds.texi(,267) 
+def_cmds.texi(,268) @c deftypevr
+def_cmds.texi(,269) @deftypevr
+def_cmds.texi(,270) @end deftypevr
+def_cmds.texi(,271) 
+def_cmds.texi(,272) @c defcv
+def_cmds.texi(,273) @defcv
+def_cmds.texi(,274) @end defcv
+def_cmds.texi(,275) 
+def_cmds.texi(,276) @c deftypecv
+def_cmds.texi(,277) @deftypecv
+def_cmds.texi(,278) @end deftypecv
+def_cmds.texi(,279) 
+def_cmds.texi(,280) @c defop
+def_cmds.texi(,281) @defop
+def_cmds.texi(,282) @end defop
+def_cmds.texi(,283) 
+def_cmds.texi(,284) @c deftp
+def_cmds.texi(,285) @deftp
+def_cmds.texi(,286) @end deftp
+def_cmds.texi(,287) 
+def_cmds.texi(,288) @c deffn
+def_cmds.texi(,289) @deffn @var{A1} @var{A2} @var{A3} @var{A4}
 def_cmds.texi(,290) @end deffn
 def_cmds.texi(,291) 
-def_cmds.texi(,292) @c defvr
-def_cmds.texi(,293) @defvr @var{A1} @var{A2} @var{A3} @var{A4}
-def_cmds.texi(,294) @end defvr
-def_cmds.texi(,295) 
-def_cmds.texi(,296) @defvr @code{A1} @code{A2} @code{A3} @code{A4}
+def_cmds.texi(,292) @deffn @code{A1} @code{A2} @code{A3} @code{A4}
+def_cmds.texi(,293) @end deffn
+def_cmds.texi(,294) 
+def_cmds.texi(,295) @c defvr
+def_cmds.texi(,296) @defvr @var{A1} @var{A2} @var{A3} @var{A4}
 def_cmds.texi(,297) @end defvr
 def_cmds.texi(,298) 
-def_cmds.texi(,299) @c deftypefn
-def_cmds.texi(,300) @deftypefn @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
-def_cmds.texi(,301) @end deftypefn
-def_cmds.texi(,302) 
-def_cmds.texi(,303) @deftypefn @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+def_cmds.texi(,299) @defvr @code{A1} @code{A2} @code{A3} @code{A4}
+def_cmds.texi(,300) @end defvr
+def_cmds.texi(,301) 
+def_cmds.texi(,302) @c deftypefn
+def_cmds.texi(,303) @deftypefn @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
 def_cmds.texi(,304) @end deftypefn
 def_cmds.texi(,305) 
-def_cmds.texi(,306) @c deftypevr
-def_cmds.texi(,307) @deftypevr @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
-def_cmds.texi(,308) @end deftypevr
-def_cmds.texi(,309) 
-def_cmds.texi(,310) @deftypevr @code{A1} @t{A2} @code{A3} @code{A4} @code{A5}
+def_cmds.texi(,306) @deftypefn @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+def_cmds.texi(,307) @end deftypefn
+def_cmds.texi(,308) 
+def_cmds.texi(,309) @c deftypevr
+def_cmds.texi(,310) @deftypevr @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
 def_cmds.texi(,311) @end deftypevr
 def_cmds.texi(,312) 
-def_cmds.texi(,313) @c deftp
-def_cmds.texi(,314) @deftp @var{A1} @var{A2} @var{A3} @var{A4}
-def_cmds.texi(,315) @end deftp
-def_cmds.texi(,316) 
-def_cmds.texi(,317) @deftp @code{A1} @code{A2} @code{A3} @code{A4}
+def_cmds.texi(,313) @deftypevr @code{A1} @t{A2} @code{A3} @code{A4} @code{A5}
+def_cmds.texi(,314) @end deftypevr
+def_cmds.texi(,315) 
+def_cmds.texi(,316) @c deftp
+def_cmds.texi(,317) @deftp @var{A1} @var{A2} @var{A3} @var{A4}
 def_cmds.texi(,318) @end deftp
 def_cmds.texi(,319) 
-def_cmds.texi(,320) @c defcv
-def_cmds.texi(,321) @defcv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
-def_cmds.texi(,322) @end defcv
-def_cmds.texi(,323) 
-def_cmds.texi(,324) @deftp @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
-def_cmds.texi(,325) @end deftp
+def_cmds.texi(,320) @deftp @code{A1} @code{A2} @code{A3} @code{A4}
+def_cmds.texi(,321) @end deftp
+def_cmds.texi(,322) 
+def_cmds.texi(,323) @c defcv
+def_cmds.texi(,324) @defcv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+def_cmds.texi(,325) @end defcv
 def_cmds.texi(,326) 
-def_cmds.texi(,327) @c deftypecv
-def_cmds.texi(,328) @deftypecv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
-def_cmds.texi(,329) @end deftypecv
-def_cmds.texi(,330) 
-def_cmds.texi(,331) @deftypecv @code{A1} @code{A2} @option{A3} @code{A4} @code{A5} @code{A6}
+def_cmds.texi(,327) @deftp @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+def_cmds.texi(,328) @end deftp
+def_cmds.texi(,329) 
+def_cmds.texi(,330) @c deftypecv
+def_cmds.texi(,331) @deftypecv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
 def_cmds.texi(,332) @end deftypecv
 def_cmds.texi(,333) 
-def_cmds.texi(,334) @c defop
-def_cmds.texi(,335) @defop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
-def_cmds.texi(,336) @end defop
-def_cmds.texi(,337) 
-def_cmds.texi(,338) @defop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+def_cmds.texi(,334) @deftypecv @code{A1} @code{A2} @option{A3} @code{A4} @code{A5} @code{A6}
+def_cmds.texi(,335) @end deftypecv
+def_cmds.texi(,336) 
+def_cmds.texi(,337) @c defop
+def_cmds.texi(,338) @defop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
 def_cmds.texi(,339) @end defop
 def_cmds.texi(,340) 
-def_cmds.texi(,341) @c deftypeop
-def_cmds.texi(,342) @deftypeop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
-def_cmds.texi(,343) @end deftypeop
-def_cmds.texi(,344) 
-def_cmds.texi(,345) @deftypeop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5} @code{A6}
+def_cmds.texi(,341) @defop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+def_cmds.texi(,342) @end defop
+def_cmds.texi(,343) 
+def_cmds.texi(,344) @c deftypeop
+def_cmds.texi(,345) @deftypeop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
 def_cmds.texi(,346) @end deftypeop
 def_cmds.texi(,347) 
-def_cmds.texi(,348) @printindex vr
-def_cmds.texi(,349) @printindex fn
+def_cmds.texi(,348) @deftypeop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5} @code{A6}
+def_cmds.texi(,349) @end deftypeop
 def_cmds.texi(,350) 
-def_cmds.texi(,351) @bye
+def_cmds.texi(,351) @printindex vr
+def_cmds.texi(,352) @printindex fn
+def_cmds.texi(,353) 
+def_cmds.texi(,354) @bye

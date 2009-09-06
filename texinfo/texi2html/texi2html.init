@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.226 2009-09-03 15:06:07 pertusus Exp $
+# $Id: texi2html.init,v 1.227 2009-09-06 12:52:38 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1117,8 +1117,10 @@ my %t2h_enable_encoding_default_commands;
 
 sub t2h_enable_encoding_load()
 {
-   push @command_handler_process, \&t2h_enable_encoding_init;
-   push @command_handler_finish, \&t2h_enable_encoding_finish;
+   t2h_default_push_handler(\&t2h_enable_encoding_init, \@command_handler_process);
+   t2h_default_push_handler(\&t2h_enable_encoding_finish, \@command_handler_finish);
+   #push @command_handler_process, \&t2h_enable_encoding_init;
+   #push @command_handler_finish, \&t2h_enable_encoding_finish;
    foreach my $key (keys(%unicode_accents), 'dotless')
    {
      $t2h_enable_encoding_default_accent{'normal'}->{$key} = $style_map{$key}->{'function'};
@@ -4394,6 +4396,13 @@ my %misc_command_old = (
 @command_handler_init = ();
 @command_handler_process = ();
 @command_handler_finish = ();
+
+sub t2h_default_push_handler($$)
+{
+   my $function = shift;
+   my $handlers = shift;
+   push @$handlers, $function unless (grep {$_ eq $function} @$handlers);
+}
 
 # the keys of %command_handler are @-command names and the value
 # is a hash reference with the following keys:

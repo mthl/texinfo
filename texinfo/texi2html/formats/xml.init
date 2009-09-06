@@ -32,7 +32,7 @@ $NUMBER_SECTIONS = 0;
 $USE_NODES = 1;
 $USE_SECTIONS = 1;
 
-push @command_handler_init, \&xml_init_variables;
+t2h_default_push_handler(\&xml_init_variables, \@command_handler_init);
 
 $colon_command_punctuation_characters{'.'} = '&period;';
 $colon_command_punctuation_characters{':'} = '&colon;';
