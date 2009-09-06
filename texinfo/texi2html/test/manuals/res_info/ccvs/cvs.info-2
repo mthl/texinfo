@@ -3104,7 +3104,7 @@ Index
 * -a, in modules file:                   Alias modules.       (line   5)
 * -d, in modules file:                   Module options.      (line   9)
 * -e, in modules file:                   Module options.      (line  12)
-* -e, in modules file:                   Module program options.
+* -e, in modules file <1>:               Module program options.
                                                               (line   5)
 * -j (merging branches):                 Merging a branch.    (line   5)
 * -j (merging branches), and keyword substitution: Merging and keywords.
@@ -3113,11 +3113,11 @@ Index
 * -kk, to avoid conflicts during a merge: Merging and keywords.
                                                               (line   5)
 * -o, in modules file:                   Module options.      (line  16)
-* -o, in modules file:                   Module program options.
+* -o, in modules file <1>:               Module program options.
                                                               (line   5)
 * -s, in modules file:                   Module options.      (line  22)
 * -t, in modules file:                   Module options.      (line  30)
-* -t, in modules file:                   Module program options.
+* -t, in modules file <1>:               Module program options.
                                                               (line   5)
 * .# files:                              update output.       (line  49)
 * .bashrc, setting CVSROOT in:           Specifying a repository.
@@ -3152,7 +3152,7 @@ Index
 * `commitinfo', working directory:       commitinfo.          (line  29)
 * `verifymsg' (admin file):              verifymsg.           (line   5)
 * `verifymsg', changing the log message: verifymsg.           (line  30)
-* `verifymsg', changing the log message: config.              (line  67)
+* `verifymsg', changing the log message <1>: config.          (line  67)
 * Abandoning work:                       Editing files.       (line  32)
 * Access a branch:                       Accessing branches.  (line   5)
 * add (subcommand):                      Adding files.        (line  28)
@@ -3192,7 +3192,7 @@ Index
 * Binary files:                          Binary files.        (line   5)
 * Branch merge example:                  Merging a branch.    (line  14)
 * Branch number:                         Revision numbers.    (line   5)
-* Branch number:                         Branches and revisions.
+* Branch number <1>:                     Branches and revisions.
                                                               (line   5)
 * Branch tags, deleting:                 Modifying tags.      (line  18)
 * Branch tags, moving:                   Modifying tags.      (line  36)
@@ -3230,7 +3230,7 @@ Index
 * Client/Server Operation:               Remote repositories. (line   5)
 * Client/Server Operation, port specification: Remote repositories.
                                                               (line   5)
-* Client/Server Operation, port specification: Password authentication server.
+* Client/Server Operation, port specification <1>: Password authentication server.
                                                               (line   9)
 * co (subcommand):                       checkout.            (line   5)
 * Command reference:                     Invoking CVS.        (line   5)
@@ -3246,7 +3246,7 @@ Index
 * Common syntax of info files:           syntax.              (line   5)
 * Compatibility, between CVS versions:   Compatibility.       (line   5)
 * Compression:                           Global options.      (line 126)
-* Compression:                           Invoking CVS.        (line  79)
+* Compression <1>:                       Invoking CVS.        (line  79)
 * COMSPEC, environment variable:         Environment variables.
                                                               (line 122)
 * config, in CVSROOT:                    config.              (line   5)
@@ -3308,7 +3308,7 @@ Index
 * cvsadmin:                              admin.               (line  17)
 * CVSEDITOR, environment variable:       Committing your changes.
                                                               (line  16)
-* CVSEDITOR, environment variable:       Environment variables.
+* CVSEDITOR, environment variable <1>:   Environment variables.
                                                               (line  46)
 * CVSEDITOR, internal variable:          Variables.           (line  37)
 * CVSHeader keyword:                     Keyword list.        (line  11)
@@ -3338,7 +3338,7 @@ Index
 * CVSUMASK, environment variable:        File permissions.    (line  33)
 * cvswrappers (admin file):              Wrappers.            (line   5)
 * CVSWRAPPERS, environment variable:     Wrappers.            (line   5)
-* CVSWRAPPERS, environment variable:     Environment variables.
+* CVSWRAPPERS, environment variable <1>: Environment variables.
                                                               (line  12)
 * CVS_CLIENT_LOG, environment variable:  Environment variables.
                                                               (line  97)
@@ -3399,7 +3399,7 @@ Index
 * Editor, avoiding invocation of:        Common options.      (line 115)
 * EDITOR, environment variable:          Committing your changes.
                                                               (line  16)
-* EDITOR, environment variable:          Environment variables.
+* EDITOR, environment variable <1>:      Environment variables.
                                                               (line  47)
 * EDITOR, internal variable:             Variables.           (line  38)
 * EDITOR, overriding:                    Global options.      (line  40)
@@ -3456,12 +3456,12 @@ Index
 * Group:                                 File permissions.    (line   5)
 * gserver (client/server connection method), port specification: Remote repositories.
                                                               (line   5)
-* gserver (client/server connection method), port specification: Password authentication server.
+* gserver (client/server connection method), port specification <1>: Password authentication server.
                                                               (line   9)
 * GSSAPI:                                GSSAPI authenticated.
                                                               (line   5)
 * Gzip:                                  Global options.      (line 126)
-* Gzip:                                  Invoking CVS.        (line  79)
+* Gzip <1>:                              Invoking CVS.        (line  79)
 * Hard links:                            Special Files.       (line   5)
 * HEAD, as reserved tag name:            Tags.                (line  24)
 * HEAD, special tag:                     Common options.      (line 148)
@@ -3523,7 +3523,7 @@ Index
 * Known bugs in this manual or CVS:      BUGS.                (line  68)
 * kserver (client/server connection method), port specification: Remote repositories.
                                                               (line   5)
-* kserver (client/server connection method), port specification: Password authentication server.
+* kserver (client/server connection method), port specification <1>: Password authentication server.
                                                               (line   9)
 * Layout of repository:                  Repository.          (line   5)
 * Left-hand options:                     Global options.      (line   5)
@@ -3611,7 +3611,7 @@ Index
 * Notify.tmp file, in CVS directory:     Working directory storage.
                                                               (line 171)
 * Number, branch:                        Revision numbers.    (line   5)
-* Number, branch:                        Branches and revisions.
+* Number, branch <1>:                    Branches and revisions.
                                                               (line   5)
 * Number, revision-:                     Revision numbers.    (line   5)
 * Option defaults:                       ~/.cvsrc.            (line   5)
@@ -3645,12 +3645,12 @@ Index
 * Policy:                                When to commit.      (line   5)
 * port, specifying for remote repositories: Remote repositories.
                                                               (line   5)
-* port, specifying for remote repositories: Password authentication server.
+* port, specifying for remote repositories <1>: Password authentication server.
                                                               (line   9)
 * Precommit checking:                    commitinfo.          (line   5)
 * pserver (client/server connection method), port specification: Remote repositories.
                                                               (line   5)
-* pserver (client/server connection method), port specification: Password authentication server.
+* pserver (client/server connection method), port specification <1>: Password authentication server.
                                                               (line   9)
 * pserver (subcommand):                  Password authentication server.
                                                               (line   9)
@@ -3691,7 +3691,7 @@ Index
 * Remote repositories:                   Remote repositories. (line   5)
 * Remote repositories, port specification: Remote repositories.
                                                               (line   5)
-* Remote repositories, port specification: Password authentication server.
+* Remote repositories, port specification <1>: Password authentication server.
                                                               (line   9)
 * Remove (subcommand):                   Removing files.      (line  33)
 * Removing a change:                     Merging two revisions.
@@ -3712,7 +3712,7 @@ Index
 * Repositories, remote:                  Remote repositories. (line   5)
 * Repositories, remote, port specification: Remote repositories.
                                                               (line   5)
-* Repositories, remote, port specification: Password authentication server.
+* Repositories, remote, port specification <1>: Password authentication server.
                                                               (line   9)
 * Repository (intro):                    Repository.          (line   5)
 * Repository file, in CVS directory:     Working directory storage.
@@ -3862,7 +3862,7 @@ Index
 * USER, environment variable:            Variables.           (line  81)
 * USER, internal variable:               Variables.           (line  43)
 * UserAdminOptions, in CVSROOT/config:   admin.               (line  17)
-* UserAdminOptions, in CVSROOT/config:   config.              (line  84)
+* UserAdminOptions, in CVSROOT/config <1>: config.            (line  84)
 * users (admin file):                    Getting Notified.    (line  70)
 * Variables:                             Variables.           (line   5)
 * Vendor:                                Tracking sources.    (line   9)
@@ -3874,7 +3874,7 @@ Index
 * Viewing differences:                   Viewing differences. (line   5)
 * VISUAL, environment variable:          Committing your changes.
                                                               (line  22)
-* VISUAL, environment variable:          Environment variables.
+* VISUAL, environment variable <1>:      Environment variables.
                                                               (line  48)
 * VISUAL, internal variable:             Variables.           (line  39)
 * watch add (subcommand):                Getting Notified.    (line  10)

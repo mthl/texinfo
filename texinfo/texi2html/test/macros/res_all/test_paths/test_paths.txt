@@ -1,0 +1,30 @@
+test paths
+**********
+
+In included file.
+
+@include dot.
+
+
+@include dot path.
+
+[ formatting/f--ile.png ]
+
+@image dot.
+[ ./formatting/f--ile.txt ]
+
+@image dot parent.
+[ ../test/formatting/f--ile.txt ]
+
+\input texinfo @c -*-texinfo-*-
+
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  <>.
+
+@bye
+
+@verbatiminclude dot.
+

@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.325 2009-09-06 12:52:38 pertusus Exp $
+# $Id: texi2html.pl,v 1.326 2009-09-06 21:45:56 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -630,6 +630,7 @@ $after_punctuation_characters
 %region_codes
 %deprecated_commands
 %output_format_names
+%canonical_texinfo_encodings
 );
 
 # subject to change
@@ -2242,17 +2243,18 @@ sub set_footnote_style($$;$)
 
 # find the encoding alias.
 # with encoding support (USE_UNICODE), may return undef if no alias was found
-sub encoding_alias($;$)
+sub encoding_alias($;$$)
 {
     my $encoding = shift;
     my $line_nr = shift;
-    return $encoding if (!defined($encoding) or $encoding eq '');
+    my $context_string = shift;
+    return undef if (!defined($encoding) or $encoding eq '');
     if ($Texi2HTML::Config::USE_UNICODE)
     {
          my $result_encoding = Encode::resolve_alias($encoding);
          if (! $result_encoding)
          {
-              msg_warn("Encoding name unknown: $encoding", $line_nr);
+              msg_warn("Encoding name unknown: $encoding", $line_nr, $context_string);
               return undef;
          }
          if (defined($Texi2HTML::Config::t2h_encoding_aliases{$result_encoding}))
@@ -5209,15 +5211,18 @@ sub misc_command_texi($$$$)
    my $line_nr = shift;
    my $text;
    my $args;
+   my $cline = $line;
     
    if (!$state->{'ignored'} and !$state->{'arg_expansion'})
    {
       if ($macro eq 'documentencoding')
-      {
-         if ($line =~ /(\s+)([0-9\w\-]+)/)
+      {  # FIXME accept more characters, like @?
+         if ($cline =~ s/^(\s+)([\w\-]+)//)
          {
             my $encoding = $2;
             $Texi2HTML::THISDOC{'documentencoding'} = $encoding;
+            line_warn("Encoding $encoding is not a canonical texinfo encoding", $line_nr)
+                if (!$Texi2HTML::Config::canonical_texinfo_encodings{lc($encoding)});
             if (Texi2HTML::Config::set_conf('DOCUMENT_ENCODING', $Texi2HTML::THISDOC{'documentencoding'}, 1))
             {
                my $from_encoding;
@@ -5235,6 +5240,11 @@ sub misc_command_texi($$$$)
                   }
                }
             }
+            #FIXME error if garbage remains on the line?
+         }
+         else
+         {
+            line_error("Incorrect or missing \@$macro argument $line", $line_nr);
          }
       }
       elsif ($macro eq 'alias')
@@ -8313,7 +8323,13 @@ sub locate_include_file($)
     my $file = shift;
 
     # APA: Don't implicitely search ., to conform with the docs!
-    # return $file if (-e $file && -r $file);
+    
+    # if file begins with /, ./ or ../ don't search in -I (Karl)
+    if ($file =~ m,^(/|\./|\.\./),)
+    {
+        return "$file" if (-e "$file" && -r "$file");
+        return undef;
+    }
     foreach my $dir (@Texi2HTML::Config::INCLUDE_DIRS)
     {
         return "$dir/$file" if (-e "$dir/$file" && -r "$dir/$file");
@@ -8555,13 +8571,19 @@ sub msg_error($;$)
 }
 
 # echo a warning
-sub msg_warn($;$)
+sub msg_warn($;$$)
 {
     my $text = shift;
     my $line_number = shift;
+    my $context_string = shift;
+
     if (defined($line_number))
     {
          line_warn ($text, $line_number);
+    }
+    elsif (defined($context_string))
+    {
+        document_warn ("$text (in $context_string)");
     }
     else
     {

@@ -779,9 +779,9 @@ texinfo#index-Nodes_002c-catching-mistakes	cp	Nodes, catching mistakes
 texinfo#index-Nodes_002c-checking-for-badly-referenced	cp	Nodes, checking for badly referenced
 texinfo#index-Non_002dbreakable-space	cp	Non-breakable space
 texinfo#index-Not-ending-a-sentence	cp	Not ending a sentence
-texinfo#index-OE	cp	O
+texinfo#index-O-1	cp	O
 texinfo#index-O_0027Dea_002c-Brendan	cp	O'Dea, Brendan
-texinfo#index-OE-2	cp	OE
+texinfo#index-OE-1	cp	OE
 texinfo#index-Obtaining-TeX	cp	Obtaining TeX
 texinfo#index-Occurrences_002c-listing-with-_0040occur	cp	Occurrences, listing with `occur'
 texinfo#index-Optional-and-repeated-arguments	cp	Optional and repeated arguments
@@ -1082,8 +1082,8 @@ texinfo#index-lpr_002dd_002c-replacements-on-MS_002dDOS_002fMS_002dWindows	cp	lp
 texinfo#index-mailto-link	cp	mailto link
 texinfo#index-makeinfo	cp	makeinfo
 texinfo#index-meta-HTML-tag_002c-and-charset	cp	meta HTML tag, and charset
-texinfo#index-oe	cp	o
-texinfo#index-oe-2	cp	oe
+texinfo#index-o-1	cp	o
+texinfo#index-oe-1	cp	oe
 texinfo#index-page_002ddelimiter	cp	page-delimiter
 texinfo#index-pdfcolor_002etex_002c-installing	cp	pdfcolor.tex, installing
 texinfo#index-pdftex	cp	pdftex
@@ -1125,7 +1125,7 @@ texinfo#index-H-_0028Hungarian-umlaut-accent_0029	fn	H (Hungarian umlaut accent)
 texinfo#index-Info_002dvalidate	fn	Info-validate
 texinfo#index-L	fn	L
 texinfo#index-O	fn	O
-texinfo#index-OE-1	fn	OE
+texinfo#index-OE	fn	OE
 texinfo#index-_005c-_0028literal-_005c-in-_0040math_0029	fn	\ (literal \ in `math')
 texinfo#index-_005cemergencystretch	fn	\emergencystretch
 texinfo#index-_005cinput-_0028raw-TeX-startup_0029	fn	\input (raw  startup)
@@ -1293,7 +1293,7 @@ texinfo#index-occur	fn	occur
 texinfo#index-occur_002dmode_002dgoto_002doccurrence	fn	occur-mode-goto-occurrence
 texinfo#index-oddfooting	fn	oddfooting
 texinfo#index-oddheading	fn	oddheading
-texinfo#index-oe-1	fn	oe
+texinfo#index-oe	fn	oe
 texinfo#index-option	fn	option
 texinfo#index-page	fn	page
 texinfo#index-page_002c-within-_0040titlepage	fn	page, within `titlepage'

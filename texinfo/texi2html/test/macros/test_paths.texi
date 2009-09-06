@@ -1,0 +1,32 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename test_paths.info
+
+@node Top
+@top test paths
+
+@include inc_file.texi
+
+@@include dot.
+@c this leads to a different result with make distcheck since the file is not found
+@c @include ./inc_file.texi 
+
+@include coverage_macro.texi
+
+@@include dot path.
+@include ./coverage_macro.texi 
+
+@image{formatting/f--ile}
+
+@@image dot.
+@image{./formatting/f--ile}
+
+@@image dot parent.
+@image{../test/formatting/f--ile}
+
+@verbatiminclude formatting/simplest.texi
+
+@@verbatiminclude dot.
+@verbatiminclude ./formatting/simplest.texi
+
+@bye

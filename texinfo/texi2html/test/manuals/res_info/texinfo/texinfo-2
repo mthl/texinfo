@@ -7120,7 +7120,7 @@ commands are listed without their preceding `@'.
 * buffer-end:                            Def Cmd Template.    (line  73)
 * bullet:                                bullet.              (line   5)
 * bye:                                   Ending a File.       (line   5)
-* bye:                                   File End.            (line   5)
+* bye <1>:                               File End.            (line   5)
 * c (comment):                           Comments.            (line   5)
 * cartouche:                             cartouche.           (line   5)
 * center:                                titlefont center sp. (line   5)
@@ -7138,7 +7138,7 @@ commands are listed without their preceding `@'.
 * contents:                              Contents.            (line   5)
 * copying:                               copying.             (line   5)
 * copyright:                             copying.             (line  34)
-* copyright:                             copyright symbol.    (line   5)
+* copyright <1>:                         copyright symbol.    (line   5)
 * cropmarks:                             Cropmarks and Magnification.
                                                               (line   5)
 * defcodeindex:                          New Indices.         (line   5)
@@ -7150,7 +7150,7 @@ commands are listed without their preceding `@'.
 * defivar:                               Abstract Objects.    (line  39)
 * defmac:                                Functions Commands.  (line  67)
 * defmethod:                             Abstract Objects.    (line 110)
-* defmethod:                             Abstract Objects.    (line 139)
+* defmethod <1>:                         Abstract Objects.    (line 139)
 * defop:                                 Abstract Objects.    (line  59)
 * defopt:                                Variables Commands.  (line  55)
 * defspec:                               Functions Commands.  (line  72)
@@ -7181,7 +7181,7 @@ commands are listed without their preceding `@'.
 * emph:                                  emph & strong.       (line   5)
 * end:                                   Quotations and Examples.
                                                               (line  15)
-* end:                                   Introducing Lists.   (line  20)
+* end <1>:                               Introducing Lists.   (line  20)
 * end titlepage:                         end titlepage.       (line   5)
 * enddots:                               dots.                (line   5)
 * enumerate:                             enumerate.           (line   5)
@@ -7225,7 +7225,7 @@ commands are listed without their preceding `@'.
 * ifclear:                               ifset ifclear.       (line  46)
 * ifhtml:                                Conditional Commands.
                                                               (line  14)
-* ifhtml:                                Raw Formatter Commands.
+* ifhtml <1>:                            Raw Formatter Commands.
                                                               (line  36)
 * ifinfo:                                Conditional Commands.
                                                               (line   8)
@@ -7252,8 +7252,8 @@ commands are listed without their preceding `@'.
 * isearch-backward:                      deffnx.              (line  21)
 * isearch-forward:                       deffnx.              (line  20)
 * item:                                  itemize.             (line  21)
-* item:                                  table.               (line  27)
-* item:                                  Multitable Rows.     (line   5)
+* item <1>:                              table.               (line  27)
+* item <2>:                              Multitable Rows.     (line   5)
 * itemize:                               itemize.             (line   5)
 * itemx:                                 itemx.               (line   5)
 * kbd:                                   kbd.                 (line   5)
@@ -7327,10 +7327,10 @@ commands are listed without their preceding `@'.
 * shorttitlepage:                        titlepage.           (line  45)
 * smallbook:                             smallbook.           (line   5)
 * smalldisplay:                          small.               (line   5)
-* smalldisplay:                          display.             (line  15)
+* smalldisplay <1>:                      display.             (line  15)
 * smallexample:                          small.               (line   5)
 * smallformat:                           small.               (line   5)
-* smallformat:                           format.              (line  14)
+* smallformat <1>:                       format.              (line  14)
 * smalllisp:                             small.               (line   5)
 * sp (line spacing):                     sp.                  (line   5)
 * sp (titlepage line spacing):           titlefont center sp. (line   5)
@@ -7345,7 +7345,7 @@ commands are listed without their preceding `@'.
                                                               (line   5)
 * summarycontents:                       Contents.            (line   5)
 * syncodeindex:                          syncodeindex.        (line   5)
-* syncodeindex:                          syncodeindex.        (line   9)
+* syncodeindex <1>:                      syncodeindex.        (line   9)
 * synindex:                              synindex.            (line   5)
 * t (typewriter font):                   Fonts.               (line   5)
 * tab:                                   Multitable Rows.     (line   5)
@@ -7356,14 +7356,14 @@ commands are listed without their preceding `@'.
 * texinfo-all-menus-update:              Updating Commands.   (line 112)
 * texinfo-every-node-update:             Updating Commands.   (line 107)
 * texinfo-format-buffer:                 Info Formatting.     (line  22)
-* texinfo-format-buffer:                 texinfo-format commands.
+* texinfo-format-buffer <1>:             texinfo-format commands.
                                                               (line   5)
-* texinfo-format-buffer:                 texinfo-format commands.
+* texinfo-format-buffer <2>:             texinfo-format commands.
                                                               (line  23)
 * texinfo-format-region:                 Info Formatting.     (line  13)
-* texinfo-format-region:                 texinfo-format commands.
+* texinfo-format-region <1>:             texinfo-format commands.
                                                               (line   5)
-* texinfo-format-region:                 texinfo-format commands.
+* texinfo-format-region <2>:             texinfo-format commands.
                                                               (line  19)
 * texinfo-indent-menu-description:       Other Updating Commands.
                                                               (line  45)
@@ -7391,7 +7391,7 @@ commands are listed without their preceding `@'.
                                                               (line  54)
 * texinfo-show-structure:                Showing the Structure.
                                                               (line  18)
-* texinfo-show-structure:                Using texinfo-show-structure.
+* texinfo-show-structure <1>:            Using texinfo-show-structure.
                                                               (line   5)
 * texinfo-start-menu-description:        Inserting.           (line  93)
 * texinfo-tex-buffer:                    Printing.            (line  21)

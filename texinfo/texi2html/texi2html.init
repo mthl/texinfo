@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.227 2009-09-06 12:52:38 pertusus Exp $
+# $Id: texi2html.init,v 1.228 2009-09-06 21:45:56 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -995,8 +995,8 @@ sub t2h_default_set_out_encoding()
 
     if (!defined($out_encoding) and (defined($encoding_name)))
     {
-        $out_encoding = main::encoding_alias ($encoding_name);
-        $out_encoding = $encoding_name if (!defined($out_encoding));
+        my $possible_out_encoding = main::encoding_alias ($encoding_name, undef, 'determining encoding from default encoding');
+        $out_encoding = $possible_out_encoding if (defined($possible_out_encoding));
     }
     if (!defined($out_encoding) and (defined(get_conf('IN_ENCODING'))))
     {
@@ -1004,8 +1004,8 @@ sub t2h_default_set_out_encoding()
     }
     if (!defined($out_encoding) and (defined($document_encoding)))
     {
-        $out_encoding = main::encoding_alias ($document_encoding);
-        $out_encoding = $document_encoding if (!defined($out_encoding));
+        my $possible_out_encoding = main::encoding_alias ($document_encoding, undef, 'determining encoding from documentencoding');
+        $out_encoding = $possible_out_encoding if (defined($possible_out_encoding));
     }
 
     if (!defined($encoding_name))
@@ -2617,6 +2617,7 @@ foreach my $encoding (keys(%makeinfo_encoding_to_map))
    }
 }
 
+# currently unused
 my %makeinfo_transliterate_map = (
   '0416' => 'ZH',
   '0447' => 'ch',
@@ -2811,8 +2812,8 @@ my %makeinfo_transliterate_map = (
 %transliterate_map = (
                '00C5'  => 'AA',
                '00E5'  => 'aa',
-               '00D8'  => 'OE',
-               '00F8'  => 'oe',
+               '00D8'  => 'O',
+               '00F8'  => 'o',
                '00E6' => 'ae',
                '0153' => 'oe',
                '00C6' => 'AE',
@@ -2898,6 +2899,13 @@ foreach my $perl_charset (keys(%perl_charset_to_html))
 {
    $t2h_encoding_aliases{$perl_charset} = $perl_charset_to_html{$perl_charset};
    $t2h_encoding_aliases{$perl_charset_to_html{$perl_charset}} = $perl_charset_to_html{$perl_charset};
+}
+
+# These are the encodings from the texinfo manual
+foreach my $canonical_encoding('us-ascii', 'utf-8', 'iso-8859-1', 
+  'iso-8859-15','iso-8859-2','koi8-r', 'koi8-u')
+{
+  $canonical_texinfo_encodings{$canonical_encoding} = 1;
 }
 
 # not used currently for html, but used in chm.init

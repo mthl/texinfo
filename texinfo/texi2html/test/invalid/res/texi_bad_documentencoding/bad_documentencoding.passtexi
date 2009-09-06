@@ -1,0 +1,26 @@
+bad_documentencoding.texi(,2) @setfilename bad_documentencoding.info
+bad_documentencoding.texi(,3) 
+bad_documentencoding.texi(,4) @node Top
+bad_documentencoding.texi(,5) @top test wrong @@documentencoding
+bad_documentencoding.texi(,6) 
+bad_documentencoding.texi(,7) @c this one is valid
+bad_documentencoding.texi(,8) @documentencoding us-ascii@asis{}
+bad_documentencoding.texi(,9) 
+bad_documentencoding.texi(,10) @documentencoding latin1@asis{a}
+bad_documentencoding.texi(,11) @documentencoding YS-ASCII
+bad_documentencoding.texi(,12) @@documentencoding @documentencoding bad encoding name
+bad_documentencoding.texi(,13) @documentencoding
+bad_documentencoding.texi(,14) @documentencoding 1
+bad_documentencoding.texi(,15) @documentencoding %
+bad_documentencoding.texi(,16) @documentencoding @@
+bad_documentencoding.texi(,17) @documentencoding AAA@TeX{}
+bad_documentencoding.texi(,18) @documentencoding BBB@'e
+bad_documentencoding.texi(,19) @set badvalue bad
+bad_documentencoding.texi(,20) @documentencoding bad
+bad_documentencoding.texi(,21) @macro badmacro
+bad_documentencoding.texi(,22) badm
+bad_documentencoding.texi(,23) @end macro
+bad_documentencoding.texi(badmacro,24) @documentencoding badm
+bad_documentencoding.texi(,25) @documentencoding @strong{
+bad_documentencoding.texi(,26) }bad_documentencoding.texi(,26) 
+bad_documentencoding.texi(,27) @bye

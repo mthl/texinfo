@@ -1,0 +1,22 @@
+This is bad_documentencoding.info, produced by makeinfo version 4.13
+from bad_documentencoding.texi.
+
+
+File: bad_documentencoding.info,  Node: Top,  Up: (dir)
+
+test wrong @documentencoding
+****************************
+
+@documentencoding
+
+
+
+Tag Table:
+Node: Top102
+
+End Tag Table
+
+
+Local Variables:
+coding: iso-8859-1
+End:

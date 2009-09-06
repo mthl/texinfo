@@ -46,6 +46,7 @@ my %info_default_indent_format_length;
 my $info_default_index_length_to_node;
 my $info_default_listoffloat_caption_entry_length;
 my $info_default_listoffloat_append;
+my %info_default_index_entries_counts;
 
 if (defined($DEFAULT_OUTPUT_FORMAT) and $DEFAULT_OUTPUT_FORMAT eq 'info')
 {
@@ -2874,6 +2875,7 @@ sub info_default_printindex($$)
 {
    my $index_name = shift;
    my $printindex = shift;
+   %info_default_index_entries_counts = ();
    return info_default_store_text(undef,t2h_GPL_default_printindex($index_name,$printindex),'printindex');
 }
 
@@ -2932,16 +2934,19 @@ sub info_default_index_entry($$$$$$$$)
 
     return '' if ($index_entry_ref->{'hidden'});
     $entry = main::substitute_line($index_entry_ref->{'texi'}, "index entry in \@printindex");
-    #if (!defined($info_default_index_entries_counts{$index_entry_ref->{'index_name'}}->{$index_entry_ref->{'texi'}}))
-    #{
-    #   $info_default_index_entries_counts{$index_entry_ref->{'index_name'}}->{$index_entry_ref->{'texi'}} = 0;
-    #}
-    #else
-    #{
-    #   $info_default_index_entries_counts{$index_entry_ref->{'index_name'}}->{$index_entry_ref->{'texi'}}++;
-    #}
 
-    my $result = "* $entry: ";
+    my $entry_nr = '';
+    if (!defined($info_default_index_entries_counts{$entry}))
+    {
+       $info_default_index_entries_counts{$entry} = 0;
+    }
+    else
+    {
+       $info_default_index_entries_counts{$entry} ++;
+       $entry_nr = ' <'.$info_default_index_entries_counts{$entry}.'>';
+    }
+
+    my $result = "* $entry${entry_nr}: ";
     if (length($result) < $info_default_index_length_to_node)
     {
        $result .= ' ' x($info_default_index_length_to_node - length($result));

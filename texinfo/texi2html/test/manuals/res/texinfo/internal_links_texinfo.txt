@@ -775,9 +775,9 @@ texinfo_27.html#index-Nodes_002c-catching-mistakes	cp	Nodes, catching mistakes
 texinfo_27.html#index-Nodes_002c-checking-for-badly-referenced	cp	Nodes, checking for badly referenced
 texinfo_15.html#index-Non_002dbreakable-space	cp	Non-breakable space
 texinfo_14.html#index-Not-ending-a-sentence	cp	Not ending a sentence
-texinfo_14.html#index-OE	cp	O
+texinfo_14.html#index-O-1	cp	O
 texinfo_2.html#index-O_0027Dea_002c-Brendan	cp	O'Dea, Brendan
-texinfo_14.html#index-OE-2	cp	OE
+texinfo_14.html#index-OE-1	cp	OE
 texinfo_30.html#index-Obtaining-TeX	cp	Obtaining TeX
 texinfo_27.html#index-Occurrences_002c-listing-with-_0040occur	cp	Occurrences, listing with @occur
 texinfo_16.html#index-Optional-and-repeated-arguments	cp	Optional and repeated arguments
@@ -1071,8 +1071,8 @@ texinfo_2.html#index-makeinfo	cp	makeinfo
 texinfo_21.html#index-makeinfo-inside-Emacs	cp	makeinfo inside Emacs
 texinfo_21.html#index-makeinfo-options	cp	makeinfo options
 texinfo_18.html#index-meta-HTML-tag_002c-and-charset	cp	meta HTML tag, and charset
-texinfo_14.html#index-oe	cp	o
-texinfo_14.html#index-oe-2	cp	oe
+texinfo_14.html#index-o-1	cp	o
+texinfo_14.html#index-oe-1	cp	oe
 texinfo_3.html#index-page_002ddelimiter	cp	page-delimiter
 texinfo_20.html#index-pdfcolor_002etex_002c-installing	cp	pdfcolor.tex, installing
 texinfo_20.html#index-pdftex	cp	pdftex
@@ -1115,7 +1115,7 @@ texinfo_14.html#index-H-_0028Hungarian-umlaut-accent_0029	fn	H (Hungarian umlaut
 texinfo_27.html#index-Info_002dvalidate	fn	Info-validate
 texinfo_14.html#index-L	fn	L
 texinfo_14.html#index-O	fn	O
-texinfo_14.html#index-OE-1	fn	OE
+texinfo_14.html#index-OE	fn	OE
 texinfo_14.html#index-_005c-_0028literal-_005c-in-_0040math_0029	fn	\ (literal \ in @math)
 texinfo_20.html#index-_005cemergencystretch	fn	\emergencystretch
 texinfo_2.html#index-_005cinput-_0028raw-TeX-startup_0029	fn	\input (raw TeX startup)
@@ -1283,7 +1283,7 @@ texinfo_27.html#index-occur	fn	occur
 texinfo_3.html#index-occur_002dmode_002dgoto_002doccurrence	fn	occur-mode-goto-occurrence
 texinfo_26.html#index-oddfooting	fn	oddfooting
 texinfo_26.html#index-oddheading	fn	oddheading
-texinfo_14.html#index-oe-1	fn	oe
+texinfo_14.html#index-oe	fn	oe
 texinfo_10.html#index-option	fn	option
 texinfo_15.html#index-page	fn	page
 texinfo_4.html#index-page_002c-within-_0040titlepage	fn	page, within @titlepage

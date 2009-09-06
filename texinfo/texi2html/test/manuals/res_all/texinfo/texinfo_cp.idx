@@ -2945,7 +2945,7 @@ key: Not ending a sentence
   element_href: texinfo_14.txt#Not-Ending-a-Sentence
   element_text: 13.2.1 Not Ending a Sentence
 key: O
-  origin_href: texinfo_14.txt#index-OE
+  origin_href: texinfo_14.txt#index-O-1
   entry: /O
   texi_entry: @O{}
   element_href: texinfo_14.txt#Inserting-Accents
@@ -2957,7 +2957,7 @@ key: O'Dea, Brendan
   element_href: texinfo_2.txt#Using-Texinfo
   element_text: 1.2 Using Texinfo
 key: OE
-  origin_href: texinfo_14.txt#index-OE-2
+  origin_href: texinfo_14.txt#index-OE-1
   entry: OE
   texi_entry: @OE{}
   element_href: texinfo_14.txt#Inserting-Accents
@@ -4721,13 +4721,13 @@ key: meta HTML tag, and charset
   element_href: texinfo_18.txt#documentencoding
   element_text: 17.2 @documentencoding enc: Set Input Encoding
 key: o
-  origin_href: texinfo_14.txt#index-oe
+  origin_href: texinfo_14.txt#index-o-1
   entry: /o
   texi_entry: @o{}
   element_href: texinfo_14.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: oe
-  origin_href: texinfo_14.txt#index-oe-2
+  origin_href: texinfo_14.txt#index-oe-1
   entry: oe
   texi_entry: @oe{}
   element_href: texinfo_14.txt#Inserting-Accents

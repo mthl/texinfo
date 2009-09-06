@@ -102,8 +102,8 @@ and ignore things after a numerical arg
 
 Special arg for documentencoding. makeinfo complains, not tex
 
-@documentencoding
-@@documentencoding @documentencoding bad encoding name
+@c @documentencoding
+@@documentencoding @documentencoding US-ascii encoding name
 @documentencoding ISO-8859-1
 @c accepts on or off
 @@frenchspacing @frenchspacing on

@@ -4113,7 +4113,7 @@ Summary::.
                                                               (line  79)
 * new-volume-script, short description:  Device.              (line 104)
 * new-volume-script, summary:            Option Summary.      (line 229)
-* new-volume-script, summary:            Option Summary.      (line 287)
+* new-volume-script, summary <1>:        Option Summary.      (line 287)
 * newer:                                 after.               (line  26)
 * newer, summary:                        Option Summary.      (line 297)
 * newer-mtime:                           after.               (line  37)
@@ -4180,7 +4180,7 @@ Summary::.
 * quoting-style:                         quoting styles.      (line  39)
 * quoting-style, summary:                Option Summary.      (line 439)
 * read-full-records:                     Reading.             (line   7)
-* read-full-records:                     read full records.   (line   6)
+* read-full-records <1>:                 read full records.   (line   6)
 * read-full-records, short description:  Blocking Factor.     (line 172)
 * read-full-records, summary:            Option Summary.      (line 476)
 * record-size, summary:                  Option Summary.      (line 481)
@@ -4202,7 +4202,7 @@ Summary::.
                                                               (line  10)
 * same-permissions, short description:   Attributes.          (line 113)
 * same-permissions, summary:             Option Summary.      (line 466)
-* same-permissions, summary:             Option Summary.      (line 524)
+* same-permissions, summary <1>:         Option Summary.      (line 524)
 * seek, summary:                         Option Summary.      (line 290)
 * show-defaults:                         defaults.            (line   5)
 * show-defaults, summary:                Option Summary.      (line 527)
@@ -4238,16 +4238,16 @@ Summary::.
 * totals, summary:                       Option Summary.      (line 595)
 * touch:                                 Data Modification Times.
                                                               (line  15)
-* touch:                                 Attributes.          (line  37)
+* touch <1>:                             Attributes.          (line  37)
 * touch, summary:                        Option Summary.      (line 600)
 * transform:                             transform.           (line  74)
 * transform, summary:                    Option Summary.      (line 422)
 * uncompress:                            gzip.                (line  92)
 * uncompress, summary:                   Option Summary.      (line  99)
-* uncompress, summary:                   Option Summary.      (line 606)
+* uncompress, summary <1>:               Option Summary.      (line 606)
 * ungzip:                                gzip.                (line  54)
 * ungzip, summary:                       Option Summary.      (line 189)
-* ungzip, summary:                       Option Summary.      (line 609)
+* ungzip, summary <1>:                   Option Summary.      (line 609)
 * unlink-first:                          Unlink First.        (line   6)
 * unlink-first, introduced:              Dealing with Old Files.
                                                               (line  40)
@@ -4351,7 +4351,7 @@ Appendix H Index
 * Compressed archives:                   gzip.                (line   5)
 * Concatenating Archives:                concatenate.         (line   5)
 * corrupted archives:                    Full Dumps.          (line   7)
-* corrupted archives:                    gzip.                (line  73)
+* corrupted archives <1>:                gzip.                (line  73)
 * Creation of the archive:               create.              (line   7)
 * DAT blocking:                          Blocking Factor.     (line 202)
 * Data Modification time, excluding files by: after.          (line   7)
@@ -4361,7 +4361,7 @@ Appendix H Index
 * date input formats:                    Date input formats.  (line   5)
 * day in date strings:                   Relative items in date strings.
                                                               (line  14)
-* day in date strings:                   Relative items in date strings.
+* day in date strings <1>:               Relative items in date strings.
                                                               (line  28)
 * day of week item:                      Day of week items.   (line   5)
 * Deleting files from an archive:        delete.              (line   7)
@@ -4464,7 +4464,7 @@ Appendix H Index
 * Labeling multi-volume archives:        label.               (line   5)
 * Labels on the archive media:           label.               (line   5)
 * language, in dates:                    General date syntax. (line  39)
-* language, in dates:                    General date syntax. (line  43)
+* language, in dates <1>:                General date syntax. (line  43)
 * Large lists of file names on small machines: Same Order.    (line   6)
 * large values:                          Large or Negative Values.
                                                               (line   5)
@@ -4670,7 +4670,7 @@ Appendix H Index
 * time of day item:                      Time of day items.   (line   5)
 * time zone correction:                  Time of day items.   (line  28)
 * time zone item:                        General date syntax. (line  43)
-* time zone item:                        Time zone items.     (line   5)
+* time zone item <1>:                    Time zone items.     (line   5)
 * today in date strings:                 Relative items in date strings.
                                                               (line  32)
 * tomorrow in date strings:              Relative items in date strings.

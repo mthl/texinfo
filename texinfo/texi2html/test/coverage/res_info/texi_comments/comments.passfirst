@@ -101,8 +101,8 @@ comments.texi(,115) @@footnotestyle @footnotestyle separate
 comments.texi(,116) 
 comments.texi(,117) Special arg for documentencoding. makeinfo complains, not tex
 comments.texi(,118) 
-comments.texi(,119) @documentencoding
-comments.texi(,120) @@documentencoding @documentencoding bad encoding name
+comments.texi(,119) @c @documentencoding
+comments.texi(,120) @@documentencoding @documentencoding US-ascii encoding name
 comments.texi(,121) @documentencoding ISO-8859-1
 comments.texi(,122) @c accepts on or off
 comments.texi(,123) @@frenchspacing @frenchspacing on

@@ -1,0 +1,27 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename bad_documentencoding.info
+
+@node Top
+@top test wrong @@documentencoding
+
+@c this one is valid
+@documentencoding us-ascii@asis{}
+
+@documentencoding latin1@asis{a}
+@documentencoding YS-ASCII
+@@documentencoding @documentencoding bad encoding name
+@documentencoding
+@documentencoding 1
+@documentencoding %
+@documentencoding @@
+@documentencoding AAA@TeX{}
+@documentencoding BBB@'e
+@set badvalue bad
+@documentencoding bad
+@macro badmacro
+badm
+@end macro
+@documentencoding badm
+@documentencoding @strong{
+}
+@bye

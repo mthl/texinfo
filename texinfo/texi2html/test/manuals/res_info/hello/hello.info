@@ -693,7 +693,7 @@ Concept index
 * -greeting:                             Invoking hello.       (line 16)
 * -h:                                    Invoking hello.       (line 20)
 * -help:                                 Overview.             (line 36)
-* -help:                                 Invoking hello.       (line 20)
+* -help <1>:                             Invoking hello.       (line 20)
 * -n:                                    Invoking hello.       (line 31)
 * -next-generation:                      Invoking hello.       (line 31)
 * -t:                                    Invoking hello.       (line 38)

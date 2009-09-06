@@ -15,12 +15,13 @@ EXTRA_DIST = sectionning.texi novalidate.texi first_section_no_node.texi \
  only_documentencoding.texi more_sections_than_nodes.texi \
  nodename_parentheses.texi one_element.texi \
  weird_at_commands_in_nodes.texi double_node_anchor_float.texi \
- test_directions.init tests.txt res res_all res_info
+ test_directions.init tests.txt \
+ res res_all res_info res_docbook res_xml res_html
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
 
 distclean-local:
-	rm -rf out out_all out_info diffs
+	rm -rf out out_all out_info out_docbook out_xml out_html diffs
 
 dist-hook:
-	rm -rf `find $(distdir)/res $(distdir)/res_info $(distdir)/res_all -name CVS`
+	rm -rf `find $(distdir)/res $(distdir)/res_info $(distdir)/res_all $(distdir)/res_docbook $(distdir)/res_xml $(distdir)/res_html -name CVS`

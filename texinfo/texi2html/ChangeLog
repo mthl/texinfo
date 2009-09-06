@@ -7,6 +7,13 @@
 	output, after initializations.
 	* texi2html.pl, texi2html.init, formats/*: put the functions in 
 	the handlers only once.
+	* texi2html.init: transliterate @O{}/@o{} (00D8/00F8) as O and o.
+	* texi2html.pl, texi2html.init: warn if the @documentencoding is
+	not a canonical encoding from the texinfo manual.
+	Don't set output encoding to an encoding that cannot be handled.
+	* formats/info.init: append <n> to index entries with same names.
+	* texi2html.pl: if file begins with /, ./ or ../ don't search in -I.
+	* */Makefile.in: use automake 1.11.
 
 2009-09-05   Patrice Dumas  <dumas@centre-cired.fr>
 

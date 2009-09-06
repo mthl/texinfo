@@ -2101,7 +2101,7 @@ Appendix B Index
                                                               (line  55)
 * 0, in Info windows:                    Selecting Xrefs.     (line  22)
 * 1 ... 9, in Info windows:              Selecting Xrefs.     (line  12)
-* 1 ... 9, in Info windows:              Selecting Xrefs.     (line  12)
+* 1 ... 9, in Info windows <1>:          Selecting Xrefs.     (line  12)
 * <:                                     Node Commands.       (line  70)
 * >:                                     Node Commands.       (line  77)
 * ?, in Info windows:                    Miscellaneous Commands.
@@ -2358,7 +2358,7 @@ Appendix B Index
 * M-0, in the echo area, vi-like operation: The Echo Area.    (line  27)
 * M-0, vi-like operation:                Selecting Xrefs.     (line  22)
 * M-1 ... M-9, vi-like operation:        Selecting Xrefs.     (line  12)
-* M-1 ... M-9, vi-like operation:        Selecting Xrefs.     (line  12)
+* M-1 ... M-9, vi-like operation <1>:    Selecting Xrefs.     (line  12)
 * M-<:                                   Cursor Commands.     (line  63)
 * M->:                                   Cursor Commands.     (line  68)
 * M-b, in Info windows:                  Cursor Commands.     (line  57)
@@ -2397,7 +2397,7 @@ Appendix B Index
 * moving the cursor:                     Cursor Commands.     (line   5)
 * n:                                     Node Commands.       (line  22)
 * n, vi-like operation:                  Searching Commands.  (line  34)
-* n, vi-like operation:                  Searching Commands.  (line  40)
+* n, vi-like operation <1>:              Searching Commands.  (line  40)
 * negative arguments:                    Miscellaneous Commands.
                                                               (line  68)
 * NEXT:                                  Scrolling Commands.  (line  37)
@@ -2478,7 +2478,7 @@ Appendix B Index
 * set-variable:                          Variables.           (line  16)
 * Shift-TAB, in Info windows:            Selecting Xrefs.     (line  57)
 * Shift-TAB, in the echo area:           The Echo Area.       (line  80)
-* Shift-TAB, in the echo area:           The Echo Area.       (line  82)
+* Shift-TAB, in the echo area <1>:       The Echo Area.       (line  82)
 * show-footnotes:                        Miscellaneous Commands.
                                                               (line 109)
 * show-index-match:                      Variables.           (line 113)

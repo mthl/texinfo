@@ -25,20 +25,6 @@ Before next release
 
 * add --command command line that gives inserted lines.
 
-* the following are not the same, -I is not taken into account with a 
-  leading ./:
-@include ./d2t_singular/surf_lib_noEx.tex
-@include d2t_singular/surf_lib_noEx.tex
-in locate_include_file.
-Do it for --css-include, @image and @verbatiminclude too?
-
-* '00D8' which is Oslash is transliterated on OE? Should be O.
-
-* info: append <n> to index entries with same names.
-
-* warn when @documentencoding is not one proposed in the texinfo manual,
-  with something like not a canonical encoding. %canonical_texinfo_encodings.
-
 Later
 -----
 

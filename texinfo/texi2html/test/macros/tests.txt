@@ -31,6 +31,7 @@ texi macro_in_pass_texi_commands.texi
 texi macro_commands_in_pass_texi_commands.texi
 texi no_arg_macro.texi
 texi empty_macro.texi
+texi test_paths.texi
 texi cond.texi --ifhtml --ifinfo --no-iftex
 test_include test_include.texi
 texi simple_imbricated_macro.texi
@@ -61,3 +62,4 @@ macro_commands_in_pass_texi_commands macro_commands_in_pass_texi_commands.texi
 test_include_with_setfilename_info test_include_with_setfilename.texi --init info.init
 no_arg_macro_info no_arg_macro.texi --init info.init
 simple_imbricated_macro simple_imbricated_macro.texi
+test_paths test_paths.texi
