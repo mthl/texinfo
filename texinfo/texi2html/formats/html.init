@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.20 2009-09-06 12:52:39 pertusus Exp $
+# $Id: html.init,v 1.21 2009-09-07 10:59:14 pertusus Exp $
 
 use strict;
 
@@ -960,7 +960,7 @@ sub HTML_DEFAULT_print_misc
     my $misc_page = shift;
     my $buttons = \@MISC_BUTTONS;
     &$print_misc_header($fh, $buttons, $new_file, $misc_page);
-    print $fh "<h1>$Texi2HTML::NAME{This}</h1>\n";
+    print $fh "<h1>$Texi2HTML::NAME{'This'}</h1>\n";
     main::print_lines($fh);
     &$print_misc_footer($fh, $buttons, $new_file);
 }
@@ -2609,7 +2609,7 @@ sub html_default_heading($$$$$;$$)
     $class = 'unnumbered' if ($class eq 'top' or $class eq 'centerchap');
     my $align = '';
     $align = ' align="center"' if ($element->{'tag'} eq 'centerchap');
-    if (($element->{'top'} and $element->{'node'}) or (!$element->{'node'} and $element->{'tag'} eq 'top' and $element->{'text'} =~ /^\s*$/))
+    if (($element->{'top'} and $element->{'node'}) or (!$element->{'node'} and $element->{'tag'} eq 'top' and $element->{'text'} =~ /^\s*$/) and defined($Texi2HTML::NAME{'Top'}))
     {
        return '' if ($element->{'titlefont'});
        $level = 1;

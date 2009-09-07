@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.326 2009-09-06 21:45:56 pertusus Exp $
+# $Id: texi2html.pl,v 1.327 2009-09-07 10:59:14 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -7089,12 +7089,13 @@ sub rearrange_elements()
         $place->{'element'} = $element_top if (exists($place->{'element'}));
         do_place_target_file ($place, $element_top, 'no_associated_element');
     }
+    
+    # determine contents element and files
     foreach my $content_type(keys(%content_element))
     {
         # with set*aftertitlepage, there will always be a href to Contents
         # or Overview pointing to the top element, even if there is no 
         # titlepage outputed.
-        #if ((!defined($content_element{$content_type}->{'file'})) and $Texi2HTML::Config::INLINE_CONTENTS)
         if (!scalar(@{$all_content_elements{$content_type}}))
         {
             if  ($Texi2HTML::Config::INLINE_CONTENTS)
@@ -7104,7 +7105,7 @@ sub rearrange_elements()
             }
         }
         elsif ($Texi2HTML::Config::INLINE_CONTENTS and !Texi2HTML::Config::get_conf('set' . $content_type .'aftertitlepage'))
-        {
+        { # use the last element for references in case there is more than one
             $content_element{$content_type} = $all_content_elements{$content_type}->[-1];
         }
     }
@@ -7719,49 +7720,42 @@ sub pass_text($$)
            simple_format(undef, undef, $thing_texi);
     }
 
-    # find Top name
-    my $element_top_text = '';
-    my $top_no_texi = '';
-    my $top_simple_format = '';
-    my $top_name;
-    # FIXME this is certainly to be modified now that either sections or nodes
-    # may be lements.
-    if ($element_top and $element_top->{'text'} and (!$node_top or ($element_top ne $node_top)))
+
+    # find the triplet (Top name, Top with texi removed, Top simply formatted)
+
+    my $element_top_Top = [undef,undef,undef];
+    my $node_top_Top = [undef,undef,undef];
+    # Preferred Top name is the element_top name if it is not the @node Top
+    # the @node Top may also be used, but before fulltitle is tried
+    if (defined($element_top))
     {
-        $element_top_text = $element_top->{'text'};
-        $top_no_texi = $element_top->{'no_texi'};
-        $top_simple_format = $element_top->{'simple_format'};
+        if ($element_top->{'node'} and $element_top->{'texi'} =~ /^Top$/i)
+        {
+           $node_top_Top = [ $element_top->{'text'}, $element_top->{'no_texi'}, $element_top->{'simple_format'} ];
+        }
+        else
+        {
+           $element_top_Top = [ $element_top->{'text'}, $element_top->{'no_texi'}, $element_top->{'simple_format'} ];
+        }
     }
-    foreach my $possible_top_name ($Texi2HTML::Config::TOP_HEADING, 
-         $element_top_text, $Texi2HTML::THISDOC{'fulltitle'},
-         &$I('Top'))
+    # FIXME remove fulltitle?
+    foreach my $possible_top (
+       [substitute_line($Texi2HTML::Config::TOP_HEADING, '$TOP_HEADING'), 
+        remove_texi($Texi2HTML::Config::TOP_HEADING), 
+        simple_format(undef, undef, $Texi2HTML::Config::TOP_HEADING)],
+       $element_top_Top,
+       [$Texi2HTML::THISDOC{'fulltitle'}, 
+        $Texi2HTML::THISDOC{'fulltitle_no_texi'}, 
+        $Texi2HTML::THISDOC{'fulltitle_simple_format'}],
+       $node_top_Top
+      )
     {
-         if (defined($possible_top_name) and $possible_top_name ne '')
-         {
-             $top_name = $possible_top_name;
-             last;
-         }
-    }
-    foreach my $possible_top_no_texi ($Texi2HTML::Config::TOP_HEADING, 
-         $top_no_texi, $Texi2HTML::THISDOC{'fulltitle_no_texi'},
-         &$I('Top',{},{'remove_texi' => 1}))
-    {
-         if (defined($possible_top_no_texi) and $possible_top_no_texi ne '')
-         {
-             $top_no_texi = $possible_top_no_texi;
-             last;
-         }
-    }
-     
-    foreach my $possible_top_simple_format ($top_simple_format,
-         $Texi2HTML::THISDOC{'fulltitle_simple_format'},
-         &$I('Top',{}, {'simple_format' => 1}))
-    {
-         if (defined($possible_top_simple_format) and $possible_top_simple_format ne '')
-         {
-             $top_simple_format = $possible_top_simple_format;
-             last;
-         }
+        if (defined($possible_top->[0]) and $possible_top->[0] =~ /\S/)
+        {
+           ($Texi2HTML::NAME{'Top'}, $Texi2HTML::NO_TEXI{'Top'}, $Texi2HTML::SIMPLE_TEXT{'Top'}) = @$possible_top;
+           #($top_name, $top_no_texi, $top_simple_format) = @$possible_top;
+           last;
+        }
     }
      
     $Texi2HTML::THISDOC{'program'} = $THISPROG;
@@ -7786,17 +7780,14 @@ sub pass_text($$)
     
     $Texi2HTML::NAME{'First'} = $element_first->{'text'};
     $Texi2HTML::NAME{'Last'} = $element_last->{'text'};
-    $Texi2HTML::NAME{'Top'} = $top_name;
     $Texi2HTML::NAME{'Index'} = $element_chapter_index->{'text'} if (defined($element_chapter_index));
     $Texi2HTML::NAME{'Index'} = $Texi2HTML::Config::INDEX_CHAPTER if ($Texi2HTML::Config::INDEX_CHAPTER ne '');
 
     $Texi2HTML::NO_TEXI{'First'} = $element_first->{'no_texi'};
     $Texi2HTML::NO_TEXI{'Last'} = $element_last->{'no_texi'};
-    $Texi2HTML::NO_TEXI{'Top'} = $top_no_texi;
     $Texi2HTML::NO_TEXI{'Index'} = $element_chapter_index->{'no_texi'} if (defined($element_chapter_index));
     $Texi2HTML::SIMPLE_TEXT{'First'} = $element_first->{'simple_format'};
     $Texi2HTML::SIMPLE_TEXT{'Last'} = $element_last->{'simple_format'};
-    $Texi2HTML::SIMPLE_TEXT{'Top'} = $top_simple_format;
     $Texi2HTML::SIMPLE_TEXT{'Index'} = $element_chapter_index->{'simple_format'} if (defined($element_chapter_index));
 
     # FIXME we do the regions formatting here, even if they never appear.
@@ -8190,11 +8181,11 @@ sub finish_element($$$$)
     }
     if ($element->{'top'})
     {
-        my $top_file = $docu_top_file;
         #print STDERR "TOP $element->{'texi'}, @{$Texi2HTML::THIS_SECTION}\n";
         print STDERR "# Doing element top\n"
            if ($T2H_DEBUG & $DEBUG_ELEMENTS);
         print STDERR "[Top]" if ($T2H_VERBOSE);
+
         $Texi2HTML::HREF{'Top'} = href($element_top, $element->{'file'});
         &$Texi2HTML::Config::print_Top($FH, $element->{'titlefont'}, $element);
         my $end_page = 0;
@@ -8206,7 +8197,7 @@ sub finish_element($$$$)
             }
         }
         &$Texi2HTML::Config::print_Top_footer($FH, $end_page, $element);
-        close_out($FH, $top_file) if ($end_page);
+        close_out($FH, $docu_top_file) if ($end_page);
     }
     else
     {

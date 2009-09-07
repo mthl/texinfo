@@ -4,7 +4,7 @@ imbrications.texi(,4)
 imbrications.texi(,5) @syncodeindex pg cp
 imbrications.texi(,6) 
 imbrications.texi(,7) @node Top,First node,(dir)
-imbrications.texi(,8) @top
+imbrications.texi(,8) @top Test some command imbrications
 imbrications.texi(,9) @menu
 imbrications.texi(,10) * First node::    node 1
 imbrications.texi(,11) * name:Second node.    node 2

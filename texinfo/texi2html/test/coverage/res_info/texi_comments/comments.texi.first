@@ -7,7 +7,7 @@ be-low
  }
 
 @node Top
-@top
+@top Test how things are ignored
 @subheading Comment like:
 
 Text line followed by a comment on the same line and another below @c comment

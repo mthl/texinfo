@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.228 2009-09-06 21:45:56 pertusus Exp $
+# $Id: texi2html.init,v 1.229 2009-09-07 10:59:13 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -524,6 +524,7 @@ sub t2h_default_set_variables_default()
   $ENABLE_ENCODING_USE_ENTITY = 0;
 
 # if set, output the contents where the command is located
+# This is ignored if set*contentsaftertitlepage is set
   $INLINE_CONTENTS = 1;
 
 # symbol put at the beginning of nodes entry in menu (and optionnaly of 

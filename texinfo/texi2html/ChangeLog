@@ -1,3 +1,8 @@
+2009-09-07   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: don't use Top for the Top name if there is no
+	element with that name.
+
 2009-09-06   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, formats/html.init: use @top for fulltitle. Don't

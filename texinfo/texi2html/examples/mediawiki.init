@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.20 2009-09-05 07:23:48 pertusus Exp $
+# $Id: mediawiki.init,v 1.21 2009-09-07 10:59:14 pertusus Exp $
 
 html_default_load();
 
@@ -148,14 +148,8 @@ sub mediawiki_print_Top
     my $buttons = \@MISC_BUTTONS;
 #    &$print_head_navigation($fh, $buttons);
     my $nw;
-    if ($Texi2HTML::THIS_SECTION)
+    if (scalar(@$Texi2HTML::THIS_SECTION) > 2)
     {
-        # if top-level node has content, then print it with extra header
-        #print $fh "<h1>$Texi2HTML::NAME{Top}</h1>\n"
-        #print $fh "<h1 class=\"settitle\">$Texi2HTML::NAME{Top}</h1>\n"
-#        chomp $Texi2HTML::NAME{Top};
-#        print $fh "== $Texi2HTML::NAME{Top} ==\n"
-#            unless ($has_top_heading);
         $nw = main::print_lines($fh, $Texi2HTML::THIS_SECTION);
     }
     else
@@ -183,7 +177,7 @@ sub mediawiki_print_misc
 
     my $buttons = \@MISC_BUTTONS;
     &$print_misc_header($fh, $buttons, $new_file, $misc_page);
-    print $fh "== $Texi2HTML::NAME{This} ==\n";
+    print $fh "== $Texi2HTML::NAME{'This'} ==\n";
     main::print_lines($fh);
     &$print_misc_footer($fh, $buttons, $new_file);
 }
@@ -317,12 +311,10 @@ sub mediawiki_heading($$$$$;$$)
         return '' unless ($element->{'this'} and !$element->{'with_section'});
     }
     $level = 1 if ($level == 0);
+
     my $text = $element->{'text'};
-    if (!$element->{'node'} and (!$NUMBER_SECTIONS))
-    {
-        $text = $element->{'name'};
-    }
-    if ($element->{'top'})
+
+    if (($element->{'top'} and $element->{'node'}) or (!$element->{'node'} and $element->{'tag'} eq 'top' and $element->{'text'} =~ /^\s*$/) and defined($Texi2HTML::NAME{'Top'}))
     {
         return '' if ($element->{'titlefont'});
         $level = 1;
@@ -330,8 +322,6 @@ sub mediawiki_heading($$$$$;$$)
         chomp $text;
     }
     return '' if ($text !~ /\S/);
-    my $class = $element->{'tag_level'};
-    $class = 'unnumbered' if ($class eq 'top');
     if (defined($element->{'tocid'}) and $TOC_LINKS)
     {
          $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);

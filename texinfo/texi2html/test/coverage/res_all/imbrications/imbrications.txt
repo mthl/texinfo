@@ -1,5 +1,5 @@
-
-
+Test some command imbrications
+******************************
 * First node::    node 1
 * name:Second node.    node 2
 1 first node chapter
@@ -81,7 +81,7 @@ Now a content within example
 Table of Contents
 *****************
 
-
+Test some command imbrications
 1 first node chapter
 2 second
  2.1 the node is within menu
@@ -197,7 +197,7 @@ Line
 Table of Contents
 *****************
 
-
+Test some command imbrications
 1 first node chapter
 2 second
  2.1 the node is within menu

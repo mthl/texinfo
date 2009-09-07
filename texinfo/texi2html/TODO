@@ -3,8 +3,18 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
-* out_html/nodes_test/lop.html there should not be a Top in the 
-  heading.
+* add a new function reference, $title ($preamble?), that is prepended to
+  the section when the first element is reached. 
+  Add a new thing in THISDOC, like fulltitle, called simpletitle which is
+  the title that is to be on one line. This is @settitle or @shorttitle*.
+  In the texi2html case, $title does what is currently done in print_Top
+  in the case of empty top, with bogus 'title' replaced by 'simpletitle'.
+  In the case of makeinfo, only the simpletitle stuff is done.
+  Then remove the print_Top code that does the title.
+  And also remove the code in heading that uses NAME{'Top'}.
+
+* css classes for header: header. for top and center chap not unnumbered.
+  Ask on texinfo list.
 
 * in _html, the @top is always output, even if there is a @titlefont.
   it is certainly right, the @titlefont should not take the place of 

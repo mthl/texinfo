@@ -4,6 +4,9 @@ comments.texi.
 
 File: comments.info,  Node: Top,  Next: node,  Up: (dir)
 
+Test how things are ignored
+***************************
+
 Comment like:
 -------------
 
@@ -166,10 +169,10 @@ File: comments.info,  Node: bidule2,  Prev: bidule,  Up: Top
 
 Tag Table:
 Node: Top78
-Node: node2923
-Node: truc3036
-Node: bidule3274
-Node: bidule23460
+Node: node2980
+Node: truc3093
+Node: bidule3331
+Node: bidule23517
 
 End Tag Table
 

@@ -1,5 +1,5 @@
-
-
+Test how things are ignored
+***************************
 Comment like:
 -------------
 
@@ -128,7 +128,7 @@ Third content on the following line on his own
 Table of Contents
 *****************
 
-
+Test how things are ignored
 1 chapter
  1.1 section
 2 bidule

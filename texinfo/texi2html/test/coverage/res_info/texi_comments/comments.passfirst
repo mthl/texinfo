@@ -6,7 +6,7 @@ comments.texi(,6)   may-be to-morow
 comments.texi(,7)  }
 comments.texi(,8) 
 comments.texi(,9) @node Top
-comments.texi(,10) @top
+comments.texi(,10) @top Test how things are ignored
 comments.texi(,11) @subheading Comment like:
 comments.texi(,12) 
 comments.texi(,13) Text line followed by a comment on the same line and another below @c comment

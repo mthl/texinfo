@@ -5,7 +5,7 @@
 @syncodeindex pg cp
 
 @node Top,First node,(dir)
-@top
+@top Test some command imbrications
 @menu
 * First node::    node 1
 * name:Second node.    node 2
