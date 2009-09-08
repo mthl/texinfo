@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.22 2009-09-08 10:13:05 pertusus Exp $
+# $Id: html.init,v 1.23 2009-09-08 16:17:19 pertusus Exp $
 
 use strict;
 
@@ -874,36 +874,7 @@ sub HTML_DEFAULT_print_Top($$$)
     my $has_top_heading = shift;
     my $element = shift;
 
-    # a dirty hack. A section is considered to be empty if there are 2
-    # lines or less in it. Indeed, this catches the sectionning command like
-    # @top and the @node.
-    if (scalar(@$Texi2HTML::THIS_SECTION) > 2)
-    {
-        # if top-level node has content
-        main::print_lines($fh, $Texi2HTML::THIS_SECTION);
-    }
-    else
-    {
-        # top-level node is fully enclosed in @ifnothtml
-        # redo the titlepage with the actual state
-        my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_format) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
-
-        &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_format); 
-        # only print the header and node label
-        print $fh $Texi2HTML::THIS_SECTION->[0];
-        print $fh $Texi2HTML::TITLEPAGE;
-        if (@{$Texi2HTML::OVERVIEW} and !$Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'})
-        {
-             print $fh '<h2> ' . $Texi2HTML::NAME{'Overview'} . "</h2>\n" . "<blockquote\n";
-             main::print_lines($fh, $Texi2HTML::OVERVIEW);
-             print $fh "</blockquote>\n";
-        }
-        elsif (@{$Texi2HTML::TOC_LINES} and !$Texi2HTML::THISDOC{'setcontentsaftertitlepage'})
-        {
-             print $fh '<h1> ' . $Texi2HTML::NAME{'Contents'}  . "</h1>\n";
-             main::print_lines($fh, $Texi2HTML::TOC_LINES);
-        }
-    }
+    main::print_lines($fh, $Texi2HTML::THIS_SECTION);
 }
 
 ###################################################################

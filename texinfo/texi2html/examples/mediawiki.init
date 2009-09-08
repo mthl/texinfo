@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.22 2009-09-08 10:13:05 pertusus Exp $
+# $Id: mediawiki.init,v 1.23 2009-09-08 16:17:19 pertusus Exp $
 
 html_default_load();
 
@@ -149,41 +149,8 @@ $style_map{'titlefont'} = {'function' => \&mediawiki_titlefont};
 
 
 
-$print_Top		   = \&mediawiki_print_Top;
 $print_misc		   = \&mediawiki_print_misc;
 $titlepage                 = \&mediawiki_titlepage;
-
-sub mediawiki_print_Top
-{
-    my $fh = shift;
-    my $has_top_heading = shift;
-
-    # for redefining navigation buttons use:
-    # my $buttons = [...];
-    # as it is, 'Top', 'Contents', 'Index', 'About' are printed
-    my $buttons = \@MISC_BUTTONS;
-#    &$print_head_navigation($fh, $buttons);
-    my $nw;
-    if (scalar(@$Texi2HTML::THIS_SECTION) > 2)
-    {
-        $nw = main::print_lines($fh, $Texi2HTML::THIS_SECTION);
-    }
-    else
-    {
-        # top-level node is fully enclosed in @ifnothtml
-        # print fulltitle, subtitle, author, Overview
-        # redo the titlepage with the actual state
-        my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_text) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
-        &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_text); 
-        print $fh $Texi2HTML::TITLEPAGE;
-        if (@{$Texi2HTML::OVERVIEW})
-        {
-             print $fh '=== ' . &$I('Overview:') . " ===\n" . "<blockquote>\n";
-             my $nw = main::print_lines($fh, $Texi2HTML::OVERVIEW);
-             print $fh "</blockquote>\n";
-        }
-    }
-}
 
 sub mediawiki_print_misc
 {

@@ -9,6 +9,7 @@
 	titlepage if called as texi2html, using &$print_title with 
 	USE_TITLEPAGE_FOR_TITLE set to 1, otherwise output the 
 	'simpletitle'.
+	Don't output the title in print_Top.
 	* texi2html.init: don't treat especially heading of the node
 	that also happens to be in the element_top, and don't replace
 	an empty @top by the title, the title should appear as a

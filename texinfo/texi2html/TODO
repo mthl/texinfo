@@ -3,8 +3,6 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
-* Don't output the title in print_Top.
-
 * css classes for header: header. for top and center chap not unnumbered.
   Ask on texinfo list.
 
