@@ -1,3 +1,4 @@
+== CVS&mdash;Concurrent Versions System v4.2 ==
 <div id="Top"></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[ &lt; ]</td>
@@ -8,7 +9,6 @@
 <td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
 </tr></table>
 <div id="SEC_Top"></div>
-== CVS&mdash;Concurrent Versions System v4.2 ==
 
 <p>This info manual describes how to use and administer
 <small>CVS</small> version 4.2.

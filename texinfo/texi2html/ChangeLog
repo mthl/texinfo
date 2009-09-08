@@ -1,7 +1,20 @@
-2009-09-07   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-08   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: don't use Top for the Top name if there is no
 	element with that name.
+	Remove empty lines also when there is only one section.
+	Prepare a 'simpletitle'.
+	* texi2html.pl, texi2html.init, formats/html.init: Output the 
+	title at the beginning of the document, in html. Output the
+	titlepage if called as texi2html, using &$print_title with 
+	USE_TITLEPAGE_FOR_TITLE set to 1, otherwise output the 
+	'simpletitle'.
+	* texi2html.init: don't treat especially heading of the node
+	that also happens to be in the element_top, and don't replace
+	an empty @top by the title, the title should appear as a
+	title anyway and the user certainly don't want a heading to 
+	appear if the @top is empty.
+	Don't skip the heading if there was a titlefont.
 
 2009-09-06   Patrice Dumas  <dumas@centre-cired.fr>
 

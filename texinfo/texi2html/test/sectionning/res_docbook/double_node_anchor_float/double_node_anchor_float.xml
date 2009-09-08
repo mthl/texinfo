@@ -4,10 +4,6 @@
   <!ENTITY latex "LaTeX">
 ]>
 <book id="double_node_anchor_float.xml" lang="en">
-
-
-
-
 <para><anchor id="anchor1"></anchor>
 </para>
 

@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.327 2009-09-07 10:59:14 pertusus Exp $
+# $Id: texi2html.pl,v 1.328 2009-09-08 10:13:04 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -394,6 +394,7 @@ $DATE
 $ENABLE_ENCODING_USE_ENTITY
 $PROGRAM_NAME_IN_FOOTER
 $HEADER_IN_TABLE
+$USE_TITLEPAGE_FOR_TITLE
 );
 
 # customization variables which may be guessed in the script
@@ -435,6 +436,7 @@ $print_page_head
 $print_page_foot
 $print_head_navigation
 $print_foot_navigation
+$print_title
 $button_icon_img
 $button_formatting
 $print_navigation
@@ -7708,9 +7710,18 @@ sub pass_text($$)
             last;
         }
     }
+    $Texi2HTML::THISDOC{'simpletitle_texi'} = '';
+    foreach my $possible_simpletitle('settitle', 'shorttitlepage')
+    {
+        if (defined($Texi2HTML::THISDOC{$possible_simpletitle . '_texi'}) and $Texi2HTML::THISDOC{$possible_simpletitle . '_texi'} =~ /\S/)
+        {
+            $Texi2HTML::THISDOC{'simpletitle_texi'} = $Texi2HTML::THISDOC{$possible_simpletitle . '_texi'};
+            last;
+        }
+    }
 
     foreach my $doc_thing (('shorttitlepage', 'settitle', 'author',
-           'titlefont', 'subtitle', 'title', 'fulltitle'))
+           'titlefont', 'subtitle', 'title', 'fulltitle', 'simpletitle'))
     {
         my $thing_texi = $Texi2HTML::THISDOC{$doc_thing . '_texi'};
         $Texi2HTML::THISDOC{$doc_thing} = substitute_line($thing_texi, "\@$doc_thing");
@@ -7944,10 +7955,10 @@ sub pass_text($$)
                         }
                         # remove empty for the first document lines
                         shift @{$Texi2HTML::THIS_SECTION} while (@{$Texi2HTML::THIS_SECTION} and ($Texi2HTML::THIS_SECTION->[0] =~ /^\s*$/));
+                        my $title = &$Texi2HTML::Config::print_title();
+                        unshift @{$Texi2HTML::THIS_SECTION}, $title if (defined($title) and $title ne '');
                     }
                     # begin new element
-                    #my $previous_file;
-                    #$previous_file = $Texi2HTML::THIS_ELEMENT->{'file'} if (defined($Texi2HTML::THIS_ELEMENT));
                     $Texi2HTML::THIS_ELEMENT = $new_element;
                     $state{'element'} = $Texi2HTML::THIS_ELEMENT;
 
@@ -8015,6 +8026,9 @@ sub pass_text($$)
         {
           open_out_file($docu_doc);
           &$Texi2HTML::Config::print_page_head($Texi2HTML::THISDOC{'FH'});
+          shift @{$Texi2HTML::THIS_SECTION} while (@{$Texi2HTML::THIS_SECTION} and ($Texi2HTML::THIS_SECTION->[0] =~ /^\s*$/));
+          my $title = &$Texi2HTML::Config::print_title();
+          unshift @{$Texi2HTML::THIS_SECTION}, $title if (defined($title) and $title ne '');
         }
         if (@foot_lines)
         {
@@ -8071,9 +8085,9 @@ sub pass_text($$)
     );
     $misc_page_infos{'Footnotes'}->{'do'} = 1 if (@foot_lines);
     $misc_page_infos{'Contents'}->{'do'} = 1 if 
-       (@{$Texi2HTML::TOC_LINES} and !$Texi2HTML::Config::INLINE_CONTENTS);
+       (@{$Texi2HTML::TOC_LINES} and !$Texi2HTML::Config::INLINE_CONTENTS and (!Texi2HTML::Config::get_conf('setcontentsaftertitlepage') or !$Texi2HTML::Config::USE_TITLEPAGE_FOR_TITLE));
     $misc_page_infos{'Overview'}->{'do'} = 1 if
-       (@{$Texi2HTML::OVERVIEW} and !$Texi2HTML::Config::INLINE_CONTENTS);
+       (@{$Texi2HTML::OVERVIEW} and !$Texi2HTML::Config::INLINE_CONTENTS and (!Texi2HTML::Config::get_conf('setshortcontentsaftertitlepage') or !$Texi2HTML::Config::USE_TITLEPAGE_FOR_TITLE));
     $misc_page_infos{'About'}->{'do'} = 1 if ($about_body and $Texi2HTML::THISDOC{'do_about'});
          
     foreach my $misc_page('Footnotes', 'Contents', 'Overview', 'About')

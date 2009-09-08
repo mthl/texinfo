@@ -44,6 +44,9 @@ EOT
 # if using tex4ht, must be in latex mode due to \textbf
 $Texi2HTML::TeX4HT::STYLE='latex';
 
+# title is already in the manual
+$print_title = \&T2H_DEFAULT_print_title;
+
 # footer of top_page
 
 $print_Top_footer = \&T2H_SING_print_Top_footer;

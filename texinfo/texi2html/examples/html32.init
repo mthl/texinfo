@@ -207,12 +207,6 @@ sub t2h_html32_heading($)
         return '' unless ($element->{'this'} and !$element->{'with_section'});
     }
     my $text = $element->{'text'};
-    if (($element->{'top'} and $element->{'node'}) or (!$element->{'node'} and $element->{'tag'} eq 'top' and $element->{'text'} =~ /^\s*$/) and defined($Texi2HTML::NAME{'Top'}))
-    {
-       return '' if ($element->{'titlefont'});
-       $level = 1;
-       $text = $Texi2HTML::NAME{'Top'};
-    }
     # when it is a heading, the element is irrelevant, so the command and the
     # line are used...
     if (defined($command) and $command =~ /heading/)

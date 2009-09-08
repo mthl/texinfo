@@ -3,24 +3,12 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
-* add a new function reference, $title ($preamble?), that is prepended to
-  the section when the first element is reached. 
-  Add a new thing in THISDOC, like fulltitle, called simpletitle which is
-  the title that is to be on one line. This is @settitle or @shorttitle*.
-  In the texi2html case, $title does what is currently done in print_Top
-  in the case of empty top, with bogus 'title' replaced by 'simpletitle'.
-  In the case of makeinfo, only the simpletitle stuff is done.
-  Then remove the print_Top code that does the title.
-  And also remove the code in heading that uses NAME{'Top'}.
+* Don't output the title in print_Top.
 
 * css classes for header: header. for top and center chap not unnumbered.
   Ask on texinfo list.
 
-* in _html, the @top is always output, even if there is a @titlefont.
-  it is certainly right, the @titlefont should not take the place of 
-  a @top.
-
-* settitle is used in <link href="#Top" rel="start" title="title &ndash;a">
+* @title is used in <link href="#Top" rel="start" title="title &ndash;a">
   (formatting.texi), not the @top. Maybe it is right, maybe not.
   It is because $top_simple_format is used for 
   $Texi2HTML::SIMPLE_TEXT{'Top'}
@@ -86,6 +74,7 @@ h1 titlefont (@titlefont),
   $Texi2HTML::THISDOC{'split_level'}
   $Texi2HTML::THISDOC{'line_nr'}
   $Texi2HTML::THISDOC{'input_directory'}
+  $Texi2HTML::THISDOC{'simpletitle'}
   $Texi2HTML::THISDOC{'filename'}->{'toc_frame'}
   $Texi2HTML::THISDOC{'filename'}->{'frame'}
 
@@ -115,6 +104,7 @@ h1 titlefont (@titlefont),
   $HEADER_IN_TABLE
   button_formatting
   TOP_BUTTONS
+  USE_TITLEPAGE_FOR_TITLE
   print_redirection_page?
   new argument of menu_link
   @command_handler_output
@@ -293,6 +283,10 @@ in nested table line
 * examples/mediwiki.init: images are like
 [[Image:New-medium.png|Nouveau medium disponible]]
   Many constructs should be mediawikified
+
+  Notice that 
+  - preformatted environments are started by not beginning text at the line beginning.
+  - empty line between paragraphs, but also between itemize/enumerate...
 
 * in xml have documentencoding have an argument.
 

@@ -1,3 +1,4 @@
+== CVS&mdash;Concurrent Versions System v4.2 ==
 <div id="Top"></div>
 <div class="node">
 <p>
@@ -5,7 +6,6 @@ Next: [cvs: Overview#Overview Overview], Up: [[../dir/index.#Top|(dir)]] &nbsp; 
 </div>
 <hr>
 <div id="SEC_Top"></div>
-== CVS&mdash;Concurrent Versions System v4.2 ==
 
 <p>This info manual describes how to use and administer
 <small>CVS</small> version 4.2.

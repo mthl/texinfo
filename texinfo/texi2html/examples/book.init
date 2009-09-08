@@ -109,11 +109,19 @@ sub book_print_Top($$)
 
     my $buttons = \@MISC_BUTTONS;
     # head navigation is printed with heading, and is in THIS_SECTION
-    my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_text) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
-    &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_text); 
-    print $fh $Texi2HTML::TITLEPAGE;
-    print $fh "<h1 class=\"settitle\">$Texi2HTML::NAME{'Top'}</h1>\n"
-        unless ($has_top_heading);
+    if (!$USE_TITLEPAGE_FOR_TITLE)
+    {
+        my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_text) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
+        &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_text); 
+        if ($Texi2HTML::TITLEPAGE =~ /\S/)
+        {
+            print $fh $Texi2HTML::TITLEPAGE;
+        }
+        elsif (defined($Texi2HTML::NAME{'Top'}) and $Texi2HTML::NAME{'Top'} =~ /\S/)
+        {
+            print $fh "<h1 class=\"settitle\">$Texi2HTML::NAME{'Top'}</h1>\n";
+        }
+    }
     main::print_lines($fh, $Texi2HTML::THIS_SECTION);
     if (!$INLINE_CONTENTS and !$Texi2HTML::THISDOC{'setcontentsaftertitlepage'})
     {
@@ -189,7 +197,6 @@ sub book_heading($$$$$$;$$)
 
     my $level = 3;
 
-    return '' if ($element->{'top'});
     if (!$element->{'node'})
     {
         $level = $element->{'level'};
@@ -200,10 +207,6 @@ sub book_heading($$$$$$;$$)
     }
     $level = 1 if ($level == 0);
     my $text = $element->{'text'};
-    if (!$element->{'node'} and (!$NUMBER_SECTIONS))
-    {
-        $text = $element->{'text_nonumber'};
-    }
     return '' if ($text !~ /\S/);
     my $class = $element->{'tag_level'};
     $class = 'unnumbered' if ($class eq 'top');
@@ -212,8 +215,12 @@ sub book_heading($$$$$$;$$)
          $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
     }
     $text = "<h$level class=\"$class\"> $text </h$level>\n";
+    # @top should already have a table of contents, either because there 
+    # is a @contents, or setcontentsaftertitlepage is set, or it is output
+    # at the end of print_Top. In any case it would just be a duplication
+    # of th etable of contents, better let the user decide where it should be
     if (exists($element->{'child'}) 
-        and ($element->{'tag_level'} !~ /heading/))
+        and ($element->{'tag_level'} !~ /heading/) and $element->{'tag'} ne 'top')
     {
         $text .= "<ul${NO_BULLET_LIST_ATTRIBUTE}>\n";
         $text .= "" . book_print_sub_toc($element, $element->{'child'});

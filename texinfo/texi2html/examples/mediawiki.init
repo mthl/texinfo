@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.21 2009-09-07 10:59:14 pertusus Exp $
+# $Id: mediawiki.init,v 1.22 2009-09-08 10:13:05 pertusus Exp $
 
 html_default_load();
 
@@ -29,6 +29,9 @@ $EXTENSION = undef;
 # extension for nodes files when NODE_FILES is true
 $NODE_FILE_EXTENSION = "";	    
 
+# no title page at the beginning
+$USE_TITLEPAGE_FOR_TITLE = 0;
+
 # Use "title: section" name as the file name.
 #$SECTION_AS_FILE_NAME = 1;
 
@@ -47,6 +50,19 @@ my %doc_nr_to_file; # File name cache based on file index.
 sub mediawiki_initialize_variables()
 {
     %doc_nr_to_file = (); # File name cache based on file index.
+}
+
+$print_title                  = \&mediawiki_print_title;
+
+sub mediawiki_print_title()
+{
+    my $title = '';
+    $title = $Texi2HTML::THISDOC{'simpletitle'} if (defined($Texi2HTML::THISDOC{'simpletitle'}) and $Texi2HTML::THISDOC{'simpletitle'} !~ /^\s*$/);
+    if ($title ne '')
+    {
+        return "== $title ==\n";
+    }
+    return undef;
 }
 
 ###################################################################
@@ -194,7 +210,7 @@ sub mediawiki_titlepage($$$$)
     if ($titlepage_text eq '')
     {
        my $title = '';
-       $title = $Texi2HTML::THISDOC{'title'} if (defined($Texi2HTML::THISDOC{'title'}) and $Texi2HTML::THISDOC{'title'} !~ /^\s*$/);
+       $title = $Texi2HTML::THISDOC{'simpletitle'} if (defined($Texi2HTML::THISDOC{'simpletitle'}) and $Texi2HTML::THISDOC{'simpletitle'} !~ /^\s*$/);
        if ($title ne '')
        {
            $Texi2HTML::TITLEPAGE = "== $title ==\n";
@@ -314,13 +330,6 @@ sub mediawiki_heading($$$$$;$$)
 
     my $text = $element->{'text'};
 
-    if (($element->{'top'} and $element->{'node'}) or (!$element->{'node'} and $element->{'tag'} eq 'top' and $element->{'text'} =~ /^\s*$/) and defined($Texi2HTML::NAME{'Top'}))
-    {
-        return '' if ($element->{'titlefont'});
-        $level = 1;
-        $text = $Texi2HTML::NAME{'Top'};
-        chomp $text;
-    }
     return '' if ($text !~ /\S/);
     if (defined($element->{'tocid'}) and $TOC_LINKS)
     {

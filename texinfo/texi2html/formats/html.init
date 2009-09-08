@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.21 2009-09-07 10:59:14 pertusus Exp $
+# $Id: html.init,v 1.22 2009-09-08 10:13:05 pertusus Exp $
 
 use strict;
 
@@ -423,6 +423,7 @@ $shortcontents            = \&HTML_DEFAULT_shortcontents;
 $titlepage                 = \&HTML_DEFAULT_titlepage;
 $print_redirection_page    = \&HTML_DEFAULT_print_redirection_page;
 $inline_contents           = \&HTML_DEFAULT_inline_contents;
+$print_title               = \&HTML_DEFAULT_print_title;
 
 ########################################################################
 # Control of formatting:
@@ -1495,6 +1496,26 @@ sub HTML_DEFAULT_inline_contents($$$$)
     return $result;
 }
 
+sub HTML_DEFAULT_print_title()
+{
+    if ($USE_TITLEPAGE_FOR_TITLE)
+    {
+        my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_format) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
+
+        &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_format); 
+        return $Texi2HTML::TITLEPAGE;
+    }
+    else
+    {
+       my $title = '';
+       $title = $Texi2HTML::THISDOC{'simpletitle'} if (defined($Texi2HTML::THISDOC{'simpletitle'}) and $Texi2HTML::THISDOC{'simpletitle'} !~ /^\s*$/);
+       if ($title ne '')
+       {
+           return '<h1 align="center">'."$title</h1>\n";
+       }
+    }
+}
+
 ######################################################################
 # About page
 #
@@ -1606,11 +1627,15 @@ sub HTML_DEFAULT_titlepage($$$$)
     if ($titlepage_text eq '')
     {
        my $title = '';
-       $title = $Texi2HTML::THISDOC{'title'} if (defined($Texi2HTML::THISDOC{'title'}) and $Texi2HTML::THISDOC{'title'} !~ /^\s*$/);
+       $title = $Texi2HTML::THISDOC{'simpletitle'} if (defined($Texi2HTML::THISDOC{'simpletitle'}) and $Texi2HTML::THISDOC{'simpletitle'} !~ /^\s*$/);
        if ($title ne '')
        {
            $Texi2HTML::TITLEPAGE = '<h1 align="center">'."$title</h1>\n$DEFAULT_RULE\n";
        }
+    }
+    else
+    {
+       $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
     }
 
     if ($Texi2HTML::THISDOC{'setcontentsaftertitlepage'} and (defined($Texi2HTML::THISDOC{'inline_contents'}->{'contents'})) and @{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}})
@@ -2609,13 +2634,13 @@ sub html_default_heading($$$$$;$$)
     $class = 'unnumbered' if ($class eq 'top' or $class eq 'centerchap');
     my $align = '';
     $align = ' align="center"' if ($element->{'tag'} eq 'centerchap');
-    if (($element->{'top'} and $element->{'node'}) or (!$element->{'node'} and $element->{'tag'} eq 'top' and $element->{'text'} =~ /^\s*$/) and defined($Texi2HTML::NAME{'Top'}))
-    {
-       return '' if ($element->{'titlefont'});
-       $level = 1;
-       $text = $Texi2HTML::NAME{'Top'};
-       $class = 'settitle' unless ($one_section);
-    }
+    #if ((!$element->{'node'} and $element->{'tag'} eq 'top' and $element->{'text'} =~ /^\s*$/) and defined($Texi2HTML::NAME{'Top'}))
+    #{
+    #   #return '' if ($element->{'titlefont'});
+    #   $level = 1;
+    #   $text = $Texi2HTML::NAME{'Top'};
+    #   $class = 'settitle' unless ($one_section);
+    #}
     # when it is a heading, the element is irrelevant, so the command and the
     # line are used...
     if (defined($command) and $command =~ /heading/)
@@ -3139,7 +3164,7 @@ sub html_default_line_command($$$$)
     }
     $arg_text .= "<br>" if ($command eq 'author');
     $arg_text .= "\n";
-    $arg_text .= "$DEFAULT_RULE\n" if ($command eq 'title');
+    #$arg_text .= "$DEFAULT_RULE\n" if ($command eq 'title');
     return $arg_text;
 }
 

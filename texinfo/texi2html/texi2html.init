@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.229 2009-09-07 10:59:13 pertusus Exp $
+# $Id: texi2html.init,v 1.230 2009-09-08 10:13:04 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -370,6 +370,9 @@ $NEW_CROSSREF_STYLE = 1;
 # top heading is always at the beginning of the element.
 $TOP_HEADING_AT_BEGINNING = 0;
 
+# use titlepage for the title instead of a simplest title
+$USE_TITLEPAGE_FOR_TITLE = 0;
+
 # if set, center @image by default
 # otherwise, do not center by default
 # Deprecated and not used anymore
@@ -596,6 +599,7 @@ $complex_format    = \&t2h_default_complex_format;
 $toc_body          = \&T2H_DEFAULT_toc_body;
 $misc_command_line = \&t2h_default_misc_command_line;
 $misc_command_line_texi = \&t2h_default_misc_command_line;
+$print_title               = \&T2H_DEFAULT_print_title;
 # reset in html
 $inline_contents    = \&T2H_DEFAULT_inline_contents;
 # reset in docbook and info.
@@ -771,6 +775,7 @@ sub t2h_default_set_variables_texi2html()
   $PROGRAM_NAME_IN_FOOTER = 1;
   $HEADER_IN_TABLE = 1;
   $SHORT_REF = 0;
+  $USE_TITLEPAGE_FOR_TITLE = 1;
 
   $ENABLE_ENCODING_USE_ENTITY = 1;
   $USE_ISO = 1;
@@ -1708,6 +1713,12 @@ sub T2H_DEFAULT_shortcontents($$)
       push @result, $AFTER_OVERVIEW;
    }
    return \@result;
+}
+
+sub T2H_DEFAULT_print_title()
+{
+    my $element = shift;
+    return undef;
 }
 
 sub T2H_DEFAULT_toc_body($)
