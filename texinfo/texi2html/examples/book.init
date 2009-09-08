@@ -80,7 +80,6 @@ sub book_print_up_toc($)
 
 #$print_section = \&book_print_section;
 $print_element_header = \&book_print_element_header;
-$print_Toc = \&book_print_Toc;
 $element_file_name = \&book_element_file_name;
 
 sub book_print_element_header($$)
@@ -100,16 +99,6 @@ sub book_print_element_header($$)
         $result = &$print_navigation($buttons) if (get_conf('headers'));
     }
     return $result;
-}
-
-sub book_print_Toc
-{
-    my $fh = shift;
-    &$print_page_head($fh) if (get_conf('SPLIT'));
-    #print $fh $Texi2HTML::TITLEPAGE;
-    print $fh '<h2> ' . $Texi2HTML::NAME{'Contents'} . "</h2>\n" ;
-    main::print_lines($fh);
-    &$print_misc_footer($fh, \@MISC_BUTTONS);
 }
 
 my $unumbered_nr;
