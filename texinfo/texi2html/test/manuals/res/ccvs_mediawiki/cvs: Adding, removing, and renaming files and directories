@@ -87,7 +87,7 @@ $ cvs add bar
 
 <div id="index-add-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-add"></div>Command: <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i></dt>
+<dt><div id="index-cvs-add"></div>Command: <strong>cvs add</strong><em> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</em></dt>
 <dd>
 <p>Schedule <var>files</var> to be added to the repository.
 The files or directories specified with <code>add</code> must
@@ -193,7 +193,7 @@ specified to <code>checkout</code> or <code>update</code>.
 </p>
 <div id="index-Remove-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-remove"></div>Command: <b>cvs remove</b><i> [options] files &hellip;</i></dt>
+<dt><div id="index-cvs-remove"></div>Command: <strong>cvs remove</strong><em> [options] files &hellip;</em></dt>
 <dd>
 <p>Schedule file(s) to be removed from the repository
 (files which have not already been removed from the

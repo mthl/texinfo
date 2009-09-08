@@ -18,7 +18,7 @@ for obtaining a copy of the sources (see [cvs: Getting the source#Getting-the-so
 </p>
 <div id="index-edit-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-edit"></div>Command: <b>cvs edit</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-edit"></div>Command: <strong>cvs edit</strong><em> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</em></dt>
 <dd>
 <p>Prepare to edit the working files <var>files</var>.  <small>CVS</small> makes the
 <var>files</var> read-write, and notifies users who have requested
@@ -47,7 +47,7 @@ the <code>cvs unedit</code> command.
 <div id="index-Abandoning-work"></div>
 <div id="index-Reverting-to-repository-version"></div>
 <dl>
-<dt><div id="index-cvs-unedit"></div>Command: <b>cvs unedit</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-unedit"></div>Command: <strong>cvs unedit</strong><em> [<code>-lR</code>] [<var>files</var>]&hellip;</em></dt>
 <dd>
 <p>Abandon work on the working files <var>files</var>, and revert them to the
 repository versions on which they are based.  <small>CVS</small> makes those

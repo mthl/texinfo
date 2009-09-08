@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.23 2009-09-08 16:17:19 pertusus Exp $
+# $Id: html.init,v 1.24 2009-09-08 22:16:46 pertusus Exp $
 
 use strict;
 
@@ -157,6 +157,8 @@ $MENU_PRE_STYLE = 'font-family: serif';
 # this controls the menu preformatted format
 # FIXME this is not dynamic, so change in MENU_PRE_STYLE is not taken 
 # into account.
+# This is used if the menu appears within a preformatted format (which
+# is certainly an invalid construct), and SIMPLE_MENU is not set.
 $MENU_PRE_COMPLEX_FORMAT = {
               'pre_style' => $MENU_PRE_STYLE, 
               'class' => 'menu-preformatted',
@@ -841,10 +843,6 @@ sub HTML_DEFAULT_one_section($$)
 # @html within the Top texinfo node to specify content of top-level
 # page.
 #
-# If you enclose everything in @ifnothtml, then title, subtitle,
-# author and overview is printed
-# Texi2HTML::HREF of Next, Prev, Up, Forward, Back are not defined
-# if $T2H_SPLIT then Top page is in its own html file
 sub HTML_DEFAULT_print_Top_header($$)
 {
     my $fh = shift;
@@ -1482,7 +1480,7 @@ sub HTML_DEFAULT_print_title()
        $title = $Texi2HTML::THISDOC{'simpletitle'} if (defined($Texi2HTML::THISDOC{'simpletitle'}) and $Texi2HTML::THISDOC{'simpletitle'} !~ /^\s*$/);
        if ($title ne '')
        {
-           return '<h1 align="center">'."$title</h1>\n";
+           return '<h1 align="center" class="settitle">'."$title</h1>\n";
        }
     }
 }
@@ -1601,7 +1599,7 @@ sub HTML_DEFAULT_titlepage($$$$)
        $title = $Texi2HTML::THISDOC{'simpletitle'} if (defined($Texi2HTML::THISDOC{'simpletitle'}) and $Texi2HTML::THISDOC{'simpletitle'} !~ /^\s*$/);
        if ($title ne '')
        {
-           $Texi2HTML::TITLEPAGE = '<h1 align="center">'."$title</h1>\n$DEFAULT_RULE\n";
+           $Texi2HTML::TITLEPAGE = '<h1 align="center" class="settitle">'."$title</h1>\n$DEFAULT_RULE\n";
        }
     }
     else
@@ -2605,13 +2603,7 @@ sub html_default_heading($$$$$;$$)
     $class = 'unnumbered' if ($class eq 'top' or $class eq 'centerchap');
     my $align = '';
     $align = ' align="center"' if ($element->{'tag'} eq 'centerchap');
-    #if ((!$element->{'node'} and $element->{'tag'} eq 'top' and $element->{'text'} =~ /^\s*$/) and defined($Texi2HTML::NAME{'Top'}))
-    #{
-    #   #return '' if ($element->{'titlefont'});
-    #   $level = 1;
-    #   $text = $Texi2HTML::NAME{'Top'};
-    #   $class = 'settitle' unless ($one_section);
-    #}
+
     # when it is a heading, the element is irrelevant, so the command and the
     # line are used...
     if (defined($command) and $command =~ /heading/)
@@ -2875,11 +2867,11 @@ sub html_default_def_line($$$$$$$$$$$$$$$$)
    else
    {
        chomp ($arguments);
-       $arguments = '<i>' . $arguments . '</i>';
+       $arguments = '<em>' . $arguments . '</em>';
    }
    my $type_name = '';
-   $type_name = " <i>$type</i>" if ($type ne '');
-   $type_name .= ' <b>' . $name . '</b>' if ($name ne '');
+   $type_name = " <em>$type</em>" if ($type ne '');
+   $type_name .= ' <strong>' . $name . '</strong>' if ($name ne '');
    $type_name .= $arguments;
    if (! $DEF_TABLE)
    {

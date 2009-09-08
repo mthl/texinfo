@@ -1,3 +1,7 @@
+2009-09-09   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* formats/html.init: use better elements and classes.
+
 2009-09-08   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: don't use Top for the Top name if there is no

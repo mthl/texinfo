@@ -3,14 +3,12 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
-* css classes for header: header. for top and center chap not unnumbered.
-  Ask on texinfo list.
+* document css classes, and have similar classes with makeinfo, sent
+  on the bug-texinfo list.
 
-* @title is used in <link href="#Top" rel="start" title="title &ndash;a">
-  (formatting.texi), not the @top. Maybe it is right, maybe not.
-  It is because $top_simple_format is used for 
-  $Texi2HTML::SIMPLE_TEXT{'Top'}
-  it should be rechecked.
+* ship the css file from http://planet.gnu.org/~ams/.
+
+* take into account @frenshspacing in info
 
 * in sectionning, test nodes_after_top_before_section_use_nodes_chapter 
   not split at chapter. It is split at nodes although top node is not 
@@ -38,28 +36,6 @@ Later
   - to LaTeX
   - to RTF
   - to open document
-
-* document css classes, and have similar classes with makeinfo
--  makeinfo classes:
-ul menu, 
-ul index-cp index-*, 
-div node (navigation bar), 
-
-- texi2html classes:
-table index-cp index-*, 
-table menu, 
-h3 node
-ul toc,
-
-- same classes:
-pre verbatim, 
-pre example display...,
-table cartouche, 
-small dots, small enddots, 
-div contents shortcontents, div footnote, 
-h? unnumbered chapter appendix...,
-h1 settitle (title before contents, if not set by titlefont),
-h1 titlefont (@titlefont),
 
 * Document 
   Texi2HTML::THIS_ELEMENT
@@ -178,6 +154,11 @@ function clean_antispam() {
   What is before the first sectionning command is put in <bookinfo><abstract>.
 
   what about @titlefont in docbook?
+
+  maybe use simpara instead of para. Indeed, simpara is for paragraph without
+  block elent within, and it should be that way in generated output.
+
+  put <title> in <articleinfo>?
 
 * to solve above issue (first issue), the definition arg formatted with 
   simple_format should alo be passed down
@@ -304,6 +285,12 @@ in nested table line
   cases. Also this should be an info specific message.
 
 * images.texi should be tested in xml too.
+
+* Maybe put a lone anchor in a <div> for strict html (Noah Slater).
+
+* drop color from body and put in css (Noah Slater).
+
+* maybe put lang= in <html> and not <body>, though I am not convinced.
 
 * Tests for 
 @node @ 

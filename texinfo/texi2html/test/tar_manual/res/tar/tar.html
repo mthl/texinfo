@@ -7308,13 +7308,13 @@ For more information about shell script syntax, please refer to
 <h3 class="subsection">5.4.1 General-Purpose Variables</h3>
 
 <dl>
-<dt><a name="index-ADMINISTRATOR"></a>Backup variable: <b>ADMINISTRATOR</b></dt>
+<dt><a name="index-ADMINISTRATOR"></a>Backup variable: <strong>ADMINISTRATOR</strong></dt>
 <dd><p>The user name of the backup administrator.  <code>Backup</code> scripts
 sends a backup report to this address.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-BACKUP_005fHOUR"></a>Backup variable: <b>BACKUP_HOUR</b></dt>
+<dt><a name="index-BACKUP_005fHOUR"></a>Backup variable: <strong>BACKUP_HOUR</strong></dt>
 <dd><p>The hour at which the backups are done.  This can be a number from 0
 to 23, or the time specification in form <var>hours</var>:<var>minutes</var>,
 or the string &lsquo;<samp>now</samp>&rsquo;.
@@ -7324,7 +7324,7 @@ using &lsquo;<samp>--time</samp>&rsquo; option (see section <a href="#Scripted-B
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-TAPE_005fFILE"></a>Backup variable: <b>TAPE_FILE</b></dt>
+<dt><a name="index-TAPE_005fFILE"></a>Backup variable: <strong>TAPE_FILE</strong></dt>
 <dd>
 <p>The device <code>tar</code> writes the archive to.  If <var>TAPE_FILE</var>
 is a remote archive (see <a href="#remote_002ddev">remote-dev</a>), backup script will suppose
@@ -7334,14 +7334,14 @@ invocations of <code>mt</code>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-BLOCKING"></a>Backup variable: <b>BLOCKING</b></dt>
+<dt><a name="index-BLOCKING"></a>Backup variable: <strong>BLOCKING</strong></dt>
 <dd>
 <p>The blocking factor <code>tar</code> will use when writing the dump archive.
 See section <a href="#Blocking-Factor">The Blocking Factor of an Archive</a>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-BACKUP_005fDIRS"></a>Backup variable: <b>BACKUP_DIRS</b></dt>
+<dt><a name="index-BACKUP_005fDIRS"></a>Backup variable: <strong>BACKUP_DIRS</strong></dt>
 <dd>
 <p>A list of file systems to be dumped (for <code>backup</code>), or restored
 (for <code>restore</code>).  You can include any directory
@@ -7366,14 +7366,14 @@ in a separate file.  This file is usually named
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-DIRLIST"></a>Backup variable: <b>DIRLIST</b></dt>
+<dt><a name="index-DIRLIST"></a>Backup variable: <strong>DIRLIST</strong></dt>
 <dd>
 <p>A path to the file containing the list of the file systems to backup
 or restore.  By default it is &lsquo;<tt>/etc/backup/dirs</tt>&rsquo;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-BACKUP_005fFILES"></a>Backup variable: <b>BACKUP_FILES</b></dt>
+<dt><a name="index-BACKUP_005fFILES"></a>Backup variable: <strong>BACKUP_FILES</strong></dt>
 <dd>
 <p>A list of individual files to be dumped (for <code>backup</code>), or restored
 (for <code>restore</code>).  These should be accessible from the machine on
@@ -7386,20 +7386,20 @@ in a separate file.  This file is usually named
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-FILELIST"></a>Backup variable: <b>FILELIST</b></dt>
+<dt><a name="index-FILELIST"></a>Backup variable: <strong>FILELIST</strong></dt>
 <dd>
 <p>A path to the file containing the list of the individual files to backup
 or restore.  By default it is &lsquo;<tt>/etc/backup/files</tt>&rsquo;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-MT"></a>Backup variable: <b>MT</b></dt>
+<dt><a name="index-MT"></a>Backup variable: <strong>MT</strong></dt>
 <dd>
 <p>Full file name of <code>mt</code> binary.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-RSH"></a>Backup variable: <b>RSH</b></dt>
+<dt><a name="index-RSH"></a>Backup variable: <strong>RSH</strong></dt>
 <dd><p><a name="RSH"></a>
 Full file name of <code>rsh</code> binary or its equivalent.  You may wish to
 set it to <code>ssh</code>, to improve security.  In this case you will have
@@ -7407,7 +7407,7 @@ to use public key authentication.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-RSH_005fCOMMAND"></a>Backup variable: <b>RSH_COMMAND</b></dt>
+<dt><a name="index-RSH_005fCOMMAND"></a>Backup variable: <strong>RSH_COMMAND</strong></dt>
 <dd>
 <p>Full file name of <code>rsh</code> binary on remote mashines.  This will
 be passed via &lsquo;<samp>--rsh-command</samp>&rsquo; option to the remote invocation
@@ -7415,14 +7415,14 @@ of <acronym>GNU</acronym> <code>tar</code>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-VOLNO_005fFILE"></a>Backup variable: <b>VOLNO_FILE</b></dt>
+<dt><a name="index-VOLNO_005fFILE"></a>Backup variable: <strong>VOLNO_FILE</strong></dt>
 <dd>
 <p>Name of temporary file to hold volume numbers.  This needs to be accessible
 by all the machines which have file systems to be dumped.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-XLIST"></a>Backup variable: <b>XLIST</b></dt>
+<dt><a name="index-XLIST"></a>Backup variable: <strong>XLIST</strong></dt>
 <dd>
 <p>Name of <em>exclude file list</em>.  An <em>exclude file list</em> is a file
 located on the remote machine and containing the list of files to
@@ -7435,7 +7435,7 @@ is to exclude files containing security-sensitive information
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-SLEEP_005fTIME"></a>Backup variable: <b>SLEEP_TIME</b></dt>
+<dt><a name="index-SLEEP_005fTIME"></a>Backup variable: <strong>SLEEP_TIME</strong></dt>
 <dd>
 <p>Time to sleep between dumps of any two successive file systems
 </p>
@@ -7443,7 +7443,7 @@ is to exclude files containing security-sensitive information
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-DUMP_005fREMIND_005fSCRIPT"></a>Backup variable: <b>DUMP_REMIND_SCRIPT</b></dt>
+<dt><a name="index-DUMP_005fREMIND_005fSCRIPT"></a>Backup variable: <strong>DUMP_REMIND_SCRIPT</strong></dt>
 <dd>
 <p>Script to be run when it&rsquo;s time to insert a new tape in for the next
 volume.  Administrators may want to tailor this script for their site.
@@ -7454,14 +7454,14 @@ description of the default prompt, see <a href="#change-volume-prompt">change vo
 </dd></dl>
 
 <dl>
-<dt><a name="index-SLEEP_005fMESSAGE"></a>Backup variable: <b>SLEEP_MESSAGE</b></dt>
+<dt><a name="index-SLEEP_005fMESSAGE"></a>Backup variable: <strong>SLEEP_MESSAGE</strong></dt>
 <dd>
 <p>Message to display on the terminal while waiting for dump time.  Usually
 this will just be some literal text.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-TAR"></a>Backup variable: <b>TAR</b></dt>
+<dt><a name="index-TAR"></a>Backup variable: <strong>TAR</strong></dt>
 <dd>
 <p>Full file name of the <acronym>GNU</acronym> <code>tar</code> executable.  If this is not set, backup
 scripts will search <code>tar</code> in the current shell path.
@@ -7492,7 +7492,7 @@ These functions take a single argument &ndash; the name of the tape
 device.  Their names are kept in the following variables:
 </p>
 <dl>
-<dt><a name="index-MT_005fBEGIN"></a>Backup variable: <b>MT_BEGIN</b></dt>
+<dt><a name="index-MT_005fBEGIN"></a>Backup variable: <strong>MT_BEGIN</strong></dt>
 <dd><p>The name of <em>begin</em> function.  This function is called before
 accessing the drive.  By default it retensions the tape:
 </p>
@@ -7505,7 +7505,7 @@ mt_begin() {
 </dd></dl>
 
 <dl>
-<dt><a name="index-MT_005fREWIND"></a>Backup variable: <b>MT_REWIND</b></dt>
+<dt><a name="index-MT_005fREWIND"></a>Backup variable: <strong>MT_REWIND</strong></dt>
 <dd><p>The name of <em>rewind</em> function.  The default definition is as
 follows:
 </p>
@@ -7519,7 +7519,7 @@ mt_rewind() {
 </dd></dl>
 
 <dl>
-<dt><a name="index-MT_005fOFFLINE"></a>Backup variable: <b>MT_OFFLINE</b></dt>
+<dt><a name="index-MT_005fOFFLINE"></a>Backup variable: <strong>MT_OFFLINE</strong></dt>
 <dd><p>The name of the function switching the tape off line.  By default
 it is defined as follows:
 </p>
@@ -7532,7 +7532,7 @@ mt_offline() {
 </dd></dl>
 
 <dl>
-<dt><a name="index-MT_005fSTATUS"></a>Backup variable: <b>MT_STATUS</b></dt>
+<dt><a name="index-MT_005fSTATUS"></a>Backup variable: <strong>MT_STATUS</strong></dt>
 <dd><p>The name of the function used to obtain the status of the archive device,
 including error count.  Default definition:
 </p>
@@ -7572,7 +7572,7 @@ after restoring a file system.  Each user hook is a shell function
 taking four arguments:
 </p>
 <dl>
-<dt><a name="index-hook"></a>User Hook Function: <b>hook</b><i> <var>level</var> <var>host</var> <var>fs</var> <var>fsname</var></i></dt>
+<dt><a name="index-hook"></a>User Hook Function: <strong>hook</strong><em> <var>level</var> <var>host</var> <var>fs</var> <var>fsname</var></em></dt>
 <dd><p>Its arguments are:
 </p>
 <dl compact="compact">
@@ -7598,22 +7598,22 @@ is useful, e.g., for creating unique files.
 <p>Following variables keep the names of user hook functions
 </p>
 <dl>
-<dt><a name="index-DUMP_005fBEGIN"></a>Backup variable: <b>DUMP_BEGIN</b></dt>
+<dt><a name="index-DUMP_005fBEGIN"></a>Backup variable: <strong>DUMP_BEGIN</strong></dt>
 <dd><p>Dump begin function.  It is executed before dumping the file system.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-DUMP_005fEND"></a>Backup variable: <b>DUMP_END</b></dt>
+<dt><a name="index-DUMP_005fEND"></a>Backup variable: <strong>DUMP_END</strong></dt>
 <dd><p>Executed after dumping the file system.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-RESTORE_005fBEGIN"></a>Backup variable: <b>RESTORE_BEGIN</b></dt>
+<dt><a name="index-RESTORE_005fBEGIN"></a>Backup variable: <strong>RESTORE_BEGIN</strong></dt>
 <dd><p>Executed before restoring the file system.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-RESTORE_005fEND"></a>Backup variable: <b>RESTORE_END</b></dt>
+<dt><a name="index-RESTORE_005fEND"></a>Backup variable: <strong>RESTORE_END</strong></dt>
 <dd><p>Executed after restoring the file system.
 </p></dd></dl>
 
@@ -13980,7 +13980,7 @@ no-dup-args
 <p>Following variables are declared:
 </p>
 <dl>
-<dt><a name="index-dup_002dargs"></a>Help Output: <i>boolean</i> <b>dup-args</b></dt>
+<dt><a name="index-dup_002dargs"></a>Help Output: <em>boolean</em> <strong>dup-args</strong></dt>
 <dd><p>If true, arguments for an option are shown with both short and long
 options, even when a given option has both forms, for example:
 </p>
@@ -14001,7 +14001,7 @@ using <code>dup-args-note</code> (see below).
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-dup_002dargs_002dnote"></a>Help Output: <i>boolean</i> <b>dup-args-note</b></dt>
+<dt><a name="index-dup_002dargs_002dnote"></a>Help Output: <em>boolean</em> <strong>dup-args-note</strong></dt>
 <dd><p>If this variable is true, which is the default, the following notice
 is displayed at the end of the help output:
 </p>
@@ -14014,7 +14014,7 @@ variables <code>dup-args</code> or <code>dup-args-note</code> should be set.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-short_002dopt_002dcol"></a>Help Output: <i>offset</i> <b>short-opt-col</b></dt>
+<dt><a name="index-short_002dopt_002dcol"></a>Help Output: <em>offset</em> <strong>short-opt-col</strong></dt>
 <dd><p>Column in which short options start. Default is 2.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --help|grep ARCHIVE</kbd>
@@ -14025,7 +14025,7 @@ $ <kbd>ARGP_HELP_FMT=short-opt-col=6 tar --help|grep ARCHIVE</kbd>
 </dd></dl>
 
 <dl>
-<dt><a name="index-long_002dopt_002dcol"></a>Help Output: <i>offset</i> <b>long-opt-col</b></dt>
+<dt><a name="index-long_002dopt_002dcol"></a>Help Output: <em>offset</em> <strong>long-opt-col</strong></dt>
 <dd><p>Column in which long options start. Default is 6. For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --help|grep ARCHIVE</kbd>
@@ -14036,7 +14036,7 @@ $ <kbd>ARGP_HELP_FMT=long-opt-col=16 tar --help|grep ARCHIVE</kbd>
 </dd></dl>
 
 <dl>
-<dt><a name="index-doc_002dopt_002dcol"></a>Help Output: <i>offset</i> <b>doc-opt-col</b></dt>
+<dt><a name="index-doc_002dopt_002dcol"></a>Help Output: <em>offset</em> <strong>doc-opt-col</strong></dt>
 <dd><p>Column in which <em>doc options</em> start.  A doc option isn&rsquo;t actually
 an option, but rather an arbitrary piece of documentation that is
 displayed in much the same manner as the options.  For example, in
@@ -14072,7 +14072,7 @@ will look as follows:
 </dd></dl>
 
 <dl>
-<dt><a name="index-opt_002ddoc_002dcol"></a>Help Output: <i>offset</i> <b>opt-doc-col</b></dt>
+<dt><a name="index-opt_002ddoc_002dcol"></a>Help Output: <em>offset</em> <strong>opt-doc-col</strong></dt>
 <dd><p>Column in which option description starts. Default is 29.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --help|grep ARCHIVE</kbd>
@@ -14089,7 +14089,7 @@ $ <kbd>ARGP_HELP_FMT=opt-doc-col=9 tar --help|grep ARCHIVE</kbd>
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-header_002dcol"></a>Help Output: <i>offset</i> <b>header-col</b></dt>
+<dt><a name="index-header_002dcol"></a>Help Output: <em>offset</em> <strong>header-col</strong></dt>
 <dd><p>Column in which <em>group headers</em> are printed.  A group header is a
 descriptive text preceding an option group.  For example, in the
 following text:
@@ -14105,13 +14105,13 @@ following text:
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-usage_002dindent"></a>Help Output: <i>offset</i> <b>usage-indent</b></dt>
+<dt><a name="index-usage_002dindent"></a>Help Output: <em>offset</em> <strong>usage-indent</strong></dt>
 <dd><p>Indentation of wrapped usage lines. Affects &lsquo;<samp>--usage</samp>&rsquo;
 output. Default is 12.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-rmargin"></a>Help Output: <i>offset</i> <b>rmargin</b></dt>
+<dt><a name="index-rmargin"></a>Help Output: <em>offset</em> <strong>rmargin</strong></dt>
 <dd><p>Right margin of the text output. Used for wrapping.
 </p></dd></dl>
 

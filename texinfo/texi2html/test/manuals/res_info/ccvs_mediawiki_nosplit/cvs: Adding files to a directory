@@ -42,7 +42,7 @@ $ cvs add bar
 
 <div id="index-add-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-add"></div>Command: <b>cvs add</b><i> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</i></dt>
+<dt><div id="index-cvs-add"></div>Command: <strong>cvs add</strong><em> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</em></dt>
 <dd>
 <p>Schedule <var>files</var> to be added to the repository.
 The files or directories specified with <code>add</code> must

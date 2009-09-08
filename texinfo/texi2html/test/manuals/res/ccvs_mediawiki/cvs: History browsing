@@ -174,7 +174,7 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 <div id="index-annotate-_0028subcommand_0029"></div>
 
 <dl>
-<dt><div id="index-cvs-annotate"></div>Command: <b>cvs annotate</b><i> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files &hellip;</i></dt>
+<dt><div id="index-cvs-annotate"></div>Command: <strong>cvs annotate</strong><em> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files &hellip;</em></dt>
 <dd>
 <p>For each file in <var>files</var>, print the head revision
 of the trunk, together with information on the last

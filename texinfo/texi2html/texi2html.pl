@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.328 2009-09-08 10:13:04 pertusus Exp $
+# $Id: texi2html.pl,v 1.329 2009-09-08 22:16:45 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -307,6 +307,7 @@ $INTERNAL_LINKS
 $DEFAULT_OUTPUT_FORMAT
 $OUTPUT_FORMAT
 $COMMAND_NAME
+@COMMANDS
 );
 
 # customization variables
@@ -2931,6 +2932,14 @@ $T2H_OPTIONS -> {'output-indent'} =
  verbose => 'This option used to indent XML, it is ignored'
 };
 
+$T2H_OPTIONS -> {'command'} =
+{
+ type => '=s',
+ linkage => \@Texi2HTML::Config::COMMANDS,
+ verbose => 'insert CMD in copy of input file'
+};
+
+
 foreach my $output_format (keys(%Texi2HTML::Config::output_format_names))
 {
   next if (defined($default_output_format) and $output_format eq $default_output_format);
@@ -3303,6 +3312,7 @@ Output format selection (default is to produce Info):
       --plaintext             output plain text rather than Info.
 
 General output options:
+      --command=CMD           insert CMD in copy of input file
   -E, --macro-expand=FILE     output macro-expanded source to FILE,
                                 ignoring any @setfilename.
       --no-headers            suppress node separators, Node: lines, and menus
@@ -7733,6 +7743,8 @@ sub pass_text($$)
 
 
     # find the triplet (Top name, Top with texi removed, Top simply formatted)
+    # the corresponding href is used a lot but these are only used because
+    # they are used in LINKS_BUTTONS...
 
     my $element_top_Top = [undef,undef,undef];
     my $node_top_Top = [undef,undef,undef];

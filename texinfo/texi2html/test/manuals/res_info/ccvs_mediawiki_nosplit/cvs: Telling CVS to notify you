@@ -16,7 +16,7 @@ command.
 </p>
 <div id="index-watch-add-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-watch-add"></div>Command: <b>cvs watch add</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-add"></div>Command: <strong>cvs watch add</strong><em> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</em></dt>
 <dd>
 <p>Add the current user to the list of people to receive notification of
 work done on <var>files</var>.
@@ -74,7 +74,7 @@ omitted, the action defaults to <code>all</code>.
 
 <div id="index-watch-remove-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-watch-remove"></div>Command: <b>cvs watch remove</b><i> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-remove"></div>Command: <strong>cvs watch remove</strong><em> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</em></dt>
 <dd>
 <p>Remove a notification request established using <code>cvs watch add</code>;
 the arguments are the same.  If the <code>-a</code> option is present, only

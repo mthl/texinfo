@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.230 2009-09-08 10:13:04 pertusus Exp $
+# $Id: texi2html.init,v 1.231 2009-09-08 22:16:45 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -145,6 +145,10 @@ $NO_WARN = 0;
 
 # --number-footnotes
 $NUMBER_FOOTNOTES = 1;
+
+# not in makeinfo but in texi2dvi
+# --command
+@COMMANDS = ();
 
 ##################################################################
 # option specific of texi2html
@@ -448,8 +452,8 @@ $MENU_PRE_STYLE = 'font-family: serif';
 # this controls the menu preformatted format
 # FIXME this is not dynamic, so change in MENU_PRE_STYLE is not taken 
 # into account.
-# This is used if the menu appears within a preformatted format, which
-# is certainly an invalid construct.
+# This is used if the menu appears within a preformatted format (which
+# is certainly an invalid construct), and SIMPLE_MENU is not set.
 $MENU_PRE_COMPLEX_FORMAT = {
               'class' => 'menu-preformatted',
 #              'style' => 'code'

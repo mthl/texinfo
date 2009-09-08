@@ -12,7 +12,7 @@ certain files are to be watched.
 </p>
 <div id="index-watch-on-_0028subcommand_0029"></div>
 <dl>
-<dt><div id="index-cvs-watch-on"></div>Command: <b>cvs watch on</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-on"></div>Command: <strong>cvs watch on</strong><em> [<code>-lR</code>] [<var>files</var>]&hellip;</em></dt>
 <dd>
 <div id="index-Read_002donly-files_002c-and-watches"></div>
 <p>Specify that developers should run <code>cvs edit</code>
@@ -37,7 +37,7 @@ option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see [cvs: Default options and 
 </dd></dl>
 
 <dl>
-<dt><div id="index-cvs-watch-off"></div>Command: <b>cvs watch off</b><i> [<code>-lR</code>] [<var>files</var>]&hellip;</i></dt>
+<dt><div id="index-cvs-watch-off"></div>Command: <strong>cvs watch off</strong><em> [<code>-lR</code>] [<var>files</var>]&hellip;</em></dt>
 <dd>
 <p>Do not create <var>files</var> read-only on checkout; thus,
 developers will not be reminded to use <code>cvs edit</code>
