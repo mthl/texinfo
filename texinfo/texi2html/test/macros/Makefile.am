@@ -10,6 +10,7 @@ EXTRA_DIST = macros.texi simple_macro.texi nested_macro_calls.texi \
  macro_commands_in_pass_texi_commands.texi node-value.texi empty_macro.texi \
  test_include_with_setfilename.texi no_arg_macro.texi \
  simple_imbricated_macro.texi test_paths.texi \
+ setfilename_comment.texi double_setfilename.texi bad_setfilename.texi \
  inc_@f--ile.texi \
  file.texi inc_file.texi macro_included.texi my-bib-macros.texi \
  incl-incl.txi included_file_with_setfilename.texi \

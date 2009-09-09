@@ -46,12 +46,14 @@ macro_in_misc.texi(,46) @end macro
 macro_in_misc.texi(lowersections_macro,47) @lowersections
 macro_in_misc.texi(,48) 
 macro_in_misc.texi(,49) @c tex error: Use of \ doesn't match its definition.
-macro_in_misc.texi(,52) @@definfoenclose phoo,//,\\  macro_in_misc.texi(,52) 
+macro_in_misc.texi(,51) @@definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
+macro_in_misc.texi(,52) 
 macro_in_misc.texi(,53) //bar\\
 macro_in_misc.texi(,55) 
 macro_in_misc.texi(,56) @macro definfoenclose_name 
 macro_in_misc.texi(,57) phi
 macro_in_misc.texi(,58) @end macro
+macro_in_misc.texi(definfoenclose_name,59) @definfoenclose phi,:,:
 macro_in_misc.texi(,60) 
 macro_in_misc.texi(,61) @c this is required
 macro_in_misc.texi(,65) 
@@ -66,6 +68,7 @@ macro_in_misc.texi(,73) @end macro
 macro_in_misc.texi(,74) 
 macro_in_misc.texi(strong_macro,75) @strong{very strong}
 macro_in_misc.texi(,76) 
+macro_in_misc.texi(strong_name,77) @definfoenclose strong,(strong:,:)
 macro_in_misc.texi(,78) 
 macro_in_misc.texi(strong_macro,79) (strong: is it really strong? :)
 macro_in_misc.texi(,80) 

@@ -23,6 +23,8 @@ This file records noteworthy changes.
 
 * add 0x7F as a comment character.
 
+* When called as texi2html, output the title page at the beginning.
+
 * BUG FIXES
   ---------
 
@@ -68,6 +70,16 @@ This file records noteworthy changes.
 
 * Remove the user from footer, and the corresponding USER variable and
   $Texi2HTML::THISDOC{user}.
+
+* Don't do anything special anymore when the top element is empty. Also
+  don't treat especially top element headings.
+
+* Don't skip top element heading if there was a @titlefont.
+
+* If file begins with /, ./ or ../ don't search in -I.
+
+* Don't treat _setfilename as a value set. It should be available through
+  get_conf.
 
 1.82 (2009-01-05)
 

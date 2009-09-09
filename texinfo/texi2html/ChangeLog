@@ -1,3 +1,11 @@
+2009-09-10   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: keep definfoenclose for later
+	passes.
+	Don't treat _setfilename as a value set. It should be available 
+	through get_conf.
+	Handle better bogus uses of @setfilename.
+
 2009-09-09   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* formats/html.init: use better elements and classes.

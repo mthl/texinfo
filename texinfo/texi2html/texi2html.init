@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.231 2009-09-08 22:16:45 pertusus Exp $
+# $Id: texi2html.init,v 1.232 2009-09-09 18:56:04 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -353,6 +353,12 @@ $SETSHORTCONTENTSAFTERTITLEPAGE = undef;
 
 # corresponds with @kbdinputstyle
 $KBDINPUTSTYLE = 'distinct';
+
+# corresponds with @frenchspacing
+$FRENCHSPACING = 'off';
+
+# corresponds with @setfilename. Set with caution.
+$SETFILENAME = undef;
 
 # if set, the image files are completed to be relative from the
 # document directory, to the source manual directory and then to
@@ -4287,6 +4293,7 @@ foreach my $key (keys(%def_map))
         'oddfooting' => {'arg' => 'line'},
         'smallbook' => {'skip' => 'line'}, # no arg
         'setfilename' => {'arg' => 'line'},
+        'definfoenclose' => {'arg' => 'line'},
         #'shorttitle' => {'arg' => 'line', 'texi' => 1},
         #'shorttitlepage' => {'arg' => 'line', 'texi' => 1},
         #'settitle' => {'arg' => 'line', 'texi' => 1},

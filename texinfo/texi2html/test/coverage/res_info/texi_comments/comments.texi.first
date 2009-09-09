@@ -61,16 +61,19 @@ Text line after the text line followed by the comment.
 @@afourwide @afourwide on line following afourwide
 
 @c tex error: Use of \ doesn't match its definition.
-@@definfoenclose phoo,//,\\  
+@@definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
+
 //bar\\
 
-@@definfoenclose phi,:,:  
+@@definfoenclose phi,:,:  @definfoenclose phi,:,:
+
 @c this is required
 
 :bar:
 
 @strong{very strong}
 
+@definfoenclose strong,(strong:,:)
 
 (strong: is it really strong? :)
 

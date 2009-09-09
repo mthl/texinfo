@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.329 2009-09-08 22:16:45 pertusus Exp $
+# $Id: texi2html.pl,v 1.330 2009-09-09 18:56:04 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -283,6 +283,8 @@ $FILLCOLUMN
 $SETCONTENTSAFTERTITLEPAGE
 $SETSHORTCONTENTSAFTERTITLEPAGE
 $KBDINPUTSTYLE
+$FRENCHSPACING
+$SETFILENAME
 $TOC_LINKS
 $L2H 
 $L2H_L2H 
@@ -730,6 +732,8 @@ my %config_map = (
    'setcontentsaftertitlepage' => \$SETCONTENTSAFTERTITLEPAGE,
    'setshortcontentsaftertitlepage'  => \$SETSHORTCONTENTSAFTERTITLEPAGE,
    'kbdinputstyle' => \$KBDINPUTSTYLE,
+   'frenchspacing' => \$FRENCHSPACING,
+   'setfilename' => \$SETFILENAME,
 );
 
 sub get_conf($)
@@ -2300,7 +2304,7 @@ my %value_initial =
 # _foo: internal variables to track @foo
 #
 foreach my $key ('_author', '_title', '_subtitle', '_shorttitlepage',
-	 '_settitle', '_setfilename', '_titlefont')
+	 '_settitle', '_titlefont')
 {
     $value_initial{$key} = '';            # prevent -w warnings
 }
@@ -4371,7 +4375,6 @@ sub texinfo_initialization($)
 #                                                                             #
 #---###########################################################################
 
-my @fhs = ();			# hold the file handles to read
 #my @lines = ();             # whole document
 #my @lines_numbers = ();     # line number, originating file associated with 
                             # whole document 
@@ -4388,6 +4391,7 @@ sub initialise_state_texi($)
     $state->{'macro_inside'} = 0 unless(defined($state->{'macro_inside'}));
     $state->{'ifvalue_inside'} = 0 unless(defined($state->{'ifvalue_inside'}));
     $state->{'arg_expansion'} = 0 unless(defined($state->{'arg_expansion'}));
+    $state->{'files_stack'} = [] unless(defined($state->{'files_stack'}));
 }
 
 
@@ -4404,16 +4408,17 @@ sub pass_texi($)
     my $state = {};
                                 # holds the informations about the context
                                 # to pass it down to the functions
+    my @command_line_lines = @Texi2HTML::Config::COMMANDS;
     initialise_state_texi($state);
     my $texi_line_number;
     ($texi_line_number, $state->{'input_spool'}) = 
-          open_file($input_file_name, '');
+          open_file($input_file_name, '', $state->{'files_stack'});
     my @stack;
     my $text;
     my $cline;
  INPUT_LINE: while (1)
     {
-        ($cline, $state->{'input_spool'}) = next_line($texi_line_number);
+        ($cline, $state->{'input_spool'}) = next_line($texi_line_number, $state->{'files_stack'});
         last if (!defined($cline));
         #
         # remove the lines preceding \input or an @-command
@@ -5099,9 +5104,7 @@ sub common_misc_commands($$$$)
             if ($filename ne '')
             {
                 $filename = substitute_line($filename, "\@$macro",{'code_style' => 1, 'remove_texi' => 1});
-                #$filename = substitute_line($filename, {'code_style' => 1});
-                $Texi2HTML::THISDOC{$macro} = $filename;
-                $value{"_$macro"} = $filename if ($pass == 1);
+                Texi2HTML::Config::set_conf($macro, $filename, 1);
             }
         }
         elsif ($macro eq 'paragraphindent')
@@ -5145,7 +5148,7 @@ sub common_misc_commands($$$$)
         {
             if (($line =~ /^\s+(on)[^\w\-]/) or ($line =~ /^\s+(off)[^\w\-]/))
             {
-                $Texi2HTML::THISDOC{$macro} = $1;
+                Texi2HTML::Config::set_conf($macro, $1, 1);
             }
             else
             {
@@ -5246,7 +5249,7 @@ sub misc_command_texi($$$$)
                }
                if (defined($from_encoding) and $Texi2HTML::Config::USE_UNICODE)
                {
-                  foreach my $file (@fhs)
+                  foreach my $file (@{$state->{'files_stack'}})
                   {
                      binmode($file->{'fh'}, ":encoding($from_encoding)");
                   }
@@ -5270,16 +5273,38 @@ sub misc_command_texi($$$$)
                line_error ("bad \@alias line", $line_nr);
           }
       }
+      elsif ($macro eq 'definfoenclose')
+      {
+          if ($cline =~ s/^\s+([a-z][\w\-]*)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//)
+          {
+             $info_enclose{$1} = [ $2, $3 ];
+          }
+          else
+          {
+             line_error("Bad \@$macro", $line_nr);
+          } # FIXME warn about garbage remaining on the line?
+      }
       else
       {
           if ($macro eq 'setfilename' and $Texi2HTML::Config::USE_SETFILENAME)
           {
-             my $filename = trim_around_spaces($line);
-             $filename = substitute_line($filename, "\@$macro",{'code_style' => 1, 'remove_texi' => 1});
-             $Texi2HTML::THISDOC{$macro} = $filename;
-             # remove extension
-             $filename =~ s/\.[^\.]*$//;
-             init_with_file_name ($filename) if ($filename ne '');
+             if (defined(Texi2HTML::Config::get_conf ('setfilename')))
+             {
+                 line_error ("\@$macro already set", $line_nr);
+                 # the line is removed, because we don't want to reset 
+                 # get_conf('setfilename') between passes, and we don't want
+                 # the last one to be picked up
+                 $line = "\n";
+             }
+             else
+             {
+                 my $filename = trim_around_spaces($line);
+                 $filename = substitute_line($filename, "\@$macro",{'code_style' => 1, 'remove_texi' => 1});
+                 Texi2HTML::Config::set_conf($macro, $filename, 1);
+                 # remove extension
+                 $filename =~ s/\.[^\.]*$//;
+                 init_with_file_name ($filename) if ($filename ne '');
+             }
           }
           # in reality, do only set, clear and clickstyle.
           # though we should never go there for clickstyle... 
@@ -7841,6 +7866,10 @@ sub pass_text($$)
 
     &$Texi2HTML::Config::init_out();
 
+    # FIXME It is not clear whether it should be here or before 
+    # command_handler_output calls. After, it means that 
+    # command_handler_output may modify the initializations. Before
+    # it allows to look at the values from the preceding pass.
     texinfo_initialization(2);
 
     foreach my $handler(@Texi2HTML::Config::command_handler_output)
@@ -7906,8 +7935,16 @@ sub pass_text($$)
             my $tag = '';
             $tag = $1 if ($cline =~ /^\@(\w+)/);
             if ($tag eq 'setfilename' and $Texi2HTML::Config::IGNORE_BEFORE_SETFILENAME)
-            {
-                @{$Texi2HTML::THIS_SECTION} = ();
+            { # FIXME this should be done only if @setfilename is before any
+              # element
+                if (defined($Texi2HTML::THIS_ELEMENT))
+                {
+                    line_warn ("\@$tag after the first element", $line_nr);
+                }
+                else
+                {
+                    @{$Texi2HTML::THIS_SECTION} = ();
+                }
             }
 
             if (($tag eq 'node') or (defined($sec2level{$tag}) and ($tag !~ /heading/)))
@@ -8354,11 +8391,12 @@ sub locate_include_file($)
     return undef;
 }
 
-sub open_file($$)
+sub open_file($$$)
 {
     my $name = shift;
 #    my $line_number = shift;
     my $macro = shift;
+    my $files_stack = shift;
 
     my $line_number;
     my $input_spool;
@@ -8376,7 +8414,7 @@ sub open_file($$)
                               'macro' => '' },
            'name' => $name, 
            'line_nr' => 0 };
-        unshift(@fhs, $file);
+        unshift(@$files_stack, $file);
         $input_spool = $file->{'input_spool'};
         $line_number->{'file_name'} = $name;
         $line_number->{'line_nr'} = 1;
@@ -8436,10 +8474,11 @@ sub close_out($;$)
 sub next_line($$)
 {
     my $line_number = shift;
+    my $files_stack = shift;
     my $input_spool;
-    while (@fhs)
+    while (@$files_stack)
     {
-        my $file = $fhs[0];
+        my $file = $files_stack->[0];
         $line_number->{'file_name'} = $file->{'name'};
         $input_spool = $file->{'input_spool'};
         if (@{$input_spool->{'spool'}})
@@ -8468,7 +8507,7 @@ sub next_line($$)
         no strict "refs";
         close($fh);
         use strict "refs";
-        shift(@fhs);
+        shift(@$files_stack);
     }
     return(undef, $input_spool);
 }
@@ -11333,7 +11372,11 @@ sub close_ignored ($$)
 }
 
 
-
+# Called in 2 contexts: 
+# * in main document
+# * from substitute_text, called in turn from arg_expansion. In that case
+#   'texi' is true, and so is 'arg_expansion'. In that case constructs are
+#   expanded but no action is performed. Therefore $line_nr is not of use.
 sub scan_texi($$$$;$)
 {
     my $line = shift;
@@ -11663,8 +11706,10 @@ sub scan_texi($$$$;$)
                         push @$stack, { 'line_command' => $command, 'text' => $space };
                     }
                     else
-                    {# FIXME already in a line_command. warn/error? or just discard?
-                        add_prev($text, $stack, "\@$command" . $space);
+                    {
+                        line_error ("\@$command already on a \@$state->{'line_command'} line", $line_nr);
+                        #add_prev($text, $stack, "\@$command" . $space);
+                        add_prev($text, $stack, $space);
                     }
                 }
             }
@@ -11914,28 +11959,8 @@ sub scan_texi($$$$;$)
                {
                    delete $state->{'line_command'};
                    my $macro = $command->{'line_command'};
-                   # definfoenclose and include are not kept
-                   if ($macro eq 'definfoenclose')
-                   {
-                   # FIXME if 'ignored' or 'arg_expansion' maybe we could parse
-                   # the args anyway and don't take away the whole line?
-
-                   # as in the makeinfo doc 'definfoenclose' may override
-                   # texinfo @-commands like @i. It is what we do here.
-                       if ($command->{'text'} =~ s/^\s+([a-z]+)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//)
-                       {
-                           $info_enclose{$1} = [ $2, $3 ];
-                       }
-                       else
-                       {
-                           line_error("Bad \@$macro", $line_nr);
-#print STDERR "arg: $command->{'text'}\n";
-                       }
-                       # ignore everything else on the line
-                       return;# if ($cline =~ /^\s*$/);
-                       #$cline =~ s/^\s*//;
-                   }
-                   elsif ($macro eq 'include')
+                   # include are not kept
+                   if ($macro eq 'include')
                    {
                     #if (s/^\s+([\/\w.+-]+)//o)
                        if ($command->{'text'} =~ s/^(\s+)(.*)//o)
@@ -11946,7 +11971,7 @@ sub scan_texi($$$$;$)
                            my $file = locate_include_file($file_name);
                            if (defined($file))
                            {
-                               my ($line_nr_file, $input_spool_file) = open_file($file, $line_nr->{'macro'});
+                               my ($line_nr_file, $input_spool_file) = open_file($file, $line_nr->{'macro'}, $state->{'files_stack'});
                                ($line_nr, $state->{'input_spool'}) = ($line_nr_file, $input_spool_file) if (defined($line_nr_file));
                                print STDERR "# including $file\n" if $T2H_VERBOSE;
                            }
@@ -11962,7 +11987,7 @@ sub scan_texi($$$$;$)
                        return;
                    }
                    else
-                   { # these are kept (setfilename and documentencoding)
+                   { # these are kept (setfilename, documentencoding, definfoenclose)
                        ($cline, $line) = misc_command_texi($command->{'text'}, 
                          $macro, $state, $line_nr);
                        add_prev ($text, $stack, "\@$macro" . $line);
@@ -15046,6 +15071,7 @@ sub substitute_text($$@)
     elsif ($state->{'texi'})
     { # only in arg_expansion
         initialise_state_texi($state);
+        msg_bug("substitute_text, 'texi' true but not 'arg_expansion'") if (!$state->{'arg_expansion'});
     }
     else
     {
@@ -15583,8 +15609,6 @@ while(@input_files)
    texinfo_initialization(0);
 
    print STDERR "# reading from $input_file_name\n" if $T2H_VERBOSE;
-
-   @fhs = ();			# hold the file handles to read
 
    $macros = undef;         # macros. reference on a hash
    %info_enclose = ();      # macros defined with definfoenclose

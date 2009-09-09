@@ -1,0 +1,4 @@
+setfilename_comment.texi(,2) 
+setfilename_comment.texi(,3) @setfilename file@c comment
+setfilename_comment.texi(,4) 
+setfilename_comment.texi(,5) @bye

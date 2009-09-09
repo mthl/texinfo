@@ -1,0 +1,9 @@
+bad_setfilename.texi(,2) 
+bad_setfilename.texi(,3) @setfilename file  other file  are you joking!
+bad_setfilename.texi(,4) 
+bad_setfilename.texi(,5) @node Top
+bad_setfilename.texi(,6) @top In top @setfilename very badly placed setfilename
+bad_setfilename.texi(,7) 
+bad_setfilename.texi(,8) @setfilename a bit too late
+bad_setfilename.texi(,9) 
+bad_setfilename.texi(,10) @bye

@@ -1,0 +1,10 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename file1
+
+@setfilename
+@node Top
+@top In top
+
+
+@bye

@@ -33,10 +33,12 @@ value_in_misc_valid.texi(,37) @set lowersections_macro @lowersections
 value_in_misc_valid.texi(,38) @lowersections
 value_in_misc_valid.texi(,39) 
 value_in_misc_valid.texi(,40) @c tex error: Use of \ doesn't match its definition.
-value_in_misc_valid.texi(,43) @@definfoenclose phoo,//,\\  value_in_misc_valid.texi(,43) 
+value_in_misc_valid.texi(,42) @@definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
+value_in_misc_valid.texi(,43) 
 value_in_misc_valid.texi(,44) //bar\\
 value_in_misc_valid.texi(,46) 
 value_in_misc_valid.texi(,47) @set definfoenclose_name phi
+value_in_misc_valid.texi(,48) @definfoenclose phi,:,:
 value_in_misc_valid.texi(,49) 
 value_in_misc_valid.texi(,56) 
 value_in_misc_valid.texi(,57) :bar:
@@ -46,6 +48,7 @@ value_in_misc_valid.texi(,60) @set strong_name strong
 value_in_misc_valid.texi(,61) 
 value_in_misc_valid.texi(,65) @strong{very strong}
 value_in_misc_valid.texi(,66) 
+value_in_misc_valid.texi(,67) @definfoenclose strong,(strong:,:)
 value_in_misc_valid.texi(,68) 
 value_in_misc_valid.texi(,72) (strong: is it really strong? :)
 value_in_misc_valid.texi(,73) 

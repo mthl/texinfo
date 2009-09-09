@@ -12,6 +12,7 @@ texi_commands.\ext\
 @macro definfoenclose_name 
 phi
 @end macro
+@definfoenclose phi,:,:
 
 @macro latin1 
 ISO-8859-1

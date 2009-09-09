@@ -36,7 +36,9 @@ the comment.
 @raisesections @lowersections @kbdinputstyle code something @afourpaper
 @afourlatex @afourwide
 
-   @definfoenclose phoo,//,\\ //bar\\
+   @definfoenclose phoo,//,\\
+
+   //bar\\
 
    @definfoenclose phi,:,:
 
@@ -170,10 +172,10 @@ File: comments.info,  Node: bidule2,  Prev: bidule,  Up: Top
 
 Tag Table:
 Node: Top78
-Node: node3029
-Node: truc3142
-Node: bidule3380
-Node: bidule23566
+Node: node3033
+Node: truc3146
+Node: bidule3384
+Node: bidule23570
 
 End Tag Table
 

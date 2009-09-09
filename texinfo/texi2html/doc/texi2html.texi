@@ -1606,12 +1606,13 @@ Flags defined by @code{@@set} may be accessed through the
 @variable{%main::value} hash. The key is the flag name, the value is the
 flag value at the end of the document. 
 
-Special flags are set by the main program. They correspond with a texinfo
-command, like @code{@@setfilename}, or @code{@@settitle}, 
-@code{@@author}@dots{} The corresponding flag is the command name with 
-@samp{_} appended, for example, @code{_titlefont} corresponds with 
-@code{@@titlefont}. Like other flags they are available in 
-@variable{%main::value}.
+@comment They should now be available through get_conf
+@c Special flags are set by the main program. They correspond with a texinfo
+@c command, like @code{@@setfilename}, or @code{@@settitle}, 
+@c @code{@@author}@dots{} The corresponding flag is the command name with 
+@c @samp{_} appended, for example, @code{_titlefont} corresponds with 
+@c @code{@@titlefont}. Like other flags they are available in 
+@c @variable{%main::value}.
 
 
 @subsubheading Section lines
@@ -4586,6 +4587,8 @@ version 1.68. API changed also a lot between 1.78 and 1.80.
   such that $NODE_FILES is only means creating redirection files.
 @item Remove the user from footer, and the corresponding USER variable and
   $Texi2HTML::THISDOC@{user@}.
+@item Don't treat _setfilename as a value set. It should be available through
+  get_conf.
 @end itemize
 @item API changes between 1.78 and 1.80: 
 @itemize @bullet

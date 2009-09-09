@@ -6,6 +6,7 @@ html-para.texi(,6) @c between START and END not exactly what some cm_xxx functio
 html-para.texi(,7) @c expect, when they are called by pop_and_call_brace.
 html-para.texi(,8) 
 html-para.texi(,9) @set val @@value@{@}
+html-para.texi(,10) @definfoenclose foo,\\,//
 html-para.texi(,11) 
 html-para.texi(,12) @node Top
 html-para.texi(,13) @top Top of HTML paragraph test

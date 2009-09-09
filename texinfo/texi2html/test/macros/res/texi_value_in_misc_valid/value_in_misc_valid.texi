@@ -34,10 +34,12 @@ Text line followed by a comment on the same line and another below @c comment @v
 @lowersections
 
 @c tex error: Use of \ doesn't match its definition.
-@@definfoenclose phoo,//,\\  
+@@definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
+
 //bar\\
 
 @set definfoenclose_name phi
+@definfoenclose phi,:,:
 
 
 :bar:
@@ -47,6 +49,7 @@ Text line followed by a comment on the same line and another below @c comment @v
 
 @strong{very strong}
 
+@definfoenclose strong,(strong:,:)
 
 (strong: is it really strong? :)
 

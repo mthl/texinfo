@@ -7,6 +7,7 @@
 @c expect, when they are called by pop_and_call_brace.
 
 @set val @@value@{@}
+@definfoenclose foo,\\,//
 
 @node Top
 @top Top of HTML paragraph test

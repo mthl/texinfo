@@ -11,6 +11,7 @@ macro_in_pass_texi_commands.texi(,11)
 macro_in_pass_texi_commands.texi(,12) @macro definfoenclose_name 
 macro_in_pass_texi_commands.texi(,13) phi
 macro_in_pass_texi_commands.texi(,14) @end macro
+macro_in_pass_texi_commands.texi(definfoenclose_name,15) @definfoenclose phi,:,:
 macro_in_pass_texi_commands.texi(,16) 
 macro_in_pass_texi_commands.texi(,17) @macro latin1 
 macro_in_pass_texi_commands.texi(,18) ISO-8859-1

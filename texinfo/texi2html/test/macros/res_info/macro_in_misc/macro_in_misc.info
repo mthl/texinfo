@@ -12,7 +12,9 @@ Comment like: atext
 
 Text line followed by a comment on the same line and another below
 
-   @definfoenclose phoo,//,\\ //bar\\
+   @definfoenclose phoo,//,\\
+
+   //bar\\
 
    :bar:
 
@@ -96,10 +98,10 @@ File: macro_in_misc.info,  Node: bidule2,  Prev: bidule,  Up: Top
 
 Tag Table:
 Node: Top88
-Node: node atext1142
-Node: truc1266
-Node: bidule1349
-Node: bidule21456
+Node: node atext1146
+Node: truc1270
+Node: bidule1353
+Node: bidule21460
 
 End Tag Table
 

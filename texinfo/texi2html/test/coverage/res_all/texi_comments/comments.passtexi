@@ -60,16 +60,19 @@ comments.texi(,64) @@afourlatex @afourlatex on line following afourlatex
 comments.texi(,65) @@afourwide @afourwide on line following afourwide
 comments.texi(,66) 
 comments.texi(,67) @c tex error: Use of \ doesn't match its definition.
-comments.texi(,70) @@definfoenclose phoo,//,\\  comments.texi(,70) 
+comments.texi(,69) @@definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
+comments.texi(,70) 
 comments.texi(,71) //bar\\
 comments.texi(,73) 
-comments.texi(,75) @@definfoenclose phi,:,:  comments.texi(,75) 
+comments.texi(,74) @@definfoenclose phi,:,:  @definfoenclose phi,:,:
+comments.texi(,75) 
 comments.texi(,76) @c this is required
 comments.texi(,80) 
 comments.texi(,81) :bar:
 comments.texi(,82) 
 comments.texi(,83) @strong{very strong}
 comments.texi(,84) 
+comments.texi(,85) @definfoenclose strong,(strong:,:)
 comments.texi(,86) 
 comments.texi(,87) (strong: is it really strong? :)
 comments.texi(,88) 

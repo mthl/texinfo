@@ -1,0 +1,9 @@
+double_setfilename.texi(,2) 
+double_setfilename.texi(,3) @setfilename file1
+double_setfilename.texi(,4) 
+double_setfilename.texi(,5) @setfilename file2
+double_setfilename.texi(,6) @node Top
+double_setfilename.texi(,7) @top In top
+double_setfilename.texi(,8) 
+double_setfilename.texi(,9) 
+double_setfilename.texi(,10) @bye

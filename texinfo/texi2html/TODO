@@ -8,7 +8,7 @@ Before next release
 
 * ship the css file from http://planet.gnu.org/~ams/.
 
-* take into account @frenshspacing in info
+* take into account @frenchspacing in info
 
 * in sectionning, test nodes_after_top_before_section_use_nodes_chapter 
   not split at chapter. It is split at nodes although top node is not 

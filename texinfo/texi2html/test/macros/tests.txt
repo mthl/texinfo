@@ -35,6 +35,10 @@ texi test_paths.texi
 texi cond.texi --ifhtml --ifinfo --no-iftex
 test_include test_include.texi
 texi simple_imbricated_macro.texi
+texi setfilename_comment.texi
+texi bad_setfilename.texi
+texi double_setfilename.texi
+#texi space_end_setfilename.texi
 # in the texinfo test suite, the default is info, and there is also a 
 # test with --html which doesn't make much sense here, replaced with --xml
 # though it is not the same
@@ -63,3 +67,7 @@ test_include_with_setfilename_info test_include_with_setfilename.texi --init inf
 no_arg_macro_info no_arg_macro.texi --init info.init
 simple_imbricated_macro simple_imbricated_macro.texi
 test_paths test_paths.texi
+setfilename_comment setfilename_comment.texi
+bad_setfilename bad_setfilename.texi
+double_setfilename double_setfilename.texi
+#space_end_setfilename space_end_setfilename.texi
