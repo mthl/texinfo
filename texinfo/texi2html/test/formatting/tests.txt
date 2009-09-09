@@ -11,6 +11,7 @@ texi detailmenus.texi
 texi commands_in_ifset.texi
 texi simplest.texi
 texi punctuation.texi
+texi frenchspacing_punctuation.texi
 texi simple_punctuation.texi
 texi def_end_of_line.texi
 texi def_end_of_line_footnote.texi
@@ -65,6 +66,7 @@ detailmenus_simple detailmenus.texi --init simple_menu.init
 commands_in_ifset commands_in_ifset.texi
 simplest_test_css simplest.texi --css-include file.css
 punctuation punctuation.texi
+punctuation_frenchspacing punctuation_frenchspacing.texi
 simple_punctuation simple_punctuation.texi
 def_end_of_line def_end_of_line.texi
 def_end_of_line_footnote def_end_of_line_footnote.texi

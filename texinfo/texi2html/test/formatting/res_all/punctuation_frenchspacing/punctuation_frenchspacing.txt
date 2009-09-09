@@ -1,0 +1,93 @@
+Element
+*******
+
+
+Dot. Exclam! Question? Dot.  Exclam!  Question?  GAAA.
+
+End of lines Dot.
+Exclam!
+Question?
+End.
+
+End of lines and spaces
+Dot.   
+Exclam!   
+Question?   
+End.
+
+With paren.) paren.)  Symb.)"'] Symb.)"']  End.
+
+End of lines paren.)
+Symb.)"']
+End.
+
+End of lines and spaces paren.)   
+Symb.)"']   
+End.
+
+
+
+End of sentences
+================
+
+Dot. Exclam! Question? Dot.  Exclam!  Question?  GAAA.
+
+Enddots... Enddots...  GBBB.
+
+End of lines Dot.
+Exclam!
+Question?
+Enddots...
+End.
+
+End of lines and spaces
+Dot.   
+Exclam!   
+Question?   
+Enddots...   
+End.
+
+With paren.) paren.)  Symb.)"'] Symb.)"']  End.
+
+End of lines paren.)
+Symb.)"']
+End.
+
+End of lines and spaces paren.)   
+Symb.)"']   
+End.
+
+Not end of line
+===============
+
+Dot. Exclam! Question? Dot.  Exclam!  Question?  GAAA.
+
+End of lines Dot.
+Exclam!
+Question?
+End.
+
+End of lines and spaces
+Dot.   
+Exclam!   
+Question?   
+End.
+
+With paren.) paren.)  Symb.)"'] Symb.)"']  End.
+
+End of lines paren.)
+Symb.)"']
+End.
+
+End of lines and spaces paren.)   
+Symb.)"']   
+End.
+
+Accent leading to a dot
+=======================
+
+o. in sentence.
+
+At the end of line o.
+text following.
+

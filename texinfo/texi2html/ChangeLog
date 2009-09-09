@@ -5,6 +5,7 @@
 	Don't treat _setfilename as a value set. It should be available 
 	through get_conf.
 	Handle better bogus uses of @setfilename.
+	* formats/info.init: take @frenchspacing into account.
 
 2009-09-09   Patrice Dumas  <dumas@centre-cired.fr>
 

@@ -1516,7 +1516,7 @@ sub info_default_process_content($$)
                   my $new_text = $content->{'text'};
                   # a punctuation at the end of a command is treated like a punctuation in 
                   # plain text, except for @: and accent commands.
-                  if ((!defined($content->{'command'}) or ($content->{'command'} ne ':' and $content->{'command'} ne 'accents_commands')) and $new_text =~ /([$info_default_end_sentence_character])([$info_default_after_punctuation_characters]*)(\s*)$/)
+                  if ((!defined($content->{'command'}) or ($content->{'command'} ne ':' and $content->{'command'} ne 'accents_commands')) and get_conf('frenchspacing') ne 'on' and $new_text =~ /([$info_default_end_sentence_character])([$info_default_after_punctuation_characters]*)(\s*)$/)
                   {
                       # the info_default_after_punctuation_characters should
                       # always be in the same text element. 
@@ -1526,6 +1526,10 @@ sub info_default_process_content($$)
                       }
                       else
                       {
+#if (defined($content->{'command'}))
+#{
+#   main::msg_debug ("$content->{'command'} ($content->{'text'})", $content->{'line_nr'});
+#}
                           # spaces may be in following commands
                           my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
                           while (1)
@@ -1542,6 +1546,7 @@ sub info_default_process_content($$)
                               {
                                   if (chomp($text_next))
                                   {
+#print STDERR "DOIT\n";
                                       info_default_skip_spaces($current, $index, $close);
                                       $new_text =~ s/(\s*)$/  /;
                                       last;
@@ -1554,10 +1559,6 @@ sub info_default_process_content($$)
                   elsif (chomp($new_text))
                   {
                       $new_text =~ s/(\s*)$/ /;
-                    #  if ($new_text =~ /[$info_default_end_sentence_character] $/)
-                    #  {
-                    #      $new_text .= ' ';
-                    #  }
                   }
                   $text_added .= $new_text;
               } # ignore spaces outside of paragraphs and preformatted

@@ -137,6 +137,7 @@ EXTRA_DIST = def_cmds.texi menus.texi quotation.texi \
  float_with_at_commands.texi float_copying.texi macro_in_menu.texi \
  ref_in_anchor.texi tex.texi block_EOL.texi detailmenus.texi \
  commands_in_ifset.texi simplest.texi punctuation.texi \
+ punctuation_frenchspacing.texi \
  simple_punctuation.texi def_end_of_line.texi \
  center.texi tables.texi formats_in_menu.texi heading.texi quotes.texi \
  indicateurl_paragraph.texi complex_command_in_simple_command.texi \
