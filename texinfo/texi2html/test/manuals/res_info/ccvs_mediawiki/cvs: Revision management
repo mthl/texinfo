@@ -1,5 +1,5 @@
 <div id="Revision-management"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Keyword substitution#Keyword-substitution Keyword substitution], Previous: [cvs: Multiple developers#Multiple-developers Multiple developers], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -22,7 +22,7 @@ than one person is working in a repository.
 </nowiki></pre>
 <hr>
 <div id="When-to-commit"></div>
-<div class="node">
+<div class="header">
 <p>
 Up: [[#Revision-management|Revision management]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -56,7 +56,7 @@ too regimented and thus counter-productive to the real
 goal, which is to get software written.
 </p>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Up: [[#Revision-management|Revision management]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

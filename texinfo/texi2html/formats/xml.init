@@ -432,8 +432,6 @@ sub xml_element_tag($)
 {
     my $element = shift;
     my $class = $element->{'tag_level'};
-    # FIXME wrong?
-    $class = 'unnumbered' if ($class eq 'top' or $class eq 'centerchap');
     return $class;
 }
 

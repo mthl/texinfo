@@ -8,7 +8,7 @@
 <nodenext>other nodes</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Test refs</title>
 
 <menu>
@@ -54,7 +54,7 @@ split: ../doc/node.html#node
 <para> local   node <xref><xrefnodename>local node</xrefnodename></xref>
 </para><example xml:space="preserve">target: #local-node
 </example>
-</unnumbered>
+</top>
 <node>
 <nodename>other nodes</nodename>
 <nodenext>!_&quot;#$%&amp;'()*+-./;&lt;=&gt;?[\]^_`|~</nodenext>

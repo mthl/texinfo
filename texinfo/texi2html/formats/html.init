@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.24 2009-09-08 22:16:46 pertusus Exp $
+# $Id: html.init,v 1.25 2009-09-10 20:32:28 pertusus Exp $
 
 use strict;
 
@@ -167,7 +167,8 @@ $MENU_PRE_COMPLEX_FORMAT = {
 
 # This controls the ul style for toc
 $NO_BULLET_LIST_STYLE = 'list-style: none';
-$NO_BULLET_LIST_ATTRIBUTE = ' class="toc"';
+$NO_BULLET_LIST_CLASS = 'no-bullet';
+$NO_BULLET_LIST_ATTRIBUTE = ' class="'.$NO_BULLET_LIST_CLASS.'"';
 
 # These lines are inserted before and after the shortcontents 
 $BEFORE_OVERVIEW = "<div class=\"shortcontents\">\n";
@@ -613,7 +614,7 @@ $complex_format_map->{'menu_comment'} = {
 
 %css_map = 
      (
-         'ul.toc'                 => "$NO_BULLET_LIST_STYLE",
+         "ul.$NO_BULLET_LIST_CLASS" => "$NO_BULLET_LIST_STYLE",
          'pre.menu-comment'       => "$MENU_PRE_STYLE",
          'pre.menu-preformatted'  => "$MENU_PRE_STYLE",
          'a.summary-letter'       => 'text-decoration: none',
@@ -1302,12 +1303,12 @@ sub HTML_DEFAULT_print_navigation($;$)
     my $result = '';
     if ($HEADER_IN_TABLE)
     {
-        $result .= '<table cellpadding="1" cellspacing="1" border="0">'."\n";
+        $result .= '<table class="header" cellpadding="1" cellspacing="1" border="0">'."\n";
         $result .= "<tr>" unless $vertical;
     }
     else
     {
-        $result .= '<div class="node">'."\n<p>\n";
+        $result .= '<div class="header">'."\n<p>\n";
     }
     for my $button (@$buttons)
     {
@@ -2600,7 +2601,7 @@ sub html_default_heading($$$$$;$$)
     }
     my $text = $element->{'text'};
     my $class = $element->{'tag_level'};
-    $class = 'unnumbered' if ($class eq 'top' or $class eq 'centerchap');
+    $class = 'node-heading' if ($element->{'node'});
     my $align = '';
     $align = ' align="center"' if ($element->{'tag'} eq 'centerchap');
 

@@ -3,22 +3,13 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
-* document css classes, and have similar classes with makeinfo, sent
-  on the bug-texinfo list.
-
-* ship the css file from http://planet.gnu.org/~ams/.
-
-* in sectionning, test nodes_after_top_before_section_use_nodes_chapter 
-  not split at chapter. It is split at nodes although top node is not 
-  always considered as an element. out_html is much better, since at least
-  one of the nodes is associated with the section, but the @node Top is
-  still considered as a separate element -- which could even be considered
-  to be right.
-
-* add --command command line that gives inserted lines.
 
 Later
 -----
+
+* add --command command line that gives inserted lines. This should wait
+  for @setfilename status to be resolved, on TeX, since otherwise there
+  is the issue of inserting before or after @setfilename to be resolved.
 
 * many FIXME in the code
 
@@ -88,6 +79,54 @@ Later
   Documentation should only done once the interface is stable.
 
 * document the new $image arguments/API
+
+* document the css classes:
+
+Sectionning command headings @top, @chapter, @appendix...
+h? @var{command_name}
+
+for @display, @example, @smallexample...
+pre @var{environment_name} 
+
+for @node, in case it is output as a header (which is quite rare).
+h3 node-heading
+
+For summary letters in indices
+a summary-letter
+
+For lists that should not have a bullet in front
+ul no-bullet
+
+When whole menu is in a preformatted environment
+pre menu-preformatted
+
+For the menu text between menu entries
+pre menu-comment
+
+For a whole header, depending on $HEADER_IN_TABLE:
+table header
+div header
+
+Others
+
+pre verbatim
+pre verbatiminclude
+div footnote
+table cartouche
+blockquote smallquotation
+table index-@var{index_name}
+div shortcontents
+div contents
+div float
+dl listoffloats
+h1 settitle
+table menu
+
+@dots small dots
+@endots small enddots
+@sansserif span sansserif
+@r span roman
+@titlefont h1 titlefont
 
 * in chm.init (Jose Fonseca)
 
@@ -385,3 +424,4 @@ tex + txicodequote*:
 So things are right as is, but in formats that always set the quotes to 
 a special font should honor  txicodequote* like tex. There is an example
 of such code commented out in texi2html.init in normal_text.
+

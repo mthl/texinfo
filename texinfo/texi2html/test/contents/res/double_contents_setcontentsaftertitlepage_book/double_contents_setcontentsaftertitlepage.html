@@ -32,7 +32,7 @@ pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
-ul.toc {list-style: none}
+ul.no-bullet {list-style: none}
 -->
 </style>
 
@@ -45,9 +45,9 @@ ul.toc {list-style: none}
 <h1>Table of Contents</h1>
 <div class="contents">
 
-<ul class="toc">
+<ul class="no-bullet">
   <li><a name="toc-Chapter-1" href="#chapter">1 Chapter 1</a>
-  <ul class="toc">
+  <ul class="no-bullet">
     <li><a name="toc-section-with-contents" href="#section">1.1 section with contents</a></li>
   </ul>
 </li>
@@ -55,7 +55,7 @@ ul.toc {list-style: none}
 </div>
 <hr>
 <a name="Top"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[ &lt; ]</td>
 <td valign="middle" align="left">[<a href="#chapter" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -64,14 +64,14 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Double-contents"></a>
-<h1 class="unnumbered"> Double contents </h1>
+<h1 class="top"> Double contents </h1>
 
 <p>Double contents.
 </p>
 
 <hr>
 <a name="chapter"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#section" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -81,7 +81,7 @@ ul.toc {list-style: none}
 </tr></table>
 <a name="Chapter-1"></a>
 <h1 class="chapter"> 1 Chapter 1 </h1>
-<ul class="toc">
+<ul class="no-bullet">
 <li> <a href="#section">1.1 section with contents</a> </li>
 </ul>
 
@@ -90,7 +90,7 @@ ul.toc {list-style: none}
 
 <hr>
 <a name="section"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#chapter" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[ &gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -103,7 +103,7 @@ ul.toc {list-style: none}
 
 <hr>
 <a name="SEC_About"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>

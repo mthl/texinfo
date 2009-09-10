@@ -1,5 +1,5 @@
 <div id="Repository"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Starting a project with CVS#Starting-a-new-project Starting a new project], Previous: [cvs: Overview#Overview Overview], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -72,7 +72,7 @@ user-defined modules.
 </nowiki></pre>
 <hr>
 <div id="Specifying-a-repository"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Repository-storage|Repository storage]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -126,7 +126,7 @@ should be two ways of referring to the same repository.
 </p>
 <hr>
 <div id="Repository-storage"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Working-directory-storage|Working directory storage]], Previous: [[#Specifying-a-repository|Specifying a repository]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -157,7 +157,7 @@ the file permissions appropriate for the repository.
 </nowiki></pre>
 <hr>
 <div id="Repository-files"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#File-permissions|File permissions]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -257,7 +257,7 @@ rules see [cvs: Revisions#Tags Tags].
 </p>
 <hr>
 <div id="File-permissions"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Windows-permissions|Windows permissions]], Previous: [[#Repository-files|Repository files]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -358,7 +358,7 @@ carefully if you are considering this option
 </p>
 <hr>
 <div id="Windows-permissions"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Attic|Attic]], Previous: [[#File-permissions|File permissions]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -388,7 +388,7 @@ something out, please let us know as described in
 </p>
 <hr>
 <div id="Attic"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#CVS-in-repository|CVS in repository]], Previous: [[#Windows-permissions|Windows permissions]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -426,7 +426,7 @@ non-<code>dead</code> state.
 </p>
 <hr>
 <div id="CVS-in-repository"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Locks|Locks]], Previous: [[#Attic|Attic]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -524,7 +524,7 @@ there must be a single tab character there and no spaces.
 </p>
 <hr>
 <div id="Locks"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#CVSROOT-storage|CVSROOT storage]], Previous: [[#CVS-in-repository|CVS in repository]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -606,7 +606,7 @@ further discussion/rationale.
 </p>
 <hr>
 <div id="CVSROOT-storage"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Locks|Locks]], Up: [[#Repository-storage|Repository storage]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -661,7 +661,7 @@ administrative files, see [cvs: Reference manual for Administrative files#Admini
 </p>
 <hr>
 <div id="Working-directory-storage"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Intro-administrative-files|Intro administrative files]], Previous: [[#Repository-storage|Repository storage]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -957,7 +957,7 @@ by the client; the non-client/server <small>CVS</small> consults
 
 <hr>
 <div id="Intro-administrative-files"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Multiple-repositories|Multiple repositories]], Previous: [[#Working-directory-storage|Working directory storage]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1002,7 +1002,7 @@ available features.
 </p>
 <hr>
 <div id="Editing-administrative-files"></div>
-<div class="node">
+<div class="header">
 <p>
  &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1022,7 +1022,7 @@ revisions.
 </p>
 <hr>
 <div id="Multiple-repositories"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Creating-a-repository|Creating a repository]], Previous: [[#Intro-administrative-files|Intro administrative files]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1072,7 +1072,7 @@ and server1, to update everything else.
 
 <hr>
 <div id="Creating-a-repository"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Backing-up|Backing up]], Previous: [[#Multiple-repositories|Multiple repositories]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1132,7 +1132,7 @@ don&rsquo;t want that, remove the history file after running
 </p>
 <hr>
 <div id="Backing-up"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Moving-a-repository|Moving a repository]], Previous: [[#Creating-a-repository|Creating a repository]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1192,7 +1192,7 @@ the changes into the repository.
 
 <hr>
 <div id="Moving-a-repository"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Remote-repositories|Remote repositories]], Previous: [[#Backing-up|Backing up]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1225,7 +1225,7 @@ isn&rsquo;t worth it.
 </p>
 <hr>
 <div id="Remote-repositories"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Read_002donly-access|Read-only access]], Previous: [[#Moving-a-repository|Moving a repository]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1279,7 +1279,7 @@ described in [[#Connecting-via-rsh|Connecting via rsh]].
 </nowiki></pre>
 <hr>
 <div id="Server-requirements"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Connecting-via-rsh|Connecting via rsh]], Up: [[#Remote-repositories|Remote repositories]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1342,7 +1342,7 @@ trouble.
 </p>
 <hr>
 <div id="Connecting-via-rsh"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Password-authenticated|Password authenticated]], Previous: [[#Server-requirements|Server requirements]], Up: [[#Remote-repositories|Remote repositories]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1428,7 +1428,7 @@ the same on both the local and remote hosts.)
 
 <hr>
 <div id="Password-authenticated"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#GSSAPI-authenticated|GSSAPI authenticated]], Previous: [[#Connecting-via-rsh|Connecting via rsh]], Up: [[#Remote-repositories|Remote repositories]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1450,7 +1450,7 @@ some adjustments on both the server and client sides.
 </nowiki></pre>
 <hr>
 <div id="Password-authentication-server"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Password-authentication-client|Password authentication client]], Up: [[#Password-authenticated|Password authenticated]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1747,7 +1747,7 @@ want to include the &lsquo;<tt>passwd</tt>&rsquo; file in checkouts of
 
 <hr>
 <div id="Password-authentication-client"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Password-authentication-security|Password authentication security]], Previous: [[#Password-authentication-server|Password authentication server]], Up: [[#Password-authenticated|Password authenticated]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1844,7 +1844,7 @@ removed from the <code>CVS_PASSFILE</code> by using the
 </p>
 <hr>
 <div id="Password-authentication-security"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Password-authentication-client|Password authentication client]], Up: [[#Password-authenticated|Password authenticated]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1891,7 +1891,7 @@ security, get Kerberos.
 </p>
 <hr>
 <div id="GSSAPI-authenticated"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Kerberos-authenticated|Kerberos authenticated]], Previous: [[#Password-authenticated|Password authenticated]], Up: [[#Remote-repositories|Remote repositories]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1949,7 +1949,7 @@ example,
 
 <hr>
 <div id="Kerberos-authenticated"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Connecting-via-fork|Connecting via fork]], Previous: [[#GSSAPI-authenticated|GSSAPI authenticated]], Up: [[#Remote-repositories|Remote repositories]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2006,7 +2006,7 @@ connection via rsh; this version will not do so.
 </p>
 <hr>
 <div id="Connecting-via-fork"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Kerberos-authenticated|Kerberos authenticated]], Up: [[#Remote-repositories|Remote repositories]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2046,7 +2046,7 @@ environment variable.
 </p>
 <hr>
 <div id="Read_002donly-access"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Server-temporary-directory|Server temporary directory]], Previous: [[#Remote-repositories|Remote repositories]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2137,7 +2137,7 @@ read-only access.
 </p>
 <hr>
 <div id="Server-temporary-directory"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Read_002donly-access|Read-only access]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2185,7 +2185,7 @@ there is no server running with process identification
 number <var>pid</var>, it is safe to do so.
 </p>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Read_002donly-access|Read-only access]], Up: [[#Repository|Repository]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

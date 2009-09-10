@@ -1,5 +1,5 @@
 <div id="release"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: update--Bring work tree in sync with repository#update update], Previous: [cvs: rdiff--'patch' format diffs between releases#rdiff rdiff], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

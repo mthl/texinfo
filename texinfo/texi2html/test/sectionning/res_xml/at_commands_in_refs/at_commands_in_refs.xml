@@ -9,7 +9,7 @@
 <nodenext>A <sc>sc</sc> node &iuml; &iuml; E&macr;` /l C', &iexcl;</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Top</title>
 
 <menu>
@@ -20,7 +20,7 @@
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>A <sc>sc</sc> node &iuml; &iuml; E&macr;` /l C', &iexcl;</nodename>
 <nodeprev>Top</nodeprev>

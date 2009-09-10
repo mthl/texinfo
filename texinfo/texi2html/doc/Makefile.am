@@ -16,7 +16,8 @@ man_MANS = texi2html.1
 
 EXTRA_DIST = \
 	texi2html.1.in \
-	texi2html.html
+	texi2html.html \
+	info_format_informations.txt 
 
 CLEANFILES = texi2html.1
 

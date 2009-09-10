@@ -1519,40 +1519,48 @@ sub info_default_process_content($$)
                   if ((!defined($content->{'command'}) or ($content->{'command'} ne ':' and $content->{'command'} ne 'accents_commands')) and get_conf('frenchspacing') ne 'on' and $new_text =~ /([$info_default_end_sentence_character])([$info_default_after_punctuation_characters]*)(\s*)$/)
                   {
                       # the info_default_after_punctuation_characters should
-                      # always be in the same text element. 
+                      # always be in the same text element except if the
+                      # punctuation character is in a command.
                       if (chomp($new_text))
                       {
                           $new_text =~ s/(\s*)$/  /;
                       }
                       else
                       {
-#if (defined($content->{'command'}))
-#{
-#   main::msg_debug ("$content->{'command'} ($content->{'text'})", $content->{'line_nr'});
-#}
-                          # spaces may be in following commands
+                          # spaces may be in following commands, and also 
+                          # info_default_after_punctuation_characters
                           my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
-                          while (1)
+                          # the info_default_after_punctuation_characters
+                          # may be in the next elemnt, if it is the only 
+                          # text in the element and the element is only text
+                          if (defined($content->{'command'}) and defined($current_next) and !defined($command_next) and $text_next =~ /^([$info_default_after_punctuation_characters]*)(\s*)$/ and chomp ($text_next))
                           {
-                              # !defined($text_next) catches many special 
-                              # commands, like anchor, index. Not sure if 
-                              # it is right or wrong.
-                              last if (!defined($current_next) or (!defined($text_next)) or (defined($command_next) and $command_next eq '*'));
-                              if ($text_next =~ /\S/)
+                              my $content = $current_next->{'content'}->[$index_next];
+                              $content->{'text'} =~ s/(\s*)$/  /;
+                          }
+                          else
+                          {
+                              while (1)
                               {
-                                  last;
-                              }
-                              else
-                              {
-                                  if (chomp($text_next))
+                                  # !defined($text_next) catches many special 
+                                  # commands, like anchor, index. Not sure if 
+                                  # it is right or wrong.
+                                  last if (!defined($current_next) or (!defined($text_next)) or (defined($command_next) and $command_next eq '*'));
+                                  if ($text_next =~ /\S/)
                                   {
-#print STDERR "DOIT\n";
-                                      info_default_skip_spaces($current, $index, $close);
-                                      $new_text =~ s/(\s*)$/  /;
                                       last;
                                   }
+                                  else
+                                  {
+                                      if (chomp($text_next))
+                                      {
+                                           info_default_skip_spaces($current, $index, $close);
+                                           $new_text =~ s/(\s*)$/  /;
+                                           last;
+                                      }
+                                  }
+                                  ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current_next, $index_next, $close_next);
                               }
-                              ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current_next, $index_next, $close_next);
                           }
                       }
                   }

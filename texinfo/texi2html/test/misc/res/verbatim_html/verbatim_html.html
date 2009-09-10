@@ -32,7 +32,7 @@ pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
-ul.toc {list-style: none}
+ul.no-bullet {list-style: none}
 -->
 </style>
 
@@ -42,7 +42,7 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <a name="Top"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[ &lt; ]</td>
 <td valign="middle" align="left">[<a href="#First-node" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -51,7 +51,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Tests"></a>
-<h1 class="unnumbered">Tests</h1>
+<h1 class="top">Tests</h1>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#First-node">1 first node chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    node 1
 </td></tr>
@@ -98,7 +98,7 @@ bidule
 
 <hr size="6">
 <a name="First-node"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
@@ -118,7 +118,7 @@ bidule
 
 
 <p>A list with bullet
-Before itemize, in that case @bullet isn&rsquo;right, one needs @bullet{} (in info) </p><ul class="toc">
+Before itemize, in that case @bullet isn&rsquo;right, one needs @bullet{} (in info) </p><ul class="no-bullet">
 <li>&bull; on the same line than item
 some text
 </li><li>&bull; more text </li></ul>
@@ -266,7 +266,7 @@ verb @c comment
 
 <hr>
 <a name="node-_00e1"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#First-node" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#First-node" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
@@ -306,7 +306,7 @@ See section <a href="#First-node"><pre class="verbatim"> some verbatim @@ text w
 </p>
 <hr>
 <a name="node-d_00e1"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#node-_00e1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#node-_00e1" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
@@ -329,7 +329,7 @@ See section <a href="#First-node"><pre class="verbatim"> some verbatim @@ text w
 
 <hr>
 <a name="node"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#node-d_00e1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#node-d_00e1" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#node-d_00e1" title="Up section"> Up </a>]</td>
@@ -369,7 +369,7 @@ before end example  </pre></td></tr></table>
 </p>
 <hr size="6">
 <a name="SEC_Foot"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[Index]</td>
@@ -393,7 +393,7 @@ An example
 </pre></td></tr></table>
 <hr>
 <a name="SEC_Contents"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[Index]</td>
@@ -402,11 +402,11 @@ An example
 <h1>Table of Contents</h1>
 <div class="contents">
 
-<ul class="toc">
+<ul class="no-bullet">
   <li><a name="toc-first-node-chapter" href="#First-node">1 first node chapter</a></li>
   <li><a name="toc-node-_0027a-with-braces" href="#node-_00e1">2 node &rsquo;a with braces</a></li>
   <li><a name="toc-node-_0027a-without-braces" href="#node-d_00e1">3 node &rsquo;a without braces</a>
-  <ul class="toc">
+  <ul class="no-bullet">
     <li><a name="toc-node-1" href="#node">3.1 node</a></li>
   </ul>
 </li>
@@ -414,7 +414,7 @@ An example
 </div>
 <hr>
 <a name="SEC_About"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[Index]</td>

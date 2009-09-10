@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.330 2009-09-09 18:56:04 pertusus Exp $
+# $Id: texi2html.pl,v 1.331 2009-09-10 20:32:27 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -355,6 +355,7 @@ $CLOSE_QUOTE_SYMBOL
 $NO_NUMBER_FOOTNOTE_SYMBOL
 $NO_BULLET_LIST_STYLE
 $NO_BULLET_LIST_ATTRIBUTE
+$NO_BULLET_LIST_CLASS
 $TOP_NODE_FILE
 $TOP_NODE_FILE_TARGET
 $TOP_NODE_UP
@@ -4584,10 +4585,11 @@ sub new_section_heading($$$)
     return $section_ref;
 }
 
-sub scan_line_separators($$)
+sub scan_line_separators($$$)
 {
     my $node_line = shift;
     my $separators = shift;
+    my $context = shift;
 
     my @command_stack;
     my @results;
@@ -4601,6 +4603,15 @@ sub scan_line_separators($$)
         {
             $node_arg .= $1;
             my $macro = $2;
+            if (defined($Texi2HTML::Config::misc_command{$macro}))
+            {
+               if ($macro ne 'c' and $macro ne 'comment')
+               {
+                  msg_error ("\@$macro should not appear in $context");
+                  return ($node_arg, $node_line, undef);
+               }
+               
+            }
             $node_arg .= "\@$macro";
             $macro = $alias{$macro} if (exists($alias{$macro}));
             if ($node_line =~ s/^{//)
@@ -4638,7 +4649,7 @@ sub scan_line_separators($$)
                 pop @command_stack;
             }
         }
-        elsif ($node_line =~ s/^([^${separators}]*)([$separators])//)
+        elsif ($separators ne '' and $node_line =~ s/^([^${separators}]*)([$separators])//)
         {
             $node_arg .= $1;
             my $separator = $2;
@@ -4755,7 +4766,7 @@ sub pass_structure($$)
                     while ($node_line =~ /\S/)
                     {
                        my ($next_node, $separator);
-                       ($next_node, $node_line, $separator) = scan_line_separators($node_line, ',');
+                       ($next_node, $node_line, $separator) = scan_line_separators($node_line, ',', '@node');
                        if (defined($next_node))
                        {
                           $next_node = normalise_node($next_node);
@@ -12144,7 +12155,7 @@ sub parse_menu_entry($)
    return ($node, $name, $ending, $remaining) unless $menu_line =~ s/^\*//;
 
    my ($before_colon, $separator);
-   ($before_colon, $remaining, $separator) = scan_line_separators($menu_line, ':');
+   ($before_colon, $remaining, $separator) = scan_line_separators($menu_line, ':', 'menu entry');
    if (defined($before_colon) and defined($separator))
    {
       if ($remaining =~ s/^://)
@@ -12157,13 +12168,13 @@ sub parse_menu_entry($)
           my $after_colon;
           $node = '';
           $ending = "\n";
-          ($after_colon, $remaining, $separator) = scan_line_separators($remaining, '\t,\.');
+          ($after_colon, $remaining, $separator) = scan_line_separators($remaining, '\t,\.', 'menu entry node');
           return (undef, $name, $ending, $remaining) if (!defined($after_colon));
           $node .= $after_colon;
 
           while ($separator eq '.' and (defined($remaining) and $remaining !~ /^\s/))
           {
-              ($after_colon, $remaining, $separator) = scan_line_separators($remaining, '\t,\.');
+              ($after_colon, $remaining, $separator) = scan_line_separators($remaining, '\t,\.', 'menu entry node');
               return (undef, $name, $ending, $remaining) if (!defined($after_colon));
               $node .= $separator.$after_colon;
           }

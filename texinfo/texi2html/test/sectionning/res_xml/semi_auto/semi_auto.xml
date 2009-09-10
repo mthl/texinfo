@@ -9,7 +9,7 @@
 <nodenext>Chap1</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Top</title>
 
 <menu>
@@ -25,7 +25,7 @@
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>Chap1</nodename>
 <nodeprev>Top</nodeprev>

@@ -1,5 +1,5 @@
 <div id="Removing-files"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Removing directories#Removing-directories Removing directories], Previous: [cvs: Adding files to a directory#Adding-files Adding files], Up: [cvs: Adding, removing, and renaming files and directories#Adding-and-removing Adding and removing] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -120,7 +120,7 @@ later merge the removals to another branch if you want
 (see [cvs: Merging can add or remove files#Merging-adds-and-removals Merging adds and removals]).
 </p>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Removing directories#Removing-directories Removing directories], Previous: [cvs: Adding files to a directory#Adding-files Adding files], Up: [cvs: Adding, removing, and renaming files and directories#Adding-and-removing Adding and removing] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

@@ -7,7 +7,7 @@
 <nodenext>Chapter</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title></title>
 <menu>
 <menuentry>
@@ -22,7 +22,7 @@
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>Chapter</nodename>
 <nodenext>Second chapter</nodenext>

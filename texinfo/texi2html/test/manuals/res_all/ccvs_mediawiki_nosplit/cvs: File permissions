@@ -1,5 +1,5 @@
 <div id="File-permissions"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: File Permission issues specific to Windows#Windows-permissions Windows permissions], Previous: [cvs: Where files are stored within the repository#Repository-files Repository files], Up: [cvs: How data is stored in the repository#Repository-storage Repository storage] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -100,7 +100,7 @@ carefully if you are considering this option
 ([cvs: Security considerations with password authentication#Password-authentication-security Password authentication security]).
 </p>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: File Permission issues specific to Windows#Windows-permissions Windows permissions], Previous: [cvs: Where files are stored within the repository#Repository-files Repository files], Up: [cvs: How data is stored in the repository#Repository-storage Repository storage] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

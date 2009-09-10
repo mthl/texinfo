@@ -26,7 +26,7 @@
 <nodeprev>second before top</nodeprev>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Top</title>
 
 <menu>
@@ -57,7 +57,7 @@
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>index</nodename>
 <nodenext>after index</nodenext>

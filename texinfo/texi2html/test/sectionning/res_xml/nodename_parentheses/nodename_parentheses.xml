@@ -7,7 +7,7 @@
 <nodenext>Node (with parentheses)</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>The top node</title>
 
 <menu>
@@ -28,7 +28,7 @@
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>Node (with parentheses)</nodename>
 <nodenext>Other node</nodenext>

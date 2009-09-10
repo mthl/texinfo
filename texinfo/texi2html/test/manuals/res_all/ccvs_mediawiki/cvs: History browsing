@@ -1,5 +1,5 @@
 <div id="History-browsing"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Handling binary files#Binary-files Binary files], Previous: [cvs: Adding, removing, and renaming files and directories#Adding-and-removing Adding and removing], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -22,7 +22,7 @@ through the history.
 </nowiki></pre>
 <hr>
 <div id="log-messages"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#history-database|history database]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -37,7 +37,7 @@ use the <code>cvs log</code> command (see [cvs: Guide to CVS commands#log log]).
 </p>
 <hr>
 <div id="history-database"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#user_002ddefined-logging|user-defined logging]], Previous: [[#log-messages|log messages]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -56,7 +56,7 @@ history</code> command (see [cvs: Guide to CVS commands#history history]).
 
 <hr>
 <div id="user_002ddefined-logging"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#annotate|annotate]], Previous: [[#history-database|history database]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -110,7 +110,7 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 
 <hr>
 <div id="annotate"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#user_002ddefined-logging|user-defined logging]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -150,7 +150,7 @@ in more detail there and in [cvs: Guide to CVS commands#Common-options Common op
 </p>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#user_002ddefined-logging|user-defined logging]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

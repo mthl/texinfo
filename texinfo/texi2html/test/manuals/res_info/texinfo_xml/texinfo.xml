@@ -142,7 +142,7 @@ ISBN 1-882114-67-1 <!-- for version 4.0, September 1999. -->
 <nodenext>Copying Conditions</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Texinfo</title>
 
 <para>This manual is for GNU Texinfo (version 4.2, 28 March 2002),
@@ -1875,7 +1875,7 @@ when it is bad, it is better than nothing.
 </para></quotation>
 
 
-</unnumbered>
+</top>
 <node>
 <nodename>Copying Conditions</nodename>
 <nodenext>Overview</nodenext>

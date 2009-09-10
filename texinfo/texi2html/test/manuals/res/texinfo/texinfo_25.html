@@ -51,7 +51,7 @@ pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
-ul.toc {list-style: none}
+ul.no-bullet {list-style: none}
 -->
 </style>
 
@@ -61,7 +61,7 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <a name="Include-Files"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="texinfo_24.html#Sample-Texinfo-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_24.html#GNU-Sample-Texts" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo.html#Top" title="Up section"> Up </a>]</td>
@@ -107,7 +107,7 @@ conveniently small parts.
 
 <hr>
 <a name="Using-Include-Files"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Include-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Include-Files" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Include-Files" title="Up section"> Up </a>]</td>
@@ -164,7 +164,7 @@ designed for <code>@include</code> files.
 </p>
 <hr>
 <a name="texinfo_002dmultiple_002dfiles_002dupdate"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Include-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Using-Include-Files" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Include-Files" title="Up section"> Up </a>]</td>
@@ -195,7 +195,7 @@ included files or all of them:
 <dt><kbd>M-x texinfo-multiple-files-update</kbd></dt>
 <dd><p>Called without any arguments:
 </p>
-<ul class="toc">
+<ul class="no-bullet">
 <li>-
 Create or update the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers of the
 first <code>@node</code> line in each file included in an outer or overall
@@ -213,7 +213,7 @@ Create or update a main menu in the outer file.
 <dt><kbd>C-u M-x texinfo-multiple-files-update</kbd></dt>
 <dd><p>Called with <kbd>C-u</kbd> as a prefix argument:
 </p>
-<ul class="toc">
+<ul class="no-bullet">
 <li>-
 Create or update pointers in the first <code>@node</code> line in each
 included file.
@@ -230,7 +230,7 @@ is made from all the menus in all the included files.
 <dt><kbd>C-u 8 M-x texinfo-multiple-files-update</kbd></dt>
 <dd><p>Called with a numeric prefix argument, such as <kbd>C-u 8</kbd>:
 </p>
-<ul class="toc">
+<ul class="no-bullet">
 <li>-
 Create or update <strong>all</strong> the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers
 of all the included files.
@@ -261,7 +261,7 @@ master menu.
 
 <hr>
 <a name="Include-File-Requirements"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Include-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#texinfo_002dmultiple_002dfiles_002dupdate" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Include-Files" title="Up section"> Up </a>]</td>
@@ -304,7 +304,7 @@ them.
 </p>
 <hr>
 <a name="Sample-Include-File"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Include-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Include-File-Requirements" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Include-Files" title="Up section"> Up </a>]</td>
@@ -384,7 +384,7 @@ files.
 
 <hr>
 <a name="Include-Files-Evolution"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Include-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Sample-Include-File" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Include-Files" title="Up section"> Up </a>]</td>
@@ -438,7 +438,7 @@ Texinfo files.
 </p>
 
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Include-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_26.html#Headings" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>

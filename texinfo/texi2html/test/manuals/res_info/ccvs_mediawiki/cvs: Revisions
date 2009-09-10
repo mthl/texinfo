@@ -1,5 +1,5 @@
 <div id="Revisions"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Branching and merging#Branching-and-merging Branching and merging], Previous: [cvs: Starting a project with CVS#Starting-a-new-project Starting a new project], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -31,7 +31,7 @@ numeric revision in each file.
 </nowiki></pre>
 <hr>
 <div id="Revision-numbers"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Versions-revisions-releases|Versions revisions releases]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -68,7 +68,7 @@ are explained in detail in [cvs: Branching and merging#Branches-and-revisions Br
 </p>
 <hr>
 <div id="Versions-revisions-releases"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Assigning-revisions|Assigning revisions]], Previous: [[#Revision-numbers|Revision numbers]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -90,7 +90,7 @@ called <em>releases</em>.  To avoid confusion, the word
 </p>
 <hr>
 <div id="Assigning-revisions"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Tags|Tags]], Previous: [[#Versions-revisions-releases|Versions revisions releases]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -136,7 +136,7 @@ parallel, you need to use a branch (see [cvs: Branching and merging#Branching-an
 </p>
 <hr>
 <div id="Tags"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Tagging-the-working-directory|Tagging the working directory]], Previous: [[#Assigning-revisions|Assigning revisions]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -300,7 +300,7 @@ like this:
 
 <hr>
 <div id="Tagging-the-working-directory"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Tagging-by-date_002ftag|Tagging by date/tag]], Previous: [[#Tags|Tags]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -338,7 +338,7 @@ cvs [tag aborted]: correct the above errors first!
 
 <hr>
 <div id="Tagging-by-date_002ftag"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Modifying-tags|Modifying tags]], Previous: [[#Tagging-the-working-directory|Tagging the working directory]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -387,7 +387,7 @@ rtag</code>.  The exceptions might be cases like:
 
 <hr>
 <div id="Modifying-tags"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Tagging-add_002fremove|Tagging add/remove]], Previous: [[#Tagging-by-date_002ftag|Tagging by date/tag]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -484,7 +484,7 @@ cvs rtag -d old-name-0-4 tc
 
 <hr>
 <div id="Tagging-add_002fremove"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Sticky-tags|Sticky tags]], Previous: [[#Modifying-tags|Modifying tags]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -525,7 +525,7 @@ necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 </p>
 <hr>
 <div id="Sticky-tags"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Tagging-add_002fremove|Tagging add/remove]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -616,7 +616,7 @@ how to undo a previous checkin (in this example, put
 discussion see [cvs: Branching and merging#Merging-two-revisions Merging two revisions].
 </p>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Tagging-add_002fremove|Tagging add/remove]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

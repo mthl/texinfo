@@ -1,5 +1,5 @@
 <div id="Line-formats"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [cvs: Line group formats#Line-group-formats Line group formats], Up: [cvs: diff options#diff-options diff options] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -119,7 +119,7 @@ to get fine control over <code>diff</code>&rsquo;s output.
 </nowiki></pre></td></tr></table>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [cvs: Line group formats#Line-group-formats Line group formats], Up: [cvs: diff options#diff-options diff options] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

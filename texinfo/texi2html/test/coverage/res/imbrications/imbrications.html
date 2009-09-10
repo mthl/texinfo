@@ -32,7 +32,7 @@ pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
-ul.toc {list-style: none}
+ul.no-bullet {list-style: none}
 -->
 </style>
 
@@ -42,7 +42,7 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <a name="Top"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[ &lt; ]</td>
 <td valign="middle" align="left">[<a href="#First-node" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -51,7 +51,7 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Test-some-command-imbrications"></a>
-<h1 class="unnumbered">Test some command imbrications</h1>
+<h1 class="top">Test some command imbrications</h1>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#First-node">1 first node chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    node 1
 </td></tr>
@@ -60,7 +60,7 @@ ul.toc {list-style: none}
 </table>
 <hr size="6">
 <a name="First-node"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
@@ -83,7 +83,7 @@ ul.toc {list-style: none}
 
 <hr>
 <a name="Second-node"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#First-node" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#First-node" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
@@ -120,7 +120,7 @@ to follow it
 
 <hr>
 <a name="node-within-defun-menu"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Second-node" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Second-node" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Second-node" title="Up section"> Up </a>]</td>
@@ -369,7 +369,7 @@ explanation
 
 <hr>
 <a name="node-menu"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Second-node" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#node-within-defun-menu" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#node-within-defun-menu" title="Up section"> Up </a>]</td>
@@ -387,7 +387,7 @@ explanation
 <a name="SEC4"></a>
 <hr>
 <a name="other-node"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Second-node" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#node-menu" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#node-within-defun-menu" title="Up section"> Up </a>]</td>
@@ -407,7 +407,7 @@ explanation
 
 <hr size="6">
 <a name="SEC_Foot"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="#Second-node" title="Index">Index</a>]</td>
@@ -420,7 +420,7 @@ explanation
 <p><code>par2</code>
 </p><hr>
 <a name="SEC_Contents"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="#Second-node" title="Index">Index</a>]</td>
@@ -429,12 +429,12 @@ explanation
 <h1>Table of Contents</h1>
 <div class="contents">
 
-<ul class="toc">
+<ul class="no-bullet">
   <li><a name="toc-first-node-chapter" href="#First-node">1 first node chapter</a></li>
   <li><a name="toc-second" href="#Second-node">2 second</a>
-  <ul class="toc">
+  <ul class="no-bullet">
     <li><a name="toc-the-node-is-within-menu" href="#node-within-defun-menu">2.1 the node is within menu</a>
-    <ul class="toc">
+    <ul class="no-bullet">
       <li><a href="#node-menu"></a></li>
       <li><a href="#other-node"></a></li>
     </ul>
@@ -445,7 +445,7 @@ explanation
 </div>
 <hr>
 <a name="SEC_About"></a>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="#Second-node" title="Index">Index</a>]</td>

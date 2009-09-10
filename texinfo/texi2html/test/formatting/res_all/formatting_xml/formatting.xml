@@ -8,7 +8,7 @@
 <nodenext>chapter</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Top section</title>
 
 <menu>
@@ -3275,7 +3275,7 @@ This is a very simple texi manual @  &lt;&gt;.
 
 
 
-</unnumbered>
+</top>
 <node>
 <nodename>chapter</nodename>
 <nodenext>chapter2</nodenext>
@@ -3357,7 +3357,7 @@ Menu comment
 <nodeprev>chapter</nodeprev>
 <nodeup>Top</nodeup>
 </node>
-<unnumbered>
+<centerchap>
 <title>chapter 2</title>
 
 <printindex>cp</printindex>
@@ -3365,7 +3365,7 @@ Menu comment
 
 <contents></contents>
 <shortcontents></shortcontents>
-</unnumbered>
+</centerchap>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:

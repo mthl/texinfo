@@ -1,5 +1,5 @@
 <div id="Getting-Notified"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: How to edit a file which is being watched#Editing-files Editing files], Previous: [cvs: Telling CVS to watch certain files#Setting-a-watch Setting a watch], Up: [cvs: Mechanisms to track who is editing files#Watches Watches] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -126,7 +126,7 @@ directory separately, so this behavior might be worth
 changing.
 </p>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: How to edit a file which is being watched#Editing-files Editing files], Previous: [cvs: Telling CVS to watch certain files#Setting-a-watch Setting a watch], Up: [cvs: Mechanisms to track who is editing files#Watches Watches] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

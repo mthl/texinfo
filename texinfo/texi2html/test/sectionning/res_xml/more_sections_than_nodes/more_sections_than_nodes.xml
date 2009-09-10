@@ -9,7 +9,7 @@
 <nodenext>n c2</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>top</title>
 
 <menu>
@@ -30,7 +30,7 @@
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <chapter>
 <title>c1</title>
 

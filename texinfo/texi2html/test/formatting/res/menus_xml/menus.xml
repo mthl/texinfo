@@ -9,7 +9,7 @@
 <nodenext>chapter</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Top</title>
 
 <menu>
@@ -93,7 +93,7 @@ comment.
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>chapter</nodename>
 <nodenext>chapter2</nodenext>

@@ -1,5 +1,5 @@
 <div id="Tracking-sources"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: How your build system interacts with CVS#Builds Builds], Previous: [cvs: Keyword substitution#Keyword-substitution Keyword substitution], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -44,7 +44,7 @@ revision.
 </nowiki></pre>
 <hr>
 <div id="First-import"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Update-imports|Update imports]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -87,7 +87,7 @@ example, and the only release tag assigned is
 </p>
 <hr>
 <div id="Update-imports"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Reverting-local-changes|Reverting local changes]], Previous: [[#First-import|First import]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -133,7 +133,7 @@ should do a merge like this even if <code>import</code> doesn&rsquo;t tell you t
 </p>
 <hr>
 <div id="Reverting-local-changes"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Binary-files-in-imports|Binary files in imports]], Previous: [[#Update-imports|Update imports]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -157,7 +157,7 @@ after the &lsquo;<samp>-b</samp>&rsquo;.  See [cvs: Guide to CVS commands#admin-
 </p>
 <hr>
 <div id="Binary-files-in-imports"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Keywords-in-imports|Keywords in imports]], Previous: [[#Reverting-local-changes|Reverting local changes]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -169,7 +169,7 @@ files are binary.  See [cvs: Reference manual for Administrative files#Wrappers 
 </p>
 <hr>
 <div id="Keywords-in-imports"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Multiple-vendor-branches|Multiple vendor branches]], Previous: [[#Binary-files-in-imports|Binary files in imports]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -199,7 +199,7 @@ and use the &lsquo;<samp>-k</samp>&rsquo; option to <code>cvs update</code> or
 </p>
 <hr>
 <div id="Multiple-vendor-branches"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Keywords-in-imports|Keywords in imports]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -248,7 +248,7 @@ an error in some future release.
 </p>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Keywords-in-imports|Keywords in imports]], Up: [[#Tracking-sources|Tracking sources]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

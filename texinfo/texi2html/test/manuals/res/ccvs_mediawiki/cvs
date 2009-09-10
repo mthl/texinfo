@@ -1,6 +1,6 @@
 == CVS&mdash;Concurrent Versions System v4.2 ==
 <div id="Top"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[ &lt; ]</td>
 <td valign="middle" align="left">|[cvs: Overview#Overview  &gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -46,7 +46,7 @@ References.
 </nowiki>&bull;[cvs: Index#Index  Index]::<nowiki>                       Index
 </nowiki></pre>
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[ &lt; ]</td>
 <td valign="middle" align="left">|[cvs: Overview#Overview  &gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

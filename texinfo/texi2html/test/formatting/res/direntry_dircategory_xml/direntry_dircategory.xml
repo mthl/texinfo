@@ -31,7 +31,7 @@
 <nodenext>chapter</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Test dircategory and direntry</title>
 
 <para>Text
@@ -52,7 +52,7 @@
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>chapter</nodename>
 <nodeprev>Top</nodeprev>

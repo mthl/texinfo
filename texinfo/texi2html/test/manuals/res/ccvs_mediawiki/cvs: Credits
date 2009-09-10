@@ -1,5 +1,5 @@
 <div id="Credits"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Troubleshooting#Troubleshooting  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Troubleshooting#Other-problems  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -58,7 +58,7 @@ the file &lsquo;<tt>doc/ChangeLog</tt>&rsquo; in the <small>CVS</small> source
 distribution.
 </p>
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Troubleshooting#Troubleshooting  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Dealing with bugs in CVS or this manual#BUGS  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

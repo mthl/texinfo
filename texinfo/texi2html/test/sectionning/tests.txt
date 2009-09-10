@@ -15,9 +15,15 @@ nodes_before_top nodes_before_top.texi
 nodes_after_top nodes_after_top.texi --use-nodes
 nodes_after_top_no_node nodes_after_top.texi
 section_nodes_before_top section_nodes_before_top.texi
+nodes_after_top_before_chapter nodes_after_top_before_chapter.texi
 nodes_after_top_before_section nodes_after_top_before_section.texi --split chapter
 nodes_after_top_before_section_use_nodes nodes_after_top_before_section.texi --use-nodes
+# since there is only one subsection/one chapter in 
+# nodes_after_top_before_section/nodes_after_top_before_chapter, with
+# use-nodes all the nodes are considered to be top level elements and so it
+# is split at node.
 nodes_after_top_before_section_use_nodes_chapter nodes_after_top_before_section.texi --use-nodes --split chapter
+nodes_after_top_before_chapter_use_nodes_chapter nodes_after_top_before_chapter.texi --use-nodes --split chapter
 nodes_test nodes_test.texi
 no_section_no_node no_section.texi
 no_section no_section.texi --use-nodes

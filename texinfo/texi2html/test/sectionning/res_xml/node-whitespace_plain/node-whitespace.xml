@@ -12,7 +12,7 @@
 <nodenext>Chap 1.3</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Whitespace in Node Names</title>
 
 
@@ -29,7 +29,7 @@
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>Chap 1.3</nodename>
 <nodenext>Chap 1.4</nodenext>

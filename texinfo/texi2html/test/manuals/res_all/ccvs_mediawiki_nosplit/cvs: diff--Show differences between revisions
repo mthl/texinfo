@@ -1,5 +1,5 @@
 <div id="diff"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: export--Export sources from CVS, similar to checkout#export export], Previous: [cvs: commit--Check files into the repository#commit commit], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

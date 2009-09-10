@@ -49,7 +49,7 @@ pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
-ul.toc {list-style: none}
+ul.no-bullet {list-style: none}
 -->
 </style>
 
@@ -59,9 +59,9 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <a name="Dynamic-system-analysis"></a>
-<ul class="toc"><li><a href="index.html#Top">Miniker 102 manual</a> </li>
+<ul class="no-bullet"><li><a href="index.html#Top">Miniker 102 manual</a> </li>
 </ul>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="Programming-with-cmz-directives.html#Using-cmz-directives-in-Miniker" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="Sensitivities.html#Sensitivities" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -71,46 +71,46 @@ ul.toc {list-style: none}
 </tr></table>
 <a name="Dynamic-analysis-of-systems-in-Miniker"></a>
 <h1 class="chapter"> 4 Dynamic analysis of systems in Miniker </h1>
-<ul class="toc">
+<ul class="no-bullet">
 <li> <a href="Sensitivities.html#Sensitivities">4.1 Automatic sensitivity computation</a> </li>
-<li><ul class="toc">
+<li><ul class="no-bullet">
 <li> <a href="Sensitivities.html#Sensitivity-to-a-parameter">4.1.1 Sensitivity to a parameter</a> </li>
 <li> <a href="Sensitivities.html#Advance-matrix-sensitivity">4.1.2 Advance matrix sensitivity</a> </li>
 </ul></li>
 <li> <a href="Adjoint-model-and-optimisation.html#Adjoint-model-and-optimisation">4.2 Adjoint model and optimisation with Miniker</a> </li>
-<li><ul class="toc">
+<li><ul class="no-bullet">
 <li> <a href="Adjoint-model-and-optimisation.html#Overview-of-optimisation-with-Miniker">4.2.1 Overview of optimisation with Miniker</a> </li>
 <li> <a href="Adjoint-model-and-optimisation.html#Control-laws">4.2.2 Control laws</a> </li>
 <li> <a href="Adjoint-model-and-optimisation.html#Cost-function-coding-and-adjoint-modeling">4.2.3 Cost function coding and adjoint modeling</a> </li>
 <li> <a href="Adjoint-model-and-optimisation.html#Sensitivity-of-cost-function-to-parameters">4.2.4 Sensitivity of cost function to parameters</a> </li>
 </ul></li>
 <li> <a href="Kalman-filter.html#Kalman-filter">4.3 Kalman filter</a> </li>
-<li><ul class="toc">
+<li><ul class="no-bullet">
 <li> <a href="Kalman-filter.html#Coding-the-Kalman-filter">4.3.1 Coding the Kalman filter</a> </li>
-<li><ul class="toc">
+<li><ul class="no-bullet">
 <li> <a href="Kalman-filter.html#Kalman-filter-vectors-dimensions">4.3.1.1 Kalman filter vectors dimensions</a> </li>
 <li> <a href="Kalman-filter.html#Error-and-observation-matrices">4.3.1.2 Error and observation matrices</a> </li>
 </ul></li>
 <li> <a href="Kalman-filter.html#Kalman-filter-run-and-output">4.3.2 Kalman filter run and output</a> </li>
-<li><ul class="toc">
+<li><ul class="no-bullet">
 <li> <a href="Kalman-filter.html#Feeding-the-observations">4.3.2.1 Feeding the observations to the model</a> </li>
 <li> <a href="Kalman-filter.html#Kalman-filter-results">4.3.2.2 Kalman filter results</a> </li>
 </ul></li>
 <li> <a href="Kalman-filter.html#Executing-code-after-the-analysis">4.3.3 Executing code after the analysis</a> </li>
 </ul></li>
 <li> <a href="Feedback-gain.html#Feedback-gain">4.4 Feedback gain</a> </li>
-<li><ul class="toc">
+<li><ul class="no-bullet">
 <li> <a href="Feedback-gain.html#Specifying-the-Borel-sweep">4.4.1 Specifying the Borel sweep</a> </li>
 <li> <a href="Feedback-gain.html#Borel-sweep-results">4.4.2 Borel sweep results</a> </li>
 </ul></li>
 <li> <a href="Stability-of-fastest-modes.html#Stability-of-fastest-modes">4.5 Stability analysis of fastest modes</a> </li>
-<li><ul class="toc">
+<li><ul class="no-bullet">
 <li> <a href="Stability-of-fastest-modes.html#SVD-with-cmz">4.5.1 Singular Value Decomposition with cmz</a> </li>
 <li> <a href="Stability-of-fastest-modes.html#SVD-with-make">4.5.2 Singular Value Decomposition with make</a> </li>
 <li> <a href="Stability-of-fastest-modes.html#SVD-run-and-output">4.5.3 Singular Value Decomposition run and output</a> </li>
 </ul></li>
 <li> <a href="Generalized-TLS.html#Generalized-TLS">4.6 Generalized linear tangent system analysis</a> </li>
-<li><ul class="toc">
+<li><ul class="no-bullet">
 <li> <a href="Generalized-TLS.html#GTLS-with-cmz">4.6.1 Generalized tangent linear system with cmz</a> </li>
 <li> <a href="Generalized-TLS.html#GTLS-with-make">4.6.2 Generalized tangent linear system with make</a> </li>
 <li> <a href="Generalized-TLS.html#GTLS-run-and-output">4.6.3 Generalized tangent linear system analysis run and output</a> </li>
@@ -119,7 +119,7 @@ ul.toc {list-style: none}
 
 
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="index.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
 <td valign="middle" align="left">[<a href="Concepts-index.html#Concepts-index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)"> ? </a>]</td>

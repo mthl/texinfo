@@ -1,0 +1,96 @@
+punctuation_frenchspacing.texi(,2) 
+punctuation_frenchspacing.texi(,3) @setfilename punctuation_frenchspacing.info
+punctuation_frenchspacing.texi(,4) 
+punctuation_frenchspacing.texi(,5) @frenchspacing on
+punctuation_frenchspacing.texi(,6) 
+punctuation_frenchspacing.texi(,7) @node Top
+punctuation_frenchspacing.texi(,8) @top Element
+punctuation_frenchspacing.texi(,9) 
+punctuation_frenchspacing.texi(,10) 
+punctuation_frenchspacing.texi(,11) Dot. Exclam! Question? Dot.  Exclam!  Question?  GAAA.
+punctuation_frenchspacing.texi(,12) 
+punctuation_frenchspacing.texi(,13) End of lines Dot.
+punctuation_frenchspacing.texi(,14) Exclam!
+punctuation_frenchspacing.texi(,15) Question?
+punctuation_frenchspacing.texi(,16) End.
+punctuation_frenchspacing.texi(,17) 
+punctuation_frenchspacing.texi(,18) End of lines and spaces
+punctuation_frenchspacing.texi(,19) Dot.   
+punctuation_frenchspacing.texi(,20) Exclam!   
+punctuation_frenchspacing.texi(,21) Question?   
+punctuation_frenchspacing.texi(,22) End.
+punctuation_frenchspacing.texi(,23) 
+punctuation_frenchspacing.texi(,24) With paren.) paren.)  Symb.)"'] Symb.)"']  End.
+punctuation_frenchspacing.texi(,25) 
+punctuation_frenchspacing.texi(,26) End of lines paren.)
+punctuation_frenchspacing.texi(,27) Symb.)"']
+punctuation_frenchspacing.texi(,28) End.
+punctuation_frenchspacing.texi(,29) 
+punctuation_frenchspacing.texi(,30) End of lines and spaces paren.)   
+punctuation_frenchspacing.texi(,31) Symb.)"']   
+punctuation_frenchspacing.texi(,32) End.
+punctuation_frenchspacing.texi(,33) 
+punctuation_frenchspacing.texi(,34) 
+punctuation_frenchspacing.texi(,35) 
+punctuation_frenchspacing.texi(,36) @heading End of sentences
+punctuation_frenchspacing.texi(,37) 
+punctuation_frenchspacing.texi(,38) Dot@. Exclam@! Question@? Dot@.  Exclam@!  Question@?  GAAA.
+punctuation_frenchspacing.texi(,39) 
+punctuation_frenchspacing.texi(,40) Enddots@enddots{} Enddots@enddots{}  GBBB.
+punctuation_frenchspacing.texi(,41) 
+punctuation_frenchspacing.texi(,42) End of lines Dot@.
+punctuation_frenchspacing.texi(,43) Exclam@!
+punctuation_frenchspacing.texi(,44) Question@?
+punctuation_frenchspacing.texi(,45) Enddots@enddots{}
+punctuation_frenchspacing.texi(,46) End.
+punctuation_frenchspacing.texi(,47) 
+punctuation_frenchspacing.texi(,48) End of lines and spaces
+punctuation_frenchspacing.texi(,49) Dot@.   
+punctuation_frenchspacing.texi(,50) Exclam@!   
+punctuation_frenchspacing.texi(,51) Question@?   
+punctuation_frenchspacing.texi(,52) Enddots@enddots{}   
+punctuation_frenchspacing.texi(,53) End.
+punctuation_frenchspacing.texi(,54) 
+punctuation_frenchspacing.texi(,55) With paren@.) paren@.)  Symb@.)"'] Symb@.)"']  End.
+punctuation_frenchspacing.texi(,56) 
+punctuation_frenchspacing.texi(,57) End of lines paren@.)
+punctuation_frenchspacing.texi(,58) Symb@.)"']
+punctuation_frenchspacing.texi(,59) End.
+punctuation_frenchspacing.texi(,60) 
+punctuation_frenchspacing.texi(,61) End of lines and spaces paren@.)   
+punctuation_frenchspacing.texi(,62) Symb@.)"']   
+punctuation_frenchspacing.texi(,63) End.
+punctuation_frenchspacing.texi(,64) 
+punctuation_frenchspacing.texi(,65) @heading Not end of line
+punctuation_frenchspacing.texi(,66) 
+punctuation_frenchspacing.texi(,67) Dot.@: Exclam!@: Question?@: Dot.@:  Exclam!@:  Question?@:  GAAA.
+punctuation_frenchspacing.texi(,68) 
+punctuation_frenchspacing.texi(,69) End of lines Dot.@:
+punctuation_frenchspacing.texi(,70) Exclam!@:
+punctuation_frenchspacing.texi(,71) Question?@:
+punctuation_frenchspacing.texi(,72) End.
+punctuation_frenchspacing.texi(,73) 
+punctuation_frenchspacing.texi(,74) End of lines and spaces
+punctuation_frenchspacing.texi(,75) Dot.@:   
+punctuation_frenchspacing.texi(,76) Exclam!@:   
+punctuation_frenchspacing.texi(,77) Question?@:   
+punctuation_frenchspacing.texi(,78) End.
+punctuation_frenchspacing.texi(,79) 
+punctuation_frenchspacing.texi(,80) With paren.@:) paren.@:)  Symb.@:)"'] Symb.@:)"']  End.
+punctuation_frenchspacing.texi(,81) 
+punctuation_frenchspacing.texi(,82) End of lines paren.@:)
+punctuation_frenchspacing.texi(,83) Symb.@:)"']
+punctuation_frenchspacing.texi(,84) End.
+punctuation_frenchspacing.texi(,85) 
+punctuation_frenchspacing.texi(,86) End of lines and spaces paren.@:)   
+punctuation_frenchspacing.texi(,87) Symb.@:)"']   
+punctuation_frenchspacing.texi(,88) End.
+punctuation_frenchspacing.texi(,89) 
+punctuation_frenchspacing.texi(,90) @heading Accent leading to a dot
+punctuation_frenchspacing.texi(,91) 
+punctuation_frenchspacing.texi(,92) @dotaccent{o} in sentence.
+punctuation_frenchspacing.texi(,93) 
+punctuation_frenchspacing.texi(,94) At the end of line @dotaccent{o}
+punctuation_frenchspacing.texi(,95) text following.
+punctuation_frenchspacing.texi(,96) 
+punctuation_frenchspacing.texi(,97) @bye

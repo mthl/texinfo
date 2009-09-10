@@ -1,5 +1,5 @@
 <div id="Binary-howto"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [cvs: The issues with binary files#Binary-why Binary why], Up: [cvs: Handling binary files#Binary-files Binary files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -83,7 +83,7 @@ non-binary files, and the rules to apply would vary
 considerably with the operating system.
 </p>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [cvs: The issues with binary files#Binary-why Binary why], Up: [cvs: Handling binary files#Binary-files Binary files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

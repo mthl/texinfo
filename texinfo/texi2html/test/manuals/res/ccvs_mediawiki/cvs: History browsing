@@ -1,5 +1,5 @@
 <div id="History-browsing"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Moving-directories  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -33,7 +33,7 @@ through the history.
 </nowiki></pre>
 <hr>
 <div id="log-messages"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
@@ -59,7 +59,7 @@ use the <code>cvs log</code> command (see section [cvs: Guide to CVS commands#lo
 </p>
 <hr>
 <div id="history-database"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#log-messages| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
@@ -89,7 +89,7 @@ history</code> command (see section [cvs: Guide to CVS commands#history history&
 
 <hr>
 <div id="user_002ddefined-logging"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#history-database| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
@@ -154,7 +154,7 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 
 <hr>
 <div id="annotate"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#user_002ddefined-logging| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
@@ -205,7 +205,7 @@ in more detail there and in [cvs: Guide to CVS commands#Common-options Common co
 </p>
 
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

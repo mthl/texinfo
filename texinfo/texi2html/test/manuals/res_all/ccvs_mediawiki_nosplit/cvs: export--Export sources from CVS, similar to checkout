@@ -1,5 +1,5 @@
 <div id="export"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: history--Show status of files and users#history history], Previous: [cvs: diff--Show differences between revisions#diff diff], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

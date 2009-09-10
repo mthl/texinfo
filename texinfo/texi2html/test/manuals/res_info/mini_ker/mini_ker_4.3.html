@@ -56,7 +56,7 @@ pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
-ul.toc {list-style: none}
+ul.no-bullet {list-style: none}
 -->
 </style>
 
@@ -66,24 +66,24 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <a name="Kalman-filter"></a>
-<ul class="toc"><li><a href="mini_ker_top.html#Top">Miniker 102 manual</a> </li>
-<li><ul class="toc"><li><a href="mini_ker_4.html#Dynamic-system-analysis">4 Dynamic analysis of systems in Miniker</a> </li>
+<ul class="no-bullet"><li><a href="mini_ker_top.html#Top">Miniker 102 manual</a> </li>
+<li><ul class="no-bullet"><li><a href="mini_ker_4.html#Dynamic-system-analysis">4 Dynamic analysis of systems in Miniker</a> </li>
 </ul></li>
 </ul>
-<div class="node">
+<div class="header">
 <p>
 [<a href="mini_ker_4.2.html#Sensitivity-of-cost-function-to-parameters" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="#Coding-the-Kalman-filter" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
 </div>
 <a name="Kalman-filter-1"></a>
 <h2 class="section"> 4.3 Kalman filter </h2>
-<ul class="toc">
+<ul class="no-bullet">
 <li> <a href="#Coding-the-Kalman-filter">4.3.1 Coding the Kalman filter</a> </li>
-<li><ul class="toc">
+<li><ul class="no-bullet">
 <li> <a href="#Kalman-filter-vectors-dimensions">4.3.1.1 Kalman filter vectors dimensions</a> </li>
 <li> <a href="#Error-and-observation-matrices">4.3.1.2 Error and observation matrices</a> </li>
 </ul></li>
 <li> <a href="#Kalman-filter-run-and-output">4.3.2 Kalman filter run and output</a> </li>
-<li><ul class="toc">
+<li><ul class="no-bullet">
 <li> <a href="#Feeding-the-observations">4.3.2.1 Feeding the observations to the model</a> </li>
 <li> <a href="#Kalman-filter-results">4.3.2.2 Kalman filter results</a> </li>
 </ul></li>
@@ -151,13 +151,13 @@ src="mini_ker_tex4ht_tex19x.png" alt="(
 
 <hr>
 <a name="Coding-the-Kalman-filter"></a>
-<div class="node">
+<div class="header">
 <p>
 [<a href="#Kalman-filter" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="#Kalman-filter-vectors-dimensions" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
 </div>
 <a name="Coding-the-Kalman-filter-1"></a>
 <h3 class="subsection"> 4.3.1 Coding the Kalman filter </h3>
-<ul class="toc">
+<ul class="no-bullet">
 <li> <a href="#Kalman-filter-vectors-dimensions">4.3.1.1 Kalman filter vectors dimensions</a> </li>
 <li> <a href="#Error-and-observation-matrices">4.3.1.2 Error and observation matrices</a> </li>
 </ul>
@@ -195,7 +195,7 @@ of errors have to be given.
 
 <hr>
 <a name="Kalman-filter-vectors-dimensions"></a>
-<div class="node">
+<div class="header">
 <p>
 [<a href="#Coding-the-Kalman-filter" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="#Error-and-observation-matrices" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
 </div>
@@ -230,7 +230,7 @@ dimension 2.
 </p>
 <hr>
 <a name="Error-and-observation-matrices"></a>
-<div class="node">
+<div class="header">
 <p>
 [<a href="#Kalman-filter-vectors-dimensions" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="#Kalman-filter-run-and-output" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
 </div>
@@ -310,13 +310,13 @@ of the filtering process. They may be changed by the user in &lsquo;<tt>zsteer</
 </p>
 <hr>
 <a name="Kalman-filter-run-and-output"></a>
-<div class="node">
+<div class="header">
 <p>
 [<a href="#Error-and-observation-matrices" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="#Feeding-the-observations" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
 </div>
 <a name="Kalman-filter-run-and-output-1"></a>
 <h3 class="subsection"> 4.3.2 Kalman filter run and output </h3>
-<ul class="toc">
+<ul class="no-bullet">
 <li> <a href="#Feeding-the-observations">4.3.2.1 Feeding the observations to the model</a> </li>
 <li> <a href="#Kalman-filter-results">4.3.2.2 Kalman filter results</a> </li>
 </ul>
@@ -324,7 +324,7 @@ of the filtering process. They may be changed by the user in &lsquo;<tt>zsteer</
 
 <hr>
 <a name="Feeding-the-observations"></a>
-<div class="node">
+<div class="header">
 <p>
 [<a href="#Kalman-filter-run-and-output" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="#Kalman-filter-results" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
 </div>
@@ -349,7 +349,7 @@ stored in <code>vobs(.)</code>, ready for the next step processing.
 </p>
 <hr>
 <a name="Kalman-filter-results"></a>
-<div class="node">
+<div class="header">
 <p>
 [<a href="#Feeding-the-observations" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="#Executing-code-after-the-analysis" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
 </div>
@@ -371,7 +371,7 @@ in the file associated with data, &lsquo;<tt>data.data</tt>&rsquo; (see <a href=
 </p>
 <hr>
 <a name="Executing-code-after-the-analysis"></a>
-<div class="node">
+<div class="header">
 <p>
 [<a href="#Kalman-filter-results" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="mini_ker_4.4.html#Feedback-gain" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
 </div>
@@ -428,7 +428,7 @@ cell variables.
 
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 [<a href="mini_ker_top.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="mini_ker_U.4.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
 </div>

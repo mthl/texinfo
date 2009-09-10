@@ -1,5 +1,5 @@
 <div id="Environment-variables"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Reference manual for Administrative files#config  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -234,7 +234,7 @@ files.
 </dl>
 
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

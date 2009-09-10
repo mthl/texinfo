@@ -9,7 +9,7 @@
 <nodenext>chapter</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Test floats</title>
 
 <para>A list of floats at the begining.
@@ -193,7 +193,7 @@ A footnote.
 </shortcaption>
 </float>
 
-</unnumbered>
+</top>
 <node>
 <nodename>chapter</nodename>
 <nodenext>Unnumbered</nodenext>

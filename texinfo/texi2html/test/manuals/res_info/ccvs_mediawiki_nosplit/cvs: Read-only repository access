@@ -1,5 +1,5 @@
 <div id="Read_002donly-access"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Temporary directories for the server#Server-temporary-directory Server temporary directory], Previous: [cvs: Remote repositories#Remote-repositories Remote repositories], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -90,7 +90,7 @@ repository too much than too little: such a user gets
 read-only access.
 </p>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Temporary directories for the server#Server-temporary-directory Server temporary directory], Previous: [cvs: Remote repositories#Remote-repositories Remote repositories], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

@@ -1,5 +1,5 @@
 <div id="Adding-and-removing"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: History browsing#History-browsing History browsing], Previous: [cvs: Recursive behavior#Recursive-behavior Recursive behavior], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -23,7 +23,7 @@ this in <small>CVS</small> vary depending on the situation.
 </nowiki></pre>
 <hr>
 <div id="Adding-files"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Removing-files|Removing files]], Up: [[#Adding-and-removing|Adding and removing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -111,7 +111,7 @@ later merge the additions to another branch if you want
 </p>
 <hr>
 <div id="Removing-files"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Removing-directories|Removing directories]], Previous: [[#Adding-files|Adding files]], Up: [[#Adding-and-removing|Adding and removing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -232,7 +232,7 @@ later merge the removals to another branch if you want
 </p>
 <hr>
 <div id="Removing-directories"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Moving-files|Moving files]], Previous: [[#Removing-files|Removing files]], Up: [[#Adding-and-removing|Adding and removing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -269,7 +269,7 @@ are checking out contains any files in that directory.
 </p>
 <hr>
 <div id="Moving-files"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Moving-directories|Moving directories]], Previous: [[#Removing-directories|Removing directories]], Up: [[#Adding-and-removing|Adding and removing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -293,7 +293,7 @@ directory is even harder.  See [[#Moving-directories|Moving directories]].).
 </nowiki></pre>
 <hr>
 <div id="Outside"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Inside|Inside]], Up: [[#Moving-files|Moving files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -327,7 +327,7 @@ information see [cvs: Revisions#Assigning-revisions Assigning revisions].
 </p>
 <hr>
 <div id="Inside"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Rename-by-copying|Rename by copying]], Previous: [[#Outside|Outside]], Up: [[#Moving-files|Moving files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -371,7 +371,7 @@ commands while you move it.
 
 <hr>
 <div id="Rename-by-copying"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Inside|Inside]], Up: [[#Moving-files|Moving files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -425,7 +425,7 @@ You cannot easily see the history of the file across the rename.
 
 <hr>
 <div id="Moving-directories"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Moving-files|Moving files]], Up: [[#Adding-and-removing|Adding and removing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -479,7 +479,7 @@ releases correctly, since they probably depend on the
 name of the directories.
 </p>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Moving-files|Moving files]], Up: [[#Adding-and-removing|Adding and removing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

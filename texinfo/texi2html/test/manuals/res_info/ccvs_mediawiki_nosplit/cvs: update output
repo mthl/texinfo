@@ -1,5 +1,5 @@
 <div id="update-output"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [cvs: update options#update-options update options], Up: [cvs: update--Bring work tree in sync with repository#update update] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -87,7 +87,7 @@ see [cvs: Ignoring files via cvsignore#cvsignore cvsignore]).
 </dl>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [cvs: update options#update-options update options], Up: [cvs: update--Bring work tree in sync with repository#update update] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

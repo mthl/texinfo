@@ -1,5 +1,5 @@
 <div id="Repository"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Starting a project with CVS#Starting-a-new-project Starting a new project], Previous: [cvs: Overview#Overview Overview], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -72,7 +72,7 @@ user-defined modules.
 </nowiki>&bull;[cvs: Temporary directories for the server#Server-temporary-directory  Server temporary directory]::<nowiki>  The server creates temporary directories
 </nowiki></pre>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Starting a project with CVS#Starting-a-new-project Starting a new project], Previous: [cvs: Overview#Overview Overview], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

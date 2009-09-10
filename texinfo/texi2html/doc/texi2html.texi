@@ -2020,6 +2020,9 @@ The variable value is inserted after the table of contents text.
 @item $NO_BULLET_LIST_STYLE
 This should contain a css style used for the list style when there
 is no bullet.
+@item $NO_BULLET_LIST_CLASS
+This should contain the class assocciated with the $NO_BULLET_LIST_STYLE 
+css style.
 @item $NO_BULLET_LIST_ATTRIBUTE
 This should contain an attribute text used for the list element when there
 is no bullet. For example it is used in the tables of if they are 
@@ -4589,6 +4592,13 @@ version 1.68. API changed also a lot between 1.78 and 1.80.
   $Texi2HTML::THISDOC@{user@}.
 @item Don't treat _setfilename as a value set. It should be available through
   get_conf.
+@item change in class attribute for html elements:
+for ul to class "no-bullet" ($NO_BULLET_LIST_ATTRIBUTE). @@top 
+and @@centerchap have now their command name as class.
+@@node heading class is now "node-heading", instead of "node".
+The whole header is in an element with class "header" 
+(was "node" when !$HEADER_IN_TABLE).
+
 @end itemize
 @item API changes between 1.78 and 1.80: 
 @itemize @bullet

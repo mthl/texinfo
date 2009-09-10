@@ -1,5 +1,5 @@
 <div id="Multiple-developers"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Revision management#Revision-management Revision management], Previous: [cvs: Handling binary files#Binary-files Binary files], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -61,7 +61,7 @@ choosing between them.
 </nowiki></pre>
 <hr>
 <div id="File-status"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Updating-a-file|Updating a file]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -181,7 +181,7 @@ these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Invoking C
 </p>
 <hr>
 <div id="Updating-a-file"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Conflicts-example|Conflicts example]], Previous: [[#File-status|File status]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -221,7 +221,7 @@ See [cvs: Guide to CVS commands#update update], for a complete description of th
 </p>
 <hr>
 <div id="Conflicts-example"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Informing-others|Informing others]], Previous: [[#Updating-a-file|Updating a file]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -393,7 +393,7 @@ See the documentation for pcl-cvs.
 </p>
 <hr>
 <div id="Informing-others"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Concurrency|Concurrency]], Previous: [[#Conflicts-example|Conflicts example]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -414,7 +414,7 @@ newsgroup.
 </p>
 <hr>
 <div id="Concurrency"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Watches|Watches]], Previous: [[#Informing-others|Informing others]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -482,7 +482,7 @@ the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 </p>
 <hr>
 <div id="Watches"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Choosing-a-model|Choosing a model]], Previous: [[#Concurrency|Concurrency]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -518,7 +518,7 @@ but <small>CVS</small> is not able to enforce this behavior.
 </nowiki></pre>
 <hr>
 <div id="Setting-a-watch"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Getting-Notified|Getting Notified]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -568,7 +568,7 @@ watch on</code>.
 
 <hr>
 <div id="Getting-Notified"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Editing-files|Editing files]], Previous: [[#Setting-a-watch|Setting a watch]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -695,7 +695,7 @@ changing.
 </p>
 <hr>
 <div id="Editing-files"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Watch-information|Watch information]], Previous: [[#Getting-Notified|Getting Notified]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -771,7 +771,7 @@ successful <small>CVS</small> command.
 </p>
 <hr>
 <div id="Watch-information"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Watches-Compatibility|Watches Compatibility]], Previous: [[#Editing-files|Editing files]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -807,7 +807,7 @@ containing the file.
 
 <hr>
 <div id="Watches-Compatibility"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Watch-information|Watch information]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -836,7 +836,7 @@ that will restore the repository to a state which
 </p>
 <hr>
 <div id="Choosing-a-model"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Watches|Watches]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -898,7 +898,7 @@ best of both the reserved checkout and unreserved
 checkout worlds.
 </p>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Watches|Watches]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

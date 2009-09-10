@@ -1,5 +1,5 @@
 <div id="Overview"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: The Repository#Repository Repository], Previous: [[cvs#Top|Top]], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -21,7 +21,7 @@ certain command, you can probably skip everything here.
 </nowiki></pre>
 <hr>
 <div id="What-is-CVS_003f"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#What-is-CVS-not_003f|What is CVS not?]], Up: [[#Overview|Overview]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -108,7 +108,7 @@ send mail to <code>bug-cvs-request@gnu.org</code>.
 </p>
 <hr>
 <div id="What-is-CVS-not_003f"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#A-sample-session|A sample session]], Previous: [[#What-is-CVS_003f|What is CVS?]], Up: [[#Overview|Overview]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -263,7 +263,7 @@ only once they have been proven.
 
 <hr>
 <div id="A-sample-session"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#What-is-CVS-not_003f|What is CVS not?]], Up: [[#Overview|Overview]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -295,7 +295,7 @@ called &lsquo;<samp>tc</samp>&rsquo;.
 </nowiki></pre>
 <hr>
 <div id="Getting-the-source"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Committing-your-changes|Committing your changes]], Up: [[#A-sample-session|A sample session]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -332,7 +332,7 @@ you want to edit.  See [cvs: Multiple developers#Multiple-developers Multiple de
 </p>
 <hr>
 <div id="Committing-your-changes"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Cleaning-up|Cleaning up]], Previous: [[#Getting-the-source|Getting the source]], Up: [[#A-sample-session|A sample session]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -398,7 +398,7 @@ this:
 
 <hr>
 <div id="Cleaning-up"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Viewing-differences|Viewing differences]], Previous: [[#Committing-your-changes|Committing your changes]], Up: [[#A-sample-session|A sample session]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -457,7 +457,7 @@ when <code>release</code> asks for confirmation.
 </p>
 <hr>
 <div id="Viewing-differences"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Cleaning-up|Cleaning up]], Up: [[#A-sample-session|A sample session]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -491,7 +491,7 @@ Are you sure you want to release (and delete) directory `tc': y
 </nowiki></pre></td></tr></table>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Cleaning-up|Cleaning up]], Up: [[#A-sample-session|A sample session]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

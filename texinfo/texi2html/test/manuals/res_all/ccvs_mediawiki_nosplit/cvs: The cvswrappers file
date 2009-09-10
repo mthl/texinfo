@@ -1,5 +1,5 @@
 <div id="Wrappers"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: The commit support files#commit-files commit files], Previous: [cvs: The modules file#modules modules], Up: [cvs: Reference manual for Administrative files#Administrative-files Administrative files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -60,7 +60,7 @@ directory, treating files whose name ends in
 
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: The commit support files#commit-files commit files], Previous: [cvs: The modules file#modules modules], Up: [cvs: Reference manual for Administrative files#Administrative-files Administrative files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

@@ -1,5 +1,5 @@
 <div id="Adding-and-removing"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -34,7 +34,7 @@ this in <small>CVS</small> vary depending on the situation.
 </nowiki></pre>
 <hr>
 <div id="Adding-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
@@ -133,7 +133,7 @@ later merge the additions to another branch if you want
 </p>
 <hr>
 <div id="Removing-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
@@ -265,7 +265,7 @@ later merge the removals to another branch if you want
 </p>
 <hr>
 <div id="Removing-directories"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Removing-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
@@ -313,7 +313,7 @@ are checking out contains any files in that directory.
 </p>
 <hr>
 <div id="Moving-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Removing-directories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
@@ -348,7 +348,7 @@ directory is even harder.  See section [[#Moving-directories|Moving and renaming
 </nowiki></pre>
 <hr>
 <div id="Outside"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
@@ -393,7 +393,7 @@ information see [cvs: Revisions#Assigning-revisions Assigning revisions].
 </p>
 <hr>
 <div id="Inside"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Outside| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
@@ -448,7 +448,7 @@ commands while you move it.
 
 <hr>
 <div id="Rename-by-copying"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Inside| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
@@ -513,7 +513,7 @@ You cannot easily see the history of the file across the rename.
 
 <hr>
 <div id="Moving-directories"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Rename-by-copying| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
@@ -578,7 +578,7 @@ releases correctly, since they probably depend on the
 name of the directories.
 </p>
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#History-browsing  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

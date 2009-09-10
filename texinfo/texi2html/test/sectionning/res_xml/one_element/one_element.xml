@@ -10,7 +10,7 @@
 <nodenext>An anchor</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>top section</title>
 
 <para><anchor name="An anchor"></anchor>
@@ -47,7 +47,7 @@
 </menuentry></menu>
 
 <para><indexterm index="cp">index entry</indexterm></para>
-</unnumbered>
+</top>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:

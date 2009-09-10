@@ -7,7 +7,7 @@
 <nodenext>First node</nodenext>
 <nodeprev>(dir)</nodeprev>
 </node>
-<unnumbered>
+<top>
 <title></title>
 <menu>
 <menuentry>
@@ -53,7 +53,7 @@ or not ?
 </para>
 </menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>First node</nodename>
 <nodeprev>Top</nodeprev>

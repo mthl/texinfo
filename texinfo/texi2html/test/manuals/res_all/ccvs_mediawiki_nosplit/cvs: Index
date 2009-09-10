@@ -1,5 +1,5 @@
 <div id="Index"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS], Up: [[cvs#Top|Top]] &nbsp; |[[#SEC_Contents|Contents]]||[[#Index|Index]]|</p>
 </div>
@@ -1099,7 +1099,7 @@ Previous: [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS], Up: [[cvs#To
 </div>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS], Up: [[cvs#Top|Top]] &nbsp; |[[#SEC_Contents|Contents]]||[[#Index|Index]]|</p>
 </div>

@@ -1,5 +1,5 @@
 <div id="Builds"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Tracking third-party sources#Multiple-vendor-branches  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -78,7 +78,7 @@ is Odin (see
 <code>ftp://ftp.cs.colorado.edu/pub/distribs/odin</code>).
 </p>
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Special Files#Special-Files  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

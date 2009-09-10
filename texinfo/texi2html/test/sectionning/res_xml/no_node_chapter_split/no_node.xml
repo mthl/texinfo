@@ -12,7 +12,7 @@
 <para>in unnumbered
 </para>
 </unnumbered>
-<unnumbered>
+<top>
 <title>top section</title>
 <para>Top node
 </para>
@@ -23,7 +23,7 @@
 <para>second node
 </para>
 </section>
-</unnumbered>
+</top>
 <chapter>
 <title>Chapter</title>
 

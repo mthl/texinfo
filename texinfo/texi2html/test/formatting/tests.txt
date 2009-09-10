@@ -11,7 +11,7 @@ texi detailmenus.texi
 texi commands_in_ifset.texi
 texi simplest.texi
 texi punctuation.texi
-texi frenchspacing_punctuation.texi
+texi punctuation_frenchspacing.texi
 texi simple_punctuation.texi
 texi def_end_of_line.texi
 texi def_end_of_line_footnote.texi

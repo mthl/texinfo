@@ -8,7 +8,7 @@
 <nodename>Top</nodename>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Test inter item ignored commands</title>
 
 
@@ -109,7 +109,7 @@
 <para>vr
 </para><printindex>vr</printindex>
 
-</unnumbered>
+</top>
 </texinfo>
 <!-- Keep this comment at the end of the file
 Local variables:

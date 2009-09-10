@@ -1,5 +1,5 @@
 <div id="Invoking-CVS"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Reference manual for Administrative files#Administrative-files Administrative files], Previous: [cvs: Guide to CVS commands#CVS-commands CVS commands], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1074,7 +1074,7 @@ is remote, display both the client and server versions.
 </dl>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Reference manual for Administrative files#Administrative-files Administrative files], Previous: [cvs: Guide to CVS commands#CVS-commands CVS commands], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

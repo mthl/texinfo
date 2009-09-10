@@ -1,5 +1,5 @@
 <div id="Binary-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: History browsing#History-browsing  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: History browsing#annotate  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -32,7 +32,7 @@ including both text files and binary images.
 </nowiki></pre>
 <hr>
 <div id="Binary-why"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-files| Up ]]|</td>
@@ -100,7 +100,7 @@ resulting from branches, restrict use of branches.
 </p>
 <hr>
 <div id="Binary-howto"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-why| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-files| Up ]]|</td>
@@ -194,7 +194,7 @@ non-binary files, and the rules to apply would vary
 considerably with the operating system.
 </p>
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

@@ -1,5 +1,5 @@
 <div id="Branching-and-merging"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Revisions#Revisions  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Revisions#Sticky-tags  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -50,7 +50,7 @@ copy the changes onto another branch.
 </nowiki></pre>
 <hr>
 <div id="Branches-motivation"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -89,7 +89,7 @@ the main trunk, or leave them on the branch.
 </p>
 <hr>
 <div id="Creating-a-branch"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branches-motivation| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -156,7 +156,7 @@ by &lsquo;<samp>rel-1-0</samp>&rsquo;.
 </p>
 <hr>
 <div id="Accessing-branches"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Creating-a-branch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -270,7 +270,7 @@ branch numbers are constructed.
 </p>
 <hr>
 <div id="Branches-and-revisions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Accessing-branches| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -353,7 +353,7 @@ special meaning.  See section [cvs: Tracking third-party sources#Tracking-source
 </p>
 <hr>
 <div id="Magic-branch-numbers"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branches-and-revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -417,7 +417,7 @@ no way to see how the tag was assigned yesterday).
 </p>
 <hr>
 <div id="Merging-a-branch"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Magic-branch-numbers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -496,7 +496,7 @@ not produce the desired result.  See section [[#Merging-adds-and-removals|Mergin
 </p>
 <hr>
 <div id="Merging-more-than-once"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-a-branch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -576,7 +576,7 @@ the trunk, and then use that tag for subsequent merges:
 
 <hr>
 <div id="Merging-two-revisions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-more-than-once| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -638,7 +638,7 @@ $
 
 <hr>
 <div id="Merging-adds-and-removals"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-two-revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -687,7 +687,7 @@ to be sure that all intended changes are propagated in the merge.
 </p>
 <hr>
 <div id="Merging-and-keywords"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-adds-and-removals| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -805,7 +805,7 @@ on lines containing RCS keywords, even when your repository contains
 binary files.
 </p>
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Recursive behavior#Recursive-behavior  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

@@ -1,5 +1,5 @@
 <div id="update-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: update output#update-output update output], Up: [cvs: update--Bring work tree in sync with repository#update update] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -139,7 +139,7 @@ date.  An optional date is specified by adding a colon
 </dl>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: update output#update-output update output], Up: [cvs: update--Bring work tree in sync with repository#update update] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

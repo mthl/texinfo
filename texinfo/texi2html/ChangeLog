@@ -6,6 +6,18 @@
 	through get_conf.
 	Handle better bogus uses of @setfilename.
 	* formats/info.init: take @frenchspacing into account.
+	Handle right @. followed by any of )"'] at end of line.
+	* formats/html.init: modify element classes. Change class "toc" 
+	for ul to class "no-bullet" ($NO_BULLET_LIST_ATTRIBUTE). @top 
+	and @centerchap have now their command name as class.
+	@node heading class is now "node-heading", instead of "node".
+	The whole header is in an element with class "header" (was "node" when
+	!$HEADER_IN_TABLE).
+	* examples/,maintained_extra/: separate examples, that are kept
+	in examples/, and init files that are maintained, and installed
+	in the default case and put in maintained_extra/.
+	* examples/style_example.css: Add an example css stylesheet from
+	http://planet.gnu.org/~ams/style.css.
 
 2009-09-09   Patrice Dumas  <dumas@centre-cired.fr>
 

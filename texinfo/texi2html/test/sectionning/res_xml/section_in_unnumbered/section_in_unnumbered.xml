@@ -10,7 +10,7 @@
 <nodenext>chapter</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Test section in unnumbered</title>
 
 <contents></contents>
@@ -45,7 +45,7 @@
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>chapter</nodename>
 <nodenext>unnumbered</nodenext>

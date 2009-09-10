@@ -1,5 +1,5 @@
 <div id="From-other-version-control-systems"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Creating a directory tree from scratch#From-scratch From scratch], Previous: [cvs: Creating a directory tree from a number of files#From-files From files], Up: [cvs: Setting up the files#Setting-up-the-files Setting up the files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -77,7 +77,7 @@ vary).  See the comments in the script for details.
 </dl>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Creating a directory tree from scratch#From-scratch From scratch], Previous: [cvs: Creating a directory tree from a number of files#From-files From files], Up: [cvs: Setting up the files#Setting-up-the-files Setting up the files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

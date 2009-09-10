@@ -23,7 +23,7 @@ An anchor <anchor name="anchor1"></anchor>.
 <nodenext>node1</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>top @top section</title>
 <para>Node top
 </para>
@@ -37,7 +37,7 @@ An anchor <anchor name="anchor1"></anchor>.
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>node1</nodename>
 <nodeprev>Top</nodeprev>

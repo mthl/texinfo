@@ -1,5 +1,5 @@
 <div id="Overview"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[cvs#Top| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| &lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -32,7 +32,7 @@ certain command, you can probably skip everything here.
 </nowiki></pre>
 <hr>
 <div id="What-is-CVS_003f"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| Up ]]|</td>
@@ -130,7 +130,7 @@ send mail to <code>bug-cvs-request@gnu.org</code>.
 </p>
 <hr>
 <div id="What-is-CVS-not_003f"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#What-is-CVS_003f| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| Up ]]|</td>
@@ -296,7 +296,7 @@ only once they have been proven.
 
 <hr>
 <div id="A-sample-session"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#What-is-CVS-not_003f| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| Up ]]|</td>
@@ -339,7 +339,7 @@ called &lsquo;<samp>tc</samp>&rsquo;.
 </nowiki></pre>
 <hr>
 <div id="Getting-the-source"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
@@ -387,7 +387,7 @@ you want to edit.  See section [cvs: Multiple developers#Multiple-developers Mul
 </p>
 <hr>
 <div id="Committing-your-changes"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Getting-the-source| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
@@ -464,7 +464,7 @@ this:
 
 <hr>
 <div id="Cleaning-up"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Committing-your-changes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
@@ -534,7 +534,7 @@ when <code>release</code> asks for confirmation.
 </p>
 <hr>
 <div id="Viewing-differences"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Cleaning-up| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
@@ -579,7 +579,7 @@ Are you sure you want to release (and delete) directory `tc': y
 </nowiki></pre></td></tr></table>
 
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

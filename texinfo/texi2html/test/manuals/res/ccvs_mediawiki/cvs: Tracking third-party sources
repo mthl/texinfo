@@ -1,5 +1,5 @@
 <div id="Tracking-sources"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Keyword substitution#Log-keyword  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -55,7 +55,7 @@ revision.
 </nowiki></pre>
 <hr>
 <div id="First-import"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
@@ -109,7 +109,7 @@ example, and the only release tag assigned is
 </p>
 <hr>
 <div id="Update-imports"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#First-import| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
@@ -166,7 +166,7 @@ should do a merge like this even if <code>import</code> doesn&rsquo;t tell you t
 </p>
 <hr>
 <div id="Reverting-local-changes"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Update-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
@@ -201,7 +201,7 @@ after the &lsquo;<samp>-b</samp>&rsquo;.  See section [cvs: Guide to CVS command
 </p>
 <hr>
 <div id="Binary-files-in-imports"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Reverting-local-changes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
@@ -224,7 +224,7 @@ files are binary.  See section [cvs: Reference manual for Administrative files#W
 </p>
 <hr>
 <div id="Keywords-in-imports"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-files-in-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
@@ -265,7 +265,7 @@ and use the &lsquo;<samp>-k</samp>&rsquo; option to <code>cvs update</code> or
 </p>
 <hr>
 <div id="Multiple-vendor-branches"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keywords-in-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
@@ -325,7 +325,7 @@ an error in some future release.
 </p>
 
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

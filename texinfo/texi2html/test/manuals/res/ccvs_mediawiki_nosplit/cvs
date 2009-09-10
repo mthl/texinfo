@@ -1,6 +1,6 @@
 == CVS&mdash;Concurrent Versions System v4.2 ==
 <div id="Top"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[ &lt; ]</td>
 <td valign="middle" align="left">|[[#Overview| &gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -47,7 +47,7 @@ References.
 </nowiki></pre>
 <hr size="6">
 <div id="Overview"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Top| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -80,7 +80,7 @@ certain command, you can probably skip everything here.
 </nowiki></pre>
 <hr>
 <div id="What-is-CVS_003f"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| Up ]]|</td>
@@ -178,7 +178,7 @@ send mail to <code>bug-cvs-request@gnu.org</code>.
 </p>
 <hr>
 <div id="What-is-CVS-not_003f"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#What-is-CVS_003f| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| Up ]]|</td>
@@ -344,7 +344,7 @@ only once they have been proven.
 
 <hr>
 <div id="A-sample-session"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#What-is-CVS-not_003f| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| Up ]]|</td>
@@ -387,7 +387,7 @@ called &lsquo;<samp>tc</samp>&rsquo;.
 </nowiki></pre>
 <hr>
 <div id="Getting-the-source"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
@@ -435,7 +435,7 @@ you want to edit.  See section [[#Multiple-developers|Multiple developers]], for
 </p>
 <hr>
 <div id="Committing-your-changes"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Getting-the-source| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
@@ -512,7 +512,7 @@ this:
 
 <hr>
 <div id="Cleaning-up"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Committing-your-changes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
@@ -582,7 +582,7 @@ when <code>release</code> asks for confirmation.
 </p>
 <hr>
 <div id="Viewing-differences"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Cleaning-up| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
@@ -628,7 +628,7 @@ Are you sure you want to release (and delete) directory `tc': y
 
 <hr>
 <div id="Repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Viewing-differences| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -712,7 +712,7 @@ user-defined modules.
 </nowiki></pre>
 <hr>
 <div id="Specifying-a-repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -777,7 +777,7 @@ should be two ways of referring to the same repository.
 </p>
 <hr>
 <div id="Repository-storage"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Specifying-a-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -819,7 +819,7 @@ the file permissions appropriate for the repository.
 </nowiki></pre>
 <hr>
 <div id="Repository-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -930,7 +930,7 @@ rules see [[#Tags|Tags&ndash;Symbolic revisions]].
 </p>
 <hr>
 <div id="File-permissions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -1042,7 +1042,7 @@ carefully if you are considering this option
 </p>
 <hr>
 <div id="Windows-permissions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#File-permissions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -1083,7 +1083,7 @@ something out, please let us know as described in
 </p>
 <hr>
 <div id="Attic"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Windows-permissions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -1132,7 +1132,7 @@ non-<code>dead</code> state.
 </p>
 <hr>
 <div id="CVS-in-repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Attic| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -1241,7 +1241,7 @@ there must be a single tab character there and no spaces.
 </p>
 <hr>
 <div id="Locks"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-in-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -1334,7 +1334,7 @@ further discussion/rationale.
 </p>
 <hr>
 <div id="CVSROOT-storage"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Locks| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -1400,7 +1400,7 @@ administrative files, see [[#Administrative-files|Reference manual for Administr
 </p>
 <hr>
 <div id="Working-directory-storage"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVSROOT-storage| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -1707,7 +1707,7 @@ by the client; the non-client/server <small>CVS</small> consults
 
 <hr>
 <div id="Intro-administrative-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Working-directory-storage| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -1763,7 +1763,7 @@ available features.
 </p>
 <hr>
 <div id="Editing-administrative-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Intro-administrative-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Intro-administrative-files| Up ]]|</td>
@@ -1794,7 +1794,7 @@ revisions.
 </p>
 <hr>
 <div id="Multiple-repositories"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Editing-administrative-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -1855,7 +1855,7 @@ and server1, to update everything else.
 
 <hr>
 <div id="Creating-a-repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-repositories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -1926,7 +1926,7 @@ don&rsquo;t want that, remove the history file after running
 </p>
 <hr>
 <div id="Backing-up"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Creating-a-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -1997,7 +1997,7 @@ the changes into the repository.
 
 <hr>
 <div id="Moving-a-repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Backing-up| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -2041,7 +2041,7 @@ isn&rsquo;t worth it.
 </p>
 <hr>
 <div id="Remote-repositories"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-a-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -2106,7 +2106,7 @@ described in [[#Connecting-via-rsh|Connecting with rsh]].
 </nowiki></pre>
 <hr>
 <div id="Server-requirements"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
@@ -2180,7 +2180,7 @@ trouble.
 </p>
 <hr>
 <div id="Connecting-via-rsh"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Server-requirements| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
@@ -2277,7 +2277,7 @@ the same on both the local and remote hosts.)
 
 <hr>
 <div id="Password-authenticated"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Connecting-via-rsh| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
@@ -2310,7 +2310,7 @@ some adjustments on both the server and client sides.
 </nowiki></pre>
 <hr>
 <div id="Password-authentication-server"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authenticated| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
@@ -2618,7 +2618,7 @@ want to include the &lsquo;<tt>passwd</tt>&rsquo; file in checkouts of
 
 <hr>
 <div id="Password-authentication-client"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authentication-server| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
@@ -2726,7 +2726,7 @@ removed from the <code>CVS_PASSFILE</code> by using the
 </p>
 <hr>
 <div id="Password-authentication-security"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authentication-client| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
@@ -2784,7 +2784,7 @@ security, get Kerberos.
 </p>
 <hr>
 <div id="GSSAPI-authenticated"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authentication-security| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
@@ -2853,7 +2853,7 @@ example,
 
 <hr>
 <div id="Kerberos-authenticated"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#GSSAPI-authenticated| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
@@ -2921,7 +2921,7 @@ connection via rsh; this version will not do so.
 </p>
 <hr>
 <div id="Connecting-via-fork"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Kerberos-authenticated| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
@@ -2972,7 +2972,7 @@ environment variable.
 </p>
 <hr>
 <div id="Read_002donly-access"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Connecting-via-fork| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -3074,7 +3074,7 @@ read-only access.
 </p>
 <hr>
 <div id="Server-temporary-directory"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Read_002donly-access| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -3134,7 +3134,7 @@ number <var>pid</var>, it is safe to do so.
 </p>
 <hr>
 <div id="Starting-a-new-project"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Server-temporary-directory| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -3170,7 +3170,7 @@ directories.  See section [[#Moving-files|Moving and renaming files]].
 </nowiki></pre>
 <hr>
 <div id="Setting-up-the-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Starting-a-new-project| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Starting-a-new-project| Up ]]|</td>
@@ -3199,7 +3199,7 @@ be done in a couple of different ways.
 </nowiki></pre>
 <hr>
 <div id="From-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Setting-up-the-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Setting-up-the-files| Up ]]|</td>
@@ -3268,7 +3268,7 @@ files are binary and which are not.  See section [[#Wrappers|The cvswrappers fil
 </p>
 <hr>
 <div id="From-other-version-control-systems"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#From-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Setting-up-the-files| Up ]]|</td>
@@ -3357,7 +3357,7 @@ vary).  See the comments in the script for details.
 
 <hr>
 <div id="From-scratch"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#From-other-version-control-systems| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Setting-up-the-files| Up ]]|</td>
@@ -3399,7 +3399,7 @@ directories inside <code>$CVSROOT</code> are reasonable.
 </p>
 <hr>
 <div id="Defining-the-module"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#From-scratch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Starting-a-new-project| Up ]]|</td>
@@ -3460,7 +3460,7 @@ $ cvs release -d CVSROOT
 
 <hr>
 <div id="Revisions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Defining-the-module| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -3503,7 +3503,7 @@ numeric revision in each file.
 </nowiki></pre>
 <hr>
 <div id="Revision-numbers"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -3551,7 +3551,7 @@ are explained in detail in [[#Branches-and-revisions|Branches and revisions]].
 </p>
 <hr>
 <div id="Versions-revisions-releases"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revision-numbers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -3584,7 +3584,7 @@ called <em>releases</em>.  To avoid confusion, the word
 </p>
 <hr>
 <div id="Assigning-revisions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Versions-revisions-releases| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -3641,7 +3641,7 @@ parallel, you need to use a branch (see section [[#Branching-and-merging|Branchi
 </p>
 <hr>
 <div id="Tags"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Assigning-revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -3816,7 +3816,7 @@ like this:
 
 <hr>
 <div id="Tagging-the-working-directory"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tags| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -3865,7 +3865,7 @@ cvs [tag aborted]: correct the above errors first!
 
 <hr>
 <div id="Tagging-by-date_002ftag"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-the-working-directory| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -3925,7 +3925,7 @@ rtag</code>.  The exceptions might be cases like:
 
 <hr>
 <div id="Modifying-tags"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-by-date_002ftag| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -4033,7 +4033,7 @@ cvs rtag -d old-name-0-4 tc
 
 <hr>
 <div id="Tagging-add_002fremove"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Modifying-tags| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -4085,7 +4085,7 @@ necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 </p>
 <hr>
 <div id="Sticky-tags"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-add_002fremove| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -4188,7 +4188,7 @@ discussion see [[#Merging-two-revisions|Merging differences between any two revi
 </p>
 <hr>
 <div id="Branching-and-merging"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Sticky-tags| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -4239,7 +4239,7 @@ copy the changes onto another branch.
 </nowiki></pre>
 <hr>
 <div id="Branches-motivation"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -4278,7 +4278,7 @@ the main trunk, or leave them on the branch.
 </p>
 <hr>
 <div id="Creating-a-branch"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branches-motivation| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -4345,7 +4345,7 @@ by &lsquo;<samp>rel-1-0</samp>&rsquo;.
 </p>
 <hr>
 <div id="Accessing-branches"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Creating-a-branch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -4459,7 +4459,7 @@ branch numbers are constructed.
 </p>
 <hr>
 <div id="Branches-and-revisions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Accessing-branches| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -4542,7 +4542,7 @@ special meaning.  See section [[#Tracking-sources|Tracking third-party sources]]
 </p>
 <hr>
 <div id="Magic-branch-numbers"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branches-and-revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -4606,7 +4606,7 @@ no way to see how the tag was assigned yesterday).
 </p>
 <hr>
 <div id="Merging-a-branch"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Magic-branch-numbers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -4685,7 +4685,7 @@ not produce the desired result.  See section [[#Merging-adds-and-removals|Mergin
 </p>
 <hr>
 <div id="Merging-more-than-once"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-a-branch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -4765,7 +4765,7 @@ the trunk, and then use that tag for subsequent merges:
 
 <hr>
 <div id="Merging-two-revisions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-more-than-once| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -4827,7 +4827,7 @@ $
 
 <hr>
 <div id="Merging-adds-and-removals"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-two-revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -4876,7 +4876,7 @@ to be sure that all intended changes are propagated in the merge.
 </p>
 <hr>
 <div id="Merging-and-keywords"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-adds-and-removals| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Branching-and-merging| Up ]]|</td>
@@ -4995,7 +4995,7 @@ binary files.
 </p>
 <hr>
 <div id="Recursive-behavior"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching-and-merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Merging-and-keywords| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -5083,7 +5083,7 @@ Conversely, the &lsquo;<samp>-R</samp>&rsquo; option can be used to force recurs
 
 <hr>
 <div id="Adding-and-removing"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Recursive-behavior| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Recursive-behavior| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -5118,7 +5118,7 @@ this in <small>CVS</small> vary depending on the situation.
 </nowiki></pre>
 <hr>
 <div id="Adding-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
@@ -5217,7 +5217,7 @@ later merge the additions to another branch if you want
 </p>
 <hr>
 <div id="Removing-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
@@ -5349,7 +5349,7 @@ later merge the removals to another branch if you want
 </p>
 <hr>
 <div id="Removing-directories"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Removing-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
@@ -5397,7 +5397,7 @@ are checking out contains any files in that directory.
 </p>
 <hr>
 <div id="Moving-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Removing-directories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
@@ -5432,7 +5432,7 @@ directory is even harder.  See section [[#Moving-directories|Moving and renaming
 </nowiki></pre>
 <hr>
 <div id="Outside"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
@@ -5477,7 +5477,7 @@ information see [[#Assigning-revisions|Assigning revisions]].
 </p>
 <hr>
 <div id="Inside"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Outside| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
@@ -5532,7 +5532,7 @@ commands while you move it.
 
 <hr>
 <div id="Rename-by-copying"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Inside| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-files| Up ]]|</td>
@@ -5597,7 +5597,7 @@ You cannot easily see the history of the file across the rename.
 
 <hr>
 <div id="Moving-directories"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Rename-by-copying| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Adding-and-removing| Up ]]|</td>
@@ -5663,7 +5663,7 @@ name of the directories.
 </p>
 <hr>
 <div id="History-browsing"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding-and-removing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-directories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -5697,7 +5697,7 @@ through the history.
 </nowiki></pre>
 <hr>
 <div id="log-messages"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
@@ -5723,7 +5723,7 @@ use the <code>cvs log</code> command (see section [[#log|log&mdash;Print out log
 </p>
 <hr>
 <div id="history-database"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#log-messages| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
@@ -5753,7 +5753,7 @@ history</code> command (see section [[#history|history&mdash;Show status of file
 
 <hr>
 <div id="user_002ddefined-logging"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#history-database| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
@@ -5818,7 +5818,7 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 
 <hr>
 <div id="annotate"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#user_002ddefined-logging| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
@@ -5870,7 +5870,7 @@ in more detail there and in [[#Common-options|Common command options]].
 
 <hr>
 <div id="Binary-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#annotate| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -5903,7 +5903,7 @@ including both text files and binary images.
 </nowiki></pre>
 <hr>
 <div id="Binary-why"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-files| Up ]]|</td>
@@ -5971,7 +5971,7 @@ resulting from branches, restrict use of branches.
 </p>
 <hr>
 <div id="Binary-howto"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-why| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-files| Up ]]|</td>
@@ -6066,7 +6066,7 @@ considerably with the operating system.
 </p>
 <hr>
 <div id="Multiple-developers"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Binary-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-howto| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -6139,7 +6139,7 @@ choosing between them.
 </nowiki></pre>
 <hr>
 <div id="File-status"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -6270,7 +6270,7 @@ these options, see [[#Invoking-CVS|Quick reference to CVS commands]].
 </p>
 <hr>
 <div id="Updating-a-file"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#File-status| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -6321,7 +6321,7 @@ See section [[#update|update&mdash;Bring work tree in sync with repository]], fo
 </p>
 <hr>
 <div id="Conflicts-example"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Updating-a-file| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -6504,7 +6504,7 @@ See the documentation for pcl-cvs.
 </p>
 <hr>
 <div id="Informing-others"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Conflicts-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -6536,7 +6536,7 @@ newsgroup.
 </p>
 <hr>
 <div id="Concurrency"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Informing-others| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -6615,7 +6615,7 @@ the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 </p>
 <hr>
 <div id="Watches"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Concurrency| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -6662,7 +6662,7 @@ but <small>CVS</small> is not able to enforce this behavior.
 </nowiki></pre>
 <hr>
 <div id="Setting-a-watch"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
@@ -6723,7 +6723,7 @@ watch on</code>.
 
 <hr>
 <div id="Getting-Notified"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Setting-a-watch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
@@ -6861,7 +6861,7 @@ changing.
 </p>
 <hr>
 <div id="Editing-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Getting-Notified| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
@@ -6948,7 +6948,7 @@ successful <small>CVS</small> command.
 </p>
 <hr>
 <div id="Watch-information"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Editing-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
@@ -6995,7 +6995,7 @@ containing the file.
 
 <hr>
 <div id="Watches-Compatibility"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watch-information| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
@@ -7035,7 +7035,7 @@ that will restore the repository to a state which
 </p>
 <hr>
 <div id="Choosing-a-model"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches-Compatibility| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -7109,7 +7109,7 @@ checkout worlds.
 </p>
 <hr>
 <div id="Revision-management"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Choosing-a-model| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -7143,7 +7143,7 @@ than one person is working in a repository.
 </nowiki></pre>
 <hr>
 <div id="When-to-commit"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revision-management| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revision-management| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revision-management| Up ]]|</td>
@@ -7189,7 +7189,7 @@ goal, which is to get software written.
 </p>
 <hr>
 <div id="Keyword-substitution"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revision-management| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#When-to-commit| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -7236,7 +7236,7 @@ a new revision of the file.
 </nowiki></pre>
 <hr>
 <div id="Keyword-list"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
@@ -7420,7 +7420,7 @@ the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see
 
 <hr>
 <div id="Using-keywords"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-list| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
@@ -7485,7 +7485,7 @@ magic <small>SCCS</small> phrase, like this:
 
 <hr>
 <div id="Avoiding-substitution"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Using-keywords| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
@@ -7532,7 +7532,7 @@ for use with the <code>LocalKeyword</code> option&ndash;see
 </p>
 <hr>
 <div id="Substitution-modes"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Avoiding-substitution| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
@@ -7631,7 +7631,7 @@ handle an export containing binary files correctly.
 
 <hr>
 <div id="Configuring-keyword-expansion"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Substitution-modes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
@@ -7736,7 +7736,7 @@ recognized.
 </p>
 <hr>
 <div id="Log-keyword"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Configuring-keyword-expansion| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keyword-substitution| Up ]]|</td>
@@ -7782,7 +7782,7 @@ interfere with everyday source file browsing.
 </p>
 <hr>
 <div id="Tracking-sources"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword-substitution| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Log-keyword| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -7838,7 +7838,7 @@ revision.
 </nowiki></pre>
 <hr>
 <div id="First-import"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
@@ -7892,7 +7892,7 @@ example, and the only release tag assigned is
 </p>
 <hr>
 <div id="Update-imports"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#First-import| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
@@ -7949,7 +7949,7 @@ should do a merge like this even if <code>import</code> doesn&rsquo;t tell you t
 </p>
 <hr>
 <div id="Reverting-local-changes"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Update-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
@@ -7984,7 +7984,7 @@ after the &lsquo;<samp>-b</samp>&rsquo;.  See section [[#admin-options|admin opt
 </p>
 <hr>
 <div id="Binary-files-in-imports"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Reverting-local-changes| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
@@ -8007,7 +8007,7 @@ files are binary.  See section [[#Wrappers|The cvswrappers file]].
 </p>
 <hr>
 <div id="Keywords-in-imports"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Binary-files-in-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
@@ -8048,7 +8048,7 @@ and use the &lsquo;<samp>-k</samp>&rsquo; option to <code>cvs update</code> or
 </p>
 <hr>
 <div id="Multiple-vendor-branches"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keywords-in-imports| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tracking-sources| Up ]]|</td>
@@ -8109,7 +8109,7 @@ an error in some future release.
 
 <hr>
 <div id="Builds"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking-sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-vendor-branches| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -8189,7 +8189,7 @@ is Odin (see
 </p>
 <hr>
 <div id="Special-Files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Builds| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Builds| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -8228,7 +8228,7 @@ permissions during repository transactions.
 
 <hr>
 <div id="CVS-commands"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Special-Files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Special-Files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -8270,7 +8270,7 @@ reference to <small>CVS</small> commands, see section [[#Invoking-CVS|Quick refe
 </nowiki></pre>
 <hr>
 <div id="Structure"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -8336,7 +8336,7 @@ the documentation instead.
 </p>
 <hr>
 <div id="Exit-status"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Structure| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -8376,7 +8376,7 @@ other <small>CVS</small> commands.
 </p>
 <hr>
 <div id="g_t_007e_002f_002ecvsrc"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Exit-status| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -8454,7 +8454,7 @@ example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 </p>
 <hr>
 <div id="Global-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#g_t_007e_002f_002ecvsrc| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -8656,7 +8656,7 @@ Only has an effect on the <small>CVS</small> client.
 
 <hr>
 <div id="Common-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Global-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -8913,7 +8913,7 @@ and <code>update</code>.
 
 <hr>
 <div id="admin"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Common-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -8970,7 +8970,7 @@ can run <code>cvs admin</code>.
 </nowiki></pre>
 <hr>
 <div id="admin-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#admin| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#admin| Up ]]|</td>
@@ -9320,7 +9320,7 @@ this option has never done anything useful.
 
 <hr>
 <div id="checkout"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#admin-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -9414,7 +9414,7 @@ see [[#update-output|update output]].
 </nowiki></pre>
 <hr>
 <div id="checkout-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout| Up ]]|</td>
@@ -9575,7 +9575,7 @@ modules file to set the module status.
 
 <hr>
 <div id="checkout-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout| Up ]]|</td>
@@ -9606,7 +9606,7 @@ ago:
 
 <hr>
 <div id="commit"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -9676,7 +9676,7 @@ that the argument file contains the log message.
 </nowiki></pre>
 <hr>
 <div id="commit-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit| Up ]]|</td>
@@ -9751,7 +9751,7 @@ invoking an editor.
 
 <hr>
 <div id="commit-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit| Up ]]|</td>
@@ -9772,7 +9772,7 @@ invoking an editor.
 
 <hr>
 <div id="Committing-to-a-branch"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-examples| Up ]]|</td>
@@ -9815,7 +9815,7 @@ sticky.
 </p>
 <hr>
 <div id="Creating-the-branch-after-editing"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Committing-to-a-branch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-examples| Up ]]|</td>
@@ -9874,7 +9874,7 @@ would simply do
 
 <hr>
 <div id="diff"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Creating-the-branch-after-editing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -9919,7 +9919,7 @@ under them will be compared.
 </nowiki></pre>
 <hr>
 <div id="diff-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff| Up ]]|</td>
@@ -10258,7 +10258,7 @@ context.
 </nowiki></pre>
 <hr>
 <div id="Line-group-formats"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-options| Up ]]|</td>
@@ -10460,7 +10460,7 @@ otherwise.
 
 <hr>
 <div id="Line-formats"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Line-group-formats| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-options| Up ]]|</td>
@@ -10591,7 +10591,7 @@ to get fine control over <code>diff</code>&rsquo;s output.
 
 <hr>
 <div id="diff-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Line-formats| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff| Up ]]|</td>
@@ -10641,7 +10641,7 @@ not yet been committed will be printed.
 
 <hr>
 <div id="export"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -10694,7 +10694,7 @@ use &lsquo;<samp>-kv</samp>&rsquo;.
 </nowiki></pre>
 <hr>
 <div id="export-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#export| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#export| Up ]]|</td>
@@ -10768,7 +10768,7 @@ See section [[#checkout-options|checkout options]], for complete details on how
 
 <hr>
 <div id="history"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#export-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -10813,7 +10813,7 @@ normal use inside <small>CVS</small> (see section [[#Common-options|Common comma
 </nowiki></pre>
 <hr>
 <div id="history-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#history| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#history| Up ]]|</td>
@@ -10999,7 +10999,7 @@ time zone instead of UTC.
 
 <hr>
 <div id="import"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#history-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -11086,7 +11086,7 @@ directory (see section [[#Getting-the-source|Getting the source]]).
 </nowiki></pre>
 <hr>
 <div id="import-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#import| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import| Up ]]|</td>
@@ -11152,7 +11152,7 @@ file. See section [[#Wrappers|The cvswrappers file]].
 
 <hr>
 <div id="import-output"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import| Up ]]|</td>
@@ -11207,7 +11207,7 @@ see section [[#modules|The modules file]].)
 
 <hr>
 <div id="import-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-output| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import| Up ]]|</td>
@@ -11229,7 +11229,7 @@ see section [[#modules|The modules file]].)
 </p>
 <hr>
 <div id="log"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -11283,7 +11283,7 @@ with the normal use inside <small>CVS</small> (see section [[#Common-options|Com
 </nowiki></pre>
 <hr>
 <div id="log-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#log| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log| Up ]]|</td>
@@ -11456,7 +11456,7 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 </p>
 <hr>
 <div id="log-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#log-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log| Up ]]|</td>
@@ -11478,7 +11478,7 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 </p>
 <hr>
 <div id="rdiff"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#log-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -11534,7 +11534,7 @@ the files that are located in other directories.
 </nowiki></pre>
 <hr>
 <div id="rdiff-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff| Up ]]|</td>
@@ -11620,7 +11620,7 @@ way that <small>RCS</small> version 5 does.
 
 <hr>
 <div id="rdiff-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff| Up ]]|</td>
@@ -11662,7 +11662,7 @@ File bar.h,v changed from revision 1.29.2.1 to 1.2
 
 <hr>
 <div id="release"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -11717,7 +11717,7 @@ history log.
 </nowiki></pre>
 <hr>
 <div id="release-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#release| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release| Up ]]|</td>
@@ -11755,7 +11755,7 @@ if it is non-empty!</strong>
 
 <hr>
 <div id="release-output"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release| Up ]]|</td>
@@ -11816,7 +11816,7 @@ sources, this file will be lost.
 
 <hr>
 <div id="release-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-output| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release| Up ]]|</td>
@@ -11847,7 +11847,7 @@ $
 
 <hr>
 <div id="update"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -11893,7 +11893,7 @@ into any destination revisions specified with <code>-r</code>,
 </nowiki></pre>
 <hr>
 <div id="update-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#update| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#update| Up ]]|</td>
@@ -12044,7 +12044,7 @@ date.  An optional date is specified by adding a colon
 
 <hr>
 <div id="update-output"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#update-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#update| Up ]]|</td>
@@ -12143,7 +12143,7 @@ see section [[#cvsignore|Ignoring files via cvsignore]]).
 
 <hr>
 <div id="Invoking-CVS"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#update-output| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -13229,7 +13229,7 @@ is remote, display both the client and server versions.
 
 <hr>
 <div id="Administrative-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Invoking-CVS| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Invoking-CVS| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -13274,7 +13274,7 @@ file, which defines the modules inside the repository.
 </nowiki></pre>
 <hr>
 <div id="modules"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
@@ -13327,7 +13327,7 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
 </nowiki></pre>
 <hr>
 <div id="Alias-modules"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| Up ]]|</td>
@@ -13386,7 +13386,7 @@ U first-dir/sdir/sfile
 
 <hr>
 <div id="Regular-modules"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Alias-modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| Up ]]|</td>
@@ -13457,7 +13457,7 @@ $
 
 <hr>
 <div id="Ampersand-modules"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Regular-modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| Up ]]|</td>
@@ -13524,7 +13524,7 @@ a future release of <small>CVS</small>.
 
 <hr>
 <div id="Excluding-directories"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Ampersand-modules| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| Up ]]|</td>
@@ -13559,7 +13559,7 @@ the subdirectory &lsquo;<samp>first-dir/sdir</samp>&rsquo;.
 </p>
 <hr>
 <div id="Module-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Excluding-directories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| Up ]]|</td>
@@ -13638,7 +13638,7 @@ that taginfo is a better solution (see section [[#user_002ddefined-logging|User-
 
 <hr>
 <div id="Module-program-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Module-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#modules| Up ]]|</td>
@@ -13678,7 +13678,7 @@ completed.
 
 <hr>
 <div id="Wrappers"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Module-program-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
@@ -13750,7 +13750,7 @@ directory, treating files whose name ends in
 
 <hr>
 <div id="commit-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Wrappers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
@@ -13823,7 +13823,7 @@ imagination is the limit!
 </nowiki></pre>
 <hr>
 <div id="syntax"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
@@ -13877,7 +13877,7 @@ is used as a file name or command-line as appropriate.
 
 <hr>
 <div id="commitinfo"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#syntax| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
@@ -13953,7 +13953,7 @@ to the command.
 
 <hr>
 <div id="verifymsg"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#commitinfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
@@ -14107,7 +14107,7 @@ fi
 
 <hr>
 <div id="editinfo"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#verifymsg| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
@@ -14186,7 +14186,7 @@ There is no good workaround for this; use
 </nowiki></pre>
 <hr>
 <div id="editinfo-example"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#editinfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#editinfo| Up ]]|</td>
@@ -14251,7 +14251,7 @@ done
 
 <hr>
 <div id="loginfo"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#editinfo-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-files| Up ]]|</td>
@@ -14351,7 +14351,7 @@ name of the repository will be generated.
 </nowiki></pre>
 <hr>
 <div id="loginfo-example"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#loginfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#loginfo| Up ]]|</td>
@@ -14395,7 +14395,7 @@ like this:
 
 <hr>
 <div id="Keeping-a-checked-out-copy"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#loginfo-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#loginfo| Up ]]|</td>
@@ -14441,7 +14441,7 @@ out tree in &lsquo;<tt>/u/www/local-docs</tt>&rsquo;.
 </p>
 <hr>
 <div id="rcsinfo"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Keeping-a-checked-out-copy| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
@@ -14503,7 +14503,7 @@ be updated from the server.
 </p>
 <hr>
 <div id="cvsignore"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#rcsinfo| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
@@ -14615,7 +14615,7 @@ way to specify comments.
 </p>
 <hr>
 <div id="checkoutlist"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#cvsignore| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
@@ -14675,7 +14675,7 @@ more general context than the one provided by
 </p>
 <hr>
 <div id="history-file"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkoutlist| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
@@ -14710,7 +14710,7 @@ format changes with future releases of <small>CVS</small>.
 </p>
 <hr>
 <div id="Variables"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#history-file| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
@@ -14857,7 +14857,7 @@ Do not confuse this with the internal variable of the same name.
 
 <hr>
 <div id="config"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Variables| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Administrative-files| Up ]]|</td>
@@ -15014,7 +15014,7 @@ replace the log message, use &lsquo;<samp>UserAdminOptions=klum</samp>&rsquo;.
 
 <hr>
 <div id="Environment-variables"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Administrative-files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#config| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -15250,7 +15250,7 @@ files.
 
 <hr>
 <div id="Compatibility"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Environment-variables| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Environment-variables| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -15293,7 +15293,7 @@ advantage of new features and bugfixes, however.
 
 <hr>
 <div id="Troubleshooting"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Compatibility| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Compatibility| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -15325,7 +15325,7 @@ mentioned there.
 
 <hr>
 <div id="Error-messages"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Troubleshooting| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Troubleshooting| Up ]]|</td>
@@ -15737,7 +15737,7 @@ exit 0
 
 <hr>
 <div id="Connection"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Error-messages| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Troubleshooting| Up ]]|</td>
@@ -15885,7 +15885,7 @@ others allow you to set the limit for each service separately.)
 
 <hr>
 <div id="Other-problems"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Connection| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Troubleshooting| Up ]]|</td>
@@ -15929,7 +15929,7 @@ programs.
 
 <hr>
 <div id="Credits"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Troubleshooting| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Other-problems| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -15989,7 +15989,7 @@ distribution.
 </p>
 <hr>
 <div id="BUGS"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Credits| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Credits| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -16107,7 +16107,7 @@ comprehensive, detailed list of known bugs.
 </p>
 <hr>
 <div id="Index"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#BUGS| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#BUGS| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top| Up ]]|</td>
@@ -16908,7 +16908,7 @@ comprehensive, detailed list of known bugs.
 
 <hr size="6">
 <div id="SEC_Contents"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Top|Top]]|</td>
 <td valign="middle" align="left">|[[#SEC_Contents|Contents]]|</td>
 <td valign="middle" align="left">|[[#Index|Index]]|</td>
@@ -17195,7 +17195,7 @@ comprehensive, detailed list of known bugs.
 </div>
 <hr>
 <div id="SEC_Overview"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Top|Top]]|</td>
 <td valign="middle" align="left">|[[#SEC_Contents|Contents]]|</td>
 <td valign="middle" align="left">|[[#Index|Index]]|</td>
@@ -17232,7 +17232,7 @@ comprehensive, detailed list of known bugs.
 </div>
 <hr>
 <div id="SEC_About"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Top|Top]]|</td>
 <td valign="middle" align="left">|[[#SEC_Contents|Contents]]|</td>
 <td valign="middle" align="left">|[[#Index|Index]]|</td>

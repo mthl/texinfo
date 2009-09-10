@@ -1,5 +1,5 @@
 <div id="Multiple-developers"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Handling binary files#Binary-howto  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -72,7 +72,7 @@ choosing between them.
 </nowiki></pre>
 <hr>
 <div id="File-status"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -203,7 +203,7 @@ these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Quick refe
 </p>
 <hr>
 <div id="Updating-a-file"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#File-status| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -254,7 +254,7 @@ See section [cvs: Guide to CVS commands#update update&mdash;Bring work tree in s
 </p>
 <hr>
 <div id="Conflicts-example"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Updating-a-file| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -437,7 +437,7 @@ See the documentation for pcl-cvs.
 </p>
 <hr>
 <div id="Informing-others"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Conflicts-example| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -469,7 +469,7 @@ newsgroup.
 </p>
 <hr>
 <div id="Concurrency"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Informing-others| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -548,7 +548,7 @@ the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 </p>
 <hr>
 <div id="Watches"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Concurrency| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -595,7 +595,7 @@ but <small>CVS</small> is not able to enforce this behavior.
 </nowiki></pre>
 <hr>
 <div id="Setting-a-watch"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
@@ -656,7 +656,7 @@ watch on</code>.
 
 <hr>
 <div id="Getting-Notified"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Setting-a-watch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
@@ -794,7 +794,7 @@ changing.
 </p>
 <hr>
 <div id="Editing-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Getting-Notified| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
@@ -881,7 +881,7 @@ successful <small>CVS</small> command.
 </p>
 <hr>
 <div id="Watch-information"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Editing-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
@@ -928,7 +928,7 @@ containing the file.
 
 <hr>
 <div id="Watches-Compatibility"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watch-information| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches| Up ]]|</td>
@@ -968,7 +968,7 @@ that will restore the repository to a state which
 </p>
 <hr>
 <div id="Choosing-a-model"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Watches-Compatibility| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-developers| Up ]]|</td>
@@ -1041,7 +1041,7 @@ best of both the reserved checkout and unreserved
 checkout worlds.
 </p>
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple-developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Revision management#Revision-management  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

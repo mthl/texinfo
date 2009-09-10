@@ -1,5 +1,5 @@
 <div id="checkout"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: commit--Check files into the repository#commit commit], Previous: [cvs: admin--Administration#admin admin], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -82,7 +82,7 @@ see [cvs: update output#update-output update output].
 </nowiki>&bull;[cvs: checkout examples#checkout-examples  checkout examples]::<nowiki>           checkout examples
 </nowiki></pre>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: commit--Check files into the repository#commit commit], Previous: [cvs: admin--Administration#admin admin], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

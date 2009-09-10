@@ -1,5 +1,5 @@
 <div id="Revisions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Defining-the-module  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -42,7 +42,7 @@ numeric revision in each file.
 </nowiki></pre>
 <hr>
 <div id="Revision-numbers"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -90,7 +90,7 @@ are explained in detail in [cvs: Branching and merging#Branches-and-revisions Br
 </p>
 <hr>
 <div id="Versions-revisions-releases"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revision-numbers| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -123,7 +123,7 @@ called <em>releases</em>.  To avoid confusion, the word
 </p>
 <hr>
 <div id="Assigning-revisions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Versions-revisions-releases| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -180,7 +180,7 @@ parallel, you need to use a branch (see section [cvs: Branching and merging#Bran
 </p>
 <hr>
 <div id="Tags"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Assigning-revisions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -355,7 +355,7 @@ like this:
 
 <hr>
 <div id="Tagging-the-working-directory"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tags| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -404,7 +404,7 @@ cvs [tag aborted]: correct the above errors first!
 
 <hr>
 <div id="Tagging-by-date_002ftag"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-the-working-directory| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -464,7 +464,7 @@ rtag</code>.  The exceptions might be cases like:
 
 <hr>
 <div id="Modifying-tags"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-by-date_002ftag| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -572,7 +572,7 @@ cvs rtag -d old-name-0-4 tc
 
 <hr>
 <div id="Tagging-add_002fremove"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Modifying-tags| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -624,7 +624,7 @@ necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 </p>
 <hr>
 <div id="Sticky-tags"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Tagging-add_002fremove| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Revisions| Up ]]|</td>
@@ -726,7 +726,7 @@ how to undo a previous checkin (in this example, put
 discussion see [cvs: Branching and merging#Merging-two-revisions Merging differences between any two revisions].
 </p>
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

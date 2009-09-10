@@ -1,5 +1,5 @@
 <div id="Merging-and-keywords"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [cvs: Merging can add or remove files#Merging-adds-and-removals Merging adds and removals], Up: [cvs: Branching and merging#Branching-and-merging Branching and merging] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -107,7 +107,7 @@ on lines containing RCS keywords, even when your repository contains
 binary files.
 </p>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [cvs: Merging can add or remove files#Merging-adds-and-removals Merging adds and removals], Up: [cvs: Branching and merging#Branching-and-merging Branching and merging] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

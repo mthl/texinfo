@@ -1,5 +1,5 @@
 <div id="Starting-a-new-project"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Revisions#Revisions Revisions], Previous: [cvs: The Repository#Repository Repository], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -24,7 +24,7 @@ directories.  See [cvs: Adding, removing, and renaming files and directories#Mov
 </nowiki></pre>
 <hr>
 <div id="Setting-up-the-files"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Defining-the-module|Defining the module]], Up: [[#Starting-a-new-project|Starting a new project]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -42,7 +42,7 @@ be done in a couple of different ways.
 </nowiki></pre>
 <hr>
 <div id="From-files"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#From-other-version-control-systems|From other version control systems]], Up: [[#Setting-up-the-files|Setting up the files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -100,7 +100,7 @@ files are binary and which are not.  See [cvs: Reference manual for Administrati
 </p>
 <hr>
 <div id="From-other-version-control-systems"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#From-scratch|From scratch]], Previous: [[#From-files|From files]], Up: [[#Setting-up-the-files|Setting up the files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -178,7 +178,7 @@ vary).  See the comments in the script for details.
 
 <hr>
 <div id="From-scratch"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#From-other-version-control-systems|From other version control systems]], Up: [[#Setting-up-the-files|Setting up the files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -209,7 +209,7 @@ directories inside <code>$CVSROOT</code> are reasonable.
 </p>
 <hr>
 <div id="Defining-the-module"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Setting-up-the-files|Setting up the files]], Up: [[#Starting-a-new-project|Starting a new project]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -258,7 +258,7 @@ $ cvs release -d CVSROOT
 </li></ol>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Setting-up-the-files|Setting up the files]], Up: [[#Starting-a-new-project|Starting a new project]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

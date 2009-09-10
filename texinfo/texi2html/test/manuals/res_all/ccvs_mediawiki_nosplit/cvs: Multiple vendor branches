@@ -1,5 +1,5 @@
 <div id="Multiple-vendor-branches"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [cvs: How to handle keyword substitution with cvs import#Keywords-in-imports Keywords in imports], Up: [cvs: Tracking third-party sources#Tracking-sources Tracking sources] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -49,7 +49,7 @@ an error in some future release.
 </p>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [cvs: How to handle keyword substitution with cvs import#Keywords-in-imports Keywords in imports], Up: [cvs: Tracking third-party sources#Tracking-sources Tracking sources] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

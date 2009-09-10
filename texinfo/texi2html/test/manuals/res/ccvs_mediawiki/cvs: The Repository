@@ -1,5 +1,5 @@
 <div id="Repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Overview#Overview  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Overview#Viewing-differences  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -83,7 +83,7 @@ user-defined modules.
 </nowiki></pre>
 <hr>
 <div id="Specifying-a-repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -148,7 +148,7 @@ should be two ways of referring to the same repository.
 </p>
 <hr>
 <div id="Repository-storage"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Specifying-a-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -190,7 +190,7 @@ the file permissions appropriate for the repository.
 </nowiki></pre>
 <hr>
 <div id="Repository-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -301,7 +301,7 @@ rules see [cvs: Revisions#Tags Tags&ndash;Symbolic revisions].
 </p>
 <hr>
 <div id="File-permissions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -413,7 +413,7 @@ carefully if you are considering this option
 </p>
 <hr>
 <div id="Windows-permissions"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#File-permissions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -454,7 +454,7 @@ something out, please let us know as described in
 </p>
 <hr>
 <div id="Attic"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Windows-permissions| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -503,7 +503,7 @@ non-<code>dead</code> state.
 </p>
 <hr>
 <div id="CVS-in-repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Attic| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -612,7 +612,7 @@ there must be a single tab character there and no spaces.
 </p>
 <hr>
 <div id="Locks"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-in-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -705,7 +705,7 @@ further discussion/rationale.
 </p>
 <hr>
 <div id="CVSROOT-storage"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Locks| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository-storage| Up ]]|</td>
@@ -771,7 +771,7 @@ administrative files, see [cvs: Reference manual for Administrative files#Admini
 </p>
 <hr>
 <div id="Working-directory-storage"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVSROOT-storage| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -1078,7 +1078,7 @@ by the client; the non-client/server <small>CVS</small> consults
 
 <hr>
 <div id="Intro-administrative-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Working-directory-storage| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -1134,7 +1134,7 @@ available features.
 </p>
 <hr>
 <div id="Editing-administrative-files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Intro-administrative-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Intro-administrative-files| Up ]]|</td>
@@ -1165,7 +1165,7 @@ revisions.
 </p>
 <hr>
 <div id="Multiple-repositories"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Editing-administrative-files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -1226,7 +1226,7 @@ and server1, to update everything else.
 
 <hr>
 <div id="Creating-a-repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Multiple-repositories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -1297,7 +1297,7 @@ don&rsquo;t want that, remove the history file after running
 </p>
 <hr>
 <div id="Backing-up"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Creating-a-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -1368,7 +1368,7 @@ the changes into the repository.
 
 <hr>
 <div id="Moving-a-repository"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Backing-up| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -1412,7 +1412,7 @@ isn&rsquo;t worth it.
 </p>
 <hr>
 <div id="Remote-repositories"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Moving-a-repository| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -1477,7 +1477,7 @@ described in [[#Connecting-via-rsh|Connecting with rsh]].
 </nowiki></pre>
 <hr>
 <div id="Server-requirements"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
@@ -1551,7 +1551,7 @@ trouble.
 </p>
 <hr>
 <div id="Connecting-via-rsh"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Server-requirements| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
@@ -1648,7 +1648,7 @@ the same on both the local and remote hosts.)
 
 <hr>
 <div id="Password-authenticated"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Connecting-via-rsh| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
@@ -1681,7 +1681,7 @@ some adjustments on both the server and client sides.
 </nowiki></pre>
 <hr>
 <div id="Password-authentication-server"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authenticated| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
@@ -1989,7 +1989,7 @@ want to include the &lsquo;<tt>passwd</tt>&rsquo; file in checkouts of
 
 <hr>
 <div id="Password-authentication-client"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authentication-server| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
@@ -2097,7 +2097,7 @@ removed from the <code>CVS_PASSFILE</code> by using the
 </p>
 <hr>
 <div id="Password-authentication-security"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authentication-client| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authenticated| Up ]]|</td>
@@ -2155,7 +2155,7 @@ security, get Kerberos.
 </p>
 <hr>
 <div id="GSSAPI-authenticated"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Password-authentication-security| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
@@ -2224,7 +2224,7 @@ example,
 
 <hr>
 <div id="Kerberos-authenticated"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#GSSAPI-authenticated| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
@@ -2292,7 +2292,7 @@ connection via rsh; this version will not do so.
 </p>
 <hr>
 <div id="Connecting-via-fork"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Kerberos-authenticated| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Remote-repositories| Up ]]|</td>
@@ -2343,7 +2343,7 @@ environment variable.
 </p>
 <hr>
 <div id="Read_002donly-access"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Connecting-via-fork| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -2445,7 +2445,7 @@ read-only access.
 </p>
 <hr>
 <div id="Server-temporary-directory"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Read_002donly-access| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Repository| Up ]]|</td>
@@ -2504,7 +2504,7 @@ there is no server running with process identification
 number <var>pid</var>, it is safe to do so.
 </p>
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Repository| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Starting a project with CVS#Starting-a-new-project  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

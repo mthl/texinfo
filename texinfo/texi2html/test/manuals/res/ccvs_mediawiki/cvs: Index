@@ -1,5 +1,5 @@
 <div id="Index"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Dealing with bugs in CVS or this manual#BUGS  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Dealing with bugs in CVS or this manual#BUGS  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -799,7 +799,7 @@
 
 
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Dealing with bugs in CVS or this manual#BUGS  &lt;&lt; ]|</td>
 <td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>

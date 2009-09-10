@@ -26,11 +26,17 @@ texi2html_formats = \
 	formats/xml.init \
 	formats/plaintext.init
 
+dist_pkgdata_DATA = maintained_extra/book.init \
+	maintained_extra/chm.init \
+	maintained_extra/tex4ht.init \
+	maintained_extra/html32.init
+
 texi2html_sources = texi2html_configured.pl $(texi2html_additional_scripts)
 
 noinst_SCRIPTS = manage_i18n.pl buildt2h.sh addformats.sh \
  parse_8bit_makeinfo_maps.pl
 
+# style_example.css comes from http://planet.gnu.org/~ams/style.css
 EXTRA_DIST = \
 	MySimple.pod \
 	autogen.sh \
@@ -42,24 +48,20 @@ EXTRA_DIST = \
 	texi2html.pl \
 	regenerate_documentlanguages.pl \
 	$(texi2html_additional_scripts) \
-	$(texi2html_formats)
-
-dist_pkgdata_DATA = examples/l2h.init \
+	$(texi2html_formats) \
+	examples/l2h.init \
 	examples/makeinfo.init \
 	examples/xhtml.init \
-	examples/html32.init \
-	examples/book.init \
 	examples/noheaders.init \
 	examples/inlinestyle.init \
 	examples/utf8.init \
 	examples/enable_encoding.init \
-	examples/chm.init \
 	examples/roff.init \
 	examples/mediawiki.init \
-	examples/tex4ht.init \
 	examples/my-bib-macros.texi \
 	examples/bib-example.texi \
-	examples/glossary.texi
+	examples/glossary.texi \
+	examples/style_example.css
 
 i18n_files = i18n/de \
 	i18n/es \

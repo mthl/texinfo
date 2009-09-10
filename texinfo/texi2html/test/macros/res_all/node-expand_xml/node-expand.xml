@@ -20,7 +20,7 @@
 <nodeprev>(dir)</nodeprev>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Expansion in Node Names</title>
 
 
@@ -44,7 +44,7 @@
 
 <para>See <xref><xrefnodename>@node `2'</xrefnodename></xref>.
 </para>
-</unnumbered>
+</top>
 <node>
 <nodename>Node 1</nodename>
 <nodenext>@node `2'</nodenext>

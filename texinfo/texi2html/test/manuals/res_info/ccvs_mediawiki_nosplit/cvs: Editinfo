@@ -1,5 +1,5 @@
 <div id="editinfo"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Loginfo#loginfo loginfo], Previous: [cvs: Verifying log messages#verifymsg verifymsg], Up: [cvs: The commit support files#commit-files commit files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -67,7 +67,7 @@ There is no good workaround for this; use
 <pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Editinfo example#editinfo-example  editinfo example]::<nowiki>            Editinfo example
 </nowiki></pre>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Loginfo#loginfo loginfo], Previous: [cvs: Verifying log messages#verifymsg verifymsg], Up: [cvs: The commit support files#commit-files commit files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

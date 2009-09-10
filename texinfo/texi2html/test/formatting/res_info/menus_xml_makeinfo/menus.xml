@@ -9,7 +9,7 @@
 <nodenext>chapter</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>Top</title>
 
 <menu>
@@ -68,7 +68,7 @@ acronym</acronymword></acronym>
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>chapter</nodename>
 <nodenext>chapter2</nodenext>

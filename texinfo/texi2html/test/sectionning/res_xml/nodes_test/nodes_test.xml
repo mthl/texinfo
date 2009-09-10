@@ -22,7 +22,7 @@
 <nodenext>first</nodenext>
 <nodeup>(texinfo) Copying</nodeup>
 </node>
-<unnumbered>
+<top>
 <title></title>
 
 <menu>
@@ -58,7 +58,7 @@
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>Top</nodename>
 <nodeup>(dir)</nodeup>

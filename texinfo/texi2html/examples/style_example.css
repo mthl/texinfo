@@ -1,0 +1,73 @@
+/*  
+ * Copyright 2009, Free Software Foundation, Inc.
+ *   
+ * Copying and distribution of this file, with or without
+ * modification, are permitted in any medium without royalty provided
+ * the copyright notice and this notice are preserved.
+ */
+
+body {
+    font: 1em/1.5em georgia,serif;
+    max-width: 50em;
+    margin: auto;
+    padding: 0;
+    padding: 30px 0 60px 0;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Trebuchet MS", "Tahoma","Helvetica","Arial",sans-serif;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    font-weight: normal;
+}
+
+h2.unnumbered {
+    font-size: 34px;
+    margin: 30px 0 60px 0;
+    text-align: right;
+}
+
+/*
+h2.unnumbered + p, h2.unnumbered + p + p {
+    font-size: 14px;
+}
+*/
+
+h2.chapter {
+    font-size: 26px;
+    margin: 30px 0;
+    text-align: left;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+a {
+    color: midnightblue;
+}
+
+a:visited {
+    color: indigo;
+}
+
+a:active, a:hover, a:visited:hover {
+    color: crimson;
+}
+
+p, dd {
+    text-align: justify;
+}
+
+dt {
+    font-style: italic;
+}
+
+pre, tt, code, kbd, samp {
+    font-size: 12px;
+    line-height: 20px;
+}

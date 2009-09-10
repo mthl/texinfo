@@ -1,5 +1,5 @@
 <div id="rcsinfo"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Ignoring files via cvsignore#cvsignore cvsignore], Previous: [cvs: The commit support files#commit-files commit files], Up: [cvs: Reference manual for Administrative files#Administrative-files Administrative files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -50,7 +50,7 @@ client may be used and the &lsquo;<tt>CVS/Template</tt>&rsquo; will
 be updated from the server.
 </p>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Ignoring files via cvsignore#cvsignore cvsignore], Previous: [cvs: The commit support files#commit-files commit files], Up: [cvs: Reference manual for Administrative files#Administrative-files Administrative files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

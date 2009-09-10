@@ -81,6 +81,14 @@ This file records noteworthy changes.
 * Don't treat _setfilename as a value set. It should be available through
   get_conf.
 
+* Changes in class attribute in html elements:
+  Change class "toc" for ul to class "no-bullet" ($NO_BULLET_LIST_ATTRIBUTE).
+  @top and @centerchap have now their command name as class.
+  @node heading class is now "node-heading", instead of "node".
+  The whole header is in an element with class "header" (was "node" when
+  !$HEADER_IN_TABLE).
+
+
 1.82 (2009-01-05)
 
 * NEW FEATURES

@@ -1,5 +1,5 @@
 <div id="Administrative-files"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: All environment variables which affect CVS#Environment-variables Environment variables], Previous: [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -33,7 +33,7 @@ file, which defines the modules inside the repository.
 </nowiki></pre>
 <hr>
 <div id="modules"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Wrappers|Wrappers]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -75,7 +75,7 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
 </nowiki></pre>
 <hr>
 <div id="Alias-modules"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Regular-modules|Regular modules]], Up: [[#modules|modules]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -123,7 +123,7 @@ U first-dir/sdir/sfile
 
 <hr>
 <div id="Regular-modules"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Ampersand-modules|Ampersand modules]], Previous: [[#Alias-modules|Alias modules]], Up: [[#modules|modules]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -183,7 +183,7 @@ $
 
 <hr>
 <div id="Ampersand-modules"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Excluding-directories|Excluding directories]], Previous: [[#Regular-modules|Regular modules]], Up: [[#modules|modules]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -239,7 +239,7 @@ a future release of <small>CVS</small>.
 
 <hr>
 <div id="Excluding-directories"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Module-options|Module options]], Previous: [[#Ampersand-modules|Ampersand modules]], Up: [[#modules|modules]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -263,7 +263,7 @@ the subdirectory &lsquo;<samp>first-dir/sdir</samp>&rsquo;.
 </p>
 <hr>
 <div id="Module-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Module-program-options|Module program options]], Previous: [[#Excluding-directories|Excluding directories]], Up: [[#modules|modules]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -331,7 +331,7 @@ that taginfo is a better solution (see [cvs: History browsing#user_002ddefined-l
 
 <hr>
 <div id="Module-program-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Module-options|Module options]], Up: [[#modules|modules]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -360,7 +360,7 @@ completed.
 
 <hr>
 <div id="Wrappers"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#commit-files|commit files]], Previous: [[#modules|modules]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -421,7 +421,7 @@ directory, treating files whose name ends in
 
 <hr>
 <div id="commit-files"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#rcsinfo|rcsinfo]], Previous: [[#Wrappers|Wrappers]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -483,7 +483,7 @@ imagination is the limit!
 </nowiki></pre>
 <hr>
 <div id="syntax"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#commitinfo|commitinfo]], Up: [[#commit-files|commit files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -526,7 +526,7 @@ is used as a file name or command-line as appropriate.
 
 <hr>
 <div id="commitinfo"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#verifymsg|verifymsg]], Previous: [[#syntax|syntax]], Up: [[#commit-files|commit files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -591,7 +591,7 @@ to the command.
 
 <hr>
 <div id="verifymsg"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#editinfo|editinfo]], Previous: [[#commitinfo|commitinfo]], Up: [[#commit-files|commit files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -734,7 +734,7 @@ fi
 
 <hr>
 <div id="editinfo"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#loginfo|loginfo]], Previous: [[#verifymsg|verifymsg]], Up: [[#commit-files|commit files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -802,7 +802,7 @@ There is no good workaround for this; use
 </nowiki></pre>
 <hr>
 <div id="editinfo-example"></div>
-<div class="node">
+<div class="header">
 <p>
 Up: [[#editinfo|editinfo]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -856,7 +856,7 @@ done
 
 <hr>
 <div id="loginfo"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#editinfo|editinfo]], Up: [[#commit-files|commit files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -945,7 +945,7 @@ name of the repository will be generated.
 </nowiki></pre>
 <hr>
 <div id="loginfo-example"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Keeping-a-checked-out-copy|Keeping a checked out copy]], Up: [[#loginfo|loginfo]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -978,7 +978,7 @@ like this:
 
 <hr>
 <div id="Keeping-a-checked-out-copy"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#loginfo-example|loginfo example]], Up: [[#loginfo|loginfo]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1013,7 +1013,7 @@ out tree in &lsquo;<tt>/u/www/local-docs</tt>&rsquo;.
 </p>
 <hr>
 <div id="rcsinfo"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#cvsignore|cvsignore]], Previous: [[#commit-files|commit files]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1064,7 +1064,7 @@ be updated from the server.
 </p>
 <hr>
 <div id="cvsignore"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#checkoutlist|checkoutlist]], Previous: [[#rcsinfo|rcsinfo]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1165,7 +1165,7 @@ way to specify comments.
 </p>
 <hr>
 <div id="checkoutlist"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#history-file|history file]], Previous: [[#cvsignore|cvsignore]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1214,7 +1214,7 @@ more general context than the one provided by
 </p>
 <hr>
 <div id="history-file"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Variables|Variables]], Previous: [[#checkoutlist|checkoutlist]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1238,7 +1238,7 @@ format changes with future releases of <small>CVS</small>.
 </p>
 <hr>
 <div id="Variables"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#config|config]], Previous: [[#history-file|history file]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1374,7 +1374,7 @@ Do not confuse this with the internal variable of the same name.
 
 <hr>
 <div id="config"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Variables|Variables]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1519,7 +1519,7 @@ replace the log message, use &lsquo;<samp>UserAdminOptions=klum</samp>&rsquo;.
 </dl>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Variables|Variables]], Up: [[#Administrative-files|Administrative files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

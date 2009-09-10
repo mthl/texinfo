@@ -32,7 +32,7 @@
 <nodename>Top</nodename>
 <nodeprev>first</nodeprev>
 </node>
-<unnumbered>
+<top>
 <title>top section</title>
 <para>Top node
 </para><menu>
@@ -43,7 +43,7 @@
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>second node</nodename>
 <nodeup>Top</nodeup>

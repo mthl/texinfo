@@ -1,5 +1,5 @@
 <div id="user_002ddefined-logging"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Annotate command#annotate annotate], Previous: [cvs: The history database#history-database history database], Up: [cvs: History browsing#History-browsing History browsing] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -53,7 +53,7 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 </nowiki></pre></td></tr></table>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Annotate command#annotate annotate], Previous: [cvs: The history database#history-database history database], Up: [cvs: History browsing#History-browsing History browsing] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

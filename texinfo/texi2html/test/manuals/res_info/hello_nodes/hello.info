@@ -61,7 +61,7 @@ should adhere to.
 not embodied in the standards, using other GNU packages and features:
 
    * It uses Automake (*note Introduction: (Automake)Top.) and hence
-     also Autoconf (*note Introduction: (Autoconf)Top.) for
+     also Autoconf (*note Introduction: (Autoconf)Top.)  for
      configuration.
 
    * It uses Gnulib (*note Gnulib: (gnulib)Top.) to enhance portability
@@ -743,10 +743,10 @@ Concept index
 Tag Table:
 Node: Top827
 Node: Overview1287
-Node: Sample output3798
-Node: Invoking hello4196
-Node: Reporting bugs5675
-Node: GNU Free Documentation License6951
-Node: Concept index32106
+Node: Sample output3799
+Node: Invoking hello4197
+Node: Reporting bugs5676
+Node: GNU Free Documentation License6952
+Node: Concept index32107
 
 End Tag Table

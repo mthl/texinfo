@@ -1,5 +1,5 @@
 <div id="Binary-files"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Multiple developers#Multiple-developers Multiple developers], Previous: [cvs: History browsing#History-browsing History browsing], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -21,7 +21,7 @@ including both text files and binary images.
 </nowiki></pre>
 <hr>
 <div id="Binary-why"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Binary-howto|Binary howto]], Up: [[#Binary-files|Binary files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -78,7 +78,7 @@ resulting from branches, restrict use of branches.
 </p>
 <hr>
 <div id="Binary-howto"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Binary-why|Binary why]], Up: [[#Binary-files|Binary files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -161,7 +161,7 @@ non-binary files, and the rules to apply would vary
 considerably with the operating system.
 </p>
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Binary-why|Binary why]], Up: [[#Binary-files|Binary files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

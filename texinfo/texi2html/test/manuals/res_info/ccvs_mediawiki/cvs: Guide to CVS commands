@@ -1,5 +1,5 @@
 <div id="CVS-commands"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS], Previous: [cvs: Special Files#Special-Files Special Files], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -30,7 +30,7 @@ reference to <small>CVS</small> commands, see [cvs: Quick reference to CVS comma
 </nowiki></pre>
 <hr>
 <div id="Structure"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Exit-status|Exit status]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -85,7 +85,7 @@ the documentation instead.
 </p>
 <hr>
 <div id="Exit-status"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#g_t_007e_002f_002ecvsrc|~/.cvsrc]], Previous: [[#Structure|Structure]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -114,7 +114,7 @@ other <small>CVS</small> commands.
 </p>
 <hr>
 <div id="g_t_007e_002f_002ecvsrc"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Global-options|Global options]], Previous: [[#Exit-status|Exit status]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -181,7 +181,7 @@ example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 </p>
 <hr>
 <div id="Global-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Common-options|Common options]], Previous: [[#g_t_007e_002f_002ecvsrc|~/.cvsrc]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -372,7 +372,7 @@ Only has an effect on the <small>CVS</small> client.
 
 <hr>
 <div id="Common-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#admin|admin]], Previous: [[#Global-options|Global options]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -618,7 +618,7 @@ and <code>update</code>.
 
 <hr>
 <div id="admin"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#checkout|checkout]], Previous: [[#Common-options|Common options]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -664,7 +664,7 @@ can run <code>cvs admin</code>.
 </nowiki></pre>
 <hr>
 <div id="admin-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Up: [[#admin|admin]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1003,7 +1003,7 @@ this option has never done anything useful.
 
 <hr>
 <div id="checkout"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#commit|commit]], Previous: [[#admin|admin]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1086,7 +1086,7 @@ see [[#update-output|update output]].
 </nowiki></pre>
 <hr>
 <div id="checkout-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#checkout-examples|checkout examples]], Up: [[#checkout|checkout]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1236,7 +1236,7 @@ modules file to set the module status.
 
 <hr>
 <div id="checkout-examples"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#checkout-options|checkout options]], Up: [[#checkout|checkout]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1256,7 +1256,7 @@ ago:
 
 <hr>
 <div id="commit"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#diff|diff]], Previous: [[#checkout|checkout]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1315,7 +1315,7 @@ that the argument file contains the log message.
 </nowiki></pre>
 <hr>
 <div id="commit-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#commit-examples|commit examples]], Up: [[#commit|commit]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1379,7 +1379,7 @@ invoking an editor.
 
 <hr>
 <div id="commit-examples"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#commit-options|commit options]], Up: [[#commit|commit]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1389,7 +1389,7 @@ Previous: [[#commit-options|commit options]], Up: [[#commit|commit]] &nbsp; |[cv
 
 <hr>
 <div id="Committing-to-a-branch"></div>
-<div class="node">
+<div class="header">
 <p>
  &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1421,7 +1421,7 @@ sticky.
 </p>
 <hr>
 <div id="Creating-the-branch-after-editing"></div>
-<div class="node">
+<div class="header">
 <p>
  &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1469,7 +1469,7 @@ would simply do
 
 <hr>
 <div id="diff"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#export|export]], Previous: [[#commit|commit]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1503,7 +1503,7 @@ under them will be compared.
 </nowiki></pre>
 <hr>
 <div id="diff-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#diff-examples|diff examples]], Up: [[#diff|diff]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -1831,7 +1831,7 @@ context.
 </nowiki></pre>
 <hr>
 <div id="Line-group-formats"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#Line-formats|Line formats]], Up: [[#diff-options|diff options]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2022,7 +2022,7 @@ otherwise.
 
 <hr>
 <div id="Line-formats"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#Line-group-formats|Line group formats]], Up: [[#diff-options|diff options]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2142,7 +2142,7 @@ to get fine control over <code>diff</code>&rsquo;s output.
 
 <hr>
 <div id="diff-examples"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#diff-options|diff options]], Up: [[#diff|diff]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2181,7 +2181,7 @@ not yet been committed will be printed.
 
 <hr>
 <div id="export"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#history|history]], Previous: [[#diff|diff]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2223,7 +2223,7 @@ use &lsquo;<samp>-kv</samp>&rsquo;.
 </nowiki></pre>
 <hr>
 <div id="export-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Up: [[#export|export]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2286,7 +2286,7 @@ See [[#checkout-options|checkout options]], for complete details on how
 
 <hr>
 <div id="history"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#import|import]], Previous: [[#export|export]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2320,7 +2320,7 @@ normal use inside <small>CVS</small> (see [[#Common-options|Common options]]).</
 </nowiki></pre>
 <hr>
 <div id="history-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Up: [[#history|history]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2495,7 +2495,7 @@ time zone instead of UTC.
 
 <hr>
 <div id="import"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#log|log]], Previous: [[#history|history]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2571,7 +2571,7 @@ directory (see [cvs: Overview#Getting-the-source Getting the source]).
 </nowiki></pre>
 <hr>
 <div id="import-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#import-output|import output]], Up: [[#import|import]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2626,7 +2626,7 @@ file. See [cvs: Reference manual for Administrative files#Wrappers Wrappers].
 
 <hr>
 <div id="import-output"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#import-examples|import examples]], Previous: [[#import-options|import options]], Up: [[#import|import]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2670,7 +2670,7 @@ see [cvs: Reference manual for Administrative files#modules modules].)
 
 <hr>
 <div id="import-examples"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#import-output|import output]], Up: [[#import|import]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2681,7 +2681,7 @@ Previous: [[#import-output|import output]], Up: [[#import|import]] &nbsp; |[cvs:
 </p>
 <hr>
 <div id="log"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#rdiff|rdiff]], Previous: [[#import|import]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2724,7 +2724,7 @@ with the normal use inside <small>CVS</small> (see [[#Common-options|Common opti
 </nowiki></pre>
 <hr>
 <div id="log-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#log-examples|log examples]], Up: [[#log|log]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2886,7 +2886,7 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 </p>
 <hr>
 <div id="log-examples"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#log-options|log options]], Up: [[#log|log]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2897,7 +2897,7 @@ Previous: [[#log-options|log options]], Up: [[#log|log]] &nbsp; |[cvs: Index#SEC
 </p>
 <hr>
 <div id="rdiff"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#release|release]], Previous: [[#log|log]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -2942,7 +2942,7 @@ the files that are located in other directories.
 </nowiki></pre>
 <hr>
 <div id="rdiff-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#rdiff-examples|rdiff examples]], Up: [[#rdiff|rdiff]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -3017,7 +3017,7 @@ way that <small>RCS</small> version 5 does.
 
 <hr>
 <div id="rdiff-examples"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#rdiff-options|rdiff options]], Up: [[#rdiff|rdiff]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -3048,7 +3048,7 @@ File bar.h,v changed from revision 1.29.2.1 to 1.2
 
 <hr>
 <div id="release"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#update|update]], Previous: [[#rdiff|rdiff]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -3092,7 +3092,7 @@ history log.
 </nowiki></pre>
 <hr>
 <div id="release-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#release-output|release output]], Up: [[#release|release]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -3119,7 +3119,7 @@ if it is non-empty!</strong>
 
 <hr>
 <div id="release-output"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#release-examples|release examples]], Previous: [[#release-options|release options]], Up: [[#release|release]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -3169,7 +3169,7 @@ sources, this file will be lost.
 
 <hr>
 <div id="release-examples"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#release-output|release output]], Up: [[#release|release]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -3189,7 +3189,7 @@ $
 
 <hr>
 <div id="update"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#release|release]], Up: [[#CVS-commands|CVS commands]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -3224,7 +3224,7 @@ into any destination revisions specified with <code>-r</code>,
 </nowiki></pre>
 <hr>
 <div id="update-options"></div>
-<div class="node">
+<div class="header">
 <p>
 Next: [[#update-output|update output]], Up: [[#update|update]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -3364,7 +3364,7 @@ date.  An optional date is specified by adding a colon
 
 <hr>
 <div id="update-output"></div>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#update-options|update options]], Up: [[#update|update]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>
@@ -3451,7 +3451,7 @@ see [cvs: Reference manual for Administrative files#cvsignore cvsignore]).
 </dl>
 
 <hr>
-<div class="node">
+<div class="header">
 <p>
 Previous: [[#update-options|update options]], Up: [[#update|update]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
 </div>

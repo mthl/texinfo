@@ -1,5 +1,5 @@
 <div id="Special-Files"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -37,7 +37,7 @@ permissions during repository transactions.
 </p>
 
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

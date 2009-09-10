@@ -1,5 +1,5 @@
 <div id="CVS-commands"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[cvs: Special Files#Special-Files  &lt;&lt; ]|</td>
 <td valign="middle" align="left">|[cvs: Special Files#Special-Files  &lt; ]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
@@ -41,7 +41,7 @@ reference to <small>CVS</small> commands, see section [cvs: Quick reference to C
 </nowiki></pre>
 <hr>
 <div id="Structure"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -107,7 +107,7 @@ the documentation instead.
 </p>
 <hr>
 <div id="Exit-status"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Structure| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -147,7 +147,7 @@ other <small>CVS</small> commands.
 </p>
 <hr>
 <div id="g_t_007e_002f_002ecvsrc"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Exit-status| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -225,7 +225,7 @@ example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 </p>
 <hr>
 <div id="Global-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#g_t_007e_002f_002ecvsrc| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -427,7 +427,7 @@ Only has an effect on the <small>CVS</small> client.
 
 <hr>
 <div id="Common-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Global-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -684,7 +684,7 @@ and <code>update</code>.
 
 <hr>
 <div id="admin"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Common-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -741,7 +741,7 @@ can run <code>cvs admin</code>.
 </nowiki></pre>
 <hr>
 <div id="admin-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#admin| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#admin| Up ]]|</td>
@@ -1091,7 +1091,7 @@ this option has never done anything useful.
 
 <hr>
 <div id="checkout"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#admin-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -1185,7 +1185,7 @@ see [[#update-output|update output]].
 </nowiki></pre>
 <hr>
 <div id="checkout-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout| Up ]]|</td>
@@ -1346,7 +1346,7 @@ modules file to set the module status.
 
 <hr>
 <div id="checkout-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout| Up ]]|</td>
@@ -1377,7 +1377,7 @@ ago:
 
 <hr>
 <div id="commit"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#checkout-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -1447,7 +1447,7 @@ that the argument file contains the log message.
 </nowiki></pre>
 <hr>
 <div id="commit-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit| Up ]]|</td>
@@ -1522,7 +1522,7 @@ invoking an editor.
 
 <hr>
 <div id="commit-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit| Up ]]|</td>
@@ -1543,7 +1543,7 @@ invoking an editor.
 
 <hr>
 <div id="Committing-to-a-branch"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-examples| Up ]]|</td>
@@ -1586,7 +1586,7 @@ sticky.
 </p>
 <hr>
 <div id="Creating-the-branch-after-editing"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Committing-to-a-branch| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#commit-examples| Up ]]|</td>
@@ -1645,7 +1645,7 @@ would simply do
 
 <hr>
 <div id="diff"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Creating-the-branch-after-editing| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -1690,7 +1690,7 @@ under them will be compared.
 </nowiki></pre>
 <hr>
 <div id="diff-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff| Up ]]|</td>
@@ -2029,7 +2029,7 @@ context.
 </nowiki></pre>
 <hr>
 <div id="Line-group-formats"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-options| Up ]]|</td>
@@ -2231,7 +2231,7 @@ otherwise.
 
 <hr>
 <div id="Line-formats"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Line-group-formats| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-options| Up ]]|</td>
@@ -2362,7 +2362,7 @@ to get fine control over <code>diff</code>&rsquo;s output.
 
 <hr>
 <div id="diff-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Line-formats| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff| Up ]]|</td>
@@ -2412,7 +2412,7 @@ not yet been committed will be printed.
 
 <hr>
 <div id="export"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#diff-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -2465,7 +2465,7 @@ use &lsquo;<samp>-kv</samp>&rsquo;.
 </nowiki></pre>
 <hr>
 <div id="export-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#export| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#export| Up ]]|</td>
@@ -2539,7 +2539,7 @@ See section [[#checkout-options|checkout options]], for complete details on how
 
 <hr>
 <div id="history"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#export-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -2584,7 +2584,7 @@ normal use inside <small>CVS</small> (see section [[#Common-options|Common comma
 </nowiki></pre>
 <hr>
 <div id="history-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#history| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#history| Up ]]|</td>
@@ -2770,7 +2770,7 @@ time zone instead of UTC.
 
 <hr>
 <div id="import"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#history-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -2857,7 +2857,7 @@ directory (see section [cvs: Overview#Getting-the-source Getting the source]).
 </nowiki></pre>
 <hr>
 <div id="import-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#import| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import| Up ]]|</td>
@@ -2923,7 +2923,7 @@ file. See section [cvs: Reference manual for Administrative files#Wrappers The c
 
 <hr>
 <div id="import-output"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import| Up ]]|</td>
@@ -2978,7 +2978,7 @@ see section [cvs: Reference manual for Administrative files#modules The modules 
 
 <hr>
 <div id="import-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-output| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#import| Up ]]|</td>
@@ -3000,7 +3000,7 @@ see section [cvs: Reference manual for Administrative files#modules The modules 
 </p>
 <hr>
 <div id="log"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#import-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -3054,7 +3054,7 @@ with the normal use inside <small>CVS</small> (see section [[#Common-options|Com
 </nowiki></pre>
 <hr>
 <div id="log-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#log| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log| Up ]]|</td>
@@ -3227,7 +3227,7 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 </p>
 <hr>
 <div id="log-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#log-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#log| Up ]]|</td>
@@ -3249,7 +3249,7 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 </p>
 <hr>
 <div id="rdiff"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#log-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -3305,7 +3305,7 @@ the files that are located in other directories.
 </nowiki></pre>
 <hr>
 <div id="rdiff-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff| Up ]]|</td>
@@ -3391,7 +3391,7 @@ way that <small>RCS</small> version 5 does.
 
 <hr>
 <div id="rdiff-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff| Up ]]|</td>
@@ -3433,7 +3433,7 @@ File bar.h,v changed from revision 1.29.2.1 to 1.2
 
 <hr>
 <div id="release"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#rdiff-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -3488,7 +3488,7 @@ history log.
 </nowiki></pre>
 <hr>
 <div id="release-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#release| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release| Up ]]|</td>
@@ -3526,7 +3526,7 @@ if it is non-empty!</strong>
 
 <hr>
 <div id="release-output"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release| Up ]]|</td>
@@ -3587,7 +3587,7 @@ sources, this file will be lost.
 
 <hr>
 <div id="release-examples"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-output| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#release| Up ]]|</td>
@@ -3618,7 +3618,7 @@ $
 
 <hr>
 <div id="update"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#release-examples| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
@@ -3664,7 +3664,7 @@ into any destination revisions specified with <code>-r</code>,
 </nowiki></pre>
 <hr>
 <div id="update-options"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#update| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#update| Up ]]|</td>
@@ -3815,7 +3815,7 @@ date.  An optional date is specified by adding a colon
 
 <hr>
 <div id="update-output"></div>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#update-options| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#update| Up ]]|</td>
@@ -3913,7 +3913,7 @@ see section [cvs: Reference manual for Administrative files#cvsignore Ignoring f
 </dl>
 
 <hr>
-<table cellpadding="1" cellspacing="1" border="0">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
 <td valign="middle" align="left"> &nbsp; </td>

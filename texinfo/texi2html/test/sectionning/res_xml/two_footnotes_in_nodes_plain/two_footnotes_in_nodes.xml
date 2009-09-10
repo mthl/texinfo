@@ -9,7 +9,7 @@
 <nodenext>chapter</nodenext>
 <nodeup>(dir)</nodeup>
 </node>
-<unnumbered>
+<top>
 <title>2 footnotes in 2 nodes</title>
 
 <para>A<footnote><para>Footnote Top/1
@@ -30,7 +30,7 @@
 </menucomment>
 </menuentry></menu>
 
-</unnumbered>
+</top>
 <node>
 <nodename>chapter</nodename>
 <nodeprev>Top</nodeprev>
