@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.331 2009-09-10 20:32:27 pertusus Exp $
+# $Id: texi2html.pl,v 1.332 2009-09-10 22:57:20 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -12172,7 +12172,7 @@ sub parse_menu_entry($)
           return (undef, $name, $ending, $remaining) if (!defined($after_colon));
           $node .= $after_colon;
 
-          while ($separator eq '.' and (defined($remaining) and $remaining !~ /^\s/))
+          while (defined($separator) and $separator eq '.' and (defined($remaining) and $remaining !~ /^\s/))
           {
               ($after_colon, $remaining, $separator) = scan_line_separators($remaining, '\t,\.', 'menu entry node');
               return (undef, $name, $ending, $remaining) if (!defined($after_colon));
@@ -12181,6 +12181,9 @@ sub parse_menu_entry($)
           $name = $before_colon;
           $ending = $separator if (defined($separator));
       }
+      # if followed by a @comment an end of line is readded.
+      #my $chomped_remaining = $remaining;
+      #$remaining .= "\n" if (!chomp($chomped_remaining));
    }
    # remaining may be defined even if $node isn't.
    return ($node, $name, $ending, $remaining);

@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.232 2009-09-09 18:56:04 pertusus Exp $
+# $Id: texi2html.init,v 1.233 2009-09-10 22:57:19 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -5163,6 +5163,7 @@ sub t2h_default_menu_link($$$$$$$$)
     my $command_stack = shift;
     my $preformatted = shift;
 
+#print STDERR "$title $node $ending\n";
     $title = '' unless ($has_title);
     $title .= ':' if ($title ne '');
     return "$MENU_SYMBOL$title$node$ending" if ($NODE_NAME_IN_MENU);

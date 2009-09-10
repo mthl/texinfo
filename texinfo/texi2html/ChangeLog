@@ -1,3 +1,8 @@
+2009-09-11   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* formats/docbook.init, formats/xml.init: remove the useless 
+	comment at the end of the output file.
+
 2009-09-10   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init: keep definfoenclose for later
