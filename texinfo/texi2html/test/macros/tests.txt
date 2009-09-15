@@ -38,7 +38,9 @@ texi simple_imbricated_macro.texi
 texi setfilename_comment.texi
 texi bad_setfilename.texi
 texi double_setfilename.texi
-#texi space_end_setfilename.texi
+texi space_end_setfilename.texi
+texi setfilename_space_comment.texi
+texi space_in_setfilename.texi
 # in the texinfo test suite, the default is info, and there is also a 
 # test with --html which doesn't make much sense here, replaced with --xml
 # though it is not the same
@@ -70,4 +72,6 @@ test_paths test_paths.texi
 setfilename_comment setfilename_comment.texi
 bad_setfilename bad_setfilename.texi
 double_setfilename double_setfilename.texi
-#space_end_setfilename space_end_setfilename.texi
+space_end_setfilename space_end_setfilename.texi
+setfilename_space_comment setfilename_space_comment.texi
+space_in_setfilename space_in_setfilename.texi

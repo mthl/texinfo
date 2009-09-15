@@ -1,0 +1,34 @@
+line_commands_comments_spaces.texi(,2) 
+line_commands_comments_spaces.texi(,3) @setfilename setfilename.info@  @c setfilename
+line_commands_comments_spaces.texi(,4) @settitle Settitle @ @c settittle
+line_commands_comments_spaces.texi(,5) 
+line_commands_comments_spaces.texi(,6) @node Top @c comment mode
+line_commands_comments_spaces.texi(,7) @top top element@  @comment @top
+line_commands_comments_spaces.texi(,8) 
+line_commands_comments_spaces.texi(,9) @menu
+line_commands_comments_spaces.texi(,10) * (gcc)node::@  @c comment menu entry
+line_commands_comments_spaces.texi(,11) * node name:(truc)node@ @c comment menu entru node
+line_commands_comments_spaces.texi(,12) * nodesub@ ::
+line_commands_comments_spaces.texi(,13) * next::
+line_commands_comments_spaces.texi(,14) @end menu
+line_commands_comments_spaces.texi(,15) 
+line_commands_comments_spaces.texi(,16) @heading Heading @     @c heading
+line_commands_comments_spaces.texi(,17) 
+line_commands_comments_spaces.texi(,18) @quotation truc@ @c quotation 
+line_commands_comments_spaces.texi(,19) In quotation
+line_commands_comments_spaces.texi(,20) @end quotation
+line_commands_comments_spaces.texi(,21) 
+line_commands_comments_spaces.texi(,22) @float Text @ , label @ @c float
+line_commands_comments_spaces.texi(,23) Float
+line_commands_comments_spaces.texi(,24) @end float
+line_commands_comments_spaces.texi(,25) 
+line_commands_comments_spaces.texi(,26) @listoffloats Text @ @c listoffloats
+line_commands_comments_spaces.texi(,27) 
+line_commands_comments_spaces.texi(,28) @cindex index entry @  @c index entry
+line_commands_comments_spaces.texi(,29) 
+line_commands_comments_spaces.texi(,30) @printindex cp @c printindex 
+line_commands_comments_spaces.texi(,31) 
+line_commands_comments_spaces.texi(,32) @node nodesub@ ,next,,Top
+line_commands_comments_spaces.texi(,33) 
+line_commands_comments_spaces.texi(,34) @node next, nodesub@ 
+line_commands_comments_spaces.texi(,35) @bye

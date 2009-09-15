@@ -1,0 +1,42 @@
+nput texinfo @c -*-texinfo-*-
+@setfilename error_in_footnote_caption.info
+
+@node Top
+@top Test an error in a footnote within a @@caption
+
+@float Text, label
+
+Float text
+
+@caption{In caption@footnote{TeX without brace @TeX} LaTeX without brace @LaTeX}
+@end float
+
+@float Text, label1
+
+Float text1
+
+@caption{In 
+
+caption 2@footnote{TeX2 without brace @TeX} Second @footnote{bullet1 without brace @bullet} LaTeX2 without 
+brace @LaTeX}
+@end float
+
+@float Text, label2
+
+Float text2
+
+@caption{In 
+
+caption 2@footnote{TeX3 without brace @TeX
+and now @copyright
+
+@itemize @bullet
+@item ERror on error @error in item
+@end itemize
+} Second @footnote{bullet1 without brace @bullet} LaTeX3 without
+brace @LaTeX}
+@end float
+
+@listoffloats Text
+
+@bye

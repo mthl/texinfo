@@ -1,5 +1,6 @@
 texi def_cmds.texi
 texi menus.texi
+texi test_menuentry.texi
 texi quotation.texi
 texi float_with_at_commands.texi
 texi float_copying.texi
@@ -46,12 +47,14 @@ texi direntry_dircategory.texi
 texi nested_table.texi
 texi paragraph_in_samp.texi
 texi formats_only_titles.texi
+texi line_commands_comments_spaces.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
 def_cmds_info def_cmds.texi --init info.init
 menus menus.texi
 menus_simple menus.texi --init simple_menu.init
+test_menuentry test_menuentry.texi
 quotation quotation.texi
 float_with_at_commands float_with_at_commands.texi
 float_copying float_copying.texi --split chapter
@@ -115,6 +118,7 @@ paragraph_in_samp paragraph_in_samp.texi
 simple_images simple_images.texi
 html-extrali_plain html-extrali.texi
 formats_only_titles formats_only_titles.texi
+line_commands_comments_spaces line_commands_comments_spaces.texi
 
 quotation_docbook quotation.texi --docbook
 at_command_glued_info at_command_glued.texi --init info.init

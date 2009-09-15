@@ -1,0 +1,60 @@
+Test an error in a footnote within a @caption
+*********************************************
+
+
+Float text
+
+
+
+Text 1: In caption(1) LaTeX without brace LaTeX
+
+
+
+Float text1
+
+
+
+Text 2: In 
+
+caption 2(2) Second (3) LaTeX2 without 
+brace LaTeX
+
+
+
+Float text2
+
+
+
+Text 3: In 
+
+caption 2(4) Second (5) LaTeX3 without
+brace LaTeX
+
+
+* List of Text:
+* Text 1: In caption(1) LaTeX without brace LaTeX
+* Text 2: In 
+* Text 3: In 
+
+
+Footnotes
+*********
+
+(1)
+TeX without brace TeX
+
+(2)
+TeX2 without brace TeX
+
+(3)
+bullet1 without brace *
+
+(4)
+TeX3 without brace TeX
+and now (C)
+
+* ERror on error error--> in item
+
+(5)
+bullet1 without brace *
+

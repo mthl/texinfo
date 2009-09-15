@@ -1,0 +1,41 @@
+error_in_footnote_caption.texi(,2) @setfilename error_in_footnote_caption.info
+error_in_footnote_caption.texi(,3) 
+error_in_footnote_caption.texi(,4) @node Top
+error_in_footnote_caption.texi(,5) @top Test an error in a footnote within a @@caption
+error_in_footnote_caption.texi(,6) 
+error_in_footnote_caption.texi(,7) @float Text, label
+error_in_footnote_caption.texi(,8) 
+error_in_footnote_caption.texi(,9) Float text
+error_in_footnote_caption.texi(,10) 
+error_in_footnote_caption.texi(,11) @caption{In caption@footnote{TeX without brace @TeX} LaTeX without brace @LaTeX}
+error_in_footnote_caption.texi(,12) @end float
+error_in_footnote_caption.texi(,13) 
+error_in_footnote_caption.texi(,14) @float Text, label1
+error_in_footnote_caption.texi(,15) 
+error_in_footnote_caption.texi(,16) Float text1
+error_in_footnote_caption.texi(,17) 
+error_in_footnote_caption.texi(,18) @caption{In 
+error_in_footnote_caption.texi(,19) 
+error_in_footnote_caption.texi(,20) caption 2@footnote{TeX2 without brace @TeX} Second @footnote{bullet1 without brace @bullet} LaTeX2 without 
+error_in_footnote_caption.texi(,21) brace @LaTeX}
+error_in_footnote_caption.texi(,22) @end float
+error_in_footnote_caption.texi(,23) 
+error_in_footnote_caption.texi(,24) @float Text, label2
+error_in_footnote_caption.texi(,25) 
+error_in_footnote_caption.texi(,26) Float text2
+error_in_footnote_caption.texi(,27) 
+error_in_footnote_caption.texi(,28) @caption{In 
+error_in_footnote_caption.texi(,29) 
+error_in_footnote_caption.texi(,30) caption 2@footnote{TeX3 without brace @TeX
+error_in_footnote_caption.texi(,31) and now @copyright
+error_in_footnote_caption.texi(,32) 
+error_in_footnote_caption.texi(,33) @itemize @bullet
+error_in_footnote_caption.texi(,34) @item ERror on error @error in item
+error_in_footnote_caption.texi(,35) @end itemize
+error_in_footnote_caption.texi(,36) } Second @footnote{bullet1 without brace @bullet} LaTeX3 without
+error_in_footnote_caption.texi(,37) brace @LaTeX}
+error_in_footnote_caption.texi(,38) @end float
+error_in_footnote_caption.texi(,39) 
+error_in_footnote_caption.texi(,40) @listoffloats Text
+error_in_footnote_caption.texi(,41) 
+error_in_footnote_caption.texi(,42) @bye

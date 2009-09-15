@@ -260,6 +260,7 @@ sub makeinfo_like_index_entry($$$$)
     my $entry_element_target = shift;
     my $index_entry_ref = shift;
 
+    return '' if ($entry !~ /\S/);
     my $element = $index_entry_ref->{'real_element'};
     if (defined($element))
     {

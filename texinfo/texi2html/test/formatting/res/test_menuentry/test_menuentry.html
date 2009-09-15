@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>test menu entry parsing</title>
+
+<meta name="description" content="test menu entry parsing">
+<meta name="keywords" content="test menu entry parsing">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Top"></a>
+<a name="test-menu-entry-parsing"></a>
+<h1 class="top">test menu entry parsing</h1>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="f.html#a1">(f)a1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#a2">(f)a2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#a3">(f)a3</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         d
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#a1c">(f)a1c</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#a2c">(f)a2c</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#a3c">(f)a3c</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         d</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#a4">(f) a4 </a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#g_t_0040a">(f)@a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> 
+* a1:
+* a2:  
+* a1c:* a2c:  </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b1_002ec">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b2_002ec">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b3_002ec">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    d
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b1c_002ec">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b2c_002ec">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b3c_002ec">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    d</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b1_002e">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> 
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b2-_002e">a </a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b3_002e">a.n</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         d
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b1_002ec">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b2_002ec">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b3_002ec">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> d
+</td></tr>
+</table>
+
+<hr>
+<p>
+ <font size="-1">
+  This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

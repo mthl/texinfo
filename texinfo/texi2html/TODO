@@ -3,6 +3,13 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
+test @verb{
+at end of line
+
+test stuff on 'line_command', including @macro, @ignore...
+
+do a test leading to 'Undefined index command', maybe in index_special_region
+would be nice. Using an unknown index index entry.
 
 Later
 -----
@@ -59,6 +66,7 @@ Later
   new argument of printindex
   new arguments of $unknown_style
   new arguments of index_entry_label
+  new argument of style
   NODE_FILENAMES
   $Texi2HTML::THISDOC{'format_from_command_line'}
   language_codes
@@ -338,6 +346,9 @@ and other weirdness, and corresponding error messages.
 
 Misc info and boring stuff
 --------------------------
+
+* invalid/texi_unclosed_verb_line_commands file name for res_all is 
+  etfilename.pass*
 
 * texi2html is immune to https://savannah.gnu.org/bugs/?25822
 

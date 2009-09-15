@@ -1,0 +1,29 @@
+line_commands_comment.texi(,2) 
+line_commands_comment.texi(,3) @setfilename setfilename.info @c setfilename
+line_commands_comment.texi(,4) @settitle Settitle @c settittle
+line_commands_comment.texi(,5) 
+line_commands_comment.texi(,6) @node Top @c comment mode
+line_commands_comment.texi(,7) @top top element @comment @top
+line_commands_comment.texi(,8) 
+line_commands_comment.texi(,9) @menu
+line_commands_comment.texi(,10) * (gcc)node:: @c comment menu entry
+line_commands_comment.texi(,11) * node name:(truc)node @c comment menu entru node
+line_commands_comment.texi(,12) @end menu
+line_commands_comment.texi(,13) 
+line_commands_comment.texi(,14) @heading Heading @c heading
+line_commands_comment.texi(,15) 
+line_commands_comment.texi(,16) @quotation truc @c quotation 
+line_commands_comment.texi(,17) In quotation
+line_commands_comment.texi(,18) @end quotation
+line_commands_comment.texi(,19) 
+line_commands_comment.texi(,20) @float Text, label @c float
+line_commands_comment.texi(,21) Float
+line_commands_comment.texi(,22) @end float
+line_commands_comment.texi(,23) 
+line_commands_comment.texi(,24) @listoffloats Text @c listoffloats
+line_commands_comment.texi(,25) 
+line_commands_comment.texi(,26) @cindex index entry @c index entry
+line_commands_comment.texi(,27) 
+line_commands_comment.texi(,28) @printindex cp @c printindex 
+line_commands_comment.texi(,29) 
+line_commands_comment.texi(,30) @bye

@@ -1,0 +1,36 @@
+This is test_menuentry.info, produced by makeinfo version 4.13 from
+test_menuentry.texi.
+
+
+File: test_menuentry.info,  Node: Top,  Next: (f)a1,  Up: (dir)
+
+test menu entry parsing
+***********************
+
+* Menu:
+
+* (f)a1::
+* (f)a2::  
+* (f)a3::         d
+* (f)a1c::* (f)a2c::  * (f)a3c::         d* (f) a4 ::   * (f)@a:: 
+* a1:
+* a2:  
+* a1c:* a2c:  * a: (f)b
+* a: (f)b
+* a: (f)b 
+* a: (f)b1.c,
+* a: (f)b2.c,     
+* a: (f)b3.c,    d
+* a: (f)b1c.c,* a: (f)b2c.c,     * a: (f)b3c.c,    d* a: (f)b1.. 
+* a : (f) b2 ..
+* a.n: (f)b3..         d
+* a: (f)b1.c.
+* a: (f)b2.c.  
+* a: (f)b3.c. d
+
+
+
+Tag Table:
+Node: Top90
+
+End Tag Table

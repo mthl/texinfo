@@ -355,8 +355,6 @@ sub info_default_uref($$)
     my $url = shift @$args;
     my $text = shift @$args;
     my $replacement = shift @$args;
-    #$url =~ s/\s*$//;
-    #$url =~ s/^\s*//;
     $url = main::normalise_space($url);
     $replacement = '' if (!defined($replacement));
     $replacement = main::normalise_space($replacement);
@@ -1985,7 +1983,7 @@ sub info_default_thing_command($$$$$)
 }
 
 
-sub info_default_style($$$$$$$$$)
+sub info_default_style($$$$$$$$$$)
 {
    my $style = shift; 
    my $command = shift;
@@ -1996,6 +1994,7 @@ sub info_default_style($$$$$$$$$)
    my $line_nr = shift;
    my $state = shift;
    my $command_stack = shift;
+   my $kept_line_nrs = shift;
 
    my $begin = '';
    my $end = '';
@@ -2034,7 +2033,7 @@ sub info_default_style($$$$$$$$$)
    { # in case of an accent, some text is returned here if there are still
      # more accents on the command_stack, otherwise it is put in the tree.
      # Other commands text results are put in the tree below.
-      $text = &{$style->{'function'}}($command, $args, $command_stack, $state, $line_nr);
+      $text = &{$style->{'function'}}($command, $args, $command_stack, $state, $line_nr, $kept_line_nrs);
    }
    if (defined($style->{'begin'}) and !$no_open)
    {
@@ -2045,7 +2044,7 @@ sub info_default_style($$$$$$$$$)
       $end = $style->{'end'};
    }
    # normal style commands
-   unless($special_style{$command} or ($command eq 'cmd_line') or $info_default_accent_commands{$command} or ($command eq 'hyphenation') or $info_default_leaf_command{$command})
+   unless($special_style{$command} or $info_default_accent_commands{$command} or ($command eq 'hyphenation') or $info_default_leaf_command{$command})
    {
       return info_default_close_command($state, $command, $begin, $end);
    }
@@ -2056,7 +2055,7 @@ sub info_default_style($$$$$$$$$)
    {
        return info_default_store_text ($state, $begin.$text.$end, $command);
    }
-   # we go here for cmd_line, and also for accents, hyphenation and anchor
+   # for accents, hyphenation and anchor
    # (though the result for anchor is always an empty string).
    return $begin.$text.$end;
 }
@@ -2260,6 +2259,14 @@ sub info_default_heading($$$$$;$$)
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
     $info_state->{'paragraph_in_element_nr'} = 0;
+    if (!defined($element->{'texi'}))
+    {
+       main::msg_debug("for $element, element->{'texi'} not defined, texi_line: $texi_line");
+    }
+    elsif (!defined($element->{'text'}))
+    {
+       main::msg_debug("for $element, $element->{'texi'}, element->{'text'} not defined");
+    }
     my $text = "$element->{'text'}";
     # to do the same than makeinfo a trailing dot in section number is removed
     #$text =~ s/^(\w+)\. /$1 /;
@@ -2446,10 +2453,11 @@ sub info_default_footnote_texi($$$)
     unless ($state->{'outside_document'} or $state->{'multiple_pass'})
     {
        $info_default_footnote_index++;
-       my $footnote_number = $info_default_footnote_index;
-       $footnote_number = $NO_NUMBER_FOOTNOTE_SYMBOL if (!$NUMBER_FOOTNOTES);
-       return "($footnote_number) $text";
     }
+    my $footnote_number = $info_default_footnote_index;
+    $footnote_number = $NO_NUMBER_FOOTNOTE_SYMBOL if (!$NUMBER_FOOTNOTES);
+    return "($footnote_number) $text";
+    #return undef;
 }
 
 sub info_default_print_section
@@ -2943,6 +2951,7 @@ sub info_default_index_entry($$$$$$$$)
 
     return '' if ($index_entry_ref->{'hidden'});
     $entry = main::substitute_line($index_entry_ref->{'texi'}, "index entry in \@printindex");
+    return '' if ($entry =~ /^\s*$/);
 
     my $entry_nr = '';
     if (!defined($info_default_index_entries_counts{$entry}))

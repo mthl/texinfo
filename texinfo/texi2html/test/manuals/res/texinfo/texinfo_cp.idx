@@ -4,10 +4,10 @@ key: !
   texi_entry: @exclamdown{}
   element_href: texinfo_14.html#Inserting-Accents
   element_text: 13.3 Inserting Accents
-key: $ 
-  origin_href: texinfo_24.html#index-_0024-
-  entry: $ 
-  texi_entry: $ @c Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $ comment
+key: $
+  origin_href: texinfo_24.html#index-_0024
+  entry: $
+  texi_entry: $
   element_href: texinfo_24.html#GNU-Sample-Texts
   element_text: C.2 GNU Sample Texts
 key: (dir) as Up node of Top node

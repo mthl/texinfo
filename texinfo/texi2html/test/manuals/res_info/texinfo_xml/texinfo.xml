@@ -17916,8 +17916,7 @@ example.
 <para>Here are some notes on the example:
 </para>
 <itemize><itemfunction>&bullet;</itemfunction><item>
-<para><indexterm index="cp">$ <!-- Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $ comment -->
-</indexterm><indexterm index="cp">CVS Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $, in Texinfo</indexterm><indexterm index="cp">RCS Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $, in Texinfo</indexterm>The <samp>Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $</samp> comment is for CVS (see <xref><xrefnodename>Top</xrefnodename><xrefprinteddesc>Overview</xrefprinteddesc><xrefinfofile>cvs</xrefinfofile><xrefprintedname>Concurrent Versions System</xrefprintedname></xref>) or RCS (see rcsintro(1)) version control
+<para><indexterm index="cp">$</indexterm><indexterm index="cp">CVS Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $, in Texinfo</indexterm><indexterm index="cp">RCS Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $, in Texinfo</indexterm>The <samp>Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $</samp> comment is for CVS (see <xref><xrefnodename>Top</xrefnodename><xrefprinteddesc>Overview</xrefprinteddesc><xrefinfofile>cvs</xrefinfofile><xrefprintedname>Concurrent Versions System</xrefprintedname></xref>) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
 </para><example xml:space="preserve">Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $
 </example><para>(This is useful in all sources that use version control, not just manuals.)

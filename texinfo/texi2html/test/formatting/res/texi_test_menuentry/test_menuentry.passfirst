@@ -1,0 +1,37 @@
+test_menuentry.texi(,2) 
+test_menuentry.texi(,3) @setfilename test_menuentry.info
+test_menuentry.texi(,4) 
+test_menuentry.texi(,5) @node Top
+test_menuentry.texi(,6) @top test menu entry parsing
+test_menuentry.texi(,7) 
+test_menuentry.texi(,8) @menu
+test_menuentry.texi(,9) * (f)a1::
+test_menuentry.texi(,10) * (f)a2::  
+test_menuentry.texi(,11) * (f)a3::         d
+test_menuentry.texi(,12) * (f)a1c::@c c
+test_menuentry.texi(,13) * (f)a2c::  @c c
+test_menuentry.texi(,14) * (f)a3c::         d@c c
+test_menuentry.texi(,15) * (f) a4 ::   @c c
+test_menuentry.texi(,16) * (f)@@a@::: 
+test_menuentry.texi(,17) * a1:
+test_menuentry.texi(,18) * a2:  
+test_menuentry.texi(,19) * a1c:@c c
+test_menuentry.texi(,20) * a2c:  @c c
+test_menuentry.texi(,21) * a: (f)b
+test_menuentry.texi(,22) * a: (f)b@c c
+test_menuentry.texi(,23) * a: (f)b @c c
+test_menuentry.texi(,24) * a: (f)b1.c,
+test_menuentry.texi(,25) * a: (f)b2.c,     
+test_menuentry.texi(,26) * a: (f)b3.c,    d
+test_menuentry.texi(,27) * a: (f)b1c.c,@c c
+test_menuentry.texi(,28) * a: (f)b2c.c,     @c c
+test_menuentry.texi(,29) * a: (f)b3c.c,    d@c c
+test_menuentry.texi(,30) * a: (f)b1.. 
+test_menuentry.texi(,31) * a : (f) b2 ..
+test_menuentry.texi(,32) * a.n: (f)b3..         d
+test_menuentry.texi(,33) * a: (f)b1.c.
+test_menuentry.texi(,34) * a: (f)b2.c.  
+test_menuentry.texi(,35) * a: (f)b3.c. d
+test_menuentry.texi(,36) @end menu
+test_menuentry.texi(,37) 
+test_menuentry.texi(,38) @bye

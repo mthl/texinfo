@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.25 2009-09-10 20:32:28 pertusus Exp $
+# $Id: html.init,v 1.26 2009-09-15 18:21:27 pertusus Exp $
 
 use strict;
 
@@ -1679,28 +1679,6 @@ sub html_default_titlefont($$$)
     return '';
 }
 
-# At some point in time (before 4.7?) according to the texinfo 
-# manual, url shouldn't lead to a link but rather be formatted 
-# like text. It is now what indicateurl do, url is the same that
-# uref with one arg. If we did like makeinfo did it would have been
-#sub url($$)
-#{
-#    return '&lt;<code>' . $_[0] . '</code>&gt;';
-#}
-# 
-# This is unused, html_default_uref is used instead
-sub html_default_url ($$)
-{
-    shift;
-    my $args = shift;
-    my $url = shift @$args;
-    #$url =~ s/\s*$//;
-    #$url =~ s/^\s*//;
-    $url = main::normalise_space($url);
-    return '' unless ($url =~ /\S/);
-    return &$anchor('', $url, $url);
-}
-
 sub html_default_uref($$)
 {
     shift;
@@ -1708,8 +1686,6 @@ sub html_default_uref($$)
     my $url = shift @$args;
     my $text = shift @$args;
     my $replacement = shift @$args;
-    #$url =~ s/\s*$//;
-    #$url =~ s/^\s*//;
     $url = main::normalise_space($url);
     $replacement = '' if (!defined($replacement));
     $replacement = main::normalise_space($replacement);
@@ -1739,8 +1715,6 @@ sub html_default_email($$)
     my $mail = shift @$args;
     my $text = shift @$args;
     $mail = main::normalise_space($mail);
-    #$mail =~ s/\s*$//;
-    #$mail =~ s/^\s*//;
     $text = $mail unless (defined($text) and ($text ne ''));
     $text = main::normalise_space($text);
     return $text if ($mail eq '');
@@ -2115,7 +2089,7 @@ sub html_default_menu_command($$$)
 #     of a href= attribute in a <a> element).
 sub html_default_menu_link($$$$$$$$)
 {
-    my $entry = shift;
+    my $element_name = shift;
     my $state = shift;
     my $href = shift;
     my $node = shift;
@@ -2130,10 +2104,31 @@ sub html_default_menu_link($$$$$$$$)
 
     $title = '' unless ($has_title);
 #print STDERR  "MENU_LINK($in_commands)($state->{'preformatted'})\n";
-    if (($entry eq '') or $NODE_NAME_IN_MENU or $preformatted)
+    my $entry;
+    my $symbol = '';
+    if ($preformatted)
     {
         $title .= ':' if ($title ne '');
         $entry = "$MENU_SYMBOL$title$node";
+    }
+    elsif ($element_name eq '' or $NODE_NAME_IN_MENU)
+    {
+         if ($has_title)
+         {
+             $entry = "$title";
+             $entry =~ s/^\s*//;
+             $symbol = "$MENU_SYMBOL ";
+         }
+         else
+         {
+             $entry = "$node";
+             $entry =~ s/^\s*//;
+             $symbol = "$MENU_SYMBOL ";
+         }
+    }
+    else
+    {
+         $entry = $element_name;
     }
     $html_menu_entry_index++;
     my $accesskey;
@@ -2141,8 +2136,8 @@ sub html_default_menu_link($$$$$$$$)
     $entry = &$anchor ('', $href, $entry, $accesskey) if (defined($href));
 
     return $entry.$ending if ($preformatted);
-    return $entry .'&nbsp;' if ($in_commands);
-    return "<tr><td align=\"left\" valign=\"top\">$entry</td><td>&nbsp;&nbsp;</td>";
+    return "$symbol$entry" .'&nbsp;' if ($in_commands);
+    return "<tr><td align=\"left\" valign=\"top\">$symbol$entry</td><td>&nbsp;&nbsp;</td>";
 }
 
 sub html_simplify_text($)
@@ -2972,6 +2967,7 @@ sub html_default_index_letter($$$)
      my $letter = shift;
      my $id = shift;
      my $text = shift;
+     return $text if ($letter =~ /^\s*$/);
      return '<tr><th>' . &$anchor($id,'',&$protect_text($letter)) . 
      "</th><td></td><td></td></tr>\n" . $text . 
      "<tr><td colspan=\"4\"> $DEFAULT_RULE</td></tr>\n";
@@ -2997,6 +2993,7 @@ sub html_default_index_entry($$$$$$$$$)
     my $entry_element_target = shift;
     my $index_entry_ref = shift;
 
+    return '' if ($entry !~ /\S/);
     my $element = $index_entry_ref->{'real_element'};
     if (defined($element))
     {

@@ -27,8 +27,8 @@ fi
 
 [ -d $basename ] && rm -rf $basename
 mkdir $basename
-echo "perl -w -x $srcdir/../../texi2html.pl -test -init l2h_tmp_dir.init -conf-dir $srcdir/../../examples -init tex4ht.init -expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2" >> $logfile
-perl -w -x $srcdir/../../texi2html.pl -test -init l2h_tmp_dir.init -conf-dir $srcdir/../../examples -init tex4ht.init -expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2
+echo "perl -w -x $srcdir/../../texi2html.pl -test -init l2h_tmp_dir.init -conf-dir $srcdir/../../maintained_extra -init tex4ht.init -expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2" >> $logfile
+perl -w -x $srcdir/../../texi2html.pl -test -init l2h_tmp_dir.init -conf-dir $srcdir/../../maintained_extra -init tex4ht.init -expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2
 
 return_code=0
 ret=$?

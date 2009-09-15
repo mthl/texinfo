@@ -285,7 +285,7 @@ texinfo_31.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents	toc	J.1
 texinfo_32.html#Command-and-Variable-Index-1	toc	Command and Variable Index
 texinfo_35.html#Concept-Index-1	toc	Concept Index
 texinfo_14.html#index-_00a1	cp	!
-texinfo_24.html#index-_0024-	cp	$ 
+texinfo_24.html#index-_0024	cp	$
 texinfo_7.html#index-_0028dir_0029-as-Up-node-of-Top-node	cp	(dir) as Up node of Top node
 texinfo_21.html#index-_002dD-dir	cp	-D dir
 texinfo_21.html#index-_002dD-var	cp	-D var

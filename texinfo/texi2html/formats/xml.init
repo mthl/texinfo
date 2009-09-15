@@ -169,7 +169,6 @@ $menu_description = \&xml_menu_description;
 $menu_link = \&xml_menu_link;
 $element_heading = \&xml_heading;
 $heading = \&xml_heading;
-#$heading_texi = \&xml_heading_texi;
 $paragraph = \&xml_paragraph;
 $preformatted = \&xml_preformatted;
 $misc_element_label = \&xml_noop;
@@ -350,16 +349,6 @@ sub xml_print_page_foot($)
     print $fh <<EOT;
 </texinfo>
 EOT
-}
-
-sub xml_heading_texi($$$)
-{
-    my $tag = shift;
-    my $texi = shift;
-    my $number = shift;
-    $texi =~ s/\s*$//;
-    $texi =~ s/^\s*//;
-    return $texi;
 }
 
 sub xml_one_section($$)
@@ -623,11 +612,15 @@ sub xml_misc_commands($$$$$)
     if ($macro eq 'setfilename')
     {
        my $arg = $args->[0];
-       $arg =~ s/^\s*//;
-       $arg =~ s/\s*$//;
-       $arg = main::substitute_line($arg, "\@$macro");
-       $arg =~ s/\.[^\.]*$//;
-       $result_text = "<${macro}>${arg}.xml</${macro}>\n";
+       #$arg =~ s/^\s*//;
+       #$arg =~ s/\s*$//;
+       #$arg = main::substitute_line($arg, "\@$macro");
+       if ($arg =~ /\S/)
+       {
+           $arg = get_conf('setfilename');
+           $arg =~ s/\.[^\.]*$//;
+           $result_text = "<${macro}>${arg}.xml</${macro}>\n";
+       }
     }
     return ($macro, $line, $result_text);
 }

@@ -321,7 +321,7 @@ sub chm_noop($$)
 sub chm_text($)
 {
     my $text = shift;
-    return main::simple_format(undef,undef,$text);
+    return main::simple_format(undef,undef,'chm_text',$text);
 }
 
 
@@ -350,13 +350,12 @@ sub chm_toc_body($)
             }
         }
         my $text = '';
-        if ($NUMBER_SECTIONS)
+        if ($NUMBER_SECTIONS and defined($element->{'number'}) and $element->{'number'} ne '')
         {
              $text .= $element->{'number'} . " ";
              
         }
         $text .= chm_text($element->{'texi'});
-        $text =~ s/^\s*//;
         push (@hhc_lines, "<LI> <OBJECT type=\"text/sitemap\">\n<param name=\"Name\" value=\"$text\">\n<param name=\"Local\" value=\"$element->{'file'}#$element->{'target'}\">\n</OBJECT> </LI>\n");
         if (!$chm_files{$element->{'file'}})
         {
@@ -390,7 +389,7 @@ sub chm_index_summary_file_entry ($$$$$$$$)
     my $element_text = shift;
     my $is_printed = shift;
     $entry = chm_text($texi_entry);
-    print IDXFILE "<LI> <OBJECT type=\"text/sitemap\">\n<param name=\"Name\" value=\"$entry\">\n<param name=\"Local\" value=\"$origin_href\">\n</OBJECT> </LI>\n";
+    print IDXFILE "<LI> <OBJECT type=\"text/sitemap\">\n<param name=\"Name\" value=\"$entry\">\n<param name=\"Local\" value=\"$origin_href\">\n</OBJECT> </LI>\n" if ($key =~ /\S/);
 }
 
 sub chm_index_summary_file_begin($$)

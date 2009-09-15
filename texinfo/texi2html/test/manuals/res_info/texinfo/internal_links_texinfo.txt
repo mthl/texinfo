@@ -295,7 +295,7 @@ texinfo#GNU-Free-Documentation-License	toc	GNU Free Documentation License
 texinfo#Command-and-Variable-Index	toc	Command and Variable Index
 texinfo#Concept-Index	toc	Concept Index
 texinfo#index-_00a1	cp	!
-texinfo#index-_0024-	cp	$ 
+texinfo#index-_0024	cp	$
 texinfo#index-_0028dir_0029-as-Up-node-of-Top-node	cp	(dir) as Up node of Top node
 texinfo#index-_002dD-dir	cp	-D DIR
 texinfo#index-_002dD-var	cp	-D VAR

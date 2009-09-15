@@ -1,0 +1,59 @@
+This is error_in_footnote_caption.info, produced by makeinfo version
+4.13 from error_in_footnote_caption.texi.
+
+
+File: error_in_footnote_caption.info,  Node: Top,  Up: (dir)
+
+Test an error in a footnote within a @caption
+*********************************************
+
+Float text
+
+Text 1: In caption(1) LaTeX without brace LaTeX
+
+Float text1
+
+Text 2: In
+
+   caption 2(2) Second (3) LaTeX2 without brace LaTeX
+
+Float text2
+
+Text 3: In
+
+   caption 2(4) Second (5) LaTeX3 without brace LaTeX
+
+* Menu:
+
+* Text 1: label.                         In caption(5) LaTeX without ...
+* Text 2: label1.                        In
+* Text 3: label2.                        In
+
+   ---------- Footnotes ----------
+
+   (1) TeX without brace TeX
+
+   (2) TeX2 without brace TeX
+
+   (3) bullet1 without brace *
+
+   (4) TeX3 without brace TeX and now (C)
+
+   * ERror on error error--> in item
+
+   (5) bullet1 without brace *
+
+
+
+Tag Table:
+Node: Top112
+Ref: label269
+Ref: label1330
+Ref: label2410
+Ref: Top-Footnote-1697
+Ref: Top-Footnote-2727
+Ref: Top-Footnote-3758
+Ref: Top-Footnote-4790
+Ref: Top-Footnote-5871
+
+End Tag Table

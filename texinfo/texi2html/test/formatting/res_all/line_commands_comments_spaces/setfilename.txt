@@ -1,0 +1,29 @@
+top element 
+************
+
+* (gcc)node::  * node name:(truc)node 
+* nodesub ::
+* next::
+
+Heading  
+=========
+
+truc : In quotation
+
+Float
+
+Text   1
+
+* List of Text  :
+* Text   1: label  
+
+
+
+* Index:
+* index entry  : top element .
+
+nodesub 
+--------
+
+next
+----

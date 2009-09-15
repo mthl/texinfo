@@ -927,9 +927,6 @@ sub t2h_roff_preformatted($$$$$$$$$$)
 #      appendix..., 2 for section and so on...
 # 'tag_level': the sectionning element name, raisesections and lowersections
 #      taken into account
-#
-# relevant configuration variable:
-# $NUMBER_SECTIONS
 sub t2h_roff_heading($$$$$;$$)
 {
     my $element = shift;

@@ -1,0 +1,36 @@
+unclosed_verb_line_commands.texi(,2) 
+unclosed_verb_line_commands.texi(,3) @setfilename @verb{setfilename.info @c setfilename
+unclosed_verb_line_commands.texi(,4) @settitle @verb{Settitle @c settittle
+unclosed_verb_line_commands.texi(,5) 
+unclosed_verb_line_commands.texi(,6) @node @verb{Top @c comment mode
+unclosed_verb_line_commands.texi(,7) @top @verb{top element@  @comment @top
+unclosed_verb_line_commands.texi(,8) 
+unclosed_verb_line_commands.texi(,9) @menu
+unclosed_verb_line_commands.texi(,10) * (gcc)node::{@  @c comment menu entry
+unclosed_verb_line_commands.texi(,11) * node {name:(truc)node@ @c comment menu entru node
+unclosed_verb_line_commands.texi(,12) * nodesub@ ::
+unclosed_verb_line_commands.texi(,13) * next::
+unclosed_verb_line_commands.texi(,14) @end menu
+unclosed_verb_line_commands.texi(,15) 
+unclosed_verb_line_commands.texi(,16) @heading @verb{Heading @     @c heading
+unclosed_verb_line_commands.texi(,17) 
+unclosed_verb_line_commands.texi(,18) @c quotation argument is put within @b and prepended, therefore a @verb{
+unclosed_verb_line_commands.texi(,19) @c will extend to the end of the file.
+unclosed_verb_line_commands.texi(,20) @quotation {truc@ @c quotation 
+unclosed_verb_line_commands.texi(,21) In quotation
+unclosed_verb_line_commands.texi(,22) @end quotation
+unclosed_verb_line_commands.texi(,23) 
+unclosed_verb_line_commands.texi(,24) @float @verb{Text @ , label @ @c float
+unclosed_verb_line_commands.texi(,25) Float
+unclosed_verb_line_commands.texi(,26) @end float
+unclosed_verb_line_commands.texi(,27) 
+unclosed_verb_line_commands.texi(,28) @listoffloats @verb{Text @ @c listoffloats
+unclosed_verb_line_commands.texi(,29) 
+unclosed_verb_line_commands.texi(,30) @cindex index @verb{entry @c index entry
+unclosed_verb_line_commands.texi(,31) 
+unclosed_verb_line_commands.texi(,32) @printindex cp @c printindex 
+unclosed_verb_line_commands.texi(,33) 
+unclosed_verb_line_commands.texi(,34) @node @verb{nodesub@ ,next,,Top
+unclosed_verb_line_commands.texi(,35) 
+unclosed_verb_line_commands.texi(,36) @node next, @verb{nodesub@ 
+unclosed_verb_line_commands.texi(,37) @bye @c bye

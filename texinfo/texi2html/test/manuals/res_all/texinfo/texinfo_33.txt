@@ -3,7 +3,7 @@ Concept Index
 
 * Index:
 * !: 13.3 Inserting Accents.
-* $ : C.2 GNU Sample Texts.
+* $: C.2 GNU Sample Texts.
 * (dir) as Up node of Top node: 6.3.5 The First Node.
 * -commands-in-node-names: 20.1.3 Options for makeinfo.
 * -D dir: 20.2.5 Invoking install-info.

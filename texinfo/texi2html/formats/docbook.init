@@ -280,7 +280,7 @@ $misc_command_line     = \&docbook_misc_commands;
 
 }
 
-sub docbook_footnote($$$$$)
+sub docbook_footnote
 {
     $docbook_in_footnote = 1;
     my $result = &$kept_footnote_function(@_);
@@ -311,7 +311,9 @@ sub docbook_email($$)
     $mail = main::normalise_space($mail);
     if (defined($text) and $text =~ /\S/)
     {
-        return docbook_add_id('ulink').' url="mailto:'.main::normalise_space($mail).'">'.$text.'</ulink>';
+        # FIXME normalise_space would be more legible.
+        #return docbook_add_id('ulink').' url="mailto:'.$mail.'">'.main::normalise_space($text).'</ulink>';
+        return docbook_add_id('ulink').' url="mailto:'.$mail.'">'.$text.'</ulink>';
     }
     return docbook_add_id('email').">$mail</email>";
 }
@@ -1455,12 +1457,13 @@ sub docbook_style($$$$$$$$$)
     my $line_nr = shift;
     my $state = shift;
     my $command_stack = shift;
+    my $kept_line_nrs = shift;
 
     my $result = $text;
     if (exists($style->{'function'}))
     {
         my $function = $style->{'function'};
-        $result = &$function($command, $args, $command_stack, $state, $line_nr);
+        $result = &$function($command, $args, $command_stack, $state, $line_nr, $kept_line_nrs);
     }
     elsif (exists($style->{'attribute'}))
     {

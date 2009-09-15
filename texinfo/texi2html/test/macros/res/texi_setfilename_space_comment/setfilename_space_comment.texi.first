@@ -1,0 +1,5 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename file @c comment
+
+@bye

@@ -3,8 +3,8 @@
 @setfilename file  other file  are you joking!
 
 @node Top
-@top In top @setfilename
+@top In top 
 
-@setfilename
+
 
 @bye

@@ -1,3 +1,20 @@
+2009-09-15   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: split do_simple to avoid redundant condition
+	checking.
+	Keep line numbers within nested styles.
+	Uncomment --command handling for now.
+	Use scan_line_separators to parse @float and @quotation lines
+	instead of 'cmd_line'.
+	Remove dead code related with cmd_line and obsolete end of line 
+	protection code.
+	Give a context string for substitute_text.
+	Better menu entry parsing.
+	Consistently remove comments and spaces at the end of line
+	@-command arguments.
+	Pass empty index entries and empty letters down to the last pass.
+	* formats/html.init: better-looking menu entries.
+
 2009-09-11   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* formats/docbook.init, formats/xml.init: remove the useless 

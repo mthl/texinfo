@@ -1,0 +1,37 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename @verb{setfilename.info @c setfilename
+@settitle @verb{Settitle @c settittle
+
+@node @verb{Top @c comment mode
+@top @verb{top element@  @comment @top
+
+@menu
+* (gcc)node::{@  @c comment menu entry
+* node {name:(truc)node@ @c comment menu entru node
+* nodesub@ ::
+* next::
+@end menu
+
+@heading @verb{Heading @     @c heading
+
+@c quotation argument is put within @b and prepended, therefore a @verb{
+@c will extend to the end of the file.
+@quotation {truc@ @c quotation 
+In quotation
+@end quotation
+
+@float @verb{Text @ , label @ @c float
+Float
+@end float
+
+@listoffloats @verb{Text @ @c listoffloats
+
+@cindex index @verb{entry @c index entry
+
+@printindex cp @c printindex 
+
+@node @verb{nodesub@ ,next,,Top
+
+@node next, @verb{nodesub@ 
+@bye @c bye

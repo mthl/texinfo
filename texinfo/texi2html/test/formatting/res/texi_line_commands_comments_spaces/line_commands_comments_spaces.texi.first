@@ -1,0 +1,35 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename setfilename.info@  @c setfilename
+@settitle Settitle @ @c settittle
+
+@node Top @c comment mode
+@top top element@  @comment @top
+
+@menu
+* (gcc)node::@  @c comment menu entry
+* node name:(truc)node@ @c comment menu entru node
+* nodesub@ ::
+* next::
+@end menu
+
+@heading Heading @     @c heading
+
+@quotation truc@ @c quotation 
+In quotation
+@end quotation
+
+@float Text @ , label @ @c float
+Float
+@end float
+
+@listoffloats Text @ @c listoffloats
+
+@cindex index entry @  @c index entry
+
+@printindex cp @c printindex 
+
+@node nodesub@ ,next,,Top
+
+@node next, nodesub@ 
+@bye

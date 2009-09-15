@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.23 2009-09-08 16:17:19 pertusus Exp $
+# $Id: mediawiki.init,v 1.24 2009-09-15 18:21:27 pertusus Exp $
 
 html_default_load();
 
@@ -267,9 +267,6 @@ sub mediawiki_foot_section($)
 #      appendix..., 2 for section and so on...
 # 'tag_level': the sectionning element name, raisesections and lowersections
 #      taken into account
-#
-# relevant configuration variable:
-# $NUMBER_SECTIONS
 
 $heading           = \&mediawiki_heading;
 

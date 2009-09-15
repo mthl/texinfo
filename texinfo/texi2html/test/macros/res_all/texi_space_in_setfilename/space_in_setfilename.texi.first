@@ -1,0 +1,5 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename @ @verb{: name :}@ 
+
+@bye
