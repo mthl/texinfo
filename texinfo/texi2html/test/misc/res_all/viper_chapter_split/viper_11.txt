@@ -44,8 +44,8 @@ Concept Index
 * changing case: 2.9 New Commands.
 * changing case: 4.2.6 Changing Text.
 * changing tab width: 4.7 Options.
-* CHAR: 4.1 Groundwork.
 * char: 4.1 Groundwork.
+* CHAR: 4.1 Groundwork.
 * column movement: 4.2.1 Move Commands.
 * Command history: 2.9 New Commands.
 * command line: 1.1 Emacs Preliminaries.
@@ -209,8 +209,8 @@ Concept Index
 * window: 1.1 Emacs Preliminaries.
 * word search: 2.6 Improved Search.
 * word wrap: 4.7 Options.
-* WORDS: 4.1 Groundwork.
 * words: 4.1 Groundwork.
+* WORDS: 4.1 Groundwork.
 
 Table of Contents
 *****************

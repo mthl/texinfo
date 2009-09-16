@@ -11614,8 +11614,8 @@ Appendix H Index
 * tape positioning: 9.5 Many Archives on One Tape.
 * Tapes, using `--delete' and: 4.2.5 Removing Archive Members Using `--delete'.
 * TAPE_FILE: 5.4.1 General-Purpose Variables.
-* TAR: 5.4.1 General-Purpose Variables.
 * tar: 1.3 What tar Does.
+* TAR: 5.4.1 General-Purpose Variables.
 * tar archive: 1.2 Some Definitions.
 * Tar archive formats: 8 Controlling the Archive Format.
 * tar entry: 1.4 How tar Archives are Named.

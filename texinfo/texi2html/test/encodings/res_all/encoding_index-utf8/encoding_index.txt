@@ -9,14 +9,14 @@ top
 * 9: top.
 * >=: top.
 * ``: top.
-* A: top.
 * a: top.
+* A: top.
 * AE: top.
 * b: top.
 * B: top.
 * c: top.
-* D: top.
 * d: top.
+* D: top.
 * e: top.
 * Euro: top.
 * f: top.
@@ -30,8 +30,8 @@ top
 * j: top.
 * k: top.
 * l: top.
-* /L: top.
 * /l: top.
+* /L: top.
 * m: top.
 * n: top.
 * o: top.

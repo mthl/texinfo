@@ -11,8 +11,8 @@ top
 * “: top.
 * €: top.
 * ≥: top.
-* A: top.
 * a: top.
+* A: top.
 * b: top.
 * B: top.
 * c: top.

@@ -29,11 +29,11 @@ commands are listed without their preceding `@'.
 * { (literal `{'): 13.1.2 Inserting `{' and `}'with @{ and @}.
 * } (literal `}'): 13.1.2 Inserting `{' and `}'with @{ and @}.
 * ~ (tilde accent): 13.3 Inserting Accents.
-* AA: 13.3 Inserting Accents.
 * aa: 13.3 Inserting Accents.
+* AA: 13.3 Inserting Accents.
 * acronym: 9.1.13 @acronym{acronym}.
-* AE: 13.3 Inserting Accents.
 * ae: 13.3 Inserting Accents.
+* AE: 13.3 Inserting Accents.
 * afourlatex: 19.12 Printing on A4 Paper.
 * afourpaper: 19.12 Printing on A4 Paper.
 * afourwide: 19.12 Printing on A4 Paper.
@@ -190,14 +190,14 @@ commands are listed without their preceding `@'.
 * node: 6.3 The @node Command.
 * noindent: 10.12 @noindent: Omitting Indentation.
 * novalidate: 19.2 Format with tex and texindex.
-* O: 13.3 Inserting Accents.
 * o: 13.3 Inserting Accents.
+* O: 13.3 Inserting Accents.
 * occur: F.4 Using occur.
 * occur-mode-goto-occurrence: 2.3 Showing the Section Structure of a File.
 * oddfooting: E.3 How to Make Your Own Headings.
 * oddheading: E.3 How to Make Your Own Headings.
-* OE: 13.3 Inserting Accents.
 * oe: 13.3 Inserting Accents.
+* OE: 13.3 Inserting Accents.
 * option: 9.1.10 @option{option-name}.
 * page: 14.5 @page: Start a New Page.
 * page, within @titlepage: 3.4.1 @titlepage.

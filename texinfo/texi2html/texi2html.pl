@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.333 2009-09-15 18:21:26 pertusus Exp $
+# $Id: texi2html.pl,v 1.334 2009-09-16 08:43:13 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -991,53 +991,25 @@ my %t2h_default_seen_files;
 my $t2h_default_element_split_printindices;
 my %t2h_default_split_files;
 
-#my %t2h_default_indices;           # hash of indices names containing 
-#                                   # raw index entries by index names
-# use %{$Texi2HTML::THISDOC{'raw_indices_hash'}}
-
-# FIXME call it where indices are split in main program
-sub t2h_default_init_split_indices ()
+# construct a hash of index names holding the letter grouped how they will
+# be split.
+sub t2h_default_init_split_indices()
 {
-    #print STDERR "Do splitting of index letters, once.\n";
-
     push @command_handler_process, \&t2h_default_index_rearrange_directions;
-    #%t2h_default_index_letters_hash = ();
     %t2h_default_index_letters_array = ();
     %t2h_default_seen_files = ();
     %t2h_default_split_files = ();
     $t2h_default_element_split_printindices = undef;
     $t2h_default_index_page_nr = 0;
     $t2h_default_file_number = 0;
-    #my %indices_done;
-    # Intermediate hash used for sorting entries by letter.
-    my %t2h_default_index_letters_hash = ();
 
-    foreach my $index_name(keys %{$Texi2HTML::THISDOC{'raw_indices_hash'}})
+    foreach my $index_name(keys %{$Texi2HTML::THISDOC{'index_letters_array'}})
     {
-        #print STDERR "Gathering and sorting $index_name ($Texi2HTML::THISDOC{'raw_indices_hash'}->{$index_name}) letters\n";
-        foreach my $key (keys %{$Texi2HTML::THISDOC{'raw_indices_hash'}->{$index_name}})
-        {
-          my $letter = uc(substr($key, 0, 1));
-          $t2h_default_index_letters_hash{$index_name}->{$letter}->{$key} = $Texi2HTML::THISDOC{'raw_indices_hash'}->{$index_name}->{$key};
-        }
-
         my $entries_count = 0;
         my @letters = ();
-        # use cmp if only letters or only symbols, otherwise symbols before 
-        # letters
-        foreach my $letter (sort { 
-           ((($a =~ /^[[:alpha:]]/ and $b =~ /^[[:alpha:]]/) or 
-            ($a !~ /^[[:alpha:]]/ and $b !~ /^[[:alpha:]]/)) && $a cmp $b)
-             || ($a =~ /^[[:alpha:]]/ && 1) || -1 } (keys(%{$t2h_default_index_letters_hash{$index_name}})))
+        foreach my $letter_entry (@{$Texi2HTML::THISDOC{'index_letters_array'}->{$index_name}})
         {
-          my $letter_entry = {'letter' => $letter};
-          # FIXME sort without uc?
-          # This sorts the entries for a given letter
-          foreach my $key (sort {uc($a) cmp uc($b)} (keys(%{$t2h_default_index_letters_hash{$index_name}->{$letter}})))
-          {
-            push @{$letter_entry->{'entries'}}, $t2h_default_index_letters_hash{$index_name}->{$letter}->{$key};
-          }
-          push @letters, $letter_entry;
+          push @letters, $letter_entry->{'letter'};
           $entries_count += scalar(@{$letter_entry->{'entries'}});
           # Don't split if document is not split
           if (get_conf('SPLIT') and $SPLIT_INDEX and $entries_count >= $SPLIT_INDEX)
@@ -1050,6 +1022,7 @@ sub t2h_default_init_split_indices ()
         push @{$t2h_default_index_letters_array{$index_name}}, [ @letters ] if (scalar(@letters));
     }
 }
+
 
 # this is used for indices that don't appear to be associated
 sub t2h_default_prepare_printindex_unsplit_groups($)
@@ -1113,8 +1086,6 @@ sub t2h_default_associate_index_element($$$$)
   {
     unless ($place->{'command'} and $place->{'command'} eq 'printindex')
     {
-#       my $place_element_ref = 'UNDEF';
-#       $place_element_ref = $place->{'element_ref'} if ($place->{'element_ref'});
 #print STDERR "HHHHHHHHH ($element->{'texi'}) place: $place->{'texi'}, place_element_ref $place_element_ref, current: $current_element->{'texi'}, $current_element->{'file'}\n";
        push @{$current_element->{'place'}}, $place;
        $place->{'file'} = $current_element->{'file'};
@@ -1167,8 +1138,8 @@ sub t2h_default_associate_index_element($$$$)
       #print STDERR "Pushing $element, $element->{'texi'}, $printindex\n";
       foreach my $split_group (@letter_groups)
       {
-        my $first_letter = $split_group->{'letters'}->[0]->{'letter'};
-        my $last_letter = $split_group->{'letters'}->[-1]->{'letter'};
+        my $first_letter = $split_group->{'letters'}->[0];
+        my $last_letter = $split_group->{'letters'}->[-1];
         if (!$split_group->{'element'})
         {
           #construct new element name
@@ -1248,8 +1219,8 @@ sub t2h_default_index_rearrange_directions()
       #print STDERR "  I Processing $printindex $printindex->{'name'} (@{$printindex->{'split_groups'}})\n";
       foreach my $split_group (@{$printindex->{'split_groups'}})
       {
-        my $first_letter = $split_group->{'letters'}->[0]->{'letter'};
-        my $last_letter = $split_group->{'letters'}->[-1]->{'letter'};
+        my $first_letter = $split_group->{'letters'}->[0];
+        my $last_letter = $split_group->{'letters'}->[-1];
 
         my $new_element = $split_group->{'element'};
         next if ($current_element eq $new_element);
@@ -1355,10 +1326,8 @@ sub t2h_GPL_default_printindex($$)
     my %letter_id;
     foreach my $summary_split_group (@split_letters)
     {
-      foreach my $letter_entry (@{$summary_split_group->{'letters'}})
+      foreach my $letter (@{$summary_split_group->{'letters'}})
       {
-        my $letter = $letter_entry->{'letter'};
-        #my $letter = $letter_entry;
         my $dest_file = '';
         $dest_file = $summary_split_group->{'element'}->{'file'}
            if ($summary_split_group ne $split_group);
@@ -1390,12 +1359,11 @@ sub t2h_GPL_default_printindex($$)
     $t2h_symbol_indices = 0;
 
     my $letters_text = '';
-    foreach my $letter_entry (@{$split_group->{'letters'}})
+    #foreach my $letter_entry (@{$split_group->{'letters'}})
+    foreach my $letter (@{$split_group->{'letters'}})
     {
-      my $letter = $letter_entry->{'letter'};
       my $entries_text = '';
-      #foreach my $entry (@{$letter_entries{$letter}->{'entries'}})
-      foreach my $index_entry_ref (@{$letter_entry->{'entries'}})
+      foreach my $index_entry_ref (@{$Texi2HTML::THISDOC{'index_letters_hash'}->{$index_name}->{$letter}})
       {
         my ($text_href, $entry_file, $element_file, $entry_target,
           $entry_element_target, $formatted_entry, $element_href, $entry_element_text)
@@ -5798,21 +5766,35 @@ sub menu_entry_texi($$$)
 
 sub prepare_indices()
 {
-  # over all the indices that had at least one printindex
-  foreach my $region (keys(%{$Texi2HTML::THISDOC{'indices'}}))
-  {
-    foreach my $index_name (keys(%{$Texi2HTML::THISDOC{'indices'}->{$region}}))
+    #print STDERR "Do splitting of index letters, once.\n";
+
+    foreach my $index_name(keys %{$Texi2HTML::THISDOC{'index_entries_array'}})
     {
-      my $entries = $Texi2HTML::THISDOC{'raw_indices_hash'}->{$index_name};
-      #print STDERR "Associate $index_name ($Texi2HTML::THISDOC{'raw_indices_hash'}->{$index_name})\n";
-      foreach my $printindex (@{$Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}})
-      {
-        #print STDERR "PRINTINDEX filling($printindex) region $region name $index_name\n";
-        $printindex->{'entries'} = $entries;
-      }
-    } 
-  }
-  Texi2HTML::Config::t2h_default_init_split_indices();
+        #print STDERR "$Texi2HTML::THISDOC{'index_entries_array'}->{$index_name}) letters\n";
+        my %letters_hash;
+        foreach my $index_entry (@{$Texi2HTML::THISDOC{'index_entries_array'}->{$index_name}})
+        {
+          my $key = $index_entry->{'key'};
+          my $letter = uc(substr($key, 0, 1));
+          push @{$letters_hash{$letter}}, $index_entry;
+        }
+
+        # use cmp if only letters or only symbols, otherwise symbols before 
+        # letters
+        foreach my $letter (sort { 
+           ((($a =~ /^[[:alpha:]]/ and $b =~ /^[[:alpha:]]/) or 
+            ($a !~ /^[[:alpha:]]/ and $b !~ /^[[:alpha:]]/)) && $a cmp $b)
+             || ($a =~ /^[[:alpha:]]/ && 1) || -1 } (keys %letters_hash))
+        {
+          # FIXME sort without uc?
+          # This sorts the entries for a given letter
+          my @sorted_letter_entries = (sort {uc($a->{'key'}) cmp uc($b->{'key'})} (@{$letters_hash{$letter}}));
+
+          push @{$Texi2HTML::THISDOC{'index_letters_array'}->{$index_name}}, { 'letter' => $letter, 'entries' => \@sorted_letter_entries };
+          $Texi2HTML::THISDOC{'index_letters_hash'}->{$index_name}->{$letter} = \@sorted_letter_entries;
+        }
+    }
+    Texi2HTML::Config::t2h_default_init_split_indices();
 }
 
 my @index_labels;                  # array corresponding with @?index commands
@@ -7599,24 +7581,19 @@ sub enter_index_entry($$$$$)
     print STDERR "# in $region_text enter \@$command ${prefix}index($key) [$entry] with id $id_text ($index_entry)\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
 
-    while(exists $Texi2HTML::THISDOC{'raw_indices_hash'}->{$index_name}->{$key})
-    {
-        $key .= ' ';
-    }
     $index_entry->{'entry'} = '@code{'.$index_entry->{'entry'}.'}'
        if (defined($index_names{$index_name}) and 
         defined($index_names{$index_name}->{'prefixes'}) and 
         $index_names{$index_name}->{'prefixes'}->{$prefix} 
         and $key =~ /\S/);
 
-    #print STDERR "Index $index_name Put `$key' in $Texi2HTML::THISDOC{'raw_indices_hash'}->{$index_name}\n";
-    $Texi2HTML::THISDOC{'raw_indices_hash'}->{$index_name}->{$key} = $index_entry;
     push @$place, $index_entry;
 
     #print STDERR "enter_index_entry: region $region, index_entry $index_entry, \@$command, texi `$entry'\n";
     # don't add the index entry to the list of index entries used for index
     # entry formatting, if the index entry appears in a region like copying 
     push @index_labels, $index_entry unless ($index_entry_hidden);
+    push @{$Texi2HTML::THISDOC{'index_entries_array'}->{$index_name}}, $index_entry;
     push @{$Texi2HTML::THISDOC{'index_entries'}->{$region}->{$entry}->{'entries'}}, $index_entry;
 }
 
@@ -11225,13 +11202,14 @@ sub do_index_summary_file($$)
 {
     my $name = shift;
     my $docu_name = shift;
-    my $entries = $Texi2HTML::THISDOC{'raw_indices_hash'}->{$name};
     &$Texi2HTML::Config::index_summary_file_begin ($name, $printed_indices{$name}, $docu_name);
     print STDERR "# writing $name index summary for $docu_name\n" if $T2H_VERBOSE;
 
-    foreach my $key (sort keys %$entries)
+    foreach my $letter_entries (@{$Texi2HTML::THISDOC{'index_letters_array'}->{$name}})
     {
-        my $entry = $entries->{$key};
+      foreach my $entry (@{$letter_entries->{'entries'}})
+      {
+        #my $entry = $entries->{$key};
         my $indexed_element = $entry->{'element'};
         my $entry_element = $indexed_element;
         $entry_element = $entry_element->{'element_ref'} if (defined($entry_element->{'element_ref'}));
@@ -11246,12 +11224,13 @@ sub do_index_summary_file($$)
             $origin_href .= '#' . $indexed_element->{'target'};
         }
         &$Texi2HTML::Config::index_summary_file_entry ($name,
-          $key, $origin_href, 
+          $entry->{'key'}, $origin_href, 
           substitute_line($entry->{'entry'}, "\@$entry->{'command'}"), $entry->{'entry'},
           href($entry_element, ''),
           $entry_element->{'text'},
           $printed_indices{$name},
           $docu_name);
+       }
     }
     &$Texi2HTML::Config::index_summary_file_end ($name, $printed_indices{$name}, $docu_name);
 }
@@ -15860,8 +15839,16 @@ while(@input_files)
    @index_labels = ();             # array corresponding with @?index commands
                                    # constructed during pass_texi, used to
                                    # put labels in pass_text
-   %{$Texi2HTML::THISDOC{'raw_indices_hash'}} = ();   # hash of indices names containing 
-                                   # raw index entries
+                                   # right now it is only used for debugging
+                                   # purposes.
+   %{$Texi2HTML::THISDOC{'index_entries_array'}} = (); # holds the index 
+                              # entries in order of appearance in the document
+                              # for each index name.
+   %{$Texi2HTML::THISDOC{'index_letters_array'}} = (); # holds the sorted
+                            # index letters for each index name. The sorted
+                            # letters hold the sorted index entries
+   %{$Texi2HTML::THISDOC{'index_letters_hash'}} = (); # the same but letters
+                            # are in a hash
 
    my ($doc_lines, $doc_numbers) = pass_structure($texi_lines, $lines_numbers);
    if ($T2H_DEBUG & $DEBUG_TEXI)
@@ -15937,7 +15924,7 @@ while(@input_files)
    if (defined($Texi2HTML::Config::INTERNAL_LINKS))
    {
       my $FH = open_out($Texi2HTML::Config::INTERNAL_LINKS);
-      &$Texi2HTML::Config::internal_links($FH, \@elements_list, $Texi2HTML::THISDOC{'raw_indices_hash'});
+      &$Texi2HTML::Config::internal_links($FH, \@elements_list, $Texi2HTML::THISDOC{'index_letters_array'});
       close ($FH);
    }
    do_node_files() if ($Texi2HTML::Config::NODE_FILES);

@@ -76,8 +76,8 @@ Concept Index
 * `\input' source line ignored: 3.2.3 @setfilename: Set the output file name.
 * A4 paper, printing on: 19.12 Printing on A4 Paper.
 * A5 paper, printing on: 19.12 Printing on A4 Paper.
-* AA: 13.3 Inserting Accents.
 * aa: 13.3 Inserting Accents.
+* AA: 13.3 Inserting Accents.
 * Abbreviations for keys: 9.1.3 @key{key-name}.
 * Abbreviations, tagging: 9.1.13 @acronym{acronym}.
 * Abstract of document: 3.6.1 @documentdescription: Summary text.
@@ -85,8 +85,8 @@ Concept Index
 * Acronyms, tagging: 9.1.13 @acronym{acronym}.
 * Acute accent: 13.3 Inserting Accents.
 * Adding a new Info file: 20.2.2 Listing a New Info File.
-* AE: 13.3 Inserting Accents.
 * ae: 13.3 Inserting Accents.
+* AE: 13.3 Inserting Accents.
 * Aliases, command: 18.4 `@alias new=existing'.
 * Alphabetical @-command list: Appendix A @-Command List.
 * alt attribute for images: 13.11 Inserting Images.
@@ -428,8 +428,8 @@ Concept Index
 * Keys, recommended names: 9.1.3 @key{key-name}.
 * Keywords, indicating: 9.1.1 @code{sample-code}.
 * Knuth, Donald: 1.4 Printed Books.
-* /L: 13.3 Inserting Accents.
 * /l: 13.3 Inserting Accents.
+* /L: 13.3 Inserting Accents.
 * Language codes: 17.1 @documentlanguage cc: Set the Document Language.
 * Language, declaring: 17.1 @documentlanguage cc: Set the Document Language.
 * Larger or smaller pages: 19.14 Cropmarks and Magnification.
@@ -528,13 +528,13 @@ Concept Index
 * Nodes, checking for badly referenced: F.5 Finding Badly Referenced Nodes.
 * Non-breakable space: 14.3 @w{text}: Prevent Line Breaks.
 * Not ending a sentence: 13.2.1 Not Ending a Sentence.
-* /O: 13.3 Inserting Accents.
 * /o: 13.3 Inserting Accents.
+* /O: 13.3 Inserting Accents.
 * O'Dea, Brendan: 1.2 Using Texinfo.
 * Obtaining TeX: Appendix I How to Obtain TeX.
 * Occurrences, listing with @occur: F.4 Using occur.
-* OE: 13.3 Inserting Accents.
 * oe: 13.3 Inserting Accents.
+* OE: 13.3 Inserting Accents.
 * Optional and repeated arguments: 15.2 Optional and Repeated Arguments.
 * Options for makeinfo: 20.1.3 Options for makeinfo.
 * Ordinary HTML commands, using: 16.3 Raw Formatter Commands.

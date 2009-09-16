@@ -82,48 +82,6 @@ key: @ (literal @)
   texi_entry: @code{@@ @r{(literal @samp{@@})}}
   element_href: texinfo_14.html#Inserting-An-Atsign
   element_text: 13.1.1 Inserting &lsquo;<samp>@</samp>&rsquo; with @@
-key: AA
-  origin_href: texinfo_14.html#index-AA
-  entry: <code>AA</code>
-  texi_entry: @code{AA}
-  element_href: texinfo_14.html#Inserting-Accents
-  element_text: 13.3 Inserting Accents
-key: AE
-  origin_href: texinfo_14.html#index-AE
-  entry: <code>AE</code>
-  texi_entry: @code{AE}
-  element_href: texinfo_14.html#Inserting-Accents
-  element_text: 13.3 Inserting Accents
-key: H (Hungarian umlaut accent)
-  origin_href: texinfo_14.html#index-H-_0028Hungarian-umlaut-accent_0029
-  entry: <code>H <span class="roman">(Hungarian umlaut accent)</span></code>
-  texi_entry: @code{H @r{(Hungarian umlaut accent)}}
-  element_href: texinfo_14.html#Inserting-Accents
-  element_text: 13.3 Inserting Accents
-key: Info-validate
-  origin_href: texinfo_27.html#index-Info_002dvalidate
-  entry: <code>Info-validate</code>
-  texi_entry: @code{Info-validate}
-  element_href: texinfo_27.html#Running-Info_002dValidate
-  element_text: F.5 Finding Badly Referenced Nodes
-key: L
-  origin_href: texinfo_14.html#index-L
-  entry: <code>L</code>
-  texi_entry: @code{L}
-  element_href: texinfo_14.html#Inserting-Accents
-  element_text: 13.3 Inserting Accents
-key: O
-  origin_href: texinfo_14.html#index-O
-  entry: <code>O</code>
-  texi_entry: @code{O}
-  element_href: texinfo_14.html#Inserting-Accents
-  element_text: 13.3 Inserting Accents
-key: OE
-  origin_href: texinfo_14.html#index-OE
-  entry: <code>OE</code>
-  texi_entry: @code{OE}
-  element_href: texinfo_14.html#Inserting-Accents
-  element_text: 13.3 Inserting Accents
 key: \ (literal \ in @math)
   origin_href: texinfo_14.html#index-_005c-_0028literal-_005c-in-_0040math_0029
   entry: <code>\ <span class="roman">(literal \ in <code>@math</code>)</span></code>
@@ -160,10 +118,34 @@ key: ` (grave accent)
   texi_entry: @code{` @r{(grave accent)}}
   element_href: texinfo_14.html#Inserting-Accents
   element_text: 13.3 Inserting Accents
+key: { (literal {)
+  origin_href: texinfo_14.html#index-_007b-_0028literal-_007b_0029
+  entry: <code>{ <span class="roman">(literal &lsquo;<samp>{</samp>&rsquo;)</span></code>
+  texi_entry: @code{@{ @r{(literal @samp{@{})}}
+  element_href: texinfo_14.html#Inserting-Braces
+  element_text: 13.1.2 Inserting &lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo;with @{ and @}
+key: } (literal })
+  origin_href: texinfo_14.html#index-_007d-_0028literal-_007d_0029
+  entry: <code>} <span class="roman">(literal &lsquo;<samp>}</samp>&rsquo;)</span></code>
+  texi_entry: @code{@} @r{(literal @samp{@}})}}
+  element_href: texinfo_14.html#Inserting-Braces
+  element_text: 13.1.2 Inserting &lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo;with @{ and @}
+key: ~ (tilde accent)
+  origin_href: texinfo_14.html#index-_007e-_0028tilde-accent_0029
+  entry: <code>~ <span class="roman">(tilde accent)</span></code>
+  texi_entry: @code{~ @r{(tilde accent)}}
+  element_href: texinfo_14.html#Inserting-Accents
+  element_text: 13.3 Inserting Accents
 key: aa
   origin_href: texinfo_14.html#index-aa
   entry: <code>aa</code>
   texi_entry: @code{aa}
+  element_href: texinfo_14.html#Inserting-Accents
+  element_text: 13.3 Inserting Accents
+key: AA
+  origin_href: texinfo_14.html#index-AA
+  entry: <code>AA</code>
+  texi_entry: @code{AA}
   element_href: texinfo_14.html#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: acronym
@@ -176,6 +158,12 @@ key: ae
   origin_href: texinfo_14.html#index-ae
   entry: <code>ae</code>
   texi_entry: @code{ae}
+  element_href: texinfo_14.html#Inserting-Accents
+  element_text: 13.3 Inserting Accents
+key: AE
+  origin_href: texinfo_14.html#index-AE
+  entry: <code>AE</code>
+  texi_entry: @code{AE}
   element_href: texinfo_14.html#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: afourlatex
@@ -280,7 +268,7 @@ key: bye
   texi_entry: @code{bye}
   element_href: texinfo_5.html#Ending-a-File
   element_text: 4 Ending a Texinfo File
-key: bye 
+key: bye
   origin_href: texinfo_5.html#index-bye-1
   entry: <code>bye</code>
   texi_entry: @code{bye}
@@ -376,7 +364,7 @@ key: copyright
   texi_entry: @code{copyright}
   element_href: texinfo_4.html#copying
   element_text: 3.3.1 <code>@copying</code>: Declare copying permissions
-key: copyright 
+key: copyright
   origin_href: texinfo_14.html#index-copyright-1
   entry: <code>copyright</code>
   texi_entry: @code{copyright}
@@ -442,7 +430,7 @@ key: defmethod
   texi_entry: @code{defmethod}
   element_href: texinfo_16.html#Abstract-Objects
   element_text: 15.4.5 Object-Oriented Programming
-key: defmethod 
+key: defmethod
   origin_href: texinfo_16.html#index-defmethod-1
   entry: <code>defmethod</code>
   texi_entry: @code{defmethod}
@@ -610,7 +598,7 @@ key: end
   texi_entry: @code{end}
   element_href: texinfo_11.html#Quotations-and-Examples
   element_text: 10 Quotations and Examples
-key: end 
+key: end
   origin_href: texinfo_12.html#index-end-1
   entry: <code>end</code>
   texi_entry: @code{end}
@@ -784,6 +772,12 @@ key: group
   texi_entry: @code{group}
   element_href: texinfo_15.html#group
   element_text: 14.6 <code>@group</code>: Prevent Page Breaks
+key: H (Hungarian umlaut accent)
+  origin_href: texinfo_14.html#index-H-_0028Hungarian-umlaut-accent_0029
+  entry: <code>H <span class="roman">(Hungarian umlaut accent)</span></code>
+  texi_entry: @code{H @r{(Hungarian umlaut accent)}}
+  element_href: texinfo_14.html#Inserting-Accents
+  element_text: 13.3 Inserting Accents
 key: hbox
   origin_href: texinfo_20.html#index-hbox
   entry: <code>hbox</code>
@@ -838,7 +832,7 @@ key: ifhtml
   texi_entry: @code{ifhtml}
   element_href: texinfo_17.html#Conditional-Commands
   element_text: 16.1 Conditional Commands
-key: ifhtml 
+key: ifhtml
   origin_href: texinfo_17.html#index-ifhtml-1
   entry: <code>ifhtml</code>
   texi_entry: @code{ifhtml}
@@ -910,6 +904,12 @@ key: include
   texi_entry: @code{include}
   element_href: texinfo_25.html#Using-Include-Files
   element_text: D.1 How to Use Include Files
+key: Info-validate
+  origin_href: texinfo_27.html#index-Info_002dvalidate
+  entry: <code>Info-validate</code>
+  texi_entry: @code{Info-validate}
+  element_href: texinfo_27.html#Running-Info_002dValidate
+  element_text: F.5 Finding Badly Referenced Nodes
 key: inforef
   origin_href: texinfo_9.html#index-inforef
   entry: <code>inforef</code>
@@ -940,13 +940,13 @@ key: item
   texi_entry: @code{item}
   element_href: texinfo_12.html#itemize
   element_text: 11.1 <code>@itemize</code>: Making an Itemized List
-key: item 
+key: item
   origin_href: texinfo_12.html#index-item-1
   entry: <code>item</code>
   texi_entry: @code{item}
   element_href: texinfo_12.html#Using-the-_0040table-Command
   element_text: Using the <code>@table</code> Command
-key: item  
+key: item
   origin_href: texinfo_12.html#index-item-2
   entry: <code>item</code>
   texi_entry: @code{item}
@@ -992,6 +992,12 @@ key: l
   origin_href: texinfo_14.html#index-l
   entry: <code>l</code>
   texi_entry: @code{l}
+  element_href: texinfo_14.html#Inserting-Accents
+  element_text: 13.3 Inserting Accents
+key: L
+  origin_href: texinfo_14.html#index-L
+  entry: <code>L</code>
+  texi_entry: @code{L}
   element_href: texinfo_14.html#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: lisp
@@ -1102,6 +1108,12 @@ key: o
   texi_entry: @code{o}
   element_href: texinfo_14.html#Inserting-Accents
   element_text: 13.3 Inserting Accents
+key: O
+  origin_href: texinfo_14.html#index-O
+  entry: <code>O</code>
+  texi_entry: @code{O}
+  element_href: texinfo_14.html#Inserting-Accents
+  element_text: 13.3 Inserting Accents
 key: occur
   origin_href: texinfo_27.html#index-occur
   entry: <code>occur</code>
@@ -1130,6 +1142,12 @@ key: oe
   origin_href: texinfo_14.html#index-oe
   entry: <code>oe</code>
   texi_entry: @code{oe}
+  element_href: texinfo_14.html#Inserting-Accents
+  element_text: 13.3 Inserting Accents
+key: OE
+  origin_href: texinfo_14.html#index-OE
+  entry: <code>OE</code>
+  texi_entry: @code{OE}
   element_href: texinfo_14.html#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: option
@@ -1330,7 +1348,7 @@ key: smalldisplay
   texi_entry: @code{smalldisplay}
   element_href: texinfo_11.html#small
   element_text: 10.7 <code>@small&hellip;</code> Block Commands
-key: smalldisplay 
+key: smalldisplay
   origin_href: texinfo_11.html#index-smalldisplay-1
   entry: <code>smalldisplay</code>
   texi_entry: @code{smalldisplay}
@@ -1348,7 +1366,7 @@ key: smallformat
   texi_entry: @code{smallformat}
   element_href: texinfo_11.html#small
   element_text: 10.7 <code>@small&hellip;</code> Block Commands
-key: smallformat 
+key: smallformat
   origin_href: texinfo_11.html#index-smallformat-1
   entry: <code>smallformat</code>
   texi_entry: @code{smallformat}
@@ -1426,7 +1444,7 @@ key: syncodeindex
   texi_entry: @code{syncodeindex}
   element_href: texinfo_13.html#syncodeindex
   element_text: 12.4.1 <code>@syncodeindex</code>
-key: syncodeindex 
+key: syncodeindex
   origin_href: texinfo_13.html#index-syncodeindex-1
   entry: <code>syncodeindex</code>
   texi_entry: @code{syncodeindex}
@@ -1486,13 +1504,13 @@ key: texinfo-format-buffer
   texi_entry: @code{texinfo-format-buffer}
   element_href: texinfo_3.html#Info-Formatting
   element_text: 2.5 Formatting for Info
-key: texinfo-format-buffer 
+key: texinfo-format-buffer
   origin_href: texinfo_21.html#index-texinfo_002dformat_002dbuffer-1
   entry: <code>texinfo-format-buffer</code>
   texi_entry: @code{texinfo-format-buffer}
   element_href: texinfo_21.html#texinfo_002dformat-commands
   element_text: 20.1.6 The <code>texinfo-format&hellip;</code> Commands
-key: texinfo-format-buffer  
+key: texinfo-format-buffer
   origin_href: texinfo_21.html#index-texinfo_002dformat_002dbuffer-2
   entry: <code>texinfo-format-buffer</code>
   texi_entry: @code{texinfo-format-buffer}
@@ -1504,13 +1522,13 @@ key: texinfo-format-region
   texi_entry: @code{texinfo-format-region}
   element_href: texinfo_3.html#Info-Formatting
   element_text: 2.5 Formatting for Info
-key: texinfo-format-region 
+key: texinfo-format-region
   origin_href: texinfo_21.html#index-texinfo_002dformat_002dregion-1
   entry: <code>texinfo-format-region</code>
   texi_entry: @code{texinfo-format-region}
   element_href: texinfo_21.html#texinfo_002dformat-commands
   element_text: 20.1.6 The <code>texinfo-format&hellip;</code> Commands
-key: texinfo-format-region  
+key: texinfo-format-region
   origin_href: texinfo_21.html#index-texinfo_002dformat_002dregion-2
   entry: <code>texinfo-format-region</code>
   texi_entry: @code{texinfo-format-region}
@@ -1636,7 +1654,7 @@ key: texinfo-show-structure
   texi_entry: @code{texinfo-show-structure}
   element_href: texinfo_3.html#Showing-the-Structure
   element_text: 2.3 Showing the Section Structure of a File
-key: texinfo-show-structure 
+key: texinfo-show-structure
   origin_href: texinfo_27.html#index-texinfo_002dshow_002dstructure-1
   entry: <code>texinfo-show-structure</code>
   texi_entry: @code{texinfo-show-structure}
@@ -1882,21 +1900,3 @@ key: xref
   texi_entry: @code{xref}
   element_href: texinfo_9.html#xref
   element_text: 8.3 <code>@xref</code>
-key: { (literal {)
-  origin_href: texinfo_14.html#index-_007b-_0028literal-_007b_0029
-  entry: <code>{ <span class="roman">(literal &lsquo;<samp>{</samp>&rsquo;)</span></code>
-  texi_entry: @code{@{ @r{(literal @samp{@{})}}
-  element_href: texinfo_14.html#Inserting-Braces
-  element_text: 13.1.2 Inserting &lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo;with @{ and @}
-key: } (literal })
-  origin_href: texinfo_14.html#index-_007d-_0028literal-_007d_0029
-  entry: <code>} <span class="roman">(literal &lsquo;<samp>}</samp>&rsquo;)</span></code>
-  texi_entry: @code{@} @r{(literal @samp{@}})}}
-  element_href: texinfo_14.html#Inserting-Braces
-  element_text: 13.1.2 Inserting &lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo;with @{ and @}
-key: ~ (tilde accent)
-  origin_href: texinfo_14.html#index-_007e-_0028tilde-accent_0029
-  entry: <code>~ <span class="roman">(tilde accent)</span></code>
-  texi_entry: @code{~ @r{(tilde accent)}}
-  element_href: texinfo_14.html#Inserting-Accents
-  element_text: 13.3 Inserting Accents

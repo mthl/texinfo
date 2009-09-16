@@ -4620,9 +4620,9 @@ Appendix H Index
 * Tapes, using `--delete' and:           delete.              (line  18)
 * TAPE_FILE:                             General-Purpose Variables.
                                                               (line  18)
+* tar:                                   What tar Does.       (line   5)
 * TAR:                                   General-Purpose Variables.
                                                               (line 113)
-* tar:                                   What tar Does.       (line   5)
 * tar archive:                           Definitions.         (line   5)
 * Tar archive formats:                   Formats.             (line   5)
 * tar entry:                             Naming tar Archives. (line  10)

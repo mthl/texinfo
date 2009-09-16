@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.234 2009-09-15 18:21:26 pertusus Exp $
+# $Id: texi2html.init,v 1.235 2009-09-16 08:43:13 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -6653,11 +6653,14 @@ sub t2h_default_internal_links($$$)
   foreach my $index_name (sort(keys(%$indices)))
   {
      my $entries = $indices->{$index_name};
-     foreach my $key (sort (keys(%{$entries})))
+     
+     foreach my $letter_entries (@$entries)
      {
-        my $entry = $entries->{$key};
+       foreach my $entry (@{$letter_entries->{'entries'}})
+       {
         #print STDERR "($index_name) key $key, t $entry->{'texi'}: $entry->{'file'}#$entry->{'target'}\n";
-        print $fh "$entry->{'file'}#$entry->{'target'}\t$index_name\t$key\n" if ($key =~ /\S/);
+        print $fh "$entry->{'file'}#$entry->{'target'}\t$index_name\t$entry->{'key'}\n" if ($entry->{'key'} =~ /\S/);
+       }
      }
   }
 }

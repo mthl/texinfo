@@ -225,10 +225,6 @@
 <param name="Local" value="formatting.html#index-_003f">
 </OBJECT> </LI>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="T&ndash;ruc">
-<param name="Local" value="formatting.html#index-T_002d_002druc">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="a">
 <param name="Local" value="formatting.html#index-a-6">
 </OBJECT> </LI>
@@ -301,6 +297,10 @@
 <param name="Local" value="formatting.html#index-t_002d_002druc">
 </OBJECT> </LI>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="T&ndash;ruc">
+<param name="Local" value="formatting.html#index-T_002d_002druc">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="``">
 <param name="Local" value="formatting.html#Top">
 </OBJECT> </LI>
@@ -339,10 +339,6 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="?">
 <param name="Local" value="formatting.html#index-_003f-1">
-</OBJECT> </LI>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="T--ruc">
-<param name="Local" value="formatting.html#index-T_002d_002druc-1">
 </OBJECT> </LI>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="a">
@@ -911,6 +907,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="t--ruc">
 <param name="Local" value="formatting.html#index-t_002d_002druc-1">
+</OBJECT> </LI>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="T--ruc">
+<param name="Local" value="formatting.html#index-T_002d_002druc-1">
 </OBJECT> </LI>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="truc">

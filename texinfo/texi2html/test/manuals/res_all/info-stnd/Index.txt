@@ -96,8 +96,8 @@ Appendix B Index
 * C-x DEL, in the echo area: 8.3 The Echo Area.
 * C-x g, vi-like operation: 5 Selecting a Node.
 * C-x k: 5 Selecting a Node.
-* C-x N: 6 Searching an Info File.
 * C-x n: 6 Searching an Info File.
+* C-x N: 6 Searching an Info File.
 * C-x n, vi-like operation: 5 Selecting a Node.
 * C-x o: 8.2 Window Commands.
 * C-x r, vi-like operation: 7.2 Selecting Xrefs.
@@ -181,8 +181,8 @@ Appendix B Index
 * functions, describing: 10 Miscellaneous Commands.
 * g: 5 Selecting a Node.
 * G: 5 Selecting a Node.
-* G, vi-like operation: 5 Selecting a Node.
 * g, vi-like operation: 5 Selecting a Node.
+* G, vi-like operation: 5 Selecting a Node.
 * gc-compressed-files: 11 Manipulating Variables.
 * get-help-window: 10 Miscellaneous Commands.
 * get-info-help-node: 10 Miscellaneous Commands.
@@ -195,8 +195,8 @@ Appendix B Index
 * h, vi-like operation: 10 Miscellaneous Commands.
 * history-node: 5 Selecting a Node.
 * Home: 3 Moving the Cursor.
-* i: 6 Searching an Info File.
 * I: 5 Selecting a Node.
+* i: 6 Searching an Info File.
 * incremental search: 6 Searching an Info File.
 * index search, selecting from the command line: 2 Invoking Info.
 * index, searching: 6 Searching an Info File.
@@ -319,8 +319,8 @@ Appendix B Index
 * RET, vi-like operation: 4 Moving Text Within a Window.
 * RIGHT (an arrow key): 3 Moving the Cursor.
 * RIGHT, in the echo area: 8.3 The Echo Area.
-* S: 6 Searching an Info File.
 * s: 6 Searching an Info File.
+* S: 6 Searching an Info File.
 * screen, changing the height of: 10 Miscellaneous Commands.
 * scroll-backward: 4 Moving Text Within a Window.
 * scroll-backward-page-only: 4 Moving Text Within a Window.

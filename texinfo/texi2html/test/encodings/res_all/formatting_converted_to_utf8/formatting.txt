@@ -1878,8 +1878,8 @@ fn
 * truc: Top section.
 * truc: Top section.
 * truc: Top section.
-* T–ruc: Top section.
 * t–ruc: Top section.
+* T–ruc: Top section.
 
 vr
 * Index:
@@ -2048,8 +2048,8 @@ chapter 2
 * truc: Top section.
 * truc: Top section.
 * truc: Top section.
-* T–ruc: Top section.
 * t–ruc: Top section.
+* T–ruc: Top section.
 
 Table of Contents
 *****************

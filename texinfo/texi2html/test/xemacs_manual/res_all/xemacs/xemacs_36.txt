@@ -20,8 +20,8 @@ Concept Index
 * `\<' in regexp: 12.5 Syntax of Regular Expressions.
 * `\=' in regexp: 12.5 Syntax of Regular Expressions.
 * `\>' in regexp: 12.5 Syntax of Regular Expressions.
-* `\B' in regexp: 12.5 Syntax of Regular Expressions.
 * `\b' in regexp: 12.5 Syntax of Regular Expressions.
+* `\B' in regexp: 12.5 Syntax of Regular Expressions.
 * `\s' in regexp: 12.5 Syntax of Regular Expressions.
 * `\S' in regexp: 12.5 Syntax of Regular Expressions.
 * `\w' in regexp: 12.5 Syntax of Regular Expressions.

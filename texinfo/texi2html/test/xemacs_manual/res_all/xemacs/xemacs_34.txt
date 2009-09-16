@@ -680,8 +680,8 @@ Command and Function Index
 * tex-insert-braces: 20.1.2.1 TeX Editing Commands.
 * tex-insert-quote: 20.1.2.1 TeX Editing Commands.
 * tex-kill-job: 20.1.2.2 TeX Printing Commands.
-* tex-mode: 20.1.2 TeX Mode.
 * TeX-mode: 20.1.2 TeX Mode.
+* tex-mode: 20.1.2 TeX Mode.
 * tex-print: 20.1.2.2 TeX Printing Commands.
 * tex-recenter-output-buffer: 20.1.2.2 TeX Printing Commands.
 * tex-region: 20.1.2.2 TeX Printing Commands.

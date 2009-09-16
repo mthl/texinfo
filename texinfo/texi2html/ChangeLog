@@ -1,3 +1,10 @@
+2009-09-16   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init: hold the index entries gathered 
+	in pass 2 by index name in an array instead of a hash.
+	Do the sorting by letter in the main program and use per index
+	array or hash to hold and use the entry sorted by letter.
+
 2009-09-15   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: split do_simple to avoid redundant condition

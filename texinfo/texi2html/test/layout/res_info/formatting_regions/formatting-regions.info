@@ -1871,8 +1871,8 @@ manual}' *note title: (file name).  `@ref{,,,file name,manual}' *note :
 * index entry within multitable:         constructs.         (line  125)
 * index entry within multitable <1>:     constructs.         (line  680)
 * index entry within multitable <2>:     constructs.         (line 1122)
-* T-ruc:                                 constructs.         (line 1415)
 * t-ruc:                                 constructs.         (line 1415)
+* T-ruc:                                 constructs.         (line 1415)
 
    fn
 
@@ -2141,8 +2141,8 @@ chapter 2
 * index entry within multitable:         constructs.         (line  125)
 * index entry within multitable <1>:     constructs.         (line  680)
 * index entry within multitable <2>:     constructs.         (line 1122)
-* T-ruc:                                 constructs.         (line 1415)
 * t-ruc:                                 constructs.         (line 1415)
+* T-ruc:                                 constructs.         (line 1415)
 
  [index ]
 * Menu:

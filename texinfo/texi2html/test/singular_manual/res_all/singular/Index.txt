@@ -293,10 +293,10 @@ F Index
 * division: 5.1.20 division.
 * Documentation of a library: 3.9.2 Documentation of a library.
 * downloading: E.2 Downloading instructions.
-* Dp, global ordering: B.2.3 Global orderings.
 * dp, global ordering: B.2.3 Global orderings.
-* Ds, local ordering: B.2.4 Local orderings.
+* Dp, global ordering: B.2.3 Global orderings.
 * ds, local ordering: B.2.4 Local orderings.
+* Ds, local ordering: B.2.4 Local orderings.
 * dsum: D.3.1.4 dsum.
 * dual_code: D.9.1.11 dual_code.
 * dump: 5.1.21 dump.
@@ -592,8 +592,8 @@ F Index
 * intvec related functions: 4.5.4 intvec related functions.
 * Invariant theory: D.6 Invariant theory.
 * InvariantQ: D.6.3.6 InvariantQ.
-* InvariantRing: D.6.3.5 InvariantRing.
 * invariantRing: D.6.2.1 invariantRing.
+* InvariantRing: D.6.3.5 InvariantRing.
 * invariants: D.5.5.7 invariants.
 * Invariants of a finite group: A.18 Invariants of a finite group.
 * invariant_basis: D.6.1.11 invariant_basis.
@@ -781,8 +781,8 @@ F Index
 * module declarations: 4.10.1 module declarations.
 * module expressions: 4.10.2 module expressions.
 * module operations: 4.10.3 module operations.
-* module ordering c: B.2.5 Module orderings.
 * module ordering C: B.2.5 Module orderings.
+* module ordering c: B.2.5 Module orderings.
 * Module orderings: B.2.5 Module orderings.
 * module related functions: 4.10.4 module related functions.
 * Modules and and their annihilator: 2.3.5 Modules and their annihilator.
@@ -795,12 +795,12 @@ F Index
 * mondromy_lib: D.5.6 mondromy_lib.
 * monitor: 5.1.76 monitor.
 * monodromy: D.5.4 gaussman_lib.
+* monodromy: D.5.4.5 monodromy.
+* monodromy: D.5.4.5 monodromy.
 * Monodromy: D.5.6 mondromy_lib.
-* monodromy: D.5.4.5 monodromy.
-* monodromy: D.5.4.5 monodromy.
 * monodromyB: D.5.6.4 monodromyB.
-* monomial orderings: B.2.2 General definitions for orderings.
 * Monomial orderings: B.2 Monomial orderings.
+* monomial orderings: B.2.2 General definitions for orderings.
 * monomial orderings introduction: B.2.1 Introduction to orderings.
 * Monomial orderings, Term orderings: 3.3.3 Term orderings.
 * monomials and precedence: 6.3 Miscellaneous oddities.
@@ -831,8 +831,8 @@ F Index
 * multrow: D.3.1.20 multrow.
 * multsequence: D.5.5.9 multsequence.
 * nameof: 5.1.81 nameof.
-* names: 5.1.82 names.
 * Names: 3.5.3 Names.
+* names: 5.1.82 names.
 * Names in procedures: 3.7.2 Names in procedures.
 * nblocks: 5.1.125 system.
 * ncols: 5.1.83 ncols.
@@ -1157,8 +1157,8 @@ F Index
 * Singular, important commands of Emacs interface: 3.2.6 Top 20 Emacs commands.
 * Singular, running within Emacs: 3.2.2 Running SINGULAR under Emacs.
 * SINGULARHIST: 3.1.5 Editing input.
-* singularities: D.5.4 gaussman_lib.
 * Singularities: D.5 Singularities.
+* singularities: D.5.4 gaussman_lib.
 * singularities: D.5.4.1 gmsring.
 * singularities: D.5.4.2 gmsnf.
 * singularities: D.5.4.3 gmscoeffs.
@@ -1332,9 +1332,9 @@ F Index
 * timer: 5.3.10 rtimer.
 * timer resolution, setting the: 5.1.125 system.
 * timeStd: D.2.2.20 timeStd.
-* tjurina: D.5.8.14 tjurina.
 * Tjurina: A.1 Milnor and Tjurina.
 * Tjurina: D.5.8.13 Tjurina.
+* tjurina: D.5.8.14 tjurina.
 * Tjurina number: D.4.6.4 deltaLoc.
 * tkinfo: 3.1.3 The online help system.
 * tmatrix: D.5.4.12 tmatrix.

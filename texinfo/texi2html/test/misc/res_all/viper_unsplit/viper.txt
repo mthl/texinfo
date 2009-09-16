@@ -3577,13 +3577,13 @@ Key Index
 * Index:
 * "<a-z1-9>p: 4.2.3 Appending Text.
 * "<a-z1-9>P: 4.2.3 Appending Text.
-* "<a-z1-9>P: 4.2.8 Yanking.
 * "<a-z1-9>p: 4.2.8 Yanking.
-* "<a-z>y<move>: 4.2.8 Yanking.
+* "<a-z1-9>P: 4.2.8 Yanking.
 * "<A-Z>y<move>: 4.2.8 Yanking.
+* "<a-z>y<move>: 4.2.8 Yanking.
 * #: 2.9 New Commands.
-* #C<move>: 2.9 New Commands.
 * #c<move>: 2.9 New Commands.
+* #C<move>: 2.9 New Commands.
 * #C<move>: 4.2.6 Changing Text.
 * #c<move>: 4.2.6 Changing Text.
 * #g<move>: 2.9 New Commands.
@@ -3665,8 +3665,8 @@ Key Index
 * ~: 4.2.6 Changing Text.
 * A: 4.2.3 Appending Text.
 * a: 4.2.3 Appending Text.
-* b: 4.2.1 Move Commands.
 * B: 4.2.1 Move Commands.
+* b: 4.2.1 Move Commands.
 * C: 4.2.6 Changing Text.
 * C-b: 4.3 Display.
 * C-c: 1.3.2 Vi State.
@@ -3719,22 +3719,22 @@ Key Index
 * D: 4.2.5 Deleting Text.
 * d<move>: 4.2.5 Deleting Text.
 * dd: 4.2.5 Deleting Text.
-* e: 4.2.1 Move Commands.
 * E: 4.2.1 Move Commands.
+* e: 4.2.1 Move Commands.
 * <ESC>: 1.3 States in Viper.
-* f<char>: 4.2.1 Move Commands.
 * F<char>: 4.2.1 Move Commands.
+* f<char>: 4.2.1 Move Commands.
 * G: 4.2.1 Move Commands.
 * g<move>: 4.2.7 Search and Replace.
 * H: 4.2.1 Move Commands.
 * h: 4.2.1 Move Commands.
 * i: 1.3 States in Viper.
 * i: 4.2.3 Appending Text.
-* J: 4.2.6 Changing Text.
 * j: 4.2.1 Move Commands.
+* J: 4.2.6 Changing Text.
 * k: 4.2.1 Move Commands.
-* l: 4.2.1 Move Commands.
 * L: 4.2.1 Move Commands.
+* l: 4.2.1 Move Commands.
 * M: 4.2.1 Move Commands.
 * m,: 4.2.2 Marking.
 * M-n: 2.9 New Commands.
@@ -3751,16 +3751,16 @@ Key Index
 * meta shift button1up: 3.3 Viper Specials.
 * meta shift button2up: 3.3 Viper Specials.
 * m^: 4.2.2 Marking.
-* n: 4.2.1 Move Commands.
 * N: 4.2.1 Move Commands.
-* n: 4.2.7 Search and Replace.
+* n: 4.2.1 Move Commands.
 * N: 4.2.7 Search and Replace.
+* n: 4.2.7 Search and Replace.
 * O: 4.2.3 Appending Text.
 * o: 4.2.3 Appending Text.
-* p: 4.2.3 Appending Text.
 * P: 4.2.3 Appending Text.
-* p: 4.2.8 Yanking.
+* p: 4.2.3 Appending Text.
 * P: 4.2.8 Yanking.
+* p: 4.2.8 Yanking.
 * Q: 2.9 New Commands.
 * Q: 4.2.7 Search and Replace.
 * R: 4.2.6 Changing Text.
@@ -3780,8 +3780,8 @@ Key Index
 * V: 2.9 New Commands.
 * v: 4.4 File and Buffer Handling.
 * V: 4.4 File and Buffer Handling.
-* w: 4.2.1 Move Commands.
 * W: 4.2.1 Move Commands.
+* w: 4.2.1 Move Commands.
 * X: 4.2.5 Deleting Text.
 * x: 4.2.5 Deleting Text.
 * Y: 4.2.8 Yanking.
@@ -4057,8 +4057,8 @@ Concept Index
 * changing case: 2.9 New Commands.
 * changing case: 4.2.6 Changing Text.
 * changing tab width: 4.7 Options.
-* CHAR: 4.1 Groundwork.
 * char: 4.1 Groundwork.
+* CHAR: 4.1 Groundwork.
 * column movement: 4.2.1 Move Commands.
 * Command history: 2.9 New Commands.
 * command line: 1.1 Emacs Preliminaries.
@@ -4222,8 +4222,8 @@ Concept Index
 * window: 1.1 Emacs Preliminaries.
 * word search: 2.6 Improved Search.
 * word wrap: 4.7 Options.
-* WORDS: 4.1 Groundwork.
 * words: 4.1 Groundwork.
+* WORDS: 4.1 Groundwork.
 
 Table of Contents
 *****************
