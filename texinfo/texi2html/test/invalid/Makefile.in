@@ -148,6 +148,7 @@ EXTRA_DIST = brace_not_closed.texi recursive_copying.texi \
  ref_to_unknown_node.texi def_bad_defx_command.texi \
  direntry_dircategory_after_first_node.texi node_too_much_arguments.texi \
  bad_documentencoding.texi error_in_footnote_caption.texi \
+ unclosed_verb_line_commands.texi \
  tests.txt res res_all res_info
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out

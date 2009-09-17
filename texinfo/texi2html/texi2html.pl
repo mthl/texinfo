@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.334 2009-09-16 08:43:13 pertusus Exp $
+# $Id: texi2html.pl,v 1.335 2009-09-17 08:51:04 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1009,7 +1009,7 @@ sub t2h_default_init_split_indices()
         my @letters = ();
         foreach my $letter_entry (@{$Texi2HTML::THISDOC{'index_letters_array'}->{$index_name}})
         {
-          push @letters, $letter_entry->{'letter'};
+          push @letters, $letter_entry;
           $entries_count += scalar(@{$letter_entry->{'entries'}});
           # Don't split if document is not split
           if (get_conf('SPLIT') and $SPLIT_INDEX and $entries_count >= $SPLIT_INDEX)
@@ -1021,23 +1021,6 @@ sub t2h_default_init_split_indices()
         }
         push @{$t2h_default_index_letters_array{$index_name}}, [ @letters ] if (scalar(@letters));
     }
-}
-
-
-# this is used for indices that don't appear to be associated
-sub t2h_default_prepare_printindex_unsplit_groups($)
-{
-  my $printindex = shift;
-  my $index_name = $printindex->{'name'};
-  my @letter_groups = ();
-  return if (!exists($t2h_default_index_letters_array{$index_name}));
-  my @letters_split = @{$t2h_default_index_letters_array{$index_name}};
-  foreach my $letters_split (@letters_split)
-  {
-     push @{$letter_groups[0]->{'letters'}}, @$letters_split;
-  }
-  $letter_groups[0]->{'element'} = {'file' => '', 'id' => "$printindex->{'region'}_printindex"};
-  $printindex->{'split_groups'} = \@letter_groups;
 }
 
 sub t2h_default_associate_index_element($$$$)
@@ -1138,8 +1121,8 @@ sub t2h_default_associate_index_element($$$$)
       #print STDERR "Pushing $element, $element->{'texi'}, $printindex\n";
       foreach my $split_group (@letter_groups)
       {
-        my $first_letter = $split_group->{'letters'}->[0];
-        my $last_letter = $split_group->{'letters'}->[-1];
+        my $first_letter = $split_group->{'letters'}->[0]->{'letter'};
+        my $last_letter = $split_group->{'letters'}->[-1]->{'letter'};
         if (!$split_group->{'element'})
         {
           #construct new element name
@@ -1198,7 +1181,7 @@ sub t2h_default_associate_index_element($$$$)
     {
        push @{$current_element->{'place'}}, $place;
     }
-    $printindex->{'split_groups'} = \@letter_groups;
+    $printindex->{'split_groups'} = \@letter_groups;# if (scalar(@letter_groups)>1);
     #print STDERR "$index_name processed for $element, $element->{'texi'} (@{$printindex->{'split_groups'}})\n";
   }
 
@@ -1219,8 +1202,8 @@ sub t2h_default_index_rearrange_directions()
       #print STDERR "  I Processing $printindex $printindex->{'name'} (@{$printindex->{'split_groups'}})\n";
       foreach my $split_group (@{$printindex->{'split_groups'}})
       {
-        my $first_letter = $split_group->{'letters'}->[0];
-        my $last_letter = $split_group->{'letters'}->[-1];
+        my $first_letter = $split_group->{'letters'}->[0]->{'letter'};
+        my $last_letter = $split_group->{'letters'}->[-1]->{'letter'};
 
         my $new_element = $split_group->{'element'};
         next if ($current_element eq $new_element);
@@ -1305,34 +1288,47 @@ sub t2h_GPL_default_printindex($$)
   my $printindex = shift;
   # could be cross verified with argument
 
-  my %letter_entries;
   my $identifier_index_nr = 0;
 #print STDERR "Doing printindex $index_name\n";
-  return '' if (! defined($printindex->{'split_groups'}));
-  my @split_letters = @{$printindex->{'split_groups'}};
-
-  return '' if (!scalar(@split_letters));
+  my @split_letters;
+  
+  if (defined($printindex->{'split_groups'}) and scalar(@{$printindex->{'split_groups'}}))
+  {
+    @split_letters = @{$printindex->{'split_groups'}};
+  }
+  elsif (defined($Texi2HTML::THISDOC{'index_letters_array'}->{$index_name}) and scalar(@{$Texi2HTML::THISDOC{'index_letters_array'}->{$index_name}}))
+  {
+    my $element = $printindex->{'associated_element'};
+    # this happens for printindex before the first element.
+    $element =  {'file' => '', 'id' => "$printindex->{'region'}_printindex"} if (!defined($element));
+    @split_letters = ({ 'letters' => $Texi2HTML::THISDOC{'index_letters_array'}->{$index_name}, 'element' => $element});
+  }
+  else
+  {
+    return '';
+  }
 
   foreach my $split_group (@split_letters)
   {
     #do summmary
     my @non_alpha = ();
     my @alpha = ();
-    my $file = $split_group->{'element'}->{'file'};
-    #print STDERR "$index_name @{$split_group->{'letters'}}: $file\n";
+    #print STDERR "$index_name @{$split_group->{'letters'}}\n";
     # letter_id could be done once for all instead of for each split_group
     # and outside of t2h_default_summary_letter (or t2h_default_summary_letter
     # could be simplified and inlined
     my %letter_id;
     foreach my $summary_split_group (@split_letters)
     {
-      foreach my $letter (@{$summary_split_group->{'letters'}})
+      foreach my $letter_entry (@{$summary_split_group->{'letters'}})
       {
+        my $letter = $letter_entry->{'letter'};
         my $dest_file = '';
         $dest_file = $summary_split_group->{'element'}->{'file'}
            if ($summary_split_group ne $split_group);
         my $index_element_id = $summary_split_group->{'element'}->{'id'};
         my $default_identifier = $index_element_id . "_$identifier_index_nr";
+        #print STDERR "$split_group $summary_split_group $summary_split_group->{'element'} $summary_split_group->{'element'}->{'id'}  $identifier_index_nr $index_element_id $default_identifier\n";
         $identifier_index_nr++;
         my ($result, $identifier, $is_symbol) =
           &$summary_letter($letter, $dest_file, $default_identifier, $index_element_id, '', '', $index_name);
@@ -1359,11 +1355,11 @@ sub t2h_GPL_default_printindex($$)
     $t2h_symbol_indices = 0;
 
     my $letters_text = '';
-    #foreach my $letter_entry (@{$split_group->{'letters'}})
-    foreach my $letter (@{$split_group->{'letters'}})
+    foreach my $letter_entry (@{$split_group->{'letters'}})
     {
+      my $letter = $letter_entry->{'letter'};
       my $entries_text = '';
-      foreach my $index_entry_ref (@{$Texi2HTML::THISDOC{'index_letters_hash'}->{$index_name}->{$letter}})
+      foreach my $index_entry_ref (@{$letter_entry->{'entries'}})
       {
         my ($text_href, $entry_file, $element_file, $entry_target,
           $entry_element_target, $formatted_entry, $element_href, $entry_element_text)
@@ -5791,7 +5787,6 @@ sub prepare_indices()
           my @sorted_letter_entries = (sort {uc($a->{'key'}) cmp uc($b->{'key'})} (@{$letters_hash{$letter}}));
 
           push @{$Texi2HTML::THISDOC{'index_letters_array'}->{$index_name}}, { 'letter' => $letter, 'entries' => \@sorted_letter_entries };
-          $Texi2HTML::THISDOC{'index_letters_hash'}->{$index_name}->{$letter} = \@sorted_letter_entries;
         }
     }
     Texi2HTML::Config::t2h_default_init_split_indices();
@@ -7136,18 +7131,6 @@ sub rearrange_elements()
             $element_before_anything->{'doc_nr'} = 0;
             do_element_targets($element_before_anything,$Texi2HTML::Config::NODE_FILENAMES);
             print STDERR "# no element at all, setting $element_before_anything->{'file'} for $element_before_anything->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
-        }
-    }
-    # prepare printindices that are not in elements
-    foreach my $region (keys %{$Texi2HTML::THISDOC{'indices'}})
-    {
-        foreach my $index_name (keys %{$Texi2HTML::THISDOC{'indices'}->{$region}})
-        {
-            foreach my $printindex (@{$Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}})
-            {
-                next if ($printindex->{'split_groups'});
-                Texi2HTML::Config::t2h_default_prepare_printindex_unsplit_groups($printindex);
-            }
         }
     }
 
@@ -15847,8 +15830,6 @@ while(@input_files)
    %{$Texi2HTML::THISDOC{'index_letters_array'}} = (); # holds the sorted
                             # index letters for each index name. The sorted
                             # letters hold the sorted index entries
-   %{$Texi2HTML::THISDOC{'index_letters_hash'}} = (); # the same but letters
-                            # are in a hash
 
    my ($doc_lines, $doc_numbers) = pass_structure($texi_lines, $lines_numbers);
    if ($T2H_DEBUG & $DEBUG_TEXI)
