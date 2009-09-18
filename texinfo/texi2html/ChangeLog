@@ -1,3 +1,9 @@
+2009-09-18   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: use global information for @printindex not
+	split.
+	Try to give correct file name to close_out.
+
 2009-09-17   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: use global information for @printindex not

@@ -55,7 +55,6 @@ my $verbose;
 my $docu_rdir;
 my $docu_name;
 my $docu_ext;
-my $ERROR = '***';
 
 # init_from_html
 my $extract_error_count;

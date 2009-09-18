@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.335 2009-09-17 08:51:04 pertusus Exp $
+# $Id: texi2html.pl,v 1.336 2009-09-18 07:13:50 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -176,22 +176,16 @@ my $DEBUG_ELEMENTS  = 32;
 my $DEBUG_USER  = 64;
 my $DEBUG_L2H   = 128;
 
-my $ERROR = "***";                 # prefix for errors
-my $WARN  = "**";                  # prefix for warnings
-
 my $VARRE = '[\w\-]+';          # RE for a variable name
 
 my $MAX_LEVEL = 4;
 my $MIN_LEVEL = 1;
 
-#+++###########################################################################
-#                                                                             #
-# Initialization                                                              #
-# Some declarations, some functions that are GPL and therefore cannot be in   #
-# texi2html.init, some functions that are not to be customized.               #
-# Pasted content of File $(srcdir)/texi2html.init: Default initializations    #
-#                                                                             #
-#---###########################################################################
+#+++########################################################################
+#                                                                          #
+# Command name and default format                                          #
+#                                                                          #
+#---########################################################################
 
 my $my_command_name = $0;
 $my_command_name =~ s/.*\///;
@@ -209,6 +203,7 @@ if ($command_format{$my_command_name})
    $default_output_format = $command_format{$my_command_name};
 }
 
+# This can be called from init files, mostly for formats.
 sub default_output_format()
 {
    return $default_output_format;
@@ -219,6 +214,14 @@ sub default_command_name()
    return $my_command_name;
 }
 
+#+++###########################################################################
+#                                                                             #
+# Initialization                                                              #
+# Some declarations, some functions that are GPL and therefore cannot be in   #
+# texi2html.init, some functions that are not to be customized.               #
+# Pasted content of File $(srcdir)/texi2html.init: Default initializations    #
+#                                                                             #
+#---###########################################################################
 {
 package Texi2HTML::Config;
 
@@ -647,6 +650,7 @@ use vars qw(
 %t2h_encoding_aliases
 );
 
+# FIXME i18n ?
 %output_format_names = (
   'info' => 'Info',
   'html' => 'HTML',
@@ -661,9 +665,9 @@ sub load($)
     # If required like other init files, the functions would be redefined
     # and the format dependent stuff wouldn't be loaded. Having the 
     # formats loaded could be worked around, for example there could be
-    # a vaariable that , if defined and a function reference, should be 
-    # called right after the require. There is no real workaround for 
-    # having the function redefined, though.
+    # a variable that, and if the variable is defined a function reference
+    # should be called right after the require. There is no real 
+    # workaround for having the function redefined, though.
     foreach my $output_format (keys(%output_format_names))
     {
       if ($file =~ /\/$output_format\.init$/)
@@ -1067,60 +1071,64 @@ sub t2h_default_associate_index_element($$$$)
 
   foreach my $place (@places)
   {
-    unless ($place->{'command'} and $place->{'command'} eq 'printindex')
+    my ($printindex, $printindex_to_split, $index_name);
+
+    # determines if the placed thing is a printindex to be split
+    if ($place->{'command'} and $place->{'command'} eq 'printindex')
     {
-#print STDERR "HHHHHHHHH ($element->{'texi'}) place: $place->{'texi'}, place_element_ref $place_element_ref, current: $current_element->{'texi'}, $current_element->{'file'}\n";
+        $printindex = $place;
+        $index_name = $printindex->{'name'};
+        # ! empty index
+        if (exists($t2h_default_index_letters_array{$index_name}) and 
+         scalar(@{$t2h_default_index_letters_array{$index_name}})
+         # the element is at the level of splitting, then we split according to
+         # INDEX_SPLIT
+         # the condition defined($printindex->{'associated_element'} implies 
+         # that we don't split printindex before first element, otherwise
+         # there will be a need to begin document without a first element 
+         # which would be annoying.
+         and !$element->{'top'} and get_conf('SPLIT') and 
+           ((get_conf('SPLIT') eq 'node') or (defined($element->{'level'}) and $element->{'level'} <= $Texi2HTML::THISDOC{'split_level'})) 
+         and defined($printindex->{'associated_element'}))
+        {
+            $printindex_to_split = 1;
+        }
+    }
+        
+    # this is a non split printindex or any other placed thing.
+    if (!$printindex_to_split)
+    {
        push @{$current_element->{'place'}}, $place;
        $place->{'file'} = $current_element->{'file'};
+       # the 'element_ref' has to be reset. Otherwise, $place->{'element_ref'}
+       # will appear as a new element and trigger closing the file and 
+       # opening a new one.
        $place->{'element_ref'} = $current_element if ($place->{'element_ref'} and $current_element ne $element);
+       # this resets the element associated with a printindex.
+       $place->{'associated_element'} = $current_element if ($place->{'associated_element'} and $current_element ne $element);
        next;
     }
-    my $printindex = $place;
-    my $index_name = $printindex->{'name'};
-    #print STDERR "Associate letters in $element->{'texi'} for $index_name\n";
-    my @letter_groups = ();
-    # empty index
-    next if (!exists($t2h_default_index_letters_array{$index_name}));
-    my @letters_split = @{$t2h_default_index_letters_array{$index_name}};
 
-    # index is not split
-    if (scalar(@letters_split) eq 1)
+    # now split the index
+    $t2h_default_split_files{$default_element_file} = 1;
+
+    my @letter_groups = ();
+    my @letters_split = @{$t2h_default_index_letters_array{$index_name}};
+    foreach my $letters_split (@letters_split)
     {
-      push @{$letter_groups[0]->{'letters'}}, @{$letters_split[0]};
-    }
-    # the element is at the level of splitting, then we split according to
-    # INDEX_SPLIT
-    # the condition defined($printindex->{'associated_element'} implies 
-    # that we don't split printindex before first element, otherwise
-    # there will be a need to begin document without a first element 
-    # which would be annoying.
-    elsif (!$element->{'top'} and get_conf('SPLIT') and ((get_conf('SPLIT') eq 'node') or (defined($element->{'level'}) and $element->{'level'} <= $Texi2HTML::THISDOC{'split_level'})) and defined($printindex->{'associated_element'}))
-    {
-      $t2h_default_split_files{$default_element_file} = 1;
-      foreach my $letters_split (@letters_split)
-      {
         push @letter_groups, {'letters' => [@$letters_split]};
-      }
     }
-    else
-    { # we 'unsplit' index split if not located where document is indeed split
-      #print STDERR "UNSPLIT $element->{'texi'}, $index_name\n";
-      foreach my $letters_split (@letters_split)
-      {
-        push @{$letter_groups[0]->{'letters'}}, @$letters_split;
-      }
-    }
+
     $letter_groups[0]->{'element'} = $current_element;
-    # may only happen if SPLIT
-    if (scalar(@letter_groups) > 1)
-    { # this weird construct is there because the element use as a key is 
-      # converted to a string by perl, losing its meaning as a reference, 
-      # the reference must be recorded explicitly
-      $t2h_default_element_split_printindices->{$element}->{'element'} = $element;
-      push @{$t2h_default_element_split_printindices->{$element}->{'printindices'}}, $printindex;
-      #print STDERR "Pushing $element, $element->{'texi'}, $printindex\n";
-      foreach my $split_group (@letter_groups)
-      {
+
+    # this weird construct is there because the element used as a key is 
+    # converted to a string by perl, losing its meaning as a reference, 
+    # the reference must be recorded explicitly
+    $t2h_default_element_split_printindices->{$element}->{'element'} = $element;
+    push @{$t2h_default_element_split_printindices->{$element}->{'printindices'}}, $printindex;
+    #print STDERR "Pushing $element, $element->{'texi'}, $printindex\n";
+    foreach my $split_group (@letter_groups)
+    {
         my $first_letter = $split_group->{'letters'}->[0]->{'letter'};
         my $last_letter = $split_group->{'letters'}->[-1]->{'letter'};
         if (!$split_group->{'element'})
@@ -1174,13 +1182,8 @@ sub t2h_default_associate_index_element($$$$)
         { # this is the first index split, it is still associated with the element
           #print STDERR "No file added for ($first_letter:$last_letter)\n";
         }
-      }
-      $t2h_default_seen_files{$default_element_file} = $current_element->{'file'};
     }
-    else
-    {
-       push @{$current_element->{'place'}}, $place;
-    }
+    $t2h_default_seen_files{$default_element_file} = $current_element->{'file'};
     $printindex->{'split_groups'} = \@letter_groups;# if (scalar(@letter_groups)>1);
     #print STDERR "$index_name processed for $element, $element->{'texi'} (@{$printindex->{'split_groups'}})\n";
   }
@@ -1300,7 +1303,14 @@ sub t2h_GPL_default_printindex($$)
   {
     my $element = $printindex->{'associated_element'};
     # this happens for printindex before the first element.
-    $element =  {'file' => '', 'id' => "$printindex->{'region'}_printindex"} if (!defined($element));
+    if (!defined($element))
+    {
+       $element =  {'file' => '', 'id' => "$printindex->{'region'}_printindex"} if (!defined($element));
+    }
+    elsif (defined($element->{'element_ref'}))
+    {
+        $element = $element->{'element_ref'};
+    }
     @split_letters = ({ 'letters' => $Texi2HTML::THISDOC{'index_letters_array'}->{$index_name}, 'element' => $element});
   }
   else
@@ -6048,6 +6058,12 @@ sub do_element_targets($;$)
             $place->{'file'} = $filename if (defined($place->{'file'}) and ($place->{'file'} eq $previous_file_name));
          }
          $element->{'file'} = $filename;
+         if ($is_top)
+         { # reset these variables, although they aren't used much, they may be
+           # used in file name comparisons
+            $docu_top = $filename;
+            $docu_top_file = "$docu_rdir$docu_top";
+         }
       }
    }
    print STDERR "file !defined for element $element->{'texi'}\n" if (!defined($element->{'file'}));
@@ -6720,7 +6736,7 @@ sub rearrange_elements()
             if ($element->{'section_ref'} and ($only_sections or (!$only_nodes and $element->{'with_section'})))
             {
                 add_t2h_dependent_element ($element, $element->{'section_ref'});
-                $element->{'toc_level'} = $element->{'section_ref'}->{'toc_level'};
+                #$element->{'toc_level'} = $element->{'section_ref'}->{'toc_level'};
             }
             elsif (!$only_sections)
             {
@@ -7256,7 +7272,7 @@ sub rearrange_elements()
         print STDERR "$element ";
         if ($element->{'node'})
         {
-            print STDERR "node($element->{'id'}, toc_level $element->{'toc_level'}, $is_toplevel, doc_nr $element->{'doc_nr'}($element->{'file'})) $element->{'texi'}:\n";
+            print STDERR "node($element->{'id'}, $is_toplevel, doc_nr $element->{'doc_nr'}($element->{'file'})) $element->{'texi'}:\n";
             print STDERR "  section_ref: $element->{'section_ref'}->{'texi'}\n" if (defined($element->{'section_ref'}));
             print STDERR "  with_section: $element->{'with_section'}->{'texi'}\n" if (defined($element->{'with_section'}));
         }
@@ -7390,7 +7406,6 @@ sub add_file($)
     else
     {
          $files{$file} = { 
-           #'type' => 'section', 
            'counter' => 1,
            'relative_foot_num' => 0,
            'foot_lines' => []
@@ -8116,7 +8131,7 @@ sub pass_text($$)
         }
         print STDERR "# Write the section $Texi2HTML::THIS_ELEMENT->{'texi'}\n" if ($T2H_VERBOSE);
         &$Texi2HTML::Config::one_section($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT);
-        close_out($Texi2HTML::THISDOC{'FH'});
+        close_out($Texi2HTML::THISDOC{'FH'}, $docu_doc_file);
         # no misc element is done
         return;
     }
@@ -8231,7 +8246,7 @@ sub pass_text($$)
         &$Texi2HTML::Config::print_page_foot($Texi2HTML::THISDOC{'FH'});
         # this leaves the possibility for external code to close the file
         # without erroring out
-        close_out ($Texi2HTML::THISDOC{'FH'}) if (fileno($Texi2HTML::THISDOC{'FH'}));
+        close_out ($Texi2HTML::THISDOC{'FH'}, $docu_doc_file) if (fileno($Texi2HTML::THISDOC{'FH'}));
     }
     pop_state();
 }
@@ -8298,40 +8313,40 @@ sub finish_element($$$$)
            if ($T2H_DEBUG & $DEBUG_ELEMENTS);
         &$Texi2HTML::Config::print_section($FH, $first_section, 0, $element);
         ################# debug
-        my $new_elem_file = 'NO ELEM';
+        my $new_elem_file = 'NO ELEM => no file';
         $new_elem_file = $new_element->{'file'} if (defined($new_element));
-        print STDERR "# FILES new: $new_elem_file old: $element->{'file'}\n"
+        print STDERR "# FILES new: $new_elem_file old(".fileno($FH)."): $element->{'file'}\n"
            if ($T2H_DEBUG & $DEBUG_ELEMENTS);
         ################# end debug
         if (defined($new_element) and ($new_element->{'file'} ne $element->{'file'}))
         {
-            print STDERR "# End of section with change in file\n"
+            print STDERR "# End of section with change in file(".fileno($FH).") $element->{'file'} -> $new_element->{'file'}\n"
                  if ($T2H_DEBUG & $DEBUG_ELEMENTS);
              if (!$files{$element->{'file'}}->{'counter'})
              {
                  &$Texi2HTML::Config::print_chapter_footer($FH, $element) if (Texi2HTML::Config::get_conf('SPLIT') eq 'chapter');
                  &$Texi2HTML::Config::print_section_footer($FH, $element) if (Texi2HTML::Config::get_conf('SPLIT') eq 'section');
-                 print STDERR "# Close file after $element->{'texi'}\n" 
+                 print STDERR "# Close file(".fileno($FH).") after $element->{'texi'}\n" 
                      if ($T2H_DEBUG & $DEBUG_ELEMENTS);
                  &$Texi2HTML::Config::print_page_foot($FH);
-                 close_out($FH);
+                 close_out($FH, "$docu_rdir$element->{'file'}");
              }
              else
              {
-                 print STDERR "# Counter $files{$element->{'file'}}->{'counter'} ne 0, file $element->{'file'}\n"
+                 print STDERR "# Counter $files{$element->{'file'}}->{'counter'} ne 0, file(".fileno($FH).") $element->{'file'}\n"
                      if ($T2H_DEBUG & $DEBUG_ELEMENTS);
              }
         }
         elsif (!defined($new_element))
         {
-            print STDERR "# End of last section ($files{$element->{'file'}}->{'counter'})\n"
+            print STDERR "# End of last section, file(".fileno($FH).") $element->{'file'}, counter $files{$element->{'file'}}->{'counter'}\n"
                  if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             if (Texi2HTML::Config::get_conf('SPLIT'))
             { # end of last splitted section
                 &$Texi2HTML::Config::print_chapter_footer($FH, $element) if (Texi2HTML::Config::get_conf('SPLIT') eq 'chapter');
                 &$Texi2HTML::Config::print_section_footer($FH, $element) if (Texi2HTML::Config::get_conf('SPLIT') eq 'section');
                 &$Texi2HTML::Config::print_page_foot($FH);
-                close_out($FH);
+                close_out($FH, "$docu_rdir$element->{'file'}");
             }
             else
             { # end of last unsplit section
@@ -8340,13 +8355,13 @@ sub finish_element($$$$)
         }
         elsif ($new_element->{'top'})
         {
-            print STDERR "# Section followed by Top ($files{$element->{'file'}}->{'counter'})\n"
+            print STDERR "# Section followed by Top, file(".fileno($FH).") counter $files{$element->{'file'}}->{'counter'}\n"
                      if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             &$Texi2HTML::Config::end_section($FH, 1, $element);
         }
         else
         { # end of section followed by another one
-            print STDERR "# Section followed by another one ($files{$element->{'file'}}->{'counter'})\n"
+            print STDERR "# Section followed by another one, file(".fileno($FH).") counter $files{$element->{'file'}}->{'counter'}\n"
                      if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             &$Texi2HTML::Config::end_section($FH, 0, $element);
         }
@@ -8457,6 +8472,8 @@ sub open_file($$$)
     return ($line_number, $input_spool);
 }
 
+my %filehandles = ();
+
 sub open_out($)
 {
     my $file = shift;
@@ -8487,18 +8504,29 @@ sub open_out($)
         # FIXME is it useful when in utf8?
         binmode(FILE, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})");
     }
+    $file =~ s/^(\.[\/]+)*//;
+    $filehandles{fileno(*FILE)} = $file;
     return *FILE;
 }
 
 # FIXME not used for main out files only for special files
-sub close_out($;$)
+sub close_out($$)
 {
     my $FH = shift;
     my $file = shift;
-    $file = '' if (!defined($file));
-    return if ($file eq '-');
-#print STDERR "close_out $file\n";
-    close ($FH) || document_error ("Error occurred when closing $file: $!");
+    return if (defined($file) and $file eq '-');
+    $file =~ s/^(\.[\/]+)*//;
+    my $fileno = fileno($FH);
+#print STDERR "close_out $file $fileno\n";
+    if (!defined($fileno))
+    {
+       msg_debug("fileno not defined for $file") 
+    }
+    elsif (defined($filehandles{$fileno}) and $filehandles{$fileno} ne $file)
+    {
+       #msg_debug("filehandles{$fileno} $filehandles{$fileno} and file $file different")
+    }
+    close ($FH) || document_error ("Error when closing $file: $!");
 }
 
 sub next_line($$)
@@ -8596,7 +8624,6 @@ sub document_warn ($)
    return if ($Texi2HTML::Config::NO_WARN);
    my $text = shift;
    chomp ($text);
-   #warn "$WARN $text\n";
    warn "warning: $text\n";
 }
 
@@ -8636,8 +8663,6 @@ sub document_error($;$)
    my $die = shift;
    warn ("$text\n");
    check_die ($die);
-   #die "$ERROR $text\n" if ($die or !$Texi2HTML::Config::FORCE);
-   #warn "$ERROR $text\n";
    check_errors();
 }
 
@@ -8685,7 +8710,6 @@ sub line_warn($$)
     chomp ($text);
     my $line_number = shift;
     return if (!defined($line_number));
-    #warn "$WARN $text " . format_line_number($line_number) . "\n";
     my $file = $line_number->{'file_name'};
     # otherwise out of source build fail since the file names are different
     $file =~ s/^.*\/// if ($Texi2HTML::Config::TEST);
@@ -8701,7 +8725,6 @@ sub line_error($$)
     my $line_number = shift;
     if (defined($line_number))
     {
-       #warn "$ERROR $text " . format_line_number($line_number) . "\n";
        my $file = $line_number->{'file_name'};
        $file =~ s/^.*\/// if ($Texi2HTML::Config::TEST);
        my $macro_text = '';
@@ -12750,7 +12773,6 @@ sub scan_structure($$$$;$)
                     if ($cline =~ /^$/)
                     {
                         # We already warned in pass texi
-                        #warn "$ERROR verb at end of line";
                     }
                     else
                     {
@@ -13485,7 +13507,6 @@ sub scan_line($$$$;$)
                     if ($cline =~ /^$/)
                     {
                         # Allready warned 
-                        #warn "$ERROR verb at end of line";
                     }
                     else
                     {

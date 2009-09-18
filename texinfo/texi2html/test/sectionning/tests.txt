@@ -50,6 +50,7 @@ top_without_node top_without_node.texi
 before_node_and_section before_node_and_section.texi
 section_before_chapter section_before_chapter.texi
 node_footnote_end node_footnote.texi --footnote-style=end
+# --debug 255
 node_footnote_use_node node_footnote.texi --use-node --node-files --footnote-style=end --split node
 test_refs test_refs.texi
 test_refs_chapter test_refs.texi --split chapter
