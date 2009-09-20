@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.336 2009-09-18 07:13:50 pertusus Exp $
+# $Id: texi2html.pl,v 1.337 2009-09-20 21:21:32 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1004,6 +1004,9 @@ sub t2h_default_init_split_indices()
     %t2h_default_seen_files = ();
     %t2h_default_split_files = ();
     $t2h_default_element_split_printindices = undef;
+    # this is global for the document in case a printindex appears more 
+    # than once, to ensure a unique index page number to be used in an added
+    # element id.
     $t2h_default_index_page_nr = 0;
     $t2h_default_file_number = 0;
 
@@ -1034,12 +1037,15 @@ sub t2h_default_associate_index_element($$$$)
   my $docu_name = shift;
   my $use_node_file = shift;
 
-  my ($file, $default_element_file);
+  my $file;
+  my $default_element_file = $element->{'file'};
 
-  if (get_conf('SPLIT'))
+  # redo the file naming -- the doc_nr part -- in case new elements were 
+  # inserted upon index split.
+  if (!$use_node_file or $t2h_default_split_files{$default_element_file})
   {
     # respect the default splitting
-    $default_element_file = $element->{'file'};
+    #$default_element_file = $element->{'file'};
     if ($t2h_default_seen_files{$default_element_file})
     {
       $file = $t2h_default_seen_files{$default_element_file};
@@ -1048,31 +1054,49 @@ sub t2h_default_associate_index_element($$$$)
     {
       if ($is_top eq 'top')
       {
-        $file = $default_element_file;
+         $t2h_default_seen_files{$default_element_file} = $default_element_file;
       }
       else
       {
         $file = "${docu_name}_$t2h_default_file_number";
         $file .= '.' . $Texi2HTML::THISDOC{'extension'} if
            (defined($Texi2HTML::THISDOC{'extension'}));
+        $t2h_default_seen_files{$default_element_file} = $file;
       }
       $t2h_default_file_number++;
-      $t2h_default_seen_files{$default_element_file} = $file;
     }
+    $element->{'file'} = $file if (defined($file));
   }
-  my $modify_file = (get_conf('SPLIT') and (!$use_node_file or $t2h_default_split_files{$default_element_file}));
-  $element->{'file'} = $file if ($modify_file);
+  
+  my $level = $element->{'level'};
+  # Even if, without USE_SECTION, output can be split at chapter or 
+  # section we don't split indices accordingly. We don't want to add
+  # more cases where users want split indices, this was a very difficult
+  # to maintain feature from the beginning.
+  #$level = $element->{'with_section'}->{'level'} if (!defined($level) and
+  #    defined($element->{'with_section'}));
+
+  # if the element is not the level of splitting, then we don't split.
+  return if ($element->{'top'} or ((get_conf('SPLIT') ne 'node')
+      and (!defined($level) or $level > $Texi2HTML::THISDOC{'split_level'})));
+
+  #print STDERR "Doing printindices for $element $element->{'texi'}, file $element->{'file'} (@{$element->{'place'}})\n";
 
   my $current_element = $element;
-  #print STDERR "Doing printindices for $element $element->{'texi'}, file $file (@{$element->{'place'}})\n";
-
   my @places = @{$element->{'place'}};
   @{$element->{'place'}} = ();
 
+  # iterate over the @places of the element, which includes associated nodes,
+  # associated elements, anchors, footnotes, floats, index entries, 
+  # printindices (including the element command itself, be it a @node or 
+  # a sectionning @-command). 
+  # during the iteration, split printindices that needs it, and reassociate
+  # other placed elements with files and elements.
   foreach my $place (@places)
   {
     my ($printindex, $printindex_to_split, $index_name);
 
+    #print STDERR "PLACE1 $place `".main::var_to_str($place->{'texi'})."' ".main::var_to_str($place->{'command'})."\n";
     # determines if the placed thing is a printindex to be split
     if ($place->{'command'} and $place->{'command'} eq 'printindex')
     {
@@ -1080,15 +1104,12 @@ sub t2h_default_associate_index_element($$$$)
         $index_name = $printindex->{'name'};
         # ! empty index
         if (exists($t2h_default_index_letters_array{$index_name}) and 
-         scalar(@{$t2h_default_index_letters_array{$index_name}})
-         # the element is at the level of splitting, then we split according to
-         # INDEX_SPLIT
+        # split index
+         scalar(@{$t2h_default_index_letters_array{$index_name}} > 1)
          # the condition defined($printindex->{'associated_element'} implies 
          # that we don't split printindex before first element, otherwise
          # there will be a need to begin document without a first element 
          # which would be annoying.
-         and !$element->{'top'} and get_conf('SPLIT') and 
-           ((get_conf('SPLIT') eq 'node') or (defined($element->{'level'}) and $element->{'level'} <= $Texi2HTML::THISDOC{'split_level'})) 
          and defined($printindex->{'associated_element'}))
         {
             $printindex_to_split = 1;
@@ -1098,8 +1119,10 @@ sub t2h_default_associate_index_element($$$$)
     # this is a non split printindex or any other placed thing.
     if (!$printindex_to_split)
     {
+       #print STDERR "PLACE2 $place `$place->{'texi'}' $current_element->{'file'}\n";
        push @{$current_element->{'place'}}, $place;
-       $place->{'file'} = $current_element->{'file'};
+       # don't remodify the element file
+       $place->{'file'} = $current_element->{'file'} if ($place ne $element);
        # the 'element_ref' has to be reset. Otherwise, $place->{'element_ref'}
        # will appear as a new element and trigger closing the file and 
        # opening a new one.
@@ -1121,18 +1144,23 @@ sub t2h_default_associate_index_element($$$$)
 
     $letter_groups[0]->{'element'} = $current_element;
 
+    # besides preparing the new elements corresponding with split indices,
+    # they are recorded for later directions rearrangements in 
+    # t2h_default_index_rearrange_directions.
+
     # this weird construct is there because the element used as a key is 
     # converted to a string by perl, losing its meaning as a reference, 
     # the reference must be recorded explicitly
     $t2h_default_element_split_printindices->{$element}->{'element'} = $element;
     push @{$t2h_default_element_split_printindices->{$element}->{'printindices'}}, $printindex;
-    #print STDERR "Pushing $element, $element->{'texi'}, $printindex\n";
+    #print STDERR "Setting $element, $element->{'texi'}, $printindex $printindex->{'name'} as a split element\n";
     foreach my $split_group (@letter_groups)
     {
         my $first_letter = $split_group->{'letters'}->[0]->{'letter'};
         my $last_letter = $split_group->{'letters'}->[-1]->{'letter'};
         if (!$split_group->{'element'})
-        {
+        { # this is not the first letters group, which is already associated
+          # with an element, a new element is done.
           #construct new element name
           my $letters_heading;
           if ($last_letter ne $first_letter)
@@ -1159,7 +1187,7 @@ sub t2h_default_associate_index_element($$$$)
             $simple = main::simple_format(undef,undef,"simple_format \@$element->{'tag'} index page", $heading_texi);
           }
           else
-          { # should never happen
+          { # should never happen, at this point 'text' is always undefined.
             $name = "$element->{'text'}: $letters_heading";
             $simple = "$element->{'simple_format'}: $letters_heading";
           }
@@ -1188,8 +1216,6 @@ sub t2h_default_associate_index_element($$$$)
     #print STDERR "$index_name processed for $element, $element->{'texi'} (@{$printindex->{'split_groups'}})\n";
   }
 
-  return $file if ($modify_file);
-  return undef;
 }
 
 sub t2h_default_index_rearrange_directions()
@@ -6014,7 +6040,6 @@ sub do_place_target_file($$$)
 
    $place->{'file'} = $element->{'file'} unless defined($place->{'file'});
    $place->{'target'} = $element->{'target'} unless defined($place->{'target'});
-#   $place->{'doc_nr'} = $element->{'doc_nr'} unless defined($place->{'doc_nr'});
    if (defined($Texi2HTML::Config::placed_target_file_name))
    {
       my ($target, $id, $file) = &$Texi2HTML::Config::placed_target_file_name($place,$element,$place->{'target'}, $place->{'id'}, $place->{'file'},$context);
@@ -6043,9 +6068,14 @@ sub do_element_targets($;$)
    my $element = shift;
    my $use_node_file = shift;
    my $is_top = '';
+
    $is_top = 'top' if (defined($element_top) and ($element eq $element_top or (defined($element->{'with_node'}) and $element->{'with_node'} eq $element_top)));
-   my $file_index_split = Texi2HTML::Config::t2h_default_associate_index_element($element, $is_top, $docu_name, $use_node_file);
-   $element->{'file'} = $file_index_split if (defined($file_index_split));
+
+   if ($Texi2HTML::Config::SPLIT_INDEX and Texi2HTML::Config::get_conf('SPLIT'))
+   {
+      Texi2HTML::Config::t2h_default_associate_index_element($element, $is_top, $docu_name, $use_node_file);
+   }
+
    if (defined($Texi2HTML::Config::element_file_name))
    {
       my $previous_file_name = $element->{'file'};
@@ -6131,6 +6161,7 @@ sub rearrange_elements()
         if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     
     my $toplevel = 4;
+
     # correct level if raisesections or lowersections overflowed
     # and find toplevel level
     # use %sections and %headings to modify also the headings
@@ -7062,51 +7093,63 @@ sub rearrange_elements()
             $Texi2HTML::THISDOC{'split_level'} = 2 if ($toplevel <= 2);
         }
         my $previous_file;
+        my $previous_is_top = 0;
         foreach my $element (@elements_list)
         { 
             print STDERR "# Splitting (".Texi2HTML::Config::get_conf('SPLIT').":$Texi2HTML::THISDOC{'split_level'}) $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             my $new_file = 0;
             if (
+               (!defined($previous_file)) or 
                (Texi2HTML::Config::get_conf('SPLIT') eq 'node') or
                (
                  defined($element->{'level'}) and ($element->{'level'} <= $Texi2HTML::THISDOC{'split_level'})
-               )
+               ) or
+               (
+                 !defined($element->{'level'}) and defined($element->{'with_section'}) and ($element->{'with_section'}->{'level'} <= $Texi2HTML::THISDOC{'split_level'})
+               ) or
+               ( # top file after another file
+                 (defined($previous_file) and ($element eq $element_top)
+                  and ($previous_file ne $docu_top))
+               ) # element following top element is always considered to be
+                 # in a different file.
+               or ($previous_is_top)
               )
             {
                 $new_file = 1;
                 $doc_nr++;
             }
-            $doc_nr = 0 if ($doc_nr < 0); # happens if first elements are nodes
+            $previous_is_top = 0 if ($previous_is_top);
+
+            #$doc_nr = 0 if ($doc_nr < 0); # happens if first elements are nodes
+            
             $element->{'doc_nr'} = $doc_nr;
-            my $is_top = '';
             $element->{'file'} = "${docu_name}_$doc_nr"
-                   . (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
+                . (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
             my $use_node_file = 0;
             if ($element eq $element_top)
-            { # the top elements
-                $is_top = "top";
+            { # the top element
                 $element->{'file'} = $docu_top;
+                $previous_is_top = 1;
             }
             elsif ($Texi2HTML::Config::NODE_FILENAMES)
             {
                 $use_node_file = 1;
                 if ($new_file)
                 {
-                    my $node = get_node($element) unless(exists($element->{'with_node'})
-                        and $element->{'with_node'}->{'element_added'});
+                    my $node = get_node($element);
                     if ($node and defined($node->{'node_file'}))
                     {
                         $element->{'file'} = $node->{'node_file'};
                     }
-                    $previous_file = $element->{'file'};
                 }
-                elsif($previous_file)
+                elsif(defined($previous_file))
                 {
                     $element->{'file'} = $previous_file;
                 }
             }
+            $previous_file = $element->{'file'};
             do_element_targets($element, $use_node_file);
-            print STDERR "# add_file($use_node_file) $element->{'file'} for $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+            print STDERR "# [$doc_nr] add_file($use_node_file,$new_file,".var_to_str($previous_file).") $element->{'file'} for $element->{'texi'}\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
             add_file($element->{'file'});
         }
     }
@@ -7297,6 +7340,7 @@ sub rearrange_elements()
             }
             print STDERR "  file: $element->{'file'} $files{$element->{'file'}}, counter $files{$element->{'file'}}->{'counter'}\n";
         }
+        print STDERR "  level: $element->{'level'}\n" if (defined($element->{'level'}));
         print STDERR "  TOP($toplevel) " if ($element->{'top'});
         print STDERR "  u: $element->{'up'}->{'texi'}\n" if (defined($element->{'up'}));
         print STDERR "  ch: $element->{'child'}->{'texi'}\n" if (defined($element->{'child'}));

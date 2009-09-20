@@ -5,6 +5,7 @@ sectionning sectionning.texi
 sectionning_directions sectionning.texi --init test_directions.init
 novalidate novalidate.texi
 makeinfo_novalidate_split novalidate.texi --init makeinfo.init --no-node-file
+# --debug 255
 makeinfo_novalidate_unsplit novalidate.texi --init makeinfo.init --split no --no-node-file
 makeinfo_novalidate_unsplit_node_file novalidate.texi --init makeinfo.init --split no
 # in docbook, the @top 'chapter' is closed before the section, makeinfo
@@ -18,12 +19,9 @@ section_nodes_before_top section_nodes_before_top.texi
 nodes_after_top_before_chapter nodes_after_top_before_chapter.texi
 nodes_after_top_before_section nodes_after_top_before_section.texi --split chapter
 nodes_after_top_before_section_use_nodes nodes_after_top_before_section.texi --use-nodes
-# since there is only one subsection/one chapter in 
-# nodes_after_top_before_section/nodes_after_top_before_chapter, with
-# use-nodes all the nodes are considered to be top level elements and so it
-# is split at node.
 nodes_after_top_before_section_use_nodes_chapter nodes_after_top_before_section.texi --use-nodes --split chapter
 nodes_after_top_before_chapter_use_nodes_chapter nodes_after_top_before_chapter.texi --use-nodes --split chapter
+# --debug 255
 nodes_test nodes_test.texi
 no_section_no_node no_section.texi
 no_section no_section.texi --use-nodes

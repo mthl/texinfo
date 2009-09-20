@@ -1,0 +1,60 @@
+first
+-----
+Text and then index entries
+
+* Index:
+* ! entry in node: first.
+* a concept a node: a node.
+* another: another.
+* entry a: Top.
+* entry after printindex: a node.
+* entry in node: first.
+* first before top: first before top.
+* node in menu before top: node in menu before top.
+* printindex node in menu before top: node in menu before top.
+* something: another.
+
+* second::
+
+second
+------
+* a node::
+* another::
+
+* Index:
+* a function: a node.
+* fun in node: first.
+* somewhere: another.
+
+another
+-------
+
+
+a node
+------
+
+* Index:
+* ! entry in node: first.
+* a concept a node: a node.
+* another: another.
+* entry a: Top.
+* entry after printindex: a node.
+* entry in node: first.
+* first before top: first before top.
+* node in menu before top: node in menu before top.
+* printindex node in menu before top: node in menu before top.
+* something: another.
+
+
+* Index:
+* ! entry in node: first.
+* a concept a node: a node.
+* another: another.
+* entry a: Top.
+* entry after printindex: a node.
+* entry in node: first.
+* first before top: first before top.
+* node in menu before top: node in menu before top.
+* printindex node in menu before top: node in menu before top.
+* something: another.
+

@@ -1,3 +1,12 @@
+2009-09-20   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: isolate the code related with index split
+	such that it is called only if SPLIT_INDEX is set.
+	Always change file after and before the top element since
+	it uses the docu_top file.
+	Increase the index file number only when needed, not for
+	every the elements, when node names are used for filenames.
+
 2009-09-18   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: use global information for @printindex not
