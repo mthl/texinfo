@@ -4591,7 +4591,8 @@ version 1.68. API changed also a lot between 1.78 and 1.80.
 @item Remove the user from footer, and the corresponding USER variable and
   $Texi2HTML::THISDOC@{user@}.
 @item Don't treat _setfilename as a value set. It should be available through
-  get_conf.
+  get_conf. Same for all the other @@-commands previously avaiable as
+  values.
 @item change in class attribute for html elements:
 for ul to class "no-bullet" ($NO_BULLET_LIST_ATTRIBUTE). @@top 
 and @@centerchap have now their command name as class.

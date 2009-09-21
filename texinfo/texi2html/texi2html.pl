@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.337 2009-09-20 21:21:32 pertusus Exp $
+# $Id: texi2html.pl,v 1.338 2009-09-21 18:39:40 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1053,7 +1053,7 @@ sub t2h_default_associate_index_element($$$$)
     else
     {
       if ($is_top eq 'top')
-      {
+      { # this is the element_top, so we keep docu_top as associated file
          $t2h_default_seen_files{$default_element_file} = $default_element_file;
       }
       else
@@ -1077,6 +1077,8 @@ sub t2h_default_associate_index_element($$$$)
   #    defined($element->{'with_section'}));
 
   # if the element is not the level of splitting, then we don't split.
+  # also if 'top' is set we don't split since the formatting is different
+  # in that case and the result would be quite unpredictable.
   return if ($element->{'top'} or ((get_conf('SPLIT') ne 'node')
       and (!defined($level) or $level > $Texi2HTML::THISDOC{'split_level'})));
 
@@ -3971,7 +3973,8 @@ else
 $Texi2HTML::Config::SPLIT_INDEX = 0 unless $Texi2HTML::Config::SPLIT;
 $Texi2HTML::Config::NODE_FILENAMES = 1 if ((!defined($Texi2HTML::Config::NODE_FILENAMES) and $Texi2HTML::Config::SPLIT eq 'node') or $Texi2HTML::Config::NODE_FILES);
 
-# Something like backward compatibility
+# Something like backward compatibility. This would make sense to keep 
+# it ad-infinitum since the meaning of --out and --subdir are different.
 if ($Texi2HTML::Config::SPLIT and defined($Texi2HTML::Config::SUBDIR)
     and ($Texi2HTML::Config::SUBDIR ne '') and 
    (!defined($Texi2HTML::Config::OUT) or ($Texi2HTML::Config::OUT eq '')))
@@ -4925,7 +4928,7 @@ sub pass_structure($$)
                     {
                         my $name = $1;
                         my $section_ref = new_section_heading($tag, $name, $state, $line_nr);
-                        $document_sec_num++ if($tag ne 'top');
+                        $document_sec_num++ if ($tag ne 'top');
                         
                         $section_ref->{'sec_num'} = $document_sec_num;
                         $section_ref->{'id'} = "SEC$document_sec_num";
@@ -4938,7 +4941,6 @@ sub pass_structure($$)
 
                         if ($tag eq 'top')
                         {
-                            #$section_ref->{'top'} = 1;
                             $section_ref->{'number'} = '';
                             $section_ref->{'id'} = "SEC_Top";
                             $section_ref->{'sec_num'} = 0;
@@ -5446,21 +5448,24 @@ sub misc_command_structure($$$$)
     elsif (grep {$_ eq $command} ('settitle','shorttitlepage','title'))
     {
         my $arg = trim_comment_spaces($line, "\@$command");
+        $Texi2HTML::THISDOC{$command . '_texi'} = $arg;
+
+        # FIXME backward compatibility. Obsoleted in nov 2009.
         $value{"_$command"} = $arg;
-        # backward compatibility
         if ($command eq 'title')
-        {
+        { # FIXME This was obsoleted in jun 2007
             $Texi2HTML::THISDOC{"${command}s_texi"} = [ $arg ];
-            $Texi2HTML::THISDOC{"${command}s"} = [ $arg ];
         }
     }
     elsif (grep {$_ eq $command} ('author','subtitle'))
     {
         my $arg = trim_comment_spaces($line, "\@$command");
-        $value{"_$command"} .= $arg . "\n";
-        #chomp($arg);
+        $Texi2HTML::THISDOC{$command . '_texi'} .= $arg . "\n";
         push @{$Texi2HTML::THISDOC{"${command}s_texi"}}, $arg;
-        push @{$Texi2HTML::THISDOC{"${command}s"}}, $arg;
+        #chomp($arg);
+
+        # FIXME backward compatibility. Obsoleted in nov 2009.
+        $value{"_$command"} .= $arg . "\n";
     }
     elsif ($command eq 'synindex' || $command eq 'syncodeindex')
     {
@@ -6817,6 +6822,26 @@ sub rearrange_elements()
     }
     print STDERR "# top node: $node_top->{'texi'}\n" if (defined($node_top) and
         ($T2H_DEBUG & $DEBUG_ELEMENTS));
+
+    # Remark: there are many subtle distinctions among the elements that
+    # have a flavor of being at top. First there are the texinfo top
+    # elements (if present), namely $section_top for the @top element
+    # and $node_top for the @node Top element (and both may be associated).
+
+    # Then there is $element_top, set up just below. In addition to 
+    # $section_top and $node_top, the section associated with $node_top
+    # and the first element may be used. $element_top is used to determine
+    # file splitting and file names, since it is always associated with 
+    # $docu_top file.
+
+    # The $element_top may have 'top' set, in case it is a node or @top.
+    # In that case, special formatting is done, like using print_Top and
+    # similar.
+
+    # Similarly with element_top, some other nodes than $node_top may 
+    # get associated with the top node filename without being considered
+    # as top otherwise (this is done below).
+
     if (defined($section_top) and $section_top->{'this'})
     {
     # element top is the element with @top.
@@ -6840,6 +6865,9 @@ sub rearrange_elements()
          $element_top = $element_first;
     }
 
+    # Rather arbitrarily, 'top' is set for nodes as top elements 
+    # and @top. This triggers specific formatting, like calling
+    # print_Top and similar things.
     if (defined($element_top))
     {
         $element_top->{'top'} = 1 if ($element_top->{'node'} or $element_top->{'tag'} eq 'top');
@@ -6850,16 +6878,9 @@ sub rearrange_elements()
     print STDERR "# find fastback and fastforward\n" 
        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $element (@elements_list)
-    { # nodes are ignored here
-        my $up;
-        if ($element->{'node'})
-        {
-           $up = get_top($element->{'section_ref'});
-        }
-        else
-        {
-           $up = get_top($element);
-        }
+    { # nodes are ignored here, although their associated sectionning
+      # command may be taken into account.
+        my $up = get_top($element);
         next unless (defined($up));
         # take the opportunity to set the first chapter with index 
         $element_chapter_index = $up if ($element_index and ($element_index eq $element));
@@ -6883,17 +6904,6 @@ sub rearrange_elements()
         }
     }
 
-    foreach my $element (@elements_list)
-    {
-        # FIXME: certainly wrong. Indeed this causes the section associated
-        # with the @node Top to be up for a @chapter, even if it is a 
-        # @chapter and not @top. It could even be up and, say, a @section!
-        if ($element->{'toplevel'} and ($element ne $element_top))
-        { 
-            $element->{'up'} = $element_top;
-        }
-    }
-    
     # set 'reference_element' which is used each time there is a cross ref
     # to that node.
     # It is the section associated with the node if there are only sections
@@ -7060,8 +7070,10 @@ sub rearrange_elements()
     {
         $node_as_top = $node_top;
     }
+    # following possibilities lead to some node being considered
+    # as top for the purpose of setting the file node, but not as node_top
     elsif ($element_top->{'with_node'})
-    {
+    { 
         $node_as_top = $element_top->{'with_node'};
     }
     else
@@ -7120,8 +7132,6 @@ sub rearrange_elements()
             }
             $previous_is_top = 0 if ($previous_is_top);
 
-            #$doc_nr = 0 if ($doc_nr < 0); # happens if first elements are nodes
-            
             $element->{'doc_nr'} = $doc_nr;
             $element->{'file'} = "${docu_name}_$doc_nr"
                 . (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
@@ -7146,6 +7156,10 @@ sub rearrange_elements()
                 {
                     $element->{'file'} = $previous_file;
                 }
+                # FIXME this case should be considered explicitly, 
+                # it leads to a file name like "${docu_name}_$doc_nr"
+                # while other filenames are the node names.
+                # Moreover it can collide with index split...
             }
             $previous_file = $element->{'file'};
             do_element_targets($element, $use_node_file);
@@ -7457,23 +7471,33 @@ sub add_file($)
     }
 }
 
-# find parent element which is a top element, or a node within the top section
+# find parent element which is a toplevel element
 sub get_top($)
 {
    my $element = shift;
-   my $up = $element;
-   #while (!$up->{'toplevel'} and !$up->{'top'})
-   # FIXME remove the defined($up->{'tag'})
-   while (!$up->{'toplevel'} and !(defined($up->{'tag'}) and $up->{'tag'} eq 'top'))
+   if ($element->{'node'})
    {
-       $up = $up->{'sectionup'};
-       if (!defined($up))
+      if (defined($element->{'section_ref'}))
+      {
+         $element = $element->{'section_ref'};
+      }
+      else
+      {
+         return undef;
+      }
+   }
+   return undef if ($element eq $element_before_anything);
+   my $up = $element;
+   while (!$up->{'toplevel'} and $up->{'tag'} ne 'top')
+   {
+       if (!defined($up->{'sectionup'}))
        {
            # If there is no section, it is normal not to have toplevel element,
            # and it is also the case if there is a low level element before
            # a top level element
            return undef;
        }
+       $up = $up->{'sectionup'};
    }
    return $up;
 }
@@ -7524,9 +7548,13 @@ sub do_names()
         $nodes{$node}->{'no_texi'} = remove_texi($texi);
         $nodes{$node}->{'simple_format'} = simple_format(undef, undef, "simple_format \@node", $texi);
         $nodes{$node}->{'heading_texi'} = $texi;
-        # FIXME : what to do if $nodes{$node}->{'external_node'} and
-        # $nodes{$node}->{'seen'}
+        
+        ################# debug
+        # if $nodes{$node}->{'external_node'} and $nodes{$node}->{'seen'}
+        # this is a bug, there should be a check that the node hasn't an
+        # external node syntax.
         msg_debug ("$nodes{$node}->{'texi'} is external and was seen",  $nodes{$node}->{'line_nr'}) if ($nodes{$node}->{'seen'} and $nodes{$node}->{'external_node'});
+        ################# end debug
     }
     foreach my $number (keys(%sections))
     {
@@ -7575,9 +7603,10 @@ sub enter_index_entry($$$$$)
     }
     $entry = trim_comment_spaces ($entry, "index entry in \@$command", $line_nr);
     # The $key is mostly usefull for alphabetical sorting.
-    # beware that an entry beginning with a format will lead to an empty
-    # key, but with some texi.
-    # FIXME this should be done later, during formatting.
+    # beware that the texinfo could be non empty, but the key is. So the
+    # key should be used to determine whether the entry is empty or not.
+    # This could be done later while sorting, but it doesn't really matter
+    # since there are no error messages anyway.
     my $key = remove_texi($entry);
     my $id;
 
@@ -7816,17 +7845,19 @@ sub pass_text($$)
     # We set titlefont only if the titlefont appeared in the top element
     if (defined($element_top->{'titlefont'}))
     {
+         $Texi2HTML::THISDOC{'titlefont_texi'} = $element_top->{'titlefont'};
+         # backward compatibility nov 2009
          $value{'_titlefont'} = $element_top->{'titlefont'};
     }
     
     # prepare %Texi2HTML::THISDOC
     $Texi2HTML::THISDOC{'command_stack'} = $state{'command_stack'};
 
-    foreach my $texi_cmd (('shorttitlepage', 'settitle', 'author', 'title',
-           'titlefont', 'subtitle'))
-    {
-        $Texi2HTML::THISDOC{$texi_cmd . '_texi'} = $value{'_' . $texi_cmd};
-    }
+    #foreach my $texi_cmd (('shorttitlepage', 'settitle', 'author', 'title',
+    #       'subtitle'))
+    #{
+    #    $Texi2HTML::THISDOC{$texi_cmd . '_texi'} = $value{'_' . $texi_cmd};
+    #}
     $Texi2HTML::THISDOC{'top_texi'} = $section_top->{'texi'} if (defined($section_top));
 
     $Texi2HTML::THISDOC{'fulltitle_texi'} = '';
@@ -7902,17 +7933,15 @@ sub pass_text($$)
     $Texi2HTML::THISDOC{'program'} = $THISPROG;
     $Texi2HTML::THISDOC{'program_homepage'} = $T2H_HOMEPAGE;
     $Texi2HTML::THISDOC{'program_authors'} = $T2H_AUTHORS;
-    $Texi2HTML::THISDOC{'authors'} = [] if (!defined($Texi2HTML::THISDOC{'authors'}));
-    $Texi2HTML::THISDOC{'subtitles'} = [] if (!defined($Texi2HTML::THISDOC{'subtitles'}));
-    # backward compatibility, titles should go away
-    $Texi2HTML::THISDOC{'titles'} = [] if (!defined($Texi2HTML::THISDOC{'titles'}));
     foreach my $command (('authors', 'subtitles', 'titles'))
     {
+        $Texi2HTML::THISDOC{$command} = [];
         my $i;
-        for ($i = 0; $i < $#{$Texi2HTML::THISDOC{$command}} + 1; $i++) 
+        for ($i = 0; $i < $#{$Texi2HTML::THISDOC{$command .'_texi'}} + 1; $i++) 
         {
-            chomp ($Texi2HTML::THISDOC{$command}->[$i]);
-            $Texi2HTML::THISDOC{$command}->[$i] = substitute_line($Texi2HTML::THISDOC{$command}->[$i], "\@$command");
+            my $texi_line = $Texi2HTML::THISDOC{$command .'_texi'}->[$i];
+            chomp ($texi_line);
+            $Texi2HTML::THISDOC{$command}->[$i] = substitute_line($texi_line, "\@$command");
             #print STDERR "$command:$i: $Texi2HTML::THISDOC{$command}->[$i]\n";
         }
     }
@@ -8331,14 +8360,17 @@ sub finish_element($$$$)
         }
         @foot_lines = ();
     }
+
     if ($element->{'top'})
     {
+        ############### debug
         #print STDERR "TOP $element->{'texi'}, @{$Texi2HTML::THIS_SECTION}\n";
+        die "element->{'top'} $element ne element_top $element_top" if ($element ne $element_top);
         print STDERR "# Doing element top\n"
            if ($T2H_DEBUG & $DEBUG_ELEMENTS);
         print STDERR "[Top]" if ($T2H_VERBOSE);
+        ############### end debug
 
-        $Texi2HTML::HREF{'Top'} = href($element_top, $element->{'file'});
         &$Texi2HTML::Config::print_Top($FH, $element->{'titlefont'}, $element);
         my $end_page = 0;
         if (Texi2HTML::Config::get_conf('SPLIT'))
@@ -9973,7 +10005,7 @@ sub end_format($$$$$)
             pop @{$state->{'preformatted_stack'}};
         }
  
-        # backward compatibility with 1.78       
+        # backward compatibility with 1.78 jun 2007   
         if (defined($Texi2HTML::Config::menu))
         {
            if ($format eq 'menu')
@@ -12744,8 +12776,7 @@ sub scan_structure($$$$;$)
                         $float->{'target'} = $label_texi;
 #print STDERR "FLOAT: $float $float->{'texi'}, place $state->{'place'}\n";
                         push @{$state->{'place'}}, $float;
-                        # FIXME use real element?
-                        $float->{'element'} = $state->{'heading_element'};
+                        $float->{'element'} = $state->{'current_element'};
                         $state->{'float'} = $float;
                         $float->{'style_texi'} = $style_texi;
                         $float->{'line_nr'} = $line_nr;

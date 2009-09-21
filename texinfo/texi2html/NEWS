@@ -79,7 +79,8 @@ This file records noteworthy changes.
 * If file begins with /, ./ or ../ don't search in -I.
 
 * Don't treat _setfilename as a value set. It should be available through
-  get_conf.
+  get_conf. Same for all the other @-commands previously avaiable as
+  values.
 
 * Changes in class attribute in html elements:
   Change class "toc" for ul to class "no-bullet" ($NO_BULLET_LIST_ATTRIBUTE).

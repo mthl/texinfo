@@ -31,5 +31,6 @@ index_entry_in_footnote index_entry_in_footnote.texi
 index_one_node index_one_node.texi
 index_no_node_no_top index_no_node_no_top.texi
 double_index_entry double_index_entry.texi
+#same_doc_nr_split_index_and_element same_doc_nr_split_index_and_element.texi --init index_test.init --split node --node-files
 index_entry_in_footnote_info index_entry_in_footnote.texi --init info.init
 index_entry_in_footnote_separated_info index_entry_in_footnote.texi --init info.init --footnote-style=separate

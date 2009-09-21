@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.236 2009-09-18 07:13:50 pertusus Exp $
+# $Id: texi2html.init,v 1.237 2009-09-21 18:39:40 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -5919,6 +5919,7 @@ sub t2h_default_heading($$$$$;$$)
         {
           $level = 3;
         }
+        # FIXME: drop the 'top', as was done for html?
         return '' if ((!$element->{'top'} and !$element->{'this'}) or $element->{'with_section'})
     }
     my $text = "$element->{'text'}";
