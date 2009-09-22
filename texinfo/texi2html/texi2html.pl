@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.338 2009-09-21 18:39:40 pertusus Exp $
+# $Id: texi2html.pl,v 1.339 2009-09-22 20:22:24 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -987,13 +987,21 @@ sub T2H_GPL_format($$$)
     return "<${element}$attribute_text>\n" . $text. "</$element>\n";
 }
 
-my $t2h_default_file_number;
-my $t2h_default_index_page_nr;
-#my %t2h_default_element_indices;
+# for each index holds the letters split as determined by SPLIT_INDEX.
 my %t2h_default_index_letters_array;
+# equivalent of doc_nr, but with files (and hence numbers) added when 
+# a split index leads to an additional element and a file is created.
+my $t2h_default_file_number;
+# this is an increasing number to construct the id for each newly
+# created index element.
+my $t2h_default_index_id_nr;
+# this holds the file name associated with an element file, such
+# as to follow the splitting coming from the main program, and also use
+# the newly generated files.
 my %t2h_default_seen_files;
+# holds the elements and indices that are split to easily set the
+# directions after they are done in the main program.
 my $t2h_default_element_split_printindices;
-my %t2h_default_split_files;
 
 # construct a hash of index names holding the letter grouped how they will
 # be split.
@@ -1002,12 +1010,8 @@ sub t2h_default_init_split_indices()
     push @command_handler_process, \&t2h_default_index_rearrange_directions;
     %t2h_default_index_letters_array = ();
     %t2h_default_seen_files = ();
-    %t2h_default_split_files = ();
     $t2h_default_element_split_printindices = undef;
-    # this is global for the document in case a printindex appears more 
-    # than once, to ensure a unique index page number to be used in an added
-    # element id.
-    $t2h_default_index_page_nr = 0;
+    $t2h_default_index_id_nr = 0;
     $t2h_default_file_number = 0;
 
     foreach my $index_name(keys %{$Texi2HTML::THISDOC{'index_letters_array'}})
@@ -1037,15 +1041,15 @@ sub t2h_default_associate_index_element($$$$)
   my $docu_name = shift;
   my $use_node_file = shift;
 
-  my $file;
   my $default_element_file = $element->{'file'};
 
   # redo the file naming -- the doc_nr part -- in case new elements were 
-  # inserted upon index split.
-  if (!$use_node_file or $t2h_default_split_files{$default_element_file})
+  # inserted upon index split. But respect the default splitting to keep
+  # the elements that are associated with the same file in the same file,
+  # or the added file.
+  if (!$use_node_file or $t2h_default_seen_files{$default_element_file})
   {
-    # respect the default splitting
-    #$default_element_file = $element->{'file'};
+    my $file;
     if ($t2h_default_seen_files{$default_element_file})
     {
       $file = $t2h_default_seen_files{$default_element_file};
@@ -1053,7 +1057,9 @@ sub t2h_default_associate_index_element($$$$)
     else
     {
       if ($is_top eq 'top')
-      { # this is the element_top, so we keep docu_top as associated file
+      { # this is the element_top, so we keep docu_top as associated file.
+        # this, in fact, is not necessary since the element_top is never
+        # associated with another element, but who knows.
          $t2h_default_seen_files{$default_element_file} = $default_element_file;
       }
       else
@@ -1069,6 +1075,7 @@ sub t2h_default_associate_index_element($$$$)
   }
   
   my $level = $element->{'level'};
+
   # Even if, without USE_SECTION, output can be split at chapter or 
   # section we don't split indices accordingly. We don't want to add
   # more cases where users want split indices, this was a very difficult
@@ -1084,9 +1091,6 @@ sub t2h_default_associate_index_element($$$$)
 
   #print STDERR "Doing printindices for $element $element->{'texi'}, file $element->{'file'} (@{$element->{'place'}})\n";
 
-  my $current_element = $element;
-  my @places = @{$element->{'place'}};
-  @{$element->{'place'}} = ();
 
   # iterate over the @places of the element, which includes associated nodes,
   # associated elements, anchors, footnotes, floats, index entries, 
@@ -1094,11 +1098,15 @@ sub t2h_default_associate_index_element($$$$)
   # a sectionning @-command). 
   # during the iteration, split printindices that needs it, and reassociate
   # other placed elements with files and elements.
+
+  my $current_element = $element;
+  my @places = @{$element->{'place'}};
+  @{$element->{'place'}} = ();
+
   foreach my $place (@places)
   {
     my ($printindex, $printindex_to_split, $index_name);
 
-    #print STDERR "PLACE1 $place `".main::var_to_str($place->{'texi'})."' ".main::var_to_str($place->{'command'})."\n";
     # determines if the placed thing is a printindex to be split
     if ($place->{'command'} and $place->{'command'} eq 'printindex')
     {
@@ -1121,9 +1129,9 @@ sub t2h_default_associate_index_element($$$$)
     # this is a non split printindex or any other placed thing.
     if (!$printindex_to_split)
     {
-       #print STDERR "PLACE2 $place `$place->{'texi'}' $current_element->{'file'}\n";
        push @{$current_element->{'place'}}, $place;
-       # don't remodify the element file
+       # don't remodify the original element file, it was set right at the 
+       # beginning of the function.
        $place->{'file'} = $current_element->{'file'} if ($place ne $element);
        # the 'element_ref' has to be reset. Otherwise, $place->{'element_ref'}
        # will appear as a new element and trigger closing the file and 
@@ -1135,7 +1143,6 @@ sub t2h_default_associate_index_element($$$$)
     }
 
     # now split the index
-    $t2h_default_split_files{$default_element_file} = 1;
 
     my @letter_groups = ();
     my @letters_split = @{$t2h_default_index_letters_array{$index_name}};
@@ -1163,7 +1170,8 @@ sub t2h_default_associate_index_element($$$$)
         if (!$split_group->{'element'})
         { # this is not the first letters group, which is already associated
           # with an element, a new element is done.
-          #construct new element name
+
+          # construct new element name
           my $letters_heading;
           if ($last_letter ne $first_letter)
           {
@@ -1199,10 +1207,12 @@ sub t2h_default_associate_index_element($$$$)
           $t2h_default_file_number++;
           $relative_file .= '.' . $Texi2HTML::THISDOC{'extension'} if 
              (defined($Texi2HTML::THISDOC{'extension'}));
-          my $id = "index_split-$t2h_default_index_page_nr";
-          $t2h_default_index_page_nr++;
+          my $id = "index_split-$t2h_default_index_id_nr";
+          $t2h_default_index_id_nr++;
 
           my $new_element = { 'file' => $relative_file, 'id' => $id, 'target' => $id, 'text' => $name, 'texi' => $texi, 'seen' => 1, 'simple_format' => $simple };
+          # to avoid crashing when in case there is a filename collision.
+          main::add_file($new_element->{'file'});
 
           $split_group->{'element'} = $new_element;
           $current_element = $new_element;
@@ -1214,12 +1224,13 @@ sub t2h_default_associate_index_element($$$$)
         }
     }
     $t2h_default_seen_files{$default_element_file} = $current_element->{'file'};
-    $printindex->{'split_groups'} = \@letter_groups;# if (scalar(@letter_groups)>1);
+    $printindex->{'split_groups'} = \@letter_groups;
     #print STDERR "$index_name processed for $element, $element->{'texi'} (@{$printindex->{'split_groups'}})\n";
   }
-
 }
 
+# set directions for added elements now that they are done in the
+# main program for all the other elements.
 sub t2h_default_index_rearrange_directions()
 {
   return if (!defined($t2h_default_element_split_printindices));
@@ -1438,13 +1449,16 @@ sub t2h_GPL_default_printindex($$)
 
     # do the new element beginning
     $Texi2HTML::THIS_ELEMENT = $current_page->{'element'};
+    main::unref_file($Texi2HTML::THIS_ELEMENT->{'file'});
     main::do_element_directions($Texi2HTML::THIS_ELEMENT);
-    main::open_out_file($current_page->{'element'}->{'file'});
-    &$print_page_head($Texi2HTML::THISDOC{'FH'});
-    &$print_chapter_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if Texi2HTML::Config::get_conf('SPLIT') eq 'chapter';
-    &$print_section_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if Texi2HTML::Config::get_conf('SPLIT') eq 'section';
-
-    @{$Texi2HTML::THIS_SECTION} =  &$element_label($Texi2HTML::THIS_ELEMENT->{'id'}, $Texi2HTML::THIS_ELEMENT, undef, undef);
+    my $do_page_head = main::open_out_file($current_page->{'element'}->{'file'});
+    if ($do_page_head)
+    {
+      &$print_page_head($Texi2HTML::THISDOC{'FH'});
+      &$print_chapter_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if Texi2HTML::Config::get_conf('SPLIT') eq 'chapter';
+      &$print_section_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if Texi2HTML::Config::get_conf('SPLIT') eq 'section';
+    }
+    @{$Texi2HTML::THIS_SECTION} = &$element_label($Texi2HTML::THIS_ELEMENT->{'id'}, $Texi2HTML::THIS_ELEMENT, undef, undef);
     push @{$Texi2HTML::THIS_SECTION}, &$print_element_header(1, 0);
     push @{$Texi2HTML::THIS_SECTION}, &$heading($Texi2HTML::THIS_ELEMENT);
   }
@@ -5352,26 +5366,15 @@ sub misc_command_texi($$$$)
       else
       {
           if ($command eq 'setfilename' and $Texi2HTML::Config::USE_SETFILENAME)
-          {
-          #   if (defined(Texi2HTML::Config::get_conf ('setfilename')))
-          #   {
-          #       line_error ("\@$command already set", $line_nr);
-          #       # the line is removed, because we don't want to reset 
-          #       # get_conf('setfilename') between passes, and we don't want
-          #       # the last one to be picked up
-          #       $line = "\n";
-          #   }
-          #   else
+          { # a double setfillename is removed before calling misc_command_texi
+             my $filename = trim_comment_spaces($line, "\@$command");
+             $filename = substitute_line($filename, "\@$command",{'code_style' => 1, 'remove_texi' => 1}, $line_nr);
+             if ($filename ne '')
              {
-                 my $filename = trim_comment_spaces($line, "\@$command");
-                 $filename = substitute_line($filename, "\@$command",{'code_style' => 1, 'remove_texi' => 1}, $line_nr);
-                 if ($filename ne '')
-                 {
-                     Texi2HTML::Config::set_conf($command, $filename, 1);
-                     # remove extension
-                     $filename =~ s/\.[^\.]*$//;
-                     init_with_file_name ($filename) if ($filename ne '');
-                 }
+                 Texi2HTML::Config::set_conf($command, $filename, 1);
+                 # remove extension
+                 $filename =~ s/\.[^\.]*$//;
+                 init_with_file_name ($filename) if ($filename ne '');
              }
           }
           # in reality, do only set, clear and clickstyle.
@@ -5395,10 +5398,6 @@ sub new_content_element($)
    }
    return $element;
 }
-
-# initial kdb styles
-my $kept_kdb_style;
-my $kept_kdb_pre_style;
 
 # handle misc commands and misc command args
 sub misc_command_structure($$$$)
@@ -6464,9 +6463,10 @@ sub rearrange_elements()
     foreach my $node (@nodes_list)
     {
         # first a warning if the node and the equivalent nodes don't 
-        # appear in menus
-        # FIXME check node_first only if there is no @node Top.
-        if (($node ne $node_first) and !$node->{'menu_up'} and ($node->{'texi'} !~ /^top$/i) and $Texi2HTML::Config::SHOW_MENU)
+        # appear in menus.
+        # Don't warn for the top node, and the first node if there is no
+        # top node.
+        if ((($node_top and $node ne $node_top) or (!$node_top and $node ne $node_first)) and !$node->{'menu_up'} and $Texi2HTML::Config::SHOW_MENU)
         {
             my @equivalent_nodes = equivalent_nodes($node->{'texi'});
             my $found = 0;
@@ -6685,10 +6685,7 @@ sub rearrange_elements()
                 }
             }
         }
-        # FIXME with_section or node_ref? with with_section, as it is now
-        # it is only done for the node associated with the section, with
-        # section_ref it will be done for all the nodes after the section but
-        # not associated with another section (as it was before)
+        # copy the direction of the associated section.
         if (defined($node->{'with_section'}))
         {
             my $section = $node->{'with_section'};
@@ -6697,15 +6694,11 @@ sub rearrange_elements()
                 $node->{$direction} = $section->{$direction}
                   if (defined($section->{$direction}));
             }
-            # FIXME the following is wrong now, since it is only done for
-            # the node->with_section. If done for node->section_ref it 
-            # could be true.
-            # this is a node appearing within a section but not associated
-            # with that section. We consider that it is below that section.
-            $node->{'sectionup'} = $section
-               if (grep {$node eq $_} @{$section->{'node_childs'}});
         }
-        # 'up' is used in .init files. Maybe should go away.
+        # 'up' is used in .init files. It is almost sectionup, but not
+        # exactly, it allows to have something relevant whether elements
+        # are nodes or sections -- just like Back and Forward. So it
+        # should certainly be kept.
         if (defined($node->{'sectionup'}))
         {
             $node->{'up'} = $node->{'sectionup'};
@@ -6905,11 +6898,16 @@ sub rearrange_elements()
     }
 
     # set 'reference_element' which is used each time there is a cross ref
-    # to that node.
-    # It is the section associated with the node if there are only sections
-    # FIXME with only_nodes there should certainly be a corresponding
-    # reference_element set.
-    # also should certainly be done above
+    # to that node (xref and menu entry), to do the href, and also the 
+    # element heading text.
+    # It is the section associated with the node if there are only sections.
+    # Since in the default case the target is the node target, even for 
+    # sections, this, in fact shouldn't lead to a different target, unless 
+    # the node and the section don't have the same file associated, which could 
+    # only happen with indices split. The heading text will be different, though.
+    # The node name should also always be passed to the formatting functions 
+    # such that it is always possible for the formatting to chose the node
+    # heading over the element heading selected using 'reference_element'.
     if ($only_sections)
     {
         foreach my $node(@nodes_list)
@@ -6920,6 +6918,13 @@ sub rearrange_elements()
             }
         }
     }
+    # the symmetric is not done for sections, since there is no crossref
+    # to sections in texinfo (only to anchors and nodes), so that when
+    # there is a link to an element (in Toc, for instance),
+    # there is no reason to want to have the node (though, once again,
+    # the href is almost surely the same than what would be with the node,
+    # the heading would be different).
+
     # end texi2html added directions
 
     # do human readable id
@@ -7151,15 +7156,20 @@ sub rearrange_elements()
                     {
                         $element->{'file'} = $node->{'node_file'};
                     }
+                    elsif ($element->{'cross'} =~ /\S/)
+                    { # use the canonicalized/transliterated section file name.
+                        $element->{'file'} = $element->{'cross'} 
+                         . (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
+                    }
+                    # The remaining case is for sectionning elements with empty
+                    # headings and no node associated. They will have a name
+                    # with numbers, like "${docu_name}_$doc_nr", they may 
+                    # collide with split indices names
                 }
-                elsif(defined($previous_file))
+                else
                 {
                     $element->{'file'} = $previous_file;
                 }
-                # FIXME this case should be considered explicitly, 
-                # it leads to a file name like "${docu_name}_$doc_nr"
-                # while other filenames are the node names.
-                # Moreover it can collide with index split...
             }
             $previous_file = $element->{'file'};
             do_element_targets($element, $use_node_file);
@@ -7825,6 +7835,15 @@ sub set_line_nr_in_stack($$$)
     }
 }
 
+sub unref_file($)
+{
+    my $file = shift;
+    $files{$file}->{'counter'}--;
+    print STDERR "# Unref file $file, remaining counter $files{$file}->{'counter'}\n"
+                 if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+
+}
+
 sub pass_text($$)
 {
     my $doc_lines = shift;
@@ -8132,7 +8151,7 @@ sub pass_text($$)
                     $state{'element'} = $Texi2HTML::THIS_ELEMENT;
 
                     do_element_directions($Texi2HTML::THIS_ELEMENT);
-                    $files{$Texi2HTML::THIS_ELEMENT->{'file'}}->{'counter'}--;
+                    unref_file ($Texi2HTML::THIS_ELEMENT->{'file'});
                     #if (!defined($previous_file) or ($Texi2HTML::THIS_ELEMENT->{'file'} ne $previous_file))
                     if (!defined($current_file) or ($Texi2HTML::THIS_ELEMENT->{'file'} ne $current_file))
                     {

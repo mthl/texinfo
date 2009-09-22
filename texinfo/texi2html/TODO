@@ -231,13 +231,6 @@ function clean_antispam() {
   All that is now more or less encapsulated in get_conf, but the 
   problem remains.
 
-* failures with split index between node and section in indices/
-  makeinfo_index_split first.html is missing. 
-  And also makeinfo_index_split/index_split_2.html has 2 <head>
-  sections.
-  makeinfo_nodes_before_top_and_sections needs to be checkedd (first 
-                              should be in first.html?).
-
 * have a special debug mode where text processing is traced. It means
   that PASS_TEXT/SCAN_TEXT is shown and substitute_line (and maybe 
   other like substitute_text) and shown, now that there is a nice 
@@ -315,9 +308,6 @@ in nested table line
   - empty line between paragraphs, but also between itemize/enumerate...
 
 * in xml have documentencoding have an argument.
-
-* sectionning/top_without_node/out_html index.html is the name of the second
-  node file
 
 * for https://savannah.gnu.org/bugs/?25820 it is unclear whether &amp;
   is correct for & or not
