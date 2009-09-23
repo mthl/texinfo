@@ -3564,7 +3564,7 @@ with the sectioning element. The following keys are of interest:
 @table @code
 @item text
 The heading text
-@item name
+@item text_nonumber
 The heading text without section number
 @item node
 true if the sectioning element is a node without associated structuring command

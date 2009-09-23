@@ -1,5 +1,11 @@
 2009-09-22   Patrice Dumas  <dumas@centre-cired.fr>
 
+	* texi2html.pl: if a closed file is reopened, echo a warning
+	and open in append mode.
+	Avoid overwriting files when doing misc elements.
+
+2009-09-22   Patrice Dumas  <dumas@centre-cired.fr>
+
 	* texi2html.pl: if there is a Top node, warn if the first node
 	doesn't appear in menus.
 	Handle file counter of added index files like files from the

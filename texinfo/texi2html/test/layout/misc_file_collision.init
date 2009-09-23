@@ -1,0 +1,20 @@
+
+use strict;
+
+$element_file_name = \&test_misc_file_name;
+
+sub test_misc_file_name($$$)
+{
+  my $element = shift;
+  my $type = shift;
+  my $docu_name = shift;
+
+  if ($type eq 'top' or (defined($element->{'doc_nr'}) and $element->{'doc_nr'} == 2))
+  {
+     return "${docu_name}_abt"
+      . (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
+  }
+  return undef;
+}
+
+1;

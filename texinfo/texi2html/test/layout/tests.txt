@@ -23,6 +23,7 @@ navigation_node_vertical navigation.texi --init vertical_nav.init --split node
 navigation_chapter_no_header_vertical navigation.texi --init vertical_nav.init --split chapter --no-header
 navigation_section_no_header_vertical navigation.texi --init vertical_nav.init --split section --no-header
 navigation_node_no_header_vertical navigation.texi --init vertical_nav.init --split node --no-header
+navigation_test_misc_file_collision navigation.texi --split node --init misc_file_collision.init
 formatting_regions formatting_regions.texi
 formatting_exotic ../coverage/formatting.texi --split section --no-header --no-number-sections --toc-links --def-table --short-ref --footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css --internal-links=/dev/null --init no_use_titlepage_for_title.init
 formatting_makeinfo ../coverage/formatting.texi --init makeinfo.init --no-warn

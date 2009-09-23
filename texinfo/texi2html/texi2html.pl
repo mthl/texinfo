@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.339 2009-09-22 20:22:24 pertusus Exp $
+# $Id: texi2html.pl,v 1.340 2009-09-23 19:07:29 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -7529,6 +7529,7 @@ sub do_section_names($$)
     $section->{'text'} = substitute_line($texi, "\@$section->{'tag'}", undef, $section->{'line_nr'});
     $section->{'text_nonumber'} = substitute_line($section->{'texi'}, "\@$section->{'tag'}");
     # backward compatibility
+    # Removed from doc in nov 2009
     $section->{'name'} = $section->{'text_nonumber'};
     $section->{'no_texi'} = remove_texi($texi);
     $section->{'simple_format'} = simple_format(undef,undef,"simple_format \@$section->{'tag'}", $texi);
@@ -7552,6 +7553,7 @@ sub do_names()
         $nodes{$node}->{'text'} = substitute_line ($texi, "\@node", {'code_style' => 1}, $nodes{$node}->{'line_nr'});
         $nodes{$node}->{'text_nonumber'} = $nodes{$node}->{'text'};
         # backward compatibility -> maybe used to have the name without code_style ?
+        # Removed from doc in nov 2009
         $nodes{$node}->{'name'} = substitute_line($texi, "\@node");
         # FIXME: prefer?
         #$nodes{$node}->{'name'} = $nodes{$node}->{'text'};
@@ -7804,16 +7806,26 @@ sub open_out_file($)
 {
   my $new_file = shift;
   my $do_page_head = 0;
-  if ($files{$new_file}->{'filehandle'})
+  # if the filehandle is closed, with fileno undef, open_out
+  # is called with the second argument true, which leads to opening
+  # the file in append mode, to avoid overwriting the previous
+  # file.
+  if ($files{$new_file}->{'filehandle'} and defined(fileno($files{$new_file}->{'filehandle'})))
   {
     $Texi2HTML::THISDOC{'FH'} = $files{$new_file}->{'filehandle'};
   }
   else
   {
-    $Texi2HTML::THISDOC{'FH'} = open_out("$docu_rdir$new_file");
+    my $known_file = 0;
+    if ($files{$new_file}->{'filehandle'})
+    {
+       $known_file = 1;
+       document_warn ("The file $new_file was already closed and is reopened");
+    }
+    $Texi2HTML::THISDOC{'FH'} = open_out("$docu_rdir$new_file", $known_file);
 #print STDERR "OPEN $docu_rdir$file, $Texi2HTML::THISDOC{'FH'}". scalar($Texi2HTML::THISDOC{'FH'})."\n";
     $files{$new_file}->{'filehandle'} = $Texi2HTML::THISDOC{'FH'};
-    $do_page_head = 1;
+    $do_page_head = !$known_file;
   }
   return $do_page_head;
 }
@@ -7944,7 +7956,6 @@ sub pass_text($$)
         if (defined($possible_top->[0]) and $possible_top->[0] =~ /\S/)
         {
            ($Texi2HTML::NAME{'Top'}, $Texi2HTML::NO_TEXI{'Top'}, $Texi2HTML::SIMPLE_TEXT{'Top'}) = @$possible_top;
-           #($top_name, $top_no_texi, $top_simple_format) = @$possible_top;
            last;
         }
     }
@@ -7979,14 +7990,15 @@ sub pass_text($$)
     $Texi2HTML::SIMPLE_TEXT{'Last'} = $element_last->{'simple_format'};
     $Texi2HTML::SIMPLE_TEXT{'Index'} = $element_chapter_index->{'simple_format'} if (defined($element_chapter_index));
 
-    # FIXME we do the regions formatting here, even if they never appear.
+    # We do the regions formatting here, even if they never appear.
     # so we should be very carefull to take into accout 'outside_document' to
     # avoid messing with information that has to be set in the main document.
-    # also the error messages will appear even though the corresponding 
+    # FIXME also the error messages will appear even though the corresponding 
     # texinfo is never used.
+
     my ($region_text, $region_no_texi, $region_simple_format);
     ($region_text, $region_no_texi, $region_simple_format) = do_special_region_lines('documentdescription');
-    &$Texi2HTML::Config::documentdescription($region_lines{'documentdescription'},$region_text, $region_no_texi, $region_simple_format);
+    &$Texi2HTML::Config::documentdescription($region_lines{'documentdescription'}, $region_text, $region_no_texi, $region_simple_format);
     
     # do copyright notice inserted in comment at the beginning of the files
     ($region_text, $region_no_texi, $region_simple_format) = do_special_region_lines('copying');
@@ -8074,8 +8086,7 @@ sub pass_text($$)
             my $tag = '';
             $tag = $1 if ($cline =~ /^\@(\w+)/);
             if ($tag eq 'setfilename' and $Texi2HTML::Config::IGNORE_BEFORE_SETFILENAME)
-            { # FIXME this should be done only if @setfilename is before any
-              # element
+            {
                 if (defined($Texi2HTML::THIS_ELEMENT))
                 {
                     line_warn ("\@$tag after the first element", $line_nr);
@@ -8287,9 +8298,9 @@ sub pass_text($$)
         if ($relative_file ne $docu_doc)
         {
             $saved_FH = $Texi2HTML::THISDOC{'FH'};
-            # FIXME the file may have the same name than another file. Use
-            # open_out_file?
-            $Texi2HTML::THISDOC{'FH'} = open_out ($file);
+            # Use open_out_file not to overwrite a file that the user would have
+            # created
+            open_out_file ($relative_file);
             print STDERR "# Opening $file for $misc_page\n" if $T2H_VERBOSE;
             $open_new = 1;
         }
@@ -8569,9 +8580,10 @@ sub open_file($$$)
 
 my %filehandles = ();
 
-sub open_out($)
+sub open_out($;$)
 {
     my $file = shift;
+    my $append = shift;
     local *FILE;
 #print STDERR "open_out $file $Texi2HTML::THISDOC{'OUT_ENCODING'}\n";
     if ($file eq '-')
@@ -8580,7 +8592,9 @@ sub open_out($)
         return \*STDOUT;
     }
 
-    unless (open(FILE, '>', $file))
+    my $mode = '>';
+    $mode = '>>' if ($append);
+    unless (open(FILE, $mode, $file))
     {
         document_error ("Can't open $file for writing: $!", 1);
     }
@@ -8604,7 +8618,6 @@ sub open_out($)
     return *FILE;
 }
 
-# FIXME not used for main out files only for special files
 sub close_out($$)
 {
     my $FH = shift;

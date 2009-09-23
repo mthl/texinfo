@@ -1,0 +1,65 @@
+This is navigation.info, produced by makeinfo version 4.13 from
+navigation.texi.
+
+
+File: navigation.info,  Node: chapter,  Prev: Top,  Up: Top
+
+1 First chapter
+***************
+
+* Menu:
+
+* section::
+
+
+File: navigation.info,  Node: section,  Up: chapter
+
+1.1 Section in chapter
+======================
+
+AAAA
+
+   AAAA
+
+   AAAA
+
+   AAAA
+
+   AAAA
+
+   AAAA
+
+   AAAA
+
+   AAAA
+
+   AAAA
+
+   AAAA
+
+   AAAA
+
+   AAAA
+
+   b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b
+b b b b b b b b b b b b b b b b  b b b b b bb b b b b b b  bb  b bb.
+
+* Menu:
+
+* subsection::
+
+
+File: navigation.info,  Node: subsection,  Up: section
+
+1.1.1 Sub section in section
+----------------------------
+
+
+
+Tag Table:
+Node: Top82
+Node: chapter318
+Node: section436
+Node: subsection811
+
+End Tag Table
