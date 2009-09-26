@@ -37,6 +37,7 @@ second in copying @ subheading
 *******
 
 * Index:
+* cindex copying: (outside of any element).
 * heading in footnote: 1 A chapter.
 * index entry after heading in top: Test headings.
 

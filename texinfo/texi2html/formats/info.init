@@ -2450,7 +2450,7 @@ sub info_default_footnote_texi($$$)
     my $state = shift;
     my $style_stack = shift;
     
-    unless ($state->{'outside_document'} or $state->{'multiple_pass'})
+    unless ($state->{'outside_document'} or (defined($state->{'multiple_pass'}) and $state->{'multiple_pass'} > 0))
     {
        $info_default_footnote_index++;
     }
@@ -2920,7 +2920,7 @@ sub info_default_index_letter($$$)
      return $text;
 }
 
-sub info_default_index_entry_label($$$$$$$$)
+sub info_default_index_entry_label($$$$$$$$$)
 {
     my $identifier = shift;
     my $preformatted = shift;
@@ -2929,15 +2929,18 @@ sub info_default_index_entry_label($$$$$$$$)
     my $index_command = shift;
     my $texi_entry = shift;
     my $formatted_entry = shift;
+    my $in_region_not_in_output = shift;
     my $index_entry_ref = shift;
 
-    return '' if ($index_entry_ref->{'hidden'});
+    #return '' if ($index_entry_ref->{'hidden'});
+    #return '' if (!$index_entry_ref->{'seen_in_output'} and defined($index_entry_ref->{'region'}));
+    return '' if ($in_region_not_in_output);
     main::line_warn("Entry for index `$index_entry_ref->{'index_name'}' outside of any node", $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node));
     my $index_entry_stored = {'index_entry_reference' => $index_entry_ref, 'index_command' => $index_command, 'texi_entry' => $texi_entry};
     return info_default_store_text(undef, undef, 'index_label', $index_entry_stored);
 }
 
-sub info_default_index_entry($$$$$$$$)
+sub info_default_index_entry($$$$$$$$$$)
 {
     my $text_href = shift;
     my $entry = shift;
@@ -2947,9 +2950,12 @@ sub info_default_index_entry($$$$$$$$)
     my $current_element_file = shift;
     my $entry_target = shift;
     my $entry_element_target = shift;
+    my $in_region_not_in_output = shift;
     my $index_entry_ref = shift;
 
-    return '' if ($index_entry_ref->{'hidden'});
+    #return '' if ($index_entry_ref->{'hidden'});
+    #return '' if (!$index_entry_ref->{'seen_in_output'} and defined($index_entry_ref->{'region'}));
+    return '' if ($in_region_not_in_output);
     $entry = main::substitute_line($index_entry_ref->{'texi'}, "index entry in \@printindex");
     return '' if ($entry =~ /^\s*$/);
 
@@ -3060,7 +3066,7 @@ sub info_default_foot_line_and_ref($$$$$$$$)
          'footnote_index' => ${info_default_footnote_index}, 
          'node_name' => $node_name, 
          'footnote_info_state' => $footnote_info_state}
-       unless ($state->{'outside_document'} or $state->{'multiple_pass'});
+    unless ($state->{'outside_document'} or (defined($state->{'multiple_pass'}) and $state->{'multiple_pass'} > 0));
     return ([],  $footnote_text);
 }
 

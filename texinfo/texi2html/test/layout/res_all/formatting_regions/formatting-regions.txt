@@ -1753,6 +1753,8 @@ cp
 * Index:
 * ": 1 constructs.
 * ": 1 constructs.
+* ": 1 constructs.
+* -option: 1 constructs.
 * -option: 1 constructs.
 * -option: 1 constructs.
 * .: 1 constructs.
@@ -1760,10 +1762,14 @@ cp
 * a: 1 constructs.
 * index entry between item and itemx: 1 constructs.
 * index entry between item and itemx: 1 constructs.
+* index entry between item and itemx: 1 constructs.
+* index entry within deffn: 1 constructs.
 * index entry within deffn: 1 constructs.
 * index entry within deffn: 1 constructs.
 * index entry within itemize: 1 constructs.
 * index entry within itemize: 1 constructs.
+* index entry within itemize: 1 constructs.
+* index entry within multitable: 1 constructs.
 * index entry within multitable: 1 constructs.
 * index entry within multitable: 1 constructs.
 * t-ruc: 1 constructs.
@@ -1773,6 +1779,8 @@ fn
 * Index:
 * ": 1 constructs.
 * ": 1 constructs.
+* ": 1 constructs.
+* -foption: 1 constructs.
 * -foption: 1 constructs.
 * -foption: 1 constructs.
 * .: 1 constructs.
@@ -1782,34 +1790,52 @@ fn
 * a: 1 constructs.
 * a: 1 constructs.
 * a: 1 constructs.
+* a: 1 constructs.
+* a: 1 constructs.
+* after: 1 constructs.
 * after: 1 constructs.
 * after: 1 constructs.
 * b: 1 constructs.
 * b: 1 constructs.
+* b: 1 constructs.
+* bidule machin: 1 constructs.
 * bidule machin: 1 constructs.
 * bidule machin: 1 constructs.
 * d-effn_name: 1 constructs.
 * d-effn_name: 1 constructs.
+* d-effn_name: 1 constructs.
+* d-efmac_name: 1 constructs.
 * d-efmac_name: 1 constructs.
 * d-efmac_name: 1 constructs.
 * d-efmethod_name on c-lass: 1 constructs.
 * d-efmethod_name on c-lass: 1 constructs.
+* d-efmethod_name on c-lass: 1 constructs.
+* d-efop_name on c-lass: 1 constructs.
 * d-efop_name on c-lass: 1 constructs.
 * d-efop_name on c-lass: 1 constructs.
 * d-efspec_name: 1 constructs.
 * d-efspec_name: 1 constructs.
+* d-efspec_name: 1 constructs.
+* d-eftypefn_name: 1 constructs.
 * d-eftypefn_name: 1 constructs.
 * d-eftypefn_name: 1 constructs.
 * d-eftypefun_name: 1 constructs.
 * d-eftypefun_name: 1 constructs.
+* d-eftypefun_name: 1 constructs.
+* d-eftypemethod_name on c-lass: 1 constructs.
 * d-eftypemethod_name on c-lass: 1 constructs.
 * d-eftypemethod_name on c-lass: 1 constructs.
 * d-eftypeop_name on c-lass: 1 constructs.
 * d-eftypeop_name on c-lass: 1 constructs.
+* d-eftypeop_name on c-lass: 1 constructs.
+* d-efun_name: 1 constructs.
 * d-efun_name: 1 constructs.
 * d-efun_name: 1 constructs.
 * de-ffn_name: 1 constructs.
 * de-ffn_name: 1 constructs.
+* de-ffn_name: 1 constructs.
+* deffn: 1 constructs.
+* deffn: 1 constructs.
 * deffn: 1 constructs.
 * deffn: 1 constructs.
 * deffn: 1 constructs.
@@ -1818,24 +1844,41 @@ fn
 * deffnx: 1 constructs.
 * deffnx: 1 constructs.
 * deffnx: 1 constructs.
+* deffnx: 1 constructs.
+* deffnx: 1 constructs.
 * followed: 1 constructs.
 * followed: 1 constructs.
 * followed: 1 constructs.
 * followed: 1 constructs.
+* followed: 1 constructs.
+* followed: 1 constructs.
+* i: 1 constructs.
+* i: 1 constructs.
 * i: 1 constructs.
 * i: 1 constructs.
 * i: 1 constructs.
 * i: 1 constructs.
 * id `i' ule: 1 constructs.
 * id `i' ule: 1 constructs.
+* id `i' ule: 1 constructs.
+* id ule: 1 constructs.
 * id ule: 1 constructs.
 * id ule: 1 constructs.
 * log trap: 1 constructs.
 * log trap: 1 constructs.
+* log trap: 1 constructs.
+* log trap1: 1 constructs.
 * log trap1: 1 constructs.
 * log trap1: 1 constructs.
 * log trap2: 1 constructs.
 * log trap2: 1 constructs.
+* log trap2: 1 constructs.
+* machin: 1 constructs.
+* machin: 1 constructs.
+* machin: 1 constructs.
+* machin: 1 constructs.
+* machin: 1 constructs.
+* machin: 1 constructs.
 * machin: 1 constructs.
 * machin: 1 constructs.
 * machin: 1 constructs.
@@ -1854,27 +1897,39 @@ fn
 * truc: 1 constructs.
 * truc: 1 constructs.
 * truc: 1 constructs.
+* truc: 1 constructs.
+* truc: 1 constructs.
 
 vr
 * Index:
 * a: 1 constructs.
 * a: 1 constructs.
+* a: 1 constructs.
+* b: 1 constructs.
 * b: 1 constructs.
 * b: 1 constructs.
 * d-efcv_name: 1 constructs.
 * d-efcv_name: 1 constructs.
+* d-efcv_name: 1 constructs.
+* d-efivar_name: 1 constructs.
 * d-efivar_name: 1 constructs.
 * d-efivar_name: 1 constructs.
 * d-efopt_name: 1 constructs.
 * d-efopt_name: 1 constructs.
+* d-efopt_name: 1 constructs.
+* d-eftypeivar_name of c-lass: 1 constructs.
 * d-eftypeivar_name of c-lass: 1 constructs.
 * d-eftypeivar_name of c-lass: 1 constructs.
 * d-eftypevar_name: 1 constructs.
 * d-eftypevar_name: 1 constructs.
+* d-eftypevar_name: 1 constructs.
+* d-eftypevr_name: 1 constructs.
 * d-eftypevr_name: 1 constructs.
 * d-eftypevr_name: 1 constructs.
 * d-efvar_name: 1 constructs.
 * d-efvar_name: 1 constructs.
+* d-efvar_name: 1 constructs.
+* d-efvr_name: 1 constructs.
 * d-efvr_name: 1 constructs.
 * d-efvr_name: 1 constructs.
 
@@ -1884,6 +1939,7 @@ pg
 
 tp
 * Index:
+* d-eftp_name: 1 constructs.
 * d-eftp_name: 1 constructs.
 * d-eftp_name: 1 constructs.
 
@@ -1921,6 +1977,8 @@ chapter 2
 * Index:
 * ": 1 constructs.
 * ": 1 constructs.
+* ": 1 constructs.
+* -option: 1 constructs.
 * -option: 1 constructs.
 * -option: 1 constructs.
 * .: 1 constructs.
@@ -1928,10 +1986,14 @@ chapter 2
 * a: 1 constructs.
 * index entry between item and itemx: 1 constructs.
 * index entry between item and itemx: 1 constructs.
+* index entry between item and itemx: 1 constructs.
+* index entry within deffn: 1 constructs.
 * index entry within deffn: 1 constructs.
 * index entry within deffn: 1 constructs.
 * index entry within itemize: 1 constructs.
 * index entry within itemize: 1 constructs.
+* index entry within itemize: 1 constructs.
+* index entry within multitable: 1 constructs.
 * index entry within multitable: 1 constructs.
 * index entry within multitable: 1 constructs.
 * t-ruc: 1 constructs.
@@ -1939,6 +2001,8 @@ chapter 2
 * Index:
 * ": 1 constructs.
 * ": 1 constructs.
+* ": 1 constructs.
+* -foption: 1 constructs.
 * -foption: 1 constructs.
 * -foption: 1 constructs.
 * .: 1 constructs.
@@ -1948,34 +2012,52 @@ chapter 2
 * a: 1 constructs.
 * a: 1 constructs.
 * a: 1 constructs.
+* a: 1 constructs.
+* a: 1 constructs.
+* after: 1 constructs.
 * after: 1 constructs.
 * after: 1 constructs.
 * b: 1 constructs.
 * b: 1 constructs.
+* b: 1 constructs.
+* bidule machin: 1 constructs.
 * bidule machin: 1 constructs.
 * bidule machin: 1 constructs.
 * d-effn_name: 1 constructs.
 * d-effn_name: 1 constructs.
+* d-effn_name: 1 constructs.
+* d-efmac_name: 1 constructs.
 * d-efmac_name: 1 constructs.
 * d-efmac_name: 1 constructs.
 * d-efmethod_name on c-lass: 1 constructs.
 * d-efmethod_name on c-lass: 1 constructs.
+* d-efmethod_name on c-lass: 1 constructs.
+* d-efop_name on c-lass: 1 constructs.
 * d-efop_name on c-lass: 1 constructs.
 * d-efop_name on c-lass: 1 constructs.
 * d-efspec_name: 1 constructs.
 * d-efspec_name: 1 constructs.
+* d-efspec_name: 1 constructs.
+* d-eftypefn_name: 1 constructs.
 * d-eftypefn_name: 1 constructs.
 * d-eftypefn_name: 1 constructs.
 * d-eftypefun_name: 1 constructs.
 * d-eftypefun_name: 1 constructs.
+* d-eftypefun_name: 1 constructs.
+* d-eftypemethod_name on c-lass: 1 constructs.
 * d-eftypemethod_name on c-lass: 1 constructs.
 * d-eftypemethod_name on c-lass: 1 constructs.
 * d-eftypeop_name on c-lass: 1 constructs.
 * d-eftypeop_name on c-lass: 1 constructs.
+* d-eftypeop_name on c-lass: 1 constructs.
+* d-efun_name: 1 constructs.
 * d-efun_name: 1 constructs.
 * d-efun_name: 1 constructs.
 * de-ffn_name: 1 constructs.
 * de-ffn_name: 1 constructs.
+* de-ffn_name: 1 constructs.
+* deffn: 1 constructs.
+* deffn: 1 constructs.
 * deffn: 1 constructs.
 * deffn: 1 constructs.
 * deffn: 1 constructs.
@@ -1984,24 +2066,41 @@ chapter 2
 * deffnx: 1 constructs.
 * deffnx: 1 constructs.
 * deffnx: 1 constructs.
+* deffnx: 1 constructs.
+* deffnx: 1 constructs.
 * followed: 1 constructs.
 * followed: 1 constructs.
 * followed: 1 constructs.
 * followed: 1 constructs.
+* followed: 1 constructs.
+* followed: 1 constructs.
+* i: 1 constructs.
+* i: 1 constructs.
 * i: 1 constructs.
 * i: 1 constructs.
 * i: 1 constructs.
 * i: 1 constructs.
 * id `i' ule: 1 constructs.
 * id `i' ule: 1 constructs.
+* id `i' ule: 1 constructs.
+* id ule: 1 constructs.
 * id ule: 1 constructs.
 * id ule: 1 constructs.
 * log trap: 1 constructs.
 * log trap: 1 constructs.
+* log trap: 1 constructs.
+* log trap1: 1 constructs.
 * log trap1: 1 constructs.
 * log trap1: 1 constructs.
 * log trap2: 1 constructs.
 * log trap2: 1 constructs.
+* log trap2: 1 constructs.
+* machin: 1 constructs.
+* machin: 1 constructs.
+* machin: 1 constructs.
+* machin: 1 constructs.
+* machin: 1 constructs.
+* machin: 1 constructs.
 * machin: 1 constructs.
 * machin: 1 constructs.
 * machin: 1 constructs.
@@ -2016,6 +2115,8 @@ chapter 2
 * machin: 1 constructs.
 * t-ruc: 1 constructs.
 * T-ruc: 1 constructs.
+* truc: 1 constructs.
+* truc: 1 constructs.
 * truc: 1 constructs.
 * truc: 1 constructs.
 * truc: 1 constructs.

@@ -8,6 +8,8 @@ domain(1).
 
 * Index:
 * Copying appendix: Appendix A Copying and indices.
+* Copying this document: (outside of any element).
+* Public domain: (outside of any element).
 
 
 This test demonstrates @anchor and indices in @copying

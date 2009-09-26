@@ -23,6 +23,7 @@ The caption copying footnote
 
 
 @cindex indexed caption copying footnote
+@findex public domain function
 
 see @ref{Copying and floats}.
 
@@ -30,6 +31,7 @@ see @ref{Copying and floats}.
 
 
 @cindex indexed caption
+@findex indexed caption function
 }
 @end float
 
@@ -60,6 +62,7 @@ The caption copying footnote
 
 
 @cindex indexed caption copying footnote
+@findex public domain function
 
 see @ref{Copying and floats}.
 
@@ -67,6 +70,7 @@ see @ref{Copying and floats}.
 
 
 @cindex indexed caption
+@findex indexed caption function
 }
 @end float
 
@@ -80,6 +84,7 @@ The caption copying footnote
 
 
 @cindex indexed caption copying footnote
+@findex public domain function
 
 see @ref{Copying and floats}.
 
@@ -87,6 +92,7 @@ see @ref{Copying and floats}.
 
 
 @cindex indexed caption
+@findex indexed caption function
 }
 @end float
 
@@ -95,5 +101,6 @@ see @ref{Copying and floats}.
 
 @subheading printindex
 @printindex cp
+@printindex fn
 
 @bye

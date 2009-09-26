@@ -1,3 +1,18 @@
+2009-09-23   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: use @code for index entries that should be 
+	in @code that are not in usual places and so couldn't be 
+	gathered in pass 2.
+	Distinguish 'expansion', like index entry, or caption in
+	various contexts and real regions like @copying and @titlepage,
+	that are 'region'.
+	Don't use 'hidden' in a index entry ref for hidden index
+	entries, instead flag entries that were not seen and are in 
+	a region. Entries that are in an 'expansion' may be expanded
+	more than once and are also not collected.
+	Warn for anchors that are ignored because they are in a region
+	that is expanded more than once.
+
 2009-09-22   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: if a closed file is reopened, echo a warning

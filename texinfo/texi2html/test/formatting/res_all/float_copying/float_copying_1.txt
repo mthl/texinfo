@@ -37,6 +37,11 @@ listoffloats
 printindex
 ----------
 * Index:
+* indexed caption: (outside of any element).
+* indexed caption copying footnote: (outside of any element).
 * listofloats: Appendix A Copying and floats.
 * Top: Top.
+* Index:
+* indexed caption function: (outside of any element).
+* public domain function: (outside of any element).
 

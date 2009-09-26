@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.237 2009-09-21 18:39:40 pertusus Exp $
+# $Id: texi2html.init,v 1.238 2009-09-26 23:10:03 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -6125,7 +6125,7 @@ sub t2h_default_address($)
 # arguments:
 # target identifier
 # boolean true if in preformatted format
-sub t2h_default_index_entry_label($$$$$$$$)
+sub t2h_default_index_entry_label($$$$$$$$$)
 {
     my $identifier = shift;
     my $preformatted = shift;
@@ -6134,6 +6134,7 @@ sub t2h_default_index_entry_label($$$$$$$$)
     my $index_command = shift;
     my $texi_entry = shift;
     my $formatted_entry = shift;
+    my $in_region_not_in_output = shift;
     my $index_entry_ref = shift;
 
     return '' if (!defined($identifier) or ($identifier !~ /\S/));
@@ -6379,7 +6380,7 @@ sub t2h_default_index_letter($$$)
 # href to the main text, linking to the section or node where the index 
 #      entry appears
 # section or node heading
-sub t2h_default_index_entry($$$$$$$$$)
+sub t2h_default_index_entry($$$$$$$$$$)
 {
     my $text_href = shift;
     my $entry = shift;
@@ -6389,9 +6390,11 @@ sub t2h_default_index_entry($$$$$$$$$)
     my $current_element_file = shift;
     my $entry_target = shift;
     my $entry_element_target = shift;
+    my $in_region_not_in_output = shift;
     my $index_entry_ref = shift;
     
-    return '' if ($index_entry_ref->{'hidden'});
+    return '' if ($in_region_not_in_output);
+    #!$index_entry_ref->{'seen_in_output'} and defined($index_entry_ref->{'region'}));
     $entry = main::substitute_line($index_entry_ref->{'texi'}, "index entry in \@printindex");
     return '' if ($entry =~ /^\s*$/);
 

@@ -38,5 +38,6 @@ See the float @ref{public domain}.
 
 @subheading printindex
 @printindex cp
+@printindex fn
 
 @bye

@@ -1088,13 +1088,19 @@ sub t2h_roff_image($$$$)
 # arguments:
 # target identifier
 # boolean true if in preformatted format
-sub t2h_roff_index_entry_label($$$$)
+sub t2h_roff_index_entry_label($$$$$$$$$)
 {
     my $identifier = shift;
     my $preformatted = shift;
-    my $label = shift;
+    my $entry = shift;
     my $index_name = shift;
-    return ".(x $index_name\n" . protect_spaces($label) . "\n.)x\n";
+    my $index_command = shift;
+    my $texi_entry = shift;
+    my $formatted_entry = shift;
+    my $in_region_not_in_output = shift;
+    my $index_entry_ref = shift;
+
+    return ".(x $index_name\n" . protect_spaces($entry) . "\n.)x\n";
 }
 
 # process definition commands line @deffn for example

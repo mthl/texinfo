@@ -14,6 +14,7 @@ The caption copying footnote
 @anchor{caption copying footnote anchor}
 
 @cindex indexed caption copying footnote
+@findex public domain function
 
 see @ref{Copying and floats}.
 
@@ -21,6 +22,7 @@ see @ref{Copying and floats}.
 
 @anchor{public domain anchor}
 @cindex indexed caption
+@findex indexed caption function
 }
 @end float
 @end copying
@@ -60,5 +62,6 @@ See the float @ref{public domain}.
 
 @subheading printindex
 @printindex cp
+@printindex fn
 
 @bye

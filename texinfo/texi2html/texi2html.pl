@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.340 2009-09-23 19:07:29 pertusus Exp $
+# $Id: texi2html.pl,v 1.341 2009-09-26 23:10:04 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1411,9 +1411,10 @@ sub t2h_GPL_default_printindex($$)
       foreach my $index_entry_ref (@{$letter_entry->{'entries'}})
       {
         my ($text_href, $entry_file, $element_file, $entry_target,
-          $entry_element_target, $formatted_entry, $element_href, $entry_element_text)
+          $entry_element_target, $formatted_entry, $element_href, 
+          $entry_element_text, $in_region_not_in_output)
           =  main::get_index_entry_infos($index_entry_ref, $split_group->{'element'});
-        $entries_text .= &$index_entry ($text_href, $formatted_entry, $element_href, $entry_element_text, $entry_file, $element_file, $entry_target, $entry_element_target, $index_entry_ref);
+        $entries_text .= &$index_entry ($text_href, $formatted_entry, $element_href, $entry_element_text, $entry_file, $element_file, $entry_target, $entry_element_target, $in_region_not_in_output, $index_entry_ref);
       }
       $letters_text .= &$index_letter ($letter, $letter_id{$letter}, $entries_text)
     }
@@ -7607,7 +7608,6 @@ sub enter_index_entry($$$$$)
         $entry = '';
         $index_name = $prefix;
     }
-    #if (!exists($current_element->{'tag'}) and !$current_element->{'footnote'})
     if ($current_element eq $element_before_anything)
     {
         #line_warn ("Index entry before document: \@${prefix}index $entry", $line_nr); 
@@ -7615,30 +7615,22 @@ sub enter_index_entry($$$$$)
     }
     $entry = trim_comment_spaces ($entry, "index entry in \@$command", $line_nr);
     # The $key is mostly usefull for alphabetical sorting.
-    # beware that the texinfo could be non empty, but the key is. So the
-    # key should be used to determine whether the entry is empty or not.
     # This could be done later while sorting, but it doesn't really matter
     # since there are no error messages anyway.
     my $key = remove_texi($entry);
-    my $id;
+    # beware that the texinfo could be non empty, but the key be empty. So the
+    # key should be used to determine whether the entry is empty or not.
 
-    my $index_entry_hidden = 1;
-    if (!$region and $place eq $no_element_associated_place)
-    {
-        $region = 'no_place';
-    }
-    elsif (!defined($region))
+    my $id;
+    # don't add a specific index target if the index entry is in a special
+    # region like @copying or the like
+    if (!defined($region))
     {
         $region = 'document';
-        $index_entry_hidden = 0;
-    }
-    # don't add a specific index target if after a section or the index
-    # entry is in @copying or the like
-    unless ($index_entry_hidden)
-    {
         $id = 'IDX' . ++$document_idx_num;
     }
     my $target = $id;
+
     # entry will later be in @code for code-like index entry. texi stays
     # the same.
     my $index_entry = {
@@ -7651,17 +7643,14 @@ sub enter_index_entry($$$$$)
            'id'       => $id,
            'target'   => $target,
            'command'  => $command,
-           'hidden'   => $index_entry_hidden,
-           'region'   => $region,
+           'region'   => $state->{'region'},
            'line_nr'  => $line_nr,
            'index_name' => $index_name
     };
     
-    my $region_text = $region;
-    $region_text = 'main' if (!defined($region)); 
     my $id_text = $id;
     $id_text = 'NO ID' if (!defined($id));
-    print STDERR "# in $region_text enter \@$command ${prefix}index($key) [$entry] with id $id_text ($index_entry)\n"
+    print STDERR "# in $region enter \@$command ${prefix}index($key) [$entry] with id $id_text ($index_entry)\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
 
     $index_entry->{'entry'} = '@code{'.$index_entry->{'entry'}.'}'
@@ -7672,37 +7661,18 @@ sub enter_index_entry($$$$$)
 
     push @$place, $index_entry;
 
-    #print STDERR "enter_index_entry: region $region, index_entry $index_entry, \@$command, texi `$entry'\n";
+    #msg_debug("enter_index_entry: region $region, index_entry $index_entry, \@$command, texi `$entry'", $line_nr);
+
     # don't add the index entry to the list of index entries used for index
     # entry formatting, if the index entry appears in a region like copying 
-    push @index_labels, $index_entry unless ($index_entry_hidden);
-    push @{$Texi2HTML::THISDOC{'index_entries_array'}->{$index_name}}, $index_entry;
-    push @{$Texi2HTML::THISDOC{'index_entries'}->{$region}->{$entry}->{'entries'}}, $index_entry;
-}
+    # currently this is only used for debugging purposes, since the 
+    # index entries lists are broken by region now.
+    push @index_labels, $index_entry unless (defined($state->{'region'}));
 
-# sort according to cmp if both $a and $b are alphabetical or non alphabetical, 
-# otherwise the alphabetical is ranked first
-sub by_alpha
-{
-    if ($a =~ /^[A-Za-z]/)
-    {
-        if ($b =~ /^[A-Za-z]/)
-        {
-            return lc($a) cmp lc($b);
-        }
-        else
-        {
-            return 1;
-        }
-    }
-    elsif ($b =~ /^[A-Za-z]/)
-    {
-        return -1;
-    }
-    else
-    {
-        return lc($a) cmp lc($b);
-    }
+    # these lists aare used to retrieve index entries in pass 3
+    push @{$Texi2HTML::THISDOC{'index_entries'}->{$region}->{$entry}->{'entries'}}, $index_entry;
+    # this is used for @printindex
+    push @{$Texi2HTML::THISDOC{'index_entries_array'}->{$index_name}}, $index_entry;
 }
 
 # these variables are global, so great care should be taken with
@@ -9166,16 +9136,21 @@ sub do_anchor_label($$$$)
     my $state = shift;
     my $line_nr = shift;
 
-    #print STDERR "do_anchor_label $state->{'region'} m_p $state->{'multiple_pass'} remove $state->{'remove_texi'} `$anchor'\n";
-    # FIXME anchor may appear twice when outside document and first time
-    # it appears in the document
-    return '' if (($state->{'region'} and $state->{'multiple_pass'} > 0) or $state->{'remove_texi'});
+    #msg_debug("do_anchor_label $state->{'region'} m_p $state->{'multiple_pass'} remove $state->{'remove_texi'} `$anchor'", $line_nr);
+
     $anchor = normalise_node($anchor);
+    if ((defined($state->{'multiple_pass'}) and $state->{'multiple_pass'} > 0) or $state->{'outside_document'})
+    {
+       # no warning when outside of document.
+       line_warn("Anchor `$anchor' ignored in $state->{'region'} expanded more than once", $line_nr) unless ($state->{'outside_document'} or defined($state->{'expansion'}));
+       return '';
+    }
+
     if (!exists($nodes{$anchor}) or !defined($nodes{$anchor}->{'id'}))
     {
-        print STDERR "Bug: unknown anchor `$anchor'\n";
+        msg_debug("Unknown anchor `$anchor'", $line_nr);
     }
-    return &$Texi2HTML::Config::anchor_label($nodes{$anchor}->{'id'}, $anchor, $nodes{$anchor}, $state->{'region'});
+    return &$Texi2HTML::Config::anchor_label($nodes{$anchor}->{'id'}, $anchor, $nodes{$anchor}, $state->{'expansion'});
 }
 
 sub get_format_command($)
@@ -9518,7 +9493,6 @@ sub do_special_region_lines($;$$)
     {
          line_error("Recursively expanding region $region in $state->{'region'}", $line_nr);
          return ('','', '');
-         
     }
 
     print STDERR "# do_special_region_lines for region $region ['multiple_pass','region_pass']: ($region_initial_state{$region}->{'multiple_pass'}, $region_initial_state{$region}->{'region_pass'})" if ($T2H_DEBUG);
@@ -9539,57 +9513,55 @@ sub do_special_region_lines($;$$)
     }
 
     return ('','','') unless @{$region_lines{$region}};
-    my $new_state = duplicate_formatting_state($state);
-    reset_index_entries($region);
-    foreach my $key (keys(%{$region_initial_state{$region}}))
+  
+    my @result;
+
+    foreach my $context ('normal', 'remove_texi', 'simple_format')
     {
-        $new_state->{$key} = $region_initial_state{$region}->{$key};
+        print STDERR "# $context\n" if ($T2H_DEBUG);
+        my $new_state = duplicate_formatting_state($state);
+        reset_index_entries($region);
+        foreach my $key (keys(%{$region_initial_state{$region}}))
+        {
+            $new_state->{$key} = $region_initial_state{$region}->{$key};
+        }
+        $new_state->{'remove_texi'} = 1 if ($context eq 'remove_texi');
+
+        &$Texi2HTML::Config::begin_special_region($region,$new_state,$region_lines{$region})
+            if (defined($Texi2HTML::Config::begin_special_region));
+         
+
+        my $line_numbers;
+        my $context_string = "$region ($region_initial_state{$region}->{'multiple_pass'}, $region_initial_state{$region}->{'region_pass'})";
+        if ($context eq 'normal')
+        { # the line numbers are given only for the normal context, therefore
+          # there will be error messages only in that case
+           $line_numbers = [ @{$region_line_nrs{$region}} ];
+        }
+        else
+        {
+           $context_string = "$context $context_string";
+        }
+        
+        my $result;
+        if ($context ne 'simple_format')
+        {
+           $result = substitute_text($new_state, $line_numbers, 
+             $context_string, @{$region_lines{$region}});
+        }
+        else
+        {
+           $result = simple_format($new_state, $line_numbers, 
+             $context_string, @{$region_lines{$region}});
+        }
+        $result = &$Texi2HTML::Config::end_special_region($region,$new_state,$result)
+           if (defined($Texi2HTML::Config::end_special_region));
+
+        push @result, $result;
+        $region_initial_state{$region}->{'region_pass'}++;
     }
-    &$Texi2HTML::Config::begin_special_region($region,$new_state,$region_lines{$region})
-      if (defined($Texi2HTML::Config::begin_special_region));
-    my $text = substitute_text($new_state, [ @{$region_line_nrs{$region}} ], 
-       "$region ($region_initial_state{$region}->{'multiple_pass'}, $region_initial_state{$region}->{'region_pass'})", 
-       @{$region_lines{$region}});
-    $text = &$Texi2HTML::Config::end_special_region($region,$new_state,$text)
-      if (defined($Texi2HTML::Config::end_special_region));
 
-    $region_initial_state{$region}->{'region_pass'}++;
-
-    my $remove_texi_state = duplicate_formatting_state($state);
-    reset_index_entries($region);
-    $remove_texi_state->{'remove_texi'} = 1;
-    foreach my $key (keys(%{$region_initial_state{$region}}))
-    {
-        $remove_texi_state->{$key} = $region_initial_state{$region}->{$key};
-    }
-    &$Texi2HTML::Config::begin_special_region($region,$remove_texi_state,$region_lines{$region})
-      if (defined($Texi2HTML::Config::begin_special_region));
-    print STDERR "# remove texi\n" if ($T2H_DEBUG);
-    my $removed_texi = substitute_text($remove_texi_state, undef, 
-       "remove_texi $region ($region_initial_state{$region}->{'multiple_pass'}, $region_initial_state{$region}->{'region_pass'})", 
-       @{$region_lines{$region}});
-    $removed_texi = &$Texi2HTML::Config::end_special_region($region,$remove_texi_state, $removed_texi)
-      if (defined($Texi2HTML::Config::end_special_region));
-    $region_initial_state{$region}->{'region_pass'}++;
-
-    my $simple_format_state = duplicate_formatting_state($state);
-    reset_index_entries($region);
-    foreach my $key (keys(%{$region_initial_state{$region}}))
-    {
-        $simple_format_state->{$key} = $region_initial_state{$region}->{$key};
-    }
-    
-    &$Texi2HTML::Config::begin_special_region($region,$simple_format_state,$region_lines{$region})
-      if (defined($Texi2HTML::Config::begin_special_region));
-    print STDERR "# simple format\n" if ($T2H_DEBUG);
-    my $simple_format = simple_format($simple_format_state, undef, 
-       "simple_format $region ($region_initial_state{$region}->{'multiple_pass'}, $region_initial_state{$region}->{'region_pass'})", 
-       @{$region_lines{$region}});
-    $simple_format = &$Texi2HTML::Config::end_special_region($region,$simple_format_state, $simple_format)
-      if (defined($Texi2HTML::Config::end_special_region));
-    $region_initial_state{$region}->{'region_pass'}++;
-
-    return ($text, $removed_texi, $simple_format);
+    return @result;
 }
 
 sub do_insertcopying($$)
@@ -10137,14 +10109,19 @@ sub prepare_state_multiple_pass($$)
     my $command = shift;
     my $state = shift;
     my $return_state = { 
-         'multiple_pass' => 1, 
-          'region_pass' => 1, 
+          'multiple_pass' => 1, 
           'element' => $state->{'element'},
+          'outside_document' => $state->{'outside_document'},
+          'new_state' => 1
          };
     if (defined($command))
     {
-        $return_state->{'region'} = $command;
+        $return_state->{'expansion'} = $command;
         $return_state->{'command_stack'} = ["$command"];
+    }
+    else
+    {
+        msg_debug("prepare_state_multiple_pass command not defined");
     }
     return $return_state;
 }
@@ -11022,14 +10999,6 @@ sub do_footnote($$$$$$)
     $text = &$Texi2HTML::Config::footnote_texi($text, $doc_state, $style_stack)
         if (defined($Texi2HTML::Config::footnote_texi));
 
-    #if (!defined($text))
-    #{
-    #    msg_debug("footnote text not defined($global_foot_num, ".var_to_str($doc_state->{'outside_document'})." or $doc_state->{'multiple_pass'}). Original argument $args->[0]", $line_nr);
-    #}
-    #else
-    #{
-    #    msg_debug("FOOTNOTE($global_foot_num, ".var_to_str($doc_state->{'outside_document'})." or $doc_state->{'multiple_pass'}) $text", $line_nr);
-    #}
     my $foot_state = duplicate_state($doc_state);
     fill_state($foot_state);
     push @{$foot_state->{'command_stack'}}, 'footnote';
@@ -11037,13 +11006,16 @@ sub do_footnote($$$$$$)
     push_state($foot_state);
 
     my ($foot_num, $relative_foot_num);
-    if (!$foot_state->{'region'})
+    my $special_place;
+    if (!defined($foot_state->{'expansion'}) and !defined($foot_state->{'region'}))
     {
         $foot_num = \$global_foot_num;
         $relative_foot_num = \$global_relative_foot_num;
     }
     else
     {
+        $special_place = $foot_state->{'expansion'};
+        $special_place = $foot_state->{'region'} if (!defined($special_place));
         $foot_num = \$doc_state->{'foot_num'};
         $relative_foot_num = \$doc_state->{'relative_foot_num'};
     }
@@ -11052,10 +11024,10 @@ sub do_footnote($$$$$$)
  
     my $docid  = "DOCF$$foot_num";
     my $footid = "FOOT$$foot_num";
-    if ($doc_state->{'region'})
+    if (defined($special_place))
     {
-        $docid = $target_prefix . $doc_state->{'region'} . "_$docid";
-        $footid = $target_prefix . $doc_state->{'region'} . "_$footid";
+        $docid = $target_prefix . $special_place . "_$docid";
+        $footid = $target_prefix . $special_place . "_$footid";
     }
     my $from_file = $docu_doc;
     if ($doc_state->{'element'})
@@ -11085,11 +11057,11 @@ sub do_footnote($$$$$$)
     }
     my ($foot_lines, $foot_label) = &$Texi2HTML::Config::foot_line_and_ref($$foot_num,
          $$relative_foot_num, $footid, $docid, $from_file, $foot_state->{'element'}->{'file'}, \@lines, $doc_state);
-    if ($doc_state->{'outside_document'} or ($doc_state->{'region'} and $doc_state->{'multiple_pass'} > 0))
+    if ($doc_state->{'outside_document'} or (defined($doc_state->{'multiple_pass'}) and $doc_state->{'multiple_pass'} > 0))
     {
 #print STDERR "multiple_pass $doc_state->{'multiple_pass'}, 'outside_document' $doc_state->{'outside_document'}\n";
 #print STDERR "REGION FOOTNOTE($$foot_num): $doc_state->{'region'} ($doc_state->{'region_pass'})\n";
-        $region_initial_state{$doc_state->{'region'}}->{'footnotes'}->{$$foot_num}->{$doc_state->{'region_pass'}} = $foot_lines;
+        $region_initial_state{$doc_state->{'region'}}->{'footnotes'}->{$$foot_num}->{$doc_state->{'region_pass'}} = $foot_lines if (defined($doc_state->{'region'}));
     }
     else
     {
@@ -11124,7 +11096,6 @@ sub do_image($$$$$)
     $args[4] = '' if (!defined($args[4]));
     $args[3] = '' if (!defined($args[3]));
     my $image;
-    #my $extension = substitute_line($args[4], {'code_style' => 1});
     my $extension = substitute_line($args[4], "\@$command extension", {'code_style' => 1, 'remove_texi' => 1});
     my $extension_simple = substitute_line($args[4], "\@$command extension", {'simple_format' => 1, 'code_style' => 1});
     my ($file_name, $image_name, $simple_file_name);
@@ -11174,6 +11145,7 @@ sub duplicate_state($)
          'multiple_pass' => $state->{'multiple_pass'},
          'region_pass' => $state->{'region_pass'},
          'region' => $state->{'region'},
+         'expansion' => $state->{'expansion'},
          'sec_num' => $state->{'sec_num'},
          'outside_document' => $state->{'outside_document'},
          'inside_document' => $state->{'inside_document'},
@@ -11403,7 +11375,8 @@ sub get_index_entry_infos($$;$)
             $index_heading_element->{'target'},
             substitute_line($entry->{'entry'}, "\@$entry->{'command'} index infos"),
             href($entry_heading_element, $element->{'file'}, $line_nr),
-            $entry_heading_element->{'text'});
+            $entry_heading_element->{'text'},
+            (!$entry->{'seen_in_output'} and defined($entry->{'region'})));
 }
 
 # remove texi commands, replacing with what seems adequate. see simple_map_texi
@@ -12283,10 +12256,17 @@ sub close_structure_command($$$$)
     my $line_nr = shift;
     my $result;
     
+    #print STDERR "close_structure_command $cmd_ref->{'style'}\n";
+    # If the anchor is in @titlepage or @copying, it is nevertheless only 
+    # expanded once in pass_structure, during the @copying or @titlepage 
+    # expansion.
+    # It is not true, however if INLINE_INSERTCOPYING is true.
+    # See indices/index_special_region.texi tests.
     if ($cmd_ref->{'style'} eq 'anchor')
     {
         my $anchor = $cmd_ref->{'text'};
         $anchor = normalise_node($anchor);
+        #print STDERR "Anchor $anchor\n";
         if ($nodes{$anchor})
         {
             line_error ("Anchor `$anchor' previously defined ".format_line_number($nodes{$anchor}->{'line_nr'}), $line_nr);
@@ -12662,7 +12642,6 @@ sub scan_structure($$$$;$)
                 {
                     my $name = $1;
                     my $heading_ref = new_section_heading($macro, $name, $state, $line_nr);
-                    #if ($state->{'place'} eq $no_element_associated_place)
                     if (exists($state->{'region_lines'}) and $state->{'region_lines'}->{'format'})
                     {
                         my $region = $state->{'region_lines'}->{'format'};
@@ -13531,8 +13510,8 @@ sub scan_line($$$$;$)
                          {
                               my $float_style = substitute_line(&$Texi2HTML::Config::listoffloats_float_style($arg, $float), "\@listoffloats \@float type");
                               my ($caption_lines, $caption_or_shortcaption) = &$Texi2HTML::Config::listoffloats_caption($float);
-                              # we set 'multiple_pass', 'region' and 
-                              # 'region_pass'such that index entries
+                              # we set 'multiple_pass', and 'expansion'
+                              # such that index entries
                               # and anchors are not handled one more time;
                               # the caption has already been formatted, 
                               # and these have been handled at the right place
@@ -14836,12 +14815,14 @@ sub close_stack_structure($$$$;$)
     #$stack = [ ];
 }
 
+# This is used in pass 2 and 3.
 sub open_region($$)
 {
     my $command = shift;
     my $state = shift;
     if (!exists($state->{'region_lines'}))
     {
+    # FIXME 'format' is badly choosen 'region_name' would be much better
         $state->{'region_lines'}->{'format'} = $command;
         $state->{'region_lines'}->{'number'} = 1;
         $state->{'region_lines'}->{'kept_place'} = $state->{'place'};
@@ -14858,6 +14839,7 @@ sub open_region($$)
 
 # close region like @insertcopying, titlepage...
 # restore $state and delete the structure
+# This is used in pass 2 and 3.
 sub close_region($)
 {
     my $state = shift;
@@ -14952,8 +14934,10 @@ sub close_stack($$$$;$)
 
     # This tries to avoid cases where the command_stack is not empty 
     # for a good reason, for example when doing a @def formatting the 
-    # outside command_stack is preserved
-    return if ($format or $state->{'multiple_pass'} or $state->{'no_paragraph'}); 
+    # outside command_stack is preserved. Also when expanding for
+    # example @titleplage or @copying.
+    # FIXME sort out which cases it is.
+    return if ($format or (defined($state->{'multiple_pass'}) and $state->{'multiple_pass'} > 0) or $state->{'no_paragraph'}); 
 
     # go through the command_stack and warn for each opened style format
     # and remove it. Those should be there because there is an opened style
@@ -15052,12 +15036,7 @@ sub close_paragraph($$$$;$$)
     while ($stack_level--)
     {
         last if ($stack->[$stack_level]->{'format'});
-        my $style =  $stack->[$stack_level]->{'style'};
-        # FIXME images, footnotes, xrefs, anchors?
-        # seems that it is not possible, as 
-        # close_paragraph shouldn't be called with keep_texi
-        # and when the arguments are expanded, there is a 
-        # substitute_line or similar with a new stack.
+        my $style = $stack->[$stack_level]->{'style'};
 
         # the !exists($style_type{$style}) condition catches the unknown 
         # @-commands: by default they are considered as style commands
@@ -15072,7 +15051,12 @@ sub close_paragraph($$$$;$$)
             }
             else
             {
-                print STDERR "BUG: special $style while closing paragraph\n";
+                # it shouldn't be possible to have 'special' styles, like
+                # images, footnotes, xrefs, anchors, as 
+                # close_paragraph shouldn't be called with keep_texi
+                # and when the arguments are expanded, there is a 
+                # substitute_line or similar with a new stack.
+                msg_debug("BUG: special $style while closing paragraph", $line_nr);
             }
         }
         # if not in a paragraph, the command is simply closed, and not recorded
@@ -15273,7 +15257,11 @@ sub substitute_line($$;$$)
     my $line_nr = shift;
     $state = {} if (!defined($state));
     $state->{'no_paragraph'} = 1;
-    print STDERR "BUG: substitute line with main state\n" if (($state->{'inside_document'} or $state->{'outside_document'}) and !$state->{'duplicated'});
+
+    if (($state->{'inside_document'} or $state->{'outside_document'}) and (!$state->{'duplicated'} and !$state->{'new_state'}))
+    {
+        msg_debug("substitute_line with main state in: ".var_to_str($context_string), $line_nr);
+    }
     push @{$state->{'no_paragraph_stack'}}, $context_string;
     # this is usefull when called from &$I, and also for image files 
     return simple_format($state, [ $line_nr ], $context_string, $line) if ($state->{'simple_format'});
@@ -15409,21 +15397,20 @@ sub do_index_entry_label($$$$;$)
 
     msg_debug("do_index_entry_label($command): Undefined entry_texi", $line_nr)
        if (!defined($entry_texi));
-    # FIXME 
-    #$entry_texi = trim_around_spaces($entry_texi);
     $entry_texi = trim_comment_spaces($entry_texi, "index label in \@$command", $line_nr);
 
     # index entries are not entered in special regions
     my $region = 'document';
-    $region = $state->{'region'} if ($state->{'region'});
+    $region = $state->{'region'} if (defined($state->{'region'}));
 
     my $entry;
-    # Can be within a listoffloat.
-    if ($region eq 'document' or defined($region_lines{$region}))
+    # Can be within a @caption expanded within a listoffloat. In that
+    # case the 2 following condition are not set.
+    if (defined($state->{'region'}) or !defined($state->{'expansion'}))
     {
        # index entry on a line that is not searched for index entries, like
        # a @def* line
-       if (!defined($Texi2HTML::THISDOC{'index_entries'}->{$region}) or !defined( $Texi2HTML::THISDOC{'index_entries'}->{$region}->{$entry_texi}))
+       if (!defined($Texi2HTML::THISDOC{'index_entries'}->{$region}) or !defined($Texi2HTML::THISDOC{'index_entries'}->{$region}->{$entry_texi}))
        {
           line_warn("Index entry not caught: `$entry_texi' in $region", $line_nr);
        }
@@ -15433,7 +15420,7 @@ sub do_index_entry_label($$$$;$)
           # ============================ debug
           if (!defined($entry_ref->{'entries'}))
           {
-              line_warn("BUG, not defined: {'index_entries'}->{$region}->{$entry_texi}->{'entries'}", $line_nr);
+              msg_debug("BUG, not defined: {'index_entries'}->{$region}->{$entry_texi}->{'entries'}", $line_nr);
           }
           # ============================  end debug
           if (scalar(@{$entry_ref->{'entries'}}) > 1)
@@ -15449,6 +15436,7 @@ sub do_index_entry_label($$$$;$)
           {
               $entry = $entry_ref->{'entries'}->[0];
           }
+          $entry->{'seen_in_output'} = 1 if (!$state->{'outside_document'});
           ############################################# debug
           # verify that the old way of getting index entries (in an array) is
           # synchronized with the document
@@ -15469,7 +15457,6 @@ sub do_index_entry_label($$$$;$)
     }
     if (!defined($entry))
     {
-        #print STDERR "Index entry in output not gathered in usual places ($region)\n";
         # this can happen for listoffloats and caption without being a user 
         # error. Well, in fact, it could be argued that it is indeed a user
         # error, putting an index entry in a snippet that can be expanded
@@ -15478,7 +15465,7 @@ sub do_index_entry_label($$$$;$)
         my $prefix = index_entry_command_prefix($command, $line, $line_nr);
         my $index_name = undef;
         $index_name = $index_prefix_to_name{$prefix} if ($prefix ne '');
-        # FIXME 'entry' could be @code{$entry_texi}
+        #print STDERR "Entry for index $index_name not gathered in usual places ($region)\n";
         $entry = {
           'command' => $command,
           'texi' => $entry_texi,
@@ -15487,8 +15474,12 @@ sub do_index_entry_label($$$$;$)
           'index_name' => $index_name,
         };
         $entry->{'key'} = remove_texi($entry_texi);
+        $entry->{'entry'} = '@code{'.$entry->{'entry'}.'}'
+            if (defined($index_names{$index_name}) and
+             defined($index_names{$index_name}->{'prefixes'}) and
+             $index_names{$index_name}->{'prefixes'}->{$prefix}
+             and $entry->{'key'} =~ /\S/);
     }
-#    return '' if ($state->{'multiple_pass'} or $state->{'outside_document'});
     if ($command ne $entry->{'command'})
     {
         # happened with bad texinfo with a line like
@@ -15498,14 +15489,14 @@ sub do_index_entry_label($$$$;$)
     }
     if ($entry->{'texi'} ne $entry_texi)
     {
-        line_warn ("Waiting for index `$entry->{'texi'}', got `$entry_texi'", $line_nr);
+        msg_debug ("Waiting for index `$entry->{'texi'}', got `$entry_texi'", $line_nr);
     }
     
     my $index_name = $index_prefix_to_name{$entry->{'prefix'}};
     # =========== debug
     my $id = 'no id';
     $id = $entry->{'id'} if (defined($entry->{'id'}));
-    print STDERR "(index($index_name) $command) [$entry->{'entry'}] $entry->{'id'}\n"
+    print STDERR "(index($index_name) $command) [$entry->{'entry'}] $id\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
     # =========== end debug
     #return (undef,'','') if ($state->{'region'});
@@ -15517,7 +15508,8 @@ sub do_index_entry_label($$$$;$)
     my $formatted_entry_reference = substitute_line($entry->{'texi'}, "\@$command", prepare_state_multiple_pass("${command}_index", $state));
     return ($entry, $formatted_entry, &$Texi2HTML::Config::index_entry_label ($entry->{'id'}, $state->{'preformatted'}, $formatted_entry, 
       $index_name,
-       $command, $entry->{'texi'}, $formatted_entry_reference, $entry)); 
+       $command, $entry->{'texi'}, $formatted_entry_reference, 
+       (!$entry->{'seen_in_output'} and defined($entry->{'region'})),$entry)); 
 }
 
 # decompose a decimal number on a given base. The algorithm looks like
@@ -15901,7 +15893,12 @@ while(@input_files)
 #                of the main document, and in the main document)
 # 'multiple_pass': the number of pass in the formatting of the region in the
 #                  main document
+#                  It is set to 0 the first time the region is seen, before
+#                  it will be -1, for example when doing the 
+#                  copying_comment, the titlepage... before starting with
+#                  the document itself.
 # 'outside_document': set to 1 if outside of the main document formatting
+
    foreach my $key (keys(%region_initial_state))
    {
       $region_initial_state{$key}->{'multiple_pass'} = -1;
@@ -15910,6 +15907,7 @@ while(@input_files)
       $region_initial_state{$key}->{'foot_num'} = 0;
       $region_initial_state{$key}->{'relative_foot_num'} = 0;
       $region_initial_state{$key}->{'region'} = $key;
+#      $region_initial_state{$key}->{'expansion'} = $key;
    }
 
    @opened_files = (); # all the files opened by the program to remove

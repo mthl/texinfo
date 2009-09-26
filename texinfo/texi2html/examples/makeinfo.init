@@ -248,7 +248,7 @@ sub makeinfo_like_summary_letter
     return '';
 }
 
-sub makeinfo_like_index_entry($$$$)
+sub makeinfo_like_index_entry($$$$$$$$$$)
 {
     my $text_href = shift;
     my $entry = shift;
@@ -258,6 +258,7 @@ sub makeinfo_like_index_entry($$$$)
     my $current_element_file = shift;
     my $entry_target = shift;
     my $entry_element_target = shift;
+    my $in_region_not_in_output = shift;
     my $index_entry_ref = shift;
 
     return '' if ($entry !~ /\S/);

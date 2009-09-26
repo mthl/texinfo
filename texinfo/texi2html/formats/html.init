@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.27 2009-09-23 19:07:30 pertusus Exp $
+# $Id: html.init,v 1.28 2009-09-26 23:10:07 pertusus Exp $
 
 use strict;
 
@@ -2702,7 +2702,8 @@ sub html_default_foot_line_and_ref($$$$$$$$$)
           . "</h3>\n");
     # this is a bit obscure, this allows to add an anchor only if formatted
     # as part of the document.
-    $place_id = '' if ($document_state->{'outside_document'} or $document_state->{'multiple_pass'});
+    #$place_id = '' if ($document_state->{'outside_document'} or $document_state->{'multiple_pass'} or $document_state->{'expansion'});
+    $place_id = '' if ($document_state->{'outside_document'} or (defined($document_state->{'multiple_pass'}) and  $document_state->{'multiple_pass'} > 0));
     return ($lines, &$anchor($place_id,  $footnote_file . "#$footnote_id", 
            "($number_in_doc)"));
 }
@@ -2804,7 +2805,7 @@ sub html_default_image($$$$$$$$$$$$$$$$$)
 # target identifier
 # boolean true if in preformatted format
 # FIXME document the remaining 
-sub html_default_index_entry_label($$$$$$$$)
+sub html_default_index_entry_label($$$$$$$$$)
 {
     my $identifier = shift;
     my $preformatted = shift;
@@ -2813,6 +2814,7 @@ sub html_default_index_entry_label($$$$$$$$)
     my $index_command = shift;
     my $texi_entry = shift;
     my $formatted_entry = shift;
+    my $in_region_not_in_output = shift;
     my $index_entry_ref = shift;
 
     return '' if (!defined($identifier) or ($identifier !~ /\S/));
@@ -2981,7 +2983,7 @@ sub html_default_index_letter($$$)
 # href to the main text, linking to the section or node where the index 
 #      entry appears
 # section or node heading
-sub html_default_index_entry($$$$$$$$$)
+sub html_default_index_entry($$$$$$$$$$)
 {
     my $text_href = shift;
     my $entry = shift;
@@ -2991,6 +2993,7 @@ sub html_default_index_entry($$$$$$$$$)
     my $current_element_file = shift;
     my $entry_target = shift;
     my $entry_element_target = shift;
+    my $in_region_not_in_output = shift;
     my $index_entry_ref = shift;
 
     return '' if ($entry !~ /\S/);
