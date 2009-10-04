@@ -89,6 +89,9 @@ This file records noteworthy changes.
   The whole header is in an element with class "header" (was "node" when
   !$HEADER_IN_TABLE).
 
+* print_element_header is obsoleted, things should be directly done in 
+  element_heading.
+
 
 1.82 (2009-01-05)
 

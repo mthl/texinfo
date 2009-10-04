@@ -1,18 +1,18 @@
 <div id="Builds"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Tracking third-party sources#Multiple-vendor-branches  &lt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: Tracking third-party sources#Tracking third-party sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Tracking third-party sources#Multiple vendor branches| &lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Special Files#Special-Files  &gt; ]|</td>
-<td valign="middle" align="left">|[cvs: Special Files#Special-Files  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[cvs: Special Files#Special Files| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Special Files#Special Files| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="How-your-build-system-interacts-with-CVS"></div>
 == How your build system interacts with CVS ==
@@ -52,7 +52,7 @@ of functionality is sometimes called <em>bill of
 materials</em> or something similar.  The best way to do
 this with <small>CVS</small> is to use the <code>tag</code> command to
 record which versions went into a given build
-(see section [cvs: Revisions#Tags Tags&ndash;Symbolic revisions]).
+(see section [[cvs: Revisions#Tags&ndash;Symbolic revisions|Tags&ndash;Symbolic revisions]]).
 </p>
 <p>Using <small>CVS</small> in the most straightforward manner
 possible, each developer will have a copy of the entire
@@ -79,16 +79,16 @@ is Odin (see
 </p>
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Tracking third-party sources#Tracking-sources  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Special Files#Special-Files  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: Tracking third-party sources#Tracking third-party sources| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Special Files#Special Files| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -1,7 +1,7 @@
 <div id="Binary-why"></div>
 <div class="header">
 <p>
-Next: [cvs: How to store binary files#Binary-howto Binary howto], Up: [cvs: Handling binary files#Binary-files Binary files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: How to store binary files#How to store binary files|Binary howto]], Up: [[cvs: Handling binary files#Handling binary files|Binary files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="The-issues-with-binary-files"></div>
@@ -31,9 +31,9 @@ changes that they intended to make.
 ability to merge two revisions.  For <small>CVS</small> this
 happens in two contexts.  The first is when users make
 changes in separate working directories
-(see [cvs: Multiple developers#Multiple-developers Multiple developers]).  The second is when one
+(see [[cvs: Multiple developers#Multiple developers|Multiple developers]]).  The second is when one
 merges explicitly with the &lsquo;<samp>update -j</samp>&rsquo; command
-(see [cvs: Branching and merging#Branching-and-merging Branching and merging]).
+(see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).
 </p>
 <p>In the case of text
 files, <small>CVS</small> can merge changes made independently,
@@ -52,12 +52,12 @@ potentially error prone.
 choice may be to avoid merging.  To avoid the merges
 that result from separate working directories, see the
 discussion of reserved checkouts (file locking) in
-[cvs: Multiple developers#Multiple-developers Multiple developers].  To avoid the merges
+[[cvs: Multiple developers#Multiple developers|Multiple developers]].  To avoid the merges
 resulting from branches, restrict use of branches.
 </p>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: How to store binary files#Binary-howto Binary howto], Up: [cvs: Handling binary files#Binary-files Binary files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: How to store binary files#How to store binary files|Binary howto]], Up: [[cvs: Handling binary files#Handling binary files|Binary files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

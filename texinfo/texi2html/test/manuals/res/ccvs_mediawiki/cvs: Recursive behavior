@@ -1,18 +1,18 @@
 <div id="Recursive-behavior"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Branching and merging#Merging-and-keywords  &lt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: Branching and merging#Branching and merging| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Branching and merging#Merging and keywords| &lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  &gt; ]|</td>
-<td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Recursive-behavior-1"></div>
 == Recursive behavior ==
@@ -80,23 +80,23 @@ for most of the <small>CVS</small> subcommands, not only the
 <p>The recursive behavior of the <small>CVS</small> subcommands can be
 turned off with the &lsquo;<samp>-l</samp>&rsquo; option.
 Conversely, the &lsquo;<samp>-R</samp>&rsquo; option can be used to force recursion if
-&lsquo;<samp>-l</samp>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section [cvs: Guide to CVS commands#g_t_007e_002f_002ecvsrc Default options and the ~/.cvsrc file]).
+&lsquo;<samp>-l</samp>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section [[cvs: Guide to CVS commands#Default options and the ~/.cvsrc file|Default options and the ~/.cvsrc file]]).
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -l         # <span class="roman">Don't update files in subdirectories</span>
 </nowiki></pre></td></tr></table>
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Branching and merging#Branching-and-merging  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: Branching and merging#Branching and merging| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

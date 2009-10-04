@@ -1,7 +1,7 @@
 <div id="Revisions"></div>
 <div class="header">
 <p>
-Next: [cvs: Branching and merging#Branching-and-merging Branching and merging], Previous: [cvs: Starting a project with CVS#Starting-a-new-project Starting a new project], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Branching and merging#Branching and merging|Branching and merging]], Previous: [[cvs: Starting a project with CVS#Starting a project with CVS|Starting a new project]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Revisions-1"></div>
 == Revisions ==
@@ -19,21 +19,21 @@ went into a particular release, one uses a <em>tag</em>,
 which is a symbolic revision which can be assigned to a
 numeric revision in each file.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Revision-numbers| Revision numbers]]::<nowiki>            The meaning of a revision number
-</nowiki>&bull;[[#Versions-revisions-releases| Versions revisions releases]]::<nowiki>  Terminology used in this manual
-</nowiki>&bull;[[#Assigning-revisions| Assigning revisions]]::<nowiki>         Assigning revisions
-</nowiki>&bull;[[#Tags| Tags]]::<nowiki>                        Tags&ndash;Symbolic revisions
-</nowiki>&bull;[[#Tagging-the-working-directory| Tagging the working directory]]::<nowiki>  The cvs tag command
-</nowiki>&bull;[[#Tagging-by-date_002ftag| Tagging by date/tag]]::<nowiki>         The cvs rtag command
-</nowiki>&bull;[[#Modifying-tags| Modifying tags]]::<nowiki>              Adding, renaming, and deleting tags
-</nowiki>&bull;[[#Tagging-add_002fremove| Tagging add/remove]]::<nowiki>          Tags with adding and removing files
-</nowiki>&bull;[[#Sticky-tags| Sticky tags]]::<nowiki>                 Certain tags are persistent
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Revision numbers| Revision numbers]]::<nowiki>            The meaning of a revision number
+</nowiki>&bull;[[#Versions, revisions and releases| Versions revisions releases]]::<nowiki>  Terminology used in this manual
+</nowiki>&bull;[[#Assigning revisions| Assigning revisions]]::<nowiki>         Assigning revisions
+</nowiki>&bull;[[#Tags&ndash;Symbolic revisions| Tags]]::<nowiki>                        Tags&ndash;Symbolic revisions
+</nowiki>&bull;[[#Specifying what to tag from the working directory| Tagging the working directory]]::<nowiki>  The cvs tag command
+</nowiki>&bull;[[#Specifying what to tag by date or revision| Tagging by date/tag]]::<nowiki>         The cvs rtag command
+</nowiki>&bull;[[#Deleting, moving, and renaming tags| Modifying tags]]::<nowiki>              Adding, renaming, and deleting tags
+</nowiki>&bull;[[#Tagging and adding and removing files| Tagging add/remove]]::<nowiki>          Tags with adding and removing files
+</nowiki>&bull;[[#Sticky tags| Sticky tags]]::<nowiki>                 Certain tags are persistent
 </nowiki></pre>
 <hr>
 <div id="Revision-numbers"></div>
 <div class="header">
 <p>
-Next: [[#Versions-revisions-releases|Versions revisions releases]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Versions, revisions and releases|Versions revisions releases]], Up: [[#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Revision-numbers-1"></div>
 === Revision numbers ===
@@ -63,14 +63,14 @@ a few revisions, with newer revisions to the right.
 <p>It is also possible to end up with numbers containing
 more than one period, for example &lsquo;<samp>1.3.2.2</samp>&rsquo;.  Such
 revisions represent revisions on branches
-(see [cvs: Branching and merging#Branching-and-merging Branching and merging]); such revision numbers
-are explained in detail in [cvs: Branching and merging#Branches-and-revisions Branches and revisions].
+(see [[cvs: Branching and merging#Branching and merging|Branching and merging]]); such revision numbers
+are explained in detail in [[cvs: Branching and merging#Branches and revisions|Branches and revisions]].
 </p>
 <hr>
 <div id="Versions-revisions-releases"></div>
 <div class="header">
 <p>
-Next: [[#Assigning-revisions|Assigning revisions]], Previous: [[#Revision-numbers|Revision numbers]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Assigning revisions|Assigning revisions]], Previous: [[#Revision numbers|Revision numbers]], Up: [[#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Versions_002c-revisions-and-releases"></div>
 === Versions, revisions and releases ===
@@ -92,7 +92,7 @@ called <em>releases</em>.  To avoid confusion, the word
 <div id="Assigning-revisions"></div>
 <div class="header">
 <p>
-Next: [[#Tags|Tags]], Previous: [[#Versions-revisions-releases|Versions revisions releases]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Tags&ndash;Symbolic revisions|Tags]], Previous: [[#Versions, revisions and releases|Versions revisions releases]], Up: [[#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Assigning-revisions-1"></div>
 === Assigning revisions ===
@@ -115,7 +115,7 @@ about the revision numbers&mdash;it is easier to treat them
 as internal numbers that <small>CVS</small> maintains, and tags
 provide a better way to distinguish between things like
 release 1 versus release 2 of your product
-(see [[#Tags|Tags]]).  However, if you want to set the
+(see [[#Tags&ndash;Symbolic revisions|Tags]]).  However, if you want to set the
 numeric revisions, the &lsquo;<samp>-r</samp>&rsquo; option to <code>cvs
 commit</code> can do that.  The &lsquo;<samp>-r</samp>&rsquo; option implies the
 &lsquo;<samp>-f</samp>&rsquo; option, in the sense that it causes the
@@ -132,13 +132,13 @@ you might invoke:
 larger than any existing revision number.  That is, if
 revision 3.0 exists, you cannot &lsquo;<samp>cvs commit
 -r 1.3</samp>&rsquo;.  If you want to maintain several releases in
-parallel, you need to use a branch (see [cvs: Branching and merging#Branching-and-merging Branching and merging]).
+parallel, you need to use a branch (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).
 </p>
 <hr>
 <div id="Tags"></div>
 <div class="header">
 <p>
-Next: [[#Tagging-the-working-directory|Tagging the working directory]], Previous: [[#Assigning-revisions|Assigning revisions]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Specifying what to tag from the working directory|Tagging the working directory]], Previous: [[#Assigning revisions|Assigning revisions]], Up: [[#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Tags_002d_002dSymbolic-revisions"></div>
 === Tags&ndash;Symbolic revisions ===
@@ -197,7 +197,7 @@ followed by the version number with &lsquo;<samp>.</samp>&rsquo; changed to
 then you won&rsquo;t constantly be guessing whether a tag is
 <code>cvs-1-9</code> or <code>cvs1_9</code> or what.  You might
 even want to consider enforcing your convention in the
-taginfo file (see [cvs: History browsing#user_002ddefined-logging user-defined logging]).
+taginfo file (see [[cvs: History browsing#User-defined logging|user-defined logging]]).
 </p>
 <div id="index-Adding-a-tag"></div>
 <div id="index-Tags_002c-example"></div>
@@ -225,7 +225,7 @@ File: backend.c         Status: Up-to-date
 </nowiki></pre></td></tr></table>
 
 <p>For a complete summary of the syntax of <code>cvs tag</code>,
-including the various options, see [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS].
+including the various options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].
 </p>
 <p>There is seldom reason to tag a file in isolation.  A more common use is
 to tag all the files that constitute a module with the same tag at
@@ -243,7 +243,7 @@ T parser.c
 
 <p>(When you give <small>CVS</small> a directory as argument, it generally applies the
 operation to all the files in that directory, and (recursively), to any
-subdirectories that it may contain.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].)
+subdirectories that it may contain.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].)
 </p>
 <div id="index-Retrieving-an-old-revision-using-tags"></div>
 <div id="index-Tags_002c-retrieving-old-revisions"></div>
@@ -259,9 +259,9 @@ any time in the future:
 that release, but you cannot find the bug in the current working copy.
 </p>
 <p>You can also check out a module as it was at any given date.
-See [cvs: Guide to CVS commands#checkout-options checkout options].  When specifying &lsquo;<samp>-r</samp>&rsquo; to
+See [[cvs: Guide to CVS commands#checkout options|checkout options]].  When specifying &lsquo;<samp>-r</samp>&rsquo; to
 any of these commands, you will need beware of sticky
-tags; see [[#Sticky-tags|Sticky tags]].
+tags; see [[#Sticky tags|Sticky tags]].
 </p>
 <p>When you tag more than one file with the same tag you
 can think about the tag as &quot;a curve drawn through a
@@ -302,7 +302,7 @@ like this:
 <div id="Tagging-the-working-directory"></div>
 <div class="header">
 <p>
-Next: [[#Tagging-by-date_002ftag|Tagging by date/tag]], Previous: [[#Tags|Tags]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Specifying what to tag by date or revision|Tagging by date/tag]], Previous: [[#Tags&ndash;Symbolic revisions|Tags]], Up: [[#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Specifying-what-to-tag-from-the-working-directory"></div>
 === Specifying what to tag from the working directory ===
@@ -340,7 +340,7 @@ cvs [tag aborted]: correct the above errors first!
 <div id="Tagging-by-date_002ftag"></div>
 <div class="header">
 <p>
-Next: [[#Modifying-tags|Modifying tags]], Previous: [[#Tagging-the-working-directory|Tagging the working directory]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Deleting, moving, and renaming tags|Modifying tags]], Previous: [[#Specifying what to tag from the working directory|Tagging the working directory]], Up: [[#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Specifying-what-to-tag-by-date-or-revision"></div>
 === Specifying what to tag by date or revision ===
@@ -353,7 +353,7 @@ repository contents (it requires no prior checkout and
 does not look for a working directory).
 </p>
 <p>The following options specify which date or revision to
-tag.  See [cvs: Guide to CVS commands#Common-options Common options], for a complete
+tag.  See [[cvs: Guide to CVS commands#Common command options|Common options]], for a complete
 description of them.
 </p>
 <dl compact="compact">
@@ -389,7 +389,7 @@ rtag</code>.  The exceptions might be cases like:
 <div id="Modifying-tags"></div>
 <div class="header">
 <p>
-Next: [[#Tagging-add_002fremove|Tagging add/remove]], Previous: [[#Tagging-by-date_002ftag|Tagging by date/tag]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Tagging and adding and removing files|Tagging add/remove]], Previous: [[#Specifying what to tag by date or revision|Tagging by date/tag]], Up: [[#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Deleting_002c-moving_002c-and-renaming-tags"></div>
 === Deleting, moving, and renaming tags ===
@@ -410,7 +410,7 @@ dangerous; they permanently discard historical
 information and it can be difficult or impossible to
 recover from errors.  If you are a <small>CVS</small>
 administrator, you may consider restricting these
-commands with taginfo (see [cvs: History browsing#user_002ddefined-logging user-defined logging]).</strong>
+commands with taginfo (see [[cvs: History browsing#User-defined logging|user-defined logging]]).</strong>
 </p>
 <div id="index-Deleting-tags"></div>
 <div id="index-Deleting-branch-tags"></div>
@@ -486,7 +486,7 @@ cvs rtag -d old-name-0-4 tc
 <div id="Tagging-add_002fremove"></div>
 <div class="header">
 <p>
-Next: [[#Sticky-tags|Sticky tags]], Previous: [[#Modifying-tags|Modifying tags]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Sticky tags|Sticky tags]], Previous: [[#Deleting, moving, and renaming tags|Modifying tags]], Up: [[#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Tagging-and-adding-and-removing-files"></div>
 === Tagging and adding and removing files ===
@@ -527,7 +527,7 @@ necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 <div id="Sticky-tags"></div>
 <div class="header">
 <p>
-Previous: [[#Tagging-add_002fremove|Tagging add/remove]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Tagging and adding and removing files|Tagging add/remove]], Up: [[#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Sticky-tags-1"></div>
 === Sticky tags ===
@@ -537,7 +537,7 @@ Previous: [[#Tagging-add_002fremove|Tagging add/remove]], Up: [[#Revisions|Revis
 
 <p>Sometimes a working copy&rsquo;s revision has extra data
 associated with it, for example it might be on a branch
-(see [cvs: Branching and merging#Branching-and-merging Branching and merging]), or restricted to
+(see [[cvs: Branching and merging#Branching and merging|Branching and merging]]), or restricted to
 versions prior to a certain date by &lsquo;<samp>checkout -D</samp>&rsquo;
 or &lsquo;<samp>update -D</samp>&rsquo;.  Because this data persists &ndash;
 that is, it applies to subsequent commands in the
@@ -571,13 +571,13 @@ File: driver.c          Status: Up-to-date
 you delete them with &lsquo;<samp>cvs update -A</samp>&rsquo;.  The
 &lsquo;<samp>-A</samp>&rsquo; option merges local changes into the version of the
 file from the head of the trunk, removing any sticky tags,
-dates, or options.  See [cvs: Guide to CVS commands#update update] for more on the operation
+dates, or options.  See [[cvs: Guide to CVS commands#update&mdash;Bring work tree in sync with repository|update]] for more on the operation
 of <code>cvs update</code>.
 </p>
 <div id="index-Sticky-date"></div>
 <p>The most common use of sticky tags is to identify which
 branch one is working on, as described in
-[cvs: Branching and merging#Accessing-branches Accessing branches].  However, non-branch
+[[cvs: Branching and merging#Accessing branches|Accessing branches]].  However, non-branch
 sticky tags have uses as well.  For example,
 suppose that you want to avoid updating your working
 directory, to isolate yourself from possibly
@@ -613,11 +613,11 @@ how to undo a previous checkin (in this example, put
 &lsquo;<tt>file1</tt>&rsquo; back to the way it was as of revision
 1.1).  In that case you are better off using the
 &lsquo;<samp>-j</samp>&rsquo; option to <code>update</code>; for further
-discussion see [cvs: Branching and merging#Merging-two-revisions Merging two revisions].
+discussion see [[cvs: Branching and merging#Merging differences between any two revisions|Merging two revisions]].
 </p>
 <hr>
 <div class="header">
 <p>
-Previous: [[#Tagging-add_002fremove|Tagging add/remove]], Up: [[#Revisions|Revisions]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Tagging and adding and removing files|Tagging add/remove]], Up: [[#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -1,7 +1,7 @@
 <div id="verifymsg"></div>
 <div class="header">
 <p>
-Next: [cvs: Editinfo#editinfo editinfo], Previous: [cvs: Commitinfo#commitinfo commitinfo], Up: [cvs: The commit support files#commit-files commit files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Editinfo#Editinfo|editinfo]], Previous: [[cvs: Commitinfo#Commitinfo|commitinfo]], Up: [[cvs: The commit support files#The commit support files|commit files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Verifying-log-messages"></div>
@@ -53,7 +53,7 @@ either always be reread after the verification script
 is run or reread only if the log message file status
 has changed.
 </p>
-<p>See [cvs: The CVSROOT%47config configuration file#config config], for more on CVSROOT/config options.
+<p>See [[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|config]], for more on CVSROOT/config options.
 </p>
 <p>It is NOT a good idea for a &lsquo;<tt>verifymsg</tt>&rsquo; script to
 interact directly with the user in the various
@@ -63,7 +63,7 @@ there is no protocol support for communicating between
 <code>ext</code> and <code>server</code> methods, it is possible
 for CVS to become confused by the characters going
 along the same channel as the CVS protocol
-messages. See [cvs: Remote repositories#Remote-repositories Remote repositories], for more
+messages. See [[cvs: Remote repositories#Remote repositories|Remote repositories]], for more
 information on client/server setups.  In addition, at the time
 the &lsquo;<tt>verifymsg</tt>&rsquo; script runs, the CVS
 server has locks in place in the repository.  If control is
@@ -144,6 +144,6 @@ fi
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Editinfo#editinfo editinfo], Previous: [cvs: Commitinfo#commitinfo commitinfo], Up: [cvs: The commit support files#commit-files commit files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Editinfo#Editinfo|editinfo]], Previous: [[cvs: Commitinfo#Commitinfo|commitinfo]], Up: [[cvs: The commit support files#The commit support files|commit files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

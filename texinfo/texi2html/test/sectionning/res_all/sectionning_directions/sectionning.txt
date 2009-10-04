@@ -1,5 +1,3 @@
-
-
 * First node::    node 1
   explaination no heading ?
 * and here ?

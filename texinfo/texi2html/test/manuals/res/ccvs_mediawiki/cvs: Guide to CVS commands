@@ -1,18 +1,18 @@
 <div id="CVS-commands"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Special Files#Special-Files  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Special Files#Special-Files  &lt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: Special Files#Special Files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Special Files#Special Files| &lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[[#Structure| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[#Overall structure of CVS commands| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Guide-to-CVS-commands"></div>
 == Guide to CVS commands ==
@@ -20,41 +20,41 @@
 <p>This appendix describes the overall structure of
 <small>CVS</small> commands, and describes some commands in
 detail (others are described elsewhere; for a quick
-reference to <small>CVS</small> commands, see section [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands]).
+reference to <small>CVS</small> commands, see section [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Quick reference to CVS commands]]).
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Structure| Structure]]::<nowiki>                   Overall structure of CVS commands
-</nowiki>&bull;[[#Exit-status| Exit status]]::<nowiki>                 Indicating CVS&rsquo;s success or failure
-</nowiki>&bull;[[#g_t_007e_002f_002ecvsrc| ~/.cvsrc]]::<nowiki>                    Default options with the ~/.csvrc file
-</nowiki>&bull;[[#Global-options| Global options]]::<nowiki>              Options you give to the left of cvs_command
-</nowiki>&bull;[[#Common-options| Common options]]::<nowiki>              Options you give to the right of cvs_command
-</nowiki>&bull;[[#admin| admin]]::<nowiki>                       Administration
-</nowiki>&bull;[[#checkout| checkout]]::<nowiki>                    Checkout sources for editing
-</nowiki>&bull;[[#commit| commit]]::<nowiki>                      Check files into the repository
-</nowiki>&bull;[[#diff| diff]]::<nowiki>                        Show differences between revisions
-</nowiki>&bull;[[#export| export]]::<nowiki>                      Export sources from CVS, similar to checkout
-</nowiki>&bull;[[#history| history]]::<nowiki>                     Show status of files and users
-</nowiki>&bull;[[#import| import]]::<nowiki>                      Import sources into CVS, using vendor branches
-</nowiki>&bull;[[#log| log]]::<nowiki>                         Show log messages for files
-</nowiki>&bull;[[#rdiff| rdiff]]::<nowiki>                       &rsquo;patch&rsquo; format diffs between releases
-</nowiki>&bull;[[#release| release]]::<nowiki>                     Indicate that a directory is no longer in use
-</nowiki>&bull;[[#update| update]]::<nowiki>                      Bring work tree in sync with repository
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Overall structure of CVS commands| Structure]]::<nowiki>                   Overall structure of CVS commands
+</nowiki>&bull;[[#CVS&rsquo;s exit status| Exit status]]::<nowiki>                 Indicating CVS&rsquo;s success or failure
+</nowiki>&bull;[[#Default options and the ~/.cvsrc file| ~/.cvsrc]]::<nowiki>                    Default options with the ~/.csvrc file
+</nowiki>&bull;[[#Global options| Global options]]::<nowiki>              Options you give to the left of cvs_command
+</nowiki>&bull;[[#Common command options| Common options]]::<nowiki>              Options you give to the right of cvs_command
+</nowiki>&bull;[[#admin&mdash;Administration| admin]]::<nowiki>                       Administration
+</nowiki>&bull;[[#checkout&mdash;Check out sources for editing| checkout]]::<nowiki>                    Checkout sources for editing
+</nowiki>&bull;[[#commit&mdash;Check files into the repository| commit]]::<nowiki>                      Check files into the repository
+</nowiki>&bull;[[#diff&mdash;Show differences between revisions| diff]]::<nowiki>                        Show differences between revisions
+</nowiki>&bull;[[#export&mdash;Export sources from CVS, similar to checkout| export]]::<nowiki>                      Export sources from CVS, similar to checkout
+</nowiki>&bull;[[#history&mdash;Show status of files and users| history]]::<nowiki>                     Show status of files and users
+</nowiki>&bull;[[#import&mdash;Import sources into CVS, using vendor branches| import]]::<nowiki>                      Import sources into CVS, using vendor branches
+</nowiki>&bull;[[#log&mdash;Print out log information for files| log]]::<nowiki>                         Show log messages for files
+</nowiki>&bull;[[#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases| rdiff]]::<nowiki>                       &rsquo;patch&rsquo; format diffs between releases
+</nowiki>&bull;[[#release&mdash;Indicate that a Module is no longer in use| release]]::<nowiki>                     Indicate that a directory is no longer in use
+</nowiki>&bull;[[#update&mdash;Bring work tree in sync with repository| update]]::<nowiki>                      Bring work tree in sync with repository
 </nowiki></pre>
 <hr>
 <div id="Structure"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#Exit-status| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#CVS&rsquo;s exit status| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Overall-structure-of-CVS-commands"></div>
 === Overall structure of CVS commands ===
@@ -108,19 +108,19 @@ the documentation instead.
 <hr>
 <div id="Exit-status"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Structure| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#g_t_007e_002f_002ecvsrc| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Overall structure of CVS commands| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#Default options and the ~/.cvsrc file| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="CVS_0027s-exit-status"></div>
 === CVS&rsquo;s exit status ===
@@ -148,19 +148,19 @@ other <small>CVS</small> commands.
 <hr>
 <div id="g_t_007e_002f_002ecvsrc"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Exit-status| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#Global-options| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#CVS&rsquo;s exit status| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#Global options| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Default-options-and-the-_007e_002f_002ecvsrc-file"></div>
 === Default options and the ~/.cvsrc file ===
@@ -215,7 +215,7 @@ to specify use of the &quot;old&quot; format, so you would need
 &lsquo;<samp>cvs -f diff foobar</samp>&rsquo;.
 </p>
 <p>In place of the command name you can use <code>cvs</code> to
-specify global options (see section [[#Global-options|Global options]]).  For
+specify global options (see section [[#Global options|Global options]]).  For
 example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -z6
@@ -226,19 +226,19 @@ example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 <hr>
 <div id="Global-options"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#g_t_007e_002f_002ecvsrc| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#Common-options| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Default options and the ~/.cvsrc file| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#Common command options| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Global-options-1"></div>
 === Global options ===
@@ -252,7 +252,7 @@ left of &lsquo;<samp>cvs_command</samp>&rsquo;) are:
 <dl compact="compact">
 <dt><code>--allow-root=<var>rootdir</var></code></dt>
 <dd><p>Specify legal <small>CVSROOT</small> directory.  See
-[cvs: The Repository#Password-authentication-server Setting up the server for password authentication].
+[[cvs: The Repository#Setting up the server for password authentication|Setting up the server for password authentication]].
 </p>
 <div id="index-Authentication_002c-stream"></div>
 <div id="index-Stream-authentication"></div>
@@ -261,7 +261,7 @@ left of &lsquo;<samp>cvs_command</samp>&rsquo;) are:
 <dd><p>Authenticate all communication between the client and
 the server.  Only has an effect on the <small>CVS</small> client.
 As of this writing, this is only implemented when using
-a GSSAPI connection (see section [cvs: The Repository#GSSAPI-authenticated Direct connection with GSSAPI]).
+a GSSAPI connection (see section [[cvs: The Repository#Direct connection with GSSAPI|Direct connection with GSSAPI]]).
 Authentication prevents certain sorts of attacks
 involving hijacking the active <small>TCP</small> connection.
 Enabling authentication does not enable encryption.
@@ -294,7 +294,7 @@ vice versa.)
 <dt><code>-d <var>cvs_root_directory</var></code></dt>
 <dd><p>Use <var>cvs_root_directory</var> as the root directory
 pathname of the repository.  Overrides the setting of
-the <code>$CVSROOT</code> environment variable.  See section [cvs: The Repository#Repository The Repository].
+the <code>$CVSROOT</code> environment variable.  See section [[cvs: The Repository#The Repository|The Repository]].
 </p>
 <div id="index-EDITOR_002c-overriding"></div>
 <div id="index-Overriding-EDITOR"></div>
@@ -303,7 +303,7 @@ the <code>$CVSROOT</code> environment variable.  See section [cvs: The Repositor
 <dd><p>Use <var>editor</var> to enter revision log information.  Overrides the
 setting of the <code>$CVSEDITOR</code> and <code>$EDITOR</code>
 environment variables.  For more information, see
-[cvs: Overview#Committing-your-changes Committing your changes].
+[[cvs: Overview#Committing your changes|Committing your changes]].
 </p>
 </dd>
 <dt><code>-f</code></dt>
@@ -327,7 +327,7 @@ a command name, &lsquo;<samp>cvs -H</samp>&rsquo; displays overall help for
 </dd>
 <dt><code>-l</code></dt>
 <dd><p>Do not log the &lsquo;<samp>cvs_command</samp>&rsquo; in the command history (but execute it
-anyway).  See section [[#history|history&mdash;Show status of files and users]], for information on command history.
+anyway).  See section [[#history&mdash;Show status of files and users|history&mdash;Show status of files and users]], for information on command history.
 </p>
 <div id="index-Read_002donly-repository-mode"></div>
 </dd>
@@ -369,13 +369,13 @@ suppressed.
 <dt><code>-r</code></dt>
 <dd><p>Make new working files read-only.  Same effect
 as if the <code>$CVSREAD</code> environment variable is set
-(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]).  The default is to
+(see section [[cvs: All environment variables which affect CVS#All environment variables which affect CVS|All environment variables which affect CVS]]).  The default is to
 make working files writable, unless watches are on
-(see section [cvs: Multiple developers#Watches Mechanisms to track who is editing files]).
+(see section [[cvs: Multiple developers#Mechanisms to track who is editing files|Mechanisms to track who is editing files]]).
 </p>
 </dd>
 <dt><code>-s <var>variable</var>=<var>value</var></code></dt>
-<dd><p>Set a user variable (see section [cvs: Reference manual for Administrative files#Variables Expansions in administrative files]).
+<dd><p>Set a user variable (see section [[cvs: Reference manual for Administrative files#Expansions in administrative files|Expansions in administrative files]]).
 </p>
 <div id="index-Trace"></div>
 </dd>
@@ -404,8 +404,8 @@ set or &lsquo;<samp>-r</samp>&rsquo; is given.
 <p>Encrypt all communication between the client and the
 server.  Only has an effect on the <small>CVS</small> client.  As
 of this writing, this is only implemented when using a
-GSSAPI connection (see section [cvs: The Repository#GSSAPI-authenticated Direct connection with GSSAPI]) or a
-Kerberos connection (see section [cvs: The Repository#Kerberos-authenticated Direct connection with kerberos]).
+GSSAPI connection (see section [[cvs: The Repository#Direct connection with GSSAPI|Direct connection with GSSAPI]]) or a
+Kerberos connection (see section [[cvs: The Repository#Direct connection with kerberos|Direct connection with kerberos]]).
 Enabling encryption implies that message traffic is
 also authenticated.  Encryption support is not
 available by default; it must be enabled using a
@@ -428,19 +428,19 @@ Only has an effect on the <small>CVS</small> client.
 <hr>
 <div id="Common-options"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Global-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#admin| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Global options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#admin&mdash;Administration| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Common-command-options"></div>
 === Common command options ===
@@ -476,13 +476,13 @@ specifying a date in the past.
 private copy of a source file; that is, when you get a working
 file using &lsquo;<samp>-D</samp>&rsquo;, <small>CVS</small> records the date you specified, so that
 further updates in the same directory will use the same date
-(for more information on sticky tags/dates, see section [cvs: Revisions#Sticky-tags Sticky tags]).
+(for more information on sticky tags/dates, see section [[cvs: Revisions#Sticky tags|Sticky tags]]).
 </p>
 <p>&lsquo;<samp>-D</samp>&rsquo; is available with the <code>annotate</code>, <code>checkout</code>,
 <code>diff</code>, <code>export</code>, <code>history</code>,
 <code>rdiff</code>, <code>rtag</code>, <code>tag</code>, and <code>update</code> commands.
 (The <code>history</code> command uses this option in a
-slightly different way; see section [[#history-options|history options]]).
+slightly different way; see section [[#history options|history options]]).
 </p>
 
 <div id="index-Timezone_002c-in-input"></div>
@@ -559,13 +559,13 @@ give an error if you mistype a tag name.
 <p><strong>WARNING:  The <code>commit</code> and <code>remove</code>
 commands also have a
 &lsquo;<samp>-f</samp>&rsquo; option, but it has a different behavior for
-those commands.  See [[#commit-options|commit options]], and
-[cvs: Adding, removing, and renaming files and directories#Removing-files Removing files].</strong>
+those commands.  See [[#commit options|commit options]], and
+[[cvs: Adding, removing, and renaming files and directories#Removing files|Removing files]].</strong>
 </p>
 </dd>
 <dt><code>-k <var>kflag</var></code></dt>
 <dd><p>Override the default processing of RCS keywords other than
-&lsquo;<samp>-kb</samp>&rsquo;.  See section [cvs: Keyword substitution#Keyword-substitution Keyword substitution], for the meaning of
+&lsquo;<samp>-kb</samp>&rsquo;.  See section [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]], for the meaning of
 <var>kflag</var>.  Used with the <code>checkout</code> and <code>update</code>
 commands, your <var>kflag</var> specification is
 <em>sticky</em>; that is, when you use this option
@@ -580,7 +580,7 @@ commands on the same files until you specify otherwise.
 </p>
 <p><strong>WARNING: Prior to CVS version 1.12.2, the &lsquo;<samp>-k</samp>&rsquo; flag
 overrode the &lsquo;<samp>-kb</samp>&rsquo; indication for a binary file.  This could
-sometimes corrupt binary files.  See section [cvs: Branching and merging#Merging-and-keywords Merging and keywords], for
+sometimes corrupt binary files.  See section [[cvs: Branching and merging#Merging and keywords|Merging and keywords]], for
 more.</strong>
 </p>
 </dd>
@@ -608,7 +608,7 @@ invoking an editor.
 <dt><code>-n</code></dt>
 <dd><p>Do not run any tag program.  (A program can be
 specified to run in the modules
-database (see section [cvs: Reference manual for Administrative files#modules The modules file]); this option bypasses it).
+database (see section [[cvs: Reference manual for Administrative files#The modules file|The modules file]]); this option bypasses it).
 </p>
 <p><strong>Note: this is not the same as the &lsquo;<samp>cvs -n</samp>&rsquo;
 program option, which you can specify to the left of a cvs command!</strong>
@@ -618,7 +618,7 @@ and <code>rtag</code> commands.
 </p>
 </dd>
 <dt><code>-P</code></dt>
-<dd><p>Prune empty directories.  See [cvs: Adding, removing, and renaming files and directories#Removing-directories Removing directories].
+<dd><p>Prune empty directories.  See [[cvs: Adding, removing, and renaming files and directories#Removing directories|Removing directories]].
 </p>
 </dd>
 <dt><code>-p</code></dt>
@@ -652,11 +652,11 @@ revision you last checked out into the current working directory.
 with <code>checkout</code> or <code>update</code> to make your own
 copy of a file: <small>CVS</small> remembers the tag and continues to use it on
 future update commands, until you specify otherwise (for more information
-on sticky tags/dates, see section [cvs: Revisions#Sticky-tags Sticky tags]).
+on sticky tags/dates, see section [[cvs: Revisions#Sticky tags|Sticky tags]]).
 </p>
 <p>The tag can be either a symbolic or numeric tag, as
-described in [cvs: Revisions#Tags Tags&ndash;Symbolic revisions], or the name of a branch, as
-described in [cvs: Branching and merging#Branching-and-merging Branching and merging].
+described in [[cvs: Revisions#Tags&ndash;Symbolic revisions|Tags&ndash;Symbolic revisions]], or the name of a branch, as
+described in [[cvs: Branching and merging#Branching and merging|Branching and merging]].
 </p>
 <p>Specifying the &lsquo;<samp>-q</samp>&rsquo; global option along with the
 &lsquo;<samp>-r</samp>&rsquo; command option is often useful, to suppress
@@ -685,19 +685,19 @@ and <code>update</code>.
 <hr>
 <div id="admin"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Common-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#admin-options| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Common command options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#admin options| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="admin_002d_002d_002dAdministration"></div>
 === admin&mdash;Administration ===
@@ -728,7 +728,7 @@ commands, except for those specified using the
 <code>UserAdminOptions</code> configuration option in the
 &lsquo;<tt>CVSROOT/config</tt>&rsquo; file.  Options specified using
 <code>UserAdminOptions</code> can be run by any user.  See
-[cvs: Reference manual for Administrative files#config The CVSROOT/config configuration file] for more on <code>UserAdminOptions</code>.
+[[cvs: Reference manual for Administrative files#The CVSROOT/config configuration file|The CVSROOT/config configuration file]] for more on <code>UserAdminOptions</code>.
 </p>
 <p>The <code>cvsadmin</code> group should exist on the server,
 or any system running the non-client/server <small>CVS</small>.
@@ -737,24 +737,24 @@ group with no users in it.  On NT, the <code>cvsadmin</code>
 feature does not exist and all users
 can run <code>cvs admin</code>.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#admin-options| admin options]]::<nowiki>               admin options
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#admin options| admin options]]::<nowiki>               admin options
 </nowiki></pre>
 <hr>
 <div id="admin-options"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#admin| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#admin| Up ]]|</td>
-<td valign="middle" align="left">|[[#checkout| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#admin&mdash;Administration| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#admin&mdash;Administration| Up ]]|</td>
+<td valign="middle" align="left">|[[#checkout&mdash;Check out sources for editing| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="admin-options-1"></div>
 ==== admin options ====
@@ -780,10 +780,10 @@ login names appearing in the comma-separated list
 <dt><code>-b[<var>rev</var>]</code></dt>
 <dd><p>Set the default branch to <var>rev</var>.  In <small>CVS</small>, you
 normally do not manipulate default branches; sticky
-tags (see section [cvs: Revisions#Sticky-tags Sticky tags]) are a better way to decide
+tags (see section [[cvs: Revisions#Sticky tags|Sticky tags]]) are a better way to decide
 which branch you want to work on.  There is one reason
 to run <code>cvs admin -b</code>: to revert to the vendor&rsquo;s
-version when using vendor branches (see section [cvs: Tracking third-party sources#Reverting-local-changes Reverting to the latest vendor release]).
+version when using vendor branches (see section [[cvs: Tracking third-party sources#Reverting to the latest vendor release|Reverting to the latest vendor release]]).
 There can be no space between &lsquo;<samp>-b</samp>&rsquo; and its argument.
 </p>
 <div id="index-Comment-leader"></div>
@@ -792,7 +792,7 @@ There can be no space between &lsquo;<samp>-b</samp>&rsquo; and its argument.
 <dd><p>Sets the comment leader to <var>string</var>.  The comment
 leader is not used by current versions of <small>CVS</small> or
 <small>RCS</small> 5.7.  Therefore, you can almost surely not
-worry about it.  See section [cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+worry about it.  See section [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]].
 </p>
 </dd>
 <dt><code>-e[<var>logins</var>]</code></dt>
@@ -814,12 +814,12 @@ a future release of <small>CVS</small>.
 <dd><p>Useless with <small>CVS</small>.  This creates and initializes a
 new <small>RCS</small> file, without depositing a revision.  With
 <small>CVS</small>, add files with the <code>cvs add</code> command
-(see section [cvs: Adding, removing, and renaming files and directories#Adding-files Adding files to a directory]).
+(see section [[cvs: Adding, removing, and renaming files and directories#Adding files to a directory|Adding files to a directory]]).
 </p>
 </dd>
 <dt><code>-k<var>subst</var></code></dt>
 <dd><p>Set the default keyword
-substitution to <var>subst</var>.  See section [cvs: Keyword substitution#Keyword-substitution Keyword substitution].  Giving an explicit &lsquo;<samp>-k</samp>&rsquo; option to
+substitution to <var>subst</var>.  See section [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]].  Giving an explicit &lsquo;<samp>-k</samp>&rsquo; option to
 <code>cvs update</code>, <code>cvs export</code>, or <code>cvs
 checkout</code> overrides this default.
 </p>
@@ -863,7 +863,7 @@ set; see the discussion under the &lsquo;<samp>-l</samp>&rsquo; option above.
 <dt><code>-N<var>name</var>[:[<var>rev</var>]]</code></dt>
 <dd><p>Act like &lsquo;<samp>-n</samp>&rsquo;, except override any previous
 assignment of <var>name</var>.  For use with magic branches,
-see [cvs: Branching and merging#Magic-branch-numbers Magic branch numbers].
+see [[cvs: Branching and merging#Magic branch numbers|Magic branch numbers]].
 </p>
 </dd>
 <dt><code>-n<var>name</var>[:[<var>rev</var>]]</code></dt>
@@ -993,14 +993,14 @@ change to be like the &lsquo;<samp>::</samp>&rsquo; case.
 </p>
 <p>Due to the way <small>CVS</small> handles branches <var>rev</var>
 cannot be specified symbolically if it is a branch.
-See section [cvs: Branching and merging#Magic-branch-numbers Magic branch numbers], for an explanation.
+See section [[cvs: Branching and merging#Magic branch numbers|Magic branch numbers]], for an explanation.
 </p>
 <p>Make sure that no-one has checked out a copy of the
 revision you outdate.  Strange things will happen if he
 starts to edit it and tries to check it back in.  For
 this reason, this option is not a good way to take back
 a bogus commit; commit a new revision undoing the bogus
-change instead (see section [cvs: Branching and merging#Merging-two-revisions Merging differences between any two revisions]).
+change instead (see section [[cvs: Branching and merging#Merging differences between any two revisions|Merging differences between any two revisions]]).
 </p>
 </dd>
 <dt><code>-q</code></dt>
@@ -1018,9 +1018,9 @@ acceptable for <var>state</var>.  A useful set of states is
 stable), and &lsquo;<samp>Rel</samp>&rsquo; (for released).  By default,
 the state of a new revision is set to &lsquo;<samp>Exp</samp>&rsquo; when
 it is created.  The state is visible in the output from
-<var>cvs log</var> (see section [[#log|log&mdash;Print out log information for files]]), and in the
+<var>cvs log</var> (see section [[#log&mdash;Print out log information for files|log&mdash;Print out log information for files]]), and in the
 &lsquo;<samp>$<i></i>Log$</samp>&rsquo; and &lsquo;<samp>$<i></i>State$</samp>&rsquo; keywords
-(see section [cvs: Keyword substitution#Keyword-substitution Keyword substitution]).  Note that <small>CVS</small>
+(see section [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]]).  Note that <small>CVS</small>
 uses the <code>dead</code> state for its own purposes; to
 take a file to or from the <code>dead</code> state use
 commands like <code>cvs remove</code> and <code>cvs add</code>, not
@@ -1032,7 +1032,7 @@ commands like <code>cvs remove</code> and <code>cvs add</code>, not
 contents of the named <var>file</var> into the RCS file,
 deleting the existing text.  The <var>file</var> pathname
 may not begin with &lsquo;<samp>-</samp>&rsquo;.  The descriptive text can be seen in the
-output from &lsquo;<samp>cvs log</samp>&rsquo; (see section [[#log|log&mdash;Print out log information for files]]).
+output from &lsquo;<samp>cvs log</samp>&rsquo; (see section [[#log&mdash;Print out log information for files|log&mdash;Print out log information for files]]).
 There can be no space between &lsquo;<samp>-t</samp>&rsquo; and its argument.
 </p>
 <p>If <var>file</var> is omitted,
@@ -1067,7 +1067,7 @@ omitted, remove the latest lock held by the caller.
 Normally, only the locker of a revision may unlock it;
 somebody else unlocking a revision breaks the lock.
 This causes the original locker to be sent a <code>commit</code>
-notification (see section [cvs: Multiple developers#Getting-Notified Telling CVS to notify you]).
+notification (see section [[cvs: Multiple developers#Telling CVS to notify you|Telling CVS to notify you]]).
 There can be no space between &lsquo;<samp>-u</samp>&rsquo; and its argument.
 </p>
 </dd>
@@ -1092,19 +1092,19 @@ this option has never done anything useful.
 <hr>
 <div id="checkout"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#admin-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#checkout-options| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#admin options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#checkout options| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="checkout_002d_002d_002dCheck-out-sources-for-editing"></div>
 === checkout&mdash;Check out sources for editing ===
@@ -1133,7 +1133,7 @@ symbolic names for some
 collection of source directories and files, or paths to
 directories or files in the repository.  The symbolic
 names are defined in the &lsquo;<samp>modules</samp>&rsquo; file.
-See section [cvs: Reference manual for Administrative files#modules The modules file].
+See section [[cvs: Reference manual for Administrative files#The modules file|The modules file]].
 </p>
 <p>Depending on the modules you specify, <code>checkout</code> may
 recursively create directories and populate them with
@@ -1157,10 +1157,10 @@ area (unless you specify the &lsquo;<samp>-Q</samp>&rsquo; global option).
 </p>
 <p>The files created by <code>checkout</code> are created
 read-write, unless the &lsquo;<samp>-r</samp>&rsquo; option to <small>CVS</small>
-(see section [[#Global-options|Global options]]) is specified, the
+(see section [[#Global options|Global options]]) is specified, the
 <code>CVSREAD</code> environment variable is specified
-(see section [cvs: All environment variables which affect CVS#Environment-variables All environment variables which affect CVS]), or a watch is in
-effect for that file (see section [cvs: Multiple developers#Watches Mechanisms to track who is editing files]).
+(see section [[cvs: All environment variables which affect CVS#All environment variables which affect CVS|All environment variables which affect CVS]]), or a watch is in
+effect for that file (see section [[cvs: Multiple developers#Mechanisms to track who is editing files|Mechanisms to track who is editing files]]).
 </p>
 <p>Note that running <code>checkout</code> on a directory that was already
 built by a prior <code>checkout</code> is also permitted.
@@ -1178,40 +1178,40 @@ forget to change your directory to the top level
 directory.
 </p>
 <p>For the output produced by the <code>checkout</code> command
-see [[#update-output|update output]].
+see [[#update output|update output]].
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#checkout-options| checkout options]]::<nowiki>            checkout options
-</nowiki>&bull;[[#checkout-examples| checkout examples]]::<nowiki>           checkout examples
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#checkout options| checkout options]]::<nowiki>            checkout options
+</nowiki>&bull;[[#checkout examples| checkout examples]]::<nowiki>           checkout examples
 </nowiki></pre>
 <hr>
 <div id="checkout-options"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#checkout| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#checkout| Up ]]|</td>
-<td valign="middle" align="left">|[[#checkout-examples| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#checkout&mdash;Check out sources for editing| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#checkout&mdash;Check out sources for editing| Up ]]|</td>
+<td valign="middle" align="left">|[[#checkout examples| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="checkout-options-1"></div>
 ==== checkout options ====
 
 <p>These standard options are supported by <code>checkout</code>
-(see section [[#Common-options|Common command options]], for a complete description of
+(see section [[#Common command options|Common command options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
 <dt><code>-D <var>date</var></code></dt>
 <dd><p>Use the most recent revision no later than <var>date</var>.
 This option is sticky, and implies &lsquo;<samp>-P</samp>&rsquo;.  See
-[cvs: Revisions#Sticky-tags Sticky tags], for more information on sticky tags/dates.
+[[cvs: Revisions#Sticky tags|Sticky tags]], for more information on sticky tags/dates.
 </p>
 </dd>
 <dt><code>-f</code></dt>
@@ -1223,11 +1223,11 @@ the file).
 </dd>
 <dt><code>-k <var>kflag</var></code></dt>
 <dd><p>Process keywords according to <var>kflag</var>.  See
-[cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+[[cvs: Keyword substitution#Keyword substitution|Keyword substitution]].
 This option is sticky; future updates of
 this file in this working directory will use the same
 <var>kflag</var>.  The <code>status</code> command can be viewed
-to see the sticky options.  See [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands], for
+to see the sticky options.  See [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Quick reference to CVS commands]], for
 more information on the <code>status</code> command.
 </p>
 </dd>
@@ -1238,11 +1238,11 @@ more information on the <code>status</code> command.
 <dt><code>-n</code></dt>
 <dd><p>Do not run any checkout program (as specified
 with the &lsquo;<samp>-o</samp>&rsquo; option in the modules file;
-see section [cvs: Reference manual for Administrative files#modules The modules file]).
+see section [[cvs: Reference manual for Administrative files#The modules file|The modules file]]).
 </p>
 </dd>
 <dt><code>-P</code></dt>
-<dd><p>Prune empty directories.  See [cvs: Adding, removing, and renaming files and directories#Moving-directories Moving and renaming directories].
+<dd><p>Prune empty directories.  See [[cvs: Adding, removing, and renaming files and directories#Moving and renaming directories|Moving and renaming directories]].
 </p>
 </dd>
 <dt><code>-p</code></dt>
@@ -1255,7 +1255,7 @@ see section [cvs: Reference manual for Administrative files#modules The modules 
 </dd>
 <dt><code>-r <var>tag</var></code></dt>
 <dd><p>Use revision <var>tag</var>.  This option is sticky, and implies &lsquo;<samp>-P</samp>&rsquo;.
-See [cvs: Revisions#Sticky-tags Sticky tags], for more information on sticky tags/dates.
+See [[cvs: Revisions#Sticky tags|Sticky tags]], for more information on sticky tags/dates.
 </p></dd>
 </dl>
 
@@ -1265,7 +1265,7 @@ options with <code>checkout</code>:
 <dl compact="compact">
 <dt><code>-A</code></dt>
 <dd><p>Reset any sticky tags, dates, or &lsquo;<samp>-k</samp>&rsquo; options.
-See [cvs: Revisions#Sticky-tags Sticky tags], for more information on sticky tags/dates.
+See [[cvs: Revisions#Sticky tags|Sticky tags]], for more information on sticky tags/dates.
 </p>
 </dd>
 <dt><code>-c</code></dt>
@@ -1325,7 +1325,7 @@ date.  An optional date is specified by adding a colon
 (:) to the tag:
 &lsquo;<samp>-j<var>Symbolic_Tag</var>:<var>Date_Specifier</var></samp>&rsquo;.
 </p>
-<p>See section [cvs: Branching and merging#Branching-and-merging Branching and merging].
+<p>See section [[cvs: Branching and merging#Branching and merging|Branching and merging]].
 </p>
 </dd>
 <dt><code>-N</code></dt>
@@ -1338,7 +1338,7 @@ discussion.
 </dd>
 <dt><code>-s</code></dt>
 <dd><p>Like &lsquo;<samp>-c</samp>&rsquo;, but include the status of all modules,
-and sort it by the status string.  See section [cvs: Reference manual for Administrative files#modules The modules file], for
+and sort it by the status string.  See section [[cvs: Reference manual for Administrative files#The modules file|The modules file]], for
 info about the &lsquo;<samp>-s</samp>&rsquo; option that is used inside the
 modules file to set the module status.
 </p></dd>
@@ -1347,19 +1347,19 @@ modules file to set the module status.
 <hr>
 <div id="checkout-examples"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#checkout-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#checkout| Up ]]|</td>
-<td valign="middle" align="left">|[[#commit| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#checkout options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#checkout&mdash;Check out sources for editing| Up ]]|</td>
+<td valign="middle" align="left">|[[#commit&mdash;Check files into the repository| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="checkout-examples-1"></div>
 ==== checkout examples ====
@@ -1378,19 +1378,19 @@ ago:
 <hr>
 <div id="commit"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#checkout-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#commit-options| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#checkout examples| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#commit options| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="commit_002d_002d_002dCheck-files-into-the-repository"></div>
 === commit&mdash;Check files into the repository ===
@@ -1426,47 +1426,47 @@ current directory only.
 to date with the current revisions in the source
 repository; it will notify you, and exit without
 committing, if any of the specified files must be made
-current first with <code>update</code> (see section [[#update|update&mdash;Bring work tree in sync with repository]]).
+current first with <code>update</code> (see section [[#update&mdash;Bring work tree in sync with repository|update&mdash;Bring work tree in sync with repository]]).
 <code>commit</code> does not call the <code>update</code> command
 for you, but rather leaves that for you to do when the
 time is right.
 </p>
 <p>When all is well, an editor is invoked to allow you to
 enter a log message that will be written to one or more
-logging programs (see section [cvs: Reference manual for Administrative files#modules The modules file], and see section [cvs: Reference manual for Administrative files#loginfo Loginfo])
+logging programs (see section [[cvs: Reference manual for Administrative files#The modules file|The modules file]], and see section [[cvs: Reference manual for Administrative files#Loginfo|Loginfo]])
 and placed in the <small>RCS</small> file inside the
 repository.  This log message can be retrieved with the
-<code>log</code> command; see [[#log|log&mdash;Print out log information for files]].  You can specify the
+<code>log</code> command; see [[#log&mdash;Print out log information for files|log&mdash;Print out log information for files]].  You can specify the
 log message on the command line with the &lsquo;<samp>-m
 <var>message</var></samp>&rsquo; option, and thus avoid the editor invocation,
 or use the &lsquo;<samp>-F <var>file</var></samp>&rsquo; option to specify
 that the argument file contains the log message.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#commit-options| commit options]]::<nowiki>              commit options
-</nowiki>&bull;[[#commit-examples| commit examples]]::<nowiki>             commit examples
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#commit options| commit options]]::<nowiki>              commit options
+</nowiki>&bull;[[#commit examples| commit examples]]::<nowiki>             commit examples
 </nowiki></pre>
 <hr>
 <div id="commit-options"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit| Up ]]|</td>
-<td valign="middle" align="left">|[[#commit-examples| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit&mdash;Check files into the repository| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit&mdash;Check files into the repository| Up ]]|</td>
+<td valign="middle" align="left">|[[#commit examples| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="commit-options-1"></div>
 ==== commit options ====
 
 <p>These standard options are supported by <code>commit</code>
-(see section [[#Common-options|Common command options]], for a complete description of
+(see section [[#Common command options|Common command options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
@@ -1482,7 +1482,7 @@ them):
 <dd><p>Commit to <var>revision</var>.  <var>revision</var> must be
 either a branch, or a revision on the main trunk that
 is higher than any existing revision number
-(see section [cvs: Revisions#Assigning-revisions Assigning revisions]).  You
+(see section [[cvs: Revisions#Assigning revisions|Assigning revisions]]).  You
 cannot commit to a specific revision on a branch.
 </p></dd>
 </dl>
@@ -1497,7 +1497,7 @@ of invoking an editor.
 </dd>
 <dt><code>-f</code></dt>
 <dd><p>Note that this is not the standard behavior of
-the &lsquo;<samp>-f</samp>&rsquo; option as defined in [[#Common-options|Common command options]].
+the &lsquo;<samp>-f</samp>&rsquo; option as defined in [[#Common command options|Common command options]].
 </p>
 <p>Force <small>CVS</small> to commit a new revision even if you haven&rsquo;t
 made any changes to the file.  If the current revision
@@ -1523,19 +1523,19 @@ invoking an editor.
 <hr>
 <div id="commit-examples"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit| Up ]]|</td>
-<td valign="middle" align="left">|[[#Committing-to-a-branch| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit&mdash;Check files into the repository| Up ]]|</td>
+<td valign="middle" align="left">|[[#Committing to a branch| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="commit-examples-1"></div>
 ==== commit examples ====
@@ -1544,19 +1544,19 @@ invoking an editor.
 <hr>
 <div id="Committing-to-a-branch"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-examples| Up ]]|</td>
-<td valign="middle" align="left">|[[#Creating-the-branch-after-editing| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit examples| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit examples| Up ]]|</td>
+<td valign="middle" align="left">|[[#Creating the branch after editing| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 ===== Committing to a branch =====
 
@@ -1564,7 +1564,7 @@ invoking an editor.
 even number of dots) with the &lsquo;<samp>-r</samp>&rsquo; option.  To
 create a branch revision, use the &lsquo;<samp>-b</samp>&rsquo; option
 of the <code>rtag</code> or <code>tag</code> commands
-(see section [cvs: Branching and merging#Branching-and-merging Branching and merging]).  Then, either <code>checkout</code> or
+(see section [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  Then, either <code>checkout</code> or
 <code>update</code> can be used to base your sources on the
 newly created branch.  From that point on, all
 <code>commit</code> changes made within these working sources
@@ -1587,19 +1587,19 @@ sticky.
 <hr>
 <div id="Creating-the-branch-after-editing"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Committing-to-a-branch| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#commit-examples| Up ]]|</td>
-<td valign="middle" align="left">|[[#diff| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Committing to a branch| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#commit examples| Up ]]|</td>
+<td valign="middle" align="left">|[[#diff&mdash;Show differences between revisions| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 ===== Creating the branch after editing =====
 
@@ -1646,19 +1646,19 @@ would simply do
 <hr>
 <div id="diff"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Creating-the-branch-after-editing| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#diff-options| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Creating the branch after editing| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#diff options| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="diff_002d_002d_002dShow-differences-between-revisions"></div>
 === diff&mdash;Show differences between revisions ===
@@ -1683,33 +1683,33 @@ compared.  If any directories are given, all files
 under them will be compared.
 </p>
 <p>The exit status for diff is different than for other
-<small>CVS</small> commands; for details [[#Exit-status|CVS&rsquo;s exit status]].
+<small>CVS</small> commands; for details [[#CVS&rsquo;s exit status|CVS&rsquo;s exit status]].
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#diff-options| diff options]]::<nowiki>                diff options
-</nowiki>&bull;[[#diff-examples| diff examples]]::<nowiki>               diff examples
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#diff options| diff options]]::<nowiki>                diff options
+</nowiki>&bull;[[#diff examples| diff examples]]::<nowiki>               diff examples
 </nowiki></pre>
 <hr>
 <div id="diff-options"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff| Up ]]|</td>
-<td valign="middle" align="left">|[[#Line-group-formats| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#diff&mdash;Show differences between revisions| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#diff&mdash;Show differences between revisions| Up ]]|</td>
+<td valign="middle" align="left">|[[#Line group formats| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="diff-options-1"></div>
 ==== diff options ====
 
 <p>These standard options are supported by <code>diff</code>
-(see section [[#Common-options|Common command options]], for a complete description of
+(see section [[#Common command options|Common command options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
@@ -1720,7 +1720,7 @@ See &lsquo;<samp>-r</samp>&rsquo; for how this affects the comparison.
 </dd>
 <dt><code>-k <var>kflag</var></code></dt>
 <dd><p>Process keywords according to <var>kflag</var>.  See
-[cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+[[cvs: Keyword substitution#Keyword substitution|Keyword substitution]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
@@ -1798,7 +1798,7 @@ context.
 </dd>
 <dt>&lsquo;<samp>--changed-group-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a line group containing differing lines from
-both files in if-then-else format.  See section [[#Line-group-formats|Line group formats]].
+both files in if-then-else format.  See section [[#Line group formats|Line group formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>-d</samp>&rsquo;</dt>
@@ -1897,7 +1897,7 @@ and unified format headers.
 </dd>
 <dt>&lsquo;<samp>--line-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output all input lines in if-then-else format.
-See section [[#Line-formats|Line formats]].
+See section [[#Line formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--minimal</samp>&rsquo;</dt>
@@ -1918,22 +1918,22 @@ treat it as present but empty in the other directory.
 </dd>
 <dt>&lsquo;<samp>--new-group-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a group of lines taken from just the second
-file in if-then-else format.  See section [[#Line-group-formats|Line group formats]].
+file in if-then-else format.  See section [[#Line group formats|Line group formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--new-line-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a line taken from just the second file in
-if-then-else format.  See section [[#Line-formats|Line formats]].
+if-then-else format.  See section [[#Line formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--old-group-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a group of lines taken from just the first
-file in if-then-else format.  See section [[#Line-group-formats|Line group formats]].
+file in if-then-else format.  See section [[#Line group formats|Line group formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--old-line-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a line taken from just the first file in
-if-then-else format.  See section [[#Line-formats|Line formats]].
+if-then-else format.  See section [[#Line formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>-p</samp>&rsquo;</dt>
@@ -1994,12 +1994,12 @@ do not appear to be text.
 </dd>
 <dt>&lsquo;<samp>--unchanged-group-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a group of common lines taken from both files
-in if-then-else format.  See section [[#Line-group-formats|Line group formats]].
+in if-then-else format.  See section [[#Line group formats|Line group formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--unchanged-line-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a line common to both files in if-then-else
-format.  See section [[#Line-formats|Line formats]].
+format.  See section [[#Line formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>-U <var>lines</var></samp>&rsquo;</dt>
@@ -2024,25 +2024,25 @@ context.
 </p></dd>
 </dl>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Line-group-formats| Line group formats]]::<nowiki>          Line group formats
-</nowiki>&bull;[[#Line-formats| Line formats]]::<nowiki>                Line formats
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Line group formats| Line group formats]]::<nowiki>          Line group formats
+</nowiki>&bull;[[#Line formats| Line formats]]::<nowiki>                Line formats
 </nowiki></pre>
 <hr>
 <div id="Line-group-formats"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff-options| Up ]]|</td>
-<td valign="middle" align="left">|[[#Line-formats| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#diff options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#diff options| Up ]]|</td>
+<td valign="middle" align="left">|[[#Line formats| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Line-group-formats-1"></div>
 ===== Line group formats =====
@@ -2140,7 +2140,7 @@ following forms.
 <dl compact="compact">
 <dt>&lsquo;<samp>%&lt;</samp>&rsquo;</dt>
 <dd><p>stands for the lines from the first file, including the trailing newline.
-Each line is formatted according to the old line format (see section [[#Line-formats|Line formats]]).
+Each line is formatted according to the old line format (see section [[#Line formats|Line formats]]).
 </p>
 </dd>
 <dt>&lsquo;<samp>%&gt;</samp>&rsquo;</dt>
@@ -2232,19 +2232,19 @@ otherwise.
 <hr>
 <div id="Line-formats"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Line-group-formats| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff-options| Up ]]|</td>
-<td valign="middle" align="left">|[[#diff-examples| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Line group formats| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#diff options| Up ]]|</td>
+<td valign="middle" align="left">|[[#diff examples| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Line-formats-1"></div>
 ===== Line formats =====
@@ -2325,7 +2325,7 @@ For example, &lsquo;<samp>%c'\0'</samp>&rsquo; stands for a null character.
 <dd><p>where <var>F</var> is a <code>printf</code> conversion specification,
 stands for the line number formatted with <var>F</var>.
 For example, &lsquo;<samp>%.5dn</samp>&rsquo; prints the line number using the
-<code>printf</code> format <code>&quot;%.5d&quot;</code>.  See section [[#Line-group-formats|Line group formats]], for
+<code>printf</code> format <code>&quot;%.5d&quot;</code>.  See section [[#Line group formats|Line group formats]], for
 more about printf conversion specifications.
 </p>
 </dd>
@@ -2363,19 +2363,19 @@ to get fine control over <code>diff</code>&rsquo;s output.
 <hr>
 <div id="diff-examples"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Line-formats| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff| Up ]]|</td>
-<td valign="middle" align="left">|[[#export| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Line formats| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#diff&mdash;Show differences between revisions| Up ]]|</td>
+<td valign="middle" align="left">|[[#export&mdash;Export sources from CVS, similar to checkout| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="diff-examples-1"></div>
 ==== diff examples ====
@@ -2413,19 +2413,19 @@ not yet been committed will be printed.
 <hr>
 <div id="export"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#diff-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#export-options| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#diff examples| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#export options| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="export_002d_002d_002dExport-sources-from-CVS_002c-similar-to-checkout"></div>
 === export&mdash;Export sources from CVS, similar to checkout ===
@@ -2461,30 +2461,30 @@ ident(1)) which looks for keyword strings.  If
 you want to be able to use <code>ident</code> you must not
 use &lsquo;<samp>-kv</samp>&rsquo;.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#export-options| export options]]::<nowiki>              export options
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#export options| export options]]::<nowiki>              export options
 </nowiki></pre>
 <hr>
 <div id="export-options"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#export| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#export| Up ]]|</td>
-<td valign="middle" align="left">|[[#history| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#export&mdash;Export sources from CVS, similar to checkout| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#export&mdash;Export sources from CVS, similar to checkout| Up ]]|</td>
+<td valign="middle" align="left">|[[#history&mdash;Show status of files and users| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="export-options-1"></div>
 ==== export options ====
 
 <p>These standard options are supported by <code>export</code>
-(see section [[#Common-options|Common command options]], for a complete description of
+(see section [[#Common command options|Common command options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
@@ -2521,17 +2521,17 @@ recent revision (instead of ignoring the file).
 <dt><code>-d <var>dir</var></code></dt>
 <dd><p>Create a directory called <var>dir</var> for the working
 files, instead of using the module name.
-See section [[#checkout-options|checkout options]], for complete details on how
+See section [[#checkout options|checkout options]], for complete details on how
 <small>CVS</small> handles this flag.
 </p>
 </dd>
 <dt><code>-k <var>subst</var></code></dt>
-<dd><p>Set keyword expansion mode (see section [cvs: Keyword substitution#Substitution-modes Substitution modes]).
+<dd><p>Set keyword expansion mode (see section [[cvs: Keyword substitution#Substitution modes|Substitution modes]]).
 </p>
 </dd>
 <dt><code>-N</code></dt>
 <dd><p>Only useful together with &lsquo;<samp>-d <var>dir</var></samp>&rsquo;.
-See section [[#checkout-options|checkout options]], for complete details on how
+See section [[#checkout options|checkout options]], for complete details on how
 <small>CVS</small> handles this flag.
 </p></dd>
 </dl>
@@ -2540,19 +2540,19 @@ See section [[#checkout-options|checkout options]], for complete details on how
 <hr>
 <div id="history"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#export-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#history-options| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#export options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#history options| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="history_002d_002d_002dShow-status-of-files-and-users"></div>
 === history&mdash;Show status of files and users ===
@@ -2578,26 +2578,26 @@ various formats.
 </p>
 <p><strong>Note: <code>history</code> uses &lsquo;<samp>-f</samp>&rsquo;, &lsquo;<samp>-l</samp>&rsquo;,
 &lsquo;<samp>-n</samp>&rsquo;, and &lsquo;<samp>-p</samp>&rsquo; in ways that conflict with the
-normal use inside <small>CVS</small> (see section [[#Common-options|Common command options]]).</strong>
+normal use inside <small>CVS</small> (see section [[#Common command options|Common command options]]).</strong>
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#history-options| history options]]::<nowiki>             history options
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#history options| history options]]::<nowiki>             history options
 </nowiki></pre>
 <hr>
 <div id="history-options"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#history| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#history| Up ]]|</td>
-<td valign="middle" align="left">|[[#import| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#history&mdash;Show status of files and users| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#history&mdash;Show status of files and users| Up ]]|</td>
+<td valign="middle" align="left">|[[#import&mdash;Import sources into CVS, using vendor branches| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="history-options-1"></div>
 ==== history options ====
@@ -2771,19 +2771,19 @@ time zone instead of UTC.
 <hr>
 <div id="import"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#history-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#import-options| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#history options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#import options| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="import_002d_002d_002dImport-sources-into-CVS_002c-using-vendor-branches"></div>
 === import&mdash;Import sources into CVS, using vendor branches ===
@@ -2804,7 +2804,7 @@ distribution from an outside source (e.g., a source
 vendor) into your source repository directory.  You can
 use this command both for initial creation of a
 repository, and for wholesale updates to the module
-from the outside source.  See section [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources], for
+from the outside source.  See section [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking third-party sources]], for
 a discussion on this subject.
 </p>
 <p>The <var>repository</var> argument gives a directory name
@@ -2820,15 +2820,15 @@ in the two branches of development; use &lsquo;<samp>checkout
 you to do.
 </p>
 <p>If <small>CVS</small> decides a file should be ignored
-(see section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore]), it does not import it and prints
-&lsquo;<samp>I </samp>&rsquo; followed by the filename (see section [[#import-output|import output]], for a
+(see section [[cvs: Reference manual for Administrative files#Ignoring files via cvsignore|Ignoring files via cvsignore]]), it does not import it and prints
+&lsquo;<samp>I </samp>&rsquo; followed by the filename (see section [[#import output|import output]], for a
 complete description of the output).
 </p>
 <p>If the file &lsquo;<tt>$CVSROOT/CVSROOT/cvswrappers</tt>&rsquo; exists,
 any file whose names match the specifications in that
 file will be treated as packages and the appropriate
 filtering will be performed on the file/directory
-before being imported.  See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
+before being imported.  See section [[cvs: Reference manual for Administrative files#The cvswrappers file|The cvswrappers file]].
 </p>
 <p>The outside source is saved in a first-level
 branch, by default 1.1.1.  Updates are leaves of this
@@ -2849,34 +2849,34 @@ directory in which you invoke it.  In particular, it
 does not set up that directory as a <small>CVS</small> working
 directory; if you want to work with the sources import
 them first and then check them out into a different
-directory (see section [cvs: Overview#Getting-the-source Getting the source]).
+directory (see section [[cvs: Overview#Getting the source|Getting the source]]).
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#import-options| import options]]::<nowiki>              import options
-</nowiki>&bull;[[#import-output| import output]]::<nowiki>               import output
-</nowiki>&bull;[[#import-examples| import examples]]::<nowiki>             import examples
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#import options| import options]]::<nowiki>              import options
+</nowiki>&bull;[[#import output| import output]]::<nowiki>               import output
+</nowiki>&bull;[[#import examples| import examples]]::<nowiki>             import examples
 </nowiki></pre>
 <hr>
 <div id="import-options"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#import| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#import| Up ]]|</td>
-<td valign="middle" align="left">|[[#import-output| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#import&mdash;Import sources into CVS, using vendor branches| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#import&mdash;Import sources into CVS, using vendor branches| Up ]]|</td>
+<td valign="middle" align="left">|[[#import output| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="import-options-1"></div>
 ==== import options ====
 
 <p>This standard option is supported by <code>import</code>
-(see section [[#Common-options|Common command options]], for a complete description):
+(see section [[#Common command options|Common command options]], for a complete description):
 </p>
 <dl compact="compact">
 <dt><code>-m <var>message</var></code></dt>
@@ -2889,14 +2889,14 @@ invoking an editor.
 </p>
 <dl compact="compact">
 <dt><code>-b <var>branch</var></code></dt>
-<dd><p>See [cvs: Tracking third-party sources#Multiple-vendor-branches Multiple vendor branches].
+<dd><p>See [[cvs: Tracking third-party sources#Multiple vendor branches|Multiple vendor branches]].
 </p>
 </dd>
 <dt><code>-k <var>subst</var></code></dt>
 <dd><p>Indicate the keyword expansion mode desired.  This
 setting will apply to all files created during the
 import, but not to any files that previously existed in
-the repository.  See [cvs: Keyword substitution#Substitution-modes Substitution modes], for a
+the repository.  See [[cvs: Keyword substitution#Substitution modes|Substitution modes]], for a
 list of valid &lsquo;<samp>-k</samp>&rsquo; settings.
 </p>
 </dd>
@@ -2908,7 +2908,7 @@ default), specify &lsquo;-I !&rsquo;.
 </p>
 <p><var>name</var> can be a file name pattern of the same type
 that you can specify in the &lsquo;<tt>.cvsignore</tt>&rsquo; file.
-See section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore].
+See section [[cvs: Reference manual for Administrative files#Ignoring files via cvsignore|Ignoring files via cvsignore]].
 </p>
 </dd>
 <dt><code>-W <var>spec</var></code></dt>
@@ -2917,26 +2917,26 @@ import.  You can use this option repeatedly.
 </p>
 <p><var>spec</var> can be a file name pattern of the same type
 that you can specify in the &lsquo;<tt>.cvswrappers</tt>&rsquo;
-file. See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
+file. See section [[cvs: Reference manual for Administrative files#The cvswrappers file|The cvswrappers file]].
 </p></dd>
 </dl>
 
 <hr>
 <div id="import-output"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#import-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#import| Up ]]|</td>
-<td valign="middle" align="left">|[[#import-examples| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#import options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#import&mdash;Import sources into CVS, using vendor branches| Up ]]|</td>
+<td valign="middle" align="left">|[[#import examples| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="import-output-1"></div>
 ==== import output ====
@@ -2960,7 +2960,7 @@ you will have to merge the changes.
 </p>
 </dd>
 <dt><code>I <var>file</var></code></dt>
-<dd><p>The file is being ignored (see section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore]).
+<dd><p>The file is being ignored (see section [[cvs: Reference manual for Administrative files#Ignoring files via cvsignore|Ignoring files via cvsignore]]).
 </p>
 <div id="index-Symbolic-link_002c-importing"></div>
 <div id="index-Link_002c-symbolic_002c-importing"></div>
@@ -2972,48 +2972,48 @@ be changed, but if there is a consensus on what it
 should be changed to, it is not apparent.
 (Various options in the &lsquo;<tt>modules</tt>&rsquo; file can be used
 to recreate symbolic links on checkout, update, etc.;
-see section [cvs: Reference manual for Administrative files#modules The modules file].)
+see section [[cvs: Reference manual for Administrative files#The modules file|The modules file]].)
 </p></dd>
 </dl>
 
 <hr>
 <div id="import-examples"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#import-output| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#import| Up ]]|</td>
-<td valign="middle" align="left">|[[#log| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#import output| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#import&mdash;Import sources into CVS, using vendor branches| Up ]]|</td>
+<td valign="middle" align="left">|[[#log&mdash;Print out log information for files| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="import-examples-1"></div>
 ==== import examples ====
 
-<p>See [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources], and [cvs: Starting a project with CVS#From-files Creating a directory tree from a number of files].
+<p>See [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking third-party sources]], and [[cvs: Starting a project with CVS#Creating a directory tree from a number of files|Creating a directory tree from a number of files]].
 </p>
 <hr>
 <div id="log"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#import-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#log-options| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#import examples| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#log options| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="log_002d_002d_002dPrint-out-log-information-for-files"></div>
 === log&mdash;Print out log information for files ===
@@ -3047,27 +3047,27 @@ Coordinated Universal Time (UTC).  (Other parts of
 <small>CVS</small> print times in the local timezone).
 </p>
 <p><strong>Note: <code>log</code> uses &lsquo;<samp>-R</samp>&rsquo; in a way that conflicts
-with the normal use inside <small>CVS</small> (see section [[#Common-options|Common command options]]).</strong>
+with the normal use inside <small>CVS</small> (see section [[#Common command options|Common command options]]).</strong>
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#log-options| log options]]::<nowiki>                 log options
-</nowiki>&bull;[[#log-examples| log examples]]::<nowiki>                log examples
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#log options| log options]]::<nowiki>                 log options
+</nowiki>&bull;[[#log examples| log examples]]::<nowiki>                log examples
 </nowiki></pre>
 <hr>
 <div id="log-options"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#log| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#log| Up ]]|</td>
-<td valign="middle" align="left">|[[#log-examples| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#log&mdash;Print out log information for files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#log&mdash;Print out log information for files| Up ]]|</td>
+<td valign="middle" align="left">|[[#log examples| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="log-options-1"></div>
 ==== log options ====
@@ -3086,7 +3086,7 @@ branch, normally the highest branch on the trunk.
 date/time in the range given by the
 semicolon-separated list of dates.  The date formats
 accepted are those accepted by the &lsquo;<samp>-D</samp>&rsquo; option to
-many other <small>CVS</small> commands (see section [[#Common-options|Common command options]]).
+many other <small>CVS</small> commands (see section [[#Common command options|Common command options]]).
 Dates can be combined into ranges as follows:
 </p>
 <dl compact="compact">
@@ -3228,19 +3228,19 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 <hr>
 <div id="log-examples"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#log-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#log| Up ]]|</td>
-<td valign="middle" align="left">|[[#rdiff| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#log options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#log&mdash;Print out log information for files| Up ]]|</td>
+<td valign="middle" align="left">|[[#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="log-examples-1"></div>
 ==== log examples ====
@@ -3250,19 +3250,19 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 <hr>
 <div id="rdiff"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#log-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#rdiff-options| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#log examples| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#rdiff options| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="rdiff_002d_002d_002d_0027patch_0027-format-diffs-between-releases"></div>
 === rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases ===
@@ -3300,31 +3300,31 @@ specify the &lsquo;<samp>-p</samp>&rsquo; option to the <code>patch</code> comma
 patching the old sources, so that <code>patch</code> is able to find
 the files that are located in other directories.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#rdiff-options| rdiff options]]::<nowiki>               rdiff options
-</nowiki>&bull;[[#rdiff-examples| rdiff examples]]::<nowiki>              rdiff examples
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#rdiff options| rdiff options]]::<nowiki>               rdiff options
+</nowiki>&bull;[[#rdiff examples| rdiff examples]]::<nowiki>              rdiff examples
 </nowiki></pre>
 <hr>
 <div id="rdiff-options"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#rdiff| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#rdiff| Up ]]|</td>
-<td valign="middle" align="left">|[[#rdiff-examples| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases| Up ]]|</td>
+<td valign="middle" align="left">|[[#rdiff examples| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="rdiff-options-1"></div>
 ==== rdiff options ====
 
 <p>These standard options are supported by <code>rdiff</code>
-(see section [[#Common-options|Common command options]], for a complete description of
+(see section [[#Common command options|Common command options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
@@ -3392,19 +3392,19 @@ way that <small>RCS</small> version 5 does.
 <hr>
 <div id="rdiff-examples"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#rdiff-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#rdiff| Up ]]|</td>
-<td valign="middle" align="left">|[[#release| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#rdiff options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases| Up ]]|</td>
+<td valign="middle" align="left">|[[#release&mdash;Indicate that a Module is no longer in use| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="rdiff-examples-1"></div>
 ==== rdiff examples ====
@@ -3434,19 +3434,19 @@ File bar.h,v changed from revision 1.29.2.1 to 1.2
 <hr>
 <div id="release"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#rdiff-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#release-options| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#rdiff examples| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#release options| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="release_002d_002d_002dIndicate-that-a-Module-is-no-longer-in-use"></div>
 === release&mdash;Indicate that a Module is no longer in use ===
@@ -3467,7 +3467,7 @@ isn&rsquo;t strictly necessary to use this command.  You can
 always simply delete your working directory, if you
 like; but you risk losing changes you may have
 forgotten, and you leave no trace in the <small>CVS</small> history
-file (see section [cvs: Reference manual for Administrative files#history-file The history file]) that you&rsquo;ve abandoned your
+file (see section [[cvs: Reference manual for Administrative files#The history file|The history file]]) that you&rsquo;ve abandoned your
 checkout.
 </p>
 <p>Use &lsquo;<samp>cvs release</samp>&rsquo; to avoid these problems.  This
@@ -3482,26 +3482,26 @@ leaves a record of its execution (attesting to your
 intentionally abandoning your checkout) in the <small>CVS</small>
 history log.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#release-options| release options]]::<nowiki>             release options
-</nowiki>&bull;[[#release-output| release output]]::<nowiki>              release output
-</nowiki>&bull;[[#release-examples| release examples]]::<nowiki>            release examples
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#release options| release options]]::<nowiki>             release options
+</nowiki>&bull;[[#release output| release output]]::<nowiki>              release output
+</nowiki>&bull;[[#release examples| release examples]]::<nowiki>            release examples
 </nowiki></pre>
 <hr>
 <div id="release-options"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#release| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#release| Up ]]|</td>
-<td valign="middle" align="left">|[[#release-output| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#release&mdash;Indicate that a Module is no longer in use| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#release&mdash;Indicate that a Module is no longer in use| Up ]]|</td>
+<td valign="middle" align="left">|[[#release output| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="release-options-1"></div>
 ==== release options ====
@@ -3519,7 +3519,7 @@ all directories and files recursively.  This
 has the very serious side-effect that any directory
 that you have created inside your checked-out sources,
 and not added to the repository (using the <code>add</code>
-command; see section [cvs: Adding, removing, and renaming files and directories#Adding-files Adding files to a directory]) will be silently deleted&mdash;even
+command; see section [[cvs: Adding, removing, and renaming files and directories#Adding files to a directory|Adding files to a directory]]) will be silently deleted&mdash;even
 if it is non-empty!</strong>
 </p></dd>
 </dl>
@@ -3527,19 +3527,19 @@ if it is non-empty!</strong>
 <hr>
 <div id="release-output"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#release-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#release| Up ]]|</td>
-<td valign="middle" align="left">|[[#release-examples| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#release options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#release&mdash;Indicate that a Module is no longer in use| Up ]]|</td>
+<td valign="middle" align="left">|[[#release examples| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="release-output-1"></div>
 ==== release output ====
@@ -3567,7 +3567,7 @@ this file will be lost.
 <dd><p>The file has been removed from your private copy of the
 sources, but has not yet been removed from the
 repository, since you have not yet committed the
-removal.  See section [[#commit|commit&mdash;Check files into the repository]].
+removal.  See section [[#commit&mdash;Check files into the repository|commit&mdash;Check files into the repository]].
 </p>
 </dd>
 <dt><code>M <var>file</var></code></dt>
@@ -3580,7 +3580,7 @@ might also be a newer revision inside the repository.
 correspond to anything in the source repository, and is
 not in the list of files for <small>CVS</small> to ignore (see the
 description of the &lsquo;<samp>-I</samp>&rsquo; option, and
-see section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore]).  If you remove your working
+see section [[cvs: Reference manual for Administrative files#Ignoring files via cvsignore|Ignoring files via cvsignore]]).  If you remove your working
 sources, this file will be lost.
 </p></dd>
 </dl>
@@ -3588,19 +3588,19 @@ sources, this file will be lost.
 <hr>
 <div id="release-examples"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#release-output| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#release| Up ]]|</td>
-<td valign="middle" align="left">|[[#update| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#release output| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#release&mdash;Indicate that a Module is no longer in use| Up ]]|</td>
+<td valign="middle" align="left">|[[#update&mdash;Bring work tree in sync with repository| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="release-examples-1"></div>
 ==== release examples ====
@@ -3619,19 +3619,19 @@ $
 <hr>
 <div id="update"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#release-examples| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#CVS-commands| Up ]]|</td>
-<td valign="middle" align="left">|[[#update-options| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#release examples| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Guide to CVS commands| Up ]]|</td>
+<td valign="middle" align="left">|[[#update options| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="update_002d_002d_002dBring-work-tree-in-sync-with-repository"></div>
 === update&mdash;Bring work tree in sync with repository ===
@@ -3659,38 +3659,38 @@ between the local copy of files and their base revisions
 into any destination revisions specified with <code>-r</code>,
 <code>-D</code>, or <code>-A</code>.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#update-options| update options]]::<nowiki>              update options
-</nowiki>&bull;[[#update-output| update output]]::<nowiki>               update output
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#update options| update options]]::<nowiki>              update options
+</nowiki>&bull;[[#update output| update output]]::<nowiki>               update output
 </nowiki></pre>
 <hr>
 <div id="update-options"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#update| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#update| Up ]]|</td>
-<td valign="middle" align="left">|[[#update-output| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#update&mdash;Bring work tree in sync with repository| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#update&mdash;Bring work tree in sync with repository| Up ]]|</td>
+<td valign="middle" align="left">|[[#update output| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="update-options-1"></div>
 ==== update options ====
 
 <p>These standard options are available with <code>update</code>
-(see section [[#Common-options|Common command options]], for a complete description of
+(see section [[#Common command options|Common command options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
 <dt><code>-D date</code></dt>
 <dd><p>Use the most recent revision no later than <var>date</var>.
 This option is sticky, and implies &lsquo;<samp>-P</samp>&rsquo;.
-See [cvs: Revisions#Sticky-tags Sticky tags], for more information on sticky tags/dates.
+See [[cvs: Revisions#Sticky tags|Sticky tags]], for more information on sticky tags/dates.
 </p>
 </dd>
 <dt><code>-f</code></dt>
@@ -3702,20 +3702,20 @@ the file).
 </dd>
 <dt><code>-k <var>kflag</var></code></dt>
 <dd><p>Process keywords according to <var>kflag</var>.  See
-[cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+[[cvs: Keyword substitution#Keyword substitution|Keyword substitution]].
 This option is sticky; future updates of
 this file in this working directory will use the same
 <var>kflag</var>.  The <code>status</code> command can be viewed
-to see the sticky options.  See [cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands], for
+to see the sticky options.  See [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Quick reference to CVS commands]], for
 more information on the <code>status</code> command.
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See section [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See section [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-P</code></dt>
-<dd><p>Prune empty directories.  See [cvs: Adding, removing, and renaming files and directories#Moving-directories Moving and renaming directories].
+<dd><p>Prune empty directories.  See [[cvs: Adding, removing, and renaming files and directories#Moving and renaming directories|Moving and renaming directories]].
 </p>
 </dd>
 <dt><code>-p</code></dt>
@@ -3723,13 +3723,13 @@ more information on the <code>status</code> command.
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Update directories recursively (default).  See section [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Update directories recursively (default).  See section [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-r rev</code></dt>
 <dd><p>Retrieve revision/tag <var>rev</var>.  This option is sticky,
 and implies &lsquo;<samp>-P</samp>&rsquo;.
-See [cvs: Revisions#Sticky-tags Sticky tags], for more information on sticky tags/dates.
+See [[cvs: Revisions#Sticky tags|Sticky tags]], for more information on sticky tags/dates.
 </p></dd>
 </dl>
 
@@ -3739,7 +3739,7 @@ See [cvs: Revisions#Sticky-tags Sticky tags], for more information on sticky tag
 <dl compact="compact">
 <dt><code>-A</code></dt>
 <dd><p>Reset any sticky tags, dates, or &lsquo;<samp>-k</samp>&rsquo; options.
-See [cvs: Revisions#Sticky-tags Sticky tags], for more information on sticky tags/dates.
+See [[cvs: Revisions#Sticky tags|Sticky tags]], for more information on sticky tags/dates.
 </p>
 </dd>
 <dt><code>-C</code></dt>
@@ -3770,7 +3770,7 @@ those directories, which may not be what you want.
 working directory) during the update.  You can specify
 &lsquo;<samp>-I</samp>&rsquo; more than once on the command line to specify
 several files to ignore.  Use &lsquo;<samp>-I !</samp>&rsquo; to avoid
-ignoring any files at all.  See section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore], for other
+ignoring any files at all.  See section [[cvs: Reference manual for Administrative files#Ignoring files via cvsignore|Ignoring files via cvsignore]], for other
 ways to make <small>CVS</small> ignore some files.
 </p>
 </dd>
@@ -3780,7 +3780,7 @@ update.  You can use this option repeatedly.
 </p>
 <p><var>spec</var> can be a file name pattern of the same type
 that you can specify in the &lsquo;<tt>.cvswrappers</tt>&rsquo;
-file. See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
+file. See section [[cvs: Reference manual for Administrative files#The cvswrappers file|The cvswrappers file]].
 </p>
 </dd>
 <dt><code>-j<var>revision</var></code></dt>
@@ -3799,7 +3799,7 @@ the revision specified in the &lsquo;<samp>-j</samp>&rsquo; option.
 <p>Note that using a single &lsquo;<samp>-j <var>tagname</var></samp>&rsquo; option rather than
 &lsquo;<samp>-j <var>branchname</var></samp>&rsquo; to merge changes from a branch will
 often not remove files which were removed on the branch.
-See section [cvs: Branching and merging#Merging-adds-and-removals Merging can add or remove files], for more.
+See section [[cvs: Branching and merging#Merging can add or remove files|Merging can add or remove files]], for more.
 </p>
 <p>In addition, each &lsquo;<samp>-j</samp>&rsquo; option can contain an optional
 date specification which, when used with branches, can
@@ -3808,7 +3808,7 @@ date.  An optional date is specified by adding a colon
 (:) to the tag:
 &lsquo;<samp>-j<var>Symbolic_Tag</var>:<var>Date_Specifier</var></samp>&rsquo;.
 </p>
-<p>See section [cvs: Branching and merging#Branching-and-merging Branching and merging].
+<p>See section [[cvs: Branching and merging#Branching and merging|Branching and merging]].
 </p>
 </dd>
 </dl>
@@ -3816,19 +3816,19 @@ date.  An optional date is specified by adding a colon
 <hr>
 <div id="update-output"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#update-options| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#update| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt; ]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#update options| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#update&mdash;Bring work tree in sync with repository| Up ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="update-output-1"></div>
 ==== update output ====
@@ -3894,7 +3894,7 @@ is also in your working directory, with the name
 &lsquo;<tt>.#<var>file</var>.<var>revision</var></tt>&rsquo; where <var>revision</var>
 is the revision that your modified file started
 from.  Resolve the conflict as described in
-[cvs: Multiple developers#Conflicts-example Conflicts example].
+[[cvs: Multiple developers#Conflicts example|Conflicts example]].
 (Note that some systems automatically purge
 files that begin with &lsquo;<tt>.#</tt>&rsquo; if they have not been
 accessed for a few days.  If you intend to keep a copy
@@ -3908,22 +3908,22 @@ it.)  Under <small>VMS</small>, the file name starts with
 correspond to anything in the source repository, and is
 not in the list of files for <small>CVS</small> to ignore (see the
 description of the &lsquo;<samp>-I</samp>&rsquo; option, and
-see section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore]).
+see section [[cvs: Reference manual for Administrative files#Ignoring files via cvsignore|Ignoring files via cvsignore]]).
 </p></dd>
 </dl>
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#CVS-commands| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Quick reference to CVS commands#Invoking-CVS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Guide to CVS commands| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

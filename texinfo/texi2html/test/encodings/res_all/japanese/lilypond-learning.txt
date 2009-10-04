@@ -1,3 +1,6 @@
+GNU LilyPond - Manuel d'initiation
+**********************************
+
 GNU LilyPond -- 学習マニュアル
 ***********************
 

@@ -1,7 +1,7 @@
 <div id="modules"></div>
 <div class="header">
 <p>
-Next: [cvs: The cvswrappers file#Wrappers Wrappers], Up: [cvs: Reference manual for Administrative files#Administrative-files Administrative files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="The-modules-file"></div>
@@ -32,12 +32,12 @@ directory &lsquo;<tt>sdir</tt>&rsquo;.  &lsquo;<tt>first-dir/sdir</tt>&rsquo; co
 a file &lsquo;<tt>sfile</tt>&rsquo;.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Alias modules#Alias-modules  Alias modules]::<nowiki>             The simplest kind of module
-</nowiki>&bull;[cvs: Regular modules#Regular-modules  Regular modules]::<nowiki>
-</nowiki>&bull;[cvs: Ampersand modules#Ampersand-modules  Ampersand modules]::<nowiki>
-</nowiki>&bull;[cvs: Excluding directories#Excluding-directories  Excluding directories]::<nowiki>     Excluding directories from a module
-</nowiki>&bull;[cvs: Module options#Module-options  Module options]::<nowiki>            Regular and ampersand modules can take options
-</nowiki>&bull;[cvs: How the modules file "program options" programs are run#Module-program-options  Module program options]::<nowiki>    How the modules ``program options'' programs
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Alias modules#Alias modules| Alias modules]]::<nowiki>             The simplest kind of module
+</nowiki>&bull;[[cvs: Regular modules#Regular modules| Regular modules]]::<nowiki>
+</nowiki>&bull;[[cvs: Ampersand modules#Ampersand modules| Ampersand modules]]::<nowiki>
+</nowiki>&bull;[[cvs: Excluding directories#Excluding directories| Excluding directories]]::<nowiki>     Excluding directories from a module
+</nowiki>&bull;[[cvs: Module options#Module options| Module options]]::<nowiki>            Regular and ampersand modules can take options
+</nowiki>&bull;[[cvs: How the modules file "program options" programs are run#How the modules file &ldquo;program options&rdquo; programs are run| Module program options]]::<nowiki>    How the modules ``program options'' programs
                               are run. 
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -1,7 +1,7 @@
 <div id="Invoking-CVS"></div>
 <div class="header">
 <p>
-Next: [cvs: Reference manual for Administrative files#Administrative-files Administrative files], Previous: [cvs: Guide to CVS commands#CVS-commands CVS commands], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]], Previous: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Quick-reference-to-CVS-commands"></div>
@@ -13,7 +13,7 @@ Next: [cvs: Reference manual for Administrative files#Administrative-files Admin
 <p>This appendix describes how to invoke <small>CVS</small>, with
 references to where each command or feature is
 described in detail.  For other references run the
-<code>cvs --help</code> command, or see [cvs: Index#Index Index].
+<code>cvs --help</code> command, or see [[cvs: Index#Index|Index]].
 </p>
 <p>A <small>CVS</small> command looks like:
 </p>
@@ -25,66 +25,66 @@ described in detail.  For other references run the
 <dl compact="compact">
 <dt><code>--allow-root=<var>rootdir</var></code></dt>
 <dd><p>Specify legal <small>CVSROOT</small> directory (server only) (not
-in <small>CVS</small> 1.9 and older).  See [cvs: Setting up the server for password authentication#Password-authentication-server Password authentication server].
+in <small>CVS</small> 1.9 and older).  See [[cvs: Setting up the server for password authentication#Setting up the server for password authentication|Password authentication server]].
 </p>
 </dd>
 <dt><code>-a</code></dt>
 <dd><p>Authenticate all communication (client only) (not in <small>CVS</small>
-1.9 and older).  See [cvs: Global options#Global-options Global options].
+1.9 and older).  See [[cvs: Global options#Global options|Global options]].
 </p>
 </dd>
 <dt><code>-b</code></dt>
 <dd><p>Specify RCS location (<small>CVS</small> 1.9 and older).  See
-[cvs: Global options#Global-options Global options].
+[[cvs: Global options#Global options|Global options]].
 </p>
 </dd>
 <dt><code>-d <var>root</var></code></dt>
-<dd><p>Specify the <small>CVSROOT</small>.  See [cvs: The Repository#Repository Repository].
+<dd><p>Specify the <small>CVSROOT</small>.  See [[cvs: The Repository#The Repository|Repository]].
 </p>
 </dd>
 <dt><code>-e <var>editor</var></code></dt>
-<dd><p>Edit messages with <var>editor</var>.  See [cvs: Committing your changes#Committing-your-changes Committing your changes].
+<dd><p>Edit messages with <var>editor</var>.  See [[cvs: Committing your changes#Committing your changes|Committing your changes]].
 </p>
 </dd>
 <dt><code>-f</code></dt>
-<dd><p>Do not read the &lsquo;<tt>~/.cvsrc</tt>&rsquo; file.  See [cvs: Global options#Global-options Global options].
+<dd><p>Do not read the &lsquo;<tt>~/.cvsrc</tt>&rsquo; file.  See [[cvs: Global options#Global options|Global options]].
 </p>
 </dd>
 <dt><code>-H</code></dt>
 <dt><code>--help</code></dt>
-<dd><p>Print a help message.  See [cvs: Global options#Global-options Global options].
+<dd><p>Print a help message.  See [[cvs: Global options#Global options|Global options]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Do not log in &lsquo;<tt>$CVSROOT/CVSROOT/history</tt>&rsquo; file.  See [cvs: Global options#Global-options Global options].
+<dd><p>Do not log in &lsquo;<tt>$CVSROOT/CVSROOT/history</tt>&rsquo; file.  See [[cvs: Global options#Global options|Global options]].
 </p>
 </dd>
 <dt><code>-n</code></dt>
-<dd><p>Do not change any files.  See [cvs: Global options#Global-options Global options].
+<dd><p>Do not change any files.  See [[cvs: Global options#Global options|Global options]].
 </p>
 </dd>
 <dt><code>-Q</code></dt>
-<dd><p>Be really quiet.  See [cvs: Global options#Global-options Global options].
+<dd><p>Be really quiet.  See [[cvs: Global options#Global options|Global options]].
 </p>
 </dd>
 <dt><code>-q</code></dt>
-<dd><p>Be somewhat quiet.  See [cvs: Global options#Global-options Global options].
+<dd><p>Be somewhat quiet.  See [[cvs: Global options#Global options|Global options]].
 </p>
 </dd>
 <dt><code>-r</code></dt>
-<dd><p>Make new working files read-only.  See [cvs: Global options#Global-options Global options].
+<dd><p>Make new working files read-only.  See [[cvs: Global options#Global options|Global options]].
 </p>
 </dd>
 <dt><code>-s <var>variable</var>=<var>value</var></code></dt>
-<dd><p>Set a user variable.  See [cvs: Expansions in administrative files#Variables Variables].
+<dd><p>Set a user variable.  See [[cvs: Expansions in administrative files#Expansions in administrative files|Variables]].
 </p>
 </dd>
 <dt><code>-T <var>tempdir</var></code></dt>
-<dd><p>Put temporary files in <var>tempdir</var>.  See [cvs: Global options#Global-options Global options].
+<dd><p>Put temporary files in <var>tempdir</var>.  See [[cvs: Global options#Global options|Global options]].
 </p>
 </dd>
 <dt><code>-t</code></dt>
-<dd><p>Trace <small>CVS</small> execution.  See [cvs: Global options#Global-options Global options].
+<dd><p>Trace <small>CVS</small> execution.  See [[cvs: Global options#Global options|Global options]].
 </p>
 </dd>
 <dt><code>-v</code></dt>
@@ -93,23 +93,23 @@ in <small>CVS</small> 1.9 and older).  See [cvs: Setting up the server for passw
 </p>
 </dd>
 <dt><code>-w</code></dt>
-<dd><p>Make new working files read-write.  See [cvs: Global options#Global-options Global options].
+<dd><p>Make new working files read-write.  See [[cvs: Global options#Global options|Global options]].
 </p>
 </dd>
 <dt><code>-x</code></dt>
 <dd><p>Encrypt all communication (client only).
-See [cvs: Global options#Global-options Global options].
+See [[cvs: Global options#Global options|Global options]].
 </p>
 </dd>
 <dt><code>-z <var>gzip-level</var></code></dt>
 <dd><div id="index-Compression-1"></div>
 <div id="index-Gzip-1"></div>
 <p>Set the compression level (client only).
-See [cvs: Global options#Global-options Global options].
+See [[cvs: Global options#Global options|Global options]].
 </p></dd>
 </dl>
 
-<p>Keyword expansion modes (see [cvs: Substitution modes#Substitution-modes Substitution modes]):
+<p>Keyword expansion modes (see [[cvs: Substitution modes#Substitution modes|Substitution modes]]):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>-kkv  $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp $
 -kkvl $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
@@ -119,7 +119,7 @@ See [cvs: Global options#Global-options Global options].
 -kb   <i>no expansion, file is binary</i>
 </nowiki></pre></td></tr></table>
 
-<p>Keywords (see [cvs: Keyword List#Keyword-list Keyword list]):
+<p>Keywords (see [[cvs: Keyword List#Keyword List|Keyword list]]):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$<i></i>Author: joe $
 $<i></i>Date: 1993/12/09 03:21:13 $
@@ -142,7 +142,7 @@ Initial revision
 </p>
 <dl compact="compact">
 <dt><code>add [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
-<dd><p>Add a new file/directory.  See [cvs: Adding files to a directory#Adding-files Adding files].
+<dd><p>Add a new file/directory.  See [[cvs: Adding files to a directory#Adding files to a directory|Adding files]].
 </p>
 <dl compact="compact">
 <dt><code>-k <var>kflag</var></code></dt>
@@ -157,11 +157,11 @@ Initial revision
 </dd>
 <dt><code>admin [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
 <dd><p>Administration of history files in the repository.  See
-[cvs: admin--Administration#admin admin].
+[[cvs: admin--Administration#admin&mdash;Administration|admin]].
 </p>
 <dl compact="compact">
 <dt><code>-b[<var>rev</var>]</code></dt>
-<dd><p>Set default branch.  See [cvs: Reverting to the latest vendor release#Reverting-local-changes Reverting local changes].
+<dd><p>Set default branch.  See [[cvs: Reverting to the latest vendor release#Reverting to the latest vendor release|Reverting local changes]].
 </p>
 </dd>
 <dt><code>-c<var>string</var></code></dt>
@@ -169,7 +169,7 @@ Initial revision
 </p>
 </dd>
 <dt><code>-k<var>subst</var></code></dt>
-<dd><p>Set keyword substitution.  See [cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+<dd><p>Set keyword substitution.  See [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]].
 </p>
 </dd>
 <dt><code>-l[<var>rev</var>]</code></dt>
@@ -183,7 +183,7 @@ Initial revision
 </dd>
 <dt><code>-o<var>range</var></code></dt>
 <dd><p>Delete revisions from the repository.  See
-[cvs: admin options#admin-options admin options].
+[[cvs: admin options#admin options|admin options]].
 </p>
 </dd>
 <dt><code>-q</code></dt>
@@ -214,12 +214,12 @@ Initial revision
 </dd>
 <dt><code>annotate [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
 <dd><p>Show last revision where each line was modified.  See
-[cvs: Annotate command#annotate annotate].
+[[cvs: Annotate command#Annotate command|annotate]].
 </p>
 <dl compact="compact">
 <dt><code>-D <var>date</var></code></dt>
 <dd><p>Annotate the most recent revision no later than
-<var>date</var>.  See [cvs: Common command options#Common-options Common options].
+<var>date</var>.  See [[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-F</code></dt>
@@ -229,131 +229,131 @@ binary files are skipped with a message.)
 </dd>
 <dt><code>-f</code></dt>
 <dd><p>Use head revision if tag/date not found.  See
-[cvs: Common command options#Common-options Common options].
+[[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-r <var>tag</var></code></dt>
-<dd><p>Annotate revision <var>tag</var>.  See [cvs: Common command options#Common-options Common options].
+<dd><p>Annotate revision <var>tag</var>.  See [[cvs: Common command options#Common command options|Common options]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>checkout [<var>options</var>] <var>modules</var>&hellip;</code></dt>
-<dd><p>Get a copy of the sources.  See [cvs: checkout--Check out sources for editing#checkout checkout].
+<dd><p>Get a copy of the sources.  See [[cvs: checkout--Check out sources for editing#checkout&mdash;Check out sources for editing|checkout]].
 </p>
 <dl compact="compact">
 <dt><code>-A</code></dt>
-<dd><p>Reset any sticky tags/date/options.  See [cvs: Sticky tags#Sticky-tags Sticky tags] and [cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+<dd><p>Reset any sticky tags/date/options.  See [[cvs: Sticky tags#Sticky tags|Sticky tags]] and [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]].
 </p>
 </dd>
 <dt><code>-c</code></dt>
-<dd><p>Output the module database.  See [cvs: checkout options#checkout-options checkout options].
+<dd><p>Output the module database.  See [[cvs: checkout options#checkout options|checkout options]].
 </p>
 </dd>
 <dt><code>-D <var>date</var></code></dt>
 <dd><p>Check out revisions as of <var>date</var> (is sticky).  See
-[cvs: Common command options#Common-options Common options].
+[[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-d <var>dir</var></code></dt>
-<dd><p>Check out into <var>dir</var>.  See [cvs: checkout options#checkout-options checkout options].
+<dd><p>Check out into <var>dir</var>.  See [[cvs: checkout options#checkout options|checkout options]].
 </p>
 </dd>
 <dt><code>-f</code></dt>
 <dd><p>Use head revision if tag/date not found.  See
-[cvs: Common command options#Common-options Common options].
+[[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-j <var>rev</var></code></dt>
-<dd><p>Merge in changes.  See [cvs: checkout options#checkout-options checkout options].
+<dd><p>Merge in changes.  See [[cvs: checkout options#checkout options|checkout options]].
 </p>
 </dd>
 <dt><code>-k <var>kflag</var></code></dt>
 <dd><p>Use <var>kflag</var> keyword expansion.  See
-[cvs: Substitution modes#Substitution-modes Substitution modes].
+[[cvs: Substitution modes#Substitution modes|Substitution modes]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-N</code></dt>
 <dd><p>Don&rsquo;t &ldquo;shorten&rdquo; module paths if -d specified.  See
-[cvs: checkout options#checkout-options checkout options].
+[[cvs: checkout options#checkout options|checkout options]].
 </p>
 </dd>
 <dt><code>-n</code></dt>
-<dd><p>Do not run module program (if any).  See [cvs: checkout options#checkout-options checkout options].
+<dd><p>Do not run module program (if any).  See [[cvs: checkout options#checkout options|checkout options]].
 </p>
 </dd>
 <dt><code>-P</code></dt>
-<dd><p>Prune empty directories.  See [cvs: Moving and renaming directories#Moving-directories Moving directories].
+<dd><p>Prune empty directories.  See [[cvs: Moving and renaming directories#Moving and renaming directories|Moving directories]].
 </p>
 </dd>
 <dt><code>-p</code></dt>
 <dd><p>Check out files to standard output (avoids
-stickiness).  See [cvs: checkout options#checkout-options checkout options].
+stickiness).  See [[cvs: checkout options#checkout options|checkout options]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-r <var>tag</var></code></dt>
-<dd><p>Checkout revision <var>tag</var> (is sticky).  See [cvs: Common command options#Common-options Common options].
+<dd><p>Checkout revision <var>tag</var> (is sticky).  See [[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-s</code></dt>
-<dd><p>Like -c, but include module status.  See [cvs: checkout options#checkout-options checkout options].
+<dd><p>Like -c, but include module status.  See [[cvs: checkout options#checkout options|checkout options]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>commit [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
-<dd><p>Check changes into the repository.  See [cvs: commit--Check files into the repository#commit commit].
+<dd><p>Check changes into the repository.  See [[cvs: commit--Check files into the repository#commit&mdash;Check files into the repository|commit]].
 </p>
 <dl compact="compact">
 <dt><code>-F <var>file</var></code></dt>
-<dd><p>Read log message from <var>file</var>.  See [cvs: commit options#commit-options commit options].
+<dd><p>Read log message from <var>file</var>.  See [[cvs: commit options#commit options|commit options]].
 </p>
 </dd>
 <dt><code>-f</code></dt>
 <dd><p>Force the file to be committed; disables recursion.
-See [cvs: commit options#commit-options commit options].
+See [[cvs: commit options#commit options|commit options]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-m <var>msg</var></code></dt>
-<dd><p>Use <var>msg</var> as log message.  See [cvs: commit options#commit-options commit options].
+<dd><p>Use <var>msg</var> as log message.  See [[cvs: commit options#commit options|commit options]].
 </p>
 </dd>
 <dt><code>-n</code></dt>
-<dd><p>Do not run module program (if any).  See [cvs: commit options#commit-options commit options].
+<dd><p>Do not run module program (if any).  See [[cvs: commit options#commit options|commit options]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-r <var>rev</var></code></dt>
-<dd><p>Commit to <var>rev</var>.  See [cvs: commit options#commit-options commit options].
+<dd><p>Commit to <var>rev</var>.  See [[cvs: commit options#commit options|commit options]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>diff [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
-<dd><p>Show differences between revisions.  See [cvs: diff--Show differences between revisions#diff diff].
+<dd><p>Show differences between revisions.  See [[cvs: diff--Show differences between revisions#diff&mdash;Show differences between revisions|diff]].
 In addition to the options shown below, accepts a wide
 variety of options to control output style, for example
 &lsquo;<samp>-c</samp>&rsquo; for context diffs.
@@ -361,312 +361,312 @@ variety of options to control output style, for example
 <dl compact="compact">
 <dt><code>-D <var>date1</var></code></dt>
 <dd><p>Diff revision for date against working file.  See
-[cvs: diff options#diff-options diff options].
+[[cvs: diff options#diff options|diff options]].
 </p>
 </dd>
 <dt><code>-D <var>date2</var></code></dt>
 <dd><p>Diff <var>rev1</var>/<var>date1</var> against <var>date2</var>.  See
-[cvs: diff options#diff-options diff options].
+[[cvs: diff options#diff options|diff options]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-N</code></dt>
 <dd><p>Include diffs for added and removed files.  See
-[cvs: diff options#diff-options diff options].
+[[cvs: diff options#diff options|diff options]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-r <var>rev1</var></code></dt>
 <dd><p>Diff revision for <var>rev1</var> against working file.  See
-[cvs: diff options#diff-options diff options].
+[[cvs: diff options#diff options|diff options]].
 </p>
 </dd>
 <dt><code>-r <var>rev2</var></code></dt>
-<dd><p>Diff <var>rev1</var>/<var>date1</var> against <var>rev2</var>.  See [cvs: diff options#diff-options diff options].
+<dd><p>Diff <var>rev1</var>/<var>date1</var> against <var>rev2</var>.  See [[cvs: diff options#diff options|diff options]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>edit [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
-<dd><p>Get ready to edit a watched file.  See [cvs: How to edit a file which is being watched#Editing-files Editing files].
+<dd><p>Get ready to edit a watched file.  See [[cvs: How to edit a file which is being watched#How to edit a file which is being watched|Editing files]].
 </p>
 <dl compact="compact">
 <dt><code>-a <var>actions</var></code></dt>
 <dd><p>Specify actions for temporary watch, where
 <var>actions</var> is <code>edit</code>, <code>unedit</code>,
 <code>commit</code>, <code>all</code>, or <code>none</code>.  See
-[cvs: How to edit a file which is being watched#Editing-files Editing files].
+[[cvs: How to edit a file which is being watched#How to edit a file which is being watched|Editing files]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>editors [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
-<dd><p>See who is editing a watched file.  See [cvs: Information about who is watching and editing#Watch-information Watch information].
+<dd><p>See who is editing a watched file.  See [[cvs: Information about who is watching and editing#Information about who is watching and editing|Watch information]].
 </p>
 <dl compact="compact">
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>export [<var>options</var>] <var>modules</var>&hellip;</code></dt>
-<dd><p>Export files from <small>CVS</small>.  See [cvs: export--Export sources from CVS, similar to checkout#export export].
+<dd><p>Export files from <small>CVS</small>.  See [[cvs: export--Export sources from CVS, similar to checkout#export&mdash;Export sources from CVS, similar to checkout|export]].
 </p>
 <dl compact="compact">
 <dt><code>-D <var>date</var></code></dt>
 <dd><p>Check out revisions as of <var>date</var>.  See
-[cvs: Common command options#Common-options Common options].
+[[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-d <var>dir</var></code></dt>
-<dd><p>Check out into <var>dir</var>.  See [cvs: export options#export-options export options].
+<dd><p>Check out into <var>dir</var>.  See [[cvs: export options#export options|export options]].
 </p>
 </dd>
 <dt><code>-f</code></dt>
 <dd><p>Use head revision if tag/date not found.  See
-[cvs: Common command options#Common-options Common options].
+[[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-k <var>kflag</var></code></dt>
 <dd><p>Use <var>kflag</var> keyword expansion.  See
-[cvs: Substitution modes#Substitution-modes Substitution modes].
+[[cvs: Substitution modes#Substitution modes|Substitution modes]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-N</code></dt>
 <dd><p>Don&rsquo;t &ldquo;shorten&rdquo; module paths if -d specified.  See
-[cvs: export options#export-options export options].
+[[cvs: export options#export options|export options]].
 </p>
 </dd>
 <dt><code>-n</code></dt>
-<dd><p>Do not run module program (if any).  See [cvs: export options#export-options export options].
+<dd><p>Do not run module program (if any).  See [[cvs: export options#export options|export options]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-r <var>tag</var></code></dt>
-<dd><p>Checkout revision <var>tag</var>.  See [cvs: Common command options#Common-options Common options].
+<dd><p>Checkout revision <var>tag</var>.  See [[cvs: Common command options#Common command options|Common options]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>history [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
-<dd><p>Show repository access history.  See [cvs: history--Show status of files and users#history history].
+<dd><p>Show repository access history.  See [[cvs: history--Show status of files and users#history&mdash;Show status of files and users|history]].
 </p>
 <dl compact="compact">
 <dt><code>-a</code></dt>
-<dd><p>All users (default is self).  See [cvs: history options#history-options history options].
+<dd><p>All users (default is self).  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-b <var>str</var></code></dt>
 <dd><p>Back to record with <var>str</var> in module/file/repos
-field.  See [cvs: history options#history-options history options].
+field.  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-c</code></dt>
-<dd><p>Report on committed (modified) files.  See [cvs: history options#history-options history options].
+<dd><p>Report on committed (modified) files.  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-D <var>date</var></code></dt>
-<dd><p>Since <var>date</var>.  See [cvs: history options#history-options history options].
+<dd><p>Since <var>date</var>.  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-e</code></dt>
-<dd><p>Report on all record types.  See [cvs: history options#history-options history options].
+<dd><p>Report on all record types.  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Last modified (committed or modified report).  See [cvs: history options#history-options history options].
+<dd><p>Last modified (committed or modified report).  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-m <var>module</var></code></dt>
-<dd><p>Report on <var>module</var> (repeatable).  See [cvs: history options#history-options history options].
+<dd><p>Report on <var>module</var> (repeatable).  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-n <var>module</var></code></dt>
-<dd><p>In <var>module</var>.  See [cvs: history options#history-options history options].
+<dd><p>In <var>module</var>.  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-o</code></dt>
-<dd><p>Report on checked out modules.  See [cvs: history options#history-options history options].
+<dd><p>Report on checked out modules.  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-p <var>repository</var></code></dt>
-<dd><p>In <var>repository</var>.  See [cvs: history options#history-options history options].
+<dd><p>In <var>repository</var>.  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-r <var>rev</var></code></dt>
-<dd><p>Since revision <var>rev</var>.  See [cvs: history options#history-options history options].
+<dd><p>Since revision <var>rev</var>.  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-T</code></dt>
-<dd><p>Produce report on all TAGs.  See [cvs: history options#history-options history options].
+<dd><p>Produce report on all TAGs.  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-t <var>tag</var></code></dt>
 <dd><p>Since tag record placed in history file (by anyone).
-See [cvs: history options#history-options history options].
+See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-u <var>user</var></code></dt>
-<dd><p>For user <var>user</var> (repeatable).  See [cvs: history options#history-options history options].
+<dd><p>For user <var>user</var> (repeatable).  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-w</code></dt>
-<dd><p>Working directory must match.  See [cvs: history options#history-options history options].
+<dd><p>Working directory must match.  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-x <var>types</var></code></dt>
 <dd><p>Report on <var>types</var>, one or more of
-<code>TOEFWUCGMAR</code>.  See [cvs: history options#history-options history options].
+<code>TOEFWUCGMAR</code>.  See [[cvs: history options#history options|history options]].
 </p>
 </dd>
 <dt><code>-z <var>zone</var></code></dt>
-<dd><p>Output for time zone <var>zone</var>.  See [cvs: history options#history-options history options].
+<dd><p>Output for time zone <var>zone</var>.  See [[cvs: history options#history options|history options]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>import [<var>options</var>] <var>repository</var> <var>vendor-tag</var> <var>release-tags</var>&hellip;</code></dt>
 <dd><p>Import files into <small>CVS</small>, using vendor branches.  See
-[cvs: import--Import sources into CVS, using vendor branches#import import].
+[[cvs: import--Import sources into CVS, using vendor branches#import&mdash;Import sources into CVS, using vendor branches|import]].
 </p>
 <dl compact="compact">
 <dt><code>-b <var>bra</var></code></dt>
 <dd><p>Import to vendor branch <var>bra</var>.  See
-[cvs: Multiple vendor branches#Multiple-vendor-branches Multiple vendor branches].
+[[cvs: Multiple vendor branches#Multiple vendor branches|Multiple vendor branches]].
 </p>
 </dd>
 <dt><code>-d</code></dt>
 <dd><p>Use the file&rsquo;s modification time as the time of
-import.  See [cvs: import options#import-options import options].
+import.  See [[cvs: import options#import options|import options]].
 </p>
 </dd>
 <dt><code>-k <var>kflag</var></code></dt>
 <dd><p>Set default keyword substitution mode.  See
-[cvs: import options#import-options import options].
+[[cvs: import options#import options|import options]].
 </p>
 </dd>
 <dt><code>-m <var>msg</var></code></dt>
 <dd><p>Use <var>msg</var> for log message.  See
-[cvs: import options#import-options import options].
+[[cvs: import options#import options|import options]].
 </p>
 </dd>
 <dt><code>-I <var>ign</var></code></dt>
 <dd><p>More files to ignore (! to reset).  See
-[cvs: import options#import-options import options].
+[[cvs: import options#import options|import options]].
 </p>
 </dd>
 <dt><code>-W <var>spec</var></code></dt>
-<dd><p>More wrappers.  See [cvs: import options#import-options import options].
+<dd><p>More wrappers.  See [[cvs: import options#import options|import options]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>init</code></dt>
 <dd><p>Create a <small>CVS</small> repository if it doesn&rsquo;t exist.  See
-[cvs: Creating a repository#Creating-a-repository Creating a repository].
+[[cvs: Creating a repository#Creating a repository|Creating a repository]].
 </p>
 </dd>
 <dt><code>kserver</code></dt>
 <dd><p>Kerberos authenticated server.
-See [cvs: Direct connection with kerberos#Kerberos-authenticated Kerberos authenticated].
+See [[cvs: Direct connection with kerberos#Direct connection with kerberos|Kerberos authenticated]].
 </p>
 </dd>
 <dt><code>log [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
-<dd><p>Print out history information for files.  See [cvs: log--Print out log information for files#log log].
+<dd><p>Print out history information for files.  See [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]].
 </p>
 <dl compact="compact">
 <dt><code>-b</code></dt>
-<dd><p>Only list revisions on the default branch.  See [cvs: log options#log-options log options].
+<dd><p>Only list revisions on the default branch.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-d <var>dates</var></code></dt>
 <dd><p>Specify dates (<var>d1</var>&lt;<var>d2</var> for range, <var>d</var> for
-latest before).  See [cvs: log options#log-options log options].
+latest before).  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-h</code></dt>
-<dd><p>Only print header.  See [cvs: log options#log-options log options].
+<dd><p>Only print header.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-N</code></dt>
-<dd><p>Do not list tags.  See [cvs: log options#log-options log options].
+<dd><p>Do not list tags.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Only print name of RCS file.  See [cvs: log options#log-options log options].
+<dd><p>Only print name of RCS file.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-r<var>revs</var></code></dt>
-<dd><p>Only list revisions <var>revs</var>.  See [cvs: log options#log-options log options].
+<dd><p>Only list revisions <var>revs</var>.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-s <var>states</var></code></dt>
-<dd><p>Only list revisions with specified states.  See [cvs: log options#log-options log options].
+<dd><p>Only list revisions with specified states.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-t</code></dt>
-<dd><p>Only print header and descriptive text.  See [cvs: log options#log-options log options].
+<dd><p>Only print header and descriptive text.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-w<var>logins</var></code></dt>
-<dd><p>Only list revisions checked in by specified logins.  See [cvs: log options#log-options log options].
+<dd><p>Only list revisions checked in by specified logins.  See [[cvs: log options#log options|log options]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>login</code></dt>
 <dd><p>Prompt for password for authenticating server.  See
-[cvs: Using the client with password authentication#Password-authentication-client Password authentication client].
+[[cvs: Using the client with password authentication#Using the client with password authentication|Password authentication client]].
 </p>
 </dd>
 <dt><code>logout</code></dt>
 <dd><p>Remove stored password for authenticating server.  See
-[cvs: Using the client with password authentication#Password-authentication-client Password authentication client].
+[[cvs: Using the client with password authentication#Using the client with password authentication|Password authentication client]].
 </p>
 </dd>
 <dt><code>pserver</code></dt>
 <dd><p>Password authenticated server.
-See [cvs: Setting up the server for password authentication#Password-authentication-server Password authentication server].
+See [[cvs: Setting up the server for password authentication#Setting up the server for password authentication|Password authentication server]].
 </p>
 </dd>
 <dt><code>rannotate [<var>options</var>] [<var>modules</var>&hellip;]</code></dt>
 <dd><p>Show last revision where each line was modified.  See
-[cvs: Annotate command#annotate annotate].
+[[cvs: Annotate command#Annotate command|annotate]].
 </p>
 <dl compact="compact">
 <dt><code>-D <var>date</var></code></dt>
 <dd><p>Annotate the most recent revision no later than
-<var>date</var>.  See [cvs: Common command options#Common-options Common options].
+<var>date</var>.  See [[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-F</code></dt>
@@ -676,160 +676,160 @@ binary files are skipped with a message.)
 </dd>
 <dt><code>-f</code></dt>
 <dd><p>Use head revision if tag/date not found.  See
-[cvs: Common command options#Common-options Common options].
+[[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-r <var>tag</var></code></dt>
-<dd><p>Annotate revision <var>tag</var>.  See [cvs: Common command options#Common-options Common options].
+<dd><p>Annotate revision <var>tag</var>.  See [[cvs: Common command options#Common command options|Common options]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>rdiff [<var>options</var>] <var>modules</var>&hellip;</code></dt>
-<dd><p>Show differences between releases.  See [cvs: rdiff--'patch' format diffs between releases#rdiff rdiff].
+<dd><p>Show differences between releases.  See [[cvs: rdiff--'patch' format diffs between releases#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases|rdiff]].
 </p>
 <dl compact="compact">
 <dt><code>-c</code></dt>
-<dd><p>Context diff output format (default).  See [cvs: rdiff options#rdiff-options rdiff options].
+<dd><p>Context diff output format (default).  See [[cvs: rdiff options#rdiff options|rdiff options]].
 </p>
 </dd>
 <dt><code>-D <var>date</var></code></dt>
-<dd><p>Select revisions based on <var>date</var>.  See [cvs: Common command options#Common-options Common options].
+<dd><p>Select revisions based on <var>date</var>.  See [[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-f</code></dt>
 <dd><p>Use head revision if tag/date not found.  See
-[cvs: Common command options#Common-options Common options].
+[[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-r <var>rev</var></code></dt>
-<dd><p>Select revisions based on <var>rev</var>.  See [cvs: Common command options#Common-options Common options].
+<dd><p>Select revisions based on <var>rev</var>.  See [[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-s</code></dt>
-<dd><p>Short patch - one liner per file.  See [cvs: rdiff options#rdiff-options rdiff options].
+<dd><p>Short patch - one liner per file.  See [[cvs: rdiff options#rdiff options|rdiff options]].
 </p>
 </dd>
 <dt><code>-t</code></dt>
 <dd><p>Top two diffs - last change made to the file.  See
-[cvs: diff options#diff-options diff options].
+[[cvs: diff options#diff options|diff options]].
 </p>
 </dd>
 <dt><code>-u</code></dt>
-<dd><p>Unidiff output format.  See [cvs: rdiff options#rdiff-options rdiff options].
+<dd><p>Unidiff output format.  See [[cvs: rdiff options#rdiff options|rdiff options]].
 </p>
 </dd>
 <dt><code>-V <var>vers</var></code></dt>
 <dd><p>Use RCS Version <var>vers</var> for keyword expansion (obsolete).  See
-[cvs: rdiff options#rdiff-options rdiff options].
+[[cvs: rdiff options#rdiff options|rdiff options]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>release [<var>options</var>] <var>directory</var></code></dt>
 <dd><p>Indicate that a directory is no longer in use.  See
-[cvs: release--Indicate that a Module is no longer in use#release release].
+[[cvs: release--Indicate that a Module is no longer in use#release&mdash;Indicate that a Module is no longer in use|release]].
 </p>
 <dl compact="compact">
 <dt><code>-d</code></dt>
-<dd><p>Delete the given directory.  See [cvs: release options#release-options release options].
+<dd><p>Delete the given directory.  See [[cvs: release options#release options|release options]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>remove [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
-<dd><p>Remove an entry from the repository.  See [cvs: Removing files#Removing-files Removing files].
+<dd><p>Remove an entry from the repository.  See [[cvs: Removing files#Removing files|Removing files]].
 </p>
 <dl compact="compact">
 <dt><code>-f</code></dt>
-<dd><p>Delete the file before removing it.  See [cvs: Removing files#Removing-files Removing files].
+<dd><p>Delete the file before removing it.  See [[cvs: Removing files#Removing files|Removing files]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>rlog [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
-<dd><p>Print out history information for modules.  See [cvs: log--Print out log information for files#log log].
+<dd><p>Print out history information for modules.  See [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]].
 </p>
 <dl compact="compact">
 <dt><code>-b</code></dt>
-<dd><p>Only list revisions on the default branch.  See [cvs: log options#log-options log options].
+<dd><p>Only list revisions on the default branch.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-d <var>dates</var></code></dt>
 <dd><p>Specify dates (<var>d1</var>&lt;<var>d2</var> for range, <var>d</var> for
-latest before).  See [cvs: log options#log-options log options].
+latest before).  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-h</code></dt>
-<dd><p>Only print header.  See [cvs: log options#log-options log options].
+<dd><p>Only print header.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-N</code></dt>
-<dd><p>Do not list tags.  See [cvs: log options#log-options log options].
+<dd><p>Do not list tags.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Only print name of RCS file.  See [cvs: log options#log-options log options].
+<dd><p>Only print name of RCS file.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-r<var>revs</var></code></dt>
-<dd><p>Only list revisions <var>revs</var>.  See [cvs: log options#log-options log options].
+<dd><p>Only list revisions <var>revs</var>.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-s <var>states</var></code></dt>
-<dd><p>Only list revisions with specified states.  See [cvs: log options#log-options log options].
+<dd><p>Only list revisions with specified states.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-t</code></dt>
-<dd><p>Only print header and descriptive text.  See [cvs: log options#log-options log options].
+<dd><p>Only print header and descriptive text.  See [[cvs: log options#log options|log options]].
 </p>
 </dd>
 <dt><code>-w<var>logins</var></code></dt>
-<dd><p>Only list revisions checked in by specified logins.  See [cvs: log options#log-options log options].
+<dd><p>Only list revisions checked in by specified logins.  See [[cvs: log options#log options|log options]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>rtag [<var>options</var>] <var>tag</var> <var>modules</var>&hellip;</code></dt>
 <dd><p>Add a symbolic tag to a module.
-See [cvs: Revisions#Revisions Revisions] and [cvs: Branching and merging#Branching-and-merging Branching and merging].
+See [[cvs: Revisions#Revisions|Revisions]] and [[cvs: Branching and merging#Branching and merging|Branching and merging]].
 </p>
 <dl compact="compact">
 <dt><code>-a</code></dt>
 <dd><p>Clear tag from removed files that would not otherwise
-be tagged.  See [cvs: Tagging and adding and removing files#Tagging-add_002fremove Tagging add/remove].
+be tagged.  See [[cvs: Tagging and adding and removing files#Tagging and adding and removing files|Tagging add/remove]].
 </p>
 </dd>
 <dt><code>-b</code></dt>
-<dd><p>Create a branch named <var>tag</var>.  See [cvs: Branching and merging#Branching-and-merging Branching and merging].
+<dd><p>Create a branch named <var>tag</var>.  See [[cvs: Branching and merging#Branching and merging|Branching and merging]].
 </p>
 </dd>
 <dt><code>-B</code></dt>
@@ -838,129 +838,129 @@ branch tags.  Use with extreme caution.
 </p>
 </dd>
 <dt><code>-D <var>date</var></code></dt>
-<dd><p>Tag revisions as of <var>date</var>.  See [cvs: Specifying what to tag by date or revision#Tagging-by-date_002ftag Tagging by date/tag].
+<dd><p>Tag revisions as of <var>date</var>.  See [[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision|Tagging by date/tag]].
 </p>
 </dd>
 <dt><code>-d</code></dt>
-<dd><p>Delete <var>tag</var>.  See [cvs: Deleting, moving, and renaming tags#Modifying-tags Modifying tags].
+<dd><p>Delete <var>tag</var>.  See [[cvs: Deleting, moving, and renaming tags#Deleting, moving, and renaming tags|Modifying tags]].
 </p>
 </dd>
 <dt><code>-F</code></dt>
-<dd><p>Move <var>tag</var> if it already exists.  See [cvs: Deleting, moving, and renaming tags#Modifying-tags Modifying tags].
+<dd><p>Move <var>tag</var> if it already exists.  See [[cvs: Deleting, moving, and renaming tags#Deleting, moving, and renaming tags|Modifying tags]].
 </p>
 </dd>
 <dt><code>-f</code></dt>
 <dd><p>Force a head revision match if tag/date not found.
-See [cvs: Specifying what to tag by date or revision#Tagging-by-date_002ftag Tagging by date/tag].
+See [[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision|Tagging by date/tag]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-n</code></dt>
-<dd><p>No execution of tag program.  See [cvs: Common command options#Common-options Common options].
+<dd><p>No execution of tag program.  See [[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-r <var>rev</var></code></dt>
-<dd><p>Tag existing tag <var>rev</var>.  See [cvs: Specifying what to tag by date or revision#Tagging-by-date_002ftag Tagging by date/tag].
+<dd><p>Tag existing tag <var>rev</var>.  See [[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision|Tagging by date/tag]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>server</code></dt>
-<dd><p>Rsh server.  See [cvs: Connecting with rsh#Connecting-via-rsh Connecting via rsh].
+<dd><p>Rsh server.  See [[cvs: Connecting with rsh#Connecting with rsh|Connecting via rsh]].
 </p>
 </dd>
 <dt><code>status [<var>options</var>] <var>files</var>&hellip;</code></dt>
 <dd><p>Display status information in a working directory.  See
-[cvs: File status#File-status File status].
+[[cvs: File status#File status|File status]].
 </p>
 <dl compact="compact">
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-v</code></dt>
-<dd><p>Include tag information for file.  See [cvs: Tags-Symbolic revisions#Tags Tags].
+<dd><p>Include tag information for file.  See [[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revisions|Tags]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>tag [<var>options</var>] <var>tag</var> [<var>files</var>&hellip;]</code></dt>
 <dd><p>Add a symbolic tag to checked out version of files.
-See [cvs: Revisions#Revisions Revisions] and [cvs: Branching and merging#Branching-and-merging Branching and merging].
+See [[cvs: Revisions#Revisions|Revisions]] and [[cvs: Branching and merging#Branching and merging|Branching and merging]].
 </p>
 <dl compact="compact">
 <dt><code>-b</code></dt>
-<dd><p>Create a branch named <var>tag</var>.  See [cvs: Branching and merging#Branching-and-merging Branching and merging].
+<dd><p>Create a branch named <var>tag</var>.  See [[cvs: Branching and merging#Branching and merging|Branching and merging]].
 </p>
 </dd>
 <dt><code>-c</code></dt>
 <dd><p>Check that working files are unmodified.  See
-[cvs: Specifying what to tag from the working directory#Tagging-the-working-directory Tagging the working directory].
+[[cvs: Specifying what to tag from the working directory#Specifying what to tag from the working directory|Tagging the working directory]].
 </p>
 </dd>
 <dt><code>-D <var>date</var></code></dt>
-<dd><p>Tag revisions as of <var>date</var>.  See [cvs: Specifying what to tag by date or revision#Tagging-by-date_002ftag Tagging by date/tag].
+<dd><p>Tag revisions as of <var>date</var>.  See [[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision|Tagging by date/tag]].
 </p>
 </dd>
 <dt><code>-d</code></dt>
-<dd><p>Delete <var>tag</var>.  See [cvs: Deleting, moving, and renaming tags#Modifying-tags Modifying tags].
+<dd><p>Delete <var>tag</var>.  See [[cvs: Deleting, moving, and renaming tags#Deleting, moving, and renaming tags|Modifying tags]].
 </p>
 </dd>
 <dt><code>-F</code></dt>
-<dd><p>Move <var>tag</var> if it already exists.  See [cvs: Deleting, moving, and renaming tags#Modifying-tags Modifying tags].
+<dd><p>Move <var>tag</var> if it already exists.  See [[cvs: Deleting, moving, and renaming tags#Deleting, moving, and renaming tags|Modifying tags]].
 </p>
 </dd>
 <dt><code>-f</code></dt>
 <dd><p>Force a head revision match if tag/date not found.
-See [cvs: Specifying what to tag by date or revision#Tagging-by-date_002ftag Tagging by date/tag].
+See [[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision|Tagging by date/tag]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-r <var>rev</var></code></dt>
-<dd><p>Tag existing tag <var>rev</var>.  See [cvs: Specifying what to tag by date or revision#Tagging-by-date_002ftag Tagging by date/tag].
+<dd><p>Tag existing tag <var>rev</var>.  See [[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision|Tagging by date/tag]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>unedit [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
-<dd><p>Undo an edit command.  See [cvs: How to edit a file which is being watched#Editing-files Editing files].
+<dd><p>Undo an edit command.  See [[cvs: How to edit a file which is being watched#How to edit a file which is being watched|Editing files]].
 </p>
 <dl compact="compact">
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>update [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
 <dd><p>Bring work tree in sync with repository.  See
-[cvs: update--Bring work tree in sync with repository#update update].
+[[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]].
 </p>
 <dl compact="compact">
 <dt><code>-A</code></dt>
-<dd><p>Reset any sticky tags/date/options.  See [cvs: Sticky tags#Sticky-tags Sticky tags] and [cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+<dd><p>Reset any sticky tags/date/options.  See [[cvs: Sticky tags#Sticky tags|Sticky tags]] and [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]].
 </p>
 </dd>
 <dt><code>-C</code></dt>
@@ -971,55 +971,55 @@ the repository (the modified file is saved in
 </dd>
 <dt><code>-D <var>date</var></code></dt>
 <dd><p>Check out revisions as of <var>date</var> (is sticky).  See
-[cvs: Common command options#Common-options Common options].
+[[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-d</code></dt>
-<dd><p>Create directories.  See [cvs: update options#update-options update options].
+<dd><p>Create directories.  See [[cvs: update options#update options|update options]].
 </p>
 </dd>
 <dt><code>-f</code></dt>
 <dd><p>Use head revision if tag/date not found.  See
-[cvs: Common command options#Common-options Common options].
+[[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-I <var>ign</var></code></dt>
 <dd><p>More files to ignore (! to reset).  See
-[cvs: import options#import-options import options].
+[[cvs: import options#import options|import options]].
 </p>
 </dd>
 <dt><code>-j <var>rev</var></code></dt>
-<dd><p>Merge in changes.  See [cvs: update options#update-options update options].
+<dd><p>Merge in changes.  See [[cvs: update options#update options|update options]].
 </p>
 </dd>
 <dt><code>-k <var>kflag</var></code></dt>
 <dd><p>Use <var>kflag</var> keyword expansion.  See
-[cvs: Substitution modes#Substitution-modes Substitution modes].
+[[cvs: Substitution modes#Substitution modes|Substitution modes]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-P</code></dt>
-<dd><p>Prune empty directories.  See [cvs: Moving and renaming directories#Moving-directories Moving directories].
+<dd><p>Prune empty directories.  See [[cvs: Moving and renaming directories#Moving and renaming directories|Moving directories]].
 </p>
 </dd>
 <dt><code>-p</code></dt>
 <dd><p>Check out files to standard output (avoids
-stickiness).  See [cvs: update options#update-options update options].
+stickiness).  See [[cvs: update options#update options|update options]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-r <var>tag</var></code></dt>
-<dd><p>Checkout revision <var>tag</var> (is sticky).  See [cvs: Common command options#Common-options Common options].
+<dd><p>Checkout revision <var>tag</var> (is sticky).  See [[cvs: Common command options#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>-W <var>spec</var></code></dt>
-<dd><p>More wrappers.  See [cvs: import options#import-options import options].
+<dd><p>More wrappers.  See [[cvs: import options#import options|import options]].
 </p></dd>
 </dl>
 
@@ -1034,39 +1034,39 @@ is remote, display both the client and server versions.
 <dt><code>watch [on|off|add|remove] [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
 <dd>
 <p>on/off: turn on/off read-only checkouts of files.  See
-[cvs: Telling CVS to watch certain files#Setting-a-watch Setting a watch].
+[[cvs: Telling CVS to watch certain files#Telling CVS to watch certain files|Setting a watch]].
 </p>
 <p>add/remove: add or remove notification on actions.  See
-[cvs: Telling CVS to notify you#Getting-Notified Getting Notified].
+[[cvs: Telling CVS to notify you#Telling CVS to notify you|Getting Notified]].
 </p>
 <dl compact="compact">
 <dt><code>-a <var>actions</var></code></dt>
 <dd><p>Specify actions for temporary watch, where
 <var>actions</var> is <code>edit</code>, <code>unedit</code>,
 <code>commit</code>, <code>all</code>, or <code>none</code>.  See
-[cvs: How to edit a file which is being watched#Editing-files Editing files].
+[[cvs: How to edit a file which is being watched#How to edit a file which is being watched|Editing files]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p></dd>
 </dl>
 
 </dd>
 <dt><code>watchers [<var>options</var>] [<var>files</var>&hellip;]</code></dt>
-<dd><p>See who is watching a file.  See [cvs: Information about who is watching and editing#Watch-information Watch information].
+<dd><p>See who is watching a file.  See [[cvs: Information about who is watching and editing#Information about who is watching and editing|Watch information]].
 </p>
 <dl compact="compact">
 <dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Local; run only in current working directory.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p>
 </dd>
 <dt><code>-R</code></dt>
-<dd><p>Operate recursively (default).  See [cvs: Recursive behavior#Recursive-behavior Recursive behavior].
+<dd><p>Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 </p></dd>
 </dl>
 
@@ -1076,6 +1076,6 @@ is remote, display both the client and server versions.
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Reference manual for Administrative files#Administrative-files Administrative files], Previous: [cvs: Guide to CVS commands#CVS-commands CVS commands], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]], Previous: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

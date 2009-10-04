@@ -1,7 +1,7 @@
 <div id="Getting-the-source"></div>
 <div class="header">
 <p>
-Next: [cvs: Committing your changes#Committing-your-changes Committing your changes], Up: [cvs: A sample session#A-sample-session A sample session] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Committing your changes#Committing your changes|Committing your changes]], Up: [[cvs: A sample session#A sample session|A sample session]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Getting-the-source-1"></div>
@@ -33,6 +33,6 @@ any of the files in it.
 <p>You start your favorite editor, hack away at &lsquo;<tt>backend.c</tt>&rsquo;, and a couple
 of hours later you have added an optimization pass to the compiler.
 A note to <small>RCS</small> and <small>SCCS</small> users: There is no need to lock the files that
-you want to edit.  See [cvs: Multiple developers#Multiple-developers Multiple developers], for an explanation.
+you want to edit.  See [[cvs: Multiple developers#Multiple developers|Multiple developers]], for an explanation.
 </p>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

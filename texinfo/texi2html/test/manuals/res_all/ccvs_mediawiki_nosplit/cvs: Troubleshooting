@@ -1,7 +1,7 @@
 <div id="Troubleshooting"></div>
 <div class="header">
 <p>
-Next: [cvs: Credits#Credits Credits], Previous: [cvs: Compatibility between CVS Versions#Compatibility Compatibility], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Credits#Credits|Credits]], Previous: [[cvs: Compatibility between CVS Versions#Compatibility between CVS Versions|Compatibility]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Troubleshooting-1"></div>
@@ -14,9 +14,9 @@ alphabetically.  If not, you can look through the
 section on other problems to see if your problem is
 mentioned there.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Partial list of error messages#Error-messages  Error messages]::<nowiki>              Partial list of CVS errors
-</nowiki>&bull;[cvs: Trouble making a connection to a CVS server#Connection  Connection]::<nowiki>                  Trouble making a connection to a CVS server
-</nowiki>&bull;[cvs: Other common problems#Other-problems  Other problems]::<nowiki>              Problems not readily listed by error message
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Partial list of error messages#Partial list of error messages| Error messages]]::<nowiki>              Partial list of CVS errors
+</nowiki>&bull;[[cvs: Trouble making a connection to a CVS server#Trouble making a connection to a CVS server| Connection]]::<nowiki>                  Trouble making a connection to a CVS server
+</nowiki>&bull;[[cvs: Other common problems#Other common problems| Other problems]]::<nowiki>              Problems not readily listed by error message
 </nowiki></pre>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

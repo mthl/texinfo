@@ -1,3 +1,6 @@
+XEmacs User's Manual
+********************
+
 This file documents the XEmacs editor.
 
 Copyright (C) 1985, 1986, 1988 Richard M. Stallman.

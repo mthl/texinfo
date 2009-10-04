@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.238 2009-09-26 23:10:03 pertusus Exp $
+# $Id: texi2html.init,v 1.239 2009-10-04 21:51:04 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -360,6 +360,9 @@ $FRENCHSPACING = 'off';
 # corresponds with @setfilename. Set with caution.
 $SETFILENAME = undef;
 
+# if unset, don't show a title
+$SHOW_TITLE = 1;
+
 # if set, the image files are completed to be relative from the
 # document directory, to the source manual directory and then to
 # the image
@@ -610,6 +613,8 @@ $toc_body          = \&T2H_DEFAULT_toc_body;
 $misc_command_line = \&t2h_default_misc_command_line;
 $misc_command_line_texi = \&t2h_default_misc_command_line;
 $print_title               = \&T2H_DEFAULT_print_title;
+# reset in info and xml
+$element_heading = \&t2h_default_element_heading;
 # reset in html
 $inline_contents    = \&T2H_DEFAULT_inline_contents;
 # reset in docbook and info.
@@ -743,7 +748,6 @@ sub t2h_default_set_variables_xml()
 
   $empty_line = \&t2h_default_empty_line;
   $comment = \&xml_default_comment;
-  $element_heading = \&xml_default_element_heading;
   $line_command = \&xml_default_line_command;
  
   %things_map = %things_map_xml;
@@ -1325,7 +1329,6 @@ $print_misc		      = \&T2H_DEFAULT_print_misc;
 $print_section_footer     = \&T2H_DEFAULT_print_section_footer;
 $print_chapter_header     = \&T2H_DEFAULT_print_chapter_header;
 $print_section_header     = \&T2H_DEFAULT_print_section_header;
-$print_element_header     = \&T2H_DEFAULT_print_element_header;
 $print_chapter_footer     = \&T2H_DEFAULT_print_chapter_footer;
 $print_page_head	      = \&T2H_DEFAULT_print_page_head;
 $print_page_foot	      = \&T2H_DEFAULT_print_page_foot;
@@ -1350,14 +1353,6 @@ $element_file_name         = \&t2h_default_element_file_name;
 ########################################################################
 # Layout for html for every sections
 #
-
-sub T2H_DEFAULT_print_element_header
-{
-    my $first_in_page = shift;
-    my $previous_is_top = shift;
-
-    return '';
-}
 
 sub T2H_DEFAULT_print_section($$$$)
 {
@@ -1442,9 +1437,7 @@ sub T2H_DEFAULT_print_Footnotes
 }
 sub T2H_DEFAULT_print_About
 {
-    # if there is no section navigation and it is not split, the 
-    # navigation information is useless
-    return &$print_misc(@_) if (get_conf('SPLIT') or get_conf('headers'));
+    return &$print_misc(@_);
 }
 
 sub T2H_DEFAULT_print_misc_header
@@ -1479,6 +1472,29 @@ use vars qw(
   4 => '.'
 );
 
+sub t2h_default_heading_text($$$)
+{
+    my $command = shift;
+    my $text = shift;
+    my $level = shift;
+
+    return '' if ($text !~ /\S/);
+    my $result = $text ."\n";
+    # as seen in encodings/nodetest_utf8_no_unicode, the length can be in
+    # bytes (certainly) when there hasn't been a require Encode
+    $result .=($t2h_default_underline_symbol{$level} x length($text))."\n";
+    return $result;
+}
+
+sub t2h_default_heading_text_preformatted($$$)
+{
+    my $command = shift;
+    my $text = shift;
+    my $level = shift;
+
+    return t2h_default_heading_text($command, $text, $level);
+}
+
 sub T2H_DEFAULT_print_misc
 {
     my $fh = shift;
@@ -1486,9 +1502,7 @@ sub T2H_DEFAULT_print_misc
     my $misc_page = shift;
     my $buttons = \@MISC_BUTTONS;
     &$print_misc_header($fh, $buttons, $new_file, $misc_page);
-    my $heading = $Texi2HTML::NAME{This};
-    print $fh "$heading\n";
-    print $fh "".($t2h_default_underline_symbol{1} x length($heading))."\n\n";
+    print $fh "".&$heading_text('misc heading', $Texi2HTML::NAME{This}, 1) . "\n";
     main::print_lines($fh);
     &$print_misc_footer($fh, $buttons, $new_file);
 }
@@ -1568,10 +1582,13 @@ sub T2H_DEFAULT_print_page_foot($)
 ###################################################################
 # Layout of navigation panel
 
-sub T2H_DEFAULT_print_head_navigation($$)
+sub T2H_DEFAULT_print_head_navigation($$$$$)
 {
     my $fh = shift;
     my $buttons = shift;
+    my $first_in_page = shift;
+    my $previous_is_top = shift;
+    my $element = shift;
 
     return '';
 }
@@ -1725,7 +1742,23 @@ sub T2H_DEFAULT_shortcontents($$)
 sub T2H_DEFAULT_print_title()
 {
     my $element = shift;
-    return undef;
+    return undef unless ($SHOW_TITLE);
+    if ($USE_TITLEPAGE_FOR_TITLE)
+    {
+        my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_format) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
+
+        &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_format);
+        return $Texi2HTML::TITLEPAGE;
+    }
+    else
+    {
+       my $title = '';
+       $title = $Texi2HTML::THISDOC{'simpletitle'} if (defined($Texi2HTML::THISDOC{'simpletitle'}) and $Texi2HTML::THISDOC{'simpletitle'} !~ /^\s*$/);
+       if ($title ne '')
+       {
+           return &$heading_text('@settitle', $title, 0) . "\n";
+       }
+    }
 }
 
 sub T2H_DEFAULT_toc_body($)
@@ -1737,6 +1770,9 @@ sub T2H_DEFAULT_toc_body($)
     @{$Texi2HTML::OVERVIEW} = @$stoc_lines if (defined($stoc_lines));;
 }
 
+# element and elements_list may not be undef when called from the 
+# main program, but may be if called from other customization function,
+# for example, here, print_Top.
 sub T2H_DEFAULT_inline_contents($$$$)
 {
     my $fh = shift;
@@ -1746,25 +1782,50 @@ sub T2H_DEFAULT_inline_contents($$$$)
     my $name;
     my $lines;
 
+    my $toc_file;
+    $toc_file = $element->{'file'} if (defined($element));
+
     my $result = undef;
 
     if ($command eq 'contents')
     {
         $name = $Texi2HTML::NAME{'Contents'};
-        $lines = $Texi2HTML::TOC_LINES;
+        $toc_file = $Texi2HTML::THISDOC{'toc_file'} if (!defined($toc_file));
+        if (defined($elements_list))
+        {
+            $lines = &$contents($elements_list, $toc_file);
+        }
+        else
+        {
+            $lines = $Texi2HTML::TOC_LINES;
+        }
     }
     else
     {
         $name = $Texi2HTML::NAME{'Overview'};
-        $lines = $Texi2HTML::OVERVIEW;
+        $toc_file = $Texi2HTML::THISDOC{'stoc_file'} if (!defined($toc_file));
+        if (defined($elements_list))
+        {
+            $lines = &$shortcontents($elements_list, $toc_file);
+        }
+        else
+        {
+            $lines = $Texi2HTML::OVERVIEW;
+        }
     }
-    if (@{$lines})
+    if (defined($lines) and @{$lines})
     {
-         $result = [ $name . "\n", ($t2h_default_underline_symbol{0} x length($name))."\n", "\n" ];
+         $result = [ &$heading_text("\@$command", $name, 1), "\n" ];
+         my $contents_anchor = &$anchor($element->{'id'});
+         if (defined($contents_anchor) and $contents_anchor =~ /\S/)
+         {
+             unshift @$result, $contents_anchor."\n";
+         }
          push @$result, (@$lines, "\n");
     }
     return $result;
 }
+
 
 sub T2H_DEFAULT_css_lines ($$)
 {
@@ -1859,12 +1920,16 @@ sub T2H_DEFAULT_titlepage($$$$)
     if ($titlepage_text eq '')
     {
        my $title = '';
-       $title = $Texi2HTML::THISDOC{'title'} if (defined($Texi2HTML::THISDOC{'title'}) and $Texi2HTML::THISDOC{'title'} !~ /^\s*$/);
+       $title = $Texi2HTML::THISDOC{'simpletitle'} if (defined($Texi2HTML::THISDOC{'simpletitle'}) and $Texi2HTML::THISDOC{'simpletitle'} !~ /^\s*$/);
        if ($title ne '')
        {
-           $Texi2HTML::TITLEPAGE = "$title\n";
-           $Texi2HTML::TITLEPAGE .= ($t2h_default_underline_symbol{0} x length($title))."\n";
+           $Texi2HTML::TITLEPAGE = &$heading_text('@settitle', $title, 0);
+           $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
        }
+    }
+    else
+    {
+        $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
     }
 
     if ($Texi2HTML::THISDOC{'setcontentsaftertitlepage'} and (defined($Texi2HTML::THISDOC{'inline_contents'}->{'contents'})) and @{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}})
@@ -1873,8 +1938,7 @@ sub T2H_DEFAULT_titlepage($$$$)
         {
             $Texi2HTML::TITLEPAGE .= $line;
         }
-        #$Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
-        $Texi2HTML::TITLEPAGE .= "\n";
+        $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
     }
     if ($Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'} and (defined($Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'})) and @{$Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'}})
     {
@@ -1882,11 +1946,11 @@ sub T2H_DEFAULT_titlepage($$$$)
         {
             $Texi2HTML::TITLEPAGE .= $line;
         }
-        #$Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
-        $Texi2HTML::TITLEPAGE .= "\n";
+        $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
     }
     return $Texi2HTML::TITLEPAGE;
 }
+
 
 sub T2H_DEFAULT_print_redirection_page()
 {
@@ -3743,15 +3807,14 @@ sub default_titlefont($$)
     return '';
 }
 
-# Avoid adding h1 if the text is empty
+# Return nothing if the text is empty
 sub t2h_default_titlefont($$$)
 {
     shift;
     my $args = shift;
     my $heading = $args->[0];
     return '' unless ($heading =~ /\S/);
-    return $heading . "\n" .
-       ($t2h_default_underline_symbol{0} x length($heading)). "\n";
+    return &$heading_text('@titlefont', $heading, 0);
 }
 
 # At some point in time (before 4.7?) according to the texinfo 
@@ -4449,6 +4512,8 @@ $def_line_no_texi  = \&t2h_default_def_line_no_texi;
 $raw               = \&t2h_default_raw;
 $raw_no_texi       = \&t2h_default_raw_no_texi;
 $heading           = \&t2h_default_heading;
+$heading_text      = \&t2h_default_heading_text;
+$heading_text_preformatted      = \&t2h_default_heading_text_preformatted;
 $element_heading   = \&t2h_default_element_heading;
 $heading_no_texi   = \&t2h_default_heading_no_texi;
 $external_href     = \&t2h_default_external_href;
@@ -5838,52 +5903,41 @@ sub t2h_default_element_heading($$$$$$$$$$$$)
     my $new_element = shift;
 #print STDERR ":::::::: $element $command i_p $in_preformatted o_s $one_section e_h $element_heading f_p $first_in_page i_t $is_top p_i_t $previous_is_top id $element_id new $new_element\n";
 
-    my $result = '';
-    if ($new_element and !$one_section)
-    {
-       $result .= &$print_element_header($first_in_page, $previous_is_top);
-    }
-
-    #return $result if (!$element_heading);
-    return $result. &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading);
-}
-
-# common for html and docbook
-sub xml_default_element_heading($$$$$$$$$$$$)
-{   
-    my $element = shift;
-    my $command = shift;
-    my $texi_line = shift;
-    my $line = shift;
-    my $in_preformatted = shift;
-    my $one_section = shift;
-    my $element_heading = shift;
-    my $first_in_page = shift;
-    my $is_top = shift;
-    my $previous_is_top = shift;
-    my $command_line = shift;
-    my $element_id = shift;
-    my $new_element = shift;
-#print STDERR ":::::::: $element $command i_p $in_preformatted o_s $one_section e_h $element_heading f_p $first_in_page i_t $is_top p_i_t $previous_is_top id $element_id new $new_element\n";
-
+#    my $result = '';
     my $result = &$element_label($element_id, $element, $command, $command_line);
+
+    # in the default case, print_head_navigation and print_navigation are both no-ops.
     if ($new_element and !$one_section)
     {
-       if (!$element->{'element_ref'}->{'top'})
+       main::msg_debug ("For $element->{'texi'}, element_ref not defined", $element->{'line_nr'}) if (!defined($element->{'element_ref'}));
+       if (!defined($element->{'element_ref'}->{'top'}))
        {
-    #return $result if (defined($command) and $command eq 'node' and !$element_heading);
-           $result .= &$print_element_header($first_in_page, $previous_is_top);
+           if (defined($print_element_header))
+           { # FIXME backward compatibility, print_element_header is obsoleted in nov 2009
+                $result .= &$print_element_header($first_in_page, $previous_is_top);
+           }
+           else
+           {
+               if (($first_in_page or $previous_is_top) and get_conf('headers'))
+               {
+                   $result .= &$print_head_navigation(undef, \@SECTION_BUTTONS, $first_in_page, $previous_is_top, $element);
+               }
+               else
+               { # got to do this here, as it isn't done in print_head_navigation
+                    $result .= &$print_navigation(\@SECTION_BUTTONS) if (get_conf('headers') or get_conf('SPLIT') eq 'node');
+               }
+           }
        }
        else
-       {
-           $result .= &$print_head_navigation(undef, \@TOP_BUTTONS) if (get_conf('SPLIT') or get_conf('headers'));
+       { # this is here because we want to always print the head navigation for top
+         # and use TOP_BUTTONS
+           $result .= &$print_head_navigation(undef, \@TOP_BUTTONS, $first_in_page, $previous_is_top, $element) 
+              if (get_conf('SPLIT') or get_conf('headers'));
        }
     }
 
-    return $result if (!$element_heading);
     return $result. &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading);
 }
-
 
 # This function formats a heading for an element
 #
@@ -5919,17 +5973,27 @@ sub t2h_default_heading($$$$$;$$)
         {
           $level = 3;
         }
-        # FIXME: drop the 'top', as was done for html?
-        return '' if ((!$element->{'top'} and !$element->{'this'}) or $element->{'with_section'})
+        return '' if (!$element->{'this'} or $element->{'with_section'})
     }
-    my $text = "$element->{'text'}";
-    # when @top is empty, use settitle
-    $text = $Texi2HTML::THISDOC{'settitle'} if (!length($text) and $element->{'tag'} eq 'top' and defined ($Texi2HTML::THISDOC{'settitle'}) and length($Texi2HTML::THISDOC{'settitle'}));
-    # as seen in encodings/nodetest_utf8_no_unicode, the length can be in
-    # bytes (certainly) when there hasn't been a require Encode
-    my $result = $text . "\n" .
-       ($t2h_default_underline_symbol{$level} x length($text)) . "\n";
+    else
+    {
+        $command = $element->{'tag_level'};
+    }
+    my $text = $element->{'text'};
 
+    if ($TOC_LINKS and $command !~ /heading/ and defined($element->{'tocid'}))
+    {
+         $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
+    }
+
+    if ($in_preformatted)
+    {
+        $result = &$heading_text_preformatted("\@$command", $text, $level);
+    }
+    else
+    {
+        $result = &$heading_text("\@$command", $text, $level);
+    }
    #$result .= "\n";
    return $result;
 }
@@ -6027,9 +6091,8 @@ sub t2h_default_foot_line_and_ref($$$$$$$$$)
 sub t2h_default_foot_section($)
 {
     my $lines = shift;
-    my $header = &$I('Footnotes');
-    my $underline = ($t2h_default_underline_symbol{1} x length($header));
-    unshift (@$lines, "$header\n$underline\n\n");
+    my $header = &$heading_text('footnotes', &$I('Footnotes'), 3);
+    unshift (@$lines, "$header\n");
     return $lines; 
 }
 

@@ -1,7 +1,7 @@
 <div id="Watches"></div>
 <div class="header">
 <p>
-Next: [cvs: Choosing between reserved or unreserved checkouts#Choosing-a-model Choosing a model], Previous: [cvs: Several developers simultaneously attempting to run CVS#Concurrency Concurrency], Up: [cvs: Multiple developers#Multiple-developers Multiple developers] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Choosing between reserved or unreserved checkouts#Choosing between reserved or unreserved checkouts|Choosing a model]], Previous: [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Concurrency]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Mechanisms-to-track-who-is-editing-files"></div>
@@ -28,10 +28,15 @@ discard a working directory which is no longer in use,
 but <small>CVS</small> is not able to enforce this behavior.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Telling CVS to watch certain files#Setting-a-watch  Setting a watch]::<nowiki>             Telling CVS to watch certain files
-</nowiki>&bull;[cvs: Telling CVS to notify you#Getting-Notified  Getting Notified]::<nowiki>            Telling CVS to notify you
-</nowiki>&bull;[cvs: How to edit a file which is being watched#Editing-files  Editing files]::<nowiki>               How to edit a file which is being watched
-</nowiki>&bull;[cvs: Information about who is watching and editing#Watch-information  Watch information]::<nowiki>           Information about who is watching and editing
-</nowiki>&bull;[cvs: Using watches with old versions of CVS#Watches-Compatibility  Watches Compatibility]::<nowiki>       Watches interact poorly with CVS 1.6 or earlier
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Telling CVS to watch certain files#Telling CVS to watch certain files| Setting a watch]]::<nowiki>             Telling CVS to watch certain files
+</nowiki>&bull;[[cvs: Telling CVS to notify you#Telling CVS to notify you| Getting Notified]]::<nowiki>            Telling CVS to notify you
+</nowiki>&bull;[[cvs: How to edit a file which is being watched#How to edit a file which is being watched| Editing files]]::<nowiki>               How to edit a file which is being watched
+</nowiki>&bull;[[cvs: Information about who is watching and editing#Information about who is watching and editing| Watch information]]::<nowiki>           Information about who is watching and editing
+</nowiki>&bull;[[cvs: Using watches with old versions of CVS#Using watches with old versions of CVS| Watches Compatibility]]::<nowiki>       Watches interact poorly with CVS 1.6 or earlier
 </nowiki></pre>
+<hr>
+<div class="header">
+<p>
+Next: [[cvs: Choosing between reserved or unreserved checkouts#Choosing between reserved or unreserved checkouts|Choosing a model]], Previous: [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Concurrency]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
+</div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

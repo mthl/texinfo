@@ -1,7 +1,7 @@
 <div id="Windows-permissions"></div>
 <div class="header">
 <p>
-Next: [cvs: The attic#Attic Attic], Previous: [cvs: File permissions#File-permissions File permissions], Up: [cvs: How data is stored in the repository#Repository-storage Repository storage] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: The attic#The attic|Attic]], Previous: [[cvs: File permissions#File permissions|File permissions]], Up: [[cvs: How data is stored in the repository#How data is stored in the repository|Repository storage]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="File-Permission-issues-specific-to-Windows"></div>
@@ -26,6 +26,6 @@ implications of enabling that option, nor do I know
 whether there is something which <small>CVS</small> could be doing
 differently in order to avoid the problem.  If you find
 something out, please let us know as described in
-[cvs: Dealing with bugs in CVS or this manual#BUGS BUGS].
+[[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]].
 </p>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

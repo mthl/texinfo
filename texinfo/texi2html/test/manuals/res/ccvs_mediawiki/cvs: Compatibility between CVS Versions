@@ -1,18 +1,18 @@
 <div id="Compatibility"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &lt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: All environment variables which affect CVS#All environment variables which affect CVS| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: All environment variables which affect CVS#All environment variables which affect CVS| &lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Troubleshooting#Troubleshooting  &gt; ]|</td>
-<td valign="middle" align="left">|[cvs: Troubleshooting#Troubleshooting  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[cvs: Troubleshooting#Troubleshooting| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Troubleshooting#Troubleshooting| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Compatibility-between-CVS-Versions"></div>
 == Compatibility between CVS Versions ==
@@ -21,7 +21,7 @@
 <div id="index-Versions_002c-of-CVS"></div>
 <div id="index-Compatibility_002c-between-CVS-versions"></div>
 <p>The repository format is compatible going back to
-<small>CVS</small> 1.3.  But see [cvs: Multiple developers#Watches-Compatibility Using watches with old versions of CVS], if
+<small>CVS</small> 1.3.  But see [[cvs: Multiple developers#Using watches with old versions of CVS|Using watches with old versions of CVS]], if
 you have copies of <small>CVS</small> 1.6 or older and you want
 to use the optional developer communication features.
 </p>
@@ -42,16 +42,16 @@ advantage of new features and bugfixes, however.
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: All environment variables which affect CVS#Environment-variables  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Troubleshooting#Troubleshooting  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: All environment variables which affect CVS#All environment variables which affect CVS| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Troubleshooting#Troubleshooting| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -1,7 +1,7 @@
 <div id="Binary-files"></div>
 <div class="header">
 <p>
-Next: [cvs: Multiple developers#Multiple-developers Multiple developers], Previous: [cvs: History browsing#History-browsing History browsing], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Multiple developers#Multiple developers|Multiple developers]], Previous: [[cvs: History browsing#History browsing|History browsing]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Handling-binary-files"></div>
@@ -17,7 +17,7 @@ abilities, <small>CVS</small> can store binary files.  For
 example, one might store a web site in <small>CVS</small>
 including both text files and binary images.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: The issues with binary files#Binary-why  Binary why]::<nowiki>     More details on issues with binary files
-</nowiki>&bull;[cvs: How to store binary files#Binary-howto  Binary howto]::<nowiki>   How to store them
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: The issues with binary files#The issues with binary files| Binary why]]::<nowiki>     More details on issues with binary files
+</nowiki>&bull;[[cvs: How to store binary files#How to store binary files| Binary howto]]::<nowiki>   How to store them
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

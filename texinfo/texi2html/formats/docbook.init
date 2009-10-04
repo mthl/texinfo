@@ -62,6 +62,7 @@ $USE_NODES = 0;
 $USE_SECTIONS = 1;
 
 $SHOW_MENU = 0;
+$SHOW_TITLE = 0;
 $HEADERS = 0;
 # certainly irrelevant
 $SIMPLE_MENU = 0;
@@ -228,7 +229,8 @@ $print_Top = \&docbook_print_Top;
 $print_Top_footer = \&docbook_print_Top_footer;
 $print_page_head = \&docbook_print_page_head;
 $print_foot_navigation = \&docbook_noop;
-$toc_body = \&docbook_noop;
+$contents = \&docbook_noop;
+$shortcontents = \&docbook_noop;
 $about_body = \&docbook_noop;
 $print_page_foot = \&docbook_print_page_foot;
 $end_section = \&docbook_end_section;
@@ -250,7 +252,6 @@ $foot_line_and_ref     = \&docbook_foot_line_and_ref;
 $format                = \&docbook_format;
 $format_list_item_texi = \&docbook_format_list_item_texi;
 $heading               = \&docbook_heading;
-$element_heading       = \&docbook_element_heading;
 $image                 = \&docbook_image;
 $image_files           = \&docbook_image_files;
 $index_entry_command   = \&docbook_index_entry_command;
@@ -481,28 +482,6 @@ sub docbook_element_label($$$$)
     }
     return '';
 }
-
-sub docbook_element_heading($$$$$$$$$$$$)
-{
-    my $element = shift;
-    my $command = shift;
-    my $texi_line = shift;
-    my $line = shift;
-    my $in_preformatted = shift;
-    my $one_section = shift;
-    my $element_heading = shift;
-    my $first_in_page = shift;
-    my $is_top = shift;
-    my $previous_is_top = shift;
-    my $command_line = shift;
-    my $element_id = shift;
-    my $new_element = shift;
-#print STDERR ":::::::: $element $command i_p $in_preformatted o_s $one_section e_h $element_heading f_p $first_in_page i_t $is_top p_i_t $previous_is_top id $element_id new $new_element\n";
-
-    my $result = &$element_label($element_id, $element, $command, $command_line);
-    return $result. &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading);
-}
-
 
 sub docbook_paragraph($$$$$$$$$$$$)
 {

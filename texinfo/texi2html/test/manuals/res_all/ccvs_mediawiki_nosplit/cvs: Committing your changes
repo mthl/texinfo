@@ -1,7 +1,7 @@
 <div id="Committing-your-changes"></div>
 <div class="header">
 <p>
-Next: [cvs: Cleaning up#Cleaning-up Cleaning up], Previous: [cvs: Getting the source#Getting-the-source Getting the source], Up: [cvs: A sample session#A-sample-session A sample session] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Cleaning up#Cleaning up|Cleaning up]], Previous: [[cvs: Getting the source#Getting the source|Getting the source]], Up: [[cvs: A sample session#A sample session|A sample session]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Committing-your-changes-1"></div>
@@ -67,6 +67,6 @@ this:
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Cleaning up#Cleaning-up Cleaning up], Previous: [cvs: Getting the source#Getting-the-source Getting the source], Up: [cvs: A sample session#A-sample-session A sample session] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Cleaning up#Cleaning up|Cleaning up]], Previous: [[cvs: Getting the source#Getting the source|Getting the source]], Up: [[cvs: A sample session#A sample session|A sample session]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

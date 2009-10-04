@@ -1,7 +1,7 @@
 <div id="log-options"></div>
 <div class="header">
 <p>
-Next: [cvs: log examples#log-examples log examples], Up: [cvs: log--Print out log information for files#log log] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: log examples#log examples|log examples]], Up: [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="log-options-1"></div>
@@ -21,7 +21,7 @@ branch, normally the highest branch on the trunk.
 date/time in the range given by the
 semicolon-separated list of dates.  The date formats
 accepted are those accepted by the &lsquo;<samp>-D</samp>&rsquo; option to
-many other <small>CVS</small> commands (see [cvs: Common command options#Common-options Common options]).
+many other <small>CVS</small> commands (see [[cvs: Common command options#Common command options|Common options]]).
 Dates can be combined into ranges as follows:
 </p>
 <dl compact="compact">
@@ -163,6 +163,6 @@ selected by &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>-r</samp>&rsquo;.
 <hr>
 <div class="header">
 <p>
-Next: [cvs: log examples#log-examples log examples], Up: [cvs: log--Print out log information for files#log log] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: log examples#log examples|log examples]], Up: [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -1,7 +1,7 @@
 <div id="History-browsing"></div>
 <div class="header">
 <p>
-Next: [cvs: Handling binary files#Binary-files Binary files], Previous: [cvs: Adding, removing, and renaming files and directories#Adding-and-removing Adding and removing], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Handling binary files#Handling binary files|Binary files]], Previous: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="History-browsing-1"></div>
@@ -16,9 +16,9 @@ history&mdash;what files have changed when, how, and by
 whom, there are a variety of mechanisms for looking
 through the history.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Log messages#log-messages  log messages]::<nowiki>                Log messages
-</nowiki>&bull;[cvs: The history database#history-database  history database]::<nowiki>            The history database
-</nowiki>&bull;[cvs: User-defined logging#user_002ddefined-logging  user-defined logging]::<nowiki>        User-defined logging
-</nowiki>&bull;[cvs: Annotate command#annotate  annotate]::<nowiki>                    What revision modified each line of a file?
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Log messages#Log messages| log messages]]::<nowiki>                Log messages
+</nowiki>&bull;[[cvs: The history database#The history database| history database]]::<nowiki>            The history database
+</nowiki>&bull;[[cvs: User-defined logging#User-defined logging| user-defined logging]]::<nowiki>        User-defined logging
+</nowiki>&bull;[[cvs: Annotate command#Annotate command| annotate]]::<nowiki>                    What revision modified each line of a file?
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

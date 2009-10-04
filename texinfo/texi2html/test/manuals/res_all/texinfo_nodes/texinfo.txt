@@ -1,3 +1,6 @@
+GNU Texinfo 4.2
+***************
+
 Short Table of Contents
 ***********************
 

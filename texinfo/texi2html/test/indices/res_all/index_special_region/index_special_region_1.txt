@@ -26,7 +26,7 @@ fun
 * Copying and indices::
 
 Footnotes
-*********
+---------
 
 (1)
  The public

@@ -1,7 +1,7 @@
 <div id="Modifying-tags"></div>
 <div class="header">
 <p>
-Next: [cvs: Tagging and adding and removing files#Tagging-add_002fremove Tagging add/remove], Previous: [cvs: Specifying what to tag by date or revision#Tagging-by-date_002ftag Tagging by date/tag], Up: [cvs: Revisions#Revisions Revisions] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Tagging and adding and removing files#Tagging and adding and removing files|Tagging add/remove]], Previous: [[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision|Tagging by date/tag]], Up: [[cvs: Revisions#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Deleting_002c-moving_002c-and-renaming-tags"></div>
@@ -23,7 +23,7 @@ dangerous; they permanently discard historical
 information and it can be difficult or impossible to
 recover from errors.  If you are a <small>CVS</small>
 administrator, you may consider restricting these
-commands with taginfo (see [cvs: User-defined logging#user_002ddefined-logging user-defined logging]).</strong>
+commands with taginfo (see [[cvs: User-defined logging#User-defined logging|user-defined logging]]).</strong>
 </p>
 <div id="index-Deleting-tags"></div>
 <div id="index-Deleting-branch-tags"></div>
@@ -98,6 +98,6 @@ cvs rtag -d old-name-0-4 tc
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Tagging and adding and removing files#Tagging-add_002fremove Tagging add/remove], Previous: [cvs: Specifying what to tag by date or revision#Tagging-by-date_002ftag Tagging by date/tag], Up: [cvs: Revisions#Revisions Revisions] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Tagging and adding and removing files#Tagging and adding and removing files|Tagging add/remove]], Previous: [[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision|Tagging by date/tag]], Up: [[cvs: Revisions#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

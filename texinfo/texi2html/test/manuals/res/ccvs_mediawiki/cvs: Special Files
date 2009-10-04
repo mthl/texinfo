@@ -1,18 +1,18 @@
 <div id="Special-Files"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &lt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: How your build system interacts with CVS#How your build system interacts with CVS| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: How your build system interacts with CVS#How your build system interacts with CVS| &lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &gt; ]|</td>
-<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[cvs: Guide to CVS commands#Guide to CVS commands| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Guide to CVS commands#Guide to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Special-Files-1"></div>
 == Special Files ==
@@ -38,16 +38,16 @@ permissions during repository transactions.
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: How your build system interacts with CVS#Builds  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Guide to CVS commands#CVS-commands  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: How your build system interacts with CVS#How your build system interacts with CVS| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Guide to CVS commands#Guide to CVS commands| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

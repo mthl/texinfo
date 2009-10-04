@@ -1,7 +1,7 @@
 <div id="Defining-the-module"></div>
 <div class="header">
 <p>
-Previous: [cvs: Setting up the files#Setting-up-the-files Setting up the files], Up: [cvs: Starting a project with CVS#Starting-a-new-project Starting a new project] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[cvs: Setting up the files#Setting up the files|Setting up the files]], Up: [[cvs: Starting a project with CVS#Starting a project with CVS|Starting a new project]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Defining-the-module-1"></div>
@@ -27,7 +27,7 @@ $ cd CVSROOT
 </nowiki></pre></td></tr></table>
 
 </li><li>
-Edit the file and insert a line that defines the module.  See [cvs: The administrative files#Intro-administrative-files Intro administrative files], for an introduction.  See [cvs: The modules file#modules modules], for a full
+Edit the file and insert a line that defines the module.  See [[cvs: The administrative files#The administrative files|Intro administrative files]], for an introduction.  See [[cvs: The modules file#The modules file|modules]], for a full
 description of the modules file.  You can use the
 following line to define the module &lsquo;<samp>tc</samp>&rsquo;:
 

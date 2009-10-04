@@ -1,7 +1,7 @@
 <div id="Line-formats"></div>
 <div class="header">
 <p>
-Previous: [cvs: Line group formats#Line-group-formats Line group formats], Up: [cvs: diff options#diff-options diff options] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[cvs: Line group formats#Line group formats|Line group formats]], Up: [[cvs: diff options#diff options|diff options]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Line-formats-1"></div>
@@ -83,7 +83,7 @@ For example, &lsquo;<samp>%c'\0'</samp>&rsquo; stands for a null character.
 <dd><p>where <var>F</var> is a <code>printf</code> conversion specification,
 stands for the line number formatted with <var>F</var>.
 For example, &lsquo;<samp>%.5dn</samp>&rsquo; prints the line number using the
-<code>printf</code> format <code>&quot;%.5d&quot;</code>.  See [cvs: Line group formats#Line-group-formats Line group formats], for
+<code>printf</code> format <code>&quot;%.5d&quot;</code>.  See [[cvs: Line group formats#Line group formats|Line group formats]], for
 more about printf conversion specifications.
 </p>
 </dd>
@@ -121,6 +121,6 @@ to get fine control over <code>diff</code>&rsquo;s output.
 <hr>
 <div class="header">
 <p>
-Previous: [cvs: Line group formats#Line-group-formats Line group formats], Up: [cvs: diff options#diff-options diff options] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[cvs: Line group formats#Line group formats|Line group formats]], Up: [[cvs: diff options#diff options|diff options]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

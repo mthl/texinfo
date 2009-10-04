@@ -1,18 +1,18 @@
 <div id="Starting-a-new-project"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: The Repository#Repository  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Server-temporary-directory  &lt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: The Repository#The Repository| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: The Repository#Temporary directories for the server| &lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[[#Setting-up-the-files| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[#Setting up the files| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Revisions#Revisions| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Starting-a-project-with-CVS"></div>
 == Starting a project with CVS ==
@@ -26,29 +26,29 @@ through your file organization.  It is not impossible
 to rename or move files, but it does increase the
 potential for confusion and <small>CVS</small> does have some
 quirks particularly in the area of renaming
-directories.  See section [cvs: Adding, removing, and renaming files and directories#Moving-files Moving and renaming files].
+directories.  See section [[cvs: Adding, removing, and renaming files and directories#Moving and renaming files|Moving and renaming files]].
 </p>
 <p>What to do next depends on the situation at hand.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Setting-up-the-files| Setting up the files]]::<nowiki>        Getting the files into the repository
-</nowiki>&bull;[[#Defining-the-module| Defining the module]]::<nowiki>         How to make a module of the files
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Setting up the files| Setting up the files]]::<nowiki>        Getting the files into the repository
+</nowiki>&bull;[[#Defining the module| Defining the module]]::<nowiki>         How to make a module of the files
 </nowiki></pre>
 <hr>
 <div id="Setting-up-the-files"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Starting-a-new-project| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Starting-a-new-project| Up ]]|</td>
-<td valign="middle" align="left">|[[#From-files| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Starting a project with CVS| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Starting a project with CVS| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Starting a project with CVS| Up ]]|</td>
+<td valign="middle" align="left">|[[#Creating a directory tree from a number of files| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Revisions#Revisions| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Setting-up-the-files-1"></div>
 === Setting up the files ===
@@ -56,28 +56,28 @@ directories.  See section [cvs: Adding, removing, and renaming files and directo
 <p>The first step is to create the files inside the repository.  This can
 be done in a couple of different ways.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#From-files| From files]]::<nowiki>                  This method is useful with old projects
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Creating a directory tree from a number of files| From files]]::<nowiki>                  This method is useful with old projects
                                 where files already exists.
-</nowiki>&bull;[[#From-other-version-control-systems| From other version control systems]]::<nowiki>  Old projects where you want to
+</nowiki>&bull;[[#Creating Files From Other Version Control Systems| From other version control systems]]::<nowiki>  Old projects where you want to
                                         preserve history from another system.
-</nowiki>&bull;[[#From-scratch| From scratch]]::<nowiki>                Creating a directory tree from scratch.
+</nowiki>&bull;[[#Creating a directory tree from scratch| From scratch]]::<nowiki>                Creating a directory tree from scratch.
 </nowiki></pre>
 <hr>
 <div id="From-files"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Setting-up-the-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Setting-up-the-files| Up ]]|</td>
-<td valign="middle" align="left">|[[#From-other-version-control-systems| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Starting a project with CVS| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Setting up the files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Setting up the files| Up ]]|</td>
+<td valign="middle" align="left">|[[#Creating Files From Other Version Control Systems| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Revisions#Revisions| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Creating-a-directory-tree-from-a-number-of-files"></div>
 ==== Creating a directory tree from a number of files ====
@@ -100,7 +100,7 @@ flag, <small>CVS</small> starts an editor and prompts for a
 message.  The string &lsquo;<samp>yoyo</samp>&rsquo; is a <em>vendor tag</em>,
 and &lsquo;<samp>start</samp>&rsquo; is a <em>release tag</em>.  They may fill
 no purpose in this context, but since <small>CVS</small> requires
-them they must be present.  See section [cvs: Tracking third-party sources#Tracking-sources Tracking third-party sources], for
+them they must be present.  See section [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking third-party sources]], for
 more information about them.
 </p>
 <p>You can now verify that it worked, and remove your
@@ -125,28 +125,28 @@ as it did in the example above.
 <p>It is a good idea to check that the permissions
 <small>CVS</small> sets on the directories inside <code>$CVSROOT</code>
 are reasonable, and that they belong to the proper
-groups.  See section [cvs: The Repository#File-permissions File permissions].
+groups.  See section [[cvs: The Repository#File permissions|File permissions]].
 </p>
 <p>If some of the files you want to import are binary, you
 may want to use the wrappers features to specify which
-files are binary and which are not.  See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
+files are binary and which are not.  See section [[cvs: Reference manual for Administrative files#The cvswrappers file|The cvswrappers file]].
 </p>
 <hr>
 <div id="From-other-version-control-systems"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#From-files| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Setting-up-the-files| Up ]]|</td>
-<td valign="middle" align="left">|[[#From-scratch| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Starting a project with CVS| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Creating a directory tree from a number of files| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Setting up the files| Up ]]|</td>
+<td valign="middle" align="left">|[[#Creating a directory tree from scratch| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Revisions#Revisions| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Creating-Files-From-Other-Version-Control-Systems"></div>
 ==== Creating Files From Other Version Control Systems ====
@@ -223,19 +223,19 @@ vary).  See the comments in the script for details.
 <hr>
 <div id="From-scratch"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#From-other-version-control-systems| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Setting-up-the-files| Up ]]|</td>
-<td valign="middle" align="left">|[[#Defining-the-module| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Starting a project with CVS| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Creating Files From Other Version Control Systems| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Setting up the files| Up ]]|</td>
+<td valign="middle" align="left">|[[#Defining the module| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Revisions#Revisions| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Creating-a-directory-tree-from-scratch"></div>
 ==== Creating a directory tree from scratch ====
@@ -265,19 +265,19 @@ directories inside <code>$CVSROOT</code> are reasonable.
 <hr>
 <div id="Defining-the-module"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#From-scratch| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Starting-a-new-project| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt; ]|</td>
-<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Starting a project with CVS| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Creating a directory tree from scratch| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Starting a project with CVS| Up ]]|</td>
+<td valign="middle" align="left">|[[cvs: Revisions#Revisions| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Revisions#Revisions| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Defining-the-module-1"></div>
 === Defining the module ===
@@ -302,7 +302,7 @@ $ cd CVSROOT
 </nowiki></pre></td></tr></table>
 
 </li><li>
-Edit the file and insert a line that defines the module.  See section [cvs: The Repository#Intro-administrative-files The administrative files], for an introduction.  See section [cvs: Reference manual for Administrative files#modules The modules file], for a full
+Edit the file and insert a line that defines the module.  See section [[cvs: The Repository#The administrative files|The administrative files]], for an introduction.  See section [[cvs: Reference manual for Administrative files#The modules file|The modules file]], for a full
 description of the modules file.  You can use the
 following line to define the module &lsquo;<samp>tc</samp>&rsquo;:
 
@@ -325,16 +325,16 @@ $ cvs release -d CVSROOT
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Starting-a-new-project| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Revisions#Revisions  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Starting a project with CVS| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Revisions#Revisions| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

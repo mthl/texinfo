@@ -1,7 +1,7 @@
 <div id="Tracking-sources"></div>
 <div class="header">
 <p>
-Next: [cvs: How your build system interacts with CVS#Builds Builds], Previous: [cvs: Keyword substitution#Keyword-substitution Keyword substitution], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: How your build system interacts with CVS#How your build system interacts with CVS|Builds]], Previous: [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Tracking-third_002dparty-sources"></div>
@@ -36,16 +36,16 @@ revision.  When a local modification is committed it is
 placed on the main trunk, and made the &lsquo;head&rsquo;
 revision.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Importing for the first time#First-import  First import]::<nowiki>                Importing for the first time
-</nowiki>&bull;[cvs: Updating with the import command#Update-imports  Update imports]::<nowiki>              Updating with the import command
-</nowiki>&bull;[cvs: Reverting to the latest vendor release#Reverting-local-changes  Reverting local changes]::<nowiki>     Reverting to the latest vendor release
-</nowiki>&bull;[cvs: How to handle binary files with cvs import#Binary-files-in-imports  Binary files in imports]::<nowiki>     Binary files require special handling
-</nowiki>&bull;[cvs: How to handle keyword substitution with cvs import#Keywords-in-imports  Keywords in imports]::<nowiki>         Keyword substitution might be undesirable
-</nowiki>&bull;[cvs: Multiple vendor branches#Multiple-vendor-branches  Multiple vendor branches]::<nowiki>    What if you get sources from several places?
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Importing for the first time#Importing for the first time| First import]]::<nowiki>                Importing for the first time
+</nowiki>&bull;[[cvs: Updating with the import command#Updating with the import command| Update imports]]::<nowiki>              Updating with the import command
+</nowiki>&bull;[[cvs: Reverting to the latest vendor release#Reverting to the latest vendor release| Reverting local changes]]::<nowiki>     Reverting to the latest vendor release
+</nowiki>&bull;[[cvs: How to handle binary files with cvs import#How to handle binary files with cvs import| Binary files in imports]]::<nowiki>     Binary files require special handling
+</nowiki>&bull;[[cvs: How to handle keyword substitution with cvs import#How to handle keyword substitution with cvs import| Keywords in imports]]::<nowiki>         Keyword substitution might be undesirable
+</nowiki>&bull;[[cvs: Multiple vendor branches#Multiple vendor branches| Multiple vendor branches]]::<nowiki>    What if you get sources from several places?
 </nowiki></pre>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: How your build system interacts with CVS#Builds Builds], Previous: [cvs: Keyword substitution#Keyword-substitution Keyword substitution], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: How your build system interacts with CVS#How your build system interacts with CVS|Builds]], Previous: [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -1,7 +1,7 @@
 <div id="Accessing-branches"></div>
 <div class="header">
 <p>
-Next: [cvs: Branches and revisions#Branches-and-revisions Branches and revisions], Previous: [cvs: Creating a branch#Creating-a-branch Creating a branch], Up: [cvs: Branching and merging#Branching-and-merging Branching and merging] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Branches and revisions#Branches and revisions|Branches and revisions]], Previous: [[cvs: Creating a branch#Creating a branch|Creating a branch]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Accessing-branches-1"></div>
@@ -21,7 +21,7 @@ switching an existing working copy over to the branch.
 </p>
 <p>To check out a branch from the repository, invoke
 &lsquo;<samp>checkout</samp>&rsquo; with the &lsquo;<samp>-r</samp>&rsquo; flag, followed by
-the tag name of the branch (see [cvs: Creating a branch#Creating-a-branch Creating a branch]):
+the tag name of the branch (see [[cvs: Creating a branch#Creating a branch|Creating a branch]]):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -r rel-1-0-patches tc
 </nowiki></pre></td></tr></table>
@@ -54,7 +54,7 @@ leaving the main trunk and other branches unaffected.
 <div id="index-Branches_002c-sticky"></div>
 <p>To find out what branch a working copy is on, you can
 use the &lsquo;<samp>status</samp>&rsquo; command.  In its output, look for
-the field named &lsquo;<samp>Sticky tag</samp>&rsquo; (see [cvs: Sticky tags#Sticky-tags Sticky tags])
+the field named &lsquo;<samp>Sticky tag</samp>&rsquo; (see [[cvs: Sticky tags#Sticky tags|Sticky tags]])
 &ndash; that&rsquo;s <small>CVS</small>&rsquo;s way of telling you the branch, if
 any, of the current working files:
 </p>
@@ -98,12 +98,12 @@ branch was made.  In the above example, one can deduce
 that &lsquo;<samp>driver.c</samp>&rsquo; had been through more changes than
 &lsquo;<samp>backend.c</samp>&rsquo; before this branch was created.
 </p>
-<p>See [cvs: Branches and revisions#Branches-and-revisions Branches and revisions] for details about how
+<p>See [[cvs: Branches and revisions#Branches and revisions|Branches and revisions]] for details about how
 branch numbers are constructed.
 </p>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Branches and revisions#Branches-and-revisions Branches and revisions], Previous: [cvs: Creating a branch#Creating-a-branch Creating a branch], Up: [cvs: Branching and merging#Branching-and-merging Branching and merging] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Branches and revisions#Branches and revisions|Branches and revisions]], Previous: [[cvs: Creating a branch#Creating a branch|Creating a branch]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

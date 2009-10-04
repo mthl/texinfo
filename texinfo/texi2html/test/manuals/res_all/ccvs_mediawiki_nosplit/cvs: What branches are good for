@@ -1,7 +1,7 @@
 <div id="Branches-motivation"></div>
 <div class="header">
 <p>
-Next: [cvs: Creating a branch#Creating-a-branch Creating a branch], Up: [cvs: Branching and merging#Branching-and-merging Branching and merging] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Creating a branch#Creating a branch|Creating a branch]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="What-branches-are-good-for"></div>
@@ -13,7 +13,7 @@ Next: [cvs: Creating a branch#Creating-a-branch Creating a branch], Up: [cvs: Br
 <p>Suppose that release 1.0 of tc has been made.  You are continuing to
 develop tc, planning to create release 1.1 in a couple of months.  After a
 while your customers start to complain about a fatal bug.  You check
-out release 1.0 (see [cvs: Tags-Symbolic revisions#Tags Tags]) and find the bug
+out release 1.0 (see [[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revisions|Tags]]) and find the bug
 (which turns out to have a trivial fix).  However, the current revision
 of the sources are in a state of flux and are not expected to be stable
 for at least another month.  There is no way to make a

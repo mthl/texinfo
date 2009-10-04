@@ -1,7 +1,7 @@
 <div id="From-files"></div>
 <div class="header">
 <p>
-Next: [cvs: Creating Files From Other Version Control Systems#From-other-version-control-systems From other version control systems], Up: [cvs: Setting up the files#Setting-up-the-files Setting up the files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Creating Files From Other Version Control Systems#Creating Files From Other Version Control Systems|From other version control systems]], Up: [[cvs: Setting up the files#Setting up the files|Setting up the files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Creating-a-directory-tree-from-a-number-of-files"></div>
@@ -25,7 +25,7 @@ flag, <small>CVS</small> starts an editor and prompts for a
 message.  The string &lsquo;<samp>yoyo</samp>&rsquo; is a <em>vendor tag</em>,
 and &lsquo;<samp>start</samp>&rsquo; is a <em>release tag</em>.  They may fill
 no purpose in this context, but since <small>CVS</small> requires
-them they must be present.  See [cvs: Tracking third-party sources#Tracking-sources Tracking sources], for
+them they must be present.  See [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]], for
 more information about them.
 </p>
 <p>You can now verify that it worked, and remove your
@@ -50,15 +50,15 @@ as it did in the example above.
 <p>It is a good idea to check that the permissions
 <small>CVS</small> sets on the directories inside <code>$CVSROOT</code>
 are reasonable, and that they belong to the proper
-groups.  See [cvs: File permissions#File-permissions File permissions].
+groups.  See [[cvs: File permissions#File permissions|File permissions]].
 </p>
 <p>If some of the files you want to import are binary, you
 may want to use the wrappers features to specify which
-files are binary and which are not.  See [cvs: The cvswrappers file#Wrappers Wrappers].
+files are binary and which are not.  See [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]].
 </p>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Creating Files From Other Version Control Systems#From-other-version-control-systems From other version control systems], Up: [cvs: Setting up the files#Setting-up-the-files Setting up the files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Creating Files From Other Version Control Systems#Creating Files From Other Version Control Systems|From other version control systems]], Up: [[cvs: Setting up the files#Setting up the files|Setting up the files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

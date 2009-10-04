@@ -1,7 +1,7 @@
 <div id="Magic-branch-numbers"></div>
 <div class="header">
 <p>
-Next: [cvs: Merging an entire branch#Merging-a-branch Merging a branch], Previous: [cvs: Branches and revisions#Branches-and-revisions Branches and revisions], Up: [cvs: Branching and merging#Branching-and-merging Branching and merging] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Merging an entire branch#Merging an entire branch|Merging a branch]], Previous: [[cvs: Branches and revisions#Branches and revisions|Branches and revisions]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Magic-branch-numbers-1"></div>
@@ -16,7 +16,7 @@ circumstances, so it may be useful to have some idea of
 how it works.
 </p>
 <p>Externally, branch numbers consist of an odd number of
-dot-separated decimal integers.  See [cvs: Revision numbers#Revision-numbers Revision numbers].  That is not the whole truth, however.  For
+dot-separated decimal integers.  See [[cvs: Revision numbers#Revision numbers|Revision numbers]].  That is not the whole truth, however.  For
 efficiency reasons <small>CVS</small> sometimes inserts an extra 0
 in the second rightmost position (1.2.4 becomes
 1.2.0.4, 8.9.10.11.12 becomes 8.9.10.11.0.12 and so

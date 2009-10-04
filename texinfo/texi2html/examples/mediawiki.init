@@ -8,7 +8,9 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.24 2009-09-15 18:21:27 pertusus Exp $
+# $Id: mediawiki.init,v 1.25 2009-10-04 21:51:05 pertusus Exp $
+
+use strict;
 
 html_default_load();
 
@@ -21,7 +23,9 @@ $NUMBER_SECTIONS = 0;
 
 # if this is set footnotes are on a separated page. Otherwise they are at
 # the end of each file (if the document is split).
-$FOOTNOTESTYLE = 'separate';
+# At the end is better for the mediawiki output which is more per page
+# oriented.
+$FOOTNOTESTYLE = 'end';
 
 # extension
 $EXTENSION = undef;
@@ -44,12 +48,16 @@ $SIMPLE_MENU = 1;
 
 $texi_formats_map{'direntry'} = 0;
 
-push @command_handler_init, \&mediawiki_initialize_variables;
+push @command_handler_setup, \&mediawiki_initialize_variables;
 
-my %doc_nr_to_file; # File name cache based on file index.
+my %mediawiki_doc_nr_to_file; # File name cache based on file index.
+my %mediawiki_target_to_name;
+my %mediawiki_special_file_name;
 sub mediawiki_initialize_variables()
 {
-    %doc_nr_to_file = (); # File name cache based on file index.
+    %mediawiki_doc_nr_to_file = (); # File name cache based on file index.
+    %mediawiki_target_to_name = ();
+    %mediawiki_special_file_name = ();
 }
 
 $print_title                  = \&mediawiki_print_title;
@@ -108,20 +116,61 @@ sub mediawiki_anchor($;$$$)
     $text = '' if !defined $text or $text !~ /\S/;
     return $text if $name eq '' and $href eq '';
     $name = "<div id=\"$name\"></div>" if $name ne '';
-    if ($href)
+    if (defined($href) and $href ne '')
     {
-	if ($href =~ /^\w+:/
-	    # If the i18n will replace this later, assume it's a full URL.
-	    || $href =~ /^%/)
-	{
+        my $wiki_href;
+        my ($file, $target);
+
+        if ($href =~ /^([^#]*)\#(.+)$/)
+        {
+            $file = $1;
+            $target = $2;
+
+            if (defined($mediawiki_target_to_name{$target}))
+            {
+                if ($file eq '')
+                {
+                    $target = $mediawiki_target_to_name{$target}->[0]->[1]->{'text'}
+                      if ($mediawiki_target_to_name{$target}->[0]->[1]->{'text'} ne '');
+                    $wiki_href = '#' . $target;
+                }
+                else
+                {
+                    foreach my $element (@{$mediawiki_target_to_name{$target}})
+                    {
+                        if ($file eq $element->[0])
+                        {
+                             $target = $element->[1]->{'text'} if ($element->[1]->{'text'} ne '');
+                             $wiki_href = $file . '#' . $target;
+                        }
+                    }
+                }
+            }
+            
+            # Element pages, or misc relative links.
+            # mediawiki 1.15.1 doesn't like anchor only urls, they work as wiki_ref.
+            if (!defined($wiki_href) and ($mediawiki_special_file_name{$file} or $file eq ''))
+            {
+                $wiki_href = $href;
+            }
+        }
+        # Element page, no target
+        elsif ($mediawiki_special_file_name{$href})
+        {
+            $wiki_href = $href;
+        }
+        if (defined($wiki_href))
+        {
+	    $text = "|$text" if $text;
+            # FIXME trouble with http://meta.wikimedia.org/wiki/Help:Namespace#Generic_namespace_names
+            # and with http://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(technical_restrictions)#Forbidden_characters
+    	    $href = "[[$wiki_href$text]]";
+        }
+        else
+        {
 	    $text = " $text" if $text;
     	    $href = "[$href$text]";
-	}
-	else
-	{
-	    $text = "|$text" if $text;
-    	    $href = "[[$href$text]]";
-	}
+        }
     }
     else
     {
@@ -351,19 +400,24 @@ sub mediawiki_element_file_name
 	    $file = $docu_name;
 	}
     }
-    elsif (exists $doc_nr_to_file{$element->{'doc_nr'}})
+    elsif (exists $mediawiki_doc_nr_to_file{$element->{'doc_nr'}})
     {
-	$file = $doc_nr_to_file{$element->{'doc_nr'}};
-	$doc_nr_to_file{$element->{'doc_nr'}} = $file;
+	$file = $mediawiki_doc_nr_to_file{$element->{'doc_nr'}};
+	$mediawiki_doc_nr_to_file{$element->{'doc_nr'}} = $file;
     }
     else
     {
 	my $name = main::substitute_line($element->{'texi'}, 'file name', {'remove_texi' => 1}, $element->{'line_nr'});
 	$name =~ s,/,%47,g;
 	$name =~ s,\\,%92,g;
-	$file = "$docu_name" . ($type ? "" : ": " . $name);
-	$doc_nr_to_file{$element->{'doc_nr'}} = $file;
+	$file = "$docu_name" . (($type eq 'top') ? "" : ": " . $name);
+	$mediawiki_doc_nr_to_file{$element->{'doc_nr'}} = $file;
     }
+    if (defined($element))
+    {
+        push @{$mediawiki_target_to_name{$element->{'target'}}}, [ $file, $element ];
+    }
+    $mediawiki_special_file_name{$file} = 1;
     return $file;
 }
 

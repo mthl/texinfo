@@ -25,18 +25,14 @@
 # does nothing in case of info (at least in the test suite)
 
 $print_section            = \&T2H_NOHEAD_print_section;
-#$print_element_header            = \&T2H_NOHEAD_print_element_header;
 $print_element_header            = \&T2H_NOHEAD_noop;
 $end_section              = \&T2H_NOHEAD_end_section;
 $one_section              = \&T2H_NOHEAD_one_section;
 $print_Top_footer	      = \&T2H_NOHEAD_print_Top_footer;
-#$print_misc_header	      = \&T2H_NOHEAD_print_misc_header;
 $print_misc_footer	      = \&T2H_NOHEAD_print_misc_footer;
-#$print_misc		      = \&T2H_NOHEAD_print_misc;
-#$print_head_navigation    = \&T2H_NOHEAD_print_head_navigation;
 $print_head_navigation    = \&T2H_NOHEAD_noop;
+$print_navigation            = \&T2H_NOHEAD_noop;
 $about_body		      = \&T2H_NOHEAD_about_body;
-#$toc_body                 = \&T2H_NOHEAD_toc_body;
 
 sub T2H_NOHEAD_noop
 {

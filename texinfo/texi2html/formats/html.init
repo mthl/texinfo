@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.28 2009-09-26 23:10:07 pertusus Exp $
+# $Id: html.init,v 1.29 2009-10-04 21:51:05 pertusus Exp $
 
 use strict;
 
@@ -55,6 +55,8 @@ $USE_ISO = 1;
 
 # if the value is true the Texinfo menus are shown.
 $SHOW_MENU = 1;
+
+$SHOW_TITLE = 1;
 
 #$USE_NODES = undef;
 
@@ -401,11 +403,10 @@ $print_Footnotes	      = \&HTML_DEFAULT_print_Footnotes;
 $print_About	      = \&HTML_DEFAULT_print_About;
 $print_misc_header	      = \&HTML_DEFAULT_print_misc_header;
 $print_misc_footer	      = \&HTML_DEFAULT_print_misc_footer;
-$print_misc		      = \&HTML_DEFAULT_print_misc;
+#$print_misc		      = \&HTML_DEFAULT_print_misc;
 $print_section_footer     = \&HTML_DEFAULT_print_section_footer;
 $print_chapter_header     = \&HTML_DEFAULT_print_chapter_header;
 $print_section_header     = \&HTML_DEFAULT_print_section_header;
-$print_element_header     = \&HTML_DEFAULT_print_element_header;
 $print_chapter_footer     = \&HTML_DEFAULT_print_chapter_footer;
 $print_page_head	      = \&HTML_DEFAULT_print_page_head;
 $print_page_foot	      = \&HTML_DEFAULT_print_page_foot;
@@ -416,17 +417,12 @@ $button_formatting	      = \&HTML_DEFAULT_button_formatting;
 
 $print_navigation	      = \&HTML_DEFAULT_print_navigation;
 $about_body		      = \&HTML_DEFAULT_about_body;
-$element_heading              = \&HTML_DEFAULT_element_heading;
 
 $print_frame              = \&HTML_DEFAULT_print_frame;
 $print_toc_frame          = \&HTML_DEFAULT_print_toc_frame;
 $contents                 = \&HTML_DEFAULT_contents;
 $shortcontents            = \&HTML_DEFAULT_shortcontents;
-#$toc_body                 = \&HTML_DEFAULT_toc_body;
-$titlepage                 = \&HTML_DEFAULT_titlepage;
 $print_redirection_page    = \&HTML_DEFAULT_print_redirection_page;
-$inline_contents           = \&HTML_DEFAULT_inline_contents;
-$print_title               = \&HTML_DEFAULT_print_title;
 
 ########################################################################
 # Control of formatting:
@@ -493,7 +489,6 @@ my %style_map_html = (
       'indicateurl', {'begin' => '&lt;<code>', 'end' => '</code>&gt;'},
       'var',        {'attribute' => 'var'},
       'verb',       {'attribute' => 'tt'},
-      'titlefont',  {'function' => \&html_default_titlefont},
      );
 
 foreach my $style_command (keys(%style_map_html))
@@ -651,7 +646,9 @@ $float             = \&html_default_float;
 $foot_line_and_ref = \&html_default_foot_line_and_ref;
 $foot_section      = \&html_default_foot_section;
 $format_list_item_texi      = \&html_default_format_list_item_texi;
-$heading           = \&html_default_heading;
+$heading           = \&t2h_default_heading;
+$heading_text      = \&html_default_heading_text;
+$heading_text_preformatted      = \&html_default_heading_text_preformatted;
 $image             = \&html_default_image;
 $image_files       = \&html_default_image_files;
 $index_entry       = \&html_default_index_entry;
@@ -762,56 +759,6 @@ sub html_default_do_title()
 # Layout for html for every sections
 #
 
-sub HTML_DEFAULT_print_element_header
-{
-    my $first_in_page = shift;
-    my $previous_is_top = shift;
-    my $buttons = \@SECTION_BUTTONS;
-
-    if (($first_in_page or $previous_is_top) and get_conf('headers'))
-    {
-        return &$print_head_navigation(undef, $buttons);
-    }
-    else
-    { # got to do this here, as it isn't done in print_head_navigation
-        return &$print_navigation($buttons) if (get_conf('headers') or get_conf('SPLIT') eq 'node');
-    }
-}
-
-sub HTML_DEFAULT_element_heading($$$$$$$$$$$$)
-{
-    my $element = shift;
-    my $command = shift;
-    my $texi_line = shift;
-    my $line = shift;
-    my $in_preformatted = shift;
-    my $one_section = shift;
-    my $element_heading = shift;
-    my $first_in_page = shift;
-    my $is_top = shift;
-    my $previous_is_top = shift;
-    my $command_line = shift;
-    my $element_id = shift;
-    my $new_element = shift;
-#print STDERR ":::::::: $element $command i_p $in_preformatted o_s $one_section e_h $element_heading f_p $first_in_page i_t $is_top p_i_t $previous_is_top id $element_id new $new_element\n";
-
-    my $result = &$element_label($element_id, $element, $command, $command_line);
-    if ($new_element and !$one_section)
-    {
-       if (!$element->{'element_ref'}->{'top'})
-       {
-           $result .= &$print_element_header($first_in_page, $previous_is_top);
-       }
-       else
-       {
-           $result .= &$print_head_navigation(undef, \@TOP_BUTTONS) if (get_conf('SPLIT') or get_conf('headers'));
-       }
-    }
-
-    return $result. &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading);
-}
-
-
 sub HTML_DEFAULT_print_section
 {
     my $fh = shift;
@@ -895,9 +842,7 @@ sub HTML_DEFAULT_print_Footnotes
 }
 sub HTML_DEFAULT_print_About
 {
-    # if there is no section navigation and it is not split, the 
-    # navigation information is useless
-    return &$print_misc(@_) if (get_conf('SPLIT') or get_conf('headers'));
+    return &$print_misc(@_);
 }
 
 sub HTML_DEFAULT_print_misc_header
@@ -931,7 +876,8 @@ sub HTML_DEFAULT_print_misc
     my $misc_page = shift;
     my $buttons = \@MISC_BUTTONS;
     &$print_misc_header($fh, $buttons, $new_file, $misc_page);
-    print $fh "<h1>$Texi2HTML::NAME{'This'}</h1>\n";
+    #print $fh "<h1>$Texi2HTML::NAME{'This'}</h1>\n";
+    print $fh "".&$heading_text('misc heading', $Texi2HTML::NAME{This}, 1);
     main::print_lines($fh);
     &$print_misc_footer($fh, $buttons, $new_file);
 }
@@ -1090,10 +1036,13 @@ EOT
 ###################################################################
 # Layout of navigation panel
 
-sub HTML_DEFAULT_print_head_navigation($$)
+sub HTML_DEFAULT_print_head_navigation($$$$$)
 {
     my $fh = shift;
     my $buttons = shift;
+    my $first_in_page = shift;
+    my $previous_is_top = shift;
+    my $element = shift;
 
     my $result = '';
     if ($VERTICAL_HEAD_NAVIGATION)
@@ -1429,63 +1378,6 @@ EOT
     print $fh "</body></html>\n";
 }
 
-sub HTML_DEFAULT_inline_contents($$$$)
-{
-    my $fh = shift;
-    my $command = shift;
-    my $element = shift;
-    my $elements_list = shift;
-    my $name;
-    my $lines;
-
-    my $toc_file = $element->{'file'};
-
-    my $result = undef;
-
-    if ($command eq 'contents')
-    {
-        $name = $Texi2HTML::NAME{'Contents'};
-        #$lines = $Texi2HTML::TOC_LINES;
-        $toc_file = $Texi2HTML::THISDOC{'toc_file'} if (!defined($toc_file));
-        $lines = &$contents($elements_list, $toc_file);
-    }
-    else
-    {
-        $name = $Texi2HTML::NAME{'Overview'};
-        $toc_file = $Texi2HTML::THISDOC{'stoc_file'} if (!defined($toc_file));
-        #$lines = $Texi2HTML::OVERVIEW;
-        $lines = &$shortcontents($elements_list, $toc_file);
-    }
-    if (defined($lines) and @{$lines})
-    {
-         $result = [ "".&$anchor($element->{'id'})."\n",
-            "<h1>$name</h1>\n" ]; 
-         push @$result, @$lines;
-    }
-
-    return $result;
-}
-
-sub HTML_DEFAULT_print_title()
-{
-    if ($USE_TITLEPAGE_FOR_TITLE)
-    {
-        my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_format) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
-
-        &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_format); 
-        return $Texi2HTML::TITLEPAGE;
-    }
-    else
-    {
-       my $title = '';
-       $title = $Texi2HTML::THISDOC{'simpletitle'} if (defined($Texi2HTML::THISDOC{'simpletitle'}) and $Texi2HTML::THISDOC{'simpletitle'} !~ /^\s*$/);
-       if ($title ne '')
-       {
-           return '<h1 align="center" class="settitle">'."$title</h1>\n";
-       }
-    }
-}
-
 ######################################################################
 # About page
 #
@@ -1585,48 +1477,6 @@ EOT
     return $about;
 }
 
-# return value is currently ignored
-sub HTML_DEFAULT_titlepage($$$$)
-{
-    my $titlepage_lines = shift;
-    my $titlepage_text = shift;
-    my $titlepage_no_texi = shift;
-    my $titlepage_simple_format = shift;
-
-    $Texi2HTML::TITLEPAGE = $titlepage_text;
-    if ($titlepage_text eq '')
-    {
-       my $title = '';
-       $title = $Texi2HTML::THISDOC{'simpletitle'} if (defined($Texi2HTML::THISDOC{'simpletitle'}) and $Texi2HTML::THISDOC{'simpletitle'} !~ /^\s*$/);
-       if ($title ne '')
-       {
-           $Texi2HTML::TITLEPAGE = '<h1 align="center" class="settitle">'."$title</h1>\n$DEFAULT_RULE\n";
-       }
-    }
-    else
-    {
-       $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
-    }
-
-    if ($Texi2HTML::THISDOC{'setcontentsaftertitlepage'} and (defined($Texi2HTML::THISDOC{'inline_contents'}->{'contents'})) and @{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}})
-    {
-        foreach my $line(@{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}})
-        {
-            $Texi2HTML::TITLEPAGE .= $line;
-        }
-        $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
-    }
-    if ($Texi2HTML::THISDOC{'setshortcontentsaftertitlepage'} and (defined($Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'})) and @{$Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'}})
-    {
-        foreach my $line(@{$Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'}})
-        {
-            $Texi2HTML::TITLEPAGE .= $line;
-        }
-        $Texi2HTML::TITLEPAGE .= "$DEFAULT_RULE\n";
-    }
-    return $Texi2HTML::TITLEPAGE;
-}
-
 sub HTML_DEFAULT_print_redirection_page()
 {
     #my $fh = shift;
@@ -1668,15 +1518,6 @@ $AFTER_BODY_OPEN
 </body>
 EOT
    return $result;
-}
-
-# Avoid adding h1 if the text is empty
-sub html_default_titlefont($$$)
-{
-    shift;
-    my $args = shift;
-    return "<h1 class=\"titlefont\">$args->[0]</h1>" if ($args->[0] =~ /\S/);
-    return '';
 }
 
 sub html_default_uref($$)
@@ -2562,72 +2403,40 @@ sub html_default_preformatted($$$$$$$$$$$$)
     return "<pre class=\"$class\">".$text."</pre>";
 }
 
-# This function formats a heading for an element
-#
-# argument:
-# an element. It is a hash reference for a node or a sectionning command.
-#             it may be the wrong one in case of headings.
-# The interesting keys are:
-# 'text': the heading text
-# 'text_nonumber': the heading text without section number
-# 'node': true if it is a node
-# 'level': level of the element. 0 for @top, 1 for chapter, heading, 
-#      appendix..., 2 for section and so on...
-# 'tag_level': the sectionning element name, raisesections and lowersections
-#      taken into account
-sub html_default_heading($$$$$;$$)
+sub html_default_heading_text($$$)
 {
-    my $element = shift;
     my $command = shift;
-    my $texi_line = shift;
-    my $line = shift;
-    my $in_preformatted = shift;
-    my $one_section = shift;
-    my $element_heading = shift;
+    my $text = shift;
+    my $level = shift;
 
-    my $level = 3;
-    if (!$element->{'node'})
-    {
-        $level = $element->{'level'};
-    }
-    else
-    {
-        return '' unless ($element->{'this'} and !$element->{'with_section'});
-    }
-    my $text = $element->{'text'};
-    my $class = $element->{'tag_level'};
-    $class = 'node-heading' if ($element->{'node'});
-    my $align = '';
-    $align = ' align="center"' if ($element->{'tag'} eq 'centerchap');
-
-    # when it is a heading, the element is irrelevant, so the command and the
-    # line are used...
-    if (defined($command) and $command =~ /heading/)
-    {
-        $level = $main::sec2level{$command} if (defined($main::sec2level{$command}));
-        if (defined($line)) 
-        {
-            $text = $line;
-            # this isn't done in main program in that case...
-            chomp ($text);
-            $text =~ s/^\s*//;
-        }
-        $class = $command;
-    }
-    elsif (defined($element->{'tocid'}) and $TOC_LINKS)
-    {
-         $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
-    }
-    $level = 1 if ($level == 0);
     return '' if ($text !~ /\S/);
-    if (!$in_preformatted)
+    my $class_text = '';
+    # FIXME use a class=*contents?
+    if ($command =~ /^@/ and $command !~ /^@.*contents$/)
     {
-       return "<h$level class=\"$class\"$align>$text</h$level>\n";
+       my $class = $command;
+       $class =~ s/^@//;
+       $class = 'node-heading' if ($command eq '@node');
+       $class_text = " class=\"$class\"";
     }
-    else
-    {
-       return "<strong>$text</strong>\n";
-    }
+    my $align = '';
+    $align = ' align="center"' if ($command eq '@centerchap' or $command eq '@settitle');
+    $level = 1 if ($level == 0);
+    my $result = "<h$level$class_text$align>$text</h$level>";
+    # FIXME titlefont appears inline in text, so no end of line is
+    # added. The end of line should be added by the user if needed.
+    $result .= "\n" unless ($command eq '@titlefont');
+    return $result;
+}
+
+sub html_default_heading_text_preformatted($$$)
+{
+    my $command = shift;
+    my $text = shift;
+    my $level = shift;
+
+    return '' if ($text !~ /\S/);
+    return '<strong>'.$text.'</strong>'."\n";
 }
 
 # formatting of raw regions
@@ -2717,7 +2526,9 @@ sub html_default_foot_line_and_ref($$$$$$$$$)
 sub html_default_foot_section($)
 {
     my $lines = shift;
-    unshift (@$lines, "<div class=\"footnote\">\n" ,"$DEFAULT_RULE\n", "<h3>" . &$I('Footnotes') . "</h3>\n");
+    unshift (@$lines, "<div class=\"footnote\">\n" ,"$DEFAULT_RULE\n", 
+       &$heading_text('footnotes', &$I('Footnotes'), 3)
+      );
     push (@$lines, "</div>\n"); 
     return $lines; 
 }
@@ -3129,7 +2940,6 @@ sub html_default_line_command($$$$)
     }
     $arg_text .= "<br>" if ($command eq 'author');
     $arg_text .= "\n";
-    #$arg_text .= "$DEFAULT_RULE\n" if ($command eq 'title');
     return $arg_text;
 }
 

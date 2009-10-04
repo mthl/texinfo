@@ -1,14 +1,14 @@
 <div id="import-options"></div>
 <div class="header">
 <p>
-Next: [cvs: import output#import-output import output], Up: [cvs: import--Import sources into CVS, using vendor branches#import import] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: import output#import output|import output]], Up: [[cvs: import--Import sources into CVS, using vendor branches#import&mdash;Import sources into CVS, using vendor branches|import]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="import-options-1"></div>
 ==== import options ====
 
 <p>This standard option is supported by <code>import</code>
-(see [cvs: Common command options#Common-options Common options], for a complete description):
+(see [[cvs: Common command options#Common command options|Common options]], for a complete description):
 </p>
 <dl compact="compact">
 <dt><code>-m <var>message</var></code></dt>
@@ -21,14 +21,14 @@ invoking an editor.
 </p>
 <dl compact="compact">
 <dt><code>-b <var>branch</var></code></dt>
-<dd><p>See [cvs: Multiple vendor branches#Multiple-vendor-branches Multiple vendor branches].
+<dd><p>See [[cvs: Multiple vendor branches#Multiple vendor branches|Multiple vendor branches]].
 </p>
 </dd>
 <dt><code>-k <var>subst</var></code></dt>
 <dd><p>Indicate the keyword expansion mode desired.  This
 setting will apply to all files created during the
 import, but not to any files that previously existed in
-the repository.  See [cvs: Substitution modes#Substitution-modes Substitution modes], for a
+the repository.  See [[cvs: Substitution modes#Substitution modes|Substitution modes]], for a
 list of valid &lsquo;<samp>-k</samp>&rsquo; settings.
 </p>
 </dd>
@@ -40,7 +40,7 @@ default), specify &lsquo;-I !&rsquo;.
 </p>
 <p><var>name</var> can be a file name pattern of the same type
 that you can specify in the &lsquo;<tt>.cvsignore</tt>&rsquo; file.
-See [cvs: Ignoring files via cvsignore#cvsignore cvsignore].
+See [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]].
 </p>
 </dd>
 <dt><code>-W <var>spec</var></code></dt>
@@ -49,7 +49,7 @@ import.  You can use this option repeatedly.
 </p>
 <p><var>spec</var> can be a file name pattern of the same type
 that you can specify in the &lsquo;<tt>.cvswrappers</tt>&rsquo;
-file. See [cvs: The cvswrappers file#Wrappers Wrappers].
+file. See [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]].
 </p></dd>
 </dl>
 

@@ -1,7 +1,7 @@
 <div id="Environment-variables"></div>
 <div class="header">
 <p>
-Next: [cvs: Compatibility between CVS Versions#Compatibility Compatibility], Previous: [cvs: Reference manual for Administrative files#Administrative-files Administrative files], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Compatibility between CVS Versions#Compatibility between CVS Versions|Compatibility]], Previous: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="All-environment-variables-which-affect-CVS"></div>
@@ -17,13 +17,13 @@ that affect <small>CVS</small>.
 </dd>
 <dt><code>$CVSIGNORE</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
-<small>CVS</small> should ignore. See [cvs: Ignoring files via cvsignore#cvsignore cvsignore].
+<small>CVS</small> should ignore. See [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]].
 </p>
 <div id="index-CVSWRAPPERS_002c-environment-variable-1"></div>
 </dd>
 <dt><code>$CVSWRAPPERS</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
-<small>CVS</small> should treat as wrappers. See [cvs: The cvswrappers file#Wrappers Wrappers].
+<small>CVS</small> should treat as wrappers. See [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]].
 </p>
 <div id="index-CVSREAD_002c-environment-variable"></div>
 <div id="index-Read_002donly-files_002c-and-CVSREAD"></div>
@@ -48,7 +48,7 @@ read-only NFS repositories.
 </dd>
 <dt><code>$CVSUMASK</code></dt>
 <dd><p>Controls permissions of files in the repository.  See
-[cvs: File permissions#File-permissions File permissions].
+[[cvs: File permissions#File permissions|File permissions]].
 </p>
 </dd>
 <dt><code>$CVSROOT</code></dt>
@@ -76,8 +76,8 @@ directory.
 <p>Specifies the program to use for recording log messages
 during commit.  <code>$CVSEDITOR</code> overrides
 <code>$EDITOR</code>, which overrides <code>$VISUAL</code>.
-See [cvs: Committing your changes#Committing-your-changes Committing your changes] for more or
-[cvs: Global options#Global-options Global options] for alternative ways of specifying a
+See [[cvs: Committing your changes#Committing your changes|Committing your changes]] for more or
+[[cvs: Global options#Global options|Global options]] for alternative ways of specifying a
 log editor.
 </p>
 <div id="index-PATH_002c-environment-variable"></div>
@@ -108,7 +108,7 @@ probably need to set <code>HOMEDRIVE</code> and <code>HOMEPATH</code> yourself.
 <dt><code>$CVS_RSH</code></dt>
 <dd><p>Specifies the external program which <small>CVS</small> connects with,
 when <code>:ext:</code> access method is specified.
-see [cvs: Connecting with rsh#Connecting-via-rsh Connecting via rsh].
+see [[cvs: Connecting with rsh#Connecting with rsh|Connecting via rsh]].
 </p>
 </dd>
 <dt><code>$CVS_SERVER</code></dt>
@@ -119,20 +119,20 @@ necessary arguments) when accessing a remote repository
 using the <code>:ext:</code>, <code>:fork:</code>, or <code>:server:</code> access methods.
 The default value for <code>:ext:</code> and <code>:server:</code> is <code>cvs</code>;
 the default value for <code>:fork:</code> is the name used to run the client.
-see [cvs: Connecting with rsh#Connecting-via-rsh Connecting via rsh]
+see [[cvs: Connecting with rsh#Connecting with rsh|Connecting via rsh]]
 </p>
 </dd>
 <dt><code>$CVS_PASSFILE</code></dt>
 <dd><p>Used in client-server mode when accessing the <code>cvs
 login server</code>.  Default value is &lsquo;<tt>$HOME/.cvspass</tt>&rsquo;.
-see [cvs: Using the client with password authentication#Password-authentication-client Password authentication client]
+see [[cvs: Using the client with password authentication#Using the client with password authentication|Password authentication client]]
 </p>
 </dd>
 <dt><code>$CVS_CLIENT_PORT</code></dt>
 <dd><p>Used in client-server mode to set the port to use when accessing the server
 via Kerberos, GSSAPI, or <small>CVS</small>&rsquo;s password authentication protocol
 if the port is not specified in the CVSROOT.
-see [cvs: Remote repositories#Remote-repositories Remote repositories]
+see [[cvs: Remote repositories#Remote repositories|Remote repositories]]
 </p>
 <div id="index-CVS_005fRCMD_005fPORT_002c-environment-variable"></div>
 </dd>
@@ -197,7 +197,7 @@ command interpreter and defaults to <small>CMD.EXE</small>.
 <dd><div id="index-Temporary-files_002c-location-of"></div>
 <p>Directory in which temporary files are located.
 The <small>CVS</small> server uses
-<code>TMPDIR</code>.  See [cvs: Global options#Global-options Global options], for a
+<code>TMPDIR</code>.  See [[cvs: Global options#Global options|Global options]], for a
 description of how to specify this.
 Some parts of <small>CVS</small> will always use &lsquo;<tt>/tmp</tt>&rsquo; (via
 the <code>tmpnam</code> function provided by the system).
@@ -226,6 +226,6 @@ files.
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Compatibility between CVS Versions#Compatibility Compatibility], Previous: [cvs: Reference manual for Administrative files#Administrative-files Administrative files], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Compatibility between CVS Versions#Compatibility between CVS Versions|Compatibility]], Previous: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

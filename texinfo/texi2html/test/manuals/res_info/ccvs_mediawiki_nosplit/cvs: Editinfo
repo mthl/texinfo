@@ -1,7 +1,7 @@
 <div id="editinfo"></div>
 <div class="header">
 <p>
-Next: [cvs: Loginfo#loginfo loginfo], Previous: [cvs: Verifying log messages#verifymsg verifymsg], Up: [cvs: The commit support files#commit-files commit files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Loginfo#Loginfo|loginfo]], Previous: [[cvs: Verifying log messages#Verifying log messages|verifymsg]], Up: [[cvs: The commit support files#The commit support files|commit files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Editinfo"></div>
@@ -14,8 +14,8 @@ Next: [cvs: Loginfo#loginfo loginfo], Previous: [cvs: Verifying log messages#ver
 <p><strong>Note: The &lsquo;<tt>editinfo</tt>&rsquo; feature has been
 rendered obsolete.  To set a default editor for log
 messages use the <code>CVSEDITOR</code>, <code>EDITOR</code> environment variables
-(see [cvs: All environment variables which affect CVS#Environment-variables Environment variables]) or the &lsquo;<samp>-e</samp>&rsquo; global
-option (see [cvs: Global options#Global-options Global options]).  See [cvs: Verifying log messages#verifymsg verifymsg],
+(see [[cvs: All environment variables which affect CVS#All environment variables which affect CVS|Environment variables]]) or the &lsquo;<samp>-e</samp>&rsquo; global
+option (see [[cvs: Global options#Global options|Global options]]).  See [[cvs: Verifying log messages#Verifying log messages|verifymsg]],
 for information on the use of the &lsquo;<tt>verifymsg</tt>&rsquo;
 feature for evaluating log messages.</strong>
 </p>
@@ -32,7 +32,7 @@ file, the editor specified in the environment variable
 <code>$CVSEDITOR</code> is used instead.  If that variable is
 not set, then the environment variable <code>$EDITOR</code>
 is used instead.  If that variable is not
-set a default will be used.  See [cvs: Committing your changes#Committing-your-changes Committing your changes].
+set a default will be used.  See [[cvs: Committing your changes#Committing your changes|Committing your changes]].
 </p>
 <p>The &lsquo;<tt>editinfo</tt>&rsquo; file is often most useful together
 with the &lsquo;<tt>rcsinfo</tt>&rsquo; file, which can be used to
@@ -64,11 +64,11 @@ commit</code> are used, &lsquo;<tt>editinfo</tt>&rsquo; will not be consulted.
 There is no good workaround for this; use
 &lsquo;<tt>verifymsg</tt>&rsquo; instead.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Editinfo example#editinfo-example  editinfo example]::<nowiki>            Editinfo example
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Editinfo example#Editinfo example| editinfo example]]::<nowiki>            Editinfo example
 </nowiki></pre>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Loginfo#loginfo loginfo], Previous: [cvs: Verifying log messages#verifymsg verifymsg], Up: [cvs: The commit support files#commit-files commit files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Loginfo#Loginfo|loginfo]], Previous: [[cvs: Verifying log messages#Verifying log messages|verifymsg]], Up: [[cvs: The commit support files#The commit support files|commit files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

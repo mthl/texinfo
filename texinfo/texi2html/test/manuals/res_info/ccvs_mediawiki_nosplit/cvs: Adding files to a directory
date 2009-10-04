@@ -1,7 +1,7 @@
 <div id="Adding-files"></div>
 <div class="header">
 <p>
-Next: [cvs: Removing files#Removing-files Removing files], Up: [cvs: Adding, removing, and renaming files and directories#Adding-and-removing Adding and removing] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Removing files#Removing files|Removing files]], Up: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Adding-files-to-a-directory"></div>
@@ -13,7 +13,7 @@ Next: [cvs: Removing files#Removing-files Removing files], Up: [cvs: Adding, rem
 <ul>
 <li>
 You must have a working copy of the directory.
-See [cvs: Getting the source#Getting-the-source Getting the source].
+See [[cvs: Getting the source#Getting the source|Getting the source]].
 
 </li><li>
 Create the new file inside your working copy of the directory.
@@ -21,7 +21,7 @@ Create the new file inside your working copy of the directory.
 </li><li>
 Use &lsquo;<samp>cvs add <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that you
 want to version control the file.  If the file contains
-binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see [cvs: Handling binary files#Binary-files Binary files]).
+binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see [[cvs: Handling binary files#Handling binary files|Binary files]]).
 
 </li><li>
 Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually check
@@ -49,27 +49,27 @@ The files or directories specified with <code>add</code> must
 already exist in the current directory.  To add a whole
 new directory hierarchy to the source repository (for
 example, files received from a third-party vendor), use
-the <code>import</code> command instead.  See [cvs: import--Import sources into CVS, using vendor branches#import import].
+the <code>import</code> command instead.  See [[cvs: import--Import sources into CVS, using vendor branches#import&mdash;Import sources into CVS, using vendor branches|import]].
 </p>
 <p>The added files are not placed in the source repository
 until you use <code>commit</code> to make the change
 permanent.  Doing an <code>add</code> on a file that was
 removed with the <code>remove</code> command will undo the
 effect of the <code>remove</code>, unless a <code>commit</code>
-command intervened.  See [cvs: Removing files#Removing-files Removing files], for an
+command intervened.  See [[cvs: Removing files#Removing files|Removing files]], for an
 example.
 </p>
 <p>The &lsquo;<samp>-k</samp>&rsquo; option specifies the default way that
 this file will be checked out; for more information see
-[cvs: Substitution modes#Substitution-modes Substitution modes].
+[[cvs: Substitution modes#Substitution modes|Substitution modes]].
 </p>
 <p>The &lsquo;<samp>-m</samp>&rsquo; option specifies a description for the
 file.  This description appears in the history log (if
-it is enabled, see [cvs: The history file#history-file history file]).  It will also be
+it is enabled, see [[cvs: The history file#The history file|history file]]).  It will also be
 saved in the version history inside the repository when
 the file is committed.  The <code>log</code> command displays
 this description.  The description can be changed using
-&lsquo;<samp>admin -t</samp>&rsquo;.  See [cvs: admin--Administration#admin admin].  If you omit the
+&lsquo;<samp>admin -t</samp>&rsquo;.  See [[cvs: admin--Administration#admin&mdash;Administration|admin]].  If you omit the
 &lsquo;<samp>-m <var>description</var></samp>&rsquo; flag, an empty string will
 be used.  You will not be prompted for a description.
 </p></dd></dl>
@@ -82,13 +82,13 @@ $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
 </nowiki></pre></td></tr></table>
 
 <p>When you add a file it is added only on the branch
-which you are working on (see [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
+which you are working on (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  You can
 later merge the additions to another branch if you want
-(see [cvs: Merging can add or remove files#Merging-adds-and-removals Merging adds and removals]).
+(see [[cvs: Merging can add or remove files#Merging can add or remove files|Merging adds and removals]]).
 </p>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Removing files#Removing-files Removing files], Up: [cvs: Adding, removing, and renaming files and directories#Adding-and-removing Adding and removing] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Removing files#Removing files|Removing files]], Up: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

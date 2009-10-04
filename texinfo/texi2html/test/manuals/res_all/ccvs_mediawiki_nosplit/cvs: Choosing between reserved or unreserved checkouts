@@ -1,7 +1,7 @@
 <div id="Choosing-a-model"></div>
 <div class="header">
 <p>
-Previous: [cvs: Mechanisms to track who is editing files#Watches Watches], Up: [cvs: Multiple developers#Multiple-developers Multiple developers] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Choosing-between-reserved-or-unreserved-checkouts"></div>
@@ -49,7 +49,7 @@ going to be unpleasant enough that you generally will
 be better off to simply avoid the conflicts instead, by
 using reserved checkouts.
 </p>
-<p>The watches features described above in [cvs: Mechanisms to track who is editing files#Watches Watches]
+<p>The watches features described above in [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]]
 can be considered to be an intermediate model between
 reserved checkouts and unreserved checkouts.  When you
 go to edit a file, it is possible to find out who else
@@ -64,6 +64,6 @@ checkout worlds.
 <hr>
 <div class="header">
 <p>
-Previous: [cvs: Mechanisms to track who is editing files#Watches Watches], Up: [cvs: Multiple developers#Multiple-developers Multiple developers] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

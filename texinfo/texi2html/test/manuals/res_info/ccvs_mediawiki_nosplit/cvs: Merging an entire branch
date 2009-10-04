@@ -1,7 +1,7 @@
 <div id="Merging-a-branch"></div>
 <div class="header">
 <p>
-Next: [cvs: Merging from a branch several times#Merging-more-than-once Merging more than once], Previous: [cvs: Magic branch numbers#Magic-branch-numbers Magic branch numbers], Up: [cvs: Branching and merging#Branching-and-merging Branching and merging] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Merging from a branch several times#Merging from a branch several times|Merging more than once]], Previous: [[cvs: Magic branch numbers#Magic branch numbers|Magic branch numbers]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Merging-an-entire-branch"></div>
@@ -50,11 +50,11 @@ $ cvs commit -m &quot;Included R1fix&quot; # <span class="roman">Create revision
 
 <p>A conflict can result from a merge operation.  If that
 happens, you should resolve it before committing the
-new revision.  See [cvs: Conflicts example#Conflicts-example Conflicts example].
+new revision.  See [[cvs: Conflicts example#Conflicts example|Conflicts example]].
 </p>
-<p>If your source files contain keywords (see [cvs: Keyword substitution#Keyword-substitution Keyword substitution]),
+<p>If your source files contain keywords (see [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]]),
 you might be getting more conflicts than strictly necessary.  See
-[cvs: Merging and keywords#Merging-and-keywords Merging and keywords], for information on how to avoid this.
+[[cvs: Merging and keywords#Merging and keywords|Merging and keywords]], for information on how to avoid this.
 </p>
 <p>The <code>checkout</code> command also supports the &lsquo;<samp>-j <var>branchname</var></samp>&rsquo; flag.  The
 same effect as above could be achieved with this:
@@ -64,11 +64,11 @@ $ cvs commit -m &quot;Included R1fix&quot;
 </nowiki></pre></td></tr></table>
 
 <p>It should be noted that <code>update -j <var>tagname</var></code> will also work but may
-not produce the desired result.  See [cvs: Merging can add or remove files#Merging-adds-and-removals Merging adds and removals], for more.
+not produce the desired result.  See [[cvs: Merging can add or remove files#Merging can add or remove files|Merging adds and removals]], for more.
 </p>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Merging from a branch several times#Merging-more-than-once Merging more than once], Previous: [cvs: Magic branch numbers#Magic-branch-numbers Magic branch numbers], Up: [cvs: Branching and merging#Branching-and-merging Branching and merging] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Merging from a branch several times#Merging from a branch several times|Merging more than once]], Previous: [[cvs: Magic branch numbers#Magic branch numbers|Magic branch numbers]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

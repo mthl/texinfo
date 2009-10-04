@@ -1972,7 +1972,7 @@ tp
 
 
 Footnotes
-*********
+---------
 
 (1)
 in footnote

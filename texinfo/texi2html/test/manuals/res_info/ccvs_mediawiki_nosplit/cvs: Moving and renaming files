@@ -1,7 +1,7 @@
 <div id="Moving-files"></div>
 <div class="header">
 <p>
-Next: [cvs: Moving and renaming directories#Moving-directories Moving directories], Previous: [cvs: Removing directories#Removing-directories Removing directories], Up: [cvs: Adding, removing, and renaming files and directories#Adding-and-removing Adding and removing] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Moving and renaming directories#Moving and renaming directories|Moving directories]], Previous: [[cvs: Removing directories#Removing directories|Removing directories]], Up: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Moving-and-renaming-files"></div>
@@ -13,13 +13,13 @@ Next: [cvs: Moving and renaming directories#Moving-directories Moving directorie
 <p>Moving files to a different directory or renaming them
 is not difficult, but some of the ways in which this
 works may be non-obvious.  (Moving or renaming a
-directory is even harder.  See [cvs: Moving and renaming directories#Moving-directories Moving directories].).
+directory is even harder.  See [[cvs: Moving and renaming directories#Moving and renaming directories|Moving directories]].).
 </p>
 <p>The examples below assume that the file <var>old</var> is renamed to
 <var>new</var>.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: The Normal way to Rename#Outside  Outside]::<nowiki>                     The normal way to Rename
-</nowiki>&bull;[cvs: Moving the history file#Inside  Inside]::<nowiki>                      A tricky, alternative way
-</nowiki>&bull;[cvs: Copying the history file#Rename-by-copying  Rename by copying]::<nowiki>           Another tricky, alternative way
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: The Normal way to Rename#The Normal way to Rename| Outside]]::<nowiki>                     The normal way to Rename
+</nowiki>&bull;[[cvs: Moving the history file#Moving the history file| Inside]]::<nowiki>                      A tricky, alternative way
+</nowiki>&bull;[[cvs: Copying the history file#Copying the history file| Rename by copying]]::<nowiki>           Another tricky, alternative way
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

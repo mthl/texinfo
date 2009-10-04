@@ -1,7 +1,7 @@
 <div id="Updating-a-file"></div>
 <div class="header">
 <p>
-Next: [cvs: Conflicts example#Conflicts-example Conflicts example], Previous: [cvs: File status#File-status File status], Up: [cvs: Multiple developers#Multiple-developers Multiple developers] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Conflicts example#Conflicts example|Conflicts example]], Previous: [[cvs: File status#File status|File status]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Bringing-a-file-up-to-date"></div>
@@ -35,7 +35,7 @@ close to any of the changes you have made, an
 printed, and the resulting file includes both
 versions of the lines that overlap, delimited by
 special markers.
-See [cvs: update--Bring work tree in sync with repository#update update], for a complete description of the
+See [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]], for a complete description of the
 <code>update</code> command.
 </p>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -1,7 +1,7 @@
 <div id="checkoutlist"></div>
 <div class="header">
 <p>
-Next: [cvs: The history file#history-file history file], Previous: [cvs: Ignoring files via cvsignore#cvsignore cvsignore], Up: [cvs: Reference manual for Administrative files#Administrative-files Administrative files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: The history file#The history file|history file]], Previous: [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="The-checkoutlist-file"></div>
@@ -40,11 +40,11 @@ message such as:
 <p>and the checked out copy in the &lsquo;<tt>CVSROOT</tt>&rsquo;
 directory should be updated.
 </p>
-<p>Note that listing &lsquo;<tt>passwd</tt>&rsquo; (see [cvs: Setting up the server for password authentication#Password-authentication-server Password authentication server]) in &lsquo;<tt>checkoutlist</tt>&rsquo; is not
+<p>Note that listing &lsquo;<tt>passwd</tt>&rsquo; (see [[cvs: Setting up the server for password authentication#Setting up the server for password authentication|Password authentication server]]) in &lsquo;<tt>checkoutlist</tt>&rsquo; is not
 recommended for security reasons.
 </p>
 <p>For information about keeping a checkout out copy in a
 more general context than the one provided by
-&lsquo;<tt>checkoutlist</tt>&rsquo;, see [cvs: Keeping a checked out copy#Keeping-a-checked-out-copy Keeping a checked out copy].
+&lsquo;<tt>checkoutlist</tt>&rsquo;, see [[cvs: Keeping a checked out copy#Keeping a checked out copy|Keeping a checked out copy]].
 </p>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -38,7 +38,7 @@ brace LaTeX
 
 
 Footnotes
-*********
+---------
 
 (1)
 TeX without brace TeX

@@ -3,16 +3,16 @@
 <tr><td valign="middle" align="left">|[[cvs#Top| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| &lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[[#What-is-CVS_003f| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[#What is CVS?| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: The Repository#The Repository| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Overview-1"></div>
 == Overview ==
@@ -26,9 +26,9 @@ software before.
 trying to learn a particular feature or remember a
 certain command, you can probably skip everything here.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#What-is-CVS_003f| What is CVS?]]::<nowiki>                What you can do with CVS
-</nowiki>&bull;[[#What-is-CVS-not_003f| What is CVS not?]]::<nowiki>            Problems CVS doesn&rsquo;t try to solve
-</nowiki>&bull;[[#A-sample-session| A sample session]]::<nowiki>            A tour of basic CVS usage
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#What is CVS?| What is CVS?]]::<nowiki>                What you can do with CVS
+</nowiki>&bull;[[#What is CVS not?| What is CVS not?]]::<nowiki>            Problems CVS doesn&rsquo;t try to solve
+</nowiki>&bull;[[#A sample session| A sample session]]::<nowiki>            A tour of basic CVS usage
 </nowiki></pre>
 <hr>
 <div id="What-is-CVS_003f"></div>
@@ -36,16 +36,16 @@ certain command, you can probably skip everything here.
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| Up ]]|</td>
-<td valign="middle" align="left">|[[#What-is-CVS-not_003f| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[#What is CVS not?| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: The Repository#The Repository| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="What-is-CVS_003f-1"></div>
 === What is CVS? ===
@@ -125,25 +125,25 @@ if there is sufficient <small>CVS</small> traffic on
 <code>comp.software.config-mgmt</code>.
 </p>
 <p>You can also subscribe to the <code>bug-cvs</code> mailing list,
-described in more detail in [cvs: Dealing with bugs in CVS or this manual#BUGS Dealing with bugs in CVS or this manual].  To subscribe
+described in more detail in [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|Dealing with bugs in CVS or this manual]].  To subscribe
 send mail to <code>bug-cvs-request@gnu.org</code>.
 </p>
 <hr>
 <div id="What-is-CVS-not_003f"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#What-is-CVS_003f| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#What is CVS?| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| Up ]]|</td>
-<td valign="middle" align="left">|[[#A-sample-session| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[#A sample session| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: The Repository#The Repository| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="What-is-CVS-not_003f-1"></div>
 === What is CVS not? ===
@@ -191,7 +191,7 @@ approach is to use <code>make</code> for building, and use
 some automated tool for generating the dependencies which
 <code>make</code> uses.
 </p>
-<p>See [cvs: How your build system interacts with CVS#Builds How your build system interacts with CVS], for more information on doing builds
+<p>See [[cvs: How your build system interacts with CVS#How your build system interacts with CVS|How your build system interacts with CVS]], for more information on doing builds
 in conjunction with <small>CVS</small>.
 </p>
 </dd>
@@ -245,7 +245,7 @@ each one (is it fixed?  in what release?  has the bug
 submitter agreed that it is fixed?).  For interfacing
 <small>CVS</small> to an external bug-tracking system, see the
 &lsquo;<tt>rcsinfo</tt>&rsquo; and &lsquo;<tt>verifymsg</tt>&rsquo; files
-(see section [cvs: Reference manual for Administrative files#Administrative-files Reference manual for Administrative files]).
+(see section [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Reference manual for Administrative files]]).
 </p>
 <p>Another aspect of change control is keeping track of
 the fact that changes to several files were in fact
@@ -298,18 +298,18 @@ only once they have been proven.
 <div id="A-sample-session"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#What-is-CVS-not_003f| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#What is CVS not?| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Overview| Up ]]|</td>
-<td valign="middle" align="left">|[[#Getting-the-source| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[#Getting the source| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: The Repository#The Repository| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="A-sample-session-1"></div>
 === A sample session ===
@@ -323,7 +323,7 @@ only once they have been proven.
 <p>As a way of introducing <small>CVS</small>, we&rsquo;ll go through a
 typical work-session using <small>CVS</small>.  The first thing
 to understand is that <small>CVS</small> stores all files in a
-centralized <em>repository</em> (see section [cvs: The Repository#Repository The Repository]); this
+centralized <em>repository</em> (see section [[cvs: The Repository#The Repository|The Repository]]); this
 section assumes that a repository is set up.
 </p>
 <p>Suppose you are working on a simple compiler.  The source
@@ -332,27 +332,27 @@ The compiler is called &lsquo;<samp>tc</samp>&rsquo; (Trivial Compiler),
 and the repository is set up so that there is a module
 called &lsquo;<samp>tc</samp>&rsquo;.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Getting-the-source| Getting the source]]::<nowiki>          Creating a workspace
-</nowiki>&bull;[[#Committing-your-changes| Committing your changes]]::<nowiki>     Making your work available to others
-</nowiki>&bull;[[#Cleaning-up| Cleaning up]]::<nowiki>                 Cleaning up
-</nowiki>&bull;[[#Viewing-differences| Viewing differences]]::<nowiki>         Viewing differences
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Getting the source| Getting the source]]::<nowiki>          Creating a workspace
+</nowiki>&bull;[[#Committing your changes| Committing your changes]]::<nowiki>     Making your work available to others
+</nowiki>&bull;[[#Cleaning up| Cleaning up]]::<nowiki>                 Cleaning up
+</nowiki>&bull;[[#Viewing differences| Viewing differences]]::<nowiki>         Viewing differences
 </nowiki></pre>
 <hr>
 <div id="Getting-the-source"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#A-sample-session| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
-<td valign="middle" align="left">|[[#Committing-your-changes| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[#A sample session| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#A sample session| Up ]]|</td>
+<td valign="middle" align="left">|[[#Committing your changes| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: The Repository#The Repository| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Getting-the-source-1"></div>
 ==== Getting the source ====
@@ -383,24 +383,24 @@ any of the files in it.
 <p>You start your favorite editor, hack away at &lsquo;<tt>backend.c</tt>&rsquo;, and a couple
 of hours later you have added an optimization pass to the compiler.
 A note to <small>RCS</small> and <small>SCCS</small> users: There is no need to lock the files that
-you want to edit.  See section [cvs: Multiple developers#Multiple-developers Multiple developers], for an explanation.
+you want to edit.  See section [[cvs: Multiple developers#Multiple developers|Multiple developers]], for an explanation.
 </p>
 <hr>
 <div id="Committing-your-changes"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Getting-the-source| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
-<td valign="middle" align="left">|[[#Cleaning-up| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[#Getting the source| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#A sample session| Up ]]|</td>
+<td valign="middle" align="left">|[[#Cleaning up| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: The Repository#The Repository| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Committing-your-changes-1"></div>
 ==== Committing your changes ====
@@ -466,18 +466,18 @@ this:
 <div id="Cleaning-up"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Committing-your-changes| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
-<td valign="middle" align="left">|[[#Viewing-differences| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[#Committing your changes| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#A sample session| Up ]]|</td>
+<td valign="middle" align="left">|[[#Viewing differences| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: The Repository#The Repository| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Cleaning-up-1"></div>
 ==== Cleaning up ====
@@ -493,7 +493,7 @@ tc.  One acceptable way to do that is of course
 $ rm -r tc
 </nowiki></pre></td></tr></table>
 
-<p>but a better way is to use the <code>release</code> command (see section [cvs: Guide to CVS commands#release release&mdash;Indicate that a Module is no longer in use]):
+<p>but a better way is to use the <code>release</code> command (see section [[cvs: Guide to CVS commands#release&mdash;Indicate that a Module is no longer in use|release&mdash;Indicate that a Module is no longer in use]]):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
 $ cvs release -d tc
@@ -506,7 +506,7 @@ Are you sure you want to release (and delete) directory `tc': n
 
 <p>The <code>release</code> command checks that all your modifications have been
 committed.  If history logging is enabled it also makes a note in the
-history file.  See section [cvs: Reference manual for Administrative files#history-file The history file].
+history file.  See section [[cvs: Reference manual for Administrative files#The history file|The history file]].
 </p>
 <p>When you use the &lsquo;<samp>-d</samp>&rsquo; flag with <code>release</code>, it
 also removes your working copy.
@@ -514,9 +514,9 @@ also removes your working copy.
 <p>In the example above, the <code>release</code> command wrote a couple of lines
 of output.  &lsquo;<samp>? tc</samp>&rsquo; means that the file &lsquo;<tt>tc</tt>&rsquo; is unknown to <small>CVS</small>.
 That is nothing to worry about: &lsquo;<tt>tc</tt>&rsquo; is the executable compiler,
-and it should not be stored in the repository.  See section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore],
+and it should not be stored in the repository.  See section [[cvs: Reference manual for Administrative files#Ignoring files via cvsignore|Ignoring files via cvsignore]],
 for information about how to make that warning go away.
-See section [cvs: Guide to CVS commands#release-output release output], for a complete explanation of
+See section [[cvs: Guide to CVS commands#release output|release output]], for a complete explanation of
 all possible output from <code>release</code>.
 </p>
 <p>&lsquo;<samp>M driver.c</samp>&rsquo; is more serious.  It means that the
@@ -536,18 +536,18 @@ when <code>release</code> asks for confirmation.
 <div id="Viewing-differences"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Cleaning-up| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#A-sample-session| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt; ]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[#Cleaning up| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#A sample session| Up ]]|</td>
+<td valign="middle" align="left">|[[cvs: The Repository#The Repository| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: The Repository#The Repository| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Viewing-differences-1"></div>
 ==== Viewing differences ====
@@ -581,15 +581,15 @@ Are you sure you want to release (and delete) directory `tc': y
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Overview| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: The Repository#Repository  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[cvs: The Repository#The Repository| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

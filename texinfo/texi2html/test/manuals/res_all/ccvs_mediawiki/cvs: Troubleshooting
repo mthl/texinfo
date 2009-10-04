@@ -1,7 +1,7 @@
 <div id="Troubleshooting"></div>
 <div class="header">
 <p>
-Next: [cvs: Credits#Credits Credits], Previous: [cvs: Compatibility between CVS Versions#Compatibility Compatibility], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Credits#Credits|Credits]], Previous: [[cvs: Compatibility between CVS Versions#Compatibility between CVS Versions|Compatibility]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Troubleshooting-1"></div>
 == Troubleshooting ==
@@ -13,16 +13,16 @@ alphabetically.  If not, you can look through the
 section on other problems to see if your problem is
 mentioned there.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Error-messages| Error messages]]::<nowiki>              Partial list of CVS errors
-</nowiki>&bull;[[#Connection| Connection]]::<nowiki>                  Trouble making a connection to a CVS server
-</nowiki>&bull;[[#Other-problems| Other problems]]::<nowiki>              Problems not readily listed by error message
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Partial list of error messages| Error messages]]::<nowiki>              Partial list of CVS errors
+</nowiki>&bull;[[#Trouble making a connection to a CVS server| Connection]]::<nowiki>                  Trouble making a connection to a CVS server
+</nowiki>&bull;[[#Other common problems| Other problems]]::<nowiki>              Problems not readily listed by error message
 </nowiki></pre>
 
 <hr>
 <div id="Error-messages"></div>
 <div class="header">
 <p>
-Next: [[#Connection|Connection]], Up: [[#Troubleshooting|Troubleshooting]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Trouble making a connection to a CVS server|Connection]], Up: [[#Troubleshooting|Troubleshooting]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Partial-list-of-error-messages"></div>
 === Partial list of error messages ===
@@ -47,7 +47,7 @@ particular moment).
 <dt><code><var>file</var>:<var>line</var>: Assertion '<var>text</var>' failed</code></dt>
 <dd><p>The exact format of this message may vary depending on
 your system.  It indicates a bug in <small>CVS</small>, which can
-be handled as described in [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS].
+be handled as described in [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]].
 </p>
 </dd>
 <dt><code>cvs <var>command</var>: authorization failed: server <var>host</var> rejected access</code></dt>
@@ -56,7 +56,7 @@ pserver server which chooses not to provide a
 specific reason for denying authorization.  Check that
 the username and password specified are correct and
 that the <code>CVSROOT</code> specified is allowed by &lsquo;<samp>--allow-root</samp>&rsquo;
-in &lsquo;<tt>inetd.conf</tt>&rsquo;.  See [cvs: The Repository#Password-authenticated Password authenticated].
+in &lsquo;<tt>inetd.conf</tt>&rsquo;.  See [[cvs: The Repository#Direct connection with password authentication|Password authenticated]].
 </p>
 </dd>
 <dt><code>cvs <var>command</var>: conflict: removed <var>file</var> was modified by second party</code></dt>
@@ -83,7 +83,7 @@ other unices, &lsquo;<samp>Operation not permitted</samp>&rsquo; would be
 likely to read &lsquo;<samp>Not owner</samp>&rsquo; or whatever the system
 in question uses for the unix <code>EPERM</code> error.  If
 you have any information to add, please let us know as
-described in [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS].  If you experience this error
+described in [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]].  If you experience this error
 while using <small>CVS</small>, retrying the operation which
 produced it should work fine.
 </p>
@@ -99,7 +99,7 @@ directory on the server is set to a subdirectory of the
 root (which is also not allowed).  If this is the
 problem, set the temporary directory to somewhere else,
 for example &lsquo;<tt>/var/tmp</tt>&rsquo;; see <code>TMPDIR</code> in
-[cvs: All environment variables which affect CVS#Environment-variables Environment variables], for how to set the
+[[cvs: All environment variables which affect CVS#All environment variables which affect CVS|Environment variables]], for how to set the
 temporary directory.
 </p>
 </dd>
@@ -110,7 +110,7 @@ temporary directory.
 <dt><code>cannot open CVS/Entries for reading: No such file or directory</code></dt>
 <dd><p>This generally indicates a <small>CVS</small> internal error, and
 can be handled as with other <small>CVS</small> bugs
-(see [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS]).  Usually there is a workaround&mdash;the
+(see [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]]).  Usually there is a workaround&mdash;the
 exact nature of which would depend on the situation but
 which hopefully could be figured out.
 </p>
@@ -125,14 +125,14 @@ here for the benefit of <small>CVS</small> 1.9 and older.
 </dd>
 <dt><code>cvs server: cannot open /root/.cvsignore: Permission denied</code></dt>
 <dt><code>cvs [server aborted]: can't chdir(/root): Permission denied</code></dt>
-<dd><p>See [[#Connection|Connection]].
+<dd><p>See [[#Trouble making a connection to a CVS server|Connection]].
 </p>
 </dd>
 <dt><code>cvs [checkout aborted]: cannot rename file <var>file</var> to CVS/,,<var>file</var>: Invalid argument</code></dt>
 <dd><p>This message has been reported as intermittently
 happening with <small>CVS</small> 1.9 on Solaris 2.5.  The cause is
 unknown; if you know more about what causes it, let us
-know as described in [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS].
+know as described in [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]].
 </p>
 </dd>
 <dt><code>cvs [<var>command</var> aborted]: cannot start server via rcmd</code></dt>
@@ -143,7 +143,7 @@ connecting to the server.  Current versions of <small>CVS</small>
 should print a much more specific error message.  If
 you get this message when you didn&rsquo;t mean to run the
 client at all, you probably forgot to specify
-<code>:local:</code>, as described in [cvs: The Repository#Repository Repository].
+<code>:local:</code>, as described in [[cvs: The Repository#The Repository|Repository]].
 </p>
 </dd>
 <dt><code>ci: <var>file</var>,v: bad diff output line: Binary files - and /tmp/T2a22651 differ</code></dt>
@@ -165,14 +165,14 @@ observed without another error message and the cause is
 not well-understood.  With the current version of <small>CVS</small>,
 which does not run <code>co</code>, if this message occurs
 without another error message, it is definitely a <small>CVS</small>
-bug (see [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS]).
+bug (see [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]]).
 </p>
 </dd>
 <dt><code>cvs [login aborted]: could not find out home directory</code></dt>
 <dd><p>This means that you need to set the environment
 variables that <small>CVS</small> uses to locate your home directory.
 See the discussion of <code>HOME</code>, <code>HOMEDRIVE</code>, and <code>HOMEPATH</code> in
-[cvs: All environment variables which affect CVS#Environment-variables Environment variables].
+[[cvs: All environment variables which affect CVS#All environment variables which affect CVS|Environment variables]].
 </p>
 </dd>
 <dt><code>cvs update: could not merge revision <var>rev</var> of <var>file</var>: No such file or directory</code></dt>
@@ -212,7 +212,7 @@ src/filesubr.c, if anyone is curious.
 If you see the message,
 you probably can just retry the operation which failed,
 or if you have discovered information concerning its
-cause, please let us know as described in [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS].
+cause, please let us know as described in [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]].
 </p>
 </dd>
 <dt><code>end of file from server (consult above messages if any)</code></dt>
@@ -221,7 +221,7 @@ using an external <code>rsh</code> program and it exited with
 an error.  In this case the <code>rsh</code> program should
 have printed a message, which will appear before the
 above message.  For more information on setting up a
-<small>CVS</small> client and server, see [cvs: The Repository#Remote-repositories Remote repositories].
+<small>CVS</small> client and server, see [[cvs: The Repository#Remote repositories|Remote repositories]].
 </p>
 </dd>
 <dt><code>cvs [update aborted]: EOF in key in RCS file <var>file</var>,v</code></dt>
@@ -235,7 +235,7 @@ message when upgrading from <small>CVS</small> 1.9 to <small>CVS</small>
 hardware, the operating system, or the like.  Of
 course, if you find a case in which <small>CVS</small> seems to
 corrupting the file, by all means report it,
-(see [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS]).
+(see [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]]).
 There are quite a few variations of this error message,
 depending on exactly where in the <small>RCS</small> file <small>CVS</small>
 finds the syntax error.
@@ -256,7 +256,7 @@ to avoid the duplication, and you have no versions of
 <small>CVS</small> 1.7 or earlier in use, remove <code>-i mkmodules</code>
 every place it appears in your <code>modules</code>
 file.  For more information on the <code>modules</code> file,
-see [cvs: Reference manual for Administrative files#modules modules].
+see [[cvs: Reference manual for Administrative files#The modules file|modules]].
 </p>
 </dd>
 <dt><code>missing author</code></dt>
@@ -275,11 +275,11 @@ obscure) cases in which <small>CVS</small> will require you to
 try a few other <small>CVS</small> commands involving that tag,
 before you find one which will cause <small>CVS</small> to update
 the &lsquo;<tt>val-tags</tt>&rsquo; file; see discussion of val-tags in
-[cvs: The Repository#File-permissions File permissions].  You only need to worry about
+[[cvs: The Repository#File permissions|File permissions]].  You only need to worry about
 this once for a given tag; when a tag is listed in
 &lsquo;<tt>val-tags</tt>&rsquo;, it stays there.  Note that using
 &lsquo;<samp>-f</samp>&rsquo; to not require tag matches does not override
-this check; see [cvs: Guide to CVS commands#Common-options Common options].
+this check; see [[cvs: Guide to CVS commands#Common command options|Common options]].
 </p>
 </dd>
 <dt><code>*PANIC* administration files missing</code></dt>
@@ -289,7 +289,7 @@ which <small>CVS</small> puts in a CVS directory.  If the problem is
 that you created a CVS directory via some mechanism
 other than <small>CVS</small>, then the answer is simple, use a name
 other than <small>CVS</small>.  If not, it indicates a <small>CVS</small> bug
-(see [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS]).
+(see [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]]).
 </p>
 </dd>
 <dt><code>rcs error: Unknown option: -x,v/</code></dt>
@@ -308,7 +308,7 @@ know&mdash;we haven&rsquo;t tracked it down yet!).  It seems to
 happen only after a <small>CVS</small> command has completed, and
 you should be able to just ignore the message.
 However, if you have discovered information concerning its
-cause, please let us know as described in [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS].
+cause, please let us know as described in [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]].
 </p>
 </dd>
 <dt><code>'root' is not allowed to commit files</code></dt>
@@ -350,8 +350,8 @@ up properly.  For example, if &lsquo;<tt>inetd.conf</tt>&rsquo; points
 to a nonexistent cvs executable.  To debug it further,
 find the log file which inetd writes
 (&lsquo;<tt>/var/log/messages</tt>&rsquo; or whatever inetd uses on
-your system).  For details, see [[#Connection|Connection]], and
-[cvs: The Repository#Password-authentication-server Password authentication server].
+your system).  For details, see [[#Trouble making a connection to a CVS server|Connection]], and
+[[cvs: The Repository#Setting up the server for password authentication|Password authentication server]].
 </p>
 </dd>
 <dt><code>cvs commit: Up-to-date check failed for `<var>file</var>'</code></dt>
@@ -366,7 +366,7 @@ to <code>cvs commit</code>.  If it detects conflicts it will
 print a message saying so, will report &lsquo;<samp>C <var>file</var></samp>&rsquo;,
 and you need to manually resolve the
 conflict.  For more details on this process see
-[cvs: Multiple developers#Conflicts-example Conflicts example].
+[[cvs: Multiple developers#Conflicts example|Conflicts example]].
 </p>
 </dd>
 <dt><code>Usage:	diff3 [-exEX3 [-i | -m] [-L label1 -L label3]] file1 file2 file3</code></dt>
@@ -400,7 +400,7 @@ for setting up the <small>CVS</small> server.
 </dd>
 <dt><code>cvs commit: [<var>time</var>] waiting for <var>user</var>'s lock in <var>directory</var></code></dt>
 <dd><p>This is a normal message, not an error.  See
-[cvs: Multiple developers#Concurrency Concurrency], for more details.
+[[cvs: Multiple developers#Several developers simultaneously attempting to run CVS|Concurrency]], for more details.
 </p>
 </dd>
 <dt><code>cvs commit: warning: editor session failed</code></dt>
@@ -423,7 +423,7 @@ exit 0
 <div id="Connection"></div>
 <div class="header">
 <p>
-Next: [[#Other-problems|Other problems]], Previous: [[#Error-messages|Error messages]], Up: [[#Troubleshooting|Troubleshooting]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Other common problems|Other problems]], Previous: [[#Partial list of error messages|Error messages]], Up: [[#Troubleshooting|Troubleshooting]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Trouble-making-a-connection-to-a-CVS-server"></div>
 === Trouble making a connection to a CVS server ===
@@ -560,7 +560,7 @@ others allow you to set the limit for each service separately.)
 <div id="Other-problems"></div>
 <div class="header">
 <p>
-Previous: [[#Connection|Connection]], Up: [[#Troubleshooting|Troubleshooting]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Trouble making a connection to a CVS server|Connection]], Up: [[#Troubleshooting|Troubleshooting]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Other-common-problems"></div>
 === Other common problems ===
@@ -574,14 +574,14 @@ On Windows, if there is a 30 second or so delay when
 you run a <small>CVS</small> command, it may mean that you have
 your home directory set to &lsquo;<tt>C:/</tt>&rsquo;, for example (see
 <code>HOMEDRIVE</code> and <code>HOMEPATH</code> in
-[cvs: All environment variables which affect CVS#Environment-variables Environment variables]).  <small>CVS</small> expects the home
+[[cvs: All environment variables which affect CVS#All environment variables which affect CVS|Environment variables]]).  <small>CVS</small> expects the home
 directory to not end in a slash, for example &lsquo;<tt>C:</tt>&rsquo;
 or &lsquo;<tt>C:\cvs</tt>&rsquo;.
 
 </li><li>
 If you are running <small>CVS</small> 1.9.18 or older, and
 <code>cvs update</code> finds a conflict and tries to
-merge, as described in [cvs: Multiple developers#Conflicts-example Conflicts example], but
+merge, as described in [[cvs: Multiple developers#Conflicts example|Conflicts example]], but
 doesn&rsquo;t tell you there were conflicts, then you may
 have an old version of <small>RCS</small>.  The easiest solution
 probably is to upgrade to a current version of
@@ -592,6 +592,6 @@ programs.
 <hr>
 <div class="header">
 <p>
-Previous: [[#Connection|Connection]], Up: [[#Troubleshooting|Troubleshooting]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Trouble making a connection to a CVS server|Connection]], Up: [[#Troubleshooting|Troubleshooting]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -1,7 +1,7 @@
 <div id="Recursive-behavior"></div>
 <div class="header">
 <p>
-Next: [cvs: Adding, removing, and renaming files and directories#Adding-and-removing Adding and removing], Previous: [cvs: Branching and merging#Branching-and-merging Branching and merging], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]], Previous: [[cvs: Branching and merging#Branching and merging|Branching and merging]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Recursive-behavior-1"></div>
 == Recursive behavior ==
@@ -69,7 +69,7 @@ for most of the <small>CVS</small> subcommands, not only the
 <p>The recursive behavior of the <small>CVS</small> subcommands can be
 turned off with the &lsquo;<samp>-l</samp>&rsquo; option.
 Conversely, the &lsquo;<samp>-R</samp>&rsquo; option can be used to force recursion if
-&lsquo;<samp>-l</samp>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see [cvs: Guide to CVS commands#g_t_007e_002f_002ecvsrc ~/.cvsrc]).
+&lsquo;<samp>-l</samp>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see [[cvs: Guide to CVS commands#Default options and the ~/.cvsrc file|~/.cvsrc]]).
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -l         # <span class="roman">Don't update files in subdirectories</span>
 </nowiki></pre></td></tr></table>
@@ -77,6 +77,6 @@ Conversely, the &lsquo;<samp>-R</samp>&rsquo; option can be used to force recurs
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Adding, removing, and renaming files and directories#Adding-and-removing Adding and removing], Previous: [cvs: Branching and merging#Branching-and-merging Branching and merging], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]], Previous: [[cvs: Branching and merging#Branching and merging|Branching and merging]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

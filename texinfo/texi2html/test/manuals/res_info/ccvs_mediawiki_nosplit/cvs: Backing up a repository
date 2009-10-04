@@ -1,7 +1,7 @@
 <div id="Backing-up"></div>
 <div class="header">
 <p>
-Next: [cvs: Moving a repository#Moving-a-repository Moving a repository], Previous: [cvs: Creating a repository#Creating-a-repository Creating a repository], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Moving a repository#Moving a repository|Moving a repository]], Previous: [[cvs: Creating a repository#Creating a repository|Creating a repository]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Backing-up-a-repository"></div>
@@ -25,7 +25,7 @@ server, or similar mechanisms.  The details would
 depend on your operating system and how you have
 <small>CVS</small> set up.  To lock <small>CVS</small>, you would create
 &lsquo;<tt>#cvs.rfl</tt>&rsquo; locks in each repository directory.
-See [cvs: Several developers simultaneously attempting to run CVS#Concurrency Concurrency], for more on <small>CVS</small> locks.
+See [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Concurrency]], for more on <small>CVS</small> locks.
 Having said all this, if you just back up without any
 of these precautions, the results are unlikely to be
 particularly dire.  Restoring from backup, the
@@ -61,6 +61,6 @@ the changes into the repository.
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Moving a repository#Moving-a-repository Moving a repository], Previous: [cvs: Creating a repository#Creating-a-repository Creating a repository], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Moving a repository#Moving a repository|Moving a repository]], Previous: [[cvs: Creating a repository#Creating a repository|Creating a repository]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

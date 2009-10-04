@@ -1,18 +1,18 @@
 <div id="Revision-management"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Multiple developers#Multiple-developers  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Multiple developers#Choosing-a-model  &lt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: Multiple developers#Multiple developers| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Multiple developers#Choosing between reserved or unreserved checkouts| &lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[[#When-to-commit| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[#When to commit?| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Keyword substitution#Keyword substitution| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Revision-management-1"></div>
 == Revision management ==
@@ -29,24 +29,24 @@ you could probably skip this chapter.  The questions
 this chapter takes up become more important when more
 than one person is working in a repository.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#When-to-commit| When to commit]]::<nowiki>              Some discussion on the subject
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#When to commit?| When to commit]]::<nowiki>              Some discussion on the subject
 </nowiki></pre>
 <hr>
 <div id="When-to-commit"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Revision-management| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#Revision-management| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#Revision-management| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &gt; ]|</td>
-<td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Revision management| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Revision management| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#Revision management| Up ]]|</td>
+<td valign="middle" align="left">|[[cvs: Keyword substitution#Keyword substitution| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Keyword substitution#Keyword substitution| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="When-to-commit_003f"></div>
 === When to commit? ===
@@ -71,7 +71,7 @@ seldom, and conflicts will probably be more common.
 that they can be compiled.  Some sites require that the
 files pass a test suite.  Policies like this can be
 enforced using the commitinfo file
-(see section [cvs: Reference manual for Administrative files#commitinfo Commitinfo]), but you should think twice before
+(see section [[cvs: Reference manual for Administrative files#Commitinfo|Commitinfo]]), but you should think twice before
 you enforce such a convention.  By making the
 development environment too controlled it might become
 too regimented and thus counter-productive to the real
@@ -79,16 +79,16 @@ goal, which is to get software written.
 </p>
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#Revision-management| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Keyword substitution#Keyword-substitution  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#Revision management| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Keyword substitution#Keyword substitution| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

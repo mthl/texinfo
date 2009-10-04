@@ -72,7 +72,7 @@ ul.no-bullet {list-style: none}
 <td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Describing-1D-gridded-model"></a>
-<h2 class="section"> 3.3 Describing 1D gridded model </h2>
+<h2 class="section">3.3 Describing 1D gridded model</h2>
 <ul class="no-bullet">
 <li> <a href="#g_t1D-gridded-Model-size">3.3.1 Setting dimensions for 1D gridded model</a> </li>
 <li> <a href="#g_t1D-gridded-model-code">3.3.2 1D gridded Model coding</a> </li>
@@ -143,7 +143,7 @@ to select <code>grid1d</code> and <code>monitor</code>, it could be
 <td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Setting-dimensions-for-1D-gridded-model"></a>
-<h3 class="subsection"> 3.3.1 Setting dimensions for 1D gridded model </h3>
+<h3 class="subsection">3.3.1 Setting dimensions for 1D gridded model</h3>
 
 <p>In that case the number of nodes, the number of states and tranferts 
 per node, and the number of limiting transfers and states are required.
@@ -222,12 +222,12 @@ and <code>m_up=2</code>:
 <td valign="middle" align="left">[<a href="mini_ker_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="g_t1D-gridded-Model-coding"></a>
-<h3 class="subsection"> 3.3.2 1D gridded Model coding </h3>
+<h3 class="subsection">3.3.2 1D gridded Model coding</h3>
 
 <p>The model code and parameters go in the &lsquo;<tt>zinit</tt>&rsquo; sequence.
 </p>
 <a name="Parameters-2"></a>
-<h4 class="subsubheading"> Parameters </h4>
+<h4 class="subsubheading">Parameters</h4>
 
 <p>A value for the Miniker parameters and the model parameters should be given in
 &lsquo;<tt>zinit</tt>&rsquo;, in our example we have
@@ -247,7 +247,7 @@ data rmassm1/n_node*1./;
 </pre></td></tr></table>
 
 <a name="Limiting-conditions"></a>
-<h4 class="subsubheading"> Limiting conditions </h4>
+<h4 class="subsubheading">Limiting conditions</h4>
 
 <a name="index-limiting-conditions"></a>
 
@@ -312,7 +312,7 @@ set_Up_Phi
 </pre></td></tr></table>
 
 <a name="Starting-points-1"></a>
-<h4 class="subsubheading"> Starting points </h4>
+<h4 class="subsubheading">Starting points</h4>
 
 <p>The cell node state values are initialized. They are in an array 
 indexed by the <code>inode</code> variable. In the example the variable 
@@ -331,7 +331,7 @@ do inode=1,n_node &lt;eta_move(inode)=0.01; eta_speed(inode)=0.0;&gt;;
 using <code>inode</code> as the node index.
 </p>
 <a name="Grid-node-equations"></a>
-<h4 class="subsubheading"> Grid node equations </h4>
+<h4 class="subsubheading">Grid node equations</h4>
 
 <a name="index-set_005fnode_005fPhi"></a>
 <a name="index-set_005fnode_005feta"></a>

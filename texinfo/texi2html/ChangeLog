@@ -1,3 +1,20 @@
+2009-10-04   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: add a new hook for users, command_handler_setup
+	that is really called before anything is done.
+	Add 'inline_end' and 'inline_begin' for styles to allow for
+	markup that has to be restarted or closed at each paragraph break
+	(that is already done for atributes).
+	* texi2html.init, formats/*: print_element_header is obsoleted, 
+	things should be done in element_heading or print_head_navigation.
+	New function references, heading_text and heading_text_preformatted
+	allowing to have more generic function references.
+	More generic inline_contents, titlepage print_title heading and
+	element_heading (merged texi2html.init and html.init versions).
+	Add SHOW_TITLE to determine whether the title is print out or not.
+	* examples/mediawiki.init: more wiki links using targets with 
+	spaces.
+
 2009-09-23   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: use @code for index entries that should be 

@@ -1829,12 +1829,12 @@ This function is called if the document is split at sections, after
 The functions associated with the following function references are used for 
 the formatting of sections:
 
-@deftypefn {Function Reference} $element_header print_element_header $first_in_page $previous_is_top
-@var{$first_in_page} is true if this section is the first section in the page.
-@var{$previous_is_top} is true if this section is the section following the 
-Top section.
-This function should return @var{$element_header}, the current section header.
-@end deftypefn
+@c @deftypefn {Function Reference} $element_header print_element_header $first_in_page $previous_is_top
+@c @var{$first_in_page} is true if this section is the first section in the page.
+@c @var{$previous_is_top} is true if this section is the section following the 
+@c Top section.
+@c This function should return @var{$element_header}, the current section header.
+@c @end deftypefn
 
 @deffn {Function Reference} print_section $filehandle $first_in_page $previous_is_top
 @var{$filehandle} is the opened filehandle the function should write to.
@@ -2585,6 +2585,17 @@ Thus @code{elem class="elem"} leads to
 @code{<elem class="elem">@var{arg}</elem>}.
 
 This works only if there is only one argument.
+
+@item inline_begin
+
+The associated value is added in front of the text 
+and each time a paragraph is restarted while
+within the command.
+
+@item inline_end
+
+The associated value is added after the text and each time 
+a paragraph is ended while within the command.
 
 @item begin
 
@@ -4282,8 +4293,12 @@ hash containing many informations about the context. @var{$text} should be
 empty. @var{$result} is the expanded resulting text.
 @end deftypefn
 
-There are three places for user defined functions, associated with arrays:
+There are five places for user defined functions, associated with arrays:
 @vtable @code
+@item @@command_handler_setup
+The function references in that array are called before anything is done, 
+including collecting the output file names. The input file names directory
+are available.
 @item @@command_handler_init
 The function references in that array are called before the collecting pass.
 At that time the information available is essentially the file names.
@@ -4599,6 +4614,8 @@ and @@centerchap have now their command name as class.
 @@node heading class is now "node-heading", instead of "node".
 The whole header is in an element with class "header" 
 (was "node" when !$HEADER_IN_TABLE).
+@item print_element_header is obsoleted, 
+things should be directly done in element_heading.
 
 @end itemize
 @item API changes between 1.78 and 1.80: 

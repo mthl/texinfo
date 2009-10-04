@@ -1,7 +1,7 @@
 <div id="Creating-a-branch"></div>
 <div class="header">
 <p>
-Next: [cvs: Accessing branches#Accessing-branches Accessing branches], Previous: [cvs: What branches are good for#Branches-motivation Branches motivation], Up: [cvs: Branching and merging#Branching-and-merging Branching and merging] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Accessing branches#Accessing branches|Accessing branches]], Previous: [[cvs: What branches are good for#What branches are good for|Branches motivation]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Creating-a-branch-1"></div>
@@ -27,7 +27,7 @@ in the repository, not in the working copy.  Creating a
 branch based on current revisions, as the above example
 does, will <em>not</em> automatically switch the working
 copy to be on the new branch.  For information on how
-to do that, see [cvs: Accessing branches#Accessing-branches Accessing branches].
+to do that, see [[cvs: Accessing branches#Accessing branches|Accessing branches]].
 </p>
 <p>You can also create a branch without reference to any
 working copy, by using <code>rtag</code>:
@@ -54,4 +54,9 @@ branch &ndash; named &lsquo;<samp>rel-1-0-patches</samp>&rsquo; &ndash; in modul
 &lsquo;<samp>tc</samp>&rsquo;, rooted in the revision tree at the point tagged
 by &lsquo;<samp>rel-1-0</samp>&rsquo;.
 </p>
+<hr>
+<div class="header">
+<p>
+Next: [[cvs: Accessing branches#Accessing branches|Accessing branches]], Previous: [[cvs: What branches are good for#What branches are good for|Branches motivation]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
+</div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

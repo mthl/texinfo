@@ -1,3 +1,6 @@
+code_not_closed_no_newline
+**************************
+
 Missing closing bracket without a following newline
 ***************************************************
 

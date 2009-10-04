@@ -1,7 +1,7 @@
 <div id="rcsinfo"></div>
 <div class="header">
 <p>
-Next: [cvs: Ignoring files via cvsignore#cvsignore cvsignore], Previous: [cvs: The commit support files#commit-files commit files], Up: [cvs: Reference manual for Administrative files#Administrative-files Administrative files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]], Previous: [[cvs: The commit support files#The commit support files|commit files]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Rcsinfo"></div>
@@ -15,7 +15,7 @@ Next: [cvs: Ignoring files via cvsignore#cvsignore cvsignore], Previous: [cvs: T
 edit when filling out the commit log.  The
 &lsquo;<tt>rcsinfo</tt>&rsquo; file has a syntax similar to the
 &lsquo;<tt>verifymsg</tt>&rsquo;, &lsquo;<tt>commitinfo</tt>&rsquo; and &lsquo;<tt>loginfo</tt>&rsquo;
-files.  See [cvs: The common syntax#syntax syntax].  Unlike the other files the second
+files.  See [[cvs: The common syntax#The common syntax|syntax]].  Unlike the other files the second
 part is <em>not</em> a command-line template.  Instead,
 the part after the regular expression should be a full pathname to
 a file containing the log message template.
@@ -34,7 +34,7 @@ commit -m <var>message</var></samp>&rsquo; or &lsquo;<samp>cvs commit -f
 <var>file</var></samp>&rsquo; that log message will override the
 template.
 </p>
-<p>See [cvs: Verifying log messages#verifymsg verifymsg], for an example &lsquo;<tt>rcsinfo</tt>&rsquo;
+<p>See [[cvs: Verifying log messages#Verifying log messages|verifymsg]], for an example &lsquo;<tt>rcsinfo</tt>&rsquo;
 file.
 </p>
 <p>When <small>CVS</small> is accessing a remote repository,
@@ -52,6 +52,6 @@ be updated from the server.
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Ignoring files via cvsignore#cvsignore cvsignore], Previous: [cvs: The commit support files#commit-files commit files], Up: [cvs: Reference manual for Administrative files#Administrative-files Administrative files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]], Previous: [[cvs: The commit support files#The commit support files|commit files]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

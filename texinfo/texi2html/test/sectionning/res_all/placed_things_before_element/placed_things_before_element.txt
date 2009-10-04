@@ -1,3 +1,6 @@
+before element test
+*******************
+
 Ref to the anchor:
 An anchor
 
@@ -26,7 +29,7 @@ Ref to footnote anchor
 Anchor in footnote
 
 Footnotes
-*********
+---------
 
 (1)
 In footnote.

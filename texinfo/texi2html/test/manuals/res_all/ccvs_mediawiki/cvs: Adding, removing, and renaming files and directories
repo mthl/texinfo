@@ -1,7 +1,7 @@
 <div id="Adding-and-removing"></div>
 <div class="header">
 <p>
-Next: [cvs: History browsing#History-browsing History browsing], Previous: [cvs: Recursive behavior#Recursive-behavior Recursive behavior], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: History browsing#History browsing|History browsing]], Previous: [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Adding_002c-removing_002c-and-renaming-files-and-directories"></div>
 == Adding, removing, and renaming files and directories ==
@@ -15,17 +15,17 @@ fact that a change has taken place, just as with
 modifying an existing file.  The exact mechanisms to do
 this in <small>CVS</small> vary depending on the situation.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Adding-files| Adding files]]::<nowiki>                Adding files
-</nowiki>&bull;[[#Removing-files| Removing files]]::<nowiki>              Removing files
-</nowiki>&bull;[[#Removing-directories| Removing directories]]::<nowiki>        Removing directories
-</nowiki>&bull;[[#Moving-files| Moving files]]::<nowiki>                Moving and renaming files
-</nowiki>&bull;[[#Moving-directories| Moving directories]]::<nowiki>          Moving and renaming directories
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Adding files to a directory| Adding files]]::<nowiki>                Adding files
+</nowiki>&bull;[[#Removing files| Removing files]]::<nowiki>              Removing files
+</nowiki>&bull;[[#Removing directories| Removing directories]]::<nowiki>        Removing directories
+</nowiki>&bull;[[#Moving and renaming files| Moving files]]::<nowiki>                Moving and renaming files
+</nowiki>&bull;[[#Moving and renaming directories| Moving directories]]::<nowiki>          Moving and renaming directories
 </nowiki></pre>
 <hr>
 <div id="Adding-files"></div>
 <div class="header">
 <p>
-Next: [[#Removing-files|Removing files]], Up: [[#Adding-and-removing|Adding and removing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Removing files|Removing files]], Up: [[#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Adding-files-to-a-directory"></div>
 === Adding files to a directory ===
@@ -36,7 +36,7 @@ Next: [[#Removing-files|Removing files]], Up: [[#Adding-and-removing|Adding and 
 <ul>
 <li>
 You must have a working copy of the directory.
-See [cvs: Overview#Getting-the-source Getting the source].
+See [[cvs: Overview#Getting the source|Getting the source]].
 
 </li><li>
 Create the new file inside your working copy of the directory.
@@ -44,7 +44,7 @@ Create the new file inside your working copy of the directory.
 </li><li>
 Use &lsquo;<samp>cvs add <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that you
 want to version control the file.  If the file contains
-binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see [cvs: Handling binary files#Binary-files Binary files]).
+binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see [[cvs: Handling binary files#Handling binary files|Binary files]]).
 
 </li><li>
 Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually check
@@ -72,27 +72,27 @@ The files or directories specified with <code>add</code> must
 already exist in the current directory.  To add a whole
 new directory hierarchy to the source repository (for
 example, files received from a third-party vendor), use
-the <code>import</code> command instead.  See [cvs: Guide to CVS commands#import import].
+the <code>import</code> command instead.  See [[cvs: Guide to CVS commands#import&mdash;Import sources into CVS, using vendor branches|import]].
 </p>
 <p>The added files are not placed in the source repository
 until you use <code>commit</code> to make the change
 permanent.  Doing an <code>add</code> on a file that was
 removed with the <code>remove</code> command will undo the
 effect of the <code>remove</code>, unless a <code>commit</code>
-command intervened.  See [[#Removing-files|Removing files]], for an
+command intervened.  See [[#Removing files|Removing files]], for an
 example.
 </p>
 <p>The &lsquo;<samp>-k</samp>&rsquo; option specifies the default way that
 this file will be checked out; for more information see
-[cvs: Keyword substitution#Substitution-modes Substitution modes].
+[[cvs: Keyword substitution#Substitution modes|Substitution modes]].
 </p>
 <p>The &lsquo;<samp>-m</samp>&rsquo; option specifies a description for the
 file.  This description appears in the history log (if
-it is enabled, see [cvs: Reference manual for Administrative files#history-file history file]).  It will also be
+it is enabled, see [[cvs: Reference manual for Administrative files#The history file|history file]]).  It will also be
 saved in the version history inside the repository when
 the file is committed.  The <code>log</code> command displays
 this description.  The description can be changed using
-&lsquo;<samp>admin -t</samp>&rsquo;.  See [cvs: Guide to CVS commands#admin admin].  If you omit the
+&lsquo;<samp>admin -t</samp>&rsquo;.  See [[cvs: Guide to CVS commands#admin&mdash;Administration|admin]].  If you omit the
 &lsquo;<samp>-m <var>description</var></samp>&rsquo; flag, an empty string will
 be used.  You will not be prompted for a description.
 </p></dd></dl>
@@ -105,15 +105,15 @@ $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
 </nowiki></pre></td></tr></table>
 
 <p>When you add a file it is added only on the branch
-which you are working on (see [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
+which you are working on (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  You can
 later merge the additions to another branch if you want
-(see [cvs: Branching and merging#Merging-adds-and-removals Merging adds and removals]).
+(see [[cvs: Branching and merging#Merging can add or remove files|Merging adds and removals]]).
 </p>
 <hr>
 <div id="Removing-files"></div>
 <div class="header">
 <p>
-Next: [[#Removing-directories|Removing directories]], Previous: [[#Adding-files|Adding files]], Up: [[#Adding-and-removing|Adding and removing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Removing directories|Removing directories]], Previous: [[#Adding files to a directory|Adding files]], Up: [[#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Removing-files-1"></div>
 === Removing files ===
@@ -130,7 +130,7 @@ but remain able to retrieve old revisions:
 <ul>
 <li>
 Make sure that you have not made any uncommitted
-modifications to the file.  See [cvs: Overview#Viewing-differences Viewing differences],
+modifications to the file.  See [[cvs: Overview#Viewing differences|Viewing differences]],
 for one way to do that.  You can also use the
 <code>status</code> or <code>update</code> command.  If you remove
 the file without committing your changes, you will of
@@ -167,7 +167,7 @@ specified to <code>checkout</code> or <code>update</code>.
 working directory are not processed).  This command
 does not actually remove the file from the repository
 until you commit the removal.  For a full list of
-options, see [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS].
+options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].
 </p></dd></dl>
 
 <p>Here is an example of removing several files:
@@ -226,15 +226,15 @@ U oj.c
 </nowiki></pre></td></tr></table>
 
 <p>When you remove a file it is removed only on the branch
-which you are working on (see [cvs: Branching and merging#Branching-and-merging Branching and merging]).  You can
+which you are working on (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  You can
 later merge the removals to another branch if you want
-(see [cvs: Branching and merging#Merging-adds-and-removals Merging adds and removals]).
+(see [[cvs: Branching and merging#Merging can add or remove files|Merging adds and removals]]).
 </p>
 <hr>
 <div id="Removing-directories"></div>
 <div class="header">
 <p>
-Next: [[#Moving-files|Moving files]], Previous: [[#Removing-files|Removing files]], Up: [[#Adding-and-removing|Adding and removing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Moving and renaming files|Moving files]], Previous: [[#Removing files|Removing files]], Up: [[#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Removing-directories-1"></div>
 === Removing directories ===
@@ -271,7 +271,7 @@ are checking out contains any files in that directory.
 <div id="Moving-files"></div>
 <div class="header">
 <p>
-Next: [[#Moving-directories|Moving directories]], Previous: [[#Removing-directories|Removing directories]], Up: [[#Adding-and-removing|Adding and removing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Moving and renaming directories|Moving directories]], Previous: [[#Removing directories|Removing directories]], Up: [[#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Moving-and-renaming-files"></div>
 === Moving and renaming files ===
@@ -282,20 +282,20 @@ Next: [[#Moving-directories|Moving directories]], Previous: [[#Removing-director
 <p>Moving files to a different directory or renaming them
 is not difficult, but some of the ways in which this
 works may be non-obvious.  (Moving or renaming a
-directory is even harder.  See [[#Moving-directories|Moving directories]].).
+directory is even harder.  See [[#Moving and renaming directories|Moving directories]].).
 </p>
 <p>The examples below assume that the file <var>old</var> is renamed to
 <var>new</var>.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Outside| Outside]]::<nowiki>                     The normal way to Rename
-</nowiki>&bull;[[#Inside| Inside]]::<nowiki>                      A tricky, alternative way
-</nowiki>&bull;[[#Rename-by-copying| Rename by copying]]::<nowiki>           Another tricky, alternative way
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#The Normal way to Rename| Outside]]::<nowiki>                     The normal way to Rename
+</nowiki>&bull;[[#Moving the history file| Inside]]::<nowiki>                      A tricky, alternative way
+</nowiki>&bull;[[#Copying the history file| Rename by copying]]::<nowiki>           Another tricky, alternative way
 </nowiki></pre>
 <hr>
 <div id="Outside"></div>
 <div class="header">
 <p>
-Next: [[#Inside|Inside]], Up: [[#Moving-files|Moving files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Moving the history file|Inside]], Up: [[#Moving and renaming files|Moving files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="The-Normal-way-to-Rename"></div>
 ==== The Normal way to Rename ====
@@ -323,13 +323,13 @@ time of the rename.
 <p>When <var>new</var> is committed its revision numbers will
 start again, usually at 1.1, so if that bothers you,
 use the &lsquo;<samp>-r rev</samp>&rsquo; option to commit.  For more
-information see [cvs: Revisions#Assigning-revisions Assigning revisions].
+information see [[cvs: Revisions#Assigning revisions|Assigning revisions]].
 </p>
 <hr>
 <div id="Inside"></div>
 <div class="header">
 <p>
-Next: [[#Rename-by-copying|Rename by copying]], Previous: [[#Outside|Outside]], Up: [[#Moving-files|Moving files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Copying the history file|Rename by copying]], Previous: [[#The Normal way to Rename|Outside]], Up: [[#Moving and renaming files|Moving files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Moving-the-history-file"></div>
 ==== Moving the history file ====
@@ -373,7 +373,7 @@ commands while you move it.
 <div id="Rename-by-copying"></div>
 <div class="header">
 <p>
-Previous: [[#Inside|Inside]], Up: [[#Moving-files|Moving files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Moving the history file|Inside]], Up: [[#Moving and renaming files|Moving files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Copying-the-history-file"></div>
 ==== Copying the history file ====
@@ -427,7 +427,7 @@ You cannot easily see the history of the file across the rename.
 <div id="Moving-directories"></div>
 <div class="header">
 <p>
-Previous: [[#Moving-files|Moving files]], Up: [[#Adding-and-removing|Adding and removing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Moving and renaming files|Moving files]], Up: [[#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Moving-and-renaming-directories"></div>
 === Moving and renaming directories ===
@@ -437,8 +437,8 @@ Previous: [[#Moving-files|Moving files]], Up: [[#Adding-and-removing|Adding and 
 
 <p>The normal way to rename or move a directory is to
 rename or move each file within it as described in
-[[#Outside|Outside]].  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
-option, as described in [[#Removing-directories|Removing directories]].
+[[#The Normal way to Rename|Outside]].  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
+option, as described in [[#Removing directories|Removing directories]].
 </p>
 <p>If you really want to hack the repository to rename or
 delete a directory in the repository, you can do it
@@ -481,6 +481,6 @@ name of the directories.
 <hr>
 <div class="header">
 <p>
-Previous: [[#Moving-files|Moving files]], Up: [[#Adding-and-removing|Adding and removing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Moving and renaming files|Moving files]], Up: [[#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

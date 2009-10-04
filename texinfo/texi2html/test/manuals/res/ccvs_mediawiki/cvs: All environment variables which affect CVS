@@ -1,18 +1,18 @@
 <div id="Environment-variables"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Reference manual for Administrative files#config  &lt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: Reference manual for Administrative files#Reference manual for Administrative files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Reference manual for Administrative files#The CVSROOT/config configuration file| &lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &gt; ]|</td>
-<td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[cvs: Compatibility between CVS Versions#Compatibility between CVS Versions| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Compatibility between CVS Versions#Compatibility between CVS Versions| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="All-environment-variables-which-affect-CVS"></div>
 == All environment variables which affect CVS ==
@@ -27,13 +27,13 @@ that affect <small>CVS</small>.
 </dd>
 <dt><code>$CVSIGNORE</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
-<small>CVS</small> should ignore. See section [cvs: Reference manual for Administrative files#cvsignore Ignoring files via cvsignore].
+<small>CVS</small> should ignore. See section [[cvs: Reference manual for Administrative files#Ignoring files via cvsignore|Ignoring files via cvsignore]].
 </p>
 <div id="index-CVSWRAPPERS_002c-environment-variable-1"></div>
 </dd>
 <dt><code>$CVSWRAPPERS</code></dt>
 <dd><p>A whitespace-separated list of file name patterns that
-<small>CVS</small> should treat as wrappers. See section [cvs: Reference manual for Administrative files#Wrappers The cvswrappers file].
+<small>CVS</small> should treat as wrappers. See section [[cvs: Reference manual for Administrative files#The cvswrappers file|The cvswrappers file]].
 </p>
 <div id="index-CVSREAD_002c-environment-variable"></div>
 <div id="index-Read_002donly-files_002c-and-CVSREAD"></div>
@@ -58,7 +58,7 @@ read-only NFS repositories.
 </dd>
 <dt><code>$CVSUMASK</code></dt>
 <dd><p>Controls permissions of files in the repository.  See
-[cvs: The Repository#File-permissions File permissions].
+[[cvs: The Repository#File permissions|File permissions]].
 </p>
 </dd>
 <dt><code>$CVSROOT</code></dt>
@@ -86,8 +86,8 @@ directory.
 <p>Specifies the program to use for recording log messages
 during commit.  <code>$CVSEDITOR</code> overrides
 <code>$EDITOR</code>, which overrides <code>$VISUAL</code>.
-See [cvs: Overview#Committing-your-changes Committing your changes] for more or
-[cvs: Guide to CVS commands#Global-options Global options] for alternative ways of specifying a
+See [[cvs: Overview#Committing your changes|Committing your changes]] for more or
+[[cvs: Guide to CVS commands#Global options|Global options]] for alternative ways of specifying a
 log editor.
 </p>
 <div id="index-PATH_002c-environment-variable"></div>
@@ -118,7 +118,7 @@ probably need to set <code>HOMEDRIVE</code> and <code>HOMEPATH</code> yourself.
 <dt><code>$CVS_RSH</code></dt>
 <dd><p>Specifies the external program which <small>CVS</small> connects with,
 when <code>:ext:</code> access method is specified.
-see section [cvs: The Repository#Connecting-via-rsh Connecting with rsh].
+see section [[cvs: The Repository#Connecting with rsh|Connecting with rsh]].
 </p>
 </dd>
 <dt><code>$CVS_SERVER</code></dt>
@@ -129,20 +129,20 @@ necessary arguments) when accessing a remote repository
 using the <code>:ext:</code>, <code>:fork:</code>, or <code>:server:</code> access methods.
 The default value for <code>:ext:</code> and <code>:server:</code> is <code>cvs</code>;
 the default value for <code>:fork:</code> is the name used to run the client.
-see section [cvs: The Repository#Connecting-via-rsh Connecting with rsh]
+see section [[cvs: The Repository#Connecting with rsh|Connecting with rsh]]
 </p>
 </dd>
 <dt><code>$CVS_PASSFILE</code></dt>
 <dd><p>Used in client-server mode when accessing the <code>cvs
 login server</code>.  Default value is &lsquo;<tt>$HOME/.cvspass</tt>&rsquo;.
-see section [cvs: The Repository#Password-authentication-client Using the client with password authentication]
+see section [[cvs: The Repository#Using the client with password authentication|Using the client with password authentication]]
 </p>
 </dd>
 <dt><code>$CVS_CLIENT_PORT</code></dt>
 <dd><p>Used in client-server mode to set the port to use when accessing the server
 via Kerberos, GSSAPI, or <small>CVS</small>&rsquo;s password authentication protocol
 if the port is not specified in the CVSROOT.
-see section [cvs: The Repository#Remote-repositories Remote repositories]
+see section [[cvs: The Repository#Remote repositories|Remote repositories]]
 </p>
 <div id="index-CVS_005fRCMD_005fPORT_002c-environment-variable"></div>
 </dd>
@@ -207,7 +207,7 @@ command interpreter and defaults to <small>CMD.EXE</small>.
 <dd><div id="index-Temporary-files_002c-location-of"></div>
 <p>Directory in which temporary files are located.
 The <small>CVS</small> server uses
-<code>TMPDIR</code>.  See section [cvs: Guide to CVS commands#Global-options Global options], for a
+<code>TMPDIR</code>.  See section [[cvs: Guide to CVS commands#Global options|Global options]], for a
 description of how to specify this.
 Some parts of <small>CVS</small> will always use &lsquo;<tt>/tmp</tt>&rsquo; (via
 the <code>tmpnam</code> function provided by the system).
@@ -235,16 +235,16 @@ files.
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Reference manual for Administrative files#Administrative-files  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Compatibility between CVS Versions#Compatibility  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: Reference manual for Administrative files#Reference manual for Administrative files| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Compatibility between CVS Versions#Compatibility between CVS Versions| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

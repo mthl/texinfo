@@ -1,3 +1,6 @@
+code_not_closed
+***************
+
 Missing closing bracket
 ***********************
 

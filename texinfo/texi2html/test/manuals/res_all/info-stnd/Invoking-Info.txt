@@ -181,7 +181,7 @@ following all the menu items given on the command line.  This is so
 
 
 Footnotes
-*********
+---------
 
 (1)
 

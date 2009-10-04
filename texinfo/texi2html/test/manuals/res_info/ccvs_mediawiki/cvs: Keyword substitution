@@ -1,7 +1,7 @@
 <div id="Keyword-substitution"></div>
 <div class="header">
 <p>
-Next: [cvs: Tracking third-party sources#Tracking-sources Tracking sources], Previous: [cvs: Revision management#Revision-management Revision management], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]], Previous: [[cvs: Revision management#Revision management|Revision management]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Keyword-substitution-1"></div>
 == Keyword substitution ==
@@ -26,18 +26,18 @@ with strings of the form
 <code>$<var>keyword</var>:<var>value</var>$</code> whenever you obtain
 a new revision of the file.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Keyword-list| Keyword list]]::<nowiki>                   Keywords
-</nowiki>&bull;[[#Using-keywords| Using keywords]]::<nowiki>                 Using keywords
-</nowiki>&bull;[[#Avoiding-substitution| Avoiding substitution]]::<nowiki>          Avoiding substitution
-</nowiki>&bull;[[#Substitution-modes| Substitution modes]]::<nowiki>             Substitution modes
-</nowiki>&bull;[[#Configuring-keyword-expansion| Configuring keyword expansion]]::<nowiki>  Configuring keyword expansion
-</nowiki>&bull;[[#Log-keyword| Log keyword]]::<nowiki>                    Problems with the $<i></i>Log$ keyword.
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Keyword List| Keyword list]]::<nowiki>                   Keywords
+</nowiki>&bull;[[#Using keywords| Using keywords]]::<nowiki>                 Using keywords
+</nowiki>&bull;[[#Avoiding substitution| Avoiding substitution]]::<nowiki>          Avoiding substitution
+</nowiki>&bull;[[#Substitution modes| Substitution modes]]::<nowiki>             Substitution modes
+</nowiki>&bull;[[#Configuring Keyord Expansion| Configuring keyword expansion]]::<nowiki>  Configuring keyword expansion
+</nowiki>&bull;[[#Problems with the $ <i></i>Log$ keyword.| Log keyword]]::<nowiki>                    Problems with the $<i></i>Log$ keyword.
 </nowiki></pre>
 <hr>
 <div id="Keyword-list"></div>
 <div class="header">
 <p>
-Next: [[#Using-keywords|Using keywords]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Using keywords|Using keywords]], Up: [[#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Keyword-List"></div>
 === Keyword List ===
@@ -68,7 +68,7 @@ existing installations if $<i></i>CVSHeader$ is already
 in the files for a different purpose. This keyword may
 be excluded using the <code>KeywordExpansion=eCVSHeader</code>
 in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file. 
-See [[#Configuring-keyword-expansion|Configuring keyword expansion]] for more details.
+See [[#Configuring Keyord Expansion|Configuring keyword expansion]] for more details.
 </p>
 <div id="index-Date-keyword"></div>
 </dd>
@@ -132,7 +132,7 @@ Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the
 The <code>$Log</code> keyword is useful for
 accumulating a complete change log in a source file,
 but for several reasons it can be problematic.
-See [[#Log-keyword|Log keyword]].
+See [[#Problems with the $ <i></i>Log$ keyword.|Log keyword]].
 </p>
 <div id="index-RCSfile-keyword"></div>
 </dd>
@@ -153,7 +153,7 @@ See [[#Log-keyword|Log keyword]].
 </dd>
 <dt><code>$<i></i>State$</code></dt>
 <dd><p>The state assigned to the revision.  States can be
-assigned with <code>cvs admin -s</code>&mdash;see [cvs: Guide to CVS commands#admin-options admin options].
+assigned with <code>cvs admin -s</code>&mdash;see [[cvs: Guide to CVS commands#admin options|admin options]].
 </p>
 <div id="index-Local-keyword"></div>
 </dd>
@@ -181,7 +181,7 @@ tag&rdquo; feature. It was used in conjunction with the
 what they called the <code>tagexpand=</code> option. In
 <small>CVS</small> this other option is known as the
 <code>KeywordExpand</code> option. 
-See [[#Configuring-keyword-expansion|Configuring keyword expansion]] for more
+See [[#Configuring Keyord Expansion|Configuring keyword expansion]] for more
 details.
 </p>
 <p>Examples from popular projects include:
@@ -201,7 +201,7 @@ conflicts that arise during an import of a new version.
 <p>All keyword expansion except the local keyword may be
 disabled using the <code>KeywordExpansion</code> option in
 the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see 
-[[#Configuring-keyword-expansion|Configuring keyword expansion]] for more details.
+[[#Configuring Keyord Expansion|Configuring keyword expansion]] for more details.
 </p>
 </dd>
 </dl>
@@ -210,7 +210,7 @@ the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see
 <div id="Using-keywords"></div>
 <div class="header">
 <p>
-Next: [[#Avoiding-substitution|Avoiding substitution]], Previous: [[#Keyword-list|Keyword list]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Avoiding substitution|Avoiding substitution]], Previous: [[#Keyword List|Keyword list]], Up: [[#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Using-keywords-1"></div>
 === Using keywords ===
@@ -264,7 +264,7 @@ magic <small>SCCS</small> phrase, like this:
 <div id="Avoiding-substitution"></div>
 <div class="header">
 <p>
-Next: [[#Substitution-modes|Substitution modes]], Previous: [[#Using-keywords|Using keywords]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Substitution modes|Substitution modes]], Previous: [[#Using keywords|Using keywords]], Up: [[#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Avoiding-substitution-1"></div>
 === Avoiding substitution ===
@@ -277,7 +277,7 @@ into something like &lsquo;<samp>$<i></i>Author: ceder $</samp>&rsquo;.
 </p>
 <p>There is unfortunately no way to selectively turn off
 keyword substitution.  You can use &lsquo;<samp>-ko</samp>&rsquo;
-(see [[#Substitution-modes|Substitution modes]]) to turn off keyword
+(see [[#Substitution modes|Substitution modes]]) to turn off keyword
 substitution entirely.
 </p>
 <p>In many cases you can avoid using keywords in
@@ -291,16 +291,16 @@ and <code>troff</code> you can embed the null-character
 <p>It is also possible to specify an explicit list of
 keywords to include or exclude using the
 <code>KeywordExpand</code> option in the
-&lsquo;<tt>CVSROOT/config</tt>&rsquo; file&ndash;see [[#Configuring-keyword-expansion|Configuring keyword expansion]]
+&lsquo;<tt>CVSROOT/config</tt>&rsquo; file&ndash;see [[#Configuring Keyord Expansion|Configuring keyword expansion]]
 for more details. This feature is intended primarily
 for use with the <code>LocalKeyword</code> option&ndash;see
-[[#Keyword-list|Keyword list]].
+[[#Keyword List|Keyword list]].
 </p>
 <hr>
 <div id="Substitution-modes"></div>
 <div class="header">
 <p>
-Next: [[#Configuring-keyword-expansion|Configuring keyword expansion]], Previous: [[#Avoiding-substitution|Avoiding substitution]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Configuring Keyord Expansion|Configuring keyword expansion]], Previous: [[#Avoiding substitution|Avoiding substitution]], Up: [[#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Substitution-modes-1"></div>
 === Substitution modes ===
@@ -315,7 +315,7 @@ option to <code>cvs add</code> and <code>cvs admin</code>; the
 latter is set by the &lsquo;<samp>-k</samp>&rsquo; or &lsquo;<samp>-A</samp>&rsquo; options to <code>cvs
 checkout</code> or <code>cvs update</code>.  <code>cvs diff</code> also
 has a &lsquo;<samp>-k</samp>&rsquo; option.  For some examples,
-see [cvs: Handling binary files#Binary-files Binary files], and [cvs: Branching and merging#Merging-and-keywords Merging and keywords].
+see [[cvs: Handling binary files#Handling binary files|Binary files]], and [[cvs: Branching and merging#Merging and keywords|Merging and keywords]].
 </p>
 <p>The modes available are:
 </p>
@@ -340,7 +340,7 @@ keyword, generate the string <code>$<i></i>Revision$</code>
 instead of <code>$<i></i>Revision: 5.7 $</code>.  This option
 is useful to ignore differences due to keyword
 substitution when comparing different revisions of a
-file (see [cvs: Branching and merging#Merging-and-keywords Merging and keywords]).
+file (see [[cvs: Branching and merging#Merging and keywords|Merging and keywords]]).
 </p>
 </dd>
 <dt>&lsquo;<samp>-ko</samp>&rsquo;</dt>
@@ -360,7 +360,7 @@ appropriate to the operating system in use on the
 client.  For systems, like unix, which use linefeed
 only to terminate lines, this is very similar to
 &lsquo;<samp>-ko</samp>&rsquo;.  For more information on binary files, see
-[cvs: Handling binary files#Binary-files Binary files].  In <small>CVS</small> version 1.12.2 and later
+[[cvs: Handling binary files#Handling binary files|Binary files]].  In <small>CVS</small> version 1.12.2 and later
 &lsquo;<samp>-kb</samp>&rsquo;, as set by <code>cvs add</code>, <code>cvs admin</code>, or
 <code>cvs import</code> may not be overridden by a &lsquo;<samp>-k</samp>&rsquo; option
 specified on the command line.
@@ -378,7 +378,7 @@ the keyword names are removed, so this option should be
 used with care.
 </p>
 <p>One often would like to use &lsquo;<samp>-kv</samp>&rsquo; with <code>cvs
-export</code>&mdash;see [cvs: Guide to CVS commands#export export].  But be aware that doesn&rsquo;t
+export</code>&mdash;see [[cvs: Guide to CVS commands#export&mdash;Export sources from CVS, similar to checkout|export]].  But be aware that doesn&rsquo;t
 handle an export containing binary files correctly.
 </p>
 </dd>
@@ -388,7 +388,7 @@ handle an export containing binary files correctly.
 <div id="Configuring-keyword-expansion"></div>
 <div class="header">
 <p>
-Next: [[#Log-keyword|Log keyword]], Previous: [[#Substitution-modes|Substitution modes]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Problems with the $ <i></i>Log$ keyword.|Log keyword]], Previous: [[#Substitution modes|Substitution modes]], Up: [[#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Configuring-Keyord-Expansion"></div>
 === Configuring Keyord Expansion ===
@@ -482,7 +482,7 @@ recognized.
 <div id="Log-keyword"></div>
 <div class="header">
 <p>
-Previous: [[#Configuring-keyword-expansion|Configuring keyword expansion]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Configuring Keyord Expansion|Configuring keyword expansion]], Up: [[#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Problems-with-the-_0024-Log_0024-keyword_002e"></div>
 === Problems with the $ <i></i>Log$ keyword. ===
@@ -516,6 +516,6 @@ interfere with everyday source file browsing.
 <hr>
 <div class="header">
 <p>
-Previous: [[#Configuring-keyword-expansion|Configuring keyword expansion]], Up: [[#Keyword-substitution|Keyword substitution]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Configuring Keyord Expansion|Configuring keyword expansion]], Up: [[#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

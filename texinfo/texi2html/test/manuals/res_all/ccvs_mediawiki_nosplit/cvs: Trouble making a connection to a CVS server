@@ -1,7 +1,7 @@
 <div id="Connection"></div>
 <div class="header">
 <p>
-Next: [cvs: Other common problems#Other-problems Other problems], Previous: [cvs: Partial list of error messages#Error-messages Error messages], Up: [cvs: Troubleshooting#Troubleshooting Troubleshooting] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Other common problems#Other common problems|Other problems]], Previous: [[cvs: Partial list of error messages#Partial list of error messages|Error messages]], Up: [[cvs: Troubleshooting#Troubleshooting|Troubleshooting]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Trouble-making-a-connection-to-a-CVS-server"></div>
@@ -138,6 +138,6 @@ others allow you to set the limit for each service separately.)
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Other common problems#Other-problems Other problems], Previous: [cvs: Partial list of error messages#Error-messages Error messages], Up: [cvs: Troubleshooting#Troubleshooting Troubleshooting] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Other common problems#Other common problems|Other problems]], Previous: [[cvs: Partial list of error messages#Partial list of error messages|Error messages]], Up: [[cvs: Troubleshooting#Troubleshooting|Troubleshooting]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

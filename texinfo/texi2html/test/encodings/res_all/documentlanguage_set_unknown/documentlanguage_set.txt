@@ -1,3 +1,6 @@
+Test @documentlanguage set
+**************************
+
 @documentlanguage set
 *********************
 

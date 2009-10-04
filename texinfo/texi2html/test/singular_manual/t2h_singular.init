@@ -45,7 +45,8 @@ EOT
 $Texi2HTML::TeX4HT::STYLE='latex';
 
 # title is already in the manual
-$print_title = \&T2H_DEFAULT_print_title;
+#$print_title = \&T2H_DEFAULT_print_title;
+$SHOW_TITLE = 0;
 
 # footer of top_page
 

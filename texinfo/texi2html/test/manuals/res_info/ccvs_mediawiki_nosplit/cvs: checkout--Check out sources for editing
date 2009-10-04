@@ -1,7 +1,7 @@
 <div id="checkout"></div>
 <div class="header">
 <p>
-Next: [cvs: commit--Check files into the repository#commit commit], Previous: [cvs: admin--Administration#admin admin], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: commit--Check files into the repository#commit&mdash;Check files into the repository|commit]], Previous: [[cvs: admin--Administration#admin&mdash;Administration|admin]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="checkout_002d_002d_002dCheck-out-sources-for-editing"></div>
@@ -31,7 +31,7 @@ symbolic names for some
 collection of source directories and files, or paths to
 directories or files in the repository.  The symbolic
 names are defined in the &lsquo;<samp>modules</samp>&rsquo; file.
-See [cvs: The modules file#modules modules].
+See [[cvs: The modules file#The modules file|modules]].
 </p>
 <p>Depending on the modules you specify, <code>checkout</code> may
 recursively create directories and populate them with
@@ -55,10 +55,10 @@ area (unless you specify the &lsquo;<samp>-Q</samp>&rsquo; global option).
 </p>
 <p>The files created by <code>checkout</code> are created
 read-write, unless the &lsquo;<samp>-r</samp>&rsquo; option to <small>CVS</small>
-(see [cvs: Global options#Global-options Global options]) is specified, the
+(see [[cvs: Global options#Global options|Global options]]) is specified, the
 <code>CVSREAD</code> environment variable is specified
-(see [cvs: All environment variables which affect CVS#Environment-variables Environment variables]), or a watch is in
-effect for that file (see [cvs: Mechanisms to track who is editing files#Watches Watches]).
+(see [[cvs: All environment variables which affect CVS#All environment variables which affect CVS|Environment variables]]), or a watch is in
+effect for that file (see [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]]).
 </p>
 <p>Note that running <code>checkout</code> on a directory that was already
 built by a prior <code>checkout</code> is also permitted.
@@ -76,14 +76,14 @@ forget to change your directory to the top level
 directory.
 </p>
 <p>For the output produced by the <code>checkout</code> command
-see [cvs: update output#update-output update output].
+see [[cvs: update output#update output|update output]].
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: checkout options#checkout-options  checkout options]::<nowiki>            checkout options
-</nowiki>&bull;[cvs: checkout examples#checkout-examples  checkout examples]::<nowiki>           checkout examples
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: checkout options#checkout options| checkout options]]::<nowiki>            checkout options
+</nowiki>&bull;[[cvs: checkout examples#checkout examples| checkout examples]]::<nowiki>           checkout examples
 </nowiki></pre>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: commit--Check files into the repository#commit commit], Previous: [cvs: admin--Administration#admin admin], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: commit--Check files into the repository#commit&mdash;Check files into the repository|commit]], Previous: [[cvs: admin--Administration#admin&mdash;Administration|admin]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

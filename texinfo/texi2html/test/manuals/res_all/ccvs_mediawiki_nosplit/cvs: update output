@@ -1,7 +1,7 @@
 <div id="update-output"></div>
 <div class="header">
 <p>
-Previous: [cvs: update options#update-options update options], Up: [cvs: update--Bring work tree in sync with repository#update update] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[cvs: update options#update options|update options]], Up: [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="update-output-1"></div>
@@ -68,7 +68,7 @@ is also in your working directory, with the name
 &lsquo;<tt>.#<var>file</var>.<var>revision</var></tt>&rsquo; where <var>revision</var>
 is the revision that your modified file started
 from.  Resolve the conflict as described in
-[cvs: Conflicts example#Conflicts-example Conflicts example].
+[[cvs: Conflicts example#Conflicts example|Conflicts example]].
 (Note that some systems automatically purge
 files that begin with &lsquo;<tt>.#</tt>&rsquo; if they have not been
 accessed for a few days.  If you intend to keep a copy
@@ -82,13 +82,13 @@ it.)  Under <small>VMS</small>, the file name starts with
 correspond to anything in the source repository, and is
 not in the list of files for <small>CVS</small> to ignore (see the
 description of the &lsquo;<samp>-I</samp>&rsquo; option, and
-see [cvs: Ignoring files via cvsignore#cvsignore cvsignore]).
+see [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]]).
 </p></dd>
 </dl>
 
 <hr>
 <div class="header">
 <p>
-Previous: [cvs: update options#update-options update options], Up: [cvs: update--Bring work tree in sync with repository#update update] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[cvs: update options#update options|update options]], Up: [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

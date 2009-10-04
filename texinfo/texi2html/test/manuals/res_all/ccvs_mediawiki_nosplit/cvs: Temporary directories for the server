@@ -1,7 +1,7 @@
 <div id="Server-temporary-directory"></div>
 <div class="header">
 <p>
-Previous: [cvs: Read-only repository access#Read_002donly-access Read-only access], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[cvs: Read-only repository access#Read-only repository access|Read-only access]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Temporary-directories-for-the-server"></div>
@@ -18,8 +18,8 @@ directories.  They are named
 <p>where <var>pid</var> is the process identification number of
 the server.
 They are located in the directory specified by 
-the &lsquo;<samp>-T</samp>&rsquo; global option (see [cvs: Global options#Global-options Global options]), 
-the <code>TMPDIR</code> environment variable (see [cvs: All environment variables which affect CVS#Environment-variables Environment variables]), 
+the &lsquo;<samp>-T</samp>&rsquo; global option (see [[cvs: Global options#Global options|Global options]]), 
+the <code>TMPDIR</code> environment variable (see [[cvs: All environment variables which affect CVS#All environment variables which affect CVS|Environment variables]]), 
 or, failing that, &lsquo;<tt>/tmp</tt>&rsquo;.
 </p>
 <p>In most cases the server will remove the temporary

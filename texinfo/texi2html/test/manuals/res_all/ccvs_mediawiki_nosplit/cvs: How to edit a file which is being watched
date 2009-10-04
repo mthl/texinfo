@@ -1,7 +1,7 @@
 <div id="Editing-files"></div>
 <div class="header">
 <p>
-Next: [cvs: Information about who is watching and editing#Watch-information Watch information], Previous: [cvs: Telling CVS to notify you#Getting-Notified Getting Notified], Up: [cvs: Mechanisms to track who is editing files#Watches Watches] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Information about who is watching and editing#Information about who is watching and editing|Watch information]], Previous: [[cvs: Telling CVS to notify you#Telling CVS to notify you|Getting Notified]], Up: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="How-to-edit-a-file-which-is-being-watched"></div>
@@ -13,7 +13,7 @@ read-only, you cannot simply edit it.  To make it
 read-write, and inform others that you are planning to
 edit it, use the <code>cvs edit</code> command.  Some systems
 call this a <em>checkout</em>, but <small>CVS</small> uses that term
-for obtaining a copy of the sources (see [cvs: Getting the source#Getting-the-source Getting the source]), an operation which those systems call a
+for obtaining a copy of the sources (see [[cvs: Getting the source#Getting the source|Getting the source]]), an operation which those systems call a
 <em>get</em> or a <em>fetch</em>.
 </p>
 <div id="index-edit-_0028subcommand_0029"></div>
@@ -61,7 +61,7 @@ notification for any of <var>files</var>.
 <p>If watches are not in use, the <code>unedit</code> command
 probably does not work, and the way to revert to the
 repository version is with the command <code>cvs update -C file</code>
-(see [cvs: update--Bring work tree in sync with repository#update update]).
+(see [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]]).
 The meaning is
 not precisely the same; the latter may also
 bring in some changes which have been made in the
@@ -77,6 +77,6 @@ successful <small>CVS</small> command.
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Information about who is watching and editing#Watch-information Watch information], Previous: [cvs: Telling CVS to notify you#Getting-Notified Getting Notified], Up: [cvs: Mechanisms to track who is editing files#Watches Watches] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Information about who is watching and editing#Information about who is watching and editing|Watch information]], Previous: [[cvs: Telling CVS to notify you#Telling CVS to notify you|Getting Notified]], Up: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

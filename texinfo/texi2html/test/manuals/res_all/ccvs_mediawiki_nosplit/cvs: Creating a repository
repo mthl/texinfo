@@ -1,7 +1,7 @@
 <div id="Creating-a-repository"></div>
 <div class="header">
 <p>
-Next: [cvs: Backing up a repository#Backing-up Backing up], Previous: [cvs: Multiple repositories#Multiple-repositories Multiple repositories], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Backing up a repository#Backing up a repository|Backing up]], Previous: [[cvs: Multiple repositories#Multiple repositories|Multiple repositories]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Creating-a-repository-1"></div>
@@ -15,7 +15,7 @@ Next: [cvs: Backing up a repository#Backing-up Backing up], Previous: [cvs: Mult
 machine and disk on which you want to store the
 revision history of the source files.  CPU and memory
 requirements are modest, so most machines should be
-adequate.  For details see [cvs: Server requirements#Server-requirements Server requirements].
+adequate.  For details see [[cvs: Server requirements#Server requirements|Server requirements]].
 </p>
 <p>To estimate disk space
 requirements, if you are importing RCS files from
@@ -38,13 +38,13 @@ mode; the client machines need not have any access to
 it other than via the <small>CVS</small> protocol.  It is not
 possible to use <small>CVS</small> to read from a repository
 which one only has read access to; <small>CVS</small> needs to be
-able to create lock files (see [cvs: Several developers simultaneously attempting to run CVS#Concurrency Concurrency]).
+able to create lock files (see [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Concurrency]]).
 </p>
 <div id="index-init-_0028subcommand_0029"></div>
 <p>To create a repository, run the <code>cvs init</code>
 command.  It will set up an empty repository in the
 <small>CVS</small> root specified in the usual way
-(see [cvs: The Repository#Repository Repository]).  For example,
+(see [[cvs: The Repository#The Repository|Repository]]).  For example,
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d /usr/local/cvsroot init
 </nowiki></pre></td></tr></table>
@@ -56,11 +56,11 @@ repository.
 </p>
 <p><code>cvs init</code> will enable history logging; if you
 don&rsquo;t want that, remove the history file after running
-<code>cvs init</code>.  See [cvs: The history file#history-file history file].
+<code>cvs init</code>.  See [[cvs: The history file#The history file|history file]].
 </p>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Backing up a repository#Backing-up Backing up], Previous: [cvs: Multiple repositories#Multiple-repositories Multiple repositories], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Backing up a repository#Backing up a repository|Backing up]], Previous: [[cvs: Multiple repositories#Multiple repositories|Multiple repositories]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -1,7 +1,7 @@
 <div id="import"></div>
 <div class="header">
 <p>
-Next: [cvs: log--Print out log information for files#log log], Previous: [cvs: history--Show status of files and users#history history], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]], Previous: [[cvs: history--Show status of files and users#history&mdash;Show status of files and users|history]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="import_002d_002d_002dImport-sources-into-CVS_002c-using-vendor-branches"></div>
@@ -23,7 +23,7 @@ distribution from an outside source (e.g., a source
 vendor) into your source repository directory.  You can
 use this command both for initial creation of a
 repository, and for wholesale updates to the module
-from the outside source.  See [cvs: Tracking third-party sources#Tracking-sources Tracking sources], for
+from the outside source.  See [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]], for
 a discussion on this subject.
 </p>
 <p>The <var>repository</var> argument gives a directory name
@@ -39,15 +39,15 @@ in the two branches of development; use &lsquo;<samp>checkout
 you to do.
 </p>
 <p>If <small>CVS</small> decides a file should be ignored
-(see [cvs: Ignoring files via cvsignore#cvsignore cvsignore]), it does not import it and prints
-&lsquo;<samp>I </samp>&rsquo; followed by the filename (see [cvs: import output#import-output import output], for a
+(see [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]]), it does not import it and prints
+&lsquo;<samp>I </samp>&rsquo; followed by the filename (see [[cvs: import output#import output|import output]], for a
 complete description of the output).
 </p>
 <p>If the file &lsquo;<tt>$CVSROOT/CVSROOT/cvswrappers</tt>&rsquo; exists,
 any file whose names match the specifications in that
 file will be treated as packages and the appropriate
 filtering will be performed on the file/directory
-before being imported.  See [cvs: The cvswrappers file#Wrappers Wrappers].
+before being imported.  See [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]].
 </p>
 <p>The outside source is saved in a first-level
 branch, by default 1.1.1.  Updates are leaves of this
@@ -68,15 +68,15 @@ directory in which you invoke it.  In particular, it
 does not set up that directory as a <small>CVS</small> working
 directory; if you want to work with the sources import
 them first and then check them out into a different
-directory (see [cvs: Getting the source#Getting-the-source Getting the source]).
+directory (see [[cvs: Getting the source#Getting the source|Getting the source]]).
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: import options#import-options  import options]::<nowiki>              import options
-</nowiki>&bull;[cvs: import output#import-output  import output]::<nowiki>               import output
-</nowiki>&bull;[cvs: import examples#import-examples  import examples]::<nowiki>             import examples
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: import options#import options| import options]]::<nowiki>              import options
+</nowiki>&bull;[[cvs: import output#import output| import output]]::<nowiki>               import output
+</nowiki>&bull;[[cvs: import examples#import examples| import examples]]::<nowiki>             import examples
 </nowiki></pre>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: log--Print out log information for files#log log], Previous: [cvs: history--Show status of files and users#history history], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]], Previous: [[cvs: history--Show status of files and users#history&mdash;Show status of files and users|history]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

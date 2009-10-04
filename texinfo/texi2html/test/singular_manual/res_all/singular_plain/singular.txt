@@ -1,3 +1,6 @@
+Singular 2-0-4 Manual
+*********************
+
 Short Table of Contents
 ***********************
 

@@ -1,7 +1,7 @@
 <div id="When-to-commit"></div>
 <div class="header">
 <p>
-Up: [cvs: Revision management#Revision-management Revision management] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Up: [[cvs: Revision management#Revision management|Revision management]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="When-to-commit_003f"></div>
@@ -27,7 +27,7 @@ seldom, and conflicts will probably be more common.
 that they can be compiled.  Some sites require that the
 files pass a test suite.  Policies like this can be
 enforced using the commitinfo file
-(see [cvs: Commitinfo#commitinfo commitinfo]), but you should think twice before
+(see [[cvs: Commitinfo#Commitinfo|commitinfo]]), but you should think twice before
 you enforce such a convention.  By making the
 development environment too controlled it might become
 too regimented and thus counter-productive to the real

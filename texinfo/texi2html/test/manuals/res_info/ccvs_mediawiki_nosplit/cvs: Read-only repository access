@@ -1,7 +1,7 @@
 <div id="Read_002donly-access"></div>
 <div class="header">
 <p>
-Next: [cvs: Temporary directories for the server#Server-temporary-directory Server temporary directory], Previous: [cvs: Remote repositories#Remote-repositories Remote repositories], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Temporary directories for the server#Temporary directories for the server|Server temporary directory]], Previous: [[cvs: Remote repositories#Remote repositories|Remote repositories]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Read_002donly-repository-access"></div>
@@ -12,7 +12,7 @@ Next: [cvs: Temporary directories for the server#Server-temporary-directory Serv
 
 <p>        It is possible to grant read-only repository
 access to people using the password-authenticated
-server (see [cvs: Direct connection with password authentication#Password-authenticated Password authenticated]).  (The
+server (see [[cvs: Direct connection with password authentication#Direct connection with password authentication|Password authenticated]]).  (The
 other access methods do not have explicit support for
 read-only users because those methods all assume login
 access to the repository machine anyway, and therefore
@@ -24,7 +24,7 @@ those <small>CVS</small> operations which do not modify the
 repository, except for certain &ldquo;administrative&rdquo; files
 (such as lock files and the history file).  It may be
 desirable to use this feature in conjunction with
-user-aliasing (see [cvs: Setting up the server for password authentication#Password-authentication-server Password authentication server]).
+user-aliasing (see [[cvs: Setting up the server for password authentication#Setting up the server for password authentication|Password authentication server]]).
 </p>
 <p>Unlike with previous versions of <small>CVS</small>, read-only
 users should be able merely to read the repository, and
@@ -66,7 +66,7 @@ read-only users still need to be listed in the
 &lsquo;<tt>readers</tt>&rsquo; file.
 </p>
 <p>        Note: if your <small>CVS</small> &lsquo;<tt>passwd</tt>&rsquo;
-file maps cvs users onto system users (see [cvs: Setting up the server for password authentication#Password-authentication-server Password authentication server]), make sure you deny or grant
+file maps cvs users onto system users (see [[cvs: Setting up the server for password authentication#Setting up the server for password authentication|Password authentication server]]), make sure you deny or grant
 read-only access using the <em>cvs</em> usernames, not
 the system usernames.  That is, the &lsquo;<tt>readers</tt>&rsquo; and
 &lsquo;<tt>writers</tt>&rsquo; files contain cvs usernames, which may
@@ -92,6 +92,6 @@ read-only access.
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Temporary directories for the server#Server-temporary-directory Server temporary directory], Previous: [cvs: Remote repositories#Remote-repositories Remote repositories], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Temporary directories for the server#Temporary directories for the server|Server temporary directory]], Previous: [[cvs: Remote repositories#Remote repositories|Remote repositories]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

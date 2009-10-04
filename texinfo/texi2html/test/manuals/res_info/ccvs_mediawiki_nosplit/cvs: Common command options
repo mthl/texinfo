@@ -1,7 +1,7 @@
 <div id="Common-options"></div>
 <div class="header">
 <p>
-Next: [cvs: admin--Administration#admin admin], Previous: [cvs: Global options#Global-options Global options], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: admin--Administration#admin&mdash;Administration|admin]], Previous: [[cvs: Global options#Global options|Global options]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Common-command-options"></div>
@@ -38,13 +38,13 @@ specifying a date in the past.
 private copy of a source file; that is, when you get a working
 file using &lsquo;<samp>-D</samp>&rsquo;, <small>CVS</small> records the date you specified, so that
 further updates in the same directory will use the same date
-(for more information on sticky tags/dates, see [cvs: Sticky tags#Sticky-tags Sticky tags]).
+(for more information on sticky tags/dates, see [[cvs: Sticky tags#Sticky tags|Sticky tags]]).
 </p>
 <p>&lsquo;<samp>-D</samp>&rsquo; is available with the <code>annotate</code>, <code>checkout</code>,
 <code>diff</code>, <code>export</code>, <code>history</code>,
 <code>rdiff</code>, <code>rtag</code>, <code>tag</code>, and <code>update</code> commands.
 (The <code>history</code> command uses this option in a
-slightly different way; see [cvs: history options#history-options history options]).
+slightly different way; see [[cvs: history options#history options|history options]]).
 </p>
 
 <div id="index-Timezone_002c-in-input"></div>
@@ -121,13 +121,13 @@ give an error if you mistype a tag name.
 <p><strong>WARNING:  The <code>commit</code> and <code>remove</code>
 commands also have a
 &lsquo;<samp>-f</samp>&rsquo; option, but it has a different behavior for
-those commands.  See [cvs: commit options#commit-options commit options], and
-[cvs: Removing files#Removing-files Removing files].</strong>
+those commands.  See [[cvs: commit options#commit options|commit options]], and
+[[cvs: Removing files#Removing files|Removing files]].</strong>
 </p>
 </dd>
 <dt><code>-k <var>kflag</var></code></dt>
 <dd><p>Override the default processing of RCS keywords other than
-&lsquo;<samp>-kb</samp>&rsquo;.  See [cvs: Keyword substitution#Keyword-substitution Keyword substitution], for the meaning of
+&lsquo;<samp>-kb</samp>&rsquo;.  See [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]], for the meaning of
 <var>kflag</var>.  Used with the <code>checkout</code> and <code>update</code>
 commands, your <var>kflag</var> specification is
 <em>sticky</em>; that is, when you use this option
@@ -142,7 +142,7 @@ commands on the same files until you specify otherwise.
 </p>
 <p><strong>WARNING: Prior to CVS version 1.12.2, the &lsquo;<samp>-k</samp>&rsquo; flag
 overrode the &lsquo;<samp>-kb</samp>&rsquo; indication for a binary file.  This could
-sometimes corrupt binary files.  See [cvs: Merging and keywords#Merging-and-keywords Merging and keywords], for
+sometimes corrupt binary files.  See [[cvs: Merging and keywords#Merging and keywords|Merging and keywords]], for
 more.</strong>
 </p>
 </dd>
@@ -170,7 +170,7 @@ invoking an editor.
 <dt><code>-n</code></dt>
 <dd><p>Do not run any tag program.  (A program can be
 specified to run in the modules
-database (see [cvs: The modules file#modules modules]); this option bypasses it).
+database (see [[cvs: The modules file#The modules file|modules]]); this option bypasses it).
 </p>
 <p><strong>Note: this is not the same as the &lsquo;<samp>cvs -n</samp>&rsquo;
 program option, which you can specify to the left of a cvs command!</strong>
@@ -180,7 +180,7 @@ and <code>rtag</code> commands.
 </p>
 </dd>
 <dt><code>-P</code></dt>
-<dd><p>Prune empty directories.  See [cvs: Removing directories#Removing-directories Removing directories].
+<dd><p>Prune empty directories.  See [[cvs: Removing directories#Removing directories|Removing directories]].
 </p>
 </dd>
 <dt><code>-p</code></dt>
@@ -214,11 +214,11 @@ revision you last checked out into the current working directory.
 with <code>checkout</code> or <code>update</code> to make your own
 copy of a file: <small>CVS</small> remembers the tag and continues to use it on
 future update commands, until you specify otherwise (for more information
-on sticky tags/dates, see [cvs: Sticky tags#Sticky-tags Sticky tags]).
+on sticky tags/dates, see [[cvs: Sticky tags#Sticky tags|Sticky tags]]).
 </p>
 <p>The tag can be either a symbolic or numeric tag, as
-described in [cvs: Tags-Symbolic revisions#Tags Tags], or the name of a branch, as
-described in [cvs: Branching and merging#Branching-and-merging Branching and merging].
+described in [[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revisions|Tags]], or the name of a branch, as
+described in [[cvs: Branching and merging#Branching and merging|Branching and merging]].
 </p>
 <p>Specifying the &lsquo;<samp>-q</samp>&rsquo; global option along with the
 &lsquo;<samp>-r</samp>&rsquo; command option is often useful, to suppress
@@ -247,6 +247,6 @@ and <code>update</code>.
 <hr>
 <div class="header">
 <p>
-Next: [cvs: admin--Administration#admin admin], Previous: [cvs: Global options#Global-options Global options], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: admin--Administration#admin&mdash;Administration|admin]], Previous: [[cvs: Global options#Global options|Global options]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

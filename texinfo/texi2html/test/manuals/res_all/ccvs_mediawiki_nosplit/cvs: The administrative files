@@ -1,7 +1,7 @@
 <div id="Intro-administrative-files"></div>
 <div class="header">
 <p>
-Next: [cvs: Multiple repositories#Multiple-repositories Multiple repositories], Previous: [cvs: How data is stored in the working directory#Working-directory-storage Working directory storage], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Multiple repositories#Multiple repositories|Multiple repositories]], Previous: [[cvs: How data is stored in the working directory#How data is stored in the working directory|Working directory storage]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="The-administrative-files"></div>
@@ -13,7 +13,7 @@ Next: [cvs: Multiple repositories#Multiple-repositories Multiple repositories], 
 
 
 <p>The directory &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; contains some <em>administrative
-files</em>.  See [cvs: Reference manual for Administrative files#Administrative-files Administrative files], for a complete description.
+files</em>.  See [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]], for a complete description.
 You can use <small>CVS</small> without any of these files, but
 some commands work better when at least the
 &lsquo;<tt>modules</tt>&rsquo; file is properly set up.
@@ -40,7 +40,7 @@ above are examples of such lines.
 
 <p>The line that defines the module called &lsquo;<samp>modules</samp>&rsquo;
 uses features that are not explained here.
-See [cvs: The modules file#modules modules], for a full explanation of all the
+See [[cvs: The modules file#The modules file|modules]], for a full explanation of all the
 available features.
 </p>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

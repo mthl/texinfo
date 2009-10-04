@@ -2,7 +2,7 @@
 <div id="Top"></div>
 <div class="header">
 <p>
-Next: [cvs: Overview#Overview Overview], Up: [[../dir/index.#Top|(dir)]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Overview#Overview|Overview]], Up: [../dir/index.#Top (dir)] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="SEC_Top"></div>
@@ -11,40 +11,40 @@ Next: [cvs: Overview#Overview Overview], Up: [[../dir/index.#Top|(dir)]] &nbsp; 
 <small>CVS</small> version 4.2.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Overview#Overview  Overview]::<nowiki>                    An introduction to CVS
-</nowiki>&bull;[cvs: The Repository#Repository  Repository]::<nowiki>                  Where all your sources are stored
-</nowiki>&bull;[cvs: Starting a project with CVS#Starting-a-new-project  Starting a new project]::<nowiki>      Starting a project with CVS
-</nowiki>&bull;[cvs: Revisions#Revisions  Revisions]::<nowiki>                   Numeric and symbolic names for revisions
-</nowiki>&bull;[cvs: Branching and merging#Branching-and-merging  Branching and merging]::<nowiki>       Diverging/rejoining branches of development
-</nowiki>&bull;[cvs: Recursive behavior#Recursive-behavior  Recursive behavior]::<nowiki>          CVS descends directories
-</nowiki>&bull;[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  Adding and removing]::<nowiki>         Adding/removing/renaming files/directories
-</nowiki>&bull;[cvs: History browsing#History-browsing  History browsing]::<nowiki>            Viewing the history of files in various ways
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Overview#Overview| Overview]]::<nowiki>                    An introduction to CVS
+</nowiki>&bull;[[cvs: The Repository#The Repository| Repository]]::<nowiki>                  Where all your sources are stored
+</nowiki>&bull;[[cvs: Starting a project with CVS#Starting a project with CVS| Starting a new project]]::<nowiki>      Starting a project with CVS
+</nowiki>&bull;[[cvs: Revisions#Revisions| Revisions]]::<nowiki>                   Numeric and symbolic names for revisions
+</nowiki>&bull;[[cvs: Branching and merging#Branching and merging| Branching and merging]]::<nowiki>       Diverging/rejoining branches of development
+</nowiki>&bull;[[cvs: Recursive behavior#Recursive behavior| Recursive behavior]]::<nowiki>          CVS descends directories
+</nowiki>&bull;[[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories| Adding and removing]]::<nowiki>         Adding/removing/renaming files/directories
+</nowiki>&bull;[[cvs: History browsing#History browsing| History browsing]]::<nowiki>            Viewing the history of files in various ways
 
 CVS and the Real World.
 -----------------------
-</nowiki>&bull;[cvs: Handling binary files#Binary-files  Binary files]::<nowiki>                CVS can handle binary files
-</nowiki>&bull;[cvs: Multiple developers#Multiple-developers  Multiple developers]::<nowiki>         How CVS helps a group of developers
-</nowiki>&bull;[cvs: Revision management#Revision-management  Revision management]::<nowiki>         Policy questions for revision management
-</nowiki>&bull;[cvs: Keyword substitution#Keyword-substitution  Keyword substitution]::<nowiki>        CVS can include the revision inside the file
-</nowiki>&bull;[cvs: Tracking third-party sources#Tracking-sources  Tracking sources]::<nowiki>            Tracking third-party sources
-</nowiki>&bull;[cvs: How your build system interacts with CVS#Builds  Builds]::<nowiki>                      Issues related to CVS and builds
-</nowiki>&bull;[cvs: Special Files#Special-Files  Special Files]::<nowiki>		Devices, links and other non-regular files
+</nowiki>&bull;[[cvs: Handling binary files#Handling binary files| Binary files]]::<nowiki>                CVS can handle binary files
+</nowiki>&bull;[[cvs: Multiple developers#Multiple developers| Multiple developers]]::<nowiki>         How CVS helps a group of developers
+</nowiki>&bull;[[cvs: Revision management#Revision management| Revision management]]::<nowiki>         Policy questions for revision management
+</nowiki>&bull;[[cvs: Keyword substitution#Keyword substitution| Keyword substitution]]::<nowiki>        CVS can include the revision inside the file
+</nowiki>&bull;[[cvs: Tracking third-party sources#Tracking third-party sources| Tracking sources]]::<nowiki>            Tracking third-party sources
+</nowiki>&bull;[[cvs: How your build system interacts with CVS#How your build system interacts with CVS| Builds]]::<nowiki>                      Issues related to CVS and builds
+</nowiki>&bull;[[cvs: Special Files#Special Files| Special Files]]::<nowiki>		Devices, links and other non-regular files
 
 References.
 -----------
-</nowiki>&bull;[cvs: Guide to CVS commands#CVS-commands  CVS commands]::<nowiki>                CVS commands share some things
-</nowiki>&bull;[cvs: Quick reference to CVS commands#Invoking-CVS  Invoking CVS]::<nowiki>                Quick reference to CVS commands
-</nowiki>&bull;[cvs: Reference manual for Administrative files#Administrative-files  Administrative files]::<nowiki>        Reference manual for the Administrative files
-</nowiki>&bull;[cvs: All environment variables which affect CVS#Environment-variables  Environment variables]::<nowiki>       All environment variables which affect CVS
-</nowiki>&bull;[cvs: Compatibility between CVS Versions#Compatibility  Compatibility]::<nowiki>               Upgrading CVS versions
-</nowiki>&bull;[cvs: Troubleshooting#Troubleshooting  Troubleshooting]::<nowiki>             Some tips when nothing works
-</nowiki>&bull;[cvs: Credits#Credits  Credits]::<nowiki>                     Some of the contributors to this manual
-</nowiki>&bull;[cvs: Dealing with bugs in CVS or this manual#BUGS  BUGS]::<nowiki>                        Dealing with bugs in CVS or this manual
-</nowiki>&bull;[cvs: Index#Index  Index]::<nowiki>                       Index
+</nowiki>&bull;[[cvs: Guide to CVS commands#Guide to CVS commands| CVS commands]]::<nowiki>                CVS commands share some things
+</nowiki>&bull;[[cvs: Quick reference to CVS commands#Quick reference to CVS commands| Invoking CVS]]::<nowiki>                Quick reference to CVS commands
+</nowiki>&bull;[[cvs: Reference manual for Administrative files#Reference manual for Administrative files| Administrative files]]::<nowiki>        Reference manual for the Administrative files
+</nowiki>&bull;[[cvs: All environment variables which affect CVS#All environment variables which affect CVS| Environment variables]]::<nowiki>       All environment variables which affect CVS
+</nowiki>&bull;[[cvs: Compatibility between CVS Versions#Compatibility between CVS Versions| Compatibility]]::<nowiki>               Upgrading CVS versions
+</nowiki>&bull;[[cvs: Troubleshooting#Troubleshooting| Troubleshooting]]::<nowiki>             Some tips when nothing works
+</nowiki>&bull;[[cvs: Credits#Credits| Credits]]::<nowiki>                     Some of the contributors to this manual
+</nowiki>&bull;[[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual| BUGS]]::<nowiki>                        Dealing with bugs in CVS or this manual
+</nowiki>&bull;[[cvs: Index#Index| Index]]::<nowiki>                       Index
 </nowiki></pre>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Overview#Overview Overview], Up: [[../dir/index.#Top|(dir)]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Overview#Overview|Overview]], Up: [../dir/index.#Top (dir)] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

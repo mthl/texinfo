@@ -26,6 +26,7 @@ $USE_ISO = 0;
 $HEADERS = 0;
 $INLINE_INSERTCOPYING = 0;
 $SHOW_MENU = 1;
+$SHOW_TITLE = 0;
 $NUMBER_SECTIONS = 0;
 # Tags are closed at the end of elements so this is important. But is 
 # it right?

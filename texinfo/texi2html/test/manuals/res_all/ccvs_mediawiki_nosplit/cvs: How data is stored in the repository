@@ -1,7 +1,7 @@
 <div id="Repository-storage"></div>
 <div class="header">
 <p>
-Next: [cvs: How data is stored in the working directory#Working-directory-storage Working directory storage], Previous: [cvs: Telling CVS where your repository is#Specifying-a-repository Specifying a repository], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: How data is stored in the working directory#How data is stored in the working directory|Working directory storage]], Previous: [[cvs: Telling CVS where your repository is#Telling CVS where your repository is|Specifying a repository]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="How-data-is-stored-in-the-repository"></div>
@@ -18,15 +18,15 @@ changes need not be disruptive.
 <p>However, in some cases it may be necessary to
 understand how <small>CVS</small> stores data in the repository,
 for example you might need to track down <small>CVS</small> locks
-(see [cvs: Several developers simultaneously attempting to run CVS#Concurrency Concurrency]) or you might need to deal with
+(see [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Concurrency]]) or you might need to deal with
 the file permissions appropriate for the repository.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Where files are stored within the repository#Repository-files  Repository files]::<nowiki>            What files are stored in the repository
-</nowiki>&bull;[cvs: File permissions#File-permissions  File permissions]::<nowiki>            File permissions
-</nowiki>&bull;[cvs: File Permission issues specific to Windows#Windows-permissions  Windows permissions]::<nowiki>         Issues specific to Windows
-</nowiki>&bull;[cvs: The attic#Attic  Attic]::<nowiki>                       Some files are stored in the Attic
-</nowiki>&bull;[cvs: The CVS directory in the repository#CVS-in-repository  CVS in repository]::<nowiki>           Additional information in CVS directory
-</nowiki>&bull;[cvs: CVS locks in the repository#Locks  Locks]::<nowiki>                       CVS locks control concurrent accesses
-</nowiki>&bull;[cvs: How files are stored in the CVSROOT directory#CVSROOT-storage  CVSROOT storage]::<nowiki>             A few things about CVSROOT are different
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Where files are stored within the repository#Where files are stored within the repository| Repository files]]::<nowiki>            What files are stored in the repository
+</nowiki>&bull;[[cvs: File permissions#File permissions| File permissions]]::<nowiki>            File permissions
+</nowiki>&bull;[[cvs: File Permission issues specific to Windows#File Permission issues specific to Windows| Windows permissions]]::<nowiki>         Issues specific to Windows
+</nowiki>&bull;[[cvs: The attic#The attic| Attic]]::<nowiki>                       Some files are stored in the Attic
+</nowiki>&bull;[[cvs: The CVS directory in the repository#The CVS directory in the repository| CVS in repository]]::<nowiki>           Additional information in CVS directory
+</nowiki>&bull;[[cvs: CVS locks in the repository#CVS locks in the repository| Locks]]::<nowiki>                       CVS locks control concurrent accesses
+</nowiki>&bull;[[cvs: How files are stored in the CVSROOT directory#How files are stored in the CVSROOT directory| CVSROOT storage]]::<nowiki>             A few things about CVSROOT are different
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

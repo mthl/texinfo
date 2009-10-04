@@ -5,7 +5,7 @@ Test for end of line protected in definition commands in footnote
 (1)
 
 Footnotes
-*********
+---------
 
 (1)
 

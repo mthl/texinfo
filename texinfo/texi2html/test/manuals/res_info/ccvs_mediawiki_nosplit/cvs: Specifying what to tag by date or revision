@@ -1,7 +1,7 @@
 <div id="Tagging-by-date_002ftag"></div>
 <div class="header">
 <p>
-Next: [cvs: Deleting, moving, and renaming tags#Modifying-tags Modifying tags], Previous: [cvs: Specifying what to tag from the working directory#Tagging-the-working-directory Tagging the working directory], Up: [cvs: Revisions#Revisions Revisions] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Deleting, moving, and renaming tags#Deleting, moving, and renaming tags|Modifying tags]], Previous: [[cvs: Specifying what to tag from the working directory#Specifying what to tag from the working directory|Tagging the working directory]], Up: [[cvs: Revisions#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Specifying-what-to-tag-by-date-or-revision"></div>
@@ -15,7 +15,7 @@ repository contents (it requires no prior checkout and
 does not look for a working directory).
 </p>
 <p>The following options specify which date or revision to
-tag.  See [cvs: Common command options#Common-options Common options], for a complete
+tag.  See [[cvs: Common command options#Common command options|Common options]], for a complete
 description of them.
 </p>
 <dl compact="compact">

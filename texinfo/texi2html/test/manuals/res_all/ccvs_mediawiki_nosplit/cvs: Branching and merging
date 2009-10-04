@@ -1,7 +1,7 @@
 <div id="Branching-and-merging"></div>
 <div class="header">
 <p>
-Next: [cvs: Recursive behavior#Recursive-behavior Recursive behavior], Previous: [cvs: Revisions#Revisions Revisions], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]], Previous: [[cvs: Revisions#Revisions|Revisions]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Branching-and-merging-1"></div>
@@ -27,15 +27,15 @@ the changes into the working directory.
 You can then commit that revision, and thus effectively
 copy the changes onto another branch.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: What branches are good for#Branches-motivation  Branches motivation]::<nowiki>         What branches are good for
-</nowiki>&bull;[cvs: Creating a branch#Creating-a-branch  Creating a branch]::<nowiki>           Creating a branch
-</nowiki>&bull;[cvs: Accessing branches#Accessing-branches  Accessing branches]::<nowiki>          Checking out and updating branches
-</nowiki>&bull;[cvs: Branches and revisions#Branches-and-revisions  Branches and revisions]::<nowiki>      Branches are reflected in revision numbers
-</nowiki>&bull;[cvs: Magic branch numbers#Magic-branch-numbers  Magic branch numbers]::<nowiki>        Magic branch numbers
-</nowiki>&bull;[cvs: Merging an entire branch#Merging-a-branch  Merging a branch]::<nowiki>            Merging an entire branch
-</nowiki>&bull;[cvs: Merging from a branch several times#Merging-more-than-once  Merging more than once]::<nowiki>      Merging from a branch several times
-</nowiki>&bull;[cvs: Merging differences between any two revisions#Merging-two-revisions  Merging two revisions]::<nowiki>       Merging differences between two revisions
-</nowiki>&bull;[cvs: Merging can add or remove files#Merging-adds-and-removals  Merging adds and removals]::<nowiki>   What if files are added or removed?
-</nowiki>&bull;[cvs: Merging and keywords#Merging-and-keywords  Merging and keywords]::<nowiki>        Avoiding conflicts due to keyword substitution
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: What branches are good for#What branches are good for| Branches motivation]]::<nowiki>         What branches are good for
+</nowiki>&bull;[[cvs: Creating a branch#Creating a branch| Creating a branch]]::<nowiki>           Creating a branch
+</nowiki>&bull;[[cvs: Accessing branches#Accessing branches| Accessing branches]]::<nowiki>          Checking out and updating branches
+</nowiki>&bull;[[cvs: Branches and revisions#Branches and revisions| Branches and revisions]]::<nowiki>      Branches are reflected in revision numbers
+</nowiki>&bull;[[cvs: Magic branch numbers#Magic branch numbers| Magic branch numbers]]::<nowiki>        Magic branch numbers
+</nowiki>&bull;[[cvs: Merging an entire branch#Merging an entire branch| Merging a branch]]::<nowiki>            Merging an entire branch
+</nowiki>&bull;[[cvs: Merging from a branch several times#Merging from a branch several times| Merging more than once]]::<nowiki>      Merging from a branch several times
+</nowiki>&bull;[[cvs: Merging differences between any two revisions#Merging differences between any two revisions| Merging two revisions]]::<nowiki>       Merging differences between two revisions
+</nowiki>&bull;[[cvs: Merging can add or remove files#Merging can add or remove files| Merging adds and removals]]::<nowiki>   What if files are added or removed?
+</nowiki>&bull;[[cvs: Merging and keywords#Merging and keywords| Merging and keywords]]::<nowiki>        Avoiding conflicts due to keyword substitution
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

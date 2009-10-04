@@ -1,7 +1,7 @@
 <div id="Remote-repositories"></div>
 <div class="header">
 <p>
-Next: [cvs: Read-only repository access#Read_002donly-access Read-only access], Previous: [cvs: Moving a repository#Moving-a-repository Moving a repository], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Read-only repository access#Read-only repository access|Read-only access]], Previous: [[cvs: Moving a repository#Moving a repository|Moving a repository]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Remote-repositories-1"></div>
@@ -35,7 +35,7 @@ the format of the repository name is:
 <p>Specifying a password in the repository name is not recommended during
 checkout, since this will cause <small>CVS</small> to store a cleartext copy of the
 password in each created directory.  <code>cvs login</code> first instead
-(see [cvs: Using the client with password authentication#Password-authentication-client Password authentication client]).
+(see [[cvs: Using the client with password authentication#Using the client with password authentication|Password authentication client]]).
 </p>
 <p>The details of exactly what needs to be set up depend
 on how you are connecting to the server.
@@ -43,18 +43,18 @@ on how you are connecting to the server.
 <p>If <var>method</var> is not specified, and the repository
 name contains &lsquo;<samp>:</samp>&rsquo;, then the default is <code>ext</code>
 or <code>server</code>, depending on your platform; both are
-described in [cvs: Connecting with rsh#Connecting-via-rsh Connecting via rsh].
+described in [[cvs: Connecting with rsh#Connecting with rsh|Connecting via rsh]].
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Server requirements#Server-requirements  Server requirements]::<nowiki>         Memory and other resources for servers
-</nowiki>&bull;[cvs: Connecting with rsh#Connecting-via-rsh  Connecting via rsh]::<nowiki>          Using the <code>rsh</code> program to connect
-</nowiki>&bull;[cvs: Direct connection with password authentication#Password-authenticated  Password authenticated]::<nowiki>      Direct connections using passwords
-</nowiki>&bull;[cvs: Direct connection with GSSAPI#GSSAPI-authenticated  GSSAPI authenticated]::<nowiki>        Direct connections using GSSAPI
-</nowiki>&bull;[cvs: Direct connection with kerberos#Kerberos-authenticated  Kerberos authenticated]::<nowiki>      Direct connections with kerberos
-</nowiki>&bull;[cvs: Connecting with fork#Connecting-via-fork  Connecting via fork]::<nowiki>         Using a forked <code>cvs server</code> to connect
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Server requirements#Server requirements| Server requirements]]::<nowiki>         Memory and other resources for servers
+</nowiki>&bull;[[cvs: Connecting with rsh#Connecting with rsh| Connecting via rsh]]::<nowiki>          Using the <code>rsh</code> program to connect
+</nowiki>&bull;[[cvs: Direct connection with password authentication#Direct connection with password authentication| Password authenticated]]::<nowiki>      Direct connections using passwords
+</nowiki>&bull;[[cvs: Direct connection with GSSAPI#Direct connection with GSSAPI| GSSAPI authenticated]]::<nowiki>        Direct connections using GSSAPI
+</nowiki>&bull;[[cvs: Direct connection with kerberos#Direct connection with kerberos| Kerberos authenticated]]::<nowiki>      Direct connections with kerberos
+</nowiki>&bull;[[cvs: Connecting with fork#Connecting with fork| Connecting via fork]]::<nowiki>         Using a forked <code>cvs server</code> to connect
 </nowiki></pre>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Read-only repository access#Read_002donly-access Read-only access], Previous: [cvs: Moving a repository#Moving-a-repository Moving a repository], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Read-only repository access#Read-only repository access|Read-only access]], Previous: [[cvs: Moving a repository#Moving a repository|Moving a repository]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

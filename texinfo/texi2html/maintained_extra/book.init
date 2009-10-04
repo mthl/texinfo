@@ -64,6 +64,8 @@ sub book_print_up_toc($)
         unshift (@elements, $current_element->{'sectionup'});
         $current_element = $current_element->{'sectionup'};
     }
+    # this happens for example for top element
+    return '' if !(@elements);
     #print $fh "<ul>" . &$anchor('', $Texi2HTML::HREF{Contents}, '[' . $Texi2HTML::NAME{Contents} . ']') . " <br>\n";
     my $elem = shift @elements;
     $result .= "<ul${NO_BULLET_LIST_ATTRIBUTE}><li>" . &$anchor('', main::href($elem, $element->{'file'}), $elem->{'text'}) . " </li>\n";
@@ -78,27 +80,22 @@ sub book_print_up_toc($)
     $result .= "</ul>\n";
 }
 
-#$print_section = \&book_print_section;
-$print_element_header = \&book_print_element_header;
-$element_file_name = \&book_element_file_name;
+$print_head_navigation = \&book_print_head_navigation;
 
-sub book_print_element_header($$)
-{
+sub book_print_head_navigation($$)
+{ 
+    my $fh = shift;
+    my $buttons = shift;
     my $first_in_page = shift;
     my $previous_is_top = shift;
-    my $buttons = \@SECTION_BUTTONS;
-    my $result;
+    my $element = shift;
 
-    if ($first_in_page and get_conf('headers'))
+    if (defined($element) and $first_in_page)
     {
-        $result = book_print_up_toc($Texi2HTML::THIS_ELEMENT);
-        $result .= &$print_head_navigation(undef, $buttons);
+       return book_print_up_toc($Texi2HTML::THIS_ELEMENT) . 
+          HTML_DEFAULT_print_head_navigation($fh, $buttons, $first_in_page, $previous_is_top, $element);
     }
-    else
-    { # got to do this here, as it isn't done in print_head_navigation
-        $result = &$print_navigation($buttons) if (get_conf('headers'));
-    }
-    return $result;
+    return HTML_DEFAULT_print_head_navigation($fh, $buttons, $first_in_page, $previous_is_top, $element);
 }
 
 my $unumbered_nr;
@@ -111,6 +108,8 @@ sub book_initialize_variables()
    $previous_nr = undef;
    $previous_file_name = undef;   
 }
+
+$element_file_name = \&book_element_file_name;
 
 sub book_element_file_name($$$)
 {
@@ -166,19 +165,23 @@ sub book_heading($$$$$$;$$)
     {
         return '' unless ($element->{'this'} and !$element->{'with_section'});
     }
-    $level = 1 if ($level == 0);
     my $text = $element->{'text'};
-    return '' if ($text !~ /\S/);
     my $class = $element->{'tag_level'};
-    $class = 'node-heading' if ($element->{'node'});
-    my $align = '';
-    $align = ' align="center"' if ($element->{'tag'} eq 'centerchap');
+    $class = 'node' if ($element->{'node'});
+    my $result = '';
 
-    if (defined($element->{'tocid'}) and $TOC_LINKS)
+    if ($TOC_LINKS and $command !~ /heading/ and defined($element->{'tocid'}))
     {
          $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
     }
-    $text = "<h$level class=\"$class\"${align}> $text </h$level>\n";
+    if (!$in_preformatted)
+    {
+       $result = &$heading_text("\@$class", $text, $level);
+    }
+    else
+    {
+       $result = &$heading_text_preformatted("\@$class", $text, $level);
+    }
     # @top should already have a table of contents, either because there 
     # is a @contents, or setcontentsaftertitlepage is set. 
     # In any case it would just be a duplication
@@ -186,11 +189,11 @@ sub book_heading($$$$$$;$$)
     if (exists($element->{'child'}) 
         and ($element->{'tag_level'} !~ /heading/) and $element->{'tag'} ne 'top')
     {
-        $text .= "<ul${NO_BULLET_LIST_ATTRIBUTE}>\n";
-        $text .= "" . book_print_sub_toc($element, $element->{'child'});
-        $text .= "</ul>\n";
+        $result .= "<ul${NO_BULLET_LIST_ATTRIBUTE}>\n";
+        $result .= "" . book_print_sub_toc($element, $element->{'child'});
+        $result .= "</ul>\n";
     }
-    return $text;
+    return $result;
 }
 
 1;

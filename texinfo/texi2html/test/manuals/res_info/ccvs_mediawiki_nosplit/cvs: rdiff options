@@ -1,14 +1,14 @@
 <div id="rdiff-options"></div>
 <div class="header">
 <p>
-Next: [cvs: rdiff examples#rdiff-examples rdiff examples], Up: [cvs: rdiff--'patch' format diffs between releases#rdiff rdiff] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: rdiff examples#rdiff examples|rdiff examples]], Up: [[cvs: rdiff--'patch' format diffs between releases#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases|rdiff]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="rdiff-options-1"></div>
 ==== rdiff options ====
 
 <p>These standard options are supported by <code>rdiff</code>
-(see [cvs: Common command options#Common-options Common options], for a complete description of
+(see [[cvs: Common command options#Common command options|Common options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
@@ -76,6 +76,6 @@ way that <small>RCS</small> version 5 does.
 <hr>
 <div class="header">
 <p>
-Next: [cvs: rdiff examples#rdiff-examples rdiff examples], Up: [cvs: rdiff--'patch' format diffs between releases#rdiff rdiff] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: rdiff examples#rdiff examples|rdiff examples]], Up: [[cvs: rdiff--'patch' format diffs between releases#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases|rdiff]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -1,7 +1,7 @@
 <div id="diff"></div>
 <div class="header">
 <p>
-Next: [cvs: export--Export sources from CVS, similar to checkout#export export], Previous: [cvs: commit--Check files into the repository#commit commit], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: export--Export sources from CVS, similar to checkout#export&mdash;Export sources from CVS, similar to checkout|export]], Previous: [[cvs: commit--Check files into the repository#commit&mdash;Check files into the repository|commit]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="diff_002d_002d_002dShow-differences-between-revisions"></div>
@@ -27,9 +27,9 @@ compared.  If any directories are given, all files
 under them will be compared.
 </p>
 <p>The exit status for diff is different than for other
-<small>CVS</small> commands; for details [cvs: CVS's exit status#Exit-status Exit status].
+<small>CVS</small> commands; for details [[cvs: CVS's exit status#CVS&rsquo;s exit status|Exit status]].
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: diff options#diff-options  diff options]::<nowiki>                diff options
-</nowiki>&bull;[cvs: diff examples#diff-examples  diff examples]::<nowiki>               diff examples
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: diff options#diff options| diff options]]::<nowiki>                diff options
+</nowiki>&bull;[[cvs: diff examples#diff examples| diff examples]]::<nowiki>               diff examples
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

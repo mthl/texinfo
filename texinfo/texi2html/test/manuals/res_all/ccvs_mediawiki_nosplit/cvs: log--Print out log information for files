@@ -1,7 +1,7 @@
 <div id="log"></div>
 <div class="header">
 <p>
-Next: [cvs: rdiff--'patch' format diffs between releases#rdiff rdiff], Previous: [cvs: import--Import sources into CVS, using vendor branches#import import], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: rdiff--'patch' format diffs between releases#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases|rdiff]], Previous: [[cvs: import--Import sources into CVS, using vendor branches#import&mdash;Import sources into CVS, using vendor branches|import]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="log_002d_002d_002dPrint-out-log-information-for-files"></div>
@@ -36,9 +36,9 @@ Coordinated Universal Time (UTC).  (Other parts of
 <small>CVS</small> print times in the local timezone).
 </p>
 <p><strong>Note: <code>log</code> uses &lsquo;<samp>-R</samp>&rsquo; in a way that conflicts
-with the normal use inside <small>CVS</small> (see [cvs: Common command options#Common-options Common options]).</strong>
+with the normal use inside <small>CVS</small> (see [[cvs: Common command options#Common command options|Common options]]).</strong>
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: log options#log-options  log options]::<nowiki>                 log options
-</nowiki>&bull;[cvs: log examples#log-examples  log examples]::<nowiki>                log examples
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: log options#log options| log options]]::<nowiki>                 log options
+</nowiki>&bull;[[cvs: log examples#log examples| log examples]]::<nowiki>                log examples
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

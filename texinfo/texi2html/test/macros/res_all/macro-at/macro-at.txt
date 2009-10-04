@@ -1,5 +1,6 @@
 AUTHORS - who did what on GNU LilyPond
 **************************************
+
 * AUTHORS -- who did what on GNU LilyPond:: AUTHORS - who did what.
 
 1 AUTHORS - who did what on GNU LilyPond?

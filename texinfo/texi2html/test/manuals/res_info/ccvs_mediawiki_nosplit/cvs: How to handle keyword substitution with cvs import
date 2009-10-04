@@ -1,14 +1,14 @@
 <div id="Keywords-in-imports"></div>
 <div class="header">
 <p>
-Next: [cvs: Multiple vendor branches#Multiple-vendor-branches Multiple vendor branches], Previous: [cvs: How to handle binary files with cvs import#Binary-files-in-imports Binary files in imports], Up: [cvs: Tracking third-party sources#Tracking-sources Tracking sources] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Multiple vendor branches#Multiple vendor branches|Multiple vendor branches]], Previous: [[cvs: How to handle binary files with cvs import#How to handle binary files with cvs import|Binary files in imports]], Up: [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="How-to-handle-keyword-substitution-with-cvs-import"></div>
 === How to handle keyword substitution with cvs import ===
 
 <p>The sources which you are importing may contain
-keywords (see [cvs: Keyword substitution#Keyword-substitution Keyword substitution]).  For example,
+keywords (see [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]]).  For example,
 the vendor may use <small>CVS</small> or some other system
 which uses similar keyword expansion syntax.  If you
 just import the files in the default fashion, then

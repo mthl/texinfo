@@ -1,5 +1,3 @@
-
-
 * Umlaut::               Umlaut.
 
 

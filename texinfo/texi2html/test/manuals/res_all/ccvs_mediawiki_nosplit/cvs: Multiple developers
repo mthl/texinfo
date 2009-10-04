@@ -1,7 +1,7 @@
 <div id="Multiple-developers"></div>
 <div class="header">
 <p>
-Next: [cvs: Revision management#Revision-management Revision management], Previous: [cvs: Handling binary files#Binary-files Binary files], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Revision management#Revision management|Revision management]], Previous: [[cvs: Handling binary files#Handling binary files|Binary files]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Multiple-developers-1"></div>
@@ -23,7 +23,7 @@ to allow only one person to edit each file at a time.
 This is the only solution with some version control
 systems, including <small>RCS</small> and <small>SCCS</small>.  Currently
 the usual way to get reserved checkouts with <small>CVS</small>
-is the <code>cvs admin -l</code> command (see [cvs: admin options#admin-options admin options]).  This is not as nicely integrated into
+is the <code>cvs admin -l</code> command (see [[cvs: admin options#admin options|admin options]]).  This is not as nicely integrated into
 <small>CVS</small> as the watch features, described below, but it
 seems that most people with a need for reserved
 checkouts find it adequate.
@@ -52,17 +52,17 @@ models work, and some of the issues involved in
 choosing between them.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: File status#File-status  File status]::<nowiki>                 A file can be in several states
-</nowiki>&bull;[cvs: Bringing a file up to date#Updating-a-file  Updating a file]::<nowiki>             Bringing a file up-to-date
-</nowiki>&bull;[cvs: Conflicts example#Conflicts-example  Conflicts example]::<nowiki>           An informative example
-</nowiki>&bull;[cvs: Informing others about commits#Informing-others  Informing others]::<nowiki>            To cooperate you must inform
-</nowiki>&bull;[cvs: Several developers simultaneously attempting to run CVS#Concurrency  Concurrency]::<nowiki>                 Simultaneous repository access
-</nowiki>&bull;[cvs: Mechanisms to track who is editing files#Watches  Watches]::<nowiki>                     Mechanisms to track who is editing files
-</nowiki>&bull;[cvs: Choosing between reserved or unreserved checkouts#Choosing-a-model  Choosing a model]::<nowiki>            Reserved or unreserved checkouts?
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: File status#File status| File status]]::<nowiki>                 A file can be in several states
+</nowiki>&bull;[[cvs: Bringing a file up to date#Bringing a file up to date| Updating a file]]::<nowiki>             Bringing a file up-to-date
+</nowiki>&bull;[[cvs: Conflicts example#Conflicts example| Conflicts example]]::<nowiki>           An informative example
+</nowiki>&bull;[[cvs: Informing others about commits#Informing others about commits| Informing others]]::<nowiki>            To cooperate you must inform
+</nowiki>&bull;[[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS| Concurrency]]::<nowiki>                 Simultaneous repository access
+</nowiki>&bull;[[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files| Watches]]::<nowiki>                     Mechanisms to track who is editing files
+</nowiki>&bull;[[cvs: Choosing between reserved or unreserved checkouts#Choosing between reserved or unreserved checkouts| Choosing a model]]::<nowiki>            Reserved or unreserved checkouts?
 </nowiki></pre>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Revision management#Revision-management Revision management], Previous: [cvs: Handling binary files#Binary-files Binary files], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Revision management#Revision management|Revision management]], Previous: [[cvs: Handling binary files#Handling binary files|Binary files]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

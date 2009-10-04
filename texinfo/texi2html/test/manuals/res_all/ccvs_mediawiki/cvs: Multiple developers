@@ -1,7 +1,7 @@
 <div id="Multiple-developers"></div>
 <div class="header">
 <p>
-Next: [cvs: Revision management#Revision-management Revision management], Previous: [cvs: Handling binary files#Binary-files Binary files], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Revision management#Revision management|Revision management]], Previous: [[cvs: Handling binary files#Handling binary files|Binary files]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Multiple-developers-1"></div>
 == Multiple developers ==
@@ -22,7 +22,7 @@ to allow only one person to edit each file at a time.
 This is the only solution with some version control
 systems, including <small>RCS</small> and <small>SCCS</small>.  Currently
 the usual way to get reserved checkouts with <small>CVS</small>
-is the <code>cvs admin -l</code> command (see [cvs: Guide to CVS commands#admin-options admin options]).  This is not as nicely integrated into
+is the <code>cvs admin -l</code> command (see [[cvs: Guide to CVS commands#admin options|admin options]]).  This is not as nicely integrated into
 <small>CVS</small> as the watch features, described below, but it
 seems that most people with a need for reserved
 checkouts find it adequate.
@@ -51,19 +51,19 @@ models work, and some of the issues involved in
 choosing between them.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#File-status| File status]]::<nowiki>                 A file can be in several states
-</nowiki>&bull;[[#Updating-a-file| Updating a file]]::<nowiki>             Bringing a file up-to-date
-</nowiki>&bull;[[#Conflicts-example| Conflicts example]]::<nowiki>           An informative example
-</nowiki>&bull;[[#Informing-others| Informing others]]::<nowiki>            To cooperate you must inform
-</nowiki>&bull;[[#Concurrency| Concurrency]]::<nowiki>                 Simultaneous repository access
-</nowiki>&bull;[[#Watches| Watches]]::<nowiki>                     Mechanisms to track who is editing files
-</nowiki>&bull;[[#Choosing-a-model| Choosing a model]]::<nowiki>            Reserved or unreserved checkouts?
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#File status| File status]]::<nowiki>                 A file can be in several states
+</nowiki>&bull;[[#Bringing a file up to date| Updating a file]]::<nowiki>             Bringing a file up-to-date
+</nowiki>&bull;[[#Conflicts example| Conflicts example]]::<nowiki>           An informative example
+</nowiki>&bull;[[#Informing others about commits| Informing others]]::<nowiki>            To cooperate you must inform
+</nowiki>&bull;[[#Several developers simultaneously attempting to run CVS| Concurrency]]::<nowiki>                 Simultaneous repository access
+</nowiki>&bull;[[#Mechanisms to track who is editing files| Watches]]::<nowiki>                     Mechanisms to track who is editing files
+</nowiki>&bull;[[#Choosing between reserved or unreserved checkouts| Choosing a model]]::<nowiki>            Reserved or unreserved checkouts?
 </nowiki></pre>
 <hr>
 <div id="File-status"></div>
 <div class="header">
 <p>
-Next: [[#Updating-a-file|Updating a file]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Bringing a file up to date|Updating a file]], Up: [[#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="File-status-1"></div>
 === File status ===
@@ -134,7 +134,7 @@ to allow an <code>update</code> to complete.
 <p>This is like Locally Modified, except that a previous
 <code>update</code> command gave a conflict.  If you have not
 already done so, you need to
-resolve the conflict as described in [[#Conflicts-example|Conflicts example]].
+resolve the conflict as described in [[#Conflicts example|Conflicts example]].
 </p>
 </dd>
 <dt>Unknown</dt>
@@ -154,10 +154,10 @@ latest revision in the repository for the branch in
 use.
 </p>
 <p>The options to <code>status</code> are listed in
-[cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS].  For information on its <code>Sticky tag</code>
-and <code>Sticky date</code> output, see [cvs: Revisions#Sticky-tags Sticky tags].
+[[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].  For information on its <code>Sticky tag</code>
+and <code>Sticky date</code> output, see [[cvs: Revisions#Sticky tags|Sticky tags]].
 For information on its <code>Sticky options</code> output,
-see the &lsquo;<samp>-k</samp>&rsquo; option in [cvs: Guide to CVS commands#update-options update options].
+see the &lsquo;<samp>-k</samp>&rsquo; option in [[cvs: Guide to CVS commands#update options|update options]].
 </p>
 <p>You can think of the <code>status</code> and <code>update</code>
 commands as somewhat complementary.  You use
@@ -177,13 +177,13 @@ displayed by the <code>status</code> command, you can invoke
 update, but merely to display statuses; the &lsquo;<samp>-q</samp>&rsquo;
 option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
-these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS].
+these options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].
 </p>
 <hr>
 <div id="Updating-a-file"></div>
 <div class="header">
 <p>
-Next: [[#Conflicts-example|Conflicts example]], Previous: [[#File-status|File status]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Conflicts example|Conflicts example]], Previous: [[#File status|File status]], Up: [[#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Bringing-a-file-up-to-date"></div>
 === Bringing a file up to date ===
@@ -216,14 +216,14 @@ close to any of the changes you have made, an
 printed, and the resulting file includes both
 versions of the lines that overlap, delimited by
 special markers.
-See [cvs: Guide to CVS commands#update update], for a complete description of the
+See [[cvs: Guide to CVS commands#update&mdash;Bring work tree in sync with repository|update]], for a complete description of the
 <code>update</code> command.
 </p>
 <hr>
 <div id="Conflicts-example"></div>
 <div class="header">
 <p>
-Next: [[#Informing-others|Informing others]], Previous: [[#Updating-a-file|Updating a file]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Informing others about commits|Informing others]], Previous: [[#Bringing a file up to date|Updating a file]], Up: [[#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Conflicts-example-1"></div>
 === Conflicts example ===
@@ -395,7 +395,7 @@ See the documentation for pcl-cvs.
 <div id="Informing-others"></div>
 <div class="header">
 <p>
-Next: [[#Concurrency|Concurrency]], Previous: [[#Conflicts-example|Conflicts example]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Several developers simultaneously attempting to run CVS|Concurrency]], Previous: [[#Conflicts example|Conflicts example]], Up: [[#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Informing-others-about-commits"></div>
 === Informing others about commits ===
@@ -406,8 +406,8 @@ Next: [[#Concurrency|Concurrency]], Previous: [[#Conflicts-example|Conflicts exa
 <p>It is often useful to inform others when you commit a
 new revision of a file.  The &lsquo;<samp>-i</samp>&rsquo; option of the
 &lsquo;<tt>modules</tt>&rsquo; file, or the &lsquo;<tt>loginfo</tt>&rsquo; file, can be
-used to automate this process.  See [cvs: Reference manual for Administrative files#modules modules].
-See [cvs: Reference manual for Administrative files#loginfo loginfo].  You can use these features of <small>CVS</small>
+used to automate this process.  See [[cvs: Reference manual for Administrative files#The modules file|modules]].
+See [[cvs: Reference manual for Administrative files#Loginfo|loginfo]].  You can use these features of <small>CVS</small>
 to, for instance, instruct <small>CVS</small> to mail a
 message to all developers, or post a message to a local
 newsgroup.
@@ -416,7 +416,7 @@ newsgroup.
 <div id="Concurrency"></div>
 <div class="header">
 <p>
-Next: [[#Watches|Watches]], Previous: [[#Informing-others|Informing others]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Mechanisms to track who is editing files|Watches]], Previous: [[#Informing others about commits|Informing others]], Up: [[#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Several-developers-simultaneously-attempting-to-run-CVS"></div>
 === Several developers simultaneously attempting to run CVS ===
@@ -446,7 +446,7 @@ start with &lsquo;<tt>#cvs.rfl</tt>&rsquo;,
 internal data structures and have no relationship to
 the word <em>lock</em> in the sense used by
 <small>RCS</small>&mdash;which refers to reserved checkouts
-(see [[#Multiple-developers|Multiple developers]]).
+(see [[#Multiple developers|Multiple developers]]).
 </p>
 <p>Any number of people can be reading from a given
 repository at a time; only when someone is writing do
@@ -484,7 +484,7 @@ the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 <div id="Watches"></div>
 <div class="header">
 <p>
-Next: [[#Choosing-a-model|Choosing a model]], Previous: [[#Concurrency|Concurrency]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Choosing between reserved or unreserved checkouts|Choosing a model]], Previous: [[#Several developers simultaneously attempting to run CVS|Concurrency]], Up: [[#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Mechanisms-to-track-who-is-editing-files"></div>
 === Mechanisms to track who is editing files ===
@@ -510,17 +510,17 @@ discard a working directory which is no longer in use,
 but <small>CVS</small> is not able to enforce this behavior.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Setting-a-watch| Setting a watch]]::<nowiki>             Telling CVS to watch certain files
-</nowiki>&bull;[[#Getting-Notified| Getting Notified]]::<nowiki>            Telling CVS to notify you
-</nowiki>&bull;[[#Editing-files| Editing files]]::<nowiki>               How to edit a file which is being watched
-</nowiki>&bull;[[#Watch-information| Watch information]]::<nowiki>           Information about who is watching and editing
-</nowiki>&bull;[[#Watches-Compatibility| Watches Compatibility]]::<nowiki>       Watches interact poorly with CVS 1.6 or earlier
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Telling CVS to watch certain files| Setting a watch]]::<nowiki>             Telling CVS to watch certain files
+</nowiki>&bull;[[#Telling CVS to notify you| Getting Notified]]::<nowiki>            Telling CVS to notify you
+</nowiki>&bull;[[#How to edit a file which is being watched| Editing files]]::<nowiki>               How to edit a file which is being watched
+</nowiki>&bull;[[#Information about who is watching and editing| Watch information]]::<nowiki>           Information about who is watching and editing
+</nowiki>&bull;[[#Using watches with old versions of CVS| Watches Compatibility]]::<nowiki>       Watches interact poorly with CVS 1.6 or earlier
 </nowiki></pre>
 <hr>
 <div id="Setting-a-watch"></div>
 <div class="header">
 <p>
-Next: [[#Getting-Notified|Getting Notified]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Telling CVS to notify you|Getting Notified]], Up: [[#Mechanisms to track who is editing files|Watches]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Telling-CVS-to-watch-certain-files"></div>
 ==== Telling CVS to watch certain files ====
@@ -547,7 +547,7 @@ notification policies on a per-directory basis.  The
 contents of the directory are processed recursively,
 unless the <code>-l</code> option is given.
 The <code>-R</code> option can be used to force recursion if the <code>-l</code>
-option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see [cvs: Guide to CVS commands#g_t_007e_002f_002ecvsrc ~/.cvsrc]).
+option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see [[cvs: Guide to CVS commands#Default options and the ~/.cvsrc file|~/.cvsrc]]).
 </p>
 <p>If <var>files</var> is omitted, it defaults to the current directory.
 </p>
@@ -570,7 +570,7 @@ watch on</code>.
 <div id="Getting-Notified"></div>
 <div class="header">
 <p>
-Next: [[#Editing-files|Editing files]], Previous: [[#Setting-a-watch|Setting a watch]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#How to edit a file which is being watched|Editing files]], Previous: [[#Telling CVS to watch certain files|Setting a watch]], Up: [[#Mechanisms to track who is editing files|Watches]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Telling-CVS-to-notify-you"></div>
 ==== Telling CVS to notify you ====
@@ -611,7 +611,7 @@ They can do this in several ways, by:
 applying the <code>cvs unedit</code> command (described below) to the file
 
 </li><li>
-applying the <code>cvs release</code> command (see [cvs: Guide to CVS commands#release release]) to the file&rsquo;s parent directory
+applying the <code>cvs release</code> command (see [[cvs: Guide to CVS commands#release&mdash;Indicate that a Module is no longer in use|release]]) to the file&rsquo;s parent directory
 (or recursively to a directory more than one level up)
 
 </li><li>
@@ -654,9 +654,9 @@ watches for the specified actions are removed.
 <p>When the conditions exist for notification, <small>CVS</small>
 calls the &lsquo;<tt>notify</tt>&rsquo; administrative file.  Edit
 &lsquo;<tt>notify</tt>&rsquo; as one edits the other administrative
-files (see [cvs: The Repository#Intro-administrative-files Intro administrative files]).  This
+files (see [[cvs: The Repository#The administrative files|Intro administrative files]]).  This
 file follows the usual conventions for administrative
-files (see [cvs: Reference manual for Administrative files#syntax syntax]), where each line is a regular
+files (see [[cvs: Reference manual for Administrative files#The common syntax|syntax]]), where each line is a regular
 expression followed by a command to execute.  The
 command should contain a single occurrence of &lsquo;<samp>%s</samp>&rsquo;
 which will be replaced by the user to notify; the rest
@@ -697,7 +697,7 @@ changing.
 <div id="Editing-files"></div>
 <div class="header">
 <p>
-Next: [[#Watch-information|Watch information]], Previous: [[#Getting-Notified|Getting Notified]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Information about who is watching and editing|Watch information]], Previous: [[#Telling CVS to notify you|Getting Notified]], Up: [[#Mechanisms to track who is editing files|Watches]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="How-to-edit-a-file-which-is-being-watched"></div>
 ==== How to edit a file which is being watched ====
@@ -708,7 +708,7 @@ read-only, you cannot simply edit it.  To make it
 read-write, and inform others that you are planning to
 edit it, use the <code>cvs edit</code> command.  Some systems
 call this a <em>checkout</em>, but <small>CVS</small> uses that term
-for obtaining a copy of the sources (see [cvs: Overview#Getting-the-source Getting the source]), an operation which those systems call a
+for obtaining a copy of the sources (see [[cvs: Overview#Getting the source|Getting the source]]), an operation which those systems call a
 <em>get</em> or a <em>fetch</em>.
 </p>
 <div id="index-edit-_0028subcommand_0029"></div>
@@ -756,7 +756,7 @@ notification for any of <var>files</var>.
 <p>If watches are not in use, the <code>unedit</code> command
 probably does not work, and the way to revert to the
 repository version is with the command <code>cvs update -C file</code>
-(see [cvs: Guide to CVS commands#update update]).
+(see [[cvs: Guide to CVS commands#update&mdash;Bring work tree in sync with repository|update]]).
 The meaning is
 not precisely the same; the latter may also
 bring in some changes which have been made in the
@@ -773,7 +773,7 @@ successful <small>CVS</small> command.
 <div id="Watch-information"></div>
 <div class="header">
 <p>
-Next: [[#Watches-Compatibility|Watches Compatibility]], Previous: [[#Editing-files|Editing files]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Using watches with old versions of CVS|Watches Compatibility]], Previous: [[#How to edit a file which is being watched|Editing files]], Up: [[#Mechanisms to track who is editing files|Watches]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Information-about-who-is-watching-and-editing"></div>
 ==== Information about who is watching and editing ====
@@ -809,7 +809,7 @@ containing the file.
 <div id="Watches-Compatibility"></div>
 <div class="header">
 <p>
-Previous: [[#Watch-information|Watch information]], Up: [[#Watches|Watches]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Information about who is watching and editing|Watch information]], Up: [[#Mechanisms to track who is editing files|Watches]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Using-watches-with-old-versions-of-CVS"></div>
 ==== Using watches with old versions of CVS ====
@@ -838,7 +838,7 @@ that will restore the repository to a state which
 <div id="Choosing-a-model"></div>
 <div class="header">
 <p>
-Previous: [[#Watches|Watches]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Mechanisms to track who is editing files|Watches]], Up: [[#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Choosing-between-reserved-or-unreserved-checkouts"></div>
 === Choosing between reserved or unreserved checkouts ===
@@ -885,7 +885,7 @@ going to be unpleasant enough that you generally will
 be better off to simply avoid the conflicts instead, by
 using reserved checkouts.
 </p>
-<p>The watches features described above in [[#Watches|Watches]]
+<p>The watches features described above in [[#Mechanisms to track who is editing files|Watches]]
 can be considered to be an intermediate model between
 reserved checkouts and unreserved checkouts.  When you
 go to edit a file, it is possible to find out who else
@@ -900,6 +900,6 @@ checkout worlds.
 <hr>
 <div class="header">
 <p>
-Previous: [[#Watches|Watches]], Up: [[#Multiple-developers|Multiple developers]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Mechanisms to track who is editing files|Watches]], Up: [[#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

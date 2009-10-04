@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.341 2009-09-26 23:10:04 pertusus Exp $
+# $Id: texi2html.pl,v 1.342 2009-10-04 21:51:04 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -256,6 +256,7 @@ $TOP_FILE
 $TOC_FILE
 $FRAMES
 $SHOW_MENU
+$SHOW_TITLE
 $NUMBER_SECTIONS
 $NUMBER_FOOTNOTES
 $USE_NODES
@@ -504,6 +505,8 @@ $raw
 $raw_no_texi
 $heading
 $element_heading
+$heading_text
+$heading_text_preformatted
 $paragraph
 $preformatted
 $empty_preformatted
@@ -628,6 +631,7 @@ $def_argument_separator_delimiters
 %colon_command_punctuation_characters
 $punctuation_characters
 $after_punctuation_characters
+@command_handler_setup
 @command_handler_init
 @command_handler_process
 @command_handler_output
@@ -936,14 +940,13 @@ sub T2H_GPL_style($$$$$$$$$$)
         }
     }
     if ($use_attribute)
-    {                       # good style
+    {
         my $attribute_text = '';
         if ($style =~ /^(\w+)(\s+.*)/)
         {
             $style = $1;
             $attribute_text = $2;
         }
-#        $text = "<${style}$attribute_text>$text</$style>" ;
         $text = "<${style}$attribute_text>" . "$text" if (!$no_open);
         $text .= "</$style>" if (!$no_close);
         if ($do_quotes)
@@ -961,6 +964,14 @@ sub T2H_GPL_style($$$$$$$$$$)
         if (defined($style->{'end'}) and !$no_close)
         {
             $text = $text . $style->{'end'};
+        }
+        if (defined($style->{'inline_begin'}))
+        {
+             $text = $style->{'inline_begin'} . $text;
+        }
+        if (defined($style->{'inline_end'}))
+        {
+            $text = $text . $style->{'inline_end'};
         }
     }
     if ($do_quotes and !$use_attribute)
@@ -1138,7 +1149,10 @@ sub t2h_default_associate_index_element($$$$)
        # opening a new one.
        $place->{'element_ref'} = $current_element if ($place->{'element_ref'} and $current_element ne $element);
        # this resets the element associated with a printindex.
-       $place->{'associated_element'} = $current_element if ($place->{'associated_element'} and $current_element ne $element);
+       if ($place->{'associated_element'} and $current_element ne $element)
+       {
+           $place->{'associated_element'} = $current_element;
+       }
        next;
     }
 
@@ -1187,14 +1201,14 @@ sub t2h_default_associate_index_element($$$$)
           {
             my $element_heading_texi = &$heading_texi($element->{'tag'}, $element->{'texi'}, $element->{'number'});
 
-            my $heading_texi = &$index_element_heading_texi(
+            my $index_heading_texi = &$index_element_heading_texi(
                  $element_heading_texi,
                  $element->{'tag'},
                  $element->{'texi'},
                  $element->{'number'},
                  $first_letter, $last_letter);
-            $name = main::substitute_line($heading_texi, "\@$element->{'tag'} index page");
-            $simple = main::simple_format(undef,undef,"simple_format \@$element->{'tag'} index page", $heading_texi);
+            $name = main::substitute_line($index_heading_texi, "\@$element->{'tag'} index page");
+            $simple = main::simple_format(undef,undef,"simple_format \@$element->{'tag'} index page", $index_heading_texi);
           }
           else
           { # should never happen, at this point 'text' is always undefined.
@@ -1216,7 +1230,7 @@ sub t2h_default_associate_index_element($$$$)
 
           $split_group->{'element'} = $new_element;
           $current_element = $new_element;
-          #print STDERR "Added $new_element->{'file'} for $new_element->{'texi'} ($first_letter:$last_letter)\n";
+          #print STDERR "Added file $new_element->{'file'} ($new_element, $new_element->{'id'}) for $new_element->{'texi'} ($first_letter:$last_letter)\n";
         }
         else
         { # this is the first index split, it is still associated with the element
@@ -1270,6 +1284,7 @@ sub t2h_default_index_rearrange_directions()
           $new_element->{$key} = $element->{$key} if (defined($element->{$key}));
         }
         $new_element->{'this'} = $new_element;
+        $new_element->{'element_ref'} = $new_element;
         $current_element = $new_element;
       }
     }
@@ -1331,7 +1346,6 @@ sub t2h_GPL_default_printindex($$)
   # could be cross verified with argument
 
   my $identifier_index_nr = 0;
-#print STDERR "Doing printindex $index_name\n";
   my @split_letters;
   
   if (defined($printindex->{'split_groups'}) and scalar(@{$printindex->{'split_groups'}}))
@@ -1344,7 +1358,7 @@ sub t2h_GPL_default_printindex($$)
     # this happens for printindex before the first element.
     if (!defined($element))
     {
-       $element =  {'file' => '', 'id' => "$printindex->{'region'}_printindex"} if (!defined($element));
+       $element =  {'file' => '', 'id' => "$printindex->{'region'}_printindex"};
     }
     elsif (defined($element->{'element_ref'}))
     {
@@ -1373,6 +1387,17 @@ sub t2h_GPL_default_printindex($$)
       {
         my $letter = $letter_entry->{'letter'};
         my $dest_file = '';
+        
+        ####################################### debug
+        if (!defined($summary_split_group->{'element'}))
+        {
+            main::msg_debug ("index $index_name, letter $letter, element for summary_split_group $summary_split_group not defined");
+        }
+        elsif (!defined($summary_split_group->{'element'}->{'id'}))
+        {
+           main::msg_debug ("index $index_name, letter $letter, element $summary_split_group->{'element'} `$summary_split_group->{'element'}->{'texi'}', id undef");
+        }
+        ####################################### end debug
         $dest_file = $summary_split_group->{'element'}->{'file'}
            if ($summary_split_group ne $split_group);
         my $index_element_id = $summary_split_group->{'element'}->{'id'};
@@ -1450,18 +1475,21 @@ sub t2h_GPL_default_printindex($$)
 
     # do the new element beginning
     $Texi2HTML::THIS_ELEMENT = $current_page->{'element'};
-    main::unref_file($Texi2HTML::THIS_ELEMENT->{'file'});
-    main::do_element_directions($Texi2HTML::THIS_ELEMENT);
-    my $do_page_head = main::open_out_file($current_page->{'element'}->{'file'});
+    my $new_element = $Texi2HTML::THIS_ELEMENT;
+    main::unref_file($new_element->{'file'});
+    main::do_element_directions($new_element);
+    my $do_page_head = main::open_out_file($new_element->{'file'});
     if ($do_page_head)
     {
       &$print_page_head($Texi2HTML::THISDOC{'FH'});
-      &$print_chapter_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if Texi2HTML::Config::get_conf('SPLIT') eq 'chapter';
-      &$print_section_header($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT) if Texi2HTML::Config::get_conf('SPLIT') eq 'section';
+      &$print_chapter_header($Texi2HTML::THISDOC{'FH'}, $new_element) if Texi2HTML::Config::get_conf('SPLIT') eq 'chapter';
+      &$print_section_header($Texi2HTML::THISDOC{'FH'}, $new_element) if Texi2HTML::Config::get_conf('SPLIT') eq 'section';
     }
-    @{$Texi2HTML::THIS_SECTION} = &$element_label($Texi2HTML::THIS_ELEMENT->{'id'}, $Texi2HTML::THIS_ELEMENT, undef, undef);
-    push @{$Texi2HTML::THIS_SECTION}, &$print_element_header(1, 0);
-    push @{$Texi2HTML::THIS_SECTION}, &$heading($Texi2HTML::THIS_ELEMENT);
+    # almost nothing of this is used in the default html output
+    @{$Texi2HTML::THIS_SECTION} = &$element_heading($new_element, $new_element->{'tag'}, $new_element->{'texi'},
+       $new_element->{'text'}, 0, 0, $new_element->{'this'}, 1, 0, 0, "\@$new_element->{'tag'} $new_element->{'texi'}", 
+       $new_element->{'id'}, $new_element);
+
   }
   return '';
 }
@@ -7556,8 +7584,6 @@ sub do_names()
         # backward compatibility -> maybe used to have the name without code_style ?
         # Removed from doc in nov 2009
         $nodes{$node}->{'name'} = substitute_line($texi, "\@node");
-        # FIXME: prefer?
-        #$nodes{$node}->{'name'} = $nodes{$node}->{'text'};
         $nodes{$node}->{'no_texi'} = remove_texi($texi);
         $nodes{$node}->{'simple_format'} = simple_format(undef, undef, "simple_format \@node", $texi);
         $nodes{$node}->{'heading_texi'} = $texi;
@@ -7964,7 +7990,9 @@ sub pass_text($$)
     # so we should be very carefull to take into accout 'outside_document' to
     # avoid messing with information that has to be set in the main document.
     # FIXME also the error messages will appear even though the corresponding 
-    # texinfo is never used.
+    # texinfo is never used. Since no state is passed to the do_special_region_lines
+    # 'outside_document' will be true. Also 'multiple_pass' is equal to -1
+    # for this case.
 
     my ($region_text, $region_no_texi, $region_simple_format);
     ($region_text, $region_no_texi, $region_simple_format) = do_special_region_lines('documentdescription');
@@ -12625,8 +12653,7 @@ sub scan_structure($$$$;$)
                 }
                 my $region = $state->{'region'};
                 $region = 'document' if (!defined($region));
-                # 'associated_element' is almost not used, the @printindex
-                # is associated through a walk on the elements
+                # FIXME use 'index_name' instead of 'name'
                 my $printindex = { 'associated_element' => $associated_element, 'name' => $index_name, 'region' => $region, 'command' => 'printindex' };
                 # prepare association of the index to the element by 
                 # putting it in the current place
@@ -12703,9 +12730,8 @@ sub scan_structure($$$$;$)
                        delete ($state->{'prev_menu_node'});
                        if (!$state->{'node_ref'})
                        {
-                          # FIXME make it line_error
-                          line_warn ("\@menu seen before first \@node", $line_nr);
-                          line_warn ("perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?", $line_nr);
+                          line_error ("\@menu seen before first \@node", $line_nr);
+                          line_error ("perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?", $line_nr);
                        }
                     }
                     $state->{$macro}++;
@@ -13761,7 +13787,6 @@ sub scan_line($$$$;$)
                     }
                     else
                     {
-#                        $global_head_num++;
                         $num = $global_head_num;
                     }
                     my $heading_element = $headings{$num};
@@ -13783,7 +13808,6 @@ sub scan_line($$$$;$)
                  {
                      $state->{'head_num'}++;
                      $num = "$state->{'region'}_$state->{'head_num'}";
-                     #$num = $state->{'head_num'};
                  }
                  else
                  {
@@ -13791,6 +13815,7 @@ sub scan_line($$$$;$)
                      $num = $global_head_num;
                  }
                  my $heading_element = $headings{$num};
+                 $cline = trim_comment_spaces($cline, "\@$macro", $line_nr);
                  add_prev($text, $stack, &$Texi2HTML::Config::element_label($heading_element->{'id'}, $heading_element, $macro, $cline));
                  add_prev($text, $stack, &$Texi2HTML::Config::heading($heading_element, $macro, $cline, substitute_line($cline, "\@$macro"), $state->{'preformatted'}));
                  return;
@@ -13801,7 +13826,9 @@ sub scan_line($$$$;$)
                 my $index_name = index_command_prefix($macro);
                 my $entry_texi = trim_comment_spaces($cline, "\@$macro", $line_nr);
                 chomp($entry_texi);
-                # FIXME multiple_pass?
+                # multiple_pass is not really necessary, since it may be the place
+                # where it is expanded once. However, this ensures that things 
+                # that are ignored with multiple_pass are ignored.
                 my $entry_text = substitute_line($entry_texi, "\@$macro", prepare_state_multiple_pass($macro, $state));
                 my ($index_entry, $formatted_index_entry, $index_label) = do_index_entry_label($macro,$state,$line_nr, $entry_texi);
 
@@ -15782,6 +15809,15 @@ while(@input_files)
            $hash->{$key} = undef;
        }
    }
+
+   %region_lines = ();
+   %region_line_nrs = ();
+   foreach my $region (@special_regions)
+   {
+      $region_lines{$region} = [];
+      $region_line_nrs{$region} = [];
+   }
+
    @created_directories = ();
 
    $docu_dir = undef;    # directory of the document
@@ -15806,6 +15842,13 @@ while(@input_files)
    $docu_frame_file = undef;
    $docu_toc_frame_file = undef;
 
+   # done before any processing, this is not necessarily 
+   # the case with command_handler_init
+   foreach my $handler(@Texi2HTML::Config::command_handler_setup)
+   {
+      &$handler;
+   }
+
    if (!$Texi2HTML::Config::USE_SETFILENAME)
    {
       init_with_file_name ($input_file_base);
@@ -15814,14 +15857,6 @@ while(@input_files)
    # FIXME when to do that?
    ($Texi2HTML::THISDOC{'css_import_lines'}, $Texi2HTML::THISDOC{'css_lines'}) 
       = collect_all_css_files();
-
-   %region_lines = ();
-   %region_line_nrs = ();
-   foreach my $region (@special_regions)
-   {
-      $region_lines{$region} = [];
-      $region_line_nrs{$region} = [];
-   }
 
    texinfo_initialization(0);
 

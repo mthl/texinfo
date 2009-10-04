@@ -1,7 +1,7 @@
 <div id="Server-requirements"></div>
 <div class="header">
 <p>
-Next: [cvs: Connecting with rsh#Connecting-via-rsh Connecting via rsh], Up: [cvs: Remote repositories#Remote-repositories Remote repositories] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Connecting with rsh#Connecting with rsh|Connecting via rsh]], Up: [[cvs: Remote repositories#Remote repositories|Remote repositories]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Server-requirements-1"></div>
@@ -18,7 +18,7 @@ should be sufficient to estimate memory requirements.
 There are two such areas documented here; other memory
 consumption should be small by comparison (if you find
 that is not the case, let us know, as described in
-[cvs: Dealing with bugs in CVS or this manual#BUGS BUGS], so we can update this documentation).
+[[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]], so we can update this documentation).
 </p>
 <p>The first area of big memory consumption is large
 checkouts, when using the <small>CVS</small> server.  The server
@@ -59,11 +59,11 @@ operating system in question should have little
 trouble.
 </p>
 <p>For information on disk space requirements, see
-[cvs: Creating a repository#Creating-a-repository Creating a repository].
+[[cvs: Creating a repository#Creating a repository|Creating a repository]].
 </p>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Connecting with rsh#Connecting-via-rsh Connecting via rsh], Up: [cvs: Remote repositories#Remote-repositories Remote repositories] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Connecting with rsh#Connecting with rsh|Connecting via rsh]], Up: [[cvs: Remote repositories#Remote repositories|Remote repositories]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

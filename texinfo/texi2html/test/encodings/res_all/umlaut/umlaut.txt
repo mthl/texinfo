@@ -1,3 +1,6 @@
+Test for Umlaute, accent etc.
+*****************************
+
 1 This is what you get
 **********************
 Copright Sign: (C) 

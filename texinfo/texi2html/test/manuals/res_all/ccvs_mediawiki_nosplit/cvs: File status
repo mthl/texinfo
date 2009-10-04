@@ -1,7 +1,7 @@
 <div id="File-status"></div>
 <div class="header">
 <p>
-Next: [cvs: Bringing a file up to date#Updating-a-file Updating a file], Up: [cvs: Multiple developers#Multiple-developers Multiple developers] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Bringing a file up to date#Bringing a file up to date|Updating a file]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="File-status-1"></div>
@@ -73,7 +73,7 @@ to allow an <code>update</code> to complete.
 <p>This is like Locally Modified, except that a previous
 <code>update</code> command gave a conflict.  If you have not
 already done so, you need to
-resolve the conflict as described in [cvs: Conflicts example#Conflicts-example Conflicts example].
+resolve the conflict as described in [[cvs: Conflicts example#Conflicts example|Conflicts example]].
 </p>
 </dd>
 <dt>Unknown</dt>
@@ -93,10 +93,10 @@ latest revision in the repository for the branch in
 use.
 </p>
 <p>The options to <code>status</code> are listed in
-[cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS].  For information on its <code>Sticky tag</code>
-and <code>Sticky date</code> output, see [cvs: Sticky tags#Sticky-tags Sticky tags].
+[[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].  For information on its <code>Sticky tag</code>
+and <code>Sticky date</code> output, see [[cvs: Sticky tags#Sticky tags|Sticky tags]].
 For information on its <code>Sticky options</code> output,
-see the &lsquo;<samp>-k</samp>&rsquo; option in [cvs: update options#update-options update options].
+see the &lsquo;<samp>-k</samp>&rsquo; option in [[cvs: update options#update options|update options]].
 </p>
 <p>You can think of the <code>status</code> and <code>update</code>
 commands as somewhat complementary.  You use
@@ -116,11 +116,11 @@ displayed by the <code>status</code> command, you can invoke
 update, but merely to display statuses; the &lsquo;<samp>-q</samp>&rsquo;
 option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
-these options, see [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS].
+these options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].
 </p>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Bringing a file up to date#Updating-a-file Updating a file], Up: [cvs: Multiple developers#Multiple-developers Multiple developers] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Bringing a file up to date#Bringing a file up to date|Updating a file]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -1,7 +1,7 @@
 <div id="Wrappers"></div>
 <div class="header">
 <p>
-Next: [cvs: The commit support files#commit-files commit files], Previous: [cvs: The modules file#modules modules], Up: [cvs: Reference manual for Administrative files#Administrative-files Administrative files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: The commit support files#The commit support files|commit files]], Previous: [[cvs: The modules file#The modules file|modules]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="The-cvswrappers-file"></div>
@@ -36,7 +36,7 @@ copy one version of your file over the other, wiping
 out the previous contents.</strong>
 The &lsquo;<samp>-m</samp>&rsquo; wrapper option only affects behavior when
 merging is done on update; it does not affect how files
-are stored.  See [cvs: Handling binary files#Binary-files Binary files], for more on
+are stored.  See [[cvs: Handling binary files#Handling binary files|Binary files]], for more on
 binary files.
 </p>
 <p>The basic format of the file &lsquo;<tt>cvswrappers</tt>&rsquo; is:
@@ -62,6 +62,6 @@ directory, treating files whose name ends in
 <hr>
 <div class="header">
 <p>
-Next: [cvs: The commit support files#commit-files commit files], Previous: [cvs: The modules file#modules modules], Up: [cvs: Reference manual for Administrative files#Administrative-files Administrative files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: The commit support files#The commit support files|commit files]], Previous: [[cvs: The modules file#The modules file|modules]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

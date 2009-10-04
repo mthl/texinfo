@@ -1,7 +1,7 @@
 <div id="Repository"></div>
 <div class="header">
 <p>
-Next: [cvs: Starting a project with CVS#Starting-a-new-project Starting a new project], Previous: [cvs: Overview#Overview Overview], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Starting a project with CVS#Starting a project with CVS|Starting a new project]], Previous: [[cvs: Overview#Overview|Overview]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="The-Repository"></div>
@@ -41,7 +41,7 @@ access a repository directory, so the repository
 <code>:local:/usr/local/cvsroot</code> means that the
 repository is in &lsquo;<tt>/usr/local/cvsroot</tt>&rsquo; on the
 computer running <small>CVS</small>.  For information on other
-access methods, see [cvs: Remote repositories#Remote-repositories Remote repositories].
+access methods, see [[cvs: Remote repositories#Remote repositories|Remote repositories]].
 </p>
 <p>If the access method is omitted, then if the repository
 starts with &lsquo;<samp>/</samp>&rsquo;, then <code>:local:</code> is
@@ -59,21 +59,21 @@ method, as in <code>:local:c:/src/cvsroot</code>.
 administrative files for <small>CVS</small>.  The other directories contain the actual
 user-defined modules.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Telling CVS where your repository is#Specifying-a-repository  Specifying a repository]::<nowiki>     Telling CVS where your repository is
-</nowiki>&bull;[cvs: How data is stored in the repository#Repository-storage  Repository storage]::<nowiki>          The structure of the repository
-</nowiki>&bull;[cvs: How data is stored in the working directory#Working-directory-storage  Working directory storage]::<nowiki>   The structure of working directories
-</nowiki>&bull;[cvs: The administrative files#Intro-administrative-files  Intro administrative files]::<nowiki>  Defining modules
-</nowiki>&bull;[cvs: Multiple repositories#Multiple-repositories  Multiple repositories]::<nowiki>       Multiple repositories
-</nowiki>&bull;[cvs: Creating a repository#Creating-a-repository  Creating a repository]::<nowiki>       Creating a repository
-</nowiki>&bull;[cvs: Backing up a repository#Backing-up  Backing up]::<nowiki>                  Backing up a repository
-</nowiki>&bull;[cvs: Moving a repository#Moving-a-repository  Moving a repository]::<nowiki>         Moving a repository
-</nowiki>&bull;[cvs: Remote repositories#Remote-repositories  Remote repositories]::<nowiki>         Accessing repositories on remote machines
-</nowiki>&bull;[cvs: Read-only repository access#Read_002donly-access  Read-only access]::<nowiki>            Granting read-only access to the repository
-</nowiki>&bull;[cvs: Temporary directories for the server#Server-temporary-directory  Server temporary directory]::<nowiki>  The server creates temporary directories
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Telling CVS where your repository is#Telling CVS where your repository is| Specifying a repository]]::<nowiki>     Telling CVS where your repository is
+</nowiki>&bull;[[cvs: How data is stored in the repository#How data is stored in the repository| Repository storage]]::<nowiki>          The structure of the repository
+</nowiki>&bull;[[cvs: How data is stored in the working directory#How data is stored in the working directory| Working directory storage]]::<nowiki>   The structure of working directories
+</nowiki>&bull;[[cvs: The administrative files#The administrative files| Intro administrative files]]::<nowiki>  Defining modules
+</nowiki>&bull;[[cvs: Multiple repositories#Multiple repositories| Multiple repositories]]::<nowiki>       Multiple repositories
+</nowiki>&bull;[[cvs: Creating a repository#Creating a repository| Creating a repository]]::<nowiki>       Creating a repository
+</nowiki>&bull;[[cvs: Backing up a repository#Backing up a repository| Backing up]]::<nowiki>                  Backing up a repository
+</nowiki>&bull;[[cvs: Moving a repository#Moving a repository| Moving a repository]]::<nowiki>         Moving a repository
+</nowiki>&bull;[[cvs: Remote repositories#Remote repositories| Remote repositories]]::<nowiki>         Accessing repositories on remote machines
+</nowiki>&bull;[[cvs: Read-only repository access#Read-only repository access| Read-only access]]::<nowiki>            Granting read-only access to the repository
+</nowiki>&bull;[[cvs: Temporary directories for the server#Temporary directories for the server| Server temporary directory]]::<nowiki>  The server creates temporary directories
 </nowiki></pre>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Starting a project with CVS#Starting-a-new-project Starting a new project], Previous: [cvs: Overview#Overview Overview], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Starting a project with CVS#Starting a project with CVS|Starting a new project]], Previous: [[cvs: Overview#Overview|Overview]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

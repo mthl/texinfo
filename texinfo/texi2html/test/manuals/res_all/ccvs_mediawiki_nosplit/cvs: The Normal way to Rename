@@ -1,7 +1,7 @@
 <div id="Outside"></div>
 <div class="header">
 <p>
-Next: [cvs: Moving the history file#Inside Inside], Up: [cvs: Moving and renaming files#Moving-files Moving files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Moving the history file#Moving the history file|Inside]], Up: [[cvs: Moving and renaming files#Moving and renaming files|Moving files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="The-Normal-way-to-Rename"></div>
@@ -30,6 +30,6 @@ time of the rename.
 <p>When <var>new</var> is committed its revision numbers will
 start again, usually at 1.1, so if that bothers you,
 use the &lsquo;<samp>-r rev</samp>&rsquo; option to commit.  For more
-information see [cvs: Assigning revisions#Assigning-revisions Assigning revisions].
+information see [[cvs: Assigning revisions#Assigning revisions|Assigning revisions]].
 </p>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

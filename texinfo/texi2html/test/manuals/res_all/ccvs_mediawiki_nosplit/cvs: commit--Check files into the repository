@@ -1,7 +1,7 @@
 <div id="commit"></div>
 <div class="header">
 <p>
-Next: [cvs: diff--Show differences between revisions#diff diff], Previous: [cvs: checkout--Check out sources for editing#checkout checkout], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: diff--Show differences between revisions#diff&mdash;Show differences between revisions|diff]], Previous: [[cvs: checkout--Check out sources for editing#checkout&mdash;Check out sources for editing|checkout]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="commit_002d_002d_002dCheck-files-into-the-repository"></div>
@@ -38,28 +38,28 @@ current directory only.
 to date with the current revisions in the source
 repository; it will notify you, and exit without
 committing, if any of the specified files must be made
-current first with <code>update</code> (see [cvs: update--Bring work tree in sync with repository#update update]).
+current first with <code>update</code> (see [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]]).
 <code>commit</code> does not call the <code>update</code> command
 for you, but rather leaves that for you to do when the
 time is right.
 </p>
 <p>When all is well, an editor is invoked to allow you to
 enter a log message that will be written to one or more
-logging programs (see [cvs: The modules file#modules modules], and see [cvs: Loginfo#loginfo loginfo])
+logging programs (see [[cvs: The modules file#The modules file|modules]], and see [[cvs: Loginfo#Loginfo|loginfo]])
 and placed in the <small>RCS</small> file inside the
 repository.  This log message can be retrieved with the
-<code>log</code> command; see [cvs: log--Print out log information for files#log log].  You can specify the
+<code>log</code> command; see [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]].  You can specify the
 log message on the command line with the &lsquo;<samp>-m
 <var>message</var></samp>&rsquo; option, and thus avoid the editor invocation,
 or use the &lsquo;<samp>-F <var>file</var></samp>&rsquo; option to specify
 that the argument file contains the log message.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: commit options#commit-options  commit options]::<nowiki>              commit options
-</nowiki>&bull;[cvs: commit examples#commit-examples  commit examples]::<nowiki>             commit examples
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: commit options#commit options| commit options]]::<nowiki>              commit options
+</nowiki>&bull;[[cvs: commit examples#commit examples| commit examples]]::<nowiki>             commit examples
 </nowiki></pre>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: diff--Show differences between revisions#diff diff], Previous: [cvs: checkout--Check out sources for editing#checkout checkout], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: diff--Show differences between revisions#diff&mdash;Show differences between revisions|diff]], Previous: [[cvs: checkout--Check out sources for editing#checkout&mdash;Check out sources for editing|checkout]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

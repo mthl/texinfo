@@ -1,7 +1,7 @@
 <div id="Watch-information"></div>
 <div class="header">
 <p>
-Next: [cvs: Using watches with old versions of CVS#Watches-Compatibility Watches Compatibility], Previous: [cvs: How to edit a file which is being watched#Editing-files Editing files], Up: [cvs: Mechanisms to track who is editing files#Watches Watches] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Using watches with old versions of CVS#Using watches with old versions of CVS|Watches Compatibility]], Previous: [[cvs: How to edit a file which is being watched#How to edit a file which is being watched|Editing files]], Up: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Information-about-who-is-watching-and-editing"></div>

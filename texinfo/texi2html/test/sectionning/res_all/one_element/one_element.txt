@@ -1,3 +1,6 @@
+one_element test
+****************
+
 top section
 ***********
 
@@ -21,7 +24,7 @@ Ref to float
 
 
 Footnotes
-*********
+---------
 
 (1)
 In footnote.

@@ -1,7 +1,7 @@
 <div id="Tagging-add_002fremove"></div>
 <div class="header">
 <p>
-Next: [cvs: Sticky tags#Sticky-tags Sticky tags], Previous: [cvs: Deleting, moving, and renaming tags#Modifying-tags Modifying tags], Up: [cvs: Revisions#Revisions Revisions] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Sticky tags#Sticky tags|Sticky tags]], Previous: [[cvs: Deleting, moving, and renaming tags#Deleting, moving, and renaming tags|Modifying tags]], Up: [[cvs: Revisions#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Tagging-and-adding-and-removing-files"></div>
@@ -42,6 +42,6 @@ necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Sticky tags#Sticky-tags Sticky tags], Previous: [cvs: Deleting, moving, and renaming tags#Modifying-tags Modifying tags], Up: [cvs: Revisions#Revisions Revisions] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Sticky tags#Sticky tags|Sticky tags]], Previous: [[cvs: Deleting, moving, and renaming tags#Deleting, moving, and renaming tags|Modifying tags]], Up: [[cvs: Revisions#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -66,6 +66,7 @@ $SPLIT = '';
 @T2H_FORMAT_EXPAND = ('info', 'direntry');
 $EXTENSION = 'info';
 $SHOW_MENU = 1;
+$SHOW_TITLE = 0;
 $USE_SETFILENAME_EXTENSION = 1;
 $INLINE_INSERTCOPYING = 1;
 $SIMPLE_MENU = 1;
@@ -227,7 +228,8 @@ t2h_default_push_handler(\&info_default_init_variables, \@command_handler_init);
 
 $style = \&info_default_style;
 $print_page_head   = \&info_default_print_page_head;
-$toc_body = \&info_default_noop;
+$contents = \&info_default_noop;
+$shortcontents = \&info_default_noop;
 $about_body = \&info_default_noop;
 $print_Footnotes = \&info_default_noop;
 $copying_comment   = \&info_default_copying_comment;
@@ -295,6 +297,7 @@ $raw                = \&info_default_raw;
 $line_command       = \&info_default_line_command;
 $comment            = \&t2h_default_comment;
 $unknown_style      = \&info_default_unknown_style;
+$heading_text       = \&t2h_default_heading_text;
 
 }
 
@@ -2231,7 +2234,10 @@ sub info_default_element_heading($$$$$$$$$$$$)
     # @unnumbered element not associated with a node
     # @node Top
     # @top Top element
-    return &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading) unless ($element->{'node'});
+    if (!$element->{'node'})
+    {
+        return &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading);
+    }
 
     my $before = '';
     $element->{'info_offset'} = $info_state->{'offset_in_file'};
@@ -2272,10 +2278,7 @@ sub info_default_heading($$$$$;$$)
     #$text =~ s/^(\w+)\. /$1 /;
     # when @top is empty, use settitle
     $text = $Texi2HTML::THISDOC{'settitle'} if (!length($text) and $element->{'tag'} eq 'top' and defined ($Texi2HTML::THISDOC{'settitle'}) and length($Texi2HTML::THISDOC{'settitle'}));
-    # FIXME i18n
-    #$text = "Appendix $text" if ($element->{'tag'} =~ /appendix/ and $element->{'level'} <= 1);
-    my $result = $text . "\n" . 
-       ($t2h_default_underline_symbol{$element->{'level'}} x length($text)) . "\n";
+    my $result = &$heading_text ("\@$command", $text, $element->{'level'});
 
    $result .= "\n";
 

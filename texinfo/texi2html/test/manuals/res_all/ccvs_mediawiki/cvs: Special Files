@@ -1,7 +1,7 @@
 <div id="Special-Files"></div>
 <div class="header">
 <p>
-Next: [cvs: Guide to CVS commands#CVS-commands CVS commands], Previous: [cvs: How your build system interacts with CVS#Builds Builds], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]], Previous: [[cvs: How your build system interacts with CVS#How your build system interacts with CVS|Builds]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Special-Files-1"></div>
 == Special Files ==
@@ -28,6 +28,6 @@ permissions during repository transactions.
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Guide to CVS commands#CVS-commands CVS commands], Previous: [cvs: How your build system interacts with CVS#Builds Builds], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]], Previous: [[cvs: How your build system interacts with CVS#How your build system interacts with CVS|Builds]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

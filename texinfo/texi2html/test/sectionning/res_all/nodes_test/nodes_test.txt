@@ -9,8 +9,6 @@ first
 node in first but not the first...
 
 
-
-
 * first::
 * node1::
 * node inexistant in menu:: non existing
@@ -21,8 +19,6 @@ node in first but not the first...
 Top
 ***
 This is the top node...
-
-
 
 
 

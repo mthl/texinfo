@@ -1,7 +1,7 @@
 <div id="History-browsing"></div>
 <div class="header">
 <p>
-Next: [cvs: Handling binary files#Binary-files Binary files], Previous: [cvs: Adding, removing, and renaming files and directories#Adding-and-removing Adding and removing], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Handling binary files#Handling binary files|Binary files]], Previous: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="History-browsing-1"></div>
 == History browsing ==
@@ -15,16 +15,16 @@ history&mdash;what files have changed when, how, and by
 whom, there are a variety of mechanisms for looking
 through the history.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#log-messages| log messages]]::<nowiki>                Log messages
-</nowiki>&bull;[[#history-database| history database]]::<nowiki>            The history database
-</nowiki>&bull;[[#user_002ddefined-logging| user-defined logging]]::<nowiki>        User-defined logging
-</nowiki>&bull;[[#annotate| annotate]]::<nowiki>                    What revision modified each line of a file?
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Log messages| log messages]]::<nowiki>                Log messages
+</nowiki>&bull;[[#The history database| history database]]::<nowiki>            The history database
+</nowiki>&bull;[[#User-defined logging| user-defined logging]]::<nowiki>        User-defined logging
+</nowiki>&bull;[[#Annotate command| annotate]]::<nowiki>                    What revision modified each line of a file?
 </nowiki></pre>
 <hr>
 <div id="log-messages"></div>
 <div class="header">
 <p>
-Next: [[#history-database|history database]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#The history database|history database]], Up: [[#History browsing|History browsing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Log-messages"></div>
 === Log messages ===
@@ -33,32 +33,32 @@ Next: [[#history-database|history database]], Up: [[#History-browsing|History br
 </p>
 <p>To look through the log messages which have been
 specified for every revision which has been committed,
-use the <code>cvs log</code> command (see [cvs: Guide to CVS commands#log log]).
+use the <code>cvs log</code> command (see [[cvs: Guide to CVS commands#log&mdash;Print out log information for files|log]]).
 </p>
 <hr>
 <div id="history-database"></div>
 <div class="header">
 <p>
-Next: [[#user_002ddefined-logging|user-defined logging]], Previous: [[#log-messages|log messages]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#User-defined logging|user-defined logging]], Previous: [[#Log messages|log messages]], Up: [[#History browsing|History browsing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="The-history-database"></div>
 === The history database ===
 
-<p>You can use the history file (see [cvs: Reference manual for Administrative files#history-file history file]) to
+<p>You can use the history file (see [[cvs: Reference manual for Administrative files#The history file|history file]]) to
 log various <small>CVS</small> actions.  To retrieve the
 information from the history file, use the <code>cvs
-history</code> command (see [cvs: Guide to CVS commands#history history]).
+history</code> command (see [[cvs: Guide to CVS commands#history&mdash;Show status of files and users|history]]).
 </p>
 <p>Note: you can control what is logged to this file by using the
 &lsquo;<samp>LogHistory</samp>&rsquo; keyword in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file
-(see [cvs: Reference manual for Administrative files#config config]).
+(see [[cvs: Reference manual for Administrative files#The CVSROOT/config configuration file|config]]).
 </p>
 
 <hr>
 <div id="user_002ddefined-logging"></div>
 <div class="header">
 <p>
-Next: [[#annotate|annotate]], Previous: [[#history-database|history database]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Annotate command|annotate]], Previous: [[#The history database|history database]], Up: [[#History browsing|History browsing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="User_002ddefined-logging"></div>
 === User-defined logging ===
@@ -70,14 +70,14 @@ times.  The script might append a message to a file
 listing the information and the programmer who created
 it, or send mail to a group of developers, or, perhaps,
 post a message to a particular newsgroup.  To log
-commits, use the &lsquo;<tt>loginfo</tt>&rsquo; file (see [cvs: Reference manual for Administrative files#loginfo loginfo]).
+commits, use the &lsquo;<tt>loginfo</tt>&rsquo; file (see [[cvs: Reference manual for Administrative files#Loginfo|loginfo]]).
 To log commits, checkouts, exports, and tags,
 respectively, you can also use the &lsquo;<samp>-i</samp>&rsquo;,
 &lsquo;<samp>-o</samp>&rsquo;, &lsquo;<samp>-e</samp>&rsquo;, and &lsquo;<samp>-t</samp>&rsquo; options in the
 modules file.  For a more flexible way of giving
 notifications to various users, which requires less in
 the way of keeping centralized scripts up to date, use
-the <code>cvs watch add</code> command (see [cvs: Multiple developers#Getting-Notified Getting Notified]); this command is useful even if you are not
+the <code>cvs watch add</code> command (see [[cvs: Multiple developers#Telling CVS to notify you|Getting Notified]]); this command is useful even if you are not
 using <code>cvs watch on</code>.
 </p>
 <div id="index-taginfo"></div>
@@ -85,7 +85,7 @@ using <code>cvs watch on</code>.
 <p>The &lsquo;<tt>taginfo</tt>&rsquo; file defines programs to execute
 when someone executes a <code>tag</code> or <code>rtag</code>
 command.  The &lsquo;<tt>taginfo</tt>&rsquo; file has the standard form
-for administrative files (see [cvs: Reference manual for Administrative files#Administrative-files Administrative files]), where each line is a regular expression
+for administrative files (see [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]]), where each line is a regular expression
 followed by a command to execute.  The arguments passed
 to the command are, in order, the <var>tagname</var>,
 <var>operation</var> (<code>add</code> for <code>tag</code>,
@@ -112,7 +112,7 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 <div id="annotate"></div>
 <div class="header">
 <p>
-Previous: [[#user_002ddefined-logging|user-defined logging]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#User-defined logging|user-defined logging]], Up: [[#History browsing|History browsing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Annotate-command"></div>
 === Annotate command ===
@@ -139,19 +139,19 @@ added a line <code>ssfile line 2</code>, without modifying
 the <code>ssfile line 1</code> line.  This report doesn&rsquo;t
 tell you anything about lines which have been deleted
 or replaced; you need to use <code>cvs diff</code> for that
-(see [cvs: Guide to CVS commands#diff diff]).
+(see [[cvs: Guide to CVS commands#diff&mdash;Show differences between revisions|diff]]).
 </p>
 </dd></dl>
 
 <p>The options to <code>cvs annotate</code> are listed in
-[cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS], and can be used to select the files
+[[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]], and can be used to select the files
 and revisions to annotate.  The options are described
-in more detail there and in [cvs: Guide to CVS commands#Common-options Common options].
+in more detail there and in [[cvs: Guide to CVS commands#Common command options|Common options]].
 </p>
 
 <hr>
 <div class="header">
 <p>
-Previous: [[#user_002ddefined-logging|user-defined logging]], Up: [[#History-browsing|History browsing]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#User-defined logging|user-defined logging]], Up: [[#History browsing|History browsing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

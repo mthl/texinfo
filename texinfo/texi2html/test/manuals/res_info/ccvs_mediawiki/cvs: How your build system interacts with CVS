@@ -1,7 +1,7 @@
 <div id="Builds"></div>
 <div class="header">
 <p>
-Next: [cvs: Special Files#Special-Files Special Files], Previous: [cvs: Tracking third-party sources#Tracking-sources Tracking sources], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Special Files#Special Files|Special Files]], Previous: [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="How-your-build-system-interacts-with-CVS"></div>
 == How your build system interacts with CVS ==
@@ -41,7 +41,7 @@ of functionality is sometimes called <em>bill of
 materials</em> or something similar.  The best way to do
 this with <small>CVS</small> is to use the <code>tag</code> command to
 record which versions went into a given build
-(see [cvs: Revisions#Tags Tags]).
+(see [[cvs: Revisions#Tags&ndash;Symbolic revisions|Tags]]).
 </p>
 <p>Using <small>CVS</small> in the most straightforward manner
 possible, each developer will have a copy of the entire
@@ -69,6 +69,6 @@ is Odin (see
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Special Files#Special-Files Special Files], Previous: [cvs: Tracking third-party sources#Tracking-sources Tracking sources], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Special Files#Special Files|Special Files]], Previous: [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

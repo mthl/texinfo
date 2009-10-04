@@ -1,7 +1,7 @@
 <div id="release-output"></div>
 <div class="header">
 <p>
-Next: [cvs: release examples#release-examples release examples], Previous: [cvs: release options#release-options release options], Up: [cvs: release--Indicate that a Module is no longer in use#release release] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: release examples#release examples|release examples]], Previous: [[cvs: release options#release options|release options]], Up: [[cvs: release--Indicate that a Module is no longer in use#release&mdash;Indicate that a Module is no longer in use|release]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="release-output-1"></div>
@@ -30,7 +30,7 @@ this file will be lost.
 <dd><p>The file has been removed from your private copy of the
 sources, but has not yet been removed from the
 repository, since you have not yet committed the
-removal.  See [cvs: commit--Check files into the repository#commit commit].
+removal.  See [[cvs: commit--Check files into the repository#commit&mdash;Check files into the repository|commit]].
 </p>
 </dd>
 <dt><code>M <var>file</var></code></dt>
@@ -43,7 +43,7 @@ might also be a newer revision inside the repository.
 correspond to anything in the source repository, and is
 not in the list of files for <small>CVS</small> to ignore (see the
 description of the &lsquo;<samp>-I</samp>&rsquo; option, and
-see [cvs: Ignoring files via cvsignore#cvsignore cvsignore]).  If you remove your working
+see [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]]).  If you remove your working
 sources, this file will be lost.
 </p></dd>
 </dl>

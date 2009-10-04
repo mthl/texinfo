@@ -1,18 +1,18 @@
 <div id="History-browsing"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Adding-and-removing  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Adding, removing, and renaming files and directories#Moving-directories  &lt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Adding, removing, and renaming files and directories#Moving and renaming directories| &lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[[#log-messages| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[#Log messages| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Handling binary files#Handling binary files| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="History-browsing-1"></div>
 == History browsing ==
@@ -26,27 +26,27 @@ history&mdash;what files have changed when, how, and by
 whom, there are a variety of mechanisms for looking
 through the history.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#log-messages| log messages]]::<nowiki>                Log messages
-</nowiki>&bull;[[#history-database| history database]]::<nowiki>            The history database
-</nowiki>&bull;[[#user_002ddefined-logging| user-defined logging]]::<nowiki>        User-defined logging
-</nowiki>&bull;[[#annotate| annotate]]::<nowiki>                    What revision modified each line of a file?
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Log messages| log messages]]::<nowiki>                Log messages
+</nowiki>&bull;[[#The history database| history database]]::<nowiki>            The history database
+</nowiki>&bull;[[#User-defined logging| user-defined logging]]::<nowiki>        User-defined logging
+</nowiki>&bull;[[#Annotate command| annotate]]::<nowiki>                    What revision modified each line of a file?
 </nowiki></pre>
 <hr>
 <div id="log-messages"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#History-browsing| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
-<td valign="middle" align="left">|[[#history-database| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#History browsing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#History browsing| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#History browsing| Up ]]|</td>
+<td valign="middle" align="left">|[[#The history database| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Handling binary files#Handling binary files| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Log-messages"></div>
 === Log messages ===
@@ -55,54 +55,54 @@ through the history.
 </p>
 <p>To look through the log messages which have been
 specified for every revision which has been committed,
-use the <code>cvs log</code> command (see section [cvs: Guide to CVS commands#log log&mdash;Print out log information for files]).
+use the <code>cvs log</code> command (see section [[cvs: Guide to CVS commands#log&mdash;Print out log information for files|log&mdash;Print out log information for files]]).
 </p>
 <hr>
 <div id="history-database"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#log-messages| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
-<td valign="middle" align="left">|[[#user_002ddefined-logging| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#History browsing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#Log messages| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#History browsing| Up ]]|</td>
+<td valign="middle" align="left">|[[#User-defined logging| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Handling binary files#Handling binary files| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="The-history-database"></div>
 === The history database ===
 
-<p>You can use the history file (see section [cvs: Reference manual for Administrative files#history-file The history file]) to
+<p>You can use the history file (see section [[cvs: Reference manual for Administrative files#The history file|The history file]]) to
 log various <small>CVS</small> actions.  To retrieve the
 information from the history file, use the <code>cvs
-history</code> command (see section [cvs: Guide to CVS commands#history history&mdash;Show status of files and users]).
+history</code> command (see section [[cvs: Guide to CVS commands#history&mdash;Show status of files and users|history&mdash;Show status of files and users]]).
 </p>
 <p>Note: you can control what is logged to this file by using the
 &lsquo;<samp>LogHistory</samp>&rsquo; keyword in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file
-(see section [cvs: Reference manual for Administrative files#config The CVSROOT/config configuration file]).
+(see section [[cvs: Reference manual for Administrative files#The CVSROOT/config configuration file|The CVSROOT/config configuration file]]).
 </p>
 
 <hr>
 <div id="user_002ddefined-logging"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#history-database| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
-<td valign="middle" align="left">|[[#annotate| &gt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#History browsing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#The history database| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#History browsing| Up ]]|</td>
+<td valign="middle" align="left">|[[#Annotate command| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Handling binary files#Handling binary files| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="User_002ddefined-logging"></div>
 === User-defined logging ===
@@ -114,14 +114,14 @@ times.  The script might append a message to a file
 listing the information and the programmer who created
 it, or send mail to a group of developers, or, perhaps,
 post a message to a particular newsgroup.  To log
-commits, use the &lsquo;<tt>loginfo</tt>&rsquo; file (see section [cvs: Reference manual for Administrative files#loginfo Loginfo]).
+commits, use the &lsquo;<tt>loginfo</tt>&rsquo; file (see section [[cvs: Reference manual for Administrative files#Loginfo|Loginfo]]).
 To log commits, checkouts, exports, and tags,
 respectively, you can also use the &lsquo;<samp>-i</samp>&rsquo;,
 &lsquo;<samp>-o</samp>&rsquo;, &lsquo;<samp>-e</samp>&rsquo;, and &lsquo;<samp>-t</samp>&rsquo; options in the
 modules file.  For a more flexible way of giving
 notifications to various users, which requires less in
 the way of keeping centralized scripts up to date, use
-the <code>cvs watch add</code> command (see section [cvs: Multiple developers#Getting-Notified Telling CVS to notify you]); this command is useful even if you are not
+the <code>cvs watch add</code> command (see section [[cvs: Multiple developers#Telling CVS to notify you|Telling CVS to notify you]]); this command is useful even if you are not
 using <code>cvs watch on</code>.
 </p>
 <div id="index-taginfo"></div>
@@ -129,7 +129,7 @@ using <code>cvs watch on</code>.
 <p>The &lsquo;<tt>taginfo</tt>&rsquo; file defines programs to execute
 when someone executes a <code>tag</code> or <code>rtag</code>
 command.  The &lsquo;<tt>taginfo</tt>&rsquo; file has the standard form
-for administrative files (see section [cvs: Reference manual for Administrative files#Administrative-files Reference manual for Administrative files]), where each line is a regular expression
+for administrative files (see section [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Reference manual for Administrative files]]), where each line is a regular expression
 followed by a command to execute.  The arguments passed
 to the command are, in order, the <var>tagname</var>,
 <var>operation</var> (<code>add</code> for <code>tag</code>,
@@ -155,19 +155,19 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 <hr>
 <div id="annotate"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#user_002ddefined-logging| &lt; ]]|</td>
-<td valign="middle" align="left">|[[#History-browsing| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt; ]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#History browsing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#User-defined logging| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#History browsing| Up ]]|</td>
+<td valign="middle" align="left">|[[cvs: Handling binary files#Handling binary files| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Handling binary files#Handling binary files| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Annotate-command"></div>
 === Annotate command ===
@@ -194,28 +194,28 @@ added a line <code>ssfile line 2</code>, without modifying
 the <code>ssfile line 1</code> line.  This report doesn&rsquo;t
 tell you anything about lines which have been deleted
 or replaced; you need to use <code>cvs diff</code> for that
-(see section [cvs: Guide to CVS commands#diff diff&mdash;Show differences between revisions]).
+(see section [[cvs: Guide to CVS commands#diff&mdash;Show differences between revisions|diff&mdash;Show differences between revisions]]).
 </p>
 </dd></dl>
 
 <p>The options to <code>cvs annotate</code> are listed in
-[cvs: Quick reference to CVS commands#Invoking-CVS Quick reference to CVS commands], and can be used to select the files
+[[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Quick reference to CVS commands]], and can be used to select the files
 and revisions to annotate.  The options are described
-in more detail there and in [cvs: Guide to CVS commands#Common-options Common command options].
+in more detail there and in [[cvs: Guide to CVS commands#Common command options|Common command options]].
 </p>
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[[#History-browsing| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[cvs: Handling binary files#Binary-files  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[#History browsing| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Handling binary files#Handling binary files| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

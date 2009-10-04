@@ -1,7 +1,7 @@
 <div id="rdiff"></div>
 <div class="header">
 <p>
-Next: [cvs: release--Indicate that a Module is no longer in use#release release], Previous: [cvs: log--Print out log information for files#log log], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: release--Indicate that a Module is no longer in use#release&mdash;Indicate that a Module is no longer in use|release]], Previous: [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="rdiff_002d_002d_002d_0027patch_0027-format-diffs-between-releases"></div>
@@ -40,7 +40,7 @@ specify the &lsquo;<samp>-p</samp>&rsquo; option to the <code>patch</code> comma
 patching the old sources, so that <code>patch</code> is able to find
 the files that are located in other directories.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: rdiff options#rdiff-options  rdiff options]::<nowiki>               rdiff options
-</nowiki>&bull;[cvs: rdiff examples#rdiff-examples  rdiff examples]::<nowiki>              rdiff examples
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: rdiff options#rdiff options| rdiff options]]::<nowiki>               rdiff options
+</nowiki>&bull;[[cvs: rdiff examples#rdiff examples| rdiff examples]]::<nowiki>              rdiff examples
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

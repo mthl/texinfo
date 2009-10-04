@@ -1,7 +1,7 @@
 <div id="What-is-CVS_003f"></div>
 <div class="header">
 <p>
-Next: [cvs: What is CVS not?#What-is-CVS-not_003f What is CVS not?], Up: [cvs: Overview#Overview Overview] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: What is CVS not?#What is CVS not?|What is CVS not?]], Up: [[cvs: Overview#Overview|Overview]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="What-is-CVS_003f-1"></div>
@@ -82,12 +82,12 @@ if there is sufficient <small>CVS</small> traffic on
 <code>comp.software.config-mgmt</code>.
 </p>
 <p>You can also subscribe to the <code>bug-cvs</code> mailing list,
-described in more detail in [cvs: Dealing with bugs in CVS or this manual#BUGS BUGS].  To subscribe
+described in more detail in [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]].  To subscribe
 send mail to <code>bug-cvs-request@gnu.org</code>.
 </p>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: What is CVS not?#What-is-CVS-not_003f What is CVS not?], Up: [cvs: Overview#Overview Overview] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: What is CVS not?#What is CVS not?|What is CVS not?]], Up: [[cvs: Overview#Overview|Overview]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

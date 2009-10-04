@@ -1,7 +1,7 @@
 <div id="Keyword-substitution"></div>
 <div class="header">
 <p>
-Next: [cvs: Tracking third-party sources#Tracking-sources Tracking sources], Previous: [cvs: Revision management#Revision-management Revision management], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]], Previous: [[cvs: Revision management#Revision management|Revision management]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Keyword-substitution-1"></div>
@@ -27,11 +27,11 @@ with strings of the form
 <code>$<var>keyword</var>:<var>value</var>$</code> whenever you obtain
 a new revision of the file.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Keyword List#Keyword-list  Keyword list]::<nowiki>                   Keywords
-</nowiki>&bull;[cvs: Using keywords#Using-keywords  Using keywords]::<nowiki>                 Using keywords
-</nowiki>&bull;[cvs: Avoiding substitution#Avoiding-substitution  Avoiding substitution]::<nowiki>          Avoiding substitution
-</nowiki>&bull;[cvs: Substitution modes#Substitution-modes  Substitution modes]::<nowiki>             Substitution modes
-</nowiki>&bull;[cvs: Configuring Keyord Expansion#Configuring-keyword-expansion  Configuring keyword expansion]::<nowiki>  Configuring keyword expansion
-</nowiki>&bull;[cvs: Problems with the $ Log$ keyword.#Log-keyword  Log keyword]::<nowiki>                    Problems with the $<i></i>Log$ keyword.
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Keyword List#Keyword List| Keyword list]]::<nowiki>                   Keywords
+</nowiki>&bull;[[cvs: Using keywords#Using keywords| Using keywords]]::<nowiki>                 Using keywords
+</nowiki>&bull;[[cvs: Avoiding substitution#Avoiding substitution| Avoiding substitution]]::<nowiki>          Avoiding substitution
+</nowiki>&bull;[[cvs: Substitution modes#Substitution modes| Substitution modes]]::<nowiki>             Substitution modes
+</nowiki>&bull;[[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion| Configuring keyword expansion]]::<nowiki>  Configuring keyword expansion
+</nowiki>&bull;[[cvs: Problems with the $ Log$ keyword.#Problems with the $ <i></i>Log$ keyword.| Log keyword]]::<nowiki>                    Problems with the $<i></i>Log$ keyword.
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

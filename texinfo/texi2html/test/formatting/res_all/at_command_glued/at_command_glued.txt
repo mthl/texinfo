@@ -40,7 +40,7 @@ anchoranchor
 index
 
 byeFootnotes
-*********
+---------
 
 (1)
 in footnote

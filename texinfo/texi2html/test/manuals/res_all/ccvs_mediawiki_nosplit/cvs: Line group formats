@@ -1,7 +1,7 @@
 <div id="Line-group-formats"></div>
 <div class="header">
 <p>
-Next: [cvs: Line formats#Line-formats Line formats], Up: [cvs: diff options#diff-options diff options] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Line formats#Line formats|Line formats]], Up: [[cvs: diff options#diff options|diff options]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Line-group-formats-1"></div>
@@ -100,7 +100,7 @@ following forms.
 <dl compact="compact">
 <dt>&lsquo;<samp>%&lt;</samp>&rsquo;</dt>
 <dd><p>stands for the lines from the first file, including the trailing newline.
-Each line is formatted according to the old line format (see [cvs: Line formats#Line-formats Line formats]).
+Each line is formatted according to the old line format (see [[cvs: Line formats#Line formats|Line formats]]).
 </p>
 </dd>
 <dt>&lsquo;<samp>%&gt;</samp>&rsquo;</dt>
@@ -192,6 +192,6 @@ otherwise.
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Line formats#Line-formats Line formats], Up: [cvs: diff options#diff-options diff options] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Line formats#Line formats|Line formats]], Up: [[cvs: diff options#diff options|diff options]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

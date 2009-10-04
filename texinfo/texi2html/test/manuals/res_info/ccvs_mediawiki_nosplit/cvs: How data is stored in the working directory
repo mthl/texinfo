@@ -1,7 +1,7 @@
 <div id="Working-directory-storage"></div>
 <div class="header">
 <p>
-Next: [cvs: The administrative files#Intro-administrative-files Intro administrative files], Previous: [cvs: How data is stored in the repository#Repository-storage Repository storage], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: The administrative files#The administrative files|Intro administrative files]], Previous: [[cvs: How data is stored in the repository#How data is stored in the repository|Repository storage]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="How-data-is-stored-in-the-working-directory"></div>
@@ -41,7 +41,7 @@ such systems either.
 <dl compact="compact">
 <dt>&lsquo;<tt>Root</tt>&rsquo;</dt>
 <dd><p>This file contains the current <small>CVS</small> root, as
-described in [cvs: Telling CVS where your repository is#Specifying-a-repository Specifying a repository].
+described in [[cvs: Telling CVS where your repository is#Telling CVS where your repository is|Specifying a repository]].
 </p>
 <div id="index-Repository-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fRepository-file"></div>
@@ -118,7 +118,7 @@ modified a program should take the timestamp of the file
 and simply do a string compare with <var>timestamp</var>.
 If there was a conflict, <var>conflict</var> can be set to
 the modification time of the file after the file has been
-written with conflict markers (see [cvs: Conflicts example#Conflicts-example Conflicts example]).
+written with conflict markers (see [[cvs: Conflicts example#Conflicts example|Conflicts example]]).
 Thus if <var>conflict</var> is subsequently the same as the actual
 modification time of the file it means that the user
 has obviously not resolved the conflict.  <var>options</var>
@@ -229,7 +229,7 @@ per-directory sticky tags or dates are used for things
 like applying to files which are newly added; they
 might not be the same as the sticky tags or dates on
 individual files.  For general information on sticky
-tags and dates, see [cvs: Sticky tags#Sticky-tags Sticky tags].
+tags and dates, see [[cvs: Sticky tags#Sticky tags|Sticky tags]].
 </p>
 <div id="index-Notify-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fNotify-file"></div>
@@ -288,7 +288,7 @@ then (atomically where possible), rename it to
 </dd>
 <dt>&lsquo;<tt>Template</tt>&rsquo;</dt>
 <dd><p>This file contains the template specified by the
-&lsquo;<tt>rcsinfo</tt>&rsquo; file (see [cvs: Rcsinfo#rcsinfo rcsinfo]).  It is only used
+&lsquo;<tt>rcsinfo</tt>&rsquo; file (see [[cvs: Rcsinfo#Rcsinfo|rcsinfo]]).  It is only used
 by the client; the non-client/server <small>CVS</small> consults
 &lsquo;<tt>rcsinfo</tt>&rsquo; directly.
 </p></dd>
@@ -297,6 +297,6 @@ by the client; the non-client/server <small>CVS</small> consults
 <hr>
 <div class="header">
 <p>
-Next: [cvs: The administrative files#Intro-administrative-files Intro administrative files], Previous: [cvs: How data is stored in the repository#Repository-storage Repository storage], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: The administrative files#The administrative files|Intro administrative files]], Previous: [[cvs: How data is stored in the repository#How data is stored in the repository|Repository storage]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

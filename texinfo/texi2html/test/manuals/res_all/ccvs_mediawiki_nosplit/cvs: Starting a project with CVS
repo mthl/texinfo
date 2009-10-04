@@ -1,7 +1,7 @@
 <div id="Starting-a-new-project"></div>
 <div class="header">
 <p>
-Next: [cvs: Revisions#Revisions Revisions], Previous: [cvs: The Repository#Repository Repository], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Revisions#Revisions|Revisions]], Previous: [[cvs: The Repository#The Repository|Repository]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Starting-a-project-with-CVS"></div>
@@ -16,11 +16,11 @@ through your file organization.  It is not impossible
 to rename or move files, but it does increase the
 potential for confusion and <small>CVS</small> does have some
 quirks particularly in the area of renaming
-directories.  See [cvs: Moving and renaming files#Moving-files Moving files].
+directories.  See [[cvs: Moving and renaming files#Moving and renaming files|Moving files]].
 </p>
 <p>What to do next depends on the situation at hand.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Setting up the files#Setting-up-the-files  Setting up the files]::<nowiki>        Getting the files into the repository
-</nowiki>&bull;[cvs: Defining the module#Defining-the-module  Defining the module]::<nowiki>         How to make a module of the files
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Setting up the files#Setting up the files| Setting up the files]]::<nowiki>        Getting the files into the repository
+</nowiki>&bull;[[cvs: Defining the module#Defining the module| Defining the module]]::<nowiki>         How to make a module of the files
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

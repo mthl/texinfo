@@ -1,7 +1,7 @@
 <div id="Merging-more-than-once"></div>
 <div class="header">
 <p>
-Next: [cvs: Merging differences between any two revisions#Merging-two-revisions Merging two revisions], Previous: [cvs: Merging an entire branch#Merging-a-branch Merging a branch], Up: [cvs: Branching and merging#Branching-and-merging Branching and merging] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Merging differences between any two revisions#Merging differences between any two revisions|Merging two revisions]], Previous: [[cvs: Merging an entire branch#Merging an entire branch|Merging a branch]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Merging-from-a-branch-several-times"></div>
@@ -70,6 +70,6 @@ the trunk, and then use that tag for subsequent merges:
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Merging differences between any two revisions#Merging-two-revisions Merging two revisions], Previous: [cvs: Merging an entire branch#Merging-a-branch Merging a branch], Up: [cvs: Branching and merging#Branching-and-merging Branching and merging] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Merging differences between any two revisions#Merging differences between any two revisions|Merging two revisions]], Previous: [[cvs: Merging an entire branch#Merging an entire branch|Merging a branch]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

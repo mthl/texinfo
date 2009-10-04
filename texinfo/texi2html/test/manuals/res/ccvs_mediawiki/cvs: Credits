@@ -1,18 +1,18 @@
 <div id="Credits"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Troubleshooting#Troubleshooting  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Troubleshooting#Other-problems  &lt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: Troubleshooting#Troubleshooting| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Troubleshooting#Other common problems| &lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs#Top| Up ]]|</td>
-<td valign="middle" align="left">|[cvs: Dealing with bugs in CVS or this manual#BUGS  &gt; ]|</td>
-<td valign="middle" align="left">|[cvs: Dealing with bugs in CVS or this manual#BUGS  &gt;&gt; ]|</td>
+<td valign="middle" align="left">|[[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual| &gt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 <div id="Credits-1"></div>
 == Credits ==
@@ -59,16 +59,16 @@ distribution.
 </p>
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">|[cvs: Troubleshooting#Troubleshooting  &lt;&lt; ]|</td>
-<td valign="middle" align="left">|[cvs: Dealing with bugs in CVS or this manual#BUGS  &gt;&gt; ]|</td>
+<tr><td valign="middle" align="left">|[[cvs: Troubleshooting#Troubleshooting| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">|[[cvs#Top|Top]]|</td>
-<td valign="middle" align="left">|[cvs: Table of Contents#SEC_Contents Contents]|</td>
-<td valign="middle" align="left">|[cvs: Index#Index Index]|</td>
-<td valign="middle" align="left">|[cvs: About this Manual#SEC_About  ? ]|</td>
+<td valign="middle" align="left">|[[cvs: Table of Contents#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[cvs: Index#Index|Index]]|</td>
+<td valign="middle" align="left">|[[cvs: About this Manual#SEC_About| ? ]]|</td>
 </tr></table>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -1,7 +1,7 @@
 <div id="update"></div>
 <div class="header">
 <p>
-Previous: [cvs: release--Indicate that a Module is no longer in use#release release], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[cvs: release--Indicate that a Module is no longer in use#release&mdash;Indicate that a Module is no longer in use|release]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="update_002d_002d_002dBring-work-tree-in-sync-with-repository"></div>
@@ -30,7 +30,7 @@ between the local copy of files and their base revisions
 into any destination revisions specified with <code>-r</code>,
 <code>-D</code>, or <code>-A</code>.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: update options#update-options  update options]::<nowiki>              update options
-</nowiki>&bull;[cvs: update output#update-output  update output]::<nowiki>               update output
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: update options#update options| update options]]::<nowiki>              update options
+</nowiki>&bull;[[cvs: update output#update output| update output]]::<nowiki>               update output
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

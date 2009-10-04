@@ -1,7 +1,7 @@
 <div id="Starting-a-new-project"></div>
 <div class="header">
 <p>
-Next: [cvs: Revisions#Revisions Revisions], Previous: [cvs: The Repository#Repository Repository], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Revisions#Revisions|Revisions]], Previous: [[cvs: The Repository#The Repository|Repository]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Starting-a-project-with-CVS"></div>
 == Starting a project with CVS ==
@@ -15,18 +15,18 @@ through your file organization.  It is not impossible
 to rename or move files, but it does increase the
 potential for confusion and <small>CVS</small> does have some
 quirks particularly in the area of renaming
-directories.  See [cvs: Adding, removing, and renaming files and directories#Moving-files Moving files].
+directories.  See [[cvs: Adding, removing, and renaming files and directories#Moving and renaming files|Moving files]].
 </p>
 <p>What to do next depends on the situation at hand.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Setting-up-the-files| Setting up the files]]::<nowiki>        Getting the files into the repository
-</nowiki>&bull;[[#Defining-the-module| Defining the module]]::<nowiki>         How to make a module of the files
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Setting up the files| Setting up the files]]::<nowiki>        Getting the files into the repository
+</nowiki>&bull;[[#Defining the module| Defining the module]]::<nowiki>         How to make a module of the files
 </nowiki></pre>
 <hr>
 <div id="Setting-up-the-files"></div>
 <div class="header">
 <p>
-Next: [[#Defining-the-module|Defining the module]], Up: [[#Starting-a-new-project|Starting a new project]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Defining the module|Defining the module]], Up: [[#Starting a project with CVS|Starting a new project]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Setting-up-the-files-1"></div>
 === Setting up the files ===
@@ -34,17 +34,17 @@ Next: [[#Defining-the-module|Defining the module]], Up: [[#Starting-a-new-projec
 <p>The first step is to create the files inside the repository.  This can
 be done in a couple of different ways.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#From-files| From files]]::<nowiki>                  This method is useful with old projects
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Creating a directory tree from a number of files| From files]]::<nowiki>                  This method is useful with old projects
                                 where files already exists.
-</nowiki>&bull;[[#From-other-version-control-systems| From other version control systems]]::<nowiki>  Old projects where you want to
+</nowiki>&bull;[[#Creating Files From Other Version Control Systems| From other version control systems]]::<nowiki>  Old projects where you want to
                                         preserve history from another system.
-</nowiki>&bull;[[#From-scratch| From scratch]]::<nowiki>                Creating a directory tree from scratch.
+</nowiki>&bull;[[#Creating a directory tree from scratch| From scratch]]::<nowiki>                Creating a directory tree from scratch.
 </nowiki></pre>
 <hr>
 <div id="From-files"></div>
 <div class="header">
 <p>
-Next: [[#From-other-version-control-systems|From other version control systems]], Up: [[#Setting-up-the-files|Setting up the files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Creating Files From Other Version Control Systems|From other version control systems]], Up: [[#Setting up the files|Setting up the files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Creating-a-directory-tree-from-a-number-of-files"></div>
 ==== Creating a directory tree from a number of files ====
@@ -67,7 +67,7 @@ flag, <small>CVS</small> starts an editor and prompts for a
 message.  The string &lsquo;<samp>yoyo</samp>&rsquo; is a <em>vendor tag</em>,
 and &lsquo;<samp>start</samp>&rsquo; is a <em>release tag</em>.  They may fill
 no purpose in this context, but since <small>CVS</small> requires
-them they must be present.  See [cvs: Tracking third-party sources#Tracking-sources Tracking sources], for
+them they must be present.  See [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]], for
 more information about them.
 </p>
 <p>You can now verify that it worked, and remove your
@@ -92,17 +92,17 @@ as it did in the example above.
 <p>It is a good idea to check that the permissions
 <small>CVS</small> sets on the directories inside <code>$CVSROOT</code>
 are reasonable, and that they belong to the proper
-groups.  See [cvs: The Repository#File-permissions File permissions].
+groups.  See [[cvs: The Repository#File permissions|File permissions]].
 </p>
 <p>If some of the files you want to import are binary, you
 may want to use the wrappers features to specify which
-files are binary and which are not.  See [cvs: Reference manual for Administrative files#Wrappers Wrappers].
+files are binary and which are not.  See [[cvs: Reference manual for Administrative files#The cvswrappers file|Wrappers]].
 </p>
 <hr>
 <div id="From-other-version-control-systems"></div>
 <div class="header">
 <p>
-Next: [[#From-scratch|From scratch]], Previous: [[#From-files|From files]], Up: [[#Setting-up-the-files|Setting up the files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[#Creating a directory tree from scratch|From scratch]], Previous: [[#Creating a directory tree from a number of files|From files]], Up: [[#Setting up the files|Setting up the files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Creating-Files-From-Other-Version-Control-Systems"></div>
 ==== Creating Files From Other Version Control Systems ====
@@ -180,7 +180,7 @@ vary).  See the comments in the script for details.
 <div id="From-scratch"></div>
 <div class="header">
 <p>
-Previous: [[#From-other-version-control-systems|From other version control systems]], Up: [[#Setting-up-the-files|Setting up the files]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Creating Files From Other Version Control Systems|From other version control systems]], Up: [[#Setting up the files|Setting up the files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Creating-a-directory-tree-from-scratch"></div>
 ==== Creating a directory tree from scratch ====
@@ -211,7 +211,7 @@ directories inside <code>$CVSROOT</code> are reasonable.
 <div id="Defining-the-module"></div>
 <div class="header">
 <p>
-Previous: [[#Setting-up-the-files|Setting up the files]], Up: [[#Starting-a-new-project|Starting a new project]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Setting up the files|Setting up the files]], Up: [[#Starting a project with CVS|Starting a new project]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <div id="Defining-the-module-1"></div>
 === Defining the module ===
@@ -236,7 +236,7 @@ $ cd CVSROOT
 </nowiki></pre></td></tr></table>
 
 </li><li>
-Edit the file and insert a line that defines the module.  See [cvs: The Repository#Intro-administrative-files Intro administrative files], for an introduction.  See [cvs: Reference manual for Administrative files#modules modules], for a full
+Edit the file and insert a line that defines the module.  See [[cvs: The Repository#The administrative files|Intro administrative files]], for an introduction.  See [[cvs: Reference manual for Administrative files#The modules file|modules]], for a full
 description of the modules file.  You can use the
 following line to define the module &lsquo;<samp>tc</samp>&rsquo;:
 
@@ -260,6 +260,6 @@ $ cvs release -d CVSROOT
 <hr>
 <div class="header">
 <p>
-Previous: [[#Setting-up-the-files|Setting up the files]], Up: [[#Starting-a-new-project|Starting a new project]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[#Setting up the files|Setting up the files]], Up: [[#Starting a project with CVS|Starting a new project]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

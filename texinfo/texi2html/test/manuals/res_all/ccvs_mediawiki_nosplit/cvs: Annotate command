@@ -1,7 +1,7 @@
 <div id="annotate"></div>
 <div class="header">
 <p>
-Previous: [cvs: User-defined logging#user_002ddefined-logging user-defined logging], Up: [cvs: History browsing#History-browsing History browsing] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[cvs: User-defined logging#User-defined logging|user-defined logging]], Up: [[cvs: History browsing#History browsing|History browsing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Annotate-command"></div>
@@ -29,14 +29,14 @@ added a line <code>ssfile line 2</code>, without modifying
 the <code>ssfile line 1</code> line.  This report doesn&rsquo;t
 tell you anything about lines which have been deleted
 or replaced; you need to use <code>cvs diff</code> for that
-(see [cvs: diff--Show differences between revisions#diff diff]).
+(see [[cvs: diff--Show differences between revisions#diff&mdash;Show differences between revisions|diff]]).
 </p>
 </dd></dl>
 
 <p>The options to <code>cvs annotate</code> are listed in
-[cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS], and can be used to select the files
+[[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]], and can be used to select the files
 and revisions to annotate.  The options are described
-in more detail there and in [cvs: Common command options#Common-options Common options].
+in more detail there and in [[cvs: Common command options#Common command options|Common options]].
 </p>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

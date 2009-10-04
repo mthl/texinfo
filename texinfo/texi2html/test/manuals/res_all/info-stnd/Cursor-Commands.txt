@@ -73,7 +73,7 @@ moves the cursor to the start of the nth line in the window.
 
 
 Footnotes
-*********
+---------
 
 (4)
 

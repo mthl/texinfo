@@ -1,7 +1,7 @@
 <div id="First-import"></div>
 <div class="header">
 <p>
-Next: [cvs: Updating with the import command#Update-imports Update imports], Up: [cvs: Tracking third-party sources#Tracking-sources Tracking sources] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Updating with the import command#Updating with the import command|Update imports]], Up: [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Importing-for-the-first-time"></div>
@@ -14,7 +14,7 @@ command to track third-party sources, the <em>vendor
 tag</em> and <em>release tags</em> are useful.  The
 <em>vendor tag</em> is a symbolic name for the branch
 (which is always 1.1.1, unless you use the &lsquo;<samp>-b
-<var>branch</var></samp>&rsquo; flag&mdash;see [cvs: Multiple vendor branches#Multiple-vendor-branches Multiple vendor branches].).  The
+<var>branch</var></samp>&rsquo; flag&mdash;see [[cvs: Multiple vendor branches#Multiple vendor branches|Multiple vendor branches]].).  The
 <em>release tags</em> are symbolic names for a particular
 release, such as &lsquo;<samp>FSF_0_04</samp>&rsquo;.
 </p>
@@ -23,7 +23,7 @@ directory in which you invoke it.  In particular, it
 does not set up that directory as a <small>CVS</small> working
 directory; if you want to work with the sources import
 them first and then check them out into a different
-directory (see [cvs: Getting the source#Getting-the-source Getting the source]).
+directory (see [[cvs: Getting the source#Getting the source|Getting the source]]).
 </p>
 <div id="index-wdiff-_0028import-example_0029"></div>
 <p>Suppose you have the sources to a program called

@@ -176,7 +176,7 @@ is bound to each command.
 
 
 Footnotes
-*********
+---------
 
 (7)
 Due to the limitations of

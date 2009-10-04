@@ -1,7 +1,7 @@
 <div id="export"></div>
 <div class="header">
 <p>
-Next: [cvs: history--Show status of files and users#history history], Previous: [cvs: diff--Show differences between revisions#diff diff], Up: [cvs: Guide to CVS commands#CVS-commands CVS commands] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: history--Show status of files and users#history&mdash;Show status of files and users|history]], Previous: [[cvs: diff--Show differences between revisions#diff&mdash;Show differences between revisions|diff]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="export_002d_002d_002dExport-sources-from-CVS_002c-similar-to-checkout"></div>
@@ -38,6 +38,6 @@ ident(1)) which looks for keyword strings.  If
 you want to be able to use <code>ident</code> you must not
 use &lsquo;<samp>-kv</samp>&rsquo;.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: export options#export-options  export options]::<nowiki>              export options
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: export options#export options| export options]]::<nowiki>              export options
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

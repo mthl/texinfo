@@ -1,7 +1,7 @@
 <div id="Moving-directories"></div>
 <div class="header">
 <p>
-Previous: [cvs: Moving and renaming files#Moving-files Moving files], Up: [cvs: Adding, removing, and renaming files and directories#Adding-and-removing Adding and removing] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Previous: [[cvs: Moving and renaming files#Moving and renaming files|Moving files]], Up: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Moving-and-renaming-directories"></div>
@@ -12,8 +12,8 @@ Previous: [cvs: Moving and renaming files#Moving-files Moving files], Up: [cvs: 
 
 <p>The normal way to rename or move a directory is to
 rename or move each file within it as described in
-[cvs: The Normal way to Rename#Outside Outside].  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
-option, as described in [cvs: Removing directories#Removing-directories Removing directories].
+[[cvs: The Normal way to Rename#The Normal way to Rename|Outside]].  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
+option, as described in [[cvs: Removing directories#Removing directories|Removing directories]].
 </p>
 <p>If you really want to hack the repository to rename or
 delete a directory in the repository, you can do it

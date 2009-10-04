@@ -1,14 +1,14 @@
 <div id="diff-options"></div>
 <div class="header">
 <p>
-Next: [cvs: diff examples#diff-examples diff examples], Up: [cvs: diff--Show differences between revisions#diff diff] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: diff examples#diff examples|diff examples]], Up: [[cvs: diff--Show differences between revisions#diff&mdash;Show differences between revisions|diff]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="diff-options-1"></div>
 ==== diff options ====
 
 <p>These standard options are supported by <code>diff</code>
-(see [cvs: Common command options#Common-options Common options], for a complete description of
+(see [[cvs: Common command options#Common command options|Common options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
@@ -19,7 +19,7 @@ See &lsquo;<samp>-r</samp>&rsquo; for how this affects the comparison.
 </dd>
 <dt><code>-k <var>kflag</var></code></dt>
 <dd><p>Process keywords according to <var>kflag</var>.  See
-[cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+[[cvs: Keyword substitution#Keyword substitution|Keyword substitution]].
 </p>
 </dd>
 <dt><code>-l</code></dt>
@@ -97,7 +97,7 @@ context.
 </dd>
 <dt>&lsquo;<samp>--changed-group-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a line group containing differing lines from
-both files in if-then-else format.  See [cvs: Line group formats#Line-group-formats Line group formats].
+both files in if-then-else format.  See [[cvs: Line group formats#Line group formats|Line group formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>-d</samp>&rsquo;</dt>
@@ -196,7 +196,7 @@ and unified format headers.
 </dd>
 <dt>&lsquo;<samp>--line-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output all input lines in if-then-else format.
-See [cvs: Line formats#Line-formats Line formats].
+See [[cvs: Line formats#Line formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--minimal</samp>&rsquo;</dt>
@@ -217,22 +217,22 @@ treat it as present but empty in the other directory.
 </dd>
 <dt>&lsquo;<samp>--new-group-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a group of lines taken from just the second
-file in if-then-else format.  See [cvs: Line group formats#Line-group-formats Line group formats].
+file in if-then-else format.  See [[cvs: Line group formats#Line group formats|Line group formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--new-line-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a line taken from just the second file in
-if-then-else format.  See [cvs: Line formats#Line-formats Line formats].
+if-then-else format.  See [[cvs: Line formats#Line formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--old-group-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a group of lines taken from just the first
-file in if-then-else format.  See [cvs: Line group formats#Line-group-formats Line group formats].
+file in if-then-else format.  See [[cvs: Line group formats#Line group formats|Line group formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--old-line-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a line taken from just the first file in
-if-then-else format.  See [cvs: Line formats#Line-formats Line formats].
+if-then-else format.  See [[cvs: Line formats#Line formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>-p</samp>&rsquo;</dt>
@@ -293,12 +293,12 @@ do not appear to be text.
 </dd>
 <dt>&lsquo;<samp>--unchanged-group-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a group of common lines taken from both files
-in if-then-else format.  See [cvs: Line group formats#Line-group-formats Line group formats].
+in if-then-else format.  See [[cvs: Line group formats#Line group formats|Line group formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>--unchanged-line-format=<var>format</var></samp>&rsquo;</dt>
 <dd><p>Use <var>format</var> to output a line common to both files in if-then-else
-format.  See [cvs: Line formats#Line-formats Line formats].
+format.  See [[cvs: Line formats#Line formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>-U <var>lines</var></samp>&rsquo;</dt>
@@ -323,12 +323,12 @@ context.
 </p></dd>
 </dl>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Line group formats#Line-group-formats  Line group formats]::<nowiki>          Line group formats
-</nowiki>&bull;[cvs: Line formats#Line-formats  Line formats]::<nowiki>                Line formats
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Line group formats#Line group formats| Line group formats]]::<nowiki>          Line group formats
+</nowiki>&bull;[[cvs: Line formats#Line formats| Line formats]]::<nowiki>                Line formats
 </nowiki></pre>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: diff examples#diff-examples diff examples], Up: [cvs: diff--Show differences between revisions#diff diff] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: diff examples#diff examples|diff examples]], Up: [[cvs: diff--Show differences between revisions#diff&mdash;Show differences between revisions|diff]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

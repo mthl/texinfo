@@ -1,7 +1,7 @@
 <div id="Specifying-a-repository"></div>
 <div class="header">
 <p>
-Next: [cvs: How data is stored in the repository#Repository-storage Repository storage], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: How data is stored in the repository#How data is stored in the repository|Repository storage]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Telling-CVS-where-your-repository-is"></div>

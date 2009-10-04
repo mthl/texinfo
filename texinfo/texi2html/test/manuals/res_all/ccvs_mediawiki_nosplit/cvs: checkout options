@@ -1,21 +1,21 @@
 <div id="checkout-options"></div>
 <div class="header">
 <p>
-Next: [cvs: checkout examples#checkout-examples checkout examples], Up: [cvs: checkout--Check out sources for editing#checkout checkout] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: checkout examples#checkout examples|checkout examples]], Up: [[cvs: checkout--Check out sources for editing#checkout&mdash;Check out sources for editing|checkout]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="checkout-options-1"></div>
 ==== checkout options ====
 
 <p>These standard options are supported by <code>checkout</code>
-(see [cvs: Common command options#Common-options Common options], for a complete description of
+(see [[cvs: Common command options#Common command options|Common options]], for a complete description of
 them):
 </p>
 <dl compact="compact">
 <dt><code>-D <var>date</var></code></dt>
 <dd><p>Use the most recent revision no later than <var>date</var>.
 This option is sticky, and implies &lsquo;<samp>-P</samp>&rsquo;.  See
-[cvs: Sticky tags#Sticky-tags Sticky tags], for more information on sticky tags/dates.
+[[cvs: Sticky tags#Sticky tags|Sticky tags]], for more information on sticky tags/dates.
 </p>
 </dd>
 <dt><code>-f</code></dt>
@@ -27,11 +27,11 @@ the file).
 </dd>
 <dt><code>-k <var>kflag</var></code></dt>
 <dd><p>Process keywords according to <var>kflag</var>.  See
-[cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+[[cvs: Keyword substitution#Keyword substitution|Keyword substitution]].
 This option is sticky; future updates of
 this file in this working directory will use the same
 <var>kflag</var>.  The <code>status</code> command can be viewed
-to see the sticky options.  See [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS], for
+to see the sticky options.  See [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]], for
 more information on the <code>status</code> command.
 </p>
 </dd>
@@ -42,11 +42,11 @@ more information on the <code>status</code> command.
 <dt><code>-n</code></dt>
 <dd><p>Do not run any checkout program (as specified
 with the &lsquo;<samp>-o</samp>&rsquo; option in the modules file;
-see [cvs: The modules file#modules modules]).
+see [[cvs: The modules file#The modules file|modules]]).
 </p>
 </dd>
 <dt><code>-P</code></dt>
-<dd><p>Prune empty directories.  See [cvs: Moving and renaming directories#Moving-directories Moving directories].
+<dd><p>Prune empty directories.  See [[cvs: Moving and renaming directories#Moving and renaming directories|Moving directories]].
 </p>
 </dd>
 <dt><code>-p</code></dt>
@@ -59,7 +59,7 @@ see [cvs: The modules file#modules modules]).
 </dd>
 <dt><code>-r <var>tag</var></code></dt>
 <dd><p>Use revision <var>tag</var>.  This option is sticky, and implies &lsquo;<samp>-P</samp>&rsquo;.
-See [cvs: Sticky tags#Sticky-tags Sticky tags], for more information on sticky tags/dates.
+See [[cvs: Sticky tags#Sticky tags|Sticky tags]], for more information on sticky tags/dates.
 </p></dd>
 </dl>
 
@@ -69,7 +69,7 @@ options with <code>checkout</code>:
 <dl compact="compact">
 <dt><code>-A</code></dt>
 <dd><p>Reset any sticky tags, dates, or &lsquo;<samp>-k</samp>&rsquo; options.
-See [cvs: Sticky tags#Sticky-tags Sticky tags], for more information on sticky tags/dates.
+See [[cvs: Sticky tags#Sticky tags|Sticky tags]], for more information on sticky tags/dates.
 </p>
 </dd>
 <dt><code>-c</code></dt>
@@ -129,7 +129,7 @@ date.  An optional date is specified by adding a colon
 (:) to the tag:
 &lsquo;<samp>-j<var>Symbolic_Tag</var>:<var>Date_Specifier</var></samp>&rsquo;.
 </p>
-<p>See [cvs: Branching and merging#Branching-and-merging Branching and merging].
+<p>See [[cvs: Branching and merging#Branching and merging|Branching and merging]].
 </p>
 </dd>
 <dt><code>-N</code></dt>
@@ -142,7 +142,7 @@ discussion.
 </dd>
 <dt><code>-s</code></dt>
 <dd><p>Like &lsquo;<samp>-c</samp>&rsquo;, but include the status of all modules,
-and sort it by the status string.  See [cvs: The modules file#modules modules], for
+and sort it by the status string.  See [[cvs: The modules file#The modules file|modules]], for
 info about the &lsquo;<samp>-s</samp>&rsquo; option that is used inside the
 modules file to set the module status.
 </p></dd>
@@ -151,6 +151,6 @@ modules file to set the module status.
 <hr>
 <div class="header">
 <p>
-Next: [cvs: checkout examples#checkout-examples checkout examples], Up: [cvs: checkout--Check out sources for editing#checkout checkout] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: checkout examples#checkout examples|checkout examples]], Up: [[cvs: checkout--Check out sources for editing#checkout&mdash;Check out sources for editing|checkout]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -1,7 +1,7 @@
 <div id="Setting-up-the-files"></div>
 <div class="header">
 <p>
-Next: [cvs: Defining the module#Defining-the-module Defining the module], Up: [cvs: Starting a project with CVS#Starting-a-new-project Starting a new project] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Defining the module#Defining the module|Defining the module]], Up: [[cvs: Starting a project with CVS#Starting a project with CVS|Starting a new project]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Setting-up-the-files-1"></div>
@@ -10,10 +10,10 @@ Next: [cvs: Defining the module#Defining-the-module Defining the module], Up: [c
 <p>The first step is to create the files inside the repository.  This can
 be done in a couple of different ways.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Creating a directory tree from a number of files#From-files  From files]::<nowiki>                  This method is useful with old projects
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Creating a directory tree from a number of files#Creating a directory tree from a number of files| From files]]::<nowiki>                  This method is useful with old projects
                                 where files already exists.
-</nowiki>&bull;[cvs: Creating Files From Other Version Control Systems#From-other-version-control-systems  From other version control systems]::<nowiki>  Old projects where you want to
+</nowiki>&bull;[[cvs: Creating Files From Other Version Control Systems#Creating Files From Other Version Control Systems| From other version control systems]]::<nowiki>  Old projects where you want to
                                         preserve history from another system.
-</nowiki>&bull;[cvs: Creating a directory tree from scratch#From-scratch  From scratch]::<nowiki>                Creating a directory tree from scratch.
+</nowiki>&bull;[[cvs: Creating a directory tree from scratch#Creating a directory tree from scratch| From scratch]]::<nowiki>                Creating a directory tree from scratch.
 </nowiki></pre>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

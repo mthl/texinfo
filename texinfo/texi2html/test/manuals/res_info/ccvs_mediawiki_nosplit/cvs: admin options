@@ -1,7 +1,7 @@
 <div id="admin-options"></div>
 <div class="header">
 <p>
-Up: [cvs: admin--Administration#admin admin] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Up: [[cvs: admin--Administration#admin&mdash;Administration|admin]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="admin-options-1"></div>
@@ -28,10 +28,10 @@ login names appearing in the comma-separated list
 <dt><code>-b[<var>rev</var>]</code></dt>
 <dd><p>Set the default branch to <var>rev</var>.  In <small>CVS</small>, you
 normally do not manipulate default branches; sticky
-tags (see [cvs: Sticky tags#Sticky-tags Sticky tags]) are a better way to decide
+tags (see [[cvs: Sticky tags#Sticky tags|Sticky tags]]) are a better way to decide
 which branch you want to work on.  There is one reason
 to run <code>cvs admin -b</code>: to revert to the vendor&rsquo;s
-version when using vendor branches (see [cvs: Reverting to the latest vendor release#Reverting-local-changes Reverting local changes]).
+version when using vendor branches (see [[cvs: Reverting to the latest vendor release#Reverting to the latest vendor release|Reverting local changes]]).
 There can be no space between &lsquo;<samp>-b</samp>&rsquo; and its argument.
 </p>
 <div id="index-Comment-leader"></div>
@@ -40,7 +40,7 @@ There can be no space between &lsquo;<samp>-b</samp>&rsquo; and its argument.
 <dd><p>Sets the comment leader to <var>string</var>.  The comment
 leader is not used by current versions of <small>CVS</small> or
 <small>RCS</small> 5.7.  Therefore, you can almost surely not
-worry about it.  See [cvs: Keyword substitution#Keyword-substitution Keyword substitution].
+worry about it.  See [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]].
 </p>
 </dd>
 <dt><code>-e[<var>logins</var>]</code></dt>
@@ -62,12 +62,12 @@ a future release of <small>CVS</small>.
 <dd><p>Useless with <small>CVS</small>.  This creates and initializes a
 new <small>RCS</small> file, without depositing a revision.  With
 <small>CVS</small>, add files with the <code>cvs add</code> command
-(see [cvs: Adding files to a directory#Adding-files Adding files]).
+(see [[cvs: Adding files to a directory#Adding files to a directory|Adding files]]).
 </p>
 </dd>
 <dt><code>-k<var>subst</var></code></dt>
 <dd><p>Set the default keyword
-substitution to <var>subst</var>.  See [cvs: Keyword substitution#Keyword-substitution Keyword substitution].  Giving an explicit &lsquo;<samp>-k</samp>&rsquo; option to
+substitution to <var>subst</var>.  See [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]].  Giving an explicit &lsquo;<samp>-k</samp>&rsquo; option to
 <code>cvs update</code>, <code>cvs export</code>, or <code>cvs
 checkout</code> overrides this default.
 </p>
@@ -111,7 +111,7 @@ set; see the discussion under the &lsquo;<samp>-l</samp>&rsquo; option above.
 <dt><code>-N<var>name</var>[:[<var>rev</var>]]</code></dt>
 <dd><p>Act like &lsquo;<samp>-n</samp>&rsquo;, except override any previous
 assignment of <var>name</var>.  For use with magic branches,
-see [cvs: Magic branch numbers#Magic-branch-numbers Magic branch numbers].
+see [[cvs: Magic branch numbers#Magic branch numbers|Magic branch numbers]].
 </p>
 </dd>
 <dt><code>-n<var>name</var>[:[<var>rev</var>]]</code></dt>
@@ -241,14 +241,14 @@ change to be like the &lsquo;<samp>::</samp>&rsquo; case.
 </p>
 <p>Due to the way <small>CVS</small> handles branches <var>rev</var>
 cannot be specified symbolically if it is a branch.
-See [cvs: Magic branch numbers#Magic-branch-numbers Magic branch numbers], for an explanation.
+See [[cvs: Magic branch numbers#Magic branch numbers|Magic branch numbers]], for an explanation.
 </p>
 <p>Make sure that no-one has checked out a copy of the
 revision you outdate.  Strange things will happen if he
 starts to edit it and tries to check it back in.  For
 this reason, this option is not a good way to take back
 a bogus commit; commit a new revision undoing the bogus
-change instead (see [cvs: Merging differences between any two revisions#Merging-two-revisions Merging two revisions]).
+change instead (see [[cvs: Merging differences between any two revisions#Merging differences between any two revisions|Merging two revisions]]).
 </p>
 </dd>
 <dt><code>-q</code></dt>
@@ -266,9 +266,9 @@ acceptable for <var>state</var>.  A useful set of states is
 stable), and &lsquo;<samp>Rel</samp>&rsquo; (for released).  By default,
 the state of a new revision is set to &lsquo;<samp>Exp</samp>&rsquo; when
 it is created.  The state is visible in the output from
-<var>cvs log</var> (see [cvs: log--Print out log information for files#log log]), and in the
+<var>cvs log</var> (see [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]]), and in the
 &lsquo;<samp>$<i></i>Log$</samp>&rsquo; and &lsquo;<samp>$<i></i>State$</samp>&rsquo; keywords
-(see [cvs: Keyword substitution#Keyword-substitution Keyword substitution]).  Note that <small>CVS</small>
+(see [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]]).  Note that <small>CVS</small>
 uses the <code>dead</code> state for its own purposes; to
 take a file to or from the <code>dead</code> state use
 commands like <code>cvs remove</code> and <code>cvs add</code>, not
@@ -280,7 +280,7 @@ commands like <code>cvs remove</code> and <code>cvs add</code>, not
 contents of the named <var>file</var> into the RCS file,
 deleting the existing text.  The <var>file</var> pathname
 may not begin with &lsquo;<samp>-</samp>&rsquo;.  The descriptive text can be seen in the
-output from &lsquo;<samp>cvs log</samp>&rsquo; (see [cvs: log--Print out log information for files#log log]).
+output from &lsquo;<samp>cvs log</samp>&rsquo; (see [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]]).
 There can be no space between &lsquo;<samp>-t</samp>&rsquo; and its argument.
 </p>
 <p>If <var>file</var> is omitted,
@@ -315,7 +315,7 @@ omitted, remove the latest lock held by the caller.
 Normally, only the locker of a revision may unlock it;
 somebody else unlocking a revision breaks the lock.
 This causes the original locker to be sent a <code>commit</code>
-notification (see [cvs: Telling CVS to notify you#Getting-Notified Getting Notified]).
+notification (see [[cvs: Telling CVS to notify you#Telling CVS to notify you|Getting Notified]]).
 There can be no space between &lsquo;<samp>-u</samp>&rsquo; and its argument.
 </p>
 </dd>
@@ -340,6 +340,6 @@ this option has never done anything useful.
 <hr>
 <div class="header">
 <p>
-Up: [cvs: admin--Administration#admin admin] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Up: [[cvs: admin--Administration#admin&mdash;Administration|admin]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

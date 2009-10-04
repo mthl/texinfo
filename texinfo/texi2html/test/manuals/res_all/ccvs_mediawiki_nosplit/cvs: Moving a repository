@@ -1,7 +1,7 @@
 <div id="Moving-a-repository"></div>
 <div class="header">
 <p>
-Next: [cvs: Remote repositories#Remote-repositories Remote repositories], Previous: [cvs: Backing up a repository#Backing-up Backing up], Up: [cvs: The Repository#Repository Repository] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Remote repositories#Remote repositories|Remote repositories]], Previous: [[cvs: Backing up a repository#Backing up a repository|Backing up]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Moving-a-repository-1"></div>
@@ -26,7 +26,7 @@ other way to make sure that you don&rsquo;t lose any
 changes.  If you really do want to reuse the existing
 working directory, it should be possible with manual
 surgery on the &lsquo;<tt>CVS/Repository</tt>&rsquo; files.  You can
-see [cvs: How data is stored in the working directory#Working-directory-storage Working directory storage], for information on
+see [[cvs: How data is stored in the working directory#How data is stored in the working directory|Working directory storage]], for information on
 the &lsquo;<tt>CVS/Repository</tt>&rsquo; and &lsquo;<tt>CVS/Root</tt>&rsquo; files, but
 unless you are sure you want to bother, it probably
 isn&rsquo;t worth it.

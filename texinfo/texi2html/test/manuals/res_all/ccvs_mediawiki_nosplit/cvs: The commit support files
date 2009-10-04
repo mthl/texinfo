@@ -1,7 +1,7 @@
 <div id="commit-files"></div>
 <div class="header">
 <p>
-Next: [cvs: Rcsinfo#rcsinfo rcsinfo], Previous: [cvs: The cvswrappers file#Wrappers Wrappers], Up: [cvs: Reference manual for Administrative files#Administrative-files Administrative files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Rcsinfo#Rcsinfo|rcsinfo]], Previous: [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="The-commit-support-files"></div>
@@ -10,7 +10,7 @@ Next: [cvs: Rcsinfo#rcsinfo rcsinfo], Previous: [cvs: The cvswrappers file#Wrapp
 
 <p>The &lsquo;<samp>-i</samp>&rsquo; flag in the &lsquo;<tt>modules</tt>&rsquo; file can be
 used to run a certain program whenever files are
-committed (see [cvs: The modules file#modules modules]).  The files described in
+committed (see [[cvs: The modules file#The modules file|modules]]).  The files described in
 this section provide other, more flexible, ways to run
 programs whenever something is committed.
 </p>
@@ -32,7 +32,7 @@ the commit will be aborted.
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
 &lsquo;<tt>rcsinfo</tt>&rsquo; file, which can hold a log message
-template (see [cvs: Rcsinfo#rcsinfo rcsinfo]).
+template (see [[cvs: Rcsinfo#Rcsinfo|rcsinfo]]).
 </p>
 </dd>
 <dt>&lsquo;<tt>editinfo</tt>&rsquo;</dt>
@@ -40,7 +40,7 @@ template (see [cvs: Rcsinfo#rcsinfo rcsinfo]).
 and possibly verify that it contains all required
 fields.  This is most useful in combination with the
 &lsquo;<tt>rcsinfo</tt>&rsquo; file, which can hold a log message
-template (see [cvs: Rcsinfo#rcsinfo rcsinfo]).  (obsolete)
+template (see [[cvs: Rcsinfo#Rcsinfo|rcsinfo]]).  (obsolete)
 </p>
 </dd>
 <dt>&lsquo;<tt>loginfo</tt>&rsquo;</dt>
@@ -53,16 +53,16 @@ imagination is the limit!
 </p></dd>
 </dl>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: The common syntax#syntax  syntax]::<nowiki>                      The common syntax
-</nowiki>&bull;[cvs: Commitinfo#commitinfo  commitinfo]::<nowiki>                  Pre-commit checking
-</nowiki>&bull;[cvs: Verifying log messages#verifymsg  verifymsg]::<nowiki>                   How are log messages evaluated?
-</nowiki>&bull;[cvs: Editinfo#editinfo  editinfo]::<nowiki>                    Specifying how log messages are created
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: The common syntax#The common syntax| syntax]]::<nowiki>                      The common syntax
+</nowiki>&bull;[[cvs: Commitinfo#Commitinfo| commitinfo]]::<nowiki>                  Pre-commit checking
+</nowiki>&bull;[[cvs: Verifying log messages#Verifying log messages| verifymsg]]::<nowiki>                   How are log messages evaluated?
+</nowiki>&bull;[[cvs: Editinfo#Editinfo| editinfo]]::<nowiki>                    Specifying how log messages are created
                                 (obsolete)
-</nowiki>&bull;[cvs: Loginfo#loginfo  loginfo]::<nowiki>                     Where should log messages be sent?
+</nowiki>&bull;[[cvs: Loginfo#Loginfo| loginfo]]::<nowiki>                     Where should log messages be sent?
 </nowiki></pre>
 <hr>
 <div class="header">
 <p>
-Next: [cvs: Rcsinfo#rcsinfo rcsinfo], Previous: [cvs: The cvswrappers file#Wrappers Wrappers], Up: [cvs: Reference manual for Administrative files#Administrative-files Administrative files] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Rcsinfo#Rcsinfo|rcsinfo]], Previous: [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

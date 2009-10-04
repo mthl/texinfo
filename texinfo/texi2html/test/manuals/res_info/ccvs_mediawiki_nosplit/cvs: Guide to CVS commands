@@ -1,7 +1,7 @@
 <div id="CVS-commands"></div>
 <div class="header">
 <p>
-Next: [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS], Previous: [cvs: Special Files#Special-Files Special Files], Up: [[cvs#Top|Top]] &nbsp; |[cvs: Index#SEC_Contents Contents]||[cvs: Index#Index Index]|</p>
+Next: [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]], Previous: [[cvs: Special Files#Special Files|Special Files]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Guide-to-CVS-commands"></div>
@@ -10,23 +10,28 @@ Next: [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS], Previous
 <p>This appendix describes the overall structure of
 <small>CVS</small> commands, and describes some commands in
 detail (others are described elsewhere; for a quick
-reference to <small>CVS</small> commands, see [cvs: Quick reference to CVS commands#Invoking-CVS Invoking CVS]).
+reference to <small>CVS</small> commands, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]]).
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[cvs: Overall structure of CVS commands#Structure  Structure]::<nowiki>                   Overall structure of CVS commands
-</nowiki>&bull;[cvs: CVS's exit status#Exit-status  Exit status]::<nowiki>                 Indicating CVS's success or failure
-</nowiki>&bull;[cvs: Default options and the ~%47.cvsrc file#g_t_007e_002f_002ecvsrc  ~/.cvsrc]::<nowiki>                    Default options with the ~/.csvrc file
-</nowiki>&bull;[cvs: Global options#Global-options  Global options]::<nowiki>              Options you give to the left of cvs_command
-</nowiki>&bull;[cvs: Common command options#Common-options  Common options]::<nowiki>              Options you give to the right of cvs_command
-</nowiki>&bull;[cvs: admin--Administration#admin  admin]::<nowiki>                       Administration
-</nowiki>&bull;[cvs: checkout--Check out sources for editing#checkout  checkout]::<nowiki>                    Checkout sources for editing
-</nowiki>&bull;[cvs: commit--Check files into the repository#commit  commit]::<nowiki>                      Check files into the repository
-</nowiki>&bull;[cvs: diff--Show differences between revisions#diff  diff]::<nowiki>                        Show differences between revisions
-</nowiki>&bull;[cvs: export--Export sources from CVS, similar to checkout#export  export]::<nowiki>                      Export sources from CVS, similar to checkout
-</nowiki>&bull;[cvs: history--Show status of files and users#history  history]::<nowiki>                     Show status of files and users
-</nowiki>&bull;[cvs: import--Import sources into CVS, using vendor branches#import  import]::<nowiki>                      Import sources into CVS, using vendor branches
-</nowiki>&bull;[cvs: log--Print out log information for files#log  log]::<nowiki>                         Show log messages for files
-</nowiki>&bull;[cvs: rdiff--'patch' format diffs between releases#rdiff  rdiff]::<nowiki>                       'patch' format diffs between releases
-</nowiki>&bull;[cvs: release--Indicate that a Module is no longer in use#release  release]::<nowiki>                     Indicate that a directory is no longer in use
-</nowiki>&bull;[cvs: update--Bring work tree in sync with repository#update  update]::<nowiki>                      Bring work tree in sync with repository
+<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Overall structure of CVS commands#Overall structure of CVS commands| Structure]]::<nowiki>                   Overall structure of CVS commands
+</nowiki>&bull;[[cvs: CVS's exit status#CVS&rsquo;s exit status| Exit status]]::<nowiki>                 Indicating CVS's success or failure
+</nowiki>&bull;[[cvs: Default options and the ~%47.cvsrc file#Default options and the ~/.cvsrc file| ~/.cvsrc]]::<nowiki>                    Default options with the ~/.csvrc file
+</nowiki>&bull;[[cvs: Global options#Global options| Global options]]::<nowiki>              Options you give to the left of cvs_command
+</nowiki>&bull;[[cvs: Common command options#Common command options| Common options]]::<nowiki>              Options you give to the right of cvs_command
+</nowiki>&bull;[[cvs: admin--Administration#admin&mdash;Administration| admin]]::<nowiki>                       Administration
+</nowiki>&bull;[[cvs: checkout--Check out sources for editing#checkout&mdash;Check out sources for editing| checkout]]::<nowiki>                    Checkout sources for editing
+</nowiki>&bull;[[cvs: commit--Check files into the repository#commit&mdash;Check files into the repository| commit]]::<nowiki>                      Check files into the repository
+</nowiki>&bull;[[cvs: diff--Show differences between revisions#diff&mdash;Show differences between revisions| diff]]::<nowiki>                        Show differences between revisions
+</nowiki>&bull;[[cvs: export--Export sources from CVS, similar to checkout#export&mdash;Export sources from CVS, similar to checkout| export]]::<nowiki>                      Export sources from CVS, similar to checkout
+</nowiki>&bull;[[cvs: history--Show status of files and users#history&mdash;Show status of files and users| history]]::<nowiki>                     Show status of files and users
+</nowiki>&bull;[[cvs: import--Import sources into CVS, using vendor branches#import&mdash;Import sources into CVS, using vendor branches| import]]::<nowiki>                      Import sources into CVS, using vendor branches
+</nowiki>&bull;[[cvs: log--Print out log information for files#log&mdash;Print out log information for files| log]]::<nowiki>                         Show log messages for files
+</nowiki>&bull;[[cvs: rdiff--'patch' format diffs between releases#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases| rdiff]]::<nowiki>                       'patch' format diffs between releases
+</nowiki>&bull;[[cvs: release--Indicate that a Module is no longer in use#release&mdash;Indicate that a Module is no longer in use| release]]::<nowiki>                     Indicate that a directory is no longer in use
+</nowiki>&bull;[[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository| update]]::<nowiki>                      Bring work tree in sync with repository
 </nowiki></pre>
+<hr>
+<div class="header">
+<p>
+Next: [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]], Previous: [[cvs: Special Files#Special Files|Special Files]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
+</div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
