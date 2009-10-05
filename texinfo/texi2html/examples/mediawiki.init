@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.25 2009-10-04 21:51:05 pertusus Exp $
+# $Id: mediawiki.init,v 1.26 2009-10-05 08:44:34 pertusus Exp $
 
 use strict;
 
@@ -60,17 +60,17 @@ sub mediawiki_initialize_variables()
     %mediawiki_special_file_name = ();
 }
 
-$print_title                  = \&mediawiki_print_title;
+$heading_text                 = \&mediawiki_heading_text;
 
-sub mediawiki_print_title()
+sub mediawiki_heading_text($$$)
 {
-    my $title = '';
-    $title = $Texi2HTML::THISDOC{'simpletitle'} if (defined($Texi2HTML::THISDOC{'simpletitle'}) and $Texi2HTML::THISDOC{'simpletitle'} !~ /^\s*$/);
-    if ($title ne '')
-    {
-        return "== $title ==\n";
-    }
-    return undef;
+    my $command = shift;
+    my $text = shift;
+    my $level = shift;
+
+    return '' if ($text !~ /\S/);
+    $level = 1 if ($level == 0);
+    return (("=" x $level) . "= $text =" . ("=" x $level) . "\n");
 }
 
 ###################################################################
@@ -93,7 +93,6 @@ sub mediawiki_print_page_foot($)
     print $fh $program_string, "\n";
     print $fh $PRE_BODY_CLOSE, "\n" if $PRE_BODY_CLOSE;
 }
-
 
 
 # This function produces an anchor 
@@ -182,70 +181,6 @@ sub mediawiki_anchor($;$$$)
 
 
 
-# When the value begins with & the function with that name is used to do the
-#
-# Otherwithe the value is the html element used to enclose the text, and if
-# there is a " the resulting text is also enclosed within `'
-
-# default is {'args' => ['normal'], 'attribute' => ''},   
-$style_map{'titlefont'} = {'function' => \&mediawiki_titlefont};
-#$style_map{'option'} = {'args' => ['code'],
-#			 'attribute' => 'code',
-#			 'quote' => '"'};
-#$style_map{'samp'} = {'args' => ['code'],
-#		       'attribute' => 'code',
-#		       'quote' => '"'};
-
-
-
-$print_misc		   = \&mediawiki_print_misc;
-$titlepage                 = \&mediawiki_titlepage;
-
-sub mediawiki_print_misc
-{
-    my $fh = shift;
-    my $new_file = shift;
-    my $misc_page = shift;
-
-    my $buttons = \@MISC_BUTTONS;
-    &$print_misc_header($fh, $buttons, $new_file, $misc_page);
-    print $fh "== $Texi2HTML::NAME{'This'} ==\n";
-    main::print_lines($fh);
-    &$print_misc_footer($fh, $buttons, $new_file);
-}
-
-sub mediawiki_titlepage($$$$)
-{
-    my $titlepage_lines = shift;
-    my $titlepage_text = shift;
-    my $titlepage_no_texi = shift;
-    my $titlepage_simple_text = shift;
-
-    $Texi2HTML::TITLEPAGE = $titlepage_text;
-        $Texi2HTML::TITLEPAGE = $titlepage_text;
-    if ($titlepage_text eq '')
-    {
-       my $title = '';
-       $title = $Texi2HTML::THISDOC{'simpletitle'} if (defined($Texi2HTML::THISDOC{'simpletitle'}) and $Texi2HTML::THISDOC{'simpletitle'} !~ /^\s*$/);
-       if ($title ne '')
-       {
-           $Texi2HTML::TITLEPAGE = "== $title ==\n";
-       }
-    }
-
-    return $Texi2HTML::TITLEPAGE;
-}
-
-sub mediawiki_titlefont($$$)
-{
-    shift;
-    my $args = shift;
-    return "\n== $args->[0] ==\n" if $args->[0] =~ /\S/;
-    return '';
-}
-
-
-
 # This function formats a footnote reference and the footnote text associated
 # with a given footnote.
 # The footnote reference is the text appearing in the main document pointing
@@ -266,10 +201,12 @@ sub mediawiki_titlefont($$$)
 #     have been updated
 # the text for the reference pointing on the footnote text
 
-$foot_line_and_ref = \&mediawiki_foot_line_and_ref;
-$foot_section      = \&mediawiki_default_foot_section;
+# currently not used, default case is good enough, but still this is 
+# not mediwikified.
+#$foot_line_and_ref = \&mediawiki_foot_line_and_ref;
+#$foot_section      = \&mediawiki_default_foot_section;
 
-sub medaiwiki_foot_line_and_ref($$$$$$$)
+sub mediawiki_foot_line_and_ref($$$$$$$)
 {
     my $number_in_doc = shift;
     my $number_in_page = shift;
@@ -301,56 +238,6 @@ sub mediawiki_foot_section($)
     unshift @$lines, "==== " . &$I('Footnotes') . " ====\n";
     return $lines; 
 }
-
-
-
-# This function formats a heading for an element
-#
-# argument:
-# an element. It is a hash reference for a node or a sectionning command.
-# The interesting keys are:
-# 'text': the heading text
-# 'name': the heading text without section number
-# 'node': true if it is a node
-# 'level': level of the element. 0 for @top, 1 for chapter, heading, 
-#      appendix..., 2 for section and so on...
-# 'tag_level': the sectionning element name, raisesections and lowersections
-#      taken into account
-
-$heading           = \&mediawiki_heading;
-
-sub mediawiki_heading($$$$$;$$)
-{
-    my $element = shift;
-    my $command = shift;
-    my $texi_line = shift;
-    my $line = shift;
-    my $in_preformatted = shift;
-    my $one_section = shift;
-    my $element_heading = shift;
-
-    #return '' if (defined($command) and $command eq 'node' and !$element_heading);
-    my $level = 3;
-    if (!$element->{'node'})
-    {
-        $level = $element->{'level'};
-    }
-    else
-    {
-        return '' unless ($element->{'this'} and !$element->{'with_section'});
-    }
-    $level = 1 if ($level == 0);
-
-    my $text = $element->{'text'};
-
-    return '' if ($text !~ /\S/);
-    if (defined($element->{'tocid'}) and $TOC_LINKS)
-    {
-         $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
-    }
-    return (("=" x $level) . "= $text =" . ("=" x $level) . "\n");
-}
-
 
 $button_formatting	      = \&mediawiki_button_formatting;
 
