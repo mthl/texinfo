@@ -24,10 +24,12 @@ revision is given a new number by increasing the
 rightmost number by one.  The following figure displays
 a few revisions, with newer revisions to the right.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>       +-----+    +-----+    +-----+    +-----+    +-----+
-       ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
-       +-----+    +-----+    +-----+    +-----+    +-----+
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+        +-----+    +-----+    +-----+    +-----+    +-----+
+        ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
+        +-----+    +-----+    +-----+    +-----+    +-----+
+</div>
+</td></tr></table>
 
 <p>It is also possible to end up with numbers containing
 more than one period, for example &lsquo;<samp>1.3.2.2</samp>&rsquo;.  Such

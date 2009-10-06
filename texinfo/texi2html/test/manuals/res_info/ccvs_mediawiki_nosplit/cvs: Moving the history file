@@ -11,9 +11,11 @@ Next: [[cvs: Copying the history file#Copying the history file|Rename by copying
 files inside the repository.  Read this entire section
 before trying it out!
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd $CVSROOT/<var>dir</var>
-$ mv <var>old</var>,v <var>new</var>,v
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd $CVSROOT/<var>dir</var>
+ $ mv <var>old</var>,v <var>new</var>,v
+</div>
+</td></tr></table>
 
 <p>Advantages:
 </p>

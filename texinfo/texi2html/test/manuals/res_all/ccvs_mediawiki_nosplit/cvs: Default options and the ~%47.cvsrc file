@@ -36,13 +36,15 @@ used on the command line, will be used to match against
 the file.  So if this is the contents of the user&rsquo;s
 &lsquo;<tt>~/.cvsrc</tt>&rsquo; file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>log -N
-diff -uN
-rdiff -u
-update -Pd
-checkout -P
-release -d
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ log -N
+ diff -uN
+ rdiff -u
+ update -Pd
+ checkout -P
+ release -d
+</div>
+</td></tr></table>
 
 <p>the command &lsquo;<samp>cvs checkout foo</samp>&rsquo; would have the
 &lsquo;<samp>-P</samp>&rsquo; option added to the arguments, as well as
@@ -60,8 +62,10 @@ to specify use of the &quot;old&quot; format, so you would need
 specify global options (see [[cvs: Global options#Global options|Global options]]).  For
 example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -z6
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs -z6
+</div>
+</td></tr></table>
 
 <p>causes <small>CVS</small> to use compression level 6.
 </p>

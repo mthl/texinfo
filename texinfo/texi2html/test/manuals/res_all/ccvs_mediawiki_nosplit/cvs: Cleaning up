@@ -14,20 +14,24 @@ Next: [[cvs: Viewing differences#Viewing differences|Viewing differences]], Prev
 <p>Before you turn to other tasks you decide to remove your working copy of
 tc.  One acceptable way to do that is of course
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
-$ rm -r tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd ..
+ $ rm -r tc
+</div>
+</td></tr></table>
 
 <p>but a better way is to use the <code>release</code> command (see [[cvs: release--Indicate that a Module is no longer in use#release&mdash;Indicate that a Module is no longer in use|release]]):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
-$ cvs release -d tc
-M driver.c
-? tc
-You have [1] altered files in this repository.
-Are you sure you want to release (and delete) directory `tc': n
-** `release' aborted by user choice.
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd ..
+ $ cvs release -d tc
+ M driver.c
+ ? tc
+ You have [1] altered files in this repository.
+ Are you sure you want to release (and delete) directory `tc': n
+ ** `release' aborted by user choice.
+</div>
+</td></tr></table>
 
 <p>The <code>release</code> command checks that all your modifications have been
 committed.  If history logging is enabled it also makes a note in the

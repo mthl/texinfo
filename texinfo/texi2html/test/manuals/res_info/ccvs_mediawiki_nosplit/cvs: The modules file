@@ -32,12 +32,14 @@ directory &lsquo;<tt>sdir</tt>&rsquo;.  &lsquo;<tt>first-dir/sdir</tt>&rsquo; co
 a file &lsquo;<tt>sfile</tt>&rsquo;.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Alias modules#Alias modules| Alias modules]]::<nowiki>             The simplest kind of module
-</nowiki>&bull;[[cvs: Regular modules#Regular modules| Regular modules]]::<nowiki>
-</nowiki>&bull;[[cvs: Ampersand modules#Ampersand modules| Ampersand modules]]::<nowiki>
-</nowiki>&bull;[[cvs: Excluding directories#Excluding directories| Excluding directories]]::<nowiki>     Excluding directories from a module
-</nowiki>&bull;[[cvs: Module options#Module options| Module options]]::<nowiki>            Regular and ampersand modules can take options
-</nowiki>&bull;[[cvs: How the modules file "program options" programs are run#How the modules file &ldquo;program options&rdquo; programs are run| Module program options]]::<nowiki>    How the modules ``program options'' programs
-                              are run. 
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: Alias modules#Alias modules|&bull; Alias modules]]::             The simplest kind of module
+ [[cvs: Regular modules#Regular modules|&bull; Regular modules]]::
+ [[cvs: Ampersand modules#Ampersand modules|&bull; Ampersand modules]]::
+ [[cvs: Excluding directories#Excluding directories|&bull; Excluding directories]]::     Excluding directories from a module
+ [[cvs: Module options#Module options|&bull; Module options]]::            Regular and ampersand modules can take options
+ [[cvs: How the modules file "program options" programs are run#How the modules file &ldquo;program options&rdquo; programs are run|&bull; Module program options]]::    How the modules ``program options'' programs
+                               are run. 
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

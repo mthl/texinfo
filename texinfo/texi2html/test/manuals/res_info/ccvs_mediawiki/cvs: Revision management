@@ -18,8 +18,10 @@ you could probably skip this chapter.  The questions
 this chapter takes up become more important when more
 than one person is working in a repository.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#When to commit?| When to commit]]::<nowiki>              Some discussion on the subject
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#When to commit?|&bull; When to commit]]::              Some discussion on the subject
+</div>
+
 <hr>
 <div id="When-to-commit"></div>
 <div class="header">

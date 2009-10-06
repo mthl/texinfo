@@ -30,7 +30,9 @@ between the local copy of files and their base revisions
 into any destination revisions specified with <code>-r</code>,
 <code>-D</code>, or <code>-A</code>.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: update options#update options| update options]]::<nowiki>              update options
-</nowiki>&bull;[[cvs: update output#update output| update output]]::<nowiki>               update output
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: update options#update options|&bull; update options]]::              update options
+ [[cvs: update output#update output|&bull; update output]]::               update output
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

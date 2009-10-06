@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.239 2009-10-04 21:51:04 pertusus Exp $
+# $Id: texi2html.init,v 1.240 2009-10-06 13:35:57 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -362,6 +362,12 @@ $SETFILENAME = undef;
 
 # if unset, don't show a title
 $SHOW_TITLE = 1;
+
+# if set style is added in attribute.
+$INLINE_CSS_STYLE = 0;
+
+# if set, no css is used.
+$NO_CSS = 0;
 
 # if set, the image files are completed to be relative from the
 # document directory, to the source manual directory and then to
@@ -1837,7 +1843,7 @@ sub T2H_DEFAULT_css_lines ($$)
        $Texi2HTML::THISDOC{'CSS_LINES'} = $CSS_LINES;
        return;
     }
-    return if (!@$rule_lines and !@$import_lines and (! keys(%css_map)));
+    return if ((!@$rule_lines and !@$import_lines and !keys(%css_map) and !@CSS_REFS) or $NO_CSS);
     my $css_lines = "<style type=\"text/css\">\n<!--\n";
     $css_lines .= join('',@$import_lines) . "\n" if (@$import_lines);
     foreach my $css_rule (sort(keys(%css_map)))

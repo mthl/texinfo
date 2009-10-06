@@ -13,10 +13,12 @@ Next: [[cvs: Magic branch numbers#Magic branch numbers|Magic branch numbers]], P
 <p>Ordinarily, a file&rsquo;s revision history is a linear
 series of increments (see [[cvs: Revision numbers#Revision numbers|Revision numbers]]):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>       +-----+    +-----+    +-----+    +-----+    +-----+
-       ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
-       +-----+    +-----+    +-----+    +-----+    +-----+
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+        +-----+    +-----+    +-----+    +-----+    +-----+
+        ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
+        +-----+    +-----+    +-----+    +-----+    +-----+
+</div>
+</td></tr></table>
 
 <p>However, <small>CVS</small> is not limited to linear development.  The
 <em>revision tree</em> can be split into <em>branches</em>,
@@ -36,26 +38,28 @@ by appending an ordinal number to the branch number.
 The following figure illustrates branching with an
 example.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>                                                      +-------------+
-                           Branch 1.2.2.3.2 -&gt;        ! 1.2.2.3.2.1 !
-                                                    / +-------------+
+<table><tr><td>&nbsp;</td><td><div class="example">
+                                                       +-------------+
+                            Branch 1.2.2.3.2 -&gt;        ! 1.2.2.3.2.1 !
+                                                     / +-------------+
+                                                    /
                                                    /
-                                                  /
-                 +---------+    +---------+    +---------+
-Branch 1.2.2 -&gt; _! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
-               / +---------+    +---------+    +---------+
+                  +---------+    +---------+    +---------+
+ Branch 1.2.2 -&gt; _! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
+                / +---------+    +---------+    +---------+
+               /
               /
-             /
-+-----+    +-----+    +-----+    +-----+    +-----+
-! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !  &lt;- The main trunk
-+-----+    +-----+    +-----+    +-----+    +-----+
-                !
-                !
-                !   +---------+    +---------+    +---------+
-Branch 1.2.4 -&gt; +---! 1.2.4.1 !----! 1.2.4.2 !----! 1.2.4.3 !
-                    +---------+    +---------+    +---------+
-
-</nowiki></pre></td></tr></table>
+ +-----+    +-----+    +-----+    +-----+    +-----+
+ ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !  &lt;- The main trunk
+ +-----+    +-----+    +-----+    +-----+    +-----+
+                 !
+                 !
+                 !   +---------+    +---------+    +---------+
+ Branch 1.2.4 -&gt; +---! 1.2.4.1 !----! 1.2.4.2 !----! 1.2.4.3 !
+                     +---------+    +---------+    +---------+
+ 
+</div>
+</td></tr></table>
 
 
 

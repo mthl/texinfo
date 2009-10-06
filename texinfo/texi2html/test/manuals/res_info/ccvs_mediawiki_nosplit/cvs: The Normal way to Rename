@@ -13,11 +13,13 @@ Next: [[cvs: Moving the history file#Moving the history file|Inside]], Up: [[cvs
 to remove <var>old</var> from the repository, and add
 <var>new</var> to it.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ mv <var>old</var> <var>new</var>
-$ cvs remove <var>old</var>
-$ cvs add <var>new</var>
-$ cvs commit -m &quot;Renamed <var>old</var> to <var>new</var>&quot; <var>old</var> <var>new</var>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ mv <var>old</var> <var>new</var>
+ $ cvs remove <var>old</var>
+ $ cvs add <var>new</var>
+ $ cvs commit -m &quot;Renamed <var>old</var> to <var>new</var>&quot; <var>old</var> <var>new</var>
+</div>
+</td></tr></table>
 
 <p>This is the simplest way to move a file, it is not
 error-prone, and it preserves the history of what was

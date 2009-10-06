@@ -21,15 +21,17 @@ discussion of how to edit them, see [[cvs: The administrative files#The administ
 <p>The most important of these files is the &lsquo;<tt>modules</tt>&rsquo;
 file, which defines the modules inside the repository.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: The modules file#The modules file| modules]]::<nowiki>                     Defining modules
-</nowiki>&bull;[[cvs: The cvswrappers file#The cvswrappers file| Wrappers]]::<nowiki>                    Specify binary-ness based on file name
-</nowiki>&bull;[[cvs: The commit support files#The commit support files| commit files]]::<nowiki>                The commit support files (commitinfo,
-                                verifymsg, editinfo, loginfo)
-</nowiki>&bull;[[cvs: Rcsinfo#Rcsinfo| rcsinfo]]::<nowiki>                     Templates for the log messages
-</nowiki>&bull;[[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore| cvsignore]]::<nowiki>                   Ignoring files via cvsignore
-</nowiki>&bull;[[cvs: The checkoutlist file#The checkoutlist file| checkoutlist]]::<nowiki>                Adding your own administrative files
-</nowiki>&bull;[[cvs: The history file#The history file| history file]]::<nowiki>                History information
-</nowiki>&bull;[[cvs: Expansions in administrative files#Expansions in administrative files| Variables]]::<nowiki>                   Various variables are expanded
-</nowiki>&bull;[[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file| config]]::<nowiki>                      Miscellaneous CVS configuration
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: The modules file#The modules file|&bull; modules]]::                     Defining modules
+ [[cvs: The cvswrappers file#The cvswrappers file|&bull; Wrappers]]::                    Specify binary-ness based on file name
+ [[cvs: The commit support files#The commit support files|&bull; commit files]]::                The commit support files (commitinfo,
+                                 verifymsg, editinfo, loginfo)
+ [[cvs: Rcsinfo#Rcsinfo|&bull; rcsinfo]]::                     Templates for the log messages
+ [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|&bull; cvsignore]]::                   Ignoring files via cvsignore
+ [[cvs: The checkoutlist file#The checkoutlist file|&bull; checkoutlist]]::                Adding your own administrative files
+ [[cvs: The history file#The history file|&bull; history file]]::                History information
+ [[cvs: Expansions in administrative files#Expansions in administrative files|&bull; Variables]]::                   Various variables are expanded
+ [[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|&bull; config]]::                      Miscellaneous CVS configuration
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

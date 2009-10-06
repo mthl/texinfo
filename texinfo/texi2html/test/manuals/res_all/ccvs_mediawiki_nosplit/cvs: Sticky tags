@@ -27,17 +27,19 @@ example, how to avoid them!).
 <p>You can use the <code>status</code> command to see if any
 sticky tags or dates are set:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs status driver.c
-===================================================================
-File: driver.c          Status: Up-to-date
-
-    Version:            1.7.2.1 Sat Dec  5 19:35:03 1992
-    RCS Version:        1.7.2.1 /u/cvsroot/yoyodyne/tc/driver.c,v
-    Sticky Tag:         rel-1-0-patches (branch: 1.7.2)
-    Sticky Date:        (none)
-    Sticky Options:     (none)
-
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs status driver.c
+ ===================================================================
+ File: driver.c          Status: Up-to-date
+ 
+     Version:            1.7.2.1 Sat Dec  5 19:35:03 1992
+     RCS Version:        1.7.2.1 /u/cvsroot/yoyodyne/tc/driver.c,v
+     Sticky Tag:         rel-1-0-patches (branch: 1.7.2)
+     Sticky Date:        (none)
+     Sticky Options:     (none)
+ 
+</div>
+</td></tr></table>
 
 <div id="index-Resetting-sticky-tags"></div>
 <div id="index-Sticky-tags_002c-resetting"></div>
@@ -74,14 +76,16 @@ a file without setting a sticky tag.  This can
 be done with the &lsquo;<samp>-p</samp>&rsquo; option to <code>checkout</code> or
 <code>update</code>, which sends the contents of the file to
 standard output.  For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -p -r 1.1 file1 &gt;file1
-===================================================================
-Checking out file1
-RCS:  /tmp/cvs-sanity/cvsroot/first-dir/Attic/file1,v
-VERS: 1.1
-***************
-$
-</nowiki></pre></td></tr></table>
+</p><table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs update -p -r 1.1 file1 &gt;file1
+ ===================================================================
+ Checking out file1
+ RCS:  /tmp/cvs-sanity/cvsroot/first-dir/Attic/file1,v
+ VERS: 1.1
+ ***************
+ $
+</div>
+</td></tr></table>
 
 <p>However, this isn&rsquo;t the easiest way, if you are asking
 how to undo a previous checkin (in this example, put

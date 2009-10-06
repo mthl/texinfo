@@ -25,9 +25,11 @@ cause a problem with locks, so the <code>cvs update</code>
 must be run in the background.
 Here is an example for unix (this should all be on one line):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>^cyclic-pages		(date; cat; (sleep 2; cd /u/www/local-docs;
- cvs -q update -d) &amp;) &gt;&gt; $CVSROOT/CVSROOT/updatelog 2&gt;&amp;1
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ^cyclic-pages		(date; cat; (sleep 2; cd /u/www/local-docs;
+  cvs -q update -d) &amp;) &gt;&gt; $CVSROOT/CVSROOT/updatelog 2&gt;&amp;1
+</div>
+</td></tr></table>
 
 <p>This will cause checkins to repository directories
 starting with <code>cyclic-pages</code> to update the checked

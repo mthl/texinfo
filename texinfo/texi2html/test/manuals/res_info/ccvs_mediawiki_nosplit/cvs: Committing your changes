@@ -15,8 +15,10 @@ store your new &lsquo;<tt>backend.c</tt>&rsquo; in the repository and
 make it available to anyone else who is using that same
 repository.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit backend.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit backend.c
+</div>
+</td></tr></table>
 
 <p><small>CVS</small> starts an editor, to allow you to enter a log
 message.  You type in &ldquo;Added an optimization pass.&rdquo;,
@@ -61,8 +63,10 @@ starting an editor you can specify the log message on
 the command line using the &lsquo;<samp>-m</samp>&rsquo; flag instead, like
 this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -m &quot;Added an optimization pass&quot; backend.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit -m &quot;Added an optimization pass&quot; backend.c
+</div>
+</td></tr></table>
 
 <hr>
 <div class="header">

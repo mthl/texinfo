@@ -34,8 +34,10 @@ commands with taginfo (see [[cvs: User-defined logging#User-defined logging|user
 <p>To delete a tag, specify the &lsquo;<samp>-d</samp>&rsquo; option to either
 <code>cvs tag</code> or <code>cvs rtag</code>.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs rtag -d rel-0-4 tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs rtag -d rel-0-4 tc
+</div>
+</td></tr></table>
 
 <p>deletes the non-branch tag <code>rel-0-4</code> from the module <code>tc</code>.
 In the event that branch tags are encountered within the repository
@@ -63,8 +65,10 @@ point to revision 1.6.  To move a non-branch tag, specify the
 rtag</code>.  For example, the task just mentioned might be
 accomplished as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs tag -r 1.6 -F stable backend.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs tag -r 1.6 -F stable backend.c
+</div>
+</td></tr></table>
 
 <p>If any branch tags are encountered in the repository 
 with the given name, a warning is issued and the branch
@@ -91,9 +95,11 @@ this method will not work with branch tags.)
 This leaves the new tag on exactly the 
 same files as the old tag.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs rtag -r old-name-0-4 rel-0-4 tc
-cvs rtag -d old-name-0-4 tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs rtag -r old-name-0-4 rel-0-4 tc
+ cvs rtag -d old-name-0-4 tc
+</div>
+</td></tr></table>
 
 <hr>
 <div class="header">

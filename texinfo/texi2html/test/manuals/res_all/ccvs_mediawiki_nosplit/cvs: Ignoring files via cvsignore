@@ -36,16 +36,18 @@ patterns is:
 
 <div id="index-Ignored-files"></div>
 <div id="index-Automatically-ignored-files"></div>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>    RCS     SCCS    CVS     CVS.adm
-    RCSLOG  cvslog.*
-    tags    TAGS
-    .make.state     .nse_depinfo
-    *~      #*      .#*     ,*      _$*     *$
-    *.old   *.bak   *.BAK   *.orig  *.rej   .del-*
-    *.a     *.olb   *.o     *.obj   *.so    *.exe
-    *.Z     *.elc   *.ln
-    core
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+     RCS     SCCS    CVS     CVS.adm
+     RCSLOG  cvslog.*
+     tags    TAGS
+     .make.state     .nse_depinfo
+     *~      #*      .#*     ,*      _$*     *$
+     *.old   *.bak   *.BAK   *.orig  *.rej   .del-*
+     *.a     *.olb   *.o     *.obj   *.so    *.exe
+     *.Z     *.elc   *.ln
+     core
+</div>
+</td></tr></table>
 
 </li><li>
 The per-repository list in

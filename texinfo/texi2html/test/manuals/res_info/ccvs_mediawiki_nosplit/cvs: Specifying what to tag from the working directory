@@ -31,9 +31,11 @@ If you want to avoid doing this by mistake, specify the
 locally modified files, <small>CVS</small> will abort with an
 error before it tags any files:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs tag -c rel-0-4
-cvs tag: backend.c is locally modified
-cvs [tag aborted]: correct the above errors first!
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs tag -c rel-0-4
+ cvs tag: backend.c is locally modified
+ cvs [tag aborted]: correct the above errors first!
+</div>
+</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

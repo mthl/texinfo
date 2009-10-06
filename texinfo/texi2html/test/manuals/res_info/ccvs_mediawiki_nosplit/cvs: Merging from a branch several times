@@ -10,15 +10,17 @@ Next: [[cvs: Merging differences between any two revisions#Merging differences b
 <p>Continuing our example, the revision tree now looks
 like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>+-----+    +-----+    +-----+    +-----+    +-----+
-! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
-+-----+    +-----+    +-----+    +-----+    +-----+
-                !                           *
-                !                          *
-                !   +---------+    +---------+
-Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
-                    +---------+    +---------+
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ +-----+    +-----+    +-----+    +-----+    +-----+
+ ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
+ +-----+    +-----+    +-----+    +-----+    +-----+
+                 !                           *
+                 !                          *
+                 !   +---------+    +---------+
+ Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
+                     +---------+    +---------+
+</div>
+</td></tr></table>
 
 <p>where the starred line represents the merge from the
 &lsquo;<samp>R1fix</samp>&rsquo; branch to the main trunk, as just
@@ -27,15 +29,17 @@ discussed.
 <p>Now suppose that development continues on the
 &lsquo;<samp>R1fix</samp>&rsquo; branch:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>+-----+    +-----+    +-----+    +-----+    +-----+
-! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
-+-----+    +-----+    +-----+    +-----+    +-----+
-                !                           *
-                !                          *
-                !   +---------+    +---------+    +---------+
-Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
-                    +---------+    +---------+    +---------+
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ +-----+    +-----+    +-----+    +-----+    +-----+
+ ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
+ +-----+    +-----+    +-----+    +-----+    +-----+
+                 !                           *
+                 !                          *
+                 !   +---------+    +---------+    +---------+
+ Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
+                     +---------+    +---------+    +---------+
+</div>
+</td></tr></table>
 
 <p>and then you want to merge those new changes onto the
 main trunk.  If you just use the <code>cvs update -j
@@ -50,22 +54,28 @@ merged into the trunk.  To do that you specify two
 the first revision to the second revision.  For
 example, in this case the simplest way would be
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update -j 1.2.2.2 -j R1fix m.c    # <span class="roman">Merge changes from 1.2.2.2 to the</span>
-                                      # <span class="roman">head of the R1fix branch</span>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs update -j 1.2.2.2 -j R1fix m.c    # <span class="roman" style="font-family:serif; font-weight:normal;">Merge changes from 1.2.2.2 to the</span>
+                                       # <span class="roman" style="font-family:serif; font-weight:normal;">head of the R1fix branch</span>
+</div>
+</td></tr></table>
 
 <p>The problem with this is that you need to specify the
 1.2.2.2 revision manually.  A slightly better approach
 might be to use the date the last merge was done:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update -j R1fix:yesterday -j R1fix m.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs update -j R1fix:yesterday -j R1fix m.c
+</div>
+</td></tr></table>
 
 <p>Better yet, tag the R1fix branch after every merge into
 the trunk, and then use that tag for subsequent merges:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
+</div>
+</td></tr></table>
 
 <hr>
 <div class="header">

@@ -16,11 +16,13 @@ checkout your experimental stuff and utilize the full
 benefit of <small>CVS</small> conflict resolution.  The scenario might
 look like:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>[[ hacked sources are present ]]
-$ cvs tag -b EXPR1
-$ cvs update -r EXPR1
-$ cvs commit
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ [[ hacked sources are present ]]
+ $ cvs tag -b EXPR1
+ $ cvs update -r EXPR1
+ $ cvs commit
+</div>
+</td></tr></table>
 
 <p>The <code>update</code> command will make the &lsquo;<samp>-r
 EXPR1</samp>&rsquo; option sticky on all files.  Note that your
@@ -29,10 +31,12 @@ changes to the files will never be removed by the
 automatically commit to the correct branch, because the
 &lsquo;<samp>-r</samp>&rsquo; is sticky.  You could also do like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>[[ hacked sources are present ]]
-$ cvs tag -b EXPR1
-$ cvs commit -r EXPR1
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ [[ hacked sources are present ]]
+ $ cvs tag -b EXPR1
+ $ cvs commit -r EXPR1
+</div>
+</td></tr></table>
 
 <p>but then, only those files that were changed by you
 will have the &lsquo;<samp>-r EXPR1</samp>&rsquo; sticky flag.  If you hack
@@ -43,7 +47,9 @@ trunk.
 <p>To work with you on the experimental change, others
 would simply do
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -r EXPR1 whatever_module
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout -r EXPR1 whatever_module
+</div>
+</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

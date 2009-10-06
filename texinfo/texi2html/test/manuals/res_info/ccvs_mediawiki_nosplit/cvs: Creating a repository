@@ -46,8 +46,10 @@ command.  It will set up an empty repository in the
 <small>CVS</small> root specified in the usual way
 (see [[cvs: The Repository#The Repository|Repository]]).  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d /usr/local/cvsroot init
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs -d /usr/local/cvsroot init
+</div>
+</td></tr></table>
 
 <p><code>cvs init</code> is careful to never overwrite any
 existing files in the repository, so no harm is done if

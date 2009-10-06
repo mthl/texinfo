@@ -24,29 +24,33 @@ newest revision on that branch into your working copy.
 <div id="index-Merge_002c-branch-example"></div>
 <p>Consider this revision tree:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>+-----+    +-----+    +-----+    +-----+
-! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !      &lt;- The main trunk
-+-----+    +-----+    +-----+    +-----+
-                !
-                !
-                !   +---------+    +---------+
-Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
-                    +---------+    +---------+
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ +-----+    +-----+    +-----+    +-----+
+ ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !      &lt;- The main trunk
+ +-----+    +-----+    +-----+    +-----+
+                 !
+                 !
+                 !   +---------+    +---------+
+ Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
+                     +---------+    +---------+
+</div>
+</td></tr></table>
 
 <p>The branch 1.2.2 has been given the tag (symbolic name) &lsquo;<samp>R1fix</samp>&rsquo;.  The
 following example assumes that the module &lsquo;<samp>mod</samp>&rsquo; contains only one
 file, &lsquo;<tt>m.c</tt>&rsquo;.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout mod               # <span class="roman">Retrieve the latest revision, 1.4</span>
-
-$ cvs update -j R1fix m.c        # <span class="roman">Merge all changes made on the branch,</span>
-                                 # <span class="roman">i.e. the changes between revision 1.2</span>
-                                 # <span class="roman">and 1.2.2.2, into your working copy</span>
-                                 # <span class="roman">of the file.</span>
-
-$ cvs commit -m &quot;Included R1fix&quot; # <span class="roman">Create revision 1.5.</span>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout mod               # <span class="roman" style="font-family:serif; font-weight:normal;">Retrieve the latest revision, 1.4</span>
+ 
+ $ cvs update -j R1fix m.c        # <span class="roman" style="font-family:serif; font-weight:normal;">Merge all changes made on the branch,</span>
+                                  # <span class="roman" style="font-family:serif; font-weight:normal;">i.e. the changes between revision 1.2</span>
+                                  # <span class="roman" style="font-family:serif; font-weight:normal;">and 1.2.2.2, into your working copy</span>
+                                  # <span class="roman" style="font-family:serif; font-weight:normal;">of the file.</span>
+ 
+ $ cvs commit -m &quot;Included R1fix&quot; # <span class="roman" style="font-family:serif; font-weight:normal;">Create revision 1.5.</span>
+</div>
+</td></tr></table>
 
 <p>A conflict can result from a merge operation.  If that
 happens, you should resolve it before committing the
@@ -59,9 +63,11 @@ you might be getting more conflicts than strictly necessary.  See
 <p>The <code>checkout</code> command also supports the &lsquo;<samp>-j <var>branchname</var></samp>&rsquo; flag.  The
 same effect as above could be achieved with this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -j R1fix mod
-$ cvs commit -m &quot;Included R1fix&quot;
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout -j R1fix mod
+ $ cvs commit -m &quot;Included R1fix&quot;
+</div>
+</td></tr></table>
 
 <p>It should be noted that <code>update -j <var>tagname</var></code> will also work but may
 not produce the desired result.  See [[cvs: Merging can add or remove files#Merging can add or remove files|Merging adds and removals]], for more.

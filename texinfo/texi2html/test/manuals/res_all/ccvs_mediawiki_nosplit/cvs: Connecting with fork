@@ -30,8 +30,10 @@ create a connection which uses the remote protocol.
 &lsquo;<samp>:fork:</samp>&rsquo; and the pathname to your local
 repository.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :fork:/usr/local/cvsroot checkout foo
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs -d :fork:/usr/local/cvsroot checkout foo
+</div>
+</td></tr></table>
 
 <div id="index-CVS_005fSERVER_002c-and-_003afork_003a"></div>
 <p>As with <code>:ext:</code>, the server is called &lsquo;<samp>cvs</samp>&rsquo;

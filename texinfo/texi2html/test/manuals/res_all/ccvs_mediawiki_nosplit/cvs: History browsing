@@ -16,9 +16,11 @@ history&mdash;what files have changed when, how, and by
 whom, there are a variety of mechanisms for looking
 through the history.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Log messages#Log messages| log messages]]::<nowiki>                Log messages
-</nowiki>&bull;[[cvs: The history database#The history database| history database]]::<nowiki>            The history database
-</nowiki>&bull;[[cvs: User-defined logging#User-defined logging| user-defined logging]]::<nowiki>        User-defined logging
-</nowiki>&bull;[[cvs: Annotate command#Annotate command| annotate]]::<nowiki>                    What revision modified each line of a file?
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: Log messages#Log messages|&bull; log messages]]::                Log messages
+ [[cvs: The history database#The history database|&bull; history database]]::            The history database
+ [[cvs: User-defined logging#User-defined logging|&bull; user-defined logging]]::        User-defined logging
+ [[cvs: Annotate command#Annotate command|&bull; annotate]]::                    What revision modified each line of a file?
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

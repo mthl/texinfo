@@ -27,16 +27,18 @@ fee.  One such company is:
 
 <div id="index-Ximbiot"></div>
 <div id="index-Support_002c-getting-CVS-support"></div>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>Ximbiot
-319 S. River St.
-Harrisburg, PA  17104-1657
-USA
-Email: info@ximbiot.com
-Phone: (717) 579-6168
-Fax:   (717) 234-3125
-http://ximbiot.com/
-
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ Ximbiot
+ 319 S. River St.
+ Harrisburg, PA  17104-1657
+ USA
+ Email: info@ximbiot.com
+ Phone: (717) 579-6168
+ Fax:   (717) 234-3125
+ http://ximbiot.com/
+ 
+</div>
+</td></tr></table>
 
 </li><li>
 If you got <small>CVS</small> through a distributor, such as an
@@ -58,9 +60,11 @@ process of submitting fixes.
 There may be resources on the net which can help.  Two
 good places to start are:
 
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>http://www.cvshome.org
-http://www.loria.fr/~molli/cvs-index.html
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ http://www.cvshome.org
+ http://www.loria.fr/~molli/cvs-index.html
+</div>
+</td></tr></table>
 
 <p>If you are so inspired, increasing the information
 available on the net is likely to be appreciated.  For

@@ -53,8 +53,10 @@ set this up as required by your GSSAPI mechanism.
 <p>To connect using GSSAPI, use &lsquo;<samp>:gserver:</samp>&rsquo;.  For
 example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :gserver:faun.example.org:/usr/local/cvsroot checkout foo
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs -d :gserver:faun.example.org:/usr/local/cvsroot checkout foo
+</div>
+</td></tr></table>
 
 <hr>
 <div class="header">

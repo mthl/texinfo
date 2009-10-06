@@ -29,9 +29,11 @@ before you take the steps below.
 </li><li>
 Rename the directory inside the repository.
 
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd $CVSROOT/<var>parent-dir</var>
-$ mv <var>old-dir</var> <var>new-dir</var>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd $CVSROOT/<var>parent-dir</var>
+ $ mv <var>old-dir</var> <var>new-dir</var>
+</div>
+</td></tr></table>
 
 </li><li>
 Fix the <small>CVS</small> administrative files, if necessary (for

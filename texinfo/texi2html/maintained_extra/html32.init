@@ -56,10 +56,14 @@ $L2H_HTML_VERSION = "3.2";
 
 # no class in html 32
 $NO_BULLET_LIST_ATTRIBUTE = '';
+$NO_BULLET_LIST_CLASS = '';
 
-# no css
-$CSS_LINES = "";
-%css_map = ();
+# no css. NO_CSS also triggers no class if html_default_attribute_class
+# is used, which is the case for all the dynamically output elements.
+$NO_CSS = 1;
+
+# no accesskey in html 3.2
+$USE_ACCESSKEY = 0;
 
 $things_map{'oe'} = '&#156;';
 $things_map{'OE'} = '&#140;';
@@ -94,42 +98,16 @@ $style_map{'sansserif'} = {};
 $style_map{'r'} = {};
 $style_map_pre{'r'} = {};
 $style_map_pre{'sansserif'} = {};
-$style_map{'titlefont'} = {'function' => \&t2h_html32_titlefont, 
-            'type' => 'simple_style'};
-$style_map_pre{'titlefont'} = {};
 
 $format_map{'multitable'} = 'table';
 
-# Avoid adding h1 if the text is empty
-# no class in html 3.2
-sub t2h_html32_titlefont($$$)
-{
-    shift;
-    my $args = shift;
-    return "<h1>$args->[0]</h1>" if ($args->[0] =~ /\S/);
-    return '';
-}
-
 # formatting functions
 
-$summary_letter    = \&t2h_html32_summary_letter;
-$print_index       = \&t2h_html32_print_index;
 $protect_text      = \&t2h_html32_protect_text;
 $normal_text       = \&t2h_html32_normal_text;
-$heading           = \&t2h_html32_heading;
-$preformatted      = \&t2h_html32_preformatted;
-$raw               = \&t2h_html32_raw;
-$menu              = \&t2h_html32_menu;
-$foot_section      = \&t2h_html32_foot_section;
-$cartouche         = \&t2h_html32_cartouche;
-$listoffloats      = \&t2h_html32_listoffloats;
-$float             = \&t2h_html32_float;
 $acronym_like      = \&t2h_html32_acronym_like;
 $row               = \&t2h_html32_row;
 $cell              = \&t2h_html32_cell;
-$quotation         = \&t2h_html32_quotation;
-
-
 
 
 # &quot; is not in html 3.2
@@ -165,206 +143,13 @@ sub t2h_html32_normal_text($$$$$)
            $text =~ s/``/&#34;/g;
            $text =~ s/''/&#34;/g;
        }
-       # temporary reuse '' to store --- !....
-       # FIXME won't '---' be handled wrongly?
        # FIXME really do that in raw text?
-       $text =~ s/---/''/g; 
+       $text =~ s/---/\x{1F}/g; 
        $text =~ s/--/-/g; 
-       $text =~ s/''/--/g;
+       $text =~ s/\x{1F}/--/g;
    }
    return $text;
 }
-
-# a preformatted section
-sub t2h_html32_preformatted($$$)
-{
-    my $text = shift;
-    my $pre_style = shift;
-    my $class = shift;
-
-    return '' if ($text eq '');
-    return "<pre>$text</pre>";
-}
-
-# a heading for an element
-sub t2h_html32_heading($)
-{
-    my $element = shift;
-    my $command = shift;
-    my $texi_line = shift;
-    my $line = shift;
-    my $in_preformatted = shift;
-    my $one_section = shift;
-    my $element_heading = shift;
-
-    my $level = 3;
-    if (!$element->{'node'})
-    {
-        $level = $element->{'level'};
-    }
-    else
-    {
-        return '' unless ($element->{'this'} and !$element->{'with_section'});
-    }
-    my $text = $element->{'text'};
-    # when it is a heading, the element is irrelevant, so the command and the
-    # line are used...
-    if (defined($command) and $command =~ /heading/)
-    {
-        $level = $main::sec2level{$command} if (defined($main::sec2level{$command}));
-        if (defined($line))
-        {
-            $text = $line;
-            # this isn't done in main program in that case...
-            chomp ($text);
-            $text =~ s/^\s*//;
-        }
-    }
-    elsif (defined($element->{'tocid'}) and $TOC_LINKS)
-    {
-         $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
-    }
-    $level = 1 if ($level == 0);
-    return '' if ($text !~ /\S/);
-    if (!$in_preformatted)
-    {
-       return "<h$level> $text </h$level>\n";
-    }
-    else
-    {
-       return "<strong>$text</strong>\n";
-    }
-}
-
-# formatting of raw regions
-# ih L2H is true another mechanism is used for tex
-sub t2h_html32_raw($$)
-{
-    my $style = shift;
-    my $text = shift;
-    my $expanded = 1 if (grep {$style eq $_} @EXPAND);
-    if ($style eq 'verbatim' or $style eq 'verbatiminclude' or ($style eq 'tex' and $expanded))
-    {
-        return "<pre>" . &$protect_text($text) . '</pre>';
-    }
-    elsif ($style eq 'html' and $expanded)
-    {
-        chomp ($text);
-        return $text;
-    }
-    elsif ($expanded)
-    {
-        main::msg_debug ("(bug) unknown style $style");
-        return &$protect_text($text);
-    }
-    return '';
-}
-
-# a whole menu
-sub t2h_html32_menu($)
-{
-    my $text = shift;
-    if ($text =~ /\S/)
-    {
-        return "<table border=\"0\" cellspacing=\"0\">\n" 
-        . $text . "</table>\n";
-    }
-}
-
-# a simple menu entry ref in case we aren't in a standard menu context
-sub t2h_html32_foot_section($)
-{
-    my $lines = shift;
-    unshift (@$lines, "<hr>\n", "<h3>Footnotes</h3>\n");
-    return $lines; 
-}
-
-# a cartouche
-sub t2h_html32_cartouche($)
-{
-    my $text = shift;
-
-    if ($text =~ /\S/)
-    {
-        return "<table border=\"1\"><tr><td>\n" . $text . "</td></tr></table>\n";
-    }
-    return '';
-}
-
-
-# no style
-sub t2h_html32_summary_letter($$$$$$$)
-{
-   my $letter = shift;
-   my $file = shift;
-   my $identifier = shift;
-   my $index_element_id = shift;
-   my $number = shift;
-   my $index_element = shift;
-   my $index_name = shift;
-
-   return &$anchor('', $file . '#' . $identifier, '<b>' . &$protect_text($letter) . '</b>');
-}
-
-# format a whole index
-#
-# argument:
-# index text
-# index name
-sub t2h_html32_print_index($$)
-{
-    my $text = shift;
-    my $name = shift;
-    return '' if (!defined($text));
-    return "<table border=\"0\">\n" .
-    "<tr><td></td><th align=\"left\">" . &$I('Index Entry') . "</th><th align=\"left\"> " . &$I('Section') . "</th></tr>\n"
-    . "<tr><td colspan=\"3\"> $DEFAULT_RULE</td></tr>\n" . $text .
-    "</table>\n";
-}
-
-sub t2h_html32_float($$$$$)
-{
-    my $text = shift;
-    my $float = shift;
-    my $caption = shift;
-    my $shortcaption = shift;
-    
-    my $label = '';
-    if (exists($float->{'id'}))
-    {
-        $label = &$anchor($float->{'id'});
-    }
-    my $caption_text = '';
-    
-    if (defined($float->{'caption_texi'}))
-    {
-         $caption_text = $caption;
-    }
-    elsif (defined($float->{'shortcaption_texi'}))
-    {
-         $caption_text = $shortcaption;
-    }
-    elsif (defined($caption))
-    {
-         $caption_text = $caption;
-    }
-    
-    return "$label\n" . $text . $caption_text;
-}
-
-sub t2h_html32_listoffloats($$$)
-{
-    my $style_texi = shift;
-    my $style = shift;
-    my $float_entries = shift;
-
-    my $result = "<dl>\n" ;
-    foreach my $float_entry (@$float_entries)
-    {
-         $result .= $float_entry;
-    }
-    return $result . "</dl>\n";
-} 
 
 # no acronym, and no abbr in html 3.2
 sub t2h_html32_acronym_like($$$$$$)
@@ -387,7 +172,7 @@ sub t2h_html32_acronym_like($$$$$$)
     }
 }
 
-# row in multitable
+# row in multitable. no thead in html 3.2
 sub t2h_html32_row($$)
 {
     my $text = shift;
@@ -400,7 +185,8 @@ sub t2h_html32_row($$)
     return '';
 }
 
-# cell in multitable
+# cell in multitable. in html 3.2 width is in pixel and not in percent in 
+# th or td.
 sub t2h_html32_cell($$)
 {
     my $text = shift;
@@ -417,13 +203,3 @@ sub t2h_html32_cell($$)
     }
     return "<td>" . $text . '</td>';
 }
-
-sub t2h_html32_quotation($$$$)
-{
-    my $command = shift;
-    my $text = shift;
-    my $argument_text = shift;
-    my $argument_text_texi = shift;
-    return "<blockquote>" . $text . "</blockquote>\n";
-}
-

@@ -27,8 +27,10 @@ described in detail.  For other references run the
 </p>
 <p>A <small>CVS</small> command looks like:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs [ <var>global_options</var> ] <var>command</var> [ <var>command_options</var> ] [ <var>command_args</var> ]
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs [ <var>global_options</var> ] <var>command</var> [ <var>command_options</var> ] [ <var>command_args</var> ]
+</div>
+</td></tr></table>
 
 <p>Global options:
 </p>
@@ -121,32 +123,36 @@ See [[cvs: Guide to CVS commands#Global options|Global options]].
 
 <p>Keyword expansion modes (see section [[cvs: Keyword substitution#Substitution modes|Substitution modes]]):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>-kkv  $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp $
--kkvl $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
--kk   $<i></i>Id$
--kv   file1,v 1.1 1993/12/09 03:21:13 joe Exp
--ko   <i>no expansion</i>
--kb   <i>no expansion, file is binary</i>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ -kkv  $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp $
+ -kkvl $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+ -kk   $<i></i>Id$
+ -kv   file1,v 1.1 1993/12/09 03:21:13 joe Exp
+ -ko   <i>no expansion</i>
+ -kb   <i>no expansion, file is binary</i>
+</div>
+</td></tr></table>
 
 <p>Keywords (see section [[cvs: Keyword substitution#Keyword List|Keyword List]]):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$<i></i>Author: joe $
-$<i></i>Date: 1993/12/09 03:21:13 $
-$<i></i>CVSHeader: files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
-$<i></i>Header: /home/files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
-$<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
-$<i></i>Locker: harry $
-$<i></i>Name: snapshot_1_14 $
-$<i></i>RCSfile: file1,v $
-$<i></i>Revision: 1.1 $
-$<i></i>Source: /home/files/file1,v $
-$<i></i>State: Exp $
-$<i></i>Log: file1,v $
-Revision 1.1  1993/12/09 03:30:17  joe
-Initial revision
-
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $<i></i>Author: joe $
+ $<i></i>Date: 1993/12/09 03:21:13 $
+ $<i></i>CVSHeader: files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+ $<i></i>Header: /home/files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+ $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
+ $<i></i>Locker: harry $
+ $<i></i>Name: snapshot_1_14 $
+ $<i></i>RCSfile: file1,v $
+ $<i></i>Revision: 1.1 $
+ $<i></i>Source: /home/files/file1,v $
+ $<i></i>State: Exp $
+ $<i></i>Log: file1,v $
+ Revision 1.1  1993/12/09 03:30:17  joe
+ Initial revision
+ 
+</div>
+</td></tr></table>
 
 <p>Commands, command options, and command arguments:
 </p>

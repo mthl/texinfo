@@ -11,23 +11,25 @@ Next: [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Inv
 detail (others are described elsewhere; for a quick
 reference to <small>CVS</small> commands, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]]).
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Overall structure of CVS commands| Structure]]::<nowiki>                   Overall structure of CVS commands
-</nowiki>&bull;[[#CVS&rsquo;s exit status| Exit status]]::<nowiki>                 Indicating CVS&rsquo;s success or failure
-</nowiki>&bull;[[#Default options and the ~/.cvsrc file| ~/.cvsrc]]::<nowiki>                    Default options with the ~/.csvrc file
-</nowiki>&bull;[[#Global options| Global options]]::<nowiki>              Options you give to the left of cvs_command
-</nowiki>&bull;[[#Common command options| Common options]]::<nowiki>              Options you give to the right of cvs_command
-</nowiki>&bull;[[#admin&mdash;Administration| admin]]::<nowiki>                       Administration
-</nowiki>&bull;[[#checkout&mdash;Check out sources for editing| checkout]]::<nowiki>                    Checkout sources for editing
-</nowiki>&bull;[[#commit&mdash;Check files into the repository| commit]]::<nowiki>                      Check files into the repository
-</nowiki>&bull;[[#diff&mdash;Show differences between revisions| diff]]::<nowiki>                        Show differences between revisions
-</nowiki>&bull;[[#export&mdash;Export sources from CVS, similar to checkout| export]]::<nowiki>                      Export sources from CVS, similar to checkout
-</nowiki>&bull;[[#history&mdash;Show status of files and users| history]]::<nowiki>                     Show status of files and users
-</nowiki>&bull;[[#import&mdash;Import sources into CVS, using vendor branches| import]]::<nowiki>                      Import sources into CVS, using vendor branches
-</nowiki>&bull;[[#log&mdash;Print out log information for files| log]]::<nowiki>                         Show log messages for files
-</nowiki>&bull;[[#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases| rdiff]]::<nowiki>                       &rsquo;patch&rsquo; format diffs between releases
-</nowiki>&bull;[[#release&mdash;Indicate that a Module is no longer in use| release]]::<nowiki>                     Indicate that a directory is no longer in use
-</nowiki>&bull;[[#update&mdash;Bring work tree in sync with repository| update]]::<nowiki>                      Bring work tree in sync with repository
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#Overall structure of CVS commands|&bull; Structure]]::                   Overall structure of CVS commands
+ [[#CVS&rsquo;s exit status|&bull; Exit status]]::                 Indicating CVS&rsquo;s success or failure
+ [[#Default options and the ~/.cvsrc file|&bull; ~/.cvsrc]]::                    Default options with the ~/.csvrc file
+ [[#Global options|&bull; Global options]]::              Options you give to the left of cvs_command
+ [[#Common command options|&bull; Common options]]::              Options you give to the right of cvs_command
+ [[#admin&mdash;Administration|&bull; admin]]::                       Administration
+ [[#checkout&mdash;Check out sources for editing|&bull; checkout]]::                    Checkout sources for editing
+ [[#commit&mdash;Check files into the repository|&bull; commit]]::                      Check files into the repository
+ [[#diff&mdash;Show differences between revisions|&bull; diff]]::                        Show differences between revisions
+ [[#export&mdash;Export sources from CVS, similar to checkout|&bull; export]]::                      Export sources from CVS, similar to checkout
+ [[#history&mdash;Show status of files and users|&bull; history]]::                     Show status of files and users
+ [[#import&mdash;Import sources into CVS, using vendor branches|&bull; import]]::                      Import sources into CVS, using vendor branches
+ [[#log&mdash;Print out log information for files|&bull; log]]::                         Show log messages for files
+ [[#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases|&bull; rdiff]]::                       &rsquo;patch&rsquo; format diffs between releases
+ [[#release&mdash;Indicate that a Module is no longer in use|&bull; release]]::                     Indicate that a directory is no longer in use
+ [[#update&mdash;Bring work tree in sync with repository|&bull; update]]::                      Bring work tree in sync with repository
+</div>
+
 <hr>
 <div id="Structure"></div>
 <div class="header">
@@ -43,8 +45,10 @@ Next: [[#CVS&rsquo;s exit status|Exit status]], Up: [[#Guide to CVS commands|CVS
 
 <p>The overall format of all <small>CVS</small> commands is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs [ cvs_options ] cvs_command [ command_options ] [ command_args ]
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs [ cvs_options ] cvs_command [ command_options ] [ command_args ]
+</div>
+</td></tr></table>
 
 <dl compact="compact">
 <dt><code>cvs</code></dt>
@@ -150,13 +154,15 @@ used on the command line, will be used to match against
 the file.  So if this is the contents of the user&rsquo;s
 &lsquo;<tt>~/.cvsrc</tt>&rsquo; file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>log -N
-diff -uN
-rdiff -u
-update -Pd
-checkout -P
-release -d
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ log -N
+ diff -uN
+ rdiff -u
+ update -Pd
+ checkout -P
+ release -d
+</div>
+</td></tr></table>
 
 <p>the command &lsquo;<samp>cvs checkout foo</samp>&rsquo; would have the
 &lsquo;<samp>-P</samp>&rsquo; option added to the arguments, as well as
@@ -174,8 +180,10 @@ to specify use of the &quot;old&quot; format, so you would need
 specify global options (see [[#Global options|Global options]]).  For
 example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -z6
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs -z6
+</div>
+</td></tr></table>
 
 <p>causes <small>CVS</small> to use compression level 6.
 </p>
@@ -430,9 +438,11 @@ RFC1123).
 <p>ISO8601 dates have many variants but a few examples
 are:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>1972-09-24
-1972-09-24 20:05
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ 1972-09-24
+ 1972-09-24 20:05
+</div>
+</td></tr></table>
 
 <p>There are a lot more ISO8601 date formats, and <small>CVS</small>
 accepts many of them, but you probably don&rsquo;t want to
@@ -443,9 +453,11 @@ hear the <em>whole</em> long story :-).
 itself, <small>CVS</small> also allows some of the fields to be
 omitted.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>24 Sep 1972 20:05
-24 Sep
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ 24 Sep 1972 20:05
+ 24 Sep
+</div>
+</td></tr></table>
 
 <p>The date is interpreted as being in the
 local timezone, unless a specific timezone is
@@ -468,8 +480,10 @@ flag so that your shell doesn&rsquo;t interpret spaces as
 argument separators.  A command using the &lsquo;<samp>-D</samp>&rsquo;
 flag can look like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs diff -D &quot;1 hour ago&quot; cvs.texinfo
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs diff -D &quot;1 hour ago&quot; cvs.texinfo
+</div>
+</td></tr></table>
 
 <div id="index-Forcing-a-tag-match"></div>
 </dd>
@@ -660,8 +674,10 @@ group with no users in it.  On NT, the <code>cvsadmin</code>
 feature does not exist and all users
 can run <code>cvs admin</code>.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#admin options| admin options]]::<nowiki>               admin options
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#admin options|&bull; admin options]]::               admin options
+</div>
+
 <hr>
 <div id="admin-options"></div>
 <div class="header">
@@ -1081,9 +1097,11 @@ directory.
 <p>For the output produced by the <code>checkout</code> command
 see [[#update output|update output]].
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#checkout options| checkout options]]::<nowiki>            checkout options
-</nowiki>&bull;[[#checkout examples| checkout examples]]::<nowiki>           checkout examples
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#checkout options|&bull; checkout options]]::            checkout options
+ [[#checkout examples|&bull; checkout examples]]::           checkout examples
+</div>
+
 <hr>
 <div id="checkout-options"></div>
 <div class="header">
@@ -1245,14 +1263,18 @@ Previous: [[#checkout options|checkout options]], Up: [[#checkout&mdash;Check ou
 
 <p>Get a copy of the module &lsquo;<samp>tc</samp>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout tc
+</div>
+</td></tr></table>
 
 <p>Get a copy of the module &lsquo;<samp>tc</samp>&rsquo; as it looked one day
 ago:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -D yesterday tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout -D yesterday tc
+</div>
+</td></tr></table>
 
 <hr>
 <div id="commit"></div>
@@ -1310,9 +1332,11 @@ log message on the command line with the &lsquo;<samp>-m
 or use the &lsquo;<samp>-F <var>file</var></samp>&rsquo; option to specify
 that the argument file contains the log message.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#commit options| commit options]]::<nowiki>              commit options
-</nowiki>&bull;[[#commit examples| commit examples]]::<nowiki>             commit examples
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#commit options|&bull; commit options]]::              commit options
+ [[#commit examples|&bull; commit examples]]::             commit examples
+</div>
+
 <hr>
 <div id="commit-options"></div>
 <div class="header">
@@ -1361,9 +1385,11 @@ made any changes to the file.  If the current revision
 of <var>file</var> is 1.7, then the following two commands
 are equivalent:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -f <var>file</var>
-$ cvs commit -r 1.8 <var>file</var>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit -f <var>file</var>
+ $ cvs commit -r 1.8 <var>file</var>
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<samp>-f</samp>&rsquo; option disables recursion (i.e., it
 implies &lsquo;<samp>-l</samp>&rsquo;).  To force <small>CVS</small> to commit a new
@@ -1409,12 +1435,14 @@ way.  For example, if you had to create a patch to the
 1.2 version of the product, even though the 2.0 version
 is already under development, you might do:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs rtag -b -r FCS1_2 FCS1_2_Patch product_module
-$ cvs checkout -r FCS1_2_Patch product_module
-$ cd product_module
-[[ hack away ]]
-$ cvs commit
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs rtag -b -r FCS1_2 FCS1_2_Patch product_module
+ $ cvs checkout -r FCS1_2_Patch product_module
+ $ cd product_module
+ [[ hack away ]]
+ $ cvs commit
+</div>
+</td></tr></table>
 
 <p>This works automatically since the &lsquo;<samp>-r</samp>&rsquo; option is
 sticky.
@@ -1437,11 +1465,13 @@ checkout your experimental stuff and utilize the full
 benefit of <small>CVS</small> conflict resolution.  The scenario might
 look like:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>[[ hacked sources are present ]]
-$ cvs tag -b EXPR1
-$ cvs update -r EXPR1
-$ cvs commit
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ [[ hacked sources are present ]]
+ $ cvs tag -b EXPR1
+ $ cvs update -r EXPR1
+ $ cvs commit
+</div>
+</td></tr></table>
 
 <p>The <code>update</code> command will make the &lsquo;<samp>-r
 EXPR1</samp>&rsquo; option sticky on all files.  Note that your
@@ -1450,10 +1480,12 @@ changes to the files will never be removed by the
 automatically commit to the correct branch, because the
 &lsquo;<samp>-r</samp>&rsquo; is sticky.  You could also do like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>[[ hacked sources are present ]]
-$ cvs tag -b EXPR1
-$ cvs commit -r EXPR1
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ [[ hacked sources are present ]]
+ $ cvs tag -b EXPR1
+ $ cvs commit -r EXPR1
+</div>
+</td></tr></table>
 
 <p>but then, only those files that were changed by you
 will have the &lsquo;<samp>-r EXPR1</samp>&rsquo; sticky flag.  If you hack
@@ -1464,8 +1496,10 @@ trunk.
 <p>To work with you on the experimental change, others
 would simply do
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -r EXPR1 whatever_module
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout -r EXPR1 whatever_module
+</div>
+</td></tr></table>
 
 <hr>
 <div id="diff"></div>
@@ -1498,9 +1532,11 @@ under them will be compared.
 <p>The exit status for diff is different than for other
 <small>CVS</small> commands; for details [[#CVS&rsquo;s exit status|Exit status]].
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#diff options| diff options]]::<nowiki>                diff options
-</nowiki>&bull;[[#diff examples| diff examples]]::<nowiki>               diff examples
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#diff options|&bull; diff options]]::                diff options
+ [[#diff examples|&bull; diff examples]]::               diff examples
+</div>
+
 <hr>
 <div id="diff-options"></div>
 <div class="header">
@@ -1591,7 +1627,7 @@ differences.
 </p>
 </dd>
 <dt>&lsquo;<samp>-C <var>lines</var></samp>&rsquo;</dt>
-<dt>&lsquo;<samp>--context<span class="roman">[</span>=<var>lines</var><span class="roman">]</span></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--context<span class="roman" style="font-family:serif; font-weight:normal;">[</span>=<var>lines</var><span class="roman" style="font-family:serif; font-weight:normal;">]</span></samp>&rsquo;</dt>
 <dd><p>Use the context output format, showing <var>lines</var> (an integer) lines of
 context, or three if <var>lines</var> is not given.
 For proper operation, <code>patch</code> typically needs at least two lines of
@@ -1805,7 +1841,7 @@ format.  See [[#Line formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>-U <var>lines</var></samp>&rsquo;</dt>
-<dt>&lsquo;<samp>--unified<span class="roman">[</span>=<var>lines</var><span class="roman">]</span></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--unified<span class="roman" style="font-family:serif; font-weight:normal;">[</span>=<var>lines</var><span class="roman" style="font-family:serif; font-weight:normal;">]</span></samp>&rsquo;</dt>
 <dd><p>Use the unified output format, showing <var>lines</var> (an integer) lines of
 context, or three if <var>lines</var> is not given.
 For proper operation, <code>patch</code> typically needs at least two lines of
@@ -1826,9 +1862,11 @@ context.
 </p></dd>
 </dl>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Line group formats| Line group formats]]::<nowiki>          Line group formats
-</nowiki>&bull;[[#Line formats| Line formats]]::<nowiki>                Line formats
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#Line group formats|&bull; Line group formats]]::          Line group formats
+ [[#Line formats|&bull; Line formats]]::                Line formats
+</div>
+
 <hr>
 <div id="Line-group-formats"></div>
 <div class="header">
@@ -1849,49 +1887,55 @@ and outputs a merged file in which old regions are
 surrounded by &lsquo;<samp>\begin{em}</samp>&rsquo;-&lsquo;<samp>\end{em}</samp>&rsquo; lines, and new
 regions are surrounded by &lsquo;<samp>\begin{bf}</samp>&rsquo;-&lsquo;<samp>\end{bf}</samp>&rsquo; lines.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs diff \
-   --old-group-format='\begin{em}
-%&lt;\end{em}
-' \
-   --new-group-format='\begin{bf}
-%&gt;\end{bf}
-' \
-   myfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs diff \
+    --old-group-format='\begin{em}
+ %&lt;\end{em}
+ ' \
+    --new-group-format='\begin{bf}
+ %&gt;\end{bf}
+ ' \
+    myfile
+</div>
+</td></tr></table>
 
 <p>The following command is equivalent to the above example, but it is a
 little more verbose, because it spells out the default line group formats.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs diff \
-   --old-group-format='\begin{em}
-%&lt;\end{em}
-' \
-   --new-group-format='\begin{bf}
-%&gt;\end{bf}
-' \
-   --unchanged-group-format='%=' \
-   --changed-group-format='\begin{em}
-%&lt;\end{em}
-\begin{bf}
-%&gt;\end{bf}
-' \
-   myfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs diff \
+    --old-group-format='\begin{em}
+ %&lt;\end{em}
+ ' \
+    --new-group-format='\begin{bf}
+ %&gt;\end{bf}
+ ' \
+    --unchanged-group-format='%=' \
+    --changed-group-format='\begin{em}
+ %&lt;\end{em}
+ \begin{bf}
+ %&gt;\end{bf}
+ ' \
+    myfile
+</div>
+</td></tr></table>
 
 <p>Here is a more advanced example, which outputs a diff listing with
 headers containing line numbers in a &ldquo;plain English&rdquo; style.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs diff \
-   --unchanged-group-format='' \
-   --old-group-format='-------- %dn line%(n=1?:s) deleted at %df:
-%&lt;' \
-   --new-group-format='-------- %dN line%(N=1?:s) added after %de:
-%&gt;' \
-   --changed-group-format='-------- %dn line%(n=1?:s) changed at %df:
-%&lt;-------- to:
-%&gt;' \
-   myfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs diff \
+    --unchanged-group-format='' \
+    --old-group-format='-------- %dn line%(n=1?:s) deleted at %df:
+ %&lt;' \
+    --new-group-format='-------- %dN line%(N=1?:s) added after %de:
+ %&gt;' \
+    --changed-group-format='-------- %dn line%(n=1?:s) changed at %df:
+ %&lt;-------- to:
+ %&gt;' \
+    myfile
+</div>
+</td></tr></table>
 
 <p>To specify a line group format, use one of the options
 listed below.  You can specify up to four line group formats, one for
@@ -2038,15 +2082,17 @@ is &lsquo;<samp>-</samp>&rsquo; for deleted lines, &lsquo;<samp>|</samp>&rsquo; 
 for unchanged lines.  The formats contain newline characters where
 newlines are desired on output.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs diff \
-   --old-line-format='-%l
-' \
-   --new-line-format='|%l
-' \
-   --unchanged-line-format=' %l
-' \
-   myfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs diff \
+    --old-line-format='-%l
+ ' \
+    --new-line-format='|%l
+ ' \
+    --unchanged-line-format=' %l
+ ' \
+    myfile
+</div>
+</td></tr></table>
 
 <p>To specify a line format, use one of the following options.  You should
 quote <var>format</var>, since it often contains shell metacharacters.
@@ -2124,21 +2170,23 @@ different formats.  For example, the following command uses a format
 similar to <code>diff</code>&rsquo;s normal format.  You can tailor this command
 to get fine control over <code>diff</code>&rsquo;s output.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs diff \
-   --old-line-format='&lt; %l
-' \
-   --new-line-format='&gt; %l
-' \
-   --old-group-format='%df%(f=l?:,%dl)d%dE
-%&lt;' \
-   --new-group-format='%dea%dF%(F=L?:,%dL)
-%&gt;' \
-   --changed-group-format='%df%(f=l?:,%dl)c%dF%(F=L?:,%dL)
-%&lt;---
-%&gt;' \
-   --unchanged-group-format='' \
-   myfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs diff \
+    --old-line-format='&lt; %l
+ ' \
+    --new-line-format='&gt; %l
+ ' \
+    --old-group-format='%df%(f=l?:,%dl)d%dE
+ %&lt;' \
+    --new-group-format='%dea%dF%(F=L?:,%dL)
+ %&gt;' \
+    --changed-group-format='%df%(f=l?:,%dl)c%dF%(F=L?:,%dL)
+ %&lt;---
+ %&gt;' \
+    --unchanged-group-format='' \
+    myfile
+</div>
+</td></tr></table>
 
 <hr>
 <div id="diff-examples"></div>
@@ -2155,29 +2203,37 @@ between revision 1.14 and 1.19 of
 keywords are substituted, so differences that only depend
 on keyword substitution are ignored.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs diff -kk -u -r 1.14 -r 1.19 backend.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs diff -kk -u -r 1.14 -r 1.19 backend.c
+</div>
+</td></tr></table>
 
 <p>Suppose the experimental branch EXPR1 was based on a
 set of files tagged RELEASE_1_0.  To see what has
 happened on that branch, the following can be used:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs diff -r RELEASE_1_0 -r EXPR1
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs diff -r RELEASE_1_0 -r EXPR1
+</div>
+</td></tr></table>
 
 <p>A command like this can be used to produce a context
 diff between two releases:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs diff -c -r RELEASE_1_0 -r RELEASE_1_1 &gt; diffs
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs diff -c -r RELEASE_1_0 -r RELEASE_1_1 &gt; diffs
+</div>
+</td></tr></table>
 
 <p>If you are maintaining ChangeLogs, a command like the following
 just before you commit your changes may help you write
 the ChangeLog entry.  All local modifications that have
 not yet been committed will be printed.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs diff -u | less
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs diff -u | less
+</div>
+</td></tr></table>
 
 <hr>
 <div id="export"></div>
@@ -2219,8 +2275,10 @@ ident(1)) which looks for keyword strings.  If
 you want to be able to use <code>ident</code> you must not
 use &lsquo;<samp>-kv</samp>&rsquo;.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#export options| export options]]::<nowiki>              export options
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#export options|&bull; export options]]::              export options
+</div>
+
 <hr>
 <div id="export-options"></div>
 <div class="header">
@@ -2316,8 +2374,10 @@ various formats.
 &lsquo;<samp>-n</samp>&rsquo;, and &lsquo;<samp>-p</samp>&rsquo; in ways that conflict with the
 normal use inside <small>CVS</small> (see [[#Common command options|Common options]]).</strong>
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#history options| history options]]::<nowiki>             history options
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#history options|&bull; history options]]::             history options
+</div>
+
 <hr>
 <div id="history-options"></div>
 <div class="header">
@@ -2565,10 +2625,12 @@ directory; if you want to work with the sources import
 them first and then check them out into a different
 directory (see [[cvs: Overview#Getting the source|Getting the source]]).
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#import options| import options]]::<nowiki>              import options
-</nowiki>&bull;[[#import output| import output]]::<nowiki>               import output
-</nowiki>&bull;[[#import examples| import examples]]::<nowiki>             import examples
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#import options|&bull; import options]]::              import options
+ [[#import output|&bull; import output]]::               import output
+ [[#import examples|&bull; import examples]]::             import examples
+</div>
+
 <hr>
 <div id="import-options"></div>
 <div class="header">
@@ -2719,9 +2781,11 @@ Coordinated Universal Time (UTC).  (Other parts of
 <p><strong>Note: <code>log</code> uses &lsquo;<samp>-R</samp>&rsquo; in a way that conflicts
 with the normal use inside <small>CVS</small> (see [[#Common command options|Common options]]).</strong>
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#log options| log options]]::<nowiki>                 log options
-</nowiki>&bull;[[#log examples| log examples]]::<nowiki>                log examples
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#log options|&bull; log options]]::                 log options
+ [[#log examples|&bull; log examples]]::                log examples
+</div>
+
 <hr>
 <div id="log-options"></div>
 <div class="header">
@@ -2937,9 +3001,11 @@ specify the &lsquo;<samp>-p</samp>&rsquo; option to the <code>patch</code> comma
 patching the old sources, so that <code>patch</code> is able to find
 the files that are located in other directories.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#rdiff options| rdiff options]]::<nowiki>               rdiff options
-</nowiki>&bull;[[#rdiff examples| rdiff examples]]::<nowiki>              rdiff examples
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#rdiff options|&bull; rdiff options]]::               rdiff options
+ [[#rdiff examples|&bull; rdiff examples]]::              rdiff examples
+</div>
+
 <hr>
 <div id="rdiff-options"></div>
 <div class="header">
@@ -3029,9 +3095,11 @@ update from release 1.2 to 1.4 of the tc compiler.  You
 have no such patches on hand, but with <small>CVS</small> that can
 easily be fixed with a command such as this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs rdiff -c -r FOO1_2 -r FOO1_4 tc | \
-$$ Mail -s 'The patches you asked for' foo@example.net
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs rdiff -c -r FOO1_2 -r FOO1_4 tc | \
+ $$ Mail -s 'The patches you asked for' foo@example.net
+</div>
+</td></tr></table>
 
 <p>Suppose you have made release 1.3, and forked a branch
 called &lsquo;<samp>R_1_3fix</samp>&rsquo; for bugfixes.  &lsquo;<samp>R_1_3_1</samp>&rsquo;
@@ -3039,12 +3107,14 @@ corresponds to release 1.3.1, which was made some time
 ago.  Now, you want to see how much development has been
 done on the branch.  This command can be used:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs patch -s -r R_1_3_1 -r R_1_3fix module-name
-cvs rdiff: Diffing module-name
-File ChangeLog,v changed from revision 1.52.2.5 to 1.52.2.6
-File foo.c,v changed from revision 1.52.2.3 to 1.52.2.4
-File bar.h,v changed from revision 1.29.2.1 to 1.2
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs patch -s -r R_1_3_1 -r R_1_3fix module-name
+ cvs rdiff: Diffing module-name
+ File ChangeLog,v changed from revision 1.52.2.5 to 1.52.2.6
+ File foo.c,v changed from revision 1.52.2.3 to 1.52.2.4
+ File bar.h,v changed from revision 1.29.2.1 to 1.2
+</div>
+</td></tr></table>
 
 <hr>
 <div id="release"></div>
@@ -3086,10 +3156,12 @@ leaves a record of its execution (attesting to your
 intentionally abandoning your checkout) in the <small>CVS</small>
 history log.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#release options| release options]]::<nowiki>             release options
-</nowiki>&bull;[[#release output| release output]]::<nowiki>              release output
-</nowiki>&bull;[[#release examples| release examples]]::<nowiki>            release examples
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#release options|&bull; release options]]::             release options
+ [[#release output|&bull; release output]]::              release output
+ [[#release examples|&bull; release examples]]::            release examples
+</div>
+
 <hr>
 <div id="release-options"></div>
 <div class="header">
@@ -3179,13 +3251,15 @@ Previous: [[#release output|release output]], Up: [[#release&mdash;Indicate that
 <p>Release the &lsquo;<tt>tc</tt>&rsquo; directory, and delete your local working copy
 of the files.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..         # <span class="roman">You must stand immediately above the</span>
-                # <span class="roman">sources when you issue &lsquo;<samp>cvs release</samp>&rsquo;.</span>
-$ cvs release -d tc
-You have [0] altered files in this repository.
-Are you sure you want to release (and delete) directory `tc': y
-$
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd ..         # <span class="roman" style="font-family:serif; font-weight:normal;">You must stand immediately above the</span>
+                 # <span class="roman" style="font-family:serif; font-weight:normal;">sources when you issue &lsquo;<samp>cvs release</samp>&rsquo;.</span>
+ $ cvs release -d tc
+ You have [0] altered files in this repository.
+ Are you sure you want to release (and delete) directory `tc': y
+ $
+</div>
+</td></tr></table>
 
 <hr>
 <div id="update"></div>
@@ -3219,9 +3293,11 @@ between the local copy of files and their base revisions
 into any destination revisions specified with <code>-r</code>,
 <code>-D</code>, or <code>-A</code>.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#update options| update options]]::<nowiki>              update options
-</nowiki>&bull;[[#update output| update output]]::<nowiki>               update output
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#update options|&bull; update options]]::              update options
+ [[#update output|&bull; update output]]::               update output
+</div>
+
 <hr>
 <div id="update-options"></div>
 <div class="header">

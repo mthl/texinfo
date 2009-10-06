@@ -49,8 +49,10 @@ usual way (generally <code>kinit</code>); it must be a ticket
 which allows you to log into the server machine.  Then
 you are ready to go:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :kserver:faun.example.org:/usr/local/cvsroot checkout foo
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs -d :kserver:faun.example.org:/usr/local/cvsroot checkout foo
+</div>
+</td></tr></table>
 
 <p>Previous versions of <small>CVS</small> would fall back to a
 connection via rsh; this version will not do so.

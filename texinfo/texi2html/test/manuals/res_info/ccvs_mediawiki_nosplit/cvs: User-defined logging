@@ -42,15 +42,19 @@ aborted.
 <p>Here is an example of using taginfo to log tag and rtag
 commands.  In the taginfo file put:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>ALL /usr/local/cvsroot/CVSROOT/loggit
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ALL /usr/local/cvsroot/CVSROOT/loggit
+</div>
+</td></tr></table>
 
 <p>Where &lsquo;<tt>/usr/local/cvsroot/CVSROOT/loggit</tt>&rsquo; contains the
 following script:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#!/bin/sh
-echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #!/bin/sh
+ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
+</div>
+</td></tr></table>
 
 <hr>
 <div class="header">

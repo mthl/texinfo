@@ -36,9 +36,11 @@ directory.
 not recursive.  You cannot even type &lsquo;<samp>cvs add
 foo/bar</samp>&rsquo;!  Instead, you have to
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd foo
-$ cvs add bar
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd foo
+ $ cvs add bar
+</div>
+</td></tr></table>
 
 <div id="index-add-_0028subcommand_0029"></div>
 <dl>
@@ -77,9 +79,11 @@ be used.  You will not be prompted for a description.
 <p>For example, the following commands add the file
 &lsquo;<tt>backend.c</tt>&rsquo; to the repository:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs add backend.c
-$ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs add backend.c
+ $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
+</div>
+</td></tr></table>
 
 <p>When you add a file it is added only on the branch
 which you are working on (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  You can

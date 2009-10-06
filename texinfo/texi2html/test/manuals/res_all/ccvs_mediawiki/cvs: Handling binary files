@@ -16,9 +16,11 @@ abilities, <small>CVS</small> can store binary files.  For
 example, one might store a web site in <small>CVS</small>
 including both text files and binary images.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#The issues with binary files| Binary why]]::<nowiki>     More details on issues with binary files
-</nowiki>&bull;[[#How to store binary files| Binary howto]]::<nowiki>   How to store them
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#The issues with binary files|&bull; Binary why]]::     More details on issues with binary files
+ [[#How to store binary files|&bull; Binary howto]]::   How to store them
+</div>
+
 <hr>
 <div id="Binary-why"></div>
 <div class="header">
@@ -105,24 +107,28 @@ nor keyword expansion will be done.
 <p>Here is an example of how you can create a new file
 using the &lsquo;<samp>-kb</samp>&rsquo; flag:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ echo '$<i></i>Id$' &gt; kotest
-$ cvs add -kb -m&quot;A test file&quot; kotest
-$ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ echo '$<i></i>Id$' &gt; kotest
+ $ cvs add -kb -m&quot;A test file&quot; kotest
+ $ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
+</div>
+</td></tr></table>
 
 <p>If a file accidentally gets added without &lsquo;<samp>-kb</samp>&rsquo;,
 one can use the <code>cvs admin</code> command to recover.
 For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ echo '$<i></i>Id$' &gt; kotest
-$ cvs add -m&quot;A test file&quot; kotest
-$ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
-$ cvs admin -kb kotest
-$ cvs update -A kotest
-# <span class="roman">For non-unix systems:</span>
-# <span class="roman">Copy in a good copy of the file from outside CVS</span>
-$ cvs commit -m &quot;make it binary&quot; kotest
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ echo '$<i></i>Id$' &gt; kotest
+ $ cvs add -m&quot;A test file&quot; kotest
+ $ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
+ $ cvs admin -kb kotest
+ $ cvs update -A kotest
+ # <span class="roman" style="font-family:serif; font-weight:normal;">For non-unix systems:</span>
+ # <span class="roman" style="font-family:serif; font-weight:normal;">Copy in a good copy of the file from outside CVS</span>
+ $ cvs commit -m &quot;make it binary&quot; kotest
+</div>
+</td></tr></table>
 
 <p>When you check in the file &lsquo;<tt>kotest</tt>&rsquo; the file is
 not preserved as a binary file, because you did not

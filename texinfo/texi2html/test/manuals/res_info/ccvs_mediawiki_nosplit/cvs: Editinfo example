@@ -16,40 +16,48 @@ line of the log message.  The rest of log message is
 free text.  The following template is found in the file
 &lsquo;<tt>/usr/cvssupport/tc.template</tt>&rsquo;.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>BugId:
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ BugId:
+</div>
+</td></tr></table>
 
 <p>The script &lsquo;<tt>/usr/cvssupport/bugid.edit</tt>&rsquo; is used to
 edit the log message.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#!/bin/sh
-#
-#       bugid.edit filename
-#
-#  Call $EDITOR on FILENAME, and verify that the
-#  resulting file contains a valid bugid on the first
-#  line.
-if [ &quot;x$EDITOR&quot; = &quot;x&quot; ]; then EDITOR=vi; fi
-if [ &quot;x$CVSEDITOR&quot; = &quot;x&quot; ]; then CVSEDITOR=$EDITOR; fi
-$CVSEDITOR $1
-until head -1|grep '^BugId:[ ]*[0-9][0-9]*$' &lt; $1
-do  echo -n  &quot;No BugId found.  Edit again? ([y]/n)&quot;
-    read ans
-    case ${ans} in
-        n*) exit 1;;
-    esac
-    $CVSEDITOR $1
-done
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #!/bin/sh
+ #
+ #       bugid.edit filename
+ #
+ #  Call $EDITOR on FILENAME, and verify that the
+ #  resulting file contains a valid bugid on the first
+ #  line.
+ if [ &quot;x$EDITOR&quot; = &quot;x&quot; ]; then EDITOR=vi; fi
+ if [ &quot;x$CVSEDITOR&quot; = &quot;x&quot; ]; then CVSEDITOR=$EDITOR; fi
+ $CVSEDITOR $1
+ until head -1|grep '^BugId:[ ]*[0-9][0-9]*$' &lt; $1
+ do  echo -n  &quot;No BugId found.  Edit again? ([y]/n)&quot;
+     read ans
+     case ${ans} in
+         n*) exit 1;;
+     esac
+     $CVSEDITOR $1
+ done
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<tt>editinfo</tt>&rsquo; file contains this line:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>^tc     /usr/cvssupport/bugid.edit
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ^tc     /usr/cvssupport/bugid.edit
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<tt>rcsinfo</tt>&rsquo; file contains this line:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>^tc     /usr/cvssupport/tc.template
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ^tc     /usr/cvssupport/tc.template
+</div>
+</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

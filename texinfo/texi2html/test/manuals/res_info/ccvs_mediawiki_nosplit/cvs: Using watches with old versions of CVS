@@ -15,9 +15,11 @@ If you attempt to use <small>CVS</small> 1.6 or earlier with the
 repository, you get an error message such as the
 following (all on one line):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update: cannot open CVS/Entries for reading:
-No such file or directory
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs update: cannot open CVS/Entries for reading:
+ No such file or directory
+</div>
+</td></tr></table>
 
 <p>and your operation will likely be aborted.  To use the
 watch features, you must upgrade all copies of <small>CVS</small>

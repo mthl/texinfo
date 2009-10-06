@@ -22,30 +22,38 @@ related files and directories.
 <li>
 Get a working copy of the modules file.
 
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout CVSROOT/modules
-$ cd CVSROOT
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout CVSROOT/modules
+ $ cd CVSROOT
+</div>
+</td></tr></table>
 
 </li><li>
 Edit the file and insert a line that defines the module.  See [[cvs: The administrative files#The administrative files|Intro administrative files]], for an introduction.  See [[cvs: The modules file#The modules file|modules]], for a full
 description of the modules file.  You can use the
 following line to define the module &lsquo;<samp>tc</samp>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>tc   yoyodyne/tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ tc   yoyodyne/tc
+</div>
+</td></tr></table>
 
 </li><li>
 Commit your changes to the modules file.
 
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -m &quot;Added the tc module.&quot; modules
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit -m &quot;Added the tc module.&quot; modules
+</div>
+</td></tr></table>
 
 </li><li>
 Release the modules module.
 
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
-$ cvs release -d CVSROOT
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd ..
+ $ cvs release -d CVSROOT
+</div>
+</td></tr></table>
 </li></ol>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

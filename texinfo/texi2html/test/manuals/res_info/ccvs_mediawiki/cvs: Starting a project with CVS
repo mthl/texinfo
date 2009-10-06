@@ -19,9 +19,11 @@ directories.  See [[cvs: Adding, removing, and renaming files and directories#Mo
 </p>
 <p>What to do next depends on the situation at hand.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Setting up the files| Setting up the files]]::<nowiki>        Getting the files into the repository
-</nowiki>&bull;[[#Defining the module| Defining the module]]::<nowiki>         How to make a module of the files
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#Setting up the files|&bull; Setting up the files]]::        Getting the files into the repository
+ [[#Defining the module|&bull; Defining the module]]::         How to make a module of the files
+</div>
+
 <hr>
 <div id="Setting-up-the-files"></div>
 <div class="header">
@@ -34,12 +36,14 @@ Next: [[#Defining the module|Defining the module]], Up: [[#Starting a project wi
 <p>The first step is to create the files inside the repository.  This can
 be done in a couple of different ways.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Creating a directory tree from a number of files| From files]]::<nowiki>                  This method is useful with old projects
-                                where files already exists.
-</nowiki>&bull;[[#Creating Files From Other Version Control Systems| From other version control systems]]::<nowiki>  Old projects where you want to
-                                        preserve history from another system.
-</nowiki>&bull;[[#Creating a directory tree from scratch| From scratch]]::<nowiki>                Creating a directory tree from scratch.
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#Creating a directory tree from a number of files|&bull; From files]]::                  This method is useful with old projects
+                                 where files already exists.
+ [[#Creating Files From Other Version Control Systems|&bull; From other version control systems]]::  Old projects where you want to
+                                         preserve history from another system.
+ [[#Creating a directory tree from scratch|&bull; From scratch]]::                Creating a directory tree from scratch.
+</div>
+
 <hr>
 <div id="From-files"></div>
 <div class="header">
@@ -58,9 +62,11 @@ explain how to use it.  If the files you want to install in
 <small>CVS</small> reside in &lsquo;<tt><var>wdir</var></tt>&rsquo;, and you want them to appear in the
 repository as &lsquo;<tt>$CVSROOT/yoyodyne/<var>rdir</var></tt>&rsquo;, you can do this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd <var>wdir</var>
-$ cvs import -m &quot;Imported sources&quot; yoyodyne/<var>rdir</var> yoyo start
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd <var>wdir</var>
+ $ cvs import -m &quot;Imported sources&quot; yoyodyne/<var>rdir</var> yoyo start
+</div>
+</td></tr></table>
 
 <p>Unless you supply a log message with the &lsquo;<samp>-m</samp>&rsquo;
 flag, <small>CVS</small> starts an editor and prompts for a
@@ -73,11 +79,13 @@ more information about them.
 <p>You can now verify that it worked, and remove your
 original source directory.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
-$ cvs checkout yoyodyne/<var>rdir</var>       # <span class="roman">Explanation below</span>
-$ diff -r <var>wdir</var> yoyodyne/<var>rdir</var>
-$ rm -r <var>wdir</var>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd ..
+ $ cvs checkout yoyodyne/<var>rdir</var>       # <span class="roman" style="font-family:serif; font-weight:normal;">Explanation below</span>
+ $ diff -r <var>wdir</var> yoyodyne/<var>rdir</var>
+ $ rm -r <var>wdir</var>
+</div>
+</td></tr></table>
 
 <p>Erasing the original sources is a good idea, to make sure that you do
 not accidentally edit them in <var>wdir</var>, bypassing <small>CVS</small>.
@@ -188,18 +196,22 @@ Previous: [[#Creating Files From Other Version Control Systems|From other versio
 <p>For a new project, the easiest thing to do is probably
 to create an empty directory structure, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ mkdir tc
-$ mkdir tc/man
-$ mkdir tc/testing
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ mkdir tc
+ $ mkdir tc/man
+ $ mkdir tc/testing
+</div>
+</td></tr></table>
 
 <p>After that, you use the <code>import</code> command to create
 the corresponding (empty) directory structure inside
 the repository:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd tc
-$ cvs import -m &quot;Created directory structure&quot; yoyodyne/<var>dir</var> yoyo start
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd tc
+ $ cvs import -m &quot;Created directory structure&quot; yoyodyne/<var>dir</var> yoyo start
+</div>
+</td></tr></table>
 
 <p>Then, use <code>add</code> to add files (and new directories)
 as they appear.
@@ -231,30 +243,38 @@ related files and directories.
 <li>
 Get a working copy of the modules file.
 
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout CVSROOT/modules
-$ cd CVSROOT
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout CVSROOT/modules
+ $ cd CVSROOT
+</div>
+</td></tr></table>
 
 </li><li>
 Edit the file and insert a line that defines the module.  See [[cvs: The Repository#The administrative files|Intro administrative files]], for an introduction.  See [[cvs: Reference manual for Administrative files#The modules file|modules]], for a full
 description of the modules file.  You can use the
 following line to define the module &lsquo;<samp>tc</samp>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>tc   yoyodyne/tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ tc   yoyodyne/tc
+</div>
+</td></tr></table>
 
 </li><li>
 Commit your changes to the modules file.
 
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -m &quot;Added the tc module.&quot; modules
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit -m &quot;Added the tc module.&quot; modules
+</div>
+</td></tr></table>
 
 </li><li>
 Release the modules module.
 
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
-$ cvs release -d CVSROOT
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd ..
+ $ cvs release -d CVSROOT
+</div>
+</td></tr></table>
 </li></ol>
 
 <hr>

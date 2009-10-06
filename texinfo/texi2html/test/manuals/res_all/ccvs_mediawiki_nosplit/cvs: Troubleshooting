@@ -14,9 +14,11 @@ alphabetically.  If not, you can look through the
 section on other problems to see if your problem is
 mentioned there.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Partial list of error messages#Partial list of error messages| Error messages]]::<nowiki>              Partial list of CVS errors
-</nowiki>&bull;[[cvs: Trouble making a connection to a CVS server#Trouble making a connection to a CVS server| Connection]]::<nowiki>                  Trouble making a connection to a CVS server
-</nowiki>&bull;[[cvs: Other common problems#Other common problems| Other problems]]::<nowiki>              Problems not readily listed by error message
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: Partial list of error messages#Partial list of error messages|&bull; Error messages]]::              Partial list of CVS errors
+ [[cvs: Trouble making a connection to a CVS server#Trouble making a connection to a CVS server|&bull; Connection]]::                  Trouble making a connection to a CVS server
+ [[cvs: Other common problems#Other common problems|&bull; Other problems]]::              Problems not readily listed by error message
+</div>
+
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

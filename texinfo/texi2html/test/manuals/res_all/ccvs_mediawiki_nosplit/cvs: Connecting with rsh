@@ -21,13 +21,17 @@ server machine is &lsquo;<samp>faun.example.org</samp>&rsquo;.  On
 faun, put the following line into the file
 &lsquo;<tt>.rhosts</tt>&rsquo; in &lsquo;<samp>bach</samp>&rsquo;&rsquo;s home directory:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>toe.example.com  mozart
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ toe.example.com  mozart
+</div>
+</td></tr></table>
 
 <p>Then test that &lsquo;<samp>rsh</samp>&rsquo; is working with
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>rsh -l bach faun.example.org 'echo $PATH'
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ rsh -l bach faun.example.org 'echo $PATH'
+</div>
+</td></tr></table>
 
 <div id="index-CVS_005fSERVER_002c-environment-variable"></div>
 <p>Next you have to make sure that <code>rsh</code> will be able
@@ -77,8 +81,10 @@ the module &lsquo;<tt>foo</tt>&rsquo; in the repository
 &lsquo;<tt>/usr/local/cvsroot/</tt>&rsquo;, on machine
 &lsquo;<tt>faun.example.org</tt>&rsquo;, you are ready to go:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :ext:bach@faun.example.org:/usr/local/cvsroot checkout foo
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs -d :ext:bach@faun.example.org:/usr/local/cvsroot checkout foo
+</div>
+</td></tr></table>
 
 <p>(The &lsquo;<tt>bach@</tt>&rsquo; can be omitted if the username is
 the same on both the local and remote hosts.)

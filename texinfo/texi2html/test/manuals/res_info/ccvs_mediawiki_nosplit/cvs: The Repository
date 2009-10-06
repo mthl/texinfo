@@ -59,18 +59,20 @@ method, as in <code>:local:c:/src/cvsroot</code>.
 administrative files for <small>CVS</small>.  The other directories contain the actual
 user-defined modules.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Telling CVS where your repository is#Telling CVS where your repository is| Specifying a repository]]::<nowiki>     Telling CVS where your repository is
-</nowiki>&bull;[[cvs: How data is stored in the repository#How data is stored in the repository| Repository storage]]::<nowiki>          The structure of the repository
-</nowiki>&bull;[[cvs: How data is stored in the working directory#How data is stored in the working directory| Working directory storage]]::<nowiki>   The structure of working directories
-</nowiki>&bull;[[cvs: The administrative files#The administrative files| Intro administrative files]]::<nowiki>  Defining modules
-</nowiki>&bull;[[cvs: Multiple repositories#Multiple repositories| Multiple repositories]]::<nowiki>       Multiple repositories
-</nowiki>&bull;[[cvs: Creating a repository#Creating a repository| Creating a repository]]::<nowiki>       Creating a repository
-</nowiki>&bull;[[cvs: Backing up a repository#Backing up a repository| Backing up]]::<nowiki>                  Backing up a repository
-</nowiki>&bull;[[cvs: Moving a repository#Moving a repository| Moving a repository]]::<nowiki>         Moving a repository
-</nowiki>&bull;[[cvs: Remote repositories#Remote repositories| Remote repositories]]::<nowiki>         Accessing repositories on remote machines
-</nowiki>&bull;[[cvs: Read-only repository access#Read-only repository access| Read-only access]]::<nowiki>            Granting read-only access to the repository
-</nowiki>&bull;[[cvs: Temporary directories for the server#Temporary directories for the server| Server temporary directory]]::<nowiki>  The server creates temporary directories
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: Telling CVS where your repository is#Telling CVS where your repository is|&bull; Specifying a repository]]::     Telling CVS where your repository is
+ [[cvs: How data is stored in the repository#How data is stored in the repository|&bull; Repository storage]]::          The structure of the repository
+ [[cvs: How data is stored in the working directory#How data is stored in the working directory|&bull; Working directory storage]]::   The structure of working directories
+ [[cvs: The administrative files#The administrative files|&bull; Intro administrative files]]::  Defining modules
+ [[cvs: Multiple repositories#Multiple repositories|&bull; Multiple repositories]]::       Multiple repositories
+ [[cvs: Creating a repository#Creating a repository|&bull; Creating a repository]]::       Creating a repository
+ [[cvs: Backing up a repository#Backing up a repository|&bull; Backing up]]::                  Backing up a repository
+ [[cvs: Moving a repository#Moving a repository|&bull; Moving a repository]]::         Moving a repository
+ [[cvs: Remote repositories#Remote repositories|&bull; Remote repositories]]::         Accessing repositories on remote machines
+ [[cvs: Read-only repository access#Read-only repository access|&bull; Read-only access]]::            Granting read-only access to the repository
+ [[cvs: Temporary directories for the server#Temporary directories for the server|&bull; Server temporary directory]]::  The server creates temporary directories
+</div>
+
 <hr>
 <div class="header">
 <p>

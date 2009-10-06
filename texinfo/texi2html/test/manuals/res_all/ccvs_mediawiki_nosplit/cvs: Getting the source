@@ -15,16 +15,20 @@ Next: [[cvs: Committing your changes#Committing your changes|Committing your cha
 <p>The first thing you must do is to get your own working copy of the
 source for &lsquo;<samp>tc</samp>&rsquo;.  For this, you use the <code>checkout</code> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout tc
+</div>
+</td></tr></table>
 
 <p>This will create a new directory called &lsquo;<tt>tc</tt>&rsquo; and populate it with
 the source files.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd tc
-$ ls
-CVS         Makefile    backend.c   driver.c    frontend.c  parser.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd tc
+ $ ls
+ CVS         Makefile    backend.c   driver.c    frontend.c  parser.c
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<tt>CVS</tt>&rsquo; directory is used internally by
 <small>CVS</small>.  Normally, you should not modify or remove

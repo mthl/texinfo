@@ -18,49 +18,55 @@ and outputs a merged file in which old regions are
 surrounded by &lsquo;<samp>\begin{em}</samp>&rsquo;-&lsquo;<samp>\end{em}</samp>&rsquo; lines, and new
 regions are surrounded by &lsquo;<samp>\begin{bf}</samp>&rsquo;-&lsquo;<samp>\end{bf}</samp>&rsquo; lines.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs diff \
-   --old-group-format='\begin{em}
-%&lt;\end{em}
-' \
-   --new-group-format='\begin{bf}
-%&gt;\end{bf}
-' \
-   myfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs diff \
+    --old-group-format='\begin{em}
+ %&lt;\end{em}
+ ' \
+    --new-group-format='\begin{bf}
+ %&gt;\end{bf}
+ ' \
+    myfile
+</div>
+</td></tr></table>
 
 <p>The following command is equivalent to the above example, but it is a
 little more verbose, because it spells out the default line group formats.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs diff \
-   --old-group-format='\begin{em}
-%&lt;\end{em}
-' \
-   --new-group-format='\begin{bf}
-%&gt;\end{bf}
-' \
-   --unchanged-group-format='%=' \
-   --changed-group-format='\begin{em}
-%&lt;\end{em}
-\begin{bf}
-%&gt;\end{bf}
-' \
-   myfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs diff \
+    --old-group-format='\begin{em}
+ %&lt;\end{em}
+ ' \
+    --new-group-format='\begin{bf}
+ %&gt;\end{bf}
+ ' \
+    --unchanged-group-format='%=' \
+    --changed-group-format='\begin{em}
+ %&lt;\end{em}
+ \begin{bf}
+ %&gt;\end{bf}
+ ' \
+    myfile
+</div>
+</td></tr></table>
 
 <p>Here is a more advanced example, which outputs a diff listing with
 headers containing line numbers in a &ldquo;plain English&rdquo; style.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs diff \
-   --unchanged-group-format='' \
-   --old-group-format='-------- %dn line%(n=1?:s) deleted at %df:
-%&lt;' \
-   --new-group-format='-------- %dN line%(N=1?:s) added after %de:
-%&gt;' \
-   --changed-group-format='-------- %dn line%(n=1?:s) changed at %df:
-%&lt;-------- to:
-%&gt;' \
-   myfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs diff \
+    --unchanged-group-format='' \
+    --old-group-format='-------- %dn line%(n=1?:s) deleted at %df:
+ %&lt;' \
+    --new-group-format='-------- %dN line%(N=1?:s) added after %de:
+ %&gt;' \
+    --changed-group-format='-------- %dn line%(n=1?:s) changed at %df:
+ %&lt;-------- to:
+ %&gt;' \
+    myfile
+</div>
+</td></tr></table>
 
 <p>To specify a line group format, use one of the options
 listed below.  You can specify up to four line group formats, one for

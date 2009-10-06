@@ -15,20 +15,24 @@ the &lsquo;<tt>CVSROOT</tt>&rsquo; directory) are also logged in
 &lsquo;<tt>/usr/adm/cvsroot-log</tt>&rsquo;.
 Commits to the &lsquo;<tt>prog1</tt>&rsquo; directory are mailed to <tt>ceder</tt>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>ALL             /usr/local/bin/cvs-log $CVSROOT/CVSROOT/commitlog $USER
-^CVSROOT        /usr/local/bin/cvs-log /usr/adm/cvsroot-log
-^prog1          Mail -s %s ceder
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ALL             /usr/local/bin/cvs-log $CVSROOT/CVSROOT/commitlog $USER
+ ^CVSROOT        /usr/local/bin/cvs-log /usr/adm/cvsroot-log
+ ^prog1          Mail -s %s ceder
+</div>
+</td></tr></table>
 
 <p>The shell-script &lsquo;<tt>/usr/local/bin/cvs-log</tt>&rsquo; looks
 like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#!/bin/sh
-(echo &quot;------------------------------------------------------&quot;;
- echo -n $2&quot;  &quot;;
- date;
- echo;
- cat) &gt;&gt; $1
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #!/bin/sh
+ (echo &quot;------------------------------------------------------&quot;;
+  echo -n $2&quot;  &quot;;
+  date;
+  echo;
+  cat) &gt;&gt; $1
+</div>
+</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

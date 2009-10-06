@@ -25,27 +25,33 @@ levels.
 
 <p>For example, if a module is defined by:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>regmodule first-dir
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ regmodule first-dir
+</div>
+</td></tr></table>
 
 <p>then regmodule will contain the files from first-dir:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs co regmodule
-cvs checkout: Updating regmodule
-U regmodule/file1
-U regmodule/file2
-cvs checkout: Updating regmodule/sdir
-U regmodule/sdir/sfile
-$
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs co regmodule
+ cvs checkout: Updating regmodule
+ U regmodule/file1
+ U regmodule/file2
+ cvs checkout: Updating regmodule/sdir
+ U regmodule/sdir/sfile
+ $
+</div>
+</td></tr></table>
 
 <p>By explicitly specifying files in the module definition
 after <var>dir</var>, you can select particular files from
 directory <var>dir</var>.  Here is
 an example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>regfiles first-dir/sdir sfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ regfiles first-dir/sdir sfile
+</div>
+</td></tr></table>
 
 <p>With this definition, getting the regfiles module
 will create a single working directory
@@ -53,9 +59,11 @@ will create a single working directory
 comes from a directory deeper
 in the <small>CVS</small> source repository:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs co regfiles
-U regfiles/sfile
-$
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs co regfiles
+ U regfiles/sfile
+ $
+</div>
+</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

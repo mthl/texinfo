@@ -44,7 +44,9 @@ than the files which existed as of the given tag/date.
 Therefore, you are generally better off using <code>cvs
 rtag</code>.  The exceptions might be cases like:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs tag -r 1.4 stable backend.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs tag -r 1.4 stable backend.c
+</div>
+</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

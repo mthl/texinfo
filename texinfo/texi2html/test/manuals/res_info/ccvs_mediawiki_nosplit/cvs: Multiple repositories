@@ -36,11 +36,13 @@ connections to as many server machines as necessary to
 perform the requested command.  Here is an example of
 how to set up a working directory:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d server1:/cvs co dir1
-cd dir1
-cvs -d server2:/root co sdir
-cvs update
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs -d server1:/cvs co dir1
+ cd dir1
+ cvs -d server2:/root co sdir
+ cvs update
+</div>
+</td></tr></table>
 
 <p>The <code>cvs co</code> commands set up the working
 directory, and then the <code>cvs update</code> command will

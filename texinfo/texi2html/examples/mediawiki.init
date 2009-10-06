@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.26 2009-10-05 08:44:34 pertusus Exp $
+# $Id: mediawiki.init,v 1.27 2009-10-06 13:35:58 pertusus Exp $
 
 use strict;
 
@@ -45,6 +45,21 @@ undef $SPLIT_INDEX;
 
 # Use preformatted menus.
 $SIMPLE_MENU = 1;
+
+# inline css style
+$INLINE_CSS_STYLE = 1;
+
+# there are no pre used in mediawiki, to have links working in 
+# complex formats, therefore the styles are copied in div that
+# are used instead. This doesn't really improve the situation, 
+# though, since the div outside of a <pre> is not taken into account.
+foreach my $complex_format (keys(%$complex_format_map))
+{
+   my $class = $complex_format_map->{$complex_format}->{'class'};
+   $class = $complex_format if (!defined($class));
+   $css_map{"div.$class"} = $css_map{"pre.$class"} 
+      if (defined($css_map{"pre.$class"}));
+}
 
 $texi_formats_map{'direntry'} = 0;
 
@@ -350,7 +365,9 @@ sub mediawiki_preformatted($$$$$$$$$$)
        $text =~ s/\s*$//;
     }
 
-    return "<pre class=\"$class\"><nowiki>$text</nowiki></pre>";
+    $text =~ s/^/ /mg;
+    return html_default_attribute_class('div', $class).">\n$text</div>\n";
+    #return "<pre class=\"$class\"><nowiki>$text</nowiki></pre>";
 }
 
 
@@ -410,7 +427,8 @@ sub mediawiki_line_command($$$$)
 #$simple_menu_link  = \&mediawiki_simple_menu_link;
 
 # a menu link. We are always in preformatted because of SIMPLE_MENU.
-$menu_link  = \&mediawiki_simple_menu_link;
+# currently not used.
+#$menu_link  = \&mediawiki_simple_menu_link;
 
 sub mediawiki_simple_menu_link($$$$$$$)
 {

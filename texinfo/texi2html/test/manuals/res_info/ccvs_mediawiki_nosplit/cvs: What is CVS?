@@ -60,9 +60,11 @@ module and vendor branch support.
 free download from the internet.  For more information
 on downloading <small>CVS</small> and other <small>CVS</small> topics, see:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>http://www.cvshome.org/
-http://www.loria.fr/~molli/cvs-index.html
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ http://www.cvshome.org/
+ http://www.loria.fr/~molli/cvs-index.html
+</div>
+</td></tr></table>
 
 <div id="index-Mailing-list"></div>
 <div id="index-List_002c-mailing-list"></div>

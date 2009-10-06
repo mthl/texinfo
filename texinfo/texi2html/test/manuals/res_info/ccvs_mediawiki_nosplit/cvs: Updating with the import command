@@ -12,18 +12,22 @@ repository with the same <code>import</code> command that you used to set up
 the repository in the first place.  The only difference is that you
 specify a different release tag this time:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ tar xfz wdiff-0.05.tar.gz
-$ cd wdiff-0.05
-$ cvs import -m &quot;Import of FSF v. 0.05&quot; fsf/wdiff FSF_DIST WDIFF_0_05
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ tar xfz wdiff-0.05.tar.gz
+ $ cd wdiff-0.05
+ $ cvs import -m &quot;Import of FSF v. 0.05&quot; fsf/wdiff FSF_DIST WDIFF_0_05
+</div>
+</td></tr></table>
 
 <p>For files that have not been modified locally, the newly created
 revision becomes the head revision.  If you have made local
 changes, <code>import</code> will warn you that you must merge the changes
 into the main trunk, and tell you to use &lsquo;<samp>checkout -j</samp>&rsquo; to do so:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -jFSF_DIST:yesterday -jFSF_DIST wdiff
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout -jFSF_DIST:yesterday -jFSF_DIST wdiff
+</div>
+</td></tr></table>
 
 <p>The above command will check out the latest revision of
 &lsquo;<samp>wdiff</samp>&rsquo;, merging the changes made on the vendor branch &lsquo;<samp>FSF_DIST</samp>&rsquo;
@@ -33,8 +37,10 @@ the merge they should be resolved in the normal way (see [[cvs: Conflicts exampl
 <p>However, it is much better to use the two release tags rather than using
 a date on the branch as suggested above:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -jWDIFF_0_04 -jWDIFF_0_05 wdiff
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout -jWDIFF_0_04 -jWDIFF_0_05 wdiff
+</div>
+</td></tr></table>
 
 <p>The reason this is better is that
 using a date, as suggested above, assumes that you do

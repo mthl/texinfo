@@ -24,10 +24,12 @@ alphabetically.  If not, you can look through the
 section on other problems to see if your problem is
 mentioned there.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Partial list of error messages| Error messages]]::<nowiki>              Partial list of CVS errors
-</nowiki>&bull;[[#Trouble making a connection to a CVS server| Connection]]::<nowiki>                  Trouble making a connection to a CVS server
-</nowiki>&bull;[[#Other common problems| Other problems]]::<nowiki>              Problems not readily listed by error message
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#Partial list of error messages|&bull; Error messages]]::              Partial list of CVS errors
+ [[#Trouble making a connection to a CVS server|&bull; Connection]]::                  Trouble making a connection to a CVS server
+ [[#Other common problems|&bull; Other problems]]::              Problems not readily listed by error message
+</div>
+
 
 <hr>
 <div id="Error-messages"></div>
@@ -93,8 +95,10 @@ removal.
 </p>
 </dd>
 <dt><code>cannot change permissions on temporary directory</code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>Operation not permitted
-</nowiki></pre></td></tr></table>
+<dd><table><tr><td>&nbsp;</td><td><div class="example">
+ Operation not permitted
+</div>
+</td></tr></table>
 <p>This message has been happening in a non-reproducible,
 occasional way when we run the client/server testsuite,
 both on Red Hat Linux 3.0.3 and 4.1.  We haven&rsquo;t been
@@ -269,8 +273,10 @@ finds the syntax error.
 of <small>CVS</small> prior to <small>CVS</small> 1.8.  When using <small>CVS</small>
 1.8 or later, the above message will be preceded by
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs commit: Rebuilding administrative file database
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs commit: Rebuilding administrative file database
+</div>
+</td></tr></table>
 
 <p>If you see both messages, the database is being rebuilt
 twice, which is unnecessary but harmless.  If you wish
@@ -392,8 +398,10 @@ conflict.  For more details on this process see
 </p>
 </dd>
 <dt><code>Usage:	diff3 [-exEX3 [-i | -m] [-L label1 -L label3]] file1 file2 file3</code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>Only one of [exEX3] allowed
-</nowiki></pre></td></tr></table>
+<dd><table><tr><td>&nbsp;</td><td><div class="example">
+ Only one of [exEX3] allowed
+</div>
+</td></tr></table>
 <p>This indicates a problem with the installation of
 <code>diff3</code> and <code>rcsmerge</code>.  Specifically
 <code>rcsmerge</code> was compiled to look for GNU diff3, but
@@ -433,10 +441,12 @@ a problem editing the file.  If so, point the
 <code>CVSEDITOR</code> environment variable to a small script
 such as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#!/bin/sh
-vi $*
-exit 0
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #!/bin/sh
+ vi $*
+ exit 0
+</div>
+</td></tr></table>
 
 </dd>
 </dl>
@@ -514,14 +524,18 @@ your editor &quot;helpfully&quot; added without you noticing.
 &quot;foo&quot; followed by return).  If <small>CVS</small> is working
 correctly, it will respond with
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs [pserver aborted]: bad auth protocol start: foo
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs [pserver aborted]: bad auth protocol start: foo
+</div>
+</td></tr></table>
 
 <p>If instead you get:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>Usage: cvs [cvs-options] command [command-options-and-arguments]
-...
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ Usage: cvs [cvs-options] command [command-options-and-arguments]
+ ...
+</div>
+</td></tr></table>
 
 <p>then you&rsquo;re missing the &lsquo;<samp>pserver</samp>&rsquo; command at the end of the
 line in &lsquo;<tt>inetd.conf</tt>&rsquo;; check to make sure that the entire command
@@ -529,12 +543,14 @@ is on one line and that it&rsquo;s complete.
 </p>
 <p>Likewise, if you get something like:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>Unknown command: `pserved'
-
-CVS commands are:
-        add          Add a new file/directory to the repository
-...
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ Unknown command: `pserved'
+ 
+ CVS commands are:
+         add          Add a new file/directory to the repository
+ ...
+</div>
+</td></tr></table>
 
 <p>then you&rsquo;ve misspelled &lsquo;<samp>pserver</samp>&rsquo; in some way.  If it isn&rsquo;t
 obvious, check for invisible control characters (particularly
@@ -544,8 +560,10 @@ carriage returns) in &lsquo;<tt>inetd.conf</tt>&rsquo;.
 right.  Change the invocation in &lsquo;<tt>inetd.conf</tt>&rsquo; to run the
 echo program instead of cvs.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>2401  stream  tcp  nowait  root /bin/echo echo hello
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ 2401  stream  tcp  nowait  root /bin/echo echo hello
+</div>
+</td></tr></table>
 
 <p>After making that change and instructing inetd to
 re-read its configuration file, &quot;telnet servername
@@ -566,9 +584,11 @@ documentation for more information.
 </p>
 <p>If you seem to be connecting but get errors like:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs server: cannot open /root/.cvsignore: Permission denied
-cvs [server aborted]: can't chdir(/root): Permission denied
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs server: cannot open /root/.cvsignore: Permission denied
+ cvs [server aborted]: can't chdir(/root): Permission denied
+</div>
+</td></tr></table>
 
 <p>then you probably haven&rsquo;t specified &lsquo;<samp>-f</samp>&rsquo; in &lsquo;<tt>inetd.conf</tt>&rsquo;.
 (In releases prior to <small>CVS</small> 1.11.1, this problem can be caused by

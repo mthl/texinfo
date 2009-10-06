@@ -26,38 +26,42 @@ spurious conflicts.
 </p>
 <p>For example, suppose you have a file like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>       +---------+
-      _! 1.1.2.1 !   &lt;-  br1
-     / +---------+
+<table><tr><td>&nbsp;</td><td><div class="example">
+        +---------+
+       _! 1.1.2.1 !   &lt;-  br1
+      / +---------+
+     /
     /
-   /
-+-----+    +-----+
-! 1.1 !----! 1.2 !
-+-----+    +-----+
-</nowiki></pre></td></tr></table>
+ +-----+    +-----+
+ ! 1.1 !----! 1.2 !
+ +-----+    +-----+
+</div>
+</td></tr></table>
 
 <p>and your working directory is currently on the trunk
 (revision 1.2).  Then you might get the following
 results from a merge:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cat file1
-key $<i></i>Revision: 1.2 $
-. . .
-$ cvs update -j br1
-U file1
-RCS file: /cvsroot/first-dir/file1,v
-retrieving revision 1.1
-retrieving revision 1.1.2.1
-Merging differences between 1.1 and 1.1.2.1 into file1
-rcsmerge: warning: conflicts during merge
-$ cat file1
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; file1
-key $<i></i>Revision: 1.2 $
-=======
-key $<i></i>Revision: 1.1.2.1 $
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.1.2.1
-. . .
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cat file1
+ key $<i></i>Revision: 1.2 $
+ . . .
+ $ cvs update -j br1
+ U file1
+ RCS file: /cvsroot/first-dir/file1,v
+ retrieving revision 1.1
+ retrieving revision 1.1.2.1
+ Merging differences between 1.1 and 1.1.2.1 into file1
+ rcsmerge: warning: conflicts during merge
+ $ cat file1
+ &lt;&lt;&lt;&lt;&lt;&lt;&lt; file1
+ key $<i></i>Revision: 1.2 $
+ =======
+ key $<i></i>Revision: 1.1.2.1 $
+ &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.1.2.1
+ . . .
+</div>
+</td></tr></table>
 
 <p>What happened was that the merge tried to merge the
 differences between 1.1 and 1.1.2.1 into your working
@@ -69,19 +73,21 @@ working directory had contained <code>Revision: 1.2</code>.
 </p>
 <p>Here is what happens if you had used &lsquo;<samp>-kk</samp>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cat file1
-key $<i></i>Revision: 1.2 $
-. . .
-$ cvs update -kk -j br1
-U file1
-RCS file: /cvsroot/first-dir/file1,v
-retrieving revision 1.1
-retrieving revision 1.1.2.1
-Merging differences between 1.1 and 1.1.2.1 into file1
-$ cat file1
-key $<i></i>Revision$
-. . .
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cat file1
+ key $<i></i>Revision: 1.2 $
+ . . .
+ $ cvs update -kk -j br1
+ U file1
+ RCS file: /cvsroot/first-dir/file1,v
+ retrieving revision 1.1
+ retrieving revision 1.1.2.1
+ Merging differences between 1.1 and 1.1.2.1 into file1
+ $ cat file1
+ key $<i></i>Revision$
+ . . .
+</div>
+</td></tr></table>
 
 <p>What is going on here is that revision 1.1 and 1.1.2.1
 both expand as plain <code>Revision</code>, and therefore

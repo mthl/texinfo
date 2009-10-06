@@ -24,8 +24,10 @@ contains the latest revision contained in
 &lsquo;<tt>loginfo,v</tt>&rsquo;.  When you check in an administrative
 file, <small>CVS</small> should print
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs commit: Rebuilding administrative file database
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs commit: Rebuilding administrative file database
+</div>
+</td></tr></table>
 
 <p>and update the checked out copy in
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;.  If it does not, there is

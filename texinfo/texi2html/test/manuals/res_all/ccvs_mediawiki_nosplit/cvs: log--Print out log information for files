@@ -38,7 +38,9 @@ Coordinated Universal Time (UTC).  (Other parts of
 <p><strong>Note: <code>log</code> uses &lsquo;<samp>-R</samp>&rsquo; in a way that conflicts
 with the normal use inside <small>CVS</small> (see [[cvs: Common command options#Common command options|Common options]]).</strong>
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: log options#log options| log options]]::<nowiki>                 log options
-</nowiki>&bull;[[cvs: log examples#log examples| log examples]]::<nowiki>                log examples
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: log options#log options|&bull; log options]]::                 log options
+ [[cvs: log examples#log examples|&bull; log examples]]::                log examples
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

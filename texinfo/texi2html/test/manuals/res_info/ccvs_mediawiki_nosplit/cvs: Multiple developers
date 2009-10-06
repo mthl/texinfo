@@ -52,14 +52,16 @@ models work, and some of the issues involved in
 choosing between them.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: File status#File status| File status]]::<nowiki>                 A file can be in several states
-</nowiki>&bull;[[cvs: Bringing a file up to date#Bringing a file up to date| Updating a file]]::<nowiki>             Bringing a file up-to-date
-</nowiki>&bull;[[cvs: Conflicts example#Conflicts example| Conflicts example]]::<nowiki>           An informative example
-</nowiki>&bull;[[cvs: Informing others about commits#Informing others about commits| Informing others]]::<nowiki>            To cooperate you must inform
-</nowiki>&bull;[[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS| Concurrency]]::<nowiki>                 Simultaneous repository access
-</nowiki>&bull;[[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files| Watches]]::<nowiki>                     Mechanisms to track who is editing files
-</nowiki>&bull;[[cvs: Choosing between reserved or unreserved checkouts#Choosing between reserved or unreserved checkouts| Choosing a model]]::<nowiki>            Reserved or unreserved checkouts?
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: File status#File status|&bull; File status]]::                 A file can be in several states
+ [[cvs: Bringing a file up to date#Bringing a file up to date|&bull; Updating a file]]::             Bringing a file up-to-date
+ [[cvs: Conflicts example#Conflicts example|&bull; Conflicts example]]::           An informative example
+ [[cvs: Informing others about commits#Informing others about commits|&bull; Informing others]]::            To cooperate you must inform
+ [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|&bull; Concurrency]]::                 Simultaneous repository access
+ [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|&bull; Watches]]::                     Mechanisms to track who is editing files
+ [[cvs: Choosing between reserved or unreserved checkouts#Choosing between reserved or unreserved checkouts|&bull; Choosing a model]]::            Reserved or unreserved checkouts?
+</div>
+
 <hr>
 <div class="header">
 <p>

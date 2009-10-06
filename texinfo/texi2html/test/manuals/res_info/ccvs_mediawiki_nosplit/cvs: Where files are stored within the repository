@@ -12,68 +12,74 @@ Next: [[cvs: File permissions#File permissions|File permissions]], Up: [[cvs: Ho
 tree corresponding to the directories in the working
 directory.  For example, supposing the repository is in
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>/usr/local/cvsroot
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ /usr/local/cvsroot
+</div>
+</td></tr></table>
 
 <p>here is a possible directory tree (showing only the
 directories):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki><tt>/usr</tt>
- |
- +--<tt>local</tt>
- |   |
- |   +--<tt>cvsroot</tt>
- |   |    |
- |   |    +--<tt>CVSROOT</tt>
-          |      (administrative files)
-          |
-          +--<tt>gnu</tt>
-          |   |
-          |   +--<tt>diff</tt>
-          |   |   (source code to GNU diff)
-          |   |
-          |   +--<tt>rcs</tt>
-          |   |   (source code to RCS)
-          |   |
-          |   +--<tt>cvs</tt>
-          |       (source code to CVS)
-          |
-          +--<tt>yoyodyne</tt>
-              |
-              +--<tt>tc</tt>
-              |    |
-              |    +--<tt>man</tt>
-              |    |
-              |    +--<tt>testing</tt>
-              |
-              +--(other Yoyodyne software)
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ <tt>/usr</tt>
+  |
+  +--<tt>local</tt>
+  |   |
+  |   +--<tt>cvsroot</tt>
+  |   |    |
+  |   |    +--<tt>CVSROOT</tt>
+           |      (administrative files)
+           |
+           +--<tt>gnu</tt>
+           |   |
+           |   +--<tt>diff</tt>
+           |   |   (source code to GNU diff)
+           |   |
+           |   +--<tt>rcs</tt>
+           |   |   (source code to RCS)
+           |   |
+           |   +--<tt>cvs</tt>
+           |       (source code to CVS)
+           |
+           +--<tt>yoyodyne</tt>
+               |
+               +--<tt>tc</tt>
+               |    |
+               |    +--<tt>man</tt>
+               |    |
+               |    +--<tt>testing</tt>
+               |
+               +--(other Yoyodyne software)
+</div>
+</td></tr></table>
 
 <p>With the directories are <em>history files</em> for each file
 under version control.  The name of the history file is
 the name of the corresponding file with &lsquo;<samp>,v</samp>&rsquo;
 appended to the end.  Here is what the repository for
 the &lsquo;<tt>yoyodyne/tc</tt>&rsquo; directory might look like:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>  <code>$CVSROOT</code>
-    |
-    +--<tt>yoyodyne</tt>
-    |   |
-    |   +--<tt>tc</tt>
-    |   |   |
-            +--<tt>Makefile,v</tt>
-            +--<tt>backend.c,v</tt>
-            +--<tt>driver.c,v</tt>
-            +--<tt>frontend.c,v</tt>
-            +--<tt>parser.c,v</tt>
-            +--<tt>man</tt>
-            |    |
-            |    +--<tt>tc.1,v</tt>
-            |
-            +--<tt>testing</tt>
-                 |
-                 +--<tt>testpgm.t,v</tt>
-                 +--<tt>test2.t,v</tt>
-</nowiki></pre></td></tr></table>
+</p><table><tr><td>&nbsp;</td><td><div class="example">
+   <code>$CVSROOT</code>
+     |
+     +--<tt>yoyodyne</tt>
+     |   |
+     |   +--<tt>tc</tt>
+     |   |   |
+             +--<tt>Makefile,v</tt>
+             +--<tt>backend.c,v</tt>
+             +--<tt>driver.c,v</tt>
+             +--<tt>frontend.c,v</tt>
+             +--<tt>parser.c,v</tt>
+             +--<tt>man</tt>
+             |    |
+             |    +--<tt>tc.1,v</tt>
+             |
+             +--<tt>testing</tt>
+                  |
+                  +--<tt>testpgm.t,v</tt>
+                  +--<tt>test2.t,v</tt>
+</div>
+</td></tr></table>
 
 <div id="index-History-files"></div>
 <div id="index-RCS-history-files"></div>

@@ -10,12 +10,14 @@ Previous: [[cvs: release output#release output|release output]], Up: [[cvs: rele
 <p>Release the &lsquo;<tt>tc</tt>&rsquo; directory, and delete your local working copy
 of the files.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..         # <span class="roman">You must stand immediately above the</span>
-                # <span class="roman">sources when you issue &lsquo;<samp>cvs release</samp>&rsquo;.</span>
-$ cvs release -d tc
-You have [0] altered files in this repository.
-Are you sure you want to release (and delete) directory `tc': y
-$
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd ..         # <span class="roman" style="font-family:serif; font-weight:normal;">You must stand immediately above the</span>
+                 # <span class="roman" style="font-family:serif; font-weight:normal;">sources when you issue &lsquo;<samp>cvs release</samp>&rsquo;.</span>
+ $ cvs release -d tc
+ You have [0] altered files in this repository.
+ Are you sure you want to release (and delete) directory `tc': y
+ $
+</div>
+</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

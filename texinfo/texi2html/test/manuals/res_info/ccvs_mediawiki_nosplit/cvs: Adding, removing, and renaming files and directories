@@ -16,10 +16,12 @@ fact that a change has taken place, just as with
 modifying an existing file.  The exact mechanisms to do
 this in <small>CVS</small> vary depending on the situation.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Adding files to a directory#Adding files to a directory| Adding files]]::<nowiki>                Adding files
-</nowiki>&bull;[[cvs: Removing files#Removing files| Removing files]]::<nowiki>              Removing files
-</nowiki>&bull;[[cvs: Removing directories#Removing directories| Removing directories]]::<nowiki>        Removing directories
-</nowiki>&bull;[[cvs: Moving and renaming files#Moving and renaming files| Moving files]]::<nowiki>                Moving and renaming files
-</nowiki>&bull;[[cvs: Moving and renaming directories#Moving and renaming directories| Moving directories]]::<nowiki>          Moving and renaming directories
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: Adding files to a directory#Adding files to a directory|&bull; Adding files]]::                Adding files
+ [[cvs: Removing files#Removing files|&bull; Removing files]]::              Removing files
+ [[cvs: Removing directories#Removing directories|&bull; Removing directories]]::        Removing directories
+ [[cvs: Moving and renaming files#Moving and renaming files|&bull; Moving files]]::                Moving and renaming files
+ [[cvs: Moving and renaming directories#Moving and renaming directories|&bull; Moving directories]]::          Moving and renaming directories
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

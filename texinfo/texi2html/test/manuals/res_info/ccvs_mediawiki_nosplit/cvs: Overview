@@ -16,8 +16,10 @@ software before.
 trying to learn a particular feature or remember a
 certain command, you can probably skip everything here.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: What is CVS?#What is CVS?| What is CVS?]]::<nowiki>                What you can do with CVS
-</nowiki>&bull;[[cvs: What is CVS not?#What is CVS not?| What is CVS not?]]::<nowiki>            Problems CVS doesn't try to solve
-</nowiki>&bull;[[cvs: A sample session#A sample session| A sample session]]::<nowiki>            A tour of basic CVS usage
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: What is CVS?#What is CVS?|&bull; What is CVS?]]::                What you can do with CVS
+ [[cvs: What is CVS not?#What is CVS not?|&bull; What is CVS not?]]::            Problems CVS doesn't try to solve
+ [[cvs: A sample session#A sample session|&bull; A sample session]]::            A tour of basic CVS usage
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

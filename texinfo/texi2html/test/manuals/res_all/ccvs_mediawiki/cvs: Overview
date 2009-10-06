@@ -15,10 +15,12 @@ software before.
 trying to learn a particular feature or remember a
 certain command, you can probably skip everything here.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#What is CVS?| What is CVS?]]::<nowiki>                What you can do with CVS
-</nowiki>&bull;[[#What is CVS not?| What is CVS not?]]::<nowiki>            Problems CVS doesn&rsquo;t try to solve
-</nowiki>&bull;[[#A sample session| A sample session]]::<nowiki>            A tour of basic CVS usage
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#What is CVS?|&bull; What is CVS?]]::                What you can do with CVS
+ [[#What is CVS not?|&bull; What is CVS not?]]::            Problems CVS doesn&rsquo;t try to solve
+ [[#A sample session|&bull; A sample session]]::            A tour of basic CVS usage
+</div>
+
 <hr>
 <div id="What-is-CVS_003f"></div>
 <div class="header">
@@ -81,9 +83,11 @@ module and vendor branch support.
 free download from the internet.  For more information
 on downloading <small>CVS</small> and other <small>CVS</small> topics, see:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>http://www.cvshome.org/
-http://www.loria.fr/~molli/cvs-index.html
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ http://www.cvshome.org/
+ http://www.loria.fr/~molli/cvs-index.html
+</div>
+</td></tr></table>
 
 <div id="index-Mailing-list"></div>
 <div id="index-List_002c-mailing-list"></div>
@@ -288,11 +292,13 @@ The compiler is called &lsquo;<samp>tc</samp>&rsquo; (Trivial Compiler),
 and the repository is set up so that there is a module
 called &lsquo;<samp>tc</samp>&rsquo;.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Getting the source| Getting the source]]::<nowiki>          Creating a workspace
-</nowiki>&bull;[[#Committing your changes| Committing your changes]]::<nowiki>     Making your work available to others
-</nowiki>&bull;[[#Cleaning up| Cleaning up]]::<nowiki>                 Cleaning up
-</nowiki>&bull;[[#Viewing differences| Viewing differences]]::<nowiki>         Viewing differences
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#Getting the source|&bull; Getting the source]]::          Creating a workspace
+ [[#Committing your changes|&bull; Committing your changes]]::     Making your work available to others
+ [[#Cleaning up|&bull; Cleaning up]]::                 Cleaning up
+ [[#Viewing differences|&bull; Viewing differences]]::         Viewing differences
+</div>
+
 <hr>
 <div id="Getting-the-source"></div>
 <div class="header">
@@ -310,16 +316,20 @@ Next: [[#Committing your changes|Committing your changes]], Up: [[#A sample sess
 <p>The first thing you must do is to get your own working copy of the
 source for &lsquo;<samp>tc</samp>&rsquo;.  For this, you use the <code>checkout</code> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout tc
+</div>
+</td></tr></table>
 
 <p>This will create a new directory called &lsquo;<tt>tc</tt>&rsquo; and populate it with
 the source files.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd tc
-$ ls
-CVS         Makefile    backend.c   driver.c    frontend.c  parser.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd tc
+ $ ls
+ CVS         Makefile    backend.c   driver.c    frontend.c  parser.c
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<tt>CVS</tt>&rsquo; directory is used internally by
 <small>CVS</small>.  Normally, you should not modify or remove
@@ -347,8 +357,10 @@ store your new &lsquo;<tt>backend.c</tt>&rsquo; in the repository and
 make it available to anyone else who is using that same
 repository.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit backend.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit backend.c
+</div>
+</td></tr></table>
 
 <p><small>CVS</small> starts an editor, to allow you to enter a log
 message.  You type in &ldquo;Added an optimization pass.&rdquo;,
@@ -393,8 +405,10 @@ starting an editor you can specify the log message on
 the command line using the &lsquo;<samp>-m</samp>&rsquo; flag instead, like
 this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -m &quot;Added an optimization pass&quot; backend.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit -m &quot;Added an optimization pass&quot; backend.c
+</div>
+</td></tr></table>
 
 <hr>
 <div id="Cleaning-up"></div>
@@ -412,20 +426,24 @@ Next: [[#Viewing differences|Viewing differences]], Previous: [[#Committing your
 <p>Before you turn to other tasks you decide to remove your working copy of
 tc.  One acceptable way to do that is of course
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
-$ rm -r tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd ..
+ $ rm -r tc
+</div>
+</td></tr></table>
 
 <p>but a better way is to use the <code>release</code> command (see [[cvs: Guide to CVS commands#release&mdash;Indicate that a Module is no longer in use|release]]):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
-$ cvs release -d tc
-M driver.c
-? tc
-You have [1] altered files in this repository.
-Are you sure you want to release (and delete) directory `tc': n
-** `release' aborted by user choice.
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd ..
+ $ cvs release -d tc
+ M driver.c
+ ? tc
+ You have [1] altered files in this repository.
+ Are you sure you want to release (and delete) directory `tc': n
+ ** `release' aborted by user choice.
+</div>
+</td></tr></table>
 
 <p>The <code>release</code> command checks that all your modifications have been
 committed.  If history logging is enabled it also makes a note in the
@@ -469,26 +487,30 @@ Previous: [[#Cleaning up|Cleaning up]], Up: [[#A sample session|A sample session
 <p>You do not remember modifying &lsquo;<tt>driver.c</tt>&rsquo;, so you want to see what
 has happened to that file.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd tc
-$ cvs diff driver.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd tc
+ $ cvs diff driver.c
+</div>
+</td></tr></table>
 
 <p>This command runs <code>diff</code> to compare the version of &lsquo;<tt>driver.c</tt>&rsquo;
 that you checked out with your working copy.  When you see the output
 you remember that you added a command line option that enabled the
 optimization pass.  You check it in, and release the module.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -m &quot;Added an optimization pass&quot; driver.c
-Checking in driver.c;
-/usr/local/cvsroot/tc/driver.c,v  &lt;--  driver.c
-new revision: 1.2; previous revision: 1.1
-done
-$ cd ..
-$ cvs release -d tc
-? tc
-You have [0] altered files in this repository.
-Are you sure you want to release (and delete) directory `tc': y
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit -m &quot;Added an optimization pass&quot; driver.c
+ Checking in driver.c;
+ /usr/local/cvsroot/tc/driver.c,v  &lt;--  driver.c
+ new revision: 1.2; previous revision: 1.1
+ done
+ $ cd ..
+ $ cvs release -d tc
+ ? tc
+ You have [0] altered files in this repository.
+ Are you sure you want to release (and delete) directory `tc': y
+</div>
+</td></tr></table>
 
 <hr>
 <div class="header">

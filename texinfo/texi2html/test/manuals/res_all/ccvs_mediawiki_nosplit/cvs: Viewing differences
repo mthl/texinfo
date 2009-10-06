@@ -12,25 +12,29 @@ Previous: [[cvs: Cleaning up#Cleaning up|Cleaning up]], Up: [[cvs: A sample sess
 <p>You do not remember modifying &lsquo;<tt>driver.c</tt>&rsquo;, so you want to see what
 has happened to that file.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd tc
-$ cvs diff driver.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd tc
+ $ cvs diff driver.c
+</div>
+</td></tr></table>
 
 <p>This command runs <code>diff</code> to compare the version of &lsquo;<tt>driver.c</tt>&rsquo;
 that you checked out with your working copy.  When you see the output
 you remember that you added a command line option that enabled the
 optimization pass.  You check it in, and release the module.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -m &quot;Added an optimization pass&quot; driver.c
-Checking in driver.c;
-/usr/local/cvsroot/tc/driver.c,v  &lt;--  driver.c
-new revision: 1.2; previous revision: 1.1
-done
-$ cd ..
-$ cvs release -d tc
-? tc
-You have [0] altered files in this repository.
-Are you sure you want to release (and delete) directory `tc': y
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit -m &quot;Added an optimization pass&quot; driver.c
+ Checking in driver.c;
+ /usr/local/cvsroot/tc/driver.c,v  &lt;--  driver.c
+ new revision: 1.2; previous revision: 1.1
+ done
+ $ cd ..
+ $ cvs release -d tc
+ ? tc
+ You have [0] altered files in this repository.
+ Are you sure you want to release (and delete) directory `tc': y
+</div>
+</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

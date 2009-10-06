@@ -54,9 +54,11 @@ log message on the command line with the &lsquo;<samp>-m
 or use the &lsquo;<samp>-F <var>file</var></samp>&rsquo; option to specify
 that the argument file contains the log message.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: commit options#commit options| commit options]]::<nowiki>              commit options
-</nowiki>&bull;[[cvs: commit examples#commit examples| commit examples]]::<nowiki>             commit examples
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: commit options#commit options|&bull; commit options]]::              commit options
+ [[cvs: commit examples#commit examples|&bull; commit examples]]::             commit examples
+</div>
+
 <hr>
 <div class="header">
 <p>

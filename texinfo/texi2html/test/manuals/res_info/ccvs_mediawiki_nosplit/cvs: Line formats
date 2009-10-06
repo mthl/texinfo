@@ -16,15 +16,17 @@ is &lsquo;<samp>-</samp>&rsquo; for deleted lines, &lsquo;<samp>|</samp>&rsquo; 
 for unchanged lines.  The formats contain newline characters where
 newlines are desired on output.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs diff \
-   --old-line-format='-%l
-' \
-   --new-line-format='|%l
-' \
-   --unchanged-line-format=' %l
-' \
-   myfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs diff \
+    --old-line-format='-%l
+ ' \
+    --new-line-format='|%l
+ ' \
+    --unchanged-line-format=' %l
+ ' \
+    myfile
+</div>
+</td></tr></table>
 
 <p>To specify a line format, use one of the following options.  You should
 quote <var>format</var>, since it often contains shell metacharacters.
@@ -102,21 +104,23 @@ different formats.  For example, the following command uses a format
 similar to <code>diff</code>&rsquo;s normal format.  You can tailor this command
 to get fine control over <code>diff</code>&rsquo;s output.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs diff \
-   --old-line-format='&lt; %l
-' \
-   --new-line-format='&gt; %l
-' \
-   --old-group-format='%df%(f=l?:,%dl)d%dE
-%&lt;' \
-   --new-group-format='%dea%dF%(F=L?:,%dL)
-%&gt;' \
-   --changed-group-format='%df%(f=l?:,%dl)c%dF%(F=L?:,%dL)
-%&lt;---
-%&gt;' \
-   --unchanged-group-format='' \
-   myfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs diff \
+    --old-line-format='&lt; %l
+ ' \
+    --new-line-format='&gt; %l
+ ' \
+    --old-group-format='%df%(f=l?:,%dl)d%dE
+ %&lt;' \
+    --new-group-format='%dea%dF%(F=L?:,%dL)
+ %&gt;' \
+    --changed-group-format='%df%(f=l?:,%dl)c%dF%(F=L?:,%dL)
+ %&lt;---
+ %&gt;' \
+    --unchanged-group-format='' \
+    myfile
+</div>
+</td></tr></table>
 
 <hr>
 <div class="header">

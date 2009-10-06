@@ -30,6 +30,8 @@ various formats.
 &lsquo;<samp>-n</samp>&rsquo;, and &lsquo;<samp>-p</samp>&rsquo; in ways that conflict with the
 normal use inside <small>CVS</small> (see [[cvs: Common command options#Common command options|Common options]]).</strong>
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: history options#history options| history options]]::<nowiki>             history options
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: history options#history options|&bull; history options]]::             history options
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

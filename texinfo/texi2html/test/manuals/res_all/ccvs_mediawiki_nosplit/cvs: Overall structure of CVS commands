@@ -13,8 +13,10 @@ Next: [[cvs: CVS's exit status#CVS&rsquo;s exit status|Exit status]], Up: [[cvs:
 
 <p>The overall format of all <small>CVS</small> commands is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs [ cvs_options ] cvs_command [ command_options ] [ command_args ]
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs [ cvs_options ] cvs_command [ command_options ] [ command_args ]
+</div>
+</td></tr></table>
 
 <dl compact="compact">
 <dt><code>cvs</code></dt>

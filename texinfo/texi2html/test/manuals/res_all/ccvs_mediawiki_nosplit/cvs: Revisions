@@ -20,14 +20,16 @@ went into a particular release, one uses a <em>tag</em>,
 which is a symbolic revision which can be assigned to a
 numeric revision in each file.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Revision numbers#Revision numbers| Revision numbers]]::<nowiki>            The meaning of a revision number
-</nowiki>&bull;[[cvs: Versions, revisions and releases#Versions, revisions and releases| Versions revisions releases]]::<nowiki>  Terminology used in this manual
-</nowiki>&bull;[[cvs: Assigning revisions#Assigning revisions| Assigning revisions]]::<nowiki>         Assigning revisions
-</nowiki>&bull;[[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revisions| Tags]]::<nowiki>                        Tags--Symbolic revisions
-</nowiki>&bull;[[cvs: Specifying what to tag from the working directory#Specifying what to tag from the working directory| Tagging the working directory]]::<nowiki>  The cvs tag command
-</nowiki>&bull;[[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision| Tagging by date/tag]]::<nowiki>         The cvs rtag command
-</nowiki>&bull;[[cvs: Deleting, moving, and renaming tags#Deleting, moving, and renaming tags| Modifying tags]]::<nowiki>              Adding, renaming, and deleting tags
-</nowiki>&bull;[[cvs: Tagging and adding and removing files#Tagging and adding and removing files| Tagging add/remove]]::<nowiki>          Tags with adding and removing files
-</nowiki>&bull;[[cvs: Sticky tags#Sticky tags| Sticky tags]]::<nowiki>                 Certain tags are persistent
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: Revision numbers#Revision numbers|&bull; Revision numbers]]::            The meaning of a revision number
+ [[cvs: Versions, revisions and releases#Versions, revisions and releases|&bull; Versions revisions releases]]::  Terminology used in this manual
+ [[cvs: Assigning revisions#Assigning revisions|&bull; Assigning revisions]]::         Assigning revisions
+ [[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revisions|&bull; Tags]]::                        Tags--Symbolic revisions
+ [[cvs: Specifying what to tag from the working directory#Specifying what to tag from the working directory|&bull; Tagging the working directory]]::  The cvs tag command
+ [[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision|&bull; Tagging by date/tag]]::         The cvs rtag command
+ [[cvs: Deleting, moving, and renaming tags#Deleting, moving, and renaming tags|&bull; Modifying tags]]::              Adding, renaming, and deleting tags
+ [[cvs: Tagging and adding and removing files#Tagging and adding and removing files|&bull; Tagging add/remove]]::          Tags with adding and removing files
+ [[cvs: Sticky tags#Sticky tags|&bull; Sticky tags]]::                 Certain tags are persistent
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

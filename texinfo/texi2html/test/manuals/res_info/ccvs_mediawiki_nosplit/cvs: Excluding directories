@@ -15,8 +15,10 @@ before the name of each directory to be excluded.
 </p>
 <p>For example, if the modules file contains:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>exmodule -a !first-dir/sdir first-dir
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ exmodule -a !first-dir/sdir first-dir
+</div>
+</td></tr></table>
 
 <p>then checking out the module &lsquo;<samp>exmodule</samp>&rsquo; will check
 out everything in &lsquo;<samp>first-dir</samp>&rsquo; except any files in

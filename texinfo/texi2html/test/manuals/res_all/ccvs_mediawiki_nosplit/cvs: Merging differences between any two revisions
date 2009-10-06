@@ -16,8 +16,10 @@ between any two revisions into your working file.
 </p>
 <div id="index-Undoing-a-change"></div>
 <div id="index-Removing-a-change"></div>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -j 1.5 -j 1.3 backend.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs update -j 1.5 -j 1.3 backend.c
+</div>
+</td></tr></table>
 
 <p>will undo all changes made between revision
 1.3 and 1.5.  Note the order of the revisions!
@@ -39,14 +41,16 @@ you then removed it (thus adding a dead revision 1.2).
 Now suppose you want to add it again, with the same
 contents it had previously.  Here is how to do it:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -j 1.2 -j 1.1 file1
-U file1
-$ cvs commit -m test
-Checking in file1;
-/tmp/cvs-sanity/cvsroot/first-dir/file1,v  &lt;--  file1
-new revision: 1.3; previous revision: 1.2
-done
-$
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs update -j 1.2 -j 1.1 file1
+ U file1
+ $ cvs commit -m test
+ Checking in file1;
+ /tmp/cvs-sanity/cvsroot/first-dir/file1,v  &lt;--  file1
+ new revision: 1.3; previous revision: 1.2
+ done
+ $
+</div>
+</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

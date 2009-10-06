@@ -27,11 +27,13 @@ with strings of the form
 <code>$<var>keyword</var>:<var>value</var>$</code> whenever you obtain
 a new revision of the file.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Keyword List#Keyword List| Keyword list]]::<nowiki>                   Keywords
-</nowiki>&bull;[[cvs: Using keywords#Using keywords| Using keywords]]::<nowiki>                 Using keywords
-</nowiki>&bull;[[cvs: Avoiding substitution#Avoiding substitution| Avoiding substitution]]::<nowiki>          Avoiding substitution
-</nowiki>&bull;[[cvs: Substitution modes#Substitution modes| Substitution modes]]::<nowiki>             Substitution modes
-</nowiki>&bull;[[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion| Configuring keyword expansion]]::<nowiki>  Configuring keyword expansion
-</nowiki>&bull;[[cvs: Problems with the $ Log$ keyword.#Problems with the $ <i></i>Log$ keyword.| Log keyword]]::<nowiki>                    Problems with the $<i></i>Log$ keyword.
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: Keyword List#Keyword List|&bull; Keyword list]]::                   Keywords
+ [[cvs: Using keywords#Using keywords|&bull; Using keywords]]::                 Using keywords
+ [[cvs: Avoiding substitution#Avoiding substitution|&bull; Avoiding substitution]]::          Avoiding substitution
+ [[cvs: Substitution modes#Substitution modes|&bull; Substitution modes]]::             Substitution modes
+ [[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion|&bull; Configuring keyword expansion]]::  Configuring keyword expansion
+ [[cvs: Problems with the $ Log$ keyword.#Problems with the $ <i></i>Log$ keyword.|&bull; Log keyword]]::                    Problems with the $<i></i>Log$ keyword.
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

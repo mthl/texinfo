@@ -26,30 +26,32 @@ recursively when you specify a directory as an
 argument.  For instance, consider this directory
 structure:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>      <code>$HOME</code>
-        |
-        +--<tt>tc</tt>
-        |   |
-            +--<tt>CVS</tt>
-            |      (internal CVS files)
-            +--<tt>Makefile</tt>
-            +--<tt>backend.c</tt>
-            +--<tt>driver.c</tt>
-            +--<tt>frontend.c</tt>
-            +--<tt>parser.c</tt>
-            +--<tt>man</tt>
-            |    |
-            |    +--<tt>CVS</tt>
-            |    |  (internal CVS files)
-            |    +--<tt>tc.1</tt>
-            |
-            +--<tt>testing</tt>
-                 |
-                 +--<tt>CVS</tt>
-                 |  (internal CVS files)
-                 +--<tt>testpgm.t</tt>
-                 +--<tt>test2.t</tt>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+       <code>$HOME</code>
+         |
+         +--<tt>tc</tt>
+         |   |
+             +--<tt>CVS</tt>
+             |      (internal CVS files)
+             +--<tt>Makefile</tt>
+             +--<tt>backend.c</tt>
+             +--<tt>driver.c</tt>
+             +--<tt>frontend.c</tt>
+             +--<tt>parser.c</tt>
+             +--<tt>man</tt>
+             |    |
+             |    +--<tt>CVS</tt>
+             |    |  (internal CVS files)
+             |    +--<tt>tc.1</tt>
+             |
+             +--<tt>testing</tt>
+                  |
+                  +--<tt>CVS</tt>
+                  |  (internal CVS files)
+                  +--<tt>testpgm.t</tt>
+                  +--<tt>test2.t</tt>
+</div>
+</td></tr></table>
 
 <p>If &lsquo;<tt>tc</tt>&rsquo; is the current working directory, the
 following is true:
@@ -58,8 +60,10 @@ following is true:
 <li>
 &lsquo;<samp>cvs update testing</samp>&rsquo; is equivalent to
 
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update testing/testpgm.t testing/test2.t
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs update testing/testpgm.t testing/test2.t
+</div>
+</td></tr></table>
 
 </li><li>
 &lsquo;<samp>cvs update testing man</samp>&rsquo; updates all files in the
@@ -82,8 +86,10 @@ turned off with the &lsquo;<samp>-l</samp>&rsquo; option.
 Conversely, the &lsquo;<samp>-R</samp>&rsquo; option can be used to force recursion if
 &lsquo;<samp>-l</samp>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section [[cvs: Guide to CVS commands#Default options and the ~/.cvsrc file|Default options and the ~/.cvsrc file]]).
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -l         # <span class="roman">Don't update files in subdirectories</span>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs update -l         # <span class="roman" style="font-family:serif; font-weight:normal;">Don't update files in subdirectories</span>
+</div>
+</td></tr></table>
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">

@@ -40,7 +40,9 @@ specify the &lsquo;<samp>-p</samp>&rsquo; option to the <code>patch</code> comma
 patching the old sources, so that <code>patch</code> is able to find
 the files that are located in other directories.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: rdiff options#rdiff options| rdiff options]]::<nowiki>               rdiff options
-</nowiki>&bull;[[cvs: rdiff examples#rdiff examples| rdiff examples]]::<nowiki>              rdiff examples
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: rdiff options#rdiff options|&bull; rdiff options]]::               rdiff options
+ [[cvs: rdiff examples#rdiff examples|&bull; rdiff examples]]::              rdiff examples
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

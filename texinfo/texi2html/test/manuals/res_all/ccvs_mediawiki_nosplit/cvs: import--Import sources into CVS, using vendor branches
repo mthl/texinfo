@@ -70,10 +70,12 @@ directory; if you want to work with the sources import
 them first and then check them out into a different
 directory (see [[cvs: Getting the source#Getting the source|Getting the source]]).
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: import options#import options| import options]]::<nowiki>              import options
-</nowiki>&bull;[[cvs: import output#import output| import output]]::<nowiki>               import output
-</nowiki>&bull;[[cvs: import examples#import examples| import examples]]::<nowiki>             import examples
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: import options#import options|&bull; import options]]::              import options
+ [[cvs: import output#import output|&bull; import output]]::               import output
+ [[cvs: import examples#import examples|&bull; import examples]]::             import examples
+</div>
+
 <hr>
 <div class="header">
 <p>

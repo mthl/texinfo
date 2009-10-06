@@ -61,58 +61,66 @@ options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS comma
 
 <p>Here is an example of removing several files:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd test
-$ rm *.c
-$ cvs remove
-cvs remove: Removing .
-cvs remove: scheduling a.c for removal
-cvs remove: scheduling b.c for removal
-cvs remove: use 'cvs commit' to remove these files permanently
-$ cvs ci -m &quot;Removed unneeded files&quot;
-cvs commit: Examining .
-cvs commit: Committing .
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd test
+ $ rm *.c
+ $ cvs remove
+ cvs remove: Removing .
+ cvs remove: scheduling a.c for removal
+ cvs remove: scheduling b.c for removal
+ cvs remove: use 'cvs commit' to remove these files permanently
+ $ cvs ci -m &quot;Removed unneeded files&quot;
+ cvs commit: Examining .
+ cvs commit: Committing .
+</div>
+</td></tr></table>
 
 <p>As a convenience you can remove the file and <code>cvs
 remove</code> it in one step, by specifying the &lsquo;<samp>-f</samp>&rsquo;
 option.  For example, the above example could also be
 done like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd test
-$ cvs remove -f *.c
-cvs remove: scheduling a.c for removal
-cvs remove: scheduling b.c for removal
-cvs remove: use 'cvs commit' to remove these files permanently
-$ cvs ci -m &quot;Removed unneeded files&quot;
-cvs commit: Examining .
-cvs commit: Committing .
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd test
+ $ cvs remove -f *.c
+ cvs remove: scheduling a.c for removal
+ cvs remove: scheduling b.c for removal
+ cvs remove: use 'cvs commit' to remove these files permanently
+ $ cvs ci -m &quot;Removed unneeded files&quot;
+ cvs commit: Examining .
+ cvs commit: Committing .
+</div>
+</td></tr></table>
 
 <p>If you execute <code>remove</code> for a file, and then
 change your mind before you commit, you can undo the
 <code>remove</code> with an <code>add</code> command.
 </p>
 
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ ls
-CVS   ja.h  oj.c
-$ rm oj.c
-$ cvs remove oj.c
-cvs remove: scheduling oj.c for removal
-cvs remove: use 'cvs commit' to remove this file permanently
-$ cvs add oj.c
-U oj.c
-cvs add: oj.c, version 1.1.1.1, resurrected
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ ls
+ CVS   ja.h  oj.c
+ $ rm oj.c
+ $ cvs remove oj.c
+ cvs remove: scheduling oj.c for removal
+ cvs remove: use 'cvs commit' to remove this file permanently
+ $ cvs add oj.c
+ U oj.c
+ cvs add: oj.c, version 1.1.1.1, resurrected
+</div>
+</td></tr></table>
 
 <p>If you realize your mistake before you run the
 <code>remove</code> command you can use <code>update</code> to
 resurrect the file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ rm oj.c
-$ cvs update oj.c
-cvs update: warning: oj.c was lost
-U oj.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ rm oj.c
+ $ cvs update oj.c
+ cvs update: warning: oj.c was lost
+ U oj.c
+</div>
+</td></tr></table>
 
 <p>When you remove a file it is removed only on the branch
 which you are working on (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  You can

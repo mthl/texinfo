@@ -53,13 +53,15 @@ imagination is the limit!
 </p></dd>
 </dl>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: The common syntax#The common syntax| syntax]]::<nowiki>                      The common syntax
-</nowiki>&bull;[[cvs: Commitinfo#Commitinfo| commitinfo]]::<nowiki>                  Pre-commit checking
-</nowiki>&bull;[[cvs: Verifying log messages#Verifying log messages| verifymsg]]::<nowiki>                   How are log messages evaluated?
-</nowiki>&bull;[[cvs: Editinfo#Editinfo| editinfo]]::<nowiki>                    Specifying how log messages are created
-                                (obsolete)
-</nowiki>&bull;[[cvs: Loginfo#Loginfo| loginfo]]::<nowiki>                     Where should log messages be sent?
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: The common syntax#The common syntax|&bull; syntax]]::                      The common syntax
+ [[cvs: Commitinfo#Commitinfo|&bull; commitinfo]]::                  Pre-commit checking
+ [[cvs: Verifying log messages#Verifying log messages|&bull; verifymsg]]::                   How are log messages evaluated?
+ [[cvs: Editinfo#Editinfo|&bull; editinfo]]::                    Specifying how log messages are created
+                                 (obsolete)
+ [[cvs: Loginfo#Loginfo|&bull; loginfo]]::                     Where should log messages be sent?
+</div>
+
 <hr>
 <div class="header">
 <p>

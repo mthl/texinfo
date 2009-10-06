@@ -12,17 +12,19 @@ or adding some files, <code>update -j</code> will reflect
 such additions or removals.
 </p>
 <p>For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update -A
-touch a b c
-cvs add a b c ; cvs ci -m &quot;added&quot; a b c
-cvs tag -b branchtag
-cvs update -r branchtag
-touch d ; cvs add d
-rm a ; cvs rm a
-cvs ci -m &quot;added d, removed a&quot;
-cvs update -A
-cvs update -jbranchtag
-</nowiki></pre></td></tr></table>
+</p><table><tr><td>&nbsp;</td><td><div class="example">
+ cvs update -A
+ touch a b c
+ cvs add a b c ; cvs ci -m &quot;added&quot; a b c
+ cvs tag -b branchtag
+ cvs update -r branchtag
+ touch d ; cvs add d
+ rm a ; cvs rm a
+ cvs ci -m &quot;added d, removed a&quot;
+ cvs update -A
+ cvs update -jbranchtag
+</div>
+</td></tr></table>
 
 <p>After these commands are executed and a &lsquo;<samp>cvs commit</samp>&rsquo; is done,
 file &lsquo;<tt>a</tt>&rsquo; will be removed and file &lsquo;<tt>d</tt>&rsquo; added in the main branch.

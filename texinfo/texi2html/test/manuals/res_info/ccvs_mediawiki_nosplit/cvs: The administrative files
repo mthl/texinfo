@@ -22,13 +22,15 @@ some commands work better when at least the
 file.  It defines all modules in the repository.  This
 is a sample &lsquo;<tt>modules</tt>&rsquo; file.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>CVSROOT         CVSROOT
-modules         CVSROOT modules
-cvs             gnu/cvs
-rcs             gnu/rcs
-diff            gnu/diff
-tc              yoyodyne/tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ CVSROOT         CVSROOT
+ modules         CVSROOT modules
+ cvs             gnu/cvs
+ rcs             gnu/rcs
+ diff            gnu/diff
+ tc              yoyodyne/tc
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<tt>modules</tt>&rsquo; file is line oriented.  In its
 simplest form each line contains the name of the

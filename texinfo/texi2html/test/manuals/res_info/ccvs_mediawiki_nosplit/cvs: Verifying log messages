@@ -97,47 +97,57 @@ line of the log message.  The rest of log message is
 free text.  The following template is found in the file
 &lsquo;<tt>/usr/cvssupport/tc.template</tt>&rsquo;.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>BugId:
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ BugId:
+</div>
+</td></tr></table>
 
 <p>The script &lsquo;<tt>/usr/cvssupport/bugid.verify</tt>&rsquo; is used to
 evaluate the log message.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#!/bin/sh
-#
-#       bugid.verify filename
-#
-#  Verify that the log message contains a valid bugid
-#  on the first line.
-#
-if head -1 &lt; $1 | grep '^BugId:[ ]*[0-9][0-9]*$' &gt; /dev/null; then
-    exit 0
-elif head -1 &lt; $1 | grep '^BugId:[ ]*none$' &gt; /dev/null; then
-    # It is okay to allow commits with 'BugId: none',
-    # but do not put that text into the real log message.
-    grep -v '^BugId:[ ]*none$' &gt; $1.rewrite
-    mv $1.rewrite $1
-    exit 0
-else
-    echo &quot;No BugId found.&quot;
-    exit 1
-fi
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #!/bin/sh
+ #
+ #       bugid.verify filename
+ #
+ #  Verify that the log message contains a valid bugid
+ #  on the first line.
+ #
+ if head -1 &lt; $1 | grep '^BugId:[ ]*[0-9][0-9]*$' &gt; /dev/null; then
+     exit 0
+ elif head -1 &lt; $1 | grep '^BugId:[ ]*none$' &gt; /dev/null; then
+     # It is okay to allow commits with 'BugId: none',
+     # but do not put that text into the real log message.
+     grep -v '^BugId:[ ]*none$' &gt; $1.rewrite
+     mv $1.rewrite $1
+     exit 0
+ else
+     echo &quot;No BugId found.&quot;
+     exit 1
+ fi
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<tt>verifymsg</tt>&rsquo; file contains this line:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>^tc     /usr/cvssupport/bugid.verify
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ^tc     /usr/cvssupport/bugid.verify
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<tt>rcsinfo</tt>&rsquo; file contains this line:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>^tc     /usr/cvssupport/tc.template
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ^tc     /usr/cvssupport/tc.template
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<tt>config</tt>&rsquo; file contains this line:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>RereadLogAfterVerify=always
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ RereadLogAfterVerify=always
+</div>
+</td></tr></table>
 
 
 

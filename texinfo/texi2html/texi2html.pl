@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.342 2009-10-04 21:51:04 pertusus Exp $
+# $Id: texi2html.pl,v 1.343 2009-10-06 13:35:57 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -403,6 +403,8 @@ $ENABLE_ENCODING_USE_ENTITY
 $PROGRAM_NAME_IN_FOOTER
 $HEADER_IN_TABLE
 $USE_TITLEPAGE_FOR_TITLE
+$INLINE_CSS_STYLE
+$NO_CSS
 );
 
 # customization variables which may be guessed in the script
@@ -786,7 +788,8 @@ sub HTML_DEFAULT_shortcontents($$)
     my $elements_list = shift;
     my $stoc_file = shift;
     return unless (Texi2HTML::Config::get_conf('shortcontents') or $FRAMES);
-    my $ul_style = $NUMBER_SECTIONS ? $NO_BULLET_LIST_ATTRIBUTE : ''; 
+    my $ul_class = '';
+    $ul_class = $NO_BULLET_LIST_CLASS if ($NUMBER_SECTIONS);
     my @result = ();
     foreach my $element (@$elements_list)
     {
@@ -805,7 +808,7 @@ sub HTML_DEFAULT_shortcontents($$)
     }
     if (@result)
     {
-        unshift @result, "<ul${ul_style}>\n";
+        unshift @result, html_default_attribute_class('ul', $ul_class) .">\n";
         push @result, "</ul>\n";
         unshift @result, $BEFORE_OVERVIEW;
         push @result, $AFTER_OVERVIEW;
@@ -822,7 +825,8 @@ sub HTML_DEFAULT_contents($$)
     return unless (Texi2HTML::Config::get_conf('contents'));
 
     my $current_level = 0;
-    my $ul_style = $NUMBER_SECTIONS ? $NO_BULLET_LIST_ATTRIBUTE : '';
+    my $ul_class = '';
+    $ul_class = $NO_BULLET_LIST_CLASS if ($NUMBER_SECTIONS);
     my @result = ();
     foreach my $element (@$elements_list)
     {
@@ -835,7 +839,7 @@ sub HTML_DEFAULT_contents($$)
             while ($level > $current_level)
             {
                 $current_level++;
-                my $ln = "\n$ind<ul${ul_style}>\n";
+                my $ln = "\n$ind".html_default_attribute_class('ul', $ul_class).">\n";
                 $ind = '  ' x $current_level;
                 push(@result, $ln);
             }
@@ -942,12 +946,17 @@ sub T2H_GPL_style($$$$$$$$$$)
     if ($use_attribute)
     {
         my $attribute_text = '';
+        my $class = '';
         if ($style =~ /^(\w+)(\s+.*)/)
         {
             $style = $1;
             $attribute_text = $2;
+            if ($attribute_text =~ s/^\s+class=\"([^\"]+)\"//)
+            {
+                $class = $1;
+            }
         }
-        $text = "<${style}$attribute_text>" . "$text" if (!$no_open);
+        $text = html_default_attribute_class($style, $class) . "$attribute_text>" . "$text" if (!$no_open);
         $text .= "</$style>" if (!$no_close);
         if ($do_quotes)
         {
@@ -15672,6 +15681,7 @@ sub collect_all_css_files()
    my @css_rule_lines;
 
   # process css files
+   return ([],[]) if ($Texi2HTML::Config::NO_CSS);
    foreach my $file (@Texi2HTML::Config::CSS_FILES)
    {
       my $css_file_fh;

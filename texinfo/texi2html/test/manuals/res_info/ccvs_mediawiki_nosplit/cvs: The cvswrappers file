@@ -41,22 +41,26 @@ binary files.
 </p>
 <p>The basic format of the file &lsquo;<tt>cvswrappers</tt>&rsquo; is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>wildcard     [option value][option value]...
-
-where option is one of
--m           update methodology      value: MERGE or COPY
--k           keyword expansion       value: expansion mode
-
-and value is a single-quote delimited value.
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ wildcard     [option value][option value]...
+ 
+ where option is one of
+ -m           update methodology      value: MERGE or COPY
+ -k           keyword expansion       value: expansion mode
+ 
+ and value is a single-quote delimited value.
+</div>
+</td></tr></table>
 
 
 <p>For example, the following command imports a
 directory, treating files whose name ends in
 &lsquo;<samp>.exe</samp>&rsquo; as binary:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs import -I ! -W &quot;*.exe -k 'b'&quot; first-dir vendortag reltag
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs import -I ! -W &quot;*.exe -k 'b'&quot; first-dir vendortag reltag
+</div>
+</td></tr></table>
 
 
 <hr>

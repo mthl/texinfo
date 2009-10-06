@@ -20,12 +20,14 @@ way.  For example, if you had to create a patch to the
 1.2 version of the product, even though the 2.0 version
 is already under development, you might do:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs rtag -b -r FCS1_2 FCS1_2_Patch product_module
-$ cvs checkout -r FCS1_2_Patch product_module
-$ cd product_module
-[[ hack away ]]
-$ cvs commit
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs rtag -b -r FCS1_2 FCS1_2_Patch product_module
+ $ cvs checkout -r FCS1_2_Patch product_module
+ $ cd product_module
+ [[ hack away ]]
+ $ cvs commit
+</div>
+</td></tr></table>
 
 <p>This works automatically since the &lsquo;<samp>-r</samp>&rsquo; option is
 sticky.

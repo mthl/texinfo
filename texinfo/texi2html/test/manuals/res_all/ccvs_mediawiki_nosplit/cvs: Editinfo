@@ -64,8 +64,10 @@ commit</code> are used, &lsquo;<tt>editinfo</tt>&rsquo; will not be consulted.
 There is no good workaround for this; use
 &lsquo;<tt>verifymsg</tt>&rsquo; instead.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Editinfo example#Editinfo example| editinfo example]]::<nowiki>            Editinfo example
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: Editinfo example#Editinfo example|&bull; editinfo example]]::            Editinfo example
+</div>
+
 <hr>
 <div class="header">
 <p>

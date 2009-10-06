@@ -74,8 +74,10 @@ is the format string, and three files (<tt>ChangeLog</tt>,
 <tt>Makefile</tt>, <tt>foo.c</tt>) were modified, the output
 might be:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>&quot;yoyodyne/tc ChangeLog,1.1,1.2 Makefile,1.3,1.4 foo.c,1.12,1.13&quot;
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ &quot;yoyodyne/tc ChangeLog,1.1,1.2 Makefile,1.3,1.4 foo.c,1.12,1.13&quot;
+</div>
+</td></tr></table>
 
 <p>As another example, &lsquo;<samp>%{}</samp>&rsquo; means that only the
 name of the repository will be generated.
@@ -84,9 +86,11 @@ name of the repository will be generated.
 &lsquo;<tt>loginfo</tt>&rsquo; will be run on the <em>remote</em>
 (i.e., server) side, not the client side (see [[cvs: Remote repositories#Remote repositories|Remote repositories]]).
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Loginfo example#Loginfo example| loginfo example]]::<nowiki>             Loginfo example
-</nowiki>&bull;[[cvs: Keeping a checked out copy#Keeping a checked out copy| Keeping a checked out copy]]::<nowiki>  Updating a tree on every checkin
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: Loginfo example#Loginfo example|&bull; loginfo example]]::             Loginfo example
+ [[cvs: Keeping a checked out copy#Keeping a checked out copy|&bull; Keeping a checked out copy]]::  Updating a tree on every checkin
+</div>
+
 <hr>
 <div class="header">
 <p>

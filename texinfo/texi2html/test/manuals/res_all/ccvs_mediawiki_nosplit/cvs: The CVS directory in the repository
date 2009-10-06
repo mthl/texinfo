@@ -80,10 +80,12 @@ and <var>hostname</var> and <var>pathname</var> are for the working directory.
 
 <p>Example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>Ffile1 _watched=;_watchers=joe&gt;edit,mary&gt;commit
-Ffile2 _watched=;_editors=sue&gt;8 Jan 1975+workstn1+/home/sue/cvs
-D _watched=
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ Ffile1 _watched=;_watchers=joe&gt;edit,mary&gt;commit
+ Ffile2 _watched=;_editors=sue&gt;8 Jan 1975+workstn1+/home/sue/cvs
+ D _watched=
+</div>
+</td></tr></table>
 
 <p>means that the file &lsquo;<tt>file1</tt>&rsquo; should be checked out
 read-only.  Furthermore, joe is watching for edits and

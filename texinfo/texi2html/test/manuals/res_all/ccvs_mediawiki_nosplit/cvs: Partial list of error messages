@@ -51,8 +51,10 @@ removal.
 </p>
 </dd>
 <dt><code>cannot change permissions on temporary directory</code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>Operation not permitted
-</nowiki></pre></td></tr></table>
+<dd><table><tr><td>&nbsp;</td><td><div class="example">
+ Operation not permitted
+</div>
+</td></tr></table>
 <p>This message has been happening in a non-reproducible,
 occasional way when we run the client/server testsuite,
 both on Red Hat Linux 3.0.3 and 4.1.  We haven&rsquo;t been
@@ -227,8 +229,10 @@ finds the syntax error.
 of <small>CVS</small> prior to <small>CVS</small> 1.8.  When using <small>CVS</small>
 1.8 or later, the above message will be preceded by
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs commit: Rebuilding administrative file database
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs commit: Rebuilding administrative file database
+</div>
+</td></tr></table>
 
 <p>If you see both messages, the database is being rebuilt
 twice, which is unnecessary but harmless.  If you wish
@@ -350,8 +354,10 @@ conflict.  For more details on this process see
 </p>
 </dd>
 <dt><code>Usage:	diff3 [-exEX3 [-i | -m] [-L label1 -L label3]] file1 file2 file3</code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>Only one of [exEX3] allowed
-</nowiki></pre></td></tr></table>
+<dd><table><tr><td>&nbsp;</td><td><div class="example">
+ Only one of [exEX3] allowed
+</div>
+</td></tr></table>
 <p>This indicates a problem with the installation of
 <code>diff3</code> and <code>rcsmerge</code>.  Specifically
 <code>rcsmerge</code> was compiled to look for GNU diff3, but
@@ -391,10 +397,12 @@ a problem editing the file.  If so, point the
 <code>CVSEDITOR</code> environment variable to a small script
 such as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#!/bin/sh
-vi $*
-exit 0
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #!/bin/sh
+ vi $*
+ exit 0
+</div>
+</td></tr></table>
 
 </dd>
 </dl>

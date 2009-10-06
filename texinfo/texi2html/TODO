@@ -70,6 +70,8 @@ Later
   TOP_BUTTONS
   USE_TITLEPAGE_FOR_TITLE
   SHOW_TITLE
+  NO_CSS
+  INLINE_CSS_STYLE
   print_redirection_page?
   new argument of menu_link
   @command_handler_output

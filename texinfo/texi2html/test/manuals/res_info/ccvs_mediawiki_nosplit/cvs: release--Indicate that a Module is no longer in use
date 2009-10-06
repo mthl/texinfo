@@ -38,8 +38,10 @@ leaves a record of its execution (attesting to your
 intentionally abandoning your checkout) in the <small>CVS</small>
 history log.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: release options#release options| release options]]::<nowiki>             release options
-</nowiki>&bull;[[cvs: release output#release output| release output]]::<nowiki>              release output
-</nowiki>&bull;[[cvs: release examples#release examples| release examples]]::<nowiki>            release examples
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: release options#release options|&bull; release options]]::             release options
+ [[cvs: release output#release output|&bull; release output]]::              release output
+ [[cvs: release examples#release examples|&bull; release examples]]::            release examples
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

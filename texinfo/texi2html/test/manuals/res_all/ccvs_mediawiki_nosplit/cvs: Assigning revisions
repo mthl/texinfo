@@ -35,8 +35,10 @@ files to be committed even if they are not modified.
 revision 3.0 (including those that haven&rsquo;t changed),
 you might invoke:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -r 3.0
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit -r 3.0
+</div>
+</td></tr></table>
 
 <p>Note that the number you specify with &lsquo;<samp>-r</samp>&rsquo; must be
 larger than any existing revision number.  That is, if

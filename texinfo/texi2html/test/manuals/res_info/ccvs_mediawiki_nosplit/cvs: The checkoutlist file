@@ -14,15 +14,19 @@ suppose that you have a script &lsquo;<tt>logcommit.pl</tt>&rsquo;
 which you run by including the following line in the
 &lsquo;<tt>commitinfo</tt>&rsquo; administrative file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>ALL   $CVSROOT/CVSROOT/logcommit.pl
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ALL   $CVSROOT/CVSROOT/logcommit.pl
+</div>
+</td></tr></table>
 
 <p>To maintain &lsquo;<tt>logcommit.pl</tt>&rsquo; with <small>CVS</small> you would
 add the following line to the &lsquo;<tt>checkoutlist</tt>&rsquo;
 administrative file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>logcommit.pl
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ logcommit.pl
+</div>
+</td></tr></table>
 
 <p>The format of &lsquo;<tt>checkoutlist</tt>&rsquo; is one line for each
 file that you want to maintain using <small>CVS</small>, giving
@@ -34,8 +38,10 @@ the files listed there will function just like
 when checking in one of the files you should get a
 message such as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs commit: Rebuilding administrative file database
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs commit: Rebuilding administrative file database
+</div>
+</td></tr></table>
 
 <p>and the checked out copy in the &lsquo;<tt>CVSROOT</tt>&rsquo;
 directory should be updated.

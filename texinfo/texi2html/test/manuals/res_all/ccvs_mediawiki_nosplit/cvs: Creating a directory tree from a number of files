@@ -16,9 +16,11 @@ explain how to use it.  If the files you want to install in
 <small>CVS</small> reside in &lsquo;<tt><var>wdir</var></tt>&rsquo;, and you want them to appear in the
 repository as &lsquo;<tt>$CVSROOT/yoyodyne/<var>rdir</var></tt>&rsquo;, you can do this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd <var>wdir</var>
-$ cvs import -m &quot;Imported sources&quot; yoyodyne/<var>rdir</var> yoyo start
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd <var>wdir</var>
+ $ cvs import -m &quot;Imported sources&quot; yoyodyne/<var>rdir</var> yoyo start
+</div>
+</td></tr></table>
 
 <p>Unless you supply a log message with the &lsquo;<samp>-m</samp>&rsquo;
 flag, <small>CVS</small> starts an editor and prompts for a
@@ -31,11 +33,13 @@ more information about them.
 <p>You can now verify that it worked, and remove your
 original source directory.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd ..
-$ cvs checkout yoyodyne/<var>rdir</var>       # <span class="roman">Explanation below</span>
-$ diff -r <var>wdir</var> yoyodyne/<var>rdir</var>
-$ rm -r <var>wdir</var>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd ..
+ $ cvs checkout yoyodyne/<var>rdir</var>       # <span class="roman" style="font-family:serif; font-weight:normal;">Explanation below</span>
+ $ diff -r <var>wdir</var> yoyodyne/<var>rdir</var>
+ $ rm -r <var>wdir</var>
+</div>
+</td></tr></table>
 
 <p>Erasing the original sources is a good idea, to make sure that you do
 not accidentally edit them in <var>wdir</var>, bypassing <small>CVS</small>.

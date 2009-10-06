@@ -28,22 +28,28 @@ explicitly in the <small>CVS</small> arguments.
 
 <p>For example, if the modules file contains:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>amodule -a first-dir
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ amodule -a first-dir
+</div>
+</td></tr></table>
 
 <p>then the following two commands are equivalent:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs co amodule
-$ cvs co first-dir
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs co amodule
+ $ cvs co first-dir
+</div>
+</td></tr></table>
 
 <p>and they each would provide output such as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs checkout: Updating first-dir
-U first-dir/file1
-U first-dir/file2
-cvs checkout: Updating first-dir/sdir
-U first-dir/sdir/sfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs checkout: Updating first-dir
+ U first-dir/file1
+ U first-dir/file2
+ cvs checkout: Updating first-dir/sdir
+ U first-dir/sdir/sfile
+</div>
+</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

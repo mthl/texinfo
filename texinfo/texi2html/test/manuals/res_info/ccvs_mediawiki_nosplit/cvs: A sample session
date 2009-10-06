@@ -25,9 +25,11 @@ The compiler is called &lsquo;<samp>tc</samp>&rsquo; (Trivial Compiler),
 and the repository is set up so that there is a module
 called &lsquo;<samp>tc</samp>&rsquo;.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Getting the source#Getting the source| Getting the source]]::<nowiki>          Creating a workspace
-</nowiki>&bull;[[cvs: Committing your changes#Committing your changes| Committing your changes]]::<nowiki>     Making your work available to others
-</nowiki>&bull;[[cvs: Cleaning up#Cleaning up| Cleaning up]]::<nowiki>                 Cleaning up
-</nowiki>&bull;[[cvs: Viewing differences#Viewing differences| Viewing differences]]::<nowiki>         Viewing differences
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: Getting the source#Getting the source|&bull; Getting the source]]::          Creating a workspace
+ [[cvs: Committing your changes#Committing your changes|&bull; Committing your changes]]::     Making your work available to others
+ [[cvs: Cleaning up#Cleaning up|&bull; Cleaning up]]::                 Cleaning up
+ [[cvs: Viewing differences#Viewing differences|&bull; Viewing differences]]::         Viewing differences
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

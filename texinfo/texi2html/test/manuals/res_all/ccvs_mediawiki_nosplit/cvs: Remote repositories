@@ -29,8 +29,10 @@ which can mount the repository, known as the
 repository is just like using a local one, except that
 the format of the repository name is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>[:<var>method</var>:][[<var>user</var>][:<var>password</var>]@]<var>hostname</var>[:[<var>port</var>]]/path/to/repository
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ [:<var>method</var>:][[<var>user</var>][:<var>password</var>]@]<var>hostname</var>[:[<var>port</var>]]/path/to/repository
+</div>
+</td></tr></table>
 
 <p>Specifying a password in the repository name is not recommended during
 checkout, since this will cause <small>CVS</small> to store a cleartext copy of the
@@ -45,13 +47,15 @@ name contains &lsquo;<samp>:</samp>&rsquo;, then the default is <code>ext</code>
 or <code>server</code>, depending on your platform; both are
 described in [[cvs: Connecting with rsh#Connecting with rsh|Connecting via rsh]].
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Server requirements#Server requirements| Server requirements]]::<nowiki>         Memory and other resources for servers
-</nowiki>&bull;[[cvs: Connecting with rsh#Connecting with rsh| Connecting via rsh]]::<nowiki>          Using the <code>rsh</code> program to connect
-</nowiki>&bull;[[cvs: Direct connection with password authentication#Direct connection with password authentication| Password authenticated]]::<nowiki>      Direct connections using passwords
-</nowiki>&bull;[[cvs: Direct connection with GSSAPI#Direct connection with GSSAPI| GSSAPI authenticated]]::<nowiki>        Direct connections using GSSAPI
-</nowiki>&bull;[[cvs: Direct connection with kerberos#Direct connection with kerberos| Kerberos authenticated]]::<nowiki>      Direct connections with kerberos
-</nowiki>&bull;[[cvs: Connecting with fork#Connecting with fork| Connecting via fork]]::<nowiki>         Using a forked <code>cvs server</code> to connect
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: Server requirements#Server requirements|&bull; Server requirements]]::         Memory and other resources for servers
+ [[cvs: Connecting with rsh#Connecting with rsh|&bull; Connecting via rsh]]::          Using the <code>rsh</code> program to connect
+ [[cvs: Direct connection with password authentication#Direct connection with password authentication|&bull; Password authenticated]]::      Direct connections using passwords
+ [[cvs: Direct connection with GSSAPI#Direct connection with GSSAPI|&bull; GSSAPI authenticated]]::        Direct connections using GSSAPI
+ [[cvs: Direct connection with kerberos#Direct connection with kerberos|&bull; Kerberos authenticated]]::      Direct connections with kerberos
+ [[cvs: Connecting with fork#Connecting with fork|&bull; Connecting via fork]]::         Using a forked <code>cvs server</code> to connect
+</div>
+
 <hr>
 <div class="header">
 <p>

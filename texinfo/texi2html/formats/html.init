@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.29 2009-10-04 21:51:05 pertusus Exp $
+# $Id: html.init,v 1.30 2009-10-06 13:35:58 pertusus Exp $
 
 use strict;
 
@@ -969,6 +969,8 @@ sub HTML_DEFAULT_print_page_head($)
         }
     }
     
+    my $css_lines = '';
+    $css_lines = $Texi2HTML::THISDOC{'CSS_LINES'} if (defined($Texi2HTML::THISDOC{'CSS_LINES'}));
     my $doctype = get_conf('doctype');
     print $fh <<EOT;
 $doctype
@@ -984,7 +986,7 @@ $description
 <meta name="distribution" content="global">
 <meta name="Generator" content="$Texi2HTML::THISDOC{program}">
 $encoding
-${links}$Texi2HTML::THISDOC{'CSS_LINES'}
+${links}$css_lines
 $EXTRA_HEAD
 </head>
 
@@ -1252,12 +1254,12 @@ sub HTML_DEFAULT_print_navigation($;$)
     my $result = '';
     if ($HEADER_IN_TABLE)
     {
-        $result .= '<table class="header" cellpadding="1" cellspacing="1" border="0">'."\n";
+        $result .= html_default_attribute_class('table', 'header').' cellpadding="1" cellspacing="1" border="0">'."\n";
         $result .= "<tr>" unless $vertical;
     }
     else
     {
-        $result .= '<div class="header">'."\n<p>\n";
+        $result .= html_default_attribute_class('div', 'header').">\n<p>\n";
     }
     for my $button (@$buttons)
     {
@@ -1490,6 +1492,8 @@ sub HTML_DEFAULT_print_redirection_page()
     my $string = &$I('The node you are looking for is at %{href}.',
        { 'href' => $href });
     my $doctype = get_conf('doctype');
+    my $css_lines = '';
+    $css_lines = $Texi2HTML::THISDOC{'CSS_LINES'} if (defined($Texi2HTML::THISDOC{'CSS_LINES'}));
     #print $fh <<EOT;
     my $result = <<EOT;
 $doctype
@@ -1507,7 +1511,7 @@ $Texi2HTML::THISDOC{'program_authors'}
 <meta name="distribution" content="global">
 <meta name="Generator" content="$Texi2HTML::THISDOC{program}">
 $encoding
-$Texi2HTML::THISDOC{'CSS_LINES'}
+$css_lines
 <meta http-equiv="Refresh" content="2; url=$Texi2HTML::HREF{'This'}">
 $EXTRA_HEAD
 </head>
@@ -1560,6 +1564,19 @@ sub html_default_email($$)
     $text = main::normalise_space($text);
     return $text if ($mail eq '');
     return &$anchor('', "mailto:$mail", $text);
+}
+
+sub html_default_attribute_class($$)
+{
+    my $element = shift;
+    my $class = shift;
+    return "<$element" if (!defined($class) or $class eq '' or $NO_CSS);
+    my $style = '';
+    if ($INLINE_CSS_STYLE and defined($css_map{"$element.$class"}))
+    {
+        $style = ' style="'.$css_map{"$element.$class"}.'"';
+    }
+    return "<$element class=\"$class\"$style";
 }
 
 # this is called each time a format begins. Here it is used to keep a
@@ -1671,7 +1688,7 @@ sub html_default_float($$$$$)
         $caption_text = $caption;
     }
     
-    return '<div class="float">' . "$label\n" . $text . '</div>' . $caption_text;
+    return html_default_attribute_class('div','float'). '>' . "$label\n" . $text . '</div>' . $caption_text;
 }
 
 sub html_default_listoffloats_float_style($$)
@@ -1728,7 +1745,7 @@ sub html_default_listoffloats($$$)
     my $style = shift;
     my $float_entries = shift;
 
-    my $result = "<dl class=\"listoffloats\">\n" ;
+    my $result = html_default_attribute_class('dl', 'listoffloats').">\n" ;
     foreach my $float_entry (@$float_entries)
     {
          $result .= $float_entry;
@@ -1813,6 +1830,7 @@ sub html_default_anchor($;$$$)
     my $href = shift;
     my $text = shift;
     my $attributes = shift;
+    my $class = '';
 #print STDERR "!$name!$href!$text!$attributes!\n";
     if (!defined($attributes) or ($attributes !~ /\S/))
     {
@@ -1820,7 +1838,12 @@ sub html_default_anchor($;$$$)
     }
     else 
     {
-        $attributes = ' ' . $attributes;
+        if ($attributes =~ s/^class=\"([^\"]+)\"//)
+        {
+            $class = $1;
+        }
+
+        $attributes = ' ' . $attributes if ($attributes ne '');
     }
     $name = '' if (!defined($name) or ($name !~ /\S/));
     $href = '' if (!defined($href) or ($href !~ /\S/));
@@ -1830,7 +1853,7 @@ sub html_default_anchor($;$$$)
     $href = "href=\"$href\"" if ($href ne '');
     $href = ' ' . $href if (($name ne '') and ($href ne ''));
 #print STDERR "!!!$name!$href!$text!$attributes!\n";
-    return "<a ${name}${href}${attributes}>$text</a>";
+    return html_default_attribute_class('a', $class). " ${name}${href}${attributes}>$text</a>";
 }
 
 # This function is used to format the text associated with a @deff/@end deff
@@ -1911,7 +1934,7 @@ sub html_default_menu_command($$$)
     {
         return '' if  ($format eq 'direntry');
         return $text if ($format eq 'detailmenu');
-        return "<table class=\"menu\" border=\"0\" cellspacing=\"0\">${begin_row}\n" 
+        return html_default_attribute_class('table', 'menu')." border=\"0\" cellspacing=\"0\">${begin_row}\n" 
         . $text . "${end_row}</table>\n";
     }
 }
@@ -2252,7 +2275,7 @@ sub html_default_table_list($$$$$$$$$)
     if ($format_command eq 'itemize')
     {
         return "<ul>\n" . $text . "</ul>\n" if (($command eq 'bullet') or (($command eq '') and ($prepended eq '')));
-        return "<ul$NO_BULLET_LIST_ATTRIBUTE>\n" . $text . "</ul>\n";
+        return html_default_attribute_class('ul',$NO_BULLET_LIST_CLASS).">\n" . $text . "</ul>\n";
     }
     elsif ($format_command eq 'multitable')
     {
@@ -2400,7 +2423,7 @@ sub html_default_preformatted($$$$$$$$$$$$)
     {
        $text = html_end_style($style, $text, \%style_map_pre);
     }
-    return "<pre class=\"$class\">".$text."</pre>";
+    return html_default_attribute_class('pre', $class).">".$text."</pre>";
 }
 
 sub html_default_heading_text($$$)
@@ -2410,19 +2433,18 @@ sub html_default_heading_text($$$)
     my $level = shift;
 
     return '' if ($text !~ /\S/);
-    my $class_text = '';
     # FIXME use a class=*contents?
+    my $class = '';
     if ($command =~ /^@/ and $command !~ /^@.*contents$/)
     {
-       my $class = $command;
+       $class = $command;
        $class =~ s/^@//;
        $class = 'node-heading' if ($command eq '@node');
-       $class_text = " class=\"$class\"";
     }
     my $align = '';
     $align = ' align="center"' if ($command eq '@centerchap' or $command eq '@settitle');
     $level = 1 if ($level == 0);
-    my $result = "<h$level$class_text$align>$text</h$level>";
+    my $result = html_default_attribute_class ("h$level", $class) ."$align>$text</h$level>";
     # FIXME titlefont appears inline in text, so no end of line is
     # added. The end of line should be added by the user if needed.
     $result .= "\n" unless ($command eq '@titlefont');
@@ -2450,7 +2472,7 @@ sub html_default_raw($$;$)
     if ($style eq 'verbatim' or $style eq 'verbatiminclude' or ($style eq 'tex' and $expanded))
     {
         $style = 'verbatim' if ($style eq 'verbatiminclude');
-        return "<pre class=\"$style\">" . &$protect_text($text) . '</pre>';
+        return html_default_attribute_class('pre', $style).">" . &$protect_text($text) . '</pre>';
     }
     elsif ($style eq 'html' and $expanded)
     {
@@ -2526,7 +2548,7 @@ sub html_default_foot_line_and_ref($$$$$$$$$)
 sub html_default_foot_section($)
 {
     my $lines = shift;
-    unshift (@$lines, "<div class=\"footnote\">\n" ,"$DEFAULT_RULE\n", 
+    unshift (@$lines, html_default_attribute_class('div', 'footnote').">\n" ,"$DEFAULT_RULE\n", 
        &$heading_text('footnotes', &$I('Footnotes'), 3)
       );
     push (@$lines, "</div>\n"); 
@@ -2700,7 +2722,7 @@ sub html_default_cartouche($$)
 
     if ($text =~ /\S/)
     {
-        return "<table class=\"cartouche\" border=\"1\"><tr><td>\n" . $text . "</td></tr></table>\n";
+        return html_default_attribute_class('table', 'cartouche')." border=\"1\"><tr><td>\n" . $text . "</td></tr></table>\n";
     }
     return '';
 } 
@@ -2745,9 +2767,9 @@ sub html_default_quotation($$$$)
     my $text = shift;
     my $argument_text = shift;
     my $argument_text_texi = shift;
-    my $class_text = '';
-    $class_text = " class=\"$command\"" if ($command ne 'quotation');
-    return "<blockquote$class_text>" . $text . "</blockquote>\n";
+    my $class = '';
+    $class = $command if ($command ne 'quotation');
+    return html_default_attribute_class('blockquote', $class).">" . $text . "</blockquote>\n";
 }
 
 # format a whole index
@@ -2760,7 +2782,7 @@ sub html_default_print_index($$)
     my $text = shift;
     my $name = shift;
     return '' if (!defined($text));
-    return "<table border=\"0\" class=\"index-$name\">\n" .
+    return html_default_attribute_class('table', "index-$name")." border=\"0\">\n" .
     "<tr><td></td><th align=\"left\">" . &$I('Index Entry') . "</th><td>&nbsp;</td><th align=\"left\"> " . &$I('Section') . "</th></tr>\n"
     . "<tr><td colspan=\"4\"> $DEFAULT_RULE</td></tr>\n" . $text .
     "</table>\n";

@@ -78,9 +78,11 @@ directory.
 <p>For the output produced by the <code>checkout</code> command
 see [[cvs: update output#update output|update output]].
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: checkout options#checkout options| checkout options]]::<nowiki>            checkout options
-</nowiki>&bull;[[cvs: checkout examples#checkout examples| checkout examples]]::<nowiki>           checkout examples
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: checkout options#checkout options|&bull; checkout options]]::            checkout options
+ [[cvs: checkout examples#checkout examples|&bull; checkout examples]]::           checkout examples
+</div>
+
 <hr>
 <div class="header">
 <p>

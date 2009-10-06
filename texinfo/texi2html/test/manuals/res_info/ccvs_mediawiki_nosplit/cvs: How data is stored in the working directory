@@ -57,23 +57,31 @@ sensible approach, but the absolute pathname is quite
 common and implementations should accept either.  For
 example, after the command
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -d :local:/usr/local/cvsroot checkout yoyodyne/tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs -d :local:/usr/local/cvsroot checkout yoyodyne/tc
+</div>
+</td></tr></table>
 
 <p>&lsquo;<tt>Root</tt>&rsquo; will contain
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>:local:/usr/local/cvsroot
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ :local:/usr/local/cvsroot
+</div>
+</td></tr></table>
 
 <p>and &lsquo;<tt>Repository</tt>&rsquo; will contain either
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>/usr/local/cvsroot/yoyodyne/tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ /usr/local/cvsroot/yoyodyne/tc
+</div>
+</td></tr></table>
 
 <p>or
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>yoyodyne/tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ yoyodyne/tc
+</div>
+</td></tr></table>
 
 <p>If the particular working directory does not correspond
 to a directory in the repository, then &lsquo;<tt>Repository</tt>&rsquo;
@@ -94,8 +102,10 @@ allow for future expansion.
 </p>
 <p>If the first character is &lsquo;<samp>/</samp>&rsquo;, then the format is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>/<var>name</var>/<var>revision</var>/<var>timestamp</var>[+<var>conflict</var>]/<var>options</var>/<var>tagdate</var>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ /<var>name</var>/<var>revision</var>/<var>timestamp</var>[+<var>conflict</var>]/<var>options</var>/<var>tagdate</var>
+</div>
+</td></tr></table>
 
 <p>where &lsquo;<samp>[</samp>&rsquo; and &lsquo;<samp>]</samp>&rsquo; are not part of the entry,
 but instead indicate that the &lsquo;<samp>+</samp>&rsquo; and conflict
@@ -151,8 +161,10 @@ no other lines beginning with &lsquo;<samp>D</samp>&rsquo;, one knows there
 are no subdirectories).  Otherwise, the line looks
 like:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>D/<var>name</var>/<var>filler1</var>/<var>filler2</var>/<var>filler3</var>/<var>filler4</var>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ D/<var>name</var>/<var>filler1</var>/<var>filler2</var>/<var>filler3</var>/<var>filler4</var>
+</div>
+</td></tr></table>
 
 <p>where <var>name</var> is the name of the subdirectory, and
 all the <var>filler</var> fields should be silently ignored,
@@ -267,8 +279,10 @@ server.
 <dd><p>The file lists the revision for each of the files in
 the &lsquo;<tt>Base</tt>&rsquo; directory.  The format is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>B<var>name</var>/<var>rev</var>/<var>expansion</var>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ B<var>name</var>/<var>rev</var>/<var>expansion</var>
+</div>
+</td></tr></table>
 
 <p>where <var>expansion</var> should be ignored, to allow for
 future expansion.

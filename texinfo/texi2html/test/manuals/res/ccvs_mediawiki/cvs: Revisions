@@ -30,16 +30,18 @@ went into a particular release, one uses a <em>tag</em>,
 which is a symbolic revision which can be assigned to a
 numeric revision in each file.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Revision numbers| Revision numbers]]::<nowiki>            The meaning of a revision number
-</nowiki>&bull;[[#Versions, revisions and releases| Versions revisions releases]]::<nowiki>  Terminology used in this manual
-</nowiki>&bull;[[#Assigning revisions| Assigning revisions]]::<nowiki>         Assigning revisions
-</nowiki>&bull;[[#Tags&ndash;Symbolic revisions| Tags]]::<nowiki>                        Tags&ndash;Symbolic revisions
-</nowiki>&bull;[[#Specifying what to tag from the working directory| Tagging the working directory]]::<nowiki>  The cvs tag command
-</nowiki>&bull;[[#Specifying what to tag by date or revision| Tagging by date/tag]]::<nowiki>         The cvs rtag command
-</nowiki>&bull;[[#Deleting, moving, and renaming tags| Modifying tags]]::<nowiki>              Adding, renaming, and deleting tags
-</nowiki>&bull;[[#Tagging and adding and removing files| Tagging add/remove]]::<nowiki>          Tags with adding and removing files
-</nowiki>&bull;[[#Sticky tags| Sticky tags]]::<nowiki>                 Certain tags are persistent
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#Revision numbers|&bull; Revision numbers]]::            The meaning of a revision number
+ [[#Versions, revisions and releases|&bull; Versions revisions releases]]::  Terminology used in this manual
+ [[#Assigning revisions|&bull; Assigning revisions]]::         Assigning revisions
+ [[#Tags&ndash;Symbolic revisions|&bull; Tags]]::                        Tags&ndash;Symbolic revisions
+ [[#Specifying what to tag from the working directory|&bull; Tagging the working directory]]::  The cvs tag command
+ [[#Specifying what to tag by date or revision|&bull; Tagging by date/tag]]::         The cvs rtag command
+ [[#Deleting, moving, and renaming tags|&bull; Modifying tags]]::              Adding, renaming, and deleting tags
+ [[#Tagging and adding and removing files|&bull; Tagging add/remove]]::          Tags with adding and removing files
+ [[#Sticky tags|&bull; Sticky tags]]::                 Certain tags are persistent
+</div>
+
 <hr>
 <div id="Revision-numbers"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -77,10 +79,12 @@ revision is given a new number by increasing the
 rightmost number by one.  The following figure displays
 a few revisions, with newer revisions to the right.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>       +-----+    +-----+    +-----+    +-----+    +-----+
-       ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
-       +-----+    +-----+    +-----+    +-----+    +-----+
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+        +-----+    +-----+    +-----+    +-----+    +-----+
+        ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
+        +-----+    +-----+    +-----+    +-----+    +-----+
+</div>
+</td></tr></table>
 
 <p>It is also possible to end up with numbers containing
 more than one period, for example &lsquo;<samp>1.3.2.2</samp>&rsquo;.  Such
@@ -169,8 +173,10 @@ files to be committed even if they are not modified.
 revision 3.0 (including those that haven&rsquo;t changed),
 you might invoke:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -r 3.0
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit -r 3.0
+</div>
+</td></tr></table>
 
 <p>Note that the number you specify with &lsquo;<samp>-r</samp>&rsquo; must be
 larger than any existing revision number.  That is, if
@@ -208,19 +214,21 @@ source files that make up <small>RCS</small> 5.6 have the following
 revision numbers:
 <div id="index-RCS-revision-numbers"></div>
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>ci.c            5.21
-co.c            5.9
-ident.c         5.3
-rcs.c           5.12
-rcsbase.h       5.11
-rcsdiff.c       5.10
-rcsedit.c       5.11
-rcsfcmp.c       5.9
-rcsgen.c        5.10
-rcslex.c        5.11
-rcsmap.c        5.2
-rcsutil.c       5.10
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ci.c            5.21
+ co.c            5.9
+ ident.c         5.3
+ rcs.c           5.12
+ rcsbase.h       5.11
+ rcsdiff.c       5.10
+ rcsedit.c       5.11
+ rcsfcmp.c       5.9
+ rcsgen.c        5.10
+ rcslex.c        5.11
+ rcsmap.c        5.2
+ rcsutil.c       5.10
+</div>
+</td></tr></table>
 
 <div id="index-tag-_0028subcommand_0029_002c-introduction"></div>
 <div id="index-Tags_002c-symbolic-name"></div>
@@ -262,22 +270,24 @@ directory.  That is, you should issue the
 command in the directory where &lsquo;<tt>backend.c</tt>&rsquo;
 resides.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs tag rel-0-4 backend.c
-T backend.c
-$ cvs status -v backend.c
-===================================================================
-File: backend.c         Status: Up-to-date
-
-    Version:            1.4     Tue Dec  1 14:39:01 1992
-    RCS Version:        1.4     /u/cvsroot/yoyodyne/tc/backend.c,v
-    Sticky Tag:         (none)
-    Sticky Date:        (none)
-    Sticky Options:     (none)
-
-    Existing Tags:
-        rel-0-4                     (revision: 1.4)
-
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs tag rel-0-4 backend.c
+ T backend.c
+ $ cvs status -v backend.c
+ ===================================================================
+ File: backend.c         Status: Up-to-date
+ 
+     Version:            1.4     Tue Dec  1 14:39:01 1992
+     RCS Version:        1.4     /u/cvsroot/yoyodyne/tc/backend.c,v
+     Sticky Tag:         (none)
+     Sticky Date:        (none)
+     Sticky Options:     (none)
+ 
+     Existing Tags:
+         rel-0-4                     (revision: 1.4)
+ 
+</div>
+</td></tr></table>
 
 <p>For a complete summary of the syntax of <code>cvs tag</code>,
 including the various options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Quick reference to CVS commands]].
@@ -287,14 +297,16 @@ to tag all the files that constitute a module with the same tag at
 strategic points in the development life-cycle, such as when a release
 is made.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs tag rel-1-0 .
-cvs tag: Tagging .
-T Makefile
-T backend.c
-T driver.c
-T frontend.c
-T parser.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs tag rel-1-0 .
+ cvs tag: Tagging .
+ T Makefile
+ T backend.c
+ T driver.c
+ T frontend.c
+ T parser.c
+</div>
+</td></tr></table>
 
 <p>(When you give <small>CVS</small> a directory as argument, it generally applies the
 operation to all the files in that directory, and (recursively), to any
@@ -307,8 +319,10 @@ a certain revision of a module.  This flag makes it easy to
 retrieve the sources that make up release 1.0 of the module &lsquo;<samp>tc</samp>&rsquo; at
 any time in the future:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -r rel-1-0 tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout -r rel-1-0 tc
+</div>
+</td></tr></table>
 
 <p>This is useful, for instance, if someone claims that there is a bug in
 that release, but you cannot find the bug in the current working copy.
@@ -323,15 +337,17 @@ can think about the tag as &quot;a curve drawn through a
 matrix of filename vs. revision number.&quot;  Say we have 5
 files with the following revisions:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>        file1   file2   file3   file4   file5
-
-        1.1     1.1     1.1     1.1  /--1.1*      &lt;-*-  TAG
-        1.2*-   1.2     1.2    -1.2*-
-        1.3  \- 1.3*-   1.3   / 1.3
-        1.4          \  1.4  /  1.4
-                      \-1.5*-   1.5
-                        1.6
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+         file1   file2   file3   file4   file5
+ 
+         1.1     1.1     1.1     1.1  /--1.1*      &lt;-*-  TAG
+         1.2*-   1.2     1.2    -1.2*-
+         1.3  \- 1.3*-   1.3   / 1.3
+         1.4          \  1.4  /  1.4
+                       \-1.5*-   1.5
+                         1.6
+</div>
+</td></tr></table>
 
 <p>At some time in the past, the <code>*</code> versions were tagged.
 You can think of the tag as a handle attached to the curve
@@ -341,17 +357,19 @@ way to look at it is that you &quot;sight&quot; through a set of
 revisions that is &quot;flat&quot; along the tagged revisions,
 like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>        file1   file2   file3   file4   file5
-
-                        1.1
-                        1.2
-                1.1     1.3                       _
-        1.1     1.2     1.4     1.1              /
-        1.2*----1.3*----1.5*----1.2*----1.1     (--- &lt;--- Look here
-        1.3             1.6     1.3              \_
-        1.4                     1.4
-                                1.5
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+         file1   file2   file3   file4   file5
+ 
+                         1.1
+                         1.2
+                 1.1     1.3                       _
+         1.1     1.2     1.4     1.1              /
+         1.2*----1.3*----1.5*----1.2*----1.1     (--- &lt;--- Look here
+         1.3             1.6     1.3              \_
+         1.4                     1.4
+                                 1.5
+</div>
+</td></tr></table>
 
 <hr>
 <div id="Tagging-the-working-directory"></div>
@@ -397,10 +415,12 @@ If you want to avoid doing this by mistake, specify the
 locally modified files, <small>CVS</small> will abort with an
 error before it tags any files:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs tag -c rel-0-4
-cvs tag: backend.c is locally modified
-cvs [tag aborted]: correct the above errors first!
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs tag -c rel-0-4
+ cvs tag: backend.c is locally modified
+ cvs [tag aborted]: correct the above errors first!
+</div>
+</td></tr></table>
 
 <hr>
 <div id="Tagging-by-date_002ftag"></div>
@@ -459,8 +479,10 @@ than the files which existed as of the given tag/date.
 Therefore, you are generally better off using <code>cvs
 rtag</code>.  The exceptions might be cases like:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs tag -r 1.4 stable backend.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs tag -r 1.4 stable backend.c
+</div>
+</td></tr></table>
 
 <hr>
 <div id="Modifying-tags"></div>
@@ -509,8 +531,10 @@ commands with taginfo (see section [[cvs: History browsing#User-defined logging|
 <p>To delete a tag, specify the &lsquo;<samp>-d</samp>&rsquo; option to either
 <code>cvs tag</code> or <code>cvs rtag</code>.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs rtag -d rel-0-4 tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs rtag -d rel-0-4 tc
+</div>
+</td></tr></table>
 
 <p>deletes the non-branch tag <code>rel-0-4</code> from the module <code>tc</code>.
 In the event that branch tags are encountered within the repository
@@ -538,8 +562,10 @@ point to revision 1.6.  To move a non-branch tag, specify the
 rtag</code>.  For example, the task just mentioned might be
 accomplished as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs tag -r 1.6 -F stable backend.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs tag -r 1.6 -F stable backend.c
+</div>
+</td></tr></table>
 
 <p>If any branch tags are encountered in the repository 
 with the given name, a warning is issued and the branch
@@ -566,9 +592,11 @@ this method will not work with branch tags.)
 This leaves the new tag on exactly the 
 same files as the old tag.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs rtag -r old-name-0-4 rel-0-4 tc
-cvs rtag -d old-name-0-4 tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs rtag -r old-name-0-4 rel-0-4 tc
+ cvs rtag -d old-name-0-4 tc
+</div>
+</td></tr></table>
 
 <hr>
 <div id="Tagging-add_002fremove"></div>
@@ -662,17 +690,19 @@ example, how to avoid them!).
 <p>You can use the <code>status</code> command to see if any
 sticky tags or dates are set:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs status driver.c
-===================================================================
-File: driver.c          Status: Up-to-date
-
-    Version:            1.7.2.1 Sat Dec  5 19:35:03 1992
-    RCS Version:        1.7.2.1 /u/cvsroot/yoyodyne/tc/driver.c,v
-    Sticky Tag:         rel-1-0-patches (branch: 1.7.2)
-    Sticky Date:        (none)
-    Sticky Options:     (none)
-
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs status driver.c
+ ===================================================================
+ File: driver.c          Status: Up-to-date
+ 
+     Version:            1.7.2.1 Sat Dec  5 19:35:03 1992
+     RCS Version:        1.7.2.1 /u/cvsroot/yoyodyne/tc/driver.c,v
+     Sticky Tag:         rel-1-0-patches (branch: 1.7.2)
+     Sticky Date:        (none)
+     Sticky Options:     (none)
+ 
+</div>
+</td></tr></table>
 
 <div id="index-Resetting-sticky-tags"></div>
 <div id="index-Sticky-tags_002c-resetting"></div>
@@ -709,14 +739,16 @@ a file without setting a sticky tag.  This can
 be done with the &lsquo;<samp>-p</samp>&rsquo; option to <code>checkout</code> or
 <code>update</code>, which sends the contents of the file to
 standard output.  For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -p -r 1.1 file1 &gt;file1
-===================================================================
-Checking out file1
-RCS:  /tmp/cvs-sanity/cvsroot/first-dir/Attic/file1,v
-VERS: 1.1
-***************
-$
-</nowiki></pre></td></tr></table>
+</p><table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs update -p -r 1.1 file1 &gt;file1
+ ===================================================================
+ Checking out file1
+ RCS:  /tmp/cvs-sanity/cvsroot/first-dir/Attic/file1,v
+ VERS: 1.1
+ ***************
+ $
+</div>
+</td></tr></table>
 
 <p>However, this isn&rsquo;t the easiest way, if you are asking
 how to undo a previous checkin (in this example, put

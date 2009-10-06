@@ -37,17 +37,19 @@ the changes into the working directory.
 You can then commit that revision, and thus effectively
 copy the changes onto another branch.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#What branches are good for| Branches motivation]]::<nowiki>         What branches are good for
-</nowiki>&bull;[[#Creating a branch| Creating a branch]]::<nowiki>           Creating a branch
-</nowiki>&bull;[[#Accessing branches| Accessing branches]]::<nowiki>          Checking out and updating branches
-</nowiki>&bull;[[#Branches and revisions| Branches and revisions]]::<nowiki>      Branches are reflected in revision numbers
-</nowiki>&bull;[[#Magic branch numbers| Magic branch numbers]]::<nowiki>        Magic branch numbers
-</nowiki>&bull;[[#Merging an entire branch| Merging a branch]]::<nowiki>            Merging an entire branch
-</nowiki>&bull;[[#Merging from a branch several times| Merging more than once]]::<nowiki>      Merging from a branch several times
-</nowiki>&bull;[[#Merging differences between any two revisions| Merging two revisions]]::<nowiki>       Merging differences between two revisions
-</nowiki>&bull;[[#Merging can add or remove files| Merging adds and removals]]::<nowiki>   What if files are added or removed?
-</nowiki>&bull;[[#Merging and keywords| Merging and keywords]]::<nowiki>        Avoiding conflicts due to keyword substitution
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#What branches are good for|&bull; Branches motivation]]::         What branches are good for
+ [[#Creating a branch|&bull; Creating a branch]]::           Creating a branch
+ [[#Accessing branches|&bull; Accessing branches]]::          Checking out and updating branches
+ [[#Branches and revisions|&bull; Branches and revisions]]::      Branches are reflected in revision numbers
+ [[#Magic branch numbers|&bull; Magic branch numbers]]::        Magic branch numbers
+ [[#Merging an entire branch|&bull; Merging a branch]]::            Merging an entire branch
+ [[#Merging from a branch several times|&bull; Merging more than once]]::      Merging from a branch several times
+ [[#Merging differences between any two revisions|&bull; Merging two revisions]]::       Merging differences between two revisions
+ [[#Merging can add or remove files|&bull; Merging adds and removals]]::   What if files are added or removed?
+ [[#Merging and keywords|&bull; Merging and keywords]]::        Avoiding conflicts due to keyword substitution
+</div>
+
 <hr>
 <div id="Branches-motivation"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -114,8 +116,10 @@ the main trunk, or leave them on the branch.
 <p>You can create a branch with <code>tag -b</code>; for
 example, assuming you&rsquo;re in a working copy:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs tag -b rel-1-0-patches
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs tag -b rel-1-0-patches
+</div>
+</td></tr></table>
 
 
 <p>This splits off a branch based on the current revisions
@@ -132,8 +136,10 @@ to do that, see [[#Accessing branches|Accessing branches]].
 <p>You can also create a branch without reference to any
 working copy, by using <code>rtag</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs rtag -b -r rel-1-0 rel-1-0-patches tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs rtag -b -r rel-1-0 rel-1-0-patches tc
+</div>
+</td></tr></table>
 
 <p>&lsquo;<samp>-r rel-1-0</samp>&rsquo; says that this branch should be
 rooted at the revision that
@@ -190,20 +196,26 @@ switching an existing working copy over to the branch.
 &lsquo;<samp>checkout</samp>&rsquo; with the &lsquo;<samp>-r</samp>&rsquo; flag, followed by
 the tag name of the branch (see section [[#Creating a branch|Creating a branch]]):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -r rel-1-0-patches tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout -r rel-1-0-patches tc
+</div>
+</td></tr></table>
 
 <p>Or, if you already have a working copy, you can switch
 it to a given branch with &lsquo;<samp>update -r</samp>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -r rel-1-0-patches tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs update -r rel-1-0-patches tc
+</div>
+</td></tr></table>
 
 <p>or equivalently:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd tc
-$ cvs update -r rel-1-0-patches
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd tc
+ $ cvs update -r rel-1-0-patches
+</div>
+</td></tr></table>
 
 <p>It does not matter if the working copy was originally
 on the main trunk or on some other branch &ndash; the above
@@ -225,35 +237,37 @@ the field named &lsquo;<samp>Sticky tag</samp>&rsquo; (see section [[cvs: Revisi
 &ndash; that&rsquo;s <small>CVS</small>&rsquo;s way of telling you the branch, if
 any, of the current working files:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs status -v driver.c backend.c
-===================================================================
-File: driver.c          Status: Up-to-date
-
-    Version:            1.7     Sat Dec  5 18:25:54 1992
-    RCS Version:        1.7     /u/cvsroot/yoyodyne/tc/driver.c,v
-    Sticky Tag:         rel-1-0-patches (branch: 1.7.2)
-    Sticky Date:        (none)
-    Sticky Options:     (none)
-
-    Existing Tags:
-        rel-1-0-patches             (branch: 1.7.2)
-        rel-1-0                     (revision: 1.7)
-
-===================================================================
-File: backend.c         Status: Up-to-date
-
-    Version:            1.4     Tue Dec  1 14:39:01 1992
-    RCS Version:        1.4     /u/cvsroot/yoyodyne/tc/backend.c,v
-    Sticky Tag:         rel-1-0-patches (branch: 1.4.2)
-    Sticky Date:        (none)
-    Sticky Options:     (none)
-
-    Existing Tags:
-        rel-1-0-patches             (branch: 1.4.2)
-        rel-1-0                     (revision: 1.4)
-        rel-0-4                     (revision: 1.4)
-
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs status -v driver.c backend.c
+ ===================================================================
+ File: driver.c          Status: Up-to-date
+ 
+     Version:            1.7     Sat Dec  5 18:25:54 1992
+     RCS Version:        1.7     /u/cvsroot/yoyodyne/tc/driver.c,v
+     Sticky Tag:         rel-1-0-patches (branch: 1.7.2)
+     Sticky Date:        (none)
+     Sticky Options:     (none)
+ 
+     Existing Tags:
+         rel-1-0-patches             (branch: 1.7.2)
+         rel-1-0                     (revision: 1.7)
+ 
+ ===================================================================
+ File: backend.c         Status: Up-to-date
+ 
+     Version:            1.4     Tue Dec  1 14:39:01 1992
+     RCS Version:        1.4     /u/cvsroot/yoyodyne/tc/backend.c,v
+     Sticky Tag:         rel-1-0-patches (branch: 1.4.2)
+     Sticky Date:        (none)
+     Sticky Options:     (none)
+ 
+     Existing Tags:
+         rel-1-0-patches             (branch: 1.4.2)
+         rel-1-0                     (revision: 1.4)
+         rel-0-4                     (revision: 1.4)
+ 
+</div>
+</td></tr></table>
 
 <p>Don&rsquo;t be confused by the fact that the branch numbers
 for each file are different (&lsquo;<samp>1.7.2</samp>&rsquo; and
@@ -294,10 +308,12 @@ branch numbers are constructed.
 <p>Ordinarily, a file&rsquo;s revision history is a linear
 series of increments (see section [[cvs: Revisions#Revision numbers|Revision numbers]]):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>       +-----+    +-----+    +-----+    +-----+    +-----+
-       ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
-       +-----+    +-----+    +-----+    +-----+    +-----+
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+        +-----+    +-----+    +-----+    +-----+    +-----+
+        ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
+        +-----+    +-----+    +-----+    +-----+    +-----+
+</div>
+</td></tr></table>
 
 <p>However, <small>CVS</small> is not limited to linear development.  The
 <em>revision tree</em> can be split into <em>branches</em>,
@@ -317,26 +333,28 @@ by appending an ordinal number to the branch number.
 The following figure illustrates branching with an
 example.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>                                                      +-------------+
-                           Branch 1.2.2.3.2 -&gt;        ! 1.2.2.3.2.1 !
-                                                    / +-------------+
+<table><tr><td>&nbsp;</td><td><div class="example">
+                                                       +-------------+
+                            Branch 1.2.2.3.2 -&gt;        ! 1.2.2.3.2.1 !
+                                                     / +-------------+
+                                                    /
                                                    /
-                                                  /
-                 +---------+    +---------+    +---------+
-Branch 1.2.2 -&gt; _! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
-               / +---------+    +---------+    +---------+
+                  +---------+    +---------+    +---------+
+ Branch 1.2.2 -&gt; _! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
+                / +---------+    +---------+    +---------+
+               /
               /
-             /
-+-----+    +-----+    +-----+    +-----+    +-----+
-! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !  &lt;- The main trunk
-+-----+    +-----+    +-----+    +-----+    +-----+
-                !
-                !
-                !   +---------+    +---------+    +---------+
-Branch 1.2.4 -&gt; +---! 1.2.4.1 !----! 1.2.4.2 !----! 1.2.4.3 !
-                    +---------+    +---------+    +---------+
-
-</nowiki></pre></td></tr></table>
+ +-----+    +-----+    +-----+    +-----+    +-----+
+ ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !  &lt;- The main trunk
+ +-----+    +-----+    +-----+    +-----+    +-----+
+                 !
+                 !
+                 !   +---------+    +---------+    +---------+
+ Branch 1.2.4 -&gt; +---! 1.2.4.1 !----! 1.2.4.2 !----! 1.2.4.3 !
+                     +---------+    +---------+    +---------+
+ 
+</div>
+</td></tr></table>
 
 
 
@@ -407,8 +425,10 @@ to be.  If <code>R4patches</code> is assigned to the branch
 1.4.2 (magic branch number 1.4.0.2) in file
 &lsquo;<tt>numbers.c</tt>&rsquo; you can do this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs admin -NR4patches:1.4.2 numbers.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs admin -NR4patches:1.4.2 numbers.c
+</div>
+</td></tr></table>
 
 <p>It only works if at least one revision is already
 committed on the branch.  Be very careful so that you
@@ -452,29 +472,33 @@ newest revision on that branch into your working copy.
 <div id="index-Merge_002c-branch-example"></div>
 <p>Consider this revision tree:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>+-----+    +-----+    +-----+    +-----+
-! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !      &lt;- The main trunk
-+-----+    +-----+    +-----+    +-----+
-                !
-                !
-                !   +---------+    +---------+
-Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
-                    +---------+    +---------+
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ +-----+    +-----+    +-----+    +-----+
+ ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !      &lt;- The main trunk
+ +-----+    +-----+    +-----+    +-----+
+                 !
+                 !
+                 !   +---------+    +---------+
+ Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
+                     +---------+    +---------+
+</div>
+</td></tr></table>
 
 <p>The branch 1.2.2 has been given the tag (symbolic name) &lsquo;<samp>R1fix</samp>&rsquo;.  The
 following example assumes that the module &lsquo;<samp>mod</samp>&rsquo; contains only one
 file, &lsquo;<tt>m.c</tt>&rsquo;.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout mod               # <span class="roman">Retrieve the latest revision, 1.4</span>
-
-$ cvs update -j R1fix m.c        # <span class="roman">Merge all changes made on the branch,</span>
-                                 # <span class="roman">i.e. the changes between revision 1.2</span>
-                                 # <span class="roman">and 1.2.2.2, into your working copy</span>
-                                 # <span class="roman">of the file.</span>
-
-$ cvs commit -m &quot;Included R1fix&quot; # <span class="roman">Create revision 1.5.</span>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout mod               # <span class="roman" style="font-family:serif; font-weight:normal;">Retrieve the latest revision, 1.4</span>
+ 
+ $ cvs update -j R1fix m.c        # <span class="roman" style="font-family:serif; font-weight:normal;">Merge all changes made on the branch,</span>
+                                  # <span class="roman" style="font-family:serif; font-weight:normal;">i.e. the changes between revision 1.2</span>
+                                  # <span class="roman" style="font-family:serif; font-weight:normal;">and 1.2.2.2, into your working copy</span>
+                                  # <span class="roman" style="font-family:serif; font-weight:normal;">of the file.</span>
+ 
+ $ cvs commit -m &quot;Included R1fix&quot; # <span class="roman" style="font-family:serif; font-weight:normal;">Create revision 1.5.</span>
+</div>
+</td></tr></table>
 
 <p>A conflict can result from a merge operation.  If that
 happens, you should resolve it before committing the
@@ -487,9 +511,11 @@ you might be getting more conflicts than strictly necessary.  See
 <p>The <code>checkout</code> command also supports the &lsquo;<samp>-j <var>branchname</var></samp>&rsquo; flag.  The
 same effect as above could be achieved with this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -j R1fix mod
-$ cvs commit -m &quot;Included R1fix&quot;
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout -j R1fix mod
+ $ cvs commit -m &quot;Included R1fix&quot;
+</div>
+</td></tr></table>
 
 <p>It should be noted that <code>update -j <var>tagname</var></code> will also work but may
 not produce the desired result.  See section [[#Merging can add or remove files|Merging can add or remove files]], for more.
@@ -517,15 +543,17 @@ not produce the desired result.  See section [[#Merging can add or remove files|
 <p>Continuing our example, the revision tree now looks
 like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>+-----+    +-----+    +-----+    +-----+    +-----+
-! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
-+-----+    +-----+    +-----+    +-----+    +-----+
-                !                           *
-                !                          *
-                !   +---------+    +---------+
-Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
-                    +---------+    +---------+
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ +-----+    +-----+    +-----+    +-----+    +-----+
+ ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
+ +-----+    +-----+    +-----+    +-----+    +-----+
+                 !                           *
+                 !                          *
+                 !   +---------+    +---------+
+ Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
+                     +---------+    +---------+
+</div>
+</td></tr></table>
 
 <p>where the starred line represents the merge from the
 &lsquo;<samp>R1fix</samp>&rsquo; branch to the main trunk, as just
@@ -534,15 +562,17 @@ discussed.
 <p>Now suppose that development continues on the
 &lsquo;<samp>R1fix</samp>&rsquo; branch:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>+-----+    +-----+    +-----+    +-----+    +-----+
-! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
-+-----+    +-----+    +-----+    +-----+    +-----+
-                !                           *
-                !                          *
-                !   +---------+    +---------+    +---------+
-Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
-                    +---------+    +---------+    +---------+
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ +-----+    +-----+    +-----+    +-----+    +-----+
+ ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
+ +-----+    +-----+    +-----+    +-----+    +-----+
+                 !                           *
+                 !                          *
+                 !   +---------+    +---------+    +---------+
+ Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
+                     +---------+    +---------+    +---------+
+</div>
+</td></tr></table>
 
 <p>and then you want to merge those new changes onto the
 main trunk.  If you just use the <code>cvs update -j
@@ -557,22 +587,28 @@ merged into the trunk.  To do that you specify two
 the first revision to the second revision.  For
 example, in this case the simplest way would be
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update -j 1.2.2.2 -j R1fix m.c    # <span class="roman">Merge changes from 1.2.2.2 to the</span>
-                                      # <span class="roman">head of the R1fix branch</span>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs update -j 1.2.2.2 -j R1fix m.c    # <span class="roman" style="font-family:serif; font-weight:normal;">Merge changes from 1.2.2.2 to the</span>
+                                       # <span class="roman" style="font-family:serif; font-weight:normal;">head of the R1fix branch</span>
+</div>
+</td></tr></table>
 
 <p>The problem with this is that you need to specify the
 1.2.2.2 revision manually.  A slightly better approach
 might be to use the date the last merge was done:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update -j R1fix:yesterday -j R1fix m.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs update -j R1fix:yesterday -j R1fix m.c
+</div>
+</td></tr></table>
 
 <p>Better yet, tag the R1fix branch after every merge into
 the trunk, and then use that tag for subsequent merges:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
+</div>
+</td></tr></table>
 
 <hr>
 <div id="Merging-two-revisions"></div>
@@ -603,8 +639,10 @@ between any two revisions into your working file.
 </p>
 <div id="index-Undoing-a-change"></div>
 <div id="index-Removing-a-change"></div>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -j 1.5 -j 1.3 backend.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs update -j 1.5 -j 1.3 backend.c
+</div>
+</td></tr></table>
 
 <p>will undo all changes made between revision
 1.3 and 1.5.  Note the order of the revisions!
@@ -626,15 +664,17 @@ you then removed it (thus adding a dead revision 1.2).
 Now suppose you want to add it again, with the same
 contents it had previously.  Here is how to do it:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -j 1.2 -j 1.1 file1
-U file1
-$ cvs commit -m test
-Checking in file1;
-/tmp/cvs-sanity/cvsroot/first-dir/file1,v  &lt;--  file1
-new revision: 1.3; previous revision: 1.2
-done
-$
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs update -j 1.2 -j 1.1 file1
+ U file1
+ $ cvs commit -m test
+ Checking in file1;
+ /tmp/cvs-sanity/cvsroot/first-dir/file1,v  &lt;--  file1
+ new revision: 1.3; previous revision: 1.2
+ done
+ $
+</div>
+</td></tr></table>
 
 <hr>
 <div id="Merging-adds-and-removals"></div>
@@ -661,17 +701,19 @@ or adding some files, <code>update -j</code> will reflect
 such additions or removals.
 </p>
 <p>For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update -A
-touch a b c
-cvs add a b c ; cvs ci -m &quot;added&quot; a b c
-cvs tag -b branchtag
-cvs update -r branchtag
-touch d ; cvs add d
-rm a ; cvs rm a
-cvs ci -m &quot;added d, removed a&quot;
-cvs update -A
-cvs update -jbranchtag
-</nowiki></pre></td></tr></table>
+</p><table><tr><td>&nbsp;</td><td><div class="example">
+ cvs update -A
+ touch a b c
+ cvs add a b c ; cvs ci -m &quot;added&quot; a b c
+ cvs tag -b branchtag
+ cvs update -r branchtag
+ touch d ; cvs add d
+ rm a ; cvs rm a
+ cvs ci -m &quot;added d, removed a&quot;
+ cvs update -A
+ cvs update -jbranchtag
+</div>
+</td></tr></table>
 
 <p>After these commands are executed and a &lsquo;<samp>cvs commit</samp>&rsquo; is done,
 file &lsquo;<tt>a</tt>&rsquo; will be removed and file &lsquo;<tt>d</tt>&rsquo; added in the main branch.
@@ -724,38 +766,42 @@ spurious conflicts.
 </p>
 <p>For example, suppose you have a file like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>       +---------+
-      _! 1.1.2.1 !   &lt;-  br1
-     / +---------+
+<table><tr><td>&nbsp;</td><td><div class="example">
+        +---------+
+       _! 1.1.2.1 !   &lt;-  br1
+      / +---------+
+     /
     /
-   /
-+-----+    +-----+
-! 1.1 !----! 1.2 !
-+-----+    +-----+
-</nowiki></pre></td></tr></table>
+ +-----+    +-----+
+ ! 1.1 !----! 1.2 !
+ +-----+    +-----+
+</div>
+</td></tr></table>
 
 <p>and your working directory is currently on the trunk
 (revision 1.2).  Then you might get the following
 results from a merge:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cat file1
-key $<i></i>Revision: 1.2 $
-. . .
-$ cvs update -j br1
-U file1
-RCS file: /cvsroot/first-dir/file1,v
-retrieving revision 1.1
-retrieving revision 1.1.2.1
-Merging differences between 1.1 and 1.1.2.1 into file1
-rcsmerge: warning: conflicts during merge
-$ cat file1
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; file1
-key $<i></i>Revision: 1.2 $
-=======
-key $<i></i>Revision: 1.1.2.1 $
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.1.2.1
-. . .
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cat file1
+ key $<i></i>Revision: 1.2 $
+ . . .
+ $ cvs update -j br1
+ U file1
+ RCS file: /cvsroot/first-dir/file1,v
+ retrieving revision 1.1
+ retrieving revision 1.1.2.1
+ Merging differences between 1.1 and 1.1.2.1 into file1
+ rcsmerge: warning: conflicts during merge
+ $ cat file1
+ &lt;&lt;&lt;&lt;&lt;&lt;&lt; file1
+ key $<i></i>Revision: 1.2 $
+ =======
+ key $<i></i>Revision: 1.1.2.1 $
+ &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.1.2.1
+ . . .
+</div>
+</td></tr></table>
 
 <p>What happened was that the merge tried to merge the
 differences between 1.1 and 1.1.2.1 into your working
@@ -767,19 +813,21 @@ working directory had contained <code>Revision: 1.2</code>.
 </p>
 <p>Here is what happens if you had used &lsquo;<samp>-kk</samp>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cat file1
-key $<i></i>Revision: 1.2 $
-. . .
-$ cvs update -kk -j br1
-U file1
-RCS file: /cvsroot/first-dir/file1,v
-retrieving revision 1.1
-retrieving revision 1.1.2.1
-Merging differences between 1.1 and 1.1.2.1 into file1
-$ cat file1
-key $<i></i>Revision$
-. . .
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cat file1
+ key $<i></i>Revision: 1.2 $
+ . . .
+ $ cvs update -kk -j br1
+ U file1
+ RCS file: /cvsroot/first-dir/file1,v
+ retrieving revision 1.1
+ retrieving revision 1.1.2.1
+ Merging differences between 1.1 and 1.1.2.1 into file1
+ $ cat file1
+ key $<i></i>Revision$
+ . . .
+</div>
+</td></tr></table>
 
 <p>What is going on here is that revision 1.1 and 1.1.2.1
 both expand as plain <code>Revision</code>, and therefore

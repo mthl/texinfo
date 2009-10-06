@@ -81,14 +81,16 @@ Each new line is prefixed with the same string which
 precedes the <code>$Log</code> keyword.  For example, if the
 file contains:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>  /* Here is what people have been up to:
-   *
-   * $<i></i>Log: frob.c,v $
-   * Revision 1.1  1997/01/03 14:23:51  joe
-   * Add the superfrobnicate option
-   *
-   */
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+   /* Here is what people have been up to:
+    *
+    * $<i></i>Log: frob.c,v $
+    * Revision 1.1  1997/01/03 14:23:51  joe
+    * Add the superfrobnicate option
+    *
+    */
+</div>
+</td></tr></table>
 
 <p>then additional lines which are added when expanding
 the <code>$Log</code> keyword will be preceded by &lsquo;<samp>   * </samp>&rsquo;.
@@ -133,10 +135,12 @@ expanded as if it were a $<i></i>CVSHeader$ keyword. If
 the src/frob.c file contained this keyword, it might
 look something like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>  /*
-   * $<i></i>MYBSD: src/frob.c,v 1.1 2003/05/04 09:27:45 john Exp $ 
-   */
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+   /*
+    * $<i></i>MYBSD: src/frob.c,v 1.1 2003/05/04 09:27:45 john Exp $ 
+    */
+</div>
+</td></tr></table>
 
 <p>Many repositories make use of a such a &ldquo;local
 keyword&rdquo; feature. An old patch to <small>CVS</small> provided

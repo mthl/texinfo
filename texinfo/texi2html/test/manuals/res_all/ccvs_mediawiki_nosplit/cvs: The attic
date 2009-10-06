@@ -15,13 +15,17 @@ talking about the file &lsquo;<tt>backend.c</tt>&rsquo; in the
 directory &lsquo;<tt>yoyodyne/tc</tt>&rsquo;, then the file normally
 would be in
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>/usr/local/cvsroot/yoyodyne/tc/backend.c,v
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ /usr/local/cvsroot/yoyodyne/tc/backend.c,v
+</div>
+</td></tr></table>
 
 <p>but if it goes in the attic, it would be in
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>/usr/local/cvsroot/yoyodyne/tc/Attic/backend.c,v
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ /usr/local/cvsroot/yoyodyne/tc/Attic/backend.c,v
+</div>
+</td></tr></table>
 
 <div id="index-Dead-state"></div>
 <p>instead.  It should not matter from a user point of

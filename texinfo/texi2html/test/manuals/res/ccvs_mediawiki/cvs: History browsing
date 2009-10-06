@@ -26,11 +26,13 @@ history&mdash;what files have changed when, how, and by
 whom, there are a variety of mechanisms for looking
 through the history.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Log messages| log messages]]::<nowiki>                Log messages
-</nowiki>&bull;[[#The history database| history database]]::<nowiki>            The history database
-</nowiki>&bull;[[#User-defined logging| user-defined logging]]::<nowiki>        User-defined logging
-</nowiki>&bull;[[#Annotate command| annotate]]::<nowiki>                    What revision modified each line of a file?
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#Log messages|&bull; log messages]]::                Log messages
+ [[#The history database|&bull; history database]]::            The history database
+ [[#User-defined logging|&bull; user-defined logging]]::        User-defined logging
+ [[#Annotate command|&bull; annotate]]::                    What revision modified each line of a file?
+</div>
+
 <hr>
 <div id="log-messages"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -142,15 +144,19 @@ aborted.
 <p>Here is an example of using taginfo to log tag and rtag
 commands.  In the taginfo file put:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>ALL /usr/local/cvsroot/CVSROOT/loggit
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ALL /usr/local/cvsroot/CVSROOT/loggit
+</div>
+</td></tr></table>
 
 <p>Where &lsquo;<tt>/usr/local/cvsroot/CVSROOT/loggit</tt>&rsquo; contains the
 following script:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#!/bin/sh
-echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #!/bin/sh
+ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
+</div>
+</td></tr></table>
 
 <hr>
 <div id="annotate"></div>
@@ -180,12 +186,14 @@ echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 of the trunk, together with information on the last
 modification for each line.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs annotate ssfile
-Annotations for ssfile
-***************
-1.1          (mary     27-Mar-96): ssfile line 1
-1.2          (joe      28-Mar-96): ssfile line 2
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs annotate ssfile
+ Annotations for ssfile
+ ***************
+ 1.1          (mary     27-Mar-96): ssfile line 1
+ 1.2          (joe      28-Mar-96): ssfile line 2
+</div>
+</td></tr></table>
 
 <p>The file &lsquo;<tt>ssfile</tt>&rsquo; currently contains two lines.
 The <code>ssfile line 1</code> line was checked in by

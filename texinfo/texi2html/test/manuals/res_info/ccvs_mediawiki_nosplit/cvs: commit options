@@ -46,9 +46,11 @@ made any changes to the file.  If the current revision
 of <var>file</var> is 1.7, then the following two commands
 are equivalent:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -f <var>file</var>
-$ cvs commit -r 1.8 <var>file</var>
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit -f <var>file</var>
+ $ cvs commit -r 1.8 <var>file</var>
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<samp>-f</samp>&rsquo; option disables recursion (i.e., it
 implies &lsquo;<samp>-l</samp>&rsquo;).  To force <small>CVS</small> to commit a new

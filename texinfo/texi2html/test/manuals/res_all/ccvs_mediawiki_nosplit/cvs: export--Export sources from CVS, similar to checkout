@@ -38,6 +38,8 @@ ident(1)) which looks for keyword strings.  If
 you want to be able to use <code>ident</code> you must not
 use &lsquo;<samp>-kv</samp>&rsquo;.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: export options#export options| export options]]::<nowiki>              export options
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: export options#export options|&bull; export options]]::              export options
+</div>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

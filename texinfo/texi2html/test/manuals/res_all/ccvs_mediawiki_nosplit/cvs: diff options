@@ -88,7 +88,7 @@ differences.
 </p>
 </dd>
 <dt>&lsquo;<samp>-C <var>lines</var></samp>&rsquo;</dt>
-<dt>&lsquo;<samp>--context<span class="roman">[</span>=<var>lines</var><span class="roman">]</span></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--context<span class="roman" style="font-family:serif; font-weight:normal;">[</span>=<var>lines</var><span class="roman" style="font-family:serif; font-weight:normal;">]</span></samp>&rsquo;</dt>
 <dd><p>Use the context output format, showing <var>lines</var> (an integer) lines of
 context, or three if <var>lines</var> is not given.
 For proper operation, <code>patch</code> typically needs at least two lines of
@@ -302,7 +302,7 @@ format.  See [[cvs: Line formats#Line formats|Line formats]].
 </p>
 </dd>
 <dt>&lsquo;<samp>-U <var>lines</var></samp>&rsquo;</dt>
-<dt>&lsquo;<samp>--unified<span class="roman">[</span>=<var>lines</var><span class="roman">]</span></samp>&rsquo;</dt>
+<dt>&lsquo;<samp>--unified<span class="roman" style="font-family:serif; font-weight:normal;">[</span>=<var>lines</var><span class="roman" style="font-family:serif; font-weight:normal;">]</span></samp>&rsquo;</dt>
 <dd><p>Use the unified output format, showing <var>lines</var> (an integer) lines of
 context, or three if <var>lines</var> is not given.
 For proper operation, <code>patch</code> typically needs at least two lines of
@@ -323,9 +323,11 @@ context.
 </p></dd>
 </dl>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[cvs: Line group formats#Line group formats| Line group formats]]::<nowiki>          Line group formats
-</nowiki>&bull;[[cvs: Line formats#Line formats| Line formats]]::<nowiki>                Line formats
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[cvs: Line group formats#Line group formats|&bull; Line group formats]]::          Line group formats
+ [[cvs: Line formats#Line formats|&bull; Line formats]]::                Line formats
+</div>
+
 <hr>
 <div class="header">
 <p>

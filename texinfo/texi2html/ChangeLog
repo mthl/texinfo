@@ -1,3 +1,10 @@
+2009-10-06   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, formats/html.init: add the 
+	possibility to disable CSS with NO_CSS and have styles inline with
+	INLINE_CSS_STYLE.
+	Use INLINE_CSS_STYLE in mediawiki.init and NO_CSS in html32.init.
+
 2009-10-04   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: add a new hook for users, command_handler_setup

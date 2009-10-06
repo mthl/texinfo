@@ -12,69 +12,77 @@ Next: [[cvs: Informing others about commits#Informing others about commits|Infor
 
 <p>Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdio.h&gt;
-
-void main()
-{
-    parse();
-    if (nerr == 0)
-        gencode();
-    else
-        fprintf(stderr, &quot;No code generated.\n&quot;);
-    exit(nerr == 0 ? 0 : 1);
-}
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #include &lt;stdio.h&gt;
+ 
+ void main()
+ {
+     parse();
+     if (nerr == 0)
+         gencode();
+     else
+         fprintf(stderr, &quot;No code generated.\n&quot;);
+     exit(nerr == 0 ? 0 : 1);
+ }
+</div>
+</td></tr></table>
 
 <p>Revision 1.6 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdio.h&gt;
-
-int main(int argc,
-         char **argv)
-{
-    parse();
-    if (argc != 1)
-    {
-        fprintf(stderr, &quot;tc: No args expected.\n&quot;);
-        exit(1);
-    }
-    if (nerr == 0)
-        gencode();
-    else
-        fprintf(stderr, &quot;No code generated.\n&quot;);
-    exit(!!nerr);
-}
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #include &lt;stdio.h&gt;
+ 
+ int main(int argc,
+          char **argv)
+ {
+     parse();
+     if (argc != 1)
+     {
+         fprintf(stderr, &quot;tc: No args expected.\n&quot;);
+         exit(1);
+     }
+     if (nerr == 0)
+         gencode();
+     else
+         fprintf(stderr, &quot;No code generated.\n&quot;);
+     exit(!!nerr);
+ }
+</div>
+</td></tr></table>
 
 <p>Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
 1.4, contains this before you run &lsquo;<samp>cvs update</samp>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-
-void main()
-{
-    init_scanner();
-    parse();
-    if (nerr == 0)
-        gencode();
-    else
-        fprintf(stderr, &quot;No code generated.\n&quot;);
-    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
-}
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #include &lt;stdlib.h&gt;
+ #include &lt;stdio.h&gt;
+ 
+ void main()
+ {
+     init_scanner();
+     parse();
+     if (nerr == 0)
+         gencode();
+     else
+         fprintf(stderr, &quot;No code generated.\n&quot;);
+     exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+ }
+</div>
+</td></tr></table>
 
 <p>You run &lsquo;<samp>cvs update</samp>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update driver.c
-RCS file: /usr/local/cvsroot/yoyodyne/tc/driver.c,v
-retrieving revision 1.4
-retrieving revision 1.6
-Merging differences between 1.4 and 1.6 into driver.c
-rcsmerge warning: overlaps during merge
-cvs update: conflicts found in driver.c
-C driver.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs update driver.c
+ RCS file: /usr/local/cvsroot/yoyodyne/tc/driver.c,v
+ retrieving revision 1.4
+ retrieving revision 1.6
+ Merging differences between 1.4 and 1.6 into driver.c
+ rcsmerge warning: overlaps during merge
+ cvs update: conflicts found in driver.c
+ C driver.c
+</div>
+</td></tr></table>
 
 <div id="index-Conflicts-_0028merge-example_0029"></div>
 <p><small>CVS</small> tells you that there were some conflicts.
@@ -82,30 +90,32 @@ Your original working file is saved unmodified in
 &lsquo;<tt>.#driver.c.1.4</tt>&rsquo;.  The new version of
 &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-
-int main(int argc,
-         char **argv)
-{
-    init_scanner();
-    parse();
-    if (argc != 1)
-    {
-        fprintf(stderr, &quot;tc: No args expected.\n&quot;);
-        exit(1);
-    }
-    if (nerr == 0)
-        gencode();
-    else
-        fprintf(stderr, &quot;No code generated.\n&quot;);
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; driver.c
-    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
-=======
-    exit(!!nerr);
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.6
-}
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #include &lt;stdlib.h&gt;
+ #include &lt;stdio.h&gt;
+ 
+ int main(int argc,
+          char **argv)
+ {
+     init_scanner();
+     parse();
+     if (argc != 1)
+     {
+         fprintf(stderr, &quot;tc: No args expected.\n&quot;);
+         exit(1);
+     }
+     if (nerr == 0)
+         gencode();
+     else
+         fprintf(stderr, &quot;No code generated.\n&quot;);
+ &lt;&lt;&lt;&lt;&lt;&lt;&lt; driver.c
+     exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+ =======
+     exit(!!nerr);
+ &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.6
+ }
+</div>
+</td></tr></table>
 
 <div id="index-Markers_002c-conflict"></div>
 <div id="index-Conflict-markers"></div>
@@ -121,35 +131,39 @@ copy, and that the overlapping section is clearly marked with
 <div id="index-Conflict-resolution"></div>
 <p>You resolve the conflict by editing the file, removing the markers and
 the erroneous line.  Suppose you end up with this file:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-
-int main(int argc,
-         char **argv)
-{
-    init_scanner();
-    parse();
-    if (argc != 1)
-    {
-        fprintf(stderr, &quot;tc: No args expected.\n&quot;);
-        exit(1);
-    }
-    if (nerr == 0)
-        gencode();
-    else
-        fprintf(stderr, &quot;No code generated.\n&quot;);
-    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
-}
-</nowiki></pre></td></tr></table>
+</p><table><tr><td>&nbsp;</td><td><div class="example">
+ #include &lt;stdlib.h&gt;
+ #include &lt;stdio.h&gt;
+ 
+ int main(int argc,
+          char **argv)
+ {
+     init_scanner();
+     parse();
+     if (argc != 1)
+     {
+         fprintf(stderr, &quot;tc: No args expected.\n&quot;);
+         exit(1);
+     }
+     if (nerr == 0)
+         gencode();
+     else
+         fprintf(stderr, &quot;No code generated.\n&quot;);
+     exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+ }
+</div>
+</td></tr></table>
 
 <p>You can now go ahead and commit this as revision 1.7.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -m &quot;Initialize scanner. Use symbolic exit values.&quot; driver.c
-Checking in driver.c;
-/usr/local/cvsroot/yoyodyne/tc/driver.c,v  &lt;--  driver.c
-new revision: 1.7; previous revision: 1.6
-done
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit -m &quot;Initialize scanner. Use symbolic exit values.&quot; driver.c
+ Checking in driver.c;
+ /usr/local/cvsroot/yoyodyne/tc/driver.c,v  &lt;--  driver.c
+ new revision: 1.7; previous revision: 1.6
+ done
+</div>
+</td></tr></table>
 
 <p>For your protection, <small>CVS</small> will refuse to check in a
 file if a conflict occurred and you have not resolved

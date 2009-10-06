@@ -23,20 +23,26 @@ switching an existing working copy over to the branch.
 &lsquo;<samp>checkout</samp>&rsquo; with the &lsquo;<samp>-r</samp>&rsquo; flag, followed by
 the tag name of the branch (see [[cvs: Creating a branch#Creating a branch|Creating a branch]]):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -r rel-1-0-patches tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout -r rel-1-0-patches tc
+</div>
+</td></tr></table>
 
 <p>Or, if you already have a working copy, you can switch
 it to a given branch with &lsquo;<samp>update -r</samp>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update -r rel-1-0-patches tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs update -r rel-1-0-patches tc
+</div>
+</td></tr></table>
 
 <p>or equivalently:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cd tc
-$ cvs update -r rel-1-0-patches
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cd tc
+ $ cvs update -r rel-1-0-patches
+</div>
+</td></tr></table>
 
 <p>It does not matter if the working copy was originally
 on the main trunk or on some other branch &ndash; the above
@@ -58,35 +64,37 @@ the field named &lsquo;<samp>Sticky tag</samp>&rsquo; (see [[cvs: Sticky tags#St
 &ndash; that&rsquo;s <small>CVS</small>&rsquo;s way of telling you the branch, if
 any, of the current working files:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs status -v driver.c backend.c
-===================================================================
-File: driver.c          Status: Up-to-date
-
-    Version:            1.7     Sat Dec  5 18:25:54 1992
-    RCS Version:        1.7     /u/cvsroot/yoyodyne/tc/driver.c,v
-    Sticky Tag:         rel-1-0-patches (branch: 1.7.2)
-    Sticky Date:        (none)
-    Sticky Options:     (none)
-
-    Existing Tags:
-        rel-1-0-patches             (branch: 1.7.2)
-        rel-1-0                     (revision: 1.7)
-
-===================================================================
-File: backend.c         Status: Up-to-date
-
-    Version:            1.4     Tue Dec  1 14:39:01 1992
-    RCS Version:        1.4     /u/cvsroot/yoyodyne/tc/backend.c,v
-    Sticky Tag:         rel-1-0-patches (branch: 1.4.2)
-    Sticky Date:        (none)
-    Sticky Options:     (none)
-
-    Existing Tags:
-        rel-1-0-patches             (branch: 1.4.2)
-        rel-1-0                     (revision: 1.4)
-        rel-0-4                     (revision: 1.4)
-
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs status -v driver.c backend.c
+ ===================================================================
+ File: driver.c          Status: Up-to-date
+ 
+     Version:            1.7     Sat Dec  5 18:25:54 1992
+     RCS Version:        1.7     /u/cvsroot/yoyodyne/tc/driver.c,v
+     Sticky Tag:         rel-1-0-patches (branch: 1.7.2)
+     Sticky Date:        (none)
+     Sticky Options:     (none)
+ 
+     Existing Tags:
+         rel-1-0-patches             (branch: 1.7.2)
+         rel-1-0                     (revision: 1.7)
+ 
+ ===================================================================
+ File: backend.c         Status: Up-to-date
+ 
+     Version:            1.4     Tue Dec  1 14:39:01 1992
+     RCS Version:        1.4     /u/cvsroot/yoyodyne/tc/backend.c,v
+     Sticky Tag:         rel-1-0-patches (branch: 1.4.2)
+     Sticky Date:        (none)
+     Sticky Options:     (none)
+ 
+     Existing Tags:
+         rel-1-0-patches             (branch: 1.4.2)
+         rel-1-0                     (revision: 1.4)
+         rel-0-4                     (revision: 1.4)
+ 
+</div>
+</td></tr></table>
 
 <p>Don&rsquo;t be confused by the fact that the branch numbers
 for each file are different (&lsquo;<samp>1.7.2</samp>&rsquo; and

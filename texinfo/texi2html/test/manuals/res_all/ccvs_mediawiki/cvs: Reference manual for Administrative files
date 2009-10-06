@@ -20,17 +20,19 @@ discussion of how to edit them, see [[cvs: The Repository#The administrative fil
 <p>The most important of these files is the &lsquo;<tt>modules</tt>&rsquo;
 file, which defines the modules inside the repository.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#The modules file| modules]]::<nowiki>                     Defining modules
-</nowiki>&bull;[[#The cvswrappers file| Wrappers]]::<nowiki>                    Specify binary-ness based on file name
-</nowiki>&bull;[[#The commit support files| commit files]]::<nowiki>                The commit support files (commitinfo,
-                                verifymsg, editinfo, loginfo)
-</nowiki>&bull;[[#Rcsinfo| rcsinfo]]::<nowiki>                     Templates for the log messages
-</nowiki>&bull;[[#Ignoring files via cvsignore| cvsignore]]::<nowiki>                   Ignoring files via cvsignore
-</nowiki>&bull;[[#The checkoutlist file| checkoutlist]]::<nowiki>                Adding your own administrative files
-</nowiki>&bull;[[#The history file| history file]]::<nowiki>                History information
-</nowiki>&bull;[[#Expansions in administrative files| Variables]]::<nowiki>                   Various variables are expanded
-</nowiki>&bull;[[#The CVSROOT/config configuration file| config]]::<nowiki>                      Miscellaneous CVS configuration
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#The modules file|&bull; modules]]::                     Defining modules
+ [[#The cvswrappers file|&bull; Wrappers]]::                    Specify binary-ness based on file name
+ [[#The commit support files|&bull; commit files]]::                The commit support files (commitinfo,
+                                 verifymsg, editinfo, loginfo)
+ [[#Rcsinfo|&bull; rcsinfo]]::                     Templates for the log messages
+ [[#Ignoring files via cvsignore|&bull; cvsignore]]::                   Ignoring files via cvsignore
+ [[#The checkoutlist file|&bull; checkoutlist]]::                Adding your own administrative files
+ [[#The history file|&bull; history file]]::                History information
+ [[#Expansions in administrative files|&bull; Variables]]::                   Various variables are expanded
+ [[#The CVSROOT/config configuration file|&bull; config]]::                      Miscellaneous CVS configuration
+</div>
+
 <hr>
 <div id="modules"></div>
 <div class="header">
@@ -65,14 +67,16 @@ directory &lsquo;<tt>sdir</tt>&rsquo;.  &lsquo;<tt>first-dir/sdir</tt>&rsquo; co
 a file &lsquo;<tt>sfile</tt>&rsquo;.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Alias modules| Alias modules]]::<nowiki>             The simplest kind of module
-</nowiki>&bull;[[#Regular modules| Regular modules]]::<nowiki>
-</nowiki>&bull;[[#Ampersand modules| Ampersand modules]]::<nowiki>
-</nowiki>&bull;[[#Excluding directories| Excluding directories]]::<nowiki>     Excluding directories from a module
-</nowiki>&bull;[[#Module options| Module options]]::<nowiki>            Regular and ampersand modules can take options
-</nowiki>&bull;[[#How the modules file &ldquo;program options&rdquo; programs are run| Module program options]]::<nowiki>    How the modules &ldquo;program options&rdquo; programs
-                              are run. 
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#Alias modules|&bull; Alias modules]]::             The simplest kind of module
+ [[#Regular modules|&bull; Regular modules]]::
+ [[#Ampersand modules|&bull; Ampersand modules]]::
+ [[#Excluding directories|&bull; Excluding directories]]::     Excluding directories from a module
+ [[#Module options|&bull; Module options]]::            Regular and ampersand modules can take options
+ [[#How the modules file &ldquo;program options&rdquo; programs are run|&bull; Module program options]]::    How the modules &ldquo;program options&rdquo; programs
+                               are run. 
+</div>
+
 <hr>
 <div id="Alias-modules"></div>
 <div class="header">
@@ -103,23 +107,29 @@ explicitly in the <small>CVS</small> arguments.
 
 <p>For example, if the modules file contains:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>amodule -a first-dir
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ amodule -a first-dir
+</div>
+</td></tr></table>
 
 <p>then the following two commands are equivalent:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs co amodule
-$ cvs co first-dir
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs co amodule
+ $ cvs co first-dir
+</div>
+</td></tr></table>
 
 <p>and they each would provide output such as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs checkout: Updating first-dir
-U first-dir/file1
-U first-dir/file2
-cvs checkout: Updating first-dir/sdir
-U first-dir/sdir/sfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs checkout: Updating first-dir
+ U first-dir/file1
+ U first-dir/file2
+ cvs checkout: Updating first-dir/sdir
+ U first-dir/sdir/sfile
+</div>
+</td></tr></table>
 
 <hr>
 <div id="Regular-modules"></div>
@@ -148,27 +158,33 @@ levels.
 
 <p>For example, if a module is defined by:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>regmodule first-dir
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ regmodule first-dir
+</div>
+</td></tr></table>
 
 <p>then regmodule will contain the files from first-dir:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs co regmodule
-cvs checkout: Updating regmodule
-U regmodule/file1
-U regmodule/file2
-cvs checkout: Updating regmodule/sdir
-U regmodule/sdir/sfile
-$
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs co regmodule
+ cvs checkout: Updating regmodule
+ U regmodule/file1
+ U regmodule/file2
+ cvs checkout: Updating regmodule/sdir
+ U regmodule/sdir/sfile
+ $
+</div>
+</td></tr></table>
 
 <p>By explicitly specifying files in the module definition
 after <var>dir</var>, you can select particular files from
 directory <var>dir</var>.  Here is
 an example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>regfiles first-dir/sdir sfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ regfiles first-dir/sdir sfile
+</div>
+</td></tr></table>
 
 <p>With this definition, getting the regfiles module
 will create a single working directory
@@ -176,10 +192,12 @@ will create a single working directory
 comes from a directory deeper
 in the <small>CVS</small> source repository:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs co regfiles
-U regfiles/sfile
-$
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs co regfiles
+ U regfiles/sfile
+ $
+</div>
+</td></tr></table>
 
 <hr>
 <div id="Ampersand-modules"></div>
@@ -194,44 +212,54 @@ Next: [[#Excluding directories|Excluding directories]], Previous: [[#Regular mod
 
 <p>A module definition can refer to other modules by
 including &lsquo;<samp>&amp;<var>module</var></samp>&rsquo; in its definition.
-</p><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki><var>mname</var> [ options ] <var>&amp;module</var>&hellip;
-</nowiki></pre></td></tr></table>
+</p><table><tr><td>&nbsp;</td><td><div class="example">
+ <var>mname</var> [ options ] <var>&amp;module</var>&hellip;
+</div>
+</td></tr></table>
 
 <p>Then getting the module creates a subdirectory for each such
 module, in the directory containing the module.  For
 example, if modules contains
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>ampermod &amp;first-dir
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ampermod &amp;first-dir
+</div>
+</td></tr></table>
 
 <p>then a checkout will create an <code>ampermod</code> directory
 which contains a directory called <code>first-dir</code>,
 which in turns contains all the directories and files
 which live there.  For example, the command
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs co ampermod
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs co ampermod
+</div>
+</td></tr></table>
 
 <p>will create the following files:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>ampermod/first-dir/file1
-ampermod/first-dir/file2
-ampermod/first-dir/sdir/sfile
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ampermod/first-dir/file1
+ ampermod/first-dir/file2
+ ampermod/first-dir/sdir/sfile
+</div>
+</td></tr></table>
 
 <p>There is one quirk/bug: the messages that <small>CVS</small>
 prints omit the &lsquo;<tt>ampermod</tt>&rsquo;, and thus do not
 correctly display the location to which it is checking
 out the files:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs co ampermod
-cvs checkout: Updating first-dir
-U first-dir/file1
-U first-dir/file2
-cvs checkout: Updating first-dir/sdir
-U first-dir/sdir/sfile
-$
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs co ampermod
+ cvs checkout: Updating first-dir
+ U first-dir/file1
+ U first-dir/file2
+ cvs checkout: Updating first-dir/sdir
+ U first-dir/sdir/sfile
+ $
+</div>
+</td></tr></table>
 
 <p>Do not rely on this buggy behavior; it may get fixed in
 a future release of <small>CVS</small>.
@@ -254,8 +282,10 @@ before the name of each directory to be excluded.
 </p>
 <p>For example, if the modules file contains:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>exmodule -a !first-dir/sdir first-dir
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ exmodule -a !first-dir/sdir first-dir
+</div>
+</td></tr></table>
 
 <p>then checking out the module &lsquo;<samp>exmodule</samp>&rsquo; will check
 out everything in &lsquo;<samp>first-dir</samp>&rsquo; except any files in
@@ -401,22 +431,26 @@ binary files.
 </p>
 <p>The basic format of the file &lsquo;<tt>cvswrappers</tt>&rsquo; is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>wildcard     [option value][option value]...
-
-where option is one of
--m           update methodology      value: MERGE or COPY
--k           keyword expansion       value: expansion mode
-
-and value is a single-quote delimited value.
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ wildcard     [option value][option value]...
+ 
+ where option is one of
+ -m           update methodology      value: MERGE or COPY
+ -k           keyword expansion       value: expansion mode
+ 
+ and value is a single-quote delimited value.
+</div>
+</td></tr></table>
 
 
 <p>For example, the following command imports a
 directory, treating files whose name ends in
 &lsquo;<samp>.exe</samp>&rsquo; as binary:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs import -I ! -W &quot;*.exe -k 'b'&quot; first-dir vendortag reltag
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs import -I ! -W &quot;*.exe -k 'b'&quot; first-dir vendortag reltag
+</div>
+</td></tr></table>
 
 
 <hr>
@@ -474,13 +508,15 @@ imagination is the limit!
 </p></dd>
 </dl>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#The common syntax| syntax]]::<nowiki>                      The common syntax
-</nowiki>&bull;[[#Commitinfo| commitinfo]]::<nowiki>                  Pre-commit checking
-</nowiki>&bull;[[#Verifying log messages| verifymsg]]::<nowiki>                   How are log messages evaluated?
-</nowiki>&bull;[[#Editinfo| editinfo]]::<nowiki>                    Specifying how log messages are created
-                                (obsolete)
-</nowiki>&bull;[[#Loginfo| loginfo]]::<nowiki>                     Where should log messages be sent?
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#The common syntax|&bull; syntax]]::                      The common syntax
+ [[#Commitinfo|&bull; commitinfo]]::                  Pre-commit checking
+ [[#Verifying log messages|&bull; verifymsg]]::                   How are log messages evaluated?
+ [[#Editinfo|&bull; editinfo]]::                    Specifying how log messages are created
+                                 (obsolete)
+ [[#Loginfo|&bull; loginfo]]::                     Where should log messages be sent?
+</div>
+
 <hr>
 <div id="syntax"></div>
 <div class="header">
@@ -688,47 +724,57 @@ line of the log message.  The rest of log message is
 free text.  The following template is found in the file
 &lsquo;<tt>/usr/cvssupport/tc.template</tt>&rsquo;.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>BugId:
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ BugId:
+</div>
+</td></tr></table>
 
 <p>The script &lsquo;<tt>/usr/cvssupport/bugid.verify</tt>&rsquo; is used to
 evaluate the log message.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#!/bin/sh
-#
-#       bugid.verify filename
-#
-#  Verify that the log message contains a valid bugid
-#  on the first line.
-#
-if head -1 &lt; $1 | grep '^BugId:[ ]*[0-9][0-9]*$' &gt; /dev/null; then
-    exit 0
-elif head -1 &lt; $1 | grep '^BugId:[ ]*none$' &gt; /dev/null; then
-    # It is okay to allow commits with 'BugId: none',
-    # but do not put that text into the real log message.
-    grep -v '^BugId:[ ]*none$' &gt; $1.rewrite
-    mv $1.rewrite $1
-    exit 0
-else
-    echo &quot;No BugId found.&quot;
-    exit 1
-fi
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #!/bin/sh
+ #
+ #       bugid.verify filename
+ #
+ #  Verify that the log message contains a valid bugid
+ #  on the first line.
+ #
+ if head -1 &lt; $1 | grep '^BugId:[ ]*[0-9][0-9]*$' &gt; /dev/null; then
+     exit 0
+ elif head -1 &lt; $1 | grep '^BugId:[ ]*none$' &gt; /dev/null; then
+     # It is okay to allow commits with 'BugId: none',
+     # but do not put that text into the real log message.
+     grep -v '^BugId:[ ]*none$' &gt; $1.rewrite
+     mv $1.rewrite $1
+     exit 0
+ else
+     echo &quot;No BugId found.&quot;
+     exit 1
+ fi
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<tt>verifymsg</tt>&rsquo; file contains this line:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>^tc     /usr/cvssupport/bugid.verify
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ^tc     /usr/cvssupport/bugid.verify
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<tt>rcsinfo</tt>&rsquo; file contains this line:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>^tc     /usr/cvssupport/tc.template
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ^tc     /usr/cvssupport/tc.template
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<tt>config</tt>&rsquo; file contains this line:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>RereadLogAfterVerify=always
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ RereadLogAfterVerify=always
+</div>
+</td></tr></table>
 
 
 
@@ -798,8 +844,10 @@ commit</code> are used, &lsquo;<tt>editinfo</tt>&rsquo; will not be consulted.
 There is no good workaround for this; use
 &lsquo;<tt>verifymsg</tt>&rsquo; instead.
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Editinfo example| editinfo example]]::<nowiki>            Editinfo example
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#Editinfo example|&bull; editinfo example]]::            Editinfo example
+</div>
+
 <hr>
 <div id="editinfo-example"></div>
 <div class="header">
@@ -818,41 +866,49 @@ line of the log message.  The rest of log message is
 free text.  The following template is found in the file
 &lsquo;<tt>/usr/cvssupport/tc.template</tt>&rsquo;.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>BugId:
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ BugId:
+</div>
+</td></tr></table>
 
 <p>The script &lsquo;<tt>/usr/cvssupport/bugid.edit</tt>&rsquo; is used to
 edit the log message.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#!/bin/sh
-#
-#       bugid.edit filename
-#
-#  Call $EDITOR on FILENAME, and verify that the
-#  resulting file contains a valid bugid on the first
-#  line.
-if [ &quot;x$EDITOR&quot; = &quot;x&quot; ]; then EDITOR=vi; fi
-if [ &quot;x$CVSEDITOR&quot; = &quot;x&quot; ]; then CVSEDITOR=$EDITOR; fi
-$CVSEDITOR $1
-until head -1|grep '^BugId:[ ]*[0-9][0-9]*$' &lt; $1
-do  echo -n  &quot;No BugId found.  Edit again? ([y]/n)&quot;
-    read ans
-    case ${ans} in
-        n*) exit 1;;
-    esac
-    $CVSEDITOR $1
-done
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #!/bin/sh
+ #
+ #       bugid.edit filename
+ #
+ #  Call $EDITOR on FILENAME, and verify that the
+ #  resulting file contains a valid bugid on the first
+ #  line.
+ if [ &quot;x$EDITOR&quot; = &quot;x&quot; ]; then EDITOR=vi; fi
+ if [ &quot;x$CVSEDITOR&quot; = &quot;x&quot; ]; then CVSEDITOR=$EDITOR; fi
+ $CVSEDITOR $1
+ until head -1|grep '^BugId:[ ]*[0-9][0-9]*$' &lt; $1
+ do  echo -n  &quot;No BugId found.  Edit again? ([y]/n)&quot;
+     read ans
+     case ${ans} in
+         n*) exit 1;;
+     esac
+     $CVSEDITOR $1
+ done
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<tt>editinfo</tt>&rsquo; file contains this line:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>^tc     /usr/cvssupport/bugid.edit
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ^tc     /usr/cvssupport/bugid.edit
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<tt>rcsinfo</tt>&rsquo; file contains this line:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>^tc     /usr/cvssupport/tc.template
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ^tc     /usr/cvssupport/tc.template
+</div>
+</td></tr></table>
 
 <hr>
 <div id="loginfo"></div>
@@ -930,8 +986,10 @@ is the format string, and three files (<tt>ChangeLog</tt>,
 <tt>Makefile</tt>, <tt>foo.c</tt>) were modified, the output
 might be:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>&quot;yoyodyne/tc ChangeLog,1.1,1.2 Makefile,1.3,1.4 foo.c,1.12,1.13&quot;
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ &quot;yoyodyne/tc ChangeLog,1.1,1.2 Makefile,1.3,1.4 foo.c,1.12,1.13&quot;
+</div>
+</td></tr></table>
 
 <p>As another example, &lsquo;<samp>%{}</samp>&rsquo; means that only the
 name of the repository will be generated.
@@ -940,9 +998,11 @@ name of the repository will be generated.
 &lsquo;<tt>loginfo</tt>&rsquo; will be run on the <em>remote</em>
 (i.e., server) side, not the client side (see [[cvs: The Repository#Remote repositories|Remote repositories]]).
 </p>
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Loginfo example| loginfo example]]::<nowiki>             Loginfo example
-</nowiki>&bull;[[#Keeping a checked out copy| Keeping a checked out copy]]::<nowiki>  Updating a tree on every checkin
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#Loginfo example|&bull; loginfo example]]::             Loginfo example
+ [[#Keeping a checked out copy|&bull; Keeping a checked out copy]]::  Updating a tree on every checkin
+</div>
+
 <hr>
 <div id="loginfo-example"></div>
 <div class="header">
@@ -960,21 +1020,25 @@ the &lsquo;<tt>CVSROOT</tt>&rsquo; directory) are also logged in
 &lsquo;<tt>/usr/adm/cvsroot-log</tt>&rsquo;.
 Commits to the &lsquo;<tt>prog1</tt>&rsquo; directory are mailed to <tt>ceder</tt>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>ALL             /usr/local/bin/cvs-log $CVSROOT/CVSROOT/commitlog $USER
-^CVSROOT        /usr/local/bin/cvs-log /usr/adm/cvsroot-log
-^prog1          Mail -s %s ceder
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ALL             /usr/local/bin/cvs-log $CVSROOT/CVSROOT/commitlog $USER
+ ^CVSROOT        /usr/local/bin/cvs-log /usr/adm/cvsroot-log
+ ^prog1          Mail -s %s ceder
+</div>
+</td></tr></table>
 
 <p>The shell-script &lsquo;<tt>/usr/local/bin/cvs-log</tt>&rsquo; looks
 like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#!/bin/sh
-(echo &quot;------------------------------------------------------&quot;;
- echo -n $2&quot;  &quot;;
- date;
- echo;
- cat) &gt;&gt; $1
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #!/bin/sh
+ (echo &quot;------------------------------------------------------&quot;;
+  echo -n $2&quot;  &quot;;
+  date;
+  echo;
+  cat) &gt;&gt; $1
+</div>
+</td></tr></table>
 
 <hr>
 <div id="Keeping-a-checked-out-copy"></div>
@@ -1003,9 +1067,11 @@ cause a problem with locks, so the <code>cvs update</code>
 must be run in the background.
 Here is an example for unix (this should all be on one line):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>^cyclic-pages		(date; cat; (sleep 2; cd /u/www/local-docs;
- cvs -q update -d) &amp;) &gt;&gt; $CVSROOT/CVSROOT/updatelog 2&gt;&amp;1
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ^cyclic-pages		(date; cat; (sleep 2; cd /u/www/local-docs;
+  cvs -q update -d) &amp;) &gt;&gt; $CVSROOT/CVSROOT/updatelog 2&gt;&amp;1
+</div>
+</td></tr></table>
 
 <p>This will cause checkins to repository directories
 starting with <code>cyclic-pages</code> to update the checked
@@ -1100,16 +1166,18 @@ patterns is:
 
 <div id="index-Ignored-files"></div>
 <div id="index-Automatically-ignored-files"></div>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>    RCS     SCCS    CVS     CVS.adm
-    RCSLOG  cvslog.*
-    tags    TAGS
-    .make.state     .nse_depinfo
-    *~      #*      .#*     ,*      _$*     *$
-    *.old   *.bak   *.BAK   *.orig  *.rej   .del-*
-    *.a     *.olb   *.o     *.obj   *.so    *.exe
-    *.Z     *.elc   *.ln
-    core
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+     RCS     SCCS    CVS     CVS.adm
+     RCSLOG  cvslog.*
+     tags    TAGS
+     .make.state     .nse_depinfo
+     *~      #*      .#*     ,*      _$*     *$
+     *.old   *.bak   *.BAK   *.orig  *.rej   .del-*
+     *.a     *.olb   *.o     *.obj   *.so    *.exe
+     *.Z     *.elc   *.ln
+     core
+</div>
+</td></tr></table>
 
 </li><li>
 The per-repository list in
@@ -1179,15 +1247,19 @@ suppose that you have a script &lsquo;<tt>logcommit.pl</tt>&rsquo;
 which you run by including the following line in the
 &lsquo;<tt>commitinfo</tt>&rsquo; administrative file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>ALL   $CVSROOT/CVSROOT/logcommit.pl
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ALL   $CVSROOT/CVSROOT/logcommit.pl
+</div>
+</td></tr></table>
 
 <p>To maintain &lsquo;<tt>logcommit.pl</tt>&rsquo; with <small>CVS</small> you would
 add the following line to the &lsquo;<tt>checkoutlist</tt>&rsquo;
 administrative file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>logcommit.pl
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ logcommit.pl
+</div>
+</td></tr></table>
 
 <p>The format of &lsquo;<tt>checkoutlist</tt>&rsquo; is one line for each
 file that you want to maintain using <small>CVS</small>, giving
@@ -1199,8 +1271,10 @@ the files listed there will function just like
 when checking in one of the files you should get a
 message such as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs commit: Rebuilding administrative file database
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs commit: Rebuilding administrative file database
+</div>
+</td></tr></table>
 
 <p>and the checked out copy in the &lsquo;<tt>CVSROOT</tt>&rsquo;
 directory should be updated.
@@ -1333,8 +1407,10 @@ refer to a test directory you might create a user
 variable <code>TESTDIR</code>.  Then if <small>CVS</small> is invoked
 as
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs -s TESTDIR=/work/local/tests
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs -s TESTDIR=/work/local/tests
+</div>
+</td></tr></table>
 
 <p>and the
 administrative file contains <code>sh

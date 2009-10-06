@@ -58,9 +58,11 @@ RFC1123).
 <p>ISO8601 dates have many variants but a few examples
 are:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>1972-09-24
-1972-09-24 20:05
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ 1972-09-24
+ 1972-09-24 20:05
+</div>
+</td></tr></table>
 
 <p>There are a lot more ISO8601 date formats, and <small>CVS</small>
 accepts many of them, but you probably don&rsquo;t want to
@@ -71,9 +73,11 @@ hear the <em>whole</em> long story :-).
 itself, <small>CVS</small> also allows some of the fields to be
 omitted.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>24 Sep 1972 20:05
-24 Sep
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ 24 Sep 1972 20:05
+ 24 Sep
+</div>
+</td></tr></table>
 
 <p>The date is interpreted as being in the
 local timezone, unless a specific timezone is
@@ -96,8 +100,10 @@ flag so that your shell doesn&rsquo;t interpret spaces as
 argument separators.  A command using the &lsquo;<samp>-D</samp>&rsquo;
 flag can look like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs diff -D &quot;1 hour ago&quot; cvs.texinfo
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs diff -D &quot;1 hour ago&quot; cvs.texinfo
+</div>
+</td></tr></table>
 
 <div id="index-Forcing-a-tag-match"></div>
 </dd>

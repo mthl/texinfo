@@ -62,14 +62,16 @@ models work, and some of the issues involved in
 choosing between them.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#File status| File status]]::<nowiki>                 A file can be in several states
-</nowiki>&bull;[[#Bringing a file up to date| Updating a file]]::<nowiki>             Bringing a file up-to-date
-</nowiki>&bull;[[#Conflicts example| Conflicts example]]::<nowiki>           An informative example
-</nowiki>&bull;[[#Informing others about commits| Informing others]]::<nowiki>            To cooperate you must inform
-</nowiki>&bull;[[#Several developers simultaneously attempting to run CVS| Concurrency]]::<nowiki>                 Simultaneous repository access
-</nowiki>&bull;[[#Mechanisms to track who is editing files| Watches]]::<nowiki>                     Mechanisms to track who is editing files
-</nowiki>&bull;[[#Choosing between reserved or unreserved checkouts| Choosing a model]]::<nowiki>            Reserved or unreserved checkouts?
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#File status|&bull; File status]]::                 A file can be in several states
+ [[#Bringing a file up to date|&bull; Updating a file]]::             Bringing a file up-to-date
+ [[#Conflicts example|&bull; Conflicts example]]::           An informative example
+ [[#Informing others about commits|&bull; Informing others]]::            To cooperate you must inform
+ [[#Several developers simultaneously attempting to run CVS|&bull; Concurrency]]::                 Simultaneous repository access
+ [[#Mechanisms to track who is editing files|&bull; Watches]]::                     Mechanisms to track who is editing files
+ [[#Choosing between reserved or unreserved checkouts|&bull; Choosing a model]]::            Reserved or unreserved checkouts?
+</div>
+
 <hr>
 <div id="File-status"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -192,8 +194,10 @@ display file status in a more brief format than is
 displayed by the <code>status</code> command, you can invoke
 </p>
 <div id="index-update_002c-to-display-file-status"></div>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs -n -q update
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs -n -q update
+</div>
+</td></tr></table>
 
 <p>The &lsquo;<samp>-n</samp>&rsquo; option means to not actually do the
 update, but merely to display statuses; the &lsquo;<samp>-q</samp>&rsquo;
@@ -277,69 +281,77 @@ See section [[cvs: Guide to CVS commands#update&mdash;Bring work tree in sync wi
 
 <p>Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdio.h&gt;
-
-void main()
-{
-    parse();
-    if (nerr == 0)
-        gencode();
-    else
-        fprintf(stderr, &quot;No code generated.\n&quot;);
-    exit(nerr == 0 ? 0 : 1);
-}
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #include &lt;stdio.h&gt;
+ 
+ void main()
+ {
+     parse();
+     if (nerr == 0)
+         gencode();
+     else
+         fprintf(stderr, &quot;No code generated.\n&quot;);
+     exit(nerr == 0 ? 0 : 1);
+ }
+</div>
+</td></tr></table>
 
 <p>Revision 1.6 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdio.h&gt;
-
-int main(int argc,
-         char **argv)
-{
-    parse();
-    if (argc != 1)
-    {
-        fprintf(stderr, &quot;tc: No args expected.\n&quot;);
-        exit(1);
-    }
-    if (nerr == 0)
-        gencode();
-    else
-        fprintf(stderr, &quot;No code generated.\n&quot;);
-    exit(!!nerr);
-}
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #include &lt;stdio.h&gt;
+ 
+ int main(int argc,
+          char **argv)
+ {
+     parse();
+     if (argc != 1)
+     {
+         fprintf(stderr, &quot;tc: No args expected.\n&quot;);
+         exit(1);
+     }
+     if (nerr == 0)
+         gencode();
+     else
+         fprintf(stderr, &quot;No code generated.\n&quot;);
+     exit(!!nerr);
+ }
+</div>
+</td></tr></table>
 
 <p>Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
 1.4, contains this before you run &lsquo;<samp>cvs update</samp>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-
-void main()
-{
-    init_scanner();
-    parse();
-    if (nerr == 0)
-        gencode();
-    else
-        fprintf(stderr, &quot;No code generated.\n&quot;);
-    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
-}
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #include &lt;stdlib.h&gt;
+ #include &lt;stdio.h&gt;
+ 
+ void main()
+ {
+     init_scanner();
+     parse();
+     if (nerr == 0)
+         gencode();
+     else
+         fprintf(stderr, &quot;No code generated.\n&quot;);
+     exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+ }
+</div>
+</td></tr></table>
 
 <p>You run &lsquo;<samp>cvs update</samp>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs update driver.c
-RCS file: /usr/local/cvsroot/yoyodyne/tc/driver.c,v
-retrieving revision 1.4
-retrieving revision 1.6
-Merging differences between 1.4 and 1.6 into driver.c
-rcsmerge warning: overlaps during merge
-cvs update: conflicts found in driver.c
-C driver.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs update driver.c
+ RCS file: /usr/local/cvsroot/yoyodyne/tc/driver.c,v
+ retrieving revision 1.4
+ retrieving revision 1.6
+ Merging differences between 1.4 and 1.6 into driver.c
+ rcsmerge warning: overlaps during merge
+ cvs update: conflicts found in driver.c
+ C driver.c
+</div>
+</td></tr></table>
 
 <div id="index-Conflicts-_0028merge-example_0029"></div>
 <p><small>CVS</small> tells you that there were some conflicts.
@@ -347,30 +359,32 @@ Your original working file is saved unmodified in
 &lsquo;<tt>.#driver.c.1.4</tt>&rsquo;.  The new version of
 &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-
-int main(int argc,
-         char **argv)
-{
-    init_scanner();
-    parse();
-    if (argc != 1)
-    {
-        fprintf(stderr, &quot;tc: No args expected.\n&quot;);
-        exit(1);
-    }
-    if (nerr == 0)
-        gencode();
-    else
-        fprintf(stderr, &quot;No code generated.\n&quot;);
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; driver.c
-    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
-=======
-    exit(!!nerr);
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.6
-}
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ #include &lt;stdlib.h&gt;
+ #include &lt;stdio.h&gt;
+ 
+ int main(int argc,
+          char **argv)
+ {
+     init_scanner();
+     parse();
+     if (argc != 1)
+     {
+         fprintf(stderr, &quot;tc: No args expected.\n&quot;);
+         exit(1);
+     }
+     if (nerr == 0)
+         gencode();
+     else
+         fprintf(stderr, &quot;No code generated.\n&quot;);
+ &lt;&lt;&lt;&lt;&lt;&lt;&lt; driver.c
+     exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+ =======
+     exit(!!nerr);
+ &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.6
+ }
+</div>
+</td></tr></table>
 
 <div id="index-Markers_002c-conflict"></div>
 <div id="index-Conflict-markers"></div>
@@ -386,35 +400,39 @@ copy, and that the overlapping section is clearly marked with
 <div id="index-Conflict-resolution"></div>
 <p>You resolve the conflict by editing the file, removing the markers and
 the erroneous line.  Suppose you end up with this file:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-
-int main(int argc,
-         char **argv)
-{
-    init_scanner();
-    parse();
-    if (argc != 1)
-    {
-        fprintf(stderr, &quot;tc: No args expected.\n&quot;);
-        exit(1);
-    }
-    if (nerr == 0)
-        gencode();
-    else
-        fprintf(stderr, &quot;No code generated.\n&quot;);
-    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
-}
-</nowiki></pre></td></tr></table>
+</p><table><tr><td>&nbsp;</td><td><div class="example">
+ #include &lt;stdlib.h&gt;
+ #include &lt;stdio.h&gt;
+ 
+ int main(int argc,
+          char **argv)
+ {
+     init_scanner();
+     parse();
+     if (argc != 1)
+     {
+         fprintf(stderr, &quot;tc: No args expected.\n&quot;);
+         exit(1);
+     }
+     if (nerr == 0)
+         gencode();
+     else
+         fprintf(stderr, &quot;No code generated.\n&quot;);
+     exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+ }
+</div>
+</td></tr></table>
 
 <p>You can now go ahead and commit this as revision 1.7.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs commit -m &quot;Initialize scanner. Use symbolic exit values.&quot; driver.c
-Checking in driver.c;
-/usr/local/cvsroot/yoyodyne/tc/driver.c,v  &lt;--  driver.c
-new revision: 1.7; previous revision: 1.6
-done
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs commit -m &quot;Initialize scanner. Use symbolic exit values.&quot; driver.c
+ Checking in driver.c;
+ /usr/local/cvsroot/yoyodyne/tc/driver.c,v  &lt;--  driver.c
+ new revision: 1.7; previous revision: 1.6
+ done
+</div>
+</td></tr></table>
 
 <p>For your protection, <small>CVS</small> will refuse to check in a
 file if a conflict occurred and you have not resolved
@@ -491,8 +509,10 @@ newsgroup.
 <p>If several developers try to run <small>CVS</small> at the same
 time, one may get the following message:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>[11:43:23] waiting for bach's lock in /usr/local/cvsroot/foo
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ [11:43:23] waiting for bach's lock in /usr/local/cvsroot/foo
+</div>
+</td></tr></table>
 
 <div id="index-_0023cvs_002erfl_002c-removing"></div>
 <div id="index-_0023cvs_002ewfl_002c-removing"></div>
@@ -530,16 +550,20 @@ changes, or none of them.
 <p>but <small>CVS</small> does <em>not</em> have this property.  For
 example, given the files
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>a/one.c
-a/two.c
-b/three.c
-b/four.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ a/one.c
+ a/two.c
+ b/three.c
+ b/four.c
+</div>
+</td></tr></table>
 
 <p>if someone runs
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs ci a/two.c b/three.c
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs ci a/two.c b/three.c
+</div>
+</td></tr></table>
 
 <p>and someone else runs <code>cvs update</code> at the same
 time, the person running <code>update</code> might get only
@@ -587,12 +611,14 @@ discard a working directory which is no longer in use,
 but <small>CVS</small> is not able to enforce this behavior.
 </p>
 
-<pre class="menu-preformatted"><nowiki></nowiki>&bull;[[#Telling CVS to watch certain files| Setting a watch]]::<nowiki>             Telling CVS to watch certain files
-</nowiki>&bull;[[#Telling CVS to notify you| Getting Notified]]::<nowiki>            Telling CVS to notify you
-</nowiki>&bull;[[#How to edit a file which is being watched| Editing files]]::<nowiki>               How to edit a file which is being watched
-</nowiki>&bull;[[#Information about who is watching and editing| Watch information]]::<nowiki>           Information about who is watching and editing
-</nowiki>&bull;[[#Using watches with old versions of CVS| Watches Compatibility]]::<nowiki>       Watches interact poorly with CVS 1.6 or earlier
-</nowiki></pre>
+<div class="menu-preformatted" style="font-family: serif">
+ [[#Telling CVS to watch certain files|&bull; Setting a watch]]::             Telling CVS to watch certain files
+ [[#Telling CVS to notify you|&bull; Getting Notified]]::            Telling CVS to notify you
+ [[#How to edit a file which is being watched|&bull; Editing files]]::               How to edit a file which is being watched
+ [[#Information about who is watching and editing|&bull; Watch information]]::           Information about who is watching and editing
+ [[#Using watches with old versions of CVS|&bull; Watches Compatibility]]::       Watches interact poorly with CVS 1.6 or earlier
+</div>
+
 <hr>
 <div id="Setting-a-watch"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -764,8 +790,10 @@ supplied to the command on standard input.  The
 standard thing to put in the <code>notify</code> file is the
 single line:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>ALL mail %s -s &quot;CVS notification&quot;
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ ALL mail %s -s &quot;CVS notification&quot;
+</div>
+</td></tr></table>
 
 <p>This causes users to be notified by electronic mail.
 </p>
@@ -954,9 +982,11 @@ If you attempt to use <small>CVS</small> 1.6 or earlier with the
 repository, you get an error message such as the
 following (all on one line):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>cvs update: cannot open CVS/Entries for reading:
-No such file or directory
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ cvs update: cannot open CVS/Entries for reading:
+ No such file or directory
+</div>
+</td></tr></table>
 
 <p>and your operation will likely be aborted.  To use the
 watch features, you must upgrade all copies of <small>CVS</small>

@@ -9,13 +9,17 @@ Previous: [[cvs: checkout options#checkout options|checkout options]], Up: [[cvs
 
 <p>Get a copy of the module &lsquo;<samp>tc</samp>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout tc
+</div>
+</td></tr></table>
 
 <p>Get a copy of the module &lsquo;<samp>tc</samp>&rsquo; as it looked one day
 ago:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><nowiki>$ cvs checkout -D yesterday tc
-</nowiki></pre></td></tr></table>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ $ cvs checkout -D yesterday tc
+</div>
+</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
