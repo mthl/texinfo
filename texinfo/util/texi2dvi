@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.152 2009-04-20 21:35:45 karl Exp $
+# $Id: texi2dvi,v 1.153 2009-10-08 21:49:30 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.152 $'
+rcs_revision='$Revision: 1.153 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -45,7 +45,7 @@ build_dir=${TEXI2DVI_BUILD_DIRECTORY:-.}
 # Instead, assign them an empty value.
 action=compile
 batch=false     # true for batch mode
-catcode_special=true
+catcode_special=maybe
 debug=false
 escape="\\"
 expand=false    # true for expansion via makeinfo
@@ -937,6 +937,14 @@ run_tex ()
 
     *) error 1 "$out_lang not supported for $in_lang";;
   esac
+
+  # do the special catcode trick for ~ in filenames only for Texinfo,
+  # not LaTeX.
+  if test x"$in_lang" = xtexinfo && test $catcode_special = maybe; then
+    catcode_special=true
+  else
+    catcode_special=false
+  fi
 
   # Beware of aux files in subdirectories that require the
   # subdirectory to exist.

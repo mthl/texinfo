@@ -1,3 +1,9 @@
+2009-10-08  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (catcode_special): default to maybe,
+	and only set to true for processing Texinfo, not LaTeX.
+	Request from Kurt Hornik, also Debian bug #534458.
+
 2009-09-09  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
 
         * build-aux/gendocs.sh: Fix copyright header to match GPLv3
