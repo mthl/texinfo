@@ -9,33 +9,33 @@ Next: [[cvs: Global options#Global options|Global options]], Previous: [[cvs: CV
 <div id="index-_002ecvsrc-file"></div>
 <div id="index-Option-defaults"></div>
 
-<p>There are some <code>command_options</code> that are used so
+There are some <code>command_options</code> that are used so
 often that you might have set up an alias or some other
 means to make sure you always specify that option.  One
 example (the one that drove the implementation of the
 &lsquo;<tt>.cvsrc</tt>&rsquo; support, actually) is that many people find the
-default output of the &lsquo;<samp>diff</samp>&rsquo; command to be very
+default output of the &lsquo;<code>diff</code>&rsquo; command to be very
 hard to read, and that either context diffs or unidiffs
 are much easier to understand.
-</p>
-<p>The &lsquo;<tt>~/.cvsrc</tt>&rsquo; file is a way that you can add
+
+The &lsquo;<tt>~/.cvsrc</tt>&rsquo; file is a way that you can add
 default options to <code>cvs_commands</code> within cvs,
 instead of relying on aliases or other shell scripts.
-</p>
-<p>The format of the &lsquo;<tt>~/.cvsrc</tt>&rsquo; file is simple.  The
+
+The format of the &lsquo;<tt>~/.cvsrc</tt>&rsquo; file is simple.  The
 file is searched for a line that begins with the same
 name as the <code>cvs_command</code> being executed.  If a
 match is found, then the remainder of the line is split
 up (at whitespace characters) into separate options and
-added to the command arguments <em>before</em> any
+added to the command arguments ''before'' any
 options from the command line.
-</p>
-<p>If a command has two names (e.g., <code>checkout</code> and
+
+If a command has two names (e.g., <code>checkout</code> and
 <code>co</code>), the official name, not necessarily the one
 used on the command line, will be used to match against
 the file.  So if this is the contents of the user&rsquo;s
 &lsquo;<tt>~/.cvsrc</tt>&rsquo; file:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  log -N
  diff -uN
@@ -46,29 +46,29 @@ the file.  So if this is the contents of the user&rsquo;s
 </div>
 </td></tr></table>
 
-<p>the command &lsquo;<samp>cvs checkout foo</samp>&rsquo; would have the
-&lsquo;<samp>-P</samp>&rsquo; option added to the arguments, as well as
-&lsquo;<samp>cvs co foo</samp>&rsquo;.
-</p>
-<p>With the example file above, the output from &lsquo;<samp>cvs
-diff foobar</samp>&rsquo; will be in unidiff format.  &lsquo;<samp>cvs diff
--c foobar</samp>&rsquo; will provide context diffs, as usual.
+the command &lsquo;<code>cvs checkout foo</code>&rsquo; would have the
+&lsquo;<code>-P</code>&rsquo; option added to the arguments, as well as
+&lsquo;<code>cvs co foo</code>&rsquo;.
+
+With the example file above, the output from &lsquo;<code>cvs
+diff foobar</code>&rsquo; will be in unidiff format.  &lsquo;<code>cvs diff
+-c foobar</code>&rsquo; will provide context diffs, as usual.
 Getting &quot;old&quot; format diffs would be slightly more
 complicated, because <code>diff</code> doesn&rsquo;t have an option
 to specify use of the &quot;old&quot; format, so you would need
-&lsquo;<samp>cvs -f diff foobar</samp>&rsquo;.
-</p>
-<p>In place of the command name you can use <code>cvs</code> to
+&lsquo;<code>cvs -f diff foobar</code>&rsquo;.
+
+In place of the command name you can use <code>cvs</code> to
 specify global options (see [[cvs: Global options#Global options|Global options]]).  For
 example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs -z6
 </div>
 </td></tr></table>
 
-<p>causes <small>CVS</small> to use compression level 6.
-</p>
+causes <small>CVS</small> to use compression level 6.
+
 <hr>
 <div class="header">
 <p>

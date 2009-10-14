@@ -11,14 +11,14 @@ Next: [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking 
 <div id="index-Identifying-files"></div>
 
 
-<p>As long as you edit source files inside a working
+As long as you edit source files inside a working
 directory you can always find out the state of
-your files via &lsquo;<samp>cvs status</samp>&rsquo; and &lsquo;<samp>cvs log</samp>&rsquo;.
+your files via &lsquo;<code>cvs status</code>&rsquo; and &lsquo;<code>cvs log</code>&rsquo;.
 But as soon as you export the files from your
 development environment it becomes harder to identify
 which revisions they are.
-</p>
-<p><small>CVS</small> can use a mechanism known as <em>keyword
+
+<small>CVS</small> can use a mechanism known as <em>keyword
 substitution</em> (or <em>keyword expansion</em>) to help
 identifying the files.  Embedded strings of the form
 <code>$<var>keyword</var>$</code> and
@@ -26,14 +26,14 @@ identifying the files.  Embedded strings of the form
 with strings of the form
 <code>$<var>keyword</var>:<var>value</var>$</code> whenever you obtain
 a new revision of the file.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: Keyword List#Keyword List|&bull; Keyword list]]::                   Keywords
  [[cvs: Using keywords#Using keywords|&bull; Using keywords]]::                 Using keywords
  [[cvs: Avoiding substitution#Avoiding substitution|&bull; Avoiding substitution]]::          Avoiding substitution
  [[cvs: Substitution modes#Substitution modes|&bull; Substitution modes]]::             Substitution modes
  [[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion|&bull; Configuring keyword expansion]]::  Configuring keyword expansion
- [[cvs: Problems with the $ Log$ keyword.#Problems with the $ <i></i>Log$ keyword.|&bull; Log keyword]]::                    Problems with the $<i></i>Log$ keyword.
+ [[cvs: Problems with the $ Log$ keyword.#Problems with the $ Log$ keyword.|&bull; Log keyword]]::                    Problems with the $<i></i>Log$ keyword.
 </div>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

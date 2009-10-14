@@ -8409,8 +8409,8 @@ delimiters, in braces.  Text is printed in a fixed-width font:
 </example>
 <para>produces
 </para>
-<example xml:space="preserve">How many @ -escapes does one need to print this
-@a @b @c string or these @'e?`{}!`\ this?
+<example xml:space="preserve">How many <verb>@ </verb>-escapes does one need to print this
+<verb>@a @b @c</verb> string or these <verb>@'e?`{}!`\</verb> this?
 </example>
 <para>This is in contrast to <code>@samp</code> (see the previous
 section), whose argument is normal Texinfo text, where the characters

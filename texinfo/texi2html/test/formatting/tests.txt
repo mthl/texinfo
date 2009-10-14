@@ -48,6 +48,7 @@ texi nested_table.texi
 texi paragraph_in_samp.texi
 texi formats_only_titles.texi
 texi line_commands_comments_spaces.texi
+texi lightweight_markups.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
@@ -120,6 +121,7 @@ html-extrali_plain html-extrali.texi
 formats_only_titles formats_only_titles.texi
 line_commands_comments_spaces line_commands_comments_spaces.texi
 
+lightweight_markups_mediawiki lightweight_markups.texi --init mediawiki.init
 quotation_docbook quotation.texi --docbook
 at_command_glued_info at_command_glued.texi --init info.init
 test_sp_info test_sp.texi --init info.init

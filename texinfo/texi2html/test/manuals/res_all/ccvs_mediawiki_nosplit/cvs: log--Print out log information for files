@@ -8,25 +8,23 @@ Next: [[cvs: rdiff--'patch' format diffs between releases#rdiff&mdash;&rsquo;pat
 === log&mdash;Print out log information for files ===
 <div id="index-log-_0028subcommand_0029"></div>
 
-<ul>
-<li>
-Synopsis: log [options] [files&hellip;]
-</li><li>
-Requires: repository, working directory.
-</li><li>
-Changes: nothing.
-</li></ul>
 
-<p>Display log information for files.  <code>log</code> used to
+* Synopsis: log <nowiki>[</nowiki>options<nowiki>]</nowiki> <nowiki>[</nowiki>files&hellip;<nowiki>]</nowiki>
+
+* Requires: repository, working directory.
+
+* Changes: nothing.
+
+Display log information for files.  <code>log</code> used to
 call the <small>RCS</small> utility <code>rlog</code>.  Although this
 is no longer true in the current sources, this history
 determines the format of the output and the options,
 which are not quite in the style of the other <small>CVS</small>
 commands.
-</p>
+
 <div id="index-Timezone_002c-in-output"></div>
 <div id="index-Zone_002c-time_002c-in-output"></div>
-<p>The output includes the location of the <small>RCS</small> file,
+The output includes the location of the <small>RCS</small> file,
 the <em>head</em> revision (the latest revision on the
 trunk), all symbolic names (tags) and some other
 things.  For each revision, the revision number, the
@@ -34,10 +32,10 @@ author, the number of lines added/deleted and the log
 message are printed.  All times are displayed in
 Coordinated Universal Time (UTC).  (Other parts of
 <small>CVS</small> print times in the local timezone).
-</p>
-<p><strong>Note: <code>log</code> uses &lsquo;<samp>-R</samp>&rsquo; in a way that conflicts
-with the normal use inside <small>CVS</small> (see [[cvs: Common command options#Common command options|Common options]]).</strong>
-</p>
+
+'''Note: <code>log</code> uses &lsquo;<code>-R</code>&rsquo; in a way that conflicts
+with the normal use inside <small>CVS</small> (see [[cvs: Common command options#Common command options|Common options]]).'''
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: log options#log options|&bull; log options]]::                 log options
  [[cvs: log examples#log examples|&bull; log examples]]::                log examples

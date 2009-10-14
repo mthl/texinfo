@@ -11,31 +11,31 @@ Next: [[cvs: Direct connection with kerberos#Direct connection with kerberos|Ker
 <div id="index-Security_002c-GSSAPI"></div>
 <div id="index-_003agserver_003a_002c-setting-up"></div>
 <div id="index-Kerberos_002c-using-_003agserver_003a"></div>
-<p>GSSAPI is a generic interface to network security
+GSSAPI is a generic interface to network security
 systems such as Kerberos 5.
 If you have a working GSSAPI library, you can have
 <small>CVS</small> connect via a direct <small>TCP</small> connection,
 authenticating with GSSAPI.
-</p>
-<p>To do this, <small>CVS</small> needs to be compiled with GSSAPI
+
+To do this, <small>CVS</small> needs to be compiled with GSSAPI
 support; when configuring <small>CVS</small> it tries to detect
 whether GSSAPI libraries using kerberos version 5 are
 present.  You can also use the &lsquo;<tt>--with-gssapi</tt>&rsquo;
 flag to configure.
-</p>
-<p>The connection is authenticated using GSSAPI, but the
-message stream is <em>not</em> authenticated by default.
+
+The connection is authenticated using GSSAPI, but the
+message stream is ''not'' authenticated by default.
 You must use the <code>-a</code> global option to request
 stream authentication.
-</p>
-<p>The data transmitted is <em>not</em> encrypted by
+
+The data transmitted is ''not'' encrypted by
 default.  Encryption support must be compiled into both
 the client and the server; use the
 &lsquo;<tt>--enable-encrypt</tt>&rsquo; configure option to turn it on.
 You must then use the <code>-x</code> global option to
 request encryption.
-</p>
-<p>GSSAPI connections are handled on the server side by
+
+GSSAPI connections are handled on the server side by
 the same server which handles the password
 authentication server; see [[cvs: Setting up the server for password authentication#Setting up the server for password authentication|Password authentication server]].  If you are using a GSSAPI mechanism such as
 Kerberos which provides for strong authentication, you
@@ -44,15 +44,15 @@ authenticate via cleartext passwords.  To do so, create
 an empty &lsquo;<tt>CVSROOT/passwd</tt>&rsquo; password file, and set
 <code>SystemAuth=no</code> in the config file
 (see [[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|config]]).
-</p>
-<p>The GSSAPI server uses a principal name of
+
+The GSSAPI server uses a principal name of
 cvs/<var>hostname</var>, where <var>hostname</var> is the
 canonical name of the server host.  You will have to
 set this up as required by your GSSAPI mechanism.
-</p>
-<p>To connect using GSSAPI, use &lsquo;<samp>:gserver:</samp>&rsquo;.  For
+
+To connect using GSSAPI, use &lsquo;<code>:gserver:</code>&rsquo;.  For
 example,
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs -d :gserver:faun.example.org:/usr/local/cvsroot checkout foo
 </div>

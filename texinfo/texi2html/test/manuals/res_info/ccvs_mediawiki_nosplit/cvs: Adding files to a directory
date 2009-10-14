@@ -8,34 +8,27 @@ Next: [[cvs: Removing files#Removing files|Removing files]], Up: [[cvs: Adding, 
 === Adding files to a directory ===
 <div id="index-Adding-files"></div>
 
-<p>To add a new file to a directory, follow these steps.
-</p>
-<ul>
-<li>
-You must have a working copy of the directory.
-See [[cvs: Getting the source#Getting the source|Getting the source]].
+To add a new file to a directory, follow these steps.
 
-</li><li>
-Create the new file inside your working copy of the directory.
 
-</li><li>
-Use &lsquo;<samp>cvs add <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that you
-want to version control the file.  If the file contains
-binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see [[cvs: Handling binary files#Handling binary files|Binary files]]).
+* You must have a working copy of the directory. See [[cvs: Getting the source#Getting the source|Getting the source]].
 
-</li><li>
-Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually check
-in the file into the repository.  Other developers
-cannot see the file until you perform this step.
-</li></ul>
 
-<p>You can also use the <code>add</code> command to add a new
+* Create the new file inside your working copy of the directory.
+
+
+* Use &lsquo;<code>cvs add <var>filename</var></code>&rsquo; to tell <small>CVS</small> that you want to version control the file.  If the file contains binary data, specify &lsquo;<code>-kb</code>&rsquo; (see [[cvs: Handling binary files#Handling binary files|Binary files]]).
+
+
+* Use &lsquo;<code>cvs commit <var>filename</var></code>&rsquo; to actually check in the file into the repository.  Other developers cannot see the file until you perform this step.
+
+You can also use the <code>add</code> command to add a new
 directory.
-</p>
-<p>Unlike most other commands, the <code>add</code> command is
-not recursive.  You cannot even type &lsquo;<samp>cvs add
-foo/bar</samp>&rsquo;!  Instead, you have to
-</p>
+
+Unlike most other commands, the <code>add</code> command is
+not recursive.  You cannot even type &lsquo;<code>cvs add
+foo/bar</code>&rsquo;!  Instead, you have to
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd foo
  $ cvs add bar
@@ -43,53 +36,30 @@ foo/bar</samp>&rsquo;!  Instead, you have to
 </td></tr></table>
 
 <div id="index-add-_0028subcommand_0029"></div>
-<dl>
-<dt><div id="index-cvs-add"></div>Command: <strong>cvs add</strong><em> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</em></dt>
-<dd>
-<p>Schedule <var>files</var> to be added to the repository.
-The files or directories specified with <code>add</code> must
-already exist in the current directory.  To add a whole
-new directory hierarchy to the source repository (for
-example, files received from a third-party vendor), use
-the <code>import</code> command instead.  See [[cvs: import--Import sources into CVS, using vendor branches#import&mdash;Import sources into CVS, using vendor branches|import]].
-</p>
-<p>The added files are not placed in the source repository
-until you use <code>commit</code> to make the change
-permanent.  Doing an <code>add</code> on a file that was
-removed with the <code>remove</code> command will undo the
-effect of the <code>remove</code>, unless a <code>commit</code>
-command intervened.  See [[cvs: Removing files#Removing files|Removing files]], for an
-example.
-</p>
-<p>The &lsquo;<samp>-k</samp>&rsquo; option specifies the default way that
-this file will be checked out; for more information see
-[[cvs: Substitution modes#Substitution modes|Substitution modes]].
-</p>
-<p>The &lsquo;<samp>-m</samp>&rsquo; option specifies a description for the
-file.  This description appears in the history log (if
-it is enabled, see [[cvs: The history file#The history file|history file]]).  It will also be
-saved in the version history inside the repository when
-the file is committed.  The <code>log</code> command displays
-this description.  The description can be changed using
-&lsquo;<samp>admin -t</samp>&rsquo;.  See [[cvs: admin--Administration#admin&mdash;Administration|admin]].  If you omit the
-&lsquo;<samp>-m <var>description</var></samp>&rsquo; flag, an empty string will
-be used.  You will not be prompted for a description.
-</p></dd></dl>
+;<div id="index-cvs-add"></div>Command<nowiki>:</nowiki> <strong>cvs add</strong><em> <nowiki>[</nowiki><code>-k</code> kflag<nowiki>]</nowiki> <nowiki>[</nowiki><code>-m</code> message<nowiki>]</nowiki> files &hellip;</em>
 
-<p>For example, the following commands add the file
+: Schedule <var>files</var> to be added to the repository. The files or directories specified with <code>add</code> must already exist in the current directory.  To add a whole new directory hierarchy to the source repository (for example, files received from a third-party vendor), use the <code>import</code> command instead.  See [[cvs: import--Import sources into CVS, using vendor branches#import&mdash;Import sources into CVS, using vendor branches|import]].
+
+: The added files are not placed in the source repository until you use <code>commit</code> to make the change permanent.  Doing an <code>add</code> on a file that was removed with the <code>remove</code> command will undo the effect of the <code>remove</code>, unless a <code>commit</code> command intervened.  See [[cvs: Removing files#Removing files|Removing files]], for an example.
+
+: The &lsquo;<code>-k</code>&rsquo; option specifies the default way that this file will be checked out; for more information see [[cvs: Substitution modes#Substitution modes|Substitution modes]].
+
+: The &lsquo;<code>-m</code>&rsquo; option specifies a description for the file.  This description appears in the history log (if it is enabled, see [[cvs: The history file#The history file|history file]]).  It will also be saved in the version history inside the repository when the file is committed.  The <code>log</code> command displays this description.  The description can be changed using &lsquo;<code>admin -t</code>&rsquo;.  See [[cvs: admin--Administration#admin&mdash;Administration|admin]].  If you omit the &lsquo;<code>-m <var>description</var></code>&rsquo; flag, an empty string will be used.  You will not be prompted for a description.
+
+For example, the following commands add the file
 &lsquo;<tt>backend.c</tt>&rsquo; to the repository:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs add backend.c
  $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
 </div>
 </td></tr></table>
 
-<p>When you add a file it is added only on the branch
+When you add a file it is added only on the branch
 which you are working on (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  You can
 later merge the additions to another branch if you want
 (see [[cvs: Merging can add or remove files#Merging can add or remove files|Merging adds and removals]]).
-</p>
+
 <hr>
 <div class="header">
 <p>

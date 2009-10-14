@@ -9,30 +9,30 @@ Next: [[cvs: Moving and renaming files#Moving and renaming files|Moving files]],
 <div id="index-Removing-directories"></div>
 <div id="index-Directories_002c-removing"></div>
 
-<p>In concept removing directories is somewhat similar to
+In concept removing directories is somewhat similar to
 removing files&mdash;you want the directory to not exist in
 your current working directories, but you also want to
 be able to retrieve old releases in which the directory
 existed.
-</p>
-<p>The way that you remove a directory is to remove all
+
+The way that you remove a directory is to remove all
 the files in it.  You don&rsquo;t remove the directory
 itself; there is no way to do that.
-Instead you specify the &lsquo;<samp>-P</samp>&rsquo; option to
+Instead you specify the &lsquo;<code>-P</code>&rsquo; option to
 <code>cvs update</code> or <code>cvs checkout</code>,
 which will cause <small>CVS</small> to remove empty
 directories from working directories.
 (Note that <code>cvs export</code> always removes empty directories.)
 Probably the
-best way to do this is to always specify &lsquo;<samp>-P</samp>&rsquo;; if
+best way to do this is to always specify &lsquo;<code>-P</code>&rsquo;; if
 you want an empty directory then put a dummy file (for
-example &lsquo;<tt>.keepme</tt>&rsquo;) in it to prevent &lsquo;<samp>-P</samp>&rsquo; from
+example &lsquo;<tt>.keepme</tt>&rsquo;) in it to prevent &lsquo;<code>-P</code>&rsquo; from
 removing it.
-</p>
-<p>Note that &lsquo;<samp>-P</samp>&rsquo; is implied by the &lsquo;<samp>-r</samp>&rsquo; or &lsquo;<samp>-D</samp>&rsquo;
+
+Note that &lsquo;<code>-P</code>&rsquo; is implied by the &lsquo;<code>-r</code>&rsquo; or &lsquo;<code>-D</code>&rsquo;
 options of <code>checkout</code>.  This way
 <small>CVS</small> will be able to correctly create the directory
 or not depending on whether the particular version you
 are checking out contains any files in that directory.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

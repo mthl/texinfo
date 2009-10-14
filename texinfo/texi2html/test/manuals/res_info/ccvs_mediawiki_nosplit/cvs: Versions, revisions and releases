@@ -10,14 +10,14 @@ Next: [[cvs: Assigning revisions#Assigning revisions|Assigning revisions]], Prev
 <div id="index-Versions_002c-revisions-and-releases"></div>
 <div id="index-Releases_002c-revisions-and-versions"></div>
 
-<p>A file can have several versions, as described above.
+A file can have several versions, as described above.
 Likewise, a software product can have several versions.
 A software product is often given a version number such
-as &lsquo;<samp>4.1.1</samp>&rsquo;.
-</p>
-<p>Versions in the first sense are called <em>revisions</em>
+as &lsquo;<code>4.1.1</code>&rsquo;.
+
+Versions in the first sense are called <em>revisions</em>
 in this document, and versions in the second sense are
 called <em>releases</em>.  To avoid confusion, the word
 <em>version</em> is almost never used in this document.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

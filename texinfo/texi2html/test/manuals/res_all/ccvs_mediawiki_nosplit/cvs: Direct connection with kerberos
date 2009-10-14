@@ -10,53 +10,53 @@ Next: [[cvs: Connecting with fork#Connecting with fork|Connecting via fork]], Pr
 <div id="index-Kerberos_002c-using-_003akserver_003a"></div>
 <div id="index-Security_002c-kerberos"></div>
 <div id="index-_003akserver_003a_002c-setting-up"></div>
-<p>The easiest way to use kerberos is to use the kerberos
+The easiest way to use kerberos is to use the kerberos
 <code>rsh</code>, as described in [[cvs: Connecting with rsh#Connecting with rsh|Connecting via rsh]].
 The main disadvantage of using rsh is that all the data
 needs to pass through additional programs, so it may be
 slower.  So if you have kerberos installed you can
 connect via a direct <small>TCP</small> connection,
 authenticating with kerberos.
-</p>
-<p>This section concerns the kerberos network security
+
+This section concerns the kerberos network security
 system, version 4.  Kerberos version 5 is supported via
 the GSSAPI generic network security interface, as
 described in the previous section.
-</p>
-<p>To do this, <small>CVS</small> needs to be compiled with kerberos
+
+To do this, <small>CVS</small> needs to be compiled with kerberos
 support; when configuring <small>CVS</small> it tries to detect
 whether kerberos is present or you can use the
 &lsquo;<tt>--with-krb4</tt>&rsquo; flag to configure.
-</p>
-<p>The data transmitted is <em>not</em> encrypted by
+
+The data transmitted is ''not'' encrypted by
 default.  Encryption support must be compiled into both
 the client and server; use the
 &lsquo;<tt>--enable-encryption</tt>&rsquo; configure option to turn it
 on.  You must then use the <code>-x</code> global option to
 request encryption.
-</p>
+
 <div id="index-CVS_005fCLIENT_005fPORT"></div>
-<p>You need to edit &lsquo;<tt>inetd.conf</tt>&rsquo; on the server
+You need to edit &lsquo;<tt>inetd.conf</tt>&rsquo; on the server
 machine to run <code>cvs kserver</code>.  The client uses
 port 1999 by default; if you want to use another port
 specify it in the <code>CVSROOT</code> (see [[cvs: Remote repositories#Remote repositories|Remote repositories]])
 or the <code>CVS_CLIENT_PORT</code> environment variable
 (see [[cvs: All environment variables which affect CVS#All environment variables which affect CVS|Environment variables]]) on the client.
-</p>
+
 <div id="index-kinit"></div>
-<p>When you want to use <small>CVS</small>, get a ticket in the
+When you want to use <small>CVS</small>, get a ticket in the
 usual way (generally <code>kinit</code>); it must be a ticket
 which allows you to log into the server machine.  Then
 you are ready to go:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs -d :kserver:faun.example.org:/usr/local/cvsroot checkout foo
 </div>
 </td></tr></table>
 
-<p>Previous versions of <small>CVS</small> would fall back to a
+Previous versions of <small>CVS</small> would fall back to a
 connection via rsh; this version will not do so.
-</p>
+
 <hr>
 <div class="header">
 <p>

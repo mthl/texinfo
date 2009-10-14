@@ -15,7 +15,7 @@ Next: [[cvs: Revision management#Revision management|Revision management]], Prev
 <div id="index-Unreserved-checkouts"></div>
 <div id="index-RCS_002dstyle-locking"></div>
 
-<p>When more than one person works on a software project
+When more than one person works on a software project
 things often get complicated.  Often, two people try to
 edit the same file simultaneously.  One solution, known
 as <em>file locking</em> or <em>reserved checkouts</em>, is
@@ -31,8 +31,8 @@ It also may be possible to use the watches
 features described below, together with suitable
 procedures (not enforced by software), to avoid having
 two people edit at the same time.
-</p>
-<p>The default model with <small>CVS</small> is known as
+
+The default model with <small>CVS</small> is known as
 <em>unreserved checkouts</em>.  In this model, developers
 can edit their own <em>working copy</em> of a file
 simultaneously.  The first person that commits his
@@ -42,15 +42,15 @@ message when they try to commit the file.  They must
 then use <small>CVS</small> commands to bring their working copy
 up to date with the repository revision.  This process
 is almost automatic.
-</p>
-<p><small>CVS</small> also supports mechanisms which facilitate
+
+<small>CVS</small> also supports mechanisms which facilitate
 various kinds of communication, without actually
 enforcing rules like reserved checkouts do.
-</p>
-<p>The rest of this chapter describes how these various
+
+The rest of this chapter describes how these various
 models work, and some of the issues involved in
 choosing between them.
-</p>
+
 
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: File status#File status|&bull; File status]]::                 A file can be in several states

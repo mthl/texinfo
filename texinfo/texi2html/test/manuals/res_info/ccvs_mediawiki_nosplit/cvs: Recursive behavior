@@ -11,11 +11,11 @@ Next: [[cvs: Adding, removing, and renaming files and directories#Adding, removi
 <div id="index-Descending-directories"></div>
 <div id="index-Subdirectories"></div>
 
-<p>Almost all of the subcommands of <small>CVS</small> work
+Almost all of the subcommands of <small>CVS</small> work
 recursively when you specify a directory as an
 argument.  For instance, consider this directory
 structure:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
        <code>$HOME</code>
          |
@@ -43,39 +43,35 @@ structure:
 </div>
 </td></tr></table>
 
-<p>If &lsquo;<tt>tc</tt>&rsquo; is the current working directory, the
+If &lsquo;<tt>tc</tt>&rsquo; is the current working directory, the
 following is true:
-</p>
-<ul>
-<li>
-&lsquo;<samp>cvs update testing</samp>&rsquo; is equivalent to
+
+
+* &lsquo;<code>cvs update testing</code>&rsquo; is equivalent to
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs update testing/testpgm.t testing/test2.t
 </div>
 </td></tr></table>
 
-</li><li>
-&lsquo;<samp>cvs update testing man</samp>&rsquo; updates all files in the
-subdirectories
 
-</li><li>
-&lsquo;<samp>cvs update .</samp>&rsquo; or just &lsquo;<samp>cvs update</samp>&rsquo; updates
-all files in the <code>tc</code> directory
-</li></ul>
+* &lsquo;<code>cvs update testing man</code>&rsquo; updates all files in the subdirectories
 
-<p>If no arguments are given to <code>update</code> it will
+
+* &lsquo;<code>cvs update .</code>&rsquo; or just &lsquo;<code>cvs update</code>&rsquo; updates all files in the <code>tc</code> directory
+
+If no arguments are given to <code>update</code> it will
 update all files in the current working directory and
 all its subdirectories.  In other words, &lsquo;<tt>.</tt>&rsquo; is a
 default argument to <code>update</code>.  This is also true
 for most of the <small>CVS</small> subcommands, not only the
 <code>update</code> command.
-</p>
-<p>The recursive behavior of the <small>CVS</small> subcommands can be
-turned off with the &lsquo;<samp>-l</samp>&rsquo; option.
-Conversely, the &lsquo;<samp>-R</samp>&rsquo; option can be used to force recursion if
-&lsquo;<samp>-l</samp>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see [[cvs: Default options and the ~%47.cvsrc file#Default options and the ~/.cvsrc file|~/.cvsrc]]).
-</p>
+
+The recursive behavior of the <small>CVS</small> subcommands can be
+turned off with the &lsquo;<code>-l</code>&rsquo; option.
+Conversely, the &lsquo;<code>-R</code>&rsquo; option can be used to force recursion if
+&lsquo;<code>-l</code>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see [[cvs: Default options and the ~%47.cvsrc file#Default options and the ~/.cvsrc file|~/.cvsrc]]).
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs update -l         # <span class="roman" style="font-family:serif; font-weight:normal;">Don't update files in subdirectories</span>
 </div>

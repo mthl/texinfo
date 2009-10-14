@@ -390,9 +390,27 @@ sub get_string($;$$)
                 last;
             }
         }
+        # ensure that the braces are kept as is since they are used for 
+        # the arguments delimitation. This means that @{ in the string
+        # to be translated will possibly be rendered incorrectly
+        my %simple_map_kept;
+        my %simple_map_pre_kept;
+        foreach my $brace ('{', '}')
+        {
+           $simple_map_kept{$brace} = $Texi2HTML::Config::simple_map{$brace};
+           $simple_map_pre_kept{$brace} = $Texi2HTML::Config::simple_map_pre{$brace};
+           $Texi2HTML::Config::simple_map{$brace} = $brace;
+           $Texi2HTML::Config::simple_map_pre{$brace} = $brace;
+        }
+
         # the arguments are not already there. But the @-commands in the 
         # strings are substituted.
         $translated_string = main::substitute_line($result, "translation", $state);
+        foreach my $brace ('{', '}')
+        {
+           $simple_map_kept{$brace} = $Texi2HTML::Config::simple_map{$brace};
+           $simple_map_pre_kept{$brace} = $Texi2HTML::Config::simple_map_pre{$brace};
+        }
     }
     # now we substitute the arguments 
     $result = '';

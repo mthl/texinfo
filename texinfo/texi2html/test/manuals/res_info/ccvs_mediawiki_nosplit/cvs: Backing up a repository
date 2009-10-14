@@ -9,14 +9,14 @@ Next: [[cvs: Moving a repository#Moving a repository|Moving a repository]], Prev
 <div id="index-Repository_002c-backing-up"></div>
 <div id="index-Backing-up_002c-repository"></div>
 
-<p>There is nothing particularly magical about the files
+There is nothing particularly magical about the files
 in the repository; for the most part it is possible to
 back them up just like any other files.  However, there
 are a few issues to consider.
-</p>
+
 <div id="index-Locks_002c-cvs_002c-and-backups"></div>
 <div id="index-_0023cvs_002erfl_002c-and-backups"></div>
-<p>The first is that to be paranoid, one should either not
+The first is that to be paranoid, one should either not
 use <small>CVS</small> during the backup, or have the backup
 program lock <small>CVS</small> while doing the backup.  To not
 use <small>CVS</small>, you might forbid logins to machines which
@@ -31,8 +31,8 @@ of these precautions, the results are unlikely to be
 particularly dire.  Restoring from backup, the
 repository might be in an inconsistent state, but this
 would not be particularly hard to fix manually.
-</p>
-<p>When you restore a repository from backup, assuming
+
+When you restore a repository from backup, assuming
 that changes in the repository were made after the time
 of the backup, working directories which were not
 affected by the failure may refer to revisions which no
@@ -40,23 +40,15 @@ longer exist in the repository.  Trying to run <small>CVS</small>
 in such directories will typically produce an error
 message.  One way to get those changes back into the
 repository is as follows:
-</p>
-<ul>
-<li>
-Get a new working directory.
 
-</li><li>
-Copy the files from the working directory from before
-the failure over to the new working directory (do not
-copy the contents of the &lsquo;<tt>CVS</tt>&rsquo; directories, of
-course).
 
-</li><li>
-Working in the new working directory, use commands such
-as <code>cvs update</code> and <code>cvs diff</code> to figure out
-what has changed, and then when you are ready, commit
-the changes into the repository.
-</li></ul>
+* Get a new working directory.
+
+
+* Copy the files from the working directory from before the failure over to the new working directory (do not copy the contents of the &lsquo;<tt>CVS</tt>&rsquo; directories, of course).
+
+
+* Working in the new working directory, use commands such as <code>cvs update</code> and <code>cvs diff</code> to figure out what has changed, and then when you are ready, commit the changes into the repository.
 
 <hr>
 <div class="header">

@@ -13,11 +13,11 @@ Next: [[cvs: Starting a project with CVS#Starting a project with CVS|Starting a 
 <div id="index-_002fusr_002flocal_002fcvsroot_002c-as-example-repository"></div>
 <div id="index-cvsroot"></div>
 
-<p>The <small>CVS</small> <em>repository</em> stores a complete copy of
+The <small>CVS</small> <em>repository</em> stores a complete copy of
 all the files and directories which are under version
 control.
-</p>
-<p>Normally, you never access any of the files in the
+
+Normally, you never access any of the files in the
 repository directly.  Instead, you use <small>CVS</small>
 commands to get your own copy of the files into a
 <em>working directory</em>, and then
@@ -29,9 +29,9 @@ you changed, when you changed it, and other such
 information.  Note that the repository is not a
 subdirectory of the working directory, or vice versa;
 they should be in separate locations.
-</p>
+
 <div id="index-_003alocal_003a_002c-setting-up"></div>
-<p><small>CVS</small> can access a repository by a variety of
+<small>CVS</small> can access a repository by a variety of
 means.  It might be on the local computer, or it might
 be on a computer across the room or across the world.
 To distinguish various ways to access a repository, the
@@ -42,10 +42,10 @@ access a repository directory, so the repository
 repository is in &lsquo;<tt>/usr/local/cvsroot</tt>&rsquo; on the
 computer running <small>CVS</small>.  For information on other
 access methods, see [[cvs: Remote repositories#Remote repositories|Remote repositories]].
-</p>
-<p>If the access method is omitted, then if the repository
-starts with &lsquo;<samp>/</samp>&rsquo;, then <code>:local:</code> is
-assumed.  If it does not start with &lsquo;<samp>/</samp>&rsquo; then either
+
+If the access method is omitted, then if the repository
+starts with &lsquo;<code>/</code>&rsquo;, then <code>:local:</code> is
+assumed.  If it does not start with &lsquo;<code>/</code>&rsquo; then either
 <code>:ext:</code> or <code>:server:</code> is assumed.  For
 example, if you have a local repository in
 &lsquo;<tt>/usr/local/cvsroot</tt>&rsquo;, you can use
@@ -54,11 +54,11 @@ example, if you have a local repository in
 Windows NT, for example) your local repository is
 &lsquo;<tt>c:\src\cvsroot</tt>&rsquo;, then you must specify the access
 method, as in <code>:local:c:/src/cvsroot</code>.
-</p>
-<p>The repository is split in two parts.  &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; contains
+
+The repository is split in two parts.  &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; contains
 administrative files for <small>CVS</small>.  The other directories contain the actual
 user-defined modules.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: Telling CVS where your repository is#Telling CVS where your repository is|&bull; Specifying a repository]]::     Telling CVS where your repository is
  [[cvs: How data is stored in the repository#How data is stored in the repository|&bull; Repository storage]]::          The structure of the repository

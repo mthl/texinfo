@@ -7,39 +7,24 @@ Next: [[cvs: import examples#import examples|import examples]], Previous: [[cvs:
 <div id="import-output-1"></div>
 ==== import output ====
 
-<p><code>import</code> keeps you informed of its progress by printing a line
+<code>import</code> keeps you informed of its progress by printing a line
 for each file, preceded by one character indicating the status of the file:
-</p>
-<dl compact="compact">
-<dt><code>U <var>file</var></code></dt>
-<dd><p>The file already exists in the repository and has not been locally
-modified; a new revision has been created (if necessary).
-</p>
-</dd>
-<dt><code>N <var>file</var></code></dt>
-<dd><p>The file is a new file which has been added to the repository.
-</p>
-</dd>
-<dt><code>C <var>file</var></code></dt>
-<dd><p>The file already exists in the repository but has been locally modified;
-you will have to merge the changes.
-</p>
-</dd>
-<dt><code>I <var>file</var></code></dt>
-<dd><p>The file is being ignored (see [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]]).
-</p>
+
+;<code>U <var>file</var></code>
+: The file already exists in the repository and has not been locally modified; a new revision has been created (if necessary).
+
+;<code>N <var>file</var></code>
+: The file is a new file which has been added to the repository.
+
+;<code>C <var>file</var></code>
+: The file already exists in the repository but has been locally modified; you will have to merge the changes.
+
+;<code>I <var>file</var></code>
+: The file is being ignored (see [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]]).
+
 <div id="index-Symbolic-link_002c-importing"></div>
 <div id="index-Link_002c-symbolic_002c-importing"></div>
-</dd>
-<dt><code>L <var>file</var></code></dt>
-<dd><p>The file is a symbolic link; <code>cvs import</code> ignores symbolic links.
-People periodically suggest that this behavior should
-be changed, but if there is a consensus on what it
-should be changed to, it is not apparent.
-(Various options in the &lsquo;<tt>modules</tt>&rsquo; file can be used
-to recreate symbolic links on checkout, update, etc.;
-see [[cvs: The modules file#The modules file|modules]].)
-</p></dd>
-</dl>
+;<code>L <var>file</var></code>
+: The file is a symbolic link; <code>cvs import</code> ignores symbolic links. People periodically suggest that this behavior should be changed, but if there is a consensus on what it should be changed to, it is not apparent. (Various options in the &lsquo;<tt>modules</tt>&rsquo; file can be used to recreate symbolic links on checkout, update, etc.; see [[cvs: The modules file#The modules file|modules]].)
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

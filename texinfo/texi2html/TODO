@@ -6,6 +6,16 @@ Before next release
 Later
 -----
 
+* images.texi, paragraph_in_samp.texi should be tested in xml too.
+  Maybe they should be moved to coverage, and in coverage all the formats
+  should be tested like in sectionning. 
+
+* invalid/caption_not_closed.texi some doubtful <p><strong></strong></p>
+  appears, it is empty and it isn't clear where it comes from.
+  similarly in formatting/table_in_table_item.texi, some empty stuff:
+<td><pre class="example"><code></code></pre><dl compact="compact">
+<dd><pre class="example"><code></code></pre></dd>
+
 * add --command command line that gives inserted lines. This should wait
   for @setfilename status to be resolved, on TeX, since otherwise there
   is the issue of inserting before or after @setfilename to be resolved.
@@ -75,7 +85,11 @@ Later
   print_redirection_page?
   new argument of menu_link
   @command_handler_output
-  
+  t2h_add_text_substitutions, t2h_remove_text_substitutions,
+  @text_substitutions_normal, @text_substitutions_texi,
+  @text_substitutions_simple_format, @text_substitutions_pre and
+  t2h_text_substitutions
+  t2h_default_set_iso_symbols
 
 * document the 'math' in 'args', in style_map, and simple_*math*. It
   could also be more flexible and similar with other environments, that
@@ -306,9 +320,8 @@ in nested table line
 [[Image:New-medium.png|Nouveau medium disponible]]
   Many constructs should be mediawikified
 
-  Notice that 
-  - preformatted environments are started by not beginning text at the line beginning.
-  - empty line between paragraphs, but also between itemize/enumerate...
+* examples/mediawiki.init: end of lines within lists leads to empty lines
+  that may not be what the user wanted. Maybe this could be ameliorated.
 
 * in xml have documentencoding have an argument.
 
@@ -323,8 +336,6 @@ in nested table line
   think that what is more important is that the menu happens at the end of 
   the node. This should caugth both double menus and all the other incorrect
   cases. Also this should be an info specific message.
-
-* images.texi should be tested in xml too.
 
 * Maybe put a lone anchor in a <div> for strict html (Noah Slater).
 

@@ -8,33 +8,33 @@ Next: [[cvs: Direct connection with password authentication#Direct connection wi
 ==== Connecting with rsh ====
 
 <div id="index-rsh"></div>
-<p><small>CVS</small> uses the &lsquo;<samp>rsh</samp>&rsquo; protocol to perform these
+<small>CVS</small> uses the &lsquo;<code>rsh</code>&rsquo; protocol to perform these
 operations, so the remote user host needs to have a
 &lsquo;<tt>.rhosts</tt>&rsquo; file which grants access to the local
 user. Note that the program that <small>CVS</small> uses for this
 purpose may be specified using the &lsquo;<tt>--with-rsh</tt>&rsquo;
 flag to configure.
-</p>
-<p>For example, suppose you are the user &lsquo;<samp>mozart</samp>&rsquo; on
-the local machine &lsquo;<samp>toe.example.com</samp>&rsquo;, and the
-server machine is &lsquo;<samp>faun.example.org</samp>&rsquo;.  On
+
+For example, suppose you are the user &lsquo;<code>mozart</code>&rsquo; on
+the local machine &lsquo;<code>toe.example.com</code>&rsquo;, and the
+server machine is &lsquo;<code>faun.example.org</code>&rsquo;.  On
 faun, put the following line into the file
-&lsquo;<tt>.rhosts</tt>&rsquo; in &lsquo;<samp>bach</samp>&rsquo;&rsquo;s home directory:
-</p>
+&lsquo;<tt>.rhosts</tt>&rsquo; in &lsquo;<code>bach</code>&rsquo;&rsquo;s home directory:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  toe.example.com  mozart
 </div>
 </td></tr></table>
 
-<p>Then test that &lsquo;<samp>rsh</samp>&rsquo; is working with
-</p>
+Then test that &lsquo;<code>rsh</code>&rsquo; is working with
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  rsh -l bach faun.example.org 'echo $PATH'
 </div>
 </td></tr></table>
 
 <div id="index-CVS_005fSERVER_002c-environment-variable"></div>
-<p>Next you have to make sure that <code>rsh</code> will be able
+Next you have to make sure that <code>rsh</code> will be able
 to find the server.  Make sure that the path which
 <code>rsh</code> printed in the above example includes the
 directory containing a program named <code>cvs</code> which
@@ -44,16 +44,16 @@ or &lsquo;<tt>.profile</tt>&rsquo;.  Alternately, you can set the
 environment variable <code>CVS_SERVER</code> on the client
 machine to the filename of the server you want to use,
 for example &lsquo;<tt>/usr/local/bin/cvs-1.6</tt>&rsquo;.
-</p>
-<p>There is no need to edit &lsquo;<tt>inetd.conf</tt>&rsquo; or start a
+
+There is no need to edit &lsquo;<tt>inetd.conf</tt>&rsquo; or start a
 <small>CVS</small> server daemon.
-</p>
+
 <div id="index-_003aserver_003a_002c-setting-up"></div>
 <div id="index-_003aext_003a_002c-setting-up"></div>
 <div id="index-Kerberos_002c-using-kerberized-rsh"></div>
 <div id="index-SSH-_0028rsh-replacement_0029"></div>
 <div id="index-rsh-replacements-_0028Kerberized_002c-SSH_002c-_0026c_0029"></div>
-<p>There are two access methods that you use in <code>CVSROOT</code>
+There are two access methods that you use in <code>CVSROOT</code>
 for rsh.  <code>:server:</code> specifies an internal rsh
 client, which is supported only by some <small>CVS</small> ports.
 <code>:ext:</code> specifies an external rsh program.  By
@@ -66,7 +66,7 @@ something different).  It must be a program which can
 transmit data to and from the server without modifying
 it; for example the Windows NT <code>rsh</code> is not
 suitable since it by default translates between CRLF
-and LF.  The OS/2 <small>CVS</small> port has a hack to pass &lsquo;<samp>-b</samp>&rsquo;
+and LF.  The OS/2 <small>CVS</small> port has a hack to pass &lsquo;<code>-b</code>&rsquo;
 to <code>rsh</code> to get around this, but since this could
 potentially cause problems for programs other than the
 standard <code>rsh</code>, it may change in the future.  If
@@ -75,20 +75,20 @@ replacement, the instructions in the rest of this
 section concerning &lsquo;<tt>.rhosts</tt>&rsquo; and so on are likely
 to be inapplicable; consult the documentation for your rsh
 replacement.
-</p>
-<p>Continuing our example, supposing you want to access
+
+Continuing our example, supposing you want to access
 the module &lsquo;<tt>foo</tt>&rsquo; in the repository
 &lsquo;<tt>/usr/local/cvsroot/</tt>&rsquo;, on machine
 &lsquo;<tt>faun.example.org</tt>&rsquo;, you are ready to go:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs -d :ext:bach@faun.example.org:/usr/local/cvsroot checkout foo
 </div>
 </td></tr></table>
 
-<p>(The &lsquo;<tt>bach@</tt>&rsquo; can be omitted if the username is
+(The &lsquo;<tt>bach@</tt>&rsquo; can be omitted if the username is
 the same on both the local and remote hosts.)
-</p>
+
 
 <hr>
 <div class="header">

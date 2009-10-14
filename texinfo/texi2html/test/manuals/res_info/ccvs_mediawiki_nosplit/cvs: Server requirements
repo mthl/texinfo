@@ -7,20 +7,20 @@ Next: [[cvs: Connecting with rsh#Connecting with rsh|Connecting via rsh]], Up: [
 <div id="Server-requirements-1"></div>
 ==== Server requirements ====
 
-<p>The quick answer to what sort of machine is suitable as
+The quick answer to what sort of machine is suitable as
 a server is that requirements are modest&mdash;a server
 with 32M of memory or even less can handle a fairly
 large source tree with a fair amount of activity.
-</p>
-<p>The real answer, of course, is more complicated.
+
+The real answer, of course, is more complicated.
 Estimating the known areas of large memory consumption
 should be sufficient to estimate memory requirements.
 There are two such areas documented here; other memory
 consumption should be small by comparison (if you find
 that is not the case, let us know, as described in
 [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]], so we can update this documentation).
-</p>
-<p>The first area of big memory consumption is large
+
+The first area of big memory consumption is large
 checkouts, when using the <small>CVS</small> server.  The server
 consists of two processes for each client that it is
 serving.  Memory consumption on the child process
@@ -29,16 +29,16 @@ parent process, particularly if the network connection
 to the client is slow, can be expected to grow to
 slightly more than the size of the sources in a single
 directory, or two megabytes, whichever is larger.
-</p>
-<p>Multiplying the size of each <small>CVS</small> server by the
+
+Multiplying the size of each <small>CVS</small> server by the
 number of servers which you expect to have active at
 one time should give an idea of memory requirements for
 the server.  For the most part, the memory consumed by
 the parent process probably can be swap space rather
 than physical memory.
-</p>
 
-<p>The second area of large memory consumption is
+
+The second area of large memory consumption is
 <code>diff</code>, when checking in large files.  This is
 required even for binary files.  The rule of thumb is
 to allow about ten times the size of the largest file
@@ -52,15 +52,15 @@ space rather than physical memory.  Because the memory
 is only required briefly, there is no particular need
 to allow memory for more than one such checkin at a
 time.
-</p>
-<p>Resource consumption for the client is even more
+
+Resource consumption for the client is even more
 modest&mdash;any machine with enough capacity to run the
 operating system in question should have little
 trouble.
-</p>
-<p>For information on disk space requirements, see
+
+For information on disk space requirements, see
 [[cvs: Creating a repository#Creating a repository|Creating a repository]].
-</p>
+
 <hr>
 <div class="header">
 <p>

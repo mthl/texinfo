@@ -6,9 +6,9 @@
 <hr>
 ===== Committing to a branch =====
 
-<p>You can commit to a branch revision (one that has an
-even number of dots) with the &lsquo;<samp>-r</samp>&rsquo; option.  To
-create a branch revision, use the &lsquo;<samp>-b</samp>&rsquo; option
+You can commit to a branch revision (one that has an
+even number of dots) with the &lsquo;<code>-r</code>&rsquo; option.  To
+create a branch revision, use the &lsquo;<code>-b</code>&rsquo; option
 of the <code>rtag</code> or <code>tag</code> commands
 (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  Then, either <code>checkout</code> or
 <code>update</code> can be used to base your sources on the
@@ -19,17 +19,17 @@ thereby not disturbing main-line development in any
 way.  For example, if you had to create a patch to the
 1.2 version of the product, even though the 2.0 version
 is already under development, you might do:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs rtag -b -r FCS1_2 FCS1_2_Patch product_module
  $ cvs checkout -r FCS1_2_Patch product_module
  $ cd product_module
- [[ hack away ]]
+ <nowiki>[[</nowiki> hack away <nowiki>]]</nowiki>
  $ cvs commit
 </div>
 </td></tr></table>
 
-<p>This works automatically since the &lsquo;<samp>-r</samp>&rsquo; option is
+This works automatically since the &lsquo;<code>-r</code>&rsquo; option is
 sticky.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

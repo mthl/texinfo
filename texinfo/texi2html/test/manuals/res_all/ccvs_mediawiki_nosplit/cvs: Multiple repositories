@@ -13,19 +13,19 @@ Next: [[cvs: Creating a repository#Creating a repository|Creating a repository]]
 <div id="index-Disjoint-repositories"></div>
 <div id="index-CVSROOT_002c-multiple-repositories"></div>
 
-<p>In some situations it is a good idea to have more than
+In some situations it is a good idea to have more than
 one repository, for instance if you have two
 development groups that work on separate projects
 without sharing any code.  All you have to do to have
 several repositories is to specify the appropriate
 repository, using the <code>CVSROOT</code> environment
-variable, the &lsquo;<samp>-d</samp>&rsquo; option to <small>CVS</small>, or (once
+variable, the &lsquo;<code>-d</code>&rsquo; option to <small>CVS</small>, or (once
 you have checked out a working directory) by simply
 allowing <small>CVS</small> to use the repository that was used
 to check out the working directory
 (see [[cvs: Telling CVS where your repository is#Telling CVS where your repository is|Specifying a repository]]).
-</p>
-<p>The big advantage of having multiple repositories is
+
+The big advantage of having multiple repositories is
 that they can reside on different servers.  With <small>CVS</small>
 version 1.10, a single command cannot recurse into
 directories from different repositories.  With development
@@ -35,7 +35,7 @@ recurse and handle all the details of making
 connections to as many server machines as necessary to
 perform the requested command.  Here is an example of
 how to set up a working directory:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs -d server1:/cvs co dir1
  cd dir1
@@ -44,10 +44,10 @@ how to set up a working directory:
 </div>
 </td></tr></table>
 
-<p>The <code>cvs co</code> commands set up the working
+The <code>cvs co</code> commands set up the working
 directory, and then the <code>cvs update</code> command will
 contact server2, to update the dir1/sdir subdirectory,
 and server1, to update everything else.
-</p>
+
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

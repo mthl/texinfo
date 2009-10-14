@@ -21,37 +21,37 @@
 
 <subheading>Testing distant nodes</subheading>
 
-<para> a  node  <xref><xrefnodename>a node</xrefnodename><xrefinfofile>manual</xrefinfofile></xref>&linebreak;
+<para><verb> a  node </verb> <xref><xrefnodename>a node</xrefnodename><xrefinfofile>manual</xrefinfofile></xref>&linebreak;
 </para><example xml:space="preserve">mono : manual.html#a-node
 split: ../manual/a-node.html#a-node
 </example>
-<para>: <xref><xrefnodename>:</xrefnodename><xrefinfofile>manual</xrefinfofile></xref>
+<para><verb>:</verb> <xref><xrefnodename>:</xrefnodename><xrefinfofile>manual</xrefinfofile></xref>
 </para><example xml:space="preserve">mono : manual.html#_003a
 split: ../manual/_003a.html#_003a
 </example>
-<para>Top <xref><xrefnodename>top</xrefnodename><xrefinfofile>manual</xrefinfofile></xref>&linebreak; 
+<para><verb>Top</verb> <xref><xrefnodename>top</xrefnodename><xrefinfofile>manual</xrefinfofile></xref>&linebreak; 
 </para><example xml:space="preserve">mono : manual.html#Top
 split: ../manual/index.html#Top
 </example>
-<para>(texinfo)Cross References <xref><xrefnodename>(texinfo)Cross References</xrefnodename></xref>
+<para><verb>(texinfo)Cross References</verb> <xref><xrefnodename>(texinfo)Cross References</xrefnodename></xref>
 </para><example xml:space="preserve">mono: texinfo.html#Cross-References
 split: ../texinfo/Cross-References.html#Cross-References
 </example>
 <subheading>Testing manual name</subheading>
 
-<para>../manual/doc.texi <xref><xrefnodename>node</xrefnodename><xrefinfofile>../manual/doc.texi</xrefinfofile></xref>&linebreak;
+<para><verb>../manual/doc.texi</verb> <xref><xrefnodename>node</xrefnodename><xrefinfofile>../manual/doc.texi</xrefinfofile></xref>&linebreak;
 </para><example xml:space="preserve">mono : doc.html#node
 split: ../doc/node.html#node
 </example>
 <subheading>Testing local nodes</subheading>
 
-<para>!_&quot;#$%&amp;'()*+-./;&lt;=&gt;?[\]^_`|~ <xref><xrefnodename>!_&quot;#$%&amp;'()*+-./;&lt;=&gt;?[\]^_`|~</xrefnodename></xref>&linebreak;
+<para><verb>!_&quot;#$%&amp;'()*+-./;&lt;=&gt;?[\]^_`|~</verb> <xref><xrefnodename>!_&quot;#$%&amp;'()*+-./;&lt;=&gt;?[\]^_`|~</xrefnodename></xref>&linebreak;
 </para><example xml:space="preserve">target: #_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e
 </example>
-<para>Top <xref><xrefnodename>Top</xrefnodename></xref>
+<para><verb>Top</verb> <xref><xrefnodename>Top</xrefnodename></xref>
 </para><example xml:space="preserve">target: #Top
 </example>
-<para> local   node <xref><xrefnodename>local node</xrefnodename></xref>
+<para><verb> local   node</verb> <xref><xrefnodename>local node</xrefnodename></xref>
 </para><example xml:space="preserve">target: #local-node
 </example>
 </top>
@@ -66,7 +66,7 @@ split: ../doc/node.html#node
 
 <example xml:space="preserve">id: other-nodes
 </example>
-<para>Top <xref><xrefnodename>Top</xrefnodename></xref>
+<para><verb>Top</verb> <xref><xrefnodename>Top</xrefnodename></xref>
 </para><example xml:space="preserve">target: #Top
 </example>
 <menu>

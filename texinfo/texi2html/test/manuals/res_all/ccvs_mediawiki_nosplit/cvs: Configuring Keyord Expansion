@@ -1,14 +1,14 @@
 <div id="Configuring-keyword-expansion"></div>
 <div class="header">
 <p>
-Next: [[cvs: Problems with the $ Log$ keyword.#Problems with the $ <i></i>Log$ keyword.|Log keyword]], Previous: [[cvs: Substitution modes#Substitution modes|Substitution modes]], Up: [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
+Next: [[cvs: Problems with the $ Log$ keyword.#Problems with the $ Log$ keyword.|Log keyword]], Previous: [[cvs: Substitution modes#Substitution modes|Substitution modes]], Up: [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 <hr>
 <div id="Configuring-Keyord-Expansion"></div>
 === Configuring Keyord Expansion ===
 <div id="index-Configuring-keyword-expansion"></div>
 
-<p>In a repository that includes third-party software on
+In a repository that includes third-party software on
 vendor branches, it is sometimes helpful to configure
 CVS to use a local keyword instead of the standard
 $<i></i>Id$ or $<i></i>Header$ keywords. Examples from
@@ -24,20 +24,20 @@ different local keyword or a standard keyword). In
 these cases, it is typically desirable to disable the
 expansion of all keywords except the configured local
 keyword.
-</p>
-<p>The <code>KeywordExpansion</code> option in the
+
+The <code>KeywordExpansion</code> option in the
 &lsquo;<tt>CVSROOT/config</tt>&rsquo; file is intended to allow for the
 either the explicit exclusion of a keyword or list of
 keywords, or for the explicit inclusion of a keyword or
 a list of keywords. This list may include the
 <code>LocalKeyword</code> that has been configured.
-</p>
-<p>The <code>KeywordExpansion</code> option is followed by
+
+The <code>KeywordExpansion</code> option is followed by
 <code>=</code> and the next character may either be <code>i</code>
 to start an inclusion list or <code>e</code> to start an
 exclusion list. If the following lines were added to
 the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
          # Add a &quot;MyBSD&quot; keyword and restrict keyword
          # expansion
@@ -46,9 +46,9 @@ the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file:
 </div>
 </td></tr></table>
 
-<p>then only the $<i></i>MyBSD$ keyword would be expanded.
+then only the $<i></i>MyBSD$ keyword would be expanded.
 A list may be used. The this example:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
          # Add a &quot;MyBSD&quot; keyword and restrict keyword
          # expansion to the MyBSD, Name and Date keywords.
@@ -57,52 +57,52 @@ A list may be used. The this example:
 </div>
 </td></tr></table>
 
-<p>would allow $<i></i>MyBSD$, $<i></i>Name$, and
+would allow $<i></i>MyBSD$, $<i></i>Name$, and
 $<i></i>Date$ to be expanded.
-</p>
-<p>It is also possible to configure an exclusion list
+
+It is also possible to configure an exclusion list
 using the following:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
          # Do not expand the non-RCS keyword CVSHeader
          KeywordExpand=eCVSHeader
 </div>
 </td></tr></table>
 
-<p>This allows <small>CVS</small> to ignore the recently introduced
+This allows <small>CVS</small> to ignore the recently introduced
 $<i></i>CVSHeader$ keyword and retain all of the
 others. The exclusion entry could also contain the
 standard RCS keyword list, but this could be confusing
 to users that expect RCS keywords to be expanded, so
 ycare should be taken to properly set user expectations
 for a repository that is configured in that manner.
-</p>
-<p>If there is a desire to not have any RCS keywords
+
+If there is a desire to not have any RCS keywords
 expanded and not use the <code>-ko</code> flags everywhere,
 an administrator may disable all keyword expansion
 using the &lsquo;<tt>CVSROOT/config</tt>&rsquo; line:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  	# Do not expand any RCS keywords
  	KeywordExpand=i
 </div>
 </td></tr></table>
 
-<p>this could be confusing to users that expect RCS
+this could be confusing to users that expect RCS
 keywords like $<i></i>Id$ to be expanded properly,
 so care should be taken to properly set user
 expectations for a repository so configured.
-</p>
-<p>It should be noted that a patch to provide both the
+
+It should be noted that a patch to provide both the
 <code>KeywordExpand</code> and <code>LocalKeyword</code> features
 has been around a long time. However, that patch
 implemented these features using <code>tag=</code> and
 <code>tagexpand=</code> keywords and those keywords are NOT
 recognized.
-</p>
+
 <hr>
 <div class="header">
 <p>
-Next: [[cvs: Problems with the $ Log$ keyword.#Problems with the $ <i></i>Log$ keyword.|Log keyword]], Previous: [[cvs: Substitution modes#Substitution modes|Substitution modes]], Up: [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
+Next: [[cvs: Problems with the $ Log$ keyword.#Problems with the $ Log$ keyword.|Log keyword]], Previous: [[cvs: Substitution modes#Substitution modes|Substitution modes]], Up: [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

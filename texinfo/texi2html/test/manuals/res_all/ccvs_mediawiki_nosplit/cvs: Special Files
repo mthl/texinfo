@@ -14,7 +14,7 @@ Next: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]], Previou
 <div id="index-Hard-links"></div>
 <div id="index-Symbolic-links"></div>
 
-<p>In normal circumstances, <small>CVS</small> works only with regular
+In normal circumstances, <small>CVS</small> works only with regular
 files.  Every file in a project is assumed to be
 persistent; it must be possible to open, read and close
 them; and so on.  <small>CVS</small> also ignores file permissions and
@@ -24,6 +24,6 @@ not possible to &quot;check in&quot; a device into a repository;
 if the device file cannot be opened, <small>CVS</small> will refuse to
 handle it.  Files also lose their ownerships and
 permissions during repository transactions.
-</p>
+
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

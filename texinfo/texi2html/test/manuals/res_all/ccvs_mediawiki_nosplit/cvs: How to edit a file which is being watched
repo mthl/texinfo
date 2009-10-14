@@ -8,72 +8,49 @@ Next: [[cvs: Information about who is watching and editing#Information about who
 ==== How to edit a file which is being watched ====
 
 <div id="index-Checkout_002c-as-term-for-getting-ready-to-edit"></div>
-<p>Since a file which is being watched is checked out
+Since a file which is being watched is checked out
 read-only, you cannot simply edit it.  To make it
 read-write, and inform others that you are planning to
 edit it, use the <code>cvs edit</code> command.  Some systems
 call this a <em>checkout</em>, but <small>CVS</small> uses that term
 for obtaining a copy of the sources (see [[cvs: Getting the source#Getting the source|Getting the source]]), an operation which those systems call a
 <em>get</em> or a <em>fetch</em>.
-</p>
+
 <div id="index-edit-_0028subcommand_0029"></div>
-<dl>
-<dt><div id="index-cvs-edit"></div>Command: <strong>cvs edit</strong><em> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</em></dt>
-<dd>
-<p>Prepare to edit the working files <var>files</var>.  <small>CVS</small> makes the
-<var>files</var> read-write, and notifies users who have requested
-<code>edit</code> notification for any of <var>files</var>.
-</p>
-<p>The <code>cvs edit</code> command accepts the same options as the
-<code>cvs watch add</code> command, and establishes a temporary watch for the
-user on <var>files</var>; <small>CVS</small> will remove the watch when <var>files</var> are
-<code>unedit</code>ed or <code>commit</code>ted.  If the user does not wish to
-receive notifications, she should specify <code>-a none</code>.
-</p>
-<p>The <var>files</var> and the options are processed as for the <code>cvs
-watch</code> commands.
-</p>
+;<div id="index-cvs-edit"></div>Command<nowiki>:</nowiki> <strong>cvs edit</strong><em> <nowiki>[</nowiki><code>-lR</code><nowiki>]</nowiki> <nowiki>[</nowiki><code>-a</code> <var>action</var><nowiki>]</nowiki>&hellip; <nowiki>[</nowiki><var>files</var><nowiki>]</nowiki>&hellip;</em>
 
-</dd></dl>
+: Prepare to edit the working files <var>files</var>.  <small>CVS</small> makes the <var>files</var> read-write, and notifies users who have requested <code>edit</code> notification for any of <var>files</var>.
 
-<p>Normally when you are done with a set of changes, you
+: The <code>cvs edit</code> command accepts the same options as the <code>cvs watch add</code> command, and establishes a temporary watch for the user on <var>files</var>; <small>CVS</small> will remove the watch when <var>files</var> are <code>unedit</code>ed or <code>commit</code>ted.  If the user does not wish to receive notifications, she should specify <code>-a none</code>.
+
+: The <var>files</var> and the options are processed as for the <code>cvs watch</code> commands.
+
+
+
+Normally when you are done with a set of changes, you
 use the <code>cvs commit</code> command, which checks in your
 changes and returns the watched files to their usual
 read-only state.  But if you instead decide to abandon
 your changes, or not to make any changes, you can use
 the <code>cvs unedit</code> command.
-</p>
+
 <div id="index-unedit-_0028subcommand_0029"></div>
 <div id="index-Abandoning-work"></div>
 <div id="index-Reverting-to-repository-version"></div>
-<dl>
-<dt><div id="index-cvs-unedit"></div>Command: <strong>cvs unedit</strong><em> [<code>-lR</code>] [<var>files</var>]&hellip;</em></dt>
-<dd>
-<p>Abandon work on the working files <var>files</var>, and revert them to the
-repository versions on which they are based.  <small>CVS</small> makes those
-<var>files</var> read-only for which users have requested notification using
-<code>cvs watch on</code>.  <small>CVS</small> notifies users who have requested <code>unedit</code>
-notification for any of <var>files</var>.
-</p>
-<p>The <var>files</var> and options are processed as for the
-<code>cvs watch</code> commands.
-</p>
-<p>If watches are not in use, the <code>unedit</code> command
-probably does not work, and the way to revert to the
-repository version is with the command <code>cvs update -C file</code>
-(see [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]]).
-The meaning is
-not precisely the same; the latter may also
-bring in some changes which have been made in the
-repository since the last time you updated.
-</p></dd></dl>
+;<div id="index-cvs-unedit"></div>Command<nowiki>:</nowiki> <strong>cvs unedit</strong><em> <nowiki>[</nowiki><code>-lR</code><nowiki>]</nowiki> <nowiki>[</nowiki><var>files</var><nowiki>]</nowiki>&hellip;</em>
 
-<p>When using client/server <small>CVS</small>, you can use the
+: Abandon work on the working files <var>files</var>, and revert them to the repository versions on which they are based.  <small>CVS</small> makes those <var>files</var> read-only for which users have requested notification using <code>cvs watch on</code>.  <small>CVS</small> notifies users who have requested <code>unedit</code> notification for any of <var>files</var>.
+
+: The <var>files</var> and options are processed as for the <code>cvs watch</code> commands.
+
+: If watches are not in use, the <code>unedit</code> command probably does not work, and the way to revert to the repository version is with the command <code>cvs update -C file</code> (see [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]]). The meaning is not precisely the same; the latter may also bring in some changes which have been made in the repository since the last time you updated.
+
+When using client/server <small>CVS</small>, you can use the
 <code>cvs edit</code> and <code>cvs unedit</code> commands even if
 <small>CVS</small> is unable to successfully communicate with the
 server; the notifications will be sent upon the next
 successful <small>CVS</small> command.
-</p>
+
 <hr>
 <div class="header">
 <p>

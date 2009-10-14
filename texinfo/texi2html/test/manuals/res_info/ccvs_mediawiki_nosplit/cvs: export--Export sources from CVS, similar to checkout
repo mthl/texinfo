@@ -8,36 +8,34 @@ Next: [[cvs: history--Show status of files and users#history&mdash;Show status o
 === export&mdash;Export sources from CVS, similar to checkout ===
 <div id="index-export-_0028subcommand_0029"></div>
 
-<ul>
-<li>
-Synopsis: export [-flNnR] [-r rev|-D date] [-k subst] [-d dir] module&hellip;
-</li><li>
-Requires: repository.
-</li><li>
-Changes: current directory.
-</li></ul>
 
-<p>This command is a variant of <code>checkout</code>; use it
+* Synopsis: export <nowiki>[</nowiki>-flNnR<nowiki>]</nowiki> <nowiki>[</nowiki>-r rev|-D date<nowiki>]</nowiki> <nowiki>[</nowiki>-k subst<nowiki>]</nowiki> <nowiki>[</nowiki>-d dir<nowiki>]</nowiki> module&hellip;
+
+* Requires: repository.
+
+* Changes: current directory.
+
+This command is a variant of <code>checkout</code>; use it
 when you want a copy of the source for module without
 the <small>CVS</small> administrative directories.  For example, you
 might use <code>export</code> to prepare source for shipment
 off-site.  This command requires that you specify a
-date or tag (with &lsquo;<samp>-D</samp>&rsquo; or &lsquo;<samp>-r</samp>&rsquo;), so that you
+date or tag (with &lsquo;<code>-D</code>&rsquo; or &lsquo;<code>-r</code>&rsquo;), so that you
 can count on reproducing the source you ship to others
 (and thus it always prunes empty directories).
-</p>
-<p>One often would like to use &lsquo;<samp>-kv</samp>&rsquo; with <code>cvs
+
+One often would like to use &lsquo;<code>-kv</code>&rsquo; with <code>cvs
 export</code>.  This causes any keywords to be
 expanded such that an import done at some other site
 will not lose the keyword revision information.  But be
 aware that doesn&rsquo;t handle an export containing binary
 files correctly.  Also be aware that after having used
-&lsquo;<samp>-kv</samp>&rsquo;, one can no longer use the <code>ident</code>
+&lsquo;<code>-kv</code>&rsquo;, one can no longer use the <code>ident</code>
 command (which is part of the <small>RCS</small> suite&mdash;see
 ident(1)) which looks for keyword strings.  If
 you want to be able to use <code>ident</code> you must not
-use &lsquo;<samp>-kv</samp>&rsquo;.
-</p>
+use &lsquo;<code>-kv</code>&rsquo;.
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: export options#export options|&bull; export options]]::              export options
 </div>

@@ -92,6 +92,16 @@ This file records noteworthy changes.
 * print_element_header is obsoleted, things should be directly done in 
   element_heading.
 
+* Add 'inline_attribute' for an XML attribute that should be closed at
+  paragraph end and reopened at paragraph begin. Consequently the closing
+  and opening of 'attribute' isn't done anymore in paragraph and 
+  preformatted.
+
+* USE_ISO now only determines if '', `` --- and -- are transformed
+  into entities. t2h_default_set_iso_symbols sets or unsets USE_ISO,
+  %things_map/%pre_map/%simple_format_simple_map_texi, 
+  $OPEN_QUOTE_SYMBOL and $CLOSE_QUOTE_SYMBOL.
+  %iso_symbols is unused now.
 
 1.82 (2009-01-05)
 

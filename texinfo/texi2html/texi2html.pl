@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.343 2009-10-06 13:35:57 pertusus Exp $
+# $Id: texi2html.pl,v 1.344 2009-10-14 13:08:36 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -239,7 +239,6 @@ $SPLIT
 $SPLIT_SIZE
 $SHORT_REF
 @EXPAND
-$EXPAND
 $TOP
 $DOCTYPE 
 $FRAMESET_DOCTYPE 
@@ -248,8 +247,6 @@ $CHECK
 $TEST 
 $DUMP_TEXI
 $MACRO_EXPAND
-$USE_GLOSSARY 
-$INVISIBLE_MARK 
 $CAPTION_STYLE
 $USE_ISO 
 $TOP_FILE 
@@ -317,10 +314,7 @@ $COMMAND_NAME
 );
 
 # customization variables
-# ENCODING is deprecated
 use vars qw(
-$ENCODING
-
 $ENCODING_NAME
 $DOCUMENT_ENCODING
 $OUT_ENCODING
@@ -328,7 +322,6 @@ $IN_ENCODING
 $DEFAULT_ENCODING
 $MENU_PRE_STYLE
 $MENU_PRE_COMPLEX_FORMAT
-$CENTER_IMAGE
 $EXAMPLE_INDENT_CELL
 $SMALL_EXAMPLE_INDENT_CELL
 $SMALL_FONT_SIZE
@@ -339,7 +332,6 @@ $BIG_RULE
 $TOP_HEADING
 $INDEX_CHAPTER
 $SPLIT_INDEX
-$HREF_DIR_INSTEAD_FILE
 $USE_MENU_DIRECTIONS
 $USE_UP_FOR_ADJACENT_NODES
 $AFTER_BODY_OPEN
@@ -514,7 +506,6 @@ $preformatted
 $empty_preformatted
 $foot_line_and_ref
 $foot_section
-$address
 $image
 $image_files
 $index_entry_label
@@ -617,7 +608,6 @@ $complex_format_map
 %numeric_entity_map
 %perl_charset_to_html
 %misc_pages_targets
-%iso_symbols
 %misc_command
 %no_paragraph_commands
 %css_map
@@ -646,6 +636,22 @@ $after_punctuation_characters
 %deprecated_commands
 %output_format_names
 %canonical_texinfo_encodings
+@text_substitutions_normal
+@text_substitutions_texi
+@text_substitutions_simple_format
+@text_substitutions_pre
+);
+
+# deprecated
+use vars qw(
+$address
+%iso_symbols
+$ENCODING
+$CENTER_IMAGE
+$HREF_DIR_INSTEAD_FILE
+$EXPAND
+$USE_GLOSSARY 
+$INVISIBLE_MARK 
 );
 
 # subject to change
@@ -904,6 +910,7 @@ sub T2H_GPL_style($$$$$$$$$$)
     my $do_quotes = 0;
     my $use_attribute = 0;
     my $use_begin_end = 0;
+    my $inline_attribute = 0;
     if (ref($style) eq 'HASH')
     {
         #print STDERR "GPL_STYLE $command ($style)\n";
@@ -913,15 +920,24 @@ sub T2H_GPL_style($$$$$$$$$$)
             print STDERR "BUG: args not an array for command `$command'\n";
         }
         $do_quotes = $style->{'quote'};
-        if ((@{$style->{'args'}} == 1) and defined($style->{'attribute'}))
-        {
-            $style = $style->{'attribute'};
-            $use_attribute = 1;
-            $text = $args->[0];
-        }
-        elsif (defined($style->{'function'}))
+        if (defined($style->{'function'}))
         {
             $text = &{$style->{'function'}}($command, $args, $style_stack, $state, $line_nr, $kept_line_nrs);
+        }
+        elsif (@{$style->{'args'}} == 1) 
+        {
+            if (defined($style->{'inline_attribute'}))
+            {
+                $style = $style->{'inline_attribute'};
+                $use_attribute = 1;
+                $inline_attribute = 1;
+            }
+            elsif (defined($style->{'attribute'}))
+            {
+                $style = $style->{'attribute'};
+                $use_attribute = 1;
+            }
+            #$text = $args->[0];
         }
     }
     else
@@ -945,19 +961,10 @@ sub T2H_GPL_style($$$$$$$$$$)
     }
     if ($use_attribute)
     {
-        my $attribute_text = '';
-        my $class = '';
-        if ($style =~ /^(\w+)(\s+.*)/)
-        {
-            $style = $1;
-            $attribute_text = $2;
-            if ($attribute_text =~ s/^\s+class=\"([^\"]+)\"//)
-            {
-                $class = $1;
-            }
-        }
-        $text = html_default_attribute_class($style, $class) . "$attribute_text>" . "$text" if (!$no_open);
-        $text .= "</$style>" if (!$no_close);
+        my ($attribute_text, $class);
+        ($style, $class, $attribute_text) = html_default_parse_attribute ($style);
+        $text = html_default_attribute_class($style, $class) . "$attribute_text>" . "$text" if (!$no_open or $inline_attribute);
+        $text .= "</$style>" if (!$no_close or $inline_attribute);
         if ($do_quotes)
         {
              $text = $OPEN_QUOTE_SYMBOL . "$text" if (!$no_open);
@@ -2603,8 +2610,8 @@ $T2H_OPTIONS -> {'invisible'} =
 $T2H_OPTIONS -> {'iso'} =
 {
  type => 'iso',
- linkage => \$Texi2HTML::Config::USE_ISO,
- verbose => 'if set, ISO8859 characters are used for special symbols (like copyright, etc)',
+ linkage => sub {Texi2HTML::Config::t2h_default_set_iso_symbols ($_[1]);},
+ verbose => 'if set, entities are used for special symbols (like copyright, etc...) and quotes',
  noHelp => 1,
 };
 
@@ -3308,10 +3315,10 @@ $T2H_OBSOLETE_OPTIONS -> {section_navigation} =
 };
 
 # read initialzation from $sysconfdir/texi2htmlrc or $HOME/.texi2htmlrc
-# (this is obsolete)
+# (this is obsolete). Obsoleted in 1.68 (March 20 2004).
 my @rc_files = ();
 push @rc_files, "$sysconfdir/texi2htmlrc" if defined($sysconfdir);
-push @rc_files, "$ENV{'HOME'}/.texi2htmlrc" if (defined($ENV{HOME}));
+push @rc_files, "$ENV{'HOME'}/.texi2htmlrc" if (defined($ENV{'HOME'}));
 foreach my $i (@rc_files)
 {
     if (-e $i and -r $i)
@@ -3925,27 +3932,6 @@ if ($Texi2HTML::Config::TEST)
 
 $Texi2HTML::GLOBAL{'debug_l2h'} = 1 if ($T2H_DEBUG & $DEBUG_L2H);
 
-#
-# can I use ISO8859 characters? (HTML+)
-#
-if ($Texi2HTML::Config::USE_ISO)
-{
-    foreach my $thing (keys(%Texi2HTML::Config::iso_symbols))
-    {
-         next unless exists ($::things_map_ref->{$thing});
-         $::things_map_ref->{$thing} = $Texi2HTML::Config::iso_symbols{$thing};
-         $::pre_map_ref->{$thing} = $Texi2HTML::Config::iso_symbols{$thing};
-         $Texi2HTML::Config::simple_format_texi_map{$thing} = $Texi2HTML::Config::iso_symbols{$thing};
-    }
-    # we don't override the user defined quote, but beware that this works
-    # only if the hardcoded defaults, '`' and "'" match with the defaults
-    # in the default init file
-    $Texi2HTML::Config::OPEN_QUOTE_SYMBOL = $Texi2HTML::Config::iso_symbols{'`'} 
-        if (exists($Texi2HTML::Config::iso_symbols{'`'}) and ($Texi2HTML::Config::OPEN_QUOTE_SYMBOL eq '`'));
-    $Texi2HTML::Config::CLOSE_QUOTE_SYMBOL = $Texi2HTML::Config::iso_symbols{"'"} 
-       if (exists($Texi2HTML::Config::iso_symbols{"'"}) and ($Texi2HTML::Config::CLOSE_QUOTE_SYMBOL eq "'"));
-}
- 
 # parse texinfo cnf file for external manual specifications. This was
 # discussed on texinfo list but not in makeinfo for now. 
 my @texinfo_htmlxref_files = locate_init_file ($texinfo_htmlxref, 1, \@texinfo_config_dirs);
@@ -4054,6 +4040,8 @@ if ($Texi2HTML::Config::SHORTEXTN)
 {
    $Texi2HTML::GLOBAL{'extension'} = "htm";
 }
+
+my $global_pass; # track the phases of processing for debugging output purposes
 
 #
 # file name business
@@ -7565,54 +7553,59 @@ sub do_section_names($$)
     #$section->{'name'} = substitute_line($section->{'texi'});
     my $texi = &$Texi2HTML::Config::heading_texi($section->{'tag'}, $section->{'texi'}, $section->{'number'});
     $section->{'text'} = substitute_line($texi, "\@$section->{'tag'}", undef, $section->{'line_nr'});
-    $section->{'text_nonumber'} = substitute_line($section->{'texi'}, "\@$section->{'tag'}");
+    $section->{'text_nonumber'} = substitute_line($section->{'texi'}, "\@$section->{'tag'} no number");
     # backward compatibility
     # Removed from doc in nov 2009
     $section->{'name'} = $section->{'text_nonumber'};
     $section->{'no_texi'} = remove_texi($texi);
-    $section->{'simple_format'} = simple_format(undef,undef,"simple_format \@$section->{'tag'}", $texi);
+    $section->{'simple_format'} = simple_format(undef,undef,"\@$section->{'tag'} simple_format", $texi);
     $section->{'heading_texi'} = $texi;
 }
 
 # get the html names from the texi for all elements
 sub do_names()
 {
-    print STDERR "# Doing ". scalar(keys(%nodes)) . " nodes, ".
-        scalar(keys(%sections)) . " sections, " .
-        scalar(keys(%headings)) . " headings in ". $#elements_list . 
-        " elements\n" if ($T2H_DEBUG);
-    # for nodes and anchors we haven't any state defined
-    # This seems right, however, as we don't want @refs or @footnotes
-    # or @anchors within nodes, section commands or anchors.
-    foreach my $node (keys(%nodes))
-    {
-        my $texi = &$Texi2HTML::Config::heading_texi($nodes{$node}->{'tag'}, 
-           $nodes{$node}->{'texi'}, undef);
-        $nodes{$node}->{'text'} = substitute_line ($texi, "\@node", {'code_style' => 1}, $nodes{$node}->{'line_nr'});
-        $nodes{$node}->{'text_nonumber'} = $nodes{$node}->{'text'};
-        # backward compatibility -> maybe used to have the name without code_style ?
-        # Removed from doc in nov 2009
-        $nodes{$node}->{'name'} = substitute_line($texi, "\@node");
-        $nodes{$node}->{'no_texi'} = remove_texi($texi);
-        $nodes{$node}->{'simple_format'} = simple_format(undef, undef, "simple_format \@node", $texi);
-        $nodes{$node}->{'heading_texi'} = $texi;
-        
-        ################# debug
-        # if $nodes{$node}->{'external_node'} and $nodes{$node}->{'seen'}
-        # this is a bug, there should be a check that the node hasn't an
-        # external node syntax.
-        msg_debug ("$nodes{$node}->{'texi'} is external and was seen",  $nodes{$node}->{'line_nr'}) if ($nodes{$node}->{'seen'} and $nodes{$node}->{'external_node'});
-        ################# end debug
-    }
-    foreach my $number (keys(%sections))
-    {
-        do_section_names($number, $sections{$number});
-    }
-    foreach my $number (keys(%headings))
-    {
-        do_section_names($number, $headings{$number});
-    }
-    print STDERR "# Names done\n" if ($T2H_DEBUG);
+   print STDERR "# Doing ". scalar(keys(%nodes)) . " nodes, ".
+       scalar(keys(%sections)) . " sections, " .
+       scalar(keys(%headings)) . " headings in ". $#elements_list . 
+       " elements\n" if ($T2H_DEBUG);
+   # for nodes and anchors we haven't any state defined
+   # This seems right, however, as we don't want @refs or @footnotes
+   # or @anchors within nodes, section commands or anchors.
+   $global_pass = '2 node names';
+   foreach my $node (keys(%nodes))
+   {
+       my $texi = &$Texi2HTML::Config::heading_texi($nodes{$node}->{'tag'}, 
+          $nodes{$node}->{'texi'}, undef);
+       my $command = 'node';
+       $command = $nodes{$node}->{'tag'} if ($nodes{$node}->{'tag'});
+       $nodes{$node}->{'text'} = substitute_line ($texi, "\@$command", {'code_style' => 1}, $nodes{$node}->{'line_nr'});
+       $nodes{$node}->{'text_nonumber'} = $nodes{$node}->{'text'};
+       # backward compatibility -> maybe used to have the name without code_style ?
+       # Removed from doc in nov 2009
+       $nodes{$node}->{'name'} = substitute_line($texi, "\@$command name");
+       $nodes{$node}->{'no_texi'} = remove_texi($texi);
+       $nodes{$node}->{'simple_format'} = simple_format(undef, undef, "\@$command simple_format", $texi);
+       $nodes{$node}->{'heading_texi'} = $texi;
+       
+       ################# debug
+       # if $nodes{$node}->{'external_node'} and $nodes{$node}->{'seen'}
+       # this is a bug, there should be a check that the node hasn't an
+       # external node syntax.
+       msg_debug ("$nodes{$node}->{'texi'} is external and was seen",  $nodes{$node}->{'line_nr'}) if ($nodes{$node}->{'seen'} and $nodes{$node}->{'external_node'});
+       ################# end debug
+   }
+   $global_pass = '2 section names';
+   foreach my $number (keys(%sections))
+   {
+       do_section_names($number, $sections{$number});
+   }
+   $global_pass = '2 heading names';
+   foreach my $number (keys(%headings))
+   {
+       do_section_names($number, $headings{$number});
+   }
+   print STDERR "# Names done\n" if ($T2H_DEBUG);
 }
 
 
@@ -7746,7 +7739,6 @@ sub fill_state($)
     }
     # this is consistent with what is done in rearrange_elements
     $state->{'element'} = {'file' => $docu_doc, 'texi' => 'VIRTUAL ELEMENT'} if (!$state->{'element'});
-        #$state->{'element'} = $elements_list[0] unless ((!@elements_list) or (exists($state->{'element'}) and !$state->{'element'}->{'before_anything'}));
 }
 
 sub do_element_directions ($)
@@ -7876,6 +7868,7 @@ sub pass_text($$)
 
     push_state(\%state);
 
+    $global_pass = '3 prepare names';
     set_special_names();
     $footnote_element->{'text'} = $Texi2HTML::NAME{'Footnotes'};
     # We set titlefont only if the titlefont appeared in the top element
@@ -8002,6 +7995,7 @@ sub pass_text($$)
     # texinfo is never used. Since no state is passed to the do_special_region_lines
     # 'outside_document' will be true. Also 'multiple_pass' is equal to -1
     # for this case.
+    $global_pass = '3 prepare regions';
 
     my ($region_text, $region_no_texi, $region_simple_format);
     ($region_text, $region_no_texi, $region_simple_format) = do_special_region_lines('documentdescription');
@@ -8024,6 +8018,7 @@ sub pass_text($$)
 
     &$Texi2HTML::Config::titlepage($region_lines{'titlepage'}, $region_text, $region_no_texi, $region_simple_format);
 
+    $global_pass = '3';
     &$Texi2HTML::Config::init_out();
 
     # FIXME It is not clear whether it should be here or before 
@@ -9951,7 +9946,7 @@ sub end_format($$$$$)
     {
         unless (defined($state->{'float'}))
         {
-            print STDERR "Bug: state->{'float'} not defined in float\n";
+            msg_debug("state->{'float'} not defined in float", $line_nr);
             next;
         }
         my ($caption_lines, $shortcaption_lines) = &$Texi2HTML::Config::caption_shortcaption($state->{'float'});
@@ -10456,6 +10451,7 @@ sub begin_format($$$$$$)
     # this is useful for @©enter, and also if there was something on the 
     # line after a format that isn't there anymore, like
     # @format   @c
+    # if @center line is empty we don't remove the end of line
     $line =~ s/^\s*// unless ($macro eq 'center' and $line =~ /^\s*$/);
     return $line;
 }
@@ -10935,7 +10931,6 @@ sub do_caption_shortcaption($$$$$$)
 
     if (!exists($state->{'float'}))
     {
-#dump_stack(\"", [], $state);
          line_error("\@$command outside of float", $line_nr);
          return '';
     }
@@ -12315,7 +12310,7 @@ sub close_structure_command($$$$)
             return '';
         }
         $document_anchor_num++;
-        $nodes{$anchor} = { 'anchor' => 1, 'seen' => 1, 'texi' => $anchor, 'id' => 'ANC' . $document_anchor_num, 'line_nr' => $line_nr};
+        $nodes{$anchor} = { 'anchor' => 1, 'seen' => 1, 'texi' => $anchor, 'id' => 'ANC' . $document_anchor_num, 'line_nr' => $line_nr, 'tag' => 'anchor'};
         push @{$state->{'place'}}, $nodes{$anchor};
     }
     elsif ($cmd_ref->{'style'} eq 'footnote')
@@ -13081,7 +13076,7 @@ sub scan_line($$$$;$)
     die "stack not an array ref"  unless (ref($stack) eq "ARRAY");
     my $cline = $original_line;
     #msg_debug("SCAN_LINE (@{$state->{'command_stack'}}): $original_line", $line_nr);
-    #dump_stack($text, $stack,  $state );
+    #dump_stack($text, $stack, $state);
     my $new_menu_entry; # true if there is a new menu entry
 #    my $menu_description_in_format; # true if we are in a menu description 
 #                                # but in another format section (@table....)
@@ -13278,9 +13273,9 @@ sub scan_line($$$$;$)
     while(1)
     {
         # scan_line
-        #line_warn("Dump stack in scan_line", $line_nr);
-        #dump_stack($text, $stack, $state);
         #print STDERR "WHILE(l): $cline|";
+        #msg_debug("Dump stack in scan_line", $line_nr);
+        #dump_stack($text, $stack, $state);
         # we're in a raw format (html, tex if !L2H, verbatim)
         if (defined($state->{'raw'})) 
         {
@@ -14975,6 +14970,8 @@ sub close_stack($$$$;$)
     # FIXME sort out which cases it is.
     return if ($format or (defined($state->{'multiple_pass'}) and $state->{'multiple_pass'} > 0) or $state->{'no_paragraph'}); 
 
+    # The pending style commands are cleared here; And are closed next.
+    delete $state->{'paragraph_macros'};
     # go through the command_stack and warn for each opened style format
     # and remove it. Those should be there because there is an opened style
     # that was stopped by a paragraph
@@ -15170,7 +15167,7 @@ sub dump_stack($$$)
         $in_simple_format = 1 if ($state->{'simple_format'});
         $in_remove = 1 if ($state->{'remove_texi'}  and !$in_simple_format);
     }
-    print STDERR "state(k${in_keep}s${in_simple_format}r${in_remove}): ";
+    print STDERR "state[$state](k${in_keep}s${in_simple_format}r${in_remove}): ";
     foreach my $key (keys(%$state))
     {
         my $value = 'UNDEF';
@@ -15263,6 +15260,87 @@ sub print_elements($)
     }
 }
 
+# for debugging
+sub context_string(;$$$)
+{
+   my $state = shift;
+   my $line_nr = shift;
+   my $message = shift;
+   
+   $state = $Texi2HTML::THISDOC{'state'} 
+      if (!defined($state) and defined($Texi2HTML::THISDOC{'state'}));
+   $line_nr = $Texi2HTML::THISDOC{'line_nr'}
+      if (!defined($line_nr) and defined($Texi2HTML::THISDOC{'line_nr'}));
+   my $result = "Pass $global_pass";
+   my $line_info = ', no line information';
+   $line_info = ' ' .format_line_number($line_nr) if (defined($line_nr));
+   $result .= $line_info;
+   if (!defined($state))
+   {
+      $result .= ', no state information';
+   }
+   else
+   {
+      $result .= ", context $state->{'context'}" if defined($state->{'context'});
+      my $expand = '';
+      if ($state->{'keep_texi'})
+      {
+         $expand .= ' no expansion'; 
+      }
+      if ($state->{'remove_texi'})
+      {
+         $expand .= ' raw'; 
+      }
+      if ($state->{'preformatted'})
+      {
+         $expand .= ' preformatted';
+      }
+      if ($state->{'code_style'})
+      {
+         $expand .= " 'code'";
+      }
+      if ($state->{'simple_format'})
+      {
+         $expand .= ' simple';
+      }
+      $expand = ' normal' if (!$expand);
+      $result .= ',' . $expand;
+      if ($state->{'expansion'})
+      {
+          $result .= ", \@$state->{'expansion'}";
+      }
+      if ($state->{'region'})
+      {
+          $result .= ", region $state->{'region'}";
+      }
+      if ($state->{'outside_document'})
+      {
+          $result .= "; out";
+      }
+      if ($state->{'inside_document'})
+      {
+          $result .= "; in";
+      }
+      if ($state->{'multiple_pass'})
+      {
+          $result .= "; multiple $state->{'multiple_pass'}";
+      }
+      if ($state->{'new_state'})
+      {
+          $result .= "; new";
+      }
+      if ($state->{'duplicated'})
+      {
+          $result .= "; duplicated";
+      }
+   }
+   $result .= "(in @{$Texi2HTML::THISDOC{'command_stack'}})" 
+     if (defined ($Texi2HTML::THISDOC{'command_stack'}) and @{$Texi2HTML::THISDOC{'command_stack'}});
+   $result .= ' ' .$message if ($message);
+   return $result;
+}
+
+
 my @states_stack = ();
 
 sub push_state($)
@@ -15325,18 +15403,27 @@ sub substitute_text($$$@)
     else
     {
 #print STDERR "FILL_STATE substitute_text ($state->{'preformatted'}): @_\n";
+        if (($state->{'inside_document'} or $state->{'outside_document'}) and (!$state->{'duplicated'} and !$state->{'new_state'}))
+        {
+            msg_debug("substitute_text with main state in: ".var_to_str($context), $line_nr);
+        }
         fill_state($state);
+        $state->{'context'} = $context;
     }
     $state->{'spool'} = [];
     #print STDERR "SUBST_TEXT ".var_to_str($context)."\n";
     push_state($state);
+
+    my $line_nrs_kept = $Texi2HTML::THISDOC{'line_nr'};
+    $Texi2HTML::THISDOC{'line_nr'} = undef;
     
     while (@_ or @{$state->{'spool'}} or $state->{'in_deff_line'})
     {
         my $line;
-        if ($line_nrs)
+        if ($line_nrs and @{$line_nrs})
         {
              $line_nr = shift @{$line_nrs};
+             $Texi2HTML::THISDOC{'line_nr'} = $line_nr;
         }
         if (@{$state->{'spool'}})
         {
@@ -15384,6 +15471,7 @@ sub substitute_text($$$@)
     if ($line_nrs and @{$line_nrs})
     {
         $line_nr = shift @{$line_nrs};
+        $Texi2HTML::THISDOC{'line_nr'} = $line_nr;
     }
     # close stack in substitute_text
     if ($state->{'texi'})
@@ -15400,6 +15488,7 @@ sub substitute_text($$$@)
     }
     #print STDERR "SUBST_TEXT end\n";
     pop_state();
+    $Texi2HTML::THISDOC{'line_nr'} = $line_nrs_kept;
     return $result . $text;
 }
 
@@ -15852,6 +15941,8 @@ while(@input_files)
    $docu_frame_file = undef;
    $docu_toc_frame_file = undef;
 
+   $global_pass = '0';
+
    # done before any processing, this is not necessarily 
    # the case with command_handler_init
    foreach my $handler(@Texi2HTML::Config::command_handler_setup)
@@ -15880,6 +15971,7 @@ while(@input_files)
    %cross_reference_nodes = ();  # normalized node names arrays
 
 
+   $global_pass = '1';
    my ($texi_lines, $first_texi_lines, $lines_numbers) 
         = pass_texi($input_file_name);
 
@@ -15888,6 +15980,7 @@ while(@input_files)
       init_with_file_name ($input_file_base);
    }
 
+   $global_pass = '1 expand macros';
    Texi2HTML::Config::t2h_default_set_out_encoding();
    dump_texi($texi_lines, 'texi', $lines_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
    if (defined($Texi2HTML::Config::MACRO_EXPAND))
@@ -16002,6 +16095,7 @@ while(@input_files)
                             # index letters for each index name. The sorted
                             # letters hold the sorted index entries
 
+   $global_pass = 2;
    my ($doc_lines, $doc_numbers) = pass_structure($texi_lines, $lines_numbers);
    if ($T2H_DEBUG & $DEBUG_TEXI)
    {
@@ -16013,8 +16107,7 @@ while(@input_files)
           dump_texi(\@all_doc_lines, '', undef, $Texi2HTML::Config::MACRO_EXPAND . ".first");
       }
    }
-   # makeinfo also expands the format normally
-   next if ($Texi2HTML::Config::DUMP_TEXI);# or defined($Texi2HTML::Config::MACRO_EXPAND));
+   next if ($Texi2HTML::Config::DUMP_TEXI);
 
    foreach my $style (keys(%special_commands))
    {
@@ -16025,10 +16118,13 @@ while(@input_files)
                   # used file name
    %printed_indices = (); # value is true for an index name not empty and
                           # printed
+   $global_pass = '2 prepare indices';
    prepare_indices();
+   $global_pass = '2 element directions';
    rearrange_elements();
    do_names();
 
+   $global_pass = '2-3 user functions';
 #Texi2HTML::LaTeX2HTML::latex2html();
    foreach my $handler(@Texi2HTML::Config::command_handler_process)
    {

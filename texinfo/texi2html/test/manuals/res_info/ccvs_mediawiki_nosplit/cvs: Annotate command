@@ -8,13 +8,10 @@ Previous: [[cvs: User-defined logging#User-defined logging|user-defined logging]
 === Annotate command ===
 <div id="index-annotate-_0028subcommand_0029"></div>
 
-<dl>
-<dt><div id="index-cvs-annotate"></div>Command: <strong>cvs annotate</strong><em> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files &hellip;</em></dt>
-<dd>
-<p>For each file in <var>files</var>, print the head revision
-of the trunk, together with information on the last
-modification for each line.  For example:
-</p>
+;<div id="index-cvs-annotate"></div>Command<nowiki>:</nowiki> <strong>cvs annotate</strong><em> <nowiki>[</nowiki><code>-FflR</code><nowiki>]</nowiki> <nowiki>[</nowiki><code>-r rev</code>|<code>-D date</code><nowiki>]</nowiki> files &hellip;</em>
+
+: For each file in <var>files</var>, print the head revision of the trunk, together with information on the last modification for each line.  For example:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs annotate ssfile
  Annotations for ssfile
@@ -24,21 +21,13 @@ modification for each line.  For example:
 </div>
 </td></tr></table>
 
-<p>The file &lsquo;<tt>ssfile</tt>&rsquo; currently contains two lines.
-The <code>ssfile line 1</code> line was checked in by
-<code>mary</code> on March 27.  Then, on March 28, <code>joe</code>
-added a line <code>ssfile line 2</code>, without modifying
-the <code>ssfile line 1</code> line.  This report doesn&rsquo;t
-tell you anything about lines which have been deleted
-or replaced; you need to use <code>cvs diff</code> for that
-(see [[cvs: diff--Show differences between revisions#diff&mdash;Show differences between revisions|diff]]).
-</p>
-</dd></dl>
+: The file &lsquo;<tt>ssfile</tt>&rsquo; currently contains two lines. The <code>ssfile line 1</code> line was checked in by <code>mary</code> on March 27.  Then, on March 28, <code>joe</code> added a line <code>ssfile line 2</code>, without modifying the <code>ssfile line 1</code> line.  This report doesn&rsquo;t tell you anything about lines which have been deleted or replaced; you need to use <code>cvs diff</code> for that (see [[cvs: diff--Show differences between revisions#diff&mdash;Show differences between revisions|diff]]).
 
-<p>The options to <code>cvs annotate</code> are listed in
+
+The options to <code>cvs annotate</code> are listed in
 [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]], and can be used to select the files
 and revisions to annotate.  The options are described
 in more detail there and in [[cvs: Common command options#Common command options|Common options]].
-</p>
+
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

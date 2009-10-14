@@ -9,19 +9,19 @@ Next: [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]], Up: [[cvs: Re
 <div id="index-Modules-_0028admin-file_0029"></div>
 <div id="index-Defining-modules-_0028reference-manual_0029"></div>
 
-<p>The &lsquo;<tt>modules</tt>&rsquo; file records your definitions of
+The &lsquo;<tt>modules</tt>&rsquo; file records your definitions of
 names for collections of source code.  <small>CVS</small> will
 use these definitions if you use <small>CVS</small> to update the
 modules file (use normal commands like <code>add</code>,
 <code>commit</code>, etc).
-</p>
-<p>The &lsquo;<tt>modules</tt>&rsquo; file may contain blank lines and
-comments (lines beginning with &lsquo;<samp>#</samp>&rsquo;) as well as
+
+The &lsquo;<tt>modules</tt>&rsquo; file may contain blank lines and
+comments (lines beginning with &lsquo;<code>#</code>&rsquo;) as well as
 module definitions.  Long lines can be continued on the
-next line by specifying a backslash (&lsquo;<samp>\</samp>&rsquo;) as the
+next line by specifying a backslash (&lsquo;<code>\</code>&rsquo;) as the
 last character on the line.
-</p>
-<p>There are three basic types of modules: alias modules,
+
+There are three basic types of modules: alias modules,
 regular modules, and ampersand modules.  The difference
 between them is the way that they map files in the
 repository to files in the working directory.  In all
@@ -30,7 +30,7 @@ contains a directory called &lsquo;<tt>first-dir</tt>&rsquo;, which
 contains two files, &lsquo;<tt>file1</tt>&rsquo; and &lsquo;<tt>file2</tt>&rsquo;, and a
 directory &lsquo;<tt>sdir</tt>&rsquo;.  &lsquo;<tt>first-dir/sdir</tt>&rsquo; contains
 a file &lsquo;<tt>sfile</tt>&rsquo;.
-</p>
+
 
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: Alias modules#Alias modules|&bull; Alias modules]]::             The simplest kind of module
@@ -38,7 +38,7 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
  [[cvs: Ampersand modules#Ampersand modules|&bull; Ampersand modules]]::
  [[cvs: Excluding directories#Excluding directories|&bull; Excluding directories]]::     Excluding directories from a module
  [[cvs: Module options#Module options|&bull; Module options]]::            Regular and ampersand modules can take options
- [[cvs: How the modules file "program options" programs are run#How the modules file &ldquo;program options&rdquo; programs are run|&bull; Module program options]]::    How the modules ``program options'' programs
+ [[cvs: How the modules file "program options" programs are run#How the modules file &ldquo;program options&rdquo; programs are run|&bull; Module program options]]::    How the modules ``program options<nowiki>''</nowiki> programs
                                are run. 
 </div>
 

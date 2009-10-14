@@ -7,17 +7,17 @@ Next: [[cvs: Line formats#Line formats|Line formats]], Up: [[cvs: diff options#d
 <div id="Line-group-formats-1"></div>
 ===== Line group formats =====
 
-<p>Line group formats let you specify formats suitable for many
+Line group formats let you specify formats suitable for many
 applications that allow if-then-else input, including programming
 languages and text formatting languages.  A line group format specifies
 the output format for a contiguous group of similar lines.
-</p>
-<p>For example, the following command compares the TeX file &lsquo;<tt>myfile</tt>&rsquo;
+
+For example, the following command compares the TeX file &lsquo;<tt>myfile</tt>&rsquo;
 with the original version from the repository,
 and outputs a merged file in which old regions are
-surrounded by &lsquo;<samp>\begin{em}</samp>&rsquo;-&lsquo;<samp>\end{em}</samp>&rsquo; lines, and new
-regions are surrounded by &lsquo;<samp>\begin{bf}</samp>&rsquo;-&lsquo;<samp>\end{bf}</samp>&rsquo; lines.
-</p>
+surrounded by &lsquo;<code>\begin{em}</code>&rsquo;-&lsquo;<code>\end{em}</code>&rsquo; lines, and new
+regions are surrounded by &lsquo;<code>\begin{bf}</code>&rsquo;-&lsquo;<code>\end{bf}</code>&rsquo; lines.
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs diff \
     --old-group-format='\begin{em}
@@ -30,9 +30,9 @@ regions are surrounded by &lsquo;<samp>\begin{bf}</samp>&rsquo;-&lsquo;<samp>\en
 </div>
 </td></tr></table>
 
-<p>The following command is equivalent to the above example, but it is a
+The following command is equivalent to the above example, but it is a
 little more verbose, because it spells out the default line group formats.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs diff \
     --old-group-format='\begin{em}
@@ -51,12 +51,12 @@ little more verbose, because it spells out the default line group formats.
 </div>
 </td></tr></table>
 
-<p>Here is a more advanced example, which outputs a diff listing with
+Here is a more advanced example, which outputs a diff listing with
 headers containing line numbers in a &ldquo;plain English&rdquo; style.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs diff \
-    --unchanged-group-format='' \
+    --unchanged-group-format=<nowiki>''</nowiki> \
     --old-group-format='-------- %dn line%(n=1?:s) deleted at %df:
  %&lt;' \
     --new-group-format='-------- %dN line%(N=1?:s) added after %de:
@@ -68,132 +68,73 @@ headers containing line numbers in a &ldquo;plain English&rdquo; style.
 </div>
 </td></tr></table>
 
-<p>To specify a line group format, use one of the options
+To specify a line group format, use one of the options
 listed below.  You can specify up to four line group formats, one for
 each kind of line group.  You should quote <var>format</var>, because it
 typically contains shell metacharacters.
-</p>
-<dl compact="compact">
-<dt>&lsquo;<samp>--old-group-format=<var>format</var></samp>&rsquo;</dt>
-<dd><p>These line groups are hunks containing only lines from the first file.
-The default old group format is the same as the changed group format if
-it is specified; otherwise it is a format that outputs the line group as-is.
-</p>
-</dd>
-<dt>&lsquo;<samp>--new-group-format=<var>format</var></samp>&rsquo;</dt>
-<dd><p>These line groups are hunks containing only lines from the second
-file.  The default new group format is same as the changed group
-format if it is specified; otherwise it is a format that outputs the
-line group as-is.
-</p>
-</dd>
-<dt>&lsquo;<samp>--changed-group-format=<var>format</var></samp>&rsquo;</dt>
-<dd><p>These line groups are hunks containing lines from both files.  The
-default changed group format is the concatenation of the old and new
-group formats.
-</p>
-</dd>
-<dt>&lsquo;<samp>--unchanged-group-format=<var>format</var></samp>&rsquo;</dt>
-<dd><p>These line groups contain lines common to both files.  The default
-unchanged group format is a format that outputs the line group as-is.
-</p></dd>
-</dl>
 
-<p>In a line group format, ordinary characters represent themselves;
-conversion specifications start with &lsquo;<samp>%</samp>&rsquo; and have one of the
+;&lsquo;<code>--old-group-format=<var>format</var></code>&rsquo;
+: These line groups are hunks containing only lines from the first file. The default old group format is the same as the changed group format if it is specified; otherwise it is a format that outputs the line group as-is.
+
+;&lsquo;<code>--new-group-format=<var>format</var></code>&rsquo;
+: These line groups are hunks containing only lines from the second file.  The default new group format is same as the changed group format if it is specified; otherwise it is a format that outputs the line group as-is.
+
+;&lsquo;<code>--changed-group-format=<var>format</var></code>&rsquo;
+: These line groups are hunks containing lines from both files.  The default changed group format is the concatenation of the old and new group formats.
+
+;&lsquo;<code>--unchanged-group-format=<var>format</var></code>&rsquo;
+: These line groups contain lines common to both files.  The default unchanged group format is a format that outputs the line group as-is.
+
+In a line group format, ordinary characters represent themselves;
+conversion specifications start with &lsquo;<code>%</code>&rsquo; and have one of the
 following forms.
-</p>
-<dl compact="compact">
-<dt>&lsquo;<samp>%&lt;</samp>&rsquo;</dt>
-<dd><p>stands for the lines from the first file, including the trailing newline.
-Each line is formatted according to the old line format (see [[cvs: Line formats#Line formats|Line formats]]).
-</p>
-</dd>
-<dt>&lsquo;<samp>%&gt;</samp>&rsquo;</dt>
-<dd><p>stands for the lines from the second file, including the trailing newline.
-Each line is formatted according to the new line format.
-</p>
-</dd>
-<dt>&lsquo;<samp>%=</samp>&rsquo;</dt>
-<dd><p>stands for the lines common to both files, including the trailing newline.
-Each line is formatted according to the unchanged line format.
-</p>
-</dd>
-<dt>&lsquo;<samp>%%</samp>&rsquo;</dt>
-<dd><p>stands for &lsquo;<samp>%</samp>&rsquo;.
-</p>
-</dd>
-<dt>&lsquo;<samp>%c'<var>C</var>'</samp>&rsquo;</dt>
-<dd><p>where <var>C</var> is a single character, stands for <var>C</var>.
-<var>C</var> may not be a backslash or an apostrophe.
-For example, &lsquo;<samp>%c':'</samp>&rsquo; stands for a colon, even inside
-the then-part of an if-then-else format, which a colon would
-normally terminate.
-</p>
-</dd>
-<dt>&lsquo;<samp>%c'\<var>O</var>'</samp>&rsquo;</dt>
-<dd><p>where <var>O</var> is a string of 1, 2, or 3 octal digits,
-stands for the character with octal code <var>O</var>.
-For example, &lsquo;<samp>%c'\0'</samp>&rsquo; stands for a null character.
-</p>
-</dd>
-<dt>&lsquo;<samp><var>F</var><var>n</var></samp>&rsquo;</dt>
-<dd><p>where <var>F</var> is a <code>printf</code> conversion specification and <var>n</var> is one
-of the following letters, stands for <var>n</var>&rsquo;s value formatted with <var>F</var>.
-</p>
-<dl compact="compact">
-<dt>&lsquo;<samp>e</samp>&rsquo;</dt>
-<dd><p>The line number of the line just before the group in the old file.
-</p>
-</dd>
-<dt>&lsquo;<samp>f</samp>&rsquo;</dt>
-<dd><p>The line number of the first line in the group in the old file;
-equals <var>e</var> + 1.
-</p>
-</dd>
-<dt>&lsquo;<samp>l</samp>&rsquo;</dt>
-<dd><p>The line number of the last line in the group in the old file.
-</p>
-</dd>
-<dt>&lsquo;<samp>m</samp>&rsquo;</dt>
-<dd><p>The line number of the line just after the group in the old file;
-equals <var>l</var> + 1.
-</p>
-</dd>
-<dt>&lsquo;<samp>n</samp>&rsquo;</dt>
-<dd><p>The number of lines in the group in the old file; equals <var>l</var> - <var>f</var> + 1.
-</p>
-</dd>
-<dt>&lsquo;<samp>E, F, L, M, N</samp>&rsquo;</dt>
-<dd><p>Likewise, for lines in the new file.
-</p>
-</dd>
-</dl>
 
-<p>The <code>printf</code> conversion specification can be &lsquo;<samp>%d</samp>&rsquo;,
-&lsquo;<samp>%o</samp>&rsquo;, &lsquo;<samp>%x</samp>&rsquo;, or &lsquo;<samp>%X</samp>&rsquo;, specifying decimal, octal,
-lower case hexadecimal, or upper case hexadecimal output
-respectively.  After the &lsquo;<samp>%</samp>&rsquo; the following options can appear in
-sequence: a &lsquo;<samp>-</samp>&rsquo; specifying left-justification; an integer
-specifying the minimum field width; and a period followed by an
-optional integer specifying the minimum number of digits.
-For example, &lsquo;<samp>%5dN</samp>&rsquo; prints the number of new lines in the group
-in a field of width 5 characters, using the <code>printf</code> format <code>&quot;%5d&quot;</code>.
-</p>
-</dd>
-<dt>&lsquo;<samp>(<var>A</var>=<var>B</var>?<var>T</var>:<var>E</var>)</samp>&rsquo;</dt>
-<dd><p>If <var>A</var> equals <var>B</var> then <var>T</var> else <var>E</var>.
-<var>A</var> and <var>B</var> are each either a decimal constant
-or a single letter interpreted as above.
-This format spec is equivalent to <var>T</var> if
-<var>A</var>&rsquo;s value equals <var>B</var>&rsquo;s; otherwise it is equivalent to <var>E</var>.
-</p>
-<p>For example, &lsquo;<samp>%(N=0?no:%dN) line%(N=1?:s)</samp>&rsquo; is equivalent to
-&lsquo;<samp>no lines</samp>&rsquo; if <var>N</var> (the number of lines in the group in the
-new file) is 0, to &lsquo;<samp>1 line</samp>&rsquo; if <var>N</var> is 1, and to &lsquo;<samp>%dN lines</samp>&rsquo;
-otherwise.
-</p></dd>
-</dl>
+;&lsquo;<code>%&lt;</code>&rsquo;
+: stands for the lines from the first file, including the trailing newline. Each line is formatted according to the old line format (see [[cvs: Line formats#Line formats|Line formats]]).
+
+;&lsquo;<code>%&gt;</code>&rsquo;
+: stands for the lines from the second file, including the trailing newline. Each line is formatted according to the new line format.
+
+;&lsquo;<code>%=</code>&rsquo;
+: stands for the lines common to both files, including the trailing newline. Each line is formatted according to the unchanged line format.
+
+;&lsquo;<code>%%</code>&rsquo;
+: stands for &lsquo;<code>%</code>&rsquo;.
+
+;&lsquo;<code>%c'<var>C</var>'</code>&rsquo;
+: where <var>C</var> is a single character, stands for <var>C</var>. <var>C</var> may not be a backslash or an apostrophe. For example, &lsquo;<code>%c':'</code>&rsquo; stands for a colon, even inside the then-part of an if-then-else format, which a colon would normally terminate.
+
+;&lsquo;<code>%c'\<var>O</var>'</code>&rsquo;
+: where <var>O</var> is a string of 1, 2, or 3 octal digits, stands for the character with octal code <var>O</var>. For example, &lsquo;<code>%c'\0'</code>&rsquo; stands for a null character.
+
+;&lsquo;<code><var>F</var><var>n</var></code>&rsquo;
+: where <var>F</var> is a <code>printf</code> conversion specification and <var>n</var> is one of the following letters, stands for <var>n</var>&rsquo;s value formatted with <var>F</var>.
+
+:;&lsquo;<code>e</code>&rsquo;
+:: The line number of the line just before the group in the old file.
+
+:;&lsquo;<code>f</code>&rsquo;
+:: The line number of the first line in the group in the old file; equals <var>e</var> + 1.
+
+:;&lsquo;<code>l</code>&rsquo;
+:: The line number of the last line in the group in the old file.
+
+:;&lsquo;<code>m</code>&rsquo;
+:: The line number of the line just after the group in the old file; equals <var>l</var> + 1.
+
+:;&lsquo;<code>n</code>&rsquo;
+:: The number of lines in the group in the old file; equals <var>l</var> - <var>f</var> + 1.
+
+:;&lsquo;<code>E, F, L, M, N</code>&rsquo;
+:: Likewise, for lines in the new file.
+
+
+: The <code>printf</code> conversion specification can be &lsquo;<code>%d</code>&rsquo;, &lsquo;<code>%o</code>&rsquo;, &lsquo;<code>%x</code>&rsquo;, or &lsquo;<code>%X</code>&rsquo;, specifying decimal, octal, lower case hexadecimal, or upper case hexadecimal output respectively.  After the &lsquo;<code>%</code>&rsquo; the following options can appear in sequence: a &lsquo;<code>-</code>&rsquo; specifying left-justification; an integer specifying the minimum field width; and a period followed by an optional integer specifying the minimum number of digits. For example, &lsquo;<code>%5dN</code>&rsquo; prints the number of new lines in the group in a field of width 5 characters, using the <code>printf</code> format <code>&quot;%5d&quot;</code>.
+
+;&lsquo;<code>(<var>A</var>=<var>B</var>?<var>T</var>:<var>E</var>)</code>&rsquo;
+: If <var>A</var> equals <var>B</var> then <var>T</var> else <var>E</var>. <var>A</var> and <var>B</var> are each either a decimal constant or a single letter interpreted as above. This format spec is equivalent to <var>T</var> if <var>A</var>&rsquo;s value equals <var>B</var>&rsquo;s; otherwise it is equivalent to <var>E</var>.
+
+: For example, &lsquo;<code>%(N=0?no:%dN) line%(N=1?:s)</code>&rsquo; is equivalent to &lsquo;<code>no lines</code>&rsquo; if <var>N</var> (the number of lines in the group in the new file) is 0, to &lsquo;<code>1 line</code>&rsquo; if <var>N</var> is 1, and to &lsquo;<code>%dN lines</code>&rsquo; otherwise.
 
 <hr>
 <div class="header">

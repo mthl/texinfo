@@ -11,28 +11,28 @@ Previous: [[cvs: Loginfo example#Loginfo example|loginfo example]], Up: [[cvs: L
 <div id="index-Checked-out-copy_002c-keeping"></div>
 <div id="index-Web-pages_002c-maintaining-with-CVS"></div>
 
-<p>It is often useful to maintain a directory tree which
+It is often useful to maintain a directory tree which
 contains files which correspond to the latest version
 in the repository.  For example, other developers might
 want to refer to the latest sources without having to
 check them out, or you might be maintaining a web site
 with <small>CVS</small> and want every checkin to cause the files
 used by the web server to be updated.
-</p>
-<p>The way to do this is by having loginfo invoke
+
+The way to do this is by having loginfo invoke
 <code>cvs update</code>.  Doing so in the naive way will
 cause a problem with locks, so the <code>cvs update</code>
 must be run in the background.
 Here is an example for unix (this should all be on one line):
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  ^cyclic-pages		(date; cat; (sleep 2; cd /u/www/local-docs;
   cvs -q update -d) &amp;) &gt;&gt; $CVSROOT/CVSROOT/updatelog 2&gt;&amp;1
 </div>
 </td></tr></table>
 
-<p>This will cause checkins to repository directories
+This will cause checkins to repository directories
 starting with <code>cyclic-pages</code> to update the checked
 out tree in &lsquo;<tt>/u/www/local-docs</tt>&rsquo;.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

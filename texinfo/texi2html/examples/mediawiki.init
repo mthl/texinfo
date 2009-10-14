@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.27 2009-10-06 13:35:58 pertusus Exp $
+# $Id: mediawiki.init,v 1.28 2009-10-14 13:08:36 pertusus Exp $
 
 use strict;
 
@@ -48,6 +48,71 @@ $SIMPLE_MENU = 1;
 
 # inline css style
 $INLINE_CSS_STYLE = 1;
+
+my %mediawiki_table_commands;
+
+# FIXME b, i could be ''' ''
+# FIXME ''' and '' are stopped by end of lines!
+my %style_map_mediawiki = (
+  'emph',       {'inline_begin' => "''"},
+  'email',      {'function' => \&mediawiki_default_email},
+  'strong',     {'inline_begin' => "'''"}
+);
+
+foreach my $style_command (keys(%style_map_mediawiki))
+{
+    if ($style_map_mediawiki{$style_command}->{'inline_begin'})
+    {
+        foreach my $key ('inline_attribute', 'attribute')
+        {
+            delete $style_map_pre{$style_command}->{$key};
+            delete $style_map{$style_command}->{$key};
+        }
+        $style_map_pre{$style_command}->{'inline_end'} = $style_map_mediawiki{$style_command}->{'inline_begin'};
+        $style_map{$style_command}->{'inline_end'} = $style_map_mediawiki{$style_command}->{'inline_begin'};
+    }
+    foreach my $key (keys(%{$style_map_mediawiki{$style_command}}))
+    {
+        $style_map_pre{$style_command}->{$key} = $style_map_mediawiki{$style_command}->{$key};
+        $style_map{$style_command}->{$key} = $style_map_mediawiki{$style_command}->{$key};
+    }
+}
+
+# no samp in allowed html elements in the default case.
+foreach my $style_command (keys(%style_map))
+{
+    if ($style_map{$style_command}->{'inline_attribute'})
+    {
+        $style_map{$style_command}->{'inline_attribute'} =~ s/^samp/code/;
+    }
+}
+
+foreach my $style_command (keys(%style_map_pre))
+{
+    if ($style_map_pre{$style_command}->{'inline_attribute'})
+    {
+        $style_map_pre{$style_command}->{'inline_attribute'} =~ s/^samp/code/;
+    }
+}
+
+sub mediawiki_default_email($$)
+{
+    my $command = shift;
+    my $args = shift;
+    my $mail = shift @$args;
+    my $text = shift @$args;
+    $text = '' if (!defined($text));
+    $mail = main::normalise_space($mail);
+    $text = main::normalise_space($text);
+    return $text if ($mail eq '');
+    $text = ' ' . $text if ($text ne '');
+    return "[mailto:$mail$text]";
+}
+
+foreach my $format ('enumerate', 'table', 'vtable', 'ftable')
+{
+   $format_map{$format} = '';
+}
 
 # there are no pre used in mediawiki, to have links working in 
 # complex formats, therefore the styles are copied in div that
@@ -144,8 +209,8 @@ sub mediawiki_anchor($;$$$)
             {
                 if ($file eq '')
                 {
-                    $target = $mediawiki_target_to_name{$target}->[0]->[1]->{'text'}
-                      if ($mediawiki_target_to_name{$target}->[0]->[1]->{'text'} ne '');
+                    $target = $mediawiki_target_to_name{$target}->[0]->[1]->{'simple_format'}
+                      if ($mediawiki_target_to_name{$target}->[0]->[1]->{'simple_format'} ne '');
                     $wiki_href = '#' . $target;
                 }
                 else
@@ -154,7 +219,7 @@ sub mediawiki_anchor($;$$$)
                     {
                         if ($file eq $element->[0])
                         {
-                             $target = $element->[1]->{'text'} if ($element->[1]->{'text'} ne '');
+                             $target = $element->[1]->{'simple_format'} if ($element->[1]->{'simple_format'} ne '');
                              $wiki_href = $file . '#' . $target;
                         }
                     }
@@ -171,6 +236,7 @@ sub mediawiki_anchor($;$$$)
         # Element page, no target
         elsif ($mediawiki_special_file_name{$href})
         {
+            $file = $href;
             $wiki_href = $href;
         }
         if (defined($wiki_href))
@@ -178,6 +244,7 @@ sub mediawiki_anchor($;$$$)
 	    $text = "|$text" if $text;
             # FIXME trouble with http://meta.wikimedia.org/wiki/Help:Namespace#Generic_namespace_names
             # and with http://en.wikipedia.org/wiki/Wikipedia:Naming_conventions_(technical_restrictions)#Forbidden_characters
+            
     	    $href = "[[$wiki_href$text]]";
         }
         else
@@ -194,8 +261,67 @@ sub mediawiki_anchor($;$$$)
     return "$name$href";
 }
 
+# it is not possible (at least not easy) to protect only 2 consecutive
+# {, although it would be better.
+foreach my $brace ('{', '}')
+{
+   $simple_map{$brace} = "<nowiki>$simple_map{$brace}</nowiki>";
+   $simple_map_pre{$brace} = "<nowiki>$simple_map_pre{$brace}</nowiki>";
+}
 
+$normal_text = \&mediawiki_default_normal_text;
+sub mediawiki_default_normal_text($$$$$$;$)
+{
+   my $text = shift;
+   my $in_raw_text = shift; # remove_texi
+   my $in_preformatted = shift;
+   my $in_code = shift;
+   my $in_simple = shift;
+   my $style_stack = shift;
+   my $state = shift;
 
+   $text = html_default_normal_text ($text, $in_raw_text, $in_preformatted, $in_code, $in_simple, $style_stack, $state);
+   my $colon = '';
+   foreach my $command (@$style_stack)
+   {
+      if ($mediawiki_table_commands{$command} or $def_map{$command})
+      {
+          $colon = '|( :)' ;
+          last;
+      }
+      #print STDERR "$command\n";
+   }
+   # '' is changed to &ldsquo; so it doesn't needs to be protected in
+   # normal text...
+   if (!$in_raw_text and !$in_simple)
+   {
+        $text =~ s/(([\[\]]|[']{2,}|(\{\{)|(\}\})$colon)+)/<nowiki>$1<\/nowiki>/g;
+   }
+   return $text;
+}
+
+#$heading = \&mediawiki_default_heading;
+sub mediawiki_default_heading($$$$$;$$)
+{
+    my $element = shift;
+    my $command = shift;
+    my $texi_line = shift;
+    my $line = shift;
+    my $in_preformatted = shift;
+    my $one_section = shift;
+    my $element_heading = shift;
+
+    my $result = t2h_default_heading($element, $command, $texi_line, $line,
+      $in_preformatted, $one_section, $element_heading);
+    if ($result ne '')
+    {
+        if ($element->{'no_texi'} =~ /[\#<>\[\]|{}]/)
+        {
+            main::msg_warn("# < > [ ] | { } not allowed in title `$element->{'texi'}'",$element->{'line_nr'});
+        }
+    }
+    return $result;
+}
 # This function formats a footnote reference and the footnote text associated
 # with a given footnote.
 # The footnote reference is the text appearing in the main document pointing
@@ -302,25 +428,46 @@ sub mediawiki_element_file_name
 	    $file = $docu_name;
 	}
     }
-    elsif (exists $mediawiki_doc_nr_to_file{$element->{'doc_nr'}})
-    {
-	$file = $mediawiki_doc_nr_to_file{$element->{'doc_nr'}};
-	$mediawiki_doc_nr_to_file{$element->{'doc_nr'}} = $file;
-    }
     else
     {
-	my $name = main::substitute_line($element->{'texi'}, 'file name', {'remove_texi' => 1}, $element->{'line_nr'});
-	$name =~ s,/,%47,g;
-	$name =~ s,\\,%92,g;
-	$file = "$docu_name" . (($type eq 'top') ? "" : ": " . $name);
-	$mediawiki_doc_nr_to_file{$element->{'doc_nr'}} = $file;
-    }
-    if (defined($element))
-    {
+        my $name = main::substitute_line($element->{'texi'}, 'file name', {'remove_texi' => 1}, $element->{'line_nr'});
+        if (exists $mediawiki_doc_nr_to_file{$element->{'doc_nr'}})
+        {
+	    $file = $mediawiki_doc_nr_to_file{$element->{'doc_nr'}};
+	    $mediawiki_doc_nr_to_file{$element->{'doc_nr'}} = $file;
+        }
+        else
+        {
+	    $name =~ s,/,%47,g;
+	    $name =~ s,\\,%92,g;
+	    $file = "$docu_name" . (($type eq 'top') ? "" : ": " . $name);
+	    $mediawiki_doc_nr_to_file{$element->{'doc_nr'}} = $file;
+        }
         push @{$mediawiki_target_to_name{$element->{'target'}}}, [ $file, $element ];
+        if ($name =~ /[\#<>\[\]|{}]/)
+        {
+            main::msg_warn("# < > [ ] | { } not allowed in title `$element->{'texi'}'",$element->{'line_nr'});
+        }
     }
     $mediawiki_special_file_name{$file} = 1;
     return $file;
+}
+
+$node_file_name = \&mediawiki_default_node_file_name;
+sub mediawiki_default_node_file_name($$)
+{
+    my $node = shift;
+    my $type = shift;
+    my $filename = T2H_DEFAULT_node_file_name($node, $type);
+    my $command = 'node';
+    $command = $node->{'tag'};
+    my $name = main::substitute_line($node->{'texi'}, 'node name', {'remove_texi' => 1}, $node->{'line_nr'});
+    if ($name =~ /[\#<>\[\]|{}]/)
+    {
+        main::msg_warn("# < > [ ] | { } not allowed in references, in \@$command `$node->{'texi'}'",$node->{'line_nr'});
+    }
+    
+    return $filename;
 }
 
 # a preformatted region
@@ -333,8 +480,8 @@ sub mediawiki_element_file_name
 # $leading_command_formatted is the leading formatting command formatted
 # $preformatted_number is a reference on the number of preformatteds appearing
 #    in the format. The value should be increased if a preformatted is done
-$preformatted      = \&mediawiki_preformatted;
-sub mediawiki_preformatted($$$$$$$$$$)
+$preformatted      = \&mediawiki_default_preformatted;
+sub mediawiki_default_preformatted($$$$$$$$$$)
 {
     my $text = shift;
     my $pre_style = shift;
@@ -370,7 +517,276 @@ sub mediawiki_preformatted($$$$$$$$$$)
     #return "<pre class=\"$class\"><nowiki>$text</nowiki></pre>";
 }
 
+sub mediawiki_default_remove_eol($)
+{
+   my $text = shift;
+   chomp($text);
+   my $res = '';
+   foreach my $line (split /\n/, $text)
+   {
+      $res .= $line . " ";
+   }
+   $res =~ s/ $//;
+   $res .= "\n";
+   return $res;
+}
 
+my %mediawiki_default_indent_symbol = (
+  'itemize' => '*',
+  'enumerate' => '#'
+);
+foreach my $table ('table', 'ftable', 'vtable')
+{
+   $mediawiki_default_indent_symbol{$table} = ':';
+   $mediawiki_table_commands{$table} = 1;
+}
+foreach my $definition_command (keys(%def_map))
+{
+   $mediawiki_default_indent_symbol{$definition_command} = ':';
+}
+
+sub mediawiki_default_indent_string($;$)
+{
+   my $commands = shift;
+   my $remove_last = shift;
+
+   $commands = $Texi2HTML::THISDOC{'command_stack'} if (!defined($commands));
+   my $indent_string = '';
+   foreach my $format (@$commands)
+   {
+      $indent_string .= $mediawiki_default_indent_symbol{$format} 
+         if defined($mediawiki_default_indent_symbol{$format});
+   }
+   $indent_string =~ s/.$// if ($remove_last);
+   return $indent_string;
+}
+
+$paragraph      = \&mediawiki_default_paragraph;
+sub mediawiki_default_paragraph($$$$$$$$$$$$)
+{
+    my $text = shift;
+    my $align = shift;
+    my $indent = shift;
+    my $paragraph_command = shift;
+    my $paragraph_command_formatted = shift;
+    my $paragraph_number = shift;
+    my $format = shift;
+    my $item_nr = shift;
+    my $enumerate_style = shift;
+    my $number = shift;
+    my $command_stack_at_end = shift;
+    my $command_stack_at_begin = shift;
+#print STDERR "format: $format\n" if (defined($format));
+#print STDERR "paragraph @$command_stack_at_end; @$command_stack_at_begin\n";
+#    $paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or 
+#          exists($special_list_commands{$format}->{$paragraph_command}));
+    return '' if ($text =~ /^\s*$/);
+
+    if (defined($paragraph_number) and defined($$paragraph_number))
+    {
+         $$paragraph_number++;
+    }
+
+    # remove leading spaces, they trigger a preformatted environment in wikitext
+    $text =~ s/^\s*//mg;
+    my $top_stack = '';
+    $top_stack = $command_stack_at_begin->[-1] if (scalar (@$command_stack_at_begin));
+    if ($top_stack eq 'multitable')
+    {
+       $html_default_multitable_stack[-1]->[1]++;
+       return mediawiki_default_remove_eol($text);
+    }
+
+    if ($align)
+    {
+        $text = "<p align=\"$paragraph_style{$align}\">".$text.'</p>';
+    }
+
+    my $indent_string = mediawiki_default_indent_string($command_stack_at_begin);
+    if ($indent_string)
+    {
+       $text = $indent_string . ' ' .mediawiki_default_remove_eol($text);
+    }
+    
+    return $text;
+}
+
+$list_item = \&mediawiki_default_list_item;
+sub mediawiki_default_list_item
+{
+   my $text = shift;
+   return $text;
+}
+
+$def_item = \&mediawiki_default_def_item;
+sub mediawiki_default_def_item($$$)
+{
+    my $text = shift;
+    my $only_inter_item_commands = shift;
+    my $command = shift;
+    if ($text =~ /\S/)
+    {
+        if (! $DEF_TABLE)
+        {
+            return $text;# unless $only_inter_item_commands;
+            #return $text; # invalid without dd in ul
+        }
+        else
+        {
+            return '<tr><td colspan="2">' . $text . '</td></tr>';
+        }
+    }
+    return '';
+}
+
+$table_item = \&mediawiki_default_table_item;
+sub mediawiki_default_table_item($$$$$$$)
+{
+    my $text = shift;
+    my $index_label = shift;
+    my $format = shift;
+    my $command = shift;
+#    my $formatted_command = shift;
+    my $style_stack = shift;
+#    my $text_formatted = shift;
+#    my $text_formatted_leading_spaces = shift;
+#    my $text_formatted_trailing_spaces = shift;
+    my $item_cmd = shift;
+    my $formatted_index_entry = shift;
+
+#    if (defined($text_formatted) and !exists $special_list_commands{$format}->{$command})
+#    {
+#        $text = $text_formatted_leading_spaces . $text_formatted .$text_formatted_trailing_spaces;
+#    }
+#    $formatted_command = '' if (!defined($formatted_command) or 
+#          exists($special_list_commands{$format}->{$command}));
+    if (html_teletyped_in_stack($style_stack))
+    {
+#       $text .= '</tt>';
+#       $formatted_command = '<tt>' . $formatted_command;
+        $text = '<tt>' . $text . '</tt>';
+    }
+    $text .= "\n" . $index_label  if (defined($index_label));
+#    return '<dt>' . $formatted_command . $text . '</dt>' . "\n";
+    return mediawiki_default_indent_string(undef,1) .";$text\n";
+}
+
+$table_line = \&mediawiki_default_table_line;
+sub mediawiki_default_table_line($$$)
+{
+    my $text = shift;
+    my $only_inter_item_commands = shift;
+    my $before_items = shift;
+
+    $only_inter_item_commands = '' if (!defined($only_inter_item_commands));
+
+    if ($text =~ /\S/)
+    {
+        #return ";$text\n";# unless ($only_inter_item_commands);
+        return $text;
+        #return $text; # invalid without dd in ul
+    }
+    return '';
+}
+
+
+$def_line = \&mediawiki_default_def_line;
+sub mediawiki_default_def_line($$$$$$$$$$$$$$$$)
+{
+   my $category_prepared = shift;
+   my $name = shift;
+   my $type = shift;
+   my $arguments = shift;
+   my $index_label = shift;
+   my $arguments_array = shift;
+   my $arguments_type_array = shift;
+   my $unformatted_arguments_array = shift;
+   my $command = shift;
+   my $class_name = shift;
+   my $category = shift;
+   my $class = shift;
+   my $style = shift;
+   my $original_command = shift;
+
+   $index_label = '' if (!defined($index_label));
+   chomp($index_label);
+   $category_prepared = '' if (!defined($category_prepared) or ($category_prepared =~ /^\s*$/));
+   $name = '' if (!defined($name) or ($name =~ /^\s*$/));
+   $type = '' if (!defined($type) or $type =~ /^\s*$/);
+   if (!defined($arguments) or $arguments =~ /^\s*$/)
+   {
+       $arguments = '';
+   }
+   else
+   {
+       chomp ($arguments);
+       $arguments = '<em>' . $arguments . '</em>';
+   }
+   my $type_name = '';
+   $type_name = " <em>$type</em>" if ($type ne '');
+   $type_name .= ' <strong>' . $name . '</strong>' if ($name ne '');
+   $type_name .= $arguments;
+   if (! $DEF_TABLE)
+   {
+       return mediawiki_default_indent_string(undef,1) .';'. $index_label. $category_prepared . '<nowiki>:</nowiki>' . $type_name . "\n";
+   }
+   else
+   {
+       return "<tr><td align=\"left\">" . $type_name .
+       "</td><td align=\"right\">" . $category_prepared . $index_label . "</td></tr>\n";
+   }
+}
+
+
+$def = \&mediawiki_default_def;
+sub mediawiki_default_def($$)
+{
+    my $text = shift;
+    my $command = shift;
+    if ($text =~ /\S/)
+    {
+        if (! $DEF_TABLE)
+        {
+            return $text;
+        }
+        else
+        {
+            return "<table width=\"100%\">\n" . $text . "</table>\n";
+        }
+    }
+    return '';
+
+}
+
+
+
+$table_list = \&mediawiki_default_table_list;
+
+sub mediawiki_default_table_list($$$$$$$$$)
+{
+    my $format_command = shift;
+    my $text = shift;
+    my $command = shift;
+    my $formatted_command = shift;
+# enumerate
+    my $item_nr = shift;
+    my $enumerate_style = shift;
+# itemize
+    my $prepended = shift;
+    my $prepended_formatted = shift;
+# multitable
+    my $columnfractions = shift;
+    my $prototype_row = shift;
+    my $prototype_lengths = shift;
+    my $column_number = shift;
+
+    if ($format_command eq 'multitable')
+    {
+        pop @html_default_multitable_stack;
+        return &$format('multitable', 'table', $text);
+    }
+    return $text;
+}
 
 # format an index summary. This is a list of letters linking to the letter
 # entries.

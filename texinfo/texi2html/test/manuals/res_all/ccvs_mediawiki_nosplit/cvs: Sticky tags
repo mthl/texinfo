@@ -10,23 +10,23 @@ Previous: [[cvs: Tagging and adding and removing files#Tagging and adding and re
 <div id="index-Tags_002c-sticky"></div>
 
 
-<p>Sometimes a working copy&rsquo;s revision has extra data
+Sometimes a working copy&rsquo;s revision has extra data
 associated with it, for example it might be on a branch
 (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]), or restricted to
-versions prior to a certain date by &lsquo;<samp>checkout -D</samp>&rsquo;
-or &lsquo;<samp>update -D</samp>&rsquo;.  Because this data persists &ndash;
+versions prior to a certain date by &lsquo;<code>checkout -D</code>&rsquo;
+or &lsquo;<code>update -D</code>&rsquo;.  Because this data persists &ndash;
 that is, it applies to subsequent commands in the
 working copy &ndash; we refer to it as <em>sticky</em>.
-</p>
-<p>Most of the time, stickiness is an obscure aspect of
+
+Most of the time, stickiness is an obscure aspect of
 <small>CVS</small> that you don&rsquo;t need to think about.  However,
 even if you don&rsquo;t want to use the feature, you may need
-to know <em>something</em> about sticky tags (for
+to know ''something'' about sticky tags (for
 example, how to avoid them!).
-</p>
-<p>You can use the <code>status</code> command to see if any
+
+You can use the <code>status</code> command to see if any
 sticky tags or dates are set:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs status driver.c
  ===================================================================
@@ -44,15 +44,15 @@ sticky tags or dates are set:
 <div id="index-Resetting-sticky-tags"></div>
 <div id="index-Sticky-tags_002c-resetting"></div>
 <div id="index-Deleting-sticky-tags"></div>
-<p>The sticky tags will remain on your working files until
-you delete them with &lsquo;<samp>cvs update -A</samp>&rsquo;.  The
-&lsquo;<samp>-A</samp>&rsquo; option merges local changes into the version of the
+The sticky tags will remain on your working files until
+you delete them with &lsquo;<code>cvs update -A</code>&rsquo;.  The
+&lsquo;<code>-A</code>&rsquo; option merges local changes into the version of the
 file from the head of the trunk, removing any sticky tags,
 dates, or options.  See [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]] for more on the operation
 of <code>cvs update</code>.
-</p>
+
 <div id="index-Sticky-date"></div>
-<p>The most common use of sticky tags is to identify which
+The most common use of sticky tags is to identify which
 branch one is working on, as described in
 [[cvs: Accessing branches#Accessing branches|Accessing branches]].  However, non-branch
 sticky tags have uses as well.  For example,
@@ -67,16 +67,16 @@ will become sticky.  Subsequent <code>cvs update</code>
 commands will
 not retrieve the latest revision until you reset the
 tag with <code>cvs update -A</code>.  Likewise, use of the
-&lsquo;<samp>-D</samp>&rsquo; option to <code>update</code> or <code>checkout</code>
+&lsquo;<code>-D</code>&rsquo; option to <code>update</code> or <code>checkout</code>
 sets a <em>sticky date</em>, which, similarly, causes that
 date to be used for future retrievals.
-</p>
-<p>People often want to retrieve an old version of
+
+People often want to retrieve an old version of
 a file without setting a sticky tag.  This can
-be done with the &lsquo;<samp>-p</samp>&rsquo; option to <code>checkout</code> or
+be done with the &lsquo;<code>-p</code>&rsquo; option to <code>checkout</code> or
 <code>update</code>, which sends the contents of the file to
 standard output.  For example:
-</p><table><tr><td>&nbsp;</td><td><div class="example">
+<table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs update -p -r 1.1 file1 &gt;file1
  ===================================================================
  Checking out file1
@@ -87,13 +87,13 @@ standard output.  For example:
 </div>
 </td></tr></table>
 
-<p>However, this isn&rsquo;t the easiest way, if you are asking
+However, this isn&rsquo;t the easiest way, if you are asking
 how to undo a previous checkin (in this example, put
 &lsquo;<tt>file1</tt>&rsquo; back to the way it was as of revision
 1.1).  In that case you are better off using the
-&lsquo;<samp>-j</samp>&rsquo; option to <code>update</code>; for further
+&lsquo;<code>-j</code>&rsquo; option to <code>update</code>; for further
 discussion see [[cvs: Merging differences between any two revisions#Merging differences between any two revisions|Merging two revisions]].
-</p>
+
 <hr>
 <div class="header">
 <p>

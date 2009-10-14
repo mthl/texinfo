@@ -11,56 +11,56 @@ Next: [[cvs: Viewing differences#Viewing differences|Viewing differences]], Prev
 <div id="index-Removing-your-working-copy"></div>
 <div id="index-Releasing-your-working-copy"></div>
 
-<p>Before you turn to other tasks you decide to remove your working copy of
+Before you turn to other tasks you decide to remove your working copy of
 tc.  One acceptable way to do that is of course
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd ..
  $ rm -r tc
 </div>
 </td></tr></table>
 
-<p>but a better way is to use the <code>release</code> command (see [[cvs: release--Indicate that a Module is no longer in use#release&mdash;Indicate that a Module is no longer in use|release]]):
-</p>
+but a better way is to use the <code>release</code> command (see [[cvs: release--Indicate that a Module is no longer in use#release&mdash;Indicate that a Module is no longer in use|release]]):
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd ..
  $ cvs release -d tc
  M driver.c
  ? tc
- You have [1] altered files in this repository.
+ You have <nowiki>[</nowiki>1<nowiki>]</nowiki> altered files in this repository.
  Are you sure you want to release (and delete) directory `tc': n
  ** `release' aborted by user choice.
 </div>
 </td></tr></table>
 
-<p>The <code>release</code> command checks that all your modifications have been
+The <code>release</code> command checks that all your modifications have been
 committed.  If history logging is enabled it also makes a note in the
 history file.  See [[cvs: The history file#The history file|history file]].
-</p>
-<p>When you use the &lsquo;<samp>-d</samp>&rsquo; flag with <code>release</code>, it
+
+When you use the &lsquo;<code>-d</code>&rsquo; flag with <code>release</code>, it
 also removes your working copy.
-</p>
-<p>In the example above, the <code>release</code> command wrote a couple of lines
-of output.  &lsquo;<samp>? tc</samp>&rsquo; means that the file &lsquo;<tt>tc</tt>&rsquo; is unknown to <small>CVS</small>.
+
+In the example above, the <code>release</code> command wrote a couple of lines
+of output.  &lsquo;<code>? tc</code>&rsquo; means that the file &lsquo;<tt>tc</tt>&rsquo; is unknown to <small>CVS</small>.
 That is nothing to worry about: &lsquo;<tt>tc</tt>&rsquo; is the executable compiler,
 and it should not be stored in the repository.  See [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]],
 for information about how to make that warning go away.
 See [[cvs: release output#release output|release output]], for a complete explanation of
 all possible output from <code>release</code>.
-</p>
-<p>&lsquo;<samp>M driver.c</samp>&rsquo; is more serious.  It means that the
+
+&lsquo;<code>M driver.c</code>&rsquo; is more serious.  It means that the
 file &lsquo;<tt>driver.c</tt>&rsquo; has been modified since it was
 checked out.
-</p>
-<p>The <code>release</code> command always finishes by telling
+
+The <code>release</code> command always finishes by telling
 you how many modified files you have in your working
 copy of the sources, and then asks you for confirmation
 before deleting any files or making any note in the
 history file.
-</p>
-<p>You decide to play it safe and answer <kbd>n &lt;RET&gt;</kbd>
+
+You decide to play it safe and answer <kbd>n &lt;RET&gt;</kbd>
 when <code>release</code> asks for confirmation.
-</p>
+
 <hr>
 <div class="header">
 <p>

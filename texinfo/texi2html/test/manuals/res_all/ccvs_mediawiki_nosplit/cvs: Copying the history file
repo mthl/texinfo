@@ -7,9 +7,9 @@ Previous: [[cvs: Moving the history file#Moving the history file|Inside]], Up: [
 <div id="Copying-the-history-file"></div>
 ==== Copying the history file ====
 
-<p>This way also involves direct modifications to the
+This way also involves direct modifications to the
 repository.  It is safe, but not without drawbacks.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  # <span class="roman" style="font-family:serif; font-weight:normal;">Copy the RCS file inside the repository</span>
  $ cd $CVSROOT/<var>dir</var>
@@ -28,30 +28,24 @@ repository.  It is safe, but not without drawbacks.
 </div>
 </td></tr></table>
 
-<p>By removing the tags you will be able to check out old
+By removing the tags you will be able to check out old
 revisions.
-</p>
-<p>Advantages:
-</p>
-<ul>
-<li>
-Checking out old revisions works correctly, as long as
-you use &lsquo;<samp>-r<var>tag</var></samp>&rsquo; and not &lsquo;<samp>-D<var>date</var></samp>&rsquo;
-to retrieve the revisions.
 
-</li><li>
-The log of changes is maintained intact.
+Advantages:
 
-</li><li>
-The revision numbers are not affected.
-</li></ul>
 
-<p>Disadvantages:
-</p>
-<ul>
-<li>
-You cannot easily see the history of the file across the rename.
+* Checking out old revisions works correctly, as long as you use &lsquo;<code>-r<var>tag</var></code>&rsquo; and not &lsquo;<code>-D<var>date</var></code>&rsquo; to retrieve the revisions.
 
-</li></ul>
+
+* The log of changes is maintained intact.
+
+
+* The revision numbers are not affected.
+
+Disadvantages:
+
+
+* You cannot easily see the history of the file across the rename.
+
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

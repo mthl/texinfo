@@ -8,18 +8,18 @@ Next: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is
 === Several developers simultaneously attempting to run CVS ===
 
 <div id="index-Locks_002c-cvs_002c-introduction"></div>
-<p>If several developers try to run <small>CVS</small> at the same
+If several developers try to run <small>CVS</small> at the same
 time, one may get the following message:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
- [11:43:23] waiting for bach's lock in /usr/local/cvsroot/foo
+ <nowiki>[</nowiki>11:43:23<nowiki>]</nowiki> waiting for bach's lock in /usr/local/cvsroot/foo
 </div>
 </td></tr></table>
 
 <div id="index-_0023cvs_002erfl_002c-removing"></div>
 <div id="index-_0023cvs_002ewfl_002c-removing"></div>
 <div id="index-_0023cvs_002elock_002c-removing"></div>
-<p><small>CVS</small> will try again every 30 seconds, and either
+<small>CVS</small> will try again every 30 seconds, and either
 continue with the operation or print the message again,
 if it still needs to wait.  If a lock seems to stick
 around for an undue amount of time, find the person
@@ -29,29 +29,29 @@ command, look in the repository directory mentioned in
 the message and remove files which they own whose names
 start with &lsquo;<tt>#cvs.rfl</tt>&rsquo;,
 &lsquo;<tt>#cvs.wfl</tt>&rsquo;, or &lsquo;<tt>#cvs.lock</tt>&rsquo;.
-</p>
-<p>Note that these locks are to protect <small>CVS</small>&rsquo;s
+
+Note that these locks are to protect <small>CVS</small>&rsquo;s
 internal data structures and have no relationship to
 the word <em>lock</em> in the sense used by
 <small>RCS</small>&mdash;which refers to reserved checkouts
 (see [[cvs: Multiple developers#Multiple developers|Multiple developers]]).
-</p>
-<p>Any number of people can be reading from a given
+
+Any number of people can be reading from a given
 repository at a time; only when someone is writing do
 the locks prevent other people from reading or writing.
-</p>
+
 <div id="index-Atomic-transactions_002c-lack-of"></div>
 <div id="index-Transactions_002c-atomic_002c-lack-of"></div>
-<p>One might hope for the following property:
-</p>
-<blockquote><p>If someone commits some changes in one cvs command,
+One might hope for the following property:
+
+<blockquote>If someone commits some changes in one cvs command,
 then an update by someone else will either get all the
 changes, or none of them.
-</p></blockquote>
+</blockquote>
 
-<p>but <small>CVS</small> does <em>not</em> have this property.  For
+but <small>CVS</small> does ''not'' have this property.  For
 example, given the files
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  a/one.c
  a/two.c
@@ -60,18 +60,18 @@ example, given the files
 </div>
 </td></tr></table>
 
-<p>if someone runs
-</p>
+if someone runs
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs ci a/two.c b/three.c
 </div>
 </td></tr></table>
 
-<p>and someone else runs <code>cvs update</code> at the same
+and someone else runs <code>cvs update</code> at the same
 time, the person running <code>update</code> might get only
 the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 &lsquo;<tt>a/two.c</tt>&rsquo;.
-</p>
+
 <hr>
 <div class="header">
 <p>

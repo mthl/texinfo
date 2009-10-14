@@ -11,16 +11,16 @@ Next: [[cvs: All environment variables which affect CVS#All environment variable
 <div id="index-Reference-manual-_0028files_0029"></div>
 <div id="index-CVSROOT-_0028file_0029"></div>
 
-<p>Inside the repository, in the directory
+Inside the repository, in the directory
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;, there are a number of
 supportive files for <small>CVS</small>.  You can use <small>CVS</small> in a limited
 fashion without any of them, but if they are set up
 properly they can help make life easier.  For a
 discussion of how to edit them, see [[cvs: The administrative files#The administrative files|Intro administrative files]].
-</p>
-<p>The most important of these files is the &lsquo;<tt>modules</tt>&rsquo;
+
+The most important of these files is the &lsquo;<tt>modules</tt>&rsquo;
 file, which defines the modules inside the repository.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: The modules file#The modules file|&bull; modules]]::                     Defining modules
  [[cvs: The cvswrappers file#The cvswrappers file|&bull; Wrappers]]::                    Specify binary-ness based on file name

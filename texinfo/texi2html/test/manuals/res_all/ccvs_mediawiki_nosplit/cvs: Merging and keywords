@@ -11,21 +11,21 @@ Previous: [[cvs: Merging can add or remove files#Merging can add or remove files
 <div id="index-_002dj-_0028merging-branches_0029_002c-and-keyword-substitution"></div>
 <div id="index-_002dkk_002c-to-avoid-conflicts-during-a-merge"></div>
 
-<p>If you merge files containing keywords (see [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]]), you will normally get numerous
+If you merge files containing keywords (see [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]]), you will normally get numerous
 conflicts during the merge, because the keywords are
 expanded differently in the revisions which you are
 merging.
-</p>
-<p>Therefore, you will often want to specify the
-&lsquo;<samp>-kk</samp>&rsquo; (see [[cvs: Substitution modes#Substitution modes|Substitution modes]]) switch to the
+
+Therefore, you will often want to specify the
+&lsquo;<code>-kk</code>&rsquo; (see [[cvs: Substitution modes#Substitution modes|Substitution modes]]) switch to the
 merge command line.  By substituting just the name of
 the keyword, not the expanded value of that keyword,
 this option ensures that the revisions which you are
 merging will be the same as each other, and avoid
 spurious conflicts.
-</p>
-<p>For example, suppose you have a file like this:
-</p>
+
+For example, suppose you have a file like this:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
         +---------+
        _! 1.1.2.1 !   &lt;-  br1
@@ -38,10 +38,10 @@ spurious conflicts.
 </div>
 </td></tr></table>
 
-<p>and your working directory is currently on the trunk
+and your working directory is currently on the trunk
 (revision 1.2).  Then you might get the following
 results from a merge:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cat file1
  key $<i></i>Revision: 1.2 $
@@ -63,16 +63,16 @@ results from a merge:
 </div>
 </td></tr></table>
 
-<p>What happened was that the merge tried to merge the
+What happened was that the merge tried to merge the
 differences between 1.1 and 1.1.2.1 into your working
 directory.  So, since the keyword changed from
 <code>Revision: 1.1</code> to <code>Revision: 1.1.2.1</code>,
 <small>CVS</small> tried to merge that change into your working
 directory, which conflicted with the fact that your
 working directory had contained <code>Revision: 1.2</code>.
-</p>
-<p>Here is what happens if you had used &lsquo;<samp>-kk</samp>&rsquo;:
-</p>
+
+Here is what happens if you had used &lsquo;<code>-kk</code>&rsquo;:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cat file1
  key $<i></i>Revision: 1.2 $
@@ -89,29 +89,29 @@ working directory had contained <code>Revision: 1.2</code>.
 </div>
 </td></tr></table>
 
-<p>What is going on here is that revision 1.1 and 1.1.2.1
+What is going on here is that revision 1.1 and 1.1.2.1
 both expand as plain <code>Revision</code>, and therefore
 merging the changes between them into the working
 directory need not change anything.  Therefore, there
 is no conflict.
-</p>
-<p><strong>WARNING: In versions of <small>CVS</small> prior to 1.12.2, there was a
-major problem with using &lsquo;<samp>-kk</samp>&rsquo; on merges.  Namely, &lsquo;<samp>-kk</samp>&rsquo;
+
+'''WARNING: In versions of <small>CVS</small> prior to 1.12.2, there was a
+major problem with using &lsquo;<code>-kk</code>&rsquo; on merges.  Namely, &lsquo;<code>-kk</code>&rsquo;
 overrode any default keyword expansion mode set in the archive file in
 the repository.  This could, unfortunately for some users, cause data
 corruption in binary files (with a default keyword expansion mode set
-to &lsquo;<samp>-kb</samp>&rsquo;).  Therefore, when a repository contained binary files,
-conflicts had to be dealt with manually rather than using &lsquo;<samp>-kk</samp>&rsquo; in
-a merge command.</strong>
-</p>
-<p>In <small>CVS</small> version 1.12.2 and later, the keyword expansion mode
+to &lsquo;<code>-kb</code>&rsquo;).  Therefore, when a repository contained binary files,
+conflicts had to be dealt with manually rather than using &lsquo;<code>-kk</code>&rsquo; in
+a merge command.'''
+
+In <small>CVS</small> version 1.12.2 and later, the keyword expansion mode
 provided on the command line to any <small>CVS</small> command no longer
-overrides the &lsquo;<samp>-kb</samp>&rsquo; keyword expansion mode setting for binary
+overrides the &lsquo;<code>-kb</code>&rsquo; keyword expansion mode setting for binary
 files, though it will still override other default keyword expansion
-modes.  You can now safely merge using &lsquo;<samp>-kk</samp>&rsquo; to avoid spurious conflicts
+modes.  You can now safely merge using &lsquo;<code>-kk</code>&rsquo; to avoid spurious conflicts
 on lines containing RCS keywords, even when your repository contains
 binary files.
-</p>
+
 <hr>
 <div class="header">
 <p>

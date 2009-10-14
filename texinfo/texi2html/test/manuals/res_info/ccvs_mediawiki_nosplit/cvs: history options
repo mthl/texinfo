@@ -7,170 +7,99 @@ Up: [[cvs: history--Show status of files and users#history&mdash;Show status of 
 <div id="history-options-1"></div>
 ==== history options ====
 
-<p>Several options (shown above as &lsquo;<samp>-report</samp>&rsquo;)  control  what
+Several options (shown above as &lsquo;<code>-report</code>&rsquo;)  control  what
 kind of report is generated:
-</p>
-<dl compact="compact">
-<dt><code>-c</code></dt>
-<dd><p>Report on each time commit was used (i.e., each time
-the repository was modified).
-</p>
-</dd>
-<dt><code>-e</code></dt>
-<dd><p>Everything (all record types).  Equivalent to
-specifying &lsquo;<samp>-x</samp>&rsquo; with all record types.  Of course,
-&lsquo;<samp>-e</samp>&rsquo; will also include record types which are
-added in a future version of <small>CVS</small>; if you are
-writing a script which can only handle certain record
-types, you&rsquo;ll want to specify &lsquo;<samp>-x</samp>&rsquo;.
-</p>
-</dd>
-<dt><code>-m <var>module</var></code></dt>
-<dd><p>Report on a particular module.  (You can meaningfully
-use &lsquo;<samp>-m</samp>&rsquo; more than once on the command line.)
-</p>
-</dd>
-<dt><code>-o</code></dt>
-<dd><p>Report on checked-out modules.  This is the default report type.
-</p>
-</dd>
-<dt><code>-T</code></dt>
-<dd><p>Report on all tags.
-</p>
-</dd>
-<dt><code>-x <var>type</var></code></dt>
-<dd><p>Extract a particular set of record types <var>type</var> from the <small>CVS</small>
-history.  The types are indicated by single letters,
-which you may specify in combination.
-</p>
-<p>Certain commands have a single record type:
-</p>
-<dl compact="compact">
-<dt><code>F</code></dt>
-<dd><p>release
-</p></dd>
-<dt><code>O</code></dt>
-<dd><p>checkout
-</p></dd>
-<dt><code>E</code></dt>
-<dd><p>export
-</p></dd>
-<dt><code>T</code></dt>
-<dd><p>rtag
-</p></dd>
-</dl>
 
-<p>One of four record types may result from an update:
-</p>
-<dl compact="compact">
-<dt><code>C</code></dt>
-<dd><p>A merge was necessary but collisions were
-detected (requiring manual merging).
-</p></dd>
-<dt><code>G</code></dt>
-<dd><p>A merge was necessary and it succeeded.
-</p></dd>
-<dt><code>U</code></dt>
-<dd><p>A working file was copied from the repository.
-</p></dd>
-<dt><code>W</code></dt>
-<dd><p>The working copy of a file was deleted during
-update (because it was gone from the repository).
-</p></dd>
-</dl>
+;<code>-c</code>
+: Report on each time commit was used (i.e., each time the repository was modified).
 
-<p>One of three record types results from commit:
-</p>
-<dl compact="compact">
-<dt><code>A</code></dt>
-<dd><p>A file was added for the first time.
-</p></dd>
-<dt><code>M</code></dt>
-<dd><p>A file was modified.
-</p></dd>
-<dt><code>R</code></dt>
-<dd><p>A file was removed.
-</p></dd>
-</dl>
-</dd>
-</dl>
+;<code>-e</code>
+: Everything (all record types).  Equivalent to specifying &lsquo;<code>-x</code>&rsquo; with all record types.  Of course, &lsquo;<code>-e</code>&rsquo; will also include record types which are added in a future version of <small>CVS</small>; if you are writing a script which can only handle certain record types, you&rsquo;ll want to specify &lsquo;<code>-x</code>&rsquo;.
 
-<p>The options shown as &lsquo;<samp>-flags</samp>&rsquo; constrain or expand
+;<code>-m <var>module</var></code>
+: Report on a particular module.  (You can meaningfully use &lsquo;<code>-m</code>&rsquo; more than once on the command line.)
+
+;<code>-o</code>
+: Report on checked-out modules.  This is the default report type.
+
+;<code>-T</code>
+: Report on all tags.
+
+;<code>-x <var>type</var></code>
+: Extract a particular set of record types <var>type</var> from the <small>CVS</small> history.  The types are indicated by single letters, which you may specify in combination.
+
+: Certain commands have a single record type:
+
+:;<code>F</code>
+:: release
+:;<code>O</code>
+:: checkout
+:;<code>E</code>
+:: export
+:;<code>T</code>
+:: rtag
+
+: One of four record types may result from an update:
+
+:;<code>C</code>
+:: A merge was necessary but collisions were detected (requiring manual merging).
+:;<code>G</code>
+:: A merge was necessary and it succeeded.
+:;<code>U</code>
+:: A working file was copied from the repository.
+:;<code>W</code>
+:: The working copy of a file was deleted during update (because it was gone from the repository).
+
+: One of three record types results from commit:
+
+:;<code>A</code>
+:: A file was added for the first time.
+:;<code>M</code>
+:: A file was modified.
+:;<code>R</code>
+:: A file was removed.
+
+The options shown as &lsquo;<code>-flags</code>&rsquo; constrain or expand
 the report without requiring option arguments:
-</p>
-<dl compact="compact">
-<dt><code>-a</code></dt>
-<dd><p>Show data for all users (the default is to show data
-only for the user executing <code>history</code>).
-</p>
-</dd>
-<dt><code>-l</code></dt>
-<dd><p>Show last modification only.
-</p>
-</dd>
-<dt><code>-w</code></dt>
-<dd><p>Show only the records for modifications done from the
-same working directory where <code>history</code> is
-executing.
-</p></dd>
-</dl>
 
-<p>The options shown as &lsquo;<samp>-options <var>args</var></samp>&rsquo; constrain the report
+;<code>-a</code>
+: Show data for all users (the default is to show data only for the user executing <code>history</code>).
+
+;<code>-l</code>
+: Show last modification only.
+
+;<code>-w</code>
+: Show only the records for modifications done from the same working directory where <code>history</code> is executing.
+
+The options shown as &lsquo;<code>-options <var>args</var></code>&rsquo; constrain the report
 based on an argument:
-</p>
-<dl compact="compact">
-<dt><code>-b <var>str</var></code></dt>
-<dd><p>Show data back to a record containing  the  string
-<var>str</var>  in  either the module name, the file name, or
-the repository path.
-</p>
-</dd>
-<dt><code>-D <var>date</var></code></dt>
-<dd><p>Show data since <var>date</var>.  This is slightly different
-from the normal use of &lsquo;<samp>-D <var>date</var></samp>&rsquo;, which
-selects the newest revision older than <var>date</var>.
-</p>
-</dd>
-<dt><code>-f <var>file</var></code></dt>
-<dd><p>Show data for a particular file
-(you can specify several &lsquo;<samp>-f</samp>&rsquo; options on the same command line).
-This is equivalent to specifying the file on the command line.
-</p>
-</dd>
-<dt><code>-n <var>module</var></code></dt>
-<dd><p>Show data for a particular module
-(you can specify several &lsquo;<samp>-n</samp>&rsquo; options on the same command line).
-</p>
-</dd>
-<dt><code>-p <var>repository</var></code></dt>
-<dd><p>Show data for a particular source repository  (you
-can specify several &lsquo;<samp>-p</samp>&rsquo; options on the same command
-line).
-</p>
-</dd>
-<dt><code>-r <var>rev</var></code></dt>
-<dd><p>Show records referring to revisions since the revision
-or tag named <var>rev</var> appears in individual <small>RCS</small>
-files.  Each <small>RCS</small> file is searched for the revision or
-tag.
-</p>
-</dd>
-<dt><code>-t <var>tag</var></code></dt>
-<dd><p>Show records since tag <var>tag</var> was last added to the
-history file.  This differs from the &lsquo;<samp>-r</samp>&rsquo; flag
-above in that it reads only the history file, not the
-<small>RCS</small> files, and is much faster.
-</p>
-</dd>
-<dt><code>-u <var>name</var></code></dt>
-<dd><p>Show records for user <var>name</var>.
-</p>
-</dd>
-<dt><code>-z <var>timezone</var></code></dt>
-<dd><p>Show times in the selected records using the specified
-time zone instead of UTC.
-</p></dd>
-</dl>
+
+;<code>-b <var>str</var></code>
+: Show data back to a record containing  the  string <var>str</var>  in  either the module name, the file name, or the repository path.
+
+;<code>-D <var>date</var></code>
+: Show data since <var>date</var>.  This is slightly different from the normal use of &lsquo;<code>-D <var>date</var></code>&rsquo;, which selects the newest revision older than <var>date</var>.
+
+;<code>-f <var>file</var></code>
+: Show data for a particular file (you can specify several &lsquo;<code>-f</code>&rsquo; options on the same command line). This is equivalent to specifying the file on the command line.
+
+;<code>-n <var>module</var></code>
+: Show data for a particular module (you can specify several &lsquo;<code>-n</code>&rsquo; options on the same command line).
+
+;<code>-p <var>repository</var></code>
+: Show data for a particular source repository  (you can specify several &lsquo;<code>-p</code>&rsquo; options on the same command line).
+
+;<code>-r <var>rev</var></code>
+: Show records referring to revisions since the revision or tag named <var>rev</var> appears in individual <small>RCS</small> files.  Each <small>RCS</small> file is searched for the revision or tag.
+
+;<code>-t <var>tag</var></code>
+: Show records since tag <var>tag</var> was last added to the history file.  This differs from the &lsquo;<code>-r</code>&rsquo; flag above in that it reads only the history file, not the <small>RCS</small> files, and is much faster.
+
+;<code>-u <var>name</var></code>
+: Show records for user <var>name</var>.
+
+;<code>-z <var>timezone</var></code>
+: Show times in the selected records using the specified time zone instead of UTC.
 
 
 <hr>

@@ -7,39 +7,39 @@ Previous: [[cvs: diff options#diff options|diff options]], Up: [[cvs: diff--Show
 <div id="diff-examples-1"></div>
 ==== diff examples ====
 
-<p>The following line produces a Unidiff (&lsquo;<samp>-u</samp>&rsquo; flag)
+The following line produces a Unidiff (&lsquo;<code>-u</code>&rsquo; flag)
 between revision 1.14 and 1.19 of
-&lsquo;<tt>backend.c</tt>&rsquo;.  Due to the &lsquo;<samp>-kk</samp>&rsquo; flag no
+&lsquo;<tt>backend.c</tt>&rsquo;.  Due to the &lsquo;<code>-kk</code>&rsquo; flag no
 keywords are substituted, so differences that only depend
 on keyword substitution are ignored.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs diff -kk -u -r 1.14 -r 1.19 backend.c
 </div>
 </td></tr></table>
 
-<p>Suppose the experimental branch EXPR1 was based on a
+Suppose the experimental branch EXPR1 was based on a
 set of files tagged RELEASE_1_0.  To see what has
 happened on that branch, the following can be used:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs diff -r RELEASE_1_0 -r EXPR1
 </div>
 </td></tr></table>
 
-<p>A command like this can be used to produce a context
+A command like this can be used to produce a context
 diff between two releases:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs diff -c -r RELEASE_1_0 -r RELEASE_1_1 &gt; diffs
 </div>
 </td></tr></table>
 
-<p>If you are maintaining ChangeLogs, a command like the following
+If you are maintaining ChangeLogs, a command like the following
 just before you commit your changes may help you write
 the ChangeLog entry.  All local modifications that have
 not yet been committed will be printed.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs diff -u | less
 </div>

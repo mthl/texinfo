@@ -11,16 +11,15 @@ Previous: [[cvs: Setting up the files#Setting up the files|Setting up the files]
 <div id="index-Module_002c-defining"></div>
 <div id="index-Modules-file_002c-changing"></div>
 
-<p>The next step is to define the module in the
+The next step is to define the module in the
 &lsquo;<tt>modules</tt>&rsquo; file.  This is not strictly necessary,
 but modules can be convenient in grouping together
 related files and directories.
-</p>
-<p>In simple cases these steps are sufficient to define a module.
-</p>
-<ol>
-<li>
-Get a working copy of the modules file.
+
+In simple cases these steps are sufficient to define a module.
+
+
+# Get a working copy of the modules file.
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs checkout CVSROOT/modules
@@ -28,32 +27,29 @@ Get a working copy of the modules file.
 </div>
 </td></tr></table>
 
-</li><li>
-Edit the file and insert a line that defines the module.  See [[cvs: The administrative files#The administrative files|Intro administrative files]], for an introduction.  See [[cvs: The modules file#The modules file|modules]], for a full
-description of the modules file.  You can use the
-following line to define the module &lsquo;<samp>tc</samp>&rsquo;:
+
+# Edit the file and insert a line that defines the module.  See [[cvs: The administrative files#The administrative files|Intro administrative files]], for an introduction.  See [[cvs: The modules file#The modules file|modules]], for a full description of the modules file.  You can use the following line to define the module &lsquo;<code>tc</code>&rsquo;:
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  tc   yoyodyne/tc
 </div>
 </td></tr></table>
 
-</li><li>
-Commit your changes to the modules file.
+
+# Commit your changes to the modules file.
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs commit -m &quot;Added the tc module.&quot; modules
 </div>
 </td></tr></table>
 
-</li><li>
-Release the modules module.
+
+# Release the modules module.
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd ..
  $ cvs release -d CVSROOT
 </div>
 </td></tr></table>
-</li></ol>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

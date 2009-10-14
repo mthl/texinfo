@@ -9,34 +9,34 @@ Next: [[cvs: Excluding directories#Excluding directories|Excluding directories]]
 <div id="index-Ampersand-modules"></div>
 <div id="index-_0026_002c-in-modules-file"></div>
 
-<p>A module definition can refer to other modules by
-including &lsquo;<samp>&amp;<var>module</var></samp>&rsquo; in its definition.
-</p><table><tr><td>&nbsp;</td><td><div class="example">
- <var>mname</var> [ options ] <var>&amp;module</var>&hellip;
+A module definition can refer to other modules by
+including &lsquo;<code>&amp;<var>module</var></code>&rsquo; in its definition.
+<table><tr><td>&nbsp;</td><td><div class="example">
+ <var>mname</var> <nowiki>[</nowiki> options <nowiki>]</nowiki> <var>&amp;module</var>&hellip;
 </div>
 </td></tr></table>
 
-<p>Then getting the module creates a subdirectory for each such
+Then getting the module creates a subdirectory for each such
 module, in the directory containing the module.  For
 example, if modules contains
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  ampermod &amp;first-dir
 </div>
 </td></tr></table>
 
-<p>then a checkout will create an <code>ampermod</code> directory
+then a checkout will create an <code>ampermod</code> directory
 which contains a directory called <code>first-dir</code>,
 which in turns contains all the directories and files
 which live there.  For example, the command
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs co ampermod
 </div>
 </td></tr></table>
 
-<p>will create the following files:
-</p>
+will create the following files:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  ampermod/first-dir/file1
  ampermod/first-dir/file2
@@ -44,11 +44,11 @@ which live there.  For example, the command
 </div>
 </td></tr></table>
 
-<p>There is one quirk/bug: the messages that <small>CVS</small>
+There is one quirk/bug: the messages that <small>CVS</small>
 prints omit the &lsquo;<tt>ampermod</tt>&rsquo;, and thus do not
 correctly display the location to which it is checking
 out the files:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs co ampermod
  cvs checkout: Updating first-dir
@@ -60,8 +60,8 @@ out the files:
 </div>
 </td></tr></table>
 
-<p>Do not rely on this buggy behavior; it may get fixed in
+Do not rely on this buggy behavior; it may get fixed in
 a future release of <small>CVS</small>.
-</p>
+
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

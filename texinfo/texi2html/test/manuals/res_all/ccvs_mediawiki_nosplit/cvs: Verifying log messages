@@ -9,53 +9,53 @@ Next: [[cvs: Editinfo#Editinfo|editinfo]], Previous: [[cvs: Commitinfo#Commitinf
 <div id="index-verifymsg-_0028admin-file_0029"></div>
 <div id="index-Log-message_002c-verifying"></div>
 
-<p>Once you have entered a log message, you can evaluate
+Once you have entered a log message, you can evaluate
 that message to check for specific content, such as
 a bug ID.  Use the &lsquo;<tt>verifymsg</tt>&rsquo; file to
 specify a program that is used to verify the log message.
 This program could be a simple script that checks
 that the entered message contains the required fields.
-</p>
-<p>The &lsquo;<tt>verifymsg</tt>&rsquo; file is often most useful together
+
+The &lsquo;<tt>verifymsg</tt>&rsquo; file is often most useful together
 with the &lsquo;<tt>rcsinfo</tt>&rsquo; file, which can be used to
 specify a log message template.
-</p>
-<p>Each line in the &lsquo;<tt>verifymsg</tt>&rsquo; file consists of a
+
+Each line in the &lsquo;<tt>verifymsg</tt>&rsquo; file consists of a
 regular expression and a command-line template.  The
 template must include a program name, and can include
 any number of arguments.  The full path to the current
 log message template file is appended to the template.
-</p>
-<p>One thing that should be noted is that the &lsquo;<samp>ALL</samp>&rsquo;
+
+One thing that should be noted is that the &lsquo;<code>ALL</code>&rsquo;
 keyword is not supported.  If more than one matching
 line is found, the first one is used.  This can be
 useful for specifying a default verification script in a
 directory, and then overriding it in a subdirectory.
-</p>
+
 <div id="index-DEFAULT-in-verifymsg"></div>
-<p>If the repository name does not match any of the
-regular expressions in this file, the &lsquo;<samp>DEFAULT</samp>&rsquo;
+If the repository name does not match any of the
+regular expressions in this file, the &lsquo;<code>DEFAULT</code>&rsquo;
 line is used, if it is specified.
-</p>
+
 <div id="index-Exit-status_002c-of-verifymsg"></div>
-<p>If the verification script exits with a non-zero exit status,
+If the verification script exits with a non-zero exit status,
 the commit is aborted.
-</p>
+
 <div id="index-verifymsg_002c-changing-the-log-message"></div>
-<p>In the default configuration, CVS allows the
+In the default configuration, CVS allows the
 verification script to change the log message. This is
 controlled via the RereadLogAfterVerify CVSROOT/config
 option.
-</p>
-<p>When &lsquo;<samp>RereadLogAfterVerify=always</samp>&rsquo; or
-&lsquo;<samp>RereadLogAfterVerify=stat</samp>&rsquo;, the log message will
+
+When &lsquo;<code>RereadLogAfterVerify=always</code>&rsquo; or
+&lsquo;<code>RereadLogAfterVerify=stat</code>&rsquo;, the log message will
 either always be reread after the verification script
 is run or reread only if the log message file status
 has changed.
-</p>
-<p>See [[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|config]], for more on CVSROOT/config options.
-</p>
-<p>It is NOT a good idea for a &lsquo;<tt>verifymsg</tt>&rsquo; script to
+
+See [[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|config]], for more on CVSROOT/config options.
+
+It is NOT a good idea for a &lsquo;<tt>verifymsg</tt>&rsquo; script to
 interact directly with the user in the various
 client/server methods. For the <code>pserver</code> method,
 there is no protocol support for communicating between
@@ -69,26 +69,26 @@ the &lsquo;<tt>verifymsg</tt>&rsquo; script runs, the CVS
 server has locks in place in the repository.  If control is
 returned to the user here then other users may be stuck waiting
 for access to the repository.
-</p>
-<p>This option can be useful if you find yourself using an
+
+This option can be useful if you find yourself using an
 rcstemplate that needs to be modified to remove empty
 elements or to fill in default values.  It can also be
 useful if the rcstemplate has changed in the repository
 and the CVS/Template was not updated, but is able to be
 adapted to the new format by the verification script
 that is run by &lsquo;<tt>verifymsg</tt>&rsquo;.
-</p>
-<p>An example of an update might be to change all
+
+An example of an update might be to change all
 occurrences of &rsquo;BugId:&rsquo; to be &rsquo;DefectId:&rsquo; (which can be
 useful if the rcstemplate has recently been changed and
 there are still checked-out user trees with cached
 copies in the CVS/Template file of the older version).
-</p>
-<p>Another example of an update might be to delete a line
+
+Another example of an update might be to delete a line
 that contains &rsquo;BugID: none&rsquo; from the log message after
 validation of that value as being allowed is made.
-</p>
-<p>The following is a little silly example of a
+
+The following is a little silly example of a
 &lsquo;<tt>verifymsg</tt>&rsquo; file, together with the corresponding
 &lsquo;<tt>rcsinfo</tt>&rsquo; file, the log message template and an
 verification  script.  We begin with the log message template.
@@ -96,15 +96,15 @@ We want to always record a bug-id number on the first
 line of the log message.  The rest of log message is
 free text.  The following template is found in the file
 &lsquo;<tt>/usr/cvssupport/tc.template</tt>&rsquo;.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  BugId:
 </div>
 </td></tr></table>
 
-<p>The script &lsquo;<tt>/usr/cvssupport/bugid.verify</tt>&rsquo; is used to
+The script &lsquo;<tt>/usr/cvssupport/bugid.verify</tt>&rsquo; is used to
 evaluate the log message.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  #!/bin/sh
  #
@@ -113,12 +113,12 @@ evaluate the log message.
  #  Verify that the log message contains a valid bugid
  #  on the first line.
  #
- if head -1 &lt; $1 | grep '^BugId:[ ]*[0-9][0-9]*$' &gt; /dev/null; then
+ if head -1 &lt; $1 | grep '^BugId:<nowiki>[</nowiki> <nowiki>]</nowiki>*<nowiki>[</nowiki>0-9<nowiki>][</nowiki>0-9<nowiki>]</nowiki>*$' &gt; /dev/null; then
      exit 0
- elif head -1 &lt; $1 | grep '^BugId:[ ]*none$' &gt; /dev/null; then
+ elif head -1 &lt; $1 | grep '^BugId:<nowiki>[</nowiki> <nowiki>]</nowiki>*none$' &gt; /dev/null; then
      # It is okay to allow commits with 'BugId: none',
      # but do not put that text into the real log message.
-     grep -v '^BugId:[ ]*none$' &gt; $1.rewrite
+     grep -v '^BugId:<nowiki>[</nowiki> <nowiki>]</nowiki>*none$' &gt; $1.rewrite
      mv $1.rewrite $1
      exit 0
  else
@@ -128,22 +128,22 @@ evaluate the log message.
 </div>
 </td></tr></table>
 
-<p>The &lsquo;<tt>verifymsg</tt>&rsquo; file contains this line:
-</p>
+The &lsquo;<tt>verifymsg</tt>&rsquo; file contains this line:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  ^tc     /usr/cvssupport/bugid.verify
 </div>
 </td></tr></table>
 
-<p>The &lsquo;<tt>rcsinfo</tt>&rsquo; file contains this line:
-</p>
+The &lsquo;<tt>rcsinfo</tt>&rsquo; file contains this line:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  ^tc     /usr/cvssupport/tc.template
 </div>
 </td></tr></table>
 
-<p>The &lsquo;<tt>config</tt>&rsquo; file contains this line:
-</p>
+The &lsquo;<tt>config</tt>&rsquo; file contains this line:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  RereadLogAfterVerify=always
 </div>

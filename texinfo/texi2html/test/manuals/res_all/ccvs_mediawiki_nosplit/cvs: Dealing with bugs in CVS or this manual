@@ -8,22 +8,19 @@ Next: [[cvs: Index#Index|Index]], Previous: [[cvs: Credits#Credits|Credits]], Up
 == Dealing with bugs in CVS or this manual ==
 
 <div id="index-Bugs-in-this-manual-or-CVS"></div>
-<p>Neither <small>CVS</small> nor this manual is perfect, and they
+Neither <small>CVS</small> nor this manual is perfect, and they
 probably never will be.  If you are having trouble
 using <small>CVS</small>, or think you have found a bug, there
 are a number of things you can do about it.  Note that
 if the manual is unclear, that can be considered a bug
 in the manual, so these problems are often worth doing
 something about as well as problems with <small>CVS</small> itself.
-</p>
+
 <div id="index-Reporting-bugs"></div>
 <div id="index-Bugs_002c-reporting"></div>
 <div id="index-Errors_002c-reporting"></div>
-<ul>
-<li>
-If you want someone to help you and fix bugs that you
-report, there are companies which will do that for a
-fee.  One such company is:
+
+* If you want someone to help you and fix bugs that you report, there are companies which will do that for a fee.  One such company is:
 
 <div id="index-Ximbiot"></div>
 <div id="index-Support_002c-getting-CVS-support"></div>
@@ -40,25 +37,14 @@ fee.  One such company is:
 </div>
 </td></tr></table>
 
-</li><li>
-If you got <small>CVS</small> through a distributor, such as an
-operating system vendor or a vendor of freeware
-<small>CD-ROM</small>s, you may wish to see whether the
-distributor provides support.  Often, they will provide
-no support or minimal support, but this may vary from
-distributor to distributor.
 
-</li><li>
-If you have the skills and time to do so, you may wish
-to fix the bug yourself.  If you wish to submit your
-fix for inclusion in future releases of <small>CVS</small>, see
-the file <small>HACKING</small> in the <small>CVS</small> source
-distribution.  It contains much more information on the
-process of submitting fixes.
+* If you got <small>CVS</small> through a distributor, such as an operating system vendor or a vendor of freeware <small>CD-ROM</small>s, you may wish to see whether the distributor provides support.  Often, they will provide no support or minimal support, but this may vary from distributor to distributor.
 
-</li><li>
-There may be resources on the net which can help.  Two
-good places to start are:
+
+* If you have the skills and time to do so, you may wish to fix the bug yourself.  If you wish to submit your fix for inclusion in future releases of <small>CVS</small>, see the file <small>HACKING</small> in the <small>CVS</small> source distribution.  It contains much more information on the process of submitting fixes.
+
+
+* There may be resources on the net which can help.  Two good places to start are:
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  http://www.cvshome.org
@@ -66,49 +52,19 @@ good places to start are:
 </div>
 </td></tr></table>
 
-<p>If you are so inspired, increasing the information
-available on the net is likely to be appreciated.  For
-example, before the standard <small>CVS</small> distribution
-worked on Windows 95, there was a web page with some
-explanation and patches for running <small>CVS</small> on Windows
-95, and various people helped out by mentioning this
-page on mailing lists or newsgroups when the subject
-came up.
-</p>
-</li><li>
-It is also possible to report bugs to <code>bug-cvs</code>.
-Note that someone may or may not want to do anything
-with your bug report&mdash;if you need a solution consider
-one of the options mentioned above.  People probably do
-want to hear about bugs which are particularly severe
-in consequences and/or easy to fix, however.  You can
-also increase your odds by being as clear as possible
-about the exact nature of the bug and any other
-relevant information.  The way to report bugs is to
-send email to <code>bug-cvs@gnu.org</code>.  Note
-that submissions to <code>bug-cvs</code> may be distributed
-under the terms of the <small>GNU</small> Public License, so if
-you don&rsquo;t like this, don&rsquo;t submit them.  There is
-usually no justification for sending mail directly to
-one of the <small>CVS</small> maintainers rather than to
-<code>bug-cvs</code>; those maintainers who want to hear
-about such bug reports read <code>bug-cvs</code>.  Also note
-that sending a bug report to other mailing lists or
-newsgroups is <em>not</em> a substitute for sending it to
-<code>bug-cvs</code>.  It is fine to discuss <small>CVS</small> bugs on
-whatever forum you prefer, but there are not
-necessarily any maintainers reading bug reports sent
-anywhere except <code>bug-cvs</code>.
-</li></ul>
+* If you are so inspired, increasing the information available on the net is likely to be appreciated.  For example, before the standard <small>CVS</small> distribution worked on Windows 95, there was a web page with some explanation and patches for running <small>CVS</small> on Windows 95, and various people helped out by mentioning this page on mailing lists or newsgroups when the subject came up.
+
+
+* It is also possible to report bugs to <code>bug-cvs</code>. Note that someone may or may not want to do anything with your bug report&mdash;if you need a solution consider one of the options mentioned above.  People probably do want to hear about bugs which are particularly severe in consequences and/or easy to fix, however.  You can also increase your odds by being as clear as possible about the exact nature of the bug and any other relevant information.  The way to report bugs is to send email to <code>bug-cvs@gnu.org</code>.  Note that submissions to <code>bug-cvs</code> may be distributed under the terms of the <small>GNU</small> Public License, so if you don&rsquo;t like this, don&rsquo;t submit them.  There is usually no justification for sending mail directly to one of the <small>CVS</small> maintainers rather than to <code>bug-cvs</code>; those maintainers who want to hear about such bug reports read <code>bug-cvs</code>.  Also note that sending a bug report to other mailing lists or newsgroups is ''not'' a substitute for sending it to <code>bug-cvs</code>.  It is fine to discuss <small>CVS</small> bugs on whatever forum you prefer, but there are not necessarily any maintainers reading bug reports sent anywhere except <code>bug-cvs</code>.
 
 <div id="index-Known-bugs-in-this-manual-or-CVS"></div>
-<p>People often ask if there is a list of known bugs or
+People often ask if there is a list of known bugs or
 whether a particular bug is a known one.  The file
 <small>BUGS</small> in the <small>CVS</small> source distribution is one
 list of known bugs, but it doesn&rsquo;t necessarily try to
 be comprehensive.  Perhaps there will never be a
 comprehensive, detailed list of known bugs.
-</p>
+
 <hr>
 <div class="header">
 <p>

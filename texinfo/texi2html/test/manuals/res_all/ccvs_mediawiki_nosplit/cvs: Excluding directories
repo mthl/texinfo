@@ -9,19 +9,19 @@ Next: [[cvs: Module options#Module options|Module options]], Previous: [[cvs: Am
 <div id="index-Excluding-directories_002c-in-modules-file"></div>
 <div id="index-_0021_002c-in-modules-file"></div>
 
-<p>An alias module may exclude particular directories from
-other modules by using an exclamation mark (&lsquo;<samp>!</samp>&rsquo;)
+An alias module may exclude particular directories from
+other modules by using an exclamation mark (&lsquo;<code>!</code>&rsquo;)
 before the name of each directory to be excluded.
-</p>
-<p>For example, if the modules file contains:
-</p>
+
+For example, if the modules file contains:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  exmodule -a !first-dir/sdir first-dir
 </div>
 </td></tr></table>
 
-<p>then checking out the module &lsquo;<samp>exmodule</samp>&rsquo; will check
-out everything in &lsquo;<samp>first-dir</samp>&rsquo; except any files in
-the subdirectory &lsquo;<samp>first-dir/sdir</samp>&rsquo;.
-</p>
+then checking out the module &lsquo;<code>exmodule</code>&rsquo; will check
+out everything in &lsquo;<code>first-dir</code>&rsquo; except any files in
+the subdirectory &lsquo;<code>first-dir/sdir</code>&rsquo;.
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -9,40 +9,28 @@ Next: [[cvs: Regular modules#Regular modules|Regular modules]], Up: [[cvs: The m
 <div id="index-Alias-modules"></div>
 <div id="index-_002da_002c-in-modules-file"></div>
 
-<p>Alias modules are the simplest kind of module:
-</p>
-<dl compact="compact">
-<dt><code><var>mname</var> -a <var>aliases</var>&hellip;</code></dt>
-<dd><p>This represents the simplest way of defining a module
-<var>mname</var>.  The &lsquo;<samp>-a</samp>&rsquo; flags the definition as a
-simple alias: <small>CVS</small> will treat any use of <var>mname</var> (as
-a command argument) as if the list of names
-<var>aliases</var> had been specified instead.
-<var>aliases</var> may contain either other module names or
-paths.  When you use paths in aliases, <code>checkout</code>
-creates all intermediate directories in the working
-directory, just as if the path had been specified
-explicitly in the <small>CVS</small> arguments.
-</p></dd>
-</dl>
+Alias modules are the simplest kind of module:
 
-<p>For example, if the modules file contains:
-</p>
+;<code><var>mname</var> -a <var>aliases</var>&hellip;</code>
+: This represents the simplest way of defining a module <var>mname</var>.  The &lsquo;<code>-a</code>&rsquo; flags the definition as a simple alias: <small>CVS</small> will treat any use of <var>mname</var> (as a command argument) as if the list of names <var>aliases</var> had been specified instead. <var>aliases</var> may contain either other module names or paths.  When you use paths in aliases, <code>checkout</code> creates all intermediate directories in the working directory, just as if the path had been specified explicitly in the <small>CVS</small> arguments.
+
+For example, if the modules file contains:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  amodule -a first-dir
 </div>
 </td></tr></table>
 
-<p>then the following two commands are equivalent:
-</p>
+then the following two commands are equivalent:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs co amodule
  $ cvs co first-dir
 </div>
 </td></tr></table>
 
-<p>and they each would provide output such as:
-</p>
+and they each would provide output such as:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs checkout: Updating first-dir
  U first-dir/file1

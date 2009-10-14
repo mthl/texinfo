@@ -7,7 +7,7 @@ Next: [[cvs: Multiple vendor branches#Multiple vendor branches|Multiple vendor b
 <div id="How-to-handle-keyword-substitution-with-cvs-import"></div>
 === How to handle keyword substitution with cvs import ===
 
-<p>The sources which you are importing may contain
+The sources which you are importing may contain
 keywords (see [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]]).  For example,
 the vendor may use <small>CVS</small> or some other system
 which uses similar keyword expansion syntax.  If you
@@ -18,14 +18,14 @@ own copy of <small>CVS</small>.  It may be more convenient to
 maintain the expansions supplied by the vendor, so
 that this information can supply information about
 the sources that you imported from the vendor.
-</p>
-<p>To maintain the keyword expansions supplied by the
-vendor, supply the &lsquo;<samp>-ko</samp>&rsquo; option to <code>cvs
+
+To maintain the keyword expansions supplied by the
+vendor, supply the &lsquo;<code>-ko</code>&rsquo; option to <code>cvs
 import</code> the first time you import the file.
 This will turn off keyword expansion
 for that file entirely, so if you want to be more
 selective you&rsquo;ll have to think about what you want
-and use the &lsquo;<samp>-k</samp>&rsquo; option to <code>cvs update</code> or
+and use the &lsquo;<code>-k</code>&rsquo; option to <code>cvs update</code> or
 <code>cvs admin</code> as appropriate.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

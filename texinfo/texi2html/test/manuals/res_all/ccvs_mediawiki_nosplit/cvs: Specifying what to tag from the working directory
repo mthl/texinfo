@@ -8,7 +8,7 @@ Next: [[cvs: Specifying what to tag by date or revision#Specifying what to tag b
 === Specifying what to tag from the working directory ===
 
 <div id="index-tag-_0028subcommand_0029"></div>
-<p>The example in the previous section demonstrates one of
+The example in the previous section demonstrates one of
 the most common ways to choose which revisions to tag.
 Namely, running the <code>cvs tag</code> command without
 arguments causes <small>CVS</small> to select the revisions which
@@ -21,20 +21,20 @@ tagging is not like modifying a file, or other
 operations in which one first modifies the working
 directory and then runs <code>cvs commit</code> to transfer
 that modification to the repository.
-</p>
-<p>One potentially surprising aspect of the fact that
+
+One potentially surprising aspect of the fact that
 <code>cvs tag</code> operates on the repository is that you
 are tagging the checked-in revisions, which may differ
 from locally modified files in your working directory.
 If you want to avoid doing this by mistake, specify the
-&lsquo;<samp>-c</samp>&rsquo; option to <code>cvs tag</code>.  If there are any
+&lsquo;<code>-c</code>&rsquo; option to <code>cvs tag</code>.  If there are any
 locally modified files, <small>CVS</small> will abort with an
 error before it tags any files:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs tag -c rel-0-4
  cvs tag: backend.c is locally modified
- cvs [tag aborted]: correct the above errors first!
+ cvs <nowiki>[</nowiki>tag aborted<nowiki>]</nowiki>: correct the above errors first!
 </div>
 </td></tr></table>
 

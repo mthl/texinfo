@@ -256,7 +256,7 @@ sub chm_init_out()
     print IDXFILE "<HEAD>\n<meta name=\"GENERATOR\" content=\"$Texi2HTML::THISDOC{program}\">\n";
     print IDXFILE "<!-- Sitemap 1.0 -->\n</HEAD>\n<BODY>\n";
     print IDXFILE "<OBJECT type=\"text/site properties\">\n";
-    foreach my $property (keys(%hhk_global_property))
+    foreach my $property (sort(keys(%hhk_global_property)))
     {
         print IDXFILE "<param name=\"$property\" value=\"$hhk_global_property{$property}\">\n";
        
@@ -324,49 +324,23 @@ sub chm_text($)
     return main::simple_format(undef,undef,'chm_text',$text);
 }
 
+my @hhc_elements;
 
-my @hhc_lines;
-
+# For hhc, collect elements here, do the formatting later
 sub chm_toc_body($)
 {
     my $elements_ref = shift;
     &$default_toc_body($elements_ref);
-    my $level = 0;
     my %chm_files;
-    @hhc_lines = ();
+    @hhc_elements = @$elements_ref;
+
     foreach my $element (@$elements_ref)
     {
-        while ($level != $element->{'toc_level'})
-        {
-            if ($level < $element->{'toc_level'})
-            {
-                 push (@hhc_lines, "<UL>\n");
-                 $level++;
-            }
-            elsif ($level > $element->{'toc_level'})
-            {
-                 push (@hhc_lines, "</UL>\n");
-                 $level--;
-            }
-        }
-        my $text = '';
-        if ($NUMBER_SECTIONS and defined($element->{'number'}) and $element->{'number'} ne '')
-        {
-             $text .= $element->{'number'} . " ";
-             
-        }
-        $text .= chm_text($element->{'texi'});
-        push (@hhc_lines, "<LI> <OBJECT type=\"text/sitemap\">\n<param name=\"Name\" value=\"$text\">\n<param name=\"Local\" value=\"$element->{'file'}#$element->{'target'}\">\n</OBJECT> </LI>\n");
         if (!$chm_files{$element->{'file'}})
         {
              $hhp_lines .= "$element->{'file'}\n";
              $chm_files{$element->{'file'}} = 1;
         }
-    }
-    while ($level > 0)
-    {
-         push (@hhc_lines, "</UL>\n");
-         $level--;
     }
 }
 
@@ -396,6 +370,8 @@ sub chm_index_summary_file_begin($$)
 {
     my $name = shift;
     my $is_printed = shift;
+    # avoid entities in hh* files.
+    t2h_default_set_iso_symbols(0);
 }
 
 # file is not closed here but in finish_out.
@@ -422,12 +398,43 @@ sub chm_finish_out()
     print HHCFILE "<HEAD>\n<meta name=\"GENERATOR\" content=\"$Texi2HTML::THISDOC{program}\">\n";
     print HHCFILE "<!-- Sitemap 1.0 -->\n</HEAD>\n<BODY>\n";
     print HHCFILE "<OBJECT type=\"text/site properties\">\n";
-    foreach my $property (keys(%hhc_global_property))
+    foreach my $property (sort(keys(%hhc_global_property)))
     {
         print HHCFILE "<param name=\"$property\" value=\"$hhc_global_property{$property}\">\n";
        
     }
     print HHCFILE "</OBJECT>\n";
+    my @hhc_lines = ();
+    my $level = 0;
+    foreach my $element (@hhc_elements)
+    {
+        while ($level != $element->{'toc_level'})
+        {
+            if ($level < $element->{'toc_level'})
+            {
+                 push (@hhc_lines, "<UL>\n");
+                 $level++;
+            }
+            elsif ($level > $element->{'toc_level'})
+            {
+                 push (@hhc_lines, "</UL>\n");
+                 $level--;
+            }
+        }
+        my $text = '';
+        if ($NUMBER_SECTIONS and defined($element->{'number'}) and $element->{'number'} ne '')
+        {
+             $text .= $element->{'number'} . " ";
+             
+        }
+        $text .= chm_text($element->{'texi'});
+        push (@hhc_lines, "<LI> <OBJECT type=\"text/sitemap\">\n<param name=\"Name\" value=\"$text\">\n<param name=\"Local\" value=\"$element->{'file'}#$element->{'target'}\">\n</OBJECT> </LI>\n");
+    }
+    while ($level > 0)
+    {
+         push (@hhc_lines, "</UL>\n");
+         $level--;
+    }
     main::print_lines(\*HHCFILE, \@hhc_lines);
     print HHCFILE "</HTML>\n</BODY>\n";
     print HHPFILE $hhp_lines;

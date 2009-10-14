@@ -6,7 +6,7 @@
 <hr>
 ===== Creating the branch after editing =====
 
-<p>Say you have been working on some extremely
+Say you have been working on some extremely
 experimental software, based on whatever revision you
 happened to checkout last week.  If others in your
 group would like to work on this software with you, but
@@ -15,38 +15,38 @@ commit your change to a new branch.  Others can then
 checkout your experimental stuff and utilize the full
 benefit of <small>CVS</small> conflict resolution.  The scenario might
 look like:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
- [[ hacked sources are present ]]
+ <nowiki>[[</nowiki> hacked sources are present <nowiki>]]</nowiki>
  $ cvs tag -b EXPR1
  $ cvs update -r EXPR1
  $ cvs commit
 </div>
 </td></tr></table>
 
-<p>The <code>update</code> command will make the &lsquo;<samp>-r
-EXPR1</samp>&rsquo; option sticky on all files.  Note that your
+The <code>update</code> command will make the &lsquo;<code>-r
+EXPR1</code>&rsquo; option sticky on all files.  Note that your
 changes to the files will never be removed by the
 <code>update</code> command.  The <code>commit</code> will
 automatically commit to the correct branch, because the
-&lsquo;<samp>-r</samp>&rsquo; is sticky.  You could also do like this:
-</p>
+&lsquo;<code>-r</code>&rsquo; is sticky.  You could also do like this:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
- [[ hacked sources are present ]]
+ <nowiki>[[</nowiki> hacked sources are present <nowiki>]]</nowiki>
  $ cvs tag -b EXPR1
  $ cvs commit -r EXPR1
 </div>
 </td></tr></table>
 
-<p>but then, only those files that were changed by you
-will have the &lsquo;<samp>-r EXPR1</samp>&rsquo; sticky flag.  If you hack
-away, and commit without specifying the &lsquo;<samp>-r EXPR1</samp>&rsquo;
+but then, only those files that were changed by you
+will have the &lsquo;<code>-r EXPR1</code>&rsquo; sticky flag.  If you hack
+away, and commit without specifying the &lsquo;<code>-r EXPR1</code>&rsquo;
 flag, some files may accidentally end up on the main
 trunk.
-</p>
-<p>To work with you on the experimental change, others
+
+To work with you on the experimental change, others
 would simply do
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs checkout -r EXPR1 whatever_module
 </div>

@@ -7,7 +7,7 @@ Up: [[cvs: Editinfo#Editinfo|editinfo]] &nbsp; |[[cvs: Index#SEC_Contents|Conten
 <div id="Editinfo-example"></div>
 ===== Editinfo example =====
 
-<p>The following is a little silly example of a
+The following is a little silly example of a
 &lsquo;<tt>editinfo</tt>&rsquo; file, together with the corresponding
 &lsquo;<tt>rcsinfo</tt>&rsquo; file, the log message template and an
 editor script.  We begin with the log message template.
@@ -15,15 +15,15 @@ We want to always record a bug-id number on the first
 line of the log message.  The rest of log message is
 free text.  The following template is found in the file
 &lsquo;<tt>/usr/cvssupport/tc.template</tt>&rsquo;.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  BugId:
 </div>
 </td></tr></table>
 
-<p>The script &lsquo;<tt>/usr/cvssupport/bugid.edit</tt>&rsquo; is used to
+The script &lsquo;<tt>/usr/cvssupport/bugid.edit</tt>&rsquo; is used to
 edit the log message.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  #!/bin/sh
  #
@@ -32,11 +32,11 @@ edit the log message.
  #  Call $EDITOR on FILENAME, and verify that the
  #  resulting file contains a valid bugid on the first
  #  line.
- if [ &quot;x$EDITOR&quot; = &quot;x&quot; ]; then EDITOR=vi; fi
- if [ &quot;x$CVSEDITOR&quot; = &quot;x&quot; ]; then CVSEDITOR=$EDITOR; fi
+ if <nowiki>[</nowiki> &quot;x$EDITOR&quot; = &quot;x&quot; <nowiki>]</nowiki>; then EDITOR=vi; fi
+ if <nowiki>[</nowiki> &quot;x$CVSEDITOR&quot; = &quot;x&quot; <nowiki>]</nowiki>; then CVSEDITOR=$EDITOR; fi
  $CVSEDITOR $1
- until head -1|grep '^BugId:[ ]*[0-9][0-9]*$' &lt; $1
- do  echo -n  &quot;No BugId found.  Edit again? ([y]/n)&quot;
+ until head -1|grep '^BugId:<nowiki>[</nowiki> <nowiki>]</nowiki>*<nowiki>[</nowiki>0-9<nowiki>][</nowiki>0-9<nowiki>]</nowiki>*$' &lt; $1
+ do  echo -n  &quot;No BugId found.  Edit again? (<nowiki>[</nowiki>y<nowiki>]</nowiki>/n)&quot;
      read ans
      case ${ans} in
          n*) exit 1;;
@@ -46,15 +46,15 @@ edit the log message.
 </div>
 </td></tr></table>
 
-<p>The &lsquo;<tt>editinfo</tt>&rsquo; file contains this line:
-</p>
+The &lsquo;<tt>editinfo</tt>&rsquo; file contains this line:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  ^tc     /usr/cvssupport/bugid.edit
 </div>
 </td></tr></table>
 
-<p>The &lsquo;<tt>rcsinfo</tt>&rsquo; file contains this line:
-</p>
+The &lsquo;<tt>rcsinfo</tt>&rsquo; file contains this line:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  ^tc     /usr/cvssupport/tc.template
 </div>

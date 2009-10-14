@@ -7,105 +7,82 @@ Next: [[cvs: How to edit a file which is being watched#How to edit a file which 
 <div id="Telling-CVS-to-notify-you"></div>
 ==== Telling CVS to notify you ====
 
-<p>You can tell <small>CVS</small> that you want to receive
+You can tell <small>CVS</small> that you want to receive
 notifications about various actions taken on a file.
 You can do this without using <code>cvs watch on</code> for
 the file, but generally you will want to use <code>cvs
 watch on</code>, to remind developers to use the <code>cvs edit</code>
 command.
-</p>
+
 <div id="index-watch-add-_0028subcommand_0029"></div>
-<dl>
-<dt><div id="index-cvs-watch-add"></div>Command: <strong>cvs watch add</strong><em> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</em></dt>
-<dd>
-<p>Add the current user to the list of people to receive notification of
-work done on <var>files</var>.
-</p>
-<p>The <code>-a</code> option specifies what kinds of events <small>CVS</small> should notify
-the user about.  <var>action</var> is one of the following:
-</p>
-<dl compact="compact">
-<dt><code>edit</code></dt>
-<dd><p>Another user has applied the <code>cvs edit</code> command (described
-below) to a watched file.
-</p>
-</dd>
-<dt><code>commit</code></dt>
-<dd><p>Another user has committed changes to one of the named <var>files</var>.
-</p>
-</dd>
-<dt><code>unedit</code></dt>
-<dd><p>Another user has abandoned editing a file (other than by committing changes).
-They can do this in several ways, by:
-</p>
-<ul>
-<li>
-applying the <code>cvs unedit</code> command (described below) to the file
+;<div id="index-cvs-watch-add"></div>Command<nowiki>:</nowiki> <strong>cvs watch add</strong><em> <nowiki>[</nowiki><code>-lR</code><nowiki>]</nowiki> <nowiki>[</nowiki><code>-a</code> <var>action</var><nowiki>]</nowiki>&hellip; <nowiki>[</nowiki><var>files</var><nowiki>]</nowiki>&hellip;</em>
 
-</li><li>
-applying the <code>cvs release</code> command (see [[cvs: release--Indicate that a Module is no longer in use#release&mdash;Indicate that a Module is no longer in use|release]]) to the file&rsquo;s parent directory
-(or recursively to a directory more than one level up)
+: Add the current user to the list of people to receive notification of work done on <var>files</var>.
 
-</li><li>
-deleting the file and allowing <code>cvs update</code> to recreate it
+: The <code>-a</code> option specifies what kinds of events <small>CVS</small> should notify the user about.  <var>action</var> is one of the following:
 
-</li></ul>
+:;<code>edit</code>
+:: Another user has applied the <code>cvs edit</code> command (described below) to a watched file.
 
-</dd>
-<dt><code>all</code></dt>
-<dd><p>All of the above.
-</p>
-</dd>
-<dt><code>none</code></dt>
-<dd><p>None of the above.  (This is useful with <code>cvs edit</code>,
-described below.)
-</p>
-</dd>
-</dl>
+:;<code>commit</code>
+:: Another user has committed changes to one of the named <var>files</var>.
 
-<p>The <code>-a</code> option may appear more than once, or not at all.  If
-omitted, the action defaults to <code>all</code>.
-</p>
-<p>The <var>files</var> and options are processed as for
-<code>cvs watch on</code>.
-</p>
-</dd></dl>
+:;<code>unedit</code>
+:: Another user has abandoned editing a file (other than by committing changes). They can do this in several ways, by:
+
+
+::* applying the <code>cvs unedit</code> command (described below) to the file
+
+
+::* applying the <code>cvs release</code> command (see [[cvs: release--Indicate that a Module is no longer in use#release&mdash;Indicate that a Module is no longer in use|release]]) to the file&rsquo;s parent directory (or recursively to a directory more than one level up)
+
+
+::* deleting the file and allowing <code>cvs update</code> to recreate it
+
+
+:;<code>all</code>
+:: All of the above.
+
+:;<code>none</code>
+:: None of the above.  (This is useful with <code>cvs edit</code>, described below.)
+
+
+: The <code>-a</code> option may appear more than once, or not at all.  If omitted, the action defaults to <code>all</code>.
+
+: The <var>files</var> and options are processed as for <code>cvs watch on</code>.
+
 
 
 <div id="index-watch-remove-_0028subcommand_0029"></div>
-<dl>
-<dt><div id="index-cvs-watch-remove"></div>Command: <strong>cvs watch remove</strong><em> [<code>-lR</code>] [<code>-a</code> <var>action</var>]&hellip; [<var>files</var>]&hellip;</em></dt>
-<dd>
-<p>Remove a notification request established using <code>cvs watch add</code>;
-the arguments are the same.  If the <code>-a</code> option is present, only
-watches for the specified actions are removed.
-</p>
-</dd></dl>
+;<div id="index-cvs-watch-remove"></div>Command<nowiki>:</nowiki> <strong>cvs watch remove</strong><em> <nowiki>[</nowiki><code>-lR</code><nowiki>]</nowiki> <nowiki>[</nowiki><code>-a</code> <var>action</var><nowiki>]</nowiki>&hellip; <nowiki>[</nowiki><var>files</var><nowiki>]</nowiki>&hellip;</em>
+
+: Remove a notification request established using <code>cvs watch add</code>; the arguments are the same.  If the <code>-a</code> option is present, only watches for the specified actions are removed.
+
 
 <div id="index-notify-_0028admin-file_0029"></div>
-<p>When the conditions exist for notification, <small>CVS</small>
+When the conditions exist for notification, <small>CVS</small>
 calls the &lsquo;<tt>notify</tt>&rsquo; administrative file.  Edit
 &lsquo;<tt>notify</tt>&rsquo; as one edits the other administrative
 files (see [[cvs: The administrative files#The administrative files|Intro administrative files]]).  This
 file follows the usual conventions for administrative
 files (see [[cvs: The common syntax#The common syntax|syntax]]), where each line is a regular
 expression followed by a command to execute.  The
-command should contain a single occurrence of &lsquo;<samp>%s</samp>&rsquo;
+command should contain a single occurrence of &lsquo;<code>%s</code>&rsquo;
 which will be replaced by the user to notify; the rest
 of the information regarding the notification will be
 supplied to the command on standard input.  The
 standard thing to put in the <code>notify</code> file is the
 single line:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  ALL mail %s -s &quot;CVS notification&quot;
 </div>
 </td></tr></table>
 
-<p>This causes users to be notified by electronic mail.
-</p>
+This causes users to be notified by electronic mail.
+
 <div id="index-users-_0028admin-file_0029"></div>
-<p>Note that if you set this up in the straightforward
+Note that if you set this up in the straightforward
 way, users receive notifications on the server machine.
 One could of course write a &lsquo;<tt>notify</tt>&rsquo; script which
 directed notifications elsewhere, but to make this
@@ -116,8 +93,8 @@ user in the format <var>user</var>:<var>value</var>.  Then
 instead of passing the name of the user to be notified
 to &lsquo;<tt>notify</tt>&rsquo;, <small>CVS</small> will pass the <var>value</var>
 (normally an email address on some other machine).
-</p>
-<p><small>CVS</small> does not notify you for your own changes.
+
+<small>CVS</small> does not notify you for your own changes.
 Currently this check is done based on whether the user
 name of the person taking the action which triggers
 notification matches the user name of the person
@@ -126,7 +103,7 @@ features only track one edit by each user.  It probably
 would be more useful if watches tracked each working
 directory separately, so this behavior might be worth
 changing.
-</p>
+
 <hr>
 <div class="header">
 <p>

@@ -7,43 +7,43 @@ Next: [[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revisions|Tags]], Previ
 <div id="Assigning-revisions-1"></div>
 === Assigning revisions ===
 
-<p>By default, <small>CVS</small> will assign numeric revisions by
+By default, <small>CVS</small> will assign numeric revisions by
 leaving the first number the same and incrementing the
 second number.  For example, <code>1.1</code>, <code>1.2</code>,
 <code>1.3</code>, etc.
-</p>
-<p>When adding a new file, the second number will always
+
+When adding a new file, the second number will always
 be one and the first number will equal the highest
 first number of any file in that directory.  For
 example, the current directory contains files whose
 highest numbered revisions are <code>1.7</code>, <code>3.1</code>,
 and <code>4.12</code>, then an added file will be given the
 numeric revision <code>4.1</code>.
-</p>
-<p>Normally there is no reason to care
+
+Normally there is no reason to care
 about the revision numbers&mdash;it is easier to treat them
 as internal numbers that <small>CVS</small> maintains, and tags
 provide a better way to distinguish between things like
 release 1 versus release 2 of your product
 (see [[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revisions|Tags]]).  However, if you want to set the
-numeric revisions, the &lsquo;<samp>-r</samp>&rsquo; option to <code>cvs
-commit</code> can do that.  The &lsquo;<samp>-r</samp>&rsquo; option implies the
-&lsquo;<samp>-f</samp>&rsquo; option, in the sense that it causes the
+numeric revisions, the &lsquo;<code>-r</code>&rsquo; option to <code>cvs
+commit</code> can do that.  The &lsquo;<code>-r</code>&rsquo; option implies the
+&lsquo;<code>-f</code>&rsquo; option, in the sense that it causes the
 files to be committed even if they are not modified.
-</p>
-<p>For example, to bring all your files up to
+
+For example, to bring all your files up to
 revision 3.0 (including those that haven&rsquo;t changed),
 you might invoke:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs commit -r 3.0
 </div>
 </td></tr></table>
 
-<p>Note that the number you specify with &lsquo;<samp>-r</samp>&rsquo; must be
+Note that the number you specify with &lsquo;<code>-r</code>&rsquo; must be
 larger than any existing revision number.  That is, if
-revision 3.0 exists, you cannot &lsquo;<samp>cvs commit
--r 1.3</samp>&rsquo;.  If you want to maintain several releases in
+revision 3.0 exists, you cannot &lsquo;<code>cvs commit
+-r 1.3</code>&rsquo;.  If you want to maintain several releases in
 parallel, you need to use a branch (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

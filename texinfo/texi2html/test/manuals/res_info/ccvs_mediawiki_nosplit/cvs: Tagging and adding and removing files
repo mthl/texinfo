@@ -7,7 +7,7 @@ Next: [[cvs: Sticky tags#Sticky tags|Sticky tags]], Previous: [[cvs: Deleting, m
 <div id="Tagging-and-adding-and-removing-files"></div>
 === Tagging and adding and removing files ===
 
-<p>The subject of exactly how tagging interacts with
+The subject of exactly how tagging interacts with
 adding and removing files is somewhat obscure; for the
 most part <small>CVS</small> will keep track of whether files
 exist or not without too much fussing.  By default,
@@ -17,28 +17,28 @@ not exist yet, or which were already removed, simply
 omit the tag, and <small>CVS</small> knows to treat the absence
 of a tag as meaning that the file didn&rsquo;t exist as of
 that tag.
-</p>
-<p>However, this can lose a small amount of information.
+
+However, this can lose a small amount of information.
 For example, suppose a file was added and then removed.
 Then, if the tag is missing for that file, there is no
 way to know whether the tag refers to the time before
 the file was added, or the time after it was removed.
-If you specify the &lsquo;<samp>-r</samp>&rsquo; option to <code>cvs rtag</code>,
+If you specify the &lsquo;<code>-r</code>&rsquo; option to <code>cvs rtag</code>,
 then <small>CVS</small> tags the files which have been removed,
 and thereby avoids this problem.  For example, one
 might specify <code>-r HEAD</code> to tag the head.
-</p>
-<p>On the subject of adding and removing files, the
-<code>cvs rtag</code> command has a &lsquo;<samp>-a</samp>&rsquo; option which
+
+On the subject of adding and removing files, the
+<code>cvs rtag</code> command has a &lsquo;<code>-a</code>&rsquo; option which
 means to clear the tag from removed files that would
 not otherwise be tagged.  For example, one might
-specify this option in conjunction with &lsquo;<samp>-F</samp>&rsquo; when
-moving a tag.  If one moved a tag without &lsquo;<samp>-a</samp>&rsquo;,
+specify this option in conjunction with &lsquo;<code>-F</code>&rsquo; when
+moving a tag.  If one moved a tag without &lsquo;<code>-a</code>&rsquo;,
 then the tag in the removed files might still refer to
 the old revision, rather than reflecting the fact that
 the file had been removed.  I don&rsquo;t think this is
-necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
-</p>
+necessary if &lsquo;<code>-r</code>&rsquo; is specified, as noted above.
+
 <hr>
 <div class="header">
 <p>

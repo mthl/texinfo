@@ -2522,7 +2522,7 @@ hash @variable{%accent_map} hash, even if no value is associated.
 
 @menu
 * Hash reference interface::
-* String interface::
+@c * String interface::
 * Define your own interface::
 @end menu
 
@@ -2535,11 +2535,12 @@ corresponds with a type of information for the formatting, and the value is
 the corresponding information. For example, in 
 
 @example
-$style_map@{'command'@} = @{ 'args' => ['code'], 'attribute' => 'code'@};
+$style_map@{'command'@} = @{ 'args' => ['code'], 'inline_attribute' => 'code'@};
 @end example
 
 the arguments for @code{@@command} are interpreted as specified by 
-the values associated with the @samp{args} key while the attribute associated 
+the values associated with the @samp{args} key while the inline_attribute 
+associated 
 with that command is @samp{code}.
 
 The following keys in the hashes associated with each command have the
@@ -2573,7 +2574,7 @@ The default is @samp{['normal']}.
 
 @item attribute
 
-If the associated value is a word, it is considered to be an @acronym{HTML} 
+If the associated value is a word, it is considered to be an @acronym{XML} 
 element name, and the argument is enclosed between the element opening
 and the element closing. For example, if the value is @code{elem}, the
 resulting @acronym{HTML} is @code{<elem>@var{arg}</elem>}.
@@ -2583,8 +2584,13 @@ the word and is interpreted as above, and the
 text is considered to be the attributes text of the element. 
 Thus @code{elem class="elem"} leads to 
 @code{<elem class="elem">@var{arg}</elem>}.
+This works only if there is only one argument. 
 
-This works only if there is only one argument.
+@item inline_attribute
+Like an attribute, except that it is closed at each paragraph end
+and reopened at each beginning of paragraph. This is in fact more
+used than @samp{attribute} since it allows to have well formed
+@acronym{HTML}/@acronym{XML}.
 
 @item inline_begin
 
@@ -2630,12 +2636,14 @@ A reference on a hash containing a lot of informations about the context
 of the @@-command.
 @item $line_nr
 An opaque structure containing the information about the line number of the 
-@@-command. It can be used to call @code{main::echo_error} or
-@code{main::echo_warning} with first argument a message, and second argument 
+@@-command. It can be used to call @code{main::line_error} or
+@code{main::line_warn} with first argument a message, and second argument 
 @code{$line_nr}. 
 @end table
 @end table
 
+@c removed from documentation on Oct  2009
+@ignore 
 @node String interface
 @subsection An interface for commands formatting with a string
 
@@ -2695,6 +2703,7 @@ text is considered to be the attributes text of the element.
 Thus @code{elem class="elem"} leads to 
 @code{<elem class="elem">@var{arg}</elem>}.
 @end itemize
+@end ignore
 
 @node Define your own interface
 @subsection Defining the style and indicatric commands interface
@@ -4616,7 +4625,15 @@ The whole header is in an element with class "header"
 (was "node" when !$HEADER_IN_TABLE).
 @item print_element_header is obsoleted, 
 things should be directly done in element_heading.
-
+@item Add 'inline_attribute' for an XML attribute that should be closed at
+  paragraph end and reopened at paragraph begin. Consequently the closing
+  and opening of 'attribute' isn't done anymore in paragraph and 
+  preformatted.
+@item USE_ISO now only determines if @code{''}, @code{``} @code{---} and @code{--} are transformed
+  into entities. t2h_default_set_iso_symbols sets or unsets USE_ISO,
+  %things_map/%pre_map/%simple_format_simple_map_texi, 
+  $OPEN_QUOTE_SYMBOL and $CLOSE_QUOTE_SYMBOL.
+  %iso_symbols is unused now.
 @end itemize
 @item API changes between 1.78 and 1.80: 
 @itemize @bullet

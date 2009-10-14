@@ -10,13 +10,13 @@ Next: [[cvs: The attic#The attic|Attic]], Previous: [[cvs: File permissions#File
 <div id="index-File-permissions_002c-Windows_002dspecific"></div>
 <div id="index-Permissions_002c-Windows_002dspecific"></div>
 
-<p>Some file permission issues are specific to Windows
+Some file permission issues are specific to Windows
 operating systems (Windows 95, Windows NT, and
 presumably future operating systems in this family.
 Some of the following might apply to OS/2 but I&rsquo;m not
 sure).
-</p>
-<p>If you are using local <small>CVS</small> and the repository is on a
+
+If you are using local <small>CVS</small> and the repository is on a
 networked file system which is served by the Samba SMB
 server, some people have reported problems with
 permissions.  Enabling WRITE=YES in the samba
@@ -27,5 +27,5 @@ whether there is something which <small>CVS</small> could be doing
 differently in order to avoid the problem.  If you find
 something out, please let us know as described in
 [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]].
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

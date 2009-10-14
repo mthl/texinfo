@@ -7,7 +7,7 @@ Next: [[cvs: How to handle keyword substitution with cvs import#How to handle ke
 <div id="How-to-handle-binary-files-with-cvs-import"></div>
 === How to handle binary files with cvs import ===
 
-<p>Use the &lsquo;<samp>-k</samp>&rsquo; wrapper option to tell import which
+Use the &lsquo;<code>-k</code>&rsquo; wrapper option to tell import which
 files are binary.  See [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]].
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

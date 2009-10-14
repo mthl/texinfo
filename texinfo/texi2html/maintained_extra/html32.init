@@ -40,7 +40,6 @@ $MENU_PRE_STYLE = '';
 
 $NO_BULLET_LIST_STYLE ='';
 
-$USE_ISO = 0;
 $MENU_SYMBOL = '*';
 
 # This lines are inserted before and after the shortcontents 
@@ -65,34 +64,34 @@ $NO_CSS = 1;
 # no accesskey in html 3.2
 $USE_ACCESSKEY = 0;
 
-$things_map{'oe'} = '&#156;';
-$things_map{'OE'} = '&#140;';
-$things_map{'dots'} = '<small>...</small>';
-$things_map{'enddots'} = '<small>...</small>';
-$things_map{'euro'} = 'Euro';
-$things_map{'geq'} = '>=';
-$things_map{'leq'} = '<=';
-$things_map{'quotedblleft'} = '``';
-$things_map{'quotedblright'} = "''";
-$things_map{'quoteleft'} = '`';
-$things_map{'quoteright'} = "'";
-$things_map{'quotedblbase'} = ',,';
-$things_map{'quotesinglbase'} = ',';
-$things_map{'guillemetleft'} = '&lt;&lt;';
-$things_map{'guillemetright'} = '&gt;&gt;';
-$things_map{'guillemotleft'} = '&lt;&lt;';
-$things_map{'guillemotright'} = '&gt;&gt;';
-$things_map{'guilsinglleft'} = '&lt;';
-$things_map{'guilsinglright'} = '&gt;';
+# Similar with what t2h_default_set_iso_symbols(0) does but without changing
+# all the things command, only a selected list.
+$USE_ISO = 0;
+$OPEN_QUOTE_SYMBOL = '`';
+$CLOSE_QUOTE_SYMBOL = "'";
+t2h_remove_text_substitutions("'", 1, 0, 0, 1);
+t2h_remove_text_substitutions('`', 1, 0, 0, 1);
 
-foreach my $style ('oe', 'OE', 'euro', 'geq', 'leq', 
+foreach my $command ('euro', 'geq', 'leq', 
+   'bullet', 'equiv', 'expansion', 'point', 'result', 'arrow',
    'quotedblleft', 'quotedblright', 
    'quoteleft', 'quoteright',
    'quotedblbase', 'quotesinglbase', 'guillemetleft', 'guillemetright',
    'guillemotleft', 'guillemotright', 'guilsinglleft', 'guilsinglright')
 {
-    $pre_map{$style} = $things_map{$style};
+    $things_map{$command} = &$protect_text($default_things_map{$command});
+    $pre_map{$command} = $things_map{$command};
 }
+
+$things_map{'oe'} = '&#156;';
+$things_map{'OE'} = '&#140;';
+$things_map{'dots'} = '<small>...</small>';
+$things_map{'enddots'} = '<small>...</small>';
+
+$pre_map{'dots'} = '...';
+$pre_map{'oe'} = $things_map{'oe'};
+$pre_map{'OE'} = $things_map{'OE'};
+
 
 $style_map{'sansserif'} = {};
 $style_map{'r'} = {};

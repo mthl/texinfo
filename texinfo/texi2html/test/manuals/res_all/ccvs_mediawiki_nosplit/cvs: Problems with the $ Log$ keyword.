@@ -7,30 +7,30 @@ Previous: [[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion|Confi
 <div id="Problems-with-the-_0024-Log_0024-keyword_002e"></div>
 === Problems with the $ <i></i>Log$ keyword. ===
 
-<p>The <code>$<i></i>Log$</code> keyword is somewhat
+The <code>$<i></i>Log$</code> keyword is somewhat
 controversial.  As long as you are working on your
 development system the information is easily accessible
 even if you do not use the <code>$<i></i>Log$</code>
 keyword&mdash;just do a <code>cvs log</code>.  Once you export
 the file the history information might be useless
 anyhow.
-</p>
-<p>A more serious concern is that <small>CVS</small> is not good at
+
+A more serious concern is that <small>CVS</small> is not good at
 handling <code>$<i></i>Log$</code> entries when a branch is
 merged onto the main trunk.  Conflicts often result
 from the merging operation.
-</p>
-<p>People also tend to &quot;fix&quot; the log entries in the file
+
+People also tend to &quot;fix&quot; the log entries in the file
 (correcting spelling mistakes and maybe even factual
 errors).  If that is done the information from
 <code>cvs log</code> will not be consistent with the
 information inside the file.  This may or may not be a
 problem in real life.
-</p>
-<p>It has been suggested that the <code>$<i></i>Log$</code>
-keyword should be inserted <em>last</em> in the file, and
+
+It has been suggested that the <code>$<i></i>Log$</code>
+keyword should be inserted ''last'' in the file, and
 not in the files header, if it is to be used at all.
 That way the long list of change messages will not
 interfere with everyday source file browsing.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -10,15 +10,15 @@ Next: [[cvs: Verifying log messages#Verifying log messages|verifymsg]], Previous
 <div id="index-Commits_002c-precommit-verification-of"></div>
 <div id="index-Precommit-checking"></div>
 
-<p>The &lsquo;<tt>commitinfo</tt>&rsquo; file defines programs to execute
-whenever &lsquo;<samp>cvs commit</samp>&rsquo; is about to execute.  These
+The &lsquo;<tt>commitinfo</tt>&rsquo; file defines programs to execute
+whenever &lsquo;<code>cvs commit</code>&rsquo; is about to execute.  These
 programs are used for pre-commit checking to verify
 that the modified, added and removed files are really
 ready to be committed.  This could be used, for
 instance, to verify that the changed files conform to
 to your site&rsquo;s standards for coding practice.
-</p>
-<p>As mentioned earlier, each line in the
+
+As mentioned earlier, each line in the
 &lsquo;<tt>commitinfo</tt>&rsquo; file consists of a regular expression
 and a command-line template.  The template can include
 a program name and any number of arguments you wish to
@@ -26,42 +26,42 @@ supply to it.  The full path to the current source
 repository is appended to the template, followed by the
 file names of any files involved in the commit (added,
 removed, and modified files).
-</p>
+
 <div id="index-Exit-status_002c-of-commitinfo"></div>
-<p>The first line with a regular expression matching the
+The first line with a regular expression matching the
 directory within the repository will be used.  If the
 command returns a non-zero exit status the commit will
 be aborted.
-</p>
+
 <div id="index-DEFAULT-in-commitinfo"></div>
-<p>If the repository name does not match any of the
-regular expressions in this file, the &lsquo;<samp>DEFAULT</samp>&rsquo;
+If the repository name does not match any of the
+regular expressions in this file, the &lsquo;<code>DEFAULT</code>&rsquo;
 line is used, if it is specified.
-</p>
+
 <div id="index-ALL-in-commitinfo"></div>
-<p>All occurrences of the name &lsquo;<samp>ALL</samp>&rsquo; appearing as a
+All occurrences of the name &lsquo;<code>ALL</code>&rsquo; appearing as a
 regular expression are used in addition to the first
-matching regular expression or the name &lsquo;<samp>DEFAULT</samp>&rsquo;.
-</p>
+matching regular expression or the name &lsquo;<code>DEFAULT</code>&rsquo;.
+
 <div id="index-commitinfo_002c-working-directory"></div>
 <div id="index-commitinfo_002c-command-environment"></div>
-<p>The command will be run in the root of the workspace
+The command will be run in the root of the workspace
 containing the new versions of any files the user would like
-to modify (commit), <em>or in a copy of the workspace on
-the server (see [[cvs: Remote repositories#Remote repositories|Remote repositories]])</em>.  If a file is
+to modify (commit), ''or in a copy of the workspace on
+the server (see [[cvs: Remote repositories#Remote repositories|Remote repositories]])''.  If a file is
 being removed, there will be no copy of the file under the
 current directory.  If a file is being added, there will be
 no corresponding archive file in the repository unless the
 file is being resurrected.
-</p>
-<p>Note that both the repository directory and the corresponding
+
+Note that both the repository directory and the corresponding
 Attic (see [[cvs: The attic#The attic|Attic]]) directory may need to be checked to
 locate the archive file corresponding to any given file being
 committed.  Much of the information about the specific commit
 request being made, including the destination branch, commit
 message, and command line options specified, is not available
 to the command.
-</p>
+
 
 <hr>
 <div class="header">

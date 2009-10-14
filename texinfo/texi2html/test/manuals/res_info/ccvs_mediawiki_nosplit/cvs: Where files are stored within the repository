@@ -8,18 +8,18 @@ Next: [[cvs: File permissions#File permissions|File permissions]], Up: [[cvs: Ho
 ==== Where files are stored within the repository ====
 
 
-<p>The overall structure of the repository is a directory
+The overall structure of the repository is a directory
 tree corresponding to the directories in the working
 directory.  For example, supposing the repository is in
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  /usr/local/cvsroot
 </div>
 </td></tr></table>
 
-<p>here is a possible directory tree (showing only the
+here is a possible directory tree (showing only the
 directories):
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  <tt>/usr</tt>
   |
@@ -53,12 +53,12 @@ directories):
 </div>
 </td></tr></table>
 
-<p>With the directories are <em>history files</em> for each file
+With the directories are <em>history files</em> for each file
 under version control.  The name of the history file is
-the name of the corresponding file with &lsquo;<samp>,v</samp>&rsquo;
+the name of the corresponding file with &lsquo;<code>,v</code>&rsquo;
 appended to the end.  Here is what the repository for
 the &lsquo;<tt>yoyodyne/tc</tt>&rsquo; directory might look like:
-</p><table><tr><td>&nbsp;</td><td><div class="example">
+<table><tr><td>&nbsp;</td><td><div class="example">
    <code>$CVSROOT</code>
      |
      +--<tt>yoyodyne</tt>
@@ -83,7 +83,7 @@ the &lsquo;<tt>yoyodyne/tc</tt>&rsquo; directory might look like:
 
 <div id="index-History-files"></div>
 <div id="index-RCS-history-files"></div>
-<p>The history files contain, among other things, enough
+The history files contain, among other things, enough
 information to recreate any revision of the file, a log
 of all commit messages and the user-name of the person
 who committed the revision.  The history files are
@@ -97,13 +97,13 @@ distribution.  This
 file format has become very common&mdash;many systems other
 than <small>CVS</small> or <small>RCS</small> can at least import history
 files in this format.
-</p>
-<p>The <small>RCS</small> files used in <small>CVS</small> differ in a few
+
+The <small>RCS</small> files used in <small>CVS</small> differ in a few
 ways from the standard format.  The biggest difference
 is magic branches; for more information see [[cvs: Magic branch numbers#Magic branch numbers|Magic branch numbers]].  Also in <small>CVS</small> the valid tag names
 are a subset of what <small>RCS</small> accepts; for <small>CVS</small>&rsquo;s
 rules see [[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revisions|Tags]].
-</p>
+
 <hr>
 <div class="header">
 <p>

@@ -8,14 +8,14 @@
 <div id="index-Editing-administrative-files"></div>
 <div id="index-Administrative-files_002c-editing-them"></div>
 
-<p>You edit the administrative files in the same way that you would edit
-any other module.  Use &lsquo;<samp>cvs checkout CVSROOT</samp>&rsquo; to get a working
+You edit the administrative files in the same way that you would edit
+any other module.  Use &lsquo;<code>cvs checkout CVSROOT</code>&rsquo; to get a working
 copy, edit it, and commit your changes in the normal way.
-</p>
-<p>It is possible to commit an erroneous administrative
+
+It is possible to commit an erroneous administrative
 file.  You can often fix the error and check in a new
 revision, but sometimes a particularly bad error in the
 administrative file makes it impossible to commit new
 revisions.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

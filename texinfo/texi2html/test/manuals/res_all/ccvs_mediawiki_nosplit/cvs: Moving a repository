@@ -10,13 +10,13 @@ Next: [[cvs: Remote repositories#Remote repositories|Remote repositories]], Prev
 <div id="index-Moving-a-repository"></div>
 <div id="index-Copying-a-repository"></div>
 
-<p>Just as backing up the files in the repository is
+Just as backing up the files in the repository is
 pretty much like backing up any other files, if you
 need to move a repository from one place to another it
 is also pretty much like just moving any other
 collection of files.
-</p>
-<p>The main thing to consider is that working directories
+
+The main thing to consider is that working directories
 point to the repository.  The simplest way to deal with
 a moved repository is to just get a fresh working
 directory after the move.  Of course, you&rsquo;ll want to
@@ -30,5 +30,5 @@ see [[cvs: How data is stored in the working directory#How data is stored in the
 the &lsquo;<tt>CVS/Repository</tt>&rsquo; and &lsquo;<tt>CVS/Root</tt>&rsquo; files, but
 unless you are sure you want to bother, it probably
 isn&rsquo;t worth it.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

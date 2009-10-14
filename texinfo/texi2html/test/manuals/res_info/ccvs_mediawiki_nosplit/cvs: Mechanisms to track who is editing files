@@ -8,7 +8,7 @@ Next: [[cvs: Choosing between reserved or unreserved checkouts#Choosing between 
 === Mechanisms to track who is editing files ===
 <div id="index-Watches"></div>
 
-<p>For many groups, use of <small>CVS</small> in its default mode is
+For many groups, use of <small>CVS</small> in its default mode is
 perfectly satisfactory.  Users may sometimes go to
 check in a modification only to find that another
 modification has intervened, but they deal with it and
@@ -20,13 +20,13 @@ surprised at check in time.  The features in this
 section allow such coordination, while retaining the
 ability of two developers to edit the same file at the
 same time.
-</p>
-<p>For maximum benefit developers should use <code>cvs
+
+For maximum benefit developers should use <code>cvs
 edit</code> (not <code>chmod</code>) to make files read-write to
 edit them, and <code>cvs release</code> (not <code>rm</code>) to
 discard a working directory which is no longer in use,
 but <small>CVS</small> is not able to enforce this behavior.
-</p>
+
 
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: Telling CVS to watch certain files#Telling CVS to watch certain files|&bull; Setting a watch]]::             Telling CVS to watch certain files

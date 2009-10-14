@@ -8,7 +8,7 @@ Next: [[cvs: Specifying what to tag from the working directory#Specifying what t
 === Tags&ndash;Symbolic revisions ===
 <div id="index-Tags"></div>
 
-<p>The revision numbers live a life of their own.  They
+The revision numbers live a life of their own.  They
 need not have anything at all to do with the release
 numbers of your software product.  Depending
 on how you use <small>CVS</small> the revision numbers might change several times
@@ -16,7 +16,7 @@ between two releases.  As an example, some of the
 source files that make up <small>RCS</small> 5.6 have the following
 revision numbers:
 <div id="index-RCS-revision-numbers"></div>
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  ci.c            5.21
  co.c            5.9
@@ -39,40 +39,40 @@ revision numbers:
 <div id="index-Name_002c-symbolic-_0028tag_0029"></div>
 <div id="index-HEAD_002c-as-reserved-tag-name"></div>
 <div id="index-BASE_002c-as-reserved-tag-name"></div>
-<p>You can use the <code>tag</code> command to give a symbolic name to a
-certain revision of a file.  You can use the &lsquo;<samp>-v</samp>&rsquo; flag to the
+You can use the <code>tag</code> command to give a symbolic name to a
+certain revision of a file.  You can use the &lsquo;<code>-v</code>&rsquo; flag to the
 <code>status</code> command to see all tags that a file has, and
 which revision numbers they represent.  Tag names must
 start with an uppercase or lowercase letter and can
 contain uppercase and lowercase letters, digits,
-&lsquo;<samp>-</samp>&rsquo;, and &lsquo;<samp>_</samp>&rsquo;.  The two tag names <code>BASE</code>
+&lsquo;<code>-</code>&rsquo;, and &lsquo;<code>_</code>&rsquo;.  The two tag names <code>BASE</code>
 and <code>HEAD</code> are reserved for use by <small>CVS</small>.  It
 is expected that future names which are special to
 <small>CVS</small> will be specially named, for example by
-starting with &lsquo;<samp>.</samp>&rsquo;, rather than being named analogously to
+starting with &lsquo;<code>.</code>&rsquo;, rather than being named analogously to
 <code>BASE</code> and <code>HEAD</code>, to avoid conflicts with
 actual tag names.
-</p>
-<p>You&rsquo;ll want to choose some convention for naming tags,
+
+You&rsquo;ll want to choose some convention for naming tags,
 based on information such as the name of the program
 and the version number of the release.  For example,
 one might take the name of the program, immediately
-followed by the version number with &lsquo;<samp>.</samp>&rsquo; changed to
-&lsquo;<samp>-</samp>&rsquo;, so that <small>CVS</small> 1.9 would be tagged with the name
+followed by the version number with &lsquo;<code>.</code>&rsquo; changed to
+&lsquo;<code>-</code>&rsquo;, so that <small>CVS</small> 1.9 would be tagged with the name
 <code>cvs1-9</code>.  If you choose a consistent convention,
 then you won&rsquo;t constantly be guessing whether a tag is
 <code>cvs-1-9</code> or <code>cvs1_9</code> or what.  You might
 even want to consider enforcing your convention in the
 taginfo file (see [[cvs: User-defined logging#User-defined logging|user-defined logging]]).
-</p>
+
 <div id="index-Adding-a-tag"></div>
 <div id="index-Tags_002c-example"></div>
-<p>The following example shows how you can add a tag to a
+The following example shows how you can add a tag to a
 file.  The commands must be issued inside your working
 directory.  That is, you should issue the
 command in the directory where &lsquo;<tt>backend.c</tt>&rsquo;
 resides.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs tag rel-0-4 backend.c
  T backend.c
@@ -92,14 +92,14 @@ resides.
 </div>
 </td></tr></table>
 
-<p>For a complete summary of the syntax of <code>cvs tag</code>,
+For a complete summary of the syntax of <code>cvs tag</code>,
 including the various options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].
-</p>
-<p>There is seldom reason to tag a file in isolation.  A more common use is
+
+There is seldom reason to tag a file in isolation.  A more common use is
 to tag all the files that constitute a module with the same tag at
 strategic points in the development life-cycle, such as when a release
 is made.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs tag rel-1-0 .
  cvs tag: Tagging .
@@ -111,35 +111,35 @@ is made.
 </div>
 </td></tr></table>
 
-<p>(When you give <small>CVS</small> a directory as argument, it generally applies the
+(When you give <small>CVS</small> a directory as argument, it generally applies the
 operation to all the files in that directory, and (recursively), to any
 subdirectories that it may contain.  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].)
-</p>
+
 <div id="index-Retrieving-an-old-revision-using-tags"></div>
 <div id="index-Tags_002c-retrieving-old-revisions"></div>
-<p>The <code>checkout</code> command has a flag, &lsquo;<samp>-r</samp>&rsquo;, that lets you check out
+The <code>checkout</code> command has a flag, &lsquo;<code>-r</code>&rsquo;, that lets you check out
 a certain revision of a module.  This flag makes it easy to
-retrieve the sources that make up release 1.0 of the module &lsquo;<samp>tc</samp>&rsquo; at
+retrieve the sources that make up release 1.0 of the module &lsquo;<code>tc</code>&rsquo; at
 any time in the future:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs checkout -r rel-1-0 tc
 </div>
 </td></tr></table>
 
-<p>This is useful, for instance, if someone claims that there is a bug in
+This is useful, for instance, if someone claims that there is a bug in
 that release, but you cannot find the bug in the current working copy.
-</p>
-<p>You can also check out a module as it was at any given date.
-See [[cvs: checkout options#checkout options|checkout options]].  When specifying &lsquo;<samp>-r</samp>&rsquo; to
+
+You can also check out a module as it was at any given date.
+See [[cvs: checkout options#checkout options|checkout options]].  When specifying &lsquo;<code>-r</code>&rsquo; to
 any of these commands, you will need beware of sticky
 tags; see [[cvs: Sticky tags#Sticky tags|Sticky tags]].
-</p>
-<p>When you tag more than one file with the same tag you
+
+When you tag more than one file with the same tag you
 can think about the tag as &quot;a curve drawn through a
 matrix of filename vs. revision number.&quot;  Say we have 5
 files with the following revisions:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
          file1   file2   file3   file4   file5
  
@@ -152,14 +152,14 @@ files with the following revisions:
 </div>
 </td></tr></table>
 
-<p>At some time in the past, the <code>*</code> versions were tagged.
+At some time in the past, the <code>*</code> versions were tagged.
 You can think of the tag as a handle attached to the curve
 drawn through the tagged revisions.  When you pull on
 the handle, you get all the tagged revisions.  Another
 way to look at it is that you &quot;sight&quot; through a set of
 revisions that is &quot;flat&quot; along the tagged revisions,
 like this:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
          file1   file2   file3   file4   file5
  

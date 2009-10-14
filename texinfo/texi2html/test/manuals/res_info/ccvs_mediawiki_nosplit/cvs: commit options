@@ -7,61 +7,38 @@ Next: [[cvs: commit examples#commit examples|commit examples]], Up: [[cvs: commi
 <div id="commit-options-1"></div>
 ==== commit options ====
 
-<p>These standard options are supported by <code>commit</code>
+These standard options are supported by <code>commit</code>
 (see [[cvs: Common command options#Common command options|Common options]], for a complete description of
 them):
-</p>
-<dl compact="compact">
-<dt><code>-l</code></dt>
-<dd><p>Local; run only in current working directory.
-</p>
-</dd>
-<dt><code>-R</code></dt>
-<dd><p>Commit directories recursively.  This is on by default.
-</p>
-</dd>
-<dt><code>-r <var>revision</var></code></dt>
-<dd><p>Commit to <var>revision</var>.  <var>revision</var> must be
-either a branch, or a revision on the main trunk that
-is higher than any existing revision number
-(see [[cvs: Assigning revisions#Assigning revisions|Assigning revisions]]).  You
-cannot commit to a specific revision on a branch.
-</p></dd>
-</dl>
 
-<p><code>commit</code> also supports these options:
-</p>
-<dl compact="compact">
-<dt><code>-F <var>file</var></code></dt>
-<dd><p>Read the log message from <var>file</var>, instead
-of invoking an editor.
-</p>
-</dd>
-<dt><code>-f</code></dt>
-<dd><p>Note that this is not the standard behavior of
-the &lsquo;<samp>-f</samp>&rsquo; option as defined in [[cvs: Common command options#Common command options|Common options]].
-</p>
-<p>Force <small>CVS</small> to commit a new revision even if you haven&rsquo;t
-made any changes to the file.  If the current revision
-of <var>file</var> is 1.7, then the following two commands
-are equivalent:
-</p>
+;<code>-l</code>
+: Local; run only in current working directory.
+
+;<code>-R</code>
+: Commit directories recursively.  This is on by default.
+
+;<code>-r <var>revision</var></code>
+: Commit to <var>revision</var>.  <var>revision</var> must be either a branch, or a revision on the main trunk that is higher than any existing revision number (see [[cvs: Assigning revisions#Assigning revisions|Assigning revisions]]).  You cannot commit to a specific revision on a branch.
+
+<code>commit</code> also supports these options:
+
+;<code>-F <var>file</var></code>
+: Read the log message from <var>file</var>, instead of invoking an editor.
+
+;<code>-f</code>
+: Note that this is not the standard behavior of the &lsquo;<code>-f</code>&rsquo; option as defined in [[cvs: Common command options#Common command options|Common options]].
+
+: Force <small>CVS</small> to commit a new revision even if you haven&rsquo;t made any changes to the file.  If the current revision of <var>file</var> is 1.7, then the following two commands are equivalent:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs commit -f <var>file</var>
  $ cvs commit -r 1.8 <var>file</var>
 </div>
 </td></tr></table>
 
-<p>The &lsquo;<samp>-f</samp>&rsquo; option disables recursion (i.e., it
-implies &lsquo;<samp>-l</samp>&rsquo;).  To force <small>CVS</small> to commit a new
-revision for all files in all subdirectories, you must
-use &lsquo;<samp>-f -R</samp>&rsquo;.
-</p>
-</dd>
-<dt><code>-m <var>message</var></code></dt>
-<dd><p>Use <var>message</var> as the log message, instead of
-invoking an editor.
-</p></dd>
-</dl>
+: The &lsquo;<code>-f</code>&rsquo; option disables recursion (i.e., it implies &lsquo;<code>-l</code>&rsquo;).  To force <small>CVS</small> to commit a new revision for all files in all subdirectories, you must use &lsquo;<code>-f -R</code>&rsquo;.
+
+;<code>-m <var>message</var></code>
+: Use <var>message</var> as the log message, instead of invoking an editor.
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -11,48 +11,35 @@ Next: [[cvs: CVS's exit status#CVS&rsquo;s exit status|Exit status]], Up: [[cvs:
 <div id="index-Command-structure"></div>
 <div id="index-Format-of-CVS-commands"></div>
 
-<p>The overall format of all <small>CVS</small> commands is:
-</p>
+The overall format of all <small>CVS</small> commands is:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
- cvs [ cvs_options ] cvs_command [ command_options ] [ command_args ]
+ cvs <nowiki>[</nowiki> cvs_options <nowiki>]</nowiki> cvs_command <nowiki>[</nowiki> command_options <nowiki>]</nowiki> <nowiki>[</nowiki> command_args <nowiki>]</nowiki>
 </div>
 </td></tr></table>
 
-<dl compact="compact">
-<dt><code>cvs</code></dt>
-<dd><p>The name of the <small>CVS</small> program.
-</p>
-</dd>
-<dt><code>cvs_options</code></dt>
-<dd><p>Some options that affect all sub-commands of <small>CVS</small>.  These are
-described below.
-</p>
-</dd>
-<dt><code>cvs_command</code></dt>
-<dd><p>One of several different sub-commands.  Some of the commands have
-aliases that can be used instead; those aliases are noted in the
-reference manual for that command.  There are only two situations
-where you may omit &lsquo;<samp>cvs_command</samp>&rsquo;: &lsquo;<samp>cvs -H</samp>&rsquo; elicits a
-list of available commands, and &lsquo;<samp>cvs -v</samp>&rsquo; displays version
-information on <small>CVS</small> itself.
-</p>
-</dd>
-<dt><code>command_options</code></dt>
-<dd><p>Options that are specific for the command.
-</p>
-</dd>
-<dt><code>command_args</code></dt>
-<dd><p>Arguments to the commands.
-</p></dd>
-</dl>
+;<code>cvs</code>
+: The name of the <small>CVS</small> program.
 
-<p>There is unfortunately some confusion between
+;<code>cvs_options</code>
+: Some options that affect all sub-commands of <small>CVS</small>.  These are described below.
+
+;<code>cvs_command</code>
+: One of several different sub-commands.  Some of the commands have aliases that can be used instead; those aliases are noted in the reference manual for that command.  There are only two situations where you may omit &lsquo;<code>cvs_command</code>&rsquo;: &lsquo;<code>cvs -H</code>&rsquo; elicits a list of available commands, and &lsquo;<code>cvs -v</code>&rsquo; displays version information on <small>CVS</small> itself.
+
+;<code>command_options</code>
+: Options that are specific for the command.
+
+;<code>command_args</code>
+: Arguments to the commands.
+
+There is unfortunately some confusion between
 <code>cvs_options</code> and <code>command_options</code>.
-&lsquo;<samp>-l</samp>&rsquo;, when given as a <code>cvs_option</code>, only
+&lsquo;<code>-l</code>&rsquo;, when given as a <code>cvs_option</code>, only
 affects some of the commands.  When it is given as a
 <code>command_option</code> is has a different meaning, and
 is accepted by more commands.  In other words, do not
 take the above categorization too seriously.  Look at
 the documentation instead.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

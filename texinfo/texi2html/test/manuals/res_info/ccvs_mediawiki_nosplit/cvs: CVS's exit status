@@ -8,15 +8,15 @@ Next: [[cvs: Default options and the ~%47.cvsrc file#Default options and the ~/.
 === CVS&rsquo;s exit status ===
 <div id="index-Exit-status_002c-of-CVS"></div>
 
-<p><small>CVS</small> can indicate to the calling environment whether it
+<small>CVS</small> can indicate to the calling environment whether it
 succeeded or failed by setting its <em>exit status</em>.
 The exact way of testing the exit status will vary from
 one operating system to another.  For example in a unix
-shell script the &lsquo;<samp>$?</samp>&rsquo; variable will be 0 if the
+shell script the &lsquo;<code>$?</code>&rsquo; variable will be 0 if the
 last command returned a successful exit status, or
 greater than 0 if the exit status indicated failure.
-</p>
-<p>If <small>CVS</small> is successful, it returns a successful status;
+
+If <small>CVS</small> is successful, it returns a successful status;
 if there is an error, it prints an error message and
 returns a failure status.  The one exception to this is
 the <code>cvs diff</code> command.  It will return a
@@ -26,5 +26,5 @@ was an error.  Because this behavior provides no good
 way to detect errors, in the future it is possible that
 <code>cvs diff</code> will be changed to behave like the
 other <small>CVS</small> commands.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

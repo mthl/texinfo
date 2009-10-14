@@ -8,40 +8,38 @@ Next: [[cvs: checkout--Check out sources for editing#checkout&mdash;Check out so
 === admin&mdash;Administration ===
 <div id="index-Admin-_0028subcommand_0029"></div>
 
-<ul>
-<li>
-Requires: repository, working directory.
-</li><li>
-Changes: repository.
-</li><li>
-Synonym: rcs
-</li></ul>
 
-<p>This is the <small>CVS</small> interface to assorted
+* Requires: repository, working directory.
+
+* Changes: repository.
+
+* Synonym: rcs
+
+This is the <small>CVS</small> interface to assorted
 administrative facilities.  Some of them have
 questionable usefulness for <small>CVS</small> but exist for
 historical purposes.  Some of the questionable options
 are likely to disappear in the future.  This command
-<em>does</em> work recursively, so extreme care should be
+''does'' work recursively, so extreme care should be
 used.
-</p>
+
 <div id="index-cvsadmin"></div>
 <div id="index-UserAdminOptions_002c-in-CVSROOT_002fconfig"></div>
-<p>On unix, if there is a group named <code>cvsadmin</code>,
+On unix, if there is a group named <code>cvsadmin</code>,
 only members of that group can run <code>cvs admin</code>
 commands, except for those specified using the
 <code>UserAdminOptions</code> configuration option in the
 &lsquo;<tt>CVSROOT/config</tt>&rsquo; file.  Options specified using
 <code>UserAdminOptions</code> can be run by any user.  See
 [[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|config]] for more on <code>UserAdminOptions</code>.
-</p>
-<p>The <code>cvsadmin</code> group should exist on the server,
+
+The <code>cvsadmin</code> group should exist on the server,
 or any system running the non-client/server <small>CVS</small>.
 To disallow <code>cvs admin</code> for all users, create a
 group with no users in it.  On NT, the <code>cvsadmin</code>
 feature does not exist and all users
 can run <code>cvs admin</code>.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: admin options#admin options|&bull; admin options]]::               admin options
 </div>

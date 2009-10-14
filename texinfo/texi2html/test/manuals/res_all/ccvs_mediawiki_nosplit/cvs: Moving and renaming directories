@@ -10,24 +10,20 @@ Previous: [[cvs: Moving and renaming files#Moving and renaming files|Moving file
 <div id="index-Renaming-directories"></div>
 <div id="index-Directories_002c-moving"></div>
 
-<p>The normal way to rename or move a directory is to
+The normal way to rename or move a directory is to
 rename or move each file within it as described in
-[[cvs: The Normal way to Rename#The Normal way to Rename|Outside]].  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
+[[cvs: The Normal way to Rename#The Normal way to Rename|Outside]].  Then check out with the &lsquo;<code>-P</code>&rsquo;
 option, as described in [[cvs: Removing directories#Removing directories|Removing directories]].
-</p>
-<p>If you really want to hack the repository to rename or
+
+If you really want to hack the repository to rename or
 delete a directory in the repository, you can do it
 like this:
-</p>
-<ol>
-<li>
-Inform everyone who has a checked out copy of the directory that the
-directory will be renamed.  They should commit all
-their changes, and remove their working copies,
-before you take the steps below.
 
-</li><li>
-Rename the directory inside the repository.
+
+# Inform everyone who has a checked out copy of the directory that the directory will be renamed.  They should commit all their changes, and remove their working copies, before you take the steps below.
+
+
+# Rename the directory inside the repository.
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd $CVSROOT/<var>parent-dir</var>
@@ -35,24 +31,21 @@ Rename the directory inside the repository.
 </div>
 </td></tr></table>
 
-</li><li>
-Fix the <small>CVS</small> administrative files, if necessary (for
-instance if you renamed an entire module).
 
-</li><li>
-Tell everyone that they can check out again and continue
-working.
+# Fix the <small>CVS</small> administrative files, if necessary (for instance if you renamed an entire module).
 
-</li></ol>
 
-<p>If someone had a working copy the <small>CVS</small> commands will
+# Tell everyone that they can check out again and continue working.
+
+
+If someone had a working copy the <small>CVS</small> commands will
 cease to work for him, until he removes the directory
 that disappeared inside the repository.
-</p>
-<p>It is almost always better to move the files in the
+
+It is almost always better to move the files in the
 directory instead of moving the directory.  If you move the
 directory you are unlikely to be able to retrieve old
 releases correctly, since they probably depend on the
 name of the directories.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -11,9 +11,9 @@
 </tr></table>
 <div id="SEC_Top"></div>
 
-<p>This info manual describes how to use and administer
+This info manual describes how to use and administer
 <small>CVS</small> version 4.2.
-</p>
+
 
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: Overview#Overview|&bull; Overview]]::                    An introduction to CVS

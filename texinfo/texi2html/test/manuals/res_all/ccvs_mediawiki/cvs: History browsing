@@ -10,11 +10,11 @@ Next: [[cvs: Handling binary files#Handling binary files|Binary files]], Previou
 <div id="index-Isolation"></div>
 
 
-<p>Once you have used <small>CVS</small> to store a version control
+Once you have used <small>CVS</small> to store a version control
 history&mdash;what files have changed when, how, and by
 whom, there are a variety of mechanisms for looking
 through the history.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[#Log messages|&bull; log messages]]::                Log messages
  [[#The history database|&bull; history database]]::            The history database
@@ -31,12 +31,12 @@ Next: [[#The history database|history database]], Up: [[#History browsing|Histor
 <div id="Log-messages"></div>
 === Log messages ===
 
-<p>Whenever you commit a file you specify a log message.
-</p>
-<p>To look through the log messages which have been
+Whenever you commit a file you specify a log message.
+
+To look through the log messages which have been
 specified for every revision which has been committed,
 use the <code>cvs log</code> command (see [[cvs: Guide to CVS commands#log&mdash;Print out log information for files|log]]).
-</p>
+
 <hr>
 <div id="history-database"></div>
 <div class="header">
@@ -46,15 +46,15 @@ Next: [[#User-defined logging|user-defined logging]], Previous: [[#Log messages|
 <div id="The-history-database"></div>
 === The history database ===
 
-<p>You can use the history file (see [[cvs: Reference manual for Administrative files#The history file|history file]]) to
+You can use the history file (see [[cvs: Reference manual for Administrative files#The history file|history file]]) to
 log various <small>CVS</small> actions.  To retrieve the
 information from the history file, use the <code>cvs
 history</code> command (see [[cvs: Guide to CVS commands#history&mdash;Show status of files and users|history]]).
-</p>
-<p>Note: you can control what is logged to this file by using the
-&lsquo;<samp>LogHistory</samp>&rsquo; keyword in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file
+
+Note: you can control what is logged to this file by using the
+&lsquo;<code>LogHistory</code>&rsquo; keyword in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file
 (see [[cvs: Reference manual for Administrative files#The CVSROOT/config configuration file|config]]).
-</p>
+
 
 <hr>
 <div id="user_002ddefined-logging"></div>
@@ -65,7 +65,7 @@ Next: [[#Annotate command|annotate]], Previous: [[#The history database|history 
 <div id="User_002ddefined-logging"></div>
 === User-defined logging ===
 
-<p>You can customize <small>CVS</small> to log various kinds of
+You can customize <small>CVS</small> to log various kinds of
 actions, in whatever manner you choose.  These
 mechanisms operate by executing a script at various
 times.  The script might append a message to a file
@@ -74,17 +74,17 @@ it, or send mail to a group of developers, or, perhaps,
 post a message to a particular newsgroup.  To log
 commits, use the &lsquo;<tt>loginfo</tt>&rsquo; file (see [[cvs: Reference manual for Administrative files#Loginfo|loginfo]]).
 To log commits, checkouts, exports, and tags,
-respectively, you can also use the &lsquo;<samp>-i</samp>&rsquo;,
-&lsquo;<samp>-o</samp>&rsquo;, &lsquo;<samp>-e</samp>&rsquo;, and &lsquo;<samp>-t</samp>&rsquo; options in the
+respectively, you can also use the &lsquo;<code>-i</code>&rsquo;,
+&lsquo;<code>-o</code>&rsquo;, &lsquo;<code>-e</code>&rsquo;, and &lsquo;<code>-t</code>&rsquo; options in the
 modules file.  For a more flexible way of giving
 notifications to various users, which requires less in
 the way of keeping centralized scripts up to date, use
 the <code>cvs watch add</code> command (see [[cvs: Multiple developers#Telling CVS to notify you|Getting Notified]]); this command is useful even if you are not
 using <code>cvs watch on</code>.
-</p>
+
 <div id="index-taginfo"></div>
 <div id="index-Exit-status_002c-of-taginfo"></div>
-<p>The &lsquo;<tt>taginfo</tt>&rsquo; file defines programs to execute
+The &lsquo;<tt>taginfo</tt>&rsquo; file defines programs to execute
 when someone executes a <code>tag</code> or <code>rtag</code>
 command.  The &lsquo;<tt>taginfo</tt>&rsquo; file has the standard form
 for administrative files (see [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]]), where each line is a regular expression
@@ -96,18 +96,18 @@ to the command are, in order, the <var>tagname</var>,
 pairs of <var>filename</var> <var>revision</var>.  A non-zero
 exit of the filter program will cause the tag to be
 aborted.
-</p>
-<p>Here is an example of using taginfo to log tag and rtag
+
+Here is an example of using taginfo to log tag and rtag
 commands.  In the taginfo file put:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  ALL /usr/local/cvsroot/CVSROOT/loggit
 </div>
 </td></tr></table>
 
-<p>Where &lsquo;<tt>/usr/local/cvsroot/CVSROOT/loggit</tt>&rsquo; contains the
+Where &lsquo;<tt>/usr/local/cvsroot/CVSROOT/loggit</tt>&rsquo; contains the
 following script:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  #!/bin/sh
  echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
@@ -124,13 +124,10 @@ Previous: [[#User-defined logging|user-defined logging]], Up: [[#History browsin
 === Annotate command ===
 <div id="index-annotate-_0028subcommand_0029"></div>
 
-<dl>
-<dt><div id="index-cvs-annotate"></div>Command: <strong>cvs annotate</strong><em> [<code>-FflR</code>] [<code>-r rev</code>|<code>-D date</code>] files &hellip;</em></dt>
-<dd>
-<p>For each file in <var>files</var>, print the head revision
-of the trunk, together with information on the last
-modification for each line.  For example:
-</p>
+;<div id="index-cvs-annotate"></div>Command<nowiki>:</nowiki> <strong>cvs annotate</strong><em> <nowiki>[</nowiki><code>-FflR</code><nowiki>]</nowiki> <nowiki>[</nowiki><code>-r rev</code>|<code>-D date</code><nowiki>]</nowiki> files &hellip;</em>
+
+: For each file in <var>files</var>, print the head revision of the trunk, together with information on the last modification for each line.  For example:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs annotate ssfile
  Annotations for ssfile
@@ -140,22 +137,14 @@ modification for each line.  For example:
 </div>
 </td></tr></table>
 
-<p>The file &lsquo;<tt>ssfile</tt>&rsquo; currently contains two lines.
-The <code>ssfile line 1</code> line was checked in by
-<code>mary</code> on March 27.  Then, on March 28, <code>joe</code>
-added a line <code>ssfile line 2</code>, without modifying
-the <code>ssfile line 1</code> line.  This report doesn&rsquo;t
-tell you anything about lines which have been deleted
-or replaced; you need to use <code>cvs diff</code> for that
-(see [[cvs: Guide to CVS commands#diff&mdash;Show differences between revisions|diff]]).
-</p>
-</dd></dl>
+: The file &lsquo;<tt>ssfile</tt>&rsquo; currently contains two lines. The <code>ssfile line 1</code> line was checked in by <code>mary</code> on March 27.  Then, on March 28, <code>joe</code> added a line <code>ssfile line 2</code>, without modifying the <code>ssfile line 1</code> line.  This report doesn&rsquo;t tell you anything about lines which have been deleted or replaced; you need to use <code>cvs diff</code> for that (see [[cvs: Guide to CVS commands#diff&mdash;Show differences between revisions|diff]]).
 
-<p>The options to <code>cvs annotate</code> are listed in
+
+The options to <code>cvs annotate</code> are listed in
 [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]], and can be used to select the files
 and revisions to annotate.  The options are described
 in more detail there and in [[cvs: Guide to CVS commands#Common command options|Common options]].
-</p>
+
 
 <hr>
 <div class="header">

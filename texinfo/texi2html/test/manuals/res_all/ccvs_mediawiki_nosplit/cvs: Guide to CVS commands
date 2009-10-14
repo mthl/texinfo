@@ -7,11 +7,11 @@ Next: [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Inv
 <div id="Guide-to-CVS-commands"></div>
 == Guide to CVS commands ==
 
-<p>This appendix describes the overall structure of
+This appendix describes the overall structure of
 <small>CVS</small> commands, and describes some commands in
 detail (others are described elsewhere; for a quick
 reference to <small>CVS</small> commands, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]]).
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: Overall structure of CVS commands#Overall structure of CVS commands|&bull; Structure]]::                   Overall structure of CVS commands
  [[cvs: CVS's exit status#CVS&rsquo;s exit status|&bull; Exit status]]::                 Indicating CVS's success or failure

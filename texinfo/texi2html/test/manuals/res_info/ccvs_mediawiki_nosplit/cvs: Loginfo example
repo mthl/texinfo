@@ -7,14 +7,14 @@ Next: [[cvs: Keeping a checked out copy#Keeping a checked out copy|Keeping a che
 <div id="Loginfo-example"></div>
 ===== Loginfo example =====
 
-<p>The following &lsquo;<tt>loginfo</tt>&rsquo; file, together with the
+The following &lsquo;<tt>loginfo</tt>&rsquo; file, together with the
 tiny shell-script below, appends all log messages
 to the file &lsquo;<tt>$CVSROOT/CVSROOT/commitlog</tt>&rsquo;,
 and any commits to the administrative files (inside
 the &lsquo;<tt>CVSROOT</tt>&rsquo; directory) are also logged in
 &lsquo;<tt>/usr/adm/cvsroot-log</tt>&rsquo;.
 Commits to the &lsquo;<tt>prog1</tt>&rsquo; directory are mailed to <tt>ceder</tt>.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  ALL             /usr/local/bin/cvs-log $CVSROOT/CVSROOT/commitlog $USER
  ^CVSROOT        /usr/local/bin/cvs-log /usr/adm/cvsroot-log
@@ -22,9 +22,9 @@ Commits to the &lsquo;<tt>prog1</tt>&rsquo; directory are mailed to <tt>ceder</t
 </div>
 </td></tr></table>
 
-<p>The shell-script &lsquo;<tt>/usr/local/bin/cvs-log</tt>&rsquo; looks
+The shell-script &lsquo;<tt>/usr/local/bin/cvs-log</tt>&rsquo; looks
 like this:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  #!/bin/sh
  (echo &quot;------------------------------------------------------&quot;;

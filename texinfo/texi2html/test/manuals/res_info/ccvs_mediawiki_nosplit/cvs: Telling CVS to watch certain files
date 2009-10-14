@@ -7,45 +7,26 @@ Next: [[cvs: Telling CVS to notify you#Telling CVS to notify you|Getting Notifie
 <div id="Telling-CVS-to-watch-certain-files"></div>
 ==== Telling CVS to watch certain files ====
 
-<p>To enable the watch features, you first specify that
+To enable the watch features, you first specify that
 certain files are to be watched.
-</p>
-<div id="index-watch-on-_0028subcommand_0029"></div>
-<dl>
-<dt><div id="index-cvs-watch-on"></div>Command: <strong>cvs watch on</strong><em> [<code>-lR</code>] [<var>files</var>]&hellip;</em></dt>
-<dd>
-<div id="index-Read_002donly-files_002c-and-watches"></div>
-<p>Specify that developers should run <code>cvs edit</code>
-before editing <var>files</var>.  <small>CVS</small> will create working
-copies of <var>files</var> read-only, to remind developers
-to run the <code>cvs edit</code> command before working on
-them.
-</p>
-<p>If <var>files</var> includes the name of a directory, <small>CVS</small>
-arranges to watch all files added to the corresponding
-repository directory, and sets a default for files
-added in the future; this allows the user to set
-notification policies on a per-directory basis.  The
-contents of the directory are processed recursively,
-unless the <code>-l</code> option is given.
-The <code>-R</code> option can be used to force recursion if the <code>-l</code>
-option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see [[cvs: Default options and the ~%47.cvsrc file#Default options and the ~/.cvsrc file|~/.cvsrc]]).
-</p>
-<p>If <var>files</var> is omitted, it defaults to the current directory.
-</p>
-<div id="index-watch-off-_0028subcommand_0029"></div>
-</dd></dl>
 
-<dl>
-<dt><div id="index-cvs-watch-off"></div>Command: <strong>cvs watch off</strong><em> [<code>-lR</code>] [<var>files</var>]&hellip;</em></dt>
-<dd>
-<p>Do not create <var>files</var> read-only on checkout; thus,
-developers will not be reminded to use <code>cvs edit</code>
-and <code>cvs unedit</code>.
-</p>
-<p>The <var>files</var> and options are processed as for <code>cvs
-watch on</code>.
-</p>
-</dd></dl>
+<div id="index-watch-on-_0028subcommand_0029"></div>
+;<div id="index-cvs-watch-on"></div>Command<nowiki>:</nowiki> <strong>cvs watch on</strong><em> <nowiki>[</nowiki><code>-lR</code><nowiki>]</nowiki> <nowiki>[</nowiki><var>files</var><nowiki>]</nowiki>&hellip;</em>
+
+<div id="index-Read_002donly-files_002c-and-watches"></div>
+: Specify that developers should run <code>cvs edit</code> before editing <var>files</var>.  <small>CVS</small> will create working copies of <var>files</var> read-only, to remind developers to run the <code>cvs edit</code> command before working on them.
+
+: If <var>files</var> includes the name of a directory, <small>CVS</small> arranges to watch all files added to the corresponding repository directory, and sets a default for files added in the future; this allows the user to set notification policies on a per-directory basis.  The contents of the directory are processed recursively, unless the <code>-l</code> option is given. The <code>-R</code> option can be used to force recursion if the <code>-l</code> option is set in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see [[cvs: Default options and the ~%47.cvsrc file#Default options and the ~/.cvsrc file|~/.cvsrc]]).
+
+: If <var>files</var> is omitted, it defaults to the current directory.
+
+<div id="index-watch-off-_0028subcommand_0029"></div>
+
+;<div id="index-cvs-watch-off"></div>Command<nowiki>:</nowiki> <strong>cvs watch off</strong><em> <nowiki>[</nowiki><code>-lR</code><nowiki>]</nowiki> <nowiki>[</nowiki><var>files</var><nowiki>]</nowiki>&hellip;</em>
+
+: Do not create <var>files</var> read-only on checkout; thus, developers will not be reminded to use <code>cvs edit</code> and <code>cvs unedit</code>.
+
+: The <var>files</var> and options are processed as for <code>cvs watch on</code>.
+
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

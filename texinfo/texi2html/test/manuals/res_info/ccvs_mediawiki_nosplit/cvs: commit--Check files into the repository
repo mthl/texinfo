@@ -8,33 +8,30 @@ Next: [[cvs: diff--Show differences between revisions#diff&mdash;Show difference
 === commit&mdash;Check files into the repository ===
 <div id="index-commit-_0028subcommand_0029"></div>
 
-<ul>
-<li>
-Synopsis: commit [-lnRf] [-m &rsquo;log_message&rsquo; |
--F file] [-r revision] [files&hellip;]
-</li><li>
-Requires: working directory, repository.
-</li><li>
-Changes: repository.
-</li><li>
-Synonym: ci
-</li></ul>
 
-<p>Use <code>commit</code> when you want to incorporate changes
+* Synopsis: commit <nowiki>[</nowiki>-lnRf<nowiki>]</nowiki> <nowiki>[</nowiki>-m &rsquo;log_message&rsquo; | -F file<nowiki>]</nowiki> <nowiki>[</nowiki>-r revision<nowiki>]</nowiki> <nowiki>[</nowiki>files&hellip;<nowiki>]</nowiki>
+
+* Requires: working directory, repository.
+
+* Changes: repository.
+
+* Synonym: ci
+
+Use <code>commit</code> when you want to incorporate changes
 from your working source files into the source
 repository.
-</p>
-<p>If you don&rsquo;t specify particular files to commit, all of
+
+If you don&rsquo;t specify particular files to commit, all of
 the files in your working current directory are
 examined.  <code>commit</code> is careful to change in the
 repository only those files that you have really
 changed.  By default (or if you explicitly specify the
-&lsquo;<samp>-R</samp>&rsquo; option), files in subdirectories are also
+&lsquo;<code>-R</code>&rsquo; option), files in subdirectories are also
 examined and committed if they have changed; you can
-use the &lsquo;<samp>-l</samp>&rsquo; option to limit <code>commit</code> to the
+use the &lsquo;<code>-l</code>&rsquo; option to limit <code>commit</code> to the
 current directory only.
-</p>
-<p><code>commit</code> verifies that the selected files are up
+
+<code>commit</code> verifies that the selected files are up
 to date with the current revisions in the source
 repository; it will notify you, and exit without
 committing, if any of the specified files must be made
@@ -42,18 +39,18 @@ current first with <code>update</code> (see [[cvs: update--Bring work tree in sy
 <code>commit</code> does not call the <code>update</code> command
 for you, but rather leaves that for you to do when the
 time is right.
-</p>
-<p>When all is well, an editor is invoked to allow you to
+
+When all is well, an editor is invoked to allow you to
 enter a log message that will be written to one or more
 logging programs (see [[cvs: The modules file#The modules file|modules]], and see [[cvs: Loginfo#Loginfo|loginfo]])
 and placed in the <small>RCS</small> file inside the
 repository.  This log message can be retrieved with the
 <code>log</code> command; see [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]].  You can specify the
-log message on the command line with the &lsquo;<samp>-m
-<var>message</var></samp>&rsquo; option, and thus avoid the editor invocation,
-or use the &lsquo;<samp>-F <var>file</var></samp>&rsquo; option to specify
+log message on the command line with the &lsquo;<code>-m
+<var>message</var></code>&rsquo; option, and thus avoid the editor invocation,
+or use the &lsquo;<code>-F <var>file</var></code>&rsquo; option to specify
 that the argument file contains the log message.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: commit options#commit options|&bull; commit options]]::              commit options
  [[cvs: commit examples#commit examples|&bull; commit examples]]::             commit examples

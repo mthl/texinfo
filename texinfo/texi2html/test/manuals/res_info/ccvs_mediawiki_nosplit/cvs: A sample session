@@ -13,18 +13,18 @@ Previous: [[cvs: What is CVS not?#What is CVS not?|What is CVS not?]], Up: [[cvs
 <div id="index-Trivial-Compiler-_0028example_0029"></div>
 
 
-<p>As a way of introducing <small>CVS</small>, we&rsquo;ll go through a
+As a way of introducing <small>CVS</small>, we&rsquo;ll go through a
 typical work-session using <small>CVS</small>.  The first thing
 to understand is that <small>CVS</small> stores all files in a
 centralized <em>repository</em> (see [[cvs: The Repository#The Repository|Repository]]); this
 section assumes that a repository is set up.
-</p>
-<p>Suppose you are working on a simple compiler.  The source
+
+Suppose you are working on a simple compiler.  The source
 consists of a handful of C files and a &lsquo;<tt>Makefile</tt>&rsquo;.
-The compiler is called &lsquo;<samp>tc</samp>&rsquo; (Trivial Compiler),
+The compiler is called &lsquo;<code>tc</code>&rsquo; (Trivial Compiler),
 and the repository is set up so that there is a module
-called &lsquo;<samp>tc</samp>&rsquo;.
-</p>
+called &lsquo;<code>tc</code>&rsquo;.
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: Getting the source#Getting the source|&bull; Getting the source]]::          Creating a workspace
  [[cvs: Committing your changes#Committing your changes|&bull; Committing your changes]]::     Making your work available to others

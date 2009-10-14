@@ -9,17 +9,17 @@ Next: [[cvs: Expansions in administrative files#Expansions in administrative fil
 <div id="index-History-file"></div>
 <div id="index-Log-information_002c-saving"></div>
 
-<p>The file &lsquo;<tt>$CVSROOT/CVSROOT/history</tt>&rsquo; is used
+The file &lsquo;<tt>$CVSROOT/CVSROOT/history</tt>&rsquo; is used
 to log information for the <code>history</code> command
 (see [[cvs: history--Show status of files and users#history&mdash;Show status of files and users|history]]).  This file must be created to turn
 on logging.  This is done automatically if the
 <code>cvs init</code> command is used to set up the
 repository (see [[cvs: Creating a repository#Creating a repository|Creating a repository]]).
-</p>
-<p>The file format of the &lsquo;<tt>history</tt>&rsquo; file is
+
+The file format of the &lsquo;<tt>history</tt>&rsquo; file is
 documented only in comments in the <small>CVS</small> source
 code, but generally programs should use the <code>cvs
 history</code> command to access it anyway, in case the
 format changes with future releases of <small>CVS</small>.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -8,19 +8,19 @@ Next: [[cvs: How data is stored in the working directory#How data is stored in t
 === How data is stored in the repository ===
 <div id="index-Repository_002c-how-data-is-stored"></div>
 
-<p>For most purposes it isn&rsquo;t important <em>how</em>
+For most purposes it isn&rsquo;t important ''how''
 <small>CVS</small> stores information in the repository.  In
 fact, the format has changed in the past, and is likely
 to change in the future.  Since in almost all cases one
 accesses the repository via <small>CVS</small> commands, such
 changes need not be disruptive.
-</p>
-<p>However, in some cases it may be necessary to
+
+However, in some cases it may be necessary to
 understand how <small>CVS</small> stores data in the repository,
 for example you might need to track down <small>CVS</small> locks
 (see [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Concurrency]]) or you might need to deal with
 the file permissions appropriate for the repository.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: Where files are stored within the repository#Where files are stored within the repository|&bull; Repository files]]::            What files are stored in the repository
  [[cvs: File permissions#File permissions|&bull; File permissions]]::            File permissions

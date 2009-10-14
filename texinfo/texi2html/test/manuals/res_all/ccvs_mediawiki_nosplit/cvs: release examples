@@ -7,14 +7,14 @@ Previous: [[cvs: release output#release output|release output]], Up: [[cvs: rele
 <div id="release-examples-1"></div>
 ==== release examples ====
 
-<p>Release the &lsquo;<tt>tc</tt>&rsquo; directory, and delete your local working copy
+Release the &lsquo;<tt>tc</tt>&rsquo; directory, and delete your local working copy
 of the files.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd ..         # <span class="roman" style="font-family:serif; font-weight:normal;">You must stand immediately above the</span>
-                 # <span class="roman" style="font-family:serif; font-weight:normal;">sources when you issue &lsquo;<samp>cvs release</samp>&rsquo;.</span>
+                 # <span class="roman" style="font-family:serif; font-weight:normal;">sources when you issue &lsquo;<code>cvs release</code>&rsquo;.</span>
  $ cvs release -d tc
- You have [0] altered files in this repository.
+ You have <nowiki>[</nowiki>0<nowiki>]</nowiki> altered files in this repository.
  Are you sure you want to release (and delete) directory `tc': y
  $
 </div>

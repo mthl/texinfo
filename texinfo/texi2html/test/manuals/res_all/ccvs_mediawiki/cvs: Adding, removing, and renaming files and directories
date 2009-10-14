@@ -6,7 +6,7 @@ Next: [[cvs: History browsing#History browsing|History browsing]], Previous: [[c
 <div id="Adding_002c-removing_002c-and-renaming-files-and-directories"></div>
 == Adding, removing, and renaming files and directories ==
 
-<p>In the course of a project, one will often add new
+In the course of a project, one will often add new
 files.  Likewise with removing or renaming, or with
 directories.  The general concept to keep in mind in
 all these cases is that instead of making an
@@ -14,7 +14,7 @@ irreversible change you want <small>CVS</small> to record the
 fact that a change has taken place, just as with
 modifying an existing file.  The exact mechanisms to do
 this in <small>CVS</small> vary depending on the situation.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[#Adding files to a directory|&bull; Adding files]]::                Adding files
  [[#Removing files|&bull; Removing files]]::              Removing files
@@ -33,34 +33,27 @@ Next: [[#Removing files|Removing files]], Up: [[#Adding, removing, and renaming 
 === Adding files to a directory ===
 <div id="index-Adding-files"></div>
 
-<p>To add a new file to a directory, follow these steps.
-</p>
-<ul>
-<li>
-You must have a working copy of the directory.
-See [[cvs: Overview#Getting the source|Getting the source]].
+To add a new file to a directory, follow these steps.
 
-</li><li>
-Create the new file inside your working copy of the directory.
 
-</li><li>
-Use &lsquo;<samp>cvs add <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that you
-want to version control the file.  If the file contains
-binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see [[cvs: Handling binary files#Handling binary files|Binary files]]).
+* You must have a working copy of the directory. See [[cvs: Overview#Getting the source|Getting the source]].
 
-</li><li>
-Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually check
-in the file into the repository.  Other developers
-cannot see the file until you perform this step.
-</li></ul>
 
-<p>You can also use the <code>add</code> command to add a new
+* Create the new file inside your working copy of the directory.
+
+
+* Use &lsquo;<code>cvs add <var>filename</var></code>&rsquo; to tell <small>CVS</small> that you want to version control the file.  If the file contains binary data, specify &lsquo;<code>-kb</code>&rsquo; (see [[cvs: Handling binary files#Handling binary files|Binary files]]).
+
+
+* Use &lsquo;<code>cvs commit <var>filename</var></code>&rsquo; to actually check in the file into the repository.  Other developers cannot see the file until you perform this step.
+
+You can also use the <code>add</code> command to add a new
 directory.
-</p>
-<p>Unlike most other commands, the <code>add</code> command is
-not recursive.  You cannot even type &lsquo;<samp>cvs add
-foo/bar</samp>&rsquo;!  Instead, you have to
-</p>
+
+Unlike most other commands, the <code>add</code> command is
+not recursive.  You cannot even type &lsquo;<code>cvs add
+foo/bar</code>&rsquo;!  Instead, you have to
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd foo
  $ cvs add bar
@@ -68,53 +61,30 @@ foo/bar</samp>&rsquo;!  Instead, you have to
 </td></tr></table>
 
 <div id="index-add-_0028subcommand_0029"></div>
-<dl>
-<dt><div id="index-cvs-add"></div>Command: <strong>cvs add</strong><em> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</em></dt>
-<dd>
-<p>Schedule <var>files</var> to be added to the repository.
-The files or directories specified with <code>add</code> must
-already exist in the current directory.  To add a whole
-new directory hierarchy to the source repository (for
-example, files received from a third-party vendor), use
-the <code>import</code> command instead.  See [[cvs: Guide to CVS commands#import&mdash;Import sources into CVS, using vendor branches|import]].
-</p>
-<p>The added files are not placed in the source repository
-until you use <code>commit</code> to make the change
-permanent.  Doing an <code>add</code> on a file that was
-removed with the <code>remove</code> command will undo the
-effect of the <code>remove</code>, unless a <code>commit</code>
-command intervened.  See [[#Removing files|Removing files]], for an
-example.
-</p>
-<p>The &lsquo;<samp>-k</samp>&rsquo; option specifies the default way that
-this file will be checked out; for more information see
-[[cvs: Keyword substitution#Substitution modes|Substitution modes]].
-</p>
-<p>The &lsquo;<samp>-m</samp>&rsquo; option specifies a description for the
-file.  This description appears in the history log (if
-it is enabled, see [[cvs: Reference manual for Administrative files#The history file|history file]]).  It will also be
-saved in the version history inside the repository when
-the file is committed.  The <code>log</code> command displays
-this description.  The description can be changed using
-&lsquo;<samp>admin -t</samp>&rsquo;.  See [[cvs: Guide to CVS commands#admin&mdash;Administration|admin]].  If you omit the
-&lsquo;<samp>-m <var>description</var></samp>&rsquo; flag, an empty string will
-be used.  You will not be prompted for a description.
-</p></dd></dl>
+;<div id="index-cvs-add"></div>Command<nowiki>:</nowiki> <strong>cvs add</strong><em> <nowiki>[</nowiki><code>-k</code> kflag<nowiki>]</nowiki> <nowiki>[</nowiki><code>-m</code> message<nowiki>]</nowiki> files &hellip;</em>
 
-<p>For example, the following commands add the file
+: Schedule <var>files</var> to be added to the repository. The files or directories specified with <code>add</code> must already exist in the current directory.  To add a whole new directory hierarchy to the source repository (for example, files received from a third-party vendor), use the <code>import</code> command instead.  See [[cvs: Guide to CVS commands#import&mdash;Import sources into CVS, using vendor branches|import]].
+
+: The added files are not placed in the source repository until you use <code>commit</code> to make the change permanent.  Doing an <code>add</code> on a file that was removed with the <code>remove</code> command will undo the effect of the <code>remove</code>, unless a <code>commit</code> command intervened.  See [[#Removing files|Removing files]], for an example.
+
+: The &lsquo;<code>-k</code>&rsquo; option specifies the default way that this file will be checked out; for more information see [[cvs: Keyword substitution#Substitution modes|Substitution modes]].
+
+: The &lsquo;<code>-m</code>&rsquo; option specifies a description for the file.  This description appears in the history log (if it is enabled, see [[cvs: Reference manual for Administrative files#The history file|history file]]).  It will also be saved in the version history inside the repository when the file is committed.  The <code>log</code> command displays this description.  The description can be changed using &lsquo;<code>admin -t</code>&rsquo;.  See [[cvs: Guide to CVS commands#admin&mdash;Administration|admin]].  If you omit the &lsquo;<code>-m <var>description</var></code>&rsquo; flag, an empty string will be used.  You will not be prompted for a description.
+
+For example, the following commands add the file
 &lsquo;<tt>backend.c</tt>&rsquo; to the repository:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs add backend.c
  $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
 </div>
 </td></tr></table>
 
-<p>When you add a file it is added only on the branch
+When you add a file it is added only on the branch
 which you are working on (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  You can
 later merge the additions to another branch if you want
 (see [[cvs: Branching and merging#Merging can add or remove files|Merging adds and removals]]).
-</p>
+
 <hr>
 <div id="Removing-files"></div>
 <div class="header">
@@ -126,58 +96,40 @@ Next: [[#Removing directories|Removing directories]], Previous: [[#Adding files 
 <div id="index-Removing-files"></div>
 <div id="index-Deleting-files"></div>
 
-<p>Directories change.  New files are added, and old files
+Directories change.  New files are added, and old files
 disappear.  Still, you want to be able to retrieve an
 exact copy of old releases.
-</p>
-<p>Here is what you can do to remove a file,
+
+Here is what you can do to remove a file,
 but remain able to retrieve old revisions:
-</p>
-<ul>
-<li>
-Make sure that you have not made any uncommitted
-modifications to the file.  See [[cvs: Overview#Viewing differences|Viewing differences]],
-for one way to do that.  You can also use the
-<code>status</code> or <code>update</code> command.  If you remove
-the file without committing your changes, you will of
-course not be able to retrieve the file as it was
-immediately before you deleted it.
 
-</li><li>
-Remove the file from your working copy of the directory.
-You can for instance use <code>rm</code>.
 
-</li><li>
-Use &lsquo;<samp>cvs remove <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that
-you really want to delete the file.
+* Make sure that you have not made any uncommitted modifications to the file.  See [[cvs: Overview#Viewing differences|Viewing differences]], for one way to do that.  You can also use the <code>status</code> or <code>update</code> command.  If you remove the file without committing your changes, you will of course not be able to retrieve the file as it was immediately before you deleted it.
 
-</li><li>
-Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually
-perform the removal of the file from the repository.
-</li></ul>
 
-<p>When you commit the removal of the file, <small>CVS</small>
+* Remove the file from your working copy of the directory. You can for instance use <code>rm</code>.
+
+
+* Use &lsquo;<code>cvs remove <var>filename</var></code>&rsquo; to tell <small>CVS</small> that you really want to delete the file.
+
+
+* Use &lsquo;<code>cvs commit <var>filename</var></code>&rsquo; to actually perform the removal of the file from the repository.
+
+When you commit the removal of the file, <small>CVS</small>
 records the fact that the file no longer exists.  It is
 possible for a file to exist on only some branches and
 not on others, or to re-add another file with the same
 name later.  <small>CVS</small> will correctly create or not create
-the file, based on the &lsquo;<samp>-r</samp>&rsquo; and &lsquo;<samp>-D</samp>&rsquo; options
+the file, based on the &lsquo;<code>-r</code>&rsquo; and &lsquo;<code>-D</code>&rsquo; options
 specified to <code>checkout</code> or <code>update</code>.
-</p>
-<div id="index-Remove-_0028subcommand_0029"></div>
-<dl>
-<dt><div id="index-cvs-remove"></div>Command: <strong>cvs remove</strong><em> [options] files &hellip;</em></dt>
-<dd>
-<p>Schedule file(s) to be removed from the repository
-(files which have not already been removed from the
-working directory are not processed).  This command
-does not actually remove the file from the repository
-until you commit the removal.  For a full list of
-options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].
-</p></dd></dl>
 
-<p>Here is an example of removing several files:
-</p>
+<div id="index-Remove-_0028subcommand_0029"></div>
+;<div id="index-cvs-remove"></div>Command<nowiki>:</nowiki> <strong>cvs remove</strong><em> <nowiki>[</nowiki>options<nowiki>]</nowiki> files &hellip;</em>
+
+: Schedule file(s) to be removed from the repository (files which have not already been removed from the working directory are not processed).  This command does not actually remove the file from the repository until you commit the removal.  For a full list of options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].
+
+Here is an example of removing several files:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd test
  $ rm *.c
@@ -192,11 +144,11 @@ options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS comma
 </div>
 </td></tr></table>
 
-<p>As a convenience you can remove the file and <code>cvs
-remove</code> it in one step, by specifying the &lsquo;<samp>-f</samp>&rsquo;
+As a convenience you can remove the file and <code>cvs
+remove</code> it in one step, by specifying the &lsquo;<code>-f</code>&rsquo;
 option.  For example, the above example could also be
 done like this:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd test
  $ cvs remove -f *.c
@@ -209,10 +161,10 @@ done like this:
 </div>
 </td></tr></table>
 
-<p>If you execute <code>remove</code> for a file, and then
+If you execute <code>remove</code> for a file, and then
 change your mind before you commit, you can undo the
 <code>remove</code> with an <code>add</code> command.
-</p>
+
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ ls
@@ -227,10 +179,10 @@ change your mind before you commit, you can undo the
 </div>
 </td></tr></table>
 
-<p>If you realize your mistake before you run the
+If you realize your mistake before you run the
 <code>remove</code> command you can use <code>update</code> to
 resurrect the file:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ rm oj.c
  $ cvs update oj.c
@@ -239,11 +191,11 @@ resurrect the file:
 </div>
 </td></tr></table>
 
-<p>When you remove a file it is removed only on the branch
+When you remove a file it is removed only on the branch
 which you are working on (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  You can
 later merge the removals to another branch if you want
 (see [[cvs: Branching and merging#Merging can add or remove files|Merging adds and removals]]).
-</p>
+
 <hr>
 <div id="Removing-directories"></div>
 <div class="header">
@@ -255,32 +207,32 @@ Next: [[#Moving and renaming files|Moving files]], Previous: [[#Removing files|R
 <div id="index-Removing-directories"></div>
 <div id="index-Directories_002c-removing"></div>
 
-<p>In concept removing directories is somewhat similar to
+In concept removing directories is somewhat similar to
 removing files&mdash;you want the directory to not exist in
 your current working directories, but you also want to
 be able to retrieve old releases in which the directory
 existed.
-</p>
-<p>The way that you remove a directory is to remove all
+
+The way that you remove a directory is to remove all
 the files in it.  You don&rsquo;t remove the directory
 itself; there is no way to do that.
-Instead you specify the &lsquo;<samp>-P</samp>&rsquo; option to
+Instead you specify the &lsquo;<code>-P</code>&rsquo; option to
 <code>cvs update</code> or <code>cvs checkout</code>,
 which will cause <small>CVS</small> to remove empty
 directories from working directories.
 (Note that <code>cvs export</code> always removes empty directories.)
 Probably the
-best way to do this is to always specify &lsquo;<samp>-P</samp>&rsquo;; if
+best way to do this is to always specify &lsquo;<code>-P</code>&rsquo;; if
 you want an empty directory then put a dummy file (for
-example &lsquo;<tt>.keepme</tt>&rsquo;) in it to prevent &lsquo;<samp>-P</samp>&rsquo; from
+example &lsquo;<tt>.keepme</tt>&rsquo;) in it to prevent &lsquo;<code>-P</code>&rsquo; from
 removing it.
-</p>
-<p>Note that &lsquo;<samp>-P</samp>&rsquo; is implied by the &lsquo;<samp>-r</samp>&rsquo; or &lsquo;<samp>-D</samp>&rsquo;
+
+Note that &lsquo;<code>-P</code>&rsquo; is implied by the &lsquo;<code>-r</code>&rsquo; or &lsquo;<code>-D</code>&rsquo;
 options of <code>checkout</code>.  This way
 <small>CVS</small> will be able to correctly create the directory
 or not depending on whether the particular version you
 are checking out contains any files in that directory.
-</p>
+
 <hr>
 <div id="Moving-files"></div>
 <div class="header">
@@ -293,14 +245,14 @@ Next: [[#Moving and renaming directories|Moving directories]], Previous: [[#Remo
 <div id="index-Renaming-files"></div>
 <div id="index-Files_002c-moving"></div>
 
-<p>Moving files to a different directory or renaming them
+Moving files to a different directory or renaming them
 is not difficult, but some of the ways in which this
 works may be non-obvious.  (Moving or renaming a
 directory is even harder.  See [[#Moving and renaming directories|Moving directories]].).
-</p>
-<p>The examples below assume that the file <var>old</var> is renamed to
+
+The examples below assume that the file <var>old</var> is renamed to
 <var>new</var>.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[#The Normal way to Rename|&bull; Outside]]::                     The normal way to Rename
  [[#Moving the history file|&bull; Inside]]::                      A tricky, alternative way
@@ -317,11 +269,11 @@ Next: [[#Moving the history file|Inside]], Up: [[#Moving and renaming files|Movi
 ==== The Normal way to Rename ====
 
 
-<p>The normal way to move a file is to copy <var>old</var> to
+The normal way to move a file is to copy <var>old</var> to
 <var>new</var>, and then issue the normal <small>CVS</small> commands
 to remove <var>old</var> from the repository, and add
 <var>new</var> to it.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ mv <var>old</var> <var>new</var>
  $ cvs remove <var>old</var>
@@ -330,19 +282,19 @@ to remove <var>old</var> from the repository, and add
 </div>
 </td></tr></table>
 
-<p>This is the simplest way to move a file, it is not
+This is the simplest way to move a file, it is not
 error-prone, and it preserves the history of what was
 done.  Note that to access the history of the file you
 must specify the old or the new name, depending on what
 portion of the history you are accessing.  For example,
 <code>cvs log <var>old</var></code> will give the log up until the
 time of the rename.
-</p>
-<p>When <var>new</var> is committed its revision numbers will
+
+When <var>new</var> is committed its revision numbers will
 start again, usually at 1.1, so if that bothers you,
-use the &lsquo;<samp>-r rev</samp>&rsquo; option to commit.  For more
+use the &lsquo;<code>-r rev</code>&rsquo; option to commit.  For more
 information see [[cvs: Revisions#Assigning revisions|Assigning revisions]].
-</p>
+
 <hr>
 <div id="Inside"></div>
 <div class="header">
@@ -352,42 +304,34 @@ Next: [[#Copying the history file|Rename by copying]], Previous: [[#The Normal w
 <div id="Moving-the-history-file"></div>
 ==== Moving the history file ====
 
-<p>This method is more dangerous, since it involves moving
+This method is more dangerous, since it involves moving
 files inside the repository.  Read this entire section
 before trying it out!
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd $CVSROOT/<var>dir</var>
  $ mv <var>old</var>,v <var>new</var>,v
 </div>
 </td></tr></table>
 
-<p>Advantages:
-</p>
-<ul>
-<li>
-The log of changes is maintained intact.
+Advantages:
 
-</li><li>
-The revision numbers are not affected.
-</li></ul>
 
-<p>Disadvantages:
-</p>
-<ul>
-<li>
-Old releases cannot easily be fetched from the
-repository.  (The file will show up as <var>new</var> even
-in revisions from the time before it was renamed).
+* The log of changes is maintained intact.
 
-</li><li>
-There is no log information of when the file was renamed.
 
-</li><li>
-Nasty things might happen if someone accesses the history file
-while you are moving it.  Make sure no one else runs any of the <small>CVS</small>
-commands while you move it.
-</li></ul>
+* The revision numbers are not affected.
+
+Disadvantages:
+
+
+* Old releases cannot easily be fetched from the repository.  (The file will show up as <var>new</var> even in revisions from the time before it was renamed).
+
+
+* There is no log information of when the file was renamed.
+
+
+* Nasty things might happen if someone accesses the history file while you are moving it.  Make sure no one else runs any of the <small>CVS</small> commands while you move it.
 
 <hr>
 <div id="Rename-by-copying"></div>
@@ -398,9 +342,9 @@ Previous: [[#Moving the history file|Inside]], Up: [[#Moving and renaming files|
 <div id="Copying-the-history-file"></div>
 ==== Copying the history file ====
 
-<p>This way also involves direct modifications to the
+This way also involves direct modifications to the
 repository.  It is safe, but not without drawbacks.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  # <span class="roman" style="font-family:serif; font-weight:normal;">Copy the RCS file inside the repository</span>
  $ cd $CVSROOT/<var>dir</var>
@@ -419,31 +363,25 @@ repository.  It is safe, but not without drawbacks.
 </div>
 </td></tr></table>
 
-<p>By removing the tags you will be able to check out old
+By removing the tags you will be able to check out old
 revisions.
-</p>
-<p>Advantages:
-</p>
-<ul>
-<li>
-Checking out old revisions works correctly, as long as
-you use &lsquo;<samp>-r<var>tag</var></samp>&rsquo; and not &lsquo;<samp>-D<var>date</var></samp>&rsquo;
-to retrieve the revisions.
 
-</li><li>
-The log of changes is maintained intact.
+Advantages:
 
-</li><li>
-The revision numbers are not affected.
-</li></ul>
 
-<p>Disadvantages:
-</p>
-<ul>
-<li>
-You cannot easily see the history of the file across the rename.
+* Checking out old revisions works correctly, as long as you use &lsquo;<code>-r<var>tag</var></code>&rsquo; and not &lsquo;<code>-D<var>date</var></code>&rsquo; to retrieve the revisions.
 
-</li></ul>
+
+* The log of changes is maintained intact.
+
+
+* The revision numbers are not affected.
+
+Disadvantages:
+
+
+* You cannot easily see the history of the file across the rename.
+
 
 <hr>
 <div id="Moving-directories"></div>
@@ -457,24 +395,20 @@ Previous: [[#Moving and renaming files|Moving files]], Up: [[#Adding, removing, 
 <div id="index-Renaming-directories"></div>
 <div id="index-Directories_002c-moving"></div>
 
-<p>The normal way to rename or move a directory is to
+The normal way to rename or move a directory is to
 rename or move each file within it as described in
-[[#The Normal way to Rename|Outside]].  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
+[[#The Normal way to Rename|Outside]].  Then check out with the &lsquo;<code>-P</code>&rsquo;
 option, as described in [[#Removing directories|Removing directories]].
-</p>
-<p>If you really want to hack the repository to rename or
+
+If you really want to hack the repository to rename or
 delete a directory in the repository, you can do it
 like this:
-</p>
-<ol>
-<li>
-Inform everyone who has a checked out copy of the directory that the
-directory will be renamed.  They should commit all
-their changes, and remove their working copies,
-before you take the steps below.
 
-</li><li>
-Rename the directory inside the repository.
+
+# Inform everyone who has a checked out copy of the directory that the directory will be renamed.  They should commit all their changes, and remove their working copies, before you take the steps below.
+
+
+# Rename the directory inside the repository.
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd $CVSROOT/<var>parent-dir</var>
@@ -482,26 +416,23 @@ Rename the directory inside the repository.
 </div>
 </td></tr></table>
 
-</li><li>
-Fix the <small>CVS</small> administrative files, if necessary (for
-instance if you renamed an entire module).
 
-</li><li>
-Tell everyone that they can check out again and continue
-working.
+# Fix the <small>CVS</small> administrative files, if necessary (for instance if you renamed an entire module).
 
-</li></ol>
 
-<p>If someone had a working copy the <small>CVS</small> commands will
+# Tell everyone that they can check out again and continue working.
+
+
+If someone had a working copy the <small>CVS</small> commands will
 cease to work for him, until he removes the directory
 that disappeared inside the repository.
-</p>
-<p>It is almost always better to move the files in the
+
+It is almost always better to move the files in the
 directory instead of moving the directory.  If you move the
 directory you are unlikely to be able to retrieve old
 releases correctly, since they probably depend on the
 name of the directories.
-</p>
+
 <hr>
 <div class="header">
 <p>

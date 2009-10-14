@@ -1,0 +1,46 @@
+lightweight_markups.texi(,2) 
+lightweight_markups.texi(,3) @setfilename lightweight_markups.info
+lightweight_markups.texi(,4) 
+lightweight_markups.texi(,5) @node Top
+lightweight_markups.texi(,6) @top Test lightweight formats markup escaping.
+lightweight_markups.texi(,7) 
+lightweight_markups.texi(,8) @menu 
+lightweight_markups.texi(,9) * [[ @{@{template@}@} @}@}@}[ @verb{!:!} @code{''em '''strong ''''' em strong ''[[link]]''}::
+lightweight_markups.texi(,10) * Help@verb{!:!} something::
+lightweight_markups.texi(,11) * other chapter::
+lightweight_markups.texi(,12) * Simpler test ''' node::
+lightweight_markups.texi(,13) @end menu
+lightweight_markups.texi(,14) 
+lightweight_markups.texi(,15) @node [[ @{@{template@}@} @}@}@}[ @verb{!:!} @code{''em '''strong ''''' em strong ''[[link]]''}
+lightweight_markups.texi(,16) @chapter [[ @{@{template@}@} @}@}@}[ @verb{!:!} @code{''em '''strong ''''' em strong ''[[link]]''}
+lightweight_markups.texi(,17) 
+lightweight_markups.texi(,18) @anchor{anchor [[ @{@{}
+lightweight_markups.texi(,19) 
+lightweight_markups.texi(,20) @float f1 [[ @{@{, f2 ]] @}@}
+lightweight_markups.texi(,21) Float
+lightweight_markups.texi(,22) @caption{Caption [[ @{@{}
+lightweight_markups.texi(,23) @end float
+lightweight_markups.texi(,24) 
+lightweight_markups.texi(,25) @node Help@verb{!:!} something
+lightweight_markups.texi(,26) @chapter Help: something
+lightweight_markups.texi(,27) 
+lightweight_markups.texi(,28) @table @asis
+lightweight_markups.texi(,29) @item Something : other thing
+lightweight_markups.texi(,30) @end table
+lightweight_markups.texi(,31) 
+lightweight_markups.texi(,32) @ref{Simpler test ''' node}
+lightweight_markups.texi(,33) 
+lightweight_markups.texi(,34) @ref{Help@verb{!:!} something}.
+lightweight_markups.texi(,35) 
+lightweight_markups.texi(,36) @ref{[[ @{@{template@}@} @}@}@}[ @verb{!:!} @code{''em '''strong ''''' em strong ''[[link]]''}}
+lightweight_markups.texi(,37) 
+lightweight_markups.texi(,38) @ref{anchor [[ @{@{}
+lightweight_markups.texi(,39) 
+lightweight_markups.texi(,40) @node other chapter
+lightweight_markups.texi(,41) @chapter other chapter
+lightweight_markups.texi(,42) 
+lightweight_markups.texi(,43) @node Simpler test ''' node
+lightweight_markups.texi(,44) @chapter Simpler test '''
+lightweight_markups.texi(,45) 
+lightweight_markups.texi(,46) 
+lightweight_markups.texi(,47) @bye

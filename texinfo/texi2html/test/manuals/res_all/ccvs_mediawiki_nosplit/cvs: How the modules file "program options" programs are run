@@ -11,20 +11,20 @@ Previous: [[cvs: Module options#Module options|Module options]], Up: [[cvs: The 
 <div id="index-_002do_002c-in-modules-file-1"></div>
 <div id="index-_002de_002c-in-modules-file-1"></div>
 
-<p>For checkout, rtag, and export, the program is server-based, and as such the
+For checkout, rtag, and export, the program is server-based, and as such the
 following applies:-
-</p>
-<p>If using remote access methods (pserver, ext, etc.),
+
+If using remote access methods (pserver, ext, etc.),
 <small>CVS</small> will execute this program on the server from a temporary
 directory. The path is searched for this program.
-</p>
-<p>If using &ldquo;local access&rdquo; (on a local or remote NFS file system, i.e.
+
+If using &ldquo;local access&rdquo; (on a local or remote NFS file system, i.e.
 repository set just to a path),
 the program will be executed from the newly checked-out tree, if
 found there, or alternatively searched for in the path if not.
-</p>
-<p>The programs are all run after the operation has effectively
+
+The programs are all run after the operation has effectively
 completed.
-</p>
+
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -15,18 +15,18 @@ Next: [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]], Previou
 <div id="index-Changes_002c-copying-between-branches"></div>
 <div id="index-Modifications_002c-copying-between-branches"></div>
 
-<p><small>CVS</small> allows you to isolate changes onto a separate
+<small>CVS</small> allows you to isolate changes onto a separate
 line of development, known as a <em>branch</em>.  When you
 change files on a branch, those changes do not appear
 on the main trunk or other branches.
-</p>
-<p>Later you can move changes from one branch to another
+
+Later you can move changes from one branch to another
 branch (or the main trunk) by <em>merging</em>.  Merging
 involves first running <code>cvs update -j</code>, to merge
 the changes into the working directory.
 You can then commit that revision, and thus effectively
 copy the changes onto another branch.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: What branches are good for#What branches are good for|&bull; Branches motivation]]::         What branches are good for
  [[cvs: Creating a branch#Creating a branch|&bull; Creating a branch]]::           Creating a branch

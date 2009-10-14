@@ -11,7 +11,7 @@ Next: [[cvs: How files are stored in the CVSROOT directory#How files are stored 
 <div id="index-_0023cvs_002ewfl_002c-technical-details"></div>
 <div id="index-_0023cvs_002elock_002c-technical-details"></div>
 <div id="index-Locks_002c-cvs_002c-technical-details"></div>
-<p>For an introduction to <small>CVS</small> locks focusing on
+For an introduction to <small>CVS</small> locks focusing on
 user-visible behavior, see [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Concurrency]].  The
 following section is aimed at people who are writing
 tools which want to access a <small>CVS</small> repository without
@@ -20,9 +20,9 @@ repository.  If you find yourself confused by concepts
 described here, like <em>read lock</em>, <em>write lock</em>,
 and <em>deadlock</em>, you might consult the literature on
 operating systems or databases.
-</p>
+
 <div id="index-_0023cvs_002etfl"></div>
-<p>Any file in the repository with a name starting
+Any file in the repository with a name starting
 with &lsquo;<tt>#cvs.rfl.</tt>&rsquo; is a read lock.  Any file in
 the repository with a name starting with
 &lsquo;<tt>#cvs.wfl</tt>&rsquo; is a write lock.  Old versions of <small>CVS</small>
@@ -31,8 +31,8 @@ with &lsquo;<tt>#cvs.tfl</tt>&rsquo;, but they are not discussed here.
 The directory &lsquo;<tt>#cvs.lock</tt>&rsquo; serves as a master
 lock.  That is, one must obtain this lock first before
 creating any of the other locks.
-</p>
-<p>To obtain a readlock, first create the &lsquo;<tt>#cvs.lock</tt>&rsquo;
+
+To obtain a readlock, first create the &lsquo;<tt>#cvs.lock</tt>&rsquo;
 directory.  This operation must be atomic (which should
 be true for creating a directory under most operating
 systems).  If it fails because the directory already
@@ -45,8 +45,8 @@ identification number).  Then remove the
 Then proceed with reading the repository.  When you are
 done, remove the &lsquo;<tt>#cvs.rfl</tt>&rsquo; file to release the
 read lock.
-</p>
-<p>To obtain a writelock, first create the
+
+To obtain a writelock, first create the
 &lsquo;<tt>#cvs.lock</tt>&rsquo; directory, as with a readlock.  Then
 check that there are no files whose names start with
 &lsquo;<tt>#cvs.rfl.</tt>&rsquo;.  If there are, remove
@@ -62,8 +62,8 @@ remove the &lsquo;<tt>#cvs.wfl</tt>&rsquo; file and then the
 informational; it has no effect on the locking operation
 beyond what is provided by holding on to the
 &lsquo;<tt>#cvs.lock</tt>&rsquo; lock itself.
-</p>
-<p>Note that each lock (writelock or readlock) only locks
+
+Note that each lock (writelock or readlock) only locks
 a single directory in the repository, including
 &lsquo;<tt>Attic</tt>&rsquo; and &lsquo;<tt>CVS</tt>&rsquo; but not including
 subdirectories which represent other directories under
@@ -71,15 +71,15 @@ version control.  To lock an entire tree, you need to
 lock each directory (note that if you fail to obtain
 any lock you need, you must release the whole tree
 before waiting and trying again, to avoid deadlocks).
-</p>
-<p>Note also that <small>CVS</small> expects writelocks to control
+
+Note also that <small>CVS</small> expects writelocks to control
 access to individual &lsquo;<tt>foo,v</tt>&rsquo; files.  <small>RCS</small> has
 a scheme where the &lsquo;<tt>,foo,</tt>&rsquo; file serves as a lock,
 but <small>CVS</small> does not implement it and so taking out a
 <small>CVS</small> writelock is recommended.  See the comments at
 rcs_internal_lockfile in the <small>CVS</small> source code for
 further discussion/rationale.
-</p>
+
 <hr>
 <div class="header">
 <p>

@@ -9,78 +9,42 @@ Next: [[cvs: Using keywords#Using keywords|Using keywords]], Up: [[cvs: Keyword 
 <div id="index-Keyword-List"></div>
 
 
-<p>This is a list of the keywords:
-</p>
-<dl compact="compact">
-<dd><div id="index-Author-keyword"></div>
-</dd>
-<dt><code>$<i></i>Author$</code></dt>
-<dd><p>The login name of the user who checked in the revision.
-</p>
+This is a list of the keywords:
+
+<div id="index-Author-keyword"></div>
+;<code>$<i></i>Author$</code>
+: The login name of the user who checked in the revision.
+
 <div id="index-CVSHeader-keyword"></div>
-</dd>
-<dt><code>$<i></i>CVSHeader</code></dt>
-<dd><p>A standard header (similar to $<i></i>Header$, but with
-the CVS root stripped off). It contains the relative
-pathname of the <small>RCS</small> file to the CVS root, the
-revision number, the date (UTC), the author, the state,
-and the locker (if locked). Files will normally never
-be locked when you use <small>CVS</small>.
-</p>
-<p>Note that this keyword has only been recently
-introduced to <small>CVS</small> and may cause problems with
-existing installations if $<i></i>CVSHeader$ is already
-in the files for a different purpose. This keyword may
-be excluded using the <code>KeywordExpansion=eCVSHeader</code>
-in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file. 
-See [[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion|Configuring keyword expansion]] for more details.
-</p>
+;<code>$<i></i>CVSHeader</code>
+: A standard header (similar to $<i></i>Header$, but with the CVS root stripped off). It contains the relative pathname of the <small>RCS</small> file to the CVS root, the revision number, the date (UTC), the author, the state, and the locker (if locked). Files will normally never be locked when you use <small>CVS</small>.
+
+: Note that this keyword has only been recently introduced to <small>CVS</small> and may cause problems with existing installations if $<i></i>CVSHeader$ is already in the files for a different purpose. This keyword may be excluded using the <code>KeywordExpansion=eCVSHeader</code> in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file.  See [[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion|Configuring keyword expansion]] for more details.
+
 <div id="index-Date-keyword"></div>
-</dd>
-<dt><code>$<i></i>Date$</code></dt>
-<dd><p>The date and time (UTC) the revision was checked in.
-</p>
+;<code>$<i></i>Date$</code>
+: The date and time (UTC) the revision was checked in.
+
 <div id="index-Header-keyword"></div>
-</dd>
-<dt><code>$<i></i>Header$</code></dt>
-<dd><p>A standard header containing the full pathname of the
-<small>RCS</small> file, the revision number, the date (UTC), the
-author, the state, and the locker (if locked).  Files
-will normally never be locked when you use <small>CVS</small>.
-</p>
+;<code>$<i></i>Header$</code>
+: A standard header containing the full pathname of the <small>RCS</small> file, the revision number, the date (UTC), the author, the state, and the locker (if locked).  Files will normally never be locked when you use <small>CVS</small>.
+
 <div id="index-Id-keyword"></div>
-</dd>
-<dt><code>$<i></i>Id$</code></dt>
-<dd><p>Same as <code>$<i></i>Header$</code>, except that the <small>RCS</small>
-filename is without a path.
-</p>
+;<code>$<i></i>Id$</code>
+: Same as <code>$<i></i>Header$</code>, except that the <small>RCS</small> filename is without a path.
+
 <div id="index-Name-keyword"></div>
-</dd>
-<dt><code>$<i></i>Name$</code></dt>
-<dd><p>Tag name used to check out this file.  The keyword is
-expanded only if one checks out with an explicit tag
-name.  For example, when running the command <code>cvs
-co -r first</code>, the keyword expands to &lsquo;<samp>Name: first</samp>&rsquo;.
-</p>
+;<code>$<i></i>Name$</code>
+: Tag name used to check out this file.  The keyword is expanded only if one checks out with an explicit tag name.  For example, when running the command <code>cvs co -r first</code>, the keyword expands to &lsquo;<code>Name: first</code>&rsquo;.
+
 <div id="index-Locker-keyword"></div>
-</dd>
-<dt><code>$<i></i>Locker$</code></dt>
-<dd><p>The login name of the user who locked the revision
-(empty if not locked, which is the normal case unless
-<code>cvs admin -l</code> is in use).
-</p>
+;<code>$<i></i>Locker$</code>
+: The login name of the user who locked the revision (empty if not locked, which is the normal case unless <code>cvs admin -l</code> is in use).
+
 <div id="index-Log-keyword"></div>
-</dd>
-<dt><code>$<i></i>Log$</code></dt>
-<dd><p>The log message supplied during commit, preceded by a
-header containing the <small>RCS</small> filename, the revision
-number, the author, and the date (UTC).  Existing log
-messages are <em>not</em> replaced.  Instead, the new log
-message is inserted after <code>$<i></i>Log:&hellip;$</code>.
-Each new line is prefixed with the same string which
-precedes the <code>$Log</code> keyword.  For example, if the
-file contains:
-</p>
+;<code>$<i></i>Log$</code>
+: The log message supplied during commit, preceded by a header containing the <small>RCS</small> filename, the revision number, the author, and the date (UTC).  Existing log messages are ''not'' replaced.  Instead, the new log message is inserted after <code>$<i></i>Log:&hellip;$</code>. Each new line is prefixed with the same string which precedes the <code>$Log</code> keyword.  For example, if the file contains:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
    /* Here is what people have been up to:
     *
@@ -92,49 +56,28 @@ file contains:
 </div>
 </td></tr></table>
 
-<p>then additional lines which are added when expanding
-the <code>$Log</code> keyword will be preceded by &lsquo;<samp>   * </samp>&rsquo;.
-Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the
-<em>comment leader</em> from the <small>RCS</small> file is not used.
-The <code>$Log</code> keyword is useful for
-accumulating a complete change log in a source file,
-but for several reasons it can be problematic.
-See [[cvs: Problems with the $ Log$ keyword.#Problems with the $ <i></i>Log$ keyword.|Log keyword]].
-</p>
+: then additional lines which are added when expanding the <code>$Log</code> keyword will be preceded by &lsquo;<code>   * </code>&rsquo;. Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the <em>comment leader</em> from the <small>RCS</small> file is not used. The <code>$Log</code> keyword is useful for accumulating a complete change log in a source file, but for several reasons it can be problematic. See [[cvs: Problems with the $ Log$ keyword.#Problems with the $ Log$ keyword.|Log keyword]].
+
 <div id="index-RCSfile-keyword"></div>
-</dd>
-<dt><code>$<i></i>RCSfile$</code></dt>
-<dd><p>The name of the RCS file without a path.
-</p>
+;<code>$<i></i>RCSfile$</code>
+: The name of the RCS file without a path.
+
 <div id="index-Revision-keyword"></div>
-</dd>
-<dt><code>$<i></i>Revision$</code></dt>
-<dd><p>The revision number assigned to the revision.
-</p>
+;<code>$<i></i>Revision$</code>
+: The revision number assigned to the revision.
+
 <div id="index-Source-keyword"></div>
-</dd>
-<dt><code>$<i></i>Source$</code></dt>
-<dd><p>The full pathname of the RCS file.
-</p>
+;<code>$<i></i>Source$</code>
+: The full pathname of the RCS file.
+
 <div id="index-State-keyword"></div>
-</dd>
-<dt><code>$<i></i>State$</code></dt>
-<dd><p>The state assigned to the revision.  States can be
-assigned with <code>cvs admin -s</code>&mdash;see [[cvs: admin options#admin options|admin options]].
-</p>
+;<code>$<i></i>State$</code>
+: The state assigned to the revision.  States can be assigned with <code>cvs admin -s</code>&mdash;see [[cvs: admin options#admin options|admin options]].
+
 <div id="index-Local-keyword"></div>
-</dd>
-<dt><code>Local keyword</code></dt>
-<dd><p>The <code>LocalKeyword</code> option in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file
-may be used to specify a local keyword which is to be
-used as an alias for one of the other keywords. For
-example, if the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file contains
-a line with <code>LocalKeyword=MYBSD=CVSHeader</code>, then a
-file with the local keyword $<i></i>MYBSD$ will be
-expanded as if it were a $<i></i>CVSHeader$ keyword. If
-the src/frob.c file contained this keyword, it might
-look something like this:
-</p>
+;<code>Local keyword</code>
+: The <code>LocalKeyword</code> option in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file may be used to specify a local keyword which is to be used as an alias for one of the other keywords. For example, if the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file contains a line with <code>LocalKeyword=MYBSD=CVSHeader</code>, then a file with the local keyword $<i></i>MYBSD$ will be expanded as if it were a $<i></i>CVSHeader$ keyword. If the src/frob.c file contained this keyword, it might look something like this:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
    /*
     * $<i></i>MYBSD: src/frob.c,v 1.1 2003/05/04 09:27:45 john Exp $ 
@@ -142,38 +85,14 @@ look something like this:
 </div>
 </td></tr></table>
 
-<p>Many repositories make use of a such a &ldquo;local
-keyword&rdquo; feature. An old patch to <small>CVS</small> provided
-the <code>LocalKeyword</code> feature using a <code>tag=</code>
-option and called this the &ldquo;custom tag&rdquo; or &ldquo;local
-tag&rdquo; feature. It was used in conjunction with the
-what they called the <code>tagexpand=</code> option. In
-<small>CVS</small> this other option is known as the
-<code>KeywordExpand</code> option. 
-See [[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion|Configuring keyword expansion]] for more
-details.
-</p>
-<p>Examples from popular projects include:
-$<i></i>FreeBSD$, $<i></i>NetBSD$,
-$<i></i>OpenBSD$, $<i></i>XFree86$,
-$<i></i>Xorg$.
-</p>
-<p>The advantage of this is that you can include your
-local version information in a file using this local
-keyword without disrupting the upstream version
-information (which may be a different local keyword or
-a standard keyword). Allowing bug reports and the like
-to more properly identify the source of the original
-bug to the third-party and reducing the number of
-conflicts that arise during an import of a new version.
-</p>
-<p>All keyword expansion except the local keyword may be
-disabled using the <code>KeywordExpansion</code> option in
-the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see 
-[[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion|Configuring keyword expansion]] for more details.
-</p>
-</dd>
-</dl>
+: Many repositories make use of a such a &ldquo;local keyword&rdquo; feature. An old patch to <small>CVS</small> provided the <code>LocalKeyword</code> feature using a <code>tag=</code> option and called this the &ldquo;custom tag&rdquo; or &ldquo;local tag&rdquo; feature. It was used in conjunction with the what they called the <code>tagexpand=</code> option. In <small>CVS</small> this other option is known as the <code>KeywordExpand</code> option.  See [[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion|Configuring keyword expansion]] for more details.
+
+: Examples from popular projects include: $<i></i>FreeBSD$, $<i></i>NetBSD$, $<i></i>OpenBSD$, $<i></i>XFree86$, $<i></i>Xorg$.
+
+: The advantage of this is that you can include your local version information in a file using this local keyword without disrupting the upstream version information (which may be a different local keyword or a standard keyword). Allowing bug reports and the like to more properly identify the source of the original bug to the third-party and reducing the number of conflicts that arise during an import of a new version.
+
+: All keyword expansion except the local keyword may be disabled using the <code>KeywordExpansion</code> option in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see  [[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion|Configuring keyword expansion]] for more details.
+
 
 <hr>
 <div class="header">

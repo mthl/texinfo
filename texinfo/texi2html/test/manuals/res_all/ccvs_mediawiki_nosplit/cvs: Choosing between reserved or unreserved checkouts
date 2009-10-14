@@ -8,7 +8,7 @@ Previous: [[cvs: Mechanisms to track who is editing files#Mechanisms to track wh
 === Choosing between reserved or unreserved checkouts ===
 <div id="index-Choosing_002c-reserved-or-unreserved-checkouts"></div>
 
-<p>Reserved and unreserved checkouts each have pros and
+Reserved and unreserved checkouts each have pros and
 cons.  Let it be said that a lot of this is a matter of
 opinion or what works given different groups&rsquo; working
 styles, but here is a brief description of some of the
@@ -16,30 +16,30 @@ issues.  There are many ways to organize a team of
 developers.  <small>CVS</small> does not try to enforce a certain
 organization.  It is a tool that can be used in several
 ways.
-</p>
-<p>Reserved checkouts can be very counter-productive.  If
+
+Reserved checkouts can be very counter-productive.  If
 two persons want to edit different parts of a file,
 there may be no reason to prevent either of them from
 doing so.  Also, it is common for someone to take out a
 lock on a file, because they are planning to edit it,
 but then forget to release the lock.
-</p>
-<p>People, especially people who are familiar with
+
+People, especially people who are familiar with
 reserved checkouts, often wonder how often conflicts
 occur if unreserved checkouts are used, and how
 difficult they are to resolve.  The experience with
 many groups is that they occur rarely and usually are
 relatively straightforward to resolve.
-</p>
-<p>The rarity of serious conflicts may be surprising, until one realizes
+
+The rarity of serious conflicts may be surprising, until one realizes
 that they occur only when two developers disagree on the proper design
 for a given section of code; such a disagreement suggests that the
 team has not been communicating properly in the first place.  In order
-to collaborate under <em>any</em> source management regimen, developers
+to collaborate under ''any'' source management regimen, developers
 must agree on the general design of the system; given this agreement,
 overlapping changes are usually straightforward to merge.
-</p>
-<p>In some cases unreserved checkouts are clearly
+
+In some cases unreserved checkouts are clearly
 inappropriate.  If no merge tool exists for the kind of
 file you are managing (for example word processor files
 or files edited by Computer Aided Design programs), and
@@ -48,8 +48,8 @@ mergeable data format, then resolving conflicts is
 going to be unpleasant enough that you generally will
 be better off to simply avoid the conflicts instead, by
 using reserved checkouts.
-</p>
-<p>The watches features described above in [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]]
+
+The watches features described above in [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]]
 can be considered to be an intermediate model between
 reserved checkouts and unreserved checkouts.  When you
 go to edit a file, it is possible to find out who else
@@ -60,7 +60,7 @@ whether it is a problem in that particular case or not.
 Therefore, for some groups it can be considered the
 best of both the reserved checkout and unreserved
 checkout worlds.
-</p>
+
 <hr>
 <div class="header">
 <p>

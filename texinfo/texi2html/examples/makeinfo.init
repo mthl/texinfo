@@ -176,14 +176,6 @@ sub makeinfo_like_paragraph ($$$$$$$$$$$$$)
     #$paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or
     #      exists($special_list_commands{$format}->{$paragraph_command}));
     return '' if ($text =~ /^\s*$/);
-    foreach my $style(t2h_collect_styles($command_stack_at_begin))
-    {
-       $text = t2h_begin_style($style, $text);
-    }
-    foreach my $style(t2h_collect_styles($command_stack_at_end))
-    {
-       $text = t2h_end_style($style, $text);
-    }
     if (defined($paragraph_number) and defined($$paragraph_number))
     {
          $$paragraph_number++;

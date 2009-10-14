@@ -1,3 +1,35 @@
+2009-10-14   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, texi2html.init, formats/*: add 'inline_attribute' 
+	for an XML attribute that should be closed at paragraph end and 
+	reopened at paragraph begin. Consequently the closing and opening 
+	of 'attribute' isn't done anymore in paragraph and preformatted.
+	Add a new interface for substitutions in normal text, with 
+	t2h_add_text_substitutions, t2h_remove_text_substitutions,
+	@text_substitutions_normal, @text_substitutions_texi,
+	@text_substitutions_simple_format, @text_substitutions_pre and
+	t2h_text_substitutions.
+	USE_ISO now only determines if '', `` --- and -- are transformed
+	into entities. t2h_default_set_iso_symbols sets or unsets USE_ISO,
+	%things_map/%pre_map/%simple_format_simple_map_texi, 
+	$OPEN_QUOTE_SYMBOL and $CLOSE_QUOTE_SYMBOL.
+	%iso_symbols is unused now.
+	Transform ' and ` when doing utf8 text and in simple_formats.
+	Set correctly $Texi2HTML::THISDOC{'line_nr'} in substitute_text.
+	* T2h_i18n.pm: ensures that %@{something@} really leads to 
+	%{something}. This means that @{ in a string to be translated will
+	always be rendered as {, whatever the format. Having a @{ in a 
+	translated string, however, should hopefully not happen.
+	* doc/texi2html.texi: remove the old string interface for style
+	commands from the documentation. Support for this interface is
+	untested since a long time. The new interface is documented since
+	2004-01-19 (release 1.68).
+	* examples/mediawiki.init: more use of wikitext instead of 
+	html. 
+	Warn for characters that shouldn't appear in mediawiki
+	titles and references.
+	* maintained_extra/chm.init: avoid entities in .hh* files.
+
 2009-10-06   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, formats/html.init: add the 

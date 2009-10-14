@@ -10,7 +10,7 @@ Next: [[cvs: Creating a branch#Creating a branch|Creating a branch]], Up: [[cvs:
 <div id="index-What-branches-are-good-for"></div>
 <div id="index-Motivation-for-branches"></div>
 
-<p>Suppose that release 1.0 of tc has been made.  You are continuing to
+Suppose that release 1.0 of tc has been made.  You are continuing to
 develop tc, planning to create release 1.1 in a couple of months.  After a
 while your customers start to complain about a fatal bug.  You check
 out release 1.0 (see [[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revisions|Tags]]) and find the bug
@@ -18,12 +18,12 @@ out release 1.0 (see [[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revision
 of the sources are in a state of flux and are not expected to be stable
 for at least another month.  There is no way to make a
 bugfix release based on the newest sources.
-</p>
-<p>The thing to do in a situation like this is to create a <em>branch</em> on
+
+The thing to do in a situation like this is to create a <em>branch</em> on
 the revision trees for all the files that make up
 release 1.0 of tc.  You can then make
 modifications to the branch without disturbing the main trunk.  When the
 modifications are finished you can elect to either incorporate them on
 the main trunk, or leave them on the branch.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -7,12 +7,12 @@ Next: [[cvs: Merging and keywords#Merging and keywords|Merging and keywords]], P
 <div id="Merging-can-add-or-remove-files"></div>
 === Merging can add or remove files ===
 
-<p>If the changes which you are merging involve removing
+If the changes which you are merging involve removing
 or adding some files, <code>update -j</code> will reflect
 such additions or removals.
-</p>
-<p>For example:
-</p><table><tr><td>&nbsp;</td><td><div class="example">
+
+For example:
+<table><tr><td>&nbsp;</td><td><div class="example">
  cvs update -A
  touch a b c
  cvs add a b c ; cvs ci -m &quot;added&quot; a b c
@@ -26,16 +26,16 @@ such additions or removals.
 </div>
 </td></tr></table>
 
-<p>After these commands are executed and a &lsquo;<samp>cvs commit</samp>&rsquo; is done,
+After these commands are executed and a &lsquo;<code>cvs commit</code>&rsquo; is done,
 file &lsquo;<tt>a</tt>&rsquo; will be removed and file &lsquo;<tt>d</tt>&rsquo; added in the main branch.
-</p>
-<p>Note that using a single static tag (&lsquo;<samp>-j <var>tagname</var></samp>&rsquo;)
-rather than a dynamic tag (&lsquo;<samp>-j <var>branchname</var></samp>&rsquo;) to merge
+
+Note that using a single static tag (&lsquo;<code>-j <var>tagname</var></code>&rsquo;)
+rather than a dynamic tag (&lsquo;<code>-j <var>branchname</var></code>&rsquo;) to merge
 changes from a branch will usually not remove files which were removed on the
 branch since <small>CVS</small> does not automatically add static tags to dead revisions.
 The exception to this rule occurs when
 a static tag has been attached to a dead revision manually.  Use the branch tag
 to merge all changes from the branch or use two static tags as merge endpoints
 to be sure that all intended changes are propagated in the merge.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

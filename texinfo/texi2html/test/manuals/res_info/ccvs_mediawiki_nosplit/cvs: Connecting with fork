@@ -9,14 +9,14 @@ Previous: [[cvs: Direct connection with kerberos#Direct connection with kerberos
 
 <div id="index-fork_002c-access-method"></div>
 <div id="index-_003afork_003a_002c-setting-up"></div>
-<p>This access method allows you to connect to a
+This access method allows you to connect to a
 repository on your local disk via the remote protocol.
 In other words it does pretty much the same thing as
 <code>:local:</code>, but various quirks, bugs and the like are
 those of the remote <small>CVS</small> rather than the local
 <small>CVS</small>.
-</p>
-<p>For day-to-day operations you might prefer either
+
+For day-to-day operations you might prefer either
 <code>:local:</code> or <code>:fork:</code>, depending on your
 preferences.  Of course <code>:fork:</code> comes in
 particularly handy in testing or
@@ -25,19 +25,19 @@ Specifically, we avoid all of the network-related
 setup/configuration, timeouts, and authentication
 inherent in the other remote access methods but still
 create a connection which uses the remote protocol.
-</p>
-<p>To connect using the <code>fork</code> method, use
-&lsquo;<samp>:fork:</samp>&rsquo; and the pathname to your local
+
+To connect using the <code>fork</code> method, use
+&lsquo;<code>:fork:</code>&rsquo; and the pathname to your local
 repository.  For example:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs -d :fork:/usr/local/cvsroot checkout foo
 </div>
 </td></tr></table>
 
 <div id="index-CVS_005fSERVER_002c-and-_003afork_003a"></div>
-<p>As with <code>:ext:</code>, the server is called &lsquo;<samp>cvs</samp>&rsquo;
+As with <code>:ext:</code>, the server is called &lsquo;<code>cvs</code>&rsquo;
 by default, or the value of the <code>CVS_SERVER</code>
 environment variable.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

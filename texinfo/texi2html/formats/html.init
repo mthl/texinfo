@@ -6,11 +6,13 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.30 2009-10-06 13:35:58 pertusus Exp $
+# $Id: html.init,v 1.31 2009-10-14 13:08:37 pertusus Exp $
 
 use strict;
 
-my  @html_default_multitable_stack;
+use vars qw(@html_default_multitable_stack);
+# used in mediawiki.init
+#my  @html_default_multitable_stack;
 # tracks menu entry index
 my $html_menu_entry_index;
 # the simple_formatted document title
@@ -58,13 +60,7 @@ $SHOW_MENU = 1;
 
 $SHOW_TITLE = 1;
 
-#$USE_NODES = undef;
-
-#$USE_SECTIONS = 1;
-
-#$USE_NODES = 1;
-#$USE_SECTIONS = undef;
-
+# default is to use nodes only as elements.
 $USE_SECTIONS = undef;
 
 $TOP_FILE = 'index.html';
@@ -452,7 +448,8 @@ $simple_map{"\n"} = '&nbsp;';
 %simple_map_pre = %simple_map;
 $simple_map_pre{'*'} = "\n";
 
-$things_map{'dots'} = '<small class="dots">...</small>';
+# use entities in the default case
+#$things_map{'dots'} = '<small class="dots">...</small>';
 $things_map{'enddots'} = '<small class="enddots">...</small>';
 
 %style_map = ();
@@ -461,34 +458,34 @@ t2h_default_copy_style_map (\%default_style_map, \%style_map);
 t2h_default_copy_style_map (\%default_style_map_pre, \%style_map_pre);
 # default is {'args' => ['normal'], 'attribute' => ''},   
 my %style_map_html = (
-      'b',          {'attribute' => 'b'},
-      'cite',       {'attribute' => 'cite'},
-      'code',       {'attribute' => 'code'},
-      'command',    {'attribute' => 'code'},
-      'dfn',        {'attribute' => 'em'}, 
+      'b',          {'inline_attribute' => 'b'},
+      'cite',       {'inline_attribute' => 'cite'},
+      'code',       {'inline_attribute' => 'code'},
+      'command',    {'inline_attribute' => 'code'},
+      'dfn',        {'inline_attribute' => 'em'}, 
       'email',      {'function' => \&html_default_email},
-      'emph',       {'attribute' => 'em'}, 
-      'env',        {'attribute' => 'code'},
-      'file',       {'attribute' => 'tt', 'quote' => '"'},
-      'headitemfont', {'attribute' => 'b'}, # not really that, in fact it is 
+      'emph',       {'inline_attribute' => 'em'}, 
+      'env',        {'inline_attribute' => 'code'},
+      'file',       {'inline_attribute' => 'tt', 'quote' => '"'},
+      'headitemfont', {'inline_attribute' => 'b'}, # not really that, in fact it is 
                                            # in <th> rather than <td>
-      'i',          {'attribute' => 'i'},
-      'slanted',    {'attribute' => 'i'},
-      'sansserif',  {'attribute' => 'span class="sansserif"'},
-      'kbd',        {'attribute' => 'kbd'},
+      'i',          {'inline_attribute' => 'i'},
+      'slanted',    {'inline_attribute' => 'i'},
+      'sansserif',  {'inline_attribute' => 'span class="sansserif"'},
+      'kbd',        {'inline_attribute' => 'kbd'},
       'key',        {'begin' => '&lt;', 'end' => '&gt;'},
       'math',       {'function' => \&html_default_math},
-      'option',     {'attribute' => 'samp', 'quote' => '"'},
-      'r',          {'attribute' => 'span class="roman"'},
-      'samp',       {'attribute' => 'samp', 'quote' => '"'},
-      'sc',         {'attribute' => 'small'},
-      'strong',     {'attribute' => 'strong'},
-      't',          {'attribute' => 'tt'},
+      'option',     {'inline_attribute' => 'samp', 'quote' => '"'},
+      'r',          {'inline_attribute' => 'span class="roman"'},
+      'samp',       {'inline_attribute' => 'samp', 'quote' => '"'},
+      'sc',         {'inline_attribute' => 'small'},
+      'strong',     {'inline_attribute' => 'strong'},
+      't',          {'inline_attribute' => 'tt'},
       'uref',       {'function' => \&html_default_uref}, 
       'url',        {'function' => \&html_default_uref},
       'indicateurl', {'begin' => '&lt;<code>', 'end' => '</code>&gt;'},
-      'var',        {'attribute' => 'var'},
-      'verb',       {'attribute' => 'tt'},
+      'var',        {'inline_attribute' => 'var'},
+      'verb',       {'inline_attribute' => 'tt'},
      );
 
 foreach my $style_command (keys(%style_map_html))
@@ -1787,11 +1784,6 @@ sub html_default_normal_text($$$$$$;$)
            $text =~ s/--/\&ndash\;/g;
            $text =~ s/``/\&ldquo\;/g;
            $text =~ s/''/\&rdquo\;/g;
-           if (! $in_simple)
-           { # lquot and rquot don't seem to be accepted in title.
-               $text =~ s/'/$iso_symbols{"'"}/g if (defined ($iso_symbols{"'"}));
-               $text =~ s/`/$iso_symbols{'`'}/g if (defined ($iso_symbols{'`'}));
-           }
        }
        else
        {
@@ -1814,6 +1806,7 @@ sub html_default_normal_text($$$$$$;$)
             $text =~ s/\x{1F}/--/g;
        }
    }
+   $text = t2h_text_substitutions($text, $in_raw_text, ($in_preformatted or $in_code), $in_simple);
    return $text;
 }
 
@@ -2284,30 +2277,6 @@ sub html_default_table_list($$$$$$$$$)
     }
 }
 
-sub html_begin_style($$;$)
-{
-    my $command = shift;
-    my $text = shift;
-    my $map_ref = shift;
-    my $attribute = t2h_get_attribute($command,$map_ref);
-    $attribute = "<$attribute>" if ($attribute ne '');
-    return $attribute.$text;
-}
-
-sub html_end_style($$;$)
-{
-    my $command = shift;
-    my $text = shift;
-    my $map_ref = shift;
-    my $attribute = t2h_get_attribute($command,$map_ref);
-    if ($attribute =~ /^(\w+)/)
-    {
-        $attribute = $1;
-    }
-    $attribute = "</$attribute>" if ($attribute ne '');
-    return $text.$attribute;
-}
-
 # a paragraph
 # arguments:
 # $text of the paragraph
@@ -2338,15 +2307,6 @@ sub html_default_paragraph($$$$$$$$$$$$)
 #    $paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or 
 #          exists($special_list_commands{$format}->{$paragraph_command}));
     return '' if ($text =~ /^\s*$/);
-
-    foreach my $style(t2h_collect_styles($command_stack_at_begin))
-    {
-       $text = html_begin_style($style, $text);
-    }
-    foreach my $style(t2h_collect_styles($command_stack_at_end))
-    {
-       $text = html_end_style($style, $text);
-    }
 
     if (defined($paragraph_number) and defined($$paragraph_number))
     {
@@ -2415,14 +2375,6 @@ sub html_default_preformatted($$$$$$$$$$$$)
        $text =~ s/\s*$//;
     }
 
-    foreach my $style(t2h_collect_styles($command_stack_at_begin))
-    {
-       $text = html_begin_style($style, $text, \%style_map_pre);
-    }
-    foreach my $style(t2h_collect_styles($command_stack_at_end))
-    {
-       $text = html_end_style($style, $text, \%style_map_pre);
-    }
     return html_default_attribute_class('pre', $class).">".$text."</pre>";
 }
 
@@ -2803,7 +2755,7 @@ sub html_default_index_letter($$$)
      my $id = shift;
      my $text = shift;
      return $text if ($letter =~ /^\s*$/);
-     return '<tr><th>' . &$anchor($id,'',&$protect_text($letter)) . 
+     return '<tr><th>' . &$anchor($id,'',&$normal_text($letter, 0, 0, 0, 0, [])) . 
      "</th><td></td><td></td></tr>\n" . $text . 
      "<tr><td colspan=\"4\"> $DEFAULT_RULE</td></tr>\n";
 }

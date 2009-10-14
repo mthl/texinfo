@@ -7,9 +7,9 @@ Previous: [[cvs: Creating Files From Other Version Control Systems#Creating File
 <div id="Creating-a-directory-tree-from-scratch"></div>
 ==== Creating a directory tree from scratch ====
 
-<p>For a new project, the easiest thing to do is probably
+For a new project, the easiest thing to do is probably
 to create an empty directory structure, like this:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ mkdir tc
  $ mkdir tc/man
@@ -17,20 +17,20 @@ to create an empty directory structure, like this:
 </div>
 </td></tr></table>
 
-<p>After that, you use the <code>import</code> command to create
+After that, you use the <code>import</code> command to create
 the corresponding (empty) directory structure inside
 the repository:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd tc
  $ cvs import -m &quot;Created directory structure&quot; yoyodyne/<var>dir</var> yoyo start
 </div>
 </td></tr></table>
 
-<p>Then, use <code>add</code> to add files (and new directories)
+Then, use <code>add</code> to add files (and new directories)
 as they appear.
-</p>
-<p>Check that the permissions <small>CVS</small> sets on the
+
+Check that the permissions <small>CVS</small> sets on the
 directories inside <code>$CVSROOT</code> are reasonable.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

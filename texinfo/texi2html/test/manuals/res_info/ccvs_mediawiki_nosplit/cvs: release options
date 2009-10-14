@@ -7,22 +7,11 @@ Next: [[cvs: release output#release output|release output]], Up: [[cvs: release-
 <div id="release-options-1"></div>
 ==== release options ====
 
-<p>The <code>release</code> command supports one command option:
-</p>
-<dl compact="compact">
-<dt><code>-d</code></dt>
-<dd><p>Delete your working copy of the file if the release
-succeeds.  If this flag is not given your files will
-remain in your working directory.
-</p>
-<p><strong>WARNING:  The <code>release</code> command deletes
-all directories and files recursively.  This
-has the very serious side-effect that any directory
-that you have created inside your checked-out sources,
-and not added to the repository (using the <code>add</code>
-command; see [[cvs: Adding files to a directory#Adding files to a directory|Adding files]]) will be silently deleted&mdash;even
-if it is non-empty!</strong>
-</p></dd>
-</dl>
+The <code>release</code> command supports one command option:
+
+;<code>-d</code>
+: Delete your working copy of the file if the release succeeds.  If this flag is not given your files will remain in your working directory.
+
+: '''WARNING:  The <code>release</code> command deletes all directories and files recursively.  This has the very serious side-effect that any directory that you have created inside your checked-out sources, and not added to the repository (using the <code>add</code> command; see [[cvs: Adding files to a directory#Adding files to a directory|Adding files]]) will be silently deleted&mdash;even if it is non-empty!'''
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

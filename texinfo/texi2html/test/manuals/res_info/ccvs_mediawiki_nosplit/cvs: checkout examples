@@ -7,16 +7,16 @@ Previous: [[cvs: checkout options#checkout options|checkout options]], Up: [[cvs
 <div id="checkout-examples-1"></div>
 ==== checkout examples ====
 
-<p>Get a copy of the module &lsquo;<samp>tc</samp>&rsquo;:
-</p>
+Get a copy of the module &lsquo;<code>tc</code>&rsquo;:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs checkout tc
 </div>
 </td></tr></table>
 
-<p>Get a copy of the module &lsquo;<samp>tc</samp>&rsquo; as it looked one day
+Get a copy of the module &lsquo;<code>tc</code>&rsquo; as it looked one day
 ago:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs checkout -D yesterday tc
 </div>

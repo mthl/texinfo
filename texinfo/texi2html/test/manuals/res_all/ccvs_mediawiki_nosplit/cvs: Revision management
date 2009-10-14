@@ -9,16 +9,16 @@ Next: [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]], P
 <div id="index-Revision-management"></div>
 
 
-<p>If you have read this far, you probably have a pretty
+If you have read this far, you probably have a pretty
 good grasp on what <small>CVS</small> can do for you.  This
 chapter talks a little about things that you still have
 to decide.
-</p>
-<p>If you are doing development on your own using <small>CVS</small>
+
+If you are doing development on your own using <small>CVS</small>
 you could probably skip this chapter.  The questions
 this chapter takes up become more important when more
 than one person is working in a repository.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: When to commit?#When to commit?|&bull; When to commit]]::              Some discussion on the subject
 </div>

@@ -7,45 +7,24 @@ Next: [[cvs: release examples#release examples|release examples]], Previous: [[c
 <div id="release-output-1"></div>
 ==== release output ====
 
-<p>Before <code>release</code> releases your sources it will
+Before <code>release</code> releases your sources it will
 print a one-line message for any file that is not
 up-to-date.
-</p>
-<dl compact="compact">
-<dt><code>U <var>file</var></code></dt>
-<dt><code>P <var>file</var></code></dt>
-<dd><p>There exists a newer revision of this file in the
-repository, and you have not modified your local copy
-of the file (&lsquo;<samp>U</samp>&rsquo; and &lsquo;<samp>P</samp>&rsquo; mean the same thing).
-</p>
-</dd>
-<dt><code>A <var>file</var></code></dt>
-<dd><p>The file has been added to your private copy of the
-sources, but has not yet been committed to the
-repository.  If you delete your copy of the sources
-this file will be lost.
-</p>
-</dd>
-<dt><code>R <var>file</var></code></dt>
-<dd><p>The file has been removed from your private copy of the
-sources, but has not yet been removed from the
-repository, since you have not yet committed the
-removal.  See [[cvs: commit--Check files into the repository#commit&mdash;Check files into the repository|commit]].
-</p>
-</dd>
-<dt><code>M <var>file</var></code></dt>
-<dd><p>The file is modified in your working directory.  There
-might also be a newer revision inside the repository.
-</p>
-</dd>
-<dt><code>? <var>file</var></code></dt>
-<dd><p><var>file</var> is in your working directory, but does not
-correspond to anything in the source repository, and is
-not in the list of files for <small>CVS</small> to ignore (see the
-description of the &lsquo;<samp>-I</samp>&rsquo; option, and
-see [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]]).  If you remove your working
-sources, this file will be lost.
-</p></dd>
-</dl>
+
+;<code>U <var>file</var></code>
+;<code>P <var>file</var></code>
+: There exists a newer revision of this file in the repository, and you have not modified your local copy of the file (&lsquo;<code>U</code>&rsquo; and &lsquo;<code>P</code>&rsquo; mean the same thing).
+
+;<code>A <var>file</var></code>
+: The file has been added to your private copy of the sources, but has not yet been committed to the repository.  If you delete your copy of the sources this file will be lost.
+
+;<code>R <var>file</var></code>
+: The file has been removed from your private copy of the sources, but has not yet been removed from the repository, since you have not yet committed the removal.  See [[cvs: commit--Check files into the repository#commit&mdash;Check files into the repository|commit]].
+
+;<code>M <var>file</var></code>
+: The file is modified in your working directory.  There might also be a newer revision inside the repository.
+
+;<code>? <var>file</var></code>
+: <var>file</var> is in your working directory, but does not correspond to anything in the source repository, and is not in the list of files for <small>CVS</small> to ignore (see the description of the &lsquo;<code>-I</code>&rsquo; option, and see [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]]).  If you remove your working sources, this file will be lost.
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

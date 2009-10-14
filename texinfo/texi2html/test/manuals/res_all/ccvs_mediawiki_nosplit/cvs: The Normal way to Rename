@@ -8,11 +8,11 @@ Next: [[cvs: Moving the history file#Moving the history file|Inside]], Up: [[cvs
 ==== The Normal way to Rename ====
 
 
-<p>The normal way to move a file is to copy <var>old</var> to
+The normal way to move a file is to copy <var>old</var> to
 <var>new</var>, and then issue the normal <small>CVS</small> commands
 to remove <var>old</var> from the repository, and add
 <var>new</var> to it.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ mv <var>old</var> <var>new</var>
  $ cvs remove <var>old</var>
@@ -21,17 +21,17 @@ to remove <var>old</var> from the repository, and add
 </div>
 </td></tr></table>
 
-<p>This is the simplest way to move a file, it is not
+This is the simplest way to move a file, it is not
 error-prone, and it preserves the history of what was
 done.  Note that to access the history of the file you
 must specify the old or the new name, depending on what
 portion of the history you are accessing.  For example,
 <code>cvs log <var>old</var></code> will give the log up until the
 time of the rename.
-</p>
-<p>When <var>new</var> is committed its revision numbers will
+
+When <var>new</var> is committed its revision numbers will
 start again, usually at 1.1, so if that bothers you,
-use the &lsquo;<samp>-r rev</samp>&rsquo; option to commit.  For more
+use the &lsquo;<code>-r rev</code>&rsquo; option to commit.  For more
 information see [[cvs: Assigning revisions#Assigning revisions|Assigning revisions]].
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

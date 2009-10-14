@@ -11,44 +11,44 @@ Next: [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore
 <div id="index-Log-message-template"></div>
 <div id="index-Template-for-log-message"></div>
 
-<p>The &lsquo;<tt>rcsinfo</tt>&rsquo; file can be used to specify a form to
+The &lsquo;<tt>rcsinfo</tt>&rsquo; file can be used to specify a form to
 edit when filling out the commit log.  The
 &lsquo;<tt>rcsinfo</tt>&rsquo; file has a syntax similar to the
 &lsquo;<tt>verifymsg</tt>&rsquo;, &lsquo;<tt>commitinfo</tt>&rsquo; and &lsquo;<tt>loginfo</tt>&rsquo;
 files.  See [[cvs: The common syntax#The common syntax|syntax]].  Unlike the other files the second
-part is <em>not</em> a command-line template.  Instead,
+part is ''not'' a command-line template.  Instead,
 the part after the regular expression should be a full pathname to
 a file containing the log message template.
-</p>
-<p>If the repository name does not match any of the
-regular expressions in this file, the &lsquo;<samp>DEFAULT</samp>&rsquo;
+
+If the repository name does not match any of the
+regular expressions in this file, the &lsquo;<code>DEFAULT</code>&rsquo;
 line is used, if it is specified.
-</p>
-<p>All occurrences of the name &lsquo;<samp>ALL</samp>&rsquo; appearing as a
+
+All occurrences of the name &lsquo;<code>ALL</code>&rsquo; appearing as a
 regular expression are used in addition to the first
-matching regular expression or &lsquo;<samp>DEFAULT</samp>&rsquo;.
-</p>
-<p>The log message template will be used as a default log
-message.  If you specify a log message with &lsquo;<samp>cvs
-commit -m <var>message</var></samp>&rsquo; or &lsquo;<samp>cvs commit -f
-<var>file</var></samp>&rsquo; that log message will override the
+matching regular expression or &lsquo;<code>DEFAULT</code>&rsquo;.
+
+The log message template will be used as a default log
+message.  If you specify a log message with &lsquo;<code>cvs
+commit -m <var>message</var></code>&rsquo; or &lsquo;<code>cvs commit -f
+<var>file</var></code>&rsquo; that log message will override the
 template.
-</p>
-<p>See [[cvs: Verifying log messages#Verifying log messages|verifymsg]], for an example &lsquo;<tt>rcsinfo</tt>&rsquo;
+
+See [[cvs: Verifying log messages#Verifying log messages|verifymsg]], for an example &lsquo;<tt>rcsinfo</tt>&rsquo;
 file.
-</p>
-<p>When <small>CVS</small> is accessing a remote repository,
+
+When <small>CVS</small> is accessing a remote repository,
 the contents of &lsquo;<tt>rcsinfo</tt>&rsquo; at the time a directory
 is first checked out will specify a template. This
-template will be updated on all &lsquo;<samp>cvs update</samp>&rsquo;
+template will be updated on all &lsquo;<code>cvs update</code>&rsquo;
 commands. It will also be added to new directories
-added with a &lsquo;<samp>cvs add new-directry</samp>&rsquo; command.
+added with a &lsquo;<code>cvs add new-directry</code>&rsquo; command.
 In versions of <small>CVS</small> prior to version 1.12, the
 &lsquo;<tt>CVS/Template</tt>&rsquo; file was not updated. If the
 <small>CVS</small> server is at version 1.12 or higher an older
 client may be used and the &lsquo;<tt>CVS/Template</tt>&rsquo; will
 be updated from the server.
-</p>
+
 <hr>
 <div class="header">
 <p>

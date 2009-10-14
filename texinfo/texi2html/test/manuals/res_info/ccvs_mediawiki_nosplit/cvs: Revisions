@@ -7,19 +7,19 @@ Next: [[cvs: Branching and merging#Branching and merging|Branching and merging]]
 <div id="Revisions-1"></div>
 == Revisions ==
 
-<p>For many uses of <small>CVS</small>, one doesn&rsquo;t need to worry
+For many uses of <small>CVS</small>, one doesn&rsquo;t need to worry
 too much about revision numbers; <small>CVS</small> assigns
 numbers such as <code>1.1</code>, <code>1.2</code>, and so on, and
 that is all one needs to know.  However, some people
 prefer to have more knowledge and control concerning
 how <small>CVS</small> assigns revision numbers.
-</p>
-<p>If one wants to keep track of a set of revisions
+
+If one wants to keep track of a set of revisions
 involving more than one file, such as which revisions
 went into a particular release, one uses a <em>tag</em>,
 which is a symbolic revision which can be assigned to a
 numeric revision in each file.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: Revision numbers#Revision numbers|&bull; Revision numbers]]::            The meaning of a revision number
  [[cvs: Versions, revisions and releases#Versions, revisions and releases|&bull; Versions revisions releases]]::  Terminology used in this manual

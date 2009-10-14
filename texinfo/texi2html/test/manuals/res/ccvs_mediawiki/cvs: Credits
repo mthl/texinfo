@@ -19,30 +19,30 @@
 
 <div id="index-Contributors-_0028manual_0029"></div>
 <div id="index-Credits-_0028manual_0029"></div>
-<p>Roland Pesch, then of Cygnus Support &lt;<tt>roland@wrs.com</tt>&gt;
+Roland Pesch, then of Cygnus Support &lt;<tt>roland@wrs.com</tt>&gt;
 wrote the manual pages which were distributed with
 <small>CVS</small> 1.3.  Much of their text was copied into this
 manual.  He also read an early draft
 of this manual and contributed many ideas and
 corrections.
-</p>
-<p>The mailing-list <code>info-cvs</code> is sometimes
+
+The mailing-list <code>info-cvs</code> is sometimes
 informative. I have included information from postings
 made by the following persons:
 David G. Grubbs &lt;<tt>dgg@think.com</tt>&gt;.
-</p>
-<p>Some text has been extracted from the man pages for
+
+Some text has been extracted from the man pages for
 <small>RCS</small>.
-</p>
-<p>The <small>CVS</small> <small>FAQ</small> by David G. Grubbs has provided
+
+The <small>CVS</small> <small>FAQ</small> by David G. Grubbs has provided
 useful material.  The <small>FAQ</small> is no longer maintained,
 however, and this manual is about the closest thing there
 is to a successor (with respect to documenting how to
 use <small>CVS</small>, at least).
-</p>
-<p>In addition, the following persons have helped by
+
+In addition, the following persons have helped by
 telling me about mistakes I&rsquo;ve made:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="display" style="font-family: serif">
  Roxanne Brunskill &lt;<tt>rbrunski@datap.ca</tt>&gt;,
  Kathy Dyer &lt;<tt>dyer@phoenix.ocf.llnl.gov</tt>&gt;,
@@ -54,11 +54,11 @@ telling me about mistakes I&rsquo;ve made:
 </div>
 </td></tr></table>
 
-<p>The list of contributors here is not comprehensive; for a more
+The list of contributors here is not comprehensive; for a more
 complete list of who has contributed to this manual see
 the file &lsquo;<tt>doc/ChangeLog</tt>&rsquo; in the <small>CVS</small> source
 distribution.
-</p>
+
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[cvs: Troubleshooting#Troubleshooting| &lt;&lt; ]]|</td>

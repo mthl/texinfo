@@ -10,8 +10,8 @@ Next: [[cvs: Informing others about commits#Informing others about commits|Infor
 <div id="index-Example-of-merge"></div>
 <div id="index-driver_002ec-_0028merge-example_0029"></div>
 
-<p>Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
-</p>
+Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  #include &lt;stdio.h&gt;
  
@@ -27,8 +27,8 @@ Next: [[cvs: Informing others about commits#Informing others about commits|Infor
 </div>
 </td></tr></table>
 
-<p>Revision 1.6 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
-</p>
+Revision 1.6 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  #include &lt;stdio.h&gt;
  
@@ -50,9 +50,9 @@ Next: [[cvs: Informing others about commits#Informing others about commits|Infor
 </div>
 </td></tr></table>
 
-<p>Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
-1.4, contains this before you run &lsquo;<samp>cvs update</samp>&rsquo;:
-</p>
+Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
+1.4, contains this before you run &lsquo;<code>cvs update</code>&rsquo;:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  #include &lt;stdlib.h&gt;
  #include &lt;stdio.h&gt;
@@ -70,8 +70,8 @@ Next: [[cvs: Informing others about commits#Informing others about commits|Infor
 </div>
 </td></tr></table>
 
-<p>You run &lsquo;<samp>cvs update</samp>&rsquo;:
-</p>
+You run &lsquo;<code>cvs update</code>&rsquo;:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs update driver.c
  RCS file: /usr/local/cvsroot/yoyodyne/tc/driver.c,v
@@ -85,11 +85,11 @@ Next: [[cvs: Informing others about commits#Informing others about commits|Infor
 </td></tr></table>
 
 <div id="index-Conflicts-_0028merge-example_0029"></div>
-<p><small>CVS</small> tells you that there were some conflicts.
+<small>CVS</small> tells you that there were some conflicts.
 Your original working file is saved unmodified in
 &lsquo;<tt>.#driver.c.1.4</tt>&rsquo;.  The new version of
 &lsquo;<tt>driver.c</tt>&rsquo; contains this:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  #include &lt;stdlib.h&gt;
  #include &lt;stdio.h&gt;
@@ -123,15 +123,15 @@ Your original working file is saved unmodified in
 <div id="index-_003e_003e_003e_003e_003e_003e_003e"></div>
 <div id="index-_003d_003d_003d_003d_003d_003d_003d"></div>
 
-<p>Note how all non-overlapping modifications are incorporated in your working
+Note how all non-overlapping modifications are incorporated in your working
 copy, and that the overlapping section is clearly marked with
-&lsquo;<samp>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</samp>&rsquo;, &lsquo;<samp>=======</samp>&rsquo; and &lsquo;<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</samp>&rsquo;.
-</p>
+&lsquo;<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>&rsquo;, &lsquo;<code>=======</code>&rsquo; and &lsquo;<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>&rsquo;.
+
 <div id="index-Resolving-a-conflict"></div>
 <div id="index-Conflict-resolution"></div>
-<p>You resolve the conflict by editing the file, removing the markers and
+You resolve the conflict by editing the file, removing the markers and
 the erroneous line.  Suppose you end up with this file:
-</p><table><tr><td>&nbsp;</td><td><div class="example">
+<table><tr><td>&nbsp;</td><td><div class="example">
  #include &lt;stdlib.h&gt;
  #include &lt;stdio.h&gt;
  
@@ -154,8 +154,8 @@ the erroneous line.  Suppose you end up with this file:
 </div>
 </td></tr></table>
 
-<p>You can now go ahead and commit this as revision 1.7.
-</p>
+You can now go ahead and commit this as revision 1.7.
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs commit -m &quot;Initialize scanner. Use symbolic exit values.&quot; driver.c
  Checking in driver.c;
@@ -165,7 +165,7 @@ the erroneous line.  Suppose you end up with this file:
 </div>
 </td></tr></table>
 
-<p>For your protection, <small>CVS</small> will refuse to check in a
+For your protection, <small>CVS</small> will refuse to check in a
 file if a conflict occurred and you have not resolved
 the conflict.  Currently to resolve a conflict, you
 must change the timestamp on the file.  In previous
@@ -173,17 +173,17 @@ versions of <small>CVS</small>, you also needed to
 insure that the file contains no conflict markers.
 Because
 your file may legitimately contain conflict markers (that
-is, occurrences of &lsquo;<samp>&gt;&gt;&gt;&gt;&gt;&gt;&gt; </samp>&rsquo; at the start of a
+is, occurrences of &lsquo;<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; </code>&rsquo; at the start of a
 line that don&rsquo;t mark a conflict), the current
 version of <small>CVS</small> will print a warning and proceed to
 check in the file.
-</p>
+
 <div id="index-emerge"></div>
-<p>If you use release 1.04 or later of pcl-cvs (a <small>GNU</small>
+If you use release 1.04 or later of pcl-cvs (a <small>GNU</small>
 Emacs front-end for <small>CVS</small>) you can use an Emacs
 package called emerge to help you resolve conflicts.
 See the documentation for pcl-cvs.
-</p>
+
 <hr>
 <div class="header">
 <p>

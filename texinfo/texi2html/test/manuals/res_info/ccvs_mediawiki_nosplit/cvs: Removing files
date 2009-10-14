@@ -9,58 +9,40 @@ Next: [[cvs: Removing directories#Removing directories|Removing directories]], P
 <div id="index-Removing-files"></div>
 <div id="index-Deleting-files"></div>
 
-<p>Directories change.  New files are added, and old files
+Directories change.  New files are added, and old files
 disappear.  Still, you want to be able to retrieve an
 exact copy of old releases.
-</p>
-<p>Here is what you can do to remove a file,
+
+Here is what you can do to remove a file,
 but remain able to retrieve old revisions:
-</p>
-<ul>
-<li>
-Make sure that you have not made any uncommitted
-modifications to the file.  See [[cvs: Viewing differences#Viewing differences|Viewing differences]],
-for one way to do that.  You can also use the
-<code>status</code> or <code>update</code> command.  If you remove
-the file without committing your changes, you will of
-course not be able to retrieve the file as it was
-immediately before you deleted it.
 
-</li><li>
-Remove the file from your working copy of the directory.
-You can for instance use <code>rm</code>.
 
-</li><li>
-Use &lsquo;<samp>cvs remove <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that
-you really want to delete the file.
+* Make sure that you have not made any uncommitted modifications to the file.  See [[cvs: Viewing differences#Viewing differences|Viewing differences]], for one way to do that.  You can also use the <code>status</code> or <code>update</code> command.  If you remove the file without committing your changes, you will of course not be able to retrieve the file as it was immediately before you deleted it.
 
-</li><li>
-Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually
-perform the removal of the file from the repository.
-</li></ul>
 
-<p>When you commit the removal of the file, <small>CVS</small>
+* Remove the file from your working copy of the directory. You can for instance use <code>rm</code>.
+
+
+* Use &lsquo;<code>cvs remove <var>filename</var></code>&rsquo; to tell <small>CVS</small> that you really want to delete the file.
+
+
+* Use &lsquo;<code>cvs commit <var>filename</var></code>&rsquo; to actually perform the removal of the file from the repository.
+
+When you commit the removal of the file, <small>CVS</small>
 records the fact that the file no longer exists.  It is
 possible for a file to exist on only some branches and
 not on others, or to re-add another file with the same
 name later.  <small>CVS</small> will correctly create or not create
-the file, based on the &lsquo;<samp>-r</samp>&rsquo; and &lsquo;<samp>-D</samp>&rsquo; options
+the file, based on the &lsquo;<code>-r</code>&rsquo; and &lsquo;<code>-D</code>&rsquo; options
 specified to <code>checkout</code> or <code>update</code>.
-</p>
-<div id="index-Remove-_0028subcommand_0029"></div>
-<dl>
-<dt><div id="index-cvs-remove"></div>Command: <strong>cvs remove</strong><em> [options] files &hellip;</em></dt>
-<dd>
-<p>Schedule file(s) to be removed from the repository
-(files which have not already been removed from the
-working directory are not processed).  This command
-does not actually remove the file from the repository
-until you commit the removal.  For a full list of
-options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].
-</p></dd></dl>
 
-<p>Here is an example of removing several files:
-</p>
+<div id="index-Remove-_0028subcommand_0029"></div>
+;<div id="index-cvs-remove"></div>Command<nowiki>:</nowiki> <strong>cvs remove</strong><em> <nowiki>[</nowiki>options<nowiki>]</nowiki> files &hellip;</em>
+
+: Schedule file(s) to be removed from the repository (files which have not already been removed from the working directory are not processed).  This command does not actually remove the file from the repository until you commit the removal.  For a full list of options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].
+
+Here is an example of removing several files:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd test
  $ rm *.c
@@ -75,11 +57,11 @@ options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS comma
 </div>
 </td></tr></table>
 
-<p>As a convenience you can remove the file and <code>cvs
-remove</code> it in one step, by specifying the &lsquo;<samp>-f</samp>&rsquo;
+As a convenience you can remove the file and <code>cvs
+remove</code> it in one step, by specifying the &lsquo;<code>-f</code>&rsquo;
 option.  For example, the above example could also be
 done like this:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd test
  $ cvs remove -f *.c
@@ -92,10 +74,10 @@ done like this:
 </div>
 </td></tr></table>
 
-<p>If you execute <code>remove</code> for a file, and then
+If you execute <code>remove</code> for a file, and then
 change your mind before you commit, you can undo the
 <code>remove</code> with an <code>add</code> command.
-</p>
+
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ ls
@@ -110,10 +92,10 @@ change your mind before you commit, you can undo the
 </div>
 </td></tr></table>
 
-<p>If you realize your mistake before you run the
+If you realize your mistake before you run the
 <code>remove</code> command you can use <code>update</code> to
 resurrect the file:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ rm oj.c
  $ cvs update oj.c
@@ -122,11 +104,11 @@ resurrect the file:
 </div>
 </td></tr></table>
 
-<p>When you remove a file it is removed only on the branch
+When you remove a file it is removed only on the branch
 which you are working on (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  You can
 later merge the removals to another branch if you want
 (see [[cvs: Merging can add or remove files#Merging can add or remove files|Merging adds and removals]]).
-</p>
+
 <hr>
 <div class="header">
 <p>

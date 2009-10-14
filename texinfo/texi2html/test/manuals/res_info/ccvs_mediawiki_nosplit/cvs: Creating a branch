@@ -11,56 +11,51 @@ Next: [[cvs: Accessing branches#Accessing branches|Accessing branches]], Previou
 <div id="index-tag-_0028subcommand_0029_002c-creating-a-branch-using"></div>
 <div id="index-rtag-_0028subcommand_0029_002c-creating-a-branch-using"></div>
 
-<p>You can create a branch with <code>tag -b</code>; for
+You can create a branch with <code>tag -b</code>; for
 example, assuming you&rsquo;re in a working copy:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs tag -b rel-1-0-patches
 </div>
 </td></tr></table>
 
 
-<p>This splits off a branch based on the current revisions
+This splits off a branch based on the current revisions
 in the working copy, assigning that branch the name
-&lsquo;<samp>rel-1-0-patches</samp>&rsquo;.
-</p>
-<p>It is important to understand that branches get created
+&lsquo;<code>rel-1-0-patches</code>&rsquo;.
+
+It is important to understand that branches get created
 in the repository, not in the working copy.  Creating a
 branch based on current revisions, as the above example
-does, will <em>not</em> automatically switch the working
+does, will ''not'' automatically switch the working
 copy to be on the new branch.  For information on how
 to do that, see [[cvs: Accessing branches#Accessing branches|Accessing branches]].
-</p>
-<p>You can also create a branch without reference to any
+
+You can also create a branch without reference to any
 working copy, by using <code>rtag</code>:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs rtag -b -r rel-1-0 rel-1-0-patches tc
 </div>
 </td></tr></table>
 
-<p>&lsquo;<samp>-r rel-1-0</samp>&rsquo; says that this branch should be
+&lsquo;<code>-r rel-1-0</code>&rsquo; says that this branch should be
 rooted at the revision that
-corresponds to the tag &lsquo;<samp>rel-1-0</samp>&rsquo;.  It need not
+corresponds to the tag &lsquo;<code>rel-1-0</code>&rsquo;.  It need not
 be the most recent revision &ndash; it&rsquo;s often useful to
 split a branch off an old revision (for example, when
 fixing a bug in a past release otherwise known to be
 stable).
-</p>
-<p>As with &lsquo;<samp>tag</samp>&rsquo;, the &lsquo;<samp>-b</samp>&rsquo; flag tells
+
+As with &lsquo;<code>tag</code>&rsquo;, the &lsquo;<code>-b</code>&rsquo; flag tells
 <code>rtag</code> to create a branch (rather than just a
 symbolic revision name).  Note that the numeric
-revision number that matches &lsquo;<samp>rel-1-0</samp>&rsquo; will
+revision number that matches &lsquo;<code>rel-1-0</code>&rsquo; will
 probably be different from file to file.
-</p>
-<p>So, the full effect of the command is to create a new
-branch &ndash; named &lsquo;<samp>rel-1-0-patches</samp>&rsquo; &ndash; in module
-&lsquo;<samp>tc</samp>&rsquo;, rooted in the revision tree at the point tagged
-by &lsquo;<samp>rel-1-0</samp>&rsquo;.
-</p>
-<hr>
-<div class="header">
-<p>
-Next: [[cvs: Accessing branches#Accessing branches|Accessing branches]], Previous: [[cvs: What branches are good for#What branches are good for|Branches motivation]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
-</div>
+
+So, the full effect of the command is to create a new
+branch &ndash; named &lsquo;<code>rel-1-0-patches</code>&rsquo; &ndash; in module
+&lsquo;<code>tc</code>&rsquo;, rooted in the revision tree at the point tagged
+by &lsquo;<code>rel-1-0</code>&rsquo;.
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

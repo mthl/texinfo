@@ -76,42 +76,42 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
      $style_map{$accent_command} = { 'function' => \&xml_default_accent };
 }
 
-delete $style_map{'sc'}->{'attribute'};
-$style_map{'code'}->{'attribute'} = 'literal';
-$style_map{'strong'}->{'attribute'} = 'emphasis role="bold"';
-$style_map{'kbd'}->{'attribute'} = 'userinput';
+delete $style_map{'sc'}->{'inline_attribute'};
+$style_map{'code'}->{'inline_attribute'} = 'literal';
+$style_map{'strong'}->{'inline_attribute'} = 'emphasis role="bold"';
+$style_map{'kbd'}->{'inline_attribute'} = 'userinput';
 $style_map{'w'}->{'end'} = '<!-- /@w -->';
 $style_map{'='}->{'function'} = \&docbook_macron;
-$style_map{'b'}->{'attribute'} = 'emphasis role="bold"';
-$style_map{'cite'}->{'attribute'} = 'citetitle';
-$style_map{'command'}->{'attribute'} = 'command';
-$style_map{'dfn'}->{'attribute'} = 'firstterm';
-$style_map{'emph'}->{'attribute'} = 'emphasis';
-$style_map{'env'}->{'attribute'} = 'envar';
-$style_map{'file'}->{'attribute'} = 'filename';
-$style_map{'i'}->{'attribute'} = 'wordasword';
-$style_map{'key'}->{'attribute'} = 'keycap';
+$style_map{'b'}->{'inline_attribute'} = 'emphasis role="bold"';
+$style_map{'cite'}->{'inline_attribute'} = 'citetitle';
+$style_map{'command'}->{'inline_attribute'} = 'command';
+$style_map{'dfn'}->{'inline_attribute'} = 'firstterm';
+$style_map{'emph'}->{'inline_attribute'} = 'emphasis';
+$style_map{'env'}->{'inline_attribute'} = 'envar';
+$style_map{'file'}->{'inline_attribute'} = 'filename';
+$style_map{'i'}->{'inline_attribute'} = 'wordasword';
+$style_map{'key'}->{'inline_attribute'} = 'keycap';
 delete $style_map{'key'}->{'begin'};
 delete $style_map{'key'}->{'end'};
-$style_map{'option'}->{'attribute'} = 'option';
-$style_map{'t'}->{'attribute'} = 'literal';
-delete $style_map{'sansserif'}->{'attribute'};
-delete $style_map{'r'}->{'attribute'};
-$style_map{'indicateurl'}->{'attribute'} = 'wordasword';
+$style_map{'option'}->{'inline_attribute'} = 'option';
+$style_map{'t'}->{'inline_attribute'} = 'literal';
+delete $style_map{'sansserif'}->{'inline_attribute'};
+delete $style_map{'r'}->{'inline_attribute'};
+$style_map{'indicateurl'}->{'inline_attribute'} = 'wordasword';
 delete $style_map{'indicateurl'}->{'begin'};
 delete $style_map{'indicateurl'}->{'end'};
-$style_map{'var'}->{'attribute'} = 'replaceable';
-delete $style_map{'verb'}->{'attribute'};
+$style_map{'var'}->{'inline_attribute'} = 'replaceable';
+delete $style_map{'verb'}->{'inline_attribute'};
 $style_map{'email'}->{'function'} = \&docbook_email;
 $style_map{'math'}->{'function'} = \&docbook_math;
 $style_map{'uref'}->{'function'} = \&docbook_uref;
 $style_map{'url'}->{'function'} = \&docbook_uref;
 $style_map{'titlefont'}->{'function'} = \&docbook_titlefont;
-$style_map{'samp'}->{'function'} = \&docbook_samp;
-delete $style_map{'samp'}->{'attribute'};
-#$style_map{'samp'}->{'attribute'} = 'literal';
-#$style_map{'samp'}->{'begin'} = '&lsquo;';
-#$style_map{'samp'}->{'end'} = '&rsquo;';
+#$style_map{'samp'}->{'function'} = \&docbook_samp;
+#delete $style_map{'samp'}->{'inline_attribute'};
+$style_map{'samp'}->{'inline_attribute'} = 'literal';
+$style_map{'samp'}->{'begin'} = '&lsquo;';
+$style_map{'samp'}->{'end'} = '&rsquo;';
 
 $kept_footnote_function = $style_map{'footnote'}->{'function'};
 $style_map{'footnote'}->{'function'} = \&docbook_footnote;
@@ -125,9 +125,9 @@ foreach my $style (keys(%style_map))
 %style_map_pre = ();
 t2h_default_copy_style_map (\%style_map, \%style_map_pre);
 
-$style_map_pre{'b'}->{'attribute'} = 'lineannotation';
-$style_map_pre{'i'}->{'attribute'} = 'lineannotation';
-$style_map_pre{'r'}->{'attribute'} = 'lineannotation';
+$style_map_pre{'b'}->{'inline_attribute'} = 'lineannotation';
+$style_map_pre{'i'}->{'inline_attribute'} = 'lineannotation';
+$style_map_pre{'r'}->{'inline_attribute'} = 'lineannotation';
 
 $colon_command_punctuation_characters{'.'} = '&period;';
 $colon_command_punctuation_characters{':'} = '&colon;';
@@ -154,12 +154,15 @@ $things_map{'LaTeX'} = '&latex;';
 $things_map{'enddots'} = '&hellip;.';
 $things_map{'minus'} = '&minus;';
 # FIXME &lowast;
-$iso_symbols{'point'} = '-!-';
+$things_map{'point'} = '-!-';
 # FIXME &equiv;
-$iso_symbols{'equiv'} = '==';
-# FIXME
-delete $iso_symbols{"'"};
-delete $iso_symbols{'`'};
+$things_map{'equiv'} = '==';
+# The following is unneeded because normal_text is redefined.
+# FIXME it should certainly be better to leave those substitutions,
+# or even hardcodes them in normal_text.
+# t2h_remove_text_substitutions("'", 1, 0, 0, 1);
+# t2h_remove_text_substitutions('`', 1, 0, 0, 1);
+
 $things_map{'quotedblbase'} = '&ldquor;';
 $things_map{'quotesinglbase'} = '&lsquor;';
 
@@ -498,16 +501,6 @@ sub docbook_paragraph($$$$$$$$$$$$)
     my $command_stack_at_end = shift;
     my $command_stack_at_begin = shift;
 
-    foreach my $style(t2h_collect_styles($command_stack_at_begin))
-    {
-#print STDERR "PARA BEGIN STYLE $style\n";
-       $text = t2h_begin_style($style, $text);
-    }
-    foreach my $style(t2h_collect_styles($command_stack_at_end))
-    {
-#print STDERR "PARA END STYLE $style\n";
-       $text = t2h_end_style($style, $text);
-    }
     if (defined($paragraph_number) and defined($$paragraph_number))
     {
        $$paragraph_number++;
@@ -1445,23 +1438,31 @@ sub docbook_style($$$$$$$$$)
         my $function = $style->{'function'};
         $result = &$function($command, $args, $command_stack, $state, $line_nr, $kept_line_nrs);
     }
-    elsif (exists($style->{'attribute'}))
+    elsif (exists($style->{'inline_attribute'}))
     {
-        my $attribute = $style->{'attribute'};
+        my $element = $style->{'inline_attribute'};
         my $attribute_text = '';
-        if ($attribute =~ /^(\w+)(\s+.*)/)
+        if ($element =~ /^(\w+)(\s+.*)/)
         {
-            $attribute = $1;
+            $element = $1;
             $attribute_text = $2;
         }
 
-        $result = docbook_add_id($attribute)."$attribute_text>$text</$attribute>";
+        if ($no_open)
+        {
+            $result = "<$element";
+        }
+        else
+        {
+            $result = docbook_add_id($element);
+        }
+        $result .= "$attribute_text>$text</$element>";
     }
-    if (exists($style->{'begin'}))
+    if (exists($style->{'begin'}) and !$no_open)
     {
         $result = $style->{'begin'} . $result;
     }
-    if (exists($style->{'end'}))
+    if (exists($style->{'end'}) and !$no_close)
     {
         $result .= $style->{'end'};
     }
@@ -1541,15 +1542,13 @@ sub docbook_normal_text($$$$$$)
        }
        else
        {
-           #FIXME really do that ? It is done by makeinfo in hhml
+           #FIXME really do that ? It is done by makeinfo in html
             $text =~ s/``/"/g;
             $text =~ s/''/"/g;
-            # temporary reuse '' to store --- !....
-            # FIXME won't '---' be handled wrongly?
             # FIXME really do that in raw text?
-            $text =~ s/---/''/g;
+            $text =~ s/---/\x{1F}/g;
             $text =~ s/--/-/g;
-            $text =~ s/''/--/g;
+            $text =~ s/\x{1F}/--/g;
        }
    }
    return $text;

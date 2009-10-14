@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.240 2009-10-06 13:35:57 pertusus Exp $
+# $Id: texi2html.init,v 1.241 2009-10-14 13:08:36 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -38,6 +38,9 @@
 # args are appended to this list.
 # (APA: Don't implicitely search ., to conform with the docs!)
 # my @INCLUDE_DIRS = (".");
+
+#use strict;
+
 @INCLUDE_DIRS = ();
 
 # -P
@@ -194,8 +197,8 @@ $INVISIBLE_MARK = '';
 # $INVISIBLE_MARK = '&#160;';
 
 # --iso
-# if this value is true, ISO8859 characters are used for special symbols 
-# (like copyright, etc).
+# if this value is true, ISO8859 characters are used for quotes.
+# --iso does more than what USE_ISO does.
 $USE_ISO = 0;
 
 # --conf-dir
@@ -683,6 +686,11 @@ $empty_preformatted = undef;
      (
      );
 
+@text_substitutions_normal = ();
+@text_substitutions_texi = ();
+@text_substitutions_simple_format = ();
+@text_substitutions_pre = ();
+
 %region_formats_kept = ();
 
 %style_map_texi = ();
@@ -714,20 +722,6 @@ $no_paragraph_commands{'cindex'} = 1;
 $no_paragraph_commands{'float'} = 1;
 delete $no_paragraph_commands{'anchor'};
 
-# symbols used for the commands if $USE_ISO is true.
-# modified in docbook
-%iso_symbols = (
-         'equiv'     => '&equiv;',
-         'dots'      => '&hellip;',
-         'bullet'    => '&bull;',
-         'result'    => '&rArr;',
-         'expansion' => '&rarr;',
-         'arrow'     => '&rarr;',
-         'point'     => '&lowast;',
-         "'"         => '&rsquo;',
-         '`'         => '&lsquo;',
-        );
-
 # modified in docbook and xml
 %stop_paragraph_command = (
  'titlefont' => 1,
@@ -750,7 +744,7 @@ sub t2h_default_set_variables_xml()
   t2h_default_set_variables_default();
   $ENABLE_ENCODING_USE_ENTITY = 1;
   $EXTENSION = 'xml';
-  $USE_ISO = 1;
+  t2h_default_set_iso_symbols(1);
 
   $empty_line = \&t2h_default_empty_line;
   $comment = \&xml_default_comment;
@@ -798,7 +792,6 @@ sub t2h_default_set_variables_texi2html()
   $USE_TITLEPAGE_FOR_TITLE = 1;
 
   $ENABLE_ENCODING_USE_ENTITY = 1;
-  $USE_ISO = 1;
 }
 
 # specify in this array which "buttons" should appear in which order
@@ -998,6 +991,50 @@ sub t2h_default_translate_names()
      'PrevFile',    &$I('PrevFile'),
     );
 
+}
+
+sub t2h_default_set_iso_symbols($)
+{
+    my $value = shift;
+    $USE_ISO = $value;
+    if ($value)
+    {
+       foreach my $association ([\%things_map, \%things_map_xml],
+                         [\%pre_map, \%pre_map_xml],
+                        [\%simple_format_simple_map_texi, \%pre_map_xml])
+       {
+          foreach my $thing (keys(%{$association->[0]}))
+          {
+              if (defined($association->[0]->{$thing}) and $association->[0]->{$thing} !~ /^\&\w+\;$/ and defined($association->[1]->{$thing}) and $association->[1]->{$thing} =~ /^\&\w+\;$/)
+              {
+                  $association->[0]->{$thing} = $association->[1]->{$thing};
+              }
+          }
+       }
+       t2h_add_text_substitutions(["'", '&rsquo;'], 1, 0, 0, 1);
+       t2h_add_text_substitutions(['`', '&lsquo;'], 1, 0, 0, 1);
+       $OPEN_QUOTE_SYMBOL = '&lsquo;';
+       $CLOSE_QUOTE_SYMBOL = '&rsquo;';
+    }
+    else
+    {
+       foreach my $association ([\%things_map, \%default_things_map],
+                         [\%pre_map, \%default_things_map],
+                        [\%simple_format_simple_map_texi, \%default_things_map])
+       {
+          foreach my $thing (keys(%{$association->[0]}))
+          {
+              if (defined($association->[0]->{$thing}) and $association->[0]->{$thing} =~ /^\&\w+\;$/ and defined($association->[1]->{$thing}) and $association->[1]->{$thing} !~ /^\&\w+\;$/)
+              {
+                  $association->[0]->{$thing} = &$protect_text($association->[1]->{$thing});
+              }
+          }
+       }
+       t2h_remove_text_substitutions("'", 1, 0, 0, 1);
+       t2h_remove_text_substitutions('`', 1, 0, 0, 1);
+       $OPEN_QUOTE_SYMBOL = '`';
+       $CLOSE_QUOTE_SYMBOL = "'";
+    }
 }
 
 # is used in main program for dumping texi too.
@@ -1771,9 +1808,9 @@ sub T2H_DEFAULT_toc_body($)
 {
     my $elements_list = shift;
     my $toc_lines = &$contents($elements_list, $Texi2HTML::THISDOC{'toc_file'});
-    @{$Texi2HTML::TOC_LINES} = @$toc_lines if (defined($toc_lines));
+    @{$Texi2HTML::TOC_LINES} = @$toc_lines if ($toc_lines);
     my $stoc_lines = &$shortcontents($elements_list, $Texi2HTML::THISDOC{'stoc_file'});
-    @{$Texi2HTML::OVERVIEW} = @$stoc_lines if (defined($stoc_lines));;
+    @{$Texi2HTML::OVERVIEW} = @$stoc_lines if ($stoc_lines);
 }
 
 # element and elements_list may not be undef when called from the 
@@ -1819,7 +1856,7 @@ sub T2H_DEFAULT_inline_contents($$$$)
             $lines = $Texi2HTML::OVERVIEW;
         }
     }
-    if (defined($lines) and @{$lines})
+    if ($lines and @{$lines})
     {
          $result = [ &$heading_text("\@$command", $name, 1), "\n" ];
          my $contents_anchor = &$anchor($element->{'id'});
@@ -2173,21 +2210,21 @@ $texi_map{'registeredsymbol'} = 'R';
                'LaTeX'          => 'LaTeX',
 # pertusus: unknown by makeinfo, not in texinfo manual (@* is the right thing)
 #               'br', '<br>',     # paragraph break
-               'bullet'       => '*',
+               'bullet'       => '&bull;',
 #               #'copyright' => '(C)',
                'copyright'    => '&copy;',
                'registeredsymbol'   => '&reg;',
-               'dots'         => '...',
+               'dots'         => '&hellip;',
                'enddots'      => '...',
-               'equiv'        => '==',
+               'equiv'        => '&equiv;',
 # FIXME i18n
                'error'        => 'error--&gt;',
-               'expansion'    => '==&gt;',
-               'arrow'        => '->',
+               'expansion'    => '&rarr;',
+               'arrow'        => '&rarr;',
                'minus'        => '-',
-               'point'        => '-!-',
+               'point'        => '&lowast;',
                'print'        => '-|',
-               'result'       => '=&gt;',
+               'result'       => '&rArr;',
                # set in code using the language
                # 'today', &pretty_date,
                'today'        => '',
@@ -3137,6 +3174,96 @@ foreach my $style (keys(%style_map))
 }
 
 
+sub t2h_default_select_substitution($$$)
+{
+   my $in_raw_text = shift;
+   my $in_preformatted = shift;
+   my $in_simple = shift;
+   
+   my $substitutions = \@text_substitutions_normal;
+   if ($in_raw_text)
+   {
+      $substitutions = \@text_substitutions_texi;
+   }
+   elsif ($in_simple)
+   {
+      $substitutions = \@text_substitutions_simple_format;
+   }
+   elsif ($in_preformatted)
+   {
+      $substitutions = \@text_substitutions_pre;
+   }
+   return $substitutions;
+}
+
+sub t2h_text_substitutions($$$$)
+{
+   my $text = shift;
+   my $in_raw_text = shift;
+   my $in_preformatted = shift;
+   my $in_simple = shift;
+   
+   my $substitutions = t2h_default_select_substitution($in_raw_text, $in_preformatted, $in_simple);
+   foreach my $substitution_entry (@$substitutions)
+   {
+      my $from = quotemeta($substitution_entry->[0]);
+      my $to = $substitution_entry->[1];
+      $text =~ s/$from/$to/g;
+   }
+   return $text;
+}
+
+sub t2h_add_text_substitutions($$$$$)
+{
+   my $entry = shift;
+   my $in_normal = shift;
+   my $in_raw_text = shift;
+   my $in_preformatted = shift;
+   my $in_simple = shift;
+
+   my @formats_to_be_done = ($in_normal, $in_raw_text, $in_preformatted, $in_simple);
+
+   for (my $index = 0; $index < scalar(@formats_to_be_done); $index++)
+   {
+       next unless ($formats_to_be_done[$index]);
+       my @args = (0, 0, 0);
+       my $found = 0;
+       $args[$index -1] = 1 if ($index > 0);
+       my $substitutions = &t2h_default_select_substitution(@args);
+       foreach my $substitution_entry (@$substitutions)
+       {
+           if ($substitution_entry->[0] eq $entry->[0])
+           {
+               $found = 1;
+               $substitution_entry->[1] = $entry->[1];
+           }
+       }
+       push @$substitutions, $entry unless ($found);
+   }
+}
+
+sub t2h_remove_text_substitutions($$$$$)
+{
+   my $entry = shift;
+   my $in_normal = shift;
+   my $in_raw_text = shift;
+   my $in_preformatted = shift;
+   my $in_simple = shift;
+
+   my @formats_to_be_done = ($in_normal, $in_raw_text, $in_preformatted, $in_simple);
+
+   for (my $index = 0; $index < scalar(@formats_to_be_done); $index++)
+   {
+       next unless ($formats_to_be_done[$index]);
+       my @args = (0, 0, 0);
+       $args[$index -1] = 1 if ($index > 0);
+       my $substitutions = &t2h_default_select_substitution(@args);
+
+       @$substitutions = grep {$_->[0] ne $entry} @$substitutions;
+   }
+}
+
+
 %unicode_diacritical = (
        'H'          => '030B', 
        'ringaccent' => '030A', 
@@ -3631,6 +3758,7 @@ sub t2h_utf8_normal_text($$$$$$;$)
         $text =~ s/``/\x{201C}/g;
         $text =~ s/''/\x{201D}/g;
     }
+    $text = t2h_text_substitutions($text, $in_raw_text, ($in_preformatted or $in_code), $in_simple);
     return Unicode::Normalize::NFC($text);
 }
 
@@ -4529,7 +4657,6 @@ $foot_line_and_ref = \&t2h_default_foot_line_and_ref;
 $foot_section      = \&t2h_default_foot_section;
 $image_files       = \&t2h_default_image_files;
 $image             = \&t2h_default_image;
-$address           = \&t2h_default_address;
 $index_entry_label = \&t2h_default_index_entry_label;
 $index_summary     = \&t2h_default_index_summary;
 $summary_letter    = \&t2h_default_summary_letter;
@@ -4571,6 +4698,9 @@ $simple_command             = \&t2h_default_simple_command;
 $thing_command              = \&t2h_default_thing_command;
 $line_command               = \&t2h_default_line_command;
 $internal_links             = \&t2h_default_internal_links;
+
+# address is not used anymore
+$address           = \&t2h_default_address;
 
 # return the line after preserving things according to misc_command map.
 # You should not change it. It is here, nevertheless, to be used
@@ -4786,11 +4916,19 @@ sub t2h_default_caption_shortcaption($)
             $style = $nr;
         }
     }
-    
-    if (defined($float->{'caption_texi'}))
+    my $empty_caption = 1;
+    if (defined($float->{'caption_texi'}) and @{$float->{'caption_texi'}})
     {
         @$caption_lines = @{$float->{'caption_texi'}};
         $caption_lines->[0] =~ s/^\s*//;
+        if ($caption_lines->[0] =~ /\S/ or @$caption_lines > 2)
+        {
+            $empty_caption = 0;
+        }
+    }
+    
+    if (!$empty_caption)
+    {
         if (defined($style))
         {
             $caption_lines->[0] = '@'.$CAPTION_STYLE.'{' . &$I('%{style}: %{caption_first_line}', { 'style' => $style, 'caption_first_line' => $caption_lines->[0] });
@@ -4805,9 +4943,20 @@ sub t2h_default_caption_shortcaption($)
     {
         $caption_lines->[0] = '@'.$CAPTION_STYLE.'{' . $style . '}' . "\n";
     }
-    if (defined($float->{'shortcaption_texi'}))
+
+    my $empty_shortcaption = 1;
+    if (defined($float->{'shortcaption_texi'}) and @{$float->{'shortcaption_texi'}})
     {
-         @$shortcaption_lines = @{$float->{'shortcaption_texi'}};
+        @$shortcaption_lines = @{$float->{'shortcaption_texi'}};
+        $shortcaption_lines->[0] =~ s/^\s*//;
+        if ($shortcaption_lines->[0] =~ /\S/ or @$shortcaption_lines > 1)
+        {
+            $empty_shortcaption = 0;
+        }
+    }
+    
+    if (!$empty_shortcaption)
+    {
          if (defined($style))
          {
               $shortcaption_lines->[0] = '@'.$CAPTION_STYLE.'{' . &$I('%{style}: %{shortcaption_first_line}', { 'style' => $style, 'shortcaption_first_line' => $shortcaption_lines->[0] });
@@ -5049,6 +5198,7 @@ sub t2h_default_normal_text($$$$$$;$)
 #       $text =~ s/'/\&rsquo\;/g unless ($special_code and exists($main::value{'txicodequoteundirected'}));
 #       $text =~ s/`/\&lsquo\;/g unless ($special_code and exists($main::value{'txicodequotebacktick'}));
    }
+   $text = t2h_text_substitutions($text, $in_raw_text, ($in_preformatted or $in_code), $in_simple);
    return $text;
 }
 
@@ -5757,47 +5907,43 @@ sub t2h_collect_styles($)
     return @result;
 }
 
+sub html_default_parse_attribute($)
+{
+    my $element = shift;
+    return ('', '', '') if (!defined($element));
+    my ($class, $attributes) = ('', '');
+    if ($element =~ /^(\w+)(\s+.*)/)
+    {
+        $element = $1;
+        $attributes = $2;
+        if ($attributes =~ s/^\s+class=\"([^\"]+)\"//)
+        {
+            $class = $1;
+        }
+    }
+    return ($element, $class, $attributes);
+}
+
 sub t2h_get_attribute($;$)
 {
     my $command = shift;
     my $map_ref = shift;
     $map_ref = \%style_map if (!defined($map_ref));
-    return '' unless (defined($map_ref->{$command}));
-    if (ref($map_ref->{$command}) eq 'HASH') 
+    return  unless (defined($map_ref->{$command}));
+    my ($element, $class, $attributes) = ('', '', '');
+    if (defined($map_ref->{$command}))
     {
-        return $map_ref->{$command}->{'attribute'} if (exists($map_ref->{$command}->{'attribute'}));
+        if (ref($map_ref->{$command}) eq 'HASH') 
+        {
+            ($element, $class, $attributes) = t2h_html_parse_attribute ($map_ref->{$command}->{'attribute'});
+        }
+        elsif ($map_ref->{$command} !~ /^&/)
+        {
+            $element = $map_ref->{$command};
+            $element =~ s/^\"//;
+        }
     }
-    elsif ($map_ref->{$command} !~ /^&/)
-    {
-        my $attribute = $map_ref->{$command};
-        $attribute =~ s/^\"//;
-        return $attribute;
-    }
-    return '';
-}
-
-sub t2h_begin_style($$;$)
-{
-    my $command = shift;
-    my $text = shift;
-    my $map_ref = shift;
-    my $attribute = t2h_get_attribute($command,$map_ref);
-    $attribute = "<$attribute>" if ($attribute ne '');
-    return $attribute.$text;
-}
-
-sub t2h_end_style($$;$)
-{
-    my $command = shift;
-    my $text = shift;
-    my $map_ref = shift;
-    my $attribute = t2h_get_attribute($command,$map_ref);
-    if ($attribute =~ /^(\w+)/)
-    {
-        $attribute = $1;
-    }
-    $attribute = "</$attribute>" if ($attribute ne '');
-    return $text.$attribute;
+    return ($element, $class, $attributes);
 }
 
 # a paragraph
@@ -5830,15 +5976,6 @@ sub t2h_default_paragraph($$$$$$$$$$$$)
 #    $paragraph_command_formatted = '' if (!defined($paragraph_command_formatted) or 
 #          exists($special_list_commands{$format}->{$paragraph_command}));
     return '' if ($text =~ /^\s*$/);
-
-    foreach my $style(t2h_collect_styles($command_stack_at_begin))
-    {
-       $text = t2h_begin_style($style, $text);
-    }
-    foreach my $style(t2h_collect_styles($command_stack_at_end))
-    {
-       $text = t2h_end_style($style, $text);
-    }
 
     return $text;
 }
@@ -5879,14 +6016,6 @@ sub t2h_default_preformatted($$$$$$$$$$$$)
        $text =~ s/\s*$//;
     }
 
-    foreach my $style(t2h_collect_styles($command_stack_at_begin))
-    {
-       $text = t2h_begin_style($style, $text, \%style_map_pre);
-    }
-    foreach my $style(t2h_collect_styles($command_stack_at_end))
-    {
-       $text = t2h_end_style($style, $text, \%style_map_pre);
-    }
     # add a new line at the end in case there is none
     chomp($text);
     return $text . "\n";
@@ -5992,6 +6121,7 @@ sub t2h_default_heading($$$$$;$$)
          $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
     }
 
+    my $result;
     if ($in_preformatted)
     {
         $result = &$heading_text_preformatted("\@$command", $text, $level);
@@ -6178,6 +6308,7 @@ sub t2h_default_image($$$$$$$$$$$$$$$$$)
 }
 
 # address put in footer describing when was generated and who did the manual
+# not used anymore
 sub t2h_default_address($)
 {
     my $date = shift;

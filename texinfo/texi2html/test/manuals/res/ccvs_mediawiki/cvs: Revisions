@@ -17,19 +17,19 @@
 <div id="Revisions-1"></div>
 == Revisions ==
 
-<p>For many uses of <small>CVS</small>, one doesn&rsquo;t need to worry
+For many uses of <small>CVS</small>, one doesn&rsquo;t need to worry
 too much about revision numbers; <small>CVS</small> assigns
 numbers such as <code>1.1</code>, <code>1.2</code>, and so on, and
 that is all one needs to know.  However, some people
 prefer to have more knowledge and control concerning
 how <small>CVS</small> assigns revision numbers.
-</p>
-<p>If one wants to keep track of a set of revisions
+
+If one wants to keep track of a set of revisions
 involving more than one file, such as which revisions
 went into a particular release, one uses a <em>tag</em>,
 which is a symbolic revision which can be assigned to a
 numeric revision in each file.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[#Revision numbers|&bull; Revision numbers]]::            The meaning of a revision number
  [[#Versions, revisions and releases|&bull; Versions revisions releases]]::  Terminology used in this manual
@@ -69,16 +69,16 @@ numeric revision in each file.
 <div id="index-Branch-number"></div>
 <div id="index-Number_002c-branch"></div>
 
-<p>Each version of a file has a unique <em>revision
-number</em>.  Revision numbers look like &lsquo;<samp>1.1</samp>&rsquo;,
-&lsquo;<samp>1.2</samp>&rsquo;, &lsquo;<samp>1.3.2.2</samp>&rsquo; or even &lsquo;<samp>1.3.2.2.4.5</samp>&rsquo;.
+Each version of a file has a unique <em>revision
+number</em>.  Revision numbers look like &lsquo;<code>1.1</code>&rsquo;,
+&lsquo;<code>1.2</code>&rsquo;, &lsquo;<code>1.3.2.2</code>&rsquo; or even &lsquo;<code>1.3.2.2.4.5</code>&rsquo;.
 A revision number always has an even number of
 period-separated decimal integers.  By default revision
 1.1 is the first revision of a file.  Each successive
 revision is given a new number by increasing the
 rightmost number by one.  The following figure displays
 a few revisions, with newer revisions to the right.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
         +-----+    +-----+    +-----+    +-----+    +-----+
         ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
@@ -86,12 +86,12 @@ a few revisions, with newer revisions to the right.
 </div>
 </td></tr></table>
 
-<p>It is also possible to end up with numbers containing
-more than one period, for example &lsquo;<samp>1.3.2.2</samp>&rsquo;.  Such
+It is also possible to end up with numbers containing
+more than one period, for example &lsquo;<code>1.3.2.2</code>&rsquo;.  Such
 revisions represent revisions on branches
 (see section [[cvs: Branching and merging#Branching and merging|Branching and merging]]); such revision numbers
 are explained in detail in [[cvs: Branching and merging#Branches and revisions|Branches and revisions]].
-</p>
+
 <hr>
 <div id="Versions-revisions-releases"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -115,16 +115,16 @@ are explained in detail in [[cvs: Branching and merging#Branches and revisions|B
 <div id="index-Versions_002c-revisions-and-releases"></div>
 <div id="index-Releases_002c-revisions-and-versions"></div>
 
-<p>A file can have several versions, as described above.
+A file can have several versions, as described above.
 Likewise, a software product can have several versions.
 A software product is often given a version number such
-as &lsquo;<samp>4.1.1</samp>&rsquo;.
-</p>
-<p>Versions in the first sense are called <em>revisions</em>
+as &lsquo;<code>4.1.1</code>&rsquo;.
+
+Versions in the first sense are called <em>revisions</em>
 in this document, and versions in the second sense are
 called <em>releases</em>.  To avoid confusion, the word
 <em>version</em> is almost never used in this document.
-</p>
+
 <hr>
 <div id="Assigning-revisions"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -145,45 +145,45 @@ called <em>releases</em>.  To avoid confusion, the word
 <div id="Assigning-revisions-1"></div>
 === Assigning revisions ===
 
-<p>By default, <small>CVS</small> will assign numeric revisions by
+By default, <small>CVS</small> will assign numeric revisions by
 leaving the first number the same and incrementing the
 second number.  For example, <code>1.1</code>, <code>1.2</code>,
 <code>1.3</code>, etc.
-</p>
-<p>When adding a new file, the second number will always
+
+When adding a new file, the second number will always
 be one and the first number will equal the highest
 first number of any file in that directory.  For
 example, the current directory contains files whose
 highest numbered revisions are <code>1.7</code>, <code>3.1</code>,
 and <code>4.12</code>, then an added file will be given the
 numeric revision <code>4.1</code>.
-</p>
-<p>Normally there is no reason to care
+
+Normally there is no reason to care
 about the revision numbers&mdash;it is easier to treat them
 as internal numbers that <small>CVS</small> maintains, and tags
 provide a better way to distinguish between things like
 release 1 versus release 2 of your product
 (see section [[#Tags&ndash;Symbolic revisions|Tags&ndash;Symbolic revisions]]).  However, if you want to set the
-numeric revisions, the &lsquo;<samp>-r</samp>&rsquo; option to <code>cvs
-commit</code> can do that.  The &lsquo;<samp>-r</samp>&rsquo; option implies the
-&lsquo;<samp>-f</samp>&rsquo; option, in the sense that it causes the
+numeric revisions, the &lsquo;<code>-r</code>&rsquo; option to <code>cvs
+commit</code> can do that.  The &lsquo;<code>-r</code>&rsquo; option implies the
+&lsquo;<code>-f</code>&rsquo; option, in the sense that it causes the
 files to be committed even if they are not modified.
-</p>
-<p>For example, to bring all your files up to
+
+For example, to bring all your files up to
 revision 3.0 (including those that haven&rsquo;t changed),
 you might invoke:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs commit -r 3.0
 </div>
 </td></tr></table>
 
-<p>Note that the number you specify with &lsquo;<samp>-r</samp>&rsquo; must be
+Note that the number you specify with &lsquo;<code>-r</code>&rsquo; must be
 larger than any existing revision number.  That is, if
-revision 3.0 exists, you cannot &lsquo;<samp>cvs commit
--r 1.3</samp>&rsquo;.  If you want to maintain several releases in
+revision 3.0 exists, you cannot &lsquo;<code>cvs commit
+-r 1.3</code>&rsquo;.  If you want to maintain several releases in
 parallel, you need to use a branch (see section [[cvs: Branching and merging#Branching and merging|Branching and merging]]).
-</p>
+
 <hr>
 <div id="Tags"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -205,7 +205,7 @@ parallel, you need to use a branch (see section [[cvs: Branching and merging#Bra
 === Tags&ndash;Symbolic revisions ===
 <div id="index-Tags"></div>
 
-<p>The revision numbers live a life of their own.  They
+The revision numbers live a life of their own.  They
 need not have anything at all to do with the release
 numbers of your software product.  Depending
 on how you use <small>CVS</small> the revision numbers might change several times
@@ -213,7 +213,7 @@ between two releases.  As an example, some of the
 source files that make up <small>RCS</small> 5.6 have the following
 revision numbers:
 <div id="index-RCS-revision-numbers"></div>
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  ci.c            5.21
  co.c            5.9
@@ -236,40 +236,40 @@ revision numbers:
 <div id="index-Name_002c-symbolic-_0028tag_0029"></div>
 <div id="index-HEAD_002c-as-reserved-tag-name"></div>
 <div id="index-BASE_002c-as-reserved-tag-name"></div>
-<p>You can use the <code>tag</code> command to give a symbolic name to a
-certain revision of a file.  You can use the &lsquo;<samp>-v</samp>&rsquo; flag to the
+You can use the <code>tag</code> command to give a symbolic name to a
+certain revision of a file.  You can use the &lsquo;<code>-v</code>&rsquo; flag to the
 <code>status</code> command to see all tags that a file has, and
 which revision numbers they represent.  Tag names must
 start with an uppercase or lowercase letter and can
 contain uppercase and lowercase letters, digits,
-&lsquo;<samp>-</samp>&rsquo;, and &lsquo;<samp>_</samp>&rsquo;.  The two tag names <code>BASE</code>
+&lsquo;<code>-</code>&rsquo;, and &lsquo;<code>_</code>&rsquo;.  The two tag names <code>BASE</code>
 and <code>HEAD</code> are reserved for use by <small>CVS</small>.  It
 is expected that future names which are special to
 <small>CVS</small> will be specially named, for example by
-starting with &lsquo;<samp>.</samp>&rsquo;, rather than being named analogously to
+starting with &lsquo;<code>.</code>&rsquo;, rather than being named analogously to
 <code>BASE</code> and <code>HEAD</code>, to avoid conflicts with
 actual tag names.
-</p>
-<p>You&rsquo;ll want to choose some convention for naming tags,
+
+You&rsquo;ll want to choose some convention for naming tags,
 based on information such as the name of the program
 and the version number of the release.  For example,
 one might take the name of the program, immediately
-followed by the version number with &lsquo;<samp>.</samp>&rsquo; changed to
-&lsquo;<samp>-</samp>&rsquo;, so that <small>CVS</small> 1.9 would be tagged with the name
+followed by the version number with &lsquo;<code>.</code>&rsquo; changed to
+&lsquo;<code>-</code>&rsquo;, so that <small>CVS</small> 1.9 would be tagged with the name
 <code>cvs1-9</code>.  If you choose a consistent convention,
 then you won&rsquo;t constantly be guessing whether a tag is
 <code>cvs-1-9</code> or <code>cvs1_9</code> or what.  You might
 even want to consider enforcing your convention in the
 taginfo file (see section [[cvs: History browsing#User-defined logging|User-defined logging]]).
-</p>
+
 <div id="index-Adding-a-tag"></div>
 <div id="index-Tags_002c-example"></div>
-<p>The following example shows how you can add a tag to a
+The following example shows how you can add a tag to a
 file.  The commands must be issued inside your working
 directory.  That is, you should issue the
 command in the directory where &lsquo;<tt>backend.c</tt>&rsquo;
 resides.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs tag rel-0-4 backend.c
  T backend.c
@@ -289,14 +289,14 @@ resides.
 </div>
 </td></tr></table>
 
-<p>For a complete summary of the syntax of <code>cvs tag</code>,
+For a complete summary of the syntax of <code>cvs tag</code>,
 including the various options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Quick reference to CVS commands]].
-</p>
-<p>There is seldom reason to tag a file in isolation.  A more common use is
+
+There is seldom reason to tag a file in isolation.  A more common use is
 to tag all the files that constitute a module with the same tag at
 strategic points in the development life-cycle, such as when a release
 is made.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs tag rel-1-0 .
  cvs tag: Tagging .
@@ -308,35 +308,35 @@ is made.
 </div>
 </td></tr></table>
 
-<p>(When you give <small>CVS</small> a directory as argument, it generally applies the
+(When you give <small>CVS</small> a directory as argument, it generally applies the
 operation to all the files in that directory, and (recursively), to any
 subdirectories that it may contain.  See section [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].)
-</p>
+
 <div id="index-Retrieving-an-old-revision-using-tags"></div>
 <div id="index-Tags_002c-retrieving-old-revisions"></div>
-<p>The <code>checkout</code> command has a flag, &lsquo;<samp>-r</samp>&rsquo;, that lets you check out
+The <code>checkout</code> command has a flag, &lsquo;<code>-r</code>&rsquo;, that lets you check out
 a certain revision of a module.  This flag makes it easy to
-retrieve the sources that make up release 1.0 of the module &lsquo;<samp>tc</samp>&rsquo; at
+retrieve the sources that make up release 1.0 of the module &lsquo;<code>tc</code>&rsquo; at
 any time in the future:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs checkout -r rel-1-0 tc
 </div>
 </td></tr></table>
 
-<p>This is useful, for instance, if someone claims that there is a bug in
+This is useful, for instance, if someone claims that there is a bug in
 that release, but you cannot find the bug in the current working copy.
-</p>
-<p>You can also check out a module as it was at any given date.
-See section [[cvs: Guide to CVS commands#checkout options|checkout options]].  When specifying &lsquo;<samp>-r</samp>&rsquo; to
+
+You can also check out a module as it was at any given date.
+See section [[cvs: Guide to CVS commands#checkout options|checkout options]].  When specifying &lsquo;<code>-r</code>&rsquo; to
 any of these commands, you will need beware of sticky
 tags; see [[#Sticky tags|Sticky tags]].
-</p>
-<p>When you tag more than one file with the same tag you
+
+When you tag more than one file with the same tag you
 can think about the tag as &quot;a curve drawn through a
 matrix of filename vs. revision number.&quot;  Say we have 5
 files with the following revisions:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
          file1   file2   file3   file4   file5
  
@@ -349,14 +349,14 @@ files with the following revisions:
 </div>
 </td></tr></table>
 
-<p>At some time in the past, the <code>*</code> versions were tagged.
+At some time in the past, the <code>*</code> versions were tagged.
 You can think of the tag as a handle attached to the curve
 drawn through the tagged revisions.  When you pull on
 the handle, you get all the tagged revisions.  Another
 way to look at it is that you &quot;sight&quot; through a set of
 revisions that is &quot;flat&quot; along the tagged revisions,
 like this:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
          file1   file2   file3   file4   file5
  
@@ -392,7 +392,7 @@ like this:
 === Specifying what to tag from the working directory ===
 
 <div id="index-tag-_0028subcommand_0029"></div>
-<p>The example in the previous section demonstrates one of
+The example in the previous section demonstrates one of
 the most common ways to choose which revisions to tag.
 Namely, running the <code>cvs tag</code> command without
 arguments causes <small>CVS</small> to select the revisions which
@@ -405,20 +405,20 @@ tagging is not like modifying a file, or other
 operations in which one first modifies the working
 directory and then runs <code>cvs commit</code> to transfer
 that modification to the repository.
-</p>
-<p>One potentially surprising aspect of the fact that
+
+One potentially surprising aspect of the fact that
 <code>cvs tag</code> operates on the repository is that you
 are tagging the checked-in revisions, which may differ
 from locally modified files in your working directory.
 If you want to avoid doing this by mistake, specify the
-&lsquo;<samp>-c</samp>&rsquo; option to <code>cvs tag</code>.  If there are any
+&lsquo;<code>-c</code>&rsquo; option to <code>cvs tag</code>.  If there are any
 locally modified files, <small>CVS</small> will abort with an
 error before it tags any files:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs tag -c rel-0-4
  cvs tag: backend.c is locally modified
- cvs [tag aborted]: correct the above errors first!
+ cvs <nowiki>[</nowiki>tag aborted<nowiki>]</nowiki>: correct the above errors first!
 </div>
 </td></tr></table>
 
@@ -443,42 +443,35 @@ error before it tags any files:
 === Specifying what to tag by date or revision ===
 <div id="index-rtag-_0028subcommand_0029"></div>
 
-<p>The <code>cvs rtag</code> command tags the repository as of a
+The <code>cvs rtag</code> command tags the repository as of a
 certain date or time (or can be used to tag the latest
 revision).  <code>rtag</code> works directly on the
 repository contents (it requires no prior checkout and
 does not look for a working directory).
-</p>
-<p>The following options specify which date or revision to
+
+The following options specify which date or revision to
 tag.  See [[cvs: Guide to CVS commands#Common command options|Common command options]], for a complete
 description of them.
-</p>
-<dl compact="compact">
-<dt><code>-D <var>date</var></code></dt>
-<dd><p>Tag the most recent revision no later than <var>date</var>.
-</p>
-</dd>
-<dt><code>-f</code></dt>
-<dd><p>Only useful with the &lsquo;<samp>-D <var>date</var></samp>&rsquo; or &lsquo;<samp>-r <var>tag</var></samp>&rsquo;
-flags.  If no matching revision is found, use the most
-recent revision (instead of ignoring the file).
-</p>
-</dd>
-<dt><code>-r <var>tag</var></code></dt>
-<dd><p>Only tag those files that contain existing tag <var>tag</var>.
-</p></dd>
-</dl>
 
-<p>The <code>cvs tag</code> command also allows one to specify
-files by revision or date, using the same &lsquo;<samp>-r</samp>&rsquo;,
-&lsquo;<samp>-D</samp>&rsquo;, and &lsquo;<samp>-f</samp>&rsquo; options.  However, this
+;<code>-D <var>date</var></code>
+: Tag the most recent revision no later than <var>date</var>.
+
+;<code>-f</code>
+: Only useful with the &lsquo;<code>-D <var>date</var></code>&rsquo; or &lsquo;<code>-r <var>tag</var></code>&rsquo; flags.  If no matching revision is found, use the most recent revision (instead of ignoring the file).
+
+;<code>-r <var>tag</var></code>
+: Only tag those files that contain existing tag <var>tag</var>.
+
+The <code>cvs tag</code> command also allows one to specify
+files by revision or date, using the same &lsquo;<code>-r</code>&rsquo;,
+&lsquo;<code>-D</code>&rsquo;, and &lsquo;<code>-f</code>&rsquo; options.  However, this
 feature is probably not what you want.  The reason is
 that <code>cvs tag</code> chooses which files to tag based on
 the files that exist in the working directory, rather
 than the files which existed as of the given tag/date.
 Therefore, you are generally better off using <code>cvs
 rtag</code>.  The exceptions might be cases like:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs tag -r 1.4 stable backend.c
 </div>
@@ -505,93 +498,93 @@ rtag</code>.  The exceptions might be cases like:
 === Deleting, moving, and renaming tags ===
 
 
-<p>Normally one does not modify tags.  They exist in order
+Normally one does not modify tags.  They exist in order
 to record the history of the repository and so deleting
 them or changing their meaning would, generally, not be
 what you want.
-</p>
-<p>However, there might be cases in which one uses a tag
+
+However, there might be cases in which one uses a tag
 temporarily or accidentally puts one in the wrong
 place.  Therefore, one might delete, move, or rename a
 tag.
-</p>
-<p><strong>WARNING: the commands in this section are
+
+'''WARNING: the commands in this section are
 dangerous; they permanently discard historical
 information and it can be difficult or impossible to
 recover from errors.  If you are a <small>CVS</small>
 administrator, you may consider restricting these
-commands with taginfo (see section [[cvs: History browsing#User-defined logging|User-defined logging]]).</strong>
-</p>
+commands with taginfo (see section [[cvs: History browsing#User-defined logging|User-defined logging]]).'''
+
 <div id="index-Deleting-tags"></div>
 <div id="index-Deleting-branch-tags"></div>
 <div id="index-Removing-tags"></div>
 <div id="index-Removing-branch-tags"></div>
 <div id="index-Tags_002c-deleting"></div>
 <div id="index-Branch-tags_002c-deleting"></div>
-<p>To delete a tag, specify the &lsquo;<samp>-d</samp>&rsquo; option to either
+To delete a tag, specify the &lsquo;<code>-d</code>&rsquo; option to either
 <code>cvs tag</code> or <code>cvs rtag</code>.  For example:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs rtag -d rel-0-4 tc
 </div>
 </td></tr></table>
 
-<p>deletes the non-branch tag <code>rel-0-4</code> from the module <code>tc</code>.
+deletes the non-branch tag <code>rel-0-4</code> from the module <code>tc</code>.
 In the event that branch tags are encountered within the repository
 with the given name, a warning message will be issued and the branch 
 tag will not be deleted.  If you are absolutely certain you know what
 you are doing, the <code>-B</code> option may be specified to allow deletion
 of branch tags.  In that case, any non-branch tags encountered will
 trigger warnings and will not be deleted.
-</p>
-<p><strong>WARNING: Moving branch tags is very dangerous!  If you think
+
+'''WARNING: Moving branch tags is very dangerous!  If you think
 you need the <code>-B</code> option, think again and ask your <small>CVS</small>
 administrator about it (if that isn&rsquo;t you).  There is almost certainly
-another way to accomplish what you want to accomplish.</strong>
-</p>
+another way to accomplish what you want to accomplish.'''
+
 <div id="index-Moving-tags"></div>
 <div id="index-Moving-branch-tags"></div>
 <div id="index-Tags_002c-moving"></div>
 <div id="index-Branch-tags_002c-moving"></div>
-<p>When we say <em>move</em> a tag, we mean to make the same
+When we say <em>move</em> a tag, we mean to make the same
 name point to different revisions.  For example, the
 <code>stable</code> tag may currently point to revision 1.4
 of &lsquo;<tt>backend.c</tt>&rsquo; and perhaps we want to make it
 point to revision 1.6.  To move a non-branch tag, specify the
-&lsquo;<samp>-F</samp>&rsquo; option to either <code>cvs tag</code> or <code>cvs
+&lsquo;<code>-F</code>&rsquo; option to either <code>cvs tag</code> or <code>cvs
 rtag</code>.  For example, the task just mentioned might be
 accomplished as:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs tag -r 1.6 -F stable backend.c
 </div>
 </td></tr></table>
 
-<p>If any branch tags are encountered in the repository 
+If any branch tags are encountered in the repository 
 with the given name, a warning is issued and the branch
 tag is not disturbed.  If you are absolutely certain you
 wish to move the branch tag, the <code>-B</code> option may be specified.
 In that case, non-branch tags encountered with the given
 name are ignored with a warning message.
-</p>
-<p><strong>WARNING: Moving branch tags is very dangerous!  If you think you
+
+'''WARNING: Moving branch tags is very dangerous!  If you think you
 need the <code>-B</code> option, think again and ask your <small>CVS</small>
 administrator about it (if that isn&rsquo;t you).  There is almost certainly
-another way to accomplish what you want to accomplish.</strong>
-</p>
+another way to accomplish what you want to accomplish.'''
+
 <div id="index-Renaming-tags"></div>
 <div id="index-Tags_002c-renaming"></div>
-<p>When we say <em>rename</em> a tag, we mean to make a
+When we say <em>rename</em> a tag, we mean to make a
 different name point to the same revisions as the old
 tag.  For example, one may have misspelled the tag name
 and want to correct it (hopefully before others are
 relying on the old spelling).  To rename a tag, first
-create a new tag using the &lsquo;<samp>-r</samp>&rsquo; option to
+create a new tag using the &lsquo;<code>-r</code>&rsquo; option to
 <code>cvs rtag</code>, and then delete the old name.  (Caution:
 this method will not work with branch tags.) 
 This leaves the new tag on exactly the 
 same files as the old tag.  For example:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs rtag -r old-name-0-4 rel-0-4 tc
  cvs rtag -d old-name-0-4 tc
@@ -618,7 +611,7 @@ same files as the old tag.  For example:
 <div id="Tagging-and-adding-and-removing-files"></div>
 === Tagging and adding and removing files ===
 
-<p>The subject of exactly how tagging interacts with
+The subject of exactly how tagging interacts with
 adding and removing files is somewhat obscure; for the
 most part <small>CVS</small> will keep track of whether files
 exist or not without too much fussing.  By default,
@@ -628,28 +621,28 @@ not exist yet, or which were already removed, simply
 omit the tag, and <small>CVS</small> knows to treat the absence
 of a tag as meaning that the file didn&rsquo;t exist as of
 that tag.
-</p>
-<p>However, this can lose a small amount of information.
+
+However, this can lose a small amount of information.
 For example, suppose a file was added and then removed.
 Then, if the tag is missing for that file, there is no
 way to know whether the tag refers to the time before
 the file was added, or the time after it was removed.
-If you specify the &lsquo;<samp>-r</samp>&rsquo; option to <code>cvs rtag</code>,
+If you specify the &lsquo;<code>-r</code>&rsquo; option to <code>cvs rtag</code>,
 then <small>CVS</small> tags the files which have been removed,
 and thereby avoids this problem.  For example, one
 might specify <code>-r HEAD</code> to tag the head.
-</p>
-<p>On the subject of adding and removing files, the
-<code>cvs rtag</code> command has a &lsquo;<samp>-a</samp>&rsquo; option which
+
+On the subject of adding and removing files, the
+<code>cvs rtag</code> command has a &lsquo;<code>-a</code>&rsquo; option which
 means to clear the tag from removed files that would
 not otherwise be tagged.  For example, one might
-specify this option in conjunction with &lsquo;<samp>-F</samp>&rsquo; when
-moving a tag.  If one moved a tag without &lsquo;<samp>-a</samp>&rsquo;,
+specify this option in conjunction with &lsquo;<code>-F</code>&rsquo; when
+moving a tag.  If one moved a tag without &lsquo;<code>-a</code>&rsquo;,
 then the tag in the removed files might still refer to
 the old revision, rather than reflecting the fact that
 the file had been removed.  I don&rsquo;t think this is
-necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
-</p>
+necessary if &lsquo;<code>-r</code>&rsquo; is specified, as noted above.
+
 <hr>
 <div id="Sticky-tags"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -673,23 +666,23 @@ necessary if &lsquo;<samp>-r</samp>&rsquo; is specified, as noted above.
 <div id="index-Tags_002c-sticky"></div>
 
 
-<p>Sometimes a working copy&rsquo;s revision has extra data
+Sometimes a working copy&rsquo;s revision has extra data
 associated with it, for example it might be on a branch
 (see section [[cvs: Branching and merging#Branching and merging|Branching and merging]]), or restricted to
-versions prior to a certain date by &lsquo;<samp>checkout -D</samp>&rsquo;
-or &lsquo;<samp>update -D</samp>&rsquo;.  Because this data persists &ndash;
+versions prior to a certain date by &lsquo;<code>checkout -D</code>&rsquo;
+or &lsquo;<code>update -D</code>&rsquo;.  Because this data persists &ndash;
 that is, it applies to subsequent commands in the
 working copy &ndash; we refer to it as <em>sticky</em>.
-</p>
-<p>Most of the time, stickiness is an obscure aspect of
+
+Most of the time, stickiness is an obscure aspect of
 <small>CVS</small> that you don&rsquo;t need to think about.  However,
 even if you don&rsquo;t want to use the feature, you may need
-to know <em>something</em> about sticky tags (for
+to know ''something'' about sticky tags (for
 example, how to avoid them!).
-</p>
-<p>You can use the <code>status</code> command to see if any
+
+You can use the <code>status</code> command to see if any
 sticky tags or dates are set:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs status driver.c
  ===================================================================
@@ -707,15 +700,15 @@ sticky tags or dates are set:
 <div id="index-Resetting-sticky-tags"></div>
 <div id="index-Sticky-tags_002c-resetting"></div>
 <div id="index-Deleting-sticky-tags"></div>
-<p>The sticky tags will remain on your working files until
-you delete them with &lsquo;<samp>cvs update -A</samp>&rsquo;.  The
-&lsquo;<samp>-A</samp>&rsquo; option merges local changes into the version of the
+The sticky tags will remain on your working files until
+you delete them with &lsquo;<code>cvs update -A</code>&rsquo;.  The
+&lsquo;<code>-A</code>&rsquo; option merges local changes into the version of the
 file from the head of the trunk, removing any sticky tags,
 dates, or options.  See [[cvs: Guide to CVS commands#update&mdash;Bring work tree in sync with repository|update&mdash;Bring work tree in sync with repository]] for more on the operation
 of <code>cvs update</code>.
-</p>
+
 <div id="index-Sticky-date"></div>
-<p>The most common use of sticky tags is to identify which
+The most common use of sticky tags is to identify which
 branch one is working on, as described in
 [[cvs: Branching and merging#Accessing branches|Accessing branches]].  However, non-branch
 sticky tags have uses as well.  For example,
@@ -730,16 +723,16 @@ will become sticky.  Subsequent <code>cvs update</code>
 commands will
 not retrieve the latest revision until you reset the
 tag with <code>cvs update -A</code>.  Likewise, use of the
-&lsquo;<samp>-D</samp>&rsquo; option to <code>update</code> or <code>checkout</code>
+&lsquo;<code>-D</code>&rsquo; option to <code>update</code> or <code>checkout</code>
 sets a <em>sticky date</em>, which, similarly, causes that
 date to be used for future retrievals.
-</p>
-<p>People often want to retrieve an old version of
+
+People often want to retrieve an old version of
 a file without setting a sticky tag.  This can
-be done with the &lsquo;<samp>-p</samp>&rsquo; option to <code>checkout</code> or
+be done with the &lsquo;<code>-p</code>&rsquo; option to <code>checkout</code> or
 <code>update</code>, which sends the contents of the file to
 standard output.  For example:
-</p><table><tr><td>&nbsp;</td><td><div class="example">
+<table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs update -p -r 1.1 file1 &gt;file1
  ===================================================================
  Checking out file1
@@ -750,13 +743,13 @@ standard output.  For example:
 </div>
 </td></tr></table>
 
-<p>However, this isn&rsquo;t the easiest way, if you are asking
+However, this isn&rsquo;t the easiest way, if you are asking
 how to undo a previous checkin (in this example, put
 &lsquo;<tt>file1</tt>&rsquo; back to the way it was as of revision
 1.1).  In that case you are better off using the
-&lsquo;<samp>-j</samp>&rsquo; option to <code>update</code>; for further
+&lsquo;<code>-j</code>&rsquo; option to <code>update</code>; for further
 discussion see [[cvs: Branching and merging#Merging differences between any two revisions|Merging differences between any two revisions]].
-</p>
+
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>

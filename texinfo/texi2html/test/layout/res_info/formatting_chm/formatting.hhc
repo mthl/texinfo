@@ -29,7 +29,7 @@
 </OBJECT> </LI>
 <UL>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="1.1.1.1 subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;">
+<param name="Name" value="1.1.1.1 subsubsection &quot;simple-double-three--four---&quot;">
 <param name="Local" value="subsubsection-_0060_0060simple_002ddouble_002d_002dthree_002d_002d_002dfour_002d_002d_002d_002d_0027_0027.html#subsubsection-_0060_0060simple_002ddouble_002d_002dthree_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">
 </OBJECT> </LI>
 </UL>

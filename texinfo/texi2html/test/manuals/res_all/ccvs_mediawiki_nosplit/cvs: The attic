@@ -8,27 +8,27 @@ Next: [[cvs: The CVS directory in the repository#The CVS directory in the reposi
 ==== The attic ====
 <div id="index-Attic"></div>
 
-<p>You will notice that sometimes <small>CVS</small> stores an
+You will notice that sometimes <small>CVS</small> stores an
 <small>RCS</small> file in the <code>Attic</code>.  For example, if the
 <small>CVSROOT</small> is &lsquo;<tt>/usr/local/cvsroot</tt>&rsquo; and we are
 talking about the file &lsquo;<tt>backend.c</tt>&rsquo; in the
 directory &lsquo;<tt>yoyodyne/tc</tt>&rsquo;, then the file normally
 would be in
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  /usr/local/cvsroot/yoyodyne/tc/backend.c,v
 </div>
 </td></tr></table>
 
-<p>but if it goes in the attic, it would be in
-</p>
+but if it goes in the attic, it would be in
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  /usr/local/cvsroot/yoyodyne/tc/Attic/backend.c,v
 </div>
 </td></tr></table>
 
 <div id="index-Dead-state"></div>
-<p>instead.  It should not matter from a user point of
+instead.  It should not matter from a user point of
 view whether a file is in the attic; <small>CVS</small> keeps
 track of this and looks in the attic when it needs to.
 But in case you want to know, the rule is that the RCS
@@ -39,5 +39,5 @@ never added, for that revision.  For example, if you
 add a file on a branch, it will have a trunk revision
 in <code>dead</code> state, and a branch revision in a
 non-<code>dead</code> state.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

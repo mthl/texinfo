@@ -9,20 +9,20 @@ Previous: [[cvs: Cleaning up#Cleaning up|Cleaning up]], Up: [[cvs: A sample sess
 <div id="index-Viewing-differences"></div>
 <div id="index-Diff"></div>
 
-<p>You do not remember modifying &lsquo;<tt>driver.c</tt>&rsquo;, so you want to see what
+You do not remember modifying &lsquo;<tt>driver.c</tt>&rsquo;, so you want to see what
 has happened to that file.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd tc
  $ cvs diff driver.c
 </div>
 </td></tr></table>
 
-<p>This command runs <code>diff</code> to compare the version of &lsquo;<tt>driver.c</tt>&rsquo;
+This command runs <code>diff</code> to compare the version of &lsquo;<tt>driver.c</tt>&rsquo;
 that you checked out with your working copy.  When you see the output
 you remember that you added a command line option that enabled the
 optimization pass.  You check it in, and release the module.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs commit -m &quot;Added an optimization pass&quot; driver.c
  Checking in driver.c;
@@ -32,7 +32,7 @@ optimization pass.  You check it in, and release the module.
  $ cd ..
  $ cvs release -d tc
  ? tc
- You have [0] altered files in this repository.
+ You have <nowiki>[</nowiki>0<nowiki>]</nowiki> altered files in this repository.
  Are you sure you want to release (and delete) directory `tc': y
 </div>
 </td></tr></table>

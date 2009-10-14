@@ -11,11 +11,11 @@ Next: [[cvs: Handling binary files#Handling binary files|Binary files]], Previou
 <div id="index-Isolation"></div>
 
 
-<p>Once you have used <small>CVS</small> to store a version control
+Once you have used <small>CVS</small> to store a version control
 history&mdash;what files have changed when, how, and by
 whom, there are a variety of mechanisms for looking
 through the history.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: Log messages#Log messages|&bull; log messages]]::                Log messages
  [[cvs: The history database#The history database|&bull; history database]]::            The history database

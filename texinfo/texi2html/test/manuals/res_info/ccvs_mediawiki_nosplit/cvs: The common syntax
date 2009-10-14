@@ -11,34 +11,31 @@ Next: [[cvs: Commitinfo#Commitinfo|commitinfo]], Up: [[cvs: The commit support f
 <div id="index-Common-syntax-of-info-files"></div>
 
 
-<p>The administrative files such as &lsquo;<tt>commitinfo</tt>&rsquo;,
+The administrative files such as &lsquo;<tt>commitinfo</tt>&rsquo;,
 &lsquo;<tt>loginfo</tt>&rsquo;, &lsquo;<tt>rcsinfo</tt>&rsquo;, &lsquo;<tt>verifymsg</tt>&rsquo;, etc.,
 all have a common format.  The purpose of the files are
 described later on.  The common syntax is described
 here.
-</p>
+
 <div id="index-Regular-expression-syntax"></div>
-<p>Each line contains the following:
-</p><ul>
-<li>
-A regular expression.  This is a basic regular
-expression in the syntax used by GNU emacs.
+Each line contains the following:
 
-</li><li>
-A whitespace separator&mdash;one or more spaces and/or tabs.
+* A regular expression.  This is a basic regular expression in the syntax used by GNU emacs.
 
-</li><li>
-A file name or command-line template.
-</li></ul>
 
-<p>Blank lines are ignored.  Lines that start with the
-character &lsquo;<samp>#</samp>&rsquo; are treated as comments.  Long lines
-unfortunately can <em>not</em> be broken in two parts in
+* A whitespace separator&mdash;one or more spaces and/or tabs.
+
+
+* A file name or command-line template.
+
+Blank lines are ignored.  Lines that start with the
+character &lsquo;<code>#</code>&rsquo; are treated as comments.  Long lines
+unfortunately can ''not'' be broken in two parts in
 any way.
-</p>
-<p>The first regular expression that matches the current
+
+The first regular expression that matches the current
 directory name in the repository is used.  The rest of the line
 is used as a file name or command-line as appropriate.
-</p>
+
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

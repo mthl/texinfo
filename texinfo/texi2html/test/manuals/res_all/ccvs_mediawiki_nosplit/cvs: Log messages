@@ -7,10 +7,10 @@ Next: [[cvs: The history database#The history database|history database]], Up: [
 <div id="Log-messages"></div>
 === Log messages ===
 
-<p>Whenever you commit a file you specify a log message.
-</p>
-<p>To look through the log messages which have been
+Whenever you commit a file you specify a log message.
+
+To look through the log messages which have been
 specified for every revision which has been committed,
 use the <code>cvs log</code> command (see [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]]).
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

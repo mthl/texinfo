@@ -171,7 +171,7 @@ but , ,
 <code>@t{--a}</code> <tt>&ndash;a</tt>
 <code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
 <code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
-<para><code>@indicateurl{--a}</code> <url>--a</url>
+<para><code>@indicateurl{--a}</code> <indicateurl>--a</indicateurl>
 <code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@uref{--a}</code> <uref><urefurl>--a</urefurl></uref>
 <code>@uref{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
@@ -183,8 +183,8 @@ but , ,
 <code>@url{--a,}</code> <uref><urefurl>--a</urefurl></uref>
 <code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@var{--a}</code> <var>&ndash;a</var>
-<code>@verb{:--a:}</code> --a
-<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
+<code>@verb{:--a:}</code> <verb>--a</verb>
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <verb>a  &lt; &amp; @ % &quot; --    b</verb>
 <code>@w{}</code> <!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
@@ -713,7 +713,7 @@ but , ,
 <code>@t{--a}</code> <tt>&ndash;a</tt>
 <code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
 <code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
-<para><code>@indicateurl{--a}</code> <url>--a</url>
+<para><code>@indicateurl{--a}</code> <indicateurl>--a</indicateurl>
 <code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@uref{--a}</code> <uref><urefurl>--a</urefurl></uref>
 <code>@uref{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
@@ -725,8 +725,8 @@ but , ,
 <code>@url{--a,}</code> <uref><urefurl>--a</urefurl></uref>
 <code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@var{--a}</code> <var>&ndash;a</var>
-<code>@verb{:--a:}</code> --a
-<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
+<code>@verb{:--a:}</code> <verb>--a</verb>
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <verb>a  &lt; &amp; @ % &quot; --    b</verb>
 <code>@w{}</code> <!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
@@ -1250,7 +1250,7 @@ but , ,
 <code>@t{--a}</code> <tt>&ndash;a</tt>
 <code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
 <code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
-<para><code>@indicateurl{--a}</code> <url>--a</url>
+<para><code>@indicateurl{--a}</code> <indicateurl>--a</indicateurl>
 <code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@uref{--a}</code> <uref><urefurl>--a</urefurl></uref>
 <code>@uref{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
@@ -1262,8 +1262,8 @@ but , ,
 <code>@url{--a,}</code> <uref><urefurl>--a</urefurl></uref>
 <code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@var{--a}</code> <var>&ndash;a</var>
-<code>@verb{:--a:}</code> --a
-<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
+<code>@verb{:--a:}</code> <verb>--a</verb>
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <verb>a  &lt; &amp; @ % &quot; --    b</verb>
 <code>@w{}</code> <!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
@@ -1788,7 +1788,7 @@ but , ,
 <code>@t{--a}</code> <tt>&ndash;a</tt>
 <code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
 <code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
-<para><code>@indicateurl{--a}</code> <url>--a</url>
+<para><code>@indicateurl{--a}</code> <indicateurl>--a</indicateurl>
 <code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@uref{--a}</code> <uref><urefurl>--a</urefurl></uref>
 <code>@uref{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
@@ -1800,8 +1800,8 @@ but , ,
 <code>@url{--a,}</code> <uref><urefurl>--a</urefurl></uref>
 <code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@var{--a}</code> <var>&ndash;a</var>
-<code>@verb{:--a:}</code> --a
-<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
+<code>@verb{:--a:}</code> <verb>--a</verb>
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <verb>a  &lt; &amp; @ % &quot; --    b</verb>
 <code>@w{}</code> <!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
@@ -2324,7 +2324,7 @@ but , ,
 <code>@t{--a}</code> <tt>&ndash;a</tt>
 <code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
 <code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
-<para><code>@indicateurl{--a}</code> <url>--a</url>
+<para><code>@indicateurl{--a}</code> <indicateurl>--a</indicateurl>
 <code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@uref{--a}</code> <uref><urefurl>--a</urefurl></uref>
 <code>@uref{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
@@ -2336,8 +2336,8 @@ but , ,
 <code>@url{--a,}</code> <uref><urefurl>--a</urefurl></uref>
 <code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>&ndash;b</urefdesc></uref>
 <code>@var{--a}</code> <var>&ndash;a</var>
-<code>@verb{:--a:}</code> --a
-<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
+<code>@verb{:--a:}</code> <verb>--a</verb>
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <verb>a  &lt; &amp; @ % &quot; --    b</verb>
 <code>@w{}</code> <!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
@@ -2860,7 +2860,7 @@ but , ,
 <code>@t{--a}</code> <tt>--a</tt>
 <code>@sansserif{--a}</code> <sansserif>--a</sansserif>
 <code>@titlefont{--a}</code> <titlefont>--a</titlefont>
-<code>@indicateurl{--a}</code> <url>--a</url>
+<code>@indicateurl{--a}</code> <indicateurl>--a</indicateurl>
 <code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>--b</urefdesc></uref>
 <code>@uref{--a}</code> <uref><urefurl>--a</urefurl></uref>
 <code>@uref{,--b}</code> <uref><urefurl></urefurl><urefdesc>--b</urefdesc></uref>
@@ -2872,8 +2872,8 @@ but , ,
 <code>@url{--a,}</code> <uref><urefurl>--a</urefurl></uref>
 <code>@url{,--b}</code> <uref><urefurl></urefurl><urefdesc>--b</urefdesc></uref>
 <code>@var{--a}</code> <var>--a</var>
-<code>@verb{:--a:}</code> --a
-<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> a  &lt; &amp; @ % &quot; --    b
+<code>@verb{:--a:}</code> <verb>--a</verb>
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <verb>a  &lt; &amp; @ % &quot; --    b</verb>
 <code>@w{}</code> <!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> --a''

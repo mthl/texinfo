@@ -8,38 +8,38 @@ Previous: [[cvs: CVS locks in the repository#CVS locks in the repository|Locks]]
 ==== How files are stored in the CVSROOT directory ====
 <div id="index-CVSROOT_002c-storage-of-files"></div>
 
-<p>The &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; directory contains the
+The &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; directory contains the
 various administrative files.  In some ways this
 directory is just like any other directory in the
 repository; it contains <small>RCS</small> files whose names end
-in &lsquo;<samp>,v</samp>&rsquo;, and many of the <small>CVS</small> commands operate
+in &lsquo;<code>,v</code>&rsquo;, and many of the <small>CVS</small> commands operate
 on it the same way.  However, there are a few
 differences.
-</p>
-<p>For each administrative file, in addition to the
+
+For each administrative file, in addition to the
 <small>RCS</small> file, there is also a checked out copy of the
 file.  For example, there is an <small>RCS</small> file
 &lsquo;<tt>loginfo,v</tt>&rsquo; and a file &lsquo;<tt>loginfo</tt>&rsquo; which
 contains the latest revision contained in
 &lsquo;<tt>loginfo,v</tt>&rsquo;.  When you check in an administrative
 file, <small>CVS</small> should print
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs commit: Rebuilding administrative file database
 </div>
 </td></tr></table>
 
-<p>and update the checked out copy in
+and update the checked out copy in
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;.  If it does not, there is
 something wrong (see [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]]).  To add your own files
 to the files to be updated in this fashion, you can add
 them to the &lsquo;<tt>checkoutlist</tt>&rsquo; administrative file
 (see [[cvs: The checkoutlist file#The checkoutlist file|checkoutlist]]).
-</p>
+
 <div id="index-modules_002edb"></div>
 <div id="index-modules_002epag"></div>
 <div id="index-modules_002edir"></div>
-<p>By default, the &lsquo;<tt>modules</tt>&rsquo; file behaves as
+By default, the &lsquo;<tt>modules</tt>&rsquo; file behaves as
 described above.  If the modules file is very large,
 storing it as a flat text file may make looking up
 modules slow (I&rsquo;m not sure whether this is as much of a
@@ -51,10 +51,10 @@ implements the <code>ndbm</code> interface, such as Berkeley
 db or GDBM.  If this option is in use, then the modules
 database will be stored in the files &lsquo;<tt>modules.db</tt>&rsquo;,
 &lsquo;<tt>modules.pag</tt>&rsquo;, and/or &lsquo;<tt>modules.dir</tt>&rsquo;.
-</p>
-<p>For information on the meaning of the various
+
+For information on the meaning of the various
 administrative files, see [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]].
-</p>
+
 <hr>
 <div class="header">
 <p>

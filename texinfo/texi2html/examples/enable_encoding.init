@@ -34,10 +34,10 @@ use strict;
 # if true, use the original command if the result is an entity
 use vars '$ENABLE_ENCODING_USE_ENTITY';
 
-if (!$ENABLE_ENCODING_USE_ENTITY)
-{
-  $USE_ISO = 0;
-}
+#if (!$ENABLE_ENCODING_USE_ENTITY)
+#{
+#  $USE_ISO = 0;
+#}
 
 my $enable_encoding_default_init_out = $init_out;
 $init_out = \&enable_encoding_init_out;

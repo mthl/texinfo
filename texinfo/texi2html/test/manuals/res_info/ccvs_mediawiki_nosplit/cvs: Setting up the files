@@ -7,9 +7,9 @@ Next: [[cvs: Defining the module#Defining the module|Defining the module]], Up: 
 <div id="Setting-up-the-files-1"></div>
 === Setting up the files ===
 
-<p>The first step is to create the files inside the repository.  This can
+The first step is to create the files inside the repository.  This can
 be done in a couple of different ways.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: Creating a directory tree from a number of files#Creating a directory tree from a number of files|&bull; From files]]::                  This method is useful with old projects
                                  where files already exists.

@@ -10,13 +10,13 @@ Next: [[cvs: Several developers simultaneously attempting to run CVS#Several dev
 <div id="index-Spreading-information"></div>
 <div id="index-Mail_002c-automatic-mail-on-commit"></div>
 
-<p>It is often useful to inform others when you commit a
-new revision of a file.  The &lsquo;<samp>-i</samp>&rsquo; option of the
+It is often useful to inform others when you commit a
+new revision of a file.  The &lsquo;<code>-i</code>&rsquo; option of the
 &lsquo;<tt>modules</tt>&rsquo; file, or the &lsquo;<tt>loginfo</tt>&rsquo; file, can be
 used to automate this process.  See [[cvs: The modules file#The modules file|modules]].
 See [[cvs: Loginfo#Loginfo|loginfo]].  You can use these features of <small>CVS</small>
 to, for instance, instruct <small>CVS</small> to mail a
 message to all developers, or post a message to a local
 newsgroup.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

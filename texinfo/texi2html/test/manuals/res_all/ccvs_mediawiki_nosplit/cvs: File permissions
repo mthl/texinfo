@@ -11,7 +11,7 @@ Next: [[cvs: File Permission issues specific to Windows#File Permission issues s
 <div id="index-Permissions_002c-general"></div>
 <div id="index-Group"></div>
 <div id="index-Read_002donly-files_002c-in-repository"></div>
-<p>All &lsquo;<samp>,v</samp>&rsquo; files are created read-only, and you
+All &lsquo;<code>,v</code>&rsquo; files are created read-only, and you
 should not change the permission of those files.  The
 directories inside the repository should be writable by
 the persons that have permission to modify the files in
@@ -24,31 +24,31 @@ owns the directory.
 on the repository directories (see chmod(1)) so that newly-created files
 and directories get the group-ID of the parent directory rather than
 that of the current process.)
-</p>
 
-<p>This means that you can only control access to files on
+
+This means that you can only control access to files on
 a per-directory basis.
-</p>
-<p>Note that users must also have write access to check
+
+Note that users must also have write access to check
 out files, because <small>CVS</small> needs to create lock files
 (see [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Concurrency]]).  You can use LockDir in CVSROOT/config
 to put the lock files somewhere other than in the repository
 if you want to allow read-only access to some directories
 (see [[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|config]]).
-</p>
-<p>Also note that users must have write access to the
+
+Also note that users must have write access to the
 &lsquo;<tt>CVSROOT/val-tags</tt>&rsquo; file.  <small>CVS</small> uses it to keep
 track of what tags are valid tag names (it is sometimes
 updated when tags are used, as well as when they are
 created).
-</p>
-<p>Each <small>RCS</small> file will be owned by the user who last
+
+Each <small>RCS</small> file will be owned by the user who last
 checked it in.  This has little significance; what
 really matters is who owns the directories.
-</p>
+
 <div id="index-CVSUMASK_002c-environment-variable"></div>
 <div id="index-Umask_002c-for-repository-files"></div>
-<p><small>CVS</small> tries to set up reasonable file permissions
+<small>CVS</small> tries to set up reasonable file permissions
 for new directories that are added inside the tree, but
 you must fix the permissions manually when a new
 directory should have different permissions than its
@@ -61,8 +61,8 @@ directory; such files have the permissions which are
 typical for newly created files, except that sometimes
 <small>CVS</small> creates them read-only (see the sections on
 watches, [[cvs: Telling CVS to watch certain files#Telling CVS to watch certain files|Setting a watch]]; -r, [[cvs: Global options#Global options|Global options]]; or <code>CVSREAD</code>, [[cvs: All environment variables which affect CVS#All environment variables which affect CVS|Environment variables]]).
-</p>
-<p>Note that using the client/server <small>CVS</small>
+
+Note that using the client/server <small>CVS</small>
 (see [[cvs: Remote repositories#Remote repositories|Remote repositories]]), there is no good way to
 set <code>CVSUMASK</code>; the setting on the client machine
 has no effect.  If you are connecting with <code>rsh</code>, you
@@ -71,16 +71,16 @@ described in the documentation for your operating
 system.  This behavior might change in future versions
 of <small>CVS</small>; do not rely on the setting of
 <code>CVSUMASK</code> on the client having no effect.
-</p>
-<p>Using pserver, you will generally need stricter
+
+Using pserver, you will generally need stricter
 permissions on the <small>CVSROOT</small> directory and
 directories above it in the tree; see [[cvs: Security considerations with password authentication#Security considerations with password authentication|Password authentication security]].
-</p>
+
 <div id="index-Setuid"></div>
 <div id="index-Setgid"></div>
 <div id="index-Security_002c-setuid"></div>
 <div id="index-Installed-images-_0028VMS_0029"></div>
-<p>Some operating systems have features which allow a
+Some operating systems have features which allow a
 particular program to run with the ability to perform
 operations which the caller of the program could not.
 For example, the set user ID (setuid) or set group ID
@@ -98,7 +98,7 @@ security holes wider than the ones you are trying to
 fix, so read the documentation on pserver security
 carefully if you are considering this option
 ([[cvs: Security considerations with password authentication#Security considerations with password authentication|Password authentication security]]).
-</p>
+
 <hr>
 <div class="header">
 <p>

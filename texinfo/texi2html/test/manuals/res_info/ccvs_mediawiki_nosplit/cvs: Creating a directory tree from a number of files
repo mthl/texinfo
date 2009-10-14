@@ -8,31 +8,31 @@ Next: [[cvs: Creating Files From Other Version Control Systems#Creating Files Fr
 ==== Creating a directory tree from a number of files ====
 <div id="index-Importing-files"></div>
 
-<p>When you begin using <small>CVS</small>, you will probably already have several
+When you begin using <small>CVS</small>, you will probably already have several
 projects that can be
 put under <small>CVS</small> control.  In these cases the easiest way is to use the
 <code>import</code> command.  An example is probably the easiest way to
 explain how to use it.  If the files you want to install in
 <small>CVS</small> reside in &lsquo;<tt><var>wdir</var></tt>&rsquo;, and you want them to appear in the
 repository as &lsquo;<tt>$CVSROOT/yoyodyne/<var>rdir</var></tt>&rsquo;, you can do this:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd <var>wdir</var>
  $ cvs import -m &quot;Imported sources&quot; yoyodyne/<var>rdir</var> yoyo start
 </div>
 </td></tr></table>
 
-<p>Unless you supply a log message with the &lsquo;<samp>-m</samp>&rsquo;
+Unless you supply a log message with the &lsquo;<code>-m</code>&rsquo;
 flag, <small>CVS</small> starts an editor and prompts for a
-message.  The string &lsquo;<samp>yoyo</samp>&rsquo; is a <em>vendor tag</em>,
-and &lsquo;<samp>start</samp>&rsquo; is a <em>release tag</em>.  They may fill
+message.  The string &lsquo;<code>yoyo</code>&rsquo; is a <em>vendor tag</em>,
+and &lsquo;<code>start</code>&rsquo; is a <em>release tag</em>.  They may fill
 no purpose in this context, but since <small>CVS</small> requires
 them they must be present.  See [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]], for
 more information about them.
-</p>
-<p>You can now verify that it worked, and remove your
+
+You can now verify that it worked, and remove your
 original source directory.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cd ..
  $ cvs checkout yoyodyne/<var>rdir</var>       # <span class="roman" style="font-family:serif; font-weight:normal;">Explanation below</span>
@@ -41,25 +41,25 @@ original source directory.
 </div>
 </td></tr></table>
 
-<p>Erasing the original sources is a good idea, to make sure that you do
+Erasing the original sources is a good idea, to make sure that you do
 not accidentally edit them in <var>wdir</var>, bypassing <small>CVS</small>.
 Of course, it would be wise to make sure that you have
 a backup of the sources before you remove them.
-</p>
-<p>The <code>checkout</code> command can either take a module
+
+The <code>checkout</code> command can either take a module
 name as argument (as it has done in all previous
 examples) or a path name relative to <code>$CVSROOT</code>,
 as it did in the example above.
-</p>
-<p>It is a good idea to check that the permissions
+
+It is a good idea to check that the permissions
 <small>CVS</small> sets on the directories inside <code>$CVSROOT</code>
 are reasonable, and that they belong to the proper
 groups.  See [[cvs: File permissions#File permissions|File permissions]].
-</p>
-<p>If some of the files you want to import are binary, you
+
+If some of the files you want to import are binary, you
 may want to use the wrappers features to specify which
 files are binary and which are not.  See [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]].
-</p>
+
 <hr>
 <div class="header">
 <p>

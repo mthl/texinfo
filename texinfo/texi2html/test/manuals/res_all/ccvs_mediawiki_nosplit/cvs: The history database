@@ -7,14 +7,14 @@ Next: [[cvs: User-defined logging#User-defined logging|user-defined logging]], P
 <div id="The-history-database"></div>
 === The history database ===
 
-<p>You can use the history file (see [[cvs: The history file#The history file|history file]]) to
+You can use the history file (see [[cvs: The history file#The history file|history file]]) to
 log various <small>CVS</small> actions.  To retrieve the
 information from the history file, use the <code>cvs
 history</code> command (see [[cvs: history--Show status of files and users#history&mdash;Show status of files and users|history]]).
-</p>
-<p>Note: you can control what is logged to this file by using the
-&lsquo;<samp>LogHistory</samp>&rsquo; keyword in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file
+
+Note: you can control what is logged to this file by using the
+&lsquo;<code>LogHistory</code>&rsquo; keyword in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file
 (see [[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|config]]).
-</p>
+
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

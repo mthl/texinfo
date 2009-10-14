@@ -7,31 +7,31 @@ Next: [[cvs: Substitution modes#Substitution modes|Substitution modes]], Previou
 <div id="Avoiding-substitution-1"></div>
 === Avoiding substitution ===
 
-<p>Keyword substitution has its disadvantages.  Sometimes
+Keyword substitution has its disadvantages.  Sometimes
 you might want the literal text string
-&lsquo;<samp>$<i></i>Author$</samp>&rsquo; to appear inside a file without
+&lsquo;<code>$<i></i>Author$</code>&rsquo; to appear inside a file without
 <small>CVS</small> interpreting it as a keyword and expanding it
-into something like &lsquo;<samp>$<i></i>Author: ceder $</samp>&rsquo;.
-</p>
-<p>There is unfortunately no way to selectively turn off
-keyword substitution.  You can use &lsquo;<samp>-ko</samp>&rsquo;
+into something like &lsquo;<code>$<i></i>Author: ceder $</code>&rsquo;.
+
+There is unfortunately no way to selectively turn off
+keyword substitution.  You can use &lsquo;<code>-ko</code>&rsquo;
 (see [[cvs: Substitution modes#Substitution modes|Substitution modes]]) to turn off keyword
 substitution entirely.
-</p>
-<p>In many cases you can avoid using keywords in
+
+In many cases you can avoid using keywords in
 the source, even though they appear in the final
 product.  For example, the source for this manual
-contains &lsquo;<samp>$@asis{}Author$</samp>&rsquo; whenever the text
-&lsquo;<samp>$<i></i>Author$</samp>&rsquo; should appear.  In <code>nroff</code>
+contains &lsquo;<code>$@asis{}Author$</code>&rsquo; whenever the text
+&lsquo;<code>$<i></i>Author$</code>&rsquo; should appear.  In <code>nroff</code>
 and <code>troff</code> you can embed the null-character
 <code>\&amp;</code> inside the keyword for a similar effect.
-</p>
-<p>It is also possible to specify an explicit list of
+
+It is also possible to specify an explicit list of
 keywords to include or exclude using the
 <code>KeywordExpand</code> option in the
 &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&ndash;see [[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion|Configuring keyword expansion]]
 for more details. This feature is intended primarily
 for use with the <code>LocalKeyword</code> option&ndash;see
 [[cvs: Keyword List#Keyword List|Keyword list]].
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

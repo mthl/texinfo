@@ -8,12 +8,12 @@ Next: [[cvs: Special Files#Special Files|Special Files]], Previous: [[cvs: Track
 <div id="index-Builds"></div>
 <div id="index-make"></div>
 
-<p>As mentioned in the introduction, <small>CVS</small> does not
+As mentioned in the introduction, <small>CVS</small> does not
 contain software for building your software from source
 code.  This section describes how various aspects of
 your build system might interact with <small>CVS</small>.
-</p>
-<p>One common question, especially from people who are
+
+One common question, especially from people who are
 accustomed to <small>RCS</small>, is how to make their build get
 an up to date copy of the sources.  The answer to this
 with <small>CVS</small> is two-fold.  First of all, since
@@ -24,7 +24,7 @@ each file is up to date.  Instead, just use two
 commands, first <code>cvs -q update</code> and then
 <code>make</code> or whatever the command is to invoke your
 build tool.  Secondly, you do not necessarily
-<em>want</em> to get a copy of a change someone else made
+''want'' to get a copy of a change someone else made
 until you have finished your own work.  One suggested
 approach is to first update your sources, then
 implement, build and
@@ -33,17 +33,17 @@ your sources (updating first if necessary).  By
 periodically (in between changes, using the approach
 just described) updating your entire tree, you ensure
 that your sources are sufficiently up to date.
-</p>
+
 <div id="index-Bill-of-materials"></div>
-<p>One common need is to record which versions of which
+One common need is to record which versions of which
 source files went into a particular build.  This kind
 of functionality is sometimes called <em>bill of
 materials</em> or something similar.  The best way to do
 this with <small>CVS</small> is to use the <code>tag</code> command to
 record which versions went into a given build
 (see [[cvs: Revisions#Tags&ndash;Symbolic revisions|Tags]]).
-</p>
-<p>Using <small>CVS</small> in the most straightforward manner
+
+Using <small>CVS</small> in the most straightforward manner
 possible, each developer will have a copy of the entire
 source tree which is used in a particular build.  If
 the source tree is small, or if developers are
@@ -54,8 +54,8 @@ separately-compiled subsystems, and arrange a way of
 releasing them internally so that each developer need
 check out only those subsystems which they are
 actively working on.
-</p>
-<p>Another approach is to set up a structure which allows
+
+Another approach is to set up a structure which allows
 developers to have their own copies of some files, and
 for other files to access source files from a central
 location.  Many people have come up with some such a
@@ -65,7 +65,7 @@ feature found in many versions of <code>make</code>.  One build
 tool which is designed to help with this kind of thing
 is Odin (see
 <code>ftp://ftp.cs.colorado.edu/pub/distribs/odin</code>).
-</p>
+
 <hr>
 <div class="header">
 <p>

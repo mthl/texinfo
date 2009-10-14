@@ -8,28 +8,26 @@ Next: [[cvs: import--Import sources into CVS, using vendor branches#import&mdash
 === history&mdash;Show status of files and users ===
 <div id="index-history-_0028subcommand_0029"></div>
 
-<ul>
-<li>
-Synopsis:     history [-report] [-flags] [-options args] [files&hellip;]
-</li><li>
-Requires: the file &lsquo;<tt>$CVSROOT/CVSROOT/history</tt>&rsquo;
-</li><li>
-Changes: nothing.
-</li></ul>
 
-<p><small>CVS</small> can keep a history file that tracks each use of the
+* Synopsis:     history <nowiki>[</nowiki>-report<nowiki>]</nowiki> <nowiki>[</nowiki>-flags<nowiki>]</nowiki> <nowiki>[</nowiki>-options args<nowiki>]</nowiki> <nowiki>[</nowiki>files&hellip;<nowiki>]</nowiki>
+
+* Requires: the file &lsquo;<tt>$CVSROOT/CVSROOT/history</tt>&rsquo;
+
+* Changes: nothing.
+
+<small>CVS</small> can keep a history file that tracks each use of the
 <code>checkout</code>, <code>commit</code>, <code>rtag</code>,
 <code>update</code>, and <code>release</code> commands.  You can
 use <code>history</code> to display this information in
 various formats.
-</p>
-<p>Logging must be enabled by creating the file
+
+Logging must be enabled by creating the file
 &lsquo;<tt>$CVSROOT/CVSROOT/history</tt>&rsquo;.
-</p>
-<p><strong>Note: <code>history</code> uses &lsquo;<samp>-f</samp>&rsquo;, &lsquo;<samp>-l</samp>&rsquo;,
-&lsquo;<samp>-n</samp>&rsquo;, and &lsquo;<samp>-p</samp>&rsquo; in ways that conflict with the
-normal use inside <small>CVS</small> (see [[cvs: Common command options#Common command options|Common options]]).</strong>
-</p>
+
+'''Note: <code>history</code> uses &lsquo;<code>-f</code>&rsquo;, &lsquo;<code>-l</code>&rsquo;,
+&lsquo;<code>-n</code>&rsquo;, and &lsquo;<code>-p</code>&rsquo; in ways that conflict with the
+normal use inside <small>CVS</small> (see [[cvs: Common command options#Common command options|Common options]]).'''
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: history options#history options|&bull; history options]]::             history options
 </div>

@@ -9,44 +9,39 @@ Previous: [[cvs: Read-only repository access#Read-only repository access|Read-on
 <div id="index-Temporary-directories_002c-and-server"></div>
 <div id="index-Server_002c-temporary-directories"></div>
 
-<p>While running, the <small>CVS</small> server creates temporary
+While running, the <small>CVS</small> server creates temporary
 directories.  They are named
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs-serv<var>pid</var>
 </div>
 </td></tr></table>
 
-<p>where <var>pid</var> is the process identification number of
+where <var>pid</var> is the process identification number of
 the server.
 They are located in the directory specified by 
-the &lsquo;<samp>-T</samp>&rsquo; global option (see [[cvs: Global options#Global options|Global options]]), 
+the &lsquo;<code>-T</code>&rsquo; global option (see [[cvs: Global options#Global options|Global options]]), 
 the <code>TMPDIR</code> environment variable (see [[cvs: All environment variables which affect CVS#All environment variables which affect CVS|Environment variables]]), 
 or, failing that, &lsquo;<tt>/tmp</tt>&rsquo;.
-</p>
-<p>In most cases the server will remove the temporary
+
+In most cases the server will remove the temporary
 directory when it is done, whether it finishes normally
 or abnormally.  However, there are a few cases in which
 the server does not or cannot remove the temporary
 directory, for example:
-</p>
-<ul>
-<li>
-If the server aborts due to an internal server error,
-it may preserve the directory to aid in debugging
 
-</li><li>
-If the server is killed in a way that it has no way of
-cleaning up (most notably, &lsquo;<samp>kill -KILL</samp>&rsquo; on unix).
 
-</li><li>
-If the system shuts down without an orderly shutdown,
-which tells the server to clean up.
-</li></ul>
+* If the server aborts due to an internal server error, it may preserve the directory to aid in debugging
 
-<p>In cases such as this, you will need to manually remove
+
+* If the server is killed in a way that it has no way of cleaning up (most notably, &lsquo;<code>kill -KILL</code>&rsquo; on unix).
+
+
+* If the system shuts down without an orderly shutdown, which tells the server to clean up.
+
+In cases such as this, you will need to manually remove
 the &lsquo;<tt>cvs-serv<var>pid</var></tt>&rsquo; directories.  As long as
 there is no server running with process identification
 number <var>pid</var>, it is safe to do so.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

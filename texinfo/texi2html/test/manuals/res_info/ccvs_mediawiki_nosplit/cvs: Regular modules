@@ -8,30 +8,18 @@ Next: [[cvs: Ampersand modules#Ampersand modules|Ampersand modules]], Previous: 
 ==== Regular modules ====
 <div id="index-Regular-modules"></div>
 
-<dl compact="compact">
-<dt><code><var>mname</var> [ options ] <var>dir</var> [ <var>files</var>&hellip; ]</code></dt>
-<dd><p>In the simplest case, this form of module definition
-reduces to &lsquo;<samp><var>mname</var> <var>dir</var></samp>&rsquo;.  This defines
-all the files in directory <var>dir</var> as module mname.
-<var>dir</var> is a relative path (from <code>$CVSROOT</code>) to a
-directory of source in the source repository.  In this
-case, on checkout, a single directory called
-<var>mname</var> is created as a working directory; no
-intermediate directory levels are used by default, even
-if <var>dir</var> was a path involving several directory
-levels.
-</p></dd>
-</dl>
+;<code><var>mname</var> <nowiki>[</nowiki> options <nowiki>]</nowiki> <var>dir</var> <nowiki>[</nowiki> <var>files</var>&hellip; <nowiki>]</nowiki></code>
+: In the simplest case, this form of module definition reduces to &lsquo;<code><var>mname</var> <var>dir</var></code>&rsquo;.  This defines all the files in directory <var>dir</var> as module mname. <var>dir</var> is a relative path (from <code>$CVSROOT</code>) to a directory of source in the source repository.  In this case, on checkout, a single directory called <var>mname</var> is created as a working directory; no intermediate directory levels are used by default, even if <var>dir</var> was a path involving several directory levels.
 
-<p>For example, if a module is defined by:
-</p>
+For example, if a module is defined by:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  regmodule first-dir
 </div>
 </td></tr></table>
 
-<p>then regmodule will contain the files from first-dir:
-</p>
+then regmodule will contain the files from first-dir:
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs co regmodule
  cvs checkout: Updating regmodule
@@ -43,22 +31,22 @@ levels.
 </div>
 </td></tr></table>
 
-<p>By explicitly specifying files in the module definition
+By explicitly specifying files in the module definition
 after <var>dir</var>, you can select particular files from
 directory <var>dir</var>.  Here is
 an example:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  regfiles first-dir/sdir sfile
 </div>
 </td></tr></table>
 
-<p>With this definition, getting the regfiles module
+With this definition, getting the regfiles module
 will create a single working directory
 &lsquo;<tt>regfiles</tt>&rsquo; containing the file listed, which
 comes from a directory deeper
 in the <small>CVS</small> source repository:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs co regfiles
  U regfiles/sfile

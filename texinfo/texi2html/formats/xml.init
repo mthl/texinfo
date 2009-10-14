@@ -28,8 +28,6 @@ $INLINE_INSERTCOPYING = 0;
 $SHOW_MENU = 1;
 $SHOW_TITLE = 0;
 $NUMBER_SECTIONS = 0;
-# Tags are closed at the end of elements so this is important. But is 
-# it right?
 $USE_NODES = 1;
 $USE_SECTIONS = 1;
 
@@ -55,8 +53,11 @@ $things_map{'l'} = '/l';
 $things_map{'L'} = '/L';
 $things_map{'enddots'} = '&enddots;';
 $things_map{'dots'} = '&dots;';
-# FIXME &equiv;
-#$things_map{'equiv'} = '==';
+# FIXME equiv, point, expansion could be ameliorated
+$things_map{'equiv'} = '==';
+$things_map{'point'} = '-!-';
+$things_map{'expansion'} = '==&gt;'; # &rarr;?
+
 $things_map{'minus'} = '&minus;';
 $things_map{'result'} = '&rArr;';
 $things_map{'bullet'} = '&bullet;';
@@ -102,10 +103,11 @@ foreach my $style (keys(%style_map))
     }
     elsif (!exists($style_map{$style}->{'args'}) or (scalar(@{$style_map{$style}->{'args'}}) eq 1 and ($style_map{$style}->{'args'}->[0] eq 'code' or $style_map{$style}->{'args'}->[0] eq 'normal')))
     {
-        $style_map{$style}->{'attribute'} = $style;
+        $style_map{$style}->{'inline_attribute'} = $style;
         delete ($style_map{$style}->{'quote'});
         delete ($style_map{$style}->{'begin'});
         delete ($style_map{$style}->{'end'});
+        delete ($style_map{$style}->{'function'});
     }
 }
 
@@ -123,10 +125,10 @@ foreach my $menu_command('menu', 'detailmenu', 'direntry', 'menu_comment')
   delete $complex_format_map->{$menu_command};
 }
 
-delete $iso_symbols{'`'};
-delete $iso_symbols{"'"};
-delete $style_map{'verb'}->{'attribute'};
-$style_map{'indicateurl'}->{'attribute'} = 'url';
+# this is not needed because normal_text isn't the same than in html
+#t2h_remove_text_substitutions("'", 1, 0, 0, 1);
+#t2h_remove_text_substitutions('`', 1, 0, 0, 1);
+
 $style_map{'w'}->{'end'} = '<!-- /@w -->';
 $style_map{'='}->{'function'} = \&xml_macron;
 $style_map{'email'}->{'function'} = \&xml_email;
@@ -134,7 +136,7 @@ $style_map{'titlefont'}->{'function'} = \&xml_titlefont;
 $style_map{'math'}->{'function'} = \&xml_math;
 $style_map{'uref'}->{'function'} = \&xml_uref;
 $style_map{'url'}->{'function'} = \&xml_uref;
-$style_map{'t'}->{'attribute'} = 'tt';
+$style_map{'t'}->{'inline_attribute'} = 'tt';
 # FIXME
 delete $special_accents{'ringaccent'};
 $special_accents{'ogonek'} = 'aeiuAEIU';
@@ -289,8 +291,7 @@ sub xml_titlefont($$)
 {
     shift;
     my $args = shift;
-    return "<titlefont>$args->[0]</ititlefont>" if ($args->[0] =~ /\S/);
-    return '';
+    return "<titlefont>$args->[0]</titlefont>";
 }
 
 sub xml_math($$)
@@ -509,15 +510,6 @@ sub xml_paragraph($$$$$$$$$$$$)
     my $number = shift;
     my $command_stack_at_end = shift;
     my $command_stack_at_begin = shift;
-
-    foreach my $style(t2h_collect_styles($command_stack_at_begin))
-    {
-       $text = t2h_begin_style($style, $text);
-    }
-    foreach my $style(t2h_collect_styles($command_stack_at_end))
-    {
-       $text = t2h_end_style($style, $text);
-    }
 
     # no para in multitables, caption and shortcaptions.
     my $top_stack = '';

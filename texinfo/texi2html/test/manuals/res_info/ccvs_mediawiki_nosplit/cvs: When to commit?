@@ -10,20 +10,20 @@ Up: [[cvs: Revision management#Revision management|Revision management]] &nbsp; 
 <div id="index-Committing_002c-when-to"></div>
 <div id="index-Policy"></div>
 
-<p>Your group should decide which policy to use regarding
+Your group should decide which policy to use regarding
 commits.  Several policies are possible, and as your
 experience with <small>CVS</small> grows you will probably find
 out what works for you.
-</p>
-<p>If you commit files too quickly you might commit files
+
+If you commit files too quickly you might commit files
 that do not even compile.  If your partner updates his
 working sources to include your buggy file, he will be
 unable to compile the code.  On the other hand, other
 persons will not be able to benefit from the
 improvements you make to the code if you commit very
 seldom, and conflicts will probably be more common.
-</p>
-<p>It is common to only commit files after making sure
+
+It is common to only commit files after making sure
 that they can be compiled.  Some sites require that the
 files pass a test suite.  Policies like this can be
 enforced using the commitinfo file
@@ -32,5 +32,5 @@ you enforce such a convention.  By making the
 development environment too controlled it might become
 too regimented and thus counter-productive to the real
 goal, which is to get software written.
-</p>
+
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

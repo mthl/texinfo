@@ -9,67 +9,65 @@ Next: [[cvs: log--Print out log information for files#log&mdash;Print out log in
 <div id="index-import-_0028subcommand_0029"></div>
 
 
-<ul>
-<li>
-Synopsis: import [-options] repository vendortag releasetag&hellip;
-</li><li>
-Requires: Repository, source distribution directory.
-</li><li>
-Changes: repository.
-</li></ul>
 
-<p>Use <code>import</code> to incorporate an entire source
+* Synopsis: import <nowiki>[</nowiki>-options<nowiki>]</nowiki> repository vendortag releasetag&hellip;
+
+* Requires: Repository, source distribution directory.
+
+* Changes: repository.
+
+Use <code>import</code> to incorporate an entire source
 distribution from an outside source (e.g., a source
 vendor) into your source repository directory.  You can
 use this command both for initial creation of a
 repository, and for wholesale updates to the module
 from the outside source.  See [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]], for
 a discussion on this subject.
-</p>
-<p>The <var>repository</var> argument gives a directory name
+
+The <var>repository</var> argument gives a directory name
 (or a path to a directory) under the <small>CVS</small> root directory
 for repositories; if the directory did not exist,
 import creates it.
-</p>
-<p>When you use import for updates to source that has been
+
+When you use import for updates to source that has been
 modified in your source repository (since a prior
 import), it will notify you of any files that conflict
-in the two branches of development; use &lsquo;<samp>checkout
--j</samp>&rsquo; to reconcile the differences, as import instructs
+in the two branches of development; use &lsquo;<code>checkout
+-j</code>&rsquo; to reconcile the differences, as import instructs
 you to do.
-</p>
-<p>If <small>CVS</small> decides a file should be ignored
+
+If <small>CVS</small> decides a file should be ignored
 (see [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]]), it does not import it and prints
-&lsquo;<samp>I </samp>&rsquo; followed by the filename (see [[cvs: import output#import output|import output]], for a
+&lsquo;<code>I </code>&rsquo; followed by the filename (see [[cvs: import output#import output|import output]], for a
 complete description of the output).
-</p>
-<p>If the file &lsquo;<tt>$CVSROOT/CVSROOT/cvswrappers</tt>&rsquo; exists,
+
+If the file &lsquo;<tt>$CVSROOT/CVSROOT/cvswrappers</tt>&rsquo; exists,
 any file whose names match the specifications in that
 file will be treated as packages and the appropriate
 filtering will be performed on the file/directory
 before being imported.  See [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]].
-</p>
-<p>The outside source is saved in a first-level
+
+The outside source is saved in a first-level
 branch, by default 1.1.1.  Updates are leaves of this
 branch; for example, files from the first imported
 collection of source will be revision 1.1.1.1, then
 files from the first imported update will be revision
 1.1.1.2, and so on.
-</p>
-<p>At least three arguments are required.
+
+At least three arguments are required.
 <var>repository</var> is needed to identify the collection
 of source.  <var>vendortag</var> is a tag for the entire
 branch (e.g., for 1.1.1).  You must also specify at
 least one <var>releasetag</var> to identify the files at
 the leaves created each time you execute <code>import</code>.
-</p>
-<p>Note that <code>import</code> does <em>not</em> change the
+
+Note that <code>import</code> does ''not'' change the
 directory in which you invoke it.  In particular, it
 does not set up that directory as a <small>CVS</small> working
 directory; if you want to work with the sources import
 them first and then check them out into a different
 directory (see [[cvs: Getting the source#Getting the source|Getting the source]]).
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: import options#import options|&bull; import options]]::              import options
  [[cvs: import output#import output|&bull; import output]]::               import output

@@ -10,9 +10,9 @@ Next: [[cvs: Magic branch numbers#Magic branch numbers|Magic branch numbers]], P
 <div id="index-Number_002c-branch-1"></div>
 <div id="index-Revision-numbers-_0028branches_0029"></div>
 
-<p>Ordinarily, a file&rsquo;s revision history is a linear
+Ordinarily, a file&rsquo;s revision history is a linear
 series of increments (see [[cvs: Revision numbers#Revision numbers|Revision numbers]]):
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
         +-----+    +-----+    +-----+    +-----+    +-----+
         ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
@@ -20,24 +20,24 @@ series of increments (see [[cvs: Revision numbers#Revision numbers|Revision numb
 </div>
 </td></tr></table>
 
-<p>However, <small>CVS</small> is not limited to linear development.  The
+However, <small>CVS</small> is not limited to linear development.  The
 <em>revision tree</em> can be split into <em>branches</em>,
 where each branch is a self-maintained line of
 development.  Changes made on one branch can easily be
 moved back to the main trunk.
-</p>
-<p>Each branch has a <em>branch number</em>, consisting of an
+
+Each branch has a <em>branch number</em>, consisting of an
 odd number of period-separated decimal integers.  The
 branch number is created by appending an integer to the
 revision number where the corresponding branch forked
 off.  Having branch numbers allows more than one branch
 to be forked off from a certain revision.
-</p>
-<p>All revisions on a branch have revision numbers formed
+
+All revisions on a branch have revision numbers formed
 by appending an ordinal number to the branch number.
 The following figure illustrates branching with an
 example.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
                                                        +-------------+
                             Branch 1.2.2.3.2 -&gt;        ! 1.2.2.3.2.1 !
@@ -63,7 +63,7 @@ example.
 
 
 
-<p>The exact details of how the branch number is
+The exact details of how the branch number is
 constructed is not something you normally need to be
 concerned about, but here is how it works: When
 <small>CVS</small> creates a branch number it picks the first
@@ -73,7 +73,7 @@ numbered 6.4.2.  All branch numbers ending in a zero
 (such as 6.4.0) are used internally by <small>CVS</small>
 (see [[cvs: Magic branch numbers#Magic branch numbers|Magic branch numbers]]).  The branch 1.1.1 has a
 special meaning.  See [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]].
-</p>
+
 <hr>
 <div class="header">
 <p>

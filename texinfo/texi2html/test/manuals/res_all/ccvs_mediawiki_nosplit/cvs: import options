@@ -7,50 +7,28 @@ Next: [[cvs: import output#import output|import output]], Up: [[cvs: import--Imp
 <div id="import-options-1"></div>
 ==== import options ====
 
-<p>This standard option is supported by <code>import</code>
+This standard option is supported by <code>import</code>
 (see [[cvs: Common command options#Common command options|Common options]], for a complete description):
-</p>
-<dl compact="compact">
-<dt><code>-m <var>message</var></code></dt>
-<dd><p>Use <var>message</var> as log information, instead of
-invoking an editor.
-</p></dd>
-</dl>
 
-<p>There are the following additional special options.
-</p>
-<dl compact="compact">
-<dt><code>-b <var>branch</var></code></dt>
-<dd><p>See [[cvs: Multiple vendor branches#Multiple vendor branches|Multiple vendor branches]].
-</p>
-</dd>
-<dt><code>-k <var>subst</var></code></dt>
-<dd><p>Indicate the keyword expansion mode desired.  This
-setting will apply to all files created during the
-import, but not to any files that previously existed in
-the repository.  See [[cvs: Substitution modes#Substitution modes|Substitution modes]], for a
-list of valid &lsquo;<samp>-k</samp>&rsquo; settings.
-</p>
-</dd>
-<dt><code>-I <var>name</var></code></dt>
-<dd><p>Specify file names that should be ignored during
-import.  You can use this option repeatedly.  To avoid
-ignoring any files at all (even those ignored by
-default), specify &lsquo;-I !&rsquo;.
-</p>
-<p><var>name</var> can be a file name pattern of the same type
-that you can specify in the &lsquo;<tt>.cvsignore</tt>&rsquo; file.
-See [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]].
-</p>
-</dd>
-<dt><code>-W <var>spec</var></code></dt>
-<dd><p>Specify file names that should be filtered during
-import.  You can use this option repeatedly.
-</p>
-<p><var>spec</var> can be a file name pattern of the same type
-that you can specify in the &lsquo;<tt>.cvswrappers</tt>&rsquo;
-file. See [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]].
-</p></dd>
-</dl>
+;<code>-m <var>message</var></code>
+: Use <var>message</var> as log information, instead of invoking an editor.
+
+There are the following additional special options.
+
+;<code>-b <var>branch</var></code>
+: See [[cvs: Multiple vendor branches#Multiple vendor branches|Multiple vendor branches]].
+
+;<code>-k <var>subst</var></code>
+: Indicate the keyword expansion mode desired.  This setting will apply to all files created during the import, but not to any files that previously existed in the repository.  See [[cvs: Substitution modes#Substitution modes|Substitution modes]], for a list of valid &lsquo;<code>-k</code>&rsquo; settings.
+
+;<code>-I <var>name</var></code>
+: Specify file names that should be ignored during import.  You can use this option repeatedly.  To avoid ignoring any files at all (even those ignored by default), specify &lsquo;-I !&rsquo;.
+
+: <var>name</var> can be a file name pattern of the same type that you can specify in the &lsquo;<tt>.cvsignore</tt>&rsquo; file. See [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]].
+
+;<code>-W <var>spec</var></code>
+: Specify file names that should be filtered during import.  You can use this option repeatedly.
+
+: <var>spec</var> can be a file name pattern of the same type that you can specify in the &lsquo;<tt>.cvswrappers</tt>&rsquo; file. See [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]].
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

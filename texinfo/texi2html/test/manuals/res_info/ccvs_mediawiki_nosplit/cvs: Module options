@@ -8,63 +8,38 @@ Next: [[cvs: How the modules file "program options" programs are run#How the mod
 ==== Module options ====
 <div id="index-Options_002c-in-modules-file"></div>
 
-<p>Either regular modules or ampersand modules can contain
+Either regular modules or ampersand modules can contain
 options, which supply additional information concerning
 the module.
-</p>
-<dl compact="compact">
-<dd><div id="index-_002dd_002c-in-modules-file"></div>
-</dd>
-<dt><code>-d <var>name</var></code></dt>
-<dd><p>Name the working directory something other than the
-module name.
-</p>
+
+<div id="index-_002dd_002c-in-modules-file"></div>
+;<code>-d <var>name</var></code>
+: Name the working directory something other than the module name.
+
 <div id="index-Export-program"></div>
 <div id="index-_002de_002c-in-modules-file"></div>
-</dd>
-<dt><code>-e <var>prog</var></code></dt>
-<dd><p>Specify a program <var>prog</var> to run whenever files in a
-module are exported.  <var>prog</var> runs with a single
-argument, the module name.
-</p>
+;<code>-e <var>prog</var></code>
+: Specify a program <var>prog</var> to run whenever files in a module are exported.  <var>prog</var> runs with a single argument, the module name.
+
 <div id="index-Checkout-program"></div>
 <div id="index-_002do_002c-in-modules-file"></div>
-</dd>
-<dt><code>-o <var>prog</var></code></dt>
-<dd><p>Specify a program <var>prog</var> to run whenever files in a
-module are checked out.  <var>prog</var> runs with a single
-argument, the module name.  See [[cvs: How the modules file "program options" programs are run#How the modules file &ldquo;program options&rdquo; programs are run|Module program options]] for
-information on how <var>prog</var> is called.
-</p>
+;<code>-o <var>prog</var></code>
+: Specify a program <var>prog</var> to run whenever files in a module are checked out.  <var>prog</var> runs with a single argument, the module name.  See [[cvs: How the modules file "program options" programs are run#How the modules file &ldquo;program options&rdquo; programs are run|Module program options]] for information on how <var>prog</var> is called.
+
 <div id="index-Status-of-a-module"></div>
 <div id="index-Module-status"></div>
 <div id="index-_002ds_002c-in-modules-file"></div>
-</dd>
-<dt><code>-s <var>status</var></code></dt>
-<dd><p>Assign a status to the module.  When the module file is
-printed with &lsquo;<samp>cvs checkout -s</samp>&rsquo; the modules are
-sorted according to primarily module status, and
-secondarily according to the module name.  This option
-has no other meaning.  You can use this option for
-several things besides status: for instance, list the
-person that is responsible for this module.
-</p>
+;<code>-s <var>status</var></code>
+: Assign a status to the module.  When the module file is printed with &lsquo;<code>cvs checkout -s</code>&rsquo; the modules are sorted according to primarily module status, and secondarily according to the module name.  This option has no other meaning.  You can use this option for several things besides status: for instance, list the person that is responsible for this module.
+
 <div id="index-Tag-program"></div>
 <div id="index-_002dt_002c-in-modules-file"></div>
-</dd>
-<dt><code>-t <var>prog</var></code></dt>
-<dd><p>Specify a program <var>prog</var> to run whenever files in a
-module are tagged with <code>rtag</code>.  <var>prog</var> runs
-with two arguments: the module name and the symbolic
-tag specified to <code>rtag</code>.  It is not run
-when <code>tag</code> is executed.  Generally you will find
-that taginfo is a better solution (see [[cvs: User-defined logging#User-defined logging|user-defined logging]]).
-</p></dd>
-</dl>
+;<code>-t <var>prog</var></code>
+: Specify a program <var>prog</var> to run whenever files in a module are tagged with <code>rtag</code>.  <var>prog</var> runs with two arguments: the module name and the symbolic tag specified to <code>rtag</code>.  It is not run when <code>tag</code> is executed.  Generally you will find that taginfo is a better solution (see [[cvs: User-defined logging#User-defined logging|user-defined logging]]).
 
-<p>You should also see see [[cvs: How the modules file "program options" programs are run#How the modules file &ldquo;program options&rdquo; programs are run|Module program options]] about how the
+You should also see see [[cvs: How the modules file "program options" programs are run#How the modules file &ldquo;program options&rdquo; programs are run|Module program options]] about how the
 &ldquo;program options&rdquo; programs are run.
-</p>
+
 
 <hr>
 <div class="header">

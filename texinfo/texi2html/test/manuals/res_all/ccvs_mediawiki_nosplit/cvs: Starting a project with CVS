@@ -9,7 +9,7 @@ Next: [[cvs: Revisions#Revisions|Revisions]], Previous: [[cvs: The Repository#Th
 <div id="index-Starting-a-project-with-CVS"></div>
 <div id="index-Creating-a-project"></div>
 
-<p>Because renaming files and moving them between
+Because renaming files and moving them between
 directories is somewhat inconvenient, the first thing
 you do when you start a new project should be to think
 through your file organization.  It is not impossible
@@ -17,9 +17,9 @@ to rename or move files, but it does increase the
 potential for confusion and <small>CVS</small> does have some
 quirks particularly in the area of renaming
 directories.  See [[cvs: Moving and renaming files#Moving and renaming files|Moving files]].
-</p>
-<p>What to do next depends on the situation at hand.
-</p>
+
+What to do next depends on the situation at hand.
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: Setting up the files#Setting up the files|&bull; Setting up the files]]::        Getting the files into the repository
  [[cvs: Defining the module#Defining the module|&bull; Defining the module]]::         How to make a module of the files

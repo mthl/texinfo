@@ -10,14 +10,14 @@ Next: [[cvs: Moving and renaming directories#Moving and renaming directories|Mov
 <div id="index-Renaming-files"></div>
 <div id="index-Files_002c-moving"></div>
 
-<p>Moving files to a different directory or renaming them
+Moving files to a different directory or renaming them
 is not difficult, but some of the ways in which this
 works may be non-obvious.  (Moving or renaming a
 directory is even harder.  See [[cvs: Moving and renaming directories#Moving and renaming directories|Moving directories]].).
-</p>
-<p>The examples below assume that the file <var>old</var> is renamed to
+
+The examples below assume that the file <var>old</var> is renamed to
 <var>new</var>.
-</p>
+
 <div class="menu-preformatted" style="font-family: serif">
  [[cvs: The Normal way to Rename#The Normal way to Rename|&bull; Outside]]::                     The normal way to Rename
  [[cvs: Moving the history file#Moving the history file|&bull; Inside]]::                      A tricky, alternative way

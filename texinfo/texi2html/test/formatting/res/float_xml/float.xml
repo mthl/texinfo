@@ -79,7 +79,7 @@ A footnote.
 <footnote><para>footnote Text with features
 </para></footnote>.
 </para>
-<para>&tex; and <emph><b>t&eacute;&icirc;</b><uref><urefurl>an_url</urefurl></uref></emph> <sc>and</sc> it is @verb &space;a word &eosexcl;@ &AElig;.
+<para>&tex; and <emph><b>t&eacute;&icirc;</b><uref><urefurl>an_url</urefurl></uref></emph> <sc>and</sc> <verb>it is @verb</verb> &space;a word &eosexcl;@ &AElig;.
 </para>
 <caption> An example of float caption&enddots;
 An example.
@@ -112,10 +112,10 @@ A footnote.
 <footnote><para>footnote Text with features caption
 </para></footnote>.
 
-&tex; and <emph><b>t&eacute;&icirc;</b><uref><urefurl>an_url</urefurl></uref></emph> <sc>and</sc> it is @verb &space;a word &eosexcl;@ &AElig;.
+&tex; and <emph><b>t&eacute;&icirc;</b><uref><urefurl>an_url</urefurl></uref></emph> <sc>and</sc> <verb>it is @verb</verb> &space;a word &eosexcl;@ &AElig;.
 </caption>
 
-<shortcaption>&tex; and <emph><b>t&eacute;&icirc;</b><uref><urefurl>an_url</urefurl></uref></emph> <sc>and</sc> it is @verb &space;a word &eosexcl;@ &AElig;.
+<shortcaption>&tex; and <emph><b>t&eacute;&icirc;</b><uref><urefurl>an_url</urefurl></uref></emph> <sc>and</sc> <verb>it is @verb</verb> &space;a word &eosexcl;@ &AElig;.
 </shortcaption>
 
 </float>
@@ -249,7 +249,7 @@ A footnote 2.
 <footnote><para>footnote Text with features caption 2
 </para></footnote>.
 
-&tex; and <emph><b>t&eacute;&icirc;</b><uref><urefurl>an_url</urefurl></uref></emph> <sc>and</sc> it is @verb &space;a word &eosexcl;@ &AElig;.
+&tex; and <emph><b>t&eacute;&icirc;</b><uref><urefurl>an_url</urefurl></uref></emph> <sc>and</sc> <verb>it is @verb</verb> &space;a word &eosexcl;@ &AElig;.
 </caption>
 
 </float>

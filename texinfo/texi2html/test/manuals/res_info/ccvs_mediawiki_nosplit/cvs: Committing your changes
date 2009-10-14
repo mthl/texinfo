@@ -9,24 +9,24 @@ Next: [[cvs: Cleaning up#Cleaning up|Cleaning up]], Previous: [[cvs: Getting the
 <div id="index-Committing-changes-to-files"></div>
 <div id="index-Log-message-entry"></div>
 
-<p>When you have checked that the compiler is still compilable you decide
+When you have checked that the compiler is still compilable you decide
 to make a new version of &lsquo;<tt>backend.c</tt>&rsquo;.  This will
 store your new &lsquo;<tt>backend.c</tt>&rsquo; in the repository and
 make it available to anyone else who is using that same
 repository.
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs commit backend.c
 </div>
 </td></tr></table>
 
-<p><small>CVS</small> starts an editor, to allow you to enter a log
+<small>CVS</small> starts an editor, to allow you to enter a log
 message.  You type in &ldquo;Added an optimization pass.&rdquo;,
 save the temporary file, and exit the editor.
-</p>
+
 <div id="index-CVSEDITOR_002c-environment-variable"></div>
 <div id="index-EDITOR_002c-environment-variable"></div>
-<p>The environment variable <code>$CVSEDITOR</code> determines
+The environment variable <code>$CVSEDITOR</code> determines
 which editor is started.  If <code>$CVSEDITOR</code> is not
 set, then if the environment variable <code>$EDITOR</code> is
 set, it will be used. If both <code>$CVSEDITOR</code> and
@@ -34,16 +34,16 @@ set, it will be used. If both <code>$CVSEDITOR</code> and
 which will vary with your operating system, for example
 <code>vi</code> for unix or <code>notepad</code> for Windows
 NT/95.
-</p>
+
 <div id="index-VISUAL_002c-environment-variable"></div>
-<p>In addition, <small>CVS</small> checks the <code>$VISUAL</code> environment
+In addition, <small>CVS</small> checks the <code>$VISUAL</code> environment
 variable.  Opinions vary on whether this behavior is desirable and
 whether future releases of <small>CVS</small> should check <code>$VISUAL</code> or
 ignore it.  You will be OK either way if you make sure that
 <code>$VISUAL</code> is either unset or set to the same thing as
 <code>$EDITOR</code>.
-</p>
-<p>When <small>CVS</small> starts the editor, it includes a list of
+
+When <small>CVS</small> starts the editor, it includes a list of
 files which are modified.  For the <small>CVS</small> client,
 this list is based on comparing the modification time
 of the file against the modification time that the file
@@ -57,12 +57,12 @@ unmodified file.  The next <code>update</code> will clue
 <small>CVS</small> in to the fact that the file is unmodified,
 and it will reset its stored timestamp so that the file
 will not show up in future editor sessions.
-</p>
-<p>If you want to avoid
+
+If you want to avoid
 starting an editor you can specify the log message on
-the command line using the &lsquo;<samp>-m</samp>&rsquo; flag instead, like
+the command line using the &lsquo;<code>-m</code>&rsquo; flag instead, like
 this:
-</p>
+
 <table><tr><td>&nbsp;</td><td><div class="example">
  $ cvs commit -m &quot;Added an optimization pass&quot; backend.c
 </div>
