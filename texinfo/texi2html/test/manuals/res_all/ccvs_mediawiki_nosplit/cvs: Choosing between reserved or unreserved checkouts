@@ -3,7 +3,9 @@
 <p>
 Previous: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Choosing-between-reserved-or-unreserved-checkouts"></div>
 === Choosing between reserved or unreserved checkouts ===
 <div id="index-Choosing_002c-reserved-or-unreserved-checkouts"></div>
@@ -61,7 +63,9 @@ Therefore, for some groups it can be considered the
 best of both the reserved checkout and unreserved
 checkout worlds.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

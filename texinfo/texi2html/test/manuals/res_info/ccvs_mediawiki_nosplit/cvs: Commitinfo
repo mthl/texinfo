@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Verifying log messages#Verifying log messages|verifymsg]], Previous: [[cvs: The common syntax#The common syntax|syntax]], Up: [[cvs: The commit support files#The commit support files|commit files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Commitinfo"></div>
 ==== Commitinfo ====
 <div id="index-commitinfo"></div>
@@ -63,7 +65,9 @@ message, and command line options specified, is not available
 to the command.
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Verifying log messages#Verifying log messages|verifymsg]], Previous: [[cvs: The common syntax#The common syntax|syntax]], Up: [[cvs: The commit support files#The commit support files|commit files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Conflicts example#Conflicts example|Conflicts example]], Previous: [[cvs: File status#File status|File status]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Bringing-a-file-up-to-date"></div>
 === Bringing a file up to date ===
 <div id="index-Bringing-a-file-up-to-date"></div>

@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Revisions#Revisions|Revisions]], Previous: [[cvs: The Repository#The Repository|Repository]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Starting-a-project-with-CVS"></div>
 == Starting a project with CVS ==
 <div id="index-Starting-a-project-with-CVS"></div>

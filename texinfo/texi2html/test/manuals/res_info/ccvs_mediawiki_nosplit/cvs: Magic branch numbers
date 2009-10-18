@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Merging an entire branch#Merging an entire branch|Merging a branch]], Previous: [[cvs: Branches and revisions#Branches and revisions|Branches and revisions]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Magic-branch-numbers-1"></div>
 === Magic branch numbers ===
 

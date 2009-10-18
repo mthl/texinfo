@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Excluding directories#Excluding directories|Excluding directories]], Previous: [[cvs: Regular modules#Regular modules|Regular modules]], Up: [[cvs: The modules file#The modules file|modules]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Ampersand-modules-1"></div>
 ==== Ampersand modules ====
 <div id="index-Ampersand-modules"></div>

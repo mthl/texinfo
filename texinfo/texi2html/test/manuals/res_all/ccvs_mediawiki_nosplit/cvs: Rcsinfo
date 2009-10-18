@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]], Previous: [[cvs: The commit support files#The commit support files|commit files]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Rcsinfo"></div>
 === Rcsinfo ===
 <div id="index-rcsinfo-_0028admin-file_0029"></div>
@@ -49,7 +51,9 @@ In versions of <small>CVS</small> prior to version 1.12, the
 client may be used and the &lsquo;<tt>CVS/Template</tt>&rsquo; will
 be updated from the server.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]], Previous: [[cvs: The commit support files#The commit support files|commit files]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

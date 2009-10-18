@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Updating with the import command#Updating with the import command|Update imports]], Up: [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Importing-for-the-first-time"></div>
 === Importing for the first time ===
 <div id="index-Importing-modules"></div>

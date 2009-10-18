@@ -32,7 +32,9 @@ including both text files and binary images.
  [[#How to store binary files|&bull; Binary howto]]::   How to store them
 </div>
 
-<hr>
+
+----
+
 <div id="Binary-why"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Handling binary files| &lt;&lt; ]]|</td>
@@ -100,7 +102,9 @@ discussion of reserved checkouts (file locking) in
 [[cvs: Multiple developers#Multiple developers|Multiple developers]].  To avoid the merges
 resulting from branches, restrict use of branches.
 
-<hr>
+
+----
+
 <div id="Binary-howto"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Handling binary files| &lt;&lt; ]]|</td>
@@ -199,7 +203,9 @@ it is not clear how to distinguish between binary and
 non-binary files, and the rules to apply would vary
 considerably with the operating system.
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Handling binary files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs: Multiple developers#Multiple developers| &gt;&gt; ]]|</td>

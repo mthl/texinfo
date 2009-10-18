@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]], Previous: [[cvs: history--Show status of files and users#history&mdash;Show status of files and users|history]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="import_002d_002d_002dImport-sources-into-CVS_002c-using-vendor-branches"></div>
 === import&mdash;Import sources into CVS, using vendor branches ===
 <div id="index-import-_0028subcommand_0029"></div>
@@ -74,7 +76,9 @@ directory (see [[cvs: Getting the source#Getting the source|Getting the source]]
  [[cvs: import examples#import examples|&bull; import examples]]::             import examples
 </div>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]], Previous: [[cvs: history--Show status of files and users#history&mdash;Show status of files and users|history]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

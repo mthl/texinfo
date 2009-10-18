@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: User-defined logging#User-defined logging|user-defined logging]], Previous: [[cvs: Log messages#Log messages|log messages]], Up: [[cvs: History browsing#History browsing|History browsing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="The-history-database"></div>
 === The history database ===
 

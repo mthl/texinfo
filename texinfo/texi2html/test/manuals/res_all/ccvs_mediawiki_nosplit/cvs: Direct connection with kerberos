@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Connecting with fork#Connecting with fork|Connecting via fork]], Previous: [[cvs: Direct connection with GSSAPI#Direct connection with GSSAPI|GSSAPI authenticated]], Up: [[cvs: Remote repositories#Remote repositories|Remote repositories]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Direct-connection-with-kerberos"></div>
 ==== Direct connection with kerberos ====
 
@@ -57,7 +59,9 @@ you are ready to go:
 Previous versions of <small>CVS</small> would fall back to a
 connection via rsh; this version will not do so.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Connecting with fork#Connecting with fork|Connecting via fork]], Previous: [[cvs: Direct connection with GSSAPI#Direct connection with GSSAPI|GSSAPI authenticated]], Up: [[cvs: Remote repositories#Remote repositories|Remote repositories]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

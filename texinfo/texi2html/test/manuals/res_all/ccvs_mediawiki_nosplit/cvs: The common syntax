@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Commitinfo#Commitinfo|commitinfo]], Up: [[cvs: The commit support files#The commit support files|commit files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="The-common-syntax"></div>
 ==== The common syntax ====
 <div id="index-Info-files-_0028syntax_0029"></div>

@@ -35,7 +35,9 @@ a new revision of the file.
  [[#Problems with the $ Log$ keyword.|&bull; Log keyword]]::                    Problems with the $<i></i>Log$ keyword.
 </div>
 
-<hr>
+
+----
+
 <div id="Keyword-list"></div>
 <div class="header">
 <p>
@@ -131,7 +133,9 @@ This is a list of the keywords:
 : All keyword expansion except the local keyword may be disabled using the <code>KeywordExpansion</code> option in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see  [[#Configuring Keyord Expansion|Configuring keyword expansion]] for more details.
 
 
-<hr>
+
+----
+
 <div id="Using-keywords"></div>
 <div class="header">
 <p>
@@ -189,7 +193,9 @@ magic <small>SCCS</small> phrase, like this:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="Avoiding-substitution"></div>
 <div class="header">
 <p>
@@ -225,7 +231,9 @@ for more details. This feature is intended primarily
 for use with the <code>LocalKeyword</code> option&ndash;see
 [[#Keyword List|Keyword list]].
 
-<hr>
+
+----
+
 <div id="Substitution-modes"></div>
 <div class="header">
 <p>
@@ -269,7 +277,9 @@ The modes available are:
 : One often would like to use &lsquo;<code>-kv</code>&rsquo; with <code>cvs export</code>&mdash;see [[cvs: Guide to CVS commands#export&mdash;Export sources from CVS, similar to checkout|export]].  But be aware that doesn&rsquo;t handle an export containing binary files correctly.
 
 
-<hr>
+
+----
+
 <div id="Configuring-keyword-expansion"></div>
 <div class="header">
 <p>
@@ -371,7 +381,9 @@ implemented these features using <code>tag=</code> and
 <code>tagexpand=</code> keywords and those keywords are NOT
 recognized.
 
-<hr>
+
+----
+
 <div id="Log-keyword"></div>
 <div class="header">
 <p>
@@ -406,7 +418,9 @@ not in the files header, if it is to be used at all.
 That way the long list of change messages will not
 interfere with everyday source file browsing.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[#Configuring Keyord Expansion|Configuring keyword expansion]], Up: [[#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

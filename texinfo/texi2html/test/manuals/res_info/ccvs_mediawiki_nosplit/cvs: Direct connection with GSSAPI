@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Direct connection with kerberos#Direct connection with kerberos|Kerberos authenticated]], Previous: [[cvs: Direct connection with password authentication#Direct connection with password authentication|Password authenticated]], Up: [[cvs: Remote repositories#Remote repositories|Remote repositories]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Direct-connection-with-GSSAPI"></div>
 ==== Direct connection with GSSAPI ====
 
@@ -58,7 +60,9 @@ example,
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Direct connection with kerberos#Direct connection with kerberos|Kerberos authenticated]], Previous: [[cvs: Direct connection with password authentication#Direct connection with password authentication|Password authenticated]], Up: [[cvs: Remote repositories#Remote repositories|Remote repositories]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

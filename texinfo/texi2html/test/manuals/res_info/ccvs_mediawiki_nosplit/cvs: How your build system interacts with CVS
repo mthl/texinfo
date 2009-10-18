@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Special Files#Special Files|Special Files]], Previous: [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="How-your-build-system-interacts-with-CVS"></div>
 == How your build system interacts with CVS ==
 <div id="index-Builds"></div>
@@ -67,7 +69,9 @@ tool which is designed to help with this kind of thing
 is Odin (see
 <code>ftp://ftp.cs.colorado.edu/pub/distribs/odin</code>).
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Special Files#Special Files|Special Files]], Previous: [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

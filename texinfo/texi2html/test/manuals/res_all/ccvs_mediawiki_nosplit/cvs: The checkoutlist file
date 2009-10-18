@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: The history file#The history file|history file]], Previous: [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="The-checkoutlist-file"></div>
 === The checkoutlist file ===
 <div id="index-checkoutlist"></div>

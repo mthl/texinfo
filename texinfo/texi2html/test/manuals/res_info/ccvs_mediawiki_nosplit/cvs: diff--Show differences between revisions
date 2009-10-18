@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: export--Export sources from CVS, similar to checkout#export&mdash;Export sources from CVS, similar to checkout|export]], Previous: [[cvs: commit--Check files into the repository#commit&mdash;Check files into the repository|commit]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="diff_002d_002d_002dShow-differences-between-revisions"></div>
 === diff&mdash;Show differences between revisions ===
 <div id="index-diff-_0028subcommand_0029"></div>

@@ -24,7 +24,9 @@ What to do next depends on the situation at hand.
  [[#Defining the module|&bull; Defining the module]]::         How to make a module of the files
 </div>
 
-<hr>
+
+----
+
 <div id="Setting-up-the-files"></div>
 <div class="header">
 <p>
@@ -44,7 +46,9 @@ be done in a couple of different ways.
  [[#Creating a directory tree from scratch|&bull; From scratch]]::                Creating a directory tree from scratch.
 </div>
 
-<hr>
+
+----
+
 <div id="From-files"></div>
 <div class="header">
 <p>
@@ -106,7 +110,9 @@ If some of the files you want to import are binary, you
 may want to use the wrappers features to specify which
 files are binary and which are not.  See [[cvs: Reference manual for Administrative files#The cvswrappers file|Wrappers]].
 
-<hr>
+
+----
+
 <div id="From-other-version-control-systems"></div>
 <div class="header">
 <p>
@@ -141,7 +147,9 @@ files.
 ;From PVCS
 : There is a script in the &lsquo;<tt>contrib</tt>&rsquo; directory of the <small>CVS</small> source distribution called &lsquo;<tt>pvcs_to_rcs</tt>&rsquo; which converts <small>PVCS</small> archives to <small>RCS</small> files. You must run it on a machine which has both <small>PVCS</small> and <small>RCS</small> installed, and like everything else in contrib it is unsupported (your mileage may vary).  See the comments in the script for details.
 
-<hr>
+
+----
+
 <div id="From-scratch"></div>
 <div class="header">
 <p>
@@ -176,7 +184,9 @@ as they appear.
 Check that the permissions <small>CVS</small> sets on the
 directories inside <code>$CVSROOT</code> are reasonable.
 
-<hr>
+
+----
+
 <div id="Defining-the-module"></div>
 <div class="header">
 <p>
@@ -230,7 +240,9 @@ In simple cases these steps are sufficient to define a module.
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[#Setting up the files|Setting up the files]], Up: [[#Starting a project with CVS|Starting a new project]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

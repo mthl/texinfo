@@ -3,7 +3,9 @@
 <p>
 Previous: [[cvs: Read-only repository access#Read-only repository access|Read-only access]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Temporary-directories-for-the-server"></div>
 === Temporary directories for the server ===
 <div id="index-Temporary-directories_002c-and-server"></div>

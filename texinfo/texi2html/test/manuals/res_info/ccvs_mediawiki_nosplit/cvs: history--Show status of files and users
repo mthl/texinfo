@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: import--Import sources into CVS, using vendor branches#import&mdash;Import sources into CVS, using vendor branches|import]], Previous: [[cvs: export--Export sources from CVS, similar to checkout#export&mdash;Export sources from CVS, similar to checkout|export]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="history_002d_002d_002dShow-status-of-files-and-users"></div>
 === history&mdash;Show status of files and users ===
 <div id="index-history-_0028subcommand_0029"></div>

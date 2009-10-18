@@ -3,7 +3,9 @@
 <p>
 Previous: [[cvs: Tagging and adding and removing files#Tagging and adding and removing files|Tagging add/remove]], Up: [[cvs: Revisions#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Sticky-tags-1"></div>
 === Sticky tags ===
 <div id="index-Sticky-tags"></div>
@@ -94,7 +96,9 @@ how to undo a previous checkin (in this example, put
 &lsquo;<code>-j</code>&rsquo; option to <code>update</code>; for further
 discussion see [[cvs: Merging differences between any two revisions#Merging differences between any two revisions|Merging two revisions]].
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[cvs: Tagging and adding and removing files#Tagging and adding and removing files|Tagging add/remove]], Up: [[cvs: Revisions#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

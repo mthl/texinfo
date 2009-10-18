@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: How to store binary files#How to store binary files|Binary howto]], Up: [[cvs: Handling binary files#Handling binary files|Binary files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="The-issues-with-binary-files"></div>
 === The issues with binary files ===
 
@@ -55,7 +57,9 @@ discussion of reserved checkouts (file locking) in
 [[cvs: Multiple developers#Multiple developers|Multiple developers]].  To avoid the merges
 resulting from branches, restrict use of branches.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: How to store binary files#How to store binary files|Binary howto]], Up: [[cvs: Handling binary files#Handling binary files|Binary files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

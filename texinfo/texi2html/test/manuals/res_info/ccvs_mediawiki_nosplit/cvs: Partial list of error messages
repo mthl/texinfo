@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Trouble making a connection to a CVS server#Trouble making a connection to a CVS server|Connection]], Up: [[cvs: Troubleshooting#Troubleshooting|Troubleshooting]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Partial-list-of-error-messages"></div>
 === Partial list of error messages ===
 
@@ -155,7 +157,9 @@ particular moment).
 </td></tr></table>
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Trouble making a connection to a CVS server#Trouble making a connection to a CVS server|Connection]], Up: [[cvs: Troubleshooting#Troubleshooting|Troubleshooting]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

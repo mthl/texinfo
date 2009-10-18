@@ -22,7 +22,9 @@ through the history.
  [[#Annotate command|&bull; annotate]]::                    What revision modified each line of a file?
 </div>
 
-<hr>
+
+----
+
 <div id="log-messages"></div>
 <div class="header">
 <p>
@@ -37,7 +39,9 @@ To look through the log messages which have been
 specified for every revision which has been committed,
 use the <code>cvs log</code> command (see [[cvs: Guide to CVS commands#log&mdash;Print out log information for files|log]]).
 
-<hr>
+
+----
+
 <div id="history-database"></div>
 <div class="header">
 <p>
@@ -56,7 +60,9 @@ Note: you can control what is logged to this file by using the
 (see [[cvs: Reference manual for Administrative files#The CVSROOT/config configuration file|config]]).
 
 
-<hr>
+
+----
+
 <div id="user_002ddefined-logging"></div>
 <div class="header">
 <p>
@@ -114,7 +120,9 @@ following script:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="annotate"></div>
 <div class="header">
 <p>
@@ -146,7 +154,9 @@ and revisions to annotate.  The options are described
 in more detail there and in [[cvs: Guide to CVS commands#Common command options|Common options]].
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[#User-defined logging|user-defined logging]], Up: [[#History browsing|History browsing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

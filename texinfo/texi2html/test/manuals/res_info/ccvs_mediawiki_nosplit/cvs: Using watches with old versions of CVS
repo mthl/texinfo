@@ -3,7 +3,9 @@
 <p>
 Previous: [[cvs: Information about who is watching and editing#Information about who is watching and editing|Watch information]], Up: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Using-watches-with-old-versions-of-CVS"></div>
 ==== Using watches with old versions of CVS ====
 

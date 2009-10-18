@@ -3,7 +3,9 @@
 <p>
  &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 ===== Committing to a branch =====
 
 You can commit to a branch revision (one that has an

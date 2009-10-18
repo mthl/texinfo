@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Problems with the $ Log$ keyword.#Problems with the $ Log$ keyword.|Log keyword]], Previous: [[cvs: Substitution modes#Substitution modes|Substitution modes]], Up: [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Configuring-Keyord-Expansion"></div>
 === Configuring Keyord Expansion ===
 <div id="index-Configuring-keyword-expansion"></div>
@@ -100,7 +102,9 @@ implemented these features using <code>tag=</code> and
 <code>tagexpand=</code> keywords and those keywords are NOT
 recognized.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Problems with the $ Log$ keyword.#Problems with the $ Log$ keyword.|Log keyword]], Previous: [[cvs: Substitution modes#Substitution modes|Substitution modes]], Up: [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

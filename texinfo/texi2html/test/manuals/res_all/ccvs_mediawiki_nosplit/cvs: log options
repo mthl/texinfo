@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: log examples#log examples|log examples]], Up: [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="log-options-1"></div>
 ==== log options ====
 
@@ -95,7 +97,9 @@ selected with the options &lsquo;<code>-d</code>&rsquo;, &lsquo;<code>-s</code>&
 &lsquo;<code>-w</code>&rsquo;, intersected with the union of the revisions
 selected by &lsquo;<code>-b</code>&rsquo; and &lsquo;<code>-r</code>&rsquo;.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: log examples#log examples|log examples]], Up: [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

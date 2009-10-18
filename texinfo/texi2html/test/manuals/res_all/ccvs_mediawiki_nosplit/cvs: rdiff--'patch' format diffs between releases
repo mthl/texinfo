@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: release--Indicate that a Module is no longer in use#release&mdash;Indicate that a Module is no longer in use|release]], Previous: [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="rdiff_002d_002d_002d_0027patch_0027-format-diffs-between-releases"></div>
 === rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases ===
 <div id="index-rdiff-_0028subcommand_0029"></div>

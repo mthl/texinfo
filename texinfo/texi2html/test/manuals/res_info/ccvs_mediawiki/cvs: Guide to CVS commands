@@ -30,7 +30,9 @@ reference to <small>CVS</small> commands, see [[cvs: Quick reference to CVS comm
  [[#update&mdash;Bring work tree in sync with repository|&bull; update]]::                      Bring work tree in sync with repository
 </div>
 
-<hr>
+
+----
+
 <div id="Structure"></div>
 <div class="header">
 <p>
@@ -74,7 +76,9 @@ is accepted by more commands.  In other words, do not
 take the above categorization too seriously.  Look at
 the documentation instead.
 
-<hr>
+
+----
+
 <div id="Exit-status"></div>
 <div class="header">
 <p>
@@ -103,7 +107,9 @@ way to detect errors, in the future it is possible that
 <code>cvs diff</code> will be changed to behave like the
 other <small>CVS</small> commands.
 
-<hr>
+
+----
+
 <div id="g_t_007e_002f_002ecvsrc"></div>
 <div class="header">
 <p>
@@ -174,7 +180,9 @@ example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 
 causes <small>CVS</small> to use compression level 6.
 
-<hr>
+
+----
+
 <div id="Global-options"></div>
 <div class="header">
 <p>
@@ -275,7 +283,9 @@ left of &lsquo;<code>cvs_command</code>&rsquo;) are:
 : Set the compression level. Valid levels are 1 (high speed, low compression) to 9 (low speed, high compression), or 0 to disable compression (the default). Only has an effect on the <small>CVS</small> client.
 
 
-<hr>
+
+----
+
 <div id="Common-options"></div>
 <div class="header">
 <p>
@@ -415,7 +425,9 @@ many options that conflict even with these standard options.'''
 : Specify file names that should be filtered.  You can use this option repeatedly.  The spec can be a file name pattern of the same type that you can specify in the &lsquo;<tt>.cvswrappers</tt>&rsquo; file. Available with the following commands: <code>import</code>, and <code>update</code>.
 
 
-<hr>
+
+----
+
 <div id="admin"></div>
 <div class="header">
 <p>
@@ -461,7 +473,9 @@ can run <code>cvs admin</code>.
  [[#admin options|&bull; admin options]]::               admin options
 </div>
 
-<hr>
+
+----
+
 <div id="admin-options"></div>
 <div class="header">
 <p>
@@ -593,7 +607,9 @@ effect!
 
 
 
-<hr>
+
+----
+
 <div id="checkout"></div>
 <div class="header">
 <p>
@@ -676,7 +692,9 @@ see [[#update output|update output]].
  [[#checkout examples|&bull; checkout examples]]::           checkout examples
 </div>
 
-<hr>
+
+----
+
 <div id="checkout-options"></div>
 <div class="header">
 <p>
@@ -749,7 +767,9 @@ options with <code>checkout</code>:
 ;<code>-s</code>
 : Like &lsquo;<code>-c</code>&rsquo;, but include the status of all modules, and sort it by the status string.  See [[cvs: Reference manual for Administrative files#The modules file|modules]], for info about the &lsquo;<code>-s</code>&rsquo; option that is used inside the modules file to set the module status.
 
-<hr>
+
+----
+
 <div id="checkout-examples"></div>
 <div class="header">
 <p>
@@ -773,7 +793,9 @@ ago:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="commit"></div>
 <div class="header">
 <p>
@@ -831,7 +853,9 @@ that the argument file contains the log message.
  [[#commit examples|&bull; commit examples]]::             commit examples
 </div>
 
-<hr>
+
+----
+
 <div id="commit-options"></div>
 <div class="header">
 <p>
@@ -874,7 +898,9 @@ them):
 ;<code>-m <var>message</var></code>
 : Use <var>message</var> as the log message, instead of invoking an editor.
 
-<hr>
+
+----
+
 <div id="commit-examples"></div>
 <div class="header">
 <p>
@@ -884,7 +910,9 @@ Previous: [[#commit options|commit options]], Up: [[#commit&mdash;Check files in
 ==== commit examples ====
 
 
-<hr>
+
+----
+
 <div id="Committing-to-a-branch"></div>
 <div class="header">
 <p>
@@ -918,7 +946,9 @@ is already under development, you might do:
 This works automatically since the &lsquo;<code>-r</code>&rsquo; option is
 sticky.
 
-<hr>
+
+----
+
 <div id="Creating-the-branch-after-editing"></div>
 <div class="header">
 <p>
@@ -972,7 +1002,9 @@ would simply do
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="diff"></div>
 <div class="header">
 <p>
@@ -1006,7 +1038,9 @@ The exit status for diff is different than for other
  [[#diff examples|&bull; diff examples]]::               diff examples
 </div>
 
-<hr>
+
+----
+
 <div id="diff-options"></div>
 <div class="header">
 <p>
@@ -1218,7 +1252,9 @@ preceded by &lsquo;<code>-</code>&rsquo;, and the other of which is a long name 
  [[#Line formats|&bull; Line formats]]::                Line formats
 </div>
 
-<hr>
+
+----
+
 <div id="Line-group-formats"></div>
 <div class="header">
 <p>
@@ -1356,7 +1392,9 @@ following forms.
 
 : For example, &lsquo;<code>%(N=0?no:%dN) line%(N=1?:s)</code>&rsquo; is equivalent to &lsquo;<code>no lines</code>&rsquo; if <var>N</var> (the number of lines in the group in the new file) is 0, to &lsquo;<code>1 line</code>&rsquo; if <var>N</var> is 1, and to &lsquo;<code>%dN lines</code>&rsquo; otherwise.
 
-<hr>
+
+----
+
 <div id="Line-formats"></div>
 <div class="header">
 <p>
@@ -1455,7 +1493,9 @@ to get fine control over <code>diff</code>&rsquo;s output.
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="diff-examples"></div>
 <div class="header">
 <p>
@@ -1502,7 +1542,9 @@ not yet been committed will be printed.
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="export"></div>
 <div class="header">
 <p>
@@ -1544,7 +1586,9 @@ use &lsquo;<code>-kv</code>&rsquo;.
  [[#export options|&bull; export options]]::              export options
 </div>
 
-<hr>
+
+----
+
 <div id="export-options"></div>
 <div class="header">
 <p>
@@ -1588,7 +1632,9 @@ In addition, these options (that are common to
 : Only useful together with &lsquo;<code>-d <var>dir</var></code>&rsquo;. See [[#checkout options|checkout options]], for complete details on how <small>CVS</small> handles this flag.
 
 
-<hr>
+
+----
+
 <div id="history"></div>
 <div class="header">
 <p>
@@ -1622,7 +1668,9 @@ normal use inside <small>CVS</small> (see [[#Common command options|Common optio
  [[#history options|&bull; history options]]::             history options
 </div>
 
-<hr>
+
+----
+
 <div id="history-options"></div>
 <div class="header">
 <p>
@@ -1726,7 +1774,9 @@ based on an argument:
 : Show times in the selected records using the specified time zone instead of UTC.
 
 
-<hr>
+
+----
+
 <div id="import"></div>
 <div class="header">
 <p>
@@ -1802,7 +1852,9 @@ directory (see [[cvs: Overview#Getting the source|Getting the source]]).
  [[#import examples|&bull; import examples]]::             import examples
 </div>
 
-<hr>
+
+----
+
 <div id="import-options"></div>
 <div class="header">
 <p>
@@ -1835,7 +1887,9 @@ There are the following additional special options.
 
 : <var>spec</var> can be a file name pattern of the same type that you can specify in the &lsquo;<tt>.cvswrappers</tt>&rsquo; file. See [[cvs: Reference manual for Administrative files#The cvswrappers file|Wrappers]].
 
-<hr>
+
+----
+
 <div id="import-output"></div>
 <div class="header">
 <p>
@@ -1864,7 +1918,9 @@ for each file, preceded by one character indicating the status of the file:
 ;<code>L <var>file</var></code>
 : The file is a symbolic link; <code>cvs import</code> ignores symbolic links. People periodically suggest that this behavior should be changed, but if there is a consensus on what it should be changed to, it is not apparent. (Various options in the &lsquo;<tt>modules</tt>&rsquo; file can be used to recreate symbolic links on checkout, update, etc.; see [[cvs: Reference manual for Administrative files#The modules file|modules]].)
 
-<hr>
+
+----
+
 <div id="import-examples"></div>
 <div class="header">
 <p>
@@ -1875,7 +1931,9 @@ Previous: [[#import output|import output]], Up: [[#import&mdash;Import sources i
 
 See [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]], and [[cvs: Starting a project with CVS#Creating a directory tree from a number of files|From files]].
 
-<hr>
+
+----
+
 <div id="log"></div>
 <div class="header">
 <p>
@@ -1918,7 +1976,9 @@ with the normal use inside <small>CVS</small> (see [[#Common command options|Com
  [[#log examples|&bull; log examples]]::                log examples
 </div>
 
-<hr>
+
+----
+
 <div id="log-options"></div>
 <div class="header">
 <p>
@@ -2015,7 +2075,9 @@ selected with the options &lsquo;<code>-d</code>&rsquo;, &lsquo;<code>-s</code>&
 &lsquo;<code>-w</code>&rsquo;, intersected with the union of the revisions
 selected by &lsquo;<code>-b</code>&rsquo; and &lsquo;<code>-r</code>&rsquo;.
 
-<hr>
+
+----
+
 <div id="log-examples"></div>
 <div class="header">
 <p>
@@ -2026,7 +2088,9 @@ Previous: [[#log options|log options]], Up: [[#log&mdash;Print out log informati
 
 Contributed examples are gratefully accepted.
 
-<hr>
+
+----
+
 <div id="rdiff"></div>
 <div class="header">
 <p>
@@ -2071,7 +2135,9 @@ the files that are located in other directories.
  [[#rdiff examples|&bull; rdiff examples]]::              rdiff examples
 </div>
 
-<hr>
+
+----
+
 <div id="rdiff-options"></div>
 <div class="header">
 <p>
@@ -2116,7 +2182,9 @@ In addition to the above, these options are available:
 ;<code>-V <var>vn</var></code>
 : Expand keywords according to the rules current in <small>RCS</small> version <var>vn</var> (the expansion format changed with <small>RCS</small> version 5).  Note that this option is no longer accepted.  <small>CVS</small> will always expand keywords the way that <small>RCS</small> version 5 does.
 
-<hr>
+
+----
+
 <div id="rdiff-examples"></div>
 <div class="header">
 <p>
@@ -2151,7 +2219,9 @@ done on the branch.  This command can be used:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="release"></div>
 <div class="header">
 <p>
@@ -2195,7 +2265,9 @@ history log.
  [[#release examples|&bull; release examples]]::            release examples
 </div>
 
-<hr>
+
+----
+
 <div id="release-options"></div>
 <div class="header">
 <p>
@@ -2211,7 +2283,9 @@ The <code>release</code> command supports one command option:
 
 : '''WARNING:  The <code>release</code> command deletes all directories and files recursively.  This has the very serious side-effect that any directory that you have created inside your checked-out sources, and not added to the repository (using the <code>add</code> command; see [[cvs: Adding, removing, and renaming files and directories#Adding files to a directory|Adding files]]) will be silently deleted&mdash;even if it is non-empty!'''
 
-<hr>
+
+----
+
 <div id="release-output"></div>
 <div class="header">
 <p>
@@ -2240,7 +2314,9 @@ up-to-date.
 ;<code>? <var>file</var></code>
 : <var>file</var> is in your working directory, but does not correspond to anything in the source repository, and is not in the list of files for <small>CVS</small> to ignore (see the description of the &lsquo;<code>-I</code>&rsquo; option, and see [[cvs: Reference manual for Administrative files#Ignoring files via cvsignore|cvsignore]]).  If you remove your working sources, this file will be lost.
 
-<hr>
+
+----
+
 <div id="release-examples"></div>
 <div class="header">
 <p>
@@ -2262,7 +2338,9 @@ of the files.
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="update"></div>
 <div class="header">
 <p>
@@ -2297,7 +2375,9 @@ into any destination revisions specified with <code>-r</code>,
  [[#update output|&bull; update output]]::               update output
 </div>
 
-<hr>
+
+----
+
 <div id="update-options"></div>
 <div class="header">
 <p>
@@ -2368,7 +2448,9 @@ These special options are also available with
 : See [[cvs: Branching and merging#Branching and merging|Branching and merging]].
 
 
-<hr>
+
+----
+
 <div id="update-output"></div>
 <div class="header">
 <p>
@@ -2408,7 +2490,9 @@ by one character indicating the status of the file:
 ;<code>? <var>file</var></code>
 : <var>file</var> is in your working directory, but does not correspond to anything in the source repository, and is not in the list of files for <small>CVS</small> to ignore (see the description of the &lsquo;<code>-I</code>&rsquo; option, and see [[cvs: Reference manual for Administrative files#Ignoring files via cvsignore|cvsignore]]).
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[#update options|update options]], Up: [[#update&mdash;Bring work tree in sync with repository|update]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: import examples#import examples|import examples]], Previous: [[cvs: import options#import options|import options]], Up: [[cvs: import--Import sources into CVS, using vendor branches#import&mdash;Import sources into CVS, using vendor branches|import]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="import-output-1"></div>
 ==== import output ====
 

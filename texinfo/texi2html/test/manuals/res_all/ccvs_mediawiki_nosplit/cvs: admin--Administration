@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: checkout--Check out sources for editing#checkout&mdash;Check out sources for editing|checkout]], Previous: [[cvs: Common command options#Common command options|Common options]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="admin_002d_002d_002dAdministration"></div>
 === admin&mdash;Administration ===
 <div id="index-Admin-_0028subcommand_0029"></div>

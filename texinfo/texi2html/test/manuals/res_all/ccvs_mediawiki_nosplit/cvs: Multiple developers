@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Revision management#Revision management|Revision management]], Previous: [[cvs: Handling binary files#Handling binary files|Binary files]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Multiple-developers-1"></div>
 == Multiple developers ==
 <div id="index-Multiple-developers"></div>
@@ -62,7 +64,9 @@ choosing between them.
  [[cvs: Choosing between reserved or unreserved checkouts#Choosing between reserved or unreserved checkouts|&bull; Choosing a model]]::            Reserved or unreserved checkouts?
 </div>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Revision management#Revision management|Revision management]], Previous: [[cvs: Handling binary files#Handling binary files|Binary files]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

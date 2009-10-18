@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: The attic#The attic|Attic]], Previous: [[cvs: File permissions#File permissions|File permissions]], Up: [[cvs: How data is stored in the repository#How data is stored in the repository|Repository storage]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="File-Permission-issues-specific-to-Windows"></div>
 ==== File Permission issues specific to Windows ====
 <div id="index-Windows_002c-and-permissions"></div>

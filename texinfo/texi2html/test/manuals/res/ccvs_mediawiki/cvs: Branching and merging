@@ -50,7 +50,9 @@ copy the changes onto another branch.
  [[#Merging and keywords|&bull; Merging and keywords]]::        Avoiding conflicts due to keyword substitution
 </div>
 
-<hr>
+
+----
+
 <div id="Branches-motivation"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching and merging| &lt;&lt; ]]|</td>
@@ -89,7 +91,9 @@ modifications to the branch without disturbing the main trunk.  When the
 modifications are finished you can elect to either incorporate them on
 the main trunk, or leave them on the branch.
 
-<hr>
+
+----
+
 <div id="Creating-a-branch"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching and merging| &lt;&lt; ]]|</td>
@@ -160,7 +164,9 @@ branch &ndash; named &lsquo;<code>rel-1-0-patches</code>&rsquo; &ndash; in modul
 &lsquo;<code>tc</code>&rsquo;, rooted in the revision tree at the point tagged
 by &lsquo;<code>rel-1-0</code>&rsquo;.
 
-<hr>
+
+----
+
 <div id="Accessing-branches"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching and merging| &lt;&lt; ]]|</td>
@@ -282,7 +288,9 @@ that &lsquo;<code>driver.c</code>&rsquo; had been through more changes than
 See [[#Branches and revisions|Branches and revisions]] for details about how
 branch numbers are constructed.
 
-<hr>
+
+----
+
 <div id="Branches-and-revisions"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching and merging| &lt;&lt; ]]|</td>
@@ -369,7 +377,9 @@ numbered 6.4.2.  All branch numbers ending in a zero
 (see section [[#Magic branch numbers|Magic branch numbers]]).  The branch 1.1.1 has a
 special meaning.  See section [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking third-party sources]].
 
-<hr>
+
+----
+
 <div id="Magic-branch-numbers"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching and merging| &lt;&lt; ]]|</td>
@@ -431,7 +441,9 @@ committed on the branch.  Be very careful so that you
 do not assign the tag to the wrong number.  (There is
 no way to see how the tag was assigned yesterday).
 
-<hr>
+
+----
+
 <div id="Merging-a-branch"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching and merging| &lt;&lt; ]]|</td>
@@ -516,7 +528,9 @@ same effect as above could be achieved with this:
 It should be noted that <code>update -j <var>tagname</var></code> will also work but may
 not produce the desired result.  See section [[#Merging can add or remove files|Merging can add or remove files]], for more.
 
-<hr>
+
+----
+
 <div id="Merging-more-than-once"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching and merging| &lt;&lt; ]]|</td>
@@ -606,7 +620,9 @@ the trunk, and then use that tag for subsequent merges:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="Merging-two-revisions"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching and merging| &lt;&lt; ]]|</td>
@@ -672,7 +688,9 @@ contents it had previously.  Here is how to do it:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="Merging-adds-and-removals"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching and merging| &lt;&lt; ]]|</td>
@@ -723,7 +741,9 @@ a static tag has been attached to a dead revision manually.  Use the branch tag
 to merge all changes from the branch or use two static tags as merge endpoints
 to be sure that all intended changes are propagated in the merge.
 
-<hr>
+
+----
+
 <div id="Merging-and-keywords"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching and merging| &lt;&lt; ]]|</td>
@@ -848,7 +868,9 @@ modes.  You can now safely merge using &lsquo;<code>-kk</code>&rsquo; to avoid s
 on lines containing RCS keywords, even when your repository contains
 binary files.
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Branching and merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs: Recursive behavior#Recursive behavior| &gt;&gt; ]]|</td>

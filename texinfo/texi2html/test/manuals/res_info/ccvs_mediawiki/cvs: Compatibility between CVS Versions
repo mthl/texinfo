@@ -29,7 +29,9 @@ cases you need to upgrade both the client and the server to take
 advantage of new features and bugfixes, however.
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Troubleshooting#Troubleshooting|Troubleshooting]], Previous: [[cvs: All environment variables which affect CVS#All environment variables which affect CVS|Environment variables]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

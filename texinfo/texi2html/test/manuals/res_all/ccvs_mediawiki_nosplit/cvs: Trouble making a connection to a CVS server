@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Other common problems#Other common problems|Other problems]], Previous: [[cvs: Partial list of error messages#Partial list of error messages|Error messages]], Up: [[cvs: Troubleshooting#Troubleshooting|Troubleshooting]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Trouble-making-a-connection-to-a-CVS-server"></div>
 === Trouble making a connection to a CVS server ===
 
@@ -87,7 +89,9 @@ access method you are using.
 
 : If you can connect successfully for a while but then can&rsquo;t, you&rsquo;ve probably hit inetd&rsquo;s rate limit. (If inetd receives too many requests for the same service in a short period of time, it assumes that something is wrong and temporarily disables the service.) Check your inetd documentation to find out how to adjust the rate limit (some versions of inetd have a single rate limit, others allow you to set the limit for each service separately.)
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Other common problems#Other common problems|Other problems]], Previous: [[cvs: Partial list of error messages#Partial list of error messages|Error messages]], Up: [[cvs: Troubleshooting#Troubleshooting|Troubleshooting]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

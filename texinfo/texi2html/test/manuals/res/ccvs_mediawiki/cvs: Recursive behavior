@@ -87,7 +87,9 @@ Conversely, the &lsquo;<code>-R</code>&rsquo; option can be used to force recurs
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[cvs: Branching and merging#Branching and merging| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories| &gt;&gt; ]]|</td>

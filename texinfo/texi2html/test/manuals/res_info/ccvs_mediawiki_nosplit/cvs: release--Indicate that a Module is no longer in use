@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]], Previous: [[cvs: rdiff--'patch' format diffs between releases#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases|rdiff]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="release_002d_002d_002dIndicate-that-a-Module-is-no-longer-in-use"></div>
 === release&mdash;Indicate that a Module is no longer in use ===
 <div id="index-release-_0028subcommand_0029"></div>

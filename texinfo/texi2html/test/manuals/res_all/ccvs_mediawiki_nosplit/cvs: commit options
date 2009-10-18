@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: commit examples#commit examples|commit examples]], Up: [[cvs: commit--Check files into the repository#commit&mdash;Check files into the repository|commit]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="commit-options-1"></div>
 ==== commit options ====
 

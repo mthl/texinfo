@@ -3,7 +3,9 @@
 <p>
 Previous: [[cvs: Direct connection with kerberos#Direct connection with kerberos|Kerberos authenticated]], Up: [[cvs: Remote repositories#Remote repositories|Remote repositories]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Connecting-with-fork"></div>
 ==== Connecting with fork ====
 

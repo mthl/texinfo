@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Global options#Global options|Global options]], Previous: [[cvs: CVS's exit status#CVS&rsquo;s exit status|Exit status]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Default-options-and-the-_007e_002f_002ecvsrc-file"></div>
 === Default options and the ~/.cvsrc file ===
 <div id="index-_002ecvsrc-file"></div>
@@ -69,7 +71,9 @@ example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 
 causes <small>CVS</small> to use compression level 6.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Global options#Global options|Global options]], Previous: [[cvs: CVS's exit status#CVS&rsquo;s exit status|Exit status]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

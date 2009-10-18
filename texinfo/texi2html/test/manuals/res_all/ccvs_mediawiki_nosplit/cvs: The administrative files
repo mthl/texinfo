@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Multiple repositories#Multiple repositories|Multiple repositories]], Previous: [[cvs: How data is stored in the working directory#How data is stored in the working directory|Working directory storage]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="The-administrative-files"></div>
 === The administrative files ===
 <div id="index-Administrative-files-_0028intro_0029"></div>

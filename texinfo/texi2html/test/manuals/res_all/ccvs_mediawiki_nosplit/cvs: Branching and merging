@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]], Previous: [[cvs: Revisions#Revisions|Revisions]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Branching-and-merging-1"></div>
 == Branching and merging ==
 <div id="index-Branching"></div>

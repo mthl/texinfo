@@ -40,7 +40,9 @@ cases you need to upgrade both the client and the server to take
 advantage of new features and bugfixes, however.
 
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[cvs: All environment variables which affect CVS#All environment variables which affect CVS| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs: Troubleshooting#Troubleshooting| &gt;&gt; ]]|</td>

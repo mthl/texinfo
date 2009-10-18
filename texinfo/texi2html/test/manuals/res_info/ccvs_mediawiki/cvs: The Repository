@@ -72,7 +72,9 @@ user-defined modules.
  [[#Temporary directories for the server|&bull; Server temporary directory]]::  The server creates temporary directories
 </div>
 
-<hr>
+
+----
+
 <div id="Specifying-a-repository"></div>
 <div class="header">
 <p>
@@ -132,7 +134,9 @@ override the <code>$CVSROOT</code> environment variable.  If
 former is used.  Of course, for proper operation they
 should be two ways of referring to the same repository.
 
-<hr>
+
+----
+
 <div id="Repository-storage"></div>
 <div class="header">
 <p>
@@ -165,7 +169,9 @@ the file permissions appropriate for the repository.
  [[#How files are stored in the CVSROOT directory|&bull; CVSROOT storage]]::             A few things about CVSROOT are different
 </div>
 
-<hr>
+
+----
+
 <div id="Repository-files"></div>
 <div class="header">
 <p>
@@ -271,7 +277,9 @@ is magic branches; for more information see [[cvs: Branching and merging#Magic b
 are a subset of what <small>RCS</small> accepts; for <small>CVS</small>&rsquo;s
 rules see [[cvs: Revisions#Tags&ndash;Symbolic revisions|Tags]].
 
-<hr>
+
+----
+
 <div id="File-permissions"></div>
 <div class="header">
 <p>
@@ -372,7 +380,9 @@ fix, so read the documentation on pserver security
 carefully if you are considering this option
 ([[#Security considerations with password authentication|Password authentication security]]).
 
-<hr>
+
+----
+
 <div id="Windows-permissions"></div>
 <div class="header">
 <p>
@@ -402,7 +412,9 @@ differently in order to avoid the problem.  If you find
 something out, please let us know as described in
 [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]].
 
-<hr>
+
+----
+
 <div id="Attic"></div>
 <div class="header">
 <p>
@@ -444,7 +456,9 @@ add a file on a branch, it will have a trunk revision
 in <code>dead</code> state, and a branch revision in a
 non-<code>dead</code> state.
 
-<hr>
+
+----
+
 <div id="CVS-in-repository"></div>
 <div class="header">
 <p>
@@ -528,7 +542,9 @@ this example here, we have shown a space after
 &lsquo;<code>D</code>&rsquo;, &lsquo;<code>Ffile1</code>&rsquo;, and &lsquo;<code>Ffile2</code>&rsquo;, but in fact
 there must be a single tab character there and no spaces.
 
-<hr>
+
+----
+
 <div id="Locks"></div>
 <div class="header">
 <p>
@@ -610,7 +626,9 @@ but <small>CVS</small> does not implement it and so taking out a
 rcs_internal_lockfile in the <small>CVS</small> source code for
 further discussion/rationale.
 
-<hr>
+
+----
+
 <div id="CVSROOT-storage"></div>
 <div class="header">
 <p>
@@ -667,7 +685,9 @@ database will be stored in the files &lsquo;<tt>modules.db</tt>&rsquo;,
 For information on the meaning of the various
 administrative files, see [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]].
 
-<hr>
+
+----
+
 <div id="Working-directory-storage"></div>
 <div class="header">
 <p>
@@ -831,7 +851,9 @@ such systems either.
 ;&lsquo;<tt>Template</tt>&rsquo;
 : This file contains the template specified by the &lsquo;<tt>rcsinfo</tt>&rsquo; file (see [[cvs: Reference manual for Administrative files#Rcsinfo|rcsinfo]]).  It is only used by the client; the non-client/server <small>CVS</small> consults &lsquo;<tt>rcsinfo</tt>&rsquo; directly.
 
-<hr>
+
+----
+
 <div id="Intro-administrative-files"></div>
 <div class="header">
 <p>
@@ -878,7 +900,9 @@ uses features that are not explained here.
 See [[cvs: Reference manual for Administrative files#The modules file|modules]], for a full explanation of all the
 available features.
 
-<hr>
+
+----
+
 <div id="Editing-administrative-files"></div>
 <div class="header">
 <p>
@@ -898,7 +922,9 @@ revision, but sometimes a particularly bad error in the
 administrative file makes it impossible to commit new
 revisions.
 
-<hr>
+
+----
+
 <div id="Multiple-repositories"></div>
 <div class="header">
 <p>
@@ -950,7 +976,9 @@ contact server2, to update the dir1/sdir subdirectory,
 and server1, to update everything else.
 
 
-<hr>
+
+----
+
 <div id="Creating-a-repository"></div>
 <div class="header">
 <p>
@@ -1012,7 +1040,9 @@ repository.
 don&rsquo;t want that, remove the history file after running
 <code>cvs init</code>.  See [[cvs: Reference manual for Administrative files#The history file|history file]].
 
-<hr>
+
+----
+
 <div id="Backing-up"></div>
 <div class="header">
 <p>
@@ -1064,7 +1094,9 @@ repository is as follows:
 
 * Working in the new working directory, use commands such as <code>cvs update</code> and <code>cvs diff</code> to figure out what has changed, and then when you are ready, commit the changes into the repository.
 
-<hr>
+
+----
+
 <div id="Moving-a-repository"></div>
 <div class="header">
 <p>
@@ -1097,7 +1129,9 @@ the &lsquo;<tt>CVS/Repository</tt>&rsquo; and &lsquo;<tt>CVS/Root</tt>&rsquo; fi
 unless you are sure you want to bother, it probably
 isn&rsquo;t worth it.
 
-<hr>
+
+----
+
 <div id="Remote-repositories"></div>
 <div class="header">
 <p>
@@ -1155,7 +1189,9 @@ described in [[#Connecting with rsh|Connecting via rsh]].
  [[#Connecting with fork|&bull; Connecting via fork]]::         Using a forked <code>cvs server</code> to connect
 </div>
 
-<hr>
+
+----
+
 <div id="Server-requirements"></div>
 <div class="header">
 <p>
@@ -1218,7 +1254,9 @@ trouble.
 For information on disk space requirements, see
 [[#Creating a repository|Creating a repository]].
 
-<hr>
+
+----
+
 <div id="Connecting-via-rsh"></div>
 <div class="header">
 <p>
@@ -1310,7 +1348,9 @@ the module &lsquo;<tt>foo</tt>&rsquo; in the repository
 the same on both the local and remote hosts.)
 
 
-<hr>
+
+----
+
 <div id="Password-authenticated"></div>
 <div class="header">
 <p>
@@ -1334,7 +1374,9 @@ some adjustments on both the server and client sides.
  [[#Security considerations with password authentication|&bull; Password authentication security]]::   What this method does and does not do
 </div>
 
-<hr>
+
+----
+
 <div id="Password-authentication-server"></div>
 <div class="header">
 <p>
@@ -1645,7 +1687,9 @@ want to include the &lsquo;<tt>passwd</tt>&rsquo; file in checkouts of
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;, see [[cvs: Reference manual for Administrative files#The checkoutlist file|checkoutlist]].
 
 
-<hr>
+
+----
+
 <div id="Password-authentication-client"></div>
 <div class="header">
 <p>
@@ -1752,7 +1796,9 @@ The password for a given remote repository can be
 removed from the <code>CVS_PASSFILE</code> by using the
 <code>cvs logout</code> command.
 
-<hr>
+
+----
+
 <div id="Password-authentication-security"></div>
 <div class="header">
 <p>
@@ -1799,7 +1845,9 @@ who can sniff network packets or read a protected
 (i.e., user read-only) file.  If you want real
 security, get Kerberos.
 
-<hr>
+
+----
+
 <div id="GSSAPI-authenticated"></div>
 <div class="header">
 <p>
@@ -1859,7 +1907,9 @@ example,
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="Kerberos-authenticated"></div>
 <div class="header">
 <p>
@@ -1918,7 +1968,9 @@ you are ready to go:
 Previous versions of <small>CVS</small> would fall back to a
 connection via rsh; this version will not do so.
 
-<hr>
+
+----
+
 <div id="Connecting-via-fork"></div>
 <div class="header">
 <p>
@@ -1960,7 +2012,9 @@ As with <code>:ext:</code>, the server is called &lsquo;<code>cvs</code>&rsquo;
 by default, or the value of the <code>CVS_SERVER</code>
 environment variable.
 
-<hr>
+
+----
+
 <div id="Read_002donly-access"></div>
 <div class="header">
 <p>
@@ -2055,7 +2109,9 @@ conservative way, it being better to protect the
 repository too much than too little: such a user gets
 read-only access.
 
-<hr>
+
+----
+
 <div id="Server-temporary-directory"></div>
 <div class="header">
 <p>
@@ -2101,7 +2157,9 @@ the &lsquo;<tt>cvs-serv<var>pid</var></tt>&rsquo; directories.  As long as
 there is no server running with process identification
 number <var>pid</var>, it is safe to do so.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[#Read-only repository access|Read-only access]], Up: [[#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

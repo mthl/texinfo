@@ -162,7 +162,7 @@ but , ,
 <code>@i{--a}</code> <i>&ndash;a</i>
 <code>@kbd{--a}</code> <kbd>--a</kbd>
 <code>@key{--a}</code> <key>--a</key>
-<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
+<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>--a \frac12 &minus;</math>
 <code>@option{--a}</code> <option>--a</option>
 <code>@r{--a}</code> <r>&ndash;a</r>
 <code>@samp{--a}</code> <samp>--a</samp>
@@ -704,7 +704,7 @@ but , ,
 <code>@i{--a}</code> <i>&ndash;a</i>
 <code>@kbd{--a}</code> <kbd>--a</kbd>
 <code>@key{--a}</code> <key>--a</key>
-<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
+<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>--a \frac12 &minus;</math>
 <code>@option{--a}</code> <option>--a</option>
 <code>@r{--a}</code> <r>&ndash;a</r>
 <code>@samp{--a}</code> <samp>--a</samp>
@@ -1241,7 +1241,7 @@ but , ,
 <code>@i{--a}</code> <i>&ndash;a</i>
 <code>@kbd{--a}</code> <kbd>--a</kbd>
 <code>@key{--a}</code> <key>--a</key>
-<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
+<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>--a \frac12 &minus;</math>
 <code>@option{--a}</code> <option>--a</option>
 <code>@r{--a}</code> <r>&ndash;a</r>
 <code>@samp{--a}</code> <samp>--a</samp>
@@ -1779,7 +1779,7 @@ but , ,
 <code>@i{--a}</code> <i>&ndash;a</i>
 <code>@kbd{--a}</code> <kbd>--a</kbd>
 <code>@key{--a}</code> <key>--a</key>
-<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
+<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>--a \frac12 &minus;</math>
 <code>@option{--a}</code> <option>--a</option>
 <code>@r{--a}</code> <r>&ndash;a</r>
 <code>@samp{--a}</code> <samp>--a</samp>
@@ -2315,7 +2315,7 @@ but , ,
 <code>@i{--a}</code> <i>&ndash;a</i>
 <code>@kbd{--a}</code> <kbd>--a</kbd>
 <code>@key{--a}</code> <key>--a</key>
-<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>&ndash;a \frac12 &minus;</math>
+<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>--a \frac12 &minus;</math>
 <code>@option{--a}</code> <option>--a</option>
 <code>@r{--a}</code> <r>&ndash;a</r>
 <code>@samp{--a}</code> <samp>--a</samp>

@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: admin--Administration#admin&mdash;Administration|admin]], Previous: [[cvs: Global options#Global options|Global options]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Common-command-options"></div>
 === Common command options ===
 <div id="index-Common-options"></div>
@@ -138,7 +140,9 @@ many options that conflict even with these standard options.'''
 : Specify file names that should be filtered.  You can use this option repeatedly.  The spec can be a file name pattern of the same type that you can specify in the &lsquo;<tt>.cvswrappers</tt>&rsquo; file. Available with the following commands: <code>import</code>, and <code>update</code>.
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: admin--Administration#admin&mdash;Administration|admin]], Previous: [[cvs: Global options#Global options|Global options]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

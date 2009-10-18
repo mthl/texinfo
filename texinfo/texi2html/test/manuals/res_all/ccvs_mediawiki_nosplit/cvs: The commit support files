@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Rcsinfo#Rcsinfo|rcsinfo]], Previous: [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="The-commit-support-files"></div>
 === The commit support files ===
 <div id="index-Committing_002c-administrative-support-files"></div>
@@ -41,7 +43,9 @@ programs.
  [[cvs: Loginfo#Loginfo|&bull; loginfo]]::                     Where should log messages be sent?
 </div>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Rcsinfo#Rcsinfo|rcsinfo]], Previous: [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Concurrency]], Previous: [[cvs: Conflicts example#Conflicts example|Conflicts example]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Informing-others-about-commits"></div>
 === Informing others about commits ===
 <div id="index-Informing-others"></div>

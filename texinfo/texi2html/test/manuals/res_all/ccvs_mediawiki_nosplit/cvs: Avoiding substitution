@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Substitution modes#Substitution modes|Substitution modes]], Previous: [[cvs: Using keywords#Using keywords|Using keywords]], Up: [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Avoiding-substitution-1"></div>
 === Avoiding substitution ===
 

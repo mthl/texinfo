@@ -3,7 +3,9 @@
 <p>
 Previous: [[cvs: Editinfo#Editinfo|editinfo]], Up: [[cvs: The commit support files#The commit support files|commit files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Loginfo"></div>
 ==== Loginfo ====
 <div id="index-loginfo-_0028admin-file_0029"></div>
@@ -86,7 +88,9 @@ Note: when <small>CVS</small> is accessing a remote repository,
  [[cvs: Keeping a checked out copy#Keeping a checked out copy|&bull; Keeping a checked out copy]]::  Updating a tree on every checkin
 </div>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[cvs: Editinfo#Editinfo|editinfo]], Up: [[cvs: The commit support files#The commit support files|commit files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

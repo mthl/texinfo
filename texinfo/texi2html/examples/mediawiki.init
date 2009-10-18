@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.28 2009-10-14 13:08:36 pertusus Exp $
+# $Id: mediawiki.init,v 1.29 2009-10-18 21:52:34 pertusus Exp $
 
 use strict;
 
@@ -49,6 +49,8 @@ $SIMPLE_MENU = 1;
 # inline css style
 $INLINE_CSS_STYLE = 1;
 
+$DEFAULT_RULE = "\n----\n";
+
 my %mediawiki_table_commands;
 
 # FIXME b, i could be ''' ''
@@ -56,6 +58,9 @@ my %mediawiki_table_commands;
 my %style_map_mediawiki = (
   'emph',       {'inline_begin' => "''"},
   'email',      {'function' => \&mediawiki_default_email},
+  'math',       {'function' => \&mediawiki_default_math},
+  'url',      {'function' => \&mediawiki_default_uref},
+  'uref',      {'function' => \&mediawiki_default_uref},
   'strong',     {'inline_begin' => "'''"}
 );
 
@@ -78,12 +83,12 @@ foreach my $style_command (keys(%style_map_mediawiki))
     }
 }
 
-# no samp in allowed html elements in the default case.
+# no samp/kbd in allowed html elements in the default case.
 foreach my $style_command (keys(%style_map))
 {
     if ($style_map{$style_command}->{'inline_attribute'})
     {
-        $style_map{$style_command}->{'inline_attribute'} =~ s/^samp/code/;
+        $style_map{$style_command}->{'inline_attribute'} =~ s/^(samp|kbd)/code/;
     }
 }
 
@@ -91,9 +96,14 @@ foreach my $style_command (keys(%style_map_pre))
 {
     if ($style_map_pre{$style_command}->{'inline_attribute'})
     {
-        $style_map_pre{$style_command}->{'inline_attribute'} =~ s/^samp/code/;
+        $style_map_pre{$style_command}->{'inline_attribute'} =~ s/^(samp|kbd)/code/;
     }
 }
+
+$style_map{'indicateurl'} = {'begin' => '&lt;<code><nowiki>', 'end' => '</nowiki></code>&gt;'};
+$style_map_pre{'indicateurl'} = {'begin' => '&lt;<code><nowiki>', 'end' => '</nowiki></code>&gt;'};
+
+
 
 sub mediawiki_default_email($$)
 {
@@ -107,6 +117,31 @@ sub mediawiki_default_email($$)
     return $text if ($mail eq '');
     $text = ' ' . $text if ($text ne '');
     return "[mailto:$mail$text]";
+}
+
+sub mediawiki_default_uref($$)
+{
+    shift;
+    my $args = shift;
+    my $url = shift @$args;
+    my $text = shift @$args;
+    my $replacement = shift @$args;
+    $url = main::normalise_space($url);
+    $replacement = '' if (!defined($replacement));
+    $replacement = main::normalise_space($replacement);
+    $text = '' if (!defined($text));
+    $text = main::normalise_space($text);
+    $text = $replacement if ($replacement ne '');
+    return $text if ($url eq '');
+    return &$anchor('', $url, $text);
+}
+
+sub mediawiki_default_math($$)
+{
+    shift;
+    my $args = shift;
+    my $text = shift @$args;
+    return "<math>$text</math>";
 }
 
 foreach my $format ('enumerate', 'table', 'vtable', 'ftable')
@@ -127,6 +162,9 @@ foreach my $complex_format (keys(%$complex_format_map))
 }
 
 $texi_formats_map{'direntry'} = 0;
+
+# no acronym nor abbr allowed in wikitext.
+$acronym_like = \&t2h_default_acronym_like;
 
 push @command_handler_setup, \&mediawiki_initialize_variables;
 
@@ -157,23 +195,22 @@ sub mediawiki_heading_text($$$)
 # Layout of standard header and footer
 #
 
-$print_page_head	      = \&mediawiki_print_page_head;
-$print_page_foot	      = \&mediawiki_print_page_foot;
+$print_page_head	      = \&mediawiki_default_print_page_head;
+$print_page_foot	      = \&mediawiki_default_print_page_foot;
 
-sub mediawiki_print_page_head($)
+sub mediawiki_default_print_page_head($)
 {
     my $fh = shift;
     print $fh "$AFTER_BODY_OPEN\n" if $AFTER_BODY_OPEN;
 }
 
-sub mediawiki_print_page_foot($)
+sub mediawiki_default_print_page_foot($)
 {
     my $fh = shift;
     my $program_string = &$program_string();
     print $fh $program_string, "\n";
     print $fh $PRE_BODY_CLOSE, "\n" if $PRE_BODY_CLOSE;
 }
-
 
 # This function produces an anchor 
 #
@@ -270,17 +307,19 @@ foreach my $brace ('{', '}')
 }
 
 $normal_text = \&mediawiki_default_normal_text;
-sub mediawiki_default_normal_text($$$$$$;$)
+sub mediawiki_default_normal_text($$$$$$$;$)
 {
+   my @initial_args = @_;
    my $text = shift;
    my $in_raw_text = shift; # remove_texi
    my $in_preformatted = shift;
    my $in_code = shift;
+   my $in_math = shift;
    my $in_simple = shift;
    my $style_stack = shift;
    my $state = shift;
 
-   $text = html_default_normal_text ($text, $in_raw_text, $in_preformatted, $in_code, $in_simple, $style_stack, $state);
+   $text = &html_default_normal_text (@initial_args);
    my $colon = '';
    foreach my $command (@$style_stack)
    {
@@ -342,12 +381,12 @@ sub mediawiki_default_heading($$$$$;$$)
 #     have been updated
 # the text for the reference pointing on the footnote text
 
-# currently not used, default case is good enough, but still this is 
-# not mediwikified.
-#$foot_line_and_ref = \&mediawiki_foot_line_and_ref;
-#$foot_section      = \&mediawiki_default_foot_section;
+# FIXME the <ref>... stuff is only available with the Cite extension.
 
-sub mediawiki_foot_line_and_ref($$$$$$$)
+$foot_line_and_ref = \&mediawiki_default_foot_line_and_ref;
+$foot_section      = \&mediawiki_default_foot_section;
+
+sub mediawiki_default_foot_line_and_ref($$$$$$$)
 {
     my $number_in_doc = shift;
     my $number_in_page = shift;
@@ -358,12 +397,14 @@ sub mediawiki_foot_line_and_ref($$$$$$$)
     my $lines = shift;
     my $state = shift;
     
-    unshift (@$lines,
-          &$anchor($footnote_id, $document_file . "#$place_id",
-                   "($number_in_doc)")
-          . "\n");
-    return ($lines, &$anchor($place_id,  $footnote_file . "#$footnote_id", 
-           "($number_in_doc)"));
+    my $result = '<ref>';
+    foreach my $line (@$lines)
+    {
+       $result .= $line;
+    }
+    # The result shouldn't be empty, such that the call to print_Footnotes
+    # and foot_section are not skipped
+    return ([' '], $result . '</ref>');
 }
 
 # formats a group of footnotes.
@@ -372,12 +413,28 @@ sub mediawiki_foot_line_and_ref($$$$$$$)
 # array reference on the footnotes texts lines 
 #
 # returns an array reference on the group of footnotes lines
-sub mediawiki_foot_section($)
+# FIXME maybe do a header?
+sub mediawiki_default_foot_section($)
 {
     my $lines = shift;
-    unshift @$lines, "$DEFAULT_RULE\n" if $DEFAULT_RULE;
-    unshift @$lines, "==== " . &$I('Footnotes') . " ====\n";
+    #unshift @$lines, "$DEFAULT_RULE\n" if $DEFAULT_RULE;
+    #unshift @$lines, "==== " . &$I('Footnotes') . " ====\n";
+    @$lines = ("<references/>\n\n");
     return $lines; 
+}
+
+# FIXME maybe also a header here?
+$print_Footnotes = \&mediawiki_default_print_Footnotes;
+sub mediawiki_default_print_Footnotes
+{
+   my $fh = shift;
+   my $new_file = shift;
+   my $misc_page = shift;
+   my $buttons = \@MISC_BUTTONS;
+
+   &$print_misc_header($fh, $buttons, $new_file, $misc_page) if ($new_file);
+   print $fh "<references/>\n\n";
+   &$print_misc_footer($fh, $buttons, $new_file) if ($new_file);
 }
 
 $button_formatting	      = \&mediawiki_button_formatting;
@@ -809,7 +866,7 @@ sub mediawiki_index_summary($$)
 	if @$alpha;
     return '<table cellpadding="1" cellspacing="1" border="0">'
 	   . "<tr><th valign=\"top\">" . &$I('Jump to') .":</th>\n"
-    	   . join ("", map {"<td>$_</td>\n"} @$nonalpha, @$alpha),
+    	   . join ("", map {"<td>$_</td>\n"} @$nonalpha, @$alpha)
 	   . "</tr></table>\n";
 }
 
@@ -836,6 +893,88 @@ sub mediawiki_line_command($$$$)
         $arg_text = '<strong> ' .$arg_text. " </strong><br>\n";
     }
     return $arg_text;
+}
+
+$image = \&mediawiki_default_image;
+
+sub mediawiki_default_image($$$$$$$$$$$$$$$$$)
+{
+    my $file = shift;
+    my $base = shift;
+    my $preformatted = shift;
+    my $file_name = shift;
+    my $alt = shift;
+    my $width = shift;
+    my $height = shift;
+    my $raw_alt = shift;
+    my $extension = shift;
+    my $working_dir = shift;
+    my $file_path = shift;
+    my $in_paragraph = shift;
+    my $file_locations = shift;
+    my $base_simple_format = shift;
+    my $extension_simple_format = shift;
+    my $file_name_simple_format = shift;
+    my $line_nr = shift;
+
+    if (!defined($file_path) or $file_path eq '')
+    {
+        if (defined($extension) and $extension ne '')
+        {
+            $file = "$base.$extension";
+        }
+        else
+        {
+            $file = "$base.jpg";
+        }
+        main::line_warn ("no image file for $base, (using $file)", $line_nr);
+    }
+    elsif (! $COMPLETE_IMAGE_PATHS)
+    {
+        $file = $file_name;
+    }
+    my $alt_text = '';
+    $alt_text = "|alt=$alt" if (defined($alt) and $alt ne '');
+    # it is possible that $file_name is more correct as it allows the user
+    # to chose the relative path.
+    $file = &$protect_text($file);
+    return "[[Image:$file$alt_text]]";
+}
+
+# FIXME <math> in mediawiki is only valid for one formula, not for 
+# random TeX. 
+# One possibility could be to use TeX -> html -> html2wiki
+#$raw = \&mediawiki_default_raw;
+sub mediawiki_default_raw($$;$)
+{
+    my $style = shift;
+    my $text = shift;
+    my $line_nr = shift;
+    my $expanded = 1 if (grep {$style eq $_} @EXPAND);
+    if ($style eq 'verbatim' or $style eq 'verbatiminclude')
+    {
+        $style = 'verbatim' if ($style eq 'verbatiminclude');
+        return html_default_attribute_class('pre', $style).">" . &$protect_text($text) . '</pre>';
+    }
+    elsif ($style eq 'html' and $expanded)
+    {
+        chomp ($text);
+        return $text;
+    }
+    elsif ($style eq 'tex' and $expanded)
+    {
+        chomp ($text);
+        return "<math>$text</math>\n";
+    }
+    elsif ($expanded)
+    {
+        main::line_warn ("Raw $style not handled especially, but expanded", $line_nr);
+        return &$protect_text($text);
+    }
+    else
+    {
+        return '';
+    }
 }
 
 

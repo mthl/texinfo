@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]], Previous: [[cvs: Special Files#Special Files|Special Files]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Guide-to-CVS-commands"></div>
 == Guide to CVS commands ==
 
@@ -31,7 +33,9 @@ reference to <small>CVS</small> commands, see [[cvs: Quick reference to CVS comm
  [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|&bull; update]]::                      Bring work tree in sync with repository
 </div>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]], Previous: [[cvs: Special Files#Special Files|Special Files]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

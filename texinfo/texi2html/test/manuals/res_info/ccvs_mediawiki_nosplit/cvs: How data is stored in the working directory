@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: The administrative files#The administrative files|Intro administrative files]], Previous: [[cvs: How data is stored in the repository#How data is stored in the repository|Repository storage]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="How-data-is-stored-in-the-working-directory"></div>
 === How data is stored in the working directory ===
 
@@ -162,7 +164,9 @@ such systems either.
 ;&lsquo;<tt>Template</tt>&rsquo;
 : This file contains the template specified by the &lsquo;<tt>rcsinfo</tt>&rsquo; file (see [[cvs: Rcsinfo#Rcsinfo|rcsinfo]]).  It is only used by the client; the non-client/server <small>CVS</small> consults &lsquo;<tt>rcsinfo</tt>&rsquo; directly.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: The administrative files#The administrative files|Intro administrative files]], Previous: [[cvs: How data is stored in the repository#How data is stored in the repository|Repository storage]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

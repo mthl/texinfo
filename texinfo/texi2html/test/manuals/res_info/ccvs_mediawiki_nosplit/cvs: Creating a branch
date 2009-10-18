@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Accessing branches#Accessing branches|Accessing branches]], Previous: [[cvs: What branches are good for#What branches are good for|Branches motivation]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Creating-a-branch-1"></div>
 === Creating a branch ===
 <div id="index-Creating-a-branch"></div>

@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: rdiff--'patch' format diffs between releases#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases|rdiff]], Previous: [[cvs: import--Import sources into CVS, using vendor branches#import&mdash;Import sources into CVS, using vendor branches|import]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="log_002d_002d_002dPrint-out-log-information-for-files"></div>
 === log&mdash;Print out log information for files ===
 <div id="index-log-_0028subcommand_0029"></div>

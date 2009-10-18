@@ -3,7 +3,9 @@
 <p>
 Up: [[cvs: history--Show status of files and users#history&mdash;Show status of files and users|history]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="history-options-1"></div>
 ==== history options ====
 
@@ -102,7 +104,9 @@ based on an argument:
 : Show times in the selected records using the specified time zone instead of UTC.
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Up: [[cvs: history--Show status of files and users#history&mdash;Show status of files and users|history]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

@@ -61,7 +61,9 @@ choosing between them.
  [[#Choosing between reserved or unreserved checkouts|&bull; Choosing a model]]::            Reserved or unreserved checkouts?
 </div>
 
-<hr>
+
+----
+
 <div id="File-status"></div>
 <div class="header">
 <p>
@@ -154,7 +156,9 @@ option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
 these options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].
 
-<hr>
+
+----
+
 <div id="Updating-a-file"></div>
 <div class="header">
 <p>
@@ -194,7 +198,9 @@ special markers.
 See [[cvs: Guide to CVS commands#update&mdash;Bring work tree in sync with repository|update]], for a complete description of the
 <code>update</code> command.
 
-<hr>
+
+----
+
 <div id="Conflicts-example"></div>
 <div class="header">
 <p>
@@ -380,7 +386,9 @@ Emacs front-end for <small>CVS</small>) you can use an Emacs
 package called emerge to help you resolve conflicts.
 See the documentation for pcl-cvs.
 
-<hr>
+
+----
+
 <div id="Informing-others"></div>
 <div class="header">
 <p>
@@ -401,7 +409,9 @@ to, for instance, instruct <small>CVS</small> to mail a
 message to all developers, or post a message to a local
 newsgroup.
 
-<hr>
+
+----
+
 <div id="Concurrency"></div>
 <div class="header">
 <p>
@@ -475,7 +485,9 @@ time, the person running <code>update</code> might get only
 the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 &lsquo;<tt>a/two.c</tt>&rsquo;.
 
-<hr>
+
+----
+
 <div id="Watches"></div>
 <div class="header">
 <p>
@@ -513,7 +525,9 @@ but <small>CVS</small> is not able to enforce this behavior.
  [[#Using watches with old versions of CVS|&bull; Watches Compatibility]]::       Watches interact poorly with CVS 1.6 or earlier
 </div>
 
-<hr>
+
+----
+
 <div id="Setting-a-watch"></div>
 <div class="header">
 <p>
@@ -544,7 +558,9 @@ certain files are to be watched.
 : The <var>files</var> and options are processed as for <code>cvs watch on</code>.
 
 
-<hr>
+
+----
+
 <div id="Getting-Notified"></div>
 <div class="header">
 <p>
@@ -650,7 +666,9 @@ would be more useful if watches tracked each working
 directory separately, so this behavior might be worth
 changing.
 
-<hr>
+
+----
+
 <div id="Editing-files"></div>
 <div class="header">
 <p>
@@ -703,7 +721,9 @@ When using client/server <small>CVS</small>, you can use the
 server; the notifications will be sent upon the next
 successful <small>CVS</small> command.
 
-<hr>
+
+----
+
 <div id="Watch-information"></div>
 <div class="header">
 <p>
@@ -729,7 +749,9 @@ Next: [[#Using watches with old versions of CVS|Watches Compatibility]], Previou
 : The <var>files</var> and options are processed as for the <code>cvs watch</code> commands.
 
 
-<hr>
+
+----
+
 <div id="Watches-Compatibility"></div>
 <div class="header">
 <p>
@@ -760,7 +782,9 @@ you cannot upgrade, use the <code>watch off</code> and
 that will restore the repository to a state which
 <small>CVS</small> 1.6 can cope with.
 
-<hr>
+
+----
+
 <div id="Choosing-a-model"></div>
 <div class="header">
 <p>
@@ -823,7 +847,9 @@ Therefore, for some groups it can be considered the
 best of both the reserved checkout and unreserved
 checkout worlds.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[#Mechanisms to track who is editing files|Watches]], Up: [[#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

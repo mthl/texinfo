@@ -20,7 +20,9 @@ mentioned there.
 </div>
 
 
-<hr>
+
+----
+
 <div id="Error-messages"></div>
 <div class="header">
 <p>
@@ -177,7 +179,9 @@ particular moment).
 </td></tr></table>
 
 
-<hr>
+
+----
+
 <div id="Connection"></div>
 <div class="header">
 <p>
@@ -266,7 +270,9 @@ access method you are using.
 
 : If you can connect successfully for a while but then can&rsquo;t, you&rsquo;ve probably hit inetd&rsquo;s rate limit. (If inetd receives too many requests for the same service in a short period of time, it assumes that something is wrong and temporarily disables the service.) Check your inetd documentation to find out how to adjust the rate limit (some versions of inetd have a single rate limit, others allow you to set the limit for each service separately.)
 
-<hr>
+
+----
+
 <div id="Other-problems"></div>
 <div class="header">
 <p>
@@ -284,7 +290,9 @@ above categories.  They are in no particular order.
 
 * If you are running <small>CVS</small> 1.9.18 or older, and <code>cvs update</code> finds a conflict and tries to merge, as described in [[cvs: Multiple developers#Conflicts example|Conflicts example]], but doesn&rsquo;t tell you there were conflicts, then you may have an old version of <small>RCS</small>.  The easiest solution probably is to upgrade to a current version of <small>CVS</small>, which does not rely on external <small>RCS</small> programs.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[#Trouble making a connection to a CVS server|Connection]], Up: [[#Troubleshooting|Troubleshooting]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

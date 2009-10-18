@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]], Previous: [[cvs: Informing others about commits#Informing others about commits|Informing others]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Several-developers-simultaneously-attempting-to-run-CVS"></div>
 === Several developers simultaneously attempting to run CVS ===
 
@@ -72,7 +74,9 @@ time, the person running <code>update</code> might get only
 the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 &lsquo;<tt>a/two.c</tt>&rsquo;.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]], Previous: [[cvs: Informing others about commits#Informing others about commits|Informing others]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: diff examples#diff examples|diff examples]], Up: [[cvs: diff--Show differences between revisions#diff&mdash;Show differences between revisions|diff]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="diff-options-1"></div>
 ==== diff options ====
 
@@ -210,7 +212,9 @@ preceded by &lsquo;<code>-</code>&rsquo;, and the other of which is a long name 
  [[cvs: Line formats#Line formats|&bull; Line formats]]::                Line formats
 </div>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: diff examples#diff examples|diff examples]], Up: [[cvs: diff--Show differences between revisions#diff&mdash;Show differences between revisions|diff]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

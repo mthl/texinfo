@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Information about who is watching and editing#Information about who is watching and editing|Watch information]], Previous: [[cvs: Telling CVS to notify you#Telling CVS to notify you|Getting Notified]], Up: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="How-to-edit-a-file-which-is-being-watched"></div>
 ==== How to edit a file which is being watched ====
 
@@ -51,7 +53,9 @@ When using client/server <small>CVS</small>, you can use the
 server; the notifications will be sent upon the next
 successful <small>CVS</small> command.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Information about who is watching and editing#Information about who is watching and editing|Watch information]], Previous: [[cvs: Telling CVS to notify you#Telling CVS to notify you|Getting Notified]], Up: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

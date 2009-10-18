@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Moving and renaming directories#Moving and renaming directories|Moving directories]], Previous: [[cvs: Removing directories#Removing directories|Removing directories]], Up: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Moving-and-renaming-files"></div>
 === Moving and renaming files ===
 <div id="index-Moving-files"></div>

@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Editinfo#Editinfo|editinfo]], Previous: [[cvs: Commitinfo#Commitinfo|commitinfo]], Up: [[cvs: The commit support files#The commit support files|commit files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Verifying-log-messages"></div>
 ==== Verifying log messages ====
 <div id="index-verifymsg-_0028admin-file_0029"></div>
@@ -151,7 +153,9 @@ The &lsquo;<tt>config</tt>&rsquo; file contains this line:
 
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Editinfo#Editinfo|editinfo]], Previous: [[cvs: Commitinfo#Commitinfo|commitinfo]], Up: [[cvs: The commit support files#The commit support files|commit files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

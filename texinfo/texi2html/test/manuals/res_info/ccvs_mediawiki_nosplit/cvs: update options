@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: update output#update output|update output]], Up: [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="update-options-1"></div>
 ==== update options ====
 
@@ -69,7 +71,9 @@ These special options are also available with
 : See [[cvs: Branching and merging#Branching and merging|Branching and merging]].
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: update output#update output|update output]], Up: [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

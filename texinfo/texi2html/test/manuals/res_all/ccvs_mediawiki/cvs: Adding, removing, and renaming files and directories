@@ -23,7 +23,9 @@ this in <small>CVS</small> vary depending on the situation.
  [[#Moving and renaming directories|&bull; Moving directories]]::          Moving and renaming directories
 </div>
 
-<hr>
+
+----
+
 <div id="Adding-files"></div>
 <div class="header">
 <p>
@@ -85,7 +87,9 @@ which you are working on (see [[cvs: Branching and merging#Branching and merging
 later merge the additions to another branch if you want
 (see [[cvs: Branching and merging#Merging can add or remove files|Merging adds and removals]]).
 
-<hr>
+
+----
+
 <div id="Removing-files"></div>
 <div class="header">
 <p>
@@ -196,7 +200,9 @@ which you are working on (see [[cvs: Branching and merging#Branching and merging
 later merge the removals to another branch if you want
 (see [[cvs: Branching and merging#Merging can add or remove files|Merging adds and removals]]).
 
-<hr>
+
+----
+
 <div id="Removing-directories"></div>
 <div class="header">
 <p>
@@ -233,7 +239,9 @@ options of <code>checkout</code>.  This way
 or not depending on whether the particular version you
 are checking out contains any files in that directory.
 
-<hr>
+
+----
+
 <div id="Moving-files"></div>
 <div class="header">
 <p>
@@ -259,7 +267,9 @@ The examples below assume that the file <var>old</var> is renamed to
  [[#Copying the history file|&bull; Rename by copying]]::           Another tricky, alternative way
 </div>
 
-<hr>
+
+----
+
 <div id="Outside"></div>
 <div class="header">
 <p>
@@ -295,7 +305,9 @@ start again, usually at 1.1, so if that bothers you,
 use the &lsquo;<code>-r rev</code>&rsquo; option to commit.  For more
 information see [[cvs: Revisions#Assigning revisions|Assigning revisions]].
 
-<hr>
+
+----
+
 <div id="Inside"></div>
 <div class="header">
 <p>
@@ -333,7 +345,9 @@ Disadvantages:
 
 * Nasty things might happen if someone accesses the history file while you are moving it.  Make sure no one else runs any of the <small>CVS</small> commands while you move it.
 
-<hr>
+
+----
+
 <div id="Rename-by-copying"></div>
 <div class="header">
 <p>
@@ -383,7 +397,9 @@ Disadvantages:
 * You cannot easily see the history of the file across the rename.
 
 
-<hr>
+
+----
+
 <div id="Moving-directories"></div>
 <div class="header">
 <p>
@@ -433,7 +449,9 @@ directory you are unlikely to be able to retrieve old
 releases correctly, since they probably depend on the
 name of the directories.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[#Moving and renaming files|Moving files]], Up: [[#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

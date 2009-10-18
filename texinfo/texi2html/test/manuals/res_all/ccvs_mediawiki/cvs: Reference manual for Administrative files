@@ -33,7 +33,9 @@ file, which defines the modules inside the repository.
  [[#The CVSROOT/config configuration file|&bull; config]]::                      Miscellaneous CVS configuration
 </div>
 
-<hr>
+
+----
+
 <div id="modules"></div>
 <div class="header">
 <p>
@@ -77,7 +79,9 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
                                are run. 
 </div>
 
-<hr>
+
+----
+
 <div id="Alias-modules"></div>
 <div class="header">
 <p>
@@ -119,7 +123,9 @@ and they each would provide output such as:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="Regular-modules"></div>
 <div class="header">
 <p>
@@ -175,7 +181,9 @@ in the <small>CVS</small> source repository:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="Ampersand-modules"></div>
 <div class="header">
 <p>
@@ -241,7 +249,9 @@ Do not rely on this buggy behavior; it may get fixed in
 a future release of <small>CVS</small>.
 
 
-<hr>
+
+----
+
 <div id="Excluding-directories"></div>
 <div class="header">
 <p>
@@ -267,7 +277,9 @@ then checking out the module &lsquo;<code>exmodule</code>&rsquo; will check
 out everything in &lsquo;<code>first-dir</code>&rsquo; except any files in
 the subdirectory &lsquo;<code>first-dir/sdir</code>&rsquo;.
 
-<hr>
+
+----
+
 <div id="Module-options"></div>
 <div class="header">
 <p>
@@ -310,7 +322,9 @@ You should also see see [[#How the modules file &ldquo;program options&rdquo; pr
 &ldquo;program options&rdquo; programs are run.
 
 
-<hr>
+
+----
+
 <div id="Module-program-options"></div>
 <div class="header">
 <p>
@@ -339,7 +353,9 @@ The programs are all run after the operation has effectively
 completed.
 
 
-<hr>
+
+----
+
 <div id="Wrappers"></div>
 <div class="header">
 <p>
@@ -404,7 +420,9 @@ directory, treating files whose name ends in
 </td></tr></table>
 
 
-<hr>
+
+----
+
 <div id="commit-files"></div>
 <div class="header">
 <p>
@@ -447,7 +465,9 @@ programs.
  [[#Loginfo|&bull; loginfo]]::                     Where should log messages be sent?
 </div>
 
-<hr>
+
+----
+
 <div id="syntax"></div>
 <div class="header">
 <p>
@@ -487,7 +507,9 @@ directory name in the repository is used.  The rest of the line
 is used as a file name or command-line as appropriate.
 
 
-<hr>
+
+----
+
 <div id="commitinfo"></div>
 <div class="header">
 <p>
@@ -552,7 +574,9 @@ message, and command line options specified, is not available
 to the command.
 
 
-<hr>
+
+----
+
 <div id="verifymsg"></div>
 <div class="header">
 <p>
@@ -705,7 +729,9 @@ The &lsquo;<tt>config</tt>&rsquo; file contains this line:
 
 
 
-<hr>
+
+----
+
 <div id="editinfo"></div>
 <div class="header">
 <p>
@@ -775,7 +801,9 @@ There is no good workaround for this; use
  [[#Editinfo example|&bull; editinfo example]]::            Editinfo example
 </div>
 
-<hr>
+
+----
+
 <div id="editinfo-example"></div>
 <div class="header">
 <p>
@@ -837,7 +865,9 @@ The &lsquo;<tt>rcsinfo</tt>&rsquo; file contains this line:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="loginfo"></div>
 <div class="header">
 <p>
@@ -925,7 +955,9 @@ Note: when <small>CVS</small> is accessing a remote repository,
  [[#Keeping a checked out copy|&bull; Keeping a checked out copy]]::  Updating a tree on every checkin
 </div>
 
-<hr>
+
+----
+
 <div id="loginfo-example"></div>
 <div class="header">
 <p>
@@ -962,7 +994,9 @@ like this:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="Keeping-a-checked-out-copy"></div>
 <div class="header">
 <p>
@@ -999,7 +1033,9 @@ This will cause checkins to repository directories
 starting with <code>cyclic-pages</code> to update the checked
 out tree in &lsquo;<tt>/u/www/local-docs</tt>&rsquo;.
 
-<hr>
+
+----
+
 <div id="rcsinfo"></div>
 <div class="header">
 <p>
@@ -1050,7 +1086,9 @@ In versions of <small>CVS</small> prior to version 1.12, the
 client may be used and the &lsquo;<tt>CVS/Template</tt>&rsquo; will
 be updated from the server.
 
-<hr>
+
+----
+
 <div id="cvsignore"></div>
 <div class="header">
 <p>
@@ -1136,7 +1174,9 @@ named &lsquo;<tt>foo bar</tt>&rsquo; (it also matches &lsquo;<tt>fooxbar</tt>&rs
 and the like).  Also note that there is currently no
 way to specify comments.
 
-<hr>
+
+----
+
 <div id="checkoutlist"></div>
 <div class="header">
 <p>
@@ -1191,7 +1231,9 @@ For information about keeping a checkout out copy in a
 more general context than the one provided by
 &lsquo;<tt>checkoutlist</tt>&rsquo;, see [[#Keeping a checked out copy|Keeping a checked out copy]].
 
-<hr>
+
+----
+
 <div id="history-file"></div>
 <div class="header">
 <p>
@@ -1215,7 +1257,9 @@ code, but generally programs should use the <code>cvs
 history</code> command to access it anyway, in case the
 format changes with future releases of <small>CVS</small>.
 
-<hr>
+
+----
+
 <div id="Variables"></div>
 <div class="header">
 <p>
@@ -1319,7 +1363,9 @@ Environment variables passed to administrative files are:
 <div id="index-USER_002c-environment-variable"></div>
 : Same as <code>LOGNAME</code>. Do not confuse this with the internal variable of the same name.
 
-<hr>
+
+----
+
 <div id="config"></div>
 <div class="header">
 <p>
@@ -1387,7 +1433,9 @@ Currently defined keywords are:
 
 : As an example, to restrict users not in the <code>cvsadmin</code> group to using <code>cvs admin</code> to change the default keyword substitution mode, lock revisions, unlock revisions, and replace the log message, use &lsquo;<code>UserAdminOptions=klum</code>&rsquo;.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[#Expansions in administrative files|Variables]], Up: [[#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

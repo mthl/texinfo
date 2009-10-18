@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Removing directories#Removing directories|Removing directories]], Previous: [[cvs: Adding files to a directory#Adding files to a directory|Adding files]], Up: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Removing-files-1"></div>
 === Removing files ===
 <div id="index-Removing-files"></div>
@@ -109,7 +111,9 @@ which you are working on (see [[cvs: Branching and merging#Branching and merging
 later merge the removals to another branch if you want
 (see [[cvs: Merging can add or remove files#Merging can add or remove files|Merging adds and removals]]).
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Removing directories#Removing directories|Removing directories]], Previous: [[cvs: Adding files to a directory#Adding files to a directory|Adding files]], Up: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

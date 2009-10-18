@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Defining the module#Defining the module|Defining the module]], Up: [[cvs: Starting a project with CVS#Starting a project with CVS|Starting a new project]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Setting-up-the-files-1"></div>
 === Setting up the files ===
 

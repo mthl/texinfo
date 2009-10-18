@@ -21,7 +21,9 @@ certain command, you can probably skip everything here.
  [[#A sample session|&bull; A sample session]]::            A tour of basic CVS usage
 </div>
 
-<hr>
+
+----
+
 <div id="What-is-CVS_003f"></div>
 <div class="header">
 <p>
@@ -110,7 +112,9 @@ You can also subscribe to the <code>bug-cvs</code> mailing list,
 described in more detail in [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]].  To subscribe
 send mail to <code>bug-cvs-request@gnu.org</code>.
 
-<hr>
+
+----
+
 <div id="What-is-CVS-not_003f"></div>
 <div class="header">
 <p>
@@ -176,7 +180,9 @@ not try to be everything for everyone.
 
 : Some systems provide ways to ensure that changes or releases go through various steps, with various approvals as needed.  Generally, one can accomplish this with <small>CVS</small> but it might be a little more work. In some cases you&rsquo;ll want to use the &lsquo;<tt>commitinfo</tt>&rsquo;, &lsquo;<tt>loginfo</tt>&rsquo;, &lsquo;<tt>rcsinfo</tt>&rsquo;, or &lsquo;<tt>verifymsg</tt>&rsquo; files, to require that certain steps be performed before cvs will allow a checkin.  Also consider whether features such as branches and tags can be used to perform tasks such as doing work in a development tree and then merging certain changes over to a stable tree only once they have been proven.
 
-<hr>
+
+----
+
 <div id="A-sample-session"></div>
 <div class="header">
 <p>
@@ -210,7 +216,9 @@ called &lsquo;<code>tc</code>&rsquo;.
  [[#Viewing differences|&bull; Viewing differences]]::         Viewing differences
 </div>
 
-<hr>
+
+----
+
 <div id="Getting-the-source"></div>
 <div class="header">
 <p>
@@ -251,7 +259,9 @@ of hours later you have added an optimization pass to the compiler.
 A note to <small>RCS</small> and <small>SCCS</small> users: There is no need to lock the files that
 you want to edit.  See [[cvs: Multiple developers#Multiple developers|Multiple developers]], for an explanation.
 
-<hr>
+
+----
+
 <div id="Committing-your-changes"></div>
 <div class="header">
 <p>
@@ -321,7 +331,9 @@ this:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="Cleaning-up"></div>
 <div class="header">
 <p>
@@ -381,10 +393,12 @@ copy of the sources, and then asks you for confirmation
 before deleting any files or making any note in the
 history file.
 
-You decide to play it safe and answer <kbd>n &lt;RET&gt;</kbd>
+You decide to play it safe and answer <code>n &lt;RET&gt;</code>
 when <code>release</code> asks for confirmation.
 
-<hr>
+
+----
+
 <div id="Viewing-differences"></div>
 <div class="header">
 <p>
@@ -423,7 +437,9 @@ optimization pass.  You check it in, and release the module.
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[#Cleaning up|Cleaning up]], Up: [[#A sample session|A sample session]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

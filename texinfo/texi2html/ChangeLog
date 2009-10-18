@@ -1,3 +1,13 @@
+2009-10-16   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: @math is also in code_style.
+	* texi2html.pl, texi2html.init, */*.init: 
+	change in the normal_text function reference API, now there is an 
+	input variable true if in @math. Same in thing_command and 
+	simple_command.
+	* examples/mediawiki.init: handle @image, @uref, @math, @kbd,
+	@indicateurl, @abbr, footnotes.
+
 2009-10-14   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, texi2html.init, formats/*: add 'inline_attribute' 

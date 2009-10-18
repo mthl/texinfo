@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Tagging and adding and removing files#Tagging and adding and removing files|Tagging add/remove]], Previous: [[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision|Tagging by date/tag]], Up: [[cvs: Revisions#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Deleting_002c-moving_002c-and-renaming-tags"></div>
 === Deleting, moving, and renaming tags ===
 
@@ -101,7 +103,9 @@ same files as the old tag.  For example:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Tagging and adding and removing files#Tagging and adding and removing files|Tagging add/remove]], Previous: [[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision|Tagging by date/tag]], Up: [[cvs: Revisions#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Temporary directories for the server#Temporary directories for the server|Server temporary directory]], Previous: [[cvs: Remote repositories#Remote repositories|Remote repositories]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Read_002donly-repository-access"></div>
 === Read-only repository access ===
 <div id="index-Read_002donly-repository-access"></div>
@@ -93,7 +95,9 @@ conservative way, it being better to protect the
 repository too much than too little: such a user gets
 read-only access.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Temporary directories for the server#Temporary directories for the server|Server temporary directory]], Previous: [[cvs: Remote repositories#Remote repositories|Remote repositories]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

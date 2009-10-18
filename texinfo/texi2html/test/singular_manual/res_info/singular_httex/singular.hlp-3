@@ -2102,7 +2102,7 @@ exp(-2*pi*i*M) is a monodromy matrix of f $f$
      ==> 0,  0,  0,   0,   0,   0,   0,0,    0,    13/10,0,   
      ==> 0,  0,  0,   0,   0,   0,   0,0,    0,    0,    13/10
 
-Now, we compute the V-filtration on H"/H' $H''/H'$
+Now, we compute the V-filtration on H''/H' $H''/H'$
  and the spectrum:
        LIB "gaussman.lib";
        ring R=0,(x,y),ds;
@@ -2151,7 +2151,7 @@ Now, we compute the V-filtration on H"/H' $H''/H'$
      ==> 1
 Here `l[1]' contains the spectral numbers, `l[2]' the corresponding
 multiplicities, `l[3]' a C $C$
--basis of the V-filtration on H"/H' $H''/H'$
+-basis of the V-filtration on H''/H' $H''/H'$
  in terms of the monomial basis of $O/J_f\cong H''/H'$
 O/J_f~=H"/H' in `l[4]'.
 

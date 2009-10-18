@@ -39,7 +39,7 @@ OE @o /o @O /O @ss ss @l /l @L /L @DH D @TH TH @dh d @th th @exclamdown
 -a `@dfn{--a}' "-a" `@dmn{--a}' -a `@email{--a,--b}' -b <--a>
 `@email{,--b}' -b <> `@email{--a}' <--a> `@emph{--a}' _-a_ `@env{--a}'
 `--a' `@file{--a}' `--a' `@i{--a}' -a `@kbd{--a}' `--a' `@key{--a}'
-<--a> `@math{--a {\frac{1}{2}} @minus{}}' -a {\frac{1}{2}} -
+<--a> `@math{--a {\frac{1}{2}} @minus{}}' --a {\frac{1}{2}} -
 `@option{--a}' `--a' `@r{--a}' -a `@samp{--a}' `--a' `@sc{--a}' -A
 `@strong{--a}' *-a* `@t{--a}' -a `@sansserif{--a}' -a `@titlefont{--a}'
 -a
@@ -340,7 +340,7 @@ subsubheading
 `@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }' E'-. ,A.
 (E'tude-, Autonome) `@abbr{@'E--. @comma{}A.}' E'-. ,A.
 
-   `@math{--a@minus{} {\frac{1}{2}}}' -a- {\frac{1}{2}}
+   `@math{--a@minus{} {\frac{1}{2}}}' --a- {\frac{1}{2}}
 
    `@image{f-ile,,,alt@verb{:jk _" %}}'  `@image{f--ile,aze,az,@verb{:jk
 _" %@:} @b{in b "},e--xt}'  `@image{file@verb{:jk _" %@:},,,alt@verb{:jk
@@ -473,7 +473,7 @@ OE @o /o @O /O @ss ss @l /l @L /L @DH D @TH TH @dh d @th th @exclamdown
 -a `@dfn{--a}' "-a" `@dmn{--a}' -a `@email{--a,--b}' -b <--a>
 `@email{,--b}' -b <> `@email{--a}' <--a> `@emph{--a}' _-a_ `@env{--a}'
 `--a' `@file{--a}' `--a' `@i{--a}' -a `@kbd{--a}' `--a' `@key{--a}'
-<--a> `@math{--a {\frac{1}{2}} @minus{}}' -a {\frac{1}{2}} -
+<--a> `@math{--a {\frac{1}{2}} @minus{}}' --a {\frac{1}{2}} -
 `@option{--a}' `--a' `@r{--a}' -a `@samp{--a}' `--a' `@sc{--a}' -A
 `@strong{--a}' *-a* `@t{--a}' -a `@sansserif{--a}' -a `@titlefont{--a}'
 -a
@@ -774,7 +774,7 @@ subsubheading
 `@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }' E'-. ,A.
 (E'tude-, Autonome) `@abbr{@'E--. @comma{}A.}' E'-. ,A.
 
-   `@math{--a@minus{} {\frac{1}{2}}}' -a- {\frac{1}{2}}
+   `@math{--a@minus{} {\frac{1}{2}}}' --a- {\frac{1}{2}}
 
    `@image{f-ile,,,alt@verb{:jk _" %}}'  `@image{f--ile,aze,az,@verb{:jk
 _" %@:} @b{in b "},e--xt}'  `@image{file@verb{:jk _" %@:},,,alt@verb{:jk
@@ -1470,7 +1470,7 @@ OE @o /o @O /O @ss ss @l /l @L /L @DH D @TH TH @dh d @th th @exclamdown
 -a `@dfn{--a}' "-a" `@dmn{--a}' -a `@email{--a,--b}' -b <--a>
 `@email{,--b}' -b <> `@email{--a}' <--a> `@emph{--a}' _-a_ `@env{--a}'
 `--a' `@file{--a}' `--a' `@i{--a}' -a `@kbd{--a}' `--a' `@key{--a}'
-<--a> `@math{--a {\frac{1}{2}} @minus{}}' -a {\frac{1}{2}} -
+<--a> `@math{--a {\frac{1}{2}} @minus{}}' --a {\frac{1}{2}} -
 `@option{--a}' `--a' `@r{--a}' -a `@samp{--a}' `--a' `@sc{--a}' -A
 `@strong{--a}' *-a* `@t{--a}' -a `@sansserif{--a}' -a `@titlefont{--a}'
 -a
@@ -1771,7 +1771,7 @@ subsubheading
 `@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }' E'-. ,A.
 (E'tude-, Autonome) `@abbr{@'E--. @comma{}A.}' E'-. ,A.
 
-   `@math{--a@minus{} {\frac{1}{2}}}' -a- {\frac{1}{2}}
+   `@math{--a@minus{} {\frac{1}{2}}}' --a- {\frac{1}{2}}
 
    `@image{f-ile,,,alt@verb{:jk _" %}}'  `@image{f--ile,aze,az,@verb{:jk
 _" %@:} @b{in b "},e--xt}'  `@image{file@verb{:jk _" %@:},,,alt@verb{:jk
@@ -2273,20 +2273,20 @@ chapter 2
 
 
 Tag Table:
-Node: Top15000
-Node: constructs15211
-Ref: constructs-Footnote-175376
-Ref: constructs-Footnote-275396
-Ref: constructs-Footnote-375417
-Ref: constructs-Footnote-475437
-Ref: constructs-Footnote-575458
-Ref: constructs-Footnote-675478
-Node: chapter75499
-Ref: chapter-Footnote-175737
-Node: s--ect,ion75757
-Node: subsection75878
-Ref: anchor76010
-Node: subsubsection76010
-Node: chapter276127
+Node: Top15002
+Node: constructs15213
+Ref: constructs-Footnote-175382
+Ref: constructs-Footnote-275402
+Ref: constructs-Footnote-375423
+Ref: constructs-Footnote-475443
+Ref: constructs-Footnote-575464
+Ref: constructs-Footnote-675484
+Node: chapter75505
+Ref: chapter-Footnote-175743
+Node: s--ect,ion75763
+Node: subsection75884
+Ref: anchor76016
+Node: subsubsection76016
+Node: chapter276133
 
 End Tag Table

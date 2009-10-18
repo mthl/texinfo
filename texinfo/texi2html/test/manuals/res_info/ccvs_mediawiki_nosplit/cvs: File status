@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Bringing a file up to date#Bringing a file up to date|Updating a file]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="File-status-1"></div>
 === File status ===
 <div id="index-File-status"></div>
@@ -91,7 +93,9 @@ option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
 these options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Bringing a file up to date#Bringing a file up to date|Updating a file]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

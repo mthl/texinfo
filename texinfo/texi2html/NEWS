@@ -103,6 +103,9 @@ This file records noteworthy changes.
   $OPEN_QUOTE_SYMBOL and $CLOSE_QUOTE_SYMBOL.
   %iso_symbols is unused now.
 
+* change in the normal_text function reference API, now there is an 
+  input variable true if in @math.
+
 1.82 (2009-01-05)
 
 * NEW FEATURES

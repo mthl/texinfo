@@ -3,7 +3,9 @@
 <p>
 Previous: [[cvs: User-defined logging#User-defined logging|user-defined logging]], Up: [[cvs: History browsing#History browsing|History browsing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Annotate-command"></div>
 === Annotate command ===
 <div id="index-annotate-_0028subcommand_0029"></div>

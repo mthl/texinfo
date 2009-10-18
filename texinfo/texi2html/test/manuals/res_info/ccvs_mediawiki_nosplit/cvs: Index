@@ -3,7 +3,9 @@
 <p>
 Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]], Up: [[cvs#Top|Top]] &nbsp; |[[#SEC_Contents|Contents]]||[[#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Index-1"></div>
 == Index ==
 <div id="index-Index"></div>
@@ -44,12 +46,17 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <td>[[#Index-1_cp_letter-W|<b>W</b>]]</td>
 <td>[[#Index-1_cp_letter-X|<b>X</b>]]</td>
 <td>[[#Index-1_cp_letter-Z|<b>Z</b>]]</td>
+</tr></table>
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_symbol-1"></div>!</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Excluding directories#index-_0021_002c-in-modules-file|!, in modules file]]</td><td>&nbsp;</td><td valign="top">[[cvs: Excluding directories#Excluding directories|Excluding directories]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_symbol-2"></div>#</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Several developers simultaneously attempting to run CVS#index-_0023cvs_002elock_002c-removing|#cvs.lock, removing]]</td><td>&nbsp;</td><td valign="top">[[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Several developers simultaneously attempting to run CVS]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: CVS locks in the repository#index-_0023cvs_002elock_002c-technical-details|#cvs.lock, technical details]]</td><td>&nbsp;</td><td valign="top">[[cvs: CVS locks in the repository#CVS locks in the repository|CVS locks in the repository]]</td></tr>
@@ -59,10 +66,14 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: CVS locks in the repository#index-_0023cvs_002etfl|#cvs.tfl]]</td><td>&nbsp;</td><td valign="top">[[cvs: CVS locks in the repository#CVS locks in the repository|CVS locks in the repository]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Several developers simultaneously attempting to run CVS#index-_0023cvs_002ewfl_002c-removing|#cvs.wfl, removing]]</td><td>&nbsp;</td><td valign="top">[[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Several developers simultaneously attempting to run CVS]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: CVS locks in the repository#index-_0023cvs_002ewfl_002c-technical-details|#cvs.wfl, technical details]]</td><td>&nbsp;</td><td valign="top">[[cvs: CVS locks in the repository#CVS locks in the repository|CVS locks in the repository]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_symbol-3"></div>&amp;</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Ampersand modules#index-_0026_002c-in-modules-file|&amp;, in modules file]]</td><td>&nbsp;</td><td valign="top">[[cvs: Ampersand modules#Ampersand modules|Ampersand modules]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_symbol-4"></div>-</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Alias modules#index-_002da_002c-in-modules-file|-a, in modules file]]</td><td>&nbsp;</td><td valign="top">[[cvs: Alias modules#Alias modules|Alias modules]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Module options#index-_002dd_002c-in-modules-file|-d, in modules file]]</td><td>&nbsp;</td><td valign="top">[[cvs: Module options#Module options|Module options]]</td></tr>
@@ -77,7 +88,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Module options#index-_002ds_002c-in-modules-file|-s, in modules file]]</td><td>&nbsp;</td><td valign="top">[[cvs: Module options#Module options|Module options]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Module options#index-_002dt_002c-in-modules-file|-t, in modules file]]</td><td>&nbsp;</td><td valign="top">[[cvs: Module options#Module options|Module options]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: How the modules file "program options" programs are run#index-_002dt_002c-in-modules-file-1|-t, in modules file]]</td><td>&nbsp;</td><td valign="top">[[cvs: How the modules file "program options" programs are run#How the modules file &ldquo;program options&rdquo; programs are run|How the modules file &ldquo;program options&rdquo; programs are run]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_symbol-5"></div>.</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: update output#index-_002e_0023-files|.# files]]</td><td>&nbsp;</td><td valign="top">[[cvs: update output#update output|update output]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Telling CVS where your repository is#index-_002ebashrc_002c-setting-CVSROOT-in|.bashrc, setting CVSROOT in]]</td><td>&nbsp;</td><td valign="top">[[cvs: Telling CVS where your repository is#Telling CVS where your repository is|Telling CVS where your repository is]]</td></tr>
@@ -85,10 +98,14 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Default options and the ~%47.cvsrc file#index-_002ecvsrc-file|.cvsrc file]]</td><td>&nbsp;</td><td valign="top">[[cvs: Default options and the ~%47.cvsrc file#Default options and the ~/.cvsrc file|Default options and the ~/.cvsrc file]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Telling CVS where your repository is#index-_002eprofile_002c-setting-CVSROOT-in|.profile, setting CVSROOT in]]</td><td>&nbsp;</td><td valign="top">[[cvs: Telling CVS where your repository is#Telling CVS where your repository is|Telling CVS where your repository is]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Telling CVS where your repository is#index-_002etcshrc_002c-setting-CVSROOT-in|.tcshrc, setting CVSROOT in]]</td><td>&nbsp;</td><td valign="top">[[cvs: Telling CVS where your repository is#Telling CVS where your repository is|Telling CVS where your repository is]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_symbol-6"></div>/</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: The Repository#index-_002fusr_002flocal_002fcvsroot_002c-as-example-repository|/usr/local/cvsroot, as example repository]]</td><td>&nbsp;</td><td valign="top">[[cvs: The Repository#The Repository|The Repository]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_symbol-7"></div>:</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Connecting with rsh#index-_003aext_003a_002c-setting-up|:ext:, setting up]]</td><td>&nbsp;</td><td valign="top">[[cvs: Connecting with rsh#Connecting with rsh|Connecting with rsh]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Trouble making a connection to a CVS server#index-_003aext_003a_002c-troubleshooting|:ext:, troubleshooting]]</td><td>&nbsp;</td><td valign="top">[[cvs: Trouble making a connection to a CVS server#Trouble making a connection to a CVS server|Trouble making a connection to a CVS server]]</td></tr>
@@ -100,19 +117,29 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Trouble making a connection to a CVS server#index-_003apserver_003a_002c-troubleshooting|:pserver:, troubleshooting]]</td><td>&nbsp;</td><td valign="top">[[cvs: Trouble making a connection to a CVS server#Trouble making a connection to a CVS server|Trouble making a connection to a CVS server]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Connecting with rsh#index-_003aserver_003a_002c-setting-up|:server:, setting up]]</td><td>&nbsp;</td><td valign="top">[[cvs: Connecting with rsh#Connecting with rsh|Connecting with rsh]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Trouble making a connection to a CVS server#index-_003aserver_003a_002c-troubleshooting|:server:, troubleshooting]]</td><td>&nbsp;</td><td valign="top">[[cvs: Trouble making a connection to a CVS server#Trouble making a connection to a CVS server|Trouble making a connection to a CVS server]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_symbol-8"></div>&lt;</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Conflicts example#index-_003c_003c_003c_003c_003c_003c_003c|&lt;&lt;&lt;&lt;&lt;&lt;&lt;]]</td><td>&nbsp;</td><td valign="top">[[cvs: Conflicts example#Conflicts example|Conflicts example]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_symbol-9"></div>=</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Conflicts example#index-_003d_003d_003d_003d_003d_003d_003d|=======]]</td><td>&nbsp;</td><td valign="top">[[cvs: Conflicts example#Conflicts example|Conflicts example]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_symbol-10"></div>&gt;</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Conflicts example#index-_003e_003e_003e_003e_003e_003e_003e|&gt;&gt;&gt;&gt;&gt;&gt;&gt;]]</td><td>&nbsp;</td><td valign="top">[[cvs: Conflicts example#Conflicts example|Conflicts example]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_symbol-11"></div>_</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: update output#index-_005f_005f-files-_0028VMS_0029|__ files (VMS)]]</td><td>&nbsp;</td><td valign="top">[[cvs: update output#update output|update output]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-A"></div>A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: How to edit a file which is being watched#index-Abandoning-work|Abandoning work]]</td><td>&nbsp;</td><td valign="top">[[cvs: How to edit a file which is being watched#How to edit a file which is being watched|How to edit a file which is being watched]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Accessing branches#index-Access-a-branch|Access a branch]]</td><td>&nbsp;</td><td valign="top">[[cvs: Accessing branches#Accessing branches|Accessing branches]]</td></tr>
@@ -135,7 +162,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Keyword List#index-Author-keyword|Author keyword]]</td><td>&nbsp;</td><td valign="top">[[cvs: Keyword List#Keyword List|Keyword List]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Ignoring files via cvsignore#index-Automatically-ignored-files|Automatically ignored files]]</td><td>&nbsp;</td><td valign="top">[[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|Ignoring files via cvsignore]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Common command options#index-Avoiding-editor-invocation|Avoiding editor invocation]]</td><td>&nbsp;</td><td valign="top">[[cvs: Common command options#Common command options|Common command options]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-B"></div>B</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Backing up a repository#index-Backing-up_002c-repository|Backing up, repository]]</td><td>&nbsp;</td><td valign="top">[[cvs: Backing up a repository#Backing up a repository|Backing up a repository]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: How data is stored in the working directory#index-Base-directory_002c-in-CVS-directory|Base directory, in CVS directory]]</td><td>&nbsp;</td><td valign="top">[[cvs: How data is stored in the working directory#How data is stored in the working directory|How data is stored in the working directory]]</td></tr>
@@ -164,7 +193,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Dealing with bugs in CVS or this manual#index-Bugs-in-this-manual-or-CVS|Bugs in this manual or CVS]]</td><td>&nbsp;</td><td valign="top">[[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|Dealing with bugs in CVS or this manual]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Dealing with bugs in CVS or this manual#index-Bugs_002c-reporting|Bugs, reporting]]</td><td>&nbsp;</td><td valign="top">[[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|Dealing with bugs in CVS or this manual]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: How your build system interacts with CVS#index-Builds|Builds]]</td><td>&nbsp;</td><td valign="top">[[cvs: How your build system interacts with CVS#How your build system interacts with CVS|How your build system interacts with CVS]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-C"></div>C</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Branching and merging#index-Changes_002c-copying-between-branches|Changes, copying between branches]]</td><td>&nbsp;</td><td valign="top">[[cvs: Branching and merging#Branching and merging|Branching and merging]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: admin options#index-Changing-a-log-message|Changing a log message]]</td><td>&nbsp;</td><td valign="top">[[cvs: admin options#admin options|admin options]]</td></tr>
@@ -271,7 +302,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Connecting with rsh#index-CVS_005fSERVER_002c-environment-variable|CVS_SERVER, environment variable]]</td><td>&nbsp;</td><td valign="top">[[cvs: Connecting with rsh#Connecting with rsh|Connecting with rsh]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: All environment variables which affect CVS#index-CVS_005fSERVER_005fSLEEP_002c-environment-variable|CVS_SERVER_SLEEP, environment variable]]</td><td>&nbsp;</td><td valign="top">[[cvs: All environment variables which affect CVS#All environment variables which affect CVS|All environment variables which affect CVS]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Expansions in administrative files#index-CVS_005fUSER_002c-environment-variable|CVS_USER, environment variable]]</td><td>&nbsp;</td><td valign="top">[[cvs: Expansions in administrative files#Expansions in administrative files|Expansions in administrative files]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-D"></div>D</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Keyword List#index-Date-keyword|Date keyword]]</td><td>&nbsp;</td><td valign="top">[[cvs: Keyword List#Keyword List|Keyword List]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Common command options#index-Dates|Dates]]</td><td>&nbsp;</td><td valign="top">[[cvs: Common command options#Common command options|Common command options]]</td></tr>
@@ -299,7 +332,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Multiple repositories#index-Disjoint-repositories|Disjoint repositories]]</td><td>&nbsp;</td><td valign="top">[[cvs: Multiple repositories#Multiple repositories|Multiple repositories]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Loginfo#index-Distributing-log-messages|Distributing log messages]]</td><td>&nbsp;</td><td valign="top">[[cvs: Loginfo#Loginfo|Loginfo]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Conflicts example#index-driver_002ec-_0028merge-example_0029|driver.c (merge example)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Conflicts example#Conflicts example|Conflicts example]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-E"></div>E</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: How to edit a file which is being watched#index-edit-_0028subcommand_0029|edit (subcommand)]]</td><td>&nbsp;</td><td valign="top">[[cvs: How to edit a file which is being watched#How to edit a file which is being watched|How to edit a file which is being watched]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Editinfo#index-editinfo-_0028admin-file_0029|editinfo (admin file)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Editinfo#Editinfo|Editinfo]]</td></tr>
@@ -333,7 +368,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Verifying log messages#index-Exit-status_002c-of-verifymsg|Exit status, of &lsquo;<tt>verifymsg</tt>&rsquo;]]</td><td>&nbsp;</td><td valign="top">[[cvs: Verifying log messages#Verifying log messages|Verifying log messages]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: export--Export sources from CVS, similar to checkout#index-export-_0028subcommand_0029|export (subcommand)]]</td><td>&nbsp;</td><td valign="top">[[cvs: export--Export sources from CVS, similar to checkout#export&mdash;Export sources from CVS, similar to checkout|export&mdash;Export sources from CVS, similar to checkout]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Module options#index-Export-program|Export program]]</td><td>&nbsp;</td><td valign="top">[[cvs: Module options#Module options|Module options]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-F"></div>F</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Getting the source#index-Fetching-source|Fetching source]]</td><td>&nbsp;</td><td valign="top">[[cvs: Getting the source#Getting the source|Getting the source]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: File status#index-File-had-conflicts-on-merge|File had conflicts on merge]]</td><td>&nbsp;</td><td valign="top">[[cvs: File status#File status|File status]]</td></tr>
@@ -348,7 +385,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Connecting with fork#index-fork_002c-access-method|fork, access method]]</td><td>&nbsp;</td><td valign="top">[[cvs: Connecting with fork#Connecting with fork|Connecting with fork]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Rcsinfo#index-Form-for-log-message|Form for log message]]</td><td>&nbsp;</td><td valign="top">[[cvs: Rcsinfo#Rcsinfo|Rcsinfo]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Overall structure of CVS commands#index-Format-of-CVS-commands|Format of CVS commands]]</td><td>&nbsp;</td><td valign="top">[[cvs: Overall structure of CVS commands#Overall structure of CVS commands|Overall structure of CVS commands]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-G"></div>G</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: A sample session#index-Getting-started|Getting started]]</td><td>&nbsp;</td><td valign="top">[[cvs: A sample session#A sample session|A sample session]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Getting the source#index-Getting-the-source|Getting the source]]</td><td>&nbsp;</td><td valign="top">[[cvs: Getting the source#Getting the source|Getting the source]]</td></tr>
@@ -360,7 +399,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Direct connection with GSSAPI#index-GSSAPI|GSSAPI]]</td><td>&nbsp;</td><td valign="top">[[cvs: Direct connection with GSSAPI#Direct connection with GSSAPI|Direct connection with GSSAPI]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Global options#index-Gzip|Gzip]]</td><td>&nbsp;</td><td valign="top">[[cvs: Global options#Global options|Global options]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Quick reference to CVS commands#index-Gzip-1|Gzip]]</td><td>&nbsp;</td><td valign="top">[[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Quick reference to CVS commands]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-H"></div>H</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Special Files#index-Hard-links|Hard links]]</td><td>&nbsp;</td><td valign="top">[[cvs: Special Files#Special Files|Special Files]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Tags-Symbolic revisions#index-HEAD_002c-as-reserved-tag-name|HEAD, as reserved tag name]]</td><td>&nbsp;</td><td valign="top">[[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revisions|Tags&ndash;Symbolic revisions]]</td></tr>
@@ -374,7 +415,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: All environment variables which affect CVS#index-HOME_002c-environment-variable|HOME, environment variable]]</td><td>&nbsp;</td><td valign="top">[[cvs: All environment variables which affect CVS#All environment variables which affect CVS|All environment variables which affect CVS]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: All environment variables which affect CVS#index-HOMEDRIVE_002c-environment-variable|HOMEDRIVE, environment variable]]</td><td>&nbsp;</td><td valign="top">[[cvs: All environment variables which affect CVS#All environment variables which affect CVS|All environment variables which affect CVS]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: All environment variables which affect CVS#index-HOMEPATH_002c-environment-variable|HOMEPATH, environment variable]]</td><td>&nbsp;</td><td valign="top">[[cvs: All environment variables which affect CVS#All environment variables which affect CVS|All environment variables which affect CVS]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-I"></div>I</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Keyword List#index-Id-keyword|Id keyword]]</td><td>&nbsp;</td><td valign="top">[[cvs: Keyword List#Keyword List|Keyword List]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Using keywords#index-Ident-_0028shell-command_0029|Ident (shell command)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Using keywords#Using keywords|Using keywords]]</td></tr>
@@ -396,10 +439,14 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: What is CVS?#index-Introduction-to-CVS|Introduction to CVS]]</td><td>&nbsp;</td><td valign="top">[[cvs: What is CVS?#What is CVS?|What is CVS?]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Quick reference to CVS commands#index-Invoking-CVS|Invoking CVS]]</td><td>&nbsp;</td><td valign="top">[[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Quick reference to CVS commands]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: History browsing#index-Isolation|Isolation]]</td><td>&nbsp;</td><td valign="top">[[cvs: History browsing#History browsing|History browsing]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-J"></div>J</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Merging an entire branch#index-Join|Join]]</td><td>&nbsp;</td><td valign="top">[[cvs: Merging an entire branch#Merging an entire branch|Merging an entire branch]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-K"></div>K</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Keeping a checked out copy#index-Keeping-a-checked-out-copy|Keeping a checked out copy]]</td><td>&nbsp;</td><td valign="top">[[cvs: Keeping a checked out copy#Keeping a checked out copy|Keeping a checked out copy]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Direct connection with GSSAPI#index-Kerberos_002c-using-_003agserver_003a|Kerberos, using :gserver:]]</td><td>&nbsp;</td><td valign="top">[[cvs: Direct connection with GSSAPI#Direct connection with GSSAPI|Direct connection with GSSAPI]]</td></tr>
@@ -415,7 +462,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Dealing with bugs in CVS or this manual#index-Known-bugs-in-this-manual-or-CVS|Known bugs in this manual or CVS]]</td><td>&nbsp;</td><td valign="top">[[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|Dealing with bugs in CVS or this manual]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Remote repositories#index-kserver-_0028client_002fserver-connection-method_0029_002c-port-specification|kserver (client/server connection method), port specification]]</td><td>&nbsp;</td><td valign="top">[[cvs: Remote repositories#Remote repositories|Remote repositories]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Setting up the server for password authentication#index-kserver-_0028client_002fserver-connection-method_0029_002c-port-specification-1|kserver (client/server connection method), port specification]]</td><td>&nbsp;</td><td valign="top">[[cvs: Setting up the server for password authentication#Setting up the server for password authentication|Setting up the server for password authentication]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-L"></div>L</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: The Repository#index-Layout-of-repository|Layout of repository]]</td><td>&nbsp;</td><td valign="top">[[cvs: The Repository#The Repository|The Repository]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Global options#index-Left_002dhand-options|Left-hand options]]</td><td>&nbsp;</td><td valign="top">[[cvs: Global options#Global options|Global options]]</td></tr>
@@ -446,7 +495,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Loginfo#index-loginfo-_0028admin-file_0029|loginfo (admin file)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Loginfo#Loginfo|Loginfo]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Expansions in administrative files#index-LOGNAME_002c-environment-variable|LOGNAME, environment variable]]</td><td>&nbsp;</td><td valign="top">[[cvs: Expansions in administrative files#Expansions in administrative files|Expansions in administrative files]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Using the client with password authentication#index-Logout-_0028subcommand_0029|Logout (subcommand)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Using the client with password authentication#Using the client with password authentication|Using the client with password authentication]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-M"></div>M</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Informing others about commits#index-Mail_002c-automatic-mail-on-commit|Mail, automatic mail on commit]]</td><td>&nbsp;</td><td valign="top">[[cvs: Informing others about commits#Informing others about commits|Informing others about commits]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: What is CVS?#index-Mailing-list|Mailing list]]</td><td>&nbsp;</td><td valign="top">[[cvs: What is CVS?#What is CVS?|What is CVS?]]</td></tr>
@@ -481,7 +532,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Deleting, moving, and renaming tags#index-Moving-tags|Moving tags]]</td><td>&nbsp;</td><td valign="top">[[cvs: Deleting, moving, and renaming tags#Deleting, moving, and renaming tags|Deleting, moving, and renaming tags]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Multiple developers#index-Multiple-developers|Multiple developers]]</td><td>&nbsp;</td><td valign="top">[[cvs: Multiple developers#Multiple developers|Multiple developers]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Multiple repositories#index-Multiple-repositories|Multiple repositories]]</td><td>&nbsp;</td><td valign="top">[[cvs: Multiple repositories#Multiple repositories|Multiple repositories]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-N"></div>N</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Keyword List#index-Name-keyword|Name keyword]]</td><td>&nbsp;</td><td valign="top">[[cvs: Keyword List#Keyword List|Keyword List]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Tags-Symbolic revisions#index-Name_002c-symbolic-_0028tag_0029|Name, symbolic (tag)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revisions|Tags&ndash;Symbolic revisions]]</td></tr>
@@ -495,7 +548,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Revision numbers#index-Number_002c-branch|Number, branch]]</td><td>&nbsp;</td><td valign="top">[[cvs: Revision numbers#Revision numbers|Revision numbers]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Branches and revisions#index-Number_002c-branch-1|Number, branch]]</td><td>&nbsp;</td><td valign="top">[[cvs: Branches and revisions#Branches and revisions|Branches and revisions]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Revision numbers#index-Number_002c-revision_002d|Number, revision-]]</td><td>&nbsp;</td><td valign="top">[[cvs: Revision numbers#Revision numbers|Revision numbers]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-O"></div>O</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Default options and the ~%47.cvsrc file#index-Option-defaults|Option defaults]]</td><td>&nbsp;</td><td valign="top">[[cvs: Default options and the ~%47.cvsrc file#Default options and the ~/.cvsrc file|Default options and the ~/.cvsrc file]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Global options#index-Options_002c-global|Options, global]]</td><td>&nbsp;</td><td valign="top">[[cvs: Global options#Global options|Global options]]</td></tr>
@@ -509,7 +564,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Global options#index-Overriding-TMPDIR|Overriding TMPDIR]]</td><td>&nbsp;</td><td valign="top">[[cvs: Global options#Global options|Global options]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Overview#index-Overview|Overview]]</td><td>&nbsp;</td><td valign="top">[[cvs: Overview#Overview|Overview]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Special Files#index-Ownership_002c-saving-in-CVS|Ownership, saving in CVS]]</td><td>&nbsp;</td><td valign="top">[[cvs: Special Files#Special Files|Special Files]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-P"></div>P</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Multiple repositories#index-Parallel-repositories|Parallel repositories]]</td><td>&nbsp;</td><td valign="top">[[cvs: Multiple repositories#Multiple repositories|Multiple repositories]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Setting up the server for password authentication#index-passwd-_0028admin-file_0029|passwd (admin file)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Setting up the server for password authentication#Setting up the server for password authentication|Setting up the server for password authentication]]</td></tr>
@@ -529,7 +586,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Setting up the server for password authentication#index-pserver-_0028client_002fserver-connection-method_0029_002c-port-specification-1|pserver (client/server connection method), port specification]]</td><td>&nbsp;</td><td valign="top">[[cvs: Setting up the server for password authentication#Setting up the server for password authentication|Setting up the server for password authentication]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Setting up the server for password authentication#index-pserver-_0028subcommand_0029|pserver (subcommand)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Setting up the server for password authentication#Setting up the server for password authentication|Setting up the server for password authentication]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Creating Files From Other Version Control Systems#index-PVCS_002c-importing-files-from|PVCS, importing files from]]</td><td>&nbsp;</td><td valign="top">[[cvs: Creating Files From Other Version Control Systems#Creating Files From Other Version Control Systems|Creating Files From Other Version Control Systems]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-R"></div>R</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Where files are stored within the repository#index-RCS-history-files|RCS history files]]</td><td>&nbsp;</td><td valign="top">[[cvs: Where files are stored within the repository#Where files are stored within the repository|Where files are stored within the repository]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Tags-Symbolic revisions#index-RCS-revision-numbers|RCS revision numbers]]</td><td>&nbsp;</td><td valign="top">[[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revisions|Tags&ndash;Symbolic revisions]]</td></tr>
@@ -607,7 +666,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Connecting with rsh#index-rsh-replacements-_0028Kerberized_002c-SSH_002c-_0026c_0029|rsh replacements (Kerberized, SSH, &amp;c)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Connecting with rsh#Connecting with rsh|Connecting with rsh]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Specifying what to tag by date or revision#index-rtag-_0028subcommand_0029|rtag (subcommand)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision|Specifying what to tag by date or revision]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Creating a branch#index-rtag-_0028subcommand_0029_002c-creating-a-branch-using|rtag (subcommand), creating a branch using]]</td><td>&nbsp;</td><td valign="top">[[cvs: Creating a branch#Creating a branch|Creating a branch]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-S"></div>S</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: admin options#index-Saving-space|Saving space]]</td><td>&nbsp;</td><td valign="top">[[cvs: admin options#admin options|admin options]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Creating Files From Other Version Control Systems#index-SCCS_002c-importing-files-from|SCCS, importing files from]]</td><td>&nbsp;</td><td valign="top">[[cvs: Creating Files From Other Version Control Systems#Creating Files From Other Version Control Systems|Creating Files From Other Version Control Systems]]</td></tr>
@@ -646,7 +707,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Tags-Symbolic revisions#index-Symbolic-name-_0028tag_0029|Symbolic name (tag)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Tags-Symbolic revisions#Tags&ndash;Symbolic revisions|Tags&ndash;Symbolic revisions]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: The common syntax#index-Syntax-of-info-files|Syntax of info files]]</td><td>&nbsp;</td><td valign="top">[[cvs: The common syntax#The common syntax|The common syntax]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: The CVSROOT%47config configuration file#index-SystemAuth_002c-in-CVSROOT_002fconfig|SystemAuth, in CVSROOT/config]]</td><td>&nbsp;</td><td valign="top">[[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|The CVSROOT/config configuration file]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-T"></div>T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Specifying what to tag from the working directory#index-tag-_0028subcommand_0029|tag (subcommand)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Specifying what to tag from the working directory#Specifying what to tag from the working directory|Specifying what to tag from the working directory]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Creating a branch#index-tag-_0028subcommand_0029_002c-creating-a-branch-using|tag (subcommand), creating a branch using]]</td><td>&nbsp;</td><td valign="top">[[cvs: Creating a branch#Creating a branch|Creating a branch]]</td></tr>
@@ -683,7 +746,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Several developers simultaneously attempting to run CVS#index-Transactions_002c-atomic_002c-lack-of|Transactions, atomic, lack of]]</td><td>&nbsp;</td><td valign="top">[[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Several developers simultaneously attempting to run CVS]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: A sample session#index-Trivial-Compiler-_0028example_0029|Trivial Compiler (example)]]</td><td>&nbsp;</td><td valign="top">[[cvs: A sample session#A sample session|A sample session]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: The Repository#index-Typical-repository|Typical repository]]</td><td>&nbsp;</td><td valign="top">[[cvs: The Repository#The Repository|The Repository]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-U"></div>U</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: File permissions#index-Umask_002c-for-repository-files|Umask, for repository files]]</td><td>&nbsp;</td><td valign="top">[[cvs: File permissions#File permissions|File permissions]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Merging differences between any two revisions#index-Undoing-a-change|Undoing a change]]</td><td>&nbsp;</td><td valign="top">[[cvs: Merging differences between any two revisions#Merging differences between any two revisions|Merging differences between any two revisions]]</td></tr>
@@ -703,7 +768,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: admin--Administration#index-UserAdminOptions_002c-in-CVSROOT_002fconfig|UserAdminOptions, in CVSROOT/config]]</td><td>&nbsp;</td><td valign="top">[[cvs: admin--Administration#admin&mdash;Administration|admin&mdash;Administration]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: The CVSROOT%47config configuration file#index-UserAdminOptions_002c-in-CVSROOT_002fconfig-1|UserAdminOptions, in CVSROOT/config]]</td><td>&nbsp;</td><td valign="top">[[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|The CVSROOT/config configuration file]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Telling CVS to notify you#index-users-_0028admin-file_0029|users (admin file)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Telling CVS to notify you#Telling CVS to notify you|Telling CVS to notify you]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-V"></div>V</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Expansions in administrative files#index-Variables|Variables]]</td><td>&nbsp;</td><td valign="top">[[cvs: Expansions in administrative files#Expansions in administrative files|Expansions in administrative files]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Tracking third-party sources#index-Vendor|Vendor]]</td><td>&nbsp;</td><td valign="top">[[cvs: Tracking third-party sources#Tracking third-party sources|Tracking third-party sources]]</td></tr>
@@ -718,7 +785,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Committing your changes#index-VISUAL_002c-environment-variable|VISUAL, environment variable]]</td><td>&nbsp;</td><td valign="top">[[cvs: Committing your changes#Committing your changes|Committing your changes]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: All environment variables which affect CVS#index-VISUAL_002c-environment-variable-1|VISUAL, environment variable]]</td><td>&nbsp;</td><td valign="top">[[cvs: All environment variables which affect CVS#All environment variables which affect CVS|All environment variables which affect CVS]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Expansions in administrative files#index-VISUAL_002c-internal-variable|VISUAL, internal variable]]</td><td>&nbsp;</td><td valign="top">[[cvs: Expansions in administrative files#Expansions in administrative files|Expansions in administrative files]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-W"></div>W</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Telling CVS to notify you#index-watch-add-_0028subcommand_0029|watch add (subcommand)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Telling CVS to notify you#Telling CVS to notify you|Telling CVS to notify you]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Telling CVS to watch certain files#index-watch-off-_0028subcommand_0029|watch off (subcommand)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Telling CVS to watch certain files#Telling CVS to watch certain files|Telling CVS to watch certain files]]</td></tr>
@@ -739,15 +808,21 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <tr><td></td><td valign="top">[[cvs: Cleaning up#index-Working-copy_002c-removing|Working copy, removing]]</td><td>&nbsp;</td><td valign="top">[[cvs: Cleaning up#Cleaning up|Cleaning up]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: The cvswrappers file#index-Wrappers|Wrappers]]</td><td>&nbsp;</td><td valign="top">[[cvs: The cvswrappers file#The cvswrappers file|The cvswrappers file]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Read-only repository access#index-writers-_0028admin-file_0029|writers (admin file)]]</td><td>&nbsp;</td><td valign="top">[[cvs: Read-only repository access#Read-only repository access|Read-only repository access]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-X"></div>X</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Dealing with bugs in CVS or this manual#index-Ximbiot|Ximbiot]]</td><td>&nbsp;</td><td valign="top">[[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|Dealing with bugs in CVS or this manual]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: Setting up the server for password authentication#index-xinetd_002c-configuring-for-pserver|xinetd, configuring for pserver]]</td><td>&nbsp;</td><td valign="top">[[cvs: Setting up the server for password authentication#Setting up the server for password authentication|Setting up the server for password authentication]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 <tr><th><div id="Index-1_cp_letter-Z"></div>Z</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[cvs: Common command options#index-Zone_002c-time_002c-in-input|Zone, time, in input]]</td><td>&nbsp;</td><td valign="top">[[cvs: Common command options#Common command options|Common command options]]</td></tr>
 <tr><td></td><td valign="top">[[cvs: log--Print out log information for files#index-Zone_002c-time_002c-in-output|Zone, time, in output]]</td><td>&nbsp;</td><td valign="top">[[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log&mdash;Print out log information for files]]</td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
 </table>
 <table cellpadding="1" cellspacing="1" border="0"><tr><th valign="top">Jump to:</th>
 <td>[[#Index-1_cp_symbol-1|<b>!</b>]]</td>
@@ -785,6 +860,7 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 <td>[[#Index-1_cp_letter-W|<b>W</b>]]</td>
 <td>[[#Index-1_cp_letter-X|<b>X</b>]]</td>
 <td>[[#Index-1_cp_letter-Z|<b>Z</b>]]</td>
+</tr></table>
 
 <div id="SEC_Overview"></div>
 == Short Table of Contents ==
@@ -1102,7 +1178,9 @@ Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CV
 </div>
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]], Up: [[cvs#Top|Top]] &nbsp; |[[#SEC_Contents|Contents]]||[[#Index|Index]]|</p>

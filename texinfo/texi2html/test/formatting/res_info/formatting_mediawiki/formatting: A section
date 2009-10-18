@@ -1,0 +1,22 @@
+<div id="s_002d_002dect_002cion"></div>
+<div class="header">
+<p>
+Up: [[formatting: chapter#chapter|chapter]] &nbsp; |[[formatting: chapter 2#SEC_Contents|Contents]]||[[formatting#Top section|Index]]|</p>
+</div>
+
+----
+
+<div id="A-section"></div>
+=== A section ===
+
+<div class="menu-preformatted" style="font-family: serif">
+ [[formatting: subsection#subsection|&bull; subsection]]:: 
+ 
+</div>
+<div class="menu-preformatted" style="font-family: serif">
+ In detailmenu
+ 
+ [[formatting: subsubsection "simple-double-three--four---"#subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;|&bull; subsubsection ``simple-double--three---four----<nowiki>''</nowiki>]]::
+</div>
+
+This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -2841,7 +2841,7 @@ case if it is in @code{@@sc}. This function should also take care
 of protecting special characters
 
 
-@deftypefn {Function Reference} $processed_text normal_text $text $in_raw_text $in_preformatted $in_code $in_simple $command_stack 
+@deftypefn {Function Reference} $processed_text normal_text $text $in_raw_text $in_preformatted $in_code $in_math $in_simple $command_stack 
 The function processes @var{$text} and returns @var{$processed_text}. 
 The other arguments give some information about the context of the text.
 @var{$in_raw_text} is true if the text appears in special place where
@@ -2849,7 +2849,8 @@ there is no formatting, typically in comments. @var{$in_preformatted}
 is true if in a preformatted environemnt, and @var{$in_code} is true
 if in a special command like @code{@@code}, @code{@@env} where
 @samp{---}, @samp{--}, @samp{``} and @samp{''} should not be
-touched. @var{$in_simple} is true if in string context.
+touched. @var{$in_math} is true if in @code{@@math}.
+@var{$in_simple} is true if in string context.
  @var{$command_stack} is an array containing the name of the 
 formatting @@-command that enclose the text.  
 
@@ -4634,6 +4635,8 @@ things should be directly done in element_heading.
   %things_map/%pre_map/%simple_format_simple_map_texi, 
   $OPEN_QUOTE_SYMBOL and $CLOSE_QUOTE_SYMBOL.
   %iso_symbols is unused now.
+@item change in the normal_text function reference API, now there is an 
+  input variable true if in @@math.
 @end itemize
 @item API changes between 1.78 and 1.80: 
 @itemize @bullet

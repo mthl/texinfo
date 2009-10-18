@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Creating Files From Other Version Control Systems#Creating Files From Other Version Control Systems|From other version control systems]], Up: [[cvs: Setting up the files#Setting up the files|Setting up the files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Creating-a-directory-tree-from-a-number-of-files"></div>
 ==== Creating a directory tree from a number of files ====
 <div id="index-Importing-files"></div>
@@ -60,7 +62,9 @@ If some of the files you want to import are binary, you
 may want to use the wrappers features to specify which
 files are binary and which are not.  See [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]].
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Creating Files From Other Version Control Systems#Creating Files From Other Version Control Systems|From other version control systems]], Up: [[cvs: Setting up the files#Setting up the files|Setting up the files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

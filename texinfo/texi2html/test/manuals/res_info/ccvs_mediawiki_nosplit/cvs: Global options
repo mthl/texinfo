@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Common command options#Common command options|Common options]], Previous: [[cvs: Default options and the ~%47.cvsrc file#Default options and the ~/.cvsrc file|~/.cvsrc]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Global-options-1"></div>
 === Global options ===
 <div id="index-Options_002c-global"></div>
@@ -99,7 +101,9 @@ left of &lsquo;<code>cvs_command</code>&rsquo;) are:
 : Set the compression level. Valid levels are 1 (high speed, low compression) to 9 (low speed, high compression), or 0 to disable compression (the default). Only has an effect on the <small>CVS</small> client.
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Common command options#Common command options|Common options]], Previous: [[cvs: Default options and the ~%47.cvsrc file#Default options and the ~/.cvsrc file|~/.cvsrc]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

@@ -1056,7 +1056,7 @@ Jordan normal form of M :
      ==> 0,  0,  0,   0,   0,   0,   0,0,    0,    13/10,0,   
      ==> 0,  0,  0,   0,   0,   0,   0,0,    0,    0,    13/10
 
-Now, we compute the V-filtration on H"/H'  and the spectrum:
+Now, we compute the V-filtration on H''/H'  and the spectrum:
        LIB "gaussman.lib";
        ring R=0,(x,y),ds;
        poly f=x5+x2y2+y5;
@@ -1103,8 +1103,8 @@ Now, we compute the V-filtration on H"/H'  and the spectrum:
      ==> x,
      ==> 1
 Here `l[1]' contains the spectral numbers, `l[2]' the corresponding
-multiplicities, `l[3]' a C -basis of the V-filtration on H"/H'  in terms
-of the monomial basis of O/J_f~=H"/H' in `l[4]'.
+multiplicities, `l[3]' a C -basis of the V-filtration on H''/H'  in
+terms of the monomial basis of O/J_f~=H"/H' in `l[4]'.
 
 If the principal part of f is C-nondegenerate, one can compute the
 spectrum using the library `spectrum.lib'.  In this case, the

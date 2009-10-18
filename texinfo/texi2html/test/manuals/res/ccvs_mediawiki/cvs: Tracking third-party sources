@@ -55,7 +55,9 @@ revision.
  [[#Multiple vendor branches|&bull; Multiple vendor branches]]::    What if you get sources from several places?
 </div>
 
-<hr>
+
+----
+
 <div id="First-import"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking third-party sources| &lt;&lt; ]]|</td>
@@ -111,7 +113,9 @@ The vendor tag is named &lsquo;<code>FSF_DIST</code>&rsquo; in the above
 example, and the only release tag assigned is
 &lsquo;<code>WDIFF_0_04</code>&rsquo;.
 
-<hr>
+
+----
+
 <div id="Update-imports"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking third-party sources| &lt;&lt; ]]|</td>
@@ -174,7 +178,9 @@ that were removed between the two vendor releases and mark them for
 removal.  Since <code>import</code> has no way to detect removed files, you
 should do a merge like this even if <code>import</code> doesn&rsquo;t tell you to.
 
-<hr>
+
+----
+
 <div id="Reverting-local-changes"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking third-party sources| &lt;&lt; ]]|</td>
@@ -211,7 +217,9 @@ you would type:
 You must specify the &lsquo;<code>-bWDIFF</code>&rsquo; without any space
 after the &lsquo;<code>-b</code>&rsquo;.  See section [[cvs: Guide to CVS commands#admin options|admin options]].
 
-<hr>
+
+----
+
 <div id="Binary-files-in-imports"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking third-party sources| &lt;&lt; ]]|</td>
@@ -234,7 +242,9 @@ after the &lsquo;<code>-b</code>&rsquo;.  See section [[cvs: Guide to CVS comman
 Use the &lsquo;<code>-k</code>&rsquo; wrapper option to tell import which
 files are binary.  See section [[cvs: Reference manual for Administrative files#The cvswrappers file|The cvswrappers file]].
 
-<hr>
+
+----
+
 <div id="Keywords-in-imports"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking third-party sources| &lt;&lt; ]]|</td>
@@ -275,7 +285,9 @@ selective you&rsquo;ll have to think about what you want
 and use the &lsquo;<code>-k</code>&rsquo; option to <code>cvs update</code> or
 <code>cvs admin</code> as appropriate.
 
-<hr>
+
+----
+
 <div id="Multiple-vendor-branches"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking third-party sources| &lt;&lt; ]]|</td>
@@ -340,7 +352,9 @@ discover such a use, don&rsquo;t.  <small>CVS</small> is likely to make this
 an error in some future release.
 
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Tracking third-party sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs: How your build system interacts with CVS#How your build system interacts with CVS| &gt;&gt; ]]|</td>

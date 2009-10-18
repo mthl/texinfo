@@ -3,7 +3,9 @@
 <p>
 Previous: [[cvs: Line group formats#Line group formats|Line group formats]], Up: [[cvs: diff options#diff options|diff options]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Line-formats-1"></div>
 ===== Line formats =====
 
@@ -97,7 +99,9 @@ to get fine control over <code>diff</code>&rsquo;s output.
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[cvs: Line group formats#Line group formats|Line group formats]], Up: [[cvs: diff options#diff options|diff options]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

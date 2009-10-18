@@ -42,7 +42,9 @@ numeric revision in each file.
  [[#Sticky tags|&bull; Sticky tags]]::                 Certain tags are persistent
 </div>
 
-<hr>
+
+----
+
 <div id="Revision-numbers"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
@@ -92,7 +94,9 @@ revisions represent revisions on branches
 (see section [[cvs: Branching and merging#Branching and merging|Branching and merging]]); such revision numbers
 are explained in detail in [[cvs: Branching and merging#Branches and revisions|Branches and revisions]].
 
-<hr>
+
+----
+
 <div id="Versions-revisions-releases"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
@@ -125,7 +129,9 @@ in this document, and versions in the second sense are
 called <em>releases</em>.  To avoid confusion, the word
 <em>version</em> is almost never used in this document.
 
-<hr>
+
+----
+
 <div id="Assigning-revisions"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
@@ -184,7 +190,9 @@ revision 3.0 exists, you cannot &lsquo;<code>cvs commit
 -r 1.3</code>&rsquo;.  If you want to maintain several releases in
 parallel, you need to use a branch (see section [[cvs: Branching and merging#Branching and merging|Branching and merging]]).
 
-<hr>
+
+----
+
 <div id="Tags"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
@@ -371,7 +379,9 @@ like this:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="Tagging-the-working-directory"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
@@ -422,7 +432,9 @@ error before it tags any files:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="Tagging-by-date_002ftag"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
@@ -477,7 +489,9 @@ rtag</code>.  The exceptions might be cases like:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="Modifying-tags"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
@@ -591,7 +605,9 @@ same files as the old tag.  For example:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="Tagging-add_002fremove"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
@@ -643,7 +659,9 @@ the old revision, rather than reflecting the fact that
 the file had been removed.  I don&rsquo;t think this is
 necessary if &lsquo;<code>-r</code>&rsquo; is specified, as noted above.
 
-<hr>
+
+----
+
 <div id="Sticky-tags"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
@@ -750,7 +768,9 @@ how to undo a previous checkin (in this example, put
 &lsquo;<code>-j</code>&rsquo; option to <code>update</code>; for further
 discussion see [[cvs: Branching and merging#Merging differences between any two revisions|Merging differences between any two revisions]].
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Revisions| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs: Branching and merging#Branching and merging| &gt;&gt; ]]|</td>

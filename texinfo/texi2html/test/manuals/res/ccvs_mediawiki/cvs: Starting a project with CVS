@@ -35,7 +35,9 @@ What to do next depends on the situation at hand.
  [[#Defining the module|&bull; Defining the module]]::         How to make a module of the files
 </div>
 
-<hr>
+
+----
+
 <div id="Setting-up-the-files"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting a project with CVS| &lt;&lt; ]]|</td>
@@ -66,7 +68,9 @@ be done in a couple of different ways.
  [[#Creating a directory tree from scratch|&bull; From scratch]]::                Creating a directory tree from scratch.
 </div>
 
-<hr>
+
+----
+
 <div id="From-files"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting a project with CVS| &lt;&lt; ]]|</td>
@@ -139,7 +143,9 @@ If some of the files you want to import are binary, you
 may want to use the wrappers features to specify which
 files are binary and which are not.  See section [[cvs: Reference manual for Administrative files#The cvswrappers file|The cvswrappers file]].
 
-<hr>
+
+----
+
 <div id="From-other-version-control-systems"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting a project with CVS| &lt;&lt; ]]|</td>
@@ -185,7 +191,9 @@ files.
 ;From PVCS
 : There is a script in the &lsquo;<tt>contrib</tt>&rsquo; directory of the <small>CVS</small> source distribution called &lsquo;<tt>pvcs_to_rcs</tt>&rsquo; which converts <small>PVCS</small> archives to <small>RCS</small> files. You must run it on a machine which has both <small>PVCS</small> and <small>RCS</small> installed, and like everything else in contrib it is unsupported (your mileage may vary).  See the comments in the script for details.
 
-<hr>
+
+----
+
 <div id="From-scratch"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting a project with CVS| &lt;&lt; ]]|</td>
@@ -231,7 +239,9 @@ as they appear.
 Check that the permissions <small>CVS</small> sets on the
 directories inside <code>$CVSROOT</code> are reasonable.
 
-<hr>
+
+----
+
 <div id="Defining-the-module"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting a project with CVS| &lt;&lt; ]]|</td>
@@ -296,7 +306,9 @@ In simple cases these steps are sufficient to define a module.
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Starting a project with CVS| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs: Revisions#Revisions| &gt;&gt; ]]|</td>

@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Magic branch numbers#Magic branch numbers|Magic branch numbers]], Previous: [[cvs: Accessing branches#Accessing branches|Accessing branches]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Branches-and-revisions-1"></div>
 === Branches and revisions ===
 <div id="index-Branch-number-1"></div>
@@ -74,7 +76,9 @@ numbered 6.4.2.  All branch numbers ending in a zero
 (see [[cvs: Magic branch numbers#Magic branch numbers|Magic branch numbers]]).  The branch 1.1.1 has a
 special meaning.  See [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]].
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Magic branch numbers#Magic branch numbers|Magic branch numbers]], Previous: [[cvs: Accessing branches#Accessing branches|Accessing branches]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

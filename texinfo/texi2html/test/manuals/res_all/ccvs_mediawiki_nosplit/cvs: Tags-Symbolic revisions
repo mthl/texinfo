@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Specifying what to tag from the working directory#Specifying what to tag from the working directory|Tagging the working directory]], Previous: [[cvs: Assigning revisions#Assigning revisions|Assigning revisions]], Up: [[cvs: Revisions#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Tags_002d_002dSymbolic-revisions"></div>
 === Tags&ndash;Symbolic revisions ===
 <div id="index-Tags"></div>
@@ -174,7 +176,9 @@ like this:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Specifying what to tag from the working directory#Specifying what to tag from the working directory|Tagging the working directory]], Previous: [[cvs: Assigning revisions#Assigning revisions|Assigning revisions]], Up: [[cvs: Revisions#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

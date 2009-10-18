@@ -728,7 +728,9 @@ Commands, command options, and command arguments:
 :: Operate recursively (default).  See [[cvs: Recursive behavior#Recursive behavior|Recursive behavior]].
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]], Previous: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

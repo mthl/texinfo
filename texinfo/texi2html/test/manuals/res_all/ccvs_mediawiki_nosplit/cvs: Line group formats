@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Line formats#Line formats|Line formats]], Up: [[cvs: diff options#diff options|diff options]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Line-group-formats-1"></div>
 ===== Line group formats =====
 
@@ -136,7 +138,9 @@ following forms.
 
 : For example, &lsquo;<code>%(N=0?no:%dN) line%(N=1?:s)</code>&rsquo; is equivalent to &lsquo;<code>no lines</code>&rsquo; if <var>N</var> (the number of lines in the group in the new file) is 0, to &lsquo;<code>1 line</code>&rsquo; if <var>N</var> is 1, and to &lsquo;<code>%dN lines</code>&rsquo; otherwise.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Line formats#Line formats|Line formats]], Up: [[cvs: diff options#diff options|diff options]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

@@ -46,7 +46,9 @@ a new revision of the file.
  [[#Problems with the $ Log$ keyword.|&bull; Log keyword]]::                    Problems with the $<i></i>Log$ keyword.
 </div>
 
-<hr>
+
+----
+
 <div id="Keyword-list"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword substitution| &lt;&lt; ]]|</td>
@@ -153,7 +155,9 @@ This is a list of the keywords:
 : All keyword expansion except the local keyword may be disabled using the <code>KeywordExpansion</code> option in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file&mdash;see  [[#Configuring Keyord Expansion|Configuring Keyord Expansion]] for more details.
 
 
-<hr>
+
+----
+
 <div id="Using-keywords"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword substitution| &lt;&lt; ]]|</td>
@@ -222,7 +226,9 @@ magic <small>SCCS</small> phrase, like this:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div id="Avoiding-substitution"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword substitution| &lt;&lt; ]]|</td>
@@ -269,7 +275,9 @@ for more details. This feature is intended primarily
 for use with the <code>LocalKeyword</code> option&ndash;see
 [[#Keyword List|Keyword List]].
 
-<hr>
+
+----
+
 <div id="Substitution-modes"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword substitution| &lt;&lt; ]]|</td>
@@ -324,7 +332,9 @@ The modes available are:
 : One often would like to use &lsquo;<code>-kv</code>&rsquo; with <code>cvs export</code>&mdash;see section [[cvs: Guide to CVS commands#export&mdash;Export sources from CVS, similar to checkout|export&mdash;Export sources from CVS, similar to checkout]].  But be aware that doesn&rsquo;t handle an export containing binary files correctly.
 
 
-<hr>
+
+----
+
 <div id="Configuring-keyword-expansion"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword substitution| &lt;&lt; ]]|</td>
@@ -437,7 +447,9 @@ implemented these features using <code>tag=</code> and
 <code>tagexpand=</code> keywords and those keywords are NOT
 recognized.
 
-<hr>
+
+----
+
 <div id="Log-keyword"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword substitution| &lt;&lt; ]]|</td>
@@ -483,7 +495,9 @@ not in the files header, if it is to be used at all.
 That way the long list of change messages will not
 interfere with everyday source file browsing.
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Keyword substitution| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs: Tracking third-party sources#Tracking third-party sources| &gt;&gt; ]]|</td>

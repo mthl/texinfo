@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: How the modules file "program options" programs are run#How the modules file &ldquo;program options&rdquo; programs are run|Module program options]], Previous: [[cvs: Excluding directories#Excluding directories|Excluding directories]], Up: [[cvs: The modules file#The modules file|modules]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Module-options-1"></div>
 ==== Module options ====
 <div id="index-Options_002c-in-modules-file"></div>
@@ -41,7 +43,9 @@ You should also see see [[cvs: How the modules file "program options" programs a
 &ldquo;program options&rdquo; programs are run.
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: How the modules file "program options" programs are run#How the modules file &ldquo;program options&rdquo; programs are run|Module program options]], Previous: [[cvs: Excluding directories#Excluding directories|Excluding directories]], Up: [[cvs: The modules file#The modules file|modules]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

@@ -1,0 +1,2641 @@
+<div id="Top"></div>
+<div class="header">
+<p>
+Next: [[formatting: chapter#chapter|chapter]], Up: [../dir/index.#Top (dir)] &nbsp; |[[formatting: chapter 2#SEC_Contents|Contents]]||[[#Top section|Index]]|</p>
+</div>
+
+----
+
+<div id="Top-section"></div>
+== Top section ==
+
+<div class="menu-preformatted" style="font-family: serif">
+ [[formatting: chapter#chapter|&bull; chapter]]::               chapter
+ 
+ Menu comment
+ 
+ [[formatting: chapter 2#chapter 2|&bull; description:chapter2]].   Chapter 2
+</div>
+
+
+
+
+Insertcopying in normal text
+In copying
+
+&lt;
+&gt;
+&quot;
+&amp;
+&rsquo;
+&lsquo;
+
+&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;<br>
+code: <code>``simple-double--three---four----<nowiki>''</nowiki></code> <br>
+asis: &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; <br>
+strong: '''&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;''' <br>
+kbd: <code>``simple-double--three---four----<nowiki>''</nowiki></code> <br>
+
+&lsquo;&lsquo;simple-double--three&mdash;four&mdash;-&rsquo;&rsquo;<br>
+
+
+@&quot;u &uuml; 
+@&quot;{U} &Uuml; 
+@~n &ntilde;
+@^a &acirc;
+@&rsquo;e &eacute;
+@=o &#333;
+@&lsquo;i &igrave;
+@&rsquo;{e} &eacute;
+@&rsquo;{@dotless{i}} &iacute; 
+@dotless{i} i
+@dotless{j} j
+@&lsquo;{@=E} &#274;` 
+@l{} &#322;
+@,{@&rsquo;C} &#262;,
+@,c &ccedil;
+@,c@&quot;u &ccedil;&uuml; <br>
+
+@* <br>
+@ followed by a space
+&nbsp;
+@ followed by a tab
+&nbsp;
+@ followed by a new line
+&nbsp;<code>@-</code> 
+<code>@|</code> 
+<code>@:</code> 
+<code>@!</code> !
+<code>@?</code> ?
+<code>@.</code> .
+<code>@@</code> @
+<code>@}</code> }
+<code>@{</code> {
+<code>@/</code> 
+
+foo vs. bar. 
+colon :And something else.
+semi colon ;.
+And ? ?.
+Now ! !@
+but , ,
+
+@TeX TeX
+@LaTeX LaTeX
+@bullet &bull;
+@copyright &copy;
+@dots &hellip;
+@enddots <small class="enddots">...</small>
+@equiv &equiv;
+@error error--&gt;
+@expansion &rarr;
+@minus -
+@point &lowast;
+@print -|
+@result &rArr;
+@today a sunny day
+@aa &aring;
+@AA &Aring;
+@ae &aelig;
+@oe &oelig;
+@AE &AElig;
+@OE &OElig;
+@o &oslash;
+@O &Oslash;
+@ss &szlig;
+@l &#322;
+@L &#321;
+@DH &ETH;
+@TH &THORN;
+@dh &eth;
+@th &thorn
+@exclamdown &iexcl;
+@questiondown &iquest;
+@pounds &pound;
+@registeredsymbol &reg;
+@ordf &ordf;
+@ordm &ordm;
+@comma ,
+@quotedblleft &ldquo;
+@quotedblright &rdquo;
+@quoteleft &lsquo;
+@quoteright &rsquo;
+@quotedblbase &bdquo;
+@quotesinglbase &sbquo;
+@guillemetleft &laquo;
+@guillemetright &raquo;
+@guillemotleft &laquo;
+@guillemotright &raquo;
+@guilsinglleft &lsaquo;
+@guilsinglright &rsaquo;
+@textdegree &deg;
+@euro &euro;
+@arrow &rarr;
+@leq &le;
+@geq &ge;
+
+<code>@acronym{--a,an accronym}</code> &ndash;a (an accronym)
+<code>@acronym{--a}</code> &ndash;a
+<code>@abbr{@'E--. @comma{}A., @'Etude Autonome }</code> &Eacute;&ndash;. ,A. (&Eacute;tude Autonome)
+<code>@abbr{@'E--. @comma{}A.}</code> &Eacute;&ndash;. ,A.
+<code>@asis{--a}</code> &ndash;a
+<code>@b{--a}</code> <b>&ndash;a</b>
+<code>@cite{--a}</code> <cite>&ndash;a</cite>
+<code>@code{--a}</code> <code>--a</code>
+<code>@command{--a}</code> <code>--a</code>
+<code>@ctrl{--a}</code> &ndash;a
+<code>@dfn{--a}</code> <em>&ndash;a</em>
+<code>@dmn{--a}</code> &ndash;a
+<code>@email{--a,--b}</code> [mailto:--a &ndash;b]
+<code>@email{,--b}</code> &ndash;b
+<code>@email{--a}</code> [mailto:--a]
+<code>@emph{--a}</code> ''&ndash;a''
+<code>@env{--a}</code> <code>--a</code>
+<code>@file{--a}</code> &lsquo;<tt>--a</tt>&rsquo;
+<code>@i{--a}</code> <i>&ndash;a</i>
+<code>@kbd{--a}</code> <code>--a</code>
+<code>@key{--a}</code> &lt;--a&gt;
+<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>--a {\frac{1}{2}} -</math>
+<code>@option{--a}</code> &lsquo;<code>--a</code>&rsquo;
+<code>@r{--a}</code> <span class="roman" style="font-family:serif; font-weight:normal;">&ndash;a</span>
+<code>@samp{--a}</code> &lsquo;<code>--a</code>&rsquo;
+<code>@sc{--a}</code> <small>&ndash;A</small>
+<code>@strong{--a}</code> '''&ndash;a'''
+<code>@t{--a}</code> <tt>&ndash;a</tt>
+<code>@sansserif{--a}</code> <span class="sansserif" style="font-family:sans-serif; font-weight:normal;">&ndash;a</span>
+<code>@titlefont{--a}</code> == &ndash;a ==
+
+<code>@indicateurl{--a}</code> &lt;<code><nowiki>&ndash;a</nowiki></code>&gt;
+<code>@uref{--a,--b}</code> [--a &ndash;b]
+<code>@uref{--a}</code> [--a]
+<code>@uref{,--b}</code> &ndash;b
+<code>@uref{--a,--b,--c}</code> [--a &ndash;c]
+<code>@uref{,--b,--c}</code> &ndash;c
+<code>@uref{--a,,--c}</code> [--a &ndash;c]
+<code>@uref{,,--c}</code> &ndash;c
+<code>@url{--a,--b}</code> [--a &ndash;b]
+<code>@url{--a,}</code> [--a]
+<code>@url{,--b}</code> &ndash;b
+<code>@var{--a}</code> <var>&ndash;a</var>
+<code>@verb{:--a:}</code> <tt>--a</tt>
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <tt>a  &lt; &amp; @ % &quot; --    b</tt>
+<code>@w{}</code> 
+<code>@H{a}</code> a''
+<code>@H{--a}</code> &ndash;a''
+<code>@dotaccent{a}</code> &#551;
+<code>@dotaccent{--a}</code> &ndash;a.
+<code>@ringaccent{a}</code> &aring;
+<code>@ringaccent{--a}</code> &ndash;a*
+<code>@tieaccent{a}</code> a[
+<code>@tieaccent{--a}</code> &ndash;a[
+<code>@u{a}</code> &#259;
+<code>@u{--a}</code> &ndash;a(
+<code>@ubaraccent{a}</code> a_
+<code>@ubaraccent{--a}</code> &ndash;a_
+<code>@udotaccent{a}</code> &#7841;
+<code>@udotaccent{--a}</code> .&ndash;a
+<code>@v{a}</code> a&lt;
+<code>@v{--a}</code> &ndash;a&lt;
+<code>@,{c}</code> &ccedil;
+<code>@,{--c}</code> &ndash;c,
+<code>@ogonek{a}</code> &#261;
+<code>@ogonek{--a}</code> &ndash;a;
+<code>@footnote{in footnote}</code> <ref>in footnote
+</ref>
+<code>@footnote{in footnote2}</code> <ref>in footnote2
+</ref>
+
+<code>@image{f--ile}</code> [[Image:f--ile.png]]
+<code>@image{f--ile,l--i}</code> [[Image:f--ile.png]]
+<code>@image{f--ile,,l--e}</code> [[Image:f--ile.png]]
+<code>@image{f--ile,,,alt}</code> [[Image:f--ile.png|alt=alt]]
+<code>@image{f--ile,,,,e-d-xt}</code> [[Image:f--ile.e--xt]]
+<code>@image{f--ile,aze,az,alt,e--xt}</code> [[Image:f--ile.e--xt|alt=alt]]
+<code>@image{f-ile,aze,,a--lt}</code> [[Image:f-ile.jpg|alt=a&ndash;lt]]
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> [[Image:f--ile@..file ext e--xt}|alt=alt]]
+
+<br>
+<br>
+
+<code>@clicksequence{click @click{} A}</code> click &rarr; A
+After clickstyle &rArr;
+<code>@clicksequence{click @click{} A}</code> click &rArr; A
+
+<blockquote>A quot&mdash;ation
+</blockquote>
+
+<blockquote><b>Note:</b> A Note
+</blockquote>
+
+<blockquote><b>note:</b> A note
+</blockquote>
+
+<blockquote><b>Caution:</b> Caution
+</blockquote>
+
+<blockquote><b>Important:</b> Important
+</blockquote>
+
+<blockquote><b>Tip:</b> a Tip
+</blockquote>
+
+<blockquote><b>Warning:</b> a Warning.
+</blockquote>
+
+<blockquote><b>something &eacute; TeX:</b> The something &eacute; TeX is here.
+</blockquote>
+
+<blockquote><b>@ at the end of line </b> A @ at the end of the @quotation line.
+</blockquote>
+
+<blockquote><b>something, other thing:</b> something, other thing
+</blockquote>
+
+<blockquote><b>Note, the note:</b> Note, the note
+</blockquote>
+
+<blockquote></blockquote>
+
+<blockquote><b>Empty:</b> </blockquote>
+
+<blockquote><b>:</b> </blockquote>
+
+<blockquote><b><br>:</b> </blockquote>
+
+<blockquote class="smallquotation" style="font-size: smaller">A small quot&mdash;ation
+</blockquote>
+
+<blockquote class="smallquotation" style="font-size: smaller"><b>Note:</b> A small Note
+</blockquote>
+
+<blockquote class="smallquotation" style="font-size: smaller"><b>something, other thing:</b> something, other thing
+</blockquote>
+
+* i&ndash;temize
+
+* + i&ndash;tem +
+
+* b&ndash;ullet
+
+* minu&ndash;s
+
+* e&ndash;mph item
+
+* ''after emph'' e&ndash;mph item
+
+* &bull; a&ndash;n itemize line i&ndash;tem 1
+* &bull; a&ndash;n itemize line i&ndash;tem 2
+
+# e&ndash;numerate
+
+<table>
+<thead><tr><th width="600%">mu&ndash;ltitable headitem</th><th width="700%">another tab</th></tr></thead>
+<tr><td width="600%">mu&ndash;ltitable item</td><td width="700%">multitable tab</td></tr>
+<tr><td width="600%">mu&ndash;ltitable item 2</td><td width="700%">multitable tab 2</td></tr>
+<tr><td width="600%">lone mu&ndash;ltitable item</td></tr>
+</table>
+
+<table>
+<tr><td>truc</td><td>bidule</td></tr>
+</table>
+
+<table><tr><td>&nbsp;</td><td><div class="example">
+ e--xample  some
+    text
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="smallexample" style="font-size: smaller">
+ s--mallexample
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="display" style="font-family: serif">
+ d&ndash;isplay
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="smalldisplay" style="font-family: serif; font-size: smaller">
+ s&ndash;malldisplay
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="lisp">
+ l--isp
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="smalllisp" style="font-size: smaller">
+ s--malllisp
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="format" style="font-family: serif">
+ f&ndash;ormat
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="smallformat" style="font-family: serif; font-size: smaller">
+ s&ndash;mallformat
+</div>
+</td></tr></table>
+
+;c--ategory<nowiki>:</nowiki> <strong>d--effn_name</strong><em> a--rguments...</em>
+: d&ndash;effn
+
+;cate--gory<nowiki>:</nowiki> <strong>de--ffn_name</strong><em> ar--guments more args <br> even more so</em>
+: def&ndash;fn
+ 
+;fset<nowiki>:</nowiki> <strong><var>i</var></strong><em> a g</em>
+;cmde<nowiki>:</nowiki> <strong>truc</strong>
+;Command<nowiki>:</nowiki> <strong>log trap</strong>
+;Command<nowiki>:</nowiki> <strong> log trap1</strong>
+;Command<nowiki>:</nowiki> <strong>log trap2 </strong>
+;cmde<nowiki>:</nowiki> <strong><b>id ule</b></strong><em> truc</em>
+;cmde2<nowiki>:</nowiki> <strong><b>id &lsquo;<code>i</code>&rsquo; ule</b></strong><em> truc</em>
+;<b>id &lsquo;<code>i</code>&rsquo; ule</b><nowiki>:</nowiki>
+;<nowiki>:</nowiki>
+;aaa<nowiki>:</nowiki>
+;<nowiki>:</nowiki>
+;<nowiki>:</nowiki>
+;<nowiki>:</nowiki> <strong>machin</strong>
+;<nowiki>:</nowiki> <strong>bidule machin</strong>
+;truc<nowiki>:</nowiki> <strong>machin</strong>
+;truc<nowiki>:</nowiki>
+;truc<nowiki>:</nowiki> <strong>followed</strong><em> by a comment</em>
+;truc<nowiki>:</nowiki>
+;<nowiki>:</nowiki>
+;truc<nowiki>:</nowiki> <strong>a</strong><em> b c d e <b>f g</b> h i</em>
+;truc<nowiki>:</nowiki> <strong>deffnx</strong><em> before end deffn</em>
+
+;empty<nowiki>:</nowiki> <strong>deffn</strong>
+
+;empty<nowiki>:</nowiki> <strong>deffn</strong><em> with deffnx</em>
+;empty<nowiki>:</nowiki> <strong>deffnx</strong>
+
+;fset<nowiki>:</nowiki> <strong><var>i</var></strong><em> a g</em>
+;cmde<nowiki>:</nowiki> <strong>truc</strong>
+: text in def item for second def item
+
+;c--ategory<nowiki>:</nowiki> <strong>d--efvr_name</strong>
+: d&ndash;efvr
+
+;c--ategory<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypefn_name</strong><em> a--rguments...</em>
+: d&ndash;eftypefn
+
+;c--ategory on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypeop_name</strong><em> a--rguments...</em>
+: d&ndash;eftypeop
+
+;c--ategory<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypevr_name</strong>
+: d&ndash;eftypevr
+
+;c--ategory of c--lass<nowiki>:</nowiki> <strong>d--efcv_name</strong>
+: d&ndash;efcv
+
+;c--ategory on c--lass<nowiki>:</nowiki> <strong>d--efop_name</strong><em> a--rguments...</em>
+: d&ndash;efop
+
+;c--ategory<nowiki>:</nowiki> <strong>d--eftp_name</strong><em> a--ttributes...</em>
+: d&ndash;eftp
+
+;Function<nowiki>:</nowiki> <strong>d--efun_name</strong><em> a--rguments...</em>
+: d&ndash;efun
+
+;Macro<nowiki>:</nowiki> <strong>d--efmac_name</strong><em> a--rguments...</em>
+: d&ndash;efmac
+
+;Special Form<nowiki>:</nowiki> <strong>d--efspec_name</strong><em> a--rguments...</em>
+: d&ndash;efspec
+
+;Variable<nowiki>:</nowiki> <strong>d--efvar_name</strong><em> argvar argvar1</em>
+: d&ndash;efvar
+
+;User Option<nowiki>:</nowiki> <strong>d--efopt_name</strong>
+: d&ndash;efopt
+
+;Function<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypefun_name</strong><em> a--rguments...</em>
+: d&ndash;eftypefun
+
+;Variable<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypevar_name</strong>
+: d&ndash;eftypevar
+
+;Instance Variable of c--lass<nowiki>:</nowiki> <strong>d--efivar_name</strong>
+: d&ndash;efivar
+
+;Instance Variable of c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypeivar_name</strong>
+: d&ndash;eftypeivar
+
+;Method on c--lass<nowiki>:</nowiki> <strong>d--efmethod_name</strong><em> a--rguments...</em>
+: d&ndash;efmethod
+
+;Method on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypemethod_name</strong><em> a--rguments...</em>
+: d&ndash;eftypemethod
+
+<code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See [../file n---ame@@/c_002d_002d_002dhapter_0040.#c_002d_002d_002dhapter_0040 cross r&mdash;ef name@: (file n&mdash;ame@)c&mdash;hapter@] section &lsquo;t&mdash;itle@&rsquo; in <cite>ma&mdash;nual@</cite>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> [../file name/chapter.#chapter cross ref name: (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see [../file name/chapter.#chapter cross ref name: (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@inforef{chapter, cross ref name, file name}</code> See [../file name/chapter.#chapter cross ref name: (file name)chapter]
+
+<code>@ref{chapter}</code> [[formatting: chapter#chapter|chapter]]
+<code>@xref{chapter}</code> See [[formatting: chapter#chapter|chapter]].
+<code>@pxref{chapter}</code> see [[formatting: chapter#chapter|chapter]]
+<code>@ref{s--ect@comma{}ion}</code> [[formatting: A section#A section|s--ect,ion]]
+
+<code>@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
+[../a comma@comma{} in file/s_002d_002dect_002cion.#s_002d_002dect_002cion a , in cross ref: (a comma, in file)s&ndash;ect,ion] section &lsquo;a comma, in title&rsquo; in <cite>a , in manual name</cite>
+
+<code>@ref{chapter,cross ref name}</code> [[formatting: chapter#chapter|cross ref name]]
+<code>@ref{chapter,,title}</code> [[formatting: chapter#chapter|title]]
+<code>@ref{chapter,,,file name}</code> [../file name/chapter.#chapter (file name)chapter]
+<code>@ref{chapter,,,,manual}</code> section &lsquo;chapter&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title,}</code> [[formatting: chapter#chapter|title]]
+<code>@ref{chapter,cross ref name,,file name}</code> [../file name/chapter.#chapter cross ref name: (file name)chapter]
+<code>@ref{chapter,cross ref name,,,manual}</code> section &lsquo;chapter&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title,file name}</code> [../file name/chapter.#chapter cross ref name: (file name)chapter]
+<code>@ref{chapter,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> [../file name/chapter.#chapter cross ref name: (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,title,file name}</code> [../file name/chapter.#chapter (file name)chapter]
+<code>@ref{chapter,,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> [../file name/chapter.#chapter (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,,file name,manual}</code> [../file name/chapter.#chapter (file name)chapter] section &lsquo;chapter&rsquo; in <cite>manual</cite>
+
+
+<code>@ref{(pman)anode,cross ref name}</code> [../pman/anode.#anode cross ref name: (pman)anode]
+<code>@ref{(pman)anode,,title}</code> [../pman/anode.#anode (pman)anode]
+<code>@ref{(pman)anode,,,file name}</code> [../file name/anode.#anode (file name)anode]
+<code>@ref{(pman)anode,,,,manual}</code> [../pman/anode.#anode (pman)anode] section &lsquo;anode&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,}</code> [../pman/anode.#anode cross ref name: (pman)anode]
+<code>@ref{(pman)anode,cross ref name,,file name}</code> [../file name/anode.#anode cross ref name: (file name)anode]
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> [../pman/anode.#anode cross ref name: (pman)anode] section &lsquo;anode&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> [../file name/anode.#anode cross ref name: (file name)anode]
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> [../pman/anode.#anode cross ref name: (pman)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> [../file name/anode.#anode cross ref name: (file name)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,,title,file name}</code> [../file name/anode.#anode (file name)anode]
+<code>@ref{(pman)anode,,title,,manual}</code> [../pman/anode.#anode (pman)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,,title, file name, manual}</code> [../file name/anode.#anode (file name)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,,,file name,manual}</code> [../file name/anode.#anode (file name)anode] section &lsquo;anode&rsquo; in <cite>manual</cite>
+
+
+<code>@inforef{chapter, cross ref name, file name}</code> See [../file name/chapter.#chapter cross ref name: (file name)chapter]
+<code>@inforef{chapter}</code> 
+<code>@inforef{chapter, cross ref name}</code> 
+<code>@inforef{chapter,,file name}</code> See [../file name/chapter.#chapter (file name)chapter]
+<code>@inforef{node, cross ref name, file name}</code> See [../file name/node.#node cross ref name: (file name)node]
+<code>@inforef{node}</code> 
+<code>@inforef{node, cross ref name}</code> 
+<code>@inforef{node,,file name}</code> See [../file name/node.#node (file name)node]
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See [../file name, spurious arg/chapter.#chapter cross ref name: (file name, spurious arg)chapter]
+
+<code>@inforef{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in file}</code>
+See [../a comma@comma{} in file/s_002d_002dect_002cion.#s_002d_002dect_002cion a , in cross ref: (a comma, in file)s&ndash;ect,ion]
+
+
+;&bull; a
+: l&ndash;ine
+
+;a
+
+;b
+
+: l&ndash;ine
+
+;- a
+
+;- b
+
+: l&ndash;ine
+
+<table class="cartouche" border="1"><tr><td>
+c&ndash;artouche
+</td></tr></table>
+
+g&ndash;roupe
+
+<p align="left">f&ndash;lushleft
+</p>
+<p align="right">f&ndash;lushright
+</p>
+<p align="center">ce&ndash;ntered line
+</p>
+<pre class="verbatim">\input texinfo @c -*-texinfo-*-
+
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  &lt;&gt;.
+
+@bye
+</pre>
+<pre class="verbatim">in verbatim ''
+</pre>
+
+html ''
+
+
+<div id="t_h-copying_majorheading"></div>
+== majorheading ==
+
+<div id="t_h-copying_chapheading"></div>
+== chapheading ==
+
+<div id="t_h-copying_heading"></div>
+=== heading ===
+
+<div id="t_h-copying_subheading"></div>
+==== subheading ====
+
+<div id="t_h-copying_subsubheading"></div>
+===== subsubheading =====
+
+
+<code>@acronym{--a,an accronym @comma{} @enddots{}}</code> &ndash;a (an accronym , <small class="enddots">...</small>)
+<code>@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }</code> &Eacute;&ndash;. ,A. (&Eacute;tude&ndash;, <b>Autonome</b>)
+<code>@abbr{@'E--. @comma{}A.}</code> &Eacute;&ndash;. ,A.
+
+<code>@math{--a@minus{} {\frac{1}{2}}}</code> <math>--a- {\frac{1}{2}}</math>
+
+<code>@image{f-ile,,,alt@verb{:jk _&quot; %}}</code> [[Image:f-ile.jpg|alt=altjk _&quot; %@]]
+<code>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</code> [[Image:f--ile.e--xt|alt=jk _&quot; %@ in b &quot;]]
+<code>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</code> [[Image:filejk _&quot; %@.jpg|alt=altjk _&quot; %@]]
+
+
+
+
+Somehow invalid use of @,:<br>
+@, ,
+<br>
+@,@&quot;u @,&quot;u
+
+Invalid use of @&rsquo;:<br>
+@&rsquo; &rsquo;
+<br>
+@&rsquo;@&quot;u @'&quot;u
+
+@dotless{truc} truc
+@dotless{ij} ij
+<code>@dotless{--a}</code> &ndash;a
+<code>@dotless{a}</code> a
+
+@TeX, but without brace TeX
+
+<code>@#</code> @#
+
+<code>@w{--a}</code> &ndash;a
+
+<code>@image{,1--xt}</code> 
+<code>@image{,,2--xt}</code> 
+<code>@image{,,,3--xt}</code> 
+
+<br>
+
+* @emph after emph e&ndash;mph item
+
+* &bull; a&ndash;n itemize line i&ndash;tem 1
+* &bull; a&ndash;n itemize line i&ndash;tem 2
+
+;fun<nowiki>:</nowiki>
+;truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and </em>
+;truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and  after</em>
+;truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and {</em>
+;truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and { and after</em>
+;truc<nowiki>:</nowiki> <strong>followed</strong><em> by a comment</em>
+: Various deff lines
+;truc<nowiki>:</nowiki> <strong>after</strong><em> a deff item</em>
+
+<code>@ref{node}</code> @ref{node}
+
+<code>@ref{,cross ref name}</code> @ref{,cross ref name}
+<code>@ref{,,title}</code> @ref{,,title}
+<code>@ref{,,,file name}</code> [../file name/index.#Top (file name)]
+<code>@ref{,,,,manual}</code> <cite>manual</cite>
+<code>@ref{node,cross ref name}</code> @ref{node,cross ref name}
+<code>@ref{node,,title}</code> @ref{node,,title}
+<code>@ref{node,,,file name}</code> [../file name/node.#node (file name)node]
+<code>@ref{node,,,,manual}</code> section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref{node,cross ref name,title,}</code> @ref{node,cross ref name,title,}
+<code>@ref{node,cross ref name,,file name}</code> [../file name/node.#node cross ref name: (file name)node]
+<code>@ref{node,cross ref name,,,manual}</code> section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref{node,cross ref name,title,file name}</code> [../file name/node.#node cross ref name: (file name)node]
+<code>@ref{node,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{node,cross ref name,title, file name, manual}</code> [../file name/node.#node cross ref name: (file name)node] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{node,,title,file name}</code> [../file name/node.#node (file name)node]
+<code>@ref{node,,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> [../file name/chapter.#chapter (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{node,,title, file name, manual}</code> [../file name/node.#node (file name)node] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{node,,,file name,manual}</code> [../file name/node.#node (file name)node] section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref{,cross ref name,title,}</code> @ref{,cross ref name,title,}
+<code>@ref{,cross ref name,,file name}</code> [../file name/index.#Top cross ref name: (file name)]
+<code>@ref{,cross ref name,,,manual}</code> <cite>manual</cite>
+<code>@ref{,cross ref name,title,file name}</code> [../file name/index.#Top cross ref name: (file name)]
+<code>@ref{,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{,cross ref name,title, file name, manual}</code> [../file name/index.#Top cross ref name: (file name)] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{,,title,file name}</code> [../file name/index.#Top (file name)]
+<code>@ref{,,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{,,title, file name, manual}</code> [../file name/index.#Top (file name)] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{,,,file name,manual}</code> [../file name/index.#Top (file name)] <cite>manual</cite>
+
+<code>@inforef{,cross ref name }</code> 
+<code>@inforef{,,file name}</code> 
+<code>@inforef{,cross ref name, file name}</code> 
+<code>@inforef{}</code> 
+
+
+
+Normal text
+
+&lt;
+&gt;
+&quot;
+&amp;
+&rsquo;
+&lsquo;
+
+&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;<br>
+code: <code>``simple-double--three---four----<nowiki>''</nowiki></code> <br>
+asis: &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; <br>
+strong: '''&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;''' <br>
+kbd: <code>``simple-double--three---four----<nowiki>''</nowiki></code> <br>
+
+&lsquo;&lsquo;simple-double--three&mdash;four&mdash;-&rsquo;&rsquo;<br>
+
+<div id="index-_002d_002doption"></div>
+<div id="index-_0060_0060"></div>
+<div id="index-_0060_0060-1"></div>
+<div id="index-_002d_002dfoption"></div>
+
+@&quot;u &uuml; 
+@&quot;{U} &Uuml; 
+@~n &ntilde;
+@^a &acirc;
+@&rsquo;e &eacute;
+@=o &#333;
+@&lsquo;i &igrave;
+@&rsquo;{e} &eacute;
+@&rsquo;{@dotless{i}} &iacute; 
+@dotless{i} i
+@dotless{j} j
+@&lsquo;{@=E} &#274;` 
+@l{} &#322;
+@,{@&rsquo;C} &#262;,
+@,c &ccedil;
+@,c@&quot;u &ccedil;&uuml; <br>
+
+@* <br>
+@ followed by a space
+&nbsp;
+@ followed by a tab
+&nbsp;
+@ followed by a new line
+&nbsp;<code>@-</code> 
+<code>@|</code> 
+<code>@:</code> 
+<code>@!</code> !
+<code>@?</code> ?
+<code>@.</code> .
+<code>@@</code> @
+<code>@}</code> }
+<code>@{</code> {
+<code>@/</code> 
+
+foo vs. bar. 
+colon :And something else.
+semi colon ;.
+And ? ?.
+Now ! !@
+but , ,
+
+@TeX TeX
+@LaTeX LaTeX
+@bullet &bull;
+@copyright &copy;
+@dots &hellip;
+@enddots <small class="enddots">...</small>
+@equiv &equiv;
+@error error--&gt;
+@expansion &rarr;
+@minus -
+@point &lowast;
+@print -|
+@result &rArr;
+@today a sunny day
+@aa &aring;
+@AA &Aring;
+@ae &aelig;
+@oe &oelig;
+@AE &AElig;
+@OE &OElig;
+@o &oslash;
+@O &Oslash;
+@ss &szlig;
+@l &#322;
+@L &#321;
+@DH &ETH;
+@TH &THORN;
+@dh &eth;
+@th &thorn
+@exclamdown &iexcl;
+@questiondown &iquest;
+@pounds &pound;
+@registeredsymbol &reg;
+@ordf &ordf;
+@ordm &ordm;
+@comma ,
+@quotedblleft &ldquo;
+@quotedblright &rdquo;
+@quoteleft &lsquo;
+@quoteright &rsquo;
+@quotedblbase &bdquo;
+@quotesinglbase &sbquo;
+@guillemetleft &laquo;
+@guillemetright &raquo;
+@guillemotleft &laquo;
+@guillemotright &raquo;
+@guilsinglleft &lsaquo;
+@guilsinglright &rsaquo;
+@textdegree &deg;
+@euro &euro;
+@arrow &rarr;
+@leq &le;
+@geq &ge;
+
+<code>@acronym{--a,an accronym}</code> &ndash;a (an accronym)
+<code>@acronym{--a}</code> &ndash;a
+<code>@abbr{@'E--. @comma{}A., @'Etude Autonome }</code> &Eacute;&ndash;. ,A. (&Eacute;tude Autonome)
+<code>@abbr{@'E--. @comma{}A.}</code> &Eacute;&ndash;. ,A.
+<code>@asis{--a}</code> &ndash;a
+<code>@b{--a}</code> <b>&ndash;a</b>
+<code>@cite{--a}</code> <cite>&ndash;a</cite>
+<code>@code{--a}</code> <code>--a</code>
+<code>@command{--a}</code> <code>--a</code>
+<code>@ctrl{--a}</code> &ndash;a
+<code>@dfn{--a}</code> <em>&ndash;a</em>
+<code>@dmn{--a}</code> &ndash;a
+<code>@email{--a,--b}</code> [mailto:--a &ndash;b]
+<code>@email{,--b}</code> &ndash;b
+<code>@email{--a}</code> [mailto:--a]
+<code>@emph{--a}</code> ''&ndash;a''
+<code>@env{--a}</code> <code>--a</code>
+<code>@file{--a}</code> &lsquo;<tt>--a</tt>&rsquo;
+<code>@i{--a}</code> <i>&ndash;a</i>
+<code>@kbd{--a}</code> <code>--a</code>
+<code>@key{--a}</code> &lt;--a&gt;
+<code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>--a {\frac{1}{2}} -</math>
+<code>@option{--a}</code> &lsquo;<code>--a</code>&rsquo;
+<code>@r{--a}</code> <span class="roman" style="font-family:serif; font-weight:normal;">&ndash;a</span>
+<code>@samp{--a}</code> &lsquo;<code>--a</code>&rsquo;
+<code>@sc{--a}</code> <small>&ndash;A</small>
+<code>@strong{--a}</code> '''&ndash;a'''
+<code>@t{--a}</code> <tt>&ndash;a</tt>
+<code>@sansserif{--a}</code> <span class="sansserif" style="font-family:sans-serif; font-weight:normal;">&ndash;a</span>
+<code>@titlefont{--a}</code> == &ndash;a ==
+
+<code>@indicateurl{--a}</code> &lt;<code><nowiki>&ndash;a</nowiki></code>&gt;
+<code>@uref{--a,--b}</code> [--a &ndash;b]
+<code>@uref{--a}</code> [--a]
+<code>@uref{,--b}</code> &ndash;b
+<code>@uref{--a,--b,--c}</code> [--a &ndash;c]
+<code>@uref{,--b,--c}</code> &ndash;c
+<code>@uref{--a,,--c}</code> [--a &ndash;c]
+<code>@uref{,,--c}</code> &ndash;c
+<code>@url{--a,--b}</code> [--a &ndash;b]
+<code>@url{--a,}</code> [--a]
+<code>@url{,--b}</code> &ndash;b
+<code>@var{--a}</code> <var>&ndash;a</var>
+<code>@verb{:--a:}</code> <tt>--a</tt>
+<code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <tt>a  &lt; &amp; @ % &quot; --    b</tt>
+<code>@w{}</code> 
+<code>@H{a}</code> a''
+<code>@H{--a}</code> &ndash;a''
+<code>@dotaccent{a}</code> &#551;
+<code>@dotaccent{--a}</code> &ndash;a.
+<code>@ringaccent{a}</code> &aring;
+<code>@ringaccent{--a}</code> &ndash;a*
+<code>@tieaccent{a}</code> a[
+<code>@tieaccent{--a}</code> &ndash;a[
+<code>@u{a}</code> &#259;
+<code>@u{--a}</code> &ndash;a(
+<code>@ubaraccent{a}</code> a_
+<code>@ubaraccent{--a}</code> &ndash;a_
+<code>@udotaccent{a}</code> &#7841;
+<code>@udotaccent{--a}</code> .&ndash;a
+<code>@v{a}</code> a&lt;
+<code>@v{--a}</code> &ndash;a&lt;
+<code>@,{c}</code> &ccedil;
+<code>@,{--c}</code> &ndash;c,
+<code>@ogonek{a}</code> &#261;
+<code>@ogonek{--a}</code> &ndash;a;
+<code>@footnote{in footnote}</code> <ref>in footnote
+</ref>
+<code>@footnote{in footnote2}</code> <ref>in footnote2
+</ref>
+
+<code>@image{f--ile}</code> [[Image:f--ile.png]]
+<code>@image{f--ile,l--i}</code> [[Image:f--ile.png]]
+<code>@image{f--ile,,l--e}</code> [[Image:f--ile.png]]
+<code>@image{f--ile,,,alt}</code> [[Image:f--ile.png|alt=alt]]
+<code>@image{f--ile,,,,e-d-xt}</code> [[Image:f--ile.e--xt]]
+<code>@image{f--ile,aze,az,alt,e--xt}</code> [[Image:f--ile.e--xt|alt=alt]]
+<code>@image{f-ile,aze,,a--lt}</code> [[Image:f-ile.jpg|alt=a&ndash;lt]]
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> [[Image:f--ile@..file ext e--xt}|alt=alt]]
+
+<br>
+<br>
+
+<code>@clicksequence{click @click{} A}</code> click &rarr; A
+After clickstyle &rArr;
+<code>@clicksequence{click @click{} A}</code> click &rArr; A
+
+<blockquote>A quot&mdash;ation
+</blockquote>
+
+<blockquote><b>Note:</b> A Note
+</blockquote>
+
+<blockquote><b>note:</b> A note
+</blockquote>
+
+<blockquote><b>Caution:</b> Caution
+</blockquote>
+
+<blockquote><b>Important:</b> Important
+</blockquote>
+
+<blockquote><b>Tip:</b> a Tip
+</blockquote>
+
+<blockquote><b>Warning:</b> a Warning.
+</blockquote>
+
+<blockquote><b>something &eacute; TeX:</b> The something &eacute; TeX is here.
+</blockquote>
+
+<blockquote><b>@ at the end of line </b> A @ at the end of the @quotation line.
+</blockquote>
+
+<blockquote><b>something, other thing:</b> something, other thing
+</blockquote>
+
+<blockquote><b>Note, the note:</b> Note, the note
+</blockquote>
+
+<blockquote></blockquote>
+
+<blockquote><b>Empty:</b> </blockquote>
+
+<blockquote><b>:</b> </blockquote>
+
+<blockquote><b><br>:</b> </blockquote>
+
+<blockquote class="smallquotation" style="font-size: smaller">A small quot&mdash;ation
+</blockquote>
+
+<blockquote class="smallquotation" style="font-size: smaller"><b>Note:</b> A small Note
+</blockquote>
+
+<blockquote class="smallquotation" style="font-size: smaller"><b>something, other thing:</b> something, other thing
+</blockquote>
+
+* i&ndash;temize
+
+* + i&ndash;tem +
+
+* b&ndash;ullet
+
+* minu&ndash;s
+
+* e&ndash;mph item
+
+* ''after emph'' e&ndash;mph item
+
+<div id="index-index-entry-within-itemize"></div>
+* &bull; a&ndash;n itemize line i&ndash;tem 1
+* &bull; a&ndash;n itemize line i&ndash;tem 2
+
+# e&ndash;numerate
+
+<table>
+<thead><tr><th width="600%">mu&ndash;ltitable headitem</th><th width="700%">another tab</th></tr></thead>
+<tr><td width="600%">mu&ndash;ltitable item</td><td width="700%">multitable tab</td></tr>
+<tr><td width="600%">mu&ndash;ltitable item 2</td><td width="700%">multitable tab 2 <div id="index-index-entry-within-multitable"></div></td></tr>
+<tr><td width="600%">lone mu&ndash;ltitable item</td></tr>
+</table>
+
+<table>
+<tr><td>truc</td><td>bidule</td></tr>
+</table>
+
+<table><tr><td>&nbsp;</td><td><div class="example">
+ e--xample  some
+    text
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="smallexample" style="font-size: smaller">
+ s--mallexample
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="display" style="font-family: serif">
+ d&ndash;isplay
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="smalldisplay" style="font-family: serif; font-size: smaller">
+ s&ndash;malldisplay
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="lisp">
+ l--isp
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="smalllisp" style="font-size: smaller">
+ s--malllisp
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="format" style="font-family: serif">
+ f&ndash;ormat
+</div>
+</td></tr></table>
+
+<table><tr><td>&nbsp;</td><td><div class="smallformat" style="font-family: serif; font-size: smaller">
+ s&ndash;mallformat
+</div>
+</td></tr></table>
+
+;<div id="index-d_002d_002deffn_005fname"></div>c--ategory<nowiki>:</nowiki> <strong>d--effn_name</strong><em> a--rguments...</em>
+: d&ndash;effn
+
+;<div id="index-de_002d_002dffn_005fname"></div>cate--gory<nowiki>:</nowiki> <strong>de--ffn_name</strong><em> ar--guments more args <br> even more so</em>
+: def&ndash;fn
+ 
+;<div id="index-i"></div>fset<nowiki>:</nowiki> <strong><var>i</var></strong><em> a g</em>
+<div id="index-index-entry-within-deffn"></div>
+;<div id="index-truc"></div>cmde<nowiki>:</nowiki> <strong>truc</strong>
+;<div id="index-log-trap"></div>Command<nowiki>:</nowiki> <strong>log trap</strong>
+;<div id="index-log-trap1"></div>Command<nowiki>:</nowiki> <strong> log trap1</strong>
+;<div id="index-log-trap2"></div>Command<nowiki>:</nowiki> <strong>log trap2 </strong>
+;<div id="index-id-ule"></div>cmde<nowiki>:</nowiki> <strong><b>id ule</b></strong><em> truc</em>
+;<div id="index-id-i-ule"></div>cmde2<nowiki>:</nowiki> <strong><b>id &lsquo;<code>i</code>&rsquo; ule</b></strong><em> truc</em>
+;<div id="index-"></div><b>id &lsquo;<code>i</code>&rsquo; ule</b><nowiki>:</nowiki>
+;<div id="index--1"></div><nowiki>:</nowiki>
+;<div id="index--2"></div>aaa<nowiki>:</nowiki>
+;<div id="index--3"></div><nowiki>:</nowiki>
+;<div id="index--4"></div><nowiki>:</nowiki>
+;<div id="index-machin"></div><nowiki>:</nowiki> <strong>machin</strong>
+;<div id="index-bidule-machin"></div><nowiki>:</nowiki> <strong>bidule machin</strong>
+;<div id="index-machin-1"></div>truc<nowiki>:</nowiki> <strong>machin</strong>
+;<div id="index--5"></div>truc<nowiki>:</nowiki>
+;<div id="index-followed"></div>truc<nowiki>:</nowiki> <strong>followed</strong><em> by a comment</em>
+;<div id="index--6"></div>truc<nowiki>:</nowiki>
+;<div id="index--7"></div><nowiki>:</nowiki>
+;<div id="index-a"></div>truc<nowiki>:</nowiki> <strong>a</strong><em> b c d e <b>f g</b> h i</em>
+;<div id="index-deffnx"></div>truc<nowiki>:</nowiki> <strong>deffnx</strong><em> before end deffn</em>
+
+;<div id="index-deffn"></div>empty<nowiki>:</nowiki> <strong>deffn</strong>
+
+;<div id="index-deffn-1"></div>empty<nowiki>:</nowiki> <strong>deffn</strong><em> with deffnx</em>
+;<div id="index-deffnx-1"></div>empty<nowiki>:</nowiki> <strong>deffnx</strong>
+
+;<div id="index-i-1"></div>fset<nowiki>:</nowiki> <strong><var>i</var></strong><em> a g</em>
+;<div id="index-truc-1"></div>cmde<nowiki>:</nowiki> <strong>truc</strong>
+: text in def item for second def item
+
+;<div id="index-d_002d_002defvr_005fname"></div>c--ategory<nowiki>:</nowiki> <strong>d--efvr_name</strong>
+: d&ndash;efvr
+
+;<div id="index-d_002d_002deftypefn_005fname"></div>c--ategory<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypefn_name</strong><em> a--rguments...</em>
+: d&ndash;eftypefn
+
+;<div id="index-d_002d_002deftypeop_005fname-on-c_002d_002dlass"></div>c--ategory on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypeop_name</strong><em> a--rguments...</em>
+: d&ndash;eftypeop
+
+;<div id="index-d_002d_002deftypevr_005fname"></div>c--ategory<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypevr_name</strong>
+: d&ndash;eftypevr
+
+;<div id="index-d_002d_002defcv_005fname"></div>c--ategory of c--lass<nowiki>:</nowiki> <strong>d--efcv_name</strong>
+: d&ndash;efcv
+
+;<div id="index-d_002d_002defop_005fname-on-c_002d_002dlass"></div>c--ategory on c--lass<nowiki>:</nowiki> <strong>d--efop_name</strong><em> a--rguments...</em>
+: d&ndash;efop
+
+;<div id="index-d_002d_002deftp_005fname"></div>c--ategory<nowiki>:</nowiki> <strong>d--eftp_name</strong><em> a--ttributes...</em>
+: d&ndash;eftp
+
+;<div id="index-d_002d_002defun_005fname"></div>Function<nowiki>:</nowiki> <strong>d--efun_name</strong><em> a--rguments...</em>
+: d&ndash;efun
+
+;<div id="index-d_002d_002defmac_005fname"></div>Macro<nowiki>:</nowiki> <strong>d--efmac_name</strong><em> a--rguments...</em>
+: d&ndash;efmac
+
+;<div id="index-d_002d_002defspec_005fname"></div>Special Form<nowiki>:</nowiki> <strong>d--efspec_name</strong><em> a--rguments...</em>
+: d&ndash;efspec
+
+;<div id="index-d_002d_002defvar_005fname"></div>Variable<nowiki>:</nowiki> <strong>d--efvar_name</strong><em> argvar argvar1</em>
+: d&ndash;efvar
+
+;<div id="index-d_002d_002defopt_005fname"></div>User Option<nowiki>:</nowiki> <strong>d--efopt_name</strong>
+: d&ndash;efopt
+
+;<div id="index-d_002d_002deftypefun_005fname"></div>Function<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypefun_name</strong><em> a--rguments...</em>
+: d&ndash;eftypefun
+
+;<div id="index-d_002d_002deftypevar_005fname"></div>Variable<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypevar_name</strong>
+: d&ndash;eftypevar
+
+;<div id="index-d_002d_002defivar_005fname"></div>Instance Variable of c--lass<nowiki>:</nowiki> <strong>d--efivar_name</strong>
+: d&ndash;efivar
+
+;<div id="index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass"></div>Instance Variable of c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypeivar_name</strong>
+: d&ndash;eftypeivar
+
+;<div id="index-d_002d_002defmethod_005fname-on-c_002d_002dlass"></div>Method on c--lass<nowiki>:</nowiki> <strong>d--efmethod_name</strong><em> a--rguments...</em>
+: d&ndash;efmethod
+
+;<div id="index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass"></div>Method on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypemethod_name</strong><em> a--rguments...</em>
+: d&ndash;eftypemethod
+
+<code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See [../file n---ame@@/c_002d_002d_002dhapter_0040.#c_002d_002d_002dhapter_0040 cross r&mdash;ef name@: (file n&mdash;ame@)c&mdash;hapter@] section &lsquo;t&mdash;itle@&rsquo; in <cite>ma&mdash;nual@</cite>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> [../file name/chapter.#chapter cross ref name: (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see [../file name/chapter.#chapter cross ref name: (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@inforef{chapter, cross ref name, file name}</code> See [../file name/chapter.#chapter cross ref name: (file name)chapter]
+
+<code>@ref{chapter}</code> [[formatting: chapter#chapter|chapter]]
+<code>@xref{chapter}</code> See [[formatting: chapter#chapter|chapter]].
+<code>@pxref{chapter}</code> see [[formatting: chapter#chapter|chapter]]
+<code>@ref{s--ect@comma{}ion}</code> [[formatting: A section#A section|s--ect,ion]]
+
+<code>@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
+[../a comma@comma{} in file/s_002d_002dect_002cion.#s_002d_002dect_002cion a , in cross ref: (a comma, in file)s&ndash;ect,ion] section &lsquo;a comma, in title&rsquo; in <cite>a , in manual name</cite>
+
+<code>@ref{chapter,cross ref name}</code> [[formatting: chapter#chapter|cross ref name]]
+<code>@ref{chapter,,title}</code> [[formatting: chapter#chapter|title]]
+<code>@ref{chapter,,,file name}</code> [../file name/chapter.#chapter (file name)chapter]
+<code>@ref{chapter,,,,manual}</code> section &lsquo;chapter&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title,}</code> [[formatting: chapter#chapter|title]]
+<code>@ref{chapter,cross ref name,,file name}</code> [../file name/chapter.#chapter cross ref name: (file name)chapter]
+<code>@ref{chapter,cross ref name,,,manual}</code> section &lsquo;chapter&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title,file name}</code> [../file name/chapter.#chapter cross ref name: (file name)chapter]
+<code>@ref{chapter,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> [../file name/chapter.#chapter cross ref name: (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,title,file name}</code> [../file name/chapter.#chapter (file name)chapter]
+<code>@ref{chapter,,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> [../file name/chapter.#chapter (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,,file name,manual}</code> [../file name/chapter.#chapter (file name)chapter] section &lsquo;chapter&rsquo; in <cite>manual</cite>
+
+
+<code>@ref{(pman)anode,cross ref name}</code> [../pman/anode.#anode cross ref name: (pman)anode]
+<code>@ref{(pman)anode,,title}</code> [../pman/anode.#anode (pman)anode]
+<code>@ref{(pman)anode,,,file name}</code> [../file name/anode.#anode (file name)anode]
+<code>@ref{(pman)anode,,,,manual}</code> [../pman/anode.#anode (pman)anode] section &lsquo;anode&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,}</code> [../pman/anode.#anode cross ref name: (pman)anode]
+<code>@ref{(pman)anode,cross ref name,,file name}</code> [../file name/anode.#anode cross ref name: (file name)anode]
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> [../pman/anode.#anode cross ref name: (pman)anode] section &lsquo;anode&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> [../file name/anode.#anode cross ref name: (file name)anode]
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> [../pman/anode.#anode cross ref name: (pman)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> [../file name/anode.#anode cross ref name: (file name)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,,title,file name}</code> [../file name/anode.#anode (file name)anode]
+<code>@ref{(pman)anode,,title,,manual}</code> [../pman/anode.#anode (pman)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,,title, file name, manual}</code> [../file name/anode.#anode (file name)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,,,file name,manual}</code> [../file name/anode.#anode (file name)anode] section &lsquo;anode&rsquo; in <cite>manual</cite>
+
+
+<code>@inforef{chapter, cross ref name, file name}</code> See [../file name/chapter.#chapter cross ref name: (file name)chapter]
+<code>@inforef{chapter}</code> 
+<code>@inforef{chapter, cross ref name}</code> 
+<code>@inforef{chapter,,file name}</code> See [../file name/chapter.#chapter (file name)chapter]
+<code>@inforef{node, cross ref name, file name}</code> See [../file name/node.#node cross ref name: (file name)node]
+<code>@inforef{node}</code> 
+<code>@inforef{node, cross ref name}</code> 
+<code>@inforef{node,,file name}</code> See [../file name/node.#node (file name)node]
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See [../file name, spurious arg/chapter.#chapter cross ref name: (file name, spurious arg)chapter]
+
+<code>@inforef{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in file}</code>
+See [../a comma@comma{} in file/s_002d_002dect_002cion.#s_002d_002dect_002cion a , in cross ref: (a comma, in file)s&ndash;ect,ion]
+
+
+;&bull; a
+: l&ndash;ine
+
+;a
+<div id="index-a-1"></div>
+
+;b
+<div id="index-b"></div>
+
+: l&ndash;ine
+
+;- a
+<div id="index-a-2"></div>
+
+<div id="index-index-entry-between-item-and-itemx"></div>
+;- b
+<div id="index-b-1"></div>
+
+: l&ndash;ine
+
+<table class="cartouche" border="1"><tr><td>
+c&ndash;artouche
+</td></tr></table>
+
+g&ndash;roupe
+
+<p align="left">f&ndash;lushleft
+</p>
+<p align="right">f&ndash;lushright
+</p>
+<p align="center">ce&ndash;ntered line
+</p>
+<pre class="verbatim">\input texinfo @c -*-texinfo-*-
+
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  &lt;&gt;.
+
+@bye
+</pre>
+<pre class="verbatim">in verbatim ''
+</pre>
+
+html ''
+
+
+<div id="majorheading"></div>
+== majorheading ==
+
+<div id="chapheading-1"></div>
+== chapheading ==
+
+<div id="heading"></div>
+=== heading ===
+
+<div id="subheading-1"></div>
+==== subheading ====
+
+<div id="subsubheading-1"></div>
+===== subsubheading =====
+
+
+<code>@acronym{--a,an accronym @comma{} @enddots{}}</code> &ndash;a (an accronym , <small class="enddots">...</small>)
+<code>@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }</code> &Eacute;&ndash;. ,A. (&Eacute;tude&ndash;, <b>Autonome</b>)
+<code>@abbr{@'E--. @comma{}A.}</code> &Eacute;&ndash;. ,A.
+
+<code>@math{--a@minus{} {\frac{1}{2}}}</code> <math>--a- {\frac{1}{2}}</math>
+
+<code>@image{f-ile,,,alt@verb{:jk _&quot; %}}</code> [[Image:f-ile.jpg|alt=altjk _&quot; %@]]
+<code>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</code> [[Image:f--ile.e--xt|alt=jk _&quot; %@ in b &quot;]]
+<code>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</code> [[Image:filejk _&quot; %@.jpg|alt=altjk _&quot; %@]]
+
+
+
+
+Somehow invalid use of @,:<br>
+@, ,
+<br>
+@,@&quot;u @,&quot;u
+
+Invalid use of @&rsquo;:<br>
+@&rsquo; &rsquo;
+<br>
+@&rsquo;@&quot;u @'&quot;u
+
+@dotless{truc} truc
+@dotless{ij} ij
+<code>@dotless{--a}</code> &ndash;a
+<code>@dotless{a}</code> a
+
+@TeX, but without brace TeX
+
+<code>@#</code> @#
+
+<code>@w{--a}</code> &ndash;a
+
+<code>@image{,1--xt}</code> 
+<code>@image{,,2--xt}</code> 
+<code>@image{,,,3--xt}</code> 
+
+<br>
+
+* @emph after emph e&ndash;mph item
+
+* &bull; a&ndash;n itemize line i&ndash;tem 1
+* &bull; a&ndash;n itemize line i&ndash;tem 2
+
+;<div id="index--8"></div>fun<nowiki>:</nowiki>
+;<div id="index-machin-2"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and </em>
+;<div id="index-machin-3"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and  after</em>
+;<div id="index-machin-4"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and {</em>
+;<div id="index-machin-5"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and { and after</em>
+;<div id="index-followed-1"></div>truc<nowiki>:</nowiki> <strong>followed</strong><em> by a comment</em>
+: Various deff lines
+;<div id="index-after"></div>truc<nowiki>:</nowiki> <strong>after</strong><em> a deff item</em>
+
+<code>@ref{node}</code> @ref{node}
+
+<code>@ref{,cross ref name}</code> @ref{,cross ref name}
+<code>@ref{,,title}</code> @ref{,,title}
+<code>@ref{,,,file name}</code> [../file name/index.#Top (file name)]
+<code>@ref{,,,,manual}</code> <cite>manual</cite>
+<code>@ref{node,cross ref name}</code> @ref{node,cross ref name}
+<code>@ref{node,,title}</code> @ref{node,,title}
+<code>@ref{node,,,file name}</code> [../file name/node.#node (file name)node]
+<code>@ref{node,,,,manual}</code> section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref{node,cross ref name,title,}</code> @ref{node,cross ref name,title,}
+<code>@ref{node,cross ref name,,file name}</code> [../file name/node.#node cross ref name: (file name)node]
+<code>@ref{node,cross ref name,,,manual}</code> section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref{node,cross ref name,title,file name}</code> [../file name/node.#node cross ref name: (file name)node]
+<code>@ref{node,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{node,cross ref name,title, file name, manual}</code> [../file name/node.#node cross ref name: (file name)node] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{node,,title,file name}</code> [../file name/node.#node (file name)node]
+<code>@ref{node,,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> [../file name/chapter.#chapter (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{node,,title, file name, manual}</code> [../file name/node.#node (file name)node] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{node,,,file name,manual}</code> [../file name/node.#node (file name)node] section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref{,cross ref name,title,}</code> @ref{,cross ref name,title,}
+<code>@ref{,cross ref name,,file name}</code> [../file name/index.#Top cross ref name: (file name)]
+<code>@ref{,cross ref name,,,manual}</code> <cite>manual</cite>
+<code>@ref{,cross ref name,title,file name}</code> [../file name/index.#Top cross ref name: (file name)]
+<code>@ref{,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{,cross ref name,title, file name, manual}</code> [../file name/index.#Top cross ref name: (file name)] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{,,title,file name}</code> [../file name/index.#Top (file name)]
+<code>@ref{,,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{,,title, file name, manual}</code> [../file name/index.#Top (file name)] section &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{,,,file name,manual}</code> [../file name/index.#Top (file name)] <cite>manual</cite>
+
+<code>@inforef{,cross ref name }</code> 
+<code>@inforef{,,file name}</code> 
+<code>@inforef{,cross ref name, file name}</code> 
+<code>@inforef{}</code> 
+
+
+
+In example.
+<table><tr><td>&nbsp;</td><td><div class="example">
+ 
+ &lt;
+ &gt;
+ &quot;
+ &amp;
+ '
+ `
+ 
+ ``simple-double--three---four----<nowiki>''</nowiki>
+ 
+ code: <code>``simple-double--three---four----<nowiki>''</nowiki></code> 
+ 
+ asis: ``simple-double--three---four----<nowiki>''</nowiki> 
+ 
+ strong: '''``simple-double--three---four----<nowiki>''</nowiki>''' 
+ 
+ kbd: <code>``simple-double--three---four----<nowiki>''</nowiki></code> 
+ 
+ 
+ ``simple-double--three---four----''
+ 
+ 
+ <div id="index-_002d_002doption-1"></div><div id="index-_0060_0060-2"></div><div id="index-_0060_0060-3"></div><div id="index-_002d_002dfoption-1"></div>
+ @&quot;u &uuml; 
+ @&quot;{U} &Uuml; 
+ @~n &ntilde;
+ @^a &acirc;
+ @'e &eacute;
+ @=o &#333;
+ @`i &igrave;
+ @'{e} &eacute;
+ @'{@dotless{i}} &iacute; 
+ @dotless{i} i
+ @dotless{j} j
+ @`{@=E} &#274;` 
+ @l{} &#322;
+ @,{@'C} &#262;,
+ @,c &ccedil;
+ @,c@&quot;u &ccedil;&uuml; 
+ 
+ 
+ @* 
+ 
+ @ followed by a space
+ &nbsp;
+ @ followed by a tab
+ &nbsp;
+ @ followed by a new line
+ &nbsp;<code>@-</code> 
+ <code>@|</code> 
+ <code>@:</code> 
+ <code>@!</code> !
+ <code>@?</code> ?
+ <code>@.</code> .
+ <code>@@</code> @
+ <code>@}</code> }
+ <code>@{</code> {
+ <code>@/</code> 
+ 
+ foo vs. bar. 
+ colon :And something else.
+ semi colon ;.
+ And ? ?.
+ Now ! !@
+ but , ,
+ 
+ @TeX TeX
+ @LaTeX LaTeX
+ @bullet &bull;
+ @copyright &copy;
+ @dots &hellip;
+ @enddots ...
+ @equiv &equiv;
+ @error error--&gt;
+ @expansion &rarr;
+ @minus -
+ @point &lowast;
+ @print -|
+ @result &rArr;
+ @today a sunny day
+ @aa &aring;
+ @AA &Aring;
+ @ae &aelig;
+ @oe &oelig;
+ @AE &AElig;
+ @OE &OElig;
+ @o &oslash;
+ @O &Oslash;
+ @ss &szlig;
+ @l &#322;
+ @L &#321;
+ @DH &ETH;
+ @TH &THORN;
+ @dh &eth;
+ @th &thorn
+ @exclamdown &iexcl;
+ @questiondown &iquest;
+ @pounds &pound;
+ @registeredsymbol &reg;
+ @ordf &ordf;
+ @ordm &ordm;
+ @comma ,
+ @quotedblleft &ldquo;
+ @quotedblright &rdquo;
+ @quoteleft &lsquo;
+ @quoteright &rsquo;
+ @quotedblbase &bdquo;
+ @quotesinglbase &sbquo;
+ @guillemetleft &laquo;
+ @guillemetright &raquo;
+ @guillemotleft &laquo;
+ @guillemotright &raquo;
+ @guilsinglleft &lsaquo;
+ @guilsinglright &rsaquo;
+ @textdegree &deg;
+ @euro &euro;
+ @arrow &rarr;
+ @leq &le;
+ @geq &ge;
+ 
+ <code>@acronym{--a,an accronym}</code> --a (an accronym)
+ <code>@acronym{--a}</code> --a
+ <code>@abbr{@'E--. @comma{}A., @'Etude Autonome }</code> &Eacute;--. ,A. (&Eacute;tude Autonome)
+ <code>@abbr{@'E--. @comma{}A.}</code> &Eacute;--. ,A.
+ <code>@asis{--a}</code> --a
+ <code>@b{--a}</code> <b>--a</b>
+ <code>@cite{--a}</code> <cite>--a</cite>
+ <code>@code{--a}</code> <code>--a</code>
+ <code>@command{--a}</code> <code>--a</code>
+ <code>@ctrl{--a}</code> --a
+ <code>@dfn{--a}</code> <em>--a</em>
+ <code>@dmn{--a}</code> --a
+ <code>@email{--a,--b}</code> [mailto:--a --b]
+ <code>@email{,--b}</code> --b
+ <code>@email{--a}</code> [mailto:--a]
+ <code>@emph{--a}</code> ''--a''
+ <code>@env{--a}</code> <code>--a</code>
+ <code>@file{--a}</code> &lsquo;<tt>--a</tt>&rsquo;
+ <code>@i{--a}</code> <i>--a</i>
+ <code>@kbd{--a}</code> <code>--a</code>
+ <code>@key{--a}</code> &lt;--a&gt;
+ <code>@math{--a {\frac{1}{2}} @minus{}}</code> <math>--a {\frac{1}{2}} -</math>
+ <code>@option{--a}</code> &lsquo;<code>--a</code>&rsquo;
+ <code>@r{--a}</code> <span class="roman" style="font-family:serif; font-weight:normal;">--a</span>
+ <code>@samp{--a}</code> &lsquo;<code>--a</code>&rsquo;
+ <code>@sc{--a}</code> --A
+ <code>@strong{--a}</code> '''--a'''
+ <code>@t{--a}</code> <tt>--a</tt>
+ <code>@sansserif{--a}</code> <span class="sansserif" style="font-family:sans-serif; font-weight:normal;">--a</span>
+ <code>@titlefont{--a}</code> --a
+ <code>@indicateurl{--a}</code> &lt;<code><nowiki>--a</nowiki></code>&gt;
+ <code>@uref{--a,--b}</code> [--a --b]
+ <code>@uref{--a}</code> [--a]
+ <code>@uref{,--b}</code> --b
+ <code>@uref{--a,--b,--c}</code> [--a --c]
+ <code>@uref{,--b,--c}</code> --c
+ <code>@uref{--a,,--c}</code> [--a --c]
+ <code>@uref{,,--c}</code> --c
+ <code>@url{--a,--b}</code> [--a --b]
+ <code>@url{--a,}</code> [--a]
+ <code>@url{,--b}</code> --b
+ <code>@var{--a}</code> <var>--a</var>
+ <code>@verb{:--a:}</code> <tt>--a</tt>
+ <code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <tt>a  &lt; &amp; @ % &quot; --    b</tt>
+ <code>@w{}</code> 
+ <code>@H{a}</code> a''
+ <code>@H{--a}</code> --a''
+ <code>@dotaccent{a}</code> &#551;
+ <code>@dotaccent{--a}</code> --a.
+ <code>@ringaccent{a}</code> &aring;
+ <code>@ringaccent{--a}</code> --a*
+ <code>@tieaccent{a}</code> a[
+ <code>@tieaccent{--a}</code> --a[
+ <code>@u{a}</code> &#259;
+ <code>@u{--a}</code> --a(
+ <code>@ubaraccent{a}</code> a_
+ <code>@ubaraccent{--a}</code> --a_
+ <code>@udotaccent{a}</code> &#7841;
+ <code>@udotaccent{--a}</code> .--a
+ <code>@v{a}</code> a&lt;
+ <code>@v{--a}</code> --a&lt;
+ <code>@,{c}</code> &ccedil;
+ <code>@,{--c}</code> --c,
+ <code>@ogonek{a}</code> &#261;
+ <code>@ogonek{--a}</code> --a;
+ <code>@footnote{in footnote}</code> <ref>in footnote
+ </ref>
+ <code>@footnote{in footnote2}</code> <ref>in footnote2
+ </ref>
+ 
+ <code>@image{f--ile}</code> [[Image:f--ile.png]]
+ <code>@image{f--ile,l--i}</code> [[Image:f--ile.png]]
+ <code>@image{f--ile,,l--e}</code> [[Image:f--ile.png]]
+ <code>@image{f--ile,,,alt}</code> [[Image:f--ile.png|alt=alt]]
+ <code>@image{f--ile,,,,e-d-xt}</code> [[Image:f--ile.e--xt]]
+ <code>@image{f--ile,aze,az,alt,e--xt}</code> [[Image:f--ile.e--xt|alt=alt]]
+ <code>@image{f-ile,aze,,a--lt}</code> [[Image:f-ile.jpg|alt=a&ndash;lt]]
+ <code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> [[Image:f--ile@..file ext e--xt}|alt=alt]]
+ 
+ 
+ 
+ 
+ <code>@clicksequence{click @click{} A}</code> click &rarr; A
+ After clickstyle &rArr;
+ <code>@clicksequence{click @click{} A}</code> click &rArr; A
+ 
+</div>
+<blockquote><div class="example">
+ A quot---ation
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote><div class="example">
+ <b>Note:</b> A Note
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote><div class="example">
+ <b>note:</b> A note
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote><div class="example">
+ <b>Caution:</b> Caution
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote><div class="example">
+ <b>Important:</b> Important
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote><div class="example">
+ <b>Tip:</b> a Tip
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote><div class="example">
+ <b>Warning:</b> a Warning.
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote><div class="example">
+ <b>something &eacute; TeX:</b> The something &eacute; TeX is here.
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote><div class="example">
+ <b>@ at the end of line </b> A @ at the end of the @quotation line.
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote><div class="example">
+ <b>something, other thing:</b> something, other thing
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote><div class="example">
+ <b>Note, the note:</b> Note, the note
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote></blockquote>
+<div class="example">
+ 
+</div>
+<blockquote><div class="example">
+ <b>Empty:</b> </div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote><div class="example">
+ <b>:</b> </div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote><div class="example">
+ <b>
+ :</b> </div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote class="smallquotation" style="font-size: smaller"><div class="example">
+ A small quot---ation
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote class="smallquotation" style="font-size: smaller"><div class="example">
+ <b>Note:</b> A small Note
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<blockquote class="smallquotation" style="font-size: smaller"><div class="example">
+ <b>something, other thing:</b> something, other thing
+</div>
+</blockquote>
+<div class="example">
+ 
+</div>
+<div class="example">
+  i--temize
+</div>
+<div class="example">
+ 
+</div>
+<div class="example">
+ + i--tem +
+</div>
+<div class="example">
+ 
+</div>
+<div class="example">
+  b--ullet
+</div>
+<div class="example">
+ 
+</div>
+<div class="example">
+  minu--s
+</div>
+<div class="example">
+ 
+</div>
+<div class="example">
+  e--mph item
+</div>
+<div class="example">
+ 
+</div>
+<div class="example">
+ ''after emph'' e--mph item
+</div>
+<div class="example">
+ 
+</div>
+<div class="example">
+ <div id="index-index-entry-within-itemize-1"></div></div>
+<div class="example">
+ &bull; a--n itemize line i--tem 1
+</div>
+<div class="example">
+ &bull; a--n itemize line i--tem 2
+</div>
+<div class="example">
+ 
+</div>
+<div class="example">
+  e--numerate
+</div>
+<div class="example">
+ 
+</div>
+<table>
+<thead><tr><th width="600%"><div class="example">
+ mu--ltitable headitem</div></th><th width="700%"><div class="example">
+ another tab</div></th></tr></thead>
+<tr><td width="600%"><div class="example">
+ mu--ltitable item</div></td><td width="700%"><div class="example">
+ multitable tab</div></td></tr>
+<tr><td width="600%"><div class="example">
+ mu--ltitable item 2</div></td><td width="700%"><div class="example">
+ multitable tab 2
+ <div id="index-index-entry-within-multitable-1"></div></div></td></tr>
+<tr><td width="600%"><div class="example">
+ lone mu--ltitable item</div></td></tr>
+</table>
+<div class="example">
+ 
+</div>
+<table>
+<tr><td><div class="example">
+ truc</div></td><td><div class="example">
+ bidule</div></td></tr>
+</table>
+<div class="example">
+ 
+</div>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ e--xample  some
+    text
+</div>
+</td></tr></table>
+<div class="example">
+ 
+</div>
+<table><tr><td>&nbsp;</td><td><div class="smallexample" style="font-size: smaller">
+ s--mallexample
+</div>
+</td></tr></table>
+<div class="example">
+ 
+</div>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ d--isplay
+</div>
+</td></tr></table>
+<div class="example">
+ 
+</div>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ s--malldisplay
+</div>
+</td></tr></table>
+<div class="example">
+ 
+</div>
+<table><tr><td>&nbsp;</td><td><div class="lisp">
+ l--isp
+</div>
+</td></tr></table>
+<div class="example">
+ 
+</div>
+<table><tr><td>&nbsp;</td><td><div class="smalllisp" style="font-size: smaller">
+ s--malllisp
+</div>
+</td></tr></table>
+<div class="example">
+ 
+</div>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ f--ormat
+</div>
+</td></tr></table>
+<div class="example">
+ 
+</div>
+<table><tr><td>&nbsp;</td><td><div class="example">
+ s--mallformat
+</div>
+</td></tr></table>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002deffn_005fname-1"></div>c--ategory<nowiki>:</nowiki> <strong>d--effn_name</strong><em> a--rguments...</em>
+<div class="example">
+ d--effn
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-de_002d_002dffn_005fname-1"></div>cate--gory<nowiki>:</nowiki> <strong>de--ffn_name</strong><em> ar--guments more args 
+ even more so</em>
+<div class="example">
+ def--fn
+</div>
+<div class="example">
+  
+</div>
+;<div id="index-i-2"></div>fset<nowiki>:</nowiki> <strong><var>i</var></strong><em> a g</em>
+<div class="example">
+ <div id="index-index-entry-within-deffn-1"></div></div>
+;<div id="index-truc-2"></div>cmde<nowiki>:</nowiki> <strong>truc</strong>
+;<div id="index-log-trap-1"></div>Command<nowiki>:</nowiki> <strong>log trap</strong>
+;<div id="index-log-trap1-1"></div>Command<nowiki>:</nowiki> <strong> log trap1</strong>
+;<div id="index-log-trap2-1"></div>Command<nowiki>:</nowiki> <strong>log trap2 </strong>
+;<div id="index-id-ule-1"></div>cmde<nowiki>:</nowiki> <strong><b>id ule</b></strong><em> truc</em>
+;<div id="index-id-i-ule-1"></div>cmde2<nowiki>:</nowiki> <strong><b>id &lsquo;<code>i</code>&rsquo; ule</b></strong><em> truc</em>
+;<div id="index--9"></div><b>id &lsquo;<code>i</code>&rsquo; ule</b><nowiki>:</nowiki>
+;<div id="index--10"></div><nowiki>:</nowiki>
+;<div id="index--11"></div>aaa<nowiki>:</nowiki>
+;<div id="index--12"></div><nowiki>:</nowiki>
+;<div id="index--13"></div><nowiki>:</nowiki>
+;<div id="index-machin-6"></div><nowiki>:</nowiki> <strong>machin</strong>
+;<div id="index-bidule-machin-1"></div><nowiki>:</nowiki> <strong>bidule machin</strong>
+;<div id="index-machin-7"></div>truc<nowiki>:</nowiki> <strong>machin</strong>
+;<div id="index--14"></div>truc<nowiki>:</nowiki>
+;<div id="index-followed-2"></div>truc<nowiki>:</nowiki> <strong>followed</strong><em> by a comment</em>
+;<div id="index--15"></div>truc<nowiki>:</nowiki>
+;<div id="index--16"></div><nowiki>:</nowiki>
+;<div id="index-a-3"></div>truc<nowiki>:</nowiki> <strong>a</strong><em> b c d e <b>f g</b> h i</em>
+;<div id="index-deffnx-2"></div>truc<nowiki>:</nowiki> <strong>deffnx</strong><em> before end deffn</em>
+<div class="example">
+ 
+</div>
+;<div id="index-deffn-2"></div>empty<nowiki>:</nowiki> <strong>deffn</strong>
+<div class="example">
+ 
+</div>
+;<div id="index-deffn-3"></div>empty<nowiki>:</nowiki> <strong>deffn</strong><em> with deffnx</em>
+;<div id="index-deffnx-3"></div>empty<nowiki>:</nowiki> <strong>deffnx</strong>
+<div class="example">
+ 
+</div>
+;<div id="index-i-3"></div>fset<nowiki>:</nowiki> <strong><var>i</var></strong><em> a g</em>
+;<div id="index-truc-3"></div>cmde<nowiki>:</nowiki> <strong>truc</strong>
+<div class="example">
+ text in def item for second def item
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002defvr_005fname-1"></div>c--ategory<nowiki>:</nowiki> <strong>d--efvr_name</strong>
+<div class="example">
+ d--efvr
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002deftypefn_005fname-1"></div>c--ategory<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypefn_name</strong><em> a--rguments...</em>
+<div class="example">
+ d--eftypefn
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002deftypeop_005fname-on-c_002d_002dlass-1"></div>c--ategory on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypeop_name</strong><em> a--rguments...</em>
+<div class="example">
+ d--eftypeop
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002deftypevr_005fname-1"></div>c--ategory<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypevr_name</strong>
+<div class="example">
+ d--eftypevr
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002defcv_005fname-1"></div>c--ategory of c--lass<nowiki>:</nowiki> <strong>d--efcv_name</strong>
+<div class="example">
+ d--efcv
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002defop_005fname-on-c_002d_002dlass-1"></div>c--ategory on c--lass<nowiki>:</nowiki> <strong>d--efop_name</strong><em> a--rguments...</em>
+<div class="example">
+ d--efop
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002deftp_005fname-1"></div>c--ategory<nowiki>:</nowiki> <strong>d--eftp_name</strong><em> a--ttributes...</em>
+<div class="example">
+ d--eftp
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002defun_005fname-1"></div>Function<nowiki>:</nowiki> <strong>d--efun_name</strong><em> a--rguments...</em>
+<div class="example">
+ d--efun
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002defmac_005fname-1"></div>Macro<nowiki>:</nowiki> <strong>d--efmac_name</strong><em> a--rguments...</em>
+<div class="example">
+ d--efmac
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002defspec_005fname-1"></div>Special Form<nowiki>:</nowiki> <strong>d--efspec_name</strong><em> a--rguments...</em>
+<div class="example">
+ d--efspec
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002defvar_005fname-1"></div>Variable<nowiki>:</nowiki> <strong>d--efvar_name</strong><em> argvar argvar1</em>
+<div class="example">
+ d--efvar
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002defopt_005fname-1"></div>User Option<nowiki>:</nowiki> <strong>d--efopt_name</strong>
+<div class="example">
+ d--efopt
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002deftypefun_005fname-1"></div>Function<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypefun_name</strong><em> a--rguments...</em>
+<div class="example">
+ d--eftypefun
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002deftypevar_005fname-1"></div>Variable<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypevar_name</strong>
+<div class="example">
+ d--eftypevar
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002defivar_005fname-1"></div>Instance Variable of c--lass<nowiki>:</nowiki> <strong>d--efivar_name</strong>
+<div class="example">
+ d--efivar
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass-1"></div>Instance Variable of c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypeivar_name</strong>
+<div class="example">
+ d--eftypeivar
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002defmethod_005fname-on-c_002d_002dlass-1"></div>Method on c--lass<nowiki>:</nowiki> <strong>d--efmethod_name</strong><em> a--rguments...</em>
+<div class="example">
+ d--efmethod
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass-1"></div>Method on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypemethod_name</strong><em> a--rguments...</em>
+<div class="example">
+ d--eftypemethod
+</div>
+<div class="example">
+ 
+ <code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See [../file n---ame@@/c_002d_002d_002dhapter_0040.#c_002d_002d_002dhapter_0040 cross r---ef name@: (file n---ame@)c---hapter@] section `t---itle@' in <cite>ma---nual@</cite>.
+ <code>@ref{chapter, cross ref name, title, file name, manual}</code> [../file name/chapter.#chapter cross ref name: (file name)chapter] section `title' in <cite>manual</cite>
+ <code>@pxref{chapter, cross ref name, title, file name, manual}</code> see [../file name/chapter.#chapter cross ref name: (file name)chapter] section `title' in <cite>manual</cite>
+ <code>@inforef{chapter, cross ref name, file name}</code> See [../file name/chapter.#chapter cross ref name: (file name)chapter]
+ 
+ <code>@ref{chapter}</code> [[formatting: chapter#chapter|chapter]]
+ <code>@xref{chapter}</code> See [[formatting: chapter#chapter|chapter]].
+ <code>@pxref{chapter}</code> see [[formatting: chapter#chapter|chapter]]
+ <code>@ref{s--ect@comma{}ion}</code> [[formatting: A section#A section|s--ect,ion]]
+ 
+ <code>@ref{s--ect@comma{}ion, a @comma{} in cross
+ ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
+ [../a comma@comma{} in file/s_002d_002dect_002cion.#s_002d_002dect_002cion a , in cross ref: (a comma, in file)s--ect,ion] section `a comma, in title' in <cite>a , in manual name</cite>
+ 
+ <code>@ref{chapter,cross ref name}</code> [[formatting: chapter#chapter|cross ref name]]
+ <code>@ref{chapter,,title}</code> [[formatting: chapter#chapter|title]]
+ <code>@ref{chapter,,,file name}</code> [../file name/chapter.#chapter (file name)chapter]
+ <code>@ref{chapter,,,,manual}</code> section `chapter' in <cite>manual</cite>
+ <code>@ref{chapter,cross ref name,title,}</code> [[formatting: chapter#chapter|title]]
+ <code>@ref{chapter,cross ref name,,file name}</code> [../file name/chapter.#chapter cross ref name: (file name)chapter]
+ <code>@ref{chapter,cross ref name,,,manual}</code> section `chapter' in <cite>manual</cite>
+ <code>@ref{chapter,cross ref name,title,file name}</code> [../file name/chapter.#chapter cross ref name: (file name)chapter]
+ <code>@ref{chapter,cross ref name,title,,manual}</code> section `title' in <cite>manual</cite>
+ <code>@ref{chapter,cross ref name,title, file name, manual}</code> [../file name/chapter.#chapter cross ref name: (file name)chapter] section `title' in <cite>manual</cite>
+ <code>@ref{chapter,,title,file name}</code> [../file name/chapter.#chapter (file name)chapter]
+ <code>@ref{chapter,,title,,manual}</code> section `title' in <cite>manual</cite>
+ <code>@ref{chapter,,title, file name, manual}</code> [../file name/chapter.#chapter (file name)chapter] section `title' in <cite>manual</cite>
+ <code>@ref{chapter,,,file name,manual}</code> [../file name/chapter.#chapter (file name)chapter] section `chapter' in <cite>manual</cite>
+ 
+ 
+ <code>@ref{(pman)anode,cross ref name}</code> [../pman/anode.#anode cross ref name: (pman)anode]
+ <code>@ref{(pman)anode,,title}</code> [../pman/anode.#anode (pman)anode]
+ <code>@ref{(pman)anode,,,file name}</code> [../file name/anode.#anode (file name)anode]
+ <code>@ref{(pman)anode,,,,manual}</code> [../pman/anode.#anode (pman)anode] section `anode' in <cite>manual</cite>
+ <code>@ref{(pman)anode,cross ref name,title,}</code> [../pman/anode.#anode cross ref name: (pman)anode]
+ <code>@ref{(pman)anode,cross ref name,,file name}</code> [../file name/anode.#anode cross ref name: (file name)anode]
+ <code>@ref{(pman)anode,cross ref name,,,manual}</code> [../pman/anode.#anode cross ref name: (pman)anode] section `anode' in <cite>manual</cite>
+ <code>@ref{(pman)anode,cross ref name,title,file name}</code> [../file name/anode.#anode cross ref name: (file name)anode]
+ <code>@ref{(pman)anode,cross ref name,title,,manual}</code> [../pman/anode.#anode cross ref name: (pman)anode] section `title' in <cite>manual</cite>
+ <code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> [../file name/anode.#anode cross ref name: (file name)anode] section `title' in <cite>manual</cite>
+ <code>@ref{(pman)anode,,title,file name}</code> [../file name/anode.#anode (file name)anode]
+ <code>@ref{(pman)anode,,title,,manual}</code> [../pman/anode.#anode (pman)anode] section `title' in <cite>manual</cite>
+ <code>@ref{(pman)anode,,title, file name, manual}</code> [../file name/anode.#anode (file name)anode] section `title' in <cite>manual</cite>
+ <code>@ref{(pman)anode,,,file name,manual}</code> [../file name/anode.#anode (file name)anode] section `anode' in <cite>manual</cite>
+ 
+ 
+ <code>@inforef{chapter, cross ref name, file name}</code> See [../file name/chapter.#chapter cross ref name: (file name)chapter]
+ <code>@inforef{chapter}</code> 
+ <code>@inforef{chapter, cross ref name}</code> 
+ <code>@inforef{chapter,,file name}</code> See [../file name/chapter.#chapter (file name)chapter]
+ <code>@inforef{node, cross ref name, file name}</code> See [../file name/node.#node cross ref name: (file name)node]
+ <code>@inforef{node}</code> 
+ <code>@inforef{node, cross ref name}</code> 
+ <code>@inforef{node,,file name}</code> See [../file name/node.#node (file name)node]
+ <code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See [../file name, spurious arg/chapter.#chapter cross ref name: (file name, spurious arg)chapter]
+ 
+ <code>@inforef{s--ect@comma{}ion, a @comma{} in cross
+ ref, a comma@comma{} in file}</code>
+ See [../a comma@comma{} in file/s_002d_002dect_002cion.#s_002d_002dect_002cion a , in cross ref: (a comma, in file)s--ect,ion]
+ 
+ 
+</div>
+;<tt>&bull; a</tt>
+<div class="example">
+ l--ine
+</div>
+<div class="example">
+ 
+</div>
+;<tt>a</tt>
+<div id="index-a-4"></div>
+;<tt>b</tt>
+<div id="index-b-2"></div>
+<div class="example">
+ l--ine
+</div>
+<div class="example">
+ 
+</div>
+;<tt>- a</tt>
+<div id="index-a-5"></div>
+<div class="example">
+ <div id="index-index-entry-between-item-and-itemx-1"></div></div>
+;<tt>- b</tt>
+<div id="index-b-3"></div>
+<div class="example">
+ l--ine
+</div>
+<div class="example">
+ 
+</div>
+<table class="cartouche" border="1"><tr><td>
+<div class="example">
+ c--artouche
+</div>
+</td></tr></table>
+<div class="example">
+ 
+</div>
+<div class="example">
+ g--roupe
+</div>
+<div class="example">
+ 
+</div>
+<div class="example">
+ f--lushleft
+</div>
+<div class="example">
+ 
+</div>
+<div class="example">
+ f--lushright
+</div>
+<div class="example">
+ 
+  ce--ntered line
+ 
+ <pre class="verbatim">\input texinfo @c -*-texinfo-*-
+ 
+ @setfilename simplest.info
+ 
+ @node Top
+ 
+ This is a very simple texi manual @  &lt;&gt;.
+ 
+ @bye
+ </pre>
+</div>
+<pre class="verbatim">in verbatim ''
+</pre><div class="example">
+ 
+ 
+ html ''
+ 
+ 
+ <div id="majorheading-1"></div>
+ <strong>majorheading</strong>
+ 
+ <div id="chapheading"></div>
+ <strong>chapheading</strong>
+ 
+ <div id="heading-1"></div>
+ <strong>heading</strong>
+ 
+ <div id="subheading"></div>
+ <strong>subheading</strong>
+ 
+ <div id="subsubheading"></div>
+ <strong>subsubheading</strong>
+ 
+ 
+ <code>@acronym{--a,an accronym @comma{} @enddots{}}</code> --a (an accronym , ...)
+ <code>@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }</code> &Eacute;--. ,A. (&Eacute;tude--, <b>Autonome</b>)
+ <code>@abbr{@'E--. @comma{}A.}</code> &Eacute;--. ,A.
+ 
+ <code>@math{--a@minus{} {\frac{1}{2}}}</code> <math>--a- {\frac{1}{2}}</math>
+ 
+ <code>@image{f-ile,,,alt@verb{:jk _&quot; %}}</code> [[Image:f-ile.jpg|alt=altjk _&quot; %@]]
+ <code>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</code> [[Image:f--ile.e--xt|alt=jk _&quot; %@ in b &quot;]]
+ <code>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</code> [[Image:filejk _&quot; %@.jpg|alt=altjk _&quot; %@]]
+ 
+ 
+ 
+ 
+ Somehow invalid use of @,:
+ 
+ @, ,
+ 
+ 
+ @,@&quot;u @,&quot;u
+ 
+ Invalid use of @':
+ 
+ @' '
+ 
+ 
+ @'@&quot;u @'&quot;u
+ 
+ @dotless{truc} truc
+ @dotless{ij} ij
+ <code>@dotless{--a}</code> --a
+ <code>@dotless{a}</code> a
+ 
+ @TeX, but without brace TeX
+ 
+ <code>@#</code> @#
+ 
+ <code>@w{--a}</code> --a
+ 
+ <code>@image{,1--xt}</code> 
+ <code>@image{,,2--xt}</code> 
+ <code>@image{,,,3--xt}</code> 
+ 
+ 
+ 
+</div>
+<div class="example">
+ @emph after emph e--mph item
+</div>
+<div class="example">
+ 
+</div>
+<div class="example">
+ &bull; a--n itemize line i--tem 1
+</div>
+<div class="example">
+ &bull; a--n itemize line i--tem 2
+</div>
+<div class="example">
+ 
+</div>
+;<div id="index--17"></div>fun<nowiki>:</nowiki>
+;<div id="index-machin-8"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and </em>
+;<div id="index-machin-9"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and  after</em>
+;<div id="index-machin-10"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and {</em>
+;<div id="index-machin-11"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and { and after</em>
+;<div id="index-followed-3"></div>truc<nowiki>:</nowiki> <strong>followed</strong><em> by a comment</em>
+<div class="example">
+ Various deff lines
+</div>
+;<div id="index-after-1"></div>truc<nowiki>:</nowiki> <strong>after</strong><em> a deff item</em>
+<div class="example">
+ 
+ <code>@ref{node}</code> @ref{node}
+ 
+ <code>@ref{,cross ref name}</code> @ref{,cross ref name}
+ <code>@ref{,,title}</code> @ref{,,title}
+ <code>@ref{,,,file name}</code> [../file name/index.#Top (file name)]
+ <code>@ref{,,,,manual}</code> <cite>manual</cite>
+ <code>@ref{node,cross ref name}</code> @ref{node,cross ref name}
+ <code>@ref{node,,title}</code> @ref{node,,title}
+ <code>@ref{node,,,file name}</code> [../file name/node.#node (file name)node]
+ <code>@ref{node,,,,manual}</code> section `node' in <cite>manual</cite>
+ <code>@ref{node,cross ref name,title,}</code> @ref{node,cross ref name,title,}
+ <code>@ref{node,cross ref name,,file name}</code> [../file name/node.#node cross ref name: (file name)node]
+ <code>@ref{node,cross ref name,,,manual}</code> section `node' in <cite>manual</cite>
+ <code>@ref{node,cross ref name,title,file name}</code> [../file name/node.#node cross ref name: (file name)node]
+ <code>@ref{node,cross ref name,title,,manual}</code> section `title' in <cite>manual</cite>
+ <code>@ref{node,cross ref name,title, file name, manual}</code> [../file name/node.#node cross ref name: (file name)node] section `title' in <cite>manual</cite>
+ <code>@ref{node,,title,file name}</code> [../file name/node.#node (file name)node]
+ <code>@ref{node,,title,,manual}</code> section `title' in <cite>manual</cite>
+ <code>@ref{chapter,,title, file name, manual}</code> [../file name/chapter.#chapter (file name)chapter] section `title' in <cite>manual</cite>
+ <code>@ref{node,,title, file name, manual}</code> [../file name/node.#node (file name)node] section `title' in <cite>manual</cite>
+ <code>@ref{node,,,file name,manual}</code> [../file name/node.#node (file name)node] section `node' in <cite>manual</cite>
+ <code>@ref{,cross ref name,title,}</code> @ref{,cross ref name,title,}
+ <code>@ref{,cross ref name,,file name}</code> [../file name/index.#Top cross ref name: (file name)]
+ <code>@ref{,cross ref name,,,manual}</code> <cite>manual</cite>
+ <code>@ref{,cross ref name,title,file name}</code> [../file name/index.#Top cross ref name: (file name)]
+ <code>@ref{,cross ref name,title,,manual}</code> section `title' in <cite>manual</cite>
+ <code>@ref{,cross ref name,title, file name, manual}</code> [../file name/index.#Top cross ref name: (file name)] section `title' in <cite>manual</cite>
+ <code>@ref{,,title,file name}</code> [../file name/index.#Top (file name)]
+ <code>@ref{,,title,,manual}</code> section `title' in <cite>manual</cite>
+ <code>@ref{,,title, file name, manual}</code> [../file name/index.#Top (file name)] section `title' in <cite>manual</cite>
+ <code>@ref{,,,file name,manual}</code> [../file name/index.#Top (file name)] <cite>manual</cite>
+ 
+ <code>@inforef{,cross ref name }</code> 
+ <code>@inforef{,,file name}</code> 
+ <code>@inforef{,cross ref name, file name}</code> 
+ <code>@inforef{}</code> 
+ 
+ 
+</div>
+</td></tr></table>
+
+<div id="index-t_002d_002druc"></div>
+<div id="index-T_002d_002druc"></div>
+<div id="index-_002e"></div>
+<div id="index-_003f"></div>
+<div id="index-a-6"></div>
+<div id="index-t_002d_002druc-1"></div>
+<div id="index-T_002d_002druc-1"></div>
+<div id="index-_002e-1"></div>
+<div id="index-_003f-1"></div>
+<div id="index-a-7"></div>
+
+
+cp
+<table cellpadding="1" cellspacing="1" border="0"><tr><th valign="top">Jump to:</th>
+<td>[[#Top-section_cp_symbol-1|<b>&quot;</b>]]</td>
+<td>[[#Top-section_cp_symbol-2|<b>-</b>]]</td>
+<td>[[#Top-section_cp_symbol-3|<b>.</b>]]</td>
+<td>[[#Top-section_cp_symbol-4|<b>?</b>]]</td>
+<td>[[#Top-section_cp_letter-A|<b>A</b>]]</td>
+<td>[[#Top-section_cp_letter-I|<b>I</b>]]</td>
+<td>[[#Top-section_cp_letter-T|<b>T</b>]]</td>
+</tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_cp_symbol-1"></div>&quot;</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-_0060_0060|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-_0060_0060-2|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_cp_symbol-2"></div>-</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-_002d_002doption|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-_002d_002doption-1|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_cp_symbol-3"></div>.</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#index-_002e|.]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_cp_symbol-4"></div>?</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#index-_003f|?]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_cp_letter-A"></div>A</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#index-a-6|a]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_cp_letter-I"></div>I</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-index-entry-between-item-and-itemx|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-index-entry-between-item-and-itemx-1|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-index-entry-within-deffn|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-index-entry-within-deffn-1|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-index-entry-within-itemize|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-index-entry-within-itemize-1|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-index-entry-within-multitable|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-index-entry-within-multitable-1|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_cp_letter-T"></div>T</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#index-t_002d_002druc|t&ndash;ruc]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-T_002d_002druc|T&ndash;ruc]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+</table>
+<table cellpadding="1" cellspacing="1" border="0"><tr><th valign="top">Jump to:</th>
+<td>[[#Top-section_cp_symbol-1|<b>&quot;</b>]]</td>
+<td>[[#Top-section_cp_symbol-2|<b>-</b>]]</td>
+<td>[[#Top-section_cp_symbol-3|<b>.</b>]]</td>
+<td>[[#Top-section_cp_symbol-4|<b>?</b>]]</td>
+<td>[[#Top-section_cp_letter-A|<b>A</b>]]</td>
+<td>[[#Top-section_cp_letter-I|<b>I</b>]]</td>
+<td>[[#Top-section_cp_letter-T|<b>T</b>]]</td>
+</tr></table>
+
+fn
+<table cellpadding="1" cellspacing="1" border="0"><tr><th valign="top">Jump to:</th>
+<td>[[#Top-section_fn_symbol-1|<b>&quot;</b>]]</td>
+<td>[[#Top-section_fn_symbol-2|<b>-</b>]]</td>
+<td>[[#Top-section_fn_symbol-3|<b>.</b>]]</td>
+<td>[[#Top-section_fn_symbol-4|<b>?</b>]]</td>
+<td>[[#Top-section_fn_letter-A|<b>A</b>]]</td>
+<td>[[#Top-section_fn_letter-B|<b>B</b>]]</td>
+<td>[[#Top-section_fn_letter-D|<b>D</b>]]</td>
+<td>[[#Top-section_fn_letter-F|<b>F</b>]]</td>
+<td>[[#Top-section_fn_letter-I|<b>I</b>]]</td>
+<td>[[#Top-section_fn_letter-L|<b>L</b>]]</td>
+<td>[[#Top-section_fn_letter-M|<b>M</b>]]</td>
+<td>[[#Top-section_fn_letter-T|<b>T</b>]]</td>
+</tr></table>
+<table class="index-fn" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_fn_symbol-1"></div>&quot;</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-_0060_0060-1|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-_0060_0060-3|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_fn_symbol-2"></div>-</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-_002d_002dfoption|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-_002d_002dfoption-1|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_fn_symbol-3"></div>.</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#index-_002e-1|<code>.</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_fn_symbol-4"></div>?</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#index-_003f-1|<code>?</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_fn_letter-A"></div>A</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-a|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-a-2|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-a-3|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-a-5|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-a-7|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-after|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-after-1|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_fn_letter-B"></div>B</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-b-1|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-b-3|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-bidule-machin|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-bidule-machin-1|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_fn_letter-D"></div>D</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deffn_005fname|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deffn_005fname-1|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defmac_005fname|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defmac_005fname-1|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defmethod_005fname-on-c_002d_002dlass|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defmethod_005fname-on-c_002d_002dlass-1|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defop_005fname-on-c_002d_002dlass|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defop_005fname-on-c_002d_002dlass-1|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defspec_005fname|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defspec_005fname-1|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypefn_005fname|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypefn_005fname-1|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypefun_005fname|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypefun_005fname-1|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass-1|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypeop_005fname-on-c_002d_002dlass|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypeop_005fname-on-c_002d_002dlass-1|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defun_005fname|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defun_005fname-1|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-de_002d_002dffn_005fname|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-de_002d_002dffn_005fname-1|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-deffn|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-deffn-1|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-deffn-2|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-deffn-3|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-deffnx|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-deffnx-1|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-deffnx-2|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-deffnx-3|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_fn_letter-F"></div>F</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-followed|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-followed-1|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-followed-2|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-followed-3|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_fn_letter-I"></div>I</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-i|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-i-1|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-i-2|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-i-3|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-id-i-ule|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-id-i-ule-1|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-id-ule|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-id-ule-1|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_fn_letter-L"></div>L</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-log-trap|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-log-trap-1|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-log-trap1|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-log-trap1-1|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-log-trap2|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-log-trap2-1|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_fn_letter-M"></div>M</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-machin|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-machin-1|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-machin-2|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-machin-3|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-machin-4|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-machin-5|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-machin-6|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-machin-7|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-machin-8|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-machin-9|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-machin-10|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-machin-11|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_fn_letter-T"></div>T</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#index-t_002d_002druc-1|<code>t--ruc</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-T_002d_002druc-1|<code>T--ruc</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-truc|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-truc-1|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-truc-2|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-truc-3|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+</table>
+<table cellpadding="1" cellspacing="1" border="0"><tr><th valign="top">Jump to:</th>
+<td>[[#Top-section_fn_symbol-1|<b>&quot;</b>]]</td>
+<td>[[#Top-section_fn_symbol-2|<b>-</b>]]</td>
+<td>[[#Top-section_fn_symbol-3|<b>.</b>]]</td>
+<td>[[#Top-section_fn_symbol-4|<b>?</b>]]</td>
+<td>[[#Top-section_fn_letter-A|<b>A</b>]]</td>
+<td>[[#Top-section_fn_letter-B|<b>B</b>]]</td>
+<td>[[#Top-section_fn_letter-D|<b>D</b>]]</td>
+<td>[[#Top-section_fn_letter-F|<b>F</b>]]</td>
+<td>[[#Top-section_fn_letter-I|<b>I</b>]]</td>
+<td>[[#Top-section_fn_letter-L|<b>L</b>]]</td>
+<td>[[#Top-section_fn_letter-M|<b>M</b>]]</td>
+<td>[[#Top-section_fn_letter-T|<b>T</b>]]</td>
+</tr></table>
+
+vr
+<table cellpadding="1" cellspacing="1" border="0"><tr><th valign="top">Jump to:</th>
+<td>[[#Top-section_vr_letter-A|<b>A</b>]]</td>
+<td>[[#Top-section_vr_letter-B|<b>B</b>]]</td>
+<td>[[#Top-section_vr_letter-D|<b>D</b>]]</td>
+</tr></table>
+<table class="index-vr" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_vr_letter-A"></div>A</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-a-1|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-a-4|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_vr_letter-B"></div>B</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-b|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-b-2|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_vr_letter-D"></div>D</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efcv_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efcv_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defcv_005fname|<code>d--efcv_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defcv_005fname-1|<code>d--efcv_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efivar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efivar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defivar_005fname|<code>d--efivar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defivar_005fname-1|<code>d--efivar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efopt_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efopt_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defopt_005fname|<code>d--efopt_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defopt_005fname-1|<code>d--efopt_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypeivar_name of c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypeivar_name of c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass|<code>d--eftypeivar_name of c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass-1|<code>d--eftypeivar_name of c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypevar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypevar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypevar_005fname|<code>d--eftypevar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypevar_005fname-1|<code>d--eftypevar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypevr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftypevr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypevr_005fname|<code>d--eftypevr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftypevr_005fname-1|<code>d--eftypevr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efvar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efvar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defvar_005fname|<code>d--efvar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defvar_005fname-1|<code>d--efvar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efvr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--efvr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defvr_005fname|<code>d--efvr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002defvr_005fname-1|<code>d--efvr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+</table>
+<table cellpadding="1" cellspacing="1" border="0"><tr><th valign="top">Jump to:</th>
+<td>[[#Top-section_vr_letter-A|<b>A</b>]]</td>
+<td>[[#Top-section_vr_letter-B|<b>B</b>]]</td>
+<td>[[#Top-section_vr_letter-D|<b>D</b>]]</td>
+</tr></table>
+
+ky
+
+pg
+
+tp
+<table cellpadding="1" cellspacing="1" border="0"><tr><th valign="top">Jump to:</th>
+<td>[[#Top-section_tp_letter-D|<b>D</b>]]</td>
+</tr></table>
+<table class="index-tp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+<tr><th><div id="Top-section_tp_letter-D"></div>D</th><td></td><td></td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftp_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#Top section|<code>d--eftp_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftp_005fname|<code>d--eftp_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
+<tr><td></td><td valign="top">[[#index-d_002d_002deftp_005fname-1|<code>d--eftp_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
+<tr><td colspan="4"> 
+----
+</td></tr>
+</table>
+<table cellpadding="1" cellspacing="1" border="0"><tr><th valign="top">Jump to:</th>
+<td>[[#Top-section_tp_letter-D|<b>D</b>]]</td>
+</tr></table>
+
+
+
+<references/>
+
+
+----
+
+<div class="header">
+<p>
+Next: [[formatting: chapter#chapter|chapter]], Up: [../dir/index.#Top (dir)] &nbsp; |[[formatting: chapter 2#SEC_Contents|Contents]]||[[#Top section|Index]]|</p>
+</div>
+This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

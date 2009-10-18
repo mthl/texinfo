@@ -22,7 +22,9 @@ than one person is working in a repository.
  [[#When to commit?|&bull; When to commit]]::              Some discussion on the subject
 </div>
 
-<hr>
+
+----
+
 <div id="When-to-commit"></div>
 <div class="header">
 <p>
@@ -57,7 +59,9 @@ development environment too controlled it might become
 too regimented and thus counter-productive to the real
 goal, which is to get software written.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Up: [[#Revision management|Revision management]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

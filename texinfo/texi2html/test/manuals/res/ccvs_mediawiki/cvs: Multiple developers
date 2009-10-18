@@ -72,7 +72,9 @@ choosing between them.
  [[#Choosing between reserved or unreserved checkouts|&bull; Choosing a model]]::            Reserved or unreserved checkouts?
 </div>
 
-<hr>
+
+----
+
 <div id="File-status"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple developers| &lt;&lt; ]]|</td>
@@ -176,7 +178,9 @@ option avoids printing the name of each directory.  For
 more information on the <code>update</code> command, and
 these options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Quick reference to CVS commands]].
 
-<hr>
+
+----
+
 <div id="Updating-a-file"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple developers| &lt;&lt; ]]|</td>
@@ -227,7 +231,9 @@ special markers.
 See section [[cvs: Guide to CVS commands#update&mdash;Bring work tree in sync with repository|update&mdash;Bring work tree in sync with repository]], for a complete description of the
 <code>update</code> command.
 
-<hr>
+
+----
+
 <div id="Conflicts-example"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple developers| &lt;&lt; ]]|</td>
@@ -424,7 +430,9 @@ Emacs front-end for <small>CVS</small>) you can use an Emacs
 package called emerge to help you resolve conflicts.
 See the documentation for pcl-cvs.
 
-<hr>
+
+----
+
 <div id="Informing-others"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple developers| &lt;&lt; ]]|</td>
@@ -456,7 +464,9 @@ to, for instance, instruct <small>CVS</small> to mail a
 message to all developers, or post a message to a local
 newsgroup.
 
-<hr>
+
+----
+
 <div id="Concurrency"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple developers| &lt;&lt; ]]|</td>
@@ -541,7 +551,9 @@ time, the person running <code>update</code> might get only
 the change to &lsquo;<tt>b/three.c</tt>&rsquo; and not the change to
 &lsquo;<tt>a/two.c</tt>&rsquo;.
 
-<hr>
+
+----
+
 <div id="Watches"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple developers| &lt;&lt; ]]|</td>
@@ -590,7 +602,9 @@ but <small>CVS</small> is not able to enforce this behavior.
  [[#Using watches with old versions of CVS|&bull; Watches Compatibility]]::       Watches interact poorly with CVS 1.6 or earlier
 </div>
 
-<hr>
+
+----
+
 <div id="Setting-a-watch"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple developers| &lt;&lt; ]]|</td>
@@ -632,7 +646,9 @@ certain files are to be watched.
 : The <var>files</var> and options are processed as for <code>cvs watch on</code>.
 
 
-<hr>
+
+----
+
 <div id="Getting-Notified"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple developers| &lt;&lt; ]]|</td>
@@ -749,7 +765,9 @@ would be more useful if watches tracked each working
 directory separately, so this behavior might be worth
 changing.
 
-<hr>
+
+----
+
 <div id="Editing-files"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple developers| &lt;&lt; ]]|</td>
@@ -813,7 +831,9 @@ When using client/server <small>CVS</small>, you can use the
 server; the notifications will be sent upon the next
 successful <small>CVS</small> command.
 
-<hr>
+
+----
+
 <div id="Watch-information"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple developers| &lt;&lt; ]]|</td>
@@ -850,7 +870,9 @@ successful <small>CVS</small> command.
 : The <var>files</var> and options are processed as for the <code>cvs watch</code> commands.
 
 
-<hr>
+
+----
+
 <div id="Watches-Compatibility"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple developers| &lt;&lt; ]]|</td>
@@ -892,7 +914,9 @@ you cannot upgrade, use the <code>watch off</code> and
 that will restore the repository to a state which
 <small>CVS</small> 1.6 can cope with.
 
-<hr>
+
+----
+
 <div id="Choosing-a-model"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple developers| &lt;&lt; ]]|</td>
@@ -966,7 +990,9 @@ Therefore, for some groups it can be considered the
 best of both the reserved checkout and unreserved
 checkout worlds.
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Multiple developers| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs: Revision management#Revision management| &gt;&gt; ]]|</td>

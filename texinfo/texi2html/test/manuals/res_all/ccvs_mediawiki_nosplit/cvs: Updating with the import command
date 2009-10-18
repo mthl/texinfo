@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Reverting to the latest vendor release#Reverting to the latest vendor release|Reverting local changes]], Previous: [[cvs: Importing for the first time#Importing for the first time|First import]], Up: [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Updating-with-the-import-command"></div>
 === Updating with the import command ===
 
@@ -50,7 +52,9 @@ that were removed between the two vendor releases and mark them for
 removal.  Since <code>import</code> has no way to detect removed files, you
 should do a merge like this even if <code>import</code> doesn&rsquo;t tell you to.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Reverting to the latest vendor release#Reverting to the latest vendor release|Reverting local changes]], Previous: [[cvs: Importing for the first time#Importing for the first time|First import]], Up: [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

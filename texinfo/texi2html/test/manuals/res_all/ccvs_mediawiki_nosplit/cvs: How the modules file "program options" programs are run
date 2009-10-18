@@ -3,7 +3,9 @@
 <p>
 Previous: [[cvs: Module options#Module options|Module options]], Up: [[cvs: The modules file#The modules file|modules]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="How-the-modules-file-_0060_0060program-options_0027_0027-programs-are-run"></div>
 ==== How the modules file &ldquo;program options&rdquo; programs are run ====
 <div id="index-Modules-file-program-options"></div>

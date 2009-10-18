@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Telling CVS to notify you#Telling CVS to notify you|Getting Notified]], Up: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|Watches]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Telling-CVS-to-watch-certain-files"></div>
 ==== Telling CVS to watch certain files ====
 

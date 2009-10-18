@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.31 2009-10-14 13:08:37 pertusus Exp $
+# $Id: html.init,v 1.32 2009-10-18 21:52:35 pertusus Exp $
 
 use strict;
 
@@ -1545,6 +1545,7 @@ sub html_default_math($$)
     my $args = shift;
     my $text = shift @$args;
 #print STDERR "html_default_math $text\n";
+    # FIXME this is wrong, as agreed by Karl.
     $text =~ s/[{}]//g; 
 #    $text =~ s/\@\\/\\/g; 
     return "<em>$text</em>";
@@ -1758,12 +1759,14 @@ sub html_default_insertcopying($$$)
     return $text;
 }
 
-sub html_default_normal_text($$$$$$;$)
+sub html_default_normal_text($$$$$$$;$)
 {
+   my @initial_args = @_;
    my $text = shift;
    my $in_raw_text = shift; # remove_texi
    my $in_preformatted = shift;
    my $in_code = shift;
+   my $in_math = shift;
    my $in_simple = shift;
    my $style_stack = shift;
    my $state = shift;
@@ -1771,7 +1774,7 @@ sub html_default_normal_text($$$$$$;$)
   # like utf8.init
    if ($ENABLE_ENCODING and !$ENABLE_ENCODING_USE_ENTITY and defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and $Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8')
    {
-      return t2h_utf8_normal_text($text, $in_raw_text, $in_preformatted, $in_code, $in_simple, $style_stack, $state);
+      return &t2h_utf8_normal_text(@initial_args);
    }
 
    $text = uc($text) if (in_cmd($style_stack, 'sc'));
@@ -2755,7 +2758,7 @@ sub html_default_index_letter($$$)
      my $id = shift;
      my $text = shift;
      return $text if ($letter =~ /^\s*$/);
-     return '<tr><th>' . &$anchor($id,'',&$normal_text($letter, 0, 0, 0, 0, [])) . 
+     return '<tr><th>' . &$anchor($id,'',&$normal_text($letter, 0, 0, 0, 0, 0, [])) . 
      "</th><td></td><td></td></tr>\n" . $text . 
      "<tr><td colspan=\"4\"> $DEFAULT_RULE</td></tr>\n";
 }

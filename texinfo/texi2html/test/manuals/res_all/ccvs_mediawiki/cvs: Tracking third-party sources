@@ -44,7 +44,9 @@ revision.
  [[#Multiple vendor branches|&bull; Multiple vendor branches]]::    What if you get sources from several places?
 </div>
 
-<hr>
+
+----
+
 <div id="First-import"></div>
 <div class="header">
 <p>
@@ -89,7 +91,9 @@ The vendor tag is named &lsquo;<code>FSF_DIST</code>&rsquo; in the above
 example, and the only release tag assigned is
 &lsquo;<code>WDIFF_0_04</code>&rsquo;.
 
-<hr>
+
+----
+
 <div id="Update-imports"></div>
 <div class="header">
 <p>
@@ -141,7 +145,9 @@ that were removed between the two vendor releases and mark them for
 removal.  Since <code>import</code> has no way to detect removed files, you
 should do a merge like this even if <code>import</code> doesn&rsquo;t tell you to.
 
-<hr>
+
+----
+
 <div id="Reverting-local-changes"></div>
 <div class="header">
 <p>
@@ -167,7 +173,9 @@ you would type:
 You must specify the &lsquo;<code>-bWDIFF</code>&rsquo; without any space
 after the &lsquo;<code>-b</code>&rsquo;.  See [[cvs: Guide to CVS commands#admin options|admin options]].
 
-<hr>
+
+----
+
 <div id="Binary-files-in-imports"></div>
 <div class="header">
 <p>
@@ -179,7 +187,9 @@ Next: [[#How to handle keyword substitution with cvs import|Keywords in imports]
 Use the &lsquo;<code>-k</code>&rsquo; wrapper option to tell import which
 files are binary.  See [[cvs: Reference manual for Administrative files#The cvswrappers file|Wrappers]].
 
-<hr>
+
+----
+
 <div id="Keywords-in-imports"></div>
 <div class="header">
 <p>
@@ -209,7 +219,9 @@ selective you&rsquo;ll have to think about what you want
 and use the &lsquo;<code>-k</code>&rsquo; option to <code>cvs update</code> or
 <code>cvs admin</code> as appropriate.
 
-<hr>
+
+----
+
 <div id="Multiple-vendor-branches"></div>
 <div class="header">
 <p>
@@ -263,7 +275,9 @@ discover such a use, don&rsquo;t.  <small>CVS</small> is likely to make this
 an error in some future release.
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[#How to handle keyword substitution with cvs import|Keywords in imports]], Up: [[#Tracking third-party sources|Tracking sources]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

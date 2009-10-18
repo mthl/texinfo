@@ -1196,15 +1196,18 @@ sub xml_float($$$$$)
     return $result."</float>\n";
 }
 
-sub xml_normal_text($$$$$$)
+sub xml_normal_text($$$$$$$;$)
 {
    my $text = shift;
    my $in_raw_text = shift;
    my $in_preformatted = shift;
    my $in_code = shift;
+   my $in_math = shift;
    my $in_simple = shift;
 #print STDERR "Bug: in_raw_text in_simple $text\n" if ($in_raw_text and $in_simple);
    my $style_stack = shift;
+   my $state = shift;
+
    $text = &$protect_text($text) unless($in_raw_text);
 
    if (! $in_code and !$in_preformatted and !$in_raw_text)

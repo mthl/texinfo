@@ -3,7 +3,9 @@
 <p>
 Previous: [[cvs: Merging can add or remove files#Merging can add or remove files|Merging adds and removals]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Merging-and-keywords-1"></div>
 === Merging and keywords ===
 <div id="index-Merging_002c-and-keyword-substitution"></div>
@@ -112,7 +114,9 @@ modes.  You can now safely merge using &lsquo;<code>-kk</code>&rsquo; to avoid s
 on lines containing RCS keywords, even when your repository contains
 binary files.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[cvs: Merging can add or remove files#Merging can add or remove files|Merging adds and removals]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

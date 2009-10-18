@@ -3,7 +3,9 @@
 <p>
 Previous: [[cvs: update options#update options|update options]], Up: [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="update-output-1"></div>
 ==== update output ====
 
@@ -38,7 +40,9 @@ by one character indicating the status of the file:
 ;<code>? <var>file</var></code>
 : <var>file</var> is in your working directory, but does not correspond to anything in the source repository, and is not in the list of files for <small>CVS</small> to ignore (see the description of the &lsquo;<code>-I</code>&rsquo; option, and see [[cvs: Ignoring files via cvsignore#Ignoring files via cvsignore|cvsignore]]).
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[cvs: update options#update options|update options]], Up: [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|update]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

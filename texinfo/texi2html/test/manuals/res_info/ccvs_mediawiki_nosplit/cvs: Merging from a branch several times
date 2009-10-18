@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Merging differences between any two revisions#Merging differences between any two revisions|Merging two revisions]], Previous: [[cvs: Merging an entire branch#Merging an entire branch|Merging a branch]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Merging-from-a-branch-several-times"></div>
 === Merging from a branch several times ===
 
@@ -77,7 +79,9 @@ the trunk, and then use that tag for subsequent merges:
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Merging differences between any two revisions#Merging differences between any two revisions|Merging two revisions]], Previous: [[cvs: Merging an entire branch#Merging an entire branch|Merging a branch]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

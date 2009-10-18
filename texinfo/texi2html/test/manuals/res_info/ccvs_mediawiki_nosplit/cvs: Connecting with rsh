@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Direct connection with password authentication#Direct connection with password authentication|Password authenticated]], Previous: [[cvs: Server requirements#Server requirements|Server requirements]], Up: [[cvs: Remote repositories#Remote repositories|Remote repositories]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Connecting-with-rsh"></div>
 ==== Connecting with rsh ====
 
@@ -90,7 +92,9 @@ the module &lsquo;<tt>foo</tt>&rsquo; in the repository
 the same on both the local and remote hosts.)
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Direct connection with password authentication#Direct connection with password authentication|Password authenticated]], Previous: [[cvs: Server requirements#Server requirements|Server requirements]], Up: [[cvs: Remote repositories#Remote repositories|Remote repositories]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

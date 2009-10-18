@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: A sample session#A sample session|A sample session]], Previous: [[cvs: What is CVS?#What is CVS?|What is CVS?]], Up: [[cvs: Overview#Overview|Overview]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="What-is-CVS-not_003f-1"></div>
 === What is CVS not? ===
 <div id="index-What-is-CVS-not_003f"></div>
@@ -64,7 +66,9 @@ not try to be everything for everyone.
 
 : Some systems provide ways to ensure that changes or releases go through various steps, with various approvals as needed.  Generally, one can accomplish this with <small>CVS</small> but it might be a little more work. In some cases you&rsquo;ll want to use the &lsquo;<tt>commitinfo</tt>&rsquo;, &lsquo;<tt>loginfo</tt>&rsquo;, &lsquo;<tt>rcsinfo</tt>&rsquo;, or &lsquo;<tt>verifymsg</tt>&rsquo; files, to require that certain steps be performed before cvs will allow a checkin.  Also consider whether features such as branches and tags can be used to perform tasks such as doing work in a development tree and then merging certain changes over to a stable tree only once they have been proven.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: A sample session#A sample session|A sample session]], Previous: [[cvs: What is CVS?#What is CVS?|What is CVS?]], Up: [[cvs: Overview#Overview|Overview]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

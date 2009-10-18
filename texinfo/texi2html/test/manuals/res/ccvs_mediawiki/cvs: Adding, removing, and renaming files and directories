@@ -34,7 +34,9 @@ this in <small>CVS</small> vary depending on the situation.
  [[#Moving and renaming directories|&bull; Moving directories]]::          Moving and renaming directories
 </div>
 
-<hr>
+
+----
+
 <div id="Adding-files"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding, removing, and renaming files and directories| &lt;&lt; ]]|</td>
@@ -107,7 +109,9 @@ which you are working on (see section [[cvs: Branching and merging#Branching and
 later merge the additions to another branch if you want
 (see section [[cvs: Branching and merging#Merging can add or remove files|Merging can add or remove files]]).
 
-<hr>
+
+----
+
 <div id="Removing-files"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding, removing, and renaming files and directories| &lt;&lt; ]]|</td>
@@ -229,7 +233,9 @@ which you are working on (see section [[cvs: Branching and merging#Branching and
 later merge the removals to another branch if you want
 (see section [[cvs: Branching and merging#Merging can add or remove files|Merging can add or remove files]]).
 
-<hr>
+
+----
+
 <div id="Removing-directories"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding, removing, and renaming files and directories| &lt;&lt; ]]|</td>
@@ -277,7 +283,9 @@ options of <code>checkout</code>.  This way
 or not depending on whether the particular version you
 are checking out contains any files in that directory.
 
-<hr>
+
+----
+
 <div id="Moving-files"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding, removing, and renaming files and directories| &lt;&lt; ]]|</td>
@@ -314,7 +322,9 @@ The examples below assume that the file <var>old</var> is renamed to
  [[#Copying the history file|&bull; Rename by copying]]::           Another tricky, alternative way
 </div>
 
-<hr>
+
+----
+
 <div id="Outside"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding, removing, and renaming files and directories| &lt;&lt; ]]|</td>
@@ -361,7 +371,9 @@ start again, usually at 1.1, so if that bothers you,
 use the &lsquo;<code>-r rev</code>&rsquo; option to commit.  For more
 information see [[cvs: Revisions#Assigning revisions|Assigning revisions]].
 
-<hr>
+
+----
+
 <div id="Inside"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding, removing, and renaming files and directories| &lt;&lt; ]]|</td>
@@ -410,7 +422,9 @@ Disadvantages:
 
 * Nasty things might happen if someone accesses the history file while you are moving it.  Make sure no one else runs any of the <small>CVS</small> commands while you move it.
 
-<hr>
+
+----
+
 <div id="Rename-by-copying"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding, removing, and renaming files and directories| &lt;&lt; ]]|</td>
@@ -471,7 +485,9 @@ Disadvantages:
 * You cannot easily see the history of the file across the rename.
 
 
-<hr>
+
+----
+
 <div id="Moving-directories"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding, removing, and renaming files and directories| &lt;&lt; ]]|</td>
@@ -532,7 +548,9 @@ directory you are unlikely to be able to retrieve old
 releases correctly, since they probably depend on the
 name of the directories.
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#Adding, removing, and renaming files and directories| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs: History browsing#History browsing| &gt;&gt; ]]|</td>

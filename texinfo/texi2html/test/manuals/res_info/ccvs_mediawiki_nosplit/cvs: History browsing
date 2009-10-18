@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Handling binary files#Handling binary files|Binary files]], Previous: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="History-browsing-1"></div>
 == History browsing ==
 <div id="index-History-browsing"></div>

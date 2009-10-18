@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Loginfo#Loginfo|loginfo]], Previous: [[cvs: Verifying log messages#Verifying log messages|verifymsg]], Up: [[cvs: The commit support files#The commit support files|commit files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Editinfo"></div>
 ==== Editinfo ====
 <div id="index-editinfo-_0028admin-file_0029"></div>
@@ -68,7 +70,9 @@ There is no good workaround for this; use
  [[cvs: Editinfo example#Editinfo example|&bull; editinfo example]]::            Editinfo example
 </div>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Loginfo#Loginfo|loginfo]], Previous: [[cvs: Verifying log messages#Verifying log messages|verifymsg]], Up: [[cvs: The commit support files#The commit support files|commit files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

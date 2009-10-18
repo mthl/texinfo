@@ -77,7 +77,9 @@ tool which is designed to help with this kind of thing
 is Odin (see
 <code>ftp://ftp.cs.colorado.edu/pub/distribs/odin</code>).
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[cvs: Tracking third-party sources#Tracking third-party sources| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs: Special Files#Special Files| &gt;&gt; ]]|</td>

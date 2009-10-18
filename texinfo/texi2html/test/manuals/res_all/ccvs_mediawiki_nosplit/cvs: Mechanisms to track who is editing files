@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Choosing between reserved or unreserved checkouts#Choosing between reserved or unreserved checkouts|Choosing a model]], Previous: [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Concurrency]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Mechanisms-to-track-who-is-editing-files"></div>
 === Mechanisms to track who is editing files ===
 <div id="index-Watches"></div>
@@ -36,7 +38,9 @@ but <small>CVS</small> is not able to enforce this behavior.
  [[cvs: Using watches with old versions of CVS#Using watches with old versions of CVS|&bull; Watches Compatibility]]::       Watches interact poorly with CVS 1.6 or earlier
 </div>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Choosing between reserved or unreserved checkouts#Choosing between reserved or unreserved checkouts|Choosing a model]], Previous: [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Concurrency]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

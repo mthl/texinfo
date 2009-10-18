@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Multiple developers#Multiple developers|Multiple developers]], Previous: [[cvs: History browsing#History browsing|History browsing]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Handling-binary-files"></div>
 == Handling binary files ==
 <div id="index-Binary-files"></div>

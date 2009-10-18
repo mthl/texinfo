@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Compatibility between CVS Versions#Compatibility between CVS Versions|Compatibility]], Previous: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="All-environment-variables-which-affect-CVS"></div>
 == All environment variables which affect CVS ==
 <div id="index-Environment-variables"></div>
@@ -111,7 +113,9 @@ that affect <small>CVS</small>.
 ;<code>$CVS_PID</code>
 : This is the process identification (aka pid) number of the <small>CVS</small> process. It is often useful in the programs and/or scripts specified by the &lsquo;<tt>commitinfo</tt>&rsquo;, &lsquo;<tt>verifymsg</tt>&rsquo;, &lsquo;<tt>loginfo</tt>&rsquo; files.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Compatibility between CVS Versions#Compatibility between CVS Versions|Compatibility]], Previous: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

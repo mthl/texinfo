@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.344 2009-10-14 13:08:36 pertusus Exp $
+# $Id: texi2html.pl,v 1.345 2009-10-18 21:52:34 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -574,10 +574,9 @@ $complex_format_map
 %simple_map_pre
 %simple_map_texi
 %simple_map_math
-%simple_map_pre_math
-%simple_map_texi_math
 %style_map
 %style_map_pre
+%style_map_math
 %style_map_texi
 %simple_format_simple_map_texi
 %simple_format_style_map_texi
@@ -591,6 +590,7 @@ $complex_format_map
 %texi_formats_map
 %things_map
 %pre_map
+%math_map
 %texi_map
 %unicode_map
 %unicode_diacritical
@@ -646,6 +646,8 @@ $after_punctuation_characters
 use vars qw(
 $address
 %iso_symbols
+%simple_map_pre_math
+%simple_map_texi_math
 $ENCODING
 $CENTER_IMAGE
 $HREF_DIR_INSTEAD_FILE
@@ -1576,28 +1578,32 @@ require "$T2H_HOME/$translation_file"
 
 # these are unlikely to be used by users, as they are essentially
 # used to follow the html external refs specification in texinfo
-sub t2h_cross_manual_normal_text($$$$$)
+sub t2h_cross_manual_normal_text($$$$$$$;$)
 {
     my $text = shift;
     my $in_raw_text = shift;
     my $in_preformatted = shift;
     my $in_code =shift;
+    my $in_math = shift;
     my $in_simple =shift;
     my $style_stack = shift;
+    my $state = shift;
 
     $text = uc($text) if (in_small_caps($style_stack));
     return $text if ($USE_UNICODE);
     return t2h_no_unicode_cross_manual_normal_text($text, 0);
 }
 
-sub t2h_cross_manual_normal_text_transliterate($$$$$)
+sub t2h_cross_manual_normal_text_transliterate($$$$$$$;$)
 {
     my $text = shift;
     my $in_raw_text = shift;
     my $in_preformatted = shift;
     my $in_code =shift;
+    my $in_math = shift;
     my $in_simple =shift;
     my $style_stack = shift;
+    my $state = shift;
 
     $text = uc($text) if (in_small_caps($style_stack));
     return $text if ($USE_UNICODE);
@@ -1918,10 +1924,12 @@ my @element_directions = ('Up', 'Forward', 'Back', 'Next', 'Prev',
 'This', 'NodeUp', 'NodePrev', 'NodeNext', 'Following', 'NextFile', 'PrevFile',
 'ToplevelNext', 'ToplevelPrev');
 $::simple_map_ref = \%Texi2HTML::Config::simple_map;
-$::simple_map_pre_ref = \%Texi2HTML::Config::simple_map_pre;
+$::simple_map_math_ref = \%Texi2HTML::Config::simple_map_math;
+#$::simple_map_pre_ref = \%Texi2HTML::Config::simple_map_pre;
 $::simple_map_texi_ref = \%Texi2HTML::Config::simple_map_texi;
 $::style_map_ref = \%Texi2HTML::Config::style_map;
 $::style_map_pre_ref = \%Texi2HTML::Config::style_map_pre;
+$::style_map_math_ref = \%Texi2HTML::Config::style_map_math;
 $::style_map_texi_ref = \%Texi2HTML::Config::style_map_texi;
 $::things_map_ref = \%Texi2HTML::Config::things_map;
 $::pre_map_ref = \%Texi2HTML::Config::pre_map;
@@ -10467,7 +10475,7 @@ sub do_text($;$)
     {
         $preformatted_style = $state->{'preformatted_stack'}->[-1]->{'style'};
     }
-    return (&$Texi2HTML::Config::normal_text($text, $remove_texi, $preformatted_style, $state->{'code_style'},$state->{'simple_format'},$state->{'command_stack'}, $state));
+    return (&$Texi2HTML::Config::normal_text($text, $remove_texi, $preformatted_style, $state->{'code_style'}, $state->{'math_style'}, $state->{'simple_format'},$state->{'command_stack'}, $state));
 }
 
 sub end_simple_format($$$)
@@ -13733,7 +13741,7 @@ sub scan_line($$$$;$)
                 add_prev($text, $stack, do_thing_command($macro, '', $state, $line_nr));
             }
             # an @-command like @command
-            elsif (defined($::simple_map_ref->{$macro}))
+            elsif (defined($::simple_map_ref->{$macro}) or ($state->{'math_style'} and defined($::simple_map_math_ref->{$macro})))
             {
                 add_prev($text, $stack, do_simple_command($macro, $state, $line_nr));
             }
@@ -14201,13 +14209,10 @@ sub open_arg($$$)
              elsif ($arg eq 'math')
              {
                  $state->{'math_style'}++;
+                 $state->{'code_style'}++;
                  if ($state->{'math_style'} == 1)
                  {
                      $state->{'math_brace'} = 0;
-                     # FIXME quick hack to define @\ in @math 
-                     $::simple_map_ref->{'\\'} = $Texi2HTML::Config::simple_map_math{'\\'};
-                     $::simple_map_pre_ref->{'\\'} = $Texi2HTML::Config::simple_map_pre_math{'\\'};
-                     $::simple_map_texi_ref->{'\\'} = $Texi2HTML::Config::simple_map_texi_math{'\\'};
                  }
              }
          }
@@ -14240,12 +14245,7 @@ sub close_arg($$$)
              elsif ($arg eq 'math')
              {
                  $state->{'math_style'}--;
-                 if ($state->{'math_style'} == 0)
-                 {
-                     delete $::simple_map_ref->{'\\'};
-                     delete $::simple_map_pre_ref->{'\\'};
-                     delete $::simple_map_texi_ref->{'\\'};
-                 }
+                 $state->{'code_style'}--;
              }
          }
 #print STDERR "c $arg_nr $macro $arg $state->{'code_style'}\n";
@@ -14528,7 +14528,7 @@ sub do_simple_command($$$)
     }
     else
     {
-        return &$Texi2HTML::Config::simple_command($macro, $state->{'preformatted'}, $line_nr, $state);
+        return &$Texi2HTML::Config::simple_command($macro, $state->{'preformatted'}, $state->{'math_style'}, $line_nr, $state);
     }
 }
 
@@ -14546,7 +14546,7 @@ sub do_thing_command($$$$)
     }
     else
     {
-        return &$Texi2HTML::Config::thing_command($macro, $text, $state->{'preformatted'}, $line_nr, $state);
+        return &$Texi2HTML::Config::thing_command($macro, $text, $state->{'preformatted'}, $state->{'math_style'}, $line_nr, $state);
     }
 }
 
@@ -14572,6 +14572,10 @@ sub do_style_command($$$$$$$$)
         {
 #print STDERR "REMOVE $macro, $style_map_texi_ref->{$macro}, fun $style_map_texi_ref->{$macro}->{'function'} remove cmd " . \&Texi2HTML::Config::t2h_remove_command . " ascii acc " . \&t2h_default_accent;
             $style = $::style_map_texi_ref->{$macro};
+        }
+        elsif ($state->{'math_style'} and defined($::style_map_math_ref->{$macro}))
+        {
+            $style = $::style_map_math_ref->{$macro};
         }
         elsif ($state->{'preformatted'})
         {

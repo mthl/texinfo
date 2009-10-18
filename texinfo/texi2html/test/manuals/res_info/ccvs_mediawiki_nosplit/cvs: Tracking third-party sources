@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: How your build system interacts with CVS#How your build system interacts with CVS|Builds]], Previous: [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Tracking-third_002dparty-sources"></div>
 == Tracking third-party sources ==
 <div id="index-Third_002dparty-sources"></div>
@@ -45,7 +47,9 @@ revision.
  [[cvs: Multiple vendor branches#Multiple vendor branches|&bull; Multiple vendor branches]]::    What if you get sources from several places?
 </div>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: How your build system interacts with CVS#How your build system interacts with CVS|Builds]], Previous: [[cvs: Keyword substitution#Keyword substitution|Keyword substitution]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

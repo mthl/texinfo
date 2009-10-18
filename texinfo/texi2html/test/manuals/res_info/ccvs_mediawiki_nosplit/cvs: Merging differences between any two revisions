@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Merging can add or remove files#Merging can add or remove files|Merging adds and removals]], Previous: [[cvs: Merging from a branch several times#Merging from a branch several times|Merging more than once]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Merging-differences-between-any-two-revisions"></div>
 === Merging differences between any two revisions ===
 <div id="index-Merging-two-revisions"></div>

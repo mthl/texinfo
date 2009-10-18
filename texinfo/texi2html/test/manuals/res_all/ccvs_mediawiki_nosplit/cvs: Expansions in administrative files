@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|config]], Previous: [[cvs: The history file#The history file|history file]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Expansions-in-administrative-files"></div>
 === Expansions in administrative files ===
 <div id="index-Internal-variables"></div>
@@ -102,7 +104,9 @@ Environment variables passed to administrative files are:
 <div id="index-USER_002c-environment-variable"></div>
 : Same as <code>LOGNAME</code>. Do not confuse this with the internal variable of the same name.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|config]], Previous: [[cvs: The history file#The history file|history file]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

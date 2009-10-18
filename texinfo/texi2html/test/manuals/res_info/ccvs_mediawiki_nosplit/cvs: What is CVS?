@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: What is CVS not?#What is CVS not?|What is CVS not?]], Up: [[cvs: Overview#Overview|Overview]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="What-is-CVS_003f-1"></div>
 === What is CVS? ===
 <div id="index-What-is-CVS_003f"></div>
@@ -87,7 +89,9 @@ You can also subscribe to the <code>bug-cvs</code> mailing list,
 described in more detail in [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|BUGS]].  To subscribe
 send mail to <code>bug-cvs-request@gnu.org</code>.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: What is CVS not?#What is CVS not?|What is CVS not?]], Up: [[cvs: Overview#Overview|Overview]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

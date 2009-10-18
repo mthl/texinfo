@@ -76,7 +76,9 @@ Conversely, the &lsquo;<code>-R</code>&rsquo; option can be used to force recurs
 </div>
 </td></tr></table>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]], Previous: [[cvs: Branching and merging#Branching and merging|Branching and merging]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: history--Show status of files and users#history&mdash;Show status of files and users|history]], Previous: [[cvs: diff--Show differences between revisions#diff&mdash;Show differences between revisions|diff]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="export_002d_002d_002dExport-sources-from-CVS_002c-similar-to-checkout"></div>
 === export&mdash;Export sources from CVS, similar to checkout ===
 <div id="index-export-_0028subcommand_0029"></div>

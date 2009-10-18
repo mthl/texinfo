@@ -153,7 +153,7 @@ but , ,
 <literal>@i{--a}</literal> <wordasword>&ndash;a</wordasword>
 <literal>@kbd{--a}</literal> <userinput>--a</userinput>
 <literal>@key{--a}</literal> <keycap>--a</keycap>
-<literal>@math{--a {\frac{1}{2}} @minus{}}</literal> &ndash;a \frac12 &minus;
+<literal>@math{--a {\frac{1}{2}} @minus{}}</literal> --a \frac12 &minus;
 <literal>@option{--a}</literal> <option>--a</option>
 <literal>@r{--a}</literal> &ndash;a
 <literal>@samp{--a}</literal> &lsquo;<literal>--a</literal>&rsquo;
@@ -681,7 +681,7 @@ but , ,
 <literal>@i{--a}</literal> <wordasword>&ndash;a</wordasword>
 <literal>@kbd{--a}</literal> <userinput>--a</userinput>
 <literal>@key{--a}</literal> <keycap>--a</keycap>
-<literal>@math{--a {\frac{1}{2}} @minus{}}</literal> &ndash;a \frac12 &minus;
+<literal>@math{--a {\frac{1}{2}} @minus{}}</literal> --a \frac12 &minus;
 <literal>@option{--a}</literal> <option>--a</option>
 <literal>@r{--a}</literal> &ndash;a
 <literal>@samp{--a}</literal> &lsquo;<literal>--a</literal>&rsquo;
@@ -1205,7 +1205,7 @@ but , ,
 <literal>@i{--a}</literal> <wordasword>&ndash;a</wordasword>
 <literal>@kbd{--a}</literal> <userinput>--a</userinput>
 <literal>@key{--a}</literal> <keycap>--a</keycap>
-<literal>@math{--a {\frac{1}{2}} @minus{}}</literal> &ndash;a \frac12 &minus;
+<literal>@math{--a {\frac{1}{2}} @minus{}}</literal> --a \frac12 &minus;
 <literal>@option{--a}</literal> <option>--a</option>
 <literal>@r{--a}</literal> &ndash;a
 <literal>@samp{--a}</literal> &lsquo;<literal>--a</literal>&rsquo;

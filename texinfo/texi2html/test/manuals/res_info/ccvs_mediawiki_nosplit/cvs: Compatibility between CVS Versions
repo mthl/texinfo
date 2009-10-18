@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Troubleshooting#Troubleshooting|Troubleshooting]], Previous: [[cvs: All environment variables which affect CVS#All environment variables which affect CVS|Environment variables]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Compatibility-between-CVS-Versions"></div>
 == Compatibility between CVS Versions ==
 

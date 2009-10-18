@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: All environment variables which affect CVS#All environment variables which affect CVS|Environment variables]], Previous: [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Reference-manual-for-Administrative-files"></div>
 == Reference manual for Administrative files ==
 <div id="index-Administrative-files-_0028reference_0029"></div>

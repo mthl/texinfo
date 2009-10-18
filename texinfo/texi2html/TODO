@@ -96,6 +96,11 @@ Later
   is not only add a fixed key, but duplicate all the keys and add one.
   Documentation should only done once the interface is stable.
 
+* also there should be a translation to LaTeX to be used in @math, 
+  for example @equiv->\equiv, which means not only add one key, but 
+  also modify others. And protect_text should be modified such as 
+  not too do anything in that context.
+
 * document the new $image arguments/API
 
 * document the css classes:
@@ -316,12 +321,14 @@ in nested table line
 
 * in examples/chm.init use main::open_out to open files.
 
-* examples/mediwiki.init: images are like
-[[Image:New-medium.png|Nouveau medium disponible]]
-  Many constructs should be mediawikified
-
 * examples/mediawiki.init: end of lines within lists leads to empty lines
   that may not be what the user wanted. Maybe this could be ameliorated.
+
+* mediawiki: external links, in node directions, in menus, in @refs 
+  aren't correct. Not exactly sure what should be correct.
+
+* mediawiki: Cite extension is required for footnotes
+  $wgUseTeX = true; required for math
 
 * in xml have documentencoding have an argument.
 

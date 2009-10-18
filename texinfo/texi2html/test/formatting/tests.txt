@@ -64,6 +64,7 @@ ref_in_anchor ref_in_anchor.texi
 tex tex.texi --l2h --iftex --init l2h_tmp_dir.init
 tex_notex tex.texi
 tex_httex tex.texi --init tex4ht.init --iftex
+tex_mediawiki tex.texi --init mediawiki.init --iftex
 block_EOL block_EOL.texi
 detailmenus detailmenus.texi
 detailmenus_simple detailmenus.texi --init simple_menu.init
@@ -132,6 +133,7 @@ formatting_html ../coverage/formatting.texi --html --no-split
 formatting_html_nodes ../coverage/formatting.texi --html --split node --node-files --top-file=index.html
 formatting_info ../coverage/formatting.texi --init info.init -U texi2html
 formatting_plaintext ../coverage/formatting.texi --plaintext -U texi2html
+formatting_mediawiki ../coverage/formatting.texi --init mediawiki.init
 direntry_dircategory_info direntry_dircategory.texi --init info.init
 direntry_dircategory_info_split direntry_dircategory.texi --init info.init --split-size 1
 direntry_dircategory_xml direntry_dircategory.texi --init xml.init

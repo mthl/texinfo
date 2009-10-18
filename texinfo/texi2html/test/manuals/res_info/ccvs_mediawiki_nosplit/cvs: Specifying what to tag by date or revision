@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Deleting, moving, and renaming tags#Deleting, moving, and renaming tags|Modifying tags]], Previous: [[cvs: Specifying what to tag from the working directory#Specifying what to tag from the working directory|Tagging the working directory]], Up: [[cvs: Revisions#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Specifying-what-to-tag-by-date-or-revision"></div>
 === Specifying what to tag by date or revision ===
 <div id="index-rtag-_0028subcommand_0029"></div>

@@ -25,7 +25,9 @@ handle it.  Files also lose their ownerships and
 permissions during repository transactions.
 
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]], Previous: [[cvs: How your build system interacts with CVS#How your build system interacts with CVS|Builds]], Up: [[cvs#Top|Top]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

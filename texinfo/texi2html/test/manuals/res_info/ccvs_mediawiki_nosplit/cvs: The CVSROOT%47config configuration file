@@ -3,7 +3,9 @@
 <p>
 Previous: [[cvs: Expansions in administrative files#Expansions in administrative files|Variables]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="The-CVSROOT_002fconfig-configuration-file"></div>
 === The CVSROOT/config configuration file ===
 
@@ -66,7 +68,9 @@ Currently defined keywords are:
 
 : As an example, to restrict users not in the <code>cvsadmin</code> group to using <code>cvs admin</code> to change the default keyword substitution mode, lock revisions, unlock revisions, and replace the log message, use &lsquo;<code>UserAdminOptions=klum</code>&rsquo;.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Previous: [[cvs: Expansions in administrative files#Expansions in administrative files|Variables]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

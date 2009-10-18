@@ -36,7 +36,9 @@ handle it.  Files also lose their ownerships and
 permissions during repository transactions.
 
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[cvs: How your build system interacts with CVS#How your build system interacts with CVS| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs: Guide to CVS commands#Guide to CVS commands| &gt;&gt; ]]|</td>

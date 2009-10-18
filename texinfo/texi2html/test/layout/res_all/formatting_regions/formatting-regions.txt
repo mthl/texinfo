@@ -155,7 +155,7 @@ but , ,
 @i{--a} -a
 @kbd{--a} --a
 @key{--a} <--a>
-@math{--a {\frac{1}{2}} @minus{}} -a {\frac{1}{2}} -
+@math{--a {\frac{1}{2}} @minus{}} --a {\frac{1}{2}} -
 @option{--a} `--a'
 @r{--a} -a
 @samp{--a} `--a'
@@ -499,7 +499,7 @@ subsubheading
 @abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} } E'-. ,A. (E'tude-, Autonome)
 @abbr{@'E--. @comma{}A.} E'-. ,A.
 
-@math{--a@minus{} {\frac{1}{2}}} -a- {\frac{1}{2}}
+@math{--a@minus{} {\frac{1}{2}}} --a- {\frac{1}{2}}
 
 @image{f-ile,,,alt@verb{:jk _" %}} [ f-ile.txt: altjk _" %@ ]
 @image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} [ f--ile.e--xt: jk _" %@ in b " ]
@@ -1310,7 +1310,7 @@ but , ,
 @i{--a} -a
 @kbd{--a} --a
 @key{--a} <--a>
-@math{--a {\frac{1}{2}} @minus{}} -a {\frac{1}{2}} -
+@math{--a {\frac{1}{2}} @minus{}} --a {\frac{1}{2}} -
 @option{--a} `--a'
 @r{--a} -a
 @samp{--a} `--a'
@@ -1654,7 +1654,7 @@ subsubheading
 @abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} } E'-. ,A. (E'tude-, Autonome)
 @abbr{@'E--. @comma{}A.} E'-. ,A.
 
-@math{--a@minus{} {\frac{1}{2}}} -a- {\frac{1}{2}}
+@math{--a@minus{} {\frac{1}{2}}} --a- {\frac{1}{2}}
 
 @image{f-ile,,,alt@verb{:jk _" %}} [ f-ile.txt: altjk _" %@ ]
 @image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} [ f--ile.e--xt: jk _" %@ in b " ]

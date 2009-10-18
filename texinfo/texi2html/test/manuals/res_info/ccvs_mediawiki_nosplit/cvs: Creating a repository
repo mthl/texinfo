@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Backing up a repository#Backing up a repository|Backing up]], Previous: [[cvs: Multiple repositories#Multiple repositories|Multiple repositories]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Creating-a-repository-1"></div>
 === Creating a repository ===
 
@@ -60,7 +62,9 @@ repository.
 don&rsquo;t want that, remove the history file after running
 <code>cvs init</code>.  See [[cvs: The history file#The history file|history file]].
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Backing up a repository#Backing up a repository|Backing up]], Previous: [[cvs: Multiple repositories#Multiple repositories|Multiple repositories]], Up: [[cvs: The Repository#The Repository|Repository]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

@@ -1943,14 +1943,16 @@ sub info_default_begin_paragraph_texi($$$)
    }
 }
 
-sub info_default_simple_command($$$$)
+sub info_default_simple_command($$$$$)
 {
     my $command = shift;
     my $in_preformatted = shift;
+    my $in_math = shift;
     my $line_nr = shift;
     my $state = shift;
 
     my $result = $simple_map{$command};
+    $result = $simple_map_math{$command} if ($in_math and defined($simple_map_math{$command}));
     # discards '-' '|' '/' and ':'. If ':' is associated with a punctuation
     # character it is added to the tree in info_default_colon_command
     return info_default_store_text($state,$result,$command) if ($result ne '');
@@ -1971,11 +1973,12 @@ sub info_default_colon_command($)
    }
 }
 
-sub info_default_thing_command($$$$$)
+sub info_default_thing_command($$$$$$)
 {
     my $command = shift;
     my $text = shift;
     my $in_preformatted = shift;
+    my $in_math = shift;
     my $line_nr = shift;
     my $state = shift;
 
@@ -2285,13 +2288,14 @@ sub info_default_heading($$$$$;$$)
     return info_default_store_text($state, $result, $command, {'heading_command' => 1});
 }
 
-sub info_default_normal_text($$$$$$;$)
+sub info_default_normal_text($$$$$$$;$)
 {
    my @initial_args = @_;
    my $text = shift;
    my $in_raw_text = shift; # remove_texi
    my $in_preformatted = shift;
    my $in_code = shift;
+   my $in_math = shift;
    my $in_simple = shift;
    my $style_stack = shift;
    my $state = shift;

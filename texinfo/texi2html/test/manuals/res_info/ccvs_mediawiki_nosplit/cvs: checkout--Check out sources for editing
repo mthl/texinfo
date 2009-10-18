@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: commit--Check files into the repository#commit&mdash;Check files into the repository|commit]], Previous: [[cvs: admin--Administration#admin&mdash;Administration|admin]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="checkout_002d_002d_002dCheck-out-sources-for-editing"></div>
 === checkout&mdash;Check out sources for editing ===
 <div id="index-checkout-_0028subcommand_0029"></div>
@@ -81,7 +83,9 @@ see [[cvs: update output#update output|update output]].
  [[cvs: checkout examples#checkout examples|&bull; checkout examples]]::           checkout examples
 </div>
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: commit--Check files into the repository#commit&mdash;Check files into the repository|commit]], Previous: [[cvs: admin--Administration#admin&mdash;Administration|admin]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

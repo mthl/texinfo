@@ -48,7 +48,9 @@ This info manual describes how to use and administer
  [[cvs: Index#Index|&bull; Index]]::                       Index
 </div>
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[ &lt; ]</td>
 <td valign="middle" align="left">|[[cvs: Overview#Overview| &gt; ]]|</td>

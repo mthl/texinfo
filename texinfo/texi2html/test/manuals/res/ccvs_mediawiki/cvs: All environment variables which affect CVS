@@ -121,7 +121,9 @@ that affect <small>CVS</small>.
 ;<code>$CVS_PID</code>
 : This is the process identification (aka pid) number of the <small>CVS</small> process. It is often useful in the programs and/or scripts specified by the &lsquo;<tt>commitinfo</tt>&rsquo;, &lsquo;<tt>verifymsg</tt>&rsquo;, &lsquo;<tt>loginfo</tt>&rsquo; files.
 
-<hr>
+
+----
+
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[cvs: Reference manual for Administrative files#Reference manual for Administrative files| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[cvs: Compatibility between CVS Versions#Compatibility between CVS Versions| &gt;&gt; ]]|</td>

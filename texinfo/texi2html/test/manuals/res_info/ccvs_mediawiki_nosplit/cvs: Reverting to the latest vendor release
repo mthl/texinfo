@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: How to handle binary files with cvs import#How to handle binary files with cvs import|Binary files in imports]], Previous: [[cvs: Updating with the import command#Updating with the import command|Update imports]], Up: [[cvs: Tracking third-party sources#Tracking third-party sources|Tracking sources]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Reverting-to-the-latest-vendor-release"></div>
 === Reverting to the latest vendor release ===
 

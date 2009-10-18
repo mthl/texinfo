@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Branches and revisions#Branches and revisions|Branches and revisions]], Previous: [[cvs: Creating a branch#Creating a branch|Creating a branch]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Accessing-branches-1"></div>
 === Accessing branches ===
 <div id="index-Check-out-a-branch"></div>
@@ -109,7 +111,9 @@ that &lsquo;<code>driver.c</code>&rsquo; had been through more changes than
 See [[cvs: Branches and revisions#Branches and revisions|Branches and revisions]] for details about how
 branch numbers are constructed.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Branches and revisions#Branches and revisions|Branches and revisions]], Previous: [[cvs: Creating a branch#Creating a branch|Creating a branch]], Up: [[cvs: Branching and merging#Branching and merging|Branching and merging]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>

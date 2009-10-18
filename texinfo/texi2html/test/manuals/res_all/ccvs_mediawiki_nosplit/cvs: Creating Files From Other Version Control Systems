@@ -3,7 +3,9 @@
 <p>
 Next: [[cvs: Creating a directory tree from scratch#Creating a directory tree from scratch|From scratch]], Previous: [[cvs: Creating a directory tree from a number of files#Creating a directory tree from a number of files|From files]], Up: [[cvs: Setting up the files#Setting up the files|Setting up the files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-<hr>
+
+----
+
 <div id="Creating-Files-From-Other-Version-Control-Systems"></div>
 ==== Creating Files From Other Version Control Systems ====
 <div id="index-Importing-files_002c-from-other-version-control-systems"></div>
@@ -33,7 +35,9 @@ files.
 ;From PVCS
 : There is a script in the &lsquo;<tt>contrib</tt>&rsquo; directory of the <small>CVS</small> source distribution called &lsquo;<tt>pvcs_to_rcs</tt>&rsquo; which converts <small>PVCS</small> archives to <small>RCS</small> files. You must run it on a machine which has both <small>PVCS</small> and <small>RCS</small> installed, and like everything else in contrib it is unsupported (your mileage may vary).  See the comments in the script for details.
 
-<hr>
+
+----
+
 <div class="header">
 <p>
 Next: [[cvs: Creating a directory tree from scratch#Creating a directory tree from scratch|From scratch]], Previous: [[cvs: Creating a directory tree from a number of files#Creating a directory tree from a number of files|From files]], Up: [[cvs: Setting up the files#Setting up the files|Setting up the files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
