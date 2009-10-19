@@ -3,6 +3,7 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
+
 Later
 -----
 
@@ -90,16 +91,24 @@ Later
   @text_substitutions_simple_format, @text_substitutions_pre and
   t2h_text_substitutions
   t2h_default_set_iso_symbols
+  document the math related maps, simple_map_math, math_map, style_map_math
 
-* document the 'math' in 'args', in style_map, and simple_*math*. It
-  could also be more flexible and similar with other environments, that
-  is not only add a fixed key, but duplicate all the keys and add one.
-  Documentation should only done once the interface is stable.
+* do a translation to TeX/LaTeX to be used in @math, 
+  for example @equiv->\equiv. t2h_default_protect_text should be used 
+  such as not too do anything in that context.
 
-* also there should be a translation to LaTeX to be used in @math, 
-  for example @equiv->\equiv, which means not only add one key, but 
-  also modify others. And protect_text should be modified such as 
-  not too do anything in that context.
+* to use html2wiki, could use --preserve-nowiki or the same. Output
+  in tex_l2h.html
+<nowiki>!-- l2h_end tex_l2h 1 --</nowiki>
+  and change regexp in T2h_l2h.pm ro be like tex4ht, only match !-- --.
+  Add %Texi2HTML::Config::append_enclosed_converted_text {'math'}, {'tex'}
+  Texi2HTML::Config::prepend_enclosed_converted_text
+  to be able to use '<' (default) or '<nowiki>'.
+
+  Then it becomes possible, after the regular call to latex2html and
+  before extraction. To make this possible the calls to latex2html
+  should be split into command_handler_process and command_handler_output,
+  similar with tex4ht.
 
 * document the new $image arguments/API
 

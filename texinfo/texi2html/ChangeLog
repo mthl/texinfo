@@ -1,3 +1,8 @@
+2009-10-19   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* formats/*.init: don't strip {} in @math in html, docbook and 
+	xml, as agreed with Karl.
+
 2009-10-16   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl: @math is also in code_style.

@@ -299,7 +299,6 @@ sub xml_math($$)
     shift;
     my $args = shift;
     my $text = shift @$args;
-    $text =~ s/[{}]//g;
     return "<math>$text</math>";
 }
 

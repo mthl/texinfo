@@ -32,14 +32,17 @@ use Cwd;
 
 
 # latex2html conversions consist of three stages:
-# 1) ToLatex: Put "latex" code into a latex file
-# 2) ToHtml: Use latex2html to generate corresponding html code and images
-# 3) FromHtml: Extract generated code and images from latex2html run
-#
+# 1) to latex: Put "latex" code into a latex file 
+#                    (init, to_latex, finish_to_latex)
+# 2) to html: Use latex2html to generate corresponding html code and images
+#                    (to_html)
+# 3) from html: Extract generated code and images from latex2html run
+#                    (init_from_html, do_tex)
 
 # init l2h defaults for files and names
 
 # global variable used for caching
+# FIXME there is no reason for this variable to be global
 use vars qw(
             %l2h_cache
            );

@@ -347,12 +347,13 @@ sub docbook_titlefont($$)
     return "$args->[0]";
 }
 
+# FIXME there ought to be something better... Like use tex4ht mathml
+# output or something like that
 sub docbook_math($$)
 {
     shift;
     my $args = shift;
     my $text = shift @$args;
-    $text =~ s/[{}]//g;
     return $text;
 }
 

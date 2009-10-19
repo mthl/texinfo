@@ -248,7 +248,7 @@ sub tex4ht_process_command
      $tex4ht_latex_failed = 1;
      return;
   }
-
+  # FIXME cut here
   # extract the html from the file created by tex4ht
   my $html_basefile = $commands{$command}->{'html_file'};
   unless (open (TEX4HT_HTMLFILE, $html_basefile))

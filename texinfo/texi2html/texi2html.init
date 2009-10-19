@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.242 2009-10-18 21:52:34 pertusus Exp $
+# $Id: texi2html.init,v 1.243 2009-10-19 13:40:50 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -4017,10 +4017,6 @@ sub t2h_default_math($$)
     shift;
     my $args = shift;
     my $text = shift @$args;
-#print STDERR "t2h_default_math $text\n";
-    # Karl was convinced that it was better to keep the braces to keep
-    # the grouping information.
-#    $text =~ s/[{}]//g; 
     return "$text";
 }
 
