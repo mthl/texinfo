@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.29 2009-10-18 21:52:34 pertusus Exp $
+# $Id: mediawiki.init,v 1.30 2009-10-22 20:23:19 pertusus Exp $
 
 use strict;
 
@@ -166,16 +166,133 @@ $texi_formats_map{'direntry'} = 0;
 # no acronym nor abbr allowed in wikitext.
 $acronym_like = \&t2h_default_acronym_like;
 
-push @command_handler_setup, \&mediawiki_initialize_variables;
+push @command_handler_setup, \&mediawiki_default_initialize_variables;
 
 my %mediawiki_doc_nr_to_file; # File name cache based on file index.
 my %mediawiki_target_to_name;
 my %mediawiki_special_file_name;
-sub mediawiki_initialize_variables()
+sub mediawiki_default_initialize_variables()
 {
     %mediawiki_doc_nr_to_file = (); # File name cache based on file index.
     %mediawiki_target_to_name = ();
     %mediawiki_special_file_name = ();
+}
+
+my @html_files_from_tex;
+my $mediawiki_out_dir;
+my $tex_extension;
+
+push @command_handler_init, \&mediawiki_default_init_html_to_wiki;
+
+sub mediawiki_default_init_html_to_wiki
+{
+  # This must be done here, because the latex2html handler is added 
+  # after command line scanning, so after the mediawiki.init parsing
+  push @command_handler_process, \&mediawiki_default_html_to_wiki;
+
+  $command_handler{'math'}->{'init'} = undef;
+  $command_handler{'math'}->{'expand'} = undef;
+  $command_handler{'math'} = undef;
+  $mediawiki_out_dir = "$Texi2HTML::THISDOC{'destination_directory'}";
+  $mediawiki_out_dir = './' if (!defined($mediawiki_out_dir) or $mediawiki_out_dir =~ /^\s*$/);
+  @html_files_from_tex = ();
+  $tex_extension = undef;
+  if ($Texi2HTML::THISDOC{'extensions'}->{'tex4ht'})
+  {
+    push @html_files_from_tex, "$Texi2HTML::THISDOC{'file_base_name'}_tex4ht_tex.html";
+    $tex_extension = 'tex4ht';
+  }
+  elsif ($L2H)
+  {
+    push @html_files_from_tex, "$Texi2HTML::THISDOC{'file_base_name'}_l2h.html";
+    $tex_extension = 'l2h';
+    # avoid use of the cache
+    $Texi2HTML::Config::L2H_SKIP = 0;
+  }
+}
+
+# could be in texi2html.init...
+sub mediawiki_default_readd_end_of_lines($$$$;$)
+{
+   my $from_file = shift;
+   my $to_file = shift;
+   my $tex_extension = shift;
+   my $basename = shift;
+   my $before_wiki = shift;
+   # html2wiki removes end of lines, they are readded here
+   unless (open (ORIG, $from_file))
+   {
+      print STDERR "open $from_file error: $!\n";
+      return 0;
+   }
+   unless (open (FINAL, ">$to_file"))
+   {
+      print STDERR "open $to_file error: $!\n";
+      return 0;
+   }
+   my $line;
+   while ($line = <ORIG>)
+   {
+      if ($before_wiki)
+      {
+        $line =~ s/(<!-- ${tex_extension}_end $basename ((\w+ |)(\d+)) -->) *$/$1\n\n<p>intersticiae<\/p>\n/;
+        $line = Texi2HTML::LaTeX2HTML::change_image_file_names($line) if ($tex_extension eq 'l2h');
+      }
+      else
+      {
+        $line =~ s/^(<!-- ${tex_extension}_begin $basename ((\w+ |)(\d+)) -->)(.+)/$1\n$5/;
+        $line =~ s/(.+)(<!-- ${tex_extension}_end $basename ((\w+ |)(\d+)) -->) *$/$1\n$2/;
+      }
+      print FINAL "$line";
+   }
+   close ORIG;
+   close FINAL;
+   return 1;
+}
+
+sub mediawiki_default_html_to_wiki
+{
+  foreach my $file (@html_files_from_tex)
+  {
+     if (-f $mediawiki_out_dir.$file)
+     {
+        my $html_file = $mediawiki_out_dir.$file;
+        my $tmp_file = $mediawiki_out_dir.$file.".tmp";
+        my $tmp_file2 = $mediawiki_out_dir.$file.".tmp2";
+        my $tmp_file3 = $mediawiki_out_dir.$file.".tmp3";
+        my $basename = $file;
+        $basename =~ s/\.html$//;
+        if (!rename ($html_file, $tmp_file))
+        {
+           print STDERR "rename $html_file $tmp_file error: $!\n";
+           return;
+        }
+        #system ("cp $tmp_file $tmp_file.save");
+        # Add a paragraph between the end and begin comments to force
+        # html2wiki to leave them appart.
+        return unless (mediawiki_default_readd_end_of_lines($tmp_file, $tmp_file3, $tex_extension, $basename, 1));
+        if (!rename ($tmp_file3, $tmp_file))
+        {
+           print STDERR "rename $tmp_file3 $tmp_file error: $!\n";
+           return;
+        }
+        #system ("cp $tmp_file $tmp_file3.save");
+        my $cmd = "html2wiki --dialect MediaWiki --strip-tags '' $tmp_file > $tmp_file2";
+        print STDERR "Launching(". Cwd::cwd() ."): $cmd\n" if ($Texi2HTML::Config::VERBOSE);
+        if (system ($cmd))
+        {
+           main::document_warn ("mediawiki_tex command failed: $cmd");
+           return;
+        }
+        # this ensures that there is one end of line before the 
+        # html comment, and after, even though html2wiki removed them
+        return unless (mediawiki_default_readd_end_of_lines($tmp_file2, $html_file, $tex_extension, $basename));
+        #system ("cp $html_file $html_file.save");
+     }
+     else
+     { # FIXME error message?
+     }
+  }
 }
 
 $heading_text                 = \&mediawiki_heading_text;

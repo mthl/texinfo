@@ -36,6 +36,7 @@ if (defined($OUTPUT_FORMAT) and $OUTPUT_FORMAT eq 'html')
 {
 push @command_handler_init, \&Texi2HTML::TeX4HT::tex4ht_init;
 push @command_handler_process, \&Texi2HTML::TeX4HT::tex4ht_process;
+push @command_handler_output, \&Texi2HTML::TeX4HT::tex4ht_output;
 push @command_handler_finish, \&Texi2HTML::TeX4HT::tex4ht_finish;
 
 $command_handler{'math'} =
@@ -48,10 +49,16 @@ $command_handler{'tex'} =
      };
 }
 
+
 {
 use Cwd;
 
 package Texi2HTML::TeX4HT;
+
+use vars qw(
+$STYLE_MATH
+$STYLE_TEX
+);
 
 $STYLE_MATH = 'texi' if (!defined($STYLE_MATH));
 $STYLE_TEX = 'tex' if (!defined($STYLE_TEX));
@@ -143,6 +150,7 @@ sub tex4ht_init
       }
     }
   }
+  $Texi2HTML::THISDOC{'extensions'}->{'tex4ht'} = 1;
 }
 
 sub tex4ht_to_latex
@@ -154,13 +162,21 @@ sub tex4ht_to_latex
   my $fh = $commands{$command}->{'handle'};
 
   # write to tex file
-  my $before_comment = "\@verbatim\n";
-  $before_comment = "\\HCode{\\Hnewline " if ($style ne 'texi');
-  my $after_comment = "\n\@end verbatim\n";
-  $after_comment = "\\Hnewline}\n" if ($style ne 'texi');
+  my $before_comment_open = "\@verbatim\n\n";
+  my $after_comment_open = "\n\@end verbatim\n";
+  my $before_comment_close = "\@verbatim\n";
+  my $after_comment_close = "\n\n\@end verbatim\n";
+ 
+  if ($style ne 'texi')
+  {
+    $before_comment_open = "\\HCode{\\Hnewline \\Hnewline ";
+    $after_comment_open = "\\Hnewline}\n";
+    $before_comment_close = "\\HCode{\\Hnewline ";
+    $after_comment_close = "\\Hnewline \\Hnewline}\n";
+  }
   
   my $begin_comment = "<!-- tex4ht_begin $commands{$command}->{'basename'} $command $counter -->";
-  print $fh "$before_comment$begin_comment$after_comment";
+  print $fh "$before_comment_open$begin_comment$after_comment_open";
   if ($command eq 'tex')
   {
      print $fh $text;
@@ -177,7 +193,7 @@ sub tex4ht_to_latex
      }
   }
   my $end_comment = "<!-- tex4ht_end $commands{$command}->{'basename'} $command $counter -->";
-  print $fh "$before_comment$end_comment$after_comment";
+  print $fh "$before_comment_close$end_comment$after_comment_close";
   $commands{$command}->{'counter'}++;
   return 1;
 }
@@ -201,6 +217,21 @@ sub tex4ht_process
   foreach my $command ('math', 'tex')
   {
      tex4ht_process_command($command);
+  }
+  tex4ht_return_to_dir();
+}
+
+sub tex4ht_output
+{
+  unless (chdir $tex4ht_out_dir)
+  {
+     main::document_warn ("t2h_tex4ht chdir to $tex4ht_out_dir failed");
+     $tex4ht_latex_failed = 1;
+     return;
+  }
+  foreach my $command ('math', 'tex')
+  {
+     tex4ht_output_command($command);
   }
   tex4ht_return_to_dir();
 }
@@ -229,7 +260,7 @@ sub tex4ht_finish_latex
   close ($fh);
 }
 
-sub tex4ht_process_command
+sub tex4ht_process_command($)
 {
   my $command = shift;
   return unless ($commands{$command}->{'counter'});
@@ -248,7 +279,15 @@ sub tex4ht_process_command
      $tex4ht_latex_failed = 1;
      return;
   }
-  # FIXME cut here
+  # this have to be done during the 'process' phase, in 'output' it is 
+  # too late.
+  push @{$Texi2HTML::THISDOC{'css_import_lines'}}, "\@import \"$commands{$command}->{'basename'}.css\";\n";
+}
+
+sub tex4ht_output_command($)
+{
+  my $command = shift;
+  return unless ($commands{$command}->{'counter'});
   # extract the html from the file created by tex4ht
   my $html_basefile = $commands{$command}->{'html_file'};
   unless (open (TEX4HT_HTMLFILE, $html_basefile))
@@ -262,7 +301,7 @@ sub tex4ht_process_command
   my $line;
   while ($line = <TEX4HT_HTMLFILE>)
   {
-     #print STDERR "while $line";
+     #print STDERR "$html_basefile: while $line";
      if ($line =~ /!-- tex4ht_begin $commands{$command}->{'basename'} (\w+) (\d+) --/)
      {
         my $command = $1;
@@ -296,8 +335,6 @@ sub tex4ht_process_command
      main::document_warn ("t2h_tex4ht: got $got_count for $commands{$command}->{'counter'} items entered");
   }
   close (TEX4HT_HTMLFILE);
-
-  push @{$Texi2HTML::THISDOC{'css_import_lines'}}, "\@import \"$commands{$command}->{'basename'}.css\";\n";
 
 }
 

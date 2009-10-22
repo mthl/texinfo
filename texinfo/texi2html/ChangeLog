@@ -1,3 +1,15 @@
+2009-10-20   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init, texi2html.pl, T2h_l2h.pm, maintained_extra/tex4ht.init: 
+	split tex handling further, with html extraction done in 
+	@command_handler_output such that it is possible to modify the
+	resulting files after 'process' and before 'output'.
+	Add newlines between TeX fragments.
+	If L2H_SKIP is 0, cache is not used.
+	* examples/mediawiki.init: use html2wiki between 'process' and 
+	before 'output' to translate the html produced by tex4ht or 
+	latex2html to wiki.
+
 2009-10-19   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* formats/*.init: don't strip {} in @math in html, docbook and 

@@ -40,6 +40,11 @@ if which httexi > /dev/null 2>&1; then
   no_tex4ht=no
 fi
 
+no_html2wiki=yes
+if which html2wiki > /dev/null 2>&1; then
+  no_html2wiki=no
+fi
+
 one_test=no
 if [ z"$1" != 'z' ]; then
   one_test=yes
@@ -189,6 +194,7 @@ do
       eval "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../maintained_extra --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ --test --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --dump-texi --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2"
       ret=$?
     else
+      one_test_done=yes
       use_latex2html=no
       use_tex4ht=no
       if echo "$remaining" | grep -qs -- '-l2h'; then
@@ -204,7 +210,14 @@ do
         fi
         use_tex4ht=yes
       fi
-      one_test_done=yes
+      if [ $use_tex4ht = 'yes' -o $use_latex2html = 'yes' ]; then
+        if echo "$remaining" | grep -qs -- '-init mediawiki.init'; then
+         if [ "$no_html2wiki" = 'yes' ]; then
+           echo "S: (no html2wiki) $current"
+           continue 2
+         fi
+        fi
+      fi
       dir=$current
       [ -d "${outdir}$dir" ] && rm -rf "${outdir}$dir"
       mkdir "${outdir}$dir"
@@ -215,7 +228,7 @@ do
       ret=$?
       rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
         ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
-        ${outdir}$dir/*_tex4ht_tex.html
+        ${outdir}$dir/*_tex4ht_tex.html* ${outdir}$dir/*_l2h.html.*
     fi
     if [ $ret = 0 ]; then
       diff_base="${dir}${dir_suffix}"

@@ -65,6 +65,8 @@ tex tex.texi --l2h --iftex --init l2h_tmp_dir.init
 tex_notex tex.texi
 tex_httex tex.texi --init tex4ht.init --iftex
 tex_mediawiki tex.texi --init mediawiki.init --iftex
+tex_httex_mediawiki tex.texi --html --init tex4ht.init --init mediawiki.init --iftex
+tex_l2h_mediawiki tex.texi --html --l2h --iftex --init l2h_tmp_dir.init --init mediawiki.init
 block_EOL block_EOL.texi
 detailmenus detailmenus.texi
 detailmenus_simple detailmenus.texi --init simple_menu.init

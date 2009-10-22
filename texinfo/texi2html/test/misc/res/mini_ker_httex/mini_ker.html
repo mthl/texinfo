@@ -406,7 +406,6 @@ src="mini_ker_tex4ht_tex2x.png" alt="(            )(    )   (  )
 of       f and       g, and with       &#x03B4;t. From this system the
 elimination of       &#x03B4;&#x03B7; leads to another formulation giving
 the coupling between transfers, and allows for the       &#x03B4;&#x03C6;
-
 computation. The       &#x03B4;&#x03C6; value is then substitued in 
       &#x03B4;&#x03B7; to complete the time-step solving process.
 </p>
@@ -1314,8 +1313,7 @@ as soon as       &#x03C6; has been computed, a numerical test is applied
 on a pseudo relative quadratic residual between 
       &#x03C6; = f(&#x03B7;(t - dt) + d&#x03C6; (<code> ffl</code>), where       d&#x03C6;
 is given by the system resolution in <code>ker</code>,and
-      &#x03C6; = f(&#x03B7;),&#x03C6;)
-,  Fortran variable (<code>ff</code>):
+      &#x03C6; = f(&#x03B7;),&#x03C6;),  Fortran variable (<code>ff</code>):
 </p>
 <pre class="verbatim">! ========================================================
 ! test linearite ffl - ff
@@ -1752,8 +1750,7 @@ the rigidity of springs and dumping coefficients. There are       N nodes
 in the grid, from 1 to       N, and two nodes outside of the grid,
 a limiting node 0, and a limiting node       N + 1. The limiting node
 corresponding with node 0 is called the <em>down</em> node, while the limiting 
-node corresponding with node       N + 1
- is called the <em>up</em> node.
+node corresponding with node       N + 1 is called the <em>up</em> node.
 Other models not part of the 1D grid may be added if any.
 </p>
 <p>To enable 1D gridded models, one should set the select flag &lsquo;<samp>grid1d</samp>&rsquo;.
@@ -2930,8 +2927,7 @@ in that it is set to 1 at       t = 0:
 of the number of predators.
 </p>
 <p>In the same way, the <var>j+1</var>th column of &lsquo;<tt>sigma.data</tt>&rsquo; will be the
-derivative of       &#x03D5;j(t) with respect to       &#x03B7;i(t = 0)
-. Here:
+derivative of       &#x03D5;j(t) with respect to       &#x03B7;i(t = 0). Here:
 </p><table><tr><td>&nbsp;</td><td><pre class="example">#    Sensy_to: eta_pray     eta_pred    
 # time \\  of: ff_interact  ff_interact 
   0.00000E+00  1.60683E+00  8.47076E-01
@@ -3393,8 +3389,7 @@ src="mini_ker_tex4ht_tex16x.png" alt="&#x2202;t&#x03B7;(t) = g(&#x03B7;(t),&#x03
 
 <p>The observations       &#x03C9; are available at discrete time steps       t = si. The
 stochastic perturbation on state,       &#x03BC; is characterized by a 
-variance-covariance matrix       Q
- and the noise on the observation,
+variance-covariance matrix       Q and the noise on the observation,
       &#x03BD; has a variance-covariance matrix       R.       W relates states
 with stochastic perturbations. At each time step the Kalman filter recomputes 
 an estimation of the state and the variance-covariance matrix of the state.
@@ -3849,8 +3844,7 @@ But in general it is dependant, and one can analyse the function
 scheme for the time discretisation
 symbolically gives the solution of the Borel transform of the system. One can
 identify the <code>dt</code> variable with the Borel       &#x03C4; within a 
-factor       2
-. Hence, to numerically study the       &#x03C4; dependency of 
+factor       2. Hence, to numerically study the       &#x03C4; dependency of 
 the transform of various coefficients in the system coupling  matrix at one 
 point in time, one can calculate the Borel transform of the TLS solutions 
 by making a time-step sweep.

@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.243 2009-10-19 13:40:50 pertusus Exp $
+# $Id: texi2html.init,v 1.244 2009-10-22 20:23:18 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -308,7 +308,10 @@ $L2H_L2H = "latex2html";
 # --l2h-skip
 # If this is set the actual call to latex2html is skipped. The previously
 # generated content is reused, instead.
-$L2H_SKIP = '';
+# If set to 0, the cache is not used.
+# If undef the cache is used for as many tex fragments as possible
+# and for the remaining the command is run.
+$L2H_SKIP = undef;
 
 # --l2h-tmp
 # If this is set l2h uses the specified directory for temporary files. The path

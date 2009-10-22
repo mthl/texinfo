@@ -2,12 +2,12 @@ Prerequisites
 =============
 
 To run this testsuite, sed (with -i), awk, diff, mktemp are used. To 
-find the same results, tex4ht, latex2HTML, perl with unicode support and 
-the Text::Unidecode perl module have to be installed (with their 
-dependencies). It is possible that some test results involving tex4ht and 
-latex2HTML depend on the setup and version of these tools, so you may 
-get false negative. If tex4ht or latex2HTML are not found, the corresponding
-tests are skipped.
+find the same results, tex4ht, latex2HTML, html2wiki, perl with unicode 
+support and the Text::Unidecode perl module have to be installed (with their 
+dependencies). It is possible that some test results involving latex2HTML,
+tex4ht or html2wiki depend on the setup and version of these tools, so you may 
+get false negative. If tex4ht, latex2HTML or html2wiki are not found, the 
+corresponding tests are skipped.
 
 
 Running the testsuite

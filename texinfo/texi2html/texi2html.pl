@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.345 2009-10-18 21:52:34 pertusus Exp $
+# $Id: texi2html.pl,v 1.346 2009-10-22 20:23:18 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3898,6 +3898,7 @@ if ($Texi2HTML::Config::L2H and defined($Texi2HTML::Config::OUTPUT_FORMAT) and $
 {
    push @Texi2HTML::Config::command_handler_init, \&Texi2HTML::LaTeX2HTML::init;
    push @Texi2HTML::Config::command_handler_process, \&Texi2HTML::LaTeX2HTML::latex2html;
+   push @Texi2HTML::Config::command_handler_output, \&Texi2HTML::LaTeX2HTML::init_from_html;
    push @Texi2HTML::Config::command_handler_finish, \&Texi2HTML::LaTeX2HTML::finish;
    $Texi2HTML::Config::command_handler{'math'} = 
      { 'init' => \&Texi2HTML::LaTeX2HTML::to_latex, 

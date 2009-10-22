@@ -2,802 +2,1030 @@
 @setfilename mini_ker_tex4ht_math.info
 @c Automatically generated
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 1 -->
 @end verbatim
 @math{\eta}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 1 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 2 -->
 @end verbatim
 @math{\varphi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 2 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 3 -->
 @end verbatim
 @math{t}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 3 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 4 -->
 @end verbatim
 @math{t + \delta t}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 4 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 5 -->
 @end verbatim
 @math{\delta \eta}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 5 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 6 -->
 @end verbatim
 @math{\eta}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 6 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 7 -->
 @end verbatim
 @math{\delta \varphi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 7 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 8 -->
 @end verbatim
 @math{\varphi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 8 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 9 -->
 @end verbatim
 @math{f}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 9 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 10 -->
 @end verbatim
 @math{g}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 10 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 11 -->
 @end verbatim
 @math{\delta t}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 11 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 12 -->
 @end verbatim
 @math{\delta \eta}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 12 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 13 -->
 @end verbatim
 @math{\delta \varphi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 13 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 14 -->
 @end verbatim
 @math{\delta \varphi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 14 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 15 -->
 @end verbatim
 @math{\delta \eta}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 15 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 16 -->
 @end verbatim
 @math{a}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 16 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 17 -->
 @end verbatim
 @math{c}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 17 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 18 -->
 @end verbatim
 @math{\varphi_{meet}}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 18 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 19 -->
 @end verbatim
 @math{\eta_{prey}}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 19 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 20 -->
 @end verbatim
 @math{\eta_{pred}}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 20 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 21 -->
 @end verbatim
 @math{\varphi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 21 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 22 -->
 @end verbatim
 @math{\delta\eta}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 22 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 23 -->
 @end verbatim
 @math{\varphi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 23 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 24 -->
 @end verbatim
 @math{\varphi=f(\eta(t-dt)+d\varphi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 24 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 25 -->
 @end verbatim
 @math{d\varphi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 25 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 26 -->
 @end verbatim
 @math{\varphi=f(\eta),\varphi)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 26 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 27 -->
 @end verbatim
 @math{10^{-3}}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 27 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 28 -->
 @end verbatim
 @math{(I-D)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 28 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 29 -->
 @end verbatim
 @math{(I-D)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 29 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 30 -->
 @end verbatim
 @math{(I-D)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 30 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 31 -->
 @end verbatim
 @math{k}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 31 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 32 -->
 @end verbatim
 @math{m_k}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 32 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 33 -->
 @end verbatim
 @math{k}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 33 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 34 -->
 @end verbatim
 @math{r_k}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 34 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 35 -->
 @end verbatim
 @math{d_k}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 35 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 36 -->
 @end verbatim
 @math{N}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 36 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 37 -->
 @end verbatim
 @math{N}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 37 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 38 -->
 @end verbatim
 @math{N+1}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 38 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 39 -->
 @end verbatim
 @math{N+1}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 39 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 40 -->
 @end verbatim
 @math{k}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 40 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 41 -->
 @end verbatim
 @math{k}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 41 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 42 -->
 @end verbatim
 @math{x/\Delta}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 42 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 43 -->
 @end verbatim
 @math{\omega}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 43 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 44 -->
 @end verbatim
 @math{h}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 44 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 45 -->
 @end verbatim
 @math{\varphi_{meet}}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 45 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 46 -->
 @end verbatim
 @math{\eta_{prey}}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 46 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 47 -->
 @end verbatim
 @math{\eta_{pred}}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 47 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 48 -->
 @end verbatim
 @math{\eta_1(t)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 48 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 49 -->
 @end verbatim
 @math{\eta_1(t=0)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 49 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 50 -->
 @end verbatim
 @math{t=0}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 50 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 51 -->
 @end verbatim
 @math{\phi_{j}(t)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 51 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 52 -->
 @end verbatim
 @math{\eta_i(t=0)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 52 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 53 -->
 @end verbatim
 @math{h(t)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 53 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 54 -->
 @end verbatim
 @math{J}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 54 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 55 -->
 @end verbatim
 @math{T}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 55 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 56 -->
 @end verbatim
 @math{J}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 56 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 57 -->
 @end verbatim
 @math{\psi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 57 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 58 -->
 @end verbatim
 @math{l}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 58 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 59 -->
 @end verbatim
 @math{h}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 59 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 60 -->
 @end verbatim
 @math{J}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 60 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 61 -->
 @end verbatim
 @math{t=0}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 61 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 62 -->
 @end verbatim
 @math{\omega}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 62 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 63 -->
 @end verbatim
 @math{t=s_i}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 63 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 64 -->
 @end verbatim
 @math{\mu}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 64 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 65 -->
 @end verbatim
 @math{Q}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 65 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 66 -->
 @end verbatim
 @math{\nu}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 66 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 67 -->
 @end verbatim
 @math{R}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 67 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 68 -->
 @end verbatim
 @math{W}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 68 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 69 -->
 @end verbatim
 @math{W}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 69 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 70 -->
 @end verbatim
 @math{W}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 70 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 71 -->
 @end verbatim
 @math{g(\tau)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 71 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 72 -->
 @end verbatim
 @math{g(\tau)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 72 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 73 -->
 @end verbatim
 @math{\tau}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 73 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 74 -->
 @end verbatim
 @math{\tau}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 74 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 75 -->
 @end verbatim
 @math{g(\tau;t)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 75 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 76 -->
 @end verbatim
 @math{t}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 76 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 77 -->
 @end verbatim
 @math{\tau}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 77 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 78 -->
 @end verbatim
 @math{2}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 78 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 79 -->
 @end verbatim
 @math{\tau}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 79 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 80 -->
 @end verbatim
 @math{g(\tau;t)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 80 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 81 -->
 @end verbatim
 @math{\tau}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 81 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 82 -->
 @end verbatim
 @math{\tau}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 82 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 83 -->
 @end verbatim
 @math{tau}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 83 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 84 -->
 @end verbatim
 @math{\tau}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 84 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 85 -->
 @end verbatim
 @math{\tau}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 85 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 86 -->
 @end verbatim
 @math{0.2}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 86 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 87 -->
 @end verbatim
 @math{\sqrt{\sqrt{2}}}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 87 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 88 -->
 @end verbatim
 @math{\tau}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 88 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 89 -->
 @end verbatim
 @math{\tau}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 89 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 90 -->
 @end verbatim
 @math{\tau}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 90 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 91 -->
 @end verbatim
 @math{g(\tau)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 91 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 92 -->
 @end verbatim
 @math{g(t,\tau)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 92 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 93 -->
 @end verbatim
 @math{A_{st}}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 93 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 94 -->
 @end verbatim
 @math{A_{st}}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 94 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 95 -->
 @end verbatim
 @math{A_{st} + A_{st}^\dagger}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 95 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 96 -->
 @end verbatim
 @math{A_{st}}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 96 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 97 -->
 @end verbatim
 @math{U}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 97 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 98 -->
 @end verbatim
 @math{w}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 98 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 99 -->
 @end verbatim
 @math{V}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 99 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 100 -->
 @end verbatim
 @math{A_{st} + A_{st}^\dagger}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 100 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 101 -->
 @end verbatim
 @math{A_{st}}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 101 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 102 -->
 @end verbatim
 @math{\Phi(t+\delta t,t)=\exp{A_{st} \delta t}}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 102 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 103 -->
 @end verbatim
 @math{w}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 103 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 104 -->
 @end verbatim
 @math{\Phi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 104 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 105 -->
 @end verbatim
 @math{t}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 105 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 106 -->
 @end verbatim
 @math{\Phi(t,0)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 106 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 107 -->
 @end verbatim
 @math{U}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 107 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 108 -->
 @end verbatim
 @math{\Phi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 108 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 109 -->
 @end verbatim
 @math{w}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 109 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 110 -->
 @end verbatim
 @math{\Phi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 110 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 111 -->
 @end verbatim
 @math{V}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 111 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 112 -->
 @end verbatim
 @math{\Phi}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 112 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 113 -->
 @end verbatim
 @math{\Phi(t,0)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 113 -->
+
 @end verbatim
 @verbatim
+
 <!-- tex4ht_begin mini_ker_tex4ht_math math 114 -->
 @end verbatim
 @math{\Phi(t,0)}
 @verbatim
 <!-- tex4ht_end mini_ker_tex4ht_math math 114 -->
+
 @end verbatim
 
 @bye
