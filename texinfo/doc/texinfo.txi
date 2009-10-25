@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.244 2009-05-10 21:31:01 karl Exp $
+@c $Id: texinfo.txi,v 1.245 2009-10-25 23:30:42 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9786,23 +9786,29 @@ meanings, abbreviations, and the corresponding index entry commands:
 @table @samp
 @item cp
 @cindex @code{cp} (concept) index
+@findex cindex
 (@code{@@cindex}) concept index, for general concepts.
 @item fn
 @cindex @code{fn} (function) index
+@findex findex
 (@code{@@findex}) function index, for function and function-like
 names (such as entry points of libraries).
 @item ky
 @cindex @code{ky} (keystroke) index
+@findex kindex
 (@code{@@kindex}) keystroke index, for keyboard commands.
 @item pg
 @cindex @code{pg} (program) index
+@findex pindex
 (@code{@@pindex}) program index, for names of programs.
 @item tp
 @cindex @code{tp} (data type) index
+@findex tindex
 (@code{@@tindex}) data type index, for type names (such as structures
 defined in header files).
 @item vr
 @cindex @code{vr} (variable) index
+@findex vindex
 (@code{@@vindex}) variable index, for variable names (such as global
 variables of libraries).
 @end table
@@ -19307,7 +19313,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.244 2009-05-10 21:31:01 karl Exp $
+$Id: texinfo.txi,v 1.245 2009-10-25 23:30:42 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19386,7 +19392,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.244 2009-05-10 21:31:01 karl Exp $
+@comment $Id: texinfo.txi,v 1.245 2009-10-25 23:30:42 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

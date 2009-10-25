@@ -1,5 +1,9 @@
 2009-10-25  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Predefined Indices): insert @findex entries
+	for the indexing commands (cindex, findex, etc.).
+	From Kevin Ryde, 17 Oct 2009 10:03:14.
+
 	* info/filesys.c (compress_suffixes): use gzip -d in preference to
 	gunzip.  From Antonio Diaz Diaz, 22 Oct 2009 17:42:34.
 
