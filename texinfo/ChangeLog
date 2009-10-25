@@ -1,3 +1,8 @@
+2009-10-25  Karl Berry  <karl@gnu.org>
+
+	* info/filesys.c (compress_suffixes): use gzip -d in preference to
+	gunzip.  From Antonio Diaz Diaz, 22 Oct 2009 17:42:34.
+
 2009-10-08  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (catcode_special): default to maybe,
