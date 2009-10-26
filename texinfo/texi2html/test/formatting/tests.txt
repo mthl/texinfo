@@ -71,6 +71,8 @@ block_EOL block_EOL.texi
 detailmenus detailmenus.texi
 detailmenus_simple detailmenus.texi --init simple_menu.init
 commands_in_ifset commands_in_ifset.texi
+simplest_test_prefix simplest.texi --prefix=truc
+simplest_test_prefix_info simplest.texi --info --prefix=truc
 simplest_test_css simplest.texi --css-include file.css
 punctuation punctuation.texi
 punctuation_frenchspacing punctuation_frenchspacing.texi

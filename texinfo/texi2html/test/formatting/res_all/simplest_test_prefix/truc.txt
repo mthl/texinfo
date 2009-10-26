@@ -1,0 +1,5 @@
+Top
+***
+
+This is a very simple texi manual   <>.
+

@@ -1,4 +1,4 @@
-Name: @PACKAGE_TARNAME@
+Name: texi2html
 Version: @PACKAGE_VERSION@
 Release: 1
 # GPLv2+ is for the code

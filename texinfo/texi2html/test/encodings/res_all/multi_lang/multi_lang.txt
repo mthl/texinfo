@@ -6,6 +6,8 @@ This is in french
 * chapter fr_NOWHERE::
 * chapter ja::
 * chapter en::
+* chapter fr_FR::
+* chapter de::
 * chapter pt_BR::
 
 1 Fr_NOWHERE
@@ -30,7 +32,13 @@ In japanese. See Top.
 
 In english. See Top.
 
-4 pt_bR
+4 fr_FR
+*******
+
+5 de
+****
+
+6 pt_bR
 *******
 
 In brazilian. Veja Top.

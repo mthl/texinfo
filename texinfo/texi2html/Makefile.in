@@ -947,7 +947,7 @@ texi2html: texi2html.temp $(texi2html_formats)
 	$(SHELL) $(srcdir)/addformats.sh $@ $^
 	chmod a+x $@
 
-texi2html.spec: texi2html.spec.in configure
+texi2html.spec: texi2html.spec.in $(top_builddir)/configure
 	@echo Generating $@...
 	@sed -e "s/[@]PACKAGE_VERSION[@]/$(PACKAGE_VERSION)/" \
 	     -e "s/[@]PACKAGE_TARNAME[@]/$(PACKAGE_TARNAME)/" $< >texi2html.tmp
@@ -956,16 +956,16 @@ texi2html.spec: texi2html.spec.in configure
 
 i18n/en: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \
                  examples/noheaders.init $(texi2html_formats)
-	$(PERL) $(top_builddir)/manage_i18n.pl -d i18n -I . -I $(srcdir) template $^
+	$(PERL) $(builddir)/manage_i18n.pl -d i18n -I . -I $(srcdir) template $^
 
 #i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr: i18n/en
 
 $(i18n_files): i18n/en
-	$(PERL) $(top_builddir)/manage_i18n.pl -d i18n -I . -I $(srcdir) update
+	$(PERL) $(builddir)/manage_i18n.pl -d i18n -I . -I $(srcdir) update
 
 #translations.pl: i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr i18n/en
 translations.pl: $(dist_i18n_DATA) 
-	$(PERL) $(top_builddir)/manage_i18n.pl -d i18n -o $@ -I . -I $(srcdir) merge
+	$(PERL) $(builddir)/manage_i18n.pl -d i18n -o $@ -I . -I $(srcdir) merge
 
 all-local: makeinfo.pl texi2any.pl
 

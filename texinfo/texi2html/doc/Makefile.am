@@ -10,7 +10,7 @@ texinfohtml_DATA    = texi2html.html
 
 # use the script out of the distribution NOT
 # an old one which is installed on the client.
-TEXI2HTML = $(top_builddir)/texi2html
+TEXI2HTML = $(builddir)/../texi2html
 
 man_MANS = texi2html.1
 
@@ -24,16 +24,16 @@ CLEANFILES = texi2html.1
 #texi2html.html: texi2html.texi $(srcdir)/version.texi \
 #  $(TEXI2HTML)
 texi2html.html: texi2html.texi $(srcdir)/version.texi \
-  $(top_srcdir)/texi2html.pl $(top_srcdir)/texi2html.init \
-  $(top_srcdir)/MySimple.pm $(top_srcdir)/T2h_i18n.pm
-	TEXINPUTS=$(srcdir)::$$TEXINPUTS T2H_HOME=$(top_srcdir) \
-	  $(SHELL) $(top_srcdir)/missing-texi2html --run \
-	    $(PERL) -x $(top_srcdir)/texi2html.pl -V $<
+  $(srcdir)/../texi2html.pl $(srcdir)/../texi2html.init \
+  $(srcdir)/../MySimple.pm $(srcdir)/../T2h_i18n.pm
+	TEXINPUTS=$(srcdir)::$$TEXINPUTS T2H_HOME=$(srcdir)/../ \
+	  $(SHELL) $(srcdir)/../missing-texi2html --run \
+	    $(PERL) -x $(srcdir)/../texi2html.pl -V $<
 
 $(TEXI2HTML):
-	@(cd $(top_builddir) && make texi2html)
+	@(cd $(builddir)/../ && make texi2html)
 
-texi2html.1: texi2html.1.in ../config.status
+texi2html.1: texi2html.1.in $(top_builddir)/config.status
 	@echo Generating $@...
 	@sed -e "s/[@]PACKAGE_VERSION[@]/$(PACKAGE_VERSION)/" \
 	     -e "s/[@]PACKAGE_DATE[@]/$(PACKAGE_DATE)/" \

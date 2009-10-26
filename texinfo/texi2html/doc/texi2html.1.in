@@ -109,7 +109,7 @@ Give a verbose output.
 Print version and exit.
 .PP
 .SH FILES
-Initialisation options are read first from @pkgdatadir@/texi2html/Config 
+Initialisation options are read first from @pkgdatadir@/Config 
 (the exact location being changeable with the
 .RI --datadir=dir
 option to the configure script), then from @sysconfdir@/texi2html/Config

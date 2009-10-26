@@ -1,3 +1,14 @@
+2009-10-26   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, T2h_l2h.pm, maintained_extra/tex4ht.init:
+	call twice the extraction of html to have something ready for
+	the special regions formatting and also allow to have modifications
+	of the file like in mediawiki.init (report of tex_in_copying failing
+	from Jean-Charles Malahieude).
+	* Makefile.am, doc/Makefile.am: modify to be able to build
+	texi2html as part of another package (in texinfo).
+	* texi2html.init: handle right --prefix in info.
+
 2009-10-20   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init, texi2html.pl, T2h_l2h.pm, maintained_extra/tex4ht.init: 
@@ -4060,7 +4071,7 @@
 
 	* introduced T2H_OBSOLETE_OPTIONS to prevent obsolete options to 
 	  ambiguate current options
-	
+
 2000-07-09  Karl Heinz Marbaise   <khmarbaise@gmx.de>
         * Texinfo-Documentation:
           - fixes from Peter Moulder <pjm@bofh.asn.au> incorporated

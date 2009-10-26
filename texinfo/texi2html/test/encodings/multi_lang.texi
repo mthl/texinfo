@@ -13,6 +13,8 @@ This is in french
 * chapter fr_NOWHERE::
 * chapter ja::
 * chapter en::
+* chapter fr_FR::
+* chapter de::
 * chapter pt_BR::
 @end menu
 
@@ -41,6 +43,14 @@ In japanese. @xref{Top}.
 @chapter en
 
 In english. @xref{Top}.
+
+@documentlanguage fr_FR
+@node chapter fr_FR
+@chapter fr_FR
+
+@documentlanguage de
+@node chapter de
+@chapter de
 
 @documentlanguage pt_BR
 @node chapter pt_BR

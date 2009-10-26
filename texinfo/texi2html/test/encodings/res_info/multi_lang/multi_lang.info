@@ -14,6 +14,8 @@ This is in french
 * chapter fr_NOWHERE::
 * chapter ja::
 * chapter en::
+* chapter fr_FR::
+* chapter de::
 * chapter pt_BR::
 
 
@@ -45,7 +47,7 @@ File: multi_lang.info,  Node: chapter ja,  Next: chapter en,  Prev: chapter fr_N
 In japanese. *Note Top::.
 
 
-File: multi_lang.info,  Node: chapter en,  Next: chapter pt_BR,  Prev: chapter ja,  Up: Top
+File: multi_lang.info,  Node: chapter en,  Next: chapter fr_FR,  Prev: chapter ja,  Up: Top
 
 3 en
 ****
@@ -53,9 +55,21 @@ File: multi_lang.info,  Node: chapter en,  Next: chapter pt_BR,  Prev: chapter j
 In english. *Note Top::.
 
 
-File: multi_lang.info,  Node: chapter pt_BR,  Prev: chapter en,  Up: Top
+File: multi_lang.info,  Node: chapter fr_FR,  Next: chapter de,  Prev: chapter en,  Up: Top
 
-4 pt_bR
+4 fr_FR
+*******
+
+
+File: multi_lang.info,  Node: chapter de,  Next: chapter pt_BR,  Prev: chapter fr_FR,  Up: Top
+
+5 de
+****
+
+
+File: multi_lang.info,  Node: chapter pt_BR,  Prev: chapter de,  Up: Top
+
+6 pt_bR
 *******
 
 In brazilian. *Note Top::.
@@ -64,10 +78,12 @@ In brazilian. *Note Top::.
 
 Tag Table:
 Node: Top82
-Node: chapter fr_NOWHERE299
-Node: sub fr_NOWHERE473
-Node: chapter ja609
-Node: chapter en747
-Node: chapter pt_BR879
+Node: chapter fr_NOWHERE332
+Node: sub fr_NOWHERE506
+Node: chapter ja642
+Node: chapter en780
+Node: chapter fr_FR912
+Node: chapter de1024
+Node: chapter pt_BR1133
 
 End Tag Table

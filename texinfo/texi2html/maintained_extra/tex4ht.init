@@ -31,11 +31,15 @@
 # $Texi2HTML::TeX4HT::tex4ht_command_tex 
 #    and $Texi2HTML::TeX4HT::tex4ht_options_tex
 
+use strict;
 
 if (defined($OUTPUT_FORMAT) and $OUTPUT_FORMAT eq 'html')
 {
 push @command_handler_init, \&Texi2HTML::TeX4HT::tex4ht_init;
 push @command_handler_process, \&Texi2HTML::TeX4HT::tex4ht_process;
+# do it once here to have something ready for special regions formatting
+push @command_handler_process, \&Texi2HTML::TeX4HT::tex4ht_output;
+# do it once more if the file was modified (for example see mediawiki.init)
 push @command_handler_output, \&Texi2HTML::TeX4HT::tex4ht_output;
 push @command_handler_finish, \&Texi2HTML::TeX4HT::tex4ht_finish;
 
@@ -58,6 +62,10 @@ package Texi2HTML::TeX4HT;
 use vars qw(
 $STYLE_MATH
 $STYLE_TEX
+$tex4ht_command_math
+$tex4ht_command_tex
+$tex4ht_options_math
+$tex4ht_options_tex
 );
 
 $STYLE_MATH = 'texi' if (!defined($STYLE_MATH));
@@ -81,12 +89,13 @@ my %commands = ();
 my $tex4ht_initial_dir;
 my $tex4ht_out_dir;
 my $tex4ht_latex_failed = 0;
+my %tex4ht_results;
 
 sub tex4ht_init
 {
   # set file names
   $tex4ht_initial_dir = Cwd::abs_path;
-  if ($null_device_file{$Texi2HTML::THISDOC{'filename'}->{'top'}})
+  if ($Texi2HTML::Config::null_device_file{$Texi2HTML::THISDOC{'filename'}->{'top'}})
   {
     # when output is a null device we skip entirely the tex4ht stuff.
     $tex4ht_latex_failed = 1;
@@ -95,7 +104,6 @@ sub tex4ht_init
   $tex4ht_out_dir = "$Texi2HTML::THISDOC{'destination_directory'}";
   $tex4ht_out_dir = './' if (!defined($tex4ht_out_dir) or $tex4ht_out_dir =~ /^\s*$/);
   my $tex4ht_basename = "$Texi2HTML::THISDOC{'file_base_name'}_tex4ht";
-  $tex4ht_output_counter = 0;
   %tex4ht_results = ();
   $tex4ht_latex_failed = 0;
   # this initialization doesn't seems to be needed, but it is cleaner anyway
@@ -198,8 +206,6 @@ sub tex4ht_to_latex
   return 1;
 }
 
-my %tex4ht_results;
-
 sub tex4ht_process
 {
   foreach my $command ('math', 'tex')
@@ -221,8 +227,11 @@ sub tex4ht_process
   tex4ht_return_to_dir();
 }
 
+my $tex4ht_output_counter;
+
 sub tex4ht_output
 {
+  $tex4ht_output_counter = 0;
   unless (chdir $tex4ht_out_dir)
   {
      main::document_warn ("t2h_tex4ht chdir to $tex4ht_out_dir failed");
@@ -345,8 +354,6 @@ sub tex4ht_return_to_dir
      die "* t2h_tex4ht unable to return to the initial dir\n";
   }
 }
-
-my $tex4ht_output_counter = 0;
 
 sub tex4ht_do_tex
 {

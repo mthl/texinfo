@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.346 2009-10-22 20:23:18 pertusus Exp $
+# $Id: texi2html.pl,v 1.347 2009-10-26 23:21:55 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -3352,8 +3352,8 @@ foreach my $file (locate_init_file($conf_file_name, 1))
 #                                                                              #
 #---############################################################################
 
-# options known by makeinfo (+version and if*)
-my @makeinfo_options = ('error-limit', 'error-limit', 'document-language',
+# options known by makeinfo (+version, help and if*)
+my @makeinfo_options = ('error-limit', 'document-language',
 'force', 'help', 'no-validate', 'no-warn', 'verbose', 'docbook', 'html', 
 'xml', 'plaintext', 'macro-expand', 'headers', 'no-split', 
 'number-sections', 'output', 'disable-encoding', 'enable-encoding', 
@@ -3361,6 +3361,11 @@ my @makeinfo_options = ('error-limit', 'error-limit', 'document-language',
 'css-include', 'css-ref', 'internal-links', 'transliterate-file-names', 
 'output-indent', 'number-footnotes', 'D', 'I', 'P', 'U');
 
+# always used, even though they are not in makeinfo in C.
+# dump-texi', 'debug', 'test' are for debugging.
+# split is in makeinfo in C, as --no-split.
+# 'conf-dir', 'init-file' options have to be taken into account for proper
+# functionning.
 my @basic_options = ('dump-texi', 'debug', 'test', 'conf-dir', 'init-file',
 'split');
 
@@ -3544,11 +3549,9 @@ else
       $primary =~ s/\|.*//;
       next if ($primary eq 'version' or $primary eq 'help');
       next if ($my_command_name eq 'makeinfo' and ! grep {$primary eq $_} (@makeinfo_options, @basic_options) and $primary !~ /^if/);
-      #$opts{"$key$T2H_OPTIONS->{$key}->{'type'}"} = $T2H_OPTIONS->{$key}->{'linkage'};
       $opts->{$primary} = $T2H_OPTIONS->{$key}->{'linkage'} if defined($T2H_OPTIONS->{$key}->{'linkage'});
       push @types, "$key$T2H_OPTIONS->{$key}->{'type'}";
    }
-   #$opts{'version|V'} = sub {
    $opts->{'version'} = sub {
       print "makeinfo (GNU texinfo) 4.13
 
@@ -3558,7 +3561,6 @@ This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.";
       exit 0;
    };
-   #$opts{'help|h'} = sub {
    $opts->{'help'} = sub {
       print "$makeinfo_help";
       exit 0;
@@ -3898,6 +3900,9 @@ if ($Texi2HTML::Config::L2H and defined($Texi2HTML::Config::OUTPUT_FORMAT) and $
 {
    push @Texi2HTML::Config::command_handler_init, \&Texi2HTML::LaTeX2HTML::init;
    push @Texi2HTML::Config::command_handler_process, \&Texi2HTML::LaTeX2HTML::latex2html;
+    # do it here once to have somethng ready for special regions
+   push @Texi2HTML::Config::command_handler_process, \&Texi2HTML::LaTeX2HTML::init_from_html;
+    # do it here once more in case the file was modified (see mediawiki.init)
    push @Texi2HTML::Config::command_handler_output, \&Texi2HTML::LaTeX2HTML::init_from_html;
    push @Texi2HTML::Config::command_handler_finish, \&Texi2HTML::LaTeX2HTML::finish;
    $Texi2HTML::Config::command_handler{'math'} = 
