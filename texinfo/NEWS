@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.191 2009-03-20 18:33:51 karl Exp $
+$Id: NEWS,v 1.192 2009-10-26 21:52:23 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -32,10 +32,13 @@ one of the relevant sections:
 
 * texinfo.tex:
   . support some per-language hyphenation, when the underlying TeX
-    engine does (for instance, etex/pdfetex from TeX Live 2008).  Words
-    with accented letters are still not handled properly.
+    engine does (for instance, etex/pdfetex from TeX Live 2008 or
+    later).  Words with accented letters are still not handled properly.
   . new Icelandic translation: txi-is.tex.
 
+* texi2dvi:
+  . new option --max-iterations.
+  
 * info:
   . INFOPATH is determined by PATH by default, or if an element "PATH"
     is specified.

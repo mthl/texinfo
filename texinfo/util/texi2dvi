@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.153 2009-10-08 21:49:30 karl Exp $
+# $Id: texi2dvi,v 1.154 2009-10-26 21:52:23 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.153 $'
+rcs_revision='$Revision: 1.154 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -44,16 +44,17 @@ build_dir=${TEXI2DVI_BUILD_DIRECTORY:-.}
 # Don't use `unset' since old bourne shells don't have this command.
 # Instead, assign them an empty value.
 action=compile
-batch=false     # true for batch mode
+batch=false     # interact normally
 catcode_special=maybe
 debug=false
 escape="\\"
 expand=false    # true for expansion via makeinfo
 includes=
-line_error=true # Pass --file-line-error to TeX.
+line_error=true # pass --file-line-error to TeX
+max_iters=-1    # keep going forever
 oname=          # --output
 out_lang=dvi
-quiet=false     # by default let the tools' message be displayed
+quiet=false     # let the tools' message be displayed
 recode=false
 set_language=
 src_specials=
@@ -353,6 +354,7 @@ Build modes:
 			 defaults to TEXI2DVI_BUILD_DIRECTORY [$build_dir]
   --mostly-clean       remove the auxiliary files and directories
 			 but not the output
+  --max-iterations=N   don't process files more than N times
 
 The MODE specifies where the TeX compilation takes place, and, as a
 consequence, how auxiliary files are treated.  The build mode
@@ -1220,6 +1222,13 @@ run_tex_suite ()
   local cycle=0
 
   while :; do
+    # check for probably LaTeX loop (e.g. varioref)
+    if test $cycle -eq "$max_iters"; then
+      error 0 "Maximum of $max_iters cycles exceeded"
+      break
+    fi
+
+    # report progress
     cycle=`expr $cycle + 1`
     verbose "Cycle $cycle for $command_line_filename"
 
@@ -1674,6 +1683,7 @@ while test x"$1" != x"$arg_sep"; do
     -l | --lang | --language) shift; set_language=$1;;
     --mostly-clean) action=mostly-clean;;
     --no-line-error) line_error=false;;
+    --max-iterations) shift; max_iters=$1;;
     -o | --out  | --output)
       shift
       # Make it absolute, just in case we also have --clean, or whatever.

@@ -1,3 +1,7 @@
+2009-10-26  Roland Kaufmann  <roland.kaufmann@gmail.com>  (tiny change)
+
+	* util/texi2dvi (max-iterations): new option.
+
 2009-10-25  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Predefined Indices): insert @findex entries
