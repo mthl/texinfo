@@ -2151,8 +2151,12 @@ docbook ''
 
 <para><anchor id="anchor"></anchor>
 </para>
-<sect3 label="1.1.1.1" id="subsubsection-``simple-double--three---four----''">
-<title>subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</title>
+<sect3 label="1.1.1.1" id="subsubsection-``simple-double--">
+<title>subsubsection &ldquo;simple-double&ndash;</title>
+
+</sect3>
+<sect3 label="1.1.1.2" id="subsubsection-three---four----''">
+<title>three&mdash;four&mdash;-&rdquo;</title>
 
 </sect3>
 </sect2>

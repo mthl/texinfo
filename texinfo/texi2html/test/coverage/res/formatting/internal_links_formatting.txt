@@ -2,7 +2,8 @@ formatting.html#Top-section	toc	Top section
 formatting.html#chapter-1	toc	1 chapter
 formatting.html#A-section	toc	1.1 A section
 formatting.html#subsection-1	toc	1.1.1 subsection
-formatting.html#subsubsection-_0060_0060simple_002ddouble_002d_002dthree_002d_002d_002dfour_002d_002d_002d_002d_0027_0027-1	toc	1.1.1.1 subsubsection "simple-double-three--four---"
+formatting.html#subsubsection-_0060_0060simple_002ddouble_002d_002d-1	toc	1.1.1.1 subsubsection "simple-double-
+formatting.html#three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027	toc	1.1.1.2 three--four---"
 formatting.html#chapter-2	toc	chapter 2
 formatting.html#Top	cp	"
 formatting.html#Top	cp	"

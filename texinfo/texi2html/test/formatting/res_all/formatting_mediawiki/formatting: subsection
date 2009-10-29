@@ -10,7 +10,8 @@ Up: [[formatting: A section#A section|s--ect,ion]] &nbsp; |[[formatting: chapter
 ==== subsection ====
 
 <div class="menu-preformatted" style="font-family: serif">
- [[formatting: subsubsection "simple-double-three--four---"#subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;|&bull; subsubsection ``simple-double--three---four----<nowiki>''</nowiki>]]::
+ [[formatting: subsubsection "simple-double-#subsubsection &ldquo;simple-double&ndash;|&bull; subsubsection ``simple-double--]]::
+ [[formatting: three--four---"#three&mdash;four&mdash;-&rdquo;|&bull; subsubsection three---four----<nowiki>''</nowiki>]]::
 </div>
 
 <div id="anchor"></div>

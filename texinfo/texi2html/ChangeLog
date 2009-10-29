@@ -1,3 +1,8 @@
+2009-10-29   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* configure.ac, test/*: split node names in test that lead to 
+	long out files, to be able to use tar-ustar instead of tar-pax.
+
 2009-10-26   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, T2h_l2h.pm, maintained_extra/tex4ht.init:

@@ -2206,11 +2206,11 @@ MAKEINFO=${MAKEINFO-"${am_missing_run}makeinfo"}
 AMTAR=${AMTAR-"${am_missing_run}tar"}
 
 
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking how to create a pax tar archive" >&5
-$as_echo_n "checking how to create a pax tar archive... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking how to create a ustar tar archive" >&5
+$as_echo_n "checking how to create a ustar tar archive... " >&6; }
 # Loop over all known methods to create a tar archive until one works.
-_am_tools='gnutar  pax cpio none'
-_am_tools=${am_cv_prog_tar_pax-$_am_tools}
+_am_tools='gnutar plaintar pax cpio none'
+_am_tools=${am_cv_prog_tar_ustar-$_am_tools}
 # Do not fold the above two line into one, because Tru64 sh and
 # Solaris sh will not grok spaces in the rhs of `-'.
 for _am_tool in $_am_tools
@@ -2225,8 +2225,8 @@ do
    echo "$as_me:$LINENO: \$? = $ac_status" >&5
    (exit $ac_status); } && break
     done
-    am__tar="$_am_tar --format=posix -chf - "'"$$tardir"'
-    am__tar_="$_am_tar --format=posix -chf - "'"$tardir"'
+    am__tar="$_am_tar --format=ustar -chf - "'"$$tardir"'
+    am__tar_="$_am_tar --format=ustar -chf - "'"$tardir"'
     am__untar="$_am_tar -xf -"
     ;;
   plaintar)
@@ -2238,14 +2238,14 @@ do
     am__untar='tar xf -'
     ;;
   pax)
-    am__tar='pax -L -x pax -w "$$tardir"'
-    am__tar_='pax -L -x pax -w "$tardir"'
+    am__tar='pax -L -x ustar -w "$$tardir"'
+    am__tar_='pax -L -x ustar -w "$tardir"'
     am__untar='pax -r'
     ;;
   cpio)
-    am__tar='find "$$tardir" -print | cpio -o -H pax -L'
-    am__tar_='find "$tardir" -print | cpio -o -H pax -L'
-    am__untar='cpio -i -H pax -d'
+    am__tar='find "$$tardir" -print | cpio -o -H ustar -L'
+    am__tar_='find "$tardir" -print | cpio -o -H ustar -L'
+    am__untar='cpio -i -H ustar -d'
     ;;
   none)
     am__tar=false
@@ -2256,7 +2256,7 @@ do
 
   # If the value was cached, stop now.  We just wanted to have am__tar
   # and am__untar set.
-  test -n "${am_cv_prog_tar_pax}" && break
+  test -n "${am_cv_prog_tar_ustar}" && break
 
   # tar/untar a dummy directory, and stop if the command works
   rm -rf conftest.dir
@@ -2279,14 +2279,14 @@ do
 done
 rm -rf conftest.dir
 
-if test "${am_cv_prog_tar_pax+set}" = set; then :
+if test "${am_cv_prog_tar_ustar+set}" = set; then :
   $as_echo_n "(cached) " >&6
 else
-  am_cv_prog_tar_pax=$_am_tool
+  am_cv_prog_tar_ustar=$_am_tool
 fi
 
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_prog_tar_pax" >&5
-$as_echo "$am_cv_prog_tar_pax" >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_prog_tar_ustar" >&5
+$as_echo "$am_cv_prog_tar_ustar" >&6; }
 
 
 

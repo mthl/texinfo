@@ -346,7 +346,8 @@ Previous: [[formatting: chapter#chapter|chapter]], Up: [[formatting#Top section|
     <ul>
       <li><div id="toc-subsection-1"></div>[[formatting: subsection#subsection|subsection]]
       <ul>
-        <li><div id="toc-subsubsection-_0060_0060simple_002ddouble_002d_002dthree_002d_002d_002dfour_002d_002d_002d_002d_0027_0027-1"></div>[[formatting: subsubsection "simple-double-three--four---"#subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;|subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;]]</li>
+        <li><div id="toc-subsubsection-_0060_0060simple_002ddouble_002d_002d-1"></div>[[formatting: subsubsection "simple-double-#subsubsection &ldquo;simple-double&ndash;|subsubsection &ldquo;simple-double&ndash;]]</li>
+        <li><div id="toc-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></div>[[formatting: three--four---"#three&mdash;four&mdash;-&rdquo;|three&mdash;four&mdash;-&rdquo;]]</li>
       </ul>
 </li>
     </ul>

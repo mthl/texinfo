@@ -3201,28 +3201,33 @@ formatting.texi(,97)
 formatting.texi(,98) @detailmenu
 formatting.texi(,99) In detailmenu
 formatting.texi(,100) 
-formatting.texi(,101) * subsubsection ``simple-double--three---four----''::
-formatting.texi(,102) @end detailmenu
-formatting.texi(,103) @end menu
-formatting.texi(,104) 
-formatting.texi(,105) @node subsection
-formatting.texi(,106) @subsection subsection
-formatting.texi(,107) 
-formatting.texi(,108) @menu
-formatting.texi(,109) * subsubsection ``simple-double--three---four----''::
-formatting.texi(,110) @end menu
-formatting.texi(,111) 
-formatting.texi(,112) @anchor{anchor}
+formatting.texi(,101) * subsubsection ``simple-double--::
+formatting.texi(,102) * subsubsection three---four----''::
+formatting.texi(,103) @end detailmenu
+formatting.texi(,104) @end menu
+formatting.texi(,105) 
+formatting.texi(,106) @node subsection
+formatting.texi(,107) @subsection subsection
+formatting.texi(,108) 
+formatting.texi(,109) @menu
+formatting.texi(,110) * subsubsection ``simple-double--::
+formatting.texi(,111) * subsubsection three---four----''::
+formatting.texi(,112) @end menu
 formatting.texi(,113) 
-formatting.texi(,114) @node subsubsection ``simple-double--three---four----''
-formatting.texi(,115) @subsubsection subsubsection ``simple-double--three---four----''
-formatting.texi(,116) 
-formatting.texi(,117) @node chapter2
-formatting.texi(,118) @centerchap chapter 2
-formatting.texi(,119) 
-formatting.texi(,120) @printindex cp
-formatting.texi(,121) @printindex fn
-formatting.texi(,122) 
-formatting.texi(,123) @contents
-formatting.texi(,124) @shortcontents
-formatting.texi(,125) @bye
+formatting.texi(,114) @anchor{anchor}
+formatting.texi(,115) 
+formatting.texi(,116) @node subsubsection ``simple-double--
+formatting.texi(,117) @subsubsection subsubsection ``simple-double--
+formatting.texi(,118) 
+formatting.texi(,119) @node subsubsection three---four----''
+formatting.texi(,120) @subsubsection three---four----''
+formatting.texi(,121) 
+formatting.texi(,122) @node chapter2
+formatting.texi(,123) @centerchap chapter 2
+formatting.texi(,124) 
+formatting.texi(,125) @printindex cp
+formatting.texi(,126) @printindex fn
+formatting.texi(,127) 
+formatting.texi(,128) @contents
+formatting.texi(,129) @shortcontents
+formatting.texi(,130) @bye

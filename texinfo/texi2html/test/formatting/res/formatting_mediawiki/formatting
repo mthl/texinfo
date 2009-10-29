@@ -2692,7 +2692,8 @@ tp
 <div class="menu-preformatted" style="font-family: serif">
  In detailmenu
  
- [[#subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;|&bull; subsubsection ``simple-double--three---four----<nowiki>''</nowiki>]]::
+ [[#subsubsection &ldquo;simple-double&ndash;|&bull; subsubsection ``simple-double--]]::
+ [[#three&mdash;four&mdash;-&rdquo;|&bull; subsubsection three---four----<nowiki>''</nowiki>]]::
 </div>
 
 
@@ -2703,7 +2704,7 @@ tp
 <tr><td valign="middle" align="left">|[[#chapter| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#A section| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#A section| Up ]]|</td>
-<td valign="middle" align="left">|[[#subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;| &gt; ]]|</td>
+<td valign="middle" align="left">|[[#subsubsection &ldquo;simple-double&ndash;| &gt; ]]|</td>
 <td valign="middle" align="left">|[[#chapter 2| &gt;&gt; ]]|</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -2718,7 +2719,8 @@ tp
 ==== subsection ====
 
 <div class="menu-preformatted" style="font-family: serif">
- [[#subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;|&bull; subsubsection ``simple-double--three---four----<nowiki>''</nowiki>]]::
+ [[#subsubsection &ldquo;simple-double&ndash;|&bull; subsubsection ``simple-double--]]::
+ [[#three&mdash;four&mdash;-&rdquo;|&bull; subsubsection three---four----<nowiki>''</nowiki>]]::
 </div>
 
 <div id="anchor"></div>
@@ -2726,10 +2728,32 @@ tp
 
 ----
 
-<div id="subsubsection-_0060_0060simple_002ddouble_002d_002dthree_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></div>
+<div id="subsubsection-_0060_0060simple_002ddouble_002d_002d"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#chapter| &lt;&lt; ]]|</td>
 <td valign="middle" align="left">|[[#subsection| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#subsection| Up ]]|</td>
+<td valign="middle" align="left">|[[#three&mdash;four&mdash;-&rdquo;| &gt; ]]|</td>
+<td valign="middle" align="left">|[[#chapter 2| &gt;&gt; ]]|</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">|[[#Top section|Top]]|</td>
+<td valign="middle" align="left">|[[#SEC_Contents|Contents]]|</td>
+<td valign="middle" align="left">|[[#Top section|Index]]|</td>
+<td valign="middle" align="left">|[[#SEC_About| ? ]]|</td>
+</tr></table>
+<div id="subsubsection-_0060_0060simple_002ddouble_002d_002d-1"></div>
+===== subsubsection &ldquo;simple-double&ndash; =====
+
+
+----
+
+<div id="subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></div>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">|[[#chapter| &lt;&lt; ]]|</td>
+<td valign="middle" align="left">|[[#subsubsection &ldquo;simple-double&ndash;| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#subsection| Up ]]|</td>
 <td valign="middle" align="left">|[[#chapter 2| &gt; ]]|</td>
 <td valign="middle" align="left">|[[#chapter 2| &gt;&gt; ]]|</td>
@@ -2742,8 +2766,8 @@ tp
 <td valign="middle" align="left">|[[#Top section|Index]]|</td>
 <td valign="middle" align="left">|[[#SEC_About| ? ]]|</td>
 </tr></table>
-<div id="subsubsection-_0060_0060simple_002ddouble_002d_002dthree_002d_002d_002dfour_002d_002d_002d_002d_0027_0027-1"></div>
-===== subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; =====
+<div id="three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></div>
+===== three&mdash;four&mdash;-&rdquo; =====
 
 
 ----
@@ -2751,7 +2775,7 @@ tp
 <div id="chapter2"></div>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">|[[#chapter| &lt;&lt; ]]|</td>
-<td valign="middle" align="left">|[[#subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;| &lt; ]]|</td>
+<td valign="middle" align="left">|[[#three&mdash;four&mdash;-&rdquo;| &lt; ]]|</td>
 <td valign="middle" align="left">|[[#Top section| Up ]]|</td>
 <td valign="middle" align="left">[ &gt; ]</td>
 <td valign="middle" align="left">[ &gt;&gt; ]</td>
@@ -3113,7 +3137,8 @@ tp
     <ul>
       <li><div id="toc-subsection-1"></div>[[#subsection|subsection]]
       <ul>
-        <li><div id="toc-subsubsection-_0060_0060simple_002ddouble_002d_002dthree_002d_002d_002dfour_002d_002d_002d_002d_0027_0027-1"></div>[[#subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;|subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;]]</li>
+        <li><div id="toc-subsubsection-_0060_0060simple_002ddouble_002d_002d-1"></div>[[#subsubsection &ldquo;simple-double&ndash;|subsubsection &ldquo;simple-double&ndash;]]</li>
+        <li><div id="toc-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></div>[[#three&mdash;four&mdash;-&rdquo;|three&mdash;four&mdash;-&rdquo;]]</li>
       </ul>
 </li>
     </ul>

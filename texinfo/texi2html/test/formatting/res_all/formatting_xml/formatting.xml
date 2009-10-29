@@ -3317,8 +3317,13 @@ Menu comment
 <para>In detailmenu
 </para>
 <menuentry>
-<menunode>subsubsection ``simple-double--three---four----''</menunode>
-<menutitle>subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</menutitle>
+<menunode>subsubsection ``simple-double--</menunode>
+<menutitle>subsubsection &ldquo;simple-double&ndash;</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>subsubsection three---four----''</menunode>
+<menutitle>subsubsection three&mdash;four&mdash;-&rdquo;</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></detailmenu>
@@ -3333,8 +3338,13 @@ Menu comment
 
 <menu>
 <menuentry>
-<menunode>subsubsection ``simple-double--three---four----''</menunode>
-<menutitle>subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</menutitle>
+<menunode>subsubsection ``simple-double--</menunode>
+<menutitle>subsubsection &ldquo;simple-double&ndash;</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>subsubsection three---four----''</menunode>
+<menutitle>subsubsection three&mdash;four&mdash;-&rdquo;</menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
@@ -3342,11 +3352,21 @@ Menu comment
 <para><anchor name="anchor"></anchor>
 </para>
 <node>
-<nodename>subsubsection ``simple-double--three---four----''</nodename>
+<nodename>subsubsection ``simple-double--</nodename>
+<nodenext>subsubsection three---four----''</nodenext>
 <nodeup>subsection</nodeup>
 </node>
 <subsubsection>
-<title>subsubsection &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo;</title>
+<title>subsubsection &ldquo;simple-double&ndash;</title>
+
+</subsubsection>
+<node>
+<nodename>subsubsection three---four----''</nodename>
+<nodeprev>subsubsection ``simple-double--</nodeprev>
+<nodeup>subsection</nodeup>
+</node>
+<subsubsection>
+<title>three&mdash;four&mdash;-&rdquo;</title>
 
 </subsubsection>
 </subsection>

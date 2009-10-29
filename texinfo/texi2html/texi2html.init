@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.245 2009-10-26 23:21:55 pertusus Exp $
+# $Id: texi2html.init,v 1.246 2009-10-29 08:54:10 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1123,7 +1123,7 @@ sub t2h_default_set_out_encoding()
 sub t2h_default_init_out()
 {
     &$translate_names;
-    # set external cross ref splitting like splitting.
+    # set external cross ref splitting like splitting.
     if (!defined($EXTERNAL_CROSSREF_SPLIT))
     {
         if (get_conf('SPLIT')) 
@@ -3031,7 +3031,7 @@ foreach my $perl_charset (keys(%perl_charset_to_html))
    $t2h_encoding_aliases{$perl_charset_to_html{$perl_charset}} = $perl_charset_to_html{$perl_charset};
 }
 
-# These are the encodings from the texinfo manual
+# These are the encodings from the texinfo manual
 foreach my $canonical_encoding('us-ascii', 'utf-8', 'iso-8859-1', 
   'iso-8859-15','iso-8859-2','koi8-r', 'koi8-u')
 {

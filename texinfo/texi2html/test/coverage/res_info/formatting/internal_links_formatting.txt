@@ -2,7 +2,8 @@ formatting.info#Top	toc	Top
 formatting.info#chapter	toc	chapter
 formatting.info#s_002d_002dect_002cion	toc	s-ect,ion
 formatting.info#subsection	toc	subsection
-formatting.info#subsubsection-_0060_0060simple_002ddouble_002d_002dthree_002d_002d_002dfour_002d_002d_002d_002d_0027_0027	toc	subsubsection "simple-double-three--four---"
+formatting.info#subsubsection-_0060_0060simple_002ddouble_002d_002d	toc	subsubsection "simple-double-
+formatting.info#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027	toc	subsubsection three--four---"
 formatting.info#chapter2	toc	chapter2
 formatting.info#Top	cp	"
 formatting.info#Top	cp	"

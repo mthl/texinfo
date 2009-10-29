@@ -3,7 +3,7 @@ AC_PREREQ(2.53)
 AC_INIT([texi2html], [1.83], [texi2html-bug@nongnu.org])
 dnl 1.9 because we need tar-pax, and tar-pax because we have very long 
 dnl filenames for some test files
-AM_INIT_AUTOMAKE([gnu 1.9 dist-bzip2 dist-zip tar-pax])
+AM_INIT_AUTOMAKE([gnu 1.9 dist-bzip2 dist-zip tar-ustar])
 
 dnl Disable Autoconf, Automake, and some other maintainer tools without the
 dnl --enable-maintainer-mode argument.

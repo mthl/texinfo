@@ -2946,7 +2946,8 @@ Menu comment
 @detailmenu
 In detailmenu
 
-* subsubsection ``simple-double--three---four----''::
+* subsubsection ``simple-double--::
+* subsubsection three---four----''::
 @end detailmenu
 @end menu
 
@@ -2954,13 +2955,17 @@ In detailmenu
 @subsection subsection
 
 @menu
-* subsubsection ``simple-double--three---four----''::
+* subsubsection ``simple-double--::
+* subsubsection three---four----''::
 @end menu
 
 @anchor{anchor}
 
-@node subsubsection ``simple-double--three---four----''
-@subsubsection subsubsection ``simple-double--three---four----''
+@node subsubsection ``simple-double--
+@subsubsection subsubsection ``simple-double--
+
+@node subsubsection three---four----''
+@subsubsection three---four----''
 
 @node chapter2
 @centerchap chapter 2

@@ -1990,16 +1990,21 @@ Menu comment
 
 In detailmenu
 
-* subsubsection ``simple-double--three---four----''::
+* subsubsection ``simple-double--::
+* subsubsection three---four----''::
 
 1.1.1 subsection
 ----------------
 
-* subsubsection ``simple-double--three---four----''::
+* subsubsection ``simple-double--::
+* subsubsection three---four----''::
 
 
-1.1.1.1 subsubsection “simple-double–three—four—-”
-..................................................
+1.1.1.1 subsubsection “simple-double–
+.....................................
+
+1.1.1.2 three—four—-”
+.....................
 
 chapter 2
 *********
@@ -2159,7 +2164,8 @@ Top section
 1 chapter
  1.1 A section
   1.1.1 subsection
-   1.1.1.1 subsubsection “simple-double–three—four—-”
+   1.1.1.1 subsubsection “simple-double–
+   1.1.1.2 three—four—-”
 chapter 2
 
 Short Table of Contents

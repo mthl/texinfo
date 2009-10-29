@@ -5,14 +5,19 @@ A section
 
 In detailmenu
 
-* subsubsection ``simple-double--three---four----''::
+* subsubsection ``simple-double--::
+* subsubsection three---four----''::
 
 subsection
 ----------
 
-* subsubsection ``simple-double--three---four----''::
+* subsubsection ``simple-double--::
+* subsubsection three---four----''::
 
 
-subsubsection "simple-double-three--four---"
-............................................
+subsubsection "simple-double-
+.............................
+
+three--four---"
+...............
 
