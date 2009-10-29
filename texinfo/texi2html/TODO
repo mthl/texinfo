@@ -37,6 +37,9 @@ Later
   - to open document
 
 * Document 
+  The fact that there are 3 commands that may be called.
+  The locations for config files and init files (including --conf-dirs).
+
   Texi2HTML::THIS_ELEMENT
   $NEW_CROSSREF_STYLE, $EXTERNAL_CROSSREF_SPLIT, $INLINE_INSERTCOPYING
   $OVERVIEW_LINK_TO_TOC

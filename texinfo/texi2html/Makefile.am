@@ -1,8 +1,9 @@
 ## Process this file with automake to produce Makefile.in
 
 SUBDIRS = . doc Tests test
-imagesdir = $(pkgdatadir)/images
-i18ndir = $(pkgdatadir)/i18n
+imagesdir = $(datadir)/texi2html/images
+i18ndir = $(datadir)/texi2html/i18n
+initdir = $(datadir)/texinfo/init
 
 #
 # This is to prevent texinfo.tex from being included
@@ -26,7 +27,7 @@ texi2html_formats = \
 	formats/xml.init \
 	formats/plaintext.init
 
-dist_pkgdata_DATA = maintained_extra/book.init \
+dist_init_DATA = maintained_extra/book.init \
 	maintained_extra/chm.init \
 	maintained_extra/tex4ht.init \
 	maintained_extra/html32.init

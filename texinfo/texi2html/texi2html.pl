@@ -42,11 +42,11 @@ use Cwd;
 use File::Basename;
 # used to find a relative path back to the current working directory
 use File::Spec;
-# to determine the path separator and null file
+# to determine the path separator and null file
 use Config;
 
 #use encoding::warnings;
-# for translations
+# for translations
 #use encoding 'utf8';
 #use utf8;
 
@@ -58,7 +58,7 @@ use Config;
 # Perl pragma to control optional warnings
 # use warnings;
 
-# determine the path separators
+# determine the path separators
 my $path_separator = $Config{'path_sep'};
 $path_separator = ':' if (!defined($path_separator));
 my $quoted_path_separator = quotemeta($path_separator);
@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.347 2009-10-26 23:21:55 pertusus Exp $
+# $Id: texi2html.pl,v 1.348 2009-10-29 14:09:51 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -142,23 +142,8 @@ else
     $datadir = "/usr/local/share";
 }
 
-my $i18n_dir = 'i18n'; # name of the directory containing the per language files
-my $conf_file_name = 'Config' ;
-my $texinfo_htmlxref = 'htmlxref.cnf';
-
 my $target_prefix = "t_h";
 
-# directories for texi2html init files
-my @texi2html_config_dirs = ('./');
-push @texi2html_config_dirs, "$ENV{'HOME'}/.texi2html/" if (defined($ENV{'HOME'}));
-push @texi2html_config_dirs, "$sysconfdir/texi2html/" if (defined($sysconfdir));
-push @texi2html_config_dirs, "$pkgdatadir" if (defined($pkgdatadir));
-
-# directories for texinfo configuration files
-my @texinfo_config_dirs = ('./.texinfo/');
-push @texinfo_config_dirs, "$ENV{'HOME'}/.texinfo/" if (defined($ENV{'HOME'}));
-push @texinfo_config_dirs, "$sysconfdir/texinfo/" if (defined($sysconfdir));
-push @texinfo_config_dirs, "$datadir/texinfo/" if (defined($datadir));
 
 
 #+++########################################################################
@@ -203,7 +188,7 @@ if ($command_format{$my_command_name})
    $default_output_format = $command_format{$my_command_name};
 }
 
-# This can be called from init files, mostly for formats.
+# This can be called from init files, mostly for formats.
 sub default_output_format()
 {
    return $default_output_format;
@@ -212,6 +197,32 @@ sub default_output_format()
 sub default_command_name()
 {
    return $my_command_name;
+}
+
+# Config files
+
+my $i18n_dir = 'i18n'; # name of the directory containing the per language files
+my $conf_file_name = 'Config' ;
+my $texinfo_htmlxref = 'htmlxref.cnf';
+
+# directories for config files
+my @texi2html_config_dirs = ('./');
+push @texi2html_config_dirs, "$ENV{'HOME'}/.$my_command_name/" if (defined($ENV{'HOME'}));
+push @texi2html_config_dirs, "$sysconfdir/$my_command_name/" if (defined($sysconfdir));
+push @texi2html_config_dirs, "$datadir/$my_command_name" if (defined($datadir));
+
+# directories for texinfo configuration files
+my @texinfo_config_dirs = ('./.texinfo/');
+push @texinfo_config_dirs, "$ENV{'HOME'}/.texinfo/" if (defined($ENV{'HOME'}));
+push @texinfo_config_dirs, "$sysconfdir/texinfo/" if (defined($sysconfdir));
+push @texinfo_config_dirs, "$datadir/texinfo/" if (defined($datadir));
+
+# directories for init files
+my @texi2html_init_dirs = @texi2html_config_dirs;
+# common directories for all command names
+foreach my $texinfo_config_dir (@texinfo_config_dirs)
+{
+   push @texi2html_init_dirs, "${texinfo_config_dir}init/";
 }
 
 #+++###########################################################################
@@ -2168,7 +2179,17 @@ sub locate_init_file($;$$)
     my $all_files = shift;
     my $directories = shift;
 
-    $directories = [ @Texi2HTML::Config::CONF_DIRS, @texi2html_config_dirs ] if !defined($directories);
+    if (!defined($directories))
+    {
+       if ($all_files)
+       {
+           $directories = [ @texi2html_config_dirs ];
+       }
+       else
+       {
+           $directories = [ @Texi2HTML::Config::CONF_DIRS, @texi2html_init_dirs ];
+       }
+    }
 
     if ($file =~ /^\//)
     {

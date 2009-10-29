@@ -2,6 +2,10 @@
 
 	* configure.ac, test/*: split node names in test that lead to 
 	long out files, to be able to use tar-ustar instead of tar-pax.
+	* texi2html.pl, Makefile.am: distinguish config files directories 
+	and init files directories. For config files directories use the 
+	command name. For init files also prepend a directories 
+	like *texinfo/init and append CONF_DIRS.
 
 2009-10-26   Patrice Dumas  <dumas@centre-cired.fr>
 

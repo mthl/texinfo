@@ -41,9 +41,16 @@ rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT 
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 
+ln -s texi2any $RPM_BUILD_ROOT%{_bindir}/texi2html
+
+rm -rf __dist_examples
+mkdir -p __dist_examples
+cp -a examples __dist_examples
+rm -f __dist_examples/examples/Makefile*
+
 # directories shared by all the texinfo implementations for common
 # config files, like htmlxref.cnf
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/texinfo $RPM_BUILD_ROOT%{_sysconfdir}/texinfo
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/texinfo
 
 
 %clean
@@ -60,18 +67,19 @@ fi
 %files
 %defattr(-,root,root,-)
 %doc AUTHORS COPYING ChangeLog NEWS README TODO %{name}.init
+%doc __dist_examples/examples/
 %{_bindir}/%{name}
-%{_datadir}/texinfo/html/%{name}.html
+%{_bindir}/texi2any
 %{_mandir}/man*/%{name}*
 %{_infodir}/%{name}.info*
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/*.init
-%{_datadir}/%{name}/*.texi
+%dir %{_datadir}/texinfo/
+%dir %{_datadir}/texinfo/init
+%{_datadir}/texinfo/init/*.init
+%{_datadir}/texinfo/html/%{name}.html
 %dir %{_datadir}/%{name}/i18n/
 %{_datadir}/%{name}/i18n/*
 %dir %{_datadir}/%{name}/images/
 %{_datadir}/%{name}/images/*
-%dir %{_datadir}/texinfo
 %dir %{_sysconfdir}/texinfo
 
 %changelog

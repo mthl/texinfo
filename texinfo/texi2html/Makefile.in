@@ -37,7 +37,7 @@ build_triplet = @build@
 host_triplet = @host@
 subdir = .
 DIST_COMMON = README $(am__configure_deps) $(dist_i18n_DATA) \
-	$(dist_images_DATA) $(dist_pkgdata_DATA) $(srcdir)/Makefile.am \
+	$(dist_images_DATA) $(dist_init_DATA) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/check_texinfo.pl.in \
 	$(srcdir)/manage_i18n.pl.in $(srcdir)/texi2html.pl \
 	$(top_srcdir)/configure AUTHORS COPYING ChangeLog INSTALL NEWS \
@@ -75,7 +75,7 @@ am__base_list = \
   sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
   sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(i18ndir)" \
-	"$(DESTDIR)$(imagesdir)" "$(DESTDIR)$(pkgdatadir)"
+	"$(DESTDIR)$(imagesdir)" "$(DESTDIR)$(initdir)"
 SCRIPTS = $(bin_SCRIPTS) $(noinst_SCRIPTS)
 SOURCES =
 DIST_SOURCES =
@@ -86,7 +86,7 @@ RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
 	install-pdf-recursive install-ps-recursive install-recursive \
 	installcheck-recursive installdirs-recursive pdf-recursive \
 	ps-recursive uninstall-recursive
-DATA = $(dist_i18n_DATA) $(dist_images_DATA) $(dist_pkgdata_DATA)
+DATA = $(dist_i18n_DATA) $(dist_images_DATA) $(dist_init_DATA)
 RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
   distclean-recursive maintainer-clean-recursive
 AM_RECURSIVE_TARGETS = $(RECURSIVE_TARGETS:-recursive=) \
@@ -220,8 +220,9 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIRS = . doc Tests test
-imagesdir = $(pkgdatadir)/images
-i18ndir = $(pkgdatadir)/i18n
+imagesdir = $(datadir)/texi2html/images
+i18ndir = $(datadir)/texi2html/i18n
+initdir = $(datadir)/texinfo/init
 
 #
 # This is to prevent texinfo.tex from being included
@@ -244,7 +245,7 @@ texi2html_formats = \
 	formats/xml.init \
 	formats/plaintext.init
 
-dist_pkgdata_DATA = maintained_extra/book.init \
+dist_init_DATA = maintained_extra/book.init \
 	maintained_extra/chm.init \
 	maintained_extra/tex4ht.init \
 	maintained_extra/html32.init
@@ -481,26 +482,26 @@ uninstall-dist_imagesDATA:
 	test -n "$$files" || exit 0; \
 	echo " ( cd '$(DESTDIR)$(imagesdir)' && rm -f" $$files ")"; \
 	cd "$(DESTDIR)$(imagesdir)" && rm -f $$files
-install-dist_pkgdataDATA: $(dist_pkgdata_DATA)
+install-dist_initDATA: $(dist_init_DATA)
 	@$(NORMAL_INSTALL)
-	test -z "$(pkgdatadir)" || $(MKDIR_P) "$(DESTDIR)$(pkgdatadir)"
-	@list='$(dist_pkgdata_DATA)'; test -n "$(pkgdatadir)" || list=; \
+	test -z "$(initdir)" || $(MKDIR_P) "$(DESTDIR)$(initdir)"
+	@list='$(dist_init_DATA)'; test -n "$(initdir)" || list=; \
 	for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  echo "$$d$$p"; \
 	done | $(am__base_list) | \
 	while read files; do \
-	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(pkgdatadir)'"; \
-	  $(INSTALL_DATA) $$files "$(DESTDIR)$(pkgdatadir)" || exit $$?; \
+	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(initdir)'"; \
+	  $(INSTALL_DATA) $$files "$(DESTDIR)$(initdir)" || exit $$?; \
 	done
 
-uninstall-dist_pkgdataDATA:
+uninstall-dist_initDATA:
 	@$(NORMAL_UNINSTALL)
-	@list='$(dist_pkgdata_DATA)'; test -n "$(pkgdatadir)" || list=; \
+	@list='$(dist_init_DATA)'; test -n "$(initdir)" || list=; \
 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
 	test -n "$$files" || exit 0; \
-	echo " ( cd '$(DESTDIR)$(pkgdatadir)' && rm -f" $$files ")"; \
-	cd "$(DESTDIR)$(pkgdatadir)" && rm -f $$files
+	echo " ( cd '$(DESTDIR)$(initdir)' && rm -f" $$files ")"; \
+	cd "$(DESTDIR)$(initdir)" && rm -f $$files
 
 # This directory's subdirectories are mostly independent; you can cd
 # into them and run `make' without going through this Makefile.
@@ -817,7 +818,7 @@ check: check-recursive
 all-am: Makefile $(SCRIPTS) $(DATA) all-local
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(i18ndir)" "$(DESTDIR)$(imagesdir)" "$(DESTDIR)$(pkgdatadir)"; do \
+	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(i18ndir)" "$(DESTDIR)$(imagesdir)" "$(DESTDIR)$(initdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-recursive
@@ -867,7 +868,7 @@ info: info-recursive
 info-am:
 
 install-data-am: install-dist_i18nDATA install-dist_imagesDATA \
-	install-dist_pkgdataDATA
+	install-dist_initDATA
 
 install-dvi: install-dvi-recursive
 
@@ -914,7 +915,7 @@ ps: ps-recursive
 ps-am:
 
 uninstall-am: uninstall-binSCRIPTS uninstall-dist_i18nDATA \
-	uninstall-dist_imagesDATA uninstall-dist_pkgdataDATA
+	uninstall-dist_imagesDATA uninstall-dist_initDATA
 
 .MAKE: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) ctags-recursive \
 	install-am install-strip tags-recursive
@@ -928,16 +929,15 @@ uninstall-am: uninstall-binSCRIPTS uninstall-dist_i18nDATA \
 	html-am html-local info info-am install install-am \
 	install-binSCRIPTS install-data install-data-am \
 	install-dist_i18nDATA install-dist_imagesDATA \
-	install-dist_pkgdataDATA install-dvi install-dvi-am \
-	install-exec install-exec-am install-html install-html-am \
-	install-info install-info-am install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs installdirs-am \
-	maintainer-clean maintainer-clean-generic mostlyclean \
-	mostlyclean-generic pdf pdf-am ps ps-am tags tags-recursive \
-	uninstall uninstall-am uninstall-binSCRIPTS \
-	uninstall-dist_i18nDATA uninstall-dist_imagesDATA \
-	uninstall-dist_pkgdataDATA
+	install-dist_initDATA install-dvi install-dvi-am install-exec \
+	install-exec-am install-html install-html-am install-info \
+	install-info-am install-man install-pdf install-pdf-am \
+	install-ps install-ps-am install-strip installcheck \
+	installcheck-am installdirs installdirs-am maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-generic pdf \
+	pdf-am ps ps-am tags tags-recursive uninstall uninstall-am \
+	uninstall-binSCRIPTS uninstall-dist_i18nDATA \
+	uninstall-dist_imagesDATA uninstall-dist_initDATA
 
 
 texi2html.temp: $(texi2html_sources)
