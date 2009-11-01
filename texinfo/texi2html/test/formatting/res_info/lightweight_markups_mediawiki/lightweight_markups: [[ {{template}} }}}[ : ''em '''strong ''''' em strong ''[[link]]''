@@ -13,7 +13,7 @@ Next: [[lightweight_markups: Help: something#Help: something|Help<tt>:</tt> some
 
 <div class="float"><div id="f2-_005d_005d-_007d_007d"></div>
 Float
-</div>'''f1 <nowiki>[[</nowiki> {{ 1.1: Caption <nowiki>[[</nowiki> {{
+</div>'''f1 <nowiki>[[</nowiki> <nowiki>{</nowiki><nowiki>{</nowiki> 1.1: Caption <nowiki>[[</nowiki> <nowiki>{</nowiki><nowiki>{</nowiki>
 '''
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

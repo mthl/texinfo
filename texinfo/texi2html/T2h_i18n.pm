@@ -288,6 +288,26 @@ my @MONTH_NAMES =
      'November', 'December'
     );
 
+# This is not used as code, but used to mark months as strings to be
+# translated
+if (0)
+{
+    my @mark_month_for_translation = (
+     gdt('January'), 
+     gdt('February'), 
+     gdt('March'), 
+     gdt('April'), 
+     gdt('May'),
+     gdt('June'), 
+     gdt('July'), 
+     gdt('August'), 
+     gdt('September'), 
+     gdt('October'),
+     gdt('November'), 
+     gdt('December')
+    );
+}
+
 my $I = \&get_string;
 
 sub pretty_date($) 
@@ -297,10 +317,7 @@ sub pretty_date($)
 
     ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime(time);
     $year += ($year < 70) ? 2000 : 1900;
-    # obachman: Let's do it as the Americans do
-    #return($MONTH_NAMES->{$lang}[$mon] . ", " . $mday . " " . $year);
-	#return(sprintf(&$I('T2H_today'), (get_string($MONTH_NAMES[$mon]), $mday, $year)));
-	return &$I('%{month} %{day}, %{year}', { 'month' => get_string($MONTH_NAMES[$mon]),
+    return main::gdt('{month} {day}, {year}', { 'month' => main::gdt($MONTH_NAMES[$mon]),
           'day' => $mday, 'year' => $year });
 }
 
@@ -313,9 +330,10 @@ sub get_string($;$$)
 {
     my $string = shift;
     my $arguments = shift;
+    $arguments = undef if (!ref($arguments));
     my $state = shift;
     # if duplicate is passed, it means that we are in the text and so should
-    # use the main state
+    # use the main state
     if (defined($state) and $state->{'duplicate'} and defined($Texi2HTML::THISDOC{'state'}))
     {
         $state = main::duplicate_formatting_state($Texi2HTML::THISDOC{'state'});
@@ -357,90 +375,35 @@ sub get_string($;$$)
         }
     }
     return main::substitute_line($translated_string, "translation",  $state) unless (defined($arguments) or !keys(%$arguments));
-    # if there are arguments, we must protect the %{arg} constructs before
-    # doing substitute_line. So there is a first pass here to change %{arg} 
-    # to %@{arg@}
-    my $result = '';
-    if (!$state->{'keep_texi'})
-    {
-        while ($translated_string)
-        {
-            if ($translated_string =~ s/^([^%]*)%//)
-            {
-                $result .= $1 if (defined($1));
-                $result .= '%';
-                if ($translated_string =~ s/^%//)
-                {
-                     $result .= '%';
-                }
-                elsif ($translated_string =~ /^\{(\w+)\}/ and exists($arguments->{$1}))
-                {
-                     $translated_string =~ s/^\{(\w+)\}//;
-                     $result .= "\@\{$1\@\}";
-                }
-                else
-                {
-                     $result .= '%';
-                }
-                next;
-            }
-            else 
-            {   
-                $result .= $translated_string;
-                last;
-            }
-        }
-        # ensure that the braces are kept as is since they are used for 
-        # the arguments delimitation. This means that @{ in the string
-        # to be translated will possibly be rendered incorrectly
-        my %simple_map_kept;
-        my %simple_map_pre_kept;
-        foreach my $brace ('{', '}')
-        {
-           $simple_map_kept{$brace} = $Texi2HTML::Config::simple_map{$brace};
-           $simple_map_pre_kept{$brace} = $Texi2HTML::Config::simple_map_pre{$brace};
-           $Texi2HTML::Config::simple_map{$brace} = $brace;
-           $Texi2HTML::Config::simple_map_pre{$brace} = $brace;
-        }
+    
+    # taken from libintl perl, copyright Guido. sub __expand
+    my %args = %$arguments;
+    my $re = join '|', map { quotemeta $_ } keys %args;
 
-        # the arguments are not already there. But the @-commands in the 
-        # strings are substituted.
-        $translated_string = main::substitute_line($result, "translation", $state);
-        foreach my $brace ('{', '}')
-        {
-           $simple_map_kept{$brace} = $Texi2HTML::Config::simple_map{$brace};
-           $simple_map_pre_kept{$brace} = $Texi2HTML::Config::simple_map_pre{$brace};
-        }
-    }
-    # now we substitute the arguments 
-    $result = '';
-    while ($translated_string)
+    if ($state->{'keep_texi'})
     {
-        if ($translated_string =~ s/^([^%]*)%//)
-        {
-            $result .= $1 if (defined($1));
-            if ($translated_string =~ s/^%//)
-            {
-                 $result .= '%';
-            }
-            elsif ($translated_string =~ /^\{(\w+)\}/ and exists($arguments->{$1}))
-            {
-                 $translated_string =~ s/^\{(\w+)\}//;
-                 $result .= $arguments->{$1};
-            }
-            else
-            {
-                 $result .= '%';
-            }
-            next;
-        }
-        else 
-        {   
-            $result .= $translated_string;
-            last;
-        }
+        $translated_string =~ s/\{($re)\}/defined $args{$1} ? $args{$1} : "{$1}"/ge;
+        return $translated_string;
     }
-    return $result;
+
+    # if there are arguments, we must protect the {arg} constructs before
+    # doing substitute_line. So there is a first pass here to change {arg} 
+    # to %@internal_translation_open_brace{}arg@internal_translation_close_brace{}
+    $translated_string =~ s/\{($re)\}/\@internal_translation_open_brace\{\}$1\@internal_translation_close_brace\{\}/g;
+    foreach my $map (\%Texi2HTML::Config::things_map, \%Texi2HTML::Config::pre_map,  \%Texi2HTML::Config::texi_map, \%Texi2HTML::Config::simple_format_texi_map)
+    {
+         $map->{'internal_translation_open_brace'} = '{';
+         $map->{'internal_translation_close_brace'} = '}';
+    }
+    $translated_string = main::substitute_line($translated_string, "translation", $state);
+    $translated_string =~ s/\{($re)\}/defined $args{$1} ? $args{$1} : "{$1}"/ge;
+    foreach my $map (\%Texi2HTML::Config::things_map, \%Texi2HTML::Config::pre_map,  \%Texi2HTML::Config::texi_map, \%Texi2HTML::Config::simple_format_texi_map)
+    {
+         delete $map->{'internal_translation_open_brace'};
+         delete $map->{'internal_translation_close_brace'};
+    }
+    return $translated_string;
+
 }
 
 1;

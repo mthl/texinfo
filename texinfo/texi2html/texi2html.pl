@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.348 2009-10-29 14:09:51 pertusus Exp $
+# $Id: texi2html.pl,v 1.349 2009-11-01 18:59:57 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -408,6 +408,7 @@ $HEADER_IN_TABLE
 $USE_TITLEPAGE_FOR_TITLE
 $INLINE_CSS_STYLE
 $NO_CSS
+$I18N_PERL_HASH
 );
 
 # customization variables which may be guessed in the script
@@ -675,7 +676,7 @@ use vars qw(
 %t2h_encoding_aliases
 );
 
-# FIXME i18n ?
+# FIXME i18n ?
 %output_format_names = (
   'info' => 'Info',
   'html' => 'HTML',
@@ -689,10 +690,10 @@ sub load($)
     my $file = shift;
     # If required like other init files, the functions would be redefined
     # and the format dependent stuff wouldn't be loaded. Having the 
-    # formats loaded could be worked around, for example there could be
-    # a variable that, and if the variable is defined a function reference
-    # should be called right after the require. There is no real 
-    # workaround for having the function redefined, though.
+    # formats loaded could be worked around, for example there could be
+    # a variable that, and if the variable is defined a function reference
+    # should be called right after the require. There is no real 
+    # workaround for having the function redefined, though.
     foreach my $output_format (keys(%output_format_names))
     {
       if ($file =~ /\/$output_format\.init$/)
@@ -771,7 +772,7 @@ sub get_conf($)
     my $name = shift;
     return $Texi2HTML::THISDOC{$name} if (defined($Texi2HTML::THISDOC{$name}));
     return ${$config_map{$name}} if (defined($config_map{$name}));
-    # there is no default value for many @-commmands, like headings....
+    # there is no default value for many @-commmands, like headings....
     #print STDERR "Unknown conf string: $name\n";
 }
 
@@ -794,6 +795,10 @@ sub set_expansion($$)
 
 # needed in this namespace for translations
 $I = \&Texi2HTML::I18n::get_string;
+sub gdt($;$$)
+{
+    return &main::gdt(@_);
+}
 
 #
 # Function refs covered by the GPL as part of the texi2html.pl original
@@ -1027,24 +1032,24 @@ sub T2H_GPL_format($$$)
     return "<${element}$attribute_text>\n" . $text. "</$element>\n";
 }
 
-# for each index holds the letters split as determined by SPLIT_INDEX.
+# for each index holds the letters split as determined by SPLIT_INDEX.
 my %t2h_default_index_letters_array;
-# equivalent of doc_nr, but with files (and hence numbers) added when 
-# a split index leads to an additional element and a file is created.
+# equivalent of doc_nr, but with files (and hence numbers) added when 
+# a split index leads to an additional element and a file is created.
 my $t2h_default_file_number;
-# this is an increasing number to construct the id for each newly
+# this is an increasing number to construct the id for each newly
 # created index element.
 my $t2h_default_index_id_nr;
-# this holds the file name associated with an element file, such
+# this holds the file name associated with an element file, such
 # as to follow the splitting coming from the main program, and also use
-# the newly generated files.
+# the newly generated files.
 my %t2h_default_seen_files;
-# holds the elements and indices that are split to easily set the
-# directions after they are done in the main program.
+# holds the elements and indices that are split to easily set the
+# directions after they are done in the main program.
 my $t2h_default_element_split_printindices;
 
-# construct a hash of index names holding the letter grouped how they will
-# be split.
+# construct a hash of index names holding the letter grouped how they will
+# be split.
 sub t2h_default_init_split_indices()
 {
     push @command_handler_process, \&t2h_default_index_rearrange_directions;
@@ -1083,10 +1088,10 @@ sub t2h_default_associate_index_element($$$$)
 
   my $default_element_file = $element->{'file'};
 
-  # redo the file naming -- the doc_nr part -- in case new elements were 
-  # inserted upon index split. But respect the default splitting to keep
-  # the elements that are associated with the same file in the same file,
-  # or the added file.
+  # redo the file naming -- the doc_nr part -- in case new elements were 
+  # inserted upon index split. But respect the default splitting to keep
+  # the elements that are associated with the same file in the same file,
+  # or the added file.
   if (!$use_node_file or $t2h_default_seen_files{$default_element_file})
   {
     my $file;
@@ -1098,7 +1103,7 @@ sub t2h_default_associate_index_element($$$$)
     {
       if ($is_top eq 'top')
       { # this is the element_top, so we keep docu_top as associated file.
-        # this, in fact, is not necessary since the element_top is never
+        # this, in fact, is not necessary since the element_top is never
         # associated with another element, but who knows.
          $t2h_default_seen_files{$default_element_file} = $default_element_file;
       }
@@ -1116,16 +1121,16 @@ sub t2h_default_associate_index_element($$$$)
   
   my $level = $element->{'level'};
 
-  # Even if, without USE_SECTION, output can be split at chapter or 
-  # section we don't split indices accordingly. We don't want to add
-  # more cases where users want split indices, this was a very difficult
-  # to maintain feature from the beginning.
+  # Even if, without USE_SECTION, output can be split at chapter or 
+  # section we don't split indices accordingly. We don't want to add
+  # more cases where users want split indices, this was a very difficult
+  # to maintain feature from the beginning.
   #$level = $element->{'with_section'}->{'level'} if (!defined($level) and
   #    defined($element->{'with_section'}));
 
   # if the element is not the level of splitting, then we don't split.
-  # also if 'top' is set we don't split since the formatting is different
-  # in that case and the result would be quite unpredictable.
+  # also if 'top' is set we don't split since the formatting is different
+  # in that case and the result would be quite unpredictable.
   return if ($element->{'top'} or ((get_conf('SPLIT') ne 'node')
       and (!defined($level) or $level > $Texi2HTML::THISDOC{'split_level'})));
 
@@ -1133,11 +1138,11 @@ sub t2h_default_associate_index_element($$$$)
 
 
   # iterate over the @places of the element, which includes associated nodes,
-  # associated elements, anchors, footnotes, floats, index entries, 
-  # printindices (including the element command itself, be it a @node or 
+  # associated elements, anchors, footnotes, floats, index entries, 
+  # printindices (including the element command itself, be it a @node or 
   # a sectionning @-command). 
-  # during the iteration, split printindices that needs it, and reassociate
-  # other placed elements with files and elements.
+  # during the iteration, split printindices that needs it, and reassociate
+  # other placed elements with files and elements.
 
   my $current_element = $element;
   my @places = @{$element->{'place'}};
@@ -1147,7 +1152,7 @@ sub t2h_default_associate_index_element($$$$)
   {
     my ($printindex, $printindex_to_split, $index_name);
 
-    # determines if the placed thing is a printindex to be split
+    # determines if the placed thing is a printindex to be split
     if ($place->{'command'} and $place->{'command'} eq 'printindex')
     {
         $printindex = $place;
@@ -1156,10 +1161,10 @@ sub t2h_default_associate_index_element($$$$)
         if (exists($t2h_default_index_letters_array{$index_name}) and 
         # split index
          scalar(@{$t2h_default_index_letters_array{$index_name}} > 1)
-         # the condition defined($printindex->{'associated_element'} implies 
-         # that we don't split printindex before first element, otherwise
-         # there will be a need to begin document without a first element 
-         # which would be annoying.
+         # the condition defined($printindex->{'associated_element'} implies 
+         # that we don't split printindex before first element, otherwise
+         # there will be a need to begin document without a first element 
+         # which would be annoying.
          and defined($printindex->{'associated_element'}))
         {
             $printindex_to_split = 1;
@@ -1171,13 +1176,13 @@ sub t2h_default_associate_index_element($$$$)
     {
        push @{$current_element->{'place'}}, $place;
        # don't remodify the original element file, it was set right at the 
-       # beginning of the function.
+       # beginning of the function.
        $place->{'file'} = $current_element->{'file'} if ($place ne $element);
-       # the 'element_ref' has to be reset. Otherwise, $place->{'element_ref'}
-       # will appear as a new element and trigger closing the file and 
-       # opening a new one.
+       # the 'element_ref' has to be reset. Otherwise, $place->{'element_ref'}
+       # will appear as a new element and trigger closing the file and 
+       # opening a new one.
        $place->{'element_ref'} = $current_element if ($place->{'element_ref'} and $current_element ne $element);
-       # this resets the element associated with a printindex.
+       # this resets the element associated with a printindex.
        if ($place->{'associated_element'} and $current_element ne $element)
        {
            $place->{'associated_element'} = $current_element;
@@ -1185,7 +1190,7 @@ sub t2h_default_associate_index_element($$$$)
        next;
     }
 
-    # now split the index
+    # now split the index
 
     my @letter_groups = ();
     my @letters_split = @{$t2h_default_index_letters_array{$index_name}};
@@ -1196,9 +1201,9 @@ sub t2h_default_associate_index_element($$$$)
 
     $letter_groups[0]->{'element'} = $current_element;
 
-    # besides preparing the new elements corresponding with split indices,
-    # they are recorded for later directions rearrangements in 
-    # t2h_default_index_rearrange_directions.
+    # besides preparing the new elements corresponding with split indices,
+    # they are recorded for later directions rearrangements in 
+    # t2h_default_index_rearrange_directions.
 
     # this weird construct is there because the element used as a key is 
     # converted to a string by perl, losing its meaning as a reference, 
@@ -1211,8 +1216,8 @@ sub t2h_default_associate_index_element($$$$)
         my $first_letter = $split_group->{'letters'}->[0]->{'letter'};
         my $last_letter = $split_group->{'letters'}->[-1]->{'letter'};
         if (!$split_group->{'element'})
-        { # this is not the first letters group, which is already associated
-          # with an element, a new element is done.
+        { # this is not the first letters group, which is already associated
+          # with an element, a new element is done.
 
           # construct new element name
           my $letters_heading;
@@ -1254,7 +1259,7 @@ sub t2h_default_associate_index_element($$$$)
           $t2h_default_index_id_nr++;
 
           my $new_element = { 'file' => $relative_file, 'id' => $id, 'target' => $id, 'text' => $name, 'texi' => $texi, 'seen' => 1, 'simple_format' => $simple };
-          # to avoid crashing when in case there is a filename collision.
+          # to avoid crashing when there is a filename collision.
           main::add_file($new_element->{'file'});
 
           $split_group->{'element'} = $new_element;
@@ -1272,8 +1277,8 @@ sub t2h_default_associate_index_element($$$$)
   }
 }
 
-# set directions for added elements now that they are done in the
-# main program for all the other elements.
+# set directions for added elements now that they are done in the
+# main program for all the other elements.
 sub t2h_default_index_rearrange_directions()
 {
   return if (!defined($t2h_default_element_split_printindices));
@@ -1384,7 +1389,7 @@ sub t2h_GPL_default_printindex($$)
   elsif (defined($Texi2HTML::THISDOC{'index_letters_array'}->{$index_name}) and scalar(@{$Texi2HTML::THISDOC{'index_letters_array'}->{$index_name}}))
   {
     my $element = $printindex->{'associated_element'};
-    # this happens for printindex before the first element.
+    # this happens for printindex before the first element.
     if (!defined($element))
     {
        $element =  {'file' => '', 'id' => "$printindex->{'region'}_printindex"};
@@ -1497,8 +1502,8 @@ sub t2h_GPL_default_printindex($$)
     $current_page = shift @split_letters;
     last if (!defined($current_page));
 
-    # there is no need to begin first element if not already done, since
-    # the index is not split if not already in an element.
+    # there is no need to begin first element if not already done, since
+    # the index is not split if not already in an element.
     # end the previous element
     main::finish_element ($Texi2HTML::THISDOC{'FH'}, $Texi2HTML::THIS_ELEMENT, $Texi2HTML::THIS_ELEMENT->{'Forward'}, 0);
 
@@ -1543,7 +1548,7 @@ require "$T2H_HOME/texi2html.init"
     if ($0 =~ /\.pl$/ &&
         -e "$T2H_HOME/texi2html.init" && -r "$T2H_HOME/texi2html.init");
 
-# @INIT_HTML@
+# @INIT_HTML@
 
 require "$T2H_HOME/formats/html.init" 
     if ($0 =~ /\.pl$/ &&
@@ -1555,19 +1560,19 @@ require "$T2H_HOME/formats/info.init"
     if ($0 =~ /\.pl$/ &&
         -e "$T2H_HOME/formats/info.init" && -r "$T2H_HOME/formats/info.init");
 
-# @INIT_DOCBOOK@
+# @INIT_DOCBOOK@
 
 require "$T2H_HOME/formats/docbook.init"
     if ($0 =~ /\.pl$/ &&
         -e "$T2H_HOME/formats/docbook.init" && -r "$T2H_HOME/formats/docbook.init");
 
-# @INIT_XML@
+# @INIT_XML@
 
 require "$T2H_HOME/formats/xml.init"
     if ($0 =~ /\.pl$/ &&
         -e "$T2H_HOME/formats/xml.init" && -r "$T2H_HOME/formats/xml.init");
 
-# @INIT_PLAINTEXT@
+# @INIT_PLAINTEXT@
 
 require "$T2H_HOME/formats/plaintext.init"
     if ($0 =~ /\.pl$/ &&
@@ -1789,6 +1794,48 @@ require "$T2H_HOME/MySimple.pm"
 require "$T2H_HOME/T2h_i18n.pm"
     if ($0 =~ /\.pl$/ &&
         -e "$T2H_HOME/T2h_i18n.pm" && -r "$T2H_HOME/T2h_i18n.pm");
+}
+
+my $use_nls = ('@USE_NLS@' eq 'yes' or $0 =~ /\.pl$/);
+
+my $strings_textdomain = '@PACKAGE@' . '_document';
+$strings_textdomain = 'texi2html_document' if ($strings_textdomain eq '@'.'PACKAGE@' . '_document');
+my $messages_textdomain = '@PACKAGE@';
+$messages_textdomain = 'texi2html' if ($messages_textdomain eq '@'.'PACKAGE@');
+
+if ($use_nls)
+{
+    if ($0 =~ /\.pl$/)
+    { # use in-source libintl when testing
+        unshift @INC, "$T2H_HOME/lib/libintl-perl/lib";
+    }
+    elsif ($ENV{T2H_SOURCE_LIBINTL})
+    {
+        unshift @INC, $ENV{T2H_SOURCE_LIBINTL};
+    }
+    elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes')
+    {
+        unshift @INC, "$pkgdatadir/lib/libint-perl/lib";
+    }
+    # gettext-like translations
+    require Locale::TextDomain;
+    require Locale::Messages;
+    # we want a reliable way to switch locale, so we don't use the system 
+    # gettext.
+    Locale::Messages->select_package ('gettext_pp');
+    if ($0 =~ /\.pl$/)
+    {
+         # in case of out of source build, the locales directory should 
+         # be two levels below. $T2H_HOME is in srcdir.
+         foreach my $locales_dir ("$T2H_HOME/locales", "../../locales")
+         {
+             if (-d $locales_dir)
+             {
+                  Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
+                  last;
+             }
+        }
+    }
 }
 
 #########################################################################
@@ -2165,7 +2212,7 @@ sub document_warn($);
 sub file_line_warn($$;$);
 sub cmdline_warn ($);
 
-#print STDERR "" . &$I('test i18n: \' , \a \\ %% %{unknown}a %known % %{known}  \\', { 'known' => 'a known string', 'no' => 'nope'}); exit 0;
+#print STDERR "" . gdt('test i18n: \' , \a \\ %% %{unknown}a %known % %{known}  \\', { 'known' => 'a known string', 'no' => 'nope'}); exit 0;
 
 # file:        file name to locate. It can be a file path.
 # all_files:   if true collect all the files with that name, otherwise stop
@@ -2256,8 +2303,32 @@ sub set_date($)
     $::texi_map_ref->{'today'} = $Texi2HTML::THISDOC{'today'};
 }
 
+sub warn_unknown_language($;$)
+{
+    my $lang = shift;
+    my $line_nr = shift;
+
+    my $lang_code = $lang;
+    my $region_code;
+
+    if ($lang =~ /^([a-z]+)_([A-Z]+)/)
+    {
+        $lang_code = $1;
+        $region_code = $2;
+    }
+
+    if (! $Texi2HTML::Config::language_codes{$lang_code})
+    { # i18n
+        msg_warn("$lang_code is not a valid language code.", $line_nr);
+    }
+    if (defined($region_code) and ! $Texi2HTML::Config::region_codes{$region_code})
+    { # i18n
+        msg_warn("$region_code is not a valid region code.", $line_nr);
+    }
+}
+
 # Called on --document-language, at the beginning of each pass and
-# when a @documentlanguage appears
+# when a @documentlanguage appears
 sub set_document_language ($$;$)
 {
     my $lang = shift;
@@ -2266,29 +2337,35 @@ sub set_document_language ($$;$)
 
     my @langs = ($lang);
 
-    my $lang_code = $lang;
-    my $region_code;
+#    my $lang_code = $lang;
+#    my $region_code;
 
     my $main_lang;
 
     if ($lang =~ /^([a-z]+)_([A-Z]+)/)
     {
         $main_lang = $1;
-        $region_code = $2;
-        $lang_code = $main_lang;
+#        $region_code = $2;
+#        $lang_code = $main_lang;
         push @langs, $main_lang;
     }
 
-    if (!$silent)
+#    if (!$silent)
+#    {         
+#        if (! $Texi2HTML::Config::language_codes{$lang_code})
+#        { # i18n
+#            msg_warn("$lang_code is not a valid language code.", $line_nr);
+#        }
+#        if (defined($region_code) and ! $Texi2HTML::Config::region_codes{$region_code})
+#        { # i18n
+#            msg_warn("$region_code is not a valid region code.", $line_nr);
+#        }
+#    }
+    # Always succeed if using a gettext-like environment
+    if (!$Texi2HTML::Config::I18N_PERL_HASH)
     {
-        if (! $Texi2HTML::Config::language_codes{$lang_code})
-        { # i18n
-            msg_warn("$lang_code is not a valid language code.", $line_nr);
-        }
-        if (defined($region_code) and ! $Texi2HTML::Config::region_codes{$region_code})
-        { # i18n
-            msg_warn("$region_code is not a valid region code.", $line_nr);
-        }
+        set_date($lang);
+        return 1;
     }
 
     my @files = locate_init_file("$i18n_dir/$lang", 1);
@@ -2308,14 +2385,13 @@ sub set_document_language ($$;$)
             print STDERR "# using '$language' as document language\n" if ($T2H_VERBOSE);
             # since it may be different from get_conf('documentlanguage'),
             # we record it.
-            # Currently this is not used anywhere, not sure what the value
-            # really corresponds with.
+            # Currently this is not used anywhere, not sure what the value
+            # really corresponds with.
             $Texi2HTML::THISDOC{'current_language'} = $language;
             set_date($language);
             return 1;
         }
     }
-    
     return 0;
 }
 
@@ -2378,6 +2454,100 @@ sub encoding_alias($;$$)
     }
 }
 
+sub gdt($;$$)
+{
+    my $message = shift;
+    my $context = shift;
+    my $state = shift;
+
+    return &$I($message, $context, $state) if ($Texi2HTML::Config::I18N_PERL_HASH);
+    # if duplicate is passed, it means that we are in the text and so should
+    # use the main state
+    if (defined($state) and $state->{'duplicate'} and defined($Texi2HTML::THISDOC{'state'}))
+    {
+        $state = main::duplicate_formatting_state($Texi2HTML::THISDOC{'state'});
+    }
+
+    return substitute_line ($message, "translation", $state) unless ($use_nls);
+
+    my $saved_LANGUAGE = $ENV{'LANGUAGE'};
+
+    Locale::Messages::textdomain($strings_textdomain);
+
+    # FIXME this should be done only once
+    my $encoding = lc(Texi2HTML::Config::get_conf('DOCUMENT_ENCODING'));
+    if (defined($encoding) and $encoding ne '' and exists($Texi2HTML::Config::t2h_encoding_aliases{$encoding}))
+    {
+        $encoding = $Texi2HTML::Config::t2h_encoding_aliases{$encoding};
+    }
+    $encoding = 'us-ascii' if (!defined($encoding) or $encoding eq '');
+
+    my $lang = Texi2HTML::Config::get_conf('documentlanguage');
+    my @langs = ($lang);
+    if ($lang =~ /^([a-z]+)_([A-Z]+)/)
+    {
+        my $main_lang = $1;
+        my $region_code = $2;
+        push @langs, $main_lang;
+    }
+
+    my $locales = '';
+    foreach my $language (@langs)
+    {
+        $locales .= "$language.$encoding:";
+        # always try us-ascii, the charset should always be a subset of
+        # all charset, and should resort to @-commands if needed for non
+        # ascii characters
+        if ($encoding ne 'us-ascii')
+        {
+            $locales .= "$language.us-ascii:";
+        }
+    }
+    $locales =~ s/:$//;
+    Locale::Messages::nl_putenv("LANGUAGE=$locales");
+
+    my $result;
+    my $re;
+    # taken from libintl perl, copyright Guido. sub __expand
+    $re = join '|', map { quotemeta $_ } keys %$context if (defined($context) and ref($context));
+    if (!defined($context) or ref($context))
+    {
+         $result = Locale::Messages::gettext($message);
+    }
+    else
+    {
+         $result = Locale::Messages::pgettext($context, $message);
+    }
+    Locale::Messages::textdomain($messages_textdomain);
+    $ENV{'LANGUAGE'} = $saved_LANGUAGE;
+
+    if ($state->{'keep_texi'})
+    {
+         $result =~ s/\{($re)\}/defined $context->{$1} ? $context->{$1} : "{$1}"/ge if (defined($re));
+         return $result;
+    }
+    if (defined($re))
+    {
+         $result =~ s/\{($re)\}/\@internal_translation_open_brace\{\}$1\@internal_translation_close_brace\{\}/g;
+         foreach my $map (\%Texi2HTML::Config::things_map, \%Texi2HTML::Config::pre_map,  \%Texi2HTML::Config::texi_map, \%Texi2HTML::Config::simple_format_texi_map)
+         {
+             $map->{'internal_translation_open_brace'} = '{';
+             $map->{'internal_translation_close_brace'} = '}';
+         }
+    }
+    $result = substitute_line ($result, "translation", $state);
+    if (defined($re))
+    {
+         $result =~ s/\{($re)\}/defined $context->{$1} ? $context->{$1} : "{$1}"/ge;
+         foreach my $map (\%Texi2HTML::Config::things_map, \%Texi2HTML::Config::pre_map,  \%Texi2HTML::Config::texi_map, \%Texi2HTML::Config::simple_format_texi_map)
+         {
+               delete $map->{'internal_translation_open_brace'};
+               delete $map->{'internal_translation_close_brace'};
+         }
+    }
+
+    return $result;
+}
 
 my %nodes;             # nodes hash. The key is the texi node name
 my %cross_reference_nodes;  # normalized node names arrays
@@ -2477,11 +2647,11 @@ sub unicode_to_transliterate($)
                  $result .= '';
              }
              # in this case, we want to avoid calling unidecode, as we are sure
-             # that there is no useful transliteration of the unicode character
-             # instead we want to keep it as is.
-             # This is the case, for example, for @exclamdown, is corresponds
-             # with x00a1, but unidecode transliterates it to a !, we want
-             # to avoid that and keep x00a1.
+             # that there is no useful transliteration of the unicode character
+             # instead we want to keep it as is.
+             # This is the case, for example, for @exclamdown, is corresponds
+             # with x00a1, but unidecode transliterates it to a !, we want
+             # to avoid that and keep x00a1.
              elsif (ord($char) <= hex(0xFFFF) and exists($Texi2HTML::Config::no_transliterate_map{uc(sprintf("%04x",ord($char)))}))
              {
                  $result .= $char;
@@ -2508,7 +2678,7 @@ sub unicode_to_transliterate($)
     return $result;
 }
 
-# used both for command line and @-command argument checking
+# used both for command line and @-command argument checking
 sub set_paragraphindent($$;$$)
 {
    my $value = shift;
@@ -2839,7 +3009,10 @@ $T2H_OPTIONS -> {'verbose|v'} =
 $T2H_OPTIONS -> {'document-language'} =
 {
  type => '=s',
- linkage => sub {Texi2HTML::Config::set_conf('documentlanguage', $_[1])},
+ linkage => sub {
+        warn_unknown_language ($_[1]);
+        Texi2HTML::Config::set_conf('documentlanguage', $_[1])
+    },
  verbose => 'use $s as document language',
 };
 
@@ -3106,16 +3279,6 @@ $T2H_OBSOLETE_OPTIONS -> {'lang'} =
  noHelp => 2
 };
 
-# this should be picked up as a number-sections variant
-#$T2H_OBSOLETE_OPTIONS -> {'number'} =
-#{
-# type => '!',
-# linkage => \$Texi2HTML::Config::NUMBER_SECTIONS,
-# verbose => 'obsolete, use "--number-sections" instead',
-# noHelp => 2
-#};
-
-
 $T2H_OBSOLETE_OPTIONS -> {'separated-footnotes'} =
 {
  type => '!',
@@ -3373,7 +3536,7 @@ foreach my $file (locate_init_file($conf_file_name, 1))
 #                                                                              #
 #---############################################################################
 
-# options known by makeinfo (+version, help and if*)
+# options known by makeinfo (+version, help and if*)
 my @makeinfo_options = ('error-limit', 'document-language',
 'force', 'help', 'no-validate', 'no-warn', 'verbose', 'docbook', 'html', 
 'xml', 'plaintext', 'macro-expand', 'headers', 'no-split', 
@@ -3499,7 +3662,7 @@ general questions and discussion to help-texinfo@gnu.org.
 Texinfo home page: http://www.gnu.org/software/texinfo/
 ';
 
-# parsing like texi2html:
+# parsing like texi2html:
 
 
 my $T2H_USAGE_TEXT = <<EOT;
@@ -3734,7 +3897,7 @@ foreach my $expanded (@Texi2HTML::Config::EXPAND)
     }
 }
 
-# don't set set_no_line_macro for raw EXPAND formats 
+# don't set set_no_line_macro for raw EXPAND formats 
 foreach my $key (keys(%Texi2HTML::Config::texi_formats_map))
 {
     unless ($Texi2HTML::Config::texi_formats_map{$key} eq 'raw')
@@ -3744,9 +3907,9 @@ foreach my $key (keys(%Texi2HTML::Config::texi_formats_map))
     }
 }
 
-# the remaining (not in @EXPAND) raw formats are set as 'raw' such that 
+# the remaining (not in @EXPAND) raw formats are set as 'raw' such that 
 # they are propagated to formatting functions, but
-# they don't start paragraphs or preformatted.
+# they don't start paragraphs or preformatted.
 foreach my $raw (@raw_regions)
 {
     if (!defined($Texi2HTML::Config::texi_formats_map{$raw}))
@@ -3862,7 +4025,7 @@ foreach my $key (keys(%Texi2HTML::Config::unicode_map))
                  $cross_ref_texi_map{$key} = chr($char_nr);
              }
              # cross_transliterate_texi_map is only used if 
-             # USE_UNIDECODE is unset and TRANSLITERATE_FILE_NAMES is set
+             # USE_UNIDECODE is unset and TRANSLITERATE_FILE_NAMES is set
              if (exists ($Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}}))
              {
                 $cross_transliterate_texi_map{$key} = $Texi2HTML::Config::transliterate_map{$Texi2HTML::Config::unicode_map{$key}};
@@ -3911,8 +4074,8 @@ foreach my $key (keys(%cross_ref_style_map_texi))
         {
              $cross_ref_style_map_texi{$key}->{'function'} = \&Texi2HTML::Config::t2h_nounicode_cross_manual_accent;
         }
-        # this is only used if TRANSLITERATE_FILE_NAMES is set and USE_UNICODE
-        # or USE_UNIDECODE is not set
+        # this is only used if TRANSLITERATE_FILE_NAMES is set and USE_UNICODE
+        # or USE_UNIDECODE is not set
         $cross_transliterate_style_map_texi{$key}->{'function'} = \&Texi2HTML::Config::t2h_transliterate_cross_manual_accent;
     }
 }
@@ -3948,7 +4111,8 @@ if ($Texi2HTML::Config::ENABLE_ENCODING)
    }
 }
 
-# for all files
+# for all files. This won't be overriden by @documentencoding, this is not
+# what is done in general.
 Texi2HTML::Config::set_conf('IN_ENCODING', $Texi2HTML::Config::IN_ENCODING);
 Texi2HTML::Config::set_conf('DOCUMENT_ENCODING', $Texi2HTML::Config::DOCUMENT_ENCODING);
 
@@ -4144,7 +4308,7 @@ sub set_docu_names($$)
    $docu_rdir = '';
    my $null_output;
    if (defined($Texi2HTML::Config::OUT) and ($file_nr == 0) and $Texi2HTML::Config::null_device_file{$Texi2HTML::Config::OUT})
-   { # this overrides the setting for this file.
+   { # this overrides the setting for this file.
       $Texi2HTML::THISDOC{'SPLIT'} = '';
       $Texi2HTML::THISDOC{'SPLIT_SIZE'} = undef;
       $null_output = 1;
@@ -4174,7 +4338,7 @@ sub set_docu_names($$)
 # AAAA
       # even if the out file is not set by OUT, in case it is not the first
       # file, the out directory is still used. This is only used to determine
-      # the directory, the out file itself is set below
+      # the directory, the out file itself is set below
          if (defined($Texi2HTML::Config::OUT) and $Texi2HTML::Config::OUT ne '')
          {
             $out_file = $Texi2HTML::Config::OUT;
@@ -4433,7 +4597,7 @@ sub texinfo_initialization($)
 {
     my $pass = shift;
 
-    # set the translations now. This means at the beginning of each pass.
+    # set the translations now. This means at the beginning of each pass.
     # Do it silently, except during the last pass.
     my $lang = Texi2HTML::Config::get_conf('documentlanguage');
     my $silent_lang = 1 if ($pass != 2);
@@ -4443,7 +4607,7 @@ sub texinfo_initialization($)
        set_document_language('en', $silent_lang);
     }
     # All the initialization used the informations still there at the 
-    # end of the previous pass.
+    # end of the previous pass.
     # Now we reset everything, such that things are used when they happen.
     # also reset the @set/@clear values.
     %value = %value_initial;
@@ -4649,7 +4813,7 @@ my %reference_content_element =
         'shortcontents' => 1, 'texi' => '_shortcontents' },
    );
 
-# holds content elements located with @*contents commands
+# holds content elements located with @*contents commands
 my %all_content_elements;
 
 # common code for headings and sections
@@ -4675,7 +4839,6 @@ sub new_section_heading($$$$)
     return $section_ref;
 }
 
-# returns (
 sub scan_line_separators($$$;$)
 {
     my $line = shift;
@@ -4687,7 +4850,7 @@ sub scan_line_separators($$$;$)
     my $result = '';
     while (1)
     {
-        # macro_regexp
+        # macro_regexp
         if ($line =~ s/^([^{}\@$separators]*)\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])// or $line =~ s/^([^{}\@$separators]*)\@([a-zA-Z][\w-]*)//)
         {
             $result .= $1;
@@ -4696,8 +4859,8 @@ sub scan_line_separators($$$;$)
             if (defined($Texi2HTML::Config::misc_command{$command}))
             {
                if ($command ne 'c' and $command ne 'comment')
-               { # misc commands other than comments are kept as-is, only 
-                 # comments are removed.
+               { # misc commands other than comments are kept as-is, only 
+                 # comments are removed.
                    my ($text, $args);
                    ($line, $text, $args) = &$Texi2HTML::Config::preserve_misc_command($line, $command);
                    $result .= "\@$command".$text;
@@ -4788,8 +4951,8 @@ sub trim_comment_spaces($$;$)
     return  trim_around_spaces($arg);
 }
 
-# argument may be the number of arguments when the commas in the last 
-# argument has no specific meaning. When it is undef it means that
+# argument may be the number of arguments when the commas in the last 
+# argument has no specific meaning. When it is undef it means that
 # all the arguments have to be parsed
 sub parse_line_arguments($$$;$)
 {
@@ -4847,9 +5010,9 @@ sub pass_structure($$)
              $texi_lines->[0] = $cline . $texi_lines->[0];
              next;
         }
-        # !defined($cline) may happen if $state->{'in_deff_line'} is true 
-        # but there is no more line, in case the last end of line is
-        # protected
+        # !defined($cline) may happen if $state->{'in_deff_line'} is true 
+        # but there is no more line, in case the last end of line is
+        # protected
         $line_nr = shift (@$lines_numbers) unless (!defined($cline));
 
         if ($state->{'in_deff_line'})
@@ -4861,7 +5024,7 @@ sub pass_structure($$)
             }
             else
             {# end of line protected at the very end of the file
-             # in that case there is also no line_nr anymore.
+             # in that case there is also no line_nr anymore.
                 $cline = $state->{'in_deff_line'};
             }
             delete $state->{'in_deff_line'};
@@ -5073,8 +5236,8 @@ sub pass_structure($$)
                 {
                     push @{$region_lines{$state->{'region_lines'}->{'format'}}}, @added_lines;
                     if ($Texi2HTML::Config::region_formats_kept{$state->{'region_lines'}->{'format'}})
-                    { # the region is kept in the document in addition with
-                      # being put in the appropriate region_lines entry.
+                    { # the region is kept in the document in addition with
+                      # being put in the appropriate region_lines entry.
                         push @doc_lines, @added_lines;
                         push @doc_numbers, @added_numbers;
                     }
@@ -5171,17 +5334,18 @@ sub do_documentlanguage($$$$)
     {
         my $lang = $1;
         my $prev_lang = Texi2HTML::Config::get_conf('documentlanguage');
-        # This won't be done if the documentlanguage was set on the command line
+        # This won't be done if the documentlanguage was set on the command line
         if (Texi2HTML::Config::set_conf('documentlanguage', $lang, 1))
         {
+            warn_unknown_language ($lang, $line_nr) unless ($silent);
             $language_change_succes = set_document_language($lang, $silent, $line_nr);
             if (!$language_change_succes)
-            { # reset previous documentlanguage
+            { # reset previous documentlanguage
                 Texi2HTML::Config::set_conf('documentlanguage', $prev_lang, 1);
                 line_error ("Translations for '$lang' not found. Reverting to '$prev_lang'.", $line_nr) unless ($silent);
             }
         }
-        # FIXME warn about stuff remaining on the line?
+        # FIXME warn about stuff remaining on the line?
     }
     return $language_change_succes;
 }
@@ -5224,7 +5388,7 @@ sub common_misc_commands($$$$)
         if ($line =~ s/^\s+@([^\s\{\}\@]+)({})?\s*//)
         {
             $Texi2HTML::THISDOC{$command} = $1;
-            # FIXME warn about what remains on the line?
+            # FIXME warn about what remains on the line?
         }
         else
         {
@@ -5371,7 +5535,7 @@ sub misc_command_texi($$$$)
    if (!$state->{'ignored'} and !$state->{'arg_expansion'})
    {
       if ($command eq 'documentencoding')
-      {  # FIXME accept more characters, like @?
+      {  # FIXME accept more characters, like @?
          if ($cline =~ s/^(\s+)([\w\-]+)//)
          {
             my $encoding = $2;
@@ -5422,12 +5586,12 @@ sub misc_command_texi($$$$)
           else
           {
              line_error("Bad \@$command", $line_nr);
-          } # FIXME warn about garbage remaining on the line?
+          } # FIXME warn about garbage remaining on the line?
       }
       else
       {
           if ($command eq 'setfilename' and $Texi2HTML::Config::USE_SETFILENAME)
-          { # a double setfillename is removed before calling misc_command_texi
+          { # a double setfillename is removed before calling misc_command_texi
              my $filename = trim_comment_spaces($line, "\@$command");
              $filename = substitute_line($filename, "\@$command",{'code_style' => 1, 'remove_texi' => 1}, $line_nr);
              if ($filename ne '')
@@ -5513,7 +5677,7 @@ sub misc_command_structure($$$$)
         # FIXME backward compatibility. Obsoleted in nov 2009.
         $value{"_$command"} = $arg;
         if ($command eq 'title')
-        { # FIXME This was obsoleted in jun 2007
+        { # FIXME This was obsoleted in jun 2007
             $Texi2HTML::THISDOC{"${command}s_texi"} = [ $arg ];
         }
     }
@@ -5524,7 +5688,7 @@ sub misc_command_structure($$$$)
         push @{$Texi2HTML::THISDOC{"${command}s_texi"}}, $arg;
         #chomp($arg);
 
-        # FIXME backward compatibility. Obsoleted in nov 2009.
+        # FIXME backward compatibility. Obsoleted in nov 2009.
         $value{"_$command"} .= $arg . "\n";
     }
     elsif ($command eq 'synindex' || $command eq 'syncodeindex')
@@ -5664,18 +5828,18 @@ sub misc_command_structure($$$$)
 
 sub set_special_names()
 {
-    $Texi2HTML::NAME{'About'} = &$I('About This Document');
-    $Texi2HTML::NAME{'Contents'} = &$I('Table of Contents');
-    $Texi2HTML::NAME{'Overview'} = &$I('Short Table of Contents');
-    $Texi2HTML::NAME{'Footnotes'} = &$I('Footnotes');
-    $Texi2HTML::NO_TEXI{'About'} = &$I('About This Document', {}, {'remove_texi' => 1} );
-    $Texi2HTML::NO_TEXI{'Contents'} = &$I('Table of Contents', {}, {'remove_texi' => 1} );
-    $Texi2HTML::NO_TEXI{'Overview'} = &$I('Short Table of Contents', {}, {'remove_texi' => 1} );
-    $Texi2HTML::NO_TEXI{'Footnotes'} = &$I('Footnotes', {}, {'remove_texi' => 1} );
-    $Texi2HTML::SIMPLE_TEXT{'About'} = &$I('About This Document', {}, {'simple_format' => 1});
-    $Texi2HTML::SIMPLE_TEXT{'Contents'} = &$I('Table of Contents',{},  {'simple_format' => 1});
-    $Texi2HTML::SIMPLE_TEXT{'Overview'} = &$I('Short Table of Contents', {}, {'simple_format' => 1});
-    $Texi2HTML::SIMPLE_TEXT{'Footnotes'} = &$I('Footnotes', {},{'simple_format' => 1});
+    $Texi2HTML::NAME{'About'} = gdt('About This Document');
+    $Texi2HTML::NAME{'Contents'} = gdt('Table of Contents');
+    $Texi2HTML::NAME{'Overview'} = gdt('Short Table of Contents');
+    $Texi2HTML::NAME{'Footnotes'} = gdt('Footnotes');
+    $Texi2HTML::NO_TEXI{'About'} = gdt('About This Document', {}, {'remove_texi' => 1} );
+    $Texi2HTML::NO_TEXI{'Contents'} = gdt('Table of Contents', {}, {'remove_texi' => 1} );
+    $Texi2HTML::NO_TEXI{'Overview'} = gdt('Short Table of Contents', {}, {'remove_texi' => 1} );
+    $Texi2HTML::NO_TEXI{'Footnotes'} = gdt('Footnotes', {}, {'remove_texi' => 1} );
+    $Texi2HTML::SIMPLE_TEXT{'About'} = gdt('About This Document', {}, {'simple_format' => 1});
+    $Texi2HTML::SIMPLE_TEXT{'Contents'} = gdt('Table of Contents',{},  {'simple_format' => 1});
+    $Texi2HTML::SIMPLE_TEXT{'Overview'} = gdt('Short Table of Contents', {}, {'simple_format' => 1});
+    $Texi2HTML::SIMPLE_TEXT{'Footnotes'} = gdt('Footnotes', {},{'simple_format' => 1});
 }
 
 # return the line after removing things according to misc_command map.
@@ -5883,8 +6047,8 @@ sub prepare_indices()
             ($a !~ /^[[:alpha:]]/ and $b !~ /^[[:alpha:]]/)) && $a cmp $b)
              || ($a =~ /^[[:alpha:]]/ && 1) || -1 } (keys %letters_hash))
         {
-          # FIXME sort without uc?
-          # This sorts the entries for a given letter
+          # FIXME sort without uc?
+          # This sorts the entries for a given letter
           my @sorted_letter_entries = (sort {uc($a->{'key'}) cmp uc($b->{'key'})} (@{$letters_hash{$letter}}));
 
           push @{$Texi2HTML::THISDOC{'index_letters_array'}->{$index_name}}, { 'letter' => $letter, 'entries' => \@sorted_letter_entries };
@@ -6154,8 +6318,8 @@ sub do_element_targets($;$)
          }
          $element->{'file'} = $filename;
          if ($is_top)
-         { # reset these variables, although they aren't used much, they may be
-           # used in file name comparisons
+         { # reset these variables, although they aren't used much, they may be
+           # used in file name comparisons
             $docu_top = $filename;
             $docu_top_file = "$docu_rdir$docu_top";
          }
@@ -6206,8 +6370,8 @@ sub add_t2h_dependent_element ($$)
 
 my %files = ();   # keys are files. This is used to avoid reusing an already
                   # used file name
-my @opened_files = (); # all the files opened by the program to remove
-                       # them if FORCE is not set and an error occured
+my @opened_files = (); # all the files opened by the program to remove
+                       # them if FORCE is not set and an error occured
 my %printed_indices = (); # value is true for an index name not empty and
                           # printed
 # This is a virtual element used to have the right hrefs for index entries
@@ -6353,11 +6517,11 @@ sub rearrange_elements()
             $toplevel_number = 0 if (!defined($toplevel_number));
             
             if ($section->{'number'})
-            { # not toplevel
+            { # not toplevel
                 $section->{'number'} = "$toplevel_number.$section->{'number'}";
             }
             else
-            { # toplevel
+            { # toplevel
                 $section->{'number'} = $toplevel_number;
                 if ($section->{'tag'} =~ /appendix/)
                 {# i18n
@@ -6384,8 +6548,8 @@ sub rearrange_elements()
         {
             $section->{'sectionup'} = $previous_sections[$level];
             # 'child' is the first child. 
-            # the condition or $section->{'sectionup'}->{'child'} is for 
-            # the @top since it may already one child
+            # the condition or $section->{'sectionup'}->{'child'} is for 
+            # the @top since it may already one child
             # and no sectionprev 
             $section->{'sectionup'}->{'child'} = $section unless ($section->{'sectionprev'} or $section->{'sectionup'}->{'child'});
             push @{$section->{'sectionup'}->{'section_childs'}}, $section;
@@ -6525,8 +6689,8 @@ sub rearrange_elements()
     {
         # first a warning if the node and the equivalent nodes don't 
         # appear in menus.
-        # Don't warn for the top node, and the first node if there is no
-        # top node.
+        # Don't warn for the top node, and the first node if there is no
+        # top node.
         if ((($node_top and $node ne $node_top) or (!$node_top and $node ne $node_first)) and !$node->{'menu_up'} and $Texi2HTML::Config::SHOW_MENU)
         {
             my @equivalent_nodes = equivalent_nodes($node->{'texi'});
@@ -6596,7 +6760,7 @@ sub rearrange_elements()
                 push @{$node->{'up_not_in_menu'}}, $node->{'nodeup'}->{'texi'};
             }
         }
-        # check that the up is in one of the menus
+        # check that the up is in one of the menus
         if ($Texi2HTML::Config::SHOW_MENU and $node->{'nodeup'} and $node->{'menu_up'})
         {
             my @equivalent_nodes = equivalent_nodes($node->{'nodeup'}->{'texi'});
@@ -6619,7 +6783,7 @@ sub rearrange_elements()
         # Find next node if not already found
         if ($node->{'nodenext'}) 
         {
-            # doing the following would be wrong:
+            # doing the following would be wrong:
             #$node->{'nodenext'}->{'nodeprev'} = $node if (!defined($node->{'nodenext'}->{'nodeprev'}));
         }
         elsif ($node->{'texi'} eq 'Top' and $node->{'automatic_directions'})
@@ -6668,7 +6832,7 @@ sub rearrange_elements()
         # Find prev node
         if ($node->{'nodeprev'})
         {
-            # doing the following would be wrong:
+            # doing the following would be wrong:
             #$node->{'nodeprev'}->{'nodenext'} = $node if (!defined($node->{'nodeprev'}->{'nodenext'}));
         }
         elsif ($node->{'automatic_directions'})
@@ -6746,7 +6910,7 @@ sub rearrange_elements()
                 }
             }
         }
-        # copy the direction of the associated section.
+        # copy the direction of the associated section.
         if (defined($node->{'with_section'}))
         {
             my $section = $node->{'with_section'};
@@ -6757,9 +6921,9 @@ sub rearrange_elements()
             }
         }
         # 'up' is used in .init files. It is almost sectionup, but not
-        # exactly, it allows to have something relevant whether elements
-        # are nodes or sections -- just like Back and Forward. So it
-        # should certainly be kept.
+        # exactly, it allows to have something relevant whether elements
+        # are nodes or sections -- just like Back and Forward. So it
+        # should certainly be kept.
         if (defined($node->{'sectionup'}))
         {
             $node->{'up'} = $node->{'sectionup'};
@@ -6849,7 +7013,7 @@ sub rearrange_elements()
                 $prev_element = add_t2h_element($element, \@elements_list, $prev_element);
             }
             else
-            { # no node, and $only_nodes
+            { # no node, and $only_nodes
                 #print STDERR "$element->{'tag'} $element->{'texi'} not associated with an element\n";
             }
         }
@@ -6877,24 +7041,24 @@ sub rearrange_elements()
     print STDERR "# top node: $node_top->{'texi'}\n" if (defined($node_top) and
         ($T2H_DEBUG & $DEBUG_ELEMENTS));
 
-    # Remark: there are many subtle distinctions among the elements that
-    # have a flavor of being at top. First there are the texinfo top
-    # elements (if present), namely $section_top for the @top element
+    # Remark: there are many subtle distinctions among the elements that
+    # have a flavor of being at top. First there are the texinfo top
+    # elements (if present), namely $section_top for the @top element
     # and $node_top for the @node Top element (and both may be associated).
 
     # Then there is $element_top, set up just below. In addition to 
-    # $section_top and $node_top, the section associated with $node_top
-    # and the first element may be used. $element_top is used to determine
-    # file splitting and file names, since it is always associated with 
-    # $docu_top file.
+    # $section_top and $node_top, the section associated with $node_top
+    # and the first element may be used. $element_top is used to determine
+    # file splitting and file names, since it is always associated with 
+    # $docu_top file.
 
-    # The $element_top may have 'top' set, in case it is a node or @top.
-    # In that case, special formatting is done, like using print_Top and
+    # The $element_top may have 'top' set, in case it is a node or @top.
+    # In that case, special formatting is done, like using print_Top and
     # similar.
 
-    # Similarly with element_top, some other nodes than $node_top may 
-    # get associated with the top node filename without being considered
-    # as top otherwise (this is done below).
+    # Similarly with element_top, some other nodes than $node_top may 
+    # get associated with the top node filename without being considered
+    # as top otherwise (this is done below).
 
     if (defined($section_top) and $section_top->{'this'})
     {
@@ -6909,18 +7073,18 @@ sub rearrange_elements()
     elsif (defined($node_top) and defined($node_top->{'with_section'}) and $node_top->{'with_section'}->{'this'})
     {
         # next, the element associated with the @node Top may be
-        # the $element_top. In that case $element_top->{'top'} won't be set
+        # the $element_top. In that case $element_top->{'top'} won't be set
         $element_top = $node_top->{'with_section'};
     }
     elsif (defined($element_first))
     {
     # If there is no @top section no top node associated with an element,
-    # first element is used
+    # first element is used
          $element_top = $element_first;
     }
 
     # Rather arbitrarily, 'top' is set for nodes as top elements 
-    # and @top. This triggers specific formatting, like calling
+    # and @top. This triggers specific formatting, like calling
     # print_Top and similar things.
     if (defined($element_top))
     {
@@ -6932,8 +7096,8 @@ sub rearrange_elements()
     print STDERR "# find fastback and fastforward\n" 
        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $element (@elements_list)
-    { # nodes are ignored here, although their associated sectionning
-      # command may be taken into account.
+    { # nodes are ignored here, although their associated sectionning
+      # command may be taken into account.
         my $up = get_top($element);
         next unless (defined($up));
         # take the opportunity to set the first chapter with index 
@@ -6962,12 +7126,12 @@ sub rearrange_elements()
     # to that node (xref and menu entry), to do the href, and also the 
     # element heading text.
     # It is the section associated with the node if there are only sections.
-    # Since in the default case the target is the node target, even for 
-    # sections, this, in fact shouldn't lead to a different target, unless 
-    # the node and the section don't have the same file associated, which could 
-    # only happen with indices split. The heading text will be different, though.
-    # The node name should also always be passed to the formatting functions 
-    # such that it is always possible for the formatting to chose the node
+    # Since in the default case the target is the node target, even for 
+    # sections, this, in fact shouldn't lead to a different target, unless 
+    # the node and the section don't have the same file associated, which could 
+    # only happen with indices split. The heading text will be different, though.
+    # The node name should also always be passed to the formatting functions 
+    # such that it is always possible for the formatting to chose the node
     # heading over the element heading selected using 'reference_element'.
     if ($only_sections)
     {
@@ -6979,14 +7143,14 @@ sub rearrange_elements()
             }
         }
     }
-    # the symmetric is not done for sections, since there is no crossref
+    # the symmetric is not done for sections, since there is no crossref
     # to sections in texinfo (only to anchors and nodes), so that when
-    # there is a link to an element (in Toc, for instance),
+    # there is a link to an element (in Toc, for instance),
     # there is no reason to want to have the node (though, once again,
     # the href is almost surely the same than what would be with the node,
-    # the heading would be different).
+    # the heading would be different).
 
-    # end texi2html added directions
+    # end texi2html added directions
 
     # do human readable id
     print STDERR "# find float id\n" 
@@ -7136,7 +7300,7 @@ sub rearrange_elements()
     {
         $node_as_top = $node_top;
     }
-    # following possibilities lead to some node being considered
+    # following possibilities lead to some node being considered
     # as top for the purpose of setting the file node, but not as node_top
     elsif ($element_top->{'with_node'})
     { 
@@ -7185,7 +7349,7 @@ sub rearrange_elements()
                (
                  !defined($element->{'level'}) and defined($element->{'with_section'}) and ($element->{'with_section'}->{'level'} <= $Texi2HTML::THISDOC{'split_level'})
                ) or
-               ( # top file after another file
+               ( # top file after another file
                  (defined($previous_file) and ($element eq $element_top)
                   and ($previous_file ne $docu_top))
                ) # element following top element is always considered to be
@@ -7222,10 +7386,10 @@ sub rearrange_elements()
                         $element->{'file'} = $element->{'cross'} 
                          . (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
                     }
-                    # The remaining case is for sectionning elements with empty
+                    # The remaining case is for sectionning elements with empty
                     # headings and no node associated. They will have a name
-                    # with numbers, like "${docu_name}_$doc_nr", they may 
-                    # collide with split indices names
+                    # with numbers, like "${docu_name}_$doc_nr", they may 
+                    # collide with split indices names
                 }
                 else
                 {
@@ -7254,8 +7418,8 @@ sub rearrange_elements()
     {
         if (@all_elements)
         {
-            # in fact this happens only if there is no top element, but still
-            # sections, so only if USE_SECTIONS = 0 and there is no node.
+            # in fact this happens only if there is no top element, but still
+            # sections, so only if USE_SECTIONS = 0 and there is no node.
             #document_warn ("No elements available for splitting") if (Texi2HTML::Config::get_conf('SPLIT'));
             foreach my $element (@all_elements)
             {
@@ -7297,7 +7461,7 @@ sub rearrange_elements()
         do_place_target_file ($place, $element_top, 'no_associated_element');
     }
     
-    # determine contents element and files
+    # determine contents element and files
     foreach my $content_type(keys(%content_element))
     {
         # with set*aftertitlepage, there will always be a href to Contents
@@ -7590,7 +7754,7 @@ sub do_section_names($$)
     $section->{'text'} = substitute_line($texi, "\@$section->{'tag'}", undef, $section->{'line_nr'});
     $section->{'text_nonumber'} = substitute_line($section->{'texi'}, "\@$section->{'tag'} no number");
     # backward compatibility
-    # Removed from doc in nov 2009
+    # Removed from doc in nov 2009
     $section->{'name'} = $section->{'text_nonumber'};
     $section->{'no_texi'} = remove_texi($texi);
     $section->{'simple_format'} = simple_format(undef,undef,"\@$section->{'tag'} simple_format", $texi);
@@ -7617,7 +7781,7 @@ sub do_names()
        $nodes{$node}->{'text'} = substitute_line ($texi, "\@$command", {'code_style' => 1}, $nodes{$node}->{'line_nr'});
        $nodes{$node}->{'text_nonumber'} = $nodes{$node}->{'text'};
        # backward compatibility -> maybe used to have the name without code_style ?
-       # Removed from doc in nov 2009
+       # Removed from doc in nov 2009
        $nodes{$node}->{'name'} = substitute_line($texi, "\@$command name");
        $nodes{$node}->{'no_texi'} = remove_texi($texi);
        $nodes{$node}->{'simple_format'} = simple_format(undef, undef, "\@$command simple_format", $texi);
@@ -7625,8 +7789,8 @@ sub do_names()
        
        ################# debug
        # if $nodes{$node}->{'external_node'} and $nodes{$node}->{'seen'}
-       # this is a bug, there should be a check that the node hasn't an
-       # external node syntax.
+       # this is a bug, since there are checks that the node hasn't an
+       # external node syntax.
        msg_debug ("$nodes{$node}->{'texi'} is external and was seen",  $nodes{$node}->{'line_nr'}) if ($nodes{$node}->{'seen'} and $nodes{$node}->{'external_node'});
        ################# end debug
    }
@@ -7678,11 +7842,11 @@ sub enter_index_entry($$$$$)
     }
     $entry = trim_comment_spaces ($entry, "index entry in \@$command", $line_nr);
     # The $key is mostly usefull for alphabetical sorting.
-    # This could be done later while sorting, but it doesn't really matter
-    # since there are no error messages anyway.
+    # This could be done later while sorting, but it doesn't really matter
+    # since there are no error messages anyway.
     my $key = remove_texi($entry);
-    # beware that the texinfo could be non empty, but the key be empty. So the
-    # key should be used to determine whether the entry is empty or not.
+    # beware that the texinfo could be non empty, but the key be empty. So the
+    # key should be used to determine whether the entry is empty or not.
 
     my $id;
     # don't add a specific index target if the index entry is in a special
@@ -7753,7 +7917,7 @@ my %acronyms_like = ();        # acronyms or similar commands associated texts
                                # hash references associating shorthands to
                                # texts.
 
-# detailmenu    number of opened detailed menus
+# detailmenu    number of opened detailed menus
 sub fill_state($)
 {
     my $state = shift;
@@ -7772,7 +7936,7 @@ sub fill_state($)
     {
         $state->{'element'} = $elements_list[0];
     }
-    # this is consistent with what is done in rearrange_elements
+    # this is consistent with what is done in rearrange_elements
     $state->{'element'} = {'file' => $docu_doc, 'texi' => 'VIRTUAL ELEMENT'} if (!$state->{'element'});
 }
 
@@ -7838,10 +8002,10 @@ sub open_out_file($)
 {
   my $new_file = shift;
   my $do_page_head = 0;
-  # if the filehandle is closed, with fileno undef, open_out
-  # is called with the second argument true, which leads to opening
-  # the file in append mode, to avoid overwriting the previous
-  # file.
+  # if the filehandle is closed, with fileno undef, open_out
+  # is called with the second argument true, which leads to opening
+  # the file in append mode, to avoid overwriting the previous
+  # file.
   if ($files{$new_file}->{'filehandle'} and defined(fileno($files{$new_file}->{'filehandle'})))
   {
     $Texi2HTML::THISDOC{'FH'} = $files{$new_file}->{'filehandle'};
@@ -7910,7 +8074,7 @@ sub pass_text($$)
     if (defined($element_top->{'titlefont'}))
     {
          $Texi2HTML::THISDOC{'titlefont_texi'} = $element_top->{'titlefont'};
-         # backward compatibility nov 2009
+         # backward compatibility nov 2009
          $value{'_titlefont'} = $element_top->{'titlefont'};
     }
     
@@ -7956,13 +8120,13 @@ sub pass_text($$)
 
 
     # find the triplet (Top name, Top with texi removed, Top simply formatted)
-    # the corresponding href is used a lot but these are only used because
-    # they are used in LINKS_BUTTONS...
+    # the corresponding href is used a lot but these are only used because
+    # they are used in LINKS_BUTTONS...
 
     my $element_top_Top = [undef,undef,undef];
     my $node_top_Top = [undef,undef,undef];
-    # Preferred Top name is the element_top name if it is not the @node Top
-    # the @node Top may also be used, but before fulltitle is tried
+    # Preferred Top name is the element_top name if it is not the @node Top
+    # the @node Top may also be used, but before fulltitle is tried
     if (defined($element_top))
     {
         if ($element_top->{'node'} and $element_top->{'texi'} =~ /^Top$/i)
@@ -7974,7 +8138,7 @@ sub pass_text($$)
            $element_top_Top = [ $element_top->{'text'}, $element_top->{'no_texi'}, $element_top->{'simple_format'} ];
         }
     }
-    # FIXME remove fulltitle?
+    # FIXME remove fulltitle?
     foreach my $possible_top (
        [substitute_line($Texi2HTML::Config::TOP_HEADING, '$TOP_HEADING'), 
         remove_texi($Texi2HTML::Config::TOP_HEADING), 
@@ -8056,10 +8220,10 @@ sub pass_text($$)
     $global_pass = '3';
     &$Texi2HTML::Config::init_out();
 
-    # FIXME It is not clear whether it should be here or before 
-    # command_handler_output calls. After, it means that 
-    # command_handler_output may modify the initializations. Before
-    # it allows to look at the values from the preceding pass.
+    # FIXME It is not clear whether it should be here or before 
+    # command_handler_output calls. After, it means that 
+    # command_handler_output may modify the initializations. Before
+    # it allows to look at the values from the preceding pass.
     texinfo_initialization(2);
 
     foreach my $handler(@Texi2HTML::Config::command_handler_output)
@@ -8096,7 +8260,7 @@ sub pass_text($$)
     my $previous_is_top = 0; # 1 if it is the element following the top element
 
     my $cline;
-    # this is true for the state that goes through the document
+    # this is true for the state that goes through the document
     $state{'inside_document'} = 1;
     while (@$doc_lines)
     {
@@ -8104,7 +8268,7 @@ sub pass_text($$)
         my $chomped_line = $cline;
         if (!chomp($chomped_line) and @$doc_lines)
         { # if the line has no end of line it is concatenated with the next
-          # this shouldn't happen anymore. And will certainly mess up
+          # this shouldn't happen anymore. And will certainly mess up
           # line counting. Let it be a bug.
           msg_debug ("no end of line line passed in doc_line",$line_nr);
              $doc_lines->[0] = $cline . $doc_lines->[0];
@@ -8335,8 +8499,8 @@ sub pass_text($$)
         if ($relative_file ne $docu_doc)
         {
             $saved_FH = $Texi2HTML::THISDOC{'FH'};
-            # Use open_out_file not to overwrite a file that the user would have
-            # created
+            # Use open_out_file not to overwrite a file that the user would have
+            # created
             open_out_file ($relative_file);
             print STDERR "# Opening $file for $misc_page\n" if $T2H_VERBOSE;
             $open_new = 1;
@@ -8385,7 +8549,7 @@ sub pass_text($$)
     {
         &$Texi2HTML::Config::print_page_foot($Texi2HTML::THISDOC{'FH'});
         # this leaves the possibility for external code to close the file
-        # without erroring out
+        # without erroring out
         close_out ($Texi2HTML::THISDOC{'FH'}, $docu_doc_file) if (fileno($Texi2HTML::THISDOC{'FH'}));
     }
     pop_state();
@@ -8566,7 +8730,7 @@ sub locate_include_file($)
 
     # APA: Don't implicitely search ., to conform with the docs!
     
-    # if file begins with /, ./ or ../ don't search in -I (Karl)
+    # if file begins with /, ./ or ../ don't search in -I (Karl)
     if ($file =~ m,^(/|\./|\.\./),)
     {
         return "$file" if (-e "$file" && -r "$file");
@@ -8704,7 +8868,7 @@ sub next_line($$)
         my $chomped_line = $line;
         $file->{'line_nr'}++ if (defined($line) and chomp($chomped_line));
         $line_number->{'line_nr'} = $file->{'line_nr'};
-        # do that right now, before any other treatement
+        # do that right now, before any other treatement
         $line =~ s/\x{7F}.*\s*// if (defined($line));
         return($line, $input_spool) if (defined($line));
         no strict "refs";
@@ -8856,7 +9020,7 @@ sub line_warn($$)
     my $line_number = shift;
     return if (!defined($line_number));
     my $file = $line_number->{'file_name'};
-    # otherwise out of source build fail since the file names are different
+    # otherwise out of source build fail since the file names are different
     $file =~ s/^.*\/// if ($Texi2HTML::Config::TEST);
     my $macro_text = '';
     $macro_text = " (via \@$line_number->{'macro'})" if ($line_number->{'macro'} ne '');
@@ -9407,7 +9571,7 @@ sub begin_paragraph_after_command($$$$)
 }
 
 # handle raw formatting, ignored regions...
-# called from scan_texi, so only in first pass.
+# called from scan_texi, so only in first pass.
 sub do_text_macro($$$$$)
 {
     my $type = shift;
@@ -9585,7 +9749,7 @@ sub do_special_region_lines($;$$)
 
     foreach my $context ('normal', 'remove_texi', 'simple_format')
     {
-        print STDERR "# $context\n" if ($T2H_DEBUG);
+        print STDERR "# $context\n" if ($T2H_DEBUG);
         my $new_state = duplicate_formatting_state($state);
         reset_index_entries($region);
         foreach my $key (keys(%{$region_initial_state{$region}}))
@@ -10233,7 +10397,7 @@ sub begin_format($$$$$$)
         close_paragraph($text, $stack, $state, "begin \@$macro", $line_nr);
     }
 
-    # close def_item if this is a matching @def*x command
+    # close def_item if this is a matching @def*x command
     if (defined($Texi2HTML::Config::def_map{$macro}))
     {
         my $top_format = top_format($stack);
@@ -10306,7 +10470,7 @@ sub begin_format($$$$$$)
             $arg_nr++;
             my $type = shift @types;
             my $substitution_state = duplicate_formatting_state($state);
-            # all @def* arguments are in code_style
+            # all @def* arguments are in code_style
             $substitution_state->{'code_style'}++;
             push @formatted_args, substitute_line($arg, "\@$macro (arg $arg_nr)", $substitution_state, $line_nr);
             if (grep {$_ eq $type} ('param', 'paramtype', 'delimiter'))
@@ -10483,9 +10647,9 @@ sub begin_format($$$$$$)
             begin_format($text, $stack, $state, 'menu_comment', $line, $line_nr);
         }
     }
-    # this is useful for @©enter, and also if there was something on the 
+    # this is useful for @center, and also if there was something on the 
     # line after a format that isn't there anymore, like
-    # @format   @c
+    # @format   @c
     # if @center line is empty we don't remove the end of line
     $line =~ s/^\s*// unless ($macro eq 'center' and $line =~ /^\s*$/);
     return $line;
@@ -10583,7 +10747,7 @@ sub do_menu_link($$$)
     my $name = normalise_node($menu_entry->{'name'});
 
     # there is one substitution with spaces kept, and one with spaces
-    # normalized. In every cases nodes are in code_style
+    # normalized. In every cases nodes are in code_style
     my $node_substitution_state = duplicate_formatting_state($state);
     my $name_substitution_state = duplicate_formatting_state($state);
     my $node_normalized_substitution_state = duplicate_formatting_state($state);
@@ -10684,7 +10848,7 @@ sub do_menu_description($$)
     my $element = $menu_entry->{'menu_reference_element'};
     
     ############# debug
-    # this is not a bug if element is not defined in direntry
+    # this is not a bug if element is not defined in direntry
     print STDERR "Bug: !defined(element) in do_menu_description\n" if (!defined($element) and ($state->{'menu'} or $state->{'detailmenu'}));
     ############# end debug
     my $element_text = '';
@@ -11413,8 +11577,8 @@ sub get_index_entry_infos($$;$)
     {
        $real_index_element = $entry->{'real_element'}->{'element_ref'};
        if (!defined($real_index_element))
-       { # happens when $USE_NODES = 0 and there are only sections, 
-         # and vice-versa
+       { # happens when $USE_NODES = 0 and there are only sections, 
+         # and vice-versa
           $real_index_element = $entry->{'real_element'};
        }
     }
@@ -11641,9 +11805,9 @@ sub close_ignored ($$)
 }
 
 
-# Called in 2 contexts: 
-# * in main document
-# * from substitute_text, called in turn from arg_expansion. In that case
+# Called in 2 contexts: 
+# * in main document
+# * from substitute_text, called in turn from arg_expansion. In that case
 #   'texi' is true, and so is 'arg_expansion'. In that case constructs are
 #   expanded but no action is performed. Therefore $line_nr is not of use.
 sub scan_texi($$$$;$)
@@ -11825,7 +11989,7 @@ sub scan_texi($$$$;$)
                 add_prev ($text, $stack, $1);
                 my $end = $2;
                 my $style = pop @$stack;
-                # if 'arg_expansion' and 'ignored' are both true text 
+                # if 'arg_expansion' and 'ignored' are both true text 
                 # is ignored.
                 add_prev ($text, $stack, $style->{'text'} . $end) unless ($state->{'ignored'});
                 delete $state->{'raw'};
@@ -11954,7 +12118,7 @@ sub scan_texi($$$$;$)
             { # special commands whose arguments will have @macro and
               # @value expanded, and that are processed in this pass
                 if ($state->{'ignored'} or ($line_nr->{'file_name'} ne $Texi2HTML::THISDOC{'input_file_name'} and $command eq 'setfilename'))
-                { # @setfilename is ignored in @include file as said in the manual
+                { # @setfilename is ignored in @include file as said in the manual
                     $cline = '';
                 }
                 elsif ($state->{'arg_expansion'})
@@ -11993,8 +12157,8 @@ sub scan_texi($$$$;$)
 
             elsif ($command =~ /^r?macro$/)
             { # in 'arg_expansion' (ie within another macro call arguments)
-              # the macro is parsed as usual, but isn't registered in 
-              # end_macro.
+              # the macro is parsed as usual, but isn't registered in 
+              # end_macro.
                 if ($cline =~ /^\s+(\w[\w-]*)\s*(.*)/)
                 {
                     my $name = $1;
@@ -12151,9 +12315,9 @@ sub scan_texi($$$$;$)
                     }
                 }
                 if ($state->{'line_command'} and $command eq 'verb')
-                { # have to close it now to catch if it is not 
-                  # closed at te end of the line. In subsequent passes this
-                  # is done in scan_line_separator.
+                { # have to close it now to catch if it is not 
+                  # closed at te end of the line. In subsequent passes this
+                  # is done in scan_line_separator.
                     my $result;
                     if (defined($state->{'verb'}))
                     {   
@@ -12265,7 +12429,7 @@ sub scan_texi($$$$;$)
                        if ($command->{'text'} =~ s/^(\s+)(.+)//o)
                        {
                            my $file_name = $2;
-                           # FIXME scan_line_separators
+                           # FIXME scan_line_separators
                            $file_name = trim_around_spaces($file_name);
                            $file_name = substitute_line($file_name, "\@$macro", {'code_style' => 1, 'remove_texi' => 1});
                            my $file = locate_include_file($file_name);
@@ -12293,9 +12457,9 @@ sub scan_texi($$$$;$)
                            if (defined(Texi2HTML::Config::get_conf ('setfilename')))
                            {
                                line_error ("\@$macro already set", $line_nr);
-                               # the line is removed, because we don't want to reset 
-                               # get_conf('setfilename') between passes, and we don't want
-                               # the last one to be picked up
+                               # the line is removed, because we don't want to reset 
+                               # get_conf('setfilename') between passes, and we don't want
+                               # the last one to be picked up
                                $cline = "\n";
                                next;
                            }
@@ -12324,11 +12488,11 @@ sub close_structure_command($$$$)
     my $result;
     
     #print STDERR "close_structure_command $cmd_ref->{'style'}\n";
-    # If the anchor is in @titlepage or @copying, it is nevertheless only 
-    # expanded once in pass_structure, during the @copying or @titlepage 
-    # expansion.
-    # It is not true, however if INLINE_INSERTCOPYING is true.
-    # See indices/index_special_region.texi tests.
+    # If the anchor is in @titlepage or @copying, it is nevertheless only 
+    # expanded once in pass_structure, during the @copying or @titlepage 
+    # expansion.
+    # It is not true, however if INLINE_INSERTCOPYING is true.
+    # See indices/index_special_region.texi tests.
     if ($cmd_ref->{'style'} eq 'anchor')
     {
         my $anchor = $cmd_ref->{'text'};
@@ -12477,8 +12641,8 @@ sub parse_menu_entry($)
           my $after_colon;
           $ending = "";
           ($after_colon, $remaining, $separator) = scan_line_separators($remaining, '\t,\.', 'menu entry node');
-          # this certainly corresponds with an error in the node.
-          # this is considered not to be a menu entry.
+          # this certainly corresponds with an error in the node.
+          # this is considered not to be a menu entry.
           return (undef, $name, $ending, $remaining) if (!defined($after_colon));
           $node = $after_colon;
 
@@ -12496,11 +12660,11 @@ sub parse_menu_entry($)
           }
           $name = $before_colon;
           $ending = $separator if (defined($separator));
-          # only spaces after the :, this is not a menu entry:
+          # only spaces after the :, this is not a menu entry:
           $node = undef if ($node !~ /\S/);
       }
    }
-   # remaining may be defined even if $node isn't.
+   # remaining may be defined even if $node isn't.
    #print STDERR "\nLLLL $menu_line";
    #print STDERR " -->  node:$node, name:$name, ending:$ending -> $remaining";
    return ($node, $name, $ending, $remaining);
@@ -13054,7 +13218,7 @@ sub close_style_command($$$$$;$)
     if ($style_command ne $command)
     {
       #line_warn ("Bug: $style_command on 'command_stack', not $command", $line_nr);
-      # This can be a bug in case of bad nesting, see bad_style_nesting.texi
+      # This can be a bug in case of bad nesting, see bad_style_nesting.texi
       line_warn("Bad nesting of \@$style_command and \@$command", $line_nr);
       push @{$state->{'command_stack'}}, $style_command;
     ############################ debug
@@ -13192,7 +13356,7 @@ sub scan_line($$$$;$)
 
     unless ($state->{'raw'} or $state->{'verb'} or $state->{'keep_texi'})
     {
-    # first the line commands are taken into account
+    # first the line commands are taken into account
         my $next_command = next_tag($cline);
         if (defined($next_command) and defined($Texi2HTML::Config::line_command_map{$next_command}))
         {
@@ -13219,8 +13383,8 @@ sub scan_line($$$$;$)
             return '' unless (exists($Texi2HTML::Config::misc_command{$next_command}) and $Texi2HTML::Config::misc_command{$next_command}->{'keep'});
         }
 
-    # The commands to ignore are ignored now in case after ignoring them
-    # there is an empty line, to be able to stop the paragraph
+    # The commands to ignore are ignored now in case after ignoring them
+    # there is an empty line, to be able to stop the paragraph
         #my $leading_spaces = '';
         
         while (1)
@@ -13615,8 +13779,8 @@ sub scan_line($$$$;$)
                     my $printindex = $Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}->[$Texi2HTML::THISDOC{'indices_numbers'}->{$region}->{$index_name}];
                     if (!defined($printindex))
                     {
-                      # this printindex hasn't been seen in the previous pass.
-                      #print STDERR "Index $index_name not in sync, number $Texi2HTML::THISDOC{'indices_numbers'}->{$index_name} not defined\n";
+                      # this printindex hasn't been seen in the previous pass.
+                      # rint STDERR "Index $index_name not in sync, number $Texi2HTML::THISDOC{'indices_numbers'}->{$index_name} not defined\n";
                       line_warn("\@printindex $index_name expanded more than once may lead to wrong references", $line_nr);
                       $printindex = $Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}->[-1];
                     }
@@ -14010,8 +14174,8 @@ sub scan_line($$$$;$)
             if ($format_type{$macro} and ($format_type{$macro} ne 'fake'))
             {
                 my $ignore_center = 0;
-                # @center is forbidden in @-command with braces, @*table
-                # @item line, @multitable, or another @center
+                # @center is forbidden in @-command with braces, @*table
+                # @item line, @multitable, or another @center
                 if ($macro eq 'center' and @$stack)
                 {
                    my $top_stack = top_stack($stack, 1);
@@ -14482,7 +14646,7 @@ sub add_item($$$$)
     my $item = pop @$stack;
     my $format = $stack->[-1];
     my $item_command = $item->{'format'};
-    # first has no associated item, it is more like a 'title'
+    # first has no associated item, it is more like a 'title'
     $item_command = '' if ($format->{'first'});
     
     $format->{'paragraph_number'} = 0;
@@ -14617,7 +14781,7 @@ sub do_style_command($$$$$$$$)
         }
         else
         {
-            # kbd is in code_style, so it is 'code_style' > 1
+            # kbd is in code_style, so it is 'code_style' > 1
             if ($macro eq 'kbd' and ((Texi2HTML::Config::get_conf('kbdinputstyle') eq 'code') or ($state->{'code_style'} > 1 and Texi2HTML::Config::get_conf('kbdinputstyle') eq 'example')))
             {
                 $style = $::style_map_ref->{'code'};
@@ -14699,7 +14863,7 @@ sub do_unknown($$$$$$$)
          add_prev ($text, $stack, $result_text) if (defined($result_text));
          line_warn($message, $line_nr) if (defined($message));
          # if $state->{'preformatted'}, assume that the preformatted is 
-         # already opened. Otherwise we may end up opening one each time
+         # already opened. Otherwise we may end up opening one each time
          # there is an unknown command.
          begin_paragraph_after_command($state, $stack, $macro, $result_line)
               if (!$state->{'preformatted'});
@@ -14804,7 +14968,7 @@ sub close_stack_texi($$$$)
     }
     elsif ($state->{'verb'})
     {
-        # warning in next pass
+        # warning in next pass
         #line_warn ("closing \@verb", $line_nr);
         $stack->[-1]->{'text'} = $state->{'verb'} . $stack->[-1]->{'text'};
         delete $state->{'verb'};
@@ -14822,7 +14986,7 @@ sub close_stack_texi($$$$)
     while ($stack_level--)
     {
         my $style = pop(@$stack);
-        # would be better in close_stack_structure
+        # would be better in close_stack_structure
         #line_warn ("closing \@-command $style->{'style'}", $line_nr) if ($style->{'style'} ne '');
         close_style_texi($style, $text, $stack, $state, 1);
     }
@@ -14995,8 +15159,8 @@ sub close_stack($$$$;$)
     }
 
     # This tries to avoid cases where the command_stack is not empty 
-    # for a good reason, for example when doing a @def formatting the 
-    # outside command_stack is preserved. Also when expanding for
+    # for a good reason, for example when doing a @def formatting the 
+    # outside command_stack is preserved. Also when expanding for
     # example @titleplage or @copying.
     # FIXME sort out which cases it is.
     return if ($format or (defined($state->{'multiple_pass'}) and $state->{'multiple_pass'} > 0) or $state->{'no_paragraph'}); 
@@ -15004,8 +15168,8 @@ sub close_stack($$$$;$)
     # The pending style commands are cleared here; And are closed next.
     delete $state->{'paragraph_macros'};
     # go through the command_stack and warn for each opened style format
-    # and remove it. Those should be there because there is an opened style
-    # that was stopped by a paragraph
+    # and remove it. Those should be there because there is an opened style
+    # that was stopped by a paragraph
     my @command_stack = @{$state->{'command_stack'}};
     @{$state->{'command_stack'}} = ();
     while (@command_stack)
@@ -15081,16 +15245,16 @@ sub close_paragraph($$$$;$$)
     my $new_stack;
     my $stack_level = $#$stack + 1;
 
-    # In general close_paragraph is called because of a end of line, or 
-    # a format is opened or closed, or there is a @tab or @item and other 
-    # similar cases. In most cases there is a paragraph to be closed or 
-    # there are no style opened since most @-commands cause paragraph 
-    # opening and those that don't should not lead to a style opening.
+    # In general close_paragraph is called because of a end of line, or 
+    # a format is opened or closed, or there is a @tab or @item and other 
+    # similar cases. In most cases there is a paragraph to be closed or 
+    # there are no style opened since most @-commands cause paragraph 
+    # opening and those that don't should not lead to a style opening.
     #
-    # But in term or in @index (and maybe @node, @section, @ref), if 
-    # there is a command opened it won't be closed, since it is in 
-    # 'no_paragraph'. But @-commands that trigger close_paragraph should not 
-    # be called when in those no_paragraph settings.
+    # But in term or in @index (and maybe @node, @section, @ref), if 
+    # there is a command opened it won't be closed, since it is in 
+    # 'no_paragraph'. But @-commands that trigger close_paragraph should not 
+    # be called when in those no_paragraph settings.
 
     if ($state->{'no_paragraph'})
     {
@@ -15123,8 +15287,8 @@ sub close_paragraph($$$$;$$)
                 msg_debug("BUG: special $style while closing paragraph", $line_nr);
             }
         }
-        # if not in a paragraph, the command is simply closed, and not recorded
-        # in new_stack.
+        # if not in a paragraph, the command is simply closed, and not recorded
+        # in new_stack.
         my ($result, $command) = close_style_command($text, $stack, $state, $line_nr, '', (!$state->{'no_paragraph'}));
         add_prev($text, $stack, $result) if (defined($result));
     }
@@ -15547,8 +15711,8 @@ sub do_index_entry_label($$$$;$)
     my $state = shift;
     my $line_nr = shift;
     my $entry_texi = shift;
-    # this is only needed for definitions since the whole line is parsed to
-    # reuse get_deff_index.
+    # this is only needed for definitions since the whole line is parsed to
+    # reuse get_deff_index.
     my $line = shift;
 
     msg_debug("do_index_entry_label($command): Undefined entry_texi", $line_nr)
@@ -15560,12 +15724,12 @@ sub do_index_entry_label($$$$;$)
     $region = $state->{'region'} if (defined($state->{'region'}));
 
     my $entry;
-    # Can be within a @caption expanded within a listoffloat. In that
+    # Can be within a @caption expanded within a listoffloat. In that
     # case the 2 following condition are not set.
     if (defined($state->{'region'}) or !defined($state->{'expansion'}))
     {
        # index entry on a line that is not searched for index entries, like
-       # a @def* line
+       # a @def* line
        if (!defined($Texi2HTML::THISDOC{'index_entries'}->{$region}) or !defined($Texi2HTML::THISDOC{'index_entries'}->{$region}->{$entry_texi}))
        {
           line_warn("Index entry not caught: `$entry_texi' in $region", $line_nr);
@@ -15594,8 +15758,8 @@ sub do_index_entry_label($$$$;$)
           }
           $entry->{'seen_in_output'} = 1 if (!$state->{'outside_document'});
           ############################################# debug
-          # verify that the old way of getting index entries (in an array) is
-          # synchronized with the document
+          # verify that the old way of getting index entries (in an array) is
+          # synchronized with the document
           if (!$state->{'region'})
           {
              my $entry_from_array = shift @index_labels;
@@ -15613,10 +15777,10 @@ sub do_index_entry_label($$$$;$)
     }
     if (!defined($entry))
     {
-        # this can happen for listoffloats and caption without being a user 
-        # error. Well, in fact, it could be argued that it is indeed a user
-        # error, putting an index entry in a snippet that can be expanded
-        # more than once and is not strictly associated with a node/section.
+        # this can happen for listoffloats and caption without being a user 
+        # error. Well, in fact, it could be argued that it is indeed a user
+        # error, putting an index entry in a snippet that can be expanded
+        # more than once and is not strictly associated with a node/section.
 
         my $prefix = index_entry_command_prefix($command, $line, $line_nr);
         my $index_name = undef;
@@ -15640,7 +15804,7 @@ sub do_index_entry_label($$$$;$)
     {
         # happened with bad texinfo with a line like
         # @deffn func aaaa args  @defvr c--ategory d--efvr_name
-        # now this case is caught above by "Index entry not caught:
+        # now this case is caught above by "Index entry not caught:
         line_warn ("($region) Waiting for index cmd \@$entry->{'command'} got \@$command", $line_nr);
     }
     if ($entry->{'texi'} ne $entry_texi)
@@ -15874,7 +16038,7 @@ sub init_with_file_name($)
 #######################################################################
 
 my @input_files = @ARGV;
-# use STDIN if not a tty, like makeinfo does
+# use STDIN if not a tty, like makeinfo does
 @input_files = ('-') if (!scalar(@input_files) and !-t STDIN);
 die "$0: missing file argument.\n$T2H_FAILURE_TEXT" unless (scalar(@input_files) >= 1);
 
@@ -15887,8 +16051,8 @@ while(@input_files)
    %Texi2HTML::THISDOC = ();
    $Texi2HTML::THIS_ELEMENT = undef;
 
-   # Otherwise Texi2HTML::THISDOC wouldn't be set in case there was no call
-   # to set_conf.
+   # Otherwise Texi2HTML::THISDOC wouldn't be set in case there was no call
+   # to set_conf.
    foreach my $global_conf_vars('SPLIT', 'SPLIT_SIZE')
    {
       $Texi2HTML::THISDOC{$global_conf_vars} = Texi2HTML::Config::get_conf($global_conf_vars);
@@ -15900,13 +16064,13 @@ while(@input_files)
    }
 
    my $input_file_name;
-   # try to concatenate with different suffixes. The last suffix is ''
-   # such that the plain file name is checked.
+   # try to concatenate with different suffixes. The last suffix is ''
+   # such that the plain file name is checked.
    foreach my $suffix (@Texi2HTML::Config::INPUT_FILE_SUFFIXES)
    {
       $input_file_name = $input_file_arg.$suffix if (-e $input_file_arg.$suffix);
    }
-   # in case no file was found, still set the file name
+   # in case no file was found, still set the file name
    $input_file_name = $input_file_arg if (!defined($input_file_name));
 
    $Texi2HTML::THISDOC{'input_file_name'} = $input_file_name;
@@ -16064,7 +16228,7 @@ while(@input_files)
 #                  main document
 #                  It is set to 0 the first time the region is seen, before
 #                  it will be -1, for example when doing the 
-#                  copying_comment, the titlepage... before starting with
+#                  copying_comment, the titlepage... before starting with
 #                  the document itself.
 # 'outside_document': set to 1 if outside of the main document formatting
 
@@ -16076,11 +16240,10 @@ while(@input_files)
       $region_initial_state{$key}->{'foot_num'} = 0;
       $region_initial_state{$key}->{'relative_foot_num'} = 0;
       $region_initial_state{$key}->{'region'} = $key;
-#      $region_initial_state{$key}->{'expansion'} = $key;
    }
 
-   @opened_files = (); # all the files opened by the program to remove
-                       # them if FORCE is not set and an error occured
+   @opened_files = (); # all the files opened by the program to remove
+                       # them if FORCE is not set and an error occured
 
    texinfo_initialization(1);
 
@@ -16117,14 +16280,14 @@ while(@input_files)
    @index_labels = ();             # array corresponding with @?index commands
                                    # constructed during pass_texi, used to
                                    # put labels in pass_text
-                                   # right now it is only used for debugging
-                                   # purposes.
+                                   # right now it is only used for debugging
+                                   # purposes.
    %{$Texi2HTML::THISDOC{'index_entries_array'}} = (); # holds the index 
                               # entries in order of appearance in the document
-                              # for each index name.
-   %{$Texi2HTML::THISDOC{'index_letters_array'}} = (); # holds the sorted
-                            # index letters for each index name. The sorted
-                            # letters hold the sorted index entries
+                              # for each index name.
+   %{$Texi2HTML::THISDOC{'index_letters_array'}} = (); # holds the sorted
+                            # index letters for each index name. The sorted
+                            # letters hold the sorted index entries
 
    $global_pass = 2;
    my ($doc_lines, $doc_numbers) = pass_structure($texi_lines, $lines_numbers);

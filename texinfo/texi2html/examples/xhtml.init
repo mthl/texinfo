@@ -22,7 +22,7 @@
 #
 #-##############################################################################
 
-# FIXME this is out of date. There are still the T2H_ prefixes!
+# FIXME this is out of date. There are still the T2H_ prefixes!
 
 # APA: Add SystemLiteral to identify the canonical DTD.
 # [Definition:] The SystemLiteral is called the entity's system

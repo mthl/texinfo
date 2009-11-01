@@ -11,7 +11,7 @@
 == Test lightweight formats markup escaping. ==
 
 <div class="menu-preformatted" style="font-family: serif">
- [[#[[ {{template}} }}}[ : &rsquo;&rsquo;em &rsquo;&rsquo;&rsquo;strong &rsquo;&rsquo;&rsquo;&rsquo;&rsquo; em strong &rsquo;&rsquo;[[link]]&rsquo;&rsquo;|&bull; <nowiki>[[</nowiki> {{template}} }}}<nowiki>[</nowiki> <tt>:</tt> <code><nowiki>''</nowiki>em <nowiki>'''</nowiki>strong <nowiki>'''''</nowiki> em strong <nowiki>''[[</nowiki>link<nowiki>]]''</nowiki></code>]]::
+ [[#[[ {{template}} }}}[ : &rsquo;&rsquo;em &rsquo;&rsquo;&rsquo;strong &rsquo;&rsquo;&rsquo;&rsquo;&rsquo; em strong &rsquo;&rsquo;[[link]]&rsquo;&rsquo;|&bull; <nowiki>[[</nowiki> <nowiki>{</nowiki><nowiki>{</nowiki>template<nowiki>}</nowiki><nowiki>}</nowiki> <nowiki>}</nowiki><nowiki>}</nowiki><nowiki>}</nowiki><nowiki>[</nowiki> <tt>:</tt> <code><nowiki>''</nowiki>em <nowiki>'''</nowiki>strong <nowiki>'''''</nowiki> em strong <nowiki>''[[</nowiki>link<nowiki>]]''</nowiki></code>]]::
  [[#Help: something|&bull; Help<tt>:</tt> something]]::
  [[#other chapter|&bull; other chapter]]::
  [[#Simpler test &rdquo;&rsquo;|&bull; Simpler test <nowiki>'''</nowiki> node]]::
@@ -41,7 +41,7 @@
 
 <div class="float"><div id="f2-_005d_005d-_007d_007d"></div>
 Float
-</div>'''f1 <nowiki>[[</nowiki> {{ 1.1: Caption <nowiki>[[</nowiki> {{
+</div>'''f1 <nowiki>[[</nowiki> <nowiki>{</nowiki><nowiki>{</nowiki> 1.1: Caption <nowiki>[[</nowiki> <nowiki>{</nowiki><nowiki>{</nowiki>
 '''
 
 

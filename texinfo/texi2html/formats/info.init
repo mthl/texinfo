@@ -205,7 +205,7 @@ foreach my $command (keys(%info_default_indented_commands), 'multitable', 'float
     $info_default_format{$command} = 1;
 }
 
-# it doesn't change anything for multitable
+# it doesn't change anything for multitable
 foreach my $non_indented_command('format', 'smallformat', 'menu', 
   'detailmenu', 'direntry', 'multitable')
 {
@@ -301,7 +301,7 @@ $heading_text       = \&t2h_default_heading_text;
 
 }
 
-# FIXME initialize
+# FIXME initialize
 my %info_default_state_map = ();
 my $info_default_out_file_nr = 1;
 my $info_default_dir_specification = '';
@@ -309,7 +309,7 @@ my @info_default_pending_indirect = ();
 my @info_default_pending_footnotes = ();
 my $info_default_state_nr = 0;
 
-# maximal length of index entries line number information. Each entry is 
+# maximal length of index entries line number information. Each entry is 
 # an index name.
 my %info_default_index_line_string_length = ();
 my %info_default_index_entries = ();
@@ -333,9 +333,9 @@ sub info_default_init_variables()
    $FRAMES = 0 if ($OUTPUT_FORMAT eq 'info');
 }
 
-# this is put in command_handler_init such that it sets things right
-# in case $ENABLE_ENCODING is set and has lead to modification of the 
-# accent functions
+# this is put in command_handler_init such that it sets things right
+# in case $ENABLE_ENCODING is set and has lead to modification of the 
+# accent functions
 sub info_default_init_accent_enable_encoding()
 {
    return unless ($ENABLE_ENCODING and $USE_UNICODE);
@@ -402,7 +402,7 @@ sub info_default_accent($$$)
         $result = &t2h_default_accent(@args);
     }
     if (scalar(@$style_stack) and $info_default_accent_commands{$style_stack->[-1]})
-    { # still more accents on the stack
+    { # still more accents on the stack
         return $result;
     }
     return info_default_store_text($state,$result,'accents_commands');
@@ -480,14 +480,14 @@ sub info_default_get_state($)
       my ($current_command, $top_stack);
       $info_default_state_map{$state} = {};
       info_default_reset_state($info_default_state_map{$state});
-      # since the page head always leave a blank line, and the state may be
-      # used for text right after the page head, we set it to 1 here. 
-      # it may be wrong in other contexts, to be seen.
+      # since the page head always leave a blank line, and the state may be
+      # used for text right after the page head, we set it to 1 here. 
+      # it may be wrong in other contexts, to be seen.
       $info_default_state_map{$state}->{'blank_line'} = 1;
       $info_default_state_map{$state}->{'only_spaces'} = 1;
-      # this is the first line, so set to 1. This is reset later in 
-      # most cases, when a node is seen, but may still be useful in 
-      # @footnote, for example
+      # this is the first line, so set to 1. This is reset later in 
+      # most cases, when a node is seen, but may still be useful in 
+      # @footnote, for example
       $info_default_state_map{$state}->{'line_count'} = 1;
       $info_default_state_map{$state}->{'offset_in_file'} = 0;
       $info_default_state_map{$state}->{'nr'} = $info_default_state_nr;
@@ -535,11 +535,11 @@ sub info_default_iterator_next($$$)
    }
 }
 
-# return ($current_next, $index_next, $close_next, $text, $command);
-# 
-# returns the next in tree, identified by the triplet 
-# ($current_next, $index_next, $close_next) and also the command 
-# and/or text if defined, in $text and $command.
+# return ($current_next, $index_next, $close_next, $text, $command);
+# 
+# returns the next in tree, identified by the triplet 
+# ($current_next, $index_next, $close_next) and also the command 
+# and/or text if defined, in $text and $command.
 sub info_default_next($$$)
 {
     my $current = shift;
@@ -604,7 +604,7 @@ sub info_default_process_line_text($$$)
    return ($line_char_counter, $line_passed, $text);
 }
 
-# Beware that there is a pending word if the text doesn't end with
+# Beware that there is a pending word if the text doesn't end with
 # a space
 sub info_default_process_para_text($$$$$$;$)
 {
@@ -632,8 +632,8 @@ sub info_default_process_para_text($$$$$$;$)
       if ($text =~ s/^(\s+)//)
       {
           my $new_spaces = $1;
-          # in general there are no end of lines in the lines cut. However, it
-          # may happen with @* in @def* lines
+          # in general there are no end of lines in the lines cut. However, it
+          # may happen with @* in @def* lines
           my @lines = split /^/, $new_spaces;
           my $eol_spaces;
           if (@lines > 1)
@@ -683,7 +683,7 @@ sub info_default_process_para_text($$$$$$;$)
          $pending_word .= $word;
          # The $line_char_counter != 0 is here to cope with the case of a 
          # word longer than $line_char_counter followed by more letters:
-         # a line would be passed each time some text is appended.
+         # a line would be passed each time some text is appended.
          if ((length($pending_spaces)+length($pending_word) + $line_char_counter > $max_column) and $line_char_counter != 0)
          {
              $pending_spaces = '';
@@ -717,9 +717,9 @@ sub info_default_skip_spaces($$$)
         } 
         if (defined($content->{'content'}) or defined($content->{'format_name'})
             or $content->{'definition_line'})
-        { # non empty commands stop space skipping, even if they contain 
+        { # non empty commands stop space skipping, even if they contain 
           # only spaces, like @asis{ }
-          # also for item(x) that have format_name defined
+          # also for item(x) that have format_name defined
             #print STDERR "SKIP_SPACES command?\n";
             return;
         }
@@ -815,7 +815,7 @@ sub info_default_process_content($$)
    my $preformatted_format = 0;
    my $indent_length = 0;
 
-   # for formats that needs to process a full line (center and flushright) 
+   # for formats that needs to process a full line (center and flushright) 
    # to know the line length before outputing
    my $current_line = undef;
 
@@ -832,9 +832,9 @@ sub info_default_process_content($$)
       my $prepend_newline;
       #$indent_length = $indent_level * $info_default_indent_length;
       #my $indent_length_next_line;
-      # indent_length is also set here for table @item so in that case
-      # $info_default_indent_format_length{$item_pending} is not taken 
-      # into account, luckily it is 0.
+      # indent_length is also set here for table @item so in that case
+      # $info_default_indent_format_length{$item_pending} is not taken 
+      # into account, luckily it is 0.
 
       #$indent_length = ($indent_level -1) * $info_default_indent_length
       #      if ($indent_level and ($in_exdent or $table_item_line));
@@ -871,16 +871,16 @@ sub info_default_process_content($$)
           {
               $preformatted_format--;
           }
-          # the format is always empty in the main program so the warning 
-          # has to be done here
+          # the format is always empty in the main program so the warning 
+          # has to be done here
           if (defined($content->{'total_item_nr'}) and !$content->{'total_item_nr'} and $content->{'content'})
           {
               main::line_warn ("\@$content->{'command'} has text but no \@item", $content->{'line_nr'});
           }
           # check whether there is a blank line following, to avoid adding
           # one when closing a format.
-          # This is not a required check if not in preformatted since doubled
-          # blank lines are discarded. 
+          # This is not a required check if not in preformatted since doubled
+          # blank lines are discarded.
           my $followed_by_blank_line = 0;
           if ($preformatted_format)
           {
@@ -895,14 +895,14 @@ sub info_default_process_content($$)
           {
               $indent_level--;
               $indent_length = $indent_level * $info_default_indent_length;
-              # $preformatteed cannot be used here since preformatted 
-              # is closed before the end of a format
+              # $preformatteed cannot be used here since preformatted 
+              # is closed before the end of a format
               #if ($indent_level > 0 and !$info_state->{'blank_line'} and $content->{'command'} !~ /^deff_item/ and !$preformatted_format)
               if ($indent_level > 0 and !$info_state->{'blank_line'} and $content->{'command'} !~ /^deff_item/ and !$followed_by_blank_line)
               {
                  $text_added .= "\n";
               }
-              # this nullify a potential noindent in a random format
+              # this nullify a potential noindent in a random format
               $info_state->{'indent_para'} = undef;
           }
           elsif (($complex_format_map->{$content->{'command'}} and $content->{'command'} ne 'menu') or $content->{'command'} eq 'cartouche')
@@ -914,9 +914,9 @@ sub info_default_process_content($$)
           }
           if ($content->{'command'} eq 'paragraph' and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal')
           {
-              # if there is no space at the end of a paragraph, there may be 
-              # pending text, for example, if there is an ending line like
-              #         Some text@c a comment
+              # if there is no space at the end of a paragraph, there may be 
+              # pending text, for example, if there is an ending line like
+              #         Some text@c a comment
               my $pending;
               ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, $indent_length);
               $text_added .= $pending if (defined($pending));
@@ -928,7 +928,7 @@ sub info_default_process_content($$)
           }
           elsif ($content->{'command'} eq 'preformatted')
           {
-           # if preformatted doesn't end with a newline, it is added here
+           # if preformatted doesn't end with a newline, it is added here
               $text_added .= "\n" unless ($line_char_counter == 0);
               $preformatted--;
           }
@@ -998,8 +998,8 @@ sub info_default_process_content($$)
           elsif ($content->{'command'} eq 'direntry')
           {
               $direntry--;
-              # this has to be done here, otherwise, at the end, $direntry 
-              # would be 0
+              # this has to be done here, otherwise, at the end, $direntry 
+              # would be 0
               $info_default_dir_specification .= $text_added;
               $text_added = '';
           }
@@ -1037,7 +1037,7 @@ sub info_default_process_content($$)
               {
                   my $length = $indent_len;
                   my $line = '';
-                  # determine the last cell in the line, to fill spaces in 
+                  # determine the last cell in the line, to fill spaces in 
                   # cells preceding that cell on the line
                   my $last_cell = 0;
                   for (my $cell_idx = 0; $cell_idx < $previous_last_cell; $cell_idx++)
@@ -1105,7 +1105,7 @@ sub info_default_process_content($$)
               if ($content->{'item_command'} eq 'headitem')
               {
                   # at this point cell_beginning is at the beginning of
-                  # the cell following the end of the table -> full width
+                  # the cell following the end of the table -> full width
                   my $line = ' ' x $indent_len . '-' x $cell_beginning . "\n";
                   $row .= $line;
                   $row_length += length($line);
@@ -1128,10 +1128,10 @@ sub info_default_process_content($$)
               {
                   my $pending;
                   ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, $indent_length);
-                  # here spaces out of any environment are ignored.
+                  # here spaces out of any environment are ignored.
                   if ($in_para or $preformatted or $pending =~ /\S/)
-                  { # this has to be done before the anchor related code
-                    # to have the right count.
+                  { # this has to be done before the anchor related code
+                    # to have the right count.
                     # FIXME this is wrong if an end of line was passed.
                     # in that case line_char_counter has been increased and 
                     # $pending ends with an end of line
@@ -1179,8 +1179,8 @@ sub info_default_process_content($$)
                   elsif ($content->{'index_command'} =~ /^[vf]table$/)
                   {
                   # if in a table, index label is systematically entered after
-                  # the line is processed, as the line is processed with the 
-                  # item command, while the index entry is entered with the
+                  # the line is processed, as the line is processed with the 
+                  # item command, while the index entry is entered with the
                   # index_label callback that is done much later.
                      $index_line_nr--;
                   }
@@ -1192,7 +1192,7 @@ sub info_default_process_content($$)
                   my $index_ref = { 'index_entry_reference' => $content->{'index_entry_reference'}, 'line_nr' => $index_line_nr };
 #print STDERR "INDEX($index_name) line $index_line_nr\n";
                   $info_default_index_entries{$content->{'index_entry_reference'}} = $index_ref;
-                  # there may be no cell in case of an empty multitable
+                  # there may be no cell in case of an empty multitable
                   if (@{$info_state->{'multitable_stack'}})
                   {
                       if ($info_state->{'multitable_stack'}->[-1]->{'cells'})
@@ -1213,19 +1213,19 @@ sub info_default_process_content($$)
                     $text_added .= $pending_spaces . $pending_word;
                     $pending_word = undef;
                  }
-                 # spaces preceding @* are skipped
+                 # spaces preceding @* are skipped
                  $pending_spaces = '';
                  $text_added .=  $content->{'text'};
-                 # just like following spaces
+                 # just like following spaces
                  info_default_skip_spaces($current, $index, $close);
-                 # this isn't done otherwise, though, here it is not important
-                 # since this end the line
+                 # this isn't done otherwise, though, here it is not important
+                 # since this end the line
                  $line_char_counter += length($content->{'text'});
                  goto new_text;
               }
               elsif ($content->{'command'} eq 'paragraph' and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal')
               {
-                 # empty paragraph
+                 # empty paragraph
                  goto new_text if (!$content->{'content'});
                  my $paragraphindent = get_conf('paragraphindent');
                  $paragraphindent = 0 if ($paragraphindent eq 'none');
@@ -1233,8 +1233,8 @@ sub info_default_process_content($$)
                  {
                     info_default_skip_spaces($current, $index, $close);
                  }
-                 # if within a format $content->{'paragraph_in_element_nr'} 
-                 # should not be defined so no indentation will take place
+                 # if within a format $content->{'paragraph_in_element_nr'} 
+                 # should not be defined so no indentation will take place
                  if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and (defined($content->{'paragraph_in_element_nr'})) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (get_conf('firstparagraphindent') eq 'insert')))))
                  {
                     $text_added .= ' ' x $paragraphindent;
@@ -1248,9 +1248,9 @@ sub info_default_process_content($$)
               elsif ($content->{'command'} eq 'exdent')
               {
                   # if an end of line is added, in_exdent is set to 2 and
-                  # set to one when processing the end of line that was just
-                  # added, and set to 0 at the end of the line.
-                  # if there is no end of line added, it is only set to 1.
+                  # set to one when processing the end of line that was just
+                  # added, and set to 0 at the end of the line.
+                  # if there is no end of line added, it is only set to 1.
                   if ($line_char_counter != 0)
                   {
                      $text_added .= "\n";
@@ -1278,7 +1278,7 @@ sub info_default_process_content($$)
               }
               elsif ($content->{'command'} eq 'image')
               {
-                  # @image result count isn't counted in line_char_counter
+                  # @image result count isn't counted in line_char_counter
                   # since it is not displayed in info
                   my $indent_added = 0;
                   $indent_added = ($indent_length - $line_char_counter) if ($indent_length - $line_char_counter > 0);
@@ -1287,7 +1287,7 @@ sub info_default_process_content($$)
                   goto new_text;
               }
               elsif ($content->{'command'} eq 'ref')
-              { # adds a . if needed.
+              { # adds a . if needed.
                   if ($content->{'text'} !~ /[\.,]$/ and $content->{'text'} !~ /::$/)
                   {
                      my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
@@ -1298,7 +1298,7 @@ sub info_default_process_content($$)
                   }
               }
               elsif ($content->{'command'} eq 'xref')
-              { # warn if there is no punctuation following
+              { # warn if there is no punctuation following
                   my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
                   if (!defined($text_next) or $text_next !~ /^./)
                   {
@@ -1368,8 +1368,8 @@ sub info_default_process_content($$)
                   if ($item_pending =~ /table$/)
                   {
                   # one less indentation level and no line break
-                  # adding line_added_before_item allows the table_item_line to 
-                  # still be active after the additional blank line
+                  # adding line_added_before_item allows the table_item_line to 
+                  # still be active after the additional blank line
                       $table_item_line = 1+$line_added_before_item;
                   }
                   else
@@ -1397,8 +1397,8 @@ sub info_default_process_content($$)
               }
               elsif ($content->{'command'} eq 'verbatim' or $content->{'command'} eq 'verbatiminclude')
               {
-                  # $preformatted cannot be used here since preformatted 
-                  # is closed before a verbatim
+                  # $preformatted cannot be used here since preformatted 
+                  # is closed before a verbatim
                   if (!$preformatted_format and $indent_level != 0)
                   {
                       if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'})
@@ -1410,10 +1410,10 @@ sub info_default_process_content($$)
                       $content->{'text'} .= "\n" unless ($blank_line or ($last_line =~ /^\s*$/));
                   }
               }
-              # other raw commands
+              # other raw commands
               elsif ($content->{'raw_command'})
               {
-                  # not considered as in a paragraph even if in a paragraph 
+                  # not considered as in a paragraph even if in a paragraph 
                   $text_added .= $content->{'text'};
                   goto new_text;
               }
@@ -1491,7 +1491,7 @@ sub info_default_process_content($$)
                   {
                      $text_added .= "\n";
                   }
-                  # there is no close if !$content->{'content'}
+                  # there is no close if !$content->{'content'}
                   $indent_level++ if ($content->{'content'});
                   $indent_length = $indent_level * $info_default_indent_length;
               }
@@ -1516,12 +1516,12 @@ sub info_default_process_content($$)
                   #print STDERR "IN_PARA text\n";
                   my $new_text = $content->{'text'};
                   # a punctuation at the end of a command is treated like a punctuation in 
-                  # plain text, except for @: and accent commands.
+                  # plain text, except for @: and accent commands.
                   if ((!defined($content->{'command'}) or ($content->{'command'} ne ':' and $content->{'command'} ne 'accents_commands')) and get_conf('frenchspacing') ne 'on' and $new_text =~ /([$info_default_end_sentence_character])([$info_default_after_punctuation_characters]*)(\s*)$/)
                   {
-                      # the info_default_after_punctuation_characters should
-                      # always be in the same text element except if the
-                      # punctuation character is in a command.
+                      # the info_default_after_punctuation_characters should
+                      # always be in the same text element except if the
+                      # punctuation character is in a command.
                       if (chomp($new_text))
                       {
                           $new_text =~ s/(\s*)$/  /;
@@ -1529,11 +1529,11 @@ sub info_default_process_content($$)
                       else
                       {
                           # spaces may be in following commands, and also 
-                          # info_default_after_punctuation_characters
+                          # info_default_after_punctuation_characters
                           my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
-                          # the info_default_after_punctuation_characters
-                          # may be in the next elemnt, if it is the only 
-                          # text in the element and the element is only text
+                          # the info_default_after_punctuation_characters
+                          # may be in the next elemnt, if it is the only 
+                          # text in the element and the element is only text
                           if (defined($content->{'command'}) and defined($current_next) and !defined($command_next) and $text_next =~ /^([$info_default_after_punctuation_characters]*)(\s*)$/ and chomp ($text_next))
                           {
                               my $content = $current_next->{'content'}->[$index_next];
@@ -1543,8 +1543,8 @@ sub info_default_process_content($$)
                           {
                               while (1)
                               {
-                                  # !defined($text_next) catches many special 
-                                  # commands, like anchor, index. Not sure if 
+                                  # !defined($text_next) catches many special 
+                                  # commands, like anchor, index. Not sure if 
                                   # it is right or wrong.
                                   last if (!defined($current_next) or (!defined($text_next)) or (defined($command_next) and $command_next eq '*'));
                                   if ($text_next =~ /\S/)
@@ -1583,7 +1583,7 @@ sub info_default_process_content($$)
                   {
                       if ($in_table_item and $info_state->{'only_spaces'})
                       {
-                          # in a blank_line
+                          # in a blank_line
                           #print STDERR "IN_ITEM ignored: `$content->{'text'}'\n";
                       }
                       elsif (!$info_state->{'blank_line'} or !$info_state->{'only_spaces'})
@@ -1597,7 +1597,7 @@ sub info_default_process_content($$)
                       }
                   }
                   else
-                  { # exdent, item not in paragraph nor in preformatted
+                  { # exdent, item not in paragraph nor in preformatted
                        #print STDERR "NOWHERE and not end of line (or item_pending) `$content->{'text'}'\n";
                        $text_added .= $content->{'text'};
                   }
@@ -1609,8 +1609,8 @@ sub info_default_process_content($$)
               {
                   $text_added .= $content->{'begin'};
               }
-              # command that won't be closed, so the end has to be added 
-              # here. It should mostly happen for empty style @-commands.
+              # command that won't be closed, so the end has to be added 
+              # here. It should mostly happen for empty style @-commands.
               if (defined($content->{'end'}) and !defined($content->{'content'}))
               {
                   $text_added .= $content->{'end'};
@@ -1619,8 +1619,8 @@ sub info_default_process_content($$)
       }
       if (!$preformatted and !$in_exdent and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal' and $in_para)
       {
-          # the line_passed returned here are not used, since they are computed
-          # below.
+          # the line_passed returned here are not used, since they are computed
+          # below.
           $indentation_done = 1;
           my $dummy_line_passed;
           ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_para_text($text_added, $line_char_counter, $pending_spaces, $pending_word, $indent_length, $max_column, $indent_level * $info_default_indent_length) if ($text_added ne '');
@@ -1652,7 +1652,7 @@ sub info_default_process_content($$)
       $text_added = "\n" . $text_added if ($prepend_newline);
       print STDERR "TEXT_ADDED($indent_length) `$text_added'\n" if ($text_added ne '' and $DEBUG);
       #print STDERR "TEXT_ADDED($indent_length) `$text_added'\n";
-      # from here, the next cmmand is available
+      # from here, the next cmmand is available
       ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
 
       my ($line_passed, $end_of_line, $last_line, $text_indented, $blank_line) = info_default_count_lines($text_added, $indent_length, ($indentation_done
@@ -1660,7 +1660,7 @@ sub info_default_process_content($$)
         or $info_state->{'align_stack'}->[-1]->{'command'} eq 'flushright'));
       $info_state->{'blank_line'} = 1 if ($blank_line);
       print STDERR "ADDING `$text_indented'\n" if ($text_indented ne '' and $DEBUG);
-      # only_space is set in all the conditionals
+      # only_space is set in all the conditionals
       if ($end_of_line)
       {
          $line_char_counter = 0;
@@ -1684,7 +1684,7 @@ sub info_default_process_content($$)
       {
          if ($line_passed)
          {# in that case we added more than one line, the $line_char_counter
-          # is reset to the last line length.
+          # is reset to the last line length.
             $line_char_counter = length($last_line);
             $in_exdent = 0;
             $indent_length = $indent_level * $info_default_indent_length;
@@ -1780,7 +1780,7 @@ sub info_default_open_command($$;$)
    my $index = 0;
    
    my $info_state = info_default_get_state($state);
-   # index in the parent content list
+   # index in the parent content list
    $index = scalar(@{$info_state->{'current'}->{'content'}}) 
        if (defined($info_state->{'current'}->{'content'}));
    my $new_command = {'command' => $command, 'parent' => $info_state->{'current'}, 'index_in_parent' => $index };
@@ -1906,10 +1906,10 @@ sub info_default_begin_format_texi($$$)
    my ($parent_format, $in_format);
    ($parent_format, $in_format) = info_default_parent_format($info_state->{'current'});
    info_default_increment_paragraph ($in_format, $parent_format, $info_state, $command);
-   # remove space in front of center, unless it removes the end of line!
+   # remove space in front of center, unless it removes the end of line!
    $line =~ s/^\s*// if ($command eq 'center' and $line =~ /\S/);
-   # don't open a format if it is a @def*x command and we are already in the 
-   # corresponding @def* command
+   # don't open a format if it is a @def*x command and we are already in the 
+   # corresponding @def* command
    info_default_open_command($state,$command) unless ($def_map{$command} and $command =~ /x$/ and defined($info_state->{'current'}->{'command'}) and "$info_state->{'current'}->{'command'}x" eq $command);
    return $line;
 }
@@ -1953,8 +1953,8 @@ sub info_default_simple_command($$$$$)
 
     my $result = $simple_map{$command};
     $result = $simple_map_math{$command} if ($in_math and defined($simple_map_math{$command}));
-    # discards '-' '|' '/' and ':'. If ':' is associated with a punctuation
-    # character it is added to the tree in info_default_colon_command
+    # discards '-' '|' '/' and ':'. If ':' is associated with a punctuation
+    # character it is added to the tree in info_default_colon_command
     return info_default_store_text($state,$result,$command) if ($result ne '');
     return '';
 }
@@ -2005,17 +2005,17 @@ sub info_default_style($$$$$$$$$$)
    my $begin = '';
    my $end = '';
 
-   # note that the $text is always discarded for closed commands
+   # note that the $text is always discarded for closed commands
 
-   # the formatting is done right here, and the result is entered as text below.
+   # the formatting is done right here, and the result is entered as text below.
    if ($info_default_leaf_command{$command})
    {
       my $style_index = 0;
       my @formatted_args = ();
       foreach my $arg (@$args)
       {
-         # we don't use style, since we only set 'orig_args' in style_map
-         # and not in style_map_pre.
+         # we don't use style, since we only set 'orig_args' in style_map
+         # and not in style_map_pre.
          my $arg_style = $style_map{$command}->{'orig_args'}->[$style_index];
          my $new_state = main::duplicate_formatting_state($state);
          if ($arg_style eq 'normal')
@@ -2037,8 +2037,8 @@ sub info_default_style($$$$$$$$$$)
    }
    if (defined($style->{'function'}))
    { # in case of an accent, some text is returned here if there are still
-     # more accents on the command_stack, otherwise it is put in the tree.
-     # Other commands text results are put in the tree below.
+     # more accents on the command_stack, otherwise it is put in the tree.
+     # Other commands text results are put in the tree below.
       $text = &{$style->{'function'}}($command, $args, $command_stack, $state, $line_nr, $kept_line_nrs);
    }
    if (defined($style->{'begin'}) and !$no_open)
@@ -2049,20 +2049,20 @@ sub info_default_style($$$$$$$$$$)
    {
       $end = $style->{'end'};
    }
-   # normal style commands
+   # normal style commands
    unless($special_style{$command} or $info_default_accent_commands{$command} or ($command eq 'hyphenation') or $info_default_leaf_command{$command})
    {
       return info_default_close_command($state, $command, $begin, $end);
    }
-   # this is for *ref, images and footnotes text registering and putting
-   # in the tree.
-   # anchor is already in the tree, from anchor_label.
+   # this is for *ref, images and footnotes text registering and putting
+   # in the tree.
+   # anchor is already in the tree, from anchor_label.
    if (($special_style{$command} or $info_default_leaf_command{$command}) and $command ne 'anchor')
    {
        return info_default_store_text ($state, $begin.$text.$end, $command);
    }
-   # for accents, hyphenation and anchor
-   # (though the result for anchor is always an empty string).
+   # for accents, hyphenation and anchor
+   # (though the result for anchor is always an empty string).
    return $begin.$text.$end;
 }
 
@@ -2148,9 +2148,9 @@ sub info_default_paragraph($$$$$$$$$$$$)
 }
 
 # currently not used, but could be used if info_default_preformatted
-# return something that is not 'false', for example spaces, though we
-# want the preformatted to be ignored. Though it is not sure that if there
-# are spaces we want to ignore the preformatted.
+# return something that is not 'false', for example spaces, though we
+# want the preformatted to be ignored. Though it is not sure that if there
+# are spaces we want to ignore the preformatted.
 sub info_default_empty_preformatted($)
 {
     my $text = shift;
@@ -2186,19 +2186,19 @@ sub info_default_node_line($$)
     $outfile = $STDOUT_DOCU_NAME if ($outfile eq '-');
     my $result = "\x{1F}\nFile: $outfile,  Node: $element->{'text'}";
     if (defined($element->{'NodeNext'}))
-    {
-       $result .= ','.&$I('  Next: %{node_next}', {'node_next' => $element->{'NodeNext'}->{'text'}});
+    { # This is not translatable
+       $result .= ",  Next: $element->{'NodeNext'}->{'text'}";
     }
     if (defined($element->{'NodePrev'}))
     {
-       $result .= ','.&$I('  Prev: %{node_prev}', {'node_prev' => $element->{'NodePrev'}->{'text'}});
+       $result .= ",  Prev: $element->{'NodePrev'}->{'text'}";
     }
     if (defined($element->{'NodeUp'}))
     {
-       $result .= ','.&$I('  Up: %{node_up}', {'node_up' => $element->{'NodeUp'}->{'text'}});
+       $result .= ",  Up: $element->{'NodeUp'}->{'text'}";
     }
     $result .= "\n\n";
-    # the line_count is ahead from the number of lines by one.
+    # the line_count is ahead from the number of lines by one.
     $info_state->{'line_count'} = 3;
     $info_state->{'offset_in_file'} += length($result);
     $info_state->{'blank_line'} = 1;
@@ -2224,19 +2224,19 @@ sub info_default_element_heading($$$$$$$$$$$$)
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
 
-    # FIXME use $element or $Texi2HTML::THIS_ELEMENT? Main program should 
-    # ensure they are the same. 
+    # FIXME use $element or $Texi2HTML::THIS_ELEMENT? Main program should 
+    # ensure they are the same. 
     if ($new_element and ($element ne $new_element and $element->{'node'}))
     {
         die "There is a new element, but element `$element->{'texi'}' is not the new element\n";
     }
-    # FIXME
-    # non node element may appear if the element appears before the first
-    # node/section element. For example `element not associated with a node'
-    # won't be associated with a node.
-    # @unnumbered element not associated with a node
-    # @node Top
-    # @top Top element
+    # FIXME
+    # non node element may appear if the element appears before the first
+    # node/section element. For example `element not associated with a node'
+    # won't be associated with a node.
+    # @unnumbered element not associated with a node
+    # @node Top
+    # @top Top element
     if (!$element->{'node'})
     {
         return &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading);
@@ -2277,9 +2277,9 @@ sub info_default_heading($$$$$;$$)
        main::msg_debug("for $element, $element->{'texi'}, element->{'text'} not defined");
     }
     my $text = "$element->{'text'}";
-    # to do the same than makeinfo a trailing dot in section number is removed
+    # to do the same than makeinfo a trailing dot in section number is removed
     #$text =~ s/^(\w+)\. /$1 /;
-    # when @top is empty, use settitle
+    # when @top is empty, use settitle
     $text = $Texi2HTML::THISDOC{'settitle'} if (!length($text) and $element->{'tag'} eq 'top' and defined ($Texi2HTML::THISDOC{'settitle'}) and length($Texi2HTML::THISDOC{'settitle'}));
     my $result = &$heading_text ("\@$command", $text, $element->{'level'});
 
@@ -2300,9 +2300,9 @@ sub info_default_normal_text($$$$$$$;$)
    my $style_stack = shift;
    my $state = shift;
 
-   # $Texi2HTML::THISDOC{'ENCODING_NAME'}) should be defined, but maybe 
+   # $Texi2HTML::THISDOC{'ENCODING_NAME'}) should be defined, but maybe 
    # not when parsing commands in first or second pass, and removeing texi
-   # like what is done for @setfilename.
+   # like what is done for @setfilename.
    if ($ENABLE_ENCODING and !$ENABLE_ENCODING_USE_ENTITY and defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8') and $USE_UNICODE)
    {
       $text = &t2h_utf8_normal_text(@initial_args);
@@ -2321,8 +2321,8 @@ sub info_default_normal_text($$$$$$$;$)
          $text =~ s/\'\'/"/g;
       }
    }
-   # accented characters are not handled as normal text, but when the last 
-   # accent command on the stack is closed.
+   # accented characters are not handled as normal text, but when the last 
+   # accent command on the stack is closed.
    if ($style_stack and @$style_stack and $info_default_accent_commands{$style_stack->[-1]})
    {
       return $text;
@@ -2331,7 +2331,7 @@ sub info_default_normal_text($$$$$$$;$)
    return info_default_store_text($state,$text);
 }
 
-# this is not called in preformatted
+# this is not called in preformatted
 sub info_default_empty_line($$)
 {
     my $text = shift;
@@ -2342,7 +2342,7 @@ sub info_default_empty_line($$)
 #    return '';
 }
 
-# change interface?
+# change interface?
 sub info_default_anchor_label($$$$)
 {
     my $id = shift;
@@ -2406,7 +2406,7 @@ sub info_default_print_page_foot($)
           }
           $fh = $INDIRECT;
       }
-      # makeinfo seems to add systematically an additional \n, done just below
+      # makeinfo seems to add systematically an additional \n, done just below
       print $fh "\n\x{1F}\nTag Table:\n";
       
       if ($indirect)
@@ -2429,8 +2429,8 @@ sub info_default_print_page_foot($)
       print $fh "\x{1F}\nEnd Tag Table\n";
    }
 
-   # IN_ENCODING is the documentencoding transformed to the encoding names
-   # usually seen in html. This is what the info readers should understand.
+   # IN_ENCODING is the documentencoding transformed to the encoding names
+   # usually seen in html. This is what the info readers should understand.
    my $coding = get_conf('IN_ENCODING');
    $coding = get_conf('DOCUMENT_ENCODING') if (!defined($coding));
    if (defined($coding))
@@ -2490,7 +2490,7 @@ sub info_default_print_section
         if (get_conf('footnotestyle') eq 'separate')
         {
             my $node_ref = $info_default_current_node;
-            # FIXME warning
+            # FIXME warning
             $node_ref = {'text' => 'no node', 'file' => ''} if (!defined($node_ref));
             $footnote_element = { 'NodeUp' => $node_ref, 
                        'text' => $node_ref->{'text'} . "-Footnotes", 
@@ -2543,7 +2543,7 @@ sub info_default_print_section
             }
             my ($line_passed, $end_of_line, $last_line, $text_indented, $blank_line) = info_default_count_lines($footnote_result);
             if ($line_passed == 0)
-            {# certainly out of paragraph commands
+            {# certainly out of paragraph commands
                $footnote_result =~ s/\s*$//;
                $footnote_result .= "\n";
                $line_passed = 1;
@@ -2578,8 +2578,8 @@ sub info_default_end_section($$$)
           push @info_default_pending_indirect, {'file'=>"$Texi2HTML::THISDOC{'filename'}->{'top'}-$info_default_out_file_nr", 'offset' => $info_state->{'pending_tags'}->[0]->{'info_offset'} };
        }
        $info_default_out_file_nr++;
-       # these file descriptors leak, but this allows the user to write a 
-       # foot navigation himself, otherwise he would write on a closed file
+       # these file descriptors leak, but this allows the user to write a 
+       # foot navigation himself, otherwise he would write on a closed file
        # descriptor
        #close($Texi2HTML::THISDOC{'FH'});
        if (!$end_foot_navigation)
@@ -2606,7 +2606,7 @@ sub info_default_begin_special_region($$$)
     my $state = shift;
     my $lines = shift;
     my $info_state = info_default_get_state ($state);
-    # reset paragraph_in_element_nr if out ofdocument formatting
+    # reset paragraph_in_element_nr if out ofdocument formatting
     if ($state->{'outside_document'})
     {
         $info_state->{'paragraph_in_element_nr'} = 0;
@@ -2646,7 +2646,7 @@ sub info_default_menu_link($$$$$$$$)
     return info_default_store_text($state,$result,'menu_entry');
 }
 
-# not used, menu is a normal preformatted command
+# not used, menu is a normal preformatted command
 #sub info_default_menu_command($$$)
 #{
 #    my $format = shift;
@@ -2738,7 +2738,7 @@ sub info_default_normal_reference($$)
     }
     my $node = $formatted_args->[0];
     # an error, should trigger the message: Undefined node `' in @ref.
-    # avoid undef value and use an empty string instead.
+    # avoid undef value and use an empty string instead.
     $node = '' if (!defined($node));
     my $name = $formatted_args->[1];
     $name =  $formatted_args->[2] if (!defined($name));
@@ -2856,7 +2856,7 @@ sub info_default_image($$$$$$$$$$$$$$$$$)
           {
               $text .= $img_txt;
           }
-          # remove last end of line
+          # remove last end of line
           chomp ($text);
           $text .= ']' if ($in_paragraph or $preformatted);
           close(TXT);
@@ -2990,19 +2990,19 @@ sub info_default_index_entry($$$$$$$$$$)
     my $real_element_text;
     my $element = $index_entry_ref->{'real_element'};
     # in case $element->{'text'} is not defined, it certainly means that we
-    # are n a special elemet, most likely the virtual element appearing 
-    # before anything else
+    # are n a special elemet, most likely the virtual element appearing 
+    # before anything else
     if (!defined($element->{'text'}))
     {
-       $real_element_text = &$I('(outside of any node)');
+       $real_element_text = gdt('(outside of any node)');
        $line_nr = 0;
     }
     else
     {
        $element = $element->{'element_ref'} if ($element->{'element_ref'});
        $real_element_text = $element->{'text'};
-       # this happens for index entries appearing after @printindex. In that case
-       # it is considered that they are at the beginning of the node.
+       # this happens for index entries appearing after @printindex. In that case
+       # it is considered that they are at the beginning of the node.
        $line_nr = 3 if (defined($line_nr) and $line_nr < 3);
        $line_nr = 4 if (!defined($line_nr));
     }
@@ -3061,7 +3061,7 @@ sub info_default_foot_line_and_ref($$$$$$$$)
         $node_name = $info_default_current_node->{'text'};
     }
     else
-    { # i18n
+    { # i18n
         # no warning when outside of document, for footnotes in 
         # titlepage and copying
         main::line_error("Footnote defined without parent node", $Texi2HTML::THISDOC{'line_nr'}) unless ($footnote_state->{'outside_document'});
@@ -3088,8 +3088,8 @@ sub info_default_foot_lines($)
     @$lines = ();
 }
 
-# remark: table_item is the html one, but it gets added to the table text
-# on the stack, and is ignored there (in info_default_format).
+# remark: table_item is the html one, but it gets added to the table text
+# on the stack, and is ignored there (in info_default_format).
 sub info_default_format_list_item_texi($$$$)
 {
     my $format = shift;
@@ -3124,7 +3124,7 @@ sub info_default_format_list_item_texi($$$$)
         }
     }
 #    elsif (defined($prepended) and $prepended ne '')
-#    { # @enumerate and @itemize
+#    { # @enumerate and @itemize
 #         $prepended =~ s/^\s*//;
 #         $prepended =~ s/\s*$//;
 #         $result_line = $prepended . ' ' . $line;
@@ -3221,15 +3221,15 @@ sub info_default_tab_item_texi($$$$$$)
    my ($parent_format, $in_format) = info_default_parent_format($info_state->{'current'});
    print STDERR "Not in_format in info_default_tab_item_texi\n" if (!$in_format);
    $format = $parent_format->{'command'};
-   # in case of an @item or @tab outside of any format $format will be
-   # undefined, or not multitable for a @tab.
-   # however the main program still do as if something was opened, plus
+   # in case of an @item or @tab outside of any format $format will be
+   # undefined, or not multitable for a @tab.
+   # however the main program still do as if something was opened, plus
    # it is checked there that the nesting is correct
    #return $line if (!defined($format) or $command eq 'tab' and $format ne 'multitable');
    #print STDERR "tab_item_texi $format $command $commands_stack, $stack, $state, $line, ".main::format_line_number($line_nr)."\n";
    if ($format eq 'multitable')
-   { # even if it is a tab, if it is not already in a multitable_row, one
-     # should be started
+   { # even if it is a tab, if it is not already in a multitable_row, one
+     # should be started
        if ($command ne 'tab' or $info_state->{'current'}->{'command'} ne 'multitable_row')
        {
            info_default_open_command($state, 'multitable_row');
@@ -3244,8 +3244,8 @@ sub info_default_tab_item_texi($$$$$$)
    {
        info_default_open_command ($state, $command, {'format_name' => $format});
    }
-   # this should have already been done for @item when the line
-   # is modified by the @-command and so on.
+   # this should have already been done for @item when the line
+   # is modified by the @-command and so on.
    return $line;
 }
 
@@ -3290,12 +3290,12 @@ sub info_default_cell($$$$$$$$)
     my $only_inter_item_commands = shift;
     my $before_items = shift;
 
-    # in general, when before_items, there will be no call to the function
-    # since there should never be a text sent back, so that this 
-    # function will not be called for the first row (the multitable title).
-    # However, if there is a @tab before the first @item, the main program
-    # is less careful and closes the cell in any case, so before_items
-    # has to be checked for that case.
+    # in general, when before_items, there will be no call to the function
+    # since there should never be a text sent back, so that this 
+    # function will not be called for the first row (the multitable title).
+    # However, if there is a @tab before the first @item, the main program
+    # is less careful and closes the cell in any case, so before_items
+    # has to be checked for that case.
     return info_default_close_command(undef, 'multitable_cell') unless ($before_items);
 }
 
@@ -3334,7 +3334,7 @@ sub info_default_table_list($$$$$$$$$)
        }
     }
     else 
-    { # empty multitable
+    { # empty multitable
        #print STDERR "Empty multitable?\n";
     }
 
@@ -3493,7 +3493,7 @@ sub info_default_raw($$)
     my $style = shift;
     my $text = shift;
     my $expanded = 1 if (grep {$style eq $_} @EXPAND);
-    # no warning for unknown raw formats
+    # no warning for unknown raw formats
     if ($style eq 'verbatim' or $style eq 'verbatiminclude' or $expanded)
     {
         return info_default_store_text(undef, $text, $style, {'raw_command' => 1});

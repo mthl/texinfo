@@ -218,7 +218,7 @@ substitution entirely.
 In many cases you can avoid using keywords in
 the source, even though they appear in the final
 product.  For example, the source for this manual
-contains &lsquo;<code>$@asis{}Author$</code>&rsquo; whenever the text
+contains &lsquo;<code>$@asis<nowiki>{</nowiki><nowiki>}</nowiki>Author$</code>&rsquo; whenever the text
 &lsquo;<code>$<i></i>Author$</code>&rsquo; should appear.  In <code>nroff</code>
 and <code>troff</code> you can embed the null-character
 <code>\&amp;</code> inside the keyword for a similar effect.

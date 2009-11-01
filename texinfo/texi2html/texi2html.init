@@ -1,5 +1,5 @@
 # -*-perl-*-
-# vim: set filetype=perl:
+# vim: set filetype=perl:
 ######################################################################
 # File: texi2html.init
 #
@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.246 2009-10-29 08:54:10 pertusus Exp $
+# $Id: texi2html.init,v 1.247 2009-11-01 18:59:57 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -31,7 +31,7 @@
 # command-line arguments following the --init-file option.
 
 ##################################################################
-# options common with makeinfo
+# options common with makeinfo
 # -I
 # add a directory to the list of directories where @include files are
 # searched for (besides the directory of the file). additional '-I' 
@@ -83,7 +83,7 @@ $NUMBER_SECTIONS = 1;
 # This is most useful if you do not want to have section navigation
 # with --split chapter. There will be chapter navigation panel at the 
 # beginning and at the end of chapters anyway.
-# this is mostly not used in the default case, important for html.
+# this is mostly not used in the default case, important for html.
 $HEADERS = 0;
 
 # -o filename
@@ -91,7 +91,7 @@ $HEADERS = 0;
 $OUT = '';
 
 # --split-size
-# if undef, the info output is not split
+# if undef, the info output is not split
 $SPLIT_SIZE = 300000;
 
 # --internal-links
@@ -102,7 +102,7 @@ $INTERNAL_LINKS = undef;
 $NOVALIDATE = 0;
 
 # --documentlanguage
-# use &$I('my string') if you want to have translations of 'my string'
+# use gdt('my string') if you want to have translations of 'my string'
 # and provide the translations in $LANGUAGES->{$DOCUMENTLANGUAGE} with 
 # 'my string' as key.
 # To add a new language use ISO 639 language codes (see e.g. perl module 
@@ -137,24 +137,24 @@ $ERROR_LIMIT = 1000;
 # --paragraph-indent
 $PARAGRAPHINDENT = 3;
 
-# --enable-encoding
+# --enable-encoding
 $ENABLE_ENCODING = 0;
 
-# --force
+# --force
 $FORCE = 0;
 
-# --no-warn
+# --no-warn
 $NO_WARN = 0;
 
-# --number-footnotes
+# --number-footnotes
 $NUMBER_FOOTNOTES = 1;
 
-# not in makeinfo but in texi2dvi
-# --command
+# not in makeinfo but in texi2dvi
+# --command
 @COMMANDS = ();
 
 ##################################################################
-# option specific of texi2html
+# option specific of texi2html
 # --debug
 # The integer value specifies what kind of debugging output is generated.
 $DEBUG = 0;
@@ -226,7 +226,7 @@ $FRAMES = 0;
 
 # --menu | --no-menu
 # if the value is true the Texinfo menus are shown.
-# this is defined in all the formats
+# this is defined in all the formats
 $SHOW_MENU = 1;
 
 # --use-nodes
@@ -338,11 +338,11 @@ $FIRSTPARAGRAPHINDENT = 'none';
 
 @T2H_FORMAT_EXPAND = ('plaintext');
 
-# simple headers formatting, not in a table and using node names.
+# simple headers formatting, not in a table and using node names.
 $HEADER_IN_TABLE = 0;
 
-# if set, node names are used to construct file names
-# if undef, it is set if split at node, or $NODE_FILES is set.
+# if set, node names are used to construct file names
+# if undef, it is set if split at node, or $NODE_FILES is set.
 $NODE_FILENAMES = undef;
 
 # If true do table of contents even if there is no @content
@@ -351,17 +351,17 @@ $CONTENTS = undef;
 # If true do short table of contents even if there is no @shortcontent
 $SHORTCONTENTS = undef;
 
-# set by @setcontentsaftertitlepage/@setshortcontentsaftertitlepage
+# set by @setcontentsaftertitlepage/@setshortcontentsaftertitlepage
 $SETCONTENTSAFTERTITLEPAGE = undef;
 $SETSHORTCONTENTSAFTERTITLEPAGE = undef;
 
-# corresponds with @kbdinputstyle
+# corresponds with @kbdinputstyle
 $KBDINPUTSTYLE = 'distinct';
 
-# corresponds with @frenchspacing
+# corresponds with @frenchspacing
 $FRENCHSPACING = 'off';
 
-# corresponds with @setfilename. Set with caution.
+# corresponds with @setfilename. Set with caution.
 $SETFILENAME = undef;
 
 # if unset, don't show a title
@@ -393,7 +393,7 @@ $NEW_CROSSREF_STYLE = 1;
 # top heading is always at the beginning of the element.
 $TOP_HEADING_AT_BEGINNING = 0;
 
-# use titlepage for the title instead of a simplest title
+# use titlepage for the title instead of a simplest title
 $USE_TITLEPAGE_FOR_TITLE = 0;
 
 # if set, center @image by default
@@ -412,14 +412,14 @@ $SMALL_EXAMPLE_INDENT_CELL = '';
 $SMALL_FONT_SIZE = '-1';
 
 # horizontal rules
-# not used
+# not used
 $SMALL_RULE = '';
 $MIDDLE_RULE = '';
-# used in html
+# used in html
 $DEFAULT_RULE = '';
 $BIG_RULE = '';
 
-# output the program name in the footer
+# output the program name in the footer
 $PROGRAM_NAME_IN_FOOTER = 0;
 
 # if non-empty, and no @..heading appeared in Top node, then
@@ -454,10 +454,10 @@ $TOP_NODE_FILE = undef;
 # file name used for Top node in references
 $TOP_NODE_FILE_TARGET = 'index';
 
-# file used as document basename, when input file is -
+# file used as document basename, when input file is -
 $STDIN_DOCU_NAME = 'stdin';
 
-# file used as document output basename, when output file is -
+# file used as document output basename, when output file is -
 $STDOUT_DOCU_NAME = 'stdout';
 
 # node name used for Top node when automatic node directions are used
@@ -471,8 +471,8 @@ $MENU_PRE_STYLE = 'font-family: serif';
 # this controls the menu preformatted format
 # FIXME this is not dynamic, so change in MENU_PRE_STYLE is not taken 
 # into account.
-# This is used if the menu appears within a preformatted format (which
-# is certainly an invalid construct), and SIMPLE_MENU is not set.
+# This is used if the menu appears within a preformatted format (which
+# is certainly an invalid construct), and SIMPLE_MENU is not set.
 $MENU_PRE_COMPLEX_FORMAT = {
               'class' => 'menu-preformatted',
 #              'style' => 'code'
@@ -517,15 +517,16 @@ $VERTICAL_HEAD_NAVIGATION = 0;
 # html version for latex2html
 $L2H_HTML_VERSION = "4.0";
 
-# use icons.
+# use icons.
 $ICONS = 0;
 
+# use old framework for translations
+$I18N_PERL_HASH = 0;
 
-
-# this resets some defaults, those that are also set in formats and
-# not set in every formats.
+# this resets some defaults, those that are also set in formats and
+# not set in every formats.
 #
-# this is called below after %default_style_map_texi is defined
+# this is called below after %default_style_map_texi is defined
 sub t2h_default_set_variables_default()
 {
   $CAPTION_STYLE = 'strong';
@@ -534,10 +535,10 @@ sub t2h_default_set_variables_default()
 # out file name
   $USE_SETFILENAME = 1;
 
-# if true, use the filename and extension from setfilename. For Info.
+# if true, use the filename and extension from setfilename. For Info.
   $USE_SETFILENAME_EXTENSION = 0;
 
-# FIXME is this right?
+# FIXME is this right?
 # default used in init_out for the setting of the ENCODING_NAME variable
   $DEFAULT_ENCODING = 'utf8';
 
@@ -546,11 +547,11 @@ sub t2h_default_set_variables_default()
 # Likewise, if node name equals entry name, do not print entry name.
   $AVOID_MENU_REDUNDANCY = 0;
 
-# if true, use the original command if the result is an entity
+# if true, use the original command if the result is an entity
   $ENABLE_ENCODING_USE_ENTITY = 0;
 
 # if set, output the contents where the command is located
-# This is ignored if set*contentsaftertitlepage is set
+# This is ignored if set*contentsaftertitlepage is set
   $INLINE_CONTENTS = 1;
 
 # symbol put at the beginning of nodes entry in menu (and optionnaly of 
@@ -560,8 +561,8 @@ sub t2h_default_set_variables_default()
 # if set, then use node names in menu entries, instead of section names
   $NODE_NAME_IN_MENU = 1;
 
-# if set use the node names in index entry, instead of section names
-# if not set, it is set to the same value than NODE_NAME_IN_MENU
+# if set use the node names in index entry, instead of section names
+# if not set, it is set to the same value than NODE_NAME_IN_MENU
   $NODE_NAME_IN_INDEX = undef;
 
 # if set always separate description and menu link, even in 
@@ -591,14 +592,14 @@ sub t2h_default_set_variables_default()
 # file name used for Top node when NODE_FILES is true
   $TOP_NODE_FILE = undef;
 
-# extensions used for images
+# extensions used for images
   @IMAGE_EXTENSIONS = ('png','jpg', 'txt');
 
   $USE_NODES = 1;
 
   $USE_SECTIONS = 1;
 
-# also set by command line options
+# also set by command line options
   $FOOTNOTESTYLE = 'end';
 
   $DOCTYPE = '';
@@ -611,8 +612,8 @@ sub t2h_default_set_variables_default()
 
   $ENABLE_ENCODING = 0;
 
-# these are more or less the documented vanilla versions, so they
-# are reset
+# these are more or less the documented vanilla versions, so they
+# are reset
 $unknown           = \&t2h_default_unknown;
 $unknown_style     = \&t2h_default_unknown_style;
 $external_ref      = \&t2h_default_external_ref;
@@ -627,35 +628,35 @@ $print_title               = \&T2H_DEFAULT_print_title;
 $element_heading = \&t2h_default_element_heading;
 # reset in html
 $inline_contents    = \&T2H_DEFAULT_inline_contents;
-# reset in docbook and info.
+# reset in docbook and info.
 $style                    = \&T2H_GPL_style;
 $format                   = \&T2H_GPL_format;
-# reset in info
+# reset in info
 $simple_command             = \&t2h_default_simple_command;
-# reset in info
+# reset in info
 $thing_command              = \&t2h_default_thing_command;
 # reset in html and xml
 $caption_shortcaption     = \&t2h_default_caption_shortcaption;
 $caption_shortcaption_command  = \&t2h_default_caption_shortcaption_command;
-# reset in docbook and xml. Not really vanilla, but documented.
+# reset in docbook and xml. Not really vanilla, but documented.
 $printindex        = \&t2h_GPL_default_printindex;
-# reset by xml and html
+# reset by xml and html
 $misc_element_label         = \&t2h_default_misc_element_label;
-# set in html
+# set in html
 $init_out    = \&t2h_default_init_out;
 # set in info and xml
 $paragraph_style_command  = \&t2h_default_paragraph_style_command;
 # set in info
 $colon_command            = \&t2h_default_colon_command;
-# set in docbook
+# set in docbook
 $quotation_prepend_text   = \&t2h_default_quotation_prepend_text;
-# set in info
+# set in info
 $copying_comment = \&t2h_default_copying_comment;
 
-# set in html and info
+# set in html and info
 $print_section            = \&T2H_DEFAULT_print_section;
 
-# set in docbook and xml
+# set in docbook and xml
 %colon_command_punctuation_characters = (
    '.' => '.',
    ':' => ':',
@@ -665,7 +666,7 @@ $print_section            = \&T2H_DEFAULT_print_section;
 
 
 
-# in info
+# in info
 $footnote_texi = undef;
 $begin_paragraph_texi = undef;
 $begin_style_texi = undef;
@@ -700,7 +701,7 @@ t2h_default_copy_style_map (\%default_style_map_texi, \%style_map_texi);
 # reset in info
 %simple_map_texi = %default_simple_map;
 
-# modified in docbook
+# modified in docbook
 %special_accents = (
       'ringaccent' => 'aA',
       "'"          => 'aeiouyAEIOUY',
@@ -715,7 +716,7 @@ t2h_default_copy_style_map (\%default_style_map_texi, \%style_map_texi);
 );
 
 # modified by info, xml, docbook
-# %no_paragraph_commands should not be reset since it has been 
+# %no_paragraph_commands should not be reset since it has been 
 # filled with defaults for many other commands.
 
 # FIXME this prevents the user from setting those entries.
@@ -895,12 +896,12 @@ sub t2h_default_set_variables_texi2html()
    'About' => 'SEC_About'
 );
 
-# determine the null devices
+# determine the null devices
 my $default_null_device = File::Spec->devnull();
 %null_device_file = (
  $default_null_device => 1
 );
-# special case, djgpp recognizes both null devices
+# special case, djgpp recognizes both null devices
 if ($Config{osname} eq 'dos' and $Config{osvers} eq 'djgpp')
 {
   $null_device_file{'/dev/null'} = 1;
@@ -916,80 +917,80 @@ sub t2h_default_translate_names()
 # FIXME maybe get those in simple_format?
     %NAVIGATION_TEXT =
     (
-     'Top',         &$I('Top'),
-     'Contents',    &$I('Contents'),
-     'Overview',    &$I('Overview'),
-     'Index',       &$I('Index'),
+     'Top',         gdt('Top'),
+     'Contents',    gdt('Contents'),
+     'Overview',    gdt('Overview'),
+     'Index',       gdt('Index'),
      ' ',           ' ',
-     'This',        &$I('Current'),
+     'This',        gdt('Current'),
      'Back',        ' < ',
      'FastBack',    ' << ',
-     'Prev',        &$I('Previous'),
-     'Up',          &$I('Up'),
-     'Next',        &$I('Next'),
-     'NodeUp',      &$I('Up'),
-     'NodeNext',    &$I('Next'),
-     'NodePrev',    &$I('Previous'),
-     'Following',   &$I('Following'),
+     'Prev',        gdt('Previous'),
+     'Up',          gdt('Up'),
+     'Next',        gdt('Next'),
+     'NodeUp',      gdt('Up'),
+     'NodeNext',    gdt('Next'),
+     'NodePrev',    gdt('Previous'),
+     'Following',   gdt('Following'),
      'Forward',     ' > ',
      'FastForward', ' >> ',
      'About',       ' ? ',
      'First',       ' |< ',
      'Last',        ' >| ',
-     'NextFile',    &$I('Next file'),
-     'PrevFile',    &$I('Previous file'),
+     'NextFile',    gdt('Next file'),
+     'PrevFile',    gdt('Previous file'),
     );
     %BUTTONS_TEXT = %NAVIGATION_TEXT;
 
     %BUTTONS_GOTO =
     (
-     'Top',         &$I('Cover (top) of document'),
-     'Contents',    &$I('Table of contents'),
-     'Overview',    &$I('Short table of contents'),
-     'Index',       &$I('Index'),
-     'This',        &$I('Current section'),
-     'Back',        &$I('Previous section in reading order'),
-     'FastBack',    &$I('Beginning of this chapter or previous chapter'),
-     'Prev',        &$I('Previous section on same level'),
-     'Up',          &$I('Up section'),
-     'Next',        &$I('Next section on same level'),
-     'NodeUp',      &$I('Up node'),
-     'NodeNext',    &$I('Next node'),
-     'NodePrev',    &$I('Previous node'),
-     'Following',   &$I('Node following in node reading order'),
-     'Forward',     &$I('Next section in reading order'),
-     'FastForward', &$I('Next chapter'),
-     'About' ,      &$I('About (help)'),
-     'First',       &$I('First section in reading order'),
-     'Last',        &$I('Last section in reading order'),
-     'NextFile',    &$I('Forward section in next file'),
-     'PrevFile',    &$I('Back section in previous file'),
+     'Top',         gdt('Cover (top) of document'),
+     'Contents',    gdt('Table of contents'),
+     'Overview',    gdt('Short table of contents'),
+     'Index',       gdt('Index'),
+     'This',        gdt('Current section'),
+     'Back',        gdt('Previous section in reading order'),
+     'FastBack',    gdt('Beginning of this chapter or previous chapter'),
+     'Prev',        gdt('Previous section on same level'),
+     'Up',          gdt('Up section'),
+     'Next',        gdt('Next section on same level'),
+     'NodeUp',      gdt('Up node'),
+     'NodeNext',    gdt('Next node'),
+     'NodePrev',    gdt('Previous node'),
+     'Following',   gdt('Node following in node reading order'),
+     'Forward',     gdt('Next section in reading order'),
+     'FastForward', gdt('Next chapter'),
+     'About' ,      gdt('About (help)'),
+     'First',       gdt('First section in reading order'),
+     'Last',        gdt('Last section in reading order'),
+     'NextFile',    gdt('Forward section in next file'),
+     'PrevFile',    gdt('Back section in previous file'),
     );
 
     %BUTTONS_NAME =
     (
-     'Top',         &$I('Top'),
-     'Contents',    &$I('Contents'),
-     'Overview',    &$I('Overview'),
-     'Index',       &$I('Index'),
+     'Top',         gdt('Top'),
+     'Contents',    gdt('Contents'),
+     'Overview',    gdt('Overview'),
+     'Index',       gdt('Index'),
      ' ',           ' ',
-     'This',        &$I('This'),
-     'Back',        &$I('Back'),
-     'FastBack',    &$I('FastBack'),
-     'Prev',        &$I('Prev'),
-     'Up',          &$I('Up'),
-     'Next',        &$I('Next'),
-     'NodeUp',      &$I('NodeUp'),
-     'NodeNext',    &$I('NodeNext'),
-     'NodePrev',    &$I('NodePrev'),
-     'Following',   &$I('Following'),
-     'Forward',     &$I('Forward'),
-     'FastForward', &$I('FastForward'),
-     'About',       &$I('About'),
-     'First',       &$I('First'),
-     'Last',        &$I('Last'),
-     'NextFile',    &$I('NextFile'),
-     'PrevFile',    &$I('PrevFile'),
+     'This',        gdt('This'),
+     'Back',        gdt('Back'),
+     'FastBack',    gdt('FastBack'),
+     'Prev',        gdt('Prev'),
+     'Up',          gdt('Up'),
+     'Next',        gdt('Next'),
+     'NodeUp',      gdt('NodeUp'),
+     'NodeNext',    gdt('NodeNext'),
+     'NodePrev',    gdt('NodePrev'),
+     'Following',   gdt('Following'),
+     'Forward',     gdt('Forward'),
+     'FastForward', gdt('FastForward'),
+     'About',       gdt('About'),
+     'First',       gdt('First'),
+     'Last',        gdt('Last'),
+     'NextFile',    gdt('NextFile'),
+     'PrevFile',    gdt('PrevFile'),
     );
 
 }
@@ -1174,7 +1175,7 @@ sub t2h_encoding_is_entity($)
   return 1 if ($text =~ /^&/ and $text =~ /;$/);
 }
 
-# this is for info.init
+# this is for info.init
 use vars qw(%t2h_enable_encoding_default_accent);
 my @t2h_enable_encoding_accents_stack;
 my %t2h_enable_encoding_default_commands;
@@ -1524,8 +1525,8 @@ sub t2h_default_heading_text($$$)
 
     return '' if ($text !~ /\S/);
     my $result = $text ."\n";
-    # as seen in encodings/nodetest_utf8_no_unicode, the length can be in
-    # bytes (certainly) when there hasn't been a require Encode
+    # as seen in encodings/nodetest_utf8_no_unicode, the length can be in
+    # bytes (certainly) when there hasn't been a require Encode
     $result .=($t2h_default_underline_symbol{$level} x length($text))."\n";
     return $result;
 }
@@ -1603,10 +1604,10 @@ sub T2H_DEFAULT_program_string()
     $date = '' if (!defined($date));
     if ($date ne '')
     {
-        return  &$I('This document was generated on @i{%{date}} using @uref{%{program_homepage}, @i{%{program}}}.', {
+        return gdt('This document was generated on @i{{date}} using @uref{{program_homepage}, @i{{program}}}.', {
            'date' => $date, 'program_homepage' => $Texi2HTML::THISDOC{'program_homepage'}, 'program' => $Texi2HTML::THISDOC{'program'} },{'duplicate'=>1});
     }
-    return &$I('This document was generated using @uref{%{program_homepage}, @emph{%{program}}}.', {
+    return gdt('This document was generated using @uref{{program_homepage}, @emph{{program}}}.', {
        'program_homepage' => $Texi2HTML::THISDOC{'program_homepage'}, 'program'
 => $Texi2HTML::THISDOC{'program'} },{'duplicate'=>1});
 }
@@ -2103,7 +2104,7 @@ sub T2H_DEFAULT_node_file_name($$)
            '{', '{',
 );
 
-# texinfo "simple things" @-commands
+# texinfo "simple things" @-commands
 %simple_map = %default_simple_map;
 
 # this map is used in preformatted text
@@ -2156,7 +2157,7 @@ $after_punctuation_characters = '"\')]';
                'L'            => '/L',
                'DH'           => 'D',
                'dh'           => 'd',
-               'TH'           => 'TH', # http://www.evertype.com/standards/wynnyogh/thorn.html
+               'TH'           => 'TH', # http://www.evertype.com/standards/wynnyogh/thorn.html
 
                'th'           => 'th',
                'exclamdown'   => '!',
@@ -2747,7 +2748,7 @@ foreach my $encoding (keys(%makeinfo_encoding_to_map))
    }
 }
 
-# currently unused
+# currently unused
 my %makeinfo_transliterate_map = (
   '0416' => 'ZH',
   '0447' => 'ch',
@@ -3664,7 +3665,7 @@ sub t2h_default_accent($$)
 }
 
 ####################################################################
-# special accent/encoding commands
+# special accent/encoding commands
 #
 # Some functions used to override normal formatting functions in specific 
 # cases. The user shouldn't want to change them, but can use them.
@@ -3792,18 +3793,18 @@ sub t2h_enable_encoding_accent($$$$)
 
 #print STDERR "enable_encoding_accent called($in) $accent (@$style_stack)\n";
 
-  # this should happen rarely, like during @setfilename parsing.
+  # this should happen rarely, like during @setfilename parsing.
   return &{$t2h_enable_encoding_default_accent{$in}->{$accent}}(@other_args) if (!defined($Texi2HTML::THISDOC{'ENCODING_NAME'}));
 
   return t2h_utf8_accent($accent,[$text],$style_stack) if ($Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8');
   return &{$t2h_enable_encoding_default_accent{$in}->{$accent}}(@other_args) if (!exists($makeinfo_encoding_to_map{$Texi2HTML::THISDOC{'ENCODING_NAME'}}));
   if (scalar(@t2h_enable_encoding_accents_stack)) 
   {
-    # in that case, we already have a result ready that corresponds with the
-    # formatting of a part of the stack mapped to 
+    # in that case, we already have a result ready that corresponds with the
+    # formatting of a part of the stack mapped to 
     # t2h_enable_encoding_accents_stack, so it is emptied and the innermost
-    # $text is returned as is, such that the unmodified already formatted 
-    # innermost formatted accented text is returned.
+    # $text is returned as is, such that the unmodified already formatted 
+    # innermost formatted accented text is returned.
 
     #print STDERR " doing nothing, still in stack (@t2h_enable_encoding_accents_stack), accent: $accent";
     my $stack_accent = shift @t2h_enable_encoding_accents_stack;
@@ -3811,16 +3812,16 @@ sub t2h_enable_encoding_accent($$$$)
     return $text;
   }
 
-  # in that case there is no t2h_enable_encoding_accents_stack, so we are 
-  # at the closing of the innermost accented command. We will try to format 
-  # all the stack in reverse(@$style_stack) that coresponds with 
+  # in that case there is no t2h_enable_encoding_accents_stack, so we are 
+  # at the closing of the innermost accented command. We will try to format 
+  # all the stack in reverse(@$style_stack) that coresponds with 
   # accent commands
   my @accents_stack = ();
   my @styles = reverse(@$style_stack);
 
-  # accents are formatted and the intermediate results are kept, such
-  # that we can return the maximum of multiaccented letters that can be
-  # rendered with a given eight bit formatting.
+  # accents are formatted and the intermediate results are kept, such
+  # that we can return the maximum of multiaccented letters that can be
+  # rendered with a given eight bit formatting.
 
   # first put the letter in the stack
   my @utf8_partial_results = { 'result' => $text, 
@@ -3848,9 +3849,9 @@ sub t2h_enable_encoding_accent($$$$)
   my $eight_bit;
   my $result;
   # At this point we have the utf8 encoded results for the accent
-  # commands stack, with all the intermediate results.
-  # For each one we'll check if it is possible to encode it in the 
-  # current eight bit output encoding table
+  # commands stack, with all the intermediate results.
+  # For each one we'll check if it is possible to encode it in the 
+  # current eight bit output encoding table
   foreach my $partial_result (@utf8_partial_results)
   {
     my $char = $partial_result->{'result'};
@@ -3873,22 +3874,23 @@ sub t2h_enable_encoding_accent($$$$)
     #my $eight_bit_txt = 'undef';
     #$eight_bit_txt = $eight_bit if (defined($eight_bit));
     #print STDERR "" . Encode::encode('utf8', "$char") . " (@{$partial_result->{'accents_stack'}}), new_codepoint: $new_codepoint 8bit: $new_eight_bit old:$eight_bit_txt\n";
-    # no corresponding eight bit character found
+    # no corresponding eight bit character found
     last if ($new_eight_bit eq '');
 
     # in that case, the new eight bit character is the same than the one 
-    # found with one less character (and it isnt a @dotless{i}). It may
-    # mean 2 things
-    # -> there are 2 characters in accent. This could happen, for example
+    # found with one less character (and it isnt a @dotless{i}). It may
+    # mean 2 things
+    # -> there are 2 characters in accent. This could happen, for example
     #    if an accent that cannot be rendered is found and it leads to 
-    #    appending or prepending a character. For example this happens for
+    #    appending or prepending a character. For example this happens for
     #    @={@,{@~{n}}}, where @,{@~{n}} is expanded to a 2 character:
-    #    ñ,
+    #    n with a tilde, followed by a , 
     #    In nthat case, the additional utf8 accent is prepended, which 
-    #    means that it is composed with the , and leaves ñ untouched. 
+    #    means that it is composed with the , and leaves n with a tilde 
+    #    untouched. 
     # -> ord(char) leads to the same for the more inner character.
-    #    this, for example, happens for @ubaraccent{a}, where ord(a) is
-    #    the same than ord(a̲).
+    #    this, for example, happens for @ubaraccent{a}, where ord(a) is
+    #    the same than ord(a with underbar).
     last if (defined($eight_bit) and (($new_eight_bit eq $eight_bit) 
        and !($partial_result->{'accents_stack'}[0] eq 'dotless' and $char eq 'i')));
     $result = $partial_result;
@@ -3896,24 +3898,24 @@ sub t2h_enable_encoding_accent($$$$)
   }
   if (defined($result) and scalar(@{$result->{'accents_stack'}}))
   {
-     # we got a result, return it and put in t2h_enable_encoding_accents_stack
-     # the stack of accent commands that were processed. They wont be used
-     # further, but only unshifted.
+     # we got a result, return it and put in t2h_enable_encoding_accents_stack
+     # the stack of accent commands that were processed. They wont be used
+     # further, but only unshifted.
 
   #print STDERR "Result: ".Encode::encode('utf8', $result->{'result'}) ." '$eight_bit' (@{$result->{'accents_stack'}})\n" if defined($result);
      @t2h_enable_encoding_accents_stack = @{$result->{'accents_stack'}};
      # remove the first, it is the accent being processed
      shift @t2h_enable_encoding_accents_stack;
-     # it should be noted that we return the 'utf8' accent (which is really
-     # a codepoint, and not the eight bit representation, we leave the 
-     # conversion to perl, which should handle it fine
+     # it should be noted that we return the 'utf8' accent (which is really
+     # a codepoint, and not the eight bit representation, we leave the 
+     # conversion to perl, which should handle it fine
      return $result->{'result'};
   }
   
   return &{$t2h_enable_encoding_default_accent{$in}->{$accent}}(@other_args);
 }
 
-# end special accent/encoding commands
+# end special accent/encoding commands
 ####################################################################
 
 sub default_sc($$)
@@ -4245,7 +4247,7 @@ t2h_default_copy_style_map(\%style_map_pre, \%default_style_map_pre);
 t2h_default_copy_style_map(\%style_map_texi, \%default_style_map_texi);
 t2h_default_copy_style_map(\%simple_format_style_map_texi, \%default_simple_format_style_map_texi);
 
-# called here because %default_style_map_texi is used.
+# called here because %default_style_map_texi is used.
 t2h_default_set_variables_default();
 
 # regions expanded or not depending on the value of this hash.
@@ -4454,7 +4456,7 @@ foreach my $key (keys(%def_map))
                              # or a number and forbids anything else on the line
         'firstparagraphindent' => {'skip' => 'line', 'arg' => 1}, # none insert
         'frenchspacing' => {'arg' => 1, 'skip' => 'line'}, # on off
-                                       # not so sure about 'skip' => 'line'
+                                       # not so sure about 'skip' => 'line'
         'fonttextsize' => {'arg' => 1}, # 10 11
         'allowcodebreaks' => {'arg' => 1, 'skip' => 'line'}, # false or true
         'exampleindent' => {'skip' => 'line', 'arg' => 1}, # asis or a number
@@ -4523,7 +4525,7 @@ foreach my $key (keys(%def_map))
         # ???
         'filbreak' => {},
         # obsolete @-commands. Remove spaces and end of lines after the 
-        # commands? If no, they can lead to empty lines
+        # commands? If no, they can lead to empty lines
         'quote-arg' => {'skip' => 'line'},
         'allow-recursion' => {'skip' => 'line'},
      );
@@ -4841,7 +4843,7 @@ sub t2h_default_begin_format_texi($$$)
     my $line = shift;
     my $state = shift;
 
-   # remove space in front of center, unless it removes the end of line!
+   # remove space in front of center, unless it removes the end of line!
     $line =~ s/^\s*// if ($command eq 'center' and $line =~ /\S/);
     return $line;
 }
@@ -4923,7 +4925,7 @@ sub t2h_default_caption_shortcaption($)
         my $nr = $float->{'nr'};
         if ($style ne '')
         {
-            $style = &$I('%{style} %{number}', { 'style' => $style, 'number' => $nr});
+            $style = gdt('{style} {number}', { 'style' => $style, 'number' => $nr});
         }
         else 
         {
@@ -4945,7 +4947,7 @@ sub t2h_default_caption_shortcaption($)
     {
         if (defined($style))
         {
-            $caption_lines->[0] = '@'.$CAPTION_STYLE.'{' . &$I('%{style}: %{caption_first_line}', { 'style' => $style, 'caption_first_line' => $caption_lines->[0] });
+            $caption_lines->[0] = '@'.$CAPTION_STYLE.'{' . gdt('{style}: {caption_first_line}', { 'style' => $style, 'caption_first_line' => $caption_lines->[0] });
         }
         else
         {
@@ -4973,7 +4975,7 @@ sub t2h_default_caption_shortcaption($)
     {
          if (defined($style))
          {
-              $shortcaption_lines->[0] = '@'.$CAPTION_STYLE.'{' . &$I('%{style}: %{shortcaption_first_line}', { 'style' => $style, 'shortcaption_first_line' => $shortcaption_lines->[0] });
+              $shortcaption_lines->[0] = '@'.$CAPTION_STYLE.'{' . gdt('{style}: {shortcaption_first_line}', { 'style' => $style, 'shortcaption_first_line' => $shortcaption_lines->[0] });
          }
          else
          {
@@ -5046,7 +5048,7 @@ sub t2h_default_listoffloats_float_style($$)
          my $nr = $float->{'nr'};
          if ($style ne '')
          {
-              $style = &$I('%{style} %{number}', { 'style' => $style, 'number' => $nr});
+              $style = gdt('{style} {number}', { 'style' => $style, 'number' => $nr});
          }
          else 
          {
@@ -5278,11 +5280,11 @@ sub t2h_default_definition_category($$$$)
     return ($name) if (!defined($class) or $class =~ /^\s*$/);
     if ($style eq 'f')
     {
-        return &$I('%{name} on %{class}', { 'name' => $name, 'class' => $class });
+        return gdt('{name} on {class}', { 'name' => $name, 'class' => $class });
     }
     elsif ($style eq 'v')
     {
-        return &$I('%{name} of %{class}', { 'name' => $name, 'class' => $class });
+        return gdt('{name} of {class}', { 'name' => $name, 'class' => $class });
     }
     else
     {
@@ -5299,11 +5301,11 @@ sub t2h_default_definition_index_entry($$$$)
     return ($name) if (!defined($class) or $class =~ /^\s*$/);
     if ($style eq 'f')
     {
-        return &$I('%{name} on %{class}', { 'name' => $name, 'class' => $class });
+        return gdt('{name} on {class}', { 'name' => $name, 'class' => $class });
     }
     elsif ($style eq 'v' and $command ne 'defcv')
     {
-        return &$I('%{name} of %{class}', { 'name' => $name, 'class' => $class });
+        return gdt('{name} of {class}', { 'name' => $name, 'class' => $class });
     }
     else
     {
@@ -5350,7 +5352,7 @@ sub t2h_default_def($$)
 #
 # argument:
 # whole menu text.
-# not used since menu is a normal preformatted command
+# not used since menu is a normal preformatted command
 sub t2h_default_menu_command($$$)
 {
     my $format = shift;
@@ -5399,7 +5401,7 @@ sub t2h_default_menu_link($$$$$$$$)
 # the description text
 # the state. See menu_entry.
 # the heading of the element associated with the node.
-# not usd since in SIMPLE_MENU
+# not usd since in SIMPLE_MENU
 sub t2h_default_menu_description($$$$)
 {
     my $text = shift;
@@ -5419,7 +5421,7 @@ sub t2h_default_menu_description($$$$)
 #     be used to make an html cross ref as explained in the texinfo manual
 # file is the file in '(file)node'
 # This is used to construct href, so is likely to be ignored oustside of
-# html.
+# html.
 sub t2h_default_external_href($$$)
 {
     my $node = shift;
@@ -5606,51 +5608,51 @@ sub t2h_default_external_ref($$$$$$$$)
     {
          if (($book ne '') and ($file_node ne ''))
          {
-              return &$I('see %{node_file_href} section `%{section}\' in @cite{%{book}}', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return &$I('see %{node_file_href} @cite{%{book}}', { 'node_file_href' => $file_node, 'book' => $book },{'duplicate'=>1});
+              return gdt('see {node_file_href} section `{section}\' in @cite{{book}}', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
+              return gdt('see {node_file_href} @cite{{book}}', { 'node_file_href' => $file_node, 'book' => $book },{'duplicate'=>1});
          }
          elsif ($book ne '')
          {
-              return &$I('see section `%{section}\' in @cite{%{book}}', { 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return &$I('see @cite{%{book}}', { 'book' => $book },{'duplicate'=>1});
+              return gdt('see section `{section}\' in @cite{{book}}', { 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
+              return gdt('see @cite{{book}}', { 'book' => $book },{'duplicate'=>1});
          }
          elsif ($file_node ne '')
          {
-              return &$I('see %{node_file_href}', { 'node_file_href' => $file_node },{'duplicate'=>1});
+              return gdt('see {node_file_href}', { 'node_file_href' => $file_node },{'duplicate'=>1});
          }
     }
     if ($type eq 'xref' or $type eq 'inforef')
     {
          if (($book ne '') and ($file_node ne ''))
          {
-              return &$I('See %{node_file_href} section `%{section}\' in @cite{%{book}}', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return &$I('See %{node_file_href} @cite{%{book}}', { 'node_file_href' => $file_node, 'book' => $book },{'duplicate'=>1});
+              return gdt('See {node_file_href} section `{section}\' in @cite{{book}}', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
+              return gdt('See {node_file_href} @cite{{book}}', { 'node_file_href' => $file_node, 'book' => $book },{'duplicate'=>1});
          }
          elsif ($book ne '')
          {
-              return &$I('See section `%{section}\' in @cite{%{book}}', { 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return &$I('See @cite{%{book}}', { 'book' => $book },{'duplicate'=>1});
+              return gdt('See section `{section}\' in @cite{{book}}', { 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
+              return gdt('See @cite{{book}}', { 'book' => $book },{'duplicate'=>1});
          }
          elsif ($file_node ne '')
          {
-              return &$I('See %{node_file_href}', { 'node_file_href' => $file_node },{'duplicate'=>1});
+              return gdt('See {node_file_href}', { 'node_file_href' => $file_node },{'duplicate'=>1});
          }
     }
     if ($type eq 'ref')
     {
          if (($book ne '') and ($file_node ne ''))
          {
-              return &$I('%{node_file_href} section `%{section}\' in @cite{%{book}}', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return &$I('%{node_file_href} @cite{%{book}}', { 'node_file_href' => $file_node, 'book' => $book },{'duplicate'=>1});
+              return gdt('{node_file_href} section `{section}\' in @cite{{book}}', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
+              return gdt('{node_file_href} @cite{{book}}', { 'node_file_href' => $file_node, 'book' => $book },{'duplicate'=>1});
          }
          elsif ($book ne '')
          {
-              return &$I('section `%{section}\' in @cite{%{book}}', { 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return &$I('@cite{%{book}}', { 'book' => $book },{'duplicate'=>1});
+              return gdt('section `{section}\' in @cite{{book}}', { 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
+              return gdt('@cite{{book}}', { 'book' => $book },{'duplicate'=>1});
          }
          elsif ($file_node ne '')
          {
-              return &$I('%{node_file_href}', { 'node_file_href' => $file_node },{'duplicate'=>1});
+              return gdt('{node_file_href}', { 'node_file_href' => $file_node },{'duplicate'=>1});
          }
     }
     return '';
@@ -5685,17 +5687,17 @@ sub t2h_default_internal_ref($$$$$$$$)
         $name = &$anchor('', $href, $name);
         if ($type eq 'pxref')
         {
-            return &$I('see section %{reference_name}', { 'reference_name' => $name },{'duplicate'=>1}) if ($is_section);
-            return &$I('see %{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
+            return gdt('see section {reference_name}', { 'reference_name' => $name },{'duplicate'=>1}) if ($is_section);
+            return gdt('see {reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
         }
         elsif ($type eq 'xref' or $type eq 'inforef')
         {
-            return &$I('See section %{reference_name}', { 'reference_name' => $name },{'duplicate'=>1}) if ($is_section);
-            return &$I('See %{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
+            return gdt('See section {reference_name}', { 'reference_name' => $name },{'duplicate'=>1}) if ($is_section);
+            return gdt('See {reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
         }
         elsif ($type eq 'ref')
         {
-            return &$I('%{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
+            return gdt('{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
         }
     }
     else
@@ -5703,15 +5705,15 @@ sub t2h_default_internal_ref($$$$$$$$)
         $name = &$anchor('', $href, $short_name);
         if ($type eq 'pxref')
         {
-            return &$I('see %{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
+            return gdt('see {reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
         }
         elsif ($type eq 'xref' or $type eq 'inforef')
         {
-            return &$I('See %{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
+            return gdt('See {reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
         }
         elsif ($type eq 'ref')
         {
-            return &$I('%{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
+            return gdt('{reference_name}', { 'reference_name' => $name },{'duplicate'=>1});
         }
     }
     return '';
@@ -6031,7 +6033,7 @@ sub t2h_default_preformatted($$$$$$$$$$$$)
        $text =~ s/\s*$//;
     }
 
-    # add a new line at the end in case there is none
+    # add a new line at the end in case there is none
     chomp($text);
     return $text . "\n";
 }
@@ -6242,7 +6244,7 @@ sub t2h_default_foot_line_and_ref($$$$$$$$$)
 sub t2h_default_foot_section($)
 {
     my $lines = shift;
-    my $header = &$heading_text('footnotes', &$I('Footnotes'), 3);
+    my $header = &$heading_text('footnotes', gdt('Footnotes'), 3);
     unshift (@$lines, "$header\n");
     return $lines; 
 }
@@ -6330,7 +6332,7 @@ sub t2h_default_address($)
     $date = '' if (!defined($date));
     if ($date ne '')
     {
-        return &$I('on @emph{%{date}}', { 'date' => $date });
+        return gdt('on @emph{{date}}', { 'date' => $date });
     }
     return '';
 }
@@ -6506,7 +6508,8 @@ sub t2h_default_acronym_like($$$$$$)
     
    if ($with_explanation)
    {
-       return "$acronym_text ($explanation_text)";
+       #return "$acronym_text ($explanation_text)";
+       return gdt('{acronym_like} ({explanation})', {'acronym_like' => $acronym_text, 'explanation' => $explanation_text},{'duplicate'=>1});
    }
    else
    {
@@ -6521,12 +6524,12 @@ sub t2h_default_quotation_prepend_text($$)
     my $text = shift;
     return undef if (!defined($text) or $text =~ /^$/);
     # If there is a @ protecting the end of line the result is, 
-    # after the chomp:
+    # after the chomp:
     # @b{some text @:}
     # It is likely not to be what was intended, but it is certainly right.
-    # this is tested in formatting/quotation.texi
+    # this is tested in formatting/quotation.texi
     chomp($text);
-    return &$I('@b{%{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1});
+    return gdt('@b{{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1});
 }
 
 sub t2h_default_quotation($$$$)
@@ -6536,10 +6539,10 @@ sub t2h_default_quotation($$$$)
     my $argument_text = shift;
     my $argument_text_texi = shift;
     my $class_text = '';
-    # this allows to add an end of line if there was none, which can happen 
-    # if there is an argument to @quotation, but an empty quotation, like
-    # @quotation something
-    # @end quotation
+    # this allows to add an end of line if there was none, which can happen 
+    # if there is an argument to @quotation, but an empty quotation, like
+    # @quotation something
+    # @end quotation
     chomp($text);
     $text .= "\n";
     return $text;
@@ -6616,8 +6619,8 @@ sub t2h_default_index_entry($$$$$$$$$$)
     my $real_element_text;
     my $element = $index_entry_ref->{'real_element'};
     # in case $element->{'text'} is not defined, it certainly means that we
-    # are n a special elemet, most likely the virtual element appearing 
-    # before anything else
+    # are n a special elemet, most likely the virtual element appearing 
+    # before anything else
     if (defined($element->{'text'}))
     {
        my $element_set = 0;
@@ -6650,7 +6653,7 @@ sub t2h_default_index_entry($$$$$$$$$$)
     }
     else
     {
-       $real_element_text = &$I('(outside of any element)');
+       $real_element_text = gdt('(outside of any element)');
     }
     return "* $entry: ".$real_element_text . '.'."\n";
 }
@@ -6820,8 +6823,8 @@ sub t2h_default_line_command($$$$)
     return $arg_text;
 }
 
-# info is special, since it doesn't use the basename but directly the 
-# setfilename output, contrary to all the other formats
+# info is special, since it doesn't use the basename but directly the 
+# setfilename output, contrary to all the other formats
 sub t2h_default_element_file_name($$$)
 {
     my $element = shift;

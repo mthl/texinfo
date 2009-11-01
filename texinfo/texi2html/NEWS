@@ -39,6 +39,12 @@ This file records noteworthy changes.
 * COMPATIBILITY
   -------------
 
+* If file begins with /, ./ or ../ don't search in -I.
+
+* In the default case a gettext-like framework is now used for in document
+  string translations. The old framework is still available by setting 
+  $I18N_PERL_HASH.
+
 * Information that can be set by @-commands should now be accessed
   through get_conf, and also some information about the document (the
   information that can change for each manual being processed).
@@ -64,9 +70,9 @@ This file records noteworthy changes.
 * replace $TRANSLITERATE_NODE by $TRANSLITERATE_FILE_NAMES.
 
 * replace $SECTION_NAVIGATION by $HEADERS.
-	
+
 * add $NODE_FILENAMES to use node names for files associated with nodes, 
-  such that $NODE_FILES is only means creating redirection files.
+  such that $NODE_FILES only means creating redirection files.
 
 * Remove the user from footer, and the corresponding USER variable and
   $Texi2HTML::THISDOC{user}.
@@ -76,10 +82,8 @@ This file records noteworthy changes.
 
 * Don't skip top element heading if there was a @titlefont.
 
-* If file begins with /, ./ or ../ don't search in -I.
-
 * Don't treat _setfilename as a value set. It should be available through
-  get_conf. Same for all the other @-commands previously avaiable as
+  get_conf. Same for all the other @-commands previously available as
   values.
 
 * Changes in class attribute in html elements:

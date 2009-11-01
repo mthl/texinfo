@@ -1,3 +1,28 @@
+2009-11-01   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl, i18n/*, po_document, manage_i18n.pl.in, *: 
+	instead of using %{ } for translation arguments, use { } as 
+	known by libintl-perl and gettext. 
+	Use gdt() instead of &$I() to mark strings to be translated
+	to be able to use xgettext to find strings. 
+	Use a gettext-like framework using libintl-perl for in document 
+	string translations. The old i18n framework can still be 
+	activated by setting $I18N_PERL_HASH.
+	Remove non ascii characters that crept in coments.
+	* configure.ac, Makefile.am: support libintl-perl external and 
+	internal and gettext.
+	* lib/: copy libintl-perl to be sure that it is available, and
+	also to have a consistent behaviour (different gettext 
+	implementations do things differently).
+
+2009-10-30  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Add po_messages, po_document.
+	(ACLOCAL_AMFLAGS): New variable.
+	(EXTRA_DIST): Add config.rpath.
+	* configure.ac (AC_CONFIG_FILES): Add po_messages/Makefile.in
+	and po_document/Makefile.in.
+
 2009-10-29   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* configure.ac, test/*: split node names in test that lead to 

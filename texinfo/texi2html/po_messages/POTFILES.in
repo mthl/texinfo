@@ -1,0 +1,14 @@
+# List of source files which contain translatable strings.
+
+texi2html.pl
+texi2html.init
+T2h_l2h.pm
+formats/docbook.init
+formats/html.init
+formats/info.init
+formats/plaintext.init
+formats/xml.init
+maintained_extra/book.init
+maintained_extra/chm.init
+maintained_extra/html32.init
+maintained_extra/tex4ht.init

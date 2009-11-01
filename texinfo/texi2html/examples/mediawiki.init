@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.30 2009-10-22 20:23:19 pertusus Exp $
+# $Id: mediawiki.init,v 1.31 2009-11-01 18:59:58 pertusus Exp $
 
 use strict;
 
@@ -33,7 +33,7 @@ $EXTENSION = undef;
 # extension for nodes files when NODE_FILES is true
 $NODE_FILE_EXTENSION = "";	    
 
-# no title page at the beginning
+# no title page at the beginning
 $USE_TITLEPAGE_FOR_TITLE = 0;
 
 # Use "title: section" name as the file name.
@@ -535,7 +535,7 @@ sub mediawiki_default_foot_section($)
 {
     my $lines = shift;
     #unshift @$lines, "$DEFAULT_RULE\n" if $DEFAULT_RULE;
-    #unshift @$lines, "==== " . &$I('Footnotes') . " ====\n";
+    #unshift @$lines, "==== " . gdt('Footnotes') . " ====\n";
     @$lines = ("<references/>\n\n");
     return $lines; 
 }
@@ -982,7 +982,7 @@ sub mediawiki_index_summary($$)
     $alpha_text = join ("", @$alpha) . "\n &nbsp; \n"
 	if @$alpha;
     return '<table cellpadding="1" cellspacing="1" border="0">'
-	   . "<tr><th valign=\"top\">" . &$I('Jump to') .":</th>\n"
+	   . "<tr><th valign=\"top\">" . gdt('Jump to') .":</th>\n"
     	   . join ("", map {"<td>$_</td>\n"} @$nonalpha, @$alpha)
 	   . "</tr></table>\n";
 }

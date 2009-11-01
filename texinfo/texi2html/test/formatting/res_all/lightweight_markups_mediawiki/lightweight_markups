@@ -10,7 +10,7 @@ Next: [[lightweight_markups: [[ {{template}} }}}[ : ''em '''strong ''''' em stro
 == Test lightweight formats markup escaping. ==
 
 <div class="menu-preformatted" style="font-family: serif">
- [[lightweight_markups: [[ {{template}} }}}[ : ''em '''strong ''''' em strong ''[[link]]''#[[ {{template}} }}}[ : &rsquo;&rsquo;em &rsquo;&rsquo;&rsquo;strong &rsquo;&rsquo;&rsquo;&rsquo;&rsquo; em strong &rsquo;&rsquo;[[link]]&rsquo;&rsquo;|&bull; <nowiki>[[</nowiki> {{template}} }}}<nowiki>[</nowiki> <tt>:</tt> <code><nowiki>''</nowiki>em <nowiki>'''</nowiki>strong <nowiki>'''''</nowiki> em strong <nowiki>''[[</nowiki>link<nowiki>]]''</nowiki></code>]]::
+ [[lightweight_markups: [[ {{template}} }}}[ : ''em '''strong ''''' em strong ''[[link]]''#[[ {{template}} }}}[ : &rsquo;&rsquo;em &rsquo;&rsquo;&rsquo;strong &rsquo;&rsquo;&rsquo;&rsquo;&rsquo; em strong &rsquo;&rsquo;[[link]]&rsquo;&rsquo;|&bull; <nowiki>[[</nowiki> <nowiki>{</nowiki><nowiki>{</nowiki>template<nowiki>}</nowiki><nowiki>}</nowiki> <nowiki>}</nowiki><nowiki>}</nowiki><nowiki>}</nowiki><nowiki>[</nowiki> <tt>:</tt> <code><nowiki>''</nowiki>em <nowiki>'''</nowiki>strong <nowiki>'''''</nowiki> em strong <nowiki>''[[</nowiki>link<nowiki>]]''</nowiki></code>]]::
  [[lightweight_markups: Help: something#Help: something|&bull; Help<tt>:</tt> something]]::
  [[lightweight_markups: other chapter#other chapter|&bull; other chapter]]::
  [[lightweight_markups: Simpler test "'#Simpler test &rdquo;&rsquo;|&bull; Simpler test <nowiki>'''</nowiki> node]]::

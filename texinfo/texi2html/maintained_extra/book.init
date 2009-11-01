@@ -182,10 +182,10 @@ sub book_heading($$$$$$;$$)
     {
        $result = &$heading_text_preformatted("\@$class", $text, $level);
     }
-    # @top should already have a table of contents, either because there 
-    # is a @contents, or setcontentsaftertitlepage is set. 
+    # @top should already have a table of contents, either because there 
+    # is a @contents, or setcontentsaftertitlepage is set. 
     # In any case it would just be a duplication
-    # of the table of contents, better let the user decide where it should be.
+    # of the table of contents, better let the user decide where it should be.
     if (exists($element->{'child'}) 
         and ($element->{'tag_level'} !~ /heading/) and $element->{'tag'} ne 'top')
     {

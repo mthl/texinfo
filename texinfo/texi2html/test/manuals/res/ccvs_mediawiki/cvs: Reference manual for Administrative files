@@ -1008,7 +1008,7 @@ edit the log message.
  until head -1|grep '^BugId:<nowiki>[</nowiki> <nowiki>]</nowiki>*<nowiki>[</nowiki>0-9<nowiki>][</nowiki>0-9<nowiki>]</nowiki>*$' &lt; $1
  do  echo -n  &quot;No BugId found.  Edit again? (<nowiki>[</nowiki>y<nowiki>]</nowiki>/n)&quot;
      read ans
-     case ${ans} in
+     case $<nowiki>{</nowiki>ans<nowiki>}</nowiki> in
          n*) exit 1;;
      esac
      $CVSEDITOR $1
@@ -1082,7 +1082,7 @@ The user may specify a format string as
 part of the filter.  The string is composed of a
 &lsquo;<code>%</code>&rsquo; followed by a space, or followed by a single
 format character, or followed by a set of format
-characters surrounded by &lsquo;<code>{</code>&rsquo; and &lsquo;<code>}</code>&rsquo; as
+characters surrounded by &lsquo;<code><nowiki>{</nowiki></code>&rsquo; and &lsquo;<code><nowiki>}</nowiki></code>&rsquo; as
 separators.  The format characters are:
 
 ;<tt>s</tt>
@@ -1097,7 +1097,7 @@ expand to an empty field (commas separating fields are
 still provided).
 
 For example, some valid format strings are &lsquo;<code>%</code>&rsquo;,
-&lsquo;<code>%s</code>&rsquo;, &lsquo;<code>%{s}</code>&rsquo;, and &lsquo;<code>%{sVv}</code>&rsquo;.
+&lsquo;<code>%s</code>&rsquo;, &lsquo;<code>%<nowiki>{</nowiki>s<nowiki>}</nowiki></code>&rsquo;, and &lsquo;<code>%<nowiki>{</nowiki>sVv<nowiki>}</nowiki></code>&rsquo;.
 
 The output will be a space separated string of tokens enclosed in
 quotation marks (<tt>&quot;</tt>).
@@ -1109,7 +1109,7 @@ For backwards compatibility, the first
 token will be the repository subdirectory.  The rest of the
 tokens will be comma-delimited lists of the information
 requested in the format string.  For example, if
-&lsquo;<code>/u/src/master/yoyodyne/tc</code>&rsquo; is the repository, &lsquo;<code>%{sVv}</code>&rsquo;
+&lsquo;<code>/u/src/master/yoyodyne/tc</code>&rsquo; is the repository, &lsquo;<code>%<nowiki>{</nowiki>sVv<nowiki>}</nowiki></code>&rsquo;
 is the format string, and three files (<tt>ChangeLog</tt>,
 <tt>Makefile</tt>, <tt>foo.c</tt>) were modified, the output
 might be:
@@ -1119,7 +1119,7 @@ might be:
 </div>
 </td></tr></table>
 
-As another example, &lsquo;<code>%{}</code>&rsquo; means that only the
+As another example, &lsquo;<code>%<nowiki>{</nowiki><nowiki>}</nowiki></code>&rsquo; means that only the
 name of the repository will be generated.
 
 Note: when <small>CVS</small> is accessing a remote repository,
@@ -1541,12 +1541,12 @@ running <small>CVS</small>.
 
 One may want to know about various pieces of
 information internal to <small>CVS</small>.  A <small>CVS</small> internal
-variable has the syntax <code>${<var>variable</var>}</code>,
+variable has the syntax <code>$<nowiki>{</nowiki><var>variable</var><nowiki>}</nowiki></code>,
 where <var>variable</var> starts with a letter and consists
 of alphanumeric characters and &lsquo;<code>_</code>&rsquo;.  If the
 character following <var>variable</var> is a
 non-alphanumeric character other than &lsquo;<code>_</code>&rsquo;, the
-&lsquo;<code>{</code>&rsquo; and &lsquo;<code>}</code>&rsquo; can be omitted.  The <small>CVS</small>
+&lsquo;<code><nowiki>{</nowiki></code>&rsquo; and &lsquo;<code><nowiki>}</nowiki></code>&rsquo; can be omitted.  The <small>CVS</small>
 internal variables are:
 
 ;<code>CVSROOT</code>
@@ -1575,7 +1575,7 @@ use a user variable.
 <div id="index-User-variables"></div>
 To expand a user variable, the
 administrative file contains
-<code>${=<var>variable</var>}</code>.  To set a user variable,
+<code>$<nowiki>{</nowiki>=<var>variable</var><nowiki>}</nowiki></code>.  To set a user variable,
 specify the global option &lsquo;<code>-s</code>&rsquo; to <small>CVS</small>, with
 argument <code><var>variable</var>=<var>value</var></code>.  It may be
 particularly useful to specify this option via
@@ -1593,7 +1593,7 @@ as
 
 and the
 administrative file contains <code>sh
-${=TESTDIR}/runtests</code>, then that string is expanded
+$<nowiki>{</nowiki>=TESTDIR<nowiki>}</nowiki>/runtests</code>, then that string is expanded
 to <code>sh /work/local/tests/runtests</code>.
 
 All other strings containing &lsquo;<code>$</code>&rsquo; are reserved;

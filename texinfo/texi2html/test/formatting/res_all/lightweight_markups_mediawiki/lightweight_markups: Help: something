@@ -15,8 +15,8 @@ Next: [[lightweight_markups: other chapter#other chapter|other chapter]], Previo
 
 [[#Help: something|Help<tt>:</tt> something]].
 
-[[lightweight_markups: [[ {{template}} }}}[ : ''em '''strong ''''' em strong ''[[link]]''#[[ {{template}} }}}[ : &rsquo;&rsquo;em &rsquo;&rsquo;&rsquo;strong &rsquo;&rsquo;&rsquo;&rsquo;&rsquo; em strong &rsquo;&rsquo;[[link]]&rsquo;&rsquo;|<nowiki>[[</nowiki> {{template}} }}}<nowiki>[</nowiki> <tt>:</tt> <code><nowiki>''</nowiki>em <nowiki>'''</nowiki>strong <nowiki>'''''</nowiki> em strong <nowiki>''[[</nowiki>link<nowiki>]]''</nowiki></code>]]
+[[lightweight_markups: [[ {{template}} }}}[ : ''em '''strong ''''' em strong ''[[link]]''#[[ {{template}} }}}[ : &rsquo;&rsquo;em &rsquo;&rsquo;&rsquo;strong &rsquo;&rsquo;&rsquo;&rsquo;&rsquo; em strong &rsquo;&rsquo;[[link]]&rsquo;&rsquo;|<nowiki>[[</nowiki> <nowiki>{</nowiki><nowiki>{</nowiki>template<nowiki>}</nowiki><nowiki>}</nowiki> <nowiki>}</nowiki><nowiki>}</nowiki><nowiki>}</nowiki><nowiki>[</nowiki> <tt>:</tt> <code><nowiki>''</nowiki>em <nowiki>'''</nowiki>strong <nowiki>'''''</nowiki> em strong <nowiki>''[[</nowiki>link<nowiki>]]''</nowiki></code>]]
 
-[[lightweight_markups: [[ {{template}} }}}[ : ''em '''strong ''''' em strong ''[[link]]''#anchor-_005b_005b-_007b_007b|anchor <nowiki>[[</nowiki> {{]]
+[[lightweight_markups: [[ {{template}} }}}[ : ''em '''strong ''''' em strong ''[[link]]''#anchor-_005b_005b-_007b_007b|anchor <nowiki>[[</nowiki> <nowiki>{</nowiki><nowiki>{</nowiki>]]
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

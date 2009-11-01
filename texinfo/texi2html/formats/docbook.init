@@ -22,10 +22,10 @@
 #-##############################################################################
 
 
-# regarding sections and nodes, in docbook we don't care at all about the
-# splitting done in the main program. When there is a node, it is recorded as
-# being pending. When there is a section it is opened, and closed when 
-# there is the next section or end of file.
+# regarding sections and nodes, in docbook we don't care at all about the
+# splitting done in the main program. When there is a node, it is recorded as
+# being pending. When there is a section it is opened, and closed when 
+# there is the next section or end of file.
 
 use strict;
 
@@ -56,15 +56,15 @@ $DOCTYPE = '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://w
 @T2H_FORMAT_EXPAND = ('docbook');
 @IMAGE_EXTENSIONS = ('eps', 'gif', 'jpg', 'jpeg', 'pdf', 'png', 'svg', 'txt');
 $INLINE_INSERTCOPYING = 1;
-# this should lead to end_section being only called at the end of 
-# sectionning
+# this should lead to end_section being only called at the end of 
+# sectionning
 $USE_NODES = 0;
 $USE_SECTIONS = 1;
 
 $SHOW_MENU = 0;
 $SHOW_TITLE = 0;
 $HEADERS = 0;
-# certainly irrelevant
+# certainly irrelevant
 $SIMPLE_MENU = 0;
 
 t2h_default_push_handler(\&docbook_initialize_variables, \@command_handler_init);
@@ -136,7 +136,7 @@ $colon_command_punctuation_characters{'!'} = '&excl;';
 
 $stop_paragraph_command{'titlefont'} = 0;
 
-# FIXME
+# FIXME
 #$no_paragraph_commands{'anchor'} = 0;
 
 # FIXME
@@ -315,7 +315,7 @@ sub docbook_email($$)
     $mail = main::normalise_space($mail);
     if (defined($text) and $text =~ /\S/)
     {
-        # FIXME normalise_space would be more legible.
+        # FIXME normalise_space would be more legible.
         #return docbook_add_id('ulink').' url="mailto:'.$mail.'">'.main::normalise_space($text).'</ulink>';
         return docbook_add_id('ulink').' url="mailto:'.$mail.'">'.$text.'</ulink>';
     }
@@ -450,7 +450,7 @@ sub docbook_heading($$$$$)
 # FIXME verify xreflabel 
     if ($command ne 'node')
     {
-        # close previous section
+        # close previous section
         $result .= docbook_close_section();
         my $title = $element->{'text_nonumber'};
         my $label = '';
@@ -704,7 +704,7 @@ sub docbook_any_ref($$$)
     my $args = shift;
     my $unformatted_args = shift;
 
-    # FIXME?
+    # FIXME?
     if ($type eq 'inforef')
     {
         my $node_file = "($args->[2])$args->[0]";
@@ -726,15 +726,15 @@ sub docbook_any_ref($$$)
             $section_name = $args->[0] if ($section_name eq '');
             if ($type eq 'ref')
             {
-                return &$I('section `@asis{}`%{section_name}\'@asis{}\' in @cite{%{book}}', { 'section_name' => $section_name, 'book' => $args->[4] },{'duplicate'=>1});
+                return gdt('section `@asis{}`{section_name}\'@asis{}\' in @cite{{book}}', { 'section_name' => $section_name, 'book' => $args->[4] },{'duplicate'=>1});
             }
             elsif ($type eq 'xref')
             {
-                return &$I('See section `@asis{}`%{section_name}\'@asis{}\' in @cite{%{book}}', { 'section_name' => $section_name, 'book' => $args->[4] },{'duplicate'=>1});
+                return gdt('See section `@asis{}`{section_name}\'@asis{}\' in @cite{{book}}', { 'section_name' => $section_name, 'book' => $args->[4] },{'duplicate'=>1});
             }
             elsif ($type eq 'pxref')
             {
-                return &$I('see section `@asis{}`%{section_name}\'@asis{}\' in @cite{%{book}}', { 'section_name' => $section_name, 'book' => $args->[4] },{'duplicate'=>1});
+                return gdt('see section `@asis{}`{section_name}\'@asis{}\' in @cite{{book}}', { 'section_name' => $section_name, 'book' => $args->[4] },{'duplicate'=>1});
             }
         }
         my $link = docbook_node_id($unformatted_args->[0]);
@@ -744,30 +744,30 @@ sub docbook_any_ref($$$)
         {
             if ($type eq 'ref')
             {
-                return &$I('%{ref}', {'ref' => docbook_add_id('xref')." linkend=\"$link\"></xref>"});
+                return gdt('{ref}', {'ref' => docbook_add_id('xref')." linkend=\"$link\"></xref>"});
             }
             elsif ($type eq 'pxref')
             {
-                return &$I('see %{ref}', {'ref' => docbook_add_id('xref')." linkend=\"$link\"></xref>"});
+                return gdt('see {ref}', {'ref' => docbook_add_id('xref')." linkend=\"$link\"></xref>"});
             }
             elsif ($type eq 'xref')
             {
-                return &$I('See %{ref}', {'ref' => docbook_add_id('xref')." linkend=\"$link\"></xref>"});
+                return gdt('See {ref}', {'ref' => docbook_add_id('xref')." linkend=\"$link\"></xref>"});
             }
         }
         else
         {
             if ($type eq 'ref')
             {
-                return &$I('%{title_ref}', {'title_ref' => docbook_add_id('link')." linkend=\"$link\">$title</link>"});
+                return gdt('{title_ref}', {'title_ref' => docbook_add_id('link')." linkend=\"$link\">$title</link>"});
             }
             elsif ($type eq 'pxref')
             {
-                return &$I('see %{title_ref}', {'title_ref' => docbook_add_id('link')." linkend=\"$link\">$title</link>"},{'duplicate'=>1});
+                return gdt('see {title_ref}', {'title_ref' => docbook_add_id('link')." linkend=\"$link\">$title</link>"},{'duplicate'=>1});
             }
             elsif ($type eq 'xref')
             {
-                return &$I('See %{title_ref}', {'title_ref' => docbook_add_id('link')." linkend=\"$link\">$title</link>"},{'duplicate'=>1});
+                return gdt('See {title_ref}', {'title_ref' => docbook_add_id('link')." linkend=\"$link\">$title</link>"},{'duplicate'=>1});
             }
         }
     }
@@ -833,7 +833,7 @@ sub docbook_close_section()
 
     if (!defined($element))
     {
-        # this doesn't work
+        # this doesn't work
         #my $empty = 1;
         #foreach my $line (@{$Texi2HTML::THIS_SECTION})
         #{
@@ -854,8 +854,8 @@ sub docbook_close_section()
 
     #return '' if ($element->{'node'});
 
-    # there is a special case for a @chapter that is a child of @top
-    # but should not be considered as is, since it is also toplevel.
+    # there is a special case for a @chapter that is a child of @top
+    # but should not be considered as is, since it is also toplevel.
     return '' if ($element->{'child'} and !$element->{'child'}->{'toplevel'});
     $result .= '</'.docbook_element_tag($element).">\n";
 
@@ -1399,7 +1399,7 @@ sub docbook_quotation_prepend_text($$)
     chomp($argument_text);
 
     return undef if (grep {lc($argument_text) eq $_} @docbook_special_quotation);
-    return &$I('@b{%{quotation_arg}:} ', {'quotation_arg' => $argument_text}, {'keep_texi' => 1});
+    return gdt('@b{{quotation_arg}:} ', {'quotation_arg' => $argument_text}, {'keep_texi' => 1});
 }
 
 
@@ -1504,7 +1504,7 @@ sub docbook_anchor_label($$)
 {
     my $id = shift;
     my $anchor_text = shift;
-    # FIXME use docbook_node_id
+    # FIXME use docbook_node_id
     return '<anchor id="'. &$protect_text($anchor_text) . '"></anchor>';
 }
 

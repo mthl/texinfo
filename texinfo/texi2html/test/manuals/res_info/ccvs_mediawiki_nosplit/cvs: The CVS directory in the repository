@@ -21,12 +21,12 @@ This behavior is implemented only by <small>CVS</small> 1.7 and
 later; for details see [[cvs: Using watches with old versions of CVS#Using watches with old versions of CVS|Watches Compatibility]].
 
 The format of the fileattr file is a series of entries
-of the following form (where &lsquo;<code>{</code>&rsquo; and &lsquo;<code>}</code>&rsquo;
+of the following form (where &lsquo;<code><nowiki>{</nowiki></code>&rsquo; and &lsquo;<code><nowiki>}</nowiki></code>&rsquo;
 means the text between the braces can be repeated zero
 or more times):
 
 <var>ent-type</var> <var>filename</var> &lt;tab&gt; <var>attrname</var> = <var>attrval</var>
-{; <var>attrname</var> = <var>attrval</var>} &lt;linefeed&gt;
+<nowiki>{</nowiki>; <var>attrname</var> = <var>attrval</var><nowiki>}</nowiki> &lt;linefeed&gt;
 
 <var>ent-type</var> is &lsquo;<code>F</code>&rsquo; for a file, in which case the entry specifies the
 attributes for that file.
@@ -59,10 +59,10 @@ Builtin attributes:
 : Present means the file is watched and should be checked out read-only.
 
 ;<code>_watchers</code>
-: Users with watches for this file.  Value is <var>watcher</var> &gt; <var>type</var> { , <var>watcher</var> &gt; <var>type</var> } where <var>watcher</var> is a username, and <var>type</var> is zero or more of edit,unedit,commit separated by &lsquo;<code>+</code>&rsquo; (that is, nothing if none; there is no &quot;none&quot; or &quot;all&quot; keyword).
+: Users with watches for this file.  Value is <var>watcher</var> &gt; <var>type</var> <nowiki>{</nowiki> , <var>watcher</var> &gt; <var>type</var> <nowiki>}</nowiki> where <var>watcher</var> is a username, and <var>type</var> is zero or more of edit,unedit,commit separated by &lsquo;<code>+</code>&rsquo; (that is, nothing if none; there is no &quot;none&quot; or &quot;all&quot; keyword).
 
 ;<code>_editors</code>
-: Users editing this file.  Value is <var>editor</var> &gt; <var>val</var> { , <var>editor</var> &gt; <var>val</var> } where <var>editor</var> is a username, and <var>val</var> is <var>time</var>+<var>hostname</var>+<var>pathname</var>, where <var>time</var> is when the <code>cvs edit</code> command (or equivalent) happened, and <var>hostname</var> and <var>pathname</var> are for the working directory.
+: Users editing this file.  Value is <var>editor</var> &gt; <var>val</var> <nowiki>{</nowiki> , <var>editor</var> &gt; <var>val</var> <nowiki>}</nowiki> where <var>editor</var> is a username, and <var>val</var> is <var>time</var>+<var>hostname</var>+<var>pathname</var>, where <var>time</var> is when the <code>cvs edit</code> command (or equivalent) happened, and <var>hostname</var> and <var>pathname</var> are for the working directory.
 
 Example:
 

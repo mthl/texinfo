@@ -1,12 +1,12 @@
 # -*-perl-*-
 ######################################################################
 # File: html.init
-# html output formatting
+# html output formatting
 #
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.34 2009-10-22 20:23:19 pertusus Exp $
+# $Id: html.init,v 1.35 2009-11-01 18:59:59 pertusus Exp $
 
 use strict;
 
@@ -15,7 +15,7 @@ use vars qw(@html_default_multitable_stack);
 #my  @html_default_multitable_stack;
 # tracks menu entry index
 my $html_menu_entry_index;
-# the simple_formatted document title
+# the simple_formatted document title
 my $html_default_title;
 
 sub html_default_load(;$);
@@ -25,7 +25,7 @@ if (defined($DEFAULT_OUTPUT_FORMAT) and $DEFAULT_OUTPUT_FORMAT eq 'html')
    html_default_load();
 }
 
-# initialise the html output
+# initialise the html output
 sub html_default_load(;$)
 {
 my $from_command_line = shift;
@@ -34,7 +34,7 @@ $OUTPUT_FORMAT = 'html';
 t2h_default_set_variables_xml();
 
 ###############################################################
-# defaults
+# defaults
 
 $HEADERS = 1;
 
@@ -80,7 +80,7 @@ $INLINE_INSERTCOPYING = 0;
 # corresponding textual entity.
 $USE_NUMERIC_ENTITY = 1;
 
-# if true, use the original command if the result is an entity
+# if true, use the original command if the result is an entity
 $ENABLE_ENCODING_USE_ENTITY = 1;
 
 # used as identation for block enclosing command @example, etc
@@ -94,12 +94,12 @@ $SMALL_EXAMPLE_INDENT_CELL = '<td>&nbsp;</td>';
 $SMALL_FONT_SIZE = '-1';
 
 # horizontal rules
-# Not used
+# Not used
 $SMALL_RULE = '<hr size="1">';
 $MIDDLE_RULE = '<hr size="2">';
-# used almost everywhere
+# used almost everywhere
 $DEFAULT_RULE = '<hr>';
-# used for top element and before misc elements
+# used for top element and before misc elements
 $BIG_RULE = '<hr size="6">';
 
 # symbol put at the beginning of nodes entry in menu (and optionnaly of 
@@ -115,11 +115,11 @@ $NODE_FILE_EXTENSION = 'html';
 # extension
 $EXTENSION = 'html';
 
-# default is to split the html output
+# default is to split the html output
 $SPLIT = 'node';
 
-# this resets all the variables to the texi2html specific values if
-# called as texi2html
+# this resets all the variables to the texi2html specific values if
+# called as texi2html
 t2h_default_set_variables_texi2html() if ($COMMAND_NAME eq 'texi2html');
 
 # this controls the pre style for menus
@@ -130,8 +130,8 @@ $MENU_PRE_STYLE = 'font-family: serif';
 # this controls the menu preformatted format
 # FIXME this is not dynamic, so change in MENU_PRE_STYLE is not taken 
 # into account.
-# This is used if the menu appears within a preformatted format (which
-# is certainly an invalid construct), and SIMPLE_MENU is not set.
+# This is used if the menu appears within a preformatted format (which
+# is certainly an invalid construct), and SIMPLE_MENU is not set.
 $MENU_PRE_COMPLEX_FORMAT = {
               'pre_style' => $MENU_PRE_STYLE, 
               'class' => 'menu-preformatted',
@@ -168,7 +168,7 @@ $WORDS_IN_PAGE = 300;
 # html version for latex2html
 $L2H_HTML_VERSION = "4.0";
 
-# this is not set dynamically
+# this is not set dynamically
 if (!$HEADER_IN_TABLE)
 {
    @SECTION_BUTTONS = ([ 'NodeNext', \&html_default_node_direction ],
@@ -287,9 +287,9 @@ $BODYTEXT = undef;
 $translate_names = \&html_default_translate_names;
 
 t2h_default_push_handler(\&html_default_initialize, \@command_handler_init);
-# This must be done after language has been set
+# This must be done after language has been set
 t2h_default_push_handler(\&html_default_bodytext, \@command_handler_process);
-# This must be done after the fulltitle has been set
+# This must be done after the fulltitle has been set
 t2h_default_push_handler(\&html_default_do_title, \@command_handler_output);
 
 ########################################################################
@@ -442,7 +442,7 @@ my %style_map_html = (
       'emph',       {'inline_attribute' => 'em'}, 
       'env',        {'inline_attribute' => 'code'},
       'file',       {'inline_attribute' => 'tt', 'quote' => '"'},
-      'headitemfont', {'inline_attribute' => 'b'}, # not really that, in fact it is 
+      'headitemfont', {'inline_attribute' => 'b'}, # not really that, in fact it is 
                                            # in <th> rather than <td>
       'i',          {'inline_attribute' => 'i'},
       'slanted',    {'inline_attribute' => 'i'},
@@ -658,7 +658,7 @@ $row               = \&html_default_row;
 
 
 
-# The functions
+# The functions
 
 sub html_default_initialize()
 {
@@ -687,28 +687,28 @@ sub html_default_translate_names()
 
     %NAVIGATION_TEXT =
     (
-     'Top',         &$I('Top'),
-     'Contents',    &$I('Contents'),
-     'Overview',    &$I('Overview'),
-     'Index',       &$I('Index'),
+     'Top',         gdt('Top'),
+     'Contents',    gdt('Contents'),
+     'Overview',    gdt('Overview'),
+     'Index',       gdt('Index'),
      ' ',           ' &nbsp; ',
-     'This',        &$I('current'),
+     'This',        gdt('current'),
      'Back',        ' &lt; ',
      'FastBack',    ' &lt;&lt; ',
-     'Prev',        &$I('Prev'),
-     'Up',          &$I(' Up '),
-     'Next',        &$I('Next'),
-     'NodeUp',      &$I('Node up'),
-     'NodeNext',    &$I('Next node'),
-     'NodePrev',    &$I('Previous node'),
-     'Following',   &$I('Following node'),
+     'Prev',        gdt('Prev'),
+     'Up',          gdt(' Up '),
+     'Next',        gdt('Next'),
+     'NodeUp',      gdt('Node up'),
+     'NodeNext',    gdt('Next node'),
+     'NodePrev',    gdt('Previous node'),
+     'Following',   gdt('Following node'),
      'Forward',     ' &gt; ',
      'FastForward', ' &gt;&gt; ',
      'About',       ' ? ',
      'First',       ' |&lt; ',
      'Last',        ' &gt;| ',
-     'NextFile',    &$I('Next file'),
-     'PrevFile',    &$I('Previous file'),
+     'NextFile',    gdt('Next file'),
+     'PrevFile',    gdt('Previous file'),
     );
 
 }
@@ -718,7 +718,7 @@ sub html_default_do_title()
     $html_default_title = "$Texi2HTML::THISDOC{'fulltitle_simple_format'}";
     if ($html_default_title !~ /\S/)
     {
-       $html_default_title = &$I('Untitled Document',{},{'simple_format' => 1});
+       $html_default_title = gdt('Untitled Document',{},{'simple_format' => 1});
        main::document_warn("Must specify a title with a title command or \@top");
     }
 }
@@ -975,7 +975,7 @@ sub HTML_DEFAULT_end_section($$$)
     if ($misc_or_top_and_section_separation)
     {
         my $rule = $BIG_RULE;
-        # in that case we are almost surely at the end of the document
+        # in that case we are almost surely at the end of the document
         $rule = $DEFAULT_RULE if (! $MONOLITHIC);
         &$print_foot_navigation($fh, undef, $rule, 0, $element, 1);
     }
@@ -1051,15 +1051,15 @@ sub HTML_DEFAULT_print_foot_navigation
     my $rule = shift;
     my $print_navigation_panel = shift;
     my $element = shift;
-    # set if called between sections and top or between sections and misc. 
-    # could also be the last element
+    # set if called between sections and top or between sections and misc. 
+    # could also be the last element
     my $maybe_in_page = shift;
 
     $rule = '' if (!defined($rule));
     $print_navigation_panel = 1 if (!defined($print_navigation_panel)
              and defined($buttons));
 
-    # avoid the rule if at the end of a page and there is nothing below
+    # avoid the rule if at the end of a page and there is nothing below
     $rule = '' if (!$PROGRAM_NAME_IN_FOOTER and !$print_navigation_panel and !$maybe_in_page);
 
     if ($VERTICAL_HEAD_NAVIGATION)
@@ -1372,16 +1372,16 @@ sub HTML_DEFAULT_about_body
 </p>
 <p>
 EOT
-    $about .= &$I('  The buttons in the navigation panels have the following meaning:') . "\n";
+    $about .= gdt('  The buttons in the navigation panels have the following meaning:') . "\n";
     $about .= <<EOT;
 </p>
 <table border="1">
   <tr>
 EOT
-    $about .= '    <th> ' . &$I('Button') . " </th>\n" .
-'    <th> ' . &$I('Name') . " </th>\n" .
-'    <th> ' . &$I('Go to') . " </th>\n" .
-'    <th> ' . &$I('From 1.2.3 go to') . "</th>\n" . "  </tr>\n";
+    $about .= '    <th> ' . gdt('Button') . " </th>\n" .
+'    <th> ' . gdt('Name') . " </th>\n" .
+'    <th> ' . gdt('Go to') . " </th>\n" .
+'    <th> ' . gdt('From 1.2.3 go to') . "</th>\n" . "  </tr>\n";
 
     for my $button (@SECTION_BUTTONS)
     {
@@ -1405,7 +1405,7 @@ EOT
 
 <p>
 EOT
-    $about .= &$I('  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:') . "\n";
+    $about .= gdt('  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:') . "\n";
 
 #  where the <strong> Example </strong> assumes that the current position
 #  is at <strong> Subsubsection One-Two-Three </strong> of a document of
@@ -1415,33 +1415,33 @@ EOT
 
 <ul>
 EOT
-    $about .= '  <li> 1. ' . &$I('Section One') . "\n" .
+    $about .= '  <li> 1. ' . gdt('Section One') . "\n" .
 "    <ul>\n" .
-'      <li>1.1 ' . &$I('Subsection One-One') . "\n";
+'      <li>1.1 ' . gdt('Subsection One-One') . "\n";
     $about .= <<EOT;
         <ul>
           <li>...</li>
         </ul>
       </li>
 EOT
-    $about .= '      <li>1.2 ' . &$I('Subsection One-Two') . "\n" .
+    $about .= '      <li>1.2 ' . gdt('Subsection One-Two') . "\n" .
 "        <ul>\n" .
-'          <li>1.2.1 ' . &$I('Subsubsection One-Two-One') . "</li>\n" .
-'          <li>1.2.2 ' . &$I('Subsubsection One-Two-Two') . "</li>\n" .
-'          <li>1.2.3 ' . &$I('Subsubsection One-Two-Three') . " &nbsp; &nbsp;\n"
+'          <li>1.2.1 ' . gdt('Subsubsection One-Two-One') . "</li>\n" .
+'          <li>1.2.2 ' . gdt('Subsubsection One-Two-Two') . "</li>\n" .
+'          <li>1.2.3 ' . gdt('Subsubsection One-Two-Three') . " &nbsp; &nbsp;\n"
 .
-'            <strong>&lt;== ' . &$I('Current Position') . " </strong></li>\n" .
-'          <li>1.2.4 ' . &$I('Subsubsection One-Two-Four') . "</li>\n" .
+'            <strong>&lt;== ' . gdt('Current Position') . " </strong></li>\n" .
+'          <li>1.2.4 ' . gdt('Subsubsection One-Two-Four') . "</li>\n" .
 "        </ul>\n" .
 "      </li>\n" .
-'      <li>1.3 ' . &$I('Subsection One-Three') . "\n";
+'      <li>1.3 ' . gdt('Subsection One-Three') . "\n";
     $about .= <<EOT;
         <ul>
           <li>...</li>
         </ul>
       </li>
 EOT
-    $about .= '      <li>1.4 ' . &$I('Subsection One-Four') . "</li>\n";
+    $about .= '      <li>1.4 ' . gdt('Subsection One-Four') . "</li>\n";
     $about .= <<EOT;
     </ul>
   </li>
@@ -1461,7 +1461,7 @@ sub HTML_DEFAULT_print_redirection_page()
     my $encoding = '';
     $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$Texi2HTML::THISDOC{'ENCODING_NAME'}\">" if (defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} ne ''));
     my $href = &$anchor('', $Texi2HTML::HREF{'This'}, $Texi2HTML::NAME{'This'}); 
-    my $string = &$I('The node you are looking for is at %{href}.',
+    my $string = gdt('The node you are looking for is at {href}.',
        { 'href' => $href });
     my $doctype = get_conf('doctype');
     my $css_lines = '';
@@ -1574,7 +1574,7 @@ sub html_default_caption_shortcaption($)
         my $nr = $float->{'nr'};
         if ($style ne '')
         {
-            $style = &$I('%{style} %{number}', { 'style' => $style, 'number' => $nr});
+            $style = gdt('{style} {number}', { 'style' => $style, 'number' => $nr});
         }
         else 
         {
@@ -1588,7 +1588,7 @@ sub html_default_caption_shortcaption($)
         $caption_lines->[0] =~ s/^\s*//;
         if (defined($style))
         {
-            $caption_lines->[0] = '@'.$CAPTION_STYLE.'{' . &$I('%{style}: %{caption_first_line}', { 'style' => $style, 'caption_first_line' => $caption_lines->[0] });
+            $caption_lines->[0] = '@'.$CAPTION_STYLE.'{' . gdt('{style}: {caption_first_line}', { 'style' => $style, 'caption_first_line' => $caption_lines->[0] });
         }
         else
         {
@@ -1605,7 +1605,7 @@ sub html_default_caption_shortcaption($)
          @$shortcaption_lines = @{$float->{'shortcaption_texi'}};
          if (defined($style))
          {
-              $shortcaption_lines->[0] = '@'.$CAPTION_STYLE.'{' . &$I('%{style}: %{shortcaption_first_line}', { 'style' => $style, 'shortcaption_first_line' => $shortcaption_lines->[0] });
+              $shortcaption_lines->[0] = '@'.$CAPTION_STYLE.'{' . gdt('{style}: {shortcaption_first_line}', { 'style' => $style, 'shortcaption_first_line' => $shortcaption_lines->[0] });
          }
          else
          {
@@ -1672,7 +1672,7 @@ sub html_default_listoffloats_float_style($$)
          my $nr = $float->{'nr'};
          if ($style ne '')
          {
-              $style = &$I('%{style} %{number}', { 'style' => $style, 'number' => $nr});
+              $style = gdt('{style} {number}', { 'style' => $style, 'number' => $nr});
          }
          else 
          {
@@ -2475,7 +2475,7 @@ sub html_default_foot_section($)
 {
     my $lines = shift;
     unshift (@$lines, html_default_attribute_class('div', 'footnote').">\n" ,"$DEFAULT_RULE\n", 
-       &$heading_text('footnotes', &$I('Footnotes'), 3)
+       &$heading_text('footnotes', gdt('Footnotes'), 3)
       );
     push (@$lines, "</div>\n"); 
     return $lines; 
@@ -2679,7 +2679,7 @@ sub html_default_acronym_like($$$$$$)
     }
     if ($with_explanation)
     {
-        return &$I('%{acronym_like} (%{explanation})', {'acronym_like' => $opening . $acronym_text . "</$attribute>", 'explanation' => $explanation_text},{'duplicate'=>1})
+        return gdt('{acronym_like} ({explanation})', {'acronym_like' => $opening . $acronym_text . "</$attribute>", 'explanation' => $explanation_text},{'duplicate'=>1})
     }
     else
     {
@@ -2709,7 +2709,7 @@ sub html_default_print_index($$)
     my $name = shift;
     return '' if (!defined($text));
     return html_default_attribute_class('table', "index-$name")." border=\"0\">\n" .
-    "<tr><td></td><th align=\"left\">" . &$I('Index Entry') . "</th><td>&nbsp;</td><th align=\"left\"> " . &$I('Section') . "</th></tr>\n"
+    "<tr><td></td><th align=\"left\">" . gdt('Index Entry') . "</th><td>&nbsp;</td><th align=\"left\"> " . gdt('Section') . "</th></tr>\n"
     . "<tr><td colspan=\"4\"> $DEFAULT_RULE</td></tr>\n" . $text .
     "</table>\n";
 }
@@ -2821,7 +2821,7 @@ sub html_default_index_summary($$)
     {
        $alpha_text = join("\n &nbsp; \n", @$alpha) . "\n &nbsp; \n";
     }
-    return "<table><tr><th valign=\"top\">" . &$I('Jump to') .": &nbsp; </th><td>" .
+    return "<table><tr><th valign=\"top\">" . gdt('Jump to') .": &nbsp; </th><td>" .
     $nonalpha_text . $join . $alpha_text . "</td></tr></table>\n";
 }
 

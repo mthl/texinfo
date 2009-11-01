@@ -17,16 +17,16 @@ the output format for a contiguous group of similar lines.
 For example, the following command compares the TeX file &lsquo;<tt>myfile</tt>&rsquo;
 with the original version from the repository,
 and outputs a merged file in which old regions are
-surrounded by &lsquo;<code>\begin{em}</code>&rsquo;-&lsquo;<code>\end{em}</code>&rsquo; lines, and new
-regions are surrounded by &lsquo;<code>\begin{bf}</code>&rsquo;-&lsquo;<code>\end{bf}</code>&rsquo; lines.
+surrounded by &lsquo;<code>\begin<nowiki>{</nowiki>em<nowiki>}</nowiki></code>&rsquo;-&lsquo;<code>\end<nowiki>{</nowiki>em<nowiki>}</nowiki></code>&rsquo; lines, and new
+regions are surrounded by &lsquo;<code>\begin<nowiki>{</nowiki>bf<nowiki>}</nowiki></code>&rsquo;-&lsquo;<code>\end<nowiki>{</nowiki>bf<nowiki>}</nowiki></code>&rsquo; lines.
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs diff \
-    --old-group-format='\begin{em}
- %&lt;\end{em}
+    --old-group-format='\begin<nowiki>{</nowiki>em<nowiki>}</nowiki>
+ %&lt;\end<nowiki>{</nowiki>em<nowiki>}</nowiki>
  ' \
-    --new-group-format='\begin{bf}
- %&gt;\end{bf}
+    --new-group-format='\begin<nowiki>{</nowiki>bf<nowiki>}</nowiki>
+ %&gt;\end<nowiki>{</nowiki>bf<nowiki>}</nowiki>
  ' \
     myfile
 </div>
@@ -37,17 +37,17 @@ little more verbose, because it spells out the default line group formats.
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs diff \
-    --old-group-format='\begin{em}
- %&lt;\end{em}
+    --old-group-format='\begin<nowiki>{</nowiki>em<nowiki>}</nowiki>
+ %&lt;\end<nowiki>{</nowiki>em<nowiki>}</nowiki>
  ' \
-    --new-group-format='\begin{bf}
- %&gt;\end{bf}
+    --new-group-format='\begin<nowiki>{</nowiki>bf<nowiki>}</nowiki>
+ %&gt;\end<nowiki>{</nowiki>bf<nowiki>}</nowiki>
  ' \
     --unchanged-group-format='%=' \
-    --changed-group-format='\begin{em}
- %&lt;\end{em}
- \begin{bf}
- %&gt;\end{bf}
+    --changed-group-format='\begin<nowiki>{</nowiki>em<nowiki>}</nowiki>
+ %&lt;\end<nowiki>{</nowiki>em<nowiki>}</nowiki>
+ \begin<nowiki>{</nowiki>bf<nowiki>}</nowiki>
+ %&gt;\end<nowiki>{</nowiki>bf<nowiki>}</nowiki>
  ' \
     myfile
 </div>

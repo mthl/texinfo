@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-SUBDIRS = . doc Tests test
+SUBDIRS = po_document po_messages . doc Tests test
 imagesdir = $(datadir)/texi2html/images
 i18ndir = $(datadir)/texi2html/i18n
 initdir = $(datadir)/texinfo/init
@@ -37,8 +37,8 @@ texi2html_sources = texi2html_configured.pl $(texi2html_additional_scripts)
 noinst_SCRIPTS = manage_i18n.pl buildt2h.sh addformats.sh \
  parse_8bit_makeinfo_maps.pl
 
-# style_example.css comes from http://planet.gnu.org/~ams/style.css
-EXTRA_DIST = \
+# style_example.css comes from http://planet.gnu.org/~ams/style.css
+EXTRA_DIST = config.rpath \
 	MySimple.pod \
 	autogen.sh \
 	$(noinst_SCRIPTS) \
@@ -62,7 +62,8 @@ EXTRA_DIST = \
 	examples/my-bib-macros.texi \
 	examples/bib-example.texi \
 	examples/glossary.texi \
-	examples/style_example.css
+	examples/style_example.css \
+	lib
 
 i18n_files = i18n/de \
 	i18n/es \
@@ -174,7 +175,18 @@ $(i18n_files): i18n/en
 translations.pl: $(dist_i18n_DATA) 
 	$(PERL) $(builddir)/manage_i18n.pl -d i18n -o $@ -I . -I $(srcdir) merge
 
+# update the po files, and install locally the .mo files for the in
+# source tests
 all-local: makeinfo.pl texi2any.pl
+	cd po_document && $(MAKE) $(AM_MAKEFLAGS) update-po
+	if test '$(USE_NLS)' = 'yes'; then \
+	  rm -rf locales ; \
+	  for file in "$(srcdir)/po_document/"*.po; do \
+	    basename=`basename "$$file" .po` ; \
+	    $(MKDIR_P) "locales/$$basename/LC_MESSAGES/" ; \
+	    $(MSGFMT) "$$file" -o "locales/$$basename/LC_MESSAGES/texi2html_document.mo" ; \
+	  done ; \
+	fi
 
 makeinfo.pl texi2any.pl:
 	-$(LN_S) $(srcdir)/texi2html.pl $@
@@ -183,3 +195,24 @@ html-local: texi2html
 
 clean-local:
 	-rm -f texi2html texi2html.temp
+
+distclean-local:
+	-rm -rf locales
+
+install-data-local:
+	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
+	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData
+	$(INSTALL_DATA) $(srcdir)/lib/libintl-perl/lib/Locale/*.pm \
+	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale
+	$(INSTALL_DATA) $(srcdir)/lib/libintl-perl/lib/Locale/Recode/*.pm \
+	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode
+	$(INSTALL_DATA) $(srcdir)/lib/libintl-perl/lib/Locale/RecodeData/*.pm \
+	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData
+
+uninstall-local:
+	rm -rf $(DESTDIR)$(pkgdatadir)/lib/
+
+dist-hook:
+	rm -rf `find $(distdir)/lib  -name CVS`
+
+ACLOCAL_AMFLAGS = -I m4

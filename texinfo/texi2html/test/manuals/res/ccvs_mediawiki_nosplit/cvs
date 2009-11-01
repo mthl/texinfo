@@ -1148,12 +1148,12 @@ This behavior is implemented only by <small>CVS</small> 1.7 and
 later; for details see [[#Using watches with old versions of CVS|Using watches with old versions of CVS]].
 
 The format of the fileattr file is a series of entries
-of the following form (where &lsquo;<code>{</code>&rsquo; and &lsquo;<code>}</code>&rsquo;
+of the following form (where &lsquo;<code><nowiki>{</nowiki></code>&rsquo; and &lsquo;<code><nowiki>}</nowiki></code>&rsquo;
 means the text between the braces can be repeated zero
 or more times):
 
 <var>ent-type</var> <var>filename</var> &lt;tab&gt; <var>attrname</var> = <var>attrval</var>
-{; <var>attrname</var> = <var>attrval</var>} &lt;linefeed&gt;
+<nowiki>{</nowiki>; <var>attrname</var> = <var>attrval</var><nowiki>}</nowiki> &lt;linefeed&gt;
 
 <var>ent-type</var> is &lsquo;<code>F</code>&rsquo; for a file, in which case the entry specifies the
 attributes for that file.
@@ -1186,10 +1186,10 @@ Builtin attributes:
 : Present means the file is watched and should be checked out read-only.
 
 ;<code>_watchers</code>
-: Users with watches for this file.  Value is <var>watcher</var> &gt; <var>type</var> { , <var>watcher</var> &gt; <var>type</var> } where <var>watcher</var> is a username, and <var>type</var> is zero or more of edit,unedit,commit separated by &lsquo;<code>+</code>&rsquo; (that is, nothing if none; there is no &quot;none&quot; or &quot;all&quot; keyword).
+: Users with watches for this file.  Value is <var>watcher</var> &gt; <var>type</var> <nowiki>{</nowiki> , <var>watcher</var> &gt; <var>type</var> <nowiki>}</nowiki> where <var>watcher</var> is a username, and <var>type</var> is zero or more of edit,unedit,commit separated by &lsquo;<code>+</code>&rsquo; (that is, nothing if none; there is no &quot;none&quot; or &quot;all&quot; keyword).
 
 ;<code>_editors</code>
-: Users editing this file.  Value is <var>editor</var> &gt; <var>val</var> { , <var>editor</var> &gt; <var>val</var> } where <var>editor</var> is a username, and <var>val</var> is <var>time</var>+<var>hostname</var>+<var>pathname</var>, where <var>time</var> is when the <code>cvs edit</code> command (or equivalent) happened, and <var>hostname</var> and <var>pathname</var> are for the working directory.
+: Users editing this file.  Value is <var>editor</var> &gt; <var>val</var> <nowiki>{</nowiki> , <var>editor</var> &gt; <var>val</var> <nowiki>}</nowiki> where <var>editor</var> is a username, and <var>val</var> is <var>time</var>+<var>hostname</var>+<var>pathname</var>, where <var>time</var> is when the <code>cvs edit</code> command (or equivalent) happened, and <var>hostname</var> and <var>pathname</var> are for the working directory.
 
 Example:
 
@@ -2275,7 +2275,7 @@ Create a file called &lsquo;<tt>/etc/xinetd.d/cvspserver</tt>&rsquo; containing 
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  service cvspserver
- {
+ <nowiki>{</nowiki>
     port        = 2401
     socket_type = stream
     protocol    = tcp
@@ -2284,7 +2284,7 @@ Create a file called &lsquo;<tt>/etc/xinetd.d/cvspserver</tt>&rsquo; containing 
     passenv     = PATH
     server      = /usr/local/bin/cvs
     server_args = -f --allow-root=/usr/cvsroot pserver
- }
+ <nowiki>}</nowiki>
 </div>
 </td></tr></table>
 
@@ -6348,14 +6348,14 @@ Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
  #include &lt;stdio.h&gt;
  
  void main()
- {
+ <nowiki>{</nowiki>
      parse();
      if (nerr == 0)
          gencode();
      else
          fprintf(stderr, &quot;No code generated.\n&quot;);
      exit(nerr == 0 ? 0 : 1);
- }
+ <nowiki>}</nowiki>
 </div>
 </td></tr></table>
 
@@ -6366,19 +6366,19 @@ Revision 1.6 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
  
  int main(int argc,
           char **argv)
- {
+ <nowiki>{</nowiki>
      parse();
      if (argc != 1)
-     {
+     <nowiki>{</nowiki>
          fprintf(stderr, &quot;tc: No args expected.\n&quot;);
          exit(1);
-     }
+     <nowiki>}</nowiki>
      if (nerr == 0)
          gencode();
      else
          fprintf(stderr, &quot;No code generated.\n&quot;);
      exit(!!nerr);
- }
+ <nowiki>}</nowiki>
 </div>
 </td></tr></table>
 
@@ -6390,7 +6390,7 @@ Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
  #include &lt;stdio.h&gt;
  
  void main()
- {
+ <nowiki>{</nowiki>
      init_scanner();
      parse();
      if (nerr == 0)
@@ -6398,7 +6398,7 @@ Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
      else
          fprintf(stderr, &quot;No code generated.\n&quot;);
      exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
- }
+ <nowiki>}</nowiki>
 </div>
 </td></tr></table>
 
@@ -6428,14 +6428,14 @@ Your original working file is saved unmodified in
  
  int main(int argc,
           char **argv)
- {
+ <nowiki>{</nowiki>
      init_scanner();
      parse();
      if (argc != 1)
-     {
+     <nowiki>{</nowiki>
          fprintf(stderr, &quot;tc: No args expected.\n&quot;);
          exit(1);
-     }
+     <nowiki>}</nowiki>
      if (nerr == 0)
          gencode();
      else
@@ -6445,7 +6445,7 @@ Your original working file is saved unmodified in
  =======
      exit(!!nerr);
  &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.6
- }
+ <nowiki>}</nowiki>
 </div>
 </td></tr></table>
 
@@ -6469,20 +6469,20 @@ the erroneous line.  Suppose you end up with this file:
  
  int main(int argc,
           char **argv)
- {
+ <nowiki>{</nowiki>
      init_scanner();
      parse();
      if (argc != 1)
-     {
+     <nowiki>{</nowiki>
          fprintf(stderr, &quot;tc: No args expected.\n&quot;);
          exit(1);
-     }
+     <nowiki>}</nowiki>
      if (nerr == 0)
          gencode();
      else
          fprintf(stderr, &quot;No code generated.\n&quot;);
      exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
- }
+ <nowiki>}</nowiki>
 </div>
 </td></tr></table>
 
@@ -7429,7 +7429,7 @@ substitution entirely.
 In many cases you can avoid using keywords in
 the source, even though they appear in the final
 product.  For example, the source for this manual
-contains &lsquo;<code>$@asis{}Author$</code>&rsquo; whenever the text
+contains &lsquo;<code>$@asis<nowiki>{</nowiki><nowiki>}</nowiki>Author$</code>&rsquo; whenever the text
 &lsquo;<code>$<i></i>Author$</code>&rsquo; should appear.  In <code>nroff</code>
 and <code>troff</code> you can embed the null-character
 <code>\&amp;</code> inside the keyword for a similar effect.
@@ -9627,16 +9627,16 @@ the output format for a contiguous group of similar lines.
 For example, the following command compares the TeX file &lsquo;<tt>myfile</tt>&rsquo;
 with the original version from the repository,
 and outputs a merged file in which old regions are
-surrounded by &lsquo;<code>\begin{em}</code>&rsquo;-&lsquo;<code>\end{em}</code>&rsquo; lines, and new
-regions are surrounded by &lsquo;<code>\begin{bf}</code>&rsquo;-&lsquo;<code>\end{bf}</code>&rsquo; lines.
+surrounded by &lsquo;<code>\begin<nowiki>{</nowiki>em<nowiki>}</nowiki></code>&rsquo;-&lsquo;<code>\end<nowiki>{</nowiki>em<nowiki>}</nowiki></code>&rsquo; lines, and new
+regions are surrounded by &lsquo;<code>\begin<nowiki>{</nowiki>bf<nowiki>}</nowiki></code>&rsquo;-&lsquo;<code>\end<nowiki>{</nowiki>bf<nowiki>}</nowiki></code>&rsquo; lines.
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs diff \
-    --old-group-format='\begin{em}
- %&lt;\end{em}
+    --old-group-format='\begin<nowiki>{</nowiki>em<nowiki>}</nowiki>
+ %&lt;\end<nowiki>{</nowiki>em<nowiki>}</nowiki>
  ' \
-    --new-group-format='\begin{bf}
- %&gt;\end{bf}
+    --new-group-format='\begin<nowiki>{</nowiki>bf<nowiki>}</nowiki>
+ %&gt;\end<nowiki>{</nowiki>bf<nowiki>}</nowiki>
  ' \
     myfile
 </div>
@@ -9647,17 +9647,17 @@ little more verbose, because it spells out the default line group formats.
 
 <table><tr><td>&nbsp;</td><td><div class="example">
  cvs diff \
-    --old-group-format='\begin{em}
- %&lt;\end{em}
+    --old-group-format='\begin<nowiki>{</nowiki>em<nowiki>}</nowiki>
+ %&lt;\end<nowiki>{</nowiki>em<nowiki>}</nowiki>
  ' \
-    --new-group-format='\begin{bf}
- %&gt;\end{bf}
+    --new-group-format='\begin<nowiki>{</nowiki>bf<nowiki>}</nowiki>
+ %&gt;\end<nowiki>{</nowiki>bf<nowiki>}</nowiki>
  ' \
     --unchanged-group-format='%=' \
-    --changed-group-format='\begin{em}
- %&lt;\end{em}
- \begin{bf}
- %&gt;\end{bf}
+    --changed-group-format='\begin<nowiki>{</nowiki>em<nowiki>}</nowiki>
+ %&lt;\end<nowiki>{</nowiki>em<nowiki>}</nowiki>
+ \begin<nowiki>{</nowiki>bf<nowiki>}</nowiki>
+ %&gt;\end<nowiki>{</nowiki>bf<nowiki>}</nowiki>
  ' \
     myfile
 </div>
@@ -12856,7 +12856,7 @@ edit the log message.
  until head -1|grep '^BugId:<nowiki>[</nowiki> <nowiki>]</nowiki>*<nowiki>[</nowiki>0-9<nowiki>][</nowiki>0-9<nowiki>]</nowiki>*$' &lt; $1
  do  echo -n  &quot;No BugId found.  Edit again? (<nowiki>[</nowiki>y<nowiki>]</nowiki>/n)&quot;
      read ans
-     case ${ans} in
+     case $<nowiki>{</nowiki>ans<nowiki>}</nowiki> in
          n*) exit 1;;
      esac
      $CVSEDITOR $1
@@ -12930,7 +12930,7 @@ The user may specify a format string as
 part of the filter.  The string is composed of a
 &lsquo;<code>%</code>&rsquo; followed by a space, or followed by a single
 format character, or followed by a set of format
-characters surrounded by &lsquo;<code>{</code>&rsquo; and &lsquo;<code>}</code>&rsquo; as
+characters surrounded by &lsquo;<code><nowiki>{</nowiki></code>&rsquo; and &lsquo;<code><nowiki>}</nowiki></code>&rsquo; as
 separators.  The format characters are:
 
 ;<tt>s</tt>
@@ -12945,7 +12945,7 @@ expand to an empty field (commas separating fields are
 still provided).
 
 For example, some valid format strings are &lsquo;<code>%</code>&rsquo;,
-&lsquo;<code>%s</code>&rsquo;, &lsquo;<code>%{s}</code>&rsquo;, and &lsquo;<code>%{sVv}</code>&rsquo;.
+&lsquo;<code>%s</code>&rsquo;, &lsquo;<code>%<nowiki>{</nowiki>s<nowiki>}</nowiki></code>&rsquo;, and &lsquo;<code>%<nowiki>{</nowiki>sVv<nowiki>}</nowiki></code>&rsquo;.
 
 The output will be a space separated string of tokens enclosed in
 quotation marks (<tt>&quot;</tt>).
@@ -12957,7 +12957,7 @@ For backwards compatibility, the first
 token will be the repository subdirectory.  The rest of the
 tokens will be comma-delimited lists of the information
 requested in the format string.  For example, if
-&lsquo;<code>/u/src/master/yoyodyne/tc</code>&rsquo; is the repository, &lsquo;<code>%{sVv}</code>&rsquo;
+&lsquo;<code>/u/src/master/yoyodyne/tc</code>&rsquo; is the repository, &lsquo;<code>%<nowiki>{</nowiki>sVv<nowiki>}</nowiki></code>&rsquo;
 is the format string, and three files (<tt>ChangeLog</tt>,
 <tt>Makefile</tt>, <tt>foo.c</tt>) were modified, the output
 might be:
@@ -12967,7 +12967,7 @@ might be:
 </div>
 </td></tr></table>
 
-As another example, &lsquo;<code>%{}</code>&rsquo; means that only the
+As another example, &lsquo;<code>%<nowiki>{</nowiki><nowiki>}</nowiki></code>&rsquo; means that only the
 name of the repository will be generated.
 
 Note: when <small>CVS</small> is accessing a remote repository,
@@ -13389,12 +13389,12 @@ running <small>CVS</small>.
 
 One may want to know about various pieces of
 information internal to <small>CVS</small>.  A <small>CVS</small> internal
-variable has the syntax <code>${<var>variable</var>}</code>,
+variable has the syntax <code>$<nowiki>{</nowiki><var>variable</var><nowiki>}</nowiki></code>,
 where <var>variable</var> starts with a letter and consists
 of alphanumeric characters and &lsquo;<code>_</code>&rsquo;.  If the
 character following <var>variable</var> is a
 non-alphanumeric character other than &lsquo;<code>_</code>&rsquo;, the
-&lsquo;<code>{</code>&rsquo; and &lsquo;<code>}</code>&rsquo; can be omitted.  The <small>CVS</small>
+&lsquo;<code><nowiki>{</nowiki></code>&rsquo; and &lsquo;<code><nowiki>}</nowiki></code>&rsquo; can be omitted.  The <small>CVS</small>
 internal variables are:
 
 ;<code>CVSROOT</code>
@@ -13423,7 +13423,7 @@ use a user variable.
 <div id="index-User-variables"></div>
 To expand a user variable, the
 administrative file contains
-<code>${=<var>variable</var>}</code>.  To set a user variable,
+<code>$<nowiki>{</nowiki>=<var>variable</var><nowiki>}</nowiki></code>.  To set a user variable,
 specify the global option &lsquo;<code>-s</code>&rsquo; to <small>CVS</small>, with
 argument <code><var>variable</var>=<var>value</var></code>.  It may be
 particularly useful to specify this option via
@@ -13441,7 +13441,7 @@ as
 
 and the
 administrative file contains <code>sh
-${=TESTDIR}/runtests</code>, then that string is expanded
+$<nowiki>{</nowiki>=TESTDIR<nowiki>}</nowiki>/runtests</code>, then that string is expanded
 to <code>sh /work/local/tests/runtests</code>.
 
 All other strings containing &lsquo;<code>$</code>&rsquo; are reserved;

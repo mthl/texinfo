@@ -4596,6 +4596,9 @@ version 1.68. API changed also a lot between 1.78 and 1.80.
 @itemize @bullet
 @item API changes between 1.82 and 1.84:
 @itemize @bullet
+@item In the default case a gettext-like framework is now used for in document
+  string translations. The old framework is still available by setting 
+  $I18N_PERL_HASH.
 @item Information that can be set by @@-commands should now be accessed
   through get_conf.
 @item $format_list_item_texi should now modify directly the @@item argument

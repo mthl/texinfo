@@ -59,7 +59,7 @@ EOT
     print $fh $Texi2HTML::THISDOC{'copying_comment'} . "\n";
     print $fh "" . &$comment("Created on $Texi2HTML::THISDOC{today} by $Texi2HTML::THISDOC{program}\n");
     print $fh "" . &$comment($Texi2HTML::THISDOC{program_authors});
-    # FIXME this should instead be done in print_title
+    # FIXME this should instead be done in print_title
     print $fh ".ds St " . protect_spaces($Texi2HTML::THISDOC{'title'}) . "\n";
     print $fh '.oh \'\\\\*(St\'\'%\'' ."\n".'.eh \'%\'\'\\\\*(St\'' . "\n";
 }
@@ -82,7 +82,7 @@ sub T2H_ROFF_print_Top($$)
 
     my $buttons = \@MISC_BUTTONS;
     &$print_head_navigation($fh, $buttons);
-    # FIXME this is done in print_title now.
+    # FIXME this is done in print_title now.
     # redo the titlepage with the actual state
     my ($titlepage_text, $titlepage_no_texi, $titlepage_simple_text) = main::do_special_region_lines('titlepage',$Texi2HTML::THISDOC{'state'});
     &$titlepage([],$titlepage_text, $titlepage_no_texi, $titlepage_simple_text); 
@@ -110,7 +110,7 @@ sub T2H_ROFF_titlepage ($$$$)
         or @{$Texi2HTML::THISDOC{'subtitles'}} 
         or @{$Texi2HTML::THISDOC{'authors'}})
     {  
-# FIXME obsolete, use $line_command instead
+# FIXME obsolete, use $line_command instead
         foreach my $title (@{$Texi2HTML::THISDOC{'titles'}})
         {
             $result .= ".sz +10\n.ce\n" . protect_spaces($title) . "\n.sz -10\n";
@@ -650,7 +650,7 @@ sub t2h_roff_menu($)
 {
     my $text = shift;
     chomp $text;
-    return ".(l M\n\\&\\s8" . &$I('Menu:') . "\n" . $text . "\\&\\s0\n.)l\n";
+    return ".(l M\n\\&\\s8" . gdt('Menu:') . "\n" . $text . "\\&\\s0\n.)l\n";
 }
 
 # a simple menu entry ref in case we aren't in a standard menu context
@@ -984,7 +984,7 @@ sub T2H_ROFF_toc_body($$$)
     my $do_scontents = shift;
     if ($do_contents or $do_scontents)
     {
-        my $lines = ".pp\n.nr % 0 1\n.af % i\n.bp \\n%+1\n.ce\n\\&\\fB" . &$I('Table of Contents') . "\\fR\n.sp 2\n.xp\n";
+        my $lines = ".pp\n.nr % 0 1\n.af % i\n.bp \\n%+1\n.ce\n\\&\\fB" . gdt('Table of Contents') . "\\fR\n.sp 2\n.xp\n";
         if (!$do_contents)
         {
             push @{$Texi2HTML::OVERVIEW}, $lines;

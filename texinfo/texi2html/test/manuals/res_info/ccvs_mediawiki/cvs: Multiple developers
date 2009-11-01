@@ -218,14 +218,14 @@ Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
  #include &lt;stdio.h&gt;
  
  void main()
- {
+ <nowiki>{</nowiki>
      parse();
      if (nerr == 0)
          gencode();
      else
          fprintf(stderr, &quot;No code generated.\n&quot;);
      exit(nerr == 0 ? 0 : 1);
- }
+ <nowiki>}</nowiki>
 </div>
 </td></tr></table>
 
@@ -236,19 +236,19 @@ Revision 1.6 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
  
  int main(int argc,
           char **argv)
- {
+ <nowiki>{</nowiki>
      parse();
      if (argc != 1)
-     {
+     <nowiki>{</nowiki>
          fprintf(stderr, &quot;tc: No args expected.\n&quot;);
          exit(1);
-     }
+     <nowiki>}</nowiki>
      if (nerr == 0)
          gencode();
      else
          fprintf(stderr, &quot;No code generated.\n&quot;);
      exit(!!nerr);
- }
+ <nowiki>}</nowiki>
 </div>
 </td></tr></table>
 
@@ -260,7 +260,7 @@ Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
  #include &lt;stdio.h&gt;
  
  void main()
- {
+ <nowiki>{</nowiki>
      init_scanner();
      parse();
      if (nerr == 0)
@@ -268,7 +268,7 @@ Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
      else
          fprintf(stderr, &quot;No code generated.\n&quot;);
      exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
- }
+ <nowiki>}</nowiki>
 </div>
 </td></tr></table>
 
@@ -298,14 +298,14 @@ Your original working file is saved unmodified in
  
  int main(int argc,
           char **argv)
- {
+ <nowiki>{</nowiki>
      init_scanner();
      parse();
      if (argc != 1)
-     {
+     <nowiki>{</nowiki>
          fprintf(stderr, &quot;tc: No args expected.\n&quot;);
          exit(1);
-     }
+     <nowiki>}</nowiki>
      if (nerr == 0)
          gencode();
      else
@@ -315,7 +315,7 @@ Your original working file is saved unmodified in
  =======
      exit(!!nerr);
  &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.6
- }
+ <nowiki>}</nowiki>
 </div>
 </td></tr></table>
 
@@ -339,20 +339,20 @@ the erroneous line.  Suppose you end up with this file:
  
  int main(int argc,
           char **argv)
- {
+ <nowiki>{</nowiki>
      init_scanner();
      parse();
      if (argc != 1)
-     {
+     <nowiki>{</nowiki>
          fprintf(stderr, &quot;tc: No args expected.\n&quot;);
          exit(1);
-     }
+     <nowiki>}</nowiki>
      if (nerr == 0)
          gencode();
      else
          fprintf(stderr, &quot;No code generated.\n&quot;);
      exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
- }
+ <nowiki>}</nowiki>
 </div>
 </td></tr></table>
 

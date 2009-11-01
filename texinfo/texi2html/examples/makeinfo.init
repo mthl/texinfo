@@ -141,17 +141,13 @@ sub makeinfo_like_foot_line_and_ref($$$$$$$$)
     my $foot_anchor = "<sup>" . &$anchor($docid, "$footnote_file#$footid", $relative_num) . "</sup>";
     $foot_anchor = &$anchor($docid, "$footnote_file#$footid", "($relative_num)") if ($state->{'preformatted'});
 
-#    unshift @$lines, "<li>";
-#    push @$lines, "</li>\n";
     return ($lines, $foot_anchor);
 }
 
 sub makeinfo_like_foot_lines($)
 {
     my $lines = shift;
-    unshift @$lines, "<div class=\"footnote\">\n<hr>\n<h4>". &$I('Footnotes') ."</h4>\n";
-#<ol type=\"1\">\n";
-#    push @$lines, "</ol>";
+    unshift @$lines, "<div class=\"footnote\">\n<hr>\n<h4>". gdt('Footnotes') ."</h4>\n";
     push (@$lines, "</div>\n");
     return $lines;
 }
@@ -322,7 +318,7 @@ sub makeinfo_like_listoffloats_entry($$$$)
 
     if ($caption ne '')
     {
-        return '<li>' . &$I('%{href}: %{caption}', { 'href' => &$anchor('', $href, $float_style), 'caption' => $caption }) . "</li>\n";
+        return '<li>' . gdt('{href}: {caption}', { 'href' => &$anchor('', $href, $float_style), 'caption' => $caption }) . "</li>\n";
     }
     else
     {

@@ -40,7 +40,7 @@ edit the log message.
  until head -1|grep '^BugId:<nowiki>[</nowiki> <nowiki>]</nowiki>*<nowiki>[</nowiki>0-9<nowiki>][</nowiki>0-9<nowiki>]</nowiki>*$' &lt; $1
  do  echo -n  &quot;No BugId found.  Edit again? (<nowiki>[</nowiki>y<nowiki>]</nowiki>/n)&quot;
      read ans
-     case ${ans} in
+     case $<nowiki>{</nowiki>ans<nowiki>}</nowiki> in
          n*) exit 1;;
      esac
      $CVSEDITOR $1

@@ -97,7 +97,7 @@ sub tex4ht_init
   $tex4ht_initial_dir = Cwd::abs_path;
   if ($Texi2HTML::Config::null_device_file{$Texi2HTML::THISDOC{'filename'}->{'top'}})
   {
-    # when output is a null device we skip entirely the tex4ht stuff.
+    # when output is a null device we skip entirely the tex4ht stuff.
     $tex4ht_latex_failed = 1;
     return;
   }

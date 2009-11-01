@@ -9,6 +9,11 @@ dnl Disable Autoconf, Automake, and some other maintainer tools without the
 dnl --enable-maintainer-mode argument.
 AM_MAINTAINER_MODE
 
+AM_GNU_GETTEXT([external])
+dnl it is not completly clear that we need that or not, since gettext is 
+dnl not fully used.
+AM_GNU_GETTEXT_VERSION(0.17)
+
 dnl Misc variable settings
 PACKAGE_DATE=`"$srcdir"/mdate-sh "$srcdir"/configure.ac`
 AC_SUBST([PACKAGE_DATE])
@@ -16,8 +21,28 @@ AC_SUBST([PACKAGE_DATE])
 dnl Checks for programs.
 AC_PROG_LN_S
 AM_PROG_MKDIR_P
-AC_ARG_VAR([PERL], [The path to the `perl' executable.])
+AC_ARG_VAR([PERL], [The path to the 'perl' executable.])
 AC_PATH_PROG([PERL], [perl], [/usr/bin/env perl], [/opt/perl5/bin:"$PATH"])
+
+USE_EXTERNAL_LIBINTL=no
+AC_ARG_WITH([external-libintl-perl],
+   AC_HELP_STRING([--with-external-libintl-perl],
+      [use external libintl-perl if found (default: no)]),
+   [if test $withval = 'yes'; then
+      USE_EXTERNAL_LIBINTL=yes
+   fi]
+)
+
+if test z"$USE_NLS" = 'zyes'; then
+   if test $USE_EXTERNAL_LIBINTL = 'yes'; then
+      if $PERL -e "use Locale::Messages; Locale::TextDomain;" > /dev/null 2>&1;
+      then :
+      else 
+        USE_EXTERNAL_LIBINTL=no
+      fi
+   fi
+fi
+AC_SUBST([USE_EXTERNAL_LIBINTL])
 
 AC_ARG_WITH([encode],
     AC_HELP_STRING([--with-encode],
@@ -109,6 +134,8 @@ AC_CONFIG_FILES([manage_i18n.pl], [chmod +x manage_i18n.pl])
 dnl The bulk config files.
 AC_CONFIG_FILES([\
                  Makefile \
+                 po_messages/Makefile.in \
+                 po_document/Makefile.in \
                  Tests/Makefile \
                  test/Makefile \
                  test/contents/Makefile \

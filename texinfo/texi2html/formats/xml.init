@@ -424,7 +424,7 @@ sub xml_close_section()
 
     if (!defined($element))
     {
-        # this doesn't work
+        # this doesn't work
         #my $empty = 1;
         #foreach my $line (@{$Texi2HTML::THIS_SECTION})
         #{
@@ -446,8 +446,8 @@ sub xml_close_section()
     #return '' if ($element->{'node'});
     $xml_current_section = undef;
 
-    # there is a special case for a @chapter that is a child of @top
-    # but should not be considered as is, since it is also toplevel.
+    # there is a special case for a @chapter that is a child of @top
+    # but should not be considered as is, since it is also toplevel.
     return '' if ($element->{'child'} and !$element->{'child'}->{'toplevel'});
     $result .= '</'.xml_element_tag($element).">\n";
 
@@ -1029,11 +1029,11 @@ sub xml_any_ref($$)
     my $result = '';
     if ($type eq 'pxref')
     {
-        $result = &$I('see ',{'duplicate'=>1});
+        $result = gdt('see ',{'duplicate'=>1});
     }
     elsif ($type eq 'xref' or $type eq 'inforef')
     {
-        $result = &$I('See ',{'duplicate'=>1});
+        $result = gdt('See ',{'duplicate'=>1});
     }
     if ($type eq 'inforef')
     {
@@ -1183,7 +1183,7 @@ sub xml_float($$$$$)
     my $caption = shift;
     my $shortcaption = shift;
 
-    # FIXME don't use the texi, but a normalized node name
+    # FIXME don't use the texi, but a normalized node name
     my $label_texi = $float->{'texi'};
     $label_texi = '' if (!defined($label_texi));
     my $result = "<float name=\"$label_texi\">\n";

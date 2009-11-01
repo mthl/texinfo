@@ -104,7 +104,8 @@ $format_map{'multitable'} = 'table';
 
 $protect_text      = \&t2h_html32_protect_text;
 $normal_text       = \&t2h_html32_normal_text;
-$acronym_like      = \&t2h_html32_acronym_like;
+#$acronym_like      = \&t2h_html32_acronym_like;
+$acronym_like      = \&t2h_default_acronym_like;
 $row               = \&t2h_html32_row;
 $cell              = \&t2h_html32_cell;
 
@@ -166,7 +167,7 @@ sub t2h_html32_acronym_like($$$$$$)
     
     if ($with_explanation)
     {
-        return &$I('%{acronym_like} (%{explanation})', {'acronym_like' => $acronym_text, 'explanation' => $explanation_text},{'duplicate'=>1})
+        return gdt('{acronym_like} ({explanation})', {'acronym_like' => $acronym_text, 'explanation' => $explanation_text},{'duplicate'=>1})
     }
     else
     {

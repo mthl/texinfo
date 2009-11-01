@@ -22,6 +22,8 @@
 #
 #-##############################################################################
 
+# for file in ../i18n/*; do echo $file | grep -qs 'old\|CVS' && continue; bfile=`basename $file`; post='.us-ascii.po'; msgen texi2html_document.pot > $bfile$post-1; sed -i -e 's/CHARSET/us-ascii/' $bfile$post-1 ; msgfilter --keep-header -i $bfile$post-1 -o $bfile$post ../manage_i18n.pl filter -I ../ --lang $bfile;  done
+
 # This requires perl version 5 or higher
 require 5.0;
 
@@ -51,9 +53,12 @@ my @searched_dirs = (); # dir searched for sources and language files
 my $template_lang = 'en';
 my @sources = ('texi2html.pl', 'texi2html.init', 'T2h_i18n.pm', 
  'examples/roff.init', 'examples/noheaders.init');
+my $lang;
+my $charset;
 
 GetOptions('Include=s' => \@searched_dirs, 'output=s' => \$output, 
-  'directory=s' => \$dir, 'help+' => \$help);
+  'directory=s' => \$dir, 'help+' => \$help, 'lang=s' => \$lang, 
+  'charset=s' => \$charset);
 
 
 if ($help)
@@ -221,6 +226,42 @@ sub merge_i18n_files($$$)
          }
          close FILE;
     }
+}
+
+sub get_language_hashes($$)
+{
+    my $from_file = shift;
+    my $lang = shift;
+    if (defined($from_file) and -f $from_file)
+    {
+        eval { require($from_file) ;};
+        if ($@)
+        {
+            warn "require $from_file failed: $@\n";
+            return (undef,undef);
+        }
+        if (!defined($LANGUAGES->{$lang}))
+        {
+            warn "LANGUAGES->{$lang} not defined in $from_file\n";
+            return (undef,undef);
+        }
+    }
+    return ($LANGUAGES->{$lang}, $T2H_OBSOLETE_STRINGS->{$lang})
+}
+
+sub get_translation_string($$$$)
+{
+    my $directories = shift;
+    my $i18n_dir = shift;
+    my $lang = shift;
+    my $string_to_find = shift;
+    my $from_file = locate_file("$i18n_dir/$lang", $directories);
+
+    my ($strings, $obsolete_strings) = get_language_hashes($from_file, $lang);
+
+    return $strings->{$string_to_find} if (defined($strings) and defined($strings->{$string_to_find}));
+    return $obsolete_strings->{$string_to_find} if (defined($obsolete_strings) and defined($obsolete_strings->{$string_to_find}));
+    return undef;
 }
         
 sub update_language_hash($$$)
@@ -489,7 +530,8 @@ sub update_template($$$$@)
                             $string = undef;
                        }
                   }
-                  elsif (s/^.*?&\$I\s*\('//)
+                  elsif (s/^.*?&\$I\s*\('// or s/^.*? gdt\('//)
+                  #elsif (s/^.*?&\$I\s*\('//)
                   {
                        $string = '';
                   }
@@ -575,6 +617,20 @@ elsif ($command eq 'template')
 #          $template_lang, "$output_dir/$template_lang");
 #    merge_i18n_files(\@searched_dirs, $dir, $translations_file);
 #}
+elsif ($command eq 'filter')
+{
+    die "filter requires --lang\n" if (!defined($lang));
+    $/ = undef;
+    my $string_to_find = <STDIN>;
+    my $translated_string = get_translation_string(\@searched_dirs, $dir, $lang, $string_to_find);
+    $translated_string = '' if (!defined($translated_string));
+#print STDERR "LLL $string_to_find $translated_string\n";
+    if (defined($charset))
+    { # this doesn't work, and is not needed
+       binmode(STDOUT, ":encoding($charset)");
+    }
+    print STDOUT "$translated_string";
+}
 else
 {
     warn "Unknown i18n command: $command\n";
