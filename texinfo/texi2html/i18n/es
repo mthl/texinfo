@@ -6,6 +6,7 @@ $LANGUAGES->{'es'} = {
                        '(outside of any node)' => '',
                        '@b{{quotation_arg}:} ' => '',
                        '@cite{{book}}' => '',
+                       '@{No value for `{value}\'@}' => '',
                        'About' => 'Acerca de',
                        'About (help)' => 'Acerca de (p@\'agina de ayuda)',
                        'About This Document' => 'Acerca de este documento',

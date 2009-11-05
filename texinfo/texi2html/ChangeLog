@@ -1,3 +1,9 @@
+2009-11-04   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init texi2html.pl formats/*: set up translations 
+	for error messages, reusing all the makeinfo messages that are 
+	relevant.
+
 2009-11-01   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl, i18n/*, po_document, manage_i18n.pl.in, *: 

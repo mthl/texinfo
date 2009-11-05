@@ -1022,12 +1022,12 @@ sub docbook_image($$$$$$$$$$$$$$$$;$)
        } 
        else
        {
-          main::line_warn ("\@image file `$txt_path' unreadable: $!", $line_nr);
+          main::line_warn (sprintf(__("\@image file `%s' unreadable: %s"), $txt_path, $!), $line_nr);
        }
     }
     else
     {
-        main::line_warn ("Cannot find \@image file `$base.txt'", $line_nr);
+        main::line_warn (sprintf(__("Cannot find \@image file `%s.txt'"), $base), $line_nr);
     }
 
     return "$result$end";

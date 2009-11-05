@@ -32,7 +32,7 @@ File: quotes.info,  Node: Top,  Up: (dir)
 test quotes
 ***********
 
-No value for print_utf8
+{No value for `print_utf8'}
 
    "simple-double-three--four---" `simple' quotedblleft: ``
 code: ```simple-double--three---four----'' `simple' quotedblleft: ``'

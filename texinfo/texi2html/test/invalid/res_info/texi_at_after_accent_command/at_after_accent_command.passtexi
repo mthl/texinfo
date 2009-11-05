@@ -1,0 +1,9 @@
+at_after_accent_command.texi(,2) 
+at_after_accent_command.texi(,3) @setfilename at_after_accent_command.info
+at_after_accent_command.texi(,4) 
+at_after_accent_command.texi(,5) @node Top
+at_after_accent_command.texi(,6) @top Test @@ as accent command argument
+at_after_accent_command.texi(,7) 
+at_after_accent_command.texi(,8) @ringaccent @@. @^@@.
+at_after_accent_command.texi(,9) 
+at_after_accent_command.texi(,10) @bye

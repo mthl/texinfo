@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.349 2009-11-01 18:59:57 pertusus Exp $
+# $Id: texi2html.pl,v 1.350 2009-11-05 22:55:07 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -800,6 +800,21 @@ sub gdt($;$$)
     return &main::gdt(@_);
 }
 
+sub __($)
+{
+    return &main::__(@_);
+}
+
+sub __p($$)
+{
+    return &main::__p(@_);
+}
+
+sub N__($)
+{
+    return $_[0];
+}
+
 #
 # Function refs covered by the GPL as part of the texi2html.pl original
 # code. As such they cannot appear in texi2html.init which is public 
@@ -1241,7 +1256,7 @@ sub t2h_default_associate_index_element($$$$)
                  $element->{'texi'},
                  $element->{'number'},
                  $first_letter, $last_letter);
-            $name = main::substitute_line($index_heading_texi, "\@$element->{'tag'} index page");
+            $name = main::substitute_line($index_heading_texi, sprintf(__p("\@sectionning_command index page","\@%s index page"), $element->{'tag'}));
             $simple = main::simple_format(undef,undef,"simple_format \@$element->{'tag'} index page", $index_heading_texi);
           }
           else
@@ -1796,47 +1811,6 @@ require "$T2H_HOME/T2h_i18n.pm"
         -e "$T2H_HOME/T2h_i18n.pm" && -r "$T2H_HOME/T2h_i18n.pm");
 }
 
-my $use_nls = ('@USE_NLS@' eq 'yes' or $0 =~ /\.pl$/);
-
-my $strings_textdomain = '@PACKAGE@' . '_document';
-$strings_textdomain = 'texi2html_document' if ($strings_textdomain eq '@'.'PACKAGE@' . '_document');
-my $messages_textdomain = '@PACKAGE@';
-$messages_textdomain = 'texi2html' if ($messages_textdomain eq '@'.'PACKAGE@');
-
-if ($use_nls)
-{
-    if ($0 =~ /\.pl$/)
-    { # use in-source libintl when testing
-        unshift @INC, "$T2H_HOME/lib/libintl-perl/lib";
-    }
-    elsif ($ENV{T2H_SOURCE_LIBINTL})
-    {
-        unshift @INC, $ENV{T2H_SOURCE_LIBINTL};
-    }
-    elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes')
-    {
-        unshift @INC, "$pkgdatadir/lib/libint-perl/lib";
-    }
-    # gettext-like translations
-    require Locale::TextDomain;
-    require Locale::Messages;
-    # we want a reliable way to switch locale, so we don't use the system 
-    # gettext.
-    Locale::Messages->select_package ('gettext_pp');
-    if ($0 =~ /\.pl$/)
-    {
-         # in case of out of source build, the locales directory should 
-         # be two levels below. $T2H_HOME is in srcdir.
-         foreach my $locales_dir ("$T2H_HOME/locales", "../../locales")
-         {
-             if (-d $locales_dir)
-             {
-                  Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
-                  last;
-             }
-        }
-    }
-}
 
 #########################################################################
 #
@@ -1916,6 +1890,72 @@ my $WORDS_IN_PAGE;
 }
 
 package main;
+
+# prepare the gettext-like framework. To be noted that Locales::TextDomain
+# canot be used, since it cannot be used dynamically through a reuires.
+# Fortunately, Locales::TextDomain is a thin layer above Locales::Messages.
+
+my $use_nls = ('@USE_NLS@' eq 'yes' or $0 =~ /\.pl$/);
+
+my $strings_textdomain = '@PACKAGE@' . '_document';
+$strings_textdomain = 'texi2html_document' if ($strings_textdomain eq '@'.'PACKAGE@' . '_document');
+my $messages_textdomain = '@PACKAGE@';
+$messages_textdomain = 'texi2html' if ($messages_textdomain eq '@'.'PACKAGE@');
+
+#my $messages_textdomain = 'texinfo';
+
+if ($use_nls)
+{
+    if ($0 =~ /\.pl$/)
+    { # use in-source libintl when testing
+        unshift @INC, "$T2H_HOME/lib/libintl-perl/lib";
+    }
+    elsif ($ENV{T2H_SOURCE_LIBINTL})
+    {
+        unshift @INC, $ENV{T2H_SOURCE_LIBINTL};
+    }
+    elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes')
+    {
+        unshift @INC, "$pkgdatadir/lib/libint-perl/lib";
+    }
+    # gettext-like translations
+    #require Locale::TextDomain;
+    require Locale::Messages;
+    # we want a reliable way to switch locale, so we don't use the system 
+    # gettext.
+    Locale::Messages->select_package ('gettext_pp');
+    if ($0 =~ /\.pl$/)
+    {
+         # in case of out of source build, the locales directory should 
+         # be two levels below. $T2H_HOME is in srcdir.
+         foreach my $locales_dir ("$T2H_HOME/locales", "../../locales")
+         {
+             if (-d $locales_dir)
+             {
+                  Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
+                  last;
+             }
+        }
+    }
+}
+
+sub __($)
+{
+    my $msgid = shift;
+    return Locale::Messages::dgettext($messages_textdomain, $msgid);
+}
+
+sub __p($$)
+{
+    my $context = shift;
+    my $msgid = shift;
+    return Locale::Messages::dpgettext($messages_textdomain, $context, $msgid);
+}
+
+sub N__($)
+{
+    return $_[0];
+}
 
 #
 # flush stdout and stderr after every write
@@ -2318,12 +2358,12 @@ sub warn_unknown_language($;$)
     }
 
     if (! $Texi2HTML::Config::language_codes{$lang_code})
-    { # i18n
-        msg_warn("$lang_code is not a valid language code.", $line_nr);
+    {
+        msg_warn(sprintf(__("%s is not a valid language code"), $lang_code), $line_nr);
     }
     if (defined($region_code) and ! $Texi2HTML::Config::region_codes{$region_code})
-    { # i18n
-        msg_warn("$region_code is not a valid region code.", $line_nr);
+    {
+        msg_warn(sprintf(__("%s is not a valid region code"), $region_code), $line_nr);
     }
 }
 
@@ -2409,11 +2449,11 @@ sub set_footnote_style($$;$)
     }
     elsif ($from_command_line)
     {
-         warn ("$0: --footnote-style arg must be `separate' or `end', not `$value'.\n");
+         cmdline_warn(sprintf(__("--footnote-style arg must be `separate' or `end', not `%s'."), $value));
     }
     else
     {
-         line_error ("\@$command arg must be `separate' or `end', not `$value'.", $line_nr);
+         line_error (sprintf(__("\@%s arg must be `separate' or `end', not `%s'"), $command, $value), $line_nr);
     }
 }
 
@@ -2431,7 +2471,7 @@ sub encoding_alias($;$$)
          my $result_encoding = Encode::resolve_alias($encoding);
          if (! $result_encoding)
          {
-              msg_warn("Encoding name unknown: $encoding", $line_nr, $context_string);
+              msg_warn(sprintf(__("unrecognized encoding name `%s'"), $encoding), $line_nr, $context_string);
               return undef;
          }
          if (defined($Texi2HTML::Config::t2h_encoding_aliases{$result_encoding}))
@@ -2446,10 +2486,10 @@ sub encoding_alias($;$$)
          if (exists($Texi2HTML::Config::t2h_encoding_aliases{$encoding}))
          {
              $encoding = $Texi2HTML::Config::t2h_encoding_aliases{$encoding};
-             document_warn ("Document encoding is utf8, but there is no unicode support") if ($encoding eq 'utf-8');
+             document_warn (__("Document encoding is utf8, but there is no unicode support")) if ($encoding eq 'utf-8');
              return $encoding;
          }
-         msg_warn("Encoding $encoding certainly poorly supported", $line_nr);
+         msg_warn(sprintf(__("Encoding %s certainly poorly supported"), $encoding), $line_nr);
          return $encoding;
     }
 }
@@ -2468,7 +2508,7 @@ sub gdt($;$$)
         $state = main::duplicate_formatting_state($Texi2HTML::THISDOC{'state'});
     }
 
-    return substitute_line ($message, "translation", $state) unless ($use_nls);
+    return substitute_line ($message, __("translation"), $state) unless ($use_nls);
 
     my $saved_LANGUAGE = $ENV{'LANGUAGE'};
 
@@ -2535,7 +2575,7 @@ sub gdt($;$$)
              $map->{'internal_translation_close_brace'} = '}';
          }
     }
-    $result = substitute_line ($result, "translation", $state);
+    $result = substitute_line ($result, __("translation"), $state);
     if (defined($re))
     {
          $result =~ s/\{($re)\}/defined $context->{$1} ? $context->{$1} : "{$1}"/ge;
@@ -2693,11 +2733,11 @@ sub set_paragraphindent($$;$$)
    }
    elsif ($from_command_line)
    {
-       cmdline_warn ("--paragraph-indent arg must be numeric/`none'/`asis', not `$value'");
+       cmdline_warn (sprintf(__("--paragraph-indent arg must be numeric/`none'/`asis', not `%s'"), $value));
    }
    elsif ($pass == 1)
    {
-       line_error ("\@$command arg must be numeric/`none'/`asis', not `$value'", $line_nr);
+       line_error (sprintf(__("\@paragraphindent arg must be numeric/`none'/`asis', not `%s'"), $value), $line_nr);
    }
 }
 
@@ -3555,14 +3595,13 @@ my @basic_options = ('dump-texi', 'debug', 'test', 'conf-dir', 'init-file',
 
 #      --command=CMD           insert CMD in copy of input file
 my $makeinfo_help =
-"Usage: $my_command_name [OPTION]... TEXINFO-FILE...
-
-".
-'Translate Texinfo source documentation to various other formats, by default
-Info files suitable for reading online with Emacs or standalone GNU Info.
-
-General options:
-      --error-limit=NUM       quit after NUM errors (default 100).
+sprintf(__("Usage: %s [OPTION]... TEXINFO-FILE...\n"), $my_command_name) 
+."\n".
+__("Translate Texinfo source documentation to various other formats, by default
+Info files suitable for reading online with Emacs or standalone GNU Info.\n") 
+."\n";
+$makeinfo_help .= sprintf(__("General options:
+      --error-limit=NUM       quit after NUM errors (default %d).
       --document-language=STR locale to use in translating Texinfo keywords
                                 for the output document (default C).
       --force                 preserve output even if errors.
@@ -3570,17 +3609,17 @@ General options:
       --no-validate           suppress node cross-reference validation.
       --no-warn               suppress warnings (but not errors).
   -v, --verbose               explain what is being done.
-      --version               display version information and exit.
-
-Output format selection (default is to produce Info):
+      --version               display version information and exit.\n"), $Texi2HTML::Config::ERROR_LIMIT)
+."\n";
+$makeinfo_help .= __("Output format selection (default is to produce Info):
       --docbook               output Docbook XML rather than Info.
       --html                  output HTML rather than Info.
       --xml                   output Texinfo XML rather than Info.
-      --plaintext             output plain text rather than Info.
-
-General output options:
+      --plaintext             output plain text rather than Info.\n")
+."\n";
+$makeinfo_help .= __("General output options:
   -E, --macro-expand=FILE     output macro-expanded source to FILE,
-                                ignoring any @setfilename.
+                                ignoring any \@setfilename.
       --no-headers            suppress node separators, Node: lines, and menus
                                 from Info output (thus producing plain text)
                                 or from HTML (thus producing shorter output);
@@ -3588,79 +3627,80 @@ General output options:
       --no-split              suppress the splitting of Info or HTML output,
                                 generate only one output file.
       --number-sections       output chapter and sectioning numbers.
-  -o, --output=FILE           output to FILE (or directory if split HTML).
-
-Options for Info and plain text:
+  -o, --output=FILE           output to FILE (or directory if split HTML).\n")
+."\n";
+$makeinfo_help .= sprintf(__("Options for Info and plain text:
       --disable-encoding      do not output accented and special characters
-                                in Info output based on @documentencoding.
+                                in Info output based on \@documentencoding.
       --enable-encoding       override --disable-encoding (default).
-      --fill-column=NUM       break Info lines at NUM characters (default 72).
+      --fill-column=NUM       break Info lines at NUM characters (default %d).
       --footnote-style=STYLE  output footnotes in Info according to STYLE:
-                                `separate\' to put them in their own node;
-                                `end\' to put them at the end of the node, in
+                                `separate' to put them in their own node;
+                                `end' to put them at the end of the node, in
                                 which they are defined (this is the default).
-      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default 3).
-                                If VAL is `none\', do not indent; if VAL is
-                                `asis\', preserve existing indentation.
-      --split-size=NUM        split Info files at size NUM (default 300000).
-
-Options for HTML:
+      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).
+                                If VAL is `none', do not indent; if VAL is
+                                `asis', preserve existing indentation.
+      --split-size=NUM        split Info files at size NUM (default %d).\n"),
+  $Texi2HTML::Config::FILLCOLUMN, $Texi2HTML::Config::PARAGRAPHINDENT, $Texi2HTML::Config::SPLIT_SIZE)
+."\n";
+$makeinfo_help .= __("Options for HTML:
       --css-include=FILE      include FILE in HTML <style> output;
                                 read stdin if FILE is -.
       --css-ref=URL           generate reference to a CSS file.
       --internal-links=FILE   produce list of internal links in FILE.
       --transliterate-file-names
-                              produce file names in ASCII transliteration.
-
-Options for XML and Docbook:
-      --output-indent=VAL     indent XML elements by VAL spaces (default 2).
-                                If VAL is 0, ignorable whitespace is dropped.
-
-Input file options:
-      --commands-in-node-names  allow @ commands in node names.
-  -D VAR                        define the variable VAR, as with @set.
-  -I DIR                        append DIR to the @include search path.
-  -P DIR                        prepend DIR to the @include search path.
-  -U VAR                        undefine the variable VAR, as with @clear.
-
-Conditional processing in input:
-  --ifdocbook       process @ifdocbook and @docbook even if
+                              produce file names in ASCII transliteration.\n")
+."\n";
+# This is ignored, so remove it from help
+#Options for XML and Docbook:
+#      --output-indent=VAL     indent XML elements by VAL spaces (default 2).
+#                                If VAL is 0, ignorable whitespace is dropped.
+#
+$makeinfo_help .= __("Input file options:
+      --commands-in-node-names  allow \@ commands in node names.
+  -D VAR                        define the variable VAR, as with \@set.
+  -I DIR                        append DIR to the \@include search path.
+  -P DIR                        prepend DIR to the \@include search path.
+  -U VAR                        undefine the variable VAR, as with \@clear.\n")
+."\n";
+$makeinfo_help .= __("Conditional processing in input:
+  --ifdocbook       process \@ifdocbook and \@docbook even if
                       not generating Docbook.
-  --ifhtml          process @ifhtml and @html even if not generating HTML.
-  --ifinfo          process @ifinfo even if not generating Info.
-  --ifplaintext     process @ifplaintext even if not generating plain text.
-  --iftex           process @iftex and @tex; implies --no-split.
-  --ifxml           process @ifxml and @xml.
-  --no-ifdocbook    do not process @ifdocbook and @docbook text.
-  --no-ifhtml       do not process @ifhtml and @html text.
-  --no-ifinfo       do not process @ifinfo text.
-  --no-ifplaintext  do not process @ifplaintext text.
-  --no-iftex        do not process @iftex and @tex text.
-  --no-ifxml        do not process @ifxml and @xml text.
+  --ifhtml          process \@ifhtml and \@html even if not generating HTML.
+  --ifinfo          process \@ifinfo even if not generating Info.
+  --ifplaintext     process \@ifplaintext even if not generating plain text.
+  --iftex           process \@iftex and \@tex; implies --no-split.
+  --ifxml           process \@ifxml and \@xml.
+  --no-ifdocbook    do not process \@ifdocbook and \@docbook text.
+  --no-ifhtml       do not process \@ifhtml and \@html text.
+  --no-ifinfo       do not process \@ifinfo text.
+  --no-ifplaintext  do not process \@ifplaintext text.
+  --no-iftex        do not process \@iftex and \@tex text.
+  --no-ifxml        do not process \@ifxml and \@xml text.
 
-  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.
-
-  The defaults for the @if... conditionals depend on the output format:
+  Also, for the --no-ifFORMAT options, do process \@ifnotFORMAT text.\n")
+."\n";
+$makeinfo_help .= __("  The defaults for the \@if... conditionals depend on the output format:
   if generating HTML, --ifhtml is on and the others are off;
   if generating Info, --ifinfo is on and the others are off;
   if generating plain text, --ifplaintext is on and the others are off;
-  if generating XML, --ifxml is on and the others are off.
-
-Examples:
-  makeinfo foo.texi                      write Info to foo\'s @setfilename
-  makeinfo --html foo.texi               write HTML to @setfilename
-  makeinfo --xml foo.texi                write Texinfo XML to @setfilename
-  makeinfo --docbook foo.texi            write DocBook XML to @setfilename
+  if generating XML, --ifxml is on and the others are off.\n")
+."\n";
+$makeinfo_help .= __("Examples:
+  makeinfo foo.texi                      write Info to foo's \@setfilename
+  makeinfo --html foo.texi               write HTML to \@setfilename
+  makeinfo --xml foo.texi                write Texinfo XML to \@setfilename
+  makeinfo --docbook foo.texi            write DocBook XML to \@setfilename
   makeinfo --no-headers foo.texi         write plain text to standard output
 
   makeinfo --html --no-headers foo.texi  write html without node lines, menus
   makeinfo --number-sections foo.texi    write Info with numbered sections
-  makeinfo --no-split foo.texi           write one Info file however big
-
-Email bug reports to bug-texinfo@gnu.org,
-general questions and discussion to help-texinfo@gnu.org.
-Texinfo home page: http://www.gnu.org/software/texinfo/
-';
+  makeinfo --no-split foo.texi           write one Info file however big\n")
+."\n";
+$makeinfo_help .= __("Email bug reports to bug-texinfo\@gnu.org,
+general questions and discussion to help-texinfo\@gnu.org.
+Texinfo home page: http://www.gnu.org/software/texinfo/") ."\n";
 
 # parsing like texi2html:
 
@@ -3669,9 +3709,8 @@ my $T2H_USAGE_TEXT = <<EOT;
 Usage: texi2html  [OPTIONS] TEXINFO-FILE
 Translates Texinfo source documentation to HTML.
 EOT
-my $T2H_FAILURE_TEXT = <<EOT;
-Try 'texi2html --help' for usage instructions.
-EOT
+my $T2H_FAILURE_TEXT = sprintf(__("Try `%s --help' for usage instructions.\n"), $my_command_name);
+
 
 my $options = new Getopt::MySimple;
 
@@ -3737,12 +3776,12 @@ else
       push @types, "$key$T2H_OPTIONS->{$key}->{'type'}";
    }
    $opts->{'version'} = sub {
-      print "makeinfo (GNU texinfo) 4.13
+      print "$my_command_name (GNU texinfo) $THISVERSION\n\n";
 
-Copyright (C) 2008 Free Software Foundation, Inc.
+      printf __("Copyright (C) %s Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.";
+There is NO WARRANTY, to the extent permitted by law.\n"), '2008';
       exit 0;
    };
    $opts->{'help'} = sub {
@@ -3759,7 +3798,10 @@ There is NO WARRANTY, to the extent permitted by law.";
 
 if (! $Texi2HTML::THISDOC{'format_from_command_line'} and defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) and $ENV{'TEXINFO_OUTPUT_FORMAT'} ne '')
 {
-  Texi2HTML::Config::t2h_default_load_format($ENV{'TEXINFO_OUTPUT_FORMAT'}, 0); 
+  if (! Texi2HTML::Config::t2h_default_load_format($ENV{'TEXINFO_OUTPUT_FORMAT'}, 0))
+  {  
+      cmdline_warn (sprintf(N__("Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'."), $ENV{'TEXINFO_OUTPUT_FORMAT'}));
+  }
 }
 
 # $T2H_DEBUG and $T2H_VERBOSE are shorthands
@@ -4365,7 +4407,7 @@ sub set_docu_names($$)
             }
             else
             {
-               document_error ("Can't create directory $docu_rdir", 1);
+               document_error (sprintf(__("Can't create directory `%s': %s"), $docu_rdir, $!), 1);
             }
         }
         print STDERR "# putting result files into directory $docu_rdir\n" if ($T2H_VERBOSE);
@@ -5082,12 +5124,12 @@ sub pass_structure($$)
                         if (exists($nodes{$node}) and defined($nodes{$node})
                              and $nodes{$node}->{'seen'})
                         {
-                            line_error ("Node `$node' previously defined ".format_line_number($nodes{$node}->{'line_nr'}), $line_nr);
+                            line_error (sprintf(__("Node `%s' previously defined %s"), $node, format_line_number($nodes{$node}->{'line_nr'})), $line_nr);
                             next;
                         }
                         elsif ($node =~ /^\(.+\)/)
                         {
-                            line_error ("Syntax for an external node used for `$node'", $line_nr);
+                            line_error (sprintf(__("Syntax for an external node used for `%s'"), $node), $line_nr);
                             next;
                         }
                         else
@@ -5369,7 +5411,7 @@ sub common_misc_commands($$$$)
         }
         else
         {
-             line_warn ("Missing argument for \@$command", $line_nr) if (!$pass);
+             line_error (sprintf(__("%c%s requires a name"), ord('@'), $command), $line_nr) if (!$pass);
         }
     }
     elsif ($command eq 'clear')
@@ -5380,7 +5422,7 @@ sub common_misc_commands($$$$)
         }
         else
         {
-            line_warn ("Missing argument for \@$command", $line_nr) if (!$pass);
+             line_error (sprintf(__("%c%s requires a name"), ord('@'), $command), $line_nr) if (!$pass);
         }
     }
     elsif ($command eq 'clickstyle')
@@ -5445,7 +5487,7 @@ sub common_misc_commands($$$$)
             }
             else
             {
-                line_error ("Bad \@$command", $line_nr) if ($pass == 1);
+                line_error (sprintf(__("\@exampleindent arg must be numeric/`asis', not `%s'"), $line), $line_nr) if ($pass == 1);
             }
         }
         elsif ($command eq 'frenchspacing')
@@ -5456,7 +5498,7 @@ sub common_misc_commands($$$$)
             }
             else
             {
-                line_error ("Bad \@$command", $line_nr) if ($pass == 1);
+                line_error (sprintf(__("Expected \@%s on or off, not `%s'"), $command, $line), $line_nr) if ($pass == 1);
             }
         }
         elsif ($command eq 'kbdinputstyle')
@@ -5478,6 +5520,10 @@ sub common_misc_commands($$$$)
           # chapter, section, and page. What is a page is not necessarily 
           # well defined in html, however...
           # @thisfile is the @include file. Should be in $line_nr.
+
+          # Also if that command appears in the texi, the error message is 
+          # Unknown command `@evenheading'
+          # It could be better.
             my $arg = $line;
             $arg =~ s/^\s+//;
             $Texi2HTML::THISDOC{$command} = $arg;
@@ -5540,7 +5586,7 @@ sub misc_command_texi($$$$)
          {
             my $encoding = $2;
             $Texi2HTML::THISDOC{'documentencoding'} = $encoding;
-            line_warn("Encoding $encoding is not a canonical texinfo encoding", $line_nr)
+            line_warn(sprintf(__("Encoding %s is not a canonical texinfo encoding"), $encoding), $line_nr)
                 if (!$Texi2HTML::Config::canonical_texinfo_encodings{lc($encoding)});
             if (Texi2HTML::Config::set_conf('DOCUMENT_ENCODING', $Texi2HTML::THISDOC{'documentencoding'}, 1))
             {
@@ -5697,9 +5743,9 @@ sub misc_command_structure($$$$)
         {
             my $index_from = $1;
             my $index_to = $2;
-            line_error ("unknown from index name $index_from in \@$command", $line_nr)
+            line_error (sprintf(__("Unknown from index `%s' in \@%s"), $index_from, $command), $line_nr)
                 unless $index_names{$index_from};
-            line_error ("unknown to index name $index_to in \@$command", $line_nr)
+            line_error (sprintf(__("Unknown to index name `%s' in \@%s"), $index_to, $command), $line_nr)
                 unless $index_names{$index_to};
             if ($index_names{$index_from} and $index_names{$index_to})
             {
@@ -5734,12 +5780,17 @@ sub misc_command_structure($$$$)
             my $name = $1;
             if ($forbidden_index_name{$name})
             {
-                line_error("Reserved index name $name", $line_nr);
+                line_error(sprintf(__("Reserved index name %s"),$name), $line_nr);
             }
             else
             {
                 my $in_code = 0;
                 $in_code = 1 if ($command eq 'defcodeindex');
+                # FIXME this leads to spurious error message in hello_nodes
+                #if (defined($index_names{$name})) 
+                #{
+                #    line_error(sprintf(__("Index `%s' already exists"),$name), $line_nr);
+                #}
                 $index_names{$name}->{'prefixes'}->{$name} = $in_code;
                 $index_prefix_to_name{$name} = $name;
                 push @{$Texi2HTML::THISDOC{$command}}, $name;
@@ -5772,7 +5823,7 @@ sub misc_command_structure($$$$)
         }
         else
         {
-            line_error ("Bad \@$command", $line_nr);
+            line_error (sprintf(__("Only \@%s 10 or 11 is supported, not `%s'"),$command, $line), $line_nr);
         }
     }
     elsif ($command eq 'pagesizes')
@@ -5897,7 +5948,7 @@ sub misc_command_text($$$$$$)
         }
         else
         {
-            line_error ("\@$command needs a numeric arg or no arg", $line_nr);
+            line_error (sprintf(__("\@sp requires a positive numeric argument, not `%s'"), $line), $line_nr);
         }
         $sp_number = 1 if ($sp_number eq '');
         if (!$state->{'remove_texi'})
@@ -6634,7 +6685,7 @@ sub rearrange_elements()
         { 
             if (defined($node->{$direction}) and !$node->{$node_directions{$direction}})
             {
-                line_warn ("$direction_texts{$direction} reference to nonexistent `$node->{$direction}'", $node->{'line_nr'}); # for `$node->{'texi'}'"
+                line_error (sprintf(__("%s reference to nonexistent `%s'"),$direction_texts{$direction}, $node->{$direction}), $node->{'line_nr'}); # for `$node->{'texi'}'"
                 my @equivalent_nodes = equivalent_nodes($node->{$direction});
                 my $node_seen;
                 foreach my $equivalent_node (@equivalent_nodes)
@@ -6704,8 +6755,12 @@ sub rearrange_elements()
                 }
             }
             unless ($found)
-            {
-                line_warn ("unreferenced node `$node->{'texi'}'", $node->{'line_nr'});
+            { # makeinfo has also 
+              # "`%s' has no Up field (perhaps incorrect sectioning?)"
+              # but it is not useful since the up will always be set if 
+              # the node appears in a menu so the following error message 
+              # is enough
+                line_warn (sprintf(__("unreferenced node `%s'"), $node->{'texi'}), $node->{'line_nr'});
             }
         }
 
@@ -6756,7 +6811,7 @@ sub rearrange_elements()
             # there may be infinite loops when finding following node (see below)
             unless (defined($node->{'menu_up_hash'}) and ($node->{'menu_up_hash'}->{$node->{'nodeup'}->{'texi'}}))
             {
-                line_warn("Node `$node->{'nodeup'}->{'texi'}' lacks menu item for `$node->{'texi'}' despite being its Up target.", $node->{'nodeup'}->{'line_nr'}) if ($Texi2HTML::Config::SHOW_MENU);
+                line_error(sprintf(__("Node `%s' lacks menu item for `%s' despite being its Up target"), $node->{'nodeup'}->{'texi'}, $node->{'texi'}), $node->{'nodeup'}->{'line_nr'}) if ($Texi2HTML::Config::SHOW_MENU);
                 push @{$node->{'up_not_in_menu'}}, $node->{'nodeup'}->{'texi'};
             }
         }
@@ -6775,7 +6830,7 @@ sub rearrange_elements()
             }
             unless ($found)
             {
-                line_warn ("For `$node->{'texi'}', up in menu `$node->{'menu_up'}->{'texi'}' and up `$node->{'nodeup'}->{'texi'}' don't match", $node->{'line_nr'});
+                line_warn (sprintf(__("For `%s', up in menu `%s' and up `%s' don't match"), $node->{'texi'}, $node->{'menu_up'}->{'texi'}, $node->{'nodeup'}->{'texi'}), $node->{'line_nr'});
             }
 
         }
@@ -6805,8 +6860,8 @@ sub rearrange_elements()
                     $next = get_node($section->{'sectionnext'});
                     if (defined($next) and $Texi2HTML::Config::SHOW_MENU)
                     {
-                        line_warn ("No node following `$node->{'texi'}' in menu, but `$next->{'texi'}' follows in sectionning", $node->{'line_nr'}) if (!defined($node->{'menu_next'}));
-                        line_warn ("Node following `$node->{'texi'}' in menu `$node->{'menu_next'}->{'texi'}' and in sectionning `$next->{'texi'}' differ", $node->{'line_nr'}) 
+                        line_warn (sprintf(__("No node following `%s' in menu, but `%s' follows in sectionning"), $node->{'texi'}, $next->{'texi'}), $node->{'line_nr'}) if (!defined($node->{'menu_next'}));
+                        line_warn (sprintf(__("Node following `%s' in menu `%s' and in sectionning `%s' differ"), $node->{'texi'}, $node->{'menu_next'}->{'texi'}, $next->{'texi'}), $node->{'line_nr'}) 
                            if (defined($node->{'menu_next'}) and $next ne $node->{'menu_next'});
                     }
                 }
@@ -7749,9 +7804,10 @@ sub do_section_names($$)
 {
     my $number = shift;
     my $section = shift;
-    #$section->{'name'} = substitute_line($section->{'texi'});
     my $texi = &$Texi2HTML::Config::heading_texi($section->{'tag'}, $section->{'texi'}, $section->{'number'});
     $section->{'text'} = substitute_line($texi, "\@$section->{'tag'}", undef, $section->{'line_nr'});
+    # no need for translation since there is no line number it should never
+    # appear in error messages.
     $section->{'text_nonumber'} = substitute_line($section->{'texi'}, "\@$section->{'tag'} no number");
     # backward compatibility
     # Removed from doc in nov 2009
@@ -7831,14 +7887,14 @@ sub enter_index_entry($$$$$)
     my $index_name = $index_prefix_to_name{$prefix};
     if (!defined($index_name))
     {
-        line_error ("Undefined index command: ${prefix}index", $line_nr);
+        line_error (sprintf(__("Unknown index `%s'"), $prefix), $line_nr);
         $entry = '';
         $index_name = $prefix;
     }
     if ($current_element eq $element_before_anything)
     {
         #line_warn ("Index entry before document: \@${prefix}index $entry", $line_nr); 
-        line_error ("Entry for index `$index_name' outside of any node.", $line_nr);
+        line_error (sprintf(__("Entry for index `%s' outside of any node"), $index_name), $line_nr);
     }
     $entry = trim_comment_spaces ($entry, "index entry in \@$command", $line_nr);
     # The $key is mostly usefull for alphabetical sorting.
@@ -8797,7 +8853,7 @@ sub open_out($;$)
     $mode = '>>' if ($append);
     unless (open(FILE, $mode, $file))
     {
-        document_error ("Can't open $file for writing: $!", 1);
+        document_error ("could not open $file for writing: $!", 1);
     }
     push @opened_files, $file;
     if (defined($Texi2HTML::THISDOC{'OUT_ENCODING'}) and $Texi2HTML::Config::USE_UNICODE)
@@ -8885,15 +8941,13 @@ sub check_die(;$)
 
    if (!$Texi2HTML::Config::FORCE)
    {
-       my $name = $0;
-       $name =~ s/^.*\///;
        if (@opened_files == 1)
        {
-           warn "$name: Removing output file `$opened_files[0]' due to errors; use --force to preserve.\n";
+           warn sprintf(__("%s: Removing output file `%s' due to errors; use --force to preserve.\n"), $my_command_name, $opened_files[0]);
        }
        elsif (@opened_files > 1)
        {
-           warn "$name: Removing output files due to errors; use --force to preserve.\n";
+           warn sprintf(__("%s: Removing output files due to errors; use --force to preserve.\n"), $my_command_name);
        }
        foreach my $file (@opened_files)
        {
@@ -8933,14 +8987,14 @@ sub document_warn ($)
    return if ($Texi2HTML::Config::NO_WARN);
    my $text = shift;
    chomp ($text);
-   warn "warning: $text\n";
+   warn sprintf(__p("warning: warning_message", "warning: %s\n"), $text);
 }
 
 my $error_nrs = 0;
 sub check_errors()
 {
    $error_nrs ++;
-    die "Max error number exceeded\n" if ($error_nrs >= $Texi2HTML::Config::ERROR_LIMIT);
+    die __("Too many errors!  Gave up.\n") if ($error_nrs >= $Texi2HTML::Config::ERROR_LIMIT);
 }
 
 sub msg_debug($;$)
@@ -8962,7 +9016,14 @@ sub cmdline_warn ($)
 {
    my $text = shift;
    chomp ($text);
-   warn "$0: $text\n";
+   warn sprintf(__p("command_name: warning_message", "%s: %s\n"), $my_command_name, $text);
+}
+
+sub cmdline_error ($)
+{
+   my $text = shift;
+   chomp ($text);
+   warn sprintf(__p("command_name: error_message", "%s: %s\n"), $my_command_name, $text);
 }
 
 sub document_error($;$)
@@ -9022,9 +9083,14 @@ sub line_warn($$)
     my $file = $line_number->{'file_name'};
     # otherwise out of source build fail since the file names are different
     $file =~ s/^.*\/// if ($Texi2HTML::Config::TEST);
-    my $macro_text = '';
-    $macro_text = " (via \@$line_number->{'macro'})" if ($line_number->{'macro'} ne '');
-    warn "$file:$line_number->{'line_nr'}: warning: $text$macro_text\n";
+    if ($line_number->{'macro'} ne '')
+    {
+        warn sprintf(__("%s:%d: warning: %s (via \@%s)\n"), $file, $line_number->{'line_nr'}, $text, $line_number->{'macro'});
+    }
+    else
+    {
+        warn sprintf(__("%s:%d: warning: %s\n"), $file, $line_number->{'line_nr'}, $text);
+    }
 }
 
 sub line_error($$)
@@ -9051,10 +9117,26 @@ sub format_line_number(;$)
     my $macro_text = '';
     #$line_number = undef;
     return '' unless (defined($line_number));
-    $macro_text = " in \@$line_number->{'macro'}" if ($line_number->{'macro'} ne '');
-    my $file_text = '(';
-    $file_text = "(in $line_number->{'file_name'} " if ($line_number->{'file_name'} ne $Texi2HTML::THISDOC{'input_file_name'});
-    return "${file_text}l. $line_number->{'line_nr'}" . $macro_text . ')';
+    my $print_filename = ($line_number->{'file_name'} ne $Texi2HTML::THISDOC{'input_file_name'});
+    if ($line_number->{'macro'} ne '')
+    {
+        if ($print_filename)
+        {
+            return sprintf(__("(in %s l. %d via \@%s)"), $line_number->{'file_name'}, $line_number->{'line_nr'}, $line_number->{'macro'});
+        }
+        else
+        {
+            return sprintf(__("(l. %d via \@%s)"), $line_number->{'line_nr'}, $line_number->{'macro'});
+        }
+    }
+    elsif ($print_filename)
+    {
+        return sprintf(__("(in %s l. %d)"), $line_number->{'file_name'}, $line_number->{'line_nr'});
+    }
+    else
+    {
+        return sprintf(__("(l. %d)"), $line_number->{'line_nr'});
+    }
 }
 
 # to debug, dump the result of pass_texi and pass_structure in a file
@@ -9165,9 +9247,10 @@ sub top_stack($;$)
 }
 
 # return the next element with balanced {}
-sub next_bracketed($$;$)
+sub next_bracketed($$$;$)
 {
     my $line = shift;
+    my $command = shift;
     my $line_nr = shift;
     my $report = shift;
     my $opened_braces = 0;
@@ -9209,7 +9292,7 @@ sub next_bracketed($$;$)
     
             if ($opened_braces < 0)
             {
-                line_error("too much '}' in specification", $line_nr) if ($report);
+                line_error(sprintf(__("Too much '}' in \@%s"), $command), $line_nr) if ($report);
                 $opened_braces = 0;
                 #next;
             }
@@ -9219,22 +9302,23 @@ sub next_bracketed($$;$)
     }
     if ($opened_braces)
     {
-        line_error("'{' not closed in specification", $line_nr) if ($report);
+        line_error(sprintf(__("Missing `}' on \@%s line"), $command), $line_nr) if ($report);
         return ($result, '', $spaces);
         #return ($result . ( '}' x $opened_braces), '', $spaces);
     }
-    print STDERR "BUG: at the end of next_bracketed\n";
+    msg_debug ("BUG: at the end of next_bracketed", $line_nr);
     return undef;
 }
 
 # def prams are also split at @-commands if not in brackets
-sub next_def_param($$;$)
+sub next_def_param($$$;$)
 {
     my $line = shift;
+    my $command = shift;
     my $line_nr = shift;
     my $report = shift;
     my ($item, $spaces);
-    ($item, $line, $spaces) = next_bracketed($line, $line_nr, $report);
+    ($item, $line, $spaces) = next_bracketed($line, $command, $line_nr, $report);
     return ($item, $line, $spaces) if (!defined($item));
     if ($item =~ /^\{/)
     {
@@ -9373,7 +9457,7 @@ sub do_anchor_label($$$$)
     if ((defined($state->{'multiple_pass'}) and $state->{'multiple_pass'} > 0) or $state->{'outside_document'})
     {
        # no warning when outside of document.
-       line_warn("Anchor `$anchor' ignored in $state->{'region'} expanded more than once", $line_nr) unless ($state->{'outside_document'} or defined($state->{'expansion'}));
+       line_warn(sprintf(__("Anchor `%s' ignored in %s expanded more than once"),$anchor, $state->{'region'}), $line_nr) unless ($state->{'outside_document'} or defined($state->{'expansion'}));
        return '';
     }
 
@@ -9847,9 +9931,8 @@ sub parse_def($$$;$)
         # backward compatibility, it was possible to have a { in front.
         $arg =~  s/^\{//;
         my ($item, $spaces);
-        ($item, $line, $spaces) = next_def_param($line, $line_nr, $report);
+        ($item, $line, $spaces) = next_def_param($line, $command, $line_nr, $report);
         last if (!defined($item));
-        #$item =~ s/^\{(.*)\}$/$1/ if ($item =~ /^\{/);
         if ($arg eq 'category')
         {
             $category = $item;
@@ -9891,7 +9974,7 @@ sub parse_def($$$;$)
     while ($line_remaining !~ /^\s*$/)
     {
         my ($item, $spaces);
-        ($item, $line_remaining,$spaces) = next_def_param($line_remaining, $line_nr);
+        ($item, $line_remaining,$spaces) = next_def_param($line_remaining, $command, $line_nr);
         if ($item =~ /^([$always_delimiter_quoted])/ or (!$arg_and_type and  $item =~ /^([$in_type_delimiter_quoted].*)/))
         {
            $item = $1;
@@ -9913,10 +9996,8 @@ sub parse_def($$$;$)
            $after_type = 1;
         }
         $spaces = ' ' if ($spaces);
-        #$item =~ s/^\{(.*)\}$/$1/ if ($item =~ /^\{/);
         $line .= $spaces . $item;
         push @arguments, $spaces .$item;
-        #push @arguments, $item;
     }
 #print STDERR "PARSE_DEF (style $style, category $category, name $name, type $type, class $class, line $line)\n";
     return ($format, $style, $category, $name, $type, $class, $line, \@arguments, \@arg_types);
@@ -10003,7 +10084,7 @@ sub parse_multitable($$)
         {
             unless ($fraction =~ /^(\d*\.\d+)|(\d+)\.?$/)
             { 
-                line_error ("column fraction not a number: $fraction", $line_nr);
+                line_error (sprintf(__("column fraction not a number: %s"), $fraction), $line_nr);
             }
         }
     }
@@ -10014,7 +10095,7 @@ sub parse_multitable($$)
         while ($line !~ /^\s*$/)
         {
             my $spaces;
-            ($element, $line, $spaces) = next_bracketed($line, $line_nr, 1);
+            ($element, $line, $spaces) = next_bracketed($line, 'multitable', $line_nr, 1);
             if ($element =~ /^\{/)
             {
                 $table_width++;
@@ -10024,7 +10105,7 @@ sub parse_multitable($$)
             }
             else
             {
-                line_warn ("garbage in multitable specification: $element", $line_nr);
+                line_warn (sprintf(__("ignoring stray text `%s' after \@multitable"), $element), $line_nr);
             }
         }
     }
@@ -10046,7 +10127,7 @@ sub end_format($$$$$)
         $state->{$format}--;
         if ($state->{$format} < 0)
         { # FIXME currently happens, see invalid/not_closed_in_menu.texi
-             line_error("Too many $format closed", $line_nr);
+             line_error(sprintf(__("Too many %s closed"), $format), $line_nr);
              #print STDERR "Bug, $format counter negative: $state->{$format}\n";
              #dump_stack($text, $stack, $state);
              #exit 1;
@@ -10380,21 +10461,21 @@ sub begin_format($$$$$$)
             # there should not be any paragraph/preformatted to close
             # if the comment or the description were closed since they 
             # close it
-            if (! close_menu_comment($text, $stack, $state, "begin \@$macro", $line_nr)
-               and !close_menu_description($text, $stack, $state, "begin \@$macro", $line_nr))
+            if (! close_menu_comment($text, $stack, $state, "\@$macro", $line_nr)
+               and !close_menu_description($text, $stack, $state, "\@$macro", $line_nr))
             {
-               close_paragraph($text, $stack, $state, "begin \@$macro", $line_nr);
+               close_paragraph($text, $stack, $state, "\@$macro", $line_nr);
             }
         }
         else
         {
-            close_paragraph($text, $stack, $state, "begin \@$macro", $line_nr);
+            close_paragraph($text, $stack, $state, "\@$macro", $line_nr);
         }
         $state->{$macro}++;
     }
     elsif (!$in_term)
     {
-        close_paragraph($text, $stack, $state, "begin \@$macro", $line_nr);
+        close_paragraph($text, $stack, $state, "\@$macro", $line_nr);
     }
 
     # close def_item if this is a matching @def*x command
@@ -10413,7 +10494,7 @@ sub begin_format($$$$$$)
         {
             my $base_def_command = $macro;
             $base_def_command =~ s/x$//;
-            line_error("Must be in \@$base_def_command environment to use \@$macro", $line_nr);
+            line_error(sprintf(__("Must be in `\@%s' environment to use `\@%s'"), $base_def_command, $macro), $line_nr);
         }
     }
 
@@ -10472,7 +10553,7 @@ sub begin_format($$$$$$)
             my $substitution_state = duplicate_formatting_state($state);
             # all @def* arguments are in code_style
             $substitution_state->{'code_style'}++;
-            push @formatted_args, substitute_line($arg, "\@$macro (arg $arg_nr)", $substitution_state, $line_nr);
+            push @formatted_args, substitute_line($arg, sprintf(__("\@%s (argument nr %d)"), $macro, $arg_nr), $substitution_state, $line_nr);
             if (grep {$_ eq $type} ('param', 'paramtype', 'delimiter'))
             {
                 $arguments .= $formatted_args[-1];
@@ -10543,10 +10624,10 @@ sub begin_format($$$$$$)
             if (($command eq '') and ($macro ne 'itemize'))
             {
                 $command = 'asis';
-                line_warn("table requires an argument: the formatter for \@item.", $line_nr);
+                line_warn(sprintf(__("\@%s requires an argument: the formatter for %citem"), $macro, ord('@')), $line_nr);
             }
             my $prepended_formatted;
-            $prepended_formatted = substitute_line($prepended, "prepended for \@$macro", prepare_state_multiple_pass('item', $state)) if (defined($prepended));
+            $prepended_formatted = substitute_line($prepended, sprintf(__("prepended for \@%s"), $macro), prepare_state_multiple_pass('item', $state)) if (defined($prepended));
             $format = { 'format' => $macro, 'text' => '', 'command' => $command, 'prepended' => $prepended, 'prepended_formatted' => $prepended_formatted };
             $line = '';
         }
@@ -10572,7 +10653,7 @@ sub begin_format($$$$$$)
                 foreach my $prototype (@$prototype_row)
                 { 
                    $prototype_nr++;
-                   push @prototype_lengths, 2+length(substitute_line($prototype, "\@coumnfraction (arg $prototype_nr)", prepare_state_multiple_pass('columnfractions', $state))); 
+                   push @prototype_lengths, 2+length(substitute_line($prototype, sprintf(__("\@columnfraction (argument nr %d)"), $prototype_nr), prepare_state_multiple_pass('columnfractions', $state))); 
                 }
             }
             $format = { 'format' => $macro, 'text' => '', 'max_columns' => $max_columns, 'columnfractions' => $fractions, 'prototype_row' => $prototype_row, 'prototype_lengths' => \@prototype_lengths, 'cell' => 1 };
@@ -10754,21 +10835,21 @@ sub do_menu_link($$$)
     $node_substitution_state->{'code_style'} = 1;
     $node_normalized_substitution_state->{'code_style'} = 1;
     $name_substitution_state->{'code_style'} = 1 if ($Texi2HTML::Config::format_code_style{'menu_name'});
-    my $node_formatted = substitute_line($menu_entry->{'node'}, "node name in menu", $node_substitution_state, $line_nr);
-    my $node_normalized_formatted = substitute_line($node_name, "normalized node name in menu", $node_normalized_substitution_state);
+    my $node_formatted = substitute_line($menu_entry->{'node'}, __("node name in menu"), $node_substitution_state, $line_nr);
+    my $node_normalized_formatted = substitute_line($node_name, __("normalized node name in menu"), $node_normalized_substitution_state);
 
     my $name_formatted;
     my $has_name = 0;
     if (defined($name) and $name ne '')
     {
-        $name_formatted = substitute_line($menu_entry->{'name'}, "menu entry name", $name_substitution_state, $line_nr);
+        $name_formatted = substitute_line($menu_entry->{'name'}, __("menu entry name"), $name_substitution_state, $line_nr);
         $has_name = 1;
     }
     else
     {
         my $node_as_name = $menu_entry->{'node'};
         $node_as_name =~ s/^\s*//;
-        $name_formatted = substitute_line($node_as_name, "node name in menu", $name_substitution_state);
+        $name_formatted = substitute_line($node_as_name, __("node name in menu"), $name_substitution_state);
     }
 
     my $entry = '';
@@ -10879,7 +10960,7 @@ sub do_xref($$$$)
     {
         if ((@args < 1) or $args[0] eq '')
         {
-            line_error ("First argument to \@$macro may not be empty", $line_nr);
+            line_error (sprintf(__("First argument to \@%s may not be empty"), $macro), $line_nr);
             return '';
         }
     }
@@ -10900,7 +10981,7 @@ sub do_xref($$$$)
         $in_file_style = 1 if ($i == 2 and $macro eq 'inforef' or $i == 3 and $macro ne 'inforef');
         $new_state->{'code_style'}++ if ($in_file_style or $i == 0);
         $new_state->{'remove_texi'} = 1 if ($in_file_style);
-        $formatted_args[$i] = substitute_line($args[$i], "\@$macro (arg $i)", $new_state, $line_nr);
+        $formatted_args[$i] = substitute_line($args[$i], sprintf(__("\@%s (argument nr %d)"), $macro, $i), $new_state, $line_nr);
         $new_state->{'code_style'}-- if ($in_file_style or $i == 0);
         $new_state->{'remove_texi'} = $remove_texi if ($in_file_style);
     }
@@ -10919,6 +11000,9 @@ sub do_xref($$$$)
        $file_texi = $args[3];
        $file = $formatted_args[3];
     }
+    # Remark: makeinfo has this odd error message if the file is empty:
+    # warning (_("Empty file name for HTML cross reference in `%s'")
+    # This seems to be spurious.
     
     # can be an argument or extracted from the node name
     my $file_arg_or_node_texi = $file_texi;
@@ -10934,8 +11018,8 @@ sub do_xref($$$$)
     if ($node_without_file_texi =~ s/^\(([^\)]+)\)\s*//)
     {
        $file_of_node_texi = $1;
-       $file_of_node = substitute_line($file_of_node_texi, "\@$macro node file", $new_state);
-       $node_name = substitute_line($node_without_file_texi, "\@$macro node name", $new_state);
+       $file_of_node = substitute_line($file_of_node_texi, sprintf(__p("\@*ref", "\@%s node file"), $macro), $new_state);
+       $node_name = substitute_line($node_without_file_texi,  sprintf(__p("\@*ref", "\@%s node name"), $macro), $new_state);
        $file_arg_or_node_texi = $file_of_node_texi if ($file_arg_or_node_texi eq '');
        $file_arg_or_node = $file_of_node if ($file_arg_or_node eq '');
        # the file argument takes precedence
@@ -10953,7 +11037,7 @@ sub do_xref($$$$)
     my $node_and_file;
     if (defined($node_and_file_texi))
     {
-       $node_and_file = substitute_line($node_and_file_texi, "\@$macro node with file name", $new_state);
+       $node_and_file = substitute_line($node_and_file_texi, sprintf(__p("\@*ref","\@%s node with file name"), $macro), $new_state);
     }
     else
     {
@@ -11029,7 +11113,7 @@ sub do_xref($$$$)
             $section_or_cross_ref = $cross_ref if ($section eq '');
             if ($element->{'float'} and $section_or_cross_ref eq '')
             {
-                my $style = substitute_line(&$Texi2HTML::Config::listoffloats_float_style($element->{'style_texi'}, $element), "\@listoffloats \@float type");
+                my $style = substitute_line(&$Texi2HTML::Config::listoffloats_float_style($element->{'style_texi'}, $element), __("\@listoffloats \@float type"));
                 $section_or_cross_ref = $style if (defined($style));
             }
             my $name = $section_or_cross_ref;
@@ -11112,7 +11196,7 @@ sub do_acronym_like($$$$$)
          }
          $text =~ s/ $//;
          $explanation_simple_format = simple_format($state, [ $line_nr ], "simple_format \@$command explanation", $text);
-         $explanation_text = substitute_line($text, "\@$command explanation", duplicate_formatting_state($state), $line_nr);
+         $explanation_text = substitute_line($text, sprintf(__p("\@abbr or \@acronym", "\@%s explanation"), $command), duplicate_formatting_state($state), $line_nr);
     }
     return &$Texi2HTML::Config::acronym_like($command, $acronym_texi, substitute_line($acronym_texi, "\@$command", duplicate_formatting_state($state), $line_nr), 
        $with_explanation, $explanation_lines, $explanation_text, $explanation_simple_format);
@@ -11130,7 +11214,7 @@ sub do_caption_shortcaption($$$$$$)
 
     if (!exists($state->{'float'}))
     {
-         line_error("\@$command outside of float", $line_nr);
+         line_error(sprintf(__("\@%s not meaningful outside `\@float' environment"), $command), $line_nr);
          return '';
     }
     my $float = $state->{'float'};
@@ -11188,7 +11272,7 @@ sub do_float_line($$$$$)
          }
          #print STDERR "float: (no label) $state->{'float'}\n";
     }
-    $state->{'float'}->{'style'} = substitute_line($state->{'float'}->{'style_texi'}, "\@$command style", undef, $line_nr);
+    $state->{'float'}->{'style'} = substitute_line($state->{'float'}->{'style_texi'}, __("\@float style"), undef, $line_nr);
     return '';
 }
 
@@ -11207,7 +11291,7 @@ sub do_quotation_line($$$$$)
     if (defined($text_texi))
     {
          $text_texi = trim_around_spaces($text_texi);
-         $text = substitute_line($text_texi, "\@$command line", duplicate_formatting_state($state), $line_nr);
+         $text = substitute_line($text_texi, sprintf(__p("\@*quotation", "\@%s argument"), $command), duplicate_formatting_state($state), $line_nr);
          #$text =~ s/\s*$//;
     }
     my $quotation_args = { 'text' => $text, 'text_texi' => $text_texi };
@@ -11317,25 +11401,25 @@ sub do_image($$$$$)
        $arg = trim_around_spaces($arg) if (defined($arg));
        push @args, $arg;
     }
-    my $base = substitute_line($args[0], "\@$command base name",{'code_style' => 1, 'remove_texi' => 1});
-    my $base_simple = substitute_line($args[0], "\@$command base name", {'simple_format' => 1, 'code_style' => 1});
+    my $base = substitute_line($args[0], __("\@image base name"),{'code_style' => 1, 'remove_texi' => 1});
+    my $base_simple = substitute_line($args[0], __("\@image base name"), {'simple_format' => 1, 'code_style' => 1});
     if ($base eq '')
     {
-         line_error ("no file argument for \@image", $line_nr);
+         line_error ("\@image missing filename argument", $line_nr);
          return '';
     }
     $args[4] = '' if (!defined($args[4]));
     $args[3] = '' if (!defined($args[3]));
     my $image;
-    my $extension = substitute_line($args[4], "\@$command extension", {'code_style' => 1, 'remove_texi' => 1});
-    my $extension_simple = substitute_line($args[4], "\@$command extension", {'simple_format' => 1, 'code_style' => 1});
+    my $extension = substitute_line($args[4], __("\@image extension"), {'code_style' => 1, 'remove_texi' => 1});
+    my $extension_simple = substitute_line($args[4], __("\@image extension"), {'simple_format' => 1, 'code_style' => 1});
     my ($file_name, $image_name, $simple_file_name);
     my @file_locations;
     my @file_names = &$Texi2HTML::Config::image_files($base,$extension,$args[0],$args[4]);
 #    $image = locate_include_file("$base.$args[4]") if ($args[4] ne '');
     foreach my $file (@file_names)
     {
-        my $simple_file = substitute_line($file->[1], "\@$command file name", {'simple_format' => 1, 'code_style' => 1});
+        my $simple_file = substitute_line($file->[1], __("\@image file name"), {'simple_format' => 1, 'code_style' => 1});
         if ($image = locate_include_file($file->[0]))
         {
             if (!defined($file_name))
@@ -11357,7 +11441,7 @@ sub do_image($$$$$)
     my $alt; 
     if ($args[3] =~ /\S/)
     {
-        $alt = substitute_line($args[3], "\@$command alt text", {'simple_format' => 1}, $line_nr);
+        $alt = substitute_line($args[3], __("\@image alt text"), {'simple_format' => 1}, $line_nr);
     }
     return &$Texi2HTML::Config::image($path_to_working_dir . $image_name, 
         $base, 
@@ -11440,7 +11524,7 @@ sub expand_macro($$$$$)
         $args->[$i] = "" unless (defined($args->[$i]));
         print STDERR "# arg($i): $args->[$i]\n" if ($T2H_DEBUG & $DEBUG_MACROS);
     }
-    line_error ("too much arguments for macro $name", $line_nr) if (defined($args->[$i + 1]));
+    line_error (sprintf(__("Macro `%s' called with too many args"), $name), $line_nr) if (defined($args->[$i + 1]));
     my $result = '';
     while ($macrobody ne '')
     {
@@ -11464,7 +11548,7 @@ sub expand_macro($$$$$)
                }
                else
                {
-                   line_error ("\\ not followed by \\ or an arg but by $arg in macro", $macros->{$name}->{'line_nr'});
+                   line_error (sprintf(__("\\ in macro expansion followed `%s' instead of parameter name or \\"), $arg), $macros->{$name}->{'line_nr'});
                    $result .= '\\' . $arg;
                }
             }
@@ -12169,8 +12253,8 @@ sub scan_texi($$$$;$)
                          {
                              #line_warn ("macro `$name' already defined " . 
                              #    format_line_number($macros->{$name}->{'line_nr'}) . " redefined", $line_nr);
-                             line_warn ("macro `$name' previously defined.", $line_nr);
-                             line_warn ("here is the previous definition of `$name'", $macros->{$name}->{'line_nr'});
+                             line_warn (sprintf(__("macro `%s' previously defined"), $name), $line_nr);
+                             line_warn (sprintf(__("here is the previous definition of `%s'"), $name), $macros->{$name}->{'line_nr'});
                          }
                     }
                     $state->{'macro_inside'} = 1;
@@ -12203,7 +12287,7 @@ sub scan_texi($$$$;$)
                 }
                 else
                 {# it means we have a macro without a name
-                    line_error ("Macro definition without macro name $cline", $line_nr)
+                    line_error (sprintf(__("Macro definition without macro name: %s"), $cline), $line_nr)
                         unless ($state->{'ignored'});
                 }
                 return 1;
@@ -12236,8 +12320,16 @@ sub scan_texi($$$$;$)
                         next;
                     }
                     next if ($state->{'ignored'});
-                    my $expansion = "No value for $value";
-                    $expansion = $value{$value} if (defined($value{$value}));
+                    my $expansion;
+                    if (defined($value{$value}))
+                    {
+                        $expansion = $value{$value} 
+                    }
+                    else
+                    {
+                        $expansion = gdt('@{No value for `{value}\'@}', {'value' => $value}, {'keep_texi'=> 1});
+                        line_warn (sprintf(__("undefined flag: %s"), $value), $line_nr);
+                    }
                     $cline = $expansion . $cline;
                 }
                 else
@@ -12248,7 +12340,7 @@ sub scan_texi($$$$;$)
                         next;
                     }
                     next if ($state->{'ignored'});
-                    line_error ("bad \@value macro", $line_nr);
+                    line_error (__("Bad syntax for \@value"), $line_nr);
                 }
             }
             elsif ($command eq 'unmacro')
@@ -12456,7 +12548,7 @@ sub scan_texi($$$$;$)
                        {
                            if (defined(Texi2HTML::Config::get_conf ('setfilename')))
                            {
-                               line_error ("\@$macro already set", $line_nr);
+                               line_error (sprintf(__("\@%s already set"), $macro), $line_nr);
                                # the line is removed, because we don't want to reset 
                                # get_conf('setfilename') between passes, and we don't want
                                # the last one to be picked up
@@ -12499,13 +12591,21 @@ sub close_structure_command($$$$)
         $anchor = normalise_node($anchor);
         #print STDERR "Anchor $anchor\n";
         if ($nodes{$anchor})
-        {
-            line_error ("Anchor `$anchor' previously defined ".format_line_number($nodes{$anchor}->{'line_nr'}), $line_nr);
+        {# makeinfo error message are the following:
+         # "Anchor `%s' and node `%s' map to the same file name"
+         # "This @anchor command ignored; references to it will not work"
+         # "Rename this anchor or use the `--no-split' option"
+         #
+         # "Anchors `%s' and `%s' map to the same file name"
+         # "Anchor `%s' and node `%s' map to the same file name"
+         # "@anchor command ignored; references to it will not work"
+         # "Rename this anchor or use the `--no-split' option"
+            line_error (sprintf(__("Anchor `%s' previously defined %s"), $anchor, format_line_number($nodes{$anchor}->{'line_nr'})), $line_nr);
             return '';
         }
         elsif ($anchor =~ /^\(.+\)/)
         {
-            line_error ("Syntax for an external node used for `$anchor'", $line_nr);
+            line_error (sprintf(__("Syntax for an external node used for `%s'"), $anchor), $line_nr);
             return '';
         }
         $document_anchor_num++;
@@ -12819,13 +12919,15 @@ sub scan_structure($$$$;$)
             $macro = $alias{$macro} if (exists($alias{$macro}));
             if (defined($Texi2HTML::Config::deprecated_commands{$macro}))
             {
+              # makeinfo has 
+              # "%c%s is obsolete; use %c%s instead"
                 if ($Texi2HTML::Config::deprecated_commands{$macro} eq '')
                 {
-                   line_warn("\@$macro is obsolete.", $line_nr);
+                   line_warn(sprintf(__("%c%s is obsolete."), ord('@'), $macro), $line_nr);
                 }
                 else
                 {
-                   line_warn("\@$macro is obsolete; $Texi2HTML::Config::deprecated_commands{$macro}", $line_nr);
+                   line_warn(sprintf(__("%c%s is obsolete; %s"),ord('@'), $macro, __($Texi2HTML::Config::deprecated_commands{$macro})), $line_nr);
                 }
             }
             if (defined($Texi2HTML::Config::misc_command{$macro}))
@@ -12841,7 +12943,7 @@ sub scan_structure($$$$;$)
                 my $index_name = $1;
                 if (!exists($index_names{$index_name}))
                 {
-                   line_warn ("Unknown index `$index_name' in \@printindex.", $line_nr);
+                   line_error (sprintf(__("Unknown index `%s' in \@printindex"),$index_name), $line_nr);
                 }
                 my $associated_element;
                 if ($state->{'current_element'} eq $element_before_anything)
@@ -12908,7 +13010,7 @@ sub scan_structure($$$$;$)
               # FIXME should it be discarded?
                 if ($state->{'item'})
                 {
-                   line_error("ignored \@$macro already in an \@$state->{'item'} entry", $line_nr);
+                   line_error(sprintf(__("ignored \@%s already in an \@%s entry"), $macro, $state->{'item'}), $line_nr);
                    next;
                 }
                 my $index_prefix = index_command_prefix($macro);
@@ -12933,8 +13035,8 @@ sub scan_structure($$$$;$)
                        delete ($state->{'prev_menu_node'});
                        if (!$state->{'node_ref'})
                        {
-                          line_error ("\@menu seen before first \@node", $line_nr);
-                          line_error ("perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?", $line_nr);
+                          line_error (sprintf(__("\@%s seen before first \@node"), $macro), $line_nr);
+                          line_error (__("perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?"), $line_nr);
                        }
                     }
                     $state->{$macro}++;
@@ -12974,6 +13076,10 @@ sub scan_structure($$$$;$)
             }
             elsif ($macro eq 'detailmenu' or $macro eq 'direntry')
             {
+                if ($macro eq 'detailmenu' and !$state->{'node_ref'})
+                {
+                   line_error (sprintf(__("\@%s seen before first \@node"), $macro), $line_nr);
+                }
                 add_prev ($text, $stack, "\@$macro" .  $cline);
                 $state->{$macro}++;
                 last;
@@ -13307,11 +13413,11 @@ sub scan_line($$$$;$)
             else
             {
                 # close description and comment, if they are opened.
-                if (!close_menu_comment($text, $stack, $state, "new menu entry", $line_nr) 
-                  and !close_menu_description($text, $stack, $state, "new menu entry", $line_nr)
+                if (!close_menu_comment($text, $stack, $state, __("new menu entry"), $line_nr) 
+                  and !close_menu_description($text, $stack, $state, __("new menu entry"), $line_nr)
                   and $state->{'preformatted'})
                 {
-                    close_paragraph($text, $stack, $state, "new menu entry", $line_nr);
+                    close_paragraph($text, $stack, $state, __("new menu entry"), $line_nr);
                 }
                 print STDERR "# New menu entry: $node\n" if ($T2H_DEBUG & $DEBUG_MENU);
                 my $fusionned_description = 0;
@@ -13432,7 +13538,7 @@ sub scan_line($$$$;$)
         {
             if ($state->{'paragraph_context'})
             { # An empty line ends a paragraph
-                close_paragraph($text, $stack, $state, "paragraph end", $line_nr);
+                close_paragraph($text, $stack, $state, __("paragraph end"), $line_nr);
             }
             add_prev($text, $stack, &$Texi2HTML::Config::empty_line($cline,$state));
             return 1;
@@ -13666,7 +13772,7 @@ sub scan_line($$$$;$)
                 }
                 my $waited_format = $top_stack->{'format'};
                 $waited_format = $fake_format{$top_stack->{'format'}} if ($format_type{$top_stack->{'format'}} eq 'fake');
-                line_error ("`\@end'  expected `$waited_format', but saw `$end_tag'", $line_nr);
+                line_error (sprintf(__("`\@end'  expected `%s', but saw `%s'"), $waited_format, $end_tag), $line_nr);
                 #dump_stack ($text, $stack, $state);
                 close_stack($text, $stack, $state, $line_nr, $end_tag);
                 # FIXME this is too complex
@@ -13730,14 +13836,14 @@ sub scan_line($$$$;$)
                     my $arg = normalise_texi_space(trim_comment_spaces ($cline, "\@$macro", $line_nr));
 
                     my $style_id = cross_manual_line($arg);
-                    my $style = substitute_line (&$Texi2HTML::Config::listoffloats_style($arg), "\@listoffloats type", undef, $line_nr);
+                    my $style = substitute_line (&$Texi2HTML::Config::listoffloats_style($arg), __("\@listoffloats type"), undef, $line_nr);
                     my $style_no_texi = remove_texi (&$Texi2HTML::Config::listoffloats_style($arg));
                     if (exists ($floats{$style_id}))
                     {
                          my @listoffloats_entries = ();
                          foreach my $float (@{$floats{$style_id}->{'floats'}})
                          {
-                              my $float_style = substitute_line(&$Texi2HTML::Config::listoffloats_float_style($arg, $float), "\@listoffloats \@float type");
+                              my $float_style = substitute_line(&$Texi2HTML::Config::listoffloats_float_style($arg, $float), __("\@listoffloats \@float type"));
                               my ($caption_lines, $caption_or_shortcaption) = &$Texi2HTML::Config::listoffloats_caption($float);
                               # we set 'multiple_pass', and 'expansion'
                               # such that index entries
@@ -13753,7 +13859,7 @@ sub scan_line($$$$;$)
                     }
                     else
                     {
-                         line_warn ("Requested float type `$arg' not previously used", $line_nr); 
+                         line_warn (sprintf(__("Requested float type `%s' not previously used"), $arg), $line_nr); 
                     }
                 }
                 elsif ($macro eq 'printindex' and $cline =~ s/\s+(\w+)\s*//)
@@ -13865,7 +13971,7 @@ sub scan_line($$$$;$)
 
             if ($state->{'check_item'} and ($macro =~ /^itemx?$/ or $macro eq 'headitem'))
             {
-                line_error("\@$macro on \@$state->{'check_item'} line", $line_nr);
+                line_error(sprintf(__("\@%s not allowed on in argument to \@%s"), $macro, $state->{'check_item'}), $line_nr);
                 next;
             }
 
@@ -13899,7 +14005,7 @@ sub scan_line($$$$;$)
             {
                 if (!$Texi2HTML::Config::format_in_paragraph{$macro})
                 { # close paragraph before verbatim (and tex if !L2H)
-                    close_paragraph($text, $stack, $state, "begin \@$macro", $line_nr);
+                    close_paragraph($text, $stack, $state, "\@$macro", $line_nr);
                 }
                 $state->{'raw'} = $macro;
                 push (@$stack, {'style' => $macro, 'text' => ''});
@@ -13914,13 +14020,27 @@ sub scan_line($$$$;$)
                 # the command itself is not in the command stack, since with
                 # braces, it is already popped when do_simple is called
                 #push (@{$state->{'command_stack'}}, $macro);
-                $cline =~ s/^\s*// if ($macro =~ /^[a-zA-Z]/);
+                if ($macro =~ /^[a-zA-Z]/)
+                {
+                    $cline =~ s/^\s*//;
+                }
+                elsif ($cline =~ /^\s/)
+                {
+                    line_warn (sprintf(__("Accent command `\@%s' must not be followed by whitespace"), $macro), $line_nr);
+                }
+                if ($cline =~ /^\@/)
+                {
+                    line_error (sprintf(__("Use braces to give a command as an argument to \@%s"), $macro), $line_nr);
+                }
                 if ($cline =~ s/^(\S)//o)
                 {
                     add_prev($text, $stack, do_style_command($macro, $1, $state, [ $1 ], $line_nr, undef, undef, undef));
                 }
                 else
                 { # The accent is at end of line
+                    # FIXME warn? And test case? Maybe this is catched 
+                    # above, by "Accent command `@%s' must not be followed by whitespace"
+                    # for commands with letter.
                     add_prev($text, $stack, do_text($macro, $state));
                 }
                 #pop @{$state->{'command_stack'}};
@@ -14069,14 +14189,16 @@ sub scan_line($$$$;$)
                 if ($format = add_item($text, $stack, $state, $line_nr))
                 { # handle lists
                     $in_list_enumerate = 1;
+                    if ($macro ne 'item')
+                    {
+                        line_error (sprintf(__("\@%s not meaningful inside `%s' block"), $macro, $format->{'format'}), $line_nr);
+                    }
                 }
                 elsif ($format = add_term($text, $stack, $state, $line_nr))
-                {
-                    #$state->{'no_paragraph'}++;
+                { # close table term
                 }
                 elsif ($format = add_line($text, $stack, $state, $line_nr)) 
-                {
-                    #$state->{'no_paragraph'}++;
+                { # close table definition
                 }
                 if ($format)
                 {
@@ -14087,8 +14209,6 @@ sub scan_line($$$$;$)
                     }
                     if ($in_list_enumerate)
                     {
-#print STDERR "BEGIN ITEM $format->{'format'}\n";
-#dump_stack($text, $stack, $state);
                         push (@$stack, { 'format' => 'item', 'text' => '', 'format_ref' => $format });
                         begin_paragraph($stack, $state) if ($state->{'preformatted'} or !no_line($cline));
                     }
@@ -14111,8 +14231,12 @@ sub scan_line($$$$;$)
                 }
                 $format = add_row ($text, $stack, $state, $line_nr); # handle multitable
                 if (!$format)
-                {
-                    line_warn ("\@$macro outside of table or list", $line_nr);
+                { # makeinfo has:
+                  # "@%s not meaningful inside `@%s' block" for menu/quotation...
+                  # and, if outside of any format
+                  # "%c%s found outside of an insertion block"
+                  # The following error message seems better.
+                    line_warn (sprintf(__("\@%s outside of table or list"), $macro), $line_nr);
                 }
                 else
                 {
@@ -14145,18 +14269,18 @@ sub scan_line($$$$;$)
                 my $format = add_cell ($text, $stack, $state, $line_nr);
                 if (!$format)
                 {
-                    line_warn ("\@$macro outside of multitable", $line_nr);
+                    line_error(__("ignoring \@tab outside of multitable"), $line_nr);
                 }
                 else
                 {
                     push @$stack, {'format' => 'cell', 'text' => '', 'format_ref' => $format};
                     if (!$format->{'max_columns'})
                     {
-                       line_warn ("\@$macro in empty multitable", $line_nr);
+                       line_warn (__("ignoring \@tab in empty multitable"), $line_nr);
                     }
                     elsif ($format->{'cell'} > $format->{'max_columns'})
                     {
-                       line_warn ("too much \@$macro (multitable has only $format->{'max_columns'} column(s))", $line_nr);
+                       line_error (sprintf(__("Too many columns in multitable item (max %d)"), $format->{'max_columns'}), $line_nr);
                     }
                     else
                     {
@@ -14187,7 +14311,7 @@ sub scan_line($$$$;$)
                 }
                 if ($ignore_center)
                 {
-                    line_error("\@$macro should not appear in another format", $line_nr);
+                    line_error(__("\@center should not appear in another format"), $line_nr);
                 }
                 else
                 {
@@ -14227,7 +14351,7 @@ sub scan_line($$$$;$)
                 {
                     unless ($state->{'keep_texi'} or $state->{'remove_texi'})
                     {
-                        line_error ("Misplaced {.", $line_nr);
+                        line_error (sprintf(__("Misplaced %c"), ord('{')), $line_nr);
                     }
                 }
             }
@@ -14247,7 +14371,7 @@ sub scan_line($$$$;$)
                 }
                 else
                 {
-                    line_error("Misplaced {.", $line_nr);
+                    line_error (sprintf(__("Misplaced %c"), ord('}')), $line_nr);
                     #dump_stack($text, $stack, $state);
                 }
             }
@@ -14791,6 +14915,17 @@ sub do_style_command($$$$$$$$)
                 $style = $::style_map_ref->{$macro};
             }
         }
+        if ($macro eq 'dotless')
+        {
+           if (scalar(@$args) ne 1)
+           {
+               line_error(sprintf(__("%c%s expects a single character `i' or `j' as argument"), ord('@'), $macro), $line_nr);
+           }
+           elsif ($args->[0] ne 'i' and $args->[0] ne 'j')
+           { # FIXME an unformatted arg would have been better. Not a big deal.
+               line_warn (sprintf(__("%c%s expects `i' or `j' as argument, not `%s'"), ord('@'), $macro, $args->[0]), $line_nr);
+           }
+        }
         if (defined($style))
         {                           # known style
             $result = &$Texi2HTML::Config::style($style, $macro, $text, $args, $no_close, $no_open, $line_nr, $state, $state->{'command_stack'}, $kept_line_nrs);
@@ -14837,7 +14972,7 @@ sub do_style_command($$$$$$$$)
         unless ($no_open)
         { # we warn only if no_open is true, i.e. it is the first time we 
           # close the macro for a multiline macro
-            line_warn ("Unknown command with braces `\@$macro'", $line_nr);
+            line_warn (sprintf(__("Unknown command with braces `\@%s'"), $macro), $line_nr);
             $result = do_text("\@$macro") . "{";
         }
         $result .= $text;
@@ -14870,8 +15005,15 @@ sub do_unknown($$$$$$$)
          return $result_line;
     }
     elsif ($pass == 2)
-    {
-         line_warn ("Unknown command `\@$macro'", $line_nr);
+    { 
+         if ($Texi2HTML::Config::style_map{$macro})
+         {
+             line_error (sprintf(__("%c%s expected braces"), ord('@'), $macro), $line_nr);
+         }
+         else
+         {
+             line_error (sprintf(__("Unknown command `\@%s'"), $macro), $line_nr);
+         }
          add_prev ($text, $stack, do_text("\@$macro"));
          return $line;
     }
@@ -14948,7 +15090,7 @@ sub close_stack_texi($$$$)
 
     if ($state->{'ignored'})
     {
-        line_error ("No matching `\@end $state->{'ignored'}'", $line_nr); 
+        line_error (sprintf(__("Reached eof before matching \@end %s"), $state->{'ignored'}), $line_nr); 
         close_ignored($state, $stack);
     }
 
@@ -14956,7 +15098,7 @@ sub close_stack_texi($$$$)
     {
        my ($no_remaining, $result) = end_macro($state, '@end macro', "\n");
        add_prev ($text, $stack, $result) if (defined($result));
-       line_error ("No matching `\@end macro'", $line_nr); 
+       line_error (sprintf(__("%cend macro not found"), ord('@')), $line_nr);
     }
     elsif ($state->{'macro_name'})
     {
@@ -15124,7 +15266,7 @@ sub close_stack($$$$;$)
                 }
                 elsif ($stack_format ne 'center')
                 { # we don't warn for center
-                    line_error ("No matching `\@end $stack_format'", $line_nr); 
+                    line_error (sprintf(__("No matching `%cend %s'"), ord('@'), $stack_format), $line_nr); 
                     #dump_stack ($text, $stack, $state);
                 }
                 if ($state->{'keep_texi'})
@@ -15148,9 +15290,11 @@ sub close_stack($$$$;$)
                 dump_stack ($text, $stack, $state); # bug
             }
             ########################## end debug
-            my $error_msg = "\@$style missing close brace";
-            $error_msg .= " ". format_line_number($stack->[$stack_level]->{'line_nr'}) if (defined($stack->[$stack_level]->{'line_nr'}));
-            line_error ($error_msg, $line_nr) if ($style); 
+            my $located_line_nr = $line_nr;
+            # use the beginning of the @-command for the error message
+            # line number if available.
+            $located_line_nr = $stack->[$stack_level]->{'line_nr'} if (defined($stack->[$stack_level]->{'line_nr'}));
+            line_error (sprintf(__("%c%s missing close brace"), ord('@'), $style), $located_line_nr);
             my ($result, $command) = close_style_command($text, $stack, $state, $line_nr, '');
 
             add_prev($text, $stack, $result) if (defined($result));
@@ -15257,8 +15401,8 @@ sub close_paragraph($$$$;$$)
     # be called when in those no_paragraph settings.
 
     if ($state->{'no_paragraph'})
-    {
-        line_warn("$reason should not appear in $state->{'no_paragraph_stack'}->[-1]", $line_nr);
+    { # This plays the role of "Multiline command %c%s used improperly"
+        line_warn(sprintf(__("%s should not appear in %s"), $reason, $state->{'no_paragraph_stack'}->[-1]), $line_nr);
     }
 
     while ($stack_level--)
@@ -15953,9 +16097,9 @@ sub process_css_file ($$)
              }
         } 
     }
-    file_line_warn ("string not closed in css file", $file) if ($in_string);
-    file_line_warn ("comment not closed in css file", $file) if ($in_comment);
-    file_line_warn ("\@import not finished in css file", $file)  if ($in_import and !$in_comment and !$in_string);
+    file_line_warn (__("string not closed in css file"), $file) if ($in_string);
+    file_line_warn (__("--css-file ended in comment"), $file) if ($in_comment);
+    file_line_warn (__("\@import not finished in css file"), $file)  if ($in_import and !$in_comment and !$in_string);
     return ($imports, $rules);
 }
 
@@ -15985,7 +16129,7 @@ sub collect_all_css_files()
          }
          unless (open (CSSFILE, "$css_file"))
          {
-            document_warn ("Cannot open ${css_file}: $!");
+            cmdline_warn (sprintf(__("could not open --css-file %s: %s"), $css_file, $!));
             next;
          }
          $css_file_fh = \*CSSFILE;
@@ -16040,7 +16184,7 @@ sub init_with_file_name($)
 my @input_files = @ARGV;
 # use STDIN if not a tty, like makeinfo does
 @input_files = ('-') if (!scalar(@input_files) and !-t STDIN);
-die "$0: missing file argument.\n$T2H_FAILURE_TEXT" unless (scalar(@input_files) >= 1);
+die sprintf(__("%s: missing file argument.\n"), $my_command_name) .$T2H_FAILURE_TEXT unless (scalar(@input_files) >= 1);
 
 my $file_number = 0;
 # main processing

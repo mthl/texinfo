@@ -6,6 +6,7 @@ $LANGUAGES->{'de'} = {
                        '(outside of any node)' => '',
                        '@b{{quotation_arg}:} ' => '@b{{quotation_arg}:} ',
                        '@cite{{book}}' => '@cite{{book}}',
+                       '@{No value for `{value}\'@}' => '',
                        'About' => '@"Uber',
                        'About (help)' => '@"Uber (Hilfe)',
                        'About This Document' => '@"Uber dieses Dokument',

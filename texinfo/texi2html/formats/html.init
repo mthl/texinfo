@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.35 2009-11-01 18:59:59 pertusus Exp $
+# $Id: html.init,v 1.36 2009-11-05 22:55:08 pertusus Exp $
 
 use strict;
 
@@ -2544,7 +2544,7 @@ sub html_default_image($$$$$$$$$$$$$$$$$)
         {
             $file = "$base.jpg";
         }
-        main::line_warn ("no image file for $base, (using $file)", $line_nr);
+        main::line_warn (sprintf(__("\@image file `%s' (for HTML) not found, using `%s'"), $base, $file), $line_nr);
     }
     elsif (! $COMPLETE_IMAGE_PATHS)
     {

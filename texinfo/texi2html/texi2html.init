@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.247 2009-11-01 18:59:57 pertusus Exp $
+# $Id: texi2html.init,v 1.248 2009-11-05 22:55:07 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1161,10 +1161,11 @@ sub t2h_default_load_format($;$)
   {
      &{$t2h_default_formats_load_table{$format}}($from_command_line);
      $Texi2HTML::THISDOC{'format_from_command_line'} = $format if ($from_command_line);
+     return 1;
   }
   else
   {
-     main::document_warn ("Unkown output format $format");
+     return 0;
   }
 }
 
@@ -2049,8 +2050,8 @@ sub T2H_DEFAULT_node_file_name($$)
 
 %deprecated_commands = (
   'ctrl' => '',
-  'allow-recursion' => 'recursion is always allowed.',
-  'quote-arg' => 'arguments are quoted by default.',
+  'allow-recursion' => N__('recursion is always allowed'),
+  'quote-arg' => N__('arguments are quoted by default'),
 );
 
 #

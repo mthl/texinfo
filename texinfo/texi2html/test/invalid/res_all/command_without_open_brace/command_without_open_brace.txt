@@ -1,0 +1,10 @@
+Test @-comamnd without open brace or after a space
+**************************************************
+
+@code {c.
+
+@code arg.
+
+@code
+Arg.
+

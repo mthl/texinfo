@@ -1,0 +1,15 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename command_without_open_brace.info
+
+@node Top
+@top Test @@-comamnd without open brace or after a space
+
+@code {c}.
+
+@code arg.
+
+@code
+Arg.
+
+@bye

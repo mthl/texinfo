@@ -1,0 +1,10 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename at_after_accent_command.info
+
+@node Top
+@top Test @@ as accent command argument
+
+@ringaccent @@. @^@@.
+
+@bye

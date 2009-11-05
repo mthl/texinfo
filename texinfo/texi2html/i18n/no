@@ -6,6 +6,7 @@ $LANGUAGES->{'no'} = {
                        '(outside of any node)' => '',
                        '@b{{quotation_arg}:} ' => '',
                        '@cite{{book}}' => '',
+                       '@{No value for `{value}\'@}' => '',
                        'About' => '',
                        'About (help)' => '',
                        'About This Document' => 'No translation available!',

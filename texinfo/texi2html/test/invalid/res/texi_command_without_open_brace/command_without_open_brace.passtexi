@@ -1,0 +1,14 @@
+command_without_open_brace.texi(,2) 
+command_without_open_brace.texi(,3) @setfilename command_without_open_brace.info
+command_without_open_brace.texi(,4) 
+command_without_open_brace.texi(,5) @node Top
+command_without_open_brace.texi(,6) @top Test @@-comamnd without open brace or after a space
+command_without_open_brace.texi(,7) 
+command_without_open_brace.texi(,8) @code {c}.
+command_without_open_brace.texi(,9) 
+command_without_open_brace.texi(,10) @code arg.
+command_without_open_brace.texi(,11) 
+command_without_open_brace.texi(,12) @code
+command_without_open_brace.texi(,13) Arg.
+command_without_open_brace.texi(,14) 
+command_without_open_brace.texi(,15) @bye

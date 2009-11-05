@@ -1,0 +1,21 @@
+This is command_without_open_brace.info, produced by makeinfo version
+4.13 from command_without_open_brace.texi.
+
+
+File: command_without_open_brace.info,  Node: Top,  Up: (dir)
+
+Test @-comamnd without open brace or after a space
+**************************************************
+
+{c.
+
+   arg.
+
+   Arg.
+
+
+
+Tag Table:
+Node: Top114
+
+End Tag Table

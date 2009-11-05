@@ -1144,7 +1144,7 @@ sub info_default_process_content($$)
                   my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
                   if (defined($text_next) and $text_next =~ /^Note\b/i)
                   {
-                     main::line_warn("\@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that.", $content->{'line_nr'});
+                     main::line_warn(__("\@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that."), $content->{'line_nr'});
                   }
               }
               elsif ($content->{'command'} eq 'anchor' or ($content->{'command'} eq 'float' and $content->{'anchor_reference'}))
@@ -1301,13 +1301,15 @@ sub info_default_process_content($$)
               { # warn if there is no punctuation following
                   my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
                   if (!defined($text_next) or $text_next !~ /^./)
-                  {
-                      main::line_warn("`.' or `,' must follow \@xref.", $Texi2HTML::THISDOC{'line_nr'});
+                  { # in makeinfo it is 
+                    # "End of file reached while looking for `.' or `,'"
+                    # but maybe it may not be true.
+                      main::line_warn(__("`.' or `,' must follow \@xref."), $Texi2HTML::THISDOC{'line_nr'});
                   }
                   elsif ($text_next !~ /^[\.,]/)
                   {
                       my $char = substr($text_next, 0, 1);
-                      main::line_warn("`.' or `,' must follow \@xref, not $char.", $Texi2HTML::THISDOC{'line_nr'});
+                      main::line_warn(sprintf(__("`.' or `,' must follow \@xref, not %s"), $char), $Texi2HTML::THISDOC{'line_nr'});
                   }
               }
               elsif ($content->{'definition_line'})
@@ -2863,12 +2865,12 @@ sub info_default_image($$$$$$$$$$$$$$$$$)
        }
        else
        {
-          main::line_warn ("\@image file `$txt_path' unreadable: $!", $line_nr);
+          main::line_warn (sprintf(__("\@image file `%s' unreadable: %s"), $txt_path, $!), $line_nr);
        }
     }
     elsif (!defined($found_file))
     {
-        main::line_warn ("Cannot find \@image file `$base.txt'", $line_nr);
+        main::line_warn (sprintf(__("Cannot find \@image file `%s.txt'"), $base), $line_nr);
     }
     if (defined($found_file) and (!defined($extension) or $file_found_index <= 1))
     {
@@ -3064,7 +3066,7 @@ sub info_default_foot_line_and_ref($$$$$$$$)
     { # i18n
         # no warning when outside of document, for footnotes in 
         # titlepage and copying
-        main::line_error("Footnote defined without parent node", $Texi2HTML::THISDOC{'line_nr'}) unless ($footnote_state->{'outside_document'});
+        main::line_error(__("Footnote defined without parent node"), $Texi2HTML::THISDOC{'line_nr'}) unless ($footnote_state->{'outside_document'});
         #print STDERR "".main::context_string()."\n";
     }
     if (get_conf('footnotestyle') eq 'separate')

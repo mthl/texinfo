@@ -5619,14 +5619,16 @@ test "x$enable_multiplatform" = xyes \
 && test "x$bindir" = 'x${exec_prefix}/bin' \
 && bindir="$bindir/$host"
 
+
+ac_config_files="$ac_config_files po_messages/Makefile.in po_document/Makefile.in Makefile Tests/Makefile test/Makefile test/contents/Makefile test/coverage/Makefile test/info_coverage/Makefile test/formatting/Makefile test/indices/Makefile test/invalid/Makefile test/misc/Makefile test/encodings/Makefile test/macros/Makefile test/manuals/Makefile test/nested_formats/Makefile test/sectionning/Makefile test/htmlxref/Makefile test/htmlxref-only_mono/Makefile test/htmlxref-only_split/Makefile test/xemacs_manual/Makefile test/texi2html_manual/Makefile test/tar_manual/Makefile test/singular_manual/Makefile test/layout/Makefile test/many_input_files/Makefile doc/Makefile test/path_separator"
+
+
 ac_config_files="$ac_config_files texi2html_configured.pl:texi2html.pl"
 
 ac_config_files="$ac_config_files check_texinfo.pl"
 
 ac_config_files="$ac_config_files manage_i18n.pl"
 
-
-ac_config_files="$ac_config_files Makefile po_messages/Makefile.in po_document/Makefile.in Tests/Makefile test/Makefile test/contents/Makefile test/coverage/Makefile test/info_coverage/Makefile test/formatting/Makefile test/indices/Makefile test/invalid/Makefile test/misc/Makefile test/encodings/Makefile test/macros/Makefile test/manuals/Makefile test/nested_formats/Makefile test/sectionning/Makefile test/htmlxref/Makefile test/htmlxref-only_mono/Makefile test/htmlxref-only_split/Makefile test/xemacs_manual/Makefile test/texi2html_manual/Makefile test/tar_manual/Makefile test/singular_manual/Makefile test/layout/Makefile test/many_input_files/Makefile doc/Makefile test/path_separator"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -6363,12 +6365,9 @@ do
   case $ac_config_target in
     "po-directories") CONFIG_COMMANDS="$CONFIG_COMMANDS po-directories" ;;
     "depfiles") CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
-    "texi2html_configured.pl") CONFIG_FILES="$CONFIG_FILES texi2html_configured.pl:texi2html.pl" ;;
-    "check_texinfo.pl") CONFIG_FILES="$CONFIG_FILES check_texinfo.pl" ;;
-    "manage_i18n.pl") CONFIG_FILES="$CONFIG_FILES manage_i18n.pl" ;;
-    "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "po_messages/Makefile.in") CONFIG_FILES="$CONFIG_FILES po_messages/Makefile.in" ;;
     "po_document/Makefile.in") CONFIG_FILES="$CONFIG_FILES po_document/Makefile.in" ;;
+    "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "Tests/Makefile") CONFIG_FILES="$CONFIG_FILES Tests/Makefile" ;;
     "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
     "test/contents/Makefile") CONFIG_FILES="$CONFIG_FILES test/contents/Makefile" ;;
@@ -6394,6 +6393,9 @@ do
     "test/many_input_files/Makefile") CONFIG_FILES="$CONFIG_FILES test/many_input_files/Makefile" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
     "test/path_separator") CONFIG_FILES="$CONFIG_FILES test/path_separator" ;;
+    "texi2html_configured.pl") CONFIG_FILES="$CONFIG_FILES texi2html_configured.pl:texi2html.pl" ;;
+    "check_texinfo.pl") CONFIG_FILES="$CONFIG_FILES check_texinfo.pl" ;;
+    "manage_i18n.pl") CONFIG_FILES="$CONFIG_FILES manage_i18n.pl" ;;
 
   *) as_fn_error "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

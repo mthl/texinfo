@@ -1,0 +1,17 @@
+This is at_after_accent_command.info, produced by makeinfo version 4.13
+from at_after_accent_command.texi.
+
+
+File: at_after_accent_command.info,  Node: Top,  Up: (dir)
+
+Test @ as accent command argument
+*********************************
+
+@*. @^.
+
+
+
+Tag Table:
+Node: Top108
+
+End Tag Table

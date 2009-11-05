@@ -23,6 +23,41 @@ Later
 
 * many FIXME in the code
 
+* relevant makeinfo error messages not used
+"Footnotes inside footnotes are not allowed"
+"%cfloat environments cannot be nested"
+
+"%s: Skipping macro expansion to stdout as Info output is going there.\n"
+
+* test for @itemx, @headitem in @itemize/@enumerate.
+
+* test for @headitem in @table
+
+* test for multiple @top. Error message is
+"Node with %ctop as a section already exists"
+although it is not clear that it is not for 
+
+@node Top
+@unnumbered something
+
+@node a node
+@top A top
+
+which his in fact correct. 
+
+* 2 @top is incorrect, do a test and code.
+
+* handle @author in @quotation. In docbook should be in an attribution 
+  element. In html, 
+&mdash; author
+  info
+-- author
+  xml should already be handled.
+
+In makeinfo there is a line_error. I'd lean toward not treating it as an error.
+"@%s not meaningful outside `@titlepage' and `@quotation' environments"
+
+
 * Create detailed texinfo documentation (see in doc)
 
 * add sample init files for different layouts
@@ -95,6 +130,82 @@ Later
   t2h_text_substitutions
   t2h_default_set_iso_symbols
   document the math related maps, simple_map_math, math_map, style_map_math
+
+* document translations, based on this mail. Also document the relevant
+  state possibilities, ans mayne change names to have more logical 
+  strings. 
+
+libintl-perl is used as a gettext implementation, and more precisely the
+pure perl implementation is used, to be sure to have a consistent gettext-like
+implementation which is not the case if the system one is used. libintl-perl
+is shipped in texi2html and installed to be sure that it is available. It is
+also possible to use the system libintl (currently decided at build-time).
+
+Things are setup like that (this is also how it was done previously):
+
+* translated strings are texinfo strings, which may have @-commands
+* the variables parts of the string are not denoted by %s and the like, but
+  by {arg_name}. This is for 2 reasons, first changing the order of
+  printf arguments is only available since perl 5.8.0, second the order
+  of the argument may not be predictable when @-commands expansion may lead
+  to different orders depending on the output format.
+* When a translated string is needed, it is possible to give a state as
+  argument which determines the context of expansion (use the document state,
+  expansion in string, no expansion...).
+
+Here is how things happen:
+
+1. First the string is translated. The locale is @documentlanguage.@documentencoding.
+
+  If the @documentlanguage is like ll_CC, ll_CC is tried first, and then ll.
+  If the encoding is not us-ascii, us-ascii is also tried. The idea is that
+  if there is a us-ascii encoding, it means that all the characters in the
+  charset may be expressed as @-commands. For example there is a fr.us-ascii
+  locale that can accomodate any encoding, since all the latin1 characters
+  have associated @-commands. For the ja translations, there is only ja.utf-8
+  since there are no @-commands for ja letters.
+
+2. Next the args in string are protected, for example {arg_name} becomes
+   @internal_translation_open_brace{}arg_name@internal_translation_close_brace{}
+
+3. Next the string is expanded as a texinfo string.
+   @internal_translation_open_brace{} expands as { and
+   @internal_translation_close_brace{} expands as }, such that in the end
+   one still gets {arg_name} within an expanded string.
+
+4. Then the in string arguments are substituted, for example {arg_name} is
+   substituted by the corresponding argument.
+
+(2. and 3. are skipped when there is no expansion).
+
+
+For example, in the following {date}, {program_homepage} and {program}
+are the argument of the string. Since they are used in @uref, their
+order in not predictable. The {'duplicate'=>1} means the the document state
+should be used when expanding the string. {date}, {program_homepage}
+and {program} are substituted after the expansion, which means that they
+should already be acceptable output.
+
+gdt('This document was generated on @i{{date}} using @uref{{program_homepage}, @i{{program}}}.', {
+           'date' => $date, 'program_homepage' => $Texi2HTML::THISDOC{'program_homepage'}, 'program' => $Texi2HTML::THISDOC{'program'} },{'duplicate'=>1});
+
+
+This approach is a bit complicated, however what is interesting is that
+it allows to have translation available in different encodings for charset
+that are covered by @-commands, and also to specify how the formatting for
+some commands is done independently of the output format but still allow it to
+be language dependent. For example, the @pxref string may be:
+
+  see {node_file_href} section `{section}\' in @cite{{book}}
+
+which allows to specify a string independently of the output format but with a
+rich formatting that may be differently translated in other languages.
+
+
+It is also possible to use more regular %s escapes, and also avoid any
+expansion (with 'keep_texi' in the state).
+
+
 
 * do a translation to TeX/LaTeX to be used in @math, 
   for example @equiv->\equiv. t2h_default_protect_text should be used 

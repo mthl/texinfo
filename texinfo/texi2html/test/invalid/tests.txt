@@ -37,6 +37,8 @@ texi node_too_much_arguments.texi
 texi bad_documentencoding.texi
 texi error_in_footnote_caption.texi
 texi unclosed_verb_line_commands.texi
+texi at_after_accent_command.texi
+texi command_without_open_brace.texi
 brace_not_closed brace_not_closed.texi
 recursive_copying recursive_copying.texi
 bad_nesting bad_nesting.texi
@@ -77,3 +79,5 @@ node_too_much_arguments node_too_much_arguments.texi
 bad_documentencoding bad_documentencoding.texi
 error_in_footnote_caption error_in_footnote_caption.texi
 #unclosed_verb_line_commands unclosed_verb_line_commands.texi
+at_after_accent_command at_after_accent_command.texi
+command_without_open_brace command_without_open_brace.texi

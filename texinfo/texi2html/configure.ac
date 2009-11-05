@@ -12,7 +12,7 @@ AM_MAINTAINER_MODE
 AM_GNU_GETTEXT([external])
 dnl it is not completly clear that we need that or not, since gettext is 
 dnl not fully used.
-AM_GNU_GETTEXT_VERSION(0.17)
+AM_GNU_GETTEXT_VERSION([0.17])
 
 dnl Misc variable settings
 PACKAGE_DATE=`"$srcdir"/mdate-sh "$srcdir"/configure.ac`
@@ -126,16 +126,10 @@ test "x$enable_multiplatform" = xyes \
 && test "x$bindir" = 'x${exec_prefix}/bin' \
 && bindir="$bindir/$host"
 
-AC_CONFIG_FILES([texi2html_configured.pl:texi2html.pl], 
-   [chmod +x texi2html_configured.pl])
-AC_CONFIG_FILES([check_texinfo.pl], [chmod +x check_texinfo.pl])
-AC_CONFIG_FILES([manage_i18n.pl], [chmod +x manage_i18n.pl])
 
 dnl The bulk config files.
-AC_CONFIG_FILES([\
+AC_CONFIG_FILES([ po_messages/Makefile.in po_document/Makefile.in \
                  Makefile \
-                 po_messages/Makefile.in \
-                 po_document/Makefile.in \
                  Tests/Makefile \
                  test/Makefile \
                  test/contents/Makefile \
@@ -162,4 +156,11 @@ AC_CONFIG_FILES([\
                  doc/Makefile \
                  test/path_separator
                  ])
+
+dnl scripts
+AC_CONFIG_FILES([texi2html_configured.pl:texi2html.pl], 
+   [chmod +x texi2html_configured.pl])
+AC_CONFIG_FILES([check_texinfo.pl], [chmod +x check_texinfo.pl])
+AC_CONFIG_FILES([manage_i18n.pl], [chmod +x manage_i18n.pl])
+
 AC_OUTPUT
