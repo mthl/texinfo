@@ -12,7 +12,7 @@ AM_MAINTAINER_MODE
 AM_GNU_GETTEXT([external])
 dnl it is not completly clear that we need that or not, since gettext is 
 dnl not fully used.
-AM_GNU_GETTEXT_VERSION([0.17])
+AM_GNU_GETTEXT_VERSION([0.14])
 
 dnl Misc variable settings
 PACKAGE_DATE=`"$srcdir"/mdate-sh "$srcdir"/configure.ac`
