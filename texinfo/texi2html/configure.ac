@@ -21,6 +21,13 @@ AC_SUBST([PACKAGE_DATE])
 dnl Checks for programs.
 AC_PROG_LN_S
 AM_PROG_MKDIR_P
+
+# Happens with some automake version
+if test z"$MKDIR_P" = 'z'; then
+  MKDIR_P=$mkdir_p
+  AC_SUBST([MKDIR_P])
+fi
+
 AC_ARG_VAR([PERL], [The path to the 'perl' executable.])
 AC_PATH_PROG([PERL], [perl], [/usr/bin/env perl], [/opt/perl5/bin:"$PATH"])
 

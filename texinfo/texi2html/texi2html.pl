@@ -86,7 +86,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.350 2009-11-05 22:55:07 pertusus Exp $
+# $Id: texi2html.pl,v 1.351 2009-11-06 23:54:40 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2559,8 +2559,15 @@ sub gdt($;$$)
          $result = Locale::Messages::pgettext($context, $message);
     }
     Locale::Messages::textdomain($messages_textdomain);
-    $ENV{'LANGUAGE'} = $saved_LANGUAGE;
-
+    # old perl complains 'Use of uninitialized value in scalar assignment'
+    if (!defined($saved_LANGUAGE))
+    {
+       delete ($ENV{'LANGUAGE'});
+    }
+    else
+    {
+       $ENV{'LANGUAGE'} = $saved_LANGUAGE;
+    }
     if ($state->{'keep_texi'})
     {
          $result =~ s/\{($re)\}/defined $context->{$1} ? $context->{$1} : "{$1}"/ge if (defined($re));
