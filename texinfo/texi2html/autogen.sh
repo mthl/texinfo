@@ -4,7 +4,7 @@
 test -f Makefile.am || cd "`dirname \"$0\"`"
 
 autopoint
-cp po/* po_message
+cp po/* po_messages
 cp po/* po_document
 rm -rf po
 
