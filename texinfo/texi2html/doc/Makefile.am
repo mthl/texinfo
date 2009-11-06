@@ -10,7 +10,7 @@ texinfohtml_DATA    = texi2html.html
 
 # use the script out of the distribution NOT
 # an old one which is installed on the client.
-TEXI2HTML = $(builddir)/../texi2html
+TEXI2HTML = ../texi2html
 
 man_MANS = texi2html.1
 
@@ -31,7 +31,7 @@ texi2html.html: texi2html.texi $(srcdir)/version.texi \
 	    $(PERL) -x $(srcdir)/../texi2html.pl -V $<
 
 $(TEXI2HTML):
-	@(cd $(builddir)/../ && make texi2html)
+	@(cd ../ && make texi2html)
 
 texi2html.1: texi2html.1.in $(top_builddir)/config.status
 	@echo Generating $@...
