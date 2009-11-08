@@ -1148,7 +1148,7 @@ sub info_default_process_content($$)
                   my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
                   if (defined($text_next) and $text_next =~ /^Note\b/i)
                   {
-                     main::line_warn(__("\@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that."), $content->{'line_nr'});
+                     main::line_warn(__("\@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"), $content->{'line_nr'});
                   }
               }
               elsif ($content->{'command'} eq 'anchor' or ($content->{'command'} eq 'float' and $content->{'anchor_reference'}))

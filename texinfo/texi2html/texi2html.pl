@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.352 2009-11-08 10:58:56 pertusus Exp $
+# $Id: texi2html.pl,v 1.353 2009-11-08 17:19:55 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2256,6 +2256,8 @@ sub document_warn($);
 sub file_line_warn($$;$);
 sub cmdline_warn ($);
 
+my $T2H_FAILURE_TEXT = sprintf(__("Try `%s --help' for more information.\n"), $my_command_name);
+
 #print STDERR "" . gdt('test i18n: \' , \a \\ %% %{unknown}a %known % %{known}  \\', { 'known' => 'a known string', 'no' => 'nope'}); exit 0;
 
 # file:        file name to locate. It can be a file path.
@@ -2453,7 +2455,8 @@ sub set_footnote_style($$;$)
     }
     elsif ($from_command_line)
     {
-         cmdline_warn(sprintf(__("--footnote-style arg must be `separate' or `end', not `%s'."), $value));
+         die sprintf(__("%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"), $my_command_name, $value);
+         # the T2H_FAILURE_TEXT is output by getOption, seems to catch die
     }
     else
     {
@@ -2744,7 +2747,7 @@ sub set_paragraphindent($$;$$)
    }
    elsif ($from_command_line)
    {
-       cmdline_warn (sprintf(__("--paragraph-indent arg must be numeric/`none'/`asis', not `%s'"), $value));
+       die sprintf(__("%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"), $my_command_name, $value);
    }
    elsif ($pass == 1)
    {
@@ -3192,7 +3195,7 @@ $T2H_OPTIONS -> {'split-size'} =
 $T2H_OPTIONS -> {'paragraph-indent|p'} =
 {
  type => '=s',
- linkage => sub {set_paragraph_indent($_[1], 1);},
+ linkage => sub {set_paragraphindent($_[1], 1);},
  'verbose' => "indent Info paragraphs by VAL spaces (default 3).
                               If VAL is `none', do not indent; if VAL is
                                 `asis', preserve existing indentation.",
@@ -3720,7 +3723,6 @@ my $T2H_USAGE_TEXT = <<EOT;
 Usage: texi2html  [OPTIONS] TEXINFO-FILE
 Translates Texinfo source documentation to HTML.
 EOT
-my $T2H_FAILURE_TEXT = sprintf(__("Try `%s --help' for usage instructions.\n"), $my_command_name);
 
 
 my $options = new Getopt::MySimple;
@@ -3811,7 +3813,7 @@ if (! $Texi2HTML::THISDOC{'format_from_command_line'} and defined($ENV{'TEXINFO_
 {
   if (! Texi2HTML::Config::t2h_default_load_format($ENV{'TEXINFO_OUTPUT_FORMAT'}, 0))
   {  
-      cmdline_warn (sprintf(N__("Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'."), $ENV{'TEXINFO_OUTPUT_FORMAT'}));
+      warn sprintf(__("%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"), $my_command_name, $ENV{'TEXINFO_OUTPUT_FORMAT'});
   }
 }
 
@@ -9026,15 +9028,16 @@ sub msg_debug($;$)
 sub cmdline_warn ($)
 {
    my $text = shift;
-   chomp ($text);
-   warn sprintf(__p("command_name: warning_message", "%s: %s\n"), $my_command_name, $text);
+   #chomp ($text);
+   warn sprintf(__p("command_name: warning_message", "%s: %s"), $my_command_name, $text);
 }
 
+# seems not to be used
 sub cmdline_error ($)
 {
    my $text = shift;
-   chomp ($text);
-   warn sprintf(__p("command_name: error_message", "%s: %s\n"), $my_command_name, $text);
+   #chomp ($text);
+   warn sprintf(__p("command_name: error_message", "%s: %s"), $my_command_name, $text);
 }
 
 sub document_error($;$)
@@ -10635,7 +10638,7 @@ sub begin_format($$$$$$)
             if (($command eq '') and ($macro ne 'itemize'))
             {
                 $command = 'asis';
-                line_warn(sprintf(__("\@%s requires an argument: the formatter for %citem"), $macro, ord('@')), $line_nr);
+                line_warn(sprintf(__("%s requires an argument: the formatter for %citem"), $macro, ord('@')), $line_nr);
             }
             my $prepended_formatted;
             $prepended_formatted = substitute_line($prepended, sprintf(__("prepended for \@%s"), $macro), prepare_state_multiple_pass('item', $state)) if (defined($prepended));
@@ -13783,7 +13786,7 @@ sub scan_line($$$$;$)
                 }
                 my $waited_format = $top_stack->{'format'};
                 $waited_format = $fake_format{$top_stack->{'format'}} if ($format_type{$top_stack->{'format'}} eq 'fake');
-                line_error (sprintf(__("`\@end'  expected `%s', but saw `%s'"), $waited_format, $end_tag), $line_nr);
+                line_error (sprintf(__("`\@end' expected `%s', but saw `%s'"), $waited_format, $end_tag), $line_nr);
                 #dump_stack ($text, $stack, $state);
                 close_stack($text, $stack, $state, $line_nr, $end_tag);
                 # FIXME this is too complex
@@ -14202,7 +14205,7 @@ sub scan_line($$$$;$)
                     $in_list_enumerate = 1;
                     if ($macro ne 'item')
                     {
-                        line_error (sprintf(__("\@%s not meaningful inside `%s' block"), $macro, $format->{'format'}), $line_nr);
+                        line_error (sprintf(__("\@%s not meaningful inside `\@%s' block"), $macro, $format->{'format'}), $line_nr);
                     }
                 }
                 elsif ($format = add_term($text, $stack, $state, $line_nr))
@@ -15023,7 +15026,7 @@ sub do_unknown($$$$$$$)
          }
          else
          {
-             line_error (sprintf(__("Unknown command `\@%s'"), $macro), $line_nr);
+             line_error (sprintf(__("Unknown command `%s'"), $macro), $line_nr);
          }
          add_prev ($text, $stack, do_text("\@$macro"));
          return $line;
@@ -16021,8 +16024,10 @@ sub process_css_file ($$)
     my $in_string = 0;
     my $rules = [];
     my $imports = [];
+    my $line_nr = 0;
     while (my $line = <$fh>)
     {
+        $line_nr++;
 	    #print STDERR "Line: $line";
         if ($in_rules)
         {
@@ -16108,9 +16113,12 @@ sub process_css_file ($$)
              }
         } 
     }
-    file_line_warn (__("string not closed in css file"), $file) if ($in_string);
-    file_line_warn (__("--css-file ended in comment"), $file) if ($in_comment);
-    file_line_warn (__("\@import not finished in css file"), $file)  if ($in_import and !$in_comment and !$in_string);
+    #file_line_warn (__("string not closed in css file"), $file) if ($in_string);
+    #file_line_warn (__("--css-file ended in comment"), $file) if ($in_comment);
+    #file_line_warn (__("\@import not finished in css file"), $file)  if ($in_import and !$in_comment and !$in_string);
+    warn (sprintf(__("%s:%d: string not closed in css file"), $file, $line_nr)) if ($in_string);
+    warn (sprintf(__("%s:%d: --css-file ended in comment"), $file, $line_nr)) if ($in_comment);
+    warn (sprintf(__("%s:%d \@import not finished in css file"), $file, $line_nr))  if ($in_import and !$in_comment and !$in_string);
     return ($imports, $rules);
 }
 
@@ -16140,7 +16148,7 @@ sub collect_all_css_files()
          }
          unless (open (CSSFILE, "$css_file"))
          {
-            cmdline_warn (sprintf(__("could not open --css-file %s: %s"), $css_file, $!));
+            warn (sprintf(__("%s: could not open --css-file %s: %s\n"), $my_command_name, $css_file, $!));
             next;
          }
          $css_file_fh = \*CSSFILE;

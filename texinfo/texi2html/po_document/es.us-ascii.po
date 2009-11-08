@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: texi2html-bug@nongnu.org\n"
-"POT-Creation-Date: 2009-11-05 23:44+0100\n"
+"POT-Creation-Date: 2009-11-08 16:48+0100\n"
 "PO-Revision-Date: 2008-08-28\n"
 "Last-Translator: Francisco Vila <paconet.org@gmail.com>\n"
 "Language-Team: Unknown\n"
@@ -15,24 +15,24 @@ msgstr ""
 "Content-Type: text/plain; charset=us-ascii\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html.pl:5882 texi2html.pl:5886 texi2html.pl:5890
+#: texi2html.pl:5895 texi2html.pl:5899 texi2html.pl:5903
 msgid "About This Document"
 msgstr "Acerca de este documento"
 
-#: texi2html.pl:5883 texi2html.pl:5887 texi2html.pl:5891
+#: texi2html.pl:5896 texi2html.pl:5900 texi2html.pl:5904
 msgid "Table of Contents"
 msgstr "@'{@dotless{I}}ndice General"
 
-#: texi2html.pl:5884 texi2html.pl:5888 texi2html.pl:5892
+#: texi2html.pl:5897 texi2html.pl:5901 texi2html.pl:5905
 msgid "Short Table of Contents"
 msgstr "Resumen del Contenido"
 
-#: texi2html.pl:5885 texi2html.pl:5889 texi2html.pl:5893 texi2html.init:6248
+#: texi2html.pl:5898 texi2html.pl:5902 texi2html.pl:5906 texi2html.init:6248
 #: formats/html.init:2478
 msgid "Footnotes"
 msgstr "Notas el pie"
 
-#: texi2html.pl:12330
+#: texi2html.pl:12344
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""
@@ -587,7 +587,7 @@ msgstr "Secci@'on"
 msgid "Jump to"
 msgstr "Saltar a"
 
-#: formats/info.init:2999
+#: formats/info.init:3003
 msgid "(outside of any node)"
 msgstr ""
 
