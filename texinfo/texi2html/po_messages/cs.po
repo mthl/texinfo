@@ -1,0 +1,2848 @@
+# Czech translations for GNU texinfo
+# Copyright (C) 1997 Free Software Foundation, Inc.
+# Vladimir Michl <Vladimir.Michl@seznam.cz>, 1997.
+#
+# Note: 2 messages untranslated, it's ok.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: texinfo 4.0\n"
+"Report-Msgid-Bugs-To: texi2html-bug@nongnu.org\n"
+"POT-Creation-Date: 2009-11-08 16:40+0100\n"
+"PO-Revision-Date: 2000-10-31 15:17+01:00\n"
+"Last-Translator: Vladimir Michl <Vladimir.Michl@seznam.cz>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: texi2html.pl:2259
+#, perl-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Více informací získáte pøíkazem `%s --help'.\n"
+
+#: texi2html.pl:2368
+#, fuzzy, perl-format
+msgid "%s is not a valid language code"
+msgstr "%s není platný kód jazyka (podle ISO 639)"
+
+#: texi2html.pl:2372
+#, fuzzy, perl-format
+msgid "%s is not a valid region code"
+msgstr "%s není platný kód jazyka (podle ISO 639)"
+
+#: texi2html.pl:2458
+#, perl-format
+msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgstr ""
+"%s: argument k --footnote-style musí být `separate'|`end', ale ne `%s'.\n"
+
+#: texi2html.pl:2463
+#, fuzzy, perl-format
+msgid "@%s arg must be `separate' or `end', not `%s'"
+msgstr ""
+"%s: argument k --footnote-style musí být `separate'|`end', ale ne `%s'.\n"
+
+#: texi2html.pl:2481
+#, fuzzy, perl-format
+msgid "unrecognized encoding name `%s'"
+msgstr "%s: neznámý pøepínaè `--%s'\n"
+
+#: texi2html.pl:2496
+msgid "Document encoding is utf8, but there is no unicode support"
+msgstr ""
+
+#: texi2html.pl:2499
+#, perl-format
+msgid "Encoding %s certainly poorly supported"
+msgstr ""
+
+#: texi2html.pl:2518 texi2html.pl:2592
+msgid "translation"
+msgstr ""
+
+#: texi2html.pl:2750
+#, perl-format
+msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgstr ""
+"%s: argument pro --paragraph-indent musí být èíslo|`none'|`asis', ale ne `%"
+"s'.\n"
+
+#: texi2html.pl:2754
+#, fuzzy, perl-format
+msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
+msgstr ""
+"%s: argument pro --paragraph-indent musí být èíslo|`none'|`asis', ale ne `%"
+"s'.\n"
+
+#: texi2html.pl:3612
+#, fuzzy, perl-format
+msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+msgstr "Pou¾ití: %s [PØEPÍNAÈ]... SOUBOR...\n"
+
+#: texi2html.pl:3614
+msgid ""
+"Translate Texinfo source documentation to various other formats, by default\n"
+"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
+msgstr ""
+
+#: texi2html.pl:3617
+#, perl-format
+msgid ""
+"General options:\n"
+"      --error-limit=NUM       quit after NUM errors (default %d).\n"
+"      --document-language=STR locale to use in translating Texinfo keywords\n"
+"                                for the output document (default C).\n"
+"      --force                 preserve output even if errors.\n"
+"      --help                  display this help and exit.\n"
+"      --no-validate           suppress node cross-reference validation.\n"
+"      --no-warn               suppress warnings (but not errors).\n"
+"  -v, --verbose               explain what is being done.\n"
+"      --version               display version information and exit.\n"
+msgstr ""
+
+#: texi2html.pl:3628
+msgid ""
+"Output format selection (default is to produce Info):\n"
+"      --docbook               output Docbook XML rather than Info.\n"
+"      --html                  output HTML rather than Info.\n"
+"      --xml                   output Texinfo XML rather than Info.\n"
+"      --plaintext             output plain text rather than Info.\n"
+msgstr ""
+
+#: texi2html.pl:3634
+msgid ""
+"General output options:\n"
+"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+"                                ignoring any @setfilename.\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output);\n"
+"                                also, write to standard output by default.\n"
+"      --no-split              suppress the splitting of Info or HTML "
+"output,\n"
+"                                generate only one output file.\n"
+"      --number-sections       output chapter and sectioning numbers.\n"
+"  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
+msgstr ""
+
+#: texi2html.pl:3646
+#, perl-format
+msgid ""
+"Options for Info and plain text:\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %"
+"d).\n"
+"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
+"                                `separate' to put them in their own node;\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
+"d).\n"
+"                                If VAL is `none', do not indent; if VAL is\n"
+"                                `asis', preserve existing indentation.\n"
+"      --split-size=NUM        split Info files at size NUM (default %d).\n"
+msgstr ""
+
+#: texi2html.pl:3661
+msgid ""
+"Options for HTML:\n"
+"      --css-include=FILE      include FILE in HTML <style> output;\n"
+"                                read stdin if FILE is -.\n"
+"      --css-ref=URL           generate reference to a CSS file.\n"
+"      --internal-links=FILE   produce list of internal links in FILE.\n"
+"      --transliterate-file-names\n"
+"                              produce file names in ASCII transliteration.\n"
+msgstr ""
+
+#: texi2html.pl:3674
+msgid ""
+"Input file options:\n"
+"      --commands-in-node-names  allow @ commands in node names.\n"
+"  -D VAR                        define the variable VAR, as with @set.\n"
+"  -I DIR                        append DIR to the @include search path.\n"
+"  -P DIR                        prepend DIR to the @include search path.\n"
+"  -U VAR                        undefine the variable VAR, as with @clear.\n"
+msgstr ""
+
+#: texi2html.pl:3681
+msgid ""
+"Conditional processing in input:\n"
+"  --ifdocbook       process @ifdocbook and @docbook even if\n"
+"                      not generating Docbook.\n"
+"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
+"  --ifinfo          process @ifinfo even if not generating Info.\n"
+"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
+"  --iftex           process @iftex and @tex; implies --no-split.\n"
+"  --ifxml           process @ifxml and @xml.\n"
+"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
+"  --no-ifhtml       do not process @ifhtml and @html text.\n"
+"  --no-ifinfo       do not process @ifinfo text.\n"
+"  --no-ifplaintext  do not process @ifplaintext text.\n"
+"  --no-iftex        do not process @iftex and @tex text.\n"
+"  --no-ifxml        do not process @ifxml and @xml text.\n"
+"\n"
+"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
+msgstr ""
+
+#: texi2html.pl:3698
+msgid ""
+"  The defaults for the @if... conditionals depend on the output format:\n"
+"  if generating HTML, --ifhtml is on and the others are off;\n"
+"  if generating Info, --ifinfo is on and the others are off;\n"
+"  if generating plain text, --ifplaintext is on and the others are off;\n"
+"  if generating XML, --ifxml is on and the others are off.\n"
+msgstr ""
+
+#: texi2html.pl:3704
+#, fuzzy
+msgid ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+msgstr ""
+"\n"
+"  Implicitní nastavení pro podmínky @if... zále¾í na výstupním formátu:\n"
+"pøi generování HTML je zapnut pøepínaè --ifhtml a ostatní jsou vypnuty;\n"
+"pøi generování Info souboru nebo èistého textu je zapnut pøepínaè --ifinfo\n"
+"a ostatní jsou vypnuty.\n"
+"\n"
+"Pøíklady:\n"
+"  makeinfo foo.texi                    zapí¹e Info do souboru urèeného\n"
+"                                        pomocí @setfilename ve foo.texi\n"
+"  makeinfo --html foo.texi             zapí¹e HTML do souboru urèeného\n"
+"                                        pomocí @setfilename ve foo.texi\n"
+"  makeinfo --no-headers -o - foo.texi  vypí¹e èistý text na standardní "
+"výstup\n"
+"  makeinfo --number-sections foo.texi  zapí¹e Info s èíslovanými sekcemi\n"
+"  makeinfo --no-split foo.texi         zapí¹e jeden Info soubor jakkoliv "
+"velký\n"
+"\n"
+"  Chyby v programu oznamujte na adrese <bug-texinfo@gnu.org> (pouze "
+"anglicky),\n"
+"obecné otázky smìøujte na <help-texinfo@gnu.org>. Pøipomínky k pøekladu\n"
+"zasílejte na <cs@li.org> (èesky)."
+
+#: texi2html.pl:3715
+#, fuzzy
+msgid ""
+"Email bug reports to bug-texinfo@gnu.org,\n"
+"general questions and discussion to help-texinfo@gnu.org.\n"
+"Texinfo home page: http://www.gnu.org/software/texinfo/"
+msgstr ""
+"\n"
+"  Chyby v programu oznamujte na adrese <bug-texinfo@gnu.org> (pouze "
+"anglicky),\n"
+"obecné otázky smìøujte na <help-texinfo@gnu.org>. Pøipomínky k pøekladu\n"
+"zasílejte na <cs@li.org> (èesky).\n"
+
+#: texi2html.pl:3794
+#, perl-format
+msgid ""
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
+msgstr ""
+
+#: texi2html.pl:3816
+#, perl-format
+msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
+msgstr ""
+
+#: texi2html.pl:4423
+#, perl-format
+msgid "Can't create directory `%s': %s"
+msgstr ""
+
+#: texi2html.pl:5140
+#, fuzzy, perl-format
+msgid "Node `%s' previously defined %s"
+msgstr "Uzel `%s' ji¾ byl definován na øádku %d"
+
+#: texi2html.pl:5145 texi2html.pl:12622
+#, perl-format
+msgid "Syntax for an external node used for `%s'"
+msgstr ""
+
+#: texi2html.pl:5427 texi2html.pl:5438
+#, perl-format
+msgid "%c%s requires a name"
+msgstr "%c%s po¾aduje jméno"
+
+#: texi2html.pl:5503
+#, fuzzy, perl-format
+msgid "@exampleindent arg must be numeric/`asis', not `%s'"
+msgstr ""
+"%s: argument pro --paragraph-indent musí být èíslo|`none'|`asis', ale ne `%"
+"s'.\n"
+
+#: texi2html.pl:5514
+#, perl-format
+msgid "Expected @%s on or off, not `%s'"
+msgstr ""
+
+#: texi2html.pl:5602
+#, perl-format
+msgid "Encoding %s is not a canonical texinfo encoding"
+msgstr ""
+
+#: texi2html.pl:5759
+#, fuzzy, perl-format
+msgid "Unknown from index `%s' in @%s"
+msgstr "Neznámý rejstøík `%s'"
+
+#: texi2html.pl:5761
+#, fuzzy, perl-format
+msgid "Unknown to index name `%s' in @%s"
+msgstr "Neznámý rejstøík `%s'"
+
+#: texi2html.pl:5796
+#, perl-format
+msgid "Reserved index name %s"
+msgstr ""
+
+#: texi2html.pl:5839
+#, perl-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
+msgstr ""
+
+#: texi2html.pl:5964
+#, perl-format
+msgid "@sp requires a positive numeric argument, not `%s'"
+msgstr "@sp vy¾aduje kladný èíselný argument a ne `%s'"
+
+#: texi2html.pl:6701
+#, fuzzy, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "uzel `%s' - nesmìøuje na nìj ¾ádný odkaz"
+
+#: texi2html.pl:6776
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr "uzel `%s' - nesmìøuje na nìj ¾ádný odkaz"
+
+#: texi2html.pl:6827
+#, perl-format
+msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr ""
+"Uzel `%s' postrádá polo¾ku menu pro `%s' navzdory tomu, ¾e je jeho vy¹¹ím "
+"uzlem"
+
+#: texi2html.pl:6846
+#, perl-format
+msgid "For `%s', up in menu `%s' and up `%s' don't match"
+msgstr ""
+
+#: texi2html.pl:6876
+#, perl-format
+msgid "No node following `%s' in menu, but `%s' follows in sectionning"
+msgstr ""
+
+#: texi2html.pl:6877
+#, perl-format
+msgid "Node following `%s' in menu `%s' and in sectionning `%s' differ"
+msgstr ""
+
+#: texi2html.pl:7903
+#, perl-format
+msgid "Unknown index `%s'"
+msgstr "Neznámý rejstøík `%s'"
+
+#: texi2html.pl:7910
+#, perl-format
+msgid "Entry for index `%s' outside of any node"
+msgstr "Polo¾ka pro rejstøík `%s' je mimo v¹echny uzly"
+
+#: texi2html.pl:8959
+#, perl-format
+msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
+msgstr ""
+"%s: Výstupní soubor `%s' byl odstranìn, proto¾e byly nalezeny chyby;\n"
+"u¾ijte pøepínaè --force k ponechání souboru.\n"
+
+#: texi2html.pl:8963
+#, fuzzy, perl-format
+msgid "%s: Removing output files due to errors; use --force to preserve.\n"
+msgstr ""
+"%s: Výstupní soubor `%s' byl odstranìn, proto¾e byly nalezeny chyby;\n"
+"u¾ijte pøepínaè --force k ponechání souboru.\n"
+
+#: texi2html.pl:9010
+msgid "Too many errors!  Gave up.\n"
+msgstr "Pøíli¹ mnoho chyb!  Konec.\n"
+
+#: texi2html.pl:9102
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s (via @%s)\n"
+msgstr "%s:%d: varování: "
+
+#: texi2html.pl:9106
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s\n"
+msgstr "%s:%d: varování: "
+
+#: texi2html.pl:9139
+#, perl-format
+msgid "(in %s l. %d via @%s)"
+msgstr ""
+
+#: texi2html.pl:9143
+#, perl-format
+msgid "(l. %d via @%s)"
+msgstr ""
+
+#: texi2html.pl:9148
+#, perl-format
+msgid "(in %s l. %d)"
+msgstr ""
+
+#: texi2html.pl:9152
+#, perl-format
+msgid "(l. %d)"
+msgstr ""
+
+#: texi2html.pl:9309
+#, perl-format
+msgid "Too much '}' in @%s"
+msgstr ""
+
+#: texi2html.pl:9319
+#, fuzzy, perl-format
+msgid "Missing `}' on @%s line"
+msgstr "Chybìjící `}' v argumentu @def"
+
+#: texi2html.pl:9474
+#, perl-format
+msgid "Anchor `%s' ignored in %s expanded more than once"
+msgstr ""
+
+#: texi2html.pl:10101
+#, perl-format
+msgid "column fraction not a number: %s"
+msgstr ""
+
+#: texi2html.pl:10122
+#, perl-format
+msgid "ignoring stray text `%s' after @multitable"
+msgstr "ignoruji zbloudilý text `%s' po pøíkazu @multitable"
+
+#: texi2html.pl:10144
+#, perl-format
+msgid "Too many %s closed"
+msgstr ""
+
+#: texi2html.pl:10511
+#, perl-format
+msgid "Must be in `@%s' environment to use `@%s'"
+msgstr ""
+
+#: texi2html.pl:10570 texi2html.pl:10998
+#, fuzzy, perl-format
+msgid "@%s (argument nr %d)"
+msgstr "©patný argument pro %c%s"
+
+#: texi2html.pl:10641
+#, perl-format
+msgid "%s requires an argument: the formatter for %citem"
+msgstr "%s vy¾aduje argument : formátovaè pro %citem"
+
+#: texi2html.pl:10644
+#, perl-format
+msgid "prepended for @%s"
+msgstr ""
+
+#: texi2html.pl:10670
+#, perl-format
+msgid "@columnfraction (argument nr %d)"
+msgstr ""
+
+#: texi2html.pl:10852 texi2html.pl:10866
+msgid "node name in menu"
+msgstr ""
+
+#: texi2html.pl:10853
+msgid "normalized node name in menu"
+msgstr ""
+
+#: texi2html.pl:10859
+msgid "menu entry name"
+msgstr ""
+
+#: texi2html.pl:10977
+#, fuzzy, perl-format
+msgid "First argument to @%s may not be empty"
+msgstr "©patný argument pro %c%s"
+
+#: texi2html.pl:11130 texi2html.pl:13860
+msgid "@listoffloats @float type"
+msgstr ""
+
+#: texi2html.pl:11231
+#, fuzzy, perl-format
+msgid "@%s not meaningful outside `@float' environment"
+msgstr "@%s není myslitelné uvnitø `@%s' bloku"
+
+#: texi2html.pl:11289
+msgid "@float style"
+msgstr ""
+
+#: texi2html.pl:11418 texi2html.pl:11419
+msgid "@image base name"
+msgstr ""
+
+#: texi2html.pl:11428 texi2html.pl:11429
+msgid "@image extension"
+msgstr ""
+
+#: texi2html.pl:11436
+#, fuzzy
+msgid "@image file name"
+msgstr "soubor `%s' v pøíkazu @image je neèitelný: %s"
+
+#: texi2html.pl:11458
+msgid "@image alt text"
+msgstr ""
+
+#: texi2html.pl:11541
+#, fuzzy, perl-format
+msgid "Macro `%s' called with too many args"
+msgstr "Makro `%s' volané na øádku %d s pøíli¹ mnoha argumenty"
+
+#: texi2html.pl:11565
+#, fuzzy, perl-format
+msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
+msgstr "\\ pøi expanzi makra následováno `%s' místo \\ nebo jména parametru"
+
+#: texi2html.pl:12270
+#, perl-format
+msgid "macro `%s' previously defined"
+msgstr "makro `%s' ji¾ bylo definováno"
+
+#: texi2html.pl:12271
+#, perl-format
+msgid "here is the previous definition of `%s'"
+msgstr "zde je pøedchozí definice `%s'"
+
+#: texi2html.pl:12304
+#, perl-format
+msgid "Macro definition without macro name: %s"
+msgstr ""
+
+#: texi2html.pl:12345
+#, perl-format
+msgid "undefined flag: %s"
+msgstr ""
+
+#: texi2html.pl:12357
+msgid "Bad syntax for @value"
+msgstr ""
+
+#: texi2html.pl:12565
+#, fuzzy, perl-format
+msgid "@%s already set"
+msgstr "Rejstøík `%s' ji¾ existuje"
+
+#: texi2html.pl:12617
+#, fuzzy, perl-format
+msgid "Anchor `%s' previously defined %s"
+msgstr "makro `%s' ji¾ bylo definováno"
+
+#: texi2html.pl:12940
+#, fuzzy, perl-format
+msgid "%c%s is obsolete."
+msgstr "Pøíkaz %c%s je zastaralý"
+
+#: texi2html.pl:12944
+#, fuzzy, perl-format
+msgid "%c%s is obsolete; %s"
+msgstr "Pøíkaz %c%s je zastaralý"
+
+#: texi2html.pl:12960
+#, perl-format
+msgid "Unknown index `%s' in @printindex"
+msgstr "Neznámý rejstøík `%s' v @printindex"
+
+#: texi2html.pl:13027
+#, perl-format
+msgid "ignored @%s already in an @%s entry"
+msgstr ""
+
+#: texi2html.pl:13052 texi2html.pl:13095
+#, fuzzy, perl-format
+msgid "@%s seen before first @node"
+msgstr "@menu spatøeno pøed prvním @node, vytvoøen uzel `Top'"
+
+#: texi2html.pl:13053
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr ""
+"proto¾e vá¹ uzel @top by mìl být uzavøen v @ifnottex spí¹e ne¾ v @ifinfo?"
+
+#: texi2html.pl:13430 texi2html.pl:13431 texi2html.pl:13434
+msgid "new menu entry"
+msgstr ""
+
+#: texi2html.pl:13555
+msgid "paragraph end"
+msgstr ""
+
+#: texi2html.pl:13789
+#, perl-format
+msgid "`@end' expected `%s', but saw `%s'"
+msgstr "`@end' vy¾aduje `%s', ale vidí `%s'"
+
+#: texi2html.pl:13853
+msgid "@listoffloats type"
+msgstr ""
+
+#: texi2html.pl:13876
+#, perl-format
+msgid "Requested float type `%s' not previously used"
+msgstr ""
+
+#: texi2html.pl:13988
+#, fuzzy, perl-format
+msgid "@%s not allowed on in argument to @%s"
+msgstr "©patný argument pro %c%s"
+
+#: texi2html.pl:14043
+#, perl-format
+msgid "Accent command `@%s' must not be followed by whitespace"
+msgstr ""
+
+#: texi2html.pl:14047
+#, perl-format
+msgid "Use braces to give a command as an argument to @%s"
+msgstr "Pou¾ijte závorky k zadání pøíkazu jako argumentu @%s"
+
+#: texi2html.pl:14208
+#, perl-format
+msgid "@%s not meaningful inside `@%s' block"
+msgstr "@%s není myslitelné uvnitø `@%s' bloku"
+
+#: texi2html.pl:14253
+#, perl-format
+msgid "@%s outside of table or list"
+msgstr ""
+
+#: texi2html.pl:14286
+msgid "ignoring @tab outside of multitable"
+msgstr "pøíkaz `@tab' ignorován, je mimo multitabulku"
+
+#: texi2html.pl:14293
+#, fuzzy
+msgid "ignoring @tab in empty multitable"
+msgstr "pøíkaz `@tab' ignorován, je mimo multitabulku"
+
+#: texi2html.pl:14297
+#, perl-format
+msgid "Too many columns in multitable item (max %d)"
+msgstr "Pøíli¹ mnoho sloupcù v multitabulkové polo¾ce (max %d)"
+
+#: texi2html.pl:14328
+msgid "@center should not appear in another format"
+msgstr ""
+
+#: texi2html.pl:14368 texi2html.pl:14388
+#, perl-format
+msgid "Misplaced %c"
+msgstr "©patnì umístìný znak %c"
+
+#: texi2html.pl:14936
+#, perl-format
+msgid "%c%s expects a single character `i' or `j' as argument"
+msgstr "%c%s vy¾aduje jeden znak `i' nebo `j' jako argument"
+
+#: texi2html.pl:14940
+#, fuzzy, perl-format
+msgid "%c%s expects `i' or `j' as argument, not `%s'"
+msgstr "%c%s vy¾aduje `i' nebo `j' jako argument, ne `%c'"
+
+#: texi2html.pl:14989
+#, fuzzy, perl-format
+msgid "Unknown command with braces `@%s'"
+msgstr "Neznámý pøíkaz `%s'"
+
+#: texi2html.pl:15025
+#, fuzzy, perl-format
+msgid "%c%s expected braces"
+msgstr "%c%s oèekáváno `{...}'"
+
+#: texi2html.pl:15029
+#, perl-format
+msgid "Unknown command `%s'"
+msgstr "Neznámý pøíkaz `%s'"
+
+#: texi2html.pl:15107
+#, perl-format
+msgid "Reached eof before matching @end %s"
+msgstr "Vstupní soubor skonèil a pøíkaz `@end %s' nebyl nalezen"
+
+#: texi2html.pl:15115
+#, perl-format
+msgid "%cend macro not found"
+msgstr "%cend makro nebylo nalezeno"
+
+#: texi2html.pl:15283
+#, perl-format
+msgid "No matching `%cend %s'"
+msgstr "Chybí odpovídající `%cend %s'"
+
+#: texi2html.pl:15311
+#, perl-format
+msgid "%c%s missing close brace"
+msgstr "%c%s chybìjící uzavírací závorka"
+
+#: texi2html.pl:15419
+#, fuzzy, perl-format
+msgid "%s should not appear in %s"
+msgstr "Výstup %s pro expanzi makra nelze otevøít"
+
+#: texi2html.pl:16119
+#, perl-format
+msgid "%s:%d: string not closed in css file"
+msgstr ""
+
+#: texi2html.pl:16120
+#, perl-format
+msgid "%s:%d: --css-file ended in comment"
+msgstr ""
+
+#: texi2html.pl:16121
+#, perl-format
+msgid "%s:%d @import not finished in css file"
+msgstr ""
+
+#: texi2html.pl:16151
+#, fuzzy, perl-format
+msgid "%s: could not open --css-file %s: %s\n"
+msgstr "Výstup %s pro expanzi makra nelze otevøít"
+
+#: texi2html.pl:16206
+#, perl-format
+msgid "%s: missing file argument.\n"
+msgstr "%s: chybí argument jména souboru.\n"
+
+#: texi2html.init:2053
+msgid "recursion is always allowed"
+msgstr ""
+
+#: texi2html.init:2054
+msgid "arguments are quoted by default"
+msgstr ""
+
+#: formats/docbook.init:1025 formats/info.init:2872
+#, perl-format
+msgid "@image file `%s' unreadable: %s"
+msgstr "soubor `%s' v pøíkazu @image je neèitelný: %s"
+
+#: formats/docbook.init:1030 formats/info.init:2877
+#, fuzzy, perl-format
+msgid "Cannot find @image file `%s.txt'"
+msgstr "Uzel `%s' nelze nalézt."
+
+#: formats/html.init:2547
+#, fuzzy, perl-format
+msgid "@image file `%s' (for HTML) not found, using `%s'"
+msgstr "soubor `%s' v pøíkazu @image je neèitelný: %s"
+
+#: formats/info.init:1151
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+
+#: formats/info.init:1311
+#, fuzzy
+msgid "`.' or `,' must follow @xref."
+msgstr "`.' nebo `,' musí následovat za køí¾ovým odkazem, ale ne za %c"
+
+#: formats/info.init:1316
+#, fuzzy, perl-format
+msgid "`.' or `,' must follow @xref, not %s"
+msgstr "`.' nebo `,' musí následovat za køí¾ovým odkazem, ale ne za %c"
+
+#: formats/info.init:3073
+msgid "Footnote defined without parent node"
+msgstr "Poznámka pod èarou definována bez rodièovského uzlu"
+
+#~ msgid "%s: option `%s' is ambiguous\n"
+#~ msgstr "%s: pøepínaè `%s' není jednoznaèný\n"
+
+#~ msgid "%s: option `--%s' doesn't allow an argument\n"
+#~ msgstr "%s: pøepínaè `--%s' musí být zadán bez argumentu\n"
+
+#~ msgid "%s: option `%c%s' doesn't allow an argument\n"
+#~ msgstr "%s: pøepínaè `%c%s' musí být zadán bez argumentu\n"
+
+#~ msgid "%s: option `%s' requires an argument\n"
+#~ msgstr "%s: pøepínaè `%s' vy¾aduje argument\n"
+
+#~ msgid "%s: unrecognized option `--%s'\n"
+#~ msgstr "%s: neznámý pøepínaè `--%s'\n"
+
+#~ msgid "%s: unrecognized option `%c%s'\n"
+#~ msgstr "%s: neznámý pøepínaè `%c%s'\n"
+
+#~ msgid "%s: illegal option -- %c\n"
+#~ msgstr "%s: neznámý pøepínaè -- %c\n"
+
+#~ msgid "%s: invalid option -- %c\n"
+#~ msgstr "%s: neznámý pøepínaè -- %c\n"
+
+#~ msgid "%s: option requires an argument -- %c\n"
+#~ msgstr "%s: pøepínaè vy¾aduje argument -- %c\n"
+
+#~ msgid "%s: option `-W %s' is ambiguous\n"
+#~ msgstr "%s: pøepínaè `-W %s' není jednoznaèný\n"
+
+#~ msgid "%s: option `-W %s' doesn't allow an argument\n"
+#~ msgstr "%s: pøepínaè `-W %s' musí být zadán bez argumentu\n"
+
+#, fuzzy
+#~ msgid "memory exhausted"
+#~ msgstr "virtuální pamì» vyèerpána"
+
+#~ msgid "Move forward a character"
+#~ msgstr "Posun na následující znak"
+
+#~ msgid "Move backward a character"
+#~ msgstr "Posun na pøedcházející znak"
+
+#~ msgid "Move to the start of this line"
+#~ msgstr "Pøesun na zaèátek tohoto øádku"
+
+#~ msgid "Move to the end of this line"
+#~ msgstr "Pøesun na konec tohoto øádku"
+
+#~ msgid "Move forward a word"
+#~ msgstr "Posun na následující slovo"
+
+#~ msgid "Move backward a word"
+#~ msgstr "Posun na pøedcházející slovo"
+
+#~ msgid "Delete the character under the cursor"
+#~ msgstr "Smazání znaku pod kurzorem"
+
+#~ msgid "Delete the character behind the cursor"
+#~ msgstr "Smazání prvního znaku vlevo od kurzoru"
+
+#~ msgid "Cancel or quit operation"
+#~ msgstr "Zru¹ení nebo pøeru¹ení operace"
+
+#~ msgid "Accept (or force completion of) this line"
+#~ msgstr "Akceptování (nebo vnucené dokonèení) tohoto øádku"
+
+#~ msgid "Insert next character verbatim"
+#~ msgstr "Vlo¾ení dal¹ího znaku bez interpretace jeho funkce"
+
+#~ msgid "Insert this character"
+#~ msgstr "Vlo¾ení tohoto znaku"
+
+#~ msgid "Insert a TAB character"
+#~ msgstr "Vlo¾ení tabelátoru"
+
+#~ msgid "Transpose characters at point"
+#~ msgstr "Pøemístìní znaku na pozici"
+
+#~ msgid "Yank back the contents of the last kill"
+#~ msgstr "Vlo¾ení toho co bylo naposled smazáno"
+
+#~ msgid "Kill ring is empty"
+#~ msgstr "Kruhový buffer smazaných oblastí je prázdný"
+
+#~ msgid "Yank back a previous kill"
+#~ msgstr "Vlo¾ení naposledy smazaného úseku"
+
+#~ msgid "Kill to the end of the line"
+#~ msgstr "Smazání v¹eho od kurzoru a¾ do konce øádku"
+
+#~ msgid "Kill to the beginning of the line"
+#~ msgstr "Smazání v¹eho od zaèátku øádku do kurzoru"
+
+#~ msgid "Kill the word following the cursor"
+#~ msgstr "Smazání slova, od kurzoru do konce slova"
+
+#~ msgid "Kill the word preceding the cursor"
+#~ msgstr "Smazání slova, od zaèátku slova do kurzoru"
+
+#~ msgid "No completions"
+#~ msgstr "Doplnìní neexistují"
+
+#~ msgid "Not complete"
+#~ msgstr "Nekompletní"
+
+#~ msgid "List possible completions"
+#~ msgstr "Seznam mo¾ných doplnìní"
+
+#~ msgid "Sole completion"
+#~ msgstr "Jedinné doplnìní"
+
+#~ msgid "One completion:\n"
+#~ msgstr "Jedno doplnìní:\n"
+
+#~ msgid "%d completions:\n"
+#~ msgstr "%d doplnìní:\n"
+
+#~ msgid "Insert completion"
+#~ msgstr "Vlo¾ení doplnìní"
+
+#~ msgid "Building completions..."
+#~ msgstr "Hledám doplnìní..."
+
+#~ msgid "Scroll the completions window"
+#~ msgstr "Odrolování obsahu okna s doplnìními"
+
+#~ msgid "Footnotes could not be displayed"
+#~ msgstr "Poznámky pod èarou nelze zobrazit"
+
+#~ msgid "Show the footnotes associated with this node in another window"
+#~ msgstr ""
+#~ "Zobrazení poznámek pod èarou, vztahujících se k tomuto uzlu, v jiném oknì"
+
+#, fuzzy
+#~ msgid "---------- Footnotes ----------"
+#~ msgstr "---------------------\n"
+
+#~ msgid "Look up a string in the index for this file"
+#~ msgstr "Vyhledání øetìzce v rejstøíku tohoto souboru"
+
+#~ msgid "Finding index entries..."
+#~ msgstr "Jsou hledány polo¾ky rejstøíku..."
+
+#~ msgid "No indices found."
+#~ msgstr "®ádný rejstøík nebyl nalezen."
+
+#~ msgid "Index entry: "
+#~ msgstr "Polo¾ka rejstøíku: "
+
+#~ msgid ""
+#~ "Go to the next matching index item from the last `\\[index-search]' "
+#~ "command"
+#~ msgstr ""
+#~ "Posun na dal¹í polo¾ku rejstøíku, odpovídající øetìzci z minulého pøíkazu "
+#~ "`\\[index-search]'"
+
+#~ msgid "No previous index search string."
+#~ msgstr "Není zadán øetìzec, který se má vyhledávat v rejstøíku(cích)."
+
+#~ msgid "No index entries."
+#~ msgstr "Nejsou polo¾ky rejstøíku."
+
+#, fuzzy
+#~ msgid "No %sindex entries containing `%s'."
+#~ msgstr "Ji¾ není %spolo¾ka rejstøíku, která obsahuje \"%s\"."
+
+#~ msgid "more "
+#~ msgstr "dal¹í "
+
+#~ msgid "CAN'T SEE THIS"
+#~ msgstr "TOTO NELZE VIDÌT"
+
+#, fuzzy
+#~ msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
+#~ msgstr "Nalezeno \"%s\" v %s. (`\\[next-index-match]' - hledání dal¹í.)"
+
+#, fuzzy
+#~ msgid "Scanning indices of `%s'..."
+#~ msgstr "Prohledávám tyto rejstøíky \"%s\"..."
+
+#~ msgid "Grovel all known info file's indices for a string and build a menu"
+#~ msgstr ""
+#~ "Vyhledání øetìzce ve v¹ech známých rejstøících info souborù a vytvoøení "
+#~ "menu"
+
+#~ msgid "Index apropos: "
+#~ msgstr "Hledat v rejstøíku odkaz na:"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "* Menu: Nodes whose indices contain `%s':\n"
+#~ msgstr ""
+#~ "\n"
+#~ "* Menu: Uzly jejich¾ rejstøíky obsahují \"%s\":\n"
+
+#~ msgid "Try --help for more information.\n"
+#~ msgstr "Více informací mù¾ete získat pomocí pøepínaèe --help.\n"
+
+#~ msgid "no index entries found for `%s'\n"
+#~ msgstr "odpovídající polo¾ky rejstøíku nebyly pro `%s' nalezeny\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "  Chyby v programu oznamujte na adrese <bug-texinfo@gnu.org> (pouze "
+#~ "anglicky),\n"
+#~ "obecné otázky smìøujte na <help-texinfo@gnu.org>. Pøipomínky k pøekladu\n"
+#~ "zasílejte na <cs@li.org> (èesky).\n"
+
+#~ msgid "Cannot find node `(%s)%s'."
+#~ msgstr "Uzel `(%s)%s' nelze nalézt."
+
+#~ msgid "Cannot find a window!"
+#~ msgstr "Nelze nalézt okno!"
+
+#~ msgid "Point doesn't appear within this window's node!"
+#~ msgstr "Bod se nevyskutuje v oknì tohoto uzlu!"
+
+#~ msgid "Cannot delete the last window."
+#~ msgstr "Poslední okno nelze smazat."
+
+#~ msgid "No menu in this node."
+#~ msgstr "V tomto uzlu není menu."
+
+#~ msgid "No footnotes in this node."
+#~ msgstr "V tomto nejsou poznámky pod èarou."
+
+#~ msgid "No cross references in this node."
+#~ msgstr "V tomto uzlu není køí¾ový odkaz."
+
+#~ msgid "No `%s' pointer for this node."
+#~ msgstr "Pro tento uzel není `%s' ukazatel."
+
+#~ msgid "Unknown Info command `%c'; try `?' for help."
+#~ msgstr "Neznámý Info pøíkaz `%c'; zkuste `?' pro nápovìdu."
+
+#~ msgid "Terminal type `%s' is not smart enough to run Info."
+#~ msgstr "Typ terminálu `%s' není dostateènì inteligentní pro provoz Infa."
+
+#~ msgid "You are already at the last page of this node."
+#~ msgstr "Ji¾ jste na poslední stránce tohoto uzlu."
+
+#~ msgid "You are already at the first page of this node."
+#~ msgstr "Ji¾ jste na první stránce tohoto uzlu."
+
+#~ msgid "Only one window."
+#~ msgstr "Pouze jedno okno."
+
+#~ msgid "Resulting window would be too small."
+#~ msgstr "Výsledné okno by bylo pøíli¹ malé."
+
+#~ msgid "Not enough room for a help window, please delete a window."
+#~ msgstr "Není volné místo pro okno nápovìdy, prosím sma¾te nìkteré okno."
+
+#, fuzzy
+#~ msgid "\\%-10[quit-help]  Close this help window.\n"
+#~ msgstr "  %-10s  Ukonèení prohlí¾ení nápovìdy.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[quit]  Quit Info altogether.\n"
+#~ msgstr "  %-10s  Celkové ukonèení Infa.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
+#~ msgstr "  %-10s  Vyvolání prùvodce Infem.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[prev-line]  Move up one line.\n"
+#~ msgstr "  %-10s  Posun o jeden øádek dozadu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[next-line]  Move down one line.\n"
+#~ msgstr "  %-10s  Posun o jeden øádek dopøedu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
+#~ msgstr "  %-10s  Pøedchozí stránka.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
+#~ msgstr "  %-10s  Následující stránka.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
+#~ msgstr "  %-10s  Pøesun na zaèátek aktuálního uzlu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
+#~ msgstr "  %-10s  Pøesun na konec tohoto uzlu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
+#~ msgstr "  %-10s  Skok na následující hypertextový odkaz v tomto uzlu.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[select-reference-this-line]  Follow the hypertext link under the "
+#~ "cursor.\n"
+#~ msgstr "  %-10s  Následování hypertextového odkazu pod kurzorem.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[history-node]  Go back to the last node seen in this window.\n"
+#~ msgstr "  %-10s  Pøesun na poslední uzel zobrazený v tomto oknì.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
+#~ msgstr "  %-10s  Pøesun na \"pøedchozí\" uzel tohoto uzlu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
+#~ msgstr "  %-10s  Pøesun na \"dal¹í\" uzel tohoto uzlu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
+#~ msgstr "  %-10s  Pøesun na \"pøedchozí\" uzel tohoto uzlu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[next-node]  Go to the next node on this level.\n"
+#~ msgstr "  %-10s  Pøesun na \"dal¹í\" uzel tohoto uzlu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[up-node]  Go up one level.\n"
+#~ msgstr "  %-10s  Pøesun \"nahoru\" z aktuálního uzlu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[top-node]  Go to the top node of this document.\n"
+#~ msgstr "  %-10s  Pøesun na konec tohoto uzlu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[dir-node]  Go to the main `directory' node.\n"
+#~ msgstr "  %-10s  Pøesun na konec tohoto uzlu.\n"
+
+#, fuzzy
+#~ msgid "1...9       Pick the first...ninth item in this node's menu.\n"
+#~ msgstr "  %-10s  Výbìr první ... deváté polo¾ky menu uzlu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
+#~ msgstr "  %-10s  Zobrazení poslední polo¾ky menu uzlu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
+#~ msgstr "  %-10s  Vybrání polo¾ky menu zadané pomocí názvu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
+#~ msgstr "  %-10s  Následování køí¾ového odkazu. Ète název odkazu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
+#~ msgstr "  %-10s  Pøesun na uzel zadaný pomocí jména.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[search]  Search forward for a specified string.\n"
+#~ msgstr "  %-10s  Hledání zadaného øetìzce v tomto Info souboru.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[search-previous]  Search for previous occurrence.\n"
+#~ msgstr "  %-10s  Pøesun na \"pøedchozí\" uzel tohoto uzlu.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[search-next]  Search for next occurrence.\n"
+#~ msgstr ""
+#~ "  %-10s  Hledání zadaného øetìzce v rejstøíku tohoto Info souboru a "
+#~ "výbìr\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[index-search]  Search for a specified string in the index, and\n"
+#~ "              select the node referenced by the first entry found.\n"
+#~ msgstr "              uzlu, na který ukazuje první nalezená polo¾ka.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[abort-key]  Cancel the current operation.\n"
+#~ msgstr "Zru¹ení aktuální operace"
+
+#, fuzzy
+#~ msgid ""
+#~ "Basic Commands in Info Windows\n"
+#~ "******************************\n"
+#~ msgstr "Základní pøíkazy v Info oknech\n"
+
+#~ msgid "  %-10s  Quit this help.\n"
+#~ msgstr "  %-10s  Ukonèení prohlí¾ení nápovìdy.\n"
+
+#~ msgid "  %-10s  Quit Info altogether.\n"
+#~ msgstr "  %-10s  Celkové ukonèení Infa.\n"
+
+#~ msgid "  %-10s  Invoke the Info tutorial.\n"
+#~ msgstr "  %-10s  Vyvolání prùvodce Infem.\n"
+
+#~ msgid "  %-10s  Move to the `next' node of this node.\n"
+#~ msgstr "  %-10s  Pøesun na \"dal¹í\" uzel tohoto uzlu.\n"
+
+#~ msgid "  %-10s  Move to the `previous' node of this node.\n"
+#~ msgstr "  %-10s  Pøesun na \"pøedchozí\" uzel tohoto uzlu.\n"
+
+#~ msgid "  %-10s  Move `up' from this node.\n"
+#~ msgstr "  %-10s  Pøesun \"nahoru\" z aktuálního uzlu.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Pick menu item specified by name.\n"
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr ""
+#~ "              Vybírání polo¾ky menu zpùsobí zobrazení tohoto uzlu.\n"
+
+#~ msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
+#~ msgstr "  %-10s  Následování køí¾ového odkazu. Ète název odkazu.\n"
+
+#~ msgid "  %-10s  Move to the last node seen in this window.\n"
+#~ msgstr "  %-10s  Pøesun na poslední uzel zobrazený v tomto oknì.\n"
+
+#~ msgid "  %-10s  Skip to next hypertext link within this node.\n"
+#~ msgstr "  %-10s  Skok na následující hypertextový odkaz v tomto uzlu.\n"
+
+#~ msgid "  %-10s  Follow the hypertext link under cursor.\n"
+#~ msgstr "  %-10s  Následování hypertextového odkazu pod kurzorem.\n"
+
+#~ msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
+#~ msgstr "  %-10s  Pøesun do `adresáøového' uzlu. Rovnocenné s `g (DIR)'.\n"
+
+#~ msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
+#~ msgstr "  %-10s  Pøesun do nejvy¹¹ího (Top) uzlu. Rovnocenné s `g Top'.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Moving within a node:\n"
+#~ "---------------------\n"
+#~ msgstr "Pøesun uvnitø uzlu:\n"
+
+#~ msgid "  %-10s  Scroll forward a page.\n"
+#~ msgstr "  %-10s  Následující stránka.\n"
+
+#~ msgid "  %-10s  Scroll backward a page.\n"
+#~ msgstr "  %-10s  Pøedchozí stránka.\n"
+
+#~ msgid "  %-10s  Go to the beginning of this node.\n"
+#~ msgstr "  %-10s  Pøesun na zaèátek aktuálního uzlu.\n"
+
+#~ msgid "  %-10s  Go to the end of this node.\n"
+#~ msgstr "  %-10s  Pøesun na konec tohoto uzlu.\n"
+
+#~ msgid "  %-10s  Scroll forward 1 line.\n"
+#~ msgstr "  %-10s  Posun o jeden øádek dopøedu.\n"
+
+#~ msgid "  %-10s  Scroll backward 1 line.\n"
+#~ msgstr "  %-10s  Posun o jeden øádek dozadu.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Other commands:\n"
+#~ "---------------\n"
+#~ msgstr "Dal¹í pøíkazy:\n"
+
+#, fuzzy
+#~ msgid "  %-10s  Pick first...ninth item in node's menu.\n"
+#~ msgstr "  %-10s  Výbìr první ... deváté polo¾ky menu uzlu.\n"
+
+#~ msgid "  %-10s  Pick last item in node's menu.\n"
+#~ msgstr "  %-10s  Zobrazení poslední polo¾ky menu uzlu.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search for a specified string in the index entries of this Info\n"
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr "              uzlu, na který ukazuje první nalezená polo¾ka.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Move to node specified by name.\n"
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr ""
+#~ "              Také mù¾ete zadat jméno souboru ve tvaru (SOUBOR)UZEL.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search forward for a specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "      a zobrazení uzlu, ve kterém je nalezen dal¹í výskyt tohoto "
+#~ "øetìzce.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search backward for a specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "      a zobrazení uzlu, ve kterém je nalezen dal¹í výskyt tohoto "
+#~ "øetìzce.\n"
+
+#~ msgid "The current search path is:\n"
+#~ msgstr "Aktuální hledací cesta je:\n"
+
+#~ msgid ""
+#~ "Commands available in Info windows:\n"
+#~ "\n"
+#~ msgstr "Pøíkazy dostupné v Info oknech:\n"
+
+#~ msgid ""
+#~ "Commands available in the echo area:\n"
+#~ "\n"
+#~ msgstr "Pøíkazy dostupné v zobrazovacím poli:\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "The following commands can only be invoked via %s:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Následující pøíkazy mohou být vykonány pouze pomocí M-x:\n"
+#~ "\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "The following commands cannot be invoked at all:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Následující pøíkazy mohou být vykonány pouze pomocí M-x:\n"
+#~ "\n"
+
+#~ msgid "Display help message"
+#~ msgstr "Zobrazení nápovìdy"
+
+#~ msgid "Visit Info node `(info)Help'"
+#~ msgstr "Zobrazení Info uzlu `(info)Help'"
+
+#~ msgid "Print documentation for KEY"
+#~ msgstr "Zobrazení dokumentace ke KLÁVESE"
+
+#~ msgid "Describe key: %s"
+#~ msgstr "Popis klávesy: %s"
+
+#~ msgid "ESC %s is undefined."
+#~ msgstr "ESC %s je nedefinováno."
+
+#~ msgid "%s is undefined."
+#~ msgstr "%s je nedefinováno."
+
+#~ msgid "%s is defined to %s."
+#~ msgstr "Klávesa %s je definována pro pøíkaz %s."
+
+#~ msgid "Show what to type to execute a given command"
+#~ msgstr "Ukázání co napsat pro spu¹tìní daného pøíkazu"
+
+#~ msgid "Where is command: "
+#~ msgstr "Kde je pøíkaz: "
+
+#~ msgid "`%s' is not on any keys"
+#~ msgstr "Pøíkaz `%s' není na ¾ádné klávese"
+
+#~ msgid "%s can only be invoked via %s."
+#~ msgstr "Pøíkaz %s mù¾e být vyvolán pouze pomocí %s."
+
+#~ msgid "%s can be invoked via %s."
+#~ msgstr "Pøíkaz %s mù¾e být vyvolán pomocí %s."
+
+#~ msgid "There is no function named `%s'"
+#~ msgstr "Funkce `%s' není známa"
+
+# Udìlat patch na podtr¾ení
+#, fuzzy
+#~ msgid ""
+#~ "Selecting other nodes:\n"
+#~ "----------------------\n"
+#~ msgstr "Výbìr dal¹ích uzlù:\n"
+
+#, fuzzy
+#~ msgid "cannot open input file `%s'"
+#~ msgstr "Rouru do `%s' nelze otevøít."
+
+#, fuzzy
+#~ msgid "cannot create output file `%s'"
+#~ msgstr "Výstupní soubor `%s' nelze vytvoøit."
+
+#, fuzzy
+#~ msgid "error closing output file `%s'"
+#~ msgstr "Výstupní soubor `%s' nelze vytvoøit."
+
+#, fuzzy
+#~ msgid "missing action name"
+#~ msgstr "%c%s chybìjící uzavírací závorka"
+
+#, fuzzy
+#~ msgid "unknown action `%s'"
+#~ msgstr "Neznámý pøíkaz `%s'"
+
+#, fuzzy
+#~ msgid "missing variable name"
+#~ msgstr "%s: chybí argument jména souboru.\n"
+
+#~ msgid "Read the name of an Info command and describe it"
+#~ msgstr "Zadání jména pøíkazu a následné zobrazení jeho popisu"
+
+#~ msgid "Describe command: "
+#~ msgstr "Popis pøíkazu: "
+
+#~ msgid "Read a command name in the echo area and execute it"
+#~ msgstr "Zadání jména pøíkazu v zobrazovacím poli a jeho vykonání"
+
+#~ msgid "Cannot execute an `echo-area' command here."
+#~ msgstr "Pøíkaz zobrazovacího pole nelze vykonat zde."
+
+#, fuzzy
+#~ msgid "Undefined command: %s"
+#~ msgstr "Neznámý pøíkaz `%s'"
+
+#~ msgid "Set the height of the displayed window"
+#~ msgstr "Nastavení vý¹ky obrazovky"
+
+#~ msgid "Set screen height to (%d): "
+#~ msgstr "Vý¹ka obrazovky (%d): "
+
+#~ msgid ""
+#~ "   Source files groveled to make this file include:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Pøi zpracování zdrojového souboru jsou vkládány tyto soubory:\n"
+#~ "\n"
+
+#~ msgid "Couldn't manipulate the file %s.\n"
+#~ msgstr "Se souborem %s nelze pracovat.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "* Menu:\n"
+#~ "  (File)Node                        Lines   Size   Containing File\n"
+#~ "  ----------                        -----   ----   ---------------"
+#~ msgstr ""
+#~ "\n"
+#~ "* Menu:\n"
+#~ "  (Soubor)Uzel                      Øádkù   Velikost Soubor\n"
+#~ "  ------------                      -----   -------- ------"
+
+#~ msgid ""
+#~ "Here is the menu of nodes you have recently visited.\n"
+#~ "Select one from this menu, or use `\\[history-node]' in another window.\n"
+#~ msgstr ""
+#~ "  Zde je seznam uzlù, které jste poslední dobou nav¹tívil. Vyberte jeden\n"
+#~ "z tohoto menu, nebo u¾ijte `\\[history-node]' v tomto oknì.\n"
+
+#~ msgid ""
+#~ "Make a window containing a menu of all of the currently visited nodes"
+#~ msgstr "Vytvoøení okna obsahujícího menu v¹ech aktuálnì nav¹tívených uzlù"
+
+#~ msgid "Select a node which has been previously visited in a visible window"
+#~ msgstr "Zobrazení uzlu, který byl zobrazen pøed tímto"
+
+#~ msgid "Select visited node: "
+#~ msgstr "Vyberte nav¹tívený uzel: "
+
+#~ msgid "The reference disappeared! (%s)."
+#~ msgstr "Odkaz se ztratil! (%s)."
+
+#~ msgid ""
+#~ "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-"
+#~ "item] for menu item."
+#~ msgstr ""
+#~ "Vítejte v programu Info verze %s. Stisknìte \\[get-help-window] pro "
+#~ "nápovìdu, \\[menu-item] pro polo¾ku menu."
+
+#~ msgid "Move down to the next line"
+#~ msgstr "Posun dolù na dal¹í øádek"
+
+#~ msgid "Move up to the previous line"
+#~ msgstr "Posun nahoru na pøedchozí øádek"
+
+#~ msgid "Move to the end of the line"
+#~ msgstr "Pøesun na konec øádku"
+
+#~ msgid "Move to the start of the line"
+#~ msgstr "Pøesun na zaèátek øádku"
+
+#~ msgid "Next"
+#~ msgstr "Dal¹í"
+
+#~ msgid "No more nodes within this document."
+#~ msgstr "V tomto dokumentu ji¾ nejsou dal¹í uzly."
+
+#~ msgid "No `Prev' for this node."
+#~ msgstr "Pro tento uzel není pøedchozí uzel."
+
+#~ msgid "No `Prev' or `Up' for this node within this document."
+#~ msgstr "V tomto dokumentu není pro tento uzel pøedchozí nebo vy¹¹í uzel."
+
+#~ msgid "Move forwards or down through node structure"
+#~ msgstr "Pøesun na následující uzel nebo na první ni¾¹í v uzlové struktuøe"
+
+#~ msgid "Move backwards or up through node structure"
+#~ msgstr "Pøesun na pøedchozí uzel nebo na první vy¹¹í v uzlové struktuøe"
+
+#~ msgid "Scroll forward in this window"
+#~ msgstr "Posun o stránku dolù v tomto oknì"
+
+#~ msgid "Scroll forward in this window and set default window size"
+#~ msgstr "Posun dopøedu v tomto oknì a nastavení implicitní velikosti okna"
+
+#, fuzzy
+#~ msgid "Scroll forward in this window staying within node"
+#~ msgstr "Posun o stránku dolù v tomto oknì"
+
+#, fuzzy
+#~ msgid ""
+#~ "Scroll forward in this window staying within node and set default window "
+#~ "size"
+#~ msgstr "Posun dopøedu v tomto oknì a nastavení implicitní velikosti okna"
+
+#~ msgid "Scroll backward in this window"
+#~ msgstr "Posun o stránku nahoru v tomto oknì"
+
+#~ msgid "Scroll backward in this window and set default window size"
+#~ msgstr "Posun dozadu v tomto oknì a nastavení implicitní velikosti okna"
+
+#, fuzzy
+#~ msgid "Scroll backward in this window staying within node"
+#~ msgstr "Posun o stránku nahoru v tomto oknì"
+
+#, fuzzy
+#~ msgid ""
+#~ "Scroll backward in this window staying within node and set default window "
+#~ "size"
+#~ msgstr "Posun dozadu v tomto oknì a nastavení implicitní velikosti okna"
+
+#~ msgid "Move to the start of this node"
+#~ msgstr "Posun na zaèátek tohoto uzlu"
+
+#~ msgid "Move to the end of this node"
+#~ msgstr "Posun na konec tohoto uzlu"
+
+#~ msgid "Scroll down by lines"
+#~ msgstr "Posun dolù po øádcích"
+
+#~ msgid "Scroll up by lines"
+#~ msgstr "Posun nahoru po øádcích"
+
+#~ msgid "Scroll down by half screen size"
+#~ msgstr "Posun dolù o polovinu velikosti obrazovky"
+
+#~ msgid "Scroll up by half screen size"
+#~ msgstr "Posun nahoru o polovinu velikosti obrazovky"
+
+#~ msgid "Select the next window"
+#~ msgstr "Výbìr následujícího okna"
+
+#~ msgid "Select the previous window"
+#~ msgstr "Výbìr pøedchozího okna"
+
+#~ msgid "Split the current window"
+#~ msgstr "Rozdìlení aktuálního okna"
+
+#~ msgid "Delete the current window"
+#~ msgstr "Smazání aktuálního okna"
+
+#~ msgid "Cannot delete a permanent window"
+#~ msgstr "Permanentní okno nelze smazat"
+
+#~ msgid "Delete all other windows"
+#~ msgstr "Smazání v¹ech ostatních oknen"
+
+#~ msgid "Scroll the other window"
+#~ msgstr "Posun druhého okna o stránku dolù"
+
+#~ msgid "Scroll the other window backward"
+#~ msgstr "Posun druhého okna o stránku zpìt"
+
+#~ msgid "Grow (or shrink) this window"
+#~ msgstr "Zmìna velikosti okna"
+
+#~ msgid "Divide the available screen space among the visible windows"
+#~ msgstr "Zvìt¹ení nebo zmen¹ení oken na obrazovce tak, aby byla stejnì velká"
+
+#~ msgid "Toggle the state of line wrapping in the current window"
+#~ msgstr ""
+#~ "Zmìna stavu zalamování v aktuálním oknì (zapnuto->vypni, vypnuto->zapni)"
+
+#~ msgid "Select the Next node"
+#~ msgstr "Zobrazení následujícího uzlu"
+
+#~ msgid "Select the Prev node"
+#~ msgstr "Zobrazení pøedchozího uzlu"
+
+#~ msgid "Select the Up node"
+#~ msgstr "Zobrazení vy¹¹ího uzlu"
+
+#~ msgid "Select the last node in this file"
+#~ msgstr "Zobrazení posledního uzlu v tomto souboru"
+
+#~ msgid "This window has no additional nodes"
+#~ msgstr "Toto okno nemá více dal¹ích uzlù"
+
+#~ msgid "Select the first node in this file"
+#~ msgstr "Zobrazení prvního uzlu v tomto souboru"
+
+#~ msgid "Select the last item in this node's menu"
+#~ msgstr "Zobrazení poslední polo¾ky menu tohoto uzlu"
+
+#~ msgid "Select this menu item"
+#~ msgstr "Zobrazení této polo¾ky menu"
+
+#~ msgid "There aren't %d items in this menu."
+#~ msgstr "V tomto menu není %d. polo¾ka"
+
+#~ msgid "Menu item (%s): "
+#~ msgstr "Polo¾ka menu (%s): "
+
+#~ msgid "Menu item: "
+#~ msgstr "Polo¾ka menu: "
+
+#~ msgid "Follow xref (%s): "
+#~ msgstr "Následování køí¾ového odkazu (%s): "
+
+#~ msgid "Follow xref: "
+#~ msgstr "Následování køí¾ového odkazu: "
+
+#~ msgid "Read a menu item and select its node"
+#~ msgstr "Zadání jména polo¾ky menu a následné zobrazení"
+
+#~ msgid "Read a footnote or cross reference and select its node"
+#~ msgstr ""
+#~ "Zadání jména poznámky pod èarou nebo køí¾ového odkazu a následné zobrazení"
+
+#~ msgid "Move to the start of this node's menu"
+#~ msgstr "Pøesun na zaèátek menu tohoto uzlu"
+
+#~ msgid "Visit as many menu items at once as possible"
+#~ msgstr ""
+#~ "Nav¹tívení tolika polo¾ek menu, kolik je mo¾no. Ka¾dá polo¾ka v jiném "
+#~ "oknì."
+
+#~ msgid "Read a node name and select it"
+#~ msgstr "Zadání jména uzlu a jeho následné zobrazení"
+
+#~ msgid "Goto node: "
+#~ msgstr "Pøesun na uzel: "
+
+#~ msgid "No menu in node `%s'."
+#~ msgstr "V uzlu `%s' není menu."
+
+#~ msgid "No menu item `%s' in node `%s'."
+#~ msgstr "Polo¾ka menu `%s' v uzlu `%s' není."
+
+#~ msgid "Unable to find node referenced by `%s' in `%s'."
+#~ msgstr "Uzel, na který se odkazuje `%s' v `%s', nelze najít."
+
+#~ msgid "Read a list of menus starting from dir and follow them"
+#~ msgstr "Ètení seznamu menu zaèínajíce v adresáøi a pokraèujíce dále"
+
+#~ msgid "Follow menus: "
+#~ msgstr "Následování menu: "
+
+#~ msgid "Find the node describing program invocation"
+#~ msgstr "Nalezení uzlu popisujícího pøepínaèe programu"
+
+#~ msgid "Find Invocation node of [%s]: "
+#~ msgstr "Nalezení uzlu s pøepínaèi programu [%s]: "
+
+#~ msgid "Read a manpage reference and select it"
+#~ msgstr "Zadání jména manuálové stránky a následné zobrazení"
+
+#~ msgid "Get Manpage: "
+#~ msgstr "Manuálová stránka: "
+
+#~ msgid "Select the node `Top' in this file"
+#~ msgstr "Zobrazení nejvy¹¹ího uzlu v tomto souboru"
+
+#~ msgid "Select the node `(dir)'"
+#~ msgstr "Zobrazení uzlu `(dir)'"
+
+#~ msgid "Kill node (%s): "
+#~ msgstr "Zru¹ení uzlu (%s): "
+
+#~ msgid "Cannot kill node `%s'"
+#~ msgstr "Uzel `%s' nelze zru¹it"
+
+#~ msgid "Cannot kill the last node"
+#~ msgstr "Poslední uzel nelze zru¹it"
+
+#~ msgid "Select the most recently selected node"
+#~ msgstr "Zobrazení poslední dobou nejvíce nav¹tìvovaných uzlù"
+
+#~ msgid "Kill this node"
+#~ msgstr "Zru¹ení tohoto uzlu"
+
+#~ msgid "Read the name of a file and select it"
+#~ msgstr "Zadání jména souboru a jeho následné zobrazení"
+
+#~ msgid "Find file: "
+#~ msgstr "Nalezení souboru: "
+
+#~ msgid "Cannot find `%s'."
+#~ msgstr "Nelze najít `%s'."
+
+#~ msgid "Could not create output file `%s'."
+#~ msgstr "Výstupní soubor `%s' nelze vytvoøit."
+
+#~ msgid "Done."
+#~ msgstr "Dokonèeno."
+
+#~ msgid "Writing node %s..."
+#~ msgstr "Zapisování uzlu %s..."
+
+#~ msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
+#~ msgstr "Poslání obsahu tohoto uzlu pøíkazu INFO_PRINT_COMMAND"
+
+#~ msgid "Cannot open pipe to `%s'."
+#~ msgstr "Rouru do `%s' nelze otevøít."
+
+#~ msgid "Printing node %s..."
+#~ msgstr "Probíhá tisk uzlu %s..."
+
+#, fuzzy
+#~ msgid "Search continued from the beginning of the document."
+#~ msgstr "Smazání v¹eho od zaèátku øádku do kurzoru"
+
+#~ msgid "Searching subfile %s ..."
+#~ msgstr "Probíhá hledání podsouboru %s..."
+
+#~ msgid "Read a string and search for it case-sensitively"
+#~ msgstr "Pøeètení øetìzce a jeho vyhledání (zále¾í na velikosti písmen)"
+
+#~ msgid "Read a string and search for it"
+#~ msgstr "Pøeètení øetìzce a jeho vyhledání"
+
+#~ msgid "Read a string and search backward for it"
+#~ msgstr "Pøeètení øetìzce a jeho vyhledání (zpìtné)"
+
+#, fuzzy
+#~ msgid "%s%s%s [%s]: "
+#~ msgstr "%s%søetìzce [%s]: "
+
+#, fuzzy
+#~ msgid " case-sensitively"
+#~ msgstr " (velikost rozhoduje)"
+
+#, fuzzy
+#~ msgid " backward"
+#~ msgstr "Zpìtné hledání"
+
+#~ msgid "Search"
+#~ msgstr "Hledání"
+
+#~ msgid "Search failed."
+#~ msgstr "Nebylo nalezeno."
+
+#~ msgid "Repeat last search in the same direction"
+#~ msgstr "Opakování posledního hledání tím samým smìrem"
+
+#~ msgid "No previous search string"
+#~ msgstr "Není pøedchozí hledaný øetìzec"
+
+#~ msgid "Repeat last search in the reverse direction"
+#~ msgstr "Opakování posledního hledání opaèným smìrem"
+
+#~ msgid "Search interactively for a string as you type it"
+#~ msgstr "Vyhledávání zadávaného øetìzce hned pøi zadávání"
+
+#, fuzzy
+#~ msgid "Regexp I-search backward: "
+#~ msgstr "zpìtné interaktivní hledání: "
+
+#~ msgid "I-search backward: "
+#~ msgstr "zpìtné interaktivní hledání: "
+
+#, fuzzy
+#~ msgid "Regexp I-search: "
+#~ msgstr "interaktivní hledání: "
+
+#~ msgid "I-search: "
+#~ msgstr "interaktivní hledání: "
+
+#~ msgid "Failing "
+#~ msgstr "Bezvýsledné "
+
+#~ msgid "Move to the previous cross reference"
+#~ msgstr "Pøesun na pøedcházející køí¾ový odkaz"
+
+#~ msgid "Move to the next cross reference"
+#~ msgstr "Pøesun na následující køí¾ový odkaz"
+
+#~ msgid "Select reference or menu item appearing on this line"
+#~ msgstr "Zobrazení odkazu nebo polo¾ky menu, která je na tomto øádku"
+
+#~ msgid "Cancel current operation"
+#~ msgstr "Zru¹ení aktuální operace"
+
+#~ msgid "Quit"
+#~ msgstr "Ukonèení operace"
+
+#~ msgid "Move the cursor to a specific line of the window"
+#~ msgstr "Pøesun kurzoru na zadaný øádek okna"
+
+#~ msgid "Redraw the display"
+#~ msgstr "Pøekreslení obrazovky"
+
+#~ msgid "Quit using Info"
+#~ msgstr "Ukonèení Infa"
+
+#~ msgid "Unknown command (%s)."
+#~ msgstr "Neznámý pøíkaz (%s)."
+
+#~ msgid "\"%s\" is invalid"
+#~ msgstr "Sekvence kláves \"%s\" je neplatná"
+
+#, fuzzy
+#~ msgid "`%s' is invalid"
+#~ msgstr "Sekvence kláves \"%s\" je neplatná"
+
+#~ msgid "Add this digit to the current numeric argument"
+#~ msgstr "Pøidání této èíslice do aktuálního èíselného argumentu"
+
+#~ msgid "Start (or multiply by 4) the current numeric argument"
+#~ msgstr "Zaèátek (nebo dìlení ètyømi) aktuálního èíselného argumentu"
+
+#~ msgid "Internally used by \\[universal-argument]"
+#~ msgstr "Vnitønì u¾íváno funkcí \\[universal-argument]"
+
+#~ msgid "readline: Out of virtual memory!\n"
+#~ msgstr "readline: Nedostatek virtuální pamìti!\n"
+
+#~ msgid "When \"On\", footnotes appear and disappear automatically"
+#~ msgstr ""
+#~ "Je-li zapnuto, pak se poznámky pod èarou objevují a mizí automaticky"
+
+#~ msgid "When \"On\", creating or deleting a window resizes other windows"
+#~ msgstr ""
+#~ "Je-li zapnuto, vytvoøení a smazání okna, mìní velikost ostatních oken"
+
+#~ msgid "When \"On\", flash the screen instead of ringing the bell"
+#~ msgstr "Je-li zapnuto, pak místo varovného pípnutí blikne obrazovka"
+
+#~ msgid "When \"On\", errors cause the bell to ring"
+#~ msgstr "Je-li zapnuto, pak chyby zpùsobí varovné pípnutí"
+
+#~ msgid ""
+#~ "When \"On\", Info garbage collects files which had to be uncompressed"
+#~ msgstr ""
+#~ "Je-li zapnuto, pak Info zapomíná odkomprimovanou èást komprimovaných "
+#~ "souborù"
+
+#~ msgid "When \"On\", the portion of the matched search string is highlighted"
+#~ msgstr "Je-li zapnuto, pak je hledaný øetìzec v nalezeném výrazu zvýraznìn"
+
+#~ msgid ""
+#~ "Controls what happens when scrolling is requested at the end of a node"
+#~ msgstr "Øídí co se stane, kdy¾ je po¾adován posun o stranu na konci uzlu"
+
+#~ msgid "The number lines to scroll when the cursor moves out of the window"
+#~ msgstr ""
+#~ "Poèet øádkù, o které posunout okno, kdy¾ se kurzor dostane mimo "
+#~ "viditelnou èást"
+
+#~ msgid "When \"On\", Info accepts and displays ISO Latin characters"
+#~ msgstr ""
+#~ "Je-li zapnuto, pak Info akceptuje a zobrazuje znaky z normy ISO Latin"
+
+#, fuzzy
+#~ msgid ""
+#~ "What to do when a scrolling command is issued at the end of the last node"
+#~ msgstr "Øídí co se stane, kdy¾ je po¾adován posun o stranu na konci uzlu"
+
+#~ msgid "Explain the use of a variable"
+#~ msgstr "Zobrazení popisu promìnné"
+
+#~ msgid "Describe variable: "
+#~ msgstr "Popis promìnné: "
+
+#~ msgid "Set the value of an Info variable"
+#~ msgstr "Nastavení hodnoty Info promìnné"
+
+#~ msgid "Set variable: "
+#~ msgstr "Nastavení promìnné: "
+
+#~ msgid "Set %s to value (%d): "
+#~ msgstr "Nastavení promìnné %s na hodnotu (%d): "
+
+#~ msgid "Set %s to value (%s): "
+#~ msgstr "Nastavení promìnné %s na hodnotu (%s): "
+
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Znaèky jsou zastatalé ***"
+
+#~ msgid "-----Info: (), lines ----, "
+#~ msgstr "-----Info: (), øádkù ----, "
+
+#~ msgid "-%s---Info: %s, %d lines --%s--"
+#~ msgstr "-%s---Info: %s, øádkù: %d --%s--"
+
+#~ msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
+#~ msgstr "-%s%s-Info: (%s)%s, øádkù: %d --%s--"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Podsoubor: %s"
+
+#~ msgid "%s: warning: "
+#~ msgstr "%s: varování: "
+
+#~ msgid " for %s"
+#~ msgstr " pro %s"
+
+#~ msgid "\tTry `%s --help' for a complete list of options.\n"
+#~ msgstr "Více informací získáte pøíkazem `%s --help'.\n"
+
+#, fuzzy
+#~ msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+#~ msgstr "Pou¾ití: %s [PØEPÍNAÈ]... SOUBOR...\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "This is the file .../info/dir, which contains the\n"
+#~ "topmost node of the Info hierarchy, called (dir)Top.\n"
+#~ "The first time you invoke Info you start off looking at this node.\n"
+#~ "\n"
+#~ "%s\tThis is the top of the INFO tree\n"
+#~ "\n"
+#~ "  This (the Directory node) gives a menu of major topics.\n"
+#~ "  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
+#~ "  \"h\" gives a primer for first-timers,\n"
+#~ "  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
+#~ "\n"
+#~ "  In Emacs, you can click mouse button 2 on a menu item or cross "
+#~ "reference\n"
+#~ "  to select it.\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "  Toto je soubor .../info/dir, který obsahuje nejvy¹¹í uzly hierarchie\n"
+#~ "Info dokumentù a je nazýván (dir)Top. Kdy¾ poprvé spustíte Info "
+#~ "dostanete\n"
+#~ "se do tohoto uzlu.\n"
+#~ "\n"
+#~ "%s      Toto je vrchol INFO stromu\n"
+#~ "\n"
+#~ "    Tento (Adresáøový uzel) obsahuje menu hlavních témat.\n"
+#~ "  Stiskem \"q\" Info ukonèíte, stiskem \"?\" získáte seznam v¹ech Info "
+#~ "pøíkazù,\n"
+#~ "  stiskem \"d\" se vrátíte sem, stiskem \"h\" získáte nápovìdu pro "
+#~ "zaèáteèníky,\n"
+#~ "  napsáním \"mEmacs\" si zobrazíte manuál k Emacsu, atd.\n"
+#~ "\n"
+#~ "    Pokud chcete v Emacsu zobrazit obsah polo¾ky menu nebo následovat "
+#~ "køí¾ový\n"
+#~ "  odkaz, mù¾ete to provést kliknutím prostøedním tlaèítkem my¹i.\n"
+#~ "\n"
+#~ "* Menu:\n"
+
+#~ msgid "%s: could not read (%s) and could not create (%s)\n"
+#~ msgstr "%s: %s nelze èíst a %s nelze vytvoøit\n"
+
+#~ msgid "%s: empty file"
+#~ msgstr "%s: prázdný soubor"
+
+#~ msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
+#~ msgstr "START-INFO-DIR-ENTRY bez odpovídajícího END-INFO-DIR-ENTRY"
+
+#~ msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
+#~ msgstr "END-INFO-DIR-ENTRY bez pøedchozího START-INFO-DIR-ENTRY"
+
+#~ msgid "%s: Specify the Info file only once.\n"
+#~ msgstr "%s: Info soubor zadejte pouze jednou.\n"
+
+#~ msgid "excess command line argument `%s'"
+#~ msgstr "nadbyteèný argument `%s' v pøíkazovém øádku"
+
+#~ msgid "No input file specified; try --help for more information."
+#~ msgstr ""
+#~ "Vstupní soubor nezadán; pou¾itím pøepínaèe --help získáte bli¾¹í "
+#~ "informace."
+
+#~ msgid "No dir file specified; try --help for more information."
+#~ msgstr ""
+#~ "Adresáø nebyl zadán; pou¾itím pøepínaèe `--help' získáte bli¾¹í informace"
+
+#~ msgid "no info dir entry in `%s'"
+#~ msgstr "v Info adresáøi `%s' není ¾ádná polo¾ka"
+
+#~ msgid "no entries found for `%s'; nothing deleted"
+#~ msgstr "pro `%s' nebyly nalezeny ¾ádné polo¾ky"
+
+#~ msgid "January"
+#~ msgstr "Leden"
+
+#~ msgid "February"
+#~ msgstr "Únor"
+
+#~ msgid "March"
+#~ msgstr "Bøezen"
+
+#~ msgid "April"
+#~ msgstr "Duben"
+
+#~ msgid "May"
+#~ msgstr "Kvìten"
+
+#~ msgid "June"
+#~ msgstr "Èerven"
+
+#~ msgid "July"
+#~ msgstr "Èervenec"
+
+#~ msgid "August"
+#~ msgstr "Srpen"
+
+#~ msgid "September"
+#~ msgstr "Záøí"
+
+#~ msgid "October"
+#~ msgstr "Øíjen"
+
+#~ msgid "November"
+#~ msgstr "Listopad"
+
+#~ msgid "December"
+#~ msgstr "Prosinec"
+
+#~ msgid "unlikely character %c in @var"
+#~ msgstr "nepravdìpodobný znak %c ve @var"
+
+#~ msgid "@sc argument all uppercase, thus no effect"
+#~ msgstr "@sc argument je celý velkými písmeny, zbyteènì"
+
+#, fuzzy
+#~ msgid "`{' expected, but saw `%c'"
+#~ msgstr "`@end' vy¾aduje `%s', ale vidí `%s'"
+
+#, fuzzy
+#~ msgid "`}' expected, but saw `%c'"
+#~ msgstr "`@end' vy¾aduje `%s', ale vidí `%s'"
+
+#~ msgid "Bad argument to %c%s"
+#~ msgstr "©patný argument pro %c%s"
+
+#~ msgid "asis"
+#~ msgstr "asis"
+
+#~ msgid "none"
+#~ msgstr "none"
+
+#, fuzzy
+#~ msgid "Bad argument to @%s: %s"
+#~ msgstr "©patný argument pro %c%s"
+
+#~ msgid "Function"
+#~ msgstr "Funkce"
+
+#~ msgid "Macro"
+#~ msgstr "Makro"
+
+#~ msgid "Special Form"
+#~ msgstr "Speciální forma"
+
+#~ msgid "Variable"
+#~ msgstr "Promìnná"
+
+#~ msgid "User Option"
+#~ msgstr "U¾ivatelská volba"
+
+#~ msgid "Instance Variable"
+#~ msgstr "Instance promìnné"
+
+#~ msgid "Method"
+#~ msgstr "Metoda"
+
+#~ msgid "of"
+#~ msgstr "z"
+
+#~ msgid "%s: getwd: %s, %s\n"
+#~ msgstr "%s: getwd: %s, %s\n"
+
+#~ msgid "See "
+#~ msgstr "Viz"
+
+#~ msgid "`%c%s' needs an argument `{...}', not just `%s'"
+#~ msgstr "`%c%s' potøebuje argument `{...}' a ne pouze `%s'"
+
+#~ msgid "No closing brace for footnote `%s'"
+#~ msgstr "Chybí uzavírací závorka pro poznámku pod èarou `%s'"
+
+#, fuzzy
+#~ msgid "Footnotes inside footnotes are not allowed"
+#~ msgstr "Poznámka pod èarou definována bez rodièovského uzlu"
+
+#~ msgid "Footnotes"
+#~ msgstr "Poznámky pod èarou"
+
+#~ msgid "Untitled"
+#~ msgstr "Neoznaèeno"
+
+#, fuzzy
+#~ msgid "[unexpected] invalid node name: `%s'"
+#~ msgstr "%s: neznámý pøepínaè `--%s'\n"
+
+#~ msgid "Unknown index `%s' and/or `%s' in @synindex"
+#~ msgstr "Neznámý rejstøík `%s' a/nebo `%s' v @synindex"
+
+#~ msgid "(outside of any node)"
+#~ msgstr "(mimo v¹echny uzly)"
+
+#~ msgid "Broken-Type in insertion_type_pname"
+#~ msgstr "Chybný typ v insertion_type_pname"
+
+#~ msgid "Enumeration stack overflow"
+#~ msgstr "Výpoèetní zásobník pøetekl"
+
+#~ msgid "lettering overflow, restarting at %c"
+#~ msgstr "písmenkování pøeteklo, znovu zaèínám na %c"
+
+#~ msgid "%s requires letter or digit"
+#~ msgstr "%s vy¾aduje písmeno nebo èíslici"
+
+#~ msgid "@detailmenu seen before first node, creating `Top' node"
+#~ msgstr "@detailmenu spatøeno pøed prvním uzlem, vytvoøen uzel `Top'"
+
+#, fuzzy
+#~ msgid "@%s not meaningful outside `@titlepage' environment"
+#~ msgstr "@%s není myslitelné uvnitø `@%s' bloku"
+
+#~ msgid "Unmatched `%c%s'"
+#~ msgstr "Nepárový `%c%s'"
+
+#~ msgid "`%c%s' needs something after it"
+#~ msgstr "`%c%s' potøebuje nìjaký argument"
+
+#, fuzzy
+#~ msgid "Bad argument `%s' to `@%s', using `%s'"
+#~ msgstr "Chybný argument pro `%s', `%s', pou¾ívám `%s'"
+
+#~ msgid "@itemx not meaningful inside `%s' block"
+#~ msgstr "@itemx není myslitelný uvnitø `%s' bloku"
+
+#~ msgid "%c%s found outside of an insertion block"
+#~ msgstr "%c%s nalezen mimo vkládaný blok"
+
+#~ msgid "mismatched @end %s with @%s"
+#~ msgstr "pomíchané @end %s s @%s"
+
+#~ msgid "%s: %s arg must be numeric, not `%s'.\n"
+#~ msgstr "%s: %s argument musí být èíslo ne `%s'.\n"
+
+#, fuzzy
+#~ msgid "%s: ignoring second macro expansion output `%s'.\n"
+#~ msgstr "Výstup %s pro expanzi makra nelze otevøít"
+
+#, fuzzy
+#~ msgid "%s: ignoring second internal links output `%s'.\n"
+#~ msgstr "Výstup %s pro expanzi makra nelze otevøít"
+
+#~ msgid "Expected `%s'"
+#~ msgstr "Oèekáváno `%s'"
+
+#~ msgid "No `%s' found in `%s'"
+#~ msgstr "Soubor `%s' nenalezen v `%s'"
+
+#~ msgid ""
+#~ "%s: Skipping macro expansion to stdout as Info output is going there.\n"
+#~ msgstr ""
+#~ "%s: Vynechávám expanzi makra na stdout a expanze jde jako Info výstup.\n"
+
+#~ msgid "Making %s file `%s' from `%s'.\n"
+#~ msgstr "Vytváøím %s soubor `%s' ze souboru `%s'.\n"
+
+#~ msgid ""
+#~ "%s: Removing macro output file `%s' due to errors; use --force to "
+#~ "preserve.\n"
+#~ msgstr ""
+#~ "%s: Výstupní soubor maker `%s' byl odstranìn, proto¾e byly nalezeny "
+#~ "chyby;\n"
+#~ "u¾ijte pøepínaè --force k ponechání souboru.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "%s: Removing internal links output file `%s' due to errors; use --force "
+#~ "to preserve.\n"
+#~ msgstr ""
+#~ "%s: Výstupní soubor `%s' byl odstranìn, proto¾e byly nalezeny chyby;\n"
+#~ "u¾ijte pøepínaè --force k ponechání souboru.\n"
+
+#~ msgid "Unmatched }"
+#~ msgstr "Nepárová }"
+
+#~ msgid "NO_NAME!"
+#~ msgstr "Funkce neexistuje!"
+
+#~ msgid "This is %s, produced by makeinfo version %s from %s.\n"
+#~ msgstr ""
+#~ "Toto je Info soubor %s, produkován programem makeinfo verze %s ze souboru "
+#~ "%s.\n"
+
+#, fuzzy
+#~ msgid "No such file `%s'"
+#~ msgstr "Soubor `%s' nenalezen v `%s'"
+
+#, fuzzy
+#~ msgid "@image file `%s' (for text) unreadable: %s"
+#~ msgstr "soubor `%s' v pøíkazu @image je neèitelný: %s"
+
+#~ msgid "@image missing filename argument"
+#~ msgstr "pøíkaz @image postrádá jméno souboru"
+
+#~ msgid "{No value for `%s'}"
+#~ msgstr "{Pro `%s' není hodnota}"
+
+#~ msgid "Missing } in @multitable template"
+#~ msgstr "Chybìjící } v @multitable vzoru"
+
+#, fuzzy
+#~ msgid "[unexpected] cannot select column #%d in multitable"
+#~ msgstr "sloupec #%d v multitabulce nelze vybrat"
+
+#~ msgid "** Multicolumn output from last row:\n"
+#~ msgstr "** Vícesloupcový výstup z posledního øádku:\n"
+
+#~ msgid "* column #%d: output = %s\n"
+#~ msgstr "* sloupec #%d: výstup = %s\n"
+
+#~ msgid "Formatting node %s...\n"
+#~ msgstr "Formátování uzlu %s...\n"
+
+#, fuzzy
+#~ msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
+#~ msgstr "Uzel `%s' vy¾aduje pøíkaz na vytváøení sekcí (tøeba %c%s)"
+
+#~ msgid "No node name specified for `%c%s' command"
+#~ msgstr "Pøíkazu `%c%s' nebyl zadán název uzlu"
+
+#~ msgid "Next:"
+#~ msgstr "Dal¹í:"
+
+#~ msgid "Previous:"
+#~ msgstr "Pøedchozí:"
+
+#~ msgid "Up:"
+#~ msgstr "Nahoru:"
+
+#, fuzzy
+#~ msgid ""
+#~ "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
+#~ msgstr "%s se odkazuje na neexistující uzel `%s'"
+
+#~ msgid "Menu"
+#~ msgstr "Menu"
+
+#~ msgid "Cross"
+#~ msgstr "Odkaz"
+
+#, fuzzy
+#~ msgid ""
+#~ "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
+#~ msgstr "Následující uzel uzlu `%s' neukazuje na tento"
+
+#~ msgid "This node (%s) has the bad Prev"
+#~ msgstr "Tento uzel (%s) má chybný odkaz na pøedchozí uzel"
+
+#~ msgid "Prev"
+#~ msgstr "Pøedchozí"
+
+#~ msgid "Prev field of node `%s' not pointed to"
+#~ msgstr "Pøedchozí uzel uzlu `%s' neukazuje na tento"
+
+#~ msgid "This node (%s) has the bad Next"
+#~ msgstr "Tento uzel (%s) má chybný odkaz na následující uzel"
+
+#~ msgid "Up"
+#~ msgstr "Nahoru"
+
+#, fuzzy
+#~ msgid "Can't remove file `%s': %s"
+#~ msgstr "Výstupní soubor `%s' nelze vytvoøit."
+
+#, fuzzy
+#~ msgid "Internal error (search_sectioning) `%s'!"
+#~ msgstr "Interní chyba (hledání sekcí) \"%s\"!"
+
+#~ msgid "Internal error (search_sectioning) \"%s\"!"
+#~ msgstr "Interní chyba (hledání sekcí) \"%s\"!"
+
+#~ msgid "%c%s is obsolete; use %c%s instead"
+#~ msgstr "%c%s je zastaralý; pou¾ijte %c%s"
+
+#~ msgid "Node with %ctop as a section already exists"
+#~ msgstr "Uzel s %ctop jako sekcí ji¾ existuje"
+
+#~ msgid "Here is the %ctop node"
+#~ msgstr "Ji¾ zde je nejvy¹¹í (%ctop) uzel"
+
+#~ msgid "%ctop used before %cnode, defaulting to %s"
+#~ msgstr "%ctop je pou¾it pøed %cnode, pøesmìrováno na %s"
+
+#~ msgid "see "
+#~ msgstr "viz"
+
+#, fuzzy
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "V tomto uzlu není køí¾ový odkaz."
+
+#~ msgid "display this help and exit"
+#~ msgstr "vypí¹e tuto nápovìdu a skonèí"
+
+#~ msgid "send output to FILE"
+#~ msgstr "zapí¹e výstup do SOUBORu"
+
+#~ msgid "display version information and exit"
+#~ msgstr "vypí¹e oznaèení verze a skonèí"
+
+#~ msgid "Usage: %s [OPTION]... FILE...\n"
+#~ msgstr "Pou¾ití: %s [PØEPÍNAÈ]... SOUBOR...\n"
+
+#~ msgid "Generate a sorted index for each TeX output FILE.\n"
+#~ msgstr "Generuje seøazený rejstøík pro ka¾dý TeXovský výstupní SOUBOR.\n"
+
+#~ msgid ""
+#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+#~ msgstr "SOUBOR... je obvykle `foo.%c%c' pro dokument `foo.texi'.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Options:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Pøepínaèe:\n"
+
+#~ msgid "failure reopening %s"
+#~ msgstr "soubor %s nepovedlo se znovu otevøít"
+
+#~ msgid "%s: not a texinfo index file"
+#~ msgstr "%s: není texinfovský rejstøík"
+
+#~ msgid "No page number in %s"
+#~ msgstr "Na %s není èíslo stránky"
+
+#~ msgid "entry %s follows an entry with a secondary name"
+#~ msgstr "polo¾ka %s následuje za polo¾kou se sekundárním jménem"
+
+#, fuzzy
+#~ msgid "Appendix %c"
+#~ msgstr "Dodatek %c "
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[search]  Search forward for a specified string\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "      a zobrazení uzlu, ve kterém je nalezen dal¹í výskyt tohoto "
+#~ "øetìzce.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[goto-node]  Move to node specified by name.\n"
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr ""
+#~ "              Také mù¾ete zadat jméno souboru ve tvaru (SOUBOR)UZEL.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[next-node]  Move to the next node of current section.\n"
+#~ msgstr "  %-10s  Pøesun na \"dal¹í\" uzel tohoto uzlu.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
+#~ "node] (DIR)'.\n"
+#~ msgstr "  %-10s  Pøesun do `adresáøového' uzlu. Rovnocenné s `g (DIR)'.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] "
+#~ "Top'.\n"
+#~ msgstr "  %-10s  Pøesun do nejvy¹¹ího (Top) uzlu. Rovnocenné s `g Top'.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-forward-page-only]  Scroll forward within this node.\n"
+#~ msgstr "  %-10s  Posun o jeden øádek dopøedu.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[scroll-backward-page-only]  Scroll backward within this node.\n"
+#~ msgstr "  %-10s  Posun o jeden øádek dozadu.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[search-backward]  Search backward for a specified string\n"
+#~ "              and select the node in which the previous occurrence is "
+#~ "found.\n"
+#~ msgstr ""
+#~ "      a zobrazení uzlu, ve kterém je nalezen dal¹í výskyt tohoto "
+#~ "øetìzce.\n"
+
+#~ msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
+#~ msgstr ""
+#~ "--- Pou¾ijte `\\[history-node]' nebo `\\[kill-node]' pro ukonèení ---\n"
+
+#, fuzzy
+#~ msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
+#~ msgstr "  %-10s  Skok na následující hypertextový odkaz v tomto uzlu.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [MENU-ITEM...]\n"
+#~ "\n"
+#~ "Read documentation in Info format.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "      --apropos=STRING         look up STRING in all indices of all "
+#~ "manuals.\n"
+#~ "  -d, --directory=DIR          add DIR to INFOPATH.\n"
+#~ "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
+#~ "  -f, --file=FILENAME          specify Info file to visit.\n"
+#~ "  -h, --help                   display this help and exit.\n"
+#~ "      --index-search=STRING    go to node pointed by index entry STRING.\n"
+#~ "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
+#~ "  -o, --output=FILENAME        output selected nodes to FILENAME.\n"
+#~ "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
+#~ "      --no-raw-escapes         output escapes as literal text.\n"
+#~ "      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
+#~ "  -O, --show-options, --usage  go to command-line options node.\n"
+#~ "%s      --subnodes               recursively output menu items.\n"
+#~ "  -w, --where, --location      print physical location of Info file.\n"
+#~ "      --vi-keys                use vi-like and less-like key bindings.\n"
+#~ "      --version                display version information and exit.\n"
+#~ "\n"
+#~ "The first non-option argument, if present, is the menu entry to start "
+#~ "from;\n"
+#~ "it is searched for in all `dir' files along INFOPATH.\n"
+#~ "If it is not present, info merges all `dir' files and shows the result.\n"
+#~ "Any remaining arguments are treated as the names of menu\n"
+#~ "items relative to the initial node visited.\n"
+#~ "\n"
+#~ "Examples:\n"
+#~ "  info                       show top-level dir menu\n"
+#~ "  info emacs                 start at emacs node from top-level dir\n"
+#~ "  info emacs buffers         start at buffers node within emacs manual\n"
+#~ "  info --show-options emacs  start at node with emacs' command line "
+#~ "options\n"
+#~ "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
+#~ "  info -f ./foo.info         show file ./foo.info, not searching dir\n"
+#~ msgstr ""
+#~ "Pou¾ití: %s [PØEPÍNAÈ]... [POLO®KA-MENU...]\n"
+#~ "\n"
+#~ "  Umo¾òuje èíst dokumentaci v Info formátu.\n"
+#~ "\n"
+#~ "Pøepínaèe:\n"
+#~ "--apropos=SUBJEKT           hledá SUBJEKT ve v¹ech odkazech v¹ech "
+#~ "manuálù\n"
+#~ "--directory=ADRESÁØ         kromì promìnné INFOPATH prohledává i tento\n"
+#~ "                            ADRESÁØ\n"
+#~ "--dribble=SOUBOR            ulo¾í klávesy, které stiskl u¾ivatel do "
+#~ "SOUBORu\n"
+#~ "--file=SOUBOR               zadání info souboru, který se má prohlí¾et\n"
+#~ "--help                      vypí¹e tuto nápovìdu a skonèí\n"
+#~ "--index-search=ØETÌZEC      skok na uzel urèený v rejstøíku ØETÌZCEM\n"
+#~ "--node=JMÉNO_UZLU           zadání uzlù, v prvním nav¹tíveném info "
+#~ "souboru\n"
+#~ "--output=SOUBOR             vypí¹e nav¹tívené uzly do SOUBORu\n"
+#~ "--restore=SOUBOR            klávesy, které mají být automaticky po\n"
+#~ "                            spu¹tení infa stisknuty, ète ze SOUBORu\n"
+#~ "--show-options, --usage     zobrazuje pøepínaèe pøíkazové øádky\n"
+#~ "--subnodes                  rekurzivnì vypí¹e polo¾ky menu\n"
+#~ "%s --vi=keys                  pou¾ije ovládání klávesami jako ve vi a "
+#~ "less\n"
+#~ "--version                   vypí¹e oznaèení verze a skonèí\n"
+#~ "\n"
+#~ "  První nepøepínaèový argument, jestli¾e je zadán, je polo¾ka menu, "
+#~ "která\n"
+#~ "má být po spu¹tìní nav¹tívena; tato polo¾ka je vyhledávána ve v¹ech "
+#~ "`dir'\n"
+#~ "souborech podle INFOPATH.\n"
+#~ "  Jestli¾e tato polo¾ka není zadána, info spojí v¹echny `dir' soubory a "
+#~ "uká¾e\n"
+#~ "výsledek. V¹echny zbývající argumenty jsou brány jako názvy polo¾ek "
+#~ "menu,\n"
+#~ "relativnì k prvnímu nav¹tívenému uzlu.\n"
+#~ "\n"
+#~ "Pøíklady:\n"
+#~ "  info                       zobrazí seznam dokumentace\n"
+#~ "  info emacs                 zobrazí uzel emacs ze seznamu dokumentace\n"
+#~ "  info emacs buffers         zobrazí uzel buffers z emacsového manuálu\n"
+#~ "  info --show-options emacs  zobrazí uzel s pøepínaèi pøíkazového øádku\n"
+#~ "                              pro emacs\n"
+#~ "  info -f ./foo.info         zobrazí soubor ./foo.info, nehledá v `dir' "
+#~ "soub.\n"
+#~ "\n"
+#~ "  Chyby v programu oznamujte na adrese <bug-texinfo@gnu.org> (pouze "
+#~ "anglicky),\n"
+#~ "obecné otázky smìøujte na <help-texinfo@gnu.org>. Pøipomínky k pøekladu\n"
+#~ "zasílejte na adresu <cs@li.org> (èesky).\n"
+
+#~ msgid ""
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr ""
+#~ "              Vybírání polo¾ky menu zpùsobí zobrazení tohoto uzlu.\n"
+
+#~ msgid ""
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr ""
+#~ "              Také mù¾ete zadat jméno souboru ve tvaru (SOUBOR)UZEL.\n"
+
+#, fuzzy
+#~ msgid "  %-10s  Search backward for a specified string\n"
+#~ msgstr "  %-10s  Hledání zadaného øetìzce v tomto Info souboru.\n"
+
+#~ msgid ""
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "      a zobrazení uzlu, ve kterém je nalezen dal¹í výskyt tohoto "
+#~ "øetìzce.\n"
+
+#~ msgid "Following Next node..."
+#~ msgstr "Pøechod na dal¹í uzel..."
+
+#~ msgid "Selecting first menu item..."
+#~ msgstr "Zobrazování první polo¾ky menu..."
+
+#~ msgid "Selecting Next node..."
+#~ msgstr "Zobrazování dal¹ího uzlu..."
+
+#~ msgid "Moving Up %d time(s), then Next."
+#~ msgstr "Pøesouvání %d krát nahoru, potom na dal¹í."
+
+#~ msgid "Moving Prev in this window."
+#~ msgstr "Pøesun na pøedchozí uzel v tomto oknì."
+
+#~ msgid "Moving Up in this window."
+#~ msgstr "Pøesun nahoru v tomto oknì."
+
+#~ msgid "Moving to `Prev's last menu item."
+#~ msgstr "Pøesun na poslední polo¾ku menu pøedchozího uzlu."
+
+#~ msgid " "
+#~ msgstr " "
+
+#, fuzzy
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+#~ "\n"
+#~ "Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ " --debug           report what is being done.\n"
+#~ " --delete          delete existing entries for INFO-FILE from DIR-FILE;\n"
+#~ "                     don't insert any new entries.\n"
+#~ " --dir-file=NAME   specify file name of Info directory file.\n"
+#~ "                     This is equivalent to using the DIR-FILE argument.\n"
+#~ " --entry=TEXT      insert TEXT as an Info directory entry.\n"
+#~ "                     TEXT should have the form of an Info menu item line\n"
+#~ "                     plus zero or more extra lines starting with "
+#~ "whitespace.\n"
+#~ "                     If you specify more than one entry, they are all "
+#~ "added.\n"
+#~ "                     If you don't specify any entries, they are "
+#~ "determined\n"
+#~ "                     from information in the Info file itself.\n"
+#~ " --help            display this help and exit.\n"
+#~ " --info-file=FILE  specify Info file to install in the directory.\n"
+#~ "                     This is equivalent to using the INFO-FILE argument.\n"
+#~ " --info-dir=DIR    same as --dir-file=DIR/dir.\n"
+#~ " --item=TEXT       same as --entry TEXT.\n"
+#~ "                     An Info directory entry is actually a menu item.\n"
+#~ " --quiet           suppress warnings.\n"
+#~ " --remove          same as --delete.\n"
+#~ " --remove-exactly  only remove if the info file name matches exactly;\n"
+#~ "                     .info and/or .gz suffixes are not ignored.\n"
+#~ " --section=SEC     put this file's entries in section SEC of the "
+#~ "directory.\n"
+#~ "                     If you specify more than one section, all the "
+#~ "entries\n"
+#~ "                     are added in each of the sections.\n"
+#~ "                     If you don't specify any sections, they are "
+#~ "determined\n"
+#~ "                     from information in the Info file itself.\n"
+#~ " --section-regex=R if an entry is added to a section that does not "
+#~ "exist,\n"
+#~ "                     look for a section matching basic regular expression "
+#~ "R\n"
+#~ "                     (and ignoring case) before starting a new section.\n"
+#~ " --test            suppress updating of DIR-FILE.\n"
+#~ " --silent          suppress warnings.\n"
+#~ " --version         display version information and exit.\n"
+#~ msgstr ""
+#~ "Pou¾ití: %s [PØEPÍNAÈ]... [INFO-SOUBOR [DIR-SOUBOR]]\n"
+#~ "\n"
+#~ "Instaluje nebo ma¾e polo¾ky ze souboru INFO-SOUBOR v Info adresáøi DIR-"
+#~ "SOUBOR.\n"
+#~ "\n"
+#~ "Pøepínaèe:\n"
+#~ "--delete           sma¾e existující polo¾ky INFO-SOUBORu z DIR-SOUBORU;\n"
+#~ "                   nevkládá ¾ádné nové.\n"
+#~ "--dir-file=JMÉNO   zadání jména adresáøového souboru Infa. Rovnocenné\n"
+#~ "                   s pou¾itím argumentu DIR-SOUBOR.\n"
+#~ "--entry=TEXT       vlo¾í text jako polo¾ku Info adresáøe. TEXT musí mít "
+#~ "formát\n"
+#~ "                   jako øádek polo¾ky Info menu, plus nula nebo více "
+#~ "extra\n"
+#~ "                   øádkù zaèínajících mezerou. Jestli¾e zadáte více ne¾ "
+#~ "jednu\n"
+#~ "                   polo¾ku, budou pøidány v¹echny. Jestli¾e nezadáte "
+#~ "¾ádnou\n"
+#~ "                   polo¾ku, budou získány z informací v Info souboru.\n"
+#~ "--help             vypí¹e tuto nápovìdu a skonèí\n"
+#~ "--info-file=SOUBOR zadání Info souboru pro instalaci do Info adresáøe.\n"
+#~ "                   Rovnocenné s argumentem INFO-SOUBOR.\n"
+#~ "--info-dir=ADRESÁØ stejné jako --dir-file=ADRESÁØ/dir.\n"
+#~ "--item=TEXT        stejné jako --entry=TEXT.\n"
+#~ "                   Polo¾ka Info adresáøe je aktuální polo¾ka menu.\n"
+#~ "--quiet            potlaèí varování.\n"
+#~ "--remove           stejné jako --delete.\n"
+#~ "--section=SEKCE    vlo¾í polo¾ky adresáøe do sekce SEKCE Info adresáøe.\n"
+#~ "                   Jestli¾e je zadáno více sekcí, jsou v¹echny polo¾ky\n"
+#~ "                   pøidány do v¹ech zadaných sekcí. Jestli¾e nejsou "
+#~ "zadány\n"
+#~ "                   ¾ádné sekce, pak jsou sekce získány z Info souboru.\n"
+#~ "--version          vypí¹e oznaèení verze a skonèí.\n"
+#~ "\n"
+#~ "  Chyby v programu oznamujte na adrese <bug-texinfo@gnu.org> (pouze "
+#~ "anglicky),\n"
+#~ "obecné otázky smìøujte na <help-texinfo@gnu.org>. Pøipomínky\n"
+#~ "k pøekladu zasílejte na <cs@li.org> (èesky).\n"
+
+#~ msgid "menu item `%s' already exists, for file `%s'"
+#~ msgstr "polo¾ka menu `%s' ji¾ pro soubor `%s' existuje"
+
+#, fuzzy
+#~ msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
+#~ msgstr "  %-10s  Výbìr první ... deváté polo¾ky menu uzlu.\n"
+
+#~ msgid "node `%s' has been referenced %d times"
+#~ msgstr "na uzel `%s' se bylo odkazováno %d krát"
+
+#, fuzzy
+#~ msgid ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"
+#~ "PARTICULAR PURPOSE.  You may redistribute copies of GNU %s\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the file named COPYING.\n"
+#~ msgstr ""
+#~ "  Copyright (C) %s 1996 Free Software Foundation, Inc.\n"
+#~ "  Toto je volné programové vybavení, které je zcela BEZ ZÁRUKY. Podmínky "
+#~ "pro\n"
+#~ "kopírování a roz¹iøování naleznete v Obecné veøejné licenci GNU (GNU "
+#~ "General\n"
+#~ "Public Licence). Více informací získáte ve zdrojových textech v souboru\n"
+#~ "COPYING.\n"
+
+#~ msgid "@quote-arg only useful for single-argument macros"
+#~ msgstr "@quote-arg je u¾iteèné pouze pro jedno-argumentová makra"
+
+#~ msgid "Table of Contents"
+#~ msgstr "Obsah"
+
+#~ msgid "Short Contents"
+#~ msgstr "Krátký obsah"
+
+#~ msgid "keep temporary files around after processing"
+#~ msgstr "zanechá doèasné soubory po ukonèení"
+
+#~ msgid "do not keep temporary files around after processing (default)"
+#~ msgstr "nezanechá doèasné soubory po ukonèení"
+
+#~ msgid ""
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr "              uzlu, na který ukazuje první nalezená polo¾ka.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "There is NO warranty.  You may redistribute this software\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the files named COPYING.\n"
+#~ msgstr ""
+#~ "  Copyright (C) %s 1996 Free Software Foundation, Inc.\n"
+#~ "  Toto je volné programové vybavení, které je zcela BEZ ZÁRUKY. Podmínky "
+#~ "pro\n"
+#~ "kopírování a roz¹iøování naleznete v Obecné veøejné licenci GNU (GNU "
+#~ "General\n"
+#~ "Public Licence). Více informací získáte ve zdrojových textech v souboru\n"
+#~ "COPYING.\n"
+
+#~ msgid "%s: Specify the Info directory only once.\n"
+#~ msgstr "%s: Info adresáø zadejte pouze jednou.\n"
+
+#~ msgid "\"\" is invalid"
+#~ msgstr "Sekvence kláves \"\" je neplatná"
+
+#, fuzzy
+#~ msgid "%s is an invalid ISO code, using %c"
+#~ msgstr "%s není platný kód jazyka (podle ISO 639)"
+
+#~ msgid "Cannot specify more than one macro expansion output"
+#~ msgstr "Pro expanzi makra nelze zadat více ne¾ jeden výstup"
+
+#~ msgid "Node:"
+#~ msgstr "Uzel:"
+
+#~ msgid "%s: TOC should be here, but it was not found"
+#~ msgstr "%s: Obsah bìl být zde, ale nebyl nalezen"
+
+#, fuzzy
+#~ msgid "No `%s.png' or `.jpg', and no extension supplied"
+#~ msgstr "®ádný .png nebo .jpg soubor pro `%s'"
+
+#~ msgid "%s; for file `%s'.\n"
+#~ msgstr "%s; pro soubor `%s'.\n"
+
+#~ msgid "`%s' has no Up field"
+#~ msgstr "`%s' nemá zadán vy¹¹í uzel"
+
+#, fuzzy
+#~ msgid ""
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org."
+#~ msgstr ""
+#~ "\n"
+#~ "  Chyby v programu oznamujte na adrese <bug-texinfo@gnu.org> (pouze "
+#~ "anglicky),\n"
+#~ "obecné otázky smìøujte na <help-texinfo@gnu.org>. Pøipomínky k pøekladu\n"
+#~ "zasílejte na <cs@li.org> (èesky).\n"
+
+#~ msgid "******************************\n"
+#~ msgstr "******************************\n"
+
+#~ msgid "---------------------\n"
+#~ msgstr "---------------------\n"
+
+#~ msgid "----------------------\n"
+#~ msgstr "----------------------\n"
+
+#~ msgid "---------------\n"
+#~ msgstr "---------------\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+#~ "\n"
+#~ "Translate Texinfo source documentation to various other formats:\n"
+#~ "Info files suitable for reading online with Emacs or standalone GNU Info\n"
+#~ "(by default); plain text (with --no-headers); or HTML (with --html).\n"
+#~ "\n"
+#~ "Options:\n"
+#~ " --commands-in-node-names  allow @ commands in node names.\n"
+#~ " -D VAR                    define a variable, as with @set.\n"
+#~ "--docbook                  output DocBook rather than Info format.\n"
+#~ " -E, --macro-expand FILE   output macro-expanded source to FILE.\n"
+#~ " --error-limit=NUM         quit after NUM errors (default %d).\n"
+#~ " --fill-column=NUM         break Info lines at NUM characters (default %"
+#~ "d).\n"
+#~ " --footnote-style=STYLE    output footnotes according to STYLE:\n"
+#~ "                            `separate' to place footnotes in their own "
+#~ "node,\n"
+#~ "                            `end' to place the footnotes at the end of "
+#~ "the\n"
+#~ "                             node in which they are defined (the "
+#~ "default).\n"
+#~ " --force                   preserve output even if errors.\n"
+#~ " --help                    display this help and exit.\n"
+#~ " --html                    output HTML rather than Info format.\n"
+#~ " -I DIR                    append DIR to the @include search path.\n"
+#~ " --ifhtml                  process @ifhtml and @html text even when not\n"
+#~ "                            generating HTML.\n"
+#~ " --ifinfo                  process @ifinfo text even when generating "
+#~ "HTML.\n"
+#~ " --iftex                   process @iftex and @tex text.\n"
+#~ "                            implies --no-split.\n"
+#~ msgstr ""
+#~ "Pou¾ití: %s [PØEPÍNAÈ]... TEXINFO-SOUBOR...\n"
+#~ "\n"
+#~ "  Pøekládá Texinfový zdrojový soubor to mnoha rùzných formátù:\n"
+#~ "Info soubory vhodné pro on-line ètení Emacsem nebo samostatným GNU Info\n"
+#~ "prohlí¾eèem (implicitní); èistý text (pøepínaèem --no-headers); nebo "
+#~ "HTML\n"
+#~ "(pøepínaèem --html).\n"
+#~ "\n"
+#~ "Pøepínaèe:\n"
+#~ "--commands-in-node-names  dovoluje @ pøíkazy v názvech uzlù\n"
+#~ "-D PROMÌNNÁ               definuje promìnnou, jako pøíkaz @set\n"
+#~ "-E, --macro-expand SOUBOR výstup zdrojových textù s expandovanými makry\n"
+#~ "                           do SOUBORu\n"
+#~ "--error-limit=ÈÍSLO       ukonèi se po ÈÍSLO chybách (implicitnì %d)\n"
+#~ "--fill-column=ÈÍSLO       zalamování na ÈÍSLO znakù (implicitnì %d)\n"
+#~ "--footnote-style=STYL     umístìní poznámek pod èarou podle STYLu:\n"
+#~ "                           `separate' umístìní poznámek pod èarou do\n"
+#~ "                            samostatného uzlu;\n"
+#~ "                           `end' umístìní poznámek pod èarou na konec "
+#~ "uzlu,\n"
+#~ "                            ve kterém jsou definovány (implicitní);\n"
+#~ "--force                   zanechá výstup dokonce i pøi chybách\n"
+#~ "--help                  vypí¹e tuto nápovìdu a skonèí\n"
+#~ "--html                  výstup v HTML formátu\n"
+#~ "-I ADRESÁØ              pøidá ADRESÁØ na konec seznamu adresáøù, ve "
+#~ "kterých\n"
+#~ "                        jsou hledány soubory pro @include\n"
+#~ "--ifhtml                zpùsobí zpracování @ifhtml a @html, i kdy¾ není\n"
+#~ "                         výstupem formát HTML\n"
+#~ "--ifinfo                zpùsobí zpracování @ifinfo, i kdy¾ je výstupem "
+#~ "HTML\n"
+#~ "--iftex                 zpùsobí zpracování @iftex a @tex textu\n"
+#~ "                         zahrnuje --no-split.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ " --no-headers              suppress Info node separators and Node: "
+#~ "lines;\n"
+#~ "                            write to standard output without --output.\n"
+#~ " --no-ifhtml               do not process @ifhtml and @html text.\n"
+#~ " --no-ifinfo               do not process @ifinfo text.\n"
+#~ " --no-iftex                do not process @iftex and @tex text.\n"
+#~ " --no-split                suppress splitting of Info or HTML output,\n"
+#~ "                            generate only one output file.\n"
+#~ " --no-validate             suppress node cross-reference validation.\n"
+#~ " --no-warn                 suppress warnings (but not errors).\n"
+#~ " --number-sections         include chapter, section, etc. numbers in "
+#~ "output.\n"
+#~ " -o, --output=FILE         output to FILE (directory if split HTML),\n"
+#~ "                            ignoring any @setfilename.\n"
+#~ " -P DIR                    prepend DIR to the @include search path.\n"
+#~ " --paragraph-indent=VAL    indent Info paragraphs by VAL spaces (default %"
+#~ "d).\n"
+#~ "                            if VAL is `none', do not indent;\n"
+#~ "                            if VAL is `asis', preserve existing "
+#~ "indentation.\n"
+#~ " --reference-limit=NUM     warn about at most NUM references (default %"
+#~ "d).\n"
+#~ " --split-size=NUM          split into files at NUM size. (default %d).\n"
+#~ " -U VAR                    undefine a variable, as with @clear.\n"
+#~ " -v, --verbose             explain what is being done.\n"
+#~ " --version                 display version information and exit.\n"
+#~ " --xml                     output XML (TexinfoML) rather than Info "
+#~ "format.\n"
+#~ msgstr ""
+#~ "--no-headers            potlaèí oddìlovaèe uzlù a jejich hlavièky a "
+#~ "zapí¹e \n"
+#~ "                        výstup na standardní výstup (není-li zadáno --"
+#~ "output)\n"
+#~ "--no-ifhtml             zpùsobí nezpracování @ifhtml a @html textu\n"
+#~ "--no-ifinfo             zpùsobí nezpracování @ifinfo textu\n"
+#~ "--no-iftex              zpùsobí nezpracování @iftex a @tex textu\n"
+#~ "--no-split              potlaèí rozdìlování velkých výstupních info "
+#~ "souborù\n"
+#~ "                         nebo generování jednoho HTML souboru na uzel\n"
+#~ "--no-validate           potlaèí kontrolu køí¾ových odkazù\n"
+#~ "--no-warn               potlaèí výpis varování (ne v¹ak chyb)\n"
+#~ "-o, --output=SOUB       výstup do SOUBoru, ignoruje pøíkaz @setfilename\n"
+#~ "-P ADRESÁØ              pøidá ADRESÁØ na zaèátek seznamu adresáøù, ve "
+#~ "kterých\n"
+#~ "                        jsou hledány soubory pro @include\n"
+#~ "--paragraph-indent=HODN odsadí odstavce HODN mezerami (implicitnì %d).\n"
+#~ "                         jestli¾e je HODN `none' neodsazuje;\n"
+#~ "                         jestli¾e je HODN `asis' zanechá existující "
+#~ "odsazení.\n"
+#~ "--reference-limit=ÈÍSLO oznámí, bude-li køí¾ových odkazù více ne¾ ÈÍSLO\n"
+#~ "                         (implicitnì %d).\n"
+#~ "-U PROMÌNNÁ             oddefinuje promìnnou, jako pøíkazem @clear\n"
+#~ "-v, --verbose           vypisuje bli¾¹í informace o zpracovávání\n"
+#~ "--version               vypí¹e oznaèení verze a skonèí\n"

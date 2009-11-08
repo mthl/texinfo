@@ -1,0 +1,2600 @@
+# traditional Chinese translation for texinfo
+# Copyright (C) 2000 Free Software Foundation, Inc.
+# plasma <plasmaball@pchome.com.tw>, 2000.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: texinfo 4.1\n"
+"Report-Msgid-Bugs-To: texi2html-bug@nongnu.org\n"
+"POT-Creation-Date: 2009-11-08 16:40+0100\n"
+"PO-Revision-Date: 2002-03-08 04:56+0800\n"
+"Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=Big5\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: texi2html.pl:2259
+#, perl-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "試試 `%s --help' 以取得更多的資訊.\n"
+
+#: texi2html.pl:2368
+#, fuzzy, perl-format
+msgid "%s is not a valid language code"
+msgstr "%s 不是一個合法的 ISO 639 語言碼"
+
+#: texi2html.pl:2372
+#, fuzzy, perl-format
+msgid "%s is not a valid region code"
+msgstr "%s 不是一個合法的 ISO 639 語言碼"
+
+#: texi2html.pl:2458
+#, perl-format
+msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgstr "%s: --footnote-style 的引數必須為 `separate' 或 `end', 而不是 `%s'.\n"
+
+#: texi2html.pl:2463
+#, fuzzy, perl-format
+msgid "@%s arg must be `separate' or `end', not `%s'"
+msgstr "%s: --footnote-style 的引數必須為 `separate' 或 `end', 而不是 `%s'.\n"
+
+#: texi2html.pl:2481
+#, fuzzy, perl-format
+msgid "unrecognized encoding name `%s'"
+msgstr "%s: 未知的選項 `%c%s'\n"
+
+#: texi2html.pl:2496
+msgid "Document encoding is utf8, but there is no unicode support"
+msgstr ""
+
+#: texi2html.pl:2499
+#, perl-format
+msgid "Encoding %s certainly poorly supported"
+msgstr ""
+
+#: texi2html.pl:2518 texi2html.pl:2592
+msgid "translation"
+msgstr ""
+
+#: texi2html.pl:2750
+#, perl-format
+msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgstr "%s: --paragraph-indent 的引數必須為 數值/`none'/`asis', 而不是 `%s'.\n"
+
+#: texi2html.pl:2754
+#, fuzzy, perl-format
+msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
+msgstr "%s: --paragraph-indent 的引數必須為 數值/`none'/`asis', 而不是 `%s'.\n"
+
+#: texi2html.pl:3612
+#, fuzzy, perl-format
+msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+msgstr "用法: %s [OPTION]... FILE...\n"
+
+#: texi2html.pl:3614
+msgid ""
+"Translate Texinfo source documentation to various other formats, by default\n"
+"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
+msgstr ""
+
+#: texi2html.pl:3617
+#, perl-format
+msgid ""
+"General options:\n"
+"      --error-limit=NUM       quit after NUM errors (default %d).\n"
+"      --document-language=STR locale to use in translating Texinfo keywords\n"
+"                                for the output document (default C).\n"
+"      --force                 preserve output even if errors.\n"
+"      --help                  display this help and exit.\n"
+"      --no-validate           suppress node cross-reference validation.\n"
+"      --no-warn               suppress warnings (but not errors).\n"
+"  -v, --verbose               explain what is being done.\n"
+"      --version               display version information and exit.\n"
+msgstr ""
+
+#: texi2html.pl:3628
+msgid ""
+"Output format selection (default is to produce Info):\n"
+"      --docbook               output Docbook XML rather than Info.\n"
+"      --html                  output HTML rather than Info.\n"
+"      --xml                   output Texinfo XML rather than Info.\n"
+"      --plaintext             output plain text rather than Info.\n"
+msgstr ""
+
+#: texi2html.pl:3634
+msgid ""
+"General output options:\n"
+"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+"                                ignoring any @setfilename.\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output);\n"
+"                                also, write to standard output by default.\n"
+"      --no-split              suppress the splitting of Info or HTML "
+"output,\n"
+"                                generate only one output file.\n"
+"      --number-sections       output chapter and sectioning numbers.\n"
+"  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
+msgstr ""
+
+#: texi2html.pl:3646
+#, perl-format
+msgid ""
+"Options for Info and plain text:\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %"
+"d).\n"
+"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
+"                                `separate' to put them in their own node;\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
+"d).\n"
+"                                If VAL is `none', do not indent; if VAL is\n"
+"                                `asis', preserve existing indentation.\n"
+"      --split-size=NUM        split Info files at size NUM (default %d).\n"
+msgstr ""
+
+#: texi2html.pl:3661
+msgid ""
+"Options for HTML:\n"
+"      --css-include=FILE      include FILE in HTML <style> output;\n"
+"                                read stdin if FILE is -.\n"
+"      --css-ref=URL           generate reference to a CSS file.\n"
+"      --internal-links=FILE   produce list of internal links in FILE.\n"
+"      --transliterate-file-names\n"
+"                              produce file names in ASCII transliteration.\n"
+msgstr ""
+
+#: texi2html.pl:3674
+msgid ""
+"Input file options:\n"
+"      --commands-in-node-names  allow @ commands in node names.\n"
+"  -D VAR                        define the variable VAR, as with @set.\n"
+"  -I DIR                        append DIR to the @include search path.\n"
+"  -P DIR                        prepend DIR to the @include search path.\n"
+"  -U VAR                        undefine the variable VAR, as with @clear.\n"
+msgstr ""
+
+#: texi2html.pl:3681
+msgid ""
+"Conditional processing in input:\n"
+"  --ifdocbook       process @ifdocbook and @docbook even if\n"
+"                      not generating Docbook.\n"
+"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
+"  --ifinfo          process @ifinfo even if not generating Info.\n"
+"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
+"  --iftex           process @iftex and @tex; implies --no-split.\n"
+"  --ifxml           process @ifxml and @xml.\n"
+"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
+"  --no-ifhtml       do not process @ifhtml and @html text.\n"
+"  --no-ifinfo       do not process @ifinfo text.\n"
+"  --no-ifplaintext  do not process @ifplaintext text.\n"
+"  --no-iftex        do not process @iftex and @tex text.\n"
+"  --no-ifxml        do not process @ifxml and @xml text.\n"
+"\n"
+"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
+msgstr ""
+
+#: texi2html.pl:3698
+msgid ""
+"  The defaults for the @if... conditionals depend on the output format:\n"
+"  if generating HTML, --ifhtml is on and the others are off;\n"
+"  if generating Info, --ifinfo is on and the others are off;\n"
+"  if generating plain text, --ifplaintext is on and the others are off;\n"
+"  if generating XML, --ifxml is on and the others are off.\n"
+msgstr ""
+
+#: texi2html.pl:3704
+#, fuzzy
+msgid ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+msgstr ""
+"\n"
+"@if... 等判斷指令的預設值, 會依輸出格式不同而不同:\n"
+"如果產生 HTML, --ifhtml 會開啟, 其它則關閉;\n"
+"如果產生 Info 或普通的文字檔, --ifinfo 會開啟, 其它則關閉.\n"
+"\n"
+"範例:\n"
+"  makeinfo foo.texi                    輸出 Info 至 foo 的 @setfilename\n"
+"  makeinfo --html foo.texi             輸出 HTML 至 foo 的 @setfilename\n"
+"  makeinfo --no-headers -o - foo.texi  輸出普通文字格式至標準輸出\n"
+"  makeinfo --number-sections foo.texi  以有編號的節來輸出 Info\n"
+"  makeinfo --no-split foo.texi         不管檔案有多大, 輸出成一個 Info 檔\n"
+"\n"
+"程式臭蟲, 請以電子郵件 (英文) 回報至 bug-texinfo@gnu.org,\n"
+"一般問題與討論, 請以電子郵件 (英文) 寄到 help-texinfo@gnu.org."
+
+#: texi2html.pl:3715
+#, fuzzy
+msgid ""
+"Email bug reports to bug-texinfo@gnu.org,\n"
+"general questions and discussion to help-texinfo@gnu.org.\n"
+"Texinfo home page: http://www.gnu.org/software/texinfo/"
+msgstr ""
+"\n"
+"程式臭蟲, 請以電子郵件 (英文) 回報至 bug-texinfo@gnu.org,\n"
+"一般問題與討論, 請以電子郵件 (英文) 寄到 help-texinfo@gnu.org.\n"
+
+#: texi2html.pl:3794
+#, perl-format
+msgid ""
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
+msgstr ""
+
+#: texi2html.pl:3816
+#, perl-format
+msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
+msgstr ""
+
+#: texi2html.pl:4423
+#, perl-format
+msgid "Can't create directory `%s': %s"
+msgstr ""
+
+#: texi2html.pl:5140
+#, fuzzy, perl-format
+msgid "Node `%s' previously defined %s"
+msgstr "節點 `%s' 已在第 %d 行定義過了"
+
+#: texi2html.pl:5145 texi2html.pl:12622
+#, perl-format
+msgid "Syntax for an external node used for `%s'"
+msgstr ""
+
+#: texi2html.pl:5427 texi2html.pl:5438
+#, perl-format
+msgid "%c%s requires a name"
+msgstr "%c%s 必須要有名稱"
+
+#: texi2html.pl:5503
+#, fuzzy, perl-format
+msgid "@exampleindent arg must be numeric/`asis', not `%s'"
+msgstr "%s: --paragraph-indent 的引數必須為 數值/`none'/`asis', 而不是 `%s'.\n"
+
+#: texi2html.pl:5514
+#, perl-format
+msgid "Expected @%s on or off, not `%s'"
+msgstr ""
+
+#: texi2html.pl:5602
+#, perl-format
+msgid "Encoding %s is not a canonical texinfo encoding"
+msgstr ""
+
+#: texi2html.pl:5759
+#, fuzzy, perl-format
+msgid "Unknown from index `%s' in @%s"
+msgstr "未知的索引 `%s'"
+
+#: texi2html.pl:5761
+#, fuzzy, perl-format
+msgid "Unknown to index name `%s' in @%s"
+msgstr "未知的索引 `%s'"
+
+#: texi2html.pl:5796
+#, perl-format
+msgid "Reserved index name %s"
+msgstr ""
+
+#: texi2html.pl:5839
+#, perl-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
+msgstr ""
+
+#: texi2html.pl:5964
+#, perl-format
+msgid "@sp requires a positive numeric argument, not `%s'"
+msgstr "@sp 必須有一個正整數的引數, 而不是 `%s'"
+
+#: texi2html.pl:6701
+#, fuzzy, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "未被參照的節點 `%s'"
+
+#: texi2html.pl:6776
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr "未被參照的節點 `%s'"
+
+#: texi2html.pl:6827
+#, perl-format
+msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr ""
+
+#: texi2html.pl:6846
+#, perl-format
+msgid "For `%s', up in menu `%s' and up `%s' don't match"
+msgstr ""
+
+#: texi2html.pl:6876
+#, perl-format
+msgid "No node following `%s' in menu, but `%s' follows in sectionning"
+msgstr ""
+
+#: texi2html.pl:6877
+#, perl-format
+msgid "Node following `%s' in menu `%s' and in sectionning `%s' differ"
+msgstr ""
+
+#: texi2html.pl:7903
+#, perl-format
+msgid "Unknown index `%s'"
+msgstr "未知的索引 `%s'"
+
+#: texi2html.pl:7910
+#, perl-format
+msgid "Entry for index `%s' outside of any node"
+msgstr "索引 `%s' 的項目不在任何的節點內"
+
+#: texi2html.pl:8959
+#, perl-format
+msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
+msgstr "%s: 因為錯誤, 移除輸出檔 `%s'; 若要保存它, 請使用 --force 選項.\n"
+
+#: texi2html.pl:8963
+#, fuzzy, perl-format
+msgid "%s: Removing output files due to errors; use --force to preserve.\n"
+msgstr "%s: 因為錯誤, 移除輸出檔 `%s'; 若要保存它, 請使用 --force 選項.\n"
+
+#: texi2html.pl:9010
+msgid "Too many errors!  Gave up.\n"
+msgstr "錯誤過多! 放棄.\n"
+
+#: texi2html.pl:9102
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s (via @%s)\n"
+msgstr "%s:%d: 警告: "
+
+#: texi2html.pl:9106
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s\n"
+msgstr "%s:%d: 警告: "
+
+#: texi2html.pl:9139
+#, perl-format
+msgid "(in %s l. %d via @%s)"
+msgstr ""
+
+#: texi2html.pl:9143
+#, perl-format
+msgid "(l. %d via @%s)"
+msgstr ""
+
+#: texi2html.pl:9148
+#, perl-format
+msgid "(in %s l. %d)"
+msgstr ""
+
+#: texi2html.pl:9152
+#, perl-format
+msgid "(l. %d)"
+msgstr ""
+
+#: texi2html.pl:9309
+#, perl-format
+msgid "Too much '}' in @%s"
+msgstr ""
+
+#: texi2html.pl:9319
+#, fuzzy, perl-format
+msgid "Missing `}' on @%s line"
+msgstr "@def 參數中遺漏 `}'"
+
+#: texi2html.pl:9474
+#, perl-format
+msgid "Anchor `%s' ignored in %s expanded more than once"
+msgstr ""
+
+#: texi2html.pl:10101
+#, perl-format
+msgid "column fraction not a number: %s"
+msgstr ""
+
+#: texi2html.pl:10122
+#, perl-format
+msgid "ignoring stray text `%s' after @multitable"
+msgstr ""
+
+#: texi2html.pl:10144
+#, perl-format
+msgid "Too many %s closed"
+msgstr ""
+
+#: texi2html.pl:10511
+#, perl-format
+msgid "Must be in `@%s' environment to use `@%s'"
+msgstr ""
+
+#: texi2html.pl:10570 texi2html.pl:10998
+#, fuzzy, perl-format
+msgid "@%s (argument nr %d)"
+msgstr "對 %c%s 無用的引數"
+
+#: texi2html.pl:10641
+#, perl-format
+msgid "%s requires an argument: the formatter for %citem"
+msgstr ""
+
+#: texi2html.pl:10644
+#, perl-format
+msgid "prepended for @%s"
+msgstr ""
+
+#: texi2html.pl:10670
+#, perl-format
+msgid "@columnfraction (argument nr %d)"
+msgstr ""
+
+#: texi2html.pl:10852 texi2html.pl:10866
+msgid "node name in menu"
+msgstr ""
+
+#: texi2html.pl:10853
+msgid "normalized node name in menu"
+msgstr ""
+
+#: texi2html.pl:10859
+msgid "menu entry name"
+msgstr ""
+
+#: texi2html.pl:10977
+#, fuzzy, perl-format
+msgid "First argument to @%s may not be empty"
+msgstr "對 %c%s 無用的引數"
+
+#: texi2html.pl:11130 texi2html.pl:13860
+msgid "@listoffloats @float type"
+msgstr ""
+
+#: texi2html.pl:11231
+#, fuzzy, perl-format
+msgid "@%s not meaningful outside `@float' environment"
+msgstr "@%s 在 `@%s' 區塊之內, 並不具有意義"
+
+#: texi2html.pl:11289
+msgid "@float style"
+msgstr ""
+
+#: texi2html.pl:11418 texi2html.pl:11419
+msgid "@image base name"
+msgstr ""
+
+#: texi2html.pl:11428 texi2html.pl:11429
+msgid "@image extension"
+msgstr ""
+
+#: texi2html.pl:11436
+#, fuzzy
+msgid "@image file name"
+msgstr "@image 檔案 `%s' 無法讀取: %s"
+
+#: texi2html.pl:11458
+msgid "@image alt text"
+msgstr ""
+
+#: texi2html.pl:11541
+#, fuzzy, perl-format
+msgid "Macro `%s' called with too many args"
+msgstr "巨集 `%s' 在第 %d 行被呼叫, 但是引數過多"
+
+#: texi2html.pl:11565
+#, perl-format
+msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
+msgstr ""
+
+#: texi2html.pl:12270
+#, perl-format
+msgid "macro `%s' previously defined"
+msgstr "巨集 `%s' 已定義過"
+
+#: texi2html.pl:12271
+#, perl-format
+msgid "here is the previous definition of `%s'"
+msgstr "這裡是 `%s' 之前的定義"
+
+#: texi2html.pl:12304
+#, perl-format
+msgid "Macro definition without macro name: %s"
+msgstr ""
+
+#: texi2html.pl:12345
+#, perl-format
+msgid "undefined flag: %s"
+msgstr ""
+
+#: texi2html.pl:12357
+msgid "Bad syntax for @value"
+msgstr ""
+
+#: texi2html.pl:12565
+#, fuzzy, perl-format
+msgid "@%s already set"
+msgstr "索引 `%s' 已存在"
+
+#: texi2html.pl:12617
+#, fuzzy, perl-format
+msgid "Anchor `%s' previously defined %s"
+msgstr "巨集 `%s' 已定義過"
+
+#: texi2html.pl:12940
+#, fuzzy, perl-format
+msgid "%c%s is obsolete."
+msgstr "%c%s 已廢止不用"
+
+#: texi2html.pl:12944
+#, fuzzy, perl-format
+msgid "%c%s is obsolete; %s"
+msgstr "%c%s 已廢止不用"
+
+#: texi2html.pl:12960
+#, perl-format
+msgid "Unknown index `%s' in @printindex"
+msgstr "@printindex 中有未知的索引 `%s'"
+
+#: texi2html.pl:13027
+#, perl-format
+msgid "ignored @%s already in an @%s entry"
+msgstr ""
+
+#: texi2html.pl:13052 texi2html.pl:13095
+#, fuzzy, perl-format
+msgid "@%s seen before first @node"
+msgstr "@menu 在第一個 @node 之前出現, 將建立 `Top' 節點"
+
+#: texi2html.pl:13053
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr "也許您應該把 @top 節點包含在 @ifnottex, 而不是 @ifinfo?"
+
+#: texi2html.pl:13430 texi2html.pl:13431 texi2html.pl:13434
+msgid "new menu entry"
+msgstr ""
+
+#: texi2html.pl:13555
+msgid "paragraph end"
+msgstr ""
+
+#: texi2html.pl:13789
+#, perl-format
+msgid "`@end' expected `%s', but saw `%s'"
+msgstr ""
+
+#: texi2html.pl:13853
+msgid "@listoffloats type"
+msgstr ""
+
+#: texi2html.pl:13876
+#, perl-format
+msgid "Requested float type `%s' not previously used"
+msgstr ""
+
+#: texi2html.pl:13988
+#, fuzzy, perl-format
+msgid "@%s not allowed on in argument to @%s"
+msgstr "對 %c%s 無用的引數"
+
+#: texi2html.pl:14043
+#, perl-format
+msgid "Accent command `@%s' must not be followed by whitespace"
+msgstr ""
+
+#: texi2html.pl:14047
+#, perl-format
+msgid "Use braces to give a command as an argument to @%s"
+msgstr "使用大括號將命令包起來, 以作為 @%s 的引數"
+
+#: texi2html.pl:14208
+#, perl-format
+msgid "@%s not meaningful inside `@%s' block"
+msgstr "@%s 在 `@%s' 區塊之內, 並不具有意義"
+
+#: texi2html.pl:14253
+#, perl-format
+msgid "@%s outside of table or list"
+msgstr ""
+
+#: texi2html.pl:14286
+msgid "ignoring @tab outside of multitable"
+msgstr "忽略 multitable 外的 @tab"
+
+#: texi2html.pl:14293
+#, fuzzy
+msgid "ignoring @tab in empty multitable"
+msgstr "忽略 multitable 外的 @tab"
+
+#: texi2html.pl:14297
+#, perl-format
+msgid "Too many columns in multitable item (max %d)"
+msgstr "multitable 項目中有太多的欄位 (最大值為 %d)"
+
+#: texi2html.pl:14328
+msgid "@center should not appear in another format"
+msgstr ""
+
+#: texi2html.pl:14368 texi2html.pl:14388
+#, perl-format
+msgid "Misplaced %c"
+msgstr "誤置的 %c"
+
+#: texi2html.pl:14936
+#, perl-format
+msgid "%c%s expects a single character `i' or `j' as argument"
+msgstr "%c%s 期望使用一個字母 `i' 或 `j' 作為引數"
+
+#: texi2html.pl:14940
+#, fuzzy, perl-format
+msgid "%c%s expects `i' or `j' as argument, not `%s'"
+msgstr "%c%s 期望使用 `i' 或 `j' 作為引數, 而不是 `%c'"
+
+#: texi2html.pl:14989
+#, fuzzy, perl-format
+msgid "Unknown command with braces `@%s'"
+msgstr "未知的命令 `%s'"
+
+#: texi2html.pl:15025
+#, fuzzy, perl-format
+msgid "%c%s expected braces"
+msgstr "%c%s 預計要有 `{...}'"
+
+#: texi2html.pl:15029
+#, perl-format
+msgid "Unknown command `%s'"
+msgstr "未知的命令 `%s'"
+
+#: texi2html.pl:15107
+#, perl-format
+msgid "Reached eof before matching @end %s"
+msgstr "在配對的 @end %s 之前, 先到達檔案結尾"
+
+#: texi2html.pl:15115
+#, perl-format
+msgid "%cend macro not found"
+msgstr ""
+
+#: texi2html.pl:15283
+#, perl-format
+msgid "No matching `%cend %s'"
+msgstr "No matching `%cend %s'"
+
+#: texi2html.pl:15311
+#, perl-format
+msgid "%c%s missing close brace"
+msgstr "%c%s 遺漏右大括號"
+
+#: texi2html.pl:15419
+#, fuzzy, perl-format
+msgid "%s should not appear in %s"
+msgstr "無法建立輸出檔案 `%s'."
+
+#: texi2html.pl:16119
+#, perl-format
+msgid "%s:%d: string not closed in css file"
+msgstr ""
+
+#: texi2html.pl:16120
+#, perl-format
+msgid "%s:%d: --css-file ended in comment"
+msgstr ""
+
+#: texi2html.pl:16121
+#, perl-format
+msgid "%s:%d @import not finished in css file"
+msgstr ""
+
+#: texi2html.pl:16151
+#, fuzzy, perl-format
+msgid "%s: could not open --css-file %s: %s\n"
+msgstr "無法建立輸出檔案 `%s'."
+
+#: texi2html.pl:16206
+#, perl-format
+msgid "%s: missing file argument.\n"
+msgstr "%s: 遺漏檔案引數.\n"
+
+#: texi2html.init:2053
+msgid "recursion is always allowed"
+msgstr ""
+
+#: texi2html.init:2054
+msgid "arguments are quoted by default"
+msgstr ""
+
+#: formats/docbook.init:1025 formats/info.init:2872
+#, perl-format
+msgid "@image file `%s' unreadable: %s"
+msgstr "@image 檔案 `%s' 無法讀取: %s"
+
+#: formats/docbook.init:1030 formats/info.init:2877
+#, fuzzy, perl-format
+msgid "Cannot find @image file `%s.txt'"
+msgstr "找不到 `%s' 節點."
+
+#: formats/html.init:2547
+#, fuzzy, perl-format
+msgid "@image file `%s' (for HTML) not found, using `%s'"
+msgstr "@image 檔案 `%s' 無法讀取: %s"
+
+#: formats/info.init:1151
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+
+#: formats/info.init:1311
+#, fuzzy
+msgid "`.' or `,' must follow @xref."
+msgstr "`.' 或 `,' 必須跟著交互參照, 而不是 %c"
+
+#: formats/info.init:1316
+#, fuzzy, perl-format
+msgid "`.' or `,' must follow @xref, not %s"
+msgstr "`.' 或 `,' 必須跟著交互參照, 而不是 %c"
+
+#: formats/info.init:3073
+msgid "Footnote defined without parent node"
+msgstr "定義註腳, 但是沒有父節點"
+
+#~ msgid "%s: option `%s' is ambiguous\n"
+#~ msgstr "%s: 選項 `%s' 不明\n"
+
+#~ msgid "%s: option `--%s' doesn't allow an argument\n"
+#~ msgstr "%s: 選項 `--%s' 不可含有引數\n"
+
+#~ msgid "%s: option `%c%s' doesn't allow an argument\n"
+#~ msgstr "%s: 選項 `%c%s' 不可含有引數\n"
+
+#~ msgid "%s: option `%s' requires an argument\n"
+#~ msgstr "%s: 選項 `%s' 必須含有引數\n"
+
+#~ msgid "%s: unrecognized option `--%s'\n"
+#~ msgstr "%s: 未知的選項 `--%s'\n"
+
+#~ msgid "%s: unrecognized option `%c%s'\n"
+#~ msgstr "%s: 未知的選項 `%c%s'\n"
+
+#~ msgid "%s: illegal option -- %c\n"
+#~ msgstr "%s: 不合法的選項 -- %c\n"
+
+#~ msgid "%s: invalid option -- %c\n"
+#~ msgstr "%s: 無效的選項 -- %c\n"
+
+#~ msgid "%s: option requires an argument -- %c\n"
+#~ msgstr "%s: 選項必須含有引數 -- %c\n"
+
+#~ msgid "%s: option `-W %s' is ambiguous\n"
+#~ msgstr "%s: 選項 `-W %s' 不明確\n"
+
+#~ msgid "%s: option `-W %s' doesn't allow an argument\n"
+#~ msgstr "%s: 選項 `-W %s' 不可含有引數\n"
+
+#, fuzzy
+#~ msgid "memory exhausted"
+#~ msgstr "虛擬記憶體耗盡"
+
+#~ msgid "Move forward a character"
+#~ msgstr "向前移動一個字元"
+
+#~ msgid "Move backward a character"
+#~ msgstr "向後移動一個字元"
+
+#~ msgid "Move to the start of this line"
+#~ msgstr "移至本行開頭"
+
+#~ msgid "Move to the end of this line"
+#~ msgstr "移至本行結尾"
+
+#~ msgid "Move forward a word"
+#~ msgstr "向前移動一個字"
+
+#~ msgid "Move backward a word"
+#~ msgstr "向後移動一個字"
+
+#~ msgid "Delete the character under the cursor"
+#~ msgstr "刪除游標位置的字元"
+
+#~ msgid "Delete the character behind the cursor"
+#~ msgstr "刪除游標位置後的字元"
+
+#~ msgid "Cancel or quit operation"
+#~ msgstr "取消或結束目前的動作"
+
+#~ msgid "Accept (or force completion of) this line"
+#~ msgstr "接受 (或強迫完成) 本行"
+
+#~ msgid "Insert next character verbatim"
+#~ msgstr "不作轉換, 插入下一個字元"
+
+#~ msgid "Insert this character"
+#~ msgstr "插入本字元"
+
+#~ msgid "Insert a TAB character"
+#~ msgstr "插入一個 TAB 字元"
+
+#~ msgid "Transpose characters at point"
+#~ msgstr "變換游標位置的字元的順序"
+
+#~ msgid "Yank back the contents of the last kill"
+#~ msgstr "貼入上一次剪下的內容"
+
+#~ msgid "Kill ring is empty"
+#~ msgstr "剪貼簿沒有內容"
+
+#~ msgid "Yank back a previous kill"
+#~ msgstr "貼上前次的剪下內容"
+
+#~ msgid "Kill to the end of the line"
+#~ msgstr "刪除至本行結尾, 並置入剪貼簿"
+
+#~ msgid "Kill to the beginning of the line"
+#~ msgstr "刪除至本行開頭, 並置入剪貼簿"
+
+#~ msgid "Kill the word following the cursor"
+#~ msgstr "刪除游標後的單字, 並置入剪貼簿"
+
+#~ msgid "Kill the word preceding the cursor"
+#~ msgstr "刪除游標前的單字, 並置入剪貼簿"
+
+#~ msgid "No completions"
+#~ msgstr "沒有可能的完成句"
+
+#~ msgid "Not complete"
+#~ msgstr "未完成"
+
+#~ msgid "List possible completions"
+#~ msgstr "列出可能的完成句"
+
+#~ msgid "Sole completion"
+#~ msgstr "單一的完成句"
+
+#~ msgid "One completion:\n"
+#~ msgstr "一個完成句:\n"
+
+#~ msgid "%d completions:\n"
+#~ msgstr "%d 個完成句:\n"
+
+#~ msgid "Insert completion"
+#~ msgstr "插入完成句"
+
+#~ msgid "Building completions..."
+#~ msgstr "建立完成句中..."
+
+#~ msgid "Scroll the completions window"
+#~ msgstr "捲動完成句分隔視窗"
+
+#~ msgid "Footnotes could not be displayed"
+#~ msgstr "無法顯示註腳"
+
+#~ msgid "Show the footnotes associated with this node in another window"
+#~ msgstr "將本節點的註腳顯示在另一個分隔視窗內"
+
+#, fuzzy
+#~ msgid "---------- Footnotes ----------"
+#~ msgstr "---------------------\n"
+
+#~ msgid "Look up a string in the index for this file"
+#~ msgstr "在本檔案的索引內查詢字串"
+
+#~ msgid "Finding index entries..."
+#~ msgstr "找尋索引項目..."
+
+#~ msgid "No indices found."
+#~ msgstr "找不到索引"
+
+#~ msgid "Index entry: "
+#~ msgstr "索引項目: "
+
+#~ msgid ""
+#~ "Go to the next matching index item from the last `\\[index-search]' "
+#~ "command"
+#~ msgstr "移動至下一個符合上一次的 `\\[index-search] 命令的搜尋項目"
+
+#~ msgid "No previous index search string."
+#~ msgstr "沒有前一個索引搜尋字串"
+
+#~ msgid "No index entries."
+#~ msgstr "沒有索引項目."
+
+#, fuzzy
+#~ msgid "No %sindex entries containing `%s'."
+#~ msgstr "沒有 %s索引項目包含 \"%s\"."
+
+#~ msgid "more "
+#~ msgstr "更多的 "
+
+#, fuzzy
+#~ msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
+#~ msgstr ""
+#~ "找到 \"%s\" 在 %s 之中. (`\\[next-index-match]' 嘗試要找到下一個字串.)"
+
+#, fuzzy
+#~ msgid "Scanning indices of `%s'..."
+#~ msgstr "掃瞄 \"%s\" 的索引中..."
+
+#~ msgid "Grovel all known info file's indices for a string and build a menu"
+#~ msgstr "整理所有已知 info 檔中包含查詢字串的索引, 並建立一個選單"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "* Menu: Nodes whose indices contain `%s':\n"
+#~ msgstr ""
+#~ "\n"
+#~ "* Menu: 其索引中包含 \"%s\" 的節點:\n"
+
+#~ msgid "Try --help for more information.\n"
+#~ msgstr "試試 --help 以取得更多的資訊.\n"
+
+#~ msgid "no index entries found for `%s'\n"
+#~ msgstr "找不到包含 `%s' 的索引項目\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "程式臭蟲, 請以電子郵件 (英文) 回報至 bug-texinfo@gnu.org,\n"
+#~ "一般問題與討論, 請以電子郵件 (英文) 寄到 help-texinfo@gnu.org.\n"
+
+#~ msgid "Cannot find node `(%s)%s'."
+#~ msgstr "找不到 `(%s)%s' 節點."
+
+#~ msgid "Cannot find a window!"
+#~ msgstr "找不到分隔視窗!"
+
+#~ msgid "Point doesn't appear within this window's node!"
+#~ msgstr "游標位置不在本分隔視窗的節點內!"
+
+#~ msgid "Cannot delete the last window."
+#~ msgstr "無法刪除上一個分隔視窗."
+
+#~ msgid "No menu in this node."
+#~ msgstr "本節點沒有選單."
+
+#~ msgid "No footnotes in this node."
+#~ msgstr "本節點沒有註腳."
+
+#~ msgid "No cross references in this node."
+#~ msgstr "本節點沒有交互參照."
+
+#~ msgid "No `%s' pointer for this node."
+#~ msgstr "本節點沒有 `%s' pointer."
+
+#~ msgid "Unknown Info command `%c'; try `?' for help."
+#~ msgstr "未知的 Info 命令 `%c'; 試試 `?' 以取得求助資訊."
+
+#~ msgid "Terminal type `%s' is not smart enough to run Info."
+#~ msgstr "終端機類型 `%s' 無法支援執行 Info 所需的需求."
+
+#~ msgid "You are already at the last page of this node."
+#~ msgstr "您已在本節點的最後一頁."
+
+#~ msgid "You are already at the first page of this node."
+#~ msgstr "您已在本節點的第一頁."
+
+#~ msgid "Only one window."
+#~ msgstr "只有一個分隔視窗."
+
+#~ msgid "Resulting window would be too small."
+#~ msgstr "產生的分隔視窗會太小."
+
+#~ msgid "Not enough room for a help window, please delete a window."
+#~ msgstr "剩下的空間太小, 無法容納求助分隔視窗, 請刪除一個分隔視窗."
+
+#, fuzzy
+#~ msgid "\\%-10[quit-help]  Close this help window.\n"
+#~ msgstr "  %-10s  結束本求助.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[quit]  Quit Info altogether.\n"
+#~ msgstr "  %-10s  一併結束 Info 程式.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
+#~ msgstr "  %-10s  執行 Info 指導課程.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[prev-line]  Move up one line.\n"
+#~ msgstr "  %-10s  往後捲動一行.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[next-line]  Move down one line.\n"
+#~ msgstr "  %-10s  往前捲動一行.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
+#~ msgstr "  %-10s  向後捲動一頁.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
+#~ msgstr "  %-10s  向前捲動一頁.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
+#~ msgstr "  %-10s  移至本節點的開頭.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
+#~ msgstr "  %-10s  移至本節點的結尾.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
+#~ msgstr "  %-10s  跳到本節點中的下一個超本文連結.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[select-reference-this-line]  Follow the hypertext link under the "
+#~ "cursor.\n"
+#~ msgstr "  %-10s  跟隨游標下的超本文連結.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[history-node]  Go back to the last node seen in this window.\n"
+#~ msgstr "  %-10s  移動至本分隔視窗中, 上一個觀看的節點.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
+#~ msgstr "  %-10s  移至本節點的 '上一個 (previous)' 節點.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
+#~ msgstr "  %-10s  移至本節點的 '下一個 (next)' 節點.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
+#~ msgstr "  %-10s  移至本節點的 '上一個 (previous)' 節點.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[next-node]  Go to the next node on this level.\n"
+#~ msgstr "  %-10s  移至本節點的 '下一個 (next)' 節點.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[up-node]  Go up one level.\n"
+#~ msgstr "  %-10s  移至本節點的 '上一層 (up)' 節點.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[top-node]  Go to the top node of this document.\n"
+#~ msgstr "  %-10s  移至本節點的結尾.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[dir-node]  Go to the main `directory' node.\n"
+#~ msgstr "  %-10s  移至本節點的結尾.\n"
+
+#, fuzzy
+#~ msgid "1...9       Pick the first...ninth item in this node's menu.\n"
+#~ msgstr "  %-10s  挑選節點目錄中的第一個...第九個項目.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
+#~ msgstr "  %-10s  挑選節點目錄的最後一個項目.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
+#~ msgstr "  %-10s  以名稱選取選單項目.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
+#~ msgstr "  %-10s  跟隨交互參照.  讀取參照的名稱.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
+#~ msgstr "  %-10s  移動到指定名稱的節點.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[search]  Search forward for a specified string.\n"
+#~ msgstr "  %-10s  在本 Info 檔中, 向前搜尋一個指定的字串,\n"
+
+#, fuzzy
+#~ msgid "\\%-10[search-previous]  Search for previous occurrence.\n"
+#~ msgstr "  %-10s  移至本節點的 '上一個 (previous)' 節點.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[search-next]  Search for next occurrence.\n"
+#~ msgstr "  %-10s  在本 Info 檔的索引項目中, 搜尋一個指定的字串,\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[index-search]  Search for a specified string in the index, and\n"
+#~ "              select the node referenced by the first entry found.\n"
+#~ msgstr "              並且選擇第一個搜尋到的項目所參照的節點.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[abort-key]  Cancel the current operation.\n"
+#~ msgstr "取消目前的作業"
+
+#, fuzzy
+#~ msgid ""
+#~ "Basic Commands in Info Windows\n"
+#~ "******************************\n"
+#~ msgstr "******************************\n"
+
+#~ msgid "  %-10s  Quit this help.\n"
+#~ msgstr "  %-10s  結束本求助.\n"
+
+#~ msgid "  %-10s  Quit Info altogether.\n"
+#~ msgstr "  %-10s  一併結束 Info 程式.\n"
+
+#~ msgid "  %-10s  Invoke the Info tutorial.\n"
+#~ msgstr "  %-10s  執行 Info 指導課程.\n"
+
+#~ msgid "  %-10s  Move to the `next' node of this node.\n"
+#~ msgstr "  %-10s  移至本節點的 '下一個 (next)' 節點.\n"
+
+#~ msgid "  %-10s  Move to the `previous' node of this node.\n"
+#~ msgstr "  %-10s  移至本節點的 '上一個 (previous)' 節點.\n"
+
+#~ msgid "  %-10s  Move `up' from this node.\n"
+#~ msgstr "  %-10s  移至本節點的 '上一層 (up)' 節點.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Pick menu item specified by name.\n"
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr "              選取選單項目以選擇另一個節點.\n"
+
+#~ msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
+#~ msgstr "  %-10s  跟隨交互參照.  讀取參照的名稱.\n"
+
+#~ msgid "  %-10s  Move to the last node seen in this window.\n"
+#~ msgstr "  %-10s  移動至本分隔視窗中, 上一個觀看的節點.\n"
+
+#~ msgid "  %-10s  Skip to next hypertext link within this node.\n"
+#~ msgstr "  %-10s  跳到本節點中的下一個超本文連結.\n"
+
+#~ msgid "  %-10s  Follow the hypertext link under cursor.\n"
+#~ msgstr "  %-10s  跟隨游標下的超本文連結.\n"
+
+#~ msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
+#~ msgstr "  %-10s  移至 `directory' 節點.  同 `g (DIR)'.\n"
+
+#~ msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
+#~ msgstr "  %-10s  移至 Top 節點.  同 `g TOP'.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Moving within a node:\n"
+#~ "---------------------\n"
+#~ msgstr "---------------------\n"
+
+#~ msgid "  %-10s  Scroll forward a page.\n"
+#~ msgstr "  %-10s  向前捲動一頁.\n"
+
+#~ msgid "  %-10s  Scroll backward a page.\n"
+#~ msgstr "  %-10s  向後捲動一頁.\n"
+
+#~ msgid "  %-10s  Go to the beginning of this node.\n"
+#~ msgstr "  %-10s  移至本節點的開頭.\n"
+
+#~ msgid "  %-10s  Go to the end of this node.\n"
+#~ msgstr "  %-10s  移至本節點的結尾.\n"
+
+#~ msgid "  %-10s  Scroll forward 1 line.\n"
+#~ msgstr "  %-10s  往前捲動一行.\n"
+
+#~ msgid "  %-10s  Scroll backward 1 line.\n"
+#~ msgstr "  %-10s  往後捲動一行.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Other commands:\n"
+#~ "---------------\n"
+#~ msgstr "---------------\n"
+
+#, fuzzy
+#~ msgid "  %-10s  Pick first...ninth item in node's menu.\n"
+#~ msgstr "  %-10s  挑選節點目錄中的第一個...第九個項目.\n"
+
+#~ msgid "  %-10s  Pick last item in node's menu.\n"
+#~ msgstr "  %-10s  挑選節點目錄的最後一個項目.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search for a specified string in the index entries of this Info\n"
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr "              並且選擇第一個搜尋到的項目所參照的節點.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Move to node specified by name.\n"
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr "              您也可以包含檔名, 如: (檔名)節點名.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search forward for a specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr "              並且選擇下一個搜尋到的字串所在的節點.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search backward for a specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr "              並且選擇下一個搜尋到的字串所在的節點.\n"
+
+#~ msgid "The current search path is:\n"
+#~ msgstr "目前的搜尋路徑為:\n"
+
+#~ msgid ""
+#~ "Commands available in Info windows:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "在 Info 分隔視窗中可用的指令:\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "Commands available in the echo area:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "回應區中可用的指令:\n"
+#~ "\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "The following commands can only be invoked via %s:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "以下的指令, 只可經由 M-x 執行:\n"
+#~ "\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "The following commands cannot be invoked at all:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "以下的指令, 只可經由 M-x 執行:\n"
+#~ "\n"
+
+#~ msgid "Display help message"
+#~ msgstr "顯示求助訊息"
+
+#~ msgid "Visit Info node `(info)Help'"
+#~ msgstr "拜訪 Info 節點 `(info)Help'"
+
+#~ msgid "Print documentation for KEY"
+#~ msgstr "列出 KEY 的文件"
+
+#~ msgid "Describe key: %s"
+#~ msgstr "描述按鍵指令: %s"
+
+#~ msgid "ESC %s is undefined."
+#~ msgstr "ESC %s 未定義."
+
+#~ msgid "%s is undefined."
+#~ msgstr "%s 未定義."
+
+#~ msgid "%s is defined to %s."
+#~ msgstr "%s 定義成 %s."
+
+#~ msgid "Show what to type to execute a given command"
+#~ msgstr "顯示執行某命令所需鍵入的按鍵"
+
+#~ msgid "`%s' is not on any keys"
+#~ msgstr "`%s' 未鏈結到任何按鍵"
+
+#~ msgid "%s can only be invoked via %s."
+#~ msgstr "%s 只能經由 %s 執行."
+
+#~ msgid "%s can be invoked via %s."
+#~ msgstr "%s 可經由 %s 執行."
+
+#~ msgid "There is no function named `%s'"
+#~ msgstr "沒有名為 `%s' 的函式"
+
+#, fuzzy
+#~ msgid ""
+#~ "Selecting other nodes:\n"
+#~ "----------------------\n"
+#~ msgstr "----------------------\n"
+
+#, fuzzy
+#~ msgid "cannot open input file `%s'"
+#~ msgstr "無法開啟至 `%s' 的管道."
+
+#, fuzzy
+#~ msgid "cannot create output file `%s'"
+#~ msgstr "無法建立輸出檔案 `%s'."
+
+#, fuzzy
+#~ msgid "error closing output file `%s'"
+#~ msgstr "無法建立輸出檔案 `%s'."
+
+#, fuzzy
+#~ msgid "missing action name"
+#~ msgstr "%c%s 遺漏右大括號"
+
+#, fuzzy
+#~ msgid "unknown action `%s'"
+#~ msgstr "未知的命令 `%s'"
+
+#, fuzzy
+#~ msgid "missing variable name"
+#~ msgstr "%s: 遺漏檔案引數.\n"
+
+#~ msgid "Read the name of an Info command and describe it"
+#~ msgstr "讀取 Info 命令的名稱, 並且描述它"
+
+#~ msgid "Describe command: "
+#~ msgstr "描述命令: "
+
+#~ msgid "Read a command name in the echo area and execute it"
+#~ msgstr "在回應區中讀取命令名稱, 並且執行它"
+
+#~ msgid "Cannot execute an `echo-area' command here."
+#~ msgstr "無法在這裡執行 `echo-area' 命令."
+
+#, fuzzy
+#~ msgid "Undefined command: %s"
+#~ msgstr "未知的命令 `%s'"
+
+#~ msgid "Set the height of the displayed window"
+#~ msgstr "設定顯示視窗的高度"
+
+#~ msgid "Set screen height to (%d): "
+#~ msgstr "設定螢幕高度為 (%d): "
+
+#~ msgid "Couldn't manipulate the file %s.\n"
+#~ msgstr "無法處理檔案 %s.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "* Menu:\n"
+#~ "  (File)Node                        Lines   Size   Containing File\n"
+#~ "  ----------                        -----   ----   ---------------"
+#~ msgstr ""
+#~ "\n"
+#~ "* 選單:\n"
+#~ "  (檔案)節點                        行 數   大小    包  含  檔  案\n"
+#~ "  ----------                        -----   ----   ---------------"
+
+#~ msgid ""
+#~ "Here is the menu of nodes you have recently visited.\n"
+#~ "Select one from this menu, or use `\\[history-node]' in another window.\n"
+#~ msgstr ""
+#~ "這是您最近拜訪過的節點選單.\n"
+#~ "自本選單選取一項, 或是在另一個分隔視窗使用 `\\[history-node]' 命令.\n"
+
+#~ msgid ""
+#~ "Make a window containing a menu of all of the currently visited nodes"
+#~ msgstr "產生一個分隔視窗, 包含所有最近拜訪過的節點選單"
+
+#~ msgid "Select a node which has been previously visited in a visible window"
+#~ msgstr "選取之前在可見分隔視窗拜訪過的節點"
+
+#~ msgid "Select visited node: "
+#~ msgstr "選取拜訪過的節點: "
+
+#~ msgid "The reference disappeared! (%s)."
+#~ msgstr "交互參照不見了! (%s)."
+
+#~ msgid ""
+#~ "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-"
+#~ "item] for menu item."
+#~ msgstr ""
+#~ "歡迎使用 Info 版本 %s. 鍵入 \\[get-help-window] 以取得求助資訊, \\[menu-"
+#~ "item] 以取得選單項目."
+
+#~ msgid "Move down to the next line"
+#~ msgstr "移至下一行"
+
+#~ msgid "Move up to the previous line"
+#~ msgstr "移至上一行"
+
+#~ msgid "Move to the end of the line"
+#~ msgstr "移至本行結尾"
+
+#~ msgid "Move to the start of the line"
+#~ msgstr "移至本行開頭"
+
+#~ msgid "Next"
+#~ msgstr "下一個"
+
+#~ msgid "No more nodes within this document."
+#~ msgstr "本文件中沒有更多的節點了."
+
+#~ msgid "No `Prev' for this node."
+#~ msgstr "本節點沒有 `上一個 (Prev)' 節點."
+
+#~ msgid "No `Prev' or `Up' for this node within this document."
+#~ msgstr "在本文件中, 本節點沒有 `上一個 (Prev)' 節點或 `上一層 (Up)' 節點."
+
+#~ msgid "Move forwards or down through node structure"
+#~ msgstr "在節點結構中, 往前或往下移動"
+
+#~ msgid "Move backwards or up through node structure"
+#~ msgstr "在節點結構中, 往後或往下移動"
+
+#~ msgid "Scroll forward in this window"
+#~ msgstr "在本分隔視窗中向前捲動"
+
+#~ msgid "Scroll forward in this window and set default window size"
+#~ msgstr "在本分隔視窗中向前捲動, 並且設定成預設的分隔視窗尺寸"
+
+#, fuzzy
+#~ msgid "Scroll forward in this window staying within node"
+#~ msgstr "在本分隔視窗中向前捲動"
+
+#, fuzzy
+#~ msgid ""
+#~ "Scroll forward in this window staying within node and set default window "
+#~ "size"
+#~ msgstr "在本分隔視窗中向前捲動, 並且設定成預設的分隔視窗尺寸"
+
+#~ msgid "Scroll backward in this window"
+#~ msgstr "在本分隔視窗中向後捲動"
+
+#~ msgid "Scroll backward in this window and set default window size"
+#~ msgstr "在本分隔視窗中向後捲動, 並且設定成預設的分隔視窗尺寸"
+
+#, fuzzy
+#~ msgid "Scroll backward in this window staying within node"
+#~ msgstr "在本分隔視窗中向後捲動"
+
+#, fuzzy
+#~ msgid ""
+#~ "Scroll backward in this window staying within node and set default window "
+#~ "size"
+#~ msgstr "在本分隔視窗中向後捲動, 並且設定成預設的分隔視窗尺寸"
+
+#~ msgid "Move to the start of this node"
+#~ msgstr "移至本節點的起點"
+
+#~ msgid "Move to the end of this node"
+#~ msgstr "移至本節點的結尾"
+
+#~ msgid "Scroll down by lines"
+#~ msgstr "一行行向下捲動"
+
+#~ msgid "Scroll up by lines"
+#~ msgstr "一行行向上捲動"
+
+#~ msgid "Scroll down by half screen size"
+#~ msgstr "向下捲動半個螢幕的大小"
+
+#~ msgid "Scroll up by half screen size"
+#~ msgstr "向上捲動半個螢幕的大小"
+
+#~ msgid "Select the next window"
+#~ msgstr "選擇下一個分隔視窗"
+
+#~ msgid "Select the previous window"
+#~ msgstr "選擇前一個分隔視窗"
+
+#~ msgid "Split the current window"
+#~ msgstr "分隔目前的分隔視窗"
+
+#~ msgid "Delete the current window"
+#~ msgstr "刪除目前的分隔視窗"
+
+#~ msgid "Cannot delete a permanent window"
+#~ msgstr "無法刪除固定的分隔視窗"
+
+#~ msgid "Delete all other windows"
+#~ msgstr "刪除所有其它的分隔視窗"
+
+#~ msgid "Scroll the other window"
+#~ msgstr "捲動另一個分隔視窗"
+
+#~ msgid "Scroll the other window backward"
+#~ msgstr "向後捲動另一個分隔視窗"
+
+#~ msgid "Grow (or shrink) this window"
+#~ msgstr "擴大 (或縮小) 這個分隔視窗"
+
+#~ msgid "Divide the available screen space among the visible windows"
+#~ msgstr "在可用的螢幕空間中, 平均分割所有的可見分隔視窗"
+
+#~ msgid "Toggle the state of line wrapping in the current window"
+#~ msgstr "切換目前分隔視窗的自動換行狀態"
+
+#~ msgid "Select the Next node"
+#~ msgstr "選取 下一個 節點"
+
+#~ msgid "Select the Prev node"
+#~ msgstr "選取 前一個 節點"
+
+#~ msgid "Select the Up node"
+#~ msgstr "選取 上一層 節點"
+
+#~ msgid "Select the last node in this file"
+#~ msgstr "選取本檔案的最後一個節點"
+
+#~ msgid "This window has no additional nodes"
+#~ msgstr "本分隔視窗沒有額外的節點"
+
+#~ msgid "Select the first node in this file"
+#~ msgstr "選取本檔案的第一個節點"
+
+#~ msgid "Select the last item in this node's menu"
+#~ msgstr "選取本節點選單中, 最後一個項目"
+
+#~ msgid "Select this menu item"
+#~ msgstr "選擇這一個選單項目"
+
+#~ msgid "There aren't %d items in this menu."
+#~ msgstr "本選單中沒有 %d 個項目"
+
+#~ msgid "Menu item (%s): "
+#~ msgstr "選單項目 (%s): "
+
+#~ msgid "Menu item: "
+#~ msgstr "選單項目: "
+
+#~ msgid "Follow xref (%s): "
+#~ msgstr "跟隨交互參照 (%s): "
+
+#~ msgid "Follow xref: "
+#~ msgstr "跟隨交互參照: "
+
+#~ msgid "Read a menu item and select its node"
+#~ msgstr "讀取一個選單項目, 並且選擇它的節點"
+
+#~ msgid "Read a footnote or cross reference and select its node"
+#~ msgstr "讀取一個註腳或交互參照, 並且選擇它的節點"
+
+#~ msgid "Move to the start of this node's menu"
+#~ msgstr "移至本節點的選單開頭"
+
+#~ msgid "Visit as many menu items at once as possible"
+#~ msgstr "儘可能一次拜訪最多個選單項目"
+
+#~ msgid "Read a node name and select it"
+#~ msgstr "讀取節點名稱, 並且選擇它"
+
+#~ msgid "Goto node: "
+#~ msgstr "跳至節點: "
+
+#~ msgid "No menu in node `%s'."
+#~ msgstr "節點 `%s' 中沒有選單."
+
+#~ msgid "No menu item `%s' in node `%s'."
+#~ msgstr "選單項目 `%s' 不在節點 `%s' 中."
+
+#~ msgid "Unable to find node referenced by `%s' in `%s'."
+#~ msgstr "被參照的節點 `%s' 在 `%s' 中找不到."
+
+#~ msgid "Read a list of menus starting from dir and follow them"
+#~ msgstr "讀取自 dir 開始的節點條列, 並且跟隨它們"
+
+#~ msgid "Follow menus: "
+#~ msgstr "跟隨選單: "
+
+#~ msgid "Find the node describing program invocation"
+#~ msgstr "找尋描述程式執行方法的節點"
+
+#~ msgid "Find Invocation node of [%s]: "
+#~ msgstr "找尋 [%s] 的執行方法節點: "
+
+#~ msgid "Read a manpage reference and select it"
+#~ msgstr "讀取線上手冊 (manpage) 的參照, 並且選擇它"
+
+#~ msgid "Get Manpage: "
+#~ msgstr "取得線上手冊 (Manpage): "
+
+#~ msgid "Select the node `Top' in this file"
+#~ msgstr "選取本檔案中的 `Top' 節點"
+
+#~ msgid "Select the node `(dir)'"
+#~ msgstr "選取節點 `(dir)'"
+
+#~ msgid "Kill node (%s): "
+#~ msgstr "刪除節點 (%s): "
+
+#~ msgid "Cannot kill node `%s'"
+#~ msgstr "無法刪除節點 `%s'"
+
+#~ msgid "Cannot kill the last node"
+#~ msgstr "無法刪除上一個節點"
+
+#~ msgid "Select the most recently selected node"
+#~ msgstr "選擇最近一次被選擇的節點"
+
+#~ msgid "Kill this node"
+#~ msgstr "刪除本節點"
+
+#~ msgid "Read the name of a file and select it"
+#~ msgstr "讀取檔案名稱, 然後選取它"
+
+#~ msgid "Find file: "
+#~ msgstr "找尋檔案: "
+
+#~ msgid "Cannot find `%s'."
+#~ msgstr "無法找到 `%s'."
+
+#~ msgid "Could not create output file `%s'."
+#~ msgstr "無法建立輸出檔案 `%s'."
+
+#~ msgid "Done."
+#~ msgstr "完成."
+
+#~ msgid "Writing node %s..."
+#~ msgstr "寫入節點 %s 中..."
+
+#~ msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
+#~ msgstr "將本節點的內容, 經由管道 (pipe) 送至 INFO_PRINT_COMMAND"
+
+#~ msgid "Cannot open pipe to `%s'."
+#~ msgstr "無法開啟至 `%s' 的管道."
+
+#~ msgid "Printing node %s..."
+#~ msgstr "列印節點 %s 中..."
+
+#, fuzzy
+#~ msgid "Search continued from the beginning of the document."
+#~ msgstr "刪除至本行開頭, 並置入剪貼簿"
+
+#~ msgid "Searching subfile %s ..."
+#~ msgstr "搜尋子檔案 %s ..."
+
+#~ msgid "Read a string and search for it case-sensitively"
+#~ msgstr "讀取一個字串, 然後以區分大小寫方式搜尋"
+
+#~ msgid "Read a string and search for it"
+#~ msgstr "讀取一個字串, 然後搜尋"
+
+#~ msgid "Read a string and search backward for it"
+#~ msgstr "讀取一個字串, 然後向後搜尋"
+
+#, fuzzy
+#~ msgid "%s%s%s [%s]: "
+#~ msgstr "%s%s [%s]: "
+
+#, fuzzy
+#~ msgid " case-sensitively"
+#~ msgstr ", 以區分大小寫的方式"
+
+#, fuzzy
+#~ msgid " backward"
+#~ msgstr "向後搜尋字串"
+
+#~ msgid "Search"
+#~ msgstr "搜尋字串"
+
+#~ msgid "Search failed."
+#~ msgstr "搜尋失敗."
+
+#~ msgid "Repeat last search in the same direction"
+#~ msgstr "以同樣的搜尋方向重覆上次的搜尋"
+
+#~ msgid "No previous search string"
+#~ msgstr "沒有前一次的搜尋字串"
+
+#~ msgid "Repeat last search in the reverse direction"
+#~ msgstr "以相反的搜尋方向重覆上次的搜尋"
+
+#~ msgid "Search interactively for a string as you type it"
+#~ msgstr "以互動方式, 邊輸入字串邊搜尋"
+
+#, fuzzy
+#~ msgid "Regexp I-search backward: "
+#~ msgstr "反向互動搜尋: "
+
+#~ msgid "I-search backward: "
+#~ msgstr "反向互動搜尋: "
+
+#, fuzzy
+#~ msgid "Regexp I-search: "
+#~ msgstr "互動搜尋: "
+
+#~ msgid "I-search: "
+#~ msgstr "互動搜尋: "
+
+#~ msgid "Failing "
+#~ msgstr "失敗 "
+
+#~ msgid "Move to the previous cross reference"
+#~ msgstr "移動至前一個交互參照"
+
+#~ msgid "Move to the next cross reference"
+#~ msgstr "移動至下一個交互參照"
+
+#~ msgid "Select reference or menu item appearing on this line"
+#~ msgstr "選擇出現在本行的參照或選單項目"
+
+#~ msgid "Cancel current operation"
+#~ msgstr "取消目前的作業"
+
+#~ msgid "Quit"
+#~ msgstr "結束"
+
+#~ msgid "Move the cursor to a specific line of the window"
+#~ msgstr "移動游標至分隔視窗中的指定位置"
+
+#~ msgid "Redraw the display"
+#~ msgstr "重繪畫面"
+
+#~ msgid "Quit using Info"
+#~ msgstr "結束使用 Info"
+
+#~ msgid "Unknown command (%s)."
+#~ msgstr "未知的命令 (%s)."
+
+#~ msgid "\"%s\" is invalid"
+#~ msgstr "\"%s\" 不合法"
+
+#, fuzzy
+#~ msgid "`%s' is invalid"
+#~ msgstr "\"%s\" 不合法"
+
+#~ msgid "Add this digit to the current numeric argument"
+#~ msgstr "將本數字加至目前的數值引數"
+
+#~ msgid "Start (or multiply by 4) the current numeric argument"
+#~ msgstr "開始目前的數值引數 (或是乘以 4)"
+
+#~ msgid "Internally used by \\[universal-argument]"
+#~ msgstr "在內部被 \\[universal-argument] 使用"
+
+#~ msgid "readline: Out of virtual memory!\n"
+#~ msgstr "readline: 耗盡虛擬記憶體!\n"
+
+#~ msgid "When \"On\", footnotes appear and disappear automatically"
+#~ msgstr "當設定在 \"On\" 時, 註腳會自動出現與消失"
+
+#~ msgid "When \"On\", creating or deleting a window resizes other windows"
+#~ msgstr "設定在 \"On\" 時, 建立或刪除一個分隔視窗會變更其它的分隔視窗的大小"
+
+#~ msgid "When \"On\", flash the screen instead of ringing the bell"
+#~ msgstr "設定在 \"On\" 時, 以畫面閃動代替響鈴"
+
+#~ msgid "When \"On\", errors cause the bell to ring"
+#~ msgstr "設定在 \"On\" 時, 發生錯誤會響鈴"
+
+#~ msgid ""
+#~ "When \"On\", Info garbage collects files which had to be uncompressed"
+#~ msgstr ""
+#~ "When \"On\", Info garbage collects files which had to be uncompressed"
+
+#~ msgid "When \"On\", the portion of the matched search string is highlighted"
+#~ msgstr "設定在 \"On\" 時, 符合搜尋字串的部份會被標示起來"
+
+#~ msgid ""
+#~ "Controls what happens when scrolling is requested at the end of a node"
+#~ msgstr "控制在節點的結尾時, 捲動會有什麼反應"
+
+#~ msgid "The number lines to scroll when the cursor moves out of the window"
+#~ msgstr "控制當游標移動至分隔視窗外時, 捲動的行數"
+
+#~ msgid "When \"On\", Info accepts and displays ISO Latin characters"
+#~ msgstr "當設定在 \"On\" 時, Info 可接受並顯示 ISO Latin 字元"
+
+#, fuzzy
+#~ msgid ""
+#~ "What to do when a scrolling command is issued at the end of the last node"
+#~ msgstr "控制在節點的結尾時, 捲動會有什麼反應"
+
+#~ msgid "Explain the use of a variable"
+#~ msgstr "解釋變數的用法"
+
+#~ msgid "Describe variable: "
+#~ msgstr "描述變數: "
+
+#~ msgid "Set the value of an Info variable"
+#~ msgstr "設定 Info 變數的數值"
+
+#~ msgid "Set variable: "
+#~ msgstr "設定變數: "
+
+#~ msgid "Set %s to value (%d): "
+#~ msgstr "設定 %s 的數值 (%d): "
+
+#~ msgid "Set %s to value (%s): "
+#~ msgstr "設定 %s 的數值 (%s): "
+
+#~ msgid "-----Info: (), lines ----, "
+#~ msgstr "-----Info: (), 行數  ----, "
+
+#~ msgid "-%s---Info: %s, %d lines --%s--"
+#~ msgstr "-%s---Info: %s, 共 %d 行 --%s--"
+
+#~ msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
+#~ msgstr "-%s%s-Info: (%s)%s, 共 %d 行 --%s--"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " 子檔案: %s"
+
+#~ msgid "%s: warning: "
+#~ msgstr "%s: 警告: "
+
+#~ msgid "\tTry `%s --help' for a complete list of options.\n"
+#~ msgstr "\t試試 Try `%s --help' 以取得完整的參數列表.\n"
+
+#, fuzzy
+#~ msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+#~ msgstr "用法: %s [OPTION]... FILE...\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "This is the file .../info/dir, which contains the\n"
+#~ "topmost node of the Info hierarchy, called (dir)Top.\n"
+#~ "The first time you invoke Info you start off looking at this node.\n"
+#~ "\n"
+#~ "%s\tThis is the top of the INFO tree\n"
+#~ "\n"
+#~ "  This (the Directory node) gives a menu of major topics.\n"
+#~ "  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
+#~ "  \"h\" gives a primer for first-timers,\n"
+#~ "  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
+#~ "\n"
+#~ "  In Emacs, you can click mouse button 2 on a menu item or cross "
+#~ "reference\n"
+#~ "  to select it.\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "這是檔案 .../info/dir, 裡面包含有 Info 選單架構中最上層的節點,\n"
+#~ "稱為 (dir) TOP.\n"
+#~ "您第一次執行 Info 時, 您會從這裡開始搜尋所須的節點.\n"
+#~ "\n"
+#~ "%s\t這是 INFO 選單樹的最上層\n"
+#~ "\n"
+#~ "  這裡 (Directory 節點) 提供主要項目的選單.\n"
+#~ "  鍵入 \"q\" 離開, \"?\" 列出所有的 Info 指令, \"d\" 回到這裡,\n"
+#~ "  \"h\" 觀看給初次使用者的入門指引,\n"
+#~ "  \"mEmacs<Return>\" 可觀看 Emacs 手冊, 等等.\n"
+#~ "\n"
+#~ "  在 Emacs 中, 您可以在選單項目或交互參照上, 單擊滑鼠的第 2 鍵\n"
+#~ "  以選擇它們.\n"
+#~ "\n"
+#~ "* Menu:\n"
+
+#~ msgid "%s: could not read (%s) and could not create (%s)\n"
+#~ msgstr "%s: 無法讀取 (%s), 而且無法建立 (%s)\n"
+
+#~ msgid "%s: empty file"
+#~ msgstr "%s: 空檔案"
+
+#~ msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
+#~ msgstr "有 START-INFO-DIR-ENTRY, 但是沒有相對應的 END-INFO-DIR-ENTRY"
+
+#~ msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
+#~ msgstr "有 END-INFO-DIR-ENTRY, 但是沒有相對應的 START-INFO-DIR-ENTRY"
+
+#~ msgid "%s: Specify the Info file only once.\n"
+#~ msgstr "%s: 只有指定 Info 檔案一次.\n"
+
+#~ msgid "excess command line argument `%s'"
+#~ msgstr "多餘的命令列引數 `%s'"
+
+#~ msgid "No input file specified; try --help for more information."
+#~ msgstr "未指定輸入檔案; 試試 --help 以取得更多的資訊."
+
+#~ msgid "No dir file specified; try --help for more information."
+#~ msgstr "未指定 dir 檔案; 試試 --help 以取得取多的資訊."
+
+#~ msgid "no info dir entry in `%s'"
+#~ msgstr "`%s' 內沒有 info dir 項目"
+
+#~ msgid "no entries found for `%s'; nothing deleted"
+#~ msgstr "找不到 `%s' 的項目; 未刪除任何項目"
+
+#~ msgid "January"
+#~ msgstr "一月"
+
+#~ msgid "February"
+#~ msgstr "二月"
+
+#~ msgid "March"
+#~ msgstr "三月"
+
+#~ msgid "April"
+#~ msgstr "四月"
+
+#~ msgid "May"
+#~ msgstr "五月"
+
+#~ msgid "June"
+#~ msgstr "六月"
+
+#~ msgid "July"
+#~ msgstr "七月"
+
+#~ msgid "August"
+#~ msgstr "八月"
+
+#~ msgid "September"
+#~ msgstr "九月"
+
+#~ msgid "October"
+#~ msgstr "十月"
+
+#~ msgid "November"
+#~ msgstr "十一月"
+
+#~ msgid "December"
+#~ msgstr "十二月"
+
+#~ msgid "@sc argument all uppercase, thus no effect"
+#~ msgstr "@sc 的引數全是大寫, 所以沒有作用"
+
+#~ msgid "Bad argument to %c%s"
+#~ msgstr "對 %c%s 無用的引數"
+
+#, fuzzy
+#~ msgid "Bad argument to @%s: %s"
+#~ msgstr "對 %c%s 無用的引數"
+
+#, fuzzy
+#~ msgid "Macro"
+#~ msgstr "三月"
+
+#, fuzzy
+#~ msgid "Variable"
+#~ msgstr "設定變數: "
+
+#, fuzzy
+#~ msgid "User Option"
+#~ msgstr "插入完成句"
+
+#, fuzzy
+#~ msgid "Instance Variable"
+#~ msgstr "描述變數: "
+
+#~ msgid "%s: getwd: %s, %s\n"
+#~ msgstr "%s: getwd: %s, %s\n"
+
+#~ msgid "`%c%s' needs an argument `{...}', not just `%s'"
+#~ msgstr "`%c%s' 必須包含引數 `{...}', 而不是只有 `%s'"
+
+#~ msgid "No closing brace for footnote `%s'"
+#~ msgstr "註腳 `%s' 沒有右大括號"
+
+#, fuzzy
+#~ msgid "Footnotes inside footnotes are not allowed"
+#~ msgstr "定義註腳, 但是沒有父節點"
+
+#~ msgid "Footnotes"
+#~ msgstr "註腳"
+
+#, fuzzy
+#~ msgid "[unexpected] invalid node name: `%s'"
+#~ msgstr "%s: 未知的選項 `%c%s'\n"
+
+#~ msgid "Unknown index `%s' and/or `%s' in @synindex"
+#~ msgstr "@synindex 中有未知的索引 `%s' 與/或 `%s'"
+
+#~ msgid "(outside of any node)"
+#~ msgstr "(不在任何的節點內)"
+
+#~ msgid "%s requires letter or digit"
+#~ msgstr "%s 必須要有字元或是數字"
+
+#~ msgid "@detailmenu seen before first node, creating `Top' node"
+#~ msgstr "在第一個節點之前出現 @detailmenu, 將建立 `Top' 節點"
+
+#, fuzzy
+#~ msgid "@%s not meaningful outside `@titlepage' environment"
+#~ msgstr "@%s 在 `@%s' 區塊之內, 並不具有意義"
+
+#~ msgid "Unmatched `%c%s'"
+#~ msgstr "未配對的 `%c%s'"
+
+#~ msgid "`%c%s' needs something after it"
+#~ msgstr "在 `%c%s' 之後必須要有東西"
+
+#, fuzzy
+#~ msgid "Bad argument `%s' to `@%s', using `%s'"
+#~ msgstr "對 %c%s 無用的引數"
+
+#~ msgid "@itemx not meaningful inside `%s' block"
+#~ msgstr "`%s' 區塊之內, @itemx 並無意義"
+
+#~ msgid "mismatched @end %s with @%s"
+#~ msgstr "@end %s 與 @%s 不符合"
+
+#~ msgid "%s: %s arg must be numeric, not `%s'.\n"
+#~ msgstr "%s: %s 引數必須為數值, 而不是 `%s'.\n"
+
+#~ msgid "Expected `%s'"
+#~ msgstr "Expected `%s'"
+
+#~ msgid "No `%s' found in `%s'"
+#~ msgstr "`%s' 未出現在 `%s' 內"
+
+#~ msgid ""
+#~ "%s: Removing macro output file `%s' due to errors; use --force to "
+#~ "preserve.\n"
+#~ msgstr ""
+#~ "%s: 因為錯誤, 移除巨集輸出檔 `%s'; 若要保存它, 請使用 --force 選項.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "%s: Removing internal links output file `%s' due to errors; use --force "
+#~ "to preserve.\n"
+#~ msgstr "%s: 因為錯誤, 移除輸出檔 `%s'; 若要保存它, 請使用 --force 選項.\n"
+
+#~ msgid "Unmatched }"
+#~ msgstr "未配對的 }"
+
+#~ msgid "NO_NAME!"
+#~ msgstr "NO_NAME!"
+
+#~ msgid "This is %s, produced by makeinfo version %s from %s.\n"
+#~ msgstr "這是 %s, 由 makeinfo 版本 %s 自 %s 產生的.\n"
+
+#, fuzzy
+#~ msgid "No such file `%s'"
+#~ msgstr "`%s' 未出現在 `%s' 內"
+
+#, fuzzy
+#~ msgid "@image file `%s' (for text) unreadable: %s"
+#~ msgstr "@image 檔案 `%s' 無法讀取: %s"
+
+#~ msgid "@image missing filename argument"
+#~ msgstr "@image 沒有檔名引數"
+
+#~ msgid "Missing } in @multitable template"
+#~ msgstr "在 @multitable 樣版中, 沒有 }"
+
+#, fuzzy
+#~ msgid "[unexpected] cannot select column #%d in multitable"
+#~ msgstr "無法選取 multitable 中的欄位 #%d"
+
+#~ msgid "* column #%d: output = %s\n"
+#~ msgstr "* 欄位 #%d: 輸出 = %s\n"
+
+#~ msgid "Formatting node %s...\n"
+#~ msgstr "編排節點 %s 的格式中...\n"
+
+#, fuzzy
+#~ msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
+#~ msgstr "節點 `%s' 必須使用分段命令 (sectioning command) (例如: %c%s)"
+
+#~ msgid "No node name specified for `%c%s' command"
+#~ msgstr "`%c%s' 命令中未指定節點名稱"
+
+#~ msgid "Next:"
+#~ msgstr "下一個:"
+
+#~ msgid "Previous:"
+#~ msgstr "上一個:"
+
+#~ msgid "Up:"
+#~ msgstr "上一層:"
+
+#, fuzzy
+#~ msgid ""
+#~ "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
+#~ msgstr "%s 參照到不存在的節點: `%s'"
+
+#~ msgid "Menu"
+#~ msgstr "目錄"
+
+#~ msgid "This node (%s) has the bad Prev"
+#~ msgstr "本節點 (%s) 的 前一個 (Prev) 節點有問題"
+
+#~ msgid "Prev"
+#~ msgstr "前一個"
+
+#~ msgid "This node (%s) has the bad Next"
+#~ msgstr "本節點 (%s) 的 下一個 (Next) 節點有問題"
+
+#~ msgid "Up"
+#~ msgstr "上一層"
+
+#, fuzzy
+#~ msgid "Can't remove file `%s': %s"
+#~ msgstr "無法建立輸出檔案 `%s'."
+
+#, fuzzy
+#~ msgid "Internal error (search_sectioning) `%s'!"
+#~ msgstr "內部錯誤 (search_sectioning) \"%s\"!"
+
+#~ msgid "Internal error (search_sectioning) \"%s\"!"
+#~ msgstr "內部錯誤 (search_sectioning) \"%s\"!"
+
+#~ msgid "%c%s is obsolete; use %c%s instead"
+#~ msgstr "%c%s 已廢棄不用; 請改用 %c%s"
+
+#, fuzzy
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "本節點沒有交互參照."
+
+#~ msgid "display this help and exit"
+#~ msgstr "顯示求助資訊, 然後離開"
+
+#~ msgid "send output to FILE"
+#~ msgstr "將輸出送至 FILE"
+
+#~ msgid "display version information and exit"
+#~ msgstr "顯示版本資訊, 然後離開"
+
+#~ msgid "Usage: %s [OPTION]... FILE...\n"
+#~ msgstr "用法: %s [OPTION]... FILE...\n"
+
+#~ msgid "Generate a sorted index for each TeX output FILE.\n"
+#~ msgstr "為每個 TeX 輸出 FILE 產生一個排序的索引.\n"
+
+#~ msgid ""
+#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+#~ msgstr "通常文件 `foo.texi' 的 FILE... 引數會指定為 `foo.%c%c'.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Options:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "選項:\n"
+
+#~ msgid "failure reopening %s"
+#~ msgstr "重新開啟 %s 時發生錯誤"
+
+#~ msgid "%s: not a texinfo index file"
+#~ msgstr "%s: 不是一個 texinfo 索引檔"
+
+#~ msgid "No page number in %s"
+#~ msgstr "在 %s 中沒有頁碼"
+
+#, fuzzy
+#~ msgid "Appendix %c"
+#~ msgstr "附錄 %c"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[search]  Search forward for a specified string\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr "              並且選擇下一個搜尋到的字串所在的節點.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[goto-node]  Move to node specified by name.\n"
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr "              您也可以包含檔名, 如: (檔名)節點名.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[next-node]  Move to the next node of current section.\n"
+#~ msgstr "  %-10s  移至本節點的 '下一個 (next)' 節點.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
+#~ "node] (DIR)'.\n"
+#~ msgstr "  %-10s  移至 `directory' 節點.  同 `g (DIR)'.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] "
+#~ "Top'.\n"
+#~ msgstr "  %-10s  移至 Top 節點.  同 `g TOP'.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-forward-page-only]  Scroll forward within this node.\n"
+#~ msgstr "  %-10s  往前捲動一行.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[scroll-backward-page-only]  Scroll backward within this node.\n"
+#~ msgstr "  %-10s  往後捲動一行.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[search-backward]  Search backward for a specified string\n"
+#~ "              and select the node in which the previous occurrence is "
+#~ "found.\n"
+#~ msgstr "              並且選擇下一個搜尋到的字串所在的節點.\n"
+
+#~ msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
+#~ msgstr "--- 使用 `\\[history-node]' 或 `\\[kill-node]' 離開---\n"
+
+#, fuzzy
+#~ msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
+#~ msgstr "  %-10s  跳到本節點中的下一個超本文連結.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [MENU-ITEM...]\n"
+#~ "\n"
+#~ "Read documentation in Info format.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "      --apropos=STRING         look up STRING in all indices of all "
+#~ "manuals.\n"
+#~ "  -d, --directory=DIR          add DIR to INFOPATH.\n"
+#~ "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
+#~ "  -f, --file=FILENAME          specify Info file to visit.\n"
+#~ "  -h, --help                   display this help and exit.\n"
+#~ "      --index-search=STRING    go to node pointed by index entry STRING.\n"
+#~ "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
+#~ "  -o, --output=FILENAME        output selected nodes to FILENAME.\n"
+#~ "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
+#~ "      --no-raw-escapes         output escapes as literal text.\n"
+#~ "      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
+#~ "  -O, --show-options, --usage  go to command-line options node.\n"
+#~ "%s      --subnodes               recursively output menu items.\n"
+#~ "  -w, --where, --location      print physical location of Info file.\n"
+#~ "      --vi-keys                use vi-like and less-like key bindings.\n"
+#~ "      --version                display version information and exit.\n"
+#~ "\n"
+#~ "The first non-option argument, if present, is the menu entry to start "
+#~ "from;\n"
+#~ "it is searched for in all `dir' files along INFOPATH.\n"
+#~ "If it is not present, info merges all `dir' files and shows the result.\n"
+#~ "Any remaining arguments are treated as the names of menu\n"
+#~ "items relative to the initial node visited.\n"
+#~ "\n"
+#~ "Examples:\n"
+#~ "  info                       show top-level dir menu\n"
+#~ "  info emacs                 start at emacs node from top-level dir\n"
+#~ "  info emacs buffers         start at buffers node within emacs manual\n"
+#~ "  info --show-options emacs  start at node with emacs' command line "
+#~ "options\n"
+#~ "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
+#~ "  info -f ./foo.info         show file ./foo.info, not searching dir\n"
+#~ msgstr ""
+#~ "用法: %s [OPTION]... [MENU-ITEM...]\n"
+#~ "\n"
+#~ "閱讀 Info 格式的文件.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ " --apropos=SUBJECT        在所有的手冊的索引中尋找 SUBJECT.\n"
+#~ " --directory=DIR          將 DIR 加至 INFOPATH 中.\n"
+#~ " --dribble=FILENAME       將使用者的按鍵記錄在 FILENAME 中.\n"
+#~ " --file=FILENAME          指定拜訪的 Info 檔案.\n"
+#~ " --help                   顯示本求助資訊, 然後離開.\n"
+#~ " --index-search=STRING    跳至索引項目 STRING 所指向的節點.\n"
+#~ " --node=NODENAME          指定第一個拜訪的 Info 檔案中的節點.\n"
+#~ " --output=FILENAME        將選擇的節點輸出至檔案 FILENAME.\n"
+#~ " --restore=FILENAME       自檔案 FILENAME 讀取初始的按鍵.\n"
+#~ " --show-options, --usage  跳至命令列選項的節點.\n"
+#~ " --subnodes               以遞迴方式輸出選單項目.\n"
+#~ "%s --vi-keys                使用類似 vi 與 less 的按鍵方式.\n"
+#~ " --version                顯示版本資訊, 然後結束.\n"
+#~ "\n"
+#~ "如果有非選項的引數, 第一個非選項的引數是開始的選單項目;\n"
+#~ "它會被用來當作在 INFOPATH 內的所有 dir 檔案的搜尋標的.\n"
+#~ "如果沒有的話, info 會統合所有的 dir 檔案, 然後顯示結果.\n"
+#~ "剩下的引數會被當作相對於最初拜訪節點的選單項目的名稱.\n"
+#~ "\n"
+#~ "範例:\n"
+#~ "  info                       顯示最上層的選單\n"
+#~ "  info emacs                 以最上層中的 emacs 節點作為起點\n"
+#~ "  info emacs buffers         以 emacs 手冊中的 buffers 節點作為起點\n"
+#~ "  info --show-options emacs  以介紹 emacs 的執行選項的節點作為起點\n"
+#~ "  info -f ./foo.info         顯示檔案 ./foo.info, 不搜尋目錄\n"
+#~ "\n"
+#~ "程式臭蟲, 請以電子郵件 (英文) 回報至 bug-texinfo@gnu.org,\n"
+#~ "一般問題與討論, 請以電子郵件 (英文) 寄到 help-texinfo@gnu.org.\n"
+
+#~ msgid ""
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr "              選取選單項目以選擇另一個節點.\n"
+
+#~ msgid ""
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr "              您也可以包含檔名, 如: (檔名)節點名.\n"
+
+#, fuzzy
+#~ msgid "  %-10s  Search backward for a specified string\n"
+#~ msgstr "  %-10s  在本 Info 檔中, 向後搜尋一個指定的字串,\n"
+
+#~ msgid ""
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr "              並且選擇下一個搜尋到的字串所在的節點.\n"
+
+#~ msgid "Following Next node..."
+#~ msgstr "跟隨下一個節點..."
+
+#~ msgid "Selecting first menu item..."
+#~ msgstr "選取第一個選單項目..."
+
+#~ msgid "Selecting Next node..."
+#~ msgstr "選取下一個節點..."
+
+#~ msgid "Moving Up %d time(s), then Next."
+#~ msgstr "往上一層移動 %d 次, 然後往下一個方向移動."
+
+#~ msgid "Moving Prev in this window."
+#~ msgstr "向本分隔視窗的 上一個 (Prev) 節點移動."
+
+#~ msgid "Moving Up in this window."
+#~ msgstr "向本分隔視窗的上一層節點移動."
+
+#~ msgid "Moving to `Prev's last menu item."
+#~ msgstr "移至前一個節點的最後一個目錄項目."
+
+#~ msgid " "
+#~ msgstr " "
+
+#, fuzzy
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+#~ "\n"
+#~ "Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ " --debug           report what is being done.\n"
+#~ " --delete          delete existing entries for INFO-FILE from DIR-FILE;\n"
+#~ "                     don't insert any new entries.\n"
+#~ " --dir-file=NAME   specify file name of Info directory file.\n"
+#~ "                     This is equivalent to using the DIR-FILE argument.\n"
+#~ " --entry=TEXT      insert TEXT as an Info directory entry.\n"
+#~ "                     TEXT should have the form of an Info menu item line\n"
+#~ "                     plus zero or more extra lines starting with "
+#~ "whitespace.\n"
+#~ "                     If you specify more than one entry, they are all "
+#~ "added.\n"
+#~ "                     If you don't specify any entries, they are "
+#~ "determined\n"
+#~ "                     from information in the Info file itself.\n"
+#~ " --help            display this help and exit.\n"
+#~ " --info-file=FILE  specify Info file to install in the directory.\n"
+#~ "                     This is equivalent to using the INFO-FILE argument.\n"
+#~ " --info-dir=DIR    same as --dir-file=DIR/dir.\n"
+#~ " --item=TEXT       same as --entry TEXT.\n"
+#~ "                     An Info directory entry is actually a menu item.\n"
+#~ " --quiet           suppress warnings.\n"
+#~ " --remove          same as --delete.\n"
+#~ " --remove-exactly  only remove if the info file name matches exactly;\n"
+#~ "                     .info and/or .gz suffixes are not ignored.\n"
+#~ " --section=SEC     put this file's entries in section SEC of the "
+#~ "directory.\n"
+#~ "                     If you specify more than one section, all the "
+#~ "entries\n"
+#~ "                     are added in each of the sections.\n"
+#~ "                     If you don't specify any sections, they are "
+#~ "determined\n"
+#~ "                     from information in the Info file itself.\n"
+#~ " --section-regex=R if an entry is added to a section that does not "
+#~ "exist,\n"
+#~ "                     look for a section matching basic regular expression "
+#~ "R\n"
+#~ "                     (and ignoring case) before starting a new section.\n"
+#~ " --test            suppress updating of DIR-FILE.\n"
+#~ " --silent          suppress warnings.\n"
+#~ " --version         display version information and exit.\n"
+#~ msgstr ""
+#~ "用法: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+#~ "\n"
+#~ "自 Info 目錄檔案 DIR-FILE 的 INFO-FILE 中, 安裝或移除 dir 項目.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ " --delete          自 DIR-FILE 中, 刪除現有的 INFO-FILE 項目;\n"
+#~ "                     不新增任何新的項目.\n"
+#~ " --dir-file=NAME   指定 Info 目錄檔案的檔案名稱.\n"
+#~ "                     本選項與使用 DIR-FILE 引數相同.\n"
+#~ " --entry=TEXT      以 TEXT 作為 Info directory 項目.\n"
+#~ "                     TEXT 應該與 Info 目錄項目的寫法有相同格式\n"
+#~ "                     再加上零個以上的以空白字元開始的資料行.\n"
+#~ "                     如果您指定超過一個以上的項目, 它們全都會被加進去.\n"
+#~ "                     如果您沒有指定任何的項目, 它們會以 Info 檔案中的\n"
+#~ "\t\t      資訊來決定.\n"
+#~ " --help            顯示求助資訊, 然後離開.\n"
+#~ " --info-file=FILE  指定要安裝在目錄中的 Info 檔案.\n"
+#~ "                     本選項與使用 INFO-FILE 引數相同.\n"
+#~ " --info-dir=DIR    與 --dir-file=DIR/dir 相同.\n"
+#~ " --item=TEXT       與 --entry TEXT 相同.\n"
+#~ "                     一個 Info directory 項目其實就是一個選單項目.\n"
+#~ " --quiet           不顯示警告訊息.\n"
+#~ " --remove          與 --delete 相同.\n"
+#~ " --section=SEC     將本檔案的項目放在目錄中的 SEC 節.\n"
+#~ "                     如果您指定超過一個以上的節, 所有的項目都會\n"
+#~ "\t\t      新增在每一個節內.\n"
+#~ "                     如果您沒有指定任何的節, 它們會以 Info 檔案中的\n"
+#~ "                     資訊來決定.\n"
+#~ " --version         顯示版本資訊, 然後離開.\n"
+#~ "\n"
+#~ "程式臭蟲, 請以電子郵件 (英文) 回報至 bug-texinfo@gnu.org,\n"
+#~ "一般問題與討論, 請以電子郵件 (英文) 寄到 help-texinfo@gnu.org.\n"
+
+#~ msgid "menu item `%s' already exists, for file `%s'"
+#~ msgstr "目錄項目 `%s' 已存在, 是給檔案 `%s' 的"
+
+#, fuzzy
+#~ msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
+#~ msgstr "  %-10s  挑選節點目錄中的第一個...第九個項目.\n"
+
+#~ msgid "node `%s' has been referenced %d times"
+#~ msgstr "節點 `%s' 已被參照 %d 次"
+
+#, fuzzy
+#~ msgid ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"
+#~ "PARTICULAR PURPOSE.  You may redistribute copies of GNU %s\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the file named COPYING.\n"
+#~ msgstr ""
+#~ "Copyright (C) %s 自由軟體基金會 Free Software Foundation, Inc.\n"
+#~ "本軟體*不作任何保證*. 您可在 GNU 公共授權 \n"
+#~ "(GNU General Public License) 的條款下散佈本軟體.\n"
+#~ "欲知更多的詳情, 請看檔名為 COPYING 的檔案.\n"
+
+#~ msgid "@quote-arg only useful for single-argument macros"
+#~ msgstr "@quote-arg 只在單一引數的巨集有用"
+
+#~ msgid "keep temporary files around after processing"
+#~ msgstr "處理完畢後, 不移除暫存檔"
+
+#~ msgid "do not keep temporary files around after processing (default)"
+#~ msgstr "處理完畢後, 移除暫存檔 (預設值)"
+
+#~ msgid ""
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr "              並且選擇第一個搜尋到的項目所參照的節點.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "There is NO warranty.  You may redistribute this software\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the files named COPYING.\n"
+#~ msgstr ""
+#~ "Copyright (C) %s 自由軟體基金會 Free Software Foundation, Inc.\n"
+#~ "本軟體*不作任何保證*. 您可在 GNU 公共授權 \n"
+#~ "(GNU General Public License) 的條款下散佈本軟體.\n"
+#~ "欲知更多的詳情, 請看檔名為 COPYING 的檔案.\n"
+
+#~ msgid "%s: Specify the Info directory only once.\n"
+#~ msgstr "%s: 只有指定 Info 目錄一次.\n"
+
+#~ msgid "\"\" is invalid"
+#~ msgstr "\"\" 不合法"
+
+#, fuzzy
+#~ msgid "%s is an invalid ISO code, using %c"
+#~ msgstr "%s 不是一個合法的 ISO 639 語言碼"
+
+#~ msgid "Node:"
+#~ msgstr "節點:"
+
+#~ msgid "`%s' has no Up field"
+#~ msgstr "`%s' 沒有 上一層 (Up) 欄位"
+
+#, fuzzy
+#~ msgid ""
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org."
+#~ msgstr ""
+#~ "\n"
+#~ "程式臭蟲, 請以電子郵件 (英文) 回報至 bug-texinfo@gnu.org,\n"
+#~ "一般問題與討論, 請以電子郵件 (英文) 寄到 help-texinfo@gnu.org.\n"
+
+#~ msgid "Basic Commands in Info Windows\n"
+#~ msgstr "Info 分隔視窗內的基本指令\n"
+
+#~ msgid "Moving within a node:\n"
+#~ msgstr "在節點內移動:\n"
+
+#~ msgid "Selecting other nodes:\n"
+#~ msgstr "選擇其它的節點:\n"
+
+#~ msgid "Other commands:\n"
+#~ msgstr "其它指令:\n"
+
+#~ msgid ""
+#~ "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+#~ "\n"
+#~ "Translate Texinfo source documentation to various other formats:\n"
+#~ "Info files suitable for reading online with Emacs or standalone GNU Info\n"
+#~ "(by default); plain text (with --no-headers); or HTML (with --html).\n"
+#~ "\n"
+#~ "Options:\n"
+#~ " --commands-in-node-names  allow @ commands in node names.\n"
+#~ " -D VAR                    define a variable, as with @set.\n"
+#~ " -E, --macro-expand FILE   output macro-expanded source to FILE.\n"
+#~ " --error-limit=NUM         quit after NUM errors (default %d).\n"
+#~ " --fill-column=NUM         break Info lines at NUM characters (default %"
+#~ "d).\n"
+#~ " --footnote-style=STYLE    output footnotes according to STYLE:\n"
+#~ "                            `separate' to place footnotes in their own "
+#~ "node,\n"
+#~ "                            `end' to place the footnotes at the end of "
+#~ "the\n"
+#~ "                             node in which they are defined (the "
+#~ "default).\n"
+#~ " --force                   preserve output even if errors.\n"
+#~ " --help                    display this help and exit.\n"
+#~ " --html                    output HTML rather than Info format;\n"
+#~ " -I DIR                    append DIR to the @include search path.\n"
+#~ " --ifhtml                  process @ifhtml and @html text even when not\n"
+#~ "                             generating HTML.\n"
+#~ " --ifinfo                  process @ifinfo text even when generating "
+#~ "HTML.\n"
+#~ " --iftex                   process @iftex and @tex text.\n"
+#~ "                             implies --no-split.\n"
+#~ msgstr ""
+#~ "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+#~ "\n"
+#~ "將 Texinfo 的原始碼文件轉換至其它的格式:\n"
+#~ "Info 檔適合以 Emacs 或是獨立的 GNU Info 程式作線上讀取 (預設);\n"
+#~ "純文字 (使用 --no-headers 選項); 或 HTML (使用 --html 選項).\n"
+#~ "\n"
+#~ "選項:\n"
+#~ " --commands-in-node-names  允許節點名稱中使用 @ 命令.\n"
+#~ " -D VAR                    如同 @set 一般定義一個變數.\n"
+#~ " -E, --macro-expand FILE   將已展開巨集的原始碼輸出至檔案 FILE.\n"
+#~ " --error-limit=NUM         在 NUM 個錯誤後結束 (預設值為 %d).\n"
+#~ " --fill-column=NUM         每行在 NUM 個字元處斷行 (預設值為 %d).\n"
+#~ " --footnote-style=STYLE    以 STYLE 方式輸出註腳:\n"
+#~ "                            `separate' 是將註腳放置在它們自己的節點,\n"
+#~ "                            `end' 是將註腳放置在它們被定義的節點\n"
+#~ "                             的尾端 (預設值).\n"
+#~ " --force                   即使有錯誤產生, 也維持輸出.\n"
+#~ " --help                    顯示求助資訊, 然後離開.\n"
+#~ " --html                    輸出 HTML 格式, 而非 Info;\n"
+#~ " -I DIR                    將 DIR 加在 @include 搜尋路徑之後.\n"
+#~ " --ifhtml                  即使不輸出 HTML 格式, 也一併處理 @ifhtml\n"
+#~ "                             與 @html 文字.\n"
+#~ " --ifinfo                  即使輸出 HTML, 也一併處理 @ifinfo 文字\n"
+#~ " --iftex                   處理 @iftex 與 @tex 文字.\n"
+#~ "                             隱含 --no-split 選項.\n"
+
+#~ msgid ""
+#~ " --no-headers              suppress Info node separators and Node: lines "
+#~ "and\n"
+#~ "                             write to standard output without --output.\n"
+#~ " --no-ifhtml               do not process @ifhtml and @html text.\n"
+#~ " --no-ifinfo               do not process @ifinfo text.\n"
+#~ " --no-iftex                do not process @iftex and @tex text.\n"
+#~ " --no-split                suppress splitting of large Info output files "
+#~ "or\n"
+#~ "                           generation of one HTML file per node.\n"
+#~ " --no-validate             suppress node cross-reference validation.\n"
+#~ " --no-warn                 suppress warnings (but not errors).\n"
+#~ " --number-sections         include chapter, section, etc. numbers in "
+#~ "output.\n"
+#~ " -o, --output=FILE         output to FILE, ignoring any @setfilename.\n"
+#~ " -P DIR                    prepend DIR to the @include search path.\n"
+#~ " --paragraph-indent=VAL    indent Info paragraphs by VAL spaces (default %"
+#~ "d).\n"
+#~ "                             if VAL is `none', do not indent;\n"
+#~ "                             if VAL is `asis', preserve existing "
+#~ "indentation.\n"
+#~ " --reference-limit=NUM     warn about at most NUM references (default %"
+#~ "d).\n"
+#~ " -U VAR                    undefine a variable, as with @clear.\n"
+#~ " -v, --verbose             explain what is being done.\n"
+#~ " --version                 display version information and exit.\n"
+#~ msgstr ""
+#~ " --no-headers              不產生 Info 節點分隔線與 節點: 行, 以及\n"
+#~ "                             未指定 --output 時, 輸出至標準輸出設備.\n"
+#~ " --no-ifhtml               不處理 @ifhtml 與 @html  文字.\n"
+#~ " --no-ifinfo               不處理 @ifinfo 文字.\n"
+#~ " --no-iftex                不處理 @iftex 與 @tex 文字.\n"
+#~ " --no-split                不分割大的 Info 輸出檔案, 也不一個節點\n"
+#~ "                           就產生一個 HTML 檔案\n"
+#~ " --no-validate             不對節點的交互參照作有效檢查.\n"
+#~ " --no-warn                 不顯示警告 (但是不包括錯誤).\n"
+#~ " --number-sections         在輸出時顯示章節等的編號.\n"
+#~ " -o, --output=FILE         輸出至檔案 FILE, 忽略任何的 @setfilename 設"
+#~ "定.\n"
+#~ " -P DIR                    將 DIR 加在 @include 搜尋路徑之前.\n"
+#~ " --paragraph-indent=VAL    將 Info 段落縮排 VAL 個空白 (預設值為 %d).\n"
+#~ "                             如果 VAL 為 `none', 不作縮排;\n"
+#~ "                             如果 VAL 為 `asis', 保留目前的 縮排.\n"
+#~ " --reference-limit=NUM     最多警告 NUM 個參照 (預設值為 %d).\n"
+#~ " -U VAR                    取消變數的定義, 如同 @clear.\n"
+#~ " -v, --verbose             解釋目前正在作的事.\n"
+#~ " --version                 顯示版本資訊, 然後結束.\n"
+
+#~ msgid "No .png or .jpg for `%s'"
+#~ msgstr "沒有給 `%s' 的 .png 或 .jpg"

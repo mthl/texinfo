@@ -1,0 +1,2941 @@
+# Mesajele în limba românã pentru texinfo.
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# Acest fiºier este distribuit sub aceeaºi licenþã ca ºi pachetul texinfo.
+# Laurentiu Buzdugan <lbuz@rolix.org>, 2003, 2004, 2005.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: texinfo 4.7.94\n"
+"Report-Msgid-Bugs-To: texi2html-bug@nongnu.org\n"
+"POT-Creation-Date: 2009-11-08 16:40+0100\n"
+"PO-Revision-Date: 2005-05-03 12:00+05\n"
+"Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
+"Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: texi2html.pl:2259
+#, perl-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Încercaþi `%s --help' pentru informaþii suplimentare.\n"
+
+#: texi2html.pl:2368
+#, fuzzy, perl-format
+msgid "%s is not a valid language code"
+msgstr "%s nu este un cod de limbã valid conform ISO 639"
+
+#: texi2html.pl:2372
+#, fuzzy, perl-format
+msgid "%s is not a valid region code"
+msgstr "%s nu este un cod de limbã valid conform ISO 639"
+
+#: texi2html.pl:2458
+#, perl-format
+msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgstr ""
+"%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
+
+#: texi2html.pl:2463
+#, fuzzy, perl-format
+msgid "@%s arg must be `separate' or `end', not `%s'"
+msgstr ""
+"%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
+
+#: texi2html.pl:2481
+#, perl-format
+msgid "unrecognized encoding name `%s'"
+msgstr "nume de codare nerecunoscut `%s'"
+
+#: texi2html.pl:2496
+msgid "Document encoding is utf8, but there is no unicode support"
+msgstr ""
+
+#: texi2html.pl:2499
+#, fuzzy, perl-format
+msgid "Encoding %s certainly poorly supported"
+msgstr "ne pare rãu, codarea `%s' nu este suportatã"
+
+#: texi2html.pl:2518 texi2html.pl:2592
+msgid "translation"
+msgstr ""
+
+#: texi2html.pl:2750
+#, perl-format
+msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgstr ""
+"%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
+
+#: texi2html.pl:2754
+#, fuzzy, perl-format
+msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
+msgstr ""
+"%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
+
+#: texi2html.pl:3612
+#, perl-format
+msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+msgstr "Folosire: %s [OPÞIUNE]... FIªIER-TEXINFO...\n"
+
+#: texi2html.pl:3614
+msgid ""
+"Translate Texinfo source documentation to various other formats, by default\n"
+"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
+msgstr ""
+"Translateazã documentaþia sursã Texinfo în diferite alte formate, implicit\n"
+"fiºiere Info potrivite pentru citit online cu Emacs sau GNU Info.\n"
+
+#: texi2html.pl:3617
+#, fuzzy, perl-format
+msgid ""
+"General options:\n"
+"      --error-limit=NUM       quit after NUM errors (default %d).\n"
+"      --document-language=STR locale to use in translating Texinfo keywords\n"
+"                                for the output document (default C).\n"
+"      --force                 preserve output even if errors.\n"
+"      --help                  display this help and exit.\n"
+"      --no-validate           suppress node cross-reference validation.\n"
+"      --no-warn               suppress warnings (but not errors).\n"
+"  -v, --verbose               explain what is being done.\n"
+"      --version               display version information and exit.\n"
+msgstr ""
+"General options:\n"
+"      --error-limit=NUM       terminã dupã NUM erori (implicit %d).\n"
+"      --force                 pãstreazã ieºire echiar ºi dacã sunt erori.\n"
+"      --help                  afiºeazã acest mesaj ºi terminã.\n"
+"      --no-validate           eliminã validarea referinþelor.\n"
+"      --no-warn               eliminã avertismentele (dar nu erorile).\n"
+"      --reference-limit=NUM   avertizeazã despre cel mult NUM referinþe "
+"(implicit %d).\n"
+"  -v, --verbose               explicã ce se executã.\n"
+"      --version               afiºeazã informaþii despre versiune ºi "
+"terminã.\n"
+
+#: texi2html.pl:3628
+#, fuzzy
+msgid ""
+"Output format selection (default is to produce Info):\n"
+"      --docbook               output Docbook XML rather than Info.\n"
+"      --html                  output HTML rather than Info.\n"
+"      --xml                   output Texinfo XML rather than Info.\n"
+"      --plaintext             output plain text rather than Info.\n"
+msgstr ""
+"Selecþia formatului de ieºire (implicit este sã creeze Info):\n"
+"      --docbook             ieºire DocBook XML în loc de Info.\n"
+"      --html                ieºire HTML în loc de Info.\n"
+"      --xml                 ieºire Texinfo XML în loc de Info.\n"
+"      --plaintext           ieºire text simplu în loc de Info.\n"
+
+#: texi2html.pl:3634
+#, fuzzy
+msgid ""
+"General output options:\n"
+"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+"                                ignoring any @setfilename.\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output);\n"
+"                                also, write to standard output by default.\n"
+"      --no-split              suppress the splitting of Info or HTML "
+"output,\n"
+"                                generate only one output file.\n"
+"      --number-sections       output chapter and sectioning numbers.\n"
+"  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
+msgstr ""
+"Opþiuni de ieºire generale:\n"
+"  -E, --macro-expand FIªIER ieºire macro-expandatã în FIªIER.\n"
+"                            ignorînd orice @setfilename.\n"
+"      --no-headers          eliminã noduri separatoare, Nod: linii ºi "
+"meniuri\n"
+"                             din ieºire Info (producând text simplu)\n"
+"                             sau din HTML (producând ieºire mai scurtã);\n"
+"                             de asemenea, scrie implicit la ieºirea "
+"standard.\n"
+"      --no-split            eliminã împãrþirea ieºirii Info sau HTML,\n"
+"                            genereazã un singur fiºier de ieºire.\n"
+"      --number-sections     scrie numere de capitole ºi secþiuni.\n"
+"  -o, --output=FIªIER       scrie în FIªIER (director dacã multiple HTML),\n"
+
+#: texi2html.pl:3646
+#, fuzzy, perl-format
+msgid ""
+"Options for Info and plain text:\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %"
+"d).\n"
+"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
+"                                `separate' to put them in their own node;\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
+"d).\n"
+"                                If VAL is `none', do not indent; if VAL is\n"
+"                                `asis', preserve existing indentation.\n"
+"      --split-size=NUM        split Info files at size NUM (default %d).\n"
+msgstr ""
+"Options for Info and plain text:\n"
+"      --enable-encoding      genereazã caractere accentuate ºi speciale în\n"
+"                                ieºire Info bazat pe @documentencoding.\n"
+"      --fill-column=NUM      sparge liniile Info la NUM caractere (implicit %"
+"d).\n"
+"      --footnote-style=STIL  genereazã note de subsol în Info conform cu "
+"STIL:\n"
+"                                `separate' pentru a le pune in propriul lor "
+"nod;\n"
+"                                `end' pentru a le pune la sfârºitul nodului\n"
+"                                  în care sunt definite (implicit).\n"
+"      --paragraph-indent=VAL  precede paragrafele Info cu VAL spaþii "
+"(implicit %d).\n"
+"                                dacã VAL este `none', nu pune spaþii; dacã "
+"VAL\n"
+"                                este `asis', pãstrezã spaþiile existente.\n"
+"      --split-size=NUM        împarte fiºierele Info de dimens. NUM "
+"(implicit %d).\n"
+
+#: texi2html.pl:3661
+#, fuzzy
+msgid ""
+"Options for HTML:\n"
+"      --css-include=FILE      include FILE in HTML <style> output;\n"
+"                                read stdin if FILE is -.\n"
+"      --css-ref=URL           generate reference to a CSS file.\n"
+"      --internal-links=FILE   produce list of internal links in FILE.\n"
+"      --transliterate-file-names\n"
+"                              produce file names in ASCII transliteration.\n"
+msgstr ""
+"Opþiuni pentru HTML:\n"
+"      --css-include=FIªIER      include FIªIER în HTML <stil> ieºire;\n"
+"                                  citeºte stdin dacã FIªIER este -.\n"
+
+#: texi2html.pl:3674
+msgid ""
+"Input file options:\n"
+"      --commands-in-node-names  allow @ commands in node names.\n"
+"  -D VAR                        define the variable VAR, as with @set.\n"
+"  -I DIR                        append DIR to the @include search path.\n"
+"  -P DIR                        prepend DIR to the @include search path.\n"
+"  -U VAR                        undefine the variable VAR, as with @clear.\n"
+msgstr ""
+"Opþiuni fiºier de intrare:\n"
+"      --commands-in-node-names  permite comenzi @ în numele nodurilor.\n"
+"  -D VAR                        defineºte variabila VAR, ca ºi @set.\n"
+"  -I DIR                        adaugã DIR la calea de cãutare @include.\n"
+"  -P DIR                        prepend DIR la calea de cãutare @include.\n"
+"  -U VAR                        nedefineºte variabila VAR, ca ºi @clear.\n"
+
+#: texi2html.pl:3681
+msgid ""
+"Conditional processing in input:\n"
+"  --ifdocbook       process @ifdocbook and @docbook even if\n"
+"                      not generating Docbook.\n"
+"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
+"  --ifinfo          process @ifinfo even if not generating Info.\n"
+"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
+"  --iftex           process @iftex and @tex; implies --no-split.\n"
+"  --ifxml           process @ifxml and @xml.\n"
+"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
+"  --no-ifhtml       do not process @ifhtml and @html text.\n"
+"  --no-ifinfo       do not process @ifinfo text.\n"
+"  --no-ifplaintext  do not process @ifplaintext text.\n"
+"  --no-iftex        do not process @iftex and @tex text.\n"
+"  --no-ifxml        do not process @ifxml and @xml text.\n"
+"\n"
+"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
+msgstr ""
+"Procesare condiþionalã în intrare:\n"
+"  --ifdocbook       proceseazã @ifdocbook º @docbook chiar dacã\n"
+"                      nu generezi Docbook.\n"
+"  --ifhtml          proceseazã @ifhtml ºi @html chiar dacã nu generezi "
+"HTML.\n"
+"  --ifinfo          proceseazã @ifinfo chiar dacã nu generezi Info.\n"
+"  --ifplaintext     proceseazã @ifplaintext chiar dacã nu generezi text "
+"simplu.\n"
+"  --iftex           proceseazã @iftex ºi @tex; implicã --no-split.\n"
+"  --ifxml           proceseazã @ifxml ºi @xml.\n"
+"  --no-ifdocbook    nu procesa text @ifdocbook ºi @docbook.\n"
+"  --no-ifhtml       nu procesa text @ifhtml ºi @html.\n"
+"  --no-ifinfo       nu procesa text @ifinfo.\n"
+"  --no-ifplaintext  nu procesa text @ifplaintext.\n"
+"  --no-iftex        nu procesa text @iftex ºi @tex.\n"
+"  --no-ifxml        nu procesa text @ifxml ºi @xml.\n"
+"\n"
+"  De asemenea, pentru opþiunile --no-ifFORMAT, proceseazã text "
+"@ifnotFORMAT.\n"
+
+#: texi2html.pl:3698
+msgid ""
+"  The defaults for the @if... conditionals depend on the output format:\n"
+"  if generating HTML, --ifhtml is on and the others are off;\n"
+"  if generating Info, --ifinfo is on and the others are off;\n"
+"  if generating plain text, --ifplaintext is on and the others are off;\n"
+"  if generating XML, --ifxml is on and the others are off.\n"
+msgstr ""
+"  Valori implicite pentru condiþionalele @if... depind de formatul de "
+"ieºire:\n"
+"  dacã generaþi HTML, --ifhtml este selectat iar restul sunt deselectate;\n"
+"  dacã generaþi, --ifinfo este selectat iar restul sunt deselectate;\n"
+"  dacã generaþi text simplu, --ifplaintext este selectat iar restul sunt "
+"deselectate;\n"
+
+#: texi2html.pl:3704
+#, fuzzy
+msgid ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+msgstr ""
+"Exemple:\n"
+"  makeinfo foo.texi                     scrie Info în @setfilename-ul lui "
+"foo\n"
+"  makeinfo --html foo.texi              scrie HTML în @setfilename\n"
+"  makeinfo --xml foo.texi               scrie Texinfo XML în @setfilename\n"
+"  makeinfo --docbook foo.texi           scrie DocBook XML în @setfilename\n"
+"  makeinfo --no-headers foo.texi        scrie text simplu la ieºirea "
+"standard\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi scrie html fãrã linii de noduri, "
+"meniuri\n"
+"  makeinfo --number-sections foo.texi   scrie Info fãrã secþiuni numerotate\n"
+"  makeinfo --no-split foo.texi          scrie un singur fiºier Info "
+"indiferent cât de mare\n"
+
+#: texi2html.pl:3715
+#, fuzzy
+msgid ""
+"Email bug reports to bug-texinfo@gnu.org,\n"
+"general questions and discussion to help-texinfo@gnu.org.\n"
+"Texinfo home page: http://www.gnu.org/software/texinfo/"
+msgstr ""
+"\n"
+"Trimiteþi emailuri raportând bug-uri la bug-texinfo@gnu.org,\n"
+"întrebãri generale ºi discuþii la help-texinfo@gnu.org.\n"
+"Texinfo homepage: http://www.gnu.org/software/texinfo/"
+
+#: texi2html.pl:3794
+#, perl-format
+msgid ""
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
+msgstr ""
+
+#: texi2html.pl:3816
+#, perl-format
+msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
+msgstr "%s: Ignor valoare nerecunoscutã TEXINFO_OUTPUT_FORMAT `%s'.\n"
+
+#: texi2html.pl:4423
+#, perl-format
+msgid "Can't create directory `%s': %s"
+msgstr "Nu pot crea directorul `%s': %s"
+
+#: texi2html.pl:5140
+#, fuzzy, perl-format
+msgid "Node `%s' previously defined %s"
+msgstr "Nodul `%s' definit anterior la linia %d"
+
+#: texi2html.pl:5145 texi2html.pl:12622
+#, perl-format
+msgid "Syntax for an external node used for `%s'"
+msgstr ""
+
+#: texi2html.pl:5427 texi2html.pl:5438
+#, perl-format
+msgid "%c%s requires a name"
+msgstr "%c%s necesitã un nume"
+
+#: texi2html.pl:5503
+#, fuzzy, perl-format
+msgid "@exampleindent arg must be numeric/`asis', not `%s'"
+msgstr ""
+"%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
+
+#: texi2html.pl:5514
+#, perl-format
+msgid "Expected @%s on or off, not `%s'"
+msgstr ""
+
+#: texi2html.pl:5602
+#, perl-format
+msgid "Encoding %s is not a canonical texinfo encoding"
+msgstr ""
+
+#: texi2html.pl:5759
+#, fuzzy, perl-format
+msgid "Unknown from index `%s' in @%s"
+msgstr "Index necunoscut `%s'"
+
+#: texi2html.pl:5761
+#, fuzzy, perl-format
+msgid "Unknown to index name `%s' in @%s"
+msgstr "Index necunoscut `%s'"
+
+#: texi2html.pl:5796
+#, perl-format
+msgid "Reserved index name %s"
+msgstr ""
+
+#: texi2html.pl:5839
+#, perl-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
+msgstr ""
+
+#: texi2html.pl:5964
+#, perl-format
+msgid "@sp requires a positive numeric argument, not `%s'"
+msgstr "@sp necesitã un argument numeric pozitiv, nu `%s'"
+
+#: texi2html.pl:6701
+#, fuzzy, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "nod nereferit `%s'"
+
+#: texi2html.pl:6776
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr "nod nereferit `%s'"
+
+#: texi2html.pl:6827
+#, perl-format
+msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr "Nodului `%s' îi lipseºte articolul pentru `%s' deºi îi este þinta Sus"
+
+#: texi2html.pl:6846
+#, perl-format
+msgid "For `%s', up in menu `%s' and up `%s' don't match"
+msgstr ""
+
+#: texi2html.pl:6876
+#, perl-format
+msgid "No node following `%s' in menu, but `%s' follows in sectionning"
+msgstr ""
+
+#: texi2html.pl:6877
+#, perl-format
+msgid "Node following `%s' in menu `%s' and in sectionning `%s' differ"
+msgstr ""
+
+#: texi2html.pl:7903
+#, perl-format
+msgid "Unknown index `%s'"
+msgstr "Index necunoscut `%s'"
+
+#: texi2html.pl:7910
+#, perl-format
+msgid "Entry for index `%s' outside of any node"
+msgstr "Intrarea pentru index-ul `%s' în afara oricãrui nod"
+
+#: texi2html.pl:8959
+#, perl-format
+msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
+msgstr ""
+"%s: fiºierul de ieºire `%s' din cauza erorilor; folosiþi --force pentru a-l "
+"pãstra.\n"
+
+#: texi2html.pl:8963
+#, fuzzy, perl-format
+msgid "%s: Removing output files due to errors; use --force to preserve.\n"
+msgstr ""
+"%s: fiºierul de ieºire `%s' din cauza erorilor; folosiþi --force pentru a-l "
+"pãstra.\n"
+
+#: texi2html.pl:9010
+msgid "Too many errors!  Gave up.\n"
+msgstr "Prea multe erori!  Am renunþat.\n"
+
+#: texi2html.pl:9102
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s (via @%s)\n"
+msgstr "%s:%d: avertisment: "
+
+#: texi2html.pl:9106
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s\n"
+msgstr "%s:%d: avertisment: "
+
+#: texi2html.pl:9139
+#, perl-format
+msgid "(in %s l. %d via @%s)"
+msgstr ""
+
+#: texi2html.pl:9143
+#, perl-format
+msgid "(l. %d via @%s)"
+msgstr ""
+
+#: texi2html.pl:9148
+#, fuzzy, perl-format
+msgid "(in %s l. %d)"
+msgstr "(linia %*d)"
+
+#: texi2html.pl:9152
+#, fuzzy, perl-format
+msgid "(l. %d)"
+msgstr "(linia %*d)"
+
+#: texi2html.pl:9309
+#, perl-format
+msgid "Too much '}' in @%s"
+msgstr ""
+
+#: texi2html.pl:9319
+#, fuzzy, perl-format
+msgid "Missing `}' on @%s line"
+msgstr "Lipseºte `}' în @def arg"
+
+#: texi2html.pl:9474
+#, fuzzy, perl-format
+msgid "Anchor `%s' ignored in %s expanded more than once"
+msgstr "Ancoraj `%s' ºi nodul `%s' aratã cãtre acelaºi nume de fiºier"
+
+#: texi2html.pl:10101
+#, perl-format
+msgid "column fraction not a number: %s"
+msgstr ""
+
+#: texi2html.pl:10122
+#, perl-format
+msgid "ignoring stray text `%s' after @multitable"
+msgstr "ignor text aiurea `%s' dupã @multitable"
+
+#: texi2html.pl:10144
+#, perl-format
+msgid "Too many %s closed"
+msgstr ""
+
+#: texi2html.pl:10511
+#, perl-format
+msgid "Must be in `@%s' environment to use `@%s'"
+msgstr "Trebuie sã fiþi în mediul `@%s' pentru a folosi `@%s'"
+
+#: texi2html.pl:10570 texi2html.pl:10998
+#, fuzzy, perl-format
+msgid "@%s (argument nr %d)"
+msgstr "Argument nepotrivit pentru @%s"
+
+#: texi2html.pl:10641
+#, perl-format
+msgid "%s requires an argument: the formatter for %citem"
+msgstr "%s necesitã un argument: formatatorul pentru %citem"
+
+#: texi2html.pl:10644
+#, perl-format
+msgid "prepended for @%s"
+msgstr ""
+
+#: texi2html.pl:10670
+#, perl-format
+msgid "@columnfraction (argument nr %d)"
+msgstr ""
+
+#: texi2html.pl:10852 texi2html.pl:10866
+msgid "node name in menu"
+msgstr ""
+
+#: texi2html.pl:10853
+msgid "normalized node name in menu"
+msgstr ""
+
+#: texi2html.pl:10859
+msgid "menu entry name"
+msgstr ""
+
+#: texi2html.pl:10977
+#, fuzzy, perl-format
+msgid "First argument to @%s may not be empty"
+msgstr "argumentele pentru @%s ignorate"
+
+#: texi2html.pl:11130 texi2html.pl:13860
+msgid "@listoffloats @float type"
+msgstr ""
+
+#: texi2html.pl:11231
+#, perl-format
+msgid "@%s not meaningful outside `@float' environment"
+msgstr "@%s nu are sens în exteriorul mediului `@float'"
+
+#: texi2html.pl:11289
+msgid "@float style"
+msgstr ""
+
+#: texi2html.pl:11418 texi2html.pl:11419
+msgid "@image base name"
+msgstr ""
+
+#: texi2html.pl:11428 texi2html.pl:11429
+msgid "@image extension"
+msgstr ""
+
+#: texi2html.pl:11436
+#, fuzzy
+msgid "@image file name"
+msgstr "Fiºierul @image `%s' nu poate fi citit: %s"
+
+#: texi2html.pl:11458
+msgid "@image alt text"
+msgstr ""
+
+#: texi2html.pl:11541
+#, fuzzy, perl-format
+msgid "Macro `%s' called with too many args"
+msgstr "Macro `%s' chemat pe linia %d cu prea multe argumente"
+
+#: texi2html.pl:11565
+#, fuzzy, perl-format
+msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
+msgstr "\\ in expansiunea macro urmatã de `%s' în loc de nume parametru"
+
+#: texi2html.pl:12270
+#, perl-format
+msgid "macro `%s' previously defined"
+msgstr "macro-ul `%s' definit anterior"
+
+#: texi2html.pl:12271
+#, perl-format
+msgid "here is the previous definition of `%s'"
+msgstr "aici este definiþia anterioarã a lui `%s'"
+
+#: texi2html.pl:12304
+#, perl-format
+msgid "Macro definition without macro name: %s"
+msgstr ""
+
+#: texi2html.pl:12345
+#, perl-format
+msgid "undefined flag: %s"
+msgstr "marcaj nedefinit: %s"
+
+#: texi2html.pl:12357
+msgid "Bad syntax for @value"
+msgstr ""
+
+#: texi2html.pl:12565
+#, fuzzy, perl-format
+msgid "@%s already set"
+msgstr "Indez-ul `%s' existã deja"
+
+#: texi2html.pl:12617
+#, fuzzy, perl-format
+msgid "Anchor `%s' previously defined %s"
+msgstr "macro-ul `%s' definit anterior"
+
+#: texi2html.pl:12940
+#, fuzzy, perl-format
+msgid "%c%s is obsolete."
+msgstr "%c%s este depãsit"
+
+#: texi2html.pl:12944
+#, fuzzy, perl-format
+msgid "%c%s is obsolete; %s"
+msgstr "%c%s este depãsit"
+
+#: texi2html.pl:12960
+#, perl-format
+msgid "Unknown index `%s' in @printindex"
+msgstr "Index necunoscut `%s' în @printindex"
+
+#: texi2html.pl:13027
+#, perl-format
+msgid "ignored @%s already in an @%s entry"
+msgstr ""
+
+#: texi2html.pl:13052 texi2html.pl:13095
+#, fuzzy, perl-format
+msgid "@%s seen before first @node"
+msgstr "@menu vãzut înainte de primul @node, creez nodul `Vârf'"
+
+#: texi2html.pl:13053
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr ""
+"probabil cã nodul d-voastrã @top ar trebui împachetat în @ifnottex în loc de "
+"@ifinfo?"
+
+#: texi2html.pl:13430 texi2html.pl:13431 texi2html.pl:13434
+msgid "new menu entry"
+msgstr ""
+
+#: texi2html.pl:13555
+msgid "paragraph end"
+msgstr ""
+
+#: texi2html.pl:13789
+#, perl-format
+msgid "`@end' expected `%s', but saw `%s'"
+msgstr "`@end' a aºteptat `%s', dar a vãzut `%s'"
+
+#: texi2html.pl:13853
+msgid "@listoffloats type"
+msgstr ""
+
+#: texi2html.pl:13876
+#, perl-format
+msgid "Requested float type `%s' not previously used"
+msgstr ""
+
+#: texi2html.pl:13988
+#, fuzzy, perl-format
+msgid "@%s not allowed on in argument to @%s"
+msgstr "@item nu este permis în argument la @itemize"
+
+#: texi2html.pl:14043
+#, perl-format
+msgid "Accent command `@%s' must not be followed by whitespace"
+msgstr ""
+
+#: texi2html.pl:14047
+#, perl-format
+msgid "Use braces to give a command as an argument to @%s"
+msgstr "Folosiþi paranteze pentru a da o comandã ca argument lui @%s"
+
+#: texi2html.pl:14208
+#, perl-format
+msgid "@%s not meaningful inside `@%s' block"
+msgstr "@%s nu are sens în interiorul blocului `@%s'"
+
+#: texi2html.pl:14253
+#, perl-format
+msgid "@%s outside of table or list"
+msgstr ""
+
+#: texi2html.pl:14286
+msgid "ignoring @tab outside of multitable"
+msgstr "ignor @tab în afara multitabelului"
+
+#: texi2html.pl:14293
+#, fuzzy
+msgid "ignoring @tab in empty multitable"
+msgstr "ignor @tab în afara multitabelului"
+
+#: texi2html.pl:14297
+#, perl-format
+msgid "Too many columns in multitable item (max %d)"
+msgstr "Prea multe coloane în articol multitabel (max %d)"
+
+#: texi2html.pl:14328
+msgid "@center should not appear in another format"
+msgstr ""
+
+#: texi2html.pl:14368 texi2html.pl:14388
+#, perl-format
+msgid "Misplaced %c"
+msgstr "%c nelalocul lui"
+
+#: texi2html.pl:14936
+#, perl-format
+msgid "%c%s expects a single character `i' or `j' as argument"
+msgstr "%c%s aºteaptã un singur caracter `i' sau `j' ca argument"
+
+#: texi2html.pl:14940
+#, fuzzy, perl-format
+msgid "%c%s expects `i' or `j' as argument, not `%s'"
+msgstr "%c%s aºteaptã `i' sau `j' ca argument, nu `%c'"
+
+#: texi2html.pl:14989
+#, fuzzy, perl-format
+msgid "Unknown command with braces `@%s'"
+msgstr "Comandã necunoscutã `%s'"
+
+#: texi2html.pl:15025
+#, perl-format
+msgid "%c%s expected braces"
+msgstr "%c%s am aºteptat paranteze"
+
+#: texi2html.pl:15029
+#, perl-format
+msgid "Unknown command `%s'"
+msgstr "Comandã necunoscutã `%s'"
+
+#: texi2html.pl:15107
+#, perl-format
+msgid "Reached eof before matching @end %s"
+msgstr "Am ajuns la eof înainte de a potrivi @end %s"
+
+#: texi2html.pl:15115
+#, perl-format
+msgid "%cend macro not found"
+msgstr "%cend macro nu a fost gãsit"
+
+#: texi2html.pl:15283
+#, perl-format
+msgid "No matching `%cend %s'"
+msgstr "Nici o potrivire %cend %s'"
+
+#: texi2html.pl:15311
+#, perl-format
+msgid "%c%s missing close brace"
+msgstr "%c%s lipseºte paranteza de închidere"
+
+#: texi2html.pl:15419
+#, fuzzy, perl-format
+msgid "%s should not appear in %s"
+msgstr "%s: nu am putut deschide --css-file: %s"
+
+#: texi2html.pl:16119
+#, perl-format
+msgid "%s:%d: string not closed in css file"
+msgstr ""
+
+#: texi2html.pl:16120
+#, perl-format
+msgid "%s:%d: --css-file ended in comment"
+msgstr "%s:%d: --css-file s-a terminat cu un comentariu"
+
+#: texi2html.pl:16121
+#, perl-format
+msgid "%s:%d @import not finished in css file"
+msgstr ""
+
+#: texi2html.pl:16151
+#, fuzzy, perl-format
+msgid "%s: could not open --css-file %s: %s\n"
+msgstr "%s: nu am putut deschide --css-file: %s"
+
+#: texi2html.pl:16206
+#, perl-format
+msgid "%s: missing file argument.\n"
+msgstr "%s: lipseºte fiºierul argument.\n"
+
+#: texi2html.init:2053
+msgid "recursion is always allowed"
+msgstr ""
+
+#: texi2html.init:2054
+msgid "arguments are quoted by default"
+msgstr ""
+
+#: formats/docbook.init:1025 formats/info.init:2872
+#, perl-format
+msgid "@image file `%s' unreadable: %s"
+msgstr "Fiºierul @image `%s' nu poate fi citit: %s"
+
+#: formats/docbook.init:1030 formats/info.init:2877
+#, fuzzy, perl-format
+msgid "Cannot find @image file `%s.txt'"
+msgstr "Nu pot gãsi nodul `%s'."
+
+#: formats/html.init:2547
+#, fuzzy, perl-format
+msgid "@image file `%s' (for HTML) not found, using `%s'"
+msgstr "Fiºierul @image `%s' (pentru HTML) nu poate fi citit: %s"
+
+#: formats/info.init:1151
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+"@strong{Notã...] produce o referinþã încruciºatã falsã în Info; reformulaþi "
+"pentru a o evita"
+
+#: formats/info.init:1311
+msgid "`.' or `,' must follow @xref."
+msgstr ""
+
+#: formats/info.init:1316
+#, perl-format
+msgid "`.' or `,' must follow @xref, not %s"
+msgstr ""
+
+#: formats/info.init:3073
+msgid "Footnote defined without parent node"
+msgstr "Nota de subsol definitã fãrã nod pãrinte"
+
+#~ msgid "%s: option `%s' is ambiguous\n"
+#~ msgstr "%s: opþiunea `%s' este ambiguã\n"
+
+#~ msgid "%s: option `--%s' doesn't allow an argument\n"
+#~ msgstr "%s: opþiunea `--%s' nu permite un argument\n"
+
+#~ msgid "%s: option `%c%s' doesn't allow an argument\n"
+#~ msgstr "%s: opþiunea `%c%s' nu permite un argument\n"
+
+#~ msgid "%s: option `%s' requires an argument\n"
+#~ msgstr "%s: opþiunea `%s' necesitã un argument\n"
+
+#~ msgid "%s: unrecognized option `--%s'\n"
+#~ msgstr "%s: opþiune nerecunoscutã `--%s'\n"
+
+#~ msgid "%s: unrecognized option `%c%s'\n"
+#~ msgstr "%s: opþiune nerecunoscutã `%c%s'\n"
+
+#~ msgid "%s: illegal option -- %c\n"
+#~ msgstr "%s: opþiune ilegalã -- %c\n"
+
+#~ msgid "%s: invalid option -- %c\n"
+#~ msgstr "%s: opþiune invalidã -- %c\n"
+
+#~ msgid "%s: option requires an argument -- %c\n"
+#~ msgstr "%s: opþiunea necesitã un argument -- %c\n"
+
+#~ msgid "%s: option `-W %s' is ambiguous\n"
+#~ msgstr "%s: opþiunea `-W %s' este ambiguã\n"
+
+#~ msgid "%s: option `-W %s' doesn't allow an argument\n"
+#~ msgstr "%s: opþiunea `-W %s' nu permite un argument\n"
+
+#~ msgid "Move forward a character"
+#~ msgstr "Mergi înainte un caracter"
+
+#~ msgid "Move backward a character"
+#~ msgstr "Mergi înapoi un caracter"
+
+#~ msgid "Move to the start of this line"
+#~ msgstr "Mergi la începutul acestei linii"
+
+#~ msgid "Move to the end of this line"
+#~ msgstr "Mergi la sfârºitul acestei linii"
+
+#~ msgid "Move forward a word"
+#~ msgstr "Mergi înainte un cuvânt"
+
+#~ msgid "Move backward a word"
+#~ msgstr "Mergi înapoi un cuvânt"
+
+#~ msgid "Delete the character under the cursor"
+#~ msgstr "ªterge caracterul de sub cursor"
+
+#~ msgid "Delete the character behind the cursor"
+#~ msgstr "ªterge caracterul din stânga cursorului"
+
+#~ msgid "Cancel or quit operation"
+#~ msgstr "Renunþã sau terminã operaþiunea"
+
+#~ msgid "Accept (or force completion of) this line"
+#~ msgstr "Acceptã (sau forþeazã completarea) acestei linii"
+
+#~ msgid "Insert next character verbatim"
+#~ msgstr "Insereazã urmãtorul caracter identic (verbatim)"
+
+#~ msgid "Insert this character"
+#~ msgstr "Insereazã acest caracter"
+
+#~ msgid "Insert a TAB character"
+#~ msgstr "Insereazã un caracter TAB"
+
+#~ msgid "Transpose characters at point"
+#~ msgstr "Transpune caracterele la acest punct"
+
+#~ msgid "Yank back the contents of the last kill"
+#~ msgstr "Extrage înapoi conþinutul ultimei ºtergeri (kill)"
+
+#~ msgid "Kill ring is empty"
+#~ msgstr "Inelul de ºtergeri (kill) e gol"
+
+#~ msgid "Yank back a previous kill"
+#~ msgstr "Extrage înapoi o ºtergere (kill) anterioarã"
+
+#~ msgid "Kill to the end of the line"
+#~ msgstr "ªterge (kill) pânã la sfârºitul liniei"
+
+#~ msgid "Kill to the beginning of the line"
+#~ msgstr "ªterge (kill) pânã la începutul liniei"
+
+#~ msgid "Kill the word following the cursor"
+#~ msgstr "ªterge (kill) cuvântul din dreapta cursorului"
+
+#~ msgid "Kill the word preceding the cursor"
+#~ msgstr "ªterge (kill) cuvãntul din stânga cursorului"
+
+#~ msgid "No completions"
+#~ msgstr "Nici o completare"
+
+#~ msgid "Not complete"
+#~ msgstr "Nu e completat"
+
+#~ msgid "List possible completions"
+#~ msgstr "Enumerã completãrile posibile"
+
+#~ msgid "Sole completion"
+#~ msgstr "O singurã completare"
+
+#~ msgid "One completion:\n"
+#~ msgstr "O completare:\n"
+
+#~ msgid "%d completions:\n"
+#~ msgstr "%d completãri:\n"
+
+#~ msgid "Insert completion"
+#~ msgstr "Insereazã completarea"
+
+#~ msgid "Building completions..."
+#~ msgstr "Construim completãrile..."
+
+#~ msgid "Scroll the completions window"
+#~ msgstr "Scroll fereastra de completãri"
+
+#~ msgid "Footnotes could not be displayed"
+#~ msgstr "Notele de subsol nu pot fi afiºate"
+
+#~ msgid "Show the footnotes associated with this node in another window"
+#~ msgstr "Aratã notele de subsol asociate cu acest nod în aceastã fereastrã"
+
+#~ msgid "---------- Footnotes ----------"
+#~ msgstr "------- Note de subsol  -------"
+
+#~ msgid "Look up a string in the index for this file"
+#~ msgstr "Cautã un ºir în indexul acestui fiºier"
+
+#~ msgid "Finding index entries..."
+#~ msgstr "Cãutãm intrãri în index..."
+
+#~ msgid "No indices found."
+#~ msgstr "Nici am gãsit nici un index."
+
+#~ msgid "Index entry: "
+#~ msgstr "Intrare în index: "
+
+#~ msgid ""
+#~ "Go to the next matching index item from the last `\\[index-search]' "
+#~ "command"
+#~ msgstr ""
+#~ "Mergi la urmãtorul articol de index ce se potriveºte ultimei comenzi `"
+#~ "\\[index-search]'"
+
+#~ msgid "No previous index search string."
+#~ msgstr "Nu existã nici un ºir cãutat anterior."
+
+#~ msgid "No index entries."
+#~ msgstr "Nici o intrare în index."
+
+#~ msgid "No %sindex entries containing `%s'."
+#~ msgstr "Nici o intrare în %sindex conþinând `%s'."
+
+#~ msgid "more "
+#~ msgstr "mai mult"
+
+#~ msgid "CAN'T SEE THIS"
+#~ msgstr "NU POT VEDEA ACEASTA"
+
+#~ msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
+#~ msgstr ""
+#~ "Am gãsit `%s' în %s. (`\\[next-index-match]' încearcã sã gãseascã "
+#~ "urmãtorul.)"
+
+#~ msgid "Scanning indices of `%s'..."
+#~ msgstr "Scanãm indexurile pentru `%s'..."
+
+#~ msgid "No available info files have `%s' in their indices."
+#~ msgstr "Nici un fiºier info nu are `%s' în indexurile lor."
+
+#~ msgid "Grovel all known info file's indices for a string and build a menu"
+#~ msgstr ""
+#~ "Cautã în toþi indexurile fiºierului pentru un ºir ºi contruieºte un meniu"
+
+#~ msgid "Index apropos: "
+#~ msgstr "Index apropos: "
+
+#~ msgid ""
+#~ "\n"
+#~ "* Menu: Nodes whose indices contain `%s':\n"
+#~ msgstr ""
+#~ "\n"
+#~ "* Meniu: Noduri a cãror indexurile conþin `%s':\n"
+
+#~ msgid "Try --help for more information.\n"
+#~ msgstr "Încercaþi --help pentru informaþii suplimentare.\n"
+
+#~ msgid "no index entries found for `%s'\n"
+#~ msgstr "nici o intrare de index a fost gãsitã pentru `%s'\n"
+
+#, fuzzy
+#~ msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
+#~ msgstr ""
+#~ "  -b, --speech-friendly        fii prietenos cu sintetizatoarele de "
+#~ "vorbire.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Trimiteþi emailuri raportând bug-uri la bug-texinfo@gnu.org,\n"
+#~ "întrebãri generale ºi discuþii la help-texinfo@gnu.org.\n"
+#~ "Texinfo homepage: http://www.gnu.org/software/texinfo/"
+
+#~ msgid "Cannot find node `(%s)%s'."
+#~ msgstr "Nu pot gãsi nodul `(%s)%s'."
+
+#~ msgid "Cannot find a window!"
+#~ msgstr "Nu pot gãsi o fereastrã!"
+
+#~ msgid "Point doesn't appear within this window's node!"
+#~ msgstr "Punctul nu apare în interiorul nodului acestei ferestre!"
+
+#~ msgid "Cannot delete the last window."
+#~ msgstr "Nu pot ºterge ultima fereastrã."
+
+#~ msgid "No menu in this node."
+#~ msgstr "Nici un meniu în acest nod"
+
+#~ msgid "No footnotes in this node."
+#~ msgstr "Nici o notã de subsol în acest nod."
+
+#~ msgid "No cross references in this node."
+#~ msgstr "Nici o referinþã la acelaºi pasaj în acest nod."
+
+#~ msgid "No `%s' pointer for this node."
+#~ msgstr "Nici un pointer `%s' pentru acest nod."
+
+#~ msgid "Unknown Info command `%c'; try `?' for help."
+#~ msgstr "Comandã Info necunoscutã `%c';încercaþi `?' pentru ajutor."
+
+#~ msgid "Terminal type `%s' is not smart enough to run Info."
+#~ msgstr "Terminalul de tip `%s' nu e destul de deºtept sã ruleze Info."
+
+#~ msgid "You are already at the last page of this node."
+#~ msgstr "Sunteþi deja la ultima paginã a acestui nod."
+
+#~ msgid "You are already at the first page of this node."
+#~ msgstr "Sunteþi deja la prima paginã a acestui nod."
+
+#~ msgid "Only one window."
+#~ msgstr "O singurã fereastrã."
+
+#~ msgid "Resulting window would be too small."
+#~ msgstr "Fereastra rezultantã ar fi prea micã."
+
+#~ msgid "Not enough room for a help window, please delete a window."
+#~ msgstr ""
+#~ "Nu e destul spaþiu pentru o fereastrã de ajutor, ºtergeþi o fereastrã."
+
+#, fuzzy
+#~ msgid "\\%-10[quit-help]  Close this help window.\n"
+#~ msgstr "\\%-10[quit-help]  Terminã acest ajutor.\n"
+
+#~ msgid "\\%-10[quit]  Quit Info altogether.\n"
+#~ msgstr "\\%-10[quit]  Terminã Info complet.\n"
+
+#~ msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
+#~ msgstr "\\%-10[get-info-help-node]  Invocaþi tutorialul Info.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[prev-line]  Move up one line.\n"
+#~ msgstr "\\%-10[prev-line]  Scroll înapoi 1 linie.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[next-line]  Move down one line.\n"
+#~ msgstr "\\%-10[next-line]  Scroll înainte 1 linie.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
+#~ msgstr "\\%-10[scroll-backward]  Scroll înapoi o paginã.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
+#~ msgstr "\\%-10[scroll-forward]  Scroll înainte o paginã.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
+#~ msgstr "\\%-10[beginning-of-node]  Mergi la începutul acestui nod.\n"
+
+#~ msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
+#~ msgstr "\\%-10[end-of-node]  Mergi la sfârºitul acestui nod.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
+#~ msgstr ""
+#~ "\\%-10[move-to-next-xref]  Sari la urmãtoarea legãturã hypertext din "
+#~ "acest nod.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[select-reference-this-line]  Follow the hypertext link under the "
+#~ "cursor.\n"
+#~ msgstr ""
+#~ "\\%-10[select-reference-this-line]  Urmeazã legãtura hypertext de sub "
+#~ "cursor.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[history-node]  Go back to the last node seen in this window.\n"
+#~ msgstr ""
+#~ "\\%-10[history-node]  Mergi la ultimul nod vãzut în aceastã fereastrã.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
+#~ msgstr "\\%-10[prev-node]  Mergi la nodul \"precedent\" al acestui nod.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
+#~ msgstr "\\%-10[next-node]  Mergi la \"urmãtorul\" nod al acestui nod.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
+#~ msgstr "\\%-10[prev-node]  Mergi la nodul \"precedent\" al acestui nod.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[next-node]  Go to the next node on this level.\n"
+#~ msgstr "\\%-10[next-node]  Mergi la \"urmãtorul\" nod al acestui nod.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[up-node]  Go up one level.\n"
+#~ msgstr "\\%-10[up-node]  Mergi în \"sus\" de la acest nod.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[top-node]  Go to the top node of this document.\n"
+#~ msgstr "\\%-10[end-of-node]  Mergi la sfârºitul acestui nod.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[dir-node]  Go to the main `directory' node.\n"
+#~ msgstr "\\%-10[end-of-node]  Mergi la sfârºitul acestui nod.\n"
+
+#, fuzzy
+#~ msgid "1...9       Pick the first...ninth item in this node's menu.\n"
+#~ msgstr "  %-10s  Alege primul ... al nouãlea articol în meniul nodului.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
+#~ msgstr "\\%-10[last-menu-item]  Alege ultimul articol în meniul nodului.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
+#~ msgstr "  %-10s  Alege articolul de meniu specificat prin nume.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
+#~ msgstr ""
+#~ "\\%-10[xref-item]  Urmeazã o referinþã încruciºatã. Citeºte numele "
+#~ "referinþei.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
+#~ msgstr "  %-10s  Mergi la nodul specificat prin nume.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[search]  Search forward for a specified string.\n"
+#~ msgstr "  %-10s  Cautã înainte un ºir specificat,\n"
+
+#, fuzzy
+#~ msgid "\\%-10[search-previous]  Search for previous occurrence.\n"
+#~ msgstr "\\%-10[prev-node]  Mergi la nodul \"precedent\" al acestui nod.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[search-next]  Search for next occurrence.\n"
+#~ msgstr ""
+#~ "  %-10s  Cautã ºirul specificat în intrãrile indexului acestui fiºier "
+#~ "Info\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[index-search]  Search for a specified string in the index, and\n"
+#~ "              select the node referenced by the first entry found.\n"
+#~ msgstr ""
+#~ "\\%-10[index-search]  Cautã ºirul specificat în intrãrile indexului "
+#~ "acestui\n"
+#~ "            fiºier Info ºi selecteazã nodul referit de prima intrare "
+#~ "gãsitã.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[abort-key]  Cancel the current operation.\n"
+#~ msgstr "Renunþã la operaþia curentã"
+
+#~ msgid ""
+#~ "Basic Commands in Info Windows\n"
+#~ "******************************\n"
+#~ msgstr ""
+#~ "Comenzi de bazã în Fereastra Info\n"
+#~ "*********************************\n"
+
+#~ msgid "  %-10s  Quit this help.\n"
+#~ msgstr "  %-10s  Terminã acest ajutor.\n"
+
+#~ msgid "  %-10s  Quit Info altogether.\n"
+#~ msgstr "  %-10s  Terminã Info complet.\n"
+
+#~ msgid "  %-10s  Invoke the Info tutorial.\n"
+#~ msgstr "  %-10s  Invocã tuturialul Info.\n"
+
+#~ msgid "  %-10s  Move to the `next' node of this node.\n"
+#~ msgstr "  %-10s  Mergi la nodul `urmãtor' acestui nod.\n"
+
+#~ msgid "  %-10s  Move to the `previous' node of this node.\n"
+#~ msgstr "  %-10s  Mergi la nodul `precedent' acestui nod.\n"
+
+#~ msgid "  %-10s  Move `up' from this node.\n"
+#~ msgstr "  %-10s  Mergi în `sus' de la acest nod.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Pick menu item specified by name.\n"
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr ""
+#~ "\\%-10[menu-item]  Alege articol meniu specificat prin nume.\n"
+#~ "              Alegând un articol de meniu face ca alt nod sã fie "
+#~ "selectat.\n"
+
+#~ msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
+#~ msgstr ""
+#~ "  %-10s  Urmeazã referinþã la acelaºi pasaj. Citeºte numele referinþei.\n"
+
+#~ msgid "  %-10s  Move to the last node seen in this window.\n"
+#~ msgstr "  %-10s  Mergi la ultimul nod vãzut în aceastã fereastrã.\n"
+
+#~ msgid "  %-10s  Skip to next hypertext link within this node.\n"
+#~ msgstr "  %-10s  Sari la urmãtoarea legãturã hypertext din acest nod.\n"
+
+#~ msgid "  %-10s  Follow the hypertext link under cursor.\n"
+#~ msgstr "  %-10s  Sari la legãtura hypertext de sub cursor.\n"
+
+#~ msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
+#~ msgstr "  %-10s  Mergi la nodul `director'.  Echivalent cu `g (DIR)'.\n"
+
+#~ msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
+#~ msgstr "  %-10s  Mergi la nodul Vârf.  Echivalent cu `g Top'.\n"
+
+#~ msgid ""
+#~ "Moving within a node:\n"
+#~ "---------------------\n"
+#~ msgstr ""
+#~ "Mergi în interiorul nodului:\n"
+#~ "----------------------------\n"
+
+#~ msgid "  %-10s  Scroll forward a page.\n"
+#~ msgstr "  %-10s  Scroll înainte o paginã.\n"
+
+#~ msgid "  %-10s  Scroll backward a page.\n"
+#~ msgstr "  %-10s  Scroll înapoi o paginã.\n"
+
+#~ msgid "  %-10s  Go to the beginning of this node.\n"
+#~ msgstr "  %-10s  Mergi la începutul acestui nod.\n"
+
+#~ msgid "  %-10s  Go to the end of this node.\n"
+#~ msgstr "  %-10s  Mergi la sfârºitul acestui nod.\n"
+
+#~ msgid "  %-10s  Scroll forward 1 line.\n"
+#~ msgstr "  %-10s  Scroll înainte 1 linie.\n"
+
+#~ msgid "  %-10s  Scroll backward 1 line.\n"
+#~ msgstr "  %-10s  Scroll înapoi 1 linie.\n"
+
+#~ msgid ""
+#~ "Other commands:\n"
+#~ "---------------\n"
+#~ msgstr ""
+#~ "Alte comenzi:\n"
+#~ "-------------\n"
+
+#, fuzzy
+#~ msgid "  %-10s  Pick first...ninth item in node's menu.\n"
+#~ msgstr "  %-10s  Alege primul ... al nouãlea articol în meniul nodului.\n"
+
+#~ msgid "  %-10s  Pick last item in node's menu.\n"
+#~ msgstr "  %-10s  Alege ultimul articol în meniul nodului.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search for a specified string in the index entries of this Info\n"
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr ""
+#~ "\\%-10[index-search]  Cautã ºirul specificat în intrãrile indexului "
+#~ "acestui\n"
+#~ "            fiºier Info ºi selecteazã nodul referit de prima intrare "
+#~ "gãsitã.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Move to node specified by name.\n"
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr ""
+#~ "\\%-10[goto-node]  Mergi la nodul specificat prin nume.\n"
+#~ "             Puteþi include ºi un nume de fiºier, ca în (NUMEFIªIER)"
+#~ "NUMENOD.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search forward for a specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "\\%-10[search]  Cautã înainte un ºir specificat\n"
+#~ "              ºi selecteazã nodul în care acesta este gãsit.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search backward for a specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "\\%-10[search]  Cautã înainte un ºir specificat\n"
+#~ "              ºi selecteazã nodul în care acesta este gãsit.\n"
+
+#~ msgid "The current search path is:\n"
+#~ msgstr "Calea curentã de cãutare este:\n"
+
+#~ msgid ""
+#~ "Commands available in Info windows:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Comenzile disponibile în fereastra Info:\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "Commands available in the echo area:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Comenzile disponibile în zona de ecou:\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "The following commands can only be invoked via %s:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Urmãtoarele comenzi pot fi invocate via %s\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "The following commands cannot be invoked at all:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Urmãtoarele comenzi nu pot fi deloc invocate:\n"
+#~ "\n"
+
+#~ msgid "Display help message"
+#~ msgstr "Afiºeazã mesaj de ajutor"
+
+#~ msgid "Visit Info node `(info)Help'"
+#~ msgstr "Viziteazã nodul Info `(info)Ajutor'"
+
+#~ msgid "Print documentation for KEY"
+#~ msgstr "Tipãreºte documentaþie pentru tastã (KEY)"
+
+#~ msgid "Describe key: %s"
+#~ msgstr "Descrie tastã (key): %s"
+
+#~ msgid "ESC %s is undefined."
+#~ msgstr "ESC %s nu este definit(ã)."
+
+#~ msgid "%s is undefined."
+#~ msgstr "%s nu este definit(ã)."
+
+#~ msgid "%s is defined to %s."
+#~ msgstr "%s este definit(ã) ca %s."
+
+#~ msgid "Show what to type to execute a given command"
+#~ msgstr "Aratã ce trebuie tasta pentru a executa o anumitã comandã"
+
+#~ msgid "Where is command: "
+#~ msgstr "Unde este comanda: "
+
+#~ msgid "`%s' is not on any keys"
+#~ msgstr "`%s' nu este pe nici o tastã"
+
+#~ msgid "%s can only be invoked via %s."
+#~ msgstr "%s poate fi invocat doar via %s."
+
+#~ msgid "%s can be invoked via %s."
+#~ msgstr "%s poate fi invocat via %s."
+
+#~ msgid "There is no function named `%s'"
+#~ msgstr "Nu existã nii o funcþie numitã `%s'"
+
+#~ msgid ""
+#~ "Selecting other nodes:\n"
+#~ "----------------------\n"
+#~ msgstr ""
+#~ "Selectaþi alte noduri:\n"
+#~ "----------------------\n"
+
+#~ msgid "incorrect number of arguments"
+#~ msgstr "numãr incorect de argumente"
+
+#~ msgid "cannot open input file `%s'"
+#~ msgstr "nu pot deschide fiºierul de intrare `%s'"
+
+#~ msgid "cannot create output file `%s'"
+#~ msgstr "nu pot crea fiºierul de ieºire `%s'"
+
+#~ msgid "error writing to `%s'"
+#~ msgstr "eroare la scrierea în `%s'"
+
+#~ msgid "error closing output file `%s'"
+#~ msgstr "eroare la închiderea fiºierului de ieºire `%s'"
+
+#~ msgid "key sequence too long"
+#~ msgstr "secvenþã de taste prea lungã"
+
+#~ msgid "missing key sequence"
+#~ msgstr "secvenþã de taste inexistentã"
+
+#~ msgid "NUL character (\\000) not permitted"
+#~ msgstr "caracterul NUL (\\000) nu este permis"
+
+#~ msgid "NUL character (^%c) not permitted"
+#~ msgstr "caracterul NUL (^%c) nu este permis"
+
+#~ msgid "missing action name"
+#~ msgstr "nume de acþiune inexistent"
+
+#~ msgid "section too long"
+#~ msgstr "secþiune prea lungã"
+
+#~ msgid "unknown action `%s'"
+#~ msgstr "acþiune necunoscutã `%s'"
+
+#~ msgid "action name too long"
+#~ msgstr "nume de acþiune prea lung"
+
+#~ msgid "extra characters following action `%s'"
+#~ msgstr "extra caractere dupã acþiunea `%s'"
+
+#~ msgid "missing variable name"
+#~ msgstr "nume de variabilã inexistent"
+
+#~ msgid "missing `=' immediately after variable name"
+#~ msgstr "caracterul `=' lipseºte imediat dupã numele de variabilã"
+
+#~ msgid "variable name too long"
+#~ msgstr "nume de variabilã prea lung"
+
+#~ msgid "value too long"
+#~ msgstr "valoare prea lungã"
+
+#~ msgid "\"%s\", line %u: "
+#~ msgstr "\"%s\", linia %u: "
+
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [INPUT-FILE]\n"
+#~ "\n"
+#~ "Compile infokey source file to infokey file.  Reads INPUT-FILE (default\n"
+#~ "$HOME/.infokey) and writes compiled key file to (by default) $HOME/."
+#~ "info.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "  --output FILE        output to FILE instead of $HOME/.info\n"
+#~ "  --help               display this help and exit.\n"
+#~ "  --version            display version information and exit.\n"
+#~ msgstr ""
+#~ "Folosire: %s [OPÞIUNE]... [FIªIER-INTRAre]\n"
+#~ "\n"
+#~ "Compileazã fiºierul sursã infokey în fiºier infokey. Citeºte FIªIER-"
+#~ "INTRARE\n"
+#~ "(implicit $HOME/.infokey) ºi scrie fiºierul cod compilat în (implicit)\n"
+#~ "$HOME/.info.\n"
+#~ "\n"
+#~ "Opþiuni:\n"
+#~ "  --output FIªIER\tieºire în FIªIER în loc de $HOME/.info\n"
+#~ "  --help\t\tafiºeazã acest ajutor ºi terminã.\n"
+#~ "  --version\t\tafiºeazã informaþii versiune ºi terminã.\n"
+
+#~ msgid "Ignoring invalid infokey file `%s' - too small"
+#~ msgstr "Ignorãm fiºier infokey incorect `%s' - prea mic"
+
+#~ msgid "Ignoring invalid infokey file `%s' - too big"
+#~ msgstr "Ignorãm fiºier infokey incorect `%s' - prea mare"
+
+#~ msgid "Error reading infokey file `%s' - short read"
+#~ msgstr "Eroare la citirea fiºierului infokey `%s' - citit scurt"
+
+#~ msgid ""
+#~ "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+#~ msgstr ""
+#~ "Fiºier infokey incorect `%s' (bad magic numbers) -- rulaþi infokey pentru "
+#~ "a-l actualiza"
+
+#~ msgid "Your infokey file `%s' is out of date -- run infokey to update it"
+#~ msgstr ""
+#~ "Fiºierul d-voastrã infokey `%s' este vechi - rulaþi infokey pentru a-l "
+#~ "actualiza"
+
+#~ msgid ""
+#~ "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+#~ msgstr ""
+#~ "Fiºier infokey incorect `%s' (bad section length) -- rulaþi infokey "
+#~ "pentru a-l actualiza"
+
+#~ msgid ""
+#~ "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+#~ msgstr ""
+#~ "Fiºier infokey incorect `%s' (bad section code) -- rulaþi infokey pentru "
+#~ "a-l actualiza"
+
+#~ msgid "Bad data in infokey file -- some key bindings ignored"
+#~ msgstr ""
+#~ "Date incorecte în fiºierul infokey -- unele legãturi de taste ignorate"
+
+#~ msgid "Bad data in infokey file -- some var settings ignored"
+#~ msgstr ""
+#~ "Date incorecte în fiºierul infokey -- unele setãri de variabile ignorate"
+
+#~ msgid "Read the name of an Info command and describe it"
+#~ msgstr "citeºte numele unei comenzi Info ºi descrie-o"
+
+#~ msgid "Describe command: "
+#~ msgstr "Descrie comanda: "
+
+#~ msgid "Read a command name in the echo area and execute it"
+#~ msgstr "Citeºte un nume de comandã în zona ecou ºi executã-o"
+
+#~ msgid "Cannot execute an `echo-area' command here."
+#~ msgstr "Nu pot executa o comandã `zonã ecou' aici."
+
+#~ msgid "Undefined command: %s"
+#~ msgstr "Comandã nedefinitã: %s"
+
+#~ msgid "Set the height of the displayed window"
+#~ msgstr "Seteazã înãlþimea ferestrei de afiºare"
+
+#~ msgid "Set screen height to (%d): "
+#~ msgstr "Seteazã înãlþimea ecranului ls (%d): "
+
+#~ msgid ""
+#~ "   Source files groveled to make this file include:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "   Fiºierele sursã (groveled) pentru a include acest fiºier:\n"
+#~ "\n"
+
+#~ msgid "Couldn't manipulate the file %s.\n"
+#~ msgstr "Nu ap putut manipula fiºierul %s.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "* Menu:\n"
+#~ "  (File)Node                        Lines   Size   Containing File\n"
+#~ "  ----------                        -----   ----   ---------------"
+#~ msgstr ""
+#~ "\n"
+#~ "* Meniu:\n"
+#~ "  (Fiºier)Nod                        Linii   Mãrime   Conþine fiºier\n"
+#~ "  -----------                        -----   ------   --------------"
+
+#~ msgid ""
+#~ "Here is the menu of nodes you have recently visited.\n"
+#~ "Select one from this menu, or use `\\[history-node]' in another window.\n"
+#~ msgstr ""
+#~ "Aici este meniul cu nodurile pe care le-aþi vizitat recent.\n"
+#~ "Selectaþi un nod din acest meniu, sau folosiþi `\\[history-node]' în altã "
+#~ "fereastrã\n"
+
+#~ msgid ""
+#~ "Make a window containing a menu of all of the currently visited nodes"
+#~ msgstr ""
+#~ "Creazã o fereastrã care conþine un meniu cu toate nodurile vizitate recent"
+
+#~ msgid "Select a node which has been previously visited in a visible window"
+#~ msgstr ""
+#~ "Selecteazã un nod care a fost vizitat anterior într-o fereastrã vizibilã"
+
+#~ msgid "Select visited node: "
+#~ msgstr "Selecteazã nodul vizitat: "
+
+#~ msgid "The reference disappeared! (%s)."
+#~ msgstr "Referinþa a dispãrut! (%s)."
+
+#~ msgid ""
+#~ "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-"
+#~ "item] for menu item."
+#~ msgstr ""
+#~ "Bine aþi venit la Info versiunea %s. Tastaþi \\[get-help-window] pentru "
+#~ "ajutor, \\[menu-item] pentru un articol din meniu."
+
+#~ msgid "Move down to the next line"
+#~ msgstr "Mergi la linia urmãtoare"
+
+#~ msgid "Move up to the previous line"
+#~ msgstr "Mergi la linia precedentã"
+
+#~ msgid "Move to the end of the line"
+#~ msgstr "Mergi la sfârºitul liniei"
+
+#~ msgid "Move to the start of the line"
+#~ msgstr "Mergi la începutul liniei"
+
+#~ msgid "Next"
+#~ msgstr "Urmãtor"
+
+#~ msgid "No more nodes within this document."
+#~ msgstr "Nu mai sunt alte noduri în acest document."
+
+#~ msgid "No `Prev' for this node."
+#~ msgstr "Nici un `Prec' pentru acest nod."
+
+#~ msgid "No `Prev' or `Up' for this node within this document."
+#~ msgstr "Nici un `Prec' sau `Sus' pentru acest nod în acest document."
+
+#~ msgid "Move forwards or down through node structure"
+#~ msgstr "Mergi înainte sau jos prin structura de noduri"
+
+#~ msgid "Move backwards or up through node structure"
+#~ msgstr "Mergi înapoi sau sus prin structura de noduri"
+
+#~ msgid "Scroll forward in this window"
+#~ msgstr "Scroll înainte în aceastã fereastrã"
+
+#~ msgid "Scroll forward in this window and set default window size"
+#~ msgstr ""
+#~ "Scroll înainte în aceastã fereastrã ºi seteazã dimensiunea implicitã a "
+#~ "ferestrei"
+
+#~ msgid "Scroll forward in this window staying within node"
+#~ msgstr "Scroll înainte în aceastã fereastrã, rãmâi în nod"
+
+#~ msgid ""
+#~ "Scroll forward in this window staying within node and set default window "
+#~ "size"
+#~ msgstr ""
+#~ "Scroll înainte în aceastã fereastrã, rãmâi în nod ºi seteazã dimensiunea "
+#~ "implicitã a ferestrei"
+
+#~ msgid "Scroll backward in this window"
+#~ msgstr "Scroll înapoi în acestã fereastrã"
+
+#~ msgid "Scroll backward in this window and set default window size"
+#~ msgstr ""
+#~ "Scroll înapoi în acestã fereastrã ºi seteazã dimensiunea implicitã a "
+#~ "ferestrei"
+
+#~ msgid "Scroll backward in this window staying within node"
+#~ msgstr "Scroll înapoi în aceastã fereastrã, rãmâi în nod"
+
+#~ msgid ""
+#~ "Scroll backward in this window staying within node and set default window "
+#~ "size"
+#~ msgstr ""
+#~ "Scroll înapoi în aceastã fereastrã, rãmâi în nod ºi seteazã dimensiunea "
+#~ "implicitã a ferestrei"
+
+#~ msgid "Move to the start of this node"
+#~ msgstr "Mergi la începutul acestui nod"
+
+#~ msgid "Move to the end of this node"
+#~ msgstr "Mergi la sfârºitul acestui nod"
+
+#~ msgid "Scroll down by lines"
+#~ msgstr "Scroll jos pe linii"
+
+#~ msgid "Scroll up by lines"
+#~ msgstr "Scroll sus pe linii"
+
+#~ msgid "Scroll down by half screen size"
+#~ msgstr "Scroll jos jumãtate de ecran"
+
+#~ msgid "Scroll up by half screen size"
+#~ msgstr "Scroll sus jumãtate de ecran"
+
+#~ msgid "Select the next window"
+#~ msgstr "Selecteazã fereastra urmãtoare"
+
+#~ msgid "Select the previous window"
+#~ msgstr "Selecteazã fereastra precedentã"
+
+#~ msgid "Split the current window"
+#~ msgstr "Împarte fereastra curentã"
+
+#~ msgid "Delete the current window"
+#~ msgstr "ªterge fereastra curentã"
+
+#~ msgid "Cannot delete a permanent window"
+#~ msgstr "Nu pot ºterge o fereastrã permanentã"
+
+#~ msgid "Delete all other windows"
+#~ msgstr "ªterge toate celelalte ferestre"
+
+#~ msgid "Scroll the other window"
+#~ msgstr "Scroll-eazã cealaltã fereastrã"
+
+#~ msgid "Scroll the other window backward"
+#~ msgstr "Scroll-eazã cealaltã fereastrã înapoi"
+
+#~ msgid "Grow (or shrink) this window"
+#~ msgstr "Creºte sau micºoreazã aceastã fereastrã"
+
+#~ msgid "Divide the available screen space among the visible windows"
+#~ msgstr "Împarte spaþiul de ecran disponibil între ferestrele vizibile"
+
+#~ msgid "Toggle the state of line wrapping in the current window"
+#~ msgstr "Comutã starea reformatãrii de linie (wrapping) în fereastra curentã"
+
+#~ msgid "Select the Next node"
+#~ msgstr "Selecteazã nodul Urmãtor"
+
+#~ msgid "Select the Prev node"
+#~ msgstr "Selectezã nodul Prec"
+
+#~ msgid "Select the Up node"
+#~ msgstr "Selecteazã nodul Sus"
+
+#~ msgid "Select the last node in this file"
+#~ msgstr "Selecteazã ultimul nod din acest fiºier"
+
+#~ msgid "This window has no additional nodes"
+#~ msgstr "Acestã fereastrã nu mai are nici un nod"
+
+#~ msgid "Select the first node in this file"
+#~ msgstr "Selecteazã primul nod din acest fiºier"
+
+#~ msgid "Select the last item in this node's menu"
+#~ msgstr "Selecteazã ultimul articol din meniul acestui nod"
+
+#~ msgid "Select this menu item"
+#~ msgstr "Selecteazã acest articol de meniu"
+
+#~ msgid "There aren't %d items in this menu."
+#~ msgstr "Nu existã %d articole în acest meniu"
+
+#~ msgid "Menu item (%s): "
+#~ msgstr "Articol meniu (%s): "
+
+#~ msgid "Menu item: "
+#~ msgstr "Articol meniu: "
+
+#~ msgid "Follow xref (%s): "
+#~ msgstr "Urmeazã ref (%s): "
+
+#~ msgid "Follow xref: "
+#~ msgstr "Urmeazã ref: "
+
+#~ msgid "Read a menu item and select its node"
+#~ msgstr "Citeºte un articol de meniu ºi selecteazã nodul sãu"
+
+#~ msgid "Read a footnote or cross reference and select its node"
+#~ msgstr "Citeºte o notã de subsol sau referinþã ºi selecteazã nodul sãu"
+
+#~ msgid "Move to the start of this node's menu"
+#~ msgstr "Mergi la începutul meniului acestui nod"
+
+#~ msgid "Visit as many menu items at once as possible"
+#~ msgstr "Viziteazã cât mai multe articole de meniu posibile deodatã"
+
+#~ msgid "Read a node name and select it"
+#~ msgstr "Citeºte numele unui nod ºi selecteazã-l"
+
+#~ msgid "Goto node: "
+#~ msgstr "Du-te la nod: "
+
+#~ msgid "No menu in node `%s'."
+#~ msgstr "Nici un meniu în nod `%s'."
+
+#~ msgid "No menu item `%s' in node `%s'."
+#~ msgstr "Nici un articol de meniu `%s' în nod `%s'."
+
+#~ msgid "Unable to find node referenced by `%s' in `%s'."
+#~ msgstr "Nu pot gãsi nodul referit de `%s' în `%s'."
+
+#~ msgid "Read a list of menus starting from dir and follow them"
+#~ msgstr "Citeºte o listã de meniuri pornind din dir ºi urmãreºte-le"
+
+#~ msgid "Follow menus: "
+#~ msgstr "Urmeazã meniurile: "
+
+#~ msgid "Find the node describing program invocation"
+#~ msgstr "Gãseºte nodul ce descrie invocarea programului"
+
+#~ msgid "Find Invocation node of [%s]: "
+#~ msgstr "Gãseºte nodul Invocare pentru [%s]: "
+
+#~ msgid "Read a manpage reference and select it"
+#~ msgstr "Citeºte o referinþã de paginã de manul ºi selecteazã-o"
+
+#~ msgid "Get Manpage: "
+#~ msgstr "Obþine paginã manual (manpage): "
+
+#~ msgid "Select the node `Top' in this file"
+#~ msgstr "Selecteazã nodul `Vârf' în acest fiºier"
+
+#~ msgid "Select the node `(dir)'"
+#~ msgstr "Selecteazã nodul `(dir)'"
+
+#~ msgid "Kill node (%s): "
+#~ msgstr "Distruge nodul (%s): "
+
+#~ msgid "Cannot kill node `%s'"
+#~ msgstr "Nu pot distruge nodul `%s'"
+
+#~ msgid "Cannot kill the last node"
+#~ msgstr "Nu pot distruge ultimul nod"
+
+#~ msgid "Select the most recently selected node"
+#~ msgstr "Selecteazã cel mai recent nod selectat"
+
+#~ msgid "Kill this node"
+#~ msgstr "Distruge acest nod"
+
+#~ msgid "Read the name of a file and select it"
+#~ msgstr "Citeºte numele unui fiºier ºi selecteazã-l"
+
+#~ msgid "Find file: "
+#~ msgstr "Gãseºte fiºier: "
+
+#~ msgid "Cannot find `%s'."
+#~ msgstr "Nu pot gãsi `%s'."
+
+#~ msgid "Could not create output file `%s'."
+#~ msgstr "Nu am putut crea fiºier ieºire `%s'."
+
+#~ msgid "Done."
+#~ msgstr "Terminat."
+
+#~ msgid "Writing node %s..."
+#~ msgstr "Scriu nod %s..."
+
+#~ msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
+#~ msgstr "Conectez (pipe) conþinutul acestui nod prin INFO_PRINT_COMMAND"
+
+#~ msgid "Cannot open pipe to `%s'."
+#~ msgstr "Nu pot deschide conexiune (pipe) cãtre `%s'."
+
+#~ msgid "Printing node %s..."
+#~ msgstr "Tipãresc nod %s..."
+
+#, fuzzy
+#~ msgid "Search continued from the beginning of the document."
+#~ msgstr "ªterge (kill) pânã la începutul liniei"
+
+#~ msgid "Searching subfile %s ..."
+#~ msgstr "Caut subfiºier %s ..."
+
+#~ msgid "Read a string and search for it case-sensitively"
+#~ msgstr "Citeºte un ºir ºi cautã-l þinând cont de litere mari/mici"
+
+#~ msgid "Read a string and search for it"
+#~ msgstr "Citeºte un ºir ºi cautã-l"
+
+#~ msgid "Read a string and search backward for it"
+#~ msgstr "Citeºte un ºir ºi cautã-l înapoi"
+
+#, fuzzy
+#~ msgid "%s%s%s [%s]: "
+#~ msgstr "%s%s pentru ºir [%s]: "
+
+#, fuzzy
+#~ msgid " case-sensitively"
+#~ msgstr " þinând cont de litere mari/mici"
+
+#, fuzzy
+#~ msgid " backward"
+#~ msgstr "Cautã înapoi"
+
+#~ msgid "Search"
+#~ msgstr "Cautã"
+
+#~ msgid "Search failed."
+#~ msgstr "Cãutare eºuatã."
+
+#~ msgid "Repeat last search in the same direction"
+#~ msgstr "Repetã ultima cãutare în aceeaºi direcþie"
+
+#~ msgid "No previous search string"
+#~ msgstr "Nici un ºir cãutat anterior"
+
+#~ msgid "Repeat last search in the reverse direction"
+#~ msgstr "Repetã ultima cãutare în direcþie opusã"
+
+#~ msgid "Search interactively for a string as you type it"
+#~ msgstr "Cautã interactiv pentru un ºir pe mãsurã ce este introdus"
+
+#, fuzzy
+#~ msgid "Regexp I-search backward: "
+#~ msgstr "I-cautã înapoi: "
+
+#~ msgid "I-search backward: "
+#~ msgstr "I-cautã înapoi: "
+
+#, fuzzy
+#~ msgid "Regexp I-search: "
+#~ msgstr "I-cautã: "
+
+#~ msgid "I-search: "
+#~ msgstr "I-cautã: "
+
+#~ msgid "Failing "
+#~ msgstr "Eºuez "
+
+#~ msgid "Move to the previous cross reference"
+#~ msgstr "Mergi la referinþa precedentã"
+
+#~ msgid "Move to the next cross reference"
+#~ msgstr "Mergi la referinþa urmãtoare"
+
+#~ msgid "Select reference or menu item appearing on this line"
+#~ msgstr ""
+#~ "Selecteazã referinþa sau articolul de meniu ce apare pe acestã linie"
+
+#~ msgid "Cancel current operation"
+#~ msgstr "Renunþã la operaþia curentã"
+
+#~ msgid "Quit"
+#~ msgstr "Ieºi"
+
+#~ msgid "Move the cursor to a specific line of the window"
+#~ msgstr "Mutã cursorul la o anumitã linie din fereastrã"
+
+#~ msgid "Redraw the display"
+#~ msgstr "Redeseneazã ecranul"
+
+#~ msgid "Quit using Info"
+#~ msgstr "Ieºi din Info"
+
+#~ msgid "Run command bound to this key's lowercase variant"
+#~ msgstr "Ruleazã comanda legatã de litera micã de pe tastã"
+
+#~ msgid "Unknown command (%s)."
+#~ msgstr "Comandã necunoscutã (%s)."
+
+#~ msgid "\"%s\" is invalid"
+#~ msgstr "\"%s\" este invalid"
+
+#~ msgid "`%s' is invalid"
+#~ msgstr "`%s' este invalid"
+
+#~ msgid "Add this digit to the current numeric argument"
+#~ msgstr "Adaugã aceastã cifrã la argumentul numeric curent"
+
+#~ msgid "Start (or multiply by 4) the current numeric argument"
+#~ msgstr "Începe (sau înmulþeºte cu 4) argumentul numeric curent"
+
+#~ msgid "Internally used by \\[universal-argument]"
+#~ msgstr "Folosit intern de \\[argument-universal]"
+
+#~ msgid "readline: Out of virtual memory!\n"
+#~ msgstr "readline: Nu mai am memorie virtualã!\n"
+
+#~ msgid "When \"On\", footnotes appear and disappear automatically"
+#~ msgstr "Când \"Activ\", notele de subsol apar ºi dispar automatic"
+
+#~ msgid "When \"On\", creating or deleting a window resizes other windows"
+#~ msgstr ""
+#~ "Când \"Activ\", crearea ºi ºtergere unei ferestre redimensioneazã alte "
+#~ "ferestre"
+
+#~ msgid "When \"On\", flash the screen instead of ringing the bell"
+#~ msgstr "Când \"Activ\", scânteiazã ecreanul în loc sã suni clopoþelul"
+
+#~ msgid "When \"On\", errors cause the bell to ring"
+#~ msgstr "Când \"Activ\", erorile face sã sune clopoþelul"
+
+#~ msgid ""
+#~ "When \"On\", Info garbage collects files which had to be uncompressed"
+#~ msgstr ""
+#~ "Când \"Activ\", Info colecteazã la gunoi fiºierele care au trebuit "
+#~ "decompresate"
+
+#~ msgid "When \"On\", the portion of the matched search string is highlighted"
+#~ msgstr ""
+#~ "Când \"Activ\", porþiunea din ºir care s-a potrivit este evidenþiatã"
+
+#~ msgid ""
+#~ "Controls what happens when scrolling is requested at the end of a node"
+#~ msgstr ""
+#~ "Controleazã ce se întâmplã când este cerut scroll la sfârºitul unui nod"
+
+#~ msgid "The number lines to scroll when the cursor moves out of the window"
+#~ msgstr ""
+#~ "Numãrul de linii pentru scroll când cursorul se mutã în afara ferestrei"
+
+#~ msgid "When \"On\", Info accepts and displays ISO Latin characters"
+#~ msgstr "Când \"Activ\", Info acceptã ºi afiºeazã caractere ISO Latin"
+
+#, fuzzy
+#~ msgid ""
+#~ "What to do when a scrolling command is issued at the end of the last node"
+#~ msgstr ""
+#~ "Controleazã ce se întâmplã când este cerut scroll la sfârºitul unui nod"
+
+#~ msgid "Explain the use of a variable"
+#~ msgstr "Explicã folosirea unei variabile"
+
+#~ msgid "Describe variable: "
+#~ msgstr "Descrie variabila: "
+
+#~ msgid "Set the value of an Info variable"
+#~ msgstr "Seteazã valoarea unei variabile Info"
+
+#~ msgid "Set variable: "
+#~ msgstr "Seteazã variabilã: "
+
+#~ msgid "Set %s to value (%d): "
+#~ msgstr "Seteazã %s cu valoarea (%d): "
+
+#~ msgid "Set %s to value (%s): "
+#~ msgstr "Seteazã %s cu valoarea (%s): "
+
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Tag-uri Vechi ***"
+
+#~ msgid "-----Info: (), lines ----, "
+#~ msgstr "-----Info: (), linii ----, "
+
+#~ msgid "-%s---Info: %s, %d lines --%s--"
+#~ msgstr "-%s---Info: %s, %d linii --%s--"
+
+#~ msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
+#~ msgstr "-%s%s-Info: (%s)%s, %d linii --%s--"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Subfiºier: %s"
+
+#~ msgid "%s: warning: "
+#~ msgstr "%s: avertisment: "
+
+#~ msgid " for %s"
+#~ msgstr " pentru %s"
+
+#~ msgid "\tTry `%s --help' for a complete list of options.\n"
+#~ msgstr "\tÎncercaþi `%s --help' pentru o lipsã completã de opþiuni.\n"
+
+#, fuzzy
+#~ msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+#~ msgstr "Folosire: %s [OPÞIUNE]... FIªIER-TEXINFO...\n"
+
+#~ msgid ""
+#~ "This is the file .../info/dir, which contains the\n"
+#~ "topmost node of the Info hierarchy, called (dir)Top.\n"
+#~ "The first time you invoke Info you start off looking at this node.\n"
+#~ "\n"
+#~ "%s\tThis is the top of the INFO tree\n"
+#~ "\n"
+#~ "  This (the Directory node) gives a menu of major topics.\n"
+#~ "  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
+#~ "  \"h\" gives a primer for first-timers,\n"
+#~ "  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
+#~ "\n"
+#~ "  In Emacs, you can click mouse button 2 on a menu item or cross "
+#~ "reference\n"
+#~ "  to select it.\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "Acesta este fiºierul .../info/dir, care conþine nodul\n"
+#~ "cel mai de sus din ierarhia Info, numit (dir)Top.\n"
+#~ "Prima datã când porniþi Info veþi vedea acest nod.\n"
+#~ "\n"
+#~ "%s\tAcesta este vârful arborelui INFO\n"
+#~ "\n"
+#~ "  Acesta (nodul Director) furnizeazã un meniu cu subiecte majore.\n"
+#~ "  Apãsând \"q\" terminã, \"?\" enumerã toate comenzile Info, \"d\" vã "
+#~ "aduce aici,\n"
+#~ "  \"h\" furnizeazã un tutorial pentru începãtori,\n"
+#~ "  \"mEmacs<Return>\" viziteazã manualul Emacs, etc.\n"
+#~ "\n"
+#~ "  În Emacs, puteþi face clic cu butonul 2 al mausului pe un articol de "
+#~ "meniu\n"
+#~ "  sau o referinþã pentru a o selecta.\n"
+#~ "\n"
+#~ "%s\n"
+
+#~ msgid "%s: could not read (%s) and could not create (%s)\n"
+#~ msgstr "%s: nu am putut citi (%s) ºi nu am putut crea (%s)\n"
+
+#~ msgid "%s: empty file"
+#~ msgstr "%s: fiºier gol"
+
+#~ msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
+#~ msgstr "START-INFO-DIR-ENTRY fãrã un END-INFO-DIR-ENTRY corespunzãtor"
+
+#~ msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
+#~ msgstr "END-INFO-DIR-ENTRY fãrã un  START-INFO-DIR-ENTRY corespunzãtor"
+
+#~ msgid "%s: already have dir file: %s\n"
+#~ msgstr "%s: are deja fiºier dir: %s\n"
+
+#~ msgid "%s: Specify the Info file only once.\n"
+#~ msgstr "%s: Specificã fiºierul Info o singurã datã.\n"
+
+#~ msgid "excess command line argument `%s'"
+#~ msgstr "argument suplimentar în linia de comandã `%s'"
+
+#~ msgid "No input file specified; try --help for more information."
+#~ msgstr ""
+#~ "Nici un fiºier de intrare specificat; încercaþi --help pentru informaþii "
+#~ "suplimentare."
+
+#~ msgid "No dir file specified; try --help for more information."
+#~ msgstr ""
+#~ "Nici un fiºier dir specificat; încercaþi --help pentru informaþii "
+#~ "suplimentare."
+
+#~ msgid "no info dir entry in `%s'"
+#~ msgstr "nici o intrare dir info în `%s'"
+
+#~ msgid "no entries found for `%s'; nothing deleted"
+#~ msgstr "nici o intrare gãsitã pentru `%s'; n-am ºters nimic"
+
+#~ msgid "January"
+#~ msgstr "Ianuarie"
+
+#~ msgid "February"
+#~ msgstr "Februarie"
+
+#~ msgid "March"
+#~ msgstr "Martie"
+
+#~ msgid "April"
+#~ msgstr "Aprilie"
+
+#~ msgid "May"
+#~ msgstr "Mai"
+
+#~ msgid "June"
+#~ msgstr "Iunie"
+
+#~ msgid "July"
+#~ msgstr "Iulie"
+
+#~ msgid "August"
+#~ msgstr "August"
+
+#~ msgid "September"
+#~ msgstr "Septembrie"
+
+#~ msgid "October"
+#~ msgstr "Octombrie"
+
+#~ msgid "November"
+#~ msgstr "Noiembrie"
+
+#~ msgid "December"
+#~ msgstr "Decembrie"
+
+#~ msgid "unlikely character %c in @var"
+#~ msgstr "caracter neverosimil %c în @var"
+
+#~ msgid "@sc argument all uppercase, thus no effect"
+#~ msgstr "argumentul @sc în litere mari, prin urmare fãrã efect"
+
+#~ msgid "`{' expected, but saw `%c'"
+#~ msgstr "`{' aºteptat, dar am vãzut `%c'"
+
+#~ msgid "end of file inside verb block"
+#~ msgstr "sfârºit de fiºier în interiorul blocului de verb"
+
+#~ msgid "`}' expected, but saw `%c'"
+#~ msgstr "`}' aºteptat, dar am vãzut `%c'"
+
+#~ msgid "Bad argument to %c%s"
+#~ msgstr "Argument nepotrivit pentru %c%s"
+
+#~ msgid "asis"
+#~ msgstr "aºacume"
+
+#~ msgid "none"
+#~ msgstr "nimic"
+
+#~ msgid "insert"
+#~ msgstr "insereazã"
+
+#, fuzzy
+#~ msgid "Bad argument to @%s: %s"
+#~ msgstr "Argument nepotrivit pentru @%s"
+
+#~ msgid "Function"
+#~ msgstr "Funcþie"
+
+#~ msgid "Macro"
+#~ msgstr "Macro"
+
+#~ msgid "Special Form"
+#~ msgstr "Formã Specialº"
+
+#~ msgid "Variable"
+#~ msgstr "Variabilã"
+
+#~ msgid "User Option"
+#~ msgstr "Opþiune Utilizator"
+
+#~ msgid "Instance Variable"
+#~ msgstr "Instanþiere Variabilã"
+
+#~ msgid "Method"
+#~ msgstr "Metodã"
+
+#~ msgid "of"
+#~ msgstr "din"
+
+#~ msgid "on"
+#~ msgstr "pe"
+
+#~ msgid "%s: getwd: %s, %s\n"
+#~ msgstr "%s: getwd: %s, %s\n"
+
+#~ msgid "`%s' omitted before output filename"
+#~ msgstr "`%s' omis înainte de numele fiºierului de ieºire"
+
+#~ msgid "`%s' omitted since writing to stdout"
+#~ msgstr "`%s' omis întrucât scriu la ieºirea standard (stdout)"
+
+#~ msgid "Output buffer not empty."
+#~ msgstr "Buffer-ul de ieºire nu este gol."
+
+#~ msgid "See "
+#~ msgstr "Vezi "
+
+#~ msgid "`%c%s' needs an argument `{...}', not just `%s'"
+#~ msgstr "`%c%s' necesitã un argument `{...}', nu numai `%s'"
+
+#~ msgid "No closing brace for footnote `%s'"
+#~ msgstr "Nici o parantezã de închidere pentru nota de subsol `%s'"
+
+#~ msgid "Footnotes inside footnotes are not allowed"
+#~ msgstr "Nu sun permise note de subsol în note de subsol"
+
+#~ msgid "Footnotes"
+#~ msgstr "Note de subsol"
+
+#~ msgid "Untitled"
+#~ msgstr "Fãrã titlu"
+
+#~ msgid "[unexpected] no html tag to pop"
+#~ msgstr "[neaºteptat] nici un tag html de ridicat"
+
+#~ msgid "[unexpected] invalid node name: `%s'"
+#~ msgstr "[neaºteptat] nume de nod invalid: `%s'"
+
+#~ msgid "Info cannot handle `:' in index entry `%s'"
+#~ msgstr "Info nu poate folosi `:' în intrarea de index `%s'"
+
+#~ msgid "Unknown index `%s' and/or `%s' in @synindex"
+#~ msgstr "Index-ul necunoscut `%s' ºi/sau `%s' în @synindex"
+
+#~ msgid "(line )"
+#~ msgstr "(linie )"
+
+#~ msgid "(outside of any node)"
+#~ msgstr "(în afara oricãrui nod)"
+
+#~ msgid "Broken-Type in insertion_type_pname"
+#~ msgstr "Tip-Greºit în insertion_type_pname"
+
+#~ msgid "Enumeration stack overflow"
+#~ msgstr "Stivã de enumerare inundatã (overflow)"
+
+#~ msgid "lettering overflow, restarting at %c"
+#~ msgstr "inundate (overflow) la tipãrire, reîncep la %c"
+
+#~ msgid "%cfloat environments cannot be nested"
+#~ msgstr "mediile %cfloat nu pot fi încuibãrite"
+
+#~ msgid "%s requires letter or digit"
+#~ msgstr "%s necesitã litere sau cifre"
+
+#~ msgid "end of file inside verbatim block"
+#~ msgstr "sfârºit de fiºier în interiorul blocului neformatat (verbatim)"
+
+#~ msgid "@detailmenu seen before first node, creating `Top' node"
+#~ msgstr "@detailmenu vãzut înainte de primul nod, creez nodul `Vârf'"
+
+#~ msgid ""
+#~ "@%s not meaningful outside `@titlepage' and `@quotation' environments"
+#~ msgstr "@%s nu are sens în exteriorul mediilor `@titlepage' ºi `@quotation'"
+
+#~ msgid "@%s not meaningful outside `@titlepage' environment"
+#~ msgstr "@%s nu are sens în exteriorul mediului `@titlepage'"
+
+#~ msgid "Unmatched `%c%s'"
+#~ msgstr "`%c%s' fãrã pereche"
+
+#~ msgid "`%c%s' needs something after it"
+#~ msgstr "`%c%s' necesitã ceva dupã el"
+
+#~ msgid "Bad argument `%s' to `@%s', using `%s'"
+#~ msgstr "Argument greºit `%s' pentru `@%s', folosesc `%s'"
+
+#~ msgid "@itemx not meaningful inside `%s' block"
+#~ msgstr "@itemx nu are sens în interiorul blocului `%s'"
+
+#~ msgid "%c%s found outside of an insertion block"
+#~ msgstr "%c%s gãsit în afara unui bloc de inserare"
+
+#~ msgid "invalid encoded character `%s'"
+#~ msgstr "caracter codat invalid `%s'"
+
+#~ msgid "mismatched @end %s with @%s"
+#~ msgstr "nepotrivire @end %s cu @%s"
+
+#, fuzzy
+#~ msgid ""
+#~ "Options for XML and Docbook:\n"
+#~ "      --output-indent=VAL     indent XML elements by VAL spaces (default %"
+#~ "d).\n"
+#~ "                                If VAL is 0, ignorable whitespace is "
+#~ "dropped.\n"
+#~ msgstr ""
+#~ "Opþiuni pentru HTML:\n"
+#~ "      --css-include=FIªIER      aliniazã elemente XML cu VAL spaþii "
+#~ "(implicit %d)\n"
+#~ "                                  dacã VAL e 0, spaþiile goale ce pot fi "
+#~ "ignorate nu sunt afiºate.\n"
+
+#~ msgid "%s: %s arg must be numeric, not `%s'.\n"
+#~ msgstr "%s: %s arg trebuie sã fie numeric, nu `%s'.\n"
+
+#~ msgid "%s: could not open macro expansion output `%s'"
+#~ msgstr "%s: nu am putut deschide ieºirea expansiunii macro-ului `%s'"
+
+#~ msgid "%s: ignoring second macro expansion output `%s'.\n"
+#~ msgstr "%s: nu am putut deschide ieºirea expansiunii macro-ului `%s'.\n"
+
+#, fuzzy
+#~ msgid "%s: could not open internal links output `%s'"
+#~ msgstr "%s: nu am putut deschide ieºirea expansiunii macro-ului `%s'"
+
+#, fuzzy
+#~ msgid "%s: ignoring second internal links output `%s'.\n"
+#~ msgstr "%s: nu am putut deschide ieºirea expansiunii macro-ului `%s'.\n"
+
+#~ msgid "Multiline command %c%s used improperly"
+#~ msgstr "Comandã pe multiple linii %c%s folositã incorect"
+
+#~ msgid "Expected `%s'"
+#~ msgstr "Am aºteptat `%s'"
+
+#~ msgid "No `%s' found in `%s'"
+#~ msgstr "Nici un `%s' nu a fost gãsit în `%s'"
+
+#~ msgid ""
+#~ "%s: Skipping macro expansion to stdout as Info output is going there.\n"
+#~ msgstr ""
+#~ "%s: Omite expasiunea macro la ieºire întrucât ieºirea Info merge acolo.\n"
+
+#~ msgid "Making %s file `%s' from `%s'.\n"
+#~ msgstr "Creez fiºierul %s `%s' din `%s'.\n"
+
+#~ msgid ""
+#~ "%s: Removing macro output file `%s' due to errors; use --force to "
+#~ "preserve.\n"
+#~ msgstr ""
+#~ "%s: ªterg fiºierul de ieºire macro `%s' din cauza erorilor; folosiþi --"
+#~ "force pentru a-l pãstra.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "%s: Removing internal links output file `%s' due to errors; use --force "
+#~ "to preserve.\n"
+#~ msgstr ""
+#~ "%s: fiºierul de ieºire `%s' din cauza erorilor; folosiþi --force pentru a-"
+#~ "l pãstra.\n"
+
+#~ msgid "Unmatched }"
+#~ msgstr "} fãrã pereche"
+
+#~ msgid "NO_NAME!"
+#~ msgstr "NICI_UN_NUME!"
+
+#~ msgid "This is %s, produced by makeinfo version %s from %s.\n"
+#~ msgstr "Acesta este %s, produs de makeinfo versiunea %s din %s.\n"
+
+#~ msgid "No such file `%s'"
+#~ msgstr "Nici un fiºier `%s'"
+
+#~ msgid "@image file `%s' (for text) unreadable: %s"
+#~ msgstr "Fiºierul @image `%s' (pentru text) nu poate fi citit: %s"
+
+#~ msgid "@image missing filename argument"
+#~ msgstr "@image lipseºte fiºierul argument."
+
+#~ msgid "{No value for `%s'}"
+#~ msgstr "{Nici o valoare pentru `%s'}"
+
+#~ msgid "`%.40s...' is too long for expansion; not expanded"
+#~ msgstr "`%.40s...' este prea lung pentru expansiune; nu a fost expandat"
+
+#~ msgid "Missing } in @multitable template"
+#~ msgstr "} lipsã în ºablonul @multitable"
+
+#~ msgid "[unexpected] cannot select column #%d in multitable"
+#~ msgstr "[neaºteptat] nu pot selecta coloana #%d în multitabel"
+
+#~ msgid "** Multicolumn output from last row:\n"
+#~ msgstr "** Ieºirea multitabel din ultimul rând:\n"
+
+#~ msgid "* column #%d: output = %s\n"
+#~ msgstr "* coloana #%d: ieºire = %s\n"
+
+#~ msgid "Formatting node %s...\n"
+#~ msgstr "Formatez nodul %s...\n"
+
+#~ msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
+#~ msgstr "Nodul `%s' cere o comandã de secþionare (ex., %c%s)"
+
+#~ msgid "No node name specified for `%c%s' command"
+#~ msgstr "Nici un nume specificat pentru comanda `%c%s'"
+
+#~ msgid "This @anchor command ignored; references to it will not work"
+#~ msgstr ""
+#~ "Aceastã comandã @anchor ignoratã; referinþele cãtre acesta nu vor merge"
+
+#~ msgid "Rename this anchor or use the `--no-split' option"
+#~ msgstr "Redenumeºte acest ancoraj sau foloseºte opþiunea `--no-split'"
+
+#~ msgid "Unexpected string at end of split-HTML file `%s'"
+#~ msgstr "ªir neaºteptat la sfârºitul fiºierului HTML spart `%s'"
+
+#~ msgid "Next:"
+#~ msgstr "Urmãtor:"
+
+#~ msgid "Previous:"
+#~ msgstr "Precedent:"
+
+#~ msgid "Up:"
+#~ msgstr "Sus:"
+
+#~ msgid "Anchors `%s' and `%s' map to the same file name"
+#~ msgstr "Ancoraj `%s' ºi `%s' aratã cãtre acelaºi nume de fiºier"
+
+#~ msgid "@anchor command ignored; references to it will not work"
+#~ msgstr "Comandã @anchor ignoratã; referinþele cãtre acesta nu vor merge"
+
+#~ msgid ""
+#~ "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
+#~ msgstr ""
+#~ "referinþa %s cãtre nodul inexistent `%s' (probabil secþionare incorectã?)"
+
+#~ msgid "Menu"
+#~ msgstr "Meniu"
+
+#~ msgid "Cross"
+#~ msgstr "Traverseazã"
+
+#~ msgid ""
+#~ "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
+#~ msgstr ""
+#~ "Urmãtorul câmp de nod `%s' nu este referit (probabil secþionare "
+#~ "incorectã?)"
+
+#~ msgid "This node (%s) has the bad Prev"
+#~ msgstr "Acest nod (%s) are un Prec incorect"
+
+#~ msgid "Prev"
+#~ msgstr "Prec"
+
+#~ msgid "Prev field of node `%s' not pointed to"
+#~ msgstr "Câmpul Prec al nodului `%s' nu este referit"
+
+#~ msgid "This node (%s) has the bad Next"
+#~ msgstr "Acest nod (%s) are referinþa Urmãtor incorectã"
+
+#~ msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
+#~ msgstr "`%s' nu are nici un câmp Sus (probabil secþionare incorectã?)"
+
+#~ msgid "Up"
+#~ msgstr "Sus"
+
+#~ msgid "Removing %s\n"
+#~ msgstr "ªterg %s\n"
+
+#~ msgid "Can't remove file `%s': %s"
+#~ msgstr "Nu pot ºterge fisierul `%s': %s"
+
+#~ msgid "Internal error (search_sectioning) `%s'!"
+#~ msgstr "Eroare internã (search_sectioning) `%s'!"
+
+#~ msgid "Internal error (search_sectioning) \"%s\"!"
+#~ msgstr "Eroare internã (search_sectioning) \"%s\"!"
+
+#~ msgid "%c%s is obsolete; use %c%s instead"
+#~ msgstr "%c%s este depãºitã; foloseºte %c%s în schimb"
+
+#~ msgid "Node with %ctop as a section already exists"
+#~ msgstr "Nodul cu %ctop ca ºi secþiune existã deja"
+
+#~ msgid "Here is the %ctop node"
+#~ msgstr "Aici este nodul %ctop"
+
+#~ msgid "%ctop used before %cnode, defaulting to %s"
+#~ msgstr "%ctop folosit înaintea lui %cnode, implicit cãtre %s"
+
+#~ msgid ""
+#~ "@headitem as the last item of @multitable produces invalid Docbook "
+#~ "documents"
+#~ msgstr ""
+#~ "@headitem ca ultimul articol din @multitable produce documenteDocbook "
+#~ "invalide"
+
+#, fuzzy
+#~ msgid "see "
+#~ msgstr "Vezi "
+
+#, fuzzy
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "Nici o referinþã la acelaºi pasaj în acest nod."
+
+#~ msgid "display this help and exit"
+#~ msgstr "afiºeazã acest mesaj ºi terminã"
+
+#~ msgid "send output to FILE"
+#~ msgstr "trimite ieºire în FIªIER"
+
+#~ msgid "display version information and exit"
+#~ msgstr "afiºeazã informaþii despre versiune ºi terminã"
+
+#~ msgid "Usage: %s [OPTION]... FILE...\n"
+#~ msgstr "Folosire: %s [OPÞIUNI]... FIªIER...\n"
+
+#~ msgid "Generate a sorted index for each TeX output FILE.\n"
+#~ msgstr "Genereazã un index sortat pentru fiecare FIªIER de ieºire TeX.\n"
+
+#~ msgid ""
+#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+#~ msgstr ""
+#~ "De obicei FIªIER... este specificat ca `foo.%c%c' pentru un document 'foo."
+#~ "texi'.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Options:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Opþiuni:\n"
+
+#~ msgid "failure reopening %s"
+#~ msgstr "am eºuat sã redeschid %s"
+
+#~ msgid "%s: not a texinfo index file"
+#~ msgstr "%s: nu este un fiºier index texinfo"
+
+#~ msgid "No page number in %s"
+#~ msgstr "Nici un numãr de paginã în %s"
+
+#~ msgid "entry %s follows an entry with a secondary name"
+#~ msgstr "intrarea %s urmeazã o intrare cu nume secundar"
+
+#~ msgid "Appendix %c"
+#~ msgstr "Anexã %c"
+
+#~ msgid ""
+#~ "\\%-10[search]  Search forward for a specified string\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "\\%-10[search]  Cautã înainte un ºir specificat\n"
+#~ "              ºi selecteazã nodul în care acesta este gãsit.\n"
+
+#~ msgid ""
+#~ "\\%-10[goto-node]  Move to node specified by name.\n"
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr ""
+#~ "\\%-10[goto-node]  Mergi la nodul specificat prin nume.\n"
+#~ "             Puteþi include ºi un nume de fiºier, ca în (NUMEFIªIER)"
+#~ "NUMENOD.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[next-node]  Move to the next node of current section.\n"
+#~ msgstr "\\%-10[next-node]  Mergi la \"urmãtorul\" nod al acestui nod.\n"
+
+#~ msgid ""
+#~ "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
+#~ "node] (DIR)'.\n"
+#~ msgstr ""
+#~ "\\%-10[dir-node]  Mergi la nodul `director'.  Echivalent cu `\\[goto-"
+#~ "node] (DIR)'.\n"
+
+#~ msgid ""
+#~ "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] "
+#~ "Top'.\n"
+#~ msgstr ""
+#~ "\\%-10[top-node]  Mergi la nodul Vârf.  Echivalent cu `\\[goto-node] "
+#~ "Top'.\n"
+
+#~ msgid ""
+#~ "\\%-10[search-backward]  Search backward for a specified string\n"
+#~ "              and select the node in which the previous occurrence is "
+#~ "found.\n"
+#~ msgstr ""
+#~ "\\%-10[search-backward]  Cautã înapoi un ºir specificat\n"
+#~ "              ºi selecteazã nodul în care acesta este gãsit.\n"
+
+#~ msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
+#~ msgstr ""
+#~ "--- Folosiþi `\\[history-node]' sau `\\[kill-node]' pentru a termina ---\n"
+
+#, fuzzy
+#~ msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
+#~ msgstr ""
+#~ "\\%-10[move-to-prev-xref]  Sari la legãtura hypertext precedentã din "
+#~ "acest nod.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [MENU-ITEM...]\n"
+#~ "\n"
+#~ "Read documentation in Info format.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "      --apropos=STRING         look up STRING in all indices of all "
+#~ "manuals.\n"
+#~ "  -d, --directory=DIR          add DIR to INFOPATH.\n"
+#~ "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
+#~ "  -f, --file=FILENAME          specify Info file to visit.\n"
+#~ "  -h, --help                   display this help and exit.\n"
+#~ "      --index-search=STRING    go to node pointed by index entry STRING.\n"
+#~ "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
+#~ "  -o, --output=FILENAME        output selected nodes to FILENAME.\n"
+#~ "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
+#~ "      --no-raw-escapes         output escapes as literal text.\n"
+#~ "      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
+#~ "  -O, --show-options, --usage  go to command-line options node.\n"
+#~ "%s      --subnodes               recursively output menu items.\n"
+#~ "  -w, --where, --location      print physical location of Info file.\n"
+#~ "      --vi-keys                use vi-like and less-like key bindings.\n"
+#~ "      --version                display version information and exit.\n"
+#~ "\n"
+#~ "The first non-option argument, if present, is the menu entry to start "
+#~ "from;\n"
+#~ "it is searched for in all `dir' files along INFOPATH.\n"
+#~ "If it is not present, info merges all `dir' files and shows the result.\n"
+#~ "Any remaining arguments are treated as the names of menu\n"
+#~ "items relative to the initial node visited.\n"
+#~ "\n"
+#~ "Examples:\n"
+#~ "  info                       show top-level dir menu\n"
+#~ "  info emacs                 start at emacs node from top-level dir\n"
+#~ "  info emacs buffers         start at buffers node within emacs manual\n"
+#~ "  info --show-options emacs  start at node with emacs' command line "
+#~ "options\n"
+#~ "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
+#~ "  info -f ./foo.info         show file ./foo.info, not searching dir\n"
+#~ msgstr ""
+#~ "Folosire: %s [OPÞIUNE]... [ARTICOL-MENIU...]\n"
+#~ "\n"
+#~ "Citeºte documentaþie în formatul Info.\n"
+#~ "\n"
+#~ "Opþiuni:\n"
+#~ "      --apropos=ªIR            cautã ªIR în toþi indexurile tuturor "
+#~ "manualelor.\n"
+#~ "  -d, --directory=DIR          adaugã DIR la INFOPATH.\n"
+#~ "      --dribble=NUMEFIªIER     aminteºte ce tasteazã utilizatorul în "
+#~ "NUMEFIªIER.\n"
+#~ "  -f, --file=NUMEFIªIER        specificã fiºierul Info de vizitat.\n"
+#~ "  -h, --help                   afiºeazã acest mesaj ºi terminã.\n"
+#~ "      --index-search=STRING    mergi la nodul referit de intrarea "
+#~ "indexului ªIR.\n"
+#~ "  -n, --node=NUMENOD           specificã nodurile în primul fiºier Info "
+#~ "vizitat.\n"
+#~ "  -o, --output=NUMEFIªIER      scrie nodurile selectate în NUMEFIªIER.\n"
+#~ "  -R, --raw-escapes            scrie \"raw\" escape-uri ANSI (implicit).\n"
+#~ "      --no-raw-escapes         scrie escape-urile ca text normal.\n"
+#~ "      --restore=NUMEFIªIER     citeºte apãsãrile de teste iniþiale din "
+#~ "NUMEFIªIER.\n"
+#~ "  -O, --show-options, --usage  mergi la nodul cu opþiunile liniei de "
+#~ "comandã.\n"
+#~ "%s      --subnodes             afiºeazã recursiv articolele de meniu.\n"
+#~ "  -w, --where, --location      afiºeazã locaþia fizicã a fiºierului "
+#~ "Info.\n"
+#~ "      --vi-keys                foloseºte key bindings similare cu cele "
+#~ "din vi ºi less.\n"
+#~ "      --version                afiºeazã informaþii versiune ºi terminã.\n"
+#~ "\n"
+#~ "Primul argument ce nu e o opþiune, dacã e prezent, este articolul de "
+#~ "meniu\n"
+#~ "de la care se începe; acesta este cãutat în toate fiºierele `dir' din\n"
+#~ "INFOPATH. Dacã acesta nu este prezent, info combinã toate fiºierele "
+#~ "`dir'\n"
+#~ "ºi aratã rezultatul. Restul argumentelor sunt tratate ca nume de "
+#~ "articole\n"
+#~ "de meniu relative la nodul vizitat iniþial.\n"
+#~ "\n"
+#~ "Exemple:\n"
+#~ "  info                      aratã conþinutul dir-ectorului din meniul\n"
+#~ "                              nivelului de vârf\n"
+#~ "  info emacs                începe la nodul emacs din dir-ectorul "
+#~ "nivelului\n"
+#~ "                              de vârf\n"
+#~ "  info emacs buffers        începe la nodul buffere din manualul emacs\n"
+#~ "  info --show-options emacs începe la nodul cu opþiunile liniei de\n"
+#~ "                               comandã pentru emacs\n"
+#~ "  info -f ./foo.info        aratã fiºierul ./foo.info, nu cãuta dir\n"
+
+#~ msgid ""
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr ""
+#~ "              Alegând un articol de meniu face ca alt nod sã fie "
+#~ "selectat.\n"
+
+#~ msgid ""
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr ""
+#~ "              Puteþi include ºi un nume de fiºier, ca în (NUMEFIªIER)"
+#~ "NUMENOD.\n"
+
+#~ msgid "  %-10s  Search backward for a specified string\n"
+#~ msgstr "  %-10s  Cautã înapoi un ºir specificat\n"
+
+#~ msgid ""
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr "              ºi selecteazã nodul în care acesta este gãsit.\n"
+
+#~ msgid "Following Next node..."
+#~ msgstr "Urmeazã nodul Urmãtor..."
+
+#~ msgid "Selecting first menu item..."
+#~ msgstr "Selectare primul articol din meniu..."
+
+#~ msgid "Selecting Next node..."
+#~ msgstr "Selectare nod Urmãtor..."
+
+#~ msgid "Moving Up %d time(s), then Next."
+#~ msgstr "Merg în Sus %d ori, apoi Urmãtor."
+
+#~ msgid "Moving Prev in this window."
+#~ msgstr "Mut Prec în aceatã fereastã"
+
+#~ msgid "Moving Up in this window."
+#~ msgstr "Merg în Sus în aceastã fe"
+
+#~ msgid "Moving to `Prev's last menu item."
+#~ msgstr "Merg la ultimul articol din meniul `Prec'"
+
+#~ msgid " "
+#~ msgstr " "
+
+#, fuzzy
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+#~ "\n"
+#~ "Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ " --debug           report what is being done.\n"
+#~ " --delete          delete existing entries for INFO-FILE from DIR-FILE;\n"
+#~ "                     don't insert any new entries.\n"
+#~ " --dir-file=NAME   specify file name of Info directory file.\n"
+#~ "                     This is equivalent to using the DIR-FILE argument.\n"
+#~ " --entry=TEXT      insert TEXT as an Info directory entry.\n"
+#~ "                     TEXT should have the form of an Info menu item line\n"
+#~ "                     plus zero or more extra lines starting with "
+#~ "whitespace.\n"
+#~ "                     If you specify more than one entry, they are all "
+#~ "added.\n"
+#~ "                     If you don't specify any entries, they are "
+#~ "determined\n"
+#~ "                     from information in the Info file itself.\n"
+#~ " --help            display this help and exit.\n"
+#~ " --info-file=FILE  specify Info file to install in the directory.\n"
+#~ "                     This is equivalent to using the INFO-FILE argument.\n"
+#~ " --info-dir=DIR    same as --dir-file=DIR/dir.\n"
+#~ " --item=TEXT       same as --entry TEXT.\n"
+#~ "                     An Info directory entry is actually a menu item.\n"
+#~ " --quiet           suppress warnings.\n"
+#~ " --remove          same as --delete.\n"
+#~ " --remove-exactly  only remove if the info file name matches exactly;\n"
+#~ "                     .info and/or .gz suffixes are not ignored.\n"
+#~ " --section=SEC     put this file's entries in section SEC of the "
+#~ "directory.\n"
+#~ "                     If you specify more than one section, all the "
+#~ "entries\n"
+#~ "                     are added in each of the sections.\n"
+#~ "                     If you don't specify any sections, they are "
+#~ "determined\n"
+#~ "                     from information in the Info file itself.\n"
+#~ " --section-regex=R if an entry is added to a section that does not "
+#~ "exist,\n"
+#~ "                     look for a section matching basic regular expression "
+#~ "R\n"
+#~ "                     (and ignoring case) before starting a new section.\n"
+#~ " --test            suppress updating of DIR-FILE.\n"
+#~ " --silent          suppress warnings.\n"
+#~ " --version         display version information and exit.\n"
+#~ msgstr ""
+#~ "Usage: %s [OPÞIUNE]... [FIªIER-INFO [FIªIER-DIR]]\n"
+#~ "\n"
+#~ "Instaleazã sau ºterge intrãri dir din FIªIER-INFO în fiºier director "
+#~ "Info \n"
+#~ "FIªIER-DIR.\n"
+#~ "\n"
+#~ "Opþiuni:\n"
+#~ " --delete          ºterge intrãri existente pentru FIªIER-INFO din FIªIER-"
+#~ "DIR;\n"
+#~ "                     nu insera nici o nouã intrare.\n"
+#~ " --dir-file=NUME   specificã nume fiºier pentru fiºierul director Info.\n"
+#~ "                     This is equivalent to using the DIR-FILE argument.\n"
+#~ " --entry=TEXT      insereazã TEXT ca o intrare de director Info.\n"
+#~ "                     TEXT ar trebui sã aibã forma unei linii articol "
+#~ "meniu Info \n"
+#~ "                     plus zero sau mai multe extra linii începând cu "
+#~ "spaþiu.\n"
+#~ "                     Dacã precizaþi mai mult de o intrare, toate sunt "
+#~ "adãugate.\n"
+#~ "                     Dacã nu precizaþi nici o intrare, ele sunt "
+#~ "determinate\n"
+#~ "                     din informaþiile din fiºierul Info.\n"
+#~ " --help            afiºeazã acest mesaj ºi terminã.\n"
+#~ " --info-file=FIªIER  specificã fiºierul Info de instalat în director.\n"
+#~ "                     Acesta este echivalent cu folosirea argumentului "
+#~ "FIªIER-INFO.\n"
+#~ " --info-dir=DIR    acelaºi efect ca --dir-file=DIR/dir.\n"
+#~ " --item=TEXT       acelaºi efect ca --entry TEXT.\n"
+#~ "                     O intrare director Info este de fapt un articol de "
+#~ "meniu.\n"
+#~ " --quiet           suprimã avertismentele.\n"
+#~ " --remove          acelaºi efect ca --delete.\n"
+#~ " --section=SEC     pune intrãrile acestui fiºier în secþiunea SEC, toate\n"
+#~ "                     intrãrile sunt adãugate în fiecare dintre secþiuni.\n"
+#~ "                     Dacã nu specificaþi nici o secþiune, acestea sunt\n"
+#~ "                     determinate din informaþiile din fiºierul Info.\n"
+#~ " --version         afiºeazã informaþii depre versiune ºi terminã.\n"
+
+#~ msgid "menu item `%s' already exists, for file `%s'"
+#~ msgstr "articol meniu `%s' existã deja, pentru fiºier `%s'"
+
+#~ msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
+#~ msgstr ""
+#~ "\\%-10[menu-digit]  Alege primul ... al nouãlea articol în meniul "
+#~ "nodului.\n"
+
+#~ msgid "node `%s' has been referenced %d times"
+#~ msgstr "nodul `%s' a fost referit de %d ori"
+
+#, fuzzy
+#~ msgid ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"
+#~ "PARTICULAR PURPOSE.  You may redistribute copies of GNU %s\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the file named COPYING.\n"
+#~ msgstr ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "Nu existã NICI o garanþie.  Puteþi redistribui acest software conform\n"
+#~ "termenilor Licenþei Publice Generale GNU (GNU GPL). Pentru informaþii\n"
+#~ "suplimentare despre aceste chestiuni, vedeþi fiºierul numit COPYING.\n"
+
+#~ msgid "@quote-arg only useful for single-argument macros"
+#~ msgstr "@quote-arg folositor numai pentru macro-uri cu un singur argument"
+
+#~ msgid "Table of Contents"
+#~ msgstr "Cuprins"
+
+#~ msgid "Short Contents"
+#~ msgstr "Rezumate"
+
+#~ msgid "keep temporary files around after processing"
+#~ msgstr "pãstreazã fiºierele temporare dupã procesare"
+
+#~ msgid "do not keep temporary files around after processing (default)"
+#~ msgstr "nu pãstra fiºierele temporare dupã procesare (implicit)"
+
+#~ msgid ""
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr ""
+#~ "              ºi selecteazã nodul referit de prima intrare gãsitã.\n"
+
+#~ msgid ""
+#~ "There is NO warranty.  You may redistribute this software\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the files named COPYING.\n"
+#~ msgstr ""
+#~ "Nu existã NICI o garanþie.  Puteþi redistribui acest software conform\n"
+#~ "termenilor Licenþei Publice Generale GNU (GNU GPL). Pentru informaþii\n"
+#~ "suplimentare despre aceste chestiuni, vedeþi fiºierul numit COPYING.\n"

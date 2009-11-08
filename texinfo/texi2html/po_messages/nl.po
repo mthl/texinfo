@@ -1,0 +1,2861 @@
+# Dutch translations for texinfo-4.12.94.
+# Copyright (C) 2008 Free Software Foundation, Inc.
+# This file is distributed under the same license as the texinfo package.
+#
+# Ivo Timmermans <zarq@iname.com>, 1998.
+# Freek de Kruijf <f.de.kruijf@hetnet.nl>, 2004, 2005, 2007.
+# Benno Schulenberg <benno@vertaalt.nl>, 2007, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: texinfo-4.12.94\n"
+"Report-Msgid-Bugs-To: texi2html-bug@nongnu.org\n"
+"POT-Creation-Date: 2009-11-08 16:40+0100\n"
+"PO-Revision-Date: 2008-08-17 23:34+0200\n"
+"Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
+"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: texi2html.pl:2259
+#, perl-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Typ '%s --help' voor meer informatie.\n"
+
+#: texi2html.pl:2368
+#, fuzzy, perl-format
+msgid "%s is not a valid language code"
+msgstr "%s is geen geldige ISO 639-taalcode"
+
+#: texi2html.pl:2372
+#, fuzzy, perl-format
+msgid "%s is not a valid region code"
+msgstr "%s is geen geldige ISO 639-taalcode"
+
+#: texi2html.pl:2458
+#, perl-format
+msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgstr ""
+"%s: Argument van --footnote-style moet 'separate' of 'end' zijn, niet '%s'.\n"
+
+#: texi2html.pl:2463
+#, fuzzy, perl-format
+msgid "@%s arg must be `separate' or `end', not `%s'"
+msgstr ""
+"%s: Argument van --footnote-style moet 'separate' of 'end' zijn, niet '%s'.\n"
+
+#: texi2html.pl:2481
+#, perl-format
+msgid "unrecognized encoding name `%s'"
+msgstr "onbekende coderingsnaam '%s'"
+
+#: texi2html.pl:2496
+msgid "Document encoding is utf8, but there is no unicode support"
+msgstr ""
+
+#: texi2html.pl:2499
+#, fuzzy, perl-format
+msgid "Encoding %s certainly poorly supported"
+msgstr "sorry, codering '%s' wordt niet ondersteund"
+
+#: texi2html.pl:2518 texi2html.pl:2592
+msgid "translation"
+msgstr ""
+
+#: texi2html.pl:2750
+#, perl-format
+msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgstr ""
+"%s: Argument van --paragraph-indent moet numeriek, 'none' of 'asis' zijn, "
+"niet '%s'.\n"
+
+#: texi2html.pl:2754
+#, fuzzy, perl-format
+msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
+msgstr ""
+"%s: Argument van --paragraph-indent moet numeriek, 'none' of 'asis' zijn, "
+"niet '%s'.\n"
+
+#: texi2html.pl:3612
+#, perl-format
+msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+msgstr "Gebruik:  %s [OPTIE]... TEXINFO-BESTAND...\n"
+
+#: texi2html.pl:3614
+msgid ""
+"Translate Texinfo source documentation to various other formats, by default\n"
+"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
+msgstr ""
+"Texinfo-bestanden omzetten naar een bepaalde opmaak.\n"
+"Standaard worden 'Info'-bestanden aangemaakt.  Deze kunnen\n"
+"gelezen worden met 'emacs' of met het zelfstandige 'info'.\n"
+
+#: texi2html.pl:3617
+#, perl-format
+msgid ""
+"General options:\n"
+"      --error-limit=NUM       quit after NUM errors (default %d).\n"
+"      --document-language=STR locale to use in translating Texinfo keywords\n"
+"                                for the output document (default C).\n"
+"      --force                 preserve output even if errors.\n"
+"      --help                  display this help and exit.\n"
+"      --no-validate           suppress node cross-reference validation.\n"
+"      --no-warn               suppress warnings (but not errors).\n"
+"  -v, --verbose               explain what is being done.\n"
+"      --version               display version information and exit.\n"
+msgstr ""
+"Algemene opties:\n"
+"      --error-limit=AANTAL    na dit aantal fouten stoppen (standaard %d)\n"
+"      --document-language=TAALCODE  te gebruiken taalregio (standaard C) "
+"bij\n"
+"                                      het vertalen van Texinfo-"
+"sleutelwoorden\n"
+"      --force                 uitvoerbestand behouden ook bij fouten\n"
+"      --help                  deze hulptekst tonen en stoppen\n"
+"      --no-validate           controle van kruisverwijzingen onderdrukken\n"
+"      --no-warn               waarschuwingen onderdrukken (maar fouten "
+"niet)\n"
+"  -v, --verbose               tonen wat er gedaan wordt\n"
+"      --version               versie-informatie tonen en stoppen\n"
+
+#: texi2html.pl:3628
+msgid ""
+"Output format selection (default is to produce Info):\n"
+"      --docbook               output Docbook XML rather than Info.\n"
+"      --html                  output HTML rather than Info.\n"
+"      --xml                   output Texinfo XML rather than Info.\n"
+"      --plaintext             output plain text rather than Info.\n"
+msgstr ""
+"Opmaakselectie (standaard wordt Info-opmaak geproduceerd):\n"
+"      --docbook               Docbook-XML produceren\n"
+"      --html                  HTML produceren\n"
+"      --plaintext             platte tekst produceren\n"
+"      --xml                   Texinfo-XML produceren\n"
+
+#: texi2html.pl:3634
+msgid ""
+"General output options:\n"
+"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+"                                ignoring any @setfilename.\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output);\n"
+"                                also, write to standard output by default.\n"
+"      --no-split              suppress the splitting of Info or HTML "
+"output,\n"
+"                                generate only one output file.\n"
+"      --number-sections       output chapter and sectioning numbers.\n"
+"  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
+msgstr ""
+"Algemene uitvoeropties:\n"
+"  -E, --macro-expand=BESTAND  macro-geëxpandeerde brontekst naar dit "
+"bestand\n"
+"                                schrijven, eventuele @setfilename's negeren\n"
+"      --no-headers            kopregels en menu's weglaten, zodat Info-"
+"uitvoer\n"
+"                                platte tekst wordt en HTML-uitvoer korter;\n"
+"                                standaard naar standaarduitvoer schrijven\n"
+"      --no-split              splitsing van Info- of HTML-uitvoer "
+"onderdrukken,\n"
+"                                slechts één uitvoerbestand aanmaken\n"
+"      --number-sections       hoofdstuk- en sectienummers produceren\n"
+"  -o, --output=BESTAND        uitvoerbestand (of map indien gesplitste "
+"HTML)\n"
+
+#: texi2html.pl:3646
+#, perl-format
+msgid ""
+"Options for Info and plain text:\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %"
+"d).\n"
+"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
+"                                `separate' to put them in their own node;\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
+"d).\n"
+"                                If VAL is `none', do not indent; if VAL is\n"
+"                                `asis', preserve existing indentation.\n"
+"      --split-size=NUM        split Info files at size NUM (default %d).\n"
+msgstr ""
+"Opties voor Info en platte tekst:\n"
+"      --disable-encoding      geen tekens met accenten in de uitvoer "
+"produceren\n"
+"      --enable-encoding       tekens met accenten toestaan (standaard)\n"
+"      --fill-column=AANTAL    regels afbreken op deze lengte (standaard %d)\n"
+"      --footnote-style=STIJL  voetnoten produceren volgens deze stijl; "
+"indien\n"
+"                                'end', dan aan het einde van de pagina "
+"waarin\n"
+"                                ze zijn gedefinieerd (standaard); indien\n"
+"                                'separate', dan in een aparte pagina\n"
+"      --paragraph-indent=XX   alinea's inspringen met XX spaties (standaard %"
+"d);\n"
+"                                indien 'none', dan niet inspringen; indien\n"
+"                                'asis', dan bestaande inspringing behouden\n"
+"      --split-size=GETAL      bestanden opsplitsen vanaf deze grootte\n"
+"                                (standaard %d bytes)\n"
+
+#: texi2html.pl:3661
+msgid ""
+"Options for HTML:\n"
+"      --css-include=FILE      include FILE in HTML <style> output;\n"
+"                                read stdin if FILE is -.\n"
+"      --css-ref=URL           generate reference to a CSS file.\n"
+"      --internal-links=FILE   produce list of internal links in FILE.\n"
+"      --transliterate-file-names\n"
+"                              produce file names in ASCII transliteration.\n"
+msgstr ""
+"Opties voor HTML:\n"
+"      --css-include=BESTAND   dit bestand in de uitvoer opnemen;\n"
+"                                als BESTAND '-' is, dan standaardinvoer "
+"lezen\n"
+"      --css-ref=URL           een referentie naar een CSS-bestand genereren\n"
+"      --internal-links=BSTAND tabel met interne verwijzingen hierin opslaan\n"
+"      --transliterate-file-names\n"
+"                              bestandsnamen met alleen ASCII-tekens "
+"produceren\n"
+
+#: texi2html.pl:3674
+msgid ""
+"Input file options:\n"
+"      --commands-in-node-names  allow @ commands in node names.\n"
+"  -D VAR                        define the variable VAR, as with @set.\n"
+"  -I DIR                        append DIR to the @include search path.\n"
+"  -P DIR                        prepend DIR to the @include search path.\n"
+"  -U VAR                        undefine the variable VAR, as with @clear.\n"
+msgstr ""
+"Invoerbestandopties:\n"
+"      --commands-in-node-names  @-commando's in paginanamen toestaan\n"
+"  -D VAR                      de variabele VAR definiëren (als met '@set')\n"
+"  -I MAP                      MAP achteraantoevoegen aan @include-zoekpad\n"
+"  -P MAP                      MAP vooraantoevoegen aan @include-zoekpad\n"
+"  -U VAR                      variabele VAR wissen (als met '@clear')\n"
+
+#: texi2html.pl:3681
+msgid ""
+"Conditional processing in input:\n"
+"  --ifdocbook       process @ifdocbook and @docbook even if\n"
+"                      not generating Docbook.\n"
+"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
+"  --ifinfo          process @ifinfo even if not generating Info.\n"
+"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
+"  --iftex           process @iftex and @tex; implies --no-split.\n"
+"  --ifxml           process @ifxml and @xml.\n"
+"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
+"  --no-ifhtml       do not process @ifhtml and @html text.\n"
+"  --no-ifinfo       do not process @ifinfo text.\n"
+"  --no-ifplaintext  do not process @ifplaintext text.\n"
+"  --no-iftex        do not process @iftex and @tex text.\n"
+"  --no-ifxml        do not process @ifxml and @xml text.\n"
+"\n"
+"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
+msgstr ""
+"Conditionele verwerking van de invoer:\n"
+"  --ifdocbook       '@ifdocbook' en '@docbook' altijd verwerken\n"
+"  --ifhtml          '@ifhtml' en '@html' altijd verwerken\n"
+"  --ifinfo          '@ifinfo' altijd verwerken\n"
+"  --ifplaintext     '@ifplaintext' altijd verwerken\n"
+"  --iftex           '@iftex' en '@tex' verwerken; impliceert '--no-split'\n"
+"  --ifxml           '@ifxml' en '@xml' verwerken\n"
+"  --no-ifdocbook    '@ifdocbook' en '@docbook' niet verwerken\n"
+"  --no-ifhtml       '@ifhtml' en '@html' niet verwerken\n"
+"  --no-ifinfo       '@ifinfo' niet verwerken\n"
+"  --no-ifplaintext  '@ifplaintext' niet verwerken\n"
+"  --no-iftex        '@iftex' en '@tex' niet verwerken\n"
+"  --no-ifxml        '@ifxml' en '@xml' niet verwerken\n"
+"\n"
+"  Voor de '--no-ifOPMAAK'-opties geldt: '@ifnotOPMAAK' _wel_ verwerken.\n"
+
+#: texi2html.pl:3698
+msgid ""
+"  The defaults for the @if... conditionals depend on the output format:\n"
+"  if generating HTML, --ifhtml is on and the others are off;\n"
+"  if generating Info, --ifinfo is on and the others are off;\n"
+"  if generating plain text, --ifplaintext is on and the others are off;\n"
+"  if generating XML, --ifxml is on and the others are off.\n"
+msgstr ""
+"  De standaarden voor de '@if...'-opdrachten hangen af van de "
+"uitvoeropmaak:\n"
+"  als HTML gemaakt wordt, staat '--ifhtml' aan en de anderen niet;\n"
+"  als Info gemaakt wordt, staat '--ifinfo' aan en de anderen niet;\n"
+"  als platte tekst gemaakt wordt, staat '--ifplaintext' aan en de anderen "
+"niet;\n"
+"  als XML gemaakt wordt, staat '--ifxml' aan en de anderen niet.\n"
+
+#: texi2html.pl:3704
+msgid ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+msgstr ""
+"Voorbeelden:\n"
+"  makeinfo foo.texi                 Info schrijven (naar foo's "
+"@setfilename)\n"
+"  makeinfo --html foo.texi          HTML schrijven (naar foo's "
+"@setfilename)\n"
+"  makeinfo --xml foo.texi           Texinfo-XML schrijven (naar "
+"@setfilename)\n"
+"  makeinfo --docbook foo.texi       DocBook-XML schrijven (naar "
+"@setfilename)\n"
+"  makeinfo --no-headers foo.texi    platte tekst naar standaarduitvoer\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  HTML zonder kopregels en menu's\n"
+"  makeinfo --number-sections foo.texi    Info met genummerde secties\n"
+"  makeinfo --no-split foo.texi           één Info-bestand ongeacht de "
+"grootte\n"
+
+#: texi2html.pl:3715
+msgid ""
+"Email bug reports to bug-texinfo@gnu.org,\n"
+"general questions and discussion to help-texinfo@gnu.org.\n"
+"Texinfo home page: http://www.gnu.org/software/texinfo/"
+msgstr ""
+"Stuur foutrapportages naar <bug-texinfo@gnu.org>,\n"
+"algemene vragen en commentaar naar <help-texinfo@gnu.org>,\n"
+"en opmerkingen over de vertaling naar <vertaling@vrijschrift.org>.\n"
+"Texinfo-homepagina: http://www.gnu.org/software/texinfo/"
+
+#: texi2html.pl:3794
+#, perl-format
+msgid ""
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
+msgstr ""
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"Dit is vrije software: u mag het vrijelijk wijzigen en verder verspreiden.\n"
+"De precieze licentie is GPLv3+: GNU GPL versie 3 of later;\n"
+"zie http://gnu.org/licenses/gpl.html voor de volledige tekst.\n"
+"Er is GEEN GARANTIE, voor zover de wet dit toestaat.\n"
+
+#: texi2html.pl:3816
+#, perl-format
+msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
+msgstr "%s: Onbekende waarde '%s' van TEXINFO_OUTPUT_FORMAT wordt genegeerd.\n"
+
+#: texi2html.pl:4423
+#, perl-format
+msgid "Can't create directory `%s': %s"
+msgstr "Kan map '%s' niet aanmaken: %s"
+
+#: texi2html.pl:5140
+#, fuzzy, perl-format
+msgid "Node `%s' previously defined %s"
+msgstr "macro '%s' is al eerder gedefinieerd op regel %d"
+
+#: texi2html.pl:5145 texi2html.pl:12622
+#, perl-format
+msgid "Syntax for an external node used for `%s'"
+msgstr ""
+
+#: texi2html.pl:5427 texi2html.pl:5438
+#, perl-format
+msgid "%c%s requires a name"
+msgstr "%c%s vereist een naam"
+
+#: texi2html.pl:5503
+#, fuzzy, perl-format
+msgid "@exampleindent arg must be numeric/`asis', not `%s'"
+msgstr ""
+"%s: Argument van --paragraph-indent moet numeriek, 'none' of 'asis' zijn, "
+"niet '%s'.\n"
+
+#: texi2html.pl:5514
+#, perl-format
+msgid "Expected @%s on or off, not `%s'"
+msgstr "@%s 'on' of 'off' werd verwacht, niet '%s'"
+
+#: texi2html.pl:5602
+#, perl-format
+msgid "Encoding %s is not a canonical texinfo encoding"
+msgstr ""
+
+#: texi2html.pl:5759
+#, fuzzy, perl-format
+msgid "Unknown from index `%s' in @%s"
+msgstr "Onbekende index '%s'"
+
+#: texi2html.pl:5761
+#, fuzzy, perl-format
+msgid "Unknown to index name `%s' in @%s"
+msgstr "Onbekende index '%s'"
+
+#: texi2html.pl:5796
+#, perl-format
+msgid "Reserved index name %s"
+msgstr ""
+
+#: texi2html.pl:5839
+#, perl-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
+msgstr "Bij @%s is alleen 10 of 11 mogelijk, niet '%s'"
+
+#: texi2html.pl:5964
+#, perl-format
+msgid "@sp requires a positive numeric argument, not `%s'"
+msgstr "@sp vereist een postief numeriek argument, niet '%s'"
+
+#: texi2html.pl:6701
+#, fuzzy, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "naar pagina '%s' wordt niet verwezen"
+
+#: texi2html.pl:6776
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr "naar pagina '%s' wordt niet verwezen"
+
+#: texi2html.pl:6827
+#, perl-format
+msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr ""
+"Pagina '%s' bevat geen menu-item voor '%s'\n"
+"ondanks dat de eerste het 'Up'-doel van de laatste is"
+
+#: texi2html.pl:6846
+#, perl-format
+msgid "For `%s', up in menu `%s' and up `%s' don't match"
+msgstr ""
+
+#: texi2html.pl:6876
+#, perl-format
+msgid "No node following `%s' in menu, but `%s' follows in sectionning"
+msgstr ""
+
+#: texi2html.pl:6877
+#, perl-format
+msgid "Node following `%s' in menu `%s' and in sectionning `%s' differ"
+msgstr ""
+
+#: texi2html.pl:7903
+#, perl-format
+msgid "Unknown index `%s'"
+msgstr "Onbekende index '%s'"
+
+#: texi2html.pl:7910
+#, perl-format
+msgid "Entry for index `%s' outside of any node"
+msgstr "Item voor index '%s' valt buiten elke pagina"
+
+#: texi2html.pl:8959
+#, perl-format
+msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
+msgstr ""
+"%s: Uitvoerbestand '%s' wordt verwijderd wegens fouten;\n"
+"gebruik '--force' om het te behouden.\n"
+
+#: texi2html.pl:8963
+#, fuzzy, perl-format
+msgid "%s: Removing output files due to errors; use --force to preserve.\n"
+msgstr ""
+"%s: Uitvoerbestand '%s' wordt verwijderd wegens fouten;\n"
+"gebruik '--force' om het te behouden.\n"
+
+#: texi2html.pl:9010
+msgid "Too many errors!  Gave up.\n"
+msgstr "Te veel fouten!  Gestopt.\n"
+
+#: texi2html.pl:9102
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s (via @%s)\n"
+msgstr "%s:%d: waarschuwing: "
+
+#: texi2html.pl:9106
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s\n"
+msgstr "%s:%d: waarschuwing: "
+
+#: texi2html.pl:9139
+#, perl-format
+msgid "(in %s l. %d via @%s)"
+msgstr ""
+
+#: texi2html.pl:9143
+#, perl-format
+msgid "(l. %d via @%s)"
+msgstr ""
+
+#: texi2html.pl:9148
+#, fuzzy, perl-format
+msgid "(in %s l. %d)"
+msgstr "(regel %*d)"
+
+#: texi2html.pl:9152
+#, fuzzy, perl-format
+msgid "(l. %d)"
+msgstr "(regel %*d)"
+
+#: texi2html.pl:9309
+#, perl-format
+msgid "Too much '}' in @%s"
+msgstr ""
+
+#: texi2html.pl:9319
+#, fuzzy, perl-format
+msgid "Missing `}' on @%s line"
+msgstr "Ontbrekende '}' in het argument van @def"
+
+#: texi2html.pl:9474
+#, fuzzy, perl-format
+msgid "Anchor `%s' ignored in %s expanded more than once"
+msgstr "Het anker '%s' en pagina '%s' verwijzen naar dezelfde bestandsnaam"
+
+#: texi2html.pl:10101
+#, perl-format
+msgid "column fraction not a number: %s"
+msgstr ""
+
+#: texi2html.pl:10122
+#, perl-format
+msgid "ignoring stray text `%s' after @multitable"
+msgstr "loze tekst '%s' na @multitable wordt genegeerd"
+
+#: texi2html.pl:10144
+#, perl-format
+msgid "Too many %s closed"
+msgstr ""
+
+#: texi2html.pl:10511
+#, perl-format
+msgid "Must be in `@%s' environment to use `@%s'"
+msgstr "Moet in een '@%s'-omgeving zitten om '@%s' te kunnen gebruiken"
+
+#: texi2html.pl:10570 texi2html.pl:10998
+#, fuzzy, perl-format
+msgid "@%s (argument nr %d)"
+msgstr "Fout argument van @%s"
+
+# FIXME: formatter?
+#: texi2html.pl:10641
+#, perl-format
+msgid "%s requires an argument: the formatter for %citem"
+msgstr "%s vereist een argument: de formatteerder voor %c-item"
+
+#: texi2html.pl:10644
+#, perl-format
+msgid "prepended for @%s"
+msgstr ""
+
+#: texi2html.pl:10670
+#, perl-format
+msgid "@columnfraction (argument nr %d)"
+msgstr ""
+
+#: texi2html.pl:10852 texi2html.pl:10866
+msgid "node name in menu"
+msgstr ""
+
+#: texi2html.pl:10853
+msgid "normalized node name in menu"
+msgstr ""
+
+#: texi2html.pl:10859
+msgid "menu entry name"
+msgstr ""
+
+#: texi2html.pl:10977
+#, fuzzy, perl-format
+msgid "First argument to @%s may not be empty"
+msgstr "Het eerste argument van @inforef mag niet leeg zijn"
+
+#: texi2html.pl:11130 texi2html.pl:13860
+msgid "@listoffloats @float type"
+msgstr ""
+
+#: texi2html.pl:11231
+#, perl-format
+msgid "@%s not meaningful outside `@float' environment"
+msgstr "@%s is niet zinvol buiten een '@float'-omgeving"
+
+#: texi2html.pl:11289
+msgid "@float style"
+msgstr ""
+
+#: texi2html.pl:11418 texi2html.pl:11419
+msgid "@image base name"
+msgstr ""
+
+#: texi2html.pl:11428 texi2html.pl:11429
+msgid "@image extension"
+msgstr ""
+
+#: texi2html.pl:11436
+#, fuzzy
+msgid "@image file name"
+msgstr "@image-bestand '%s' is onleesbaar: %s"
+
+#: texi2html.pl:11458
+msgid "@image alt text"
+msgstr ""
+
+#: texi2html.pl:11541
+#, fuzzy, perl-format
+msgid "Macro `%s' called with too many args"
+msgstr "Macro '%s' in regel %d wordt aangeroepen met te veel argumenten"
+
+#: texi2html.pl:11565
+#, fuzzy, perl-format
+msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
+msgstr ""
+"'\\' in macro-expansie werd gevolgd door '%s' in plaats van een parameternaam"
+
+#: texi2html.pl:12270
+#, perl-format
+msgid "macro `%s' previously defined"
+msgstr "macro '%s' is al eerder gedefinieerd"
+
+#: texi2html.pl:12271
+#, perl-format
+msgid "here is the previous definition of `%s'"
+msgstr "hier was de eerdere definitie van '%s'"
+
+#: texi2html.pl:12304
+#, perl-format
+msgid "Macro definition without macro name: %s"
+msgstr ""
+
+#: texi2html.pl:12345
+#, perl-format
+msgid "undefined flag: %s"
+msgstr "ongedefinieerde vlag: %s"
+
+#: texi2html.pl:12357
+msgid "Bad syntax for @value"
+msgstr ""
+
+#: texi2html.pl:12565
+#, fuzzy, perl-format
+msgid "@%s already set"
+msgstr "Index '%s' bestaat al"
+
+#: texi2html.pl:12617
+#, fuzzy, perl-format
+msgid "Anchor `%s' previously defined %s"
+msgstr "macro '%s' is al eerder gedefinieerd"
+
+#: texi2html.pl:12940
+#, fuzzy, perl-format
+msgid "%c%s is obsolete."
+msgstr "%c%s is verouderd"
+
+#: texi2html.pl:12944
+#, fuzzy, perl-format
+msgid "%c%s is obsolete; %s"
+msgstr "%c%s is verouderd"
+
+#: texi2html.pl:12960
+#, perl-format
+msgid "Unknown index `%s' in @printindex"
+msgstr "Onbekende index '%s' in @printindex"
+
+#: texi2html.pl:13027
+#, perl-format
+msgid "ignored @%s already in an @%s entry"
+msgstr ""
+
+#: texi2html.pl:13052 texi2html.pl:13095
+#, fuzzy, perl-format
+msgid "@%s seen before first @node"
+msgstr "@menu gevonden vóór de eerste @node; aanmaken van Top-pagina"
+
+#: texi2html.pl:13053
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr ""
+"uw @top-pagina moet mogelijk ingepakt worden in @ifnottex in plaats van "
+"@ifinfo?"
+
+#: texi2html.pl:13430 texi2html.pl:13431 texi2html.pl:13434
+msgid "new menu entry"
+msgstr ""
+
+#: texi2html.pl:13555
+msgid "paragraph end"
+msgstr ""
+
+#: texi2html.pl:13789
+#, perl-format
+msgid "`@end' expected `%s', but saw `%s'"
+msgstr "'@end' verwachtte '%s', maar vond '%s'"
+
+#: texi2html.pl:13853
+msgid "@listoffloats type"
+msgstr ""
+
+#: texi2html.pl:13876
+#, perl-format
+msgid "Requested float type `%s' not previously used"
+msgstr "Het gevraagde drijvendekommatype '%s' werd niet eerder gebruikt"
+
+#: texi2html.pl:13988
+#, fuzzy, perl-format
+msgid "@%s not allowed on in argument to @%s"
+msgstr "@item niet toegestaan in argument van @itemize"
+
+#: texi2html.pl:14043
+#, perl-format
+msgid "Accent command `@%s' must not be followed by whitespace"
+msgstr ""
+
+#: texi2html.pl:14047
+#, perl-format
+msgid "Use braces to give a command as an argument to @%s"
+msgstr "Gebruik '{...}' om een commando als argument mee te geven aan @%s"
+
+#: texi2html.pl:14208
+#, perl-format
+msgid "@%s not meaningful inside `@%s' block"
+msgstr "@%s is zinloos in een '@%s'-blok"
+
+#: texi2html.pl:14253
+#, perl-format
+msgid "@%s outside of table or list"
+msgstr ""
+
+#: texi2html.pl:14286
+msgid "ignoring @tab outside of multitable"
+msgstr "@tab buiten een 'multitabel' wordt genegeerd"
+
+#: texi2html.pl:14293
+#, fuzzy
+msgid "ignoring @tab in empty multitable"
+msgstr "@tab buiten een 'multitabel' wordt genegeerd"
+
+#: texi2html.pl:14297
+#, perl-format
+msgid "Too many columns in multitable item (max %d)"
+msgstr "Te veel kolommen in 'multitable'-item (maximaal %d)"
+
+#: texi2html.pl:14328
+msgid "@center should not appear in another format"
+msgstr ""
+
+#: texi2html.pl:14368 texi2html.pl:14388
+#, perl-format
+msgid "Misplaced %c"
+msgstr "Verkeerd geplaatste %c"
+
+#: texi2html.pl:14936
+#, perl-format
+msgid "%c%s expects a single character `i' or `j' as argument"
+msgstr "%c%s verwacht één enkele 'i' of 'j' als argument"
+
+#: texi2html.pl:14940
+#, fuzzy, perl-format
+msgid "%c%s expects `i' or `j' as argument, not `%s'"
+msgstr "%c%s verwacht 'i' of 'j' als argument, niet '%c'"
+
+#: texi2html.pl:14989
+#, fuzzy, perl-format
+msgid "Unknown command with braces `@%s'"
+msgstr "Onbekend commando '%s'"
+
+#: texi2html.pl:15025
+#, perl-format
+msgid "%c%s expected braces"
+msgstr "%c%s verwachtte '{...}'"
+
+#: texi2html.pl:15029
+#, perl-format
+msgid "Unknown command `%s'"
+msgstr "Onbekend commando '%s'"
+
+#: texi2html.pl:15107
+#, perl-format
+msgid "Reached eof before matching @end %s"
+msgstr "Bestandseinde werd bereikt vóór een bijbehorende @end %s"
+
+#: texi2html.pl:15115
+#, perl-format
+msgid "%cend macro not found"
+msgstr "%cend-macro niet gevonden"
+
+#: texi2html.pl:15283
+#, perl-format
+msgid "No matching `%cend %s'"
+msgstr "Geen overeenkomende '%cend %s'"
+
+#: texi2html.pl:15311
+#, perl-format
+msgid "%c%s missing close brace"
+msgstr "%c%s ontbrekende sluitaccolade"
+
+#: texi2html.pl:15419
+#, fuzzy, perl-format
+msgid "%s should not appear in %s"
+msgstr "%s: kan '--css'-bestand '%s' niet openen"
+
+#: texi2html.pl:16119
+#, perl-format
+msgid "%s:%d: string not closed in css file"
+msgstr ""
+
+#: texi2html.pl:16120
+#, perl-format
+msgid "%s:%d: --css-file ended in comment"
+msgstr "%s:%d: '--css'-bestand eindigt in commentaar"
+
+#: texi2html.pl:16121
+#, perl-format
+msgid "%s:%d @import not finished in css file"
+msgstr ""
+
+#: texi2html.pl:16151
+#, fuzzy, perl-format
+msgid "%s: could not open --css-file %s: %s\n"
+msgstr "%s: kan '--css'-bestand '%s' niet openen"
+
+#: texi2html.pl:16206
+#, perl-format
+msgid "%s: missing file argument.\n"
+msgstr "%s: Ontbrekend bestandsargument.\n"
+
+#: texi2html.init:2053
+msgid "recursion is always allowed"
+msgstr ""
+
+#: texi2html.init:2054
+#, fuzzy
+msgid "arguments are quoted by default"
+msgstr "@quote-arg is verouderd; argumenten hebben standaard aanhalingstekens"
+
+#: formats/docbook.init:1025 formats/info.init:2872
+#, perl-format
+msgid "@image file `%s' unreadable: %s"
+msgstr "@image-bestand '%s' is onleesbaar: %s"
+
+#: formats/docbook.init:1030 formats/info.init:2877
+#, fuzzy, perl-format
+msgid "Cannot find @image file `%s.txt'"
+msgstr "Kan pagina '%s' niet vinden."
+
+#: formats/html.init:2547
+#, fuzzy, perl-format
+msgid "@image file `%s' (for HTML) not found, using `%s'"
+msgstr "@image-bestand '%s' (voor HTML) is niet leesbaar: %s"
+
+#: formats/info.init:1151
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+"@strong{Noot...} produceert een loze kruisverwijzing in Info; kies een ander "
+"woord om dat te vermijden"
+
+#: formats/info.init:1311
+#, fuzzy
+msgid "`.' or `,' must follow @xref."
+msgstr "'.' of ',' moet volgen op @%s, niet '%c'"
+
+#: formats/info.init:1316
+#, fuzzy, perl-format
+msgid "`.' or `,' must follow @xref, not %s"
+msgstr "'.' of ',' moet volgen op @%s, niet '%c'"
+
+#: formats/info.init:3073
+msgid "Footnote defined without parent node"
+msgstr "Voetnoot gedefinieerd zonder referentiepagina"
+
+#~ msgid "Unknown system error"
+#~ msgstr "Onbekende systeemfout"
+
+#~ msgid "%s: option `%s' is ambiguous\n"
+#~ msgstr "%s: optie '%s' is niet eenduidig\n"
+
+#~ msgid "%s: option `--%s' doesn't allow an argument\n"
+#~ msgstr "%s: optie '--%s' staat geen argument toe\n"
+
+#~ msgid "%s: option `%c%s' doesn't allow an argument\n"
+#~ msgstr "%s: optie '%c%s' staat geen argument toe\n"
+
+#~ msgid "%s: option `%s' requires an argument\n"
+#~ msgstr "%s: optie '%s' vereist een argument\n"
+
+#~ msgid "%s: unrecognized option `--%s'\n"
+#~ msgstr "%s: onbekende optie '--%s'\n"
+
+#~ msgid "%s: unrecognized option `%c%s'\n"
+#~ msgstr "%s: onbekende optie '%c%s'\n"
+
+#~ msgid "%s: illegal option -- %c\n"
+#~ msgstr "%s: ongeldige optie -- %c\n"
+
+#~ msgid "%s: invalid option -- %c\n"
+#~ msgstr "%s: ongeldige optie -- %c\n"
+
+#~ msgid "%s: option requires an argument -- %c\n"
+#~ msgstr "%s: optie vereist een argument -- %c\n"
+
+#~ msgid "%s: option `-W %s' is ambiguous\n"
+#~ msgstr "%s: optie '-W %s' is niet eenduidig\n"
+
+#~ msgid "%s: option `-W %s' doesn't allow an argument\n"
+#~ msgstr "%s: optie '-W %s' staat geen argument toe\n"
+
+#~ msgid "memory exhausted"
+#~ msgstr "onvoldoende geheugen beschikbaar"
+
+#~ msgid "Move forward a character"
+#~ msgstr "Eén teken verder"
+
+#~ msgid "Move backward a character"
+#~ msgstr "Eén teken terug"
+
+#~ msgid "Move to the start of this line"
+#~ msgstr "Naar het begin van de regel"
+
+#~ msgid "Move to the end of this line"
+#~ msgstr "Naar het einde van de regel"
+
+#~ msgid "Move forward a word"
+#~ msgstr "Eén woord verder"
+
+#~ msgid "Move backward a word"
+#~ msgstr "Eén woord terug"
+
+#~ msgid "Delete the character under the cursor"
+#~ msgstr "Het teken onder de cursor verwijderen"
+
+#~ msgid "Delete the character behind the cursor"
+#~ msgstr "Het teken na de cursor verwijderen"
+
+#~ msgid "Cancel or quit operation"
+#~ msgstr "Operatie annuleren of beëindigen"
+
+#~ msgid "Accept (or force completion of) this line"
+#~ msgstr "Deze regel accepteren (of de voltooiing ervan forceren)"
+
+#~ msgid "Insert next character verbatim"
+#~ msgstr "De volgende toets verbatim invoegen"
+
+#~ msgid "Insert this character"
+#~ msgstr "Dit teken invoegen"
+
+#~ msgid "Insert a TAB character"
+#~ msgstr "Een TAB-teken invoegen"
+
+#~ msgid "Transpose characters at point"
+#~ msgstr "De tekens op dit punt transponeren"
+
+#~ msgid "Yank back the contents of the last kill"
+#~ msgstr "Het laatst verwijderde terughalen"
+
+#~ msgid "Kill ring is empty"
+#~ msgstr "De verwijderingsbuffer is leeg."
+
+#~ msgid "Yank back a previous kill"
+#~ msgstr "Een eerdere verwijdering terughalen"
+
+#~ msgid "Kill to the end of the line"
+#~ msgstr "Tot aan het eind van de regel verwijderen"
+
+#~ msgid "Kill to the beginning of the line"
+#~ msgstr "Tot aan het begin van de regel verwijderen"
+
+#~ msgid "Kill the word following the cursor"
+#~ msgstr "Het woord na de cursor verwijderen"
+
+#~ msgid "Kill the word preceding the cursor"
+#~ msgstr "Het woord voor de cursor verwijderen"
+
+#~ msgid "No completions"
+#~ msgstr "Geen voltooiingen"
+
+#~ msgid "Not complete"
+#~ msgstr "Niet compleet"
+
+#~ msgid "List possible completions"
+#~ msgstr "De mogelijke voltooiingen tonen"
+
+#~ msgid "Sole completion"
+#~ msgstr "Enige voltooiing"
+
+#~ msgid "One completion:\n"
+#~ msgstr "Eén mogelijkheid:\n"
+
+#~ msgid "%d completions:\n"
+#~ msgstr "Er zijn %d mogelijkheden:\n"
+
+#~ msgid "Insert completion"
+#~ msgstr "Een voltooiing invoegen"
+
+#~ msgid "Building completions..."
+#~ msgstr "Opbouwen van voltooiingen..."
+
+#~ msgid "Scroll the completions window"
+#~ msgstr "Het voltooiingsvenster scrollen"
+
+#~ msgid "Footnotes could not be displayed"
+#~ msgstr "De voetnoten kunnen niet weergegeven worden"
+
+#~ msgid "Show the footnotes associated with this node in another window"
+#~ msgstr ""
+#~ "In een ander venster de voetnoten tonen die met deze pagina verbonden zijn"
+
+#~ msgid "---------- Footnotes ----------"
+#~ msgstr "---------- Voetnoten ----------"
+
+#~ msgid "Look up a string in the index for this file"
+#~ msgstr "Een tekenreeks opzoeken in de index van dit bestand"
+
+#~ msgid "Finding index entries..."
+#~ msgstr "Zoeken naar index-items..."
+
+#~ msgid "No indices found."
+#~ msgstr "Geen indexen gevonden."
+
+#~ msgid "Index entry: "
+#~ msgstr "Index-item: "
+
+#~ msgid ""
+#~ "Go to the next matching index item from the last `\\[index-search]' "
+#~ "command"
+#~ msgstr ""
+#~ "Naar het volgende overeenkomende item van het laatste '\\[index-search]'-"
+#~ "commando"
+
+#~ msgid "No previous index search string."
+#~ msgstr "Geen eerdere index-zoektekenreeks."
+
+#~ msgid "No index entries."
+#~ msgstr "Geen index-items."
+
+#~ msgid "No %sindex entries containing `%s'."
+#~ msgstr "Er zijn geen index-items %s die '%s' bevatten."
+
+#~ msgid "more "
+#~ msgstr "meer "
+
+#~ msgid "CAN'T SEE THIS"
+#~ msgstr "KAN DIT NIET ZIEN"
+
+#~ msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
+#~ msgstr "'%s' gevonden in %s -- ('\\[next-index-match]' zoekt de volgende)"
+
+#~ msgid "Scanning indices of `%s'..."
+#~ msgstr "Zoeken in de indexen van '%s'..."
+
+#~ msgid "No available info files have `%s' in their indices."
+#~ msgstr "Geen van de beschikbare Info-bestanden heeft '%s' in z'n index."
+
+#~ msgid "Grovel all known info file's indices for a string and build a menu"
+#~ msgstr ""
+#~ "Alle Info-bestandsindexen doorzoeken naar een tekenreeks en een menu maken"
+
+#~ msgid "Index apropos: "
+#~ msgstr "Index-apropos: "
+
+#~ msgid ""
+#~ "\n"
+#~ "* Menu: Nodes whose indices contain `%s':\n"
+#~ msgstr ""
+#~ "\n"
+#~ "* Menu: Pagina's waarvan de indexen '%s' bevatten:\n"
+
+#~ msgid "Try --help for more information.\n"
+#~ msgstr "Gebruik '--help' voor meer informatie.\n"
+
+#~ msgid "no index entries found for `%s'\n"
+#~ msgstr "geen index-items gevonden voor '%s'\n"
+
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [MENU-ITEM...]\n"
+#~ "\n"
+#~ "Read documentation in Info format.\n"
+#~ msgstr ""
+#~ "Gebruik:  %s [OPTIE]... [MENU-ITEM...]\n"
+#~ "\n"
+#~ "Documentatie in Info-opmaak lezen.\n"
+
+#~ msgid ""
+#~ "Options:\n"
+#~ "  -k, --apropos=STRING         look up STRING in all indices of all "
+#~ "manuals.\n"
+#~ "  -d, --directory=DIR          add DIR to INFOPATH.\n"
+#~ "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
+#~ "  -f, --file=FILENAME          specify Info file to visit."
+#~ msgstr ""
+#~ "Opties:\n"
+#~ "      --apropos=TEKENREEKS     in alle Info-indexen naar deze tekenreeks "
+#~ "zoeken\n"
+#~ "  -d, --directory=MAP          deze map toevoegen aan het zoekpad "
+#~ "'INFOPATH'\n"
+#~ "      --dribble=BESTAND        toetsaanslagen in dit bestand opslaan\n"
+#~ "  -f, --file=BESTAND           het te bekijken Info-bestand"
+
+#~ msgid ""
+#~ "  -h, --help                   display this help and exit.\n"
+#~ "      --index-search=STRING    go to node pointed by index entry STRING.\n"
+#~ "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
+#~ "  -o, --output=FILENAME        output selected nodes to FILENAME."
+#~ msgstr ""
+#~ "  -h, --help                   deze hulptekst tonen en stoppen\n"
+#~ "      --index-search=NAAM      de pagina tonen waarnaar dit index-item "
+#~ "verwijst\n"
+#~ "  -n, --node=PAGINANAAM        een te bezoeken pagina\n"
+#~ "  -o, --output=BESTAND         de gekozen pagina's naar dit bestand "
+#~ "schrijven"
+
+#~ msgid ""
+#~ "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
+#~ "      --no-raw-escapes         output escapes as literal text.\n"
+#~ "      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
+#~ "  -O, --show-options, --usage  go to command-line options node."
+#~ msgstr ""
+#~ "  -R, --raw-escapes            \"ruwe\" ANSI-stuurcodes schrijven "
+#~ "(standaard)\n"
+#~ "      --no-raw-escapes         stuurcodes als tekst uitschrijven\n"
+#~ "      --restore=BESTAND        de eerste toetsaanslagen uit dit bestand "
+#~ "lezen\n"
+#~ "  -O, --show-options, --usage  de pagina met de commandoregelopties tonen"
+
+#~ msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
+#~ msgstr ""
+#~ "  -b, --speech-friendly        uitvoer toesnijden op spraaksynthesizers"
+
+#~ msgid ""
+#~ "      --subnodes               recursively output menu items.\n"
+#~ "      --vi-keys                use vi-like and less-like key bindings.\n"
+#~ "      --version                display version information and exit.\n"
+#~ "  -w, --where, --location      print physical location of Info file."
+#~ msgstr ""
+#~ "      --subnodes               recursief alle menu-items uitvoeren\n"
+#~ "      --vi-keys                toetsbindingen als in 'vi' en 'less' "
+#~ "gebruiken\n"
+#~ "      --version                versie-informatie tonen en stoppen\n"
+#~ "  -w, --where, --location      het volledige pad van het Info-bestand "
+#~ "tonen"
+
+#~ msgid ""
+#~ "\n"
+#~ "The first non-option argument, if present, is the menu entry to start "
+#~ "from;\n"
+#~ "it is searched for in all `dir' files along INFOPATH.\n"
+#~ "If it is not present, info merges all `dir' files and shows the result.\n"
+#~ "Any remaining arguments are treated as the names of menu\n"
+#~ "items relative to the initial node visited."
+#~ msgstr ""
+#~ "\n"
+#~ "Als 'info' zonder argumenten gestart wordt, dan toont het een overzicht "
+#~ "van\n"
+#~ "alle beschikbare documenten.  Als er argumenten gegeven worden, dan wordt "
+#~ "het\n"
+#~ "eerste argument begrepen als het te kiezen menu-item uit dat overzicht.\n"
+#~ "Eventuele overige argumenten worden steeds begrepen als het te kiezen\n"
+#~ "menu-item in de op dat moment bereikte pagina."
+
+#~ msgid ""
+#~ "\n"
+#~ "For a summary of key bindings, type h within Info."
+#~ msgstr ""
+#~ "\n"
+#~ "Voor een overzicht van de commandotoetsen, typ 'h' in Info."
+
+#~ msgid ""
+#~ "\n"
+#~ "Examples:\n"
+#~ "  info                       show top-level dir menu\n"
+#~ "  info info                  show the general manual for Info readers\n"
+#~ "  info info-stnd             show the manual specific to this Info "
+#~ "program\n"
+#~ "  info emacs                 start at emacs node from top-level dir\n"
+#~ "  info emacs buffers         start at buffers node within emacs manual\n"
+#~ "  info --show-options emacs  start at node with emacs' command line "
+#~ "options\n"
+#~ "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
+#~ "  info -f ./foo.info         show file ./foo.info, not searching dir"
+#~ msgstr ""
+#~ "\n"
+#~ "Voorbeelden:\n"
+#~ "  info                         het inhoudsmenu tonen (een compleet "
+#~ "overzicht)\n"
+#~ "  info info                    de algemene handleiding voor Info-lezers "
+#~ "tonen\n"
+#~ "  info info-stnd               de handleiding voor 'info' zelf tonen\n"
+#~ "  info emacs                   de eerste pagina van het Emacs-document "
+#~ "tonen\n"
+#~ "  info emacs buffers           de 'Buffers'-pagina van het Emacs-document "
+#~ "tonen\n"
+#~ "  info --show-options emacs    de pagina met de Emacs-commandoregelopties "
+#~ "tonen\n"
+#~ "  info --subnodes -o em.txt emacs  het gehele Emacs-document in 'em.txt' "
+#~ "dumpen\n"
+#~ "  info -f ./foo.info           het bestand './foo.info' tonen"
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Stuur foutrapportages naar <bug-texinfo@gnu.org>,\n"
+#~ "algemene vragen en commentaar naar <help-texinfo@gnu.org>,\n"
+#~ "en opmerkingen over de vertaling naar <vertaling@vrijschrift.org>.\n"
+#~ "Texinfo-homepagina: http://www.gnu.org/software/texinfo/"
+
+#~ msgid "Cannot find node `(%s)%s'."
+#~ msgstr "Kan pagina '(%s)%s' niet vinden."
+
+#~ msgid "Cannot find a window!"
+#~ msgstr "Kan geen venster vinden!"
+
+#~ msgid "Point doesn't appear within this window's node!"
+#~ msgstr "Het punt bevindt zich niet in de pagina van dit venster!"
+
+#~ msgid "Cannot delete the last window."
+#~ msgstr "Het laatste venster kan niet gesloten worden."
+
+#~ msgid "No menu in this node."
+#~ msgstr "Er is geen menu op deze pagina."
+
+#~ msgid "No footnotes in this node."
+#~ msgstr "Er zijn geen voetnoten op deze pagina."
+
+#~ msgid "No cross references in this node."
+#~ msgstr "Er zijn geen kruisverwijzingen op deze pagina."
+
+#~ msgid "No `%s' pointer for this node."
+#~ msgstr "Er is geen '%s'-koppeling op deze pagina."
+
+#~ msgid "Unknown Info command `%c'; try `?' for help."
+#~ msgstr "Onbekend Info-commando '%c'; typ '?' voor hulp."
+
+#~ msgid "Terminal type `%s' is not smart enough to run Info."
+#~ msgstr "Terminaltype '%s' is niet krachtig genoeg voor Info."
+
+#~ msgid "You are already at the last page of this node."
+#~ msgstr "U bent al aan het eind van deze pagina."
+
+#~ msgid "You are already at the first page of this node."
+#~ msgstr "U bent al aan het begin van deze pagina."
+
+#~ msgid "Only one window."
+#~ msgstr "Slechts één venster."
+
+#~ msgid "Resulting window would be too small."
+#~ msgstr "Het resulterende venster zou te klein zijn."
+
+#~ msgid "Not enough room for a help window, please delete a window."
+#~ msgstr "Niet genoeg ruimte voor een hulp-venster; sluit een venster."
+
+#~ msgid "Basic Info command keys\n"
+#~ msgstr "=====  Basiscommando's van 'info'  =====\n"
+
+#~ msgid "\\%-10[quit-help]  Close this help window.\n"
+#~ msgstr "\\%-10[quit-help]  Dit hulpvenster sluiten.\n"
+
+#~ msgid "\\%-10[quit]  Quit Info altogether.\n"
+#~ msgstr "\\%-10[quit]  Info afsluiten.\n"
+
+#~ msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
+#~ msgstr "\\%-10[get-info-help-node]  Een korte Info-cursus oproepen.\n"
+
+#~ msgid "\\%-10[prev-line]  Move up one line.\n"
+#~ msgstr "\\%-10[prev-line]  Eén regel omhoog.\n"
+
+#~ msgid "\\%-10[next-line]  Move down one line.\n"
+#~ msgstr "\\%-10[next-line]  Eén regel omlaag.\n"
+
+#~ msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
+#~ msgstr "\\%-10[scroll-backward]  Eén blad terug (<Backspace>).\n"
+
+#~ msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
+#~ msgstr "\\%-10[scroll-forward]  Eén blad verder (<Spatiebalk>).\n"
+
+#~ msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
+#~ msgstr "\\%-10[beginning-of-node]  Naar het begin van deze pagina.\n"
+
+#~ msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
+#~ msgstr "\\%-10[end-of-node]  Naar het einde van deze pagina.\n"
+
+#~ msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
+#~ msgstr "\\%-10[move-to-next-xref]  Naar de volgende koppeling springen.\n"
+
+#~ msgid ""
+#~ "\\%-10[select-reference-this-line]  Follow the hypertext link under the "
+#~ "cursor.\n"
+#~ msgstr ""
+#~ "\\%-10[select-reference-this-line]  De koppeling onder de cursor volgen "
+#~ "(<Enter>).\n"
+
+#~ msgid ""
+#~ "\\%-10[history-node]  Go back to the last node seen in this window.\n"
+#~ msgstr ""
+#~ "\\%-10[history-node]  Terug naar de laatst geziene pagina in dit "
+#~ "venster.\n"
+
+#~ msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
+#~ msgstr "\\%-10[global-prev-node]  Naar de voorgaande pagina.\n"
+
+#~ msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
+#~ msgstr "\\%-10[global-next-node]  Naar de volgende pagina.\n"
+
+#~ msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
+#~ msgstr "\\%-10[prev-node]  Naar de voorgaande pagina op dit niveau.\n"
+
+#~ msgid "\\%-10[next-node]  Go to the next node on this level.\n"
+#~ msgstr "\\%-10[next-node]  Naar de volgende pagina op dit niveau.\n"
+
+#~ msgid "\\%-10[up-node]  Go up one level.\n"
+#~ msgstr "\\%-10[up-node]  Naar de bovenliggende pagina.\n"
+
+#~ msgid "\\%-10[top-node]  Go to the top node of this document.\n"
+#~ msgstr "\\%-10[top-node]  Naar de eerste pagina van dit document.\n"
+
+#~ msgid "\\%-10[dir-node]  Go to the main `directory' node.\n"
+#~ msgstr "\\%-10[dir-node]  Naar de hoofd-inhoudspagina.\n"
+
+#~ msgid "1...9       Pick the first...ninth item in this node's menu.\n"
+#~ msgstr ""
+#~ "1...9       Het eerste...negende item uit het menu op deze pagina "
+#~ "kiezen.\n"
+
+#~ msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
+#~ msgstr ""
+#~ "\\%-10[last-menu-item]  Het laatste item uit het menu op deze pagina "
+#~ "kiezen.\n"
+
+#~ msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
+#~ msgstr ""
+#~ "\\%-10[menu-item]  Een menu-item kiezen door diens naam op te geven.\n"
+
+#~ msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
+#~ msgstr ""
+#~ "\\%-10[xref-item]  Een kruisverwijzing volgen door diens naam op te "
+#~ "geven.\n"
+
+#~ msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
+#~ msgstr ""
+#~ "\\%-10[goto-node]  Naar een pagina gaan door diens naam op te geven.\n"
+
+#~ msgid "\\%-10[search]  Search forward for a specified string.\n"
+#~ msgstr "\\%-10[search]  Voorwaarts zoeken naar een tekenreeks.\n"
+
+#~ msgid "\\%-10[search-previous]  Search for previous occurrence.\n"
+#~ msgstr "\\%-10[search-previous]  Vorige zoeken.\n"
+
+#~ msgid "\\%-10[search-next]  Search for next occurrence.\n"
+#~ msgstr "\\%-10[search-next]  Volgende zoeken.\n"
+
+#~ msgid ""
+#~ "\\%-10[index-search]  Search for a specified string in the index, and\n"
+#~ "              select the node referenced by the first entry found.\n"
+#~ msgstr ""
+#~ "\\%-10[index-search]  Naar een tekenreeks zoeken in de index van dit Info-"
+#~ "bestand,\n"
+#~ "              en de pagina behorend bij het eerste gevonden item "
+#~ "selecteren.\n"
+
+#~ msgid "\\%-10[abort-key]  Cancel the current operation.\n"
+#~ msgstr "\\%-10[abort-key]  Huidige operatie annuleren of beëindigen.\n"
+
+#~ msgid ""
+#~ "Basic Commands in Info Windows\n"
+#~ "******************************\n"
+#~ msgstr ""
+#~ "Basiscommando's van 'info'\n"
+#~ "==========================\n"
+
+#~ msgid "  %-10s  Quit this help.\n"
+#~ msgstr "  %-10s  Dit hulpvenster sluiten.\n"
+
+#~ msgid "  %-10s  Quit Info altogether.\n"
+#~ msgstr "  %-10s  Info afsluiten.\n"
+
+#~ msgid "  %-10s  Invoke the Info tutorial.\n"
+#~ msgstr "  %-10s  Een korte Info-cursus oproepen.\n"
+
+#~ msgid "  %-10s  Move to the `next' node of this node.\n"
+#~ msgstr "  %-10s  Naar de volgende pagina.\n"
+
+#~ msgid "  %-10s  Move to the `previous' node of this node.\n"
+#~ msgstr "  %-10s  Naar de voorgaande pagina.\n"
+
+#~ msgid "  %-10s  Move `up' from this node.\n"
+#~ msgstr "  %-10s  Naar de bovenliggende pagina.\n"
+
+#~ msgid ""
+#~ "  %-10s  Pick menu item specified by name.\n"
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr ""
+#~ "  %-10s  Een menu-item kiezen door diens naam op te geven;\n"
+#~ "              dit selecteert een andere pagina.\n"
+
+#~ msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
+#~ msgstr "  %-10s  Een kruisverwijzing volgen door diens naam op te geven.\n"
+
+#~ msgid "  %-10s  Move to the last node seen in this window.\n"
+#~ msgstr "  %-10s  Terug naar de laatst geziene pagina in dit venster.\n"
+
+#~ msgid "  %-10s  Skip to next hypertext link within this node.\n"
+#~ msgstr "  %-10s  Naar de volgende koppeling springen.\n"
+
+#~ msgid "  %-10s  Follow the hypertext link under cursor.\n"
+#~ msgstr "  %-10s  De koppeling onder de cursor volgen.\n"
+
+#~ msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
+#~ msgstr "  %-10s  Naar de hoofd-inhoudspagina.\n"
+
+#~ msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
+#~ msgstr "  %-10s  Naar de eerste pagina van dit document.\n"
+
+#~ msgid ""
+#~ "Moving within a node:\n"
+#~ "---------------------\n"
+#~ msgstr ""
+#~ "Bewegen binnen een pagina:\n"
+#~ "--------------------------\n"
+
+#~ msgid "  %-10s  Scroll forward a page.\n"
+#~ msgstr "  %-10s  Eén blad verder.\n"
+
+#~ msgid "  %-10s  Scroll backward a page.\n"
+#~ msgstr "  %-10s  Eén blad terug.\n"
+
+#~ msgid "  %-10s  Go to the beginning of this node.\n"
+#~ msgstr "  %-10s  Naar het begin van deze pagina.\n"
+
+#~ msgid "  %-10s  Go to the end of this node.\n"
+#~ msgstr "  %-10s  Naar het einde van deze pagina.\n"
+
+#~ msgid "  %-10s  Scroll forward 1 line.\n"
+#~ msgstr "  %-10s  Eén regel omlaag.\n"
+
+#~ msgid "  %-10s  Scroll backward 1 line.\n"
+#~ msgstr "  %-10s  Eén regel omhoog.\n"
+
+#~ msgid ""
+#~ "Other commands:\n"
+#~ "---------------\n"
+#~ msgstr ""
+#~ "Enkele andere commando's:\n"
+#~ "-------------------------\n"
+
+#~ msgid "  %-10s  Pick first...ninth item in node's menu.\n"
+#~ msgstr ""
+#~ "  %-10s  Het eerste...negende item uit het menu op deze pagina kiezen.\n"
+
+#~ msgid "  %-10s  Pick last item in node's menu.\n"
+#~ msgstr "  %-10s  Het laatste item uit het menu op deze pagina kiezen.\n"
+
+#~ msgid ""
+#~ "  %-10s  Search for a specified string in the index entries of this Info\n"
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr ""
+#~ "  %-10s  Naar een tekenreeks zoeken in de index van dit Info-bestand,\n"
+#~ "              en de pagina behorend bij het eerste gevonden item "
+#~ "selecteren.\n"
+
+#~ msgid ""
+#~ "  %-10s  Move to node specified by name.\n"
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr ""
+#~ "  %-10s  Naar een pagina gaan door diens naam op te geven; er mag een\n"
+#~ "              bestandsnaam meegegeven worden via (BESTANDSNAAM)"
+#~ "PAGINANAAM.\n"
+
+#~ msgid ""
+#~ "  %-10s  Search forward for a specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr "  %-10s  Voorwaarts zoeken naar een tekenreeks.\n"
+
+#~ msgid ""
+#~ "  %-10s  Search backward for a specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr "  %-10s  Achterwaarts zoeken naar een tekenreeks.\n"
+
+#~ msgid "The current search path is:\n"
+#~ msgstr "Het huidige zoekpad voor Info-bestanden is:\n"
+
+#~ msgid ""
+#~ "Commands available in Info windows:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Alle beschikbare commando's in Info-vensters:\n"
+#~ "=============================================\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "Commands available in the echo area:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Beschikbare commando's in de echoregel:\n"
+#~ "=======================================\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "The following commands can only be invoked via %s:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "De volgende commando's kunnen alleen aangeroepen worden via %s:\n"
+#~ "================================================================\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "The following commands cannot be invoked at all:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "De volgende commando's kunnen helemaal niet aangeroepen worden:\n"
+#~ "===============================================================\n"
+#~ "\n"
+
+#~ msgid "Display help message"
+#~ msgstr "Deze hulptekst tonen"
+
+#~ msgid "Visit Info node `(info)Help'"
+#~ msgstr "Naar Info-pagina '(info)Help'"
+
+#~ msgid "Print documentation for KEY"
+#~ msgstr "Uitleg geven over een toets"
+
+#~ msgid "Describe key: %s"
+#~ msgstr "Te beschrijven toets: %s"
+
+#~ msgid "ESC %s is undefined."
+#~ msgstr "ESC %s is niet gedefinieerd."
+
+#~ msgid "%s is undefined."
+#~ msgstr "%s is niet gedefinieerd."
+
+#~ msgid "%s is defined to %s."
+#~ msgstr "%s is gedefinieerd als %s."
+
+#~ msgid "Show what to type to execute a given command"
+#~ msgstr ""
+#~ "Tonen wat ingetypt moet worden om een gegeven commando uit te voeren"
+
+#~ msgid "Where is command: "
+#~ msgstr "Waar is het commando: "
+
+#~ msgid "`%s' is not on any keys"
+#~ msgstr "'%s' is aan geen enkele toetscombinatie toegekend"
+
+#~ msgid "%s can only be invoked via %s."
+#~ msgstr "%s kan alleen aangeroepen worden via %s."
+
+#~ msgid "%s can be invoked via %s."
+#~ msgstr "%s kan aangeroepen worden via %s."
+
+#~ msgid "There is no function named `%s'"
+#~ msgstr "Er is geen functie met de naam '%s'"
+
+#~ msgid ""
+#~ "Selecting other nodes:\n"
+#~ "----------------------\n"
+#~ msgstr ""
+#~ "Selecteren van andere pagina's:\n"
+#~ "-------------------------------\n"
+
+#~ msgid "incorrect number of arguments"
+#~ msgstr "onjuist aantal argumenten"
+
+#~ msgid "cannot open input file `%s'"
+#~ msgstr "kan invoerbestand '%s' niet openen"
+
+#~ msgid "cannot create output file `%s'"
+#~ msgstr "kan uitvoerbestand '%s' niet aanmaken"
+
+#~ msgid "error writing to `%s'"
+#~ msgstr "fout bij het schrijven naar '%s'"
+
+#~ msgid "error closing output file `%s'"
+#~ msgstr "fout bij het sluiten van uitvoerbestand '%s'"
+
+#~ msgid "key sequence too long"
+#~ msgstr "toetsenreeks is te lang"
+
+#~ msgid "missing key sequence"
+#~ msgstr "ontbrekende toetsenreeks"
+
+#~ msgid "NUL character (\\000) not permitted"
+#~ msgstr "NUL-teken (\\000) is niet toegestaan"
+
+#~ msgid "NUL character (^%c) not permitted"
+#~ msgstr "NUL-teken (^%c) is niet toegestaan"
+
+#~ msgid "missing action name"
+#~ msgstr "ontbrekende actienaam"
+
+#~ msgid "section too long"
+#~ msgstr "sectie is te lang"
+
+#~ msgid "unknown action `%s'"
+#~ msgstr "onbekende actie '%s'"
+
+#~ msgid "action name too long"
+#~ msgstr "actienaam is te lang"
+
+#~ msgid "extra characters following action `%s'"
+#~ msgstr "extra tekens na actie '%s'"
+
+#~ msgid "missing variable name"
+#~ msgstr "ontbrekende naam van variabele"
+
+#~ msgid "missing `=' immediately after variable name"
+#~ msgstr "ontbrekende '=' na naam van variabele"
+
+#~ msgid "variable name too long"
+#~ msgstr "naam van variabele is te lang"
+
+#~ msgid "value too long"
+#~ msgstr "waarde is te lang"
+
+#~ msgid "\"%s\", line %u: "
+#~ msgstr "\"%s\", regel %u: "
+
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [INPUT-FILE]\n"
+#~ "\n"
+#~ "Compile infokey source file to infokey file.  Reads INPUT-FILE (default\n"
+#~ "$HOME/.infokey) and writes compiled key file to (by default) $HOME/."
+#~ "info.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "  --output FILE        output to FILE instead of $HOME/.info\n"
+#~ "  --help               display this help and exit.\n"
+#~ "  --version            display version information and exit.\n"
+#~ msgstr ""
+#~ "Gebruik:  %s [OPTIE]... [INVOERBESTAND]\n"
+#~ "\n"
+#~ "Een infokey-bronbestand naar een binair infokey-bestand compileren.\n"
+#~ "Dit leest een INVOERBESTAND (standaard $HOME/.infokey) en schrijft\n"
+#~ "het gecompileerde infokey-bestand (standaard) naar $HOME/.info.\n"
+#~ "\n"
+#~ "Opties:\n"
+#~ "  --output BESTAND     uitvoer naar dit bestand schrijven\n"
+#~ "  --help               deze hulptekst tonen en stoppen\n"
+#~ "  --version            versie-informatie tonen en stoppen\n"
+
+#~ msgid "Ignoring invalid infokey file `%s' - too small"
+#~ msgstr "Infokey-bestand '%s' is te klein -- wordt genegeerd"
+
+#~ msgid "Ignoring invalid infokey file `%s' - too big"
+#~ msgstr "Infokey-bestand '%s' is te groot -- wordt genegeerd"
+
+#~ msgid "Error reading infokey file `%s' - short read"
+#~ msgstr "Fout bij lezen van infokey-bestand '%s' -- te weinig gelezen"
+
+#~ msgid ""
+#~ "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+#~ msgstr ""
+#~ "Ongeldig infokey-bestand '%s' (onjuiste magische nummers) --\n"
+#~ "voer 'infokey' uit om het op orde te brengen"
+
+#~ msgid "Your infokey file `%s' is out of date -- run infokey to update it"
+#~ msgstr ""
+#~ "Uw infokey-bestand '%s' is verouderd --\n"
+#~ "voer 'infokey' uit om het op orde te brengen"
+
+#~ msgid ""
+#~ "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+#~ msgstr ""
+#~ "Ongeldig infokey-bestand '%s' (onjuiste sectielengte) --\n"
+#~ "voer 'infokey' uit om het op orde te brengen"
+
+#~ msgid ""
+#~ "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+#~ msgstr ""
+#~ "Ongeldig infokey-bestand '%s' (onjuiste sectiecode) --\n"
+#~ "voer 'infokey' uit om het op orde te brengen"
+
+#~ msgid "Bad data in infokey file -- some key bindings ignored"
+#~ msgstr ""
+#~ "Foute gegevens in infokey-bestand -- enkele toetstoewijzingen zijn "
+#~ "genegeerd"
+
+#~ msgid "Bad data in infokey file -- some var settings ignored"
+#~ msgstr ""
+#~ "Foute gegevens in infokey-bestand -- sommige definities zijn genegeerd"
+
+#~ msgid "Read the name of an Info command and describe it"
+#~ msgstr "De naam van een Info-commando lezen en een omschrijving ervan geven"
+
+#~ msgid "Describe command: "
+#~ msgstr "Te omschrijven commando: "
+
+#~ msgid "Read a command name in the echo area and execute it"
+#~ msgstr "De naam van een commando in de echoregel lezen en deze uitvoeren"
+
+#~ msgid "Cannot execute an `echo-area' command here."
+#~ msgstr "Kan hier geen 'echoregel'-commando uitvoeren."
+
+#~ msgid "Undefined command: %s"
+#~ msgstr "Onbekend commando: %s"
+
+#~ msgid "Set the height of the displayed window"
+#~ msgstr "De hoogte van het weergavevenster instellen"
+
+#~ msgid "Set screen height to (%d): "
+#~ msgstr "Schermhoogte instellen op (%d): "
+
+#~ msgid ""
+#~ "   Source files groveled to make this file include:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "   Doorzochte bronbestanden om dit bestand te maken omvatten:\n"
+#~ "\n"
+
+#~ msgid "Couldn't manipulate the file %s.\n"
+#~ msgstr "Kan het bestand %s niet manipuleren.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "* Menu:\n"
+#~ "  (File)Node                        Lines   Size   Containing File\n"
+#~ "  ----------                        -----   ----   ---------------"
+#~ msgstr ""
+#~ "\n"
+#~ "* Menu:\n"
+#~ "  (Bestand)Pagina                   Regels  Bytes  Volledig pad\n"
+#~ "  ---------------                   ------  -----  ------------"
+
+#~ msgid ""
+#~ "Here is the menu of nodes you have recently visited.\n"
+#~ "Select one from this menu, or use `\\[history-node]' in another window.\n"
+#~ msgstr ""
+#~ "Hier is een menu van pagina's die u recent bezocht hebt.\n"
+#~ "Selecteer er een, of gebruik `\\[history-node]' in een ander venster.\n"
+
+#~ msgid ""
+#~ "Make a window containing a menu of all of the currently visited nodes"
+#~ msgstr "Een venster openen met een menu van reeds bezochte pagina's"
+
+#~ msgid "Select a node which has been previously visited in a visible window"
+#~ msgstr ""
+#~ "Een pagina selecteren die recent bekeken werd in een zichtbaar venster"
+
+#~ msgid "Select visited node: "
+#~ msgstr "Te selecteren bezochte pagina: "
+
+#~ msgid "The reference disappeared! (%s)."
+#~ msgstr "De verwijzing is verdwenen! (%s)."
+
+#~ msgid "regexp error: %s"
+#~ msgstr "fout in reguliere expressie: %s"
+
+#~ msgid ""
+#~ "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-"
+#~ "item] for menu item."
+#~ msgstr ""
+#~ "Welkom bij Info versie %s.  Typ <\\[get-help-window]> voor hulp, "
+#~ "<Spatiebalk> om te bladeren."
+
+#~ msgid "Move down to the next line"
+#~ msgstr "Naar de volgende regel"
+
+#~ msgid "Move up to the previous line"
+#~ msgstr "Naar de vorige regel"
+
+#~ msgid "Move to the end of the line"
+#~ msgstr "Naar het einde van de regel"
+
+#~ msgid "Move to the start of the line"
+#~ msgstr "Naar het begin van de regel"
+
+#~ msgid "Next"
+#~ msgstr "Volgende"
+
+#~ msgid "No more nodes within this document."
+#~ msgstr "Dit is de laatste pagina van dit document."
+
+#~ msgid "No `Prev' for this node."
+#~ msgstr "Er is geen voorgaande pagina op dit niveau."
+
+#~ msgid "No `Prev' or `Up' for this node within this document."
+#~ msgstr "Dit is de eerste pagina van dit document."
+
+#~ msgid "Move forwards or down through node structure"
+#~ msgstr "Voorwaarts door alle pagina's van een document bladeren"
+
+#~ msgid "Move backwards or up through node structure"
+#~ msgstr "Achterwaarts door alle pagina's van een document bladeren"
+
+#~ msgid "Scroll forward in this window"
+#~ msgstr "Verderscrollen in dit venster"
+
+#~ msgid "Scroll forward in this window and set default window size"
+#~ msgstr "Verderscrollen in dit venster en de venstergrootte instellen"
+
+#~ msgid "Scroll forward in this window staying within node"
+#~ msgstr "Binnen de pagina verderscrollen in dit venster"
+
+#~ msgid ""
+#~ "Scroll forward in this window staying within node and set default window "
+#~ "size"
+#~ msgstr ""
+#~ "Binnen de pagina verderscrollen in dit venster en de venstergrootte "
+#~ "instellen"
+
+#~ msgid "Scroll backward in this window"
+#~ msgstr "Terugscrollen in dit venster"
+
+#~ msgid "Scroll backward in this window and set default window size"
+#~ msgstr "Terugscrollen in dit venster en de venstergrootte instellen"
+
+#~ msgid "Scroll backward in this window staying within node"
+#~ msgstr "Binnen de pagina terugscrollen in dit venster"
+
+#~ msgid ""
+#~ "Scroll backward in this window staying within node and set default window "
+#~ "size"
+#~ msgstr ""
+#~ "Binnen de pagina terugscrollen in dit venster en de venstergrootte "
+#~ "instellen"
+
+#~ msgid "Move to the start of this node"
+#~ msgstr "Naar het begin van deze pagina"
+
+#~ msgid "Move to the end of this node"
+#~ msgstr "Naar het einde van deze pagina"
+
+#~ msgid "Scroll down by lines"
+#~ msgstr "Een aantal regels omlaagscrollen"
+
+#~ msgid "Scroll up by lines"
+#~ msgstr "Een aantal regels omhoogscrollen"
+
+#~ msgid "Scroll down by half screen size"
+#~ msgstr "Een halve pagina omlaagscrollen"
+
+#~ msgid "Scroll up by half screen size"
+#~ msgstr "Een halve pagina omhoogscrollen"
+
+#~ msgid "Select the next window"
+#~ msgstr "Het volgende venster selecteren"
+
+#~ msgid "Select the previous window"
+#~ msgstr "Het vorige venster selecteren"
+
+#~ msgid "Split the current window"
+#~ msgstr "Het huidige venster splitsen"
+
+#~ msgid "Delete the current window"
+#~ msgstr "Het huidige venster sluiten"
+
+#~ msgid "Cannot delete a permanent window"
+#~ msgstr "Een permanent venster kan niet gesloten worden."
+
+#~ msgid "Delete all other windows"
+#~ msgstr "Alle andere vensters sluiten"
+
+#~ msgid "Scroll the other window"
+#~ msgstr "In het andere venster verderscrollen"
+
+#~ msgid "Scroll the other window backward"
+#~ msgstr "In het andere venster terugscrollen"
+
+#~ msgid "Grow (or shrink) this window"
+#~ msgstr "Dit venster vergroten of verkleinen"
+
+#~ msgid "Divide the available screen space among the visible windows"
+#~ msgstr "De beschikbare schermruimte verdelen tussen de zichtbare vensters"
+
+#~ msgid "Toggle the state of line wrapping in the current window"
+#~ msgstr "Regelafbreking in het huidige venster omschakelen"
+
+#~ msgid "Toggle the usage of regular expressions in searches"
+#~ msgstr ""
+#~ "Het gebruik van reguliere expressies bij zoekopdrachten aan-/uitzetten"
+
+#~ msgid "Using regular expressions for searches."
+#~ msgstr "Zoeken gebruikt reguliere expressies."
+
+#~ msgid "Using literal strings for searches."
+#~ msgstr "Zoeken gebruikt letterlijke tekst."
+
+#~ msgid "Select the Next node"
+#~ msgstr "Naar de volgende pagina op dit niveau"
+
+#~ msgid "Select the Prev node"
+#~ msgstr "Naar de voorgaande pagina op dit niveau"
+
+#~ msgid "Select the Up node"
+#~ msgstr "Naar de bovenliggende pagina"
+
+#~ msgid "Select the last node in this file"
+#~ msgstr "Naar de laatste pagina van dit document"
+
+#~ msgid "This window has no additional nodes"
+#~ msgstr "Dit venster heeft geen extra pagina's."
+
+#~ msgid "Select the first node in this file"
+#~ msgstr "Naar de eerste pagina van dit document"
+
+#~ msgid "Select the last item in this node's menu"
+#~ msgstr "Het laatste menu-item op deze pagina selecteren"
+
+#~ msgid "Select this menu item"
+#~ msgstr "Het huidige menu-item selecteren"
+
+#~ msgid "There aren't %d items in this menu."
+#~ msgstr "Dit menu heeft minder dan %d items."
+
+#~ msgid "Menu item (%s): "
+#~ msgstr "Te kiezen menu-item (%s): "
+
+#~ msgid "Menu item: "
+#~ msgstr "Te kiezen menu-item: "
+
+#~ msgid "Follow xref (%s): "
+#~ msgstr "Te volgen verwijzing (%s): "
+
+#~ msgid "Follow xref: "
+#~ msgstr "Te volgen kruisverwijzing: "
+
+#~ msgid "Read a menu item and select its node"
+#~ msgstr "De naam van een menu-item lezen en diens pagina selecteren"
+
+#~ msgid "Read a footnote or cross reference and select its node"
+#~ msgstr ""
+#~ "De naam van een voetnoot of kruisverwijzing lezen en diens pagina "
+#~ "selecteren"
+
+#~ msgid "Move to the start of this node's menu"
+#~ msgstr "Naar het begin van het menu op deze pagina"
+
+#~ msgid "Visit as many menu items at once as possible"
+#~ msgstr "Zo veel mogelijk menu-items tegelijk bezoeken"
+
+#~ msgid "Read a node name and select it"
+#~ msgstr "De naam van een pagina lezen en deze selecteren"
+
+#~ msgid "Goto node: "
+#~ msgstr "Te bezoeken pagina: "
+
+#~ msgid "No menu in node `%s'."
+#~ msgstr "Er is geen menu in pagina '%s'."
+
+#~ msgid "No menu item `%s' in node `%s'."
+#~ msgstr "Er is geen menu-item '%s' op pagina '%s'."
+
+#~ msgid "Unable to find node referenced by `%s' in `%s'."
+#~ msgstr "Kan de pagina waarnaar verwezen werd door '%s' niet vinden in '%s'."
+
+#~ msgid "Read a list of menus starting from dir and follow them"
+#~ msgstr "Een reeks menu-items lezen en deze vanaf de inhoudspagina volgen"
+
+#~ msgid "Follow menus: "
+#~ msgstr "Te volgen reeks menu-items: "
+
+#~ msgid "Find the node describing program invocation"
+#~ msgstr "De pagina zoeken die de aanroepwijze van het programma beschrijft"
+
+#~ msgid "Find Invocation node of [%s]: "
+#~ msgstr "Aanroepbeschrijving bekijken van [%s]: "
+
+#~ msgid "Read a manpage reference and select it"
+#~ msgstr "Een man-paginaverwijzing lezen en deze selecteren"
+
+#~ msgid "Get Manpage: "
+#~ msgstr "Te bekijken man-pagina: "
+
+#~ msgid "Select the node `Top' in this file"
+#~ msgstr "Naar de eerste pagina van dit bestand"
+
+#~ msgid "Select the node `(dir)'"
+#~ msgstr "Naar de hoofd-inhoudspagina"
+
+#~ msgid "Kill node (%s): "
+#~ msgstr "Te sluiten pagina (%s): "
+
+#~ msgid "Cannot kill node `%s'"
+#~ msgstr "Kan pagina '%s' niet sluiten"
+
+#~ msgid "Cannot kill the last node"
+#~ msgstr "Kan niet verder terug dan de eerste pagina."
+
+#~ msgid "Select the most recently selected node"
+#~ msgstr "Terug naar de laatst geziene pagina"
+
+#~ msgid "Kill this node"
+#~ msgstr "Deze pagina sluiten"
+
+#~ msgid "Read the name of a file and select it"
+#~ msgstr "De naam van een bestand lezen en deze selecteren"
+
+#~ msgid "Find file: "
+#~ msgstr "Te bezoeken bestand: "
+
+#~ msgid "Cannot find `%s'."
+#~ msgstr "Kan '%s' niet vinden."
+
+#~ msgid "Could not create output file `%s'."
+#~ msgstr "Kan uitvoerbestand '%s' niet aanmaken."
+
+#~ msgid "Done."
+#~ msgstr "Klaar."
+
+#~ msgid "Writing node %s..."
+#~ msgstr "Schrijven van pagina %s..."
+
+#~ msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
+#~ msgstr "De inhoud van deze pagina doorsluizen naar het INFO_PRINT_COMMAND"
+
+#~ msgid "Cannot open pipe to `%s'."
+#~ msgstr "Kan de pijp naar '%s' niet openen."
+
+#~ msgid "Printing node %s..."
+#~ msgstr "Afdrukken van pagina %s..."
+
+#~ msgid "Search continued from the end of the document."
+#~ msgstr "Het zoeken is verdergegaan vanaf het einde."
+
+#~ msgid "Search continued from the beginning of the document."
+#~ msgstr "Het zoeken is verdergegaan vanaf het begin."
+
+#~ msgid "Searching subfile %s ..."
+#~ msgstr "Zoeken naar subbestand %s..."
+
+#~ msgid "Read a string and search for it case-sensitively"
+#~ msgstr "Een tekenreeks lezen en daar hoofdlettergevoelig naar zoeken"
+
+#~ msgid "Read a string and search for it"
+#~ msgstr "Een tekenreeks lezen en daar naar zoeken"
+
+#~ msgid "Read a string and search backward for it"
+#~ msgstr "Een tekenreeks lezen en daar achterwaarts naar zoeken"
+
+#~ msgid "%s%s%s [%s]: "
+#~ msgstr "%s%s%s [\"%s\"]: "
+
+#~ msgid "Regexp search"
+#~ msgstr "Zoeken naar expressie"
+
+#~ msgid " case-sensitively"
+#~ msgstr " (hooflettergevoelig)"
+
+#~ msgid " backward"
+#~ msgstr " (achterwaarts)"
+
+#~ msgid "Search"
+#~ msgstr "Zoeken"
+
+#~ msgid "Search failed."
+#~ msgstr "Niet gevonden."
+
+#~ msgid "Repeat last search in the same direction"
+#~ msgstr "De laatste zoekopdracht in dezelfde richting herhalen"
+
+#~ msgid "No previous search string"
+#~ msgstr "Geen eerdere zoektekenreeks."
+
+#~ msgid "Repeat last search in the reverse direction"
+#~ msgstr "De laatste zoekopdracht in tegenovergestelde richting herhalen"
+
+#~ msgid "Search interactively for a string as you type it"
+#~ msgstr "Naar een tekenreeks zoeken terwijl u deze intypt"
+
+#~ msgid "Regexp I-search backward: "
+#~ msgstr "Achterwaarts typend-zoeken naar expressie: "
+
+#~ msgid "I-search backward: "
+#~ msgstr "Achterwaarts typend-zoeken: "
+
+#~ msgid "Regexp I-search: "
+#~ msgstr "Typend-zoeken naar expressie: "
+
+#~ msgid "I-search: "
+#~ msgstr "Typend-zoeken: "
+
+#~ msgid "Failing "
+#~ msgstr "*Ongevonden* "
+
+#~ msgid "Move to the previous cross reference"
+#~ msgstr "Naar de vorige kruisverwijzing springen"
+
+#~ msgid "Move to the next cross reference"
+#~ msgstr "Naar de volgende kruisverwijzing springen"
+
+#~ msgid "Select reference or menu item appearing on this line"
+#~ msgstr "De verwijzing of het menu-item in deze regel volgen"
+
+#~ msgid "Cancel current operation"
+#~ msgstr "Huidige operatie annuleren"
+
+# Dit is een reactie op bovenstaande 'Cancel current operation'.
+#~ msgid "Quit"
+#~ msgstr "Geannuleerd"
+
+#~ msgid "Move the cursor to a specific line of the window"
+#~ msgstr "De cursor op een bepaalde regel in het venster zetten"
+
+#~ msgid "Redraw the display"
+#~ msgstr "Het venster opnieuw schrijven"
+
+#~ msgid "Quit using Info"
+#~ msgstr "Info afsluiten"
+
+#~ msgid "Run command bound to this key's lowercase variant"
+#~ msgstr ""
+#~ "Commando uitvoeren dat behoort bij de kleinelettervariant van deze toets"
+
+#~ msgid "Unknown command (%s)."
+#~ msgstr "Onbekend commando (%s)."
+
+#~ msgid "\"%s\" is invalid"
+#~ msgstr "\"%s\" is ongeldig"
+
+#~ msgid "`%s' is invalid"
+#~ msgstr "'%s' is ongeldig"
+
+#~ msgid "Add this digit to the current numeric argument"
+#~ msgstr "Dit cijfer toevoegen aan het huidige numerieke argument"
+
+#~ msgid "Start (or multiply by 4) the current numeric argument"
+#~ msgstr ""
+#~ "Een nieuw numeriek argument beginnen (of het huidige met 4 "
+#~ "vermenigvuldigen)"
+
+#~ msgid "Internally used by \\[universal-argument]"
+#~ msgstr "Intern gebruikt door \\[universal-argument]"
+
+#~ msgid "readline: Out of virtual memory!\n"
+#~ msgstr "readline: onvoldoende geheugen beschikbaar\n"
+
+#~ msgid "When \"On\", footnotes appear and disappear automatically"
+#~ msgstr "Bij 'On' worden voetnoten automatisch getoond"
+
+#~ msgid "When \"On\", creating or deleting a window resizes other windows"
+#~ msgstr "Bij 'On' worden venstergroottes automatisch aangepast"
+
+#~ msgid "When \"On\", flash the screen instead of ringing the bell"
+#~ msgstr "Bij 'On' flitst het scherm in plaats van een belsignaal"
+
+#~ msgid "When \"On\", errors cause the bell to ring"
+#~ msgstr "Bij 'On' geven fouten een belsignaal"
+
+#~ msgid ""
+#~ "When \"On\", Info garbage collects files which had to be uncompressed"
+#~ msgstr "Bij 'On' worden gedecomprimeerde teksten vergeten"
+
+#~ msgid "When \"On\", the portion of the matched search string is highlighted"
+#~ msgstr "Bij 'On' staat het overeenkomende deel in hoofdletters"
+
+#~ msgid ""
+#~ "Controls what happens when scrolling is requested at the end of a node"
+#~ msgstr "Hoe te scrollen aan het eind van een pagina"
+
+#~ msgid "Same as scroll-behaviour"
+#~ msgstr "Hoe te scrollen aan het eind van een pagina"
+
+#~ msgid "The number lines to scroll when the cursor moves out of the window"
+#~ msgstr "Aantal te scrollen regels wanneer cursor buiten venster komt"
+
+#~ msgid "Controls whether scroll-behavior affects cursor movement commands"
+#~ msgstr "Bij 'On' werkt pijltjestoets ook op paginagrens"
+
+#~ msgid "When \"On\", Info accepts and displays ISO Latin characters"
+#~ msgstr "Bij 'On' accepteert en toont Info ISO-Latin-tekens"
+
+#~ msgid ""
+#~ "What to do when a scrolling command is issued at the end of the last node"
+#~ msgstr "Hoe te scrollen aan het eind van de laatste pagina"
+
+#~ msgid "Explain the use of a variable"
+#~ msgstr "De betekenis van een variabele uitleggen"
+
+#~ msgid "Describe variable: "
+#~ msgstr "Te omschrijven variabele: "
+
+#~ msgid "Set the value of an Info variable"
+#~ msgstr "De waarde van een Info-variabele instellen"
+
+#~ msgid "Set variable: "
+#~ msgstr "In te stellen variabele: "
+
+#~ msgid "Set %s to value (%d): "
+#~ msgstr "Variabele %s deze waarde geven (%d): "
+
+#~ msgid "Set %s to value (%s): "
+#~ msgstr "Variabele %s deze waarde geven (%s): "
+
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Tags zijn verouderd ***"
+
+#~ msgid "-----Info: (), lines ----, "
+#~ msgstr "-----Info: (), regels ----, "
+
+#~ msgid "-%s---Info: %s, %d lines --%s--"
+#~ msgstr "-%s---Info: %s, %d regels --%s--"
+
+#~ msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
+#~ msgstr "-%s%s-Info: (%s)%s, %d regels --%s--"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Subbestand: %s"
+
+#~ msgid "%s: warning: "
+#~ msgstr "%s: waarschuwing: "
+
+#~ msgid " for %s"
+#~ msgstr " voor %s"
+
+#~ msgid "\tTry `%s --help' for a complete list of options.\n"
+#~ msgstr "\tTyp '%s --help' voor een volledige lijst van opties.\n"
+
+#~ msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+#~ msgstr "Gebruik:  %s [OPTIE]... [INFO-BESTAND [INHOUDSBESTAND]]\n"
+
+#~ msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
+#~ msgstr ""
+#~ "De items die voorkomen in INFO-BESTAND toevoegen aan of\n"
+#~ "verwijderen uit het Info-inhoudsbestand INHOUDSBESTAND."
+
+#~ msgid ""
+#~ "Options:\n"
+#~ " --debug             report what is being done.\n"
+#~ " --delete            delete existing entries for INFO-FILE from DIR-"
+#~ "FILE;\n"
+#~ "                      don't insert any new entries.\n"
+#~ " --description=TEXT  the description of the entry is TEXT; used with\n"
+#~ "                      the --name option to become synonymous with the\n"
+#~ "                      --entry option.\n"
+#~ " --dir-file=NAME     specify file name of Info directory file;\n"
+#~ "                      equivalent to using the DIR-FILE argument.\n"
+#~ " --dry-run           same as --test."
+#~ msgstr ""
+#~ "Opties:\n"
+#~ " --debug              tonen wat er gedaan wordt\n"
+#~ " --delete             de items van INFO-BESTAND uit INHOUDSBESTAND "
+#~ "verwijderen;\n"
+#~ "                        geen nieuwe items toevoegen\n"
+#~ " --description=TEKST  de beschrijving van een item; wanneer samen "
+#~ "gebruikt met\n"
+#~ "                        '--name', is dit equivalent aan '--entry'\n"
+#~ " --dir-file=NAAM      de bestandsnaam van het Info-inhoudsbestand;\n"
+#~ "                        equivalent aan het argument INHOUDSBESTAND\n"
+#~ " --dry-run            hetzelfde als '--test'"
+
+#~ msgid ""
+#~ " --entry=TEXT        insert TEXT as an Info directory entry.\n"
+#~ "                      TEXT is written as an Info menu item line followed\n"
+#~ "                       by zero or more extra lines starting with "
+#~ "whitespace.\n"
+#~ "                      If you specify more than one entry, all are added.\n"
+#~ "                      If you don't specify any entries, they are "
+#~ "determined\n"
+#~ "                       from information in the Info file itself.\n"
+#~ "                      When removing, TEXT specifies the entry to remove.\n"
+#~ "                      TEXT is only removed as a last resort, if the\n"
+#~ "                      entry as determined from the Info file is not "
+#~ "present,\n"
+#~ "                      and the basename of the Info file isn't found "
+#~ "either."
+#~ msgstr ""
+#~ " --entry=TEKST        deze tekst toevoegen als een Info-inhoudsitem;\n"
+#~ "                        de TEKST moet de vorm van een Info-menu-item "
+#~ "hebben,\n"
+#~ "                        met nul of meer extra regels beginnend met "
+#~ "witruimte;\n"
+#~ "                        indien u meer dan één item opgeeft, worden ze "
+#~ "allemaal\n"
+#~ "                        toegevoegd; als u geen items opgeeft, worden deze "
+#~ "uit\n"
+#~ "                        het gegeven Info-bestand gehaald"
+
+#~ msgid ""
+#~ " --help              display this help and exit.\n"
+#~ " --info-dir=DIR      same as --dir-file=DIR/dir.\n"
+#~ " --info-file=FILE    specify Info file to install in the directory;\n"
+#~ "                      equivalent to using the INFO-FILE argument.\n"
+#~ " --item=TEXT         same as --entry=TEXT.\n"
+#~ " --keep-old          do not replace entries, or remove empty sections.\n"
+#~ " --menuentry=TEXT    same as --name=TEXT.\n"
+#~ " --name=TEXT         the name of the entry is TEXT; used with --"
+#~ "description\n"
+#~ "                      to become synonymous with the --entry option.\n"
+#~ " --no-indent         do not format new entries in the DIR file.\n"
+#~ " --quiet             suppress warnings."
+#~ msgstr ""
+#~ " --help               deze hulptekst tonen en stoppen\n"
+#~ " --info-dir=MAP       hetzelfde als '--dir-file=MAP/dir'\n"
+#~ " --info-file=BESTAND  een Info-bestand waarvan de items opgenomen moeten "
+#~ "worden;\n"
+#~ "                        equivalent aan het argument INFO-BESTAND\n"
+#~ " --item=TEKST         hetzelfde als '--entry=TEKST'\n"
+#~ " --keep-old           geen items vervangen, en lege secties niet "
+#~ "verwijderen\n"
+#~ " --menuentry=TEKST    hetzelfde als '--name=TEKST'\n"
+#~ " --no-indent          nieuwe items in het inhoudsbestand niet opmaken\n"
+#~ " --quiet              waarschuwingen onderdrukken"
+
+#~ msgid ""
+#~ " --regex=R           put this file's entries in all sections that match "
+#~ "the\n"
+#~ "                      regular expression R (ignoring case).\n"
+#~ " --remove            same as --delete.\n"
+#~ " --remove-exactly    only remove if the info file name matches exactly;\n"
+#~ "                      suffixes such as .info and .gz are not ignored.\n"
+#~ " --section=SEC       put entries in section SEC of the directory.\n"
+#~ "                      If you specify more than one section, all the "
+#~ "entries\n"
+#~ "                       are added in each of the sections.\n"
+#~ "                      If you don't specify any sections, they are "
+#~ "determined\n"
+#~ "                       from information in the Info file itself.\n"
+#~ " --section R SEC     equivalent to --regex=R --section=SEC --add-once."
+#~ msgstr ""
+#~ " --regex=EXPRESSIE    de gevonden items toevoegen aan alle secties die "
+#~ "aan deze\n"
+#~ "                        reguliere expressie voldoen (daarbij verschil "
+#~ "tussen\n"
+#~ "                        hoofd- en kleine letters negeren)\n"
+#~ " --remove             hetzelfde als '--delete'\n"
+#~ " --remove-exactly     alleen verwijderen als de infobestandsnaam exact "
+#~ "klopt;\n"
+#~ "                        achtervoegsels als .info en .gz worden genegeerd\n"
+#~ " --section=SECTIE     de gevonden items aan deze sectie van de inhoud "
+#~ "toevoegen;\n"
+#~ "                        als u meer dan één sectie opgeeft, worden de "
+#~ "items aan\n"
+#~ "                        al die secties toegevoegd; als u geen secties "
+#~ "opgeeft,\n"
+#~ "                        wordt de informatie uit het Info-bestand zelf "
+#~ "gehaald\n"
+#~ " --section EXP SEC    hetzelfde asl '--regex=EXP --section=SEC --add-once'"
+
+#~ msgid ""
+#~ " --silent            suppress warnings.\n"
+#~ " --test              suppress updating of DIR-FILE.\n"
+#~ " --version           display version information and exit."
+#~ msgstr ""
+#~ " --silent             waarschuwingen onderdrukken\n"
+#~ " --test               het INHOUDSBESTAND niet bijwerken, slechts doen "
+#~ "alsof\n"
+#~ " --version            versie-informatie tonen en stoppen"
+
+#~ msgid ""
+#~ "This is the file .../info/dir, which contains the\n"
+#~ "topmost node of the Info hierarchy, called (dir)Top.\n"
+#~ "The first time you invoke Info you start off looking at this node.\n"
+#~ "\n"
+#~ "%s\tThis is the top of the INFO tree\n"
+#~ "\n"
+#~ "  This (the Directory node) gives a menu of major topics.\n"
+#~ "  Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
+#~ "  \"h\" gives a primer for first-timers,\n"
+#~ "  \"mEmacs<Return>\" visits the Emacs manual, etc.\n"
+#~ "\n"
+#~ "  In Emacs, you can click mouse button 2 on a menu item or cross "
+#~ "reference\n"
+#~ "  to select it.\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "Dit is het bestand .../info/dir, dat de bovenste pagina van\n"
+#~ "de Info-documentenhiërarchie bevat, genaamd '(dir)Top'.\n"
+#~ "Info gestart zonder argumenten begint op deze pagina.\n"
+#~ "\n"
+#~ "%s\tDit is de top van de INFO-boom\n"
+#~ "\n"
+#~ "  Deze inhoudspagina toont een menu met hoofdonderwerpen.\n"
+#~ "  Een \"q\" sluit het programma af, een \"d\" brengt u hier terug,\n"
+#~ "  \"?\" toont een hulpvenster met alle Info-commando's,\n"
+#~ "  \"h\" gaat naar een handleiding voor nieuwe gebruikers,\n"
+#~ "  \"mls<Enter>\" toont u de pagina's van het 'ls'-commando, enzovoort.\n"
+#~ "\n"
+#~ "%s\n"
+
+#~ msgid "%s: could not read (%s) and could not create (%s)\n"
+#~ msgstr "%s: kan deze niet lezen (%s) en niet aanmaken (%s)\n"
+
+#~ msgid "%s: empty file"
+#~ msgstr "%s: is een leeg bestand"
+
+#~ msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
+#~ msgstr "START-INFO-DIR-ENTRY zonder bijpassende END-INFO-DIR-ENTRY"
+
+#~ msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
+#~ msgstr "END-INFO-DIR-ENTRY zonder bijpassende START-INFO-DIR-ENTRY"
+
+#~ msgid "%s: already have dir file: %s\n"
+#~ msgstr "%s: hebben al een inhoudsbestand: %s\n"
+
+#~ msgid "%s: Specify the Info file only once.\n"
+#~ msgstr "%s: Geef het Info-bestand slechts één keer op.\n"
+
+#~ msgid "Extra regular expression specified, ignoring `%s'"
+#~ msgstr "Extra reguliere expressie opgegeven; '%s' wordt genegeerd"
+
+#~ msgid "Error in regular expression `%s': %s"
+#~ msgstr "Fout in reguliere expressie '%s': %s"
+
+#~ msgid "excess command line argument `%s'"
+#~ msgstr "commandoregel-argument '%s' is overbodig"
+
+#~ msgid "No input file specified; try --help for more information."
+#~ msgstr "Geen invoerbestand gegeven; gebruik '--help' voor meer informatie."
+
+#~ msgid "No dir file specified; try --help for more information."
+#~ msgstr "Geen inhoudsbestand gegeven; gebruik '--help' voor meer informatie."
+
+#~ msgid "no info dir entry in `%s'"
+#~ msgstr "geen Info-inhoudsitem in '%s'"
+
+#~ msgid "no entries found for `%s'; nothing deleted"
+#~ msgstr "geen items voor '%s' gevonden; er is niets verwijderd"
+
+#~ msgid "ferror on stdout\n"
+#~ msgstr "ferror() op standaarduitvoer\n"
+
+#~ msgid "fflush error on stdout\n"
+#~ msgstr "fflush()-fout op standaarduitvoer\n"
+
+#~ msgid "arguments to @%s ignored"
+#~ msgstr "argumenten van @%s zijn genegeerd"
+
+#~ msgid "January"
+#~ msgstr "januari"
+
+#~ msgid "February"
+#~ msgstr "februari"
+
+#~ msgid "March"
+#~ msgstr "maart"
+
+#~ msgid "April"
+#~ msgstr "april"
+
+#~ msgid "May"
+#~ msgstr "mei"
+
+#~ msgid "June"
+#~ msgstr "juni"
+
+#~ msgid "July"
+#~ msgstr "juli"
+
+#~ msgid "August"
+#~ msgstr "augustus"
+
+#~ msgid "September"
+#~ msgstr "september"
+
+#~ msgid "October"
+#~ msgstr "oktober"
+
+#~ msgid "November"
+#~ msgstr "november"
+
+#~ msgid "December"
+#~ msgstr "december"
+
+#~ msgid "unlikely character %c in @var"
+#~ msgstr "onwaarschijnlijk teken '%c' in @var"
+
+#~ msgid "@sc argument all uppercase, thus no effect"
+#~ msgstr "argument van @sc is in hoofdletters, heeft dus geen effect"
+
+#~ msgid "`{' expected, but saw `%c'"
+#~ msgstr "'{' werd verwacht, maar '%c' gevonden"
+
+#~ msgid "end of file inside verb block"
+#~ msgstr "einde van bestand in een \"verb\"-blok"
+
+#~ msgid "`}' expected, but saw `%c'"
+#~ msgstr "'}' werd verwacht, maar '%c' gevonden"
+
+#~ msgid "Bad argument to %c%s"
+#~ msgstr "Fout argument van %c%s"
+
+#~ msgid "asis"
+#~ msgstr "asis"
+
+#~ msgid "none"
+#~ msgstr "none"
+
+#~ msgid "insert"
+#~ msgstr "invoegen"
+
+#~ msgid "Bad argument to @%s: %s"
+#~ msgstr "Fout argument van @%s: %s"
+
+#, fuzzy
+#~ msgid "Macro"
+#~ msgstr "maart"
+
+#, fuzzy
+#~ msgid "Variable"
+#~ msgstr "In te stellen variabele: "
+
+#, fuzzy
+#~ msgid "User Option"
+#~ msgstr "Een voltooiing invoegen"
+
+#, fuzzy
+#~ msgid "Instance Variable"
+#~ msgstr "Te omschrijven variabele: "
+
+#~ msgid "of"
+#~ msgstr "van"
+
+#~ msgid "on"
+#~ msgstr "aan"
+
+#~ msgid "%s: getwd: %s, %s\n"
+#~ msgstr "%s: getwd: %s, %s\n"
+
+#~ msgid "`%s' omitted before output filename"
+#~ msgstr "'%s' wordt weggelaten voor een uitvoerbestandsnaam"
+
+#~ msgid "`%s' omitted since writing to stdout"
+#~ msgstr "'%s' wordt weggelaten vanwege het schrijven naar standaarduitvoer"
+
+#~ msgid "Output buffer not empty."
+#~ msgstr "Uitvoerbuffer is niet leeg."
+
+#~ msgid "See "
+#~ msgstr "Zie "
+
+#~ msgid "`%c%s' needs an argument `{...}', not just `%s'"
+#~ msgstr "'%c%s' vereist een argument '{...}', niet slechts '%s'"
+
+#~ msgid "No closing brace for footnote `%s'"
+#~ msgstr "Ontbrekende sluitaccolade voor voetnoot '%s'"
+
+#~ msgid "Footnotes inside footnotes are not allowed"
+#~ msgstr "Voetnoten binnen een voetnoot zijn niet toegestaan"
+
+#~ msgid "Footnotes"
+#~ msgstr "Voetnoten"
+
+#~ msgid "[unexpected] no html tag to pop"
+#~ msgstr "[onverwacht] geen html-tag aanwezig"
+
+#~ msgid "[unexpected] invalid node name: `%s'"
+#~ msgstr "[onverwacht] ongeldige paginanaam: '%s'"
+
+#~ msgid "Info cannot handle `:' in index entry `%s'"
+#~ msgstr "Info kan ':' in indexitem '%s' niet aan"
+
+#~ msgid "Unknown index `%s' and/or `%s' in @synindex"
+#~ msgstr "Onbekende index '%s' en/of '%s' in @synindex"
+
+#~ msgid "(line )"
+#~ msgstr "(regel )"
+
+#~ msgid "(outside of any node)"
+#~ msgstr "(buiten alle pagina's)"
+
+#~ msgid "Broken-Type in insertion_type_pname"
+#~ msgstr ""
+#~ "**Interne fout**: niet-bestaande uitvoersoort in insertion_type_pname()"
+
+#~ msgid "Enumeration stack overflow"
+#~ msgstr "Overloop van enumeratiestapel"
+
+#~ msgid "lettering overflow, restarting at %c"
+#~ msgstr "de letters zijn op; herbegonnen bij %c"
+
+#~ msgid "%cfloat environments cannot be nested"
+#~ msgstr "%cfloat-omgevingen kunnen niet genest worden"
+
+#~ msgid "%s requires letter or digit"
+#~ msgstr "%s vereist een letter of cijfer"
+
+#~ msgid "end of file inside verbatim block"
+#~ msgstr "einde van bestand binnen een verbatim blok"
+
+#~ msgid "@detailmenu seen before first node, creating `Top' node"
+#~ msgstr "@detailmenu gevonden voor de eerste pagina; aanmaken van Top-pagina"
+
+#~ msgid ""
+#~ "@%s not meaningful outside `@titlepage' and `@quotation' environments"
+#~ msgstr "@%s is niet zinvol buiten '@titlepage'- en '@quotation'-omgevingen"
+
+#~ msgid "@%s not meaningful outside `@titlepage' environment"
+#~ msgstr "@%s is niet zinvol buiten '@titlepage'-omgeving"
+
+#~ msgid "Unmatched `%c%s'"
+#~ msgstr "Ongepaarde '%c%s'"
+
+#~ msgid "`%c%s' needs something after it"
+#~ msgstr "'%c%s' vereist een argument"
+
+#~ msgid "Bad argument `%s' to `@%s', using `%s'"
+#~ msgstr "Verkeerd argument '%s' van '@%s'; '%s' wordt gebruikt"
+
+#~ msgid "@itemx not meaningful inside `%s' block"
+#~ msgstr "@itemx is zinloos in een '%s'-blok"
+
+#~ msgid "%c%s found outside of an insertion block"
+#~ msgstr "%c%s gevonden buiten een invoeg-blok"
+
+#~ msgid "no default territory known for language `%s'"
+#~ msgstr "geen standaardterritorium bekend voor taal '%s'"
+
+#~ msgid "invalid encoded character `%s'"
+#~ msgstr "ongeldig gecodeerd teken '%s'"
+
+#~ msgid "@allow-recursion is deprecated; please use @rmacro instead"
+#~ msgstr "@allow-recursion is verouderd; gebruik @rmacro"
+
+#~ msgid "mismatched @end %s with @%s"
+#~ msgstr "@end %s komt niet overeen met @%s"
+
+#~ msgid ""
+#~ "Options for XML and Docbook:\n"
+#~ "      --output-indent=VAL     indent XML elements by VAL spaces (default %"
+#~ "d).\n"
+#~ "                                If VAL is 0, ignorable whitespace is "
+#~ "dropped.\n"
+#~ msgstr ""
+#~ "Opties voor XML en Docbook:\n"
+#~ "      --output-indent=GETAL   XML-elementen met dit aantal spaties "
+#~ "inspringen\n"
+#~ "                                (standaard %d); indien 0, dan witruimte "
+#~ "die\n"
+#~ "                                weggelaten mag worden laten vervallen\n"
+
+#~ msgid "%s: %s arg must be numeric, not `%s'.\n"
+#~ msgstr "%s: Argument van %s moet numeriek zijn, niet '%s'.\n"
+
+#~ msgid "%s: could not open macro expansion output `%s'"
+#~ msgstr "%s: Kan uitvoerbestand '%s' voor macro-expansies niet openen"
+
+#~ msgid "%s: ignoring second macro expansion output `%s'.\n"
+#~ msgstr ""
+#~ "%s: Tweede uitvoerbestand '%s' voor macro-expansies wordt genegeerd.\n"
+
+#~ msgid "%s: could not open internal links output `%s'"
+#~ msgstr "%s: Kan uitvoerbestand '%s' voor interne verwijzingen niet openen"
+
+#~ msgid "%s: ignoring second internal links output `%s'.\n"
+#~ msgstr ""
+#~ "%s: Tweede uitvoerbestand '%s' voor interne verwijzingen wordt "
+#~ "genegeerd.\n"
+
+#~ msgid "Multiline command %c%s used improperly"
+#~ msgstr "Multi-regelcommando %c%s wordt onjuist gebruikt"
+
+#~ msgid "Expected `%s'"
+#~ msgstr "Verwachtte '%s'"
+
+#~ msgid "No `%s' found in `%s'"
+#~ msgstr "Geen '%s' gevonden in '%s'"
+
+#~ msgid ""
+#~ "%s: Skipping macro expansion to stdout as Info output is going there.\n"
+#~ msgstr ""
+#~ "%s: Macro-expansie naar standaarduitvoer wordt overgeslagen,\n"
+#~ "want de uitvoer van Info gaat daar al heen.\n"
+
+#~ msgid "Making %s file `%s' from `%s'.\n"
+#~ msgstr "Aanmaken van een %s-bestand '%s' uit '%s'.\n"
+
+#~ msgid ""
+#~ "%s: Removing macro output file `%s' due to errors; use --force to "
+#~ "preserve.\n"
+#~ msgstr ""
+#~ "%s: Macro-uitvoerbestand '%s' wordt verwijderd wegens fouten;\n"
+#~ "gebruik '--force' om het te behouden.\n"
+
+#~ msgid ""
+#~ "%s: Removing internal links output file `%s' due to errors; use --force "
+#~ "to preserve.\n"
+#~ msgstr ""
+#~ "%s: Uitvoerbestand '%s' voor interne verwijzingen wordt\n"
+#~ "verwijderd wegens fouten; gebruik '--force' om het te behouden.\n"
+
+#~ msgid "Unmatched }"
+#~ msgstr "Ongepaarde }"
+
+#~ msgid "NO_NAME!"
+#~ msgstr "GEEN_NAAM!"
+
+#~ msgid "No such file `%s'"
+#~ msgstr "Geen bestand '%s' gevonden"
+
+#~ msgid "@image file `%s' (for text) unreadable: %s"
+#~ msgstr "@image-bestand '%s' (voor tekst) is niet leesbaar: %s"
+
+#~ msgid "@image missing filename argument"
+#~ msgstr "ontbrekend bestandsnaamargument van @image"
+
+#~ msgid "{No value for `%s'}"
+#~ msgstr "{Geen waarde voor '%s'}"
+
+#~ msgid "`%.40s...' is too long for expansion; not expanded"
+#~ msgstr "'%.40s...' is te lang voor expansie; is niet geëxpandeerd"
+
+#~ msgid "Missing } in @multitable template"
+#~ msgstr "Ontbrekende } in @multitable-sjabloon"
+
+#~ msgid "[unexpected] cannot select column #%d in multitable"
+#~ msgstr "[onverwacht] kan kolom #%d niet selecteren in 'multitabel'"
+
+#~ msgid "** Multicolumn output from last row:\n"
+#~ msgstr "** 'Multikolom'-uitvoer van de laatste rij:\n"
+
+#~ msgid "* column #%d: output = %s\n"
+#~ msgstr "* kolom #%d: uitvoer = %s\n"
+
+#~ msgid "Formatting node %s...\n"
+#~ msgstr "Pagina %s wordt opgemaakt...\n"
+
+#~ msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
+#~ msgstr "Pagina '%s' vereist een sectiemakend commando (bijvoorbeeld %c%s)"
+
+#~ msgid "No node name specified for `%c%s' command"
+#~ msgstr "Er is geen paginanaam opgegeven voor commando '%c%s'"
+
+#~ msgid "This @anchor command ignored; references to it will not work"
+#~ msgstr ""
+#~ "Dit @anchor-commando wordt genegeerd; verwijzingen ernaar zullen niet "
+#~ "werken"
+
+#~ msgid "Rename this anchor or use the `--no-split' option"
+#~ msgstr "Geef dit anker een andere naam of gebruik de optie '--no-split'"
+
+#~ msgid "Unexpected string at end of split-HTML file `%s'"
+#~ msgstr "Onverwachte tekenreeks aan het eind van 'split-HTML'-bestand '%s'"
+
+#, fuzzy
+#~ msgid "Next:"
+#~ msgstr "Volgende"
+
+#~ msgid "Anchors `%s' and `%s' map to the same file name"
+#~ msgstr "Ankers '%s' en '%s' verwijzen naar dezelfde bestandsnaam"
+
+#~ msgid "@anchor command ignored; references to it will not work"
+#~ msgstr "@anchor-commando wordt genegeerd; verwijzing ernaar werkt niet"
+
+#~ msgid ""
+#~ "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
+#~ msgstr ""
+#~ "%s verwijst naar niet-bestaande pagina '%s' (misschien een onjuiste "
+#~ "sectieindeling?)"
+
+# In de volgende meldingen zijn Next, Prev en Up duidelijker indien onvertaald.
+#~ msgid ""
+#~ "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
+#~ msgstr ""
+#~ "Het 'Next'-veld van pagina '%s' wijst nergens naar (misschien een "
+#~ "onjuiste sectieindeling?)"
+
+#~ msgid "This node (%s) has the bad Prev"
+#~ msgstr "Deze pagina (%s) heeft het foute 'Prev'-veld"
+
+#~ msgid "Prev field of node `%s' not pointed to"
+#~ msgstr "Het 'Prev'-veld van pagina '%s' wijst nergens naar"
+
+#~ msgid "This node (%s) has the bad Next"
+#~ msgstr "Deze pagina (%s) heeft het foute 'Next'-veld"
+
+#~ msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
+#~ msgstr "'%s' heeft geen 'Up'-veld (misschien een onjuiste sectieindeling?)"
+
+#~ msgid "Removing %s\n"
+#~ msgstr "Verwijderen van %s\n"
+
+#~ msgid "Can't remove file `%s': %s"
+#~ msgstr "Kan bestand '%s' niet verwijderen: %s"
+
+#~ msgid "Internal error (search_sectioning) `%s'!"
+#~ msgstr "**Interne fout**: search_sectioning('%s')!"
+
+#~ msgid "Internal error (search_sectioning) \"%s\"!"
+#~ msgstr "**Interne fout**: search_sectioning('%s')!"
+
+#~ msgid "%c%s is obsolete; use %c%s instead"
+#~ msgstr "%c%s is verouderd; gebruik in plaats daarvan %c%s"
+
+#~ msgid "Node with %ctop as a section already exists"
+#~ msgstr "Pagina met %ctop als sectie bestaat al"
+
+#~ msgid "Here is the %ctop node"
+#~ msgstr "Hier is de %ctop-pagina"
+
+#~ msgid "%ctop used before %cnode, defaulting to %s"
+#~ msgstr "%ctop wordt vóór %cnode gebruikt; de standaard %s wordt nu gebruikt"
+
+#~ msgid ""
+#~ "@headitem as the last item of @multitable produces invalid Docbook "
+#~ "documents"
+#~ msgstr ""
+#~ "@headitem als laatste item in @multitable produceert foutieve Docbook-"
+#~ "documenten"
+
+#~ msgid "First argument to cross-reference may not be empty"
+#~ msgstr "Het eerste argument in een kruisverwijzing mag niet leeg zijn"
+
+#, fuzzy
+#~ msgid "see "
+#~ msgstr "Zie "
+
+#~ msgid "Empty file name for HTML cross reference in `%s'"
+#~ msgstr "Lege bestandsnaam voor HTML-kruisverwijzing in '%s'"
+
+#~ msgid "End of file reached while looking for `.' or `,'"
+#~ msgstr "Einde van bestand werd bereikt tijdens zoeken naar '.' of ','"
+
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "Gebruik @pxref voor kruisverwijzingen tussen haakjes"
+
+#~ msgid "display this help and exit"
+#~ msgstr "deze hulptekst tonen en stoppen"
+
+#~ msgid "send output to FILE"
+#~ msgstr "de uitvoer naar BESTAND sturen"
+
+#~ msgid "display version information and exit"
+#~ msgstr "versie-informatie tonen en stoppen"
+
+#~ msgid "Usage: %s [OPTION]... FILE...\n"
+#~ msgstr "Gebruik:  %s [OPTIE]... BESTAND...\n"
+
+#~ msgid "Generate a sorted index for each TeX output FILE.\n"
+#~ msgstr "Een gesorteerde index maken voor elk TeX-uitvoerbestand.\n"
+
+#~ msgid ""
+#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+#~ msgstr ""
+#~ "Voor een document 'foo.texi' wordt het BESTAND gewoonlijk opgegeven als "
+#~ "'foo.%c%c'.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Options:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Opties:\n"
+
+#~ msgid "failure reopening %s"
+#~ msgstr "fout bij het heropenen van %s"
+
+#~ msgid "%s: not a texinfo index file"
+#~ msgstr "%s: is geen Texinfo-inhoudsbestand"
+
+#~ msgid "No page number in %s"
+#~ msgstr "Geen paginanummer in %s"
+
+#~ msgid "entry %s follows an entry with a secondary name"
+#~ msgstr "item %s volgt op een item met een alternatieve naam"
+
+#~ msgid "Appendix %c"
+#~ msgstr "Appendix %c"

@@ -1,0 +1,2368 @@
+# Texinfo project .po file for hr_HR localization
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# Mirsad Todorovac <mtodorov_69@yahoo.com>, 2002.
+#     ... wishes to thank to everybody who helped in good faith.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: texinfo 4.2\n"
+"Report-Msgid-Bugs-To: texi2html-bug@nongnu.org\n"
+"POT-Creation-Date: 2009-11-08 16:40+0100\n"
+"PO-Revision-Date: 2002-04-26 13:49-MET+DST (UTC+2)\n"
+"Last-Translator: Mirsad Todorovac <mtodorov_69@yahoo.com>\n"
+"Language-Team: Croatian <lokalizacija@linux.hr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: texi2html.pl:2259
+#, perl-format
+msgid "Try `%s --help' for more information.\n"
+msgstr ""
+
+#: texi2html.pl:2368
+#, perl-format
+msgid "%s is not a valid language code"
+msgstr ""
+
+#: texi2html.pl:2372
+#, perl-format
+msgid "%s is not a valid region code"
+msgstr ""
+
+#: texi2html.pl:2458
+#, perl-format
+msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgstr ""
+
+#: texi2html.pl:2463
+#, perl-format
+msgid "@%s arg must be `separate' or `end', not `%s'"
+msgstr ""
+
+#: texi2html.pl:2481
+#, fuzzy, perl-format
+msgid "unrecognized encoding name `%s'"
+msgstr "%s: nepoznata opcija `%c%s'\n"
+
+#: texi2html.pl:2496
+msgid "Document encoding is utf8, but there is no unicode support"
+msgstr ""
+
+#: texi2html.pl:2499
+#, perl-format
+msgid "Encoding %s certainly poorly supported"
+msgstr ""
+
+#: texi2html.pl:2518 texi2html.pl:2592
+msgid "translation"
+msgstr ""
+
+#: texi2html.pl:2750
+#, perl-format
+msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgstr ""
+
+#: texi2html.pl:2754
+#, perl-format
+msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
+msgstr ""
+
+#: texi2html.pl:3612
+#, perl-format
+msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+msgstr ""
+
+#: texi2html.pl:3614
+msgid ""
+"Translate Texinfo source documentation to various other formats, by default\n"
+"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
+msgstr ""
+
+#: texi2html.pl:3617
+#, perl-format
+msgid ""
+"General options:\n"
+"      --error-limit=NUM       quit after NUM errors (default %d).\n"
+"      --document-language=STR locale to use in translating Texinfo keywords\n"
+"                                for the output document (default C).\n"
+"      --force                 preserve output even if errors.\n"
+"      --help                  display this help and exit.\n"
+"      --no-validate           suppress node cross-reference validation.\n"
+"      --no-warn               suppress warnings (but not errors).\n"
+"  -v, --verbose               explain what is being done.\n"
+"      --version               display version information and exit.\n"
+msgstr ""
+
+#: texi2html.pl:3628
+msgid ""
+"Output format selection (default is to produce Info):\n"
+"      --docbook               output Docbook XML rather than Info.\n"
+"      --html                  output HTML rather than Info.\n"
+"      --xml                   output Texinfo XML rather than Info.\n"
+"      --plaintext             output plain text rather than Info.\n"
+msgstr ""
+
+#: texi2html.pl:3634
+msgid ""
+"General output options:\n"
+"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+"                                ignoring any @setfilename.\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output);\n"
+"                                also, write to standard output by default.\n"
+"      --no-split              suppress the splitting of Info or HTML "
+"output,\n"
+"                                generate only one output file.\n"
+"      --number-sections       output chapter and sectioning numbers.\n"
+"  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
+msgstr ""
+
+#: texi2html.pl:3646
+#, perl-format
+msgid ""
+"Options for Info and plain text:\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %"
+"d).\n"
+"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
+"                                `separate' to put them in their own node;\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
+"d).\n"
+"                                If VAL is `none', do not indent; if VAL is\n"
+"                                `asis', preserve existing indentation.\n"
+"      --split-size=NUM        split Info files at size NUM (default %d).\n"
+msgstr ""
+
+#: texi2html.pl:3661
+msgid ""
+"Options for HTML:\n"
+"      --css-include=FILE      include FILE in HTML <style> output;\n"
+"                                read stdin if FILE is -.\n"
+"      --css-ref=URL           generate reference to a CSS file.\n"
+"      --internal-links=FILE   produce list of internal links in FILE.\n"
+"      --transliterate-file-names\n"
+"                              produce file names in ASCII transliteration.\n"
+msgstr ""
+
+#: texi2html.pl:3674
+msgid ""
+"Input file options:\n"
+"      --commands-in-node-names  allow @ commands in node names.\n"
+"  -D VAR                        define the variable VAR, as with @set.\n"
+"  -I DIR                        append DIR to the @include search path.\n"
+"  -P DIR                        prepend DIR to the @include search path.\n"
+"  -U VAR                        undefine the variable VAR, as with @clear.\n"
+msgstr ""
+
+#: texi2html.pl:3681
+msgid ""
+"Conditional processing in input:\n"
+"  --ifdocbook       process @ifdocbook and @docbook even if\n"
+"                      not generating Docbook.\n"
+"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
+"  --ifinfo          process @ifinfo even if not generating Info.\n"
+"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
+"  --iftex           process @iftex and @tex; implies --no-split.\n"
+"  --ifxml           process @ifxml and @xml.\n"
+"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
+"  --no-ifhtml       do not process @ifhtml and @html text.\n"
+"  --no-ifinfo       do not process @ifinfo text.\n"
+"  --no-ifplaintext  do not process @ifplaintext text.\n"
+"  --no-iftex        do not process @iftex and @tex text.\n"
+"  --no-ifxml        do not process @ifxml and @xml text.\n"
+"\n"
+"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
+msgstr ""
+
+#: texi2html.pl:3698
+msgid ""
+"  The defaults for the @if... conditionals depend on the output format:\n"
+"  if generating HTML, --ifhtml is on and the others are off;\n"
+"  if generating Info, --ifinfo is on and the others are off;\n"
+"  if generating plain text, --ifplaintext is on and the others are off;\n"
+"  if generating XML, --ifxml is on and the others are off.\n"
+msgstr ""
+
+#: texi2html.pl:3704
+msgid ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+msgstr ""
+
+#: texi2html.pl:3715
+#, fuzzy
+msgid ""
+"Email bug reports to bug-texinfo@gnu.org,\n"
+"general questions and discussion to help-texinfo@gnu.org.\n"
+"Texinfo home page: http://www.gnu.org/software/texinfo/"
+msgstr ""
+"\n"
+"Izvje¹taje o bugovima molimo slati emailom na bug-texinfo@gnu.org\n"
+"(na engleskom), generalna pitanja i diskusije na help-texinfo@gnu.org.\n"
+"Texinfo matièna stranica: http://www.gnu.org/software/texinfo/\n"
+"Pitanja i kritike glede translacije slati na adresu lokalizacija@linux.hr."
+
+#: texi2html.pl:3794
+#, perl-format
+msgid ""
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
+msgstr ""
+
+#: texi2html.pl:3816
+#, perl-format
+msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
+msgstr ""
+
+#: texi2html.pl:4423
+#, perl-format
+msgid "Can't create directory `%s': %s"
+msgstr ""
+
+#: texi2html.pl:5140
+#, fuzzy, perl-format
+msgid "Node `%s' previously defined %s"
+msgstr "%s je definiran kao %s."
+
+#: texi2html.pl:5145 texi2html.pl:12622
+#, perl-format
+msgid "Syntax for an external node used for `%s'"
+msgstr ""
+
+#: texi2html.pl:5427 texi2html.pl:5438
+#, perl-format
+msgid "%c%s requires a name"
+msgstr ""
+
+#: texi2html.pl:5503
+#, perl-format
+msgid "@exampleindent arg must be numeric/`asis', not `%s'"
+msgstr ""
+
+#: texi2html.pl:5514
+#, perl-format
+msgid "Expected @%s on or off, not `%s'"
+msgstr ""
+
+#: texi2html.pl:5602
+#, perl-format
+msgid "Encoding %s is not a canonical texinfo encoding"
+msgstr ""
+
+#: texi2html.pl:5759
+#, perl-format
+msgid "Unknown from index `%s' in @%s"
+msgstr ""
+
+#: texi2html.pl:5761
+#, fuzzy, perl-format
+msgid "Unknown to index name `%s' in @%s"
+msgstr "Ne mogu naæi èvor referenciran od `%s' u `%s'."
+
+#: texi2html.pl:5796
+#, perl-format
+msgid "Reserved index name %s"
+msgstr ""
+
+#: texi2html.pl:5839
+#, perl-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
+msgstr ""
+
+#: texi2html.pl:5964
+#, perl-format
+msgid "@sp requires a positive numeric argument, not `%s'"
+msgstr ""
+
+#: texi2html.pl:6701
+#, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr ""
+
+#: texi2html.pl:6776
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr ""
+
+#: texi2html.pl:6827
+#, perl-format
+msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr ""
+
+#: texi2html.pl:6846
+#, perl-format
+msgid "For `%s', up in menu `%s' and up `%s' don't match"
+msgstr ""
+
+#: texi2html.pl:6876
+#, perl-format
+msgid "No node following `%s' in menu, but `%s' follows in sectionning"
+msgstr ""
+
+#: texi2html.pl:6877
+#, perl-format
+msgid "Node following `%s' in menu `%s' and in sectionning `%s' differ"
+msgstr ""
+
+#: texi2html.pl:7903
+#, perl-format
+msgid "Unknown index `%s'"
+msgstr ""
+
+#: texi2html.pl:7910
+#, perl-format
+msgid "Entry for index `%s' outside of any node"
+msgstr ""
+
+#: texi2html.pl:8959
+#, perl-format
+msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
+msgstr ""
+
+#: texi2html.pl:8963
+#, perl-format
+msgid "%s: Removing output files due to errors; use --force to preserve.\n"
+msgstr ""
+
+#: texi2html.pl:9010
+msgid "Too many errors!  Gave up.\n"
+msgstr ""
+
+#: texi2html.pl:9102
+#, perl-format
+msgid "%s:%d: warning: %s (via @%s)\n"
+msgstr ""
+
+#: texi2html.pl:9106
+#, perl-format
+msgid "%s:%d: warning: %s\n"
+msgstr ""
+
+#: texi2html.pl:9139
+#, perl-format
+msgid "(in %s l. %d via @%s)"
+msgstr ""
+
+#: texi2html.pl:9143
+#, perl-format
+msgid "(l. %d via @%s)"
+msgstr ""
+
+#: texi2html.pl:9148
+#, perl-format
+msgid "(in %s l. %d)"
+msgstr ""
+
+#: texi2html.pl:9152
+#, perl-format
+msgid "(l. %d)"
+msgstr ""
+
+#: texi2html.pl:9309
+#, perl-format
+msgid "Too much '}' in @%s"
+msgstr ""
+
+#: texi2html.pl:9319
+#, perl-format
+msgid "Missing `}' on @%s line"
+msgstr ""
+
+#: texi2html.pl:9474
+#, perl-format
+msgid "Anchor `%s' ignored in %s expanded more than once"
+msgstr ""
+
+#: texi2html.pl:10101
+#, perl-format
+msgid "column fraction not a number: %s"
+msgstr ""
+
+#: texi2html.pl:10122
+#, perl-format
+msgid "ignoring stray text `%s' after @multitable"
+msgstr ""
+
+#: texi2html.pl:10144
+#, perl-format
+msgid "Too many %s closed"
+msgstr ""
+
+#: texi2html.pl:10511
+#, perl-format
+msgid "Must be in `@%s' environment to use `@%s'"
+msgstr ""
+
+#: texi2html.pl:10570 texi2html.pl:10998
+#, perl-format
+msgid "@%s (argument nr %d)"
+msgstr ""
+
+#: texi2html.pl:10641
+#, perl-format
+msgid "%s requires an argument: the formatter for %citem"
+msgstr ""
+
+#: texi2html.pl:10644
+#, perl-format
+msgid "prepended for @%s"
+msgstr ""
+
+#: texi2html.pl:10670
+#, perl-format
+msgid "@columnfraction (argument nr %d)"
+msgstr ""
+
+#: texi2html.pl:10852 texi2html.pl:10866
+msgid "node name in menu"
+msgstr ""
+
+#: texi2html.pl:10853
+msgid "normalized node name in menu"
+msgstr ""
+
+#: texi2html.pl:10859
+msgid "menu entry name"
+msgstr ""
+
+#: texi2html.pl:10977
+#, perl-format
+msgid "First argument to @%s may not be empty"
+msgstr ""
+
+#: texi2html.pl:11130 texi2html.pl:13860
+msgid "@listoffloats @float type"
+msgstr ""
+
+#: texi2html.pl:11231
+#, perl-format
+msgid "@%s not meaningful outside `@float' environment"
+msgstr ""
+
+#: texi2html.pl:11289
+msgid "@float style"
+msgstr ""
+
+#: texi2html.pl:11418 texi2html.pl:11419
+msgid "@image base name"
+msgstr ""
+
+#: texi2html.pl:11428 texi2html.pl:11429
+msgid "@image extension"
+msgstr ""
+
+#: texi2html.pl:11436
+msgid "@image file name"
+msgstr ""
+
+#: texi2html.pl:11458
+msgid "@image alt text"
+msgstr ""
+
+#: texi2html.pl:11541
+#, perl-format
+msgid "Macro `%s' called with too many args"
+msgstr ""
+
+#: texi2html.pl:11565
+#, perl-format
+msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
+msgstr ""
+
+#: texi2html.pl:12270
+#, perl-format
+msgid "macro `%s' previously defined"
+msgstr ""
+
+#: texi2html.pl:12271
+#, perl-format
+msgid "here is the previous definition of `%s'"
+msgstr ""
+
+#: texi2html.pl:12304
+#, perl-format
+msgid "Macro definition without macro name: %s"
+msgstr ""
+
+#: texi2html.pl:12345
+#, perl-format
+msgid "undefined flag: %s"
+msgstr ""
+
+#: texi2html.pl:12357
+msgid "Bad syntax for @value"
+msgstr ""
+
+#: texi2html.pl:12565
+#, perl-format
+msgid "@%s already set"
+msgstr ""
+
+#: texi2html.pl:12617
+#, fuzzy, perl-format
+msgid "Anchor `%s' previously defined %s"
+msgstr "%s je definiran kao %s."
+
+#: texi2html.pl:12940
+#, perl-format
+msgid "%c%s is obsolete."
+msgstr ""
+
+#: texi2html.pl:12944
+#, perl-format
+msgid "%c%s is obsolete; %s"
+msgstr ""
+
+#: texi2html.pl:12960
+#, perl-format
+msgid "Unknown index `%s' in @printindex"
+msgstr ""
+
+#: texi2html.pl:13027
+#, perl-format
+msgid "ignored @%s already in an @%s entry"
+msgstr ""
+
+#: texi2html.pl:13052 texi2html.pl:13095
+#, perl-format
+msgid "@%s seen before first @node"
+msgstr ""
+
+#: texi2html.pl:13053
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr ""
+
+#: texi2html.pl:13430 texi2html.pl:13431 texi2html.pl:13434
+msgid "new menu entry"
+msgstr ""
+
+#: texi2html.pl:13555
+msgid "paragraph end"
+msgstr ""
+
+#: texi2html.pl:13789
+#, perl-format
+msgid "`@end' expected `%s', but saw `%s'"
+msgstr ""
+
+#: texi2html.pl:13853
+msgid "@listoffloats type"
+msgstr ""
+
+#: texi2html.pl:13876
+#, perl-format
+msgid "Requested float type `%s' not previously used"
+msgstr ""
+
+#: texi2html.pl:13988
+#, perl-format
+msgid "@%s not allowed on in argument to @%s"
+msgstr ""
+
+#: texi2html.pl:14043
+#, perl-format
+msgid "Accent command `@%s' must not be followed by whitespace"
+msgstr ""
+
+#: texi2html.pl:14047
+#, perl-format
+msgid "Use braces to give a command as an argument to @%s"
+msgstr ""
+
+#: texi2html.pl:14208
+#, perl-format
+msgid "@%s not meaningful inside `@%s' block"
+msgstr ""
+
+#: texi2html.pl:14253
+#, perl-format
+msgid "@%s outside of table or list"
+msgstr ""
+
+#: texi2html.pl:14286
+msgid "ignoring @tab outside of multitable"
+msgstr ""
+
+#: texi2html.pl:14293
+msgid "ignoring @tab in empty multitable"
+msgstr ""
+
+#: texi2html.pl:14297
+#, perl-format
+msgid "Too many columns in multitable item (max %d)"
+msgstr ""
+
+#: texi2html.pl:14328
+msgid "@center should not appear in another format"
+msgstr ""
+
+#: texi2html.pl:14368 texi2html.pl:14388
+#, perl-format
+msgid "Misplaced %c"
+msgstr ""
+
+#: texi2html.pl:14936
+#, perl-format
+msgid "%c%s expects a single character `i' or `j' as argument"
+msgstr ""
+
+#: texi2html.pl:14940
+#, perl-format
+msgid "%c%s expects `i' or `j' as argument, not `%s'"
+msgstr ""
+
+#: texi2html.pl:14989
+#, fuzzy, perl-format
+msgid "Unknown command with braces `@%s'"
+msgstr "Nepoznata naredba (%s)."
+
+#: texi2html.pl:15025
+#, perl-format
+msgid "%c%s expected braces"
+msgstr ""
+
+#: texi2html.pl:15029
+#, perl-format
+msgid "Unknown command `%s'"
+msgstr ""
+
+#: texi2html.pl:15107
+#, perl-format
+msgid "Reached eof before matching @end %s"
+msgstr ""
+
+#: texi2html.pl:15115
+#, perl-format
+msgid "%cend macro not found"
+msgstr ""
+
+#: texi2html.pl:15283
+#, perl-format
+msgid "No matching `%cend %s'"
+msgstr ""
+
+#: texi2html.pl:15311
+#, perl-format
+msgid "%c%s missing close brace"
+msgstr ""
+
+#: texi2html.pl:15419
+#, fuzzy, perl-format
+msgid "%s should not appear in %s"
+msgstr "Ne mogu kreirati izlaznu datoteku `%s'."
+
+#: texi2html.pl:16119
+#, perl-format
+msgid "%s:%d: string not closed in css file"
+msgstr ""
+
+#: texi2html.pl:16120
+#, perl-format
+msgid "%s:%d: --css-file ended in comment"
+msgstr ""
+
+#: texi2html.pl:16121
+#, perl-format
+msgid "%s:%d @import not finished in css file"
+msgstr ""
+
+#: texi2html.pl:16151
+#, fuzzy, perl-format
+msgid "%s: could not open --css-file %s: %s\n"
+msgstr "Ne mogu kreirati izlaznu datoteku `%s'."
+
+#: texi2html.pl:16206
+#, perl-format
+msgid "%s: missing file argument.\n"
+msgstr ""
+
+#: texi2html.init:2053
+msgid "recursion is always allowed"
+msgstr ""
+
+#: texi2html.init:2054
+msgid "arguments are quoted by default"
+msgstr ""
+
+#: formats/docbook.init:1025 formats/info.init:2872
+#, perl-format
+msgid "@image file `%s' unreadable: %s"
+msgstr ""
+
+#: formats/docbook.init:1030 formats/info.init:2877
+#, fuzzy, perl-format
+msgid "Cannot find @image file `%s.txt'"
+msgstr "Ne mogu naæi èvor `%s'."
+
+#: formats/html.init:2547
+#, perl-format
+msgid "@image file `%s' (for HTML) not found, using `%s'"
+msgstr ""
+
+#: formats/info.init:1151
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+
+#: formats/info.init:1311
+msgid "`.' or `,' must follow @xref."
+msgstr ""
+
+#: formats/info.init:1316
+#, perl-format
+msgid "`.' or `,' must follow @xref, not %s"
+msgstr ""
+
+#: formats/info.init:3073
+msgid "Footnote defined without parent node"
+msgstr ""
+
+#~ msgid "%s: option `%s' is ambiguous\n"
+#~ msgstr "%s: opcija `%s' nije jednoznaèna\n"
+
+#~ msgid "%s: option `--%s' doesn't allow an argument\n"
+#~ msgstr "%s: opcija `--%s' ne dopu¹ta argument\n"
+
+#~ msgid "%s: option `%c%s' doesn't allow an argument\n"
+#~ msgstr "%s: opcija `%c%s' ne dopu¹ta argument\n"
+
+#~ msgid "%s: option `%s' requires an argument\n"
+#~ msgstr "%s: opcija `%s' tra¾i neophodan argument\n"
+
+#~ msgid "%s: unrecognized option `--%s'\n"
+#~ msgstr "%s: nepoznata opcija `--%s'\n"
+
+#~ msgid "%s: unrecognized option `%c%s'\n"
+#~ msgstr "%s: nepoznata opcija `%c%s'\n"
+
+#~ msgid "%s: illegal option -- %c\n"
+#~ msgstr "%s: nedozvoljena opcija -- %c\n"
+
+#~ msgid "%s: invalid option -- %c\n"
+#~ msgstr "%s: pogre¹na opcija -- %c\n"
+
+#~ msgid "%s: option requires an argument -- %c\n"
+#~ msgstr "%s: opcija zahtijeva argument -- %c\n"
+
+#~ msgid "%s: option `-W %s' is ambiguous\n"
+#~ msgstr "%s: opcija `-W %s' nije jednoznaèna\n"
+
+#~ msgid "%s: option `-W %s' doesn't allow an argument\n"
+#~ msgstr "%s: opcija `-W %s' ne dopu¹ta argument\n"
+
+#~ msgid "Move forward a character"
+#~ msgstr "Pomakni se znak unaprijed"
+
+#~ msgid "Move backward a character"
+#~ msgstr "Pomakni se znak unazad"
+
+#~ msgid "Move to the start of this line"
+#~ msgstr "Pomakni se na poèetak tekuæe linije"
+
+#~ msgid "Move to the end of this line"
+#~ msgstr "Pomakni se na kraj tekuæe linije"
+
+#~ msgid "Move forward a word"
+#~ msgstr "Pomakni se rijeè unaprijed"
+
+#~ msgid "Move backward a word"
+#~ msgstr "Pomakni se rijeè unazad"
+
+#~ msgid "Delete the character under the cursor"
+#~ msgstr "Obri¹i znak ispod kursora"
+
+#~ msgid "Delete the character behind the cursor"
+#~ msgstr "Obri¹i znak iza kursora"
+
+#~ msgid "Cancel or quit operation"
+#~ msgstr "Poni¹ti ili prekini operaciju"
+
+#~ msgid "Accept (or force completion of) this line"
+#~ msgstr "Prihvaæanje (ili tra¾enje kompletiranja) linije"
+
+#~ msgid "Insert next character verbatim"
+#~ msgstr "Umetni slijedeæi znak doslovno"
+
+#~ msgid "Insert this character"
+#~ msgstr "Umetni tekuæi znak"
+
+#~ msgid "Insert a TAB character"
+#~ msgstr "Umetni znak TAB"
+
+#~ msgid "Transpose characters at point"
+#~ msgstr "Zamijeni mjesta znakovima pod kurzorom"
+
+#~ msgid "Yank back the contents of the last kill"
+#~ msgstr "Povrati zadnji obrisani sadr¾aj"
+
+#~ msgid "Kill ring is empty"
+#~ msgstr "Spremnik za obrisani sadr¾aj je prazan"
+
+#~ msgid "Yank back a previous kill"
+#~ msgstr "Povrati prije obrisani sadr¾aj"
+
+#~ msgid "Kill to the end of the line"
+#~ msgstr "Obri¹i tekst do kraja retka"
+
+#~ msgid "Kill to the beginning of the line"
+#~ msgstr "Obri¹i tekst do poèetka retka"
+
+#~ msgid "Kill the word following the cursor"
+#~ msgstr "Obri¹i rijeè iza kurzora"
+
+#~ msgid "Kill the word preceding the cursor"
+#~ msgstr "Obri¹i rijeè ispred kurzora"
+
+#~ msgid "No completions"
+#~ msgstr "Ne mogu kompletirati"
+
+#~ msgid "Not complete"
+#~ msgstr "Nije dovr¹eno"
+
+#~ msgid "List possible completions"
+#~ msgstr "Izlistaj moguæe varijante kompletiranja"
+
+#~ msgid "Sole completion"
+#~ msgstr "Jedino moguæe kompletiranje"
+
+#~ msgid "One completion:\n"
+#~ msgstr "Jedno kompletiranje:\n"
+
+#~ msgid "%d completions:\n"
+#~ msgstr "%d kompletiranja:\n"
+
+#~ msgid "Insert completion"
+#~ msgstr "Umetni kompletiranje"
+
+#~ msgid "Building completions..."
+#~ msgstr "Izgraðujem varijante kompletiranja..."
+
+#~ msgid "Scroll the completions window"
+#~ msgstr "'Skrolaj' prozor za varijante kompletiranja"
+
+#~ msgid "Footnotes could not be displayed"
+#~ msgstr "Ne mogu prikazati fusnote"
+
+#~ msgid "Show the footnotes associated with this node in another window"
+#~ msgstr "Prika¾i fusnote povezane s ovim èvorom u drugom prozoru"
+
+#~ msgid "---------- Footnotes ----------"
+#~ msgstr "----------- Fusnote -----------"
+
+#~ msgid "Look up a string in the index for this file"
+#~ msgstr "Potra¾i niz u indeksu ove datoteke"
+
+#~ msgid "Finding index entries..."
+#~ msgstr "Tra¾im stavke indeksa..."
+
+#~ msgid "No indices found."
+#~ msgstr "Nije pronaðen indeks."
+
+#~ msgid "Index entry: "
+#~ msgstr "Stavka indeksa: "
+
+#~ msgid ""
+#~ "Go to the next matching index item from the last `\\[index-search]' "
+#~ "command"
+#~ msgstr ""
+#~ "Idi na slijedeæu podudarajuæu stavki indeksa zadnje `\\[index-search]' "
+#~ "naredbe"
+
+#~ msgid "No previous index search string."
+#~ msgstr "Nema prethodnog zadanog niza za pretra¾ivanje indeksa."
+
+#~ msgid "No index entries."
+#~ msgstr "Nema stavaka indeksa."
+
+#, fuzzy
+#~ msgid "No %sindex entries containing `%s'."
+#~ msgstr "Nema stavaka %sindeksa koje sadr¾e \"%s\"."
+
+#~ msgid "more "
+#~ msgstr "jo¹ "
+
+#~ msgid "CAN'T SEE THIS"
+#~ msgstr "NE MOGU VIDJETI OVO"
+
+#, fuzzy
+#~ msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
+#~ msgstr ""
+#~ "Prona¹ao \"%s\" u %s. (`\\[next-index-match]' poku¹ava naæi slijedeæi.)"
+
+#, fuzzy
+#~ msgid "Scanning indices of `%s'..."
+#~ msgstr "Skeniram indekse od \"%s\"..."
+
+#, fuzzy
+#~ msgid "No available info files have `%s' in their indices."
+#~ msgstr ""
+#~ "Niti jedna raspolo¾iva info datoteka ne sadr¾i \"%s\" u svom indeksu."
+
+#~ msgid "Grovel all known info file's indices for a string and build a menu"
+#~ msgstr "Propu¾i kroz sve poznate indekse u potrazi za nizom i slo¾i meni"
+
+#~ msgid "Index apropos: "
+#~ msgstr "Indeks apropos: "
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "* Menu: Nodes whose indices contain `%s':\n"
+#~ msgstr ""
+#~ "\n"
+#~ "* Meni: Èvorovi èiji indeksi sadr¾e \"%s\":\n"
+
+#~ msgid "Try --help for more information.\n"
+#~ msgstr "Poku¹ajte --help za vi¹e informacija.\n"
+
+#~ msgid "no index entries found for `%s'\n"
+#~ msgstr "nijedna stavka indeksa nije naðena za `%s'\n"
+
+#, fuzzy
+#~ msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
+#~ msgstr ""
+#~ "  -b, --speech-friendly        budi vi¹e prijateljski prema "
+#~ "sintetizatorima govora.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Izvje¹taje o bugovima molimo slati emailom na bug-texinfo@gnu.org\n"
+#~ "(na engleskom), generalna pitanja i diskusije na help-texinfo@gnu.org.\n"
+#~ "Texinfo matièna stranica: http://www.gnu.org/software/texinfo/\n"
+#~ "Pitanja i kritike glede translacije slati na adresu lokalizacija@linux.hr."
+
+#~ msgid "Cannot find node `(%s)%s'."
+#~ msgstr "Ne mogu naæi èvor `(%s)%s'."
+
+#~ msgid "Cannot find a window!"
+#~ msgstr "Ne mogu naæi prozor!"
+
+#~ msgid "Point doesn't appear within this window's node!"
+#~ msgstr "Toèka se ne nalazi unutar èvora ovog prozora!"
+
+#~ msgid "Cannot delete the last window."
+#~ msgstr "Ne mogu dokinuti zadnji prozor."
+
+#~ msgid "No menu in this node."
+#~ msgstr "Nema menija u ovom èvoru."
+
+#~ msgid "No footnotes in this node."
+#~ msgstr "Nema fusnota u ovom èvoru."
+
+#~ msgid "No cross references in this node."
+#~ msgstr "Nema unakrsnih referenci u ovom èvoru."
+
+#~ msgid "No `%s' pointer for this node."
+#~ msgstr "Nema `%s' pokazivaèa za ovaj èvor."
+
+#~ msgid "Unknown Info command `%c'; try `?' for help."
+#~ msgstr "Nepoznata Info naredba `%c'; poku¹ajte `?' za pomoæ."
+
+#~ msgid "Terminal type `%s' is not smart enough to run Info."
+#~ msgstr "Terminal tipa `%s' nema dovoljno sposobnosti da izvodi Info."
+
+#~ msgid "You are already at the last page of this node."
+#~ msgstr "Veæ se nalazite na zadnjoj stranici ovog èvora."
+
+#~ msgid "You are already at the first page of this node."
+#~ msgstr "Veæ se nalazite na prvoj stranici ovog èvora."
+
+#~ msgid "Only one window."
+#~ msgstr "Samo jedan prozor."
+
+#~ msgid "Resulting window would be too small."
+#~ msgstr "Nastali prozor bi bio premalen."
+
+#~ msgid "Not enough room for a help window, please delete a window."
+#~ msgstr ""
+#~ "Nema dovoljno mjesta za prozor za pomoæ, molimo dokinite jedan prozor."
+
+#, fuzzy
+#~ msgid "\\%-10[quit-help]  Close this help window.\n"
+#~ msgstr "\\%-10[quit-help]  Napusti ovu pomoæ.\n"
+
+#~ msgid "\\%-10[quit]  Quit Info altogether.\n"
+#~ msgstr "\\%-10[quit]  Potpuno zavr¹i s radom (Quit).\n"
+
+#~ msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
+#~ msgstr "\\%-10[get-info-help-node]  Pozovi Info priruènik.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[prev-line]  Move up one line.\n"
+#~ msgstr "  %-10s  'Skrolaj' unazad 1 redak.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[next-line]  Move down one line.\n"
+#~ msgstr "  %-10s  'Skrolaj' naprijed 1 redak.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
+#~ msgstr "\\%-10[scroll-backward]  'Skrolaj' stranicu unazad.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
+#~ msgstr "\\%-10[scroll-forward]  'Skrolaj stranicu naprijed.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
+#~ msgstr "\\%-10[beginning-of-node]  Idi na poèetak ovog èvora.\n"
+
+#~ msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
+#~ msgstr "\\%-10[end-of-node]  Idi na kraj ovog èvora.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
+#~ msgstr ""
+#~ "\\%-10[move-to-next-xref]  Preskoèi do slijedeæeg hipertekst linka unutar "
+#~ "ovog èvora.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[select-reference-this-line]  Follow the hypertext link under the "
+#~ "cursor.\n"
+#~ msgstr ""
+#~ "\\%-10[select-reference-this-line]  Slijedi hipertekst link ispod "
+#~ "kursora.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[history-node]  Go back to the last node seen in this window.\n"
+#~ msgstr ""
+#~ "\\%-10[history-node]  Pomakni se do posljednjeg vidljivog èvora u ovom "
+#~ "prozoru.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
+#~ msgstr ""
+#~ "\\%-10[prev-node]  Idi na prethodni (`previous') èvor u odnosu na ovaj.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
+#~ msgstr ""
+#~ "\\%-10[next-node]  Idi na slijedeæi (`next') èvor u odnosu na ovaj.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
+#~ msgstr ""
+#~ "\\%-10[prev-node]  Idi na prethodni (`previous') èvor u odnosu na ovaj.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[next-node]  Go to the next node on this level.\n"
+#~ msgstr ""
+#~ "\\%-10[next-node]  Idi na slijedeæi (`next') èvor u odnosu na ovaj.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[up-node]  Go up one level.\n"
+#~ msgstr "\\%-10[up-node]  Idi navi¹e (`up') od ovog èvora.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[top-node]  Go to the top node of this document.\n"
+#~ msgstr "\\%-10[end-of-node]  Idi na kraj ovog èvora.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[dir-node]  Go to the main `directory' node.\n"
+#~ msgstr "\\%-10[end-of-node]  Idi na kraj ovog èvora.\n"
+
+#, fuzzy
+#~ msgid "1...9       Pick the first...ninth item in this node's menu.\n"
+#~ msgstr "  %-10s  Odaberi prvu ... devetu stavku u èvorovom meniju.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
+#~ msgstr "\\%-10[last-menu-item]  Odaberi zadnju stavku u meniju èvora.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
+#~ msgstr "  %-10s  Odaberi stavku menija specificirane imenom.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
+#~ msgstr ""
+#~ "\\%-10[xref-item]  Slijedi unakrsnu referencu.  Èita ime reference.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
+#~ msgstr "  %-10s  Idi na èvor zadan imenom.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[search]  Search forward for a specified string.\n"
+#~ msgstr "  %-10s  Tra¾i prema naprijed zadani niz,\n"
+
+#, fuzzy
+#~ msgid "\\%-10[search-previous]  Search for previous occurrence.\n"
+#~ msgstr ""
+#~ "\\%-10[prev-node]  Idi na prethodni (`previous') èvor u odnosu na ovaj.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[search-next]  Search for next occurrence.\n"
+#~ msgstr "  %-10s  Tra¾i zadani niz u indeks stavkama ove Info\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[index-search]  Search for a specified string in the index, and\n"
+#~ "              select the node referenced by the first entry found.\n"
+#~ msgstr ""
+#~ "\\%-10[index-search]  Tra¾i zadani niz u indeksnim stavkama ove Info "
+#~ "datoteke\n"
+#~ "              i selektiraj èvor referenciran prvom naðenom stavkom.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[abort-key]  Cancel the current operation.\n"
+#~ msgstr "Poni¹ti trenutnu operaciju"
+
+#~ msgid ""
+#~ "Basic Commands in Info Windows\n"
+#~ "******************************\n"
+#~ msgstr ""
+#~ "Osnovne naredbe u Info prozorima\n"
+#~ "********************************\n"
+
+#~ msgid "  %-10s  Quit this help.\n"
+#~ msgstr "  %-10s  Napusti ovu pomoæ.\n"
+
+#~ msgid "  %-10s  Quit Info altogether.\n"
+#~ msgstr "  %-10s  Potpuno zavr¹i s radom (Quit).\n"
+
+#~ msgid "  %-10s  Invoke the Info tutorial.\n"
+#~ msgstr "  %-10s  Pozovi Info priruènik.\n"
+
+#~ msgid "  %-10s  Move to the `next' node of this node.\n"
+#~ msgstr "  %-10s  Idi na slijedeæi (`next') èvor u odnosu na ovaj.\n"
+
+#~ msgid "  %-10s  Move to the `previous' node of this node.\n"
+#~ msgstr "  %-10s  Idi na prethodni (`previous') èvor u odnosu na ovaj.\n"
+
+#~ msgid "  %-10s  Move `up' from this node.\n"
+#~ msgstr "  %-10s  Idi navi¹e (`up') od ovog èvora.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Pick menu item specified by name.\n"
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr ""
+#~ "\\%-10[menu-item]  Izaberi stavku menija zadanu imenom.\n"
+#~ "              Izabiranje stavke menija selektira drugi èvor.\n"
+
+#~ msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
+#~ msgstr "  %-10s  Slijedi unakrsnu referencu.  Èita ime reference.\n"
+
+#~ msgid "  %-10s  Move to the last node seen in this window.\n"
+#~ msgstr ""
+#~ "  %-10s  Pomakni se do posljednjeg vidljivog èvora u ovom prozoru.\n"
+
+#~ msgid "  %-10s  Skip to next hypertext link within this node.\n"
+#~ msgstr ""
+#~ "  %-10s  Preskoèi do slijedeæeg hipertekst linka unutar ovog èvora.\n"
+
+#~ msgid "  %-10s  Follow the hypertext link under cursor.\n"
+#~ msgstr "  %-10s  Slijedi hipertekst link ispod kursora.\n"
+
+#~ msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
+#~ msgstr "  %-10s  Pomakni se na `directory' èvor.  Ekvivalentno `g (DIR)'.\n"
+
+#~ msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
+#~ msgstr "  %-10s  Idi na Top (vr¹ni) èvor.  Ekvivalentno s `g Top'.\n"
+
+#~ msgid ""
+#~ "Moving within a node:\n"
+#~ "---------------------\n"
+#~ msgstr ""
+#~ "Pomicanje unutar èvora:\n"
+#~ "-----------------------\n"
+
+#~ msgid "  %-10s  Scroll forward a page.\n"
+#~ msgstr "  %-10s  'Skrolaj' stranicu naprijed.\n"
+
+#~ msgid "  %-10s  Scroll backward a page.\n"
+#~ msgstr "  %-10s  'Skrolaj' stranicu unazad.\n"
+
+#~ msgid "  %-10s  Go to the beginning of this node.\n"
+#~ msgstr "  %-10s  Idi na poèetak ovog èvora.\n"
+
+#~ msgid "  %-10s  Go to the end of this node.\n"
+#~ msgstr "  %-10s  Idi na kraj ovog èvora.\n"
+
+#~ msgid "  %-10s  Scroll forward 1 line.\n"
+#~ msgstr "  %-10s  'Skrolaj' naprijed 1 redak.\n"
+
+#~ msgid "  %-10s  Scroll backward 1 line.\n"
+#~ msgstr "  %-10s  'Skrolaj' unazad 1 redak.\n"
+
+#~ msgid ""
+#~ "Other commands:\n"
+#~ "---------------\n"
+#~ msgstr ""
+#~ "Druge naredbe:\n"
+#~ "--------------\n"
+
+#, fuzzy
+#~ msgid "  %-10s  Pick first...ninth item in node's menu.\n"
+#~ msgstr "  %-10s  Odaberi prvu ... devetu stavku u èvorovom meniju.\n"
+
+#~ msgid "  %-10s  Pick last item in node's menu.\n"
+#~ msgstr "  %-10s  Odaberi zadnju stavku u èvorovom meniju.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search for a specified string in the index entries of this Info\n"
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr ""
+#~ "\\%-10[index-search]  Tra¾i zadani niz u indeksnim stavkama ove Info "
+#~ "datoteke\n"
+#~ "              i selektiraj èvor referenciran prvom naðenom stavkom.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Move to node specified by name.\n"
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr ""
+#~ "\\%-10[goto-node]  Pomakni se na èvor zadan imenom.\n"
+#~ "              Mo¾ete takoðer ukljuèiti ime datoteke, kao u (DATOTEKA)"
+#~ "IME_ÈVORA.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search forward for a specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "\\%-10[search]  Tra¾i unaprijed za zadanim nizom\n"
+#~ "              i selektiraj èvor u kojem je slijedeæa pojava niza naðena.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search backward for a specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "\\%-10[search]  Tra¾i unaprijed za zadanim nizom\n"
+#~ "              i selektiraj èvor u kojem je slijedeæa pojava niza naðena.\n"
+
+#~ msgid "The current search path is:\n"
+#~ msgstr "Trenutni put pretra¾ivanja je:\n"
+
+#~ msgid ""
+#~ "Commands available in Info windows:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Naredbe raspolo¾ive u Info prozorima:\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "Commands available in the echo area:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Naredbe raspolo¾ive u echo podruèju:\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "The following commands can only be invoked via %s:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Slijedeæe naredbe mogu biti pozvane pomoæu %s:\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "The following commands cannot be invoked at all:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Slijedeæe naredbe ne mogu uopæe biti pozvane:\n"
+#~ "\n"
+
+#~ msgid "Display help message"
+#~ msgstr "Ispi¹i poruku za pomoæ"
+
+#~ msgid "Visit Info node `(info)Help'"
+#~ msgstr "Posjeti Info èvor `(info)Help'"
+
+#~ msgid "Print documentation for KEY"
+#~ msgstr "Ispi¹i dokumentaciju za TIPKU"
+
+#~ msgid "Describe key: %s"
+#~ msgstr "Opi¹i tipku: %s"
+
+#~ msgid "ESC %s is undefined."
+#~ msgstr "ESC %s nije definiran."
+
+#~ msgid "%s is undefined."
+#~ msgstr "%s nije definiran."
+
+#~ msgid "Show what to type to execute a given command"
+#~ msgstr "Poka¾i ¹to otipkati da se izvr¹i data naredba"
+
+#~ msgid "Where is command: "
+#~ msgstr "Gdje je naredba: "
+
+#~ msgid "`%s' is not on any keys"
+#~ msgstr "`%s' nije niti na jednoj tipki"
+
+#~ msgid "%s can only be invoked via %s."
+#~ msgstr "%s mo¾e biti pozvan samo putem %s."
+
+#~ msgid "%s can be invoked via %s."
+#~ msgstr "%s mo¾e biti pozvan putem %s."
+
+#~ msgid "There is no function named `%s'"
+#~ msgstr "Ne postoji funkcija `%s'"
+
+#~ msgid ""
+#~ "Selecting other nodes:\n"
+#~ "----------------------\n"
+#~ msgstr ""
+#~ "Izabir drugih èvorova:\n"
+#~ "----------------------\n"
+
+#~ msgid "incorrect number of arguments"
+#~ msgstr "pogre¹an broj argumenata"
+
+#~ msgid "cannot open input file `%s'"
+#~ msgstr "ne mogu otvoriti ulaznu datoteku `%s'"
+
+#~ msgid "cannot create output file `%s'"
+#~ msgstr "ne mogu kreirati izlaznu datoteku `%s'"
+
+#~ msgid "error writing to `%s'"
+#~ msgstr "gre¹ka pri pisanju u `%s'"
+
+#~ msgid "error closing output file `%s'"
+#~ msgstr "gre¹ka pri zatvaranju izlazne datoteke `%s'"
+
+#~ msgid "key sequence too long"
+#~ msgstr "niz tipaka predugaèak"
+
+#~ msgid "missing key sequence"
+#~ msgstr "nedostaje niz tipaka"
+
+#~ msgid "NUL character (\\000) not permitted"
+#~ msgstr "NUL znak (\\000) nije dozvoljen"
+
+#~ msgid "NUL character (^%c) not permitted"
+#~ msgstr "NUL znak (^%c) nije dozvoljen"
+
+#~ msgid "missing action name"
+#~ msgstr "nedostaje ime akcije"
+
+# this needs to be clarified and verified against info program, since
+# I'm not sure what kind of section they're talking about
+#~ msgid "section too long"
+#~ msgstr "predugaèki odlomak"
+
+#~ msgid "unknown action `%s'"
+#~ msgstr "nepoznata akcija `%s'"
+
+#~ msgid "action name too long"
+#~ msgstr "predugaèko ime akcije"
+
+#~ msgid "extra characters following action `%s'"
+#~ msgstr "suvi¹ni znaci slijede akciju `%s'"
+
+#~ msgid "missing variable name"
+#~ msgstr "nedostaje ime varijable"
+
+#~ msgid "missing `=' immediately after variable name"
+#~ msgstr "nedostaje `=' odmah iza imena varijable"
+
+#~ msgid "variable name too long"
+#~ msgstr "ime varijable predugaèko"
+
+#~ msgid "value too long"
+#~ msgstr "predugaèka vrijednost"
+
+#~ msgid "\"%s\", line %u: "
+#~ msgstr "\"%s\", redak %u: "
+
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [INPUT-FILE]\n"
+#~ "\n"
+#~ "Compile infokey source file to infokey file.  Reads INPUT-FILE (default\n"
+#~ "$HOME/.infokey) and writes compiled key file to (by default) $HOME/."
+#~ "info.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "  --output FILE        output to FILE instead of $HOME/.info\n"
+#~ "  --help               display this help and exit.\n"
+#~ "  --version            display version information and exit.\n"
+#~ msgstr ""
+#~ "Kori¹tenje: %s [OPCIJA]... [ULAZNA-DATOTEKA]\n"
+#~ "\n"
+#~ "Kompiliraj infokey izvornu datoteku u infokey datoteku.  Èita ULAZNA-"
+#~ "DATOTEKA\n"
+#~ "(default $HOME/.infokey) i pi¹e kompiliranu key datoteku u (default)\n"
+#~ "$HOME/.info.\n"
+#~ "\n"
+#~ "Opcije:\n"
+#~ "  --output DATOTEKA   izlaz u DATOTEKA umjesto u $HOME/.info\n"
+#~ "  --help              ispi¹i ovu pomoæ i zavr¹i s radom.\n"
+#~ "  --version           ispi¹i ovu informaciju o verziji i zavr¹i s radom.\n"
+
+#~ msgid "Ignoring invalid infokey file `%s' - too small"
+#~ msgstr "Ignoriram neispravnu infokey datoteku `%s' - premalena"
+
+#~ msgid "Ignoring invalid infokey file `%s' - too big"
+#~ msgstr "Ignoriram neispravnu infokey datoteku `%s' - prevelika"
+
+#~ msgid "Error reading infokey file `%s' - short read"
+#~ msgstr "Pogre¹ka pri èitanju infokey datoteke `%s' - prekratki read"
+
+#~ msgid ""
+#~ "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+#~ msgstr ""
+#~ "Neispravna infokey datoteka `%s' (pogre¹ni magic number) -- pokreni "
+#~ "infokey da se obnovi"
+
+#~ msgid "Your infokey file `%s' is out of date -- run infokey to update it"
+#~ msgstr ""
+#~ "Va¹a infokey datoteka `%s' je istekla -- pokrenite infokey da se obnovi"
+
+#~ msgid ""
+#~ "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+#~ msgstr ""
+#~ "Neispravna infokey datoteka `%s' (bad section length) -- pokrenite "
+#~ "infokey da se obnovi"
+
+#~ msgid ""
+#~ "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+#~ msgstr ""
+#~ "Neispravna infokey datoteka `%s' (bad section code) -- pokrenite infokey "
+#~ "da se obnovi"
+
+#~ msgid "Bad data in infokey file -- some key bindings ignored"
+#~ msgstr ""
+#~ "Pogre¹ni podaci u infokey datoteci -- neka povezivanja tipki zanemarena"
+
+#~ msgid "Bad data in infokey file -- some var settings ignored"
+#~ msgstr "Pogre¹ni podaci u infokey datoteci -- neke var postavke ignorirane"
+
+#~ msgid "Read the name of an Info command and describe it"
+#~ msgstr "Proèitaj ime Info naredbe i opi¹i je"
+
+#~ msgid "Describe command: "
+#~ msgstr "Opi¹i naredbu: "
+
+#~ msgid "Read a command name in the echo area and execute it"
+#~ msgstr "Proèitaj ime naredbe u echo podruèju i izvr¹i je"
+
+#~ msgid "Cannot execute an `echo-area' command here."
+#~ msgstr "Ne mogu izvr¹iti komandu za echo podruèje ovdje."
+
+#, fuzzy
+#~ msgid "Undefined command: %s"
+#~ msgstr "Nepoznata naredba (%s)."
+
+#~ msgid "Set the height of the displayed window"
+#~ msgstr "Postavi visinu prikazanog prozora"
+
+#~ msgid "Set screen height to (%d): "
+#~ msgstr "Postavi velièinu screena na (%d): "
+
+#~ msgid ""
+#~ "   Source files groveled to make this file include:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "   Izvorne datoteke prepuzane da se ukljuèi ova datoteka:\n"
+#~ "\n"
+
+#~ msgid "Couldn't manipulate the file %s.\n"
+#~ msgstr "Neuspjelo rukovanje datotekom %s.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "* Menu:\n"
+#~ "  (File)Node                        Lines   Size   Containing File\n"
+#~ "  ----------                        -----   ----   ---------------"
+#~ msgstr ""
+#~ "\n"
+#~ "* Meni:\n"
+#~ "  (Datoteka)Èvor                    Redaka  Vel.   Sadr¾i datoteku\n"
+#~ "  --------------                    ------  ----   ---------------"
+
+#~ msgid ""
+#~ "Here is the menu of nodes you have recently visited.\n"
+#~ "Select one from this menu, or use `\\[history-node]' in another window.\n"
+#~ msgstr ""
+#~ "Ovdje je popis èvorova koje ste nedavno posjetili.\n"
+#~ "Odaberite jedan s menija, ili koristite `\\[history-node]' u drugom "
+#~ "prozoru\n"
+
+#~ msgid ""
+#~ "Make a window containing a menu of all of the currently visited nodes"
+#~ msgstr "Naèini prozor sadr¾avajuæi meni svih dosad posjeæenih èvorova"
+
+#~ msgid "Select a node which has been previously visited in a visible window"
+#~ msgstr "Izaberi èvor koji je prethodno bio posjeæen u vidljivi prozor"
+
+#~ msgid "Select visited node: "
+#~ msgstr "Izaberi posjeæeni èvor: "
+
+#~ msgid "The reference disappeared! (%s)."
+#~ msgstr "Referenca je nestala! (%s)."
+
+#~ msgid ""
+#~ "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-"
+#~ "item] for menu item."
+#~ msgstr ""
+#~ "Dobrodo¹li u Info verzija %s. Otipkajte \\[get-help-window] za pomoæ, "
+#~ "\\[menu-item] za stavku menija."
+
+#~ msgid "Move down to the next line"
+#~ msgstr "Pomakni se dolje to slijedeæeg retka"
+
+#~ msgid "Move up to the previous line"
+#~ msgstr "Pomakni se gore do prethodnog retka"
+
+#~ msgid "Move to the end of the line"
+#~ msgstr "Pomakni se do kraja retka"
+
+#~ msgid "Move to the start of the line"
+#~ msgstr "Pomakni se na poèetak retka"
+
+#~ msgid "Next"
+#~ msgstr "Next"
+
+#~ msgid "No more nodes within this document."
+#~ msgstr "Nema vi¹e èvorova u ovom dokumentu."
+
+#~ msgid "No `Prev' for this node."
+#~ msgstr "Nema `Prev' (prethodni) za ovaj èvor."
+
+#~ msgid "No `Prev' or `Up' for this node within this document."
+#~ msgstr "Nema `Prev' ni `Up' za ovaj èvor unutar dokumenta."
+
+#~ msgid "Move forwards or down through node structure"
+#~ msgstr "Idi naprijed ili nani¾e kruz strukturu èvorova"
+
+#~ msgid "Move backwards or up through node structure"
+#~ msgstr "Idi unatrag ili gore kroz strukturu èvorova"
+
+#~ msgid "Scroll forward in this window"
+#~ msgstr "'Skrolaj' prema gore u ovom prozoru"
+
+#~ msgid "Scroll forward in this window and set default window size"
+#~ msgstr ""
+#~ "'Skrolaj' prema dolje u ovom prozoru i postavi inicijalnu velièinu prozora"
+
+#~ msgid "Scroll forward in this window staying within node"
+#~ msgstr "'Skrolaj' prema dolje u ovom prozoru ostajuæi unutar èvora"
+
+#~ msgid ""
+#~ "Scroll forward in this window staying within node and set default window "
+#~ "size"
+#~ msgstr ""
+#~ "'Skrolaj' prema dolje u ovom prozoru ostajuæi unutar èvora i postavi "
+#~ "inicijalnu velièinu prozora"
+
+#~ msgid "Scroll backward in this window"
+#~ msgstr "'Skrolaj' prema gore u ovom prozoru"
+
+#~ msgid "Scroll backward in this window and set default window size"
+#~ msgstr ""
+#~ "'Skrolaj' prema gore u ovom prozoru i postavi inicijalnu velièinu prozora"
+
+#~ msgid "Scroll backward in this window staying within node"
+#~ msgstr "'Skrolaj' prema gore u ovom prozoru ostajuæi unutar èvora"
+
+#~ msgid ""
+#~ "Scroll backward in this window staying within node and set default window "
+#~ "size"
+#~ msgstr ""
+#~ "'Skrolaj' prema gore u ovom prozoru ostajuæi unutar èvora i postavi "
+#~ "inicijalnu velièinu prozora"
+
+#~ msgid "Move to the start of this node"
+#~ msgstr "Pomakni se na poèetak trenutnog èvora"
+
+#~ msgid "Move to the end of this node"
+#~ msgstr "Pomakni se na kraj trenutnog èvora"
+
+#~ msgid "Scroll down by lines"
+#~ msgstr "'Skrolaj' dolje za redaka"
+
+#~ msgid "Scroll up by lines"
+#~ msgstr "'Skrolaj' gore za redaka"
+
+#~ msgid "Scroll down by half screen size"
+#~ msgstr "'Skrolaj' dolje za polovinu velièine ekrana"
+
+#~ msgid "Scroll up by half screen size"
+#~ msgstr "'Skrolaj' gore za polovinu velièine ekrana"
+
+#~ msgid "Select the next window"
+#~ msgstr "Selektiraj slijedeæi prozor"
+
+#~ msgid "Select the previous window"
+#~ msgstr "Selektiraj prethodni prozor"
+
+#~ msgid "Split the current window"
+#~ msgstr "Raspolovi trenutni prozor"
+
+#~ msgid "Delete the current window"
+#~ msgstr "Obri¹i trenutni prozor"
+
+#~ msgid "Cannot delete a permanent window"
+#~ msgstr "Ne mogu obrisati permanentni prozor"
+
+#~ msgid "Delete all other windows"
+#~ msgstr "Obri¹i sve ostale prozore"
+
+#~ msgid "Scroll the other window"
+#~ msgstr "'Skrolaj' drugi prozor"
+
+#~ msgid "Scroll the other window backward"
+#~ msgstr "'Skrolaj' drugi prozor unazad"
+
+#~ msgid "Grow (or shrink) this window"
+#~ msgstr "Poveæaj (ili smanji) ovaj prozor"
+
+#~ msgid "Divide the available screen space among the visible windows"
+#~ msgstr "Podijeli vidljivu povr¹inu ekrana izmeðu vidljivih prozora"
+
+#~ msgid "Toggle the state of line wrapping in the current window"
+#~ msgstr "Promijeni stanje prelamanja linija u trenutnom prozoru"
+
+#~ msgid "Select the Next node"
+#~ msgstr "Prika¾i Next (slijedeæi) èvor"
+
+#~ msgid "Select the Prev node"
+#~ msgstr "Prika¾i Prev (prethodni) èvor"
+
+#~ msgid "Select the Up node"
+#~ msgstr "Prika¾i Up (gornji) èvor"
+
+#~ msgid "Select the last node in this file"
+#~ msgstr "Prika¾i posljednji èvor u ovoj datoteci"
+
+#~ msgid "This window has no additional nodes"
+#~ msgstr "Ovaj prozor nema dodatnih èvorova"
+
+#~ msgid "Select the first node in this file"
+#~ msgstr "Prika¾i prvi èvor u ovoj datoteci"
+
+#~ msgid "Select the last item in this node's menu"
+#~ msgstr "Prika¾i zadnji èvor u ovoj datoteci"
+
+#~ msgid "Select this menu item"
+#~ msgstr "Selektiraj ovu stavku menija"
+
+#~ msgid "There aren't %d items in this menu."
+#~ msgstr "Nema %d stavaka u ovom meniju."
+
+#~ msgid "Menu item (%s): "
+#~ msgstr "Stavka menija (%s): "
+
+#~ msgid "Menu item: "
+#~ msgstr "Stavka menija: "
+
+#~ msgid "Follow xref (%s): "
+#~ msgstr "Slijedi xref (%s): "
+
+#~ msgid "Follow xref: "
+#~ msgstr "Slijedi xref: "
+
+#~ msgid "Read a menu item and select its node"
+#~ msgstr "Èitaj stavku menija i selektiraj njen èvor"
+
+#~ msgid "Read a footnote or cross reference and select its node"
+#~ msgstr "Èitaj fusnotu ili referencu i selektiraj njezin èvor"
+
+#~ msgid "Move to the start of this node's menu"
+#~ msgstr "Idi na poèetak menija ovog èvora"
+
+#~ msgid "Visit as many menu items at once as possible"
+#~ msgstr "Posjeti ¹to je vi¹e moguæe stavki odjednom"
+
+#~ msgid "Read a node name and select it"
+#~ msgstr "Èitaj ime èvora i selektiraj ga"
+
+#~ msgid "Goto node: "
+#~ msgstr "Idi na èvor: "
+
+#~ msgid "No menu in node `%s'."
+#~ msgstr "Nema menija u èvoru `%s'."
+
+#~ msgid "No menu item `%s' in node `%s'."
+#~ msgstr "Nema stavke menija `%s' u èvoru `%s'."
+
+#~ msgid "Read a list of menus starting from dir and follow them"
+#~ msgstr "Èitaj listu menija poèev¹i od dir i slijedi ih"
+
+#~ msgid "Follow menus: "
+#~ msgstr "Slijedi menije: "
+
+#~ msgid "Find the node describing program invocation"
+#~ msgstr "Pronaði èvor koji opisuje pozivanje programa"
+
+#~ msgid "Find Invocation node of [%s]: "
+#~ msgstr "Naði èvor pozivanja (Invocation) od [%s]: "
+
+#~ msgid "Read a manpage reference and select it"
+#~ msgstr "Proèitaj referentnu man stranicu i selektiraj je"
+
+#~ msgid "Get Manpage: "
+#~ msgstr "Dobavi man stranicu: "
+
+#~ msgid "Select the node `Top' in this file"
+#~ msgstr "Selektiraj èvor `Top' u ovoj datoteci"
+
+#~ msgid "Select the node `(dir)'"
+#~ msgstr "Selektiraj èvor `(dir)'"
+
+#~ msgid "Kill node (%s): "
+#~ msgstr "Poni¹ti èvor (%s): "
+
+#~ msgid "Cannot kill node `%s'"
+#~ msgstr "Ne mogu poni¹titi èvor `%s'"
+
+#~ msgid "Cannot kill the last node"
+#~ msgstr "Ne mogu poni¹titi zadnji èvor"
+
+#~ msgid "Select the most recently selected node"
+#~ msgstr "Selektiraj najzadnji odabrani èvor"
+
+#~ msgid "Kill this node"
+#~ msgstr "Poni¹ti ovaj èvor"
+
+#~ msgid "Read the name of a file and select it"
+#~ msgstr "Proèitaj ime datoteke i selektiraj ga"
+
+#~ msgid "Find file: "
+#~ msgstr "Naði datoteku: "
+
+#~ msgid "Cannot find `%s'."
+#~ msgstr "Ne mogu naæi `%s'."
+
+#~ msgid "Could not create output file `%s'."
+#~ msgstr "Ne mogu kreirati izlaznu datoteku `%s'."
+
+#~ msgid "Done."
+#~ msgstr "Gotovo."
+
+#~ msgid "Writing node %s..."
+#~ msgstr "Ispisujem èvor %s..."
+
+#~ msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
+#~ msgstr ""
+#~ "Propusti sadr¾aj ovog èvora kroz cjevovod (pipe) prema INFO_PRINT_COMMAND"
+
+#~ msgid "Cannot open pipe to `%s'."
+#~ msgstr "Ne mogu otvoriti cjevovod (pipe) prema `%s'."
+
+#~ msgid "Printing node %s..."
+#~ msgstr "Ispisujem èvor %s..."
+
+#, fuzzy
+#~ msgid "Search continued from the beginning of the document."
+#~ msgstr "Obri¹i tekst do poèetka retka"
+
+#~ msgid "Searching subfile %s ..."
+#~ msgstr "Tra¾im poddatoteku %s ..."
+
+#~ msgid "Read a string and search for it case-sensitively"
+#~ msgstr "Èitaj niz znakova i kreni u potragu za njim (case-sensitive)"
+
+#~ msgid "Read a string and search for it"
+#~ msgstr "Èitaj niz znakova i potra¾i ga"
+
+#~ msgid "Read a string and search backward for it"
+#~ msgstr "Èitaj niz znakova i potra¾i ga unatrag"
+
+#, fuzzy
+#~ msgid "%s%s%s [%s]: "
+#~ msgstr "%s%sza niz znakova [%s]: "
+
+#, fuzzy
+#~ msgid " case-sensitively"
+#~ msgstr " (case-sensitive) "
+
+#, fuzzy
+#~ msgid " backward"
+#~ msgstr "Tra¾i unazad"
+
+#~ msgid "Search"
+#~ msgstr "Tra¾i"
+
+#~ msgid "Search failed."
+#~ msgstr "Pretra¾ivanje neuspjelo."
+
+#~ msgid "Repeat last search in the same direction"
+#~ msgstr "Ponovi zadnje pretra¾ivanje u istom pravcu"
+
+#~ msgid "No previous search string"
+#~ msgstr "Nema prethodnog tra¾enog niza"
+
+#~ msgid "Repeat last search in the reverse direction"
+#~ msgstr "Ponovi zadnje pretra¾ivanje u suprotnom pravcu"
+
+#~ msgid "Search interactively for a string as you type it"
+#~ msgstr "Tra¾i niz interaktivno kako ga tipkate"
+
+#, fuzzy
+#~ msgid "Regexp I-search backward: "
+#~ msgstr "I-pretraga unazad: "
+
+#~ msgid "I-search backward: "
+#~ msgstr "I-pretraga unazad: "
+
+#, fuzzy
+#~ msgid "Regexp I-search: "
+#~ msgstr "I-pretraga: "
+
+#~ msgid "I-search: "
+#~ msgstr "I-pretraga: "
+
+#~ msgid "Failing "
+#~ msgstr "Neuspjela "
+
+#~ msgid "Move to the previous cross reference"
+#~ msgstr "Idi na prethodnu referencu"
+
+#~ msgid "Move to the next cross reference"
+#~ msgstr "Idi na slijedeæu referencu"
+
+#~ msgid "Select reference or menu item appearing on this line"
+#~ msgstr "Selektiraj referencu ili stavku menija koja se pojavljuje u retku"
+
+#~ msgid "Cancel current operation"
+#~ msgstr "Poni¹ti trenutnu operaciju"
+
+#~ msgid "Quit"
+#~ msgstr "Zavr¹i (Quit)"
+
+#~ msgid "Move the cursor to a specific line of the window"
+#~ msgstr "Pomakni kurzor na specificirani redak prozora"
+
+#~ msgid "Redraw the display"
+#~ msgstr "Osvje¾i prikaz"
+
+#~ msgid "Quit using Info"
+#~ msgstr "Zavr¹i kori¹tenje Info-a"
+
+#~ msgid "Run command bound to this key's lowercase variant"
+#~ msgstr "Izvr¹i naredbu povezanu s malim slovom varijantom ove tipke"
+
+#~ msgid "\"%s\" is invalid"
+#~ msgstr "\"%s\" je neispravno"
+
+#, fuzzy
+#~ msgid "`%s' is invalid"
+#~ msgstr "\"%s\" je neispravno"
+
+#~ msgid "Add this digit to the current numeric argument"
+#~ msgstr "Dodaj ovu znamenku trenutnom numerièkom argumentu"
+
+#~ msgid "Start (or multiply by 4) the current numeric argument"
+#~ msgstr "Zapoèni (ili pomno¾i s 4) trenutni numerièki argument"
+
+#~ msgid "Internally used by \\[universal-argument]"
+#~ msgstr "Interno kori¹ten od \\[universal-argument]"
+
+#~ msgid "readline: Out of virtual memory!\n"
+#~ msgstr "readline: Premalo virtualne memorije!\n"
+
+#~ msgid "When \"On\", footnotes appear and disappear automatically"
+#~ msgstr "Kada je \"On\", fusnote se pojavljuju i nestaju automatski"
+
+#~ msgid "When \"On\", creating or deleting a window resizes other windows"
+#~ msgstr ""
+#~ "Kada je \"On\", kreiranje ili zatvaranje prozora mijenja velièinu drugih "
+#~ "prozora"
+
+#~ msgid "When \"On\", flash the screen instead of ringing the bell"
+#~ msgstr "Kada je \"On\", bljesni ekranom umjesto zvonjenja zvona"
+
+#~ msgid "When \"On\", errors cause the bell to ring"
+#~ msgstr "Kada je \"On\", gre¹ke pruzroèuju zvon zvona"
+
+#~ msgid ""
+#~ "When \"On\", Info garbage collects files which had to be uncompressed"
+#~ msgstr ""
+#~ "Kada je \"On\", Info radi 'garbage collection' s datotekama koje je "
+#~ "trebalo odkompresirati"
+
+#~ msgid "When \"On\", the portion of the matched search string is highlighted"
+#~ msgstr "Kada je \"On\", dio znakovnog niza koji se podudara je osvijetljen"
+
+#~ msgid ""
+#~ "Controls what happens when scrolling is requested at the end of a node"
+#~ msgstr "Kontrolira ¹to se dogaða kad se skrolanje tra¾i na kraju èvora"
+
+#~ msgid "The number lines to scroll when the cursor moves out of the window"
+#~ msgstr ""
+#~ "Broj redaka koliko treba skrolati kad se kurzor pomakne izvan prozora"
+
+#~ msgid "When \"On\", Info accepts and displays ISO Latin characters"
+#~ msgstr "Kada je \"On\", Info prihvaæa i prikazuje ISO Latin znakove"
+
+#, fuzzy
+#~ msgid ""
+#~ "What to do when a scrolling command is issued at the end of the last node"
+#~ msgstr "Kontrolira ¹to se dogaða kad se skrolanje tra¾i na kraju èvora"
+
+#~ msgid "Explain the use of a variable"
+#~ msgstr "Obja¹njava kori¹tenje varijable"
+
+#~ msgid "Describe variable: "
+#~ msgstr "Opi¹i varijablu: "
+
+#~ msgid "Set the value of an Info variable"
+#~ msgstr "Postavi vrijednost info varijable"
+
+#~ msgid "Set variable: "
+#~ msgstr "Postavi varijablu: "
+
+#~ msgid "Set %s to value (%d): "
+#~ msgstr "Postavi %s na vrijednost (%d): "
+
+#~ msgid "Set %s to value (%s): "
+#~ msgstr "Postavi %s na vrijednost (%s): "
+
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** Tagovima istekao rok trajanja ***"
+
+#~ msgid "-----Info: (), lines ----, "
+#~ msgstr "-----Info: (), redaka ----,"
+
+#~ msgid "-%s---Info: %s, %d lines --%s--"
+#~ msgstr "-%s---Info: %s, %d redaka --%s--"
+
+#~ msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
+#~ msgstr "-%s%s-Info: (%s)%s, %d redaka --%s--"
+
+#~ msgid " Subfile: %s"
+#~ msgstr " Poddatoteka: %s"
+
+#, fuzzy
+#~ msgid "Variable"
+#~ msgstr "Postavi varijablu: "
+
+#, fuzzy
+#~ msgid "User Option"
+#~ msgstr "Umetni kompletiranje"
+
+#, fuzzy
+#~ msgid "Instance Variable"
+#~ msgstr "Opi¹i varijablu: "
+
+#, fuzzy
+#~ msgid "No such file `%s'"
+#~ msgstr "Nema menija u èvoru `%s'."
+
+#, fuzzy
+#~ msgid "Next:"
+#~ msgstr "Next"
+
+#, fuzzy
+#~ msgid "Can't remove file `%s': %s"
+#~ msgstr "ne mogu kreirati izlaznu datoteku `%s'"
+
+#, fuzzy
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "Nema unakrsnih referenci u ovom èvoru."
+
+#~ msgid ""
+#~ "\\%-10[search]  Search forward for a specified string\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "\\%-10[search]  Tra¾i unaprijed za zadanim nizom\n"
+#~ "              i selektiraj èvor u kojem je slijedeæa pojava niza naðena.\n"
+
+#~ msgid ""
+#~ "\\%-10[goto-node]  Move to node specified by name.\n"
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr ""
+#~ "\\%-10[goto-node]  Pomakni se na èvor zadan imenom.\n"
+#~ "              Mo¾ete takoðer ukljuèiti ime datoteke, kao u (DATOTEKA)"
+#~ "IME_ÈVORA.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[next-node]  Move to the next node of current section.\n"
+#~ msgstr ""
+#~ "\\%-10[next-node]  Idi na slijedeæi (`next') èvor u odnosu na ovaj.\n"
+
+#~ msgid ""
+#~ "\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
+#~ "node] (DIR)'.\n"
+#~ msgstr ""
+#~ "\\%-10[dir-node]  Pomakni se na `directory' èvor.  Ekvivalentno `\\[goto-"
+#~ "node] (DIR)'.\n"
+
+#~ msgid ""
+#~ "\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] "
+#~ "Top'.\n"
+#~ msgstr ""
+#~ "\\%-10[top-node]  Idi na Top (vr¹ni) èvor.  Ekvivalentno `\\[goto-node] "
+#~ "Top'.\n"
+
+#, fuzzy
+#~ msgid "\\%-10[scroll-forward-page-only]  Scroll forward within this node.\n"
+#~ msgstr "\\%-10[scroll-forward]  'Skrolaj' naprijed 1 redak.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\%-10[scroll-backward-page-only]  Scroll backward within this node.\n"
+#~ msgstr "\\%-10[scroll-backward]  'Skrolaj' unazad 1 redak.\n"
+
+#~ msgid ""
+#~ "\\%-10[search-backward]  Search backward for a specified string\n"
+#~ "              and select the node in which the previous occurrence is "
+#~ "found.\n"
+#~ msgstr ""
+#~ "\\%-10[search-backward]  Tra¾i unazad zadani niz\n"
+#~ "              i selektiraj èvor u kojem je slijedeæa pojava niza naðena.\n"
+
+#~ msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
+#~ msgstr ""
+#~ "--- Upotrijebi `\\[history-node]' ili `\\[kill-node]' za izlaz ---\n"
+
+#, fuzzy
+#~ msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
+#~ msgstr ""
+#~ "\\%-10[move-to-prev-xref]  Preskoèi do slijedeæeg hipertekst linka unutar "
+#~ "ovog èvora.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [MENU-ITEM...]\n"
+#~ "\n"
+#~ "Read documentation in Info format.\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "      --apropos=STRING         look up STRING in all indices of all "
+#~ "manuals.\n"
+#~ "  -d, --directory=DIR          add DIR to INFOPATH.\n"
+#~ "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
+#~ "  -f, --file=FILENAME          specify Info file to visit.\n"
+#~ "  -h, --help                   display this help and exit.\n"
+#~ "      --index-search=STRING    go to node pointed by index entry STRING.\n"
+#~ "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
+#~ "  -o, --output=FILENAME        output selected nodes to FILENAME.\n"
+#~ "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
+#~ "      --no-raw-escapes         output escapes as literal text.\n"
+#~ "      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
+#~ "  -O, --show-options, --usage  go to command-line options node.\n"
+#~ "%s      --subnodes               recursively output menu items.\n"
+#~ "  -w, --where, --location      print physical location of Info file.\n"
+#~ "      --vi-keys                use vi-like and less-like key bindings.\n"
+#~ "      --version                display version information and exit.\n"
+#~ "\n"
+#~ "The first non-option argument, if present, is the menu entry to start "
+#~ "from;\n"
+#~ "it is searched for in all `dir' files along INFOPATH.\n"
+#~ "If it is not present, info merges all `dir' files and shows the result.\n"
+#~ "Any remaining arguments are treated as the names of menu\n"
+#~ "items relative to the initial node visited.\n"
+#~ "\n"
+#~ "Examples:\n"
+#~ "  info                       show top-level dir menu\n"
+#~ "  info emacs                 start at emacs node from top-level dir\n"
+#~ "  info emacs buffers         start at buffers node within emacs manual\n"
+#~ "  info --show-options emacs  start at node with emacs' command line "
+#~ "options\n"
+#~ "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
+#~ "  info -f ./foo.info         show file ./foo.info, not searching dir\n"
+#~ msgstr ""
+#~ "Kori¹tenje: %s [OPCIJA]... [STAVKA-MENIJA...]\n"
+#~ "\n"
+#~ "Èitanje dokumentacije u Info formatu.\n"
+#~ "\n"
+#~ "Opcije:\n"
+#~ "     --apropos=SUBJEKT        potra¾i SUBJEKT u svim indeksima svih "
+#~ "priruènika.\n"
+#~ " -d, --directory=DIR          dodaj DIR u INFOPATH.\n"
+#~ "     --dribble=IMEDAT         zapamti korisnikovo tipkanje u IMEDAT.\n"
+#~ " -f, --file=IMEDATOTEKE       zadaje ime Info datoteke koju se "
+#~ "posjeæuje.\n"
+#~ " -h, --help                   ispi¹i ovu pomoæ i zavr¹i s radom.\n"
+#~ "     --index-search=NIZ       idi na èvor na koji pokazuje stavka indeksa "
+#~ "NIZ.\n"
+#~ " -n, --node=IMEÈVORA          zadaje èvorove u prvoj posjeæenoj info "
+#~ "datoteci.\n"
+#~ " -o, --output=IMEDATOTEKE     ispi¹i izabrane èvorove u IMEDATOTEKE.\n"
+#~ " -R, --raw-escapes            ne uklanjaj ANSI escape sekvence iz man "
+#~ "stranica.\n"
+#~ "     --restore=IMEDATOTEKE    èitaj inicijalne tipke iz IMEDATOTEKE.\n"
+#~ " -O, --show-options, --usage  idi na èvor sa opcijama komandne linije.\n"
+#~ "%s     --subnodes               rekurzivno ispi¹i stavke menija.\n"
+#~ "     --vi-keys                koristi tipke kao ¹to su u vi-u i less-u.\n"
+#~ "     --version                ispi¹i informaciju o verziji i zavr¹i s "
+#~ "radom.\n"
+#~ "\n"
+#~ "Prvi argument koji nije opcija, ako je prisutan, je stavka menija od "
+#~ "koje\n"
+#~ "se poèinje; nju se tra¾i u svim `dir' datotekama kroz INFOPATH.\n"
+#~ "Ako nije prisutan, info spaja (merge) sve `dir' datoteke i prikazuje\n"
+#~ "rezultat. Eventualni preostali argumenti se tretiraju kao imena stavki\n"
+#~ "menija relativno od inicijalno posjeæenog èvora.\n"
+#~ "\n"
+#~ "Primjeri:\n"
+#~ "  info                       prika¾i vr¹ni dir meni\n"
+#~ "  info emacs                 zapoèni od emacs èvora iz vr¹nog dir-a\n"
+#~ "  info emacs buffers         zapoèni u buffers èvoru unutar emacs "
+#~ "priruènika\n"
+#~ "  info --show-options emacs  zapoèni u èvoru s emacsovim komandnim "
+#~ "opcijama\n"
+#~ "  info -f ./foo.info         prika¾i datoteku ./foo.info, zaobilazeæi "
+#~ "dir\n"
+
+#~ msgid ""
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr "              Odabiranje stavke menija selektira drugi èvor.\n"
+
+#~ msgid ""
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ msgstr ""
+#~ "              Mo¾ete takoðer ukljuèiti ime datoteke, kao u (DATOTEKA)"
+#~ "IME_ÈVORA.\n"
+
+#~ msgid "  %-10s  Search backward for a specified string\n"
+#~ msgstr "  %-10s  Tra¾i unazad zadani niz,\n"
+
+#~ msgid ""
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "              i selektiraj èvor u kojem je slijedeæa pojava niza naðena.\n"
+
+#~ msgid "Following Next node..."
+#~ msgstr "Slijedim Next (slijedeæi) èvor..."
+
+#~ msgid "Selecting first menu item..."
+#~ msgstr "Izabirem prvu stavku menija..."
+
+#~ msgid "Selecting Next node..."
+#~ msgstr "Selektiram Next (slijedeæi) èvor..."
+
+#~ msgid "Moving Up %d time(s), then Next."
+#~ msgstr "Pomièem se gore (Up) %d put(a), onda Next."
+
+#~ msgid "Moving Prev in this window."
+#~ msgstr "Idemo na Prev (prethodni) u ovom prozoru."
+
+#~ msgid "Moving Up in this window."
+#~ msgstr "Idem gore (Up) u ovom prozoru."
+
+#~ msgid "Moving to `Prev's last menu item."
+#~ msgstr "Idem na zadnju stavku `Prev'-ovog menija."
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
+#~ msgstr ""
+#~ "\\%-10[menu-digit]  Odaberi prvu ... devetu stavku u èvorovom meniju.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"
+#~ "PARTICULAR PURPOSE.  You may redistribute copies of GNU %s\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the file named COPYING.\n"
+#~ msgstr ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "S ovim programom NE DOLAZE GARANCIJE.  Mo¾ete redistribuirati ovaj "
+#~ "software\n"
+#~ "pod uvjetima GNU General Public License.\n"
+#~ "Za vi¹e informacija o ovim stvarima, pogledajte datoteke imena COPYING.\n"
+
+#~ msgid ""
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr ""
+#~ "              datoteke, i selektiraj èvor referenciran prvom naðenom "
+#~ "stavkom.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "There is NO warranty.  You may redistribute this software\n"
+#~ "under the terms of the GNU General Public License.\n"
+#~ "For more information about these matters, see the files named COPYING.\n"
+#~ msgstr ""
+#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
+#~ "S ovim programom NE DOLAZE GARANCIJE.  Mo¾ete redistribuirati ovaj "
+#~ "software\n"
+#~ "pod uvjetima GNU General Public License.\n"
+#~ "Za vi¹e informacija o ovim stvarima, pogledajte datoteke imena COPYING.\n"
+
+#~ msgid "\"\" is invalid"
+#~ msgstr "\"\" je neispravno"
+
+#~ msgid ""
+#~ "Basic Commands in Info Windows\n"
+#~ "******************************\n"
+#~ "\n"
+#~ "  \\%-10[quit-help]  Quit this help.\n"
+#~ "  \\%-10[quit]  Quit Info altogether.\n"
+#~ "  \\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
+#~ "\n"
+#~ "Selecting other nodes:\n"
+#~ "----------------------\n"
+#~ "  \\%-10[next-node]  Move to the \"next\" node of this node.\n"
+#~ "  \\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
+#~ "  \\%-10[up-node]  Move \"up\" from this node.\n"
+#~ "  \\%-10[menu-item]  Pick menu item specified by name.\n"
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ "  \\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
+#~ "  \\%-10[history-node]  Move to the last node seen in this window.\n"
+#~ "  \\%-10[move-to-next-xref]  Skip to next hypertext link within this "
+#~ "node.\n"
+#~ "  \\%-10[move-to-prev-xref]  Skip to previous hypertext link within this "
+#~ "node.\n"
+#~ "  \\%-10[select-reference-this-line]  Follow the hypertext link under "
+#~ "cursor.\n"
+#~ "  \\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
+#~ "node] (DIR)'.\n"
+#~ "  \\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] "
+#~ "Top'.\n"
+#~ "\n"
+#~ "Moving within a node:\n"
+#~ "---------------------\n"
+#~ "  \\%-10[scroll-forward]  Scroll forward a page.\n"
+#~ "  \\%-10[scroll-backward]  Scroll backward a page.\n"
+#~ "  \\%-10[beginning-of-node]  Go to the beginning of this node.\n"
+#~ "  \\%-10[end-of-node]  Go to the end of this node.\n"
+#~ "  \\%-10[1scroll-forward]  Scroll forward 1 line.\n"
+#~ "  \\%-10[1scroll-backward]  Scroll backward 1 line.\n"
+#~ "\n"
+#~ "Other commands:\n"
+#~ "---------------\n"
+#~ "  \\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"
+#~ "  \\%-10[last-menu-item]  Pick last item in node's menu.\n"
+#~ "  \\%-10[index-search]  Search for a specified string in the index "
+#~ "entries of this Info\n"
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ "  \\%-10[goto-node]  Move to node specified by name.\n"
+#~ "              You may include a filename as well, as in (FILENAME)"
+#~ "NODENAME.\n"
+#~ "  \\%-10[search]  Search forward through this Info file for a specified "
+#~ "string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ "  \\%-10[search-backward]  Search backward in this Info file for a "
+#~ "specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "Osnovne naredbe u Info Prozorima\n"
+#~ "********************************\n"
+#~ "\n"
+#~ "  \\%-10[quit-help]  Zavr¹i ovu pomoæ.\n"
+#~ "  \\%-10[quit]  Iziði iz Info programa.\n"
+#~ "  \\%-10[get-info-help-node]  Pozovi Info priruènik.\n"
+#~ "\n"
+#~ "Selektiranje drugih èvorova:\n"
+#~ "----------------------------\n"
+#~ "  \\%-10[next-node]  Idi na slijedeæi (\"next\") èvor od ovog èvora.\n"
+#~ "  \\%-10[prev-node]  Idi na prethodni (\"previous\") èvor od ovog èvora.\n"
+#~ "  \\%-10[up-node]  Idi gore (\"up\") od ovog èvora.\n"
+#~ "  \\%-10[menu-item]  Izaberi stavku menija zadanu imenom.\n"
+#~ "              Odabiranjeim stavke menija se selektira drugi èvor.\n"
+#~ "  \\%-10[xref-item]  Slijedi unakrsnu referencu. Èita ime reference.\n"
+#~ "  \\%-10[history-node]  Idi na zadnji vidljiv èvor u ovom prozoru.\n"
+#~ "  \\%-10[move-to-next-xref]  Idi na slijedeæi hipertekst link u ovom "
+#~ "èvoru.\n"
+#~ "  \\%-10[move-to-prev-xref]  Idi na prethodni hipertekst link u ovom "
+#~ "èvoru.\n"
+#~ "  \\%-10[select-reference-this-line]  Slijedi hipertekst link pod "
+#~ "kursorom.\n"
+#~ "  \\%-10[dir-node]  Idi na èvor `directory'.  Ekvivalentno `\\[goto-node] "
+#~ "(DIR)'.\n"
+#~ "  \\%-10[top-node]  Idi na vr¹ni (Top) èvor. Ekvivaletno `\\[goto-node] "
+#~ "Top'.\n"
+#~ "\n"
+#~ "Pomicanje unutar èvora:\n"
+#~ "-----------------------\n"
+#~ "  \\%-10[scroll-forward]  Skrolaj stranicu naprijed.\n"
+#~ "  \\%-10[scroll-backward]  Skrolaj stranicu unazad.\n"
+#~ "  \\%-10[beginning-of-node]  Idi na poèetak ovog èvora.\n"
+#~ "  \\%-10[end-of-node]  Idi na kraj ovog èvora.\n"
+#~ "  \\%-10[1scroll-forward]  Skrolaj naprijed 1 redak.\n"
+#~ "  \\%-10[1scroll-backward]  Skrolaj unazad 1 redak.\n"
+#~ "\n"
+#~ "Druge naredbe:\n"
+#~ "--------------\n"
+#~ "  \\%-10[menu-digit]  Odaberi prvu ... devetu stavku u èvorovom meniju.\n"
+#~ "  \\%-10[last-menu-item]  Odaberi zadnju stavku u èvorovom meniju.\n"
+#~ "  \\%-10[index-search]  Tra¾i zadani niz u indeks stavkama ove Info\n"
+#~ "              datoteke, i selektiraj èvor referenciran prvom naðenom "
+#~ "stavkom.\n"
+#~ "  \\%-10[goto-node]  Idi na èvor zadan imenom.\n"
+#~ "              Mo¾ete takoðer ukljuèiti ime datoteke, kao u (DATOTEKA)"
+#~ "IME_ÈVORA.\n"
+#~ "  \\%-10[search]  Tra¾i zadani niz prema naprijed kroz ovu Info "
+#~ "datoteku,\n"
+#~ "              i selektiraj èvor u kojem je slijedeæa pojava niza naðena.\n"
+#~ "  \\%-10[search-backward]  Tra¾i zadani niz prema nazad kroz ovu Info "
+#~ "datoteku,\n"
+#~ "              i selektiraj èvor u kojem je slijedeæa pojava niza naðena.\n"
+
+#~ msgid "Basic Commands in Info Windows\n"
+#~ msgstr "Osnovne naredbe u Info Prozorima\n"
+
+#~ msgid "Moving within a node:\n"
+#~ msgstr "Pomicanje unutar èvora:\n"
+
+#~ msgid "Selecting other nodes:\n"
+#~ msgstr "Selektiranje drugih èvorova:\n"
+
+#~ msgid "Other commands:\n"
+#~ msgstr "Druge naredbe:\n"
+
+#~ msgid ""
+#~ "Usage: %s [OPTION]... [INPUT-FILE]\n"
+#~ "\n"
+#~ "Options:\n"
+#~ "  --output FILENAME            output to FILENAME instead of $HOME/.info\n"
+#~ "  --help                       display this help and exit.\n"
+#~ "  --version                    display version information and exit.\n"
+#~ "\n"
+#~ "Compile infokey source file to infokey file.  Reads INPUT-FILE (default\n"
+#~ "$HOME/.infokey) and writes compiled key file to $HOME/.info.\n"
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ msgstr ""
+#~ "Kori¹tenje: %s [OPCIJA]... [ULAZNA-DATOTEKA]\n"
+#~ "\n"
+#~ "Opcije:\n"
+#~ "  --output DATOTEKA            izlaz u DATOTEKA umjesto u $HOME/.info\n"
+#~ "  --help                       ispi¹i ovu pomoæ i zavr¹i.\n"
+#~ "  --version                    ispi¹i informaciju o verziji i zavr¹i.\n"
+#~ "\n"
+#~ "Prevedi infokey izvornu datoteku u infokey datoteku. Èita ULAZNA-"
+#~ "DATOTEKA\n"
+#~ "(podrazumno $HOME/.infokey) i ispisuje prevedenu key datoteku u $HOME/."
+#~ "info.\n"
+#~ "\n"
+#~ "©aljite izvje¹zaje u bugovima na email bug-texinfo@gnu.org,\n"
+#~ "opæa pitanja i diskusije na help-texinfo@gnu.org.\n"
