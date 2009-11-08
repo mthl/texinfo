@@ -21,6 +21,10 @@
 #    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #    02110-1301  USA
 #
+# Some error messages come from texinfo (makeinfo), so copyright holder 
+# is the FSF or the individual who wrote them. All come from before the 
+# switch of texinfo to GPLv3+.
+#
 #-##############################################################################
 
 use Data::Dumper;

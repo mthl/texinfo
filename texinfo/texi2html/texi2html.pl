@@ -26,6 +26,10 @@
 #    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 #    02110-1301  USA
 #
+# Some error messages come from texinfo (makeinfo), so copyright holder 
+# is the FSF or the individual who wrote them. All come from before the 
+# switch of texinfo to GPLv3+.
+#
 #-##############################################################################
 # The man page for this program is included at the end of this file and can be
 # viewed using the command 'nroff -man texi2html'.
@@ -86,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.351 2009-11-06 23:54:40 pertusus Exp $
+# $Id: texi2html.pl,v 1.352 2009-11-08 10:58:56 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
