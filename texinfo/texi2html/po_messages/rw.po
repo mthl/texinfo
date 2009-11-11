@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: texi2html-bug@nongnu.org\n"
-"POT-Creation-Date: 2009-11-08 16:40+0100\n"
+"POT-Creation-Date: 2009-11-11 13:19+0100\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -679,77 +679,77 @@ msgstr ""
 msgid "Misplaced %c"
 msgstr ""
 
-#: texi2html.pl:14936
+#: texi2html.pl:14937
 #, fuzzy, perl-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%sa UMWE Inyuguti Cyangwa Nka"
 
-#: texi2html.pl:14940
+#: texi2html.pl:14941
 #, fuzzy, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%sCyangwa Nka OYA"
 
-#: texi2html.pl:14989
+#: texi2html.pl:14990
 #, fuzzy, perl-format
 msgid "Unknown command with braces `@%s'"
 msgstr "Komandi:"
 
-#: texi2html.pl:15025
+#: texi2html.pl:15026
 #, fuzzy, perl-format
 msgid "%c%s expected braces"
 msgstr "%c%sIkitezwe: Ingirwadusodeko"
 
-#: texi2html.pl:15029
+#: texi2html.pl:15030
 #, fuzzy, perl-format
 msgid "Unknown command `%s'"
 msgstr "Komandi:"
 
-#: texi2html.pl:15107
+#: texi2html.pl:15108
 #, fuzzy, perl-format
 msgid "Reached eof before matching @end %s"
 msgstr "Mbere Impera"
 
-#: texi2html.pl:15115
+#: texi2html.pl:15116
 #, fuzzy, perl-format
 msgid "%cend macro not found"
 msgstr "%cendMakoro OYA Byabonetse"
 
-#: texi2html.pl:15283
+#: texi2html.pl:15284
 #, perl-format
 msgid "No matching `%cend %s'"
 msgstr ""
 
-#: texi2html.pl:15311
+#: texi2html.pl:15312
 #, fuzzy, perl-format
 msgid "%c%s missing close brace"
 msgstr "%c%sIbuze Gufunga"
 
-#: texi2html.pl:15419
+#: texi2html.pl:15420
 #, fuzzy, perl-format
 msgid "%s should not appear in %s"
 msgstr "%s:OYA Gufungura IDOSIYE"
 
-#: texi2html.pl:16119
+#: texi2html.pl:16120
 #, perl-format
 msgid "%s:%d: string not closed in css file"
 msgstr ""
 
-#: texi2html.pl:16120
+#: texi2html.pl:16121
 #, fuzzy, perl-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr "%s:%d:--IDOSIYE in Icyo wongeraho"
 
-#: texi2html.pl:16121
+#: texi2html.pl:16122
 #, perl-format
 msgid "%s:%d @import not finished in css file"
 msgstr ""
 
-#: texi2html.pl:16151
+#: texi2html.pl:16152
 #, fuzzy, perl-format
 msgid "%s: could not open --css-file %s: %s\n"
 msgstr "%s:OYA Gufungura IDOSIYE"
 
-#: texi2html.pl:16206
+#: texi2html.pl:16207
 #, fuzzy, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s:Ibuze IDOSIYE"

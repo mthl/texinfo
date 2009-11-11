@@ -34,7 +34,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.94\n"
 "Report-Msgid-Bugs-To: texi2html-bug@nongnu.org\n"
-"POT-Creation-Date: 2009-11-08 16:40+0100\n"
+"POT-Creation-Date: 2009-11-11 13:19+0100\n"
 "PO-Revision-Date: 2008-08-25 10:25+0200\n"
 "Last-Translator: Michael Piefel <piefel@informatik.hu-berlin.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -795,77 +795,77 @@ msgstr ""
 msgid "Misplaced %c"
 msgstr "Fehlplazierte %c"
 
-#: texi2html.pl:14936
+#: texi2html.pl:14937
 #, perl-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s erwartet einen einzelnen Buchstaben „i“ oder „j“ als Argument"
 
-#: texi2html.pl:14940
+#: texi2html.pl:14941
 #, fuzzy, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s erwartet „i“ oder „j“ als Argument, nicht „%c“"
 
-#: texi2html.pl:14989
+#: texi2html.pl:14990
 #, fuzzy, perl-format
 msgid "Unknown command with braces `@%s'"
 msgstr "Unbekannter Befehl „%s“"
 
-#: texi2html.pl:15025
+#: texi2html.pl:15026
 #, perl-format
 msgid "%c%s expected braces"
 msgstr "%c%s erwartete geschweifte Klammern"
 
-#: texi2html.pl:15029
+#: texi2html.pl:15030
 #, perl-format
 msgid "Unknown command `%s'"
 msgstr "Unbekannter Befehl „%s“"
 
-#: texi2html.pl:15107
+#: texi2html.pl:15108
 #, perl-format
 msgid "Reached eof before matching @end %s"
 msgstr "Dateiende vor erforderlichem „@end %s“ erreicht"
 
-#: texi2html.pl:15115
+#: texi2html.pl:15116
 #, perl-format
 msgid "%cend macro not found"
 msgstr "%cend Makro nicht gefunden"
 
-#: texi2html.pl:15283
+#: texi2html.pl:15284
 #, perl-format
 msgid "No matching `%cend %s'"
 msgstr "Kein übereinstimmendes „%cend %s“"
 
-#: texi2html.pl:15311
+#: texi2html.pl:15312
 #, perl-format
 msgid "%c%s missing close brace"
 msgstr "%c%s fehlende schließende Klammer"
 
-#: texi2html.pl:15419
+#: texi2html.pl:15420
 #, fuzzy, perl-format
 msgid "%s should not appear in %s"
 msgstr "%s: Konnte CSS-Datei nicht öffnen: %s"
 
-#: texi2html.pl:16119
+#: texi2html.pl:16120
 #, perl-format
 msgid "%s:%d: string not closed in css file"
 msgstr ""
 
-#: texi2html.pl:16120
+#: texi2html.pl:16121
 #, perl-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr "%s:%d: CSS-Datei endete inmitten eines Kommentars"
 
-#: texi2html.pl:16121
+#: texi2html.pl:16122
 #, perl-format
 msgid "%s:%d @import not finished in css file"
 msgstr ""
 
-#: texi2html.pl:16151
+#: texi2html.pl:16152
 #, fuzzy, perl-format
 msgid "%s: could not open --css-file %s: %s\n"
 msgstr "%s: Konnte CSS-Datei nicht öffnen: %s"
 
-#: texi2html.pl:16206
+#: texi2html.pl:16207
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: Datei-Angabe fehlt.\n"

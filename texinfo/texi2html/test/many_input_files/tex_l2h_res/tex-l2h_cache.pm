@@ -1,4 +1,13 @@
 
+$l2h_cache_key = q/$@code{math code} a < b$/;
+$l2h_cache{$l2h_cache_key} = q|<!-- MATH
+ $@code{math code} a < b$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="141" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="tex_4.png"
+ ALT="$@code{math code} a &lt; b$"></SPAN>|;
+
 $l2h_cache_key = q/ some
 
 tex \TeX/;
@@ -24,15 +33,6 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  WIDTH="32" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
  SRC="tex_2.png"
  ALT="${x^i}\over{\tan y}$"></SPAN>|;
-
-$l2h_cache_key = q/$@code{math code}$/;
-$l2h_cache{$l2h_cache_key} = q|<!-- MATH
- $@code{math code}$
- -->
-<SPAN CLASS="MATH"><IMG
- WIDTH="107" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
- SRC="tex_4.png"
- ALT="$@code{math code}$"></SPAN>|;
 
 $l2h_cache_key = q/ some
 

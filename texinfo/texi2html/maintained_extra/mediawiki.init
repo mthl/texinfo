@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.32 2009-11-11 14:05:30 pertusus Exp $
+# $Id: mediawiki.init,v 1.1 2009-11-11 15:13:37 pertusus Exp $
 
 use strict;
 

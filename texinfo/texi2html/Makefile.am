@@ -30,7 +30,8 @@ texi2html_formats = \
 dist_init_DATA = maintained_extra/book.init \
 	maintained_extra/chm.init \
 	maintained_extra/tex4ht.init \
-	maintained_extra/html32.init
+	maintained_extra/html32.init \
+	maintained_extra/mediawiki.init
 
 texi2html_sources = texi2html_configured.pl $(texi2html_additional_scripts)
 
@@ -58,7 +59,6 @@ EXTRA_DIST = config.rpath \
 	examples/utf8.init \
 	examples/enable_encoding.init \
 	examples/roff.init \
-	examples/mediawiki.init \
 	examples/my-bib-macros.texi \
 	examples/bib-example.texi \
 	examples/glossary.texi \

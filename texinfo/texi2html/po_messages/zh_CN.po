@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: texi2html-bug@nongnu.org\n"
-"POT-Creation-Date: 2009-11-08 16:40+0100\n"
+"POT-Creation-Date: 2009-11-11 13:19+0100\n"
 "PO-Revision-Date: 2009-05-21 15:08中国标准时间\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -710,77 +710,77 @@ msgstr ""
 msgid "Misplaced %c"
 msgstr "错误放置的 %c"
 
-#: texi2html.pl:14936
+#: texi2html.pl:14937
 #, perl-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s 需要以单个字符“i”或“j”为参数"
 
-#: texi2html.pl:14940
+#: texi2html.pl:14941
 #, fuzzy, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s 的参数应为“i”或“j”，而不是“%c”"
 
-#: texi2html.pl:14989
+#: texi2html.pl:14990
 #, fuzzy, perl-format
 msgid "Unknown command with braces `@%s'"
 msgstr "未知的命令“%s”"
 
-#: texi2html.pl:15025
+#: texi2html.pl:15026
 #, perl-format
 msgid "%c%s expected braces"
 msgstr "%c%s 需要花括号"
 
-#: texi2html.pl:15029
+#: texi2html.pl:15030
 #, perl-format
 msgid "Unknown command `%s'"
 msgstr "未知的命令“%s”"
 
-#: texi2html.pl:15107
+#: texi2html.pl:15108
 #, perl-format
 msgid "Reached eof before matching @end %s"
 msgstr "文件在遇到匹配的 @end %s 前就结束了"
 
-#: texi2html.pl:15115
+#: texi2html.pl:15116
 #, perl-format
 msgid "%cend macro not found"
 msgstr "找不到宏 %cend"
 
-#: texi2html.pl:15283
+#: texi2html.pl:15284
 #, perl-format
 msgid "No matching `%cend %s'"
 msgstr "没有匹配的“%cend %s”"
 
-#: texi2html.pl:15311
+#: texi2html.pl:15312
 #, perl-format
 msgid "%c%s missing close brace"
 msgstr "%c%s 遗漏闭合花括号"
 
-#: texi2html.pl:15419
+#: texi2html.pl:15420
 #, fuzzy, perl-format
 msgid "%s should not appear in %s"
 msgstr "%s: 无法打开 --css-file: %s"
 
-#: texi2html.pl:16119
+#: texi2html.pl:16120
 #, perl-format
 msgid "%s:%d: string not closed in css file"
 msgstr ""
 
-#: texi2html.pl:16120
+#: texi2html.pl:16121
 #, perl-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr "%s:%d: --css-file 以注释结尾"
 
-#: texi2html.pl:16121
+#: texi2html.pl:16122
 #, perl-format
 msgid "%s:%d @import not finished in css file"
 msgstr ""
 
-#: texi2html.pl:16151
+#: texi2html.pl:16152
 #, fuzzy, perl-format
 msgid "%s: could not open --css-file %s: %s\n"
 msgstr "%s: 无法打开 --css-file: %s"
 
-#: texi2html.pl:16206
+#: texi2html.pl:16207
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s：遗漏文件参数。\n"

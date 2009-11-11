@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 3.12d\n"
 "Report-Msgid-Bugs-To: texi2html-bug@nongnu.org\n"
-"POT-Creation-Date: 2009-11-08 16:40+0100\n"
+"POT-Creation-Date: 2009-11-11 13:19+0100\n"
 "PO-Revision-Date: 1999-02-16 21:14+01:00\n"
 "Last-Translator: Karl Eichwalder <ke@suse.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -622,77 +622,77 @@ msgstr ""
 msgid "Misplaced %c"
 msgstr ""
 
-#: texi2html.pl:14936
+#: texi2html.pl:14937
 #, perl-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr ""
 
-#: texi2html.pl:14940
+#: texi2html.pl:14941
 #, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr ""
 
-#: texi2html.pl:14989
+#: texi2html.pl:14990
 #, perl-format
 msgid "Unknown command with braces `@%s'"
 msgstr ""
 
-#: texi2html.pl:15025
+#: texi2html.pl:15026
 #, perl-format
 msgid "%c%s expected braces"
 msgstr ""
 
-#: texi2html.pl:15029
+#: texi2html.pl:15030
 #, perl-format
 msgid "Unknown command `%s'"
 msgstr ""
 
-#: texi2html.pl:15107
+#: texi2html.pl:15108
 #, perl-format
 msgid "Reached eof before matching @end %s"
 msgstr ""
 
-#: texi2html.pl:15115
+#: texi2html.pl:15116
 #, perl-format
 msgid "%cend macro not found"
 msgstr ""
 
-#: texi2html.pl:15283
+#: texi2html.pl:15284
 #, perl-format
 msgid "No matching `%cend %s'"
 msgstr ""
 
-#: texi2html.pl:15311
+#: texi2html.pl:15312
 #, perl-format
 msgid "%c%s missing close brace"
 msgstr ""
 
-#: texi2html.pl:15419
+#: texi2html.pl:15420
 #, perl-format
 msgid "%s should not appear in %s"
 msgstr ""
 
-#: texi2html.pl:16119
+#: texi2html.pl:16120
 #, perl-format
 msgid "%s:%d: string not closed in css file"
 msgstr ""
 
-#: texi2html.pl:16120
+#: texi2html.pl:16121
 #, perl-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr ""
 
-#: texi2html.pl:16121
+#: texi2html.pl:16122
 #, perl-format
 msgid "%s:%d @import not finished in css file"
 msgstr ""
 
-#: texi2html.pl:16151
+#: texi2html.pl:16152
 #, perl-format
 msgid "%s: could not open --css-file %s: %s\n"
 msgstr ""
 
-#: texi2html.pl:16206
+#: texi2html.pl:16207
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr ""

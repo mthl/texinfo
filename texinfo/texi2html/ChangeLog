@@ -6,6 +6,8 @@
 	in math as LaTeX or TeX.
 	* examples/mediawiki.init: expand @-commands in math as
 	LaTeX.
+	* examples/mediawiki.init: moved to maintained_extras now
+	that it is complete.
 
 2009-11-08   Patrice Dumas  <dumas@centre-cired.fr>
 
