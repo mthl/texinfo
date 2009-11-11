@@ -20,7 +20,7 @@ Maths with protected \:
 
 Maths with code @@-command:
 
-@math{@code{math code}}
+@math{@code{math code} a < b}
 
 Maths with code @@-command and braces:
 

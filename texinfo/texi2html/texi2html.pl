@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.353 2009-11-08 17:19:55 pertusus Exp $
+# $Id: texi2html.pl,v 1.354 2009-11-11 14:05:29 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -14903,7 +14903,8 @@ sub do_style_command($$$$$$$$)
             $style = $::style_map_texi_ref->{$macro};
         }
         elsif ($state->{'math_style'} and defined($::style_map_math_ref->{$macro}))
-        {
+        { # FIXME we are still in math when the @math is closed here, since 
+          # close_arg that does 'math_style'-- is called below.
             $style = $::style_map_math_ref->{$macro};
         }
         elsif ($state->{'preformatted'})

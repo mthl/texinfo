@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.248 2009-11-05 22:55:07 pertusus Exp $
+# $Id: texi2html.init,v 1.249 2009-11-11 14:05:29 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3919,6 +3919,76 @@ sub t2h_enable_encoding_accent($$$$)
 # end special accent/encoding commands
 ####################################################################
 
+####################################################################
+# TeX/LaTeX, that can especially be used in @math
+# To load the appropriate hash, use
+# default_load_tex_math
+
+my %tex_default_simple_map_math = (
+ '{' => '\{',
+ '}' => '\}',
+ '\\' => '\\'
+);
+
+my %tex_default_math_things_map = %default_things_map;
+
+$tex_default_math_things_map{'bullet'} = '\bullet';
+$tex_default_math_things_map{'copyright'} = '\copyright';
+$tex_default_math_things_map{'registeredsymbol'} = '\circledR';
+$tex_default_math_things_map{'dots'} = '\dots';
+$tex_default_math_things_map{'endots'} = '\dots';
+$tex_default_math_things_map{'equiv'} = '\equiv';
+$tex_default_math_things_map{'expansion'} = '\mapsto';
+$tex_default_math_things_map{'arrow'} = '\rightarrow';
+$tex_default_math_things_map{'point'} = '\star';
+$tex_default_math_things_map{'print'} = '\dashv';
+$tex_default_math_things_map{'result'} = '\Rightarrow';
+$tex_default_math_things_map{'pounds'} = '\pounds';
+$tex_default_math_things_map{'geq'} = '\geq';
+$tex_default_math_things_map{'leq'} = '\leq';
+$tex_default_math_things_map{'textdegree'} = '^\circ';
+
+my %latex_default_math_things_map = %tex_default_math_things_map;
+
+$latex_default_math_things_map{'aa'} = '\mathring{a}';
+$latex_default_math_things_map{'AA'} = '\mathring{A}';
+
+# FIXME Maybe this should not be there since it is not for math but
+# more for a completly separate format.
+my %latex_default_things_map;
+
+foreach my $thing (keys(%default_things_map))
+{
+    $latex_default_things_map{$thing} = '\\'.$thing;
+}
+
+$latex_default_things_map{'error'} = '\fbox{error}';
+$latex_default_things_map{'enddots'} = '\dots\@';
+$latex_default_things_map{'exclamdown'} = '\textexclamdown';
+$latex_default_things_map{'questiondown'} = '\textquestiondown';
+$latex_default_things_map{'tie'} = '~';
+$latex_default_things_map{'registeredsymbol'} = '\textregistered';
+$latex_default_things_map{'ordf'} = '\textordfeminine';
+$latex_default_things_map{'ordm'} = '\textordmasculine';
+$latex_default_things_map{'guillemetleft'} = '\guillemotleft';
+$latex_default_things_map{'guillemetright'} = '\guillemotright';
+
+foreach my $text_prefixed_symbols ('bullet', 'exclamdown', 'questiondown', 
+   'quotedblleft', 'quotedblright', 'quoteleft', 'quoteright')
+{
+   $latex_default_things_map{$text_prefixed_symbols} = '\text'.$text_prefixed_symbols;
+}
+
+foreach my $math_only ('equiv', 'expansion', 'arrow', 'minus', 'point',
+   'print', 'result', 'geq', 'leq')
+{
+   $latex_default_things_map{$math_only} = '$'.$latex_default_math_things_map{$math_only}.'$';
+}
+
+
+# End TeX/LaTeX
+#############################################################
+
 sub default_sc($$)
 {
     return uc($_[0]);
@@ -4250,6 +4320,192 @@ t2h_default_copy_style_map(\%simple_format_style_map_texi, \%default_simple_form
 
 # called here because %default_style_map_texi is used.
 t2h_default_set_variables_default();
+
+#################################################################
+# TeX/LaTeX styles, that can be used in math
+
+my %default_style_tex_map;
+my %default_style_latex_map;
+
+t2h_default_copy_style_map(\%default_style_map, \%default_style_tex_map);
+t2h_default_copy_style_map(\%default_style_map, \%default_style_latex_map);
+
+# common in TeX and LaTeX and both for math and normal text
+
+$default_style_latex_map{'w'}->{'inline_begin'} = '\mbox{';
+$default_style_tex_map{'w'}->{'inline_begin'} = '\mbox{';
+$default_style_latex_map{'dmn'}->{'inline_begin'} = '{\thinspace ';
+$default_style_tex_map{'dmn'}->{'inline_begin'} = '{\thinspace ';
+
+my %default_style_latex_math_map;
+
+t2h_default_copy_style_map(\%default_style_latex_map, \%default_style_latex_math_map);
+
+my %default_tex_latex_map = (
+  'bf' => [ 'b', 'strong' ],
+  'tt' => [ 'code', 'command', 'env', 'file', 'option', 'samp', 't' ],
+  'it' => [ 'i', 'var', 'emph' ],
+  'sf' => [ 'sanserif' ],
+  'rm' => [ 'r' ],
+  'sl' => [ 'dfn', 'slanted' ],
+);
+ 
+foreach my $style (keys (%default_tex_latex_map))
+{
+   foreach my $command (@{$default_tex_latex_map{$style}})
+   {
+      $default_style_tex_map{$command}->{'inline_begin'} = '{\\' . $style .' ';
+      $default_style_latex_map{$command}->{'inline_begin'} = '\text' . $style .'{';
+      $style = 'normal' if ($style eq 'sl');
+      $default_style_latex_math_map{$command}->{'inline_begin'} = '\math' . $style .'{';
+   }
+}
+
+# only in text
+
+$default_style_latex_map{'emph'}->{'inline_begin'} = '\emph{'; 
+$default_style_latex_map{'var'}->{'inline_begin'} = '\emph{'; 
+$default_style_latex_map{'sc'}->{'inline_begin'} = '\textsc{'; 
+
+foreach my $hash (\%default_style_tex_map, \%default_style_latex_map, \%default_style_latex_math_map)
+{
+   foreach my $command (keys(%$hash))
+   {
+      $hash->{$command}->{'inline_end'} = '}' if ($hash->{$command}->{'inline_begin'});
+   }
+}
+
+# no kbd key sc in math
+#       'kbd'                -                 ?
+#       'key'                -                 ?
+
+my %default_style_tex_math_map;
+
+t2h_default_copy_style_map(\%default_style_tex_map, \%default_style_tex_math_map);
+
+# We don't want to override special commands in math mode for now, as long
+# as they are not handled especially. Also we don't want to modify the math
+# function, it is called to close the @math command and we don't want
+# it to be the turned to the default one when calling 
+# FIXME maybe it would be even better not to duplicate default styles in
+# math, like 'email', 'uref'....
+foreach my $command (keys(%special_style), 'math')
+{
+   delete $default_style_tex_math_map{$command};
+   delete $default_style_latex_math_map{$command};
+}
+
+foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
+{
+     $default_style_latex_map{$accent_command} = { 'function' => \&default_tex_accent };
+     $default_style_tex_map{$accent_command} = { 'function' => \&default_tex_accent };
+     $default_style_tex_math_map{$accent_command} = { 'function' => \&default_tex_math_accent };
+     $default_style_latex_math_map{$accent_command} = { 'function' => \&default_latex_math_accent };
+}
+
+my %tex_text_accent_map = (
+ ',' => 'c',
+ 'ringaccent' => 'r',
+ 'dotaccent'  => '.',
+ 'ubaraccent' => 'b',
+ 'udotaccent' => 'd',
+ 'ogonek'     => 'k',
+ 'tieaccent'  => 'tie',
+);
+
+sub default_tex_accent($$)
+{
+    my $text = shift;
+    my $accent = shift;
+    return "\\$tex_text_accent_map{$accent}\{$text\}" if ($tex_text_accent_map{$accent});
+    if ($accent eq 'dotless')
+    {
+        return "\\$text" if ($text eq 'i' or $text eq 'j');
+        return $text;
+    }
+    return "\\$accent\{$text\}";
+}
+
+my %tex_math_accent_map = (
+ "'" => 'acute',
+ '^' => 'hat',
+ '`' => 'grave',
+ '~' => 'tilde',
+ '"' => 'ddot',
+ '=' => 'bar',
+ 'dotaccent'  => 'dot',
+ 'u' => 'breve',
+ 'ubaraccent' => 'underline',
+);
+
+sub default_latex_math_accent($$)
+{
+    my $text = shift;
+    my $accent = shift;
+    return '\mathring{'.$text.'}' if ($accent eq 'ringaccent');
+    return default_tex_math_accent($text, $accent);
+}
+
+sub default_tex_math_accent($$)
+{
+    my $text = shift;
+    my $accent = shift;
+    return "\\$tex_text_accent_map{$accent}\{$text\}" if ($tex_text_accent_map{$accent});
+    if ($accent eq 'dotless')
+    {
+        return "\\${text}math" if ($text eq 'i' or $text eq 'j');
+        return $text;
+    }
+    return ascii_accent($text, $accent);
+}
+
+my $kept_normal_text;
+
+# We assume that in @math the TeX characters have already been 
+# rightly protected and so don't protect once more.
+sub default_tex_normal_math_text($$$$$$$;$)
+{
+   my @initial_args = @_;
+   my $text = shift;
+   my $in_raw_text = shift; # remove_texi
+   my $in_preformatted = shift;
+   my $in_code = shift;
+   my $in_math = shift;
+   my $in_simple = shift;
+   my $style_stack = shift;
+   my $state = shift;
+
+   # Don't protect text in math
+   if ($in_math)
+   {
+       $text = uc($text) if (in_cmd($style_stack, 'sc'));
+       return $text;
+   }
+   return &kept_normal_text(@initial_args);
+}
+
+# This is the entry point to be used by users.
+sub default_load_tex_math(;$)
+{
+   my $style = shift;
+   $style = 'latex' if (!defined($style));
+   %simple_map_math = %tex_default_simple_map_math;
+   if ($style eq 'tex')
+   {
+      %math_map = %tex_default_math_things_map;
+      t2h_default_copy_style_map(\%default_style_tex_math_map, \%style_map_math);
+   }
+   else
+   {
+      %math_map = %latex_default_math_things_map;
+      t2h_default_copy_style_map(\%default_style_latex_math_map, \%style_map_math);
+   }
+   $kept_normal_text = $normal_text;
+   $normal_text = \&default_tex_normal_math_text;
+}
+
+# End TeX/LaTeX styles
+#################################################################
 
 # regions expanded or not depending on the value of this hash.
 # @EXPAND sets entries in this hash, and you should better use

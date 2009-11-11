@@ -23,7 +23,7 @@
 
 <!-- tex4ht_begin tex_tex4ht_math math 3 -->
 @end verbatim
-@math{@code{math code}}
+@math{@code{math code} a < b}
 @verbatim
 <!-- tex4ht_end tex_tex4ht_math math 3 -->
 

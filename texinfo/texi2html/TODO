@@ -1,4 +1,4 @@
-This file contains a list of things yet to be done (see also in doc/TODO):
+This fie contains a list of things yet to be done (see also in doc/TODO):
 
 Before next release
 -------------------
@@ -206,15 +206,12 @@ It is also possible to use more regular %s escapes, and also avoid any
 expansion (with 'keep_texi' in the state).
 
 
-
-* do a translation to TeX/LaTeX to be used in @math, 
-  for example @equiv->\equiv. t2h_default_protect_text should be used 
-  such that there is no change in text in this context.
+* Use omhelp latex parser and mathml generator for both xhtml and 
+  docbook
+        http://www.seanet.com/~bradbell/omhelp/latex.xml
 
 * in LaTeX, @example and the like could be implemented as \fancyvrb
   with fontfamily=helvetica, fontsize=\small commandchars=\\\{\}
-
-* use libintl as a gettext implementation?
 
 * %f$x (index in printf) appeared in perl 5.8.0, 18 jul 2002
 

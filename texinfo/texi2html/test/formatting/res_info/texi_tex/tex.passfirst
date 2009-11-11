@@ -19,7 +19,7 @@ tex.texi(,30) @math{a @\ b}.
 tex.texi(,31) 
 tex.texi(,32) Maths with code @@-command:
 tex.texi(,33) 
-tex.texi(,34) @math{@code{math code}}
+tex.texi(,34) @math{@code{math code} a < b}
 tex.texi(,35) 
 tex.texi(,36) Maths with code @@-command and braces:
 tex.texi(,37) 

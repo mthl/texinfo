@@ -23,11 +23,11 @@ Maths with protected \:
 
 Maths with code @-command:
 
-<math><code>math code</code></math>
+<math>\mathtt{math code} a < b</math>
 
 Maths with code @-command and braces:
 
-<math> \underline{<code>math \hbox{ code }}</code> \sum_{i}{\underline{f}}</math>
+<math> \underline{\mathtt{math \hbox{ code }}} \sum_{i}{\underline{f}}</math>
 
 @\ outside of math
 

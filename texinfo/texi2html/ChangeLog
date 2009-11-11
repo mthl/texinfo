@@ -1,3 +1,12 @@
+2009-11-11   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.init: add maps for TeX/LaTeX with a complete 
+	coverage for @-commands in math style. Add a function 
+	default_load_tex_math to load those and expand @-commands
+	in math as LaTeX or TeX.
+	* examples/mediawiki.init: expand @-commands in math as
+	LaTeX.
+
 2009-11-08   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.pl formats/*: more adjustments to error messages

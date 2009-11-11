@@ -16,7 +16,7 @@ Now tex on the following line, valid fot tex (with @end tex on a line).
 
    Maths with code @-command:
 
-   `math code'
+   `math code' a < b
 
    Maths with code @-command and braces:
 

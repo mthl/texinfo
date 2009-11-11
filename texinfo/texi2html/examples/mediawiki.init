@@ -8,11 +8,14 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.31 2009-11-01 18:59:58 pertusus Exp $
+# $Id: mediawiki.init,v 1.32 2009-11-11 14:05:30 pertusus Exp $
 
 use strict;
 
 html_default_load();
+# remark: in my tests, there was no support for mathtt in texvc
+# https://bugzilla.wikimedia.org/show_bug.cgi?id=21475
+default_load_tex_math();
 
 $USE_SECTIONS = 1;
 $USE_NODES = undef;
@@ -423,6 +426,11 @@ foreach my $brace ('{', '}')
    $simple_map_pre{$brace} = "<nowiki>$simple_map_pre{$brace}</nowiki>";
 }
 
+# remark: this nullifies the change of default_load_tex_math for normal_text.
+# We assume that in @math the TeX characters have already been 
+# rightly protected and so don't protect once more. This is important
+# for <, not to lead to &lt;.
+# remark: texvc doesn't accept " \&
 $normal_text = \&mediawiki_default_normal_text;
 sub mediawiki_default_normal_text($$$$$$$;$)
 {
@@ -436,6 +444,11 @@ sub mediawiki_default_normal_text($$$$$$$;$)
    my $style_stack = shift;
    my $state = shift;
 
+   if ($in_math)
+   {
+       $text = uc($text) if (in_cmd($style_stack, 'sc'));
+       return $text;
+   }
    $text = &html_default_normal_text (@initial_args);
    my $colon = '';
    foreach my $command (@$style_stack)
