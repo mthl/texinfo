@@ -15,6 +15,10 @@ Tip: a Tip
 
 Warning: a Warning.
 
+Some OneA quot--ation
+
+Note: A Note
+
 something e' TeX: The something e' TeX is here.
 
 @ at the end of line  A @ at the end of the @quotation line.
@@ -47,6 +51,10 @@ Important: Important
 Tip: a Tip
 
 Warning: a Warning.
+
+Some OneA quot---ation
+
+Note: A Note
 
 something e' TeX: The something e' TeX is here.
 

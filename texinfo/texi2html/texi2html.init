@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.249 2009-11-11 14:05:29 pertusus Exp $
+# $Id: texi2html.init,v 1.250 2009-11-15 23:39:06 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -6344,7 +6344,6 @@ sub t2h_default_element_heading($$$$$$$$$$$$)
               if (get_conf('SPLIT') or get_conf('headers'));
        }
     }
-
     return $result. &$heading($element, $command, $texi_line, $line, $in_preformatted, $one_section, $element_heading);
 }
 
@@ -6789,12 +6788,13 @@ sub t2h_default_quotation_prepend_text($$)
     return gdt('@b{{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1});
 }
 
-sub t2h_default_quotation($$$$)
+sub t2h_default_quotation($$$$$)
 {
     my $command = shift;
     my $text = shift;
     my $argument_text = shift;
     my $argument_text_texi = shift;
+    my $authors = shift;
     my $class_text = '';
     # this allows to add an end of line if there was none, which can happen 
     # if there is an argument to @quotation, but an empty quotation, like

@@ -1,0 +1,10 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename author_outside_titlepage_quotation.info
+
+@node Top
+@top top
+
+@author Some One
+
+@bye

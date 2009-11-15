@@ -1,3 +1,14 @@
+2009-11-15   Patrice Dumas  <dumas@centre-cired.fr>
+
+	* texi2html.pl: error if @headitem is used inside @table.
+	Handle double @top.
+	* texi2html.pl, formats/*.init: handle @author in 
+	@quotation and warn for author outside of @quotation and
+	@titlepage.
+	* configure.ac, Makefile.am, po_*/POTFILES.in.in, po_*/Makevars.in:
+	Add some paths set in gonfigure in POTFILES.in.in and Makevars.in 
+	to workaround gettext not automatically setting top_builddir.
+
 2009-11-11   Patrice Dumas  <dumas@centre-cired.fr>
 
 	* texi2html.init: add maps for TeX/LaTeX with a complete 

@@ -1,0 +1,40 @@
+itemx_in_itemize.texi(,2) @settitle itemx_in_itemize.info
+itemx_in_itemize.texi(,3) 
+itemx_in_itemize.texi(,4) @node Top
+itemx_in_itemize.texi(,5) @top itemx in itemize and enumerate
+itemx_in_itemize.texi(,6) 
+itemx_in_itemize.texi(,7) @itemize
+itemx_in_itemize.texi(,8) @item item
+itemx_in_itemize.texi(,9) @itemx itemx
+itemx_in_itemize.texi(,10) @headitem headitem
+itemx_in_itemize.texi(,11) @end itemize
+itemx_in_itemize.texi(,12) 
+itemx_in_itemize.texi(,13) @enumerate
+itemx_in_itemize.texi(,14) @item item enumerate
+itemx_in_itemize.texi(,15) @itemx itemx enumerate
+itemx_in_itemize.texi(,16) @headitem headitem enumerate
+itemx_in_itemize.texi(,17) @end enumerate
+itemx_in_itemize.texi(,18) 
+itemx_in_itemize.texi(,19) @table @strong
+itemx_in_itemize.texi(,20) @headitem headitem in table
+itemx_in_itemize.texi(,21) 
+itemx_in_itemize.texi(,22) headitem In table text.
+itemx_in_itemize.texi(,23) 
+itemx_in_itemize.texi(,24) @item item
+itemx_in_itemize.texi(,25) 
+itemx_in_itemize.texi(,26) In item, nested itemize
+itemx_in_itemize.texi(,27) @itemize
+itemx_in_itemize.texi(,28) @itemx in nested itemize itemx
+itemx_in_itemize.texi(,29) @end itemize
+itemx_in_itemize.texi(,30) 
+itemx_in_itemize.texi(,31) @enumerate
+itemx_in_itemize.texi(,32) @itemx in nested enumerate itemx
+itemx_in_itemize.texi(,33) @end enumerate
+itemx_in_itemize.texi(,34) 
+itemx_in_itemize.texi(,35) @end table
+itemx_in_itemize.texi(,36) 
+itemx_in_itemize.texi(,37) @itemx itemx outside.
+itemx_in_itemize.texi(,38) @headitem headitem outside.
+itemx_in_itemize.texi(,39) @someitem someitem outside.
+itemx_in_itemize.texi(,40) 
+itemx_in_itemize.texi(,41) @bye

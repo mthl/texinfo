@@ -1,0 +1,9 @@
+author_outside_titlepage_quotation.texi(,2) 
+author_outside_titlepage_quotation.texi(,3) @setfilename author_outside_titlepage_quotation.info
+author_outside_titlepage_quotation.texi(,4) 
+author_outside_titlepage_quotation.texi(,5) @node Top
+author_outside_titlepage_quotation.texi(,6) @top top
+author_outside_titlepage_quotation.texi(,7) 
+author_outside_titlepage_quotation.texi(,8) @author Some One
+author_outside_titlepage_quotation.texi(,9) 
+author_outside_titlepage_quotation.texi(,10) @bye

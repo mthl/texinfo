@@ -736,12 +736,13 @@ sub xml_sp($$)
    return "<sp lines=\"$number\"></sp>\n";
 }
 
-sub xml_quotation($$$$)
+sub xml_quotation($$$$$)
 {
     my $command = shift;
     my $text = shift;
     my $argument_text = shift;
     my $argument_text_texi = shift;
+    my $authors = shift;
     return "<$command>\n" . $text . "</$command>\n";
 }
 

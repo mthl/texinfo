@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.354 2009-11-11 14:05:29 pertusus Exp $
+# $Id: texi2html.pl,v 1.355 2009-11-15 23:39:06 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2508,6 +2508,8 @@ sub gdt($;$$)
     my $state = shift;
 
     return &$I($message, $context, $state) if ($Texi2HTML::Config::I18N_PERL_HASH);
+    # if set, use substitute_text instead of substitute_line
+    my $allow_paragraph = $state->{'allow_paragraph'};
     # if duplicate is passed, it means that we are in the text and so should
     # use the main state
     if (defined($state) and $state->{'duplicate'} and defined($Texi2HTML::THISDOC{'state'}))
@@ -2515,66 +2517,69 @@ sub gdt($;$$)
         $state = main::duplicate_formatting_state($Texi2HTML::THISDOC{'state'});
     }
 
-    return substitute_line ($message, __("translation"), $state) unless ($use_nls);
-
-    my $saved_LANGUAGE = $ENV{'LANGUAGE'};
-
-    Locale::Messages::textdomain($strings_textdomain);
-
-    # FIXME this should be done only once
-    my $encoding = lc(Texi2HTML::Config::get_conf('DOCUMENT_ENCODING'));
-    if (defined($encoding) and $encoding ne '' and exists($Texi2HTML::Config::t2h_encoding_aliases{$encoding}))
-    {
-        $encoding = $Texi2HTML::Config::t2h_encoding_aliases{$encoding};
-    }
-    $encoding = 'us-ascii' if (!defined($encoding) or $encoding eq '');
-
-    my $lang = Texi2HTML::Config::get_conf('documentlanguage');
-    my @langs = ($lang);
-    if ($lang =~ /^([a-z]+)_([A-Z]+)/)
-    {
-        my $main_lang = $1;
-        my $region_code = $2;
-        push @langs, $main_lang;
-    }
-
-    my $locales = '';
-    foreach my $language (@langs)
-    {
-        $locales .= "$language.$encoding:";
-        # always try us-ascii, the charset should always be a subset of
-        # all charset, and should resort to @-commands if needed for non
-        # ascii characters
-        if ($encoding ne 'us-ascii')
-        {
-            $locales .= "$language.us-ascii:";
-        }
-    }
-    $locales =~ s/:$//;
-    Locale::Messages::nl_putenv("LANGUAGE=$locales");
-
     my $result;
-    my $re;
     # taken from libintl perl, copyright Guido. sub __expand
-    $re = join '|', map { quotemeta $_ } keys %$context if (defined($context) and ref($context));
-    if (!defined($context) or ref($context))
+    my $re = join '|', map { quotemeta $_ } keys %$context if (defined($context) and ref($context));
+
+    if ($use_nls)
     {
-         $result = Locale::Messages::gettext($message);
+       my $saved_LANGUAGE = $ENV{'LANGUAGE'};
+
+       Locale::Messages::textdomain($strings_textdomain);
+
+       # FIXME this should be done only once
+       my $encoding = lc(Texi2HTML::Config::get_conf('DOCUMENT_ENCODING'));
+       if (defined($encoding) and $encoding ne '' and exists($Texi2HTML::Config::t2h_encoding_aliases{$encoding}))
+       {
+           $encoding = $Texi2HTML::Config::t2h_encoding_aliases{$encoding};
+       }
+       $encoding = 'us-ascii' if (!defined($encoding) or $encoding eq '');
+   
+       my $lang = Texi2HTML::Config::get_conf('documentlanguage');
+       my @langs = ($lang);
+       if ($lang =~ /^([a-z]+)_([A-Z]+)/)
+       {
+           my $main_lang = $1;
+           my $region_code = $2;
+           push @langs, $main_lang;
+       }
+   
+       my $locales = '';
+       foreach my $language (@langs)
+       {
+           $locales .= "$language.$encoding:";
+           # always try us-ascii, the charset should always be a subset of
+           # all charset, and should resort to @-commands if needed for non
+           # ascii characters
+           if ($encoding ne 'us-ascii')
+           {
+               $locales .= "$language.us-ascii:";
+           }
+       }
+       $locales =~ s/:$//;
+       Locale::Messages::nl_putenv("LANGUAGE=$locales");
+   
+       if (!defined($context) or ref($context))
+       {
+            $result = Locale::Messages::gettext($message);
+       }
+       else
+       {
+            $result = Locale::Messages::pgettext($context, $message);
+       }
+       Locale::Messages::textdomain($messages_textdomain);
+       # old perl complains 'Use of uninitialized value in scalar assignment'
+       if (!defined($saved_LANGUAGE))
+       {
+          delete ($ENV{'LANGUAGE'});
+       }
+       else
+       {
+          $ENV{'LANGUAGE'} = $saved_LANGUAGE;
+       }
     }
-    else
-    {
-         $result = Locale::Messages::pgettext($context, $message);
-    }
-    Locale::Messages::textdomain($messages_textdomain);
-    # old perl complains 'Use of uninitialized value in scalar assignment'
-    if (!defined($saved_LANGUAGE))
-    {
-       delete ($ENV{'LANGUAGE'});
-    }
-    else
-    {
-       $ENV{'LANGUAGE'} = $saved_LANGUAGE;
-    }
+
+    # now perform the argument substitutions
     if ($state->{'keep_texi'})
     {
          $result =~ s/\{($re)\}/defined $context->{$1} ? $context->{$1} : "{$1}"/ge if (defined($re));
@@ -2589,7 +2594,15 @@ sub gdt($;$$)
              $map->{'internal_translation_close_brace'} = '}';
          }
     }
-    $result = substitute_line ($result, __("translation"), $state);
+    if ($allow_paragraph)
+    {
+        delete $state->{'allow_paragraph'};
+        $result = substitute_text ($state, undef, __("translation"), ($result));
+    }
+    else
+    {
+        $result = substitute_line ($result, __("translation"), $state);
+    }
     if (defined($re))
     {
          $result =~ s/\{($re)\}/defined $context->{$1} ? $context->{$1} : "{$1}"/ge;
@@ -2599,7 +2612,6 @@ sub gdt($;$$)
                delete $map->{'internal_translation_close_brace'};
          }
     }
-
     return $result;
 }
 
@@ -5237,7 +5249,15 @@ sub pass_structure($$)
                             $section_ref->{'number'} = '';
                             $section_ref->{'id'} = "SEC_Top";
                             $section_ref->{'sec_num'} = 0;
-                            $sections{0} = $section_ref;
+                            if (defined($section_top))
+                            {
+                               line_error ("\@top already exists", $line_nr);
+                               $sections{0} = $section_ref;
+                            }
+                            else
+                            {
+                               $sections{0.1} = $section_ref;
+                            }
                             $section_top = $section_ref;
                         }
                         else
@@ -5744,7 +5764,7 @@ sub misc_command_structure($$$$)
     {
         my $arg = trim_comment_spaces($line, "\@$command");
         $Texi2HTML::THISDOC{$command . '_texi'} .= $arg . "\n";
-        push @{$Texi2HTML::THISDOC{"${command}s_texi"}}, $arg;
+        push @{$Texi2HTML::THISDOC{"${command}s_texi"}}, $arg if ($state->{'region'} and $state->{'region'} eq 'titlepage');
         #chomp($arg);
 
         # FIXME backward compatibility. Obsoleted in nov 2009.
@@ -5906,6 +5926,29 @@ sub set_special_names()
     $Texi2HTML::SIMPLE_TEXT{'Footnotes'} = gdt('Footnotes', {},{'simple_format' => 1});
 }
 
+sub enter_author_command($$$$$$)
+{
+    my $command = shift;
+    my $texi = shift;
+    my $text = shift;
+    my $stack = shift;
+    my $state = shift;
+    my $line_nr = shift;
+    $texi = trim_comment_spaces($texi, "\@$command");
+    if ($command eq 'author')
+    {
+        my $top_format = top_stack($stack, 2);
+        if (defined($top_format) and $format_type{$top_format->{'format'}} eq 'quotation')
+        {
+            push @{$top_format->{'quote_authors'}}, {'author_texi' => $texi, 'author_text' => $text};
+        }
+        elsif (!$state->{'region'} or $state->{'region'} ne 'titlepage')
+        {
+            line_warn (sprintf(__("@%s not meaningful outside `\@titlepage' and `\@quotation' environments"), $command), $line_nr);
+        }
+    }
+}
+
 # return the line after removing things according to misc_command map.
 # if the skipped command has an effect it is done here
 # this is used during pass_text
@@ -5933,9 +5976,6 @@ sub misc_command_text($$$$$$)
         return $remaining;
     }
 
-    # if it is true the command args are kept so the user can modify how
-    # they are skipped and handle them as unknown @-commands
-
     ($remaining, $skipped, $args) = &$Texi2HTML::Config::preserve_misc_command($line, $command);
 
     if ($state->{'remove_texi'})
@@ -5946,6 +5986,14 @@ sub misc_command_text($$$$$$)
     {
         ($command, $line, $result) = &$Texi2HTML::Config::misc_command_line($command, $line, $args, $stack, $state);
     }
+
+    enter_author_command ($command, $line, $result, $stack, $state, $line_nr);
+
+
+    # if it is true the command args are kept so the user can modify how
+    # they are skipped and handle them as unknown @-commands. Nowadays, it is
+    # not that interesting since using misc_command_line above should do
+    # about the same more simply.
     my $keep = $Texi2HTML::Config::misc_command{$command}->{'keep'};
 
     if ($command eq 'sp')
@@ -8459,6 +8507,12 @@ sub pass_text($$)
                 
                 my $cmd_line = $cline;
                 $cmd_line =~ s/\@$tag\s*//;
+
+                msg_debug ("Element $current_element current_element->{'tag_level'} not defined", $line_nr)
+                   if (!defined($current_element->{'tag_level'}));
+                msg_debug ("Element $current_element $tag ne ".var_to_str($current_element->{'tag'}), $line_nr)
+                   if ($tag ne 'node' and (!defined($current_element->{'tag'}) or $tag ne $current_element->{'tag'}));
+
                 my $heading_formatted = &$Texi2HTML::Config::element_heading($current_element, $tag, $cmd_line, substitute_line($cmd_line, "\@$tag"), undef, $one_section, $current_element->{'this'}, $first_section, $current_element->{'top'}, $previous_is_top, $cline, $current_element->{'id'}, $new_element);
                 push @{$Texi2HTML::THIS_SECTION}, $heading_formatted if (defined($heading_formatted) and ($heading_formatted ne ''));
                 next;
@@ -10293,7 +10347,8 @@ sub end_format($$$$$)
     elsif ($format_type{$format} eq 'quotation')
     {
         my $quotation_args = pop @{$state->{'quotation_stack'}};
-        add_prev($text, $stack, &$Texi2HTML::Config::quotation($format, $format_ref->{'text'}, $quotation_args->{'text'}, $quotation_args->{'text_texi'}));
+        #add_prev($text, $stack, &$Texi2HTML::Config::quotation($format, $format_ref->{'text'}, $quotation_args->{'text'}, $quotation_args->{'text_texi'}));
+        add_prev($text, $stack, &$Texi2HTML::Config::quotation($format, $format_ref->{'text'}, $format_ref->{'argument_text'}, $format_ref->{'argument_texi'}, $format_ref->{'quote_authors'}));
     }
     elsif ($Texi2HTML::Config::paragraph_style{$format})
     {
@@ -10705,7 +10760,7 @@ sub begin_format($$$$$$)
         elsif ($format_type{$macro} eq 'quotation')
         {
              my @args = parse_line_arguments($line, 1, "\@$macro", $line_nr);
-             do_quotation_line ($macro, \@args, $state->{'style_stack'}, $state, $line_nr);
+             do_quotation_line ($macro, $stack->[-1], \@args, $state->{'style_stack'}, $state, $line_nr);
              
         }
 
@@ -11290,9 +11345,10 @@ sub do_float_line($$$$$)
     return '';
 }
 
-sub do_quotation_line($$$$$)
+sub do_quotation_line($$$$$$)
 {
     my $command = shift;
+    my $format_ref = shift;
     my $args = shift;
     my @args = @$args;
     my $text_texi = shift @args;
@@ -11310,6 +11366,8 @@ sub do_quotation_line($$$$$)
     }
     my $quotation_args = { 'text' => $text, 'text_texi' => $text_texi };
     push @{$state->{'quotation_stack'}}, $quotation_args;
+    $format_ref->{'argument_text'} = $text;
+    $format_ref->{'argument_texi'} = $text_texi;
     $state->{'prepend_text'} = &$Texi2HTML::Config::quotation_prepend_text($command, $text_texi);
     return '';
 }
@@ -13384,6 +13442,7 @@ sub top_stack_is_menu($)
    return 1;
 }
 
+
 sub scan_line($$$$;$)
 {
     my $original_line = shift;
@@ -13486,6 +13545,7 @@ sub scan_line($$$$;$)
             $arg_texi = trim_comment_spaces ($arg_texi, "\@$next_command", $line_nr);
             my $arg_line = substitute_line($arg_texi, "\@$next_command", duplicate_formatting_state($state));
             add_prev ($text, $stack, &$Texi2HTML::Config::line_command($next_command, $arg_line, $arg_texi, $state));
+            enter_author_command ($next_command, $arg_texi, $arg_line, $stack, $state, $line_nr);
             return '';
         }
         elsif (defined($next_command) and ($next_command eq 'contents') or ($next_command eq 'summarycontents') or ($next_command eq 'shortcontents'))
@@ -14216,6 +14276,10 @@ sub scan_line($$$$;$)
                 }
                 if ($format)
                 {
+                    if ($macro eq 'headitem')
+                    {
+                        line_error (sprintf(__("\@%s not meaningful inside `\@%s' block"), $macro, $format->{'format'}), $line_nr);
+                    }
                     if (defined($Texi2HTML::Config::tab_item_texi))
                     {
                         my $resline = &$Texi2HTML::Config::tab_item_texi($macro, $state->{'command_stack'}, $stack, $state, $cline, $line_nr);
@@ -14223,13 +14287,13 @@ sub scan_line($$$$;$)
                     }
                     if ($in_list_enumerate)
                     {
-                        push (@$stack, { 'format' => 'item', 'text' => '', 'format_ref' => $format });
+                        push (@$stack, { 'format' => 'item', 'text' => '', 'format_ref' => $format, 'item_cmd' => $macro });
                         begin_paragraph($stack, $state) if ($state->{'preformatted'} or !no_line($cline));
                     }
                     else
                     {# handle table @item term and restart another one
                      # or after table text restart a term
-                        push (@$stack, { 'format' => 'term', 'text' => '', 'format_ref' => $format });
+                        push (@$stack, { 'format' => 'term', 'text' => '', 'format_ref' => $format, 'item_cmd' => $macro  });
                     }
                     $format->{'texi_line'} = $cline;
                     my ($line, $open_command) = &$Texi2HTML::Config::format_list_item_texi($format->{'format'}, $cline, $format->{'prepended'}, $format->{'command'}, $format->{'number'});
@@ -14633,7 +14697,7 @@ sub add_term($$$$)
         print STDERR "Bug: no index entry for $term->{'text'}\n" unless defined($index_label);
     }
 
-    my $item_result = &$Texi2HTML::Config::table_item($term->{'text'}, $index_label,$format->{'format'},$format->{'command'}, $state->{'command_stack'}, $format->{'item_cmd'}, $formatted_index_entry);
+    my $item_result = &$Texi2HTML::Config::table_item($term->{'text'}, $index_label,$format->{'format'},$format->{'command'}, $state->{'command_stack'}, $term->{'item_cmd'}, $formatted_index_entry);
     add_prev($text, $stack, $item_result);
     return $format;
 }
@@ -14783,9 +14847,14 @@ sub add_item($$$$)
     # preformatted, close_stack doesn't do that.
     my $item = pop @$stack;
     my $format = $stack->[-1];
-    my $item_command = $item->{'format'};
+    #my $item_command = $item->{'format'};
+    my $item_command = $item->{'item_cmd'};
     # first has no associated item, it is more like a 'title'
     $item_command = '' if ($format->{'first'});
+
+    # debug message if it is the first item (much like a title) although 
+    # there is an item command.
+    msg_debug("First in $format->{'format'} but item_cmd defined $item->{'item_cmd'}",$line_nr) if ($format->{'first'} and defined($item->{'item_cmd'}));
     
     $format->{'paragraph_number'} = 0;
     

@@ -3,6 +3,7 @@
 texi2html.pl
 texi2html.init
 T2h_l2h.pm
+T2h_i18n.pm
 formats/docbook.init
 formats/html.init
 formats/info.init
@@ -12,3 +13,4 @@ maintained_extra/book.init
 maintained_extra/chm.init
 maintained_extra/html32.init
 maintained_extra/tex4ht.init
+maintained_extra/mediawiki.init

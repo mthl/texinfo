@@ -1,0 +1,16 @@
+# List of source files which contain translatable strings.
+
+@t2h_po_dir@texi2html.pl
+@t2h_po_dir@texi2html.init
+@t2h_po_dir@T2h_l2h.pm
+@t2h_po_dir@T2h_i18n.pm
+@t2h_po_dir@formats/docbook.init
+@t2h_po_dir@formats/html.init
+@t2h_po_dir@formats/info.init
+@t2h_po_dir@formats/plaintext.init
+@t2h_po_dir@formats/xml.init
+@t2h_po_dir@maintained_extra/book.init
+@t2h_po_dir@maintained_extra/chm.init
+@t2h_po_dir@maintained_extra/html32.init
+@t2h_po_dir@maintained_extra/tex4ht.init
+@t2h_po_dir@maintained_extra/mediawiki.init

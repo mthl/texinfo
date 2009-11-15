@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
-"Report-Msgid-Bugs-To: texi2html-bug@nongnu.org\n"
-"POT-Creation-Date: 2009-11-11 15:07+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-15 14:25+0100\n"
 "PO-Revision-Date: 2001-01-01\n"
 "Last-Translator: Unknown\n"
 "Language-Team: Unknown\n"
@@ -15,24 +15,24 @@ msgstr ""
 "Content-Type: text/plain; charset=us-ascii\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html.pl:5895 texi2html.pl:5899 texi2html.pl:5903
+#: texi2html.pl:5902 texi2html.pl:5906 texi2html.pl:5910
 msgid "About This Document"
 msgstr "No translation available!"
 
-#: texi2html.pl:5896 texi2html.pl:5900 texi2html.pl:5904
+#: texi2html.pl:5903 texi2html.pl:5907 texi2html.pl:5911
 msgid "Table of Contents"
 msgstr "Innholdsfortegnelse"
 
-#: texi2html.pl:5897 texi2html.pl:5901 texi2html.pl:5905
+#: texi2html.pl:5904 texi2html.pl:5908 texi2html.pl:5912
 msgid "Short Table of Contents"
 msgstr "Kort innholdsfortegnelse"
 
-#: texi2html.pl:5898 texi2html.pl:5902 texi2html.pl:5906 texi2html.init:6504
+#: texi2html.pl:5905 texi2html.pl:5909 texi2html.pl:5913 texi2html.init:6503
 #: formats/html.init:2478
 msgid "Footnotes"
 msgstr "No translation available!"
 
-#: texi2html.pl:12344
+#: texi2html.pl:12355
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""
@@ -359,22 +359,22 @@ msgstr ""
 msgid "{reference_name}"
 msgstr ""
 
-#: texi2html.init:6592
+#: texi2html.init:6591
 #, perl-brace-format
 msgid "on @emph{{date}}"
 msgstr ""
 
-#: texi2html.init:6769 formats/html.init:2682 maintained_extra/html32.init:170
+#: texi2html.init:6768 formats/html.init:2682 maintained_extra/html32.init:170
 #, perl-brace-format
 msgid "{acronym_like} ({explanation})"
 msgstr ""
 
-#: texi2html.init:6789 formats/docbook.init:1402
+#: texi2html.init:6788 formats/docbook.init:1402
 #, perl-brace-format
 msgid "@b{{quotation_arg}:} "
 msgstr ""
 
-#: texi2html.init:6913
+#: texi2html.init:6912
 msgid "(outside of any element)"
 msgstr ""
 
@@ -576,7 +576,7 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-#: formats/html.init:2824
+#: formats/html.init:2824 maintained_extra/mediawiki.init:998
 msgid "Jump to"
 msgstr ""
 

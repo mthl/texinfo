@@ -1,0 +1,13 @@
+double_top_section.texi(,2) @settitle double_top_section.info
+double_top_section.texi(,3) 
+double_top_section.texi(,4) @top First top
+double_top_section.texi(,5) 
+double_top_section.texi(,6) 
+double_top_section.texi(,7) First top.
+double_top_section.texi(,8) 
+double_top_section.texi(,9) @top Second top
+double_top_section.texi(,10) 
+double_top_section.texi(,11) Second top.
+double_top_section.texi(,12) 
+double_top_section.texi(,13) 
+double_top_section.texi(,14) @bye

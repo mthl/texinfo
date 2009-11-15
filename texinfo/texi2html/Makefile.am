@@ -39,7 +39,9 @@ noinst_SCRIPTS = manage_i18n.pl buildt2h.sh addformats.sh \
  parse_8bit_makeinfo_maps.pl
 
 # style_example.css comes from http://planet.gnu.org/~ams/style.css
-EXTRA_DIST = config.rpath \
+EXTRA_DIST = \
+	configure.ac \
+	config.rpath \
 	MySimple.pod \
 	autogen.sh \
 	$(noinst_SCRIPTS) \
@@ -63,7 +65,11 @@ EXTRA_DIST = config.rpath \
 	examples/bib-example.texi \
 	examples/glossary.texi \
 	examples/style_example.css \
-	lib
+	lib \
+	po_messages/Makevars.in \
+	po_messages/POTFILES.in.in \
+	po_document/Makevars.in \
+	po_document/POTFILES.in.in
 
 i18n_files = i18n/de \
 	i18n/es \
@@ -216,3 +222,8 @@ dist-hook:
 	rm -rf `find $(distdir)/lib  -name CVS`
 
 ACLOCAL_AMFLAGS = -I m4
+
+DISTCLEANFILES = po_messages/Makevars \
+	po_messages/POTFILES.in \
+	po_document/Makevars \
+	po_document/POTFILES.in

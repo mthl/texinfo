@@ -2680,14 +2680,27 @@ sub info_default_complex_format($$)
     return info_default_close_command(undef, $name, $begin, $end);
 }
 
-sub info_default_quotation($$$$)
+sub info_default_quotation($$$$$)
 {
     my $command = shift;
     my $text = shift;
     my $argument_text = shift;
     my $argument_text_texi = shift;
+    my $authors = shift;
 
-    return info_default_close_command(undef, $command);
+    my $attribution;
+    if ($authors)
+    {
+       $attribution = '';
+       foreach my $author (@$authors)
+       {
+           my $author_texi = $author->{'author_texi'};
+           chomp($author_texi);
+           $attribution .= gdt("\@center --- \@emph{{author}}\n", {'author' => $author_texi}, {'duplicate' => 1, 'allow_paragraph' => 1});
+       }
+    }
+    
+    return info_default_close_command(undef, $command, undef, $attribution);
 }
 
 sub info_default_misc_commands($$$$$)

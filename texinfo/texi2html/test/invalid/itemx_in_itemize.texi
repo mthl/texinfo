@@ -1,0 +1,42 @@
+\input texinfo @c -*-texinfo-*-
+@settitle itemx_in_itemize.info
+
+@node Top
+@top itemx in itemize and enumerate
+
+@itemize
+@item item
+@itemx itemx
+@headitem headitem
+@end itemize
+
+@enumerate
+@item item enumerate
+@itemx itemx enumerate
+@headitem headitem enumerate
+@end enumerate
+
+@table @strong
+@headitem headitem in table
+
+headitem In table text.
+
+@item item
+
+In item, nested itemize
+@itemize
+@itemx in nested itemize itemx
+@end itemize
+
+@enumerate
+@itemx in nested enumerate itemx
+@end enumerate
+
+@end table
+
+@itemx itemx outside.
+@headitem headitem outside.
+@someitem someitem outside.
+
+@bye
+

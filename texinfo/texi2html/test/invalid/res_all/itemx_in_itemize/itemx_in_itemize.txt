@@ -1,0 +1,30 @@
+itemx_in_itemize.info
+*********************
+
+itemx in itemize and enumerate
+******************************
+
+* item
+* itemx
+* headitem
+
+1. item enumerate
+2. itemx enumerate
+3. headitem enumerate
+
+headitem in table
+
+headitem In table text.
+
+item
+
+In item, nested itemize
+* in nested itemize itemx
+
+1. in nested enumerate itemx
+
+
+ itemx outside.
+ headitem outside.
+@someitem someitem outside.
+

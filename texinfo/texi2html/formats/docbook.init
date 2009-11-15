@@ -1403,12 +1403,13 @@ sub docbook_quotation_prepend_text($$)
 }
 
 
-sub docbook_quotation($$$$)
+sub docbook_quotation($$$$$)
 {
     my $command = shift;
     my $text = shift;
     my $argument_text = shift;
     my $argument_text_texi = shift;
+    my $authors = shift;
 
     $argument_text_texi = '' if (!defined($argument_text_texi));
     chomp($argument_text_texi);
@@ -1417,7 +1418,16 @@ sub docbook_quotation($$$$)
     {
        $docbook_command = lc($argument_text_texi);
     }
-    return  docbook_add_id($docbook_command).'>' . $text . "</$docbook_command>\n";
+    my $attribution = '';
+    if ($authors)
+    {
+       foreach my $author (@$authors)
+       {
+           $attribution .= $author->{'author_text'};
+       }
+       $attribution = '<attribution>' .$attribution. '</attribution>' . "\n";
+    }
+    return  docbook_add_id($docbook_command).'>' .$attribution . $text . "</$docbook_command>\n";
 }
 
 sub docbook_style($$$$$$$$$)

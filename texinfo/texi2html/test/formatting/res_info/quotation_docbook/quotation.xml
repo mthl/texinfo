@@ -28,6 +28,14 @@
 <warning><para>a Warning.
 </para></warning>
 
+<blockquote><attribution>Some One</attribution>
+<para>A quot&mdash;ation
+</para></blockquote>
+
+<note><attribution>Some Notifier</attribution>
+<para>A Note
+</para></note>
+
 <blockquote><para><emphasis role="bold">something &eacute; &tex;:</emphasis> The something &eacute; &tex; is here.
 </para></blockquote>
 
@@ -72,6 +80,14 @@
 
 <warning>a Warning.
 </warning>
+
+<blockquote><attribution>Some One</attribution>
+A quot---ation
+</blockquote>
+
+<note><attribution>Some Notifier</attribution>
+A Note
+</note>
 
 <blockquote><lineannotation>something &eacute; &tex;:</lineannotation> The something &eacute; &tex; is here.
 </blockquote>

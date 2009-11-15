@@ -39,6 +39,9 @@ texi error_in_footnote_caption.texi
 texi unclosed_verb_line_commands.texi
 texi at_after_accent_command.texi
 texi command_without_open_brace.texi
+texi itemx_in_itemize.texi
+texi double_top_section.texi
+texi author_outside_titlepage_quotation.texi
 brace_not_closed brace_not_closed.texi
 recursive_copying recursive_copying.texi
 bad_nesting bad_nesting.texi
@@ -81,3 +84,6 @@ error_in_footnote_caption error_in_footnote_caption.texi
 #unclosed_verb_line_commands unclosed_verb_line_commands.texi
 at_after_accent_command at_after_accent_command.texi
 command_without_open_brace command_without_open_brace.texi
+itemx_in_itemize itemx_in_itemize.texi
+double_top_section double_top_section.texi
+author_outside_titlepage_quotation author_outside_titlepage_quotation.texi

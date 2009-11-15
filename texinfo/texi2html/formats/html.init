@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.36 2009-11-05 22:55:08 pertusus Exp $
+# $Id: html.init,v 1.37 2009-11-15 23:39:07 pertusus Exp $
 
 use strict;
 
@@ -2687,15 +2687,26 @@ sub html_default_acronym_like($$$$$$)
     }
 }
 
-sub html_default_quotation($$$$)
+sub html_default_quotation($$$$$)
 {
     my $command = shift;
     my $text = shift;
     my $argument_text = shift;
     my $argument_text_texi = shift;
+    my $authors = shift;
     my $class = '';
     $class = $command if ($command ne 'quotation');
-    return html_default_attribute_class('blockquote', $class).">" . $text . "</blockquote>\n";
+    my $attribution = '';
+    if ($authors)
+    {
+       foreach my $author (@$authors)
+       {
+           my $author_texi = $author->{'author_texi'};
+           chomp($author_texi);
+           $attribution .= gdt("\@center --- \@emph{{author}}\n", {'author' => $author_texi}, {'duplicate' => 1, 'allow_paragraph' => 1});
+       }
+    }
+    return html_default_attribute_class('blockquote', $class).">" . $text ."</blockquote>\n" . $attribution;
 }
 
 # format a whole index
@@ -2874,7 +2885,7 @@ sub html_default_line_command($$$$)
     my $arg_texi = shift;
     my $state = shift;
 
-    return '' if ($arg_text eq '');
+    return '' if ($arg_text eq '' or ($command eq 'author' and (!$state->{'region'} or $state->{'region'} ne 'titlepage')));
     my $style = $line_command_map{$command};
     if ($style)
     {

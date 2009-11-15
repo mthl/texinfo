@@ -1,0 +1,38 @@
+This is itemx_in_itemize.info, produced by makeinfo version 4.13 from
+itemx_in_itemize.texi.
+
+
+File: itemx_in_itemize.info,  Node: Top,  Up: (dir)
+
+itemx in itemize and enumerate
+******************************
+
+   * item
+   * itemx
+     * headitem
+
+  1. item enumerate
+  2. itemx enumerate
+     3. headitem enumerate
+
+     *headitem in table*
+
+     headitem In table text.
+
+*item*
+     In item, nested itemize
+
+        * in nested itemize itemx
+
+       1. in nested enumerate itemx
+
+ itemx outside.
+ headitem outside.
+   someitem outside.
+
+
+
+Tag Table:
+Node: Top94
+
+End Tag Table

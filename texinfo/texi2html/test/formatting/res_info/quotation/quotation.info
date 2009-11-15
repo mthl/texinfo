@@ -21,6 +21,12 @@ Quotations
 
      Warning: a Warning.
 
+     A quot--ation
+                             -- _Some One_
+
+     Note: A Note
+                             -- _Some Notifier_
+
      something e' TeX: The something e' TeX is here.
 
      @ at the end of line  A @ at the end of the @quotation line.
@@ -51,6 +57,12 @@ Quotations
           Tip: a Tip
 
           Warning: a Warning.
+
+          A quot---ation
+                                 --- _Some One_
+
+          Note: A Note
+                                 --- _Some Notifier_
 
           something e' TeX: The something e' TeX is here.
 

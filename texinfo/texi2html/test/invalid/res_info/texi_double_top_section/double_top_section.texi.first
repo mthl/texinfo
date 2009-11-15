@@ -1,0 +1,14 @@
+\input texinfo @c -*-texinfo-*-
+@settitle double_top_section.info
+
+@top First top
+
+
+First top.
+
+@top Second top
+
+Second top.
+
+
+@bye

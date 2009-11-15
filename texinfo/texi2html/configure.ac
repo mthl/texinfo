@@ -115,6 +115,13 @@ fi
 AC_SUBST([USE_DATA_DUMPER])
 AC_SUBST([REQUIRE_DATA_DUMPER])
 
+# top_builddir and subdir differs between standalone texi2html and 
+# texi2html in texinfo
+t2h_po_dir=
+AC_SUBST([t2h_po_dir])
+t2h_po_top_builddir='..'
+AC_SUBST([t2h_po_top_builddir])
+
 AC_PROG_INSTALL
 
 dnl Checks for libraries.
@@ -136,6 +143,10 @@ test "x$enable_multiplatform" = xyes \
 
 dnl The bulk config files.
 AC_CONFIG_FILES([ po_messages/Makefile.in po_document/Makefile.in \
+                 po_messages/POTFILES.in \
+                 po_document/POTFILES.in \
+                 po_messages/Makevars \
+                 po_document/Makevars \
                  Makefile \
                  Tests/Makefile \
                  test/Makefile \
