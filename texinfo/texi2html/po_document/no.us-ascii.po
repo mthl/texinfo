@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-15 14:25+0100\n"
+"POT-Creation-Date: 2009-11-17 14:50+0100\n"
 "PO-Revision-Date: 2001-01-01\n"
 "Last-Translator: Unknown\n"
 "Language-Team: Unknown\n"
@@ -15,24 +15,24 @@ msgstr ""
 "Content-Type: text/plain; charset=us-ascii\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html.pl:5902 texi2html.pl:5906 texi2html.pl:5910
+#: texi2html.pl:5915 texi2html.pl:5919 texi2html.pl:5923
 msgid "About This Document"
 msgstr "No translation available!"
 
-#: texi2html.pl:5903 texi2html.pl:5907 texi2html.pl:5911
+#: texi2html.pl:5916 texi2html.pl:5920 texi2html.pl:5924
 msgid "Table of Contents"
 msgstr "Innholdsfortegnelse"
 
-#: texi2html.pl:5904 texi2html.pl:5908 texi2html.pl:5912
+#: texi2html.pl:5917 texi2html.pl:5921 texi2html.pl:5925
 msgid "Short Table of Contents"
 msgstr "Kort innholdsfortegnelse"
 
-#: texi2html.pl:5905 texi2html.pl:5909 texi2html.pl:5913 texi2html.init:6503
+#: texi2html.pl:5918 texi2html.pl:5922 texi2html.pl:5926 texi2html.init:6503
 #: formats/html.init:2478
 msgid "Footnotes"
 msgstr "No translation available!"
 
-#: texi2html.pl:12355
+#: texi2html.pl:12402
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""
@@ -374,7 +374,7 @@ msgstr ""
 msgid "@b{{quotation_arg}:} "
 msgstr ""
 
-#: texi2html.init:6912
+#: texi2html.init:6913
 msgid "(outside of any element)"
 msgstr ""
 
@@ -568,26 +568,31 @@ msgstr ""
 msgid "The node you are looking for is at {href}."
 msgstr ""
 
-#: formats/html.init:2712
+#: formats/html.init:2706 formats/info.init:2699
+#, perl-brace-format
+msgid "@center --- @emph{{author}}\n"
+msgstr ""
+
+#: formats/html.init:2723
 msgid "Index Entry"
 msgstr ""
 
-#: formats/html.init:2712
+#: formats/html.init:2723
 msgid "Section"
 msgstr ""
 
-#: formats/html.init:2824 maintained_extra/mediawiki.init:998
+#: formats/html.init:2835 maintained_extra/mediawiki.init:998
 msgid "Jump to"
 msgstr ""
 
-#: formats/info.init:3003
+#: formats/info.init:3016
 msgid "(outside of any node)"
 msgstr ""
 
-#: formats/xml.init:1032
+#: formats/xml.init:1033
 msgid "see "
 msgstr ""
 
-#: formats/xml.init:1036
+#: formats/xml.init:1037
 msgid "See "
 msgstr ""

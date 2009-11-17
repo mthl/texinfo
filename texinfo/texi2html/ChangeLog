@@ -1,4 +1,4 @@
-2009-11-15   Patrice Dumas  <dumas@centre-cired.fr>
+2009-11-15   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: error if @headitem is used inside @table.
 	Handle double @top.
@@ -9,7 +9,7 @@
 	Add some paths set in gonfigure in POTFILES.in.in and Makevars.in 
 	to workaround gettext not automatically setting top_builddir.
 
-2009-11-11   Patrice Dumas  <dumas@centre-cired.fr>
+2009-11-11   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: add maps for TeX/LaTeX with a complete 
 	coverage for @-commands in math style. Add a function 
@@ -20,18 +20,18 @@
 	* examples/mediawiki.init: moved to maintained_extras now
 	that it is complete.
 
-2009-11-08   Patrice Dumas  <dumas@centre-cired.fr>
+2009-11-08   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl formats/*: more adjustments to error messages
 	to be like makeinfo.
 
-2009-11-04   Patrice Dumas  <dumas@centre-cired.fr>
+2009-11-04   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init texi2html.pl formats/*: set up translations 
 	for error messages, reusing all the makeinfo messages that are 
 	relevant.
 
-2009-11-01   Patrice Dumas  <dumas@centre-cired.fr>
+2009-11-01   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, i18n/*, po_document, manage_i18n.pl.in, *: 
 	instead of using %{ } for translation arguments, use { } as 
@@ -56,7 +56,7 @@
 	* configure.ac (AC_CONFIG_FILES): Add po_messages/Makefile.in
 	and po_document/Makefile.in.
 
-2009-10-29   Patrice Dumas  <dumas@centre-cired.fr>
+2009-10-29   Patrice Dumas  <pertusus@free.fr>
 
 	* configure.ac, test/*: split node names in test that lead to 
 	long out files, to be able to use tar-ustar instead of tar-pax.
@@ -65,7 +65,7 @@
 	command name. For init files also prepend a directories 
 	like *texinfo/init and append CONF_DIRS.
 
-2009-10-26   Patrice Dumas  <dumas@centre-cired.fr>
+2009-10-26   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, T2h_l2h.pm, maintained_extra/tex4ht.init:
 	call twice the extraction of html to have something ready for
@@ -76,7 +76,7 @@
 	texi2html as part of another package (in texinfo).
 	* texi2html.init: handle right --prefix in info.
 
-2009-10-20   Patrice Dumas  <dumas@centre-cired.fr>
+2009-10-20   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init, texi2html.pl, T2h_l2h.pm, maintained_extra/tex4ht.init: 
 	split tex handling further, with html extraction done in 
@@ -88,12 +88,12 @@
 	before 'output' to translate the html produced by tex4ht or 
 	latex2html to wiki.
 
-2009-10-19   Patrice Dumas  <dumas@centre-cired.fr>
+2009-10-19   Patrice Dumas  <pertusus@free.fr>
 
 	* formats/*.init: don't strip {} in @math in html, docbook and 
 	xml, as agreed with Karl.
 
-2009-10-16   Patrice Dumas  <dumas@centre-cired.fr>
+2009-10-16   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: @math is also in code_style.
 	* texi2html.pl, texi2html.init, */*.init: 
@@ -103,7 +103,7 @@
 	* examples/mediawiki.init: handle @image, @uref, @math, @kbd,
 	@indicateurl, @abbr, footnotes.
 
-2009-10-14   Patrice Dumas  <dumas@centre-cired.fr>
+2009-10-14   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, formats/*: add 'inline_attribute' 
 	for an XML attribute that should be closed at paragraph end and 
@@ -135,14 +135,14 @@
 	titles and references.
 	* maintained_extra/chm.init: avoid entities in .hh* files.
 
-2009-10-06   Patrice Dumas  <dumas@centre-cired.fr>
+2009-10-06   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, formats/html.init: add the 
 	possibility to disable CSS with NO_CSS and have styles inline with
 	INLINE_CSS_STYLE.
 	Use INLINE_CSS_STYLE in mediawiki.init and NO_CSS in html32.init.
 
-2009-10-04   Patrice Dumas  <dumas@centre-cired.fr>
+2009-10-04   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: add a new hook for users, command_handler_setup
 	that is really called before anything is done.
@@ -159,7 +159,7 @@
 	* examples/mediawiki.init: more wiki links using targets with 
 	spaces.
 
-2009-09-23   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-23   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: use @code for index entries that should be 
 	in @code that are not in usual places and so couldn't be 
@@ -174,13 +174,13 @@
 	Warn for anchors that are ignored because they are in a region
 	that is expanded more than once.
 
-2009-09-22   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-22   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: if a closed file is reopened, echo a warning
 	and open in append mode.
 	Avoid overwriting files when doing misc elements.
 
-2009-09-22   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-22   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: if there is a Top node, warn if the first node
 	doesn't appear in menus.
@@ -191,7 +191,7 @@
 	as file name when NODE_FILENAMES is true, and there is no 
 	associated node.
 
-2009-09-21   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-21   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: Don't use authors and subtitles to hold the 
 	texinfo strings, but use authors_texi and subtitles_texi. 
@@ -199,7 +199,7 @@
 	Don't always set the Up of the toplevel elements to the 
 	element_top.
 
-2009-09-20   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-20   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: isolate the code related with index split
 	such that it is called only if SPLIT_INDEX is set.
@@ -208,25 +208,25 @@
 	Increase the index file number only when needed, not for
 	every the elements, when node names are used for filenames.
 
-2009-09-18   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-18   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: use global information for @printindex not
 	split.
 	Try to give correct file name to close_out.
 
-2009-09-17   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-17   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: use global information for @printindex not
 	associated with any element.
 
-2009-09-16   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-16   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: hold the index entries gathered 
 	in pass 2 by index name in an array instead of a hash.
 	Do the sorting by letter in the main program and use per index
 	array or hash to hold and use the entry sorted by letter.
 
-2009-09-15   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-15   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: split do_simple to avoid redundant condition
 	checking.
@@ -243,12 +243,12 @@
 	Pass empty index entries and empty letters down to the last pass.
 	* formats/html.init: better-looking menu entries.
 
-2009-09-11   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-11   Patrice Dumas  <pertusus@free.fr>
 
 	* formats/docbook.init, formats/xml.init: remove the useless 
 	comment at the end of the output file.
 
-2009-09-10   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-10   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: keep definfoenclose for later
 	passes.
@@ -269,11 +269,11 @@
 	* examples/style_example.css: Add an example css stylesheet from
 	http://planet.gnu.org/~ams/style.css.
 
-2009-09-09   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-09   Patrice Dumas  <pertusus@free.fr>
 
 	* formats/html.init: use better elements and classes.
 
-2009-09-08   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-08   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: don't use Top for the Top name if there is no
 	element with that name.
@@ -292,7 +292,7 @@
 	appear if the @top is empty.
 	Don't skip the heading if there was a titlefont.
 
-2009-09-06   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-06   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, formats/html.init: use @top for fulltitle. Don't
 	set fulltitle to 'Untitled Document' in main program.
@@ -309,20 +309,20 @@
 	* texi2html.pl: if file begins with /, ./ or ../ don't search in -I.
 	* */Makefile.in: use automake 1.11.
 
-2009-09-05   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-05   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: Consider the Top node as an element only 
 	if !$only_section.
 	Avoid setting and using the 'top' in element.
 
-2009-09-03   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-03   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init, formats/*: don't remove spaces again in 
 	@quotation formatting.
 	* texi2html.pl: associate node directions with a section only
 	if there is an associated node.
 
-2009-09-02   Patrice Dumas  <dumas@centre-cired.fr>
+2009-09-02   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: take into account @  when 
 	removing spaces at the end of texinfo strings.
@@ -333,12 +333,12 @@
 	anchor and floats. Add line number information to anchor and 
 	floats.
 
-2009-08-31   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-31   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.*: handle better @kbdinputstyle.
 	More error messages are the same than makeinfo in C.
 
-2009-08-30   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-30   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.*, examples/*: invert the meaning of the 3rd argument
 	of set_conf.
@@ -347,7 +347,7 @@
 	Use set_conf/get_conf directly for set*contentsaftertitlepage.
 	* texi2html.init: Add a header for the footnotes.
 
-2009-08-29   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-29   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, test/sectionning/nodename_parentheses: 
 	ignore nodes having a name alike references to
@@ -355,20 +355,20 @@
 	* texi2html.pl, formats/info.init: warn for non empty format without 
 	@item. https://savannah.gnu.org/bugs/?15513
 
-2009-08-25   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-25   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: fix the number of entry per index page in case of 
 	index split.
 	* tests/encodings: added example chinese_mixed_with_en from 
 	https://savannah.gnu.org/bugs/?22696.
 
-2009-08-24   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-24   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, mediawiki.init: remove the user 
 	from footer, and the corresponding USER variable and 
 	$Texi2HTML::THISDOC{user}. This is a useless information leaking.
 
-2009-08-23   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-23   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, formats/docbook.init: consider @top more as a 
 	normal element when doing the sectionning elements tree.
@@ -387,7 +387,7 @@
 	document.
 	* test/*: use newer latex2html in debian (2008 version).
 
-2009-08-07   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-07   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: do the contents on the sections.
 	Use exclusively sections to find fastback, fastforward and 
@@ -402,7 +402,7 @@
 	* tests/sectionning/*, tests/run_test_all.sh: specify
 	additional formats to test for on a per-directory basis.
 
-2009-08-05   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-05   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, formats/html.init, texi2html.init, examples/*:
 	replace SIMPLE_HEADERS with HEADER_IN_TABLE (as a negation).
@@ -419,7 +419,7 @@
 	* formats/info.init: remove a spurious : in float captions in 
 	@listoffloats.
 
-2009-08-05   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-05   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, formats/html.init, texi2html.init, examples/*:
 	Simplify rules use, by using only the default and big rule.
@@ -433,7 +433,7 @@
 	* texi2html.pl, formats/info.init, texi2html.init: use get_conf and
 	set_conf doe DOCUMENT_ENCODING and IN_ENCODING.
 
-2009-08-04   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-04   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: always use menu directions to
 	find node directions, but only for nodes using automatic directions
@@ -447,7 +447,7 @@
 	* formats/info.init: always output encoding as a local var if set,
 	even if there are no nodes.
 
-2009-08-03   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-03   Patrice Dumas  <pertusus@free.fr>
 
 	* MySimple.pm: handle correctly aliases.
 	* texi2html.pl, tests/*: add makeinfo short command aliases.
@@ -458,7 +458,7 @@
 	* texi2html.init, formats/*: implement @raggedright.
 	* formats/info.init: alias encoding names.
 
-2009-08-03   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-03   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: use makeinfo error messages.
 	Have all error messages consistently go through error message
@@ -468,14 +468,14 @@
 	Die like makeinfo if FORCE is not set, remove all generated 
 	files in that case.
 
-2009-08-02   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-02   Patrice Dumas  <pertusus@free.fr>
 
 	* formats/info.init: put float text and caption in the right order
 	in listoffloats such that it is a menu entry that can be followed
 	in info.
 	Use the basenames in the Info preamble (Karl suggestion).
 
-2009-08-02   Patrice Dumas  <dumas@centre-cired.fr>
+2009-08-02   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: treat @alias like a normal misc
 	commmand.
@@ -500,7 +500,7 @@
 	Warn if there is a float or anchor before first node.
 	* tests/*: run only once to generate the the texi_* output.
 
-2009-07-31   Patrice Dumas  <dumas@centre-cired.fr>
+2009-07-31   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: warn for double menu entry and also for up in 
 	menu not matching up in node directions.
@@ -508,7 +508,7 @@
 	* formats/info.init: warn if @direcategory/@direntry after 
 	first node.
 
-2009-07-31   Patrice Dumas  <dumas@centre-cired.fr>
+2009-07-31   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: Implement --internal-links.
 	* tests/manuals: add test results for info and raw plaintext.
@@ -516,7 +516,7 @@
 	* examples/mediawiki.init: remove @-commands from file names
 	and protect / and \.
 
-2009-07-30   Patrice Dumas  <dumas@centre-cired.fr>
+2009-07-30   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: add $NODE_FILENAMES to use node
 	names for files associated with nodes, such that $NODE_FILES is 
@@ -527,7 +527,7 @@
 	test suite.
 	* tests/misc: add test results for info and raw plaintext.
 
-2009-07-28   Patrice Dumas  <dumas@centre-cired.fr>
+2009-07-28   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: warn for command in 'command_stack', that is 
 	command opened and not closed after a paragraph end in close_stack.
@@ -541,14 +541,14 @@
 	* tests/info_coverage: new tests, specifically used during info backend
 	developpement.
 
-2009-07-25   Patrice Dumas  <dumas@centre-cired.fr>
+2009-07-25   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: handle better printindex in special region,
 	mostly for @printindex in @copying, and more like a normal
 	@-command.
 	* tests/indices*: add test results for info and raw plaintext.
 
-2009-07-13   Patrice Dumas  <dumas@centre-cired.fr>
+2009-07-13   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, formats/plaintext.init: new 
 	plaintext format.
@@ -556,12 +556,12 @@
 	* tests/formatting: test for plaintext format.
 	* tests/*: add standard output diff to test.
 
-2009-07-05   Patrice Dumas  <dumas@centre-cired.fr>
+2009-07-05   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: separate $TOP_NODE_FILE from
 	$TOP_NODE_FILE_TARGET.
 
-2009-07-05   Patrice Dumas  <dumas@centre-cired.fr>
+2009-07-05   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, formats/info.init, formats/html.init: allow for
 	undefined TOP_NODE_FILE, and use it as default.
@@ -570,7 +570,7 @@
 	punctuation.
 	* tests/encodings/*: add test results for info and raw plaintext.
 
-2009-06-28   Patrice Dumas  <dumas@centre-cired.fr>
+2009-06-28   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, formats/*: use a specific handler to
 	handle misc commands, $misc_command_line, instead of turning the 
@@ -581,13 +581,13 @@
 	Check for a symbol following @end command argument.
 	* tests/formatting/*: add test results for info and raw plaintext.
 
-2009-06-22   Patrice Dumas  <dumas@centre-cired.fr>
+2009-06-22   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, formats/html.init: reformat toc
 	lines with file information for inline contents.
 	* tests/contents/*: add test results for info and raw plaintext.
 
-2009-06-21   Patrice Dumas  <dumas@centre-cired.fr>
+2009-06-21   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: process @*contents within pass_text.
 	close previous def_item before calling begin_format_texi, if needed.
@@ -597,7 +597,7 @@
 	there is also no image file.
 	* tests/coverage/*: add test results for info and raw plaintext.
 
-2009-06-08   Patrice Dumas  <dumas@centre-cired.fr>
+2009-06-08   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: better initialization for the cross references hashes.
 	Always call element_file_name for 'doc'.
@@ -605,11 +605,11 @@
 	* formats/info.init: add a dot after @ref if needed.
 	* tests/sectionning/*: add test results for info and raw plaintext.
 
-2009-06-05   Patrice Dumas  <dumas@centre-cired.fr>
+2009-06-05   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, formats/*: better initializations.
 
-2009-05-24   Patrice Dumas  <dumas@centre-cired.fr>
+2009-05-24   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, formats/*: add an array for the 
 	format specific expansion T2H_FORMAT_EXPAND to separate from the 
@@ -626,7 +626,7 @@
 	* test/*, test/macros/res_*/: test for texi2html called as 
 	makeinfo or texi2all.
 
-2009-05-23   Patrice Dumas  <dumas@centre-cired.fr>
+2009-05-23   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, formats/*: remove html formatting
 	from texi2html.init, where only raw text formatting should be 
@@ -634,7 +634,7 @@
 	* formats/info.init: remove the debugging output and fix minor
 	bugs.
 
-2009-05-22   Patrice Dumas  <dumas@centre-cired.fr>
+2009-05-22   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, formats/html.init, 
 	formats/info.init, addformats.sh, Makefile.am: put html specific 
@@ -643,14 +643,14 @@
 	* examples/docbook.init,examples/info.init,examples/xml.init:
 	moved to formats/.
 
-2009-05-21   Patrice Dumas  <dumas@centre-cired.fr>
+2009-05-21   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, examples/*, T2h_l2h.pm:
 	replace $DO_CONTENTS by $CONTENTS and $DO_SCONTENTS by 
 	$SHORTCONTENTS.
 	Handle -o /dev/null (or NUL) like makeinfo.
 
-2009-05-20   Patrice Dumas  <dumas@centre-cired.fr>
+2009-05-20   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: Suffixes (in @INPUT_FILE_SUFFIXES) 
 	are concatenated with input file names to try to find a suitable 
@@ -658,22 +658,22 @@
 	* texi2html.pl, texi2html.init, examples/info.init: handle 
 	--enable-encoding.
 
-2009-05-17   Patrice Dumas  <dumas@centre-cired.fr>
+2009-05-17   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: a path separator may be used for -I and similar
 	options like makeinfo does.
 
-2009-05-16   Patrice Dumas  <dumas@centre-cired.fr>
+2009-05-16   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl,texi2html.init: handle @DH{}, @dh{}, @TH{}, @th{}. 
 	use set_conf and get_conf to get and set configuration.
 
-2009-05-02   Patrice Dumas  <dumas@centre-cired.fr>
+2009-05-02   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: record the real element the index entry is in, 
 	not only the last heading.
 
-2009-05-01   Patrice Dumas  <dumas@centre-cired.fr>
+2009-05-01   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: ignore @setfilename in included file, consistently
 	with the texinfo manual.
@@ -681,7 +681,7 @@
 	* texi2html.pl, texi2html.init: @direntry is handled like a 
 	menu, not a raw environment.
 
-2009-04-27   Patrice Dumas  <dumas@centre-cired.fr>
+2009-04-27   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: simplify index handling and fix syn*index to do 
 	the same than in the documentation and in makeinfo/texi2dvi.
@@ -690,7 +690,7 @@
 	the file.
 	* texi2html.init: @page stops paragraphs.
 
-2009-04-25   Patrice Dumas  <dumas@centre-cired.fr>
+2009-04-25   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: handle @direntry and @dircategory 
 	better.
@@ -712,33 +712,33 @@
 	Pass line numbers to substitute_text for special regions and 
 	special commands like refs and footnotes.
 
-2009-04-23   Patrice Dumas  <dumas@centre-cired.fr>
+2009-04-23   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: use the float name and number as 
 	cross-reference name.
 
-2009-04-16   Patrice Dumas  <dumas@centre-cired.fr>
+2009-04-16   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: really pass the original @-command for @def*.
 
-2009-04-16   Patrice Dumas  <dumas@centre-cired.fr>
+2009-04-16   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: normalize the inter-spaces in definition arguments.
 
-2009-04-14   Patrice Dumas  <dumas@centre-cired.fr>
+2009-04-14   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: give the command name in \&def
 	argument.
 
-2009-04-05   Patrice Dumas  <dumas@centre-cired.fr>
+2009-04-05   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: call tab_item_texi after closing formats.
 
-2009-04-03  Patrice Dumas  <dumas@centre-cired.fr>
+2009-04-03  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: add a user hook for closed empty preformatted.
 
-2009-04-02  Patrice Dumas  <dumas@centre-cired.fr>
+2009-04-02  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, examples/: modify directly the 
 	texinfo for table items. \&table_item API changed correspondingly.
@@ -761,12 +761,12 @@
 	invalid constructs, especially bad constructs involving @center.
 	* doc/texi2html.texi: fix invalid constructs.
 
-2009-02-03  Patrice Dumas  <dumas@centre-cired.fr>
+2009-02-03  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: @sp stops paragraph and ignores up 
 	to the end of line.
 
-2009-01-17  Patrice Dumas  <dumas@centre-cired.fr>
+2009-01-17  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: ignore more text and remove more
 	end of lines after @-commands.
@@ -774,20 +774,20 @@
 	for stopping paragraphs when there are only @-commands to be 
 	ignored that don't swallow end of lines.
 
-2009-01-17  Patrice Dumas  <dumas@centre-cired.fr>
+2009-01-17  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: consider the @itemize argument
 	either as an @-command or a leading text, not both, and remove
 	spaces in @itemize arguments better.
 
-2009-01-09  Patrice Dumas  <dumas@centre-cired.fr>
+2009-01-09  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: (dir) is added as up node only if automatic
 	directions are used.
 	* texi2html.pl, texi2html.init, examples/*: Handle the raw 
 	formats during output formatting, not in the first pass.
 
-2009-01-08  Patrice Dumas  <dumas@centre-cired.fr>
+2009-01-08  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: centerchap is unnumbered.
 	Pass the index entry reference to index entry formatting functions.
@@ -795,7 +795,7 @@
 	* examples/docbook.init: add the node as id only for the sectionning
 	element associated with that node.
 
-2009-01-07  Patrice Dumas  <dumas@centre-cired.fr>
+2009-01-07  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: correct exclamdown/questiondown in ascii.
 	* test/run_test.sh: tests of info output ignore stderr since
@@ -813,12 +813,12 @@
 	mkinstalldirs, mdate-sh, doc/mdate-sh, doc/texinfo.tex: Updated from
 	versions in Automake 1.10.
 
-2009-01-05  Patrice Dumas  <dumas@centre-cired.fr>
+2009-01-05  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: don't duplicate the state for menu entry 
 	formatting, use the main state.
 
-2009-01-04  Patrice Dumas  <dumas@centre-cired.fr>
+2009-01-04  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: add a hook at for the end of special regions 
 	processing.
@@ -842,7 +842,7 @@
 	* configure.ac: Update version # for 1.80 release.
 	* NEWS: Add date for 1.80 release.
 
-2009-01-01  Patrice Dumas  <dumas@centre-cired.fr>
+2009-01-01  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: remove space in front of @quotation argument.
 	* texi2html.pl: add a key in duplicated state.
@@ -851,20 +851,20 @@
 	Open paragraph after unkown command.
 	Call begin_format_texi after closing stuff.
 
-2008-12-24  Patrice Dumas  <dumas@centre-cired.fr>
+2008-12-24  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: add new hooks for user functions, for simple 
 	@-commands, and at the beginning of special regions.
 	* T2h_i18n.pm, texi2html.pl, texi2html.init, examples/*: 
 	use main state in translation string only when needed.
 
-2008-12-23  Patrice Dumas  <dumas@centre-cired.fr>
+2008-12-23  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: correct transliteration when USE_UNICODE or 
 	USE_UNIDECODE are not set.
 	* test/encoding/*: tests for transliteration with all possibilities.
 
-2008-12-23  Patrice Dumas  <dumas@centre-cired.fr>
+2008-12-23  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: don't use unidecode on unicode characters that
 	are known not to have a good transliteration. This corresponds with
@@ -878,7 +878,7 @@
 	* doc/texi2html.html: ...removed file, since it is generated during
 	build.
 
-2008-12-16  Patrice Dumas  <dumas@centre-cired.fr>
+2008-12-16  Patrice Dumas  <pertusus@free.fr>
 
 	* test/*: handle more gracefully missing latex2html or tex4ht.
 	Try to avoid spurious differences in latex2html output.
@@ -889,12 +889,12 @@
 	it is not found set in the environment.
 	* test/run_test.sh: Use mktemp more portably.
 
-2008-11-28  Patrice Dumas  <dumas@centre-cired.fr>
+2008-11-28  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: in format_line_number, use @ in front of a macro
 	name, suggestion from Werner LEMBERG.
 
-2008-11-26  Patrice Dumas  <dumas@centre-cired.fr>
+2008-11-26  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: add hooks for user functions at 
 	@-command beginning for commands taking arguments, at paragraph
@@ -903,29 +903,29 @@
 	* MySimple.pm: add a sentence about -- being the same as -.
 	Report from Werner LEMBERG.
 
-2008-11-20  Patrice Dumas  <dumas@centre-cired.fr>
+2008-11-20  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: replace an empty macro by an empty string instead
 	of breaking. report from Werner LEMBERG.
 
-2008-11-14  Patrice Dumas  <dumas@centre-cired.fr>
+2008-11-14  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: duplicate stack to keep right paragraph nesting
 	from top to bottom.
 	* formatting/double_style_paragraph.texi: test for double style
 	commands enclosing 2 paragraphs.
 
-2008-11-11  Patrice Dumas  <dumas@centre-cired.fr>
+2008-11-11  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: set %simple_map_texi = %ascii_simple_map. 
 	@ followed by a newline or a tab should be replaced by a space.
 
-2008-11-10  Patrice Dumas  <dumas@centre-cired.fr>
+2008-11-10  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: add support for @ogonek.
 	* texi2html.init, texi2html.pl: encode correctly texi dumped.
 
-2008-11-08  Patrice Dumas  <dumas@centre-cired.fr>
+2008-11-08  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init, texi2html.pl: move index splitting code back to
 	texi2html.pl, but still in the Config namespace, to mark clearly
@@ -935,7 +935,7 @@
 	xml.init and book.init that should remain as an example users can 
 	copy from.
 
-2008-11-03  Patrice Dumas  <dumas@centre-cired.fr>
+2008-11-03  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: remove leading spaces and trailing spaces in 
 	multitable cells.
@@ -944,7 +944,7 @@
 	* texi2html.pl, texi2html.init, examples/makeinfo.init: with 
 	OVERVIEW_LINK_TO_TOC set, overview links to toc as in makeinfo.
 
-2008-11-01  Patrice Dumas  <dumas@centre-cired.fr>
+2008-11-01  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: don't do paragraphs in multitables.
 	* texi2html.pl, texi2html.init: handle @smallquotation, change 
@@ -954,20 +954,20 @@
 	* texi2html.pl: warn if the menu order doesn't follow the sectionning
 	order.
 
-2008-11-01  Patrice Dumas  <dumas@centre-cired.fr>
+2008-11-01  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: associate node with the right file,
 	even if after section and split index. 
 	Handle better empty @elements_list.
 
-2008-09-25  Patrice Dumas  <dumas@centre-cired.fr>
+2008-09-25  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: associate nodes that are not already associated 
 	with the top node in case only sections are used.
 	* texi2html.init: associate elements in split indices to the 
 	split indice added element.
 
-2008-09-24  Patrice Dumas  <dumas@centre-cired.fr>
+2008-09-24  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: remove THIS_HEADER. Instead 
 	everything goes to THIS_SECTION. New function reference, 
@@ -980,7 +980,7 @@
 	labels and headings appear where the command is, instead of always 
 	appearing at the beginning of the elements.
 
-2008-09-23  Patrice Dumas  <dumas@centre-cired.fr>
+2008-09-23  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl,texi2html.init: do added index pages in 
 	texi2html.init. Add an element for an index page only it begins 
@@ -989,13 +989,13 @@
 	Prev). Never consider printindex as elements, but instead put them
 	in places.
 
-2008-09-07  Patrice Dumas  <dumas@centre-cired.fr>
+2008-09-07  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: always use a distinct label for index 
 	entries, and use id, target like for other placed items.
 	Give more informations for index entry formatting.
 
-2008-09-06  Patrice Dumas  <dumas@centre-cired.fr>
+2008-09-06  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: when node Top is considered as a @top, don't
 	associate the following nodes to it, but rather to the next
@@ -1013,7 +1013,7 @@
 	* texi2html.pl, texi2html.init: progress towards index formatting
 	simplification and handling out of the main program.
 
-2008-09-04  Patrice Dumas  <dumas@centre-cired.fr>
+2008-09-04  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: don't consider Top node is like @top when 
 	finding automatic directions for nodes.
@@ -1022,7 +1022,7 @@
 	Use toplevelnext and toplevelprev when finding node directions for
 	sections not associated with nodes.
 
-2008-09-03  Patrice Dumas  <dumas@centre-cired.fr>
+2008-09-03  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: add prepare_state_multiple_pass function to ease
 	formatting more than once specific texts (in index entries, prepended
@@ -1033,7 +1033,7 @@
 	Remove title for text before first item, docbook handles right
 	anything before the real table beginning.
 
-2008-09-02  Patrice Dumas  <dumas@centre-cired.fr>
+2008-09-02  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: section names and headings cross
 	ref are now human readable and constructed using the section name.
@@ -1043,7 +1043,7 @@
 	even when SECTION_NAVIGATION is true, but never output navigation
 	footings.
 
-2008-08-31  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-31  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: only one @title should appear in
 	a document. So now, what was title before is fulltitle.
@@ -1064,7 +1064,7 @@
 	* test/many_input_files: test for more than one file on the 
 	command line.
 
-2008-08-29  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-29  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: expand macros and value in all the @-commands that
 	need to. Also treat as normal text more @-commands.
@@ -1075,7 +1075,7 @@
 	Transliterate index entries in index labels.
 	* i18n/es: new translation from Francisco Vila.
 
-2008-08-26  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-26  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, examples/makeinfo.init: put everything needed for
 	footnote formatting in the footnote state, to be able to use it in
@@ -1092,7 +1092,7 @@
 	code_style and font.
 	* examples/book.init: better conformant ouput.
 
-2008-08-25  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-25  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: modify menu preformatted handling
 	such that the preformatted needs not be done in the formatting 
@@ -1110,7 +1110,7 @@
 	* texi2html.init: Keep better original code end of lines in 
 	@def* and put the anchor at the definition line beginning.
 
-2008-08-21  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-21  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: simplify handling of table and list items, get
 	rid of table_list_stack, instead use the regular stack.
@@ -1121,13 +1121,13 @@
 	and not in close_stack.
 	Now format_style{'table'} is only for (|v|f)table.
 
-2008-08-20  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-20  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: parse correctly menu node with name.
 	Simplify deff item opening.
 	Handle *headingmarks, *footingmarks.
 
-2008-08-19  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-19  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: images don't start a paragraph.
 	@* is better as a new line with remove texi.
@@ -1138,7 +1138,7 @@
 	* docbook.init: correct @image handling and other fixes.
 	* test/*: adapt to cvs and regenerate.
 
-2008-08-18  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-18  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: in the default case, don't complete image paths
 	as suggested by Reinhold. It is what makeinfo does, completing
@@ -1162,13 +1162,13 @@
 	* test/: test suite replacing the old one in Test, with better
 	design and the same files used, + texinfo test files.
 
-2008-08-14  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-14  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: only use the basename when dumping texi.
 	Really use what is in Texi2HTML::Config::CONF_DIRS, including
 	during command line arguments parsing.
 
-2008-08-13  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-13  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: don't mess the relative working directory by
 	removing most of it (report from Reinhold).
@@ -1177,7 +1177,7 @@
 	manual name.
 	* Tests/*: enhance and correct the test suite.
 
-2008-08-09  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-09  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: use the global formatting state in definitions
 	argument formatting.
@@ -1187,14 +1187,14 @@
 	* examples/docbook.init: new backend for docbook to produce 
 	docbook like makeinfo --docbook.
 
-2008-08-08  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-08  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: use relative file names for hrefs for misc 
 	elements (patch from Reinhold Kainhofer reinhold at kainhofer
 	dot com). And also to determine if the file has to be reopened
 	(report from Reinhold).
 
-2008-08-07  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-07  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: move initialisations before the functions that
 	use the global values.
@@ -1232,22 +1232,22 @@
 	add insertcopying for insertcopying formatting.
 	* examples/xml.init: init file to produce xml like makeinfo --xml.
 
-2008-08-04  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-04  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: parse definition lines like makeinfo
 	does.
 
-2008-08-01  Patrice Dumas  <dumas@centre-cired.fr>
+2008-08-01  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: pass line_nr down more functions.
 
-2008-07-31  Patrice Dumas  <dumas@centre-cired.fr>
+2008-07-31  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: use simple_format for image alt text.
 	Allow no_line_macro to be set by the user, and use cindex for
 	all the index commands.
 
-2008-07-30  Patrice Dumas  <dumas@centre-cired.fr>
+2008-07-30  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: add 3 function references to avoid
 	using anchor for different label formatting and allows to customize
@@ -1258,12 +1258,12 @@
 	Node names are formatted with code_style true.
 	Keep @*contents for misc_command processing if it should be kept.
 
-2008-07-29  Patrice Dumas  <dumas@centre-cired.fr>
+2008-07-29  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: a menu comment is started by a blank line, and not
 	by a character at the beginning of the line.
 
-2008-07-28  Patrice Dumas  <dumas@centre-cired.fr>
+2008-07-28  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: handle a menu_comment like a normal
 	format. detailmenu isn't a misc_command anymore, but is handled like a
@@ -1279,27 +1279,27 @@
 	Add $Texi2HTML::THISDOC{'input_file_name'} for the file given on the 
 	command line (report from Reinhold Kainhofer).
 
-2008-07-19  Patrice Dumas  <dumas@centre-cired.fr>
+2008-07-19  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, doc/*: synchronize command-line switches with 
 	makeinfo.
 	* i18n/fr, Tests/*: revised french translation from Jean-Charles
 	Malahieude.
 
-2008-07-18  Patrice Dumas  <dumas@centre-cired.fr>
+2008-07-18  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: get rid of m_cedilla, instead a specific function
 	for the node parsing, scan_node_line, is used.
 	* Tests/formatting/detailmenus.texi: new test case for detailmenu.
 
-2008-07-16  Patrice Dumas  <dumas@centre-cired.fr>
+2008-07-16  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: give columnfractions and row
 	prototypes to the multitable cell and row formatting functions.
 	* texi2html.init: use columnfractions to determine the cell
 	widths.
 
-2008-06-12  Patrice Dumas  <dumas@centre-cired.fr>
+2008-06-12  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: dynamically determine file hrefs for
 	misc elements. Generalize code common for all misc elements. 
@@ -1311,7 +1311,7 @@
 	* Tests/*: add a test for -no-monolithic.
 	* */Makefile.in: use autoconf 2.62
 
-2008-05-18  Patrice Dumas  <dumas@centre-cired.fr>
+2008-05-18  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: complete unicode mapping for @-commands.
 	* texi2html.pl, Tests/*, doc/*: separate id of element from what
@@ -1319,7 +1319,7 @@
 	use node id as target for sections (suggestion from Karl Berry). 
 	This is done if $USE_NODE_TARGET is set (the default).
 
-2008-05-16  Patrice Dumas  <dumas@centre-cired.fr>
+2008-05-16  Patrice Dumas  <pertusus@free.fr>
 
 	* T2h_i18n.pm,i18n/*: correct the presentation of the date (report
 	from Karl Berry).
@@ -1327,11 +1327,11 @@
 	element should never be itself. This has certainly be fixed on
 	2008-03-20, by treating top like any other element.
 
-2008-05-15  Patrice Dumas  <dumas@centre-cired.fr>
+2008-05-15  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init, Tests/*, examples/*: handle @leq and @geq.
 
-2008-03-25  Patrice Dumas  <dumas@centre-cired.fr>
+2008-03-25  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: use do_unknown and unknown in pass 0 too.
 	* texi2html.init, examples/makeinfo.init: honor USE_ACCESSKEY
@@ -1339,7 +1339,7 @@
 	* texi2html.pl, texi2html.init, ChangeLog: correct typo in 
 	already (report from Reinhold Kainhofer).
 
-2008-03-23  Patrice Dumas  <dumas@centre-cired.fr>
+2008-03-23  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, doc/*, examples/makeinfo.init: 
 	use accesskey attribute and link element if set in the init file.
@@ -1353,7 +1353,7 @@
 	document them.
 	* texi2html.pl, doc/*: use do_unknown and unknown in pass 1 too.
 
-2008-03-20  Patrice Dumas  <dumas@centre-cired.fr>
+2008-03-20  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: treat the @top element like any section element, 
 	except that the previous chapter is still considered to be the 
@@ -1362,7 +1362,7 @@
 	* Makefile.am,...: better handling of mediawiki tests and regenerate
 	with automake 1.10.1.
 
-2008-03-17  Patrice Dumas  <dumas@centre-cired.fr>
+2008-03-17  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: @itemize should produce bullets by
 	default (report from Reinhold Kainhofer, and bugfix)
@@ -1376,7 +1376,7 @@
 	* Tests/formatting/comments.texi,formatting.texi,clean.texi:
 	test for @click, @clickstyle, @click, @arrow, @clicksequence
 
-2008-03-12  Patrice Dumas  <dumas@centre-cired.fr>
+2008-03-12  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, examples/mediawiki.init: add
 	the program_string reference.
@@ -1386,7 +1386,7 @@
 	* Tests/test.sh: more robust for files with spaces.
 	* Tests/*: add tests for mediawiki output.
 
-2007-10-07  Patrice Dumas  <dumas@centre-cired.fr>
+2007-10-07  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: better handling of special regions.
 	* Tests/*: test for more possibility regarding titlepage output 
@@ -1394,7 +1394,7 @@
 	Use the actual state for titlepage generation in print_Top.
 	rename formatting-regions to formatting_regions.
 
-2007-10-06  Patrice Dumas  <dumas@centre-cired.fr>
+2007-10-06  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: handle titlepage like other 
 	special regions. 
@@ -1403,7 +1403,7 @@
 	in that footnote.
 	test for titlepage with most of the constructs within.
 
-2007-10-05  Patrice Dumas  <dumas@centre-cired.fr>
+2007-10-05  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: separate global variables of pass_structure and
 	pass_texi, prefix some of those vaiables, and clean variable and 
@@ -1418,7 +1418,7 @@
 	* texi2html.pl, texi2html.init: use a formatting function for 
 	documentdescription and give more arguments to copying_comment.
 
-2007-10-04  Patrice Dumas  <dumas@centre-cired.fr>
+2007-10-04  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: handle headings more like normal
 	@-commands and not like sectionning commands.
@@ -1427,13 +1427,13 @@
 	number and id.
 	* Tests/*: add tests for headings
 
-2007-10-03  Patrice Dumas  <dumas@centre-cired.fr>
+2007-10-03  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: use relative file names for frame
 	file names (report from Graham Percival).
 	* texi2html.init: use entities for simple quotes in normal text.
 
-2007-10-02  Patrice Dumas  <dumas@centre-cired.fr>
+2007-10-02  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, T2h_i18n.pm: keep the state in the global hash
 	and use it in translations.
@@ -1443,14 +1443,14 @@
 	* Tests/formatting/*: test for symbols kept in preformatted and 
 	@-commands in @*ref appearing in @example.
 
-2007-10-02  Patrice Dumas  <dumas@centre-cired.fr>
+2007-10-02  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: remove trailing new line in @html block (report 
 	from Graham Percival).
 	* Tests/formatting/block_EOL.texi: test for end of lines in raw
 	block formatting.
 
-2007-10-01  Patrice Dumas  <dumas@centre-cired.fr>
+2007-10-01  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: Handle @end commands entered as
 	misc commands like other misc commands during pass_text.
@@ -1461,12 +1461,12 @@
 	* Tests/formatting/symbol_after_block.texi: test for symbols after
 	@end block commands.
 
-2007-09-30  Patrice Dumas  <dumas@centre-cired.fr>
+2007-09-30  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: don't have # perl on the shebang line. Report by
 	Martin Koeppe.
 
-2007-09-27  Patrice Dumas  <dumas@centre-cired.fr>
+2007-09-27  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: handle @textdegree, @hyphenation.
 	* texi2html.pl, texi2html.init: reset the language for each 
@@ -1494,7 +1494,7 @@
 	'"333" is not a character number in the document character set'
 	even when setting charset is utf-8.
 
-2007-09-22  Patrice Dumas  <dumas@centre-cired.fr>
+2007-09-22  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: handle @alias.
 	* texi2html.init: handle @quote*, @guillem*, @allowcodebreaks,
@@ -1502,12 +1502,12 @@
 	use 3 dots for @enddots, like makeinfo.
 	* Tests/*: new test file for @alias. Test @quote* and @guillem*.
 
-2007-09-11  Patrice Dumas  <dumas@centre-cired.fr>
+2007-09-11  Patrice Dumas  <pertusus@free.fr>
 
 	* examples/tex4ht.init: chdir to the out dir only once.
 	Add the texinfo comment at a better place.
 
-2007-09-10  Patrice Dumas  <dumas@centre-cired.fr>
+2007-09-10  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: avoid content elements being defined
 	only if they are used inline and the corresponding macro never 
@@ -1516,7 +1516,7 @@
 	and INLINE_CONTENTS combinations when there is no @contents in the
 	document.
 
-2007-09-09  Patrice Dumas  <dumas@centre-cired.fr>
+2007-09-09  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: handle @\ and matching { } in @math.
 	fix simple_style to be really used (typos in texi2html.init).
@@ -1525,7 +1525,7 @@
 	* Tests/*: add test for simple_style with a paragraph within.
 	more tests for @math.
 
-2007-08-21  Patrice Dumas  <dumas@centre-cired.fr>
+2007-08-21  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: handle @, command without brace like @,c. 
 	Report from Jorge Barros de Abreu.
@@ -1543,13 +1543,13 @@
 	* Makefile.am: Use $(SHELL) explicitly.
 	* configure.ac: Update to version 1.78 for release.
 
-2007-06-01  Patrice Dumas  <dumas@centre-cired.fr>
+2007-06-01  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texi2html.texi: update copyright years, clarify that the
 	license in comment is the license for texi2html, not for the
 	manual.
 
-2007-04-07  Patrice Dumas  <dumas@centre-cired.fr>
+2007-04-07  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init, texi2html.pl: when INLINE_CONTENTS is set, 
 	the table of contents and short table of contents are output 
@@ -1563,7 +1563,7 @@
 	* examples/book.init,noheaders.init: update
 	* doc/*: update
 
-2007-04-06  Patrice Dumas  <dumas@centre-cired.fr>
+2007-04-06  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: Texi2HTML::THIS_SECTION is always defined, 
 	it is empty when it has no elements.
@@ -1577,7 +1577,7 @@
 
 	* doc/texi2html.texi: Clean out some old, commented-out cruft.
 
-2007-02-05  Patrice Dumas  <dumas@centre-cired.fr>
+2007-02-05  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: set default out encoding to utf8. This could
 	help with translations.
@@ -1586,7 +1586,7 @@
 	* doc/Makefile.am: call perl with -x when called directly on 
 	texi2html.pl
 
-2007-01-08  Patrice Dumas  <dumas@centre-cired.fr>
+2007-01-08  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: correctly set node filenames even if NODE_FILES
 	isn't set.
@@ -1601,7 +1601,7 @@
 	* */Makefile.in, aclocal.m4, configure: use automake 1.10 and
 	autoconf 2.61.
 
-2006-08-06  Patrice Dumas  <dumas@centre-cired.fr>
+2006-08-06  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: accept - in @-command names.
 	ignore @allow-recursion and @quote-arg.
@@ -1612,7 +1612,7 @@
 	* Tests/*: add the tar manual.
 	add macros/quote-args.txi from the makeinfo test suite.
 
-2006-08-05  Patrice Dumas  <dumas@centre-cired.fr>
+2006-08-05  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: use the same code for file 
 	name determination with NODE_FILES than with the traditional 
@@ -1628,7 +1628,7 @@
 	* Tests/*: Regenerate
 	* NEWS, doc/*: document the api node_file_name api change
 
-2006-08-04  Patrice Dumas  <dumas@centre-cired.fr>
+2006-08-04  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: fixes for split indices.
 	Fix detection of already present heading.
@@ -1639,13 +1639,13 @@
 	Put index_nodes result in a directory.
 	Regenerate.
 
-2006-06-07  Patrice Dumas  <dumas@centre-cired.fr>
+2006-06-07  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: Accept empty value set by @set (bug #16774).
 	Don't eat the line after a macro without arg (bug #16773).
 	* Tests/*: test for those issues.
 
-2006-05-17  Patrice Dumas  <dumas@centre-cired.fr>
+2006-05-17  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: rework image formatting,
 	more is done in the formatting functions.
@@ -1663,7 +1663,7 @@
 	* T2h_l2h.pm: use the document name in the perl cache name.
 	* Tests/*: more tests for unclosed @-commands.
 
-2006-05-17  Patrice Dumas  <dumas@centre-cired.fr>
+2006-05-17  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: teletype style is set in 
 	table item formatting in texi2html.init, not in the main
@@ -1705,7 +1705,7 @@
 	* Tests/formatting/tables.texi: test file with tests for tables.
 	* doc/texi2html.texi: update.
 
-2006-04-23  Patrice Dumas  <dumas@centre-cired.fr>
+2006-04-23  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, T2h_l2h.pm: handle @tex,
 	@verbatim and @verbatiminclude in @copying comments (with 
@@ -1715,7 +1715,7 @@
 	* Tests/*: add test for @tex and @float in @copying, for
 	@node in @copying.
 
-2006-04-17  Patrice Dumas  <dumas@centre-cired.fr>
+2006-04-17  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: hanldle rightly centerchap.
 	Footnote really appear at the foot of the file when there are
@@ -1733,7 +1733,7 @@
 	* Tests/*: test @centerchap.
 	Better tests for not separated footnotes.
 
-2006-04-10  Patrice Dumas  <dumas@centre-cired.fr>
+2006-04-10  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: use nodes for refs with USE_NODES.
 	Handle right footnotes at the end of the document and 
@@ -1741,7 +1741,7 @@
 	* Tests: test for footnotes  at the end of the document and 
 	SEPARATED_FOOTNOTES false. More tests.
 
-2006-04-09  Patrice Dumas  <dumas@centre-cired.fr>
+2006-04-09  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: really use roman type for @r.
 	Format @key more in line with what is done in texinfo, and makes
@@ -1752,7 +1752,7 @@
 	index name clashing with existing indices, or with file extensions
 	(because texi2dvi uses the index name as file extension).
 
-2006-04-08  Patrice Dumas  <dumas@centre-cired.fr>
+2006-04-08  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: take into account the equivalent nodes (after
 	@-commands removal) when a node isn't found.
@@ -1772,7 +1772,7 @@
 	* Tests/formatting/equivalent_nodes.texi: test equivalent nodes.
 	* Tests/*: test for different quotes. Test for more directions.
 
-2006-03-27  Patrice Dumas  <dumas@centre-cired.fr>
+2006-03-27  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl,texi2html.init: if $TRANSLITERATE_NODE is set
 	transliterate the non ascii characters in node names as 
@@ -1785,7 +1785,7 @@
 	* Tests/formatting/node_*translit*: test for node names
 	transliteration.
 
-2006-03-27  Patrice Dumas  <dumas@centre-cired.fr>
+2006-03-27  Patrice Dumas  <pertusus@free.fr>
 
 	* examples/chm.init: set the encoding conditionnaly on OUT_ENCODING
 	being defined.
@@ -1797,7 +1797,7 @@
 	entities for @oe, @OE and @euro, some viewers have trouble with
 	the corresponding textual entities.
 
-2006-03-26  Patrice Dumas  <dumas@centre-cired.fr>
+2006-03-26  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init,texi2html.pl: clean the encoding related code by 
 	adding more variables associated with the different encodings.
@@ -1812,7 +1812,7 @@
 	htmlhelp 1.x doesn't seems to be utf8 aware.
 	* examples/utf8.init: encode characters in preformatted environments.
 
-2006-03-25  Patrice Dumas  <dumas@centre-cired.fr>
+2006-03-25  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: handle @indent. Remove an empty line
 	generated by @indent and @noindent.
@@ -1822,12 +1822,12 @@
 	* doc/, NEWS: document the changes.
 	* T2h_l2h.pm: merge init_to_latex() into init().
 
-2006-01-28  Patrice Dumas  <dumas@centre-cired.fr>
+2006-01-28  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl,Makefile.am,buildt2h.sh: move latex2html stuff
 	out of texi2html.pl, to T2h_l2h.pm.
 
-2006-01-27  Patrice Dumas  <dumas@centre-cired.fr>
+2006-01-27  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: don't remove spaces around @-commands in xhtml
 	refs.
@@ -1837,7 +1837,7 @@
 	* Tests/formatting/at_commands_in_refs.texi: test for @-commands
 	in external ref.
 
-2005-11-30  Patrice Dumas  <dumas@centre-cired.fr>
+2005-11-30  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, examples/tex4ht.init, doc/*: 
 	allows customization of CSS_FILES in init_handler and adding to 
@@ -1846,17 +1846,17 @@
 	* i18n/,translation.pl: updated pt translations from Jorge Barros 
 	de Abreu.
 
-2005-11-29  Patrice Dumas  <dumas@centre-cired.fr>
+2005-11-29  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: add a possibility to
 	set the user and date with the USER and DATE variables.
 
-2005-11-27  Patrice Dumas  <dumas@centre-cired.fr>
+2005-11-27  Patrice Dumas  <pertusus@free.fr>
 
 	* i18n/,translation.pl,manage_i18n.pl.in: update pt and add 
 	pt_BR translation, from Jorge Barros de Abreu.
 
-2005-11-14  Patrice Dumas  <dumas@centre-cired.fr>
+2005-11-14  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: remove the @special_regions array. Special 
 	regions are parsed like raw regions but are handled especially.
@@ -1867,7 +1867,7 @@
 	* Tests/*: add forgotten files to cvs. regenerate.
 	* doc/*: document the handling of raw regions as special regions.
 
-2005-08-28  Patrice Dumas  <dumas@centre-cired.fr>
+2005-08-28  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: better interface for the handling of @commands 
 	and special regions. Use that interface for LaTeX2HTML.
@@ -1878,7 +1878,7 @@
 	* Tests/formatting_res/*: update. Test for unknown commands
 	handling.
 
-2005-08-24  Patrice Dumas  <dumas@centre-cired.fr>
+2005-08-24  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: better redirection pages formatting. 
 	* Makefile.am: use a variable for the i18n files
@@ -1886,7 +1886,7 @@
 	* Tests/*: commit forgotten files and update.
 	* Tests: remove duplicate manuals and rcs tags in manuals.
 
-2005-08-23  Patrice Dumas  <dumas@centre-cired.fr>
+2005-08-23  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init: don't use ucfirst as it relies on the current
 	locale language, not the document language, instead set first 
@@ -1911,7 +1911,7 @@
 	* Tests/formatting/*: test for translations with icons.
 	
 
-2005-08-22  Patrice Dumas  <dumas@centre-cired.fr>
+2005-08-22  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: use node_file_name for the top
 	element too. Honor $TOP_FILE in node_file_name.
@@ -1933,14 +1933,14 @@
 	* texi2html.init (t2h_default_simple_menu_link): Don't add &nbsp; when
 	in preformatted mode.
 
-2005-08-21  Patrice Dumas  <dumas@centre-cired.fr>
+2005-08-21  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, doc/texi2html.texi:
 	add the possibility, with SIMPLE_MENU to have a menu simply enclosed
 	in a preformatted environment. Maybe fixes bug #14233. 
 	* Tests/formatting*, Tests/test.sh: more tests for menus, SIMPLE_MENU. 
 
-2005-08-19  Patrice Dumas  <dumas@centre-cired.fr>
+2005-08-19  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: Add support for nested ifset and ifclear. Re-add check 
 	option for backward compatibility. Just exit if this option is set.
@@ -1952,7 +1952,7 @@
 	* examples: add my-bib-macros.texi bib-example.texi and glossary.texi.
 	* texi2html.spec: remove the Epoch tag.
 
-2005-08-16  Patrice Dumas  <dumas@centre-cired.fr>
+2005-08-16  Patrice Dumas  <pertusus@free.fr>
 
 	* images/COPYING: replace with the Singular COPYING. Move to ...
 	* images/COPYING.Attribution-ShareAlike: ... add
@@ -1965,12 +1965,12 @@
 	* examples/mediawiki.init: Really override use of <samp> with <code>,
 	correcting commit from the 3rd.
 
-2005-08-09  Patrice Dumas  <dumas@centre-cired.fr>
+2005-08-09  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl,README,configure.ac,Tests/*_res/,doc: 
 	refer to the web pages and mailing lists at savannah/nongnu.org.
 
-2005-08-09  Patrice Dumas  <dumas@centre-cired.fr>
+2005-08-09  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: remove section_next as it is not used. Use
 	next when determining what is the following node for a
@@ -1978,18 +1978,18 @@
 	Report on bbdb.texinfo from ?. This close bug #13825. 
 	Never set the menu_up when in detailmenu.
 
-2005-08-09  Patrice Dumas  <dumas@centre-cired.fr>
+2005-08-09  Patrice Dumas  <pertusus@free.fr>
 
 	* Tests/floats_res/*: Add test results for floats with @-commands.
 
-2005-08-08  Patrice Dumas  <dumas@centre-cired.fr>
+2005-08-08  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl,texi2html.init: don't handle quotation second arg
 	as quotation don't have a second arg.
 	* Tests/formatting/quotation.texi: add tests with ,
 	* doc/texi2html.texi: update
 
-2005-08-08  Patrice Dumas  <dumas@centre-cired.fr>
+2005-08-08  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: set the file name to the default file name if it 
 	is undefined after the possible call to element_file_name. 
@@ -2067,17 +2067,17 @@
 	* Makefile.in, aclocal.m4, doc/Makefile.in: Regenerated with
 	Automake 1.9.5.
 
-2005-05-03  Patrice Dumas  <dumas@centre-cired.fr>
+2005-05-03  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: use Cwd in package Texi2HTML::LaTeX2HTML;
 
-2005-03-29  Patrice Dumas  <dumas@centre-cired.fr>
+2005-03-29  Patrice Dumas  <pertusus@free.fr>
 
 	* examples/chm.init: Protect attributes on generated HHC and HHK.
 	patch from jrfonseca (Jose Fonseca). Issue #12.
 	* texi2html.pl: @CONF_DIRS is global.
 
-2005-03-21  Patrice Dumas  <dumas@centre-cired.fr>
+2005-03-21  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init,texi2html.pl: new option --conf-dir to specify
 	directory for config and init files.
@@ -2091,12 +2091,12 @@
 
 	* texi2html.pl:  Comment end of Texi2HTML::Config package.
 
-2005-02-27  Patrice Dumas  <dumas@centre-cired.fr>
+2005-02-27  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init,texi2html.pl: handle @frenchspacing.
 	* Tests/formatting/comments.texi: test for @frenchspacing.
 
-2005-02-13  Patrice Dumas  <dumas@centre-cired.fr>
+2005-02-13  Patrice Dumas  <pertusus@free.fr>
 
 	* README,doc/texi2html.texi: update.
 	* buildt2h.sh: add this script, a simple wrapper around the sed 
@@ -2104,7 +2104,7 @@
 	files concatenated, determined by make.
 	* Makefile.am: handle buildt2h.sh.
 
-2005-02-13  Patrice Dumas  <dumas@centre-cired.fr>
+2005-02-13  Patrice Dumas  <pertusus@free.fr>
 
 	* INTRODUCTION: remove and merge content in...
 	* README: ...merge with INTRODUCTION content and update.
@@ -2114,13 +2114,13 @@
 	* doc/texi2html.1.in: update and add explanation for more 
 	command line options.
 
-2005-02-12  Patrice Dumas  <dumas@centre-cired.fr>
+2005-02-12  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: handle def command with x (like @deffnx) within
 	deff command paragraph (construct is in octave manual).
 	* Tests/*: test for deffnx within deff command paragraph.
 
-2005-02-12  Patrice Dumas  <dumas@centre-cired.fr>
+2005-02-12  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl,texi2html.init: accept first arg for def like
 	commands. 
@@ -2143,7 +2143,7 @@
 	* doc/Makefile.am (texi2html.html): Call `$PERL texi2html.pl' to avoid
 	dependency on texi2html.
 
-2005-02-06  Patrice Dumas  <dumas@centre-cired.fr>
+2005-02-06  Patrice Dumas  <pertusus@free.fr>
 
 	* Makefile.am: manage_i18n.pl is created by ./configure therefore
 	at $(top_builddir).
@@ -2154,11 +2154,11 @@
 	* README, doc/texi2html.texi: advertise the required perl version
 	and the modules used in the scripts.
 
-2005-02-06  Patrice Dumas  <dumas@centre-cired.fr>
+2005-02-06  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: fix broken detection of USE_UNICODE.
 
-2005-02-06  Patrice Dumas  <dumas@centre-cired.fr>
+2005-02-06  Patrice Dumas  <pertusus@free.fr>
 
 	* manage_i18n.pl: remove and replace with...
 	* manage_i18n.pl.in: ... added
@@ -2192,7 +2192,7 @@
 	* doc/texi2html.1.in: ...here.
 	* doc/.cvsignore: Add texi2html.1.
 
-2005-02-05  Patrice Dumas  <dumas@centre-cired.fr>
+2005-02-05  Patrice Dumas  <pertusus@free.fr>
 
 	* Makefile.am,configure.ac: don't rely on configure to build the
 	texi2html script, paste the different perl source files in make,
@@ -2219,7 +2219,7 @@
 	* configure.ac: Update to dev version 1.77.
 	* NEWS: Add section 1.78.
 
-2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
+2005-02-03  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: don't use exists for reference in an array, for
 	old perl. Report from Sven de Vries.
@@ -2227,12 +2227,12 @@
 	Report from ezra peisach.
 	* Tests/*: remove some $ Id : ChangeLog,v 1.191 2005/02/07 05:10:11 dprice Exp $ rcs tags
 
-2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
+2005-02-03  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: require perl 5.00405 for File::Spec (report from
 	Ezra peisach).
 
-2005-02-03  Patrice Dumas  <dumas@centre-cired.fr>
+2005-02-03  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: don't use open with three args, use binmode (for
 	old perl, reported by Sven de Vries).
@@ -2245,7 +2245,7 @@
 
 	* configure.ac: Revert most of the PERL change.
 
-2005-02-01  Patrice Dumas  <dumas@centre-cired.fr>
+2005-02-01  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init, examples/chm.init: remove our keywords for old
 	perl (reported by Sven de Vries).
@@ -2276,7 +2276,7 @@
 
 	* configure.in, NEWS: Update for the 1.74 release.
 
-2005-01-16  Patrice Dumas  <dumas@centre-cired.fr>
+2005-01-16  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: more robust handling of deffn lines.
 	The argument may be in bracket, therefore there is no difference
@@ -2284,13 +2284,13 @@
 	* Tests: test for more deffn lines, and for @-commands in floats.
 	* doc/texi2html.texi: update.
 
-2005-01-16  Patrice Dumas  <dumas@centre-cired.fr>
+2005-01-16  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: close quotes within html elements. Apply commands
 	to @item lines in table after leading and trailing spaces removal.
 	* Tests: regenerate.
 
-2005-01-06  Patrice Dumas  <dumas@centre-cired.fr>
+2005-01-06  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: handle explicitely formats that don't
 	trigger paragraph opening. Handle all commands even those that aren't
@@ -2315,21 +2315,21 @@
 
 	* config.guess, config.sub: New files from Automake.
 
-2004-12-13  Patrice Dumas  <dumas@centre-cired.fr>
+2004-12-13  Patrice Dumas  <pertusus@free.fr>
 
 	* INTRODUCTION, README: update with dev mailing list. Advertise the
 	manual as being rather complete.
 	* Makefile.am,Makefile.in: build in . before doc, as texi2html is 
 	needed to rebuild the doc.
 
-2004-12-11  Patrice Dumas  <dumas@centre-cired.fr>
+2004-12-11  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init,examples/roff.init,examples/html32.init,
 	examples/inlinestyle.init,NEWS: add support for @euro, @sansserif.
 	* Tests: test for @euro, @sansserif, deff arguments with braces
 	appearing within the argument (and not at the beginning). Sync.
 
-2004-12-11  Patrice Dumas  <dumas@centre-cired.fr>
+2004-12-11  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: internal targets and targets of 
 	cross refs are valid as XML identifiers. This is compatible with the
@@ -2337,28 +2337,28 @@
 	HTML Xref.
 	* doc,Tests: sync.
 
-2004-11-22  Patrice Dumas  <dumas@centre-cired.fr>
+2004-11-22  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: handle right deff arguments with braces appearing
 	within the argument (and not at the beginning).
 
-2004-10-08  Patrice Dumas  <dumas@centre-cired.fr>
+2004-10-08  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: add a mail address to the --help screen (idea from 
 	Karl Berry).
 
-2004-10-06  Patrice Dumas  <dumas@centre-cired.fr>
+2004-10-06  Patrice Dumas  <pertusus@free.fr>
 
 	* configure.in: add the lines asked for by Thomas Esser for addition
 	to teTeX.
 	* Makefile.in...: regenerate with automake 1.9.1.
 
-2004-10-06  Patrice Dumas  <dumas@centre-cired.fr>
+2004-10-06  Patrice Dumas  <pertusus@free.fr>
 
 	* Makefile.am: use $(PERL) and $(srcdir) in manage_i18n.pl rule
 	(idea of Karl Berry).
 
-2004-08-13  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-08-13  Patrice Dumas  <pertusus@free.fr> 
 
 	* texi2html.pl, texi2html.init: Cross refs are done according to the 
 	specification presented in the texinfo manual in the node HTML Xref.
@@ -2367,17 +2367,17 @@
 	Handle novalidate better.
 	* Tests: sync.
 
-2004-08-07  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-08-07  Patrice Dumas  <pertusus@free.fr> 
 
 	* texi2html.pl, texi2html.init: handle @slanted and @abbr.
 
-2004-06-27  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-06-27  Patrice Dumas  <pertusus@free.fr> 
 
 	* texi2html.pl, T2h_i18n.pm, manage_i18n.pl: Re enable compatibility 
 	with perl older that 5.6, by changing most of our to use vars, and 
 	some other to my.
 
-2004-06-13  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-06-13  Patrice Dumas  <pertusus@free.fr> 
 
 	* texi2html.pl: split close_stack in 2, one for the last pass the other
 	for the previous passes.
@@ -2394,12 +2394,12 @@
 	@url is now a synonym for @uref.
 	* doc/texi2html.texi: bring up-to-date.
 
-2004-04-28  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-04-28  Patrice Dumas  <pertusus@free.fr> 
 
 	* T2h_i18n.pl, texi2html.pl: pass the state to the internationalized
 	strings if needed. 
 
-2004-04-28  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-04-28  Patrice Dumas  <pertusus@free.fr> 
 	
 	* texi2html.init, texi2html.pl: generate unformatted text with 
 	text protected and %unformatted_text_* hashs used.
@@ -2407,7 +2407,7 @@
 	put preparation of special styles in texi2html.init.
 	copying_comment formats the copying comment.
 
-2004-04-26  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-04-26  Patrice Dumas  <pertusus@free.fr> 
 
 	* example/book.init: stick to the same style for manual not split at
 	node.
@@ -2431,20 +2431,20 @@
 	generated by configure.
 	* Makefile.in, configure, doc/stamp-vti, doc/version.texi: Regenerated.
 
-2004-03-24  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-03-24  Patrice Dumas  <pertusus@free.fr> 
 
 	* NEWS: fill 1.70 section.
 	* configure.in, texi2html.spec: update version.
 	* Makefile.in: regenerate, now it doesn't want config.guess.
 
-2004-03-23  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-03-23  Patrice Dumas  <pertusus@free.fr> 
 
 	* Makefile.am, texi2html.spec: add a spec file usefull to build 
 	a rpm.
 	* doc/Makefile.am: install texi2html.html in $(datadir)/texinfo/html 
 	as discussed on the texinfo/automake mailing lists.
 
-2004-03-22  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-03-22  Patrice Dumas  <pertusus@free.fr> 
 
 	* texi2html.pl: get language files before testing for language hash.
 	* Makefile.am: add a rule for translations.pl.
@@ -2472,7 +2472,7 @@
 	* Makefile.in, configure: Regenerated.
 	* doc/stamp-vti, doc/version.texi: Regenerated.
 
-2004-02-26  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-02-26  Patrice Dumas  <pertusus@free.fr> 
 
 	* texi2html.pl, texi2html.init: change $DOCUMENTDESCRIPTION to
 	$DOCUMENT_DESCRIPTION for consistency.
@@ -2484,7 +2484,7 @@
 	utf8 in hhc, hhk and hhp files whatever the encoding is.
 	* doc/texi2html.texi: update.
 
-2004-02-23  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-02-23  Patrice Dumas  <pertusus@free.fr> 
 
 	* Makefile.am: ask for a version above 1.7 for automake.
 	* Makefile.in...: regenerate with automake 1.8.2 autoconf 2.59.
@@ -2494,12 +2494,12 @@
 	is used, if it isn't empty, the value is used in the description
 	<meta> element.
 
-2004-02-11  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-02-11  Patrice Dumas  <pertusus@free.fr> 
 
 	* Makefile.am: add T2h_i18n.pm texi2html.init MySimple.pm and l2h.init
 	to the distribution.
 
-2004-02-11  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-02-11  Patrice Dumas  <pertusus@free.fr> 
 
 	* texi2html.pl: use the manual name (file basename) as default output
 	directory when split.
@@ -2522,13 +2522,13 @@
 	(bin_SCRIPTS): ...here.
 	(texi2html_SOURCES): Remove unused variable.
 
-2004-02-10  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-02-10  Patrice Dumas  <pertusus@free.fr> 
 
 	* texi2html.pl: put the code related with cross references in the 
 	main namespace.
 	* Makefile.am: remove T2h_unicode.pm, T2h_nounicode.pm.
 
-2004-02-10  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-02-10  Patrice Dumas  <pertusus@free.fr> 
 
 	* texi2html.pl: put cross manual reference and unicode related
 	functions in the main program (instead of T2h_unicode.pm,
@@ -2536,7 +2536,7 @@
 	Don't add no-... options when there are already the options added.
 	* T2h_unicode.pm, T2h_nounicode.pm: remove.
 
-2004-02-07  Patrice Dumas  <dumas@centre-cired.fr> 
+2004-02-07  Patrice Dumas  <pertusus@free.fr> 
 
 	* T2h_unicode.pm, T2h_nounicode.pm: make global variables lexical
 	variables.
@@ -2556,7 +2556,7 @@
 	text.
 	* doc/.cvsignore: Ignore texi2html.txt.
 
-2004-02-06  Patrice Dumas  <dumas@centre-cired.fr>
+2004-02-06  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, T2h_unicode.pm, T2h_nounicode.pm: 
 	when called with --test, @today value is fixed.
@@ -2571,7 +2571,7 @@
 	* Tests/formatting/test_refs.texi, Tests/formatting/cross_refs.init: 
 	new files used to test the new cross ref scheme.
 
-2004-02-03  Patrice Dumas  <dumas@centre-cired.fr>
+2004-02-03  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: call the $index_summary_file_* 
 	function references for all the indices, even those not printed. 
@@ -2579,7 +2579,7 @@
 	implementation (t2h.pl) and languages codes based on the docbook 
 	xslt.
 
-2004-02-03  Patrice Dumas  <dumas@centre-cired.fr>
+2004-02-03  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: add $EXTENSION variable, holding
 	the extension for files.
@@ -2597,7 +2597,7 @@
 	an older texi2html.
 	* l2h.init: Set NO_SUBDIRS to 1, don't set html version.
 
-2004-01-28  Patrice Dumas  <dumas@centre-cired.fr>
+2004-01-28  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: reopen styles in preformatted environments.
 	When there is a complex format or a table or the like the opened
@@ -2609,7 +2609,7 @@
 	add tests for ifset and ifclear in macros.
 	* Makefile.am: add the new source files and init files.
 
-2004-01-25  Patrice Dumas  <dumas@centre-cired.fr>
+2004-01-25  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, T2h_unicode.pm, T2h_nounicode.pm: 
 	Handle encodings.
@@ -2633,7 +2633,7 @@
 	* doc/texi2html.texi: document the new elements of the interface.
 
 
-2004-01-19  Patrice Dumas  <dumas@centre-cired.fr>
+2004-01-19  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, examples/*: New variables $DO_CONTENTS 
 	and $DO_SCONTENTS, $OPEN_QUOTE_SYMBOL and $CLOSE_QUOTE_SYMBOL.
@@ -2646,12 +2646,12 @@
 	* doc/texi2html.texi: document the new variables and the new interface
 	with a hash reference for style @-commands.
 
-2004-01-12  Patrice Dumas  <dumas@centre-cired.fr>
+2004-01-12  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: --- and `` are kept in first arg of 
 	uref and email 
 
-2004-01-11  Patrice Dumas  <dumas@centre-cired.fr>
+2004-01-11  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: parse arguments separated with , in
 	main program. 
@@ -2665,7 +2665,7 @@
 	Add a hash for commands if paragraphs should not be done in these
 	commands.
 
-2004-01-04  Patrice Dumas  <dumas@centre-cired.fr>
+2004-01-04  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: handle @flushleft and @flushright
 	like normal formats and do something special at the end of line
@@ -2686,7 +2686,7 @@
 	* texi2html.pl: don't use symbolic refs at all, instead eval the
 	code (for the style functions) or use a local glob for the filehandle.
 
-2003-12-15  Patrice Dumas  <dumas@centre-cired.fr>
+2003-12-15  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: add hashes for the ascii
 	representations of @-commands and a function for ascii accents.
@@ -2695,7 +2695,7 @@
 	within a normal context.
 	substitute_line accepts a $state argument.
 
-2003-12-10  Patrice Dumas  <dumas@centre-cired.fr>
+2003-12-10  Patrice Dumas  <pertusus@free.fr>
 
 	* INTRODUCTION, NEWS, README, TODO, texi2html.1.in, doc/TODO: bring
 	those files a bit more up-to-date and correct typos.
@@ -2703,7 +2703,7 @@
 	* texi2html.pl: add no-... options for the options needing it.
 	echo less options with --help.
 
-2003-12-10  Patrice Dumas  <dumas@centre-cired.fr>
+2003-12-10  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, TODO: add hashes for unicode encodings
 	of accented letter and characters.
@@ -2717,7 +2717,7 @@
 
 	* texi2html.pl: Suggest `--help' rather than `-help' in error messages.
 
-2003-12-05  Patrice Dumas  <dumas@centre-cired.fr>
+2003-12-05  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: @sp without arg is considered to be @sp 1
 	* Tests/formatting/formatting.texi: add test for @sp
@@ -2725,14 +2725,14 @@
 	texinfo letters, in order to implement cross manual references scheme
 	described on the bug-texinfo mailing list and maybe output utf8.
 
-2003-12-02  Patrice Dumas  <dumas@centre-cired.fr>
+2003-12-02  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: don't collect @copying lines in the first pass
 	but in the second.
 	Use the same mechanism to collect @copying, @documentdescription
 	and @titlepage lines.
 
-2003-12-01  Patrice Dumas  <dumas@centre-cired.fr>
+2003-12-01  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: new option -macro-expand which generates a file 
 	with expanded macros and @include.
@@ -2740,7 +2740,7 @@
 	environments and macro stuff.
 	* texi2html.init: use @emph instead of @i in strings.
 
-2003-11-25  Patrice Dumas  <dumas@centre-cired.fr>
+2003-11-25  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: format titlepage lines, resulting
 	text is put in $Texi2HTML::TITLEPAGE. Use a new function reference
@@ -2755,7 +2755,7 @@
 
 	* examples/roff.init: add a roff formatter added.
 
-2003-11-20  Patrice Dumas  <dumas@centre-cired.fr>
+2003-11-20  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: Echoes error messages when loading
 	init files.
@@ -2767,7 +2767,7 @@
 	a prepared number or letter to the formatting functions.
 	Don't keep the enumerate style in the text.
 
-2003-11-18  Patrice Dumas  <dumas@centre-cired.fr>
+2003-11-18  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: change protect_html to protect_text.
 	More arguments given to paragraph, preformatted region, list item,
@@ -2786,7 +2786,7 @@
 
 	* doc/texi2html.texi, Tests/*: sync with code.
 
-2003-11-11  Patrice Dumas  <dumas@centre-cired.fr>
+2003-11-11  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: the format is applied by a customizable function.
 	More arguments (index name, entry) given to the index label 
@@ -2798,36 +2798,36 @@
 	strings, not html.
 	* i18n/fr, i18n/es, i18n/pt: use @-commands instead of html.
 
-2003-11-07  Patrice Dumas  <dumas@centre-cired.fr>
+2003-11-07  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: remove unusefull arguments to
 	functions formatting paragraphs.
 
-2003-11-06  Patrice Dumas  <dumas@centre-cired.fr>
+2003-11-06  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: the style is applied by a customizable function.
 	* examples/noheader.init: style with no headers.
 
-2003-11-05  Patrice Dumas  <dumas@centre-cired.fr>
+2003-11-05  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: don't add the leading command if it is a simple 
 	command to all the paragraphs in itemize and add it before the 
 	paragraph or preformatted section.
 
-2003-11-05  Patrice Dumas  <dumas@centre-cired.fr>
+2003-11-05  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: in itemize, apply the command to the
 	inside of the paragraph or preformatted section.
 	titlefont don't open paragraphs.
 
-2003-11-02  Patrice Dumas  <dumas@centre-cired.fr>
+2003-11-02  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: keep texi as is in @image and protect html characters.
 	accept @| as macro, but remove it.
 	cleaning of code for commands with texi kept as is
 	* doc/formatting.texi: add test of flushleft, flushright and center
 
-2003-11-02  Patrice Dumas  <dumas@centre-cired.fr>
+2003-11-02  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: -- and so on are kept as is in @image except
 	for alt text. Use alt text. File for image is really used, too.
@@ -2835,11 +2835,11 @@
 	* doc/clean.texi: add formatting/clean.texi, a test for code 
 	acceptable by makeinfo without error.
 
-2003-10-28  Patrice Dumas  <dumas@centre-cired.fr>
+2003-10-28  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texi2html.texi: add informations about internationalization
 
-2003-10-28  Patrice Dumas  <dumas@centre-cired.fr>
+2003-10-28  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: if not split and there is a leading directory 
 	specified with --out, create that directory.
@@ -2847,12 +2847,12 @@
 	test the writability of the results directory, even when it is
 	the current directory.
 
-2003-10-28  Patrice Dumas  <dumas@centre-cired.fr>
+2003-10-28  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/: remove unneeded .texi files, now included in texi2html.texi.
 	* Makefile.am, doc/Makefile.am: include info file in distribution.
 
-2003-10-26  Patrice Dumas  <dumas@centre-cired.fr>
+2003-10-26  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: support for @verbatiminclude. When split use the
 	-output specification in every cases.
@@ -2862,7 +2862,7 @@
 	variables. Explain how the strings are customized and how 
 	internationalization works.
 
-2003-10-19  Patrice Dumas  <dumas@centre-cired.fr>
+2003-10-19  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, examples/html32.init: don't expand
 	html automatically, only if it is in @EXPAND. Put html in @EXPAND.
@@ -2915,17 +2915,17 @@
 
 	* doc/.cvsignore: Add texinfo.info-? files.
 
-2003-10-33  Patrice Dumas <dumas@centre-cired.fr>
+2003-10-33  Patrice Dumas <pertusus@free.fr>
 
 	* Tests/formatting/formatting.texi: test for --- and `` in various
 	constructs.
 
-2003-09-23  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-23  Patrice Dumas <pertusus@free.fr>
 
 	* NEWS: More changes taken from the conversion of the singular 
 	manual init file.
 
-2003-09-23  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-23  Patrice Dumas <pertusus@free.fr>
 
 	* NEWS: Note more changes.
 	* Tests/*: Test for novalidate.
@@ -2934,13 +2934,13 @@
 
 	* NEWS: Reorganize.  Note some more changes.
 
-2003-09-21  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-21  Patrice Dumas <pertusus@free.fr>
 
 	* Makefile.am: package i18n/en
 	* doc/testkb.texi doc/umalaut.texi: remove these test files, they are 
 	now in Tests/formatting
 
-2003-09-21  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-21  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: source 'Config' file in the configuration directories 
 	instead of texi2htmlrc and ~/.texi2htmlrc for the system wide and
@@ -2948,7 +2948,7 @@
 	* manage_i18n.pl: language files are the files appearing in the 
 	i18n directory. Use 'en' for the file with english strings.
 
-2003-09-17  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-17  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.init, texi2html.pl: change 'about (this page)' to 
 	'about (help)' as this appears in the title= of the <a> element.
@@ -2957,7 +2957,7 @@
 	without centering), @documentdescription.
 	add -no-validate option.
 
-2003-09-15  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-15  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.init, texi2html.pl: add &$Texi2HTML::Config::one_section
 	for formatting of document with only one section.
@@ -2968,7 +2968,7 @@
 	Change &$Texi2HTML::Config::external_ref such that it is easier to
 	internationalize.
 
-2003-09-13  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-13  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.init, texi2html.pl: mark strings of buttons, about, 
 	definitions and footers for internationalization.
@@ -2978,13 +2978,13 @@
 	* i18n/fr: translate strings related with buttons, about,
 	definitions and footers in french. 
 
-2003-09-12  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-12  Patrice Dumas <pertusus@free.fr>
 
 	* manage_i18n.pl: remove \ from strings when finding out strings
 	to translate.
 	* i18n/fr: translate strings related with references.
 
-2003-09-12  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-12  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: 0 is accepted as a value for
 	the reference arguments.
@@ -2992,7 +2992,7 @@
 	files to put them in the public domain. Avoid string concatenation
 	to ease internationalization.
 
-2003-09-11  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-11  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, T2h_i18n.pm, manage_i18n.pl,
 	configure.in:
@@ -3011,11 +3011,11 @@
 	is given as second argument, %{arg} is replaced by 'some string'
 	after retrieval of the translated string.
 
-2003-09-06  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-06  Patrice Dumas <pertusus@free.fr>
 
 	* images, AUTHORS: add images from the Singular project.
 
-2003-09-06  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-06  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, T2h_i18n.pm, texi2html.init: new handling of 
 	languages in documents.
@@ -3036,12 +3036,12 @@
 	invalid strings are obsoleted but kept.
 	* test.sh: add a test for internationalization.
 
-2003-09-05  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-05  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: detect @item on @itemize and table line to avoid
 	infinite recursion.
 
-2003-09-04  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-04  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: handle better @itemize and @table,
 	by appending the text appearing on the format command line.
@@ -3051,15 +3051,15 @@
 	Find more format command mismatches, and handle better formats not
 	closed.
 
-2003-09-02  Patrice Dumas <dumas@centre-cired.fr>
+2003-09-02  Patrice Dumas <pertusus@free.fr>
 
 	* Tests/macros/glossary.texi: test for nested macros definitions
 
-2003-08-29  Patrice Dumas <dumas@centre-cired.fr>
+2003-08-29  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: support nested macro definitions.
 
-2003-08-29  Patrice Dumas <dumas@centre-cired.fr>
+2003-08-29  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.init, texi2html.pl: hide m_cedilla.
 	new handling of definition commands, with a specification of the
@@ -3105,7 +3105,7 @@
 
 	* doc/stamp-vti, doc/version.texi: Regenerated.
 
-2003-08-11  Patrice Dumas <dumas@centre-cired.fr>
+2003-08-11  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.init, texi2html.pl: don't always open paragraphs 
 	in tables and such, only when needed.
@@ -3121,14 +3121,14 @@
 	* doc/*: add a section about installation and make the manual more
 	makeinfo friendly. 
 
-2003-08-04  Patrice Dumas <dumas@centre-cired.fr>
+2003-08-04  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.init, Tests/test.sh, Tests/ccvs: don't expand info
 	section in default settings. Expand info sections for the xemacs
 	manual, the viper manual and the texinfo manual. 
 	The cvs manual is updated.
 
-2003-08-04  Patrice Dumas <dumas@centre-cired.fr>
+2003-08-04  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: pass line numbers to all the 
 	functions echoing error messages and use these line numbers
@@ -3155,7 +3155,7 @@
 	* Tests/*: add singular test, test for css files, test all html
 	formatting and macro within another macro.
 
-2003-08-04  Patrice Dumas <dumas@centre-cired.fr>
+2003-08-04  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: don't remove empty line in the 
 	second pass, pass_structure.
@@ -3173,7 +3173,7 @@
 	should behave.
 	add print_section_header to format section headers.
 
-2003-08-01  Patrice Dumas <dumas@centre-cired.fr>
+2003-08-01  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: add option '-noexpand' as a synonym for '-no-expand'
 	like Derek suggested.
@@ -3182,7 +3182,7 @@
 
 	* texi2html.pl (T2H_OPTIONS->{'no-expand'}): Remove useless linkage.
 
-2003-07-31  Patrice Dumas <dumas@centre-cired.fr>
+2003-07-31  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: A new option -no-expand which does 
 	the reverse of -expand.
@@ -3196,7 +3196,7 @@
 	@-command preceded by optionnal spaces.
 	better handling of @titlefont.
 
-2003-07-29  Patrice Dumas <dumas@centre-cired.fr>
+2003-07-29  Patrice Dumas <pertusus@free.fr>
 	
 	* texi2html.pl, texi2html.init: if split, top and misc elements (about,
 	toc, ...) always have a bottom navigation panel.
@@ -3206,7 +3206,7 @@
 	"Untitled Document").
 	bugfix: top element handled as top even when it is the last element.
 
-2003-07-22  Patrice Dumas <dumas@centre-cired.fr>
+2003-07-22  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, examples/*: add support for @cartouche
 	and @titlefont.
@@ -3223,7 +3223,7 @@
 	* Tests/*: test for @raisesections and @lowersections, and for 
 	@cartouche.
 
-2003-07-11  Patrice Dumas <dumas@centre-cired.fr>
+2003-07-11  Patrice Dumas <pertusus@free.fr>
 
 	* Tests/ccvs: update cvs manual. This should fixe the issue of rcs 
 	tags expanding in html manual files in ccvs_res.
@@ -3236,13 +3236,13 @@
 	* Tests/nodes_texinfo/--and-hyphenation.html: Removed this accidentally
 	added file at Pat's request.
 
-2003-07-10  Patrice Dumas <dumas@centre-cired.fr>
+2003-07-10  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, Tests/test.sh: command line option names use '-' 
 	instead of '_' between words (for example dump_texi becomes dump-texi).
 	* Tests/*: remove unneeded html and passfirst files.
 
-2003-07-03  Patrice Dumas <dumas@centre-cired.fr>
+2003-07-03  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, *.init: use a separate namespace for the config
 	variables: Texi2HTML::Config. Use the Texi2HTML:: namespace for
@@ -3258,7 +3258,7 @@
 	user directory, the local texi2html directory and lastly the shared
 	texi2html directory.
 
-2003-06-17  Patrice Dumas <dumas@centre-cired.fr>
+2003-06-17  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: error messages go to STDERR instead of STDIN
 	* Tests/test.sh: add -x to perl invocation to avoid perl trying
@@ -3308,7 +3308,7 @@
 	* Tests/Makefile.in: Ditto.
 	* doc/Makefile.in: Ditto.
 
-2003-06-16  Patrice Dumas <dumas@centre-cired.fr>
+2003-06-16  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: @include replaced by an empty line
 	no end of line after last line when expanding macros
@@ -3318,7 +3318,7 @@
 	raw formats (like @html@end html)
 	* Tests/*: sync with code
 	
-2003-05-20  Patrice Dumas <dumas@centre-cired.fr>
+2003-05-20  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: split pass_texi in 2 pass. pass_texi
 	rearranges texi expanding macros and values, removing comments.
@@ -3337,7 +3337,7 @@
 	same way than makeinfo does.
 	* Tests/*: add tests for environments not closed. Sync with code.
 
-2003-05-09  Patrice Dumas <dumas@centre-cired.fr>
+2003-05-09  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: refs to other manuals conforms to 
 	makeinfo with separated files for nodes.
@@ -3357,7 +3357,7 @@
 	* Tests/test.sh: add validation
 	* Tests/*: tests for files with node names generation
 
-2003-05-07  Patrice Dumas <dumas@centre-cired.fr>
+2003-05-07  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: put a label in splitted index.
 	splitted indices which are not at the level of splitting are kept
@@ -3382,7 +3382,7 @@
 	tests for index entries in top and before top.
 	tests for documents with only one section or node or no node.
 
-2003-05-02  Patrice Dumas <dumas@centre-cired.fr>
+2003-05-02  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: 3 split commands: split at
 	chapter, section or for every node (previously node and section 
@@ -3406,14 +3406,14 @@
 	is a file which tries to have an output which looks like makeinfo
 	--html output (makeinfo.init).
 
-2003-04-30  Patrice Dumas <dumas@centre-cired.fr>
+2003-04-30  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: add the node as element when there 
 	is a @printindex split accross pages between node and section.
 	* Tests/*: tests for documents with indices in top and between node
 	and section.
 
-2003-04-29  Patrice Dumas <dumas@centre-cired.fr>
+2003-04-29  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: add $T2H_MENU_SYMBOL before nodes in 
 	menu and optionnaly before unnumbered section names in menu entry.
@@ -3428,7 +3428,7 @@
 	better looking verbose output.
 	* Tests/*: tests for documents without sections and double top
 
-2003-04-28  Patrice Dumas <dumas@centre-cired.fr>
+2003-04-28  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: No heading for top, as print_Top 
 	already does it.
@@ -3439,14 +3439,14 @@
 	@html sections don't close paragraphs.
 	* Tests/*: tests for document structure. Sync with code.
 
-2003-04-23  Patrice Dumas <dumas@centre-cired.fr>
+2003-04-23  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: when there is no section nodes are used instead
 	* .cvsignore: add autom4te-2.53.cache and check_texinfo.pl
 	* Tests/.cvsignore: create .cvsignore for Tests
 	* Tests/ccvs: update to latest cvs manual
 
-2003-04-22  Patrice Dumas <dumas@centre-cired.fr>
+2003-04-22  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: constants declared early as they are used in 
 	texi2html.init (at least $WARN is used)
@@ -3454,7 +3454,7 @@
 	and .2 files in regenerate and clean
 	* Tests/*: results of tests added
 
-2003-04-10  Patrice Dumas <dumas@centre-cired.fr>
+2003-04-10  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: labels were put 2 times in special
 	sections (Top, about, toc...).
@@ -3465,7 +3465,7 @@
 	change &#156; to &oelig; and &#140; to &OElig; (as tidy do)
 	* Tests/*/nodetest.texi: test for more simple special commands
 
-2003-04-09  Patrice Dumas <dumas@centre-cired.fr>
+2003-04-09  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: formatting put in texi2html.init
 	hrefs to anchors and index entries which are in footnotes are right
@@ -3478,7 +3478,7 @@
 	better handling of @math and @sc
 	* Tests/*: a little more things tested.
 
-2003-04-04  Patrice Dumas <dumas@centre-cired.fr>
+2003-04-04  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: deffn and the like better handled
 	preformatted sections are closed when there is a new format
@@ -3495,7 +3495,7 @@
 	first page of index is handled like a normal format
 	* Tests/*: more tests for imbrications.
 	
-2003-04-02  Patrice Dumas <dumas@centre-cired.fr>
+2003-04-02  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: footnotes better handled, they have a separated
 	stack, state and text.
@@ -3505,7 +3505,7 @@
 	is generated during pass_text.
 	* Tests/*: minor changes, more tests.
 
-2003-04-02  Patrice Dumas <dumas@centre-cired.fr>
+2003-04-02  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: macros splitted by 3 paragraphs are better handled.
 	more isolation of formatting.
@@ -3519,7 +3519,7 @@
 	The files are omitted from hrefs when the href points to the same file.
 	* Tests/*: formatting/imbrications.texi added. Sync with code.
 
-2003-03-27  Patrice Dumas <dumas@centre-cired.fr>
+2003-03-27  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: rewrite of the parsing of texi
 	and of the handling of sectionning.
@@ -3542,7 +3542,7 @@
 	* Tests/*: more tests for the @macros. Other minor modifications.
 	sync with new code.
 
-2003-03-06  Patrice Dumas <dumas@centre-cired.fr>
+2003-03-06  Patrice Dumas <pertusus@free.fr>
 
 	* T2h_i18n.pm: added  the licence
 	* texi2html.pl, texi2html.init, check_texinfo.pl.in: check function
@@ -3568,7 +3568,7 @@
 	added formatting/imbrications.texi to test for imbricated things.
 	* configure, configure.in: added check_texinfo.pl.in.
 
-2003-02-28  Patrice Dumas <dumas@centre-cired.fr>
+2003-02-28  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, T2h_i18n.pm: options specifications
 	moved from texi2html.init to texi2html.pl, such that texi2html.init
@@ -3579,7 +3579,7 @@
 	* configure, doc/Makefile.in, Makefile.in, aclocal.m4, 
 	Tests/Makefile.in: regenerated with automake-1.6.3, autoconf-2.53
 
-2003-02-24  Patrice Dumas <dumas@centre-cired.fr>
+2003-02-24  Patrice Dumas <pertusus@free.fr>
 
 	* Tests: small fixes, more tests showing brokeness of texi2html
 	for some features and info and tex differences. 
@@ -3601,7 +3601,7 @@
 	now done in pass2.
 	in pass3 only very little cleaning is done, pass4 is removed.
 
-2003-02-21  Patrice Dumas <dumas@centre-cired.fr>
+2003-02-21  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: added handling of overbar accent @= is transformed
 	in =
@@ -3612,7 +3612,7 @@
 	things have already been substituted, it cannot give the right 
 	result easily)
 
-2003-02-19  Patrice Dumas <dumas@centre-cired.fr>
+2003-02-19  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: T2H_DEFAULT_button_icon_img behaves
 	better when it has some undef arguments
@@ -3625,7 +3625,7 @@
 	the principles above
 	other minor fixes
 
-2003-02-18  Patrice Dumas <dumas@centre-cired.fr>
+2003-02-18  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: handle @verbatim, and @html differently. Added 
 	push_until function which shift from a lines array and push to another 
@@ -3634,7 +3634,7 @@
 	created 2 indices entry
 	* Tests: added more tests
 
-2003-02-13  Patrice Dumas <dumas@centre-cired.fr>
+2003-02-13  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: avoid using $_ in functions, as it is a global
 	variable, use my variables instead
@@ -3643,7 +3643,7 @@
 	* Tests/*: add Makefile.in, more subdirectories, synchronise
 	reference files with changes in the code
 
-2003-02-12  Patrice Dumas <dumas@centre-cired.fr>
+2003-02-12  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: add prototype for the functions ; remove
 	& in front of functions ; remove the unusefull main()
@@ -3652,12 +3652,12 @@
 	redo the reference files
 	add test with tidy, remove cvs/rcs tags when doing diffs
 
-2003-02-11  Patrice Dumas <dumas@centre-cired.fr>
+2003-02-11  Patrice Dumas <pertusus@free.fr>
 
 	* Tests/Makefile.am, Tests/test.sh: changes to reflect change
 	in directory name for the cvs manual from cvs to ccvs
 
-2003-02-11  Patrice Dumas <dumas@centre-cired.fr>
+2003-02-11  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: unused variables removed
 	use_bibliography removed, lots of global variables made lexical.
@@ -3667,7 +3667,7 @@
 	add meta http-equiv="Content-Type" tag for the charset
  	declaration.
 
-2003-02-06  Patrice Dumas <dumas@centre-cired.fr>
+2003-02-06  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init: some unused variables removed
 	use_acc not used anymore, accents are always handled
@@ -3678,7 +3678,7 @@
 	during pass1 some lines where pushed in @lines2 instead of @lines
 	* Tests/test.sh: ignore CVS directory when doing diffs
 
-2003-02-03  Patrice Dumas <dumas@centre-cired.fr>
+2003-02-03  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: Remove handling of setref which is a TeX macro. The 
 	corresponding texinfo macro is anchor.
@@ -3687,7 +3687,7 @@
 	Files used for testing added, texinfo manuals and the html results for 
 	some of the texinfo manuals
 
-2003-01-30  Patrice Dumas <dumas@centre-cired.fr>
+2003-01-30  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: fix nesting of multi line style macros (previously,
 	@kbd{@code{my
@@ -3702,7 +3702,7 @@
 	of the texinfo file with extension appended, and not $T2H_OUT.
 
 
-2003-01-28  Patrice Dumas <dumas@centre-cired.fr>
+2003-01-28  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: fixes in the handling of characters which are 
 	special in html (&, "), involving some rewriting/replacements 
@@ -3711,14 +3711,14 @@
 	new function protect_space_style used to normalise nodes without
 	calling protect_html
 
-2003-01-24  Patrice Dumas <dumas@centre-cired.fr>
+2003-01-24  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: fixes for @multitables:
 	size detection, elements out of bounds are ignored
 	@item and @tab may appear anywhere within table lines
 
 
-2003-01-22  Patrice Dumas <dumas@centre-cired.fr>
+2003-01-22  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: Ref to info files are handled correctly
 	@ref{(perl)Top} is transformed into @ref{Top,,,perl}.
@@ -3733,17 +3733,17 @@
 	$T2H_TODAY $T2H_USER $THISPROG to given values. This is in order 
 	to be able to compare with reference files for testing purproses.
 
-2003-01-16  Patrice Dumas <dumas@centre-cired.fr>
+2003-01-16  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: @H{a} is changed in a'' and not &aacute; which was 
 	wrong, as there are 2 acute accents on @H{a}.
 
-2003-01-09  Patrice Dumas <dumas@centre-cired.fr>
+2003-01-09  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.pl: Suppress warnings for undefined patterns or 
 	variables when running with -w
 
-2003-01-08  Patrice Dumas <dumas@centre-cired.fr>
+2003-01-08  Patrice Dumas <pertusus@free.fr>
 
 	* texi2html.init: small typo in a french word corrected
 	* texi2html.pl: @dotless macros are processed before accents
@@ -3854,7 +3854,7 @@
 
 	* texi2html.init (T2H_WORDS_FR, MONTH_NAMES_FR): Add French
 	translations.
-	(Patch from Dumas Patrice <dumas@centre-cired.fr>.)
+	(Patch from Dumas Patrice <pertusus@free.fr>.)
 
 2001-09-17  Derek Price  <dprice@collab.net>
 

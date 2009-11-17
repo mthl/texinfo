@@ -2,7 +2,7 @@
 #
 # T2h_i18n.pm: Internationalization for texi2html
 #
-#    Copyright (C) 1999-2005  Patrice Dumas <dumas@centre-cired.fr>,
+#    Copyright (C) 1999-2005  Patrice Dumas <pertusus@free.fr>,
 #                             Derek Price <derek@ximbiot.com>,
 #                             Adrian Aichner <adrian@xemacs.org>,
 #                           & others.

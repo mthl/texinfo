@@ -6,7 +6,7 @@
 #
 # texi2html: Program to transform Texinfo documents to HTML
 #
-#    Copyright (C) 1999-2005  Patrice Dumas <dumas@centre-cired.fr>,
+#    Copyright (C) 1999-2005  Patrice Dumas <pertusus@free.fr>,
 #                             Derek Price <derek@ximbiot.com>,
 #                             Adrian Aichner <adrian@xemacs.org>,
 #                           & others.
@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.355 2009-11-15 23:39:06 pertusus Exp $
+# $Id: texi2html.pl,v 1.356 2009-11-17 14:15:57 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";

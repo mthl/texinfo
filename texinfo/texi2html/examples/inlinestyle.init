@@ -2,7 +2,10 @@
 #
 # inlinestyle.init: style is inlined instead of being in a css file
 #
-#    Copyright (C) 2003-2008  Patrice Dumas <dumas@centre-cired.fr>
+# This is obsolete now that it is set up in the standard html style with
+# $INLINE_CSS_STYLE set to 1 (and used in mediawiki.init).
+#
+#    Copyright (C) 2003-2008  Patrice Dumas <pertusus@free.fr>
 #
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -20,6 +23,7 @@
 #    02110-1301  USA
 #
 #-##############################################################################
+
 
 $NO_BULLET_LIST_ATTRIBUTE = $NO_BULLET_LIST_ATTRIBUTE . " style=\"$NO_BULLET_LIST_STYLE\"";
 
