@@ -2960,7 +2960,7 @@ sub info_default_index_entry_label($$$$$$$$$)
 
     #return '' if ($index_entry_ref->{'hidden'});
     #return '' if (!$index_entry_ref->{'seen_in_output'} and defined($index_entry_ref->{'region'}));
-    return '' if ($in_region_not_in_output);
+    return '' if ($in_region_not_in_output or !defined($index_entry_ref->{'index_name'}));
     main::line_warn("Entry for index `$index_entry_ref->{'index_name'}' outside of any node", $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node) and !$Texi2HTML::THISDOC{'state'}->{'outside_document'});
     my $index_entry_stored = {'index_entry_reference' => $index_entry_ref, 'index_command' => $index_command, 'texi_entry' => $texi_entry};
     return info_default_store_text(undef, undef, 'index_label', $index_entry_stored);

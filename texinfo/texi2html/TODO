@@ -242,10 +242,6 @@ table menu
 
 * test stuff on 'line_command' relevant in pass 1, like @macro, @ignore...
 
-* do a test leading to 'Undefined index command', maybe in index_special_region
-  would be nice, if possible, using an unknown index index entry. If
-  not possible turn the error into a debug message.
-
 * in chm.init (Jose Fonseca)
 
 [WINDOWS]

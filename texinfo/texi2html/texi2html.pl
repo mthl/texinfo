@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.356 2009-11-17 14:15:57 pertusus Exp $
+# $Id: texi2html.pl,v 1.357 2009-11-21 22:56:06 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -6177,8 +6177,13 @@ my @index_labels;                  # array corresponding with @?index commands
 # specified for texinfo
 sub cross_manual_links()
 {
+    my @all_index_entries;
+    foreach my $index_name (sort(keys(%{$Texi2HTML::THISDOC{'index_entries_array'}})))
+    {
+       push @all_index_entries, @{$Texi2HTML::THISDOC{'index_entries_array'}->{$index_name}};
+    }
     print STDERR "# Doing ".scalar(keys(%nodes))." cross manual links ".
-      scalar(@index_labels). " index entries\n" 
+      scalar(@all_index_entries). " index entries\n" 
        if ($T2H_DEBUG);
     $::simple_map_texi_ref = \%cross_ref_simple_map_texi;
     $::style_map_texi_ref = \%cross_ref_style_map_texi;
@@ -6265,7 +6270,7 @@ sub cross_manual_links()
             }
         }
 
-        foreach my $entry (@index_labels, values(%sections), values(%headings))
+        foreach my $entry (@all_index_entries, values(%sections), values(%headings))
         {
             #print STDERR "TRANSLITERATE($entry) $entry->{'texi'}\n";
             $entry->{'cross'} = remove_texi($entry->{'texi'});
@@ -6274,7 +6279,7 @@ sub cross_manual_links()
     }
     else
     {
-        foreach my $entry (@index_labels, values(%sections), values(%headings))
+        foreach my $entry (@all_index_entries, values(%sections), values(%headings))
         {
             $entry->{'cross'} = remove_texi($entry->{'texi'});
             if ($Texi2HTML::Config::USE_UNICODE)
@@ -7310,21 +7315,26 @@ sub rearrange_elements()
        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     if ($Texi2HTML::Config::NEW_CROSSREF_STYLE)
     {
-        foreach my $index_entry (@index_labels)
+        foreach my $entry_region (sort(keys(%{$Texi2HTML::THISDOC{'index_entries_region_array'}})))
         {
-            my $index_id = "index-" . $index_entry->{'cross'};
-            my $index = 1;
-            # $index > 0 should prevent integer overflow, hopefully
-            while (exists($cross_reference_nodes{$index_id}) and $index > 0)
+            foreach my $index_entry (@{$Texi2HTML::THISDOC{'index_entries_region_array'}->{$entry_region}})
             {
-                $index_id = "index-" . $index_entry->{'cross'} . "-" .$index;
-                $index++;
+                my $region = '';
+                $region = "$index_entry->{'region'}-" if (defined($index_entry->{'region'}) and $index_entry->{'region'} ne '');
+                my $index_id = "index-" . $region .$index_entry->{'cross'};
+                my $index = 1;
+                # $index > 0 should prevent integer overflow, hopefully
+                while (exists($cross_reference_nodes{$index_id}) and $index > 0)
+                {
+                    $index_id = "index-" . $region . $index_entry->{'cross'} . "-" .$index;
+                    $index++;
+                }
+                $index_entry->{'id'} = $index_id;
+                $index_entry->{'target'} = $index_id;
+                my $texi_entry = "index-".$region.$index_entry->{'texi'};
+                $texi_entry .= "-".$index if ($index > 1);
+                push @{$cross_reference_nodes{$index_id}}, $texi_entry;
             }
-            $index_entry->{'id'} = $index_id;
-            $index_entry->{'target'} = $index_id;
-            my $texi_entry = "index-".$index_entry->{'texi'};
-            $texi_entry .= "-".$index if ($index > 1);
-            push @{$cross_reference_nodes{$index_id}}, $texi_entry;
         }
     }
 
@@ -7949,8 +7959,6 @@ sub enter_index_entry($$$$$)
     if (!defined($index_name))
     {
         line_error (sprintf(__("Unknown index `%s'"), $prefix), $line_nr);
-        $entry = '';
-        $index_name = $prefix;
     }
     if ($current_element eq $element_before_anything)
     {
@@ -7967,11 +7975,12 @@ sub enter_index_entry($$$$$)
 
     my $id;
     # don't add a specific index target if the index entry is in a special
-    # region like @copying or the like
+    # region like @copying or the like or the index is not defined
     if (!defined($region))
     {
         $region = 'document';
-        $id = 'IDX' . ++$document_idx_num;
+        # No id if the index is unknown.
+        $id = 'IDX' . ++$document_idx_num if (defined($index_name));
     }
     my $target = $id;
 
@@ -7998,7 +8007,7 @@ sub enter_index_entry($$$$$)
         if ($T2H_DEBUG & $DEBUG_INDEX);
 
     $index_entry->{'entry'} = '@code{'.$index_entry->{'entry'}.'}'
-       if (defined($index_names{$index_name}) and 
+       if (defined($index_name) and 
         defined($index_names{$index_name}->{'prefixes'}) and 
         $index_names{$index_name}->{'prefixes'}->{$prefix} 
         and $key =~ /\S/);
@@ -8013,10 +8022,12 @@ sub enter_index_entry($$$$$)
     # index entries lists are broken by region now.
     push @index_labels, $index_entry unless (defined($state->{'region'}));
 
-    # these lists aare used to retrieve index entries in pass 3
+    # these lists are used to retrieve index entries in pass 3
     push @{$Texi2HTML::THISDOC{'index_entries'}->{$region}->{$entry}->{'entries'}}, $index_entry;
     # this is used for @printindex
-    push @{$Texi2HTML::THISDOC{'index_entries_array'}->{$index_name}}, $index_entry;
+    push @{$Texi2HTML::THISDOC{'index_entries_array'}->{$index_name}}, $index_entry if (defined($index_name));
+    # this is used for targets
+    push @{$Texi2HTML::THISDOC{'index_entries_region_array'}->{$region}}, $index_entry if (defined($index_name));
 }
 
 # these variables are global, so great care should be taken with
@@ -11815,7 +11826,7 @@ sub index_entry_command_prefix($$$)
        return $prefix;
     }
     my $prefix = index_command_prefix($command);
-    line_error("No prefix found for \@$command $line",$line_nr) if ($prefix eq '');
+    line_error(sprintf(__("No index prefix found for \@%s"),$command),$line_nr) if ($prefix eq '');
     return $prefix;
 }
 
@@ -15943,6 +15954,9 @@ sub do_index_entry_label($$$$;$)
     # reuse get_deff_index.
     my $line = shift;
 
+    my $prefix = index_entry_command_prefix($command, $line, $line_nr);
+    my $index_name = $index_prefix_to_name{$prefix};
+
     msg_debug("do_index_entry_label($command): Undefined entry_texi", $line_nr)
        if (!defined($entry_texi));
     $entry_texi = trim_comment_spaces($entry_texi, "index label in \@$command", $line_nr);
@@ -15953,14 +15967,14 @@ sub do_index_entry_label($$$$;$)
 
     my $entry;
     # Can be within a @caption expanded within a listoffloat. In that
-    # case the 2 following condition are not set.
+    # case the 2 conditions on state are not set.
     if (defined($state->{'region'}) or !defined($state->{'expansion'}))
     {
        # index entry on a line that is not searched for index entries, like
        # a @def* line
        if (!defined($Texi2HTML::THISDOC{'index_entries'}->{$region}) or !defined($Texi2HTML::THISDOC{'index_entries'}->{$region}->{$entry_texi}))
        {
-          line_warn("Index entry not caught: `$entry_texi' in $region", $line_nr);
+          line_warn(sprintf(__("Index entry not caught: `%s' in %s"), $entry_texi, $region), $line_nr);
        }
        else
        {
@@ -15993,16 +16007,17 @@ sub do_index_entry_label($$$$;$)
              my $entry_from_array = shift @index_labels;
              if ($entry_from_array ne $entry)
              {
-                line_warn ("entry `$entry->{'texi'}' ne entry_from_array `$entry_from_array->{'texi'}'", $line_nr);
+                msg_debug ("entry `$entry->{'texi'}' ne entry_from_array `$entry_from_array->{'texi'}'", $line_nr);
              }
              if (!defined($entry_from_array))
              {
-                line_warn ("Not enough index entries !", $line_nr);
+                mesg_debug ("Not enough index entries !", $line_nr);
              }
           }
           ############################################# end debug
        }
     }
+
     if (!defined($entry))
     {
         # this can happen for listoffloats and caption without being a user 
@@ -16010,9 +16025,6 @@ sub do_index_entry_label($$$$;$)
         # error, putting an index entry in a snippet that can be expanded
         # more than once and is not strictly associated with a node/section.
 
-        my $prefix = index_entry_command_prefix($command, $line, $line_nr);
-        my $index_name = undef;
-        $index_name = $index_prefix_to_name{$prefix} if ($prefix ne '');
         #print STDERR "Entry for index $index_name not gathered in usual places ($region)\n";
         $entry = {
           'command' => $command,
@@ -16023,34 +16035,44 @@ sub do_index_entry_label($$$$;$)
         };
         $entry->{'key'} = remove_texi($entry_texi);
         $entry->{'entry'} = '@code{'.$entry->{'entry'}.'}'
-            if (defined($index_names{$index_name}) and
+            if (defined($index_name) and
              defined($index_names{$index_name}->{'prefixes'}) and
              $index_names{$index_name}->{'prefixes'}->{$prefix}
              and $entry->{'key'} =~ /\S/);
     }
+
+    ###################################### debug
+    else
+    {
+         if ($entry->{'prefix'} ne $prefix)
+         {
+             msg_debug ("prefix in entry $entry->{'prefix'} ne $prefix from $command", $line_nr);
+         }
+    }
+
     if ($command ne $entry->{'command'})
     {
         # happened with bad texinfo with a line like
         # @deffn func aaaa args  @defvr c--ategory d--efvr_name
         # now this case is caught above by "Index entry not caught:
-        line_warn ("($region) Waiting for index cmd \@$entry->{'command'} got \@$command", $line_nr);
+        msg_debug ("($region) Waiting for index cmd \@$entry->{'command'} got \@$command", $line_nr);
     }
+
     if ($entry->{'texi'} ne $entry_texi)
     {
         msg_debug ("Waiting for index `$entry->{'texi'}', got `$entry_texi'", $line_nr);
     }
     
-    my $index_name = $index_prefix_to_name{$entry->{'prefix'}};
-    # =========== debug
     my $id = 'no id';
     $id = $entry->{'id'} if (defined($entry->{'id'}));
     print STDERR "(index($index_name) $command) [$entry->{'entry'}] $id\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
-    # =========== end debug
+    ###################################### end debug
+
     #return (undef,'','') if ($state->{'region'});
     if ($entry->{'key'} =~ /^\s*$/)
     {
-        line_warn("Empty index entry for \@$command",$entry->{'line_nr'});
+        line_warn(sprintf(__("Empty index entry for \@%s"), $command), $entry->{'line_nr'});
     }
     my $formatted_entry = substitute_line($entry->{'entry'}, "\@$command", prepare_state_multiple_pass("${command}_index", $state),$entry->{'line_nr'});
     my $formatted_entry_reference = substitute_line($entry->{'texi'}, "\@$command", prepare_state_multiple_pass("${command}_index", $state));

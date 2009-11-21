@@ -39,6 +39,10 @@ kbd: <code>``simple-double--three---four----<nowiki>''</nowiki></code> <br>
 
 &lsquo;&lsquo;simple-double--three&mdash;four&mdash;-&rsquo;&rsquo;<br>
 
+<div id="index-copying-_002d_002doption"></div>
+<div id="index-copying-_0060_0060"></div>
+<div id="index-copying-_0060_0060-1"></div>
+<div id="index-copying-_002d_002dfoption"></div>
 
 @&quot;u &uuml; 
 @&quot;<nowiki>{</nowiki>U<nowiki>}</nowiki> &Uuml; 
@@ -284,6 +288,7 @@ After clickstyle &rArr;
 
 * ''after emph'' e&ndash;mph item
 
+<div id="index-copying-index-entry-within-itemize"></div>
 * &bull; a&ndash;n itemize line i&ndash;tem 1
 * &bull; a&ndash;n itemize line i&ndash;tem 2
 
@@ -292,7 +297,7 @@ After clickstyle &rArr;
 <table>
 <thead><tr><th width="600%">mu&ndash;ltitable headitem</th><th width="700%">another tab</th></tr></thead>
 <tr><td width="600%">mu&ndash;ltitable item</td><td width="700%">multitable tab</td></tr>
-<tr><td width="600%">mu&ndash;ltitable item 2</td><td width="700%">multitable tab 2</td></tr>
+<tr><td width="600%">mu&ndash;ltitable item 2</td><td width="700%">multitable tab 2 <div id="index-copying-index-entry-within-multitable"></div></td></tr>
 <tr><td width="600%">lone mu&ndash;ltitable item</td></tr>
 </table>
 
@@ -341,95 +346,96 @@ After clickstyle &rArr;
 </div>
 </td></tr></table>
 
-;c--ategory<nowiki>:</nowiki> <strong>d--effn_name</strong><em> a--rguments...</em>
+;<div id="index-copying-d_002d_002deffn_005fname"></div>c--ategory<nowiki>:</nowiki> <strong>d--effn_name</strong><em> a--rguments...</em>
 : d&ndash;effn
 
-;cate--gory<nowiki>:</nowiki> <strong>de--ffn_name</strong><em> ar--guments more args <br> even more so</em>
+;<div id="index-copying-de_002d_002dffn_005fname"></div>cate--gory<nowiki>:</nowiki> <strong>de--ffn_name</strong><em> ar--guments more args <br> even more so</em>
 : def&ndash;fn
  
-;fset<nowiki>:</nowiki> <strong><var>i</var></strong><em> a g</em>
-;cmde<nowiki>:</nowiki> <strong>truc</strong>
-;Command<nowiki>:</nowiki> <strong>log trap</strong>
-;Command<nowiki>:</nowiki> <strong> log trap1</strong>
-;Command<nowiki>:</nowiki> <strong>log trap2 </strong>
-;cmde<nowiki>:</nowiki> <strong><b>id ule</b></strong><em> truc</em>
-;cmde2<nowiki>:</nowiki> <strong><b>id &lsquo;<code>i</code>&rsquo; ule</b></strong><em> truc</em>
-;<b>id &lsquo;<code>i</code>&rsquo; ule</b><nowiki>:</nowiki>
-;<nowiki>:</nowiki>
-;aaa<nowiki>:</nowiki>
-;<nowiki>:</nowiki>
-;<nowiki>:</nowiki>
-;<nowiki>:</nowiki> <strong>machin</strong>
-;<nowiki>:</nowiki> <strong>bidule machin</strong>
-;truc<nowiki>:</nowiki> <strong>machin</strong>
-;truc<nowiki>:</nowiki>
-;truc<nowiki>:</nowiki> <strong>followed</strong><em> by a comment</em>
-;truc<nowiki>:</nowiki>
-;<nowiki>:</nowiki>
-;truc<nowiki>:</nowiki> <strong>a</strong><em> b c d e <b>f g</b> h i</em>
-;truc<nowiki>:</nowiki> <strong>deffnx</strong><em> before end deffn</em>
+;<div id="index-copying-i"></div>fset<nowiki>:</nowiki> <strong><var>i</var></strong><em> a g</em>
+<div id="index-copying-index-entry-within-deffn"></div>
+;<div id="index-copying-truc"></div>cmde<nowiki>:</nowiki> <strong>truc</strong>
+;<div id="index-copying-log-trap"></div>Command<nowiki>:</nowiki> <strong>log trap</strong>
+;<div id="index-copying-log-trap1"></div>Command<nowiki>:</nowiki> <strong> log trap1</strong>
+;<div id="index-copying-log-trap2"></div>Command<nowiki>:</nowiki> <strong>log trap2 </strong>
+;<div id="index-copying-id-ule"></div>cmde<nowiki>:</nowiki> <strong><b>id ule</b></strong><em> truc</em>
+;<div id="index-copying-id-i-ule"></div>cmde2<nowiki>:</nowiki> <strong><b>id &lsquo;<code>i</code>&rsquo; ule</b></strong><em> truc</em>
+;<div id="index-copying-"></div><b>id &lsquo;<code>i</code>&rsquo; ule</b><nowiki>:</nowiki>
+;<div id="index-copying--1"></div><nowiki>:</nowiki>
+;<div id="index-copying--2"></div>aaa<nowiki>:</nowiki>
+;<div id="index-copying--3"></div><nowiki>:</nowiki>
+;<div id="index-copying--4"></div><nowiki>:</nowiki>
+;<div id="index-copying-machin"></div><nowiki>:</nowiki> <strong>machin</strong>
+;<div id="index-copying-bidule-machin"></div><nowiki>:</nowiki> <strong>bidule machin</strong>
+;<div id="index-copying-machin-1"></div>truc<nowiki>:</nowiki> <strong>machin</strong>
+;<div id="index-copying--5"></div>truc<nowiki>:</nowiki>
+;<div id="index-copying-followed"></div>truc<nowiki>:</nowiki> <strong>followed</strong><em> by a comment</em>
+;<div id="index-copying--6"></div>truc<nowiki>:</nowiki>
+;<div id="index-copying--7"></div><nowiki>:</nowiki>
+;<div id="index-copying-a"></div>truc<nowiki>:</nowiki> <strong>a</strong><em> b c d e <b>f g</b> h i</em>
+;<div id="index-copying-deffnx"></div>truc<nowiki>:</nowiki> <strong>deffnx</strong><em> before end deffn</em>
 
-;empty<nowiki>:</nowiki> <strong>deffn</strong>
+;<div id="index-copying-deffn"></div>empty<nowiki>:</nowiki> <strong>deffn</strong>
 
-;empty<nowiki>:</nowiki> <strong>deffn</strong><em> with deffnx</em>
-;empty<nowiki>:</nowiki> <strong>deffnx</strong>
+;<div id="index-copying-deffn-1"></div>empty<nowiki>:</nowiki> <strong>deffn</strong><em> with deffnx</em>
+;<div id="index-copying-deffnx-1"></div>empty<nowiki>:</nowiki> <strong>deffnx</strong>
 
-;fset<nowiki>:</nowiki> <strong><var>i</var></strong><em> a g</em>
-;cmde<nowiki>:</nowiki> <strong>truc</strong>
+;<div id="index-copying-i-1"></div>fset<nowiki>:</nowiki> <strong><var>i</var></strong><em> a g</em>
+;<div id="index-copying-truc-1"></div>cmde<nowiki>:</nowiki> <strong>truc</strong>
 : text in def item for second def item
 
-;c--ategory<nowiki>:</nowiki> <strong>d--efvr_name</strong>
+;<div id="index-copying-d_002d_002defvr_005fname"></div>c--ategory<nowiki>:</nowiki> <strong>d--efvr_name</strong>
 : d&ndash;efvr
 
-;c--ategory<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypefn_name</strong><em> a--rguments...</em>
+;<div id="index-copying-d_002d_002deftypefn_005fname"></div>c--ategory<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypefn_name</strong><em> a--rguments...</em>
 : d&ndash;eftypefn
 
-;c--ategory on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypeop_name</strong><em> a--rguments...</em>
+;<div id="index-copying-d_002d_002deftypeop_005fname-on-c_002d_002dlass"></div>c--ategory on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypeop_name</strong><em> a--rguments...</em>
 : d&ndash;eftypeop
 
-;c--ategory<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypevr_name</strong>
+;<div id="index-copying-d_002d_002deftypevr_005fname"></div>c--ategory<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypevr_name</strong>
 : d&ndash;eftypevr
 
-;c--ategory of c--lass<nowiki>:</nowiki> <strong>d--efcv_name</strong>
+;<div id="index-copying-d_002d_002defcv_005fname"></div>c--ategory of c--lass<nowiki>:</nowiki> <strong>d--efcv_name</strong>
 : d&ndash;efcv
 
-;c--ategory on c--lass<nowiki>:</nowiki> <strong>d--efop_name</strong><em> a--rguments...</em>
+;<div id="index-copying-d_002d_002defop_005fname-on-c_002d_002dlass"></div>c--ategory on c--lass<nowiki>:</nowiki> <strong>d--efop_name</strong><em> a--rguments...</em>
 : d&ndash;efop
 
-;c--ategory<nowiki>:</nowiki> <strong>d--eftp_name</strong><em> a--ttributes...</em>
+;<div id="index-copying-d_002d_002deftp_005fname"></div>c--ategory<nowiki>:</nowiki> <strong>d--eftp_name</strong><em> a--ttributes...</em>
 : d&ndash;eftp
 
-;Function<nowiki>:</nowiki> <strong>d--efun_name</strong><em> a--rguments...</em>
+;<div id="index-copying-d_002d_002defun_005fname"></div>Function<nowiki>:</nowiki> <strong>d--efun_name</strong><em> a--rguments...</em>
 : d&ndash;efun
 
-;Macro<nowiki>:</nowiki> <strong>d--efmac_name</strong><em> a--rguments...</em>
+;<div id="index-copying-d_002d_002defmac_005fname"></div>Macro<nowiki>:</nowiki> <strong>d--efmac_name</strong><em> a--rguments...</em>
 : d&ndash;efmac
 
-;Special Form<nowiki>:</nowiki> <strong>d--efspec_name</strong><em> a--rguments...</em>
+;<div id="index-copying-d_002d_002defspec_005fname"></div>Special Form<nowiki>:</nowiki> <strong>d--efspec_name</strong><em> a--rguments...</em>
 : d&ndash;efspec
 
-;Variable<nowiki>:</nowiki> <strong>d--efvar_name</strong><em> argvar argvar1</em>
+;<div id="index-copying-d_002d_002defvar_005fname"></div>Variable<nowiki>:</nowiki> <strong>d--efvar_name</strong><em> argvar argvar1</em>
 : d&ndash;efvar
 
-;User Option<nowiki>:</nowiki> <strong>d--efopt_name</strong>
+;<div id="index-copying-d_002d_002defopt_005fname"></div>User Option<nowiki>:</nowiki> <strong>d--efopt_name</strong>
 : d&ndash;efopt
 
-;Function<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypefun_name</strong><em> a--rguments...</em>
+;<div id="index-copying-d_002d_002deftypefun_005fname"></div>Function<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypefun_name</strong><em> a--rguments...</em>
 : d&ndash;eftypefun
 
-;Variable<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypevar_name</strong>
+;<div id="index-copying-d_002d_002deftypevar_005fname"></div>Variable<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypevar_name</strong>
 : d&ndash;eftypevar
 
-;Instance Variable of c--lass<nowiki>:</nowiki> <strong>d--efivar_name</strong>
+;<div id="index-copying-d_002d_002defivar_005fname"></div>Instance Variable of c--lass<nowiki>:</nowiki> <strong>d--efivar_name</strong>
 : d&ndash;efivar
 
-;Instance Variable of c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypeivar_name</strong>
+;<div id="index-copying-d_002d_002deftypeivar_005fname-of-c_002d_002dlass"></div>Instance Variable of c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypeivar_name</strong>
 : d&ndash;eftypeivar
 
-;Method on c--lass<nowiki>:</nowiki> <strong>d--efmethod_name</strong><em> a--rguments...</em>
+;<div id="index-copying-d_002d_002defmethod_005fname-on-c_002d_002dlass"></div>Method on c--lass<nowiki>:</nowiki> <strong>d--efmethod_name</strong><em> a--rguments...</em>
 : d&ndash;efmethod
 
-;Method on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypemethod_name</strong><em> a--rguments...</em>
+;<div id="index-copying-d_002d_002deftypemethod_005fname-on-c_002d_002dlass"></div>Method on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypemethod_name</strong><em> a--rguments...</em>
 : d&ndash;eftypemethod
 
 <code>@xref<nowiki>{</nowiki>c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@<nowiki>}</nowiki></code> See [file n---ame@@.#c_002d_002d_002dhapter_0040 cross r&mdash;ef name@: (file n&mdash;ame@)c&mdash;hapter@] section &lsquo;t&mdash;itle@&rsquo; in <cite>ma&mdash;nual@</cite>.
@@ -497,14 +503,19 @@ See [a comma@comma{} in file.#s_002d_002dect_002cion a , in cross ref: (a comma,
 : l&ndash;ine
 
 ;a
+<div id="index-copying-a-1"></div>
 
 ;b
+<div id="index-copying-b"></div>
 
 : l&ndash;ine
 
 ;- a
+<div id="index-copying-a-2"></div>
 
+<div id="index-copying-index-entry-between-item-and-itemx"></div>
 ;- b
+<div id="index-copying-b-1"></div>
 
 : l&ndash;ine
 
@@ -597,14 +608,14 @@ Invalid use of @&rsquo;:<br>
 * &bull; a&ndash;n itemize line i&ndash;tem 1
 * &bull; a&ndash;n itemize line i&ndash;tem 2
 
-;fun<nowiki>:</nowiki>
-;truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and </em>
-;truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and  after</em>
-;truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and {</em>
-;truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and { and after</em>
-;truc<nowiki>:</nowiki> <strong>followed</strong><em> by a comment</em>
+;<div id="index-copying--8"></div>fun<nowiki>:</nowiki>
+;<div id="index-copying-machin-2"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and </em>
+;<div id="index-copying-machin-3"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and  after</em>
+;<div id="index-copying-machin-4"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and {</em>
+;<div id="index-copying-machin-5"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and { and after</em>
+;<div id="index-copying-followed-1"></div>truc<nowiki>:</nowiki> <strong>followed</strong><em> by a comment</em>
 : Various deff lines
-;truc<nowiki>:</nowiki> <strong>after</strong><em> a deff item</em>
+;<div id="index-copying-after"></div>truc<nowiki>:</nowiki> <strong>after</strong><em> a deff item</em>
 
 <code>@ref<nowiki>{</nowiki>node<nowiki>}</nowiki></code> @ref{node}
 
@@ -2220,16 +2231,16 @@ cp
 ----
 </td></tr>
 <tr><th><div id="Top-section_cp_symbol-1"></div>&quot;</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-_0060_0060|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-_0060_0060|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_0060_0060|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_0060_0060-2|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="Top-section_cp_symbol-2"></div>-</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-_002d_002doption|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-_002d_002doption|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_002d_002doption|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_002d_002doption-1|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
@@ -2251,20 +2262,20 @@ cp
 ----
 </td></tr>
 <tr><th><div id="Top-section_cp_letter-I"></div>I</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-index-entry-between-item-and-itemx|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-index-entry-between-item-and-itemx|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-between-item-and-itemx|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-between-item-and-itemx-1|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-index-entry-within-deffn|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-index-entry-within-deffn|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-within-deffn|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-within-deffn-1|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-index-entry-within-itemize|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-index-entry-within-itemize|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-within-itemize|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-within-itemize-1|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-index-entry-within-multitable|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-index-entry-within-multitable|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-within-multitable|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-within-multitable-1|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
@@ -2308,16 +2319,16 @@ fn
 ----
 </td></tr>
 <tr><th><div id="Top-section_fn_symbol-1"></div>&quot;</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-_0060_0060-1|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-_0060_0060-1|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_0060_0060-1|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_0060_0060-3|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="Top-section_fn_symbol-2"></div>-</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-_002d_002dfoption|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-_002d_002dfoption|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_002d_002dfoption|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_002d_002dfoption-1|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
@@ -2334,91 +2345,91 @@ fn
 ----
 </td></tr>
 <tr><th><div id="Top-section_fn_letter-A"></div>A</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-a|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-a-2|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-a|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-a-2|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-a|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-a-2|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-a-3|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-a-5|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-a-7|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-after|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-after|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-after|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-after-1|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="Top-section_fn_letter-B"></div>B</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-b-1|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-b-1|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-b-1|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-b-3|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-bidule-machin|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-bidule-machin|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-bidule-machin|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-bidule-machin-1|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="Top-section_fn_letter-D"></div>D</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deffn_005fname|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deffn_005fname|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deffn_005fname|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deffn_005fname-1|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defmac_005fname|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defmac_005fname|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defmac_005fname|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defmac_005fname-1|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defmethod_005fname-on-c_002d_002dlass|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defmethod_005fname-on-c_002d_002dlass|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defmethod_005fname-on-c_002d_002dlass|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defmethod_005fname-on-c_002d_002dlass-1|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defop_005fname-on-c_002d_002dlass|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defop_005fname-on-c_002d_002dlass|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defop_005fname-on-c_002d_002dlass|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defop_005fname-on-c_002d_002dlass-1|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defspec_005fname|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defspec_005fname|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defspec_005fname|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defspec_005fname-1|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deftypefn_005fname|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deftypefn_005fname|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypefn_005fname|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypefn_005fname-1|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deftypefun_005fname|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deftypefun_005fname|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypefun_005fname|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypefun_005fname-1|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deftypemethod_005fname-on-c_002d_002dlass|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deftypemethod_005fname-on-c_002d_002dlass|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass-1|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deftypeop_005fname-on-c_002d_002dlass|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deftypeop_005fname-on-c_002d_002dlass|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypeop_005fname-on-c_002d_002dlass|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypeop_005fname-on-c_002d_002dlass-1|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defun_005fname|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defun_005fname|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defun_005fname|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defun_005fname-1|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-de_002d_002dffn_005fname|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-de_002d_002dffn_005fname|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-de_002d_002dffn_005fname|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-de_002d_002dffn_005fname-1|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-deffn|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-deffn-1|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-deffn|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-deffn-1|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffn|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffn-1|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffn-2|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffn-3|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-deffnx|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-deffnx-1|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-deffnx|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-deffnx-1|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffnx|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffnx-1|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffnx-2|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
@@ -2427,10 +2438,10 @@ fn
 ----
 </td></tr>
 <tr><th><div id="Top-section_fn_letter-F"></div>F</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-followed|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-followed-1|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-followed|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-followed-1|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-followed|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-followed-1|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-followed-2|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
@@ -2439,54 +2450,54 @@ fn
 ----
 </td></tr>
 <tr><th><div id="Top-section_fn_letter-I"></div>I</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-i|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-i-1|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-i|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-i-1|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-i|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-i-1|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-i-2|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-i-3|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-id-i-ule|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-id-i-ule|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-id-i-ule|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-id-i-ule-1|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-id-ule|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-id-ule|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-id-ule|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-id-ule-1|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="Top-section_fn_letter-L"></div>L</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-log-trap|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-log-trap|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-log-trap|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-log-trap-1|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-log-trap1|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-log-trap1|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-log-trap1|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-log-trap1-1|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-log-trap2|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-log-trap2|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-log-trap2|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-log-trap2-1|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="Top-section_fn_letter-M"></div>M</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-machin|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-machin-1|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-machin-2|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-machin-3|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-machin-4|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-machin-5|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-machin|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-machin-1|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-machin-2|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-machin-3|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-machin-4|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-machin-5|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-machin|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-machin-1|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-machin-2|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
@@ -2505,10 +2516,10 @@ fn
 <tr><th><div id="Top-section_fn_letter-T"></div>T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-t_002d_002druc-1|<code>t--ruc</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-T_002d_002druc-1|<code>T--ruc</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-truc|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-truc-1|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-truc|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-truc-1|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-truc|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-truc-1|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-truc-2|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
@@ -2544,52 +2555,52 @@ vr
 ----
 </td></tr>
 <tr><th><div id="Top-section_vr_letter-A"></div>A</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-a-1|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-a-1|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-a-1|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-a-4|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="Top-section_vr_letter-B"></div>B</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-b|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-b|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-b|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-b-2|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="Top-section_vr_letter-D"></div>D</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efcv_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efcv_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defcv_005fname|<code>d--efcv_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defcv_005fname|<code>d--efcv_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defcv_005fname|<code>d--efcv_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defcv_005fname-1|<code>d--efcv_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efivar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efivar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defivar_005fname|<code>d--efivar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defivar_005fname|<code>d--efivar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defivar_005fname|<code>d--efivar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defivar_005fname-1|<code>d--efivar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efopt_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efopt_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defopt_005fname|<code>d--efopt_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defopt_005fname|<code>d--efopt_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defopt_005fname|<code>d--efopt_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defopt_005fname-1|<code>d--efopt_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypeivar_name of c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypeivar_name of c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deftypeivar_005fname-of-c_002d_002dlass|<code>d--eftypeivar_name of c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deftypeivar_005fname-of-c_002d_002dlass|<code>d--eftypeivar_name of c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass|<code>d--eftypeivar_name of c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass-1|<code>d--eftypeivar_name of c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypevar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypevar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deftypevar_005fname|<code>d--eftypevar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deftypevar_005fname|<code>d--eftypevar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypevar_005fname|<code>d--eftypevar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypevar_005fname-1|<code>d--eftypevar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypevr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypevr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deftypevr_005fname|<code>d--eftypevr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deftypevr_005fname|<code>d--eftypevr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypevr_005fname|<code>d--eftypevr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypevr_005fname-1|<code>d--eftypevr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efvar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efvar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defvar_005fname|<code>d--efvar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defvar_005fname|<code>d--efvar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defvar_005fname|<code>d--efvar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defvar_005fname-1|<code>d--efvar_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efvr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efvr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defvr_005fname|<code>d--efvr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defvr_005fname|<code>d--efvr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defvr_005fname|<code>d--efvr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defvr_005fname-1|<code>d--efvr_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
@@ -2616,8 +2627,8 @@ tp
 ----
 </td></tr>
 <tr><th><div id="Top-section_tp_letter-D"></div>D</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftp_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftp_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deftp_005fname|<code>d--eftp_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deftp_005fname|<code>d--eftp_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftp_005fname|<code>d--eftp_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftp_005fname-1|<code>d--eftp_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
@@ -2806,16 +2817,16 @@ tp
 ----
 </td></tr>
 <tr><th><div id="chapter-2_cp_symbol-1"></div>&quot;</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-_0060_0060|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-_0060_0060|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_0060_0060|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_0060_0060-2|&ldquo;]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="chapter-2_cp_symbol-2"></div>-</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-_002d_002doption|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-_002d_002doption|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_002d_002doption|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_002d_002doption-1|&ndash;option]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
@@ -2837,20 +2848,20 @@ tp
 ----
 </td></tr>
 <tr><th><div id="chapter-2_cp_letter-I"></div>I</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-index-entry-between-item-and-itemx|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-index-entry-between-item-and-itemx|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-between-item-and-itemx|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-between-item-and-itemx-1|index entry between item and itemx]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-index-entry-within-deffn|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-index-entry-within-deffn|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-within-deffn|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-within-deffn-1|index entry within deffn]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-index-entry-within-itemize|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-index-entry-within-itemize|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-within-itemize|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-within-itemize-1|index entry within itemize]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-index-entry-within-multitable|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-index-entry-within-multitable|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-within-multitable|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-index-entry-within-multitable-1|index entry within multitable]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
@@ -2892,16 +2903,16 @@ tp
 ----
 </td></tr>
 <tr><th><div id="chapter-2_fn_symbol-1"></div>&quot;</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-_0060_0060-1|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-_0060_0060-1|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_0060_0060-1|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_0060_0060-3|<code>``</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="chapter-2_fn_symbol-2"></div>-</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-_002d_002dfoption|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-_002d_002dfoption|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_002d_002dfoption|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-_002d_002dfoption-1|<code>--foption</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
@@ -2918,91 +2929,91 @@ tp
 ----
 </td></tr>
 <tr><th><div id="chapter-2_fn_letter-A"></div>A</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-a|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-a-2|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-a|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-a-2|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-a|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-a-2|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-a-3|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-a-5|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-a-7|<code>a</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-after|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-after|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-after|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-after-1|<code>after</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="chapter-2_fn_letter-B"></div>B</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-b-1|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-b-1|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-b-1|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-b-3|<code>b</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-bidule-machin|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-bidule-machin|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-bidule-machin|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-bidule-machin-1|<code>bidule machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="chapter-2_fn_letter-D"></div>D</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deffn_005fname|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deffn_005fname|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deffn_005fname|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deffn_005fname-1|<code>d--effn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defmac_005fname|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defmac_005fname|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defmac_005fname|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defmac_005fname-1|<code>d--efmac_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defmethod_005fname-on-c_002d_002dlass|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defmethod_005fname-on-c_002d_002dlass|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defmethod_005fname-on-c_002d_002dlass|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defmethod_005fname-on-c_002d_002dlass-1|<code>d--efmethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defop_005fname-on-c_002d_002dlass|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defop_005fname-on-c_002d_002dlass|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defop_005fname-on-c_002d_002dlass|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defop_005fname-on-c_002d_002dlass-1|<code>d--efop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defspec_005fname|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defspec_005fname|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defspec_005fname|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defspec_005fname-1|<code>d--efspec_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deftypefn_005fname|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deftypefn_005fname|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypefn_005fname|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypefn_005fname-1|<code>d--eftypefn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deftypefun_005fname|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deftypefun_005fname|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypefun_005fname|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypefun_005fname-1|<code>d--eftypefun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deftypemethod_005fname-on-c_002d_002dlass|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deftypemethod_005fname-on-c_002d_002dlass|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass-1|<code>d--eftypemethod_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002deftypeop_005fname-on-c_002d_002dlass|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002deftypeop_005fname-on-c_002d_002dlass|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypeop_005fname-on-c_002d_002dlass|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002deftypeop_005fname-on-c_002d_002dlass-1|<code>d--eftypeop_name on c--lass</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-d_002d_002defun_005fname|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-d_002d_002defun_005fname|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defun_005fname|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-d_002d_002defun_005fname-1|<code>d--efun_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-de_002d_002dffn_005fname|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-de_002d_002dffn_005fname|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-de_002d_002dffn_005fname|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-de_002d_002dffn_005fname-1|<code>de--ffn_name</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-deffn|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-deffn-1|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-deffn|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-deffn-1|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffn|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffn-1|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffn-2|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffn-3|<code>deffn</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-deffnx|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-deffnx-1|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-deffnx|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-deffnx-1|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffnx|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffnx-1|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-deffnx-2|<code>deffnx</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
@@ -3011,10 +3022,10 @@ tp
 ----
 </td></tr>
 <tr><th><div id="chapter-2_fn_letter-F"></div>F</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-followed|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-followed-1|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-followed|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-followed-1|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-followed|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-followed-1|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-followed-2|<code>followed</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
@@ -3023,54 +3034,54 @@ tp
 ----
 </td></tr>
 <tr><th><div id="chapter-2_fn_letter-I"></div>I</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-i|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-i-1|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-i|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-i-1|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-i|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-i-1|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-i-2|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-i-3|<code><var>i</var></code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-id-i-ule|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-id-i-ule|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-id-i-ule|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-id-i-ule-1|<code><b>id &lsquo;<code>i</code>&rsquo; ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-id-ule|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-id-ule|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-id-ule|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-id-ule-1|<code><b>id ule</b></code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="chapter-2_fn_letter-L"></div>L</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-log-trap|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-log-trap|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-log-trap|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-log-trap-1|<code>log trap</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-log-trap1|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-log-trap1|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-log-trap1|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-log-trap1-1|<code>log trap1</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-log-trap2|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-log-trap2|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-log-trap2|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-log-trap2-1|<code>log trap2</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
 <tr><td colspan="4"> 
 ----
 </td></tr>
 <tr><th><div id="chapter-2_fn_letter-M"></div>M</th><td></td><td></td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-machin|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-machin-1|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-machin-2|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-machin-3|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-machin-4|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-machin-5|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-machin|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-machin-1|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-machin-2|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-machin-3|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-machin-4|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-machin-5|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-machin|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-machin-1|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-machin-2|<code>machin</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>
@@ -3089,10 +3100,10 @@ tp
 <tr><th><div id="chapter-2_fn_letter-T"></div>T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top">[[#index-t_002d_002druc-1|<code>t--ruc</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-T_002d_002druc-1|<code>T--ruc</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading|subsubheading]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
-<tr><td></td><td valign="top">[[#Top section|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-truc|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-copying-truc-1|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-truc|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
+<tr><td></td><td valign="top">[[#index-titlepage-truc-1|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#Top section|Top section]]</td></tr>
 <tr><td></td><td valign="top">[[#index-truc|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-truc-1|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#t_h-titlepage_subsubheading|subsubheading]]</td></tr>
 <tr><td></td><td valign="top">[[#index-truc-2|<code>truc</code>]]</td><td>&nbsp;</td><td valign="top">[[#subsubheading-1|subsubheading]]</td></tr>

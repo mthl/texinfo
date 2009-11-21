@@ -1,0 +1,9 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename unknown_index_entry.info
+
+@node Top
+@top Top
+
+@someindex someindex entry.
+
+@bye

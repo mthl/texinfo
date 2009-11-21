@@ -1,0 +1,26 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename more_unknown_index_entry.info
+
+@node Top
+@top Top
+
+@someindex someindex entry.
+
+@defindex some
+
+@menu
+* chapter node::
+@end menu
+
+@node chapter node
+@chapter Chapter
+
+@cindex someindex entry.
+
+Some text.
+
+@someindex someindex entry.
+
+@printindex cp
+
+@bye
