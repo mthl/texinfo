@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.250 2009-11-15 23:39:06 pertusus Exp $
+# $Id: texi2html.init,v 1.251 2009-11-22 15:27:25 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -5121,19 +5121,26 @@ sub t2h_default_complex_format($$)
     my $text = shift;
     return '' if ($text eq '');
     return '' if ($name eq 'direntry');
-    my $beginning = eval "$complex_format_map->{$name}->{'begin'}";
-    if ($@ ne '')
+    my $beginning = '';
+    if ($complex_format_map->{$name}->{'begin'} ne '')
     {
-        main::msg_debug("Evaluation of $complex_format_map->{$name}->{'begin'}: $@");
-        $beginning = '';
+        $beginning = eval "$complex_format_map->{$name}->{'begin'}";
+        if ($@ ne '')
+        {
+            main::msg_debug("Evaluation of $complex_format_map->{$name}->{'begin'}: $@");
+            $beginning = '';
 
+        }
     }
-    my $end = eval "$complex_format_map->{$name}->{'end'}";
-    if ($@ ne '')
+    my $end = '';
+    if ($complex_format_map->{$name}->{'end'} ne '')
     {
-        main::msg_debug("Evaluation of $complex_format_map->{$name}->{'end'}: $@");
-        $end = '';
-
+        $end = eval "$complex_format_map->{$name}->{'end'}";
+        if ($@ ne '')
+        {
+            main::msg_debug("Evaluation of $complex_format_map->{$name}->{'end'}: $@");
+            $end = '';
+        }
     }
     return $beginning . $text . $end;	
 }
