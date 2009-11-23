@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.38 2009-11-23 13:30:50 pertusus Exp $
+# $Id: html.init,v 1.39 2009-11-23 16:49:51 pertusus Exp $
 
 use strict;
 
@@ -546,10 +546,10 @@ else
 {
    foreach my $format ('example', 'display', 'lisp', 'format')
    {
-      $complex_format_map{$format}->{'begin'} = html_default_attribute_class('div', $format).'>';
-      $complex_format_map{"small$format"}->{'begin'} = html_default_attribute_class('div', "small$format").'>';
-      $complex_format_map{$format}->{'end'} = '</div>';
-      $complex_format_map{"small$format"}->{'end'} = '</div>';
+      $complex_format_map{$format}->{'begin'} = html_default_attribute_class('div', $format).">\n";
+      $complex_format_map{"small$format"}->{'begin'} = html_default_attribute_class('div', "small$format").">\n";
+      $complex_format_map{$format}->{'end'} = '</div>'."\n";
+      $complex_format_map{"small$format"}->{'end'} = '</div>'."\n";
    }
 }
 
@@ -583,19 +583,19 @@ $complex_format_map{'menu_comment'} = {
          'pre.display'            => 'font-family: serif',
          'pre.smalldisplay'       => 'font-family: serif; font-size: smaller',
          'pre.smallexample'       => 'font-size: smaller',
-         'span.sansserif'         => 'font-family:sans-serif; font-weight:normal;',
-         'span.roman'         => 'font-family:serif; font-weight:normal;'
+         'span.sansserif'         => 'font-family:sans-serif; font-weight:normal',
+         'span.roman'         => 'font-family:serif; font-weight:normal'
      );
 
 $css_map{'pre.format'} = $css_map{'pre.display'};
 $css_map{'pre.smallformat'} = $css_map{'pre.smalldisplay'}; 
 $css_map{'pre.smalllisp'} = $css_map{'pre.smallexample'};
 
-#foreach my $indented_format ('example', 'display', 'lisp')
-#{
-#   $css_map{"div.$indented_format"} = 'margin-left: 3.2em;';
-#   $css_map{"div.small$indented_format"} = 'margin-left: 3.2em;';
-#}
+foreach my $indented_format ('example', 'display', 'lisp')
+{
+   $css_map{"div.$indented_format"} = 'margin-left: 3.2em';
+   $css_map{"div.small$indented_format"} = 'margin-left: 3.2em';
+}
 
 # formatting functions
 

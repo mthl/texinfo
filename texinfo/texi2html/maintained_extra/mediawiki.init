@@ -8,17 +8,17 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.3 2009-11-23 13:30:50 pertusus Exp $
+# $Id: mediawiki.init,v 1.4 2009-11-23 16:49:52 pertusus Exp $
 
 use strict;
-
-# inline css style
-$INLINE_CSS_STYLE = 1;
 
 html_default_load();
 # remark: in my tests, there was no support for mathtt in texvc
 # https://bugzilla.wikimedia.org/show_bug.cgi?id=21475
 default_load_tex_math();
+
+# inline css style
+$INLINE_CSS_STYLE = 1;
 
 $USE_SECTIONS = 1;
 $USE_NODES = undef;
@@ -152,6 +152,7 @@ foreach my $format ('enumerate', 'table', 'vtable', 'ftable')
    $format_map{$format} = '';
 }
 
+my %processed_formats = ();
 # there are no pre used in mediawiki, to have links working in 
 # complex formats, therefore the styles are copied in div that
 # are used instead. This doesn't really improve the situation, 
@@ -160,8 +161,39 @@ foreach my $complex_format (keys(%complex_format_map))
 {
    my $class = $complex_format_map{$complex_format}->{'class'};
    $class = $complex_format if (!defined($class));
-   $css_map{"div.$class"} = $css_map{"pre.$class"} 
-      if (defined($css_map{"pre.$class"}));
+
+   # Avoid doing things twice if the class is associated with more than one
+   # complex format
+   next if($processed_formats{$class});
+
+   if (defined($css_map{"pre.$class"}))
+   {
+      if (defined($css_map{"div.$class"}))
+      {
+           $css_map{"div.$class"} .= "; ";
+      }
+      else
+      {
+            $css_map{"div.$class"} = '';
+      }
+      $css_map{"div.$class"} .= $css_map{"pre.$class"};
+   }
+   $processed_formats{$class} = 1;
+}
+
+foreach my $format ('example', 'display', 'lisp', 'format')
+{
+   $complex_format_map{$format}->{'begin'} = html_default_attribute_class('div', $format).">\n";
+   $complex_format_map{"small$format"}->{'begin'} = html_default_attribute_class('div', "small$format").">\n";
+   $complex_format_map{$format}->{'end'} = '</div>'."\n";
+   $complex_format_map{"small$format"}->{'end'} = '</div>'."\n";
+}
+foreach my $format ('menu', 'detailmenu', 'menu_comment')
+{
+   my $class = $complex_format_map{$format}->{'class'};
+   $class = $format if (!defined($class));
+   $complex_format_map{$format}->{'begin'} = html_default_attribute_class('div', $class).">\n";
+   $complex_format_map{$format}->{'end'} = '</div>'."\n";
 }
 
 $texi_formats_map{'direntry'} = 0;
@@ -700,7 +732,8 @@ sub mediawiki_default_preformatted($$$$$$$$$$)
     }
 
     $text =~ s/^/ /mg;
-    return html_default_attribute_class('div', $class).">\n$text</div>\n";
+   # return html_default_attribute_class('div', $class).">\n$text</div>\n";
+    return "$text";
     #return "<pre class=\"$class\"><nowiki>$text</nowiki></pre>";
 }
 
