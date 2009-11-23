@@ -90,13 +90,13 @@ ul.no-bullet {list-style: none}
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
 <dd><p>ures_solve(i [, k, p] ); i = ideal, k, p = integers
-</p><table><tr><td>&nbsp;</td><td><pre class="format">   k=0: use sparse resultant matrix of Gelfand, Kapranov and Zelevinsky,
+</p><pre class="format">   k=0: use sparse resultant matrix of Gelfand, Kapranov and Zelevinsky,
    k=1: use resultant matrix of Macaulay which works only for
           homogeneous ideals,
    p&gt;0: defines precision of the long floats for internal computation
           if the basering is not complex (in decimal digits),
    (default: k=0, p=30)
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -108,9 +108,9 @@ ul.no-bullet {list-style: none}
 <dt><strong>Return:</strong></dt>
 <dd><p>list of all (complex) roots of the polynomial system i = 0; the
 result is of type
-</p><table><tr><td>&nbsp;</td><td><pre class="format">   string: if the basering is not complex,
+</p><pre class="format">   string: if the basering is not complex,
    number: otherwise.
-</pre></td></tr></table>
+</pre>
 
 </dd>
 </dl>

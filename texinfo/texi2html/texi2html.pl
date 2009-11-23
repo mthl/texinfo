@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.357 2009-11-21 22:56:06 pertusus Exp $
+# $Id: texi2html.pl,v 1.358 2009-11-23 13:30:48 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -409,6 +409,7 @@ $DATE
 $ENABLE_ENCODING_USE_ENTITY
 $PROGRAM_NAME_IN_FOOTER
 $HEADER_IN_TABLE
+$COMPLEX_FORMAT_IN_TABLE
 $USE_TITLEPAGE_FOR_TITLE
 $INLINE_CSS_STYLE
 $NO_CSS
@@ -583,6 +584,7 @@ $AFTER_ABOUT
 # hash which entries might be redefined by the user
 use vars qw(
 $complex_format_map
+%complex_format_map
 %accent_map
 %def_map
 %format_map
@@ -2157,7 +2159,9 @@ foreach my $paragraph_style (keys(%Texi2HTML::Config::paragraph_style))
 {
    $format_type{$paragraph_style} = 'paragraph_format';
 }
-foreach my $complex_format (keys(%$Texi2HTML::Config::complex_format_map))
+# FIXME $complex_format_map obsoleted in nov 2009
+foreach my $complex_format (keys(%$Texi2HTML::Config::complex_format_map),
+    keys(%Texi2HTML::Config::complex_format_map))
 {
    $format_type{$complex_format} = 'complex_format';
 }
@@ -2234,12 +2238,24 @@ foreach my $format (keys(%Texi2HTML::Config::texi_formats_map))
 
 # The css formats are associated with complex format commands, and associated
 # with the 'pre_style' key
+# FIXME $complex_format_map obsoleted in nov 2009
 foreach my $complex_format (keys(%$Texi2HTML::Config::complex_format_map))
 {
     next if (defined($Texi2HTML::Config::complex_format_map->{$complex_format}->{'pre_style'}));
     $Texi2HTML::Config::complex_format_map->{$complex_format}->{'pre_style'} = '';
     $Texi2HTML::Config::complex_format_map->{$complex_format}->{'pre_style'} = $Texi2HTML::Config::css_map{"pre.$complex_format"} if (exists($Texi2HTML::Config::css_map{"pre.$complex_format"}));
 }
+
+# The css formats are associated with complex format commands, and associated
+# with the 'pre_style' key
+foreach my $complex_format (keys(%Texi2HTML::Config::complex_format_map))
+{
+    next if (defined($Texi2HTML::Config::complex_format_map{$complex_format}->{'pre_style'}));
+    $Texi2HTML::Config::complex_format_map{$complex_format}->{'pre_style'} = '';
+    $Texi2HTML::Config::complex_format_map{$complex_format}->{'pre_style'} = $Texi2HTML::Config::css_map{"pre.$complex_format"} if (exists($Texi2HTML::Config::css_map{"pre.$complex_format"}));
+}
+
+
 
 #+++############################################################################
 #                                                                              #
@@ -10271,11 +10287,11 @@ sub end_format($$$$$)
         { # for example vtable closing a table. Cannot be known 
           # before if in a cell
              $format_mismatch = 1;
-             line_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format  ", $line_nr);
+             line_warn (sprintf(__("Waiting for \@end %s, found \@end %s"), $format_ref->{'format'}, $format), $line_nr);
         }
         if (!$format_ref->{'empty_first'} and $format_ref->{'item_nr'} == 0)
         {
-             line_warn ("\@$format_ref->{'format'} has text but no \@item", $line_nr);
+             line_warn (sprintf(__("\@%s has text but no \@item"),$format_ref->{'format'}), $line_nr);
         }
     }
 
@@ -10297,7 +10313,7 @@ sub end_format($$$$$)
         elsif ($format_ref->{'format'} ne $format)
         {
              $format_mismatch = 1;
-             line_warn ("Waiting for \@end $format_ref->{'format'}, found \@end $format", $line_nr);
+             line_warn (sprintf(__("Waiting for \@end %s, found \@end %s"), $format_ref->{'format'}, $format), $line_nr);
         }
         add_prev($text, $stack, &$Texi2HTML::Config::def($format_ref->{'text'}, $format_ref->{'orig_format'}));
     }
@@ -10320,15 +10336,26 @@ sub end_format($$$$$)
         add_prev($text, $stack, &$Texi2HTML::Config::float($format_ref->{'text'}, $state->{'float'}, $caption_text, $shortcaption_text));
         delete $state->{'float'};
     }
-    elsif (exists ($Texi2HTML::Config::complex_format_map->{$format}) and 
-        ($format_type{$format} ne 'menu' or $Texi2HTML::Config::SIMPLE_MENU))
+    # FIXME $complex_format_map obsoleted in nov 2009
+    elsif ((exists ($Texi2HTML::Config::complex_format_map->{$format}) 
+         or exists ($Texi2HTML::Config::complex_format_map{$format}))
+      and ($format_type{$format} ne 'menu' or $Texi2HTML::Config::SIMPLE_MENU))
     {
         $state->{'preformatted'}--;
         pop @{$state->{'preformatted_stack'}};
-        # debug
-        if (!defined($Texi2HTML::Config::complex_format_map->{$format_ref->{'format'}}->{'begin'}))
+        my $complex_format;
+        if (exists ($Texi2HTML::Config::complex_format_map->{$format}))
         {
-            print STDERR "Bug undef $format_ref->{'format'}" . "->{'begin'} (for $format...)\n";
+            $complex_format = $Texi2HTML::Config::complex_format_map->{$format};
+        }
+        else
+        {
+            $complex_format = $Texi2HTML::Config::complex_format_map{$format};
+        }
+        # debug
+        if (!defined($complex_format->{'begin'}))
+        {
+            msg_debug ("Bug undef $format_ref->{'format'}" . "->{'begin'} (for $format...)", $line_nr);
             dump_stack ($text, $stack, $state);
         }
         if ($fake_format{$format_ref->{'format'}} and $format_ref->{'text'} =~ /^\s*$/)
@@ -10661,10 +10688,20 @@ sub begin_format($$$$$$)
         push @$stack, { 'format' => 'deff_item', 'text' => '', 'only_inter_commands' => 1, 'format_ref' => $top_format, 'orig_command' => $orig_command};
         begin_paragraph_after_command($state, $stack, $macro, $line);
     }
-    elsif (exists ($Texi2HTML::Config::complex_format_map->{$macro}) and
-        ($format_type{$macro} ne 'menu' or $Texi2HTML::Config::SIMPLE_MENU))
+    # FIXME $complex_format_map obsoleted in nov 2009
+    elsif ((exists ($Texi2HTML::Config::complex_format_map->{$macro})
+         or exists ($Texi2HTML::Config::complex_format_map{$macro}))
+      and ($format_type{$macro} ne 'menu' or $Texi2HTML::Config::SIMPLE_MENU))
     { # handle menu if SIMPLE_MENU. see texi2html.init
-        my $complex_format =  $Texi2HTML::Config::complex_format_map->{$macro};
+        my $complex_format;
+        if (exists ($Texi2HTML::Config::complex_format_map->{$macro}))
+        {
+            $complex_format = $Texi2HTML::Config::complex_format_map->{$macro};
+        }
+        else
+        {
+            $complex_format = $Texi2HTML::Config::complex_format_map{$macro};
+        }
         my $format = { 'format' => $macro, 'text' => '', 'pre_style' => $complex_format->{'pre_style'} };
         push_complex_format_style($macro, $complex_format, $state);
         push @$stack, $format;

@@ -1081,7 +1081,7 @@ product(A,3..5);
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>a list l of two elements:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">        l[1]: object of same type as input but sorted in the following way:
+</p><pre class="format">        l[1]: object of same type as input but sorted in the following way:
            - if id=ideal/module: generators of id are sorted w.r.t. intvec v
              (id[v[1]] becomes 1-st, id[v[2]]  2-nd element, etc.). If no v is
              present, id is sorted w.r.t. ordering o (if o is given) or w.r.t.
@@ -1104,7 +1104,7 @@ product(A,3..5);
              default: n=0
          l[2]: intvec, describing the permutation of the input (hence l[2]=v
              if v is given (with positive integers))
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -6980,7 +6980,7 @@ print(rm_unitcol(m));
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">          a matrix:
+<dd><pre class="format">          a matrix:
           - the inverse matrix of A, if A is invertible;
           - the 1x1 0-matrix if A is not invertible (in the polynomial ring!).
           There are the following options:
@@ -6988,7 +6988,7 @@ print(rm_unitcol(m));
           - opt=1 : apply std to (transpose(E,A)), ordering (C,dp).
           - opt=2 : apply interred (transpose(E,A)), ordering (C,dp).
           - opt=3 : apply lift(A,E), ordering (C,dp).
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -7274,13 +7274,13 @@ diag_test(A);
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list L:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">         L[1] contains the (n+1) coefficients of the characteristic
+</p><pre class="format">         L[1] contains the (n+1) coefficients of the characteristic
               polynomial X of A, i.e.
               X = L[1][1]+..+L[1][k]*t^(k-1)+..+(L[1][n+1])*t^n
          L[2] contains the n (nxn)-matrices Hk which are the coefficients of
               the busadjoint bA = adjoint(E*t-A) of A, i.e.
               bA = (Hn-1)*t^(n-1)+...+Hk*t^k+...+H0,  ( Hk=L[2][k+1] )
-</pre></td></tr></table>
+</pre>
 
 </dd>
 </dl>
@@ -7840,12 +7840,12 @@ print(hessenberg(M));
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list l; 
+<dd><pre class="format">list l; 
   ideal l[1];
     number l[1][i];  i-th eigenvalue of M
   intvec l[2]; 
     int l[2][i];  multiplicity of i-th eigenvalue of M
-</pre></td></tr></table>
+</pre>
 
 </dd>
 </dl>
@@ -7889,12 +7889,12 @@ eigenvals(M);
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list l;  minimal polynomial of M
+<dd><pre class="format">list l;  minimal polynomial of M
   ideal l[1]; 
     number l[1][i];  i-th root of minimal polynomial of M
   intvec l[2]; 
     int l[2][i];  multiplicity of i-th root of minimal polynomial of M
-</pre></td></tr></table>
+</pre>
 
 </dd>
 </dl>
@@ -7938,14 +7938,14 @@ minipoly(M);
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list l;  Jordan data of M
+<dd><pre class="format">list l;  Jordan data of M
   ideal l[1]; 
     number l[1][i];  eigenvalue of i-th Jordan block of M
   intvec l[2]; 
     int l[2][i];  size of i-th Jordan block of M
   intvec l[3]; 
     int l[3][i];  multiplicity of i-th Jordan block of M
-</pre></td></tr></table>
+</pre>
 
 </dd>
 </dl>
@@ -7989,11 +7989,11 @@ jordan(M);
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list l:
+<dd><pre class="format">list l:
   module l[1];  inverse(l[1])*M*l[1] in Jordan normal form
   intvec l[2]; 
     int l[2][i];  weight filtration index of l[1][i]
-</pre></td></tr></table>
+</pre>
 
 </dd>
 </dl>
@@ -8040,8 +8040,8 @@ print(inverse(l[1])*M*l[1]);
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">matrix J;  Jordan matrix with list(e,s,m)==jordan(J)
-</pre></td></tr></table>
+<dd><pre class="format">matrix J;  Jordan matrix with list(e,s,m)==jordan(J)
+</pre>
 
 </dd>
 </dl>
@@ -8234,7 +8234,7 @@ print(jordannf(M));
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">         - k=0 (or if k is not given) an integer:
+<dd><pre class="format">         - k=0 (or if k is not given) an integer:
            1  : if p is contained in the subalgebra K[A[1],...,A[m]]
            0  : if p is not contained in K[A[1],...,A[m]]
          - k=1 : a list, say l, of size 2, l[1] integer, l[2] ring, satisfying
@@ -8244,7 +8244,7 @@ print(jordannf(M));
            l[2] contains the poly check = h(x,y(1),...,y(m)) if p satisfies
            the nonlinear relation p = h(x,A[1],...,A[m]) where
            x = x(1),...,x(n) denote the variables of the basering
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Display:</strong></dt>
@@ -8331,7 +8331,7 @@ printlevel = p;
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">         - k=0 (or if k is not given), an integer:
+<dd><pre class="format">         - k=0 (or if k is not given), an integer:
            1    : if p is contained in the module &lt;M[1],...,M[m]&gt; over K[P]
            0    : if p is not contained in &lt;M[1],...,M[m]&gt;
          - k=1, a list, say l, of size 2, l[1] integer, l[2] ring:
@@ -8342,7 +8342,7 @@ printlevel = p;
              poly check = h(x,y(1),...,y(m),z(1),...,z(n)) if p satisfies
              the nonlinear relation p = h(x,M[1],...,M[m],P[1],...,P[n]) where
              x = x(1),...,x(n) denote the variables of the basering
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Display:</strong></dt>
@@ -8417,13 +8417,13 @@ printlevel=p;
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">         a list l of size 2, l[1] integer, l[2] string
+<dd><pre class="format">         a list l of size 2, l[1] integer, l[2] string
          l[1]=1 iff p is in the subring generated by i=i[1],...,i[k],
                 and then l[2] = y(0)-h(y(1),...,y(k)) if p = h(i[1],...,i[k])
          l[1]=0 iff p is in not the subring generated by i,
                 and then l[2] = h(y(0),y(1),...,y(k) where p satisfies the
                 nonlinear relation h(p,i[1],...,i[k])=0.
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -8472,7 +8472,7 @@ inSubring(p,I);
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">         a list l  of size 2, l[1] integer, l[2] ring:
+<dd><pre class="format">         a list l  of size 2, l[1] integer, l[2] ring:
          - l[1] = 1 if f1,...,fm are algebraic dependent, 0 if not
          - l[2] is a ring with variables x(1),...,x(n),y(1),...,y(m) if the
            basering has n variables. It contains the ideal &rsquo;ker&rsquo;, depending
@@ -8480,7 +8480,7 @@ inSubring(p,I);
            f[i], i.e. substituting y(i) by fi yields 0. Of course, ker is
            nothing but the kernel of the ring map
               K[y(1),...,y(m)] &mdash;&gt; basering,  y(i) &ndash;&gt; fi.
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -8614,13 +8614,13 @@ ker;
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">         - 1 (type int) if phi is injective, 0 if not (if s is not given).
+<dd><pre class="format">         - 1 (type int) if phi is injective, 0 if not (if s is not given).
          - If s is given, return a list l of size 2, l[1] int, l[2] ring:
            l[1] is 1 if phi is injective, 0 if not
            l[2] is a ring with variables x(1),...,x(n),y(1),...,y(m) if the
            basering has n variables and the map m components, it contains the
            ideal &rsquo;ker&rsquo;, depending only on the y(i), the kernel of the given map
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -8820,14 +8820,14 @@ printlevel = p;
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">         a list l two ideals, say I,J:
+<dd><pre class="format">         a list l two ideals, say I,J:
          - I is generated by a subset of the variables with size(I) = dim(id)
          - J defines a map (coordinate change in the basering), such that:
            if we define  map phi=basering,J;
            then k[var(1),...,var(n)]/phi(id) is finite over k[I].
          If p is given, 0&lt;=p&lt;=100, a sparse coordinate change with p percent
          of the matrix entries being 0 (default: p=0 i.e. dense)
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -8921,7 +8921,7 @@ mapIsFinite(phi,r,i);
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">         a list l with l[1] integer, l[2], l[3], l[4] ideals
+<dd><pre class="format">         a list l with l[1] integer, l[2], l[3], l[4] ideals
          - l[1] = 1 if var(v1),...,var(vr) are in l[2] and 0 else
          - l[2] (resp. l[3]) contains those variables which occur,
            (resp. occur not) as pure power in the leading term of one of the
@@ -8929,7 +8929,7 @@ mapIsFinite(phi,r,i);
          - l[4] contains those J[i] for which the leading term is a pure power
            of a variable (which is then in l[2])
          (default: v = [1,2,..,nvars(basering)])
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Theory:</strong></dt>
@@ -9610,10 +9610,10 @@ b_1,b_2,... is a kbase of Ext^1 and &amp; denotes cup product;<br>
 present the coordinates of (1/2)(b_i&amp;b_j + b_j&amp;b_i) with respect to
 a kbase of Ext^2;
 <br>- if called with 3 arguments: list,
-</p><table><tr><td>&nbsp;</td><td><pre class="format">      L[1] = matrix see above (symmetric case, for &gt;=2 arguments)
+</p><pre class="format">      L[1] = matrix see above (symmetric case, for &gt;=2 arguments)
       L[2] = matrix of kbase of Ext^1
       L[3] = matrix of kbase of Ext^2
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -9735,11 +9735,11 @@ present the coordinates of the cup products (b_i &amp; c_j) with respect
 to a kbase of Ext^p+q (b_i resp. c_j are the choosen bases of Ext^p,
 resp. Ext^q).<br>
 - if called with 6 arguments: list L,
-</p><table><tr><td>&nbsp;</td><td><pre class="format">      L[1] = matrix (see above)
+</p><pre class="format">      L[1] = matrix (see above)
       L[2] = matrix of kbase of Ext^p(M&rsquo;,N&rsquo;)
       L[3] = matrix of kbase of Ext^q(N&rsquo;,P&rsquo;)
       L[4] = matrix of kbase of Ext^p+q(N&rsquo;,P&rsquo;)
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -10037,11 +10037,11 @@ is presented as in the following exact sequences:
 <dd><p>- module Ext, a presentation of Ext^k(M&rsquo;,R) if v is of type int<br>
 - a list of Ext^k (k=v[1],v[2],...) if v is of type intvec.<br>
 - In case of a third argument of type int return a list l:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">     l[1] = module Ext^k resp. list of Ext^k
+</p><pre class="format">     l[1] = module Ext^k resp. list of Ext^k
      l[2] = SB of Ext^k resp. list of SB of Ext^k
      l[3] = matrix resp. list of matrices, each representing a kbase of Ext^k 
               (if finite dimensional)
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Display:</strong></dt>
@@ -10180,11 +10180,11 @@ then we have exact sequences
 <dd><p>- module Ext, a presentation of Ext^k(M&rsquo;,N&rsquo;) if v is of type int<br>
 - a list of Ext^k (k=v[1],v[2],...) if v is of type intvec.<br>
 - In case of a third argument of any type return a list l:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">             l[1] = module Ext/list of Ext^k
+</p><pre class="format">             l[1] = module Ext/list of Ext^k
              l[2] = SB of Ext/list of SB of Ext^k
              l[3] = matrix/list of matrices, each representing a kbase of Ext^k
                        (if finite dimensional)
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Display:</strong></dt>
@@ -10466,11 +10466,11 @@ let
 <dt><strong>Return:</strong></dt>
 <dd><p>module Hom, a presentation of Hom(M&rsquo;,N&rsquo;), resp., in case of
 3 arguments, a list l (of size &lt;=3):
-</p><table><tr><td>&nbsp;</td><td><pre class="format">           - l[1] = Hom
+</p><pre class="format">           - l[1] = Hom
            - l[2] = SB of Hom
            - l[3] = kbase of coker(Hom) (if finite dimensional, not 0),
                     represented by elements in Hom(F0,G0) via mapping D
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Display:</strong></dt>
@@ -11193,11 +11193,11 @@ then we have exact sequences
 <dd><p>- if v is of type int: module Tor, a presentation of Tor_k(M&rsquo;,N&rsquo;);<br>
 - if v is of type intvec: a list of Tor_k(M&rsquo;,N&rsquo;) (k=v[1],v[2],...);<br>
 - in case of a third argument of any type: list l with
-</p><table><tr><td>&nbsp;</td><td><pre class="format">     l[1] = module Tor/list of Tor_k(M&rsquo;,N&rsquo;),
+</p><pre class="format">     l[1] = module Tor/list of Tor_k(M&rsquo;,N&rsquo;),
      l[2] = SB of Tor/list of SB of Tor_k(M&rsquo;,N&rsquo;),
      l[3] = matrix/list of matrices, each representing a kbase of Tor_k(M&rsquo;,N&rsquo;)
                 (if finite dimensional), or 0.
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Display:</strong></dt>
@@ -13056,12 +13056,12 @@ where R is the quotient ring of P modulo the standard basis SBid.
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>a list l of two objects
-</p><table><tr><td>&nbsp;</td><td><pre class="format">         l[1] : a polynomial ring, containing two ideals, &rsquo;endid&rsquo; and &rsquo;endphi&rsquo;
+</p><pre class="format">         l[1] : a polynomial ring, containing two ideals, &rsquo;endid&rsquo; and &rsquo;endphi&rsquo;
                such that l[1]/endid = Hom_R(J,J) and
                endphi describes the canonical map R -&gt; Hom_R(J,J)
          l[2] : an integer which is 1 if phi is an isomorphism, 0 if not
          l[3] : an integer, the contribution to delta
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -13390,9 +13390,9 @@ Krick, Logar and Kemper (implementation by Gerhard Pfister).
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>a list pr of primary ideals and their associated primes:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">   pr[i][1]   the i-th primary component,
+</p><pre class="format">   pr[i][1]   the i-th primary component,
    pr[i][2]   the i-th prime component.
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -13455,18 +13455,18 @@ pr;
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>a list pr of primary ideals and their associated primes:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">   pr[i][1]   the i-th primary component,
+</p><pre class="format">   pr[i][1]   the i-th primary component,
    pr[i][2]   the i-th prime component.
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
 <dd><p>Algorithm of Shimoyama/Yokoyama.
-</p><table><tr><td>&nbsp;</td><td><pre class="format">   if c=0,  the given ordering of the variables is used,
+</p><pre class="format">   if c=0,  the given ordering of the variables is used,
    if c=1,  minAssChar tries to use an optimal ordering,
    if c=2,  minAssGTZ is used,
    if c=3,  minAssGTZ and facstd are used.
-</pre></td></tr></table>
+</pre>
 
 </dd>
 </dl>
@@ -14208,18 +14208,18 @@ j[3];
 <dt><strong>Assume:</strong></dt>
 <dd><p>The ground field of the basering is k=Q or k=Z/pZ and the ideal
 i is given by 2 generators f,g with the following properties:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">   f is the minimal polynomial of a in k[x], 
+</p><pre class="format">   f is the minimal polynomial of a in k[x], 
    g is a polynomial in k[x,y] s.th. g(a,y) is the minpoly of b in k(a)[y].
-</pre></td></tr></table>
+</pre>
 <p>Here, x is the name of the first ring variable, y the name of the
 second.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>ideal j in k[y] such that
-</p><table><tr><td>&nbsp;</td><td><pre class="format">   j[1] is the minimal polynomial for a primitive element c of k(a,b) over k,
+</p><pre class="format">   j[1] is the minimal polynomial for a primitive element c of k(a,b) over k,
    j[2] is a polynomial s.th. j[2](c)=a.
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -16572,9 +16572,9 @@ the ground field does not divide mult(f).
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list of two ideals:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">          _[1]:  equisingularity ideal of f (in sense of Wahl)
+</p><pre class="format">          _[1]:  equisingularity ideal of f (in sense of Wahl)
           _[2]:  equisingularity ideal of f with fixed section
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -16676,14 +16676,14 @@ fixed (trivial) section.
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list l: either consisting of an ideal and an integer, where
-</p><table><tr><td>&nbsp;</td><td><pre class="format">  l[1]=ideal defining the equisingular stratum
+</p><pre class="format">  l[1]=ideal defining the equisingular stratum
   l[2]=1 if some error has occured,  l[2]=0 otherwise;
-</pre></td></tr></table>
+</pre>
 <p>or consisting of a ring and an integer, where
-</p><table><tr><td>&nbsp;</td><td><pre class="format">  l[1]=ESSring is a ring extension of basering containing the ideal ES 
+</p><pre class="format">  l[1]=ESSring is a ring extension of basering containing the ideal ES 
         (describing the ES-stratum) and the poly p_F=F,
   l[2]=1 if some error has occured,  l[2]=0 otherwise.
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -16873,7 +16873,7 @@ isEquising(F,2);    // computation over  Q[a,b] / &lt;a,b&gt;^2
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list M of 4 intmat&rsquo;s:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">  M[1] contains the multiplicities at the respective infinitely near points 
+</p><pre class="format">  M[1] contains the multiplicities at the respective infinitely near points 
        p[i,j] (i=step of blowup+1, j=branch) &ndash; if branches j=k,...,k+m pass 
        through the same p[i,j] then the multiplicity is stored in M[1][k,j], 
        while M[1][k+1]=...=M[1][k+m]=0.   
@@ -16886,7 +16886,7 @@ isEquising(F,2);    // computation over  Q[a,b] / &lt;a,b&gt;^2
        respective tangent.
   M[4] contains the maximal sum of higher multiplicities for a branch passing 
        through p[i,j] ( = degree Bound for blowing up)  
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -17033,14 +17033,14 @@ transversally.
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">ring G;  Gauss-Manin system of t with variable s
+<dd><pre class="format">ring G;  Gauss-Manin system of t with variable s
   poly gmspoly=t;
   ideal gmsjacob;  Jacobian ideal of t
   ideal gmsstd;  standard basis of Jacobian ideal
   matrix gmsmatrix;  matrix(gmsjacob)*gmsmatrix==matrix(gmsstd)
   ideal gmsbasis;  monomial vector space basis of Jacobian algebra
   int gmsmaxdeg;  maximal weight of variables
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -17118,10 +17118,10 @@ gmsmaxdeg;
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list nf;
+<dd><pre class="format">list nf;
   ideal nf[1];  projection of p to &lt;gmsbasis&gt;C[[s]] mod s^(K+1)
   ideal nf[2];  p==nf[1]+nf[2]
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -17181,10 +17181,10 @@ print(l[1]);
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list l;
+<dd><pre class="format">list l;
   matrix l[1];  C[[s]]-basis representation of p mod s^(K+1)
   ideal l[2];  p==matrix(gmsbasis)*l[1]+l[2]
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -17336,14 +17336,14 @@ bernstein(t);
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list l;  Jordan data jordan(M) of monodromy matrix exp(-2*pi*i*M)
+<dd><pre class="format">list l;  Jordan data jordan(M) of monodromy matrix exp(-2*pi*i*M)
   ideal l[1]; 
     number l[1][i];  eigenvalue of i-th Jordan block of M
   intvec l[2]; 
     int l[2][i];  size of i-th Jordan block of M
   intvec l[3]; 
     int l[3][i];  multiplicity of i-th Jordan block of M
-</pre></td></tr></table>
+</pre>
 
 <a name="index-singularities-5"></a>
 <a name="index-Gauss_002dManin-connection-6"></a>
@@ -17403,12 +17403,12 @@ monodromy(t);
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list sp;  singularity spectrum of t
+<dd><pre class="format">list sp;  singularity spectrum of t
   ideal sp[1];
     number sp[1][i];  i-th spectral number
   intvec sp[2];
     int sp[2][i];  multiplicity of i-th spectral number
-</pre></td></tr></table>
+</pre>
 
 <a name="index-singularities-6"></a>
 <a name="index-Gauss_002dManin-connection-7"></a>
@@ -17460,14 +17460,14 @@ spprint(spectrum(t));
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list spp;  spectral pairs of t
+<dd><pre class="format">list spp;  spectral pairs of t
   ideal spp[1];
     number spp[1][i];  V-filtration index of i-th spectral pair
   intvec spp[2];
     int spp[2][i];  weight filtration index of i-th spectral pair
   intvec spp[3];
     int spp[3][i];  multiplicity of i-th spectral pair
-</pre></td></tr></table>
+</pre>
 
 <a name="index-singularities-7"></a>
 <a name="index-Gauss_002dManin-connection-8"></a>
@@ -17588,7 +17588,7 @@ sppprint(sppairs(t));
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list v;  V-filtration on H&rdquo;/s*H&rdquo;
+<dd><pre class="format">list v;  V-filtration on H&rdquo;/s*H&rdquo;
   ideal v[1];
     number v[1][i];  V-filtration index of i-th spectral number
   intvec v[2];
@@ -17597,7 +17597,7 @@ sppprint(sppairs(t));
     module v[3][i];  vector space of i-th graded part in terms of v[4]
   ideal v[4];  monomial vector space basis of H&rdquo;/s*H&rdquo;
   ideal v[5];  standard basis of Jacobian ideal
-</pre></td></tr></table>
+</pre>
 
 <a name="index-singularities-8"></a>
 <a name="index-Gauss_002dManin-connection-9"></a>
@@ -17694,7 +17694,7 @@ vfilt(t);
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list vw;  weighted V-filtration on H&rdquo;/s*H&rdquo;
+<dd><pre class="format">list vw;  weighted V-filtration on H&rdquo;/s*H&rdquo;
   ideal vw[1];
     number vw[1][i];  V-filtration index of i-th spectral pair
   intvec vw[2];
@@ -17705,7 +17705,7 @@ vfilt(t);
     module vw[4][i];  vector space of i-th graded part in terms of vw[5]
   ideal vw[5];  monomial vector space basis of H&rdquo;/s*H&rdquo;
   ideal vw[6];  standard basis of Jacobian ideal
-</pre></td></tr></table>
+</pre>
 
 <a name="index-singularities-9"></a>
 <a name="index-Gauss_002dManin-connection-10"></a>
@@ -17806,11 +17806,11 @@ vwfilt(t);
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list l=A0,A1,T,M;
+<dd><pre class="format">list l=A0,A1,T,M;
   matrix A0,A1;  t=A0+s*A1+s^2*(d/ds) on H&rdquo; w.r.t. C[[s]]-basis M*T
   module T;  C-basis of C^mu
   ideal M;  monomial C-basis of H&rdquo;/sH&rdquo;
-</pre></td></tr></table>
+</pre>
 
 <a name="index-singularities-10"></a>
 <a name="index-Gauss_002dManin-connection-11"></a>
@@ -17907,7 +17907,7 @@ print(A[4]);
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list ev;  V-filtration on Jacobian algebra
+<dd><pre class="format">list ev;  V-filtration on Jacobian algebra
   ideal ev[1];
     number ev[1][i];  i-th V-filtration index
   intvec ev[2];
@@ -17916,7 +17916,7 @@ print(A[4]);
     module ev[3][i];  vector space of i-th graded part in terms of ev[4]
   ideal ev[4];  monomial vector space basis of Jacobian algebra
   ideal ev[5];  standard basis of Jacobian ideal
-</pre></td></tr></table>
+</pre>
 
 <a name="index-singularities-11"></a>
 <a name="index-Gauss_002dManin-connection-12"></a>
@@ -18230,10 +18230,10 @@ spprint(spmul(list(sp1,sp2),intvec(1,2)));
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">int k=
+<dd><pre class="format">int k=
   1;  if sum of sp is positive on all intervals [a,a+1) [and (a,a+1)]
   0;  if sum of sp is negative on some interval [a,a+1) [or (a,a+1)]
-</pre></td></tr></table>
+</pre>
 
 </dd>
 </dl>
@@ -18280,11 +18280,11 @@ spissemicont(spsub(sp1,spmul(sp2,4)));
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list l;
+<dd><pre class="format">list l;
   intvec l[i];  if the spectra sp0 occur with multiplicities k
                 in a deformation of a [quasihomogeneous] singularity
                 with spectrum sp then k&lt;=l[i]
-</pre></td></tr></table>
+</pre>
 
 </dd>
 </dl>
@@ -19241,13 +19241,13 @@ of the HNEring created by <code>hnexpansion</code>.
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list, if INPUT contains a valid HNE:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">    invariants(INPUT)[1]:  intvec    (characteristic exponents)
+</p><pre class="format">    invariants(INPUT)[1]:  intvec    (characteristic exponents)
     invariants(INPUT)[2]:  intvec    (generators of the semigroup)
     invariants(INPUT)[3]:  intvec    (Puiseux pairs, 1st components)
     invariants(INPUT)[4]:  intvec    (Puiseux pairs, 2nd components)
     invariants(INPUT)[5]:  int       (degree of the conductor)
     invariants(INPUT)[6]:  intvec    (sequence of multiplicities)
-</pre></td></tr></table>
+</pre>
 <p>an empty list, if INPUT contains no valid HNE.
 </p>
 </dd>
@@ -19260,7 +19260,7 @@ or the list <code>hne</code> in the HNEring created by <code>hnexpansion</code>.
 <dd><p>list INV, such that INV[i] is the output of <code>invariants(develop(f[i]))</code>
 as above, where f[i] is the ith branch of the curve f, and the last
 entry contains further invariants of f in the format:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">    INV[i][1]    : intvec    (characteristic exponents)
+</p><pre class="format">    INV[i][1]    : intvec    (characteristic exponents)
     INV[i][2]    : intvec    (generators of the semigroup)
     INV[i][3]    : intvec    (Puiseux pairs, 1st components)
     INV[i][4]    : intvec    (Puiseux pairs, 2nd components)
@@ -19269,7 +19269,7 @@ entry contains further invariants of f in the format:
     INV[last][1] : intmat    (contact matrix of the branches)
     INV[last][2] : intmat    (intersection multiplicities of the branches)
     INV[last][3] : int       (delta invariant of f)
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -19549,7 +19549,7 @@ or (one entry in) the list <code>hne</code> of the ring created by <code>hnexpan
 </dd>
 <dt><strong>Display:</strong></dt>
 <dd><p>the sequence of multiplicities:
-</p><table><tr><td>&nbsp;</td><td><pre class="format"> - if <code>INPUT=develop(f)</code> or <code>INPUT=extdevelop(develop(f),n)</code> or <code>INPUT=hne[i]</code>:
+</p><pre class="format"> - if <code>INPUT=develop(f)</code> or <code>INPUT=extdevelop(develop(f),n)</code> or <code>INPUT=hne[i]</code>:
                       <code>a , b , c , ....... , 1</code>
  - if <code>INPUT=f</code> or <code>INPUT=hnexpansion(f[,&quot;ess&quot;])</code> or <code>INPUT=hne</code>:
                       <code>[(a_1, .... , b_1 , .... , c_1)],</code>
@@ -19560,7 +19560,7 @@ or (one entry in) the list <code>hne</code> of the ring created by <code>hnexpan
        <code>a_1 , ... , a_n</code> the sequence of multiplicities of the 1st branch,
        <code>[...]</code> the multiplicities of the j-th transformed of all branches,
        <code>(...)</code> indicating branches meeting in an infinitely near point.
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -23035,11 +23035,11 @@ basering;
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="format">list S:
+<dd><pre class="format">list S:
   ideal S[1]: spectral numbers in increasing order
   intvec S[2]:
     int S[2][i]: multiplicity of spectral number S[1][i]
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -24063,12 +24063,12 @@ next run of partial_molien
 </dd>
 <dt><strong>Theory:</strong></dt>
 <dd><p>The following calculation is implemented:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">(1+a1x+a2x^2+...+anx^n)/(1+b1x+b2x^2+...+bmx^m)=(1+(a1-b1)x+...
+</p><pre class="format">(1+a1x+a2x^2+...+anx^n)/(1+b1x+b2x^2+...+bmx^m)=(1+(a1-b1)x+...
 (1+b1x+b2x^2+...+bmx^m)
 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;
    (a1-b1)x+(a2-b2)x^2+...
    (a1-b1)x+b1(a1-b1)x^2+...
-</pre></td></tr></table>
+</pre>
 
 </dd>
 </dl>
@@ -25545,8 +25545,8 @@ Gert-Martin Greuel (email: greuel@mathematik.uni-kl.de)
 <dt><strong>Return:</strong></dt>
 <dd><p>ideal, containing generators of the ring of invariants of the
 additive group (K,+) given by the vector field
-</p><table><tr><td>&nbsp;</td><td><pre class="format">         m = m[1,1]*d/dx(1) +...+ m[n,1]*d/dx(n).
-</pre></td></tr></table>
+</p><pre class="format">         m = m[1,1]*d/dx(1) +...+ m[n,1]*d/dx(n).
+</pre>
 <p>If b&gt;0 the computation stops after all invariants of degree &lt;= b
 (and at least one of higher degree) are found or when all invariants
 are computed.
@@ -25863,8 +25863,8 @@ h must be a ring variable
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>a polynomial, the invariant polynomial of the vector field
-</p><table><tr><td>&nbsp;</td><td><pre class="format">         m = m[1,1]*d/dx(1) +...+ m[n,1]*d/dx(n)
-</pre></td></tr></table>
+</p><pre class="format">         m = m[1,1]*d/dx(1) +...+ m[n,1]*d/dx(n)
+</pre>
 <p>with respect to p,q,h. It is defined as follows: set inv = p if p is
 invariant, and else as
 <br>inv = m(q)^N * sum_i=1..N-1{ (-1)^i*(1/i!)*m^i(p)*(q/m(q))^i }
@@ -25919,8 +25919,8 @@ in;
 <dt><strong>Return:</strong></dt>
 <dd><p>list of two ideals, the first ideal contains further invariants of
 the vector field
-</p><table><tr><td>&nbsp;</td><td><pre class="format">         m = sum m[i,1]*d/dx(i) with respect to id,p,q,
-</pre></td></tr></table>
+</p><pre class="format">         m = sum m[i,1]*d/dx(i) with respect to id,p,q,
+</pre>
 <p>i.e. we compute elements in the (invariant) subring generated by id
 which are divisible by q and divide them by q as much as possible
 the second ideal contains all invariants given before
@@ -27262,7 +27262,7 @@ default: n=nvars(basering)
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list L with 5 entries:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  L[1]: (interreduced) ideal obtained from i by substituing
+  </p><pre class="format">  L[1]: (interreduced) ideal obtained from i by substituing
         from the first n variables those, which appear in a linear part
         of i, by putting this part into triangular form
   L[2]: ideal of variables which have been substituted
@@ -27270,7 +27270,7 @@ default: n=nvars(basering)
   L[4]: ideal of variables of basering, eliminated ones are set to 0
   L[5]: ideal, describing the map from the basering to itself such that
         L[1] is the image of i
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -27334,7 +27334,7 @@ e!=0: eliminate also by direct substitution<br>
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list of 5 objects:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  [1]: ideal obtained by substituting from the first n variables those
+  </p><pre class="format">  [1]: ideal obtained by substituting from the first n variables those
        from i, which appear in the linear part of i (or, if e!=0, which
        can be expressed directly in the remaining vars)
   [2]: ideal, variables which have been substituted
@@ -27342,11 +27342,11 @@ e!=0: eliminate also by direct substitution<br>
   [4]: ideal of variables of basering, substituted ones are set to 0
   [5]: ideal, describing the map from the basering, say k[x(1..m)], to
        itself onto k[..variables fom [4]..] and [1] is the image of i
-  </pre></td></tr></table>
+  </pre>
 <p>The ideal i is generated by [1] and [3] in k[x(1..m)], the map [5]
 maps [3] to 0, hence induces an isomorphism
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">            k[x(1..m)]/i -&gt; k[..variables fom [4]..]/[1]
-  </pre></td></tr></table>
+  </p><pre class="format">            k[x(1..m)]/i -&gt; k[..variables fom [4]..]/[1]
+  </pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -27425,7 +27425,7 @@ e!=0: eliminate also by direct substitution<br>
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list of 6 objects:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  [1]: (interreduced) ideal obtained by substituting from i those vars
+  </p><pre class="format">  [1]: (interreduced) ideal obtained by substituting from i those vars
        appearing in p, which occur in the linear part of i (or which can
        be expressed directly in the remaining variables, if e!=0)
   [2]: ideal, variables which have been substituted
@@ -27434,11 +27434,11 @@ e!=0: eliminate also by direct substitution<br>
   [5]: ideal, describing the map from the basering, say k[x(1..m)], to
        itself onto k[..variables fom [4]..] and [1] is the image of i
   [6]: int, # of vars considered for substitution (= # of factors of p)
-  </pre></td></tr></table>
+  </pre>
 <p>The ideal i is generated by [1] and [3] in k[x(1..m)], the map [5]
 maps [3] to 0, hence induces an isomorphism
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">            k[x(1..m)]/i -&gt; k[..variables fom [4]..]/[1]
-  </pre></td></tr></table>
+  </p><pre class="format">            k[x(1..m)]/i -&gt; k[..variables fom [4]..]/[1]
+  </pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -27498,13 +27498,13 @@ elimpartanyr(i,z);
 <dd><p>fastelim(i,p[h,o,a,b,e,m]); i=ideal, p=polynomial; h,o,a,b,e=integers
 p: product of variables to be eliminated;<br>
 Optional parameters:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  - h !=0: use Hilbert-series driven std-basis computation
+  </p><pre class="format">  - h !=0: use Hilbert-series driven std-basis computation
   - o !=0: use proc <code>valvars</code> for a - hopefully - optimal ordering of vars
   - a !=0: order vars to be eliminated w.r.t. increasing complexity
   - b !=0: order vars not to be eliminated w.r.t. increasing complexity
   - e !=0: use <code>elimpart</code> first to eliminate easy part
   - m !=0: compute a minimal system of generators
-  </pre></td></tr></table>
+  </pre>
 <p>(default: h,o,a,b,e,m = 0,1,0,0,0,0)
 </p>
 </dd>
@@ -27558,11 +27558,11 @@ fastelim(i,xytua,1,0,1);     //with hilb,minbase
 <dt><strong>Return:</strong></dt>
 <dd><p>if no second argument is present: ideal of variables occurring in id,<br>
 if a second argument is given (of any type): list L with 4 entries:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  L[1]: ideal of variables occurring in id
+  </p><pre class="format">  L[1]: ideal of variables occurring in id
   L[2]: intvec of variables occurring in id
   L[3]: ideal of variables not occurring in id
   L[4]: intvec of variables not occurring in id
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 </dl>
@@ -27883,7 +27883,7 @@ m1,m2,...= integers<br>
 <dt><strong>Create:</strong></dt>
 <dd><p>a new ring and map id into it, the new ring has same char as basering
 but with new ordering and vars sorted in the following manner:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  - each block of vars occurring in pi is sorted w.r.t. its complexity in id,
+  </p><pre class="format">  - each block of vars occurring in pi is sorted w.r.t. its complexity in id,
   - ni controls the sorting in i-th block (= vars occurring in pi):
     ni=0 (resp.!=0) means that less (resp. more) complex vars come first
   - oi and mi define the monomial ordering of the i-th block:
@@ -27891,7 +27891,7 @@ but with new ordering and vars sorted in the following manner:
     if mi!=0, the ordering of the i-th block itself is a blockordering,
       each subblock having ordstr=oi, such that vars of same complexity are
       in one block
-  </pre></td></tr></table>
+  </pre>
 <p>Note that only simple ordstrings oi are allowed:
 <br>&quot;lp&quot;,&quot;dp&quot;,&quot;Dp&quot;,&quot;ls&quot;,&quot;ds&quot;,&quot;Ds&quot;.
 </p>
@@ -27971,7 +27971,7 @@ n1,n2,...=integers<br>
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list of two elements, an ideal and a list:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  [1]: ideal, variables of basering sorted w.r.t their complexity in id
+  </p><pre class="format">  [1]: ideal, variables of basering sorted w.r.t their complexity in id
        ni controls the ordering in i-th block (= vars occurring in pi):
        ni=0 (resp.!=0) means that less (resp. more) complex vars come first
   [2]: a list with 4 entries for each pi:
@@ -27981,7 +27981,7 @@ n1,n2,...=integers<br>
                   valuation vectors of the vars in ai
        intvec wi: size of 1-st, 2-nd,... block of identical columns of Mi
                   (vars with same valuation)
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -28125,7 +28125,7 @@ ni=0 (resp.!=0) means that less (resp. more) complex vars come first.
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list with 3 entries:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  [1]: intvec, say v, describing the permutation such that the permuted
+  </p><pre class="format">  [1]: intvec, say v, describing the permutation such that the permuted
        ringvariables are ordered with respect to their complexity in id
   [2]: list of intvecs, i-th intvec, say v(i) describing permutation
        of vars in a(i) such that v=v(1),v(2),...
@@ -28133,7 +28133,7 @@ ni=0 (resp.!=0) means that less (resp. more) complex vars come first.
        a(i): factors of pi,
        M(i): valuation matrix of a(i), such that the j-th column of M(i)
              is the valuation vector of j-th generator of a(i)
-         </pre></td></tr></table>
+         </pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -28476,7 +28476,7 @@ idealSplit(i);
 <dt><strong>Usage:</strong></dt>
 <dd><p>laguerre_solve(f [, m, l, n, s] ); f = polynomial,<br>
 m, l, n, s = integers (control parameters of the method)
-</p><table><tr><td>&nbsp;</td><td><pre class="format"> m: precision of output in digits ( 4 &lt;= m), if basering is not ring of 
+</p><pre class="format"> m: precision of output in digits ( 4 &lt;= m), if basering is not ring of 
       complex numbers;
  l: precision of internal computation in decimal digits ( l &gt;=8 )
       only if the basering is not complex or complex with smaller precision;
@@ -28489,7 +28489,7 @@ m, l, n, s = integers (control parameters of the method)
  s: s != 0, returns ERROR if  | f(root) | &gt; 0.1^m (when computing in the 
       current ring)
  ( default: m, l, n, s = 8, 30, 1, 0 )
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -28501,9 +28501,9 @@ parameters.
 <dt><strong>Return:</strong></dt>
 <dd><p>list of (complex) roots of the polynomial f, depending on n. The
 result is of type
-</p><table><tr><td>&nbsp;</td><td><pre class="format"> string: if the basering is not complex,
+</p><pre class="format"> string: if the basering is not complex,
  number: otherwise.
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -28596,13 +28596,13 @@ without parameters;
 <dd><p>list of solutions of the ideal G, depending on n; one solution is a
 list of complex numbers in the generated output ring (the new
 basering).
-</p><table><tr><td>&nbsp;</td><td><pre class="format"> The result is a list L
+</p><pre class="format"> The result is a list L
     n  = 0: a list of all different solutions (L[i]),
     n != 0: a list of two elements,
             L[i][1] contains all different solutions with the same multiplicity
             L[i][2] the multiplicity
  L is ordered w.r.t. multiplicity (the smallest first).
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -28726,13 +28726,13 @@ l2[2][1];
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
 <dd><p>ures_solve(i [, k, p] ); i = ideal, k, p = integers
-</p><table><tr><td>&nbsp;</td><td><pre class="format">   k=0: use sparse resultant matrix of Gelfand, Kapranov and Zelevinsky,
+</p><pre class="format">   k=0: use sparse resultant matrix of Gelfand, Kapranov and Zelevinsky,
    k=1: use resultant matrix of Macaulay which works only for
           homogeneous ideals,
    p&gt;0: defines precision of the long floats for internal computation
           if the basering is not complex (in decimal digits),
    (default: k=0, p=30)
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -28744,9 +28744,9 @@ l2[2][1];
 <dt><strong>Return:</strong></dt>
 <dd><p>list of all (complex) roots of the polynomial system i = 0; the
 result is of type
-</p><table><tr><td>&nbsp;</td><td><pre class="format">   string: if the basering is not complex,
+</p><pre class="format">   string: if the basering is not complex,
    number: otherwise.
-</pre></td></tr></table>
+</pre>
 
 </dd>
 </dl>
@@ -28833,9 +28833,9 @@ subst(subst(i[1],x,l[1][1]),y,l[1][2]);
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
 <dd><p>mp_res_mat(i [, k] ); i ideal, k integer,
-</p><table><tr><td>&nbsp;</td><td><pre class="format">    k=0: sparse resultant matrix of Gelfand, Kapranov and Zelevinsky,
+</p><pre class="format">    k=0: sparse resultant matrix of Gelfand, Kapranov and Zelevinsky,
     k=1: resultant matrix of Macaulay (k=0 is default)
-</pre></td></tr></table>
+</pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -29069,8 +29069,8 @@ rlist;
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
 <dd><p>lex_solve( i[,p] ); i=ideal, p=integer,
- </p><table><tr><td>&nbsp;</td><td><pre class="format">  p&gt;0: gives precision of complex numbers in decimal digits (default: p=30).
- </pre></td></tr></table>
+ </p><pre class="format">  p&gt;0: gives precision of complex numbers in decimal digits (default: p=30).
+ </pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -29830,11 +29830,11 @@ triangMH(stdfglm(cyclic(5)));
 gls: contains the equations, for which a solution will be computed
 ini: ideal of initial values (approximate solutions to start with),<br>
 ipar: control integers (default: ipar = 100,10)
-  </p><table><tr><td>&nbsp;</td><td><pre class="format"> ipar[1]: max. number of iterations
+  </p><pre class="format"> ipar[1]: max. number of iterations
  ipar[2]: accuracy (we have the l_2-norm ||.||): accept solution <code>sol</code>
           if ||gls(sol)|| &lt; eps0*(0.1^ipar[2])
           where eps0 = ||gls(ini)|| is the initial error
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -29897,10 +29897,10 @@ gi=gi(var(n-i+1),..,var(n)),<br>
 a: ideal of numbers, coordinates of an approximation of a common
 zero of G to start with (with a[i] to be substituted in var(i)),<br>
 ipar: control integer vector (default: ipar = 100,10)
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  ipar[1]: max. number of iterations
+  </p><pre class="format">  ipar[1]: max. number of iterations
   ipar[2]: accuracy (we have as norm |.| absolute value ):
            accept solution <code>sol</code> if |G(sol)| &lt; |G(a)|*(0.1^ipar[2]).
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Return:</strong></dt>
@@ -30093,9 +30093,9 @@ EGCD(f, g);
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list with two entries
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  _[1] = factors (monic), first entry is the leading coefficient
+  </p><pre class="format">  _[1] = factors (monic), first entry is the leading coefficient
   _[2] = multiplicities (not yet implemented)
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -30164,9 +30164,9 @@ fl[1][1]*fl[1][2]*fl[1][3]*fl[1][4]*fl[1][5] - f;
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list of polynomials
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  _[1] = quotient  q
+  </p><pre class="format">  _[1] = quotient  q
   _[2] = remainder r
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -30276,14 +30276,14 @@ without multiplicities.
 <dt><strong>Return:</strong></dt>
 <dd><p>ring, a polynomial ring over an extension field of the ground field,
 containing a list &rsquo;roots&rsquo; and polynomials &rsquo;newA&rsquo; and &rsquo;f&rsquo;:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  - &rsquo;roots&rsquo; is the list of roots of the polynomial f (no multiplicities)
+  </p><pre class="format">  - &rsquo;roots&rsquo; is the list of roots of the polynomial f (no multiplicities)
   - if the ground field is Q(a&rsquo;) and the extension field is Q(a), then
     &rsquo;newA&rsquo; is the representation of a&rsquo; in Q(a). 
     If the basering contains a parameter &rsquo;a&rsquo; and the minpoly remains unchanged
     then &rsquo;newA&rsquo; = &rsquo;a&rsquo;.
     If the basering does not contain a parameter then &rsquo;newA&rsquo; = &rsquo;a&rsquo; (default).
   - &rsquo;f&rsquo; is the polynomial f in Q(a) (a&rsquo; being substituted by &rsquo;newA&rsquo;)
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -30356,10 +30356,10 @@ F(f);
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list with 3 entries
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  _[1] = squarefree norm of g (poly)
+  </p><pre class="format">  _[1] = squarefree norm of g (poly)
   _[2] = g (= f(x - s*a)) (poly)
   _[3] = s (int)
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -30421,14 +30421,14 @@ of the ground field.
 <dd><p>ring, a polynomial ring over an extension field of the ground field,
 containing a list &rsquo;zeroset&rsquo;, a polynomial &rsquo;newA&rsquo;, and an
 ideal &rsquo;id&rsquo;:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  - &rsquo;zeroset&rsquo; is the list of the zeros of the ideal I, each zero is an ideal.
+  </p><pre class="format">  - &rsquo;zeroset&rsquo; is the list of the zeros of the ideal I, each zero is an ideal.
   - if the ground field is Q(a&rsquo;) and the extension field is Q(a), then
     &rsquo;newA&rsquo; is the representation of a&rsquo; in Q(a).
     If the basering contains a parameter &rsquo;a&rsquo; and the minpoly remains unchanged
     then &rsquo;newA&rsquo; = &rsquo;a&rsquo;.
     If the basering does not contain a parameter then &rsquo;newA&rsquo; = &rsquo;a&rsquo; (default).    
   - &rsquo;id&rsquo; is the ideal I in Q(a)[x_1,...] (a&rsquo; substituted by &rsquo;newA&rsquo;)
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -30552,9 +30552,9 @@ minpoly = p(a).
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list with 2 entries
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  _[1] = factors, first is a constant
+  </p><pre class="format">  _[1] = factors, first is a constant
   _[2] = multiplicities (not yet implemented)
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -30639,9 +30639,9 @@ polynomial in Q[a].
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list of polynomials
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  _[1] = quotient  q
+  </p><pre class="format">  _[1] = quotient  q
   _[2] = remainder r
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -30727,11 +30727,11 @@ without multiplicities.
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list, all entries are polynomials
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  _[1] = roots of f, each entry is a polynomial
+  </p><pre class="format">  _[1] = roots of f, each entry is a polynomial
   _[2] = &rsquo;newA&rsquo; - if the ground field is Q(a&rsquo;) and the extension field
          is Q(a), then &rsquo;newA&rsquo; is the representation of a&rsquo; in Q(a)
   _[3] = minpoly of the algebraic extension of the ground field
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -30777,10 +30777,10 @@ without multiplicities.
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list with 3 entries
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  _[1] = squarefree norm of g (poly)
+  </p><pre class="format">  _[1] = squarefree norm of g (poly)
   _[2] = g (= f(x - s*a)) (poly)
   _[3] = s (int)
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -31084,14 +31084,14 @@ to have the same number of entries as I!).
 <br>For implicit given curves enter first the string returned by
 proc mathinit into Mathematica in order to load ImplicitPlot.
 The following conventions for I are used:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  - ideal with 2 entries in one variable means a parametrised plane curve,
+  </p><pre class="format">  - ideal with 2 entries in one variable means a parametrised plane curve,
   - ideal with 3 entries in one variable means a parametrised space curve,
   - ideal with 3 entries in two variables means a parametrised surface,
   - ideal with 2 entries in two variables means an implicit curve
     given as I[1]==I[2],
   - ideal with 1 entry (or one polynomial) in two variables means
     an implicit curve given as  f == 0,
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 </dl>
@@ -31186,7 +31186,7 @@ kill rr0,rr1;
 are used to control the typesetting.
 Call <code>texdemo();</code> to obtain a LaTeX2e file <code>texlibdemo.tex</code>
 explaining the features of <code>latex.lib</code> and its global variables.
-</p><table><tr><td>&nbsp;</td><td><pre class="format">  <code>TeXwidth</code> (int) -1, 0, 1..9, &gt;9:  controls breaking of long polynomials
+</p><pre class="format">  <code>TeXwidth</code> (int) -1, 0, 1..9, &gt;9:  controls breaking of long polynomials
   <code>TeXnofrac</code> (int) flag:  write 1/2 instead of \frac{1}{2}
   <code>TeXbrack</code> (string) &quot;{&quot;, &quot;(&quot;, &quot;&lt;&quot;, &quot;|&quot;, empty string: 
                                    controls brackets around ideals and matrices
@@ -31194,7 +31194,7 @@ explaining the features of <code>latex.lib</code> and its global variables.
   <code>TeXaligned</code> (int) flag:  write maps (and ideals) aligned
   <code>TeXreplace</code> (list) list entries = 2 strings:  replacing symbols
   <code>NoDollars</code> (int) flag:  suppresses surrounding $ signs
-</pre></td></tr></table>
+</pre>
 
 </dd>
 </dl>
@@ -32601,35 +32601,35 @@ For more information about the library see the end of the file brnoeth.lib.
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list L with the computed data:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  L[1] a list of rings: L[1][1]=aff_r (affine), L[1][2]=Proj_R (projective),
+  </p><pre class="format">  L[1] a list of rings: L[1][1]=aff_r (affine), L[1][2]=Proj_R (projective),
   L[2] an intvec with 2 entries (degree, genus),
   L[3] a list of intvec (closed places),
   L[4] an intvec (conductor),
   L[5] a list of lists:
      L[5][d][1] a (local) ring over an extension of degree d,
      L[5][d][2] an intvec (degrees of base points of places of degree d)
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
 <dd><p><code>Adj_div(f);</code> computes and stores the fundamental data of the
 plane curve defined by f as needed for AG codes.
 <br>In the affine ring you can find the following data:
-   </p><table><tr><td>&nbsp;</td><td><pre class="format">   poly CHI:  affine equation of the curve,
+   </p><pre class="format">   poly CHI:  affine equation of the curve,
    ideal Aff_SLocus:  affine singular locus (std),
    list Inf_Points:  points at infinity
             Inf_Points[1]:  singular points
             Inf_Points[2]:  non-singular points,
    list Aff_SPoints:  affine singular points (if not empty).
-   </pre></td></tr></table>
+   </pre>
 <p>In the projective ring you can find the projective equation
 CHI of the curve (poly).
 <br>In the local rings L[5][d][1] you find:
-   </p><table><tr><td>&nbsp;</td><td><pre class="format">   list POINTS:  base points of the places of degree d,
+   </p><pre class="format">   list POINTS:  base points of the places of degree d,
    list LOC_EQS:  local equations of the curve at the base points,
    list BRANCHES:  Hamburger-Noether developments of the places,
    list PARAMETRIZATIONS:  local parametrizations of the places,
-   </pre></td></tr></table>
+   </pre>
 <p>Each entry of the list L[3] corresponds to one closed place (i.e.,
 a place and all its conjugates) which is represented by an intvec
 of size two, the first entry is the degree of the place (in
@@ -32793,11 +32793,11 @@ printlevel=plevel;
 <dt><strong>Return:</strong></dt>
 <dd><p>list L with updated data of CURVE after computing all non-singular
 affine closed places whose degrees are in the intvec h: <br>
-   </p><table><tr><td>&nbsp;</td><td><pre class="format">   in L[1][1]: (affine ring) lists Aff_Points(d) with affine non-singular
+   </p><pre class="format">   in L[1][1]: (affine ring) lists Aff_Points(d) with affine non-singular
                (closed) points of degree d (if non-empty),
    in L[3]:    the newly computed closed places are added,
    in L[5]:    local rings created/updated to store (repres. of) new places.
-   </pre></td></tr></table>
+   </pre>
 <p>See <a href="#Adj_005fdiv">Adj_div</a> for a description of the entries in L.
 </p>
 </dd>
@@ -33001,9 +33001,9 @@ printlevel=plevel;
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list WS of two lists:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  WS[1] list of integers (Weierstr. semigroup of the curve at place i up to m)
+  </p><pre class="format">  WS[1] list of integers (Weierstr. semigroup of the curve at place i up to m)
   WS[2] list of ideals (the associated rational functions)
-  </pre></td></tr></table>
+  </pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -33094,22 +33094,22 @@ printlevel=plevel;
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list L which is the update of the list CURVE with additional entries
-   </p><table><tr><td>&nbsp;</td><td><pre class="format">   L[1][3]: ring (p,a),(x,y),lp (affine),
+   </p><pre class="format">   L[1][3]: ring (p,a),(x,y),lp (affine),
    L[1][4]: ring (p,a),(x,y,z),lp (projective),
    L[1][5]: ring (p,a),(x,y,t),ls (local),
    L[2][3]: int  (the number of rational places),
-   </pre></td></tr></table>
+   </pre>
 <p>the rings being defined over a field extension of degree d. <br>
 If d&lt;2 then <code>extcurve(d,CURVE);</code> creates a list L which
 is the update of the list CURVE with additional entries
-   </p><table><tr><td>&nbsp;</td><td><pre class="format">   L[1][5]: ring p,(x,y,t),ls,
+   </p><pre class="format">   L[1][5]: ring p,(x,y,t),ls,
    L[2][3]: int  (the number of computed places over the base field).
-   </pre></td></tr></table>
+   </pre>
 <p>In both cases, in the ring L[1][5] lists with the data for all the
 computed rational places (after a field extension of degree d) are
 created (see <a href="#Adj_005fdiv">Adj_div</a>):
-   </p><table><tr><td>&nbsp;</td><td><pre class="format">   lists POINTS, LOC_EQS, BRANCHES, PARAMETRIZATIONS.
-   </pre></td></tr></table>
+   </p><pre class="format">   lists POINTS, LOC_EQS, BRANCHES, PARAMETRIZATIONS.
+   </pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -33338,14 +33338,14 @@ printlevel=plevel;
 <dt><strong>Return:</strong></dt>
 <dd><p>list E of size n+3, where n=size(D). All its entries but E[n+3]
 are matrices:
-   </p><table><tr><td>&nbsp;</td><td><pre class="format">   E[1]:  parity check matrix for the current AG code
+   </p><pre class="format">   E[1]:  parity check matrix for the current AG code
    E[2] ... E[n+2]:  matrices used in the procedure decodeSV
    E[n+3]:  intvec with
        E[n+3][1]: correction capacity 
  of the algorithm
        E[n+3][2]: designed Goppa distance 
  of the current AG code
-   </pre></td></tr></table>
+   </pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -33667,10 +33667,10 @@ print(H);
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list L with:
-   </p><table><tr><td>&nbsp;</td><td><pre class="format">   L[1] is the generator matrix in standard form of an equivalent code,
+   </p><pre class="format">   L[1] is the generator matrix in standard form of an equivalent code,
    L[2] is the parity check matrix in standard form of such code,
    L[3] is an intvec which represents the needed permutation.
-   </pre></td></tr></table>
+   </pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>

@@ -94,22 +94,22 @@ ul.no-bullet {list-style: none}
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list L which is the update of the list CURVE with additional entries
-   </p><table><tr><td>&nbsp;</td><td><pre class="format">   L[1][3]: ring (p,a),(x,y),lp (affine),
+   </p><pre class="format">   L[1][3]: ring (p,a),(x,y),lp (affine),
    L[1][4]: ring (p,a),(x,y,z),lp (projective),
    L[1][5]: ring (p,a),(x,y,t),ls (local),
    L[2][3]: int  (the number of rational places),
-   </pre></td></tr></table>
+   </pre>
 <p>the rings being defined over a field extension of degree d. <br>
 If d&lt;2 then <code>extcurve(d,CURVE);</code> creates a list L which
 is the update of the list CURVE with additional entries
-   </p><table><tr><td>&nbsp;</td><td><pre class="format">   L[1][5]: ring p,(x,y,t),ls,
+   </p><pre class="format">   L[1][5]: ring p,(x,y,t),ls,
    L[2][3]: int  (the number of computed places over the base field).
-   </pre></td></tr></table>
+   </pre>
 <p>In both cases, in the ring L[1][5] lists with the data for all the
 computed rational places (after a field extension of degree d) are
 created (see <a href="sing_895.htm#Adj_005fdiv">Adj_div</a>):
-   </p><table><tr><td>&nbsp;</td><td><pre class="format">   lists POINTS, LOC_EQS, BRANCHES, PARAMETRIZATIONS.
-   </pre></td></tr></table>
+   </p><pre class="format">   lists POINTS, LOC_EQS, BRANCHES, PARAMETRIZATIONS.
+   </pre>
 
 </dd>
 <dt><strong>Note:</strong></dt>

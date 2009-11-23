@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.37 2009-11-15 23:39:07 pertusus Exp $
+# $Id: html.init,v 1.38 2009-11-23 13:30:50 pertusus Exp $
 
 use strict;
 
@@ -525,52 +525,44 @@ $style_map_pre{'click'}->{'function'} = \&t2h_default_click_pre;
       'flushright' => 'right',
       );
       
-# an eval of these $complex_format_map->{what}->{'begin'} yields beginning
-# an eval of these $complex_format_map->{what}->{'end'} yields end
-# $EXAMPLE_INDENT_CELL and SMALL_EXAMPLE_INDENT_CELL can be usefull here
-$complex_format_map =
+# preformatted formats formatting
+if ($COMPLEX_FORMAT_IN_TABLE)
 {
- 'example' =>
- {
-  'begin' => q{"<table><tr>$EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{"</td></tr></table>\n"},
-  'style' => 'code',
- },
- 'smallexample' =>
- {
-  'begin' => q{"<table><tr>$SMALL_EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{"</td></tr></table>\n"},
-  'style' => 'code',
- },
- 'display' =>
- {
-  'begin' => q{"<table><tr>$EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{"</td></tr></table>\n"},
- },
- 'smalldisplay' =>
- {
-  'begin' => q{"<table><tr>$SMALL_EXAMPLE_INDENT_CELL<td>"},
-  'end' => q{"</td></tr></table>\n"},
- }
-};
+   foreach my $indented_format ('example', 'display', 'lisp')
+   {
+      $complex_format_map{"small$indented_format"}->{'begin'} = "<table><tr>$SMALL_EXAMPLE_INDENT_CELL<td>";
+      $complex_format_map{$indented_format}->{'begin'} = "<table><tr>$EXAMPLE_INDENT_CELL<td>";
+      $complex_format_map{$indented_format}->{'end'} = "</td></tr></table>\n";
+      $complex_format_map{"small$indented_format"}->{'end'} = "</td></tr></table>\n";
+   }
 
-# format shouldn't narrow the margins
-
-$complex_format_map->{'lisp'} =  $complex_format_map->{'example'};
-$complex_format_map->{'smalllisp'} = $complex_format_map->{'smallexample'};
-$complex_format_map->{'format'} = $complex_format_map->{'display'};
-$complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
+   foreach my $non_indented_formats ('format', 'smallformat')
+   {
+      $complex_format_map{$non_indented_formats}->{'begin'} = '';
+      $complex_format_map{$non_indented_formats}->{'end'} = "\n";
+   }
+}
+else
+{
+   foreach my $format ('example', 'display', 'lisp', 'format')
+   {
+      $complex_format_map{$format}->{'begin'} = html_default_attribute_class('div', $format).'>';
+      $complex_format_map{"small$format"}->{'begin'} = html_default_attribute_class('div', "small$format").'>';
+      $complex_format_map{$format}->{'end'} = '</div>';
+      $complex_format_map{"small$format"}->{'end'} = '</div>';
+   }
+}
 
 foreach my $format ('menu', 'detailmenu', 'direntry')
 {
-   $complex_format_map->{$format} = { 'begin' => q{''} , 'end' => q{''},
-     'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-preformatted',
+   $complex_format_map{$format} = { 'begin' => '' , 'end' => '',
+     'class' => 'menu-preformatted',
    };
 }
 
-$complex_format_map->{'menu_comment'} = {
-   'begin' => q{"<tr><th colspan=\"3\" align=\"left\" valign=\"top\">"},
-   'end' => q{"</th></tr>"}, 'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-comment',
+$complex_format_map{'menu_comment'} = {
+   'begin' => "<tr><th colspan=\"3\" align=\"left\" valign=\"top\">",
+   'end' => "</th></tr>", 'class' => 'menu-comment',
 };
 
 
@@ -599,6 +591,11 @@ $css_map{'pre.format'} = $css_map{'pre.display'};
 $css_map{'pre.smallformat'} = $css_map{'pre.smalldisplay'}; 
 $css_map{'pre.smalllisp'} = $css_map{'pre.smallexample'};
 
+#foreach my $indented_format ('example', 'display', 'lisp')
+#{
+#   $css_map{"div.$indented_format"} = 'margin-left: 3.2em;';
+#   $css_map{"div.small$indented_format"} = 'margin-left: 3.2em;';
+#}
 
 # formatting functions
 
@@ -2011,9 +2008,9 @@ sub html_teletyped_in_stack($)
     my $stack = shift;
     foreach my $element(reverse(@$stack))
     {
-        return 1 if ($complex_format_map->{$element} and 
-            $complex_format_map->{$element}->{'style'} and
-            $complex_format_map->{$element}->{'style'} eq 'code');
+        return 1 if ($complex_format_map{$element} and 
+            $complex_format_map{$element}->{'style'} and
+            $complex_format_map{$element}->{'style'} eq 'code');
     }
     return 0;
 }

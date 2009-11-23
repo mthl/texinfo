@@ -415,61 +415,58 @@ sub T2H_ROFF_format($$$)
        'itemize'      =>  {}
        );
       
-# an eval of these $complex_format_map->{what}->{'begin'} yields beginning
-# an eval of these $complex_format_map->{what}->{'end'} yields end
-# $EXAMPLE_INDENT_CELL and SMALL_EXAMPLE_INDENT_CELL can be usefull here
 $complex_format_map =
-{
+(
  'example' =>
  {
-  'begin' => q{""},
-  'end' => q{""},
+  'begin' => "",
+  'end' => "",
   'begin_region' => ".(l I\n\\&\\fR\\f(CW",
   'end_region' => "\\&\\fR\n.)l\n"
  },
  'smallexample' =>
  {
-  'begin' => q{""},
-  'end' => q{""},
+  'begin' => "",
+  'end' => "",
   'begin_region' => ".(l I\n.size -2\n\\&\\fR\\f(CW",
   'end_region' => "\\&\\fR\n.size +2\n.)l\n"
  },
  'display' =>
  {
-  'begin' => q{""},
-  'end' => q{""},
+  'begin' => "",
+  'end' => "",
   'begin_region' => ".(l I\n\\&\\fR\\f(CW",
   'end_region' => "\\&\\fR\n.)l\n"
  },
  'smalldisplay' =>
  {
-  'begin' => q{""},
-  'end' => q{""},
+  'begin' => "",
+  'end' => "",
   'begin_region' => ".(l I\n.size -2\n\\&\\fR\\f(CW",
   'end_region' => "\\&\\fR\n.size +2\n.)l\n"
  },
  'menu-comment' => 
  {
-  'begin' => q{""},
-  'end' => q{""},
+  'begin' => "",
+  'end' => "",
   'begin_region' => "",
   'end_region' => "\n"
  },
  'menu-preformatted' => 
  {
-  'begin' => q{""},
-  'end' => q{""},
+  'begin' => "",
+  'end' => "",
   'begin_region' => "",
   'end_region' => "\n"
  }
-};
+);
 
 # format shouldn't narrow the margins
 
-$complex_format_map->{'lisp'} =  $complex_format_map->{'example'};
-$complex_format_map->{'smalllisp'} = $complex_format_map->{'smallexample'};
-$complex_format_map->{'format'} = $complex_format_map->{'display'};
-$complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
+$complex_format_map{'lisp'} =  $complex_format_map{'example'};
+$complex_format_map{'smalllisp'} = $complex_format_map{'smallexample'};
+$complex_format_map{'format'} = $complex_format_map{'display'};
+$complex_format_map{'smallformat'} = $complex_format_map{'smalldisplay'};
 
 sub protect_spaces($)
 {
@@ -916,7 +913,7 @@ sub t2h_roff_preformatted($$$$$$$$$$)
     {
          $open = "$number. ";
     }
-    return $complex_format_map->{$class}->{'begin_region'} . $leading_command_formatted . $open . $text . $complex_format_map->{$class}->{'end_region'};
+    return $complex_format_map{$class}->{'begin_region'} . $leading_command_formatted . $open . $text . $complex_format_map{$class}->{'end_region'};
 }
 
 # This function formats a heading for an element

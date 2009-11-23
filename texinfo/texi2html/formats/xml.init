@@ -111,18 +111,18 @@ foreach my $style (keys(%style_map))
     }
 }
 
-foreach my $complex_format (keys(%$complex_format_map))
+foreach my $complex_format (keys(%complex_format_map))
 {
-   my $style = $complex_format_map->{$complex_format}->{'style'};
-   delete $complex_format_map->{$complex_format};
-   $complex_format_map->{$complex_format}->{'begin'} = "\"<$complex_format xml:space=\\\"preserve\\\">\"";
-   $complex_format_map->{$complex_format}->{'end'} = "\"</$complex_format>\"";
-   $complex_format_map->{$complex_format}->{'style'} = $style if (defined($style));
+   my $style = $complex_format_map{$complex_format}->{'style'};
+   delete $complex_format_map{$complex_format};
+   $complex_format_map{$complex_format}->{'begin'} = "<$complex_format xml:space=\"preserve\">";
+   $complex_format_map{$complex_format}->{'end'} = "</$complex_format>";
+   $complex_format_map{$complex_format}->{'style'} = $style if (defined($style));
 }
 foreach my $menu_command('menu', 'detailmenu', 'direntry', 'menu_comment')
 {
-  $complex_format_map->{$menu_command} = undef;
-  delete $complex_format_map->{$menu_command};
+  $complex_format_map{$menu_command} = undef;
+  delete $complex_format_map{$menu_command};
 }
 
 # this is not needed because normal_text isn't the same than in html

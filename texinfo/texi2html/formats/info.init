@@ -196,10 +196,10 @@ foreach my $format ('group', 'raggedright', 'cartouche')
 
 foreach my $menu_command('menu', 'detailmenu', 'direntry', 'menu_comment')
 {
-  $complex_format_map->{$menu_command} = {'begin' => q{''} , 'end' => q{''}};
+  $complex_format_map{$menu_command} = {'begin' => '' , 'end' => ''};
 }
 
-foreach my $command (keys (%{$complex_format_map}), keys(%info_default_indent_format_length), 'quotation', 'smallquotation', 'deff_item', 'deff_itemx')
+foreach my $command (keys (%complex_format_map), keys(%info_default_indent_format_length), 'quotation', 'smallquotation', 'deff_item', 'deff_itemx')
 {
     $info_default_indented_commands{$command} = 1;
 }
@@ -871,7 +871,7 @@ sub info_default_process_content($$)
           {
               $text_added .= $content->{'end'};
           }
-          if ($complex_format_map->{$content->{'command'}} and $content->{'content'})
+          if ($complex_format_map{$content->{'command'}} and $content->{'content'})
           {
               $preformatted_format--;
           }
@@ -909,7 +909,7 @@ sub info_default_process_content($$)
               # this nullify a potential noindent in a random format
               $info_state->{'indent_para'} = undef;
           }
-          elsif (($complex_format_map->{$content->{'command'}} and $content->{'command'} ne 'menu') or $content->{'command'} eq 'cartouche')
+          elsif (($complex_format_map{$content->{'command'}} and $content->{'command'} ne 'menu') or $content->{'command'} eq 'cartouche')
           {
               if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level > 0) and !$followed_by_blank_line)
               {
@@ -1501,7 +1501,7 @@ sub info_default_process_content($$)
                   $indent_level++ if ($content->{'content'});
                   $indent_length = $indent_level * $info_default_indent_length;
               }
-              elsif (($complex_format_map->{$content->{'command'}} and $content->{'command'} ne 'menu') or $content->{'command'} eq 'cartouche')
+              elsif (($complex_format_map{$content->{'command'}} and $content->{'command'} ne 'menu') or $content->{'command'} eq 'cartouche')
               {
                   #if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0) and !$preformatted_format)
                   if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'} and ($indent_level != 0))
@@ -1509,7 +1509,7 @@ sub info_default_process_content($$)
                      $text_added .= "\n";
                   }
               }
-              if ($complex_format_map->{$content->{'command'}} and $content->{'content'})
+              if ($complex_format_map{$content->{'command'}} and $content->{'content'})
               {
                   $preformatted_format++;
               }

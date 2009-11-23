@@ -101,8 +101,8 @@ and are written
 in the  <small>SINGULAR</small> programming language.
 </p>
 <p>The general syntax of a function is
-</p><table><tr><td>&nbsp;</td><td><pre class="format">                   [target =] function_name (&lt;arguments&gt;);
-</pre></td></tr></table>
+</p><pre class="format">                   [target =] function_name (&lt;arguments&gt;);
+</pre>
 <p>If no target is specified, the result is printed.
 In some cases (e.g., <code>export</code>, <code>keepring</code>, <code>kill</code>,
 <code>setring</code>, <code>type</code>) the brackets are optional. For the commands
@@ -1066,10 +1066,10 @@ as a univariate polynomial in the given ring_variable,
 say z, and returns the coefficients as a k x d
 matrix M,
 where:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">    d-1 = maximum z-degree of all occurring polynomials
+</p><pre class="format">    d-1 = maximum z-degree of all occurring polynomials
       k = 1 if J is a polynomial,
       k = number of generators  if J is an ideal.
-</pre></td></tr></table>
+</pre>
 <p>If J is a vector or a module this procedure is repeated for each
 component and the resulting matrices are appended.<br>
 </p></dd>
@@ -2212,11 +2212,11 @@ implemented for ground fields for which <a href="#factorize">factorize</a> is im
 <dd><p>computes the irreducible factors (as an ideal) of the polynomial
 together with or without
 the multiplicities (as an intvec) depending on the second argument:
-</p><table><tr><td>&nbsp;</td><td><pre class="format">    0: returns factors and multiplicities, first factor is a constant.
+</p><pre class="format">    0: returns factors and multiplicities, first factor is a constant.
        May also be written with only one argument.
     1: returns non-constant factors (no multiplicities).
     2: returns non-constant factors and multiplicities.
-</pre></td></tr></table>
+</pre>
 </dd>
 <dt><code><strong>Note:</strong></code></dt>
 <dd><p>Not implemented for the coefficient fields real and finite fields of

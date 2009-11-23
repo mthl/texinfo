@@ -103,7 +103,7 @@ m1,m2,...= integers<br>
 <dt><strong>Create:</strong></dt>
 <dd><p>a new ring and map id into it, the new ring has same char as basering
 but with new ordering and vars sorted in the following manner:
-  </p><table><tr><td>&nbsp;</td><td><pre class="format">  - each block of vars occurring in pi is sorted w.r.t. its complexity in id,
+  </p><pre class="format">  - each block of vars occurring in pi is sorted w.r.t. its complexity in id,
   - ni controls the sorting in i-th block (= vars occurring in pi):
     ni=0 (resp.!=0) means that less (resp. more) complex vars come first
   - oi and mi define the monomial ordering of the i-th block:
@@ -111,7 +111,7 @@ but with new ordering and vars sorted in the following manner:
     if mi!=0, the ordering of the i-th block itself is a blockordering,
       each subblock having ordstr=oi, such that vars of same complexity are
       in one block
-  </pre></td></tr></table>
+  </pre>
 <p>Note that only simple ordstrings oi are allowed:
 <br>&quot;lp&quot;,&quot;dp&quot;,&quot;Dp&quot;,&quot;ls&quot;,&quot;ds&quot;,&quot;Ds&quot;.
 </p>

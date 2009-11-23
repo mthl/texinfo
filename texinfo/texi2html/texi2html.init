@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.251 2009-11-22 15:27:25 pertusus Exp $
+# $Id: texi2html.init,v 1.252 2009-11-23 13:30:47 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -340,6 +340,9 @@ $FIRSTPARAGRAPHINDENT = 'none';
 
 # simple headers formatting, not in a table and using node names.
 $HEADER_IN_TABLE = 0;
+
+# use table for indentation of complex formats
+$COMPLEX_FORMAT_IN_TABLE = 1;
 
 # if set, node names are used to construct file names
 # if undef, it is set if split at node, or $NODE_FILES is set.
@@ -4575,56 +4578,27 @@ sub default_load_tex_math(;$)
       'flushright' => 'right',
       );
       
-# an eval of these $complex_format_map->{what}->{'begin'} yields beginning
-# an eval of these $complex_format_map->{what}->{'end'} yields end
-# $EXAMPLE_INDENT_CELL and SMALL_EXAMPLE_INDENT_CELL can be usefull here
-$complex_format_map =
+# complex formats (preformatted)
+%complex_format_map = ();
+foreach my $complex_format ('example', 'smallexample', 'display', 
+  'smalldisplay', 'lisp', 'smalllisp', 'format', 'smallformat',
+  'menu', 'detailmenu', 'direntry', 'menu_comment')
 {
- 'example' =>
- {
-  'begin' => q{""},
-  'end' => q{""},
-  'style' => 'code',
- },
- 'smallexample' =>
- {
-  'begin' => q{""},
-  'end' => q{""},
-  'style' => 'code',
- },
- 'display' =>
- {
-  'begin' => q{""},
-  'end' => q{""},
- },
- 'smalldisplay' =>
- {
-  'begin' => q{""},
-  'end' => q{""},
- }
-};
-
-# format shouldn't narrow the margins
-
-$complex_format_map->{'lisp'} =  $complex_format_map->{'example'};
-$complex_format_map->{'smalllisp'} = $complex_format_map->{'smallexample'};
-$complex_format_map->{'format'} = $complex_format_map->{'display'};
-$complex_format_map->{'smallformat'} = $complex_format_map->{'smalldisplay'};
+    $complex_format_map{$complex_format} = { 'begin' => '', 'end' => '' };
+}
+foreach my $code_complex_format ('example', 'smallexample', 'lisp', 'smalllisp')
+{
+    $complex_format_map{$code_complex_format}->{'style'} = 'code';
+}
 
 # not in code_style, according to post on bug-texinfo
 foreach my $format ('menu', 'detailmenu', 'direntry')
 {
-   $complex_format_map->{$format} = { 'begin' => q{''} , 'end' => q{''},
-     'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-preformatted',
-   };
+   $complex_format_map{$format}->{'class'} = 'menu-preformatted';
 }
 
 # not in code_style, according to post on bug-texinfo
-$complex_format_map->{'menu_comment'} = {
-   'begin' => q{''},
-   'end' => q{''}, 'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-comment',
-};
-
+$complex_format_map{'menu_comment'}->{'class'} = 'menu-comment';
 
 %def_map = (
     # basic commands
@@ -5121,8 +5095,10 @@ sub t2h_default_complex_format($$)
     my $text = shift;
     return '' if ($text eq '');
     return '' if ($name eq 'direntry');
-    my $beginning = '';
-    if ($complex_format_map->{$name}->{'begin'} ne '')
+    my $beginning;
+    my $end;
+    # FIXME obsoleted in nov 2009
+    if (exists($complex_format_map->{$name}))
     {
         $beginning = eval "$complex_format_map->{$name}->{'begin'}";
         if ($@ ne '')
@@ -5131,16 +5107,19 @@ sub t2h_default_complex_format($$)
             $beginning = '';
 
         }
-    }
-    my $end = '';
-    if ($complex_format_map->{$name}->{'end'} ne '')
-    {
         $end = eval "$complex_format_map->{$name}->{'end'}";
         if ($@ ne '')
         {
             main::msg_debug("Evaluation of $complex_format_map->{$name}->{'end'}: $@");
             $end = '';
         }
+    }
+    else
+    {
+        $beginning = $complex_format_map{$name}->{'begin'};
+        $beginning = '' if (!defined($beginning));
+        $end = $complex_format_map{$name}->{'end'};
+        $end = '' if (!defined($end));
     }
     return $beginning . $text . $end;	
 }

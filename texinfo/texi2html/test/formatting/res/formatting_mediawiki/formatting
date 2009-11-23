@@ -336,15 +336,15 @@ After clickstyle &rArr;
 </div>
 </td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="format" style="font-family: serif">
+<div class="format" style="font-family: serif">
  f&ndash;ormat
 </div>
-</td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="smallformat" style="font-family: serif; font-size: smaller">
+
+<div class="smallformat" style="font-family: serif; font-size: smaller">
  s&ndash;mallformat
 </div>
-</td></tr></table>
+
 
 ;<div id="index-copying-d_002d_002deffn_005fname"></div>c--ategory<nowiki>:</nowiki> <strong>d--effn_name</strong><em> a--rguments...</em>
 : d&ndash;effn
@@ -970,15 +970,15 @@ After clickstyle &rArr;
 </div>
 </td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="format" style="font-family: serif">
+<div class="format" style="font-family: serif">
  f&ndash;ormat
 </div>
-</td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="smallformat" style="font-family: serif; font-size: smaller">
+
+<div class="smallformat" style="font-family: serif; font-size: smaller">
  s&ndash;mallformat
 </div>
-</td></tr></table>
+
 
 ;<div id="index-d_002d_002deffn_005fname"></div>c--ategory<nowiki>:</nowiki> <strong>d--effn_name</strong><em> a--rguments...</em>
 : d&ndash;effn
@@ -1741,17 +1741,17 @@ In example.
 <div class="example">
  
 </div>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example">
  f--ormat
 </div>
-</td></tr></table>
+
 <div class="example">
  
 </div>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example">
  s--mallformat
 </div>
-</td></tr></table>
+
 <div class="example">
  
 </div>
@@ -2664,7 +2664,7 @@ tp
 <ref>in footnote
 </ref>
 
-<table><tr><td>&nbsp;</td><td><div class="menu-preformatted" style="font-family: serif">
+<div class="menu-preformatted" style="font-family: serif">
  [[#A section|&bull; s--ect,ion]]:: s&ndash;ect,ion
  
  Menu comment
@@ -2672,7 +2672,7 @@ tp
  
  
 </div>
-</td></tr></table>
+
 
 
 ----

@@ -3180,21 +3180,21 @@ Here we see how a whole complex format is formatted. For the formatting
 of the text, see @ref{Paragraph and preformatted region}.
 
 The formatting of the complex formats is ultimately controlled by a
-function, however the default for this function uses a hash reference and 
-changing the hash reference values should be enough in most cases. This
-hash reference is called @variable{$complex_format_map}. It has a key for each
+function, however the default for this function uses a hash and 
+changing the hash values should be enough in most cases. This
+hash is called @variable{%complex_format_map}. It has a key for each
 of the complex format commands (@code{example}, @code{smallexample}, 
 @code{lisp}, @code{smalllisp}, @code{display}, @code{smalldisplay}, 
 @code{format}, @code{smallformat}).
 
-The associated value is also a reference on a hash. The keys are:
+The associated value is a reference on a hash. The keys are:
 
 @table @code
 @item begin
-An eval of @code{begin} should lead to the beginning of the
+The @code{begin} should lead to the beginning of the
 formatted @acronym{HTML}.
 @item end
-An eval of @code{end} should lead to the end of the 
+The @code{end} should lead to the end of the 
 formatted @acronym{HTML}.
 @item class
 The @acronym{HTML} class. If not defined, the command name.
@@ -3826,10 +3826,10 @@ cannot tell if it is a menu commment or normal text.
 The default is to have it be formatted
 like a @ref{Complex formats}, with
 @example
-$complex_format_map->@{'menu_comment'@} =
+$complex_format_map@{'menu_comment'@} =
 @{
-   'begin' => q@{"<tr><th colspan=\"3\" align=\"left\" valign=\"top\">"@},
-   'end' => q@{"</th></tr>"@}, 'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-comment',
+   'begin' => "<tr><th colspan=\"3\" align=\"left\" valign=\"top\">",
+   'end' => "</th></tr>", 'class' => 'menu-comment',
 @}
 @end example
 
@@ -3858,14 +3858,14 @@ $complex_format_map->@{'menu_comment'@} =
 
 If the menu is to be formatted in a single preformatted environment,
 an entry for @samp{menu} and @samp{detailmenu} 
-should be added to the @code{$complex_format_map}
-hash reference (@pxref{Complex formats}).
+should be added to the @code{%complex_format_map}
+hash (@pxref{Complex formats}).
 In the default case, if the user didn't add an entry himself, a very simple 
 entry is used, with:
 
 @example
-$complex_format_map->@{'menu'@} = @{ 'begin' => q@{''@} , 'end' => q@{''@},
-    'pre_style' => "$MENU_PRE_STYLE", 'class' => 'menu-preformatted' @};
+$complex_format_map->@{'menu'@} = @{ 'begin' => '' , 'end' => '',
+    'class' => 'menu-preformatted' @};
 @end example
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -3888,7 +3888,7 @@ done by default.
 The menu comments are considered to be preformatted text. The style 
 associated with this preformatted text is determined by 
 @variable{$MENU_PRE_STYLE}. Default is @samp{font-family: serif}.
-The entry similar with an entry in @code{$complex_format_map} 
+The entry similar with an entry in @code{%complex_format_map} 
 (@pxref{Complex formats}) used when the menu appears in a preformatted
 enviroment is in
 @variable{$MENU_PRE_COMPLEX_FORMAT}, and, in the default case is:
@@ -4596,6 +4596,9 @@ version 1.68. API changed also a lot between 1.78 and 1.80.
 @itemize @bullet
 @item API changes between 1.82 and 1.84:
 @itemize @bullet
+@item complex format handling API changed. $complex_format_map is replaced by 
+  a real hash %complex_format_map and the begin and end are no more 
+  evaluated.
 @item In the default case a gettext-like framework is now used for in document
   string translations. The old framework is still available by setting 
   $I18N_PERL_HASH.

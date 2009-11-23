@@ -43,6 +43,10 @@ This file records noteworthy changes.
 * COMPATIBILITY
   -------------
 
+* complex format handling API changed. $complex_format_map is replaced by 
+  a real hash %complex_format_map and the begin and end are no more 
+  evaluated.
+
 * If file begins with /, ./ or ../ don't search in -I.
 
 * In the default case a gettext-like framework is now used for in document

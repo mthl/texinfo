@@ -12,7 +12,7 @@ Next: [[formatting: chapter 2#chapter 2|chapter2]], Previous: [[formatting#Top s
 <ref>in footnote
 </ref>
 
-<table><tr><td>&nbsp;</td><td><div class="menu-preformatted" style="font-family: serif">
+<div class="menu-preformatted" style="font-family: serif">
  [[formatting: A section#A section|&bull; s--ect,ion]]:: s&ndash;ect,ion
  
  Menu comment
@@ -20,7 +20,7 @@ Next: [[formatting: chapter 2#chapter 2|chapter2]], Previous: [[formatting#Top s
  
  
 </div>
-</td></tr></table>
+
 
 <references/>
 
