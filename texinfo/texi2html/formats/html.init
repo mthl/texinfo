@@ -6,7 +6,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.39 2009-11-23 16:49:51 pertusus Exp $
+# $Id: html.init,v 1.40 2009-11-23 19:23:28 pertusus Exp $
 
 use strict;
 
@@ -2703,7 +2703,7 @@ sub html_default_quotation($$$$$)
            $attribution .= gdt("\@center --- \@emph{{author}}\n", {'author' => $author_texi}, {'duplicate' => 1, 'allow_paragraph' => 1});
        }
     }
-    return html_default_attribute_class('blockquote', $class).">" . $text ."</blockquote>\n" . $attribution;
+    return html_default_attribute_class('blockquote', $class).">\n" . $text ."</blockquote>\n" . $attribution;
 }
 
 # format a whole index

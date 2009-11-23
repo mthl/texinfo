@@ -514,7 +514,8 @@ the locks prevent other people from reading or writing.
 <div id="index-Transactions_002c-atomic_002c-lack-of"></div>
 One might hope for the following property:
 
-<blockquote>If someone commits some changes in one cvs command,
+<blockquote>
+If someone commits some changes in one cvs command,
 then an update by someone else will either get all the
 changes, or none of them.
 </blockquote>

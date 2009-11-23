@@ -226,54 +226,72 @@ but , ,
 After clickstyle &rArr;
 <code>@clicksequence<nowiki>{</nowiki>click @click<nowiki>{</nowiki><nowiki>}</nowiki> A<nowiki>}</nowiki></code> click &rArr; A
 
-<blockquote>A quot&mdash;ation
+<blockquote>
+A quot&mdash;ation
 </blockquote>
 
-<blockquote><b>Note:</b> A Note
+<blockquote>
+<b>Note:</b> A Note
 </blockquote>
 
-<blockquote><b>note:</b> A note
+<blockquote>
+<b>note:</b> A note
 </blockquote>
 
-<blockquote><b>Caution:</b> Caution
+<blockquote>
+<b>Caution:</b> Caution
 </blockquote>
 
-<blockquote><b>Important:</b> Important
+<blockquote>
+<b>Important:</b> Important
 </blockquote>
 
-<blockquote><b>Tip:</b> a Tip
+<blockquote>
+<b>Tip:</b> a Tip
 </blockquote>
 
-<blockquote><b>Warning:</b> a Warning.
+<blockquote>
+<b>Warning:</b> a Warning.
 </blockquote>
 
-<blockquote><b>something &eacute; TeX:</b> The something &eacute; TeX is here.
+<blockquote>
+<b>something &eacute; TeX:</b> The something &eacute; TeX is here.
 </blockquote>
 
-<blockquote><b>@ at the end of line </b> A @ at the end of the @quotation line.
+<blockquote>
+<b>@ at the end of line </b> A @ at the end of the @quotation line.
 </blockquote>
 
-<blockquote><b>something, other thing:</b> something, other thing
+<blockquote>
+<b>something, other thing:</b> something, other thing
 </blockquote>
 
-<blockquote><b>Note, the note:</b> Note, the note
+<blockquote>
+<b>Note, the note:</b> Note, the note
 </blockquote>
 
-<blockquote></blockquote>
-
-<blockquote><b>Empty:</b> </blockquote>
-
-<blockquote><b>:</b> </blockquote>
-
-<blockquote><b><br>:</b> </blockquote>
-
-<blockquote class="smallquotation" style="font-size: smaller">A small quot&mdash;ation
+<blockquote>
 </blockquote>
 
-<blockquote class="smallquotation" style="font-size: smaller"><b>Note:</b> A small Note
+<blockquote>
+<b>Empty:</b> </blockquote>
+
+<blockquote>
+<b>:</b> </blockquote>
+
+<blockquote>
+<b><br>:</b> </blockquote>
+
+<blockquote class="smallquotation" style="font-size: smaller">
+A small quot&mdash;ation
 </blockquote>
 
-<blockquote class="smallquotation" style="font-size: smaller"><b>something, other thing:</b> something, other thing
+<blockquote class="smallquotation" style="font-size: smaller">
+<b>Note:</b> A small Note
+</blockquote>
+
+<blockquote class="smallquotation" style="font-size: smaller">
+<b>something, other thing:</b> something, other thing
 </blockquote>
 
 * i&ndash;temize
@@ -852,54 +870,72 @@ but , ,
 After clickstyle &rArr;
 <code>@clicksequence<nowiki>{</nowiki>click @click<nowiki>{</nowiki><nowiki>}</nowiki> A<nowiki>}</nowiki></code> click &rArr; A
 
-<blockquote>A quot&mdash;ation
+<blockquote>
+A quot&mdash;ation
 </blockquote>
 
-<blockquote><b>Note:</b> A Note
+<blockquote>
+<b>Note:</b> A Note
 </blockquote>
 
-<blockquote><b>note:</b> A note
+<blockquote>
+<b>note:</b> A note
 </blockquote>
 
-<blockquote><b>Caution:</b> Caution
+<blockquote>
+<b>Caution:</b> Caution
 </blockquote>
 
-<blockquote><b>Important:</b> Important
+<blockquote>
+<b>Important:</b> Important
 </blockquote>
 
-<blockquote><b>Tip:</b> a Tip
+<blockquote>
+<b>Tip:</b> a Tip
 </blockquote>
 
-<blockquote><b>Warning:</b> a Warning.
+<blockquote>
+<b>Warning:</b> a Warning.
 </blockquote>
 
-<blockquote><b>something &eacute; TeX:</b> The something &eacute; TeX is here.
+<blockquote>
+<b>something &eacute; TeX:</b> The something &eacute; TeX is here.
 </blockquote>
 
-<blockquote><b>@ at the end of line </b> A @ at the end of the @quotation line.
+<blockquote>
+<b>@ at the end of line </b> A @ at the end of the @quotation line.
 </blockquote>
 
-<blockquote><b>something, other thing:</b> something, other thing
+<blockquote>
+<b>something, other thing:</b> something, other thing
 </blockquote>
 
-<blockquote><b>Note, the note:</b> Note, the note
+<blockquote>
+<b>Note, the note:</b> Note, the note
 </blockquote>
 
-<blockquote></blockquote>
-
-<blockquote><b>Empty:</b> </blockquote>
-
-<blockquote><b>:</b> </blockquote>
-
-<blockquote><b><br>:</b> </blockquote>
-
-<blockquote class="smallquotation" style="font-size: smaller">A small quot&mdash;ation
+<blockquote>
 </blockquote>
 
-<blockquote class="smallquotation" style="font-size: smaller"><b>Note:</b> A small Note
+<blockquote>
+<b>Empty:</b> </blockquote>
+
+<blockquote>
+<b>:</b> </blockquote>
+
+<blockquote>
+<b><br>:</b> </blockquote>
+
+<blockquote class="smallquotation" style="font-size: smaller">
+A small quot&mdash;ation
 </blockquote>
 
-<blockquote class="smallquotation" style="font-size: smaller"><b>something, other thing:</b> something, other thing
+<blockquote class="smallquotation" style="font-size: smaller">
+<b>Note:</b> A small Note
+</blockquote>
+
+<blockquote class="smallquotation" style="font-size: smaller">
+<b>something, other thing:</b> something, other thing
 </blockquote>
 
 * i&ndash;temize
@@ -1482,55 +1518,73 @@ In example.
  After clickstyle &rArr;
  <code>@clicksequence<nowiki>{</nowiki>click @click<nowiki>{</nowiki><nowiki>}</nowiki> A<nowiki>}</nowiki></code> click &rArr; A
  
-<blockquote> A quot---ation
+<blockquote>
+ A quot---ation
 </blockquote>
  
-<blockquote> <b>Note:</b> A Note
+<blockquote>
+ <b>Note:</b> A Note
 </blockquote>
  
-<blockquote> <b>note:</b> A note
+<blockquote>
+ <b>note:</b> A note
 </blockquote>
  
-<blockquote> <b>Caution:</b> Caution
+<blockquote>
+ <b>Caution:</b> Caution
 </blockquote>
  
-<blockquote> <b>Important:</b> Important
+<blockquote>
+ <b>Important:</b> Important
 </blockquote>
  
-<blockquote> <b>Tip:</b> a Tip
+<blockquote>
+ <b>Tip:</b> a Tip
 </blockquote>
  
-<blockquote> <b>Warning:</b> a Warning.
+<blockquote>
+ <b>Warning:</b> a Warning.
 </blockquote>
  
-<blockquote> <b>something &eacute; TeX:</b> The something &eacute; TeX is here.
+<blockquote>
+ <b>something &eacute; TeX:</b> The something &eacute; TeX is here.
 </blockquote>
  
-<blockquote> <b>@ at the end of line </b> A @ at the end of the @quotation line.
+<blockquote>
+ <b>@ at the end of line </b> A @ at the end of the @quotation line.
 </blockquote>
  
-<blockquote> <b>something, other thing:</b> something, other thing
+<blockquote>
+ <b>something, other thing:</b> something, other thing
 </blockquote>
  
-<blockquote> <b>Note, the note:</b> Note, the note
+<blockquote>
+ <b>Note, the note:</b> Note, the note
 </blockquote>
  
-<blockquote></blockquote>
+<blockquote>
+</blockquote>
  
-<blockquote> <b>Empty:</b> </blockquote>
+<blockquote>
+ <b>Empty:</b> </blockquote>
  
-<blockquote> <b>:</b> </blockquote>
+<blockquote>
+ <b>:</b> </blockquote>
  
-<blockquote> <b>
+<blockquote>
+ <b>
  :</b> </blockquote>
  
-<blockquote class="smallquotation" style="font-size: smaller"> A small quot---ation
+<blockquote class="smallquotation" style="font-size: smaller">
+ A small quot---ation
 </blockquote>
  
-<blockquote class="smallquotation" style="font-size: smaller"> <b>Note:</b> A small Note
+<blockquote class="smallquotation" style="font-size: smaller">
+ <b>Note:</b> A small Note
 </blockquote>
  
-<blockquote class="smallquotation" style="font-size: smaller"> <b>something, other thing:</b> something, other thing
+<blockquote class="smallquotation" style="font-size: smaller">
+ <b>something, other thing:</b> something, other thing
 </blockquote>
  
   i--temize

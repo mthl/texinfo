@@ -530,7 +530,8 @@ printed manual from a single source.
 <p>Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
 Free Software Foundation, Inc.
 </p>
-<blockquote><p>Permission is granted to copy, distribute and/or modify this document
+<blockquote>
+<p>Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.1 or
 any later version published by the Free Software Foundation; with no
 Invariant Sections, with the Front-Cover texts being &ldquo;A GNU Manual,&rdquo;
@@ -1339,7 +1340,8 @@ Copying This Manual
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 </pre></th></tr></table>
 
-<blockquote><p>Documentation is like sex: when it is good, it is very, very good; and
+<blockquote>
+<p>Documentation is like sex: when it is good, it is very, very good; and
 when it is bad, it is better than nothing.
 &mdash;Dick Brandon
 </p></blockquote>
@@ -1752,7 +1754,8 @@ by &lsquo;<samp>@</samp>&rsquo;; they are called <em>@-commands</em>.  For examp
 <code>@node</code> is the command to indicate a node and <code>@chapter</code>
 is the command to indicate the start of a chapter.
 </p>
-<blockquote><p><strong>Please note:</strong> All the @-commands, with the exception of the
+<blockquote>
+<p><strong>Please note:</strong> All the @-commands, with the exception of the
 <code>@TeX{}</code> command, must be written entirely in lower case.
 </p></blockquote>
 
@@ -1870,7 +1873,8 @@ appear in all output formats <em>except</em> TeX.
 </p></li></ul>
 
 <a name="index-Tabs_003b-don_0027t-use_0021"></a>
-<blockquote><p><strong>Caution:</strong> Do not use tab characters in a Texinfo file (except in
+<blockquote>
+<p><strong>Caution:</strong> Do not use tab characters in a Texinfo file (except in
 verbatim modes)!  TeX uses variable-width fonts, which means that it
 is impractical at best to define a tab to work in all circumstances.
 Consequently, TeX treats tabs like single spaces, and that is not
@@ -2218,7 +2222,8 @@ the end of the document.
 <p>Here is what the contents of the first chapter of the sample look like:
 </p>
 <br>
-<blockquote><p>This is the first chapter.
+<blockquote>
+<p>This is the first chapter.
 </p>
 <p>Here is a numbered list.
 </p>
@@ -5553,7 +5558,8 @@ root.
 hierarchically organized (see <a href="#makeinfo-Pointer-Creation">makeinfo Pointer Creation</a>), but the
 pointer relationships still obtain.
 </p>
-<blockquote><p><strong>Please Note:</strong> &lsquo;Next&rsquo; refers to the next node at the same
+<blockquote>
+<p><strong>Please Note:</strong> &lsquo;Next&rsquo; refers to the next node at the same
 hierarchical level in the manual, not necessarily to the next node
 within the Texinfo file.  In the Texinfo file, the subsequent node may
 be at a lower level&mdash;a section-level node most often follows a
@@ -5648,7 +5654,8 @@ about nodes in Info.)
 immediately after an <code>@node</code> line&mdash;for example, an
 <code>@section</code> or <code>@subsection</code> line.  (See <a href="#Structuring-Command-Types">Structuring Command Types</a>.)
 </p>
-<blockquote><p><strong>Please note:</strong> The GNU Emacs Texinfo mode updating commands work
+<blockquote>
+<p><strong>Please note:</strong> The GNU Emacs Texinfo mode updating commands work
 only with Texinfo files in which <code>@node</code> lines are followed by chapter
 structuring lines.  See <a href="#Updating-Requirements">Updating Requirements</a>.
 </p></blockquote>
@@ -6531,7 +6538,8 @@ manual.
 
 <p>and
 </p>
-<blockquote><p>See Section <var>nnn</var> [Node name], page <var>ppp</var>.
+<blockquote>
+<p>See Section <var>nnn</var> [Node name], page <var>ppp</var>.
 </p></blockquote>
 
 <p>Here is an example of a full five-part cross reference:
@@ -6548,7 +6556,8 @@ for details.
 
 <p>in Info and
 </p>
-<blockquote><p>See section &ldquo;Particular Topic&rdquo; in <i>A Printed Manual</i>, for details.
+<blockquote>
+<p>See section &ldquo;Particular Topic&rdquo; in <i>A Printed Manual</i>, for details.
 </p></blockquote>
 
 <p>in a printed book.
@@ -6653,12 +6662,14 @@ Next: <a href="#One-Argument" accesskey="n" rel="next">One Argument</a>, Previou
 
 <p>In TeX, a cross reference looks like this:
 </p>
-<blockquote><p>See Section <var>section-number</var> [<var>node-name</var>], page <var>page</var>.
+<blockquote>
+<p>See Section <var>section-number</var> [<var>node-name</var>], page <var>page</var>.
 </p></blockquote>
 
 <p>or like this
 </p>
-<blockquote><p>See Section <var>section-number</var> [<var>title-or-topic</var>], page <var>page</var>.
+<blockquote>
+<p>See Section <var>section-number</var> [<var>title-or-topic</var>], page <var>page</var>.
 </p></blockquote>
 
 <p>The <code>@xref</code> command does not generate a period or comma to end
@@ -6667,7 +6678,8 @@ You must write that period or comma yourself; otherwise, Info will not
 recognize the end of the reference.  (The <code>@pxref</code> command works
 differently.  See <a href="#pxref"><code>@pxref</code></a>.)
 </p>
-<blockquote><p><strong>Please note:</strong> A period or comma <strong>must</strong> follow the closing
+<blockquote>
+<p><strong>Please note:</strong> A period or comma <strong>must</strong> follow the closing
 brace of an <code>@xref</code>.  It is required to terminate the cross
 reference.  This period or comma will appear in the output, both in
 the Info file and in the printed manual.
@@ -6683,7 +6695,8 @@ commas.  Whitespace before and after these commas is ignored.
 up to four additional arguments.  Each of these variations produces a
 cross reference that looks somewhat different.
 </p>
-<blockquote><p><strong>Please note:</strong> Commas separate arguments in a cross reference;
+<blockquote>
+<p><strong>Please note:</strong> Commas separate arguments in a cross reference;
 avoid including them in the title or other part lest the formatters
 mistake them for separators.
 </p></blockquote>
@@ -6714,7 +6727,8 @@ produces output that specifies the page and section number for you.
 
 <p>and
 </p>
-<blockquote><p>See Section 3.1 [Tropical Storms], page 24.
+<blockquote>
+<p>See Section 3.1 [Tropical Storms], page 24.
 </p></blockquote>
 
 <p>(Note that in the preceding example the closing brace is followed by a
@@ -6732,7 +6746,8 @@ period.)
 
 <p>and
 </p>
-<blockquote><p>See Section 3.1 [Tropical Storms], page 24, for more info.
+<blockquote>
+<p>See Section 3.1 [Tropical Storms], page 24, for more info.
 </p></blockquote>
 
 <p>(Note that in the preceding example the closing brace is followed by a
@@ -6768,7 +6783,8 @@ cross reference points.
 
 <p>and
 </p>
-<blockquote><p>See Section 5.2 [Electrical Effects], page 57.
+<blockquote>
+<p>See Section 5.2 [Electrical Effects], page 57.
 </p></blockquote>
 
 <p>(Note that in the preceding example the closing brace is followed by a
@@ -6785,7 +6801,8 @@ period; and that the node name is printed, not the cross reference name.)
 
 <p>and
 </p>
-<blockquote><p>See Section 5.2 [Electrical Effects], page 57, for more info.
+<blockquote>
+<p>See Section 5.2 [Electrical Effects], page 57, for more info.
 </p></blockquote>
 
 <p>(Note that in the preceding example the closing brace is followed by a
@@ -6837,7 +6854,8 @@ for details.
 
 <p>and
 </p>
-<blockquote><p>See Section 5.2 [Thunder and Lightning], page 57, for details.
+<blockquote>
+<p>See Section 5.2 [Thunder and Lightning], page 57, for details.
 </p></blockquote>
 
 <p>If a third argument is given and the second one is empty, then the
@@ -6855,7 +6873,8 @@ for details.
 
 <p>and
 </p>
-<blockquote><p>See Section 5.2 [Thunder and Lightning], page 57, for details.
+<blockquote>
+<p>See Section 5.2 [Thunder and Lightning], page 57, for details.
 </p></blockquote>
 
 <p>As a practical matter, it is often best to write cross references with
@@ -6912,7 +6931,8 @@ the name of the node.
 </p>
 <p>In a printed manual, the reference looks like this:
 </p>
-<blockquote><p>See section &ldquo;Thunder and Lightning&rdquo; in <i>An Introduction to
+<blockquote>
+<p>See section &ldquo;Thunder and Lightning&rdquo; in <i>An Introduction to
 Meteorology</i>, for details.
 </p></blockquote>
 
@@ -6937,7 +6957,8 @@ description, will be used as the cross reference name in Info.
 
 <p>and
 </p>
-<blockquote><p>See section <var>title-or-topic</var> in <var>printed-manual-title</var>, for details.
+<blockquote>
+<p>See section <var>title-or-topic</var> in <var>printed-manual-title</var>, for details.
 </p></blockquote>
 
 <p>For example,
@@ -6954,7 +6975,8 @@ for details.
 
 <p>and
 </p>
-<blockquote><p>See section &ldquo;Thunder and Lightning&rdquo; in <i>An Introduction to
+<blockquote>
+<p>See section &ldquo;Thunder and Lightning&rdquo; in <i>An Introduction to
 Meteorology</i>, for details.
 </p></blockquote>
 
@@ -6997,7 +7019,8 @@ write:
 
 <p>and
 </p>
-<blockquote><p>See section &ldquo;Overview&rdquo; in <i>The GNU Make Manual</i>.
+<blockquote>
+<p>See section &ldquo;Overview&rdquo; in <i>The GNU Make Manual</i>.
 </p></blockquote>
 
 <p>In this example, &lsquo;<samp>Top</samp>&rsquo; is the name of the first node, and
@@ -7031,7 +7054,8 @@ This makes it useful as the last part of a sentence.
 
 <p>and
 </p>
-<blockquote><p>For more information, see Section 8.2 [Hurricanes], page 123.
+<blockquote>
+<p>For more information, see Section 8.2 [Hurricanes], page 123.
 </p></blockquote>
 
 <p>The <code>@ref</code> command sometimes leads writers to express themselves
@@ -7047,7 +7071,8 @@ both the printed and the Info format.
 
 <p>produces
 </p>
-<blockquote><p>Sea surges are described in Section 6.7 [Hurricanes], page 72.
+<blockquote>
+<p>Sea surges are described in Section 6.7 [Hurricanes], page 72.
 </p></blockquote>
 
 <p>in a printed document, and the following in Info:
@@ -7055,7 +7080,8 @@ both the printed and the Info format.
 <table><tr><td>&nbsp;</td><td><pre class="example">Sea surges are described in *Note Hurricanes::.
 </pre></td></tr></table>
 
-<blockquote><p><strong>Caution:</strong> You <em>must</em> write a period, comma, or right
+<blockquote>
+<p><strong>Caution:</strong> You <em>must</em> write a period, comma, or right
 parenthesis immediately after an <code>@ref</code> command with two or more
 arguments.  Otherwise, Info will not find the end of the cross reference
 entry and its attempt to follow the cross reference will fail.  As a
@@ -7121,7 +7147,8 @@ this:
 
 <p>and
 </p>
-<blockquote><p>&hellip; storms cause flooding (see Section 6.7 [Hurricanes], page 72) &hellip;
+<blockquote>
+<p>&hellip; storms cause flooding (see Section 6.7 [Hurricanes], page 72) &hellip;
 </p></blockquote>
 
 <p>With two arguments, a parenthetical cross reference has this
@@ -7137,13 +7164,15 @@ template:
 
 <p>and
 </p>
-<blockquote><p>&hellip; (see Section <var>nnn</var> [<var>node-name</var>], page <var>ppp</var>) &hellip;
+<blockquote>
+<p>&hellip; (see Section <var>nnn</var> [<var>node-name</var>], page <var>ppp</var>) &hellip;
 </p></blockquote>
 
 <p><code>@pxref</code> can be used with up to five arguments just like
 <code>@xref</code> (see <a href="#xref"><code>@xref</code></a>).
 </p>
-<blockquote><p><strong>Please note:</strong> Use <code>@pxref</code> only as a parenthetical
+<blockquote>
+<p><strong>Please note:</strong> Use <code>@pxref</code> only as a parenthetical
 reference.  Do not try to use <code>@pxref</code> as a clause in a sentence.
 It will look bad in either the Info file, the printed output, or
 both.
@@ -7207,7 +7236,8 @@ for more information.
 
 <p>and
 </p>
-<blockquote><p>See Info file &lsquo;<tt>info</tt>&rsquo;, node &lsquo;<samp>Expert</samp>&rsquo;, for more information.
+<blockquote>
+<p>See Info file &lsquo;<tt>info</tt>&rsquo;, node &lsquo;<samp>Expert</samp>&rsquo;, for more information.
 </p></blockquote>
 
 <p>Similarly,
@@ -7222,7 +7252,8 @@ for more information.
 
 <p>and
 </p>
-<blockquote><p>See Info file &lsquo;<tt>info</tt>&rsquo;, node &lsquo;<samp>Expert</samp>&rsquo;, for more information.
+<blockquote>
+<p>See Info file &lsquo;<tt>info</tt>&rsquo;, node &lsquo;<samp>Expert</samp>&rsquo;, for more information.
 </p></blockquote>
 
 <p>The converse of <code>@inforef</code> is <code>@cite</code>, which is used to
@@ -7537,7 +7568,8 @@ formatting commands to use single quotation marks around the text.
 
 <p>produces this in the printed manual:
 </p>
-<blockquote><p>The function returns <code>nil</code>.
+<blockquote>
+<p>The function returns <code>nil</code>.
 </p></blockquote>
 
 
@@ -7657,7 +7689,8 @@ type the characters @kbd{l o g o u t @key{RET}}.
 
 <p>This produces:
 </p>
-<blockquote><p>To give the <code>logout</code> command,
+<blockquote>
+<p>To give the <code>logout</code> command,
 type the characters <kbd>l o g o u t &lt;RET&gt;</kbd>.
 </p></blockquote>
 
@@ -7697,7 +7730,8 @@ includes one or more keys that are described by name.
 <a name="index-Names-recommended-for-keys"></a>
 <a name="index-Abbreviations-for-keys"></a>
 </p>
-<blockquote><dl compact="compact">
+<blockquote>
+<dl compact="compact">
 <dt><tt>SPC</tt></dt>
 <dd><p>Space
 </p></dd>
@@ -7764,7 +7798,8 @@ use the regexp @samp{foo$}.
 
 <p>produces
 </p>
-<blockquote><p>To match &lsquo;<samp>foo</samp>&rsquo; at the end of the line, use the regexp
+<blockquote>
+<p>To match &lsquo;<samp>foo</samp>&rsquo; at the end of the line, use the regexp
 &lsquo;<samp>foo$</samp>&rsquo;.
 </p></blockquote>
 
@@ -7788,7 +7823,8 @@ period are outside of the braces:
 
 <p>This produces:
 </p>
-<blockquote><p>In English, the vowels are &lsquo;<samp>a</samp>&rsquo;, &lsquo;<samp>e</samp>&rsquo;,
+<blockquote>
+<p>In English, the vowels are &lsquo;<samp>a</samp>&rsquo;, &lsquo;<samp>e</samp>&rsquo;,
 &lsquo;<samp>i</samp>&rsquo;, &lsquo;<samp>o</samp>&rsquo;, &lsquo;<samp>u</samp>&rsquo;,  and sometimes
 &lsquo;<samp>y</samp>&rsquo;.
 </p></blockquote>
@@ -7866,7 +7902,8 @@ type @samp{rm @var{filename}}.
 
 <p>produces
 </p>
-<blockquote><p>To delete file <var>filename</var>, type &lsquo;<samp>rm <var>filename</var></samp>&rsquo;.
+<blockquote>
+<p>To delete file <var>filename</var>, type &lsquo;<samp>rm <var>filename</var></samp>&rsquo;.
 </p></blockquote>
 
 <p>(Note that <code>@var</code> may appear inside <code>@code</code>,
@@ -7921,7 +7958,8 @@ For example:
 <table><tr><td>&nbsp;</td><td><pre class="example">The @env{PATH} environment variable &hellip;
 </pre></td></tr></table>
 <p>produces
-</p><blockquote><p>The <code>PATH</code> environment variable &hellip;
+</p><blockquote>
+<p>The <code>PATH</code> environment variable &hellip;
 </p></blockquote>
 
 
@@ -7949,7 +7987,8 @@ the @file{/usr/local/emacs/lisp} directory.
 
 <p>produces
 </p>
-<blockquote><p>The &lsquo;<tt>.el</tt>&rsquo; files are in
+<blockquote>
+<p>The &lsquo;<tt>.el</tt>&rsquo; files are in
 the &lsquo;<tt>/usr/local/emacs/lisp</tt>&rsquo; directory.
 </p></blockquote>
 
@@ -7975,7 +8014,8 @@ For example:
 <table><tr><td>&nbsp;</td><td><pre class="example">The command @command{ls} lists directory contents.
 </pre></td></tr></table>
 <p>produces
-</p><blockquote><p>The command <code>ls</code> lists directory contents.
+</p><blockquote>
+<p>The command <code>ls</code> lists directory contents.
 </p></blockquote>
 
 <p>You should write the name of a program in the ordinary text font, rather
@@ -8006,7 +8046,8 @@ For example:
 <table><tr><td>&nbsp;</td><td><pre class="example">The option @option{-l} produces a long listing.
 </pre></td></tr></table>
 <p>produces
-</p><blockquote><p>The option &lsquo;<samp>-l</samp>&rsquo; produces a long listing.
+</p><blockquote>
+<p>The option &lsquo;<samp>-l</samp>&rsquo; produces a long listing.
 </p></blockquote>
 
 <p>In tables, putting options inside <code>@code</code> produces a
@@ -8035,7 +8076,8 @@ example:
 
 <p>produces
 </p>
-<blockquote><p>Getting rid of a file is called <em>deleting</em> it.
+<blockquote>
+<p>Getting rid of a file is called <em>deleting</em> it.
 </p></blockquote>
 
 <p>As a general rule, a sentence containing the defining occurrence of a
@@ -8209,7 +8251,8 @@ preceding example.
 <p>In the Info output, <code>@emph</code> surrounds the text with underscores
 (&lsquo;<samp>_</samp>&rsquo;), and <code>@strong</code> puts asterisks around the text.
 </p>
-<blockquote><p><strong>Caution:</strong> Do not use <code>@strong</code> with the word &lsquo;<samp>Note</samp>&rsquo;;
+<blockquote>
+<p><strong>Caution:</strong> Do not use <code>@strong</code> with the word &lsquo;<samp>Note</samp>&rsquo;;
 Info will mistake the combination for a cross reference.  Use a phrase
 such as <strong>Please note</strong> or <strong>Caution</strong> instead.
 </p></blockquote>
@@ -8464,7 +8507,8 @@ lines;
 in the printed output, interparagraph spacing is reduced.
 </li></ul>
 
-<blockquote><p>This is an example of text written between an <code>@quotation</code>
+<blockquote>
+<p>This is an example of text written between an <code>@quotation</code>
 command and an <code>@end quotation</code> command.  An <code>@quotation</code>
 command is most often used to indicate text that is excerpted from
 another (real or hypothetical) printed work.
@@ -8484,7 +8528,8 @@ a foo.
 
 <p>produces
 </p>
-<blockquote><p>This is a foo.
+<blockquote>
+<p>This is a foo.
 </p></blockquote>
 
 
@@ -8540,7 +8585,8 @@ Note that blank lines inside the beginning
 <code>@example</code> and the ending <code>@end example</code> will appear in
 the output.
 </p>
-<blockquote><p><strong>Caution:</strong> Do not use tabs in the lines of an example or anywhere
+<blockquote>
+<p><strong>Caution:</strong> Do not use tabs in the lines of an example or anywhere
 else in Texinfo (except in verbatim environments)!  The TeX
 implementation of Texinfo treats tabs as single spaces, and that is not
 what they look like.  (If necessary, in Emacs, you can use <kbd>M-x
@@ -8838,7 +8884,8 @@ written flushleft.
 
 <p>produces
 </p>
-<blockquote><p align="left">This text is
+<blockquote>
+<p align="left">This text is
 written flushleft.
 </p></blockquote>
 
@@ -9113,7 +9160,8 @@ for bar.
 
 <p>This produces:
 </p>
-<blockquote><ul>
+<blockquote>
+<ul>
 <li>
 Some text for foo.
 
@@ -9145,7 +9193,8 @@ Second outer item.
 
 <p>This produces:
 </p>
-<blockquote><ul>
+<blockquote>
+<ul>
 <li>
 First item.
 
@@ -9789,7 +9838,8 @@ file names and <code>@emph</code> for emphasis (see <a href="#Marking-Text">Mark
 </p></dd>
 </dl>
 
-<blockquote><p><strong>Caution:</strong> Do not use a colon in an index entry.  In Info, a
+<blockquote>
+<p><strong>Caution:</strong> Do not use a colon in an index entry.  In Info, a
 colon separates the menu entry name from the node name, so a colon in
 the entry itself confuses Info.  See <a href="#Menu-Parts">The Parts of a Menu</a>, for more information about the structure of a menu entry.
 </p></blockquote>
@@ -10175,7 +10225,8 @@ The s.o.p. has three parts &hellip;
 </pre></td></tr></table>
 
 
-<blockquote><p>The s.o.p. has three parts &hellip;<br>
+<blockquote>
+<p>The s.o.p. has three parts &hellip;<br>
 The s.o.p. has three parts &hellip;
 </p></blockquote>
 
@@ -10212,7 +10263,8 @@ Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
 </pre></td></tr></table>
 
 
-<blockquote><p>Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.<br>
+<blockquote>
+<p>Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.<br>
 Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
 </p></blockquote>
 
@@ -10305,7 +10357,8 @@ the dimension within braces.  For example,
 
 <p>produces
 </p>
-<blockquote><p>A4 paper is 8.27in wide.
+<blockquote>
+<p>A4 paper is 8.27in wide.
 </p></blockquote>
 
 <p>Not everyone uses this style.  Some people prefer &lsquo;<samp>8.27 in.@:</samp>&rsquo;
@@ -10826,7 +10879,8 @@ You can indicate the result of the expansion with the
 
 <p>which may be read as:
 </p>
-<blockquote><p><code>(third '(a b c))</code> expands to <code>(car (cdr (cdr '(a b c))))</code>;
+<blockquote>
+<p><code>(third '(a b c))</code> expands to <code>(car (cdr (cdr '(a b c))))</code>;
 the result of evaluating the expression is <code>c</code>.
 </p></blockquote>
 
@@ -11430,7 +11484,8 @@ and is for &hellip;
 <p>In this case, the <code>@*</code> command keeps TeX from stretching the
 line across the whole page in an ugly manner.
 </p>
-<blockquote><p><strong>Please note:</strong> Do not write braces after an <code>@*</code> command;
+<blockquote>
+<p><strong>Please note:</strong> Do not write braces after an <code>@*</code> command;
 they are not needed.
 </p>
 <p>Do not write an <code>@refill</code> command at the end of a paragraph
@@ -11504,7 +11559,8 @@ line.  For example:
 
 <p>produces
 </p>
-<blockquote><p>You can copy GNU software from &lsquo;<samp>ftp.gnu.org</samp>&rsquo;.
+<blockquote>
+<p>You can copy GNU software from &lsquo;<samp>ftp.gnu.org</samp>&rsquo;.
 </p></blockquote>
 
 <a name="index-Non_002dbreakable-space"></a>
@@ -11728,7 +11784,8 @@ This command moves point forward @var{count} words
 
 <p>produces
 </p>
-<blockquote><dl>
+<blockquote>
+<dl>
 <dt><a name="index-forward_002dword"></a>Command: <strong>forward-word</strong><em> count</em></dt>
 <dd><p>This function moves point forward <var>count</var> words
 (or backward if <var>count</var> is negative). &hellip;
@@ -11779,7 +11836,8 @@ is less than 1, @code{(point-max)} otherwise.
 
 <p>produces
 </p>
-<blockquote><dl>
+<blockquote>
+<dl>
 <dt><a name="index-buffer_002dend"></a>Function: <strong>buffer-end</strong><em> flag</em></dt>
 <dd><p>This function returns <code>(point-min)</code> if <var>flag</var> is less than 1,
 <code>(point-max)</code> otherwise.  &hellip;
@@ -11820,7 +11878,8 @@ straightforward function.
 <p>Here is the <code>@defspec</code> line of an example of an imaginary
 special form:
 </p>
-<blockquote><dl>
+<blockquote>
+<dl>
 <dt><a name="index-foobar"></a>Special Form: <strong>foobar</strong><em> (<var>var</var> [<var>from</var> <var>to</var> [<var>inc</var>]]) <var>body</var>&hellip;</em></dt>
 </dl>
 </blockquote>
@@ -12560,7 +12619,8 @@ parameter list.
 </p>
 <p>Here is a definition from <a href="elisp.html#Calling-Functions">(elisp)Calling Functions</a> section &lsquo;Calling Functions&rsquo; in <cite>The GNU Emacs Lisp Reference Manual</cite>.
 </p>
-<blockquote><dl>
+<blockquote>
+<dl>
 <dt><a name="index-apply"></a>Function: <strong>apply</strong><em> function &amp;rest arguments</em></dt>
 <dd><p><code>apply</code> calls <var>function</var> with <var>arguments</var>, just
 like <code>funcall</code> but with one difference: the last of
@@ -17368,7 +17428,8 @@ understand them from context; or write a definition for the term.
 &ldquo;delta&rdquo; are all appearing for the first time; the example sentence should be
 rewritten so they are understandable.
 </p>
-<blockquote><p>The major function assists you in checking in a file to your
+<blockquote>
+<p>The major function assists you in checking in a file to your
 version control system and registering successive sets of changes to
 it as deltas.
 </p></blockquote>
@@ -17439,21 +17500,24 @@ beginning of the section that describes the functions.
 <p>In this example, say, &ldquo; &hellip; you must <code>@dfn</code>{check
 in} the new version.&rdquo;  That flows better.
 </p>
-<blockquote><p>When you are done editing the file, you must perform a
+<blockquote>
+<p>When you are done editing the file, you must perform a
 <code>@dfn</code>{check in}.
 </p></blockquote>
 
 <p>In the following example, say, &ldquo;&hellip; makes a unified interface such as VC
 mode possible.&rdquo;
 </p>
-<blockquote><p>SCCS, RCS and other version-control systems all perform similar
+<blockquote>
+<p>SCCS, RCS and other version-control systems all perform similar
 functions in broadly similar ways (it is this resemblance which makes
 a unified control mode like this possible).
 </p></blockquote>
 
 <p>And in this example, you should specify what &lsquo;it&rsquo; refers to:
 </p>
-<blockquote><p>If you are working with other people, it assists in coordinating
+<blockquote>
+<p>If you are working with other people, it assists in coordinating
 everyone&rsquo;s changes so they do not step on each other.
 </p></blockquote>
 
