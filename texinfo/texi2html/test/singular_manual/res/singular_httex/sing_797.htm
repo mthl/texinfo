@@ -130,7 +130,8 @@ K[t_1,...,t_m] &ndash;&gt; K[s_1,...,s_r,t_1,...,t_m]/G
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;rinvar.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;rinvar.lib&quot;;
 ring B   = 0,(s(1..2), t(1..2)),dp;
 ideal G = s(1)^3-1, s(2)^10-1;
 ideal action = s(1)*s(2)^8*t(1), s(1)*s(2)^7*t(2);
@@ -143,7 +144,7 @@ groupid;
 actionid;
 &rarr; actionid[1]=s(1)*t(1)
 &rarr; actionid[2]=s(2)*t(2)
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

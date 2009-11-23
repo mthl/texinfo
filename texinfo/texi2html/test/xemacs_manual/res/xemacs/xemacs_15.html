@@ -248,8 +248,9 @@ the normal keybinding mechanism: simply add a binding to the
 <code>isearch-mode-map</code>.  For example, to make the character
 <kbd>C-b</kbd> mean &ldquo;search backwards&rdquo; while in isearch-mode, do this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(define-key isearch-mode-map &quot;\C-b&quot; 'isearch-repeat-backward)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(define-key isearch-mode-map &quot;\C-b&quot; 'isearch-repeat-backward)
+</pre></div>
 
 <p>These are the default bindings of isearch-mode:
 </p>
@@ -957,8 +958,9 @@ Lisp syntax, the string constant begins and ends with a double-quote.
 backslash as part of the regexp, &lsquo;<samp>\t</samp>&rsquo; for a tab and &lsquo;<samp>\n</samp>&rsquo; for a
 newline.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">&quot;[.?!][]\&quot;')]*\\($\\|\t\\|  \\)[ \t\n]*&quot;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">&quot;[.?!][]\&quot;')]*\\($\\|\t\\|  \\)[ \t\n]*&quot;
+</pre></div>
 
 <p>This regexp contains four parts: a character set matching
 period, &lsquo;<samp>?</samp>&rsquo; or &lsquo;<samp>!</samp>&rsquo;; a character set matching close-brackets,
@@ -1124,14 +1126,16 @@ in <var>newstring</var> stands for the entire text being replaced.
 whatever matched the <var>d</var>&rsquo;th parenthesized grouping in <var>regexp</var>.
 For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-regexp &lt;RET&gt; c[ad]+r &lt;RET&gt; \&amp;-safe &lt;RET&gt;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">M-x replace-regexp &lt;RET&gt; c[ad]+r &lt;RET&gt; \&amp;-safe &lt;RET&gt;
+</pre></div>
 
 <p>would replace (for example) &lsquo;<samp>cadr</samp>&rsquo; with &lsquo;<samp>cadr-safe</samp>&rsquo; and &lsquo;<samp>cddr</samp>&rsquo;
 with &lsquo;<samp>cddr-safe</samp>&rsquo;.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-regexp &lt;RET&gt; \(c[ad]+r\)-safe &lt;RET&gt; \1 &lt;RET&gt;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">M-x replace-regexp &lt;RET&gt; \(c[ad]+r\)-safe &lt;RET&gt; \1 &lt;RET&gt;
+</pre></div>
 
 <p>would perform exactly the opposite replacements.  To include a &lsquo;<samp>\</samp>&rsquo;
 in the text to replace with, you must give &lsquo;<samp>\\</samp>&rsquo;.
@@ -1161,8 +1165,9 @@ in the text to replace with, you must give &lsquo;<samp>\\</samp>&rsquo;.
 <p>  If the arguments to a replace command are in lower case, the command
 preserves case when it makes a replacement.  Thus, the following command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x replace-string &lt;RET&gt; foo &lt;RET&gt; bar &lt;RET&gt;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">M-x replace-string &lt;RET&gt; foo &lt;RET&gt; bar &lt;RET&gt;
+</pre></div>
 
 <p>replaces a lower-case &lsquo;<samp>foo</samp>&rsquo; with a lower case &lsquo;<samp>bar</samp>&rsquo;, &lsquo;<samp>FOO</samp>&rsquo;
 with &lsquo;<samp>BAR</samp>&rsquo;, and &lsquo;<samp>Foo</samp>&rsquo; with &lsquo;<samp>Bar</samp>&rsquo;.  If upper-case letters are

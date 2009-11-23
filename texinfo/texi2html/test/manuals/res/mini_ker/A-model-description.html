@@ -158,12 +158,13 @@ closng bracket <code>&gt;</code>.
 
 <p>The following fictious code is legal mortran:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">real 
+<div class="example">
+<pre class="example">real 
   param;
 param = 3.; ff(1) = ff(3)**eta(1);       &quot;a comment&quot;                 
 ! a line comment
 do inode=1,n_node &lt;eta_move(inode)=0.01; eta_speed(inode)=0.0;&gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>Thanks to mortran the model code is very simply specified, as you&rsquo;ll 
 see next.
@@ -192,7 +193,8 @@ see next.
 the &lsquo;<tt>zinit</tt>&rsquo; sequence. The whole layout of the model is given
 before detailing the keywords.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
+<div class="example">
+<pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
 ! Parameters           
 !%%%%%%%%%%%%%%%%%%%%%%
   real apar,bpar;        &quot;optional Fortran type declaration&quot;
@@ -241,7 +243,7 @@ set_eta
     OPEN(50,FILE='title.tex',STATUS='UNKNOWN');   &quot;title file&quot;
     write(50,5000) apar,cpar;                     
 5000;format('Lotka-Volterra par:',2F4.1);
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Variables-and-model-parameters"></a>
 <h4 class="subsubheading">Variables and model parameters</h4>
@@ -277,7 +279,8 @@ variables are called here <code>apar</code> for       a and <code>cpar</code> fo
 If a Fortan type definition is needed, it should be set at the very beginning
 of &lsquo;<tt>zinit</tt>&rsquo;. The predator-prey code variable initializations finally reads
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
+<div class="example">
+<pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
 ! Parameters         
 !%%%%%%%%%%%%%%%%%%%%%%
   real apar,bpar;        &quot;optional Fortran type declaration&quot;
@@ -291,7 +294,7 @@ of &lsquo;<tt>zinit</tt>&rsquo;. The predator-prey code variable initializations
      cpar = 0.7;                                                            
 
      modzprint = 1000;  
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Model-equations-1"></a>
 <h4 class="subsubheading">Model equations</h4>
@@ -317,27 +320,30 @@ with <code>var:</code>, the function is defined with <code>fun:</code>.
 <p>In the case of the predator-prey model, the transfer variable
 associated with       &#x03C6;meet could be called <code>ff_interact</code>
 and the transfer definition would be given by:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">set_Phi
+</p><div class="example">
+<pre class="example">set_Phi
 &lt; var: ff_interact, fun: f_interact = eta_prey*eta_pred;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The two cell equations of the predator-prey model, with name
 <code>eta_prey</code> for the prey (      &#x03B7;prey) and <code>eta_pred</code> 
 for the predator (      &#x03B7;pred) are:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">set_eta
+<div class="example">
+<pre class="example">set_eta
 &lt; var: eta_prey, fun: deta_prey =   apar*eta_prey - apar*ff_interact;
   var: eta_pred, fun: deta_pred = - cpar*eta_pred + cpar*ff_interact;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The &lsquo;<samp>;</samp>&rsquo; at the end of the mortran block is important.
 </p>
 
 <p>The whole model equations are setup with:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
+<div class="example">
+<pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
 ! Transfer definition
 !%%%%%%%%%%%%%%%%%%%%%%
 ! rencontre (meeting)
@@ -353,17 +359,19 @@ set_eta
 &lt; var: eta_prey, fun: deta_prey =   apar*eta_prey - apar*ff_interact;
   var: eta_pred, fun: deta_pred = - cpar*eta_pred + cpar*ff_interact;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>Whenever the user is not concerned with giving a specific name to a
 function, it is possible to specify the equation only with
 <code>eqn:</code>. Therefore the user may replace an instruction as:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">  var: ff_dump,
+</p><div class="example">
+<pre class="example">  var: ff_dump,
   fun: f_dump  = - rd*(eta_speed - eta_speed_limiting);
-</pre></td></tr></table>
+</pre></div>
 <p>with:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">   eqn: ff_dump = - rd*(eta_speed - eta_speed_limiting);
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">   eqn: ff_dump = - rd*(eta_speed - eta_speed_limiting);
+</pre></div>
 
 <p>In that case, the unnamed function will take the name of the defined
 variable preceded by the &lsquo;<samp>$</samp>&rsquo; sign: <code>$ff_dump</code>.
@@ -378,11 +386,12 @@ transfers may also need starting points although they are determined from
 the cell values.
 </p>
 <p>In the predator-prey model the starting points for cells are:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">!     initial state
+</p><div class="example">
+<pre class="example">!     initial state
 !     -------------
      eta_prey = 1.;
      eta_pred = 1.;
-</pre></td></tr></table>
+</pre></div>
 
 <p>When there is a non trivial implicit relationship between the transfers
 in the model, it may be usefull or even necessary to set some
@@ -426,12 +435,13 @@ number of transfer is in the integer <code>mp</code> variable.
 <p>For some graphics generation, a file with name &lsquo;<tt>title.tex</tt>&rsquo; is required
 which sets the title. The following instructions take care of that:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">    OPEN(50,FILE='title.tex',STATUS='UNKNOWN');
+<div class="example">
+<pre class="example">    OPEN(50,FILE='title.tex',STATUS='UNKNOWN');
     write(50,5000) apar,cpar;                 
 5000;format('Lotka-Volterra par:',2F4.1);
 
     close(50);
-</pre></td></tr></table>
+</pre></div>
 
 <p>In that case the parameter values are written down, to differenciate between
 different runs. This step is in general not needed.

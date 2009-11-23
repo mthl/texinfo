@@ -149,14 +149,15 @@ But one can show that they depend on <SPAN CLASS="MATH"><IMG
 </p>
 <dl compact="compact">
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
   ideal i=ux, vx, uy, vy;
   print(syz(i));
 &rarr; -y,0, -v,0, 
 &rarr; 0, -y,u, 0, 
 &rarr; x, 0, 0, -v,
 &rarr; 0, x, 0, u  
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -219,7 +220,8 @@ variables.
 </p>
 <dl compact="compact">
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
   ideal I = ux, vx, uy, vy;
   resolution resI = mres(I,0); resI;
 &rarr;  1      4      4      1      
@@ -237,7 +239,7 @@ variables.
 &rarr; -v,
 &rarr; -x,
 &rarr; y  
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -361,7 +363,8 @@ and the 1st syzygy module of <SPAN CLASS="MATH"><IMG
 </p>
 <dl compact="compact">
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
   ideal I = ux, vx, uy, vy;
   resolution resI = mres(I,0); resI;
 &rarr;  1      4      4      1      
@@ -380,7 +383,7 @@ and the 1st syzygy module of <SPAN CLASS="MATH"><IMG
   // the regularity:
   regularity(resI);
 &rarr; 2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 </td>

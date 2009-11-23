@@ -104,10 +104,11 @@ gi=gi(var(n-i+1),..,var(n)),<br>
 a: ideal of numbers, coordinates of an approximation of a common
 zero of G to start with (with a[i] to be substituted in var(i)),<br>
 ipar: control integer vector (default: ipar = 100,10)
-  </p><pre class="format">  ipar[1]: max. number of iterations
+  </p><div class="format">
+<pre class="format">  ipar[1]: max. number of iterations
   ipar[2]: accuracy (we have as norm |.| absolute value ):
            accept solution <code>sol</code> if |G(sol)| &lt; |G(a)|*(0.1^ipar[2]).
-  </pre>
+  </pre></div>
 
 </dd>
 <dt><strong>Return:</strong></dt>
@@ -116,7 +117,8 @@ ipar: control integer vector (default: ipar = 100,10)
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;ntsolve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;ntsolve.lib&quot;;
 ring r = (real,30),(z,y,x),(lp);
 ideal i = x^2-1,y^2+x4-3,z2-y4+x-1;
 ideal a = 2,3,4;
@@ -126,7 +128,7 @@ l;
 &rarr; l[1]=-2.000000000042265738880279143423
 &rarr; l[2]=1.41421356237309504880168872421
 &rarr; l[3]=1
-</pre></td></tr></table>
+</pre></div>
 </td>
 </tr>
 </table>

@@ -1,12 +1,14 @@
 2009-11-23   Patrice Dumas  <pertusus@free.fr>
 
 	* formats/html.init: @format is not indented.
-	Prepare the indentation using css for complex formats.
+	Prepare the indentation using CSS for complex formats.
+	Default to using CSS indentation, except for html32.init
+	(following Thomas Keller idea).
 	* texi2html.pl, texi2html.init, */*.init:  complex format handling 
 	API changed. $complex_format_map is replaced by a real hash 
 	%complex_format_map and the begin and end are no more evaluated.
 	* maintained_extra/mediawiki.init: use preformatted formats
-	indentation in css. Don't add a div for each preformatted, but only
+	indentation in CSS. Don't add a div for each preformatted, but only
 	for the whole format.
 
 2009-11-22   Patrice Dumas  <pertusus@free.fr>

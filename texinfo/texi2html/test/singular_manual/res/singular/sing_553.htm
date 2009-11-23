@@ -101,16 +101,19 @@ ul.no-bullet {list-style: none}
 <dt><strong>Compute:</strong></dt>
 <dd><p>A presentation of Ext^k(M&rsquo;,R); for k=v[1],v[2],..., M&rsquo;=coker(M).
 Let
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  0 &lt;-- M' &lt;-- F0 &lt;-M-- F1 &lt;-- F2 &lt;-- ...
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">  0 &lt;-- M' &lt;-- F0 &lt;-M-- F1 &lt;-- F2 &lt;-- ...
+</pre></div>
 <p>be a free resolution of M&rsquo;. If
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">        0 --&gt; F0* -A1-&gt; F1* -A2-&gt; F2* -A3-&gt; ...
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">        0 --&gt; F0* -A1-&gt; F1* -A2-&gt; F2* -A3-&gt; ...
+</pre></div>
 <p>is the dual sequence, Fi*=Hom(Fi,R), then Ext^k = ker(Ak+1)/im(Ak)
 is presented as in the following exact sequences:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">    R^p --syz(Ak+1)-&gt; Fk* ---Ak+1----&gt;  Fk+1* ,
+</p><div class="smallexample">
+<pre class="smallexample">    R^p --syz(Ak+1)-&gt; Fk* ---Ak+1----&gt;  Fk+1* ,
     R^q ----Ext^k---&gt; R^p --syz(Ak+1)-&gt; Fk*/im(Ak).
-</pre></td></tr></table>
+</pre></div>
 <p>Hence, Ext^k=modulo(syz(Ak+1),Ak) presents Ext^k(M&rsquo;,R).
 </p>
 </dd>
@@ -118,11 +121,12 @@ is presented as in the following exact sequences:
 <dd><p>- module Ext, a presentation of Ext^k(M&rsquo;,R) if v is of type int<br>
 - a list of Ext^k (k=v[1],v[2],...) if v is of type intvec.<br>
 - In case of a third argument of type int return a list l:
-</p><pre class="format">     l[1] = module Ext^k resp. list of Ext^k
+</p><div class="format">
+<pre class="format">     l[1] = module Ext^k resp. list of Ext^k
      l[2] = SB of Ext^k resp. list of SB of Ext^k
      l[3] = matrix resp. list of matrices, each representing a kbase of Ext^k 
               (if finite dimensional)
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Display:</strong></dt>
@@ -137,7 +141,8 @@ or the 2 commands: list L=mres(M,2); Ext_R(k,L[2]);
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;homolog.lib&quot;;
 int p      = printlevel;
 printlevel = 1;
 ring r     = 0,(x,y,z),dp;
@@ -200,7 +205,7 @@ list L     = Ext_R(v,i,1);  //over the qring R=r/(x2+yz), std and kbase
 &rarr; 0  
 &rarr; 
 printlevel = p;
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

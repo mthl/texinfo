@@ -107,7 +107,8 @@ s.th. N1 is contained in N2 or vice versa
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;mprimdec.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;mprimdec.lib&quot;;
 ring  r = 0,(x,y,z),dp;
 module N1=x*freemodule(2);
 module N2=xy*freemodule(2);
@@ -118,7 +119,7 @@ N2=N1;
 i=specialModulesEqual(N1,N2);
 i;
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

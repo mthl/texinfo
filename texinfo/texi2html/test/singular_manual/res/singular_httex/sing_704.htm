@@ -118,7 +118,8 @@ then the second entry is the adjoint matrix of U.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;mondromy.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;mondromy.lib&quot;;
 ring R=0,x,dp;
 matrix U[2][2]=1,1+x,1+x2,1+x3;
 list daU=detadj(U);
@@ -127,7 +128,7 @@ daU[1];
 print(daU[2]);
 &rarr; x3+1, -x-1,
 &rarr; -x2-1,1    
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

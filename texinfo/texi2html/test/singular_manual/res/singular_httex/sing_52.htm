@@ -248,20 +248,22 @@ not contain curly parenthesis and the &quot;at&quot; sign, i.e., may not contain
 font.
 </p><dl compact="compact">
 <dt>Example:</dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="example">before example
+<dd><div class="example">
+<pre class="example">before example
 @example
 in              example
 notice extra identation and
 escape of special characters like @{,@},@@
 @end example
 after example
-</pre></td></tr></table>
+</pre></div>
 <p>&rarr;
 <br>before example
-</p><table><tr><td>&nbsp;</td><td><pre class="example">in                example
+</p><div class="example">
+<pre class="example">in                example
 notice extra identation  and
 escape of special characters like {,},@
-</pre></td></tr></table>
+</pre></div>
 <p>after example
 </p></dd>
 <dt>Note:</dt>
@@ -279,20 +281,22 @@ escape of special characters like {,},@
 font.
 </p><dl compact="compact">
 <dt>Example:</dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="example">before format
+<dd><div class="example">
+<pre class="example">before format
 @format
 in              format
 no extra identation but still
 escape of special characters like @{,@},@@
 @end format
 after format
-</pre></td></tr></table>
+</pre></div>
 <p>&rarr;
 <br>before format
-</p><pre class="format">in              format
+</p><div class="format">
+<pre class="format">in              format
 no extra identation  but still
 escape of special characters like {,},@
-</pre>
+</pre></div>
 <p>after format
 </p></dd>
 <dt>Note:</dt>
@@ -310,7 +314,8 @@ escape of special characters like {,},@
 <dd><p>for text which is written in pure texinfo.
 </p><dl compact="compact">
 <dt>Example:</dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="example">@texinfo
+<dd><div class="example">
+<pre class="example">@texinfo
 Among others, within a texinfo environment
 one can use the tex environment to typeset
 more complex mathematical like
@@ -318,7 +323,7 @@ more complex mathematical like
 $i_{1,1} $
 @tex
 @end texinfo
-</pre></td></tr></table>
+</pre></div>
 <br><p>&rarr;
 <br>Among others, within a texinfo environment one can use the tex environment
 to typeset more complex mathematical like

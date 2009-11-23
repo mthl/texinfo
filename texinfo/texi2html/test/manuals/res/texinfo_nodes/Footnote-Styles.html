@@ -100,10 +100,11 @@ the rest of the node by a line of dashes with the word
 
 <p>Here is an example of a single footnote in the end of node style:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"> --------- Footnotes ---------
+<div class="example">
+<pre class="example"> --------- Footnotes ---------
 
 (1)  Here is a sample footnote.
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-Separate-footnote-style"></a>
 </li><li>
@@ -124,11 +125,12 @@ node for the &lsquo;<tt>Footnotes</tt>&rsquo; node is
 <p>Here is how the first footnote in this manual looks after being
 formatted for Info in the separate node style:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">File: texinfo.info  Node: Overview-Footnotes, Up: Overview
+<div class="smallexample">
+<pre class="smallexample">File: texinfo.info  Node: Overview-Footnotes, Up: Overview
 
 (1) The first syllable of &quot;Texinfo&quot; is pronounced like &quot;speck&quot;, not
 &quot;hex&quot;. &hellip;
-</pre></td></tr></table>
+</pre></div>
 </li></ul>
 
 <p>A Texinfo file may be formatted into an Info file with either footnote
@@ -142,11 +144,13 @@ by an argument, either &lsquo;<samp>end</samp>&rsquo; for the end node style or
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle end
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@footnotestyle end
+</pre></div>
 <p>or
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle separate
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">@footnotestyle separate
+</pre></div>
 
 <p>Write an <code>@footnotestyle</code> command before or shortly after the
 end-of-header line at the beginning of a Texinfo file.  (If you

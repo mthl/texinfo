@@ -108,9 +108,10 @@ the ground field does not divide mult(f).
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list of two ideals:
-</p><pre class="format">          _[1]:  equisingularity ideal of f (in sense of Wahl)
+</p><div class="format">
+<pre class="format">          _[1]:  equisingularity ideal of f (in sense of Wahl)
           _[2]:  equisingularity ideal of f with fixed section
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -121,7 +122,8 @@ value is list(0,0).
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;equising.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;equising.lib&quot;;
 ring r=0,(x,y),ds;
 poly f=x7+y7+(x-y)^2*x2y2; 
 list K=esIdeal(f);
@@ -166,7 +168,7 @@ vdim(std(K[1]));
 // the latter should be equal to: 
 tau_es(f);
 &rarr; 68
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_654.htm#esStratum">esStratum</a>;
 <a href="sing_652.htm#tau_005fes">tau_es</a>.

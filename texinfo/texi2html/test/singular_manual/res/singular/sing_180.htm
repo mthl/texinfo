@@ -109,7 +109,8 @@ such procedures cannot be precompiled (a feature which <small>SINGULAR</small> w
 provide in the future).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   ideal i=x+y,z3+22y;
   write(&quot;:w save_i&quot;,i);
   ring r0=0,(x,y,z),Dp;
@@ -121,7 +122,7 @@ provide in the future).
   k;
 &rarr; k[1]=x+y
 &rarr; k[2]=z3+22y
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 </td>

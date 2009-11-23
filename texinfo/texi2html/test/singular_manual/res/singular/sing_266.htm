@@ -107,7 +107,8 @@ basering; returns 0 if not. Hence the return value of <code>rvar</code> can
 also be used in a boolean context to check whether the variable exists.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=29,(x,y,z),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=29,(x,y,z),lp;
   rvar(x);
 &rarr; 1
   rvar(r);
@@ -118,7 +119,7 @@ also be used in a boolean context to check whether the variable exists.
 &rarr; 3
   rvar(&quot;x&quot;);
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

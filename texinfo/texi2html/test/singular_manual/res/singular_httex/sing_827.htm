@@ -116,7 +116,8 @@ ni=0 (resp.!=0) means that less (resp. more) complex vars come first.
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list with 3 entries:
-  </p><pre class="format">  [1]: intvec, say v, describing the permutation such that the permuted
+  </p><div class="format">
+<pre class="format">  [1]: intvec, say v, describing the permutation such that the permuted
        ringvariables are ordered with respect to their complexity in id
   [2]: list of intvecs, i-th intvec, say v(i) describing permutation
        of vars in a(i) such that v=v(1),v(2),...
@@ -124,7 +125,7 @@ ni=0 (resp.!=0) means that less (resp. more) complex vars come first.
        a(i): factors of pi,
        M(i): valuation matrix of a(i), such that the j-th column of M(i)
              is the valuation vector of j-th generator of a(i)
-         </pre>
+         </pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -141,7 +142,8 @@ of x,...).
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;presolve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;presolve.lib&quot;;
 ring s=0,(x,y,z,a,b),dp;
 ideal i=ax2+ay3-b2x,abz+by2;
 valvars (i,0,xyz);
@@ -168,7 +170,7 @@ valvars (i,0,xyz);
 &rarr;       1,2,
 &rarr;       3,1,
 &rarr;       0,2 
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

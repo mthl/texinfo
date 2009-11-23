@@ -149,8 +149,9 @@ into a binary format (&lsquo;<tt>$HOME/.info</tt>&rsquo; by default).  GNU Info 
 the binary file at startup to override the default key bindings and
 variable definitions.  Synopsis:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">infokey [<var>option</var>&hellip;] [<var>input-file</var>]
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">infokey [<var>option</var>&hellip;] [<var>input-file</var>]
+</pre></div>
 
 <p>Besides the standard &lsquo;<samp>--help</samp>&rsquo; and &lsquo;<samp>--version</samp>&rsquo;, the only
 option is &lsquo;<samp>--output <var>file</var></samp>&rsquo;.  This tells <code>infokey</code> to
@@ -185,7 +186,8 @@ write the binary data to <var>file</var> instead of &lsquo;<tt>$HOME/.info</tt>&
 illustrated by example.  For instance, here is a sample &lsquo;<tt>.infokey</tt>&rsquo;
 source file suitable for aficionados of <code>vi</code> or <code>less</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">#info
+<div class="example">
+<pre class="example">#info
 j       next-line
 k       prev-line
 l       forward-char
@@ -211,7 +213,7 @@ t       top-node
 d       dir-node
 #var
 scroll-step=1
-</pre></td></tr></table>
+</pre></div>
 
 <p>The source file consists of one or more <em>sections</em>.
 Each section starts with a line that identifies the type of section.
@@ -225,8 +227,9 @@ The start of this section is indicated by a line containing just
 file, the <code>#info</code> line can be omitted.  The rest of this section
 consists of lines of the form:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><var>string</var> whitespace <var>action</var> [ whitespace [ # comment ] ] newline
-</pre></td></tr></table>
+<div class="example">
+<pre class="example"><var>string</var> whitespace <var>action</var> [ whitespace [ # comment ] ] newline
+</pre></div>
 
 <p>Whitespace is any sequence of one or more spaces and/or tabs.  Comment
 is any sequence of any characters, excluding newline.  <var>string</var> is
@@ -319,8 +322,9 @@ file with the action <code>invalid</code>.  In addition, <em>all</em> default
 key bindings can be disabled by adding this line <em>anywhere</em> in the
 relevant section:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">#stop
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">#stop
+</pre></div>
 
 <p>This will cause GNU Info to ignore all the default key commands for that
 section.

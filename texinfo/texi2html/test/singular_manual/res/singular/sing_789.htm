@@ -111,7 +111,8 @@ via the procedure &rsquo;reduction&rsquo; as long as possible
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;ainvar.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;ainvar.lib&quot;;
 ring q=0,(x,y,z,u,v,w),dp;
 poly p=x2yz-x2v;
 ideal dom =x-w,u2w+1,yz-v;
@@ -119,7 +120,7 @@ completeReduction(p,dom);
 &rarr; 2xyzw-yzw2-2xvw+vw2
 completeReduction(p,dom,w);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

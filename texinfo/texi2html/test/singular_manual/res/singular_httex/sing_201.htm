@@ -137,7 +137,8 @@ in the above notation.
 computations have to be finished and may therefore take some time.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=xz,yz,x3-y3;
   def L=hres(I,0);
   print(betti(L),&quot;betti&quot;);
@@ -151,7 +152,7 @@ computations have to be finished and may therefore take some time.
   L[2];     // the first syzygy module of r/I
 &rarr; _[1]=-x*gen(1)+y*gen(2)
 &rarr; _[2]=-x2*gen(2)+y2*gen(1)+z*gen(3)
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

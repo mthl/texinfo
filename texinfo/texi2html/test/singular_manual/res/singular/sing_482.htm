@@ -110,7 +110,8 @@ list of matrices forms a complex.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;matrix.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;matrix.lib&quot;;
 ring r  = 32003,(x,y,z),ds;
 ideal i = x4+y5+z6,xyz,yx2+xz2+zy7;
 list L  = nres(i,0);
@@ -119,7 +120,7 @@ is_complex(L);
 L[4]    = matrix(i);
 is_complex(L);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

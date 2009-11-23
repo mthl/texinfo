@@ -95,7 +95,8 @@ text.
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@example
+<div class="example">
+<pre class="example">@example
 This is an example
 @end example
 
@@ -104,18 +105,20 @@ This line is not indented.  As you can see, the
 beginning of the line is fully flush left with the line
 that follows after it.  (This whole example is between
 @code{@@display} and @code{@@end display}.)
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><table><tr><td>&nbsp;</td><td><pre class="example">This is an example
-</pre></td></tr></table>
+<div class="display">
+<div class="example">
+<pre class="example">This is an example
+</pre></div>
 <pre class="display">
 This line is not indented.  As you can see, the
 beginning of the line is fully flush left with the line
 that follows after it.  (This whole example is between
 <code>@display</code> and <code>@end display</code>.)
-</pre></td></tr></table>
+</pre></div>
 
 <p>To adjust the number of blank lines properly in the Info file output,
 remember that the line containing <code>@noindent</code> does not generate a

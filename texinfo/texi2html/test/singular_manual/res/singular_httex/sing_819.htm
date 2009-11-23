@@ -103,16 +103,18 @@ ul.no-bullet {list-style: none}
 <dt><strong>Return:</strong></dt>
 <dd><p>if no second argument is present: ideal of variables occurring in id,<br>
 if a second argument is given (of any type): list L with 4 entries:
-  </p><pre class="format">  L[1]: ideal of variables occurring in id
+  </p><div class="format">
+<pre class="format">  L[1]: ideal of variables occurring in id
   L[2]: intvec of variables occurring in id
   L[3]: ideal of variables not occurring in id
   L[4]: intvec of variables not occurring in id
-  </pre>
+  </pre></div>
 
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;presolve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;presolve.lib&quot;;
 ring s  = 0,(e,f,x,y,t,u,v,w,a,d),dp;
 ideal i = w2+f2-1, x2+t2+a2-1;
 findvars(i);
@@ -138,7 +140,7 @@ findvars(i,1);
 &rarr;    _[5]=d
 &rarr; [4]:
 &rarr;    1,4,6,7,10
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

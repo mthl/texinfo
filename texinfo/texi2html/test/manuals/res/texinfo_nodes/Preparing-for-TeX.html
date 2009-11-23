@@ -147,20 +147,23 @@ initialization information, and the former read &lsquo;<tt>.profile</tt>&rsquo;.
 <p>In a &lsquo;<tt>.cshrc</tt>&rsquo; file, you could use the following <code>csh</code> command
 sequence:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">setenv TEXINPUTS .:/home/me/mylib:/usr/lib/tex/macros
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">setenv TEXINPUTS .:/home/me/mylib:/usr/lib/tex/macros
+</pre></div>
 
 <p>In a &lsquo;<tt>.profile</tt>&rsquo; file, you could use the following <code>sh</code> command
 sequence:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">TEXINPUTS=.:/home/me/mylib:/usr/lib/tex/macros
+<div class="example">
+<pre class="example">TEXINPUTS=.:/home/me/mylib:/usr/lib/tex/macros
 export TEXINPUTS
-</pre></td></tr></table>
+</pre></div>
 
 <p>On MS-DOS/MS-Windows, you would say it like this<a name="DOCF10" href="texinfo_fot.html#FOOT10">(10)</a>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
+</pre></div>
 
 <p>It is customary for DOS/Windows users to put such commands in the
 &lsquo;<tt>autoexec.bat</tt>&rsquo; file, or in the Windows Registry.
@@ -177,8 +180,9 @@ disadvantage is that then updating &lsquo;<tt>texinfo.tex</tt>&rsquo; requires
 redumping.)  You can do this by running this command, assuming
 &lsquo;<tt>epsf.tex</tt>&rsquo; is findable by TeX:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">initex texinfo @dump
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">initex texinfo @dump
+</pre></div>
 
 <p>(<code>dump</code> is a TeX primitive.)  Then, move &lsquo;<tt>texinfo.fmt</tt>&rsquo; to
 wherever your <code>.fmt</code> files are found; typically, this will be in the

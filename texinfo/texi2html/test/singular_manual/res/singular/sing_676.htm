@@ -99,15 +99,17 @@ ul.no-bullet {list-style: none}
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><pre class="format">int k=
+<dd><div class="format">
+<pre class="format">int k=
   1;  if sum of sp is positive on all intervals [a,a+1) [and (a,a+1)]
   0;  if sum of sp is negative on some interval [a,a+1) [or (a,a+1)]
-</pre>
+</pre></div>
 
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;gaussman.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;gaussman.lib&quot;;
 ring R=0,(x,y),ds;
 list sp1=list(ideal(-1/2,-3/10,-1/10,0,1/10,3/10,1/2),intvec(1,2,2,1,2,2,1));
 spprint(sp1);
@@ -119,7 +121,7 @@ spissemicont(spsub(sp1,spmul(sp2,3)));
 &rarr; 1
 spissemicont(spsub(sp1,spmul(sp2,4)));
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

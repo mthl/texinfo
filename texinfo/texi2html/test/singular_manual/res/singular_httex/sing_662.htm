@@ -106,14 +106,15 @@ ul.no-bullet {list-style: none}
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><pre class="format">list l;  Jordan data jordan(M) of monodromy matrix exp(-2*pi*i*M)
+<dd><div class="format">
+<pre class="format">list l;  Jordan data jordan(M) of monodromy matrix exp(-2*pi*i*M)
   ideal l[1]; 
     number l[1][i];  eigenvalue of i-th Jordan block of M
   intvec l[2]; 
     int l[2][i];  size of i-th Jordan block of M
   intvec l[3]; 
     int l[3][i];  multiplicity of i-th Jordan block of M
-</pre>
+</pre></div>
 
 <a name="index-singularities-5"></a>
 <a name="index-Gauss_002dManin-connection-6"></a>
@@ -122,7 +123,8 @@ ul.no-bullet {list-style: none}
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;gaussman.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;gaussman.lib&quot;;
 ring R=0,(x,y),ds;
 poly t=x5+x2y2+y5;
 monodromy(t);
@@ -137,7 +139,7 @@ monodromy(t);
 &rarr;    2,1,1,1,1,1
 &rarr; [3]:
 &rarr;    1,2,2,1,2,2
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_503.htm#linalg_005flib">linalg_lib</a>;
 <a href="sing_703.htm#mondromy_005flib">mondromy_lib</a>.

@@ -104,11 +104,12 @@ ul.no-bullet {list-style: none}
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><pre class="format">list S:
+<dd><div class="format">
+<pre class="format">list S:
   ideal S[1]: spectral numbers in increasing order
   intvec S[2]:
     int S[2][i]: multiplicity of spectral number S[1][i]
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -122,7 +123,8 @@ ul.no-bullet {list-style: none}
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;spectrum.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;spectrum.lib&quot;;
 ring R=0,(x,y),ds;
 poly f=x^31+x^6*y^7+x^2*y^12+x^13*y^2+y^29;
 spectrumnd(f);
@@ -308,7 +310,7 @@ spectrumnd(f);
    ,1,1,2,1,1,1,1,2,1,1,1,1,1,2,1,4,1,2,1,1,1,1,1,2,1,1,1,1,2,1,1,1,1,1,2,1,\
    1,1,1,2,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1\
    ,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
-</pre></td></tr></table>
+</pre></div>
 </td>
 </tr>
 </table>

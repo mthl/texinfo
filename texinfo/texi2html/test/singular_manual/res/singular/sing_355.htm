@@ -202,7 +202,8 @@ the ideal of relations between the generators of the given ideal.
 Otherwise it checks for subring membership and returns the normal form
 of the second argument with respect to the ideal I.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  proc algebraicDep(ideal J, poly g)
+<div class="smallexample">
+<pre class="smallexample">  proc algebraicDep(ideal J, poly g)
   {
     def R=basering;         // give a name to the basering
     int n=size(J);
@@ -268,7 +269,7 @@ of the second argument with respect to the ideal I.
   algebraicDep(j,g);
 &rarr; _[1]=-z^4+z^2*Y(2)-x*z
   // this shows that g is contained in j.
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

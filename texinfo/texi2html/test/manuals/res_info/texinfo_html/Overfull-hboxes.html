@@ -91,8 +91,9 @@ interprets as a long word that it cannot hyphenate, such as an
 electronic mail network address or a very long title.  When this
 happens, TeX prints an error message like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Overfull @hbox (20.76302pt too wide)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Overfull @hbox (20.76302pt too wide)
+</pre></div>
 
 <a name="index-hbox"></a>
 <p>(In TeX, lines are in &ldquo;horizontal boxes&rdquo;, hence the term, &ldquo;hbox&rdquo;.
@@ -115,10 +116,11 @@ spacing, thus (if you&rsquo;re lucky) avoiding many of the bad line breaks,
 like this:
 </p>
 <a name="index-_005cemergencystretch"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">@tex
+<div class="example">
+<pre class="example">@tex
 \global\emergencystretch = .9\hsize
 @end tex
-</pre></td></tr></table>
+</pre></div>
 
 <p>(You should adjust the fraction as needed.)  This huge value for
 <code>\emergencystretch</code> cannot be the default, since then the typeset
@@ -140,8 +142,9 @@ problem if you are correcting a draft.
 the following in the beginning of the Texinfo file on a line of its own,
 before the <code>@titlepage</code> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@finalout
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@finalout
+</pre></div>
 
 
 <hr>

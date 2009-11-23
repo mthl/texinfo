@@ -99,7 +99,8 @@ ul.no-bullet {list-style: none}
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><pre class="format">         a list l with l[1] integer, l[2], l[3], l[4] ideals
+<dd><div class="format">
+<pre class="format">         a list l with l[1] integer, l[2], l[3], l[4] ideals
          - l[1] = 1 if var(v1),...,var(vr) are in l[2] and 0 else
          - l[2] (resp. l[3]) contains those variables which occur,
            (resp. occur not) as pure power in the leading term of one of the
@@ -107,7 +108,7 @@ ul.no-bullet {list-style: none}
          - l[4] contains those J[i] for which the leading term is a pure power
            of a variable (which is then in l[2])
          (default: v = [1,2,..,nvars(basering)])
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Theory:</strong></dt>
@@ -122,7 +123,8 @@ h_j(y), then K[y_1,...y_z]/&lt;h_j&gt; is finite over K[f_1..f_n].
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;algebra.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;algebra.lib&quot;;
 ring s = 0,(x,y,z,a,b,c),(lp(3),dp);
 ideal i= a -(xy)^3+x2-z, b -y2-1, c -z3;
 ideal j = a -(xy)^3+x2-z, b -y2-1, c -z3, xy;
@@ -155,7 +157,7 @@ finitenessTest(std(j),1..3);
 &rarr;    _[1]=z3-c
 &rarr;    _[2]=y2-b+1
 &rarr;    _[3]=x2-z+a
-</pre></td></tr></table>
+</pre></div>
 </td>
 </tr>
 </table>

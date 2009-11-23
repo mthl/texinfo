@@ -100,7 +100,8 @@ ul.no-bullet {list-style: none}
 which can be defined as a basering. A free module of rank <code>n</code>
 is defined as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring rr;
+<div class="smallexample">
+<pre class="smallexample">ring rr;
 int n = 4;
 freemodule(4);
 &rarr; _[1]=gen(1)
@@ -114,7 +115,7 @@ print(freemodule(4));
 &rarr; 0,1,0,0,
 &rarr; 0,0,1,0,
 &rarr; 0,0,0,1
-</pre></td></tr></table>
+</pre></div>
 
 <p>To define a module, we give a list of vectors generating a submodule of
 a free module. Then this set of vectors may be identified with the
@@ -122,14 +123,15 @@ columns of a matrix.  For that reason in <small>SINGULAR</small> matrices and
 modules may be interchanged. However, the representation is different
 (modules may be considered as sparse represented matrices).
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r =0,(x,y,z),dp;
+<div class="smallexample">
+<pre class="smallexample">ring r =0,(x,y,z),dp;
 module MD = [x,0,x],[y,z,-y],[0,z,-2y];
 matrix MM = MD;
 print(MM);
 &rarr; x,y,0,
 &rarr; 0,z,z,
 &rarr; x,-y,-2y
-</pre></td></tr></table>
+</pre></div>
 
 <p>However the submodule 
  <span 
@@ -150,9 +152,10 @@ class="cmmi-10">MD </span>
 ,
 we use the command <code>syz</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">syz(MD);
+<div class="smallexample">
+<pre class="smallexample">syz(MD);
 &rarr; _[1]=x*gen(3)-x*gen(2)+y*gen(1)
-</pre></td></tr></table>
+</pre></div>
 
 <p>We want to calculate, as an application, the annihilator of a given module.
 Let
@@ -165,8 +168,9 @@ where U is our defining module of relations for the module
  <span 
 class="cmmi-10">M</span>.  
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">module U = [z3,xy2,x3],[yz2,1,xy5z+z3],[y2z,0,x3],[xyz+x2,y2,0],[xyz,x2y,1];
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">module U = [z3,xy2,x3],[yz2,1,xy5z+z3],[y2z,0,x3],[xyz+x2,y2,0],[xyz,x2y,1];
+</pre></div>
 
 <p>Then, by definition, the annihilator of M is the ideal
  ann(<span 
@@ -196,8 +200,9 @@ The rank of the free module is determined by the choice of U and is the
 number of rows of the corresponding matrix. This may be determined by
 the function <code>nrows</code>. All we have to do now is the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">quotient(U,freemodule(nrows(U)));
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">quotient(U,freemodule(nrows(U)));
+</pre></div>
 
 <p>The result is too big to be shown here.
 </p>

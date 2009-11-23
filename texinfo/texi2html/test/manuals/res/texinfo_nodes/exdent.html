@@ -96,21 +96,23 @@ braces around the text.  In a printed manual, the text on an
 </p>
 <p><code>@exdent</code> is usually used within examples.  Thus,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@example
+<div class="example">
+<pre class="example">@example
 This line follows an @@example command.
 @exdent This line is exdented.
 This line follows the exdented line.
 The @@end example comes on the next line.
 @end group
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This line follows an @example command.
+<div class="example">
+<pre class="example">This line follows an @example command.
 This line is exdented.
 This line follows the exdented line.
 The @end example comes on the next line.
-</pre></td></tr></table>
+</pre></div>
 
 <p>In practice, the <code>@exdent</code> command is rarely used.
 Usually, you un-indent text by ending the example and

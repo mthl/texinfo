@@ -103,7 +103,8 @@ ul.no-bullet {list-style: none}
 corresponding factor modules are isomorphic.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   module m=gen(1),gen(3),[x,y,0,z],[x+y,0,0,0,1];
   print(m);
 &rarr; 1,0,x,x+y,
@@ -114,7 +115,7 @@ corresponding factor modules are isomorphic.
   print(prune(m));
 &rarr; y,
 &rarr; z 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

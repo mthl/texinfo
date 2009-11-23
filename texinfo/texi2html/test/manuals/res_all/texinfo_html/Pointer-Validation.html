@@ -127,7 +127,8 @@ they use commands like <code>@value</code> and <code>@definfoenclose</code> in
 node definitions and cross-references inconsistently.  Consider the
 following example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@set nodename Node 1
+<div class="example">
+<pre class="example">@set nodename Node 1
 
 @node @value{nodename}, Node 2, Top, Top
 
@@ -136,7 +137,7 @@ This is node 1.
 @node Node 2, , Node 1, Top
 
 This is node 2.
-</pre></td></tr></table>
+</pre></div>
 
 <p>Here, the node &ldquo;Node 1&rdquo; was referenced both verbatim and through
 <code>@value</code>.

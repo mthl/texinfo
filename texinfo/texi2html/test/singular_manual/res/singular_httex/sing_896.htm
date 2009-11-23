@@ -103,11 +103,12 @@ ul.no-bullet {list-style: none}
 <dt><strong>Return:</strong></dt>
 <dd><p>list L with updated data of CURVE after computing all non-singular
 affine closed places whose degrees are in the intvec h: <br>
-   </p><pre class="format">   in L[1][1]: (affine ring) lists Aff_Points(d) with affine non-singular
+   </p><div class="format">
+<pre class="format">   in L[1][1]: (affine ring) lists Aff_Points(d) with affine non-singular
                (closed) points of degree d (if non-empty),
    in L[3]:    the newly computed closed places are added,
    in L[5]:    local rings created/updated to store (repres. of) new places.
-   </pre>
+   </pre></div>
 <p>See <a href="sing_895.htm#Adj_005fdiv">Adj_div</a> for a description of the entries in L.
 </p>
 </dd>
@@ -119,7 +120,8 @@ If <code>printlevel&gt;=0</code> additional comments are displayed (default:
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;brnoeth.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;brnoeth.lib&quot;;
 int plevel=printlevel;
 printlevel=-1;
 ring s=2,(x,y),lp;
@@ -196,7 +198,7 @@ POINTS[1];
 &rarr; [3]:
 &rarr;    1
 printlevel=plevel;
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_895.htm#Adj_005fdiv">Adj_div</a>;
 <a href="sing_904.htm#closed_005fpoints">closed_points</a>.

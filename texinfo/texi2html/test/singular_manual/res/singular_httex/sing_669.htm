@@ -106,11 +106,12 @@ ul.no-bullet {list-style: none}
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><pre class="format">list l=A0,A1,T,M;
+<dd><div class="format">
+<pre class="format">list l=A0,A1,T,M;
   matrix A0,A1;  t=A0+s*A1+s^2*(d/ds) on H&rdquo; w.r.t. C[[s]]-basis M*T
   module T;  C-basis of C^mu
   ideal M;  monomial C-basis of H&rdquo;/sH&rdquo;
-</pre>
+</pre></div>
 
 <a name="index-singularities-10"></a>
 <a name="index-Gauss_002dManin-connection-11"></a>
@@ -121,7 +122,8 @@ ul.no-bullet {list-style: none}
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;gaussman.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;gaussman.lib&quot;;
 ring R=0,(x,y),ds;
 poly t=x5+x2y2+y5;
 list A=tmatrix(t);
@@ -173,7 +175,7 @@ print(A[4]);
 &rarr; x2,
 &rarr; x,
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

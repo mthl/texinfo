@@ -101,12 +101,14 @@ ul.no-bullet {list-style: none}
 <dt><strong>Compute:</strong></dt>
 <dd><p>A presentation of Ext^k(M&rsquo;,N&rsquo;); for k=v[1],v[2],... where
 M&rsquo;=coker(M) and N&rsquo;=coker(N). Let
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">       0 &lt;-- M' &lt;-- F0 &lt;-M-- F1 &lt;-- F2 &lt;--... ,   
+</p><div class="smallexample">
+<pre class="smallexample">       0 &lt;-- M' &lt;-- F0 &lt;-M-- F1 &lt;-- F2 &lt;--... ,   
        0 &lt;-- N' &lt;-- G0 &lt;--N- G1
-</pre></td></tr></table>
+</pre></div>
 <p>be a free resolution of M&rsquo;, resp. a presentation of N&rsquo;. Consider
 the commutative diagram
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">           0                  0                  0
+</p><div class="smallexample">
+<pre class="smallexample">           0                  0                  0
            |^                 |^                 |^
    --&gt; Hom(Fk-1,N') -Ak-&gt; Hom(Fk,N') -Ak+1-&gt; Hom(Fk+1,N')
            |^                 |^                 |^
@@ -116,13 +118,14 @@ the commutative diagram
                           Hom(Fk,G1) ------&gt; Hom(Fk+1,G1)
 
       (Ak,Ak+1 induced by M and B,C induced by N).
-</pre></td></tr></table>
+</pre></div>
 <p>Let K=modulo(Ak+1,B), J=module(Ak)+module(C) and Ext=modulo(K,J),
 then we have exact sequences
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">    R^p --K-&gt; Hom(Fk,G0) --Ak+1-&gt; Hom(Fk+1,G0)/im(B),
+</p><div class="smallexample">
+<pre class="smallexample">    R^p --K-&gt; Hom(Fk,G0) --Ak+1-&gt; Hom(Fk+1,G0)/im(B),
 
     R^q -Ext-&gt; R^p --K-&gt; Hom(Fk,G0)/(im(Ak)+im(C)).
-</pre></td></tr></table>
+</pre></div>
 <p>Hence, Ext presents Ext^k(M&rsquo;,N&rsquo;).
 </p>
 </dd>
@@ -130,11 +133,12 @@ then we have exact sequences
 <dd><p>- module Ext, a presentation of Ext^k(M&rsquo;,N&rsquo;) if v is of type int<br>
 - a list of Ext^k (k=v[1],v[2],...) if v is of type intvec.<br>
 - In case of a third argument of any type return a list l:
-</p><pre class="format">             l[1] = module Ext/list of Ext^k
+</p><div class="format">
+<pre class="format">             l[1] = module Ext/list of Ext^k
              l[2] = SB of Ext/list of SB of Ext^k
              l[3] = matrix/list of matrices, each representing a kbase of Ext^k
                        (if finite dimensional)
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Display:</strong></dt>
@@ -150,7 +154,8 @@ or: list P=mres(M,2); list Q=mres(N,2); Ext(k,P[2],Q[2]);
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;homolog.lib&quot;;
 int p      = printlevel;
 printlevel = 1;
 ring r     = 0,(x,y),dp;
@@ -239,7 +244,7 @@ list l     = Ext(4,M,M,1);     // Ext^4(R^2/M,R^2/M) over R=r/i
 &rarr; 1,0 
 &rarr; 
 printlevel = p;
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

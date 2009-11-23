@@ -213,7 +213,8 @@ that link. The <code>status</code> command can be used to check whether there
 is data to read.
 </p>
 <br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;general.lib&quot;; // needed for &quot;killall&quot; command
+</p><div class="smallexample">
+<pre class="smallexample">  LIB &quot;general.lib&quot;; // needed for &quot;killall&quot; command
   link l=&quot;MPtcp:launch&quot;;
   open(l); l;        // l is ready for writing but not for reading
 &rarr; // type : MPtcp
@@ -267,7 +268,7 @@ is data to read.
 &rarr; _[2]=xyz+z
 &rarr; _[3]=x2+y2
   close(l);          // shut down forked child
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

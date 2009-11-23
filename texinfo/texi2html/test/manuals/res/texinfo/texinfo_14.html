@@ -297,9 +297,10 @@ which are not at the ends of sentences.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">The s.o.p.@: has three parts &hellip;
+<div class="example">
+<pre class="example">The s.o.p.@: has three parts &hellip;
 The s.o.p. has three parts &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
@@ -347,9 +348,10 @@ of a sentence that ends with a single capital letter.  Otherwise, TeX
 will think the letter is an abbreviation and will not insert the correct
 end-of-sentence spacing.  Here is an example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Give it to M.I.B. and to M.E.W@.  Also, give it to R.J.C@.
+<div class="example">
+<pre class="example">Give it to M.I.B. and to M.E.W@.  Also, give it to R.J.C@.
 Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
@@ -412,14 +414,16 @@ character and end-of-line, i.e., when &lsquo;<samp>@</samp>&rsquo; is the last c
 a line.)
 </p>
 <p>For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">Spacey@ @ @ @
+</p><div class="example">
+<pre class="example">Spacey@ @ @ @
 example.
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Spacey&nbsp;&nbsp;&nbsp;&nbsp;example.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Spacey&nbsp;&nbsp;&nbsp;&nbsp;example.
+</pre></div>
 
 <p>Other possible uses of <code>@<kbd>SPACE</kbd></code> have been subsumed by
 <code>@multitable</code> (see section <a href="texinfo_12.html#Multi_002dcolumn-Tables">Multi-column Tables</a>).
@@ -464,8 +468,9 @@ at all, since the Info file does not require it.
 immediately, with no intervening space, by <code>@dmn</code>, and then by
 the dimension within braces.  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">A4 paper is 8.27@dmn{in} wide.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">A4 paper is 8.27@dmn{in} wide.
+</pre></div>
 
 <p>produces
 </p>
@@ -864,12 +869,13 @@ fixed-width font, this is a single hyphen, but in a proportional font,
 the symbol is the customary length for a minus sign&mdash;a little longer
 than a hyphen, shorter than an em-dash:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">&lsquo;<samp>-</samp>&rsquo; is a minus sign generated with &lsquo;<samp>@minus{}</samp>&rsquo;,
+<div class="display">
+<pre class="display">&lsquo;<samp>-</samp>&rsquo; is a minus sign generated with &lsquo;<samp>@minus{}</samp>&rsquo;,
 
 &lsquo;-&rsquo; is a hyphen generated with the character &lsquo;<samp>-</samp>&rsquo;,
 
 &lsquo;&mdash;&rsquo; is an em-dash for text.
-</pre></td></tr></table>
+</pre></div>
 
 <p>In the fixed-width font used by Info, <code>@minus{}</code> is the same
 as a hyphen.
@@ -909,13 +915,15 @@ an itemized list, you do not need to type the braces
 <p>You can write a short mathematical expression with the <code>@math</code>
 command.  Write the mathematical expression between braces, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@math{(a + b)(a + b) = a^2 + 2ab + b^2}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@math{(a + b)(a + b) = a^2 + 2ab + b^2}
+</pre></div>
 
 <p>This produces the following in Info:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(a + b)(a + b) = a^2 + 2ab + b^2
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(a + b)(a + b) = a^2 + 2ab + b^2
+</pre></div>
 
 <p>Thus, the <code>@math</code> command has no effect on the Info output.
 </p>
@@ -924,12 +932,14 @@ write superscripts and subscripts (as in the above example), but also
 allows you to use any of the plain TeX math control sequences.  It&rsquo;s
 conventional to use &lsquo;<samp>\</samp>&rsquo; instead of &lsquo;<samp>@</samp>&rsquo; for these commands.
 As in:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@math{\sin 2\pi \equiv \cos 3\pi}
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">@math{\sin 2\pi \equiv \cos 3\pi}
+</pre></div>
 
 <p>which looks like the input in Info and HTML:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">\sin 2\pi \equiv \cos 3\pi
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">\sin 2\pi \equiv \cos 3\pi
+</pre></div>
 
 <a name="index-_005c-_0028literal-_005c-in-_0040math_0029"></a>
 <p>Since &lsquo;<samp>\</samp>&rsquo; is an escape character inside <code>@math</code>, you can use
@@ -1096,9 +1106,10 @@ and as a double stemmed arrow in the printed output.
 </p>
 <p>Thus, the following,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">(cdr '(1 2 3))
+<div class="lisp">
+<pre class="lisp">(cdr '(1 2 3))
      &rArr; (2 3)
-</pre></td></tr></table>
+</pre></div>
 
 <p>may be read as &ldquo;<code>(cdr '(1 2 3))</code> evaluates to <code>(2 3)</code>&rdquo;.
 </p>
@@ -1134,19 +1145,21 @@ in Info and as a long arrow with a flat base in the printed output.
 </p>
 <p>For example, the following
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@lisp
+<div class="example">
+<pre class="example">@lisp
 (third '(a b c))
      @expansion{} (car (cdr (cdr '(a b c))))
      @result{} c
 @end lisp
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">(third '(a b c))
+<div class="lisp">
+<pre class="lisp">(third '(a b c))
      &rarr; (car (cdr (cdr '(a b c))))
      &rArr; c
-</pre></td></tr></table>
+</pre></div>
 
 <p>which may be read as:
 </p>
@@ -1193,21 +1206,23 @@ the printed output.
 &lsquo;<samp>-|</samp>&rsquo;, and the value of the expression follows on the
 last line.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">(progn (print 'foo) (print 'bar))
+<div class="lisp">
+<pre class="lisp">(progn (print 'foo) (print 'bar))
      -| foo
      -| bar
      &rArr; bar
-</pre></td></tr></table>
+</pre></div>
 
 <p>In a Texinfo source file, this example is written as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">@lisp
+<div class="lisp">
+<pre class="lisp">@lisp
 (progn (print 'foo) (print 'bar))
      @print{} foo
      @print{} bar
      @result{} bar
 @end lisp
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -1240,23 +1255,26 @@ and as the word &lsquo;error&rsquo; in a box in the printed output.
 </p>
 <p>Thus,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@lisp
+<div class="example">
+<pre class="example">@lisp
 (+ 23 'x)
 @error{} Wrong type argument: integer-or-marker-p, x
 @end lisp
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">(+ 23 'x)
+<div class="lisp">
+<pre class="lisp">(+ 23 'x)
 error--&gt; Wrong type argument: integer-or-marker-p, x
-</pre></td></tr></table>
+</pre></div>
 
 <p>This indicates that the following error message is printed
 when you evaluate the expression:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">Wrong type argument: integer-or-marker-p, x
-</pre></td></tr></table>
+<div class="lisp">
+<pre class="lisp">Wrong type argument: integer-or-marker-p, x
+</pre></div>
 
 <p>&lsquo;<samp>error--&gt;</samp>&rsquo; itself is not part of the error message.
 </p>
@@ -1291,15 +1309,17 @@ and as a three parallel horizontal lines in the printed output.
 </p>
 <p>Thus,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@lisp
+<div class="example">
+<pre class="example">@lisp
 (make-sparse-keymap) @equiv{} (list 'keymap)
 @end lisp
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">(make-sparse-keymap) &equiv; (list 'keymap)
-</pre></td></tr></table>
+<div class="lisp">
+<pre class="lisp">(make-sparse-keymap) &equiv; (list 'keymap)
+</pre></div>
 
 <p>This indicates that evaluating <code>(make-sparse-keymap)</code> produces
 identical results to evaluating <code>(list 'keymap)</code>.
@@ -1343,23 +1363,26 @@ and as a small five pointed star in the printed output.
 <p>The following example shows the contents of buffer &lsquo;<tt>foo</tt>&rsquo; before
 and after evaluating a Lisp command to insert the word <code>changed</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: foo ----------
+<div class="example">
+<pre class="example">---------- Buffer: foo ----------
 This is the &lowast;contents of foo.
 ---------- Buffer: foo ----------
 
-</pre></td></tr></table>
+</pre></div>
 
-<table><tr><td>&nbsp;</td><td><pre class="example">(insert &quot;changed &quot;)
+<div class="example">
+<pre class="example">(insert &quot;changed &quot;)
      &rArr; nil
 ---------- Buffer: foo ----------
 This is the changed &lowast;contents of foo.
 ---------- Buffer: foo ----------
 
-</pre></td></tr></table>
+</pre></div>
 
 <p>In a Texinfo source file, the example is written like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@example
+<div class="example">
+<pre class="example">@example
 ---------- Buffer: foo ----------
 This is the @point{}contents of foo.
 ---------- Buffer: foo ----------
@@ -1370,7 +1393,7 @@ This is the @point{}contents of foo.
 This is the changed @point{}contents of foo.
 ---------- Buffer: foo ----------
 @end example
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -1432,8 +1455,9 @@ of the footnote, and then by a terminating right brace.  Footnotes may
 be of any length (they will be broken across pages if necessary), but
 are usually short.  The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">ordinary text@footnote{<var>text of footnote</var>}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">ordinary text@footnote{<var>text of footnote</var>}
+</pre></div>
 
 <p>As shown here, the <code>@footnote</code> command should come right after the
 text being footnoted, with no intervening space; otherwise, the footnote
@@ -1442,9 +1466,10 @@ marker might end up starting a line.
 <p>For example, this clause is followed by a sample footnote<a name="DOCF9" href="texinfo_fot.html#FOOT9">(9)</a>; in the Texinfo source, it looks like
 this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">&hellip;a sample footnote@footnote{Here is the sample
+<div class="example">
+<pre class="example">&hellip;a sample footnote@footnote{Here is the sample
 footnote.}; in the Texinfo source&hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>As you can see, the source includes two punctuation marks next to each
 other; in this case, &lsquo;<samp>.};</samp>&rsquo; is the sequence.  This is normal (the
@@ -1503,10 +1528,11 @@ the rest of the node by a line of dashes with the word
 
 <p>Here is an example of a single footnote in the end of node style:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"> --------- Footnotes ---------
+<div class="example">
+<pre class="example"> --------- Footnotes ---------
 
 (1)  Here is a sample footnote.
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-Separate-footnote-style"></a>
 </li><li>
@@ -1527,11 +1553,12 @@ node for the &lsquo;<tt>Footnotes</tt>&rsquo; node is
 <p>Here is how the first footnote in this manual looks after being
 formatted for Info in the separate node style:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">File: texinfo.info  Node: Overview-Footnotes, Up: Overview
+<div class="smallexample">
+<pre class="smallexample">File: texinfo.info  Node: Overview-Footnotes, Up: Overview
 
 (1) The first syllable of &quot;Texinfo&quot; is pronounced like &quot;speck&quot;, not
 &quot;hex&quot;. &hellip;
-</pre></td></tr></table>
+</pre></div>
 </li></ul>
 
 <p>A Texinfo file may be formatted into an Info file with either footnote
@@ -1545,11 +1572,13 @@ by an argument, either &lsquo;<samp>end</samp>&rsquo; for the end node style or
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle end
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@footnotestyle end
+</pre></div>
 <p>or
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@footnotestyle separate
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">@footnotestyle separate
+</pre></div>
 
 <p>Write an <code>@footnotestyle</code> command before or shortly after the
 end-of-header line at the beginning of a Texinfo file.  (If you
@@ -1592,8 +1621,9 @@ their default style.  Currently, <code>texinfo-format-buffer</code> and
 <p>You can insert an image given in an external file with the
 <code>@image</code> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@image{<var>filename</var>, <span class="roman">[</span><var>width</var><span class="roman">]</span>, <span class="roman">[</span><var>height</var><span class="roman">]</span>, <span class="roman">[</span><var>alttext</var><span class="roman">]</span>, <span class="roman">[</span><var>extension</var><span class="roman">]</span>}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@image{<var>filename</var>, <span class="roman">[</span><var>width</var><span class="roman">]</span>, <span class="roman">[</span><var>height</var><span class="roman">]</span>, <span class="roman">[</span><var>alttext</var><span class="roman">]</span>, <span class="roman">[</span><var>extension</var><span class="roman">]</span>}
+</pre></div>
 
 <a name="index-Formats-for-images"></a>
 <a name="index-Image-formats"></a>
@@ -1615,8 +1645,9 @@ uses the optional fifth argument to <code>@image</code> for the extension if
 you supply it.  For example:
 
 <a name="index-XPM-image-format"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">@image{foo,,,,xpm}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@image{foo,,,,xpm}
+</pre></div>
 
 <p>will cause &lsquo;<samp>makeinfo --html</samp>&rsquo; to try &lsquo;<tt>foo.xpm</tt>&rsquo;.
 </p>
@@ -1688,8 +1719,9 @@ dimension, namely:
 <p>For example, the following will scale a file &lsquo;<tt>ridt.eps</tt>&rsquo; to one
 inch vertically, with the width scaled proportionately:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@image{ridt,,1in}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@image{ridt,,1in}
+</pre></div>
 
 <a name="index-epsf_002etex"></a>
 <p>For <code>@image</code> to work with TeX, the file &lsquo;<tt>epsf.tex</tt>&rsquo; must be

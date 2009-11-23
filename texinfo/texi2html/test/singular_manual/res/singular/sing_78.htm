@@ -110,22 +110,24 @@ and maps.
 <ol>
 <li>
 an integer comparison:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  i == j
+<div class="smallexample">
+<pre class="smallexample">  i == j
   i != j    // or     i &lt;&gt; j
   i &lt;= j
   i &gt;= j
   i &gt; j
   i &lt; j
-</pre></td></tr></table>
+</pre></div>
 </li><li>
 a number comparison:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  m == n
+<div class="smallexample">
+<pre class="smallexample">  m == n
   m != n    // or     m &lt;&gt; n
   m &lt; n
   m &gt; n
   m &lt;= n
   m &gt;= n
-</pre></td></tr></table>
+</pre></div>
 <p>For numbers from Z/p or from field extensions not all operations are useful:
 <br> - 0 is always the smallest element,
 <br> - in Z/p the representatives in the range -(p-1)/2..(p-1)/2 when p&gt;2 resp.
@@ -135,27 +137,30 @@ a number comparison:
 the <code>&lt;</code> and <code>&gt;</code> are equivalent to <code>!=</code>.
 </p></li><li>
 a polynomial or vector comparison:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  f == g
+<div class="smallexample">
+<pre class="smallexample">  f == g
   f != g    // or     f &lt;&gt; g
   f &lt;= g    // comparing the leading term w.r.t. the monomial order
   f &lt;  g
   f &gt;= g
   f &gt;  g
-</pre></td></tr></table>
+</pre></div>
 </li><li>
 an intmat or matrix comparison:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  v == w
+<div class="smallexample">
+<pre class="smallexample">  v == w
   v != w    // or     v &lt;&gt; w
-</pre></td></tr></table>
+</pre></div>
 </li><li>
 an intvec or  string comparison:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  f == g
+<div class="smallexample">
+<pre class="smallexample">  f == g
   f != g    // or     f &lt;&gt; g
   f &lt;= g    // comparing lexicographically
   f &gt;= g    // w.r.t. the order specified by ASCII
   f &gt;  g
   f &lt;  g
-</pre></td></tr></table>
+</pre></div>
 </li><li>
 boolean expressions combined by boolean operations (<code>and</code>,
 <code>or</code>, <code>not</code>)

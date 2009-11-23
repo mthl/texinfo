@@ -90,40 +90,44 @@ ul.no-bullet {list-style: none}
 
 <p>A menu looks like this in Texinfo:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@menu
+<div class="example">
+<pre class="example">@menu
 * menu entry name: Node name.   A short description.
 * Node name::                   This form is preferred.
 @end menu
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">* menu:
+<div class="example">
+<pre class="example">* menu:
 
 * menu entry name: Node name.   A short description.
 * Node name::                   This form is preferred.
-</pre></td></tr></table>
+</pre></div>
 
 <p>Here is an example as you might see it in a Texinfo file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@menu
+<div class="example">
+<pre class="example">@menu
 Larger Units of Text
 
 * Files::                       All about handling files.
 * Multiples: Buffers.           Multiple buffers; editing
                                   several files at once.
 @end menu
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">* menu:
+<div class="example">
+<pre class="example">* menu:
 Larger Units of Text
 
 * Files::                       All about handling files.
 * Multiples: Buffers.           Multiple buffers; editing
                                   several files at once.
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this example, the menu has two entries.  &lsquo;<samp>Files</samp>&rsquo; is both a menu
 entry name and the name of the node referred to by that name.

@@ -127,7 +127,8 @@ for DBM links.
 <a href="sing_195.htm#getdump">getdump</a>.
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r; poly p = x+y;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r; poly p = x+y;
   dump(&quot;MPfile:w test.mp&quot;);   // dump the session to the file test.mp
   kill r;                     // kill the basering
   listvar();
@@ -137,7 +138,7 @@ for DBM links.
 &rarr; // r                    [0]  *ring
 &rarr; //      p                    [0]  poly
 &rarr; // LIB                  [0]  string standard.lib
-</pre></td></tr></table>
+</pre></div>
 
 <p>Specifying a link can be as easy as specifying a filename as a string.
 Except for MPtcp links, links even do not need to be explicitly opened
@@ -149,7 +150,8 @@ used (see <a href="sing_242.htm#open">open</a>, <a href="sing_162.htm#close">clo
 <code>status</code> function (see <a href="sing_274.htm#status">status</a>).
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  link l = &quot;MPtcp:fork&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">  link l = &quot;MPtcp:fork&quot;;
   l;
 &rarr; // type : MPtcp
 &rarr; // mode : fork
@@ -163,7 +165,7 @@ used (see <a href="sing_242.htm#open">open</a>, <a href="sing_162.htm#close">clo
   close(l);
   status(l, &quot;open&quot;);
 &rarr; no
-</pre></td></tr></table>
+</pre></div>
 
 <a name="ASCII-links-2"></a>
 <h3 class="subheading">ASCII links</h3>
@@ -180,7 +182,8 @@ manipulate the data.
 <p>See <a href="sing_95.htm#ASCII-links">ASCII links</a>, for more information.
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  // (over)write file test.ascii, link is specified as string
+</p><div class="smallexample">
+<pre class="smallexample">  // (over)write file test.ascii, link is specified as string
   write(&quot;:w test.ascii&quot;, &quot;int i =&quot;, 3, &quot;;&quot;);
   // reading simply returns the string
   read(&quot;test.ascii&quot;);
@@ -192,7 +195,7 @@ manipulate the data.
   execute(read(&quot;test.ascii&quot;));
   i;
 &rarr; 3
-</pre></td></tr></table>
+</pre></div>
 
 <a name="MPfile-links-2"></a>
 <h3 class="subheading">MPfile links</h3>
@@ -212,7 +215,8 @@ the data to be stored cannot be easily converted from or to a string
 <p>See <a href="sing_97.htm#MPfile-links">MPfile links</a>, for more information.
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r;
   // (over)write MPfile test.mp, link is specified as string
   write(&quot;MPfile:w test.mp&quot;, x+y);
   kill r;
@@ -220,7 +224,7 @@ the data to be stored cannot be easily converted from or to a string
   typeof(p); p;
 &rarr; poly
 &rarr; x+y
-</pre></td></tr></table>
+</pre></div>
 
 <a name="MPtcp-links-2"></a>
 <h3 class="subheading">MPtcp links</h3>
@@ -239,7 +243,8 @@ programs or for parallel computations (see, for example,
 <p>See <a href="sing_98.htm#MPtcp-links">MPtcp links</a>, for more information.
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r;
   link l = &quot;MPtcp:launch&quot;; // declare a link explicitly
   open(l);  // needs an open, launches another SINGULAR as a server
   write(l, x+y);
@@ -249,7 +254,7 @@ programs or for parallel computations (see, for example,
 &rarr; poly
 &rarr; x+y
   close(l); // shuts down SINGULAR server
-</pre></td></tr></table>
+</pre></div>
 
 <a name="DBM-links-2"></a>
 <h3 class="subheading">DBM links</h3>
@@ -267,13 +272,14 @@ data bases).
 <p>See <a href="sing_99.htm#DBM-links">DBM links</a>, for more information.
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r;
   // associate &quot;x+y&quot; with &quot;mykey&quot;
   write(&quot;DBM:w test.dbm&quot;, &quot;mykey&quot;, string(x+y));
   // get from data base what is stored under &quot;mykey&quot;
   execute(read(&quot;DBM: test.dbm&quot;, &quot;mykey&quot;));
 &rarr; x+y
-</pre></td></tr></table>
+</pre></div>
 
 
 </td>

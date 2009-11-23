@@ -115,7 +115,8 @@ therefore, may be slow.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;hnoether.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;hnoether.lib&quot;;
 ring exring=7,(x,y),dp;
 poly f=(x+y)^7*(x-y)^8;
 poly g=squarefree(f);
@@ -123,7 +124,7 @@ g;                      // factor x+y lost, since characteristic=7
 &rarr; x-y
 allsquarefree(f,g);     // all factors (x+y)*(x-y) found
 &rarr; x2-y2
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_700.htm#squarefree">squarefree</a>.
 </p>

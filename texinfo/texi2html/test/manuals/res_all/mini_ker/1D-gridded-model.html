@@ -130,13 +130,15 @@ Other models not part of the 1D grid may be added if any.
 In cmz it is achieved setting the select flag in
 &lsquo;<tt>selseq.kumac</tt>&rsquo;, like
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">sel grid1d
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">sel grid1d
+</pre></div>
 
 <p>With make, the <code>SEL</code> variable should contain <code>grid1d</code>. For example
 to select <code>grid1d</code> and <code>monitor</code>, it could be
-</p><table><tr><td>&nbsp;</td><td><pre class="example">SEL = grid1d,monitor
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">SEL = grid1d,monitor
+</pre></div>
 
 
 
@@ -206,13 +208,14 @@ There are two states in the limiting node 0, the down node,
 <code>n_dwn=2</code>, and two transfers in the limiting last node the node up, 
 and <code>m_up=2</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<div class="example">
+<pre class="example">! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ! nodes parameters, and Limiting Conditions (Low and High)
 ! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
       parameter (n_node=3,n_dwn=2,n_up=0,n_mult=2);
       parameter (m_node=3,m_dwn=0,m_up=2,m_mult=2);
 ! ________________________________________________________
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -232,7 +235,8 @@ and <code>m_up=2</code>:
 <p>A value for the Miniker parameters and the model parameters should be given in
 &lsquo;<tt>zinit</tt>&rsquo;, in our example we have
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
+<div class="example">
+<pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
 ! Parameters
 !%%%%%%%%%%%%%%%%%%%%%%
 real rk(n_node),rd(n_node),rmassm1(n_node);
@@ -244,7 +248,7 @@ data rmassm1/n_node*1./;
      nstep=5 000;
      modzprint = 1000;
      time=0.;
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Limiting-conditions"></a>
 <h4 class="subsubheading">Limiting conditions</h4>
@@ -275,7 +279,8 @@ for states and transfers:
 </dl>
 
 <p>The following scheme illustrates the example:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">!%%%%%%%%%%%%%%%%%%%%%%%%%%================================================
+</p><div class="smallexample">
+<pre class="smallexample">!%%%%%%%%%%%%%%%%%%%%%%%%%%================================================
 ! Maillage convention inode
 !%%%%%%%%%%%%%%%%%%%%%%%%%%                                 Open ended
 !(2 Down    Phi    Eta                         (n_node)
@@ -284,13 +289,14 @@ for states and transfers:
 !  pos  \|--***--|  1  |--***--|  2  |  . . .  -|  n  |--***-- |Phis
 ! speed \|   1   |_____|   2   |_____|      n   |_____|  n+1   \(2 Up Phi)
 !
-</pre></td></tr></table>
+</pre></div>
 
 <p>Two states are associated with the down node, they correspond to the position
 and speed of the wall. As the wall don&rsquo;t move these states are initialized to
 be 0, and the cells are stationnary cells, therefore these values remain 0.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! Down cells (wall)
+<div class="example">
+<pre class="example">! Down cells (wall)
 ! -----------------
 eta_pos_wall = 0; eta_speed_wall = 0.;
 
@@ -298,18 +304,19 @@ set_dwn_eta
 &lt; var: eta_pos_wall,  fun: deta_pos_wall  = 0.;
   var: eta_speed_wall, fun: deta_speed_wall= 0.;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>There are 2 limiting transfers in the up node. They correspond with an open
 end and are therefore set to 0.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! limiting Transfers : dummy ones
+<div class="example">
+<pre class="example">! limiting Transfers : dummy ones
 ! -------------------------------
 set_Up_Phi
 &lt; var:ff_dummy_1, fun: f_dummy_1=0.;
   var:ff_dummy_2, fun: f_dummy_2=0.;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Starting-points-1"></a>
 <h4 class="subsubheading">Starting points</h4>
@@ -320,12 +327,13 @@ corresponding with position is <code>eta_move</code> and the variable correspond
 with speed is <code>eta_speed</code>. Their initial values are set with the 
 following mortran code
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!---------------
+<div class="example">
+<pre class="example">!---------------
 ! Initialisation
 !---------------
 ;
 do inode=1,n_node &lt;eta_move(inode)=0.01; eta_speed(inode)=0.0;&gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>If any transfer needs to be given a first-guess value, this is also done 
 using <code>inode</code> as the node index.
@@ -344,7 +352,8 @@ in <code>set_node_Phi</code> blocks.
 </p>
 <p>In the example, the cells are declared with
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! node cells
+<div class="example">
+<pre class="example">! node cells
 ! ----------
 ;
 set_node_Eta
@@ -355,7 +364,7 @@ set_node_Eta
                                - ff_dump(inode+1)  + ff_dump(inode)
                               );
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 <p>Note that the <code>inode</code> is dummy in the <code>var:</code> definition and can as
 well be written as: <code>var: eta_move(.)</code>.
 </p>
@@ -363,7 +372,8 @@ well be written as: <code>var: eta_move(.)</code>.
 <p>The transfers are (<code>ff_spring</code> corresponds with springs and 
 <code>ff_dump</code> with dumps):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
+<div class="example">
+<pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
 ! Transfer definition
 !%%%%%%%%%%%%%%%%%%%%%%
 ! node transfers
@@ -377,7 +387,7 @@ set_node_Phi
   fun:
    f_dump(inode)  = -rd(inode)*(eta_speed(inode) - eta_speed(inode-1));
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The limiting states and transfers are associated with the states or transfers
 with index <code>inode+1</code> or <code>inode-1</code> appearing in node cell and 
@@ -391,7 +401,8 @@ appears before <code>ff_dummy_2</code> in the limiting up transfers definitions.
 Verification of the grid index coherence should be eased with the following
 help printed in the listing header:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">
+<div class="example">
+<pre class="example">
 
 
 
@@ -418,7 +429,7 @@ help printed in the listing header:
            ff_spring            f_spring   -1 [   1 ...   5 ]   7
              ff_dump              f_dump    0 [   2 ...   6 ]   8
   ----------------------------------------------------
-</pre></td></tr></table>
+</pre></div>
 
 <p>All variable names and functions are free but has to be
 different.

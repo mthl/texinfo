@@ -94,11 +94,13 @@ on the features of the minibuffer.
 <p>  You can use completion to enter a command name.  For example, to
 invoke the command <code>forward-char</code>, type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x forward-char &lt;RET&gt;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">M-x forward-char &lt;RET&gt;
+</pre></div>
 <p>or
-</p><table><tr><td>&nbsp;</td><td><pre class="example">M-x fo &lt;TAB&gt; c &lt;RET&gt;
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">M-x fo &lt;TAB&gt; c &lt;RET&gt;
+</pre></div>
 
 <p>After you type in <code>M-x fo TAB</code> emacs will give you a possible list of 
 completions from which you can choose. Note that <code>forward-char</code> is the 
@@ -118,8 +120,9 @@ value appears in the prompt while the command name is being read.
 <p>You can use the command <code>M-x interactive</code> to specify a way of
 parsing arguments for interactive use of a function.  For example, write:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">  (defun foo (arg) &quot;Doc string&quot; (interactive &quot;p&quot;) ...use arg...)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">  (defun foo (arg) &quot;Doc string&quot; (interactive &quot;p&quot;) ...use arg...)
+</pre></div>
 
 <p>to make <code>arg</code> be the prefix argument when <code>foo</code> is called as a
 command.  The call to <code>interactive</code> is actually a declaration

@@ -96,9 +96,10 @@ ul.no-bullet {list-style: none}
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
 <dd><p>mp_res_mat(i [, k] ); i ideal, k integer,
-</p><pre class="format">    k=0: sparse resultant matrix of Gelfand, Kapranov and Zelevinsky,
+</p><div class="format">
+<pre class="format">    k=0: sparse resultant matrix of Gelfand, Kapranov and Zelevinsky,
     k=1: resultant matrix of Macaulay (k=0 is default)
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -113,7 +114,8 @@ variables in the basering plus one;
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;solve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;solve.lib&quot;;
 // compute resultant matrix in ring with parameters (sparse resultant matrix)
 ring rsq= (0,u0,u1,u2),(x1,x2),lp;
 ideal i= u0+u1*x1+u2*x2,x1^2 + x2^2 - 10,x1^2 + x1*x2 + 2*x2^2 - 16;
@@ -174,7 +176,7 @@ print(mn);
 // computing sparse resultant
 det(mn);
 &rarr; -7056
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

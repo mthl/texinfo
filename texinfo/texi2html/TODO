@@ -104,7 +104,7 @@ Later
   new quotation argument
 
 * document translations, based on this mail. Also document the relevant
-  state possibilities, ans mayne change names to have more logical 
+  state possibilities, and maybe change names to have more logical 
   strings. 
 
 libintl-perl is used as a gettext implementation, and more precisely the

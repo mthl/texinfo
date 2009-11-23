@@ -98,13 +98,15 @@ manual.
 </p>
 <p>Here is a simple cross reference example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@xref{Node name}.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@xref{Node name}.
+</pre></div>
 
 <p>which produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">*Note Node name::.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">*Note Node name::.
+</pre></div>
 
 <p>and
 </p>
@@ -114,15 +116,17 @@ manual.
 
 <p>Here is an example of a full five-part cross reference:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@xref{Node name, Cross Reference Name, Particular Topic,
+<div class="example">
+<pre class="example">@xref{Node name, Cross Reference Name, Particular Topic,
 info-file-name, A Printed Manual}, for details.
-</pre></td></tr></table>
+</pre></div>
 
 <p>which produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">*Note Cross Reference Name: (info-file-name)Node name,
+<div class="example">
+<pre class="example">*Note Cross Reference Name: (info-file-name)Node name,
 for details.
-</pre></td></tr></table>
+</pre></div>
 
 <p>in Info and
 </p>
@@ -164,9 +168,10 @@ The name of a printed manual from a different Texinfo file.
 <p>The template for a full five argument cross reference looks like
 this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>,
+<div class="example">
+<pre class="example">@xref{<var>node-name</var>, <var>cross-reference-name</var>, <var>title-or-topic</var>,
 <var>info-file-name</var>, <var>printed-manual-title</var>}.
-</pre></td></tr></table>
+</pre></div>
 
 <p>Cross references with one, two, three, four, and five arguments are
 described separately following the description of <code>@xref</code>.

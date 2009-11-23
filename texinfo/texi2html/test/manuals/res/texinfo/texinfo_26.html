@@ -176,7 +176,8 @@ number.
 </p>
 <p>A single-sided page looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">   _______________________
+<div class="example">
+<pre class="example">   _______________________
   |                       |
   | chapter   page number |
   |                       |
@@ -184,7 +185,7 @@ number.
   | ...                   |
   |                       |
 
-</pre></td></tr></table>
+</pre></div>
 
 <p>The standard format for two-sided printing depends on whether the page
 number is even or odd.  By convention, even-numbered pages are on the
@@ -204,7 +205,8 @@ is blank, and the right part contains the page number.
 </p>
 <p>Two pages, side by side as in an open book, look like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">   _______________________     _______________________
+<div class="example">
+<pre class="example">   _______________________     _______________________
   |                       |   |                       |
   | page number     title |   | chapter   page number |
   |                       |   |                       |
@@ -212,7 +214,7 @@ is blank, and the right part contains the page number.
   | ...                   |   | ...                   |
   |                       |   |                       |
 
-</pre></td></tr></table>
+</pre></div>
 
 <p>The chapter name is preceded by the word &ldquo;Chapter&rdquo;, the chapter number
 and a colon.  This makes it easier to keep track of where you are in the
@@ -321,9 +323,10 @@ specifications.
 page number in the center, and the date at the right of every header
 for both even- and odd-numbered pages:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@headings off
+<div class="example">
+<pre class="example">@headings off
 @everyheading @thischapter @| @thispage @| @today{}
-</pre></td></tr></table>
+</pre></div>
 
 <p>You need to divide the left part from the central part and the central
 part from the right part by inserting &lsquo;<samp>@|</samp>&rsquo; between parts.
@@ -417,10 +420,11 @@ current date, in &lsquo;1 Jan 1900&rsquo; format.
 if they were in the body of a page.  It is useful to incorporate text,
 particularly when you are writing drafts:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@headings off
+<div class="example">
+<pre class="example">@headings off
 @everyheading @emph{Draft!} @| @thispage @| @thischapter
 @everyfooting @| @| Version: 0.27: @today{}
-</pre></td></tr></table>
+</pre></div>
 
 <p>Beware of overlong titles: they may overlap another part of the
 header or footer and blot it out.

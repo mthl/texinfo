@@ -105,16 +105,18 @@ This technique could be used, for example to perform optimization
 
 
 <p>With cmz, one has to do a 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">sel monitor
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">sel monitor
+</pre></div>
 <p>in the &lsquo;<tt>selseq.kumac</tt>&rsquo; file and create the KEEP that call the 
 model code. See <a href="Selecting-features.html#Selecting-features">Overview of additional features setting</a>.
 </p>
 <p>With make &lsquo;<samp>monitor</samp>&rsquo; should be added to the <code>SEL</code> variable in
 the &lsquo;<tt>Makefile</tt>&rsquo;, for example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">SEL = monitor
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">SEL = monitor
+</pre></div>
 
 <p>A file that call the principal subroutine should also be written, using
 the prefered language of the user. The additional object files should

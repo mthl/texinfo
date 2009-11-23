@@ -104,7 +104,8 @@ returns a reduced Groebner basis.
 <p>For the ideal below, <code>stdfglm</code> is more than 100 times
 and <code>stdhilb</code> about 10 times faster than <code>std</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r =32003,(a,b,c,d,e),lp;
+<div class="smallexample">
+<pre class="smallexample">  ring r =32003,(a,b,c,d,e),lp;
   ideal i=a+b+c+d, ab+bc+cd+ae+de, abc+bcd+abe+ade+cde,
           abc+abce+abde+acde+bcde, abcde-1;
   int t=timer;
@@ -124,7 +125,7 @@ and <code>stdhilb</code> about 10 times faster than <code>std</code>.
   ideal j0 =std(i);
   timer-t;
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 </td>
 </tr>
 </table>

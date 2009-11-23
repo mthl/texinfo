@@ -98,19 +98,21 @@ error messages that make more sense than TeX.  (See section <a href="Debugging-w
 <p>For example, TeX was run on a Texinfo file, part of which is shown
 here:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: texinfo.texi ----------
+<div class="example">
+<pre class="example">---------- Buffer: texinfo.texi ----------
 name of the Texinfo file as an extension.  The
 @samp{??} are `wildcards' that cause the shell to
 substitute all the raw index files.  (@xref{sorting
 indices, for more information about sorting
 indices.)@refill
 ---------- Buffer: texinfo.texi ----------
-</pre></td></tr></table>
+</pre></div>
 
 <p>(The cross reference lacks a closing brace.)
 TeX produced the following output, after which it stopped:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: *tex-shell* ----------
+<div class="example">
+<pre class="example">---------- Buffer: *tex-shell* ----------
 Runaway argument?
 {sorting indices, for more information about sorting
 indices.) @refill @ETC.
@@ -121,13 +123,14 @@ l.27
 
 ?
 ---------- Buffer: *tex-shell* ----------
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this case, TeX produced an accurate and
 understandable error message:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Paragraph ended before @xref was complete.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Paragraph ended before @xref was complete.
+</pre></div>
 
 <p>&lsquo;<samp>@par</samp>&rsquo; is an internal TeX command of no relevance to Texinfo.
 &lsquo;<samp>l.27</samp>&rsquo; means that TeX detected the problem on line 27 of the
@@ -170,8 +173,9 @@ to end an itemized list with the <code>@end itemize</code> command, TeX will
 write a DVI file that you can print out.  The only error message that
 TeX will give you is the somewhat mysterious comment that
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(@end occurred inside a group at level 1)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(@end occurred inside a group at level 1)
+</pre></div>
 
 <p>However, if you print the DVI file, you will find that the text
 of the file that follows the itemized list is entirely indented as if
@@ -190,10 +194,11 @@ TeX may stop in the
 beginning of its run and display output that looks like the following.
 The &lsquo;<samp>*</samp>&rsquo; indicates that TeX is waiting for input.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This is TeX, Version 3.14159 (Web2c 7.0)
+<div class="example">
+<pre class="example">This is TeX, Version 3.14159 (Web2c 7.0)
 (test.texinfo [1])
 *
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this case, simply type <kbd>\end &lt;RET&gt;</kbd> after the asterisk.  Then
 write the header lines in the Texinfo file and run the TeX command

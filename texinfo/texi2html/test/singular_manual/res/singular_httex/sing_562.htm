@@ -107,7 +107,8 @@ ul.no-bullet {list-style: none}
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;homolog.lib&quot;;
 ring R = 0,(x,y,z),dp;
 ideal I = x*(y-1),y,z*(y-1);
 isReg(I,0);             // given list of generators is Q[x,y,z]-sequence
@@ -119,7 +120,7 @@ ring r = 0,(x,y,z),ds;  // local ring
 ideal I=fetch(R,I);
 isReg(I,0);             // result independent of sorting of generators
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

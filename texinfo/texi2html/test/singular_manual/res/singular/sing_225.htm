@@ -115,7 +115,8 @@ operating system during the current <small>SINGULAR</small> session.
 also <a href="sing_243.htm#option">option</a>).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x(1..500)),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x(1..500)),dp;
   poly p=(x(1)+x(500))^50;
   proc ReportMemoryUsage()
   {  &quot;Memory currently used by SINGULAR     :&quot;,memory(0),&quot;Byte (&quot;,
@@ -139,7 +140,7 @@ also <a href="sing_243.htm#option">option</a>).
 &rarr; Memory currently used by SINGULAR     : 143124 Byte ( 139 KByte)
 &rarr; Memory currently allocated from system: 669128 Byte ( 654 KByte)
 &rarr; Maximal memory allocated from system  : 669128 Byte ( 654 KByte)
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

@@ -119,7 +119,8 @@ by <code>hilb</code>.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">   ring  r=0,(x,y,z),dp;
+</p><div class="smallexample">
+<pre class="smallexample">   ring  r=0,(x,y,z),dp;
 ideal i=y3+x2,x2y+x2,x3-x2,z4-x2-y;
 ideal i1=stdhilb(i); i1;
 &rarr; i1[1]=y3+x2
@@ -134,7 +135,7 @@ ideal i2=stdhilb(i,v); i2;
 &rarr; i2[2]=x2y+x2
 &rarr; i2[3]=x3-x2
 &rarr; i2[4]=z4-x2-y
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_196.htm#groebner">groebner</a>;
 <a href="sing_275.htm#std">std</a>;

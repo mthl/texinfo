@@ -263,9 +263,10 @@ functions directly, by typing <kbd>M-x function-name</kbd>.
 <p>The most common way to load it automatically is to include the following
 lines (in the given order!):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">(setq viper-mode t)
+<div class="lisp">
+<pre class="lisp">(setq viper-mode t)
 (require 'viper)
-</pre></td></tr></table>
+</pre></div>
 
 <p>in your &lsquo;<tt>~/.emacs</tt>&rsquo; file.  The &lsquo;<tt>.emacs</tt>&rsquo; file is placed in your
 home directory and it is be executed every time you invoke Emacs.  This is
@@ -293,8 +294,9 @@ on a buffer may be counter-productive.
 you can still load Viper and enter the Vi command state by typing the
 following from within Emacs:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">M-x viper-mode
-</pre></td></tr></table>
+<div class="lisp">
+<pre class="lisp">M-x viper-mode
+</pre></div>
 
 <p>When Emacs first comes up, if you have not specified a file on the
 command line, it will show the &lsquo;<samp>*scratch*</samp>&rsquo; buffer, in the

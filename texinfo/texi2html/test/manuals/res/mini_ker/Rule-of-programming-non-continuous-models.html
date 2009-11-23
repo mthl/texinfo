@@ -94,9 +94,10 @@ change of state&rdquo; is a correct macroscopic model.
 <p>Miniker provides with the smooth step function 
 <em>Heavyside</em><a name="DOCF3" href="mini_ker_fot.html#FOOT3">(3)</a> in the Miniker &lsquo;<tt>mathlib</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">        Delta = -1.&quot;K&quot;;
+<div class="example">
+<pre class="example">        Delta = -1.&quot;K&quot;;
         A_Ice =  heavyside(&quot;in:&quot; (T_K-Tf), Delta, &quot;out:&quot; dAIce_dT);
-</pre></td></tr></table>
+</pre></div>
 
 <p>in this example, <code>Tf</code> is the ice fusion-temperature, <code>A_ice</code> 
 gives the ice-fraction
@@ -115,8 +116,9 @@ of 2.5, see figure <a href="#heavy">Figure 3.1</a>.
 <p>For <code>Mortran</code> to be able to symbolicaly compute the partial derivarives, the rule
 is in the table of macros as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">&amp;'(HEAVYSIDE(#,#,#))(/#)' = '((#1)(/#4)*HEAVYDELTA(#1,#2,#3))'
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">&amp;'(HEAVYSIDE(#,#,#))(/#)' = '((#1)(/#4)*HEAVYDELTA(#1,#2,#3))'
+</pre></div>
 
 <p>which uses the Foratn entry point <code>HeavyDelta</code> in the Fortrsan function <code>heavyside</code>.
 </p>
@@ -124,13 +126,15 @@ is in the table of macros as:
 <code>var=min(f(x),g(x))</code> Fortran instruction.
 In such a case one does not want a derivative and one will code:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">var = HeavySide(f(x)-g(x),Delta,dum)*g(x) + (1.-HeavySide(f(x)-g(x),Delta,dum)*f(x);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">var = HeavySide(f(x)-g(x),Delta,dum)*g(x) + (1.-HeavySide(f(x)-g(x),Delta,dum)*f(x);
+</pre></div>
 
 <p>or equivalently:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">var = HeavySide(f(x)-g(x),Delta,dum)*g(x) + HeavySide(g(x)-f(x),-Delta,dum)*f(x);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">var = HeavySide(f(x)-g(x),Delta,dum)*g(x) + HeavySide(g(x)-f(x),-Delta,dum)*f(x);
+</pre></div>
 
 <p><strong>Warning</strong>: the value of the argument <var>Delta</var> is important because 
 it will fix the maximum

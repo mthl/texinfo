@@ -112,14 +112,15 @@ no coordinate change is needed (see also proc &rsquo;milnorcode&rsquo;).
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;classify.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;classify.lib&quot;;
 ring r=0,(x,y,z),ds;
 poly f=(x2+3y-2z)^2+xyz-(x-y3+x2*z3)^3;
 quickclass(f);
 &rarr; Singularity R-equivalent to :  D[k]=D[4]
 &rarr; normal form : z2+x2y+y3
 &rarr; z2+x2y+y3
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

@@ -105,7 +105,8 @@ ul.no-bullet {list-style: none}
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;homolog.lib&quot;;
 ring A = 0,(x,y),dp;
 matrix M[3][3] = x-1,y,x,x,x+1,y,x2,xy+x+1,x2+y;
 print(M);
@@ -123,7 +124,7 @@ qring C = std(x2+x+y);   // the ring C=Q[x,y]/&lt;x2+x+y&gt;
 matrix M = fetch(A,M);
 isFlat(M);             // coker(M) is not flat over C
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

@@ -104,11 +104,12 @@ ul.no-bullet {list-style: none}
 <dd><p>displays the attribute list of the object called name.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=std(maxideal(2));
   attrib(I);
 &rarr; attr:isSB, type int
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>attrib (</code> name <code>,</code> string_expression <code>)</code>
@@ -122,7 +123,8 @@ variable name. If the attribute is not defined for this variable,
 <code>attrib</code> returns the empty string.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=std(maxideal(2));
   attrib(I,&quot;isSB&quot;);
 &rarr; 1
@@ -130,7 +132,7 @@ variable name. If the attribute is not defined for this variable,
   // SINGULAR does not know it:
   attrib(maxideal(2), &quot;isSB&quot;);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>attrib (</code> name<code>,</code> string_expression<code>,</code> expression <code>)</code>
@@ -143,7 +145,8 @@ variable name. If the attribute is not defined for this variable,
 to the value expression.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=maxideal(2); // the attribute &quot;isSB&quot; is not set
   vdim(I);
 &rarr; // ** I is no standardbasis
@@ -151,7 +154,7 @@ to the value expression.
   attrib(I,&quot;isSB&quot;,1);  // the standard basis attribute is set here
   vdim(I);
 &rarr; 4
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Remark:</strong></code></dt>
 <dd><p>An attribute may be described by any string_expression. Some of these are

@@ -157,18 +157,20 @@ the same format.)
 </p>
 <p>The template for a definition looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
+<div class="example">
+<pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end deffn
-</pre></td></tr></table>
+</pre></div>
 
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deffn Command forward-word count
+<div class="example">
+<pre class="example">@deffn Command forward-word count
 This command moves point forward @var{count} words
 (or backward if @var{count} is negative). &hellip;
 @end deffn
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
@@ -184,10 +186,11 @@ This command moves point forward @var{count} words
 category contains spaces, as in the phrase &lsquo;Interactive Command&rsquo;,
 write braces around it.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deffn {Interactive Command} isearch-forward
+<div class="example">
+<pre class="example">@deffn {Interactive Command} isearch-forward
 &hellip;
 @end deffn
-</pre></td></tr></table>
+</pre></div>
 
 <p>Otherwise, the second word will be mistaken for the name of the
 entity.
@@ -208,19 +211,21 @@ particular kinds of variables.
 similar to the template for a generalized definition, except that you
 do not need to specify the category:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defun <var>name</var> <var>arguments</var>&hellip;
+<div class="example">
+<pre class="example">@defun <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end defun
-</pre></td></tr></table>
+</pre></div>
 
 <p>Thus,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defun buffer-end flag
+<div class="example">
+<pre class="example">@defun buffer-end flag
 This function returns @code{(point-min)} if @var{flag}
 is less than 1, @code{(point-max)} otherwise.
 &hellip;
 @end defun
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
@@ -301,9 +306,10 @@ form.
 this (except it would not be split over two lines, as it is in this
 example).
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defspec foobar (@var{var} [@var{from} @var{to}
+<div class="example">
+<pre class="example">@defspec foobar (@var{var} [@var{from} @var{to}
      [@var{inc}]]) @var{body}@dots{}
-</pre></td></tr></table>
+</pre></div>
 
 <p>The function is listed in the Command and Variable Index under
 &lsquo;<samp>foobar</samp>&rsquo;.
@@ -340,11 +346,12 @@ and the preceding line.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deffn {Interactive Command} isearch-forward
+<div class="example">
+<pre class="example">@deffn {Interactive Command} isearch-forward
 @deffnx {Interactive Command} isearch-backward
 These two search commands are similar except &hellip;
 @end deffn
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
@@ -445,10 +452,11 @@ own.
 </p>
 <p>For example, here is a definition:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deffn Command forward-char nchars
+<div class="example">
+<pre class="example">@deffn Command forward-char nchars
 Move point forward @var{nchars} characters.
 @end deffn
-</pre></td></tr></table>
+</pre></div>
 
 <p>This shows a rather terse definition for a &ldquo;command&rdquo; named
 <code>forward-char</code> with one argument, <var>nchars</var>.
@@ -462,10 +470,11 @@ the example above, we used &lsquo;<samp>@var{nchars}</samp>&rsquo; in this way.
 </p>
 <p>The template for <code>@deffn</code> is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
+<div class="example">
+<pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end deffn
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-defun"></a>
 </dd>
@@ -476,11 +485,12 @@ the example above, we used &lsquo;<samp>@var{nchars}</samp>&rsquo; in this way.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defun set symbol new-value
+<div class="example">
+<pre class="example">@defun set symbol new-value
 Change the value of the symbol @var{symbol}
 to @var{new-value}.
 @end defun
-</pre></td></tr></table>
+</pre></div>
 
 <p>shows a rather terse definition for a function <code>set</code> whose
 arguments are <var>symbol</var> and <var>new-value</var>.  The argument names on
@@ -490,10 +500,11 @@ if they were enclosed in <code>@var</code>.  Terminate the definition with
 </p>
 <p>The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defun <var>function-name</var> <var>arguments</var>&hellip;
+<div class="example">
+<pre class="example">@defun <var>function-name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end defun
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defun</code> creates an entry in the index of functions.
 </p>
@@ -555,22 +566,24 @@ contains spaces, as in the name &ldquo;User Option&rdquo;, enclose it in braces.
 Otherwise, the second word will be mistaken for the name of the entity.
 For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defvr {User Option} fill-column
+<div class="example">
+<pre class="example">@defvr {User Option} fill-column
 This buffer-local variable specifies
 the maximum width of filled lines.
 &hellip;
 @end defvr
-</pre></td></tr></table>
+</pre></div>
 
 <p>Terminate the definition with <code>@end defvr</code> on a line of its
 own.
 </p>
 <p>The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defvr <var>category</var> <var>name</var>
+<div class="example">
+<pre class="example">@defvr <var>category</var> <var>name</var>
 <var>body-of-definition</var>
 @end defvr
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defvr</code> creates an entry in the index of variables for <var>name</var>.
 </p>
@@ -583,17 +596,19 @@ own.
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defvar kill-ring
+<div class="example">
+<pre class="example">@defvar kill-ring
 &hellip;
 @end defvar
-</pre></td></tr></table>
+</pre></div>
 
 <p>The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defvar <var>name</var>
+<div class="example">
+<pre class="example">@defvar <var>name</var>
 <var>body-of-definition</var>
 @end defvar
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defvar</code> creates an entry in the index of variables for
 <var>name</var>.
@@ -647,19 +662,21 @@ particular entity, and its arguments, if any.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn {Library Function} int foobar
+<div class="example">
+<pre class="example">@deftypefn {Library Function} int foobar
    (int @var{foo}, float @var{bar})
 &hellip;
 @end deftypefn
-</pre></td></tr></table>
+</pre></div>
 
 <p>(where the text before the &ldquo;&hellip;&rdquo;, shown above as two lines, would
 actually be a single line in a real Texinfo file) produces the following
 in Info:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">-- Library Function: int foobar (int FOO, float BAR)
+<div class="smallexample">
+<pre class="smallexample">-- Library Function: int foobar (int FOO, float BAR)
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>This means that <code>foobar</code> is a &ldquo;library function&rdquo; that returns an
 <code>int</code>, and its arguments are <var>foo</var> (an <code>int</code>) and
@@ -674,10 +691,11 @@ above, the argument names are &lsquo;<samp>foo</samp>&rsquo; and &lsquo;<samp>ba
 </p>
 <p>The template for <code>@deftypefn</code> is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var> &hellip;
+<div class="example">
+<pre class="example">@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var> &hellip;
 <var>body-of-description</var>
 @end deftypefn
-</pre></td></tr></table>
+</pre></div>
 
 <p>Note that if the <var>category</var> or <var>data type</var> is more than one
 word then it must be enclosed in braces to make it a single argument.
@@ -689,12 +707,13 @@ paragraphs.
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn stacks private push
+<div class="example">
+<pre class="example">@deftypefn stacks private push
         (@var{s}:in out stack;
         @var{n}:in integer)
 &hellip;
 @end deftypefn
-</pre></td></tr></table>
+</pre></div>
 
 <p>(The <code>@deftypefn</code> arguments are shown split into three lines, but
 would be a single line in a real Texinfo file.)
@@ -716,23 +735,26 @@ for functions in typed languages.  The command is equivalent to
 </p>
 <p>Thus,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">@deftypefun int foobar (int @var{foo}, float @var{bar})
+<div class="smallexample">
+<pre class="smallexample">@deftypefun int foobar (int @var{foo}, float @var{bar})
 &hellip;
 @end deftypefun
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces the following in Info:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">-- Function: int foobar (int FOO, float BAR)
+<div class="example">
+<pre class="example">-- Function: int foobar (int FOO, float BAR)
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftypefun <var>type</var> <var>name</var> <var>arguments</var>&hellip;
+<div class="example">
+<pre class="example">@deftypefun <var>type</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-description</var>
 @end deftypefun
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@deftypefun</code> creates an entry in the index of functions for
 <var>name</var>.
@@ -784,23 +806,26 @@ entity.
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftypevr {Global Flag} int enable
+<div class="example">
+<pre class="example">@deftypevr {Global Flag} int enable
 &hellip;
 @end deftypevr
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces the following in Info:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">-- Global Flag: int enable
+<div class="example">
+<pre class="example">-- Global Flag: int enable
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftypevr <var>category</var> <var>data-type</var> <var>name</var>
+<div class="example">
+<pre class="example">@deftypevr <var>category</var> <var>data-type</var> <var>name</var>
 <var>body-of-description</var>
 @end deftypevr
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@deftypevr</code> creates an entry in the index of variables for
 <var>name</var>.
@@ -814,23 +839,26 @@ to &lsquo;<samp>@deftypevr Variable &hellip;</samp>&rsquo;.
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftypevar int fubar
+<div class="example">
+<pre class="example">@deftypevar int fubar
 &hellip;
 @end deftypevar
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces the following in Info:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">-- Variable: int fubar
+<div class="example">
+<pre class="example">-- Variable: int fubar
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftypevar <var>data-type</var> <var>name</var>
+<div class="example">
+<pre class="example">@deftypevar <var>data-type</var> <var>name</var>
 <var>body-of-description</var>
 @end deftypevar
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@deftypevar</code> creates an entry in the index of variables for
 <var>name</var>.
@@ -878,19 +906,21 @@ variables associated with classes in object-oriented programming.  The
 thing being defined, the class to which it belongs, and its
 name.  Thus,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defcv {Class Option} Window border-pattern
+<div class="example">
+<pre class="example">@defcv {Class Option} Window border-pattern
 &hellip;
 @end defcv
-</pre></td></tr></table>
+</pre></div>
 
 <p>illustrates how you would write the first line of a definition of the
 <code>border-pattern</code> class option of the class <code>Window</code>.
 </p>
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defcv <var>category</var> <var>class</var> <var>name</var>
+</p><div class="example">
+<pre class="example">@defcv <var>category</var> <var>class</var> <var>name</var>
 &hellip;
 @end defcv
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defcv</code> creates an entry in the index of variables.
 </p>
@@ -902,10 +932,11 @@ variables in object-oriented programming.  <code>@defivar</code> is
 equivalent to &lsquo;<samp>@defcv {Instance Variable} &hellip;</samp>&rsquo;
 </p>
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defivar <var>class</var> <var>instance-variable-name</var>
+</p><div class="example">
+<pre class="example">@defivar <var>class</var> <var>instance-variable-name</var>
 <var>body-of-definition</var>
 @end defivar
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defivar</code> creates an entry in the index of variables.
 </p>
@@ -947,8 +978,9 @@ example, window application developers need to know about the
 given class of windows has its own method to implement this operation.
 To describe this operation, you would write:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defop Operation windows expose
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@defop Operation windows expose
+</pre></div>
 
 <p>The <code>@defop</code> command is written at the beginning of a line and
 is followed on the same line by the overall name of the category of
@@ -956,10 +988,11 @@ operation, the name of the class of the operation, the name of the
 operation, and its arguments, if any.
 </p>
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;
+</p><div class="example">
+<pre class="example">@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end defop
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defop</code> creates an entry, such as &lsquo;<code>expose</code> on
 <code>windows</code>&rsquo;, in the index of functions.
@@ -987,20 +1020,22 @@ the name of the class of the method, the name of the method, and its
 arguments, if any.
 </p>
 <p>For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defmethod <code>bar-class</code> bar-method argument
+</p><div class="example">
+<pre class="example">@defmethod <code>bar-class</code> bar-method argument
 &hellip;
 @end defmethod
-</pre></td></tr></table>
+</pre></div>
 
 <p>illustrates the definition for a method called <code>bar-method</code> of
 the class <code>bar-class</code>.  The method takes an argument.
 </p>
 <p>The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defmethod <var>class</var> <var>method-name</var> <var>arguments</var>&hellip;
+<div class="example">
+<pre class="example">@defmethod <var>class</var> <var>method-name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end defmethod
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defmethod</code> creates an entry, such as &lsquo;<code>bar-method</code> on
 <code>bar-class</code>&rsquo;, in the index of functions.
@@ -1059,17 +1094,19 @@ type, and an object of that type has two slots called the
 <small>CAR</small> and the <small>CDR</small>.  Here is how you would write the first line
 of a definition of <code>pair</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftp {Data type} pair car cdr
+<div class="example">
+<pre class="example">@deftp {Data type} pair car cdr
 &hellip;
 @end deftp
-</pre></td></tr></table>
+</pre></div>
 
 <p>The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftp <var>category</var> <var>name-of-type</var> <var>attributes</var>&hellip;
+<div class="example">
+<pre class="example">@deftp <var>category</var> <var>name-of-type</var> <var>attributes</var>&hellip;
 <var>body-of-definition</var>
 @end deftp
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@deftp</code> creates an entry in the index of data types.
 </p></dd>
@@ -1149,7 +1186,8 @@ As with <code>funcall</code>, <var>function</var> must either be a Lisp
 function or a primitive function; special forms and macros
 do not make sense in <code>apply</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(setq f 'list)
+<div class="example">
+<pre class="example">(setq f 'list)
      &rArr; list
 (apply f 'x 'y 'z)
 error--&gt; Wrong type argument: listp, z
@@ -1160,7 +1198,7 @@ error--&gt; Wrong type argument: listp, z
 
 (apply 'append '((a b c) nil (x y z) nil))
      &rArr; (a b c x y z)
-</pre></td></tr></table>
+</pre></div>
 
 <p>An interesting example of using <code>apply</code> is found in the description
 of <code>mapcar</code>.
@@ -1169,7 +1207,8 @@ of <code>mapcar</code>.
 
 <p>In the Texinfo source file, this example looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defun apply function &amp;rest arguments
+<div class="example">
+<pre class="example">@defun apply function &amp;rest arguments
 @code{apply} calls @var{function} with
 @var{arguments}, just like @code{funcall} but with one
 difference: the last of @var{arguments} is a list of
@@ -1200,7 +1239,7 @@ sense in @code{apply}.
 </pre><pre class="example">An interesting example of using @code{apply} is found
 in the description of @code{mapcar}.
 @end defun
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this manual, this function is listed in the Command and Variable
 Index under <code>apply</code>.

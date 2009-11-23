@@ -98,8 +98,9 @@ commands.
 copyright notice and the other text on the copyright page towards the
 bottom of the page, use the following incantantion after <code>@page</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@vskip 0pt plus 1filll
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@vskip 0pt plus 1filll
+</pre></div>
 
 <p>This is a TeX command that is not supported by the Info formatting
 commands.  The <code>@vskip</code> command inserts whitespace.  The &lsquo;<samp>0pt
@@ -111,15 +112,17 @@ bottom of the page.  Note the use of three &lsquo;<samp>l</samp>&rsquo;s in the 
 <p>To insert the copyright text itself, write <code>@insertcopying</code>
 next (see <a href="Document-Permissions.html#Document-Permissions">Document Permissions</a>):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@insertcopying
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@insertcopying
+</pre></div>
 
 <p>Follow the copying text by the publisher, ISBN numbers, cover art
 credits, and other such information.
 </p>
 <p>Here is an example putting all this together:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+<div class="example">
+<pre class="example">@titlepage
 &hellip;
 @page
 @vskip 0pt plus 1filll
@@ -129,7 +132,7 @@ Published by &hellip;
 
 Cover art by &hellip;
 @end titlepage
-</pre></td></tr></table>
+</pre></div>
 
 
 <p>

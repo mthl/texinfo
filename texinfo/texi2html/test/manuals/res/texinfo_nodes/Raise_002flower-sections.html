@@ -108,24 +108,26 @@ formatted as if they were <code>@section</code> commands, all your
 <p><code>@raisesections</code> raises a command one level in the chapter
 structuring hierarchy:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">  <span class="roman">Change</span>           <span class="roman">To</span>
+<div class="example">
+<pre class="example">  <span class="roman">Change</span>           <span class="roman">To</span>
 
 @subsection     @section,
 @section        @chapter,
 @heading        @chapheading,
           <span class="roman">etc.</span>
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@lowersections</code> lowers a command one level in the chapter
 structuring hierarchy:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">  <span class="roman">Change</span>           <span class="roman">To</span>
+<div class="example">
+<pre class="example">  <span class="roman">Change</span>           <span class="roman">To</span>
 
 @chapter        @section,
 @subsection     @subsubsection,
 @heading        @subheading,
           <span class="roman">etc.</span>
-</pre></td></tr></table>
+</pre></div>
 
 <p>An <code>@raisesections</code> or <code>@lowersections</code> command changes only
 those structuring commands that follow the command in the Texinfo file.
@@ -135,10 +137,11 @@ line of its own.
 <p>An <code>@lowersections</code> command cancels an <code>@raisesections</code>
 command, and vice versa.  Typically, the commands are used like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@lowersections
+<div class="example">
+<pre class="example">@lowersections
 @include somefile.texi
 @raisesections
-</pre></td></tr></table>
+</pre></div>
 
 <p>Without the <code>@raisesections</code>, all the subsequent sections in your
 document will be lowered.

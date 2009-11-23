@@ -311,8 +311,9 @@ subsystem.
 </p>
 <p>  Normally, the mode line has the following appearance:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">--<var>ch</var>-XEmacs: <var>buf</var>      (<var>major</var> <var>minor</var>)----<var>pos</var>------
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">--<var>ch</var>-XEmacs: <var>buf</var>      (<var>major</var> <var>minor</var>)----<var>pos</var>------
+</pre></div>
 
 <p>This gives information about the buffer being displayed in the window: the
 buffer&rsquo;s name, what major and minor modes are in use, whether the buffer&rsquo;s
@@ -372,8 +373,9 @@ To enable this feature, type <kbd>M-x display-time</kbd>.  The information added
 to the mode line usually appears after the file name, before the mode names
 and their parentheses.  It looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><var>hh</var>:<var>mm</var>pm <var>l.ll</var> [<var>d</var>]
-</pre></td></tr></table>
+<div class="example">
+<pre class="example"><var>hh</var>:<var>mm</var>pm <var>l.ll</var> [<var>d</var>]
+</pre></div>
 
 <p>(Some fields may be missing if your operating system cannot support them.)
 <var>hh</var> and <var>mm</var> are the hour and minute, followed always by &lsquo;<samp>am</samp>&rsquo;
@@ -779,8 +781,9 @@ Use the variable <code>default-frame-plist</code>, which is a plist of default
 values for frame creation other than the first one.  These may be set in
 your init file, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">  (setq default-frame-plist '(width 80 height 55))
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">  (setq default-frame-plist '(width 80 height 55))
+</pre></div>
 
 <p>This variable has replaced <code>default-frame-alist</code>, which is
 considered obsolete.

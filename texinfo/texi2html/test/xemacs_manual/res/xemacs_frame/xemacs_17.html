@@ -461,16 +461,18 @@ the one visited in the buffer (<code>write-file</code>).
 <kbd>C-x C-s</kbd> (<code>save-buffer</code>).  After saving is finished, <kbd>C-x C-s</kbd>
 prints a message such as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Wrote /u/rms/gnu/gnu.tasks
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Wrote /u/rms/gnu/gnu.tasks
+</pre></div>
 
 <p>If the selected buffer is not modified (no changes have been made in it
 since the buffer was created or last saved), Emacs does not save it
 because it would have no effect.  Instead, <kbd>C-x C-s</kbd> prints a message
 in the echo area saying:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(No changes need to be saved)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(No changes need to be saved)
+</pre></div>
 
 <a name="index-C_002dx-s"></a>
 <a name="index-save_002dsome_002dbuffers"></a>
@@ -1098,9 +1100,10 @@ can then save the file with <kbd>C-x C-s</kbd> to put the recovered text into
 <var>file</var> itself.  For example, to recover file &lsquo;<tt>foo.c</tt>&rsquo; from its
 auto-save file &lsquo;<tt>#foo.c#</tt>&rsquo;, do:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x recover-file &lt;RET&gt; foo.c &lt;RET&gt;
+<div class="example">
+<pre class="example">M-x recover-file &lt;RET&gt; foo.c &lt;RET&gt;
 C-x C-s
-</pre></td></tr></table>
+</pre></div>
 
 <p>  Before asking for confirmation, <kbd>M-x recover-file</kbd> displays a
 directory listing describing the specified file and the auto-save file,
@@ -1533,10 +1536,11 @@ Bowditch to &lsquo;<tt>rcs2log</tt>&rsquo; on 8 May 1992 with log text &lsquo;<s
 messages that start with `#'.</samp>&rsquo;.  Then <kbd>C-x v a</kbd> visits
 &lsquo;<tt>ChangeLog</tt>&rsquo; and inserts text like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">Fri May  8 21:45:00 1992  Nathaniel Bowditch  (nat@apn.org)
+<div class="smallexample">
+<pre class="smallexample">Fri May  8 21:45:00 1992  Nathaniel Bowditch  (nat@apn.org)
 
         * rcs2log: Ignore log messages that start with `#'.
-</pre></td></tr></table>
+</pre></div>
 
 <p>You can then edit the new change log entry further as you wish.
 </p>
@@ -1547,10 +1551,11 @@ if the text of the log entry starts with &lsquo;<samp>(<var>functionname</var>):
 &lsquo;<samp>(vc-do-command): Check call-process status.</samp>&rsquo;, then the text in
 &lsquo;<tt>ChangeLog</tt>&rsquo; looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">Wed May  6 10:53:00 1992  Nathaniel Bowditch  (nat@apn.org)
+<div class="smallexample">
+<pre class="smallexample">Wed May  6 10:53:00 1992  Nathaniel Bowditch  (nat@apn.org)
 
         * vc.el (vc-do-command): Check call-process status.
-</pre></td></tr></table>
+</pre></div>
 
 <p>  When <kbd>C-x v a</kbd> adds several change log entries at once, it groups
 related log entries together if they all are checked in by the same
@@ -1559,22 +1564,24 @@ files all have the same text, it coalesces them into a single entry.
 For example, suppose the most recent checkins have the following log
 entries:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">For &lsquo;<tt>vc.texinfo</tt>&rsquo;:
+<div class="example">
+<pre class="example">For &lsquo;<tt>vc.texinfo</tt>&rsquo;:
 Fix expansion typos.
 For &lsquo;<tt>vc.el</tt>&rsquo;:
 Don't call expand-file-name.
 For &lsquo;<tt>vc-hooks.el</tt>&rsquo;:
 Don't call expand-file-name.
-</pre></td></tr></table>
+</pre></div>
 
 <p>  They appear like this in &lsquo;<tt>ChangeLog</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@apn.org)
+<div class="smallexample">
+<pre class="smallexample">Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@apn.org)
 
         * vc.texinfo: Fix expansion typos.
 
         * vc.el, vc-hooks.el: Don't call expand-file-name.
-</pre></td></tr></table>
+</pre></div>
 
 <p>  Normally, <kbd>C-x v a</kbd> separates log entries by a blank line, but you
 can mark several related log entries to be clumped together (without an
@@ -1583,21 +1590,23 @@ with a label of the form &lsquo;<samp>{<var>clumpname</var>} </samp>&rsquo;.  Th
 itself is not copied to &lsquo;<tt>ChangeLog</tt>&rsquo;.  For example, suppose the log
 entries are:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">For &lsquo;<tt>vc.texinfo</tt>&rsquo;:
+<div class="example">
+<pre class="example">For &lsquo;<tt>vc.texinfo</tt>&rsquo;:
 {expand} Fix expansion typos.
 For &lsquo;<tt>vc.el</tt>&rsquo;:
 {expand} Don't call expand-file-name.
 For &lsquo;<tt>vc-hooks.el</tt>&rsquo;:
 {expand} Don't call expand-file-name.
-</pre></td></tr></table>
+</pre></div>
 
 <p>Then the text in &lsquo;<tt>ChangeLog</tt>&rsquo; looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@apn.org)
+<div class="smallexample">
+<pre class="smallexample">Wed Apr  1 08:57:59 1992  Nathaniel Bowditch  (nat@apn.org)
 
         * vc.texinfo: Fix expansion typos.
         * vc.el, vc-hooks.el: Don't call expand-file-name.
-</pre></td></tr></table>
+</pre></div>
 
 <p>  A log entry whose text begins with &lsquo;<samp>#</samp>&rsquo; is not copied to
 &lsquo;<tt>ChangeLog</tt>&rsquo;.  For example, if you merely fix some misspellings in
@@ -1975,18 +1984,20 @@ the buffer name, and for each string specified by
 string from <code>vc-header-alist</code> with the format taken from the
 element.  The default value for <code>vc-static-header-alist</code> is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">((&quot;\\.c$&quot; .
+<div class="example">
+<pre class="example">((&quot;\\.c$&quot; .
   &quot;\n#ifndef lint\nstatic char vcid[] = \&quot;\%s\&quot;;\n\
 #endif /* lint */\n&quot;))
-</pre></td></tr></table>
+</pre></div>
 
 <p>which specifies insertion of a string of this form:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">
+<div class="example">
+<pre class="example">
 #ifndef lint
 static char vcid[] = &quot;<var>string</var>&quot;;
 #endif /* lint */
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="ListDir"></a>
@@ -2031,14 +2042,16 @@ directory listings in brief format (file names only) and verbose format
 file name which is either a  directory to be listed or pattern
 containing wildcards for the files to be listed.  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-x C-d /u2/emacs/etc &lt;RET&gt;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">C-x C-d /u2/emacs/etc &lt;RET&gt;
+</pre></div>
 
 <p>lists all the files in directory &lsquo;<tt>/u2/emacs/etc</tt>&rsquo;.  An example of
 specifying a file name pattern is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-x C-d /u2/emacs/src/*.c &lt;RET&gt;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">C-x C-d /u2/emacs/src/*.c &lt;RET&gt;
+</pre></div>
 
 <p>  Normally, <kbd>C-x C-d</kbd> prints a brief directory listing containing just
 file names.  A numeric argument (regardless of value) tells it to print a

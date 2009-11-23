@@ -112,7 +112,8 @@ T1=Mat(k,k+1;R)/K_M is the space of first order deformations of i
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;spcurve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;spcurve.lib&quot;;
 ring r=32003,(x(1),x(2),x(3)),ds;
 ideal curve=x(1)*x(2),x(1)*x(3),x(2)*x(3);
 matrix M=isCMcod2(curve);
@@ -141,7 +142,7 @@ matrixT1(M,3);
 &rarr;    _[14]=-x(3)*gen(6)
 &rarr;    _[15]=x(2)*gen(6)-x(2)*gen(5)
 &rarr;    _[16]=x(1)*gen(5)
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

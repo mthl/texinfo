@@ -98,13 +98,14 @@ ul.no-bullet {list-style: none}
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
 <dd><p>ures_solve(i [, k, p] ); i = ideal, k, p = integers
-</p><pre class="format">   k=0: use sparse resultant matrix of Gelfand, Kapranov and Zelevinsky,
+</p><div class="format">
+<pre class="format">   k=0: use sparse resultant matrix of Gelfand, Kapranov and Zelevinsky,
    k=1: use resultant matrix of Macaulay which works only for
           homogeneous ideals,
    p&gt;0: defines precision of the long floats for internal computation
           if the basering is not complex (in decimal digits),
    (default: k=0, p=30)
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -116,14 +117,16 @@ ul.no-bullet {list-style: none}
 <dt><strong>Return:</strong></dt>
 <dd><p>list of all (complex) roots of the polynomial system i = 0; the
 result is of type
-</p><pre class="format">   string: if the basering is not complex,
+</p><div class="format">
+<pre class="format">   string: if the basering is not complex,
    number: otherwise.
-</pre>
+</pre></div>
 
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;solve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;solve.lib&quot;;
 // compute the intersection points of two curves
 ring rsq = 0,(x,y),lp;
 ideal gls=  x2 + y2 - 10, x2 + xy + 2y2 - 16;
@@ -178,7 +181,7 @@ l;
 // check the result
 subst(subst(i[1],x,l[1][1]),y,l[1][2]);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

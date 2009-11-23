@@ -128,7 +128,8 @@ T(i) where i is some integer!
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;spcurve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;spcurve.lib&quot;;
 ring r=32003,(x(1),x(2),x(3)),ds;
 ideal curve=(x(3)-x(1)^2)*x(3),(x(3)-x(1)^2)*x(2),x(2)^2-x(1)^7*x(3);
 matrix M=isCMcod2(curve);
@@ -140,7 +141,7 @@ pmat(li[1]);
 &rarr; x(2),           -x(1)^7
 li[2];
 &rarr; 3,1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

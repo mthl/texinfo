@@ -150,7 +150,8 @@ computations have to be finished and may therefore take some time.
 <a href="sing_273.htm#sres">sres</a>.
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
 ideal i=xz,yz,x3-y3;
 def l=res(i,0); // homogeneous ideal: uses lres
 l;
@@ -196,7 +197,7 @@ res(i,0,0);     // local ring and minimized: uses mres
 &rarr; 
 &rarr; 0       1       
 &rarr; 
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

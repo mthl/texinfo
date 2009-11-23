@@ -114,7 +114,8 @@ block of the ordering is c or C
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;deform.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;deform.lib&quot;;
 ring R=0,(x,y),ds;
 module M=[x2,xy],[y2,xy],[0,xx],[0,yy];
 module N=[x3+xy,x],[x,x+y2];
@@ -143,7 +144,7 @@ matrix(reduce(N,std(M)),nrows(kb),ncols(A)) - matrix(kbase(std(M)))*A;
 &rarr; _[1,2]=0
 &rarr; _[2,1]=0
 &rarr; _[2,2]=0
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

@@ -112,7 +112,8 @@ exported (i.e. made known) to some higher level by the <code>export</code>
 command (see <a href="sing_298.htm#export">export</a>).
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc xxx
+</p><div class="smallexample">
+<pre class="smallexample">proc xxx
 {
   int k=4;        //defines a local variable k
   int result=k+2;
@@ -122,7 +123,7 @@ xxx();
 listvar(all);
 &rarr; // result               [0]  int 6
 &rarr; // LIB                  [0]  string standard.lib
-</pre></td></tr></table>
+</pre></div>
 <p>Note that the variable <code>result</code> became a global variable after the
 execution of <code>xxx</code>.
 </p>

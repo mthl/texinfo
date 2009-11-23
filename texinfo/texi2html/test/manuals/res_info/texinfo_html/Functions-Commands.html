@@ -101,10 +101,11 @@ own.
 </p>
 <p>For example, here is a definition:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deffn Command forward-char nchars
+<div class="example">
+<pre class="example">@deffn Command forward-char nchars
 Move point forward @var{nchars} characters.
 @end deffn
-</pre></td></tr></table>
+</pre></div>
 
 <p>This shows a rather terse definition for a &ldquo;command&rdquo; named
 <code>forward-char</code> with one argument, <var>nchars</var>.
@@ -118,10 +119,11 @@ the example above, we used &lsquo;<samp>@var{nchars}</samp>&rsquo; in this way.
 </p>
 <p>The template for <code>@deffn</code> is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
+<div class="example">
+<pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end deffn
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-defun"></a>
 </dd>
@@ -132,11 +134,12 @@ the example above, we used &lsquo;<samp>@var{nchars}</samp>&rsquo; in this way.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defun set symbol new-value
+<div class="example">
+<pre class="example">@defun set symbol new-value
 Change the value of the symbol @var{symbol}
 to @var{new-value}.
 @end defun
-</pre></td></tr></table>
+</pre></div>
 
 <p>shows a rather terse definition for a function <code>set</code> whose
 arguments are <var>symbol</var> and <var>new-value</var>.  The argument names on
@@ -146,10 +149,11 @@ if they were enclosed in <code>@var</code>.  Terminate the definition with
 </p>
 <p>The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defun <var>function-name</var> <var>arguments</var>&hellip;
+<div class="example">
+<pre class="example">@defun <var>function-name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end defun
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defun</code> creates an entry in the index of functions.
 </p>

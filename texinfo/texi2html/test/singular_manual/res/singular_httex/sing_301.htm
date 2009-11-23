@@ -105,7 +105,8 @@ a ring which is local to the procedure (and its objects) accessible after
 the procedure ended without making the ring global.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc P1
+<dd><div class="smallexample">
+<pre class="smallexample">proc P1
 {
   ring r=0,x,dp;
   keepring r;
@@ -122,7 +123,7 @@ P2();
 &rarr; inside P2, after call of P1: r
 &quot;at top level: &quot; + nameof(basering);
 &rarr; at top level: r1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

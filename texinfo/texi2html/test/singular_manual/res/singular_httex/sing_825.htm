@@ -111,7 +111,8 @@ n1,n2,...=integers<br>
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list of two elements, an ideal and a list:
-  </p><pre class="format">  [1]: ideal, variables of basering sorted w.r.t their complexity in id
+  </p><div class="format">
+<pre class="format">  [1]: ideal, variables of basering sorted w.r.t their complexity in id
        ni controls the ordering in i-th block (= vars occurring in pi):
        ni=0 (resp.!=0) means that less (resp. more) complex vars come first
   [2]: a list with 4 entries for each pi:
@@ -121,7 +122,7 @@ n1,n2,...=integers<br>
                   valuation vectors of the vars in ai
        intvec wi: size of 1-st, 2-nd,... block of identical columns of Mi
                   (vars with same valuation)
-  </pre>
+  </pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -137,7 +138,8 @@ of x,...).
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;presolve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;presolve.lib&quot;;
 ring s=0,(x,y,z,w),dp;
 ideal i = x3+y2+yw2,xz+z2,xyz-w2;
 sortvars(i,0,xy,1,zw);
@@ -170,7 +172,7 @@ sortvars(i,0,xy,1,zw);
 &rarr;       0,2 
 &rarr;    [8]:
 &rarr;       1,1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

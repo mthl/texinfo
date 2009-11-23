@@ -115,7 +115,8 @@ may not be well defined) then the return value 1 means
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;algebra.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;algebra.lib&quot;;
 ring R = 0,(x,y,z),dp;
 ideal i = x, y, x2-y3;
 map phi = R,i;                    // a map from R to itself, z-&gt;x2-y3
@@ -129,7 +130,7 @@ ring S = 0,(a,b,c),dp;
 map psi = R,ideal(a,a+b,c-a2+b3); // a map from R to S,
 is_surjective(psi);               // x-&gt;a, y-&gt;a+b, z-&gt;c-a2+b3
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

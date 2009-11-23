@@ -153,9 +153,10 @@ want to be able to use even when new releases are made
 in the future.  You start by importing the source to
 your repository:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cd wdiff-0.04
+<div class="example">
+<pre class="example">$ cd wdiff-0.04
 $ cvs import -m &quot;Import of FSF v. 0.04&quot; fsf/wdiff FSF_DIST WDIFF_0_04
-</pre></td></tr></table>
+</pre></div>
 
 <p>The vendor tag is named &lsquo;<samp>FSF_DIST</samp>&rsquo; in the above
 example, and the only release tag assigned is
@@ -186,18 +187,20 @@ repository with the same <code>import</code> command that you used to set up
 the repository in the first place.  The only difference is that you
 specify a different release tag this time:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ tar xfz wdiff-0.05.tar.gz
+<div class="example">
+<pre class="example">$ tar xfz wdiff-0.05.tar.gz
 $ cd wdiff-0.05
 $ cvs import -m &quot;Import of FSF v. 0.05&quot; fsf/wdiff FSF_DIST WDIFF_0_05
-</pre></td></tr></table>
+</pre></div>
 
 <p>For files that have not been modified locally, the newly created
 revision becomes the head revision.  If you have made local
 changes, <code>import</code> will warn you that you must merge the changes
 into the main trunk, and tell you to use &lsquo;<samp>checkout -j</samp>&rsquo; to do so:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout -jFSF_DIST:yesterday -jFSF_DIST wdiff
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">$ cvs checkout -jFSF_DIST:yesterday -jFSF_DIST wdiff
+</pre></div>
 
 <p>The above command will check out the latest revision of
 &lsquo;<samp>wdiff</samp>&rsquo;, merging the changes made on the vendor branch &lsquo;<samp>FSF_DIST</samp>&rsquo;
@@ -207,8 +210,9 @@ the merge they should be resolved in the normal way (see section <a href="cvs_10
 <p>However, it is much better to use the two release tags rather than using
 a date on the branch as suggested above:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout -jWDIFF_0_04 -jWDIFF_0_05 wdiff
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">$ cvs checkout -jWDIFF_0_04 -jWDIFF_0_05 wdiff
+</pre></div>
 
 <p>The reason this is better is that
 using a date, as suggested above, assumes that you do
@@ -246,9 +250,10 @@ in &lsquo;<tt>~/work.d/wdiff</tt>&rsquo;, and you want to revert to the
 vendor&rsquo;s version for all the files in that directory,
 you would type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cd ~/work.d/wdiff
+<div class="example">
+<pre class="example">$ cd ~/work.d/wdiff
 $ cvs admin -bWDIFF .
-</pre></td></tr></table>
+</pre></div>
 
 <p>You must specify the &lsquo;<samp>-bWDIFF</samp>&rsquo; without any space
 after the &lsquo;<samp>-b</samp>&rsquo;.  See section <a href="cvs_16.html#admin-options">admin options</a>.
@@ -360,16 +365,18 @@ You want to import the red team&rsquo;s efforts to branch
 the blue team&rsquo;s efforts to branch 1.1.3 and use the
 vendor tag BLUE.  So the commands you might use are:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs import dir RED RED_1-0
+<div class="example">
+<pre class="example">$ cvs import dir RED RED_1-0
 $ cvs import -b 1.1.3 dir BLUE BLUE_1-5
-</pre></td></tr></table>
+</pre></div>
 
 <p>Note that if your vendor tag does not match your
 &lsquo;<samp>-b</samp>&rsquo; option, <small>CVS</small> will not detect this case!  For
 example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs import -b 1.1.3 dir RED RED_1-0
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">$ cvs import -b 1.1.3 dir RED RED_1-0
+</pre></div>
 
 <p>Be careful; this kind of mismatch is sure to sow
 confusion or worse.  I can&rsquo;t think of a useful purpose

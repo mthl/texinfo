@@ -211,13 +211,15 @@ differences. Most notably:
 has no rvalue, i.e., cannot be used on the right-hand sides of
 assignments.  So, instead of
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">j = i++;  // WRONG!!!
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">j = i++;  // WRONG!!!
+</pre></div>
 
 <p>(which results in an error), it must be written
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">i++; j = i;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">i++; j = i;
+</pre></div>
 
 <p>Likewise, an assignment expression does not have a result.  Therefore,
 compound assignments like <code>i = j = k;</code> are not allowed and result
@@ -261,16 +263,18 @@ causes some problems with boolean tests on variables, which might not be
 defined at evaluation time. For example, the following results in an
 error, if the variable <code>i</code> is undefined:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (defined(i) &amp;&amp; i &gt; 0) {} // WRONG!!!
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">if (defined(i) &amp;&amp; i &gt; 0) {} // WRONG!!!
+</pre></div>
 
 <p>This must be written instead as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (defined(i))
+<div class="smallexample">
+<pre class="smallexample">if (defined(i))
 {
   if (i &gt; 0) {}
 }
-</pre></td></tr></table>
+</pre></div>
 
 <p>However, there are several short work-arounds for this problem:
 </p><ol>
@@ -279,8 +283,9 @@ If a variable (say, <code>i</code>) is only to be used as a boolean flag, then
 define (value is TRUE) and undefine (value is FALSE) <code>i</code> instead of
 assigning a value. Using this scheme, it is sufficient to simply write
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (defined(i))
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">if (defined(i))
+</pre></div>
 
 <p>in order to check whether <code>i</code> is TRUE. Use the command <code>kill</code>
 to undefine a variable, i.e. to assign it a FALSE value (see section <a href="singular_4.html#kill">kill</a>).
@@ -289,12 +294,13 @@ If a variable  can have more than two values, then
 define it, if necessary, before it is used for the first time.
 For example, if the following is used within a procedure
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (! defined(DEBUG)) { int DEBUG = 1;}
+<div class="smallexample">
+<pre class="smallexample">if (! defined(DEBUG)) { int DEBUG = 1;}
 &hellip;
 if (DEBUG == 3)  {&hellip;}
 if (DEBUG == 2)  {&hellip;}
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>then a user of this procedure does not need to care about the existence
 of the <code>DEBUG</code> variable &ndash; this remains hidden from the
@@ -327,7 +333,8 @@ value is overwritten by its global one.
 <p><small>SINGULAR</small> does not offer a <code>case</code> (or <code>switch</code>)
 statement. However, it can be imitated in the following way:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">while (1)
+<div class="smallexample">
+<pre class="smallexample">while (1)
 {
    if (choice == choice_1) { &hellip;; break;}
    &hellip;
@@ -335,7 +342,7 @@ statement. However, it can be imitated in the following way:
    // default case
    &hellip;; break;
 }
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Usage-of-commas"></a>
@@ -363,13 +370,15 @@ expression is a list.
 Hence, commas can not be used to combine several expressions into
 a single expression. For example, instead of writing
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">for (i=1, j=5; i&lt;5 || j&lt;10; i++, j++) {&hellip;} // WRONG!!!!!!
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">for (i=1, j=5; i&lt;5 || j&lt;10; i++, j++) {&hellip;} // WRONG!!!!!!
+</pre></div>
 
 <p>one has to write
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">for (i,j = 1,5; i&lt;5 || j&lt;10; i++, j++) {&hellip;}
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">for (i,j = 1,5; i&lt;5 || j&lt;10; i++, j++) {&hellip;}
+</pre></div>
 
 <hr>
 <a name="Usage-of-brackets"></a>
@@ -401,13 +410,15 @@ always</strong> be used to enclose the return value.  Even if there is no value
 to return, parentheses have to be used after a return statement
 (i.e., <code>return();</code>).  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (i == 1) return i;    // WRONG!!!!!
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">if (i == 1) return i;    // WRONG!!!!!
+</pre></div>
 
 <p>results in an error. Instead, it must be written as
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (i == 1) { return (i); }
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">if (i == 1) { return (i); }
+</pre></div>
 
 <hr>
 <a name="Behavior-of-continue"></a>
@@ -435,7 +446,8 @@ loop-body and jumps to the beginning of the block. Unlike the
 C-construct <small>SINGULAR</small>&rsquo;s <code>continue</code> <strong>does not execute the
 increment statement</strong>. For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">for (int i = 1 ; i&lt;=10; i=i+1)
+<div class="smallexample">
+<pre class="smallexample">for (int i = 1 ; i&lt;=10; i=i+1)
 {
    &hellip;
    if (i==3) { i=8;continue; }
@@ -448,7 +460,7 @@ increment statement</strong>. For example,
 &rarr; 8
 &rarr; 9
 &rarr; 10
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Return-type-of-procedures"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -478,7 +490,8 @@ example, depend on the input. However, the return value
 of such a procedure may then only be assigned to a variable of type
 <code>def</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc type_return (int i)
+<div class="smallexample">
+<pre class="smallexample">proc type_return (int i)
 {
   if (i &gt; 0) {return (i);}
   else {return (list(i));}
@@ -488,14 +501,15 @@ def t2 = type_return(-1);
 typeof(t1); typeof(t2);
 &rarr; int
 &rarr; list
-</pre></td></tr></table>
+</pre></div>
 
 <p>Furthermore, it is mandatory to assign the return value of a procedure
 to a variable of type <code>def</code>, if a procedure changes the current
 ring using the <code>keepring</code> command (see section <a href="singular_4.html#keepring">keepring</a>) and returns a
 ring-dependent value (like a polynomial or module).
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc def_return
+<div class="smallexample">
+<pre class="smallexample">proc def_return
 {
   ring r=0,(x,y),dp;
   poly p = x;
@@ -506,14 +520,15 @@ def p = def_return();
 // poly p = def_return(); would be WRONG!!!
 typeof(p);
 &rarr; poly
-</pre></td></tr></table>
+</pre></div>
 
 <p>On the other hand, more than one value can be returned by a single
 <code>return</code> statement. For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc tworeturn () { return (1,2); }
+<div class="smallexample">
+<pre class="smallexample">proc tworeturn () { return (1,2); }
 int i,j = tworeturn();
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -552,7 +567,8 @@ used. If there is at least one space surrounding the <code>/</code> operator
 the <code>div</code> operator instead of <code>/</code> for integer division and an
 explicit type cast to <code>number</code> for ring division. Note, that this
 problem does only occur for divisions of numerical constants.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32002,x,dp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=32002,x,dp;
   3/2;    // ring division
 &rarr; -15994
   3 / 2;  // integer division
@@ -569,21 +585,22 @@ problem does only occur for divisions of numerical constants.
   int d=2;
   c / d;
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 
 </li><li> monomials and precedence
 <a name="index-monomials-and-precedence"></a>
 
 <p>The computation of a monomial has precedence over all operators:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y),dp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y),dp;
   2xy^2 == (2*x*y)^2;
 &rarr; 1
   2xy^2 == 2x*y^2;
 &rarr; 0
   2x*y^2 == 2*x * (y^2);
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 </li><li> meaning of <code>mult</code>
 <a name="index-mult-1"></a>
@@ -636,7 +653,8 @@ returned as a <code>string</code>. Square brackets enclosing an <code>intvec</co
 position given by the values of the <code>intvec</code>. The result is
 returned as an expression list of strings. 
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  string s = &quot;one-word&quot;;
+<div class="smallexample">
+<pre class="smallexample">  string s = &quot;one-word&quot;;
   s[2,6];     // a substring starting at the second char
 &rarr; ne-wor
   size(_);
@@ -652,7 +670,7 @@ returned as an expression list of strings.
   v = 2,6,8;
   s[v];
 &rarr; n o d
-</pre></td></tr></table>
+</pre></div>
 
 
 </li></ol>
@@ -701,13 +719,14 @@ a monomial consisting of global ring variables written without operators.
 as ring  variables. However, the above identifier resolution order must
 be kept in mind. Otherwise, surprising results may come up.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x,y),dp;
+<div class="smallexample">
+<pre class="smallexample">ring r=0,(x,y),dp;
 int x;
 x*y; // resolved product int*poly, i.e., 0*y
 &rarr; 0
 xy; // &quot;xy&quot; is one identifier and resolved to monomial xy
 &rarr; xy
-</pre></td></tr></table>
+</pre></div>
 
 <p>For these reasons, we strongly recommend not to use variables which
 have the same name(s) as ring variables.
@@ -717,7 +736,8 @@ fully contained in (i.e., is a substring of) another name of a ring
 variable. Otherwise, effects like the following might occur:
 </p>
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x, x1),dp; // name x is substring of name x1 !!!!!!!!!
+<div class="smallexample">
+<pre class="smallexample">ring r=0,(x, x1),dp; // name x is substring of name x1 !!!!!!!!!
 x;x1;   // resolved poly x
 &rarr; x
 &rarr; x1
@@ -725,7 +745,7 @@ short=0; 2x1; // resolved to monomial 2*x^1 !!!!!!
 &rarr; 2*x
 2*x1; // resolved to product 2 times x1
 &rarr; 2*x1
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">

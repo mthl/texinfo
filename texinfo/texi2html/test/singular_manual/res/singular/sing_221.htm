@@ -108,7 +108,8 @@ then <code>matrix(sm)=matrix(m)*T</code> and <code>sm=ideal(matrix(m)*T)</code>,
 resp. <code>sm=module(matrix(m)*T)</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R=0,(x,y,z),dp;
   poly f=x3+y7+z2+xyz;
   ideal i=jacob(f);
   matrix T;
@@ -133,7 +134,7 @@ resp. <code>sm=module(matrix(m)*T)</code>.
 &rarr; _[1,5]=0
 &rarr; _[1,6]=0
 &rarr; _[1,7]=0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

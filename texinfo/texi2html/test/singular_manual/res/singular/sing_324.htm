@@ -97,13 +97,15 @@ expression is a list.
 Hence, commas can not be used to combine several expressions into
 a single expression. For example, instead of writing
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">for (i=1, j=5; i&lt;5 || j&lt;10; i++, j++) {&hellip;} // WRONG!!!!!!
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">for (i=1, j=5; i&lt;5 || j&lt;10; i++, j++) {&hellip;} // WRONG!!!!!!
+</pre></div>
 
 <p>one has to write
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">for (i,j = 1,5; i&lt;5 || j&lt;10; i++, j++) {&hellip;}
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">for (i,j = 1,5; i&lt;5 || j&lt;10; i++, j++) {&hellip;}
+</pre></div>
 
 </td>
 </tr>

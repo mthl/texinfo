@@ -116,11 +116,12 @@ present the coordinates of the cup products (b_i &amp; c_j) with respect
 to a kbase of Ext^p+q (b_i resp. c_j are the choosen bases of Ext^p,
 resp. Ext^q).<br>
 - if called with 6 arguments: list L,
-</p><pre class="format">      L[1] = matrix (see above)
+</p><div class="format">
+<pre class="format">      L[1] = matrix (see above)
       L[2] = matrix of kbase of Ext^p(M&rsquo;,N&rsquo;)
       L[3] = matrix of kbase of Ext^q(N&rsquo;,P&rsquo;)
       L[4] = matrix of kbase of Ext^p+q(N&rsquo;,P&rsquo;)
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -132,7 +133,8 @@ syz(N)!
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;homolog.lib&quot;;
 int p      = printlevel;
 ring  rr   = 32003,(x,y,z),(dp,C);
 ideal  I   = x4+y3+z2;
@@ -307,7 +309,7 @@ show(l[1]);show(l[2]);
 &rarr; 0, 0, x2,0,  
 &rarr; 0, -y,0, 0   
 printlevel = p;
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

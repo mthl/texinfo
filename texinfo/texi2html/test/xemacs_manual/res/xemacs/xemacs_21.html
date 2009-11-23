@@ -147,8 +147,9 @@ based on the file&rsquo;s name.  For example, files whose names end in
 controls the correspondence between file names and major mode.  Its value
 is a list in which each element has the form:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(<var>regexp</var> . <var>mode-function</var>)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(<var>regexp</var> . <var>mode-function</var>)
+</pre></div>
 
 <p>For example, one element normally found in the list has the form
 <code>(<tt>&quot;\\.c$&quot;</tt> . c-mode)</code>. It is responsible for selecting C mode
@@ -162,8 +163,9 @@ file by a special sort of text in the first non-blank line of the file.
 The mode name should appear in this line both preceded and followed by
 &lsquo;<samp>-*-</samp>&rsquo;.  Other text may appear on the line as well.  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">;-*-Lisp-*-
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">;-*-Lisp-*-
+</pre></div>
 
 <p>tells Emacs to use Lisp mode.  Note how the semicolon is used to make Lisp
 treat this line as a comment.  Such an explicit specification overrides any
@@ -171,8 +173,9 @@ default mode based on the file name.
 </p>
 <p>  Another format of mode specification is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">-*-Mode: <var>modename</var>;-*-
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">-*-Mode: <var>modename</var>;-*-
+</pre></div>
 
 <p>which allows other things besides the major mode name to be specified.
 However, Emacs does not look for anything except the mode name.

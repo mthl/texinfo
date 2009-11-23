@@ -113,7 +113,8 @@ eliminated belongs to a -p (resp. -s) block ordering
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;elim.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;elim.lib&quot;;
 ring r=0,(x,y,u,v,w),dp;
 ideal i=x-u,y-u2,w-u3,v-x+y3;
 elim(i,3,4);
@@ -129,7 +130,7 @@ m=elim(m,3,4);show(m);
 &rarr; [0,xy-w]
 &rarr; [x2-y]
 &rarr; [0,x2-y]
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_544.htm#elim1">elim1</a>;
 <a href="sing_176.htm#eliminate">eliminate</a>.

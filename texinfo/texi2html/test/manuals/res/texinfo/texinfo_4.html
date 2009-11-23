@@ -143,7 +143,8 @@ the most critical.
 </p>
 <p>See section <a href="texinfo_24.html#GNU-Sample-Texts">GNU Sample Texts</a>, for the full texts to be used in GNU manuals.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
+<div class="example">
+<pre class="example">\input texinfo   @c -*-texinfo-*-
 @c %**start of header
 @setfilename <var>infoname</var>.info
 @settitle <var>name-of-manual</var> <var>version</var>
@@ -197,7 +198,7 @@ Published by &hellip;
 @cindex first chapter
 @cindex chapter, first
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -238,12 +239,13 @@ instance, is another command often included in the header.  See section <a href=
 </p>
 <p>Thus, the beginning of a Texinfo file generally looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
+<div class="example">
+<pre class="example">\input texinfo   @c -*-texinfo-*-
 @c %**start of header
 @setfilename sample.info
 @settitle Sample Manual 1.0
 @c %**end of header
-</pre></td></tr></table>
+</pre></div>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#First-Line">3.2.1 The First Line of a Texinfo File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  The first line of a Texinfo file.
@@ -285,8 +287,9 @@ instance, is another command often included in the header.  See section <a href=
 <p>Every Texinfo file that is to be the top-level input to TeX must begin
 with a line that looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">\input texinfo   @c -*-texinfo-*-
+</pre></div>
 
 <p>This line serves two functions:
 </p>
@@ -331,8 +334,9 @@ specification tells Emacs to use Texinfo mode.
 
 <p>A start-of-header line is a Texinfo comment that looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@c %**start of header
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@c %**start of header
+</pre></div>
 
 <p>Write the start-of-header line on the second line of a Texinfo file.
 Follow the start-of-header line with <code>@setfilename</code> and
@@ -374,8 +378,9 @@ change it if you wish by setting the <code>tex-start-of-header</code> and/or
 <p>In order to serve as the primary input file for either <code>makeinfo</code>
 or TeX, a Texinfo file must contain a line that looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@setfilename <var>info-file-name</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@setfilename <var>info-file-name</var>
+</pre></div>
 
 <p>Write the <code>@setfilename</code> command at the beginning of a line and
 follow it on the same line by the Info file name.  Do not write anything
@@ -449,8 +454,9 @@ also reads &lsquo;<tt>texinfo.cnf</tt>&rsquo; if that file is present on your sy
 <p>In order to be made into a printed manual, a Texinfo file must contain
 a line that looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@settitle <var>title</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@settitle <var>title</var>
+</pre></div>
 
 <p>Write the <code>@settitle</code> command at the beginning of a line and
 follow it on the same line by the title.  This tells TeX the title to
@@ -519,8 +525,9 @@ See section <a href="texinfo_26.html#Headings">Page Headings</a>, for a detailed
 <p>Follow the header lines with an end-of-header line, which is a
 Texinfo comment that looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@c %**end of header
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@c %**end of header
+</pre></div>
 
 <p>See section <a href="#Start-of-Header">Start of Header</a>.
 </p>
@@ -588,7 +595,8 @@ recommended location.  It conventionally consists of a sentence or two
 about what the program is, the legal copyright line, and the copying
 permissions.  Here is a skeletal example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@copying
+<div class="example">
+<pre class="example">@copying
 This manual is for <var>program</var> (version <var>version</var>),
 which &hellip;
 
@@ -598,7 +606,7 @@ Copyright @copyright{} <var>years</var> <var>copyright-owner</var>.
 Permission is granted to &hellip;
 @end quotation
 @end copying
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <code>@quotation</code> has no legal significance; it&rsquo;s there to improve
 readability in some contexts.
@@ -618,8 +626,9 @@ emit the copying information.  See the next section for details.
 Info and plain text, it generates &lsquo;<samp>(C)</samp>&rsquo;.  The copyright notice
 itself has the following legally defined sequence:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Copyright &copy; <var>years</var> <var>copyright-owner</var>.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Copyright &copy; <var>years</var> <var>copyright-owner</var>.
+</pre></div>
 
 <a name="index-Copyright-word_002c-always-in-English"></a>
 <p>The word &lsquo;Copyright&rsquo; must always be written in English, even if the
@@ -668,8 +677,9 @@ additional information.
 <p>The <code>@insertcopying</code> command is simply written on a line by
 itself, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@insertcopying
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@insertcopying
+</pre></div>
 
 <p>It inserts the text previously defined by <code>@copying</code>.  Legally, it
 must be used on the copyright page in the printed manual
@@ -864,29 +874,33 @@ have an especially long title.
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@titlefont{Texinfo}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@titlefont{Texinfo}
+</pre></div>
 
 <p>Use the <code>@center</code> command at the beginning of a line to center
 the remaining text on that line.  Thus,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@center @titlefont{Texinfo}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@center @titlefont{Texinfo}
+</pre></div>
 
 <p>centers the title, which in this example is &ldquo;Texinfo&rdquo; printed
 in the title font.
 </p>
 <p>Use the <code>@sp</code> command to insert vertical space.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@sp 2
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@sp 2
+</pre></div>
 
 <p>This inserts two blank lines on the printed page.  (See section <a href="texinfo_15.html#sp"><code>@sp</code></a>, for more information about the <code>@sp</code>
 command.)
 </p>
 <p>A template for this method looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+<div class="example">
+<pre class="example">@titlepage
 @sp 10
 @center @titlefont{<var>name-of-manual-when-printed</var>}
 @sp 2
@@ -895,7 +909,7 @@ command.)
 @center <var>author</var>
 &hellip;
 @end titlepage
-</pre></td></tr></table>
+</pre></div>
 
 <p>The spacing of the example fits an 8.5 by 11 inch manual.
 </p>
@@ -955,21 +969,24 @@ followed by an <code>@page</code> command line.)
 the name or names on the remaining part of the line that starts with
 an <code>@author</code> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@author by Jane Smith and John Doe
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@author by Jane Smith and John Doe
+</pre></div>
 
 <p>or you can write the names one above each other by using two (or more)
 <code>@author</code> commands:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@author Jane Smith
+<div class="example">
+<pre class="example">@author Jane Smith
 @author John Doe
-</pre></td></tr></table>
+</pre></div>
 
 <p>(Only the bottom name is underlined with a black rule.)
 </p>
 <p>A template for this method looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+<div class="example">
+<pre class="example">@titlepage
 @title <var>name-of-manual-when-printed</var>
 @subtitle <var>subtitle-if-any</var>
 @subtitle <var>second-subtitle</var>
@@ -977,20 +994,21 @@ an <code>@author</code> command:
 @page
 &hellip;
 @end titlepage
-</pre></td></tr></table>
+</pre></div>
 
 <p>You may also combine the <code>@titlefont</code> method described in the
 previous section and <code>@title</code> method described in this one.  This
 may be useful if you have a very long title.  Here is a real-life example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+<div class="example">
+<pre class="example">@titlepage
 @titlefont{GNU Software}
 @sp 1
 @title for MS-Windows and MS-DOS
 @subtitle Edition @value{e} for Release @value{cde}
 @author by Daniel Hagerty, Melissa Weisshaus
 @author and Eli Zaretskii
-</pre></td></tr></table>
+</pre></div>
 
 <p>(The use of <code>@value</code> here is explained in <a href="texinfo_17.html#value-Example"><code>@value</code> Example</a>.
 </p>
@@ -1031,8 +1049,9 @@ commands.
 copyright notice and the other text on the copyright page towards the
 bottom of the page, use the following incantantion after <code>@page</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@vskip 0pt plus 1filll
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@vskip 0pt plus 1filll
+</pre></div>
 
 <p>This is a TeX command that is not supported by the Info formatting
 commands.  The <code>@vskip</code> command inserts whitespace.  The &lsquo;<samp>0pt
@@ -1044,15 +1063,17 @@ bottom of the page.  Note the use of three &lsquo;<samp>l</samp>&rsquo;s in the 
 <p>To insert the copyright text itself, write <code>@insertcopying</code>
 next (see section <a href="#Document-Permissions">Document Permissions</a>):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@insertcopying
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@insertcopying
+</pre></div>
 
 <p>Follow the copying text by the publisher, ISBN numbers, cover art
 credits, and other such information.
 </p>
 <p>Here is an example putting all this together:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+<div class="example">
+<pre class="example">@titlepage
 &hellip;
 @page
 @vskip 0pt plus 1filll
@@ -1062,7 +1083,7 @@ Published by &hellip;
 
 Cover art by &hellip;
 @end titlepage
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -1195,9 +1216,10 @@ double</code> after the <code>@end titlepage</code> command.
 writing <code>@headings off</code> on a line of its own immediately after the
 line containing the <code>@end titlepage</code> command, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@end titlepage
+<div class="example">
+<pre class="example">@end titlepage
 @headings off
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <code>@headings off</code> command overrides the <code>@end titlepage</code>
 command, which would otherwise cause TeX to print page
@@ -1281,7 +1303,8 @@ so.  See section <a href="texinfo_17.html#Conditionals">Conditionally Visible Te
 
 <p>Here is an example of a Top node.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@ifnottex
+<div class="example">
+<pre class="example">@ifnottex
 @node Top
 @top Sample Title
 
@@ -1295,7 +1318,7 @@ Additional general information.
 &hellip;
 * Index::
 </pre><pre class="example">@end menu
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -1356,7 +1379,8 @@ information.)
 <p>For example, the master menu for this manual looks like the following
 (but has many more entries):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@menu
+<div class="example">
+<pre class="example">@menu
 * Copying Conditions::  Your rights.
 * Overview::            Texinfo in brief.
 &hellip;
@@ -1377,7 +1401,7 @@ Overview of Texinfo
 &hellip;
 @end detailmenu
 @end menu
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -1450,15 +1474,17 @@ of the document, taken from the <code>@settitle</code> command
 (see section <a href="#settitle"><code>@settitle</code>: Set the document title</a>).  To change this, use the <code>@documentdescription</code>
 environment, as in:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@documentdescription
+<div class="example">
+<pre class="example">@documentdescription
 descriptive text.
 @end documentdescription
-</pre></td></tr></table>
+</pre></div>
 
 <p>This will produce the following output in the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; of the HTML:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">&lt;meta name=description content=&quot;descriptive text.&quot;&gt;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">&lt;meta name=description content=&quot;descriptive text.&quot;&gt;
+</pre></div>
 
 <p><code>@documentdescription</code> must be specified before the first node of
 the document.
@@ -1505,8 +1531,9 @@ line followed by its argument.
 <p>For example, you would write the following to cause each chapter to
 start on a fresh odd-numbered page:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@setchapternewpage odd
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@setchapternewpage odd
+</pre></div>
 
 <p>You can specify one of three alternatives with the
 <code>@setchapternewpage</code> command:
@@ -1584,8 +1611,9 @@ use the <code>@paragraphindent</code> command to specify this indentation.
 Write an <code>@paragraphindent</code> command at the beginning of a line
 followed by either &lsquo;<samp>asis</samp>&rsquo; or a number:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@paragraphindent <var>indent</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@paragraphindent <var>indent</var>
+</pre></div>
 
 <p>The indentation is according to the value of <var>indent</var>:
 </p>
@@ -1648,8 +1676,9 @@ environments.  You can use the <code>@exampleindent</code> command to specify
 this indentation.  Write an <code>@exampleindent</code> command at the
 beginning of a line followed by either &lsquo;<samp>asis</samp>&rsquo; or a number:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@exampleindent <var>indent</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@exampleindent <var>indent</var>
+</pre></div>
 
 <p>The indentation is according to the value of <var>indent</var>:
 </p>

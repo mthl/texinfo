@@ -106,10 +106,11 @@ ul.no-bullet {list-style: none}
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list with 3 entries
-  </p><pre class="format">  _[1] = squarefree norm of g (poly)
+  </p><div class="format">
+<pre class="format">  _[1] = squarefree norm of g (poly)
   _[2] = g (= f(x - s*a)) (poly)
   _[3] = s (int)
-  </pre>
+  </pre></div>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -122,7 +123,8 @@ ul.no-bullet {list-style: none}
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;zeroset.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;zeroset.lib&quot;;
 ring R = (0,a), x, lp;
 minpoly = a2+1;
 poly f =  x4 - 2*x + 1;
@@ -133,7 +135,7 @@ SQFRNorm(f);
 &rarr;    x4+(-4a)*x3-6*x2+(4a-2)*x+(2a+2)
 &rarr; [3]:
 &rarr;    1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

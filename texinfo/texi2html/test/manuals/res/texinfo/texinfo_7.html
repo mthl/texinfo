@@ -187,7 +187,8 @@ illustrates an upside-down tree.  For this reason, the root node is
 called the &lsquo;Top&rsquo; node, and &lsquo;Up&rsquo; node pointers carry you closer to the
 root.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">                          Top
+<div class="example">
+<pre class="example">                          Top
                            |
          -------------------------------------
         |                  |                  |
@@ -197,13 +198,14 @@ root.
     |        |         |        |         |        |
  Section  Section   Section  Section   Section  Section
    1.1      1.2       2.1      2.2       3.1      3.2
-</pre></td></tr></table>
+</pre></div>
 
 <p>The fully-written command to start Chapter 2 would be this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node     Chapter 2,  Chapter 3, Chapter 1, Top
+<div class="example">
+<pre class="example">@node     Chapter 2,  Chapter 3, Chapter 1, Top
 @comment  node-name,  next,      previous,  up
-</pre></td></tr></table>
+</pre></div>
 
 <p>This <code>@node</code> line says that the name of this node is &ldquo;Chapter
 2&rdquo;, the name of the &lsquo;Next&rsquo; node is &ldquo;Chapter 3&rdquo;, the name of the
@@ -228,17 +230,19 @@ a chapter or chapter-level node.)
 2.  (See section <a href="texinfo_8.html#Menus">Menus</a>.)  You would write the menu just
 before the beginning of Section 2.1, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">    @menu
+<div class="example">
+<pre class="example">    @menu
     * Sect. 2.1::    Description of this section.
     * Sect. 2.2::
     @end menu
-</pre></td></tr></table>
+</pre></div>
 
 <p>Write the node for Sect. 2.1 like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">    @node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
+<div class="example">
+<pre class="example">    @node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
     @comment  node-name, next,      previous,  up
-</pre></td></tr></table>
+</pre></div>
 
 <p>In Info format, the &lsquo;Next&rsquo; and &lsquo;Previous&rsquo; pointers of a node usually
 lead to other nodes at the same level&mdash;from chapter to chapter or from
@@ -257,13 +261,14 @@ which.)
 Texinfo File&rdquo;.  This shows an <code>@node</code> line followed by a comment
 line, an <code>@chapter</code> line, and then by indexing lines.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node    Ending a File, Structuring, Beginning a File, Top
+<div class="example">
+<pre class="example">@node    Ending a File, Structuring, Beginning a File, Top
 @comment node-name,     next,        previous,         up
 @chapter Ending a Texinfo File
 @cindex Ending a Texinfo file
 @cindex Texinfo file ending
 @cindex File ending
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -422,8 +427,9 @@ in the printed output.
 at the beginning of a line and then the name of the node, like
 this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@node <var>node-name</var>
+</pre></div>
 
 <p>If you are using GNU Emacs, you can use the update node commands
 provided by Texinfo mode to insert the names of the pointers; or you
@@ -441,8 +447,9 @@ if you are not familiar with Texinfo.
 <p>The template for a fully-written-out node line with &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;,
 and &lsquo;Up&rsquo; pointers looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node <var>node-name</var>, <var>next</var>, <var>previous</var>, <var>up</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@node <var>node-name</var>, <var>next</var>, <var>previous</var>, <var>up</var>
+</pre></div>
 
 <p>If you wish, you can ignore <code>@node</code> lines altogether in your first
 draft and then use the <code>texinfo-insert-node-lines</code> command to
@@ -558,11 +565,12 @@ rare cases when this is useful, Texinfo has limited support for using
 <p>Thus, the beginning of the section called <code>@chapter</code> looks like
 this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">@node  chapter, unnumbered &amp; appendix, makeinfo top, Structuring
+<div class="smallexample">
+<pre class="smallexample">@node  chapter, unnumbered &amp; appendix, makeinfo top, Structuring
 @comment  node-name,  next,  previous,  up
 @section @code{@@chapter}
 @findex chapter
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 <a name="index-Parentheses-in-nodename"></a>
@@ -582,13 +590,15 @@ within a node name; these confuse TeX or the Info formatters.
 
 <p>For example, the following is a section title:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">@code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">@code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
+</pre></div>
 
 <p>The corresponding node name is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">unnumberedsec appendixsec heading
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">unnumberedsec appendixsec heading
+</pre></div>
 
 <a name="index-Case-in-node-name"></a>
 </li><li>
@@ -661,8 +671,9 @@ can maintain automatically with the texinfo mode commands):
 <p>Or you can leave the pointers off entirely and let the tools implicitly
 define them.  This is recommended.  Thus:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node Top
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@node Top
+</pre></div>
 
 
 <hr>
@@ -709,9 +720,10 @@ create or update pointers and menus.
 </p>
 <p>Thus, in practice, a Top node starts like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node Top
+<div class="example">
+<pre class="example">@node Top
 @top Your Manual Title
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -795,17 +807,19 @@ cross-references can refer to it, just as they can to nodes.  You create
 an anchor with the <code>@anchor</code> command, and give the label as a
 normal brace-delimited argument.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This marks the @anchor{x-spot}spot.
+<div class="example">
+<pre class="example">This marks the @anchor{x-spot}spot.
 &hellip;
 @xref{x-spot,,the spot}.
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This marks the spot.
+<div class="example">
+<pre class="example">This marks the spot.
 &hellip;
 See [the spot], page 1.
-</pre></td></tr></table>
+</pre></div>
 
 <p>As you can see, the <code>@anchor</code> command itself produces no output.
 This example defines an anchor &lsquo;x-spot&rsquo; just before the word &lsquo;spot&rsquo;.

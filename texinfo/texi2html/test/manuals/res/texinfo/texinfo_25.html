@@ -137,8 +137,9 @@ conveniently small parts.
 the same line by the name of a file to be included.  For
 example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@include buffers.texi
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@include buffers.texi
+</pre></div>
 
 <p>An included file should simply be a segment of text that you expect to
 be included as is into the overall or <em>outer</em> Texinfo file; it
@@ -335,7 +336,8 @@ them.
 within it before running <code>texinfo-multiple-files-update</code>, which
 would insert a main or master menu:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo @c -*-texinfo-*-
+<div class="example">
+<pre class="example">\input texinfo @c -*-texinfo-*-
 @setfilename  include-example.info
 @settitle Include Example
 </pre><pre class="example">
@@ -364,23 +366,25 @@ Copyright @copyright{} 2002 Free Software Foundation, Inc.
 @contents
 
 @bye
-</pre></td></tr></table>
+</pre></div>
 
 <p>An included file, such as &lsquo;<tt>foo.texinfo</tt>&rsquo;, might look like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node First, Second, , Top
+<div class="example">
+<pre class="example">@node First, Second, , Top
 @chapter First Chapter
 
 Contents of first chapter &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The full contents of &lsquo;<tt>concept-index.texinfo</tt>&rsquo; might be as simple as this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node Concept Index
+<div class="example">
+<pre class="example">@node Concept Index
 @unnumbered Concept Index
 
 @printindex cp
-</pre></td></tr></table>
+</pre></div>
 
 <p>The outer Texinfo source file for <cite>The GNU Emacs Lisp Reference
 Manual</cite> is named &lsquo;<tt>elisp.texi</tt>&rsquo;.  This outer file contains a master

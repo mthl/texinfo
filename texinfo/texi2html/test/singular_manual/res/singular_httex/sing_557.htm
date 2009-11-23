@@ -103,10 +103,12 @@ ul.no-bullet {list-style: none}
 <dt><strong>Compute:</strong></dt>
 <dd><p>A presentation of Hom(M&rsquo;,N&rsquo;), M&rsquo;=coker(M), N&rsquo;=coker(N) as follows:
 let
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">   F1 --M-&gt; F0 --&gt;M' --&gt; 0,    G1 --N-&gt; G0 --&gt; N' --&gt; 0  
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">   F1 --M-&gt; F0 --&gt;M' --&gt; 0,    G1 --N-&gt; G0 --&gt; N' --&gt; 0  
+</pre></div>
 <p>be presentations of M&rsquo; and N&rsquo;. Consider
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">                                  0               0
+</p><div class="smallexample">
+<pre class="smallexample">                                  0               0
                                   |^              |^
        0 --&gt; Hom(M',N') ----&gt; Hom(F0,N') ----&gt; Hom(F1,N')
                                   |^              |^
@@ -115,23 +117,25 @@ let
   (B,C:induced by N)              |C              |B
                               Hom(F0,G1) ----&gt; Hom(F1,G1)
 
-</pre></td></tr></table>
+</pre></div>
 <p>Let D=modulo(A,B) and Hom=modulo(D,C), then we have exact sequences
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">   R^p  --D-&gt; Hom(F0,G0) --A-&gt; Hom(F1,G0)/im(B),
+</p><div class="smallexample">
+<pre class="smallexample">   R^p  --D-&gt; Hom(F0,G0) --A-&gt; Hom(F1,G0)/im(B),
 
  R^q -Hom-&gt; R^p --D-&gt; Hom(F0,G0)/im(C) --A-&gt; Hom(F1,G0)/im(B).
-</pre></td></tr></table>
+</pre></div>
 <p>Hence Hom presents Hom(M&rsquo;,N&rsquo;)
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>module Hom, a presentation of Hom(M&rsquo;,N&rsquo;), resp., in case of
 3 arguments, a list l (of size &lt;=3):
-</p><pre class="format">           - l[1] = Hom
+</p><div class="format">
+<pre class="format">           - l[1] = Hom
            - l[2] = SB of Hom
            - l[3] = kbase of coker(Hom) (if finite dimensional, not 0),
                     represented by elements in Hom(F0,G0) via mapping D
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Display:</strong></dt>
@@ -147,7 +151,8 @@ from another proc has the same effect as decreasing printlevel by 1.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;homolog.lib&quot;;
 int p     = printlevel;
 printlevel= 1;   //in 'example proc' printlevel has to be increased by 1
 ring r    = 0,(x,y),dp;
@@ -236,7 +241,7 @@ list l=Hom(M,N,1);
 &rarr; 0, y3,y2,y,1,0,   0,   0,  0, 0,  0, 0,0, 0,0,0,   
 &rarr; y3,0, 0, 0,0,0,   0,   0,  0, 0,  0, 0,0, 0,0,0    
 printlevel = p;
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

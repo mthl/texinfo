@@ -92,11 +92,12 @@ ul.no-bullet {list-style: none}
 
 <p>You can specify text to be included in any output format <em>other</em>
 than some given one with the <code>@ifnot&hellip;</code> commands:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@ifnothtml &hellip; @end ifnothtml
+</p><div class="example">
+<pre class="example">@ifnothtml &hellip; @end ifnothtml
 @ifnotinfo &hellip; @end ifnotinfo
 @ifnotplaintext &hellip; @end ifnotplaintext
 @ifnottex &hellip; @end ifnottex
-</pre></td></tr></table>
+</pre></div>
 <p>(The <code>@ifnot&hellip;</code> command and the <code>@end</code> command must
 appear on lines by themselves in your actual source file.)
 </p>
@@ -107,8 +108,9 @@ region is included.  Otherwise, it is ignored.
 text is omitted for both Info and plain text output, not just Info.  To
 specify text which appears only in Info and not in plain text, use
 <code>@ifnotplaintext</code>, like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This will be in Info, but not plain text.
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">This will be in Info, but not plain text.
+</pre></div>
 
 <p>The regions delimited by these commands are ordinary Texinfo source as
 with <code>@iftex</code>, not raw formatter source as with <code>@tex</code>

@@ -109,14 +109,15 @@ string &quot;ERROR&quot; if sizes do not match
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;spcurve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;spcurve.lib&quot;;
 ring r=32003,(x,y,z),ds;
 matrix N[2][3]=z,0,y,x,x^3,y;
 intmat W[2][3]=1,1,1,1,1,1;
 intvec a=1,1,1;
 relweight(N,W,a);
 &rarr; 2
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

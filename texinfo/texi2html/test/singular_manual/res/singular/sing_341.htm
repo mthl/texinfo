@@ -169,7 +169,8 @@ from above.
 Finally we demonstrate the use of the type <code>resolution</code> in connection with
 the <code>lres</code> command.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  // Two transversal cusps in (k^3,0):
+<div class="smallexample">
+<pre class="smallexample">  // Two transversal cusps in (k^3,0):
   ring r2 =0,(x,y,z),ds;
   ideal i =z2-1y3+x3y,xz,-1xy2+x4,x3z;
   resolution rs=mres(i,0);   // computes a minimal resolution
@@ -273,7 +274,7 @@ the <code>lres</code> command.
 &rarr; 
   size(list(rs));            //gets the minimized resolution
 &rarr; 6
-</pre></td></tr></table>
+</pre></div>
 
 
 </td>

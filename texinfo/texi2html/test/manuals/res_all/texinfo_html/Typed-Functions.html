@@ -99,19 +99,21 @@ particular entity, and its arguments, if any.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn {Library Function} int foobar
+<div class="example">
+<pre class="example">@deftypefn {Library Function} int foobar
    (int @var{foo}, float @var{bar})
 &hellip;
 @end deftypefn
-</pre></td></tr></table>
+</pre></div>
 
 <p>(where the text before the &ldquo;&hellip;&rdquo;, shown above as two lines, would
 actually be a single line in a real Texinfo file) produces the following
 in Info:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">-- Library Function: int foobar (int FOO, float BAR)
+<div class="smallexample">
+<pre class="smallexample">-- Library Function: int foobar (int FOO, float BAR)
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>This means that <code>foobar</code> is a &ldquo;library function&rdquo; that returns an
 <code>int</code>, and its arguments are <var>foo</var> (an <code>int</code>) and
@@ -126,10 +128,11 @@ above, the argument names are &lsquo;<samp>foo</samp>&rsquo; and &lsquo;<samp>ba
 </p>
 <p>The template for <code>@deftypefn</code> is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var> &hellip;
+<div class="example">
+<pre class="example">@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var> &hellip;
 <var>body-of-description</var>
 @end deftypefn
-</pre></td></tr></table>
+</pre></div>
 
 <p>Note that if the <var>category</var> or <var>data type</var> is more than one
 word then it must be enclosed in braces to make it a single argument.
@@ -141,12 +144,13 @@ paragraphs.
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftypefn stacks private push
+<div class="example">
+<pre class="example">@deftypefn stacks private push
         (@var{s}:in out stack;
         @var{n}:in integer)
 &hellip;
 @end deftypefn
-</pre></td></tr></table>
+</pre></div>
 
 <p>(The <code>@deftypefn</code> arguments are shown split into three lines, but
 would be a single line in a real Texinfo file.)
@@ -168,23 +172,26 @@ for functions in typed languages.  The command is equivalent to
 </p>
 <p>Thus,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">@deftypefun int foobar (int @var{foo}, float @var{bar})
+<div class="smallexample">
+<pre class="smallexample">@deftypefun int foobar (int @var{foo}, float @var{bar})
 &hellip;
 @end deftypefun
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces the following in Info:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">-- Function: int foobar (int FOO, float BAR)
+<div class="example">
+<pre class="example">-- Function: int foobar (int FOO, float BAR)
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deftypefun <var>type</var> <var>name</var> <var>arguments</var>&hellip;
+<div class="example">
+<pre class="example">@deftypefun <var>type</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-description</var>
 @end deftypefun
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@deftypefun</code> creates an entry in the index of functions for
 <var>name</var>.

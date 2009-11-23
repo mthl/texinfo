@@ -115,7 +115,8 @@ i.e. kbaseM*A = reduce(N,std(M))
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;deform.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;deform.lib&quot;;
 ring r=0,(A,B,x,y),dp;
 module M      = [x2,xy],[xy,y3],[y2],[0,x];
 module kbaseM = [1],[x],[xy],[y],[0,1],[0,y],[0,y2];
@@ -135,7 +136,7 @@ print(A);
 print(matrix(kbaseM)*A-matrix(reduce(N,std(M))));
 &rarr; 0,0,
 &rarr; 0,0 
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

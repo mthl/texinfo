@@ -75,7 +75,8 @@ recursively when you specify a directory as an
 argument.  For instance, consider this directory
 structure:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">      <code>$HOME</code>
+<div class="example">
+<pre class="example">      <code>$HOME</code>
         |
         +--<tt>tc</tt>
         |   |
@@ -98,7 +99,7 @@ structure:
                  |  (internal CVS files)
                  +--<tt>testpgm.t</tt>
                  +--<tt>test2.t</tt>
-</pre></td></tr></table>
+</pre></div>
 
 <p>If &lsquo;<tt>tc</tt>&rsquo; is the current working directory, the
 following is true:
@@ -107,8 +108,9 @@ following is true:
 <li>
 &lsquo;<samp>cvs update testing</samp>&rsquo; is equivalent to
 
-<table><tr><td>&nbsp;</td><td><pre class="example">cvs update testing/testpgm.t testing/test2.t
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">cvs update testing/testpgm.t testing/test2.t
+</pre></div>
 
 </li><li>
 &lsquo;<samp>cvs update testing man</samp>&rsquo; updates all files in the
@@ -131,8 +133,9 @@ turned off with the &lsquo;<samp>-l</samp>&rsquo; option.
 Conversely, the &lsquo;<samp>-R</samp>&rsquo; option can be used to force recursion if
 &lsquo;<samp>-l</samp>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section <a href="cvs_16.html#g_t_007e_002f_002ecvsrc">Default options and the ~/.cvsrc file</a>).
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs update -l         # <span class="roman">Don't update files in subdirectories</span>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">$ cvs update -l         # <span class="roman">Don't update files in subdirectories</span>
+</pre></div>
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">

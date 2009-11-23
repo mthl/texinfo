@@ -109,7 +109,8 @@ used. If there is at least one space surrounding the <code>/</code> operator
 the <code>div</code> operator instead of <code>/</code> for integer division and an
 explicit type cast to <code>number</code> for ring division. Note, that this
 problem does only occur for divisions of numerical constants.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32002,x,dp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=32002,x,dp;
   3/2;    // ring division
 &rarr; -15994
   3 / 2;  // integer division
@@ -126,21 +127,22 @@ problem does only occur for divisions of numerical constants.
   int d=2;
   c / d;
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 
 </li><li> monomials and precedence
 <a name="index-monomials-and-precedence"></a>
 
 <p>The computation of a monomial has precedence over all operators:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y),dp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y),dp;
   2xy^2 == (2*x*y)^2;
 &rarr; 1
   2xy^2 == 2x*y^2;
 &rarr; 0
   2x*y^2 == 2*x * (y^2);
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 </li><li> meaning of <code>mult</code>
 <a name="index-mult-1"></a>
@@ -193,7 +195,8 @@ returned as a <code>string</code>. Square brackets enclosing an <code>intvec</co
 position given by the values of the <code>intvec</code>. The result is
 returned as an expression list of strings. 
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  string s = &quot;one-word&quot;;
+<div class="smallexample">
+<pre class="smallexample">  string s = &quot;one-word&quot;;
   s[2,6];     // a substring starting at the second char
 &rarr; ne-wor
   size(_);
@@ -209,7 +212,7 @@ returned as an expression list of strings.
   v = 2,6,8;
   s[v];
 &rarr; n o d
-</pre></td></tr></table>
+</pre></div>
 
 
 </li></ol>

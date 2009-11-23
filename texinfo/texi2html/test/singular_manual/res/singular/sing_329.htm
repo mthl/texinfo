@@ -115,13 +115,14 @@ a monomial consisting of global ring variables written without operators.
 as ring  variables. However, the above identifier resolution order must
 be kept in mind. Otherwise, surprising results may come up.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x,y),dp;
+<div class="smallexample">
+<pre class="smallexample">ring r=0,(x,y),dp;
 int x;
 x*y; // resolved product int*poly, i.e., 0*y
 &rarr; 0
 xy; // &quot;xy&quot; is one identifier and resolved to monomial xy
 &rarr; xy
-</pre></td></tr></table>
+</pre></div>
 
 <p>For these reasons, we strongly recommend not to use variables which
 have the same name(s) as ring variables.
@@ -131,7 +132,8 @@ fully contained in (i.e., is a substring of) another name of a ring
 variable. Otherwise, effects like the following might occur:
 </p>
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x, x1),dp; // name x is substring of name x1 !!!!!!!!!
+<div class="smallexample">
+<pre class="smallexample">ring r=0,(x, x1),dp; // name x is substring of name x1 !!!!!!!!!
 x;x1;   // resolved poly x
 &rarr; x
 &rarr; x1
@@ -139,7 +141,7 @@ short=0; 2x1; // resolved to monomial 2*x^1 !!!!!!
 &rarr; 2*x
 2*x1; // resolved to product 2 times x1
 &rarr; 2*x1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

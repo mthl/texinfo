@@ -237,18 +237,20 @@ printout by setting <code>zprint</code> false or true. For example the following
 code, in sequence &lsquo;<tt>zsteer</tt>&rsquo;, triggers printing for every 
 <code>modzprint</code> time step and the two following time steps:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">ZPRINT = mod(istep+1,modzprint).eq.0;
+<div class="example">
+<pre class="example">ZPRINT = mod(istep+1,modzprint).eq.0;
 Zprint = zprint .or. mod(istep+1,modzprint).eq.1;
 Zprint = zprint .or. mod(istep+1,modzprint).eq.2;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The data output to &lsquo;<tt>.data</tt>&rsquo; files described in <a href="Setting-and-running-a-model.html#Simulation-and-output">Running a simulation and using the output</a> is performed if the
 <code>logical</code> variable <code>zout</code> is true. For example the following
 code, in &lsquo;<tt>zsteer</tt>&rsquo;, triggers output to &lsquo;<tt>.data</tt>&rsquo; files every 
 <code>modzout</code> step.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Zout = mod(istep,modzout).eq.0;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Zout = mod(istep,modzout).eq.0;
+</pre></div>
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">

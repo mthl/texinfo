@@ -99,12 +99,14 @@ ul.no-bullet {list-style: none}
 <dt><strong>Compute:</strong></dt>
 <dd><p>a presentation of Tor_k(M&rsquo;,N&rsquo;), for k=v[1],v[2],... , where
 M&rsquo;=coker(M) and N&rsquo;=coker(N): let
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">       0 &lt;-- M' &lt;-- G0 &lt;-M-- G1                
+</p><div class="smallexample">
+<pre class="smallexample">       0 &lt;-- M' &lt;-- G0 &lt;-M-- G1                
        0 &lt;-- N' &lt;-- F0 &lt;--N- F1 &lt;-- F2 &lt;--...  
-</pre></td></tr></table>
+</pre></div>
 <p>be a presentation of M&rsquo;, resp. a free resolution of N&rsquo;, and consider
 the commutative diagram
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">          0                    0                    0
+</p><div class="smallexample">
+<pre class="smallexample">          0                    0                    0
           |^                   |^                   |^
   Tensor(M',Fk+1) -Ak+1-&gt; Tensor(M',Fk) -Ak-&gt; Tensor(M',Fk-1)
           |^                   |^                   |^
@@ -114,13 +116,14 @@ the commutative diagram
                           Tensor(G1,Fk) ----&gt; Tensor(G1,Fk-1)
 
        (Ak,Ak+1 induced by N and B,C induced by M).
-</pre></td></tr></table>
+</pre></div>
 <p>Let K=modulo(Ak,B), J=module(C)+module(Ak+1) and Tor=modulo(K,J),
 then we have exact sequences
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">    R^p  --K-&gt; Tensor(G0,Fk) --Ak-&gt; Tensor(G0,Fk-1)/im(B),
+</p><div class="smallexample">
+<pre class="smallexample">    R^p  --K-&gt; Tensor(G0,Fk) --Ak-&gt; Tensor(G0,Fk-1)/im(B),
 
     R^q -Tor-&gt; R^p --K-&gt; Tensor(G0,Fk)/(im(C)+im(Ak+1)). 
-</pre></td></tr></table>
+</pre></div>
 <p>Hence, Tor presents Tor_k(M&rsquo;,N&rsquo;).
 </p>
 </dd>
@@ -128,11 +131,12 @@ then we have exact sequences
 <dd><p>- if v is of type int: module Tor, a presentation of Tor_k(M&rsquo;,N&rsquo;);<br>
 - if v is of type intvec: a list of Tor_k(M&rsquo;,N&rsquo;) (k=v[1],v[2],...);<br>
 - in case of a third argument of any type: list l with
-</p><pre class="format">     l[1] = module Tor/list of Tor_k(M&rsquo;,N&rsquo;),
+</p><div class="format">
+<pre class="format">     l[1] = module Tor/list of Tor_k(M&rsquo;,N&rsquo;),
      l[2] = SB of Tor/list of SB of Tor_k(M&rsquo;,N&rsquo;),
      l[3] = matrix/list of matrices, each representing a kbase of Tor_k(M&rsquo;,N&rsquo;)
                 (if finite dimensional), or 0.
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Display:</strong></dt>
@@ -148,7 +152,8 @@ or: list P=mres(M,2); list Q=mres(N,2); Tor(k,P[2],Q[2]);
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;homolog.lib&quot;;
 int p      = printlevel;
 printlevel = 1;
 ring r     = 0,(x,y),dp;
@@ -222,7 +227,7 @@ list l     = Tor(3,M,M,1);     // Tor_3(R^2/M,R^2/M) over R=r/i
 &rarr; 0,0,0,1 
 &rarr; 
 printlevel = p;
-</pre></td></tr></table>
+</pre></div>
 </td>
 </tr>
 </table>

@@ -108,14 +108,15 @@ to proc Hcode
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;classify.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;classify.lib&quot;;
 ring r=0,(x,y,z),ds;
 poly f=x2y+y3+z2;
 milnorcode(f);
 &rarr; 1,1,1
 milnorcode(f,2);  // a big second argument may result in memory overflow
 &rarr; 1,0,1,0,2,0,0,1,0
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

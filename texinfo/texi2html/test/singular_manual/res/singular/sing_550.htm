@@ -116,10 +116,11 @@ b_1,b_2,... is a kbase of Ext^1 and &amp; denotes cup product;<br>
 present the coordinates of (1/2)(b_i&amp;b_j + b_j&amp;b_i) with respect to
 a kbase of Ext^2;
 <br>- if called with 3 arguments: list,
-</p><pre class="format">      L[1] = matrix see above (symmetric case, for &gt;=2 arguments)
+</p><div class="format">
+<pre class="format">      L[1] = matrix see above (symmetric case, for &gt;=2 arguments)
       L[2] = matrix of kbase of Ext^1
       L[3] = matrix of kbase of Ext^2
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -130,7 +131,8 @@ a kbase of Ext^2;
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;homolog.lib&quot;;
 int p      = printlevel;
 ring  rr   = 32003,(x,y,z),(dp,C);
 ideal  I   = x4+y3+z2;
@@ -196,7 +198,7 @@ print(cup(M));
 &rarr; 0,1,0, 0,0,
 &rarr; 0,0,-1,1,0 
 printlevel = p;
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

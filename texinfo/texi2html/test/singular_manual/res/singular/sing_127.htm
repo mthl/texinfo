@@ -96,8 +96,9 @@ ul.no-bullet {list-style: none}
 </p><ol>
 <li>
 a monomial (there are NO spaces allowed inside a monomial)
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  [coefficient] ring_variable [ exponent] [ring_variable [exponent] &hellip;]
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">  [coefficient] ring_variable [ exponent] [ring_variable [exponent] &hellip;]
+</pre></div>
 <p>monomials which contain an indexed ring variable
 must be built from <code>ring_variable</code> and <code>coefficient</code>
 with the operations <code>*</code> and <code>^</code>
@@ -115,7 +116,8 @@ a type cast to poly
 </li></ol>
 
 <br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">2x, x3, 2x2y3, xyz, 2xy2; //  are monomials
+</p><div class="smallexample">
+<pre class="smallexample">2x, x3, 2x2y3, xyz, 2xy2; //  are monomials
 2*x, x^3, 2*x^2*y^3, x*y*z, 2*x*y^2; // are poly expressions
 2*x(1); // is a valid poly expression, but not 2x(1) (a syntax error)
 2*x^3;  // is a valid poly expression equal to 2x3 (a valid monomial)
@@ -137,7 +139,7 @@ a type cast to poly
 &rarr; 102
   typeof(_);
 &rarr; poly
-</pre></td></tr></table>
+</pre></div>
 
 <p>See 
 <a href="sing_37.htm#Type-conversion-and-casting">Type conversion and casting</a>;

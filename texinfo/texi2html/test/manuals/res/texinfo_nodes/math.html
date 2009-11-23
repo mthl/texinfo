@@ -92,13 +92,15 @@ ul.no-bullet {list-style: none}
 <p>You can write a short mathematical expression with the <code>@math</code>
 command.  Write the mathematical expression between braces, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@math{(a + b)(a + b) = a^2 + 2ab + b^2}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@math{(a + b)(a + b) = a^2 + 2ab + b^2}
+</pre></div>
 
 <p>This produces the following in Info:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(a + b)(a + b) = a^2 + 2ab + b^2
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(a + b)(a + b) = a^2 + 2ab + b^2
+</pre></div>
 
 <p>Thus, the <code>@math</code> command has no effect on the Info output.
 </p>
@@ -107,12 +109,14 @@ write superscripts and subscripts (as in the above example), but also
 allows you to use any of the plain TeX math control sequences.  It&rsquo;s
 conventional to use &lsquo;<samp>\</samp>&rsquo; instead of &lsquo;<samp>@</samp>&rsquo; for these commands.
 As in:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@math{\sin 2\pi \equiv \cos 3\pi}
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">@math{\sin 2\pi \equiv \cos 3\pi}
+</pre></div>
 
 <p>which looks like the input in Info and HTML:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">\sin 2\pi \equiv \cos 3\pi
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">\sin 2\pi \equiv \cos 3\pi
+</pre></div>
 
 <a name="index-_005c-_0028literal-_005c-in-_0040math_0029"></a>
 <p>Since &lsquo;<samp>\</samp>&rsquo; is an escape character inside <code>@math</code>, you can use

@@ -128,7 +128,8 @@ Decker, Heydtmann, Schreyer (1998)).
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;finvar.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;finvar.lib&quot;;
 ring R=3,(x,y,z),dp;
 matrix A[3][3]=0,1,0,-1,0,0,0,0,-1;
 list L=group_reynolds(A);
@@ -139,7 +140,7 @@ if(system(&quot;with&quot;,&quot;Namespaces&quot;)) { kill Top::`newring`; }
 kill `newring`;
 print(P);
 &rarr; z2,x2+y2,x2y2
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

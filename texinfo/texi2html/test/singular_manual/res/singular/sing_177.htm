@@ -107,7 +107,8 @@ with <code>quote</code> and <code>write</code> to
 prevent local evaluations  when writing to an MPtcp link.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  link l=&quot;MPfile:w example.mp&quot;;
+<dd><div class="smallexample">
+<pre class="smallexample">  link l=&quot;MPfile:w example.mp&quot;;
   ring r=0,(x,y,z),ds;
   ideal i=maxideal(3);
   ideal j=x7,x2,z;
@@ -120,7 +121,7 @@ prevent local evaluations  when writing to an MPtcp link.
   // read(l) forces to compute 'std(ideal(x3,...,z))'
   read(l);
   close(l);
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

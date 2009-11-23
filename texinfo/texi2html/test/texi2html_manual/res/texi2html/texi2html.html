@@ -107,9 +107,10 @@ version/edition of the manual (can be found at start of
 Texinfo source file; use the entry Id under Revisions).
 </p>
 <p>Please note:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This manual is currently under
+</p><div class="example">
+<pre class="example">This manual is currently under
 construction and of course incomplete ;-)
-</pre></td></tr></table>
+</pre></div>
 
 <hr size="6">
 <a name="Overview"></a>
@@ -281,8 +282,9 @@ How?
 <a name="index-frames"></a>
 <p>Result based on using &lsquo;<samp>-frames</samp>&rsquo;
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">texi2html -V -frames texi2html.texi
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">texi2html -V -frames texi2html.texi
+</pre></div>
 <p>Explanation of the output differences against default,
 whatever this is ;-)
 </p>
@@ -524,7 +526,8 @@ design.
 <p>The following code is the original code out of the
 initialization file (see section <a href="#InitFile">Initialization file</a>).
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">sub T2H_DEFAULT_print_toc_frame
+<div class="example">
+<pre class="example">sub T2H_DEFAULT_print_toc_frame
 {
   my $fh = shift;
   &amp;$T2H_print_page_head($fh);
@@ -534,7 +537,7 @@ EOT
   print $fh map {s/HREF=/target=\&quot;main\&quot; HREF=/; $_;} @stoc_lines;
   print $fh &quot;&lt;/BODY&gt;&lt;/HTML&gt;\n&quot;;
 }
-</pre></td></tr></table>
+</pre></div>
 
 <p>As you can see it is very simple Perl Code, which can
 be changed more or less simple to fit you requirements
@@ -562,7 +565,8 @@ be changed more or less simple to fit you requirements
 <h3 class="subsection">5.5.2 Page header</h3>
 <p>Page Head <code>T2H_DEFAULT_print_page_head</code>
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">sub T2H_DEFAULT_print_page_head
+<div class="example">
+<pre class="example">sub T2H_DEFAULT_print_page_head
 {
   my $fh = shift; 
   my $longtitle = &quot;$T2H_THISDOC{title}: $T2H_NAME{This}&quot;;
@@ -588,7 +592,7 @@ $T2H_EXTRA_HEAD
 $T2H_AFTER_BODY_OPEN
 EOT
 }
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="CustPagePageFoot"></a>
@@ -706,11 +710,12 @@ needed steps.
 
 <a name="index-T2H_005fBODYTEXT"></a>
 
-<table><tr><td>&nbsp;</td><td><pre class="example">$T2H_BODYTEXT =
+<div class="example">
+<pre class="example">$T2H_BODYTEXT =
     . 'LANG=&quot;' . $T2H_LANG . '&quot; BGCOLOR=&quot;#FFFFFF&quot; '
     . 'TEXT=&quot;#000000&quot; LINK=&quot;#0000FF&quot; '
     . 'VLINK=&quot;#800080&quot; ALINK=&quot;#FF0000&quot;';
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you like to change the basic color combination, you can
 change the entry <var>T2H_BODYTEXT</var>.
@@ -759,7 +764,8 @@ change the entry <var>T2H_BODYTEXT</var>.
 
 <a name="index-T2H_005fEXTRA_005fHEAD"></a>
 
-<table><tr><td>&nbsp;</td><td><pre class="example"># text inserted after &lt;BODY ...&gt;
+<div class="example">
+<pre class="example"># text inserted after &lt;BODY ...&gt;
 $T2H_AFTER_BODY_OPEN = '';
 
 #text inserted before &lt;/BODY&gt;
@@ -772,7 +778,7 @@ $T2H_ADDRESS .= &quot;on &lt;I&gt;$T2H_TODAY&lt;/I&gt;&quot;;
 # this is added inside &lt;HEAD&gt;&lt;/HEAD&gt; after &lt;TITLE&gt; and some META NAME stuff
 # can be used for &lt;style&gt; &lt;script&gt;, &lt;meta&gt; tags
 $T2H_EXTRA_HEAD = '';
-</pre></td></tr></table>
+</pre></div>
 
 <p>The default output into the <acronym>HTML</acronym> file.
 See section <a href="#OptionDocType">DocType</a>.
@@ -784,7 +790,8 @@ See section <a href="#OptionDocType">DocType</a>.
 <p>Detailed information can be found at
 <a href="#CustPagePageHead">Page header</a>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">&lt;HTML&gt;
+<div class="example">
+<pre class="example">&lt;HTML&gt;
 $T2H_DOCTYPE
 &lt;!-- Created on $T2H_TODAY by $THISPROG --&gt;
 &lt;!-- 
@@ -803,7 +810,7 @@ $T2H_EXTRA_HEAD
 
 &lt;BODY $T2H_BODYTEXT&gt;
 $T2H_AFTER_BODY_OPEN
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="CustHTMLHead"></a>
@@ -1392,8 +1399,9 @@ of texi2html
 <a name="index-T2H_005fDOCTYPE"></a>
 <p>&lsquo;<samp>-doctype</samp>&rsquo;
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+</pre></div>
 
 <hr>
 <a name="OptionCheck"></a>
@@ -1508,9 +1516,10 @@ works fine without it &mdash; on the contrary: if there, it
 inserts space between headers and start of text (obachman
 3/99)
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$T2H_INVISIBLE_MARK = &quot;&quot;;
+<div class="example">
+<pre class="example">$T2H_INVISIBLE_MARK = &quot;&quot;;
 # $T2H_INVISIBLE_MARK = '&amp;#160;';
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="OptionIso"></a>

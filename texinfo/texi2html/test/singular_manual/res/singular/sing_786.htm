@@ -113,7 +113,8 @@ vector field by the matrix m componentwise to id;
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;ainvar.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;ainvar.lib&quot;;
 ring q=0,(x,y,z,u,v,w),dp;
 poly f=2xz-y2;
 matrix m[6][1] =x,y,0,u,v;
@@ -125,7 +126,7 @@ derivate(m,v);
 derivate(m,ideal(2xz-y2,u6-3));
 &rarr; _[1]=-2y2+2xz
 &rarr; _[2]=6u6
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

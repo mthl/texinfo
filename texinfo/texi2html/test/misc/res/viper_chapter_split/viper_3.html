@@ -406,12 +406,14 @@ of the form <kbd>/foo//bar</kbd> as <kbd>/bar</kbd> and <kbd>/foo/~/bar</kbd> as
 <p>Viper provides buffer search, the ability to search the buffer for a region
 under the cursor.  You have to turn this on in &lsquo;<tt>.viper</tt>&rsquo; either by calling
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(viper-buffer-search-enable)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(viper-buffer-search-enable)
+</pre></div>
 
 <p>or by setting <code>viper-buffer-search-char</code> to, say, <kbd>f3</kbd>:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(setq viper-buffer-search-char ?g)
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">(setq viper-buffer-search-char ?g)
+</pre></div>
 
 <p>If the user calls <code>viper-buffer-search-enable</code> explicitly (the first
 method), then <code>viper-buffer-search-char</code> will be set to <kbd>g</kbd>.
@@ -444,8 +446,9 @@ word by clicking on it.  See section <a href="viper_4.html#Viper-Specials">Viper
 them.  This is done through what is known as <em>faces</em> in Emacs.  The
 variable that controls how search patterns are highlighted is
 <code>viper-search-face</code>.  If you don&rsquo;t want any highlighting at all, put
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(copy-face 'default 'viper-search-face)
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">(copy-face 'default 'viper-search-face)
+</pre></div>
 <a name="index-viper_002dsearch_002dface"></a>
 <p>in &lsquo;<tt>~/.viper</tt>&rsquo;.  If you want to change how patterns are highlighted, you
 will have to change <code>viper-search-face</code> to your liking.  The easiest
@@ -527,8 +530,9 @@ refusing to move beyond the line, &lt;ESC&gt; moving one character back,
 etc.  These derive from Ex, which is a line editor.  If your &lsquo;<tt>.viper</tt>&rsquo;
 contains
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><code>(setq viper-ex-style-motion nil)</code>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example"><code>(setq viper-ex-style-motion nil)</code>
+</pre></div>
 
 <p>the motion will be a true screen editor motion.  One thing you must then
 watch out for is that it is possible to be on the end-of-line character.
@@ -569,8 +573,9 @@ the value can be <code>reformed-vi</code> or <code>emacs</code>.
 various major modes by executing <code>viper-set-syntax-preference</code> as in
 the following example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(viper-set-syntax-preference nil &quot;emacs&quot;)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(viper-set-syntax-preference nil &quot;emacs&quot;)
+</pre></div>
 
 <a name="index-viper_002dset_002dsyntax_002dpreference"></a>
 

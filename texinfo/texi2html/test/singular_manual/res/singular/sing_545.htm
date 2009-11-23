@@ -104,7 +104,8 @@ ul.no-bullet {list-style: none}
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;elim.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;elim.lib&quot;;
 ring r=0,(x,y,t,s,z),(c,dp);
 ideal i=x-y,y-z2,z-t3,s-x+y3;
 nselect(i,3);
@@ -122,7 +123,7 @@ show(nselect(m,3,4));
 &rarr; // module, 2 generator(s)
 &rarr; [x-y,x-y]
 &rarr; [-z2+y,-z2+y]
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_547.htm#select">select</a>;
 <a href="sing_548.htm#select1">select1</a>.

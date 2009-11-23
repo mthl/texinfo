@@ -103,7 +103,8 @@ the monomial <code>noether</code> during the computation.
 <br>Reset <code>noether</code> by setting <code>noether</code> to 0.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=32003,(x,y,z),ds;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R=32003,(x,y,z),ds;
   ideal i=x2+y12,y13;
   std(i);
 &rarr; _[1]=x2+y12
@@ -112,7 +113,7 @@ the monomial <code>noether</code> during the computation.
   std(i);
 &rarr; _[1]=x2
   noether=0; //disables noether
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

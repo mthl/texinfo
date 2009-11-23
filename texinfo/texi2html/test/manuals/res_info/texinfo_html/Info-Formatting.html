@@ -119,18 +119,20 @@ want to format only part of a file&mdash;that is, a region.
 
 <p>For example, after writing a Texinfo file, you can type the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-u C-c C-u m
+<div class="example">
+<pre class="example">C-u C-c C-u m
 or
 C-u M-x texinfo-master-menu
-</pre></td></tr></table>
+</pre></div>
 
 <p>This updates all the nodes and menus.  Then type the following to create
 an Info file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-m C-b
+<div class="example">
+<pre class="example">C-c C-m C-b
 or
 M-x makeinfo-buffer
-</pre></td></tr></table>
+</pre></div>
 
 <p>For TeX or the Info formatting commands to work, the file <em>must</em>
 include a line that has <code>@setfilename</code> in its header.

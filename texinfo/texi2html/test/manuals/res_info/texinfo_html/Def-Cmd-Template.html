@@ -96,18 +96,20 @@ the same format.)
 </p>
 <p>The template for a definition looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
+<div class="example">
+<pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end deffn
-</pre></td></tr></table>
+</pre></div>
 
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deffn Command forward-word count
+<div class="example">
+<pre class="example">@deffn Command forward-word count
 This command moves point forward @var{count} words
 (or backward if @var{count} is negative). &hellip;
 @end deffn
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
@@ -123,10 +125,11 @@ This command moves point forward @var{count} words
 category contains spaces, as in the phrase &lsquo;Interactive Command&rsquo;,
 write braces around it.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@deffn {Interactive Command} isearch-forward
+<div class="example">
+<pre class="example">@deffn {Interactive Command} isearch-forward
 &hellip;
 @end deffn
-</pre></td></tr></table>
+</pre></div>
 
 <p>Otherwise, the second word will be mistaken for the name of the
 entity.
@@ -147,19 +150,21 @@ particular kinds of variables.
 similar to the template for a generalized definition, except that you
 do not need to specify the category:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defun <var>name</var> <var>arguments</var>&hellip;
+<div class="example">
+<pre class="example">@defun <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end defun
-</pre></td></tr></table>
+</pre></div>
 
 <p>Thus,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defun buffer-end flag
+<div class="example">
+<pre class="example">@defun buffer-end flag
 This function returns @code{(point-min)} if @var{flag}
 is less than 1, @code{(point-max)} otherwise.
 &hellip;
 @end defun
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>

@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.252 2009-11-23 13:30:47 pertusus Exp $
+# $Id: texi2html.init,v 1.253 2009-11-23 22:31:37 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -342,7 +342,7 @@ $FIRSTPARAGRAPHINDENT = 'none';
 $HEADER_IN_TABLE = 0;
 
 # use table for indentation of complex formats
-$COMPLEX_FORMAT_IN_TABLE = 1;
+$COMPLEX_FORMAT_IN_TABLE = 0;
 
 # if set, node names are used to construct file names
 # if undef, it is set if split at node, or $NODE_FILES is set.

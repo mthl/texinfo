@@ -110,7 +110,8 @@ The TeX implementation cannot construct macros that define macros in
 the natural way.  To do this, you must use conditionals and raw TeX.
 For example:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@ifnottex
+<div class="example">
+<pre class="example">@ifnottex
 @macro ctor {name, arg}
 @macro \name\
 something involving \arg\ somehow
@@ -121,7 +122,7 @@ something involving \arg\ somehow
 \gdef\ctor#1{\ctorx#1,}
 \gdef\ctorx#1,#2,{\def#1{something involving #2 somehow}}
 @end tex
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 It is best to avoid comments inside macro definitions.
@@ -133,6 +134,21 @@ of a manual, try expanding the macros with <code>makeinfo</code> by
 invoking <code>texi2dvi</code> with the &lsquo;<samp>-e</samp>&rsquo; option; see <a href="Format-with-texi2dvi.html#Format-with-texi2dvi">Format with <code>texi2dvi</code></a>.
 </p>
 <hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Defining-New-Texinfo-Commands.html#Defining-New-Texinfo-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Invoking-Macros.html#Invoking-Macros" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Defining-New-Texinfo-Commands.html#Defining-New-Texinfo-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="alias.html#alias" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#Hardcopy" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
 <p>
  <font size="-1">
   This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.

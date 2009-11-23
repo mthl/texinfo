@@ -114,11 +114,13 @@ and <code>libparse</code> (version 1-3-4 or higher) installed on your system.
 </p><ol>
 <li>
 Unpack lib2doc.tar.gz
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">gzip -dc  lib2doc.tar.gz | tar -pxf -
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">gzip -dc  lib2doc.tar.gz | tar -pxf -
+</pre></div>
 <p>and 
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">cd lib2doc
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">cd lib2doc
+</pre></div>
 
 </li><li> 
 Edit the beginning of the file <code>Makefile</code>, filling in the values for
@@ -127,8 +129,9 @@ and <code>LATEX2HTML</code>.
 
 </li><li> 
 Copy your library to the current directory:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">cp &lt;path-where-your-lib-is&gt;/mylib.lib .
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">cp &lt;path-where-your-lib-is&gt;/mylib.lib .
+</pre></div>
 
 </li><li> 
 Now you can run the following commands:
@@ -136,26 +139,30 @@ Now you can run the following commands:
 <dt><code>make mylib.hlp</code></dt>
 <dd><p>Generates the file <code>mylib.hlp</code> &ndash; the info file for the documentation
 of <code>mylib.lib</code>. This file can be viewed with
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">info -f mylib.hlp
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">info -f mylib.hlp
+</pre></div>
 </dd>
 <dt><code>make mylib.dvi</code></dt>
 <dd><p>Generates the file <code>mylib.dvi</code> &ndash; the dvi file for the documentation
 of <code>mylib.lib</code>. This file can be viewed with
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">xdvi mylib.dvi
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">xdvi mylib.dvi
+</pre></div>
 </dd>
 <dt><code>make mylib.ps</code></dt>
 <dd><p>Generates the file <code>mylib.ps</code> &ndash; the PostScript file for the documentation
 of <code>mylib.lib</code>. This file can be viewed with (for example)
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">ghostview mylib.dvi
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">ghostview mylib.dvi
+</pre></div>
 </dd>
 <dt><code>make mylib.html</code></dt>
 <dd><p>Generates the file <code>mylib.html</code> &ndash; the HTML file for the documentation
 of <code>mylib.lib</code>. This file can be viewed with (for example)
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">netscape mylib.html
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">netscape mylib.html
+</pre></div>
 </dd>
 <dt><code>make clean</code></dt>
 <dd><p>Deletes all generated files.

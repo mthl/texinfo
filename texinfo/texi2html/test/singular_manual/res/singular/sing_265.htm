@@ -103,12 +103,13 @@ ul.no-bullet {list-style: none}
 to the variable given as the third argument.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   poly f=3*(x+2)^3+y;
   poly g=x+y+z;
   resultant(f,g,x);
 &rarr; 3y3+9y2z+9yz2+3z3-18y2-36yz-18z2+35y+36z-24
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

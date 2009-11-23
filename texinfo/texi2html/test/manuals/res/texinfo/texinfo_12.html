@@ -234,7 +234,8 @@ very brief, these blank lines make the list look better.
 output it produces.  <code>@bullet</code> produces an &lsquo;<samp>*</samp>&rsquo; in Info and a
 round dot in TeX.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@itemize @bullet
+<div class="example">
+<pre class="example">@itemize @bullet
 @item
 Some text for foo.
 
@@ -242,7 +243,7 @@ Some text for foo.
 Some text
 for bar.
 @end itemize
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
@@ -260,7 +261,8 @@ for bar.
 <p>Itemized lists may be embedded within other itemized lists.  Here is a
 list marked with dashes embedded in a list marked with bullets:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@itemize @bullet
+<div class="example">
+<pre class="example">@itemize @bullet
 @item
 First item.
 
@@ -275,7 +277,7 @@ Second inner item.
 @item
 Second outer item.
 @end itemize
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
@@ -341,14 +343,15 @@ This generally makes it easier to read the Info file.
 </p>
 <p>Here is an example of <code>@enumerate</code> without an argument:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@enumerate
+<div class="example">
+<pre class="example">@enumerate
 @item
 Underlying causes.
 
 @item
 Proximate causes.
 @end enumerate
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
@@ -362,7 +365,8 @@ Proximate causes.
 <br>
 <p>Here is an example with an argument of <kbd>3</kbd>:
 </p><br>
-<table><tr><td>&nbsp;</td><td><pre class="example">@enumerate 3
+<div class="example">
+<pre class="example">@enumerate 3
 @item
 Predisposing causes.
 
@@ -372,7 +376,7 @@ Precipitating causes.
 @item
 Perpetuating causes.
 @end enumerate
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
@@ -503,7 +507,8 @@ very brief, a blank line looks better.
 <p>The following table, for example, highlights the text in the first
 column with an <code>@samp</code> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@table @samp
+<div class="example">
+<pre class="example">@table @samp
 @item foo
 This is the text for
 @samp{foo}.
@@ -511,7 +516,7 @@ This is the text for
 @item bar
 Text for @samp{bar}.
 @end table
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
@@ -603,14 +608,15 @@ does not generate extra vertical space above the first column text.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@table @code
+<div class="example">
+<pre class="example">@table @code
 @item upcase
 @itemx downcase
 These two functions accept a character or a string as
 argument, and return the corresponding upper case (lower
 case) character or string.
 @end table
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
@@ -700,8 +706,9 @@ To specify column widths as fractions of the line length, write
 <code>@columnfractions</code> and the decimal numbers (presumably less than
 1) after the <code>@multitable</code> command, as in:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@multitable @columnfractions .33 .33 .33
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@multitable @columnfractions .33 .33 .33
+</pre></div>
 
 <p>The fractions need not add up exactly to 1.0, as these do
 not.  This allows you to produce tables that do not need the full line
@@ -712,8 +719,9 @@ length.  You can use a leading zero if you wish.
 To specify a prototype row, write the longest entry for each column
 enclosed in braces after the <code>@multitable</code> command.  For example:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@multitable {some text for column one} {for column two}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@multitable {some text for column one} {for column two}
+</pre></div>
 
 <p>The first column will then have the width of the typeset &lsquo;some text for
 column one&rsquo;, and the second column the width of &lsquo;for column two&rsquo;.
@@ -760,7 +768,8 @@ input lines in your source file as necessary.
 <p>Here is a complete example of a multi-column table (the text is from
 <cite>The GNU Emacs Manual</cite>, see <a href="../emacs/Split-Window.html#Split-Window">(emacs)Split Window</a> section &lsquo;Splitting Windows&rsquo; in <cite>The GNU Emacs Manual</cite>):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@multitable @columnfractions .15 .45 .4
+<div class="example">
+<pre class="example">@multitable @columnfractions .15 .45 .4
 @item Key @tab Command @tab Description
 @item C-x 2
 @tab @code{split-window-vertically}
@@ -775,7 +784,7 @@ positioned side by side.
 @tab In the mode line or scroll bar of a window,
 split that window.
 @end multitable
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces:
 </p>

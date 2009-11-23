@@ -137,7 +137,8 @@ as ker/Im.
 </p>
 <p>We collect these statements in the following short procedure:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc ext(int n, ideal I)
+<div class="smallexample">
+<pre class="smallexample">proc ext(int n, ideal I)
 {
   resolution rs = mres(I,n+1);
   module tAn    = transpose(rs[n+1]);
@@ -145,11 +146,12 @@ as ker/Im.
   module ext_n  = modulo(syz(tAn),tAn_1);
   return(ext_n);
 }
-</pre></td></tr></table>
+</pre></div>
 
 <p>Now consider the following example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r5 = 32003,(a,b,c,d,e),dp;
+<div class="smallexample">
+<pre class="smallexample">ring r5 = 32003,(a,b,c,d,e),dp;
 ideal I = a2b2+ab2c+b2cd, a2c2+ac2d+c2de,a2d2+ad2e+bd2e,a2e2+abe2+bce2;
 print(ext(2,I));
 &rarr; 1,0,0,0,0,0,0,
@@ -160,7 +162,7 @@ print(ext(2,I));
 &rarr; 0,0,0,0,0,1,0,
 &rarr; 0,0,0,0,0,0,1
 ext(3,I);   // too big to be displayed here
-</pre></td></tr></table>
+</pre></div>
 
 <p>The library <code>homolog.lib</code> contains several procedures for computing
 Ext-modules and related modules, which are much more general and
@@ -259,7 +261,8 @@ class="cmmi-10">i </span>
  and with an extra option.
 </li></ul>
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;homolog.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;homolog.lib&quot;;
   ring R=0,(x,y),ds;
   ideal i=x2-y3;
   qring q = std(i);      // defines the quotient ring Loc_m k[x,y]/(x2-y3)
@@ -340,7 +343,7 @@ class="cmmi-10">i </span>
 &rarr; y,x,z2
   print(kbase(LE[2]));
 &rarr; z,1
-</pre></td></tr></table>
+</pre></div>
 </td>
 </tr>
 </table>

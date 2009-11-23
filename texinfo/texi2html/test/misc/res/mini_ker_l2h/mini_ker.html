@@ -729,12 +729,13 @@ closng bracket <code>&gt;</code>.
 
 <p>The following fictious code is legal mortran:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">real 
+<div class="example">
+<pre class="example">real 
   param;
 param = 3.; ff(1) = ff(3)**eta(1);       &quot;a comment&quot;                 
 ! a line comment
 do inode=1,n_node &lt;eta_move(inode)=0.01; eta_speed(inode)=0.0;&gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>Thanks to mortran the model code is very simply specified, as you&rsquo;ll 
 see next.
@@ -770,7 +771,8 @@ see next.
 the &lsquo;<tt>zinit</tt>&rsquo; sequence. The whole layout of the model is given
 before detailing the keywords.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
+<div class="example">
+<pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
 ! Parameters           
 !%%%%%%%%%%%%%%%%%%%%%%
   real apar,bpar;        &quot;optional Fortran type declaration&quot;
@@ -819,7 +821,7 @@ set_eta
     OPEN(50,FILE='title.tex',STATUS='UNKNOWN');   &quot;title file&quot;
     write(50,5000) apar,cpar;                     
 5000;format('Lotka-Volterra par:',2F4.1);
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Variables-and-model-parameters"></a>
 <h4 class="subsubheading">Variables and model parameters</h4>
@@ -861,7 +863,8 @@ variables are called here <code>apar</code> for <SPAN CLASS="MATH"><IMG
 If a Fortan type definition is needed, it should be set at the very beginning
 of &lsquo;<tt>zinit</tt>&rsquo;. The predator-prey code variable initializations finally reads
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
+<div class="example">
+<pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
 ! Parameters         
 !%%%%%%%%%%%%%%%%%%%%%%
   real apar,bpar;        &quot;optional Fortran type declaration&quot;
@@ -875,7 +878,7 @@ of &lsquo;<tt>zinit</tt>&rsquo;. The predator-prey code variable initializations
      cpar = 0.7;                                                            
 
      modzprint = 1000;  
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Model-equations-1"></a>
 <h4 class="subsubheading">Model equations</h4>
@@ -907,10 +910,11 @@ associated with <!-- MATH
  SRC="mini_ker_18.png"
  ALT="$\varphi_{meet}$"></SPAN> could be called <code>ff_interact</code>
 and the transfer definition would be given by:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">set_Phi
+</p><div class="example">
+<pre class="example">set_Phi
 &lt; var: ff_interact, fun: f_interact = eta_prey*eta_pred;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The two cell equations of the predator-prey model, with name
 <code>eta_prey</code> for the prey (<SPAN CLASS="MATH"><IMG
@@ -922,18 +926,20 @@ for the predator (<SPAN CLASS="MATH"><IMG
  SRC="mini_ker_20.png"
  ALT="$\eta_{pred}$"></SPAN>) are:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">set_eta
+<div class="example">
+<pre class="example">set_eta
 &lt; var: eta_prey, fun: deta_prey =   apar*eta_prey - apar*ff_interact;
   var: eta_pred, fun: deta_pred = - cpar*eta_pred + cpar*ff_interact;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The &lsquo;<samp>;</samp>&rsquo; at the end of the mortran block is important.
 </p>
 
 <p>The whole model equations are setup with:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
+<div class="example">
+<pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
 ! Transfer definition
 !%%%%%%%%%%%%%%%%%%%%%%
 ! rencontre (meeting)
@@ -949,17 +955,19 @@ set_eta
 &lt; var: eta_prey, fun: deta_prey =   apar*eta_prey - apar*ff_interact;
   var: eta_pred, fun: deta_pred = - cpar*eta_pred + cpar*ff_interact;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>Whenever the user is not concerned with giving a specific name to a
 function, it is possible to specify the equation only with
 <code>eqn:</code>. Therefore the user may replace an instruction as:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">  var: ff_dump,
+</p><div class="example">
+<pre class="example">  var: ff_dump,
   fun: f_dump  = - rd*(eta_speed - eta_speed_limiting);
-</pre></td></tr></table>
+</pre></div>
 <p>with:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">   eqn: ff_dump = - rd*(eta_speed - eta_speed_limiting);
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">   eqn: ff_dump = - rd*(eta_speed - eta_speed_limiting);
+</pre></div>
 
 <p>In that case, the unnamed function will take the name of the defined
 variable preceded by the &lsquo;<samp>$</samp>&rsquo; sign: <code>$ff_dump</code>.
@@ -974,11 +982,12 @@ transfers may also need starting points although they are determined from
 the cell values.
 </p>
 <p>In the predator-prey model the starting points for cells are:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">!     initial state
+</p><div class="example">
+<pre class="example">!     initial state
 !     -------------
      eta_prey = 1.;
      eta_pred = 1.;
-</pre></td></tr></table>
+</pre></div>
 
 <p>When there is a non trivial implicit relationship between the transfers
 in the model, it may be usefull or even necessary to set some
@@ -1025,12 +1034,13 @@ number of transfer is in the integer <code>mp</code> variable.
 <p>For some graphics generation, a file with name &lsquo;<tt>title.tex</tt>&rsquo; is required
 which sets the title. The following instructions take care of that:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">    OPEN(50,FILE='title.tex',STATUS='UNKNOWN');
+<div class="example">
+<pre class="example">    OPEN(50,FILE='title.tex',STATUS='UNKNOWN');
     write(50,5000) apar,cpar;                 
 5000;format('Lotka-Volterra par:',2F4.1);
 
     close(50);
-</pre></td></tr></table>
+</pre></div>
 
 <p>In that case the parameter values are written down, to differenciate between
 different runs. This step is in general not needed.
@@ -1171,8 +1181,9 @@ It should copy a &lsquo;<tt>zinit.mti</tt>&rsquo; file
 ready to be edited and a Makefile ready to compile the model. For
 the predator prey model, for example, you could run
 
-<table><tr><td>&nbsp;</td><td><pre class="example">$ start_miniker predator
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">$ start_miniker predator
+</pre></div>
 
 </li><li>
 Otherwise you can copy the Makefile from &lsquo;<tt>template/Makefile</tt>&rsquo;
@@ -1182,22 +1193,25 @@ model file name, by changing  the value of the
 in the Makefile. It is set to &lsquo;<tt>mymodel</tt>&rsquo; in the template. For the 
 predator-prey model, it could be set like
 
-<table><tr><td>&nbsp;</td><td><pre class="example">model_file_name = predator
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">model_file_name = predator
+</pre></div>
 
 <p>If you want the executable model file to be built in another directory, you could
 set
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">model_file_name = some_dir/predator
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">model_file_name = some_dir/predator
+</pre></div>
 
 <p>The other items set in the default Makefile should be right. 
 </p></li></ol>
 
 <p>The preprocessing and the compilation are launched with
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">make all
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">make all
+</pre></div>
 
 <p>The mortran files are generated by the cmz directive preprocessor 
 from files found in the package source directories. The mortran files 
@@ -1256,8 +1270,9 @@ standard output informations about the states, transfers, tangent linear
 system and other jacobian matrices are printed. 
 For example the predator-prey model could be executed with:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">./predator &gt; result.lis
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">./predator &gt; result.lis
+</pre></div>
 
 <a name="index-output-file"></a>
 <a name="index-dEta_0028_002e_0029"></a>
@@ -1271,7 +1286,8 @@ For example the predator-prey model could be executed with:
 between the symbolic variables and the basic vectors and functions
 are printed at run time:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">  ---------------- Informing on Phi definition -----------------
+<div class="example">
+<pre class="example">  ---------------- Informing on Phi definition -----------------
     Var-name,           Function-name,       index in ff vector
              ff_interact              f_interact  1
   ----------------------------------------------------
@@ -1280,41 +1296,44 @@ are printed at run time:
    Var-name,           Function-name,       index in eta vector
                 eta_prey               deta_prey  1
                 eta_pred               deta_pred  2
-</pre></td></tr></table>
+</pre></div>
 
 <p>A summary of the model equations are in &lsquo;<tt>Model.hlp</tt>&rsquo; file.  For
 the same example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">======================= set_Phi                                                                
+<div class="example">
+<pre class="example">======================= set_Phi                                                                
                                                                                          
     1 ff_interact f_interact           eta_pray*eta_pred
 ======================= set_Eta                                                                
                                                                                          
     1 eta_pray    deta_pray            apar*eta_pray-apar*ff_interact
     2 eta_pred    deta_pred            -cpar*eta_pred+cpar*ff_interact
-</pre></td></tr></table>
+</pre></div>
 <p>when other general functions are specified with <code>f_set</code>, it can appear
 also in the same help file when replaced by <code>fun_set</code>.
 </p>
 <p>As far as possible, all data printed in the listing are associated
 with a name related to a variable. Here is an extract:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"> Gamma :-8.19100E-02-1.42151E-01 3.87150E-02
+<div class="example">
+<pre class="example"> Gamma :-8.19100E-02-1.42151E-01 3.87150E-02
          eta_courant eta_T_czcx  eta_T_sz   
        ------------------------------------------------
  Omega : 0.00000E+00 0.00000E+00 0.00000E+00 0.00000E+00
          courant_L   T_czcx      Psi_Tczc    Psi_Tsz 
        ------------------------------------------------
-</pre></td></tr></table>
+</pre></div>
 <p>for the two known vectors of the system, and:
-</p><table><tr><td>&nbsp;</td><td><pre class="example"> &gt;ker : Matrice de couplage       4 4 4 4
+</p><div class="example">
+<pre class="example"> &gt;ker : Matrice de couplage       4 4 4 4
 courant_L Raw(1,j=1,4):   1.000     -9.9010E-03  0.000       0.000    
 T_czcx    Raw(2,j=1,4): -2.7972E-02   1.000      0.000      9.9900E-04
 Psi_Tczcx Raw(3,j=1,4):  0.1605      9.7359E-02  1.000     -5.7321E-03
 Psi_Tsz   Raw(4,j=1,4):   0.000     -0.1376     5.7225E-03   1.000    
           Var-Name      courant_L   T_czcx      Psi_Tczc    Psi_Tsz 
           ----------------------------------------------------------
-</pre></td></tr></table>
+</pre></div>
 
 <p>where the <code>couplage</code> (coupling matrix) is given that corresponds 
 to the matrix coupling the four transfer components after <SPAN CLASS="MATH"><IMG
@@ -1380,12 +1399,14 @@ files can be vizualised with many programs.
 With <code>gnuplot</code>, for example, to plot <code>eta(<var>n</var>)</code>, 
 the <code>gnuplot</code> statement could be:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">plot &quot;res.data&quot; using 1:(<var>n</var>+1)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">plot &quot;res.data&quot; using 1:(<var>n</var>+1)
+</pre></div>
 
 <p>The similar one for <code>ff(<var>n</var>)</code>:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">plot &quot;tr.data&quot; using 1:(<var>n</var>+1)
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">plot &quot;tr.data&quot; using 1:(<var>n</var>+1)
+</pre></div>
 
 <p>For people using <code>PAW</code>, the CERN graphical computer code, 
 Miniker prepares
@@ -1660,18 +1681,20 @@ printout by setting <code>zprint</code> false or true. For example the following
 code, in sequence &lsquo;<tt>zsteer</tt>&rsquo;, triggers printing for every 
 <code>modzprint</code> time step and the two following time steps:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">ZPRINT = mod(istep+1,modzprint).eq.0;
+<div class="example">
+<pre class="example">ZPRINT = mod(istep+1,modzprint).eq.0;
 Zprint = zprint .or. mod(istep+1,modzprint).eq.1;
 Zprint = zprint .or. mod(istep+1,modzprint).eq.2;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The data output to &lsquo;<tt>.data</tt>&rsquo; files described in <a href="#Simulation-and-output">Running a simulation and using the output</a> is performed if the
 <code>logical</code> variable <code>zout</code> is true. For example the following
 code, in &lsquo;<tt>zsteer</tt>&rsquo;, triggers output to &lsquo;<tt>.data</tt>&rsquo; files every 
 <code>modzout</code> step.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Zout = mod(istep,modzout).eq.0;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Zout = mod(istep,modzout).eq.0;
+</pre></div>
 
 <hr>
 <a name="Advanced-programming"></a>
@@ -1828,16 +1851,18 @@ This technique could be used, for example to perform optimization
 
 
 <p>With cmz, one has to do a 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">sel monitor
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">sel monitor
+</pre></div>
 <p>in the &lsquo;<tt>selseq.kumac</tt>&rsquo; file and create the KEEP that call the 
 model code. See section <a href="#Selecting-features">Overview of additional features setting</a>.
 </p>
 <p>With make &lsquo;<samp>monitor</samp>&rsquo; should be added to the <code>SEL</code> variable in
 the &lsquo;<tt>Makefile</tt>&rsquo;, for example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">SEL = monitor
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">SEL = monitor
+</pre></div>
 
 <p>A file that call the principal subroutine should also be written, using
 the prefered language of the user. The additional object files should
@@ -2049,13 +2074,15 @@ Other models not part of the 1D grid may be added if any.
 In cmz it is achieved setting the select flag in
 &lsquo;<tt>selseq.kumac</tt>&rsquo;, like
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">sel grid1d
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">sel grid1d
+</pre></div>
 
 <p>With make, the <code>SEL</code> variable should contain <code>grid1d</code>. For example
 to select <code>grid1d</code> and <code>monitor</code>, it could be
-</p><table><tr><td>&nbsp;</td><td><pre class="example">SEL = grid1d,monitor
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">SEL = grid1d,monitor
+</pre></div>
 
 
 <table class="menu" border="0" cellspacing="0">
@@ -2142,13 +2169,14 @@ There are two states in the limiting node 0, the down node,
 <code>n_dwn=2</code>, and two transfers in the limiting last node the node up, 
 and <code>m_up=2</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<div class="example">
+<pre class="example">! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ! nodes parameters, and Limiting Conditions (Low and High)
 ! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
       parameter (n_node=3,n_dwn=2,n_up=0,n_mult=2);
       parameter (m_node=3,m_dwn=0,m_up=2,m_mult=2);
 ! ________________________________________________________
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -2179,7 +2207,8 @@ and <code>m_up=2</code>:
 <p>A value for the Miniker parameters and the model parameters should be given in
 &lsquo;<tt>zinit</tt>&rsquo;, in our example we have
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
+<div class="example">
+<pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
 ! Parameters
 !%%%%%%%%%%%%%%%%%%%%%%
 real rk(n_node),rd(n_node),rmassm1(n_node);
@@ -2191,7 +2220,7 @@ data rmassm1/n_node*1./;
      nstep=5 000;
      modzprint = 1000;
      time=0.;
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Limiting-conditions"></a>
 <h4 class="subsubheading">Limiting conditions</h4>
@@ -2222,7 +2251,8 @@ for states and transfers:
 </dl>
 
 <p>The following scheme illustrates the example:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">!%%%%%%%%%%%%%%%%%%%%%%%%%%================================================
+</p><div class="smallexample">
+<pre class="smallexample">!%%%%%%%%%%%%%%%%%%%%%%%%%%================================================
 ! Maillage convention inode
 !%%%%%%%%%%%%%%%%%%%%%%%%%%                                 Open ended
 !(2 Down    Phi    Eta                         (n_node)
@@ -2231,13 +2261,14 @@ for states and transfers:
 !  pos  \|--***--|  1  |--***--|  2  |  . . .  -|  n  |--***-- |Phis
 ! speed \|   1   |_____|   2   |_____|      n   |_____|  n+1   \(2 Up Phi)
 !
-</pre></td></tr></table>
+</pre></div>
 
 <p>Two states are associated with the down node, they correspond to the position
 and speed of the wall. As the wall don&rsquo;t move these states are initialized to
 be 0, and the cells are stationnary cells, therefore these values remain 0.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! Down cells (wall)
+<div class="example">
+<pre class="example">! Down cells (wall)
 ! -----------------
 eta_pos_wall = 0; eta_speed_wall = 0.;
 
@@ -2245,18 +2276,19 @@ set_dwn_eta
 &lt; var: eta_pos_wall,  fun: deta_pos_wall  = 0.;
   var: eta_speed_wall, fun: deta_speed_wall= 0.;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>There are 2 limiting transfers in the up node. They correspond with an open
 end and are therefore set to 0.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! limiting Transfers : dummy ones
+<div class="example">
+<pre class="example">! limiting Transfers : dummy ones
 ! -------------------------------
 set_Up_Phi
 &lt; var:ff_dummy_1, fun: f_dummy_1=0.;
   var:ff_dummy_2, fun: f_dummy_2=0.;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Starting-points-1"></a>
 <h4 class="subsubheading">Starting points</h4>
@@ -2267,12 +2299,13 @@ corresponding with position is <code>eta_move</code> and the variable correspond
 with speed is <code>eta_speed</code>. Their initial values are set with the 
 following mortran code
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!---------------
+<div class="example">
+<pre class="example">!---------------
 ! Initialisation
 !---------------
 ;
 do inode=1,n_node &lt;eta_move(inode)=0.01; eta_speed(inode)=0.0;&gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>If any transfer needs to be given a first-guess value, this is also done 
 using <code>inode</code> as the node index.
@@ -2291,7 +2324,8 @@ in <code>set_node_Phi</code> blocks.
 </p>
 <p>In the example, the cells are declared with
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! node cells
+<div class="example">
+<pre class="example">! node cells
 ! ----------
 ;
 set_node_Eta
@@ -2302,7 +2336,7 @@ set_node_Eta
                                - ff_dump(inode+1)  + ff_dump(inode)
                               );
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 <p>Note that the <code>inode</code> is dummy in the <code>var:</code> definition and can as
 well be written as: <code>var: eta_move(.)</code>.
 </p>
@@ -2310,7 +2344,8 @@ well be written as: <code>var: eta_move(.)</code>.
 <p>The transfers are (<code>ff_spring</code> corresponds with springs and 
 <code>ff_dump</code> with dumps):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
+<div class="example">
+<pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
 ! Transfer definition
 !%%%%%%%%%%%%%%%%%%%%%%
 ! node transfers
@@ -2324,7 +2359,7 @@ set_node_Phi
   fun:
    f_dump(inode)  = -rd(inode)*(eta_speed(inode) - eta_speed(inode-1));
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The limiting states and transfers are associated with the states or transfers
 with index <code>inode+1</code> or <code>inode-1</code> appearing in node cell and 
@@ -2338,7 +2373,8 @@ appears before <code>ff_dummy_2</code> in the limiting up transfers definitions.
 Verification of the grid index coherence should be eased with the following
 help printed in the listing header:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">
+<div class="example">
+<pre class="example">
 
 
 
@@ -2365,7 +2401,7 @@ help printed in the listing header:
            ff_spring            f_spring   -1 [   1 ...   5 ]   7
              ff_dump              f_dump    0 [   2 ...   6 ]   8
   ----------------------------------------------------
-</pre></td></tr></table>
+</pre></div>
 
 <p>All variable names and functions are free but has to be
 different.
@@ -2447,8 +2483,9 @@ It is easy to understand and add new rules in analogy with the already existing 
 <p>For instance, suppose one wants to use the intrinsic Fortran function <code> abs()</code>.
 Its derivatives uses the other function <code>sign()</code> this way:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"> &amp;'(ABS(#))(/#)' = '((#1)(/#2)*SIGN(1.,#1))'
-</pre></td></tr></table>
+<div class="example">
+<pre class="example"> &amp;'(ABS(#))(/#)' = '((#1)(/#2)*SIGN(1.,#1))'
+</pre></div>
 
 <p>In such cases when one is adding a new rule, it is important to use the generic function names
 only (i.e. <code>sin</code> not <code>dsin</code>), because when compilating Miniker in the double precision
@@ -2542,9 +2579,10 @@ change of state&rdquo; is a correct macroscopic model.
 <p>Miniker provides with the smooth step function 
 <em>Heavyside</em><a name="DOCF3" href="#FOOT3">(3)</a> in the Miniker &lsquo;<tt>mathlib</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">        Delta = -1.&quot;K&quot;;
+<div class="example">
+<pre class="example">        Delta = -1.&quot;K&quot;;
         A_Ice =  heavyside(&quot;in:&quot; (T_K-Tf), Delta, &quot;out:&quot; dAIce_dT);
-</pre></td></tr></table>
+</pre></div>
 
 <p>in this example, <code>Tf</code> is the ice fusion-temperature, <code>A_ice</code> 
 gives the ice-fraction
@@ -2566,8 +2604,9 @@ of 2.5, see figure <a href="#heavy">Figure 3.1</a>.
 <p>For <code>Mortran</code> to be able to symbolicaly compute the partial derivarives, the rule
 is in the table of macros as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">&amp;'(HEAVYSIDE(#,#,#))(/#)' = '((#1)(/#4)*HEAVYDELTA(#1,#2,#3))'
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">&amp;'(HEAVYSIDE(#,#,#))(/#)' = '((#1)(/#4)*HEAVYDELTA(#1,#2,#3))'
+</pre></div>
 
 <p>which uses the Foratn entry point <code>HeavyDelta</code> in the Fortrsan function <code>heavyside</code>.
 </p>
@@ -2575,13 +2614,15 @@ is in the table of macros as:
 <code>var=min(f(x),g(x))</code> Fortran instruction.
 In such a case one does not want a derivative and one will code:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">var = HeavySide(f(x)-g(x),Delta,dum)*g(x) + (1.-HeavySide(f(x)-g(x),Delta,dum)*f(x);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">var = HeavySide(f(x)-g(x),Delta,dum)*g(x) + (1.-HeavySide(f(x)-g(x),Delta,dum)*f(x);
+</pre></div>
 
 <p>or equivalently:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">var = HeavySide(f(x)-g(x),Delta,dum)*g(x) + HeavySide(g(x)-f(x),-Delta,dum)*f(x);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">var = HeavySide(f(x)-g(x),Delta,dum)*g(x) + HeavySide(g(x)-f(x),-Delta,dum)*f(x);
+</pre></div>
 
 <p><strong>Warning</strong>: the value of the argument <var>Delta</var> is important because 
 it will fix the maximum
@@ -2624,16 +2665,18 @@ argument to the <code>Free_parameters</code> macro. For example if
 <code>apar</code> and <code>cpar</code> (from the predator example) are to be considered
 as parameters, <code>Free_parameters</code> should be called with:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Free_parameter: apar, cpar;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Free_parameter: apar, cpar;
+</pre></div>
 
 
 
 <p>When used with grid1d models (see section <a href="#g_t1D-gridded-model">Describing 1D gridded model</a>) the <code>inode</code> number may appear in 
 parenthesis:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Free_parameter: rd(1), rk(2);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Free_parameter: rd(1), rk(2);
+</pre></div>
 
 <hr>
 <a name="Observations-and-data"></a>
@@ -2727,10 +2770,11 @@ the &lsquo;<tt>zinit</tt>&rsquo; sequence.
 <p>For example suppose that, in the predator-prey model, we only 
 have access to the total population of preys and predators, we would have:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">set_probe
+<div class="example">
+<pre class="example">set_probe
 &lt; eqn: pop = eta_pred + eta_pray;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 
 <a name="index-obs_002edata"></a>
@@ -2850,8 +2894,9 @@ using the fortran <code>parameter np</code> for <code>eta(.)</code> and
 <code>mp</code> for <code>ff(.)</code>.
 For the Lotka-Volterra model, we have two cell components and only one transfer.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">parameter (np=2,mp=1);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">parameter (np=2,mp=1);
+</pre></div>
 
 <p>You should not change the layout of the parameter statement as the 
 mortran preprocessor matches the line.
@@ -2863,27 +2908,30 @@ It includes the <code>maxstep</code> parameter that can have any value but 0,
 <code>nyp</code> and <code>nzp</code> that should also be 0.
 The layout is the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">parameter (np=2,mp=1);
+<div class="example">
+<pre class="example">parameter (np=2,mp=1);
 parameter (mobs=0);
 
 parameter (nxp=0,nyp=0,nzp=0);
 parameter (lp=0);
 parameter (maxstep=1);
-</pre></td></tr></table>
+</pre></div>
 
 <p>If there are observations, (see section <a href="#Observations">Observations</a>), the
 size of the observation vector is set in the &lsquo;<tt>dimetaphi</tt>&rsquo; sequence
 by the <code>mobs</code> parameter. For example if there is one observation:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">parameter (mobs=1);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">parameter (mobs=1);
+</pre></div>
 
 <p>To specify parameters (see section <a href="#Parameters">Parameters</a>), the number of such parameters 
 has to be declared in &lsquo;<tt>dimetaphi</tt>&rsquo; with the parameter <code>lp</code>. 
 Then, if there are two parameters, they are first declared with
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">parameter (lp=2);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">parameter (lp=2);
+</pre></div>
 
 <hr>
 <a name="Model-with-explicit-size"></a>
@@ -2940,8 +2988,9 @@ expression which may be function of cell state variables,
  WIDTH="40" HEIGHT="27" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_18.png"
  ALT="$\varphi_{meet}$"></SPAN> is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">f_set Phi_tef(1) = eta(1)*eta(2);  
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">f_set Phi_tef(1) = eta(1)*eta(2);  
+</pre></div>
 
 <dl>
 <dt><a name="index-f_005fset-1"></a>Macro: <strong>f_set</strong><em> deta_tef(<var>i</var>) = g(eta(<var>i</var>),ff(.))</em></dt>
@@ -2960,13 +3009,15 @@ prey (<SPAN CLASS="MATH"><IMG
  SRC="mini_ker_20.png"
  ALT="$\eta_{pred}$"></SPAN>):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">f_set  deta_tef(1) = apar*eta(1)-apar*ff(1);
+<div class="example">
+<pre class="example">f_set  deta_tef(1) = apar*eta(1)-apar*ff(1);
 f_set  deta_tef(2) = - cpar*eta(2) + cpar*ff(1);
-</pre></td></tr></table>
+</pre></div>
 
 <p>The whole model is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
+<div class="example">
+<pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
 ! Transfer definition
 !%%%%%%%%%%%%%%%%%%%%%%
 ! rencontres (meeting)
@@ -2980,20 +3031,22 @@ f_set  deta_tef(2) = - cpar*eta(2) + cpar*ff(1);
 
     f_set  deta_tef(1) = apar*eta(1)-apar*ff(1);
     f_set  deta_tef(2) = - cpar*eta(2) + cpar*ff(1);
-</pre></td></tr></table>
+</pre></div>
 
 <p>The starting points for cells are entered like:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">!     initial state
+</p><div class="example">
+<pre class="example">!     initial state
 !     -------------
      eta(1) = 1.;
      eta(2) = 1.;
-</pre></td></tr></table>
+</pre></div>
 
 <p>If there are observations, they are entered as special transferts with
 index above <code>mp</code>, for example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">f_set Phi_tef(mp+1) = ff(1) ;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">f_set Phi_tef(mp+1) = ff(1) ;
+</pre></div>
 
 <hr>
 <a name="Programming-with-cmz-directives"></a>
@@ -3189,14 +3242,15 @@ system trajectory concerns automatic sensitivity analyses, as either:
 
 <p>This is declared in Zinit as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! -------------
+<div class="example">
+<pre class="example">! -------------
 ! Sensitivities
 ! -------------
 Sensy_to_var
 &lt; var: eta_pray, pert: INIT;
   var: eta_pred, pert: INIT;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>Each variable at origin of a perturbation is declared as <code>var:</code>,
 and the type of perturbation in <code>pert:</code>. Here, INIT conditions are
@@ -3210,7 +3264,8 @@ diagonal only of the sensitivity matrix
 </p>
 <p>Non initial perturbation can also be asked for:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">  Sensy_to_var
+<div class="example">
+<pre class="example">  Sensy_to_var
   &lt;
 !*     var: eta_courant_L, pert: init at 100;
 !*     var: ff_T_czcx,     pert: pulse at 100 every 20;
@@ -3222,7 +3277,7 @@ diagonal only of the sensitivity matrix
     var: ff_Psi_Tczcx , pert: step_eff;
     var: ff_Psi_Tsz   , pert: pulse at 100 every 50;
   &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this example taken from &lsquo;<tt>lorhcl</tt>&rsquo;, a sensitivity can increase so as to
 trespass the Fortran capacity, so that each  sensitivity vector (matrix column)
@@ -3237,8 +3292,9 @@ the TLS of the model<a name="DOCF5" href="#FOOT5">(5)</a>.
 <p>If the <code>dimetaphi</code> sequence is built by the users, he should declare
 the number of perturbing variables as <code>nxp=</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">      parameter (nxp=np,nyp=0,nzp=0);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">      parameter (nxp=np,nyp=0,nzp=0);
+</pre></div>
 <p>here, all state variables are considered as perturbing variables.
 </p>
 <a name="index-sensitivity_002c-output"></a>
@@ -3269,11 +3325,12 @@ in that it is set to 1 at <SPAN CLASS="MATH"><IMG
  SRC="mini_ker_46.png"
  ALT="$t=0$"></SPAN>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">#    Sensy_to: eta_pray         3        eta_pred         5       
+<div class="example">
+<pre class="example">#    Sensy_to: eta_pray         3        eta_pred         5       
 # time \\  of: eta_pray     eta_pred     eta_pray     eta_pred    
   0.00000E+00  1.00000E+00  0.00000E+00  0.00000E+00  1.00000E+00
   1.00000E-02  9.90868E-01  1.11905E-02 -1.26414E-02  9.98859E-01
-</pre></td></tr></table>
+</pre></div>
 <p>The two last columns are the state sensitivity to a change in initial conditions
 of the number of predators.
 </p>
@@ -3285,11 +3342,12 @@ derivative of <SPAN CLASS="MATH"><IMG
  WIDTH="60" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="mini_ker_48.png"
  ALT="$\eta_i(t=0)$"></SPAN>. Here:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">#    Sensy_to: eta_pray     eta_pred    
+</p><div class="example">
+<pre class="example">#    Sensy_to: eta_pray     eta_pred    
 # time \\  of: ff_interact  ff_interact 
   0.00000E+00  1.60683E+00  8.47076E-01
   1.00000E-02  1.59980E+00  8.18164E-01
-</pre></td></tr></table>
+</pre></div>
 
 <p>the unique transfer variable gives rise to two sensitivity columns. 
 </p>
@@ -3333,17 +3391,19 @@ the predator model is of interest.
 <p>The sensitivity calculs is turned on as a forward
 parameter specified on the <code>Free_parameter</code> list:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Free_parameter: [fwd: apar, cpar];
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Free_parameter: [fwd: apar, cpar];
+</pre></div>
 
 <p>The result are in &lsquo;<tt>sensp.data</tt>&rsquo; for cells and &lsquo;<tt>sigmap.data</tt>&rsquo;
 for transfers.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">#    Sensy_to: pi_prandtl       3            4        pi_rayleigh_     6
+<div class="example">
+<pre class="example">#    Sensy_to: pi_prandtl       3            4        pi_rayleigh_     6
 # time \\  of: eta_courant_ eta_T_czcx   eta_T_sz     eta_courant_ eta_T
   0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.000
   2.00000E-03 -4.77172E-03 -3.99170E-05  3.55971E-05 -9.94770E-05 -1.004
-</pre></td></tr></table>
+</pre></div>
 <p>In the above example from &lsquo;<tt>lorhcl</tt>&rsquo; sensitivity of the three states with respect
 to an initial change in two parameters are independantly given (first line also numbers
 the column to easy gnuplot using).
@@ -3373,8 +3433,9 @@ the column to easy gnuplot using).
 states space (the matrix <code>aspha</code>) with regard to a parameter. 
 The parameter must be accounted for in the parameter number and be in the 
 parameter list, flagged as the matrix <code>mx</code> parameter, like in
-</p><table><tr><td>&nbsp;</td><td><pre class="example">Free_parameter: [mx: apar], cpar;
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">Free_parameter: [mx: apar], cpar;
+</pre></div>
 
 <a name="index-d_005fpi_005faspha_0028_002e_002c_002e_0029"></a>
 
@@ -3636,8 +3697,9 @@ of the commands and time of the run.
 <p>First of all the flag <code>zback</code> should be set to <code>.true.</code> in order to
 allow adjoint model computation:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Zback=.true.;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Zback=.true.;
+</pre></div>
 
 <p>The two functions <code>cout_Psi</code> corresponding with the final cost and 
 <code>cout_l</code> corresponding with the integrand cost are set up with the
@@ -3670,11 +3732,12 @@ state control laws
 <p>For example, the following code sets a cost function for the masselottes
 model:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! Initialisation 
+<div class="example">
+<pre class="example">! Initialisation 
   F_set cout_Psi = eta_move(inode:1);
 !and f_set cout_l integrand in the functionnal    
   F_set cout_l = 0.;
-</pre></td></tr></table>
+</pre></div>
 
 <p>In that example the functional is reduced to the final value
 of the first state component.
@@ -3729,15 +3792,17 @@ the integral of the predator population with respect with
 <code>apar</code> an <code>cpar</code> is obtained with a number of parameters
 set to 2 in &lsquo;<tt>dimetaphi</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">parameter (lp=2);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">parameter (lp=2);
+</pre></div>
 
 <p>And the cost function and <code>Free_parameters</code> list in &lsquo;<tt>zinit</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">f_set cout_Psi = eta(2);
+<div class="example">
+<pre class="example">f_set cout_Psi = eta(2);
 f_set cout_l = eta(2);
 Free_parameters: apar,cpar;
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>apar</code> and <code>cpar</code> also have to be given a value.
 The result is output in &lsquo;<tt>gradpj.data</tt>&rsquo;.
@@ -3938,19 +4003,22 @@ If cmz is used the code
 should be selected with the select flag kalman 
 in the &lsquo;<tt>selseq.kumac</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">sel kalman
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">sel kalman
+</pre></div>
 
 <p>With make the <code>kalman</code> variable should be set to 1:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">kalman = 1
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">kalman = 1
+</pre></div>
 
 <p>The kalman code is actually used by setting the flag
 <code>zkalman</code> to <code>.true.</code>, for example in the &lsquo;<tt>zinit</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">zkalman = .True.;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">zkalman = .True.;
+</pre></div>
 
 
 <p>With the Kalman filter the dimension of estimated states, of the error 
@@ -4004,10 +4072,11 @@ will be estimated using the Kalman filter.
 and the size of the observations vector is <code>mobs</code> 
 (see section <a href="#Observations">Observations</a>). In our example the dimensions are set with:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">parameter (nkp=np);
+<div class="example">
+<pre class="example">parameter (nkp=np);
 parameter (mobs=3);
 parameter (nerrp=2);
-</pre></td></tr></table>
+</pre></div>
 
 <p>All the states are estimated,
 there are 3 observation functions and the error on the state vector is of
@@ -4049,10 +4118,11 @@ dimension 2.
 <p>The variance-covariance on the state matrix is <code>covfor(.,.)</code>. The initial
 values have to be given for this matrix, as in our example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">covfor(1,1) = 1000.; covfor(1,2) = 10.; covfor(1,3) = 10.;
+<div class="example">
+<pre class="example">covfor(1,1) = 1000.; covfor(1,2) = 10.; covfor(1,3) = 10.;
 covfor(2,1) = 10.; covfor(2,2) = 5000.; covfor(2,3) = 5.;
 covfor(3,1) = 10.; covfor(3,2) = 5.; covfor(3,3) = 2000.;
-</pre></td></tr></table>
+</pre></div>
 
 <p>This matrix is updated by the filter at each time step because the states
 are pertubated by some noise, and when assimilation takes place as new
@@ -4071,19 +4141,21 @@ corresponding with <SPAN CLASS="MATH"><IMG
  ALT="$W$"></SPAN> is <code>mereta(.,.)</code>. In our example it is 
 set by:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">mereta(1,1) = 1.;  mereta(1,2) = 0.;
+<div class="example">
+<pre class="example">mereta(1,1) = 1.;  mereta(1,2) = 0.;
 mereta(2,1) = 0.;  mereta(2,2) = 1.;
 mereta(3,1) = 0.5;  mereta(3,2) = 0.5;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The observation functions are set by a <code>f_set</code> macro with 
 <code>Obs_tef(.)</code> as described in <a href="#Observations">Observations</a>.
 In our example the observation functions are set by:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">f_set Obs_tef(1) = ff(1) ;
+<div class="example">
+<pre class="example">f_set Obs_tef(1) = ff(1) ;
 f_set Obs_tef(2) = eta(2);
 f_set Obs_tef(3) = eta(3);
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Error-variance_002dcovariance-matrices"></a>
 <h4 class="subsubheading">Error variance-covariance matrices</h4>
@@ -4094,18 +4166,20 @@ f_set Obs_tef(3) = eta(3);
 <p>The variance-covariance matrix on observation noise is <code>covobs(.,.)</code>
 set, in our example, by:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">covobs(1,1) = 0.3; covobs(1,2) = 0.; covobs(1,3) = 0.;
+<div class="example">
+<pre class="example">covobs(1,1) = 0.3; covobs(1,2) = 0.; covobs(1,3) = 0.;
 covobs(2,1) = 0.; covobs(2,2) = 0.1; covobs(2,3) = 0.;
 covobs(3,1) = 0.; covobs(3,2) = 0.; covobs(3,3) = 0.2;
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-coveta_0028_002e_002c_002e_0029"></a>
 <p>The variance-covariance matrix on state noise is <code>coveta(.,.)</code>
 set, in our example, by:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">coveta(1,1) = 0.2; coveta(1,2) = 0.001;
+<div class="example">
+<pre class="example">coveta(1,1) = 0.2; coveta(1,2) = 0.001;
 coveta(2,1) = 0.001; coveta(2,2) = 0.1;
-</pre></td></tr></table>
+</pre></div>
 
 <p>These matrices are not changed during the run of the model as part
 of the filtering process. They may be changed by the user in &lsquo;<tt>zsteer</tt>&rsquo;.
@@ -4394,14 +4468,16 @@ All the relevant informations should be entered in the &lsquo;<tt>zinit</tt>&rsq
 
 <p>First of all the logical flag <code>ZBorel</code> should be raised:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">ZBorel=.true.;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">ZBorel=.true.;
+</pre></div>
 
 <a name="index-index_005fff_005fgain"></a>
 <p>The index of the studied transfer is given in the <code>index_ff_gain</code>
 variable
-</p><table><tr><td>&nbsp;</td><td><pre class="example">index_ff_gain=7;
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">index_ff_gain=7;
+</pre></div>
 
 <p>At each time step a Borel sweep may be performed. The time steps of interest 
 are
@@ -4428,10 +4504,11 @@ and one for the number of steps between two Borel sweeps:
 
 <p>In the following examples Borel sweeps are performed from the 
 time step 1000 up to the time step 1200, with a sweep at each time step:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">istep_B_deb=1000;   
+</p><div class="example">
+<pre class="example">istep_B_deb=1000;   
 istep_B_fin=1200;  
 istep_B_inc=1;      
-</pre></td></tr></table>
+</pre></div>
 
 
 <p>For each Borel sweep, the range of the <SPAN CLASS="MATH"><IMG
@@ -4484,10 +4561,11 @@ starting at <SPAN CLASS="MATH"><IMG
  SRC="mini_ker_70.png"
  ALT="$\sqrt{\sqrt{2}}$"></SPAN>
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">tau_B_ini=0.2;    
+<div class="example">
+<pre class="example">tau_B_ini=0.2;    
 tau_B_mult=sqrt(sqrt(2.)); 
 itau_max=100;             
-</pre></td></tr></table>
+</pre></div>
 
 <p>When the initial value of <SPAN CLASS="MATH"><IMG
  WIDTH="11" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
@@ -4504,7 +4582,8 @@ values for <SPAN CLASS="MATH"><IMG
 </p>
 <p>The whole example reads
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! -------------------
+<div class="example">
+<pre class="example">! -------------------
 ! Feedback gain
 ! Borel
 ! -------------------
@@ -4520,7 +4599,7 @@ if ZBorel
    itau_max=100;             
    z_pr/Borel/:tau_B_mult,tau_B_ini*(tau_B_mult)**itau_max;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-zborel-for"></a>
 
@@ -4530,8 +4609,9 @@ by the <code>zborel for</code> macro. For example if the transfer selected for t
 feedback gain computation is <var>b_transfer</var>, it can be selected
 with:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">zborel for: <var>b_transfer</var>;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">zborel for: <var>b_transfer</var>;
+</pre></div>
 
 <hr>
 <a name="Borel-sweep-results"></a>
@@ -4709,8 +4789,9 @@ in the directory &lsquo;<tt>sltc/</tt>&rsquo;.
 
 <p>To compile the singular value decomposition executable with <code>make</code> you 
 can do
-</p><table><tr><td>&nbsp;</td><td><pre class="example">make sltc.exe
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">make sltc.exe
+</pre></div>
 
 <p>If you want to have a separate directory for the SVD, you should copy 
 the sequence &lsquo;<tt>dimetaphi.inc</tt>&rsquo; (or make a link to that file) to the
@@ -4720,8 +4801,9 @@ and set the Miniker directory path in the
 <code>miniker_dir</code> variable. For
 example, if the Miniker directory is in &lsquo;<tt>/u/src/mini_ker</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">miniker_dir = /u/src/mini_ker
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">miniker_dir = /u/src/mini_ker
+</pre></div>
 
 <hr>
 <a name="SVD-run-and-output"></a>
@@ -4761,8 +4843,9 @@ directory) it is possible to make a link to
 the corresponding files in the model directory. Once it is done 
 the program may be run:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">./sltc.exe
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">./sltc.exe
+</pre></div>
 
 <p>The files &lsquo;<tt>u.data</tt>&rsquo;, &lsquo;<tt>w.data</tt>&rsquo;, and &lsquo;<tt>v.data</tt>&rsquo; holds the singular elements 
 for <SPAN CLASS="MATH"><IMG
@@ -4893,8 +4976,9 @@ produce the corresponding results.
 
 <p>To compile the GTLS analysis executable with <code>make</code> you 
 can do
-</p><table><tr><td>&nbsp;</td><td><pre class="example">make sltcirc.exe
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">make sltcirc.exe
+</pre></div>
 
 <p>If you want to have a separate directory for the GTLS analysis, you should copy 
 the sequence &lsquo;<tt>dimetaphi.inc</tt>&rsquo; (or make a link to that file) to the
@@ -4945,8 +5029,9 @@ directory) it is possible to make a link to
 the corresponding files in the model directory. Once it is done 
 the program may be run:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">./sltcirc.exe
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">./sltcirc.exe
+</pre></div>
 
 <p>The following table gives the correspondence between variable name, 
 result file and ntuple number, with a short explanation:
@@ -5162,8 +5247,9 @@ should lead to the automatic creation, updating and inclusion of a
 file describing the dependencies of &lsquo;<tt>mtnfile.mtn</tt>&rsquo; in the 
 &lsquo;<tt>Makefile</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">include $(DEPDIR)/mtnfile.Pf
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">include $(DEPDIR)/mtnfile.Pf
+</pre></div>
 
 <hr>
 <a name="Linking-rule"></a>
@@ -5943,17 +6029,19 @@ Such a mortran is available at <a href="http://www.environnement.ens.fr/perso/du
 available as a compresssed tar archive. On UNIX, with GNU <code>tar</code> it 
 may be unpacked using 
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ tar xzvf mini_ker-4.2.tar.gz
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">$ tar xzvf mini_ker-4.2.tar.gz
+</pre></div>
 
 <p>The detection of the compiler, the preprocessors (car2txt and mortran), 
 and the libraries are performed by the configure script. This script
 sets the
 apropriate variables in makefiles. It can be run with:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cd mini_ker-4.2
+<div class="example">
+<pre class="example">$ cd mini_ker-4.2
 $ ./configure
-</pre></td></tr></table>
+</pre></div>
 
 <p>If the output of <code>./configure</code> doesn&rsquo;t show any error it means that
 all the components are here. It is possible to give <code>./configure</code>
@@ -5980,10 +6068,11 @@ libraries.
 <p>For example, on mac OS X this can be used to specify the blas and lapack from 
 the Apple frameworks:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">./configure \
+<div class="example">
+<pre class="example">./configure \
 --with-blas=/System/Library/Frameworks/vecLib.framework/versions/A/vecLib \
 --with-lapack=/System/Library/Frameworks/vecLib.framework/versions/A/vecLib
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt><code>F77</code></dt>
@@ -6038,8 +6127,9 @@ models should be build. You have to perform the configuration only once.
 <a name="index-installation-with-make"></a>
 
 <p>Miniker can be installed by running 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">make install
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">make install
+</pre></div>
 
 
 <p>It should copy the sources 
@@ -6183,11 +6273,12 @@ the expression on the left and the expression on the right are true.
 <p>The grouping is left to right when there is no parenthesis, with or and
 &lsquo;<samp>&amp;</samp>&rsquo; having the same precedence. Therefore
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">a&amp;b|c    &equiv;    (a&amp;b)|c
+<div class="example">
+<pre class="example">a&amp;b|c    &equiv;    (a&amp;b)|c
 a|b&amp;c    &equiv;    (a|b)&amp;c
 a|b&amp;c  is not  a|(b&amp;c)
 a&amp;b|c  is not  a&amp;(b|c)
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -6523,12 +6614,13 @@ except <code>+seq</code>.
 <a name="index-FDL_002c-GNU-Free-Documentation-License"></a>
 <p align="center">Version 1.1, March 2000
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">Copyright &copy; 2000 Free Software Foundation, Inc.
+<div class="display">
+<pre class="display">Copyright &copy; 2000 Free Software Foundation, Inc.
 59 Temple Place, Suite 330, Boston, MA  02111-1307, USA
 
 Everyone is permitted to copy and distribute verbatim copies
 of this license document, but changing it is not allowed.
-</pre></td></tr></table>
+</pre></div>
 
 <ol>
 <li>
@@ -6908,7 +7000,8 @@ as a draft) by the Free Software Foundation.
 the License in the document and put the following copyright and
 license notices just after the title page:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  Copyright (C)  <var>year</var>  <var>your name</var>.
+<div class="smallexample">
+<pre class="smallexample">  Copyright (C)  <var>year</var>  <var>your name</var>.
   Permission is granted to copy, distribute and/or modify this document
   under the terms of the GNU Free Documentation License, Version 1.1
   or any later version published by the Free Software Foundation;
@@ -6916,7 +7009,7 @@ license notices just after the title page:
   Front-Cover Texts being <var>list</var>, and with the Back-Cover Texts being <var>list</var>.
   A copy of the license is included in the section entitled ``GNU
   Free Documentation License''.
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you have no Invariant Sections, write &ldquo;with no Invariant Sections&rdquo;
 instead of saying which ones are invariant.  If you have no

@@ -112,14 +112,15 @@ c=char, o=ordering used by <code>hilb</code><br>
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;presolve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;presolve.lib&quot;;
 ring s   = 0,(e,f,x,y,z,t,u,v,w,a,b,c,d,H),dp;
 ideal id = w2+f2-1, x2+t2+a2-1,  y2+u2+b2-1, z2+v2+c2-1,
 d2+e2-1, f4+2u, wa+tf, xy+tu+ab;
 id = homog(id,H);
 hilbvec(id);
 &rarr; 1,0,-7,0,20,0,-28,0,14,0,14,0,-28,0,20,0,-7,0,1,0
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

@@ -134,7 +134,8 @@ not the printed document.
 <p>For example, the preceding two paragraphs follow an Info-only menu,
 <code>@node</code> line, and heading, and look like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@menu
+<div class="example">
+<pre class="example">@menu
 * Menu Location::             Put a menu in a short node.
 * Writing a Menu::            What is a menu?
 * Menu Parts::                A menu entry has three parts.
@@ -148,7 +149,7 @@ not the printed document.
 @ifinfo
 @heading Menus Need Short Nodes
 @end ifinfo
-</pre></td></tr></table>
+</pre></div>
 
 <p>The Texinfo file for this document contains a number of
 examples of this procedure; one is at the beginning of this chapter.
@@ -183,14 +184,15 @@ itself.
 </p>
 <p>A menu looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@menu
+<div class="example">
+<pre class="example">@menu
 Larger Units of Text
 
 * Files::                       All about handling files.
 * Multiples: Buffers.           Multiple buffers; editing
                                   several files at once.
 @end menu
-</pre></td></tr></table>
+</pre></div>
 
 <p>In a menu, every line that begins with an &lsquo;<samp>* </samp>&rsquo; is a <em>menu
 entry</em>.  (Note the space after the asterisk.)  A line that does not
@@ -241,8 +243,9 @@ A description of the item (optional).
 
 <p>The template for a menu entry looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">* <var>menu-entry-name</var>: <var>node-name</var>.   <var>description</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">* <var>menu-entry-name</var>: <var>node-name</var>.   <var>description</var>
+</pre></div>
 
 <p>Follow the menu entry name with a single colon and follow the node name
 with tab, comma, period, or newline.
@@ -291,13 +294,15 @@ the line and follow the name with two colons.
 </p>
 <p>For example, write
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">* Name::                                    <var>description</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">* Name::                                    <var>description</var>
+</pre></div>
 
 <p>instead of
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">* Name: Name.                               <var>description</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">* Name: Name.                               <var>description</var>
+</pre></div>
 
 <p>You should use the node name for the menu entry name whenever possible,
 since it reduces visual clutter in the menu.
@@ -326,40 +331,44 @@ since it reduces visual clutter in the menu.
 
 <p>A menu looks like this in Texinfo:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@menu
+<div class="example">
+<pre class="example">@menu
 * menu entry name: Node name.   A short description.
 * Node name::                   This form is preferred.
 @end menu
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">* menu:
+<div class="example">
+<pre class="example">* menu:
 
 * menu entry name: Node name.   A short description.
 * Node name::                   This form is preferred.
-</pre></td></tr></table>
+</pre></div>
 
 <p>Here is an example as you might see it in a Texinfo file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@menu
+<div class="example">
+<pre class="example">@menu
 Larger Units of Text
 
 * Files::                       All about handling files.
 * Multiples: Buffers.           Multiple buffers; editing
                                   several files at once.
 @end menu
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">* menu:
+<div class="example">
+<pre class="example">* menu:
 Larger Units of Text
 
 * Files::                       All about handling files.
 * Multiples: Buffers.           Multiple buffers; editing
                                   several files at once.
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this example, the menu has two entries.  &lsquo;<samp>Files</samp>&rsquo; is both a menu
 entry name and the name of the node referred to by that name.
@@ -404,23 +413,25 @@ name.
 </p>
 <p>The format looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@menu
+<div class="example">
+<pre class="example">@menu
 * <var>first-entry-name</var>:(<var>filename</var>)<var>nodename</var>.     <var>description</var>
 * <var>second-entry-name</var>:(<var>filename</var>)<var>second-node</var>. <var>description</var>
 @end menu
-</pre></td></tr></table>
+</pre></div>
 
 <p>For example, to refer directly to the &lsquo;<samp>Outlining</samp>&rsquo; and
 &lsquo;<samp>Rebinding</samp>&rsquo; nodes in the <cite>Emacs Manual</cite>, you would write a
 menu like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@menu
+<div class="example">
+<pre class="example">@menu
 * Outlining: (emacs)Outline Mode. The major mode for
                                   editing outlines.
 * Rebinding: (emacs)Rebinding.    How to redefine the
                                   meaning of a key.
 @end menu
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you do not list the node name, but only name the file, then Info
 presumes that you are referring to the &lsquo;Top&rsquo; node.
@@ -431,10 +442,11 @@ nodes of each Info document.  (See section <a href="texinfo_21.html#Installing-a
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">* Info: (info).         Documentation browsing system.
+<div class="example">
+<pre class="example">* Info: (info).         Documentation browsing system.
 * Emacs: (emacs).       The extensible, self-documenting
                         text editor.
-</pre></td></tr></table>
+</pre></div>
 
 <p>(The &lsquo;<tt>dir</tt>&rsquo; top level directory for the Info system is an Info file,
 not a Texinfo file, but a menu entry looks the same in both types of

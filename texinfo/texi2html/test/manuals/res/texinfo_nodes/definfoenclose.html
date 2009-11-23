@@ -122,8 +122,9 @@ is intended for new markup commands (see section <a href="Marking-Text.html#Mark
 <a name="index-phoo"></a>
 <p>For example, you can write:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@definfoenclose phoo,//,\\
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@definfoenclose phoo,//,\\
+</pre></div>
 
 <p>near the beginning of a Texinfo file to define <code>@phoo</code> as an Info
 formatting command that inserts &lsquo;//&rsquo; before and &lsquo;\\&rsquo; after the argument
@@ -132,10 +133,11 @@ want &lsquo;//bar\\&rsquo; highlighted in Info.
 </p>
 <p>Also, for TeX formatting, you could write 
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@iftex
+<div class="example">
+<pre class="example">@iftex
 @global@let@phoo=@i
 @end iftex
-</pre></td></tr></table>
+</pre></div>
 
 <p>to define <code>@phoo</code> as a command that causes TeX to typeset the
 argument to <code>@phoo</code> in italics.
@@ -148,8 +150,9 @@ the raw TeX commands do need to be in &lsquo;<samp>@iftex</samp>&rsquo;.
 <a name="index-headword"></a>
 <p>Here is another example: write
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@definfoenclose headword, , :
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@definfoenclose headword, , :
+</pre></div>
 
 <p>near the beginning of the file, to define <code>@headword</code> as an Info
 formatting command that inserts nothing before and a colon after the

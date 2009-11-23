@@ -131,7 +131,8 @@ not divisible by other ones.
 </dl>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x,y,z),(c,dp);
+<dd><div class="smallexample">
+<pre class="smallexample">ring r=0,(x,y,z),(c,dp);
 ideal i=0,2x,2x,4x,3x+y,5x2;
 simplify(i,1);
 &rarr; _[1]=0
@@ -169,7 +170,7 @@ simplify(i,32+2+1);
 matrix A[2][3]=x,0,2x,y,0,2y;
 simplify(A,2+8); // by automatic conversion to module
 &rarr; _[1]=[x,y]
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

@@ -107,7 +107,8 @@ is max(nrows(A1),nrows(A2),...)
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;matrix.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;matrix.lib&quot;;
 ring r=0,(x,y,z),ds;
 matrix A[3][3]=1,2,3,x,y,z,x2,y2,z2;
 matrix B[2][2]=1,0,2,0; matrix C[1][4]=4,5,x,y;
@@ -124,7 +125,7 @@ print(concat(A,B,C));
 &rarr; 1, 2, 3, 1,0,4,5,x,y,
 &rarr; x, y, z, 2,0,0,0,0,0,
 &rarr; x2,y2,z2,0,0,0,0,0,0 
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

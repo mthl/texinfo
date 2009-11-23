@@ -103,14 +103,15 @@ system trajectory concerns automatic sensitivity analyses, as either:
 
 <p>This is declared in Zinit as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! -------------
+<div class="example">
+<pre class="example">! -------------
 ! Sensitivities
 ! -------------
 Sensy_to_var
 &lt; var: eta_pray, pert: INIT;
   var: eta_pred, pert: INIT;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>Each variable at origin of a perturbation is declared as <code>var:</code>,
 and the type of perturbation in <code>pert:</code>. Here, INIT conditions are
@@ -124,7 +125,8 @@ diagonal only of the sensitivity matrix
 </p>
 <p>Non initial perturbation can also be asked for:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">  Sensy_to_var
+<div class="example">
+<pre class="example">  Sensy_to_var
   &lt;
 !*     var: eta_courant_L, pert: init at 100;
 !*     var: ff_T_czcx,     pert: pulse at 100 every 20;
@@ -136,7 +138,7 @@ diagonal only of the sensitivity matrix
     var: ff_Psi_Tczcx , pert: step_eff;
     var: ff_Psi_Tsz   , pert: pulse at 100 every 50;
   &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this example taken from &lsquo;<tt>lorhcl</tt>&rsquo;, a sensitivity can increase so as to
 trespass the Fortran capacity, so that each  sensitivity vector (matrix column)
@@ -151,8 +153,9 @@ the TLS of the model<a name="DOCF5" href="#FOOT5">(5)</a>.
 <p>If the <code>dimetaphi</code> sequence is built by the users, he should declare
 the number of perturbing variables as <code>nxp=</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">      parameter (nxp=np,nyp=0,nzp=0);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">      parameter (nxp=np,nyp=0,nzp=0);
+</pre></div>
 <p>here, all state variables are considered as perturbing variables.
 </p>
 <a name="index-sensitivity_002c-output"></a>
@@ -174,21 +177,23 @@ gives the time evolution of the sensitivity of <code>eta-pred</code>
 to a change in the initial value of <code>eta-pray</code>. One can check
 in that it is set to 1 at       t = 0:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">#    Sensy_to: eta_pray         3        eta_pred         5       
+<div class="example">
+<pre class="example">#    Sensy_to: eta_pray         3        eta_pred         5       
 # time \\  of: eta_pray     eta_pred     eta_pray     eta_pred    
   0.00000E+00  1.00000E+00  0.00000E+00  0.00000E+00  1.00000E+00
   1.00000E-02  9.90868E-01  1.11905E-02 -1.26414E-02  9.98859E-01
-</pre></td></tr></table>
+</pre></div>
 <p>The two last columns are the state sensitivity to a change in initial conditions
 of the number of predators.
 </p>
 <p>In the same way, the <var>j+1</var>th column of &lsquo;<tt>sigma.data</tt>&rsquo; will be the
 derivative of       &#x03D5;j(t) with respect to       &#x03B7;i(t = 0). Here:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">#    Sensy_to: eta_pray     eta_pred    
+</p><div class="example">
+<pre class="example">#    Sensy_to: eta_pray     eta_pred    
 # time \\  of: ff_interact  ff_interact 
   0.00000E+00  1.60683E+00  8.47076E-01
   1.00000E-02  1.59980E+00  8.18164E-01
-</pre></td></tr></table>
+</pre></div>
 
 <p>the unique transfer variable gives rise to two sensitivity columns. 
 </p>
@@ -215,17 +220,19 @@ the predator model is of interest.
 <p>The sensitivity calculs is turned on as a forward
 parameter specified on the <code>Free_parameter</code> list:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Free_parameter: [fwd: apar, cpar];
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Free_parameter: [fwd: apar, cpar];
+</pre></div>
 
 <p>The result are in &lsquo;<tt>sensp.data</tt>&rsquo; for cells and &lsquo;<tt>sigmap.data</tt>&rsquo;
 for transfers.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">#    Sensy_to: pi_prandtl       3            4        pi_rayleigh_     6
+<div class="example">
+<pre class="example">#    Sensy_to: pi_prandtl       3            4        pi_rayleigh_     6
 # time \\  of: eta_courant_ eta_T_czcx   eta_T_sz     eta_courant_ eta_T
   0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.000
   2.00000E-03 -4.77172E-03 -3.99170E-05  3.55971E-05 -9.94770E-05 -1.004
-</pre></td></tr></table>
+</pre></div>
 <p>In the above example from &lsquo;<tt>lorhcl</tt>&rsquo; sensitivity of the three states with respect
 to an initial change in two parameters are independantly given (first line also numbers
 the column to easy gnuplot using).
@@ -244,8 +251,9 @@ the column to easy gnuplot using).
 states space (the matrix <code>aspha</code>) with regard to a parameter. 
 The parameter must be accounted for in the parameter number and be in the 
 parameter list, flagged as the matrix <code>mx</code> parameter, like in
-</p><table><tr><td>&nbsp;</td><td><pre class="example">Free_parameter: [mx: apar], cpar;
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">Free_parameter: [mx: apar], cpar;
+</pre></div>
 
 <a name="index-d_005fpi_005faspha_0028_002e_002c_002e_0029"></a>
 

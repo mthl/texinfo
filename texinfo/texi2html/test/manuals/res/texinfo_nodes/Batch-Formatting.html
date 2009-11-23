@@ -95,8 +95,9 @@ including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html
 <p>Here is a shell command to format all the files that end in
 &lsquo;<tt>.texinfo</tt>&rsquo; in the current directory:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">emacs -batch -funcall batch-texinfo-format *.texinfo
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">emacs -batch -funcall batch-texinfo-format *.texinfo
+</pre></div>
 
 <p>Emacs processes all the files listed on the command line, even if an
 error occurs while attempting to format some of them.

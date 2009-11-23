@@ -94,24 +94,27 @@ in Info.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This line @* is broken @*in two places.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">This line @* is broken @*in two places.
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This line
+<div class="example">
+<pre class="example">This line
  is broken
 in two places.
-</pre></td></tr></table>
+</pre></div>
 
 <p>(Note that the space after the first <code>@*</code> command is faithfully
 carried down to the next line.)
 </p>
 <p>The <code>@*</code> command is often used in a file&rsquo;s copyright page:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This is edition 2.0 of the Texinfo documentation,@*
+<div class="example">
+<pre class="example">This is edition 2.0 of the Texinfo documentation,@*
 and is for &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this case, the <code>@*</code> command keeps TeX from stretching the
 line across the whole page in an ugly manner.

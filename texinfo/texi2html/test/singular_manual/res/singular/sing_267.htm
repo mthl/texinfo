@@ -102,7 +102,8 @@ ul.no-bullet {list-style: none}
 <dd><p>changes the basering to another (already defined) ring.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1=0,(x,y),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r1=0,(x,y),lp;
   // the basering is r1
   ring r2=32003,(a(1..8)),ds;
   // the basering is r2
@@ -114,7 +115,7 @@ ul.no-bullet {list-style: none}
 &rarr; // r2                   [0]  ring
 &rarr; // r1                   [0]  *ring
 &rarr; // LIB                  [0]  string standard.lib
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Use in procedures:</strong></code></dt>
 <dd><p>All changes of the basering by a definition of a new ring or a

@@ -107,7 +107,8 @@ such that the Hilbert polynomial is (v_0+v_1*t+...v_r*t^r)/r!
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;poly.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;poly.lib&quot;;
 ring r = 0,(b,c,t,h),dp;
 ideal I=
 bct-t2h+2th2+h3,
@@ -117,7 +118,7 @@ c2t3+ct4-c3th-2c2t2h-2ct3h-t4h+bc2h2-2c2th2-bt2h2+4t3h2+2bth3-2cth3-t2h3
 +bh4-6th4-2h5;
 hilbPoly(I);
 &rarr; -11,10
-</pre></td></tr></table>
+</pre></div>
 </td>
 </tr>
 </table>

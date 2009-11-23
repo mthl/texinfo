@@ -142,14 +142,16 @@ All the relevant informations should be entered in the &lsquo;<tt>zinit</tt>&rsq
 
 <p>First of all the logical flag <code>ZBorel</code> should be raised:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">ZBorel=.true.;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">ZBorel=.true.;
+</pre></div>
 
 <a name="index-index_005fff_005fgain"></a>
 <p>The index of the studied transfer is given in the <code>index_ff_gain</code>
 variable
-</p><table><tr><td>&nbsp;</td><td><pre class="example">index_ff_gain=7;
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">index_ff_gain=7;
+</pre></div>
 
 <p>At each time step a Borel sweep may be performed. The time steps of interest 
 are
@@ -176,10 +178,11 @@ and one for the number of steps between two Borel sweeps:
 
 <p>In the following examples Borel sweeps are performed from the 
 time step 1000 up to the time step 1200, with a sweep at each time step:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">istep_B_deb=1000;   
+</p><div class="example">
+<pre class="example">istep_B_deb=1000;   
 istep_B_fin=1200;  
 istep_B_inc=1;      
-</pre></td></tr></table>
+</pre></div>
 
 
 <p>For each Borel sweep, the range of the       &#x03C4; variable should be 
@@ -210,10 +213,11 @@ starting at       0.2 and then multiplied a hundred times by       &#x2218;
         __&#x221A;
  _2
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">tau_B_ini=0.2;    
+<div class="example">
+<pre class="example">tau_B_ini=0.2;    
 tau_B_mult=sqrt(sqrt(2.)); 
 itau_max=100;             
-</pre></td></tr></table>
+</pre></div>
 
 <p>When the initial value of       &#x03C4; is set to a negative value 
 (<i>i.e.</i> <code>tau_B_ini=-0.2;</code>),
@@ -224,7 +228,8 @@ values for       &#x03C4;.
 </p>
 <p>The whole example reads
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! -------------------
+<div class="example">
+<pre class="example">! -------------------
 ! Feedback gain
 ! Borel
 ! -------------------
@@ -240,7 +245,7 @@ if ZBorel
    itau_max=100;             
    z_pr/Borel/:tau_B_mult,tau_B_ini*(tau_B_mult)**itau_max;
 &gt;;
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-zborel-for"></a>
 
@@ -250,8 +255,9 @@ by the <code>zborel for</code> macro. For example if the transfer selected for t
 feedback gain computation is <var>b_transfer</var>, it can be selected
 with:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">zborel for: <var>b_transfer</var>;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">zborel for: <var>b_transfer</var>;
+</pre></div>
 
 <hr>
 <a name="Borel-sweep-results"></a>

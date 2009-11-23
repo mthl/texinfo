@@ -502,8 +502,9 @@ customization pleasure.  For example, if you wanted <kbd>shift-left</kbd>
 button) to delete the character at which you are pointing, then you
 could do this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(global-set-key '(shift button1) 'mouse-del-char)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(global-set-key '(shift button1) 'mouse-del-char)
+</pre></div>
 
 <a name="index-mouse_002ddel_002dchar"></a>
 <a name="index-mouse_002ddelete_002dwindow"></a>
@@ -1008,10 +1009,11 @@ commands puts all the killed text into one entry without rearrangement.
 Numeric arguments do not break the sequence of appending kills.  For
 example, suppose the buffer contains:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This is the first
+<div class="example">
+<pre class="example">This is the first
 line of sample text
 and here is the third.
-</pre></td></tr></table>
+</pre></div>
 
 <p>with point at the beginning of the second line.  If you type <kbd>C-k C-u 2
 M-&lt;DEL&gt; C-k</kbd>, the first <kbd>C-k</kbd> kills the text &lsquo;<samp>line of sample

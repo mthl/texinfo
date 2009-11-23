@@ -113,8 +113,9 @@ example.
 <a name="index-RCS-Id_003a-texinfo_002etxi_002cv-1_002e2-2003_002f02_002f24-18_003a17_003a06-pertusus-Exp-_0024_002c-in-Texinfo"></a>
 The &lsquo;<samp>Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $</samp>&rsquo; comment is for CVS (see <a href="../cvs/index.html#Top">(cvs)Top</a> section &lsquo;Overview&rsquo; in <cite>Concurrent Versions System</cite>) or RCS (see rcsintro(1)) version control
 systems, which expand it into a string such as:
-<table><tr><td>&nbsp;</td><td><pre class="example">Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $
+</pre></div>
 <p>(This is useful in all sources that use version control, not just manuals.)
 </p>
 </li><li>
@@ -155,7 +156,8 @@ details), then don&rsquo;t forget to include them.
 
 <p>Here is the sample document:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo    @c -*-texinfo-*-
+<div class="example">
+<pre class="example">\input texinfo    @c -*-texinfo-*-
 @comment Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
@@ -242,7 +244,7 @@ and command line options here.
 @printindex cp
 
 @bye
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>

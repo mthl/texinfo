@@ -107,7 +107,8 @@ As with <code>funcall</code>, <var>function</var> must either be a Lisp
 function or a primitive function; special forms and macros
 do not make sense in <code>apply</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(setq f 'list)
+<div class="example">
+<pre class="example">(setq f 'list)
      &rArr; list
 (apply f 'x 'y 'z)
 error--&gt; Wrong type argument: listp, z
@@ -118,7 +119,7 @@ error--&gt; Wrong type argument: listp, z
 
 (apply 'append '((a b c) nil (x y z) nil))
      &rArr; (a b c x y z)
-</pre></td></tr></table>
+</pre></div>
 
 <p>An interesting example of using <code>apply</code> is found in the description
 of <code>mapcar</code>.
@@ -127,7 +128,8 @@ of <code>mapcar</code>.
 
 <p>In the Texinfo source file, this example looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defun apply function &amp;rest arguments
+<div class="example">
+<pre class="example">@defun apply function &amp;rest arguments
 @code{apply} calls @var{function} with
 @var{arguments}, just like @code{funcall} but with one
 difference: the last of @var{arguments} is a list of
@@ -158,7 +160,7 @@ sense in @code{apply}.
 </pre><pre class="example">An interesting example of using @code{apply} is found
 in the description of @code{mapcar}.
 @end defun
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this manual, this function is listed in the Command and Variable
 Index under <code>apply</code>.

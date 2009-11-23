@@ -214,8 +214,9 @@ or &lsquo;<tt>.shrc</tt>&rsquo; or &hellip;) by setting the prompt unconditional
 shell initialization file should set the prompt only if there already is
 a prompt.  Here&rsquo;s how to do it in <code>csh</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">if ($?prompt) set prompt = ...
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">if ($?prompt) set prompt = ...
+</pre></div>
 
 <hr>
 <a name="Lisp-Modes"></a>
@@ -501,8 +502,9 @@ non-interactively from the shell to do byte compilation.  When you use
 this function, the files to be compiled are specified with command-line
 arguments.  Use a shell command of the form:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">emacs -batch -f batch-byte-compile <var>files</var>...
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">emacs -batch -f batch-byte-compile <var>files</var>...
+</pre></div>
 
 <p>  Directory names may also be given as arguments; in that case,
 <code>byte-recompile-directory</code> is invoked on each such directory.
@@ -1107,13 +1109,15 @@ the <a href="#Available-Packages">Normal Packages</a> at the time of the XEmacs 
 are installed, using the visual package browser and installer.  You can
 access it via the menus:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">        Tools -&gt; Packages -&gt; List and Install
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">        Tools -&gt; Packages -&gt; List and Install
+</pre></div>
 
 <p>Or, you can get to it via the keyboard:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x pui-list-packages
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">M-x pui-list-packages
+</pre></div>
 
 <p>Hint to system administrators of multi-user systems: it might be a good
 idea to install all packages and not interfere with the wishes of your
@@ -1123,8 +1127,9 @@ users.
 using the <code>package-get-package-provider</code> function. Eg., if you know 
 that you need <code>thingatpt</code>, type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x package-get-package-provider RET thingatpt
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">M-x package-get-package-provider RET thingatpt
+</pre></div>
 
 <p>which will return something like (fsf-compat &quot;1.08&quot;). You can the use
 one of the methods above for installing the package you want.
@@ -1206,26 +1211,28 @@ remove the old package first <a href="#Removing-Packages">Removing Packages</a>.
 <p>For example if we are installing the &lsquo;<tt>xemacs-base</tt>&rsquo;
 package (version 1.48):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">   mkdir $prefix/lib/xemacs/xemacs-packages RET # if it does not exist yet
+<div class="example">
+<pre class="example">   mkdir $prefix/lib/xemacs/xemacs-packages RET # if it does not exist yet
    cd $prefix/lib/xemacs/xemacs-packages RET
    gunzip -c /path/to/xemacs-base-1.48-pkg.tar.gz | tar xvf - RET
 
 Or if you have GNU tar, the last step can be:
 
    tar zxvf /path/to/xemacs-base-1.48-pkg.tar.gz RET
-</pre></td></tr></table>
+</pre></div>
 
 <p>For MULE related packages, it is best to untar into the mule-packages
 hierarchy, i.e. for the &lsquo;<tt>mule-base</tt>&rsquo; package, version 1.37:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">   mkdir $prefix/lib/xemacs/mule-packages RET # if it does not exist yet
+<div class="example">
+<pre class="example">   mkdir $prefix/lib/xemacs/mule-packages RET # if it does not exist yet
    cd $prefix/lib/xemacs/mule-packages RET
    gunzip -c /path/to/mule-base-1.37-pkg.tar.gz | tar xvf - RET
 
 Or if you have GNU tar, the last step can be:
 
    tar zxvf /path/to/mule-base-1.37-pkg.tar.gz RET
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Automatically"></a>
 <a name="index-automatic-package-install"></a>
@@ -1241,13 +1248,14 @@ You will have to install them by hand as above or use a SUMO tarball.
 This requirement will hopefully go away in the future. The packages
 you need are:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">   efs          - To fetch the files from the FTP site or mirrors.
+<div class="example">
+<pre class="example">   efs          - To fetch the files from the FTP site or mirrors.
    xemacs-base  - Needed by efs.
 
 and optionally:
 
    mule-base    - Needed if you want to use XEmacs with MULE.
-</pre></td></tr></table>
+</pre></div>
 
 <p>After installing these by hand, fire up XEmacs and follow these
 steps.
@@ -1362,8 +1370,9 @@ keyb: <kbd>x</kbd>
 
 <p>You can also install packages using a semi-manual interface:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x package-get-all &lt;return&gt;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">M-x package-get-all &lt;return&gt;
+</pre></div>
 
 <p>Enter the name of the package (e.g., <code>prog-modes</code>), and XEmacs
 will search for the latest version and install it and any packages that
@@ -1558,8 +1567,9 @@ Setting this doesn&rsquo;t work well with &rsquo;make bindist&rsquo;
 <dt><var>XEMACS_PACKAGES =</var></dt>
 <dd><p>This is where you set the normal packages that you
 want to install. eg:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">      XEMACS_PACKAGES = xemacs-packages/xemacs-base xemacs-packages/bbdb
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">      XEMACS_PACKAGES = xemacs-packages/xemacs-base xemacs-packages/bbdb
+</pre></div>
 
 </dd>
 <dt><var>XEMACS_STAGING = ${XEMACS_PACKAGES_BASE}/../Packages</var></dt>
@@ -1580,8 +1590,9 @@ packages.  Set this to &rsquo;t&rsquo; if you don&rsquo;t want/have Mule
 <dt><var>MULE_PACKAGES =</var></dt>
 <dd><p>Same as for &rsquo;XEMACS_PACKAGES&rsquo; except you list the Mule
 packages you want to install here. eg:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">      MULE_PACKAGES = mule-packages/mule-base mule-packages/skk
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">      MULE_PACKAGES = mule-packages/mule-base mule-packages/skk
+</pre></div>
 
 </dd>
 <dt><var>MULE_STAGING = ${XEMACS_PACKAGES_BASE}/../Mule-Packages</var></dt>
@@ -1628,7 +1639,8 @@ infrastructure.
 </p>
 <p>&lsquo;<tt>package-info.in</tt>&rsquo; contains a single Lisp form like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(name                               ; your package's name
+<div class="example">
+<pre class="example">(name                               ; your package's name
   (standards-version 1.1
    version VERSION
    author-version AUTHOR_VERSION
@@ -1647,7 +1659,7 @@ infrastructure.
    requires (REQUIRES)
    type regular
 ))
-</pre></td></tr></table>
+</pre></div>
 
 <p>You must fill in the four commented lines.  The value of <code>name</code> is
 the name of your package as an unquoted symbol.  Normally it is the name
@@ -1698,17 +1710,19 @@ directory, but not byte-compiled, they can be listed as the value of
 <code>EXTRA_SOURCES</code>.
 </p>
 <p>The include is simply
-</p><table><tr><td>&nbsp;</td><td><pre class="example">include ../../XEmacs.rules
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">include ../../XEmacs.rules
+</pre></div>
 
 <p>The standard targets follow.  These are
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">all:: $(ELCS) auto-autoloads.elc
+<div class="example">
+<pre class="example">all:: $(ELCS) auto-autoloads.elc
 
 srckit: srckit-alias
 
 binkit: binkit-alias
-</pre></td></tr></table>
+</pre></div>
 
 <p>Other targets (such as Texinfo sources) may need to be added as
 dependencies for the <code>all</code> target.  Dependencies for <code>srckit</code>

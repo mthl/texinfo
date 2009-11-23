@@ -103,7 +103,8 @@ ul.no-bullet {list-style: none}
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><pre class="format">list ev;  V-filtration on Jacobian algebra
+<dd><div class="format">
+<pre class="format">list ev;  V-filtration on Jacobian algebra
   ideal ev[1];
     number ev[1][i];  i-th V-filtration index
   intvec ev[2];
@@ -112,7 +113,7 @@ ul.no-bullet {list-style: none}
     module ev[3][i];  vector space of i-th graded part in terms of ev[4]
   ideal ev[4];  monomial vector space basis of Jacobian algebra
   ideal ev[5];  standard basis of Jacobian ideal
-</pre>
+</pre></div>
 
 <a name="index-singularities-11"></a>
 <a name="index-Gauss_002dManin-connection-12"></a>
@@ -123,7 +124,8 @@ ul.no-bullet {list-style: none}
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;gaussman.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;gaussman.lib&quot;;
 ring R=0,(x,y),ds;
 poly t=x5+x2y2+y5;
 endvfilt(vfilt(t));
@@ -173,7 +175,7 @@ endvfilt(vfilt(t));
 &rarr;    _[2]=2xy2+5x4
 &rarr;    _[3]=5x5-5y5
 &rarr;    _[4]=10y6+25x3y4
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

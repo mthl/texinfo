@@ -120,7 +120,8 @@ ring variables only by monomials
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;poly.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;poly.lib&quot;;
 ring r = 0,(b,c,t),dp;
 ideal I = -bc+4b2c2t,bc2t-5b2c;
 substitute(I,c,b+c,t,0,b,b-1);
@@ -131,7 +132,7 @@ ideal f = b+c,0,b-1;
 substitute(I,v,f);
 &rarr; _[1]=-b2-bc+2b+c-1
 &rarr; _[2]=-5b3-5b2c+15b2+10bc-15b-5c+5
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

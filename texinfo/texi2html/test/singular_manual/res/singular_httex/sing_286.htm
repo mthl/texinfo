@@ -165,7 +165,8 @@ class="cmmi-7">n</span></sup>, and
 all given generators have to be numbers.  
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x,y),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">ring r=0,(x,y),dp;
 // determine f with deg(f)=2 and with given values v of f
 // at 9 points: (2,3)^0=(1,1),...,(2,3)^8=(2^8,3^8)
 // valuation point: (2,3)
@@ -177,7 +178,7 @@ ip[1..5];  //  the 5 first terms of ip:
 // compute value of ip at the point 2^8,3^8, result must be 9
 subst(subst(ip,x,2^8),y,3^8);
 &rarr; 9
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 

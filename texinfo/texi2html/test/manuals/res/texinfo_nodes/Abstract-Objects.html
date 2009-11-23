@@ -107,19 +107,21 @@ variables associated with classes in object-oriented programming.  The
 thing being defined, the class to which it belongs, and its
 name.  Thus,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defcv {Class Option} Window border-pattern
+<div class="example">
+<pre class="example">@defcv {Class Option} Window border-pattern
 &hellip;
 @end defcv
-</pre></td></tr></table>
+</pre></div>
 
 <p>illustrates how you would write the first line of a definition of the
 <code>border-pattern</code> class option of the class <code>Window</code>.
 </p>
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defcv <var>category</var> <var>class</var> <var>name</var>
+</p><div class="example">
+<pre class="example">@defcv <var>category</var> <var>class</var> <var>name</var>
 &hellip;
 @end defcv
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defcv</code> creates an entry in the index of variables.
 </p>
@@ -131,10 +133,11 @@ variables in object-oriented programming.  <code>@defivar</code> is
 equivalent to &lsquo;<samp>@defcv {Instance Variable} &hellip;</samp>&rsquo;
 </p>
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defivar <var>class</var> <var>instance-variable-name</var>
+</p><div class="example">
+<pre class="example">@defivar <var>class</var> <var>instance-variable-name</var>
 <var>body-of-definition</var>
 @end defivar
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defivar</code> creates an entry in the index of variables.
 </p>
@@ -176,8 +179,9 @@ example, window application developers need to know about the
 given class of windows has its own method to implement this operation.
 To describe this operation, you would write:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defop Operation windows expose
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@defop Operation windows expose
+</pre></div>
 
 <p>The <code>@defop</code> command is written at the beginning of a line and
 is followed on the same line by the overall name of the category of
@@ -185,10 +189,11 @@ operation, the name of the class of the operation, the name of the
 operation, and its arguments, if any.
 </p>
 <p>The template is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;
+</p><div class="example">
+<pre class="example">@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end defop
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defop</code> creates an entry, such as &lsquo;<code>expose</code> on
 <code>windows</code>&rsquo;, in the index of functions.
@@ -216,20 +221,22 @@ the name of the class of the method, the name of the method, and its
 arguments, if any.
 </p>
 <p>For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@defmethod <code>bar-class</code> bar-method argument
+</p><div class="example">
+<pre class="example">@defmethod <code>bar-class</code> bar-method argument
 &hellip;
 @end defmethod
-</pre></td></tr></table>
+</pre></div>
 
 <p>illustrates the definition for a method called <code>bar-method</code> of
 the class <code>bar-class</code>.  The method takes an argument.
 </p>
 <p>The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defmethod <var>class</var> <var>method-name</var> <var>arguments</var>&hellip;
+<div class="example">
+<pre class="example">@defmethod <var>class</var> <var>method-name</var> <var>arguments</var>&hellip;
 <var>body-of-definition</var>
 @end defmethod
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defmethod</code> creates an entry, such as &lsquo;<code>bar-method</code> on
 <code>bar-class</code>&rsquo;, in the index of functions.

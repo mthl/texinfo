@@ -140,7 +140,8 @@ watchProgress[5]&gt;0 =&gt; matrix representing the kernel using print
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;spcurve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;spcurve.lib&quot;;
 ring r=0,(x,y,z),ds;
 matrix M[3][2]=z-x^7,0,y^2,z,x^9,y;
 def KS=KSpencerKernel(M,&quot;ar&quot;);
@@ -161,7 +162,7 @@ basering;
 &rarr; //                  : names    T(1) T(2) T(3) T(4) T(5) T(6) T(7) T(8) 
 &rarr; //                  : weights     8    5    2   10    7    4    1    2 
 &rarr; //        block   3 : ordering C
-</pre></td></tr></table>
+</pre></div>
 </td>
 </tr>
 </table>

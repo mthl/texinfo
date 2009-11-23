@@ -102,9 +102,10 @@ ul.no-bullet {list-style: none}
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list WS of two lists:
-  </p><pre class="format">  WS[1] list of integers (Weierstr. semigroup of the curve at place i up to m)
+  </p><div class="format">
+<pre class="format">  WS[1] list of integers (Weierstr. semigroup of the curve at place i up to m)
   WS[2] list of ideals (the associated rational functions)
-  </pre>
+  </pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -121,7 +122,8 @@ in form of ideals with two homogeneous generators.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;brnoeth.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;brnoeth.lib&quot;;
 int plevel=printlevel;
 printlevel=-1;
 ring s=2,(x,y),lp;
@@ -163,7 +165,7 @@ WS[2];
 &rarr;    _[1]=y3
 &rarr;    _[2]=xz2
 printlevel=plevel;
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_895.htm#Adj_005fdiv">Adj_div</a>;
 <a href="sing_897.htm#BrillNoether">BrillNoether</a>;

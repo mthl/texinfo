@@ -101,7 +101,8 @@ ul.no-bullet {list-style: none}
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><pre class="format">         a list l  of size 2, l[1] integer, l[2] ring:
+<dd><div class="format">
+<pre class="format">         a list l  of size 2, l[1] integer, l[2] ring:
          - l[1] = 1 if f1,...,fm are algebraic dependent, 0 if not
          - l[2] is a ring with variables x(1),...,x(n),y(1),...,y(m) if the
            basering has n variables. It contains the ideal &rsquo;ker&rsquo;, depending
@@ -109,7 +110,7 @@ ul.no-bullet {list-style: none}
            f[i], i.e. substituting y(i) by fi yields 0. Of course, ker is
            nothing but the kernel of the ring map
               K[y(1),...,y(m)] &mdash;&gt; basering,  y(i) &ndash;&gt; fi.
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -126,7 +127,8 @@ e.g. def S=l[2]; setring S; ker;
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;algebra.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;algebra.lib&quot;;
 int p = printlevel; printlevel = 1;
 ring R = 0,(x,y,z,u,v,w),dp;
 ideal I = xyzu2w-1yzu2w2+u4w2-1xu2vw+u2vw2+xyz-1yzw+2u2w-1xv+vw+2,
@@ -148,7 +150,7 @@ def S = l[2]; setring S;
 ker;
 &rarr; ker[1]=y(2)*y(3)*y(4)+y(3)^2-y(1)+1
 printlevel = p;
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

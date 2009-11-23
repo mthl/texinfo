@@ -114,18 +114,20 @@ ul.no-bullet {list-style: none}
 <dd><p>computes the irreducible factors (as an ideal) of the polynomial
 together with or without
 the multiplicities (as an intvec) depending on the second argument:
-</p><pre class="format">    0: returns factors and multiplicities, first factor is a constant.
+</p><div class="format">
+<pre class="format">    0: returns factors and multiplicities, first factor is a constant.
        May also be written with only one argument.
     1: returns non-constant factors (no multiplicities).
     2: returns non-constant factors and multiplicities.
-</pre>
+</pre></div>
 </dd>
 <dt><code><strong>Note:</strong></code></dt>
 <dd><p>Not implemented for the coefficient fields real and finite fields of
 type <code>(p^n,a)</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   factorize(9*(x-1)^2*(y+z));
 &rarr; [1]:
 &rarr;    _[1]=9
@@ -142,7 +144,7 @@ type <code>(p^n,a)</code>.
 &rarr;    _[2]=x-1
 &rarr; [2]:
 &rarr;    1,2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

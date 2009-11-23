@@ -329,7 +329,8 @@ class="cmmi-10">f </span>
  <span 
 class="cmmi-10">M </span> 
 :
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;gaussman.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">  LIB &quot;gaussman.lib&quot;;
   ring R=0,(x,y),ds;
   poly f=x5+x2y2+y5;
   list l=monodromy(f);
@@ -346,14 +347,15 @@ class="cmmi-10">M </span>
 &rarr; 0,  0,  0,   0,   0,   0,   0,0,    11/10,0,    0,   
 &rarr; 0,  0,  0,   0,   0,   0,   0,0,    0,    13/10,0,   
 &rarr; 0,  0,  0,   0,   0,   0,   0,0,    0,    0,    13/10
-</pre></td></tr></table>
+</pre></div>
 
 <p>Now, we compute the V-filtration on 
  <span 
 class="cmmi-10">H</span>&#8220;<span 
 class="cmmi-10">&#x2215;H</span>&#8216;  
  and the spectrum:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;gaussman.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">  LIB &quot;gaussman.lib&quot;;
   ring R=0,(x,y),ds;
   poly f=x5+x2y2+y5;
   list l=vfilt(f);
@@ -398,7 +400,7 @@ class="cmmi-10">&#x2215;H</span>&#8216;
 &rarr; x2,
 &rarr; x,
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 <p>Here <code>l[1]</code> contains the spectral numbers, <code>l[2]</code> the corresponding multiplicities, <code>l[3]</code> a 
  <span 
 class="cmmi-10">C </span> 
@@ -445,7 +447,8 @@ class="cmmi-10">x,y,z</span>]
 negative degree lexicographical ordering which is denoted
 <code>ds</code> in <small>SINGULAR</small>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x,y,z),ds;
+<div class="smallexample">
+<pre class="smallexample">ring r=0,(x,y,z),ds;
 LIB &quot;spectrum.lib&quot;;
 poly f=x^7+y^7+z^7;
 list s1=spectrumnd( f );
@@ -469,7 +472,7 @@ s1;
 &rarr;    _[16]=11/7
 &rarr; [2]:
 &rarr;    1,3,6,10,15,21,25,27,27,25,21,15,10,6,3,1
-</pre></td></tr></table>
+</pre></div>
 
 <p>The command <code>spectrumnd(f)</code> computes the spectrum of 
  <span 
@@ -591,7 +594,8 @@ class="cmr-7">3</span></sup> + <span
 class="cmmi-10">z</span><sup><span 
 class="cmr-7">3</span></sup>.  
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">poly g=x^3+y^3+z^3;
+<div class="smallexample">
+<pre class="smallexample">poly g=x^3+y^3+z^3;
 list s2=spectrumnd(g);
 s2;
 &rarr; [1]:
@@ -606,11 +610,12 @@ s2;
 &rarr;    1,3,3,1
 &rarr; [6]:
 &rarr;    1,3,3,1
-</pre></td></tr></table>
+</pre></div>
 <p>Evaluating semicontinuity is very easy:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">semicont(s1,s2);
+</p><div class="smallexample">
+<pre class="smallexample">semicont(s1,s2);
 &rarr; 18
-</pre></td></tr></table>
+</pre></div>
 
 <p>This tells us that there are at most 18 singularities of type
  <span 
@@ -627,9 +632,10 @@ class="cmr-7">7</span></sup>
 is semiquasihomogeneous (sqh), so we can also apply the stronger
 form of semicontinuity:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">semicontsqh(s1,s2);
+<div class="smallexample">
+<pre class="smallexample">semicontsqh(s1,s2);
 &rarr; 17
-</pre></td></tr></table>
+</pre></div>
 
 <p>So in fact a septic has at most 17 triple points of type
  <span 

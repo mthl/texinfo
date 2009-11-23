@@ -116,7 +116,8 @@ Hence there is no special command for computing the kernel of a map in
 <small>SINGULAR</small>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1=32003,(x,y,z,w),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r1=32003,(x,y,z,w),lp;
   ring r=32003,(x,y,z),dp;
   ideal i=x,y,z;
   ideal i1=x,y;
@@ -131,7 +132,7 @@ Hence there is no special command for computing the kernel of a map in
   // the kernel of f
   preimage(r,f,i0);
 &rarr; _[1]=w
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

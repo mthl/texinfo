@@ -92,16 +92,18 @@ analogously.
 <p>Write the conditionally formatted text between <code>@ifset <var>flag</var></code>
 and <code>@end ifset</code> commands, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@ifset <var>flag</var>
+<div class="example">
+<pre class="example">@ifset <var>flag</var>
 <var>conditional-text</var>
 @end ifset
-</pre></td></tr></table>
+</pre></div>
 
 <p>For example, you can create one document that has two variants, such as
 a manual for a &lsquo;large&rsquo; and &lsquo;small&rsquo; model:
 </p>
 <a name="index-shrubbery"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">You can use this machine to dig up shrubs
+<div class="example">
+<pre class="example">You can use this machine to dig up shrubs
 without hurting them.
 
 @set large
@@ -111,7 +113,7 @@ It can also dig up fully grown trees.
 @end ifset
 
 Remember to replant promptly &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>In the example, the formatting commands will format the text between
 <code>@ifset large</code> and <code>@end ifset</code> because the <code>large</code>
@@ -140,8 +142,9 @@ is set with <code>@set <var>flag</var></code>, then the formatting commands do
 ifclear</code> command; rather, they ignore that text.  An <code>@ifclear</code>
 command looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@ifclear <var>flag</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@ifclear <var>flag</var>
+</pre></div>
 
 
 <hr>

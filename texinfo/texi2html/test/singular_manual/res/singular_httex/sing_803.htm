@@ -115,7 +115,8 @@ contains only s(1..a), M[2,i] contains only t(1...b) s.t. r is minimal
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;rinvar.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;rinvar.lib&quot;;
 ring R = 0, (s(1..2), t(1..2)), dp;
 poly h = s(1)*(t(1) + t(1)^2) +  (t(2) + t(2)^2)*(s(1)^2 + s(2));
 matrix M = MinimalDecomposition(h, 2, 2);
@@ -126,7 +127,7 @@ M;
 &rarr; M[2,2]=t(1)^2+t(1)
 M[1,1]*M[2,1] + M[1,2]*M[2,2] - h;
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

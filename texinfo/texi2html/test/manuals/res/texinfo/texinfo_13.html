@@ -241,12 +241,13 @@ line followed, on the rest of the line, by the entry.
 <p>For example, this section begins with the following five entries for
 the concept index:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@cindex Defining indexing entries
+<div class="example">
+<pre class="example">@cindex Defining indexing entries
 @cindex Index entries
 @cindex Entries for an index
 @cindex Specifying index entries
 @cindex Creating index entries
-</pre></td></tr></table>
+</pre></div>
 
 <p>Each predefined index has its own indexing command&mdash;<code>@cindex</code>
 for the concept index, <code>@findex</code> for the function index, and so
@@ -414,8 +415,9 @@ redirect the function index entries into the concept index.
 of the index to redirect, and the name of the index to redirect it to.
 The template looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@syncodeindex <var>from</var> <var>to</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@syncodeindex <var>from</var> <var>to</var>
+</pre></div>
 
 <a name="index-Predefined-names-for-indices"></a>
 <a name="index-Two-letter-names-for-indices"></a>
@@ -449,8 +451,9 @@ end-of-header line at the beginning of a Texinfo file.  For example,
 to merge a function index with a concept index, write the
 following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@syncodeindex fn cp
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@syncodeindex fn cp
+</pre></div>
 
 <p>This will cause all entries designated for the function index to merge
 in with the concept index instead.
@@ -458,9 +461,10 @@ in with the concept index instead.
 <p>To merge both a variables index and a function index into a concept
 index, write the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@syncodeindex vr cp
+<div class="example">
+<pre class="example">@syncodeindex vr cp
 @syncodeindex fn cp
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-Fonts-for-indices"></a>
 <p>The <code>@syncodeindex</code> command puts all the entries from the &lsquo;from&rsquo;
@@ -531,14 +535,16 @@ indices.  These commands create new indexing @-commands with which
 you mark index entries.  The <code>@defindex </code>command is used like
 this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defindex <var>name</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@defindex <var>name</var>
+</pre></div>
 
 <p>The name of an index should be a two letter word, such as &lsquo;<samp>au</samp>&rsquo;.
 For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defindex au
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@defindex au
+</pre></div>
 
 <p>This defines a new index, called the &lsquo;<samp>au</samp>&rsquo; index.  At the same
 time, it creates a new indexing command, <code>@auindex</code>, that you
@@ -548,11 +554,12 @@ you would use a predefined indexing command.
 <p>For example, here is a section heading followed by a concept index
 entry and two &lsquo;<samp>au</samp>&rsquo; index entries.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@section Cognitive Semantics
+<div class="example">
+<pre class="example">@section Cognitive Semantics
 @cindex kinesthetic image schemas
 @auindex Johnson, Mark
 @auindex Lakoff, George
-</pre></td></tr></table>
+</pre></div>
 
 <p>(Evidently, &lsquo;<samp>au</samp>&rsquo; serves here as an abbreviation for &ldquo;author&rdquo;.)
 Texinfo constructs the new indexing command by concatenating the name
@@ -562,11 +569,12 @@ leads to the automatic creation of an <code>@auindex</code> command.
 <p>Use the <code>@printindex</code> command to print the index, as you do with
 the predefined indices.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node Author Index, Subject Index, , Top
+<div class="example">
+<pre class="example">@node Author Index, Subject Index, , Top
 @unnumbered Author Index
 
 @printindex au
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <code>@defcodeindex</code> is like the <code>@defindex</code> command, except
 that, in the printed output, it prints entries in an <code>@code</code> font

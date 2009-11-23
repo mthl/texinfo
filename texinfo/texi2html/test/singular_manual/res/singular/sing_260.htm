@@ -127,7 +127,8 @@ This works only for zero dimensional ideals (resp. modules) in the second argume
 <dd><p>The commands <code>reduce</code> and <code>NF</code> are synonymous.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1 = 0,(z,y,x),ds;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r1 = 0,(z,y,x),ds;
   poly s1=2x5y+7x2y4+3x2yz3;
   poly s2=1x2y2z2+3z8;
   poly s3=4xy5+2x2y2z3+11x10;
@@ -137,7 +138,7 @@ This works only for zero dimensional ideals (resp. modules) in the second argume
 &rarr; -yx5+2401/81y14x2+2744/81y11x5+392/27y8x8+224/81y5x11+16/81y2x14
   reduce(3z3yx2+7y4x2+yx5+z12y2x2,j,1);
 &rarr; -yx5+z12y2x2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

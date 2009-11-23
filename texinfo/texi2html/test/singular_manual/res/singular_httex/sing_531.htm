@@ -107,7 +107,8 @@ ul.no-bullet {list-style: none}
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><pre class="format">         - k=0 (or if k is not given), an integer:
+<dd><div class="format">
+<pre class="format">         - k=0 (or if k is not given), an integer:
            1    : if p is contained in the module &lt;M[1],...,M[m]&gt; over K[P]
            0    : if p is not contained in &lt;M[1],...,M[m]&gt;
          - k=1, a list, say l, of size 2, l[1] integer, l[2] ring:
@@ -118,7 +119,7 @@ ul.no-bullet {list-style: none}
              poly check = h(x,y(1),...,y(m),z(1),...,z(n)) if p satisfies
              the nonlinear relation p = h(x,M[1],...,M[m],P[1],...,P[n]) where
              x = x(1),...,x(n) denote the variables of the basering
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Display:</strong></dt>
@@ -139,7 +140,8 @@ the z(i) &lt;=&gt; p is contained in the module.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;algebra.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;algebra.lib&quot;;
 int p = printlevel; printlevel = 1;
 ring R=0,(x,y,z),dp;
 ideal P = x2+y2,z2,x4+y4;           //algebra generators
@@ -163,7 +165,7 @@ l[1];
 def S = l[2]; setring S; check;
 &rarr; x(3)
 printlevel=p;
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

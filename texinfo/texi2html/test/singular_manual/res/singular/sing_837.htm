@@ -96,8 +96,9 @@ ul.no-bullet {list-style: none}
 <dl compact="compact">
 <dt><strong>Usage:</strong></dt>
 <dd><p>lex_solve( i[,p] ); i=ideal, p=integer,
- </p><pre class="format">  p&gt;0: gives precision of complex numbers in decimal digits (default: p=30).
- </pre>
+ </p><div class="format">
+<pre class="format">  p&gt;0: gives precision of complex numbers in decimal digits (default: p=30).
+ </pre></div>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -118,7 +119,8 @@ roots of i are stored.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;solve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;solve.lib&quot;;
 ring r = 0,(x,y),lp;
 // compute the intersection points of two curves
 ideal s=  x2 + y2 - 10, x2 + xy + 2y2 - 16;
@@ -146,7 +148,7 @@ rlist;
 &rarr;       -1
 &rarr;    [2]:
 &rarr;       3
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

@@ -118,7 +118,8 @@ The basering may be a quotient ring.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;algebra.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;algebra.lib&quot;;
 ring r = 0,(a,b,c),ds;
 ring s = 0,(x,y,z,u,v,w),dp;
 ideal I = x-w,u2w+1,yz-v;
@@ -136,7 +137,7 @@ setring S;                     // you have access to kernel in preimage
 ker;
 &rarr; ker[1]=a-b
 &rarr; ker[2]=c-b2+b3
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

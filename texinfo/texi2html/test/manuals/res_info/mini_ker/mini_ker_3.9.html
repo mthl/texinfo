@@ -116,8 +116,9 @@ using the fortran <code>parameter np</code> for <code>eta(.)</code> and
 <code>mp</code> for <code>ff(.)</code>.
 For the Lotka-Volterra model, we have two cell components and only one transfer.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">parameter (np=2,mp=1);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">parameter (np=2,mp=1);
+</pre></div>
 
 <p>You should not change the layout of the parameter statement as the 
 mortran preprocessor matches the line.
@@ -129,27 +130,30 @@ It includes the <code>maxstep</code> parameter that can have any value but 0,
 <code>nyp</code> and <code>nzp</code> that should also be 0.
 The layout is the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">parameter (np=2,mp=1);
+<div class="example">
+<pre class="example">parameter (np=2,mp=1);
 parameter (mobs=0);
 
 parameter (nxp=0,nyp=0,nzp=0);
 parameter (lp=0);
 parameter (maxstep=1);
-</pre></td></tr></table>
+</pre></div>
 
 <p>If there are observations, (see <a href="mini_ker_3.8.html#Observations">Observations</a>), the
 size of the observation vector is set in the &lsquo;<tt>dimetaphi</tt>&rsquo; sequence
 by the <code>mobs</code> parameter. For example if there is one observation:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">parameter (mobs=1);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">parameter (mobs=1);
+</pre></div>
 
 <p>To specify parameters (see <a href="mini_ker_3.7.html#Parameters">Parameters</a>), the number of such parameters 
 has to be declared in &lsquo;<tt>dimetaphi</tt>&rsquo; with the parameter <code>lp</code>. 
 Then, if there are two parameters, they are first declared with
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">parameter (lp=2);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">parameter (lp=2);
+</pre></div>
 
 <hr>
 <a name="Model-with-explicit-size"></a>
@@ -189,8 +193,9 @@ expression which may be function of cell state variables,
 
 <p>In the case of the predator-prey model, the transfer definition for 
       &#x03C6;meet is:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">f_set Phi_tef(1) = eta(1)*eta(2);  
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">f_set Phi_tef(1) = eta(1)*eta(2);  
+</pre></div>
 
 <dl>
 <dt><a name="index-f_005fset-1"></a>Macro: <strong>f_set</strong><em> deta_tef(<var>i</var>) = g(eta(<var>i</var>),ff(.))</em></dt>
@@ -203,13 +208,15 @@ expression which may be function of cell state variables,
 <p>The two cell equations of the predator-prey model are, with index 1 for the
 prey (      &#x03B7;prey) and index 2 for the predator (      &#x03B7;pred):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">f_set  deta_tef(1) = apar*eta(1)-apar*ff(1);
+<div class="example">
+<pre class="example">f_set  deta_tef(1) = apar*eta(1)-apar*ff(1);
 f_set  deta_tef(2) = - cpar*eta(2) + cpar*ff(1);
-</pre></td></tr></table>
+</pre></div>
 
 <p>The whole model is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
+<div class="example">
+<pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
 ! Transfer definition
 !%%%%%%%%%%%%%%%%%%%%%%
 ! rencontres (meeting)
@@ -223,20 +230,22 @@ f_set  deta_tef(2) = - cpar*eta(2) + cpar*ff(1);
 
     f_set  deta_tef(1) = apar*eta(1)-apar*ff(1);
     f_set  deta_tef(2) = - cpar*eta(2) + cpar*ff(1);
-</pre></td></tr></table>
+</pre></div>
 
 <p>The starting points for cells are entered like:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">!     initial state
+</p><div class="example">
+<pre class="example">!     initial state
 !     -------------
      eta(1) = 1.;
      eta(2) = 1.;
-</pre></td></tr></table>
+</pre></div>
 
 <p>If there are observations, they are entered as special transferts with
 index above <code>mp</code>, for example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">f_set Phi_tef(mp+1) = ff(1) ;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">f_set Phi_tef(mp+1) = ff(1) ;
+</pre></div>
 
 <div class="footnote">
 <hr>

@@ -100,7 +100,8 @@ example, depend on the input. However, the return value
 of such a procedure may then only be assigned to a variable of type
 <code>def</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc type_return (int i)
+<div class="smallexample">
+<pre class="smallexample">proc type_return (int i)
 {
   if (i &gt; 0) {return (i);}
   else {return (list(i));}
@@ -110,14 +111,15 @@ def t2 = type_return(-1);
 typeof(t1); typeof(t2);
 &rarr; int
 &rarr; list
-</pre></td></tr></table>
+</pre></div>
 
 <p>Furthermore, it is mandatory to assign the return value of a procedure
 to a variable of type <code>def</code>, if a procedure changes the current
 ring using the <code>keepring</code> command (see <a href="sing_301.htm#keepring">keepring</a>) and returns a
 ring-dependent value (like a polynomial or module).
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc def_return
+<div class="smallexample">
+<pre class="smallexample">proc def_return
 {
   ring r=0,(x,y),dp;
   poly p = x;
@@ -128,14 +130,15 @@ def p = def_return();
 // poly p = def_return(); would be WRONG!!!
 typeof(p);
 &rarr; poly
-</pre></td></tr></table>
+</pre></div>
 
 <p>On the other hand, more than one value can be returned by a single
 <code>return</code> statement. For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc tworeturn () { return (1,2); }
+<div class="smallexample">
+<pre class="smallexample">proc tworeturn () { return (1,2); }
 int i,j = tworeturn();
-</pre></td></tr></table>
+</pre></div>
 
 
 </td>

@@ -97,23 +97,25 @@ Info directory file, and use <code>@dircategory</code> to specify which part
 of the Info directory to put it in.  Here is how these commands are used
 in this manual:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">@dircategory Texinfo documentation system
+<div class="smallexample">
+<pre class="smallexample">@dircategory Texinfo documentation system
 @direntry
 * Texinfo: (texinfo).           The GNU documentation format.
 * install-info: (texinfo)Invoking install-info. &hellip;
 &hellip;
 @end direntry
-</pre></td></tr></table>
+</pre></div>
 
 <p>Here&rsquo;s what this produces in the Info file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">INFO-DIR-SECTION Texinfo documentation system
+<div class="smallexample">
+<pre class="smallexample">INFO-DIR-SECTION Texinfo documentation system
 START-INFO-DIR-ENTRY
 * Texinfo: (texinfo).           The GNU documentation format.
 * install-info: (texinfo)Invoking install-info. &hellip;
 &hellip;
 END-INFO-DIR-ENTRY
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <code>install-info</code> program sees these lines in the Info file, and
 that is how it knows what to do.
@@ -129,14 +131,15 @@ each usage specifies the &lsquo;current&rsquo; category; any subsequent
 </p>
 <p>Here are some recommended <code>@dircategory</code> categories:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">GNU packages
+<div class="display">
+<pre class="display">GNU packages
 GNU programming tools
 GNU programming documentation
 GNU Emacs Lisp
 GNU libraries
 TeX
 Individual utilities
-</pre></td></tr></table>
+</pre></div>
 
 <p>The idea is to include the &lsquo;Invoking&rsquo; node for every program installed
 by a package under &lsquo;Individual utilities&rsquo;, and an entry for the manual

@@ -89,22 +89,25 @@ Next: <a href="Macro-Details.html#Macro-Details" accesskey="n" rel="next">Macro 
 <p>After a macro is defined (see the previous section), you can use
 (<em>invoke</em>) it in your document like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@<var>macroname</var> {<var>arg1</var>, <var>arg2</var>, &hellip;}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@<var>macroname</var> {<var>arg1</var>, <var>arg2</var>, &hellip;}
+</pre></div>
 
 <p>and the result will be just as if you typed the body of
 <var>macroname</var> at that spot.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@macro foo {p, q}
+<div class="example">
+<pre class="example">@macro foo {p, q}
 Together: \p\ &amp; \q\.
 @end macro
 @foo{a, b}
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">Together: a &amp; b.
-</pre></td></tr></table>
+<div class="display">
+<pre class="display">Together: a &amp; b.
+</pre></div>
 
 <a name="index-Backslash_002c-and-macros"></a>
 <p>Thus, the arguments and parameters are separated by commas and delimited
@@ -113,24 +116,27 @@ The braces are required in the invocation (but not the definition), even
 when the macro takes no arguments, consistent with all other Texinfo
 commands.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@macro argless {}
+<div class="example">
+<pre class="example">@macro argless {}
 No arguments here.
 @end macro
 @argless{}
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">No arguments here.
-</pre></td></tr></table>
+<div class="display">
+<pre class="display">No arguments here.
+</pre></div>
 
 <a name="index-Comma_002c-in-macro-arguments"></a>
 <a name="index-Braces_002c-in-macro-arguments"></a>
 <p>To insert a comma, brace, or backslash in an argument, prepend a
 backslash, as in
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@<var>macname</var> {\\\{\}\,}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@<var>macname</var> {\\\{\}\,}
+</pre></div>
 
 <p>which will pass the (almost certainly error-producing) argument
 &lsquo;<samp>\{},</samp>&rsquo; to <var>macname</var>.  However, commas in parameters, even
@@ -140,31 +146,35 @@ if escaped by a backslash, might cause trouble in TeX.
 without any braces, the entire rest of the line after the macro name is
 supplied as the argument.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@macro bar {p}
+<div class="example">
+<pre class="example">@macro bar {p}
 Twice: \p\ &amp; \p\.
 @end macro
 @bar aah
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">Twice: aah &amp; aah.
-</pre></td></tr></table>
+<div class="display">
+<pre class="display">Twice: aah &amp; aah.
+</pre></div>
 
 <p>If the macro is defined to take a single argument, and is invoked with
 braces, the braced text is passed as the argument, regardless of
 commas.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@macro bar {p}
+<div class="example">
+<pre class="example">@macro bar {p}
 Twice: \p\ &amp; \p\.
 @end macro
 @bar{a,b}
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">Twice: a,b &amp; a,b.
-</pre></td></tr></table>
+<div class="display">
+<pre class="display">Twice: a,b &amp; a,b.
+</pre></div>
 
 
 <hr>

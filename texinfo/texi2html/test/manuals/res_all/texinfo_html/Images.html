@@ -89,8 +89,9 @@ Previous: <a href="Footnotes.html#Footnotes" accesskey="p" rel="previous">Footno
 <p>You can insert an image given in an external file with the
 <code>@image</code> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@image{<var>filename</var>, <span class="roman">[</span><var>width</var><span class="roman">]</span>, <span class="roman">[</span><var>height</var><span class="roman">]</span>, <span class="roman">[</span><var>alttext</var><span class="roman">]</span>, <span class="roman">[</span><var>extension</var><span class="roman">]</span>}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@image{<var>filename</var>, <span class="roman">[</span><var>width</var><span class="roman">]</span>, <span class="roman">[</span><var>height</var><span class="roman">]</span>, <span class="roman">[</span><var>alttext</var><span class="roman">]</span>, <span class="roman">[</span><var>extension</var><span class="roman">]</span>}
+</pre></div>
 
 <a name="index-Formats-for-images"></a>
 <a name="index-Image-formats"></a>
@@ -112,8 +113,9 @@ uses the optional fifth argument to <code>@image</code> for the extension if
 you supply it.  For example:
 
 <a name="index-XPM-image-format"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">@image{foo,,,,xpm}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@image{foo,,,,xpm}
+</pre></div>
 
 <p>will cause &lsquo;<samp>makeinfo --html</samp>&rsquo; to try &lsquo;<tt>foo.xpm</tt>&rsquo;.
 </p>
@@ -185,8 +187,9 @@ dimension, namely:
 <p>For example, the following will scale a file &lsquo;<tt>ridt.eps</tt>&rsquo; to one
 inch vertically, with the width scaled proportionately:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@image{ridt,,1in}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@image{ridt,,1in}
+</pre></div>
 
 <a name="index-epsf_002etex"></a>
 <p>For <code>@image</code> to work with TeX, the file &lsquo;<tt>epsf.tex</tt>&rsquo; must be

@@ -118,11 +118,12 @@ rare cases when this is useful, Texinfo has limited support for using
 <p>Thus, the beginning of the section called <code>@chapter</code> looks like
 this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">@node  chapter, unnumbered &amp; appendix, makeinfo top, Structuring
+<div class="smallexample">
+<pre class="smallexample">@node  chapter, unnumbered &amp; appendix, makeinfo top, Structuring
 @comment  node-name,  next,  previous,  up
 @section @code{@@chapter}
 @findex chapter
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 <a name="index-Parentheses-in-nodename"></a>
@@ -142,13 +143,15 @@ within a node name; these confuse TeX or the Info formatters.
 
 <p>For example, the following is a section title:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">@code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">@code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
+</pre></div>
 
 <p>The corresponding node name is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">unnumberedsec appendixsec heading
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">unnumberedsec appendixsec heading
+</pre></div>
 
 <a name="index-Case-in-node-name"></a>
 </li><li>

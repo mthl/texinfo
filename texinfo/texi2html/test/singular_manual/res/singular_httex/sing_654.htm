@@ -116,14 +116,16 @@ fixed (trivial) section.
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list l: either consisting of an ideal and an integer, where
-</p><pre class="format">  l[1]=ideal defining the equisingular stratum
+</p><div class="format">
+<pre class="format">  l[1]=ideal defining the equisingular stratum
   l[2]=1 if some error has occured,  l[2]=0 otherwise;
-</pre>
+</pre></div>
 <p>or consisting of a ring and an integer, where
-</p><pre class="format">  l[1]=ESSring is a ring extension of basering containing the ideal ES 
+</p><div class="format">
+<pre class="format">  l[1]=ESSring is a ring extension of basering containing the ideal ES 
         (describing the ES-stratum) and the poly p_F=F,
   l[2]=1 if some error has occured,  l[2]=0 otherwise.
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -138,7 +140,8 @@ printlevel&gt;=2 displays additional information.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;equising.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;equising.lib&quot;;
 int p=printlevel; 
 printlevel=1;
 ring r = 0,(a,b,c,d,e,f,g,x,y),ds;
@@ -206,7 +209,7 @@ esStratum(F);
 &rarr; [2]:
 &rarr;    0
 printlevel=p;
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_653.htm#esIdeal">esIdeal</a>;
 <a href="sing_655.htm#isEquising">isEquising</a>.

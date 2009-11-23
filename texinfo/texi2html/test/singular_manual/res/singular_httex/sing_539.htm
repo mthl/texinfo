@@ -107,14 +107,15 @@ J an ideal in the basering, J = 0 if not given
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;algebra.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;algebra.lib&quot;;
 ring r = 0,(a,b,c),dp;
 ring s = 0,(x,y,z),dp;
 ideal i= xy;
 map phi= r,(xy)^3+x2+z,y2-1,z3;
 mapIsFinite(phi,r,i);
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

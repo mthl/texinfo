@@ -116,7 +116,8 @@ type help is_surjective; and help is_injective;
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;algebra.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;algebra.lib&quot;;
 int p = printlevel;  printlevel = 1;
 ring R = 0,(x,y,z),dp;
 ideal i = x, y, x2-y3;
@@ -138,7 +139,7 @@ map chi = Q,a,b,a2-b3;              // amap between two quotient rings
 is_bijective(chi,Q);
 &rarr; 1
 printlevel = p;
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

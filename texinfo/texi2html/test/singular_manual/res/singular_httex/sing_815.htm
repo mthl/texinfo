@@ -103,7 +103,8 @@ default: n=nvars(basering)
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list L with 5 entries:
-  </p><pre class="format">  L[1]: (interreduced) ideal obtained from i by substituing
+  </p><div class="format">
+<pre class="format">  L[1]: (interreduced) ideal obtained from i by substituing
         from the first n variables those, which appear in a linear part
         of i, by putting this part into triangular form
   L[2]: ideal of variables which have been substituted
@@ -111,7 +112,7 @@ default: n=nvars(basering)
   L[4]: ideal of variables of basering, eliminated ones are set to 0
   L[5]: ideal, describing the map from the basering to itself such that
         L[1] is the image of i
-  </pre>
+  </pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -121,7 +122,8 @@ ordering dp.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;presolve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;presolve.lib&quot;;
 ring s=0,(x,y,z),dp;
 ideal i = x3+y2+z,x2y2+z3,y+z+1;
 elimlinearpart(i);
@@ -140,7 +142,7 @@ elimlinearpart(i);
 &rarr;    _[1]=x
 &rarr;    _[2]=-z-1
 &rarr;    _[3]=z
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

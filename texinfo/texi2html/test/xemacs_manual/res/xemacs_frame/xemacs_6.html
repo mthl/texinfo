@@ -372,9 +372,10 @@ argument processed, no matter where it appears in the command line.
 <dt>&lsquo;<samp>-V</samp>&rsquo;</dt>
 <dd><p>Prints version information.  This implies &lsquo;<samp>-batch</samp>&rsquo;.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">% xemacs -version
+<div class="example">
+<pre class="example">% xemacs -version
 XEmacs 19.13 of Mon Aug 21 1995 on willow (usg-unix-v) [formerly Lucid Emacs]
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt>&lsquo;<samp>-help</samp>&rsquo;</dt>
@@ -517,8 +518,9 @@ this variable.
 </p>
 <p>  One way to use command switches is to visit many files automatically:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">xemacs *.c
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">xemacs *.c
+</pre></div>
 
 <p>passes each <code>.c</code> file as a separate argument to Emacs, so that
 Emacs visits each file (see section <a href="xemacs_17.html#Visiting">Visiting Files</a>).
@@ -527,8 +529,9 @@ Emacs visits each file (see section <a href="xemacs_17.html#Visiting">Visiting F
 called &lsquo;<tt>hack-c-program.el</tt>&rsquo; which, when loaded, performs some useful
 operation on the current buffer, expected to be a C program.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">xemacs -batch foo.c -l hack-c-program -f save-buffer -kill &gt; log
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">xemacs -batch foo.c -l hack-c-program -f save-buffer -kill &gt; log
+</pre></div>
 
 <p>Here Emacs is told to visit &lsquo;<tt>foo.c</tt>&rsquo;, load &lsquo;<tt>hack-c-program.el</tt>&rsquo;
 (which makes changes in the visited file), save &lsquo;<tt>foo.c</tt>&rsquo; (note that

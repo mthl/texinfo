@@ -112,7 +112,8 @@ an option for computing weighted degrees
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;poly.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;poly.lib&quot;;
 ring r = 0,(x,y,z),wp(1,2,3);
 poly f = x+y2+z3;
 deg(f);             //deg; returns weighted degree (in case of 1 block)!
@@ -123,7 +124,7 @@ matrix m[2][2]=f+x10,1,0,f^2;
 maxdeg(m);
 &rarr; 10,0,
 &rarr; -1,6 
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

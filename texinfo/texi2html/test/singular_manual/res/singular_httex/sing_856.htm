@@ -108,14 +108,15 @@ without multiplicities.
 <dt><strong>Return:</strong></dt>
 <dd><p>ring, a polynomial ring over an extension field of the ground field,
 containing a list &rsquo;roots&rsquo; and polynomials &rsquo;newA&rsquo; and &rsquo;f&rsquo;:
-  </p><pre class="format">  - &rsquo;roots&rsquo; is the list of roots of the polynomial f (no multiplicities)
+  </p><div class="format">
+<pre class="format">  - &rsquo;roots&rsquo; is the list of roots of the polynomial f (no multiplicities)
   - if the ground field is Q(a&rsquo;) and the extension field is Q(a), then
     &rsquo;newA&rsquo; is the representation of a&rsquo; in Q(a). 
     If the basering contains a parameter &rsquo;a&rsquo; and the minpoly remains unchanged
     then &rsquo;newA&rsquo; = &rsquo;a&rsquo;.
     If the basering does not contain a parameter then &rsquo;newA&rsquo; = &rsquo;a&rsquo; (default).
   - &rsquo;f&rsquo; is the polynomial f in Q(a) (a&rsquo; being substituted by &rsquo;newA&rsquo;)
-  </pre>
+  </pre></div>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -124,7 +125,8 @@ containing a list &rsquo;roots&rsquo; and polynomials &rsquo;newA&rsquo; and &rs
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;zeroset.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;zeroset.lib&quot;;
 ring R = (0,a), x, lp;
 minpoly = a2+1;
 poly f = x3 - a;
@@ -153,7 +155,7 @@ map F;
 F[1] = roots[1];
 F(f);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

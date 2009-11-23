@@ -106,8 +106,9 @@ ul.no-bullet {list-style: none}
 <dt><strong>Return:</strong></dt>
 <dd><p>ideal, containing generators of the ring of invariants of the
 additive group (K,+) given by the vector field
-</p><pre class="format">         m = m[1,1]*d/dx(1) +...+ m[n,1]*d/dx(n).
-</pre>
+</p><div class="format">
+<pre class="format">         m = m[1,1]*d/dx(1) +...+ m[n,1]*d/dx(n).
+</pre></div>
 <p>If b&gt;0 the computation stops after all invariants of degree &lt;= b
 (and at least one of higher degree) are found or when all invariants
 are computed.
@@ -134,7 +135,8 @@ London Math. Soc. (3) 67, 75-105 (1993).
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;ainvar.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;ainvar.lib&quot;;
 //Winkelmann: free action but Spec(k[x(1),...,x(5)]) --&gt; Spec(invariant ring)
 //is not surjective
 ring rw=0,(x(1..5)),dp;
@@ -167,7 +169,7 @@ in;
 &rarr; in[8]=x(1)^2*x(3)^2*x(5)-x(2)*x(7)
 &rarr; in[9]=x(1)^2*x(2)*x(3)^4*x(4)*x(5)+x(1)^2*x(2)^4*x(3)*x(4)*x(6)-x(1)^5*x(\
    2)*x(3)*x(5)*x(6)-2*x(2)^2*x(3)^2*x(4)*x(7)+x(1)*x(7)^2
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

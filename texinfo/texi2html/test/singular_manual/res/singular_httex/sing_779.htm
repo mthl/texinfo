@@ -128,7 +128,8 @@ Finite Groups&quot; by Kemper and Steel (1997)).
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;finvar.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;finvar.lib&quot;;
 ring R=0,(x,y,z),dp;
 matrix A[3][3]=0,1,0,-1,0,0,0,0,-1;
 list L=primary_invariants(A,intvec(1,1,0));
@@ -137,7 +138,7 @@ print(S);
 &rarr; 1,xyz,x2z-y2z,x3y-xy3
 print(IS);
 &rarr; xyz,x2z-y2z,x3y-xy3
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

@@ -105,7 +105,8 @@ ul.no-bullet {list-style: none}
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;presolve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;presolve.lib&quot;;
 ring r=0,(x,y,z),dp;
 ideal i=1+x+x2+x3+x4,3,xz+y3+z8;
 degreepart(i,0,4);
@@ -116,7 +117,7 @@ intvec v=2,3,6;
 show(degreepart(m,8,8,v));
 &rarr; // module, 1 generator(s)
 &rarr; [x4,xy2,xz]
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

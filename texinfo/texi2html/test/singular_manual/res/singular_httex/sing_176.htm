@@ -118,7 +118,8 @@ up the computation: a Hilbert-driven elimination uses the intvec
 provided as the third argument.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   ideal i=x2,xy,y5;
   eliminate(i,x);
 &rarr; _[1]=y5
@@ -133,7 +134,7 @@ provided as the third argument.
 &rarr; _[1]=y2-xz
 &rarr; _[2]=xy-z
 &rarr; _[3]=x2-y
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

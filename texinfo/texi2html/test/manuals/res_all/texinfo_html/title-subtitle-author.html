@@ -117,21 +117,24 @@ followed by an <code>@page</code> command line.)
 the name or names on the remaining part of the line that starts with
 an <code>@author</code> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@author by Jane Smith and John Doe
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@author by Jane Smith and John Doe
+</pre></div>
 
 <p>or you can write the names one above each other by using two (or more)
 <code>@author</code> commands:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@author Jane Smith
+<div class="example">
+<pre class="example">@author Jane Smith
 @author John Doe
-</pre></td></tr></table>
+</pre></div>
 
 <p>(Only the bottom name is underlined with a black rule.)
 </p>
 <p>A template for this method looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+<div class="example">
+<pre class="example">@titlepage
 @title <var>name-of-manual-when-printed</var>
 @subtitle <var>subtitle-if-any</var>
 @subtitle <var>second-subtitle</var>
@@ -139,20 +142,21 @@ an <code>@author</code> command:
 @page
 &hellip;
 @end titlepage
-</pre></td></tr></table>
+</pre></div>
 
 <p>You may also combine the <code>@titlefont</code> method described in the
 previous section and <code>@title</code> method described in this one.  This
 may be useful if you have a very long title.  Here is a real-life example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+<div class="example">
+<pre class="example">@titlepage
 @titlefont{GNU Software}
 @sp 1
 @title for MS-Windows and MS-DOS
 @subtitle Edition @value{e} for Release @value{cde}
 @author by Daniel Hagerty, Melissa Weisshaus
 @author and Eli Zaretskii
-</pre></td></tr></table>
+</pre></div>
 
 <p>(The use of <code>@value</code> here is explained in <a href="value-Example.html#value-Example">value Example</a>.
 </p>

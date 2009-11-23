@@ -104,7 +104,8 @@ This means that entries in one of these rings appear also in the other ones.
 The following defines a ring <code>s</code> which is just another reference (or name)
 for the basering <code>r</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   poly f = x;
   def s=basering;
   setring s;
@@ -130,7 +131,7 @@ for the basering <code>r</code>.
 &rarr; //        block   2 : ordering dp
 &rarr; //                  : names    u w 
 &rarr; //        block   3 : ordering C
-</pre></td></tr></table>
+</pre></div>
 
 <p>This reference to a ring with def is useful if the basering
 is not local to the procedure (so it cannot be accessed by its name) but one

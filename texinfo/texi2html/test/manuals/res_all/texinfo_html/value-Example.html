@@ -92,16 +92,18 @@ Automake distributions, and full texts.
 <li>
 Set the flags:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@set EDITION 0.35 Beta
+<div class="example">
+<pre class="example">@set EDITION 0.35 Beta
 @set VERSION 3.63 Beta
 @set UPDATED 14 August 1992
 @set UPDATE-MONTH August 1992
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 Write text for the <code>@copying</code> section (see <a href="copying.html#copying">copying</a>):
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@copying
+<div class="example">
+<pre class="example">@copying
 This is Edition @value{EDITION},
 last updated @value{UPDATED},
 of @cite{The GNU Make Manual},
@@ -111,12 +113,13 @@ Copyright &hellip;
 
 Permission is granted &hellip;
 @end copying
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 Write text for the title page, for people reading the printed manual:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+<div class="example">
+<pre class="example">@titlepage
 @title GNU Make
 @subtitle A Program for Directing Recompilation
 @subtitle Edition @value{EDITION}, &hellip;
@@ -125,7 +128,7 @@ Write text for the title page, for people reading the printed manual:
 @insertcopying
 &hellip;
 @end titlepage
-</pre></td></tr></table>
+</pre></div>
 
 <p>(On a printed cover, a date listing the month and the year looks less
 fussy than a date listing the day as well as the month and year.)
@@ -133,21 +136,23 @@ fussy than a date listing the day as well as the month and year.)
 </li><li>
 Write text for the Top node, for people reading the Info file:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@ifnottex
+<div class="example">
+<pre class="example">@ifnottex
 @node Top
 @top Make
 
 @insertcopying
 &hellip;
 @end ifnottex
-</pre></td></tr></table>
+</pre></div>
 
 <p>After you format the manual, the <code>@value</code> constructs have been
 expanded, so the output contains text like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This is Edition 0.35 Beta, last updated 14 August 1992,
+<div class="example">
+<pre class="example">This is Edition 0.35 Beta, last updated 14 August 1992,
 of `The GNU Make Manual', for `make', Version 3.63 Beta.
-</pre></td></tr></table>
+</pre></div>
 </li></ol>
 
 <p>When you update the manual, you change only the values of the flags; you

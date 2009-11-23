@@ -154,10 +154,11 @@ commands are run to show its most recent output.
 <p>Thus, the usual sequence of commands for formatting a buffer is as
 follows (with comments to the right):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-t C-b             <span class="roman">Run <code>texi2dvi</code> on the buffer.</span>
+<div class="example">
+<pre class="example">C-c C-t C-b             <span class="roman">Run <code>texi2dvi</code> on the buffer.</span>
 C-c C-t C-p             <span class="roman">Print the DVI file.</span>
 C-c C-t C-q             <span class="roman">Display the printer queue.</span>
-</pre></td></tr></table>
+</pre></div>
 
 <p>The Texinfo mode TeX formatting commands start a subshell in Emacs
 called the &lsquo;<tt>*tex-shell*</tt>&rsquo;.  The <code>texinfo-tex-command</code>,
@@ -171,7 +172,8 @@ as you would any other shell buffer.
 <p>The formatting and print commands depend on the values of several variables.
 The default values are:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">     <span class="roman">Variable</span>                              <span class="roman">Default value</span>
+<div class="example">
+<pre class="example">     <span class="roman">Variable</span>                              <span class="roman">Default value</span>
 
 texinfo-texi2dvi-command                  &quot;texi2dvi&quot;
 texinfo-tex-command                       &quot;tex&quot;
@@ -182,7 +184,7 @@ tex-start-of-header                       &quot;%**start&quot;
 tex-end-of-header                         &quot;%**end&quot;
 tex-dvi-print-command                     &quot;lpr -d&quot;
 tex-show-queue-command                    &quot;lpq&quot;
-</pre></td></tr></table>
+</pre></div>
 
 <p>You can change the values of these variables with the <kbd>M-x
 edit-options</kbd> command (see <a href="../emacs/Edit-Options.html#Edit-Options">(emacs)Edit Options</a> section &lsquo;Editing Variable Values&rsquo; in <cite>The GNU Emacs Manual</cite>), with the <kbd>M-x set-variable</kbd> command

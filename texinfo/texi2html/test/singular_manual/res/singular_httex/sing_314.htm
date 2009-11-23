@@ -129,7 +129,8 @@ of the Windows95/98 operating system). Use <a href="sing_316.htm#rtimer">rtimer<
 </p>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  timer=1; // The time of each command is printed
+<dd><div class="smallexample">
+<pre class="smallexample">  timer=1; // The time of each command is printed
   int t=timer; // initialize t by timer
   ring r=0,(x,y,z),dp;
   poly p=(x+2y+3z+4xy+5xz+6yz)^20;
@@ -141,7 +142,7 @@ of the Windows95/98 operating system). Use <a href="sing_316.htm#rtimer">rtimer<
   int tps=system(&quot;--ticks-per-sec&quot;);
   t/tps; // yields the time in seconds truncated to int
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

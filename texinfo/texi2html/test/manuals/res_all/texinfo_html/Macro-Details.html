@@ -106,7 +106,8 @@ The TeX implementation cannot construct macros that define macros in
 the natural way.  To do this, you must use conditionals and raw TeX.
 For example:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@ifnottex
+<div class="example">
+<pre class="example">@ifnottex
 @macro ctor {name, arg}
 @macro \name\
 something involving \arg\ somehow
@@ -117,7 +118,7 @@ something involving \arg\ somehow
 \gdef\ctor#1{\ctorx#1,}
 \gdef\ctorx#1,#2,{\def#1{something involving #2 somehow}}
 @end tex
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 It is best to avoid comments inside macro definitions.

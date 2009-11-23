@@ -90,15 +90,17 @@ exact equivalence of two forms with the <code>@equiv{}</code> command.
 
 <p>Thus,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@lisp
+<div class="example">
+<pre class="example">@lisp
 (make-sparse-keymap) @equiv{} (list 'keymap)
 @end lisp
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">(make-sparse-keymap) &equiv; (list 'keymap)
-</pre></td></tr></table>
+<div class="lisp">
+<pre class="lisp">(make-sparse-keymap) &equiv; (list 'keymap)
+</pre></div>
 
 <p>This indicates that evaluating <code>(make-sparse-keymap)</code> produces
 identical results to evaluating <code>(list 'keymap)</code>.

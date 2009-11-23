@@ -104,9 +104,10 @@ ul.no-bullet {list-style: none}
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list with two entries
-  </p><pre class="format">  _[1] = factors (monic), first entry is the leading coefficient
+  </p><div class="format">
+<pre class="format">  _[1] = factors (monic), first entry is the leading coefficient
   _[2] = multiplicities (not yet implemented)
-  </pre>
+  </pre></div>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -120,7 +121,8 @@ is Q or a simple extension of Q given by a minpoly.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;zeroset.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;zeroset.lib&quot;;
 ring R = (0,a), x, lp;
 minpoly = a2+1;
 poly f =  x4 - 1;
@@ -140,7 +142,7 @@ fl;
 &rarr;    _[5]=1
 fl[1][1]*fl[1][2]*fl[1][3]*fl[1][4]*fl[1][5] - f;
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

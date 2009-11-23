@@ -115,14 +115,15 @@ s.t. f = g*q + r, deg(r) &lt; deg(g).
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;zeroset.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;zeroset.lib&quot;;
 ring R = (0,a), x, lp;
 minpoly = a2+1;
 poly f =  x4 - 1;
 poly g = x3 - 1;
 Remainder(f, g);
 &rarr; x-1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

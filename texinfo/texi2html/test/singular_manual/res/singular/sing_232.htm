@@ -169,7 +169,8 @@ is 0 (if the basering is not a qring).
 computations have to be finished and may therefore take some time.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=31991,(t,x,y,z,w),ls;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=31991,(t,x,y,z,w),ls;
   ideal M=t2x2+tx2y+x2yz,t2y2+ty2z+y2zw,
           t2z2+tz2w+xz2w,t2w2+txw2+xyw2;
   resolution L=mres(M,0);
@@ -180,7 +181,7 @@ computations have to be finished and may therefore take some time.
 &rarr; 0      1      2       3       4      5      
 &rarr; 
   // projective dimension of M is 5
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

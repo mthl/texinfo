@@ -99,23 +99,25 @@ name.
 </p>
 <p>The format looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@menu
+<div class="example">
+<pre class="example">@menu
 * <var>first-entry-name</var>:(<var>filename</var>)<var>nodename</var>.     <var>description</var>
 * <var>second-entry-name</var>:(<var>filename</var>)<var>second-node</var>. <var>description</var>
 @end menu
-</pre></td></tr></table>
+</pre></div>
 
 <p>For example, to refer directly to the &lsquo;<samp>Outlining</samp>&rsquo; and
 &lsquo;<samp>Rebinding</samp>&rsquo; nodes in the <cite>Emacs Manual</cite>, you would write a
 menu like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@menu
+<div class="example">
+<pre class="example">@menu
 * Outlining: (emacs)Outline Mode. The major mode for
                                   editing outlines.
 * Rebinding: (emacs)Rebinding.    How to redefine the
                                   meaning of a key.
 @end menu
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you do not list the node name, but only name the file, then Info
 presumes that you are referring to the &lsquo;Top&rsquo; node.
@@ -126,10 +128,11 @@ nodes of each Info document.  (See section <a href="Installing-an-Info-File.html
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">* Info: (info).         Documentation browsing system.
+<div class="example">
+<pre class="example">* Info: (info).         Documentation browsing system.
 * Emacs: (emacs).       The extensible, self-documenting
                         text editor.
-</pre></td></tr></table>
+</pre></div>
 
 <p>(The &lsquo;<tt>dir</tt>&rsquo; top level directory for the Info system is an Info file,
 not a Texinfo file, but a menu entry looks the same in both types of

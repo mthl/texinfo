@@ -92,7 +92,8 @@ ul.no-bullet {list-style: none}
 <p>The <code>@example</code> command is used to indicate an example that is
 not part of the running text, such as computer input or output.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This is an example of text written between an
+<div class="example">
+<pre class="example">This is an example of text written between an
 <code>@example</code> command
 and an <code>@end example</code> command.
 The text is indented but not filled.
@@ -101,7 +102,7 @@ The text is indented but not filled.
 fixed-width font, and extra spaces and blank lines are
 significant.  In the Info file, an analogous result is
 obtained by indenting each line with five spaces.
-</pre></td></tr></table>
+</pre></div>
 
 <p>Write an <code>@example</code> command at the beginning of a line by itself.
 Mark the end of the example
@@ -110,15 +111,17 @@ line by itself.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@example
+<div class="example">
+<pre class="example">@example
 mv foo bar
 @end example
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">mv foo bar
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">mv foo bar
+</pre></div>
 
 <p>The lines containing <code>@example</code> and <code>@end example</code>
 will disappear from the output.

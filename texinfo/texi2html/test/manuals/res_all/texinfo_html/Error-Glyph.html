@@ -90,23 +90,26 @@ designate the error message with the <code>@error{}</code> command.
 
 <p>Thus,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@lisp
+<div class="example">
+<pre class="example">@lisp
 (+ 23 'x)
 @error{} Wrong type argument: integer-or-marker-p, x
 @end lisp
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">(+ 23 'x)
+<div class="lisp">
+<pre class="lisp">(+ 23 'x)
 error--&gt; Wrong type argument: integer-or-marker-p, x
-</pre></td></tr></table>
+</pre></div>
 
 <p>This indicates that the following error message is printed
 when you evaluate the expression:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">Wrong type argument: integer-or-marker-p, x
-</pre></td></tr></table>
+<div class="lisp">
+<pre class="lisp">Wrong type argument: integer-or-marker-p, x
+</pre></div>
 
 <p>&lsquo;<samp>error--&gt;</samp>&rsquo; itself is not part of the error message.
 </p>

@@ -378,10 +378,11 @@ departure point for the whole Info system.  From it, you can reach the
 <p>If you wish to refer to an Info file in a URI, you can use the
 (unofficial) syntax exemplified in the following.  This works with
 Emacs/W3, for example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">info:///usr/info/emacs#Dissociated%20Press
+</p><div class="example">
+<pre class="example">info:///usr/info/emacs#Dissociated%20Press
 info:emacs#Dissociated%20Press
 info://localhost/usr/info/emacs#Dissociated%20Press
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <code>info</code> program itself does not follow URI&rsquo;s of any kind.
 </p>
@@ -733,16 +734,18 @@ file names.
 <p>In order to be made into a printed manual and an Info file, a Texinfo
 file <strong>must</strong> begin with lines like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+<div class="example">
+<pre class="example">\input texinfo
 @setfilename <var>info-file-name</var>
 @settitle <var>name-of-manual</var>
-</pre></td></tr></table>
+</pre></div>
 
 <p>The contents of the file follow this beginning, and then you
 <strong>must</strong> end a Texinfo file with a line like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@bye
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@bye
+</pre></div>
 
 <a name="index-_005cinput-_0028raw-TeX-startup_0029"></a>
 <p>Here&rsquo;s an explanation:
@@ -775,12 +778,13 @@ the formatters that the file is ended and to stop formatting.
 mode setting and start-of-header and end-of-header lines at the
 beginning of a Texinfo file, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
+<div class="example">
+<pre class="example">\input texinfo   @c -*-texinfo-*-
 @c %**start of header
 @setfilename <var>info-file-name</var>
 @settitle <var>name-of-manual</var>
 @c %**end of header
-</pre></td></tr></table>
+</pre></div>
 
 <p>In the first line, &lsquo;<samp>-*-texinfo-*-</samp>&rsquo; causes Emacs to switch into
 Texinfo mode when you edit the file.
@@ -902,12 +906,13 @@ not.  The complete file, without interspersed comments, is shown in
 printed output.  It sets various parameters, including the
 name of the Info file and the title used in the header.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
+<div class="example">
+<pre class="example">\input texinfo   @c -*-texinfo-*-
 @c %**start of header
 @setfilename sample.info
 @settitle Sample Manual 1.0
 @c %**end of header
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Part-2_003a-Summary-Description-and-Copyright"></a>
 <h3 class="subheading">Part 2: Summary Description and Copyright</h3>
@@ -915,12 +920,13 @@ name of the Info file and the title used in the header.
 <p>A real manual includes more text here, according to the license under
 which it is distributed.  See section <a href="texinfo_24.html#GNU-Sample-Texts">GNU Sample Texts</a>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@copying
+<div class="example">
+<pre class="example">@copying
 This is a short example of a complete Texinfo file, version 1.0.
 
 Copyright @copyright{} 2002 Free Software Foundation, Inc.
 @end copying
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Part-3_003a-Titlepage_002c-Contents_002c-Copyright"></a>
 <h3 class="subheading">Part 3: Titlepage, Contents, Copyright</h3>
@@ -931,7 +937,8 @@ include the permission text from the previous section, instead of
 writing it out again; it is output on the back of the title page.  The
 <code>@contents</code> command generates a table of contents.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+<div class="example">
+<pre class="example">@titlepage
 @title Sample Title
 </pre><pre class="example">
 </pre><pre class="example">@c The following two commands start the copyright page.
@@ -942,7 +949,7 @@ writing it out again; it is output on the back of the title page.  The
 </pre><pre class="example">
 @c Output the table of contents at the beginning.
 @contents
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Part-4_003a-_0060Top_0027-Node-and-Master-Menu"></a>
 <h3 class="subheading">Part 4: &lsquo;Top&rsquo; Node and Master Menu</h3>
@@ -953,19 +960,21 @@ menu appears only in online output.  We also include the copying text
 again for the benefit of online readers.  And since the copying text
 begins with a brief description of the manual, no other text is needed.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@ifnottex
+<div class="example">
+<pre class="example">@ifnottex
 @node Top
 @end ifnottex
-</pre></td></tr></table>
+</pre></div>
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@insertcopying
+<div class="example">
+<pre class="example">@insertcopying
 
 @menu
 * First Chapter::    The first chapter is the
                        only chapter in this sample.
 * Index::            Complete index.
 @end menu
-</pre></td></tr></table>
+</pre></div>
 
 
 <a name="Part-5_003a-The-Body-of-the-Document"></a>
@@ -975,7 +984,8 @@ begins with a brief description of the manual, no other text is needed.
 indices or table of contents.  This example illustrates a node and a
 chapter containing an enumerated list.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node First Chapter
+<div class="example">
+<pre class="example">@node First Chapter
 @chapter First Chapter
 
 @cindex chapter, first
@@ -992,7 +1002,7 @@ This is the first item.
 @item
 This is the second item.
 @end enumerate
-</pre></td></tr></table>
+</pre></div>
 
 
 <a name="Part-6_003a-The-End-of-the-Document"></a>
@@ -1002,13 +1012,14 @@ This is the second item.
 unnumbered chapter of its own, and the <code>@bye</code> command that marks
 the end of the document.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node Index
+<div class="example">
+<pre class="example">@node Index
 @unnumbered Index
 </pre><pre class="example">
 </pre><pre class="example">@printindex cp
 
 @bye
-</pre></td></tr></table>
+</pre></div>
 
 
 <a name="Some-Results"></a>

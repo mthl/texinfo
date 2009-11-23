@@ -373,13 +373,15 @@ sort of register contents into the buffer.
 conveniently if you put their names in registers.  Here&rsquo;s the Lisp code
 used to put a file name in a register:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">(set-register ?<var>r</var> '(file . <var>name</var>))
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">(set-register ?<var>r</var> '(file . <var>name</var>))
+</pre></div>
 
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">(set-register ?z '(file . &quot;/usr/src/xemacs/src/ChangeLog&quot;))
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">(set-register ?z '(file . &quot;/usr/src/xemacs/src/ChangeLog&quot;))
+</pre></div>
 
 <p>puts the file name shown in register &lsquo;<samp>z</samp>&rsquo;.
 </p>

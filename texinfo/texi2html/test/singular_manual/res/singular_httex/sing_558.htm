@@ -103,16 +103,19 @@ ul.no-bullet {list-style: none}
 <dt><strong>Compute:</strong></dt>
 <dd><p>Let M and N be submodules of R^m and R^n presenting M&rsquo;=R^m/M, N&rsquo;=R^n/N
 (R=basering) and let A,B matrices inducing maps
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">    R^k --A--&gt; R^m --B--&gt; R^n.
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">    R^k --A--&gt; R^m --B--&gt; R^n.
+</pre></div>
 <p>Compute a presentation of the module
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">    ker(B)/im(A) := ker(M'/im(A) --B--&gt; N'/im(BM)+im(BA)).
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">    ker(B)/im(A) := ker(M'/im(A) --B--&gt; N'/im(BM)+im(BA)).
+</pre></div>
 <p>If B induces a map M&rsquo;&ndash;&gt;N&rsquo; (i.e BM=0) and if im(A) is contained in
 ker(B) (that is, BA=0) then ker(B)/im(A) is the homology of the
 complex
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">    R^k--A--&gt;M'--B--&gt;N'. 
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">    R^k--A--&gt;M'--B--&gt;N'. 
+</pre></div>
 
 </dd>
 <dt><strong>Return:</strong></dt>
@@ -125,7 +128,8 @@ complex
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;homolog.lib&quot;;
 ring r;
 ideal id=maxideal(4);
 qring qr=std(id);
@@ -149,7 +153,7 @@ module M=[x3];
 module N=M;
 homology(A,B,M,N);
 &rarr; _[1]=gen(1)
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

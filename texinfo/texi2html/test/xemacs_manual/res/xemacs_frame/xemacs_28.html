@@ -148,8 +148,9 @@ insert or edit any header fields using ordinary editing commands.
 </p>
 <p>  The line in the buffer that says:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">--text follows this line--
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">--text follows this line--
+</pre></div>
 
 <a name="index-mail_002dheader_002dseparator"></a>
 <p>is a special delimiter that separates the headers you have specified from
@@ -161,12 +162,13 @@ by the variable <code>mail-header-separator</code>.
 <p>Here is an example of what the headers and text in the &lsquo;<samp>*mail*</samp>&rsquo; buffer
 might look like.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">To: rms@mc
+<div class="example">
+<pre class="example">To: rms@mc
 CC: mly@mc, rg@oz
 Subject: The XEmacs User's Manual
 --Text follows this line--
 Please ignore this message.
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Mail-Headers"></a>
@@ -256,9 +258,10 @@ lines.  All the lines starting with whitespace, following the line on
 which the field starts, are considered part of the field.  For
 example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">To: foo@here, this@there,
+<div class="example">
+<pre class="example">To: foo@here, this@there,
   me@gnu.cambridge.mass.usa.earth.spiral3281
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-mail_002dabbrev_002dmailrc_002dfile"></a>
 <p>If you have a &lsquo;<tt>~/.mailrc</tt>&rsquo; file, Emacs scans it for mail aliases the
@@ -306,8 +309,9 @@ This function, which is bound to <kbd>C-c C-a</kbd>, prompts you for an alias
 <p>In this version of Emacs, it is possible to have lines like the
 following in your &lsquo;<tt>.mailrc</tt>&rsquo; file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">     alias someone &quot;John Doe &lt;doe@quux.com&gt;&quot;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">     alias someone &quot;John Doe &lt;doe@quux.com&gt;&quot;
+</pre></div>
 
 <p>That is, if you want an address to have embedded spaces, simply surround
 it with double-quotes.  The quotes are necessary because the format of
@@ -315,14 +319,16 @@ the &lsquo;<tt>.mailrc</tt>&rsquo; file uses spaces as address delimiters.
 </p>
 <p>Aliases in the &lsquo;<tt>.mailrc</tt>&rsquo; file may be nested. For example, assume
 you define aliases like:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">     alias group1 fred ethel
+</p><div class="example">
+<pre class="example">     alias group1 fred ethel
      alias group2 larry curly moe
      alias everybody group1 group2
-</pre></td></tr></table>
+</pre></div>
 
 <p>When you now type &lsquo;<samp>everybody</samp>&rsquo; on the &lsquo;<samp>To</samp>&rsquo; line, it will expand to:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">     fred, ethyl, larry, curly, moe
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">     fred, ethyl, larry, curly, moe
+</pre></div>
 
 <p>Aliases may contain forward references; the alias of &lsquo;<samp>everybody</samp>&rsquo; in the
 example above can precede the aliases of &lsquo;<samp>group1</samp>&rsquo; and &lsquo;<samp>group2</samp>&rsquo;.

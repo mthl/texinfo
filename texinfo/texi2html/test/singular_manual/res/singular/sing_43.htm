@@ -104,7 +104,8 @@ The default for a parameter_list is <code>(list #)</code>
 which means the arguments are referenced by <code>#[1], #[2]</code>, etc.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc x0
+<dd><div class="smallexample">
+<pre class="smallexample">proc x0
 {
     // can be called with
 ... // any number of arguments of any type: #[1], #[2],...
@@ -135,14 +136,15 @@ proc x5 (i,list #)
     // number of arguments: size(#)+1
 }
 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Note:</strong></code></dt>
 <dd><br><p> The parameter_list may stretch across multiple lines.
 <br> A parameter may have any type (including the types <code>proc</code>
    and <code>ring</code>). If a parameter is of type ring, then it
    can only be specified by name, but not with a type, e.g.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc x6 (r)
+</p><div class="smallexample">
+<pre class="smallexample">proc x6 (r)
 {
 ... // this is correct even if the parameter is a ring
 }
@@ -151,7 +153,7 @@ proc x7 (ring r)
 {
 ... // this is NOT CORRECT
 }
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 

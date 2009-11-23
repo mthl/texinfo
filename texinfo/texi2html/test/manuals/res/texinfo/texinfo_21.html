@@ -211,8 +211,9 @@ circumstances, they format short regions or buffers more quickly than
 followed by the name of the Texinfo file.  Thus, to create the Info
 file for Bison, type the following to the shell:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">makeinfo bison.texinfo
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">makeinfo bison.texinfo
+</pre></div>
 
 <p>(You can run a shell inside Emacs by typing <kbd>M-x shell</kbd>.)
 </p>
@@ -220,8 +221,9 @@ file for Bison, type the following to the shell:
 to discover which version of <code>makeinfo</code> you are using,
 type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">makeinfo --version
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">makeinfo --version
+</pre></div>
 
 <p>See section <a href="#makeinfo-options">Options for <code>makeinfo</code></a>, for more information.
 </p>
@@ -258,13 +260,15 @@ for the long option names as long as they are unique.
 file for &lsquo;<tt>bison.texinfo</tt>&rsquo; in which each line is filled to only 68
 columns:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">makeinfo --fill-column=68 bison.texinfo
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">makeinfo --fill-column=68 bison.texinfo
+</pre></div>
 
 <p>You can write two or more options in sequence, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">makeinfo --no-split --fill-column=70 &hellip;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">makeinfo --no-split --fill-column=70 &hellip;
+</pre></div>
 
 <p>This would keep the Info file together as one possibly very long
 file and would also set the fill column to 70.
@@ -579,7 +583,8 @@ they use commands like <code>@value</code> and <code>@definfoenclose</code> in
 node definitions and cross-references inconsistently.  Consider the
 following example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@set nodename Node 1
+<div class="example">
+<pre class="example">@set nodename Node 1
 
 @node @value{nodename}, Node 2, Top, Top
 
@@ -588,7 +593,7 @@ This is node 1.
 @node Node 2, , Node 1, Top
 
 This is node 2.
-</pre></td></tr></table>
+</pre></div>
 
 <p>Here, the node &ldquo;Node 1&rdquo; was referenced both verbatim and through
 <code>@value</code>.
@@ -708,10 +713,11 @@ variable in your &lsquo;<tt>.emacs</tt>&rsquo; initialization file.
 </p>
 <p>For example, you could write the following in your &lsquo;<tt>.emacs</tt>&rsquo; file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(setq makeinfo-options
+<div class="example">
+<pre class="example">(setq makeinfo-options
       &quot;--paragraph-indent=0 --no-split
        --fill-column=70 --verbose&quot;)
-</pre></td></tr></table>
+</pre></div>
 
 <p>For more information, see<br>
 <a href="../emacs/Edit-Options.html#Edit-Options">(emacs)Edit Options</a> section &lsquo;Editing Variable Values&rsquo; in <cite>The GNU Emacs Manual</cite>,<br>
@@ -803,8 +809,9 @@ including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html
 <p>Here is a shell command to format all the files that end in
 &lsquo;<tt>.texinfo</tt>&rsquo; in the current directory:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">emacs -batch -funcall batch-texinfo-format *.texinfo
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">emacs -batch -funcall batch-texinfo-format *.texinfo
+</pre></div>
 
 <p>Emacs processes all the files listed on the command line, even if an
 error occurs while attempting to format some of them.
@@ -875,7 +882,8 @@ continues to have the name specified by <code>@setfilename</code>.
 <p>At one stage in writing this document, for example, the Info file was saved
 as the file &lsquo;<tt>test-texinfo</tt>&rsquo; and that file looked like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Info file: test-texinfo,    -*-Text-*-
+<div class="example">
+<pre class="example">Info file: test-texinfo,    -*-Text-*-
 produced by texinfo-format-buffer
 from file: new-texinfo-manual.texinfo
 
@@ -892,7 +900,7 @@ Node: info file^?1271
 </pre><pre class="example">Node: printed manual^?4853
 Node: conventions^?6855
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>(But &lsquo;<tt>test-texinfo</tt>&rsquo; had far more nodes than are shown here.)  Each of
 the split-off, indirect files, &lsquo;<tt>test-texinfo-1</tt>&rsquo;,
@@ -1058,7 +1066,8 @@ within Emacs by typing <kbd>C-h i</kbd> to enter Info and then typing
 menu for all the Info files in the system.  The menu looks like
 this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">* Menu:
+<div class="example">
+<pre class="example">* Menu:
 * Info:    (info).     Documentation browsing system.
 * Emacs:   (emacs).    The extensible, self-documenting
                        text editor.
@@ -1066,7 +1075,7 @@ this:
                        either a printed manual using
                        @TeX{} or an Info file.
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>Each of these menu entries points to the &lsquo;Top&rsquo; node of the Info file
 that is named in parentheses.  (The menu entry does not need to
@@ -1081,8 +1090,9 @@ of the &lsquo;<tt>emacs</tt>&rsquo; file.
 back to the <code>dir</code> file.  For example, the line for the &lsquo;Top&rsquo;
 node of the Emacs manual looks like this in Info:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">File: emacs  Node: Top, Up: (DIR), Next: Distrib
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">File: emacs  Node: Top, Up: (DIR), Next: Distrib
+</pre></div>
 
 <p>In this case, the &lsquo;<tt>dir</tt>&rsquo; file name is written in upper case
 letters&mdash;it can be written in either upper or lower case.  This is not
@@ -1119,8 +1129,9 @@ add to the menu in the &lsquo;<tt>dir</tt>&rsquo; file in the &lsquo;<tt>info</t
 For example, if you were adding documentation for GDB, you would write
 the following new entry:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">* GDB: (gdb).           The source-level C debugger.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">* GDB: (gdb).           The source-level C debugger.
+</pre></div>
 
 <p>The first part of the menu entry is the menu entry name, followed by a
 colon.  The second part is the name of the Info file, in parentheses,
@@ -1189,8 +1200,9 @@ find Info files whose location is specified this way.)
 directory, you could add an entry like this to the menu in the
 standard &lsquo;<tt>dir</tt>&rsquo; file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">* Test: (/home/bob/info/info-test).  Bob's own test file.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">* Test: (/home/bob/info/info-test).  Bob's own test file.
+</pre></div>
 
 <p>In this case, the absolute file name of the &lsquo;<tt>info-test</tt>&rsquo; file is
 written as the second part of the menu entry.
@@ -1198,11 +1210,12 @@ written as the second part of the menu entry.
 <p>Alternatively, you could write the following in your &lsquo;<tt>.emacs</tt>&rsquo; file:
 </p>
 <a name="index-Info_002ddirectory_002dlist"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">(require 'info)
+<div class="example">
+<pre class="example">(require 'info)
 (setq Info-directory-list
   (cons (expand-file-name &quot;/home/bob/info&quot;)
         Info-directory-list))
-</pre></td></tr></table>
+</pre></div>
 
 <p>This tells Emacs to merge the system &lsquo;<tt>dir</tt>&rsquo; file with the &lsquo;<tt>dir</tt>&rsquo;
 file in &lsquo;<tt>/home/bob/info</tt>&rsquo;.  Thus, Info will list the
@@ -1230,23 +1243,26 @@ uses a different syntax.
 In a &lsquo;<tt>.cshrc</tt>&rsquo; file, you could set the <code>INFOPATH</code>
 variable as follows:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">setenv INFOPATH .:~/info:/usr/local/emacs/info
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">setenv INFOPATH .:~/info:/usr/local/emacs/info
+</pre></div>
 
 </li><li>
 In a &lsquo;<tt>.profile</tt>&rsquo; file, you would achieve the same effect by
 writing:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">INFOPATH=.:$HOME/info:/usr/local/emacs/info
+<div class="smallexample">
+<pre class="smallexample">INFOPATH=.:$HOME/info:/usr/local/emacs/info
 export INFOPATH
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 <a name="index-autoexec_002ebat"></a>
 In a &lsquo;<tt>autoexec.bat</tt>&rsquo; file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
+</pre></div>
 </li></ul>
 
 <p>The &lsquo;<samp>.</samp>&rsquo; indicates the current directory as usual.  Emacs uses the
@@ -1263,9 +1279,10 @@ is replaced by the default (compiled-in) path.  This gives you a way to
 augment the default path with new directories without having to list all
 the standard places.  For example (using <code>sh</code> syntax):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">INFOPATH=/local/info:
+<div class="example">
+<pre class="example">INFOPATH=/local/info:
 export INFOPATH
-</pre></td></tr></table>
+</pre></div>
 
 <p>will search &lsquo;<tt>/local/info</tt>&rsquo; first, then the standard directories.
 Leading or doubled colons are not treated specially.
@@ -1313,23 +1330,25 @@ Info directory file, and use <code>@dircategory</code> to specify which part
 of the Info directory to put it in.  Here is how these commands are used
 in this manual:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">@dircategory Texinfo documentation system
+<div class="smallexample">
+<pre class="smallexample">@dircategory Texinfo documentation system
 @direntry
 * Texinfo: (texinfo).           The GNU documentation format.
 * install-info: (texinfo)Invoking install-info. &hellip;
 &hellip;
 @end direntry
-</pre></td></tr></table>
+</pre></div>
 
 <p>Here&rsquo;s what this produces in the Info file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">INFO-DIR-SECTION Texinfo documentation system
+<div class="smallexample">
+<pre class="smallexample">INFO-DIR-SECTION Texinfo documentation system
 START-INFO-DIR-ENTRY
 * Texinfo: (texinfo).           The GNU documentation format.
 * install-info: (texinfo)Invoking install-info. &hellip;
 &hellip;
 END-INFO-DIR-ENTRY
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <code>install-info</code> program sees these lines in the Info file, and
 that is how it knows what to do.
@@ -1345,14 +1364,15 @@ each usage specifies the &lsquo;current&rsquo; category; any subsequent
 </p>
 <p>Here are some recommended <code>@dircategory</code> categories:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">GNU packages
+<div class="display">
+<pre class="display">GNU packages
 GNU programming tools
 GNU programming documentation
 GNU Emacs Lisp
 GNU libraries
 TeX
 Individual utilities
-</pre></td></tr></table>
+</pre></div>
 
 <p>The idea is to include the &lsquo;Invoking&rsquo; node for every program installed
 by a package under &lsquo;Individual utilities&rsquo;, and an entry for the manual
@@ -1387,8 +1407,9 @@ for an explanation of how the &lsquo;<tt>dir</tt>&rsquo; file works).  It&rsquo;
 run as part of software installation, or when constructing a &lsquo;<tt>dir</tt>&rsquo; file
 for all manuals on a system.  Synopsis:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">install-info [<var>option</var>]&hellip; [<var>info-file</var> [<var>dir-file</var>]]
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">install-info [<var>option</var>]&hellip; [<var>info-file</var> [<var>dir-file</var>]]
+</pre></div>
 
 <p>If <var>info-file</var> or <var>dir-file</var> are not specified, the options
 (described below) that define them must be.  There are no compile-time

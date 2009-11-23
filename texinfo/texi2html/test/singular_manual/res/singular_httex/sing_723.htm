@@ -113,7 +113,8 @@ components). proc is_reg tests whether f is a regular parameter
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;sing.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;sing.lib&quot;;
 ring r   =32003,(x,y,z),ds;
 ideal i  = yx3+y,yz3+y3z;
 poly f   = x;
@@ -124,7 +125,7 @@ poly f   = x;
 module m = [yx3+x,yx3+y3x];
 is_active(f,m);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

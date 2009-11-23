@@ -114,7 +114,8 @@ for mappings from/to rings with/without parameters. Compared with
 Unlike <code>map</code> and <code>fetch</code> <code>imap</code> can map parameters to variables.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z,a,b,c),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z,a,b,c),dp;
   ideal i=xy2z3a4b5+1,homog(xy2z3a4b5+1,c); i;
 &rarr; i[1]=xy2z3a4b5+1
 &rarr; i[2]=xy2z3a4b5+c15
@@ -126,7 +127,7 @@ Unlike <code>map</code> and <code>fetch</code> <code>imap</code> can map paramet
   ideal j=imap(r,i); j;
 &rarr; j[1]=1+(a4b5)*xy2z3
 &rarr; j[2]=(a4b5)*xy2z3
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

@@ -132,7 +132,8 @@ occurs in the old ring, for the same reason.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;presolve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;presolve.lib&quot;;
 ring r  = 0,(x,y,z),dp;
 ideal i = y2-x3,x-3,y-2x;
 def j   = tolessvars(i,&quot;R_r&quot;,&quot;lp&quot;);
@@ -150,7 +151,7 @@ j;
 &rarr; j[2]=x-3
 &rarr; j[3]=-2x+y
 kill R_r;
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

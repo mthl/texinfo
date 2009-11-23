@@ -102,22 +102,24 @@ contains spaces, as in the name &ldquo;User Option&rdquo;, enclose it in braces.
 Otherwise, the second word will be mistaken for the name of the entity.
 For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defvr {User Option} fill-column
+<div class="example">
+<pre class="example">@defvr {User Option} fill-column
 This buffer-local variable specifies
 the maximum width of filled lines.
 &hellip;
 @end defvr
-</pre></td></tr></table>
+</pre></div>
 
 <p>Terminate the definition with <code>@end defvr</code> on a line of its
 own.
 </p>
 <p>The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defvr <var>category</var> <var>name</var>
+<div class="example">
+<pre class="example">@defvr <var>category</var> <var>name</var>
 <var>body-of-definition</var>
 @end defvr
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defvr</code> creates an entry in the index of variables for <var>name</var>.
 </p>
@@ -130,17 +132,19 @@ own.
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defvar kill-ring
+<div class="example">
+<pre class="example">@defvar kill-ring
 &hellip;
 @end defvar
-</pre></td></tr></table>
+</pre></div>
 
 <p>The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@defvar <var>name</var>
+<div class="example">
+<pre class="example">@defvar <var>name</var>
 <var>body-of-definition</var>
 @end defvar
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@defvar</code> creates an entry in the index of variables for
 <var>name</var>.

@@ -114,9 +114,10 @@ specifications.
 page number in the center, and the date at the right of every header
 for both even- and odd-numbered pages:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@headings off
+<div class="example">
+<pre class="example">@headings off
 @everyheading @thischapter @| @thispage @| @today{}
-</pre></td></tr></table>
+</pre></div>
 
 <p>You need to divide the left part from the central part and the central
 part from the right part by inserting &lsquo;<samp>@|</samp>&rsquo; between parts.
@@ -210,10 +211,11 @@ current date, in &lsquo;1 Jan 1900&rsquo; format.
 if they were in the body of a page.  It is useful to incorporate text,
 particularly when you are writing drafts:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@headings off
+<div class="example">
+<pre class="example">@headings off
 @everyheading @emph{Draft!} @| @thispage @| @thischapter
 @everyfooting @| @| Version: 0.27: @today{}
-</pre></td></tr></table>
+</pre></div>
 
 <p>Beware of overlong titles: they may overlap another part of the
 header or footer and blot it out.

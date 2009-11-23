@@ -92,15 +92,17 @@ characters.
 any unique delimiter character.  Enclose the verbatim text, including the
 delimiters, in braces.  Text is printed in a fixed-width font:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">How many @verb{|@|}-escapes does one need to print this
+<div class="example">
+<pre class="example">How many @verb{|@|}-escapes does one need to print this
 @verb{.@a @b @c.} string or @verb{+@'e?`!`{}\+} this?
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">How many <tt>@ </tt>-escapes does one need to print this
+<div class="example">
+<pre class="example">How many <tt>@ </tt>-escapes does one need to print this
 <tt>@a @b @c</tt> string or these <tt>@'e?`{}!`\</tt> this?
-</pre></td></tr></table>
+</pre></div>
 
 <p>This is in contrast to <code>@samp</code> (see the previous
 section), whose argument is normal Texinfo text, where the characters

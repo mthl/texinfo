@@ -87,10 +87,11 @@ Next: <a href="Invoking-Macros.html#Invoking-Macros" accesskey="n" rel="next">In
 <a name="index-macro"></a>
 <p>You use the Texinfo <code>@macro</code> command to define a macro, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@macro <var>macroname</var>{<var>param1</var>, <var>param2</var>, &hellip;}
+<div class="example">
+<pre class="example">@macro <var>macroname</var>{<var>param1</var>, <var>param2</var>, &hellip;}
 <var>text</var> &hellip; \<var>param1</var>\ &hellip;
 @end macro
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <em>parameters</em> <var>param1</var>, <var>param2</var>, &hellip; correspond to
 arguments supplied when the macro is subsequently used in the document
@@ -134,12 +135,13 @@ other whitespace is treated according to the usual Texinfo rules.
 <p>To allow a macro to be used recursively, that is, in an argument to a
 call to itself, you must define it with &lsquo;<samp>@rmacro</samp>&rsquo;, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@rmacro rmac {arg}
+<div class="example">
+<pre class="example">@rmacro rmac {arg}
 a\arg\b
 @end rmacro
 &hellip;
 @rmac{1@rmac{text}2}
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces the output &lsquo;a1atextb2b&rsquo;.  With &lsquo;<samp>@macro</samp>&rsquo; instead of
 &lsquo;<samp>@rmacro</samp>&rsquo;, an error message is given.
@@ -151,8 +153,9 @@ a\arg\b
 It is not an error to undefine a macro that is already undefined.
 For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@unmacro foo
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@unmacro foo
+</pre></div>
 
 
 <hr>

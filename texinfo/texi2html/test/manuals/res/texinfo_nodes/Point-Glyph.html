@@ -104,23 +104,26 @@ and as a small five pointed star in the printed output.
 <p>The following example shows the contents of buffer &lsquo;<tt>foo</tt>&rsquo; before
 and after evaluating a Lisp command to insert the word <code>changed</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: foo ----------
+<div class="example">
+<pre class="example">---------- Buffer: foo ----------
 This is the &lowast;contents of foo.
 ---------- Buffer: foo ----------
 
-</pre></td></tr></table>
+</pre></div>
 
-<table><tr><td>&nbsp;</td><td><pre class="example">(insert &quot;changed &quot;)
+<div class="example">
+<pre class="example">(insert &quot;changed &quot;)
      &rArr; nil
 ---------- Buffer: foo ----------
 This is the changed &lowast;contents of foo.
 ---------- Buffer: foo ----------
 
-</pre></td></tr></table>
+</pre></div>
 
 <p>In a Texinfo source file, the example is written like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@example
+<div class="example">
+<pre class="example">@example
 ---------- Buffer: foo ----------
 This is the @point{}contents of foo.
 ---------- Buffer: foo ----------
@@ -131,7 +134,7 @@ This is the @point{}contents of foo.
 This is the changed @point{}contents of foo.
 ---------- Buffer: foo ----------
 @end example
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>

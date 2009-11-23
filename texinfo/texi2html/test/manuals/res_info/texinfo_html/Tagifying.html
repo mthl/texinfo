@@ -85,24 +85,27 @@ Next: <a href="Splitting.html#Splitting" accesskey="n" rel="next">Splitting</a>,
 <p>After creating an unsplit Info file, you must create a tag table for
 it.  Visit the Info file you wish to tagify and type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x Info-tagify
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">M-x Info-tagify
+</pre></div>
 
 <p>(Note the upper case &lsquo;<samp>I</samp>&rsquo; in <code>Info-tagify</code>.)  This creates an
 Info file with a tag table that you can validate.
 </p>
 <p>The third step is to validate the Info file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x Info-validate
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">M-x Info-validate
+</pre></div>
 
 <p>(Note the upper case &lsquo;<samp>I</samp>&rsquo; in <code>Info-validate</code>.)
 In brief, the steps are:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-u M-x texinfo-format-buffer
+<div class="example">
+<pre class="example">C-u M-x texinfo-format-buffer
 M-x Info-tagify
 M-x Info-validate
-</pre></td></tr></table>
+</pre></div>
 
 <p>After you have validated the node structure, you can rerun
 <code>texinfo-format-buffer</code> in the normal way so it will construct a

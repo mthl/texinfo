@@ -110,7 +110,8 @@ generator is a univariate polynomial in the i-th ring variable.
 the current ring.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring  r=0,(x,y,z), dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring  r=0,(x,y,z), dp;
   ideal i=y3+x2,x2y+x2,z4-x2-y;
   option(redSB);  // force computation of reduced basis
   i=std(i);
@@ -119,7 +120,7 @@ the current ring.
 &rarr; x4-x2,
 &rarr; y4+y3,
 &rarr; z12
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

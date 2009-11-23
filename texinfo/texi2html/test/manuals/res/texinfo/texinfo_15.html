@@ -202,24 +202,27 @@ in Info.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This line @* is broken @*in two places.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">This line @* is broken @*in two places.
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This line
+<div class="example">
+<pre class="example">This line
  is broken
 in two places.
-</pre></td></tr></table>
+</pre></div>
 
 <p>(Note that the space after the first <code>@*</code> command is faithfully
 carried down to the next line.)
 </p>
 <p>The <code>@*</code> command is often used in a file&rsquo;s copyright page:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This is edition 2.0 of the Texinfo documentation,@*
+<div class="example">
+<pre class="example">This is edition 2.0 of the Texinfo documentation,@*
 and is for &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this case, the <code>@*</code> command keeps TeX from stretching the
 line across the whole page in an ugly manner.
@@ -277,8 +280,9 @@ word containing <code>@-</code>.
 <dt><code>@hyphenation{<var>hy-phen-a-ted words</var>}</code></dt>
 <dd><p>Tell TeX how to hyphenate <var>hy-phen-a-ted words</var>.  As shown, you
 put a &lsquo;<samp>-</samp>&rsquo; at each hyphenation point.  For example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@hyphenation{man-u-script man-u-scripts}
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">@hyphenation{man-u-script man-u-scripts}
+</pre></div>
 <p>TeX only uses the specified hyphenation points when the
 words match exactly, so give all necessary variants.
 </p></dd>
@@ -316,8 +320,9 @@ within <var>text</var>.
 hyphenating a long name or phrase that happens to fall near the end of a
 line.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">You can copy GNU software from @w{@samp{ftp.gnu.org}}.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">You can copy GNU software from @w{@samp{ftp.gnu.org}}.
+</pre></div>
 
 <p>produces
 </p>
@@ -330,8 +335,9 @@ line.  For example:
 <a name="index-Tied-space"></a>
 <p>You can also use <code>@w</code> to produce a non-breakable space:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">None of the formatters will break at this@w{ }space.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">None of the formatters will break at this@w{ }space.
+</pre></div>
 
 
 <hr>
@@ -363,8 +369,9 @@ generates <var>n</var> blank lines of space in both the printed manual and
 the Info file.  <code>@sp</code> also forces a paragraph break.  For
 example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@sp 2
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@sp 2
+</pre></div>
 
 <p>generates two blank lines.
 </p>
@@ -442,12 +449,13 @@ spacing.
 </p>
 <p>This formatting requirement means that you should write:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@example
+<div class="example">
+<pre class="example">@example
 @group
 &hellip;
 @end group
 @end example
-</pre></td></tr></table>
+</pre></div>
 
 <p>with the <code>@group</code> and <code>@end group</code> commands inside the
 <code>@example</code> and <code>@end example</code> commands.
@@ -497,9 +505,10 @@ effect on Info files since they are not paginated.
 TeX to start a new page if fewer than 800 mils (eight-tenths
 inch) remain on the page.  It looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@need 800
+<div class="example">
+<pre class="example">@need 800
 This paragraph is preceded by &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <code>@need</code> command is useful for preventing orphans (single
 lines at the bottoms of printed pages).

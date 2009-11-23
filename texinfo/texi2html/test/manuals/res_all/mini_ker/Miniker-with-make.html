@@ -131,17 +131,19 @@ Such a mortran is available at <a href="http://www.environnement.ens.fr/perso/du
 available as a compresssed tar archive. On UNIX, with GNU <code>tar</code> it 
 may be unpacked using 
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ tar xzvf mini_ker-4.2.tar.gz
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">$ tar xzvf mini_ker-4.2.tar.gz
+</pre></div>
 
 <p>The detection of the compiler, the preprocessors (car2txt and mortran), 
 and the libraries are performed by the configure script. This script
 sets the
 apropriate variables in makefiles. It can be run with:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cd mini_ker-4.2
+<div class="example">
+<pre class="example">$ cd mini_ker-4.2
 $ ./configure
-</pre></td></tr></table>
+</pre></div>
 
 <p>If the output of <code>./configure</code> doesn&rsquo;t show any error it means that
 all the components are here. It is possible to give <code>./configure</code>
@@ -168,10 +170,11 @@ libraries.
 <p>For example, on mac OS X this can be used to specify the blas and lapack from 
 the Apple frameworks:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">./configure \
+<div class="example">
+<pre class="example">./configure \
 --with-blas=/System/Library/Frameworks/vecLib.framework/versions/A/vecLib \
 --with-lapack=/System/Library/Frameworks/vecLib.framework/versions/A/vecLib
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt><code>F77</code></dt>
@@ -215,8 +218,9 @@ models should be build. You have to perform the configuration only once.
 <a name="index-installation-with-make"></a>
 
 <p>Miniker can be installed by running 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">make install
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">make install
+</pre></div>
 
 
 <p>It should copy the sources 

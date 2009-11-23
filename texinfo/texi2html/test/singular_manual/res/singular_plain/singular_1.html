@@ -361,45 +361,51 @@ are available without a ring.
 <p>Once <small>SINGULAR</small> is started, it awaits an input after the prompt
 <code>&gt;</code>.  Every statement has to be terminated by <code>;</code> .
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">37+5;
+<div class="smallexample">
+<pre class="smallexample">37+5;
 &rarr; 42
-</pre></td></tr></table>
+</pre></div>
 
 <p>All objects have a type, e.g., integer variables are defined by
 the word <code>int</code>. An assignment is done by the symbol <code>=</code> .
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">int k = 2;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">int k = 2;
+</pre></div>
 
 <p>Test for equality resp. inequality is done using <code>==</code>
 resp. <code>!=</code> (or <code>&lt;&gt;</code>), where <code>0</code> represents the boolean
 value FALSE, any other value represents TRUE.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">k == 2;
+<div class="smallexample">
+<pre class="smallexample">k == 2;
 &rarr; 1
 k != 2;
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 
 <p>The value of an object is displayed by simply typing its name.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">k;
+<div class="smallexample">
+<pre class="smallexample">k;
 &rarr; 2
-</pre></td></tr></table>
+</pre></div>
 
 <p>On the other hand the output is suppressed if an assignment
 is made.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">int j;
+<div class="smallexample">
+<pre class="smallexample">int j;
 j = k+1;
-</pre></td></tr></table>
+</pre></div>
 
 <p>The last displayed (!) result is always available
 with the special symbol <code>_</code> .
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">2*_;   // the value from k displayed above
+<div class="smallexample">
+<pre class="smallexample">2*_;   // the value from k displayed above
 &rarr; 4
-</pre></td></tr></table>
+</pre></div>
 
 <p>Text starting with <code>//</code> denotes a comment and is ignored in
 calculations, as seen in the previous example. Furthermore <small>SINGULAR</small>
@@ -411,8 +417,9 @@ keyboard. Note that the history is not available on Macintosh systems.
 Explanation on single topics, e.g., on <code>intmat</code>, which defines a
 matrix of integers, are obtained by
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">help intmat;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">help intmat;
+</pre></div>
 
 <p>This shows the text of <a href="singular_3.html#intmat">intmat</a>, in the printed manual.
 </p>
@@ -420,18 +427,20 @@ matrix of integers, are obtained by
  matrix of integers and initialize it with some values, row by row
 from left to right:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">intmat m[3][3] = 1,2,3,4,5,6,7,8,9;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">intmat m[3][3] = 1,2,3,4,5,6,7,8,9;
+</pre></div>
 
 <p>A single matrix entry may be selected and changed using
 square brackets <code>[</code> and <code>]</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">m[1,2]=0;
+<div class="smallexample">
+<pre class="smallexample">m[1,2]=0;
 m;
 &rarr; 1,0,3,
 &rarr; 4,5,6,
 &rarr; 7,8,9
-</pre></td></tr></table>
+</pre></div>
 
 <p>To calculate the trace of this matrix, we use a <code>for</code> loop. The
 curly brackets <code>{</code> and <code>}</code> denote the beginning resp.
@@ -441,11 +450,12 @@ assigns a default value for the specific type. In this case, the default
 value for integers is <code>0</code>. Note that the integer variable <code>j</code>
 has already been defined above.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">int tr;
+<div class="smallexample">
+<pre class="smallexample">int tr;
 for ( j=1; j &lt;= 3; j++ ) { tr=tr + m[j,j]; }
 tr;
 &rarr; 15
-</pre></td></tr></table>
+</pre></div>
 
 <p>Variables of type string can also be defined and used without a ring
 being active. Strings are delimited by <code>&quot;</code> (double quotes). They
@@ -455,7 +465,8 @@ executed using the function <code>execute</code>. The result is the same as if
 the commands would have been written on the command line. This feature
 is especially useful to define new rings inside procedures.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">&quot;example for strings:&quot;;
+<div class="smallexample">
+<pre class="smallexample">&quot;example for strings:&quot;;
 &rarr; example for strings:
 string s=&quot;The element of m &quot;;
 s = s + &quot;at position [2,3] is:&quot;;  // concatenation of strings by +
@@ -466,7 +477,7 @@ execute(s);
 &rarr; 1,0,3,
 &rarr; 0,5,6,
 &rarr; 7,8,9
-</pre></td></tr></table>
+</pre></div>
 
 <p>This example shows that expressions can be separated by <code>,</code> (comma)
 giving a list of expressions. <small>SINGULAR</small> evaluates each expression in
@@ -496,8 +507,9 @@ this list and prints all results separated by spaces.
 <p>To calculate with objects as ideals, matrices, modules, and polynomial
 vectors, a ring has to be defined first.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0,(x,y,z),dp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = 0,(x,y,z),dp;
+</pre></div>
 
 <p>The definition of a ring consists of three parts: the first part
 determines the ground field, the second part determines the names of the
@@ -556,14 +568,15 @@ shows that the default ring in <small>SINGULAR</small> is
 </p>
 <p>with degree reverse lexicographical ordering:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r8;
+<div class="smallexample">
+<pre class="smallexample">ring r8;
 r8;
 &rarr; //   characteristic : 32003
 &rarr; //   number of vars : 3
 &rarr; //        block   1 : ordering dp
 &rarr; //                  : names    x y z 
 &rarr; //        block   2 : ordering C
-</pre></td></tr></table>
+</pre></div>
 
 <p>Defining a ring makes this ring the current active basering, so each
 ring definition above switches to a new basering. The concept of rings
@@ -574,8 +587,9 @@ in <small>SINGULAR</small> is discussed in detail in
 <code>r</code>, which we defined first, we have to switch back to it. This can
 be done using the function <code>setring</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">setring r;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">setring r;
+</pre></div>
 
 <p>Once a ring is active, we can define polynomials. A monomial, say
 may be entered in two ways: either using the power operator <code>^</code>,
@@ -585,18 +599,20 @@ of the ring variable consists of more than one character. Note, that
 <small>SINGULAR</small> always expands brackets and automatically sorts the terms
 with respect to the monomial ordering of the basering.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">poly f =  x3+y3+(x-y)*x2y2+z2;
+<div class="smallexample">
+<pre class="smallexample">poly f =  x3+y3+(x-y)*x2y2+z2;
 f;
 &rarr; x3y2-x2y3+x3+y3+z2
-</pre></td></tr></table>
+</pre></div>
 
 <p>The command <code>size</code> determines in general the number of &rdquo;single
 entries&ldquo; in an object. In particular, for polynomials, <code>size</code>
 determines the number of monomials.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">size(f);
+<div class="smallexample">
+<pre class="smallexample">size(f);
 &rarr; 5
-</pre></td></tr></table>
+</pre></div>
 
 <p>A natural question is to ask if a point, e.g., <code>(x,y,z)=(1,2,0)</code>, lies
 on the variety defined by the polynomials <code>f</code> and <code>g</code>. For
@@ -604,7 +620,8 @@ this we define an ideal generated by both polynomials, substitute the
 coordinates of the point for the ring variables, and check if the result
 is zero:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">poly g =  f^2 *(2x-y);
+<div class="smallexample">
+<pre class="smallexample">poly g =  f^2 *(2x-y);
 ideal I = f,g;
 ideal J = subst(I,var(1),1);
 J = subst(J,var(2),2);
@@ -612,7 +629,7 @@ J = subst(J,var(3),0);
 J;
 &rarr; J[1]=5
 &rarr; J[2]=0
-</pre></td></tr></table>
+</pre></div>
 
 <p>Since the result is not zero, the point <code>(1,2,0)</code> does
 not lie on the variety <code>V(f,g)</code>.
@@ -623,10 +640,11 @@ ideal. For this we calculate a standard basis using the command
 <code>groebner</code> and afterwards reduce the polynomial with respect to
 this standard basis.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ideal sI = groebner(f);
+<div class="smallexample">
+<pre class="smallexample">ideal sI = groebner(f);
 reduce(g,sI);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 
 <p>As the result is <code>0</code> the polynomial <code>g</code> belongs to the
 ideal defined by <code>f</code>.
@@ -649,13 +667,14 @@ explanation.
 </p>
 <p>The Jacobian ideal is obtained with the command <code>jacob</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ideal J = jacob(f);
+<div class="smallexample">
+<pre class="smallexample">ideal J = jacob(f);
 &rarr; // ** redefining J **
 J;
 &rarr; J[1]=3x2y2-2xy3+3x2
 &rarr; J[2]=2x3y-3x2y2+3y2
 &rarr; J[3]=2z
-</pre></td></tr></table>
+</pre></div>
 
 <p><small>SINGULAR</small> prints the line <code>// ** redefining J
 **</code>. This indicates that we have previously defined a variable with name
@@ -665,7 +684,8 @@ J;
 calculate a standard basis, then we apply the function <code>kbase</code> to
 this standard basis.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">J = groebner(J);
+<div class="smallexample">
+<pre class="smallexample">J = groebner(J);
 ideal K = kbase(J);
 K;
 &rarr; K[1]=y4
@@ -680,30 +700,33 @@ K;
 &rarr; K[10]=x2
 &rarr; K[11]=x
 &rarr; K[12]=1
-</pre></td></tr></table>
+</pre></div>
 
 <p>Then
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">size(K);
+<div class="smallexample">
+<pre class="smallexample">size(K);
 &rarr; 12
-</pre></td></tr></table>
+</pre></div>
 
 <p>gives the desired vector space dimension
 As in <small>SINGULAR</small> the functions may take the input directly from
 earlier calculations, the whole sequence of commands may be written
 in one single statement.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">size(kbase(groebner(jacob(f))));
+<div class="smallexample">
+<pre class="smallexample">size(kbase(groebner(jacob(f))));
 &rarr; 12
-</pre></td></tr></table>
+</pre></div>
 
 <p>When we are not interested in a basis of the quotient vector space, but
 only in the resulting dimension we may even use the command <code>vdim</code>
 and write:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">vdim(groebner(jacob(f)));
+<div class="smallexample">
+<pre class="smallexample">vdim(groebner(jacob(f)));
 &rarr; 12
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Procedures-and-libraries"></a>
@@ -735,11 +758,12 @@ command <code>return</code>.
 </p>
 <p>Define the following procedure called <code>Milnor</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc Milnor (poly h)
+<div class="smallexample">
+<pre class="smallexample">proc Milnor (poly h)
 {
   return(vdim(groebner(jacob(h))));
 }
-</pre></td></tr></table>
+</pre></div>
 
 <p>Note: if you have entered the first line of the procedure and pressed
 <code>RETURN</code>, <small>SINGULAR</small> prints the prompt <code>.</code> (dot) instead of
@@ -750,9 +774,10 @@ is now complete.
 </p>
 <p>Then call the procedure:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">Milnor(f);
+<div class="smallexample">
+<pre class="smallexample">Milnor(f);
 &rarr; 12
-</pre></td></tr></table>
+</pre></div>
 
 <p>Note that the result may depend on the basering as we will
 see in the next chapter.
@@ -772,33 +797,38 @@ singularities.
 information during the process of loading is displayed on the screen,
 which we omit here.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;sing.lib&quot;;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">LIB &quot;sing.lib&quot;;
+</pre></div>
 
 <p>As all input in <small>SINGULAR</small> is case sensitive, there is no conflict with
 the previously  defined procedure <code>Milnor</code>, but the result is the same.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">milnor(f);
+<div class="smallexample">
+<pre class="smallexample">milnor(f);
 &rarr; 12
-</pre></td></tr></table>
+</pre></div>
 
 <p>The procedures in a library have a help part
 which is displayed by typing
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">help milnor;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">help milnor;
+</pre></div>
 
 <p>as well as some examples, which are executed by
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">example milnor;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">example milnor;
+</pre></div>
 
 <p>Likewise, the library itself has a help part, to show a list of
 all the functions
 available for the user which are contained in the library.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">help sing.lib;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">help sing.lib;
+</pre></div>
 
 <p>The output of the help commands is omitted here.
 </p>
@@ -828,17 +858,19 @@ same commands in a ring with local ordering.
 Define the localization of the polynomial ring at the origin
 (see section <a href="singular_7.html#Polynomial-data">Polynomial data</a>, and <a href="singular_8.html#Mathematical-background">Mathematical background</a>).
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring rl = 0,(x,y,z),ds;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring rl = 0,(x,y,z),ds;
+</pre></div>
 
 <p>This ordering determines the standard basis which will be calculated.
 Fetch the polynomial defined in the ring <code>r</code> into this new ring,
 thus avoiding retyping the input.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">poly f = fetch(r,f);
+<div class="smallexample">
+<pre class="smallexample">poly f = fetch(r,f);
 f;
 &rarr; z2+x3+y3+x3y2-x2y3
-</pre></td></tr></table>
+</pre></div>
 
 <p>Instead of <code>fetch</code> we can use the function <code>imap</code>
 which is more general but less efficient.
@@ -848,9 +880,10 @@ this will be explained in <a href="singular_3.html#map">map</a>.
 <p>In this ring the terms are ordered by increasing exponents. The local Milnor
 number is now
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">Milnor(f);
+<div class="smallexample">
+<pre class="smallexample">Milnor(f);
 &rarr; 4
-</pre></td></tr></table>
+</pre></div>
 
 <p>This shows that <code>f</code> has outside the origin in affine 3-space
 singularities with local Milnor number adding up to
@@ -860,7 +893,8 @@ whether a variety has singularities outside the origin.
 <p>The command <code>jacob</code> applied twice gives the Hessian of <code>f</code>, a
 3x3 - matrix.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">matrix H = jacob(jacob(f));
+<div class="smallexample">
+<pre class="smallexample">matrix H = jacob(jacob(f));
 H;
 &rarr; H[1,1]=6x+6xy2-2y3
 &rarr; H[1,2]=6x2y-6xy2
@@ -871,20 +905,22 @@ H;
 &rarr; H[3,1]=0
 &rarr; H[3,2]=0
 &rarr; H[3,3]=2
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <code>print</code> command displays the matrix in a nicer form.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">print(H);
+<div class="smallexample">
+<pre class="smallexample">print(H);
 &rarr; 6x+6xy2-2y3,6x2y-6xy2,  0,
 &rarr; 6x2y-6xy2,  6y+2x3-6x2y,0,
 &rarr; 0,          0,          2
-</pre></td></tr></table>
+</pre></div>
 
 <p>We may calculate the determinant and (the ideal generated by all) minors of
 a given size.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">det(H);
+<div class="smallexample">
+<pre class="smallexample">det(H);
 &rarr; 72xy+24x4-72x3y+72xy3-24y4-48x4y2+64x3y3-48x2y4
 minor(H,1);  // the 1x1 - minors
 &rarr; _[1]=2
@@ -892,16 +928,17 @@ minor(H,1);  // the 1x1 - minors
 &rarr; _[3]=6x2y-6xy2
 &rarr; _[4]=6x2y-6xy2
 &rarr; _[5]=6x+6xy2-2y3
-</pre></td></tr></table>
+</pre></div>
 
 <p>The algorithm of the standard basis computations may be
 affected by the command <code>option</code>. For example, a reduced standard
 basis of the ideal generated by the
  of H  is obtained in the following way:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">option(redSB);
+</p><div class="smallexample">
+<pre class="smallexample">option(redSB);
 groebner(minor(H,1));
 &rarr; _[1]=1
-</pre></td></tr></table>
+</pre></div>
 
 <p>This shows that 1 is contained in the ideal of the
 hence the corresponding variety is empty.
@@ -934,7 +971,8 @@ hence the corresponding variety is empty.
 which can be defined as a basering. A free module of rank <code>n</code>
 is defined as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring rr;
+<div class="smallexample">
+<pre class="smallexample">ring rr;
 int n = 4;
 freemodule(4);
 &rarr; _[1]=gen(1)
@@ -948,7 +986,7 @@ print(freemodule(4));
 &rarr; 0,1,0,0,
 &rarr; 0,0,1,0,
 &rarr; 0,0,0,1
-</pre></td></tr></table>
+</pre></div>
 
 <p>To define a module, we give a list of vectors generating a submodule of
 a free module. Then this set of vectors may be identified with the
@@ -956,14 +994,15 @@ columns of a matrix.  For that reason in <small>SINGULAR</small> matrices and
 modules may be interchanged. However, the representation is different
 (modules may be considered as sparse represented matrices).
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r =0,(x,y,z),dp;
+<div class="smallexample">
+<pre class="smallexample">ring r =0,(x,y,z),dp;
 module MD = [x,0,x],[y,z,-y],[0,z,-2y];
 matrix MM = MD;
 print(MM);
 &rarr; x,y,0,
 &rarr; 0,z,z,
 &rarr; x,-y,-2y
-</pre></td></tr></table>
+</pre></div>
 
 <p>However the submodule 
  may also be considered as the module
@@ -976,16 +1015,18 @@ basering (see section <a href="singular_7.html#Representation-of-mathematical-ob
 ,
 we use the command <code>syz</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">syz(MD);
+<div class="smallexample">
+<pre class="smallexample">syz(MD);
 &rarr; _[1]=x*gen(3)-x*gen(2)+y*gen(1)
-</pre></td></tr></table>
+</pre></div>
 
 <p>We want to calculate, as an application, the annihilator of a given module.
 Let
 where U is our defining module of relations for the module
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">module U = [z3,xy2,x3],[yz2,1,xy5z+z3],[y2z,0,x3],[xyz+x2,y2,0],[xyz,x2y,1];
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">module U = [z3,xy2,x3],[yz2,1,xy5z+z3],[y2z,0,x3],[xyz+x2,y2,0],[xyz,x2y,1];
+</pre></div>
 
 <p>Then, by definition, the annihilator of M is the ideal
 which is by the description of M the same as
@@ -994,8 +1035,9 @@ The rank of the free module is determined by the choice of U and is the
 number of rows of the corresponding matrix. This may be determined by
 the function <code>nrows</code>. All we have to do now is the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">quotient(U,freemodule(nrows(U)));
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">quotient(U,freemodule(nrows(U)));
+</pre></div>
 
 <p>The result is too big to be shown here.
 </p>
@@ -1030,7 +1072,8 @@ up to the length
 <p>Here we use the possibility to inspect the calculation process using the
 option <code>prot</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring R;      // the default ring in char 32003
+<div class="smallexample">
+<pre class="smallexample">ring R;      // the default ring in char 32003
 R;
 &rarr; //   characteristic : 32003
 &rarr; //   number of vars : 3
@@ -1042,18 +1085,20 @@ option(prot);
 resolution rs = res(I,0);
 &rarr; using lres
 &rarr; 4(m0)4(m1).5(m1)g.g6(m1)...6(m2)..
-</pre></td></tr></table>
+</pre></div>
 
 <p>Disable this protocol with
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">option(noprot);
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">option(noprot);
+</pre></div>
 
 <p>When we enter the name of the calculated resolution, we get a pictorial
 description of the minimized resolution where the exponents denote the rank of the
 free modules. Note that the calculated resolution itself may not yet be minimal.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">rs;
+<div class="smallexample">
+<pre class="smallexample">rs;
 &rarr; 1      4      5      2      0
 &rarr;R  &lt;-- R  &lt;-- R  &lt;-- R  &lt;-- R
 &rarr;
@@ -1069,25 +1114,27 @@ print(betti(rs),&quot;betti&quot;);
 &rarr;     5:     -     -     3     2
 &rarr; ------------------------------
 &rarr; total:     1     4     5     2
-</pre></td></tr></table>
+</pre></div>
 
 <p>In order to minimize the resolution, that is to calculate the maps of the minimal 
 free resolution, we use the command <code>minres</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">rs=minres(rs);
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">rs=minres(rs);
+</pre></div>
 
 <p>A single module in this resolution is obtained (as usual) with the
 brackets <code>[</code> and <code>]</code>. The <code>print</code> command can be used to
 display a module in a more readable format:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">print(rs[3]);
+<div class="smallexample">
+<pre class="smallexample">print(rs[3]);
 &rarr; z3,   -xyz-y2z-4xz2+16z3,
 &rarr; 0,    -y2,
 &rarr; -y+4z,48z, 
 &rarr; x+2z, 48z, 
 &rarr; 0,    x+y-z  
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this case, the output is to be interpreted as follows: the 3rd syzygy
 module of R/I, <code>rs[3]</code>, is the rank-2-submodule of

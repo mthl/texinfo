@@ -109,16 +109,18 @@ causes some problems with boolean tests on variables, which might not be
 defined at evaluation time. For example, the following results in an
 error, if the variable <code>i</code> is undefined:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (defined(i) &amp;&amp; i &gt; 0) {} // WRONG!!!
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">if (defined(i) &amp;&amp; i &gt; 0) {} // WRONG!!!
+</pre></div>
 
 <p>This must be written instead as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (defined(i))
+<div class="smallexample">
+<pre class="smallexample">if (defined(i))
 {
   if (i &gt; 0) {}
 }
-</pre></td></tr></table>
+</pre></div>
 
 <p>However, there are several short work-arounds for this problem:
 </p><ol>
@@ -127,8 +129,9 @@ If a variable (say, <code>i</code>) is only to be used as a boolean flag, then
 define (value is TRUE) and undefine (value is FALSE) <code>i</code> instead of
 assigning a value. Using this scheme, it is sufficient to simply write
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (defined(i))
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">if (defined(i))
+</pre></div>
 
 <p>in order to check whether <code>i</code> is TRUE. Use the command <code>kill</code>
 to undefine a variable, i.e. to assign it a FALSE value (see <a href="sing_211.htm#kill">kill</a>).
@@ -137,12 +140,13 @@ If a variable  can have more than two values, then
 define it, if necessary, before it is used for the first time.
 For example, if the following is used within a procedure
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (! defined(DEBUG)) { int DEBUG = 1;}
+<div class="smallexample">
+<pre class="smallexample">if (! defined(DEBUG)) { int DEBUG = 1;}
 &hellip;
 if (DEBUG == 3)  {&hellip;}
 if (DEBUG == 2)  {&hellip;}
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>then a user of this procedure does not need to care about the existence
 of the <code>DEBUG</code> variable &ndash; this remains hidden from the

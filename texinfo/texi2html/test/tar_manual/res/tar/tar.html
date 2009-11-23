@@ -1099,16 +1099,19 @@ long forms of operations and options; but the &ldquo;short&rdquo; forms produce
 the same result and can make typing long <code>tar</code> commands easier.
 For example, instead of typing
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>tar --create --verbose --file=afiles.tar apple angst aspic</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample"><kbd>tar --create --verbose --file=afiles.tar apple angst aspic</kbd>
+</pre></div>
 
 <p>you can type
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>tar -c -v -f afiles.tar apple angst aspic</kbd>
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample"><kbd>tar -c -v -f afiles.tar apple angst aspic</kbd>
+</pre></div>
 
 <p>or even
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>tar -cvf afiles.tar apple angst aspic</kbd>
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample"><kbd>tar -cvf afiles.tar apple angst aspic</kbd>
+</pre></div>
 
 <p>For more information on option syntax, see <a href="#Advanced-tar">Advanced <acronym>GNU</acronym> <code>tar</code> Operations</a>.  In
 discussions in the text, when we name an option by its long form, we
@@ -1254,9 +1257,10 @@ attached, or the default is not meaningful, then <code>tar</code> will
 print an error message.  The error message might look roughly like one
 of the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">tar: can't open /dev/rmt8 : No such device or address
+<div class="smallexample">
+<pre class="smallexample">tar: can't open /dev/rmt8 : No such device or address
 tar: can't open /dev/rsmt0 : I/O error
-</pre></td></tr></table>
+</pre></div>
 
 <p>To avoid confusion, we recommend that you always specify an archive file
 name by using &lsquo;<samp>--file=<var>archive-name</var></samp>&rsquo; (&lsquo;<samp>-f <var>archive-name</var></samp>&rsquo;) when writing your <code>tar</code> commands.
@@ -1320,26 +1324,29 @@ enable the full listing.
 </p>   
 <p>For example, to create an archive in verbose mode:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -cvf afiles.tar apple angst aspic</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -cvf afiles.tar apple angst aspic</kbd>
 apple
 angst
 aspic
-</pre></td></tr></table>
+</pre></div>
 
 <p>Creating the same archive with the verbosity level 2 could give:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -cvvf afiles.tar apple angst aspic</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -cvvf afiles.tar apple angst aspic</kbd>
 -rw-r--r-- gray/staff    62373 2006-06-09 12:06 apple
 -rw-r--r-- gray/staff    11481 2006-06-09 12:06 angst
 -rw-r--r-- gray/staff    23152 2006-06-09 12:06 aspic
-</pre></td></tr></table>
+</pre></div>
 
 <p>This works equally well using short or long forms of options.  Using
 long forms, you would simply write out the mnemonic form of the option
 twice, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --create --verbose --verbose &hellip;</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --create --verbose --verbose &hellip;</kbd>
+</pre></div>
 
 <p>Note that you must double the hyphens properly each time.
 </p>
@@ -1425,14 +1432,15 @@ able to handle, or the archive is corrupted.
 <p>For example, here is an archive listing containing most of the special
 suffixes explained above:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">V--------- 0/0          1536 2006-06-09 13:07 MyVolume--Volume Header--
+<div class="smallexample">
+<pre class="smallexample">V--------- 0/0          1536 2006-06-09 13:07 MyVolume--Volume Header--
 -rw-r--r-- gray/staff 456783 2006-06-09 12:06 aspic--Continued at
 byte 32456--
 -rw-r--r-- gray/staff  62373 2006-06-09 12:06 apple
 lrwxrwxrwx gray/staff      0 2006-06-09 13:01 angst -&gt; apple
 -rw-r--r-- gray/staff  35793 2006-06-09 12:06 blues
 hrw-r--r-- gray/staff      0 2006-06-09 12:06 music link to blues
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -1602,14 +1610,16 @@ you need to use a different option, such as &lsquo;<samp>--append</samp>&rsquo; 
 <p>To place the files &lsquo;<tt>blues</tt>&rsquo;, &lsquo;<tt>folk</tt>&rsquo;, and &lsquo;<tt>jazz</tt>&rsquo; into an
 archive named &lsquo;<tt>collection.tar</tt>&rsquo;, use the following command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --create --file=collection.tar blues folk jazz</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --create --file=collection.tar blues folk jazz</kbd>
+</pre></div>
 
 <p>The order of the arguments is not very important, <em>when using long
 option forms</em>.  You could also say:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar blues --create folk --file=collection.tar jazz</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar blues --create folk --file=collection.tar jazz</kbd>
+</pre></div>
 
 <p>However, you can see that this order is harder to understand; this is
 why we will list the arguments in the order that makes the commands
@@ -1646,8 +1656,9 @@ members, <acronym>GNU</acronym> <code>tar</code> will complain.
 <p>If you now list the contents of the working directory (<code>ls</code>), you will
 find the archive file listed as well as the files you saw previously:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">blues   folk   jazz   collection.tar
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">blues   folk   jazz   collection.tar
+</pre></div>
 
 <p>Creating the archive &lsquo;<samp>collection.tar</samp>&rsquo; did not destroy the copies of
 the files in the directory.
@@ -1687,11 +1698,12 @@ Use &lsquo;<samp>--append</samp>&rsquo; (&lsquo;<samp>-r</samp>&rsquo;) instead.
 <code>tar</code> will list the files it is acting on as it is working.  In
 verbose mode, the <code>create</code> example above would appear as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --create --verbose --file=collection.tar blues folk jazz</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --create --verbose --file=collection.tar blues folk jazz</kbd>
 blues
 folk
 jazz
-</pre></td></tr></table>
+</pre></div>
 
 <p>This example is just like the example we showed which did not use
 &lsquo;<samp>--verbose</samp>&rsquo;, except that <code>tar</code> generated the remaining lines
@@ -1729,11 +1741,12 @@ options can take appears in <a href="#Styles">The Three Option Styles</a>; for n
 previous example (including the &lsquo;<samp>--verbose</samp>&rsquo; (&lsquo;<samp>-v</samp>&rsquo;) option) looks like
 using short option forms:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -cvf collection.tar blues folk jazz</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -cvf collection.tar blues folk jazz</kbd>
 blues
 folk
 jazz
-</pre></td></tr></table>
+</pre></div>
 
 <p>As you can see, the system responds the same no matter whether you use
 long or short option forms.
@@ -1745,8 +1758,9 @@ it is easier to become confused and make a mistake when using short
 forms.  For example, suppose you attempted the above example in the
 following way:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -cfv collection.tar blues folk jazz</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -cfv collection.tar blues folk jazz</kbd>
+</pre></div>
 
 <p>In this case, <code>tar</code> will make an archive file called &lsquo;<tt>v</tt>&rsquo;,
 containing the files &lsquo;<tt>blues</tt>&rsquo;, &lsquo;<tt>folk</tt>&rsquo;, and &lsquo;<tt>jazz</tt>&rsquo;, because
@@ -1766,14 +1780,16 @@ you how an example we showed previously would look using short forms.
 </p>
 <p>This example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar blues --create folk --file=collection.tar jazz</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar blues --create folk --file=collection.tar jazz</kbd>
+</pre></div>
 
 <p>is confusing as it is.  When shown using short forms, however, it
 becomes much more so:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar blues -c folk -f collection.tar jazz</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar blues -c folk -f collection.tar jazz</kbd>
+</pre></div>
 
 <p>It would be very easy to put the wrong string of characters
 immediately following the &lsquo;<samp>-f</samp>&rsquo;, but doing that could sacrifice
@@ -1816,26 +1832,29 @@ re-created along with its contents when the archive is extracted.
 have followed the previous instructions in this tutorial, you should
 type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>cd ..</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>cd ..</kbd>
 $
-</pre></td></tr></table>
+</pre></div>
 
 <p>This will put you into the directory which contains &lsquo;<tt>practice</tt>&rsquo;,
 i.e., your home directory.  Once in the superior directory, you can
 specify the subdirectory, &lsquo;<tt>practice</tt>&rsquo;, as a file name argument.  To
 store &lsquo;<tt>practice</tt>&rsquo; in the new archive file &lsquo;<tt>music.tar</tt>&rsquo;, type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --create --verbose --file=music.tar practice</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --create --verbose --file=music.tar practice</kbd>
+</pre></div>
 
 <p><code>tar</code> should output:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">practice/
+<div class="smallexample">
+<pre class="smallexample">practice/
 practice/blues
 practice/folk
 practice/jazz
 practice/collection.tar
-</pre></td></tr></table>
+</pre></div>
 
 <p>Note that the archive thus created is not in the subdirectory
 &lsquo;<tt>practice</tt>&rsquo;, but rather in the current working directory&mdash;the
@@ -1853,8 +1872,9 @@ into the file system).
 </p>
 <p>If you give <code>tar</code> a command such as
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --create --file=foo.tar .</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --create --file=foo.tar .</kbd>
+</pre></div>
 
 <p><code>tar</code> will report &lsquo;<samp>tar: ./foo.tar is the archive; not
 dumped</samp>&rsquo;.  This happens because <code>tar</code> creates the archive
@@ -1900,22 +1920,25 @@ the time they were archived.  For example, you can examine the archive
 &lsquo;<tt>collection.tar</tt>&rsquo; that you created in the last section with the
 command, 
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --list --file=collection.tar</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --list --file=collection.tar</kbd>
+</pre></div>
 
 <p>The output of <code>tar</code> would then be:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">blues
+<div class="smallexample">
+<pre class="smallexample">blues
 folk
 jazz
-</pre></td></tr></table>
+</pre></div>
 
 <p>The archive &lsquo;<tt>bfiles.tar</tt>&rsquo; would list as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">./birds
+<div class="smallexample">
+<pre class="smallexample">./birds
 baboon
 ./box
-</pre></td></tr></table>
+</pre></div>
 
 <p>Be sure to use a &lsquo;<samp>--file=<var>archive-name</var></samp>&rsquo; (&lsquo;<samp>-f
 <var>archive-name</var></samp>&rsquo;) option just as with &lsquo;<samp>--create</samp>&rsquo;
@@ -1931,9 +1954,10 @@ forth.  This output is described in detail in <a href="#verbose-member-listing">
 <p>If you had used &lsquo;<samp>--verbose</samp>&rsquo; (&lsquo;<samp>-v</samp>&rsquo;) mode, the example
 above would look like:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --list --verbose --file=collection.tar folk</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --list --verbose --file=collection.tar folk</kbd>
 -rw-r--r-- myself user 62 1990-05-23 10:55 folk
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-listing-member-and-file-names"></a>
 <p><a name="listing-member-and-file-names"></a>
@@ -1947,7 +1971,8 @@ words, in verbose mode <acronym>GNU</acronym> <code>tar</code> shows <em>file na
 an archive and <em>member names</em> when listing it.  Consider this
 example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar cfv archive /etc/mail</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar cfv archive /etc/mail</kbd>
 tar: Removing leading `/' from member names
 /etc/mail/
 /etc/mail/sendmail.cf
@@ -1956,7 +1981,7 @@ $ <kbd>tar tf archive</kbd>
 etc/mail/
 etc/mail/sendmail.cf
 etc/mail/aliases
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-show_002dstored_002dnames"></a>
 <p>  This default behavior can sometimes be inconvenient.  You can force
@@ -1991,8 +2016,9 @@ with &lsquo;<tt>baboon</tt>&rsquo;, because this exact member name is in the arc
 &lsquo;<tt>bfiles.tar</tt>&rsquo;.  If you are not sure of the exact file name,
 use <em>globbing patterns</em>, for example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --list --file=bfiles.tar --wildcards '*b*'</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --list --file=bfiles.tar --wildcards '*b*'</kbd>
+</pre></div>
 
 <p>will list all members whose name contains &lsquo;<samp>b</samp>&rsquo;.  See section <a href="#wildcards">Wildcards Patterns and Matching</a>,
 for a detailed discussion of globbing patterns and related
@@ -2031,17 +2057,19 @@ use the directory name as a file name argument in conjunction with
 <p>For example, to find out about files in the directory &lsquo;<tt>practice</tt>&rsquo;, in
 the archive file &lsquo;<tt>music.tar</tt>&rsquo;, type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --list --verbose --file=music.tar practice</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --list --verbose --file=music.tar practice</kbd>
+</pre></div>
 
 <p><code>tar</code> responds:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">drwxrwxrwx myself user 0 1990-05-31 21:49 practice/
+<div class="smallexample">
+<pre class="smallexample">drwxrwxrwx myself user 0 1990-05-31 21:49 practice/
 -rw-r--r-- myself user 42 1990-05-21 13:29 practice/blues
 -rw-r--r-- myself user 62 1990-05-23 10:55 practice/folk
 -rw-r--r-- myself user 40 1990-05-21 13:30 practice/jazz
 -rw-r--r-- myself user 10240 1990-05-31 21:49 practice/collection.tar
-</pre></td></tr></table>
+</pre></div>
 
 <p>When you use a directory name as a file name argument, <code>tar</code> acts on
 all the files (including sub-directories) in that directory.
@@ -2124,15 +2152,17 @@ long form of the operation without affecting the performance.
 <p>To extract an entire archive, specify the archive file name only, with
 no individual file names as arguments.  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -xvf collection.tar</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -xvf collection.tar</kbd>
+</pre></div>
 
 <p>produces this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">-rw-r--r-- me user     28 1996-10-18 16:31 jazz
+<div class="smallexample">
+<pre class="smallexample">-rw-r--r-- me user     28 1996-10-18 16:31 jazz
 -rw-r--r-- me user     21 1996-09-23 16:44 blues
 -rw-r--r-- me user     20 1996-09-23 16:44 folk
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="extracting-files"></a>
@@ -2169,8 +2199,9 @@ the files in the directory again.
 <p>You can now extract the member &lsquo;<tt>blues</tt>&rsquo; from the archive file
 &lsquo;<tt>collection.tar</tt>&rsquo; like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --extract --file=collection.tar blues</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --extract --file=collection.tar blues</kbd>
+</pre></div>
 
 <p>If you list the files in the directory again, you will see that the file
 &lsquo;<tt>blues</tt>&rsquo; has been restored, with its original permissions, data
@@ -2193,8 +2224,9 @@ specific <em>globbing pattern</em>.  For example, to extract from
 &lsquo;<tt>bfiles.tar</tt>&rsquo; all files that begin with &lsquo;<samp>b</samp>&rsquo;, no matter their
 directory prefix, you could type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -x -f bfiles.tar --wildcards --no-anchored 'b*'</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -x -f bfiles.tar --wildcards --no-anchored 'b*'</kbd>
+</pre></div>
 
 <p>Here, &lsquo;<samp>--wildcards</samp>&rsquo; instructs <code>tar</code> to treat
 command line arguments as globbing patterns and &lsquo;<samp>--no-anchored</samp>&rsquo;
@@ -2255,19 +2287,21 @@ don&rsquo;t give any file names as arguments after the archive name
 &lsquo;<tt>music.tar</tt>&rsquo;.  To extract only the files you deleted, use the
 following command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -xvf music.tar practice/folk practice/jazz</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -xvf music.tar practice/folk practice/jazz</kbd>
 practice/folk
 practice/jazz
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you were to specify two &lsquo;<samp>--verbose</samp>&rsquo; (&lsquo;<samp>-v</samp>&rsquo;) options, <code>tar</code>
 would have displayed more detail about the extracted files, as shown
 in the example below:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -xvvf music.tar practice/folk practice/jazz</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -xvvf music.tar practice/folk practice/jazz</kbd>
 -rw-r--r-- me user     28 1996-10-18 16:31 practice/jazz
 -rw-r--r-- me user     20 1996-09-23 16:44 practice/folk
-</pre></td></tr></table>
+</pre></div>
 
 <p>Because you created the directory with &lsquo;<tt>practice</tt>&rsquo; as part of the
 file names of each of the files by archiving the &lsquo;<tt>practice</tt>&rsquo;
@@ -2302,10 +2336,11 @@ For example, if &lsquo;<tt>untrusted.tar</tt>&rsquo; came from somewhere else on
 Internet, and you don&rsquo;t necessarily trust its contents, you can
 extract it as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>mkdir newdir</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>mkdir newdir</kbd>
 $ <kbd>cd newdir</kbd>
 $ <kbd>tar -xvf ../untrusted.tar</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>It is also a good practice to examine contents of the archive
 before extracting it, using &lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;) option, possibly combined
@@ -2336,32 +2371,36 @@ they won&rsquo;t work.
 </p>
 <p>If you try to use this command,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -xvf music.tar folk jazz</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -xvf music.tar folk jazz</kbd>
+</pre></div>
 
 <p>you will get the following response:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">tar: folk: Not found in archive
+<div class="smallexample">
+<pre class="smallexample">tar: folk: Not found in archive
 tar: jazz: Not found in archive
 $
-</pre></td></tr></table>
+</pre></div>
 
 <p>This is because these files were not originally <em>in</em> the parent
 directory &lsquo;<tt>..</tt>&rsquo;, where the archive is located; they were in the
 &lsquo;<tt>practice</tt>&rsquo; directory, and their file names reflect this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -tvf music.tar</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -tvf music.tar</kbd>
 practice/folk
 practice/jazz
 practice/rock
-</pre></td></tr></table>
+</pre></div>
 
 
 
 <p>Likewise, if you try to use this command,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -tvf music.tar folk jazz</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -tvf music.tar folk jazz</kbd>
+</pre></div>
 
 <p>you would get a similar response.  Members with those names are not in the
 archive.  You must use the correct member names, or wildcards, in order
@@ -2480,9 +2519,10 @@ and &lsquo;<samp>--interactive</samp>&rsquo; options (see section <a href="#inte
 
 <p>The <acronym>GNU</acronym> <code>tar</code> program is invoked as either one of:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>tar <var>option</var>&hellip; [<var>name</var>]&hellip;</kbd>
+<div class="smallexample">
+<pre class="smallexample"><kbd>tar <var>option</var>&hellip; [<var>name</var>]&hellip;</kbd>
 <kbd>tar <var>letter</var>&hellip; [<var>argument</var>]&hellip; [<var>option</var>]&hellip; [<var>name</var>]&hellip;</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>The second form is for when old options are being used.
 </p>
@@ -2726,8 +2766,9 @@ use, you are stuck; <code>tar</code> will perform the command as ordered.)
 meanings are generally easier to discern than those of their
 corresponding short options (see below).  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --create --verbose --blocking-factor=20 --file=/dev/rmt0</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --create --verbose --blocking-factor=20 --file=/dev/rmt0</kbd>
+</pre></div>
 
 <p>gives a fairly good set of hints about what the command does, even
 for those not fully acquainted with <code>tar</code>.
@@ -2796,8 +2837,9 @@ such a set is allowed to have an argument<a name="DOCF2" href="#FOOT2">(2)</a>.
 an argument directly follows that option, as is usual for Unix programs.
 For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -v -b 20 -f /dev/rmt0</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c -v -b 20 -f /dev/rmt0</kbd>
+</pre></div>
 
 <p>If you reorder short options&rsquo; locations, be sure to move any arguments
 that belong to them.  If you do not move the arguments properly, you may
@@ -2842,8 +2884,9 @@ all the associated arguments follow, in the same order as the options.
 Thus, the example given previously could also be written in the old
 style as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar cvbf 20 /dev/rmt0</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar cvbf 20 /dev/rmt0</kbd>
+</pre></div>
 
 <p>Here, &lsquo;<samp>20</samp>&rsquo; is the argument of &lsquo;<samp>-b</samp>&rsquo; and &lsquo;<samp>/dev/rmt0</samp>&rsquo; is
 the argument of &lsquo;<samp>-f</samp>&rsquo;.
@@ -2863,9 +2906,10 @@ sure to reorder any corresponding argument appropriately.
 <p>This old way of writing <code>tar</code> options can surprise even experienced
 users.  For example, the two commands:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>tar cfz archive.tar.gz file</kbd>
+<div class="smallexample">
+<pre class="smallexample"><kbd>tar cfz archive.tar.gz file</kbd>
 <kbd>tar -cfz archive.tar.gz file</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>are quite different.  The first example uses &lsquo;<tt>archive.tar.gz</tt>&rsquo; as
 the value for option &lsquo;<samp>f</samp>&rsquo; and recognizes the option &lsquo;<samp>z</samp>&rsquo;.  The
@@ -2877,10 +2921,11 @@ second example, however, uses &lsquo;<tt>z</tt>&rsquo; as the value for option
 <p>This second example could be corrected in many ways, among which the
 following are equivalent:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>tar -czf archive.tar.gz file</kbd>
+<div class="smallexample">
+<pre class="smallexample"><kbd>tar -czf archive.tar.gz file</kbd>
 <kbd>tar -cf archive.tar.gz -z file</kbd>
 <kbd>tar cf archive.tar.gz -z file</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-option-syntax_002c-traditional"></a>
 <p>As far as we know, all <code>tar</code> programs, <acronym>GNU</acronym> and
@@ -2927,7 +2972,8 @@ style options.
 <p>For example, all the following commands are wholly equivalent, and
 illustrate the many combinations and orderings of option styles.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>tar --create --file=archive.tar</kbd>
+<div class="smallexample">
+<pre class="smallexample"><kbd>tar --create --file=archive.tar</kbd>
 <kbd>tar --create -f archive.tar</kbd>
 <kbd>tar --create -farchive.tar</kbd>
 <kbd>tar --file=archive.tar --create</kbd>
@@ -2948,17 +2994,18 @@ illustrate the many combinations and orderings of option styles.
 <kbd>tar f archive.tar --create</kbd>
 <kbd>tar f archive.tar -c</kbd>
 <kbd>tar fc archive.tar</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>On the other hand, the following commands are <em>not</em> equivalent to
 the previous set:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>tar -f -c archive.tar</kbd>
+<div class="smallexample">
+<pre class="smallexample"><kbd>tar -f -c archive.tar</kbd>
 <kbd>tar -fc archive.tar</kbd>
 <kbd>tar -fcarchive.tar</kbd>
 <kbd>tar -farchive.tarc</kbd>
 <kbd>tar cfarchive.tar</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>These last examples mean something completely different from what the
 user intended (judging based on the example in the previous set which
@@ -3777,8 +3824,9 @@ line or via &lsquo;<samp>-T</samp>&rsquo; option.
 <p>This option instructs <code>tar</code> to process only the <var>number</var>th
 occurrence of each named file.  <var>Number</var> defaults to 1, so
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">tar -x -f archive.tar --occurrence filename
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">tar -x -f archive.tar --occurrence filename
+</pre></div>
 
 <p>will extract the first occurrence of the member &lsquo;<tt>filename</tt>&rsquo; from &lsquo;<tt>archive.tar</tt>&rsquo;
 and will terminate without scanning to the end of the archive.
@@ -3834,8 +3882,9 @@ See section <a href="#override">Overriding File Metadata</a>.
 <p>Transform file or member names using <code>sed</code> replacement expression
 <var>sed-expr</var>.  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar cf archive.tar --transform 's,^\./,usr/,' .</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar cf archive.tar --transform 's,^\./,usr/,' .</kbd>
+</pre></div>
 
 <p>will add to &lsquo;<tt>archive</tt>&rsquo; files from the current working directory,
 replacing initial &lsquo;<samp>./</samp>&rsquo; prefix with &lsquo;<samp>usr/</samp>&rsquo;. For the detailed
@@ -4020,10 +4069,11 @@ effect only for ordinary users.  See section <a href="#Attributes">Handling File
 successfully.  This option is intended for use in shell scripts.
 Here is an example of what you can see using this option:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ tar --show-defaults
+<div class="smallexample">
+<pre class="smallexample">$ tar --show-defaults
 --format=gnu -f- -b20 --quoting-style=escape \
 --rmt-command=/usr/libexec/rmt --rsh-command=/usr/bin/rsh
-</pre></td></tr></table>
+</pre></div>
 
 <p><a name="g_t_002d_002dshow_002domitted_002ddirs"></a>
 <a name="index-show_002domitted_002ddirs_002c-summary"></a>
@@ -4083,8 +4133,9 @@ See section <a href="#Scarce">Coping with Scarce Resources</a>.
 extraction.<a name="DOCF7" href="#FOOT7">(7)</a> For example, if archive &lsquo;<tt>archive.tar</tt>&rsquo; contained
 &lsquo;<tt>/some/file/name</tt>&rsquo;, then running
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">tar --extract --file archive.tar --strip-components=2
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">tar --extract --file archive.tar --strip-components=2
+</pre></div>
 
 <p>would extract this file to file &lsquo;<tt>name</tt>&rsquo;.
 </p>
@@ -4349,14 +4400,15 @@ causes <code>tar</code> to print information about its name, version,
 origin and legal status, all on standard output, and then exit
 successfully.  For example, &lsquo;<samp>tar --version</samp>&rsquo; might print:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">tar (GNU tar) 1.15.92
+<div class="smallexample">
+<pre class="smallexample">tar (GNU tar) 1.15.92
 Copyright (C) 2006 Free Software Foundation, Inc.
 This is free software.  You may redistribute copies of it under the terms
 of the GNU General Public License &lt;http://www.gnu.org/licenses/gpl.html&gt;.
 There is NO WARRANTY, to the extent permitted by law.
 
 Written by John Gilmore and Jay Fenlason.
-</pre></td></tr></table>
+</pre></div>
 
 <p>The first occurrence of &lsquo;<samp>tar</samp>&rsquo; in the result above is the program
 name in the package (for example, <code>rmt</code> is another program),
@@ -4379,16 +4431,18 @@ ignoring all other options.  Even if this is only a brief summary, it
 may be several screens long.  So, if you are not using some kind of
 scrollable window, you might prefer to use something like:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --help | less</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --help | less</kbd>
+</pre></div>
 
 <p>presuming, here, that you like using <code>less</code> for a pager.  Other
 popular pagers are <code>more</code> and <code>pg</code>.  If you know about some
 <var>keyword</var> which interests you and do not want to read all the
 &lsquo;<samp>--help</samp>&rsquo; output, another common idiom is doing:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">tar --help | grep <var>keyword</var>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">tar --help | grep <var>keyword</var>
+</pre></div>
 
 <p>for getting only the pertinent lines.  Notice, however, that some
 <code>tar</code> options have long description lines and the above
@@ -4451,10 +4505,11 @@ explicitely specify another values.  To obtain a list of such
 defaults, use &lsquo;<samp>--show-defaults</samp>&rsquo; option.  This will output the
 values in the form of <code>tar</code> command line options:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>tar --show-defaults</kbd>
+<div class="smallexample">
+<pre class="smallexample"><kbd>tar --show-defaults</kbd>
 --format=gnu -f- -b20 --quoting-style=escape 
 --rmt-command=/etc/rmt --rsh-command=/usr/bin/rsh
-</pre></td></tr></table>
+</pre></div>
 
 <p>Notice, that this option outputs only one line.  The example output above
 has been split to fit page boundaries.
@@ -4518,9 +4573,10 @@ Since &lsquo;<samp>--list</samp>&rsquo; already prints  the names of the members
 to print an &lsquo;<samp>ls -l</samp>&rsquo; type listing of the files in the archive.
 The following examples both extract members with long list output:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --extract --file=archive.tar --verbose --verbose</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --extract --file=archive.tar --verbose --verbose</kbd>
 $ <kbd>tar xvvf archive.tar</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>Verbose output appears on the standard output except when an archive is
 being written to the standard output, as with &lsquo;<samp>tar --create
@@ -4541,25 +4597,28 @@ an archive.  When creating or appending to an archive, this option
 prints the number of bytes written to the archive and the average
 speed at which they have been written, e.g.:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -f archive.tar --totals /home</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c -f archive.tar --totals /home</kbd>
 Total bytes written: 7924664320 (7.4GiB, 85MiB/s)
-</pre></td></tr></table>
+</pre></div>
 
 <p>When reading an archive, this option displays the number of bytes
 read:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -x -f archive.tar --totals</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -x -f archive.tar --totals</kbd>
 Total bytes read: 7924664320 (7.4GiB, 95MiB/s)
-</pre></td></tr></table>
+</pre></div>
 
 <p>Finally, when deleting from an archive, the &lsquo;<samp>--totals</samp>&rsquo; option
 displays both numbers plus number of bytes removed from the archive:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --delete -f foo.tar --totals --wildcards '*~'</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --delete -f foo.tar --totals --wildcards '*~'</kbd>
 Total bytes read: 9543680 (9.2MiB, 201MiB/s)
 Total bytes written: 3829760 (3.7MiB, 81MiB/s)
 Total bytes deleted: 1474048
-</pre></td></tr></table>
+</pre></div>
 
 <p>You can also obtain this information on request.  When
 &lsquo;<samp>--totals</samp>&rsquo; is used with an argument, this argument is
@@ -4592,19 +4651,21 @@ that <code>tar</code> is actually making forward progress.  By default it
 prints a message each 10 records read or written.  This can be changed
 by giving it a numeric argument after an equal sign:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c --checkpoint=1000</kbd> /var
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c --checkpoint=1000</kbd> /var
 tar: Write checkpoint 1000
 tar: Write checkpoint 2000
 tar: Write checkpoint 3000
-</pre></td></tr></table>
+</pre></div>
 
 <p>This example shows the default checkpoint message used by
 <code>tar</code>.  If you place a dot immediately after the equal
 sign, it will print a &lsquo;<samp>.</samp>&rsquo; at each checkpoint.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c --checkpoint=.1000</kbd> /var
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c --checkpoint=.1000</kbd> /var
 ...
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-show_002domitted_002ddirs"></a>
 <p><a name="show_002domitted_002ddirs"></a>
@@ -4799,9 +4860,10 @@ archive with nothing in it, one may still use, as the value for the
 &lsquo;<samp>--files-from</samp>&rsquo; option, a file with no names in it, as shown in
 the following commands:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>tar --create --file=empty-archive.tar --files-from=/dev/null</kbd>
+<div class="smallexample">
+<pre class="smallexample"><kbd>tar --create --file=empty-archive.tar --files-from=/dev/null</kbd>
 <kbd>tar cfT empty-archive.tar /dev/null</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-extract_002c-complementary-notes"></a>
 </dd>
@@ -5011,8 +5073,9 @@ copy to be extracted.  Thus, for example if the archive
 &lsquo;<tt>archive.tar</tt>&rsquo; contained three copies of file &lsquo;<tt>myfile</tt>&rsquo;, then
 the command
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">tar --extract --file archive.tar --occurrence=2 myfile
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">tar --extract --file archive.tar --occurrence=2 myfile
+</pre></div>
 
 <p>would extract only the second copy.  See section <a href="#Option-Summary">&mdash;occurrence</a>, for the description of &lsquo;<samp>--occurrence</samp>&rsquo;
 option.
@@ -5086,18 +5149,20 @@ Make sure you are in the &lsquo;<tt>practice</tt>&rsquo; directory.  Then, run t
 following <code>tar</code> command to add &lsquo;<tt>rock</tt>&rsquo; to
 &lsquo;<tt>collection.tar</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --append --file=collection.tar rock</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --append --file=collection.tar rock</kbd>
+</pre></div>
 
 <p>If you now use the &lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;) operation, you will see that
 &lsquo;<tt>rock</tt>&rsquo; has been added to the archive:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --list --file=collection.tar</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --list --file=collection.tar</kbd>
 -rw-r--r-- me user     28 1996-10-18 16:31 jazz
 -rw-r--r-- me user     21 1996-09-23 16:44 blues
 -rw-r--r-- me user     20 1996-09-23 16:44 folk
 -rw-r--r-- me user     20 1996-09-23 16:44 rock
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="multiple"></a>
@@ -5143,21 +5208,23 @@ newer version when it is extracted.
 <p>You can append the new, changed copy of the file &lsquo;<tt>blues</tt>&rsquo; to the
 archive in this way:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --append --verbose --file=collection.tar blues</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --append --verbose --file=collection.tar blues</kbd>
 blues
-</pre></td></tr></table>
+</pre></div>
 
 <p>Because you specified the &lsquo;<samp>--verbose</samp>&rsquo; option, <code>tar</code> has
 printed the name of the file being appended as it was acted on.  Now
 list the contents of the archive:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --list --verbose --file=collection.tar</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --list --verbose --file=collection.tar</kbd>
 -rw-r--r-- me user     28 1996-10-18 16:31 jazz
 -rw-r--r-- me user     21 1996-09-23 16:44 blues
 -rw-r--r-- me user     20 1996-09-23 16:44 folk
 -rw-r--r-- me user     20 1996-09-23 16:44 rock
 -rw-r--r-- me user     58 1996-10-24 18:30 blues
-</pre></td></tr></table>
+</pre></div>
 
 <p>The newest version of &lsquo;<tt>blues</tt>&rsquo; is now at the end of the archive
 (note the different creation dates and file sizes).  If you extract
@@ -5169,9 +5236,10 @@ the archive and running &lsquo;<samp>ls</samp>&rsquo; on the directory.
 from the archive, use &lsquo;<samp>--occurrence</samp>&rsquo; option, as shown in
 the following example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --extract -vv --occurrence --file=collection.tar blues</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --extract -vv --occurrence --file=collection.tar blues</kbd>
 -rw-r--r-- me user     21 1996-09-23 16:44 blues
-</pre></td></tr></table>
+</pre></div>
 
 <p>See section <a href="#Writing">Changing How <code>tar</code> Writes Files</a>, for more information on &lsquo;<samp>--extract</samp>&rsquo; and
 See section <a href="#Option-Summary">&ndash;occurrence</a>, for the description of
@@ -5259,11 +5327,12 @@ the &lsquo;<samp>update</samp>&rsquo; operation and the &lsquo;<samp>--verbose</
 option specified, using the names of all the files in the practice
 directory as file name arguments:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --update -v -f collection.tar blues folk rock classical</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --update -v -f collection.tar blues folk rock classical</kbd>
 blues
 classical
 $
-</pre></td></tr></table>
+</pre></div>
 
 <p>Because we have specified verbose mode, <code>tar</code> prints out the names
 of the files it is working on, which in this case are the names of the
@@ -5329,40 +5398,44 @@ variable <code>TAPE</code>, or, if this has not been set, the default archive na
 called &lsquo;<tt>bluesrock.tar</tt>&rsquo; and &lsquo;<tt>folkjazz.tar</tt>&rsquo;, using the relevant
 files from &lsquo;<tt>practice</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -cvf bluesrock.tar blues rock</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -cvf bluesrock.tar blues rock</kbd>
 blues
 rock
 $ <kbd>tar -cvf folkjazz.tar folk jazz</kbd>
 folk
 jazz
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you like, You can run &lsquo;<samp>tar --list</samp>&rsquo; to make sure the archives
 contain what they are supposed to:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -tvf bluesrock.tar</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -tvf bluesrock.tar</kbd>
 -rw-r--r-- melissa user    105 1997-01-21 19:42 blues
 -rw-r--r-- melissa user     33 1997-01-20 15:34 rock
 $ <kbd>tar -tvf jazzfolk.tar</kbd>
 -rw-r--r-- melissa user     20 1996-09-23 16:44 folk
 -rw-r--r-- melissa user     65 1997-01-30 14:15 jazz
-</pre></td></tr></table>
+</pre></div>
 
 <p>We can concatenate these two archives with <code>tar</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>cd ..</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>cd ..</kbd>
 $ <kbd>tar --concatenate --file=bluesrock.tar jazzfolk.tar</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you now list the contents of the &lsquo;<tt>bluesrock.tar</tt>&rsquo;, you will see
 that now it also contains the archive members of &lsquo;<tt>jazzfolk.tar</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --list --file=bluesrock.tar</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --list --file=bluesrock.tar</kbd>
 blues
 rock
 folk
 jazz
-</pre></td></tr></table>
+</pre></div>
 
 <p>When you use &lsquo;<samp>--concatenate</samp>&rsquo;, the source and target archives must
 already exist and must have been created using compatible format
@@ -5443,7 +5516,8 @@ most kinds of magnetic tape.  See section <a href="#Media">Tapes and Other Archi
 &lsquo;<tt>collection.tar</tt>&rsquo; in the &lsquo;<tt>practice</tt>&rsquo; directory, make sure you
 are in that directory, and then,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --list --file=collection.tar</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --list --file=collection.tar</kbd>
 blues
 folk
 jazz
@@ -5454,7 +5528,7 @@ folk
 jazz
 rock
 $
-</pre></td></tr></table>
+</pre></div>
 
 
 
@@ -5505,11 +5579,12 @@ corresponding members in the archive.
 files of the same name in the file system.  (Note that there is no file,
 &lsquo;<tt>funk</tt>&rsquo;; <code>tar</code> will report an error message.)
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --compare --file=bluesrock.tar rock blues funk</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --compare --file=bluesrock.tar rock blues funk</kbd>
 rock
 blues
 tar: funk not found in archive
-</pre></td></tr></table>
+</pre></div>
 
 <p>The spirit behind the &lsquo;<samp>--compare</samp>&rsquo; (&lsquo;<samp>--diff</samp>&rsquo;,
 &lsquo;<samp>-d</samp>&rsquo;) option is to check whether the archive represents the
@@ -5592,8 +5667,9 @@ more flexibility.  For example, the value &lsquo;<samp>a+rw</samp>&rsquo; adds r
 permissions for everybody, while retaining executable bits on directories
 or on any other file already marked as executable:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -f archive.tar --mode='a+rw' .</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c -f archive.tar --mode='a+rw' .</kbd>
+</pre></div>
 
 </dd>
 <dt>&lsquo;<samp>--mtime=<var>date</var></samp>&rsquo;</dt>
@@ -5610,8 +5686,9 @@ of that file will be used.
 <p>The following example will set the modification date to 00:00:00 UTC,
 January 1, 1970:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -f archive.tar --mtime='1970-01-01' .</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c -f archive.tar --mtime='1970-01-01' .</kbd>
+</pre></div>
 
 <p>When used with &lsquo;<samp>--verbose</samp>&rsquo; (see section <a href="#verbose-tutorial">The &lsquo;<samp>--verbose</samp>&rsquo; Option</a>) <acronym>GNU</acronym> <code>tar</code>
 will try to convert the specified date back to its textual
@@ -5622,11 +5699,12 @@ ensure he is using the right date.
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -f archive.tar -v --mtime=yesterday .</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c -f archive.tar -v --mtime=yesterday .</kbd>
 tar: Option --mtime: Treating date `yesterday' as 2006-06-20
 13:06:29.152478
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt>&lsquo;<samp>--owner=<var>user</var></samp>&rsquo;</dt>
@@ -5643,10 +5721,11 @@ their distributions for the owner of files, because the <code>root</code> user i
 anonymous anyway, so that might as well be the owner of anonymous
 archives.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -f archive.tar --owner=0 .</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c -f archive.tar --owner=0 .</kbd>
 # <span class="roman">Or:</span>
 $ <kbd>tar -c -f archive.tar --owner=root .</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt>&lsquo;<samp>--group=<var>group</var></samp>&rsquo;</dt>
@@ -6302,14 +6381,15 @@ automatically detects archives in incremental format.
 <p>There may be cases, when such processing is required for normal archives
 too.  Consider the following example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --no-recursion -cvf archive \
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --no-recursion -cvf archive \
     foo foo/file1 bar bar/file foo/file2</kbd>
 foo/
 foo/file1
 bar/
 bar/file
 foo/file2
-</pre></td></tr></table>
+</pre></div>
 
 <p>During the normal operation, after encountering &lsquo;<tt>bar</tt>&rsquo;
 <acronym>GNU</acronym> <code>tar</code> will assume that all files from the directory &lsquo;<tt>foo</tt>&rsquo;
@@ -6388,13 +6468,15 @@ through a pipe.  This option is meaningless with &lsquo;<samp>--list</samp>&rsqu
 a big file and don&rsquo;t want to store the file on disk before processing
 it.  You can use a command like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">tar -xOzf foo.tgz bigfile | process
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">tar -xOzf foo.tgz bigfile | process
+</pre></div>
 
 <p>or even like this if you want to process the concatenation of the files:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">tar -xOzf foo.tgz bigfile1 bigfile2 | process
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">tar -xOzf foo.tgz bigfile1 bigfile2 | process
+</pre></div>
 
 <p>Hovewer, &lsquo;<samp>--to-command</samp>&rsquo; may be more convenient for use with
 multiple files. See the next section.
@@ -6523,8 +6605,9 @@ decimal point.
 <p>If <var>command</var> exits with a non-0 status, <code>tar</code> will print
 an error message similar to the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">tar: 2345: Child returned status 1
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">tar: 2345: Child returned status 1
+</pre></div>
 
 <p>Here, &lsquo;<samp>2345</samp>&rsquo; is the PID of the finished process.
 </p>
@@ -6847,22 +6930,25 @@ one disk to another, while preserving the dates, modes, owners and
 link-structure of all the files therein.  In this case, the transfer
 medium is a <em>pipe</em>, which is one a Unix redirection mechanism:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>(cd sourcedir; tar -cf - .) | (cd targetdir; tar -xf -)</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>(cd sourcedir; tar -cf - .) | (cd targetdir; tar -xf -)</kbd>
+</pre></div>
 
 <p>You can avoid subshells by using &lsquo;<samp>-C</samp>&rsquo; option:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -C sourcedir -cf - . | tar -C targetdir -xf -</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -C sourcedir -cf - . | tar -C targetdir -xf -</kbd>
+</pre></div>
 
 <p>The command also works using short option forms:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>(cd sourcedir; tar --create --file=- . ) \
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>(cd sourcedir; tar --create --file=- . ) \
        | (cd targetdir; tar --extract --file=-)</kbd>
 # Or:
 $ <kbd>tar --directory sourcedir --create --file=- . ) \
        | tar --directory targetdir --extract --file=-</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>This is one of the easiest methods to transfer a <code>tar</code> archive.
 </p>
@@ -6937,9 +7023,10 @@ Automatic Network Disk Archiver), a backup system developed by James
 da Silva &lsquo;<tt>jds@cs.umd.edu</tt>&rsquo; and available on many Unix systems.
 This is free software, and it is available at these places:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">http://www.cs.umd.edu/projects/amanda/amanda.html
+<div class="smallexample">
+<pre class="smallexample">http://www.cs.umd.edu/projects/amanda/amanda.html
 ftp://ftp.cs.umd.edu/pub/amanda
-</pre></td></tr></table>
+</pre></div>
 
 
 
@@ -7070,11 +7157,12 @@ to the option:
 &lsquo;<samp>--listed-incremental</samp>&rsquo; together with &lsquo;<samp>--create</samp>&rsquo;
 (see section <a href="#create">How to Create Archives</a>).  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --create \
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --create \
            --file=archive.1.tar \
            --listed-incremental=/var/log/usr.snar \
            /usr</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>This will create in &lsquo;<tt>archive.1.tar</tt>&rsquo; an incremental backup of
 the &lsquo;<tt>/usr</tt>&rsquo; file system, storing additional metadata in the file
@@ -7088,15 +7176,17 @@ stored in the archive.  Suppose, for example, that after running the
 above command, you delete file &lsquo;<tt>/usr/doc/old</tt>&rsquo; and create
 directory &lsquo;<tt>/usr/local/db</tt>&rsquo; with the following contents:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>ls /usr/local/db</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>ls /usr/local/db</kbd>
 /usr/local/db/data
 /usr/local/db/index
-</pre></td></tr></table>
+</pre></div>
 
 <p>Some time later you create another incremental backup.  You will
 then see:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --create \
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --create \
            --file=archive.2.tar \
            --listed-incremental=/var/log/usr.snar \
            /usr</kbd>
@@ -7104,7 +7194,7 @@ tar: usr/local/db: Directory is new
 usr/local/db/
 usr/local/db/data
 usr/local/db/index
-</pre></td></tr></table>
+</pre></div>
 
 <p>The created archive &lsquo;<tt>archive.2.tar</tt>&rsquo; will contain only these
 three members.  This archive is called a <em>level 1 backup</em>.  Notice
@@ -7113,12 +7203,13 @@ you plan to create more &lsquo;<samp>level 1</samp>&rsquo; backups, it is necess
 create a working copy of the snapshot file before running
 <code>tar</code>.  The above example will then be modified as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>cp /var/log/usr.snar /var/log/usr.snar-1</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>cp /var/log/usr.snar /var/log/usr.snar-1</kbd>
 $ <kbd>tar --create \
            --file=archive.2.tar \
            --listed-incremental=/var/log/usr.snar-1 \
            /usr</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>Incremental dumps depend crucially on time stamps, so the results are
 unreliable if you modify a file&rsquo;s time stamps during dumping (e.g.,
@@ -7163,29 +7254,32 @@ the last level was created, you will need to restore from all backups
 in turn.  Continuing our example, to restore the state of &lsquo;<tt>/usr</tt>&rsquo;
 file system, one would do<a name="DOCF12" href="#FOOT12">(12)</a>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --extract \
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --extract \
            --listed-incremental=/dev/null \
            --file archive.1.tar</kbd>
 $ <kbd>tar --extract \
            --listed-incremental=/dev/null \
            --file archive.2.tar</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>To list the contents of an incremental archive, use &lsquo;<samp>--list</samp>&rsquo;
 (see section <a href="#list">How to List Archives</a>), as usual.  To obtain more information about the
 archive, use &lsquo;<samp>--listed-incremental</samp>&rsquo; or &lsquo;<samp>--incremental</samp>&rsquo;
 combined with two &lsquo;<samp>--verbose</samp>&rsquo; options<a name="DOCF13" href="#FOOT13">(13)</a>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>tar --list --incremental --verbose --verbose archive.tar</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample"><kbd>tar --list --incremental --verbose --verbose archive.tar</kbd>
+</pre></div>
 
 <p>This command will print, for each directory in the archive, the list
 of files in that directory at the time the archive was created.  This
 information is put out in a format which is both human-readable and
 unambiguous for a program: each file name is printed as
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><var>x</var> <var>file</var>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample"><var>x</var> <var>file</var>
+</pre></div>
 
 <p>where <var>x</var> is a letter describing the status of the file: &lsquo;<samp>Y</samp>&rsquo;
 if the file  is present in the archive, &lsquo;<samp>N</samp>&rsquo; if the file is not
@@ -7521,12 +7615,13 @@ device.  Their names are kept in the following variables:
 <dd><p>The name of <em>begin</em> function.  This function is called before
 accessing the drive.  By default it retensions the tape:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">MT_BEGIN=mt_begin
+<div class="smallexample">
+<pre class="smallexample">MT_BEGIN=mt_begin
 
 mt_begin() {
     mt -f &quot;$1&quot; retension
 }
-</pre></td></tr></table>
+</pre></div>
 </dd></dl>
 
 <dl>
@@ -7534,12 +7629,13 @@ mt_begin() {
 <dd><p>The name of <em>rewind</em> function.  The default definition is as
 follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">MT_REWIND=mt_rewind
+<div class="smallexample">
+<pre class="smallexample">MT_REWIND=mt_rewind
 
 mt_rewind() {
     mt -f &quot;$1&quot; rewind
 }
-</pre></td></tr></table>
+</pre></div>
 
 </dd></dl>
 
@@ -7548,12 +7644,13 @@ mt_rewind() {
 <dd><p>The name of the function switching the tape off line.  By default
 it is defined as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">MT_OFFLINE=mt_offline
+<div class="smallexample">
+<pre class="smallexample">MT_OFFLINE=mt_offline
 
 mt_offline() {
     mt -f &quot;$1&quot; offl
 }
-</pre></td></tr></table>
+</pre></div>
 </dd></dl>
 
 <dl>
@@ -7561,12 +7658,13 @@ mt_offline() {
 <dd><p>The name of the function used to obtain the status of the archive device,
 including error count.  Default definition:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">MT_STATUS=mt_status
+<div class="smallexample">
+<pre class="smallexample">MT_STATUS=mt_status
 
 mt_status() {
     mt -f &quot;$1&quot; status
 }
-</pre></td></tr></table>
+</pre></div>
 </dd></dl>
 
 <hr>
@@ -7664,7 +7762,8 @@ is useful, e.g., for creating unique files.
 
 <p>The following is an example of &lsquo;<tt>backup-specs</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"># site-specific parameters for file system backup.
+<div class="smallexample">
+<pre class="smallexample"># site-specific parameters for file system backup.
 
 ADMINISTRATOR=friedman
 BACKUP_HOUR=1
@@ -7702,7 +7801,7 @@ BACKUP_DIRS=&quot;
 
 BACKUP_FILES=&quot;/com/mailer/aliases /com/mailer/league*[a-z]&quot;
 
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Scripted-Backups"></a>
@@ -7726,8 +7825,9 @@ BACKUP_FILES=&quot;/com/mailer/aliases /com/mailer/league*[a-z]&quot;
 
 <p>The syntax for running a backup script is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">backup --level=<var>level</var> --time=<var>time</var>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">backup --level=<var>level</var> --time=<var>time</var>
+</pre></div>
 
 <p>The &lsquo;<samp>level</samp>&rsquo; option requests the dump level.  Thus, to produce
 a full dump, specify <code>--level=0</code> (this is the default, so
@@ -7850,14 +7950,16 @@ then restore all the file systems and files specified in
 giving <code>restore</code> list of <em>patterns</em> in its command
 line.  For example, running
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">restore 'albert:*'
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">restore 'albert:*'
+</pre></div>
 
 <p>will restore all file systems on the machine &lsquo;<samp>albert</samp>&rsquo;.  A more
 complicated example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">restore 'albert:*' '*:/var'
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">restore 'albert:*' '*:/var'
+</pre></div>
 
 <p>This command will restore all file systems on the machine &lsquo;<samp>albert</samp>&rsquo;
 as well as &lsquo;<tt>/var</tt>&rsquo; file system on all machines.
@@ -7869,8 +7971,9 @@ thorough restore is not necessary.  For example, you may wish to
 restore only files from the recent level one backup.  To do so,
 use &lsquo;<samp>--level</samp>&rsquo; option, as shown in the example below:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">restore --level=1
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">restore --level=1
+</pre></div>
 
 <p>The full list of options accepted by <code>restore</code> follows:
 </p>
@@ -8016,8 +8119,9 @@ any operation.
 
 <p>For example, in this <code>tar</code> command,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -cvf collection.tar blues folk jazz</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -cvf collection.tar blues folk jazz</kbd>
+</pre></div>
 
 <p>&lsquo;<tt>collection.tar</tt>&rsquo; is the name of the archive.  It must directly
 follow the &lsquo;<samp>-f</samp>&rsquo; option, since whatever directly follows &lsquo;<samp>-f</samp>&rsquo;
@@ -8049,13 +8153,15 @@ writes the entire new archive to its standard output.
 <p>The following example is a convenient way of copying directory
 hierarchy from &lsquo;<tt>sourcedir</tt>&rsquo; to &lsquo;<tt>targetdir</tt>&rsquo;.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>(cd sourcedir; tar -cf - .) | (cd targetdir; tar -xpf -)</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>(cd sourcedir; tar -cf - .) | (cd targetdir; tar -xpf -)</kbd>
+</pre></div>
 
 <p>The &lsquo;<samp>-C</samp>&rsquo; option allows to avoid using subshells:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -C sourcedir -cf - . | tar -C targetdir -xpf -</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -C sourcedir -cf - . | tar -C targetdir -xpf -</kbd>
+</pre></div>
 
 <p>In both examples above, the leftmost <code>tar</code> invocation archives
 the contents of &lsquo;<tt>sourcedir</tt>&rsquo; to the standard output, while the
@@ -8069,8 +8175,9 @@ of the extracted files.
 To specify an archive file on a device attached to a remote machine,
 use the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>--file=<var>hostname</var>:/<var>dev</var>/<var>file-name</var></kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample"><kbd>--file=<var>hostname</var>:/<var>dev</var>/<var>file-name</var></kbd>
+</pre></div>
 
 <p><code>tar</code> will complete the remote connection, if possible, and
 prompt you for a username and password.  If you use
@@ -8129,8 +8236,9 @@ an archive.  See section <a href="#Operations">The Five Advanced <code>tar</code
 </p>
 <p>To specify file names, you can include them as the last arguments on
 the command line, as follows:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>tar</kbd> <var>operation</var> [<var>option1</var> <var>option2</var> &hellip;] [<var>file name-1</var> <var>file name-2</var> &hellip;]
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample"><kbd>tar</kbd> <var>operation</var> [<var>option1</var> <var>option2</var> &hellip;] [<var>file name-1</var> <var>file name-2</var> &hellip;]
+</pre></div>
 
 <p>If a file name begins with dash (&lsquo;<samp>-</samp>&rsquo;), precede it with
 &lsquo;<samp>--add-file</samp>&rsquo; option to prevent it from being treated as an
@@ -8182,10 +8290,11 @@ on the operation mode as described below:
 <p>When <code>tar</code> is invoked with &lsquo;<samp>--create</samp>&rsquo; (&lsquo;<samp>-c</samp>&rsquo;),
 <code>tar</code> will stop immediately, reporting the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar cf a.tar</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar cf a.tar</kbd>
 tar: Cowardly refusing to create an empty archive
 Try `tar --help' or `tar --usage' for more information.
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you specify either &lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;) or
 &lsquo;<samp>--extract</samp>&rsquo; (&lsquo;<samp>--get</samp>&rsquo;, &lsquo;<samp>-x</samp>&rsquo;), <code>tar</code>
@@ -8261,9 +8370,10 @@ create the archive &lsquo;<tt>little.tgz</tt>&rsquo;.  (The &lsquo;<samp>-z</sam
 <code>tar</code> compresses the archive with <code>gzip</code>; see section <a href="#gzip">Creating and Reading Compressed Archives</a> for
 more information.)
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>find .  -size -400 -print &gt; small-files</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>find .  -size -400 -print &gt; small-files</kbd>
 $ <kbd>tar -c -v -z -T small-files -f little.tgz</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>In the file list given by &lsquo;<samp>-T</samp>&rsquo; option, any file name beginning
 with &lsquo;<samp>-</samp>&rsquo; character is considered a <code>tar</code> option and is
@@ -8271,14 +8381,15 @@ processed accordingly.<a name="DOCF15" href="#FOOT15">(15)</a> For example,
 the common use of this feature is to change to another directory by
 specifying &lsquo;<samp>-C</samp>&rsquo; option:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>cat list</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>cat list</kbd>
 -C/etc
 passwd
 hosts
 -C/lib
 libc.a
 $ <kbd>tar -c -f foo.tar --files-from list</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this example, <code>tar</code> will first switch to &lsquo;<tt>/etc</tt>&rsquo;
 directory and add files &lsquo;<tt>passwd</tt>&rsquo; and &lsquo;<tt>hosts</tt>&rsquo; to the
@@ -8286,11 +8397,12 @@ archive.  Then it will change to &lsquo;<tt>/lib</tt>&rsquo; directory and will 
 the file &lsquo;<tt>libc.a</tt>&rsquo;.  Thus, the resulting archive &lsquo;<tt>foo.tar</tt>&rsquo; will
 contain:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar tf foo.tar</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar tf foo.tar</kbd>
 passwd
 hosts
 libc.a
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-directory_002c-using-in-_002d_002dfiles_002dfrom-argument"></a>
 <p>Notice that the option parsing algorithm used with &lsquo;<samp>-T</samp>&rsquo; is
@@ -8312,15 +8424,17 @@ any side of the equal sign.  For example: <code>--directory=dir</code>.
 For both short and long option forms, the option argument can be given
 on the next line after the option name, e.g.:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">--directory
+<div class="smallexample">
+<pre class="smallexample">--directory
 dir
-</pre></td></tr></table>
+</pre></div>
 
 <p>and
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">-C
+<div class="smallexample">
+<pre class="smallexample">-C
 dir
-</pre></td></tr></table>
+</pre></div>
 </li></ul>
 
 <a name="index-add_002dfile"></a>
@@ -8386,9 +8500,10 @@ files from that file, &lsquo;<tt>long-files</tt>&rsquo;, to create the archive
 &lsquo;<tt>big.tgz</tt>&rsquo;.  The &lsquo;<samp>--null</samp>&rsquo; option to <code>tar</code> will cause
 <code>tar</code> to recognize the <code>NUL</code> separator between files.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>find .  -size +800 -print0 &gt; long-files</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>find .  -size +800 -print0 &gt; long-files</kbd>
 $ <kbd>tar -c -v --null --files-from=long-files --file=big.tar</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 
 
@@ -8531,14 +8646,16 @@ command somewhat illegal.  This might not correspond to what you want.
 
 <p>For example, write:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -f <var>archive.tar</var> --exclude '*.o' <var>directory</var></kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c -f <var>archive.tar</var> --exclude '*.o' <var>directory</var></kbd>
+</pre></div>
 
 <p>rather than:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"># <em>Wrong!</em>
+<div class="smallexample">
+<pre class="smallexample"># <em>Wrong!</em>
 $ <kbd>tar -c -f <var>archive.tar</var> --exclude *.o <var>directory</var></kbd>
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 You must use use shell syntax, or globbing, rather than <code>regexp</code>
@@ -8669,7 +8786,8 @@ command line refer to <em>files</em>, not archive members.
 literally <a name="DOCF16" href="#FOOT16">(16)</a> and exclusion members are
 treated as globbing patterns.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar tf foo.tar</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar tf foo.tar</kbd>
 a.c
 b.c
 a.txt
@@ -8681,7 +8799,7 @@ $ <kbd>tar -xf foo.tar -v '[remarks]'</kbd>
 $ <kbd>tar -xf foo.tar -v --exclude '*.c'</kbd>
 a.txt
 [remarks]
-</pre></td></tr></table>
+</pre></div>
 
 <p>This behavior can be altered by using the following options:
 </p>
@@ -8700,10 +8818,11 @@ a.txt
 
 <p>Thus, to extract files whose names end in &lsquo;<samp>.c</samp>&rsquo;, you can use:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -xf foo.tar -v --wildcards '*.c'</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -xf foo.tar -v --wildcards '*.c'</kbd>
 a.c
 b.c
-</pre></td></tr></table>
+</pre></div>
 
 <p>Notice quoting of the pattern to prevent the shell from interpreting
 it.
@@ -8713,8 +8832,9 @@ it.
 the command line arguments verbatim and other part as globbing
 patterns.  For example, the following invocation:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -xf foo.tar --wildcards '*.txt' --no-wildcards '[remarks]'</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -xf foo.tar --wildcards '*.txt' --no-wildcards '[remarks]'</kbd>
+</pre></div>
 
 <p>instructs <code>tar</code> to extract from &lsquo;<tt>foo.tar</tt>&rsquo; all files whose
 names end in &lsquo;<samp>.txt</samp>&rsquo; and the file named &lsquo;<tt>[remarks]</tt>&rsquo;.
@@ -8732,8 +8852,9 @@ before deciding whether to exclude it.
 <p>However, this matching procedure can be altered by the options listed
 below.  These options accumulate.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">--ignore-case --exclude='makefile' --no-ignore-case ---exclude='readme'
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">--ignore-case --exclude='makefile' --no-ignore-case ---exclude='readme'
+</pre></div>
 
 <p>ignores case when excluding &lsquo;<samp>makefile</samp>&rsquo;, but not when excluding
 &lsquo;<samp>readme</samp>&rsquo;.
@@ -8850,7 +8971,8 @@ literal, shell, shell-always, c, escape, locale, clocale.
 effect, we will use an imaginary tar archive &lsquo;<tt>arch.tar</tt>&rsquo;
 containing the following members:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"># 1. Contains horizontal tabulation character.
+<div class="smallexample">
+<pre class="smallexample"># 1. Contains horizontal tabulation character.
 a       tab
 # 2. Contains newline character
 a
@@ -8863,19 +8985,20 @@ a&quot;double&quot;quote
 a'single'quote
 # 6. Contains a backslash character:
 a\backslash
-</pre></td></tr></table>
+</pre></div>
 
 <p>Here is how usual <code>ls</code> command would have listed them, if they
 had existed in the current working directory:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>ls</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>ls</kbd>
 a\ttab
 a\nnewline
 a\ space
 a&quot;double&quot;quote
 a'single'quote
 a\\backslash
-</pre></td></tr></table>
+</pre></div>
 
 <p>Quoting styles:
 </p>
@@ -8883,7 +9006,8 @@ a\\backslash
 <dt>&lsquo;<samp>literal</samp>&rsquo;</dt>
 <dd><p>No quoting, display each character as is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=literal</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=literal</kbd>
 ./
 ./a space
 ./a'single'quote
@@ -8892,7 +9016,7 @@ a\\backslash
 ./a	tab
 ./a
 newline
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt>&lsquo;<samp>shell</samp>&rsquo;</dt>
@@ -8903,7 +9027,8 @@ single quote is printed as &lsquo;<samp>\'</samp>&rsquo;.  If a name contains an
 characters, it is enclosed in single quotes.  In particular, if a name
 contains single quotes, it is printed as several single-quoted strings:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=shell</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=shell</kbd>
 ./
 './a space'
 './a'\''single'\''quote'
@@ -8912,14 +9037,15 @@ contains single quotes, it is printed as several single-quoted strings:
 './a	tab'
 './a
 newline'
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt>&lsquo;<samp>shell-always</samp>&rsquo;</dt>
 <dd><p>Same as &lsquo;<samp>shell</samp>&rsquo;, but the names are always enclosed in single
 quotes:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=shell-always</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=shell-always</kbd>
 './'
 './a space'
 './a'\''single'\''quote'
@@ -8928,7 +9054,7 @@ quotes:
 './a	tab'
 './a
 newline'
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt>&lsquo;<samp>c</samp>&rsquo;</dt>
@@ -8938,7 +9064,8 @@ backslash notations, double quotes are represented as &lsquo;<samp>\&quot;</samp
 backslash characters are represented as &lsquo;<samp>\\</samp>&rsquo;.  Single quotes and
 spaces are not quoted:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=c</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=c</kbd>
 &quot;./&quot;
 &quot;./a space&quot;
 &quot;./a'single'quote&quot;
@@ -8946,7 +9073,7 @@ spaces are not quoted:
 &quot;./a\\backslash&quot;
 &quot;./a\ttab&quot;
 &quot;./a\nnewline&quot;
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt>&lsquo;<samp>escape</samp>&rsquo;</dt>
@@ -8955,7 +9082,8 @@ printed as &lsquo;<samp>\ </samp>&rsquo; and a backslash as &lsquo;<samp>\\</sam
 default quoting style, unless it was changed when configured the
 package.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=escape</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=escape</kbd>
 ./
 ./a space
 ./a'single'quote
@@ -8963,7 +9091,7 @@ package.
 ./a\\backslash
 ./a\ttab
 ./a\nnewline
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt>&lsquo;<samp>locale</samp>&rsquo;</dt>
@@ -8976,7 +9104,8 @@ name are escaped with &lsquo;<samp>\</samp>&rsquo;, for example:
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=locale</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=locale</kbd>
 `./'
 `./a space'
 `./a\'single\'quote'
@@ -8984,14 +9113,15 @@ name are escaped with &lsquo;<samp>\</samp>&rsquo;, for example:
 `./a\\backslash'
 `./a\ttab'
 `./a\nnewline'
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt>&lsquo;<samp>clocale</samp>&rsquo;</dt>
 <dd><p>Same as &lsquo;<samp>locale</samp>&rsquo;, but &lsquo;<samp>&quot;</samp>&rsquo; is used for both left and right
 quotation marks, if not provided by the currently selected locale:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=clocale</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=clocale</kbd>
 &quot;./&quot;
 &quot;./a space&quot;
 &quot;./a'single'quote&quot;
@@ -8999,7 +9129,7 @@ quotation marks, if not provided by the currently selected locale:
 &quot;./a\\backslash&quot;
 &quot;./a\ttab&quot;
 &quot;./a\nnewline&quot;
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -9016,7 +9146,8 @@ quoting style would not quote them.
 <p>For example, using &lsquo;<samp>escape</samp>&rsquo; quoting (compare with the usual
 escape listing above): 
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=escape --quote-chars=' &quot;'</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar tf arch.tar --quoting-style=escape --quote-chars=' &quot;'</kbd>
 ./
 ./a\ space
 ./a'single'quote
@@ -9024,7 +9155,7 @@ escape listing above):
 ./a\\backslash
 ./a\ttab
 ./a\nnewline
-</pre></td></tr></table>
+</pre></div>
 
 <p>To disable quoting of such additional characters, use the following
 option:
@@ -9098,8 +9229,9 @@ a tar archive named &lsquo;<tt>usr.tar</tt>&rsquo;.  Among other files, this arc
 contains &lsquo;<tt>usr/include/stdlib.h</tt>&rsquo;, which you wish to extract to
 the current working directory.  To do so, you type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -xf usr.tar --strip=2 usr/include/stdlib.h</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -xf usr.tar --strip=2 usr/include/stdlib.h</kbd>
+</pre></div>
 
 <p>The option &lsquo;<samp>--strip=2</samp>&rsquo; instructs <code>tar</code> to strip the
 two leading components (&lsquo;<tt>usr/</tt>&rsquo; and &lsquo;<tt>include/</tt>&rsquo;) off the file
@@ -9123,11 +9255,12 @@ applied.
 
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -xf usr.tar -v --strip=2 usr/include/stdlib.h</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -xf usr.tar -v --strip=2 usr/include/stdlib.h</kbd>
 usr/include/stdlib.h
 $ <kbd>tar -xf usr.tar -v --strip=2 --show-transformed usr/include/stdlib.h</kbd>
 stdlib.h
-</pre></td></tr></table>
+</pre></div>
 
 <p>Notice that in both cases the file is &lsquo;<tt>stdlib.h</tt>&rsquo; extracted to the
 current working directory, &lsquo;<samp>--show-transformed-names</samp>&rsquo; affects
@@ -9136,13 +9269,15 @@ only the way its name is displayed.
 <p>This option is especially useful for verifying whether the invocation
 will have the desired effect.  Thus, before running
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -x --strip=<var>n</var></kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -x --strip=<var>n</var></kbd>
+</pre></div>
 
 <p>it is often advisable to run
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -t -v --show-transformed --strip=<var>n</var></kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -t -v --show-transformed --strip=<var>n</var></kbd>
+</pre></div>
 
 <p>to make sure the command will produce the intended results.
 </p>
@@ -9160,8 +9295,9 @@ will have the desired effect.  Thus, before running
 <p>The <var>expression</var> is a <code>sed</code>-like replace expression of the
 form:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">s/<var>regexp</var>/<var>replace</var>/[<var>flags</var>]
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">s/<var>regexp</var>/<var>replace</var>/[<var>flags</var>]
+</pre></div>
 
 <p>where <var>regexp</var> is a <em>regular expression</em>, <var>replace</var> is a
 replacement for each file name part that matches <var>regexp</var>.  Both
@@ -9201,9 +9337,10 @@ the the interaction is defined to be: ignore matches before the
 that it be used consistently throughout the expression. For example,
 the following two expressions are equivalent:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">s/one/two/
+<div class="smallexample">
+<pre class="smallexample">s/one/two/
 s,one,two,
-</pre></td></tr></table>
+</pre></div>
 
 <p>Changing delimiters is often useful when the <var>regex</var> contains
 slashes.  For example, it is more convenient to write <code>s,/,-,</code> than
@@ -9214,24 +9351,28 @@ slashes.  For example, it is more convenient to write <code>s,/,-,</code> than
 <ol>
 <li> Extract &lsquo;<tt>usr/</tt>&rsquo; hierarchy into &lsquo;<tt>usr/local/</tt>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --transform='s,usr/,usr/local/,' -x -f arch.tar</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --transform='s,usr/,usr/local/,' -x -f arch.tar</kbd>
+</pre></div>
 
 </li><li> Strip two leading directory components (equivalent to
 &lsquo;<samp>--strip-components=2</samp>&rsquo;):
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --transform='s,/*[^/]*/[^/]*/,,' -x -f arch.tar</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --transform='s,/*[^/]*/[^/]*/,,' -x -f arch.tar</kbd>
+</pre></div>
 
 </li><li> Prepend &lsquo;<tt>/prefix/</tt>&rsquo;  to each file name:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --transform 's,^,/prefix/,' -x -f arch.tar</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --transform 's,^,/prefix/,' -x -f arch.tar</kbd>
+</pre></div>
 
 </li><li> Convert each file name to lower case:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --transform 's/.*/\L&amp;/' -x -f arch.tar</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --transform 's/.*/\L&amp;/' -x -f arch.tar</kbd>
+</pre></div>
 
 </li></ol>
 
@@ -9240,15 +9381,17 @@ in any <acronym>GNU</acronym> <code>tar</code> operation mode.  For example, the
 adds files to the archive while replacing the leading &lsquo;<tt>usr/</tt>&rsquo;
 component with &lsquo;<tt>var/</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -cf arch.tar --transform='s,^usr/,var/,' /</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -cf arch.tar --transform='s,^usr/,var/,' /</kbd>
+</pre></div>
 
 <p>To test &lsquo;<samp>--transform</samp>&rsquo; effect we suggest using
 &lsquo;<samp>--show-transformed-names</samp>&rsquo; option:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -cf arch.tar --transform='s,^usr/,var/,' \
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -cf arch.tar --transform='s,^usr/,var/,' \
        --verbose --show-transformed-names /</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>If both &lsquo;<samp>--strip-components</samp>&rsquo; and &lsquo;<samp>--transform</samp>&rsquo; are used
 together, then &lsquo;<samp>--transform</samp>&rsquo; is applied first, and the required
@@ -9347,8 +9490,9 @@ to quote date arguments to keep the shell from parsing them as separate
 arguments.  For example, the following command will add to the archive
 all the files modified less than two days ago:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -cf foo.tar --newer-mtime '2 days ago'</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -cf foo.tar --newer-mtime '2 days ago'</kbd>
+</pre></div>
 
 <p>When any of these options is used with the option &lsquo;<samp>--verbose</samp>&rsquo;
 (see section <a href="#verbose-tutorial">The &lsquo;<samp>--verbose</samp>&rsquo; Option</a>) <acronym>GNU</acronym> <code>tar</code> will try to convert the specified
@@ -9357,10 +9501,11 @@ one given with the option.  If the two dates differ, <code>tar</code> will
 print a warning saying what date it will use.  This is to help user
 ensure he is using the right date.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -f archive.tar --after-date='10 days ago' .</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c -f archive.tar --after-date='10 days ago' .</kbd>
 tar: Option --after-date: Treating date `10 days ago' as 2006-06-11
 13:19:37.232434
-</pre></td></tr></table>
+</pre></div>
 
 <blockquote>
 <p><strong>Please Note:</strong> &lsquo;<samp>--after-date</samp>&rsquo; and &lsquo;<samp>--newer-mtime</samp>&rsquo;
@@ -9441,9 +9586,10 @@ like it to.  Specifying &lsquo;<samp>--no-recursion</samp>&rsquo; is a way to te
 no new files on its own.  To summarize, if you use <code>find</code> to
 create a list of files to be stored in an archive, use it as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>find <var>dir</var> <var>tests</var> | \
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>find <var>dir</var> <var>tests</var> | \
   tar -cf <var>archive</var> -T - --no-recursion</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>The &lsquo;<samp>--no-recursion</samp>&rsquo; option also applies when extracting: it
 causes <code>tar</code> to extract only the matched directory entries, not
@@ -9456,8 +9602,9 @@ are interpreted (see section <a href="#controlling-pattern_002dmatching">Control
 later options and operands, and can be overridden by later occurrences
 of &lsquo;<samp>--no-recursion</samp>&rsquo; and &lsquo;<samp>--recursion</samp>&rsquo;.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -cf jams.tar --no-recursion grape --recursion grape/concord</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -cf jams.tar --no-recursion grape --recursion grape/concord</kbd>
+</pre></div>
 
 <p>creates an archive with one entry for &lsquo;<tt>grape</tt>&rsquo;, and the recursive
 contents of &lsquo;<tt>grape/concord</tt>&rsquo;, but no entries under &lsquo;<tt>grape</tt>&rsquo;
@@ -9567,8 +9714,9 @@ after that point in the list.
 
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -f jams.tar grape prune -C food cherry</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c -f jams.tar grape prune -C food cherry</kbd>
+</pre></div>
 
 <p>will place the files &lsquo;<tt>grape</tt>&rsquo; and &lsquo;<tt>prune</tt>&rsquo; from the current
 directory into the archive &lsquo;<tt>jams.tar</tt>&rsquo;, followed by the file
@@ -9584,8 +9732,9 @@ same directory; if the archive is extracted with plain &lsquo;<samp>tar
 </p>
 <p>Contrast this with the command,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -f jams.tar grape prune -C food red/cherry</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c -f jams.tar grape prune -C food red/cherry</kbd>
+</pre></div>
 
 <p>which records the third file in the archive under the name
 &lsquo;<tt>red/cherry</tt>&rsquo; so that, if the archive is extracted using
@@ -9598,8 +9747,9 @@ The following command places the files &lsquo;<tt>/etc/passwd</tt>&rsquo;,
 &lsquo;<tt>/etc/hosts</tt>&rsquo;, and &lsquo;<tt>/lib/libc.a</tt>&rsquo; into the archive
 &lsquo;<tt>foo.tar</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -f foo.tar -C /etc passwd hosts -C /lib libc.a</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c -f foo.tar -C /etc passwd hosts -C /lib libc.a</kbd>
+</pre></div>
 
 <p>However, the names of the archive members will be exactly what they were
 on the command line: &lsquo;<tt>passwd</tt>&rsquo;, &lsquo;<tt>hosts</tt>&rsquo;, and &lsquo;<tt>libc.a</tt>&rsquo;.
@@ -9622,19 +9772,21 @@ option, separate its argument by an equal sign.
 </p>
 <p>For instance, the file list for the above example will be:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">-C
+<div class="smallexample">
+<pre class="smallexample">-C
 /etc
 passwd
 hosts
 -C
 /lib
 libc.a
-</pre></td></tr></table>
+</pre></div>
 
 <p>To use it, you would invoke <code>tar</code> as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -f foo.tar --files-from list</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c -f foo.tar --files-from list</kbd>
+</pre></div>
 
 <p>Notice also that you can only use the short option variant in the file
 list, i.e., always use &lsquo;<samp>-C</samp>&rsquo;, not &lsquo;<samp>--directory</samp>&rsquo;.
@@ -9741,17 +9893,19 @@ what it means can cause very serious surprises, later.
 play really dangerously, one may of course redirect <code>tar</code> standard
 error to the sink.  For example, under <code>sh</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -c -f archive.tar /home 2&gt; /dev/null</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -c -f archive.tar /home 2&gt; /dev/null</kbd>
+</pre></div>
 
 <p>Another solution, both nicer and simpler, would be to change to
 the &lsquo;<tt>/</tt>&rsquo; directory first, and then avoid absolute notation.
 For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>(cd / &amp;&amp; tar -c -f archive.tar home)</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>(cd / &amp;&amp; tar -c -f archive.tar home)</kbd>
 # <i>or</i>:
 $ <kbd>tar -c -f archive.tar -C  / home</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 
 
@@ -9912,7 +10066,8 @@ specify a date format that is independent of language and that does not
 use time zone items other than &lsquo;<samp>UTC</samp>&rsquo; and &lsquo;<samp>Z</samp>&rsquo;.  Here are some
 ways to do this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ LC_ALL=C TZ=UTC0 date
+<div class="example">
+<pre class="example">$ LC_ALL=C TZ=UTC0 date
 Mon Mar  1 00:21:42 UTC 2004
 $ TZ=UTC0 date +'%Y-%m-%d %H:%M:%SZ'
 2004-03-01 00:21:42Z
@@ -9924,7 +10079,7 @@ $ date +'%Y-%m-%d %H:%M:%S %z'  # %z is a GNU extension.
 2004-02-29 16:21:42 -0800
 $ date +'@%s.%N'  # %s and %N are GNU extensions.
 @1078100502.692722128
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-case_002c-ignored-in-dates"></a>
 <a name="index-comments_002c-in-dates"></a>
@@ -9965,7 +10120,8 @@ corresponds to a valid leap second.
 specified differently, depending on whether the month is specified
 numerically or literally.  All these strings specify the same calendar date:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">1972-09-24     # ISO 8601.
+<div class="example">
+<pre class="example">1972-09-24     # ISO 8601.
 72-9-24        # Assume 19xx for 69 through 99,
                # 20xx for 00 through 68.
 72-09-24       # Leading zeros are ignored.
@@ -9976,14 +10132,15 @@ numerically or literally.  All these strings specify the same calendar date:
 Sep 24, 1972
 24-sep-72
 24sep72
-</pre></td></tr></table>
+</pre></div>
 
 <p>The year can also be omitted.  In this case, the last specified year is
 used, or the current year if none.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">9/24
+<div class="example">
+<pre class="example">9/24
 sep 24
-</pre></td></tr></table>
+</pre></div>
 
 <p>Here are the rules.
 </p>
@@ -10011,16 +10168,18 @@ It is also permitted to write &lsquo;<samp>Sept</samp>&rsquo; instead of &lsquo;
 <p>When months are written literally, the calendar date may be given as any
 of the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><var>day</var> <var>month</var> <var>year</var>
+<div class="example">
+<pre class="example"><var>day</var> <var>month</var> <var>year</var>
 <var>day</var> <var>month</var>
 <var>month</var> <var>day</var> <var>year</var>
 <var>day</var>-<var>month</var>-<var>year</var>
-</pre></td></tr></table>
+</pre></div>
 
 <p>Or, omitting the year:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><var>month</var> <var>day</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example"><var>month</var> <var>day</var>
+</pre></div>
 
 
 <hr>
@@ -10048,11 +10207,12 @@ of the following:
 <p>A <em>time of day item</em> in date strings specifies the time on a given
 day.  Here are some examples, all of which represent the same time:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">20:02:00.000000
+<div class="example">
+<pre class="example">20:02:00.000000
 20:02
 8:02pm
 20:02-0500      # In EST (U.S. Eastern Standard Time).
-</pre></td></tr></table>
+</pre></div>
 
 <p>More generally, the time of day may be given as
 &lsquo;<samp><var>hour</var>:<var>minute</var>:<var>second</var></samp>&rsquo;, where <var>hour</var> is
@@ -10215,11 +10375,12 @@ the day that <var>day</var> by itself would represent.
 or backward.  The effects of relative items accumulate.  Here are some
 examples:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">1 year
+<div class="example">
+<pre class="example">1 year
 1 year ago
 3 years
 2 days
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-year-in-date-strings"></a>
 <a name="index-month-in-date-strings"></a>
@@ -10272,13 +10433,14 @@ because 2003-06-31 is an invalid date.  To determine the previous
 month more reliably, you can ask for the month before the 15th of the
 current month.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ date -R
+<div class="example">
+<pre class="example">$ date -R
 Thu, 31 Jul 2003 13:02:39 -0700
 $ date --date='-1 month' +'Last month was %B?'
 Last month was July?
 $ date --date=&quot;$(date +%Y-%m-15) -1 month&quot; +'Last month was %B!'
 Last month was June!
-</pre></td></tr></table>
+</pre></div>
 
 <p>Also, take care when manipulating dates around clock changes such as
 daylight saving leaps.  In a few cases these have added or subtracted
@@ -10412,10 +10574,11 @@ answer the question &ldquo;What time is it in New York when a Paris clock
 shows 6:30am on October 31, 2004?&rdquo; by using a date beginning with
 &lsquo;<samp>TZ=&quot;Europe/Paris&quot;</samp>&rsquo; as shown in the following shell transcript:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ export TZ=&quot;America/New_York&quot;
+<div class="example">
+<pre class="example">$ export TZ=&quot;America/New_York&quot;
 $ date --date='TZ=&quot;Europe/Paris&quot; 2004-10-31 06:30'
 Sun Oct 31 01:30:00 EDT 2004
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this example, the &lsquo;<samp>--date</samp>&rsquo; operand begins with its own
 <code>TZ</code> setting, so the rest of that operand is processed according
@@ -10682,35 +10845,39 @@ create a <code>gzip</code> compressed archive, &lsquo;<samp>-j</samp>&rsquo;
 &lsquo;<samp>-Z</samp>&rsquo; (&lsquo;<samp>--compress</samp>&rsquo;) to use <code>compress</code> program.
 For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar cfz archive.tar.gz .</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar cfz archive.tar.gz .</kbd>
+</pre></div>
 
 <p>Reading compressed archive is even simpler: you don&rsquo;t need to specify
 any additional options as <acronym>GNU</acronym> <code>tar</code> recognizes its format
 automatically.  Thus, the following commands will list and extract the
 archive created in previous example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"># List the compressed archive
+<div class="smallexample">
+<pre class="smallexample"># List the compressed archive
 $ <kbd>tar tf archive.tar.gz</kbd>
 # Extract the compressed archive
 $ <kbd>tar xf archive.tar.gz</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>The only case when you have to specify a decompression option while
 reading the archive is when reading from a pipe or from a tape drive
 that does not support random access.  However, in this case <acronym>GNU</acronym> <code>tar</code>
 will indicate which option you should use.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>cat archive.tar.gz | tar tf -</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>cat archive.tar.gz | tar tf -</kbd>
 tar: Archive is compressed.  Use -z option
 tar: Error is not recoverable: exiting now
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you see such diagnostics, just add the suggested option to the
 invocation of <acronym>GNU</acronym> <code>tar</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>cat archive.tar.gz | tar tfz -</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>cat archive.tar.gz | tar tfz -</kbd>
+</pre></div>
 
 <p>Notice also, that there are several restrictions on operations on
 compressed archives.  First of all, compressed archives cannot be
@@ -10738,14 +10905,16 @@ of the <code>tar</code> program to enforce the specified (or default) record
 size.  The default compression parameters are used; if you need to
 override them, set <code>GZIP</code> environment variable, e.g.:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>GZIP=--best tar cfz archive.tar.gz subdir</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>GZIP=--best tar cfz archive.tar.gz subdir</kbd>
+</pre></div>
 
 <p>Another way would be to avoid the &lsquo;<samp>--gzip</samp>&rsquo; (&lsquo;<samp>--gunzip</samp>&rsquo;, &lsquo;<samp>--ungzip</samp>&rsquo;, &lsquo;<samp>-z</samp>&rsquo;) option and run
 <code>gzip</code> explicitly:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar cf - subdir | gzip --best -c - &gt; archive.tar.gz</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar cf - subdir | gzip --best -c - &gt; archive.tar.gz</kbd>
+</pre></div>
 
 <a name="index-corrupted-archives-1"></a>
 <p>About corrupted compressed archives: <code>gzip</code>&rsquo;ed files have no
@@ -10805,25 +10974,28 @@ implement your own filters, not necessarily dealing with
 compression/decomression.  For example, suppose you wish to implement
 PGP encryption on top of compression, using <code>gpg</code> (see <a href="gpg.html#Top">gpg: (gpg)Top</a> section &lsquo;gpg &mdash;- encryption and signing tool&rsquo; in <cite>GNU Privacy Guard Manual</cite>).  The following script does that:  
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">#! /bin/sh
+<div class="smallexample">
+<pre class="smallexample">#! /bin/sh
 case $1 in
 -d) gpg --decrypt - | gzip -d -c;;
 '') gzip -c | gpg -s ;;
 *)  echo &quot;Unknown option $1&quot;&gt;&amp;2; exit 1;;
 esac
-</pre></td></tr></table>
+</pre></div>
 
 <p>Suppose you name it &lsquo;<tt>gpgz</tt>&rsquo; and save it somewhere in your
 <code>PATH</code>.  Then the following command will create a commpressed
 archive signed with your private key:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -cf foo.tar.gpgz --use-compress=gpgz .</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -cf foo.tar.gpgz --use-compress=gpgz .</kbd>
+</pre></div>
 
 <p>Likewise, the following command will list its contents:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -tf foo.tar.gpgz --use-compress=gpgz .</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -tf foo.tar.gpgz --use-compress=gpgz .</kbd>
+</pre></div>
 
 
 <hr>
@@ -11414,8 +11586,9 @@ header records.  In both cases, matching is performed using the pattern
 matching notation described in <acronym>POSIX 1003.2</acronym>, 3.13
 (see section <a href="#wildcards">Wildcards Patterns and Matching</a>). For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">--pax-option delete=security.*
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">--pax-option delete=security.*
+</pre></div>
 
 <p>would suppress security-related information.
 </p>
@@ -11442,8 +11615,9 @@ results.
 <p>If no option &lsquo;<samp>exthdr.name=string</samp>&rsquo; is specified, <code>tar</code>
 will use the following default value:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">%d/PaxHeaders.%p/%f
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">%d/PaxHeaders.%p/%f
+</pre></div>
 
 </dd>
 <dt><code>globexthdr.name=<var>string</var></code></dt>
@@ -11466,8 +11640,9 @@ starting at 1.</td></tr>
 <p>If no option &lsquo;<samp>globexthdr.name=string</samp>&rsquo; is specified, <code>tar</code>
 will use the following default value:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$TMPDIR/GlobalHead.%p.%n
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$TMPDIR/GlobalHead.%p.%n
+</pre></div>
 
 <p>where &lsquo;<samp>$TMPDIR</samp>&rsquo; represents the value of the <var>TMPDIR</var>
 environment variable.  If <var>TMPDIR</var> is not set, <code>tar</code>
@@ -11495,9 +11670,10 @@ end of each extended header; thus, they will override any global or
 file-specific extended header record keywords of the same names.
 For example, in the command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">tar --format=posix --create \
+<div class="smallexample">
+<pre class="smallexample">tar --format=posix --create \
     --file archive --pax-option gname:=user .
-</pre></td></tr></table>
+</pre></div>
 
 <p>the group name will be forced to a new value for all files
 stored in the archive.
@@ -11683,8 +11859,9 @@ valid archive.  For example, if you have three volumes named from
 &lsquo;<tt>vol-1.tar</tt>&rsquo; to &lsquo;<tt>vol-2.tar</tt>&rsquo;, you can do the following to
 extract them using a third-party <code>tar</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tarcat vol-1.tar vol-2.tar vol-3.tar | tar xf -</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tarcat vol-1.tar vol-2.tar vol-3.tar | tar xf -</kbd>
+</pre></div>
 
 <a name="index-Mutli_002dvolume-archives-in-PAX-format_002c-extracting-using-non_002dGNU-tars"></a>
 <p>You could use this approach for many (although not all) PAX
@@ -11695,8 +11872,9 @@ different file by <code>tar</code> implementations that are not aware of
 GNU extensions.  More specifically, the very first part retains its
 original name, and all subsequent parts are named using the pattern:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">%d/GNUFileParts.%p/%f.%n
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">%d/GNUFileParts.%p/%f.%n
+</pre></div>
 
 <p>where symbols preceeded by &lsquo;<samp>%</samp>&rsquo; are <em>macro characters</em> that
 have the following meaning:
@@ -11716,38 +11894,42 @@ created the archive.</td></tr>
 creation between three volumes, and the creator <code>tar</code> process
 had process ID &lsquo;<samp>27962</samp>&rsquo;, then the member names will be:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">var/longfile
+<div class="smallexample">
+<pre class="smallexample">var/longfile
 var/GNUFileParts.27962/longfile.1
 var/GNUFileParts.27962/longfile.2
-</pre></td></tr></table>
+</pre></div>
 
 <p>When you extract your archive using a third-party <code>tar</code>, these
 files will be created on your disk, and the only thing you will need
 to do to restore your file in its original form is concatenate them in
 the proper order, for example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>cd var</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>cd var</kbd>
 $ <kbd>cat GNUFileParts.27962/longfile.1 \
   GNUFileParts.27962/longfile.2 &gt;&gt; longfile</kbd>
 $ rm -f GNUFileParts.27962
-</pre></td></tr></table>
+</pre></div>
 
 <p>Notice, that if the <code>tar</code> implementation you use supports PAX
 format archives, it will probably emit warnings about unknown keywords
 during extraction.  They will lool like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">Tar file too small
+<div class="smallexample">
+<pre class="smallexample">Tar file too small
 Unknown extended header keyword 'GNU.volume.filename' ignored.
 Unknown extended header keyword 'GNU.volume.size' ignored.
 Unknown extended header keyword 'GNU.volume.offset' ignored.
-</pre></td></tr></table>
+</pre></div>
 
 <p>You can safely ignore these warnings.
 </p>
 <p>If your <code>tar</code> implementation is not PAX-aware, you will get
 more warnigns and more files generated on your disk, e.g.:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar xf vol-1.tar</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar xf vol-1.tar</kbd>
 var/PaxHeaders.27962/longfile: Unknown file type 'x', extracted as
 normal file 
 Unexpected EOF in archive
@@ -11755,7 +11937,7 @@ $ <kbd>tar xf vol-2.tar</kbd>
 tmp/GlobalHead.27962.1: Unknown file type 'g', extracted as normal file
 GNUFileParts.27962/PaxHeaders.27962/sparsefile.1: Unknown file type
 'x', extracted as normal file
-</pre></td></tr></table>
+</pre></div>
 
 <p>Ignore these warnings.  The &lsquo;<tt>PaxHeaders.*</tt>&rsquo; directories created
 will contain files with <em>extended header keywords</em> describing the
@@ -11806,8 +11988,9 @@ named &lsquo;<tt><var>dir</var>/GNUSparseFile.<var>n</var>/<var>name</var></tt>&
 </p>
 <p>To expand a version 1.0 file, run <code>xsparse</code> as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>xsparse &lsquo;<tt>cond-file</tt>&rsquo;</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>xsparse &lsquo;<tt>cond-file</tt>&rsquo;</kbd>
+</pre></div>
 
 <p>where &lsquo;<tt>cond-file</tt>&rsquo; is the name of the condensed file.  The utility
 will deduce the name for the resulting expanded file using the
@@ -11831,37 +12014,41 @@ name will be &lsquo;<tt><var>dir</var>/<var>name</var></tt>&rsquo;.
 you can explicitely specify output file name as a second argument to
 the command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>xsparse &lsquo;<tt>cond-file</tt>&rsquo;</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>xsparse &lsquo;<tt>cond-file</tt>&rsquo;</kbd>
+</pre></div>
 
 <p>It is often a good idea to run <code>xsparse</code> in <em>dry run</em> mode
 first.  In this mode, the command does not actually expand the file,
 but verbosely lists all actions it would be taking to do so.  The dry
 run mode is enabled by &lsquo;<samp>-n</samp>&rsquo; command line argument:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>xsparse -n /home/gray/GNUSparseFile.6058/sparsefile</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>xsparse -n /home/gray/GNUSparseFile.6058/sparsefile</kbd>
 Reading v.1.0 sparse map
 Expanding file `/home/gray/GNUSparseFile.6058/sparsefile' to
 `/home/gray/sparsefile'
 Finished dry run
-</pre></td></tr></table>
+</pre></div>
 
 <p>To actually expand the file, you would run:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>xsparse /home/gray/GNUSparseFile.6058/sparsefile</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>xsparse /home/gray/GNUSparseFile.6058/sparsefile</kbd>
+</pre></div>
 
 <p>The program behaves the same way all UNIX utilities do: it will keep
 quiet unless it has simething important to tell you (e.g. an error
 condition or something).  If you wish it to produce verbose output,
 similar to that from the dry run mode, give it &lsquo;<samp>-v</samp>&rsquo; option:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>xsparse -v /home/gray/GNUSparseFile.6058/sparsefile</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>xsparse -v /home/gray/GNUSparseFile.6058/sparsefile</kbd>
 Reading v.1.0 sparse map
 Expanding file `/home/gray/GNUSparseFile.6058/sparsefile' to
 `/home/gray/sparsefile'
 Done
-</pre></td></tr></table>
+</pre></div>
 
 <p>Additionally, if your <code>tar</code> implementation has extracted the
 <em>extended headers</em> for this file, you can instruct <code>xstar</code>
@@ -11869,7 +12056,8 @@ to use them in order to verify the integrity of the expanded file.
 The option &lsquo;<samp>-x</samp>&rsquo; sets the name of the extended header file to
 use.  Continuing our example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>xsparse -v -x /home/gray/PaxHeaders.6058/sparsefile \
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>xsparse -v -x /home/gray/PaxHeaders.6058/sparsefile \
   /home/gray/GNUSparseFile.6058/sparsefile</kbd>
 Reading extended header file
 Found variable GNU.sparse.major = 1
@@ -11880,7 +12068,7 @@ Reading v.1.0 sparse map
 Expanding file `/home/gray/GNUSparseFile.6058/sparsefile' to
 `/home/gray/sparsefile'
 Done
-</pre></td></tr></table>
+</pre></div>
 
 <p><a name="extracting-sparse-v_002e0_002ex"></a>
 <a name="index-sparse-files-v_002e0_002e1_002c-extracting-with-non_002dGNU-tars"></a>
@@ -11918,7 +12106,8 @@ find the position of the sparse member in question and the member
 immediately following it.  For example, running <code>star</code> on our
 archive we obtain:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>star -t -v -block-number -f arc.tar</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>star -t -v -block-number -f arc.tar</kbd>
 &hellip;
 star: Unknown extended header keyword 'GNU.sparse.size' ignored.
 star: Unknown extended header keyword 'GNU.sparse.numblocks' ignored.
@@ -11927,7 +12116,7 @@ star: Unknown extended header keyword 'GNU.sparse.map' ignored.
 block        56:  425984 -rw-r--r--  gray/users Jun 25 14:46 2006 GNUSparseFile.28124/sparsefile
 block       897:   65391 -rw-r--r--  gray/users Jun 24 20:06 2006 README
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>(as usual, ignore the warnings about unknown keywords.)
 </p>
@@ -11936,8 +12125,9 @@ Let <var>size</var> be the size of the sparse member, <var>Bs</var> be its block
 and <var>Bn</var> be the block number of the next member.
 Compute: 
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><var>N</var> = <var>Bs</var> - <var>Bn</var> - <var>size</var>/512 - 2
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample"><var>N</var> = <var>Bs</var> - <var>Bn</var> - <var>size</var>/512 - 2
+</pre></div>
 
 <p>This number gives the size of the extended header part in tar <em>blocks</em>.
 In our example, this formula gives: <code>897 - 56 - 425984 / 512 - 2
@@ -11946,8 +12136,9 @@ In our example, this formula gives: <code>897 - 56 - 425984 / 512 - 2
 </li><li>
 Use <code>dd</code> to extract the headers:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>dd if=<var>archive</var> of=<var>hname</var> bs=512 skip=<var>Bs</var> count=<var>N</var></kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample"><kbd>dd if=<var>archive</var> of=<var>hname</var> bs=512 skip=<var>Bs</var> count=<var>N</var></kbd>
+</pre></div>
 
 <p>where <var>archive</var> is the archive name, <var>hname</var> is a name of the
 file to store the extended header in, <var>Bs</var> and <var>N</var> are
@@ -11955,13 +12146,15 @@ computed in previous steps.
 </p>
 <p>In our example, this command will be
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>dd if=arc.tar of=xhdr bs=512 skip=56 count=7</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>dd if=arc.tar of=xhdr bs=512 skip=56 count=7</kbd>
+</pre></div>
 </li></ol>
 
 <p>Finally, you can expand the condensed file, using the obtained header:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>xsparse -v -x xhdr GNUSparseFile.6058/sparsefile</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>xsparse -v -x xhdr GNUSparseFile.6058/sparsefile</kbd>
 Reading extended header file
 Found variable GNU.sparse.size = 217481216
 Found variable GNU.sparse.numblocks = 208
@@ -11969,7 +12162,7 @@ Found variable GNU.sparse.name = sparsefile
 Found variable GNU.sparse.map = 0,2048,1050624,2048,&hellip;
 Expanding file `GNUSparseFile.28124/sparsefile' to `sparsefile'
 Done
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="cpio"></a>
@@ -12432,6 +12625,7 @@ with the &lsquo;<samp>--incremental</samp>&rsquo; (&lsquo;<samp>-G</samp>&rsquo;
 <h2 class="section">9.3 Some Common Problems and their Solutions</h2>
 
 
+<div class="format">
 <pre class="format">errors from system:
 permission denied
 no such file or directory
@@ -12444,7 +12638,7 @@ header format error
 errors from media/system:
 i/o error
 device busy
-</pre>
+</pre></div>
 
 
 <hr>
@@ -12698,8 +12892,9 @@ or by the amount of available virtual memory.
 imposed by the device drivers, may yield unexpected diagnostics.  For
 example, this has been reported:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">Cannot write to /dev/dlt: Invalid argument
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">Cannot write to /dev/dlt: Invalid argument
+</pre></div>
 
 <p>In such cases, it sometimes happen that the <code>tar</code> bundled by
 the system is aware of block size idiosyncrasies, while <acronym>GNU</acronym> <code>tar</code>
@@ -12951,8 +13146,9 @@ automatically when this device is opened or closed.  Since <code>tar</code>
 opens the archive file before using it and closes it afterwards, this
 means that a simple:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar cf /dev/tape <var>directory</var></kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar cf /dev/tape <var>directory</var></kbd>
+</pre></div>
 
 <p>will reposition the tape to its beginning both prior and after saving
 <var>directory</var> contents to it, thus erasing prior tape contents and
@@ -12975,9 +13171,10 @@ recovered.
 <p>To save <var>directory-1</var> as a first archive at the beginning of a
 tape, and leave that tape ready for a second archive, you should use:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>mt -f /dev/nrtape rewind</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>mt -f /dev/nrtape rewind</kbd>
 $ <kbd>tar cf /dev/nrtape <var>directory-1</var></kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-tape-marks"></a>
 <p><em>Tape marks</em> are special magnetic patterns written on the tape
@@ -12995,8 +13192,9 @@ erased by the new information, leaving only one tape mark between files.
 <p>So, you may now save <var>directory-2</var> as a second archive after the
 first on the same tape by issuing the command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar cf /dev/nrtape <var>directory-2</var></kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar cf /dev/nrtape <var>directory-2</var></kbd>
+</pre></div>
 
 <p>and so on for all the archives you want to put on the same tape.
 </p>
@@ -13008,10 +13206,11 @@ that you are ready to write the 17th.  You have to take care of skipping
 the first 16 tape marks before saving <var>directory-17</var>, say, by using
 these commands:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>mt -f /dev/nrtape rewind</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>mt -f /dev/nrtape rewind</kbd>
 $ <kbd>mt -f /dev/nrtape fsf 16</kbd>
 $ <kbd>tar cf /dev/nrtape <var>directory-17</var></kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>In all the previous examples, we put aside blocking considerations, but
 you should do the proper things for that as well.  See section <a href="#Blocking">Blocking</a>.
@@ -13054,8 +13253,9 @@ two at the end of all the file entries.
 <p>If you think of data as a series of records &quot;rrrr&quot;&rsquo;s, and tape marks as
 &quot;*&quot;&rsquo;s, a tape might look like the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">rrrr*rrrrrr*rrrrr*rr*rrrrr**-------------------------
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">rrrr*rrrrrr*rrrrr*rr*rrrrr**-------------------------
+</pre></div>
 
 <p>Tape devices read and write tapes using a read/write <em>tape
 head</em>&mdash;a physical part of the device which can only access one
@@ -13076,8 +13276,9 @@ over the last tape mark, and write the new archive file.  If you were
 to add two archives to the example above, the tape might look like the
 following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">rrrr*rrrrrr*rrrrr*rr*rrrrr*rrr*rrrr**----------------
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">rrrr*rrrrrr*rrrrr*rr*rrrrr*rrr*rrrr**----------------
+</pre></div>
 
 <hr>
 <a name="mt"></a>
@@ -13113,8 +13314,9 @@ it, or to the end of all the archives before writing a new one.
 
 <p>The syntax of the <code>mt</code> command is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>mt [-f <var>tapename</var>] <var>operation</var> [<var>number</var>]</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample"><kbd>mt [-f <var>tapename</var>] <var>operation</var> [<var>number</var>]</kbd>
+</pre></div>
 
 <p>where <var>tapename</var> is the name of the tape device, <var>number</var> is
 the number of times an operation is performed (with a default of one),
@@ -13269,8 +13471,9 @@ archive, specify &lsquo;<samp>--multi-volume</samp>&rsquo; in conjunction with t
 operation.
 For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --create --multi-volume --file=/dev/tape <var>files</var></kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --create --multi-volume --file=/dev/tape <var>files</var></kbd>
+</pre></div>
 </dd>
 </dl>
 
@@ -13290,8 +13493,9 @@ tape:
 be the usable size of the tape in units of 1024 bytes.  This option
 selects &lsquo;<samp>--multi-volume</samp>&rsquo; automatically.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --create --tape-length=41943040 --file=/dev/tape <var>files</var></kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --create --tape-length=41943040 --file=/dev/tape <var>files</var></kbd>
+</pre></div>
 </dd>
 </dl>
 
@@ -13300,8 +13504,9 @@ When <acronym>GNU</acronym> <code>tar</code> comes to the end of a storage media
 change the volume.  The built-in prompt for POSIX locale
 is<a name="DOCF20" href="#FOOT20">(20)</a>: 
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">Prepare volume #<var>n</var> for `<var>archive</var>' and hit return:
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">Prepare volume #<var>n</var> for `<var>archive</var>' and hit return:
+</pre></div>
 
 <p>where <var>n</var> is the ordinal number of the volume to be created and
 <var>archive</var> is archive file or device name.
@@ -13420,9 +13625,10 @@ a system named &lsquo;<tt>/dev/tape0</tt>&rsquo; and &lsquo;<tt>/dev/tape1</tt>&
 <acronym>GNU</acronym> <code>tar</code> to switch to the second drive when it needs to write the
 second tape, and then back to the first tape, etc., just do either of:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --create --multi-volume --file=/dev/tape0 --file=/dev/tape1 <var>files</var></kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --create --multi-volume --file=/dev/tape0 --file=/dev/tape1 <var>files</var></kbd>
 $ <kbd>tar cMff /dev/tape0 /dev/tape1 <var>files</var></kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>The second method is to use the &lsquo;<samp>n</samp>&rsquo; response to the tape-change
 prompt.  
@@ -13434,7 +13640,8 @@ following volume script will create a series of archive files, named
 archive being created (as given by &lsquo;<samp>--file</samp>&rsquo; option) and
 <var>vol</var> is the ordinal number of the archive being created:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">#! /bin/sh
+<div class="smallexample">
+<pre class="smallexample">#! /bin/sh
 echo Preparing volume $TAR_VOLUME of $TAR_ARCHIVE.
 
 name=`expr $TAR_ARCHIVE : '\(.*\)-.*'`
@@ -13446,16 +13653,17 @@ case $TAR_SUBCOMMAND in
 esac
 
 echo ${name:-$TAR_ARCHIVE}-$TAR_VOLUME &gt;&amp;3
-</pre></td></tr></table>
+</pre></div>
 
 <p>The same script cant be used while listing, comparing or extracting
 from the created archive.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"># <span class="roman">Create a multi-volume archive:</span>
+<div class="smallexample">
+<pre class="smallexample"># <span class="roman">Create a multi-volume archive:</span>
 $ <kbd>tar -c -L1024 -f archive.tar -F new-volume .</kbd>
 # <span class="roman">Extract from the created archive:</span>
 $ <kbd>tar -x -f archive.tar -F new-volume .</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>Notice, that the first command had to use &lsquo;<samp>-L</samp>&rsquo; option, since
 otherwise <acronym>GNU</acronym> <code>tar</code> will end up writing everything to file
@@ -13539,8 +13747,9 @@ of tapes into a sequence of tape files, see <a href="#mt">The <code>mt</code> Ut
 </p>
 <p>People seem to often do:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>--label=&quot;<var>some-prefix</var> `date +<var>some-format</var>`&quot;</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample"><kbd>--label=&quot;<var>some-prefix</var> `date +<var>some-format</var>`&quot;</kbd>
+</pre></div>
 
 <p>or such, for pushing a common date in all volumes or an archive set.
 </p>
@@ -13574,8 +13783,9 @@ script <code>tarcat</code> designed for this purpose.
 <p>  The script takes a list of files comprising a multi-volume archive
 and creates the resulting archive at the standard output.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><kbd>tarcat vol.1 vol.2 vol.3 | tar tf -</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample"><kbd>tarcat vol.1 vol.2 vol.3 | tar tf -</kbd>
+</pre></div>
 
 <p>  The script implements a simple heuristics to determine the format of
 the first volume file and to decide how to process the rest of the
@@ -13645,10 +13855,11 @@ creating multiple volume archives.
 the file contents.  If verbose display is requested, it will also be
 explicitely marked as in the example below:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --verbose --list --file=iamanarchive</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --verbose --list --file=iamanarchive</kbd>
 V--------- 0 0        0 1992-03-07 12:01 iamalabel--Volume Header--
 -rw-r--r-- ringo user 40 1990-05-21 13:30 iamafilename
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-test_002dlabel"></a>
 <p><a name="g_t_002d_002dtest_002dlabel-option"></a>
@@ -13659,20 +13870,22 @@ by specifying &lsquo;<samp>--test-label</samp>&rsquo; option.  This option reads
 first block of an archive, so it can be used with slow storage
 devices.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --test-label --file=iamanarchive</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --test-label --file=iamanarchive</kbd>
 iamalabel
-</pre></td></tr></table>
+</pre></div>
 
 <p>  If &lsquo;<samp>--test-label</samp>&rsquo; is used with a single command line
 argument, <code>tar</code> compares the volume label with the
 argument.  It exits with code 0 if the two strings match, and with code
 2 otherwise.  In this case no output is displayed.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --test-label --file=iamanarchive 'iamalable'</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --test-label --file=iamanarchive 'iamalable'</kbd>
 &rArr; 0
 $ <kbd>tar --test-label --file=iamanarchive 'iamalable' alabel</kbd>
 &rArr; 1
-</pre></td></tr></table>
+</pre></div>
 
 <p>  If you request any operation, other than &lsquo;<samp>--create</samp>&rsquo;, along
 with using &lsquo;<samp>--label</samp>&rsquo; option, <code>tar</code> will first check if
@@ -13682,9 +13895,10 @@ overwriting existing archives.  For example, if you wish to add files
 to &lsquo;<tt>archive</tt>&rsquo;, presumably labelled with string &lsquo;<samp>My volume</samp>&rsquo;,
 you will get:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar -rf archive --label 'My volume' .</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar -rf archive --label 'My volume' .</kbd>
 tar: Archive not labeled to match `My volume'
-</pre></td></tr></table>
+</pre></div>
 
 <p>in case its label does not match.  This will work even if
 &lsquo;<tt>archive</tt>&rsquo; is not labelled at all.
@@ -13709,10 +13923,11 @@ all tapes of a series.  For having this information different in each
 series created through a single script used on a regular basis, just
 manage to get some date string as part of the label.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar cfMV /dev/tape &quot;Daily backup for `date +%Y-%m-%d`&quot;</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar cfMV /dev/tape &quot;Daily backup for `date +%Y-%m-%d`&quot;</kbd>
 $ <kbd>tar --create --file=/dev/tape --multi-volume \
      --volume=&quot;Daily backup for `date +%Y-%m-%d`&quot;</kbd>
-</pre></td></tr></table>
+</pre></div>
 
 <p>  Also note that each label has its own date and time, which corresponds
 to when <acronym>GNU</acronym> <code>tar</code> initially attempted to write it,
@@ -13879,8 +14094,9 @@ version of this document is available at
 <p>Previous versions of GNU tar assumed shell-style globbing when
 extracting from or listing an archive.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar xf foo.tar '*.c'</kbd>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar xf foo.tar '*.c'</kbd>
+</pre></div>
 
 <p>would extract all files whose names end in &lsquo;<samp>.c</samp>&rsquo;.  This behavior
 was not documented and was incompatible with traditional tar
@@ -13894,13 +14110,14 @@ used to the previous incorrect one, <code>tar</code> will print a warning
 if it finds out that a requested member was not found in the archive
 and its name looks like a globbing pattern.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar xf foo.tar  '*.c'</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar xf foo.tar  '*.c'</kbd>
 tar: Pattern matching characters used in file names. Please,
 tar: use --wildcards to enable pattern matching, or --no-wildcards to
 tar: suppress this warning.
 tar: *.c: Not found in archive
 tar: Error exit delayed from previous errors
-</pre></td></tr></table>
+</pre></div>
 
 <p>To treat member names as globbing patterns, use &ndash;wildcards option.
 If you want to tar to mimic the behavior of versions prior to 1.15.91,
@@ -14009,8 +14226,9 @@ variable, there are two kinds of assignments:
 <dd>
 <p>The assignment to an offset variable has the following syntax:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><var>variable</var>=<var>value</var>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample"><var>variable</var>=<var>value</var>
+</pre></div>
 
 <p>where <var>variable</var> is the variable name, and <var>value</var> is a
 numeric value to be assigned to the variable.
@@ -14022,11 +14240,12 @@ numeric value to be assigned to the variable.
 assign <code>false</code> value, prefix the variable name with &lsquo;<samp>no-</samp>&rsquo;. For
 example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"># Assign <code>true</code> value:
+<div class="smallexample">
+<pre class="smallexample"># Assign <code>true</code> value:
 dup-args
 # Assign <code>false</code> value:
 no-dup-args
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -14037,14 +14256,16 @@ no-dup-args
 <dd><p>If true, arguments for an option are shown with both short and long
 options, even when a given option has both forms, for example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  -f ARCHIVE, --file=ARCHIVE use archive file or device ARCHIVE
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">  -f ARCHIVE, --file=ARCHIVE use archive file or device ARCHIVE
+</pre></div>
 
 <p>If false, then if an option has both short and long forms, the
 argument is only shown with the long one, for example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  -f, --file=ARCHIVE         use archive file or device ARCHIVE
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">  -f, --file=ARCHIVE         use archive file or device ARCHIVE
+</pre></div>
 
 <p>and a message indicating that the argument is applicable to both
 forms is printed below the options. This message can be disabled
@@ -14071,22 +14292,24 @@ variables <code>dup-args</code> or <code>dup-args-note</code> should be set.
 <dt><a name="index-short_002dopt_002dcol"></a>Help Output: <em>offset</em> <strong>short-opt-col</strong></dt>
 <dd><p>Column in which short options start. Default is 2.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --help|grep ARCHIVE</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --help|grep ARCHIVE</kbd>
   -f, --file=ARCHIVE   use archive file or device ARCHIVE
 $ <kbd>ARGP_HELP_FMT=short-opt-col=6 tar --help|grep ARCHIVE</kbd>
       -f, --file=ARCHIVE   use archive file or device ARCHIVE
-</pre></td></tr></table>
+</pre></div>
 </dd></dl>
 
 <dl>
 <dt><a name="index-long_002dopt_002dcol"></a>Help Output: <em>offset</em> <strong>long-opt-col</strong></dt>
 <dd><p>Column in which long options start. Default is 6. For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --help|grep ARCHIVE</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --help|grep ARCHIVE</kbd>
   -f, --file=ARCHIVE   use archive file or device ARCHIVE
 $ <kbd>ARGP_HELP_FMT=long-opt-col=16 tar --help|grep ARCHIVE</kbd>
   -f,           --file=ARCHIVE   use archive file or device ARCHIVE
-</pre></td></tr></table>
+</pre></div>
 </dd></dl>
 
 <dl>
@@ -14096,7 +14319,8 @@ an option, but rather an arbitrary piece of documentation that is
 displayed in much the same manner as the options.  For example, in
 the description of &lsquo;<samp>--format</samp>&rsquo; option:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  -H, --format=FORMAT        create archive of the given format.
+<div class="smallexample">
+<pre class="smallexample">  -H, --format=FORMAT        create archive of the given format.
 
  FORMAT is one of the following:
 
@@ -14106,13 +14330,14 @@ the description of &lsquo;<samp>--format</samp>&rsquo; option:
     posix                    same as pax
     ustar                    POSIX 1003.1-1988 (ustar) format
     v7                       old V7 tar format
-</pre></td></tr></table>
+</pre></div>
 
 <p>the format names are doc options. Thus, if you set
 <kbd>ARGP_HELP_FMT=doc-opt-col=6</kbd> the above part of the help output
 will look as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  -H, --format=FORMAT        create archive of the given format.
+<div class="smallexample">
+<pre class="smallexample">  -H, --format=FORMAT        create archive of the given format.
 
  FORMAT is one of the following:
 
@@ -14122,21 +14347,22 @@ will look as follows:
         posix                    same as pax
         ustar                    POSIX 1003.1-1988 (ustar) format
         v7                       old V7 tar format
-</pre></td></tr></table>
+</pre></div>
 </dd></dl>
 
 <dl>
 <dt><a name="index-opt_002ddoc_002dcol"></a>Help Output: <em>offset</em> <strong>opt-doc-col</strong></dt>
 <dd><p>Column in which option description starts. Default is 29.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ <kbd>tar --help|grep ARCHIVE</kbd>
+<div class="smallexample">
+<pre class="smallexample">$ <kbd>tar --help|grep ARCHIVE</kbd>
   -f, --file=ARCHIVE         use archive file or device ARCHIVE
 $ <kbd>ARGP_HELP_FMT=opt-doc-col=19 tar --help|grep ARCHIVE</kbd>
   -f, --file=ARCHIVE   use archive file or device ARCHIVE
 $ <kbd>ARGP_HELP_FMT=opt-doc-col=9 tar --help|grep ARCHIVE</kbd>
   -f, --file=ARCHIVE
            use archive file or device ARCHIVE
-</pre></td></tr></table>
+</pre></div>
 
 <p>Notice, that the description starts on a separate line if
 <code>opt-doc-col</code> value is too small.
@@ -14274,7 +14500,8 @@ records after a zero block.
 <p>The header block is defined in C as follows.  In the <acronym>GNU</acronym> <code>tar</code>
 distribution, this is part of file &lsquo;<tt>src/tar.h</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">
+<div class="smallexample">
+<pre class="smallexample">
 /*<span class="roman"> tar Header Block, from POSIX 1003.1-1990.  </span>*/
 
 /*<span class="roman"> POSIX header.  </span>*/
@@ -14500,7 +14727,7 @@ struct star_ext_header
   char isextended;
 };
 
-</pre></td></tr></table>
+</pre></div>
 
 <p>All characters in header blocks are represented by using 8-bit
 characters in the local variant of ASCII.  Each field within the
@@ -14949,13 +15176,14 @@ versions 1.14&ndash;1.15.1.  The sparse file map is kept in extended
 <p>The latter two variables repeat for each data block, so the overall
 structure is like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">GNU.sparse.size=<var>size</var>      
+<div class="smallexample">
+<pre class="smallexample">GNU.sparse.size=<var>size</var>      
 GNU.sparse.numblocks=<var>numblocks</var> 
 repeat <var>numblocks</var> times
   GNU.sparse.offset=<var>offset</var>    
   GNU.sparse.numbytes=<var>numbytes</var>  
 end repeat
-</pre></td></tr></table>
+</pre></div>
 
 <p>This format presented the following two problems:
 </p>
@@ -14997,8 +15225,9 @@ comma-separated values &quot;<var>offset</var>,<var>size</var>[,<var>offset-1</v
 <p>To address the 2nd problem, the <code>name</code> field in <code>ustar</code>
 is replaced with a special name, constructed using the following pattern:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">%d/GNUSparseFile.%p/%f
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">%d/GNUSparseFile.%p/%f
+</pre></div>
 
 <a name="index-GNU_002esparse_002ename_002c-extended-header-variable"></a>
 <p>The real name of the sparse file is stored in the variable
@@ -15055,8 +15284,9 @@ identify the format being used:
 <p>The <code>name</code> field in <code>ustar</code> header contains a special name,
 constructed using the following pattern:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">%d/GNUSparseFile.%p/%f
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">%d/GNUSparseFile.%p/%f
+</pre></div>
 
 <a name="index-GNU_002esparse_002ename_002c-extended-header-variable_002c-in-v_002e1_002e0"></a>
 <a name="index-GNU_002esparse_002erealsize_002c-extended-header-variable"></a>
@@ -15117,8 +15347,9 @@ decimal number that represents the UNIX timestamp of the beginning of
 the last archivation. This line is followed by directory metadata
 descriptions, one per line. Each description has the following format:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">[<var>nfs</var>]<var>dev</var> <var>inode</var> <var>name</var>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">[<var>nfs</var>]<var>dev</var> <var>inode</var> <var>name</var>
+</pre></div>
 
 <p>where optional <var>nfs</var> is a single plus character (&lsquo;<samp>+</samp>&rsquo;) if this
 directory is located on an NFS-mounted partition, <var>dev</var> and
@@ -15128,8 +15359,9 @@ directory is located on an NFS-mounted partition, <var>dev</var> and
 <p>  &lsquo;<samp>Format 1</samp>&rsquo; snapshot file begins with a line specifying the
 format of the file. This line has the following structure:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">&lsquo;<samp>GNU tar-</samp>&rsquo;<var>tar-version</var>&lsquo;<samp>-</samp>&rsquo;<var>incr-format-version</var>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">&lsquo;<samp>GNU tar-</samp>&rsquo;<var>tar-version</var>&lsquo;<samp>-</samp>&rsquo;<var>incr-format-version</var>
+</pre></div>
 
 <p>where <var>tar-version</var> is the version of <acronym>GNU</acronym> <code>tar</code> implementation
 that created this snapshot, and <var>incr-format-version</var> is the
@@ -15143,8 +15375,9 @@ epoch.
 <p>  Following lines contain directory metadate, one line per
 directory. The line format is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">[<var>nfs</var>]<var>mtime-sec</var> <var>mtime-nsec</var> <var>dev</var> <var>inode</var> <var>name</var>
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">[<var>nfs</var>]<var>mtime-sec</var> <var>mtime-nsec</var> <var>dev</var> <var>inode</var> <var>name</var>
+</pre></div>
 
 <p>where <var>mtime-sec</var> and <var>mtime-nsec</var> represent the last
 modification time of this directory with nanosecond precision;
@@ -15180,8 +15413,9 @@ dumped directory in special data blocks called <em>dumpdirs</em>.
 </p>
 <p>  Dumpdir is a sequence of entries of the following form:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"><var>C</var> <var>filename</var> \0
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample"><var>C</var> <var>filename</var> \0
+</pre></div>
 
 <p>where <var>C</var> is one of the <em>control codes</em> described below,
 <var>filename</var> is the name of the file <var>C</var> operates upon, and
@@ -15230,8 +15464,9 @@ to be an absolute file name.
 <p> The three codes &lsquo;<samp>R</samp>&rsquo;, &lsquo;<samp>T</samp>&rsquo; and &lsquo;<samp>X</samp>&rsquo; specify a
 <em>renaming operation</em>.  In the simplest case it is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">R&lsquo;<tt>source</tt>&rsquo;\0T&lsquo;<tt>dest</tt>&rsquo;\0
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">R&lsquo;<tt>source</tt>&rsquo;\0T&lsquo;<tt>dest</tt>&rsquo;\0
+</pre></div>
 
 <p>which means &ldquo;rename file &lsquo;<tt>source</tt>&rsquo; to file &lsquo;<tt>dest</tt>&rsquo;&rdquo;.
 </p>
@@ -15243,18 +15478,20 @@ directory</em>.  For example, consider the following scenario:
 Previous run dumped a directory &lsquo;<tt>foo</tt>&rsquo; which contained the
 following three directories: 
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">a
+<div class="smallexample">
+<pre class="smallexample">a
 b
 c
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 They were renamed <em>cyclically</em>, so that:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">&lsquo;<tt>a</tt>&rsquo; became &lsquo;<tt>b</tt>&rsquo;
+<div class="example">
+<pre class="example">&lsquo;<tt>a</tt>&rsquo; became &lsquo;<tt>b</tt>&rsquo;
 &lsquo;<tt>b</tt>&rsquo; became &lsquo;<tt>c</tt>&rsquo;
 &lsquo;<tt>c</tt>&rsquo; became &lsquo;<tt>a</tt>&rsquo;
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 New incremental dump was made.
@@ -15266,12 +15503,13 @@ To handle such case a temporary directory is required. <acronym>GNU</acronym> <c
 will create the following dumpdir (newlines have been added for
 readability): 
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">Xfoo\0
+<div class="smallexample">
+<pre class="smallexample">Xfoo\0
 Rfoo/a\0T\0
 Rfoo/b\0Tfoo/c\0
 Rfoo/c\0Tfoo/a\0
 R\0Tfoo/a\0
-</pre></td></tr></table>
+</pre></div>
 
 <p>  The first command, &lsquo;<samp>Xfoo\0</samp>&rsquo;, instructs the extractor to create a
 temporary directory in the directory &lsquo;<tt>foo</tt>&rsquo;.  Second command,
@@ -15387,9 +15625,10 @@ standard output, this can be changed using &lsquo;<samp>--file</samp>&rsquo;
 (&lsquo;<samp>-f</samp>&rsquo;) command line option. Thus, the following two commands
 are equivalent:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">genfile --length 100 &gt; outfile
+<div class="smallexample">
+<pre class="smallexample">genfile --length 100 &gt; outfile
 genfile --length 100 --file outfile
-</pre></td></tr></table>
+</pre></div>
 
 <p>    If &lsquo;<samp>--length</samp>&rsquo; is not given, <code>genfile</code> will
 generate an empty (zero-length) file.
@@ -15401,19 +15640,21 @@ by a name of file containing a list of file names. Using dash
 (&lsquo;<samp>-</samp>&rsquo;) instead of the file name causes <code>genfile</code> to read
 file list from the standard input. For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"># Read file names from file &lsquo;<tt>file.list</tt>&rsquo;
+<div class="smallexample">
+<pre class="smallexample"># Read file names from file &lsquo;<tt>file.list</tt>&rsquo;
 genfile --files-from file.list
 # Read file names from standard input
 genfile --files-from -
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-File-lists-separated-by-NUL-characters"></a>
 <p>    The list file is supposed to contain one file name per line. To
 use file lists separated by ASCII NUL character, use &lsquo;<samp>--null</samp>&rsquo;
 (&lsquo;<samp>-0</samp>&rsquo;) command line option:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">genfile --null --files-from file.list
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">genfile --null --files-from file.list
+</pre></div>
 
 <a name="index-pattern_002c-genfile"></a>
 <p>    The default data pattern for filling the generated file consists
@@ -15483,8 +15724,9 @@ the given offset.
 </p>
 <p>    For example, consider the following invocation:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">genfile --sparse --file sparsefile 0 ABCD 1M EFGHI 2000K 
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">genfile --sparse --file sparsefile 0 ABCD 1M EFGHI 2000K 
+</pre></div>
 
 <p>It will create 3101184-bytes long file of the following structure:
 </p>
@@ -15613,8 +15855,9 @@ nlink,uid,gid,size,blksize,blocks,atime,mtime,ctime</samp>&rsquo;.
 corresponding times of last access for each file in the current working
 directory:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">genfile --stat=name,atime *
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">genfile --stat=name,atime *
+</pre></div>
 
 <hr>
 <a name="Exec-Mode"></a>
@@ -15649,15 +15892,17 @@ command name and its first argument (if any). Due to this, the
 argument to &lsquo;<samp>--run</samp>&rsquo; may not use traditional <code>tar</code>
 option syntax, i.e. the following is wrong: 
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample"># Wrong!
+<div class="smallexample">
+<pre class="smallexample"># Wrong!
 genfile --run 'tar cf foo bar'
-</pre></td></tr></table>
+</pre></div>
 
 
 <p>Use the following syntax instead:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">genfile --run 'tar -cf foo bar'
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">genfile --run 'tar -cf foo bar'
+</pre></div>
 
 <p>    The rest of command line after &lsquo;<samp>--run</samp>&rsquo; or its equivalent
 specifies checkpoint values and actions to be executed upon reaching
@@ -15863,12 +16108,13 @@ published by other publishers, at
 <a name="index-FDL_002c-GNU-Free-Documentation-License"></a>
 <p align="center">Version 1.2, November 2002
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">Copyright &copy; 2000,2001,2002 Free Software Foundation, Inc.
+<div class="display">
+<pre class="display">Copyright &copy; 2000,2001,2002 Free Software Foundation, Inc.
 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA
 
 Everyone is permitted to copy and distribute verbatim copies
 of this license document, but changing it is not allowed.
-</pre></td></tr></table>
+</pre></div>
 
 <ol>
 <li>
@@ -16288,22 +16534,24 @@ as a draft) by the Free Software Foundation.
 the License in the document and put the following copyright and
 license notices just after the title page:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  Copyright (C)  <var>year</var>  <var>your name</var>.
+<div class="smallexample">
+<pre class="smallexample">  Copyright (C)  <var>year</var>  <var>your name</var>.
   Permission is granted to copy, distribute and/or modify this document
   under the terms of the GNU Free Documentation License, Version 1.2
   or any later version published by the Free Software Foundation;
   with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
   Texts.  A copy of the license is included in the section entitled ``GNU
   Free Documentation License''.
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
 replace the &ldquo;with...Texts.&rdquo; line with this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">    with the Invariant Sections being <var>list their titles</var>, with
+<div class="smallexample">
+<pre class="smallexample">    with the Invariant Sections being <var>list their titles</var>, with
     the Front-Cover Texts being <var>list</var>, and with the Back-Cover Texts
     being <var>list</var>.
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you have Invariant Sections without Cover Texts, or some other
 combination of the three, merge those two alternatives to suit the

@@ -104,9 +104,10 @@ argument is printed in slanted type.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">To delete file @var{filename},
+<div class="example">
+<pre class="example">To delete file @var{filename},
 type @samp{rm @var{filename}}.
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
@@ -122,23 +123,26 @@ use hyphens to make it more readable.  Thus, the Texinfo source for
 the illustration of how to begin a Texinfo manual looks like
 this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+<div class="example">
+<pre class="example">\input texinfo
 @@setfilename @var{info-file-name}
 @@settitle @var{name-of-manual}
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+<div class="example">
+<pre class="example">\input texinfo
 @setfilename <var>info-file-name</var>
 @settitle <var>name-of-manual</var>
-</pre></td></tr></table>
+</pre></div>
 
 <p>In some documentation styles, metasyntactic variables are shown with
 angle brackets, for example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">&hellip;, type rm &lt;filename&gt;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">&hellip;, type rm &lt;filename&gt;
+</pre></div>
 
 <p>However, that is not the style that Texinfo uses.  (You can, of
 course, modify the sources to &lsquo;<tt>texinfo.tex</tt>&rsquo; and the Info formatting commands

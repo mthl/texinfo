@@ -116,7 +116,8 @@ from @r1 to @r2.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;latex.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;latex.lib&quot;;
 // -------- prepare for example ---------
 if (defined(TeXaligned)) {int Teali=TeXaligned; kill TeXaligned;}
 if (defined(TeXreplace)) {list Terep=TeXreplace; kill TeXreplace;}
@@ -160,7 +161,7 @@ kill @r1,TeXreplace,TeXaligned;
 // --- restore global variables if previously defined ---
 if (defined(Teali)) {int TeXaligned=Teali; export TeXaligned; kill Teali;}
 if (defined(Terep)) {list TeXreplace=Terep; export TeXreplace; kill Terep;}
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

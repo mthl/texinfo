@@ -109,13 +109,15 @@ occurred (or more precisely, where it was detected).
 menus</code> with an &lsquo;s&rsquo; on the end, instead of with <code>@end menu</code>, you
 will see an error message that says:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@end menus is not handled by texinfo
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@end menus is not handled by texinfo
+</pre></div>
 
 <p>The cursor will stop at the point in the buffer where the error
 occurs, or not long after it.  The buffer will look like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: *Info Region* ----------
+<div class="example">
+<pre class="example">---------- Buffer: *Info Region* ----------
 * Menu:
 
 * Using texinfo-show-structure::  How to use
@@ -126,13 +128,14 @@ occurs, or not long after it.  The buffer will look like this:
 @end menus
 &lowast;
 ---------- Buffer: *Info Region* ----------
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <code>texinfo-format-region</code> command sometimes provides slightly
 odd error messages.  For example, the following cross reference fails to format:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(@xref{Catching Mistakes, for more info.)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(@xref{Catching Mistakes, for more info.)
+</pre></div>
 
 <p>In this case, <code>texinfo-format-region</code> detects the missing closing
 brace but displays a message that says &lsquo;<samp>Unbalanced parentheses</samp>&rsquo;
@@ -144,25 +147,29 @@ parentheses.
 example, in the following, the closing brace is swapped with the
 closing parenthesis:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(@xref{Catching Mistakes), for more info.}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(@xref{Catching Mistakes), for more info.}
+</pre></div>
 
 <p>Formatting produces:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(*Note for more info.: Catching Mistakes)
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">(*Note for more info.: Catching Mistakes)
+</pre></div>
 
 <p>The only way for you to detect this error is to realize that the
 reference should have looked like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(*Note Catching Mistakes::, for more info.)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(*Note Catching Mistakes::, for more info.)
+</pre></div>
 
 <p>Incidentally, if you are reading this node in Info and type <kbd>f
 &lt;RET&gt;</kbd> (<code>Info-follow-reference</code>), you will generate an error
 message that says:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">No such node: &quot;Catching Mistakes) The only way &hellip;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">No such node: &quot;Catching Mistakes) The only way &hellip;
+</pre></div>
 
 <p>This is because Info perceives the example of the error as the first
 cross reference in this node and if you type a &lt;RET&gt; immediately

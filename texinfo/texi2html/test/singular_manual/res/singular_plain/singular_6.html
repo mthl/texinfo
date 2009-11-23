@@ -210,7 +210,8 @@ then compute the Milnor number (=248) and the Tjurina number
 reset the option to <code>noprot</code>
 </li></ul>
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  option(prot);
+<div class="smallexample">
+<pre class="smallexample">  option(prot);
   ring r1 = 32003,(x,y,z),ds;
   r1;
 &rarr; //   characteristic : 32003
@@ -263,7 +264,7 @@ reset the option to <code>noprot</code>
 &rarr; product criterion:15 chain criterion:174
 &rarr; 195
   option(noprot);
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Procedures-and-LIB"></a>
@@ -325,7 +326,8 @@ lists may be empty.)
   </li></ul>
 </li></ul>
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;sing.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">LIB &quot;sing.lib&quot;;
 // you should get the information that sing.lib has been loaded
 // together with some other libraries which are needed by sing.lib
 ring r = 0,(x,y),ds;
@@ -366,7 +368,7 @@ milrina(f);     // a list containing Milnor and Tjurina number
 &rarr;    24
 milrina(f)[2];  // the second element of the list
 &rarr; 24
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Critical-points"></a>
@@ -437,7 +439,8 @@ The result of the computation here (together with the previous one in
 the affine surface <code>f</code>=0 is smooth outside the origin.
 </li></ul>
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1 = 32003,(x,y,z),ds;
+<div class="smallexample">
+<pre class="smallexample">  ring r1 = 32003,(x,y,z),ds;
   int a,b,c,t=11,5,3,0;
   poly f = x^a+y^b+z^(3*c)+x^(c+2)*y^(c-1)+x^(c-1)*y^(c-1)*z3+
            x^(c-2)*y^c*(y^2+t*x)^2;
@@ -451,7 +454,7 @@ the affine surface <code>f</code>=0 is smooth outside the origin.
   vdim(std(j+f));
 &rarr; 195
   timer=0;  // reset timer
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Saturation"></a>
@@ -505,7 +508,8 @@ ideal.  <code>sat</code> returns a list of two elements: the saturated ideal
 and the number of iterations.  (Note that <code>maxideal(n)</code> denotes the
 n-th power of the maximal ideal).
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;elim.lib&quot;;         // loading library elim.lib
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;elim.lib&quot;;         // loading library elim.lib
   // you should get the information that elim.lib has been loaded
   // together with some other libraries which are needed by it
   option(noprot);         // no protocol
@@ -524,7 +528,7 @@ n-th power of the maximal ideal).
 &rarr; //      j                    [0]  ideal, 3 generator(s)
 &rarr; //      f                    [0]  poly
 &rarr; // LIB                  [0]  string standard.lib,elim.li..., 83 char(s)
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Long-coefficients"></a>
@@ -559,7 +563,8 @@ the time needed for a standard basis computation is used in the
 computation of the coefficients (in char 0).
 The representation of long integers with real is demonstrated.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">timer = 1;                              // activate the timer
+<div class="smallexample">
+<pre class="smallexample">timer = 1;                              // activate the timer
 option(prot);
 ring R0 = 0,(x,y),lp;
 poly f = x5+y11+xy9+x3y9;
@@ -635,7 +640,7 @@ j;
 &rarr; j[3]=5x4+3x2y9+y9
 vdim(j);
 &rarr; 40
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Parameters"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -669,7 +674,8 @@ deformation was &quot;generic&quot;.)
 this is the same as
 where
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring Rt = (0,t),(x,y),lp;
+<div class="smallexample">
+<pre class="smallexample">  ring Rt = (0,t),(x,y),lp;
   Rt;
 &rarr; //   characteristic : 0
 &rarr; //   1 parameter    : t 
@@ -689,7 +695,7 @@ where
   ideal j=i,i[1]*i[2]+a*x5y8;  // deformed ideal, fixed integer a
   vdim(std(j));
 &rarr; 40
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="T1-and-T2"></a>
@@ -753,7 +759,8 @@ create a polynomial encoding the Hilbert series
 compute the dimension of T_2
 </li></ul>
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;sing.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;sing.lib&quot;;
   ring R=32003,(x,y,z),ds;
   // ---------------------------------------
   // hypersurface case (from series T[p,q,r]):
@@ -824,8 +831,9 @@ compute the dimension of T_2
 &rarr; 40
   module N=T_2(i);
 &rarr; // dim T_2 = 3
-</pre></td></tr></table>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">// In some cases it might be useful to have a polynomial in some ring
+</pre></div>
+<div class="smallexample">
+<pre class="smallexample">// In some cases it might be useful to have a polynomial in some ring
 // encoding the Hilbert series. This polynomial can then be
 // differentiated, evaluated etc. It can be done as follows:
 ring H = 0,t,ls;
@@ -864,7 +872,7 @@ L[3];                 // vdim of T_1
 &rarr; 4
 L[4];                 // vdim of T_2
 &rarr; 3
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Deformations"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -919,7 +927,8 @@ complicated examples. (type <code>help versal;</code>)
 <p>We compute for the same examples as in the preceding section
 the miniversal deformations:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;deform.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;deform.lib&quot;;
   ring R=32003,(x,y,z),ds;
   //----------------------------------------------------
   // hypersurface case (from series T[p,q,r]):
@@ -1004,7 +1013,7 @@ the miniversal deformations:
   //  --&gt; { A(1..4) |
   //         -A(1)*A(4) = A(3)*A(4) = -A(2)*A(4)-A(4)^2 = 0 }
   //----------------------------------------------------
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Finite-fields"></a>
@@ -1039,7 +1048,8 @@ In general there will be many more solutions in the second case.
 (Since the <small>SINGULAR</small> language is interpreted, the evaluation of many
 <code>for</code>-loops is not very fast):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  int p=3;  int n=3;  int d=5; int k=2;
+<div class="smallexample">
+<pre class="smallexample">  int p=3;  int n=3;  int d=5; int k=2;
   ring rp = p,(x(1..n)),dp;
   int s = size(maxideal(d));
   s;
@@ -1199,7 +1209,7 @@ In general there will be many more solutions in the second case.
 &rarr; solution exponent: 7 7 5
   &quot;//&quot;,s,&quot;solutions over GF(&quot;+string(p^k)+&quot;)&quot;;
 &rarr; // 72 solutions over GF(9)
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Elimination"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -1275,7 +1285,8 @@ Then we compute the tangent developable of the rational
    normal curve in
 </li></ol>
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  // 1. Compute equations of curve given in parametric form:
+<div class="smallexample">
+<pre class="smallexample">  // 1. Compute equations of curve given in parametric form:
   // Two transversal cusps in (k^3,0):
   ring r1 = 0,(t,x,y,z),ls;
   ideal i1 = x-t2,y-t3,z;        // parametrization of the first branch
@@ -1361,7 +1372,7 @@ Then we compute the tangent developable of the rational
 &rarr; j[1]=3c2-4bd+ae
 &rarr; j[2]=2bcd-3ad2-3b2e+4ace
 &rarr; j[3]=8b2d2-9acd2-9b2ce+12ac2e-2abde
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -1450,7 +1461,8 @@ from above.
 Finally we demonstrate the use of the type <code>resolution</code> in connection with
 the <code>lres</code> command.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  // Two transversal cusps in (k^3,0):
+<div class="smallexample">
+<pre class="smallexample">  // Two transversal cusps in (k^3,0):
   ring r2 =0,(x,y,z),ds;
   ideal i =z2-1y3+x3y,xz,-1xy2+x4,x3z;
   resolution rs=mres(i,0);   // computes a minimal resolution
@@ -1554,7 +1566,7 @@ the <code>lres</code> command.
 &rarr; 
   size(list(rs));            //gets the minimized resolution
 &rarr; 6
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -1602,7 +1614,8 @@ as ker/Im.
 </p>
 <p>We collect these statements in the following short procedure:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc ext(int n, ideal I)
+<div class="smallexample">
+<pre class="smallexample">proc ext(int n, ideal I)
 {
   resolution rs = mres(I,n+1);
   module tAn    = transpose(rs[n+1]);
@@ -1610,11 +1623,12 @@ as ker/Im.
   module ext_n  = modulo(syz(tAn),tAn_1);
   return(ext_n);
 }
-</pre></td></tr></table>
+</pre></div>
 
 <p>Now consider the following example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r5 = 32003,(a,b,c,d,e),dp;
+<div class="smallexample">
+<pre class="smallexample">ring r5 = 32003,(a,b,c,d,e),dp;
 ideal I = a2b2+ab2c+b2cd, a2c2+ac2d+c2de,a2d2+ad2e+bd2e,a2e2+abe2+bce2;
 print(ext(2,I));
 &rarr; 1,0,0,0,0,0,0,
@@ -1625,7 +1639,7 @@ print(ext(2,I));
 &rarr; 0,0,0,0,0,1,0,
 &rarr; 0,0,0,0,0,0,1
 ext(3,I);   // too big to be displayed here
-</pre></td></tr></table>
+</pre></div>
 
 <p>The library <code>homolog.lib</code> contains several procedures for computing
 Ext-modules and related modules, which are much more general and
@@ -1663,7 +1677,8 @@ for some ideal
  and with an extra option.
 </li></ul>
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;homolog.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;homolog.lib&quot;;
   ring R=0,(x,y),ds;
   ideal i=x2-y3;
   qring q = std(i);      // defines the quotient ring Loc_m k[x,y]/(x2-y3)
@@ -1744,7 +1759,7 @@ for some ideal
 &rarr; y,x,z2
   print(kbase(LE[2]));
 &rarr; z,1
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Polar-curves"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -1786,7 +1801,8 @@ projective, affine or local polar curves.
 <code>elim.lib</code> for saturation and <code>sing.lib</code> for the singular
 locus.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;elim.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;elim.lib&quot;;
   LIB &quot;sing.lib&quot;;
   // Affine polar curve:
   ring R = 0,(x,z,t),dp;              // global ordering dp
@@ -1881,7 +1897,7 @@ locus.
   size(reduce(qsat,std(qh)));
 &rarr; 0
   // both ideals coincide
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Depth"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -1912,7 +1928,8 @@ the number of variables minus the length of a minimal resolution.  This
 example was suggested by U. Vetter in order to check whether his bound
 could be improved.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;matrix.lib&quot;; LIB &quot;sing.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;matrix.lib&quot;; LIB &quot;sing.lib&quot;;
   int n = 4;
   int m = 3;
   int N = n*(n+1)/2;           // will become number of variables
@@ -1955,7 +1972,7 @@ could be improved.
 &rarr; total:    10    94   179   140    60    16     1
   N-ncols(B)+1;                          // the desired depth
 &rarr; 4
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Formatting-output"></a>
@@ -1984,7 +2001,8 @@ First we compute the powers of 2 and comment the result with some text.
 Then we do the same and give the output a nice format by computing and
 adding appropriate space.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  // The powers of 2:
+<div class="smallexample">
+<pre class="smallexample">  // The powers of 2:
   int  n;
   for (n = 2; n &lt;= 128; n = n * 2)
   {&quot;n = &quot; + string (n);}
@@ -2012,7 +2030,7 @@ adding appropriate space.
 &rarr; n =   32
 &rarr; n =   64
 &rarr; n =  128
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Cyclic-roots"></a>
@@ -2044,7 +2062,8 @@ we compute a standard basis of this ideal and some numerical
 information.  (This ideal is used as a classical benchmark for standard
 basis computations).
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">// We call the procedure 'cyclic':
+<div class="smallexample">
+<pre class="smallexample">// We call the procedure 'cyclic':
 proc cyclic (int n)
 {
    string vs = varstr(basering)+varstr(basering);
@@ -2094,7 +2113,7 @@ degree(j);
 &rarr; // codimension = 5
 &rarr; // dimension   = 0
 &rarr; // degree      = 70
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="G_005fa-_002dInvariants"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -2118,7 +2137,8 @@ degree(j);
 
 <p>We work in characteristic 0 and use the Lie algebra generated by one
 vector field of the form
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;ainvar.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">  LIB &quot;ainvar.lib&quot;;
   int n=5;
   int i;
   ring s=32003,(x(1..n)),wp(1,2,3,4,5);
@@ -2152,7 +2172,7 @@ vector field of the form
 &rarr; in[4]=zu-yv+xw
 &rarr; in[5]=yu-xv
 &rarr; in[6]=y2-2xz
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Invariants-of-a-finite-group"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -2195,7 +2215,8 @@ over Arbitrary Fields&quot; by Kemper (1996, to appear in JSC).
 <p>We calculate now an example from Sturmfels: &quot;Algorithms in Invariant
 Theory 2.3.7&quot;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;finvar.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;finvar.lib&quot;;
   ring R=0,(x,y,z),dp;
   matrix A[3][3]=0,1,0,-1,0,0,0,0,-1;
   // the group G is generated by A in Gl(3,Q);
@@ -2229,7 +2250,7 @@ Theory 2.3.7&quot;:
 &rarr; z2,x2+y2,x4+y4-z4
 &rarr; 1,xyz,x2z-y2z,x3y-xy3
 &rarr; xyz,x2z-y2z,x3y-xy3
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Factorization"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -2255,7 +2276,8 @@ Theory 2.3.7&quot;:
 Factory (written mainly by Ruediger Stobbe) and libfac (written by
 Michael Messollen) which are part of the <small>SINGULAR</small> system.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0,(x,y),dp;
+<div class="smallexample">
+<pre class="smallexample">  ring r = 0,(x,y),dp;
   poly f = 9x16-18x13y2-9x12y3+9x10y4-18x11y2+36x8y4
          +18x7y5-18x5y6+9x6y4-18x3y6-9x2y7+9y8;
   // = 9 * (x5-1y2)^2 * (x6-2x3y2-1x2y3+y4)
@@ -2286,7 +2308,7 @@ Michael Messollen) which are part of the <small>SINGULAR</small> system.
 &rarr;    _[3]=x2+y
 &rarr; [2]:
 &rarr;    1,2,4
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Puiseux-pairs"></a>
@@ -2343,7 +2365,8 @@ polygon of
 convert one set of invariants to another.
 </p>
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;hnoether.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;hnoether.lib&quot;;
   // ======== The irreducible case ========
   ring s = 0,(x,y),ds;
   poly f = y4-2x3y2-4x5y+x6-x7;
@@ -2435,7 +2458,7 @@ convert one set of invariants to another.
   param(hn[2]);      // parametrization of 2nd branch
 &rarr; _[1]=x2
 &rarr; _[2]=x5
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Primary-decomposition"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -2468,7 +2491,8 @@ a list of pairs of ideals,
 where the second ideal form the prime ideal and the first
 ideal form the corresponding primary ideal.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;primdec.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;primdec.lib&quot;;
   ring r = 0,(a,b,c,d,e,f),dp;
   ideal i= f3, ef2, e2f, bcf-adf, de+cf, be+af, e3;
   primdecGTZ(i);
@@ -2567,7 +2591,7 @@ ideal form the corresponding primary ideal.
 &rarr; _[1]=CD
 &rarr; _[2]=BD+D2
 &rarr; _[3]=AD
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Normalization"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -2596,7 +2620,8 @@ rings of this list. The normalization of
 the factor rings of the rings in the list divided out by the ideals
 <code>norid</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;normal.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;normal.lib&quot;;
   // ----- first example: rational quadruple point -----
   ring R=32003,(x,y,z),wp(3,5,15);
   ideal I=z*(y3-x5)+x10;
@@ -2637,7 +2662,7 @@ the factor rings of the rings in the list divided out by the ideals
 &rarr; norid[1]=0
   setring S2; norid;
 &rarr; norid[1]=0
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Branches-of-an-Isolated-Space-Curve-Singularity"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -2668,7 +2693,8 @@ components could be globally irreducible, but analytically reducible
 (this is impossible for quasihomogeneous singularities) and,
 as a second possibility, a component might be irreducible over the rational
 numbers, but reducible over the complex numbers.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),ds;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),ds;
   ideal i=x^4-y*z^2,x*y-z^3,y^2-x^3*z;  // the space curve singularity
   qhweight(i);
 &rarr; 1,2,1
@@ -2799,7 +2825,7 @@ numbers, but reducible over the complex numbers.
   // Hence our original curve has these 4 branches plus a smooth one
   // which we already determined by primary decomposition.
   // Our final result is therefore: 5 branches.
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Kernel-of-module-homomorphisms"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -2828,13 +2854,14 @@ over the ring
 We want to compute the kernel of the map
 This can be done using the <code>modulo</code> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),(c,dp);
+<div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),(c,dp);
   matrix A[2][2]=x,y,z,1;
   matrix B[2][2]=x2,y2,z2,xz;
   print(modulo(A,B));
 &rarr; yz2-x2, xyz-y2,  x2z-xy, x3-y2z,
 &rarr; x2z-xz2,-x2z+y2z,xyz-yz2,0      
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Algebraic-dependence"></a>
@@ -2882,7 +2909,8 @@ the ideal of relations between the generators of the given ideal.
 Otherwise it checks for subring membership and returns the normal form
 of the second argument with respect to the ideal I.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  proc algebraicDep(ideal J, poly g)
+<div class="smallexample">
+<pre class="smallexample">  proc algebraicDep(ideal J, poly g)
   {
     def R=basering;         // give a name to the basering
     int n=size(J);
@@ -2948,7 +2976,7 @@ of the second argument with respect to the ideal I.
   algebraicDep(j,g);
 &rarr; _[1]=-z^4+z^2*Y(2)-x*z
   // this shows that g is contained in j.
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Classification"></a>
@@ -2977,7 +3005,8 @@ library <code>classify.lib</code>. The classification is done using the
 algorithm of Arnold. Before entering this algorithm, a first guess based
 on the Hilbert polynomial of the Milnor algebra is made.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;classify.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;classify.lib&quot;;
   ring r=0,(x,y,z),ds;
   poly p=singularity(&quot;E[6k+2]&quot;,2)[1];
   p=p+z^2;
@@ -3033,7 +3062,7 @@ on the Hilbert polynomial of the Milnor algebra is made.
    +8505/8y9z2+2835/2y8z3+8505/8y7z4+1701/4y6z5+567/8y5z6-82812341/512y12-15\
    333/8y11z-76809/16y10z2-25735/4y9z3-78525/16y8z4-16893/8y7z5-8799/16y6z6-\
    198y5z7-495/4y4z8-55y3z9-33/2y2z10-3yz11-1/4z12
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Fast-lexicographical-GB"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -3065,7 +3094,8 @@ returns a reduced Groebner basis.
 <p>For the ideal below, <code>stdfglm</code> is more than 100 times
 and <code>stdhilb</code> about 10 times faster than <code>std</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r =32003,(a,b,c,d,e),lp;
+<div class="smallexample">
+<pre class="smallexample">  ring r =32003,(a,b,c,d,e),lp;
   ideal i=a+b+c+d, ab+bc+cd+ae+de, abc+bcd+abe+ade+cde,
           abc+abce+abde+acde+bcde, abcde-1;
   int t=timer;
@@ -3085,7 +3115,7 @@ and <code>stdhilb</code> about 10 times faster than <code>std</code>.
   ideal j0 =std(i);
   timer-t;
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 <hr>
 <a name="Parallelization-with-MPtcp-links"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -3128,7 +3158,8 @@ Wichmann; Der FGLM-Algorithmus: verallgemeinert und implementiert in
 Singular; Diplomarbeit Fachbereich Mathematik, Universitaet
 Kaiserslautern; 1997</i> for more details.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(a,b,c,u,v,w,x,y,z),lp;
+<div class="smallexample">
+<pre class="smallexample">ring r=0,(a,b,c,u,v,w,x,y,z),lp;
 ideal i=a+c+v+2x-1, ab+cu+2vw+2xy+2xz-2/3,  ab2+cu2+2vw2+2xy2+2xz2-2/5,
 ab3+cu3+2vw3+2xy3+2xz3-2/7, ab4+cu4+2vw4+2xy4+2xz4-2/9, vw2+2xyz-1/9,
 vw4+2xy2z2-1/25, vw3+xyz2+xy2z-1/15, vw4+xyz3+xy3z-1/21;
@@ -3159,7 +3190,7 @@ else                                                    // 5.
 }
 &rarr; stdfglm won !!!!
 &rarr; 9
-</pre></td></tr></table>
+</pre></div>
 <p>Some explanatory remarks are in order:
 </p><ol>
 <li>

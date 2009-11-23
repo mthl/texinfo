@@ -92,21 +92,23 @@ can indicate the printed output with the <code>@print{}</code> command.
 &lsquo;<samp>-|</samp>&rsquo;, and the value of the expression follows on the
 last line.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">(progn (print 'foo) (print 'bar))
+<div class="lisp">
+<pre class="lisp">(progn (print 'foo) (print 'bar))
      -| foo
      -| bar
      &rArr; bar
-</pre></td></tr></table>
+</pre></div>
 
 <p>In a Texinfo source file, this example is written as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">@lisp
+<div class="lisp">
+<pre class="lisp">@lisp
 (progn (print 'foo) (print 'bar))
      @print{} foo
      @print{} bar
      @result{} bar
 @end lisp
-</pre></td></tr></table>
+</pre></div>
 
 
 <p>

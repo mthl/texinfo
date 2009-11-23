@@ -494,24 +494,26 @@ as above.
 <br>
 
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), ds;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r = 0, (x,y,z), ds;
   // the same as ring r = 0, (x,y,z), (ds, C);
   [x+y2,z3+xy];
 &rarr; x*gen(1)+xy*gen(2)+y2*gen(1)+z3*gen(2)
   [x,x,x];
 &rarr; x*gen(3)+x*gen(2)+x*gen(1)
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt>(C,&lt;):</dt>
 <dd>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (C,lp);
+</p><div class="smallexample">
+<pre class="smallexample">  ring r = 0, (x,y,z), (C,lp);
   [x+y2,z3+xy];
 &rarr; xy*gen(2)+z3*gen(2)+x*gen(1)+y2*gen(1)
   [x,x,x];
 &rarr; x*gen(3)+x*gen(2)+x*gen(1)
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt>(&lt;,c):</dt>
@@ -519,23 +521,25 @@ as above.
 <a name="index-module-ordering-c"></a>
 
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (lp,c);
+</p><div class="smallexample">
+<pre class="smallexample">  ring r = 0, (x,y,z), (lp,c);
   [x+y2,z3+xy];
 &rarr; xy*gen(2)+x*gen(1)+y2*gen(1)+z3*gen(2)
   [x,x,x];
 &rarr; x*gen(1)+x*gen(2)+x*gen(3)
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt>(c,&lt;):</dt>
 <dd>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), (c,lp);
+</p><div class="smallexample">
+<pre class="smallexample">  ring r = 0, (x,y,z), (c,lp);
   [x+y2,z3+xy];
 &rarr; [x+y2,xy+z3]
   [x,x,x];
 &rarr; [x,x,x]
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -587,10 +591,12 @@ by the ordering):
 </p>
 
 <br><p><strong>Example</strong>:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r = 0, (x,y,z), M(1, 0, 0,   0, 1, 0,   0, 0, 1);
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">  ring r = 0, (x,y,z), M(1, 0, 0,   0, 1, 0,   0, 0, 1);
+</pre></div>
 <br><p>which may also be written as:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  intmat m[3][3]=1, 0, 0, 0, 1, 0, 0, 0, 1;
+</p><div class="smallexample">
+<pre class="smallexample">  intmat m[3][3]=1, 0, 0, 0, 1, 0, 0, 0, 1;
   m;
 &rarr; 1,0,0,
 &rarr; 0,1,0,
@@ -605,7 +611,7 @@ by the ordering):
 &rarr; //                  : weights  0 1 0 
 &rarr; //                  : weights  0 0 1 
 &rarr; //        block   2 : ordering C
-</pre></td></tr></table>
+</pre></div>
 
 <p>If the ring has 
 variables and the matrix contains less than 
@@ -691,10 +697,11 @@ to insert an extra line of weights into the ordering
 matrix.
 </p>
 <br><p><strong>Example</strong>:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0, (x,y,z),  (a(1,2,3),wp(4,5,2));
+</p><div class="smallexample">
+<pre class="smallexample">ring r = 0, (x,y,z),  (a(1,2,3),wp(4,5,2));
 ring s = 0, (x,y,z),  (a(1,2,3),dp);
 ring q = 0, (a,b,c,d),(lp(1),a(1,2,3),ds);
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">

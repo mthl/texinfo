@@ -96,16 +96,18 @@ file names.
 <p>In order to be made into a printed manual and an Info file, a Texinfo
 file <strong>must</strong> begin with lines like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+<div class="example">
+<pre class="example">\input texinfo
 @setfilename <var>info-file-name</var>
 @settitle <var>name-of-manual</var>
-</pre></td></tr></table>
+</pre></div>
 
 <p>The contents of the file follow this beginning, and then you
 <strong>must</strong> end a Texinfo file with a line like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@bye
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@bye
+</pre></div>
 
 <a name="index-_005cinput-_0028raw-TeX-startup_0029"></a>
 <p>Here&rsquo;s an explanation:
@@ -138,12 +140,13 @@ the formatters that the file is ended and to stop formatting.
 mode setting and start-of-header and end-of-header lines at the
 beginning of a Texinfo file, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo   @c -*-texinfo-*-
+<div class="example">
+<pre class="example">\input texinfo   @c -*-texinfo-*-
 @c %**start of header
 @setfilename <var>info-file-name</var>
 @settitle <var>name-of-manual</var>
 @c %**end of header
-</pre></td></tr></table>
+</pre></div>
 
 <p>In the first line, &lsquo;<samp>-*-texinfo-*-</samp>&rsquo; causes Emacs to switch into
 Texinfo mode when you edit the file.

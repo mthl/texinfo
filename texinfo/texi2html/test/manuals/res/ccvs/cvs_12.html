@@ -191,14 +191,15 @@ Each new line is prefixed with the same string which
 precedes the <code>$Log</code> keyword.  For example, if the
 file contains:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">  /* Here is what people have been up to:
+<div class="example">
+<pre class="example">  /* Here is what people have been up to:
    *
    * $<i></i>Log: frob.c,v $
    * Revision 1.1  1997/01/03 14:23:51  joe
    * Add the superfrobnicate option
    *
    */
-</pre></td></tr></table>
+</pre></div>
 
 <p>then additional lines which are added when expanding
 the <code>$Log</code> keyword will be preceded by &lsquo;<samp>   * </samp>&rsquo;.
@@ -243,10 +244,11 @@ expanded as if it were a $<i></i>CVSHeader$ keyword. If
 the src/frob.c file contained this keyword, it might
 look something like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">  /*
+<div class="example">
+<pre class="example">  /*
    * $<i></i>MYBSD: src/frob.c,v 1.1 2003/05/04 09:27:45 john Exp $ 
    */
-</pre></td></tr></table>
+</pre></div>
 
 <p>Many repositories make use of a such a &ldquo;local
 keyword&rdquo; feature. An old patch to <small>CVS</small> provided
@@ -324,14 +326,15 @@ values from a file.  This can be handy for text files,
 but it is even more useful for extracting keywords from
 binary files.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ ident samp.c
+<div class="example">
+<pre class="example">$ ident samp.c
 samp.c:
      $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
 $ gcc samp.c
 $ ident a.out
 a.out:
      $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-What-_0028shell-command_0029"></a>
 <p>S<small>CCS</small> is another popular revision control system.
@@ -343,8 +346,9 @@ easy to include keywords that are detected by either
 command.  Simply prefix the keyword with the
 magic <small>SCCS</small> phrase, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">static char *id=&quot;@(#) $<i></i>Id: ab.c,v 1.5 1993/10/19 14:57:32 ceder Exp $&quot;;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">static char *id=&quot;@(#) $<i></i>Id: ab.c,v 1.5 1993/10/19 14:57:32 ceder Exp $&quot;;
+</pre></div>
 
 <hr>
 <a name="Avoiding-substitution"></a>
@@ -543,20 +547,22 @@ to start an inclusion list or <code>e</code> to start an
 exclusion list. If the following lines were added to
 the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">        # Add a &quot;MyBSD&quot; keyword and restrict keyword
+<div class="example">
+<pre class="example">        # Add a &quot;MyBSD&quot; keyword and restrict keyword
         # expansion
         LocalKeyword=MyBSD=CVSHeader
         KeywordExpand=iMyBSD
-</pre></td></tr></table>
+</pre></div>
 
 <p>then only the $<i></i>MyBSD$ keyword would be expanded.
 A list may be used. The this example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">        # Add a &quot;MyBSD&quot; keyword and restrict keyword
+<div class="example">
+<pre class="example">        # Add a &quot;MyBSD&quot; keyword and restrict keyword
         # expansion to the MyBSD, Name and Date keywords.
         LocalKeyword=MyBSD=CVSHeader
         KeywordExpand=iMyBSD,Name,Date
-</pre></td></tr></table>
+</pre></div>
 
 <p>would allow $<i></i>MyBSD$, $<i></i>Name$, and
 $<i></i>Date$ to be expanded.
@@ -564,9 +570,10 @@ $<i></i>Date$ to be expanded.
 <p>It is also possible to configure an exclusion list
 using the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">        # Do not expand the non-RCS keyword CVSHeader
+<div class="example">
+<pre class="example">        # Do not expand the non-RCS keyword CVSHeader
         KeywordExpand=eCVSHeader
-</pre></td></tr></table>
+</pre></div>
 
 <p>This allows <small>CVS</small> to ignore the recently introduced
 $<i></i>CVSHeader$ keyword and retain all of the
@@ -581,9 +588,10 @@ expanded and not use the <code>-ko</code> flags everywhere,
 an administrator may disable all keyword expansion
 using the &lsquo;<tt>CVSROOT/config</tt>&rsquo; line:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">	# Do not expand any RCS keywords
+<div class="example">
+<pre class="example">	# Do not expand any RCS keywords
 	KeywordExpand=i
-</pre></td></tr></table>
+</pre></div>
 
 <p>this could be confusing to users that expect RCS
 keywords like $<i></i>Id$ to be expanded properly,

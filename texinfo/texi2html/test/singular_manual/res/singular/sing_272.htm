@@ -126,7 +126,8 @@ as an argument flattens the list by one level.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
 module m=[1,y],[0,x+z];
 intmat M=betti(mres(m,0));
 list l = r, m, M;
@@ -179,7 +180,7 @@ s = sprintf(&quot;%b&quot;, M); s;
 &rarr; ------------------
 &rarr; total:     1     1
 &rarr; 
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_191.htm#fprintf">fprintf</a>;
 <a href="sing_251.htm#print">print</a>;

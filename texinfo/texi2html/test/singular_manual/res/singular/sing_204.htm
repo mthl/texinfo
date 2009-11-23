@@ -132,7 +132,8 @@ U is maximal if dim(I)=#U.
 of the leading ideal which cannot be enlarged.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,u,v,w),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,u,v,w),dp;
   ideal I=xyw,yvw,uyw,xv;
   attrib(I,&quot;isSB&quot;,1);
   indepSet(I);
@@ -161,7 +162,7 @@ of the leading ideal which cannot be enlarged.
 &rarr;    0,1,0,0,1
   eliminate(I,xuv);
 &rarr; _[1]=0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

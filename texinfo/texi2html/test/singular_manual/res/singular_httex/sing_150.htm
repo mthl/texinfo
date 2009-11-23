@@ -113,7 +113,8 @@ a type cast to vector using the brackets <code>[</code> , <code>]</code>
 </li></ol>
 
 <br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  // ordering gives priority to components:
+</p><div class="smallexample">
+<pre class="smallexample">  // ordering gives priority to components:
   ring rr=0,(x,y,z),(c,dp);
   vector v=[x2+y3,2,0,x*y]+gen(6)*x6;
   v;
@@ -123,7 +124,7 @@ a type cast to vector using the brackets <code>[</code> , <code>]</code>
 &rarr; [y3-z3+x2+x,-3y+2,0,xy,0,x6]
   v*(z+x);
 &rarr; [xy3+y3z+x3+x2z,2x+2z,0,x2y+xyz,0,x7+x6z]
-</pre></td></tr></table>
+</pre></div>
 
 <p>See
 <a href="sing_37.htm#Type-conversion-and-casting">Type conversion and casting</a>;

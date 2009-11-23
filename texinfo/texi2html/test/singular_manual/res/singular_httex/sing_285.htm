@@ -120,7 +120,8 @@ Laguerre&rsquo;s algorithm (with corrupted roots), leading to better results.
 are of type number, otherwise of type string.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring rsc=(real,20,I),(x,y),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">ring rsc=(real,20,I),(x,y),lp;
 ideal i=(2+3*I)*x2+(0.35+I*45.0e-2)*y2-8,x2+xy+(42.7)*y2;
 list l=uressolve(i,0,0,2);
 l[1];
@@ -130,7 +131,7 @@ l[1];
 &rarr;    (0.12292646536251281054+I*0.19245727404407015049)
 subst(subst(i[1],x,l[1][1]),y,l[1][2]);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

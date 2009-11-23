@@ -180,14 +180,15 @@ of syzygies of the
 
 <dl compact="compact">
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
   ideal i=ux, vx, uy, vy;
   print(syz(i));
 &rarr; -y,0, -v,0, 
 &rarr; 0, -y,u, 0, 
 &rarr; x, 0, 0, -v,
 &rarr; 0, x, 0, u  
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -202,7 +203,8 @@ variables.
 </p>
 <dl compact="compact">
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
   ideal I = ux, vx, uy, vy;
   resolution resI = mres(I,0); resI;
 &rarr;  1      4      4      1      
@@ -220,7 +222,7 @@ variables.
 &rarr; -v,
 &rarr; -x,
 &rarr; y  
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -236,7 +238,8 @@ variables.
 </p>
 <dl compact="compact">
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
   ideal I = ux, vx, uy, vy;
   resolution resI = mres(I,0); resI;
 &rarr;  1      4      4      1      
@@ -255,7 +258,7 @@ variables.
   // the regularity:
   regularity(resI);
 &rarr; 2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -282,14 +285,15 @@ variables.
 
 <dl compact="compact">
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(x,y,z,u),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(x,y,z,u),dp;
   ideal i=-3zu+y2-2x+2,
           -3x2u-4yz-6xz+2y2+3xy,
           -3z2u-xu+y2z+y;
   print(char_series(i));
 &rarr; _[1,1],3x2z-y2+2yz,3x2u-3xy-2y2+2yu,
 &rarr; x,     -y+2z,      -2y2+3yu-4       
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -323,7 +327,8 @@ First, we compute a matrix
 is a monodromy matrix of 
  and the Jordan normal form of 
 :
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;gaussman.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">  LIB &quot;gaussman.lib&quot;;
   ring R=0,(x,y),ds;
   poly f=x5+x2y2+y5;
   list l=monodromy(f);
@@ -340,11 +345,12 @@ is a monodromy matrix of
 &rarr; 0,  0,  0,   0,   0,   0,   0,0,    11/10,0,    0,   
 &rarr; 0,  0,  0,   0,   0,   0,   0,0,    0,    13/10,0,   
 &rarr; 0,  0,  0,   0,   0,   0,   0,0,    0,    0,    13/10
-</pre></td></tr></table>
+</pre></div>
 
 <p>Now, we compute the V-filtration on 
  and the spectrum:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;gaussman.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">  LIB &quot;gaussman.lib&quot;;
   ring R=0,(x,y),ds;
   poly f=x5+x2y2+y5;
   list l=vfilt(f);
@@ -389,7 +395,7 @@ is a monodromy matrix of
 &rarr; x2,
 &rarr; x,
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 <p>Here <code>l[1]</code> contains the spectral numbers, <code>l[2]</code> the corresponding multiplicities, <code>l[3]</code> a 
 -basis of the V-filtration on 
  in terms of the monomial basis of
@@ -406,7 +412,8 @@ So choose a local ordering on
 negative degree lexicographical ordering which is denoted
 <code>ds</code> in <small>SINGULAR</small>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x,y,z),ds;
+<div class="smallexample">
+<pre class="smallexample">ring r=0,(x,y,z),ds;
 LIB &quot;spectrum.lib&quot;;
 poly f=x^7+y^7+z^7;
 list s1=spectrumnd( f );
@@ -430,7 +437,7 @@ s1;
 &rarr;    _[16]=11/7
 &rarr; [2]:
 &rarr;    1,3,6,10,15,21,25,27,27,25,21,15,10,6,3,1
-</pre></td></tr></table>
+</pre></div>
 
 <p>The command <code>spectrumnd(f)</code> computes the spectrum of 
  and
@@ -449,7 +456,8 @@ genus 35. Its spectrum consists of the 16 different rationals
 <p>Therefore they have all the same spectrum, which we compute
 for 
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">poly g=x^3+y^3+z^3;
+<div class="smallexample">
+<pre class="smallexample">poly g=x^3+y^3+z^3;
 list s2=spectrumnd(g);
 s2;
 &rarr; [1]:
@@ -464,19 +472,21 @@ s2;
 &rarr;    1,3,3,1
 &rarr; [6]:
 &rarr;    1,3,3,1
-</pre></td></tr></table>
+</pre></div>
 <p>Evaluating semicontinuity is very easy:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">semicont(s1,s2);
+</p><div class="smallexample">
+<pre class="smallexample">semicont(s1,s2);
 &rarr; 18
-</pre></td></tr></table>
+</pre></div>
 
 <p>This tells us that there are at most 18 singularities of type
 is semiquasihomogeneous (sqh), so we can also apply the stronger
 form of semicontinuity:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">semicontsqh(s1,s2);
+<div class="smallexample">
+<pre class="smallexample">semicontsqh(s1,s2);
 &rarr; 17
-</pre></td></tr></table>
+</pre></div>
 
 <p>So in fact a septic has at most 17 triple points of type
 </p>

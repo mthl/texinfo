@@ -148,7 +148,8 @@ a paragraph before that paragraph.
 <p>In the example that follows, a blank line comes after the index
 entry for &ldquo;Leaping&rdquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@section The Dog and the Fox
+<div class="example">
+<pre class="example">@section The Dog and the Fox
 @cindex Jumping, in general
 @cindex Leaping
 
@@ -157,7 +158,7 @@ entry for &ldquo;Leaping&rdquo;:
 @cindex Fox, jumps over dog
 @cindex Quick fox jumps over dog
 The quick brown fox jumps over the lazy dog.
-</pre></td></tr></table>
+</pre></div>
 
 <p>(Note that the example shows entries for the same concept that are
 written in different ways&mdash;&lsquo;<samp>Lazy dog</samp>&rsquo;, and &lsquo;<samp>Dog, lazy</samp>&rsquo;&mdash;so
@@ -182,7 +183,8 @@ Always insert a blank line before an <code>@table</code> command and after an
 
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Types of fox:
+<div class="example">
+<pre class="example">Types of fox:
 
 @table @samp
 @item Quick
@@ -194,7 +196,7 @@ Also jump over lazy dogs.
 
 </pre><pre class="example">@noindent
 On the other hand, &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>Insert blank lines before and after <code>@itemize</code> &hellip; <code>@end
 itemize</code> and <code>@enumerate</code> &hellip; <code>@end enumerate</code> in the
@@ -276,12 +278,13 @@ TeX.
 </p>
 <p>For example, TeX fills the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">    @kbd{C-x v}
+<div class="example">
+<pre class="example">    @kbd{C-x v}
     @kbd{M-x vc-next-action}
        Perform the next logical operation
        on the version-controlled file
        corresponding to the current buffer.
-</pre></td></tr></table>
+</pre></div>
 
 <p>so it looks like this:
 </p>
@@ -297,8 +300,9 @@ TeX.
 Use <code>@code</code> around Lisp symbols, including command names.
 For example,
 
-<table><tr><td>&nbsp;</td><td><pre class="example">The main function is @code{vc-next-action}, &hellip;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">The main function is @code{vc-next-action}, &hellip;
+</pre></div>
 
 </li><li>
 Avoid putting letters such as &lsquo;<samp>s</samp>&rsquo; immediately after an
@@ -326,8 +330,9 @@ whole passage.
 <p>For example, you should write the following sentence with the period
 outside the end quotation marks:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Evidently, &lsquo;<samp>au</samp>&rsquo; is an abbreviation for ``author''.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Evidently, &lsquo;<samp>au</samp>&rsquo; is an abbreviation for ``author''.
+</pre></div>
 
 <p>since &lsquo;<samp>au</samp>&rsquo; does <em>not</em> serve as an  abbreviation for
 &lsquo;<samp>author.</samp>&rsquo; (with a period following the word).
@@ -385,8 +390,9 @@ find the section easily.
 <p>When you use <code>@example</code> to describe a C function&rsquo;s calling
 conventions, use the ANSI C syntax, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">void dld_init (char *@var{path});
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">void dld_init (char *@var{path});
+</pre></div>
 
 <p>And in the subsequent discussion, refer to the argument values by
 writing the same argument names, again highlighted with
@@ -394,11 +400,12 @@ writing the same argument names, again highlighted with
 </p>
 <p>Avoid the obsolete style that looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;dld.h&gt;
+<div class="example">
+<pre class="example">#include &lt;dld.h&gt;
 
 dld_init (path)
 char *path;
-</pre></td></tr></table>
+</pre></div>
 
 <p>Also, it is best to avoid writing <code>#include</code> above the
 declaration just to indicate that the function is declared in a

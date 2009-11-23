@@ -88,8 +88,9 @@ of the footnote, and then by a terminating right brace.  Footnotes may
 be of any length (they will be broken across pages if necessary), but
 are usually short.  The template is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">ordinary text@footnote{<var>text of footnote</var>}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">ordinary text@footnote{<var>text of footnote</var>}
+</pre></div>
 
 <p>As shown here, the <code>@footnote</code> command should come right after the
 text being footnoted, with no intervening space; otherwise, the footnote
@@ -98,9 +99,10 @@ marker might end up starting a line.
 <p>For example, this clause is followed by a sample footnote<a name="DOCF9" href="texinfo_fot.html#FOOT9">(9)</a>; in the Texinfo source, it looks like
 this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">&hellip;a sample footnote@footnote{Here is the sample
+<div class="example">
+<pre class="example">&hellip;a sample footnote@footnote{Here is the sample
 footnote.}; in the Texinfo source&hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>As you can see, the source includes two punctuation marks next to each
 other; in this case, &lsquo;<samp>.};</samp>&rsquo; is the sequence.  This is normal (the

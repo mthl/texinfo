@@ -798,9 +798,10 @@ to the right of the start of its line.
 <p>  The variable <code>c-indent-level</code> controls the indentation for C
 statements with respect to the surrounding block.  In the example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">    {
+<div class="example">
+<pre class="example">    {
       foo ();
-</pre></td></tr></table>
+</pre></div>
 
 <p>the difference in indentation between the lines is <code>c-indent-level</code>.
 Its standard value is 2.
@@ -809,9 +810,10 @@ Its standard value is 2.
 of its line, the <code>c-indent-level</code> is added to the indentation of the
 line, not the column of the open-brace.  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">if (losing) {
+<div class="example">
+<pre class="example">if (losing) {
   do_this ();
-</pre></td></tr></table>
+</pre></div>
 
 <p>One popular indentation style is that which results from setting
 <code>c-indent-level</code> to 8 and putting open-braces at the end of a line
@@ -825,10 +827,11 @@ is zero.  Think of this variable as the imaginary position of the open
 brace, relative to the first non-blank character on the line.  By setting
 the variable to 4 and <code>c-indent-level</code> to 0, you can get this style:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">if (x == y) {
+<div class="example">
+<pre class="example">if (x == y) {
     do_it ();
     }
-</pre></td></tr></table>
+</pre></div>
 
 <p>  When <code>c-indent-level</code> is zero, the statements inside most braces
 line up exactly under the open brace.  An exception are braces in column
@@ -846,9 +849,10 @@ like the then-clauses of <code>if</code> statements and the bodies of
 <code>while</code> statements.  The <code>c-continued-statement-offset</code>
 parameter determines the difference in indentation between the two lines in:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">if (x == y)
+<div class="example">
+<pre class="example">if (x == y)
   do_it ();
-</pre></td></tr></table>
+</pre></div>
 
 <p>The default value for <code>c-continued-statement-offset</code> is 2.  Some
 popular indentation styles correspond to a value of zero for
@@ -859,21 +863,24 @@ popular indentation styles correspond to a value of zero for
 starts with an open-brace.  Its standard value is zero;
 compare:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">if (x == y)
+<div class="example">
+<pre class="example">if (x == y)
   {
-</pre></td></tr></table>
+</pre></div>
 
 <p>with:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">if (x == y)
+<div class="example">
+<pre class="example">if (x == y)
   do_it ();
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you set <code>c-brace-offset</code> to 4, the first example becomes:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">if (x == y)
+<div class="example">
+<pre class="example">if (x == y)
       {
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-c_002dargdecl_002dindent"></a>
 <p>  <code>c-argdecl-indent</code> controls the indentation of declarations of the
@@ -881,28 +888,31 @@ arguments of a C function.  It is absolute: argument declarations receive
 exactly <code>c-argdecl-indent</code> spaces.  The standard value is 5 and
 results in code like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">char *
+<div class="example">
+<pre class="example">char *
 index (string, char)
      char *string;
      int char;
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-c_002dlabel_002doffset"></a>
 <p>  <code>c-label-offset</code> is the extra indentation given to a line that
 contains a label, a case statement, or a <code>default:</code> statement.  Its
 standard value is -2 and results in code like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">switch (c)
+<div class="example">
+<pre class="example">switch (c)
   {
   case 'x':
-</pre></td></tr></table>
+</pre></div>
 
 <p>If <code>c-label-offset</code> were zero, the same code would be indented as:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">switch (c)
+<div class="example">
+<pre class="example">switch (c)
   {
     case 'x':
-</pre></td></tr></table>
+</pre></div>
 
 <p>This example assumes that the other variables above also have their
 default values. 
@@ -1028,13 +1038,14 @@ semicolons are supposed to start at the left margin.  Emacs understands
 these conventions by indenting a double-semicolon comment using &lt;TAB&gt;
 and by not changing the indentation of a triple-semicolon comment at all.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">;; This function is just an example.
+<div class="example">
+<pre class="example">;; This function is just an example.
 ;;; Here either two or three semicolons are appropriate.
 (defun foo (x)
 ;;; And now, the first part of the function:
   ;; The following line adds one.
   (1+ x))           ; This line adds one.
-</pre></td></tr></table>
+</pre></div>
 
 <p>  In C code, a comment preceded on its line by nothing but whitespace
 is indented like a line of code.
@@ -1345,7 +1356,8 @@ be indented.  See section <a href="xemacs_23.html#Text-Mode">Text Mode</a>.
 <p>  Here is an example of the formatting conventions used in the change log
 for Emacs:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">Wed Jun 26 19:29:32 1985  Richard M. Stallman  (rms at mit-prep)
+<div class="smallexample">
+<pre class="smallexample">Wed Jun 26 19:29:32 1985  Richard M. Stallman  (rms at mit-prep)
 
         * xdisp.c (try_window_id):
         If C-k is done at end of next-to-last line,
@@ -1365,7 +1377,7 @@ Tue Jun 25 05:25:33 1985  Richard M. Stallman  (rms at mit-prep)
         permanently.  If display_text_line sets point position wrong
         (case where line is killed, point is at eob and that line is
         not displayed), set it again in final compute_motion.
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Tags"></a>
@@ -1493,9 +1505,10 @@ environment variable <code>TEXTAGS</code> before invoking <code>etags</code>.  T
 value of this environment variable should be a colon-separated list of
 command names.  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">TEXTAGS=&quot;def:newcommand:newenvironment&quot;
+<div class="example">
+<pre class="example">TEXTAGS=&quot;def:newcommand:newenvironment&quot;
 export TEXTAGS
-</pre></td></tr></table>
+</pre></div>
 
 <p>specifies (using Bourne shell syntax) that the commands &lsquo;<samp>\def</samp>&rsquo;,
 &lsquo;<samp>\newcommand</samp>&rsquo; and &lsquo;<samp>\newenvironment</samp>&rsquo; also define tags.
@@ -1627,8 +1640,9 @@ the syntax of several languages, as described in
 <a href="#Tag-Syntax">Source File Tag Syntax</a>.
 Here is how to run <code>etags</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">etags <var>inputfiles</var>&hellip;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">etags <var>inputfiles</var>&hellip;
+</pre></div>
 
 <p>The <code>etags</code> program reads the specified files, and writes a tags
 table named &lsquo;<tt>TAGS</tt>&rsquo; in the current working directory.  You can
@@ -1686,8 +1700,9 @@ have a limit on its length.  The simplest way to circumvent this limit
 is to tell <code>etags</code> to read the file names from its standard input,
 by typing a dash in place of the file names, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">find . -name &quot;*.[chCH]&quot; -print | etags -
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">find . -name &quot;*.[chCH]&quot; -print | etags -
+</pre></div>
 
 <p>  Use the option &lsquo;<samp>--language=<var>name</var></samp>&rsquo; to specify the language
 explicitly.  You can intermix these options with file names; each one
@@ -1728,8 +1743,9 @@ based on regexp matching.  You can freely intermix it with file names.
 Each &lsquo;<samp>--regex</samp>&rsquo; option adds to the preceding ones, and applies only
 to the following files.  The syntax is:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">--regex=/<var>tagregexp</var>[/<var>nameregexp</var>]/
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">--regex=/<var>tagregexp</var>[/<var>nameregexp</var>]/
+</pre></div>
 
 <p>where <var>tagregexp</var> is used to match the lines to tag.  It is always
 anchored, that is, it behaves as if preceded by &lsquo;<samp>^</samp>&rsquo;.  If you want
@@ -1763,9 +1779,10 @@ programming languages.
 &lsquo;<samp>--regex</samp>&rsquo; options.  It applies to the file names following it, as
 you can see from the following example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">etags --regex=/<var>reg1</var>/ voo.doo --regex=/<var>reg2</var>/ \
+<div class="smallexample">
+<pre class="smallexample">etags --regex=/<var>reg1</var>/ voo.doo --regex=/<var>reg2</var>/ \
     bar.ber -R --lang=lisp los.er
-</pre></td></tr></table>
+</pre></div>
 
 <p>Here <code>etags</code> chooses the parsing language for &lsquo;<tt>voo.doo</tt>&rsquo; and
 &lsquo;<tt>bar.ber</tt>&rsquo; according to their contents.  <code>etags</code> also uses
@@ -1781,8 +1798,9 @@ prints the list of languages recognised by <code>etags</code>.  The following
 example tags the <code>DEFVAR</code> macros in the Emacs source files.
 <code>etags</code> applies this regular expression to C files only:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">--regex='{c}/[ \t]*DEFVAR_[A-Z_ \t(]+&quot;\([^&quot;]+\)&quot;/'
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">--regex='{c}/[ \t]*DEFVAR_[A-Z_ \t(]+&quot;\([^&quot;]+\)&quot;/'
+</pre></div>
 
 <p>This feature is particularly useful when storing a list of regular
 expressions in a file.  The following option syntax instructs
@@ -1790,8 +1808,9 @@ expressions in a file.  The following option syntax instructs
 expressions contained in the second file are matched without regard to
 case.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">--regex=@first-file --ignore-case-regex=@second-file
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">--regex=@first-file --ignore-case-regex=@second-file
+</pre></div>
 
 <p>A regex file contains one regular expressions per line.  Empty lines,
 and lines beginning with space or tab are ignored.  When the first
@@ -1802,14 +1821,16 @@ expressions.  For example, one can create a file called
 &lsquo;<samp>emacs.tags</samp>&rsquo; with the following contents (the first line in the
 file is a comment):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">        -- This is for GNU Emacs source files
+<div class="smallexample">
+<pre class="smallexample">        -- This is for GNU Emacs source files
 {c}/[ \t]*DEFVAR_[A-Z_ \t(]+&quot;\([^&quot;]+\)&quot;/\1/
-</pre></td></tr></table>
+</pre></div>
 
 <p>and then use it like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">etags --regex=@emacs.tags *.[ch] */*.[ch]
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">etags --regex=@emacs.tags *.[ch] */*.[ch]
+</pre></div>
 
 <p>  Here are some more examples.  The regexps are quoted to protect them
 from shell interpretation.
@@ -1818,12 +1839,13 @@ from shell interpretation.
 <li>
 Tag Octave files:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">etags --language=none \
+<div class="smallexample">
+<pre class="smallexample">etags --language=none \
       --regex='/[ \t]*function.*=[ \t]*\([^ \t]*\)[ \t]*(/\1/' \
       --regex='/###key \(.*\)/\1/' \
       --regex='/[ \t]*global[ \t].*/' \
       *.m
-</pre></td></tr></table>
+</pre></div>
 
 <p>Note that tags are not generated for scripts so that you have to add a
 line by yourself of the form &lsquo;###key &lt;script-name&gt;&rsquo; if you want to jump
@@ -1832,17 +1854,19 @@ to it.
 </li><li>
 Tag Tcl files:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">etags --language=none --regex='/proc[ \t]+\([^ \t]+\)/\1/' *.tcl
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">etags --language=none --regex='/proc[ \t]+\([^ \t]+\)/\1/' *.tcl
+</pre></div>
 
 </li><li>
 Tag VHDL files:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">--language=none \
+<div class="smallexample">
+<pre class="smallexample">--language=none \
 --regex='/[ \t]*\(ARCHITECTURE\|CONFIGURATION\) +[^ ]* +OF/' \
 --regex='/[ \t]*\(ATTRIBUTE\|ENTITY\|FUNCTION\|PACKAGE\
 \( BODY\)?\|PROCEDURE\|PROCESS\|TYPE\)[ \t]+\([^ \t(]+\)/\3/'
-</pre></td></tr></table>
+</pre></div>
 </li></ul>
 
 <hr>
@@ -1892,13 +1916,14 @@ strings, they are evaluated and must return an appropriate string.
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">  (setq tag-table-alist
+<div class="example">
+<pre class="example">  (setq tag-table-alist
         '((&quot;/usr/src/public/perl/&quot; . &quot;/usr/src/public/perl/perl-3.0/&quot;)
           (&quot;\\.el$&quot; . &quot;/usr/local/emacs/src/&quot;)
           (&quot;/jbw/gnu/&quot; . &quot;/usr15/degree/stud/jbw/gnu/&quot;)
           (&quot;&quot; . &quot;/usr/local/emacs/src/&quot;)
           ))
-</pre></td></tr></table>
+</pre></div>
 
 <p>The example defines the tags table alist in the following way:
 </p> 

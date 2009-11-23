@@ -113,12 +113,13 @@ where R is the quotient ring of P modulo the standard basis SBid.
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>a list l of two objects
-</p><pre class="format">         l[1] : a polynomial ring, containing two ideals, &rsquo;endid&rsquo; and &rsquo;endphi&rsquo;
+</p><div class="format">
+<pre class="format">         l[1] : a polynomial ring, containing two ideals, &rsquo;endid&rsquo; and &rsquo;endphi&rsquo;
                such that l[1]/endid = Hom_R(J,J) and
                endphi describes the canonical map R -&gt; Hom_R(J,J)
          l[2] : an integer which is 1 if phi is an isomorphism, 0 if not
          l[3] : an integer, the contribution to delta
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -127,7 +128,8 @@ where R is the quotient ring of P modulo the standard basis SBid.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;normal.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;normal.lib&quot;;
 ring r   = 0,(x,y),wp(2,3);
 ideal id = y^2-x^3;
 ideal J  = x,y;
@@ -148,7 +150,7 @@ map psi = r,endphi;// defines the canonical map r/id -&gt; End(r/id)
 psi;
 &rarr; psi[1]=T(1)^2
 &rarr; psi[2]=T(1)^3
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

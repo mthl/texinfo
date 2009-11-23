@@ -92,8 +92,9 @@ ul.no-bullet {list-style: none}
 <p>Format the Texinfo file with the shell command <code>tex</code> followed by
 the name of the Texinfo file.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">tex foo.texi
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">tex foo.texi
+</pre></div>
 
 <p>TeX will produce a <em>DVI file</em> as well as several auxiliary
 files containing information for indices, cross references, etc.  The
@@ -125,8 +126,9 @@ arguments to give to <code>texindex</code>.
 can use &lsquo;<samp>??</samp>&rsquo; as shell wildcards and give the command in this
 form:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">texindex foo.??
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">texindex foo.??
+</pre></div>
 
 <p>This command will run <code>texindex</code> on all the unsorted index files,
 including any that you have defined yourself using <code>@defindex</code>
@@ -195,11 +197,12 @@ avoid them with the <code>@novalidate</code> command, which you must give
 (see section <a href="setfilename.html#setfilename"><code>@setfilename</code></a>).  Thus, the beginning of
 your file would look approximately like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+<div class="example">
+<pre class="example">\input texinfo
 @novalidate
 @setfilename myfile.info
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@novalidate</code> also turns off validation in
 <code>makeinfo</code>, just like its <code>--no-validate</code> option

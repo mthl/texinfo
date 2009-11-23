@@ -76,8 +76,9 @@ described in detail.  For other references run the
 </p>
 <p>A <small>CVS</small> command looks like:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">cvs [ <var>global_options</var> ] <var>command</var> [ <var>command_options</var> ] [ <var>command_args</var> ]
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">cvs [ <var>global_options</var> ] <var>command</var> [ <var>command_options</var> ] [ <var>command_args</var> ]
+</pre></div>
 
 <p>Global options:
 </p>
@@ -170,17 +171,19 @@ See <a href="cvs_16.html#Global-options">Global options</a>.
 
 <p>Keyword expansion modes (see section <a href="cvs_12.html#Substitution-modes">Substitution modes</a>):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">-kkv  $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp $
+<div class="example">
+<pre class="example">-kkv  $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp $
 -kkvl $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
 -kk   $<i></i>Id$
 -kv   file1,v 1.1 1993/12/09 03:21:13 joe Exp
 -ko   <i>no expansion</i>
 -kb   <i>no expansion, file is binary</i>
-</pre></td></tr></table>
+</pre></div>
 
 <p>Keywords (see section <a href="cvs_12.html#Keyword-list">Keyword List</a>):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$<i></i>Author: joe $
+<div class="example">
+<pre class="example">$<i></i>Author: joe $
 $<i></i>Date: 1993/12/09 03:21:13 $
 $<i></i>CVSHeader: files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
 $<i></i>Header: /home/files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
@@ -195,7 +198,7 @@ $<i></i>Log: file1,v $
 Revision 1.1  1993/12/09 03:30:17  joe
 Initial revision
 
-</pre></td></tr></table>
+</pre></div>
 
 <p>Commands, command options, and command arguments:
 </p>

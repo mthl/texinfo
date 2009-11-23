@@ -100,35 +100,38 @@ ul.no-bullet {list-style: none}
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list L with the computed data:
-  </p><pre class="format">  L[1] a list of rings: L[1][1]=aff_r (affine), L[1][2]=Proj_R (projective),
+  </p><div class="format">
+<pre class="format">  L[1] a list of rings: L[1][1]=aff_r (affine), L[1][2]=Proj_R (projective),
   L[2] an intvec with 2 entries (degree, genus),
   L[3] a list of intvec (closed places),
   L[4] an intvec (conductor),
   L[5] a list of lists:
      L[5][d][1] a (local) ring over an extension of degree d,
      L[5][d][2] an intvec (degrees of base points of places of degree d)
-  </pre>
+  </pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
 <dd><p><code>Adj_div(f);</code> computes and stores the fundamental data of the
 plane curve defined by f as needed for AG codes.
 <br>In the affine ring you can find the following data:
-   </p><pre class="format">   poly CHI:  affine equation of the curve,
+   </p><div class="format">
+<pre class="format">   poly CHI:  affine equation of the curve,
    ideal Aff_SLocus:  affine singular locus (std),
    list Inf_Points:  points at infinity
             Inf_Points[1]:  singular points
             Inf_Points[2]:  non-singular points,
    list Aff_SPoints:  affine singular points (if not empty).
-   </pre>
+   </pre></div>
 <p>In the projective ring you can find the projective equation
 CHI of the curve (poly).
 <br>In the local rings L[5][d][1] you find:
-   </p><pre class="format">   list POINTS:  base points of the places of degree d,
+   </p><div class="format">
+<pre class="format">   list POINTS:  base points of the places of degree d,
    list LOC_EQS:  local equations of the curve at the base points,
    list BRANCHES:  Hamburger-Noether developments of the places,
    list PARAMETRIZATIONS:  local parametrizations of the places,
-   </pre>
+   </pre></div>
 <p>Each entry of the list L[3] corresponds to one closed place (i.e.,
 a place and all its conjugates) which is represented by an intvec
 of size two, the first entry is the degree of the place (in
@@ -156,7 +159,8 @@ polynomial in two variables.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;brnoeth.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;brnoeth.lib&quot;;
 int plevel=printlevel;
 printlevel=-1;
 ring s=2,(x,y),lp;
@@ -259,7 +263,7 @@ BRANCHES;              // Hamburger-Noether development
    a+1)*x8y6+x9+x9y7+(a+1)*x10+x11y6+(a+1)*x12y4+x13y5+x14+x14y+x15y4+x16+(a\
    +1)*x16y2+x17y3+x19y2+(a+1)*x20+x21y+x23
 printlevel=plevel;
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_896.htm#NSplaces">NSplaces</a>;
 <a href="sing_904.htm#closed_005fpoints">closed_points</a>.

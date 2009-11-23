@@ -95,9 +95,10 @@ ul.no-bullet {list-style: none}
 <a name="index-Command-line-options"></a>
 
 <p>The synopsis of <small>SINGULAR</small> is
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">Singular  [options] [file1 [file2 &hellip;]]
+</p><div class="smallexample">
+<pre class="smallexample">Singular  [options] [file1 [file2 &hellip;]]
 ESingular  [options] [file1 [file2 &hellip;]]
-</pre></td></tr></table>
+</pre></div>
 <p>Options can be given in both, their long and short format. The following
 options control the general behavior of <small>SINGULAR</small>:
 </p><dl compact="compact">
@@ -308,20 +309,22 @@ singular.el can be found, to <code>DIR</code>.
 <p>The value of options given to <small>SINGULAR</small> (resp. their default values,
 if an option was not given), can be checked with the command
 <code>system(&quot;--</code>long_option_name<code>&quot;)</code>.  See <a href="sing_279.htm#system">system</a>.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  system(&quot;--quiet&quot;);    // if ``quiet'' 1, otherwise 0
+</p><div class="smallexample">
+<pre class="smallexample">  system(&quot;--quiet&quot;);    // if ``quiet'' 1, otherwise 0
 &rarr; 1
   system(&quot;--min-time&quot;); // minimal reported time
 &rarr; 0.5
   system(&quot;--random&quot;);   // seed of the random generator
 &rarr; 12345678
-</pre></td></tr></table>
+</pre></div>
 
 <p>Furthermore, the value of options (e.g., <code>--browser</code>) can be
 re-set while <small>SINGULAR</small> is running with the command
 <code>system(&quot;--</code>long_option_name_string <code>&quot;,</code>expression<code>)</code>. See <a href="sing_279.htm#system">system</a>.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  system(&quot;--browser&quot;, &quot;builtin&quot;);  // sets browser to 'builtin'
+</p><div class="smallexample">
+<pre class="smallexample">  system(&quot;--browser&quot;, &quot;builtin&quot;);  // sets browser to 'builtin'
   system(&quot;--ticks-per-sec&quot;, 100);  // sets timer resolution to 100
-</pre></td></tr></table>
+</pre></div>
 
 
 

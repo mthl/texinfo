@@ -107,13 +107,14 @@ ul.no-bullet {list-style: none}
 all denominators from its coefficients and then divide it by its content.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   poly f=(3x+6y)^5;
   f/5;
 &rarr; 243/5x5+486x4y+1944x3y2+3888x2y3+3888xy4+7776/5y5
   cleardenom(f/5);
 &rarr; x5+10x4y+40x3y2+80x2y3+80xy4+32y5
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 </td>

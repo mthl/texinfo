@@ -105,19 +105,21 @@ ul.no-bullet {list-style: none}
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><pre class="format">matrix J;  Jordan matrix with list(e,s,m)==jordan(J)
-</pre>
+<dd><div class="format">
+<pre class="format">matrix J;  Jordan matrix with list(e,s,m)==jordan(J)
+</pre></div>
 
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;linalg.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;linalg.lib&quot;;
 ring R=0,x,dp;
 ideal e=ideal(2,3);
 intvec s=1,2;
 intvec m=1,1;
 print(jordanmatrix(e,s,m));
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

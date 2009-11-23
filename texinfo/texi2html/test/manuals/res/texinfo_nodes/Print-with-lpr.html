@@ -94,21 +94,23 @@ installation.  Two common ones are &lsquo;<samp>dvips foo.dvi -o</samp>&rsquo; a
 <p>For example, the following commands will (perhaps) suffice to sort the
 indices, format, and print the <cite>Bison Manual</cite>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">tex bison.texinfo
+<div class="example">
+<pre class="example">tex bison.texinfo
 texindex bison.??
 tex bison.texinfo
 lpr -d bison.dvi
-</pre></td></tr></table>
+</pre></div>
 
 <p>(Remember that the shell commands may be different at your site; but
 these are commonly used versions.)
 </p>
 <p>Using the <code>texi2dvi</code> shell script (see the previous section):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">texi2dvi bison.texinfo
+<div class="example">
+<pre class="example">texi2dvi bison.texinfo
 lpr -d bison.dvi
 # or perhaps dvips bison.dvi -o
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-Shell-printing_002c-on-MS_002dDOS_002fMS_002dWindows"></a>
 <a name="index-Printing-DVI-files_002c-on-MS_002dDOS_002fMS_002dWindows"></a>
@@ -132,8 +134,9 @@ queue.  In some cases, the version of <code>lpr</code> which comes with your
 network software will have a special option to send a file to specific
 queues, like this:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">lpr -Qdvi -hprint.server.domain bison.dvi
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">lpr -Qdvi -hprint.server.domain bison.dvi
+</pre></div>
 
 </li><li> Convert the DVI file to a Postscript or PCL file and send it to your
 local printer.  See <a href="../dvips/dvips-invocation.html#dvips-invocation">(dvips)dvips invocation</a> section &lsquo;dvips invocation&rsquo; in <cite>Dvips</cite>, and the man

@@ -107,8 +107,9 @@ h must be a ring variable
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>a polynomial, the invariant polynomial of the vector field
-</p><pre class="format">         m = m[1,1]*d/dx(1) +...+ m[n,1]*d/dx(n)
-</pre>
+</p><div class="format">
+<pre class="format">         m = m[1,1]*d/dx(1) +...+ m[n,1]*d/dx(n)
+</pre></div>
 <p>with respect to p,q,h. It is defined as follows: set inv = p if p is
 invariant, and else as
 <br>inv = m(q)^N * sum_i=1..N-1{ (-1)^i*(1/i!)*m^i(p)*(q/m(q))^i }
@@ -118,7 +119,8 @@ where m^N(p) = 0, m^(N-1)(p) != 0;
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;ainvar.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;ainvar.lib&quot;;
 ring q=0,(x,y,z),dp;
 matrix m[3][1];
 m[2,1]=x;
@@ -126,7 +128,7 @@ m[3,1]=y;
 poly in=localInvar(m,z,y,x);
 in;
 &rarr; -1/2y2+xz
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

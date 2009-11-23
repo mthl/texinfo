@@ -102,10 +102,11 @@ ul.no-bullet {list-style: none}
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list L with:
-   </p><pre class="format">   L[1] is the generator matrix in standard form of an equivalent code,
+   </p><div class="format">
+<pre class="format">   L[1] is the generator matrix in standard form of an equivalent code,
    L[2] is the parity check matrix in standard form of such code,
    L[3] is an intvec which represents the needed permutation.
-   </pre>
+   </pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -122,7 +123,8 @@ together with a decoding algorithm).
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;brnoeth.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;brnoeth.lib&quot;;
 ring s=3,T,lp;
 matrix C[2][5]=0,1,0,1,1,0,1,0,0,1;
 print(C);
@@ -144,7 +146,7 @@ print(L[2]);
 print(L[1]*transpose(L[2]));
 &rarr; 0,0,0,
 &rarr; 0,0,0 
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_901.htm#AGcode_005fOmega">AGcode_Omega</a>;
 <a href="sing_907.htm#permute_005fL">permute_L</a>;

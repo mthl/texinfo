@@ -152,7 +152,8 @@ the regularity is computed and used as a degree bound during
 the computation unless <code>option(notRegularity);</code> is given.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring rh3=32003,(w,x,y,z),(dp,C);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring rh3=32003,(w,x,y,z),(dp,C);
   poly f=x11+y10+z9+x5y2+x2y2z3+xy3*(y2+x)^2;
   ideal j=homog(jacob(f),w);
   def jr=res(j,0);
@@ -168,7 +169,7 @@ the computation unless <code>option(notRegularity);</code> is given.
   jj=minres(jj);
   regularity(jj);
 &rarr; 25
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

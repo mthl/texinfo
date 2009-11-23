@@ -103,7 +103,8 @@ ul.no-bullet {list-style: none}
 N&rsquo;=R^n/N (R=basering), and let A:R^m&ndash;&gt;R^n be a matrix inducing a
 map A&rsquo;:M&rsquo;&ndash;&gt;N&rsquo;. Then kernel(A,M,N); computes a presentation K of
 ker(A&rsquo;) as in the commutative diagram:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">          ker(A') ---&gt;  M' --A'--&gt; N'
+</p><div class="smallexample">
+<pre class="smallexample">          ker(A') ---&gt;  M' --A'--&gt; N'
              |^         |^         |^
              |          |          |
              R^r  ---&gt; R^m --A--&gt; R^n
@@ -111,7 +112,7 @@ ker(A&rsquo;) as in the commutative diagram:
              |K         |M         |N
              |          |          |
              R^s  ---&gt; R^p -----&gt; R^q
-</pre></td></tr></table>
+</pre></div>
 
 </dd>
 <dt><strong>Return:</strong></dt>
@@ -120,7 +121,8 @@ ker(A&rsquo;) as in the commutative diagram:
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;homolog.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;homolog.lib&quot;;
 ring r;
 module N=[2x,x],[0,y];
 module M=maxideal(1)*freemodule(2);
@@ -135,7 +137,7 @@ vdim(std(K));
 print(K);
 &rarr; z,0,y,0,x,0,
 &rarr; 0,z,0,y,0,x 
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

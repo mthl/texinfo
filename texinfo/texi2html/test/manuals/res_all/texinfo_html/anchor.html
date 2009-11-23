@@ -92,17 +92,19 @@ cross-references can refer to it, just as they can to nodes.  You create
 an anchor with the <code>@anchor</code> command, and give the label as a
 normal brace-delimited argument.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This marks the @anchor{x-spot}spot.
+<div class="example">
+<pre class="example">This marks the @anchor{x-spot}spot.
 &hellip;
 @xref{x-spot,,the spot}.
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This marks the spot.
+<div class="example">
+<pre class="example">This marks the spot.
 &hellip;
 See [the spot], page 1.
-</pre></td></tr></table>
+</pre></div>
 
 <p>As you can see, the <code>@anchor</code> command itself produces no output.
 This example defines an anchor &lsquo;x-spot&rsquo; just before the word &lsquo;spot&rsquo;.

@@ -310,8 +310,9 @@ formatting commands to use single quotation marks around the text.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">The function returns @code{nil}.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">The function returns @code{nil}.
+</pre></div>
 
 <p>produces this in the printed manual:
 </p>
@@ -391,13 +392,15 @@ long-standing manuals do so.
 users.  For example, to refer to the characters <kbd>M-a</kbd>,
 write
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@kbd{M-a}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@kbd{M-a}
+</pre></div>
 
 <p>and to refer to the characters <kbd>M-x shell</kbd>, write
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@kbd{M-x shell}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@kbd{M-x shell}
+</pre></div>
 
 <a name="index-user-input"></a>
 <a name="index-slanted-typewriter-font_002c-for-_0040kbd"></a>
@@ -433,17 +436,19 @@ command.  Here, for example, is the way to describe a command that
 would be described more verbosely as &ldquo;press an &lsquo;<samp>r</samp>&rsquo; and then
 press the &lt;RET&gt; key&rdquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@kbd{r @key{RET}}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@kbd{r @key{RET}}
+</pre></div>
 
 <p>This produces: <kbd>r &lt;RET&gt;</kbd>
 </p>
 <p>You also use the <code>@kbd</code> command if you are spelling out the letters
 you type; for example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">To give the @code{logout} command,
+<div class="example">
+<pre class="example">To give the @code{logout} command,
 type the characters @kbd{l o g o u t @key{RET}}.
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
@@ -481,8 +486,9 @@ input, write <kbd>@key{SPC}</kbd> for it.)
 <p>Use the <code>@key</code> command for the conventional name for a key on a
 keyboard, as in:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@key{RET}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@key{RET}
+</pre></div>
 
 <p>You can use the <code>@key</code> command within the argument of an
 <code>@kbd</code> command when the sequence of characters to be typed
@@ -490,8 +496,9 @@ includes one or more keys that are described by name.
 </p>
 <p>For example, to produce <kbd>C-x &lt;ESC&gt;</kbd> you would type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@kbd{C-x @key{ESC}}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@kbd{C-x @key{ESC}}
+</pre></div>
 
 <p>Here is a list of the recommended names for keys:
 <a name="index-Recommended-names-for-keys"></a>
@@ -572,9 +579,10 @@ Enclose the text in braces.  The argument appears within single
 quotation marks in both the Info file and the printed manual; in
 addition, it is printed in a fixed-width font.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">To match @samp{foo} at the end of the line,
+<div class="example">
+<pre class="example">To match @samp{foo} at the end of the line,
 use the regexp @samp{foo$}.
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
@@ -596,10 +604,11 @@ if those punctuation marks are part of the English text that surrounds
 the string.  In the following sentence, for example, the commas and
 period are outside of the braces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">In English, the vowels are @samp{a}, @samp{e},
+<div class="example">
+<pre class="example">In English, the vowels are @samp{a}, @samp{e},
 @samp{i}, @samp{o}, @samp{u}, and sometimes
 @samp{y}.
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
@@ -640,15 +649,17 @@ characters.
 any unique delimiter character.  Enclose the verbatim text, including the
 delimiters, in braces.  Text is printed in a fixed-width font:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">How many @verb{|@|}-escapes does one need to print this
+<div class="example">
+<pre class="example">How many @verb{|@|}-escapes does one need to print this
 @verb{.@a @b @c.} string or @verb{+@'e?`!`{}\+} this?
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">How many <tt>@ </tt>-escapes does one need to print this
+<div class="example">
+<pre class="example">How many <tt>@ </tt>-escapes does one need to print this
 <tt>@a @b @c</tt> string or these <tt>@'e?`{}!`\</tt> this?
-</pre></td></tr></table>
+</pre></div>
 
 <p>This is in contrast to <code>@samp</code> (see the previous
 section), whose argument is normal Texinfo text, where the characters
@@ -698,9 +709,10 @@ argument is printed in slanted type.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">To delete file @var{filename},
+<div class="example">
+<pre class="example">To delete file @var{filename},
 type @samp{rm @var{filename}}.
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
@@ -716,23 +728,26 @@ use hyphens to make it more readable.  Thus, the Texinfo source for
 the illustration of how to begin a Texinfo manual looks like
 this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+<div class="example">
+<pre class="example">\input texinfo
 @@setfilename @var{info-file-name}
 @@settitle @var{name-of-manual}
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+<div class="example">
+<pre class="example">\input texinfo
 @setfilename <var>info-file-name</var>
 @settitle <var>name-of-manual</var>
-</pre></td></tr></table>
+</pre></div>
 
 <p>In some documentation styles, metasyntactic variables are shown with
 angle brackets, for example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">&hellip;, type rm &lt;filename&gt;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">&hellip;, type rm &lt;filename&gt;
+</pre></div>
 
 <p>However, that is not the style that Texinfo uses.  (You can, of
 course, modify the sources to &lsquo;<tt>texinfo.tex</tt>&rsquo; and the Info formatting commands
@@ -768,8 +783,9 @@ section).
 <p><code>@env</code> is equivalent to <code>@code</code> in its effects.
 For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">The @env{PATH} environment variable &hellip;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">The @env{PATH} environment variable &hellip;
+</pre></div>
 <p>produces
 </p><blockquote>
 <p>The <code>PATH</code> environment variable &hellip;
@@ -805,9 +821,10 @@ for symbols in a programming language; use <code>@code</code>.
 <p>Currently, <code>@file</code> is equivalent to <code>@samp</code> in its effects.
 For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">The @file{.el} files are in
+<div class="example">
+<pre class="example">The @file{.el} files are in
 the @file{/usr/local/emacs/lisp} directory.
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
@@ -846,8 +863,9 @@ the &lsquo;<tt>/usr/local/emacs/lisp</tt>&rsquo; directory.
 <p><code>@command</code> is equivalent to <code>@code</code> in its effects.
 For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">The command @command{ls} lists directory contents.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">The command @command{ls} lists directory contents.
+</pre></div>
 <p>produces
 </p><blockquote>
 <p>The command <code>ls</code> lists directory contents.
@@ -889,8 +907,9 @@ example, &lsquo;<samp>-l</samp>&rsquo; or &lsquo;<samp>--version</samp>&rsquo; o
 <p><code>@option</code> is equivalent to <code>@samp</code> in its effects.
 For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">The option @option{-l} produces a long listing.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">The option @option{-l} produces a long listing.
+</pre></div>
 <p>produces
 </p><blockquote>
 <p>The option &lsquo;<samp>-l</samp>&rsquo; produces a long listing.
@@ -928,8 +947,9 @@ time does not deserve <code>@dfn</code>.  The command generates italics in
 the printed manual, and double quotation marks in the Info file.  For
 example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Getting rid of a file is called @dfn{deleting} it.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Getting rid of a file is called @dfn{deleting} it.
+</pre></div>
 
 <p>produces
 </p>
@@ -1039,13 +1059,15 @@ can follow in HTML output (use the <code>@uref</code> command for that,
 see section <a href="texinfo_9.html#uref"><code>@uref</code></a>).  It is useful for url&rsquo;s which do
 not actually exist.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">For example, the url might be @url{http://example.org/path}.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">For example, the url might be @url{http://example.org/path}.
+</pre></div>
 
 <p>which produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">For example, the url might be <a href="http://example.org/path">http://example.org/path</a>.
-</pre></td></tr></table>
+<div class="display">
+<pre class="display">For example, the url might be <a href="http://example.org/path">http://example.org/path</a>.
+</pre></div>
 
 
 <hr>
@@ -1079,13 +1101,15 @@ the text to display if any.  In HTML output, <code>@email</code> produces a
 &lsquo;<samp>mailto</samp>&rsquo; link that usually brings up a mail composition window.
 For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Send bug reports to @email{bug-texinfo@@gnu.org},
+<div class="example">
+<pre class="example">Send bug reports to @email{bug-texinfo@@gnu.org},
 suggestions to the @email{bug-texinfo@@gnu.org, same place}.
-</pre></td></tr></table>
+</pre></div>
 <p>produces
-</p><table><tr><td>&nbsp;</td><td><pre class="display">Send bug reports to <a href="mailto:bug-texinfo@gnu.org">bug-texinfo@gnu.org</a>,
+</p><div class="display">
+<pre class="display">Send bug reports to <a href="mailto:bug-texinfo@gnu.org">bug-texinfo@gnu.org</a>,
 suggestions to the <a href="mailto:bug-texinfo@gnu.org">same place</a>.
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -1156,17 +1180,19 @@ the <code>@r</code> command, has any regular use.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@quotation
+<div class="example">
+<pre class="example">@quotation
 @strong{Caution:} @samp{rm * .[^.]*} removes @emph{all}
 files in the directory.
 @end quotation
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">     *Caution*: `rm * .[^.]*' removes _all_
+<div class="example">
+<pre class="example">     *Caution*: `rm * .[^.]*' removes _all_
      files in the directory.
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <code>@strong</code> command is seldom used except to mark what is, in
 effect, a typographical element, such as the word &lsquo;Caution&rsquo; in the
@@ -1209,13 +1235,15 @@ output in <small>A SMALL CAPS FONT</small> and set text in the Info file in uppe
 case letters.  Write the text you want to be in small caps (where
 possible) between braces in lower case, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">The @sc{acm} and @sc{ieee} are technical societies.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">The @sc{acm} and @sc{ieee} are technical societies.
+</pre></div>
 
 <p>This produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">The ACM and IEEE are technical societies.
-</pre></td></tr></table>
+<div class="display">
+<pre class="display">The ACM and IEEE are technical societies.
+</pre></div>
 
 <p>TeX typesets the small caps font in a manner that prevents the
 letters from &lsquo;jumping out at you on the page&rsquo;.  This makes small caps
@@ -1281,15 +1309,17 @@ output.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@lisp
+<div class="example">
+<pre class="example">@lisp
 (+ 2 2)    ; @r{Add two plus two.}
 @end lisp
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="lisp">(+ 2 2)    ; <span class="roman">Add two plus two.</span>
-</pre></td></tr></table>
+<div class="lisp">
+<pre class="lisp">(+ 2 2)    ; <span class="roman">Add two plus two.</span>
+</pre></div>
 
 <p>If possible, you should avoid using the other three font commands.  If
 you need to use one, it probably indicates a gap in the Texinfo

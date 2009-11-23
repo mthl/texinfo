@@ -92,9 +92,10 @@ ul.no-bullet {list-style: none}
 <p>Every Texinfo file that is to be input to TeX must begin with a
 <code>\input</code> command and must contain an <code>@setfilename</code> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+<div class="example">
+<pre class="example">\input texinfo
 @setfilename <var>arg-not-used-by-TeX</var>
-</pre></td></tr></table>
+</pre></div>
 
 <p>The first command instructs TeX to load the macros it needs to
 process a Texinfo file and the second command opens auxiliary files.
@@ -102,8 +103,9 @@ process a Texinfo file and the second command opens auxiliary files.
 <p>Every Texinfo file must end with a line that terminates TeX&rsquo;s
 processing and forces out unfinished pages:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@bye
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@bye
+</pre></div>
 
 <p>Strictly speaking, these lines are all a Texinfo file needs to be
 processed successfully by TeX.

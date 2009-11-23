@@ -120,8 +120,9 @@ find Info files whose location is specified this way.)
 directory, you could add an entry like this to the menu in the
 standard &lsquo;<tt>dir</tt>&rsquo; file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">* Test: (/home/bob/info/info-test).  Bob's own test file.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">* Test: (/home/bob/info/info-test).  Bob's own test file.
+</pre></div>
 
 <p>In this case, the absolute file name of the &lsquo;<tt>info-test</tt>&rsquo; file is
 written as the second part of the menu entry.
@@ -129,11 +130,12 @@ written as the second part of the menu entry.
 <p>Alternatively, you could write the following in your &lsquo;<tt>.emacs</tt>&rsquo; file:
 </p>
 <a name="index-Info_002ddirectory_002dlist"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">(require 'info)
+<div class="example">
+<pre class="example">(require 'info)
 (setq Info-directory-list
   (cons (expand-file-name &quot;/home/bob/info&quot;)
         Info-directory-list))
-</pre></td></tr></table>
+</pre></div>
 
 <p>This tells Emacs to merge the system &lsquo;<tt>dir</tt>&rsquo; file with the &lsquo;<tt>dir</tt>&rsquo;
 file in &lsquo;<tt>/home/bob/info</tt>&rsquo;.  Thus, Info will list the
@@ -161,23 +163,26 @@ uses a different syntax.
 In a &lsquo;<tt>.cshrc</tt>&rsquo; file, you could set the <code>INFOPATH</code>
 variable as follows:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">setenv INFOPATH .:~/info:/usr/local/emacs/info
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">setenv INFOPATH .:~/info:/usr/local/emacs/info
+</pre></div>
 
 </li><li>
 In a &lsquo;<tt>.profile</tt>&rsquo; file, you would achieve the same effect by
 writing:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">INFOPATH=.:$HOME/info:/usr/local/emacs/info
+<div class="smallexample">
+<pre class="smallexample">INFOPATH=.:$HOME/info:/usr/local/emacs/info
 export INFOPATH
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 <a name="index-autoexec_002ebat"></a>
 In a &lsquo;<tt>autoexec.bat</tt>&rsquo; file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
+</pre></div>
 </li></ul>
 
 <p>The &lsquo;<samp>.</samp>&rsquo; indicates the current directory as usual.  Emacs uses the
@@ -194,9 +199,10 @@ is replaced by the default (compiled-in) path.  This gives you a way to
 augment the default path with new directories without having to list all
 the standard places.  For example (using <code>sh</code> syntax):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">INFOPATH=/local/info:
+<div class="example">
+<pre class="example">INFOPATH=/local/info:
 export INFOPATH
-</pre></td></tr></table>
+</pre></div>
 
 <p>will search &lsquo;<tt>/local/info</tt>&rsquo; first, then the standard directories.
 Leading or doubled colons are not treated specially.

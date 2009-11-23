@@ -95,15 +95,17 @@ of the document, taken from the <code>@settitle</code> command
 (see <a href="settitle.html#settitle">settitle</a>).  To change this, use the <code>@documentdescription</code>
 environment, as in:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@documentdescription
+<div class="example">
+<pre class="example">@documentdescription
 descriptive text.
 @end documentdescription
-</pre></td></tr></table>
+</pre></div>
 
 <p>This will produce the following output in the &lsquo;<samp>&lt;head&gt;</samp>&rsquo; of the HTML:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">&lt;meta name=description content=&quot;descriptive text.&quot;&gt;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">&lt;meta name=description content=&quot;descriptive text.&quot;&gt;
+</pre></div>
 
 <p><code>@documentdescription</code> must be specified before the first node of
 the document.

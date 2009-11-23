@@ -245,8 +245,9 @@ of the commands and time of the run.
 <p>First of all the flag <code>zback</code> should be set to <code>.true.</code> in order to
 allow adjoint model computation:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Zback=.true.;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Zback=.true.;
+</pre></div>
 
 <p>The two functions <code>cout_Psi</code> corresponding with the final cost and 
 <code>cout_l</code> corresponding with the integrand cost are set up with the
@@ -279,11 +280,12 @@ state control laws
 <p>For example, the following code sets a cost function for the masselottes
 model:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">! Initialisation 
+<div class="example">
+<pre class="example">! Initialisation 
   F_set cout_Psi = eta_move(inode:1);
 !and f_set cout_l integrand in the functionnal    
   F_set cout_l = 0.;
-</pre></td></tr></table>
+</pre></div>
 
 <p>In that example the functional is reduced to the final value
 of the first state component.
@@ -328,15 +330,17 @@ the integral of the predator population with respect with
 <code>apar</code> an <code>cpar</code> is obtained with a number of parameters
 set to 2 in &lsquo;<tt>dimetaphi</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">parameter (lp=2);
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">parameter (lp=2);
+</pre></div>
 
 <p>And the cost function and <code>Free_parameters</code> list in &lsquo;<tt>zinit</tt>&rsquo;:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">f_set cout_Psi = eta(2);
+<div class="example">
+<pre class="example">f_set cout_Psi = eta(2);
 f_set cout_l = eta(2);
 Free_parameters: apar,cpar;
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>apar</code> and <code>cpar</code> also have to be given a value.
 The result is output in &lsquo;<tt>gradpj.data</tt>&rsquo;.

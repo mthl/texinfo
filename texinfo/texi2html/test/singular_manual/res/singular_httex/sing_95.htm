@@ -147,7 +147,8 @@ I/O direction. Types without a conversion to <code>string</code> cannot be
 written.
 </p>
 <br><p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   link l=&quot;:w example.txt&quot;;     // type is ASCII, mode is overwrite
   l;
 &rarr; // type : ASCII
@@ -181,7 +182,7 @@ written.
 &rarr; 2
 &rarr; // ** redefining i **
   close(l);                    // link is closed
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

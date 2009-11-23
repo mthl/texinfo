@@ -105,7 +105,8 @@ Texinfo mode, by default.
 indented by hierarchical level.  For example, here is a part of what was
 produced by running <code>texinfo-show-structure</code> on this manual:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"> Lines matching &quot;^@\\(chapter \\|sect\\|subs\\|subh\\|
+<div class="example">
+<pre class="example"> Lines matching &quot;^@\\(chapter \\|sect\\|subs\\|subh\\|
  unnum\\|major\\|chapheading \\|heading \\|appendix\\)&quot;
  in buffer texinfo.texi.
  &hellip;
@@ -117,7 +118,7 @@ produced by running <code>texinfo-show-structure</code> on this manual:
  4417:        @subsection How to Write an @code{@@node} Line
  4469:        @subsection @code{@@node} Line Tips
  &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>This says that lines 4337, 4393, and 4417 of &lsquo;<tt>texinfo.texi</tt>&rsquo; begin
 with the <code>@section</code>, <code>@subheading</code>, and <code>@subsection</code>

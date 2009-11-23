@@ -108,13 +108,14 @@ of the HNEring created by <code>hnexpansion</code>.
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list, if INPUT contains a valid HNE:
-</p><pre class="format">    invariants(INPUT)[1]:  intvec    (characteristic exponents)
+</p><div class="format">
+<pre class="format">    invariants(INPUT)[1]:  intvec    (characteristic exponents)
     invariants(INPUT)[2]:  intvec    (generators of the semigroup)
     invariants(INPUT)[3]:  intvec    (Puiseux pairs, 1st components)
     invariants(INPUT)[4]:  intvec    (Puiseux pairs, 2nd components)
     invariants(INPUT)[5]:  int       (degree of the conductor)
     invariants(INPUT)[6]:  intvec    (sequence of multiplicities)
-</pre>
+</pre></div>
 <p>an empty list, if INPUT contains no valid HNE.
 </p>
 </dd>
@@ -127,7 +128,8 @@ or the list <code>hne</code> in the HNEring created by <code>hnexpansion</code>.
 <dd><p>list INV, such that INV[i] is the output of <code>invariants(develop(f[i]))</code>
 as above, where f[i] is the ith branch of the curve f, and the last
 entry contains further invariants of f in the format:
-</p><pre class="format">    INV[i][1]    : intvec    (characteristic exponents)
+</p><div class="format">
+<pre class="format">    INV[i][1]    : intvec    (characteristic exponents)
     INV[i][2]    : intvec    (generators of the semigroup)
     INV[i][3]    : intvec    (Puiseux pairs, 1st components)
     INV[i][4]    : intvec    (Puiseux pairs, 2nd components)
@@ -136,7 +138,7 @@ entry contains further invariants of f in the format:
     INV[last][1] : intmat    (contact matrix of the branches)
     INV[last][2] : intmat    (intersection multiplicities of the branches)
     INV[last][3] : int       (delta invariant of f)
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -153,7 +155,8 @@ the polynomial itself.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;hnoether.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;hnoether.lib&quot;;
 ring exring=0,(x,y),dp;
 list hne=develop(y4+2x3y2+x6+x5y);
 list INV=invariants(hne);
@@ -189,7 +192,7 @@ print(INV[size(INV)][2]);         // the intersection numbers of the branches
 &rarr;      9     0
 INV[size(INV)][3];                // the delta invariant of the curve
 &rarr; 14
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_684.htm#develop">develop</a>;
 <a href="sing_689.htm#displayInvariants">displayInvariants</a>;

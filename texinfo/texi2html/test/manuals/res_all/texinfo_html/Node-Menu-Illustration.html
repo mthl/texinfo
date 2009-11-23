@@ -91,7 +91,8 @@ illustrates an upside-down tree.  For this reason, the root node is
 called the &lsquo;Top&rsquo; node, and &lsquo;Up&rsquo; node pointers carry you closer to the
 root.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">                          Top
+<div class="example">
+<pre class="example">                          Top
                            |
          -------------------------------------
         |                  |                  |
@@ -101,13 +102,14 @@ root.
     |        |         |        |         |        |
  Section  Section   Section  Section   Section  Section
    1.1      1.2       2.1      2.2       3.1      3.2
-</pre></td></tr></table>
+</pre></div>
 
 <p>The fully-written command to start Chapter 2 would be this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node     Chapter 2,  Chapter 3, Chapter 1, Top
+<div class="example">
+<pre class="example">@node     Chapter 2,  Chapter 3, Chapter 1, Top
 @comment  node-name,  next,      previous,  up
-</pre></td></tr></table>
+</pre></div>
 
 <p>This <code>@node</code> line says that the name of this node is &ldquo;Chapter
 2&rdquo;, the name of the &lsquo;Next&rsquo; node is &ldquo;Chapter 3&rdquo;, the name of the
@@ -132,17 +134,19 @@ a chapter or chapter-level node.)
 2.  (See <a href="Menus.html#Menus">Menus</a>.)  You would write the menu just
 before the beginning of Section 2.1, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">    @menu
+<div class="example">
+<pre class="example">    @menu
     * Sect. 2.1::    Description of this section.
     * Sect. 2.2::
     @end menu
-</pre></td></tr></table>
+</pre></div>
 
 <p>Write the node for Sect. 2.1 like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">    @node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
+<div class="example">
+<pre class="example">    @node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
     @comment  node-name, next,      previous,  up
-</pre></td></tr></table>
+</pre></div>
 
 <p>In Info format, the &lsquo;Next&rsquo; and &lsquo;Previous&rsquo; pointers of a node usually
 lead to other nodes at the same level&mdash;from chapter to chapter or from
@@ -161,13 +165,14 @@ which.)
 Texinfo File&rdquo;.  This shows an <code>@node</code> line followed by a comment
 line, an <code>@chapter</code> line, and then by indexing lines.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node    Ending a File, Structuring, Beginning a File, Top
+<div class="example">
+<pre class="example">@node    Ending a File, Structuring, Beginning a File, Top
 @comment node-name,     next,        previous,         up
 @chapter Ending a Texinfo File
 @cindex Ending a Texinfo file
 @cindex Texinfo file ending
 @cindex File ending
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>

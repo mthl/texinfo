@@ -117,7 +117,8 @@ ul.no-bullet {list-style: none}
 <br>If a third argument <code>u</code> of type poly or matrix is given, the first argument <code>p</code> is replaced by <code>p/u</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(c,dp);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),(c,dp);
   jet(1+x+x2+x3+x4,3);
 &rarr; x3+x2+x+1
   poly f=1+x+x2+xz+y2+x3+y3+x2y2+z4;
@@ -155,7 +156,7 @@ ul.no-bullet {list-style: none}
 &rarr; _[1]=[x2+y2+xz+x+1,1]
 &rarr; _[2]=[x2+y2+xz+x+1,1]
 &rarr; _[3]=[1,x2,0,0,1]
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

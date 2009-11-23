@@ -129,7 +129,8 @@ case <code>primitive(i)</code> returns the zero ideal, and one should use
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;primitiv.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;primitiv.lib&quot;;
 ring exring=0,(x,y),dp;
 ideal i=x2+1,y2-x;                  // compute Q(i,i^(1/2))=:L
 ideal j=primitive(i);
@@ -149,7 +150,7 @@ j[3];
 &rarr; -1/2y3+11/2y
 // no element was primitive -- the calculation of primitive elements 
 // is based on a random choice.
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_616.htm#primitive_005fextra">primitive_extra</a>.
 </p>

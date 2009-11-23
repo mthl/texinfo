@@ -106,14 +106,15 @@ ul.no-bullet {list-style: none}
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><pre class="format">ring G;  Gauss-Manin system of t with variable s
+<dd><div class="format">
+<pre class="format">ring G;  Gauss-Manin system of t with variable s
   poly gmspoly=t;
   ideal gmsjacob;  Jacobian ideal of t
   ideal gmsstd;  standard basis of Jacobian ideal
   matrix gmsmatrix;  matrix(gmsjacob)*gmsmatrix==matrix(gmsstd)
   ideal gmsbasis;  monomial vector space basis of Jacobian algebra
   int gmsmaxdeg;  maximal weight of variables
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -125,7 +126,8 @@ ul.no-bullet {list-style: none}
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;gaussman.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;gaussman.lib&quot;;
 ring R=0,(x,y),ds;
 poly t=x5+x2y2+y5;
 def G=gmsring(t,&quot;s&quot;);
@@ -157,7 +159,7 @@ print(gmsbasis);
 &rarr; 1
 gmsmaxdeg;
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

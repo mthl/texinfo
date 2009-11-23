@@ -117,9 +117,10 @@ the ring
 ordering.  The exact ring declaration may be omitted in the first
 example since this is the default ring:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r;
+<div class="smallexample">
+<pre class="smallexample">ring r;
 ring r = 32003,(x,y,z),dp;
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 the ring 
@@ -129,8 +130,9 @@ the ring
  ALT="$Q[a,b,c,d]$"></SPAN>
  with lexicographical ordering:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0,(a,b,c,d),lp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = 0,(a,b,c,d),lp;
+</pre></div>
 
 </li><li>
 the ring 
@@ -142,9 +144,10 @@ the ring
 ordering.  The non-prime 10 is converted to the next lower prime in the
 second example:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 7,(x,y,z),ds;
+<div class="smallexample">
+<pre class="smallexample">ring r = 7,(x,y,z),ds;
 ring r = 10,(x,y,z),ds;
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 the ring
@@ -166,8 +169,9 @@ and degree reverse lexicographical ordering for
  SRC="sing_32.png"
  ALT="$x_4,x_5,x_6$"></SPAN>:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 7,(x(1..6)),(lp(3),dp);
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = 7,(x(1..6)),(lp(3),dp);
+</pre></div>
 
 </li><li>
 the localization of 
@@ -186,8 +190,9 @@ the localization of
  ALT="$(x,y,z)$"></SPAN>
 :
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0,(x,y,z,a,b,c),(ds(3), dp(3));
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = 0,(x,y,z,a,b,c),(ds(3), dp(3));
+</pre></div>
 
 </li><li>
 the ring 
@@ -214,8 +219,9 @@ The variables
  have the weights 2, 1,
 and 3, respectively, and  vectors are first ordered by components (in
 descending order) and then by monomials:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0,(x,y,z),(c,wp(2,1,3));
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = 0,(x,y,z),(c,wp(2,1,3));
+</pre></div>
 <p>For ascending component order, the component ordering <code>C</code> has to be
 used.
 </p>
@@ -254,8 +260,9 @@ extension of
  with degree
 lexicographical ordering:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (7,a,b,c),(x,y,z),Dp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = (7,a,b,c),(x,y,z),Dp;
+</pre></div>
 
 </li><li>
 the ring 
@@ -314,9 +321,10 @@ in the second case,
  ALT="$K$"></SPAN>
 :
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (7,a),(x,y,z),dp; minpoly = a^2+a+3;
+<div class="smallexample">
+<pre class="smallexample">ring r = (7,a),(x,y,z),dp; minpoly = a^2+a+3;
 ring r = (7^2,a),(x,y,z),dp;
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 the ring 
@@ -333,8 +341,9 @@ the ring
 numbers represented by simple precision floating point numbers. This is
 a special case:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = real,(x,y,z),dp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = real,(x,y,z),dp;
+</pre></div>
 
 </li><li>
 the ring 
@@ -351,8 +360,9 @@ the ring
 numbers represented by floating point numbers of 50 valid decimal digits
 and the same number of digits for the rest:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (real,50),(x,y,z),dp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = (real,50),(x,y,z),dp;
+</pre></div>
 
 </li><li>
 the ring 
@@ -369,8 +379,9 @@ the ring
 numbers represented by floating point numbers of 10 valid decimal digits
 and with 50 digits for the rest:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (real,10,50),(x,y,z),dp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = (real,10,50),(x,y,z),dp;
+</pre></div>
 
 </li><li>
 the ring 
@@ -392,8 +403,9 @@ and the same number for the rest.
  ALT="$j$"></SPAN>
  denotes the imaginary unit.
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (complex,30,j),(x,y,z),dp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = (complex,30,j),(x,y,z),dp;
+</pre></div>
 
 </li><li>
 the ring 
@@ -415,8 +427,9 @@ and the same number for the rest.
  ALT="$i$"></SPAN>
  is the default for the imaginary unit.
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = complex,(x,y,z),dp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = complex,(x,y,z),dp;
+</pre></div>
 
 </li><li>
 the quotient ring 
@@ -432,9 +445,10 @@ ideal
  ALT="$(x,y,z)$"></SPAN>
 :
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring R = 7,(x,y,z), dp;
+<div class="smallexample">
+<pre class="smallexample">ring R = 7,(x,y,z), dp;
 qring r = std(maxideal(2));
-</pre></td></tr></table>
+</pre></div>
 </li></ul>
 
 </td>

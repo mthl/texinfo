@@ -99,11 +99,12 @@ ul.no-bullet {list-style: none}
 gls: contains the equations, for which a solution will be computed
 ini: ideal of initial values (approximate solutions to start with),<br>
 ipar: control integers (default: ipar = 100,10)
-  </p><pre class="format"> ipar[1]: max. number of iterations
+  </p><div class="format">
+<pre class="format"> ipar[1]: max. number of iterations
  ipar[2]: accuracy (we have the l_2-norm ||.||): accept solution <code>sol</code>
           if ||gls(sol)|| &lt; eps0*(0.1^ipar[2])
           where eps0 = ||gls(ini)|| is the initial error
-  </pre>
+  </pre></div>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -120,7 +121,8 @@ ipar: control integers (default: ipar = 100,10)
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;ntsolve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;ntsolve.lib&quot;;
 ring rsq = (real,40),(x,y,z,w),lp;
 ideal gls =  x2+y2+z2-10, y2+z3+w-8, xy+yz+xz+w5 - 1,w3+y;
 ideal ini = 3.1,2.9,1.1,0.5;
@@ -131,7 +133,7 @@ sol;
 &rarr; sol[2]=2.8215774457503246008496262517717182369409
 &rarr; sol[3]=1.1323120084664179900060940157112668717318
 &rarr; sol[4]=-1.413071026406678849397999475590194239628
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

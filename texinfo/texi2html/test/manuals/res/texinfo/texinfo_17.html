@@ -163,7 +163,8 @@ text output.
 </p>
 <p>For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@iftex
+<div class="example">
+<pre class="example">@iftex
 This text will appear only in the printed manual.
 @end iftex
 @ifinfo
@@ -175,7 +176,7 @@ And this text will only appear in HTML.
 @ifplaintext
 Whereas this text will only appear in plain text.
 @end ifplaintext
-</pre></td></tr></table>
+</pre></div>
 
 <p>The preceding example produces the following line:
 However, this text will appear only in Info (or plain text).
@@ -211,11 +212,12 @@ version of the manual you are reading.
 
 <p>You can specify text to be included in any output format <em>other</em>
 than some given one with the <code>@ifnot&hellip;</code> commands:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@ifnothtml &hellip; @end ifnothtml
+</p><div class="example">
+<pre class="example">@ifnothtml &hellip; @end ifnothtml
 @ifnotinfo &hellip; @end ifnotinfo
 @ifnotplaintext &hellip; @end ifnotplaintext
 @ifnottex &hellip; @end ifnottex
-</pre></td></tr></table>
+</pre></div>
 <p>(The <code>@ifnot&hellip;</code> command and the <code>@end</code> command must
 appear on lines by themselves in your actual source file.)
 </p>
@@ -226,8 +228,9 @@ region is included.  Otherwise, it is ignored.
 text is omitted for both Info and plain text output, not just Info.  To
 specify text which appears only in Info and not in plain text, use
 <code>@ifnotplaintext</code>, like this:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">This will be in Info, but not plain text.
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">This will be in Info, but not plain text.
+</pre></div>
 
 <p>The regions delimited by these commands are ordinary Texinfo source as
 with <code>@iftex</code>, not raw formatter source as with <code>@tex</code>
@@ -288,12 +291,13 @@ can be recognized properly.
 <p>For example, here is a mathematical expression written in
 plain TeX:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@tex
+<div class="example">
+<pre class="example">@tex
 $$ \chi^2 = \sum_{i=1}^N
           \left (y_i - (a + b x_i)
           \over \sigma_i\right)^2 $$
 @end tex
-</pre></td></tr></table>
+</pre></div>
 
 <p>The output of this example will appear only in a printed manual.  If
 you are reading this in Info, you will not see the equation that appears
@@ -399,8 +403,9 @@ will work in some contexts, but not all, due to limitations in TeX.
 </p>
 <p>Write the <code>@set</code> command like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@set foo This is a string.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@set foo This is a string.
+</pre></div>
 
 <p>This sets the value of the flag <code>foo</code> to &ldquo;This is a string.&rdquo;.
 </p>
@@ -408,18 +413,20 @@ will work in some contexts, but not all, due to limitations in TeX.
 command with the string to which <var>flag</var> is set.  Thus, when
 <code>foo</code> is set as shown above, the Texinfo formatters convert this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@value{foo}
+<div class="example">
+<pre class="example">@value{foo}
 <span class="roman">to this:</span>
 This is a string.
-</pre></td></tr></table>
+</pre></div>
 
 <p>You can write an <code>@value</code> command within a paragraph; but you
 must write an <code>@set</code> command on a line of its own.
 </p>
 <p>If you write the <code>@set</code> command like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@set foo
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@set foo
+</pre></div>
 
 <p>without specifying a string, the value of <code>foo</code> is the empty string.
 </p>
@@ -428,27 +435,31 @@ subsequent <code>@value{flag}</code> command will report an error.
 </p>
 <p>For example, if you set <code>foo</code> as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@set how-much very, very, very
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@set how-much very, very, very
+</pre></div>
 
 <p>then the formatters transform
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">It is a @value{how-much} wet day.
+<div class="example">
+<pre class="example">It is a @value{how-much} wet day.
 <span class="roman">into</span>
 It is a very, very, very wet day.
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you write
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@clear how-much
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@clear how-much
+</pre></div>
 
 <p>then the formatters transform
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">It is a @value{how-much} wet day.
+<div class="example">
+<pre class="example">It is a @value{how-much} wet day.
 <span class="roman">into</span>
 It is a {No value for &quot;how-much&quot;} wet day.
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -481,16 +492,18 @@ analogously.
 <p>Write the conditionally formatted text between <code>@ifset <var>flag</var></code>
 and <code>@end ifset</code> commands, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@ifset <var>flag</var>
+<div class="example">
+<pre class="example">@ifset <var>flag</var>
 <var>conditional-text</var>
 @end ifset
-</pre></td></tr></table>
+</pre></div>
 
 <p>For example, you can create one document that has two variants, such as
 a manual for a &lsquo;large&rsquo; and &lsquo;small&rsquo; model:
 </p>
 <a name="index-shrubbery"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">You can use this machine to dig up shrubs
+<div class="example">
+<pre class="example">You can use this machine to dig up shrubs
 without hurting them.
 
 @set large
@@ -500,7 +513,7 @@ It can also dig up fully grown trees.
 @end ifset
 
 Remember to replant promptly &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>In the example, the formatting commands will format the text between
 <code>@ifset large</code> and <code>@end ifset</code> because the <code>large</code>
@@ -529,8 +542,9 @@ is set with <code>@set <var>flag</var></code>, then the formatting commands do
 ifclear</code> command; rather, they ignore that text.  An <code>@ifclear</code>
 command looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@ifclear <var>flag</var>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@ifclear <var>flag</var>
+</pre></div>
 
 
 <hr>
@@ -563,16 +577,18 @@ Automake distributions, and full texts.
 <li>
 Set the flags:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@set EDITION 0.35 Beta
+<div class="example">
+<pre class="example">@set EDITION 0.35 Beta
 @set VERSION 3.63 Beta
 @set UPDATED 14 August 1992
 @set UPDATE-MONTH August 1992
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 Write text for the <code>@copying</code> section (see section <a href="texinfo_4.html#copying"><code>@copying</code>: Declare copying permissions</a>):
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@copying
+<div class="example">
+<pre class="example">@copying
 This is Edition @value{EDITION},
 last updated @value{UPDATED},
 of @cite{The GNU Make Manual},
@@ -582,12 +598,13 @@ Copyright &hellip;
 
 Permission is granted &hellip;
 @end copying
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 Write text for the title page, for people reading the printed manual:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@titlepage
+<div class="example">
+<pre class="example">@titlepage
 @title GNU Make
 @subtitle A Program for Directing Recompilation
 @subtitle Edition @value{EDITION}, &hellip;
@@ -596,7 +613,7 @@ Write text for the title page, for people reading the printed manual:
 @insertcopying
 &hellip;
 @end titlepage
-</pre></td></tr></table>
+</pre></div>
 
 <p>(On a printed cover, a date listing the month and the year looks less
 fussy than a date listing the day as well as the month and year.)
@@ -604,21 +621,23 @@ fussy than a date listing the day as well as the month and year.)
 </li><li>
 Write text for the Top node, for people reading the Info file:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@ifnottex
+<div class="example">
+<pre class="example">@ifnottex
 @node Top
 @top Make
 
 @insertcopying
 &hellip;
 @end ifnottex
-</pre></td></tr></table>
+</pre></div>
 
 <p>After you format the manual, the <code>@value</code> constructs have been
 expanded, so the output contains text like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This is Edition 0.35 Beta, last updated 14 August 1992,
+<div class="example">
+<pre class="example">This is Edition 0.35 Beta, last updated 14 August 1992,
 of `The GNU Make Manual', for `make', Version 3.63 Beta.
-</pre></td></tr></table>
+</pre></div>
 </li></ol>
 
 <p>When you update the manual, you change only the values of the flags; you

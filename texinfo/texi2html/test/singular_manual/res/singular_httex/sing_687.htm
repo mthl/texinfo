@@ -109,12 +109,13 @@ or of <code>hnexpansion(f[,&quot;ess&quot;])</code>, or (one entry in) the list
 <dt><strong>Return:</strong></dt>
 <dd><p>- if only one argument is given, no return value, but
 display an ideal HNE of the following form:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">     HNE[1]=-y+[]*z(0)^1+[]*z(0)^2+...+z(0)^&lt;&gt;*z(1)
+</p><div class="smallexample">
+<pre class="smallexample">     HNE[1]=-y+[]*z(0)^1+[]*z(0)^2+...+z(0)^&lt;&gt;*z(1)
      HNE[2]=-x+          []*z(1)^2+...+z(1)^&lt;&gt;*z(2)
      HNE[3]=             []*z(2)^2+...+z(2)^&lt;&gt;*z(3)
      .......             ..........................
      HNE[r+1]=           []*z(r)^2+[]*z(r)^3+......
-</pre></td></tr></table>
+</pre></div>
 <p>where <code>x</code>,<code>y</code> are the first 2 variables of the basering.
 The values of <code>[]</code> are the coefficients of the Hamburger-Noether
 matrix, the values of <code>&lt;&gt;</code> are represented by <code>x</code> in the
@@ -138,14 +139,15 @@ to the 1st line and <code>y</code> to the 2nd).
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;hnoether.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;hnoether.lib&quot;;
 ring r=0,(x,y),dp;
 poly f=x3+2xy2+y2;
 list hn=develop(f);
 displayHNE(hn);
 &rarr; HNE[1]=-y+z(0)*z(1)
 &rarr; HNE[2]=-x-z(1)^2
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_684.htm#develop">develop</a>;
 <a href="sing_682.htm#hnexpansion">hnexpansion</a>.

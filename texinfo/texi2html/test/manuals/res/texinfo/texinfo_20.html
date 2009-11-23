@@ -196,8 +196,9 @@ process them differently to make an Info file (see section <a href="texinfo_21.h
 <p>Format the Texinfo file with the shell command <code>tex</code> followed by
 the name of the Texinfo file.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">tex foo.texi
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">tex foo.texi
+</pre></div>
 
 <p>TeX will produce a <em>DVI file</em> as well as several auxiliary
 files containing information for indices, cross references, etc.  The
@@ -229,8 +230,9 @@ arguments to give to <code>texindex</code>.
 can use &lsquo;<samp>??</samp>&rsquo; as shell wildcards and give the command in this
 form:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">texindex foo.??
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">texindex foo.??
+</pre></div>
 
 <p>This command will run <code>texindex</code> on all the unsorted index files,
 including any that you have defined yourself using <code>@defindex</code>
@@ -299,11 +301,12 @@ avoid them with the <code>@novalidate</code> command, which you must give
 (see section <a href="texinfo_4.html#setfilename"><code>@setfilename</code></a>).  Thus, the beginning of
 your file would look approximately like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+<div class="example">
+<pre class="example">\input texinfo
 @novalidate
 @setfilename myfile.info
 &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p><code>@novalidate</code> also turns off validation in
 <code>makeinfo</code>, just like its <code>--no-validate</code> option
@@ -340,8 +343,9 @@ described in the previous section.
 <p>To run <code>texi2dvi</code> on an input file &lsquo;<tt>foo.texi</tt>&rsquo;, do this (where
 &lsquo;<samp>prompt$ </samp>&rsquo; is your shell prompt):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">prompt$ <kbd>texi2dvi foo.texi</kbd>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">prompt$ <kbd>texi2dvi foo.texi</kbd>
+</pre></div>
 
 <p>As shown in this example, the input filenames to <code>texi2dvi</code> must
 include any extension (&lsquo;<samp>.texi</samp>&rsquo;, &lsquo;<samp>.texinfo</samp>&rsquo;, etc.).  Under
@@ -390,21 +394,23 @@ installation.  Two common ones are &lsquo;<samp>dvips foo.dvi -o</samp>&rsquo; a
 <p>For example, the following commands will (perhaps) suffice to sort the
 indices, format, and print the <cite>Bison Manual</cite>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">tex bison.texinfo
+<div class="example">
+<pre class="example">tex bison.texinfo
 texindex bison.??
 tex bison.texinfo
 lpr -d bison.dvi
-</pre></td></tr></table>
+</pre></div>
 
 <p>(Remember that the shell commands may be different at your site; but
 these are commonly used versions.)
 </p>
 <p>Using the <code>texi2dvi</code> shell script (see the previous section):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">texi2dvi bison.texinfo
+<div class="example">
+<pre class="example">texi2dvi bison.texinfo
 lpr -d bison.dvi
 # or perhaps dvips bison.dvi -o
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-Shell-printing_002c-on-MS_002dDOS_002fMS_002dWindows"></a>
 <a name="index-Printing-DVI-files_002c-on-MS_002dDOS_002fMS_002dWindows"></a>
@@ -428,8 +434,9 @@ queue.  In some cases, the version of <code>lpr</code> which comes with your
 network software will have a special option to send a file to specific
 queues, like this:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">lpr -Qdvi -hprint.server.domain bison.dvi
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">lpr -Qdvi -hprint.server.domain bison.dvi
+</pre></div>
 
 </li><li> Convert the DVI file to a Postscript or PCL file and send it to your
 local printer.  See <a href="../dvips/dvips-invocation.html#dvips-invocation">(dvips)dvips invocation</a> section &lsquo;dvips invocation&rsquo; in <cite>Dvips</cite>, and the man
@@ -476,9 +483,10 @@ on a slow machine, this can be very convenient.
 here is how to use <code>texi2dvi</code> to format and print <cite>Using and
 Porting GNU CC</cite> from a shell within Emacs:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">texi2dvi gcc.texinfo
+<div class="example">
+<pre class="example">texi2dvi gcc.texinfo
 lpr -d gcc.dvi
-</pre></td></tr></table>
+</pre></div>
 
 <p>See section <a href="#Texinfo-Mode-Printing">Formatting and Printing in Texinfo Mode</a>, for more information about formatting
 and printing in Texinfo mode.
@@ -572,10 +580,11 @@ commands are run to show its most recent output.
 <p>Thus, the usual sequence of commands for formatting a buffer is as
 follows (with comments to the right):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-t C-b             <span class="roman">Run <code>texi2dvi</code> on the buffer.</span>
+<div class="example">
+<pre class="example">C-c C-t C-b             <span class="roman">Run <code>texi2dvi</code> on the buffer.</span>
 C-c C-t C-p             <span class="roman">Print the DVI file.</span>
 C-c C-t C-q             <span class="roman">Display the printer queue.</span>
-</pre></td></tr></table>
+</pre></div>
 
 <p>The Texinfo mode TeX formatting commands start a subshell in Emacs
 called the &lsquo;<tt>*tex-shell*</tt>&rsquo;.  The <code>texinfo-tex-command</code>,
@@ -589,7 +598,8 @@ as you would any other shell buffer.
 <p>The formatting and print commands depend on the values of several variables.
 The default values are:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">     <span class="roman">Variable</span>                              <span class="roman">Default value</span>
+<div class="example">
+<pre class="example">     <span class="roman">Variable</span>                              <span class="roman">Default value</span>
 
 texinfo-texi2dvi-command                  &quot;texi2dvi&quot;
 texinfo-tex-command                       &quot;tex&quot;
@@ -600,7 +610,7 @@ tex-start-of-header                       &quot;%**start&quot;
 tex-end-of-header                         &quot;%**end&quot;
 tex-dvi-print-command                     &quot;lpr -d&quot;
 tex-show-queue-command                    &quot;lpq&quot;
-</pre></td></tr></table>
+</pre></div>
 
 <p>You can change the values of these variables with the <kbd>M-x
 edit-options</kbd> command (see <a href="../emacs/Edit-Options.html#Edit-Options">(emacs)Edit Options</a> section &lsquo;Editing Variable Values&rsquo; in <cite>The GNU Emacs Manual</cite>), with the <kbd>M-x set-variable</kbd> command
@@ -647,10 +657,11 @@ commands as a <code>compile-command</code> and have Emacs run it by typing
 For example, at the end of the &lsquo;<tt>gdb.texinfo</tt>&rsquo; file, after the
 <code>@bye</code>, you could put the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Local Variables:
+<div class="example">
+<pre class="example">Local Variables:
 compile-command: &quot;texi2dvi gdb.texinfo&quot;
 End:
-</pre></td></tr></table>
+</pre></div>
 
 <p>This technique is most often used by programmers who also compile programs
 this way; see <a href="../emacs/Compilation.html#Compilation">(emacs)Compilation</a> section &lsquo;Compilation&rsquo; in <cite>The GNU Emacs Manual</cite>.
@@ -682,9 +693,10 @@ this way; see <a href="../emacs/Compilation.html#Compilation">(emacs)Compilation
 <p>Every Texinfo file that is to be input to TeX must begin with a
 <code>\input</code> command and must contain an <code>@setfilename</code> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo
+<div class="example">
+<pre class="example">\input texinfo
 @setfilename <var>arg-not-used-by-TeX</var>
-</pre></td></tr></table>
+</pre></div>
 
 <p>The first command instructs TeX to load the macros it needs to
 process a Texinfo file and the second command opens auxiliary files.
@@ -692,8 +704,9 @@ process a Texinfo file and the second command opens auxiliary files.
 <p>Every Texinfo file must end with a line that terminates TeX&rsquo;s
 processing and forces out unfinished pages:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@bye
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@bye
+</pre></div>
 
 <p>Strictly speaking, these lines are all a Texinfo file needs to be
 processed successfully by TeX.
@@ -796,20 +809,23 @@ initialization information, and the former read &lsquo;<tt>.profile</tt>&rsquo;.
 <p>In a &lsquo;<tt>.cshrc</tt>&rsquo; file, you could use the following <code>csh</code> command
 sequence:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">setenv TEXINPUTS .:/home/me/mylib:/usr/lib/tex/macros
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">setenv TEXINPUTS .:/home/me/mylib:/usr/lib/tex/macros
+</pre></div>
 
 <p>In a &lsquo;<tt>.profile</tt>&rsquo; file, you could use the following <code>sh</code> command
 sequence:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">TEXINPUTS=.:/home/me/mylib:/usr/lib/tex/macros
+<div class="example">
+<pre class="example">TEXINPUTS=.:/home/me/mylib:/usr/lib/tex/macros
 export TEXINPUTS
-</pre></td></tr></table>
+</pre></div>
 
 <p>On MS-DOS/MS-Windows, you would say it like this<a name="DOCF10" href="texinfo_fot.html#FOOT10">(10)</a>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">set TEXINPUTS=.;d:/home/me/mylib;c:/usr/lib/tex/macros
+</pre></div>
 
 <p>It is customary for DOS/Windows users to put such commands in the
 &lsquo;<tt>autoexec.bat</tt>&rsquo; file, or in the Windows Registry.
@@ -826,8 +842,9 @@ disadvantage is that then updating &lsquo;<tt>texinfo.tex</tt>&rsquo; requires
 redumping.)  You can do this by running this command, assuming
 &lsquo;<tt>epsf.tex</tt>&rsquo; is findable by TeX:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">initex texinfo @dump
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">initex texinfo @dump
+</pre></div>
 
 <p>(<code>dump</code> is a TeX primitive.)  Then, move &lsquo;<tt>texinfo.fmt</tt>&rsquo; to
 wherever your <code>.fmt</code> files are found; typically, this will be in the
@@ -863,8 +880,9 @@ interprets as a long word that it cannot hyphenate, such as an
 electronic mail network address or a very long title.  When this
 happens, TeX prints an error message like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Overfull @hbox (20.76302pt too wide)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Overfull @hbox (20.76302pt too wide)
+</pre></div>
 
 <a name="index-hbox"></a>
 <p>(In TeX, lines are in &ldquo;horizontal boxes&rdquo;, hence the term, &ldquo;hbox&rdquo;.
@@ -887,10 +905,11 @@ spacing, thus (if you&rsquo;re lucky) avoiding many of the bad line breaks,
 like this:
 </p>
 <a name="index-_005cemergencystretch"></a>
-<table><tr><td>&nbsp;</td><td><pre class="example">@tex
+<div class="example">
+<pre class="example">@tex
 \global\emergencystretch = .9\hsize
 @end tex
-</pre></td></tr></table>
+</pre></div>
 
 <p>(You should adjust the fraction as needed.)  This huge value for
 <code>\emergencystretch</code> cannot be the default, since then the typeset
@@ -912,8 +931,9 @@ problem if you are correcting a draft.
 the following in the beginning of the Texinfo file on a line of its own,
 before the <code>@titlepage</code> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@finalout
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@finalout
+</pre></div>
 
 
 <hr>
@@ -947,8 +967,9 @@ format.  However, you can direct TeX to typeset a document in a 7 by
 following command on a line by itself at the beginning of the Texinfo
 file, before the title page:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@smallbook
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@smallbook
+</pre></div>
 
 <p>(Since many books are about 7 by 9.25 inches, this command might better
 have been called the <code>@regularbooksize</code> command, but it came to be
@@ -997,13 +1018,14 @@ command.  Write the command on a line by itself near the beginning of
 the Texinfo file, before the title page.  For example, this is how you
 would write the header for this manual:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo    @c -*-texinfo-*-
+<div class="example">
+<pre class="example">\input texinfo    @c -*-texinfo-*-
 @c %**start of header
 @setfilename texinfo
 @settitle Texinfo
 @afourpaper
 @c %**end of header
-</pre></td></tr></table>
+</pre></div>
 
 <p>See section <a href="#Format-with-texi2dvi">Format with <code>texi2dvi</code></a>, and <a href="#Preparing-for-TeX">Preparing for TeX</a>, for other ways to format for different paper sizes that do not
 require changing the source file.
@@ -1047,9 +1069,11 @@ on a line by itself near the beginning of the Texinfo file, before the
 title page.  The height comes first, then the width if desired,
 separated by a comma.  Examples:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@pagesizes 200mm,150mm  </pre></td></tr></table>
+<div class="example">
+<pre class="example">@pagesizes 200mm,150mm  </pre></div>
 <p>and
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@pagesizes 11.5in      </pre></td></tr></table>
+</p><div class="example">
+<pre class="example">@pagesizes 11.5in      </pre></div>
 
 <a name="index-B5-paper_002c-printing-on"></a>
 <a name="index-Legal-paper_002c-printing-on"></a>
@@ -1097,10 +1121,11 @@ command on a line by itself between <code>@iftex</code> and <code>@end
 iftex</code> lines near the beginning of the Texinfo file, before the title
 page, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@iftex
+<div class="example">
+<pre class="example">@iftex
 @cropmarks
 @end iftex
-</pre></td></tr></table>
+</pre></div>
 
 <p>This command is mainly for printers that typeset several pages on one
 sheet of film; but you can attempt to use it to mark the corners of a
@@ -1127,10 +1152,11 @@ is 1000 times the magnification you desire.  For example, to print pages
 at 1.2 normal size, write the following near the beginning of the
 Texinfo file, before the title page:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@tex
+<div class="example">
+<pre class="example">@tex
 \mag=1200
 @end tex
-</pre></td></tr></table>
+</pre></div>
 
 <p>With some printing technologies, you can print normal-sized copies that
 look better than usual by giving a larger-than-normal master to your

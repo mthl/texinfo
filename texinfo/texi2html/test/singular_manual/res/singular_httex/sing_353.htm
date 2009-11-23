@@ -103,7 +103,8 @@ components could be globally irreducible, but analytically reducible
 (this is impossible for quasihomogeneous singularities) and,
 as a second possibility, a component might be irreducible over the rational
 numbers, but reducible over the complex numbers.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),ds;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),ds;
   ideal i=x^4-y*z^2,x*y-z^3,y^2-x^3*z;  // the space curve singularity
   qhweight(i);
 &rarr; 1,2,1
@@ -234,7 +235,7 @@ numbers, but reducible over the complex numbers.
   // Hence our original curve has these 4 branches plus a smooth one
   // which we already determined by primary decomposition.
   // Our final result is therefore: 5 branches.
-</pre></td></tr></table>
+</pre></div>
 </td>
 </tr>
 </table>

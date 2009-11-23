@@ -122,7 +122,8 @@ B is the row-reduced form of A over the rational function field.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;matrix.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;matrix.lib&quot;;
 ring r=(0,a,b),(A,B,C),dp;
 matrix m[6][8]=
 0, 0,  b*B, -A,-4C,2A,0, 0,
@@ -157,7 +158,7 @@ print(L[2]);
 &rarr; -1/2,2/3, -1/6,-1/6,
 &rarr; 1/2, -5/3,-5/6,1/6, 
 &rarr; 0,   13/3,11/3,-1/3 
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_498.htm#rowred">rowred</a>.
 </p>

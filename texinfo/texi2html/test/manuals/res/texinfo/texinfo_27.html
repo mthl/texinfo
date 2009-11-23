@@ -184,13 +184,15 @@ occurred (or more precisely, where it was detected).
 menus</code> with an &lsquo;s&rsquo; on the end, instead of with <code>@end menu</code>, you
 will see an error message that says:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@end menus is not handled by texinfo
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@end menus is not handled by texinfo
+</pre></div>
 
 <p>The cursor will stop at the point in the buffer where the error
 occurs, or not long after it.  The buffer will look like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: *Info Region* ----------
+<div class="example">
+<pre class="example">---------- Buffer: *Info Region* ----------
 * Menu:
 
 * Using texinfo-show-structure::  How to use
@@ -201,13 +203,14 @@ occurs, or not long after it.  The buffer will look like this:
 @end menus
 &lowast;
 ---------- Buffer: *Info Region* ----------
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <code>texinfo-format-region</code> command sometimes provides slightly
 odd error messages.  For example, the following cross reference fails to format:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(@xref{Catching Mistakes, for more info.)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(@xref{Catching Mistakes, for more info.)
+</pre></div>
 
 <p>In this case, <code>texinfo-format-region</code> detects the missing closing
 brace but displays a message that says &lsquo;<samp>Unbalanced parentheses</samp>&rsquo;
@@ -219,25 +222,29 @@ parentheses.
 example, in the following, the closing brace is swapped with the
 closing parenthesis:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(@xref{Catching Mistakes), for more info.}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(@xref{Catching Mistakes), for more info.}
+</pre></div>
 
 <p>Formatting produces:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">(*Note for more info.: Catching Mistakes)
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">(*Note for more info.: Catching Mistakes)
+</pre></div>
 
 <p>The only way for you to detect this error is to realize that the
 reference should have looked like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(*Note Catching Mistakes::, for more info.)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(*Note Catching Mistakes::, for more info.)
+</pre></div>
 
 <p>Incidentally, if you are reading this node in Info and type <kbd>f
 &lt;RET&gt;</kbd> (<code>Info-follow-reference</code>), you will generate an error
 message that says:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">No such node: &quot;Catching Mistakes) The only way &hellip;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">No such node: &quot;Catching Mistakes) The only way &hellip;
+</pre></div>
 
 <p>This is because Info perceives the example of the error as the first
 cross reference in this node and if you type a &lt;RET&gt; immediately
@@ -281,19 +288,21 @@ error messages that make more sense than TeX.  (See section <a href="#Debugging-
 <p>For example, TeX was run on a Texinfo file, part of which is shown
 here:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: texinfo.texi ----------
+<div class="example">
+<pre class="example">---------- Buffer: texinfo.texi ----------
 name of the Texinfo file as an extension.  The
 @samp{??} are `wildcards' that cause the shell to
 substitute all the raw index files.  (@xref{sorting
 indices, for more information about sorting
 indices.)@refill
 ---------- Buffer: texinfo.texi ----------
-</pre></td></tr></table>
+</pre></div>
 
 <p>(The cross reference lacks a closing brace.)
 TeX produced the following output, after which it stopped:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">---------- Buffer: *tex-shell* ----------
+<div class="example">
+<pre class="example">---------- Buffer: *tex-shell* ----------
 Runaway argument?
 {sorting indices, for more information about sorting
 indices.) @refill @ETC.
@@ -304,13 +313,14 @@ l.27
 
 ?
 ---------- Buffer: *tex-shell* ----------
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this case, TeX produced an accurate and
 understandable error message:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Paragraph ended before @xref was complete.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Paragraph ended before @xref was complete.
+</pre></div>
 
 <p>&lsquo;<samp>@par</samp>&rsquo; is an internal TeX command of no relevance to Texinfo.
 &lsquo;<samp>l.27</samp>&rsquo; means that TeX detected the problem on line 27 of the
@@ -353,8 +363,9 @@ to end an itemized list with the <code>@end itemize</code> command, TeX will
 write a DVI file that you can print out.  The only error message that
 TeX will give you is the somewhat mysterious comment that
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(@end occurred inside a group at level 1)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(@end occurred inside a group at level 1)
+</pre></div>
 
 <p>However, if you print the DVI file, you will find that the text
 of the file that follows the itemized list is entirely indented as if
@@ -373,10 +384,11 @@ TeX may stop in the
 beginning of its run and display output that looks like the following.
 The &lsquo;<samp>*</samp>&rsquo; indicates that TeX is waiting for input.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">This is TeX, Version 3.14159 (Web2c 7.0)
+<div class="example">
+<pre class="example">This is TeX, Version 3.14159 (Web2c 7.0)
 (test.texinfo [1])
 *
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this case, simply type <kbd>\end &lt;RET&gt;</kbd> after the asterisk.  Then
 write the header lines in the Texinfo file and run the TeX command
@@ -423,7 +435,8 @@ Texinfo mode, by default.
 indented by hierarchical level.  For example, here is a part of what was
 produced by running <code>texinfo-show-structure</code> on this manual:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"> Lines matching &quot;^@\\(chapter \\|sect\\|subs\\|subh\\|
+<div class="example">
+<pre class="example"> Lines matching &quot;^@\\(chapter \\|sect\\|subs\\|subh\\|
  unnum\\|major\\|chapheading \\|heading \\|appendix\\)&quot;
  in buffer texinfo.texi.
  &hellip;
@@ -435,7 +448,7 @@ produced by running <code>texinfo-show-structure</code> on this manual:
  4417:        @subsection How to Write an @code{@@node} Line
  4469:        @subsection @code{@@node} Line Tips
  &hellip;
-</pre></td></tr></table>
+</pre></div>
 
 <p>This says that lines 4337, 4393, and 4417 of &lsquo;<tt>texinfo.texi</tt>&rsquo; begin
 with the <code>@section</code>, <code>@subheading</code>, and <code>@subsection</code>
@@ -496,8 +509,9 @@ of a Texinfo file, and are overwhelmed by the detailed list produced by
 <code>texinfo-show-structure</code>.  In this case, you can use the <code>occur</code>
 command directly.  To do this, type
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"><kbd>M-x occur</kbd>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example"><kbd>M-x occur</kbd>
+</pre></div>
 
 <p>and then, when prompted, type a <em>regexp</em>, a regular expression for
 the pattern you want to match.  (See <a href="../emacs/Regexps.html#Regexps">(emacs)Regexps</a> section &lsquo;Regular Expressions&rsquo; in <cite>The GNU Emacs Manual</cite>.)  The <code>occur</code> command works from
@@ -597,8 +611,9 @@ if you write an Info file from scratch.
 <p>To use <code>Info-validate</code>, visit the Info file you wish to check and
 type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x Info-validate
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">M-x Info-validate
+</pre></div>
 
 <p>Note that the <code>Info-validate</code> command requires an upper case
 &lsquo;I&rsquo;.  You may also need to create a tag table before running
@@ -612,8 +627,9 @@ info file*</samp>&rsquo;.
 <p>For example, <code>Info-validate</code> was run on a test file that contained
 only the first node of this manual.  One of the messages said:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">In node &quot;Overview&quot;, invalid Next: Texinfo Mode
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">In node &quot;Overview&quot;, invalid Next: Texinfo Mode
+</pre></div>
 
 <p>This meant that the node called &lsquo;<samp>Overview</samp>&rsquo; had a &lsquo;Next&rsquo; pointer that
 did not point to anything (which was true in this case, since the test file
@@ -623,8 +639,9 @@ had only one node in it).
 but we do not specify a &lsquo;Previous&rsquo; for this node.  Then we will get
 the following error message:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">In node &quot;Texinfo Mode&quot;, should have Previous: Overview
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">In node &quot;Texinfo Mode&quot;, should have Previous: Overview
+</pre></div>
 
 <p>This is because every &lsquo;Next&rsquo; pointer should be matched by a
 &lsquo;Previous&rsquo; (in the node where the &lsquo;Next&rsquo; points) which points back.
@@ -676,13 +693,15 @@ nodes.
 smaller Info files, give a prefix to the <kbd>M-x
 texinfo-format-buffer</kbd> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-u M-x texinfo-format-buffer
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">C-u M-x texinfo-format-buffer
+</pre></div>
 
 <p>or else
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-u C-c C-e C-b
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">C-u C-c C-e C-b
+</pre></div>
 
 <p>When you do this, Texinfo will not split the file and will not create
 a tag table for it. 
@@ -712,24 +731,27 @@ a tag table for it.
 <p>After creating an unsplit Info file, you must create a tag table for
 it.  Visit the Info file you wish to tagify and type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x Info-tagify
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">M-x Info-tagify
+</pre></div>
 
 <p>(Note the upper case &lsquo;<samp>I</samp>&rsquo; in <code>Info-tagify</code>.)  This creates an
 Info file with a tag table that you can validate.
 </p>
 <p>The third step is to validate the Info file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x Info-validate
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">M-x Info-validate
+</pre></div>
 
 <p>(Note the upper case &lsquo;<samp>I</samp>&rsquo; in <code>Info-validate</code>.)
 In brief, the steps are:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-u M-x texinfo-format-buffer
+<div class="example">
+<pre class="example">C-u M-x texinfo-format-buffer
 M-x Info-tagify
 M-x Info-validate
-</pre></td></tr></table>
+</pre></div>
 
 <p>After you have validated the node structure, you can rerun
 <code>texinfo-format-buffer</code> in the normal way so it will construct a
@@ -780,9 +802,10 @@ will do this for a large, unsplit file on which you have run
 <p>Visit the Info file you wish to tagify and split and type the two
 commands:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x Info-tagify
+<div class="example">
+<pre class="example">M-x Info-tagify
 M-x Info-split
-</pre></td></tr></table>
+</pre></div>
 
 <p>(Note that the &lsquo;<samp>I</samp>&rsquo; in &lsquo;<samp>Info</samp>&rsquo; is upper case.)
 </p>

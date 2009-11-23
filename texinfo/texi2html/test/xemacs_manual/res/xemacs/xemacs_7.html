@@ -470,8 +470,9 @@ Emacs, you must specify the file name.
 <p>  Consider a file named &lsquo;<tt>/usr/rms/foo.c</tt>&rsquo;.  To begin editing
 this file from Emacs, type:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-x C-f /usr/rms/foo.c &lt;RET&gt;
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">C-x C-f /usr/rms/foo.c &lt;RET&gt;
+</pre></div>
 
 <p>Here the file name is given as an <em>argument</em> to the command <kbd>C-x
 C-f</kbd> (<code>find-file</code>).  That command uses the <em>minibuffer</em> to
@@ -725,8 +726,9 @@ counts the lines in the
 the column that the cursor is in, and other miscellaneous information about
 point.  It prints a line in the echo area that looks like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Char: c (0143, 99, 0x63)  point=18862 of 24800(76%)  column 53 
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">Char: c (0143, 99, 0x63)  point=18862 of 24800(76%)  column 53 
+</pre></div>
 
 <p>(In fact, this is the output produced when point is before &lsquo;<samp>column
 53</samp>&rsquo; in the example.)
@@ -749,8 +751,9 @@ beginning and the end temporarily invisible, <kbd>C-x =</kbd> prints
 additional text describing the current visible range.  For example, it
 might say:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">Char: c (0143, 99, 0x63)  point=19674 of 24575(80%) &lt;19591 - 19703&gt;  column 69 
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">Char: c (0143, 99, 0x63)  point=19674 of 24575(80%) &lt;19591 - 19703&gt;  column 69 
+</pre></div>
 
 <p>where the two extra numbers give the smallest and largest character position
 that point is allowed to assume.  The characters between those two positions
@@ -760,8 +763,9 @@ are the visible ones.  See section <a href="xemacs_29.html#Narrowing">Narrowing<
 <kbd>C-x =</kbd> omits any description of the character after point.
 The output looks like
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">point=563026 of 563025(100%)  column 0
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">point=563026 of 563025(100%)  column 0
+</pre></div>
 
 <hr>
 <a name="Arguments"></a>
@@ -802,8 +806,9 @@ command to move or act  in the opposite direction.
 Sun-type keyboards and labelled &lsquo;<samp>Alt</samp>&rsquo; on some other keyboards), the
 easiest way to specify a numeric argument is to type digits and/or a
 minus sign while holding down the &lt;META&gt; key.  For example,
-</p><table><tr><td>&nbsp;</td><td><pre class="example">M-5 C-n
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">M-5 C-n
+</pre></div>
 <p>would move down five lines.  The characters <kbd>Meta-1</kbd>, <kbd>Meta-2</kbd>,
 and so on, as well as <kbd>Meta--</kbd>, do this because they are keys bound
 to commands (<code>digit-argument</code> and <code>negative-argument</code>) that

@@ -121,7 +121,8 @@ module M such that e(i)*e(j)=0 for all i,j.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;poly.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;poly.lib&quot;;
 ring r=0,(e(1),e(2),x,y,z),(dp(2),ds(3));
 module mo=x*gen(1)+y*gen(2);
 intvec iv=2,1;
@@ -130,7 +131,7 @@ mod2id(mo,iv);
 &rarr; _[2]=e(1)*e(2)
 &rarr; _[3]=e(1)^2
 &rarr; _[4]=e(1)*y+e(2)*x
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

@@ -121,7 +121,8 @@ G is an ideal of a reductive algebraic group in K[s(1..r)],
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;rinvar.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;rinvar.lib&quot;;
 ring R = 0, (s(1..2), x, y), dp;
 ideal G = -s(1)+s(2)^3, s(1)^4-1;
 ideal action = s(1)*x, s(2)*y;
@@ -132,7 +133,7 @@ inv;
 &rarr; inv[3]=x^2*y^6
 &rarr; inv[4]=x*y^9
 &rarr; inv[5]=y^12
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

@@ -109,7 +109,8 @@ containing an ideal mapI that defines the map RR&ndash;&gt;Kxt
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;reesclos.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;reesclos.lib&quot;;
 ring R = 0,(x,y),dp;
 ideal I = x2,xy4,y5;
 list L = ReesAlgebra(I);
@@ -128,7 +129,7 @@ ker;                   // R[It] is isomorphic to Rees/ker
 &rarr; ker[4]=x*y^2*U(1)*U(3)^2-U(2)^3
 &rarr; ker[5]=x^2*y*U(1)*U(3)^3-U(2)^4
 &rarr; ker[6]=x^3*U(1)*U(3)^4-U(2)^5
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

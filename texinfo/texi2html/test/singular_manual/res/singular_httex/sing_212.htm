@@ -104,7 +104,8 @@ ul.no-bullet {list-style: none}
 <dd><p>deletes the attribute given as the second argument.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y),lp;
   ideal i=maxideal(1);
   attrib(i,&quot;isSB&quot;,1);
   attrib(i);
@@ -112,7 +113,7 @@ ul.no-bullet {list-style: none}
   killattrib(i,&quot;isSB&quot;);
   attrib(i);
 &rarr; no attributes
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

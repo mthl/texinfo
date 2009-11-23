@@ -119,7 +119,8 @@ basering and M is considered as matrix.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;poly.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;poly.lib&quot;;
 ring r;
 ideal i=x;
 module M=[x,0,1],[-x,0,-1];
@@ -136,7 +137,7 @@ freerank(i);
 &rarr; -1
 freerank(syz(i));     // should be 1, coker(syz(i))=i is free of rank 1
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

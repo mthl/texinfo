@@ -109,7 +109,8 @@ variables between n and m
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;elim.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;elim.lib&quot;;
 ring r=0,(x,y,t,s,z),(c,dp);
 ideal i=x-y,y-z2,z-t3,s-x+y3;
 ideal j=select(i,1);
@@ -125,7 +126,7 @@ m;
 select(m,1,2);
 &rarr; _[1]=[x-y,x-y]
 &rarr; _[2]=[y3-x+s,y3-x+s]
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_545.htm#nselect">nselect</a>;
 <a href="sing_548.htm#select1">select1</a>.

@@ -157,9 +157,10 @@ module and vendor branch support.
 free download from the internet.  For more information
 on downloading <small>CVS</small> and other <small>CVS</small> topics, see:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">http://www.cvshome.org/
+<div class="example">
+<pre class="example">http://www.cvshome.org/
 http://www.loria.fr/~molli/cvs-index.html
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-Mailing-list"></a>
 <a name="index-List_002c-mailing-list"></a>
@@ -423,16 +424,18 @@ called &lsquo;<samp>tc</samp>&rsquo;.
 <p>The first thing you must do is to get your own working copy of the
 source for &lsquo;<samp>tc</samp>&rsquo;.  For this, you use the <code>checkout</code> command:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs checkout tc
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">$ cvs checkout tc
+</pre></div>
 
 <p>This will create a new directory called &lsquo;<tt>tc</tt>&rsquo; and populate it with
 the source files.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cd tc
+<div class="example">
+<pre class="example">$ cd tc
 $ ls
 CVS         Makefile    backend.c   driver.c    frontend.c  parser.c
-</pre></td></tr></table>
+</pre></div>
 
 <p>The &lsquo;<tt>CVS</tt>&rsquo; directory is used internally by
 <small>CVS</small>.  Normally, you should not modify or remove
@@ -471,8 +474,9 @@ store your new &lsquo;<tt>backend.c</tt>&rsquo; in the repository and
 make it available to anyone else who is using that same
 repository.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs commit backend.c
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">$ cvs commit backend.c
+</pre></div>
 
 <p><small>CVS</small> starts an editor, to allow you to enter a log
 message.  You type in &ldquo;Added an optimization pass.&rdquo;,
@@ -517,8 +521,9 @@ starting an editor you can specify the log message on
 the command line using the &lsquo;<samp>-m</samp>&rsquo; flag instead, like
 this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs commit -m &quot;Added an optimization pass&quot; backend.c
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">$ cvs commit -m &quot;Added an optimization pass&quot; backend.c
+</pre></div>
 
 <hr>
 <a name="Cleaning-up"></a>
@@ -547,20 +552,22 @@ this:
 <p>Before you turn to other tasks you decide to remove your working copy of
 tc.  One acceptable way to do that is of course
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cd ..
+<div class="example">
+<pre class="example">$ cd ..
 $ rm -r tc
-</pre></td></tr></table>
+</pre></div>
 
 <p>but a better way is to use the <code>release</code> command (see section <a href="cvs_16.html#release">release&mdash;Indicate that a Module is no longer in use</a>):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cd ..
+<div class="example">
+<pre class="example">$ cd ..
 $ cvs release -d tc
 M driver.c
 ? tc
 You have [1] altered files in this repository.
 Are you sure you want to release (and delete) directory `tc': n
 ** `release' aborted by user choice.
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <code>release</code> command checks that all your modifications have been
 committed.  If history logging is enabled it also makes a note in the
@@ -615,16 +622,18 @@ when <code>release</code> asks for confirmation.
 <p>You do not remember modifying &lsquo;<tt>driver.c</tt>&rsquo;, so you want to see what
 has happened to that file.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cd tc
+<div class="example">
+<pre class="example">$ cd tc
 $ cvs diff driver.c
-</pre></td></tr></table>
+</pre></div>
 
 <p>This command runs <code>diff</code> to compare the version of &lsquo;<tt>driver.c</tt>&rsquo;
 that you checked out with your working copy.  When you see the output
 you remember that you added a command line option that enabled the
 optimization pass.  You check it in, and release the module.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">$ cvs commit -m &quot;Added an optimization pass&quot; driver.c
+<div class="example">
+<pre class="example">$ cvs commit -m &quot;Added an optimization pass&quot; driver.c
 Checking in driver.c;
 /usr/local/cvsroot/tc/driver.c,v  &lt;--  driver.c
 new revision: 1.2; previous revision: 1.1
@@ -634,7 +643,7 @@ $ cvs release -d tc
 ? tc
 You have [0] altered files in this repository.
 Are you sure you want to release (and delete) directory `tc': y
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">

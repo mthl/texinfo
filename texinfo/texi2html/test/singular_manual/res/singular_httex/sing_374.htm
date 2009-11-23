@@ -279,14 +279,15 @@ class="cmmi-10">G</span>).
 </p>
 <dl compact="compact">
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R= 0,(x,y,z,u),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(x,y,z,u),dp;
   ideal i=-3zu+y2-2x+2,
           -3x2u-4yz-6xz+2y2+3xy,
           -3z2u-xu+y2z+y;
   print(char_series(i));
 &rarr; _[1,1],3x2z-y2+2yz,3x2u-3xy-2y2+2yu,
 &rarr; x,     -y+2z,      -2y2+3yu-4       
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 </td>

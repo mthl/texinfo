@@ -110,7 +110,8 @@ homogeneous. The number of elements in the input system must be the number of
 variables in the basering plus one.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring rsq=(0,s,t,u),(x,y),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring rsq=(0,s,t,u),(x,y),lp;
   ideal i=s+tx+uy,x2+y2-10,x2+xy+2y2-16;
   module m=mpresmat(i,0);
   print(m);
@@ -124,7 +125,7 @@ variables in the basering plus one.
 &rarr; 1,  0,  1,  0,  0,  0,  0,  (t),0,  0,  
 &rarr; 0,  1,  0,  1,  0,  0,  0,  0,  (t),1,  
 &rarr; 0,  0,  0,  0,  0,  0,  1,  0,  0,  1   
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

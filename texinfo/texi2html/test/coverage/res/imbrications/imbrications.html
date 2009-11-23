@@ -180,8 +180,9 @@ in code
 </code></p><dl compact="compact">
 <dt><em>line</em></dt>
 <dd><p><code>in code and table
-</code></p><table><tr><td>&nbsp;</td><td><pre class="example"><code>  in example
-</code></pre></td></tr></table>
+</code></p><div class="example">
+<pre class="example"><code>  in example
+</code></pre></div>
 </dd>
 </dl>
 <p><code></code>
@@ -191,13 +192,15 @@ in code
 <dt>&bull; item</dt>
 </dl>
 
-<table><tr><td>&nbsp;</td><td><pre class="example">
+<div class="example">
+<pre class="example">
 an example
-</pre></td></tr></table>
+</pre></div>
 
 <a name="index-other-entry"></a>
 
-<table><tr><td>&nbsp;</td><td><pre class="example">
+<div class="example">
+<pre class="example">
 Some html <code>some code</code>.
 after html in example
 
@@ -240,7 +243,7 @@ the result is quite strange.
 
 and now yes---now and ``so''.
 
-</pre></td></tr></table>
+</pre></div>
 <p>after example and now yes&mdash;now and &ldquo;so&rdquo;.
 </p>
 <p align="right">is the text
@@ -248,36 +251,43 @@ flushed right ?
 </p>
 
 
-<table><tr><td>&nbsp;</td><td><pre class="example">text flushed  right and then example
+<div class="example">
+<pre class="example">text flushed  right and then example
 
 it should be flushed
-</pre></td></tr></table>
+</pre></div>
 
-<table><tr><td>&nbsp;</td><td><pre class="example">example and then text flushed  right
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">example and then text flushed  right
+</pre></div>
 
-<table><tr><td>&nbsp;</td><td><pre class="display">simple displayed text
-</pre></td></tr></table>
+<div class="display">
+<pre class="display">simple displayed text
+</pre></div>
 
 <p>a display within example
-</p><table><tr><td>&nbsp;</td><td><pre class="example">example
-</pre><table><tr><td>&nbsp;</td><td><pre class="example">display
-</pre></td></tr></table>
-</td></tr></table>
+</p><div class="example">
+<pre class="example">example
+</pre><div class="display">
+<pre class="example">display
+</pre></div>
+</div>
 
 <table class="cartouche" border="1"><tr><td>
 <p>A cartouched text
 </p></td></tr></table>
 
 <p>A cartouche within example
-</p><table><tr><td>&nbsp;</td><td><pre class="example">example
+</p><div class="example">
+<pre class="example">example
 </pre><table class="cartouche" border="1"><tr><td>
 <pre class="example">A cartouched text
 </pre></td></tr></table>
-</td></tr></table>
+</div>
 
 <p>An example with table, multitable, quotation, enumerate 
-</p><table><tr><td>&nbsp;</td><td><pre class="example">a table within example
+</p><div class="example">
+<pre class="example">a table within example
 </pre><dl compact="compact">
 <dt><tt>&bull; item</tt></dt>
 <dd><pre class="example">text
@@ -324,10 +334,11 @@ Enumerate
 still second
 </pre></li></ol>
 <pre class="example">
-</pre></td></tr></table>
+</pre></div>
 
 <p>example with deff-like commands
-</p><table><tr><td>&nbsp;</td><td><pre class="example">deffs
+</p><div class="example">
+<pre class="example">deffs
 </pre><dl>
 <dt><a name="index-my-def"></a>Function: <strong>my def</strong><em> args <var>arg</var> &hellip;</em></dt>
 <dt><a name="index-other-def"></a>Function: <strong>other def</strong><em> no args</em></dt>
@@ -354,25 +365,29 @@ explanation
 </dd></dl>
 </dd></dl>
 <pre class="example">
-</pre></td></tr></table>
+</pre></div>
 
 <p>table within display within example
-</p><table><tr><td>&nbsp;</td><td><table><tr><td>&nbsp;</td><td><dl compact="compact">
+</p><div class="example">
+<div class="display">
+<dl compact="compact">
 <dt><tt>item</tt></dt>
 <dd><pre class="example">Line
 </pre></dd>
 </dl>
-</td></tr></table>
-</td></tr></table>
+</div>
+</div>
 
 <p>table within example within display
-</p><table><tr><td>&nbsp;</td><td><table><tr><td>&nbsp;</td><td><dl compact="compact">
+</p><div class="display">
+<div class="example">
+<dl compact="compact">
 <dt><tt>item</tt></dt>
 <dd><pre class="example">Line
 </pre></dd>
 </dl>
-</td></tr></table>
-</td></tr></table>
+</div>
+</div>
 
 <hr>
 <a name="node-menu"></a>

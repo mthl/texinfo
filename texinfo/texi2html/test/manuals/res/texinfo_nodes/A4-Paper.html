@@ -97,13 +97,14 @@ command.  Write the command on a line by itself near the beginning of
 the Texinfo file, before the title page.  For example, this is how you
 would write the header for this manual:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">\input texinfo    @c -*-texinfo-*-
+<div class="example">
+<pre class="example">\input texinfo    @c -*-texinfo-*-
 @c %**start of header
 @setfilename texinfo
 @settitle Texinfo
 @afourpaper
 @c %**end of header
-</pre></td></tr></table>
+</pre></div>
 
 <p>See section <a href="Format-with-texi2dvi.html#Format-with-texi2dvi">Format with <code>texi2dvi</code></a>, and <a href="Preparing-for-TeX.html#Preparing-for-TeX">Preparing for TeX</a>, for other ways to format for different paper sizes that do not
 require changing the source file.

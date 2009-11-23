@@ -111,7 +111,8 @@ ul.no-bullet {list-style: none}
 given by the list_expression, resp. resolution_expression.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1=32003,(x,y),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r1=32003,(x,y),dp;
   ideal i=x5+xy4,x3+x2y+xy2+y3;
   resolution rs=lres(i,0);
   rs;
@@ -141,7 +142,7 @@ given by the list_expression, resp. resolution_expression.
 &rarr;    _[2]=xy4
 &rarr; [2]:
 &rarr;    _[1]=xy4*gen(1)-x3*gen(2)-x2y*gen(2)-xy2*gen(2)-y3*gen(2)
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

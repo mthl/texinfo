@@ -152,10 +152,11 @@ customized output in the Info file.
 <a name="index-macro"></a>
 <p>You use the Texinfo <code>@macro</code> command to define a macro, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@macro <var>macroname</var>{<var>param1</var>, <var>param2</var>, &hellip;}
+<div class="example">
+<pre class="example">@macro <var>macroname</var>{<var>param1</var>, <var>param2</var>, &hellip;}
 <var>text</var> &hellip; \<var>param1</var>\ &hellip;
 @end macro
-</pre></td></tr></table>
+</pre></div>
 
 <p>The <em>parameters</em> <var>param1</var>, <var>param2</var>, &hellip; correspond to
 arguments supplied when the macro is subsequently used in the document
@@ -199,12 +200,13 @@ other whitespace is treated according to the usual Texinfo rules.
 <p>To allow a macro to be used recursively, that is, in an argument to a
 call to itself, you must define it with &lsquo;<samp>@rmacro</samp>&rsquo;, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@rmacro rmac {arg}
+<div class="example">
+<pre class="example">@rmacro rmac {arg}
 a\arg\b
 @end rmacro
 &hellip;
 @rmac{1@rmac{text}2}
-</pre></td></tr></table>
+</pre></div>
 
 <p>This produces the output &lsquo;a1atextb2b&rsquo;.  With &lsquo;<samp>@macro</samp>&rsquo; instead of
 &lsquo;<samp>@rmacro</samp>&rsquo;, an error message is given.
@@ -216,8 +218,9 @@ a\arg\b
 It is not an error to undefine a macro that is already undefined.
 For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@unmacro foo
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@unmacro foo
+</pre></div>
 
 
 <hr>
@@ -247,22 +250,25 @@ For example:
 <p>After a macro is defined (see the previous section), you can use
 (<em>invoke</em>) it in your document like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@<var>macroname</var> {<var>arg1</var>, <var>arg2</var>, &hellip;}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@<var>macroname</var> {<var>arg1</var>, <var>arg2</var>, &hellip;}
+</pre></div>
 
 <p>and the result will be just as if you typed the body of
 <var>macroname</var> at that spot.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@macro foo {p, q}
+<div class="example">
+<pre class="example">@macro foo {p, q}
 Together: \p\ &amp; \q\.
 @end macro
 @foo{a, b}
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">Together: a &amp; b.
-</pre></td></tr></table>
+<div class="display">
+<pre class="display">Together: a &amp; b.
+</pre></div>
 
 <a name="index-Backslash_002c-and-macros"></a>
 <p>Thus, the arguments and parameters are separated by commas and delimited
@@ -271,24 +277,27 @@ The braces are required in the invocation (but not the definition), even
 when the macro takes no arguments, consistent with all other Texinfo
 commands.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@macro argless {}
+<div class="example">
+<pre class="example">@macro argless {}
 No arguments here.
 @end macro
 @argless{}
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">No arguments here.
-</pre></td></tr></table>
+<div class="display">
+<pre class="display">No arguments here.
+</pre></div>
 
 <a name="index-Comma_002c-in-macro-arguments"></a>
 <a name="index-Braces_002c-in-macro-arguments"></a>
 <p>To insert a comma, brace, or backslash in an argument, prepend a
 backslash, as in
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@<var>macname</var> {\\\{\}\,}
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@<var>macname</var> {\\\{\}\,}
+</pre></div>
 
 <p>which will pass the (almost certainly error-producing) argument
 &lsquo;<samp>\{},</samp>&rsquo; to <var>macname</var>.  However, commas in parameters, even
@@ -298,31 +307,35 @@ if escaped by a backslash, might cause trouble in TeX.
 without any braces, the entire rest of the line after the macro name is
 supplied as the argument.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@macro bar {p}
+<div class="example">
+<pre class="example">@macro bar {p}
 Twice: \p\ &amp; \p\.
 @end macro
 @bar aah
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">Twice: aah &amp; aah.
-</pre></td></tr></table>
+<div class="display">
+<pre class="display">Twice: aah &amp; aah.
+</pre></div>
 
 <p>If the macro is defined to take a single argument, and is invoked with
 braces, the braced text is passed as the argument, regardless of
 commas.  For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@macro bar {p}
+<div class="example">
+<pre class="example">@macro bar {p}
 Twice: \p\ &amp; \p\.
 @end macro
 @bar{a,b}
-</pre></td></tr></table>
+</pre></div>
 
 <p>produces:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="display">Twice: a,b &amp; a,b.
-</pre></td></tr></table>
+<div class="display">
+<pre class="display">Twice: a,b &amp; a,b.
+</pre></div>
 
 
 <hr>
@@ -369,7 +382,8 @@ The TeX implementation cannot construct macros that define macros in
 the natural way.  To do this, you must use conditionals and raw TeX.
 For example:
 
-<table><tr><td>&nbsp;</td><td><pre class="example">@ifnottex
+<div class="example">
+<pre class="example">@ifnottex
 @macro ctor {name, arg}
 @macro \name\
 something involving \arg\ somehow
@@ -380,7 +394,7 @@ something involving \arg\ somehow
 \gdef\ctor#1{\ctorx#1,}
 \gdef\ctorx#1,#2,{\def#1{something involving #2 somehow}}
 @end tex
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 It is best to avoid comments inside macro definitions.
@@ -422,8 +436,9 @@ result may be the same.
 <p>Write the &lsquo;<samp>@alias</samp>&rsquo; command on a line by itself, followed by the
 new command name, an equals sign, and the existing command name.
 Whitespace around the equals sign is ignored.  Thus:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">@alias <var>new</var> = <var>existing</var>
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">@alias <var>new</var> = <var>existing</var>
+</pre></div>
 
 <p>For example, if your document contains citations for both books and
 some other media (movies, for example), you might like to define a
@@ -431,8 +446,9 @@ macro <code>@moviecite{}</code> that does the same thing as an ordinary
 <code>@cite{}</code> but conveys the extra semantic information as well.
 You&rsquo;d do this as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@alias moviecite = cite
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@alias moviecite = cite
+</pre></div>
 
 <p>Macros do not always have the same effect due to vagaries of argument
 parsing.  Also, aliases are much simpler to define than macros.  So the
@@ -496,8 +512,9 @@ is intended for new markup commands (see section <a href="texinfo_10.html#Markin
 <a name="index-phoo"></a>
 <p>For example, you can write:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@definfoenclose phoo,//,\\
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@definfoenclose phoo,//,\\
+</pre></div>
 
 <p>near the beginning of a Texinfo file to define <code>@phoo</code> as an Info
 formatting command that inserts &lsquo;//&rsquo; before and &lsquo;\\&rsquo; after the argument
@@ -506,10 +523,11 @@ want &lsquo;//bar\\&rsquo; highlighted in Info.
 </p>
 <p>Also, for TeX formatting, you could write 
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@iftex
+<div class="example">
+<pre class="example">@iftex
 @global@let@phoo=@i
 @end iftex
-</pre></td></tr></table>
+</pre></div>
 
 <p>to define <code>@phoo</code> as a command that causes TeX to typeset the
 argument to <code>@phoo</code> in italics.
@@ -522,8 +540,9 @@ the raw TeX commands do need to be in &lsquo;<samp>@iftex</samp>&rsquo;.
 <a name="index-headword"></a>
 <p>Here is another example: write
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@definfoenclose headword, , :
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@definfoenclose headword, , :
+</pre></div>
 
 <p>near the beginning of the file, to define <code>@headword</code> as an Info
 formatting command that inserts nothing before and a colon after the

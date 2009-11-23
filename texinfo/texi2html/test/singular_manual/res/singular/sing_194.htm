@@ -103,7 +103,8 @@ ul.no-bullet {list-style: none}
 <dd><p>returns the i-th free generator of a free module.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(c,dp);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),(c,dp);
   gen(3);
 &rarr; [0,0,1]
   vector v=gen(5);
@@ -113,7 +114,7 @@ ul.no-bullet {list-style: none}
   ring rr=32003,(x,y,z),dp;
   fetch(r,v);
 &rarr; xyz*gen(4)+gen(5)
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

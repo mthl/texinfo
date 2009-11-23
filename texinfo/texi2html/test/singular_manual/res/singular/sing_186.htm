@@ -116,7 +116,8 @@ are the monomial ordering and a permutation of the variables,
 resp. parameters.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal i=y3+x2, x2y+x2, x3-x2, z4-x2-y;
   option(redSB);   // force the computation of a reduced SB
   i=std(i);
@@ -129,7 +130,7 @@ resp. parameters.
 &rarr; j[2]=xy3-y3
 &rarr; j[3]=x2+y3
 &rarr; j[4]=z4+y3-y
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

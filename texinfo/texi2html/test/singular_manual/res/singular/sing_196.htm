@@ -128,7 +128,8 @@ a warning message is displayed, and the global variable
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(a,b,c,d),lp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(a,b,c,d),lp;
 option(prot);
 ideal i=a+b+c+d,ab+ad+bc+cd,abc+abd+acd+bcd,abcd-1; // cyclic 4
 groebner(i);
@@ -171,7 +172,7 @@ if (system(&quot;with&quot;,&quot;MP&quot;)) {groebner(i,0);}
 &rarr; _[1]=0
 defined(groebner_error);
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_275.htm#std">std</a>;
 <a href="sing_276.htm#stdfglm">stdfglm</a>;

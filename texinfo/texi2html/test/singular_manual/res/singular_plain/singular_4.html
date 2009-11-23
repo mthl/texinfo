@@ -107,8 +107,9 @@ and are written
 in the  <small>SINGULAR</small> programming language.
 </p>
 <p>The general syntax of a function is
-</p><pre class="format">                   [target =] function_name (&lt;arguments&gt;);
-</pre>
+</p><div class="format">
+<pre class="format">                   [target =] function_name (&lt;arguments&gt;);
+</pre></div>
 <p>If no target is specified, the result is printed.
 In some cases (e.g., <code>export</code>, <code>keepring</code>, <code>kill</code>,
 <code>setring</code>, <code>type</code>) the brackets are optional. For the commands
@@ -424,11 +425,12 @@ brackets are allowed.
 <dd><p>displays the attribute list of the object called name.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=std(maxideal(2));
   attrib(I);
 &rarr; attr:isSB, type int
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>attrib (</code> name <code>,</code> string_expression <code>)</code>
@@ -442,7 +444,8 @@ variable name. If the attribute is not defined for this variable,
 <code>attrib</code> returns the empty string.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=std(maxideal(2));
   attrib(I,&quot;isSB&quot;);
 &rarr; 1
@@ -450,7 +453,7 @@ variable name. If the attribute is not defined for this variable,
   // SINGULAR does not know it:
   attrib(maxideal(2), &quot;isSB&quot;);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>attrib (</code> name<code>,</code> string_expression<code>,</code> expression <code>)</code>
@@ -463,7 +466,8 @@ variable name. If the attribute is not defined for this variable,
 to the value expression.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=maxideal(2); // the attribute &quot;isSB&quot; is not set
   vdim(I);
 &rarr; // ** I is no standardbasis
@@ -471,7 +475,7 @@ to the value expression.
   attrib(I,&quot;isSB&quot;,1);  // the standard basis attribute is set here
   vdim(I);
 &rarr; 4
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Remark:</strong></code></dt>
 <dd><p>An attribute may be described by any string_expression. Some of these are
@@ -567,7 +571,8 @@ computing when the remaining number of vectors (columns) to reduce is at
 most j.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),(c,dp);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),(c,dp);
   module mm;
   // ** generation of the module mm **
   int d=7;
@@ -624,7 +629,7 @@ most j.
 &rarr; 3x, 49y2,-363xz2,3993xz3, _[7,5],_[7,6],_[7,7]   
   ss[2];
 &rarr; 2,3,4,1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -670,7 +675,8 @@ numbers. If it is 0 then the Betti numbers correspond exactly to the input -
 otherwise the command is identical to the one-argument form.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(a,b,c,d),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(a,b,c,d),dp;
   ideal j=bc-ad,b3-a2c,c3-bd2,ac2-b2d;
   list T=mres(j,0); // 0 forces a full resolution
   // a minimal set of generators for j:
@@ -707,7 +713,7 @@ otherwise the command is identical to the one-argument form.
 &rarr;     2:     -     3     4     1
 &rarr; ------------------------------
 &rarr; total:     1     4     4     1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -758,7 +764,8 @@ have degree 0:
 <dd><p>returns the characteristic of the coefficient field of a ring.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y),dp;
   char(r);
 &rarr; 32003
   ring s=0,(x,y),dp;
@@ -774,7 +781,7 @@ have degree 0:
   ring rr=real,x,dp;
   char(rr);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -811,11 +818,12 @@ ideal with respect to the current ordering of variables.
 <br>One application is the decomposition of the zero-set.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   print(char_series(ideal(xyz,xz,y)));
 &rarr; y,z,
 &rarr; x,y 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -851,7 +859,8 @@ ideal with respect to the current ordering of variables.
 <dd><p>returns the description of the coefficient field of a ring.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y),dp;
   charstr(r);
 &rarr; 32003
   ring s=0,(x,y),dp;
@@ -867,7 +876,7 @@ ideal with respect to the current ordering of variables.
   ring rr=real,x,dp;
   charstr(rr);
 &rarr; real
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -904,13 +913,14 @@ ideal with respect to the current ordering of variables.
 all denominators from its coefficients and then divide it by its content.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   poly f=(3x+6y)^5;
   f/5;
 &rarr; 243/5x5+486x4y+1944x3y2+3888x2y3+3888xy4+7776/5y5
   cleardenom(f/5);
 &rarr; x5+10x4y+40x3y2+80x2y3+80xy4+32y5
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -944,10 +954,11 @@ all denominators from its coefficients and then divide it by its content.
 <dd><p>closes a link.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">link l=&quot;MPtcp:launch&quot;;
+<dd><div class="smallexample">
+<pre class="smallexample">link l=&quot;MPtcp:launch&quot;;
 open(l); // start SINGULAR &quot;server&quot; on localhost in batchmode
 close(l); // shut down SINGULAR server
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1007,7 +1018,8 @@ appropriate place if a monomial is not present.
 </p>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   poly f=x5+5x4y+10x2y3+y5;
   matrix m=coef(f,y);
   print(m);
@@ -1028,7 +1040,7 @@ appropriate place if a monomial is not present.
   print(mm);
 &rarr; y,1,
 &rarr; y,1 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1072,10 +1084,11 @@ as a univariate polynomial in the given ring_variable,
 say z, and returns the coefficients as a k x d
 matrix M,
 where:
-</p><pre class="format">    d-1 = maximum z-degree of all occurring polynomials
+</p><div class="format">
+<pre class="format">    d-1 = maximum z-degree of all occurring polynomials
       k = 1 if J is a polynomial,
       k = number of generators  if J is an ideal.
-</pre>
+</pre></div>
 <p>If J is a vector or a module this procedure is repeated for each
 component and the resulting matrices are appended.<br>
 </p></dd>
@@ -1088,7 +1101,8 @@ then the j-th generator of an ideal J is equal to
 </p>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r;
   poly f=(x+y)^3;
   matrix M=coeffs(f,y);
   print(M);
@@ -1103,7 +1117,7 @@ then the j-th generator of an ideal J is equal to
 &rarr; 3x, 0, 
 &rarr; 1,  0, 
 &rarr; 0,  z10
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Syntax:</strong></code></dt>
 <dd><p><code>coeffs (</code> ideal_expression<code>,</code> ideal_expression <code>)</code>
@@ -1132,7 +1146,8 @@ M, then K*A=M&rsquo; where M&rsquo; is the part of M that can be expressed.
 </p>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   ideal M=x2z+y3,xy;
   print(coeffs(M,ideal(x2,xy,y2),xy));
 &rarr; z,0,
@@ -1142,7 +1157,7 @@ M, then K*A=M&rsquo; where M&rsquo; is the part of M that can be expressed.
 &rarr; 0,0,
 &rarr; 0,1,
 &rarr; 0,0 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1183,14 +1198,15 @@ where A and B are the multiexponents of the ring variables represented by
 <code>contract</code> is extended bilinearly to all polynomials.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(a,b,c,d),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(a,b,c,d),dp;
   ideal I=a2,a2+bc,abc;
   ideal J=a2-bc,abcd;
   print(contract(I,J));
 &rarr; 1,0, 
 &rarr; 0,ad,
 &rarr; 0,d  
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1242,7 +1258,8 @@ if <code>printlevel&gt;=voice</code>.
 for displaying comments while procedures are executed.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  int debug=0;
+<dd><div class="smallexample">
+<pre class="smallexample">  int debug=0;
   intvec i=1,2,3;
   dbprint(debug,i);
   debug=1;
@@ -1253,7 +1270,7 @@ for displaying comments while procedures are executed.
   printlevel;
 &rarr; 0
   dbprint(i);
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1297,7 +1314,8 @@ variables, -1 is returned.
 (defined(m)==voice)</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=(0,t),(x,y),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=(0,t),(x,y),dp;
   matrix m[5][6]=x,y,1,2,0,x+y;
   defined(mm);
 &rarr; 0
@@ -1313,7 +1331,7 @@ variables, -1 is returned.
 &rarr; -1
   defined(42);
 &rarr; -1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1355,7 +1373,8 @@ the terms of a polynomial or a vector;
 the default weights of the base ring will be used otherwise.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),lp;
   deg(0);
 &rarr; -1
   deg(x3+y4+xyz3);
@@ -1371,7 +1390,7 @@ the default weights of the base ring will be used otherwise.
   vector v=[x2,y];
   deg(v);
 &rarr; 4
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1413,7 +1432,8 @@ respectively module, if the
 input is a standard basis with respect to a (weighted) degree ordering. 
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r3=32003,(x,y,z,h),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">ring r3=32003,(x,y,z,h),dp;
 int a,b,c,t=11,10,3,1;
 poly f=x^a+y^b+z^(3*c)+x^(c+2)*y^(c-1)+x^(c-1)*y^(c-1)*z3
   +x^(c-2)*y^c*(y2+t*x)^2;
@@ -1422,7 +1442,7 @@ i=homog(i,h);
 ideal i0=std(i);
 degree(i0);
 &rarr; 720 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1457,7 +1477,8 @@ degree(i0);
 <dd><p>deletes the element with the given index from a list (the input is not changed).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  list l=&quot;a&quot;,&quot;b&quot;,&quot;c&quot;;
+<dd><div class="smallexample">
+<pre class="smallexample">  list l=&quot;a&quot;,&quot;b&quot;,&quot;c&quot;;
   list l1=delete(l,2);l1;
 &rarr; [1]:
 &rarr;    a
@@ -1470,7 +1491,7 @@ degree(i0);
 &rarr;    b
 &rarr; [3]:
 &rarr;    c
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1512,11 +1533,12 @@ algorithm is used. For large sparse problems the input as a module
 has advantages.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=7,(x,y),wp(2,3);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=7,(x,y),wp(2,3);
   matrix m[3][3]=1,2,3,4,5,6,7,8,x;
   det(m);
 &rarr; -3x-1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1565,7 +1587,8 @@ by the differential operator corresponding to each polynomial (1..m) in the firs
 ideal, producing an m x n matrix.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   poly f=2x3y+3z5;
   diff(f,x);
 &rarr; 6x2y
@@ -1580,7 +1603,7 @@ ideal, producing an m x n matrix.
 &rarr; 2,0,
 &rarr; 1,x,
 &rarr; 0,1 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1625,11 +1648,12 @@ the Krull dimension of the basering modulo I.
 module is the dimension of its annihilator ideal.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   ideal I=x2-y,x3;
   dim(std(I));
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1675,7 +1699,8 @@ The weighted degree of <code>T</code> and <code>R</code> respect to <code>w</cod
 If the weight vector <code>w</code> is not given, <code>division</code> uses the standard weight vector <code>w=1,...,1</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring R=0,(x,y),ds;
+<dd><div class="smallexample">
+<pre class="smallexample">ring R=0,(x,y),ds;
 poly f=x5+x2y2+y5;
 division(f,jacob(f));
 &rarr; [1]:
@@ -1700,7 +1725,7 @@ division(ideal(f^2),jacob(f),10);
 &rarr;    _[2,1]=1/2x2y3+x5y-1/4y6-3/2x3y4+15/4xy7+375/16x2y8
 &rarr; [2]:
 &rarr;    _[1]=x10+9/4y10
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1737,7 +1762,8 @@ link (which must be either an ASCII or MP link) such that a
 <code>getdump</code> can retrieve it later on.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r;
   // write the whole session to the file dump.ascii
   // in ASCII format
   dump(&quot;:w dump.ascii&quot;);
@@ -1767,7 +1793,7 @@ link (which must be either an ASCII or MP link) such that a
 &rarr; //        block   1 : ordering dp
 &rarr; //                  : names    x y z 
 &rarr; //        block   2 : ordering C
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Restrictions:</strong></code></dt>
 <dd><p>For ASCII links, integer matrices contained in lists are  dumped as
@@ -1821,7 +1847,8 @@ up the computation: a Hilbert-driven elimination uses the intvec
 provided as the third argument.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   ideal i=x2,xy,y5;
   eliminate(i,x);
 &rarr; _[1]=y5
@@ -1836,7 +1863,7 @@ provided as the third argument.
 &rarr; _[1]=y2-xz
 &rarr; _[2]=xy-z
 &rarr; _[3]=x2-y
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1875,7 +1902,8 @@ with <code>quote</code> and <code>write</code> to
 prevent local evaluations  when writing to an MPtcp link.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  link l=&quot;MPfile:w example.mp&quot;;
+<dd><div class="smallexample">
+<pre class="smallexample">  link l=&quot;MPfile:w example.mp&quot;;
   ring r=0,(x,y,z),ds;
   ideal i=maxideal(3);
   ideal j=x7,x2,z;
@@ -1888,7 +1916,7 @@ prevent local evaluations  when writing to an MPtcp link.
   // read(l) forces to compute 'std(ideal(x3,...,z))'
   read(l);
   close(l);
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1929,7 +1957,8 @@ message.
 </p>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">int i=1;
+<dd><div class="smallexample">
+<pre class="smallexample">int i=1;
 proc myError() {ERROR(&quot;Need to leave now&quot;);i=2;}
 myError();
 &rarr;    ? Need to leave now
@@ -1938,7 +1967,7 @@ myError();
 &rarr;    skipping text from `;` error at token `)`
 i;
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -1972,9 +2001,10 @@ within Emacs), use <code>&lt;TAB&gt;</code> completion for a list of all availab
 example <code>topic</code>s.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">example prime;
+<dd><div class="smallexample">
+<pre class="smallexample">example prime;
 example intvec_declarations;
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -2015,7 +2045,8 @@ such procedures cannot be precompiled (a feature which <small>SINGULAR</small> w
 provide in the future).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   ideal i=x+y,z3+22y;
   write(&quot;:w save_i&quot;,i);
   ring r0=0,(x,y,z),Dp;
@@ -2027,7 +2058,7 @@ provide in the future).
   k;
 &rarr; k[1]=x+y
 &rarr; k[2]=z3+22y
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -2098,7 +2129,8 @@ then L[1]=a*L[2]+b*L[3].
 <dd><p>Polynomials must be univariate to apply <code>extgcd</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  extgcd(24,10);
+<dd><div class="smallexample">
+<pre class="smallexample">  extgcd(24,10);
 &rarr; [1]:
 &rarr;    2
 &rarr; [2]:
@@ -2113,7 +2145,7 @@ then L[1]=a*L[2]+b*L[3].
 &rarr;    x2+x+1
 &rarr; [3]:
 &rarr;    1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -2164,7 +2196,8 @@ over algebraic extensions over the rational numbers (that is, only
 implemented for ground fields for which <a href="#factorize">factorize</a> is implemented).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(c,dp);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),(c,dp);
   ideal I=xyz,x2z;
   facstd(I);
 &rarr; [1]:
@@ -2174,7 +2207,7 @@ implemented for ground fields for which <a href="#factorize">factorize</a> is im
   facstd(I,x);
 &rarr; [1]:
 &rarr;    _[1]=z
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -2218,18 +2251,20 @@ implemented for ground fields for which <a href="#factorize">factorize</a> is im
 <dd><p>computes the irreducible factors (as an ideal) of the polynomial
 together with or without
 the multiplicities (as an intvec) depending on the second argument:
-</p><pre class="format">    0: returns factors and multiplicities, first factor is a constant.
+</p><div class="format">
+<pre class="format">    0: returns factors and multiplicities, first factor is a constant.
        May also be written with only one argument.
     1: returns non-constant factors (no multiplicities).
     2: returns non-constant factors and multiplicities.
-</pre>
+</pre></div>
 </dd>
 <dt><code><strong>Note:</strong></code></dt>
 <dd><p>Not implemented for the coefficient fields real and finite fields of
 type <code>(p^n,a)</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   factorize(9*(x-1)^2*(y+z));
 &rarr; [1]:
 &rarr;    _[1]=9
@@ -2246,7 +2281,7 @@ type <code>(p^n,a)</code>.
 &rarr;    _[2]=x-1
 &rarr; [2]:
 &rarr;    1,2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -2294,7 +2329,8 @@ ring of that ring or vice versa.
 variables, not their names.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal i=maxideal(2);
   ideal j=std(i);
   poly f=x+y2+z3;
@@ -2329,7 +2365,7 @@ variables, not their names.
 &rarr; k[4]=ac
 &rarr; k[5]=ab
 &rarr; k[6]=a2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -2377,7 +2413,8 @@ are the monomial ordering and a permutation of the variables,
 resp. parameters.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal i=y3+x2, x2y+x2, x3-x2, z4-x2-y;
   option(redSB);   // force the computation of a reduced SB
   i=std(i);
@@ -2390,7 +2427,7 @@ resp. parameters.
 &rarr; j[2]=xy3-y3
 &rarr; j[3]=x2+y3
 &rarr; j[4]=z4+y3-y
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -2432,7 +2469,8 @@ basis in the given ring. The poly must be reduced with respect to the
 ideal.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),lp;
   ideal i=y3+x2,x2y+x2,x3-x2,z4-x2-y;
   option(redSB);   // force the computation of a reduced SB
   i=std(i);
@@ -2443,7 +2481,7 @@ ideal.
 &rarr; j[2]=yz4-z8
 &rarr; j[3]=y2+y-z8-z4
 &rarr; j[4]=x+y-z10-z6-z4
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -2479,8 +2517,9 @@ ideal.
 <code>execute(read(filename))</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">&lt; &quot;example&quot;; //read in the file example and execute it
-</pre></td></tr></table>
+<dd><div class="smallexample">
+<pre class="smallexample">&lt; &quot;example&quot;; //read in the file example and execute it
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -2517,7 +2556,8 @@ in the string or 0 (if not found),
 <br>starts the search at the position given in the 3rd argument.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  find(&quot;Aac&quot;,&quot;a&quot;);
+<dd><div class="smallexample">
+<pre class="smallexample">  find(&quot;Aac&quot;,&quot;a&quot;);
 &rarr; 2
   find(&quot;abab&quot;,&quot;a&quot;+&quot;b&quot;);
 &rarr; 1
@@ -2527,7 +2567,7 @@ in the string or 0 (if not found),
 &rarr; 3
   find(&quot;0123&quot;,&quot;abcd&quot;);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -2567,7 +2607,8 @@ generator is a univariate polynomial in the i-th ring variable.
 the current ring.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring  r=0,(x,y,z), dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring  r=0,(x,y,z), dp;
   ideal i=y3+x2,x2y+x2,z4-x2-y;
   option(redSB);  // force computation of reduced basis
   i=std(i);
@@ -2576,7 +2617,7 @@ the current ring.
 &rarr; x4-x2,
 &rarr; y4+y3,
 &rarr; z12
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -2636,7 +2677,8 @@ a list as an argument flattens the list by one level.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
 module m=[1,y],[0,x+z];
 intmat M=betti(mres(m,0));
 list l=r,m,M;
@@ -2686,7 +2728,7 @@ fprintf(li,&quot;%b&quot;,M);
 &rarr; ------------------
 &rarr; total:     1     1
 &rarr; 
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -2722,7 +2764,8 @@ fprintf(li,&quot;%b&quot;,M);
 <code>gen(1)</code>, &hellip;, <code>gen(n)</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y),(c,dp);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y),(c,dp);
   freemodule(3);
 &rarr; _[1]=[1]
 &rarr; _[2]=[0,1]
@@ -2732,7 +2775,7 @@ fprintf(li,&quot;%b&quot;,M);
 &rarr; 1,0,0,
 &rarr; 0,1,0,
 &rarr; 0,0,1 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -2775,14 +2818,15 @@ type <code>(p^n,a)</code>.
 otherwise it is not defined.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  gcd(2,3);
+<dd><div class="smallexample">
+<pre class="smallexample">  gcd(2,3);
 &rarr; 1
   ring r=0,(x,y,z),lp;
   gcd(3x2*(x+y),9x*(y2-x2));
 &rarr; x2+xy
   gcd(number(6472674604870),number(878646537247372));
 &rarr; 2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -2817,7 +2861,8 @@ otherwise it is not defined.
 <dd><p>returns the i-th free generator of a free module.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(c,dp);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),(c,dp);
   gen(3);
 &rarr; [0,0,1]
   vector v=gen(5);
@@ -2827,7 +2872,7 @@ otherwise it is not defined.
   ring rr=32003,(x,y,z),dp;
   fetch(r,v);
 &rarr; xyz*gen(4)+gen(5)
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -2865,14 +2910,15 @@ from it. For ASCII links, <code>getdump</code> is equivalent to an
 <code>dump</code>&rsquo;ed.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  int i=3;
+<dd><div class="smallexample">
+<pre class="smallexample">  int i=3;
   dump(&quot;:w example.txt&quot;);
   kill i;
   option(noredefine);
   getdump(&quot;example.txt&quot;);
   i;
 &rarr; 3
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Restrictions:</strong></code></dt>
 <dd><p><code>getdump</code> is not supported for DBM links, or for a link connecting
@@ -2936,7 +2982,8 @@ a warning message is displayed, and the global variable
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(a,b,c,d),lp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(a,b,c,d),lp;
 option(prot);
 ideal i=a+b+c+d,ab+ad+bc+cd,abc+abd+acd+bcd,abcd-1; // cyclic 4
 groebner(i);
@@ -2979,7 +3026,7 @@ if (system(&quot;with&quot;,&quot;MP&quot;)) {groebner(i,0);}
 &rarr; _[1]=0
 defined(groebner_error);
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -3050,7 +3097,8 @@ about help browsers.
 
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">help;      // display title page of manual
+<dd><div class="smallexample">
+<pre class="smallexample">help;      // display title page of manual
 help ring; // display help for 'ring'
 ?ringe;    // equivalent to 'help ringe;'
 &rarr; // ** No help for topic 'ringe' (not even for '*ringe*')
@@ -3064,7 +3112,7 @@ help ring; // display help for 'ring'
 &rarr; ?ring.lib; ?ring_lib; ?ringtensor; ?ringweights;
 help Rings and orderings;
 help standard.lib;  // displays help for library 'standard.lib'
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -3118,13 +3166,14 @@ given any set of generators
 </li></ul>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x,y),ds;
+<dd><div class="smallexample">
+<pre class="smallexample">ring r=0,(x,y),ds;
 ideal i=x3,x2y,y3;
 highcorner(std(i));
 &rarr; xy2
 highcorner(std(ideal(1)));
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3179,7 +3228,8 @@ but is used in the Hilbert driven standard basis computation (see <a href="#stdh
 the (weighted) Hilbert series of the original ideal, resp. module.<br>
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R=32003,(x,y,z),dp;
   ideal i=x2,y2,z2;
   ideal s=std(i);
   hilb(s);
@@ -3201,7 +3251,7 @@ the (weighted) Hilbert series of the original ideal, resp. module.<br>
   intvec w=2,2,2;
   hilb(s,1,w);
 &rarr; 1,0,0,0,-3,0,0,0,3,0,0,0,-1,0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3251,7 +3301,8 @@ each monomial with a suitable power of the given ring variable (which must have
 weight 1).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),ds;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),ds;
   poly s1=x3y2+x5y+3y9;
   poly s2=x2y2z2+3z8;
   poly s3=5x4y2+4xy5+2x2y2z3+y7+11x10;
@@ -3266,7 +3317,7 @@ weight 1).
 &rarr; 0
   homog(homog(i,z));
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3316,7 +3367,8 @@ in the above notation.
 computations have to be finished and may therefore take some time.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=xz,yz,x3-y3;
   def L=hres(I,0);
   print(betti(L),&quot;betti&quot;);
@@ -3330,7 +3382,7 @@ computations have to be finished and may therefore take some time.
   L[2];     // the first syzygy module of r/I
 &rarr; _[1]=-x*gen(1)+y*gen(2)
 &rarr; _[2]=-x2*gen(2)+y2*gen(1)+z*gen(3)
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3374,7 +3426,8 @@ for mappings from/to rings with/without parameters. Compared with
 Unlike <code>map</code> and <code>fetch</code> <code>imap</code> can map parameters to variables.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z,a,b,c),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z,a,b,c),dp;
   ideal i=xy2z3a4b5+1,homog(xy2z3a4b5+1,c); i;
 &rarr; i[1]=xy2z3a4b5+1
 &rarr; i[2]=xy2z3a4b5+c15
@@ -3386,7 +3439,7 @@ Unlike <code>map</code> and <code>fetch</code> <code>imap</code> can map paramet
   ideal j=imap(r,i); j;
 &rarr; j[1]=1+(a4b5)*xy2z3
 &rarr; j[2]=(a4b5)*xy2z3
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3422,10 +3475,11 @@ Unlike <code>map</code> and <code>fetch</code> <code>imap</code> can map paramet
 <br>returns 0 otherwise.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=(complex,i),x,dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=(complex,i),x,dp;
   impart(1+2*i);
 &rarr; 2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3482,7 +3536,8 @@ U is maximal if dim(I)=#U.
 of the leading ideal which cannot be enlarged.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,u,v,w),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,u,v,w),dp;
   ideal I=xyw,yvw,uyw,xv;
   attrib(I,&quot;isSB&quot;,1);
   indepSet(I);
@@ -3511,7 +3566,7 @@ of the leading ideal which cannot be enlarged.
 &rarr;    0,1,0,0,1
   eliminate(I,xuv);
 &rarr; _[1]=0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3548,7 +3603,8 @@ of the leading ideal which cannot be enlarged.
 called with 3 arguments) after the given position (the input is not changed).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  list L=1,2;
+<dd><div class="smallexample">
+<pre class="smallexample">  list L=1,2;
   insert(L,4,2);
 &rarr; [1]:
 &rarr;    1
@@ -3563,7 +3619,7 @@ called with 3 arguments) after the given position (the input is not changed).
 &rarr;    1
 &rarr; [3]:
 &rarr;    2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3610,7 +3666,8 @@ then
 </li></ul>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal i=x2+z,z,2z;
   interred(i);
 &rarr; _[1]=z
@@ -3621,7 +3678,7 @@ then
 &rarr; _[1]=z+xy
 &rarr; _[2]=xy-y3
 &rarr; _[3]=x2y-y3
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3659,7 +3716,8 @@ then
 <dd><p>If the option <code>returnSB</code> is enabled then the result is a standard basis.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=0,(x,y),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R=0,(x,y),dp;
   ideal i=x;
   ideal j=y;
   intersect(i,j);
@@ -3677,7 +3735,7 @@ then
 &rarr; id3[6]=xyz3-xy2
 &rarr; id3[7]=xy2z+x2y
 &rarr; id3[8]=x2yz+x3
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3714,7 +3772,8 @@ then
 partial derivatives of the input.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R;
   poly f=x2+y3+z5;
   jacob(f);
 &rarr; _[1]=2x
@@ -3725,7 +3784,7 @@ partial derivatives of the input.
 &rarr; 2,0, 0,  
 &rarr; 0,6y,0,  
 &rarr; 0,0, 20z3
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3772,7 +3831,8 @@ partial derivatives of the input.
 <br>If a third argument <code>u</code> of type poly or matrix is given, the first argument <code>p</code> is replaced by <code>p/u</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(c,dp);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),(c,dp);
   jet(1+x+x2+x3+x4,3);
 &rarr; x3+x2+x+1
   poly f=1+x+x2+xz+y2+x3+y3+x2y2+z4;
@@ -3810,7 +3870,7 @@ partial derivatives of the input.
 &rarr; _[1]=[x2+y2+xz+x+1,1]
 &rarr; _[2]=[x2+y2+xz+x+1,1]
 &rarr; _[3]=[1,x2,0,0,1]
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3856,7 +3916,8 @@ respective quotient with degree of the monomials equal to the
 second argument. Here, the quotient does not need to be finite dimensional.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),ds;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),ds;
   ideal i=x2,y2,z;
   kbase(std(i));
 &rarr; _[1]=xy
@@ -3870,7 +3931,7 @@ second argument. Here, the quotient does not need to be finite dimensional.
 &rarr; _[3]=xz
 &rarr; _[4]=y2
 &rarr; _[5]=xy
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3905,7 +3966,8 @@ second argument. Here, the quotient does not need to be finite dimensional.
 <dd><p>deletes objects.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  int i=3;
+<dd><div class="smallexample">
+<pre class="smallexample">  int i=3;
   ring r=0,x,dp;
   poly p;
   listvar();
@@ -3920,7 +3982,7 @@ second argument. Here, the quotient does not need to be finite dimensional.
 &rarr;    ? error occurred in line 7: `  i;`
   listvar();
 &rarr; // LIB                  [0]  string standard.lib
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -3954,7 +4016,8 @@ second argument. Here, the quotient does not need to be finite dimensional.
 <dd><p>deletes the attribute given as the second argument.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y),lp;
   ideal i=maxideal(1);
   attrib(i,&quot;isSB&quot;,1);
   attrib(i);
@@ -3962,7 +4025,7 @@ second argument. Here, the quotient does not need to be finite dimensional.
   killattrib(i,&quot;isSB&quot;);
   attrib(i);
 &rarr; no attributes
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4010,7 +4073,8 @@ the first n generators of the ideal <code>id</code>.
 of the matrices <code>koszul(i,id)</code> and <code>koszul(i+1,id)</code> equals zero.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   print(koszul(2,3));
 &rarr; -y,-z,0, 
 &rarr; x, 0, -z,
@@ -4026,7 +4090,7 @@ of the matrices <code>koszul(i,id)</code> and <code>koszul(i+1,id)</code> equals
 &rarr; 0,
 &rarr; 0,
 &rarr; 0 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4068,7 +4132,8 @@ for Laguerre&rsquo;s algorithm (with corrupted roots), leading to better results
 list are of type number, otherwise of type string.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring rs1=0,(x,y),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">ring rs1=0,(x,y),lp;
 poly f=15x5+x3+x2-10;
 laguerre(f,10,2);
 &rarr; [1]:
@@ -4081,7 +4146,7 @@ laguerre(f,10,2);
 &rarr;    (-0.7392783383+I*0.5355190078)
 &rarr; [5]:
 &rarr;    0.8924637479
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4124,7 +4189,8 @@ to the monomial ordering.
 <dd><p><code>IN</code> may be used instead of <code>lead</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(c,ds);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),(c,ds);
   poly f=2x2+3y+4z3;
   vector v=[2x10,f];
   ideal i=f,z;
@@ -4141,7 +4207,7 @@ to the monomial ordering.
 &rarr; _[2]=[0,0,2]
   lead(0);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4177,7 +4243,8 @@ to the monomial ordering.
 with respect to the monomial ordering.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(c,ds);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),(c,ds);
   poly f=x2+y+z3;
   vector v=[2*x^10,f];
   leadcoef(f);
@@ -4186,7 +4253,7 @@ with respect to the monomial ordering.
 &rarr; 2
   leadcoef(0);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4222,7 +4289,8 @@ with respect to the monomial ordering.
 In the case of a vector the last component is the index in the vector.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(c,ds);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),(c,ds);
   poly f=x2+y+z3;
   vector v=[2*x^10,f];
   leadexp(f);
@@ -4231,7 +4299,7 @@ In the case of a vector the last component is the index in the vector.
 &rarr; 10,0,0,1
   leadexp(0);
 &rarr; 0,0,0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4267,7 +4335,8 @@ In the case of a vector the last component is the index in the vector.
 or vector whose coefficient is one.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(c,ds);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),(c,ds);
   poly f=2x2+3y+4z3;
   vector v=[2x10,f];
   leadmonom(f);
@@ -4276,7 +4345,7 @@ or vector whose coefficient is one.
 &rarr; [x10]
   leadmonom(0);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -4332,7 +4401,8 @@ library <code>standard.lib</code> is automatically loaded at start-up time.
 
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  option(loadLib); // show loading of libraries
+<dd><div class="smallexample">
+<pre class="smallexample">  option(loadLib); // show loading of libraries
   LIB;             // standard.lib is loaded
 &rarr; standard.lib
 
@@ -4341,7 +4411,7 @@ library <code>standard.lib</code> is automatically loaded at start-up time.
 &rarr; // ** loaded inout.lib (1.21.2.5,2002/06/12)
   LIB;
 &rarr; standard.lib,inout.lib
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4393,7 +4463,8 @@ where <code>U</code> is a diagonal matrix of units.
 <dd><p>Gives a warning if <code>sm</code> is not a submodule.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(dp,C);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),(dp,C);
   ideal m=3x2+yz,7y6+2x2y+5xz;
   poly f=y7+x3+xyz+z2;
   ideal i=jacob(f);
@@ -4401,7 +4472,7 @@ where <code>U</code> is a diagonal matrix of units.
   matrix(m)-matrix(i)*T;
 &rarr; _[1,1]=0
 &rarr; _[1,2]=0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4441,7 +4512,8 @@ then <code>matrix(sm)=matrix(m)*T</code> and <code>sm=ideal(matrix(m)*T)</code>,
 resp. <code>sm=module(matrix(m)*T)</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R=0,(x,y,z),dp;
   poly f=x3+y7+z2+xyz;
   ideal i=jacob(f);
   matrix T;
@@ -4466,7 +4538,7 @@ resp. <code>sm=module(matrix(m)*T)</code>.
 &rarr; _[1,5]=0
 &rarr; _[1,6]=0
 &rarr; _[1,7]=0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4516,7 +4588,8 @@ variables in procedures is shown in square brackets.
 </p>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  proc t1 { }
+<dd><div class="smallexample">
+<pre class="smallexample">  proc t1 { }
   proc t2 { }
   ring s;
   poly ss;
@@ -4564,7 +4637,7 @@ variables in procedures is shown in square brackets.
 &rarr; // groebner             [0]  proc from standard.lib
 &rarr; // stdhilb              [0]  proc from standard.lib
 &rarr; // stdfglm              [0]  proc from standard.lib
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4614,7 +4687,8 @@ in the above notation.
 computations have to be finished and may therefore take some time.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=xz,yz,x3-y3;
   def L=lres(I,0);
   print(betti(L),&quot;betti&quot;);
@@ -4628,7 +4702,7 @@ computations have to be finished and may therefore take some time.
   L[2];     // the first syzygy module of r/I
 &rarr; _[1]=-x*gen(1)+y*gen(2)
 &rarr; _[2]=-x2*gen(2)+y2*gen(1)+z*gen(3)
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4663,7 +4737,8 @@ computations have to be finished and may therefore take some time.
 generated by all ring variables (<code>maxideal(i)=1</code> for <code>i&lt;=0</code>).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   maxideal(2);
 &rarr; _[1]=z2
 &rarr; _[2]=yz
@@ -4671,7 +4746,7 @@ generated by all ring variables (<code>maxideal(i)=1</code> for <code>i&lt;=0</c
 &rarr; _[4]=xz
 &rarr; _[5]=xy
 &rarr; _[6]=x2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4718,7 +4793,8 @@ operating system during the current <small>SINGULAR</small> session.
 also <a href="#option">option</a>).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x(1..500)),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x(1..500)),dp;
   poly p=(x(1)+x(500))^50;
   proc ReportMemoryUsage()
   {  &quot;Memory currently used by SINGULAR     :&quot;,memory(0),&quot;Byte (&quot;,
@@ -4742,7 +4818,7 @@ also <a href="#option">option</a>).
 &rarr; Memory currently used by SINGULAR     : 143124 Byte ( 139 KByte)
 &rarr; Memory currently allocated from system: 669128 Byte ( 654 KByte)
 &rarr; Maximal memory allocated from system  : 669128 Byte ( 654 KByte)
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4779,7 +4855,8 @@ input is
 either homogeneous or if the ordering is local.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=181,(x,y,z),(c,ls);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=181,(x,y,z),(c,ls);
   ideal id2=x2+xyz,y2-z3y,z3+y5xz;
   ideal id4=maxideal(3)+id2;
   size(id4);
@@ -4791,7 +4868,7 @@ either homogeneous or if the ordering is local.
 &rarr; _[4]=y2
 &rarr; _[5]=yz2
 &rarr; _[6]=z3
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4829,7 +4906,8 @@ If a third argument is given, the computations will be performed modulo that
 ideal.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x(1..5)),ds;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x(1..5)),ds;
   matrix m[2][4]=x(1..4),x(2..5);
   print(m);
 &rarr; x(1),x(2),x(3),x(4),
@@ -4849,7 +4927,7 @@ ideal.
 &rarr; _[4]=x(3)^2-x(2)*x(4)
 &rarr; _[5]=x(2)*x(3)
 &rarr; _[6]=-x(2)^2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4890,7 +4968,8 @@ ideal.
 given by the list_expression, resp. resolution_expression.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1=32003,(x,y),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r1=32003,(x,y),dp;
   ideal i=x5+xy4,x3+x2y+xy2+y3;
   resolution rs=lres(i,0);
   rs;
@@ -4920,7 +4999,7 @@ given by the list_expression, resp. resolution_expression.
 &rarr;    _[2]=xy4
 &rarr; [2]:
 &rarr;    _[1]=xy4*gen(1)-x3*gen(2)-x2y*gen(2)-xy2*gen(2)-y3*gen(2)
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -4963,7 +5042,8 @@ where
 the kernel of this induced map.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r;
   ideal h1=x,y,z;
   ideal h2=x;
   module m=modulo(h1,h2);
@@ -4971,7 +5051,7 @@ the kernel of this induced map.
 &rarr; 1,0, 0,0,
 &rarr; 0,-z,x,0,
 &rarr; 0,y, 0,x 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5012,13 +5092,14 @@ and opens the file given by the first string expression.
 <br><code>monitor (&quot;&quot;)</code> turns off recording.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  monitor(&quot;doe.tmp&quot;,&quot;io&quot;); // log input and output to doe.tmp
+<dd><div class="smallexample">
+<pre class="smallexample">  monitor(&quot;doe.tmp&quot;,&quot;io&quot;); // log input and output to doe.tmp
   ring r;
   poly f=x+y+z;
   int i=7;
   ideal I=f,x,y;
   monitor(&quot;&quot;);             // stop logging
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5060,7 +5141,8 @@ homogeneous. The number of elements in the input system must be the number of
 variables in the basering plus one.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring rsq=(0,s,t,u),(x,y),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring rsq=(0,s,t,u),(x,y),lp;
   ideal i=s+tx+uy,x2+y2-10,x2+xy+2y2-16;
   module m=mpresmat(i,0);
   print(m);
@@ -5074,7 +5156,7 @@ variables in the basering plus one.
 &rarr; 1,  0,  1,  0,  0,  0,  0,  (t),0,  0,  
 &rarr; 0,  1,  0,  1,  0,  0,  0,  0,  (t),1,  
 &rarr; 0,  0,  0,  0,  0,  0,  1,  0,  0,  1   
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5128,7 +5210,8 @@ is 0 (if the basering is not a qring).
 computations have to be finished and may therefore take some time.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=31991,(t,x,y,z,w),ls;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=31991,(t,x,y,z,w),ls;
   ideal M=t2x2+tx2y+x2yz,t2y2+ty2z+y2zw,
           t2z2+tz2w+xz2w,t2w2+txw2+xyw2;
   resolution L=mres(M,0);
@@ -5139,7 +5222,7 @@ computations have to be finished and may therefore take some time.
 &rarr; 0      1      2       3       4      5      
 &rarr; 
   // projective dimension of M is 5
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5179,7 +5262,8 @@ If, additionally, the input is homogeneous then the second entry is a
 minimal generating set for the ideal, resp. module.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z,t),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z,t),dp;
   poly f=x3+y4+z6+xyz;
   ideal j=jacob(f),f;
   j=homog(j,t);j;
@@ -5206,7 +5290,7 @@ minimal generating set for the ideal, resp. module.
 &rarr;    _[2]=4y3+xzt
 &rarr;    _[3]=6z5+xyt3
 &rarr;    _[4]=xyzt3
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5248,14 +5332,15 @@ then it returns the multiplicity of the ideal (in the sense of Samuel,
 with respect to the maximal ideal).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y),ds;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y),ds;
   poly f=(x3+y5)^2+x2y7;
   ideal i=std(jacob(f));
   mult(i);
 &rarr; 46
   mult(std(f));
 &rarr; 6
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5289,7 +5374,8 @@ with respect to the maximal ideal).
 <dd><p>returns the name of an expression as string.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  int i=9;
+<dd><div class="smallexample">
+<pre class="smallexample">  int i=9;
   string s=nameof(i);
   s;
 &rarr; i
@@ -5305,7 +5391,7 @@ with respect to the maximal ideal).
   ring r;
   nameof(basering);
 &rarr; r
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5343,7 +5429,8 @@ belong to the given ring.
 </p>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  int i=9;
+<dd><div class="smallexample">
+<pre class="smallexample">  int i=9;
   ring r;
   poly f;
   poly g;
@@ -5392,7 +5479,7 @@ belong to the given ring.
 &rarr;    g
 &rarr; [2]:
 &rarr;    f
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5434,7 +5521,8 @@ which are different from zero. (Use <code>nrows</code> to get the number of rows
 of a given matrix or intmat.)
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r;
   matrix m[5][6];
   ncols(m);
 &rarr; 6
@@ -5443,7 +5531,7 @@ of a given matrix or intmat.)
 &rarr; 3
   size(i);
 &rarr; 2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5477,11 +5565,12 @@ of a given matrix or intmat.)
 <dd><p>returns the number of parameters of a ring.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=(23,t,v),(x,a(1..7)),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=(23,t,v),(x,a(1..7)),lp;
   // the parameters are t,v
   npars(r);
 &rarr; 2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5530,7 +5619,8 @@ module of  <code>L[1]</code>, etc.
 in the notations from above).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=31991,(t,x,y,z,w),ls;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=31991,(t,x,y,z,w),ls;
   ideal M=t2x2+tx2y+x2yz,t2y2+ty2z+y2zw,
           t2z2+tz2w+xz2w,t2w2+txw2+xyw2;
   resolution L=nres(M,0);
@@ -5541,7 +5631,7 @@ in the notations from above).
 &rarr; 0      1      2       3       4      5      
 &rarr; resolution not minimized yet
 &rarr; 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5584,7 +5674,8 @@ vector lives (the index of the last non-zero component).
 <dd><p>Use <code>ncols</code> to get the number of columns of a given matrix or intmat.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R;
   matrix M[2][3];
   nrows(M);
 &rarr; 2
@@ -5595,7 +5686,7 @@ vector lives (the index of the last non-zero component).
 &rarr; 3
   nrows([0,x,0]);
 &rarr; 2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5629,11 +5720,12 @@ vector lives (the index of the last non-zero component).
 <dd><p>returns the number of variables of a ring.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=(23,t,v),(x,a(1..7)),ls;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=(23,t,v),(x,a(1..7)),ls;
   // the variables are x,a(1),...,a(7)
   nvars(r);
 &rarr; 8
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5667,10 +5759,11 @@ vector lives (the index of the last non-zero component).
 <dd><p>opens a link.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">link l=&quot;MPtcp:launch&quot;;
+<dd><div class="smallexample">
+<pre class="smallexample">link l=&quot;MPtcp:launch&quot;;
 open(l);  // start SINGULAR &quot;server&quot; on localhost in batchmode
 close(l); // shut down SINGULAR server
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -5899,7 +5992,8 @@ non-zero value assigned, the command <code>option()</code> prints the option.
 </dl>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  option(prot);
+<dd><div class="smallexample">
+<pre class="smallexample">  option(prot);
   option();
 &rarr; //options: prot redefine usage prompt
   option(notSugar);
@@ -5920,7 +6014,7 @@ non-zero value assigned, the command <code>option()</code> prints the option.
   option(set,i);
   option();
 &rarr; //options: degBound redTail redThrough intStrategy
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -6013,7 +6107,8 @@ the weights are the weights used for the first block of the ring ordering.
 <dd><p><code>ord(0)</code> is <code>-1</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=7,(x,y),wp(2,3);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=7,(x,y),wp(2,3);
   ord(0);
 &rarr; -1
   poly f=x2+y3;  // weight on y is 3
@@ -6026,7 +6121,7 @@ the weights are the weights used for the first block of the ring ordering.
   vector v=[x2,y];
   ord(v);
 &rarr; 3
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -6060,10 +6155,11 @@ the weights are the weights used for the first block of the ring ordering.
 <dd><p>returns the description of the monomial ordering of the ring.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=7,(x,y),wp(2,3);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=7,(x,y),wp(2,3);
   ordstr(r);
 &rarr; wp(2,3),C
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -6100,12 +6196,13 @@ the weights are the weights used for the first block of the ring ordering.
 <dd><p>This command should only be used if the basering has at least one parameter.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=(0,a,b,c),(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=(0,a,b,c),(x,y,z),dp;
   char(r);  // char to get the characteristic
 &rarr; 0
   par(2);   // par to get the n-th parameter
 &rarr; (b)
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -6139,10 +6236,11 @@ the weights are the weights used for the first block of the ring ordering.
 <dd><p>returns the degree of a number considered as a polynomial in the ring parameters.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=(0,a,b,c),(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=(0,a,b,c),(x,y,z),dp;
   pardeg(a^2*b);
 &rarr; 3
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -6181,14 +6279,15 @@ or the name of the n-th parameter where n is given by the int_expression.
 <code>parstr(n)</code> is equivalent to <code>parstr(basering,n)</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=(7,a,b,c),(x,y),wp(2,3);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=(7,a,b,c),(x,y),wp(2,3);
   parstr(r);
 &rarr; a,b,c
   parstr(2);
 &rarr; b
   parstr(r,3);
 &rarr; c
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -6234,7 +6333,8 @@ Hence there is no special command for computing the kernel of a map in
 <small>SINGULAR</small>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1=32003,(x,y,z,w),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r1=32003,(x,y,z,w),lp;
   ring r=32003,(x,y,z),dp;
   ideal i=x,y,z;
   ideal i1=x,y;
@@ -6249,7 +6349,7 @@ Hence there is no special command for computing the kernel of a map in
   // the kernel of f
   preimage(r,f,i0);
 &rarr; _[1]=w
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -6284,13 +6384,14 @@ Hence there is no special command for computing the kernel of a map in
 <br>returns 2 for all arguments smaller than 3.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  prime(32004);
+<dd><div class="smallexample">
+<pre class="smallexample">  prime(32004);
 &rarr; 32003
   prime(0);
 &rarr; 2
   prime(-1);
 &rarr; 2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -6371,7 +6472,8 @@ comma and at the end
 </dl>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   module m=[1,y],[0,x+z];
   m;
 &rarr; m[1]=y*gen(2)+gen(1)
@@ -6415,7 +6517,7 @@ comma and at the end
 &rarr; 
   s=print(l,&quot;%l&quot;); s;
 &rarr; list(&quot;(0),(x,y,z),(dp(3),C)&quot;,intmat(intvec(1,1 ),1,2))
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -6473,7 +6575,8 @@ list as an argument flattens the list by one level.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
 module m=[1,y],[0,x+z];
 intmat M=betti(mres(m,0));
 list l=r,m,M;
@@ -6522,7 +6625,7 @@ printf(&quot;%b&quot;,M);
 &rarr; ------------------
 &rarr; total:     1     1
 &rarr; 
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -6557,7 +6660,8 @@ printf(&quot;%b&quot;,M);
 corresponding factor modules are isomorphic.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   module m=gen(1),gen(3),[x,y,0,z],[x+y,0,0,0,1];
   print(m);
 &rarr; 1,0,x,x+y,
@@ -6568,7 +6672,7 @@ corresponding factor modules are isomorphic.
   print(prune(m));
 &rarr; y,
 &rarr; z 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -6603,11 +6707,12 @@ corresponding factor modules are isomorphic.
 If the input is not weighted homogeneous, an intvec of zeros is returned.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring h1=32003,(t,x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring h1=32003,(t,x,y,z),dp;
   ideal i=x4+y3+z2;
   qhweight(i);
 &rarr; 0,3,4,6
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -6663,7 +6768,8 @@ If a 3rd argument &rsquo;n&rsquo; is given the n-th method is used
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=181,(x,y,z),(c,ls);
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=181,(x,y,z),(c,ls);
 ideal id1=maxideal(4);
 ideal id2=x2+xyz,y2-z3y,z3+y5xz;
 option(prot);
@@ -6717,7 +6823,7 @@ id5;
 &rarr; id5[4]=y2
 &rarr; id5[5]=xy
 &rarr; id5[6]=x2
-</pre></td></tr></table>
+</pre></div>
 
 
 
@@ -6757,7 +6863,8 @@ quote can be &quot;undone&quot; by an <code>eval</code> (i.e., each eval &quot;u
 effect of exactly one quote).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  link l=&quot;MPfile:w example.mp&quot;;
+<dd><div class="smallexample">
+<pre class="smallexample">  link l=&quot;MPfile:w example.mp&quot;;
   ring r=0,(x,y,z),ds;
   ideal i=maxideal(3);
   ideal j=x7,x2,z;
@@ -6774,7 +6881,7 @@ effect of exactly one quote).
 &rarr; _[3]=xy2
 &rarr; _[4]=y3
   close(l);
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -6823,7 +6930,8 @@ Then
 </li></ul>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=181,(x,y,z),(c,ls);
+<dd><div class="smallexample">
+<pre class="smallexample">ring r=181,(x,y,z),(c,ls);
 ideal id1=maxideal(3);
 ideal id2=x2+xyz,y2-z3y,z3+y5xz;
 ideal id6=quotient(id1,id2);
@@ -6844,7 +6952,7 @@ quotient(m,id3);
 &rarr; _[1]=[1]
 &rarr; _[2]=[0,1]
 &rarr; _[3]=[0,0,x]
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -6896,7 +7004,8 @@ the first argument.
 the function <code>system</code>, resp. by a command line option.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  random(1,1000);
+<dd><div class="smallexample">
+<pre class="smallexample">  random(1,1000);
 &rarr; 35
   random(1,2,3);
 &rarr; 0,0,0,
@@ -6909,7 +7018,7 @@ the function <code>system</code>, resp. by a command line option.
   system(&quot;random&quot;,210);
   random(-1000,1000);    // the same random values again
 &rarr; 707
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -6958,7 +7067,8 @@ returns the value to the key given as the second argument from the data
 base.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   ideal i=x+y,z3+22y;
   // write the ideal i to the file save_i
   write(&quot;:w save_i&quot;,i);
@@ -6970,7 +7080,7 @@ base.
   k;
 &rarr; k[1]=x+y
 &rarr; k[2]=z3+22y
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -7029,7 +7139,8 @@ This works only for zero dimensional ideals (resp. modules) in the second argume
 <dd><p>The commands <code>reduce</code> and <code>NF</code> are synonymous.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1 = 0,(z,y,x),ds;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r1 = 0,(z,y,x),ds;
   poly s1=2x5y+7x2y4+3x2yz3;
   poly s2=1x2y2z2+3z8;
   poly s3=4xy5+2x2y2z3+11x10;
@@ -7039,7 +7150,7 @@ This works only for zero dimensional ideals (resp. modules) in the second argume
 &rarr; -yx5+2401/81y14x2+2744/81y11x5+392/27y8x8+224/81y5x11+16/81y2x14
   reduce(3z3yx2+7y4x2+yx5+z12y2x2,j,1);
 &rarr; -yx5+z12y2x2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -7082,7 +7193,8 @@ the regularity is computed and used as a degree bound during
 the computation unless <code>option(notRegularity);</code> is given.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring rh3=32003,(w,x,y,z),(dp,C);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring rh3=32003,(w,x,y,z),(dp,C);
   poly f=x11+y10+z9+x5y2+x2y2z3+xy3*(y2+x)^2;
   ideal j=homog(jacob(f),w);
   def jr=res(j,0);
@@ -7098,7 +7210,7 @@ the computation unless <code>option(notRegularity);</code> is given.
   jj=minres(jj);
   regularity(jj);
 &rarr; 25
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -7134,10 +7246,11 @@ the computation unless <code>option(notRegularity);</code> is given.
 <br>returns its argument otherwise.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=(complex,i),x,dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=(complex,i),x,dp;
   repart(1+2*i);
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -7206,7 +7319,8 @@ computations have to be finished and may therefore take some time.
 </dl>
 
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
 ideal i=xz,yz,x3-y3;
 def l=res(i,0); // homogeneous ideal: uses lres
 l;
@@ -7252,7 +7366,7 @@ res(i,0,0);     // local ring and minimized: uses mres
 &rarr; 
 &rarr; 0       1       
 &rarr; 
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="reservedName"></a>
@@ -7292,13 +7406,14 @@ res(i,0,0);     // local ring and minimized: uses mres
 whether the string is a reserved identifier (second form).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">reservedName();
+<dd><div class="smallexample">
+<pre class="smallexample">reservedName();
 &rarr; ... // output skipped
   reservedName(&quot;ring&quot;);
 &rarr; 1
   reservedName(&quot;xyz&quot;);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -7333,12 +7448,13 @@ whether the string is a reserved identifier (second form).
 to the variable given as the third argument.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),dp;
   poly f=3*(x+2)^3+y;
   poly g=x+y+z;
   resultant(f,g,x);
 &rarr; 3y3+9y2z+9yz2+3z3-18y2-36yz-18z2+35y+36z-24
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -7377,7 +7493,8 @@ basering; returns 0 if not. Hence the return value of <code>rvar</code> can
 also be used in a boolean context to check whether the variable exists.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=29,(x,y,z),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=29,(x,y,z),lp;
   rvar(x);
 &rarr; 1
   rvar(r);
@@ -7388,7 +7505,7 @@ also be used in a boolean context to check whether the variable exists.
 &rarr; 3
   rvar(&quot;x&quot;);
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -7422,7 +7539,8 @@ also be used in a boolean context to check whether the variable exists.
 <dd><p>changes the basering to another (already defined) ring.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r1=0,(x,y),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r1=0,(x,y),lp;
   // the basering is r1
   ring r2=32003,(a(1..8)),ds;
   // the basering is r2
@@ -7434,7 +7552,7 @@ also be used in a boolean context to check whether the variable exists.
 &rarr; // r2                   [0]  ring
 &rarr; // r1                   [0]  *ring
 &rarr; // LIB                  [0]  string standard.lib
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Use in procedures:</strong></code></dt>
 <dd><p>All changes of the basering by a definition of a new ring or a
@@ -7531,7 +7649,8 @@ procedure <a href="singular_9.html#simplexOut">simplexOut</a> in <code>solve.lib
 </p>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">    ring r = (real,10),(x),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">    ring r = (real,10),(x),lp;
 
     // consider the max. problem:
     //
@@ -7590,7 +7709,7 @@ procedure <a href="singular_9.html#simplexOut">simplexOut</a> in <code>solve.lib
 &rarr;    4
 &rarr; [6]:
 &rarr;    4
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -7653,7 +7772,8 @@ not divisible by other ones.
 </dl>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x,y,z),(c,dp);
+<dd><div class="smallexample">
+<pre class="smallexample">ring r=0,(x,y,z),(c,dp);
 ideal i=0,2x,2x,4x,3x+y,5x2;
 simplify(i,1);
 &rarr; _[1]=0
@@ -7691,7 +7811,7 @@ simplify(i,32+2+1);
 matrix A[2][3]=x,0,2x,y,0,2y;
 simplify(A,2+8); // by automatic conversion to module
 &rarr; _[1]=[x,y]
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -7753,7 +7873,8 @@ simplify(A,2+8); // by automatic conversion to module
 </dl>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  string s=&quot;hello&quot;;
+<dd><div class="smallexample">
+<pre class="smallexample">  string s=&quot;hello&quot;;
   size(s);
 &rarr; 5
   intvec iv=1,2;
@@ -7779,7 +7900,7 @@ simplify(A,2+8); // by automatic conversion to module
   minpoly=a4+a+1;
   size(r1);
 &rarr; 8
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -7812,11 +7933,12 @@ simplify(A,2+8); // by automatic conversion to module
 </p></dd>
 <dt><code><strong>Purpose:</strong></code></dt>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   ideal I=y,z,x,x3,xz;
   sortvec(I);
 &rarr; 2,1,3,5,4
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -7874,7 +7996,8 @@ as an argument flattens the list by one level.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
 module m=[1,y],[0,x+z];
 intmat M=betti(mres(m,0));
 list l = r, m, M;
@@ -7927,7 +8050,7 @@ s = sprintf(&quot;%b&quot;, M); s;
 &rarr; ------------------
 &rarr; total:     1     1
 &rarr; 
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -7983,7 +8106,8 @@ module of <code>L[1]</code>, etc.
 computations have to be finished and may therefore take some time.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=31991,(t,x,y,z,w),ls;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=31991,(t,x,y,z,w),ls;
   ideal M=t2x2+tx2y+x2yz,t2y2+ty2z+y2zw,
           t2z2+tz2w+xz2w,t2w2+txw2+xyw2;
   M=std(M);
@@ -8009,7 +8133,7 @@ computations have to be finished and may therefore take some time.
 &rarr;     8:     -     -     -     2     5     1
 &rarr; ------------------------------------------
 &rarr; total:     1     4    15    18     7     1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -8091,14 +8215,15 @@ be put to sleep is one second.
 </dl>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  link l=&quot;:w example.txt&quot;;
+<dd><div class="smallexample">
+<pre class="smallexample">  link l=&quot;:w example.txt&quot;;
   status(l,&quot;write&quot;);
 &rarr; not ready
   open(l);
   status(l,&quot;write&quot;,&quot;ready&quot;);
 &rarr; 1
   close(l);
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -8163,7 +8288,8 @@ chooses the &quot;best&quot; algorithm to compute a Groebner basis.
 </p>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  // local computation
+<dd><div class="smallexample">
+<pre class="smallexample">  // local computation
   ring r=32003,(x,y,z),ds;
   poly s1=1x2y+151xyz10+169y21;
   poly s2=1xz14+6x2y4+3z24;
@@ -8194,7 +8320,7 @@ chooses the &quot;best&quot; algorithm to compute a Groebner basis.
   ideal j=std(i,iw,w);
   j[1];
 &rarr; z64
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -8240,7 +8366,8 @@ If no second argument is given, &quot;dp&quot; is used.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">   ring r=0,(x,y,z),lp;
+</p><div class="smallexample">
+<pre class="smallexample">   ring r=0,(x,y,z),lp;
 ideal i=y3+x2,x2y+x2,x3-x2,z4-x2-y;
 ideal i1=stdfglm(i);         //uses fglm from &quot;dp&quot; to &quot;lp&quot;
 i1;
@@ -8256,7 +8383,7 @@ i2;
 &rarr; i2[3]=y2+y-z8-z4
 &rarr; i2[4]=xy-xz4-y+z4
 &rarr; i2[5]=x2+y-z4
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -8305,7 +8432,8 @@ by <code>hilb</code>.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">   ring  r=0,(x,y,z),dp;
+</p><div class="smallexample">
+<pre class="smallexample">   ring  r=0,(x,y,z),dp;
 ideal i=y3+x2,x2y+x2,x3-x2,z4-x2-y;
 ideal i1=stdhilb(i); i1;
 &rarr; i1[1]=y3+x2
@@ -8320,7 +8448,7 @@ ideal i2=stdhilb(i,v); i2;
 &rarr; i2[2]=x2y+x2
 &rarr; i2[3]=x3-x2
 &rarr; i2[4]=z4-x2-y
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -8357,7 +8485,8 @@ ideal i2=stdhilb(i,v); i2;
 <dd><p>substitutes a ring variable by a polynomial.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   poly f=x2+y2+z2+x+y+z;
   subst(f,x,3/2);
 &rarr; y2+z2+y+z+15/4
@@ -8368,7 +8497,7 @@ ideal i2=stdhilb(i,v); i2;
 &rarr; x2+2z2+x+2z
   subst(f,y,z+1);
 &rarr; x2+2z2+x+4z+2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -8512,7 +8641,8 @@ See section <a href="singular_2.html#The-online-help-system">The online help sys
 </dl>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">// a listing of the current directory:
+<dd><div class="smallexample">
+<pre class="smallexample">// a listing of the current directory:
 system(&quot;sh&quot;,&quot;ls&quot;);
 // execute a shell, return to SINGULAR with exit:
 system(&quot;sh&quot;,&quot;sh&quot;);
@@ -8560,7 +8690,7 @@ system(&quot;--random&quot;, 12345678);
 system(&quot;--allow-net&quot;, 1);
 // and set help browser to netscape
 system(&quot;--browser&quot;, &quot;netscape&quot;);
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -8596,11 +8726,12 @@ system(&quot;--browser&quot;, &quot;netscape&quot;);
 generators) of the ideal, resp. module.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=0,(x,y),(c,dp);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R=0,(x,y),(c,dp);
   ideal i=x,y;
   syz(i);
 &rarr; _[1]=[y,-x]
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -8636,13 +8767,14 @@ poly, if the argument is a matrix
 <dd><p>returns the trace of an intmat, resp. matrix.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  intmat m[2][2]=1,2,3,4;
+<dd><div class="smallexample">
+<pre class="smallexample">  intmat m[2][2]=1,2,3,4;
   print(m);
 &rarr;      1     2
 &rarr;      3     4
   trace(m);
 &rarr; 5
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -8678,7 +8810,8 @@ poly, if the argument is a matrix
 <dd><p>transposes a matrix.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=0,x,dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R=0,x,dp;
   matrix m[2][3]=1,2,3,4,5,6;
   print(m);
 &rarr; 1,2,3,
@@ -8687,7 +8820,7 @@ poly, if the argument is a matrix
 &rarr; 1,4,
 &rarr; 2,5,
 &rarr; 3,6 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -8724,12 +8857,13 @@ value of an expression, it is sufficient to type the expression followed
 by <code>;</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  int i=3;
+<dd><div class="smallexample">
+<pre class="smallexample">  int i=3;
   i;
 &rarr; 3
   type(i);
 &rarr; // i                    [0]  int 3
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -8788,7 +8922,8 @@ expression list.
 <code>&quot;?unknown type?&quot;</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  int i=9; i;
+<dd><div class="smallexample">
+<pre class="smallexample">  int i=9; i;
 &rarr; 9
   typeof(_);
 &rarr; int
@@ -8810,7 +8945,7 @@ expression list.
 &rarr; hello
   typeof(_);
 &rarr; none
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -8860,7 +8995,8 @@ Laguerre&rsquo;s algorithm (with corrupted roots), leading to better results.
 are of type number, otherwise of type string.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring rsc=(real,20,I),(x,y),lp;
+<dd><div class="smallexample">
+<pre class="smallexample">ring rsc=(real,20,I),(x,y),lp;
 ideal i=(2+3*I)*x2+(0.35+I*45.0e-2)*y2-8,x2+xy+(42.7)*y2;
 list l=uressolve(i,0,0,2);
 l[1];
@@ -8870,7 +9006,7 @@ l[1];
 &rarr;    (0.12292646536251281054+I*0.19245727404407015049)
 subst(subst(i[1],x,l[1][1]),y,l[1][2]);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -8904,7 +9040,8 @@ int_expression <code>)</code>
 <dt><code><strong>Purpose:</strong></code></dt>
 <dt><code><strong>Note:</strong></code></dt>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r=0,(x,y),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">ring r=0,(x,y),dp;
 // determine f with deg(f)=2 and with given values v of f
 // at 9 points: (2,3)^0=(1,1),...,(2,3)^8=(2^8,3^8)
 // valuation point: (2,3)
@@ -8916,7 +9053,7 @@ ip[1..5];  //  the 5 first terms of ip:
 // compute value of ip at the point 2^8,3^8, result must be 9
 subst(subst(ip,x,2^8),y,3^8);
 &rarr; 9
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -8950,10 +9087,11 @@ subst(subst(ip,x,2^8),y,3^8);
 <dd><p><code>var(n)</code> returns the n-th ring variable.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   var(2);
 &rarr; y
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -8993,14 +9131,15 @@ int_expression.
 <code>varstr(n)</code> is equivalent to <code>varstr(basering,n)</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
   varstr(r);
 &rarr; x,y,z
   varstr(r,1);
 &rarr; x
   varstr(2);
 &rarr; y
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9041,12 +9180,13 @@ free module, modulo the ideal, resp. module.
 <br>If the ideal, resp. module, is not zero-dimensional, -1 is returned.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y),ds;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y),ds;
   ideal i=x2+y2,x2-y2;
   ideal j=std(i);
   vdim(j);
 &rarr; 4
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9081,14 +9221,15 @@ free module, modulo the ideal, resp. module.
 <code>M</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r;
   matrix m[2][3]=x,y,y,z,z,x;
   print(m);
 &rarr; x,y,y,
 &rarr; z,z,x 
   print(wedge(m,2));
 &rarr; xz-yz,-x2+yz,xy-yz
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9126,7 +9267,8 @@ up the standard basis algorithm. If the input is weighted homogeneous,
 a weight vector for which the input is weighted homogeneous is found.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring h1=32003,(t,x,y,z),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring h1=32003,(t,x,y,z),dp;
   ideal i=
   9x8+y7t3z4+5x4y2t2+2xy2z3t2,
   9y8+7xy6t+2x5y4t2+2x2yz3t2,
@@ -9137,7 +9279,7 @@ a weight vector for which the input is weighted homogeneous is found.
   ring r=32003,(a,b,c,d),wp(e);
   map f=h1,a,b,c,d;
   ideal i0=std(f(i));
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9189,7 +9331,8 @@ base.
 specified by the string from the data base.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">// write the values of the variables f and i as strings into
+<dd><div class="smallexample">
+<pre class="smallexample">// write the values of the variables f and i as strings into
 // the file &quot;outfile&quot; (overwrite it, if it exists)
 write(&quot;:w outfile&quot;,f,i);
 
@@ -9216,7 +9359,7 @@ execute(&quot;ideal k=&quot;+s+&quot;;&quot;); // this defines an ideal k which
 // for large objects, the MP format and MPfile links are better:
 write(&quot;MPfile:w save_i.mp&quot;,i);
 def j=read(&quot;MPfile:r save_i.mp&quot;);
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -9281,7 +9424,8 @@ are not local to that block. Note that there is no ending semicolon at
 the end of the block.
 </p><dl compact="compact">
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">if ( i&gt;j )
+<dd><div class="smallexample">
+<pre class="smallexample">if ( i&gt;j )
 {
   // This is the block
   int temp;
@@ -9290,7 +9434,7 @@ the end of the block.
   j=temp;
   kill temp;
 }
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -9322,7 +9466,8 @@ the end of the block.
 <dd><p>leaves the innermost <code>for</code> or <code>while</code> block.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">while (1)
+<dd><div class="smallexample">
+<pre class="smallexample">while (1)
 {
   &hellip;
   if ( &hellip; )
@@ -9330,7 +9475,7 @@ the end of the block.
     break; // leave the while block
   }
 }
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9366,13 +9511,14 @@ procedures from libraries), resp. the line with the <code>{</code>.
 <br>A line number of -1 removes all breakpoint from that procedure.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">breakpoint(groebner);
+<dd><div class="smallexample">
+<pre class="smallexample">breakpoint(groebner);
 &rarr; breakpoint 1, at line 163 in groebner
 breakpoint(groebner, 176);
 &rarr; breakpoint 2, at line 176 in groebner
 breakpoint(groebner, -1);
 &rarr; breakpoints in groebner deleted(0x6)
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9409,7 +9555,8 @@ to the beginning of the block. This command is only valid inside a
 The command <code>continue</code> is mainly for internal use.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">for (int i = 1 ; i&lt;=10; i=i+1)
+<dd><div class="smallexample">
+<pre class="smallexample">for (int i = 1 ; i&lt;=10; i=i+1)
 {
    &hellip;
    if (i==3) { i=8;continue; }
@@ -9422,7 +9569,7 @@ The command <code>continue</code> is mainly for internal use.
 &rarr; 8
 &rarr; 9
 &rarr; 10
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9454,7 +9601,8 @@ is false. This command is only valid in combination with an <code>if</code>
 command.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">int i=3;
+<dd><div class="smallexample">
+<pre class="smallexample">int i=3;
 if (i &gt; 5)
 {
   &quot;i is bigger than 5&quot;;
@@ -9464,7 +9612,7 @@ else
   &quot;i is smaller than 6&quot;;
 }
 &rarr; i is smaller than 6
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9500,7 +9648,8 @@ else
 when exporting the ring (use <code>keepring</code> instead).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc p1
+<dd><div class="smallexample">
+<pre class="smallexample">proc p1
 {
   int i,j;
   export(i);
@@ -9515,7 +9664,7 @@ p1();
 listvar();
 &rarr; // m                    [0]  intmat 1 x 1
 &rarr; // i                    [0]  int 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -9555,7 +9704,8 @@ evaluated. This is repeated until boolean_expression evaluates to FALSE.
 <br>The command <code>break;</code> leaves the innermost <code>for</code> construct.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">// sum of 1 to 10:
+<dd><div class="smallexample">
+<pre class="smallexample">// sum of 1 to 10:
 int s=0;
 for (int i=1; i&lt;=10; i=i+1)
 {
@@ -9563,7 +9713,7 @@ for (int i=1; i&lt;=10; i=i+1)
 }
 s;
 &rarr; 55
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9598,13 +9748,14 @@ statement is followed by an <code>else</code> statement and the boolean
 condition is false, then false_block is executed.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">int i = 9;
+<dd><div class="smallexample">
+<pre class="smallexample">int i = 9;
 matrix m[i][i];
 if (i &gt; 5 and typeof(m) == &quot;matrix&quot;)
 {
   m[i][i] = i;
 }
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9639,7 +9790,8 @@ a ring which is local to the procedure (and its objects) accessible after
 the procedure ended without making the ring global.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc P1
+<dd><div class="smallexample">
+<pre class="smallexample">proc P1
 {
   ring r=0,x,dp;
   keepring r;
@@ -9656,7 +9808,7 @@ P2();
 &rarr; inside P2, after call of P1: r
 &quot;at top level: &quot; + nameof(basering);
 &rarr; at top level: r1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9690,8 +9842,9 @@ works also from inside a procedure. The commands <code>quit</code> and
 <code>exit</code> are synonymous.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  quit;
-</pre></td></tr></table>
+<dd><div class="smallexample">
+<pre class="smallexample">  quit;
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9728,7 +9881,8 @@ procedure. Note that the brackets are required even if no return value
 is given.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc p2
+<dd><div class="smallexample">
+<pre class="smallexample">proc p2
 {
   int i,j;
   for(i=1;i&lt;=10;i++)
@@ -9750,7 +9904,7 @@ proc type_return (int i)
 // then we need def type (or list) to collect value
 def t1 = type_return(1);
 def t2 = type_return(-1);
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9785,7 +9939,8 @@ to FALSE.  The command <code>break</code> leaves the innermost <code>while</code
 construction.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">int i = 9;
+<dd><div class="smallexample">
+<pre class="smallexample">int i = 9;
 while (i&gt;0)
 {
    // &hellip; // do something for i=9, 8, ..., 1
@@ -9799,7 +9954,7 @@ while (1)
      break;
    }
 }
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -9837,7 +9992,8 @@ characters.
 as soon as it receives an empty line.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc t
+<dd><div class="smallexample">
+<pre class="smallexample">proc t
 {
   int i=2;
   ~;
@@ -9852,7 +10008,7 @@ i;
 &rarr; -- break point in t --
 
 &rarr; 3
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -9933,14 +10089,15 @@ input.
 <br>Reset this bound by setting <code>degBound</code> to 0.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">degBound = 7;
+<dd><div class="smallexample">
+<pre class="smallexample">degBound = 7;
 option();
 &rarr; //options for 'std'-command: degBound
 ideal j=std(i);
 degBound;
 &rarr; 7
 degBound = 0; //resets degree bound to infinity
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -9973,10 +10130,11 @@ degBound = 0; //resets degree bound to infinity
 <br><code>echo</code> does not affect the output of commands.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">echo = 1;
+<dd><div class="smallexample">
+<pre class="smallexample">echo = 1;
 int i = echo;
 &rarr; int i = echo;
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -10020,12 +10178,13 @@ polynomial is irreducible! It can be checked in advance with the
 function <code>factorize</code> (see section <a href="#factorize">factorize</a>).
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  //(Q[i]/(i^2+1))[x,y,z]:
+<dd><div class="smallexample">
+<pre class="smallexample">  //(Q[i]/(i^2+1))[x,y,z]:
   ring Cxyz=(0,i),(x,y,z),dp;
   minpoly=i^2+1;
   i2;  //this is a number, not a poly
 &rarr; -1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -10059,14 +10218,15 @@ and its multiplicity (<code>mult</code>) is lower than <code>multBound</code>.
 <br>Reset this bound by setting <code>multBound</code> to 0.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">multBound = 20;
+<dd><div class="smallexample">
+<pre class="smallexample">multBound = 20;
 option();
 &rarr;    //options for 'std'-command: multBound
 ideal j=std(i);
 multBound;
 &rarr; 20
 multBound = 0;  //disables multBound
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -10101,7 +10261,8 @@ the monomial <code>noether</code> during the computation.
 <br>Reset <code>noether</code> by setting <code>noether</code> to 0.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R=32003,(x,y,z),ds;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R=32003,(x,y,z),ds;
   ideal i=x2+y12,y13;
   std(i);
 &rarr; _[1]=x2+y12
@@ -10110,7 +10271,7 @@ the monomial <code>noether</code> during the computation.
   std(i);
 &rarr; _[1]=x2
   noether=0; //disables noether
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -10147,14 +10308,15 @@ If <code>printlevel</code> &gt;= <code>voice</code> then <code>dbprint</code> is
 is used for the display of comments while procedures are executed.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  voice;
+<dd><div class="smallexample">
+<pre class="smallexample">  voice;
 &rarr; 1
   printlevel=0;
   dbprint(1);
   printlevel=voice;
   dbprint(1);
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -10192,7 +10354,8 @@ that ring. In other words, the value of the variable <code>short</code> is
 &quot;ring-local&quot;.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=23,x,dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=23,x,dp;
   int save=short;
   short=1;
   2x2,x2;
@@ -10201,7 +10364,7 @@ that ring. In other words, the value of the variable <code>short</code> is
   2x2,x2;
 &rarr; 2*x^2 x^2
   short=save;  //resets short to the previous value
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -10260,7 +10423,8 @@ of the Windows95/98 operating system). Use <a href="#rtimer">rtimer</a>, instead
 </p>
 </dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  timer=1; // The time of each command is printed
+<dd><div class="smallexample">
+<pre class="smallexample">  timer=1; // The time of each command is printed
   int t=timer; // initialize t by timer
   ring r=0,(x,y,z),dp;
   poly p=(x+2y+3z+4xy+5xz+6yz)^20;
@@ -10272,7 +10436,7 @@ of the Windows95/98 operating system). Use <a href="#rtimer">rtimer</a>, instead
   int tps=system(&quot;--ticks-per-sec&quot;);
   t/tps; // yields the time in seconds truncated to int
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -10322,13 +10486,14 @@ in this line is suspended until the user presses <code>RETURN</code>.
 <br><code>TRACE</code> does not affect the output of commands.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  TRACE=1;
+<dd><div class="smallexample">
+<pre class="smallexample">  TRACE=1;
   LIB &quot;general.lib&quot;;
   sum(1..100);
 &rarr; entering sum (level 0)
 &rarr; leaving  sum (level 0)
 &rarr; 5050
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <hr>
@@ -10395,7 +10560,8 @@ trusted on all operating systems (including Windows95/98).
 for the display of comments while procedures are executed.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  voice;
+<dd><div class="smallexample">
+<pre class="smallexample">  voice;
 &rarr; 1
 proc p
 {
@@ -10403,7 +10569,7 @@ proc p
 };
 p();
 &rarr; 2
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 

@@ -106,9 +106,10 @@ ul.no-bullet {list-style: none}
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>list of polynomials
-  </p><pre class="format">  _[1] = quotient  q
+  </p><div class="format">
+<pre class="format">  _[1] = quotient  q
   _[2] = remainder r
-  </pre>
+  </pre></div>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -117,7 +118,8 @@ ul.no-bullet {list-style: none}
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;zeroset.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;zeroset.lib&quot;;
 ring R = (0,a), x, lp;
 minpoly = a2+1;
 poly f =  x4 - 2;
@@ -130,7 +132,7 @@ qr;
 &rarr;    0
 qr[1]*g + qr[2] - f;
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

@@ -113,7 +113,8 @@ maxdeg is faster
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;poly.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;poly.lib&quot;;
 ring r = 0,(x,y,z),wp(1,2,3);
 poly f = x+y2+z3;
 deg(f);            //deg returns weighted degree (in case of 1 block)!
@@ -126,7 +127,7 @@ maxdeg1(f,v);                        //weighted maximal degree
 matrix m[2][2]=f+x10,1,0,f^2;
 maxdeg1(m,v);                        //absolute weighted maximal degree
 &rarr; 18
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

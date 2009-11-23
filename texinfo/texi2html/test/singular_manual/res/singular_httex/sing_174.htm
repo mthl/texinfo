@@ -116,7 +116,8 @@ The weighted degree of <code>T</code> and <code>R</code> respect to <code>w</cod
 If the weight vector <code>w</code> is not given, <code>division</code> uses the standard weight vector <code>w=1,...,1</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">ring R=0,(x,y),ds;
+<dd><div class="smallexample">
+<pre class="smallexample">ring R=0,(x,y),ds;
 poly f=x5+x2y2+y5;
 division(f,jacob(f));
 &rarr; [1]:
@@ -141,7 +142,7 @@ division(ideal(f^2),jacob(f),10);
 &rarr;    _[2,1]=1/2x2y3+x5y-1/4y6-3/2x3y4+15/4xy7+375/16x2y8
 &rarr; [2]:
 &rarr;    _[1]=x10+9/4y10
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

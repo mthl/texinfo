@@ -91,8 +91,9 @@ It is easy to understand and add new rules in analogy with the already existing 
 <p>For instance, suppose one wants to use the intrinsic Fortran function <code> abs()</code>.
 Its derivatives uses the other function <code>sign()</code> this way:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example"> &amp;'(ABS(#))(/#)' = '((#1)(/#2)*SIGN(1.,#1))'
-</pre></td></tr></table>
+<div class="example">
+<pre class="example"> &amp;'(ABS(#))(/#)' = '((#1)(/#2)*SIGN(1.,#1))'
+</pre></div>
 
 <p>In such cases when one is adding a new rule, it is important to use the generic function names
 only (i.e. <code>sin</code> not <code>dsin</code>), because when compilating Miniker in the double precision

@@ -96,7 +96,8 @@ line to be processed.
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node Index
+<div class="example">
+<pre class="example">@node Index
 @unnumbered Index
 
 @printindex cp
@@ -105,7 +106,7 @@ line to be processed.
 @contents
 
 @bye
-</pre></td></tr></table>
+</pre></div>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Printing-Indices-_0026-Menus">4.1 Printing Indices and Menus</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    How to print an index in hardcopy and
@@ -196,7 +197,8 @@ and put the index into the table of contents.  Precede the
 </p>
 <p>For example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">@node Variable Index
+<div class="smallexample">
+<pre class="smallexample">@node Variable Index
 @unnumbered Variable Index
 
 @printindex vr
@@ -205,7 +207,7 @@ and put the index into the table of contents.  Precede the
 @unnumbered Concept Index
 
 @printindex cp
-</pre></td></tr></table>
+</pre></div>
 
 
 <p>We recommend placing the concept index last, since that makes it easiest
@@ -311,8 +313,9 @@ short contents and the main contents.  In either case, any subsequent
 commands early in the document (just after <code>@setfilename</code>, for
 example).  We recommend using <code>texi2dvi</code> (see section <a href="texinfo_20.html#Format-with-texi2dvi">Format with <code>texi2dvi</code></a>) to specify this without altering the source file at all.  For
 example:
-</p><table><tr><td>&nbsp;</td><td><pre class="example">texi2dvi --texinfo=@setcontentsaftertitlepage foo.texi
-</pre></td></tr></table>
+</p><div class="example">
+<pre class="example">texi2dvi --texinfo=@setcontentsaftertitlepage foo.texi
+</pre></div>
 
 
 <hr>

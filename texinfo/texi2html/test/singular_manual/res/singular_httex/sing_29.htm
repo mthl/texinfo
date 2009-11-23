@@ -223,7 +223,8 @@ during standard bases computations or by an explicit reduction using
 the command <code>reduce(f, std(0))</code> (see <a href="sing_260.htm#reduce">reduce</a>).
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y),dp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y),dp;
   poly f=x3+yx2+3y+4;
   qring q=std(maxideal(2));
   basering;
@@ -241,7 +242,7 @@ the command <code>reduce(f, std(0))</code> (see <a href="sing_260.htm#reduce">re
 &rarr; x3+x2y+3y+4
   reduce(g,std(0));
 &rarr; 3y+4
-</pre></td></tr></table>
+</pre></div>
 
 
 </td>

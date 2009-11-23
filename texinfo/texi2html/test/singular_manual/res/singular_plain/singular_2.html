@@ -186,9 +186,10 @@ when running within Emacs preferably type <code>C-c $</code>).
 <p><small>SINGULAR</small> and <code>ESingular</code> may also be started with command line
 options and with
 filenames as arguments. More generally, the synopsis of <small>SINGULAR</small> is
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">Singular  [options] [file1 [file2 &hellip;]]
+</p><div class="smallexample">
+<pre class="smallexample">Singular  [options] [file1 [file2 &hellip;]]
 ESingular  [options] [file1 [file2 &hellip;]]
-</pre></td></tr></table>
+</pre></div>
 
 <p>See section <a href="#Command-line-options">Command line options</a>, <a href="#Startup-sequence">Startup sequence</a>, <a href="#Running-SINGULAR-under-Emacs">Running SINGULAR under Emacs</a>.
 </p>
@@ -300,17 +301,21 @@ extra <code>xterm</code></td></tr>
 
 <p>The browser which is used to display the help information, can be either
 set at startup time with the command line option  (see section <a href="#Command-line-options">Command line options</a>)
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">--brower=&lt;browser&gt;
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">--brower=&lt;browser&gt;
+</pre></div>
 <p>or with the <small>SINGULAR</small> command (see section <a href="singular_4.html#system">system</a>)
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">system(&quot;--browser&quot;, &lt;browser&gt;);
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">system(&quot;--browser&quot;, &lt;browser&gt;);
+</pre></div>
 <p>The  <small>SINGULAR</small> command
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">system(&quot;browsers&quot;);
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">system(&quot;browsers&quot;);
+</pre></div>
 <p>lists all available browsers and the command
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">system(&quot;--browser&quot;);
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">system(&quot;--browser&quot;);
+</pre></div>
 <p>returns the currently used browser.
 </p>
 <p>If no browser is explicitly set by the user, then the first (w.r.t. the
@@ -323,7 +328,8 @@ your local set-up does not allow to run it.
 to set your default browser. Recall that if a file
 <code>$HOME/.singularrc</code> exists on your system, then the content of this
 file is executed before the first user input. Hence, putting
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">if (system(&quot;version&quot;) &gt;= 1306) // keep backwards-compatibility
+</p><div class="smallexample">
+<pre class="smallexample">if (system(&quot;version&quot;) &gt;= 1306) // keep backwards-compatibility
 {
   if (! system(&quot;--emacs&quot;)
   {
@@ -334,7 +340,7 @@ file is executed before the first user input. Hence, putting
   // allow it to fetch HTML pages from the net
   system(&quot;--allow-net&quot;, 1);
 }; // the last semicolon is important: otherwise no &quot;&gt;&quot;, but &quot;.&quot; prompt
-</pre></td></tr></table>
+</pre></div>
 <p>in your file <code>$HOME/.singularrc</code> sets your default browser to
 <code>info</code>, unless <small>SINGULAR</small> is run within emacs (in which case the
 default browser is set automatically to <code>emacs</code>).
@@ -616,9 +622,10 @@ the commands of the current session.
 <a name="index-Command-line-options"></a>
 
 <p>The synopsis of <small>SINGULAR</small> is
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">Singular  [options] [file1 [file2 &hellip;]]
+</p><div class="smallexample">
+<pre class="smallexample">Singular  [options] [file1 [file2 &hellip;]]
 ESingular  [options] [file1 [file2 &hellip;]]
-</pre></td></tr></table>
+</pre></div>
 <p>Options can be given in both, their long and short format. The following
 options control the general behavior of <small>SINGULAR</small>:
 </p><dl compact="compact">
@@ -829,20 +836,22 @@ singular.el can be found, to <code>DIR</code>.
 <p>The value of options given to <small>SINGULAR</small> (resp. their default values,
 if an option was not given), can be checked with the command
 <code>system(&quot;--</code>long_option_name<code>&quot;)</code>.  See section <a href="singular_4.html#system">system</a>.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  system(&quot;--quiet&quot;);    // if ``quiet'' 1, otherwise 0
+</p><div class="smallexample">
+<pre class="smallexample">  system(&quot;--quiet&quot;);    // if ``quiet'' 1, otherwise 0
 &rarr; 1
   system(&quot;--min-time&quot;); // minimal reported time
 &rarr; 0.5
   system(&quot;--random&quot;);   // seed of the random generator
 &rarr; 12345678
-</pre></td></tr></table>
+</pre></div>
 
 <p>Furthermore, the value of options (e.g., <code>--browser</code>) can be
 re-set while <small>SINGULAR</small> is running with the command
 <code>system(&quot;--</code>long_option_name_string <code>&quot;,</code>expression<code>)</code>. See section <a href="singular_4.html#system">system</a>.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  system(&quot;--browser&quot;, &quot;builtin&quot;);  // sets browser to 'builtin'
+</p><div class="smallexample">
+<pre class="smallexample">  system(&quot;--browser&quot;, &quot;builtin&quot;);  // sets browser to 'builtin'
   system(&quot;--ticks-per-sec&quot;, 100);  // sets timer resolution to 100
-</pre></td></tr></table>
+</pre></div>
 
 
 
@@ -899,18 +908,20 @@ setting some default values of (command-line) options.
 <p>For example, a system administrator might remove the locally installed
 HTML version of the manual and put a <code>.singularrc</code> file
 with the following content
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">if (system(&quot;version&quot;) &gt;= 1306) // assure backwards-compatibility
+</p><div class="smallexample">
+<pre class="smallexample">if (system(&quot;version&quot;) &gt;= 1306) // assure backwards-compatibility
 {
   system(&quot;--allow-net&quot;, 1);
 }; // the last semicolon is important: otherwise no &quot;&gt;&quot;, but &quot;.&quot; prompt
-</pre></td></tr></table>
+</pre></div>
 <p>in the directory containing the <small>SINGULAR</small> libraries, thereby
 allowing to fetch the HTML on-line help from the WWW home-site of
 <small>SINGULAR</small>.
 </p>
 <p>On the other hand, a single user might put a <code>.singularrc</code> with the
 following content
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">if (system(&quot;version&quot;) &gt;= 1306) // assure backwards-compatibility
+</p><div class="smallexample">
+<pre class="smallexample">if (system(&quot;version&quot;) &gt;= 1306) // assure backwards-compatibility
 {
   if (! system(&quot;--emacs&quot;))
   {
@@ -918,7 +929,7 @@ following content
     system(&quot;--browser&quot;, &quot;info&quot;);
   }
 }; // the last semicolon is important: otherwise no &quot;&gt;&quot;, but &quot;.&quot; prompt
-</pre></td></tr></table>
+</pre></div>
 <p>in his home directory, which sets the default help browser to
 <code>info</code> (unless <small>SINGULAR</small> is run within emacs) and thereby
 prevents the execution of the&quot;global&quot;
@@ -1255,12 +1266,13 @@ local <code>.emacs</code> startup file, you might want to start the interface
 out of your running Emacs without using <code>ESingular</code>. For this, you
 should add the following lisp code to your <code>.emacs</code> file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">(setq load-path (cons &quot;&lt;singular-emacs-home-directory&gt;&quot; load-path))
+<div class="smallexample">
+<pre class="smallexample">(setq load-path (cons &quot;&lt;singular-emacs-home-directory&gt;&quot; load-path))
 (autoload 'singular &quot;singular&quot;
   &quot;Start Singular using default values.&quot; t)
 (autoload 'singular-other &quot;singular&quot;
   &quot;Ask for arguments and start Singular.&quot; t)
-</pre></td></tr></table>
+</pre></div>
 
 <p>Then typing <code>M-x singular</code> in a running Emacs session initializes
 the interface in a new buffer and launches a <small>SINGULAR</small> process. The
@@ -1516,7 +1528,8 @@ whenever a file with the suffix <code>.sing</code>, or <code>.lib</code> is load
 </p>
 <p>For Emacs sessions which were not started by <code>ESingular</code>,  you
 should add the following to your <code>.emacs</code> file:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">;; turn on c++-mode for files ending in &quot;.sing&quot; and &quot;.lib&quot;
+</p><div class="smallexample">
+<pre class="smallexample">;; turn on c++-mode for files ending in &quot;.sing&quot; and &quot;.lib&quot;
 (setq auto-mode-alist (cons '(&quot;\\.sing\\'&quot; . c++-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '(&quot;\\.lib\\'&quot; .  c++-mode) auto-mode-alist))
 ;; turn-on fontification for c++-mode
@@ -1534,7 +1547,7 @@ should add the following to your <code>.emacs</code> file:
         (customize-face face)
       (message &quot;No face defined at point&quot;))))
 
-</pre></td></tr></table>
+</pre></div>
 
 <p>Notice that you can change the default settings for source-code
 highlighting (colors, fonts, etc.) by customizing the respective faces
@@ -1804,16 +1817,18 @@ the ring
 ordering.  The exact ring declaration may be omitted in the first
 example since this is the default ring:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r;
+<div class="smallexample">
+<pre class="smallexample">ring r;
 ring r = 32003,(x,y,z),dp;
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 the ring 
  with lexicographical ordering:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0,(a,b,c,d),lp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = 0,(a,b,c,d),lp;
+</pre></div>
 
 </li><li>
 the ring 
@@ -1821,17 +1836,19 @@ the ring
 ordering.  The non-prime 10 is converted to the next lower prime in the
 second example:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 7,(x,y,z),ds;
+<div class="smallexample">
+<pre class="smallexample">ring r = 7,(x,y,z),ds;
 ring r = 10,(x,y,z),ds;
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 the ring
 with lexicographical ordering for
 and degree reverse lexicographical ordering for
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 7,(x(1..6)),(lp(3),dp);
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = 7,(x(1..6)),(lp(3),dp);
+</pre></div>
 
 </li><li>
 the localization of 
@@ -1839,8 +1856,9 @@ the localization of
 
 <p>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0,(x,y,z,a,b,c),(ds(3), dp(3));
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = 0,(x,y,z,a,b,c),(ds(3), dp(3));
+</pre></div>
 
 </li><li>
 the ring 
@@ -1851,8 +1869,9 @@ The variables
  have the weights 2, 1,
 and 3, respectively, and  vectors are first ordered by components (in
 descending order) and then by monomials:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = 0,(x,y,z),(c,wp(2,1,3));
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = 0,(x,y,z),(c,wp(2,1,3));
+</pre></div>
 <p>For ascending component order, the component ordering <code>C</code> has to be
 used.
 </p>
@@ -1867,8 +1886,9 @@ extension of
  with degree
 lexicographical ordering:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (7,a,b,c),(x,y,z),Dp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = (7,a,b,c),(x,y,z),Dp;
+</pre></div>
 
 </li><li>
 the ring 
@@ -1887,9 +1907,10 @@ in the second case,
 <p>refers to some generator of the cyclic group of units of 
 :
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (7,a),(x,y,z),dp; minpoly = a^2+a+3;
+<div class="smallexample">
+<pre class="smallexample">ring r = (7,a),(x,y,z),dp; minpoly = a^2+a+3;
 ring r = (7^2,a),(x,y,z),dp;
-</pre></td></tr></table>
+</pre></div>
 
 </li><li>
 the ring 
@@ -1898,8 +1919,9 @@ the ring
 numbers represented by simple precision floating point numbers. This is
 a special case:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = real,(x,y,z),dp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = real,(x,y,z),dp;
+</pre></div>
 
 </li><li>
 the ring 
@@ -1908,8 +1930,9 @@ the ring
 numbers represented by floating point numbers of 50 valid decimal digits
 and the same number of digits for the rest:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (real,50),(x,y,z),dp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = (real,50),(x,y,z),dp;
+</pre></div>
 
 </li><li>
 the ring 
@@ -1918,8 +1941,9 @@ the ring
 numbers represented by floating point numbers of 10 valid decimal digits
 and with 50 digits for the rest:
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (real,10,50),(x,y,z),dp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = (real,10,50),(x,y,z),dp;
+</pre></div>
 
 </li><li>
 the ring 
@@ -1929,8 +1953,9 @@ numbers represented by floating point numbers of 30 valid decimal digits
 and the same number for the rest. 
  denotes the imaginary unit.
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = (complex,30,j),(x,y,z),dp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = (complex,30,j),(x,y,z),dp;
+</pre></div>
 
 </li><li>
 the ring 
@@ -1940,8 +1965,9 @@ numbers represented by floating point numbers of 6 valid decimal digits
 and the same number for the rest. 
  is the default for the imaginary unit.
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r = complex,(x,y,z),dp;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">ring r = complex,(x,y,z),dp;
+</pre></div>
 
 </li><li>
 the quotient ring 
@@ -1949,9 +1975,10 @@ the quotient ring
 ideal 
 :
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring R = 7,(x,y,z), dp;
+<div class="smallexample">
+<pre class="smallexample">ring R = 7,(x,y,z), dp;
 qring r = std(maxideal(2));
-</pre></td></tr></table>
+</pre></div>
 </li></ul>
 
 <hr>
@@ -2093,7 +2120,8 @@ during standard bases computations or by an explicit reduction using
 the command <code>reduce(f, std(0))</code> (see section <a href="singular_4.html#reduce">reduce</a>).
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y),dp;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y),dp;
   poly f=x3+yx2+3y+4;
   qring q=std(maxideal(2));
   basering;
@@ -2111,7 +2139,7 @@ the command <code>reduce(f, std(0))</code> (see section <a href="singular_4.html
 &rarr; x3+x2y+3y+4
   reduce(g,std(0));
 &rarr; 3y+4
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -2721,12 +2749,13 @@ the default value of the specific type to it.
 <p>See section <a href="#Names">Names</a>, for more information on declarations.  See section <a href="singular_3.html#Data-types">Data types</a>,
 for a description of all data types known to <small>SINGULAR</small>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring r;                   // the default ring
+<div class="smallexample">
+<pre class="smallexample">ring r;                   // the default ring
 poly f,g = x^2+y^3,xy+z2; // the polynomials f=x^2+y^3 and g=x*y+z^2
 ideal I = f,g;            // the ideal generated by f and g
 matrix m[3][3];           // a 3 x 3 zero matrix
 int i=2;                  // the integer i=2
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Assignment"></a>
 <h4 class="subsubheading">Assignment</h4>
@@ -2750,10 +2779,11 @@ name. See section <a href="#Type-conversion-and-casting">Type conversion and cas
 <p>An assignment itself does not yield a value. Hence, compound assignments
 like <code>i = j = k;</code> are not allowed and result in an error.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">f = x^2 + y^2 ;      // overwrites the old value of f
+<div class="smallexample">
+<pre class="smallexample">f = x^2 + y^2 ;      // overwrites the old value of f
 I = jacob(f);
 f,g = I[1],x^2+y^2 ; // overwrites the old values of f and g
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Function-without-return-value"></a>
 <h4 class="subsubheading">Function without return value</h4>
@@ -2770,12 +2800,13 @@ specified there to have a return type &rsquo;none&rsquo;.
 <p>Some of these functions have to be called without parentheses, e.g.,
 <code>help</code>, <code>LIB</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+<div class="smallexample">
+<pre class="smallexample">  ring r;
   ideal i=x2+y2,x;
   i=std(i);
   degree(i);        // degree has no return value but prints output
 &rarr; 2
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Print-command"></a>
 <h4 class="subsubheading">Print command</h4>
@@ -2789,14 +2820,15 @@ expression <code>;</code>
 to get a pretty output of various data
 types, e.g., matrix or intmat. See section <a href="singular_4.html#print">print</a>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  int i=2;
+<div class="smallexample">
+<pre class="smallexample">  int i=2;
   i;
 &rarr; 2
   intmat m[2][2]=1,7,10,0;
   print(m);
 &rarr;      1     7
 &rarr;     10     0
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Special-characters"></a>
@@ -2996,7 +3028,8 @@ change its type. A redefinition first sets the variable to the default
 value and then computes the expression. The difference between
 redefining and overwriting a variable is shown in the following example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  int i=3;
+<div class="smallexample">
+<pre class="smallexample">  int i=3;
   i=i+1;        // overwriting
   i;
 &rarr; 4
@@ -3004,7 +3037,7 @@ redefining and overwriting a variable is shown in the following example:
 &rarr; // ** redefining i **
   i;
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 <p>User defined names should start with a letter and consist of letters and
 digits only.  As an exception to this rule, the characters <code>@</code>,
@@ -3014,7 +3047,8 @@ distinguished.  Indexed names are built as a name followed by an
 int_expression in parentheses.  A list of indexed names can be built as
 a name followed by an intvec_expression in parentheses.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R;
+<div class="smallexample">
+<pre class="smallexample">  ring R;
   int n=3;
   ideal j(3);
   ideal j(n);     // is equivalent to the above
@@ -3022,7 +3056,7 @@ a name followed by an intvec_expression in parentheses.
   ideal j(2)=x;
   j(2..3);
 &rarr; j(2)[1]=x j(3)[1]=0
-</pre></td></tr></table>
+</pre></div>
 
 <p>Names may not coincide with reserved names (keywords).  Type
 <code>reservedName();</code> to get a list of the reserved names.
@@ -3033,7 +3067,8 @@ variables or, more generally, with monomials.  See section <a href="singular_5.h
 </p>
 <p>The most recently printed expression is available
 under the special name <code>_</code>, e.g.,
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r;
   ideal i=x2+y3,y3+z4;
   std(i);
 &rarr; _[1]=y3+x2
@@ -3046,17 +3081,18 @@ under the special name <code>_</code>, e.g.,
 &rarr; _[4]=x
   size(_[3]);
 &rarr; 3
-</pre></td></tr></table>
+</pre></div>
 
 <p>A string_expression enclosed in <code>`</code>&hellip;<code>`</code> (back ticks)
 evaluates to the value of the variable named by the string_expression.
 This feature is referred to as name substitution.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  int foo(1)=42;
+<div class="smallexample">
+<pre class="smallexample">  int foo(1)=42;
   string bar=&quot;foo&quot;;
   `bar+&quot;(1)&quot;`;
 &rarr; 42
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Objects"></a>
@@ -3086,7 +3122,8 @@ object<code>;</code>.  The type of an object may be determined by means of the
 <code>typeof</code> function, the attributes by means of the <code>attrib</code>
 function (<a href="singular_4.html#typeof">typeof</a>, <a href="singular_4.html#attrib">attrib</a>):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,x,dp;
+<div class="smallexample">
+<pre class="smallexample">  ring r=0,x,dp;
   typeof(10);
 &rarr; int
   typeof(10000000000000000);
@@ -3097,7 +3134,7 @@ function (<a href="singular_4.html#typeof">typeof</a>, <a href="singular_4.html#
 &rarr; no attributes
   attrib(std(ideal(x)));
 &rarr; attr:isSB, type int
-</pre></td></tr></table>
+</pre></div>
 
 <p>Each object of type
 <code>poly</code>,
@@ -3214,7 +3251,8 @@ matrix (see section <a href="singular_3.html#matrix-type-cast">matrix type cast<
 </table>
 
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,x,(c,dp);
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,x,(c,dp);
   number(3x);
 &rarr; 0
   number(poly(3));
@@ -3233,7 +3271,7 @@ matrix (see section <a href="singular_3.html#matrix-type-cast">matrix type cast<
   module(matrix(i,3,2));
 &rarr; _[1]=[1,3,5]
 &rarr; _[2]=[2,4,6]
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -3259,11 +3297,12 @@ matrix (see section <a href="singular_3.html#matrix-type-cast">matrix type cast<
 <a name="index-block"></a>
 
 <p>A block is a sequence of commands surrounded by { and }.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">{
+</p><div class="smallexample">
+<pre class="smallexample">{
    command;
    &hellip;
 }
-</pre></td></tr></table>
+</pre></div>
 <p>Blocks are used whenever <small>SINGULAR</small> is used as a structured programming
 language. The <code>if</code> and <code>else</code> structures allow conditional
 execution of blocks (see <a href="singular_4.html#if">if</a>, <a href="singular_4.html#else">else</a>). <code>for</code> and <code>while</code>
@@ -3351,7 +3390,8 @@ for DBM links.
 <a href="singular_4.html#getdump">getdump</a>.
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r; poly p = x+y;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r; poly p = x+y;
   dump(&quot;MPfile:w test.mp&quot;);   // dump the session to the file test.mp
   kill r;                     // kill the basering
   listvar();
@@ -3361,7 +3401,7 @@ for DBM links.
 &rarr; // r                    [0]  *ring
 &rarr; //      p                    [0]  poly
 &rarr; // LIB                  [0]  string standard.lib
-</pre></td></tr></table>
+</pre></div>
 
 <p>Specifying a link can be as easy as specifying a filename as a string.
 Except for MPtcp links, links even do not need to be explicitly opened
@@ -3373,7 +3413,8 @@ used (see <a href="singular_4.html#open">open</a>, <a href="singular_4.html#clos
 <code>status</code> function (see section <a href="singular_4.html#status">status</a>).
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  link l = &quot;MPtcp:fork&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">  link l = &quot;MPtcp:fork&quot;;
   l;
 &rarr; // type : MPtcp
 &rarr; // mode : fork
@@ -3387,7 +3428,7 @@ used (see <a href="singular_4.html#open">open</a>, <a href="singular_4.html#clos
   close(l);
   status(l, &quot;open&quot;);
 &rarr; no
-</pre></td></tr></table>
+</pre></div>
 
 <a name="ASCII-links-2"></a>
 <h3 class="subheading">ASCII links</h3>
@@ -3404,7 +3445,8 @@ manipulate the data.
 <p>See section <a href="singular_3.html#ASCII-links">ASCII links</a>, for more information.
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  // (over)write file test.ascii, link is specified as string
+</p><div class="smallexample">
+<pre class="smallexample">  // (over)write file test.ascii, link is specified as string
   write(&quot;:w test.ascii&quot;, &quot;int i =&quot;, 3, &quot;;&quot;);
   // reading simply returns the string
   read(&quot;test.ascii&quot;);
@@ -3416,7 +3458,7 @@ manipulate the data.
   execute(read(&quot;test.ascii&quot;));
   i;
 &rarr; 3
-</pre></td></tr></table>
+</pre></div>
 
 <a name="MPfile-links-2"></a>
 <h3 class="subheading">MPfile links</h3>
@@ -3436,7 +3478,8 @@ the data to be stored cannot be easily converted from or to a string
 <p>See section <a href="singular_3.html#MPfile-links">MPfile links</a>, for more information.
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r;
   // (over)write MPfile test.mp, link is specified as string
   write(&quot;MPfile:w test.mp&quot;, x+y);
   kill r;
@@ -3444,7 +3487,7 @@ the data to be stored cannot be easily converted from or to a string
   typeof(p); p;
 &rarr; poly
 &rarr; x+y
-</pre></td></tr></table>
+</pre></div>
 
 <a name="MPtcp-links-2"></a>
 <h3 class="subheading">MPtcp links</h3>
@@ -3463,7 +3506,8 @@ programs or for parallel computations (see, for example,
 <p>See section <a href="singular_3.html#MPtcp-links">MPtcp links</a>, for more information.
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r;
   link l = &quot;MPtcp:launch&quot;; // declare a link explicitly
   open(l);  // needs an open, launches another SINGULAR as a server
   write(l, x+y);
@@ -3473,7 +3517,7 @@ programs or for parallel computations (see, for example,
 &rarr; poly
 &rarr; x+y
   close(l); // shuts down SINGULAR server
-</pre></td></tr></table>
+</pre></div>
 
 <a name="DBM-links-2"></a>
 <h3 class="subheading">DBM links</h3>
@@ -3491,13 +3535,14 @@ data bases).
 <p>See section <a href="singular_3.html#DBM-links">DBM links</a>, for more information.
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r;
   // associate &quot;x+y&quot; with &quot;mykey&quot;
   write(&quot;DBM:w test.dbm&quot;, &quot;mykey&quot;, string(x+y));
   // get from data base what is stored under &quot;mykey&quot;
   execute(read(&quot;DBM: test.dbm&quot;, &quot;mykey&quot;));
 &rarr; x+y
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -3597,7 +3642,8 @@ debugging harder).
 
 <a name="Example-of-an-interactive-procedure-definition"></a>
 <h4 class="subsubheading">Example of an interactive procedure definition</h4>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  proc milnor_number (poly p)
+<div class="smallexample">
+<pre class="smallexample">  proc milnor_number (poly p)
   {
     ideal i= std(jacob(p));
     int m_nr=vdim(i);
@@ -3611,12 +3657,13 @@ debugging harder).
   poly p=x^2+y^2+z^5;
   milnor_number(p);
 &rarr; 4
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Example-of-a-procedure-definition-in-a-library"></a>
 <h4 class="subsubheading">Example of a procedure definition in a library</h4>
 <p>First, the library definition:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">// Example of a user accessible procedure
+</p><div class="smallexample">
+<pre class="smallexample">// Example of a user accessible procedure
 proc tab (int n)
 &quot;USAGE:    tab(n);  (n integer)
 RETURNS:  string of n space tabs
@@ -3632,10 +3679,11 @@ example
 // Example of a static procedure
 static proc internal_tab (int n)
 { return(&quot; &quot;[1,n]); }
-</pre></td></tr></table>
+</pre></div>
 
 <p>Now, we load the library and execute the procedures defined there:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;sample.lib&quot;;        // load the library sample.lib
+</p><div class="smallexample">
+<pre class="smallexample">  LIB &quot;sample.lib&quot;;        // load the library sample.lib
   example tab;             // show an example
 &rarr; // proc tab from lib sample.lib
 &rarr; EXAMPLE:
@@ -3665,7 +3713,7 @@ static proc internal_tab (int n)
 &rarr; USAGE:    tab(n);  (n integer)
 &rarr; RETURNS:  string of n space tabs
 &rarr; EXAMPLE:  example tab; shows an example
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Guidelines-for-the-help-text-of-a-procedure"></a>
 <h4 class="subsubheading">Guidelines for the help text of a procedure</h4>
@@ -3724,7 +3772,8 @@ exported (i.e. made known) to some higher level by the <code>export</code>
 command (see section <a href="singular_4.html#export">export</a>).
 </p>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc xxx
+</p><div class="smallexample">
+<pre class="smallexample">proc xxx
 {
   int k=4;        //defines a local variable k
   int result=k+2;
@@ -3734,7 +3783,7 @@ xxx();
 listvar(all);
 &rarr; // result               [0]  int 6
 &rarr; // LIB                  [0]  string standard.lib
-</pre></td></tr></table>
+</pre></div>
 <p>Note that the variable <code>result</code> became a global variable after the
 execution of <code>xxx</code>.
 </p>
@@ -3771,7 +3820,8 @@ The default for a parameter_list is <code>(list #)</code>
 which means the arguments are referenced by <code>#[1], #[2]</code>, etc.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc x0
+<dd><div class="smallexample">
+<pre class="smallexample">proc x0
 {
     // can be called with
 ... // any number of arguments of any type: #[1], #[2],...
@@ -3802,14 +3852,15 @@ proc x5 (i,list #)
     // number of arguments: size(#)+1
 }
 
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Note:</strong></code></dt>
 <dd><br><p> The parameter_list may stretch across multiple lines.
 <br> A parameter may have any type (including the types <code>proc</code>
    and <code>ring</code>). If a parameter is of type ring, then it
    can only be specified by name, but not with a type, e.g.
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc x6 (r)
+</p><div class="smallexample">
+<pre class="smallexample">proc x6 (r)
 {
 ... // this is correct even if the parameter is a ring
 }
@@ -3818,7 +3869,7 @@ proc x7 (ring r)
 {
 ... // this is NOT CORRECT
 }
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 
@@ -3989,7 +4040,8 @@ monitoring of library loading (see section <a href="singular_4.html#option">opti
 </p>
 <p>All loaded libraries are displayed by the <code>LIB;</code>
 command:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  option(loadLib);   // show loading of libraries;
+</p><div class="smallexample">
+<pre class="smallexample">  option(loadLib);   // show loading of libraries;
                      // standard.lib is loaded
   LIB;
 &rarr; standard.lib
@@ -3998,7 +4050,7 @@ command:
 &rarr; // ** loaded inout.lib (1.21.2.5,2002/06/12)
   LIB;
 &rarr; standard.lib,inout.lib
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -4049,11 +4101,12 @@ specifying the type of error and the line where it was detected.
 <code>help libname_lib;</code>.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">info=&quot;
+<dd><div class="smallexample">
+<pre class="smallexample">info=&quot;
       This could be the general help of a library.
      Quotes must be escaped with a \ such as \&quot;
 &quot;;
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Note:</strong></code></dt>
 <dd><p>In the info-string the characters \ and &quot; must be preceded by a \ (escaped).
@@ -4078,9 +4131,10 @@ recommend that you follow certain rules as explained in
 library is loaded.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">version=&quot;$ I<i></i>d: sample.lib,v 1.2 1998/05/07 singular Exp $&quot;;
+<dd><div class="smallexample">
+<pre class="smallexample">version=&quot;$ I<i></i>d: sample.lib,v 1.2 1998/05/07 singular Exp $&quot;;
 version=&quot;some version string&quot;;
-</pre></td></tr></table>
+</pre></div>
 </dd>
 <dt><code><strong>Note:</strong></code></dt>
 <dd><p>It is common practice to simply define the version string to be
@@ -4097,8 +4151,9 @@ version=&quot;some version string&quot;;
 <dd><p>defines the category for the library.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">category=&quot;Utilities&quot;;
-</pre></td></tr></table>
+<dd><div class="smallexample">
+<pre class="smallexample">category=&quot;Utilities&quot;;
+</pre></div>
 </dd>
 <dt><code><strong>Note:</strong></code></dt>
 <dd><p>reserved for sorting the libraries into categories.
@@ -4242,7 +4297,8 @@ is 1). Therefore, the command <code>printlevel=1;</code> is necessary for
 since printlevel is a global variable, it should be reset to the old
 value at the end of the example part.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc Test
+<div class="smallexample">
+<pre class="smallexample">proc Test
 &quot;USAGE:   ...
          ...
 EXAMPLE: example Test; shows an example
@@ -4263,7 +4319,7 @@ example
    Test();
    printlevel = p;       //reset printlevel to old value
 }
-</pre></td></tr></table>
+</pre></div>
 
 </li></ol>
 
@@ -4394,11 +4450,13 @@ and <code>libparse</code> (version 1-3-4 or higher) installed on your system.
 </p><ol>
 <li>
 Unpack lib2doc.tar.gz
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">gzip -dc  lib2doc.tar.gz | tar -pxf -
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">gzip -dc  lib2doc.tar.gz | tar -pxf -
+</pre></div>
 <p>and 
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">cd lib2doc
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">cd lib2doc
+</pre></div>
 
 </li><li> 
 Edit the beginning of the file <code>Makefile</code>, filling in the values for
@@ -4407,8 +4465,9 @@ and <code>LATEX2HTML</code>.
 
 </li><li> 
 Copy your library to the current directory:
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">cp &lt;path-where-your-lib-is&gt;/mylib.lib .
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">cp &lt;path-where-your-lib-is&gt;/mylib.lib .
+</pre></div>
 
 </li><li> 
 Now you can run the following commands:
@@ -4416,26 +4475,30 @@ Now you can run the following commands:
 <dt><code>make mylib.hlp</code></dt>
 <dd><p>Generates the file <code>mylib.hlp</code> &ndash; the info file for the documentation
 of <code>mylib.lib</code>. This file can be viewed with
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">info -f mylib.hlp
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">info -f mylib.hlp
+</pre></div>
 </dd>
 <dt><code>make mylib.dvi</code></dt>
 <dd><p>Generates the file <code>mylib.dvi</code> &ndash; the dvi file for the documentation
 of <code>mylib.lib</code>. This file can be viewed with
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">xdvi mylib.dvi
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">xdvi mylib.dvi
+</pre></div>
 </dd>
 <dt><code>make mylib.ps</code></dt>
 <dd><p>Generates the file <code>mylib.ps</code> &ndash; the PostScript file for the documentation
 of <code>mylib.lib</code>. This file can be viewed with (for example)
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">ghostview mylib.dvi
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">ghostview mylib.dvi
+</pre></div>
 </dd>
 <dt><code>make mylib.html</code></dt>
 <dd><p>Generates the file <code>mylib.html</code> &ndash; the HTML file for the documentation
 of <code>mylib.lib</code>. This file can be viewed with (for example)
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">netscape mylib.html
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">netscape mylib.html
+</pre></div>
 </dd>
 <dt><code>make clean</code></dt>
 <dd><p>Deletes all generated files.
@@ -4622,20 +4685,22 @@ not contain curly parenthesis and the &quot;at&quot; sign, i.e., may not contain
 font.
 </p><dl compact="compact">
 <dt>Example:</dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="example">before example
+<dd><div class="example">
+<pre class="example">before example
 @example
 in              example
 notice extra identation and
 escape of special characters like @{,@},@@
 @end example
 after example
-</pre></td></tr></table>
+</pre></div>
 <p>&rarr;
 <br>before example
-</p><table><tr><td>&nbsp;</td><td><pre class="example">in                example
+</p><div class="example">
+<pre class="example">in                example
 notice extra identation  and
 escape of special characters like {,},@
-</pre></td></tr></table>
+</pre></div>
 <p>after example
 </p></dd>
 <dt>Note:</dt>
@@ -4653,20 +4718,22 @@ escape of special characters like {,},@
 font.
 </p><dl compact="compact">
 <dt>Example:</dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="example">before format
+<dd><div class="example">
+<pre class="example">before format
 @format
 in              format
 no extra identation but still
 escape of special characters like @{,@},@@
 @end format
 after format
-</pre></td></tr></table>
+</pre></div>
 <p>&rarr;
 <br>before format
-</p><pre class="format">in              format
+</p><div class="format">
+<pre class="format">in              format
 no extra identation  but still
 escape of special characters like {,},@
-</pre>
+</pre></div>
 <p>after format
 </p></dd>
 <dt>Note:</dt>
@@ -4684,7 +4751,8 @@ escape of special characters like {,},@
 <dd><p>for text which is written in pure texinfo.
 </p><dl compact="compact">
 <dt>Example:</dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="example">@texinfo
+<dd><div class="example">
+<pre class="example">@texinfo
 Among others, within a texinfo environment
 one can use the tex environment to typeset
 more complex mathematical like
@@ -4692,7 +4760,7 @@ more complex mathematical like
 $i_{1,1} $
 @tex
 @end texinfo
-</pre></td></tr></table>
+</pre></div>
 <br><p>&rarr;
 <br>Among others, within a texinfo environment one can use the tex environment
 to typeset more complex mathematical like
@@ -4737,7 +4805,8 @@ explained here.
 
 <p>The help (or, info) string of a library should have the following format:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">info=&quot;
+<div class="smallexample">
+<pre class="smallexample">info=&quot;
 LIBRARY: &lt;library_name&gt; &lt;one line description of the content&gt;
 AUTHOR:  &lt;name, and email address of author&gt;
 [SEE ALSO: &lt;comma-separated words of cross references&gt;]
@@ -4748,7 +4817,7 @@ PROCEDURES:
    .
   &lt;procedureN&gt;;     &lt;one line description of the purpose&gt;
 &quot;;
-</pre></td></tr></table>
+</pre></div>
 <p>Only such procedures should be listed in the <code>PROCEDURE</code> section
 which are not <code>static</code> and which
 have a help and example section.
@@ -4788,14 +4857,15 @@ example, see <a href="#template_005flib">template_lib</a>.
 
 <p>The help string of a procedure should have the following format:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">USAGE:    &lt;proc_name&gt;(&lt;parameters&gt;);   &lt;explanation of parameters&gt;
+<div class="smallexample">
+<pre class="smallexample">USAGE:    &lt;proc_name&gt;(&lt;parameters&gt;);   &lt;explanation of parameters&gt;
 [CREATE:  &lt;description of created objects which are not returned&gt;]
 RETURN:   &lt;description of the purpose and return value&gt;
 [NOTE:    &lt;particular assumptions or limitations, details&gt;]
 [SEE ALSO: &lt;comma-separated names of related procedures/cross references&gt;]
 [KEYWORDS: &lt;semicolon-separated phrases of index keys&gt;]
 EXAMPLE:  example &lt;proc_name&gt;; shows an example
-</pre></td></tr></table>
+</pre></div>
 
 <p>Further arbitrary items (like <code>THEORY:</code>, or <code>BACKGROUND:</code>) are
 recognized, as well, but should be used diligently.
@@ -4830,7 +4900,8 @@ typesetting. See <a href="#msum">msum</a>, <a href="#mdouble">mdouble</a>, <a hr
 <a name="index-library_002c-template"></a>
 
 <p>First, we show the source-code of a template library:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">////////////////////////////////////////////////////////////////////
+</p><div class="smallexample">
+<pre class="smallexample">////////////////////////////////////////////////////////////////////
 // version string automatically expanded by CVS
 
 version=&quot;Id: general.tex,v 1.1 2003/08/08 14:27:06 pertusus Exp $&quot;;
@@ -4948,7 +5019,7 @@ example
   msum(4);
   msum(1,2,3,4);
 }
-</pre></td></tr></table>
+</pre></div>
 
 <p>After typesetting, the library appears in the document as follows (with
 one subsection for each procedure):
@@ -5022,12 +5093,13 @@ mdouble(i): no new line
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;template.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;template.lib&quot;;
 mdouble(0);
 &rarr; 0
 mdouble(-1);
 &rarr; -2
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -5074,12 +5146,13 @@ more cumbersome to write.
 <a name="index-procedure_002c-texinfo-help"></a>
 
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;template.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;template.lib&quot;;
 mtripple(0);
 &rarr; 0
 mtripple(-1);
 &rarr; -3
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="msum"></a>
@@ -5121,11 +5194,13 @@ mtripple(-1);
 <br> Note: No parenthesis like } are allowed inside @math and @code
 <br> Use @example for indented preformatted text typeset in typewriter
 font like
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">         this  --&gt; that
-</pre></td></tr></table>
+</p><div class="smallexample">
+<pre class="smallexample">         this  --&gt; that
+</pre></div>
 <p>Use @format for preformatted text typeset in normal font
-</p><pre class="format">         this &ndash;&gt; that
-</pre>
+</p><div class="format">
+<pre class="format">         this &ndash;&gt; that
+</pre></div>
 <p>Use @texinfo for text in pure texinfo
 </p>
 <p>&rarr;
@@ -5138,14 +5213,15 @@ font like
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;template.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;template.lib&quot;;
 msum();
 &rarr; 0
 msum(4);
 &rarr; 4
 msum(1,2,3,4);
 &rarr; 10
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>
@@ -5217,7 +5293,8 @@ key being pressed.
 </table>
 
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  proc t1
+</p><div class="smallexample">
+<pre class="smallexample">  proc t1
   {
     int i=2;
     while (i&gt;0)
@@ -5229,7 +5306,7 @@ key being pressed.
 &rarr; entering t1 (level 0)
 &rarr; {1}{2}{3}{4}{5}{4}{5}{6}{7}{4}{5}{6}{7}{4}{6}{7}{8}
 &rarr; leaving  t1 (level 0)
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <a name="Source-code-debugger"></a>
@@ -5345,7 +5422,8 @@ See <a href="singular_4.html#g_t_007e">~ (break point)</a>.
 </p>
 
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">proc t
+</p><div class="smallexample">
+<pre class="smallexample">proc t
 {
   int i=2;
   ~;
@@ -5359,7 +5437,7 @@ i;               // here local variables of the procedure can be accessed
 &rarr; -- break point in t --
 
 &rarr; 3
-</pre></td></tr></table>
+</pre></div>
 <br>
 <br>
 
@@ -5448,13 +5526,14 @@ and comments, i.e // and <code>/* ... */</code>, are allowed).
 </li></ul>
 <p>Its output lists all procedures that have been parsed successfully:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">$ libparse sample.lib
+<div class="smallexample">
+<pre class="smallexample">$ libparse sample.lib
 Checking library 'sample.lib'
   Library         function      line,start-eod line,body-eob  line,example-eoe
 Version:0.0.0;
 g Sample               tab line    9,  149-165   13,  271-298   14,  300-402
 l Sample      internal_tab line   24,  450-475   25,  476-496    0,    0-496
-</pre></td></tr></table>
+</pre></div>
 
 <p>where the following abbreviations are used:
 </p><ul>
@@ -5482,12 +5561,13 @@ character 300 to character 402.
 <p>The following example shows the result of a missing close-bracket } in
 line 26 of the library <code>sample.lib</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;sample.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">LIB &quot;sample.lib&quot;;
 &rarr;    ? Library sample.lib: ERROR occurred: in line 26, 497.
 &rarr;    ? missing close bracket '}' at end of library in line 26.
 &rarr;    ? Cannot load library,... aborting.
 &rarr;    ? error occurred in STDIN line 1: `LIB &quot;sample.lib&quot;;`
-</pre></td></tr></table>
+</pre></div>
 
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">

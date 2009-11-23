@@ -485,8 +485,9 @@ charset with &lsquo;<samp>&quot;ISO8859-5&quot;</samp>&rsquo; as a default regis
 use &lsquo;<samp>&quot;koi8-r&quot;</samp>&rsquo; instead, because fonts in that encoding are
 installed on our system.  Use:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(set-charset-registry 'cyrillic-iso8859-5 &quot;koi8-r&quot;)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(set-charset-registry 'cyrillic-iso8859-5 &quot;koi8-r&quot;)
+</pre></div>
 
 <p>(Please note that you probably also want to set font registry for
 &lsquo;<samp>ascii</samp>&rsquo; charset so that mixed English/Cyrillic texts be displayed
@@ -506,8 +507,9 @@ no comprehensive list of them, so you currently have to consult sources.
 that is used exactly for needed purpose: to convert characters between
 &lsquo;<samp>ISO8859-5</samp>&rsquo; encoding and &lsquo;<samp>koi8-r</samp>&rsquo;.  Use:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">(set-charset-ccl-program 'cyrillic-iso8859-5 'ccl-encode-koi8-r-font)
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">(set-charset-ccl-program 'cyrillic-iso8859-5 'ccl-encode-koi8-r-font)
+</pre></div>
 
 <p>There are several more uses for CCL programs, not related to fonts, but
 those uses are not described here.
@@ -705,8 +707,9 @@ correspondence.  There is a special function
 example, to read and write all &lsquo;<samp>.txt</samp>&rsquo; using the coding system
 <code>china-iso-8bit</code>, you can execute this Lisp expression:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">(modify-coding-system-alist 'file &quot;\\.txt\\'&quot; 'china-iso-8bit)
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">(modify-coding-system-alist 'file &quot;\\.txt\\'&quot; 'china-iso-8bit)
+</pre></div>
 
 <p>The first argument should be <code>file</code>, the second argument should be
 a regular expression that determines which files this applies to, and

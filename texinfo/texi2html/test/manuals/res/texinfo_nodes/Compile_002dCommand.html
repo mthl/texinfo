@@ -98,10 +98,11 @@ commands as a <code>compile-command</code> and have Emacs run it by typing
 For example, at the end of the &lsquo;<tt>gdb.texinfo</tt>&rsquo; file, after the
 <code>@bye</code>, you could put the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">Local Variables:
+<div class="example">
+<pre class="example">Local Variables:
 compile-command: &quot;texi2dvi gdb.texinfo&quot;
 End:
-</pre></td></tr></table>
+</pre></div>
 
 <p>This technique is most often used by programmers who also compile programs
 this way; see <a href="../emacs/Compilation.html#Compilation">(emacs)Compilation</a> section &lsquo;Compilation&rsquo; in <cite>The GNU Emacs Manual</cite>.

@@ -105,10 +105,11 @@ ul.no-bullet {list-style: none}
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><pre class="format">list nf;
+<dd><div class="format">
+<pre class="format">list nf;
   ideal nf[1];  projection of p to &lt;gmsbasis&gt;C[[s]] mod s^(K+1)
   ideal nf[2];  p==nf[1]+nf[2]
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -120,7 +121,8 @@ ul.no-bullet {list-style: none}
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;gaussman.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;gaussman.lib&quot;;
 ring R=0,(x,y),ds;
 poly t=x5+x2y2+y5;
 def G=gmsring(t,&quot;s&quot;);
@@ -134,7 +136,7 @@ print(l1[1]);
 list l=gmsnf(l0[2],1);
 print(l[1]);
 &rarr; 1/2s
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

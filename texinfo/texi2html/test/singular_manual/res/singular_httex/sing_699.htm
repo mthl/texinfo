@@ -114,7 +114,8 @@ one entry in the list <code>hne</code> in the ring created by
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;hnoether.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;hnoether.lib&quot;;
 int p=printlevel; printlevel=-1;
 ring r=0,(x,y),dp;
 list hne1=develop(x);
@@ -125,7 +126,7 @@ separateHNE(hne1,hne2);  // two transversal lines
 separateHNE(hne1,hne3);  // one quadratic transform. gives 1st example
 &rarr; 2
 printlevel=p;
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_684.htm#develop">develop</a>;
 <a href="sing_691.htm#displayMultsequence">displayMultsequence</a>;

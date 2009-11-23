@@ -99,7 +99,8 @@ ul.no-bullet {list-style: none}
 <dt><strong>Usage:</strong></dt>
 <dd><p>laguerre_solve(f [, m, l, n, s] ); f = polynomial,<br>
 m, l, n, s = integers (control parameters of the method)
-</p><pre class="format"> m: precision of output in digits ( 4 &lt;= m), if basering is not ring of 
+</p><div class="format">
+<pre class="format"> m: precision of output in digits ( 4 &lt;= m), if basering is not ring of 
       complex numbers;
  l: precision of internal computation in decimal digits ( l &gt;=8 )
       only if the basering is not complex or complex with smaller precision;
@@ -112,7 +113,7 @@ m, l, n, s = integers (control parameters of the method)
  s: s != 0, returns ERROR if  | f(root) | &gt; 0.1^m (when computing in the 
       current ring)
  ( default: m, l, n, s = 8, 30, 1, 0 )
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Assume:</strong></dt>
@@ -124,9 +125,10 @@ parameters.
 <dt><strong>Return:</strong></dt>
 <dd><p>list of (complex) roots of the polynomial f, depending on n. The
 result is of type
-</p><pre class="format"> string: if the basering is not complex,
+</p><div class="format">
+<pre class="format"> string: if the basering is not complex,
  number: otherwise.
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -137,7 +139,8 @@ internal precision m.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;solve.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;solve.lib&quot;;
 // Find all roots of an univariate polynomial using Laguerre's method:
 ring rs1= 0,(x,y),lp;
 poly f = 15x5 + x3 + x2 - 10;
@@ -184,7 +187,7 @@ subst(f,x,l[1]);
 &rarr; 0
 subst(f,x,l[2]);
 &rarr; 0
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

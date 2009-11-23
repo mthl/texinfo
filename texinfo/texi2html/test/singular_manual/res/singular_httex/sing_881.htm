@@ -113,7 +113,8 @@ return nothing.
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;latex.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;latex.lib&quot;;
 // -------- prepare for example ---------
 if (defined(TeXaligned)) {int Teali=TeXaligned; kill TeXaligned;}
 if (defined(TeXbrack)){string Tebra=TeXbrack; kill TeXbrack;}
@@ -178,7 +179,7 @@ texobj(&quot;&quot;,m);
 // --- restore global variables if previously defined ---
 if (defined(Teali)){int TeXaligned=Teali; export TeXaligned; kill Teali;}
 if (defined(Tebra)){string TeXbrack=Tebra; export TeXbrack; kill Tebra;}
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

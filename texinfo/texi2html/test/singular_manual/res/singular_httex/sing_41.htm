@@ -131,7 +131,8 @@ debugging harder).
 
 <a name="Example-of-an-interactive-procedure-definition"></a>
 <h4 class="subsubheading">Example of an interactive procedure definition</h4>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  proc milnor_number (poly p)
+<div class="smallexample">
+<pre class="smallexample">  proc milnor_number (poly p)
   {
     ideal i= std(jacob(p));
     int m_nr=vdim(i);
@@ -145,12 +146,13 @@ debugging harder).
   poly p=x^2+y^2+z^5;
   milnor_number(p);
 &rarr; 4
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Example-of-a-procedure-definition-in-a-library"></a>
 <h4 class="subsubheading">Example of a procedure definition in a library</h4>
 <p>First, the library definition:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">// Example of a user accessible procedure
+</p><div class="smallexample">
+<pre class="smallexample">// Example of a user accessible procedure
 proc tab (int n)
 &quot;USAGE:    tab(n);  (n integer)
 RETURNS:  string of n space tabs
@@ -166,10 +168,11 @@ example
 // Example of a static procedure
 static proc internal_tab (int n)
 { return(&quot; &quot;[1,n]); }
-</pre></td></tr></table>
+</pre></div>
 
 <p>Now, we load the library and execute the procedures defined there:
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;sample.lib&quot;;        // load the library sample.lib
+</p><div class="smallexample">
+<pre class="smallexample">  LIB &quot;sample.lib&quot;;        // load the library sample.lib
   example tab;             // show an example
 &rarr; // proc tab from lib sample.lib
 &rarr; EXAMPLE:
@@ -199,7 +202,7 @@ static proc internal_tab (int n)
 &rarr; USAGE:    tab(n);  (n integer)
 &rarr; RETURNS:  string of n space tabs
 &rarr; EXAMPLE:  example tab; shows an example
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Guidelines-for-the-help-text-of-a-procedure"></a>
 <h4 class="subsubheading">Guidelines for the help text of a procedure</h4>

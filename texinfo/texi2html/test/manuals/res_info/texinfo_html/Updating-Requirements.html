@@ -101,22 +101,25 @@ node, must be followed by a line with a structuring command such as
 <p>Each <code>@node</code> line/structuring-command line combination
 must look either like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node     Comments,  Minimum, Conventions, Overview
+<div class="example">
+<pre class="example">@node     Comments,  Minimum, Conventions, Overview
 @comment  node-name, next,    previous,    up
 @section Comments
-</pre></td></tr></table>
+</pre></div>
 
 <p>or like this (without the <code>@comment</code> line):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node Comments, Minimum, Conventions, Overview
+<div class="example">
+<pre class="example">@node Comments, Minimum, Conventions, Overview
 @section Comments
-</pre></td></tr></table>
+</pre></div>
 
 <p>or like this (without the explicit node pointers):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node Comments
+<div class="example">
+<pre class="example">@node Comments
 @section Comments
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this example, &lsquo;Comments&rsquo; is the name of both the node and the
 section.  The next node is called &lsquo;Minimum&rsquo; and the previous node is

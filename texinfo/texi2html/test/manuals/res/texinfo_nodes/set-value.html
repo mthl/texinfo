@@ -98,8 +98,9 @@ will work in some contexts, but not all, due to limitations in TeX.
 </p>
 <p>Write the <code>@set</code> command like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@set foo This is a string.
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@set foo This is a string.
+</pre></div>
 
 <p>This sets the value of the flag <code>foo</code> to &ldquo;This is a string.&rdquo;.
 </p>
@@ -107,18 +108,20 @@ will work in some contexts, but not all, due to limitations in TeX.
 command with the string to which <var>flag</var> is set.  Thus, when
 <code>foo</code> is set as shown above, the Texinfo formatters convert this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@value{foo}
+<div class="example">
+<pre class="example">@value{foo}
 <span class="roman">to this:</span>
 This is a string.
-</pre></td></tr></table>
+</pre></div>
 
 <p>You can write an <code>@value</code> command within a paragraph; but you
 must write an <code>@set</code> command on a line of its own.
 </p>
 <p>If you write the <code>@set</code> command like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@set foo
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@set foo
+</pre></div>
 
 <p>without specifying a string, the value of <code>foo</code> is the empty string.
 </p>
@@ -127,27 +130,31 @@ subsequent <code>@value{flag}</code> command will report an error.
 </p>
 <p>For example, if you set <code>foo</code> as follows:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@set how-much very, very, very
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@set how-much very, very, very
+</pre></div>
 
 <p>then the formatters transform
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">It is a @value{how-much} wet day.
+<div class="example">
+<pre class="example">It is a @value{how-much} wet day.
 <span class="roman">into</span>
 It is a very, very, very wet day.
-</pre></td></tr></table>
+</pre></div>
 
 <p>If you write
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@clear how-much
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">@clear how-much
+</pre></div>
 
 <p>then the formatters transform
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">It is a @value{how-much} wet day.
+<div class="example">
+<pre class="example">It is a @value{how-much} wet day.
 <span class="roman">into</span>
 It is a {No value for &quot;how-much&quot;} wet day.
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>

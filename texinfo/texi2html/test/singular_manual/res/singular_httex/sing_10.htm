@@ -108,7 +108,8 @@ class="cmmi-10">n </span>= 0
 <p>Here we use the possibility to inspect the calculation process using the
 option <code>prot</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">ring R;      // the default ring in char 32003
+<div class="smallexample">
+<pre class="smallexample">ring R;      // the default ring in char 32003
 R;
 &rarr; //   characteristic : 32003
 &rarr; //   number of vars : 3
@@ -120,18 +121,20 @@ option(prot);
 resolution rs = res(I,0);
 &rarr; using lres
 &rarr; 4(m0)4(m1).5(m1)g.g6(m1)...6(m2)..
-</pre></td></tr></table>
+</pre></div>
 
 <p>Disable this protocol with
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">option(noprot);
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">option(noprot);
+</pre></div>
 
 <p>When we enter the name of the calculated resolution, we get a pictorial
 description of the minimized resolution where the exponents denote the rank of the
 free modules. Note that the calculated resolution itself may not yet be minimal.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">rs;
+<div class="smallexample">
+<pre class="smallexample">rs;
 &rarr; 1      4      5      2      0
 &rarr;R  &lt;-- R  &lt;-- R  &lt;-- R  &lt;-- R
 &rarr;
@@ -147,25 +150,27 @@ print(betti(rs),&quot;betti&quot;);
 &rarr;     5:     -     -     3     2
 &rarr; ------------------------------
 &rarr; total:     1     4     5     2
-</pre></td></tr></table>
+</pre></div>
 
 <p>In order to minimize the resolution, that is to calculate the maps of the minimal 
 free resolution, we use the command <code>minres</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">rs=minres(rs);
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">rs=minres(rs);
+</pre></div>
 
 <p>A single module in this resolution is obtained (as usual) with the
 brackets <code>[</code> and <code>]</code>. The <code>print</code> command can be used to
 display a module in a more readable format:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">print(rs[3]);
+<div class="smallexample">
+<pre class="smallexample">print(rs[3]);
 &rarr; z3,   -xyz-y2z-4xz2+16z3,
 &rarr; 0,    -y2,
 &rarr; -y+4z,48z, 
 &rarr; x+2z, 48z, 
 &rarr; 0,    x+y-z  
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this case, the output is to be interpreted as follows: the 3rd syzygy
 module of R/I, <code>rs[3]</code>, is the rank-2-submodule of

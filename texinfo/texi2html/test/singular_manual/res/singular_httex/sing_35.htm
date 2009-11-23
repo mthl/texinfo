@@ -110,7 +110,8 @@ change its type. A redefinition first sets the variable to the default
 value and then computes the expression. The difference between
 redefining and overwriting a variable is shown in the following example:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  int i=3;
+<div class="smallexample">
+<pre class="smallexample">  int i=3;
   i=i+1;        // overwriting
   i;
 &rarr; 4
@@ -118,7 +119,7 @@ redefining and overwriting a variable is shown in the following example:
 &rarr; // ** redefining i **
   i;
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 <p>User defined names should start with a letter and consist of letters and
 digits only.  As an exception to this rule, the characters <code>@</code>,
@@ -128,7 +129,8 @@ distinguished.  Indexed names are built as a name followed by an
 int_expression in parentheses.  A list of indexed names can be built as
 a name followed by an intvec_expression in parentheses.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring R;
+<div class="smallexample">
+<pre class="smallexample">  ring R;
   int n=3;
   ideal j(3);
   ideal j(n);     // is equivalent to the above
@@ -136,7 +138,7 @@ a name followed by an intvec_expression in parentheses.
   ideal j(2)=x;
   j(2..3);
 &rarr; j(2)[1]=x j(3)[1]=0
-</pre></td></tr></table>
+</pre></div>
 
 <p>Names may not coincide with reserved names (keywords).  Type
 <code>reservedName();</code> to get a list of the reserved names.
@@ -147,7 +149,8 @@ variables or, more generally, with monomials.  See <a href="sing_329.htm#Identif
 </p>
 <p>The most recently printed expression is available
 under the special name <code>_</code>, e.g.,
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r;
+</p><div class="smallexample">
+<pre class="smallexample">  ring r;
   ideal i=x2+y3,y3+z4;
   std(i);
 &rarr; _[1]=y3+x2
@@ -160,17 +163,18 @@ under the special name <code>_</code>, e.g.,
 &rarr; _[4]=x
   size(_[3]);
 &rarr; 3
-</pre></td></tr></table>
+</pre></div>
 
 <p>A string_expression enclosed in <code>`</code>&hellip;<code>`</code> (back ticks)
 evaluates to the value of the variable named by the string_expression.
 This feature is referred to as name substitution.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  int foo(1)=42;
+<div class="smallexample">
+<pre class="smallexample">  int foo(1)=42;
   string bar=&quot;foo&quot;;
   `bar+&quot;(1)&quot;`;
 &rarr; 42
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

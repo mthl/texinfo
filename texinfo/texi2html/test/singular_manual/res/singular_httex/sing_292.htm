@@ -122,7 +122,8 @@ base.
 specified by the string from the data base.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">// write the values of the variables f and i as strings into
+<dd><div class="smallexample">
+<pre class="smallexample">// write the values of the variables f and i as strings into
 // the file &quot;outfile&quot; (overwrite it, if it exists)
 write(&quot;:w outfile&quot;,f,i);
 
@@ -149,7 +150,7 @@ execute(&quot;ideal k=&quot;+s+&quot;;&quot;); // this defines an ideal k which
 // for large objects, the MP format and MPfile links are better:
 write(&quot;MPfile:w save_i.mp&quot;,i);
 def j=read(&quot;MPfile:r save_i.mp&quot;);
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

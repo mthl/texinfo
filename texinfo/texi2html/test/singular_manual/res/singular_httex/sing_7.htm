@@ -103,11 +103,12 @@ command <code>return</code>.
 </p>
 <p>Define the following procedure called <code>Milnor</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">proc Milnor (poly h)
+<div class="smallexample">
+<pre class="smallexample">proc Milnor (poly h)
 {
   return(vdim(groebner(jacob(h))));
 }
-</pre></td></tr></table>
+</pre></div>
 
 <p>Note: if you have entered the first line of the procedure and pressed
 <code>RETURN</code>, <small>SINGULAR</small> prints the prompt <code>.</code> (dot) instead of
@@ -118,9 +119,10 @@ is now complete.
 </p>
 <p>Then call the procedure:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">Milnor(f);
+<div class="smallexample">
+<pre class="smallexample">Milnor(f);
 &rarr; 12
-</pre></td></tr></table>
+</pre></div>
 
 <p>Note that the result may depend on the basering as we will
 see in the next chapter.
@@ -140,33 +142,38 @@ singularities.
 information during the process of loading is displayed on the screen,
 which we omit here.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;sing.lib&quot;;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">LIB &quot;sing.lib&quot;;
+</pre></div>
 
 <p>As all input in <small>SINGULAR</small> is case sensitive, there is no conflict with
 the previously  defined procedure <code>Milnor</code>, but the result is the same.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">milnor(f);
+<div class="smallexample">
+<pre class="smallexample">milnor(f);
 &rarr; 12
-</pre></td></tr></table>
+</pre></div>
 
 <p>The procedures in a library have a help part
 which is displayed by typing
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">help milnor;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">help milnor;
+</pre></div>
 
 <p>as well as some examples, which are executed by
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">example milnor;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">example milnor;
+</pre></div>
 
 <p>Likewise, the library itself has a help part, to show a list of
 all the functions
 available for the user which are contained in the library.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">help sing.lib;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">help sing.lib;
+</pre></div>
 
 <p>The output of the help commands is omitted here.
 </p>

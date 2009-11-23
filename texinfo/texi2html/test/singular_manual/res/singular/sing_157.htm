@@ -150,7 +150,8 @@ numbers. If it is 0 then the Betti numbers correspond exactly to the input -
 otherwise the command is identical to the one-argument form.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(a,b,c,d),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(a,b,c,d),dp;
   ideal j=bc-ad,b3-a2c,c3-bd2,ac2-b2d;
   list T=mres(j,0); // 0 forces a full resolution
   // a minimal set of generators for j:
@@ -187,7 +188,7 @@ otherwise the command is identical to the one-argument form.
 &rarr;     2:     -     3     4     1
 &rarr; ------------------------------
 &rarr; total:     1     4     4     1
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 

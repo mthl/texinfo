@@ -167,13 +167,14 @@ This can be done using the <code>modulo</code> command:
 <BR CLEAR="ALL">
 <P></P>
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z),(c,dp);
+<div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),(c,dp);
   matrix A[2][2]=x,y,z,1;
   matrix B[2][2]=x2,y2,z2,xz;
   print(modulo(A,B));
 &rarr; yz2-x2, xyz-y2,  x2z-xy, x3-y2z,
 &rarr; x2z-xz2,-x2z+y2z,xyz-yz2,0      
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

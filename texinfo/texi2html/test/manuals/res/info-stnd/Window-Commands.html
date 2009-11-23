@@ -139,25 +139,28 @@ disk.
 <p>Here is a sample mode line for a window containing an uncompressed file
 named &lsquo;<tt>dir</tt>&rsquo;, showing the node &lsquo;<samp>Top</samp>&rsquo;.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">-----Info: (dir)Top, 40 lines --Top-------------------------------------
+<div class="example">
+<pre class="example">-----Info: (dir)Top, 40 lines --Top-------------------------------------
             ^^   ^   ^^^        ^^
           (file)Node #lines    where
-</pre></td></tr></table>
+</pre></div>
 
 <p>When a node comes from a file which is compressed on disk, this is
 indicated in the mode line with two small &lsquo;<samp>z</samp>&rsquo;&rsquo;s.  In addition, if
 the Info file containing the node has been split into subfiles, the name
 of the subfile containing the node appears in the modeline as well:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">--zz-Info: (emacs)Top, 291 lines --Top-- Subfile: emacs-1.Z-------------
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">--zz-Info: (emacs)Top, 291 lines --Top-- Subfile: emacs-1.Z-------------
+</pre></div>
 
 <p>Truncation of long lines (as opposed to wrapping them to the next
 display line, see section <a href="Scrolling-Commands.html#Scrolling-Commands">toggle-wrap</a>) is indicated by a
 &lsquo;<samp>$</samp>&rsquo; at the left edge of the mode line:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">--$--Info: (texinfo)Top, 480 lines --Top-- Subfile: texinfo-1-----------
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">--$--Info: (texinfo)Top, 480 lines --Top-- Subfile: texinfo-1-----------
+</pre></div>
 
 <p>When Info makes a node internally, such that there is no corresponding
 info file on disk, the name of the node is surrounded by asterisks
@@ -165,8 +168,9 @@ info file on disk, the name of the node is surrounded by asterisks
 are; the sample mode line below shows an internally constructed node
 showing possible completions:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">-----Info: *Completions*, 7 lines --All---------------------------------
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">-----Info: *Completions*, 7 lines --All---------------------------------
+</pre></div>
 
 <hr>
 <a name="Basic-Windows"></a>
@@ -506,20 +510,22 @@ is called <em>completion</em>.
 <p>Display a window containing a list of the possible completions of what
 you have typed so far.  For example, if the available choices are:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">bar
+<div class="example">
+<pre class="example">bar
 foliate
 food
 forget
-</pre></td></tr></table>
+</pre></div>
 
 <p>and you have typed an &lsquo;<samp>f</samp>&rsquo;, followed by &lsquo;<samp>?</samp>&rsquo;, Info will pop up a
 window showing a node called &lsquo;<samp>*Completions*</samp>&rsquo; which lists the
 possible completions like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">3 completions:
+<div class="example">
+<pre class="example">3 completions:
 foliate         food
 forget
-</pre></td></tr></table>
+</pre></div>
 
 <p>i.e., all of the choices which begin with &lsquo;<samp>f</samp>&rsquo;.  Pressing &lt;SPC&gt;
 or &lt;TAB&gt; would result in &lsquo;<samp>fo</samp>&rsquo; appearing in the echo area, since

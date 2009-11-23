@@ -105,16 +105,18 @@ ul.no-bullet {list-style: none}
 </p>
 </dd>
 <dt><strong>Return:</strong></dt>
-<dd><pre class="format">list l:
+<dd><div class="format">
+<pre class="format">list l:
   module l[1];  inverse(l[1])*M*l[1] in Jordan normal form
   intvec l[2]; 
     int l[2][i];  weight filtration index of l[1][i]
-</pre>
+</pre></div>
 
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;linalg.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;linalg.lib&quot;;
 ring R=0,x,dp;
 matrix M[3][3]=3,2,1,0,2,1,0,0,3;
 print(M);
@@ -122,7 +124,7 @@ list l=jordanbasis(M);
 print(l[1]);
 print(l[2]);
 print(inverse(l[1])*M*l[1]);
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

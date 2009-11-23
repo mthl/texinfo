@@ -100,23 +100,26 @@ ul.no-bullet {list-style: none}
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>a list pr of primary ideals and their associated primes:
-</p><pre class="format">   pr[i][1]   the i-th primary component,
+</p><div class="format">
+<pre class="format">   pr[i][1]   the i-th primary component,
    pr[i][2]   the i-th prime component.
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
 <dd><p>Algorithm of Shimoyama/Yokoyama.
-</p><pre class="format">   if c=0,  the given ordering of the variables is used,
+</p><div class="format">
+<pre class="format">   if c=0,  the given ordering of the variables is used,
    if c=1,  minAssChar tries to use an optimal ordering,
    if c=2,  minAssGTZ is used,
    if c=3,  minAssGTZ and facstd are used.
-</pre>
+</pre></div>
 
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;primdec.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;primdec.lib&quot;;
 ring  r = 0,(x,y,z),lp;
 poly  p = z2+1;
 poly  q = z3+2;
@@ -137,7 +140,7 @@ pr;
 &rarr;    [2]:
 &rarr;       _[1]=z2+1
 &rarr;       _[2]=y+1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

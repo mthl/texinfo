@@ -122,7 +122,8 @@ where <code>U</code> is a diagonal matrix of units.
 <dd><p>Gives a warning if <code>sm</code> is not a submodule.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=32003,(x,y,z),(dp,C);
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=32003,(x,y,z),(dp,C);
   ideal m=3x2+yz,7y6+2x2y+5xz;
   poly f=y7+x3+xyz+z2;
   ideal i=jacob(f);
@@ -130,7 +131,7 @@ where <code>U</code> is a diagonal matrix of units.
   matrix(m)-matrix(i)*T;
 &rarr; _[1,1]=0
 &rarr; _[1,2]=0
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

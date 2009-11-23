@@ -103,7 +103,8 @@ ul.no-bullet {list-style: none}
 <dt><strong>Return:</strong></dt>
 <dd><p>list E of size n+3, where n=size(D). All its entries but E[n+3]
 are matrices:
-   </p><pre class="format">   E[1]:  parity check matrix for the current AG code
+   </p><div class="format">
+<pre class="format">   E[1]:  parity check matrix for the current AG code
    E[2] ... E[n+2]:  matrices used in the procedure decodeSV
    E[n+3]:  intvec with
        E[n+3][1]: correction capacity 
@@ -114,7 +115,7 @@ class="cmmi-10">epsilon </span>
  <span 
 class="cmmi-10">delta </span> 
  of the current AG code
-   </pre>
+   </pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -176,7 +177,8 @@ algorithm).
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;brnoeth.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;brnoeth.lib&quot;;
 int plevel=printlevel;
 printlevel=-1;
 ring s=2,(x,y),lp;
@@ -212,7 +214,7 @@ int epsilon=SV[size(D)+3][1];
 epsilon;
 &rarr; 1
 printlevel=plevel;
-</pre></td></tr></table>
+</pre></div>
 <p><strong>See also:</strong>
 <a href="sing_901.htm#AGcode_005fOmega">AGcode_Omega</a>;
 <a href="sing_903.htm#decodeSV">decodeSV</a>;

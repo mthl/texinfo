@@ -105,7 +105,8 @@ ul.no-bullet {list-style: none}
 </dd>
 <dt><strong>Return:</strong></dt>
 <dd><p>a list l of two elements:
-</p><pre class="format">        l[1]: object of same type as input but sorted in the following way:
+</p><div class="format">
+<pre class="format">        l[1]: object of same type as input but sorted in the following way:
            - if id=ideal/module: generators of id are sorted w.r.t. intvec v
              (id[v[1]] becomes 1-st, id[v[2]]  2-nd element, etc.). If no v is
              present, id is sorted w.r.t. ordering o (if o is given) or w.r.t.
@@ -128,7 +129,7 @@ ul.no-bullet {list-style: none}
              default: n=0
          l[2]: intvec, describing the permutation of the input (hence l[2]=v
              if v is given (with positive integers))
-</pre>
+</pre></div>
 
 </dd>
 <dt><strong>Note:</strong></dt>
@@ -140,7 +141,8 @@ Zero generators of ideal/module are deleted
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;general.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;general.lib&quot;;
 ring r0 = 0,(x,y,z,t),lp;
 ideal i = x3,z3,xyz;
 sort(i);            //sorts using lex ordering, smaller polys come first
@@ -167,7 +169,7 @@ sort(v)[1];          // sort v lexicographically
 &rarr; 1,2,3,4,5,6,7,8,9,10
 sort(v,&quot;Dp&quot;,1)[1];   // sort v w.r.t (total sum, reverse lex)
 &rarr; 10,9,8,7,6,5,4,3,2,1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>

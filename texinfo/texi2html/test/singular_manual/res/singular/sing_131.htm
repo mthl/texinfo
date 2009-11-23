@@ -126,7 +126,8 @@ but not for the users.
 </p>
 </dd>
 <dt><strong>Example:</strong></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  proc milnor_number (poly p)
+<dd><div class="smallexample">
+<pre class="smallexample">  proc milnor_number (poly p)
   {
     ideal i= std(jacob(p));
     int m_nr=vdim(i);
@@ -140,7 +141,7 @@ but not for the users.
   poly p=x^2+y^2+z^5;
   milnor_number(p);
 &rarr; 4
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

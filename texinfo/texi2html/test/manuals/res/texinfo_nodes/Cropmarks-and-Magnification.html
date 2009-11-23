@@ -94,10 +94,11 @@ command on a line by itself between <code>@iftex</code> and <code>@end
 iftex</code> lines near the beginning of the Texinfo file, before the title
 page, like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@iftex
+<div class="example">
+<pre class="example">@iftex
 @cropmarks
 @end iftex
-</pre></td></tr></table>
+</pre></div>
 
 <p>This command is mainly for printers that typeset several pages on one
 sheet of film; but you can attempt to use it to mark the corners of a
@@ -124,10 +125,11 @@ is 1000 times the magnification you desire.  For example, to print pages
 at 1.2 normal size, write the following near the beginning of the
 Texinfo file, before the title page:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@tex
+<div class="example">
+<pre class="example">@tex
 \mag=1200
 @end tex
-</pre></td></tr></table>
+</pre></div>
 
 <p>With some printing technologies, you can print normal-sized copies that
 look better than usual by giving a larger-than-normal master to your

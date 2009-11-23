@@ -96,13 +96,15 @@ ul.no-bullet {list-style: none}
 has no rvalue, i.e., cannot be used on the right-hand sides of
 assignments.  So, instead of
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">j = i++;  // WRONG!!!
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">j = i++;  // WRONG!!!
+</pre></div>
 
 <p>(which results in an error), it must be written
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">i++; j = i;
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">i++; j = i;
+</pre></div>
 
 <p>Likewise, an assignment expression does not have a result.  Therefore,
 compound assignments like <code>i = j = k;</code> are not allowed and result

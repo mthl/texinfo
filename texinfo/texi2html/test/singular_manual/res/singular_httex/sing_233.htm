@@ -110,7 +110,8 @@ If, additionally, the input is homogeneous then the second entry is a
 minimal generating set for the ideal, resp. module.
 </p></dd>
 <dt><code><strong>Example:</strong></code></dt>
-<dd><table><tr><td>&nbsp;</td><td><pre class="smallexample">  ring r=0,(x,y,z,t),dp;
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z,t),dp;
   poly f=x3+y4+z6+xyz;
   ideal j=jacob(f),f;
   j=homog(j,t);j;
@@ -137,7 +138,7 @@ minimal generating set for the ideal, resp. module.
 &rarr;    _[2]=4y3+xzt
 &rarr;    _[3]=6z5+xyt3
 &rarr;    _[4]=xyzt3
-</pre></td></tr></table>
+</pre></div>
 </dd>
 </dl>
 <p>See

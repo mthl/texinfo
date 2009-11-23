@@ -143,7 +143,8 @@ create a polynomial encoding the Hilbert series
 compute the dimension of T_2
 </li></ul>
 
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">  LIB &quot;sing.lib&quot;;
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;sing.lib&quot;;
   ring R=32003,(x,y,z),ds;
   // ---------------------------------------
   // hypersurface case (from series T[p,q,r]):
@@ -214,8 +215,9 @@ compute the dimension of T_2
 &rarr; 40
   module N=T_2(i);
 &rarr; // dim T_2 = 3
-</pre></td></tr></table>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">// In some cases it might be useful to have a polynomial in some ring
+</pre></div>
+<div class="smallexample">
+<pre class="smallexample">// In some cases it might be useful to have a polynomial in some ring
 // encoding the Hilbert series. This polynomial can then be
 // differentiated, evaluated etc. It can be done as follows:
 ring H = 0,t,ls;
@@ -254,7 +256,7 @@ L[3];                 // vdim of T_1
 &rarr; 4
 L[4];                 // vdim of T_2
 &rarr; 3
-</pre></td></tr></table>
+</pre></div>
 </td>
 </tr>
 </table>

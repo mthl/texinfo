@@ -164,12 +164,13 @@ local <code>.emacs</code> startup file, you might want to start the interface
 out of your running Emacs without using <code>ESingular</code>. For this, you
 should add the following lisp code to your <code>.emacs</code> file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">(setq load-path (cons &quot;&lt;singular-emacs-home-directory&gt;&quot; load-path))
+<div class="smallexample">
+<pre class="smallexample">(setq load-path (cons &quot;&lt;singular-emacs-home-directory&gt;&quot; load-path))
 (autoload 'singular &quot;singular&quot;
   &quot;Start Singular using default values.&quot; t)
 (autoload 'singular-other &quot;singular&quot;
   &quot;Ask for arguments and start Singular.&quot; t)
-</pre></td></tr></table>
+</pre></div>
 
 <p>Then typing <code>M-x singular</code> in a running Emacs session initializes
 the interface in a new buffer and launches a <small>SINGULAR</small> process. The

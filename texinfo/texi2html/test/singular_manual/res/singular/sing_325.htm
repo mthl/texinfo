@@ -101,13 +101,15 @@ always</strong> be used to enclose the return value.  Even if there is no value
 to return, parentheses have to be used after a return statement
 (i.e., <code>return();</code>).  For example,
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (i == 1) return i;    // WRONG!!!!!
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">if (i == 1) return i;    // WRONG!!!!!
+</pre></div>
 
 <p>results in an error. Instead, it must be written as
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="smallexample">if (i == 1) { return (i); }
-</pre></td></tr></table>
+<div class="smallexample">
+<pre class="smallexample">if (i == 1) { return (i); }
+</pre></div>
 
 </td>
 </tr>

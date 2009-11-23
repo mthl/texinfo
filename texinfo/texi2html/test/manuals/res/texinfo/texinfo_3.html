@@ -586,10 +586,11 @@ constructing the master menu.  (See section <a href="texinfo_4.html#The-Top-Node
 </p>
 <p>After extensively editing a Texinfo file, you can type the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-u M-x texinfo-master-menu
+<div class="example">
+<pre class="example">C-u M-x texinfo-master-menu
 or
 C-u C-c C-u m
-</pre></td></tr></table>
+</pre></div>
 
 <p>This updates all the nodes and menus completely and all at once.
 </p></dd>
@@ -653,10 +654,11 @@ that.)
 <p>When working on a document that does not merit a master menu, you can
 type the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-u C-c C-u C-a
+<div class="example">
+<pre class="example">C-u C-c C-u C-a
 or
 C-u M-x texinfo-all-menus-update
-</pre></td></tr></table>
+</pre></div>
 
 <p>This updates all the nodes and menus.
 </p></dd>
@@ -712,22 +714,25 @@ node, must be followed by a line with a structuring command such as
 <p>Each <code>@node</code> line/structuring-command line combination
 must look either like this:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node     Comments,  Minimum, Conventions, Overview
+<div class="example">
+<pre class="example">@node     Comments,  Minimum, Conventions, Overview
 @comment  node-name, next,    previous,    up
 @section Comments
-</pre></td></tr></table>
+</pre></div>
 
 <p>or like this (without the <code>@comment</code> line):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node Comments, Minimum, Conventions, Overview
+<div class="example">
+<pre class="example">@node Comments, Minimum, Conventions, Overview
 @section Comments
-</pre></td></tr></table>
+</pre></div>
 
 <p>or like this (without the explicit node pointers):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">@node Comments
+<div class="example">
+<pre class="example">@node Comments
 @section Comments
-</pre></td></tr></table>
+</pre></div>
 
 <p>In this example, &lsquo;Comments&rsquo; is the name of both the node and the
 section.  The next node is called &lsquo;Minimum&rsquo; and the previous node is
@@ -793,8 +798,9 @@ chapter titles, you must manually edit node names so inserted.
 <p>For example, the following marks a whole buffer as a region and inserts
 <code>@node</code> lines and titles throughout:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-x h C-u M-x texinfo-insert-node-lines
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">C-x h C-u M-x texinfo-insert-node-lines
+</pre></div>
 
 <p>This command inserts titles as node names in <code>@node</code> lines; the
 <code>texinfo-start-menu-description</code> command (see section <a href="#Inserting">Inserting Frequently Used Commands</a>) inserts titles as descriptions in
@@ -897,18 +903,20 @@ want to format only part of a file&mdash;that is, a region.
 
 <p>For example, after writing a Texinfo file, you can type the following:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-u C-c C-u m
+<div class="example">
+<pre class="example">C-u C-c C-u m
 or
 C-u M-x texinfo-master-menu
-</pre></td></tr></table>
+</pre></div>
 
 <p>This updates all the nodes and menus.  Then type the following to create
 an Info file:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-m C-b
+<div class="example">
+<pre class="example">C-c C-m C-b
 or
 M-x makeinfo-buffer
-</pre></td></tr></table>
+</pre></div>
 
 <p>For TeX or the Info formatting commands to work, the file <em>must</em>
 include a line that has <code>@setfilename</code> in its header.
@@ -1032,7 +1040,8 @@ first letter of the @-command to be inserted.  (It might make more
 sense mnemonically to use <kbd>C-c C-i</kbd>, for &lsquo;custom insert&rsquo;, but
 <kbd>C-c C-c</kbd> is quick to type.)
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-c c       <span class="roman">Insert</span> &lsquo;<samp>@code</samp>&rsquo;.
+<div class="example">
+<pre class="example">C-c C-c c       <span class="roman">Insert</span> &lsquo;<samp>@code</samp>&rsquo;.
 C-c C-c d       <span class="roman">Insert</span> &lsquo;<samp>@dfn</samp>&rsquo;.
 C-c C-c e       <span class="roman">Insert</span> &lsquo;<samp>@end</samp>&rsquo;.
 C-c C-c i       <span class="roman">Insert</span> &lsquo;<samp>@item</samp>&rsquo;.
@@ -1046,7 +1055,7 @@ C-c C-c }       <span class="roman">Move out of enclosing braces.</span>
 </pre><pre class="example">C-c C-c C-d     <span class="roman">Insert a node's section title</span>
                 <span class="roman">in the space for the description</span>
                 <span class="roman">in a menu entry line.</span>
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Show-Structure"></a>
 <h3 class="subheading">Show Structure</h3>
@@ -1054,8 +1063,9 @@ C-c C-c }       <span class="roman">Move out of enclosing braces.</span>
 <p>The <code>texinfo-show-structure</code> command is often used within a
 narrowed region.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-s         <span class="roman">List all the headings.</span>
-</pre></td></tr></table>
+<div class="example">
+<pre class="example">C-c C-s         <span class="roman">List all the headings.</span>
+</pre></div>
 
 <a name="The-Master-Update-Command"></a>
 <h3 class="subheading">The Master Update Command</h3>
@@ -1063,14 +1073,15 @@ narrowed region.
 <p>The <code>texinfo-master-menu</code> command creates a master menu; and can
 be used to update every node and menu in a file as well.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-u m
+<div class="example">
+<pre class="example">C-c C-u m
 M-x texinfo-master-menu
                 <span class="roman">Create or update a master menu.</span>
 </pre><pre class="example">
 </pre><pre class="example">C-u C-c C-u m   <span class="roman">With <kbd>C-u</kbd> as a prefix argument, first</span>
                 <span class="roman">create or update all nodes and regular</span>
                 <span class="roman">menus, and then create a master menu.</span>
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Update-Pointers"></a>
 <h3 class="subheading">Update Pointers</h3>
@@ -1079,9 +1090,10 @@ M-x texinfo-master-menu
 then either <kbd>C-n</kbd> for <code>texinfo-update-node</code> or <kbd>C-e</kbd> for
 <code>texinfo-every-node-update</code>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-u C-n     <span class="roman">Update a node.</span>
+<div class="example">
+<pre class="example">C-c C-u C-n     <span class="roman">Update a node.</span>
 C-c C-u C-e     <span class="roman">Update every node in the buffer.</span>
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Update-Menus"></a>
 <h3 class="subheading">Update Menus</h3>
@@ -1092,7 +1104,8 @@ and then either <kbd>C-m</kbd> for <code>texinfo-make-menu</code> or
 both nodes and menus at the same time, precede <kbd>C-c C-u
 C-a</kbd> with <kbd>C-u</kbd>.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-u C-m     <span class="roman">Make or update a menu.</span>
+<div class="example">
+<pre class="example">C-c C-u C-m     <span class="roman">Make or update a menu.</span>
 
 </pre><pre class="example">C-c C-u C-a     <span class="roman">Make or update all</span>
                 <span class="roman">menus in a buffer.</span>
@@ -1100,7 +1113,7 @@ C-a</kbd> with <kbd>C-u</kbd>.
 </pre><pre class="example">C-u C-c C-u C-a <span class="roman">With <kbd>C-u</kbd> as a prefix argument,</span>
                 <span class="roman">first create or update all nodes and</span>
                 <span class="roman">then create or update all menus.</span>
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Format-for-Info"></a>
 <h3 class="subheading">Format for Info</h3>
@@ -1115,17 +1128,19 @@ either <kbd>C-r</kbd> for a region or <kbd>C-b</kbd> for the whole buffer.
 </p>
 <p>Use the <code>texinfo-format&hellip;</code> commands:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-e C-r     <span class="roman">Format the region.</span>
+<div class="example">
+<pre class="example">C-c C-e C-r     <span class="roman">Format the region.</span>
 C-c C-e C-b     <span class="roman">Format the buffer.</span>
-</pre></td></tr></table>
+</pre></div>
 
 <p>Use <code>makeinfo</code>:
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-m C-r     <span class="roman">Format the region.</span>
+<div class="example">
+<pre class="example">C-c C-m C-r     <span class="roman">Format the region.</span>
 C-c C-m C-b     <span class="roman">Format the buffer.</span>
 C-c C-m C-l     <span class="roman">Recenter the <code>makeinfo</code> output buffer.</span>
 C-c C-m C-k     <span class="roman">Kill the <code>makeinfo</code> formatting job.</span>
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Typeset-and-Print"></a>
 <h3 class="subheading">Typeset and Print</h3>
@@ -1135,7 +1150,8 @@ C-c C-m C-k     <span class="roman">Kill the <code>makeinfo</code> formatting jo
 <code>texinfo-tex-region</code>, <kbd>C-b</kbd> for <code>texinfo-tex-buffer</code>,
 and so on.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">C-c C-t C-r     <span class="roman">Run TeX on the region.</span>
+<div class="example">
+<pre class="example">C-c C-t C-r     <span class="roman">Run TeX on the region.</span>
 C-c C-t C-b     <span class="roman">Run</span> <code>texi2dvi</code> <span class="roman">on the buffer.</span>
 C-c C-t C-i     <span class="roman">Run</span> <code>texindex</code>.
 C-c C-t C-p     <span class="roman">Print the DVI file.</span>
@@ -1144,7 +1160,7 @@ C-c C-t C-d     <span class="roman">Delete a job from the print queue.</span>
 C-c C-t C-k     <span class="roman">Kill the current TeX formatting job.</span>
 C-c C-t C-x     <span class="roman">Quit a currently stopped TeX formatting job.</span>
 C-c C-t C-l     <span class="roman">Recenter the output buffer.</span>
-</pre></td></tr></table>
+</pre></div>
 
 <a name="Other-Updating-Commands-2"></a>
 <h3 class="subheading">Other Updating Commands</h3>
@@ -1152,7 +1168,8 @@ C-c C-t C-l     <span class="roman">Recenter the output buffer.</span>
 <p>The remaining updating commands do not have standard keybindings because
 they are rarely used.
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">M-x texinfo-insert-node-lines
+<div class="example">
+<pre class="example">M-x texinfo-insert-node-lines
                 <span class="roman">Insert missing <code>@node</code> lines in region.</span>
                 <span class="roman">With <kbd>C-u</kbd> as a prefix argument,</span>
                 <span class="roman">use section titles as node names.</span>
@@ -1168,7 +1185,7 @@ they are rarely used.
 </pre><pre class="example">
 </pre><pre class="example">M-x texinfo-sequential-node-update
                 <span class="roman">Insert node pointers in strict sequence.</span>
-</pre></td></tr></table>
+</pre></div>
 
 
 <hr>

@@ -110,7 +110,8 @@ ul.no-bullet {list-style: none}
 </dd>
 </dl>
 <p><strong>Example:</strong>
-</p><table><tr><td>&nbsp;</td><td><pre class="smallexample">LIB &quot;primdec.lib&quot;;
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;primdec.lib&quot;;
 ring  r = 32003,(x,y,z),dp;
 poly  p = z2+1;
 poly  q = z4+2;
@@ -118,7 +119,7 @@ ideal i = p^2*q^3,(y-z3)^3,(x-yz+z4)^4;
 list pr = primdecGTZ(i);
 testPrimary(pr,i);
 &rarr; 1
-</pre></td></tr></table>
+</pre></div>
 
 </td>
 </tr>
